@@ -1,0 +1,11 @@
+{
+  "name": "syntutor",
+  "version": "2.0.0",
+  "description": "SynTutor - explainable tutoring system for English phrase-structure syntax (spaCy + benepar backend, rule-matrix XAI)",
+  "type": "module",
+  "scripts": {
+    "serve": "python3 server/app.py",
+    "audit": "python3 scripts/audit_rules.py"
+  },
+  "license": "MIT"
+}

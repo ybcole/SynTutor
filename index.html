@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SynTutor — Explainable Phrase-Structure Grammar Tutor</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="topbar">
+      <div class="input-row">
+        <textarea id="inputText" rows="4" readonly
+                  placeholder="Type or paste a sentence or a whole paragraph, e.g.  The clever boy reads a book. He reads it every night."
+                  spellcheck="false"></textarea>
+      </div>
+      <p id="inputHint" class="input-hint">Double-click the panel to edit. When locked, click any sentence to view its syntax tree.</p>
+    </div>
+
+    <main class="app-main">
+      <section class="canvas-wrap">
+        <canvas id="treeCanvas" tabindex="0" aria-label="Interactive syntax tree; click a node, or use arrow keys and Enter"></canvas>
+        <div id="canvasOverlay" class="canvas-overlay"></div>
+      </section>
+      <aside class="panel right-panel">
+        <section class="card primary-explainer">
+          <div id="explainNode" class="node-explainer"></div>
+        </section>
+      </aside>
+    </main>
+
+    <details class="dev-panel" id="devPanel">
+      <summary>
+        <span class="dev-title">Developer panel</span>
+        <span class="dev-meta">sentence verdict · benepar parse string · spaCy token stream · system/FSM log</span>
+      </summary>
+      <div class="dev-grid">
+        <section class="card">
+          <h3>Sentence verdict</h3>
+          <div id="sentenceVerdict"><p class="muted">Submit a sentence to see the auto-generated pedagogical summary.</p></div>
+        </section>
+        <section class="card">
+          <h3>benepar parse string</h3>
+          <pre id="parseString" class="mono">—</pre>
+        </section>
+        <section class="card">
+          <h3>Token stream (spaCy)</h3>
+          <pre id="tokenStream" class="mono">—</pre>
+        </section>
+        <section class="card log-card">
+          <h3>System log / State machine</h3>
+          <div id="logPanel" class="log-panel"></div>
+        </section>
+      </div>
+    </details>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
