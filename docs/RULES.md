@@ -18,6 +18,44 @@ Every non-root node receives a verdict for the edge from its parent, and the
 node's **Constraint Matrix Checks** list in the UI is built from its own
 verdict plus the verdicts of its immediate children.
 
+## Morphological form generation
+
+The matrix does not maintain a dictionary of every singular/plural pair.
+Parser POS tags provide the grammatical number (`NN`/`NNP` for singular and
+`NNS`/`NNPS` for plural). Lexical plural validation and remediation use the
+`inflect` library, which combines productive suffix rules with a maintained
+exception set. The local suffix rules in `server/matrix.py` remain available
+for deterministic suggestion generation. The rules cover regular English
+endings and common productive classical patterns, including:
+
+| Singular ending | Suggested plural ending | Example |
+|---|---|---|
+| `-ctus` | `-cti` | `cactus` → `cacti` |
+| `-ngus` | `-ngi` | `fungus` → `fungi` |
+| `-dius` | `-dii` | `radius` → `radii` |
+| `-is` | `-es` | `analysis` → `analyses` |
+| `-ndex` | `-ndices` | `index` → `indices` |
+| `-trix` | `-trices` | `matrix` → `matrices` |
+
+The `C-NOUN-FORM` rule compares an observed plural with the library's accepted
+singular/plural relation. It catches malformed forms such as `foots`, `childs`,
+`sheeps`, `mens`, and `analysises`, and supplies a focused explanation and
+correction. An irregular-plural guard prevents suffixes from being added to
+already-complete forms such as `men` and `women`.
+
+Agreement remediation also normalizes all finite forms of the auxiliary verbs
+`be`, `have`, and `do` before generating a correction. For example, an
+agreement error with `are` now suggests `is`, never the invalid regularized
+form `ares`.
+Both `cacti` and the regular English plural `cactuses` are valid plural forms,
+as are `people`/`persons`; invariant forms such as `sheep` remain valid. This
+keeps lexical validation deterministic without hardcoding every noun pair.
+
+The library is not a general spell checker: an unknown nonce word cannot be
+reliably classified as a noun or plural without a lexical resource. Such words
+remain governed by the parser POS and structural rules rather than being
+silently guessed as errors.
+
 ## How a rule fires
 
 The engine looks up the pair `(parent TYPE, child TYPE)`. If the pair has a
@@ -201,6 +239,7 @@ Every `error` node now carries a `remediation` block
 |---|---|---|
 | `C-SUBJECT-AGREEMENT` | re-conjugated verb (or plural/singular subject alternative) | `are`→`is` / `a light`→`lights` |
 | `C-DETERMINER-AGREEMENT` | pluralized/singularized noun or swapped determiner | `boy`→`boys` / `These`→`This` |
+| `C-NOUN-FORM` | accepted library plural for the inferred singular | `foots`→`feet` / `childs`→`children` |
 | `C-AUX-FORM` | correct complement form (base / `-en` / `-ing`) | `eat`→`eaten` |
 | `C-DET-STACK` | removal of the extra determiner | drop `the` from `the my book` |
 | `C-MOD-POS` | reordered modifier (`JJ + NN`) | `car red`→`red car` |

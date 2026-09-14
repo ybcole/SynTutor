@@ -10,8 +10,12 @@ matrix. A rule fires on a POS-class pair (parent, child) and returns a verdict:
 Agreement, auxiliary-form, tense/finiteness, determiner-number, modifier-order
 and determiner-stacking checks are deterministic feature functions over the
 Penn-style POS tags produced by benepar -- no machine-learned scoring is
-involved. The same input always yields the same verdict.
+involved. Noun-form validation uses the deterministic ``inflect`` library,
+which is a required backend dependency. The same input always yields the same
+verdict.
 """
+
+import inflect
 
 SENTENCE_CLASSES = {'S', 'SINV', 'SQ', 'SBARQ', 'FRAG', 'ROOT'}
 
@@ -139,6 +143,7 @@ CHECK_LABELS = {
     'C-SMALL-CLAUSE-PREDICATE': 'Small Clause Predicate',
     'C-ADVERBIAL-COMPLEMENT': 'Adverbial Complement',
     'C-VERB-FORM': 'Verb Form',
+    'C-NOUN-FORM': 'Noun Form',
 }
 
 
@@ -150,6 +155,22 @@ IRREGULAR_PLURAL = {
     'calf': 'calves', 'loaf': 'loaves', 'thief': 'thieves', 'sheep': 'sheep',
     'fish': 'fish', 'deer': 'deer', 'series': 'series', 'species': 'species',
 }
+
+# Productive morphology rules used for suggestions. These are intentionally
+# suffix-based rather than a list of every noun in the language. The output
+# is the preferred form; regular alternatives remain valid because number is
+# determined from the parser's NOUN tag, not from this suggestion helper.
+LATIN_PLURAL_SUFFIXES = (
+    ('ctus', 'cti'),   # cactus/cacti
+    ('ngus', 'ngi'),   # fungus/fungi
+    ('dius', 'dii'),   # radius/radii
+    ('ulus', 'uli'),   # stimulus/stimuli
+    ('ndex', 'ndices'),# index/indices
+    ('trix', 'trices'),# matrix/matrices
+    ('sis', 'ses'),    # analysis/analyses, thesis/theses
+)
+
+_INFLECT = inflect.engine()
 
 IRREGULAR_VBN = {
     'be': 'been', 'beat': 'beaten', 'bend': 'bent', 'bite': 'bitten',
@@ -204,12 +225,16 @@ def _base_form(leaf):
     """Approximate a lexical base form from the observed surface and POS."""
     word = leaf['surface'].lower()
     pos = leaf['type']
+    if word in BE_FORM:
+        return 'be'
+    if word in HAVE_FORM:
+        return 'have'
+    if word in DO_FORM:
+        return 'do'
     for base in IRREGULAR_VBN:
         if word in {base + 'd', base + 'ed'}:
             return base
     if pos == 'VBZ':
-        if word in {'is', 'has', 'does'}:
-            return {'is': 'be', 'has': 'have', 'does': 'do'}[word]
         if word.endswith('ies'):
             return word[:-3] + 'y'
         if word.endswith('es'):
@@ -234,6 +259,9 @@ def _plural_noun(word):
     w = word.lower()
     if w in IRREGULAR_PLURAL:
         return IRREGULAR_PLURAL[w]
+    for singular_suffix, plural_suffix in LATIN_PLURAL_SUFFIXES:
+        if w.endswith(singular_suffix) and len(w) > len(singular_suffix):
+            return w[:-len(singular_suffix)] + plural_suffix
     if w.endswith(('s', 'x', 'z', 'ch', 'sh')):
         return w + 'es'
     if len(w) > 1 and w[-1] == 'y' and w[-2] not in 'aeiou':
@@ -247,6 +275,30 @@ def _singular_noun(leaf):
     if word in IRREGULAR_PLURAL.values():
         reverse = {value: key for key, value in IRREGULAR_PLURAL.items()}
         return reverse[word]
+    # A regular -es plural of an -us noun (cactuses, buses, statuses) must be
+    # resolved before the classical -is -> -es rule below.
+    if word.endswith('uses') and len(word) > 4:
+        return word[:-2]
+    # Common over-regularization of -is nouns: analysises, thesises.
+    if word.endswith('ises') and len(word) > 4:
+        return word[:-2]
+    for singular_suffix, plural_suffix in LATIN_PLURAL_SUFFIXES:
+        if plural_suffix == 'ses':
+            continue
+        if word.endswith(plural_suffix) and len(word) > len(plural_suffix):
+            return word[:-len(plural_suffix)] + singular_suffix
+    if _INFLECT is not None:
+        candidate = _INFLECT.singular_noun(word)
+        if candidate and _INFLECT.compare_nouns(candidate, word) == 's:p':
+            return candidate
+        if word.endswith('ses'):
+            candidate = word[:-2] + 'is'
+            if _INFLECT.compare_nouns(candidate, word) == 's:p':
+                return candidate
+    # Classical plurals ending in -i are especially common in learner input
+    # and have no reliable word-by-word exception list.
+    if word.endswith('i') and len(word) > 2 and word[-2] in 'cglnmdt':
+        return word[:-1] + 'us'
     if word.endswith('ies'):
         return word[:-3] + 'y'
     if word.endswith('es'):
@@ -254,6 +306,33 @@ def _singular_noun(leaf):
     if word.endswith('s') and not word.endswith('ss'):
         return word[:-1]
     return word
+
+
+def _noun_form_issue(leaf):
+    """Return (singular, expected_plural) for a malformed plural, else None.
+
+    ``inflect`` supplies both productive rules and its maintained lexical
+    exceptions. Comparing the observed plural with the library's accepted
+    singular/plural relation avoids rejecting legitimate alternatives such as
+    ``cactuses`` and ``persons``.
+    """
+    if leaf['type'] not in NOUN_PLURAL | NOUN_SINGULAR:
+        return None
+    observed = _lower(leaf['surface'])
+    singular = _singular_noun(leaf)
+    if not singular or singular == observed or singular is False:
+        return None
+    # Do not permit a regular suffix on an already-irregular plural:
+    # "men" and "women" are complete plural forms, so "mens"/"womens"
+    # are malformed even though a generic inflector may accept them.
+    if singular in IRREGULAR_PLURAL.values() and observed != singular:
+        return singular, singular
+    if _INFLECT.compare_nouns(singular, observed) == 's:p':
+        return None
+    expected = _INFLECT.plural(singular)
+    if not expected or expected == observed:
+        return None
+    return singular, expected
 
 
 def _third_present(base):
@@ -839,6 +918,12 @@ class MatrixEvaluator:
                     f"Genitive determiner '{child['surface']}' marks possession of the NP.")
         if ct in NOUN_CLASS:
             if head is not None and child['id'] == head['id']:
+                noun_issue = _noun_form_issue(child)
+                if noun_issue is not None:
+                    singular, expected = noun_issue
+                    return ('error', 'C-NOUN-FORM',
+                            f"Noun-form violation: '{child['surface']}' is not an "
+                            f"accepted plural of '{singular}'; use '{expected}'.")
                 num = num_of(child)
                 if child['type'] == 'NN' and (grandparent is not None
                                               and grandparent['type'] in {'S', 'SINV', 'SQ',
@@ -1123,6 +1208,8 @@ class MatrixEvaluator:
             return self._rem_agreement(node, parent)
         if cid == 'C-DETERMINER-AGREEMENT':
             return self._rem_det(node, parent)
+        if cid == 'C-NOUN-FORM':
+            return self._rem_noun_form(node)
         if cid == 'C-AUX-FORM':
             return self._rem_aux(node, parent)
         if cid == 'C-DET-STACK':
@@ -1249,6 +1336,28 @@ class MatrixEvaluator:
             'suggested_fix': suggested,
             'alternative_fix': alternative,
             'targeted_outcome': outcome,
+        }
+
+    @staticmethod
+    def _rem_noun_form(node):
+        issue = _noun_form_issue(node)
+        if issue is None:
+            return None
+        singular, expected = issue
+        observed = node['surface']
+        if expected == singular:
+            correction = (f"Use '{_preserve_case(observed, expected)}' instead; "
+                          f"'{singular}' is already the complete plural form.")
+        else:
+            correction = (f"Replace '{observed}' with '{_preserve_case(observed, expected)}'; "
+                          f"the standard plural of '{singular}' is '{expected}'.")
+        return {
+            'violation': (f"Noun Form Conflict: '{observed}' is not the accepted plural "
+                          f"form of '{singular}'."),
+            'suggested_fix': correction,
+            'alternative_fix': (f"Or use the singular noun '{_preserve_case(observed, singular)}' "
+                                "with a singular determiner such as 'a' or 'this'."),
+            'targeted_outcome': f"{singular} + NNS with an accepted plural form",
         }
 
     def _rem_aux(self, node, parent):
@@ -1621,6 +1730,7 @@ class MatrixEvaluator:
             'C-PREDICATE': 'clause predicate',
             'C-SUBJECT-AGREEMENT': 'subject-verb agreement link',
             'C-HEAD-NOUN': 'head noun',
+            'C-NOUN-FORM': 'noun form',
             'C-NOUN-ADJUNCT': 'noun adjunct',
             'C-DETERMINER': 'determiner',
             'C-DETERMINER-AGREEMENT': 'determiner-noun agreement link',
