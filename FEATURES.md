@@ -60,6 +60,8 @@ should not be interpreted as a percentage of lines completed.
 - Checks subject-verb agreement.
 - Checks determiner-noun number agreement.
 - Checks auxiliary and verb-form selection.
+- Distinguishes irregular past tense (`came`) from past participle (`come`) and
+  rejects regularized irregular forms such as `becomed`.
 - Checks clause finiteness.
 - Checks modifier ordering.
 - Checks determiner stacking.

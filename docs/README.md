@@ -120,6 +120,7 @@ where membership in \(\mathcal C\) is decided by a hand-authored **rule matrix o
 | `C-SUBJECT-AGREEMENT` | subject person/number vs. finite verb/aux form | `The boys runs.` · `John are running.` |
 | `C-DETERMINER-AGREEMENT` | determiner `numreq` vs. head-noun number | `These boy runs.` · `A dogs bark.` |
 | `C-AUX-FORM` | aux selects the verb form: modal/`do`→base, `have`→past participle, `be`→participle | `Mary will eats.` · `The girl has eat.` |
+| `C-VERB-FORM` | rejects irregular verbs regularized as `-ed` and past-tense forms used as participles | `becomed` · `have came` |
 | `C-TENSE-FINITE` | a main clause requires a finite predicate | `The boy running.` (fragment root) |
 | `C-MOD-POS`, `C-DET-STACK`, `C-HEAD-NOUN` | structural: modifier-before-head, single determiner per NP, determiner-licensed head | `car red` · `The my book` · `I hate your.` |
 | `C-PRONOUN-CASE` | nominative subject vs. objective object/preposition form | `Me likes music.` · `to she` |
@@ -176,4 +177,3 @@ Tests are excluded per the project spec. The maintained verification command
 is `npm run audit`, which runs the gold-corpus rule coverage audit without
 starting HTTP; runtime verification can be done through `/api/health` and
 `/api/parse`.
-

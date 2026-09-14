@@ -138,6 +138,7 @@ CHECK_LABELS = {
     'C-SMALL-CLAUSE': 'Small Clause (object complement)',
     'C-SMALL-CLAUSE-PREDICATE': 'Small Clause Predicate',
     'C-ADVERBIAL-COMPLEMENT': 'Adverbial Complement',
+    'C-VERB-FORM': 'Verb Form',
 }
 
 
@@ -169,6 +170,26 @@ IRREGULAR_VBN = {
     'stand': 'stood', 'steal': 'stolen', 'swim': 'swum', 'take': 'taken',
     'teach': 'taught', 'tell': 'told', 'think': 'thought', 'throw': 'thrown',
     'understand': 'understood', 'wear': 'worn', 'win': 'won', 'write': 'written',
+    'become': 'become',
+}
+
+IRREGULAR_PAST = {
+    'be': 'was', 'begin': 'began', 'break': 'broke', 'bring': 'brought',
+    'buy': 'bought', 'catch': 'caught', 'choose': 'chose', 'come': 'came',
+    'do': 'did', 'drink': 'drank', 'drive': 'drove', 'eat': 'ate',
+    'fall': 'fell', 'feel': 'felt', 'find': 'found', 'fly': 'flew',
+    'forget': 'forgot', 'forgive': 'forgave', 'freeze': 'froze',
+    'get': 'got', 'give': 'gave', 'go': 'went', 'grow': 'grew',
+    'have': 'had', 'hear': 'heard', 'keep': 'kept', 'know': 'knew',
+    'leave': 'left', 'lend': 'lent', 'lose': 'lost', 'make': 'made',
+    'mean': 'meant', 'meet': 'met', 'pay': 'paid', 'read': 'read',
+    'ride': 'rode', 'ring': 'rang', 'rise': 'rose', 'run': 'ran',
+    'say': 'said', 'see': 'saw', 'sell': 'sold', 'send': 'sent',
+    'sing': 'sang', 'sink': 'sank', 'sit': 'sat', 'sleep': 'slept',
+    'speak': 'spoke', 'spend': 'spent', 'stand': 'stood', 'steal': 'stole',
+    'swim': 'swam', 'take': 'took', 'teach': 'taught', 'tell': 'told',
+    'think': 'thought', 'throw': 'threw', 'understand': 'understood',
+    'wear': 'wore', 'win': 'won', 'write': 'wrote', 'become': 'became',
 }
 
 
@@ -183,6 +204,9 @@ def _base_form(leaf):
     """Approximate a lexical base form from the observed surface and POS."""
     word = leaf['surface'].lower()
     pos = leaf['type']
+    for base in IRREGULAR_VBN:
+        if word in {base + 'd', base + 'ed'}:
+            return base
     if pos == 'VBZ':
         if word in {'is', 'has', 'does'}:
             return {'is': 'be', 'has': 'have', 'does': 'do'}[word]
@@ -276,6 +300,30 @@ def _vbg_form(base):
     if w.endswith('e'):
         return w[:-1] + 'ing'
     return w + 'ing'
+
+
+def _regularized_form(base):
+    word = base.lower()
+    return word + 'd' if word.endswith('e') else word + 'ed'
+
+
+def _is_valid_verb_form(leaf):
+    """Reject regularized spellings of irregular forms and past-as-participle use."""
+    word = leaf['surface'].lower()
+    pos = leaf['type']
+    if pos == 'VBD':
+        return word not in {
+            _regularized_form(base)
+            for base in IRREGULAR_PAST
+        }
+    if pos == 'VBN':
+        if word in IRREGULAR_PAST.values() and word not in IRREGULAR_VBN.values():
+            return False
+        return word not in {
+            _regularized_form(base)
+            for base in IRREGULAR_VBN
+        }
+    return True
 
 
 def _replace_subject_head(subj, subj_head, new_head_word):
@@ -989,6 +1037,11 @@ class MatrixEvaluator:
     @staticmethod
     def _verb_head(parent, child):
         role = 'finite' if child['type'] in {'VBZ', 'VBP', 'VBD', 'MD'} else 'non-finite'
+        if not _is_valid_verb_form(child):
+            expected = 'past tense' if child['type'] == 'VBD' else 'past participle'
+            return ('error', 'C-VERB-FORM',
+                    f"Verb '{child['surface']}' is not a valid {expected} form; "
+                    'use the lexical form required by the verb.')
         return ('valid', 'C-HEAD-VERB',
                 f"Verb '{child['surface']}' ({VERB_FORM_LABEL.get(child['type'], role)}) is the "
                 f"{role} head of the VP.")
@@ -1013,6 +1066,11 @@ class MatrixEvaluator:
         verb_node = self._following_verb(parent, child)
         if verb_node is None:
             return self._verb_head(parent, child)
+        if not _is_valid_verb_form(verb_node):
+            expected = 'the past participle' if cls == 'have' else 'a valid participle'
+            return ('error', 'C-VERB-FORM',
+                    f"Verb-form violation: '{verb_node['surface']}' is not {expected}; "
+                    f"do not use a regularized or past-tense form after '{child['surface']}'.")
         required = {'modal': 'the base form', 'do': 'the base form',
                     'have': 'the past participle',
                     'be': 'a participle (progressive or passive)'}[cls]

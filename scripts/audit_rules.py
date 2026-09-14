@@ -37,6 +37,8 @@ GOLD: list[tuple[str, bool, str]] = [
     ("The children play in the park every day.", True, "PP adjunct + ADVP"),
     ("She has eaten the cake.", True, "have + VBN"),
     ("They have eaten the cake.", True, "have + VBN (plural)"),
+    ("They came home.", True, "irregular VBD"),
+    ("They have come home.", True, "irregular VBN"),
     ("I am reading a book.", True, "am (1sg)"),
     ("The book was read by Mary.", True, "passive be + VBN"),
     ("The boys and girls are playing.", True, "coordinated plural subject + are"),
@@ -71,6 +73,9 @@ GOLD: list[tuple[str, bool, str]] = [
 
     ("Mary will eats.", False, "auxiliary form (modal)"),
     ("The girl has eat.", False, "auxiliary form (have)"),
+    ("They have came home.", False, "past tense cannot follow have"),
+    ("They have becomed happy.", False, "invalid regularized form after have"),
+    ("They becomed happy.", False, "invalid regularized past form"),
     ("The girl has eats the cake.", False, "auxiliary form (have)"),
     ("The dog is barks loudly.", False, "auxiliary form (be)"),
     ("She is reads the book.", False, "auxiliary form (be)"),

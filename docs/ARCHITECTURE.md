@@ -427,6 +427,8 @@ Language tables (deterministic, hard-coded):
 - `VERB_FORM_LABEL` — Penn verb tag → human form name.
 - `IRREGULAR_PLURAL` — θ→θ shapes (child→children … sheep→sheep, fish→fish…).
 - `IRREGULAR_VBN` — 70+ irregular past-participles (be→been, eat→eaten…).
+- `IRREGULAR_PAST` — irregular past-tense forms used to distinguish `VBD`
+  (`came`) from `VBN` (`come`).
 
 ### 10.2 Morphological helpers
 
@@ -457,6 +459,9 @@ Language tables (deterministic, hard-coded):
 - `agree(subject_leaf, verb_leaf)` — True if the verb is neutral, the subject
   is unmarked, or when the strict equality (with `('*','non3sg')` and
   `('2',None)` special cases) holds.
+- `_is_valid_verb_form(leaf)` — rejects regularized irregular forms such as
+  `becomed` and past-tense forms such as `came` when benepar places them in a
+  `VBN` context.
 - `phrase_head(node)` — deterministic head pick by phrase label:
   NP/NML/NX → **last** noun; VP → **first** verb; PP → **first** prep;
   ADJP → **last** adjective; ADVP → **first** adverb; S-clauses → **first**
