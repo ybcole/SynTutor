@@ -8,7 +8,7 @@ ML scoring, randomness, or heuristic jitter.
 ## The pipeline
 
 ```
-Stage 3   spaCy tokenize + POS          -> tokens (lemma, pos, tag)
+Stage 3   spaCy tokenize + POS          -> tokens (pos, tag)
 Stage 4   benepar constituency parse    -> phrase-structure tree
 Stage 5   Rule matrix evaluates every   -> per-node verdict:
            parent->child edge             valid / error / unlisted

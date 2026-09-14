@@ -94,7 +94,7 @@ Element registry (all are read or written by the JS, exact ids):
 | `#devPanel` | `<details>` | collapsible developer panel |
 | `#sentenceVerdict` | div | auto-generated pedagogical summary |
 | `#parseString` | `<pre>` | raw benepar parse string |
-| `#tokenStream` | `<pre>` | spaCy token table (i, t, pos, tag, lemma) |
+| `#tokenStream` | `<pre>` | spaCy token table (i, t, pos, tag) |
 | `#logPanel` | div | prepend-most-recent system/FSM log |
 
 Module graph (`<script type=module src=js/main.js>`):
@@ -167,7 +167,7 @@ applySentenceSelection, setProcessBusy`.
 - `renderSentenceVerdict(markupLines, isError)` — fills `#sentenceVerdict`
   with `data-verdict=valid|error` and `.is-error` toggling.
 - `fillDevPanel(payload)` — parse string → `#parseString`; token stream →
-  `#tokenStream` (tab-separated `i  t  pos  tag  lemma:x`).
+  `#tokenStream` (tab-separated `i  t  pos  tag`).
 
 ---
 
@@ -384,7 +384,7 @@ map (`C-SUBJECT-AGREEMENT`, `C-DETERMINER-AGREEMENT`, `C-DET-STACK`,
   - **alignment guard**: after building, the number of consumed leaves must
     equal `leaf_count` (spaCy sentence token count) else `ParseFailure`.
 - `token_metadata(nlp, doc, target)` — per token:
-  `{i (0-based within sentence), t, lemma, pos, tag, dep, head(text)}`.
+  `{i (0-based within sentence), t, pos, tag, dep, head(text)}`.
 - `analyze(text, sentence_index=0)`:
   1. `nlp = load_models()`; `doc = nlp(text)`,
   2. segments `doc.sents`; **clamps** `sentence_index` into range; the target
@@ -392,8 +392,7 @@ map (`C-SUBJECT-AGREEMENT`, `C-DETERMINER-AGREEMENT`, `C-DET-STACK`,
      analyzed per request, deterministically selectable),
   3. `parse_string = target._.parse_string`,
   4. `parse_parse_string` → `NodeBuilder.build(tagged, len(target))`,
-  5. attaches `lemma` to every leaf from the token metadata,
-  6. includes the full segmentation `sentences = [{ordinal, start, end,
+  5. includes the full segmentation `sentences = [{ordinal, start, end,
      text}]` where `start`/`end` are **character offsets into the exact
      `text` string passed** (used by the frontend to map textarea carets to
      sentences),
@@ -432,10 +431,12 @@ Language tables (deterministic, hard-coded):
 ### 10.2 Morphological helpers
 
 - `_preserve_case(source, word)` — mirrors leading capitalization.
-- `_base_form(leaf)` — `lemma` (or surface) lower-cased.
+- `_base_form(leaf)` — derives a best-effort base form from the observed
+  surface and POS tag; no lemma is included in the payload.
 - `_plural_noun(word)` — irregular table → `s/x/z/ch/sh`→`+es` →
   consonant+y→`+ies` → `+s`.
-- `_singular_noun(leaf)` — spaCy lemma (already the citation form).
+- `_singular_noun(leaf)` — derives a singular noun form from the observed
+  surface, including the maintained irregular-noun table.
 - `_third_present(base)` — 3sg present: `be→is have→has do→does go→goes`,
   `s/x/z/ch/sh/o→+es`, consonant+y→`+ies`, else `+s`.
 - `_nonthird_present(base)` — `be→are`, else base.
@@ -654,7 +655,7 @@ targeted_outcome}` (alternative/outcome may be None).
   "parse": {
     "text": "<target sentence>", "sentence_count": <int>,
     "sentences": [ { "ordinal", "start", "end", "text" } ],  // char offsets into input
-    "tokens": [ { "i", "t", "lemma", "pos", "tag", "dep", "head" } ],
+    "tokens": [ { "i", "t", "pos", "tag", "dep", "head" } ],
     "parse_string": "(S (NP ...) (VP ...) (. .))"
   },
   "tree":   <nested {id,type,span,surface,children?}>,

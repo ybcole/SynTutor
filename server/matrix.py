@@ -180,8 +180,30 @@ def _preserve_case(source, word):
 
 
 def _base_form(leaf):
-    """Lemma (dictionary base form) of a verb/noun leaf, lower-cased."""
-    return (leaf.get('lemma') or leaf['surface']).lower()
+    """Approximate a lexical base form from the observed surface and POS."""
+    word = leaf['surface'].lower()
+    pos = leaf['type']
+    if pos == 'VBZ':
+        if word in {'is', 'has', 'does'}:
+            return {'is': 'be', 'has': 'have', 'does': 'do'}[word]
+        if word.endswith('ies'):
+            return word[:-3] + 'y'
+        if word.endswith('es'):
+            return word[:-2]
+        if word.endswith('s'):
+            return word[:-1]
+    if pos == 'VBG' and word.endswith('ing') and len(word) > 4:
+        stem = word[:-3]
+        return stem + 'e' if stem.endswith(('v', 'c')) else stem
+    if pos in {'VBD', 'VBN'}:
+        reverse = {value: key for key, value in IRREGULAR_VBN.items()}
+        if word in reverse:
+            return reverse[word]
+        if word.endswith('ied'):
+            return word[:-3] + 'y'
+        if word.endswith('ed') and len(word) > 3:
+            return word[:-2]
+    return word
 
 
 def _plural_noun(word):
@@ -196,8 +218,18 @@ def _plural_noun(word):
 
 
 def _singular_noun(leaf):
-    """Singular form of a noun; spaCy's lemma is already the singular citation."""
-    return (leaf.get('lemma') or leaf['surface']).lower()
+    """Approximate the singular form from the observed noun surface."""
+    word = leaf['surface'].lower()
+    if word in IRREGULAR_PLURAL.values():
+        reverse = {value: key for key, value in IRREGULAR_PLURAL.items()}
+        return reverse[word]
+    if word.endswith('ies'):
+        return word[:-3] + 'y'
+    if word.endswith('es'):
+        return word[:-2]
+    if word.endswith('s') and not word.endswith('ss'):
+        return word[:-1]
+    return word
 
 
 def _third_present(base):

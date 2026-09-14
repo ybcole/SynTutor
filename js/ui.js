@@ -177,7 +177,7 @@ export function renderSentenceVerdict(markupLines, isError) {
 export function fillDevPanel(payload) {
   $('#parseString').textContent = payload.parse.parse_string;
   $('#tokenStream').textContent = payload.parse.tokens
-    .map((t, i) => `${i + 1}\t${t.t}\t${t.pos}\t${t.tag}\tlemma:${t.lemma}`)
+    .map((t, i) => `${i + 1}\t${t.t}\t${t.pos}\t${t.tag}`)
     .join('\n');
 }
 

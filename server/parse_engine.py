@@ -156,7 +156,6 @@ def token_metadata(nlp, doc, target):
         out.append({
             'i': tok.i - target.start,
             't': tok.text,
-            'lemma': tok.lemma_,
             'pos': tok.pos_,
             'tag': tok.tag_,
             'dep': tok.dep_,
@@ -186,10 +185,6 @@ def analyze(text, sentence_index=0):
     builder = NodeBuilder()
     root = builder.build(tagged, leaf_count=len(target))
     meta = token_metadata(nlp, doc, target)
-    for node in builder.nodes.values():
-        if 'children' not in node:
-            i = node['span'][0]
-            node['lemma'] = meta[i]['lemma'] if i < len(meta) else node['surface']
     return {
         'sentence': target.text,
         'sentence_index': idx,
