@@ -171,8 +171,9 @@ These are explicit design choices, not accidental omissions:
   audit script but no formal test runner or browser E2E suite.
 - **Continuous integration:** no GitHub Actions workflow currently runs the
   audit, linting, or smoke checks on every push.
-- **Pinned dependency manifest:** dependencies are documented in the quick
-  start, but there is no `requirements.txt` or lockfile in the repository.
+- **Pinned dependency manifest:** `requirements.txt` documents the backend
+  dependencies, including `inflect` for noun-form validation; no lockfile is
+  included.
 - **Production deployment configuration:** no container, reverse proxy,
   process manager, HTTPS configuration, or deployment manifest is included.
 - **Authentication and authorization:** the local server has no users,

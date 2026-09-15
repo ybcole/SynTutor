@@ -14,7 +14,7 @@ Requires Python 3.10+.
 
 ```bash
 # 1. install the NLP pipeline
-pip3 install spacy benepar "transformers<4.47"
+pip3 install -r requirements.txt
 python3 -m spacy download en_core_web_md
 python3 -c "import benepar; benepar.download('benepar_en3')"
 
@@ -25,6 +25,14 @@ python3 server/app.py        # or: npm run serve
 Then open `http://127.0.0.1:8000`.
 
 > The backend serves both the static front end and the REST API on one port. Keep `transformers<4.47` pinned: newer `transformers` removes the `T5Tokenizer.build_inputs_with_special_tokens` method that benepar's retokenizer relies on.
+
+The requirements also install `inflect`, which supplies deterministic English
+noun morphology (productive rules plus maintained lexical exceptions). The
+matrix uses it to reject malformed plurals such as `foots`, `childs`, and
+`sheeps`, while accepting alternatives such as `cacti`/`cactuses`,
+`people`/`persons`, and invariant nouns such as `sheep`. It is used for lexical
+form validation only; grammatical number still comes from the parser's POS
+tags.
 
 ---
 
@@ -119,6 +127,7 @@ where membership in \(\mathcal C\) is decided by a hand-authored **rule matrix o
 |----|--------|------|
 | `C-SUBJECT-AGREEMENT` | subject person/number vs. finite verb/aux form | `The boys runs.` · `John are running.` |
 | `C-DETERMINER-AGREEMENT` | determiner `numreq` vs. head-noun number | `These boy runs.` · `A dogs bark.` |
+| `C-NOUN-FORM` | observed plural vs. accepted singular/plural morphology | `These foots hurt.` · `The childs play.` · `The mens are here.` |
 | `C-AUX-FORM` | aux selects the verb form: modal/`do`→base, `have`→past participle, `be`→participle | `Mary will eats.` · `The girl has eat.` |
 | `C-VERB-FORM` | rejects irregular verbs regularized as `-ed` and past-tense forms used as participles | `becomed` · `have came` |
 | `C-TENSE-FINITE` | a main clause requires a finite predicate | `The boy running.` (fragment root) |

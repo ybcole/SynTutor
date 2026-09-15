@@ -426,6 +426,9 @@ Language tables (deterministic, hard-coded):
   having`; `DO_FORM = do does did doing done`.
 - `VERB_FORM_LABEL` — Penn verb tag → human form name.
 - `IRREGULAR_PLURAL` — θ→θ shapes (child→children … sheep→sheep, fish→fish…).
+- `inflect` — deterministic lexical/productive noun morphology used by
+  `C-NOUN-FORM`; accepts legitimate alternatives (`cacti`/`cactuses`,
+  `people`/`persons`) and rejects malformed plurals (`foots`, `childs`).
 - `IRREGULAR_VBN` — 70+ irregular past-participles (be→been, eat→eaten…).
 - `IRREGULAR_PAST` — irregular past-tense forms used to distinguish `VBD`
   (`came`) from `VBN` (`come`).
@@ -435,6 +438,9 @@ Language tables (deterministic, hard-coded):
 - `_preserve_case(source, word)` — mirrors leading capitalization.
 - `_base_form(leaf)` — derives a best-effort base form from the observed
   surface and POS tag; no lemma is included in the payload.
+- `_noun_form_issue(leaf)` — compares a parser-tagged plural with `inflect`'s
+  accepted singular/plural relation; returns the canonical singular and
+  expected plural for malformed forms, else `None`.
 - `_plural_noun(word)` — irregular table → `s/x/z/ch/sh`→`+es` →
   consonant+y→`+ies` → `+s`.
 - `_singular_noun(leaf)` — derives a singular noun form from the observed
