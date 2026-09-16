@@ -331,29 +331,67 @@ function renderHistoryItems() {
     const statusClass = entry.is_valid ? 'ok' : 'err';
     const statusText = entry.is_valid ? 'VALID' : 'INVALID';
 
-    card.innerHTML = `
-      <div class="hist-top">
-        <span class="hist-status">
-          <span class="nc-dot ${statusClass}"></span>
-          <span style="color: var(--${statusClass});">${statusText}</span>
-        </span>
-        <div class="hist-actions">
-          <span class="hist-time">${date}</span>
-          <button class="hist-delete-btn" title="Delete entry" data-id="${entry.id}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="3 6 5 6 21 6"></polyline>
-              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-      <p class="hist-sentence">${entry.sentence}</p>
-      <div class="hist-chips">
-        ${(entry.constraints_fired || []).map((c) => `<span class="nc-chip ${entry.is_valid ? '' : 'err'}">${c}</span>`).join('')}
-      </div>
+    // 1. Header row
+    const topRow = document.createElement('div');
+    topRow.className = 'hist-top';
+
+    const statusSpan = document.createElement('span');
+    statusSpan.className = 'hist-status';
+
+    const dot = document.createElement('span');
+    dot.className = `nc-dot ${statusClass}`;
+
+    const statusLabel = document.createElement('span');
+    statusLabel.style.color = `var(--${statusClass})`;
+    statusLabel.textContent = statusText;
+
+    statusSpan.appendChild(dot);
+    statusSpan.appendChild(statusLabel);
+
+    const actionsDiv = document.createElement('div');
+    actionsDiv.className = 'hist-actions';
+
+    const timeSpan = document.createElement('span');
+    timeSpan.className = 'hist-time';
+    timeSpan.textContent = date;
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'hist-delete-btn';
+    delBtn.title = 'Delete entry';
+    delBtn.setAttribute('aria-label', 'Delete entry');
+    delBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="3 6 5 6 21 6"></polyline>
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+      </svg>
     `;
 
-    // Replay from history without re-logging
+    actionsDiv.appendChild(timeSpan);
+    actionsDiv.appendChild(delBtn);
+
+    topRow.appendChild(statusSpan);
+    topRow.appendChild(actionsDiv);
+
+    // 2. Sentence paragraph (safe textContent prevents XSS)
+    const sentenceP = document.createElement('p');
+    sentenceP.className = 'hist-sentence';
+    sentenceP.textContent = entry.sentence;
+
+    // 3. Chips container (safe textContent for constraints)
+    const chipsDiv = document.createElement('div');
+    chipsDiv.className = 'hist-chips';
+    (entry.constraints_fired || []).forEach((constraint) => {
+      const chip = document.createElement('span');
+      chip.className = `nc-chip ${entry.is_valid ? '' : 'err'}`;
+      chip.textContent = constraint;
+      chipsDiv.appendChild(chip);
+    });
+
+    card.appendChild(topRow);
+    card.appendChild(sentenceP);
+    card.appendChild(chipsDiv);
+
+    // Replay interaction
     card.addEventListener('click', () => {
       document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
       const ta = document.querySelector('#inputText');
@@ -362,8 +400,7 @@ function renderHistoryItems() {
       runPipeline({ isReplay: true });
     });
 
-    // Delete single item
-    const delBtn = card.querySelector('.hist-delete-btn');
+    // Delete interaction
     delBtn.addEventListener('click', async (e) => {
       e.stopPropagation();
       delBtn.disabled = true;

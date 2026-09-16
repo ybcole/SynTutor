@@ -1,9 +1,11 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { SUPABASE_CONFIG } from './config.js';
 
-const SUPABASE_URL = 'https://bgjzmnqqeqfcttjpotwg.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnanptbnFxZXFmY3R0anBvdHdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk1MTMyODAsImV4cCI6MjEwNTA4OTI4MH0.d_fE0I28hvc5C9ZkJAAdzXzsMTXmQGSthYuiCoYj_rc';
+if (!SUPABASE_CONFIG.url || !SUPABASE_CONFIG.anonKey || SUPABASE_CONFIG.anonKey.includes('YOUR_')) {
+  console.error('Supabase configuration is missing or invalid. Check js/config.js.');
+}
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+export const supabase = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
 
 const form = document.querySelector('#loginForm');
 const emailInput = document.querySelector('#email');
@@ -17,7 +19,7 @@ function setStatus(text, isError = false) {
   statusMsg.className = `msg ${isError ? 'err' : 'ok'}`;
 }
 
-// Redirect if already logged in
+// Redirect if session already exists
 const { data: { session } } = await supabase.auth.getSession();
 if (session && window.location.pathname.endsWith('login.html')) {
   window.location.href = '/index.html';
@@ -54,7 +56,7 @@ signUpBtn?.addEventListener('click', async () => {
   if (error) {
     setStatus(error.message, true);
   } else if (data.user && !data.session) {
-    setStatus('Account registered! Check your email inbox to confirm.', false);
+    setStatus('Account registered! Check your email to confirm.', false);
   } else {
     window.location.href = '/index.html';
   }
