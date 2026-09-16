@@ -1,15 +1,33 @@
+import { supabase } from './auth.js';
 import { TreeRenderer } from './renderer.js';
 import {
   log,
   clearOverlay, showCanvasMessage, renderSentenceVerdict, renderNodeDetail,
   renderDiagnostic, fillDevPanel, applySentenceSelection, plainName,
 } from './ui.js';
+
+// Route guard: require session before loading syntax tree workbench
+const { data: { session: authSession } } = await supabase.auth.getSession();
+if (!authSession) {
+  window.location.href = '/login.html';
+}
+
+supabase.auth.onAuthStateChange((event, currentSession) => {
+  if (event === 'SIGNED_OUT' || !currentSession) {
+    window.location.href = '/login.html';
+  }
+});
+
 const STATES = { IDLE: 'IDLE', PROCESSING: 'PROCESSING', VIEWING: 'VIEWING', EXPLORING: 'EXPLORING', END: 'END' };
 
 let state = STATES.IDLE;
 let session = null;
 let renderer = null;
 let lastAnalyzedText = null;
+let lastRecordedText = null;
+
+let cachedHistory = [];
+let activeHistoryFilter = 'all';
 
 function transition(next, event) {
   const from = state;
@@ -53,6 +71,52 @@ function wireEvents() {
       activateSentenceAtCaret();
     }
   });
+
+  // History Drawer Controls
+  const drawer = document.querySelector('#historyDrawerBackdrop');
+  document.querySelector('#historyBtn')?.addEventListener('click', () => {
+    drawer?.classList.add('active');
+    loadAndRenderHistory();
+  });
+  document.querySelector('#closeDrawerBtn')?.addEventListener('click', () => {
+    drawer?.classList.remove('active');
+  });
+  drawer?.addEventListener('click', (e) => {
+    if (e.target === drawer) drawer.classList.remove('active');
+  });
+
+  // Filter pills
+  document.querySelectorAll('#historyFilters .filter-pill').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#historyFilters .filter-pill').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeHistoryFilter = btn.dataset.filter;
+      renderHistoryItems();
+    });
+  });
+
+  // Clear all history
+  document.querySelector('#clearHistoryBtn')?.addEventListener('click', async () => {
+    if (!cachedHistory.length) return;
+    if (confirm('Clear all analysis history? This action cannot be undone.')) {
+      const { error } = await supabase
+        .from('analysis_history')
+        .delete()
+        .eq('user_id', authSession.user.id);
+
+      if (error) {
+        alert('Failed to clear history: ' + error.message);
+      } else {
+        cachedHistory = [];
+        renderHistoryItems();
+      }
+    }
+  });
+
+  // Auth Controls
+  document.querySelector('#logoutBtn')?.addEventListener('click', async () => {
+    await supabase.auth.signOut();
+  });
 }
 
 function setEditHint(editing) {
@@ -77,7 +141,8 @@ function activateSentenceAtCaret() {
   const caret = ta.selectionStart;
   const hit = sents.find((s) => caret >= s.start && caret < s.end);
   if (hit && hit.ordinal - 1 !== (session.payload.meta.target_sentence || 1) - 1) {
-    runPipeline({ index: hit.ordinal - 1 });
+    // Navigating between sentences in the same text must not create history records
+    runPipeline({ index: hit.ordinal - 1, isSentenceNav: true });
   }
 }
 
@@ -159,6 +224,21 @@ async function executePipeline(opts = {}) {
 
   session = { payload };
   lastAnalyzedText = text;
+
+  // Persist to history only when user submits a new text (never on sentence clicks or replays)
+  const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
+  if (authSession?.user?.id && !isNavigation && text !== lastRecordedText) {
+    lastRecordedText = text;
+    supabase.from('analysis_history').insert({
+      user_id: authSession.user.id,
+      sentence: text,
+      is_valid: payload.summary.valid,
+      constraints_fired: payload.summary.constraints_fired,
+    }).then(({ error }) => {
+      if (error) console.error('Failed to log history:', error.message);
+    });
+  }
+
   document.querySelector('#inputText').value = text;
   lockInput();
   applySentenceSelection(payload);
@@ -202,6 +282,108 @@ function handleNodeSelect(id) {
     transition(STATES.EXPLORING, 'user selects syntax node (cache hit \u2014 no HTTP request)');
     log(`Exploring: cached XAI for node ${node.type} \u2014 ${detail.constraint} (${detail.status})`);
   }
+}
+
+async function loadAndRenderHistory() {
+  const container = document.querySelector('#historyList');
+  if (!container) return;
+  container.innerHTML = '<p class="muted">Loading past analyses...</p>';
+
+  const { data, error } = await supabase
+    .from('analysis_history')
+    .select('id, sentence, is_valid, constraints_fired, created_at')
+    .order('created_at', { ascending: false })
+    .limit(50);
+
+  if (error) {
+    container.innerHTML = `<p class="muted" style="color: var(--err);">Error loading history: ${error.message}</p>`;
+    return;
+  }
+
+  cachedHistory = data || [];
+  renderHistoryItems();
+}
+
+function renderHistoryItems() {
+  const container = document.querySelector('#historyList');
+  if (!container) return;
+
+  const filtered = cachedHistory.filter((entry) => {
+    if (activeHistoryFilter === 'error') return !entry.is_valid;
+    if (activeHistoryFilter === 'valid') return entry.is_valid;
+    return true;
+  });
+
+  if (!filtered.length) {
+    container.innerHTML = '<p class="muted">No matching analyses found.</p>';
+    return;
+  }
+
+  container.innerHTML = '';
+  filtered.forEach((entry) => {
+    const card = document.createElement('div');
+    card.className = 'history-item';
+
+    const date = new Date(entry.created_at).toLocaleDateString('en-US', {
+      month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit',
+    });
+
+    const statusClass = entry.is_valid ? 'ok' : 'err';
+    const statusText = entry.is_valid ? 'VALID' : 'INVALID';
+
+    card.innerHTML = `
+      <div class="hist-top">
+        <span class="hist-status">
+          <span class="nc-dot ${statusClass}"></span>
+          <span style="color: var(--${statusClass});">${statusText}</span>
+        </span>
+        <div class="hist-actions">
+          <span class="hist-time">${date}</span>
+          <button class="hist-delete-btn" title="Delete entry" data-id="${entry.id}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <p class="hist-sentence">${entry.sentence}</p>
+      <div class="hist-chips">
+        ${(entry.constraints_fired || []).map((c) => `<span class="nc-chip ${entry.is_valid ? '' : 'err'}">${c}</span>`).join('')}
+      </div>
+    `;
+
+    // Replay from history without re-logging
+    card.addEventListener('click', () => {
+      document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
+      const ta = document.querySelector('#inputText');
+      ta.value = entry.sentence;
+      lastRecordedText = entry.sentence;
+      runPipeline({ isReplay: true });
+    });
+
+    // Delete single item
+    const delBtn = card.querySelector('.hist-delete-btn');
+    delBtn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      delBtn.disabled = true;
+
+      const { error } = await supabase
+        .from('analysis_history')
+        .delete()
+        .eq('id', entry.id);
+
+      if (error) {
+        alert('Failed to delete item: ' + error.message);
+        delBtn.disabled = false;
+      } else {
+        cachedHistory = cachedHistory.filter((item) => item.id !== entry.id);
+        renderHistoryItems();
+      }
+    });
+
+    container.appendChild(card);
+  });
 }
 
 if (typeof window !== 'undefined') {
