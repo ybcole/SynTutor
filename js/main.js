@@ -229,14 +229,24 @@ async function executePipeline(opts = {}) {
   const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
   if (authSession?.user?.id && !isNavigation && text !== lastRecordedText) {
     lastRecordedText = text;
-    supabase.from('analysis_history').insert({
-      user_id: authSession.user.id,
-      sentence: text,
-      is_valid: payload.summary.valid,
-      constraints_fired: payload.summary.constraints_fired,
-    }).then(({ error }) => {
-      if (error) console.error('Failed to log history:', error.message);
-    });
+    try {
+      const { error: insertError } = await supabase.from('analysis_history').insert({
+        user_id: authSession.user.id,
+        sentence: text,
+        is_valid: payload.summary.valid,
+        constraints_fired: payload.summary.constraints_fired,
+      });
+
+      if (insertError) {
+        console.warn('Failed to log history to Supabase:', insertError.message);
+        log(`Warning: Failed to save analysis history \u2014 ${insertError.message}`);
+      } else {
+        log('Stage 6b: analysis history recorded in Supabase');
+      }
+    } catch (dbErr) {
+      console.warn('Network error logging history:', dbErr);
+      log('Warning: Network error saving history');
+    }
   }
 
   document.querySelector('#inputText').value = text;
