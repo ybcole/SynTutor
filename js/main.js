@@ -7,7 +7,7 @@ import {
 
 const STATES = { IDLE: 'IDLE', PROCESSING: 'PROCESSING', VIEWING: 'VIEWING', EXPLORING: 'EXPLORING' };
 const HIGHLIGHT_STATUSES = new Set(['valid', 'error']);
-const HIGHLIGHT_CLASSES = { valid: 'word-valid', error: 'word-invalid' };
+const HIGHLIGHT_CLASSES = { valid: '', error: 'word-invalid' };
 
 let state = STATES.IDLE;
 let session = null;
@@ -48,7 +48,6 @@ function wireEvents() {
     ta.readOnly = false;
     ta.classList.add('editing');
     setEditHint(true);
-    renderInputHighlights(ta.value);
     ta.focus();
   });
   ta.addEventListener('scroll', syncHighlightScroll);
@@ -108,11 +107,13 @@ function setEditHint(editing) {
 
 function returnToLocked() {
   const ta = document.querySelector('#inputText');
-  ta.readOnly = true;
+  const editor = document.querySelector('.input-editor');
   ta.classList.remove('editing');
-  document.querySelector('.input-editor').classList.remove('editing');
+  editor.classList.remove('editing');
+  ta.readOnly = true;
   setEditHint(false);
   renderInputHighlights(ta.value);
+  syncHighlightScroll();
 }
 
 function activateSentenceAtCaret() {
@@ -267,17 +268,42 @@ function renderInputHighlights(text, payload = null) {
   layer.textContent = '';
   if (!text) return;
   const spans = payload ? mergeHighlightSpans(historySpans, buildHighlightSpans(text, payload)) : historySpans;
-  let cursor = 0;
-  for (const span of spans) {
-    if (span.start < cursor || span.start >= text.length) continue;
-    layer.appendChild(document.createTextNode(text.slice(cursor, span.start)));
-    const mark = document.createElement('span');
-    mark.className = HIGHLIGHT_STATUSES.has(span.status) ? HIGHLIGHT_CLASSES[span.status] : '';
-    mark.textContent = text.slice(span.start, Math.min(span.end, text.length));
-    layer.appendChild(mark);
-    cursor = Math.min(span.end, text.length);
+  const target = payload?.parse?.sentences?.[(payload.meta.target_sentence || 1) - 1];
+  const sentenceStart = target?.start ?? -1;
+  const sentenceEnd = target?.end ?? -1;
+  const boundaries = new Set([0, text.length]);
+
+  spans.forEach((span) => {
+    boundaries.add(Math.max(0, Math.min(span.start, text.length)));
+    boundaries.add(Math.max(0, Math.min(span.end, text.length)));
+  });
+  if (sentenceStart >= 0) {
+    boundaries.add(sentenceStart);
+    boundaries.add(sentenceEnd);
   }
-  layer.appendChild(document.createTextNode(text.slice(cursor)));
+
+  const points = [...boundaries].sort((a, b) => a - b);
+  for (let index = 0; index < points.length - 1; index += 1) {
+    const start = points[index];
+    const end = points[index + 1];
+    if (start === end) continue;
+    const wordSpan = spans.find((span) => span.start <= start && end <= span.end);
+    const selected = sentenceStart >= 0 && start >= sentenceStart && end <= sentenceEnd;
+    const classes = [];
+    if (selected) classes.push('sentence-selected');
+    if (wordSpan && HIGHLIGHT_STATUSES.has(wordSpan.status)) {
+      const wordClass = HIGHLIGHT_CLASSES[wordSpan.status];
+      if (wordClass) classes.push(wordClass);
+    }
+    if (classes.length) {
+      const mark = document.createElement('span');
+      mark.className = classes.join(' ');
+      mark.textContent = text.slice(start, end);
+      layer.appendChild(mark);
+    } else {
+      layer.appendChild(document.createTextNode(text.slice(start, end)));
+    }
+  }
   syncHighlightScroll();
 }
 

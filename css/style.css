@@ -118,6 +118,7 @@ body {
 #inputHighlights {
   position: absolute;
   inset: 0;
+  z-index: 2;
   overflow: hidden;
   color: var(--ink);
   background: var(--surface);
@@ -125,6 +126,8 @@ body {
 }
 
 #inputText {
+  position: relative;
+  z-index: 1;
   resize: vertical;
   color: var(--ink);
   background: var(--surface);
@@ -134,7 +137,7 @@ body {
 #inputText[readonly] {
   color: transparent;
   background: transparent;
-  caret-color: var(--ink);
+  caret-color: var(--accent);
 }
 
 #inputText[readonly]::selection {
@@ -147,20 +150,29 @@ body {
   border-color: var(--accent);
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
   background: var(--surface);
+  color: var(--ink);
+  caret-color: var(--accent);
   cursor: text;
 }
 
-#inputText.editing {
-  color: transparent;
-  background: transparent;
-  caret-color: var(--ink);
+.input-editor.editing #inputHighlights {
+  display: none;
 }
 
-.word-valid { color: var(--ok); }
+.input-editor:not(.editing) #inputHighlights {
+  display: block;
+}
+
 .word-invalid {
   color: var(--err);
   text-decoration: underline wavy currentColor;
   text-decoration-thickness: 1px;
+}
+
+.sentence-selected {
+  background: rgba(238, 238, 238, 0.9);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(210, 210, 210, 0.35);
 }
 
 .legend-valid { color: var(--ok); }
