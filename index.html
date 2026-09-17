@@ -16,13 +16,22 @@
                     placeholder="Type or paste a sentence or a whole paragraph, e.g.  The clever boy reads a book. He reads it every night."
                     spellcheck="false"></textarea>
         </div>
-        <div class="input-legend" aria-label="Word status legend">
-          <span class="legend-valid">Correct</span>
-          <span class="legend-invalid">Incorrect</span>
-        </div>
         <div class="input-actions">
-          <button id="historyBtn" type="button">History</button>
-          <button id="logoutBtn" type="button">Log out</button>
+          <button id="historyBtn" class="action-btn history-btn" type="button" title="View analysis history">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History</span>
+          </button>
+          <button id="logoutBtn" class="action-btn logout-btn" type="button" title="Sign out">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Log Out</span>
+          </button>
         </div>
       </div>
       <p id="inputHint" class="input-hint">Double-click the panel to edit. When locked, click any sentence to view its syntax tree.</p>

@@ -7,13 +7,13 @@ import {
 
 const STATES = { IDLE: 'IDLE', PROCESSING: 'PROCESSING', VIEWING: 'VIEWING', EXPLORING: 'EXPLORING' };
 const HIGHLIGHT_STATUSES = new Set(['valid', 'error']);
+const HIGHLIGHT_CLASSES = { valid: 'word-valid', error: 'word-invalid' };
 
 let state = STATES.IDLE;
 let session = null;
 let renderer = null;
 let lastAnalyzedText = null;
 let lastRecordedText = null;
-let historyRecordId = null;
 let historySpans = [];
 let cachedHistory = [];
 let activeHistoryFilter = 'all';
@@ -48,15 +48,22 @@ function wireEvents() {
     ta.readOnly = false;
     ta.classList.add('editing');
     setEditHint(true);
-    renderInputHighlights('');
+    renderInputHighlights(ta.value);
     ta.focus();
   });
   ta.addEventListener('scroll', syncHighlightScroll);
-  ta.addEventListener('input', () => renderInputHighlights(''));
+  ta.addEventListener('input', () => {
+    historySpans = [];
+    renderInputHighlights(ta.value);
+  });
   ta.addEventListener('blur', () => {
     const changed = ta.value !== lastAnalyzedText;
     returnToLocked();
-    if (changed) runPipeline();
+    if (changed) {
+      runPipeline();
+    } else {
+      renderInputHighlights(ta.value);
+    }
   });
   ta.addEventListener('click', activateSentenceAtCaret);
   ta.addEventListener('keydown', (event) => {
@@ -105,6 +112,7 @@ function returnToLocked() {
   ta.classList.remove('editing');
   document.querySelector('.input-editor').classList.remove('editing');
   setEditHint(false);
+  renderInputHighlights(ta.value);
 }
 
 function activateSentenceAtCaret() {
@@ -136,6 +144,8 @@ async function executePipeline(options = {}) {
     transition(STATES.IDLE, 'empty input -> back to idle');
     return;
   }
+  // Keep the source text visible through the asynchronous parse request.
+  renderInputHighlights(text);
 
   let response;
   try {
@@ -163,29 +173,47 @@ async function executePipeline(options = {}) {
   lastAnalyzedText = text;
 
   const spans = buildHighlightSpans(text, payload);
-  if (options.isSentenceNav && historyRecordId) {
+  if (options.isSentenceNav) {
     historySpans = mergeHighlightSpans(historySpans, spans);
-    await updateHistorySpans();
-  } else if (!options.isReplay && authSession?.user?.id && text !== lastRecordedText) {
+  } else {
     historySpans = spans;
-    const { data, error } = await supabase.from('analysis_history').insert({
-      user_id: authSession.user.id,
-      sentence: text,
-      is_valid: payload.summary.valid,
-      constraints_fired: payload.summary.constraints_fired,
-      highlight_spans: historySpans,
-    }).select('id').single();
-    if (error) console.error('Failed to log history:', error.message);
-    historyRecordId = data?.id || null;
-    lastRecordedText = text;
+  }
+  if (!options.isReplay && !options.isSentenceNav && text !== lastRecordedText) {
+    const saved = await saveHistoryEntry(text, payload);
+    if (saved) lastRecordedText = text;
   }
 
   document.querySelector('#inputText').value = text;
   returnToLocked();
-  renderInputHighlights(historySpans.length ? text : '', payload);
+  renderInputHighlights(text, payload);
   applySentenceSelection(payload);
   renderer.setTree(payload.tree);
   transition(STATES.VIEWING, 'output ready -> viewing');
+}
+
+async function saveHistoryEntry(text, payload) {
+  const { data: { session: currentSession }, error: sessionError } = await supabase.auth.getSession();
+  if (sessionError) {
+    log(`History unavailable: ${sessionError.message}`);
+    return null;
+  }
+  if (!currentSession?.user?.id) {
+    log('History not saved: no authenticated user session.');
+    return null;
+  }
+
+  const { error } = await supabase.from('analysis_history').insert({
+    user_id: currentSession.user.id,
+    sentence: text,
+    is_valid: payload.summary.valid,
+    constraints_fired: payload.summary.constraints_fired,
+  });
+  if (error) {
+    log(`History save failed: ${error.message}`);
+    return null;
+  }
+  log('Analysis history saved.');
+  return true;
 }
 
 function failPipeline(title, lines) {
@@ -244,7 +272,7 @@ function renderInputHighlights(text, payload = null) {
     if (span.start < cursor || span.start >= text.length) continue;
     layer.appendChild(document.createTextNode(text.slice(cursor, span.start)));
     const mark = document.createElement('span');
-    mark.className = HIGHLIGHT_STATUSES.has(span.status) ? `word-${span.status}` : '';
+    mark.className = HIGHLIGHT_STATUSES.has(span.status) ? HIGHLIGHT_CLASSES[span.status] : '';
     mark.textContent = text.slice(span.start, Math.min(span.end, text.length));
     layer.appendChild(mark);
     cursor = Math.min(span.end, text.length);
@@ -262,19 +290,12 @@ function syncHighlightScroll() {
   }
 }
 
-async function updateHistorySpans() {
-  if (!historyRecordId) return;
-  const { error } = await supabase.from('analysis_history')
-    .update({ highlight_spans: historySpans }).eq('id', historyRecordId);
-  if (error) console.error('Failed to update history highlights:', error.message);
-}
-
 async function loadAndRenderHistory() {
   const container = document.querySelector('#historyList');
   if (!container) return;
   container.textContent = 'Loading past analyses...';
   const { data, error } = await supabase.from('analysis_history')
-    .select('id, sentence, is_valid, constraints_fired, highlight_spans, created_at')
+    .select('id, sentence, is_valid, constraints_fired, created_at')
     .order('created_at', { ascending: false }).limit(50);
   if (error) {
     container.textContent = `Error loading history: ${error.message}`;
@@ -310,12 +331,9 @@ function renderHistoryItems() {
 
 async function replayHistory(entry) {
   closeHistory();
-  historyRecordId = entry.id;
-  historySpans = entry.highlight_spans || [];
   const ta = document.querySelector('#inputText');
   ta.value = entry.sentence;
   lastAnalyzedText = entry.sentence;
-  renderInputHighlights(entry.sentence);
   await runPipeline({ isReplay: true });
 }
 
@@ -325,7 +343,6 @@ async function clearHistory() {
   if (error) console.error('Failed to clear history:', error.message);
   else {
     cachedHistory = [];
-    historyRecordId = null;
     historySpans = [];
     renderHistoryItems();
   }

@@ -134,6 +134,7 @@ body {
 #inputText[readonly] {
   color: transparent;
   background: transparent;
+  caret-color: var(--ink);
 }
 
 #inputText[readonly]::selection {
@@ -149,23 +150,17 @@ body {
   cursor: text;
 }
 
-#inputText.editing { color: var(--ink); background: var(--surface); }
-.input-editor.editing #inputHighlights { visibility: hidden; }
+#inputText.editing {
+  color: transparent;
+  background: transparent;
+  caret-color: var(--ink);
+}
 
 .word-valid { color: var(--ok); }
 .word-invalid {
   color: var(--err);
   text-decoration: underline wavy currentColor;
   text-decoration-thickness: 1px;
-}
-
-.input-legend {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-top: 10px;
-  font-size: 11px;
-  white-space: nowrap;
 }
 
 .legend-valid { color: var(--ok); }
@@ -220,25 +215,29 @@ body {
   cursor: pointer;
 }
 .input-actions { display: flex; gap: 6px; }
-.input-actions button, .auth-card button {
+.input-actions {
+  flex-direction: column;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+.action-btn {
+  height: 44px;
+  min-width: 116px;
+  padding: 0 14px;
+  border-radius: 9px;
   border: 1px solid var(--border);
-  border-radius: 7px;
-  padding: 8px 10px;
-  background: var(--surface);
-  color: var(--ink);
+  font: 600 13px/1 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
 }
-.auth-card {
-  width: min(380px, calc(100% - 32px));
-  margin: auto;
-  padding: 24px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-}
-.auth-card form { display: grid; gap: 12px; }
-.auth-card label { display: grid; gap: 5px; font-size: 13px; }
-.auth-card input { padding: 9px; border: 1px solid var(--border); border-radius: 6px; }
+.action-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+.history-btn { background: #eae8f0; color: var(--ink); border-color: #d4d1e0; }
+.history-btn:hover { background: #dedbe8; border-color: #b8b4c8; color: #000; }
+.logout-btn { background: var(--panel); color: var(--muted); }
+.logout-btn:hover { background: #fff5f5; color: var(--err); border-color: rgba(214, 69, 69, 0.35); }
 #inputText:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(109, 90, 230, 0.14); }
 #inputText[readonly] { background: var(--surface); }
 
