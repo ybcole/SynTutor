@@ -13,6 +13,23 @@
         <textarea id="inputText" rows="4" readonly
                   placeholder="Type or paste a sentence or a whole paragraph, e.g.  The clever boy reads a book. He reads it every night."
                   spellcheck="false"></textarea>
+        <div class="input-actions">
+          <button id="historyBtn" class="action-btn history-btn" title="View analysis history">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History</span>
+          </button>
+          <button id="logoutBtn" class="action-btn logout-btn" title="Sign out">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Log Out</span>
+          </button>
+        </div>
       </div>
       <p id="inputHint" class="input-hint">Double-click the panel to edit. When locked, click any sentence to view its syntax tree.</p>
     </div>
@@ -53,6 +70,29 @@
         </section>
       </div>
     </details>
+
+    <!-- Slide-over history drawer -->
+    <div id="historyDrawerBackdrop" class="drawer-backdrop">
+      <aside class="history-drawer">
+        <div class="drawer-header">
+          <h2>Analysis History</h2>
+          <button id="closeDrawerBtn" class="drawer-close" aria-label="Close history">&times;</button>
+        </div>
+
+        <div class="drawer-controls">
+          <div class="filter-pills" id="historyFilters">
+            <button class="filter-pill active" data-filter="all">All</button>
+            <button class="filter-pill" data-filter="error">Errors</button>
+            <button class="filter-pill" data-filter="valid">Valid</button>
+          </div>
+          <button id="clearHistoryBtn" class="clear-all-btn" title="Delete all history">Clear all</button>
+        </div>
+
+        <div id="historyList" class="history-list">
+          <p class="muted">Loading past analyses...</p>
+        </div>
+      </aside>
+    </div>
   </div>
 
   <script type="module" src="js/main.js"></script>
