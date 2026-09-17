@@ -29,8 +29,11 @@ should not be interpreted as a percentage of lines completed.
 
 ### User input and sentence selection
 - Accepts a sentence or multi-sentence paragraph in the textarea.
-- Displays analyzed words in green when their syntax constraints are valid and red when a constraint fails.
-- Restores word-level colors when an analysis is replayed from history, including colors accumulated while navigating between sentences.
+- Displays incorrect words in red while valid words remain black.
+- Uses a highlight overlay while the input is locked and the native textarea
+  while editing, preserving the blinking caret.
+- Recomputes highlights from the current analysis payload; highlight spans are
+  kept in page memory and are not stored in history.
 - Starts in a locked/read-only state.
 - Double-clicking enables editing.
 - Clicking away locks the input again.
@@ -38,8 +41,8 @@ should not be interpreted as a percentage of lines completed.
 - `Ctrl+Enter`/`Cmd+Enter` submits the current text while editing.
 - When a paragraph is analyzed, the backend returns sentence character offsets.
 - Clicking inside a locked sentence selects and analyzes that sentence.
-- The selected sentence is highlighted in the textarea without losing scroll
-  position.
+- The selected sentence receives a light background highlight without losing
+  scroll position.
 
 ### NLP pipeline
 
@@ -169,7 +172,8 @@ These are explicit design choices, not accidental omissions:
 ### Not yet implemented or incomplete
 
 - **Automated unit/integration/browser test suite:** the repository contains the
-  audit script but no formal test runner or browser E2E suite.
+  audit script but no formal test runner or browser E2E suite for editor
+  caret behavior, word highlighting, sentence navigation, or history flows.
 - **Continuous integration:** no GitHub Actions workflow currently runs the
   audit, linting, or smoke checks on every push.
 - **Pinned dependency manifest:** `requirements.txt` documents the backend
@@ -177,10 +181,11 @@ These are explicit design choices, not accidental omissions:
   included.
 - **Production deployment configuration:** no container, reverse proxy,
   process manager, HTTPS configuration, or deployment manifest is included.
-- **Authentication and authorization:** the local server has no users,
-  accounts, roles, or access control.
-- **Persistence:** analyses, learner history, progress, and settings are not
-  stored in a database or browser storage.
+- **Authentication and authorization:** Supabase authentication and
+  user-scoped history RLS are implemented, but deployment configuration and
+  production identity-management hardening are still required.
+- **Persistence:** analysis history is stored in Supabase through the
+  `analysis_history` table. Learner progress and settings are not persisted.
 - **Telemetry and analytics:** there is no event tracking, usage analytics, or
   error-reporting service.
 - **Internationalization:** labels, explanations, and UI copy are English-only.

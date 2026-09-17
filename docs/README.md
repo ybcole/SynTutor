@@ -22,7 +22,10 @@ python3 -c "import benepar; benepar.download('benepar_en3')"
 python3 server/app.py        # or: npm run serve
 ```
 
-Then open `http://127.0.0.1:8000`.
+Then open `http://127.0.0.1:8000`. The workbench requires an authenticated
+Supabase session; configure the public project URL and anon key in the local
+frontend configuration before signing in. Never use a Supabase service-role
+key in browser code.
 
 > The backend serves both the static front end and the REST API on one port. Keep `transformers<4.47` pinned: newer `transformers` removes the `T5Tokenizer.build_inputs_with_special_tokens` method that benepar's retokenizer relies on.
 
@@ -33,6 +36,23 @@ matrix uses it to reject malformed plurals such as `foots`, `childs`, and
 `people`/`persons`, and invariant nouns such as `sheep`. It is used for lexical
 form validation only; grammatical number still comes from the parser's POS
 tags.
+
+### Editor highlighting and history
+
+The workbench accepts single sentences and multi-sentence passages. After an
+analysis, incorrect words are rendered in red and valid words remain black.
+The selected sentence receives a light background highlight. Because a native
+textarea cannot style individual words, the UI uses a safe, positioned
+highlight layer while the textarea is locked. Double-clicking switches to the
+normal textarea so the native blinking caret remains available; leaving the
+editor locks it again and re-analyzes changed text.
+
+Highlight spans are recomputed in memory from the analysis payload and are not
+stored in the database. Authenticated submissions are saved to Supabase
+`analysis_history`; replay, sentence navigation, and failed inserts do not
+create false duplicate/success states. Apply
+`supabase/migrations/20260916000000_analysis_history.sql` to create the table
+and its user-scoped row-level security policies.
 
 ---
 
@@ -69,7 +89,9 @@ Browser
   index.html + style.css
         |
         v
-  main.js (FSM and request orchestration)
+  main.js (FSM, request orchestration, highlighting, and history)
+    |
+  auth.js (Supabase session and sign-in/register actions)
     |                    \
     v                     v
   renderer.js          ui.js
@@ -172,7 +194,8 @@ css/style.css            styling
 js/
   renderer.js            canvas layout, edges, hitboxes, pan/zoom
   ui.js                  DOM views (explainer/diagnostic/log/pipeline UI)
-  main.js                FSM + pipeline orchestration + memory-cached node explanations
+  main.js                FSM + pipeline, highlighting, auth, and history
+  auth.js                Supabase client and sign-in/register session handling
 package.json             npm run serve -> python3 server/app.py
 docs/
   THESIS.md              design specification (input document)
