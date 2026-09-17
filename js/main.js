@@ -225,10 +225,18 @@ async function executePipeline(opts = {}) {
   session = { payload };
   lastAnalyzedText = text;
 
-  // Persist to history only when user submits a new text (never on sentence clicks or replays)
+  document.querySelector('#inputText').value = text;
+  lockInput();
+  applySentenceSelection(payload);
+  renderer.setTree(payload.tree);
+  transition(STATES.VIEWING, 'output ready -> viewing');
+  log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
+
+  // Persist to history only when user submits a new text (never on sentence clicks or replays).
+  // Save in the background so a slow/unavailable Supabase never blocks rendering the verdict,
+  // and only mark the text as recorded once the insert has actually succeeded.
   const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
   if (authSession?.user?.id && !isNavigation && text !== lastRecordedText) {
-    lastRecordedText = text;
     try {
       const { error: insertError } = await supabase.from('analysis_history').insert({
         user_id: authSession.user.id,
@@ -241,6 +249,7 @@ async function executePipeline(opts = {}) {
         console.warn('Failed to log history to Supabase:', insertError.message);
         log(`Warning: Failed to save analysis history \u2014 ${insertError.message}`);
       } else {
+        lastRecordedText = text;
         log('Stage 6b: analysis history recorded in Supabase');
       }
     } catch (dbErr) {
@@ -248,13 +257,6 @@ async function executePipeline(opts = {}) {
       log('Warning: Network error saving history');
     }
   }
-
-  document.querySelector('#inputText').value = text;
-  lockInput();
-  applySentenceSelection(payload);
-  renderer.setTree(payload.tree);
-  transition(STATES.VIEWING, 'output ready -> viewing');
-  log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
 }
 
 function lockInput() {
