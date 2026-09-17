@@ -173,29 +173,11 @@ async function executePipeline(options = {}) {
   session = { payload };
   lastAnalyzedText = text;
 
-<<<<<<< Updated upstream
   const spans = buildHighlightSpans(text, payload);
   if (options.isSentenceNav) {
     historySpans = mergeHighlightSpans(historySpans, spans);
   } else {
     historySpans = spans;
-  }
-  if (!options.isReplay && !options.isSentenceNav && text !== lastRecordedText) {
-    const saved = await saveHistoryEntry(text, payload);
-    if (saved) lastRecordedText = text;
-=======
-  // Persist to history only when user submits a new text (never on sentence clicks or replays)
-  const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
-  if (authSession?.user?.id && !isNavigation && text !== lastRecordedText) {
-    lastRecordedText = text;
-    const { error } = await supabase.from('analysis_history').insert({
-      user_id: authSession.user.id,
-      sentence: text,
-      is_valid: payload.summary.valid,
-      constraints_fired: payload.summary.constraints_fired,
-    });
-    if (error) console.error('Failed to log history:', error.message);
->>>>>>> Stashed changes
   }
 
   document.querySelector('#inputText').value = text;
@@ -204,6 +186,17 @@ async function executePipeline(options = {}) {
   applySentenceSelection(payload);
   renderer.setTree(payload.tree);
   transition(STATES.VIEWING, 'output ready -> viewing');
+
+  // Save in the background so history persistence does not delay analysis rendering.
+  // Only mark the text as recorded after the insert succeeds.
+  if (!options.isReplay && !options.isSentenceNav && text !== lastRecordedText) {
+    saveHistoryEntry(text, payload).then((saved) => {
+      if (saved) lastRecordedText = text;
+    }).catch((error) => {
+      console.warn('Unexpected error saving analysis history:', error);
+      log('Warning: Network error saving history.');
+    });
+  }
 }
 
 async function saveHistoryEntry(text, payload) {
