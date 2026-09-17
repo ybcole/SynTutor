@@ -96,18 +96,48 @@ body {
 
 .input-row { display: flex; gap: 10px; align-items: flex-start; }
 
-#inputText {
+.input-editor {
+  position: relative;
   flex: 1 1 auto;
+  min-width: 0;
+}
+
+#inputHighlights,
+#inputText {
+  width: 100%;
   min-height: 44px;
   max-height: 200px;
-  resize: vertical;
+  padding: 10px 12px;
   border: 1px solid var(--border);
   border-radius: 9px;
-  padding: 10px 12px;
   font: 14px/1.5 Inter, "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+#inputHighlights {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: var(--ink);
+  background: var(--surface);
+  pointer-events: none;
+}
+
+#inputText {
+  resize: vertical;
   color: var(--ink);
   background: var(--surface);
   outline: none;
+}
+
+#inputText[readonly] {
+  color: transparent;
+  background: transparent;
+}
+
+#inputText[readonly]::selection {
+  background: rgba(109, 90, 230, 0.22);
 }
 
 #inputText[readonly] { cursor: pointer; }
@@ -119,11 +149,96 @@ body {
   cursor: text;
 }
 
+#inputText.editing { color: var(--ink); background: var(--surface); }
+.input-editor.editing #inputHighlights { visibility: hidden; }
+
+.word-valid { color: var(--ok); }
+.word-invalid {
+  color: var(--err);
+  text-decoration: underline wavy currentColor;
+  text-decoration-thickness: 1px;
+}
+
+.input-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 10px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.legend-valid { color: var(--ok); }
+.legend-invalid { color: var(--err); }
+
 .input-hint {
   font-size: 11.5px;
   color: var(--muted);
   margin: 2px 2px 0;
 }
+
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: none;
+  justify-content: flex-end;
+  background: rgba(20, 16, 36, 0.35);
+}
+.drawer-backdrop.active { display: flex; }
+.history-drawer {
+  width: min(420px, 100%);
+  height: 100%;
+  padding: 18px;
+  overflow-y: auto;
+  background: var(--panel);
+  box-shadow: -8px 0 24px rgba(43, 36, 64, 0.18);
+}
+.drawer-header { display: flex; align-items: center; justify-content: space-between; }
+.drawer-header h2 { margin: 0 0 16px; font-size: 18px; }
+.filter-pills { display: flex; gap: 6px; margin-bottom: 10px; }
+.filter-pill, #clearHistoryBtn {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+.filter-pill.active { border-color: var(--accent); color: var(--accent); }
+.history-list { display: grid; gap: 8px; margin-top: 14px; }
+.history-item {
+  display: grid;
+  gap: 5px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+.input-actions { display: flex; gap: 6px; }
+.input-actions button, .auth-card button {
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 8px 10px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+.auth-card {
+  width: min(380px, calc(100% - 32px));
+  margin: auto;
+  padding: 24px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.auth-card form { display: grid; gap: 12px; }
+.auth-card label { display: grid; gap: 5px; font-size: 13px; }
+.auth-card input { padding: 9px; border: 1px solid var(--border); border-radius: 6px; }
 #inputText:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(109, 90, 230, 0.14); }
 #inputText[readonly] { background: var(--surface); }
 

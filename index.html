@@ -10,9 +10,20 @@
   <div class="app-shell">
     <div class="topbar">
       <div class="input-row">
-        <textarea id="inputText" rows="4" readonly
-                  placeholder="Type or paste a sentence or a whole paragraph, e.g.  The clever boy reads a book. He reads it every night."
-                  spellcheck="false"></textarea>
+        <div class="input-editor">
+          <div id="inputHighlights" aria-hidden="true"></div>
+          <textarea id="inputText" rows="4" readonly
+                    placeholder="Type or paste a sentence or a whole paragraph, e.g.  The clever boy reads a book. He reads it every night."
+                    spellcheck="false"></textarea>
+        </div>
+        <div class="input-legend" aria-label="Word status legend">
+          <span class="legend-valid">Correct</span>
+          <span class="legend-invalid">Incorrect</span>
+        </div>
+        <div class="input-actions">
+          <button id="historyBtn" type="button">History</button>
+          <button id="logoutBtn" type="button">Log out</button>
+        </div>
       </div>
       <p id="inputHint" class="input-hint">Double-click the panel to edit. When locked, click any sentence to view its syntax tree.</p>
     </div>
@@ -53,8 +64,25 @@
         </section>
       </div>
     </details>
+
+    <div id="historyDrawerBackdrop" class="drawer-backdrop">
+      <aside class="history-drawer" aria-label="Analysis history">
+        <div class="drawer-header">
+          <h2>Analysis History</h2>
+          <button id="closeDrawerBtn" type="button" aria-label="Close history">&times;</button>
+        </div>
+        <div id="historyFilters" class="filter-pills">
+          <button class="filter-pill active" type="button" data-filter="all">All</button>
+          <button class="filter-pill" type="button" data-filter="error">Errors</button>
+          <button class="filter-pill" type="button" data-filter="valid">Valid</button>
+        </div>
+        <button id="clearHistoryBtn" type="button">Clear all</button>
+        <div id="historyList" class="history-list"></div>
+      </aside>
+    </div>
   </div>
 
+  <script type="module" src="js/auth.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>

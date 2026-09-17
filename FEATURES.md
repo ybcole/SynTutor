@@ -28,8 +28,9 @@ should not be interpreted as a percentage of lines completed.
 ## Implemented features
 
 ### User input and sentence selection
-
 - Accepts a sentence or multi-sentence paragraph in the textarea.
+- Displays analyzed words in green when their syntax constraints are valid and red when a constraint fails.
+- Restores word-level colors when an analysis is replayed from history, including colors accumulated while navigating between sentences.
 - Starts in a locked/read-only state.
 - Double-clicking enables editing.
 - Clicking away locks the input again.
