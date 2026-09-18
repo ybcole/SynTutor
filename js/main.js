@@ -1,4 +1,4 @@
-import { supabase } from './auth.js';
+import { loadClerk, createSupabaseClient } from './auth.js';
 import { TreeRenderer } from './renderer.js';
 import {
   log,
@@ -6,14 +6,19 @@ import {
   renderDiagnostic, fillDevPanel, applySentenceSelection, plainName,
 } from './ui.js';
 
-// Route guard: require session before loading syntax tree workbench
-const { data: { session: authSession } } = await supabase.auth.getSession();
-if (!authSession) {
+// Route guard: require a Clerk session before loading the syntax tree workbench
+const clerk = await loadClerk();
+console.log('[main] loaded:', clerk.loaded, '| session:', clerk.session?.id ?? null, '| client sessions:', clerk.client?.sessions?.length ?? 'n/a');
+if (!clerk.session) {
+  console.warn('[main] no session -> redirect to login.html');
   window.location.href = '/login.html';
 }
+const supabase = await createSupabaseClient();
 
-supabase.auth.onAuthStateChange((event, currentSession) => {
-  if (event === 'SIGNED_OUT' || !currentSession) {
+clerk.addListener(() => {
+  console.log('[main] listener fired, session:', clerk.session?.id ?? null);
+  if (!clerk.session) {
+    console.warn('[main] listener: no session -> redirect to login.html');
     window.location.href = '/login.html';
   }
 });
@@ -102,7 +107,7 @@ function wireEvents() {
       const { error } = await supabase
         .from('analysis_history')
         .delete()
-        .eq('user_id', authSession.user.id);
+        .eq('user_id', clerk.user.id);
 
       if (error) {
         alert('Failed to clear history: ' + error.message);
@@ -115,7 +120,8 @@ function wireEvents() {
 
   // Auth Controls
   document.querySelector('#logoutBtn')?.addEventListener('click', async () => {
-    await supabase.auth.signOut();
+    await clerk.signOut();
+    window.location.href = '/login.html';
   });
 }
 
@@ -236,10 +242,10 @@ async function executePipeline(opts = {}) {
   // Save in the background so a slow/unavailable Supabase never blocks rendering the verdict,
   // and only mark the text as recorded once the insert has actually succeeded.
   const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
-  if (authSession?.user?.id && !isNavigation && text !== lastRecordedText) {
+  if (clerk.user?.id && !isNavigation && text !== lastRecordedText) {
     try {
       const { error: insertError } = await supabase.from('analysis_history').insert({
-        user_id: authSession.user.id,
+        user_id: clerk.user.id,
         sentence: text,
         is_valid: payload.summary.valid,
         constraints_fired: payload.summary.constraints_fired,
@@ -436,5 +442,9 @@ function renderHistoryItems() {
 }
 
 if (typeof window !== 'undefined') {
-  window.addEventListener('DOMContentLoaded', () => boot());
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', () => boot());
+  } else {
+    boot();
+  }
 }
