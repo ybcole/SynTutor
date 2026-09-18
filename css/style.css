@@ -113,6 +113,7 @@ body {
   font: 14px/1.5 Inter, "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   white-space: pre-wrap;
   overflow-wrap: break-word;
+  scrollbar-gutter: stable;
 }
 
 #inputHighlights {

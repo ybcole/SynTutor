@@ -23,9 +23,10 @@ python3 server/app.py        # or: npm run serve
 ```
 
 Then open `http://127.0.0.1:8000`. The workbench requires an authenticated
-Supabase session; configure the public project URL and anon key in the local
-frontend configuration before signing in. Never use a Supabase service-role
-key in browser code.
+Supabase session. Before starting the server, copy `js/config.example.js` to
+`js/config.js` and set the public project URL and anon key. The local
+`js/config.js` is ignored by Git so each collaborator can use their own
+development project. Never use a Supabase service-role key in browser code.
 
 > The backend serves both the static front end and the REST API on one port. Keep `transformers<4.47` pinned: newer `transformers` removes the `T5Tokenizer.build_inputs_with_special_tokens` method that benepar's retokenizer relies on.
 
@@ -49,8 +50,9 @@ editor locks it again and re-analyzes changed text.
 
 Highlight spans are recomputed in memory from the analysis payload and are not
 stored in the database. Authenticated submissions are saved to Supabase
-`analysis_history`; replay, sentence navigation, and failed inserts do not
-create false duplicate/success states. Apply
+`analysis_history`; replay, sentence navigation, and failed inserts do not create false
+duplicate/success states; a successfully saved sentence is also not inserted
+again later in the same browser session. Apply
 `supabase/migrations/20260916000000_analysis_history.sql` to create the table
 and its user-scoped row-level security policies.
 

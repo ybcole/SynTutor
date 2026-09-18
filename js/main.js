@@ -13,7 +13,7 @@ let state = STATES.IDLE;
 let session = null;
 let renderer = null;
 let lastAnalyzedText = null;
-let lastRecordedText = null;
+const recordedTexts = new Set();
 let historySpans = [];
 let cachedHistory = [];
 let activeHistoryFilter = 'all';
@@ -105,14 +105,14 @@ function setEditHint(editing) {
     : 'Locked - click any sentence to view its syntax tree. Double-click to edit.';
 }
 
-function returnToLocked() {
+function returnToLocked(payload = null) {
   const ta = document.querySelector('#inputText');
   const editor = document.querySelector('.input-editor');
   ta.classList.remove('editing');
   editor.classList.remove('editing');
   ta.readOnly = true;
   setEditHint(false);
-  renderInputHighlights(ta.value);
+  renderInputHighlights(ta.value, payload);
   syncHighlightScroll();
 }
 
@@ -181,17 +181,16 @@ async function executePipeline(options = {}) {
   }
 
   document.querySelector('#inputText').value = text;
-  returnToLocked();
-  renderInputHighlights(text, payload);
+  returnToLocked(payload);
   applySentenceSelection(payload);
   renderer.setTree(payload.tree);
   transition(STATES.VIEWING, 'output ready -> viewing');
 
   // Save in the background so history persistence does not delay analysis rendering.
   // Only mark the text as recorded after the insert succeeds.
-  if (!options.isReplay && !options.isSentenceNav && text !== lastRecordedText) {
+  if (!options.isReplay && !options.isSentenceNav && !recordedTexts.has(text)) {
     saveHistoryEntry(text, payload).then((saved) => {
-      if (saved) lastRecordedText = text;
+      if (saved) recordedTexts.add(text);
     }).catch((error) => {
       console.warn('Unexpected error saving analysis history:', error);
       log('Warning: Network error saving history.');
@@ -251,9 +250,11 @@ function buildHighlightSpans(text, payload) {
   }
   const statuses = tokenRanges.map((token) => {
     let status = 'valid';
+    // token.i is relative to the analyzed sentence (see token_metadata).
+    const isSentenceInitialToken = token.index === tokenRanges[0]?.index;
     for (const detail of Object.values(payload.node_details)) {
       if (detail.status === 'error' && detail.span[0] <= token.index && token.index < detail.span[1]) {
-        if (detail.constraint === 'C-CAPITALIZATION' && token.index !== 0) continue;
+        if (detail.constraint === 'C-CAPITALIZATION' && !isSentenceInitialToken) continue;
         status = 'error';
         break;
       }
@@ -371,8 +372,13 @@ async function replayHistory(entry) {
 }
 
 async function clearHistory() {
-  if (!authSession?.user?.id || !confirm('Clear all analysis history?')) return;
-  const { error } = await supabase.from('analysis_history').delete().eq('user_id', authSession.user.id);
+  if (!confirm('Clear all analysis history?')) return;
+  const { data: { session: currentSession }, error: sessionError } = await supabase.auth.getSession();
+  if (sessionError || !currentSession?.user?.id) {
+    console.error('Failed to get the current session:', sessionError?.message || 'no authenticated user');
+    return;
+  }
+  const { error } = await supabase.from('analysis_history').delete().eq('user_id', currentSession.user.id);
   if (error) console.error('Failed to clear history:', error.message);
   else {
     cachedHistory = [];

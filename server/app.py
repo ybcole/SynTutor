@@ -16,7 +16,7 @@ from urllib.parse import urlparse
 from parse_engine import ParseFailure, analyze, load_models
 from matrix import evaluate
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PORT = int(os.environ.get('SYNTUTOR_PORT', '8000'))
 
