@@ -20,6 +20,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PORT = int(os.environ.get('SYNTUTOR_PORT', '8000'))
 
+# Only these top-level frontend entries may be served statically. Anything else
+# under ROOT (server/, supabase/, scripts/, migrations, config) stays private.
+PUBLIC_TOP = {'index.html', 'login.html', 'css', 'js'}
+
 MIME = {
     '.html': 'text/html; charset=utf-8',
     '.js': 'text/javascript; charset=utf-8',
@@ -180,7 +184,8 @@ class Handler(BaseHTTPRequestHandler):
     
     def _serve_file(self, rel):
         relpath = os.path.normpath(rel)
-        if relpath.startswith('..') or os.path.isabs(relpath):
+        top = relpath.split(os.sep)[0]
+        if relpath.startswith('..') or os.path.isabs(relpath) or top not in PUBLIC_TOP:
             self._json(403, {'error': 'forbidden path'})
             return
 
