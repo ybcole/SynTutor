@@ -8,17 +8,15 @@ import {
 
 // Route guard: require a Clerk session before loading the syntax tree workbench
 const clerk = await loadClerk();
-console.log('[main] loaded:', clerk.loaded, '| session:', clerk.session?.id ?? null, '| client sessions:', clerk.client?.sessions?.length ?? 'n/a');
 if (!clerk.session) {
-  console.warn('[main] no session -> redirect to login.html');
   window.location.href = '/login.html';
 }
+// Supabase client bound to the active Clerk session token (see auth.js);
+// RLS authorizes reads/writes via the Clerk `sub` claim in the JWT.
 const supabase = await createSupabaseClient();
 
 clerk.addListener(() => {
-  console.log('[main] listener fired, session:', clerk.session?.id ?? null);
   if (!clerk.session) {
-    console.warn('[main] listener: no session -> redirect to login.html');
     window.location.href = '/login.html';
   }
 });
@@ -442,6 +440,8 @@ function renderHistoryItems() {
 }
 
 if (typeof window !== 'undefined') {
+  // auth.js loads with `defer` and main.js with `type=module`, so the DOM may
+  // already be interactive by the time this module runs — guard both cases.
   if (document.readyState === 'loading') {
     window.addEventListener('DOMContentLoaded', () => boot());
   } else {

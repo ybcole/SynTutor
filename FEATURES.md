@@ -175,10 +175,13 @@ These are explicit design choices, not accidental omissions:
   start, but there is no `requirements.txt` or lockfile in the repository.
 - **Production deployment configuration:** no container, reverse proxy,
   process manager, HTTPS configuration, or deployment manifest is included.
-- **Authentication and authorization:** the local server has no users,
-  accounts, roles, or access control.
-- **Persistence:** analyses, learner history, progress, and settings are not
-  stored in a database or browser storage.
+- **Authentication and authorization:** sign-in runs through Clerk (email/password
+  with email-code verification and second-factor); Supabase Row-Level Security
+  scopes history to the signed-in user. No admin roles, invite flows, or
+  fine-grained permissions yet.
+- **Persistence:** per-user analysis history is stored in Supabase
+  (`analysis_history`) and shown in the history drawer; learner progress,
+  settings, and saved texts are not yet stored.
 - **Telemetry and analytics:** there is no event tracking, usage analytics, or
   error-reporting service.
 - **Internationalization:** labels, explanations, and UI copy are English-only.

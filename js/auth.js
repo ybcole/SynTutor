@@ -10,6 +10,8 @@ if (!SUPABASE_CONFIG.url || !SUPABASE_CONFIG.anonKey || SUPABASE_CONFIG.anonKey.
 
 // ── Clerk bootstrap ──
 // Requires the clerk.browser.js script tag to be present in the host page.
+// Deferred-promise singleton: every caller awaits the same boot, so Clerk loads
+// exactly once no matter how many modules call loadClerk().
 let clerkPromise = null;
 
 export function loadClerk() {
@@ -58,6 +60,9 @@ const statusMsg = document.querySelector('#authStatus');
 
 let activeSignIn = null;
 let activeSignUp = null;
+// In-flight email-code verification state. pendingCodeAction records which
+// branch is active ('second_factor' vs 'signup_verification') so a subsequent
+// form submit can resume the correct Clerk attempt instead of starting a new one.
 let pendingCodeAction = null;
 
 function setStatus(text, isError = false) {
@@ -109,6 +114,8 @@ form?.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   try {
+    // Resuming an in-flight verification: email/password are already consumed,
+    // so this submit only carries the emailed one-time code.
     if (pendingCodeAction && codeInput?.value) {
       const clerk = await loadClerk();
       setStatus('Verifying code...');
@@ -219,9 +226,7 @@ signUpBtn?.addEventListener('click', async () => {
 (async () => {
   try {
     const clerk = await loadClerk();
-    console.log('[auth] loaded:', clerk.loaded, '| session:', clerk.session?.id ?? null, '| client sessions:', clerk.client?.sessions?.length ?? 'n/a');
     if (clerk.session && window.location.pathname.endsWith('login.html')) {
-      console.log('[auth] redirect -> /index.html');
       window.location.href = '/index.html';
     }
   } catch (err) {
