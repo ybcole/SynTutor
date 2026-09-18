@@ -4,8 +4,9 @@ import { CLERK_CONFIG, SUPABASE_CONFIG } from './config.js';
 // js/config.js is git-ignored (see .gitignore); a fresh checkout boots without
 // it, so point developers at the template when the values are still placeholders.
 // The case where js/config.js is entirely absent is caught earlier by the
-// preflight hook in index.html / login.html, because a missing module fails at
-// link time before anything in this file can run.
+// preflight hook in js/config-hint.js (loaded by index.html / login.html before
+// the entry module), because a missing module fails at link time before
+// anything in this file can run.
 const CONFIG_HELP = 'Missing js/config.js? Copy js/config.example.js to js/config.js '
   + 'and add your Clerk + Supabase keys (see docs/README.md).';
 

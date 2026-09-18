@@ -201,6 +201,7 @@ js/
   renderer.js            canvas layout, edges, hitboxes, pan/zoom
   ui.js                  DOM views (explainer/diagnostic/log/pipeline UI)
   auth.js                Clerk bootstrap, Clerk->Supabase JWT bridging, login form
+  config-hint.js         dev-only preflight hook warning when js/config.js is missing
   main.js                FSM + pipeline orchestration + memory-cached node explanations
   config.js              (git-ignored) Clerk + Supabase keys — see config.example.js
 supabase/
