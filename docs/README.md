@@ -47,7 +47,9 @@ verification and optional second factor. Analysis history persists to
 > the `sub` match itself: anonymous requests have no JWT, so their `sub` is null
 > and matches nothing. If you prefer `to authenticated`, add a
 > `"role": "authenticated"` claim via Clerk → Session tokens → Customize, and
-> flip the policy roles in the migration.
+> flip the policy roles in the migration. Also note the migration intentionally
+> does **not** backfill legacy rows: history recorded under the old Supabase
+> accounts (UUID `user_id`) stays on disk but is invisible to Clerk users.
 
 > The backend serves both the static front end and the REST API on one port. Keep `transformers<4.47` pinned: newer `transformers` removes the `T5Tokenizer.build_inputs_with_special_tokens` method that benepar's retokenizer relies on.
 

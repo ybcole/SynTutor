@@ -17,6 +17,9 @@ create table if not exists public.analysis_history (
 -- schema (user_id uuid references auth.users(id), RLS via auth.uid()). Idempotent:
 -- the block only rewrites the column when the legacy uuid type is detected, so it
 -- is safe to rerun on fresh installs.
+-- NOTE: existing rows keep their uuid-as-text user_id, so history recorded under
+-- the old Supabase accounts becomes invisible to Clerk users — expected for an
+-- auth-provider swap, and not migrated.
 do $$
 begin
   if exists (
