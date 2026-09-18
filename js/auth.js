@@ -1,11 +1,20 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { CLERK_CONFIG, SUPABASE_CONFIG } from './config.js';
 
+// js/config.js is git-ignored (see .gitignore); a fresh checkout boots without
+// it, so point developers at the template when the values are still placeholders.
+// The case where js/config.js is entirely absent is caught earlier by the
+// preflight hook in js/config-hint.js (loaded by index.html / login.html before
+// the entry module), because a missing module fails at link time before
+// anything in this file can run.
+const CONFIG_HELP = 'Missing js/config.js? Copy js/config.example.js to js/config.js '
+  + 'and add your Clerk + Supabase keys (see docs/README.md).';
+
 if (!CLERK_CONFIG.publishableKey || CLERK_CONFIG.publishableKey.includes('YOUR_')) {
-  console.error('Clerk configuration is missing or invalid. Paste your publishable key into js/config.js.');
+  console.error(`Clerk configuration is missing or invalid. Paste your publishable key into js/config.js. ${CONFIG_HELP}`);
 }
 if (!SUPABASE_CONFIG.url || !SUPABASE_CONFIG.anonKey || SUPABASE_CONFIG.anonKey.includes('YOUR_')) {
-  console.error('Supabase configuration is missing or invalid. Check js/config.js.');
+  console.error(`Supabase configuration is missing or invalid. ${CONFIG_HELP}`);
 }
 
 // ── Clerk bootstrap ──

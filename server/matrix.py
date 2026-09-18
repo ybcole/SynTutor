@@ -1386,8 +1386,9 @@ class MatrixEvaluator:
                      f"verb in {required}, but '{v_s}' is {got_label}.")
         if cls in ('modal', 'do'):
             target = _preserve_case(v_s, base)
+            auxiliary_kind = 'modal' if cls == 'modal' else 'do-form'
             suggested = (f"Change '{v_s}' to the base form '{target}' after "
-                         f"'{aux_s}' ({'modal' if cls == 'modal' else 'do\u2011form'} auxiliary).")
+                         f"'{aux_s}' ({auxiliary_kind} auxiliary).")
             if cls == 'modal':
                 alternative = (f"Or drop the modal '{aux_s}' and keep a finite verb, e.g. "
                                f"'{_preserve_case(v_s, _third_present(base))}' when the subject "

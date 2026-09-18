@@ -73,7 +73,7 @@ tags.
 
 The `POST /api/parse` payload bundles the complete precomputed analysis. Accepts `{"text": "<text>", "sentence_index": <0-based int, optional>}`; when the text contains a paragraph, `sentence_index` selects which sentence to analyze (defaults to 0). `meta.target_sentence` and `parse.sentences` give the selected sentence and the full segmentation with character offsets (used by the UI so clicking any sentence loads its tree):
 
-- `parse.tokens` — spaCy token metadata (`t`, `pos`, `tag`, `dep`, `head`).
+- `parse.tokens` — spaCy token metadata (`i`, `t`, `start`, `end`, `pos`, `tag`, `dep`, `head`); `start`/`end` are character offsets into the submitted text, so the UI can highlight tokens without re-searching the string.
 - `parse.parse_string` — benepar's `span._.parse_string` for the selected tree.
 - `parse.sentences` — `[{ordinal, start, end, text}]` char-offset spans over the input.
 - `tree` — nested node graph `{id, type, span, surface, children?, pos?}`.
@@ -201,6 +201,7 @@ js/
   renderer.js            canvas layout, edges, hitboxes, pan/zoom
   ui.js                  DOM views (explainer/diagnostic/log/pipeline UI)
   auth.js                Clerk bootstrap, Clerk->Supabase JWT bridging, login form
+  config-hint.js         dev-only preflight hook warning when js/config.js is missing
   main.js                FSM + pipeline orchestration + memory-cached node explanations
   config.js              (git-ignored) Clerk + Supabase keys — see config.example.js
 supabase/

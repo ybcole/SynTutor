@@ -25,12 +25,15 @@ if (!clerk.session) {
 }
 
 const STATES = { IDLE: 'IDLE', PROCESSING: 'PROCESSING', VIEWING: 'VIEWING', EXPLORING: 'EXPLORING', END: 'END' };
+const HIGHLIGHT_STATUSES = new Set(['valid', 'error']);
+const HIGHLIGHT_CLASSES = { valid: '', error: 'word-invalid' };
 
 let state = STATES.IDLE;
 let session = null;
 let renderer = null;
 let lastAnalyzedText = null;
-let lastRecordedText = null;
+const recordedTexts = new Set();
+let historySpans = [];
 
 let cachedHistory = [];
 let activeHistoryFilter = 'all';
@@ -54,11 +57,18 @@ export function boot() {
 
 function wireEvents() {
   const ta = document.querySelector('#inputText');
+  const editor = document.querySelector('.input-editor');
   ta.addEventListener('dblclick', () => {
+    editor?.classList.add('editing');
     ta.readOnly = false;
     ta.classList.add('editing');
     setEditHint(true);
     ta.focus();
+  });
+  ta.addEventListener('scroll', syncHighlightScroll);
+  ta.addEventListener('input', () => {
+    historySpans = [];
+    renderInputHighlights(ta.value);
   });
   ta.addEventListener('blur', () => {
     const changed = ta.value !== lastAnalyzedText;
@@ -133,11 +143,14 @@ function setEditHint(editing) {
     : 'Locked \u2014 click any sentence to view its syntax tree. Double-click to edit.';
 }
 
-function returnToLocked() {
+function returnToLocked(payload = null) {
   const ta = document.querySelector('#inputText');
+  const editor = document.querySelector('.input-editor');
   ta.readOnly = true;
   ta.classList.remove('editing');
+  editor?.classList.remove('editing');
   setEditHint(false);
+  renderInputHighlights(ta.value, payload);
 }
 
 function activateSentenceAtCaret() {
@@ -233,7 +246,13 @@ async function executePipeline(opts = {}) {
   lastAnalyzedText = text;
 
   document.querySelector('#inputText').value = text;
-  lockInput();
+  const spans = buildHighlightSpans(text, payload);
+  if (opts.isSentenceNav) {
+    historySpans = mergeHighlightSpans(historySpans, spans);
+  } else {
+    historySpans = spans;
+  }
+  returnToLocked(payload);
   applySentenceSelection(payload);
   renderer.setTree(payload.tree);
   transition(STATES.VIEWING, 'output ready -> viewing');
@@ -243,7 +262,7 @@ async function executePipeline(opts = {}) {
   // Save in the background so a slow/unavailable Supabase never blocks rendering the verdict,
   // and only mark the text as recorded once the insert has actually succeeded.
   const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
-  if (clerk.user?.id && !isNavigation && text !== lastRecordedText) {
+  if (clerk.user?.id && !isNavigation && !recordedTexts.has(text)) {
     try {
       const { error: insertError } = await supabase.from('analysis_history').insert({
         user_id: clerk.user.id,
@@ -256,7 +275,7 @@ async function executePipeline(opts = {}) {
         console.warn('Failed to log history to Supabase:', insertError.message);
         log(`Warning: Failed to save analysis history \u2014 ${insertError.message}`);
       } else {
-        lastRecordedText = text;
+        recordedTexts.add(text);
         log('Stage 6b: analysis history recorded in Supabase');
       }
     } catch (dbErr) {
@@ -266,12 +285,97 @@ async function executePipeline(opts = {}) {
   }
 }
 
-function lockInput() {
+function buildHighlightSpans(text, payload) {
+  const target = payload.parse.sentences[payload.meta.target_sentence - 1];
+  if (!target) return [];
+  const tokens = payload.parse.tokens || [];
+  const tokenRanges = [];
+  const hasCharOffsets = tokens.length > 0 && tokens.every(
+    (t) => typeof t.start === 'number' && typeof t.end === 'number' && t.end > t.start,
+  );
+  if (hasCharOffsets) {
+    for (const token of tokens) {
+      if (token.start < target.start || token.end > target.end) continue;
+      tokenRanges.push({ start: token.start, end: token.end, index: token.i });
+    }
+  } else {
+    let cursor = target.start;
+    for (const token of tokens) {
+      const start = text.indexOf(token.t, cursor);
+      if (start < 0 || start >= target.end) continue;
+      tokenRanges.push({ start, end: start + token.t.length, index: token.i });
+      cursor = start + token.t.length;
+    }
+  }
+  return tokenRanges.map((token) => {
+    let status = 'valid';
+    const isSentenceInitialToken = token.index === tokenRanges[0]?.index;
+    for (const detail of Object.values(payload.node_details)) {
+      if (detail.status === 'error' && detail.span[0] <= token.index && token.index < detail.span[1]) {
+        if (detail.constraint === 'C-CAPITALIZATION' && !isSentenceInitialToken) continue;
+        status = 'error';
+        break;
+      }
+    }
+    return { start: token.start, end: token.end, status };
+  });
+}
+
+function mergeHighlightSpans(existing, additions) {
+  const merged = new Map(existing.map((span) => [`${span.start}:${span.end}`, span]));
+  additions.forEach((span) => merged.set(`${span.start}:${span.end}`, span));
+  return [...merged.values()].sort((a, b) => a.start - b.start);
+}
+
+function renderInputHighlights(text, payload = null) {
+  const layer = document.querySelector('#inputHighlights');
+  if (!layer) return;
+  layer.textContent = '';
+  if (!text) return;
+  const spans = payload ? mergeHighlightSpans(historySpans, buildHighlightSpans(text, payload)) : historySpans;
+  const target = payload?.parse?.sentences?.[(payload.meta.target_sentence || 1) - 1];
+  const sentenceStart = target?.start ?? -1;
+  const sentenceEnd = target?.end ?? -1;
+  const boundaries = new Set([0, text.length]);
+  spans.forEach((span) => {
+    boundaries.add(Math.max(0, Math.min(span.start, text.length)));
+    boundaries.add(Math.max(0, Math.min(span.end, text.length)));
+  });
+  if (sentenceStart >= 0) {
+    boundaries.add(sentenceStart);
+    boundaries.add(sentenceEnd);
+  }
+  const points = [...boundaries].sort((a, b) => a - b);
+  for (let index = 0; index < points.length - 1; index += 1) {
+    const start = points[index];
+    const end = points[index + 1];
+    if (start === end) continue;
+    const wordSpan = spans.find((span) => span.start <= start && end <= span.end);
+    const selected = sentenceStart >= 0 && start >= sentenceStart && end <= sentenceEnd;
+    const classes = [];
+    if (selected) classes.push('sentence-selected');
+    if (wordSpan && HIGHLIGHT_STATUSES.has(wordSpan.status) && HIGHLIGHT_CLASSES[wordSpan.status]) {
+      classes.push(HIGHLIGHT_CLASSES[wordSpan.status]);
+    }
+    if (classes.length) {
+      const mark = document.createElement('span');
+      mark.className = classes.join(' ');
+      mark.textContent = text.slice(start, end);
+      layer.appendChild(mark);
+    } else {
+      layer.appendChild(document.createTextNode(text.slice(start, end)));
+    }
+  }
+  syncHighlightScroll();
+}
+
+function syncHighlightScroll() {
   const ta = document.querySelector('#inputText');
-  ta.readOnly = true;
-  ta.classList.remove('editing');
-  setEditHint(false);
-  ta.blur();
+  const layer = document.querySelector('#inputHighlights');
+  if (ta && layer) {
+    layer.scrollTop = ta.scrollTop;
+    layer.scrollLeft = ta.scrollLeft;
+  }
 }
 
 function applyStatuses(tree, details) {
@@ -415,7 +519,7 @@ function renderHistoryItems() {
       document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
       const ta = document.querySelector('#inputText');
       ta.value = entry.sentence;
-      lastRecordedText = entry.sentence;
+      recordedTexts.add(entry.sentence);
       runPipeline({ isReplay: true });
     });
 

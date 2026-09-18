@@ -4,25 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SynTutor — Explainable Phrase-Structure Grammar Tutor</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232a6f8f'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='bold' text-anchor='middle' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div class="app-shell">
     <div class="topbar">
       <div class="input-row">
-        <textarea id="inputText" rows="4" readonly
-                  placeholder="Type or paste a sentence or a whole paragraph, e.g.  The clever boy reads a book. He reads it every night."
-                  spellcheck="false"></textarea>
+        <div class="input-editor">
+          <div id="inputHighlights" aria-hidden="true"></div>
+          <textarea id="inputText" rows="4" readonly
+                    placeholder="Type or paste a sentence or a whole paragraph, e.g.  The clever boy reads a book. He reads it every night."
+                    spellcheck="false"></textarea>
+        </div>
         <div class="input-actions">
-          <button id="historyBtn" class="action-btn history-btn" title="View analysis history">
+          <button id="historyBtn" class="action-btn history-btn" type="button" title="View analysis history">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
             <span>History</span>
           </button>
-          <button id="logoutBtn" class="action-btn logout-btn" title="Sign out">
+          <button id="logoutBtn" class="action-btn logout-btn" type="button" title="Sign out">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
               <polyline points="16 17 21 12 16 7"></polyline>
@@ -72,26 +74,19 @@
       </div>
     </details>
 
-    <!-- Slide-over history drawer -->
     <div id="historyDrawerBackdrop" class="drawer-backdrop">
-      <aside class="history-drawer">
+      <aside class="history-drawer" aria-label="Analysis history">
         <div class="drawer-header">
           <h2>Analysis History</h2>
-          <button id="closeDrawerBtn" class="drawer-close" aria-label="Close history">&times;</button>
+          <button id="closeDrawerBtn" type="button" aria-label="Close history">&times;</button>
         </div>
-
-        <div class="drawer-controls">
-          <div class="filter-pills" id="historyFilters">
-            <button class="filter-pill active" data-filter="all">All</button>
-            <button class="filter-pill" data-filter="error">Errors</button>
-            <button class="filter-pill" data-filter="valid">Valid</button>
-          </div>
-          <button id="clearHistoryBtn" class="clear-all-btn" title="Delete all history">Clear all</button>
+        <div id="historyFilters" class="filter-pills">
+          <button class="filter-pill active" type="button" data-filter="all">All</button>
+          <button class="filter-pill" type="button" data-filter="error">Errors</button>
+          <button class="filter-pill" type="button" data-filter="valid">Valid</button>
         </div>
-
-        <div id="historyList" class="history-list">
-          <p class="muted">Loading past analyses...</p>
-        </div>
+        <button id="clearHistoryBtn" type="button">Clear all</button>
+        <div id="historyList" class="history-list"></div>
       </aside>
     </div>
   </div>
@@ -102,6 +97,7 @@
       src="https://assuring-elephant-3584.clerk.accounts.dev/npm/@clerk/clerk-js@5/dist/clerk.browser.js"
       type="text/javascript"
     ></script>
+  <script src="js/config-hint.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
