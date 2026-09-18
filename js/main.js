@@ -296,13 +296,24 @@ function lockInput() {
 function buildHighlightSpans(text, payload) {
   const target = payload.parse.sentences[payload.meta.target_sentence - 1];
   if (!target) return [];
+  const tokens = payload.parse.tokens || [];
   const tokenRanges = [];
-  let cursor = target.start;
-  for (const token of payload.parse.tokens || []) {
-    const start = text.indexOf(token.t, cursor);
-    if (start < 0 || start >= target.end) continue;
-    tokenRanges.push({ start, end: start + token.t.length, index: token.i });
-    cursor = start + token.t.length;
+  const hasCharOffsets = tokens.length > 0 && tokens.every(
+    (t) => typeof t.start === 'number' && typeof t.end === 'number' && t.end > t.start,
+  );
+  if (hasCharOffsets) {
+    for (const token of tokens) {
+      if (token.start < target.start || token.end > target.end) continue;
+      tokenRanges.push({ start: token.start, end: token.end, index: token.i });
+    }
+  } else {
+    let cursor = target.start;
+    for (const token of tokens) {
+      const start = text.indexOf(token.t, cursor);
+      if (start < 0 || start >= target.end) continue;
+      tokenRanges.push({ start, end: start + token.t.length, index: token.i });
+      cursor = start + token.t.length;
+    }
   }
   return tokenRanges.map((token) => {
     let status = 'valid';

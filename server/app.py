@@ -174,7 +174,7 @@ class Handler(BaseHTTPRequestHandler):
             })
             return
         self._serve_file(path.lstrip('/'))
-    
+
     def _serve_file(self, rel):
         relpath = os.path.normpath(rel)
         if relpath.startswith('..') or os.path.isabs(relpath):
