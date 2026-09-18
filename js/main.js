@@ -6,20 +6,23 @@ import {
   renderDiagnostic, fillDevPanel, applySentenceSelection, plainName,
 } from './ui.js';
 
-// Route guard: require a Clerk session before loading the syntax tree workbench
+// Route guard: require a Clerk session before loading the syntax tree workbench.
+// The supabase client, listener, and boot sequence are all gated on the session
+// so an unauthenticated visitor only triggers the redirect — nothing else runs.
 const clerk = await loadClerk();
+const supabase = clerk.session ? await createSupabaseClient() : null;
+
 if (!clerk.session) {
   window.location.href = '/login.html';
+} else {
+  // Supabase client bound to the active Clerk session token (see auth.js);
+  // RLS authorizes reads/writes via the Clerk `sub` claim in the JWT.
+  clerk.addListener(() => {
+    if (!clerk.session) {
+      window.location.href = '/login.html';
+    }
+  });
 }
-// Supabase client bound to the active Clerk session token (see auth.js);
-// RLS authorizes reads/writes via the Clerk `sub` claim in the JWT.
-const supabase = await createSupabaseClient();
-
-clerk.addListener(() => {
-  if (!clerk.session) {
-    window.location.href = '/login.html';
-  }
-});
 
 const STATES = { IDLE: 'IDLE', PROCESSING: 'PROCESSING', VIEWING: 'VIEWING', EXPLORING: 'EXPLORING', END: 'END' };
 
@@ -442,9 +445,10 @@ function renderHistoryItems() {
 if (typeof window !== 'undefined') {
   // auth.js loads with `defer` and main.js with `type=module`, so the DOM may
   // already be interactive by the time this module runs — guard both cases.
-  if (document.readyState === 'loading') {
+  // boot() depends on the gated supabase client, so it only runs with a session.
+  if (clerk.session && document.readyState === 'loading') {
     window.addEventListener('DOMContentLoaded', () => boot());
-  } else {
+  } else if (clerk.session) {
     boot();
   }
 }

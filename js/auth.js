@@ -115,8 +115,14 @@ form?.addEventListener('submit', async (e) => {
 
   try {
     // Resuming an in-flight verification: email/password are already consumed,
-    // so this submit only carries the emailed one-time code.
-    if (pendingCodeAction && codeInput?.value) {
+    // so this submit only carries the emailed one-time code. If the code field
+    // is empty, re-prompt instead of falling through to a fresh sign-in.
+    if (pendingCodeAction) {
+      if (!codeInput?.value) {
+        setStatus('Enter the verification code from your email.', true);
+        codeInput?.focus();
+        return;
+      }
       const clerk = await loadClerk();
       setStatus('Verifying code...');
       let createdSessionId = null;

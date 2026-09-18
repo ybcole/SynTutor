@@ -40,6 +40,15 @@ verification and optional second factor. Analysis history persists to
    `analysis_history` plus RLS policies so users can only read/insert/delete their
    own rows; Supabase verifies the Clerk-issued JWT as a third-party provider.
 
+> **RLS note:** policies are granted `to public` and keyed on the Clerk `sub`
+> claim (`auth.jwt()->>'sub' = user_id`). This is deliberate — Clerk's default
+> session token carries no `role` claim, so PostgREST would treat it as `anon`
+> and every `to authenticated` policy would deny the query. Isolation comes from
+> the `sub` match itself: anonymous requests have no JWT, so their `sub` is null
+> and matches nothing. If you prefer `to authenticated`, add a
+> `"role": "authenticated"` claim via Clerk → Session tokens → Customize, and
+> flip the policy roles in the migration.
+
 > The backend serves both the static front end and the REST API on one port. Keep `transformers<4.47` pinned: newer `transformers` removes the `T5Tokenizer.build_inputs_with_special_tokens` method that benepar's retokenizer relies on.
 
 ---
