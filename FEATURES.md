@@ -28,12 +28,8 @@ should not be interpreted as a percentage of lines completed.
 ## Implemented features
 
 ### User input and sentence selection
+
 - Accepts a sentence or multi-sentence paragraph in the textarea.
-- Displays incorrect words in red while valid words remain black.
-- Uses a highlight overlay while the input is locked and the native textarea
-  while editing, preserving the blinking caret.
-- Recomputes highlights from the current analysis payload; highlight spans are
-  kept in page memory and are not stored in history.
 - Starts in a locked/read-only state.
 - Double-clicking enables editing.
 - Clicking away locks the input again.
@@ -41,8 +37,8 @@ should not be interpreted as a percentage of lines completed.
 - `Ctrl+Enter`/`Cmd+Enter` submits the current text while editing.
 - When a paragraph is analyzed, the backend returns sentence character offsets.
 - Clicking inside a locked sentence selects and analyzes that sentence.
-- The selected sentence receives a light background highlight without losing
-  scroll position.
+- The selected sentence is highlighted in the textarea without losing scroll
+  position.
 
 ### NLP pipeline
 
@@ -172,8 +168,7 @@ These are explicit design choices, not accidental omissions:
 ### Not yet implemented or incomplete
 
 - **Automated unit/integration/browser test suite:** the repository contains the
-  audit script but no formal test runner or browser E2E suite for editor
-  caret behavior, word highlighting, sentence navigation, or history flows.
+  audit script but no formal test runner or browser E2E suite.
 - **Continuous integration:** no GitHub Actions workflow currently runs the
   audit, linting, or smoke checks on every push.
 - **Pinned dependency manifest:** `requirements.txt` documents the backend
@@ -181,11 +176,13 @@ These are explicit design choices, not accidental omissions:
   included.
 - **Production deployment configuration:** no container, reverse proxy,
   process manager, HTTPS configuration, or deployment manifest is included.
-- **Authentication and authorization:** Supabase authentication and
-  user-scoped history RLS are implemented, but deployment configuration and
-  production identity-management hardening are still required.
-- **Persistence:** analysis history is stored in Supabase through the
-  `analysis_history` table. Learner progress and settings are not persisted.
+- **Authentication and authorization:** sign-in runs through Clerk (email/password
+  with email-code verification and second-factor); Supabase Row-Level Security
+  scopes history to the signed-in user. No admin roles, invite flows, or
+  fine-grained permissions yet.
+- **Persistence:** per-user analysis history is stored in Supabase
+  (`analysis_history`) and shown in the history drawer; learner progress,
+  settings, and saved texts are not yet stored.
 - **Telemetry and analytics:** there is no event tracking, usage analytics, or
   error-reporting service.
 - **Internationalization:** labels, explanations, and UI copy are English-only.

@@ -22,11 +22,34 @@ python3 -c "import benepar; benepar.download('benepar_en3')"
 python3 server/app.py        # or: npm run serve
 ```
 
-Then open `http://127.0.0.1:8000`. The workbench requires an authenticated
-Supabase session. Before starting the server, copy `js/config.example.js` to
-`js/config.js` and set the public project URL and anon key. The local
-`js/config.js` is ignored by Git so each collaborator can use their own
-development project. Never use a Supabase service-role key in browser code.
+Then open `http://127.0.0.1:8000`.
+
+### Auth (Clerk) & history (Supabase)
+
+Sign-in uses **Clerk** — a custom email/password form with email-code
+verification and optional second factor. Analysis history persists to
+**Supabase** behind Row-Level Security keyed to the Clerk `sub` claim.
+
+1. Copy `js/config.example.js` to `js/config.js` and fill in:
+   - `CLERK_CONFIG.publishableKey` — Clerk Dashboard → API Keys → Publishable key.
+   - `SUPABASE_CONFIG.url` / `SUPABASE_CONFIG.anonKey` — Supabase project URL and anon key.
+2. Keep the `data-clerk-publishable-key` attribute in `index.html` / `login.html`
+   in sync with `CLERK_CONFIG.publishableKey`.
+3. Apply the schema via the Supabase CLI
+   (`supabase/migrations/20260916000000_analysis_history.sql`). It creates
+   `analysis_history` plus RLS policies so users can only read/insert/delete their
+   own rows; Supabase verifies the Clerk-issued JWT as a third-party provider.
+
+> **RLS note:** policies are granted `to public` and keyed on the Clerk `sub`
+> claim (`auth.jwt()->>'sub' = user_id`). This is deliberate — Clerk's default
+> session token carries no `role` claim, so PostgREST would treat it as `anon`
+> and every `to authenticated` policy would deny the query. Isolation comes from
+> the `sub` match itself: anonymous requests have no JWT, so their `sub` is null
+> and matches nothing. If you prefer `to authenticated`, add a
+> `"role": "authenticated"` claim via Clerk → Session tokens → Customize, and
+> flip the policy roles in the migration. Also note the migration intentionally
+> does **not** backfill legacy rows: history recorded under the old Supabase
+> accounts (UUID `user_id`) stays on disk but is invisible to Clerk users.
 
 > The backend serves both the static front end and the REST API on one port. Keep `transformers<4.47` pinned: newer `transformers` removes the `T5Tokenizer.build_inputs_with_special_tokens` method that benepar's retokenizer relies on.
 
@@ -37,24 +60,6 @@ matrix uses it to reject malformed plurals such as `foots`, `childs`, and
 `people`/`persons`, and invariant nouns such as `sheep`. It is used for lexical
 form validation only; grammatical number still comes from the parser's POS
 tags.
-
-### Editor highlighting and history
-
-The workbench accepts single sentences and multi-sentence passages. After an
-analysis, incorrect words are rendered in red and valid words remain black.
-The selected sentence receives a light background highlight. Because a native
-textarea cannot style individual words, the UI uses a safe, positioned
-highlight layer while the textarea is locked. Double-clicking switches to the
-normal textarea so the native blinking caret remains available; leaving the
-editor locks it again and re-analyzes changed text.
-
-Highlight spans are recomputed in memory from the analysis payload and are not
-stored in the database. Authenticated submissions are saved to Supabase
-`analysis_history`; replay, sentence navigation, and failed inserts do not create false
-duplicate/success states; a successfully saved sentence is also not inserted
-again later in the same browser session. Apply
-`supabase/migrations/20260916000000_analysis_history.sql` to create the table
-and its user-scoped row-level security policies.
 
 ---
 
@@ -91,9 +96,7 @@ Browser
   index.html + style.css
         |
         v
-  main.js (FSM, request orchestration, highlighting, and history)
-    |
-  auth.js (Supabase session and sign-in/register actions)
+  main.js (FSM and request orchestration)
     |                    \
     v                     v
   renderer.js          ui.js
@@ -192,12 +195,16 @@ server/
   matrix.py              Linguistic Constraint Matrix + deterministic XAI evaluation
   app.py                 stdlib HTTP server: static files + /api/parse + /api/health
 index.html               UI shell
+login.html               Clerk sign-in / sign-up (email-code verification)
 css/style.css            styling
 js/
   renderer.js            canvas layout, edges, hitboxes, pan/zoom
   ui.js                  DOM views (explainer/diagnostic/log/pipeline UI)
-  main.js                FSM + pipeline, highlighting, auth, and history
-  auth.js                Supabase client and sign-in/register session handling
+  auth.js                Clerk bootstrap, Clerk->Supabase JWT bridging, login form
+  main.js                FSM + pipeline orchestration + memory-cached node explanations
+  config.js              (git-ignored) Clerk + Supabase keys — see config.example.js
+supabase/
+  migrations/            analysis_history schema + RLS policies
 package.json             npm run serve -> python3 server/app.py
 docs/
   THESIS.md              design specification (input document)
