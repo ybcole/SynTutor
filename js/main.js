@@ -143,14 +143,14 @@ function setEditHint(editing) {
     : 'Locked \u2014 click any sentence to view its syntax tree. Double-click to edit.';
 }
 
-function returnToLocked() {
+function returnToLocked(payload = null) {
   const ta = document.querySelector('#inputText');
   const editor = document.querySelector('.input-editor');
   ta.readOnly = true;
   ta.classList.remove('editing');
   editor?.classList.remove('editing');
   setEditHint(false);
-  renderInputHighlights(ta.value);
+  renderInputHighlights(ta.value, payload);
 }
 
 function activateSentenceAtCaret() {
@@ -252,8 +252,7 @@ async function executePipeline(opts = {}) {
   } else {
     historySpans = spans;
   }
-  returnToLocked();
-  renderInputHighlights(text, payload);
+  returnToLocked(payload);
   applySentenceSelection(payload);
   renderer.setTree(payload.tree);
   transition(STATES.VIEWING, 'output ready -> viewing');
@@ -517,7 +516,7 @@ function renderHistoryItems() {
       document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
       const ta = document.querySelector('#inputText');
       ta.value = entry.sentence;
-      lastRecordedText = entry.sentence;
+      recordedTexts.add(entry.sentence);
       runPipeline({ isReplay: true });
     });
 
