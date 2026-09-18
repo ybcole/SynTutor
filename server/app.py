@@ -17,8 +17,11 @@ from parse_engine import ParseFailure, analyze, load_models
 from matrix import evaluate
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 PORT = int(os.environ.get('SYNTUTOR_PORT', '8000'))
+
+# Only these top-level frontend entries may be served statically. Anything else
+# under ROOT (server/, supabase/, scripts/, migrations, config) stays private.
+PUBLIC_TOP = {'index.html', 'login.html', 'css', 'js'}
 
 MIME = {
     '.html': 'text/html; charset=utf-8',
@@ -177,33 +180,18 @@ class Handler(BaseHTTPRequestHandler):
 
     def _serve_file(self, rel):
         relpath = os.path.normpath(rel)
-        if relpath.startswith('..') or os.path.isabs(relpath):
+        top = relpath.split(os.sep)[0]
+        if relpath.startswith('..') or os.path.isabs(relpath) or top not in PUBLIC_TOP:
             self._json(403, {'error': 'forbidden path'})
             return
-
-        public_root = relpath.split(os.sep, 1)[0]
-        if relpath not in {'index.html', 'login.html'} and public_root not in ('css', 'js'):
+        full = os.path.join(ROOT, relpath)
+        if not full.startswith(ROOT) or not os.path.isfile(full):
             self._json(404, {'error': 'not found'})
             return
-
-        root = os.path.realpath(ROOT)
-        full = os.path.realpath(os.path.join(root, relpath))
-        try:
-            inside_root = os.path.commonpath((root, full)) == root
-        except ValueError:
-            inside_root = False
-        if not inside_root or not os.path.isfile(full):
-            self._json(404, {'error': 'not found'})
-            return
-
         ext = os.path.splitext(full)[1].lower()
         ctype = MIME.get(ext, 'application/octet-stream')
-        try:
-            with open(full, 'rb') as fh:
-                self._send(200, fh.read(), ctype)
-        except OSError:
-            sys.stderr.write('[syntutor] failed to read asset: %s\n' % relpath)
-            self._json(500, {'error': 'failed to read asset'})
+        with open(full, 'rb') as fh:
+            self._send(200, fh.read(), ctype)
 
     def do_POST(self):
         path = urlparse(self.path).path
