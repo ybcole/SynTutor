@@ -1,4 +1,4 @@
-import { supabase } from './auth.js';
+import { loadClerk, createSupabaseClient } from './auth.js';
 import { TreeRenderer } from './renderer.js';
 import {
   log,
@@ -6,17 +6,23 @@ import {
   renderDiagnostic, fillDevPanel, applySentenceSelection, plainName,
 } from './ui.js';
 
-// Route guard: require session before loading syntax tree workbench
-const { data: { session: authSession } } = await supabase.auth.getSession();
-if (!authSession) {
-  window.location.href = '/login.html';
-}
+// Route guard: require a Clerk session before loading the syntax tree workbench.
+// The supabase client, listener, and boot sequence are all gated on the session
+// so an unauthenticated visitor only triggers the redirect — nothing else runs.
+const clerk = await loadClerk();
+const supabase = clerk.session ? await createSupabaseClient() : null;
 
-supabase.auth.onAuthStateChange((event, currentSession) => {
-  if (event === 'SIGNED_OUT' || !currentSession) {
-    window.location.href = '/login.html';
-  }
-});
+if (!clerk.session) {
+  window.location.href = '/login.html';
+} else {
+  // Supabase client bound to the active Clerk session token (see auth.js);
+  // RLS authorizes reads/writes via the Clerk `sub` claim in the JWT.
+  clerk.addListener(() => {
+    if (!clerk.session) {
+      window.location.href = '/login.html';
+    }
+  });
+}
 
 const STATES = { IDLE: 'IDLE', PROCESSING: 'PROCESSING', VIEWING: 'VIEWING', EXPLORING: 'EXPLORING', END: 'END' };
 
@@ -102,7 +108,7 @@ function wireEvents() {
       const { error } = await supabase
         .from('analysis_history')
         .delete()
-        .eq('user_id', authSession.user.id);
+        .eq('user_id', clerk.user.id);
 
       if (error) {
         alert('Failed to clear history: ' + error.message);
@@ -115,7 +121,8 @@ function wireEvents() {
 
   // Auth Controls
   document.querySelector('#logoutBtn')?.addEventListener('click', async () => {
-    await supabase.auth.signOut();
+    await clerk.signOut();
+    window.location.href = '/login.html';
   });
 }
 
@@ -236,10 +243,10 @@ async function executePipeline(opts = {}) {
   // Save in the background so a slow/unavailable Supabase never blocks rendering the verdict,
   // and only mark the text as recorded once the insert has actually succeeded.
   const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
-  if (authSession?.user?.id && !isNavigation && text !== lastRecordedText) {
+  if (clerk.user?.id && !isNavigation && text !== lastRecordedText) {
     try {
       const { error: insertError } = await supabase.from('analysis_history').insert({
-        user_id: authSession.user.id,
+        user_id: clerk.user.id,
         sentence: text,
         is_valid: payload.summary.valid,
         constraints_fired: payload.summary.constraints_fired,
@@ -436,5 +443,12 @@ function renderHistoryItems() {
 }
 
 if (typeof window !== 'undefined') {
-  window.addEventListener('DOMContentLoaded', () => boot());
+  // auth.js loads with `defer` and main.js with `type=module`, so the DOM may
+  // already be interactive by the time this module runs — guard both cases.
+  // boot() depends on the gated supabase client, so it only runs with a session.
+  if (clerk.session && document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', () => boot());
+  } else if (clerk.session) {
+    boot();
+  }
 }
