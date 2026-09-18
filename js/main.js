@@ -285,14 +285,6 @@ async function executePipeline(opts = {}) {
   }
 }
 
-function lockInput() {
-  const ta = document.querySelector('#inputText');
-  ta.readOnly = true;
-  ta.classList.remove('editing');
-  setEditHint(false);
-  ta.blur();
-}
-
 function buildHighlightSpans(text, payload) {
   const target = payload.parse.sentences[payload.meta.target_sentence - 1];
   if (!target) return [];
