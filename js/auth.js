@@ -18,16 +18,41 @@ if (!SUPABASE_CONFIG.url || !SUPABASE_CONFIG.anonKey || SUPABASE_CONFIG.anonKey.
 }
 
 // ── Clerk bootstrap ──
-// Requires the clerk.browser.js script tag to be present in the host page.
+// The clerk.browser.js bundle only reacts to the publishable key when the key
+// reaches it via a `data-clerk-publishable-key` script attribute (or the
+// window.__clerk_publishable_key global). A bare script tag throws
+// "Missing publishableKey" at load time and never creates window.Clerk, which
+// kills any module that awaits loadClerk() and leaves the page unresponsive.
+// So the bundle is injected on demand with the key from js/config.js, and the
+// Clerk Frontend API domain is derived from that same key.
 // Deferred-promise singleton: every caller awaits the same boot, so Clerk loads
 // exactly once no matter how many modules call loadClerk().
 let clerkPromise = null;
+
+function clerkScriptSrc() {
+  const encoded = CLERK_CONFIG.publishableKey.split('_')[2];
+  const frontendApi = atob(encoded).slice(0, -1);
+  return `https://${frontendApi}/npm/@clerk/clerk-js@5/dist/clerk.browser.js`;
+}
+
+function loadClerkScript() {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = clerkScriptSrc();
+    script.async = false;
+    script.crossOrigin = 'anonymous';
+    script.dataset.clerkPublishableKey = CLERK_CONFIG.publishableKey;
+    script.onload = () => resolve(window.Clerk);
+    script.onerror = () => reject(new Error('Failed to load clerk.browser.js'));
+    document.head.appendChild(script);
+  });
+}
 
 export function loadClerk() {
   if (!clerkPromise) {
     clerkPromise = (async () => {
       if (!window.Clerk) {
-        throw new Error('ClerkJS is not loaded. Add the clerk.browser.js script tag before this module.');
+        await loadClerkScript();
       }
       await window.Clerk.load({ publishableKey: CLERK_CONFIG.publishableKey });
       return window.Clerk;
