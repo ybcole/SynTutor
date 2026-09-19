@@ -5,33 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SynTutor — Explainable Phrase-Structure Grammar Tutor</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('syntutor_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
 </head>
 <body>
   <div class="app-shell">
+    <header class="app-header">
+      <div class="header-aside header-left">
+        <button id="themeToggleBtn" class="menu-btn" type="button" aria-label="Toggle dark mode" title="Dark / Light mode">
+          <svg id="themeIcon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <span class="profile-anchor">
+          <button id="identityChip" class="identity-chip" type="button" title="Log in / Sign in" aria-haspopup="menu">
+            <span id="identityAvatar" class="identity-avatar guest" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <span id="identityLabel">Guest</span>
+          </button>
+          <div id="profileMenu" class="profile-menu" role="menu" aria-hidden="true">
+            <div id="profileMenuMain" class="profile-menu-view">
+              <button id="profileAddAccount" class="profile-menu-item" type="button" role="menuitem" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="8.5" cy="7" r="4"></circle>
+                  <line x1="20" y1="8" x2="20" y2="14"></line>
+                  <line x1="23" y1="11" x2="17" y2="11"></line>
+                </svg>
+                Add Account
+              </button>
+              <button id="profileSwitchAccount" class="profile-menu-item" type="button" role="menuitem" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M8 3L4 7l4 4"></path>
+                  <path d="M4 7h16"></path>
+                  <path d="M16 21l4-4-4-4"></path>
+                  <path d="M20 17H4"></path>
+                </svg>
+                Switch Account
+              </button>
+              <div id="profileMenuDivider" class="profile-menu-divider" hidden></div>
+              <button id="profileLogout" class="profile-menu-item danger" type="button" role="menuitem" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                Log Out
+              </button>
+              <button id="profileSignIn" class="profile-menu-item" type="button" role="menuitem">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                  <polyline points="10 17 15 12 10 7"></polyline>
+                  <line x1="15" y1="12" x2="3" y2="12"></line>
+                </svg>
+                Log In / Sign Up
+              </button>
+            </div>
+            <div id="profileAccounts" class="profile-menu-view" aria-hidden="true" hidden>
+              <div id="profileAccountsList" class="profile-accounts-list"></div>
+            </div>
+          </div>
+        </span>
+      </div>
+
+      <div class="header-brand"><span class="app-brand-name">SynTutor</span></div>
+
+      <div class="header-aside header-right">
+        <button id="newSessionBtn" class="menu-btn" type="button" aria-label="Start a new blank session" title="Start a new blank session">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+        </button>
+        <button id="headerHistoryBtn" class="menu-btn" type="button" aria-label="Open analysis history" title="History" hidden>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </button>
+        <button id="devPanelToggle" class="menu-btn" type="button" aria-expanded="false" aria-controls="devPanelOverlay" aria-label="Developer panel" title="Developer panel">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
     <div class="topbar">
+      <div class="chat-badge-row">
+        <span class="chat-tag">Untitled chat...</span>
+      </div>
       <div class="input-row">
         <div class="input-editor">
           <div id="inputHighlights" aria-hidden="true"></div>
-          <textarea id="inputText" rows="4" readonly
-                    placeholder="Type or paste a sentence or a whole paragraph, e.g.  The clever boy reads a book. He reads it every night."
+          <textarea id="inputText" rows="2" readonly
+                    placeholder="Enter or paste text here"
                     spellcheck="false"></textarea>
-        </div>
-        <div class="input-actions">
-          <button id="historyBtn" class="action-btn history-btn" type="button" title="View analysis history">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            <span>History</span>
-          </button>
-          <button id="logoutBtn" class="action-btn logout-btn" type="button" title="Sign out">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-              <polyline points="16 17 21 12 16 7"></polyline>
-              <line x1="21" y1="12" x2="9" y2="12"></line>
-            </svg>
-            <span>Log Out</span>
-          </button>
         </div>
       </div>
       <p id="inputHint" class="input-hint">Double-click the panel to edit. When locked, click any sentence to view its syntax tree.</p>
@@ -41,19 +119,39 @@
       <section class="canvas-wrap">
         <canvas id="treeCanvas" tabindex="0" aria-label="Interactive syntax tree; click a node, or use arrow keys and Enter"></canvas>
         <div id="canvasOverlay" class="canvas-overlay"></div>
+        <div id="emptyTreeState" class="empty-state-canvas">
+          <svg class="empty-tree-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="32" cy="16" r="7" />
+            <circle cx="16" cy="48" r="7" />
+            <circle cx="48" cy="48" r="7" />
+            <line x1="27" y1="21" x2="20" y2="42" />
+            <line x1="37" y1="21" x2="44" y2="42" />
+          </svg>
+          <h3 class="empty-tree-title">No Syntax tree to generate yet!</h3>
+          <p class="empty-tree-sub">Add your text to see the syntax tree here</p>
+        </div>
+        <div id="loadingIndicator" class="loading-pill" aria-hidden="true">
+          <span class="loading-spinner" aria-hidden="true"></span>
+          <span>Generating syntax tree&hellip;</span>
+        </div>
       </section>
+
       <aside class="panel right-panel">
         <section class="card primary-explainer">
           <div id="explainNode" class="node-explainer"></div>
+          <div id="emptyExplainState" class="empty-state-explain">
+            <svg class="empty-book-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              <path d="M12 2v15"></path>
+            </svg>
+            <p class="empty-explain-title">Ready for Analysis</p>
+          </div>
         </section>
       </aside>
     </main>
 
-    <details class="dev-panel" id="devPanel">
-      <summary>
-        <span class="dev-title">Developer panel</span>
-        <span class="dev-meta">sentence verdict · benepar parse string · spaCy token stream · system/FSM log</span>
-      </summary>
+    <div id="devPanelOverlay" class="dev-overlay" aria-hidden="true">
       <div class="dev-grid">
         <section class="card">
           <h3>Sentence verdict</h3>
@@ -72,22 +170,51 @@
           <div id="logPanel" class="log-panel"></div>
         </section>
       </div>
-    </details>
+    </div>
 
     <div id="historyDrawerBackdrop" class="drawer-backdrop">
       <aside class="history-drawer" aria-label="Analysis history">
         <div class="drawer-header">
           <h2>Analysis History</h2>
-          <button id="closeDrawerBtn" type="button" aria-label="Close history">&times;</button>
+          <button id="closeDrawerBtn" class="drawer-close" type="button" aria-label="Close history">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
         </div>
-        <div id="historyFilters" class="filter-pills">
-          <button class="filter-pill active" type="button" data-filter="all">All</button>
-          <button class="filter-pill" type="button" data-filter="error">Errors</button>
-          <button class="filter-pill" type="button" data-filter="valid">Valid</button>
+        <div class="history-toolbar">
+          <div id="historyFilters" class="filter-pills">
+            <button class="filter-pill active" type="button" data-filter="all">All</button>
+            <button class="filter-pill" type="button" data-filter="error">Errors</button>
+            <button class="filter-pill" type="button" data-filter="valid">Valid</button>
+          </div>
+          <button id="clearHistoryBtn" type="button">Clear all</button>
         </div>
-        <button id="clearHistoryBtn" type="button">Clear all</button>
         <div id="historyList" class="history-list"></div>
       </aside>
+    </div>
+
+    <div id="authModalBackdrop" class="modal-backdrop">
+      <div class="auth-modal" role="dialog" aria-modal="true" aria-label="Log in or sign in">
+        <form id="authModalForm" class="auth-modal-form">
+          <div class="step-auth">
+            <input type="email" id="authEmail" class="modal-input" placeholder="Email address" autocomplete="email" required />
+            <input type="password" id="authPassword" class="modal-input" placeholder="Password" autocomplete="current-password" required />
+          </div>
+          <div class="code-field" style="display:none">
+            <input type="text" id="authCode" class="modal-input" placeholder="6-digit verification code" inputmode="numeric" />
+          </div>
+          <div class="modal-actions">
+            <button type="submit" id="authSignInBtn" class="modal-btn-primary">Sign In</button>
+            <button type="button" id="authSignUpBtn" class="modal-btn-secondary">Register</button>
+          </div>
+          <div id="authModalStatus" class="msg"></div>
+        </form>
+        <div class="modal-close-row">
+          <button id="authContinueGuestBtn" class="modal-ghost-btn" type="button">Continue as guest</button>
+        </div>
+      </div>
     </div>
   </div>
 

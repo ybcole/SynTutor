@@ -84,26 +84,15 @@ export function createSupabaseClient() {
 }
 
 // ── Custom sign-in / sign-up form (Clerk) ──
-const form = document.querySelector('#loginForm');
-const emailInput = document.querySelector('#email');
-const passwordInput = document.querySelector('#password');
-const codeInput = document.querySelector('#verificationCode');
-const signUpBtn = document.querySelector('#signUpBtn');
-const signInBtn = document.querySelector('#signInBtn');
-const statusMsg = document.querySelector('#authStatus');
-
+// The same self-contained auth flow is wired for two surfaces:
+//   login.html  — standalone form; successful sign-in redirects to /index.html.
+//   index.html  — in-app login modal; successful sign-in reloads the current
+//                 page so the boot flow picks the session up as "authenticated".
+// In-flight email-code verification state is shared across surfaces because
+// only one form exists on a given page.
 let activeSignIn = null;
 let activeSignUp = null;
-// In-flight email-code verification state. pendingCodeAction records which
-// branch is active ('second_factor' vs 'signup_verification') so a subsequent
-// form submit can resume the correct Clerk attempt instead of starting a new one.
 let pendingCodeAction = null;
-
-function setStatus(text, isError = false) {
-  if (!statusMsg) return;
-  statusMsg.textContent = text;
-  statusMsg.className = `msg ${isError ? 'err' : 'ok'}`;
-}
 
 function formatClerkError(err) {
   const errs = err?.errors;
@@ -113,153 +102,200 @@ function formatClerkError(err) {
   return err?.message || 'An authentication error occurred.';
 }
 
-function showCodeStep(message) {
-  document.querySelectorAll('.step-auth').forEach((el) => { el.style.display = 'none'; });
-  if (signUpBtn) signUpBtn.style.display = 'none';
-  const codeField = codeInput?.closest('.code-field');
-  if (codeField) codeField.style.display = 'block';
-  if (signInBtn) signInBtn.textContent = 'Verify Code';
-  if (emailInput) emailInput.removeAttribute('required');
-  if (passwordInput) passwordInput.removeAttribute('required');
-  setStatus(message, false);
-  codeInput?.focus();
-}
+function wireAuthForm(ctx) {
+  const {
+    form,
+    emailInput,
+    passwordInput,
+    codeInput,
+    signUpBtn,
+    signInBtn,
+    statusMsg,
+    finishRedirect,
+  } = ctx;
 
-function resetCodeStep() {
-  document.querySelectorAll('.step-auth').forEach((el) => { el.style.display = ''; });
-  const codeField = codeInput?.closest('.code-field');
-  if (codeField) codeField.style.display = 'none';
-  if (signUpBtn) signUpBtn.style.display = '';
-  if (signInBtn) signInBtn.textContent = 'Sign In';
-  if (codeInput) codeInput.value = '';
-  if (emailInput) emailInput.setAttribute('required', '');
-  if (passwordInput) passwordInput.setAttribute('required', '');
-  pendingCodeAction = null;
-  activeSignIn = null;
-  activeSignUp = null;
-}
+  if (!form) return;
 
-async function completeSignIn(clerk, createdSessionId) {
-  await clerk.setActive({ session: createdSessionId });
-  window.location.href = '/index.html';
-}
+  function setStatus(text, isError = false) {
+    if (!statusMsg) return;
+    statusMsg.textContent = text;
+    statusMsg.className = `msg ${isError ? 'err' : 'ok'}`;
+  }
 
-form?.addEventListener('submit', async (e) => {
-  e.preventDefault();
+  function showCodeStep(message) {
+    form.querySelectorAll('.step-auth').forEach((el) => { el.style.display = 'none'; });
+    if (signUpBtn) signUpBtn.style.display = 'none';
+    const codeField = codeInput?.closest('.code-field');
+    if (codeField) codeField.style.display = 'block';
+    if (signInBtn) signInBtn.textContent = 'Verify Code';
+    if (emailInput) emailInput.removeAttribute('required');
+    if (passwordInput) passwordInput.removeAttribute('required');
+    setStatus(message, false);
+    codeInput?.focus();
+  }
 
-  try {
-    // Resuming an in-flight verification: email/password are already consumed,
-    // so this submit only carries the emailed one-time code. If the code field
-    // is empty, re-prompt instead of falling through to a fresh sign-in.
-    if (pendingCodeAction) {
-      if (!codeInput?.value) {
-        setStatus('Enter the verification code from your email.', true);
-        codeInput?.focus();
+  function resetCodeStep() {
+    form.querySelectorAll('.step-auth').forEach((el) => { el.style.display = ''; });
+    const codeField = codeInput?.closest('.code-field');
+    if (codeField) codeField.style.display = 'none';
+    if (signUpBtn) signUpBtn.style.display = '';
+    if (signInBtn) signInBtn.textContent = 'Sign In';
+    if (codeInput) codeInput.value = '';
+    if (emailInput) emailInput.setAttribute('required', '');
+    if (passwordInput) passwordInput.setAttribute('required', '');
+    pendingCodeAction = null;
+    activeSignIn = null;
+    activeSignUp = null;
+  }
+
+  async function completeSignIn(clerk, createdSessionId) {
+    await clerk.setActive({ session: createdSessionId });
+    if (finishRedirect) {
+      window.location.href = '/index.html';
+    } else {
+      window.location.reload();
+    }
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    try {
+      // Resuming an in-flight verification: email/password are already consumed,
+      // so this submit only carries the emailed one-time code. If the code field
+      // is empty, re-prompt instead of falling through to a fresh sign-in.
+      if (pendingCodeAction) {
+        if (!codeInput?.value) {
+          setStatus('Enter the verification code from your email.', true);
+          codeInput?.focus();
+          return;
+        }
+        const clerk = await loadClerk();
+        setStatus('Verifying code...');
+        let createdSessionId = null;
+
+        if (pendingCodeAction === 'second_factor' && activeSignIn) {
+          const attempt = await activeSignIn.attemptSecondFactor({
+            strategy: 'email_code',
+            code: codeInput.value,
+          });
+          if (attempt.status === 'complete') {
+            createdSessionId = attempt.createdSessionId;
+          } else {
+            setStatus('Verification failed. Check the code and try again.', true);
+            return;
+          }
+        }
+
+        if (pendingCodeAction === 'signup_verification' && activeSignUp) {
+          const attempt = await activeSignUp.attemptVerification({
+            strategy: 'email_code',
+            code: codeInput.value,
+          });
+          if (attempt.status === 'complete') {
+            createdSessionId = attempt.createdSessionId;
+          } else {
+            setStatus('Verification failed. Check the code and try again.', true);
+            return;
+          }
+        }
+
+        resetCodeStep();
+        if (createdSessionId) await completeSignIn(clerk, createdSessionId);
         return;
       }
+
+      setStatus('Signing in...');
       const clerk = await loadClerk();
-      setStatus('Verifying code...');
-      let createdSessionId = null;
+      const signIn = await clerk.client.signIn.create({
+        identifier: emailInput?.value?.trim(),
+        password: passwordInput?.value,
+      });
 
-      if (pendingCodeAction === 'second_factor' && activeSignIn) {
-        const attempt = await activeSignIn.attemptSecondFactor({
-          strategy: 'email_code',
-          code: codeInput.value,
-        });
-        if (attempt.status === 'complete') {
-          createdSessionId = attempt.createdSessionId;
-        } else {
-          setStatus('Verification failed. Check the code and try again.', true);
+      if (signIn.status === 'complete') {
+        resetCodeStep();
+        await completeSignIn(clerk, signIn.createdSessionId);
+        return;
+      }
+      if (signIn.status === 'needs_second_factor') {
+        const emailCode = (signIn.supportedSecondFactors || []).find((f) => f.strategy === 'email_code');
+        if (emailCode) {
+          await signIn.prepareSecondFactor({
+            strategy: 'email_code',
+            emailAddressId: emailCode.emailAddressId,
+          });
+          activeSignIn = signIn;
+          pendingCodeAction = 'second_factor';
+          showCodeStep('A verification code was sent to your email.');
           return;
         }
+        setStatus('Additional verification is required, but unsupported on this form.', true);
+        return;
       }
-
-      if (pendingCodeAction === 'signup_verification' && activeSignUp) {
-        const attempt = await activeSignUp.attemptVerification({
-          strategy: 'email_code',
-          code: codeInput.value,
-        });
-        if (attempt.status === 'complete') {
-          createdSessionId = attempt.createdSessionId;
-        } else {
-          setStatus('Verification failed. Check the code and try again.', true);
-          return;
-        }
-      }
-
+      setStatus(`Sign-in is not complete (status: ${signIn.status}).`, true);
+    } catch (err) {
       resetCodeStep();
-      if (createdSessionId) await completeSignIn(clerk, createdSessionId);
+      setStatus(formatClerkError(err), true);
+    }
+  });
+
+  signUpBtn?.addEventListener('click', async () => {
+    const email = emailInput?.value?.trim();
+    const password = passwordInput?.value;
+
+    if (!email || !password) {
+      setStatus('Enter an email and password to register.', true);
       return;
     }
 
-    setStatus('Signing in...');
-    const clerk = await loadClerk();
-    const signIn = await clerk.client.signIn.create({
-      identifier: emailInput?.value?.trim(),
-      password: passwordInput?.value,
-    });
+    try {
+      setStatus('Registering account...');
+      const clerk = await loadClerk();
+      const signUp = await clerk.client.signUp.create({ emailAddress: email, password });
 
-    if (signIn.status === 'complete') {
-      resetCodeStep();
-      await completeSignIn(clerk, signIn.createdSessionId);
-      return;
-    }
-    if (signIn.status === 'needs_second_factor') {
-      const emailCode = (signIn.supportedSecondFactors || []).find((f) => f.strategy === 'email_code');
-      if (emailCode) {
-        await signIn.prepareSecondFactor({
-          strategy: 'email_code',
-          emailAddressId: emailCode.emailAddressId,
-        });
-        activeSignIn = signIn;
-        pendingCodeAction = 'second_factor';
+      if (signUp.status === 'complete') {
+        resetCodeStep();
+        await completeSignIn(clerk, signUp.createdSessionId);
+        return;
+      }
+
+      const emailVerification = signUp.verifications?.email_address;
+      if (signUp.status === 'missing_requirements' && emailVerification && emailVerification.status === 'unverified') {
+        await signUp.prepareVerification({ strategy: 'email_code' });
+        activeSignUp = signUp;
+        pendingCodeAction = 'signup_verification';
         showCodeStep('A verification code was sent to your email.');
         return;
       }
-      setStatus('Additional verification is required, but unsupported on this form.', true);
-      return;
+
+      setStatus(`Registration is not complete (status: ${signUp.status}).`, true);
+    } catch (err) {
+      resetCodeStep();
+      setStatus(formatClerkError(err), true);
     }
-    setStatus(`Sign-in is not complete (status: ${signIn.status}).`, true);
-  } catch (err) {
-    resetCodeStep();
-    setStatus(formatClerkError(err), true);
-  }
+  });
+}
+
+wireAuthForm({
+  form: document.querySelector('#loginForm'),
+  emailInput: document.querySelector('#email'),
+  passwordInput: document.querySelector('#password'),
+  codeInput: document.querySelector('#verificationCode'),
+  signUpBtn: document.querySelector('#signUpBtn'),
+  signInBtn: document.querySelector('#signInBtn'),
+  statusMsg: document.querySelector('#authStatus'),
+  finishRedirect: true,
 });
 
-signUpBtn?.addEventListener('click', async () => {
-  const email = emailInput?.value?.trim();
-  const password = passwordInput?.value;
-
-  if (!email || !password) {
-    setStatus('Enter an email and password to register.', true);
-    return;
-  }
-
-  try {
-    setStatus('Registering account...');
-    const clerk = await loadClerk();
-    const signUp = await clerk.client.signUp.create({ emailAddress: email, password });
-
-    if (signUp.status === 'complete') {
-      resetCodeStep();
-      await completeSignIn(clerk, signUp.createdSessionId);
-      return;
-    }
-
-    const emailVerification = signUp.verifications?.email_address;
-    if (signUp.status === 'missing_requirements' && emailVerification && emailVerification.status === 'unverified') {
-      await signUp.prepareVerification({ strategy: 'email_code' });
-      activeSignUp = signUp;
-      pendingCodeAction = 'signup_verification';
-      showCodeStep('A verification code was sent to your email.');
-      return;
-    }
-
-    setStatus(`Registration is not complete (status: ${signUp.status}).`, true);
-  } catch (err) {
-    resetCodeStep();
-    setStatus(formatClerkError(err), true);
-  }
+wireAuthForm({
+  form: document.querySelector('#authModalForm'),
+  emailInput: document.querySelector('#authEmail'),
+  passwordInput: document.querySelector('#authPassword'),
+  codeInput: document.querySelector('#authCode'),
+  signUpBtn: document.querySelector('#authSignUpBtn'),
+  signInBtn: document.querySelector('#authSignInBtn'),
+  statusMsg: document.querySelector('#authModalStatus'),
+  finishRedirect: false,
 });
 
 // Redirect if a session already exists
@@ -270,7 +306,10 @@ signUpBtn?.addEventListener('click', async () => {
       window.location.href = '/index.html';
     }
   } catch (err) {
-    resetCodeStep();
-    setStatus(formatClerkError(err), true);
+    const statusMsg = document.querySelector('#authStatus') || document.querySelector('#authModalStatus');
+    if (statusMsg) {
+      statusMsg.className = 'msg err';
+      statusMsg.textContent = formatClerkError(err);
+    }
   }
 })();

@@ -3,191 +3,371 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SynTutor — Sign In</title>
+  <title>SynTutor — Welcome</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232a6f8f'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='bold' text-anchor='middle' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('syntutor_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
   <style>
     * {
       box-sizing: border-box;
     }
 
+    :root {
+      --bg: #ffffff;
+      --ink: #111111;
+      --muted: #666666;
+      --border: #e2e2e2;
+      --divider: #cfcfcf;
+      --btn-bg: #000000;
+      --btn-text: #ffffff;
+      --focus: #6d5ae6;
+      --ease: cubic-bezier(0.33, 0.6, 0.4, 1);
+      color-scheme: light;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f1117;
+      --ink: #f8fafc;
+      --muted: #94a3b8;
+      --border: #2e3442;
+      --divider: #334155;
+      --btn-bg: #f8fafc;
+      --btn-text: #0f1117;
+      --focus: #8b7cf1;
+      color-scheme: dark;
+    }
+
+    button, input, select {
+      font-family: inherit;
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    ::selection {
+      background: rgba(109, 90, 230, 0.2);
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
-      background: #ffffff;
+      background: var(--bg);
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: #111111;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .landing-header {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .theme-toggle-btn {
+      background: none;
+      border: none;
+      color: var(--ink);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+    .theme-toggle-btn:hover {
+      background: rgba(128, 128, 128, 0.1);
+    }
+    .theme-toggle-btn:active {
+      transform: scale(0.94);
+    }
+
+    .nav-login-btn {
+      height: 34px;
+      padding: 0 16px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: opacity 0.15s ease, transform 0.1s ease;
+    }
+    .nav-login-btn:hover {
+      opacity: 0.85;
+    }
+    .nav-login-btn:active {
+      transform: scale(0.97);
+    }
+
+    .landing-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: 24px;
+      text-align: center;
     }
 
     .landing-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
       width: 100%;
-      max-width: 480px;
+      max-width: 520px;
     }
 
-    /* ── Logo & Typography ── */
     .brand-title {
-      font-size: 78px;
+      font-size: 82px;
       font-weight: 900;
-      color: #000000;
+      color: var(--ink);
       letter-spacing: -1.5px;
       margin: 0;
       line-height: 1;
-      text-shadow: 4px 6px 14px rgba(0, 0, 0, 0.28);
+      text-shadow: 3px 6px 12px rgba(0, 0, 0, 0.15);
     }
 
     .brand-divider {
       width: 250px;
       height: 1px;
-      background: #cfcfcf;
-      margin: 16px auto 20px;
+      background: var(--divider);
+      margin: 18px auto 22px;
     }
 
     .subtitle {
-      font-size: 20px;
-      font-weight: 300;
-      color: #222222;
-      line-height: 1.4;
-      margin: 0 0 36px;
-      max-width: 420px;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.45;
+      margin: 0 0 32px;
+      max-width: 440px;
     }
 
-    /* ── Seamless Form (No Enclosing Box) ── */
-    .auth-form {
+    .enter-guest-btn {
+      background: transparent;
+      border: none;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 32px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      transition: transform 0.15s ease, background 0.15s ease;
+      text-decoration: none;
+    }
+    .enter-guest-btn:hover {
+      background: rgba(128, 128, 128, 0.1);
+      transform: translateX(4px);
+    }
+    .enter-guest-btn:active {
+      transform: translateX(4px) scale(0.94);
+    }
+
+    .auth-form-wrap {
       width: 100%;
       max-width: 320px;
+      margin-top: 24px;
+      display: none;
+    }
+    .auth-form-wrap.open {
+      display: block;
+    }
+
+    .auth-form {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .input-field {
       width: 100%;
-      height: 44px;
-      padding: 0 14px;
-      border: 1px solid #e2e2e2;
-      border-radius: 6px;
-      font-size: 14px;
-      background: #fbfbfb;
-      color: #111111;
-      outline: none;
-      transition: border-color 0.15s ease, background 0.15s ease;
-    }
-
-    .input-field:focus {
-      border-color: #000000;
-      background: #ffffff;
-    }
-
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    /* Solid Black Button matching screenshot */
-    .btn-primary {
-      height: 44px;
-      background: #000000;
-      color: #ffffff;
+      height: 40px;
+      padding: 0 2px;
       border: none;
-      border-radius: 6px;
+      border-bottom: 1px solid var(--border);
+      border-radius: 0;
+      font-size: 13.5px;
+      background: transparent;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+    }
+    .input-field::placeholder {
+      color: var(--muted);
+      opacity: 1;
+    }
+    .input-field:hover {
+      border-bottom-color: color-mix(in srgb, var(--border) 60%, var(--ink));
+    }
+    .input-field:focus {
+      border-bottom-color: var(--focus);
+      box-shadow: 0 2px 10px -3px color-mix(in srgb, var(--focus) 55%, transparent);
+    }
+    .input-field:focus-visible {
+      outline: none;
+    }
+
+    .btn-primary {
+      height: 40px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      border-radius: 8px;
       font-size: 14px;
       font-weight: 700;
-      letter-spacing: 0.2px;
       cursor: pointer;
-      transition: background 0.15s ease, transform 0.1s ease;
+      transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
     }
-
     .btn-primary:hover {
-      background: #222222;
+      opacity: 0.85;
     }
-
     .btn-primary:active {
       transform: scale(0.99);
     }
 
     .btn-secondary {
-      height: 38px;
+      height: 34px;
       background: transparent;
-      color: #666666;
-      border: 1px solid #e0e0e0;
-      border-radius: 6px;
+      color: var(--muted);
+      border: none;
+      border-radius: 8px;
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
-      transition: border-color 0.15s ease, color 0.15s ease;
+      transition: background 0.2s var(--ease), color 0.2s var(--ease);
     }
-
     .btn-secondary:hover {
-      border-color: #000000;
-      color: #000000;
+      background: color-mix(in srgb, var(--focus) 14%, transparent);
+      color: var(--focus);
+    }
+    .btn-secondary:active {
+      transform: scale(0.99);
     }
 
-    /* ── Auth Feedback Message ── */
     .msg {
       font-size: 12.5px;
       margin-top: 6px;
       min-height: 18px;
-      line-height: 1.4;
     }
     .msg.err { color: #d64545; }
     .msg.ok { color: #2e8b57; }
+
+    @media (max-width: 540px) {
+      .landing-header { padding: 0 16px; }
+      .brand-title { font-size: 62px; }
+      .brand-divider { width: 200px; }
+      .subtitle { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
-  <main class="landing-container">
-    <h1 class="brand-title">SynTutor</h1>
-    <div class="brand-divider"></div>
-    <p class="subtitle">
-      Establish grammatical competence through Syntactical structure
-    </p>
+  <header class="landing-header">
+    <button id="themeToggleBtn" class="theme-toggle-btn" type="button" aria-label="Toggle theme">
+      <svg id="themeIcon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+    <button id="navLoginBtn" class="nav-login-btn" type="button">LOG IN</button>
+  </header>
 
-    <form id="loginForm" class="auth-form">
-      <div class="step-auth">
-        <input
-          type="email"
-          id="email"
-          class="input-field"
-          placeholder="Email address"
-          required
-          autocomplete="email"
-        />
-        <input
-          type="password"
-          id="password"
-          class="input-field"
-          placeholder="Password"
-          required
-          autocomplete="current-password"
-        />
+  <main class="landing-main">
+    <div class="landing-container">
+      <h1 class="brand-title">SynTutor</h1>
+      <div class="brand-divider"></div>
+      <p class="subtitle">
+        Establish grammatical competence through Syntactical structure
+      </p>
+
+      <a href="/index.html" class="enter-guest-btn" title="Continue to SynTutor">
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <polyline points="14 6 20 12 14 18"></polyline>
+        </svg>
+      </a>
+
+      <div id="authFormWrap" class="auth-form-wrap">
+        <form id="loginForm" class="auth-form">
+          <div class="step-auth">
+            <input type="email" id="email" class="input-field" placeholder="Email address" required autocomplete="email" />
+            <input type="password" id="password" class="input-field" placeholder="Password" required autocomplete="current-password" />
+          </div>
+          <div class="code-field" style="display:none">
+            <input type="text" id="verificationCode" class="input-field" placeholder="6-digit verification code" inputmode="numeric" />
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+            <button type="submit" id="signInBtn" class="btn-primary">Sign In</button>
+            <button type="button" id="signUpBtn" class="btn-secondary">Register</button>
+          </div>
+          <div id="authStatus" class="msg"></div>
+        </form>
       </div>
-      <div class="code-field" style="display:none">
-        <input
-          type="text"
-          id="verificationCode"
-          class="input-field"
-          placeholder="6-digit verification code"
-          inputmode="numeric"
-          autocomplete="one-time-code"
-        />
-      </div>
-      <div class="btn-group">
-        <button type="submit" id="signInBtn" class="btn-primary">Sign In</button>
-        <button type="button" id="signUpBtn" class="btn-secondary">Register</button>
-      </div>
-      <div id="authStatus" class="msg"></div>
-    </form>
+    </div>
   </main>
 
   <script src="js/config-hint.js"></script>
   <script type="module" src="js/auth.js"></script>
+  <script>
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const navLoginBtn = document.getElementById('navLoginBtn');
+    const authFormWrap = document.getElementById('authFormWrap');
+
+    function renderTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('syntutor_theme', theme);
+      if (theme === 'dark') {
+        themeIcon.innerHTML = `
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        `;
+      } else {
+        themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+      }
+    }
+
+    renderTheme(localStorage.getItem('syntutor_theme') || 'light');
+
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      renderTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    navLoginBtn.addEventListener('click', () => {
+      authFormWrap.classList.toggle('open');
+      if (authFormWrap.classList.contains('open')) {
+        document.getElementById('email')?.focus();
+      }
+    });
+  </script>
 </body>
 </html>
