@@ -17,15 +17,18 @@ const TOP_PAD = 24;
 const SIDE_PAD = 24;
 const LABEL_GAP = 20;
 
-const COLORS = {
-  nodeStroke: '#6d5ae6',
-  text: '#2b2440',
-  edge: '#000000',
-  edgeValid: '#000000',
-  edgeError: '#d64545',
-  edgeText: '#77708f',
-  selectedStroke: '#c98f00',
-};
+function getThemeColors() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  return {
+    nodeStroke: isDark ? '#a78bfa' : '#6d5ae6',
+    text: isDark ? '#f1f5f9' : '#2b2440',
+    edge: isDark ? '#94a3b8' : '#000000',
+    edgeValid: isDark ? '#94a3b8' : '#000000',
+    edgeError: '#d64545',
+    edgeText: isDark ? '#94a3b8' : '#77708f',
+    selectedStroke: '#eab308',
+  };
+}
 
 const ch = (nd) => nd.children || [];
 
@@ -197,6 +200,17 @@ export class TreeRenderer {
     this.draw();
   }
 
+  clear() {
+    this.tree = null;
+    this.layoutData = null;
+    this.dfsOrder = [];
+    this.indexById = new Map();
+    this.selectedId = null;
+    this.hoverId = null;
+    this.view = { scale: 1, tx: 0, ty: 0 };
+    this.draw();
+  }
+
   _fitView() {
     const w = this.canvas.clientWidth || this.canvas.width;
     const h = this.canvas.clientHeight || this.canvas.height;
@@ -218,9 +232,6 @@ export class TreeRenderer {
     if (this.tree) this.draw();
   }
 
-  _toScreen(p) {
-    return { x: p.x * this.view.scale + this.view.tx, y: p.y * this.view.scale + this.view.ty };
-  }
   _toWorld(p) {
     return { x: (p.x - this.view.tx) / this.view.scale, y: (p.y - this.view.ty) / this.view.scale };
   }
@@ -265,7 +276,7 @@ export class TreeRenderer {
         this.draw();
       }
     } else {
-      const id = this._hitTest(mx, my);
+      const id = this.layoutData ? this._hitTest(mx, my) : null;
       this.hoverX = mx;
       this.hoverY = my;
       if (id !== this.hoverId) {
@@ -280,7 +291,7 @@ export class TreeRenderer {
   }
 
   _onUp() {
-    if (this._drag && !this._drag.moved) {
+    if (this._drag && !this._drag.moved && this.layoutData) {
       const id = this._hitTest(this._drag.mouseX, this._drag.mouseY);
       this.onSelect(id);
     }
@@ -312,10 +323,6 @@ export class TreeRenderer {
     const h = this.canvas.clientHeight || this.canvas.height;
     ctx.clearRect(0, 0, w, h);
     if (!this.layoutData) {
-      ctx.fillStyle = COLORS.edgeText;
-      ctx.font = '14px system-ui, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('No syntax tree yet \u2014 submit a sentence to begin.', w / 2, h / 2);
       return;
     }
     ctx.save();
@@ -362,7 +369,7 @@ export class TreeRenderer {
   }
 
   _drawTooltip() {
-    if (!this.hoverId) return;
+    if (!this.hoverId || !this.layoutData) return;
     const l = this.layoutData.layout.get(this.hoverId);
     if (!l) return;
     const meaning = this.describe(l.node.type);
@@ -394,23 +401,25 @@ export class TreeRenderer {
   }
 
   _edgeColor(status) {
-    if (status === 'error') return COLORS.edgeError;
-    if (status === 'valid') return COLORS.edgeValid;
-    return COLORS.edge;
+    const colors = getThemeColors();
+    if (status === 'error') return colors.edgeError;
+    if (status === 'valid') return colors.edgeValid;
+    return colors.edge;
   }
 
   _drawNode(l) {
     const ctx = this.ctx;
     const n = l.node;
+    const colors = getThemeColors();
     const isRoot = this.layoutData.root === n;
     const isSel = n.id === this.selectedId;
     const isHov = n.id === this.hoverId;
     const err = n.edgeResult && n.edgeResult.status === 'error';
 
-    let color = err ? COLORS.edgeError : COLORS.text;
-    if (isRoot) color = COLORS.nodeStroke;
-    if (isHov) color = COLORS.nodeStroke;
-    if (isSel) color = COLORS.selectedStroke;
+    let color = err ? colors.edgeError : colors.text;
+    if (isRoot) color = colors.nodeStroke;
+    if (isHov) color = colors.nodeStroke;
+    if (isSel) color = colors.selectedStroke;
 
     ctx.fillStyle = color;
     if (ch(n).length === 0) {
@@ -423,11 +432,9 @@ export class TreeRenderer {
     ctx.fillText(nodeLabel(n), l.x, l.y + 3);
 
     if (ch(n).length === 0) {
-      ctx.fillStyle = COLORS.edgeText;
+      ctx.fillStyle = colors.edgeText;
       ctx.font = '600 10px Inter, system-ui, sans-serif';
       ctx.fillText(n.type, l.x, l.y - 14);
     }
   }
 }
-
-export { COLORS, nodeLabel };

@@ -48,7 +48,7 @@ SynTutor/
   THESIS.md               original design specification (input document)
   ARCHITECTURE.md         this file
   css/style.css           394-line design system (§4)
-  js/main.js              200 lines: FSM + pipeline orchestration
+  js/main.js              FSM + pipeline orchestration, highlighting, auth, and history
   js/renderer.js          387 lines: canvas layout/draw/hitbox/zoom/keyboard
   js/ui.js                291 lines: DOM views, explainer, dev panel, logs
   server/app.py           240 lines: HTTP server + payload assembly
@@ -86,7 +86,9 @@ Element registry (all are read or written by the JS, exact ids):
 |---|---|---|
 | `#stateBadge` | span | FSM state pill (data-state colors: IDLE/PROCESSING/VIEWING/EXPLORING) |
 | `#sessionLabel` | span | "Idle" / "Processing…" |
-| `#inputText` | textarea | paragraph-capable input; starts `readOnly`. Double-click enters edit mode; blur re-locks and auto-re-analyzes on changed text; when locked, clicking positions a caret so sentence activation works |
+| `.input-editor` | div | positions the textarea and read-only highlight overlay |
+| `#inputText` | textarea | paragraph-capable input; starts `readOnly`. Double-click enters edit mode with native text and caret; blur re-locks and auto-re-analyzes changed text; locked clicks activate the sentence at the caret |
+| `#inputHighlights` | div | safe text-node overlay showing red invalid words and the selected-sentence background while locked |
 | `#inputHint` | p | `.input-hint` — live instruction line (editing ↔ locked) |
 | `#treeCanvas` | canvas | `tabindex=0`, keyboard navigable, aria-label |
 | `#canvasOverlay` | div | `.canvas-overlay`, `pointer-events:none` (see §4) |
@@ -100,8 +102,9 @@ Element registry (all are read or written by the JS, exact ids):
 Module graph (`<script type=module src=js/main.js>`):
 
 ```
-main.js ──> renderer.js   (TreeRenderer, createLayout, COLORS)
-   └─────> ui.js        (FSM badge, logs, views, fillDevPanel)
+main.js ──> auth.js       (Supabase client and session)
+   ├─────> renderer.js    (TreeRenderer, createLayout, COLORS)
+   └─────> ui.js          (FSM badge, logs, views, fillDevPanel)
 ```
 
 ---
@@ -202,10 +205,12 @@ RE-ENTRY loop:          any state → PROCESSING on resubmit
   locked → re-analyze the sentence at the caret).
   Deselection happens by clicking empty canvas space (no Clear-selection
   button).
-- `lockInput()` — after a successful payload the textarea is normalized to
-  the trimmed text, `readOnly = true`, hint switched to "click any sentence",
-  the textarea blurred, and `ui.applySentenceSelection(payload)` highlights the
-  analyzed sentence span (native text-selection, scroll preserved).
+- `returnToLocked()` — after analysis or blur, restores `readOnly = true`,
+  hides the native textarea text behind the overlay, and renders the selected
+  sentence/error highlights while preserving scroll offsets.
+- `buildHighlightSpans()` / `renderInputHighlights()` — map parser token ranges
+  and error node spans to safe DOM text nodes. These spans are local UI state
+  and are never written to Supabase history.
   `lastAnalyzedText` guards the blur path so unchanged text never re-parses.
 - `failPipeline(title, lines)` — canvas overlay error, verdict error lines,
   diagnostic, → VIEWING, logs.
@@ -228,9 +233,18 @@ RE-ENTRY loop:          any state → PROCESSING on resubmit
   - stage 6: `renderSentenceVerdict(payload.explainers.basic.split('\n'),
     !payload.summary.valid)`;
   - **`session = { payload }`** ← the in-memory cache that powers the
-    Interaction Loop; input normalized + locked (`lockInput`),
-    `applySentenceSelection(payload)` highlights the analyzed sentence, then
-    stage 7: `renderer.setTree(payload.tree)` → VIEWING.
+    Interaction Loop; input is locked and the highlight overlay renders the
+    analyzed sentence/error spans, then stage 7:
+    `renderer.setTree(payload.tree)` → VIEWING.
+  - Renders the tree and highlights before starting the background history save.
+    New submissions are inserted into `analysis_history`; sentence navigation
+    and history replay do not create duplicate rows. The recorded-text guard is
+    updated only after a successful insert.
+- `loadAndRenderHistory()` / `renderHistoryItems()` — load the authenticated
+  user's recent history, filter valid/invalid entries, and create safe DOM
+  nodes for sentence text and constraint chips.
+- `replayHistory()` / `clearHistory()` — replay an entry without inserting a
+  duplicate and delete only the authenticated user's selected history rows.
 - `applyStatuses(tree, details)` — DFS; `node.edgeResult = {status}` (default
   'valid' if missing) — the renderer reads this per child edge.
 - `handleNodeSelect(id)` — no-op if no session; `renderNodeDetail(session,

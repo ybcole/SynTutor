@@ -156,6 +156,8 @@ def token_metadata(nlp, doc, target):
         out.append({
             'i': tok.i - target.start,
             't': tok.text,
+            'start': tok.idx,
+            'end': tok.idx + len(tok),
             'pos': tok.pos_,
             'tag': tok.tag_,
             'dep': tok.dep_,
