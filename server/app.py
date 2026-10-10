@@ -17,7 +17,11 @@ from parse_engine import ParseFailure, analyze, load_models
 from matrix import evaluate
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PORT = int(os.environ.get('SYNTUTOR_PORT', '8000'))
+PORT = int(os.environ.get('SYNTUTOR_PORT') or os.environ.get('PORT') or '8000')
+
+# CORS: the frontend may be hosted on a different origin (e.g. Vercel) than this
+# API. Restrict with SYNTUTOR_ALLOW_ORIGIN (default '*' for easy setup).
+ALLOW_ORIGIN = os.environ.get('SYNTUTOR_ALLOW_ORIGIN', '*')
 
 # Only these top-level frontend entries may be served statically. Anything else
 # under ROOT (server/, supabase/, scripts/, migrations, config) stays private.
@@ -146,9 +150,20 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Content-Type', ctype)
         self.send_header('Content-Length', str(len(data)))
         self.send_header('Cache-Control', 'no-store')
+        self.send_header('Access-Control-Allow-Origin', ALLOW_ORIGIN)
+        self.send_header('Vary', 'Origin')
         self.end_headers()
         self.wfile.write(data)
         self.wfile.flush()
+
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self.send_header('Access-Control-Allow-Origin', ALLOW_ORIGIN)
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.send_header('Access-Control-Max-Age', '86400')
+        self.send_header('Content-Length', '0')
+        self.end_headers()
 
     def _json(self, code, payload):
         self._send(code, json.dumps(payload, ensure_ascii=False))
@@ -232,7 +247,8 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
-    host = os.environ.get('SYNTUTOR_HOST', '127.0.0.1')
+    default_host = '0.0.0.0' if os.environ.get('PORT') else '127.0.0.1'
+    host = os.environ.get('SYNTUTOR_HOST', default_host)
     server = ThreadingHTTPServer((host, PORT), Handler)
     print(f'SynTutor full-stack server on http://{host}:{PORT}')
     print('Endpoints: GET /  \u00b7 GET /api/health \u00b7 POST /api/parse')

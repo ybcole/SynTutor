@@ -1,4 +1,5 @@
 import { loadClerk, createSupabaseClient } from './auth.js';
+import { API_BASE } from './config.js';
 import { TreeRenderer } from './renderer.js';
 import { getSavedTheme, setTheme } from './theme.js';
 import {
@@ -557,10 +558,10 @@ async function executePipeline(opts = {}) {
   const body = { text };
   if (opts.index !== undefined && opts.index !== null) body.sentence_index = opts.index;
   const target = opts.index !== undefined && opts.index !== null ? `sentence #${opts.index + 1}` : 'first sentence';
-  log(`Stage 2: POST /api/parse (target: ${target})`);
+  log(`Stage 2: POST ${API_BASE}/api/parse (target: ${target})`);
   let res;
   try {
-    res = await fetch('/api/parse', {
+    res = await fetch(`${API_BASE}/api/parse`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
