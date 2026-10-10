@@ -77,10 +77,12 @@ def _warm_models():
 threading.Thread(target=_warm_models, daemon=True).start()
 
 
-with gr.Blocks(title='SynTutor API') as demo:
+with gr.Blocks(title='SynTutor') as demo:
     gr.Markdown(
-        '# SynTutor API\n\n'
-        'Deterministic English parse backend (spaCy + benepar + rule matrix).\n\n'
+        '# SynTutor\n\n'
+        'Parsing backend for the SynTutor app '
+        '(https://syntutor.vercel.app) — spaCy + benepar + rule matrix.\n\n'
+        'The app calls these internally:\n\n'
         '- `GET /api/health`\n'
         '- `POST /api/parse` with `{"text": "..."}`\n'
     )

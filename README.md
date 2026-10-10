@@ -1,5 +1,5 @@
 ---
-title: SynTutor API
+title: SynTutor
 emoji: 🌳
 colorFrom: indigo
 colorTo: green
@@ -10,19 +10,16 @@ app_file: server/hf_space.py
 pinned: false
 ---
 
-# SynTutor API
+# SynTutor
 
-Deterministic English phrase-structure parsing API (spaCy + benepar + rule-matrix XAI).
+An explainable AI tutoring system for English phrase-structure syntax: parse a
+sentence into a constituency tree and read deterministic, rule-based
+explanations for every relationship (spaCy + benepar + rule-matrix XAI).
 
-Live:
+**App:** https://syntutor.vercel.app
 
-- **Web app (Vercel):** https://syntutor.vercel.app
-- **API (this Space):** https://ybcole-syntutor.hf.space
-
-Endpoints:
-
-- `GET  /api/health` — model/pipeline availability
-- `POST /api/parse` — `{ "text": "..." }` → JSON tree + node descriptions
+This Space is only the parsing backend that the app calls; it is not a public
+API product. See `docs/ARCHITECTURE.md` for the full system.
 
 Run locally:
 
