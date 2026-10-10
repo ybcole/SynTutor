@@ -29,8 +29,8 @@ Hard guarantees:
 
 | | |
 |---|---|
-| Frontend | Vanilla ES modules, HTML5 `<canvas>`, no frameworks, no transpilation; build = `scripts/build.js` copy → `dist/` (Vercel) |
-| Backend | Local: Python 3.10+ stdlib `http.server` (`server/app.py`); production: the same `build_payload`/`analyze` logic mounted on Gradio/FastAPI (`app.py`) on the HF Space |
+| Frontend | Vanilla ES modules, HTML5 `<canvas>`, no frameworks, no transpilation; build = `scripts/build.js` copy `web/` → `dist/` (Vercel) |
+| Backend | Local: Python 3.10+ stdlib `http.server` (`server/app.py`); production: the same `build_payload`/`analyze` logic mounted on Gradio/FastAPI (`server/hf_space.py`) on the HF Space |
 | NLP | spaCy `en_core_web_md` + benepar `benepar_en3` + `transformers==4.46.3` pin |
 | Parsing output | single MAP constituent tree drawn from `span._.parse_string` |
 | Verification | `python3 scripts/audit_rules.py` (gold corpus, fails loud) |
@@ -42,23 +42,23 @@ Hard guarantees:
 
 ```
 SynTutor/
-  app.py                  HF Space entrypoint: minimal Gradio app (ZeroGPU) + mounted /api routes
-  index.html              UI shell (all 16 wired element IDs, §3)
+  server/hf_space.py      HF Space entrypoint: minimal Gradio app (ZeroGPU) + mounted /api routes
+  web/index.html          UI shell (all 16 wired element IDs, §3)
+  web/login.html          Clerk sign-in / sign-up shell
   package.json            {build, serve, audit} npm scripts
   README.md               quick start + spec-level overview
-  RULES.md                full rule-matrix inventory (sibling doc)
-  THESIS.md               original design specification (input document)
-  ARCHITECTURE.md         this file
-  css/style.css           394-line design system (§4)
-  js/main.js              FSM + pipeline orchestration, highlighting, auth, and history
-  js/renderer.js          387 lines: canvas layout/draw/hitbox/zoom/keyboard
-  js/ui.js                291 lines: DOM views, explainer, dev panel, logs
-  server/app.py           240 lines: HTTP server + payload assembly
-  server/parse_engine.py  202 lines: NLP load, parse-string -> node graph
-  server/matrix.py        1615 lines: rule matrix + XAI + remediation
-  scripts/build.js        Vercel build: copies index.html/login.html/css/js -> dist/
-  scripts/audit_rules.py  238 lines: gold-corpus coverage audit (exit-code gate)
+  docs/                   ARCHITECTURE.md (this file) + rule/thesis sources
+  web/css/style.css       394-line design system (§4)
+  web/js/main.js          FSM + pipeline orchestration, highlighting, auth, and history
+  web/js/renderer.js      387 lines: canvas layout/draw/hitbox/zoom/keyboard
+  web/js/ui.js            291 lines: DOM views, explainer, dev panel, logs
+  server/app.py           HTTP server + payload assembly (local full-stack)
+  server/parse_engine.py  NLP load, parse-string -> node graph
+  server/matrix.py        rule matrix + XAI + remediation
+  scripts/build.js        Vercel build: copies web/ (index.html, login.html, css, js) -> dist/
+  scripts/audit_rules.py  gold-corpus coverage audit (exit-code gate)
   vercel.json             Vercel config (outputDirectory: dist, framework: null)
+  Dockerfile              local full-stack image (server/app.py on port 7860)
 ```
 
 ### The seven pipeline stages (as implemented)
@@ -66,7 +66,7 @@ SynTutor/
 | # | Stage | Producer | Consumer | UI feedback |
 |---|-------|----------|----------|-------------|
 | 1 | User Input | textarea `#inputText` | `main.js executePipeline` | session label "Processing…" |
-| 2 | Request `/api/parse` | `fetch` POST JSON (API base = `js/config.js` `API_BASE`) | `build_payload` (local `server/app.py`; HF `app.py` mounts the identical handler) | FSM badge PROCESSING |
+| 2 | Request `/api/parse` | `fetch` POST JSON (API base = `web/js/config.js` `API_BASE`) | `build_payload` (local `server/app.py`; HF `server/hf_space.py` mounts the identical handler) | FSM badge PROCESSING |
 | 3 | Tokenize + POS | spaCy `nlp(text)` | `parse_engine.token_metadata` | token stream |
 | 4 | Parse tree | benepar `span._.parse_string` | `parse_parse_string` → `NodeBuilder` | parse string |
 | 5 | Validate Ψ matrix | `matrix.evaluate(root)` | `MatrixEvaluator` | node colors |
@@ -79,7 +79,7 @@ logs a `Stage N:` line).
 
 ---
 
-## 3. Frontend — `index.html`
+## 3. Frontend — `web/index.html`
 
 Layout is a three-column shell; `<body>` is `flex column; overflow:hidden`
 (no page scroll — the canvas and panels scroll internally).
@@ -113,7 +113,7 @@ main.js ──> auth.js       (Supabase client and session)
 
 ---
 
-## 4. Frontend — stylesheet `css/style.css`
+## 4. Frontend — stylesheet `web/css/style.css`
 
 Design tokens (`:root`):
 
@@ -145,7 +145,7 @@ Key layout facts:
 
 ---
 
-## 5. Frontend — `js/ui.js` (views, logs, dev panel)
+## 5. Frontend — `web/js/ui.js` (views, logs, dev panel)
 
 Exports: `setStateBadge, log, clearOverlay, showCanvasMessage,
 renderSentenceVerdict, renderNodeDetail, renderDiagnostic, fillDevPanel,
@@ -178,7 +178,7 @@ applySentenceSelection, setProcessBusy`.
 
 ---
 
-## 6. Frontend — `js/main.js` (FSM + orchestration)
+## 6. Frontend — `web/js/main.js` (FSM + orchestration)
 
 State machine (exact states/events):
 
@@ -268,7 +268,7 @@ Error-handling matrix (frontend):
 
 ---
 
-## 7. Frontend — `js/renderer.js` (canvas layout, drawing, interaction)
+## 7. Frontend — `web/js/renderer.js` (canvas layout, drawing, interaction)
 
 ### Layout algorithm (`createLayout`)
 
@@ -339,12 +339,12 @@ selectedStroke `#c98f00`.
 
 ## 8. Backend — `server/app.py` (HTTP + payload)
 
-This is the canonical full-stack/local server (stdio `http.server` + static
-files + `/api/*`). In production the same logic runs behind `app.py` (HF
-Space): Gradio is launched on port 7860 to satisfy the ZeroGPU startup scan,
-then the identical `/api/health` and `/api/parse` handlers are mounted on the
-FastAPI app Gradio returns. `server/app.py` is only ever used directly for
-local development / the container image.
+This is the canonical full-stack/local server (stdlib `http.server` + static
+files from `web/` + `/api/*`). In production the same logic runs behind
+`server/hf_space.py` (HF Space): Gradio is launched on port 7860 to satisfy the
+ZeroGPU startup scan, then the identical `/api/health` and `/api/parse` handlers
+are mounted on the FastAPI app Gradio returns. `server/app.py` is only ever used
+directly for local development / the container image.
 
 - `ROOT` = project dir (parent of `server/`); `PORT = env SYNTUTOR_PORT|8000`;
   host `127.0.0.1` / `SYNTUTOR_HOST`.
@@ -751,13 +751,13 @@ matrix counts (`N validated · M violated · K unrated`) · `Verdict: VALID/INVA
 - Parse: `curl -s -X POST http://127.0.0.1:8000/api/parse -H 'Content-Type:
   application/json' -d '{"text":"The boys runs."}'`.
 
-**Production (HF Space):** `app.py` launches Gradio on port 7860 (the platform's
-`PORT`/`GRADIO_SERVER_PORT`) and mounts `/api/health` + `/api/parse` on it; the
-frontend on Vercel calls the API cross-origin via `API_BASE` in `js/config.js`
-(currently `https://ybcole-syntutor.hf.space`). CORS headers are emitted by the
-API handlers; `GRADIO_SSR_MODE=false` is set so the mounted routes are served
-reliably. `@spaces.GPU` on `_zerogpu_noop` satisfies ZeroGPU's startup scan but
-is never invoked (CPU-only backend, so no GPU quota is consumed).
+**Production (HF Space):** `server/hf_space.py` launches Gradio on port 7860 (the
+platform's `PORT`/`GRADIO_SERVER_PORT`) and mounts `/api/health` + `/api/parse`
+on it; the frontend on Vercel calls the API cross-origin via `API_BASE` in
+`web/js/config.js` (currently `https://ybcole-syntutor.hf.space`). CORS headers
+are emitted by the API handlers; `GRADIO_SSR_MODE=false` is set so the mounted
+routes are served reliably. `@spaces.GPU` on `_zerogpu_noop` satisfies ZeroGPU's
+startup scan but is never invoked (CPU-only backend, so no GPU quota is consumed).
 
 - Local static assets are read from disk **per request** (served with
   `no-store`), so JS/CSS/index edits show up on a hard refresh; **Python

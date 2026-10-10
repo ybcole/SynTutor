@@ -17,6 +17,7 @@ from parse_engine import ParseFailure, analyze, load_models
 from matrix import evaluate
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WEB_DIR = os.path.join(ROOT, 'web')
 PORT = int(os.environ.get('PORT') or os.environ.get('SYNTUTOR_PORT') or '8000')
 
 # CORS: the frontend may be hosted on a different origin (e.g. Vercel) than this
@@ -206,8 +207,8 @@ class Handler(BaseHTTPRequestHandler):
         if relpath.startswith('..') or os.path.isabs(relpath) or top not in PUBLIC_TOP:
             self._json(403, {'error': 'forbidden path'})
             return
-        full = os.path.join(ROOT, relpath)
-        if not full.startswith(ROOT) or not os.path.isfile(full):
+        full = os.path.join(WEB_DIR, relpath)
+        if not full.startswith(WEB_DIR) or not os.path.isfile(full):
             self._json(404, {'error': 'not found'})
             return
         ext = os.path.splitext(full)[1].lower()

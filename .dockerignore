@@ -8,5 +8,4 @@ dist
 supabase
 scripts
 docs
-FEATURES.md
 *.md

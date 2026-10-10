@@ -28,7 +28,7 @@ from fastapi import Request  # noqa: E402
 from fastapi.responses import JSONResponse  # noqa: E402
 from starlette.responses import Response  # noqa: E402
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SERVER_DIR = os.path.join(ROOT, 'server')
 if SERVER_DIR not in sys.path:
     sys.path.insert(0, SERVER_DIR)

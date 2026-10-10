@@ -19,9 +19,7 @@ RUN python -m spacy download en_core_web_md \
     && python -c "import benepar; benepar.download('benepar_en3')"
 
 COPY server/ ./server/
-COPY index.html login.html ./
-COPY css/ ./css/
-COPY js/ ./js/
+COPY web/ ./web/
 
 EXPOSE 7860
 
