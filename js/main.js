@@ -1,5 +1,6 @@
 import { loadClerk, createSupabaseClient } from './auth.js';
 import { TreeRenderer } from './renderer.js';
+import { getSavedTheme, setTheme } from './theme.js';
 import {
   log,
   clearOverlay, showCanvasMessage, renderSentenceVerdict, renderNodeDetail,
@@ -65,6 +66,26 @@ function deleteGuestHistory(id) {
   localStorage.setItem('syntutor_guest_history', JSON.stringify(items));
 }
 
+// Mirror of the server-side history cap (Supabase query uses LIMIT 50).
+const GUEST_HISTORY_LIMIT = 50;
+
+function guestHistoryId() {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return `guest-${crypto.randomUUID()}`;
+  }
+  return `guest-${Date.now()}-${Math.floor(Math.random() * 1e6)}`;
+}
+
+function appendGuestHistory(entry) {
+  try {
+    const items = getGuestHistory().filter((item) => item.sentence !== entry.sentence);
+    items.unshift(entry);
+    localStorage.setItem('syntutor_guest_history', JSON.stringify(items.slice(0, GUEST_HISTORY_LIMIT)));
+  } catch (err) {
+    console.warn('Failed to save guest history:', err);
+  }
+}
+
 function clearGuestHistory() {
   localStorage.removeItem('syntutor_guest_history');
 }
@@ -82,8 +103,7 @@ export function boot() {
 }
 
 function initThemeAndMenu() {
-  const savedTheme = localStorage.getItem('syntutor_theme') || 'light';
-  applyTheme(savedTheme);
+  applyTheme(getSavedTheme());
   updateAuthState();
 
   document.querySelector('#themeToggleBtn')?.addEventListener('click', () => {
@@ -108,7 +128,6 @@ function initThemeAndMenu() {
 }
 
 function openHistoryDrawer() {
-  if (isGuest) return;
   document.querySelector('#historyDrawerBackdrop')?.classList.add('active');
   loadAndRenderHistory();
 }
@@ -126,30 +145,7 @@ function closeAuthModal() {
 }
 
 function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('syntutor_theme', theme);
-  const icon = document.querySelector('#themeIcon');
-  if (icon) {
-    icon.innerHTML = theme === 'dark'
-      ? `
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-      `
-      : `
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      `;
-  }
+  setTheme(theme, document.querySelector('#themeIcon'));
   if (renderer && renderer.tree) {
     renderer.draw();
   }
@@ -168,7 +164,7 @@ function updateAuthState() {
     label.textContent = name;
     avatar.classList.remove('guest');
     avatar.textContent = name.charAt(0).toUpperCase();
-    chip.title = 'Sign out';
+    chip.title = 'Account menu';
     if (historyBtn) historyBtn.hidden = false;
   } else {
     label.textContent = 'Guest';
@@ -180,7 +176,7 @@ function updateAuthState() {
       </svg>
     `;
     chip.title = 'Log In / Sign Up';
-    if (historyBtn) historyBtn.hidden = true;
+    if (historyBtn) historyBtn.hidden = false;
     document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
   }
   renderProfileMenu();
@@ -229,6 +225,17 @@ function setProfileMenu(open) {
   }
   chip?.setAttribute('aria-expanded', String(open));
   if (open) showProfileMenuMain();
+  if (open) focusFirstMenuItem();
+}
+
+function visibleMenuItems() {
+  const menu = document.querySelector('#profileMenu');
+  if (!menu) return [];
+  return [...menu.querySelectorAll('.profile-menu-item')].filter((el) => !el.hidden);
+}
+
+function focusFirstMenuItem() {
+  visibleMenuItems()[0]?.focus();
 }
 
 function toggleProfileMenu() {
@@ -328,6 +335,27 @@ function initProfileMenu() {
   });
   document.addEventListener('click', (e) => {
     if (profileMenuOpen && !e.target.closest('.profile-anchor')) setProfileMenu(false);
+  });
+  document.querySelector('#profileMenu')?.addEventListener('keydown', (e) => {
+    const items = visibleMenuItems();
+    if (!items.length) return;
+    const idx = items.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      (items[idx + 1] ?? items[0]).focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      (items[idx - 1] ?? items[items.length - 1]).focus();
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      items[0].focus();
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      items[items.length - 1].focus();
+    } else if (e.key === 'Escape') {
+      setProfileMenu(false);
+      document.querySelector('#identityChip')?.focus();
+    }
   });
 }
 
@@ -614,7 +642,14 @@ async function executePipeline(opts = {}) {
       }
     } else {
       recordedTexts.add(text);
-      log('Stage 6b: analysis history skipped (guest session)');
+      appendGuestHistory({
+        id: guestHistoryId(),
+        sentence: text,
+        is_valid: payload.summary.valid,
+        constraints_fired: payload.summary.constraints_fired,
+        created_at: new Date().toISOString(),
+      });
+      log('Stage 6b: analysis history recorded locally (guest session)');
     }
   }
 }
@@ -745,10 +780,9 @@ function handleNodeSelect(id) {
 async function loadAndRenderHistory() {
   const container = document.querySelector('#historyList');
   if (!container) return;
-  if (isGuest) return;
   container.innerHTML = '<p class="history-empty">Loading past analyses...</p>';
 
-  if (supabase) {
+  if (!isGuest && supabase) {
     const { data, error } = await supabase
       .from('analysis_history')
       .select('id, sentence, is_valid, constraints_fired, created_at')
@@ -756,10 +790,17 @@ async function loadAndRenderHistory() {
       .limit(50);
 
     if (error) {
-      container.innerHTML = `<p class="history-empty" style="color: var(--err);">Error loading history: ${error.message}</p>`;
+      container.textContent = '';
+      const err = document.createElement('p');
+      err.className = 'history-empty';
+      err.style.color = 'var(--err)';
+      err.textContent = `Error loading history: ${error.message}`;
+      container.appendChild(err);
       return;
     }
     cachedHistory = data || [];
+  } else if (isGuest) {
+    cachedHistory = getGuestHistory();
   } else {
     cachedHistory = [];
   }
@@ -778,7 +819,13 @@ function renderHistoryItems() {
   });
 
   if (!filtered.length) {
-    container.innerHTML = '<p class="history-empty">No matching analyses found.</p>';
+    container.textContent = '';
+    const note = document.createElement('p');
+    note.className = 'history-empty';
+    note.textContent = (isGuest && !cachedHistory.length)
+      ? 'No guest history yet — analyses you run will appear here and persist in this browser.'
+      : 'No matching analyses found.';
+    container.appendChild(note);
     return;
   }
 

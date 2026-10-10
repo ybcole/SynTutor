@@ -143,6 +143,7 @@ function wireAuthForm(ctx) {
     if (codeInput) codeInput.value = '';
     if (emailInput) emailInput.setAttribute('required', '');
     if (passwordInput) passwordInput.setAttribute('required', '');
+    if (passwordInput) passwordInput.setAttribute('autocomplete', 'current-password');
     pendingCodeAction = null;
     activeSignIn = null;
     activeSignUp = null;
@@ -247,6 +248,8 @@ function wireAuthForm(ctx) {
       setStatus('Enter an email and password to register.', true);
       return;
     }
+    // Register path collects a new credential, not an existing one.
+    passwordInput?.setAttribute('autocomplete', 'new-password');
 
     try {
       setStatus('Registering account...');
