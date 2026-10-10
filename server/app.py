@@ -246,7 +246,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         except Exception as exc:  # model not available
             hint = _model_status().get('error') or (
-                'Run:  pip install spacy benepar transformers<4.47  &&  python -m spacy download en_core_web_md  &&  python -m benepar.download benepar_en3'
+                'Run:  pip install spacy benepar transformers==4.46.3  &&  python -m spacy download en_core_web_md  &&  python -m benepar.download benepar_en3'
             )
             self._json(503, {'error': str(exc), 'hint': hint})
             return

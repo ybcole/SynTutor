@@ -29,11 +29,12 @@ Hard guarantees:
 
 | | |
 |---|---|
-| Frontend | Vanilla ES modules, HTML5 `<canvas>`, no frameworks, no build step |
-| Backend | Python 3.10+ stdlib `http.server`, no Django/Flask |
-| NLP | spaCy `en_core_web_md` + benepar `benepar_en3` + `transformers<4.47` pin |
+| Frontend | Vanilla ES modules, HTML5 `<canvas>`, no frameworks, no transpilation; build = `scripts/build.js` copy → `dist/` (Vercel) |
+| Backend | Local: Python 3.10+ stdlib `http.server` (`server/app.py`); production: the same `build_payload`/`analyze` logic mounted on Gradio/FastAPI (`app.py`) on the HF Space |
+| NLP | spaCy `en_core_web_md` + benepar `benepar_en3` + `transformers==4.46.3` pin |
 | Parsing output | single MAP constituent tree drawn from `span._.parse_string` |
 | Verification | `python3 scripts/audit_rules.py` (gold corpus, fails loud) |
+| Deployment | Vercel static frontend (`syntutor.vercel.app`) + HF Space API (`ybcole-syntutor.hf.space`); push to `main` redeploys both |
 
 ---
 
@@ -41,8 +42,9 @@ Hard guarantees:
 
 ```
 SynTutor/
+  app.py                  HF Space entrypoint: minimal Gradio app (ZeroGPU) + mounted /api routes
   index.html              UI shell (all 16 wired element IDs, §3)
-  package.json            {serve, audit} npm scripts
+  package.json            {build, serve, audit} npm scripts
   README.md               quick start + spec-level overview
   RULES.md                full rule-matrix inventory (sibling doc)
   THESIS.md               original design specification (input document)
@@ -54,7 +56,9 @@ SynTutor/
   server/app.py           240 lines: HTTP server + payload assembly
   server/parse_engine.py  202 lines: NLP load, parse-string -> node graph
   server/matrix.py        1615 lines: rule matrix + XAI + remediation
+  scripts/build.js        Vercel build: copies index.html/login.html/css/js -> dist/
   scripts/audit_rules.py  238 lines: gold-corpus coverage audit (exit-code gate)
+  vercel.json             Vercel config (outputDirectory: dist, framework: null)
 ```
 
 ### The seven pipeline stages (as implemented)
@@ -62,7 +66,7 @@ SynTutor/
 | # | Stage | Producer | Consumer | UI feedback |
 |---|-------|----------|----------|-------------|
 | 1 | User Input | textarea `#inputText` | `main.js executePipeline` | session label "Processing…" |
-| 2 | Request `/api/parse` | `fetch` POST JSON | `server/app.py build_payload` | FSM badge PROCESSING |
+| 2 | Request `/api/parse` | `fetch` POST JSON (API base = `js/config.js` `API_BASE`) | `build_payload` (local `server/app.py`; HF `app.py` mounts the identical handler) | FSM badge PROCESSING |
 | 3 | Tokenize + POS | spaCy `nlp(text)` | `parse_engine.token_metadata` | token stream |
 | 4 | Parse tree | benepar `span._.parse_string` | `parse_parse_string` → `NodeBuilder` | parse string |
 | 5 | Validate Ψ matrix | `matrix.evaluate(root)` | `MatrixEvaluator` | node colors |
@@ -335,6 +339,13 @@ selectedStroke `#c98f00`.
 
 ## 8. Backend — `server/app.py` (HTTP + payload)
 
+This is the canonical full-stack/local server (stdio `http.server` + static
+files + `/api/*`). In production the same logic runs behind `app.py` (HF
+Space): Gradio is launched on port 7860 to satisfy the ZeroGPU startup scan,
+then the identical `/api/health` and `/api/parse` handlers are mounted on the
+FastAPI app Gradio returns. `server/app.py` is only ever used directly for
+local development / the container image.
+
 - `ROOT` = project dir (parent of `server/`); `PORT = env SYNTUTOR_PORT|8000`;
   host `127.0.0.1` / `SYNTUTOR_HOST`.
 - `ThreadingHTTPServer` + `Handler` (server_version `SynTutor/2.0`).
@@ -363,7 +374,7 @@ selectedStroke `#c98f00`.
 - `ParseFailure` → 422 `{error, input}`.
 - Any other exception (model missing) → 503 `{error, hint}` where hint comes
   from `_model_status().error` or the canonical install command
-  (`pip install spacy benepar "transformers<4.47"` + model downloads).
+  (`pip install spacy benepar transformers==4.46.3` + model downloads).
 
 `_contrastive(summary, details)` — deterministic contrastive text:
 valid & no root error → "No grammatical alternative is observed…";
@@ -734,16 +745,27 @@ matrix counts (`N validated · M violated · K unrated`) · `Verdict: VALID/INVA
 
 ## 13. Runtime configuration & verification
 
-- Server: `python3 server/app.py` (or `npm run serve`); port 8000
-  (override `SYNTUTOR_PORT`), host 127.0.0.1 (override `SYNTUTOR_HOST`).
+**Local (full-stack):** `python3 server/app.py` (or `npm run serve`); port 8000
+(override `SYNTUTOR_PORT`), host 127.0.0.1 (override `SYNTUTOR_HOST`).
 - Health: `curl -s http://127.0.0.1:8000/api/health`.
 - Parse: `curl -s -X POST http://127.0.0.1:8000/api/parse -H 'Content-Type:
   application/json' -d '{"text":"The boys runs."}'`.
-- Static assets are read from disk **per request** (served with `no-store`), so
-  JS/CSS/index edits show up on a hard refresh; **Python changes require a
-  server restart**.
-- Model pin: `transformers<4.47` (benepar's retokenizer relies on
-  `T5Tokenizer.build_inputs_with_special_tokens`).
+
+**Production (HF Space):** `app.py` launches Gradio on port 7860 (the platform's
+`PORT`/`GRADIO_SERVER_PORT`) and mounts `/api/health` + `/api/parse` on it; the
+frontend on Vercel calls the API cross-origin via `API_BASE` in `js/config.js`
+(currently `https://ybcole-syntutor.hf.space`). CORS headers are emitted by the
+API handlers; `GRADIO_SSR_MODE=false` is set so the mounted routes are served
+reliably. `@spaces.GPU` on `_zerogpu_noop` satisfies ZeroGPU's startup scan but
+is never invoked (CPU-only backend, so no GPU quota is consumed).
+
+- Local static assets are read from disk **per request** (served with
+  `no-store`), so JS/CSS/index edits show up on a hard refresh; **Python
+  changes require a server restart**.
+- Model pin: `transformers==4.46.3` (benepar's retokenizer relies on
+  `T5Tokenizer.build_inputs_with_special_tokens`, which newer transformers
+  removed). On the Space, `torch.cuda.is_available()` is forced to `False`
+  while models load so benepar stays on CPU under ZeroGPU's CUDA emulation.
 - Determinism premise: benepar + spaCy with identical serialized input produce
   the same tree/tags; the matrix has zero randomness; multi-sentence input is
   pinned to **sentence 1** (`sents[0]`).
