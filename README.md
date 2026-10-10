@@ -12,14 +12,11 @@ pinned: false
 
 # SynTutor
 
+🔗: https://syntutor.vercel.app
+
 An explainable AI tutoring system for English phrase-structure syntax: parse a
 sentence into a constituency tree and read deterministic, rule-based
 explanations for every relationship (spaCy + benepar + rule-matrix XAI).
-
-**App:** https://syntutor.vercel.app
-
-This Space is only the parsing backend that the app calls; it is not a public
-API product. See `docs/ARCHITECTURE.md` for the full system.
 
 Run locally:
 
