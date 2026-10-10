@@ -165,6 +165,13 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Content-Length', '0')
         self.end_headers()
 
+    def do_HEAD(self):
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
+        self.send_header('Content-Length', '0')
+        self.send_header('Access-Control-Allow-Origin', ALLOW_ORIGIN)
+        self.end_headers()
+
     def _json(self, code, payload):
         self._send(code, json.dumps(payload, ensure_ascii=False))
 
