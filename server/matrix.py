@@ -220,6 +220,11 @@ def _preserve_case(source, word):
         return word[0].upper() + word[1:]
     return word
 
+def _edit(start, end, text):
+    """Token-level correction on the target sentence: replace tokens
+    [start, end) with ``text``. start == end inserts before token ``start``;
+    text == '' deletes."""
+    return {'start': start, 'end': end, 'text': text}
 
 def _base_form(leaf):
     """Approximate a lexical base form from the observed surface and POS."""
@@ -1268,6 +1273,8 @@ class MatrixEvaluator:
             'alternative_fix': self._subject_fix_alternative(subj, subj_head, vp_head),
             'targeted_outcome': (f"Subject NP ({subj_label}) + verb {target_pos} "
                                  f"instead of Subject NP ({subj_label}) + verb {vp_head['type']}"),
+            'edit': _edit(vp_head['span'][0], vp_head['span'][1], target)
+
         }
 
     @staticmethod
@@ -1336,6 +1343,7 @@ class MatrixEvaluator:
             'suggested_fix': suggested,
             'alternative_fix': alternative,
             'targeted_outcome': outcome,
+            'edit': _edit(head['span'][0], head['span'][1], fix_noun)
         }
 
     @staticmethod
@@ -1358,6 +1366,7 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or use the singular noun '{_preserve_case(observed, singular)}' "
                                 "with a singular determiner such as 'a' or 'this'."),
             'targeted_outcome': f"{singular} + NNS with an accepted plural form",
+            'edit': _edit(node['span'][0], node['span'][1], _preserve_case(observed, expected))
         }
 
     def _rem_aux(self, node, parent):
@@ -1414,6 +1423,7 @@ class MatrixEvaluator:
             'suggested_fix': suggested,
             'alternative_fix': alternative,
             'targeted_outcome': outcome,
+            'edit': _edit(verb['span'][0], verb['span'][1], target)
         }
 
     def _rem_det_stack(self, node, parent):
@@ -1432,12 +1442,18 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or merge the determiners into one (e.g. use a single "
                                 f"possessive or quantifier instead of several)."),
             'targeted_outcome': "DT + NP (single determinative) instead of DT + DT + NP",
+            'edit': _edit(dets[1]['span'][0], dets[1]['span'][1], '')
         }
 
     def _rem_mod_pos(self, node, parent):
         head = phrase_head(parent) if parent else None
         if head is None:
             return None
+        
+        edit = None
+        if node['span'][0] == head['span'][1]:      # modifier directly after head
+            edit = _edit(head['span'][0], node['span'][1], f"{node['surface']} {head['surface']}")
+        
         return {
             'violation': (f"Modifier Placement Conflict: '{node['surface']}' appears after the "
                           f"head noun '{head['surface']}'."),
@@ -1447,6 +1463,7 @@ class MatrixEvaluator:
             'alternative_fix': None,
             'targeted_outcome': f"Modifier + {head['type']} (head-final order) instead of "
                                 f"{head['type']} + modifier",
+            'edit': edit
         }
 
     def _rem_head_noun(self, node, parent):
@@ -1472,14 +1489,16 @@ class MatrixEvaluator:
                 'them': 'they'}.get(surf)
 
     def _rem_pronoun_case(self, node, parent):
-        head = phrase_head(node) if node else None
+        if node is not None and node['type'] == 'VP' and parent is not None \
+                and parent['type'] in SENTENCE_CLASSES:
+            subj, _vp = clause_subject_and_verb(parent)
+            head = phrase_head(subj) if subj else None
+        else:
+            head = phrase_head(node) if node else None
         if head is None or head['type'] != 'PRP':
             return None
-        surf = _lower(head['surface'])
-        objective_needed = parent is not None and parent['type'] not in SENTENCE_CLASSES
-        target = self._pronoun_target(surf, objective_needed)
-        if target is None:
-            return None
+        objective_needed = self._pronoun_case_needed(head, parent)
+        target = self._pronoun_target(_lower(head['surface']), objective_needed)
         position = 'object' if objective_needed else 'subject'
         demand = 'objective' if objective_needed else 'nominative'
         return {
@@ -1492,23 +1511,27 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or rewrite so the pronoun is not in {position} position "
                                 f"(e.g. use a noun phrase instead of a pronoun)."),
             'targeted_outcome': f"PRP ({demand}) instead of PRP ({'objective' if not objective_needed else 'nominative'})",
+            'edit': _edit(head['span'][0], head['span'][1], _preserve_case(head['surface'], target))
         }
 
     def _rem_adj_adv(self, node, parent):
         if node is None:
             return None
+        leaf = None
         if node['type'] == 'ADJP':
             adj = phrase_head(node) or (node.get('children') or [None])[0]
             if adj is None:
                 return None
-            adv = self._adverbial_form(adj['surface'])
-            wrong, right = adj['surface'], adv
+            leaf = adj
+            wrong, right = adj['surface'], self._adverbial_form(adj['surface'])
         elif node['type'] == 'ADVP':
             adv_leaf = phrase_head(node)
             if adv_leaf is None:
                 return None
+            leaf = adv_leaf
             wrong, right = adv_leaf['surface'], self._adverbial_form(adv_leaf['surface'])
-        else:  # adjective leaf inside an adverb phrase
+        else:
+            leaf = node
             wrong, right = node['surface'], self._adverbial_form(node['surface'])
         return {
             'violation': (f"Adjective\u2013Adverb Confusion: '{wrong}' is an adjective form used "
@@ -1518,12 +1541,22 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or rephrase with an adjective predicated of the subject, e.g. "
                                 f"change the verb so the adjective modifies a noun instead."),
             'targeted_outcome': "ADVP \u2192 RB (adverb) instead of ADVP/ADJP \u2192 JJ (adjective)",
+            'edit': (_edit(leaf['span'][0], leaf['span'][1], _preserve_case(wrong, right))
+             if 'children' not in leaf else None)
         }
 
     def _rem_article(self, node, parent):
         if node is None:
             return None
         art = _indefinite_article(node['surface'])
+        first = _leaves_list(parent)[0] if parent else None
+        edit = None
+        if first is not None:
+            art = _indefinite_article(first['surface'])
+            if parent['span'][0] == 0 and first['type'] not in {'NNP', 'NNPS'}:
+                edit = _edit(0, 1, f"{art.capitalize()} {first['surface'].lower()}")
+            else:
+                edit = _edit(parent['span'][0], parent['span'][0], art)
         return {
             'violation': (f"Article Omission Conflict: the singular count noun "
                           f"'{node['surface']}' is used without a determiner in an argument "
@@ -1532,7 +1565,9 @@ class MatrixEvaluator:
                               f"'{node['surface']}' \u2192 '{art} {node['surface']}'."),
             'alternative_fix': (f"Or use a definite/other determiner: 'the {node['surface']}', "
                                 f"'this {node['surface']}', 'my {node['surface']}'."),
-            'targeted_outcome': f"DT + NN (determined noun) instead of bare NN",
+            'targeted_outcome': f"DT + NN (determined noun) instead of bare NN",\
+            'edit': edit
+                
         }
 
     def _rem_article_mismatch(self, node, parent):
@@ -1555,6 +1590,7 @@ class MatrixEvaluator:
                               f"(\u2192 '{need} {nxt} ...')."),
             'alternative_fix': None,
             'targeted_outcome': f"DT ({need}) + noun instead of DT ({node['surface']}) + noun",
+            'edit': _edit(node['span'][0], node['span'][1], _preserve_case(node['surface'], need))
         }
 
     @staticmethod
@@ -1571,6 +1607,7 @@ class MatrixEvaluator:
                               f"so the sentence reads '{rewritten + ' ' + ' '.join(words[1:])}'."),
             'alternative_fix': None,
             'targeted_outcome': "Sentence-initial capital letter",
+            'edit': _edit(0, 1, rewritten)
         }
 
     @staticmethod
@@ -1593,12 +1630,16 @@ class MatrixEvaluator:
             alternative = (f"Or make the noun plural count, so 'fewer' is licensed: "
                            f"'{_plural_noun(_singular_noun(head))}'.")
             outcome = f"less + NN instead of fewer + {head['type'] if head else 'NN'}"
+
+        new_word = 'fewer' if word == 'less' else 'less'
+
         return {
             'violation': (f"Quantifier\u2013Noun Agreement Conflict: '{node['surface']}' does "
                           f"not match the noun '{noun_s}'."),
             'suggested_fix': suggested,
             'alternative_fix': alternative,
             'targeted_outcome': outcome,
+            'edit': _edit(node['span'][0], node['span'][1], _preserve_case(node['surface'], new_word))
         }
 
     def _rem_double_comparative(self, node, parent):
@@ -1621,6 +1662,7 @@ class MatrixEvaluator:
                                 f"'{marker} {sibling['surface'][1:]}' is not needed \u2014 prefer "
                                 f"'{sibling['surface']}'."),
             'targeted_outcome': f"JJR/JJS alone instead of RBR/RBS + JJR/JJS",
+            'edit': _edit(node['span'][0], node['span'][1], '')
         }
 
     def _rem_vp_head_noun(self, node, parent):

@@ -148,6 +148,8 @@ export class TreeRenderer {
     this._drag = null;
     this.dfsOrder = [];
     this.indexById = new Map();
+    this.focus = null;
+    this._raf = null;
     this._setup();
     this._resize();
   }
@@ -186,6 +188,7 @@ export class TreeRenderer {
   }
 
   setTree(root) {
+    this.focus = null;
     this.tree = root;
     this.layoutData = createLayout(root, (label) => this._measure(label));
     this.dfsOrder = collectNodes(root).map((n) => n.id);
@@ -210,16 +213,24 @@ export class TreeRenderer {
     this.view = { scale: 1, tx: 0, ty: 0 };
     this.draw();
   }
-
-  _fitView() {
+  
+    _fitTarget() {
     const w = this.canvas.clientWidth || this.canvas.width;
     const h = this.canvas.clientHeight || this.canvas.height;
     const pad = 30;
-    const scale = Math.min((w - pad * 2) / this.layoutData.totalW, (h - pad * 2) / this.layoutData.totalH, 1.7) * 1.25;
-    this.view.scale = Math.max(Math.min(scale, 1.7), 0.2);
-    this.view.tx = (w - this.layoutData.totalW * this.view.scale) / 2;
-    this.view.ty = (h - this.layoutData.totalH * this.view.scale) / 2;
+    const raw = Math.min((w - pad * 2) / this.layoutData.totalW, (h - pad * 2) / this.layoutData.totalH, 1.7) * 1.25;
+    const scale = Math.max(Math.min(raw, 1.7), 0.2);
+    return {
+      scale,
+      tx: (w - this.layoutData.totalW * scale) / 2,
+      ty: (h - this.layoutData.totalH * scale) / 2,
+    };
   }
+
+  _fitView() {
+    Object.assign(this.view, this._fitTarget());
+  }
+
 
   _resize() {
     const dpr = window.devicePixelRatio || 1;
@@ -351,6 +362,9 @@ export class TreeRenderer {
         const cl = this.layoutData.layout.get(c.id);
         const status = c.edgeResult ? c.edgeResult.status : 'valid';
         const gap = cl.leaf ? 36 : LABEL_GAP;
+        const dimEdge = this.focus
+          && !(this.focus.inScope.has(c.id) && this.focus.inScope.has(l.node.id));
+        ctx.globalAlpha = dimEdge ? 0.12 : 1;
         ctx.strokeStyle = this._edgeColor(status);
         ctx.lineWidth = 1.5;
         ctx.beginPath();
@@ -359,10 +373,12 @@ export class TreeRenderer {
         ctx.stroke();
       }
     }
+    ctx.globalAlpha = 1;
 
     for (const l of this.layoutData.layout.values()) {
       this._drawNode(l);
     }
+    this._drawPairLink();
 
     ctx.restore();
     this._drawTooltip();
@@ -410,22 +426,28 @@ export class TreeRenderer {
   _drawNode(l) {
     const ctx = this.ctx;
     const n = l.node;
-    const colors = getThemeColors();
     const isRoot = this.layoutData.root === n;
     const isSel = n.id === this.selectedId;
     const isHov = n.id === this.hoverId;
     const err = n.edgeResult && n.edgeResult.status === 'error';
+    const dim = this.focus && !this.focus.inScope.has(n.id);
+    const paired = this.focus && this.focus.pair.includes(n.id);
+
+    const colors = getThemeColors();
+    ctx.save();
+    if (dim) ctx.globalAlpha = 0.18;
 
     let color = err ? colors.edgeError : colors.text;
     if (isRoot) color = colors.nodeStroke;
     if (isHov) color = colors.nodeStroke;
+    if (paired) color = colors.edgeError;
     if (isSel) color = colors.selectedStroke;
 
     ctx.fillStyle = color;
     if (ch(n).length === 0) {
-      ctx.font = '500 15px Inter, system-ui, sans-serif';
+      ctx.font = paired ? '700 15px Inter, system-ui, sans-serif' : '500 15px Inter, system-ui, sans-serif';
     } else {
-      ctx.font = isSel ? '700 16px Inter, system-ui, sans-serif' : '600 16px Inter, system-ui, sans-serif';
+      ctx.font = (isSel || paired) ? '700 16px Inter, system-ui, sans-serif' : '600 16px Inter, system-ui, sans-serif';
     }
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -436,5 +458,95 @@ export class TreeRenderer {
       ctx.font = '600 10px Inter, system-ui, sans-serif';
       ctx.fillText(n.type, l.x, l.y - 14);
     }
+    ctx.restore();
   }
+
+  _animateTo(target, ms = 380) {
+    cancelAnimationFrame(this._raf);
+    const from = { ...this.view };
+    const t0 = performance.now();
+    const step = (now) => {
+      const k = Math.min(1, (now - t0) / ms);
+      const e = 1 - (1 - k) ** 3;
+      this.view.scale = from.scale + (target.scale - from.scale) * e;
+      this.view.tx = from.tx + (target.tx - from.tx) * e;
+      this.view.ty = from.ty + (target.ty - from.ty) * e;
+      this.draw();
+      if (k < 1) this._raf = requestAnimationFrame(step);
+    };
+    this._raf = requestAnimationFrame(step);
+  }
+
+  /** Zoom to the subtree rooted at scopeId; pairIds are linked with a dashed red curve. */
+  focusSubtree(scopeId, pairIds = []) {
+    const L = this.layoutData;
+    const sl = L && L.layout.get(scopeId);
+    if (!sl) return false;
+    const inScope = new Set();
+    let maxY = sl.y;
+    const walk = (n) => {
+      inScope.add(n.id);
+      const l = L.layout.get(n.id);
+      if (l) maxY = Math.max(maxY, l.y);
+      for (const c of ch(n)) walk(c);
+    };
+    walk(sl.node);
+    const s = L.span.get(scopeId);
+    const x0 = s[0] * L.slot;
+    const x1 = (s[1] + 1) * L.slot;
+    const y0 = sl.y - BOX_H / 2 - 12;
+    const y1 = maxY + 80; // word + POS tag + room for the pair link
+    const w = this.canvas.clientWidth || this.canvas.width;
+    const h = this.canvas.clientHeight || this.canvas.height;
+    const pad = 40;
+    const scale = Math.max(Math.min((w - pad * 2) / (x1 - x0), (h - pad * 2) / (y1 - y0), 2), 0.2);
+    this.focus = { scopeId, inScope, pair: pairIds.filter((id) => L.layout.has(id)) };
+    this._animateTo({
+      scale,
+      tx: w / 2 - ((x0 + x1) / 2) * scale,
+      ty: h / 2 - ((y0 + y1) / 2) * scale,
+    });
+    return true;
+  }
+
+  clearFocus() {
+    this.focus = null;
+    if (this.layoutData) this._animateTo(this._fitTarget());
+  }
+
+  _drawPairLink() {
+    const f = this.focus;
+    if (!f || !f.pair.length) return;
+    const ctx = this.ctx;
+    const ls = f.pair.map((id) => this.layoutData.layout.get(id)).filter(Boolean);
+    const colors = getThemeColors();
+    ctx.save();
+    ctx.strokeStyle = colors.edgeError;
+    ctx.fillStyle = colors.edgeError;
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.setLineDash([7, 5]);
+    if (ls.length >= 2) {
+      const [a, b] = ls;
+      const d = 34 + Math.min(Math.abs(a.x - b.x) * 0.1, 24);
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y + 16);
+      ctx.bezierCurveTo(a.x, a.y + 16 + d, b.x, b.y + 16 + d, b.x, b.y + 16);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      for (const l of [a, b]) {
+        ctx.beginPath();
+        ctx.arc(l.x, l.y + 16, 3.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    } else if (ls.length === 1) {
+      const l = ls[0];
+      const bw = this._measure(nodeLabel(l.node)) + 16;
+      ctx.beginPath();
+      ctx.roundRect(l.x - bw / 2, l.y - 10, bw, 26, 8);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
 }

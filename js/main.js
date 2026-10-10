@@ -4,8 +4,12 @@ import { getSavedTheme, setTheme } from './theme.js';
 import {
   log,
   clearOverlay, showCanvasMessage, renderSentenceVerdict, renderNodeDetail,
-  renderDiagnostic, fillDevPanel, applySentenceSelection, plainName,
+  renderDiagnostic, fillDevPanel, applySentenceSelection, plainName, renderCorrectionPanel,
 } from './ui.js';
+
+import { planFocus, contextWords, applyEdit, expectedScopeWords, findScopeNode, findTargetError } from './correction.js';
+
+
 
 let clerk = null;
 let supabase = null;
@@ -39,6 +43,141 @@ let historySpans = [];
 
 let cachedHistory = [];
 let activeHistoryFilter = 'all';
+
+let focus = null;               // active correction target
+let correctionMode = 'original'; // 'original' | 'corrected'
+let focusResult = null;          // {kind:'fixed'|'still', message}
+
+const correctionHandlers = {
+  onShowCorrected: () => showCorrected(),
+  onShowOriginal: () => showOriginal(),
+  onCheck: () => checkEdit(),
+};
+
+function refreshCorrectionUi() {
+  const bar = document.querySelector('#focusBar');
+  if (!focus) {
+    if (bar) bar.hidden = true;
+    renderCorrectionPanel(focusResult ? { result: focusResult } : null, correctionHandlers);
+    return;
+  }
+  if (bar) bar.hidden = false;
+  document.querySelector('#focusLabel').textContent = `Zoomed: ${focus.label}`;
+  renderCorrectionPanel({
+    label: focus.label,
+    mode: correctionMode,
+    canCorrect: Boolean(focus.edit),
+    correctedText: focus.corrected ? focus.corrected.text : '',
+    result: focusResult,
+  }, correctionHandlers);
+}
+
+function resetFocusState() {
+  focus = null;
+  correctionMode = 'original';
+  focusResult = null;
+  refreshCorrectionUi();
+}
+
+function enterFocus(id, detail) {
+  const payload = session.payload;
+  const plan = planFocus(payload, id);
+  focus = {
+    ...plan,
+    constraint: detail.constraint,
+    sentenceIndex: (payload.meta.target_sentence || 1) - 1,
+    context: contextWords(payload, plan.scopeId),
+    edit: (detail.remediation && detail.remediation.edit) || null,
+    corrected: null,
+  };
+  correctionMode = 'original';
+  focusResult = null;
+  renderer.focusSubtree(plan.scopeId, plan.pair);
+  log(`Zoom: ${detail.constraint} \u2192 subtree ${plan.scopeType} (${plan.pair.length} linked node(s))`);
+  refreshCorrectionUi();
+}
+
+function exitFocus() {
+  if (correctionMode === 'corrected' && session) renderer.setTree(session.payload.tree);
+  renderer.clearFocus();
+  resetFocusState();
+}
+
+async function showCorrected() {
+  if (!focus || !focus.edit || !session) return;
+  if (!focus.corrected) {
+    const text = applyEdit(session.payload, focus.edit);
+    let res = null;
+    try {
+      res = await fetch('/api/parse', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
+      });
+    } catch (_e) { /* handled below */ }
+    if (!res || !res.ok) {
+      focusResult = { kind: 'still', message: 'Could not build the corrected tree right now.' };
+      refreshCorrectionUi();
+      return;
+    }
+    const cp = await res.json();
+    applyStatuses(cp.tree, cp.node_details);
+    const expected = expectedScopeWords(session.payload, focus.scopeId, focus.edit);
+    focus.corrected = {
+      payload: cp,
+      text,
+      scopeId: expected ? findScopeNode(cp, focus.scopeType, expected) : null,
+    };
+  }
+  correctionMode = 'corrected';
+  focusResult = null;
+  renderer.setTree(focus.corrected.payload.tree);
+  if (focus.corrected.scopeId) renderer.focusSubtree(focus.corrected.scopeId, []);
+  log('Corrected preview: showing re-parsed tree (the learner\u2019s text is unchanged)');
+  refreshCorrectionUi();
+}
+
+function showOriginal() {
+  if (!focus || !session) return;
+  correctionMode = 'original';
+  renderer.setTree(session.payload.tree);
+  renderer.focusSubtree(focus.scopeId, focus.pair);
+  renderer.select(focus.nodeId);
+  refreshCorrectionUi();
+}
+
+function checkEdit() {
+  if (!focus) return;
+  runPipeline({ index: focus.sentenceIndex });
+}
+
+// Called after a re-parse while a correction target is active.
+function recheckFocus(payload) {
+  const prev = focus;
+  const hit = findTargetError(payload, prev);
+  if (hit) {
+    handleNodeSelect(hit.detail.id); // re-zooms on the error's new location
+    focusResult = {
+      kind: 'still',
+      message: 'Still flagged \u2014 re-read the explanation and try again.',
+    };
+    refreshCorrectionUi();
+    log(`Re-check: ${prev.constraint} re-identified by constraint + context (score ${hit.score.toFixed(2)})`);
+    return;
+  }
+  const left = payload.summary.violations.length + (payload.summary.root_error ? 1 : 0);
+  focus = null;
+  correctionMode = 'original';
+  focusResult = {
+    kind: 'fixed',
+    message: left
+      ? `That error is fixed. ${left} other issue(s) remain \u2014 click a red word to continue.`
+      : 'Fixed! The sentence passes every check \u2014 here is its syntax tree.',
+  };
+  renderer.clearFocus();
+  refreshCorrectionUi();
+  log(`Re-check: ${prev.constraint} no longer fires \u2014 ${left} issue(s) left`);
+}
 
 function transition(next, event) {
   const from = state;
@@ -378,7 +517,7 @@ function wireEvents() {
   ta.addEventListener('blur', () => {
     const changed = ta.value !== lastAnalyzedText;
     returnToLocked();
-    if (changed) runPipeline();
+    if (changed) runPipeline(focus ? { index: focus.sentenceIndex } : {});
   });
   ta.addEventListener('click', activateSentenceAtCaret);
   ta.addEventListener('keydown', (e) => {
@@ -392,6 +531,8 @@ function wireEvents() {
       activateSentenceAtCaret();
     }
   });
+
+  document.querySelector('#backToTreeBtn')?.addEventListener('click', exitFocus);
 
   const drawer = document.querySelector('#historyDrawerBackdrop');
   document.querySelector('#closeDrawerBtn')?.addEventListener('click', () => {
@@ -506,10 +647,20 @@ function activateSentenceAtCaret() {
   const ta = document.querySelector('#inputText');
   if (!session || ta.readOnly !== true) return;
   if (ta.selectionStart !== ta.selectionEnd) return;
-  const sents = session.payload.parse.sentences || [];
   const caret = ta.selectionStart;
+  const current = session.payload.meta.target_sentence || 1;
+
+  // 1.1: clicking an underlined error word selects/zooms that error
+  const errSpan = historySpans.find((s) => s.status === 'error' && s.nodeId
+    && s.sentence === current && caret >= s.start && caret <= s.end);
+  if (errSpan) {
+    handleNodeSelect(errSpan.nodeId);
+    return;
+  }
+
+  const sents = session.payload.parse.sentences || [];
   const hit = sents.find((s) => caret >= s.start && caret < s.end);
-  if (hit && hit.ordinal - 1 !== (session.payload.meta.target_sentence || 1) - 1) {
+  if (hit && hit.ordinal - 1 !== current - 1) {
     runPipeline({ index: hit.ordinal - 1, isSentenceNav: true });
   }
 }
@@ -543,6 +694,9 @@ async function executePipeline(opts = {}) {
   clearOverlay();
   renderer.select(null);
   renderNodeDetail(null, null, null);
+
+  if (opts.isSentenceNav || opts.isReplay) resetFocusState();
+  else if (!focus) refreshCorrectionUi();
 
   const text = document.querySelector('#inputText').value.trim();
   if (!text) {
@@ -618,6 +772,7 @@ async function executePipeline(opts = {}) {
   renderer.setTree(payload.tree);
   transition(STATES.VIEWING, 'output ready -> viewing');
   log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
+  if (focus) recheckFocus(payload);
 
   const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
   if (!isNavigation && !recordedTexts.has(text)) {
@@ -679,15 +834,17 @@ function buildHighlightSpans(text, payload) {
   }
   return tokenRanges.map((token) => {
     let status = 'valid';
+    let nodeId = null;
+    let bestLen = Infinity;
     const isSentenceInitialToken = token.index === tokenRanges[0]?.index;
     for (const detail of Object.values(payload.node_details)) {
       if (detail.status === 'error' && detail.span[0] <= token.index && token.index < detail.span[1]) {
         if (detail.constraint === 'C-CAPITALIZATION' && !isSentenceInitialToken) continue;
-        status = 'error';
-        break;
+        const len = detail.span[1] - detail.span[0];
+        if (len < bestLen) { bestLen = len; nodeId = detail.id; status = 'error'; }
       }
     }
-    return { start: token.start, end: token.end, status };
+    return { start: token.start, end: token.end, status, nodeId, sentence: payload.meta.target_sentence };
   });
 }
 
@@ -762,16 +919,18 @@ function handleNodeSelect(id) {
   if (!id || !session) {
     if (session) {
       renderer.select(null);
-      renderNodeDetail(null, null, null);
       transition(STATES.VIEWING, 'selection cleared');
     }
     return;
   }
-  const detail = session.payload.node_details[id];
-  const node = session.payload.nodes[id];
+  const inCorrected = correctionMode === 'corrected' && focus && focus.corrected;
+  const payload = inCorrected ? focus.corrected.payload : session.payload;
+  const detail = payload.node_details[id];
+  const node = payload.nodes[id];
   if (!node || !detail) return;
   renderNodeDetail(session, detail, node);
   renderer.select(id);
+  if (!inCorrected && detail.status === 'error') enterFocus(id, detail); // 1.1 + 2
   if (state !== STATES.PROCESSING) {
     transition(STATES.EXPLORING, 'user selects syntax node (cache hit \u2014 no HTTP request)');
     log(`Exploring: cached XAI for node ${node.type} \u2014 ${detail.constraint} (${detail.status})`);

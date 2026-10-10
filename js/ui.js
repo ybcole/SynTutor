@@ -212,3 +212,53 @@ export function applySentenceSelection(payload) {
   ta.setSelectionRange(s.start, s.end);
   ta.scrollTop = st;
 }
+
+export function renderCorrectionPanel(info, handlers = {}) {
+  const box = $('#correctionPanel');
+  if (!box) return;
+  box.innerHTML = '';
+  if (!info) { box.hidden = true; return; }
+  box.hidden = false;
+
+  if (info.label) {
+    const title = document.createElement('div');
+    title.className = 'cp-title';
+    title.textContent = `Fix this error \u2014 ${info.label}`;
+    box.appendChild(title);
+
+    const row = document.createElement('div');
+    row.className = 'cp-actions';
+    const mk = (text, cls, fn, disabled) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = `cp-btn ${cls}`.trim();
+      b.textContent = text;
+      b.disabled = Boolean(disabled);
+      if (fn) b.addEventListener('click', fn);
+      return b;
+    };
+    row.appendChild(mk('Show corrected tree', '', handlers.onShowCorrected,
+      !info.canCorrect || info.mode === 'corrected'));
+    row.appendChild(mk('Back to original', '', handlers.onShowOriginal, info.mode !== 'corrected'));
+    row.appendChild(mk('Check my sentence', 'primary', handlers.onCheck, false));
+    box.appendChild(row);
+
+    const note = document.createElement('p');
+    note.className = 'cp-note';
+    if (info.mode === 'corrected') {
+      note.textContent = `Showing the tree of \u201c${info.correctedText}\u201d. Your sentence has not changed \u2014 edit it yourself (double-click the text box), then press Check.`;
+    } else if (info.canCorrect) {
+      note.textContent = 'Edit the sentence yourself (double-click the text box), then press Check. Stuck? Preview the corrected tree.';
+    } else {
+      note.textContent = 'Edit the sentence yourself, then press Check. No corrected-tree preview exists for this error type.';
+    }
+    box.appendChild(note);
+  }
+
+  if (info.result) {
+    const r = document.createElement('p');
+    r.className = `cp-result ${info.result.kind === 'fixed' ? 'ok' : 'err'}`;
+    r.textContent = info.result.message;
+    box.appendChild(r);
+  }
+}
