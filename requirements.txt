@@ -1,4 +1,4 @@
-spacy
-benepar
-transformers<4.47
+spacy==3.8.16
+benepar==0.2.0
+transformers==4.46.3
 inflect>=7.5,<8
