@@ -2,7 +2,8 @@ FROM python:3.11-slim
 
 ENV PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
-    SYNTUTOR_HOST=0.0.0.0
+    SYNTUTOR_HOST=0.0.0.0 \
+    SYNTUTOR_PORT=7860
 
 WORKDIR /app
 
@@ -22,6 +23,6 @@ COPY index.html login.html ./
 COPY css/ ./css/
 COPY js/ ./js/
 
-EXPOSE 8000
+EXPOSE 7860
 
 CMD ["python", "server/app.py"]

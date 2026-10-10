@@ -17,7 +17,7 @@ from parse_engine import ParseFailure, analyze, load_models
 from matrix import evaluate
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PORT = int(os.environ.get('SYNTUTOR_PORT') or os.environ.get('PORT') or '8000')
+PORT = int(os.environ.get('PORT') or os.environ.get('SYNTUTOR_PORT') or '8000')
 
 # CORS: the frontend may be hosted on a different origin (e.g. Vercel) than this
 # API. Restrict with SYNTUTOR_ALLOW_ORIGIN (default '*' for easy setup).
