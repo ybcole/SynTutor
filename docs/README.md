@@ -8,7 +8,19 @@ Docs: [`ARCHITECTURE.md`](ARCHITECTURE.md) is the full implementation reference 
 
 ---
 
-## Quick start
+## Deployed instances
+
+| Host | What it runs | URL |
+|------|--------------|-----|
+| **Vercel** | static front end (built with `npm run build` → `dist/`) | `https://syntutor.vercel.app` |
+| **Hugging Face Space** (ZeroGPU) | spaCy + benepar API (`app.py` launches a minimal Gradio app and mounts the API routes on it) | `https://ybcole-syntutor.hf.space` |
+
+Pushing to `main` auto-deploys both: Vercel runs the build command and serves
+`dist/`, and the Space rebuilds from `app.py` + `requirements.txt`. The front
+end calls the API cross-origin via `js/config.js` → `API_BASE` (currently the
+HF Space URL); the backend answers with CORS enabled.
+
+## Local development
 
 Requires Python 3.10+.
 
@@ -18,11 +30,12 @@ pip3 install -r requirements.txt
 python3 -m spacy download en_core_web_md
 python3 -c "import benepar; benepar.download('benepar_en3')"
 
-# 2. run the server
+# 2. run the full-stack server (static files + API on one port)
 python3 server/app.py        # or: npm run serve
 ```
 
-Then open `http://127.0.0.1:8000`.
+Then open `http://127.0.0.1:8000`. Set `API_BASE = ''` in `js/config.js` for
+same-origin `/api/parse`, or point it at a deployed backend.
 
 ### Auth (Clerk) & history (Supabase)
 
@@ -51,7 +64,8 @@ verification and optional second factor. Analysis history persists to
 > does **not** backfill legacy rows: history recorded under the old Supabase
 > accounts (UUID `user_id`) stays on disk but is invisible to Clerk users.
 
-> The backend serves both the static front end and the REST API on one port. Keep `transformers<4.47` pinned: newer `transformers` removes the `T5Tokenizer.build_inputs_with_special_tokens` method that benepar's retokenizer relies on.
+> In production the front end runs on Vercel and the API on the HF Space;
+> locally `server/app.py` serves both on one port. Keep `transformers<4.47` pinned: newer `transformers` removes the `T5Tokenizer.build_inputs_with_special_tokens` method that benepar's retokenizer relies on.
 
 The requirements also install `inflect`, which supplies deterministic English
 noun morphology (productive rules plus maintained lexical exceptions). The
@@ -67,9 +81,12 @@ tags.
 
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
-| `/` | GET | static front end (`index.html`, `js/`, `css/`) |
+| `/` | GET | on the Space: Gradio status page; locally: static front end (`index.html`, `js/`, `css/`) |
 | `/api/health` | GET | model/pipeline availability (503 with install hints if models are missing) |
 | `/api/parse` | POST | `{"text": "<sentence>"}` → full JSON payload |
+
+Production base URL: `https://ybcole-syntutor.hf.space` (locally the API is
+same-origin with the front end).
 
 The `POST /api/parse` payload bundles the complete precomputed analysis. Accepts `{"text": "<text>", "sentence_index": <0-based int, optional>}`; when the text contains a paragraph, `sentence_index` selects which sentence to analyze (defaults to 0). `meta.target_sentence` and `parse.sentences` give the selected sentence and the full segmentation with character offsets (used by the UI so clicking any sentence loads its tree):
 
@@ -87,9 +104,10 @@ The `POST /api/parse` payload bundles the complete precomputed analysis. Accepts
 
 ## Architecture and data flow
 
-SynTutor is split into a browser client and a small Python backend. The
-backend serves the static files and exposes the parsing API, so the application
-runs without a frontend build tool or a web framework.
+SynTutor is split into a browser client and a small Python backend. In
+production, Vercel builds and serves the static front end while the HF Space
+serves the API; locally `server/app.py` does both on one port — either way,
+no frontend build tools or web frameworks are required.
 
 ```text
 Browser
@@ -190,10 +208,11 @@ Transitions are logged live in the right-hand panel.
 ## Project layout
 
 ```
+app.py                   HF Space entrypoint: minimal Gradio app (ZeroGPU) + mounted /api routes
 server/
   parse_engine.py        spaCy tokenization/POS + benepar parse-string -> node graph
   matrix.py              Linguistic Constraint Matrix + deterministic XAI evaluation
-  app.py                 stdlib HTTP server: static files + /api/parse + /api/health
+  app.py                 stdlib HTTP server (local dev / Docker): static + /api/parse + /api/health
 index.html               UI shell
 login.html               Clerk sign-in / sign-up (email-code verification)
 css/style.css            styling
@@ -206,7 +225,9 @@ js/
   config.js              (git-ignored) Clerk + Supabase keys — see config.example.js
 supabase/
   migrations/            analysis_history schema + RLS policies
-package.json             npm run serve -> python3 server/app.py
+scripts/build.js         Vercel build: copies index.html/login.html/css/js -> dist/
+vercel.json              Vercel config (outputDirectory: dist, framework: null)
+package.json             build: node scripts/build.js · serve: python3 server/app.py · audit
 docs/
   THESIS.md              design specification (input document)
   RULES.md               rule-matrix inventory

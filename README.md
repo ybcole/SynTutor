@@ -10,9 +10,14 @@ app_file: app.py
 pinned: false
 ---
 
-# SynTutor backend
+# SynTutor API
 
 Deterministic English phrase-structure parsing API (spaCy + benepar + rule-matrix XAI).
+
+Live:
+
+- **Web app (Vercel):** https://syntutor.vercel.app
+- **API (this Space):** https://ybcole-syntutor.hf.space
 
 Endpoints:
 
