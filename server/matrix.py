@@ -17,9 +17,18 @@ verdict.
 
 import inflect
 
+try:  # works both as ``server.matrix`` (package) and ``matrix`` (script dir)
+    from . import ruleset
+except ImportError:  # pragma: no cover
+    import ruleset
+
 SENTENCE_CLASSES = {'S', 'SINV', 'SQ', 'SBARQ', 'FRAG', 'ROOT'}
 
 NOUN_CLASS = {'NN', 'NNS', 'NNP', 'NNPS', 'PRP', 'NML', 'NX'}
+COLLECTIVE_NOUNS = {
+    'team', 'staff', 'government', 'family', 'committee', 'group', 'audience',
+    'public', 'class', 'crew', 'jury', 'company', 'band', 'crowd',
+}
 VERB_CLASS = {'VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'MD', 'AUX'}
 ADJ_CLASS = {'JJ', 'JJR', 'JJS'}
 ADV_CLASS = {'RB', 'RBR', 'RBS'}
@@ -88,6 +97,8 @@ NONCOUNT_NOUNS = {
     'luggage', 'baggage', 'equipment', 'news', 'knowledge', 'research',
     'traffic', 'money', 'cash', 'time', 'work', 'homework', 'housework',
     'weather', 'electricity', 'internet', 'darkness', 'sunshine',
+    'grass', 'sand', 'dirt', 'soil', 'land', 'fire', 'ice', 'steam',
+    'smoke', 'dust', 'mud', 'cotton', 'wool', 'steel', 'iron', 'plastic',
     # gerundial / activity nominals
     'reading', 'swimming', 'running', 'jogging', 'dancing', 'hiking',
     'writing', 'cooking', 'baking', 'fishing', 'hunting', 'shopping',
@@ -101,6 +112,14 @@ NONCOUNT_NOUNS = {
 BARE_ARG_NOUNS = {
     'home', 'school', 'work', 'bed', 'church', 'town', 'court', 'class',
     'college', 'breakfast', 'lunch', 'dinner', 'supper', 'brunch', 'schoolwork',
+}
+# Words the parser may tag as NN but which never take an article: indefinite
+# pronouns (everyone, somebody, ...) and bare temporal/deictic adverbs.
+ARTICLE_EXEMPT = {
+    'everyone', 'everybody', 'someone', 'somebody', 'anyone', 'anybody',
+    'nobody', 'nothing', 'everything', 'something', 'anything', 'none',
+    'yesterday', 'today', 'tomorrow', 'tonight', 'now', 'then', 'here',
+    'there',
 }
 
 VERB_FORM_LABEL = {
@@ -135,6 +154,9 @@ CHECK_LABELS = {
     'C-CLAUSE-SUBJECT': 'Clause Subject Role',
     'C-PRONOUN-CASE': 'Pronoun Case (nominative vs. objective)',
     'C-ADJ-ADV': 'Adjective\u2013Adverb Confusion',
+    'C-ADJ-ORDER': 'Adjective Order',
+    'C-COMPARATIVE-STRUCT': 'Comparative/Superlative Structure',
+    'C-INTENSIFIER': 'Intensifier Placement/Choice',
     'C-ARTICLE': 'Article/Determiner Omission',
     'C-ARTICLE-MISMATCH': 'a\u2013an Article Selection',
     'C-CAPITALIZATION': 'Sentence Capitalization',
@@ -144,6 +166,213 @@ CHECK_LABELS = {
     'C-ADVERBIAL-COMPLEMENT': 'Adverbial Complement',
     'C-VERB-FORM': 'Verb Form',
     'C-NOUN-FORM': 'Noun Form',
+    'C-CONTRACTION': 'Contractions',
+    'C-REFLEXIVE-FORM': 'Reflexive Forms',
+    'C-ADVERB-FORM': 'Adverb Formation',
+    'C-SPELLING': 'Spelling',
+    'C-VERB-ENDING': 'Verb Endings',
+    'C-UNCOUNTABLE': 'Countable vs Uncountable',
+    'C-COMPARATIVE-FORM': 'Comparative/Superlative Formation',
+    'C-PLURAL-ONLY': 'Plural-only / Singular -s Nouns',
+    'C-NUMERAL': 'Numerals and Measures',
+    'C-REDUNDANCY': 'Redundancy',
+    'C-ADJ-PREP': 'Adjective + Preposition',
+    'C-EXTRA-PREP': 'Unnecessary Preposition',
+    'C-MISSING-PREP': 'Missing Preposition',
+    'C-HOMOPHONE': 'Homophones',
+    'C-SOME-ANY': 'some/any',
+    'C-EXISTENTIAL': 'Existential there',
+    'C-INDEFINITE-AGREE': 'Indefinite Pronoun Agreement',
+    'C-REFLEXIVE-ANTECEDENT': 'Reflexive\u2013Antecedent',
+    'C-TO-BASE': 'to + base form',
+    'C-MODAL-TO': 'Modals and Semi-modals',
+    'C-CAUSATIVE-TO': 'Causatives and Perception Verbs',
+    'C-PHRASAL-ORDER': 'Phrasal Verbs',
+    'C-GERUND-INFINITIVE': 'Gerund vs Infinitive',
+    'C-VERB-CLAUSE-PATTERN': 'Verb + Clause Patterns',
+    'C-INTRANSITIVE-PASSIVE': 'Intransitive Passive',
+    'C-STATIVE-PROGRESSIVE': 'Stative Verbs in Progressive',
+    'C-PREP-GERUND': 'Preposition + Gerund',
+    'C-CONJUNCTION-PAIR': 'Conjunction Pairing',
+    'C-TERMINAL-PUNCT': 'Terminal Punctuation',
+    'C-SPACING-REPEAT': 'Spacing and Repeats',
+    'C-APOSTROPHE': 'Apostrophes',
+    'C-QUOTATION': 'Quotation and Dialogue',
+    'C-COLLECTIVE': 'Collective and Notional Nouns',
+    'C-PRON-ANTECEDENT': 'Pronoun\u2013Antecedent',
+    'C-UNNECESSARY-ARTICLE': 'Unnecessary Article',
+    'C-SUBJUNCTIVE': 'Subjunctive and wish',
+    'C-TENSE-TIME': 'Tense\u2013time Agreement',
+    'C-CONNECTOR': 'Connector Misuse',
+    'C-PLURAL-FORM': 'Regular/Irregular Noun Plural',
+    'C-DET-NOUN-AGREE': 'Determiner\u2013Noun Number',
+    'C-COORD-CASE': 'Pronoun Case in Coordination',
+    'C-DUMMY-IT': 'Dummy it/there',
+    'C-TRANSITIVITY': 'Verb Transitivity',
+    'C-DOUBLE-NEGATIVE': 'Double Negation',
+    'C-IMPERATIVE-VERB': 'Imperative Verb Form',
+    'C-CONDITIONAL-WILL': 'Conditional Tense',
+    'C-REPORTED-SPEECH': 'Reported Speech',
+    'C-RUNON': 'Run-on / Fused Sentence',
+    'C-EXTRA-WORD': 'Missing or Extra Word',
+    'C-PROPER-NOUN': 'Proper Nouns and \u201cI\u201d',
+    'C-PARTICIPIAL': 'Participial Adjectives',
+    'C-TENSE-CONSISTENCY': 'Tense Consistency',
+    'C-HYPHEN': 'Hyphens and Dashes',
+    'C-CONFUSABLE': 'Confusable Words',
+    'C-COLLOCATION': 'Collocations',
+    'C-SELECTIONAL': 'Selectional Restrictions',
+    'C-REGISTER': 'Register',
+    'C-L1-INTERFERENCE': 'L1 Interference / False Friends',
+    'C-NUMBER-AGREE': 'Quantified Subject Agreement',
+    'C-SUBJ-AGREE-XP': 'Subject-Verb Agreement Across a Phrase',
+    'C-POSSESSIVE': 'Possessive Pronoun vs Determiner',
+    'C-NUMERAL-FORMAT': 'Numbers, Dates, Abbreviations',
+    'C-CORRELATIVE-AGREE': 'Correlative Agreement',
+    'C-POSSESSIVE-S': "Possessive 's / s'",
+    'C-DANGLING': 'Dangling / Misplaced Modifier',
+    'C-INTRO-COMMA': 'Commas',
+    'C-PUNCT': 'Colons and Semicolons',
+    'C-PRON-AMBIG': 'Ambiguous Reference',
+    'C-PP-ATTACH': 'Structural Ambiguity (PP-attachment)',
+    'C-PASSIVE': 'Passive Formation',
+    'C-WORD-ORDER': 'Word Order in Statements',
+    'C-FIRST-MENTION': 'Definite vs Indefinite',
+}
+
+# Constraint id -> (matrix.md rule id, check method). The method decides how the
+# XAI layer explains the verdict (T: tree subtree, L: word-list lookup,
+# C: condition + options + confidence, shown as a suggestion).
+CONSTRAINT_RULE = {
+    'C-SUBJECT-AGREEMENT': ('2.1', 'T'),
+    'C-PREDICATE': ('2.1', 'T'),
+    'C-DETERMINER-AGREEMENT': ('2.10', 'T'),
+    'C-DETERMINER': ('3.6', 'T'),
+    'C-DET-STACK': ('3.5', 'T'),
+    'C-HEAD-NOUN': ('3.6', 'T'),
+    'C-NOUN-FORM': ('1.2', 'L'),
+    'C-NOUN-ADJUNCT': ('4.2', 'T'),
+    'C-MOD-POS': ('7.7', 'T'),
+    'C-NP-POSTMODIFIER': ('7.7', 'T'),
+    'C-NP-REDUCED-RELATIVE': ('9.10', 'T'),
+    'C-NP-RELATIVE': ('2.7', 'T'),
+    'C-COORDINATOR': ('2.3', 'T'),
+    'C-HEAD-VERB': ('6.2', 'T'),
+    'C-INFINITIVAL-COMPLEMENT': ('6.10', 'T'),
+    'C-INFINITIVAL-MARKER': ('6.10', 'T'),
+    'C-AUXILIARY': ('6.1', 'T'),
+    'C-AUX-COMPLEMENT': ('6.1', 'T'),
+    'C-AUX-FORM': ('6.1', 'T'),
+    'C-TENSE-FINITE': ('6.2', 'T'),
+    'C-DIRECT-OBJECT': ('9.15', 'T'),
+    'C-ADJUNCT': ('8.5', 'L'),
+    'C-PREDICATE-ADJECTIVE': ('7.1', 'T'),
+    'C-ADVERBIAL': ('7.3', 'T'),
+    'C-CLAUSAL-COMPLEMENT': ('6.20', 'L'),
+    'C-PARTICLE': ('6.11', 'L'),
+    'C-HEAD-PREPOSITION': ('8.1', 'C'),
+    'C-PREP-OBJECT': ('8.5', 'L'),
+    'C-HEAD-ADJECTIVE': ('7.1', 'T'),
+    'C-INTENSIFIER': ('7.5', 'T'),
+    'C-ADJ-ORDER': ('7.2', 'L'),
+    'C-COMPARATIVE-STRUCT': ('7.6', 'T'),
+    'C-PARTICIPLE-MODIFIER': ('7.4', 'L'),
+    'C-HEAD-ADVERBIAL': ('7.3', 'T'),
+    'C-CLAUSE-SUBJECT': ('2.1', 'T'),
+    'C-CLAUSE-PREDICATE': ('9.14', 'T'),
+    'C-CLAUSAL-ADVERBIAL': ('9.14', 'T'),
+    'C-RELATIVE-CLAUSE': ('2.7', 'T'),
+    'C-RELATIVE-HEAD': ('5.4', 'T'),
+    'C-RELATIVE-PRONOUN': ('5.4', 'T'),
+    'C-RELATIVE-NOUN': ('5.4', 'T'),
+    'C-COMPLEMENTIZER': ('9.14', 'T'),
+    'C-NP-COMPOUND': ('4.2', 'T'),
+    'C-PUNCT': ('10.3', 'T'),
+    'C-ROOT': ('9.1', 'T'),
+    'C-CAPITALIZATION': ('10.1', 'T'),
+    'C-PRONOUN-CASE': ('5.1', 'T'),
+    'C-ADJ-ADV': ('7.1', 'T'),
+    'C-ARTICLE': ('3.2', 'T'),
+    'C-ARTICLE-MISMATCH': ('3.1', 'L'),
+    'C-QUANTIFIER': ('2.11', 'T'),
+    'C-SMALL-CLAUSE': ('9.15', 'T'),
+    'C-SMALL-CLAUSE-PREDICATE': ('7.1', 'T'),
+    'C-ADVERBIAL-COMPLEMENT': ('7.3', 'T'),
+    'C-VERB-FORM': ('1.5', 'L'),
+    'C-COMPARATIVE-DOUBLE': ('7.6', 'T'),
+    'C-UNLISTED': (None, 'T'),
+    'C-CONTRACTION': ('1.11', 'L'),
+    'C-REFLEXIVE-FORM': ('1.9', 'L'),
+    'C-ADVERB-FORM': ('1.8', 'L'),
+    'C-SPELLING': ('1.12', 'L'),
+    'C-VERB-ENDING': ('1.4', 'L'),
+    'C-UNCOUNTABLE': ('4.1', 'L'),
+    'C-COMPARATIVE-FORM': ('1.7', 'L'),
+    'C-PLURAL-ONLY': ('4.3', 'L'),
+    'C-NUMERAL': ('1.13', 'L'),
+    'C-REDUNDANCY': ('9.12', 'L'),
+    'C-ADJ-PREP': ('8.4', 'L'),
+    'C-EXTRA-PREP': ('8.3', 'L'),
+    'C-MISSING-PREP': ('8.2', 'C'),
+    'C-HOMOPHONE': ('1.10', 'T'),
+    'C-SOME-ANY': ('3.7', 'T'),
+    'C-EXISTENTIAL': ('2.4', 'T'),
+    'C-INDEFINITE-AGREE': ('2.8', 'T'),
+    'C-REFLEXIVE-ANTECEDENT': ('2.14', 'T'),
+    'C-TO-BASE': ('6.10', 'T'),
+    'C-MODAL-TO': ('6.12', 'T'),
+    'C-CAUSATIVE-TO': ('6.19', 'T'),
+    'C-PHRASAL-ORDER': ('6.11', 'L'),
+    'C-GERUND-INFINITIVE': ('6.9', 'L'),
+    'C-VERB-CLAUSE-PATTERN': ('6.20', 'L'),
+    'C-INTRANSITIVE-PASSIVE': ('6.5', 'L'),
+    'C-STATIVE-PROGRESSIVE': ('6.6', 'L'),
+    'C-PREP-GERUND': ('8.6', 'T'),
+    'C-CONJUNCTION-PAIR': ('9.9', 'L'),
+    'C-TERMINAL-PUNCT': ('10.3', 'T'),
+    'C-SPACING-REPEAT': ('10.9', 'T'),
+    'C-APOSTROPHE': ('10.5', 'T'),
+    'C-QUOTATION': ('10.6', 'T'),
+    'C-COLLECTIVE': ('2.5', 'C'),
+    'C-PRON-ANTECEDENT': ('2.12', 'C'),
+    'C-UNNECESSARY-ARTICLE': ('3.3', 'C'),
+    'C-SUBJUNCTIVE': ('6.17', 'C'),
+    'C-TENSE-TIME': ('11.3', 'C'),
+    'C-CONNECTOR': ('11.8', 'C'),
+    'C-PLURAL-FORM': ('1.1', 'L'),
+    'C-DET-NOUN-AGREE': ('3.8', 'L'),
+    'C-COORD-CASE': ('5.2', 'T'),
+    'C-DUMMY-IT': ('5.5', 'T'),
+    'C-TRANSITIVITY': ('6.8', 'L'),
+    'C-DOUBLE-NEGATIVE': ('6.14', 'T'),
+    'C-IMPERATIVE-VERB': ('6.15', 'T'),
+    'C-CONDITIONAL-WILL': ('6.16', 'T'),
+    'C-REPORTED-SPEECH': ('6.18', 'T'),
+    'C-RUNON': ('9.3', 'T'),
+    'C-EXTRA-WORD': ('9.7', 'T'),
+    'C-PROPER-NOUN': ('10.2', 'L'),
+    'C-PARTICIPIAL': ('7.4', 'L'),
+    'C-TENSE-CONSISTENCY': ('6.7', 'C'),
+    'C-HYPHEN': ('10.7', 'C'),
+    'C-CONFUSABLE': ('11.1', 'C'),
+    'C-COLLOCATION': ('11.2', 'C'),
+    'C-SELECTIONAL': ('11.4', 'C'),
+    'C-REGISTER': ('11.6', 'C'),
+    'C-L1-INTERFERENCE': ('11.7', 'C'),
+    'C-NUMBER-AGREE': ('2.9', 'T'),
+    'C-SUBJ-AGREE-XP': ('2.2', 'T'),
+    'C-POSSESSIVE': ('5.6', 'T'),
+    'C-NUMERAL-FORMAT': ('10.10', 'L'),
+    'C-CORRELATIVE-AGREE': ('2.13', 'T'),
+    'C-POSSESSIVE-S': ('1.3', 'T'),
+    'C-DANGLING': ('9.11', 'C'),
+    'C-INTRO-COMMA': ('10.4', 'T'),
+    'C-PUNCT': ('10.8', 'T'),
+    'C-PRON-AMBIG': ('5.3', 'C'),
+    'C-PP-ATTACH': ('11.5', 'C'),
+    'C-PASSIVE': ('6.4', 'T'),
+    'C-WORD-ORDER': ('9.6', 'T'),
+    'C-FIRST-MENTION': ('3.4', 'C'),
 }
 
 
@@ -554,7 +783,7 @@ def _np_head(node):
     trailing nominal-accepting adjective ('my favorite', 'the rich')."""
     leaves = _leaves_list(node)
     nonposs_nouns = [lf for lf in leaves
-                     if lf['type'] in NOUN_CLASS
+                     if (lf['type'] in NOUN_CLASS or lf['type'] == 'CD')
                      and _lower(lf.get('surface', '')) not in POSS_DET_PLAIN]
     if nonposs_nouns:
         return nonposs_nouns[-1]
@@ -586,6 +815,8 @@ def _needs_indefinite_article_error(np_node):
     surface = _lower(head['surface'])
     if base in NONCOUNT_NOUNS or base in BARE_ARG_NOUNS \
             or surface in NONCOUNT_NOUNS or surface in BARE_ARG_NOUNS:
+        return None
+    if base in ARTICLE_EXEMPT or surface in ARTICLE_EXEMPT:
         return None
     if is_coordinated(np_node):
         return None
@@ -642,14 +873,41 @@ def phrase_head(node):
     return None
 
 
+def subject_head(node):
+    """Head noun of a subject NP, ignoring nouns buried inside a following PP
+    (so 'The boy with the bags' resolves to 'boy', enabling rule 2.2)."""
+    leaves = _leaves_list(node)
+    pp_ids = set()
+    for ch in node.get('children', []):
+        if ch.get('type') == 'PP':
+            for lf in _leaves_list(ch):
+                pp_ids.add(lf['id'])
+    cands = [lf for lf in leaves
+             if lf['id'] not in pp_ids and lf['type'] in NOUN_CLASS]
+    if cands:
+        return cands[-1]
+    return phrase_head(node)
+
+
 def clause_subject_and_verb(s_node):
     subj = None
     vp = None
+    fallback = None
     for child in s_node['children']:
-        if child['type'] == 'NP' and subj is None:
-            subj = child
+        if child['type'] == 'NP':
+            if fallback is None:
+                fallback = child
+            head = _np_head(child)
+            if head is not None and _lower(head.get('surface', '')) in {
+                    'today', 'yesterday', 'tomorrow', 'tonight', 'now',
+                    'later', 'then', 'soon'}:
+                continue
+            if subj is None:
+                subj = child
         if child['type'] == 'VP' and vp is None:
             vp = child
+    if subj is None:
+        subj = fallback
     return subj, vp
 
 
@@ -682,17 +940,61 @@ class MatrixEvaluator:
     def __init__(self):
         self.details = {}
 
-    def evaluate(self, root):
+    def evaluate(self, root, text=None):
         self.details = {}
         self._walk(root)
         self._root_level(root)
+        self._merge_findings(root, text)
         for detail in self.details.values():
+            cid = detail['constraint']
+            rule_id, method = CONSTRAINT_RULE.get(cid, (None, 'T'))
+            detail.setdefault('rule_id', rule_id)
+            detail.setdefault('method', method)
+            detail.setdefault('evidence', self._evidence(root, detail))
+            detail.setdefault('findings', [])
             detail['checks'] = _checks_for(detail, self.details)
-            if detail['status'] == 'error':
+            if detail['status'] == 'error' and 'remediation' not in detail:
                 remediation = self._remediate(root, detail)
                 if remediation:
                     detail['remediation'] = remediation
         return {'details': self.details, 'summary': self._summarize(root)}
+
+    def _merge_findings(self, root, text):
+        """Run the docs/matrix.md rule set and attach findings to their nodes."""
+        text = text if text is not None else root.get('surface', '')
+        try:
+            findings = ruleset.collect(text, root)
+        except Exception:  # pragma: no cover - never let XAI break the verdict
+            findings = []
+        for finding in findings:
+            nid = finding.get('node_id')
+            detail = self.details.get(nid) if nid else None
+            if detail is None:
+                detail = self.details.get(root['id'])
+            if detail is None:
+                continue
+            item = dict(finding)
+            item['id'] = f"{nid}:{finding.get('rule_id')}"
+            detail.setdefault('findings', []).append(item)
+            if finding['status'] == 'error' and detail['status'] != 'error':
+                detail.setdefault('_finding_errors', True)
+
+    def _evidence(self, root, detail):
+        """Generic evidence record matching the XAI table in docs/matrix.md."""
+        method = detail.get('method')
+        if method == 'L':
+            return {'used': 'wordlist', 'lookup': detail.get('surface', ''),
+                    'accepted': [], 'source': f"rule {detail.get('rule_id')}"}
+        if method == 'C':
+            return {'used': 'context', 'condition': detail.get('text', ''),
+                    'options': [], 'confidence': 0.5}
+        parent = self._find_node(root, detail['parent']) if detail.get('parent') else None
+        conflict = [{'node': detail['id']}]
+        if parent is not None:
+            conflict.append({'node': parent['id']})
+        return {'used': 'tree', 'subtree': detail['id'],
+                'rule': detail.get('rule'), 'conflict': conflict}
+
 
     def _walk(self, node, grandparent=None):
         if 'children' in node:
@@ -716,7 +1018,7 @@ class MatrixEvaluator:
             if ct == 'NP':
                 return self._s_subject(parent, child)
             if ct == 'VP':
-                return self._s_predicate(parent, child)
+                return self._s_predicate(parent, child, grandparent)
             if ct == 'ADJP':
                 return ('valid', 'C-SMALL-CLAUSE-PREDICATE',
                         f"Adjective phrase '{child['surface']}' is the predicate of a "
@@ -830,7 +1132,7 @@ class MatrixEvaluator:
                 f"NP '{child['surface']}' functions as the clause subject; "
                 'subject-verb agreement is evaluated on the predicate edge.')
 
-    def _s_predicate(self, parent, child):
+    def _s_predicate(self, parent, child, grandparent=None):
         subj, _vp = clause_subject_and_verb(parent)
         vp_head = phrase_head(child)
         if vp_head is None:
@@ -841,6 +1143,15 @@ class MatrixEvaluator:
                 return ('valid', 'C-INFINITIVAL-COMPLEMENT',
                         f"VP '{child['surface']}' is the non-finite to-infinitive complement of "
                         'the clause; no finite form is required here.')
+            if subj is None:
+                return ('valid', 'C-PREDICATE',
+                        f"VP '{child['surface']}' has no subject NP and functions as an "
+                        'imperative or subjectless non-finite clause; a finite form is not required.')
+            if grandparent is not None and grandparent['type'] in {
+                    'VP', 'SBAR', 'PP', 'S', 'SINV', 'SQ', 'SBARQ', 'NP'}:
+                return ('valid', 'C-SMALL-CLAUSE',
+                        f"VP '{child['surface']}' is the non-finite predicate of an embedded "
+                        'small/complement clause; the matrix verb supplies finiteness.')
             return ('error', 'C-TENSE-FINITE',
                     f"Predicate verb '{vp_head['surface']}' is "
                     f"{VERB_FORM_LABEL.get(vp_head['type'], 'non-finite')}; "
@@ -848,7 +1159,7 @@ class MatrixEvaluator:
         if subj is None:
             return ('valid', 'C-PREDICATE',
                     f"Predicate '{child['surface']}' licenses the clause (no subject edge to agree with).")
-        subj_head = phrase_head(subj)
+        subj_head = subject_head(subj)
         if subj_head is None:
             return ('valid', 'C-PREDICATE',
                     f"Predicate '{child['surface']}' licenses the clause.")
@@ -866,6 +1177,19 @@ class MatrixEvaluator:
             return ('valid', 'C-PREDICATE',
                     f"Subject '{subj['surface']}' ({subj_label}) and predicate verb "
                     f"'{vp_head['surface']}' ({self._verb_label(vp_head)}) agree in person and number.")
+        subj_leaf = _np_head(subj) or phrase_head(subj)
+        if subj_leaf is not None and _lower(subj_leaf.get('surface', '')) in COLLECTIVE_NOUNS:
+            return ('valid', 'C-COLLECTIVE',
+                    f"'{subj['surface']}' is a collective/notional noun; singular or plural "
+                    'agreement is acceptable, so this is treated as a style suggestion '
+                    'rather than an error.')
+        has_pp = any(c.get('type') == 'PP' for c in subj.get('children', []))
+        if has_pp:
+            return ('error', 'C-SUBJ-AGREE-XP',
+                    f"Subject-verb agreement across an intervening phrase: the head noun "
+                    f"of '{subj['surface']}' is {subj_label}, so the verb must be "
+                    f"'{vp_head['surface']}'-matching singular/plural form "
+                    f"(not '{vp_head['surface']}').")
         return ('error', 'C-SUBJECT-AGREEMENT',
                 f"Subject-verb agreement violated: subject '{subj['surface']}' is "
                 f"{subj_label}, but predicate verb '{vp_head['surface']}' is "
@@ -1243,8 +1567,10 @@ class MatrixEvaluator:
     def _rem_agreement(self, node, parent):
         subj, vp = clause_subject_and_verb(parent)
         vp_head = phrase_head(node) if vp is None else phrase_head(vp)
-        subj_head = phrase_head(subj)
-        if subj is None or subj_head is None or vp_head is None:
+        if subj is None:
+            return None
+        subj_head = subject_head(subj)
+        if subj_head is None or vp_head is None:
             return None
         coordinated = is_coordinated(subj)
         sk = ('3', 'pl') if coordinated else subject_key(subj_head)
@@ -1723,6 +2049,7 @@ class MatrixEvaluator:
             'constraint': constraint,
             'status': status,
             'text': text,
+            'findings': [],
         }
 
     def _role_for(self, constraint):
@@ -1791,27 +2118,39 @@ class MatrixEvaluator:
         unlisted = [d for d in edges if d['status'] == 'unlisted']
         root_detail = self.details.get(root['id'])
         root_error = root_detail is not None and root_detail['status'] == 'error'
-        violations = list(errors)
+        error_findings = []
+        suggestions = []
+        for detail in self.details.values():
+            for finding in detail.get('findings', []):
+                if finding['status'] == 'error':
+                    error_findings.append(finding)
+                elif finding['status'] == 'suggestion':
+                    suggestions.append(finding)
+        violations = list(errors) + error_findings
         if root_error:
             violations.append(root_detail)
         if root_error:
             message = root_detail['text']
         elif errors:
             message = errors[0]['text']
+        elif error_findings:
+            message = error_findings[0]['text']
         else:
             message = (f"All {len(valid)} validated edge(s) are licensed by the matrix; "
                        'the sentence is grammatical.')
         return {
             'valid': len(violations) == 0,
             'valid_edges': len(valid),
-            'violated_edges': len(errors),
-            'violations': [d['id'] for d in errors],
+            'violated_edges': len(errors) + len(error_findings),
+            'violations': [d.get('id') for d in violations],
             'unrated_edges': len(unlisted),
+            'suggested': len(suggestions),
+            'suggestions': [f.get('id') for f in suggestions],
             'constraints_fired': sorted({d['constraint'] for d in violations}),
             'root_error': root_error,
             'explanation': message,
         }
 
 
-def evaluate(root):
-    return MatrixEvaluator().evaluate(root)
+def evaluate(root, text=None):
+    return MatrixEvaluator().evaluate(root, text=text)

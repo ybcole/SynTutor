@@ -160,6 +160,16 @@ class NodeBuilder:
         return node['surface']
 
 
+def _ordered_leaves(node):
+    """Yield leaf nodes (no children) in left-to-right token order."""
+    kids = node.get('children')
+    if not kids:
+        yield node
+        return
+    for child in kids:
+        yield from _ordered_leaves(child)
+
+
 def token_metadata(nlp, doc, target):
     """Serialize spaCy token metadata for the analysis-sentence span."""
     out = []
@@ -198,6 +208,14 @@ def analyze(text, sentence_index=0):
     builder = NodeBuilder()
     root = builder.build(tagged, leaf_count=len(target))
     meta = token_metadata(nlp, doc, target)
+    # Enrich leaves with spaCy's fine-grained tag/lemma, aligned by token order,
+    # so morphology-sensitive rules (e.g. 'to' + finite verb) are not limited to
+    # benepar's coarse Penn tags.
+    leaves = _ordered_leaves(root)
+    for i, leaf in enumerate(leaves):
+        if i < len(meta):
+            leaf['ftag'] = meta[i]['tag']
+            leaf['fpos'] = meta[i]['pos']
     return {
         'sentence': target.text,
         'sentence_index': idx,

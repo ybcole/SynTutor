@@ -63,7 +63,7 @@ def _model_status():
 def build_payload(text, sentence_index=0):
     """Deterministic full payload for one user input, targeting ``sentence_index``."""
     analysis = analyze(text, sentence_index=sentence_index)
-    result = evaluate(analysis['root'])
+    result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
     summary = result['summary']
     root = analysis['root']
