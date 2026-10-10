@@ -55,7 +55,8 @@ function syncCanvasEmptyState() {
 
 function getGuestHistory() {
   try {
-    return JSON.parse(localStorage.getItem('syntutor_guest_history') || '[]');
+    const stored = JSON.parse(localStorage.getItem('syntutor_guest_history') || '[]');
+    return Array.isArray(stored) ? stored : [];
   } catch {
     return [];
   }
