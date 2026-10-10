@@ -25,6 +25,18 @@ _spec = importlib.util.spec_from_file_location(
 _server = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_server)
 
+# ZeroGPU Spaces refuse to boot unless at least one @spaces.GPU function is
+# declared. SynTutor is CPU-only, so this placeholder just satisfies the
+# runtime check and is never called.
+try:
+    import spaces
+
+    @spaces.GPU
+    def _zerogpu_placeholder(value: int = 0) -> int:
+        return value
+except Exception:  # not on ZeroGPU (e.g. local dev) -- ignore
+    pass
+
 
 def _warm_models():
     import parse_engine
