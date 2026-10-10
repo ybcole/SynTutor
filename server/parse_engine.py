@@ -25,10 +25,21 @@ def load_models():
     if _load_error is not None:
         raise _load_error
     try:
+        import torch
         import spacy
         import benepar  # noqa: F401  (registered component required)
-        nlp = spacy.load(PARSER_BUNDLE)
-        nlp.add_pipe('benepar', config={'model': PARSER_MODEL})
+        # benepar calls `.cuda()` whenever torch.cuda.is_available(). Under
+        # ZeroGPU that probe reports True (emulated) even though no GPU exists,
+        # which kills the process with a low-level CUDA init error. Pin it to
+        # False just for the load so the parser stays on CPU (SynTutor is
+        # CPU-only), then restore the emulated value.
+        _orig_is_available = torch.cuda.is_available
+        torch.cuda.is_available = lambda: False
+        try:
+            nlp = spacy.load(PARSER_BUNDLE)
+            nlp.add_pipe('benepar', config={'model': PARSER_MODEL})
+        finally:
+            torch.cuda.is_available = _orig_is_available
         _nlp = nlp
         return _nlp
     except Exception as exc:  # pragma: no cover - depends on local model install

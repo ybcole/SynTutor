@@ -58,8 +58,9 @@ def _warm_models():
         print('[syntutor] models ready', flush=True)
         return
     except Exception:
-        parse_engine._load_error = None
+        pass
     try:
+        parse_engine._load_error = None
         import spacy.cli
         spacy.cli.download('en_core_web_md')
         import benepar
