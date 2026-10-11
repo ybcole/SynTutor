@@ -15,6 +15,7 @@ from urllib.parse import urlparse
 
 from parse_engine import ParseFailure, analyze, load_models
 from matrix import evaluate
+from detector import classify, combine
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB_DIR = os.path.join(ROOT, 'web')
@@ -61,7 +62,13 @@ def _model_status():
 
 
 def build_payload(text, sentence_index=0):
-    """Deterministic full payload for one user input, targeting ``sentence_index``."""
+    """Hybrid payload for one user input, targeting ``sentence_index``.
+
+    Two channels: the rule matrix explains (deterministic), and a CoLA
+    acceptability model detects (trained). A sentence is grammatical only if
+    both accept; a rules-clean but model-rejected sentence is UNVERIFIED, and
+    the model's reasoning is surfaced because the rules cannot explain it.
+    """
     analysis = analyze(text, sentence_index=sentence_index)
     result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
@@ -69,9 +76,15 @@ def build_payload(text, sentence_index=0):
     root = analysis['root']
     tokens = analysis['tokens']
 
+    det = classify(analysis['sentence'])
+    if det is not None:
+        summary = combine(summary, det)
+
     token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
     tag_word = summary['explanation']
-    label = 'VALID' if summary['valid'] else 'INVALID'
+    label = {'grammatical': 'VALID', 'ungrammatical': 'INVALID',
+             'unverified': 'UNVERIFIED'}.get(summary.get('verdict'),
+                                             'VALID' if summary['valid'] else 'INVALID')
 
     basic_lines = [
         f"Input: {analysis['sentence']}",
@@ -83,17 +96,33 @@ def build_payload(text, sentence_index=0):
         f"   {tag_word}",
         'Deterministic matrix over the benepar tree; identical inputs always produce identical verdicts.',
     ]
+    if 'detector' in summary:
+        det_m = summary['detector']
+        basic_lines.append(
+            f"Hybrid detection ({det_m['model']}): {det_m['label']} "
+            f"(p(acceptable)={det_m['acceptable_prob']:.2f})")
+        basic_lines.append(f"   {summary['detector_note']}")
+        if summary.get('verdict') == 'unverified' and det_m['label'] == 'unacceptable':
+            basic_lines.append(
+                'The matrix could not explain the rejection, so the verdict stays '
+                'UNVERIFIED rather than UNGRAMMATICAL.')
+    elif summary.get('unverified'):
+        basic_lines.append(
+            'Detection channel offline - verdict reflects the rule matrix only.')
 
     error_ids = [d for d in details.values() if d['status'] == 'error']
     contrastive = _contrastive(summary, details)
 
     return {
         'meta': {
-            'deterministic': True,
+            'deterministic': 'detector' not in summary,
             'k': 1,
             'parser': 'benepar_en3',
             'spacy': 'en_core_web_md',
-            'backend': 'spaCy + benepar (neural constituency) + rule matrix (XAI)',
+            'backend': ('spaCy + benepar (neural constituency) + rule matrix (XAI) '
+                        '+ CoLA acceptability model (hybrid)'
+                        if 'detector' in summary else
+                        'spaCy + benepar (neural constituency) + rule matrix (XAI)'),
             'sentence_count': analysis['sentence_count'],
             'target_sentence': analysis['sentence_index'] + 1,
         },

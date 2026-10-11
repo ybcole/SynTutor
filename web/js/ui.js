@@ -175,7 +175,7 @@ export function renderDiagnostic(title, lines) {
   }
 }
 
-export function renderSentenceVerdict(markupLines, isError) {
+export function renderSentenceVerdict(markupLines, verdict) {
   const box = $('#sentenceVerdict');
   if (!box) return;
   box.innerHTML = '';
@@ -187,8 +187,14 @@ export function renderSentenceVerdict(markupLines, isError) {
     d.textContent = line;
     box.appendChild(d);
   }
-  box.dataset.verdict = isError ? 'error' : 'valid';
-  box.classList.toggle('is-error', Boolean(isError));
+  const state = verdict === 'ungrammatical' || verdict === 'error' || verdict === true
+    ? 'error'
+    : verdict === 'unverified'
+      ? 'unverified'
+      : 'valid';
+  box.dataset.verdict = state;
+  box.classList.toggle('is-error', state === 'error');
+  box.classList.toggle('is-unverified', state === 'unverified');
 }
 
 export function fillDevPanel(payload) {

@@ -1844,6 +1844,355 @@ def _check_more(root, clauses, leaves):
                                                    'object NP + VP')))
                 break
 
+    # 2.3 coordinated subjects (and / or / nor) agree with the predicate verb
+    top_ids = {root['id']}
+    for c in root.get('children', []):
+        if c.get('type') in ('S', 'SQ', 'SINV', 'SBARQ'):
+            top_ids.add(c['id'])
+    for clause in clauses:
+        if clause.get('type') != 'S' or clause['id'] not in top_ids:
+            continue
+        subj = vp = None
+        for c in clause.get('children', []):
+            if c.get('type') == 'NP' and subj is None:
+                subj = c
+            elif c.get('type') == 'VP' and vp is None:
+                vp = c
+        if subj is None or vp is None:
+            continue
+        sleaves = _leaves(subj)
+        ccs = [x for x in sleaves if x.get('type') == 'CC']
+        if not ccs:
+            continue
+        conj = _lower(ccs[0])
+        vhead = None
+        for x in _leaves(vp):
+            if x.get('type') in ('VBZ', 'VBP') or _lower(x) in (
+                    BE_SURFACES | HAVE_SURFACES | DO_SURFACES):
+                vhead = x
+                break
+        if vhead is None:
+            continue
+        vkey = _verb_key(vhead)
+        vlow = _lower(vhead)
+        heads = [x for x in sleaves
+                 if x.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP')]
+        if len(heads) < 2:
+            continue
+        if conj in ('and', '&'):
+            joined = ' '.join(_lower(x) for x in sleaves)
+            if joined in {'bread and butter', 'peanut butter and jelly',
+                          'fish and chips', 'gin and tonic'}:
+                continue
+            if vkey == ('3', 'sg') or vlow in ('is', 'was', 'has', 'does'):
+                out.append(_finding('2.3', 'error', 'C-COORD-SUBJ-AGREE',
+                                    'subject-verb agreement', vhead['id'],
+                                    f"A coordinated subject is plural: "
+                                    f"'{subj['surface']}' needs a plural verb, not "
+                                    f"'{vhead['surface']}'.",
+                                    _tree_evidence(ccs[0]['id'],
+                                                   'NP CC NP + singular verb',
+                                                   [{'node': ccs[0]['id']},
+                                                    {'node': vhead['id']}])))
+        elif conj in ('or', 'nor'):
+            near = heads[-1]
+            nkey = None
+            if near.get('type') in ('NNS', 'NNPS'):
+                nkey = ('3', 'pl')
+            elif near.get('type') in ('NN', 'NNP', 'NML', 'NX'):
+                nkey = ('3', 'sg')
+            elif near.get('type') == 'PRP':
+                nkey = PRP_PERSON.get(_lower(near))
+            if nkey is None:
+                continue
+            if nkey[1] == 'sg' and vkey in (('*', 'non3sg'), ('3', 'pl')):
+                out.append(_finding('2.3', 'error', 'C-COORD-SUBJ-AGREE',
+                                    'subject-verb agreement', vhead['id'],
+                                    f"With 'or'/'nor' the verb agrees with the "
+                                    f"nearest subject '{near['surface']}': use the "
+                                    f"singular form, not '{vhead['surface']}'.",
+                                    _tree_evidence(near['id'],
+                                                   'nearest NP + verb',
+                                                   [{'node': near['id']},
+                                                    {'node': vhead['id']}])))
+            elif nkey[1] == 'pl' and (vkey == ('3', 'sg')
+                                      or vlow in ('is', 'was', 'has', 'does')):
+                out.append(_finding('2.3', 'error', 'C-COORD-SUBJ-AGREE',
+                                    'subject-verb agreement', vhead['id'],
+                                    f"With 'or'/'nor' the verb agrees with the "
+                                    f"nearest subject '{near['surface']}' (plural).",
+                                    _tree_evidence(near['id'],
+                                                   'nearest NP + verb',
+                                                   [{'node': near['id']},
+                                                    {'node': vhead['id']}])))
+
+    # 4.2 noun as modifier must be singular (a ten-years plan)
+    MEASURE_SG = {'years': 'year', 'months': 'month', 'weeks': 'week',
+                  'days': 'day', 'hours': 'hour', 'minutes': 'minute',
+                  'miles': 'mile', 'meters': 'meter', 'metres': 'metre',
+                  'kilometers': 'kilometer', 'feet': 'foot', 'inches': 'inch',
+                  'pounds': 'pound', 'dollars': 'dollar', 'percents': 'percent'}
+    for node in _iter_nodes(root):
+        if node.get('type') != 'NP':
+            continue
+        nleaves = _leaves(node)
+        for idx in range(len(nleaves) - 1):
+            a, b = nleaves[idx], nleaves[idx + 1]
+            if a.get('type') in ('NNS', 'NNPS') \
+                    and b.get('type') in ('NN', 'NNP') \
+                    and _lower(a) in MEASURE_SG:
+                fix = MEASURE_SG[_lower(a)]
+                out.append(_finding('4.2', 'error', 'C-NOUN-MODIFIER-NUMBER',
+                                    'noun modifier', a['id'],
+                                    f"An attributive noun is singular: "
+                                    f"'{a['surface']} {b['surface']}' \u2192 "
+                                    f"'{fix} {b['surface']}'.",
+                                    _tree_evidence(node['id'],
+                                                   'plural modifier + head noun',
+                                                   [{'node': a['id']},
+                                                    {'node': b['id']}])))
+                break
+
+    # 7.3 adverb placement: verb + adverbial + pronoun object (I like very much it)
+    for node in _iter_nodes(root):
+        if node.get('type') != 'VP':
+            continue
+        kids = node.get('children', [])
+        for i, k in enumerate(kids[:-1]):
+            if k.get('type') not in ('ADVP', 'PRT'):
+                continue
+            if i > 0 and kids[i - 1].get('type') not in (
+                    'VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'MD', 'VP'):
+                continue
+            nxt = kids[i + 1]
+            if nxt.get('type') != 'NP':
+                continue
+            nhead = _np_head_leaf(nxt)
+            if nhead is None or nhead.get('type') != 'PRP':
+                continue
+            out.append(_finding('7.3', 'error', 'C-ADVERB-PLACEMENT',
+                                'adverb position', k['id'],
+                                f"The adverbial '{k['surface']}' sits between the "
+                                f"verb and its pronoun object; move it after "
+                                f"'{nhead['surface']}' "
+                                f"(e.g. '... {nhead['surface']} {k['surface']}').",
+                                _tree_evidence(node['id'],
+                                               'V + ADVP + PRP object',
+                                               [{'node': k['id']},
+                                                {'node': nhead['id']}])))
+            break
+
+    # 8.5 wrong in/on/at for time and place (on 5 pm)
+    DAY_WORDS = {'monday', 'tuesday', 'wednesday', 'thursday', 'friday',
+                 'saturday', 'sunday'}
+    MONTH_WORDS = {'january', 'february', 'march', 'april', 'may', 'june',
+                   'july', 'august', 'september', 'october', 'november',
+                   'december'}
+    PART_DAY = {'morning', 'afternoon', 'evening'}
+    CLOCK = {'pm', 'am', "o'clock", "o' clock", 'clock'}
+    for i, lf in enumerate(leaves):
+        low = _lower(lf)
+        if low not in ('in', 'on', 'at'):
+            continue
+        nxt = leaves[i + 1] if i + 1 < len(leaves) else None
+        if nxt is None:
+            continue
+        w = _lower(nxt)
+        after = [_lower(x) for x in leaves[i + 1:i + 4]]
+        is_clock = nxt.get('type') == 'CD' or any(a in CLOCK for a in after)
+        tgt = None
+        if low == 'at' and w in DAY_WORDS:
+            tgt = 'on'
+        elif low == 'at' and w in MONTH_WORDS:
+            tgt = 'in'
+        elif low == 'in' and w in DAY_WORDS:
+            tgt = 'on'
+        elif low == 'on' and w in MONTH_WORDS:
+            tgt = 'in'
+        elif low == 'on' and is_clock:
+            tgt = 'at'
+        elif low == 'in' and is_clock:
+            tgt = 'at'
+        elif low == 'on' and w in ('night', 'noon', 'midnight'):
+            tgt = 'at'
+        elif low == 'in' and w in ('night', 'noon', 'midnight'):
+            tgt = 'at'
+        elif low == 'at' and w in PART_DAY:
+            tgt = 'in'
+        elif low == 'on' and w in PART_DAY and 'of' not in after[1:]:
+            tgt = 'in'
+        if tgt:
+            out.append(_finding('8.5', 'error', 'C-TIME-PLACE-PREP',
+                                'preposition choice', nxt['id'],
+                                f"For a time expression, '{low} {w}...' is not "
+                                f"standard; use '{tgt}'.",
+                                _wordlist_evidence(f"{low} {w}",
+                                                   [f"{tgt} {w}"],
+                                                   'in/on/at time table')))
+            continue
+        # 'in/on/at' + next/last + time word takes no preposition (in next Monday)
+        nxt2 = leaves[i + 2] if i + 2 < len(leaves) else None
+        if nxt2 is not None and w in ('next', 'last'):
+            w2 = _lower(nxt2)
+            if w2 in DAY_WORDS or w2 in MONTH_WORDS or w2 in (
+                    'week', 'month', 'year', 'weekend', 'summer', 'winter',
+                    'spring', 'fall'):
+                out.append(_finding('8.5', 'error', 'C-TIME-PLACE-PREP',
+                                    'preposition choice', nxt['id'],
+                                    f"'{low} {w} {w2}' takes no preposition: use "
+                                    f"'{w} {w2}'.",
+                                    _wordlist_evidence(f"{low} {w} {w2}",
+                                                       [f"{w} {w2}"],
+                                                       'in/on/at time table')))
+
+    # 9.1 fragment: a subordinate clause standing alone (Because I was late.)
+    if root.get('type') == 'SBAR':
+        out.append(_finding('9.1', 'error', 'C-FRAGMENT', 'sentence structure',
+                            root['id'],
+                            "This is a subordinate clause with no main clause "
+                            "(a fragment). Add a main clause to complete the "
+                            "sentence.",
+                            _tree_evidence(root['id'],
+                                           'SBAR without a matrix S')))
+
+    # 9.10 relative clause with a resumptive object pronoun (the man who I saw him)
+    RELP = {'who', 'whom', 'which', 'that'}
+    for node in _iter_nodes(root):
+        if node.get('type') != 'SBAR':
+            continue
+        kids = node.get('children', [])
+        whnp = kids[0] if kids and kids[0].get('type') == 'WHNP' else None
+        if whnp is None:
+            continue
+        wl = _leaves(whnp)
+        if not wl or _lower(wl[0]) not in RELP:
+            continue
+        clause = next((c for c in kids if c.get('type') == 'S'), None)
+        if clause is None or not clause.get('children'):
+            continue
+        ck = clause.get('children', [])
+        subj = next((c for c in ck if c.get('type') == 'NP'), None)
+        if subj is None:
+            continue
+        vp = next((c for c in ck if c.get('type') == 'VP'), None)
+        if vp is None:
+            continue
+        obj = None
+        for c in vp.get('children', []):
+            if c.get('type') == 'NP':
+                h = _np_head_leaf(c)
+                if h is not None and h.get('type') == 'PRP' \
+                        and _lower(h) in ('me', 'us', 'him', 'her', 'them'):
+                    obj = h
+                    break
+        if obj is None:
+            continue
+        out.append(_finding('9.10', 'error', 'C-RESUMPTIVE-RELATIVE',
+                            'relative clause', obj['id'],
+                            f"Resumptive pronoun '{obj['surface']}': the relative "
+                            f"pronoun '{wl[0]['surface']}' already fills the object "
+                            'slot, so the noun should not be repeated.',
+                            _tree_evidence(node['id'],
+                                           'SBAR(WHNP S(NP VP NP-PRP))',
+                                           [{'node': wl[0]['id']},
+                                            {'node': obj['id']}])))
+
+    # 9.14 subordinator + to-infinitive clause without a subject (because to see you)
+    WH_TRIG = {'when', 'where', 'why', 'how', 'whether', 'what', 'who',
+               'whom', 'whose', 'which', 'as'}
+    for node in _iter_nodes(root):
+        if node.get('type') != 'SBAR':
+            continue
+        kids = node.get('children', [])
+        if len(kids) < 2 or kids[0].get('type') != 'IN':
+            continue
+        if _lower(kids[0]) in WH_TRIG:
+            continue
+        sc = kids[1]
+        if sc.get('type') != 'S':
+            continue
+        sk = [c for c in sc.get('children', [])
+              if c.get('type') in ('NP', 'VP')]
+        if not sk or sk[0].get('type') != 'VP':
+            continue
+        vp = sk[0]
+        inc = kids[0]
+        vpl = [c.get('type') for c in vp.get('children', [])]
+        if 'TO' in vpl or (_leaves(vp) and _leaves(vp)[0].get('type') == 'TO'):
+            out.append(_finding('9.14', 'error', 'C-CLAUSE-LINKING',
+                                'clause joining', inc['id'],
+                                f"'{inc['surface']}' introduces a finite "
+                                "clause; a bare 'to'-infinitive (with no subject) "
+                                "cannot follow it directly.",
+                                _tree_evidence(sc['id'],
+                                               'IN + S(VP(TO ...))',
+                                               [{'node': inc['id']},
+                                                {'node': vp['id']}])))
+
+    # 9.15 ditransitive verb + to/for + pronoun, then the object (gave to me a book)
+    DITRANSITIVE = {'give', 'gives', 'gave', 'given', 'send', 'sends', 'sent',
+                    'show', 'shows', 'showed', 'shown', 'tell', 'tells',
+                    'told', 'teach', 'teaches', 'taught', 'bring', 'brings',
+                    'brought', 'offer', 'offers', 'offered', 'lend', 'lends',
+                    'lent', 'hand', 'hands', 'handed', 'pass', 'passes',
+                    'passed', 'buy', 'buys', 'bought', 'sell', 'sells',
+                    'sold', 'write', 'writes', 'wrote', 'written', 'read',
+                    'reads', 'pay', 'pays', 'paid', 'owe', 'owes', 'owed'}
+    for node in _iter_nodes(root):
+        if node.get('type') != 'VP':
+            continue
+        kids = node.get('children', [])
+        for i, k in enumerate(kids):
+            if k.get('type') != 'PP':
+                continue
+            kl = _leaves(k)
+            if not kl or _lower(kl[0]) not in ('to', 'for'):
+                continue
+            if i == 0:
+                continue
+            verb = kids[i - 1]
+            if _lower(verb) not in DITRANSITIVE:
+                continue
+            pobj = _np_head_leaf(k)
+            if pobj is None or pobj.get('type') != 'PRP':
+                continue
+            nxt = kids[i + 1] if i + 1 < len(kids) else None
+            if nxt is None or nxt.get('type') != 'NP':
+                continue
+            out.append(_finding('9.15', 'error', 'C-OBJECT-ORDER',
+                                'object order', verb['id'],
+                                f"Object-order error: the direct object should "
+                                f"come right after the verb (e.g. '{verb['surface']} "
+                                f"{pobj['surface']} «noun»') or after the whole "
+                                f"prepositional phrase.",
+                                _tree_evidence(node['id'],
+                                               'V + PP(to/for + PRP) + NP',
+                                               [{'node': verb['id']},
+                                                {'node': pobj['id']}])))
+
+    # 10.1 sentence-initial capitalization (the boy runs)
+    first = None
+    for n in _iter_nodes(root):
+        if 'surface' not in n:
+            continue
+        if n.get('type') in ('``', '"', "'", '(', '[', 'SYM'):
+            continue
+        first = n
+        break
+    if first is not None:
+        surf = first.get('surface') or ''
+        if surf[:1].isalpha() and surf[:1].islower():
+            low = surf.lower()
+            if low not in ('i',) and low not in DAYS and low not in MONTH_WORDS:
+                out.append(_finding('10.1', 'error', 'C-SENTENCE-CAPITAL',
+                                    'capitalization', first['id'],
+                                    f"Sentences begin with a capital letter: "
+                                    f"'{surf}' \u2192 "
+                                    f"'{surf[0].upper() + surf[1:]}'.",
+                                    _tree_evidence(root['id'],
+                                                   'sentence-initial token',
+                                                   [{'node': first['id']}])))
+
     return out
 
 
@@ -1984,6 +2333,31 @@ def _check_context(root, clauses, leaves):
     for i, lf in enumerate(leaves):
         if _lower(lf) in BE_SURFACES and i + 1 < len(leaves) \
                 and _lower(leaves[i + 1]) in PARTICIPIAL_ADJ:
+            # Only fire if the subject is an experiencer pronoun (I/he/she/we/they/you)
+            # otherwise it's a correct attributive/causative use
+            subj = None
+            # find subject of the clause this BE belongs to
+            for clause in clauses:
+                if i < len(leaves):  # rough; easier: check clause has be
+                    c_leaves = _leaves(clause)
+                    if lf in c_leaves:  # has be
+                        for c in clause.get('children', []):
+                            if c.get('type') in ('NP',):
+                                subj = c
+                                break
+                        break
+            subj_exp = False
+            if subj is not None:
+                sh = _leaves(subj)
+                if sh:
+                    ssubj = _lower(sh[-1]) if sh[-1].get('type') == 'PRP' or sh[-1].get('type') in ('PRP$','NN','NNS') else _lower(sh[0])
+                    if sh[-1].get('type') == 'PRP':
+                        ssubj = _lower(sh[-1])
+                    # experiencer first/third person pronouns
+                    if _lower(sh[-1]) in ('i','he','she','we','they','you'):
+                        subj_exp = True
+            if not subj_exp:
+                continue  # correct for inanimate/third-party subjects
             out.append(_finding('7.4', 'suggestion', 'C-PARTICIPIAL',
                                 'adjective', leaves[i + 1]['id'],
                                 f"'{leaves[i + 1]['surface']}' describes the effect on "
@@ -2113,8 +2487,7 @@ def _check_context(root, clauses, leaves):
     # 11.7 L1 interference (I am agree)
     for i, lf in enumerate(leaves):
         if _lower(lf) in TO_BE_SURFACES and i + 1 < len(leaves) \
-                and _lower(leaves[i + 1]) in ('agree', 'disagree', 'afraid',
-                                              'agree with'):
+                and _lower(leaves[i + 1]) in ('agree', 'disagree'):
             out.append(_finding('11.7', 'suggestion', 'C-L1-INTERFERENCE',
                                 'L1 interference', leaves[i + 1]['id'],
                                 f"'{leaves[i + 1]['surface']}' is a verb, not an "
@@ -2149,6 +2522,50 @@ def _check_context(root, clauses, leaves):
                                           'evidence': 'removes the ambiguity'}],
                                         0.5)))
                 break
+
+    # 8.1 Wrong preposition after a verb (She depends in her family)
+    VERB_PREPS = {'depend': ['on', 'upon'],
+                  'depends': ['on', 'upon'],
+                  'depended': ['on', 'upon'],
+                  'consist': ['of'],
+                  'consists': ['of'],
+                  'consisted': ['of'],
+                  'belong': ['to'],
+                  'belongs': ['to'],
+                  'belonged': ['to'],
+                  'listen': ['to'],
+                  'listens': ['to'],
+                  'listened': ['to'],
+                  'rely': ['on', 'upon'],
+                  'relies': ['on', 'upon'],
+                  'replied': ['to'],
+                  'marry': ['to'],
+                  'marries': ['to'],
+                  'married': ['to'],
+                  'wait': ['for'],
+                  'waits': ['for'],
+                  'waited': ['for']}
+    for i, lf in enumerate(leaves[:-1]):
+        opts = VERB_PREPS.get(_lower(lf))
+        if opts is None:
+            continue
+        nxt = leaves[i + 1]
+        if nxt.get('type') not in ('IN', 'TO') or _lower(nxt) in opts:
+            continue
+        out.append(_finding('8.1', 'suggestion', 'C-WRONG-PREPOSITION',
+                            'preposition choice', nxt['id'],
+                            f"'{lf['surface']}' takes "
+                            f"{'one of' if len(opts) > 1 else ''} "
+                            f"'{'/'.join(opts)}', "
+                            f"not '{nxt['surface']}'.",
+                            _context_evidence(
+                                f"verb '{lf['surface']}' + '{nxt['surface']}'",
+                                [{'option': f"{lf['surface']} "
+                                            f"{'/'.join(opts)}",
+                                  'evidence': 'standard collocation'},
+                                 {'option': f"{lf['surface']} {nxt['surface']}",
+                                  'evidence': 'non-standard collocation'}],
+                                0.7)))
 
     # 11.5 PP-attachment ambiguity (I saw the man with the telescope)
     PERCEPTION = {'saw', 'see', 'seen', 'heard', 'hear', 'watched', 'watch',
@@ -2201,6 +2618,10 @@ def _check_context(root, clauses, leaves):
                 continue
             nl = _leaves(c)
             if len(nl) >= 2 and _lower(nl[0]) == 'the' and nl[-1].get('type') == 'NN':
+                # skip if anaphoric cues present (again, same, before, also, other)
+                textlow = (root.get('surface') or '').lower()
+                if any(w in textlow for w in (' again', ' the same', ' before', ' also', ' another', ' other', ' earlier', ' last time')):
+                    continue
                 out.append(_finding('3.4', 'suggestion', 'C-FIRST-MENTION',
                                     'article', nl[0]['id'],
                                     f"If '{c['surface']}' is mentioned for the first "

@@ -599,7 +599,7 @@ async function executePipeline(opts = {}) {
   const s = payload.summary;
   log(`Stage 5: rule-matrix validation \u2014 ${s.valid_edges} valid / ${s.violated_edges} violated / ${s.unrated_edges} unrated \u00b7 fired${JSON.stringify(s.constraints_fired)}`);
 
-  renderSentenceVerdict(payload.explainers.basic.split('\n'), !payload.summary.valid);
+  renderSentenceVerdict(payload.explainers.basic.split('\n'), payload.summary.verdict || payload.summary.valid);
   log(`Stage 6: explanations generated \u2014 basic + ${payload.explainers.contrastive ? 'contrastive' : '(none)'}`);
 
   session = { payload };

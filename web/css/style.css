@@ -768,6 +768,16 @@ button:disabled {
   color: var(--ink);
 }
 
+#sentenceVerdict.is-error {
+  border-left: 3px solid var(--danger, #e5484d);
+  padding-left: 10px;
+}
+
+#sentenceVerdict.is-unverified {
+  border-left: 3px solid var(--warn, #f0a020);
+  padding-left: 10px;
+}
+
 .canvas-wrap {
   position: relative;
   flex: 1 1 auto;

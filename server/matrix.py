@@ -19,8 +19,16 @@ import inflect
 
 try:  # works both as ``server.matrix`` (package) and ``matrix`` (script dir)
     from . import ruleset
+    try:
+        from . import licensing
+    except Exception:  # lemminflect missing -> degrade to rules-only
+        licensing = None
 except ImportError:  # pragma: no cover
     import ruleset
+    try:
+        import licensing
+    except Exception:
+        licensing = None
 
 SENTENCE_CLASSES = {'S', 'SINV', 'SQ', 'SBARQ', 'FRAG', 'ROOT'}
 
@@ -36,6 +44,7 @@ DET_CLASS = {'DT'}
 PREP_CLASS = {'IN', 'TO', 'POS', 'RP'}
 
 NOUN_PLURAL = {'NNS', 'NNPS'}
+NOUN_PLURAL_SET = {'police','people','children','men','women','feet','teeth','mice','data','cattle'}
 NOUN_SINGULAR = {'NN', 'NNP', 'NML', 'NX'}
 
 PRP_KEY = {
@@ -107,7 +116,13 @@ NONCOUNT_NOUNS = {
     'truth', 'honesty', 'education', 'health', 'happiness', 'freedom',
     'justice', 'love', 'hate', 'nature', 'history', 'grammar', 'art',
     'music', 'sports', 'mathematics', 'math', 'science', 'physics',
-    'society', 'democracy', 'defense', 'food', 'fun',
+    'society', 'democracy', 'defense',     'food', 'fun', 'bread', 'butter', 'cheese', 'eggs', 'meat', 'fish',
+    'chicken', 'beef', 'pork', 'rice', 'noodles', 'pasta', 'soup',
+    'cake', 'candy', 'chocolate', 'ice cream', 'sushi', 'pizza',
+    # sports/activities
+    'soccer', 'football', 'basketball', 'tennis', 'baseball', 'hockey',
+    'volleyball', 'golf', 'rugby', 'swimming', 'running', 'jogging',
+    'cycling', 'skiing', 'football', 'cricket', 'badminton', 'music',
 }
 BARE_ARG_NOUNS = {
     'home', 'school', 'work', 'bed', 'church', 'town', 'court', 'class',
@@ -209,6 +224,16 @@ CHECK_LABELS = {
     'C-COORD-CASE': 'Pronoun Case in Coordination',
     'C-DUMMY-IT': 'Dummy it/there',
     'C-TRANSITIVITY': 'Verb Transitivity',
+    'C-COORD-SUBJ-AGREE': 'Coordinated Subject\u2013Verb Agreement',
+    'C-NOUN-MODIFIER-NUMBER': 'Singular Noun Modifier',
+    'C-ADVERB-PLACEMENT': 'Adverb Placement',
+    'C-WRONG-PREPOSITION': 'Wrong Preposition Choice',
+    'C-TIME-PLACE-PREP': 'in/on/at with Time and Place',
+    'C-FRAGMENT': 'Sentence Fragment',
+    'C-RESUMPTIVE-RELATIVE': 'Resumptive Pronoun in Relative Clause',
+    'C-CLAUSE-LINKING': 'Clause Linking (subordinator + to-infinitive)',
+    'C-OBJECT-ORDER': 'Object Order in Ditransitive Verbs',
+    'C-SENTENCE-CAPITAL': 'Sentence-initial Capitalization',
     'C-DOUBLE-NEGATIVE': 'Double Negation',
     'C-IMPERATIVE-VERB': 'Imperative Verb Form',
     'C-CONDITIONAL-WILL': 'Conditional Tense',
@@ -238,6 +263,12 @@ CHECK_LABELS = {
     'C-PASSIVE': 'Passive Formation',
     'C-WORD-ORDER': 'Word Order in Statements',
     'C-FIRST-MENTION': 'Definite vs Indefinite',
+    'C-LEXICON-MALFORMED': 'Word Form Licensed by Lexicon',
+    'C-LEXICON-UNKNOWN': 'Unrecognised Word (unverified)',
+    'C-LEXICON-TAG-MISMATCH': 'Parser Tag vs Lexicon (unverified)',
+    'C-RELATIVE-AGREE': 'Relative Clause Agreement',
+    'C-RELATIVE-POSSESSIVE': "Relative 'whose' Needs a Noun",
+    'C-RELATIVE-PRONOUN': 'Relative Pronoun Choice (who/which)',
 }
 
 # Constraint id -> (matrix.md rule id, check method). The method decides how the
@@ -373,6 +404,12 @@ CONSTRAINT_RULE = {
     'C-PASSIVE': ('6.4', 'T'),
     'C-WORD-ORDER': ('9.6', 'T'),
     'C-FIRST-MENTION': ('3.4', 'C'),
+    'C-LEXICON-MALFORMED': ('1.12', 'L'),
+    'C-LEXICON-UNKNOWN': ('1.12', 'L'),
+    'C-LEXICON-TAG-MISMATCH': ('1.12', 'L'),
+    'C-RELATIVE-AGREE': ('2.7', 'T'),
+    'C-RELATIVE-POSSESSIVE': ('5.4', 'T'),
+    'C-RELATIVE-PRONOUN': ('5.4', 'T'),
 }
 
 
@@ -686,7 +723,8 @@ def _lower(surface):
 def num_of(leaf):
     """Grammatical number of a nominal leaf, or None if unmarked."""
     pos = leaf['type']
-    if pos in NOUN_PLURAL:
+    surface = _lower(leaf.get('surface',''))
+    if pos in NOUN_PLURAL or surface in NOUN_PLURAL_SET:
         return 'pl'
     if pos in NOUN_SINGULAR:
         return 'sg'
@@ -805,7 +843,7 @@ def _np_determinatives(node):
             or _lower(lf.get('surface', '')) in POSS_DET_PLAIN]
 
 
-def _needs_indefinite_article_error(np_node):
+def _needs_indefinite_article_error(np_node, parent_vp=None):
     """Error message if a bare singular common noun heads an argument NP, else
     None. Mass/abstract/activity/institutional nouns are exempt."""
     head = _np_head(np_node)
@@ -823,6 +861,22 @@ def _needs_indefinite_article_error(np_node):
     if _np_determinatives(np_node):
         return None
     leaves = _leaves_list(np_node)
+    if leaves:
+        # exempt if NP contains a POS
+        if any(lf.get('type') == 'POS' for lf in leaves):
+            return None
+        # leading quantifier/numeral
+        first = leaves[0]
+        if first.get('type') == 'CD':
+            return None
+        if _lower(first.get('surface','')) in {'one','two','three','four','five','six','seven','eight','nine','ten','some','any','many','few','several','both','all','most','each','every','another','no','such','what','which','whose'}:
+            return None
+    # possessive NP as child
+    for ch in np_node.get('children', []):
+        if ch.get('type') in {'NP','NML','NX'}:
+            chleaves = _leaves_list(ch)
+            if any(lf.get('type') == 'POS' for lf in chleaves):
+                return None
     idx = next((i for i, lf in enumerate(leaves) if lf['id'] == head['id']), None)
     if idx and _lower(leaves[idx - 1]['surface']) in {'next', 'last', 'this', 'that'}:
         return None
@@ -875,11 +929,13 @@ def phrase_head(node):
 
 def subject_head(node):
     """Head noun of a subject NP, ignoring nouns buried inside a following PP
-    (so 'The boy with the bags' resolves to 'boy', enabling rule 2.2)."""
+    (so 'The boy with the bags' resolves to 'boy', enabling rule 2.2) or a
+    relative/complement clause (so 'The man who I saw' resolves to 'man', not
+    the pronoun inside the clause)."""
     leaves = _leaves_list(node)
     pp_ids = set()
     for ch in node.get('children', []):
-        if ch.get('type') == 'PP':
+        if ch.get('type') in ('PP', 'SBAR'):
             for lf in _leaves_list(ch):
                 pp_ids.add(lf['id'])
     cands = [lf for lf in leaves
@@ -939,9 +995,13 @@ class MatrixEvaluator:
 
     def __init__(self):
         self.details = {}
+        self.checker_errors = []
+        self.lex_stats = {}
 
     def evaluate(self, root, text=None):
         self.details = {}
+        self.checker_errors = []
+        self.lex_stats = {}
         self._walk(root)
         self._root_level(root)
         self._merge_findings(root, text)
@@ -962,10 +1022,15 @@ class MatrixEvaluator:
     def _merge_findings(self, root, text):
         """Run the docs/matrix.md rule set and attach findings to their nodes."""
         text = text if text is not None else root.get('surface', '')
-        try:
+        # Every checker runs in isolation; a crash is recorded and degrades the
+        # verdict to 'unverified' instead of silently turning into "no errors".
+        if licensing is not None:
+            findings, self.checker_errors, self.lex_stats = \
+                licensing.collect_all(text, root)
+        else:  # licensing layer unavailable -> rules/tree only
             findings = ruleset.collect(text, root)
-        except Exception:  # pragma: no cover - never let XAI break the verdict
-            findings = []
+            self.checker_errors = []
+            self.lex_stats = {}
         for finding in findings:
             nid = finding.get('node_id')
             detail = self.details.get(nid) if nid else None
@@ -1173,6 +1238,61 @@ class MatrixEvaluator:
         skey = ('3', 'pl') if coordinated else subject_key(subj_head)
         vkey = verb_key(vp_head)
         subj_label = '3rd person plural' if coordinated else self._subj_label(subj_head)
+        # Handle correlative 'either...or' / 'neither...nor' - agreement with nearest (rightmost) conjunct
+        subleaves = _leaves_list(subj)
+        correlative = coordinated and any((_lower(l.get('surface','')) if hasattr(l,'get') or isinstance(l,dict) else _lower(str(l))) in ('or','nor') for l in subleaves)
+        if correlative:
+            # find nearest nominal before verb - look for last PRP/NN in subject
+            last_nom = None
+            for lf in reversed(subleaves):
+                if lf.get('type') in ('PRP','NN','NNS','NNP','NNPS') and _lower(lf.get('surface','')) not in ('either','neither'):
+                    last_nom = lf; break
+            if last_nom is not None:
+                k = subject_key(last_nom)
+                if k is not None:
+                    skey = k
+                    subj_label = self._subj_label(last_nom)
+        # quantifier forcing on the full subject NP
+        force_pl = False
+        force_sg = False
+        subleaves = _leaves_list(subj)
+        if subleaves:
+            surf0 = _lower(subleaves[0]['surface'])
+            surf1 = _lower(subleaves[1]['surface']) if len(subleaves) > 1 else ''
+            surf2 = _lower(subleaves[2]['surface']) if len(subleaves) > 2 else ''
+            # a number of / the number of
+            if surf0 == 'a' and 'number' in surf1:
+                force_pl = True
+            if surf0 == 'a' and surf1 == 'number':
+                force_pl = True  # handle both
+            if 'number' in (surf0 + ' ' + surf1 + ' ' + surf2):
+                if surf0 == 'a':
+                    force_pl = True
+                if surf0 == 'the':
+                    force_sg = True
+            # each/every/neither/either/one
+            if not correlative and surf0 in ('each','every','neither','either','one'):
+                force_sg = True
+            # a lot/couple of etc
+            if (surf0 in ('a','an') and surf1 in ('lot','couple','few','little','majority')):
+                force_pl = True
+            if surf0 in ('many','several','plenty','most'):
+                force_pl = True
+        if force_pl:
+            skey = ('3', 'pl')
+            subj_label = '3rd person plural'
+        if force_sg:
+            p = skey[0] if skey else '3'
+            skey = (p, 'sg')
+            subj_label = self._subj_label({'type': 'PRP', 'surface': 'I'}) if p == '1' else ('3rd person singular' if p == '3' else self._subj_label(subj_head))
+        # coordinated predicates: every finite conjunct verb must agree with the
+        # subject too ('They are stupid and lacks manners.' -> 'lacks' is wrong).
+        for h in self._coordinated_predicate_heads(child, vp_head):
+            if not _agreement_ok(skey, verb_key(h)):
+                return ('error', 'C-SUBJECT-AGREEMENT',
+                        f"Coordinated predicate: '{h['surface']}' must agree with the "
+                        f"subject '{subj['surface']}' ({subj_label}); received "
+                        f"{self._verb_label(h)}.")
         if _agreement_ok(skey, vkey):
             return ('valid', 'C-PREDICATE',
                     f"Subject '{subj['surface']}' ({subj_label}) and predicate verb "
@@ -1194,6 +1314,32 @@ class MatrixEvaluator:
                 f"Subject-verb agreement violated: subject '{subj['surface']}' is "
                 f"{subj_label}, but predicate verb '{vp_head['surface']}' is "
                 f"{self._verb_label(vp_head)}.")
+
+    def _coordinated_predicate_heads(self, vp, primary):
+        """Finite verb heads of predicate-coordination conjuncts other than the
+        primary head. Covers nested '... are stupid and lacks manners' (VP (VP ..)
+        (CC and) (VP ..)) and flat '... runs and plays football'
+        (VP (VBZ ..) (CC and) (VBZ ..))."""
+        heads = []
+        kids = vp.get('children', []) if isinstance(vp, dict) else []
+        if not isinstance(kids, list) or not kids:
+            return heads
+        if not any(k.get('type') == 'CC' for k in kids):
+            return heads
+        seen = {primary['id']} if primary is not None else set()
+        for k in kids:
+            kid_type = k.get('type') if isinstance(k, dict) else None
+            if kid_type == 'VP':
+                h = phrase_head(k)
+                if h is not None and h.get('type') in VERB_CLASS \
+                        and h.get('id') not in seen:
+                    heads.append(h)
+                    seen.add(h['id'])
+            elif kid_type in ('VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'MD') \
+                    and k.get('id') not in seen:
+                heads.append(k)
+                seen.add(k['id'])
+        return heads
 
     @staticmethod
     def _subj_label(head):
@@ -2120,12 +2266,15 @@ class MatrixEvaluator:
         root_error = root_detail is not None and root_detail['status'] == 'error'
         error_findings = []
         suggestions = []
+        unverified = []
         for detail in self.details.values():
             for finding in detail.get('findings', []):
                 if finding['status'] == 'error':
                     error_findings.append(finding)
                 elif finding['status'] == 'suggestion':
                     suggestions.append(finding)
+                elif finding['status'] == 'unverified':
+                    unverified.append(finding)
         violations = list(errors) + error_findings
         if root_error:
             violations.append(root_detail)
@@ -2135,10 +2284,28 @@ class MatrixEvaluator:
             message = errors[0]['text']
         elif error_findings:
             message = error_findings[0]['text']
+        elif unverified or self.checker_errors:
+            message = (f"No rule was violated, but the sentence could not be fully "
+                       f"verified: {len(unverified)} word(s) not confirmed by the "
+                       f"lexicon, {len(self.checker_errors)} checker error(s).")
         else:
             message = (f"All {len(valid)} validated edge(s) are licensed by the matrix; "
                        'the sentence is grammatical.')
+        if violations:
+            verdict = 'ungrammatical'
+        elif unverified or self.checker_errors:
+            verdict = 'unverified'
+        else:
+            verdict = 'grammatical'
+        content = self.lex_stats.get('content', 0)
         return {
+            # 'valid' keeps its old meaning (no violation found).  UIs should now
+            # key on 'verdict' so "unverified" is not shown as a green tick.
+            'verdict': verdict,
+            'lexical_coverage': (round(self.lex_stats.get('licensed', 0) / content, 3)
+                                 if content else None),
+            'unverified': [f.get('id') for f in unverified],
+            'checker_errors': list(self.checker_errors),
             'valid': len(violations) == 0,
             'valid_edges': len(valid),
             'violated_edges': len(errors) + len(error_findings),
