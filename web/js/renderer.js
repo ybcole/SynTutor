@@ -145,6 +145,7 @@ export class TreeRenderer {
     this.hoverId = null;
     this.hoverX = 0;
     this.hoverY = 0;
+    this.interactive = true;
     this._drag = null;
     this.dfsOrder = [];
     this.indexById = new Map();
@@ -163,7 +164,7 @@ export class TreeRenderer {
   }
 
   _onKey(e) {
-    if (!this.tree) return;
+    if (!this.tree || !this.interactive) return;
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'ArrowRight' || e.key === 'ArrowDown') {
       e.preventDefault();
       const dir = (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ? -1 : 1;
@@ -198,6 +199,15 @@ export class TreeRenderer {
   select(id) {
     this.selectedId = id;
     this.draw();
+  }
+
+  setInteractive(flag) {
+    this.interactive = flag !== false;
+    if (!this.interactive) {
+      this.hoverId = null;
+      this.canvas.style.cursor = 'default';
+      this.draw();
+    }
   }
 
   clear() {
@@ -275,7 +285,7 @@ export class TreeRenderer {
         this.view.ty = this._drag.baseTy + dy;
         this.draw();
       }
-    } else {
+    } else if (this.interactive) {
       const id = this.layoutData ? this._hitTest(mx, my) : null;
       this.hoverX = mx;
       this.hoverY = my;
@@ -291,7 +301,7 @@ export class TreeRenderer {
   }
 
   _onUp() {
-    if (this._drag && !this._drag.moved && this.layoutData) {
+    if (this._drag && !this._drag.moved && this.layoutData && this.interactive) {
       const id = this._hitTest(this._drag.mouseX, this._drag.mouseY);
       this.onSelect(id);
     }

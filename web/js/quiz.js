@@ -1,10 +1,16 @@
-// Matrix Quiz UI controller. Everything renders inside the left sidebar panel
-// (#quizPanel): a searchable, scrollable, vertical list of rule quizzes, the
-// difficulty setup, the question runner, and the results screen.
+// Matrix Quiz UI controller.
+//
+// The sidebar panel (#quizPanel) still hosts the searchable rule catalog and
+// the difficulty setup. Once a run starts, the quiz moves onto the main canvas:
+// the learner repairs the incorrect sentence in the top textarea and the syntax
+// tree is rendered below, while a collapsible quest panel on the right shows the
+// category, progress, score, and Skip / Submit controls. Wrong answers surface
+// the same rule-matrix remediation used by the tutor.
 
 import {
-  MATRIX_SECTIONS, DIFFICULTY, questionPool, ruleInfo, hasQuiz, INDEX_OPTIONS,
+  MATRIX_SECTIONS, DIFFICULTY, questionPool, ruleInfo, hasQuiz,
 } from './quiz-data.js';
+import { renderNodeDetail } from './ui.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 
@@ -24,7 +30,21 @@ const state = {
   entries: [],
   search: '',
   body: null,
+  active: false,
+  answered: false,
+  collapsed: false,
+  controller: null,
 };
+
+function normalize(text) {
+  return (text || '')
+    .toLowerCase()
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"')
+    .replace(/[.!?]+$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
 // ---------------------------------------------------------------------------
 // Open / close
@@ -43,6 +63,7 @@ export function openQuizView() {
 }
 
 export function closeQuizView() {
+  if (state.active) endQuiz();
   const panel = $('#quizPanel');
   if (panel) { panel.hidden = true; panel.innerHTML = ''; }
   $('#appSidebar')?.classList.remove('quiz-active');
@@ -55,8 +76,16 @@ export function isQuizOpen() {
   return Boolean($('#quizPanel') && !$('#quizPanel').hidden);
 }
 
+function hideSidebar() {
+  const panel = $('#quizPanel');
+  if (panel) panel.hidden = true;
+  $('#appSidebar')?.classList.remove('quiz-active');
+  $('#appSidebarBackdrop')?.classList.remove('active');
+  $('#sidebarToggleBtn')?.setAttribute('aria-expanded', 'false');
+}
+
 // ---------------------------------------------------------------------------
-// Panel shell
+// Sidebar shell
 // ---------------------------------------------------------------------------
 function shell({ title, back, search, meta }) {
   const panel = $('#quizPanel');
@@ -174,7 +203,7 @@ function goSetup(ruleId) {
   if (!hasQuiz(ruleId)) {
     const soon = el('div', 'sq-soon-box');
     soon.appendChild(el('p', 'sq-soon-text',
-      `Quizzes for \u201c${info ? info.rule : ruleId}\u201d are coming soon. Word Forms is fully playable now.`));
+      `Quizzes for \u201c${info ? info.rule : ruleId}\u201d are coming soon.`));
     body.appendChild(soon);
     return;
   }
@@ -185,13 +214,17 @@ function goSetup(ruleId) {
   if (info) intro.appendChild(el('span', 'sq-bad', info.example || ''));
   body.appendChild(intro);
 
+  const note = el('p', 'sq-soon-text',
+    `Each quiz draws 5 of 40 incorrect sentences for the level you pick. Repair each one in the text box, then press Submit.`);
+  body.appendChild(note);
+
   body.appendChild(el('div', 'sq-label', 'Difficulty'));
   const grid = el('div', 'sq-diff-grid');
   Object.entries(DIFFICULTY).forEach(([key, d]) => {
     const btn = el('button', `sq-diff ${state.difficulty === key ? 'selected' : ''}`);
     btn.type = 'button';
     btn.appendChild(el('span', 'sq-diff-label', d.label));
-    btn.appendChild(el('span', 'sq-diff-count', `${d.count} questions`));
+    btn.appendChild(el('span', 'sq-diff-count', `${d.count} of ${d.total} sentences`));
     btn.addEventListener('click', () => {
       state.difficulty = key;
       grid.querySelectorAll('.sq-diff').forEach((b) => b.classList.remove('selected'));
@@ -208,130 +241,130 @@ function goSetup(ruleId) {
 }
 
 // ---------------------------------------------------------------------------
-// Runner
+// Quest panel (right-hand side, on the canvas)
 // ---------------------------------------------------------------------------
-function startQuiz() {
-  const pool = questionPool(state.ruleId);
-  const count = DIFFICULTY[state.difficulty].count;
-  state.questions = pool.slice(0, Math.min(count, pool.length));
-  state.index = 0;
-  state.entries = [];
-  state.view = 'quiz';
-  renderQuestion();
+function questHost() {
+  let host = $('#quizQuestHost');
+  if (!host) {
+    const right = document.querySelector('.right-panel');
+    if (!right) return null;
+    host = document.createElement('div');
+    host.id = 'quizQuestHost';
+    right.insertBefore(host, right.firstChild);
+  }
+  return host;
 }
 
-function renderQuestion() {
+function clearQuestPanel() {
+  const host = questHost();
+  if (host) host.innerHTML = '';
+}
+
+function setQuizLoading(show) {
+  $('#loadingIndicator')?.classList.toggle('visible', show);
+}
+
+function renderQuest() {
+  const host = questHost();
+  if (!host) return;
+  host.innerHTML = '';
+
+  const card = el('section', 'card quiz-quest');
+  const head = el('div', 'qq-head');
+  head.setAttribute('role', 'button');
+  head.setAttribute('tabindex', '0');
+  const headMain = el('div', 'qq-head-main');
+  const info = ruleInfo(state.ruleId);
+  headMain.appendChild(el('span', 'qq-cat',
+    `${state.ruleId}${info ? ` \u00b7 ${info.rule}` : ''}`));
+  if (state.view === 'quiz') headMain.appendChild(el('span', 'qq-diff', DIFFICULTY[state.difficulty].label));
+  head.appendChild(headMain);
+  const caret = el('button', 'qq-collapse');
+  caret.type = 'button';
+  caret.setAttribute('aria-label', state.collapsed ? 'Expand' : 'Collapse');
+  caret.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="${state.collapsed ? '9 18 15 12 9 6' : '6 9 12 15 18 9'}"></polyline></svg>`;
+  head.appendChild(caret);
+  const toggle = () => {
+    state.collapsed = !state.collapsed;
+    renderQuest();
+  };
+  caret.addEventListener('click', (e) => { e.stopPropagation(); toggle(); });
+  head.addEventListener('click', toggle);
+  head.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+  });
+  card.appendChild(head);
+
+  if (!state.collapsed) {
+    const body = el('div', 'qq-body');
+    if (state.view === 'results') renderResultsInto(body);
+    else renderQuestionInto(body);
+    card.appendChild(body);
+  }
+
+  host.appendChild(card);
+}
+
+function renderQuestionInto(body) {
   const q = state.questions[state.index];
   if (!q) { showResults(); return; }
-  const info = ruleInfo(state.ruleId);
-  const body = shell({
-    title: state.ruleId,
-    back: quitConfirm,
-    meta: questMeta(info, q),
-  });
-
-  body.appendChild(el('p', 'sq-num', `Question ${state.index + 1} of ${state.questions.length}`));
-  body.appendChild(el('p', 'sq-prompt', q.prompt));
-
-  const opts = el('div', 'sq-options');
-  q.options.forEach((opt, i) => {
-    const btn = el('button', 'sq-option');
-    btn.type = 'button';
-    btn.dataset.index = String(i);
-    btn.appendChild(el('span', 'sq-option-key', INDEX_OPTIONS[i] || String(i + 1)));
-    btn.appendChild(el('span', 'sq-option-text', opt));
-    btn.addEventListener('click', () => chooseOption(i));
-    opts.appendChild(btn);
-  });
-  body.appendChild(opts);
-
-  const fb = el('div', 'sq-feedback');
-  fb.id = 'sqFeedback';
-  body.appendChild(fb);
-
-  const nav = el('div', 'sq-nav');
-  const skip = el('button', 'sq-ghost', 'Skip');
-  skip.type = 'button';
-  skip.addEventListener('click', skipQuestion);
-  nav.appendChild(skip);
-  const next = el('button', 'sq-primary', state.index + 1 >= state.questions.length ? 'Finish' : 'Next');
-  next.type = 'button';
-  next.id = 'sqNextBtn';
-  next.disabled = true;
-  next.addEventListener('click', advance);
-  nav.appendChild(next);
-  body.appendChild(nav);
-}
-
-function questMeta(info, q) {
-  const meta = el('div', 'sq-meta');
-  const line = el('div', 'sq-meta-line');
-  line.appendChild(el('span', 'sq-meta-rule', info ? info.rule : ''));
-  line.appendChild(el('span', 'sq-meta-diff', DIFFICULTY[state.difficulty].label));
-  meta.appendChild(line);
-
-  const progress = el('div', 'sq-progress');
-  const fill = el('div', 'sq-progress-fill');
   const done = state.entries.filter(Boolean).length;
-  fill.style.width = `${Math.round((done / state.questions.length) * 100)}%`;
+  const total = state.questions.length;
+
+  const progress = el('div', 'qq-progress');
+  const fill = el('div', 'qq-progress-fill');
+  fill.style.width = `${Math.round((done / total) * 100)}%`;
   progress.appendChild(fill);
-  meta.appendChild(progress);
+  body.appendChild(progress);
 
-  const sent = el('div', 'sq-sentence');
-  sent.appendChild(el('span', 'sq-sentence-label', 'Sentence'));
-  sent.appendChild(el('p', null, q.sentence));
-  meta.appendChild(sent);
-  return meta;
-}
+  const meta = el('div', 'qq-meta-row');
+  meta.appendChild(el('span', 'qq-num', `Question ${state.index + 1} of ${total}`));
+  const score = state.entries.filter((e) => e && e.correct).length;
+  meta.appendChild(el('span', 'qq-score', `Score ${score}`));
+  body.appendChild(meta);
 
-function chooseOption(i) {
-  const q = state.questions[state.index];
-  const entry = state.entries[state.index];
-  if (entry && !entry.skipped) return;
-  const correct = i === q.answer;
-  state.entries[state.index] = { question: q, chosen: i, correct, skipped: false };
+  const target = el('div', 'qq-target');
+  target.appendChild(el('span', 'qq-label', 'Correct this sentence'));
+  target.appendChild(el('p', 'qq-sentence', q.bad));
+  body.appendChild(target);
 
-  document.querySelectorAll('#quizPanel .sq-option').forEach((btn) => {
-    btn.disabled = true;
-    const idx = Number(btn.dataset.index);
-    if (idx === q.answer) btn.classList.add('correct');
-    if (idx === i && !correct) btn.classList.add('wrong');
-  });
+  const answer = el('div', 'qq-answer');
+  answer.appendChild(el('span', 'qq-label', 'Correct answer'));
+  answer.appendChild(el('p', 'qq-good', q.good));
+  answer.hidden = !state.answered;
+  body.appendChild(answer);
 
-  const fb = $('#sqFeedback');
-  if (fb) {
-    fb.classList.add('show', correct ? 'ok' : 'err');
-    fb.appendChild(el('strong', null, correct ? 'Correct.' : 'Not quite.'));
-    fb.appendChild(el('span', null, ` ${q.explanation}`));
+  const nav = el('div', 'qq-nav');
+  if (state.answered) {
+    const next = el('button', 'sq-primary qq-next',
+      state.index + 1 >= total ? 'Finish' : 'Next sentence');
+    next.type = 'button';
+    next.addEventListener('click', advance);
+    nav.appendChild(next);
+  } else {
+    const skip = el('button', 'sq-ghost qq-skip', 'Skip');
+    skip.type = 'button';
+    skip.addEventListener('click', skipQuestion);
+    nav.appendChild(skip);
+    const submit = el('button', 'sq-primary qq-submit', 'Submit');
+    submit.type = 'button';
+    submit.addEventListener('click', submitAnswer);
+    nav.appendChild(submit);
   }
-  const next = $('#sqNextBtn');
-  if (next) next.disabled = false;
+  body.appendChild(nav);
+
+  const quit = el('button', 'qq-quit', 'Quit quiz');
+  quit.type = 'button';
+  quit.addEventListener('click', quitConfirm);
+  body.appendChild(quit);
 }
 
-function skipQuestion() {
-  const q = state.questions[state.index];
-  state.entries[state.index] = { question: q, chosen: null, correct: false, skipped: true };
-  advance();
-}
-
-function advance() {
-  if (state.index + 1 >= state.questions.length) { showResults(); return; }
-  state.index += 1;
-  renderQuestion();
-}
-
-// ---------------------------------------------------------------------------
-// Results
-// ---------------------------------------------------------------------------
-function showResults() {
-  state.view = 'results';
+function renderResultsInto(body) {
   const info = ruleInfo(state.ruleId);
   const correct = state.entries.filter((e) => e && e.correct).length;
   const total = state.questions.length;
   const skipped = state.entries.filter((e) => e && e.skipped).length;
   const pct = total ? Math.round((correct / total) * 100) : 0;
-
-  const body = shell({ title: 'Results', back: goList });
 
   const score = el('div', 'sq-score');
   score.appendChild(el('span', 'sq-score-num', `${correct} / ${total}`));
@@ -350,15 +383,15 @@ function showResults() {
     if (!entry) return;
     const q = entry.question;
     const row = el('div', `sq-review-row ${entry.correct ? 'ok' : entry.skipped ? 'skip' : 'err'}`);
-    const head = el('div', 'sq-review-head');
-    head.appendChild(el('span', 'sq-review-i', `${i + 1}`));
-    head.appendChild(el('span', 'sq-review-sent', q.sentence));
-    head.appendChild(el('span', 'sq-review-mark', entry.correct ? '\u2713' : entry.skipped ? '\u2013' : '\u2717'));
-    row.appendChild(head);
+    const rowHead = el('div', 'sq-review-head');
+    rowHead.appendChild(el('span', 'sq-review-i', `${i + 1}`));
+    rowHead.appendChild(el('span', 'sq-review-sent', q.bad));
+    rowHead.appendChild(el('span', 'sq-review-mark', entry.correct ? '\u2713' : entry.skipped ? '\u2013' : '\u2717'));
+    row.appendChild(rowHead);
     const ans = el('div', 'sq-review-ans');
-    ans.appendChild(el('span', 'sq-review-correct', `Correct: ${q.options[q.answer]}`));
+    ans.appendChild(el('span', 'sq-review-correct', `Correct: ${q.good}`));
     if (entry.skipped) ans.appendChild(el('span', 'sq-review-yours', 'Skipped'));
-    else if (!entry.correct && entry.chosen != null) ans.appendChild(el('span', 'sq-review-yours', `You: ${q.options[entry.chosen]}`));
+    else if (!entry.correct && entry.answer) ans.appendChild(el('span', 'sq-review-yours', `You: ${entry.answer}`));
     row.appendChild(ans);
     review.appendChild(row);
   });
@@ -370,23 +403,196 @@ function showResults() {
   again.addEventListener('click', startQuiz);
   const another = el('button', 'sq-ghost', 'Choose another');
   another.type = 'button';
-  another.addEventListener('click', goList);
+  another.addEventListener('click', exitQuiz);
   actions.appendChild(again);
   actions.appendChild(another);
   body.appendChild(actions);
 }
 
 // ---------------------------------------------------------------------------
-function quitConfirm() {
-  if (state.view === 'list') { closeQuizView(); return; }
-  if (state.view === 'setup' || state.view === 'results') { goList(); return; }
-  if (confirm('Leave this quiz? Your progress will be lost.')) goList();
+// Runner
+// ---------------------------------------------------------------------------
+function startQuiz() {
+  if (!state.ruleId || !hasQuiz(state.ruleId)) return;
+  const pool = questionPool(state.ruleId, state.difficulty);
+  const count = DIFFICULTY[state.difficulty].count;
+  state.questions = pool.slice(0, Math.min(count, pool.length));
+  state.index = 0;
+  state.entries = [];
+  state.answered = false;
+  state.collapsed = false;
+  state.active = true;
+  state.view = 'quiz';
+  setQuizMode(true);
+  hideSidebar();
+  loadQuestion();
 }
 
-export function initQuiz() {
+async function loadQuestion() {
+  const q = state.questions[state.index];
+  if (!q) { showResults(); return; }
+  state.answered = false;
+
+  const ta = $('#inputText');
+  const editor = document.querySelector('.input-editor');
+  editor?.classList.add('editing');
+  if (ta) {
+    ta.readOnly = false;
+    ta.classList.add('editing');
+    ta.value = q.bad;
+  }
+  const hint = $('#inputHint');
+  if (hint) hint.textContent = 'Repair the sentence, then press Submit.';
+
+  renderQuest();
+  renderNodeDetail(null, null, null);
+  setQuizLoading(true);
+  await state.controller?.analyze(q.bad);
+  setQuizLoading(false);
+}
+
+async function submitAnswer() {
+  if (state.answered) return;
+  const q = state.questions[state.index];
+  const ta = $('#inputText');
+  const text = (ta?.value || '').trim();
+  if (!text) return;
+
+  state.answered = true;
+  const correct = normalize(text) === normalize(q.good);
+  setQuizLoading(true);
+  const payload = await state.controller?.analyze(text);
+  setQuizLoading(false);
+
+  state.entries[state.index] = { question: q, answer: text, correct, skipped: false };
+  applyFeedback(q, correct, payload);
+  renderQuest();
+}
+
+function skipQuestion() {
+  const q = state.questions[state.index];
+  state.answered = true;
+  state.entries[state.index] = { question: q, answer: '', correct: false, skipped: true };
+  renderSkipped();
+  renderQuest();
+}
+
+function advance() {
+  if (state.index + 1 >= state.questions.length) { showResults(); return; }
+  state.index += 1;
+  loadQuestion();
+}
+
+// ---------------------------------------------------------------------------
+// Feedback (reuses the tutor's node/remediation explainer)
+// ---------------------------------------------------------------------------
+function firstError(payload) {
+  if (!payload) return null;
+  const details = payload.node_details || {};
+  for (const [id, d] of Object.entries(details)) {
+    if (d && d.status === 'error') return { id, detail: d, node: payload.nodes?.[id] };
+  }
+  return null;
+}
+
+function showFeedbackBox() {
+  const empty = $('#emptyExplainState');
+  if (empty) empty.classList.add('hidden');
+  return $('#explainNode');
+}
+
+function renderSuccess() {
+  const box = showFeedbackBox();
+  if (!box) return;
+  box.innerHTML = '';
+  const card = el('div', 'node-card');
+  const head = el('div', 'nc-head');
+  head.appendChild(el('span', 'nc-dot ok', ''));
+  head.appendChild(el('span', 'nc-name', 'Correct'));
+  card.appendChild(head);
+  card.appendChild(el('p', 'ex-text',
+    'Nice work \u2014 your sentence is now well-formed. The tree below shows the corrected structure.'));
+  box.appendChild(card);
+}
+
+function renderSkipped() {
+  const box = showFeedbackBox();
+  if (!box) return;
+  box.innerHTML = '';
+  const card = el('div', 'node-card');
+  const head = el('div', 'nc-head');
+  head.appendChild(el('span', 'nc-dot un', ''));
+  head.appendChild(el('span', 'nc-name', 'Skipped'));
+  card.appendChild(head);
+  card.appendChild(el('p', 'ex-text', 'No answer submitted. The correct sentence is shown in the quiz panel.'));
+  box.appendChild(card);
+}
+
+function renderFallbackWrong(q) {
+  const box = showFeedbackBox();
+  if (!box) return;
+  box.innerHTML = '';
+  const card = el('div', 'node-card');
+  const head = el('div', 'nc-head');
+  head.appendChild(el('span', 'nc-dot err', ''));
+  head.appendChild(el('span', 'nc-name', 'Not quite'));
+  card.appendChild(head);
+  card.appendChild(el('p', 'ex-text',
+    q.explanation || 'Your sentence does not match the expected correction.'));
+  box.appendChild(card);
+}
+
+function applyFeedback(q, correct, payload) {
+  if (correct) { renderSuccess(); return; }
+  const err = firstError(payload);
+  if (err && err.detail) {
+    renderNodeDetail(null, err.detail, err.node);
+  } else {
+    renderFallbackWrong(q);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Results / teardown
+// ---------------------------------------------------------------------------
+function showResults() {
+  state.view = 'results';
+  state.answered = false;
+  renderQuest();
+}
+
+function setQuizMode(active) {
+  state.controller?.setQuizMode(active);
+}
+
+function endQuiz() {
+  state.active = false;
+  state.answered = false;
+  setQuizMode(false);
+  clearQuestPanel();
+  const hint = $('#inputHint');
+  if (hint) {
+    hint.textContent = 'Locked \u2014 click any sentence to view its syntax tree. Double-click to edit.';
+  }
+}
+
+function exitQuiz() {
+  endQuiz();
+  openQuizView();
+}
+
+function quitConfirm() {
+  if (!state.active) return;
+  if (confirm('Leave this quiz? Your progress will be lost.')) exitQuiz();
+}
+
+// ---------------------------------------------------------------------------
+export function initQuiz(controller) {
+  state.controller = controller || null;
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
+    if (state.active) { quitConfirm(); return; }
     const panel = $('#quizPanel');
-    if (panel && !panel.hidden) quitConfirm();
+    if (panel && !panel.hidden && state.view !== 'list') goList();
   });
 }

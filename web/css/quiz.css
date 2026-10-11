@@ -462,3 +462,112 @@
 .sq-review-yours { color: var(--muted); }
 .sq-actions { display: flex; flex-direction: column; gap: 8px; padding: 16px 4px 0; }
 .sq-actions .sq-primary, .sq-actions .sq-ghost { margin: 0; }
+
+/* ------------------------------------------------------------------ */
+/* Quest panel — lives on the canvas in the right-hand column          */
+/* ------------------------------------------------------------------ */
+#quizQuestHost { flex: 0 0 auto; min-width: 0; max-height: 66%; overflow-y: auto; }
+#quizQuestHost:empty { display: none; }
+
+.quiz-quest { padding: 0; overflow: hidden; }
+
+.qq-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.qq-head-main { display: flex; align-items: center; gap: 8px; flex: 1 1 auto; min-width: 0; }
+.qq-cat {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.qq-diff {
+  flex: 0 0 auto;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+.qq-collapse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.qq-collapse:hover { background: var(--accent-soft); color: var(--accent); }
+
+.qq-body { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+
+.qq-progress { height: 6px; border-radius: 999px; background: var(--header-chip-bg); overflow: hidden; }
+.qq-progress-fill { height: 100%; background: var(--accent); transition: width var(--dur) var(--ease); }
+
+.qq-meta-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.qq-num {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.qq-score { font-size: 11px; font-weight: 700; color: var(--accent-strong); }
+
+.qq-target { padding: 10px 12px; border-radius: var(--radius-sm); background: var(--accent-soft); }
+.qq-label {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-strong);
+  margin-bottom: 3px;
+}
+.qq-sentence { margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink); }
+
+.qq-answer { padding: 10px 12px; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--ok) 12%, transparent); }
+.qq-answer[hidden] { display: none; }
+.qq-answer .qq-label { color: var(--ok); }
+.qq-good { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--ink); font-weight: 600; }
+
+.qq-nav { display: flex; gap: 8px; }
+.qq-nav .sq-ghost { flex: 0 0 auto; margin: 0; }
+.qq-nav .sq-primary { flex: 1 1 auto; margin: 0; }
+
+.qq-quit {
+  align-self: flex-start;
+  padding: 2px 0;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.qq-quit:hover { color: var(--err); }
+
+/* Reset sidebar-oriented margins when the results view lives on canvas */
+.qq-body .sq-score { padding: 4px 0 8px; }
+.qq-body .sq-review { padding: 0; }
+.qq-body .sq-actions { padding: 4px 0 0; }
+.qq-body .sq-actions .sq-primary,
+.qq-body .sq-actions .sq-ghost { margin: 0; }

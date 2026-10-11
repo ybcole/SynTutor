@@ -36,6 +36,7 @@ let state = STATES.IDLE;
 let session = null;
 let renderer = null;
 let lastAnalyzedText = null;
+let quizMode = false;
 const recordedTexts = new Set();
 let historySpans = [];
 
@@ -102,7 +103,7 @@ export function boot() {
   wireEvents();
   initThemeAndMenu();
   initSidebar();
-  initQuiz();
+  initQuiz({ analyze: analyzeForQuiz, setQuizMode });
   transition(STATES.IDLE, 'system ready');
   log(`SynTutor engine ready \u2014 full-stack pipeline: spaCy + benepar + rule matrix (${isGuest ? 'guest mode' : 'authenticated'})`);
 }
@@ -420,6 +421,7 @@ function wireEvents() {
     renderInputHighlights(ta.value);
   });
   ta.addEventListener('blur', () => {
+    if (quizMode) return;
     const changed = ta.value !== lastAnalyzedText;
     returnToLocked();
     if (changed) runPipeline();
@@ -566,6 +568,63 @@ function failPipeline(title, lines) {
   log(`Request failed: ${title} \u2014${lines[0] || ''}`);
 }
 
+async function postParse(text, index = null) {
+  const body = { text };
+  if (index !== undefined && index !== null) body.sentence_index = index;
+  const res = await fetch(`${API_BASE}/api/parse`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    return { error: { status: res.status, error: data.error, hint: data.hint } };
+  }
+  return { payload: await res.json() };
+}
+
+function setQuizMode(active) {
+  quizMode = active;
+  if (renderer) renderer.setInteractive(!active);
+}
+
+// Quiz-only analysis: parses the sentence, renders its tree, and returns the
+// payload WITHOUT touching history, highlights, or the locked/editable state.
+async function analyzeForQuiz(text) {
+  if (!text || !text.trim()) return null;
+  const clean = text.trim();
+  clearOverlay();
+  renderer.select(null);
+  renderNodeDetail(null, null, null);
+  let payload;
+  try {
+    const out = await postParse(clean);
+    if (out.error) {
+      showCanvasMessage('error', 'Unable to analyze', [out.error.error || 'The backend rejected the request.']);
+      return null;
+    }
+    payload = out.payload;
+  } catch (_e) {
+    showCanvasMessage('error', 'Backend unreachable', [
+      'The SynTutor NLP server is not responding.',
+      'Start it with:  python3 server/app.py',
+    ]);
+    return null;
+  }
+  fillDevPanel(payload);
+  applyStatuses(payload.tree, payload.node_details);
+  session = { payload };
+  lastAnalyzedText = clean;
+  const ta = document.querySelector('#inputText');
+  ta.value = clean;
+  historySpans = [];
+  renderInputHighlights(clean);
+  document.querySelector('#emptyTreeState')?.classList.add('hidden');
+  renderer.setTree(payload.tree);
+  transition(STATES.VIEWING, 'quiz sentence analyzed');
+  return payload;
+}
+
 async function runPipeline(opts = {}) {
   if (state === STATES.PROCESSING) return;
   transition(STATES.PROCESSING, 'user submits text');
@@ -598,17 +657,20 @@ async function executePipeline(opts = {}) {
   }
   log(`Stage 1: user input captured \u2014 ${JSON.stringify(text)}`);
 
-  const body = { text };
-  if (opts.index !== undefined && opts.index !== null) body.sentence_index = opts.index;
   const target = opts.index !== undefined && opts.index !== null ? `sentence #${opts.index + 1}` : 'first sentence';
   log(`Stage 2: POST ${API_BASE}/api/parse (target: ${target})`);
-  let res;
+  let payload;
   try {
-    res = await fetch(`${API_BASE}/api/parse`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    });
+    const out = await postParse(text, opts.index);
+    if (out.error) {
+      const { status, error, hint } = out.error;
+      const title = status === 503
+        ? 'NLP models unavailable'
+        : status === 422 ? 'Unable to produce a parse' : `Backend error (HTTP ${status})`;
+      failPipeline(title, [error || 'The backend rejected the request.', hint || ''].filter(Boolean));
+      return;
+    }
+    payload = out.payload;
   } catch (_e) {
     failPipeline('Backend unreachable', [
       'The SynTutor NLP server is not responding.',
@@ -616,16 +678,6 @@ async function executePipeline(opts = {}) {
     ]);
     return;
   }
-  if (!res.ok) {
-    const data = await res.json().catch(() => ({}));
-    const title = res.status === 503
-      ? 'NLP models unavailable'
-      : res.status === 422 ? 'Unable to produce a parse' : `Backend error (HTTP ${res.status})`;
-    const lines = [data.error || 'The backend rejected the request.', data.hint || ''].filter(Boolean);
-    failPipeline(title, lines);
-    return;
-  }
-  const payload = await res.json();
   fillDevPanel(payload);
   log(`Stage 2: payload received (${Object.keys(payload.nodes).length} nodes) \u00b7${payload.meta.backend}`);
 
@@ -803,6 +855,7 @@ function applyStatuses(tree, details) {
 }
 
 function handleNodeSelect(id) {
+  if (quizMode) return;
   if (!id || !session) {
     if (session) {
       renderer.select(null);
