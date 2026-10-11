@@ -246,6 +246,12 @@ PAST_AS_PARTICIPLE = {
     'sat', 'slept', 'stood', 'stole', 'swam', 'threw', 'wore', 'won',
 }
 
+# Perfect-auxiliary heads that license the past-participle checks below. A
+# plain past-tense verb elsewhere in a sentence is never forced to a
+# participle, and a correctly-formed same-shape participle ("have been") is
+# not reported.
+HAVE_FORM = {'have', 'has', 'had', 'having'}
+
 PAST_PARTICIPLE_OF = {
     'went': 'gone', 'ate': 'eaten', 'drank': 'drunk', 'ran': 'run',
     'took': 'taken', 'bought': 'bought', 'brought': 'brought',
@@ -411,7 +417,7 @@ HOMOPHONE_ITS_VERBS = {'raining', 'snowing', 'going', 'coming', 'time',
 
 SUBORDINATORS = {'because', 'when', 'while', 'if', 'although', 'though',
                  'since', 'before', 'after', 'until', 'unless', 'whereas',
-                 'as', 'whether', 'whenever', 'wherever'}
+                 'as', 'whether', 'whenever', 'wherever', 'once'}
 
 # --- rule 1.1 regular/irregular plurals ------------------------------------ #
 KNOWN_PLURALS = {
@@ -499,6 +505,19 @@ def _leaves(root):
 def _clauses(root):
     return [n for n in _iter_nodes(root)
             if n.get('type') in {'S', 'SQ', 'SINV', 'SBARQ'}]
+
+
+def _quoted_indices(leaves):
+    """Indices of leaves that sit between a pair of straight double quotes."""
+    quoted = set()
+    inside = False
+    for i, lf in enumerate(leaves):
+        if (lf.get('surface') or '') == '"':
+            inside = not inside
+            continue
+        if inside:
+            quoted.add(i)
+    return quoted
 
 
 def _lower(leaf):
@@ -716,7 +735,8 @@ def _check_wordlists(leaves):
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    'irregular-past table')))
 
-        if lf.get('type') == 'VBN' and low in PAST_AS_PARTICIPLE:
+        if prev is not None and _lower(prev) in HAVE_FORM \
+                and lf.get('type') == 'VBD' and low in PAST_AS_PARTICIPLE:
             part = PAST_PARTICIPLE_OF.get(low, low)
             out.append(_finding('1.6', 'error', 'C-VERB-FORM', 'verb form',
                                 lf['id'],
@@ -727,7 +747,8 @@ def _check_wordlists(leaves):
                                                    [part],
                                                    'participle table')))
 
-        if lf.get('type') == 'VBN' and low in IRREGULAR_PART_REGULARIZED:
+        if prev is not None and _lower(prev) in HAVE_FORM \
+                and lf.get('type') == 'VBN' and low in IRREGULAR_PART_REGULARIZED:
             fix = IRREGULAR_PART_REGULARIZED[low]
             out.append(_finding('1.6', 'error', 'C-VERB-FORM', 'verb form',
                                 lf['id'],
@@ -882,7 +903,7 @@ f"This sentence is negative, so use 'any' instead of "
 # --------------------------------------------------------------------------- #
 # T-layer checks (tree structure)                                             #
 # --------------------------------------------------------------------------- #
-def _check_tree(root, clauses, leaves, text=None):
+def _check_tree(root, clauses, leaves, text=None, quoted=None):
     out = []
     # Clause-level structural rules (missing subject/copula, double subject,
     # question formation) apply to matrix clauses only -- relative, small and
@@ -891,6 +912,27 @@ def _check_tree(root, clauses, leaves, text=None):
     for c in root.get('children', []):
         if c.get('type') in {'S', 'SQ', 'SINV', 'SBARQ'}:
             top_ids.add(c['id'])
+
+    # Own leaves of each clause (its subtree minus any nested clause), so a
+    # rule looking for a clause's subject never reaches into a deeper clause
+    # (e.g. 'I think that she prepared herself' must bind 'herself' to 'she').
+    _clause_lvs = {}
+    _clause_sizes = {}
+    for _cl in clauses:
+        _lv = _leaves(_cl)
+        _clause_lvs[_cl['id']] = _lv
+        _clause_sizes[_cl['id']] = len(_lv)
+    _leaf_owner = {}
+    for _cl in clauses:
+        _cid = _cl['id']
+        for _lf in _clause_lvs[_cid]:
+            _cur = _leaf_owner.get(_lf['id'])
+            if _cur is None or _clause_sizes[_cid] < _clause_sizes[_cur]:
+                _leaf_owner[_lf['id']] = _cid
+
+    def _own_leaves(clause):
+        cid = clause['id']
+        return [lf for lf in _clause_lvs[cid] if _leaf_owner.get(lf['id']) == cid]
 
     # 2.4 Existential there
     for clause in clauses:
@@ -925,6 +967,14 @@ def _check_tree(root, clauses, leaves, text=None):
         cl = _leaves(clause)
         for i, lf in enumerate(cl):
             if _lower(lf) in INDEFINITE_PRON:
+                # Only an indefinite pronoun in subject position governs the
+                # clause verb.  If a finite/aux verb already appeared earlier in
+                # this clause the pronoun is an object ("... that puzzled
+                # everyone"), so it must not be matched with a later verb.
+                if any(x.get('type') in FINITE_TYPES
+                       or _lower(x) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)
+                       for x in cl[:i]):
+                    continue
                 for nxt in cl[i + 1:]:
                     vk = _verb_key(nxt)
                     if nxt.get('type') in FINITE_TYPES or _lower(nxt) in (
@@ -942,14 +992,23 @@ def _check_tree(root, clauses, leaves, text=None):
 
     # 2.14 Reflexive-antecedent
     for clause in clauses:
-        cl = _leaves(clause)
+        cl = _own_leaves(clause)
+        # The antecedent is the clause's own subject, not merely the first noun
+        # leaf (which may sit inside a fronted adverbial PP, e.g. "In the quiet
+        # hours before dawn, she prepared herself ..." -> subject is 'she').
+        subj = None
+        for cand in clause.get('children', []):
+            if cand.get('type') == 'NP':
+                subj = _np_head_leaf(cand)
+                if subj is not None:
+                    break
+        if subj is None:
+            for cand in cl:
+                if cand.get('type') == 'PRP':
+                    subj = cand
+                    break
         for i, lf in enumerate(cl):
             if _lower(lf) in REFLEXIVE_KEY:
-                subj = None
-                for cand in cl[:i]:
-                    if cand.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP'):
-                        subj = cand
-                        break
                 if subj is None:
                     continue
                 rp, rn, rg = REFLEXIVE_KEY[_lower(lf)]
@@ -1049,11 +1108,17 @@ def _check_tree(root, clauses, leaves, text=None):
         if 'VP' not in types:
             continue
         cl = _leaves(clause)
+        # A subordinate clause whose own leaves contain an overt pronoun
+        # ('Provided that it was raining' parses as a bare VP node) does have a
+        # subject; the parse simply buries it, so do not report a missing one.
+        if any(lf.get('type') == 'PRP' for lf in cl):
+            continue
         first_verb = next((lf for lf in cl if lf.get('type') in
                            ('VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'MD')), None)
-        if first_verb is not None and first_verb.get('type') == 'VB' \
-                and cl and cl[0]['id'] == first_verb['id']:
-            continue  # imperative
+        if first_verb is not None and (first_verb.get('type') in ('VB', 'VBG', 'VBN')
+                                       or _lower(first_verb) in
+                                       ('do', 'does', 'did')):
+            continue  # imperative or participial phrase (no finite verb)
         out.append(_finding('9.2', 'error', 'C-MISSING-SUBJECT', 'subject',
                             clause['id'],
                             f"The clause '{clause['surface']}' has a verb but no "
@@ -1120,6 +1185,12 @@ def _check_tree(root, clauses, leaves, text=None):
     for i, lf in enumerate(tops):
         if lf.get('type') != ',':
             continue
+        if quoted and i in quoted:
+            continue  # comma inside a quoted utterance
+        if (tops[:i] and tops[i - 1].get('surface', '') in ('"', '\u201c', '\u201d')) \
+                or (i + 1 < len(tops)
+                    and tops[i + 1].get('surface', '') in ('"', '\u201c', '\u201d')):
+            continue  # comma adjacent to a quotation mark (dialogue tag)
         before = tops[:i]
         after = tops[i + 1:]
         before_verbs = [x for x in before if x.get('type') in FINITE_TYPES
@@ -1131,6 +1202,22 @@ def _check_tree(root, clauses, leaves, text=None):
         first_words = [_lower(x) for x in before[:3]]
         if any(w in SUBORDINATORS for w in first_words):
             continue
+        # A comma that opens a non-restrictive subordinate parenthetical that a
+        # later comma closes ("..., while the music played, that ...") is not a
+        # comma splice; the second clause after it is still licensed.
+        later_comma = next((k for k in range(i + 1, len(tops))
+                            if tops[k].get('type') == ','), None)
+        if later_comma is not None:
+            seg = tops[i + 1:later_comma]
+            seg_low = [_lower(x) for x in seg[:4]]
+            seg_finite = any(x.get('type') in FINITE_TYPES or _lower(x) in
+                             (BE_SURFACES | HAVE_SURFACES | DO_SURFACES |
+                              MODAL_SURFACES) for x in seg)
+            if seg_finite and seg_low and (seg_low[0] in SUBORDINATORS
+                                           or seg_low[0] in
+                                           ('just', 'even', 'especially',
+                                            'particularly', 'only')):
+                continue
         if any(_lower(x) in ('which', 'who', 'whom', 'whose', 'that')
                for x in before):
             continue
@@ -1139,11 +1226,17 @@ def _check_tree(root, clauses, leaves, text=None):
         if before and _lower(before[-1]) in {'and', 'but', 'or', 'nor', 'so',
                                              'yet', 'for'}:
             continue
-        if after and _lower(after[0]) in {'and', 'but', 'or', 'nor', 'so',
-                                          'yet', 'for', 'however', 'therefore',
-                                          'moreover', 'nevertheless',
-                                          'furthermore', 'thus', 'hence',
-                                          'otherwise', 'meanwhile'}:
+        if after and (_lower(after[0]) in {'and', 'but', 'or', 'nor', 'so',
+                                           'yet', 'for', 'however', 'therefore',
+                                           'moreover', 'nevertheless',
+                                           'furthermore', 'thus', 'hence',
+                                           'otherwise', 'meanwhile', 'even',
+                                           'that', 'which', 'who', 'whom',
+                                           'whose'}
+                      or _lower(after[0]) in SUBORDINATORS):
+            # A coordinator or subordinator after the comma means the second
+            # part is not an independent clause, so this is not a comma splice
+            # (e.g. "... , because the manager who called had insisted.").
             continue
         clause_a = ' '.join(x.get('surface', '') for x in before).rstrip().rstrip(' .')
         clause_b = ' '.join(x.get('surface', '') for x in after).rstrip().rstrip(' .')
@@ -1156,9 +1249,13 @@ def _check_tree(root, clauses, leaves, text=None):
 
     # 9.8 Parallel structure (to run, swimming)
     for i, lf in enumerate(tops):
+        if quoted and i in quoted:
+            continue
         if lf.get('type') == 'TO' and i + 1 < len(tops) and tops[i + 1].get('type') == 'VB':
             for j in range(i + 2, len(tops)):
                 x = tops[j]
+                if quoted and j in quoted:
+                    continue
                 if x.get('type') in FINITE_TYPES or x.get('type') in ('VB', 'TO'):
                     break
                 xlow = _lower(x)
@@ -1180,8 +1277,7 @@ def _check_tree(root, clauses, leaves, text=None):
             nxt = leaves[i + 1]
             finite = nxt.get('type') in ('VBD', 'VBZ', 'VBP') \
                 or nxt.get('ftag') in ('VBD', 'VBZ', 'VBP') \
-                or (nxt.get('fpos') == 'AUX'
-                    and _lower(nxt) not in ('have', 'be', 'do')) \
+                or _lower(nxt) in MODAL_SURFACES \
                 or _lower(nxt).endswith(('ies', 'es'))
             if finite:
                 base = {'is': 'be', 'are': 'be', 'was': 'be', 'were': 'be',
@@ -1200,6 +1296,7 @@ def _check_tree(root, clauses, leaves, text=None):
                                          f"'{nxt['surface']}'.")))
         # 6.12 modal + to
         if (_lower(lf) in MODAL_SURFACES or lf.get('type') == 'MD') \
+                and _lower(lf) != 'ought' \
                 and i + 1 < len(leaves) and leaves[i + 1].get('type') == 'TO':
             out.append(_finding('6.12', 'error', 'C-MODAL-TO', 'modal',
                                 lf['id'],
@@ -1318,17 +1415,20 @@ def _check_tree(root, clauses, leaves, text=None):
 
     # 9.9 Conjunction pairing (although ... but)
     lows_set = set(lows)
-    if 'although' in lows_set and 'but' in lows_set:
-        idx = next(i for i, x in enumerate(lows) if x == 'but')
-        out.append(_finding('9.9', 'error', 'C-CONJUNCTION-PAIR', 'conjunction',
-                            leaves[idx]['id'],
-                            "This sentence links its two clauses with both "
-                            "'although' and 'but'; use one of them, not both.",
-                            _wordlist_evidence('although ... but', ['although ...'],
-                                               'conjunction-pairing table')))
+    if 'although' in lows_set and 'but' in lows_set \
+            and not ('not' in lows_set and 'only' in lows_set):
+            idx = next(i for i, x in enumerate(lows) if x == 'but')
+            out.append(_finding('9.9', 'error', 'C-CONJUNCTION-PAIR', 'conjunction',
+                                leaves[idx]['id'],
+                                "This sentence links its two clauses with both "
+                                "'although' and 'but'; use one of them, not both.",
+                                _wordlist_evidence('although ... but', ['although ...'],
+                                                   'conjunction-pairing table')))
 
     # 10.3 Terminal punctuation
     raw = (text or root.get('surface') or '').rstrip()
+    while raw and raw[-1] in '"\u201d\u2019\')]':
+        raw = raw[:-1].rstrip()
     if raw and raw[-1] not in '.?!':
         out.append(_finding('10.3', 'error', 'C-TERMINAL-PUNCT', 'punctuation',
                             root['id'],
@@ -1505,8 +1605,21 @@ def _check_more(root, clauses, leaves):
                                                [{'node': cl[0]['id']}])))
 
     # 5.5 dummy it/there (Is raining)
+    # Relative clauses realized as SBAR(WHNP S(VP)) carry their subject in the
+    # relative pronoun, so the inner S legitimately has no NP of its own.
+    rel_s_ids = set()
+    for n in _iter_nodes(root):
+        if n.get('type') != 'SBAR':
+            continue
+        kids = n.get('children', [])
+        if any(k.get('type') in ('WHNP', 'WHADVP', 'WHPP') for k in kids):
+            for k in kids:
+                if k.get('type') == 'S':
+                    rel_s_ids.add(k['id'])
     for clause in clauses:
         if clause.get('type') != 'S':
+            continue
+        if clause['id'] in rel_s_ids:
             continue
         kids = clause.get('children', [])
         if any(c.get('type') in ('NP', 'SBAR') for c in kids):
@@ -1567,10 +1680,19 @@ def _check_more(root, clauses, leaves):
     # 6.14 double negation
     for clause in clauses:
         cl = _leaves(clause)
-        negs = [x for x in cl if _lower(x) in {'not', 'no', 'nothing', 'nobody',
-                                               'none', 'never', 'nowhere',
-                                               "n't", 'nt'}]
+        negs = [x for i, x in enumerate(cl) if _lower(x) in {'not', 'no', 'nothing', 'nobody',
+                                                             'none', 'never', 'nowhere',
+                                                             "n't", 'nt'}
+                and not (_lower(x) == 'not' and i + 1 < len(cl)
+                         and _lower(cl[i + 1]) == 'only')]
         if len(negs) >= 2:
+            # A negation in a subordinate clause and another in the main clause
+            # ('Though nobody expected it, ... was not ready.') is a separate
+            # clause, not a double negative in the same clause.
+            if any(x.get('type') == ',' for x in cl
+                   [next((k for k, y in enumerate(cl) if y['id'] == negs[0]['id']), 0):
+                    next((k for k, y in enumerate(cl) if y['id'] == negs[1]['id']), 0)]):
+                continue
             out.append(_finding('6.14', 'error', 'C-DOUBLE-NEGATIVE', 'negation',
                                 clause['id'],
                                 f"In this clause, '{negs[0]['surface']}' and "
@@ -1649,6 +1771,17 @@ def _check_more(root, clauses, leaves):
             if x.get('type') in FINITE_TYPES:
                 between = leaves[i + 1:j]
                 if any(b.get('type') in ('PRP', 'NN', 'NNS', 'NNP') for b in between):
+                    # Subordinator material between the two verbs ('in case X',
+                    # 'once X', 'because X') means the second clause is licensed,
+                    # not a run-on.
+                    bw = [_lower(b) for b in between]
+                    if any(w in SUBORDINATORS for w in bw) \
+                            or 'in' in bw and bw.index('in') + 1 < len(bw) \
+                            and bw[bw.index('in') + 1] == 'case' \
+                            or 'as' in bw and bw.index('as') + 2 < len(bw) \
+                            and bw[bw.index('as') + 1] == 'soon' \
+                            and bw[bw.index('as') + 2] == 'as':
+                        break
                     out.append(_finding('9.3', 'error', 'C-RUNON',
                                         'sentence boundary', x['id'],
                                         f"In this sentence two finite clauses are joined "
@@ -1662,8 +1795,12 @@ def _check_more(root, clauses, leaves):
 
     # 9.7 extra word (very the happy)
     for i, lf in enumerate(leaves):
-        if _lower(lf) in ('very', 'really', 'so', 'too') and i + 1 < len(leaves) \
-                and leaves[i + 1].get('type') == 'DT':
+        # An intensifier directly before a determiner is only wrong when the
+        # determiner heads an adjective phrase ("very the happy"); "so the
+        # group celebrated" is just coordination, not this error.
+        if _lower(lf) in ('very', 'really', 'so', 'too') and i + 2 < len(leaves) \
+                and leaves[i + 1].get('type') == 'DT' \
+                and leaves[i + 2].get('type') in ('JJ', 'JJR', 'JJS'):
             out.append(_finding('9.7', 'error', 'C-EXTRA-WORD', 'word order',
                                 leaves[i + 1]['id'],
                                 f"The determiner after '{lf['surface']}' in this "
@@ -1798,6 +1935,9 @@ f"The possessive '{lf['surface']}' in this sentence "
                       'teachers', 'friends', 'parents', 'brothers', 'sisters',
                       'kids', 'babies', 'people'}
     NOUN_TAGS = ('NN', 'NNS', 'NNP', 'NNPS')
+    TIME_NOUNS = {'today', 'yesterday', 'tomorrow', 'tonight', 'now', 'then',
+                  'soon', 'time', 'morning', 'afternoon', 'evening', 'night',
+                  'week', 'month', 'year', 'weekend'}
     for node in _iter_nodes(root):
         ch = node.get('children', [])
         for a, b in zip(ch, ch[1:]):
@@ -1814,6 +1954,8 @@ f"The possessive '{lf['surface']}' in this sentence "
             if bhead.get('type') not in NOUN_TAGS:
                 continue
             if any(x.get('type') == 'DT' for x in bleaves):
+                continue
+            if _lower(bhead) in TIME_NOUNS:
                 continue
             out.append(_finding('1.3', 'error', 'C-POSSESSIVE-S', 'possessive',
                                 ahead['id'],
@@ -1936,6 +2078,14 @@ f"The possessive '{lf['surface']}' in this sentence "
         pre = [ch[i] for i, c in enumerate(ch)
                if c.get('type') == 'NP' and i < vfirst]
         if len(pre) >= 2:
+            # A fronted adjunct often glues its prepositional phrase into the
+            # first NP ("After a long and difficult meeting, of all the rooms,
+            # the train is the calmest one"); that is not an object-before-verb
+            # error. Skip when any *pre-verbal* NP holds adjunct material.
+            pre_lvs = [_leaves(np) for np in pre]
+            if any(x.get('type') in ('IN', 'TO', ',', '``', "''")
+                   for lvs in pre_lvs for x in lvs):
+                continue
             heads = []
             for np in pre:
                 nl = _leaves(np)
@@ -1985,6 +2135,11 @@ f"The possessive '{lf['surface']}' in this sentence "
         heads = [x for x in sleaves
                  if x.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP')]
         if len(heads) < 2:
+            continue
+        # 'a long and difficult meeting, of all the rooms' is one NP with an
+        # attached adverbial; a comma or preposition inside the subject means
+        # the CC does not coordinate two plain nouns.
+        if any(x.get('type') in ('IN', ',', '``', "''") for x in sleaves):
             continue
         if conj in ('and', '&'):
             joined = ' '.join(_lower(x) for x in sleaves)
@@ -2122,7 +2277,8 @@ f"The possessive '{lf['surface']}' in this sentence "
         elif low == 'in' and w in DAY_WORDS:
             tgt = 'on'
         elif low == 'on' and w in MONTH_WORDS:
-            tgt = 'in'
+            if not (i + 2 < len(leaves) and leaves[i + 2].get('type') == 'CD'):
+                tgt = 'in'  # 'on January 5' (with a day number) is correct
         elif low == 'on' and is_clock:
             tgt = 'at'
         elif low == 'in' and is_clock:
@@ -2484,6 +2640,8 @@ def _check_basic(root, clauses, leaves):
         pl = lf.get('type') == 'CD' or low in PLURALIZERS
         if not pl or i + 1 >= len(leaves):
             continue
+        if low in ('one', '1', 'a', 'an'):
+            continue  # 'one book' stays singular
         if i > 0 and leaves[i - 1].get('type') in (
                 'NN', 'NNS', 'NNP', 'NNPS', 'CD'):
             continue  # 'page five' / identifier reading
@@ -2493,6 +2651,11 @@ def _check_basic(root, clauses, leaves):
         if j >= len(leaves):
             continue
         nxt = leaves[j]
+        if _lower(nxt) in {'today', 'yesterday', 'tomorrow', 'tonight', 'now',
+                           'later', 'then', 'soon', 'already', 'again'}:
+            continue  # trailing time adverb, not the counted noun
+        if _lower(nxt) in {"o'clock", "o' clock", 'clock'}:
+            continue  # 'ten o'clock' is a clock phrase, not a counted noun
         if nxt.get('type') == 'IN':
             continue  # 'many of the ...'
         if nxt.get('type') == 'NNS':
@@ -2715,6 +2878,20 @@ def _check_basic(root, clauses, leaves):
                       for x in leaves[max(0, i - 5):i])
         if have_in:
             continue
+        # Only the *temporal* 'since' (a point in time) forces a perfect tense.
+        # The causal conjunction ("... since everyone was ready.") is fine with
+        # a simple present, so require a time expression right after 'since'.
+        SINCE_TIME_WORDS = {'then', 'yesterday', 'today', 'tomorrow', 'morning',
+                            'afternoon', 'evening', 'night', 'noon', 'dawn',
+                            'dusk', 'childhood', 'birth', 'last'}
+        nxt = leaves[i + 1] if i + 1 < len(leaves) else None
+        nxt_low = _lower(nxt) if nxt is not None else ''
+        is_time_point = (nxt is not None and (
+            nxt.get('type') in ('CD', 'NNP')
+            or nxt_low in DAYS or nxt_low in MONTHS
+            or nxt_low in SINCE_TIME_WORDS))
+        if not is_time_point:
+            continue
         present_finite = None
         for k in range(i - 1, max(-1, i - 5), -1):
             tag = leaves[k].get('type')
@@ -2757,6 +2934,15 @@ def _check_basic(root, clauses, leaves):
             continue
         if leaves[i + 2].get('type') in ('VB', 'VBG', 'VBN', 'MD'):
             continue  # wh-word is the subject: 'I know who is coming' (valid)
+        if leaves[i + 2].get('type') in ('RB', 'RBR', 'RBS'):
+            continue  # relative clause: '... which had just arrived' (valid)
+        # A wh-word that is the subject of a BE clause with a predicate
+        # complement keeps that order: 'I know who was right'.  Inverting would
+        # put the BE form before its predicate ('who right was'), not before a
+        # pronoun subject, so there is nothing here to fix.
+        if _lower(leaves[i + 1]) in BE_SURFACES_LEAF \
+                and leaves[i + 2].get('type') in ('JJ', 'JJR', 'JJS', 'RB', 'NN', 'NNS'):
+            continue
         out.append(_finding(
             '9.13', 'error', 'C-INDIRECT-WH-INVERSION', 'word order',
             leaves[i + 1]['id'],
@@ -3319,11 +3505,12 @@ f"In this sentence, '{leaves[i + 1]['surface']}' is a "
 def collect(text, root):
     """Return all rule findings for a parsed sentence as a list of dicts."""
     leaves = _leaves(root)
+    quoted = _quoted_indices(leaves)
     clauses = _clauses(root)
     findings = []
     findings.extend(_check_wordlists(leaves))
     findings.extend(_check_adjective_adverb(leaves))
-    findings.extend(_check_tree(root, clauses, leaves, text))
+    findings.extend(_check_tree(root, clauses, leaves, text, quoted))
     findings.extend(_check_more(root, clauses, leaves))
     findings.extend(_check_context(root, clauses, leaves))
     return findings

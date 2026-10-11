@@ -1,10 +1,16 @@
 // Section 9 — Sentence structure. One builder per rule; 40 items per tier.
 import {
-  pick, mk, pool40, cartesian, cap, withPeriod, NOUNS,
+  pick, mk, pool40, cartesian, cap, withPeriod, NOUNS, NAMES,
 } from './core.js';
 
-// Lowercase a leading word but never touch the pronoun "I".
-const lc = (s) => (s === 'I' || s.startsWith('I ') ? s : s.charAt(0).toLowerCase() + s.slice(1));
+// Lowercase a leading word but never touch the pronoun "I" or a proper name.
+const PROPER = new Set(NAMES);
+const lc = (s) => {
+  if (s === 'I' || s.startsWith('I ')) return s;
+  const first = s.split(' ')[0];
+  if (PROPER.has(first)) return s;
+  return s.charAt(0).toLowerCase() + s.slice(1);
+};
 const art = (w) => (/^[aeiou]/i.test(w) ? 'an' : 'a');
 
 const S3 = ['She', 'He', 'Tom', 'Anna', 'The boy', 'The girl', 'My friend',
@@ -139,8 +145,7 @@ function doubleSubject(d) {
 // ---- 9.6 Word order in statements (Yesterday went I) ---------------------
 const WO_ADV = ['Yesterday', 'Last week', 'This morning', 'After lunch', 'In the evening',
   'On Monday', 'Last night', 'In the afternoon'];
-const WO_VERB = ['went', 'came', 'left', 'arrived', 'played', 'worked', 'studied', 'walked',
-  'returned', 'ran'];
+const WO_VERB = ['went', 'came', 'walked', 'ran', 'returned', 'travelled', 'drove'];
 const WO_SUBJ = ['I', 'she', 'he', 'Tom', 'Anna', 'they', 'we', 'the boys', 'my friends',
   'the students'];
 const WO_REST = ['to the market', 'home', 'to school', 'by the gate', 'to the office',

@@ -1,128 +1,74 @@
-// Section 1 — Word forms. Reference implementation for the other sections.
-import {
-  NOUNS, VERBS, VIRR, SG_SUBJ, NAMES, pool40, cartesian, pick, mk,
-} from './core.js';
+// Section 1 — Word forms.
+//
+// Each rule builds its 40 items with a *content generator*: slot i composes a
+// distinct scenario (its own subject, verb, object and modifiers) and frames.js
+// wraps that scenario in the i-th structurally distinct sentence shape. So no
+// two questions in a rule/difficulty pool repeat the same context, and no two
+// share a tree shape.
+import { OBJECTS } from './core.js';
+import { ruleItems } from './frames.js';
 
+const at = (arr, i) => arr[((i % arr.length) + arr.length) % arr.length];
+const step = (arr, i, k) => arr[(((i * k) % arr.length) + arr.length) % arr.length];
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+const WHO = [
+  'The teacher', 'My friend', 'The farmer', 'The driver', 'The shopkeeper',
+  'The cleaner', 'Her brother', 'The student', 'The nurse', 'The worker',
+  'The gardener', 'The chef', 'His cousin', 'The guard', 'The baker',
+  'The pilot', 'The painter', 'The author', 'The singer', 'The tailor',
+  'The postman', 'The captain', 'The coach', 'The clerk', 'The plumber',
+];
+
+// Regular plural nouns: [singular, plural]
+const REG = [
+  ['book', 'books'], ['chair', 'chairs'], ['table', 'tables'], ['door', 'doors'],
+  ['window', 'windows'], ['box', 'boxes'], ['watch', 'watches'], ['brush', 'brushes'],
+  ['bench', 'benches'], ['city', 'cities'], ['baby', 'babies'], ['lady', 'ladies'],
+  ['country', 'countries'], ['army', 'armies'], ['party', 'parties'], ['kiss', 'kisses'],
+  ['dish', 'dishes'], ['class', 'classes'], ['glass', 'glasses'], ['church', 'churches'],
+  ['branch', 'branches'], ['beach', 'beaches'], ['peach', 'peaches'], ['berry', 'berries'],
+  ['cherry', 'cherries'], ['story', 'stories'], ['library', 'libraries'], ['family', 'families'],
+  ['company', 'companies'], ['copy', 'copies'], ['key', 'keys'], ['boy', 'boys'],
+  ['toy', 'toys'], ['day', 'days'], ['road', 'roads'], ['house', 'houses'],
+  ['horse', 'horses'], ['nurse', 'nurses'], ['apple', 'apples'], ['shelf', 'shelves'],
+];
 const wrongPlural = (sg, pl) => [`${sg}s`, `${sg}es`, `${sg}ies`, `${sg}en`]
   .find((c) => c !== pl) || `${sg}ss`;
 
-// cycle a list against a frame list so long pools still yield 40 unique items
-const cyc = (list, frames, make) => pool40((i) => make(pick(list, i), pick(frames, Math.floor(i / list.length))));
-
-// ---- 1.1 Regular noun plurals -------------------------------------------
-const PL_FRAMES = {
-  easy: [(a, b) => `One ${a}, two ${b}.`, (a, b) => `I saw a ${a}, then I saw two ${b}.`],
-  medium: [(a, b) => `The shop had one ${a} on display and two ${b} out back.`, (a, b) => `She carried one ${a} while her brother carried two ${b}.`],
-  hard: [(a, b) => `Although she expected a single ${a}, the shelves were crowded with ${b}.`, (a, b) => `He ordered one ${a} at first, yet the final invoice listed dozens of ${b}.`],
-};
-function plurals(d) {
-  const nouns = d === 'easy' ? NOUNS.slice(0, 26) : d === 'medium' ? NOUNS.slice(16, 42) : NOUNS.slice(30);
-  return cyc(nouns, PL_FRAMES[d], (n, f) => {
-    const [sg, pl] = n;
-    return mk(f(sg, wrongPlural(sg, pl)), f(sg, pl), `The plural of "${sg}" is "${pl}".`);
-  });
-}
-
-// ---- 1.2 Irregular noun plurals -----------------------------------------
-const IRREGULAR = [
+// Irregular plural nouns: [singular, plural]
+const IRREG = [
   ['man', 'men'], ['woman', 'women'], ['child', 'children'], ['person', 'people'],
   ['tooth', 'teeth'], ['foot', 'feet'], ['mouse', 'mice'], ['goose', 'geese'],
-  ['ox', 'oxen'], ['louse', 'lice'], ['crisis', 'crises'], ['thesis', 'theses'],
-  ['analysis', 'analyses'], ['basis', 'bases'], ['diagnosis', 'diagnoses'],
-  ['criterion', 'criteria'], ['phenomenon', 'phenomena'], ['datum', 'data'],
-  ['medium', 'media'], ['bacterium', 'bacteria'], ['cactus', 'cacti'],
-  ['fungus', 'fungi'], ['nucleus', 'nuclei'], ['stimulus', 'stimuli'],
-  ['alumnus', 'alumni'], ['index', 'indices'], ['appendix', 'appendices'],
-  ['matrix', 'matrices'], ['vertex', 'vertices'], ['formula', 'formulae'],
-  ['larva', 'larvae'], ['radius', 'radii'], ['axis', 'axes'], ['oasis', 'oases'],
-  ['leaf', 'leaves'], ['knife', 'knives'], ['wife', 'wives'], ['wolf', 'wolves'],
-  ['shelf', 'shelves'], ['half', 'halves'], ['loaf', 'loaves'], ['thief', 'thieves'],
+  ['ox', 'oxen'], ['crisis', 'crises'], ['thesis', 'theses'], ['analysis', 'analyses'],
+  ['basis', 'bases'], ['diagnosis', 'diagnoses'], ['criterion', 'criteria'],
+  ['phenomenon', 'phenomena'], ['datum', 'data'], ['medium', 'media'],
+  ['bacterium', 'bacteria'], ['cactus', 'cacti'], ['fungus', 'fungi'],
+  ['nucleus', 'nuclei'], ['stimulus', 'stimuli'], ['alumnus', 'alumni'],
+  ['index', 'indices'], ['appendix', 'appendices'], ['matrix', 'matrices'],
+  ['vertex', 'vertices'], ['formula', 'formulae'], ['larva', 'larvae'],
+  ['radius', 'radii'], ['axis', 'axes'], ['oasis', 'oases'], ['knife', 'knives'],
+  ['wife', 'wives'], ['wolf', 'wolves'], ['half', 'halves'], ['loaf', 'loaves'],
+  ['thief', 'thieves'], ['life', 'lives'],
 ];
-const IR_FRAMES = {
-  easy: [(a, b) => `One ${a}, two ${b}.`, (a, b) => `There was one ${a} and later two ${b}.`],
-  medium: [(a, b) => `We counted one ${a}, and near the gate we spotted two ${b}.`, (a, b) => `A single ${a} appeared, followed by several ${b}.`],
-  hard: [(a, b) => `A lone ${a} was recorded at dawn, but by evening the field was full of ${b}.`, (a, b) => `The report mentioned one ${a}, yet the raw data contained hundreds of ${b}.`],
-};
-function irregularPlurals(d) {
-  const nouns = d === 'easy' ? IRREGULAR.slice(0, 20) : d === 'medium' ? IRREGULAR.slice(10, 34) : IRREGULAR.slice(22);
-  return cyc(nouns, IR_FRAMES[d], (n, f) => {
-    const [sg, pl] = n;
-    const bad = [`${sg}s`, `${sg}es`, `${sg}en`].find((c) => c !== pl) || `${sg}s`;
-    return mk(f(sg, bad), f(sg, pl), `"${sg}" has the irregular plural "${pl}".`);
-  });
-}
+const wrongIrregular = (sg, pl) => [`${sg}s`, `${sg}es`, `${sg}en`]
+  .find((c) => c !== pl) || `${sg}s`;
 
-// ---- 1.3 Possessive 's / s' ---------------------------------------------
-function possessives(d) {
-  const nouns = d === 'easy' ? NOUNS.slice(0, 20) : d === 'medium' ? NOUNS.slice(6, 36) : NOUNS.slice(16);
-  if (d === 'easy') {
-    return cyc(nouns, [
-      (n) => `The ${n} owns a new bicycle. It is the __ bicycle.`,
-      (n) => `I met the ${n} earlier; this is the __ coat.`,
-    ], (n, f) => mk(f(n).replace('__', `${n}s`), f(n).replace('__', `${n}'s`),
-      `A singular noun takes 's: ${n} \u2192 ${n}'s.`));
-  }
-  if (d === 'medium') {
-    return cyc(nouns.map(([s, p]) => p), [
-      (p) => `The ${p} share a new bicycle. It is the __ bicycle.`,
-      (p) => `We visited the ${p} house; the __ garden was lovely.`,
-    ], (p, f) => mk(f(p).replace('__', `${p}'s`), f(p).replace('__', `${p}'`),
-      `A plural noun ending in -s takes the apostrophe after the s: ${p} \u2192 ${p}'.`));
-  }
-  return cyc(nouns, [
-    (n) => `The ${n[0]} shares the plot with the ${n[1]}, so it is the __ plot.`,
-    (n) => `Both the ${n[0]} and the ${n[1]} use this gate; it is the __ gate.`,
-  ], (n, f) => mk(f(n).replace('__', `${n[0]}'s`), f(n).replace('__', `${n[1]}'`),
-    `The ${n[1]} take a plural possessive (${n[1]}'), not ${n[0]}'s.`));
-}
+const COUNT = ['counted', 'packed', 'moved', 'cleaned', 'painted', 'carried',
+  'sorted', 'washed', 'lifted', 'loaded', 'checked', 'labelled', 'wrapped',
+  'weighed', 'collected'];
+const NUMWORD = ['two', 'three', 'four', 'five', 'six', 'several', 'many', 'a few'];
 
-// ---- 1.4 Verb endings (-s, -ed, -ing) -----------------------------------
-const S_SUBJ = ['She', 'He', 'Tom', 'Anna', 'The boy', 'The girl', 'My friend', 'The teacher', 'The child', 'The dog'];
-const P_SUBJ = ['They', 'We', 'You', 'The boys', 'The girls', 'My friends', 'The teachers', 'The children', 'The dogs', 'The students'];
-function verbEndings(d) {
-  if (d === 'easy') {
-    return cartesian([VERBS, S_SUBJ, ['the car', 'the letter', 'the garden']],
-      ([b, s], subj, obj) => mk(`${subj} ${b} ${obj} every day.`, `${subj} ${s} ${obj} every day.`, `A singular subject takes "${s}".`));
-  }
-  if (d === 'medium') {
-    return cartesian([VERBS, P_SUBJ, ['the car', 'the letter', 'the garden', 'the door']],
-      ([b, , ed], subj, obj) => mk(`${subj} ${b}ed ${obj} yesterday.`, `${subj} ${ed} ${obj} yesterday.`, `The past tense is "${ed}".`));
-  }
-  return cartesian([VERBS, S_SUBJ, ['the car', 'the book', 'the fence']],
-    ([b, , , , ing], subj, obj) => mk(`${subj} is ${b}ing ${obj} right now.`, `${subj} is ${ing} ${obj} right now.`,
-      `The -ing form of "${b}" is "${ing}" (watch the spelling).`));
-}
+const PLACE = ['in the kitchen', 'near the river', 'at the office', 'in the garden',
+  'on the farm', 'by the window', 'at the station', 'in the library'];
 
-// ---- 1.5 Irregular past tense -------------------------------------------
-function irregularPast(d) {
-  const verbs = d === 'easy' ? VIRR.slice(0, 18) : d === 'medium' ? VIRR.slice(10, 28) : VIRR.slice(20);
-  const frame = {
-    easy: (subj, v, obj) => `${subj} ${v} ${obj} yesterday.`,
-    medium: (subj, v, obj) => `${subj} ${v} ${obj} before the meeting began.`,
-    hard: (subj, v, obj) => `Although nobody noticed at first, ${subj} ${v} ${obj} long before the alarms rang.`,
-  }[d];
-  return cartesian([verbs, ['the letter', 'the door', 'the car', 'the parcel', 'the message'],
-    ['She', 'He', 'Tom', 'Anna', 'The boy', 'The girl', 'We', 'They']],
-  ([b, , past], obj, subj) => mk(frame(lc(subj), `${b}ed`, obj), frame(lc(subj), past, obj),
-    `The simple past of "${b}" is "${past}", not "${b}ed".`));
-}
+// Possessive owners
+const OWNER_SG = ['boy', 'girl', 'teacher', 'doctor', 'driver', 'farmer',
+  'student', 'nurse', 'worker', 'player', 'brother', 'sister', 'mother',
+  'father', 'friend', 'pilot', 'baker', 'guard', 'author', 'painter'];
 
-// ---- 1.6 Irregular past participle --------------------------------------
-function irregularParticiple(d) {
-  const verbs = d === 'easy' ? VIRR.slice(0, 18) : d === 'medium' ? VIRR.slice(10, 28) : VIRR.slice(20);
-  const frame = {
-    easy: (subj, v, obj) => `${subj} ${v} ${obj}.`,
-    medium: (subj, v, obj) => `By the time we arrived, ${subj} already ${v} ${obj}.`,
-    hard: (subj, v, obj) => `No one could believe that ${subj} ${v} ${obj} so quickly before the deadline.`,
-  }[d];
-  return cartesian([verbs, [['She', 'has'], ['He', 'has'], ['Tom', 'has'], ['They', 'have'], ['We', 'have'], ['The boys', 'have']],
-    ['the letter', 'the door', 'the car', 'the parcel', 'the message']],
-  ([b, , past, part], [subj, aux], obj) => mk(frame(lc(subj), `${aux} ${past}`, obj), frame(lc(subj), `${aux} ${part}`, obj),
-    `The past participle of "${b}" is "${part}", so it is "${aux} ${part}".`));
-}
-
-// ---- 1.7 Comparative / superlative --------------------------------------
-const COMPARATIVES = [
+// Comparative adjectives: [base, comparative, superlative]
+const COMP = [
   ['tall', 'taller', 'tallest'], ['short', 'shorter', 'shortest'], ['old', 'older', 'oldest'],
   ['young', 'younger', 'youngest'], ['fast', 'faster', 'fastest'], ['slow', 'slower', 'slowest'],
   ['high', 'higher', 'highest'], ['low', 'lower', 'lowest'], ['small', 'smaller', 'smallest'],
@@ -131,29 +77,27 @@ const COMPARATIVES = [
   ['clean', 'cleaner', 'cleanest'], ['dark', 'darker', 'darkest'], ['deep', 'deeper', 'deepest'],
   ['big', 'bigger', 'biggest'], ['hot', 'hotter', 'hottest'], ['thin', 'thinner', 'thinnest'],
   ['sad', 'sadder', 'saddest'], ['happy', 'happier', 'happiest'], ['easy', 'easier', 'easiest'],
-  ['busy', 'busier', 'busiest'], ['heavy', 'heavier', 'heaviest'], ['dry', 'drier', 'driest'],
-  ['early', 'earlier', 'earliest'], ['good', 'better', 'best'], ['bad', 'worse', 'worst'],
-  ['far', 'farther', 'farthest'], ['little', 'less', 'least'], ['many', 'more', 'most'],
-  ['beautiful', 'more beautiful', 'most beautiful'], ['expensive', 'more expensive', 'most expensive'],
-  ['interesting', 'more interesting', 'most interesting'], ['difficult', 'more difficult', 'most difficult'],
-  ['popular', 'more popular', 'most popular'], ['dangerous', 'more dangerous', 'most dangerous'],
-  ['comfortable', 'more comfortable', 'most comfortable'],
+  ['busy', 'busier', 'busiest'], ['heavy', 'heavier', 'heaviest'], ['early', 'earlier', 'earliest'],
+  ['good', 'better', 'best'], ['bad', 'worse', 'worst'], ['far', 'farther', 'farthest'],
+  ['little', 'less', 'least'], ['many', 'more', 'most'], ['bright', 'brighter', 'brightest'],
+  ['calm', 'calmer', 'calmest'], ['brave', 'braver', 'bravest'], ['fair', 'fairer', 'fairest'],
+  ['kind', 'kinder', 'kindest'], ['rich', 'richer', 'richest'], ['safe', 'safer', 'safest'],
+  ['wide', 'wider', 'widest'],
 ];
-function comparatives(d) {
-  const list = d === 'easy' ? COMPARATIVES.slice(0, 19)
-    : d === 'medium' ? COMPARATIVES.slice(19, 30) : COMPARATIVES.slice(30);
-  const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-  return cartesian([list, letters], ([adj, comp], x) => mk(
-    `Option ${x} is more ${adj} than the others.`, `Option ${x} is ${comp} than the others.`,
-    `The comparative of "${adj}" is "${comp}".`,
-  )).concat(cartesian([list, letters], ([adj, , sup], x) => mk(
-    `Option ${x} is the ${adj} of them all.`, `Option ${x} is the ${sup} of them all.`,
-    `The superlative of "${adj}" is "${sup}".`,
-  ))).slice(0, 40);
-}
 
-// ---- 1.8 Adverb formation ------------------------------------------------
-const ADVERBS = [
+// Singular count nouns used as the compared subject in 1.7, so the subject is
+// always a single thing ("the box is taller than ...") and never a plural that
+// would break subject-verb agreement.
+const COMP_SUBJ = ['the box', 'the room', 'the road', 'the plan', 'the test',
+  'the essay', 'the wall', 'the chart', 'the garden', 'the chair', 'the tower',
+  'the bridge', 'the lake', 'the hill', 'the shelf', 'the fence', 'the clock',
+  'the desk', 'the map', 'the kite', 'the truck', 'the train', 'the pond',
+  'the gate', 'the lamp', 'the park', 'the house', 'the tree', 'the nest',
+  'the pool', 'the farm', 'the roof', 'the path', 'the barn',
+  'the drum', 'the flag', 'the rope', 'the coin', 'the jar'];
+
+// [adjective, adverb]
+const ADV_FORMS = [
   ['quick', 'quickly'], ['slow', 'slowly'], ['happy', 'happily'], ['easy', 'easily'],
   ['busy', 'busily'], ['heavy', 'heavily'], ['lazy', 'lazily'], ['angry', 'angrily'],
   ['gentle', 'gently'], ['simple', 'simply'], ['terrible', 'terribly'], ['possible', 'possibly'],
@@ -162,120 +106,119 @@ const ADVERBS = [
   ['careful', 'carefully'], ['quiet', 'quietly'], ['loud', 'loudly'], ['beautiful', 'beautifully'],
   ['sad', 'sadly'], ['bad', 'badly'], ['good', 'well'], ['silent', 'silently'],
   ['sudden', 'suddenly'], ['clear', 'clearly'], ['perfect', 'perfectly'], ['correct', 'correctly'],
-  ['safe', 'safely'], ['brave', 'bravely'], ['polite', 'politely'],
+  ['safe', 'safely'], ['brave', 'bravely'], ['polite', 'politely'], ['calm', 'calmly'],
+  ['bright', 'brightly'], ['warm', 'warmly'], ['soft', 'softly'], ['firm', 'firmly'],
 ];
-function adverbFormation(d) {
-  const list = d === 'easy' ? ADVERBS.slice(0, 12)
-    : d === 'medium' ? ADVERBS.slice(12, 26) : ADVERBS.slice(24);
-  const verbs = ['finished the task', 'answered the question', 'opened the door', 'painted the fence', 'read the letter'];
-  return cartesian([list, verbs], ([adj, adv], vp) => mk(
-    `She ${vp} ${adj}.`, `She ${vp} ${adv}.`, `The adverb of "${adj}" is "${adv}".`));
-}
+const ACTION = ['sang the song', 'opened the door', 'answered the question',
+  'painted the fence', 'read the letter', 'cleaned the room', 'closed the gate',
+  'wrote the story', 'fixed the clock', 'carried the box', 'drove the car',
+  'cooked the meal'];
 
-// ---- 1.9 Reflexive forms -------------------------------------------------
-const REFLEXIVES = [
+// [subject, reflexive]
+const REFLEX = [
   ['I', 'myself'], ['you', 'yourself'], ['he', 'himself'], ['she', 'herself'],
-  ['it', 'itself'], ['we', 'ourselves'], ['they', 'themselves'],
-  ['the boy', 'himself'], ['the girl', 'herself'], ['the dog', 'itself'],
-  ['the children', 'themselves'], ['my father', 'himself'], ['my mother', 'herself'],
-  ['Tom', 'himself'], ['Anna', 'herself'], ['the students', 'themselves'],
-  ['the cat', 'itself'], ['my friends', 'themselves'], ['the teacher', 'himself'],
-  ['the workers', 'themselves'],
+  ['it', 'itself'], ['we', 'ourselves'], ['they', 'themselves'], ['the boy', 'himself'],
+  ['the girl', 'herself'], ['the dog', 'itself'], ['the puppy', 'itself'],
+  ['my father', 'himself'], ['my mother', 'herself'], ['Tom', 'himself'],
+  ['Anna', 'herself'], ['the kitten', 'itself'], ['the cat', 'itself'],
+  ['the team', 'itself'], ['the teacher', 'himself'], ['the nurse', 'herself'],
+  ['the driver', 'himself'], ['the doctor', 'herself'], ['the baby', 'itself'],
+  ['the chef', 'himself'], ['my brother', 'himself'],
 ];
-const REFLEXIVE_WRONGS = ['hisself', 'theirselves', 'themself', 'meself', 'ourselfs', 'youselves', 'himselves', 'herselves', 'itselves'];
-function reflexives(d) {
-  const list = d === 'easy' ? REFLEXIVES.slice(0, 8) : d === 'medium' ? REFLEXIVES.slice(7, 16) : REFLEXIVES;
-  const frames = d === 'easy'
-    ? ['looked at __', 'hurt __', 'blamed __', 'introduced __', 'taught __']
-    : d === 'medium'
-      ? ['prepared __', 'convinced __', 'reassured __', 'photographed __', 'described __']
-      : ['was proud of __', 'took care of __', 'spoke about __', 'believed in __', 'relied on __'];
-  return cartesian([list, frames], ([subj, refl], frame) => {
-    const wrong = pick(REFLEXIVE_WRONGS, subj.length + frame.length);
-    const cap = subj.charAt(0).toUpperCase() + subj.slice(1);
-    return mk(`${cap} ${frame.replace('__', wrong)}.`, `${cap} ${frame.replace('__', refl)}.`,
-      `"${subj}" takes the reflexive "${refl}".`);
-  });
-}
+const REFLEXIVE_VERBS = ['prepared', 'introduced', 'taught', 'blamed', 'hurt',
+  'convinced', 'reassured', 'described', 'photographed', 'protected'];
+const REFLEXIVE_WRONG = ['hisself', 'theirselves', 'themself', 'meself',
+  'ourselfs', 'youselves', 'himselves', 'herselves', 'itselves'];
 
-// ---- 1.10 Homophones -----------------------------------------------------
+// [template with ___, correct, wrong]
 const HOMOPHONES = [
-  ['___ raining outside.', "it's", ['its', "its'", 'is']],
-  ['The dog wagged ___ tail.', 'its', ["it's", "its'", 'is']],
-  ['___ going to the park.', "they're", ['their', 'there', 'theyre']],
-  ['___ house is on the corner.', 'their', ["they're", 'there', 'thier']],
-  ['Put the book over ___.', 'there', ["they're", 'their', 'thier']],
-  ['Is this ___ book?', 'your', ["you're", 'yore', 'yourr']],
-  ['___ very kind.', "you're", ['your', 'yore', 'youre']],
-  ['I want ___ go home.', 'to', ['too', 'two', 'tu']],
-  ['It is ___ cold today.', 'too', ['to', 'two', 'tou']],
-  ['I have ___ brothers.', 'two', ['to', 'too', 'tu']],
-  ['She is taller ___ me.', 'than', ['then', 'that', 'thn']],
-  ['We ate dinner, ___ we left.', 'then', ['than', 'them', 'thn']],
-  ['The movie had no ___ on me.', 'effect', ['affect', 'affekt', 'efect']],
-  ['The rain will ___ the game.', 'affect', ['effect', 'affekt', 'efect']],
-  ['I might ___ my keys.', 'lose', ['loose', 'loes', 'loze']],
-  ['This shirt is too ___.', 'loose', ['lose', 'luse', 'loze']],
-  ['___ coming to the party?', "Who's", ['Whose', 'Whos', 'Whoes']],
-  ['___ bag is this?', 'Whose', ["Who's", 'Whos', 'Whoes']],
-  ['I do not know ___ it will rain.', 'whether', ['weather', 'wether', 'wheather']],
-  ['The ___ is nice today.', 'weather', ['whether', 'wether', 'wheather']],
-  ['Please ___ my apology.', 'accept', ['except', 'exept', 'accepte']],
-  ['Everyone came ___ Tom.', 'except', ['accept', 'exept', 'expcept']],
-  ['The school ___ spoke to us.', 'principal', ['principle', 'principel', 'princaple']],
-  ['It is a matter of ___.', 'principle', ['principal', 'principel', 'princaple']],
-  ['We must have ___ in the world.', 'peace', ['piece', 'peice', 'pease']],
-  ['I ate a ___ of cake.', 'piece', ['peace', 'peice', 'pease']],
-  ['Please hit the ___.', 'brake', ['break', 'braik', 'bracke']],
-  ['Do not ___ the glass.', 'break', ['brake', 'braik', 'bracke']],
-  ['We walked ___ the old school.', 'past', ['passed', 'pased', 'passd']],
-  ['She ___ the exam.', 'passed', ['past', 'pased', 'passd']],
-  ['Please read the letter ___.', 'aloud', ['allowed', 'alowd', 'alloud']],
-  ['We are not ___ to swim here.', 'allowed', ['aloud', 'alowd', 'alloud']],
-  ['The car is ___, not moving.', 'stationary', ['stationery', 'stationarry', 'stationairy']],
-  ['I bought new ___ for school.', 'stationery', ['stationary', 'stationarry', 'stationairy']],
-  ['We crossed the hot ___.', 'desert', ['dessert', 'desrt', 'dessart']],
-  ['I would like ___ after dinner.', 'dessert', ['desert', 'desrt', 'dessart']],
-  ['She was ___ in July.', 'born', ['borne', 'bored', 'borrne']],
-  ['The ___ of the story is clear.', 'moral', ['morale', 'morral', 'morral']],
-  ['Team spirit was high; ___ was good.', 'morale', ['moral', 'morral', 'morral']],
-  ['He is a member of the ___ board.', 'school', ['schol', 'schole', 'skool']],
+  ['___ raining outside.', "it's", 'its'],
+  ['The dog wagged ___ tail.', 'its', "it's"],
+  ['___ going to the park.', "they're", 'their'],
+  ['___ house is on the corner.', 'their', "they're"],
+  ['Put the book over ___.', 'there', 'their'],
+  ['___ very kind.', "you're", 'your'],
+  ['I want ___ go home.', 'to', 'too'],
+  ['It is ___ cold today.', 'too', 'to'],
+  ['I have ___ brothers.', 'two', 'to'],
+  ['She is taller ___ me.', 'than', 'then'],
+  ['The film ended and ___ we left.', 'then', 'than'],
+  ['The movie had no ___ on me.', 'effect', 'affect'],
+  ['The rain will ___ the game.', 'affect', 'effect'],
+  ['I might ___ my keys.', 'lose', 'loose'],
+  ['This shirt is too ___.', 'loose', 'lose'],
+  ['I do not know ___ it will rain.', 'whether', 'weather'],
+  ['The ___ is nice today.', 'weather', 'whether'],
+  ['Please ___ my apology.', 'accept', 'except'],
+  ['Everyone came ___ Tom.', 'except', 'accept'],
+  ['The school ___ spoke to us.', 'principal', 'principle'],
+  ['It is a matter of ___.', 'principle', 'principal'],
+  ['We must have ___ in the world.', 'peace', 'piece'],
+  ['I ate a ___ of cake.', 'piece', 'peace'],
+  ['Please hit the ___.', 'brake', 'break'],
+  ['Do not ___ the glass.', 'break', 'brake'],
+  ['We walked ___ the old school.', 'past', 'passed'],
+  ['She ___ the exam.', 'passed', 'past'],
+  ['Please read the letter ___.', 'aloud', 'allowed'],
+  ['We are not ___ to swim here.', 'allowed', 'aloud'],
+  ['The car remained ___ for a week.', 'stationary', 'stationery'],
+  ['I bought new ___ for school.', 'stationery', 'stationary'],
+  ['We crossed the hot ___.', 'desert', 'dessert'],
+  ['I would like ___ after dinner.', 'dessert', 'desert'],
+  ['She was ___ in July.', 'born', 'borne'],
+  ['The ___ of the story is clear.', 'moral', 'morale'],
+  ['Team spirit was high; ___ was good.', 'morale', 'moral'],
+  ['He is a member of the ___ board.', 'school', 'schol'],
+  ['I wonder whether this is ___ book.', 'your', "you're"],
+  ['I wonder ___ bag this is.', 'whose', "who's"],
+  ['I wonder ___ coming to the party.', "who's", 'whose'],
 ];
-function homophones(d) {
-  const list = d === 'easy' ? HOMOPHONES.slice(0, 20) : d === 'medium' ? HOMOPHONES.slice(10, 30) : HOMOPHONES.slice(22);
-  const tails = d === 'easy' ? ['', ' every day'] : d === 'medium' ? ['', ' again'] : ['', ' once again', ' for everyone'];
-  return pool40((i) => {
-    const [tmpl, correct, wrongs] = pick(list, i);
-    const tail = pick(tails, Math.floor(i / list.length));
-    const good = (tmpl.replace('___', correct) + tail).trim();
-    const bad = (tmpl.replace('___', wrongs[0]) + tail).trim();
-    return mk(bad, good, `The correct word is "${correct}".`);
-  });
-}
 
-// ---- 1.11 Contractions ---------------------------------------------------
+// [bad (apostrophe dropped), good, full form, contraction]
 const CONTRACTIONS = [
-  ['do not', "don't"], ['does not', "doesn't"], ['did not', "didn't"], ['is not', "isn't"],
-  ['are not', "aren't"], ['was not', "wasn't"], ['were not', "weren't"], ['have not', "haven't"],
-  ['has not', "hasn't"], ['had not', "hadn't"], ['will not', "won't"], ['would not', "wouldn't"],
-  ['can not', "can't"], ['could not', "couldn't"], ['should not', "shouldn't"], ['must not', "mustn't"],
-  ['I am', "I'm"], ['you are', "you're"], ['he is', "he's"], ['she is', "she's"],
-  ['it is', "it's"], ['we are', "we're"], ['they are', "they're"], ['I have', "I've"],
-  ['I will', "I'll"], ['you will', "you'll"], ['they will', "they'll"], ['let us', "let's"],
-  ['I would', "I'd"], ['they have', "they've"], ['we will', "we'll"], ['she will', "she'll"],
-  ['he will', "he'll"], ['it will', "it'll"], ['who is', "who's"], ['there is', "there's"],
-  ['what is', "what's"], ['here is', "here's"], ['you have', "you've"], ['we have', "we've"],
+  ["They dont like the rain.", "They don't like the rain.", 'do not', "don't"],
+  ["He doesnt like the rain.", "He doesn't like the rain.", 'does not', "doesn't"],
+  ["She didnt finish her homework.", "She didn't finish her homework.", 'did not', "didn't"],
+  ["He isnt very tired.", "He isn't very tired.", 'is not', "isn't"],
+  ["They arent ready yet.", "They aren't ready yet.", 'are not', "aren't"],
+  ["It wasnt my fault.", "It wasn't my fault.", 'was not', "wasn't"],
+  ["They werent late today.", "They weren't late today.", 'were not', "weren't"],
+  ["We havent seen that film.", "We haven't seen that film.", 'have not', "haven't"],
+  ["He hasnt brushed his teeth.", "He hasn't brushed his teeth.", 'has not', "hasn't"],
+  ["She hadnt called her mother.", "She hadn't called her mother.", 'had not', "hadn't"],
+  ["He wont come to class.", "He won't come to class.", 'will not', "won't"],
+  ["She wouldnt mind that.", "She wouldn't mind that.", 'would not', "wouldn't"],
+  ["I cant swim very fast.", "I can't swim very fast.", 'can not', "can't"],
+  ["He couldnt sleep last night.", "He couldn't sleep last night.", 'could not', "couldn't"],
+  ["We shouldnt worry about it.", "We shouldn't worry about it.", 'should not', "shouldn't"],
+  ["You mustnt run in the hall.", "You mustn't run in the hall.", 'must not', "mustn't"],
+  ["Im tired now.", "I'm tired now.", 'I am', "I'm"],
+  ["Youre late for dinner.", "You're late for dinner.", 'you are', "you're"],
+  ["Hes at the office.", "He's at the office.", 'he is', "he's"],
+  ["Shes busy this week.", "She's busy this week.", 'she is', "she's"],
+  ["Its cold outside.", "It's cold outside.", 'it is', "it's"],
+  ["Were ready to leave.", "We're ready to leave.", 'we are', "we're"],
+  ["Theyre still at home.", "They're still at home.", 'they are', "they're"],
+  ["Ive got a plan.", "I've got a plan.", 'I have', "I've"],
+  ["Ill call you later.", "I'll call you later.", 'I will', "I'll"],
+  ["Youll like this town.", "You'll like this town.", 'you will', "you'll"],
+  ["Theyll wait for us.", "They'll wait for us.", 'they will', "they'll"],
+  ["Youd enjoy this book.", "You'd enjoy this book.", 'you would', "you'd"],
+  ["Id like that.", "I'd like that.", 'I would', "I'd"],
+  ["Theyve already won.", "They've already won.", 'they have', "they've"],
+  ["Well meet at noon.", "We'll meet at noon.", 'we will', "we'll"],
+  ["Shell bring the book.", "She'll bring the book.", 'she will', "she'll"],
+  ["Hell help us later.", "He'll help us later.", 'he will', "he'll"],
+  ["Itll rain tonight.", "It'll rain tonight.", 'it will', "it'll"],
+  ["The girl whos at the door is my cousin.", "The girl who's at the door is my cousin.", 'who is', "who's"],
+  ["They wouldve told you.", "They would've told you.", 'would have', "would've"],
+  ["Wed love that.", "We'd love that.", 'we would', "we'd"],
+  ["Theyd say yes.", "They'd say yes.", 'they would', "they'd"],
+  ["Youve been very kind.", "You've been very kind.", 'you have', "you've"],
+  ["Weve already finished.", "We've already finished.", 'we have', "we've"],
 ];
-function contractions(d) {
-  const list = d === 'easy' ? CONTRACTIONS.slice(0, 20) : d === 'medium' ? CONTRACTIONS.slice(10, 30) : CONTRACTIONS.slice(22);
-  const frames = [(full) => `"${full}" contracts to ___.`, (full) => `In speech we shorten "${full}" to ___.`, (full) => `The short form of "${full}" is ___.`];
-  return cyc(list, frames, ([full, contr], f) => mk(
-    f(full).replace('___', contr.replace("'", '')),
-    f(full).replace('___', contr),
-    `"${full}" contracts to "${contr}" (keep the apostrophe).`));
-}
 
-// ---- 1.12 Spelling -------------------------------------------------------
+// [correct, common misspelling]
 const SPELLINGS = [
   ['receive', 'recieve'], ['separate', 'seperate'], ['definitely', 'definately'],
   ['occurred', 'occured'], ['accommodate', 'accomodate'], ['believe', 'beleive'],
@@ -291,76 +234,273 @@ const SPELLINGS = [
   ['publicly', 'publically'], ['questionnaire', 'questionaire'], ['rhythm', 'rythm'],
   ['success', 'sucess'], ['truly', 'truely'], ['vacuum', 'vacumm'],
 ];
-function spellings(d) {
-  const list = d === 'easy' ? SPELLINGS.slice(0, 18) : d === 'medium' ? SPELLINGS.slice(10, 30) : SPELLINGS.slice(22);
-  const frames = ['The correct spelling is ___.', 'She wrote "___" on the board.', 'He asked how to spell "___".'];
-  return cartesian([list, frames], ([good, wrong], frame) => mk(
-    frame.replace('___', wrong), frame.replace('___', good), `The correct spelling is "${good}".`));
-}
 
-// ---- 1.13 Numerals and measures -----------------------------------------
-const NUMERALS = [
-  ['There were two ___ people at the party.', 'hundred', ['hundreds', 'hundredth']],
-  ['She has three ___ books.', 'hundred', ['hundreds', 'hundredth']],
-  ['The company hired two ___ workers.', 'thousand', ['thousands', 'thousandth']],
-  ['Five ___ dollars is a lot.', 'thousand', ['thousands', 'thousandth']],
-  ['A five-___-old child started school.', 'year', ['years', 'yeared']],
-  ['They agreed to a ten-___ plan.', 'year', ['years', 'yeared']],
-  ['It was a three-___ journey.', 'hour', ['hours', 'houred']],
-  ['We waited for two ___.', 'hours', ['hour', 'hourss']],
-  ['She is a two-___-old toddler.', 'year', ['years', 'yeared']],
-  ['The table is two ___ long.', 'metres', ['metre', 'metress']],
-  ['He weighs about sixty ___.', 'kilograms', ['kilogram', 'kilogrammes']],
-  ['Half an ___ passed.', 'hour', ['hours', 'houred']],
-  ['An ___ and a half is left.', 'hour', ['hours', 'houred']],
-  ['There are twelve ___ in a dozen.', 'items', ['item', 'itemses']],
-  ['The room is ten ___ wide.', 'feet', ['foot', 'feets']],
-  ['The box is five ___ tall.', 'feet', ['foot', 'feets']],
-  ['She is six ___ tall.', 'feet', ['foot', 'feets']],
-  ['I need two ___ of milk.', 'litres', ['litre', 'litress']],
-  ['We drove eighty ___.', 'kilometres', ['kilometre', 'kilometress']],
-  ['The bill came to fifty ___.', 'dollars', ['dollar', 'dollares']],
-  ['It costs twenty ___ pounds.', 'pounds', ['pound', 'poundses']],
-  ['Give me a ___ of water.', 'glass', ['glasses', 'glassful']],
-  ['She ate two ___ of bread.', 'slices', ['slice', 'slicess']],
-  ['There are sixty ___ in an hour.', 'minutes', ['minute', 'minutess']],
-  ['There are twenty-four ___ in a day.', 'hours', ['hour', 'hourss']],
-  ['Only a ___ of the cake was left.', 'piece', ['pieces', 'pieced']],
-  ['He is one hundred ___ old.', 'years', ['year', 'yearss']],
-  ['It is two ___ since we met.', 'months', ['month', 'monthss']],
-  ['The train leaves in ten ___.', 'minutes', ['minute', 'minutess']],
-  ['A dozen ___ were on the shelf.', 'eggs', ['egg', 'eggss']],
-  ['Two ___ of paper, please.', 'reams', ['ream', 'reamss']],
-  ['The wall is three ___ high.', 'metres', ['metre', 'metress']],
-  ['She ran five ___ today.', 'kilometres', ['kilometre', 'kilometress']],
-  ['Add two ___ of sugar.', 'cups', ['cup', 'cupss']],
-  ['There are thirty ___ in June.', 'days', ['day', 'dayss']],
+const WHO_PL = [
+  'The teachers', 'My friends', 'The students', 'The workers', 'The children',
+  'The guests', 'The players', 'The farmers', 'The nurses', 'The painters',
 ];
-function numerals(d) {
-  const list = d === 'easy' ? NUMERALS.slice(0, 18) : d === 'medium' ? NUMERALS.slice(8, 30) : NUMERALS.slice(18);
-  const tails = d === 'easy' ? ['', ' Please check it.', ' Thanks.'] : d === 'medium' ? ['', ' Read it aloud.'] : ['', ' Write it down.', ' Check the unit.'];
-  return pool40((i) => {
-    const [tmpl, correct, wrongs] = pick(list, i);
-    const tail = pick(tails, Math.floor(i / list.length));
-    return mk((tmpl.replace('___', wrongs[0]) + tail).trim(), (tmpl.replace('___', correct) + tail).trim(),
-      `The correct form is "${correct}".`);
-  });
-}
 
-function lc(s) { return /^[A-Z]/.test(s) && s.split(' ').length > 1 ? s.charAt(0).toLowerCase() + s.slice(1) : s; }
+const bare = (s) => s.replace(/^the\s+/, '');
+
+// Intransitive regular verbs, [base, 3sg, past, prog], used so a core clause
+// stays naturally complete ("The student walks") before a wrapper adds context.
+const INTR_REG = [
+  ['walk', 'walks', 'walked', 'walking'], ['talk', 'talks', 'talked', 'talking'],
+  ['look', 'looks', 'looked', 'looking'], ['jump', 'jumps', 'jumped', 'jumping'],
+  ['dance', 'dances', 'danced', 'dancing'], ['smile', 'smiles', 'smiled', 'smiling'],
+  ['wait', 'waits', 'waited', 'waiting'], ['rest', 'rests', 'rested', 'resting'],
+  ['play', 'plays', 'played', 'playing'], ['listen', 'listens', 'listened', 'listening'],
+  ['arrive', 'arrives', 'arrived', 'arriving'], ['remember', 'remembers', 'remembered', 'remembering'],
+  ['continue', 'continues', 'continued', 'continuing'], ['clap', 'claps', 'clapped', 'clapping'],
+  ['camp', 'camps', 'camped', 'camping'], ['start', 'starts', 'started', 'starting'],
+  ['finish', 'finishes', 'finished', 'finishing'], ['hurry', 'hurries', 'hurried', 'hurrying'],
+  ['shout', 'shouts', 'shouted', 'shouting'], ['laugh', 'laughs', 'laughed', 'laughing'],
+];
+
+// Regular verbs whose -ed / -ing form is NOT base+-ed/-ing, so the wrong form
+// "danced \u2192 danceed" is a real mistake for bases ending in -e or doubled
+// consonants.
+const INTR_TRIX = [
+  ['dance', 'dances', 'danced', 'dancing'], ['smile', 'smiles', 'smiled', 'smiling'],
+  ['arrive', 'arrives', 'arrived', 'arriving'], ['continue', 'continues', 'continued', 'continuing'],
+  ['clap', 'claps', 'clapped', 'clapping'], ['stop', 'stops', 'stopped', 'stopping'],
+  ['plan', 'plans', 'planned', 'planning'], ['rub', 'rubs', 'rubbed', 'rubbing'],
+  ['nod', 'nods', 'nodded', 'nodding'], ['beg', 'begs', 'begged', 'begging'],
+  ['shop', 'shops', 'shopped', 'shopping'], ['jog', 'jogs', 'jogged', 'jogging'],
+  ['tag', 'tags', 'tagged', 'tagging'], ['hurry', 'hurries', 'hurried', 'hurrying'],
+  ['carry', 'carries', 'carried', 'carrying'], ['worry', 'worries', 'worried', 'worrying'],
+];
+const INTR_HARD = [
+  ['dance', 'dances', 'danced', 'dancing'], ['smile', 'smiles', 'smiled', 'smiling'],
+  ['arrive', 'arrives', 'arrived', 'arriving'], ['continue', 'continues', 'continued', 'continuing'],
+  ['clap', 'claps', 'clapped', 'clapping'], ['stop', 'stops', 'stopped', 'stopping'],
+  ['plan', 'plans', 'planned', 'planning'], ['rub', 'rubs', 'rubbed', 'rubbing'],
+  ['nod', 'nods', 'nodded', 'nodding'], ['beg', 'begs', 'begged', 'begging'],
+  ['shop', 'shops', 'shopped', 'shopping'], ['jog', 'jogs', 'jogged', 'jogging'],
+  ['drop', 'drops', 'dropped', 'dropping'], ['tap', 'taps', 'tapped', 'tapping'],
+  ['tie', 'ties', 'tied', 'tying'], ['die', 'dies', 'died', 'dying'],
+];
+
+// Intransitive irregular verbs, [base, past, participle].
+const IRRP = [
+  ['go', 'went', 'gone'], ['come', 'came', 'come'], ['run', 'ran', 'run'],
+  ['swim', 'swam', 'swum'], ['fly', 'flew', 'flown'], ['sing', 'sang', 'sung'],
+  ['speak', 'spoke', 'spoken'], ['drive', 'drove', 'driven'], ['sleep', 'slept', 'slept'],
+  ['sit', 'sat', 'sat'], ['stand', 'stood', 'stood'], ['wake', 'woke', 'woken'],
+  ['fall', 'fell', 'fallen'], ['rise', 'rose', 'risen'], ['leave', 'left', 'left'],
+  ['write', 'wrote', 'written'], ['eat', 'ate', 'eaten'], ['drink', 'drank', 'drunk'],
+  ['begin', 'began', 'begun'],
+];
+
+const spellFrame = (word, i) => cap(at([
+  `the teacher asked us to write "${word}" on the board`,
+  `he always writes "${word}" in his essays`,
+  `we practised the spelling of "${word}" in class`,
+  `they asked him to spell "${word}" aloud`,
+  `she read the word "${word}" off the page`,
+], i));
 
 export default {
-  '1.1': plurals,
-  '1.2': irregularPlurals,
-  '1.3': possessives,
-  '1.4': verbEndings,
-  '1.5': irregularPast,
-  '1.6': irregularParticiple,
-  '1.7': comparatives,
-  '1.8': adverbFormation,
-  '1.9': reflexives,
-  '1.10': homophones,
-  '1.11': contractions,
-  '1.12': spellings,
-  '1.13': numerals,
+  // 1.1 Regular noun plurals
+  '1.1': (d) => ruleItems(d, (i) => {
+    const [sg, pl] = at(REG, i);
+    const bad = `${at(WHO, i)} ${step(COUNT, i, 5)} ${at(NUMWORD, i * 3)} ${wrongPlural(sg, pl)}`;
+    const good = `${at(WHO, i)} ${step(COUNT, i, 5)} ${at(NUMWORD, i * 3)} ${pl}`;
+    return { bad, good, explanation: `The plural of "${sg}" is "${pl}".` };
+  }),
+
+  // 1.2 Irregular noun plurals
+  '1.2': (d) => ruleItems(d, (i) => {
+    const [sg, pl] = at(IRREG, i);
+    const bad = `${at(WHO, i)} ${step(COUNT, i, 3)} ${at(NUMWORD, i * 3)} ${wrongIrregular(sg, pl)}`;
+    const good = `${at(WHO, i)} ${step(COUNT, i, 3)} ${at(NUMWORD, i * 3)} ${pl}`;
+    return { bad, good, explanation: `"${sg}" has the irregular plural "${pl}".` };
+  }),
+
+  // 1.3 Possessive 's / s'
+  '1.3': (d) => ruleItems(d, (i) => {
+    if (i % 2 === 0) {
+      const owner = at(OWNER_SG, i);
+      const thing = bare(at(OBJECTS, i * 5));
+      return {
+        bad: `${at(WHO, i)} found the ${owner}s ${thing}`,
+        good: `${at(WHO, i)} found the ${owner}'s ${thing}`,
+        explanation: `A singular noun takes 's: ${owner} \u2192 ${owner}'s.`,
+      };
+    }
+    const [, pl] = at(REG, i);
+    const thing = bare(at(OBJECTS, i * 5 + 1));
+    return {
+      bad: `${at(WHO, i)} cleaned the ${pl}'s ${thing}`,
+      good: `${at(WHO, i)} cleaned the ${pl}' ${thing}`,
+      explanation: `A plural noun ending in -s takes the apostrophe after the s: ${pl} \u2192 ${pl}'.`,
+    };
+  }),
+
+  // 1.4 Verb endings (-s, -ed, -ing)
+  '1.4': (d) => ruleItems(d, (i) => {
+    const who = step(WHO, i, 3);
+    if (d === 'medium') {
+      const [b, , ed] = at(INTR_TRIX, i);
+      return {
+        bad: `${who} ${b}ed`,
+        good: `${who} ${ed}`,
+        explanation: `The past tense is "${ed}", not "${b}ed".`,
+      };
+    }
+    if (d === 'hard') {
+      const [b, , , ing] = at(INTR_HARD, i);
+      return {
+        bad: `${who} is ${b}ing`,
+        good: `${who} is ${ing}`,
+        explanation: `The -ing form of "${b}" is "${ing}".`,
+      };
+    }
+    const [b, s] = at(INTR_REG, i);
+    return {
+      bad: `${who} ${b}`,
+      good: `${who} ${s}`,
+      explanation: `A singular subject takes "${s}".`,
+    };
+  }),
+
+  // 1.5 Irregular past tense
+  '1.5': (d) => ruleItems(d, (i) => {
+    const [b, past] = at(IRRP, i);
+    const who = step(WHO, i, 7);
+    return {
+      bad: `${who} ${b}ed`,
+      good: `${who} ${past}`,
+      explanation: `The simple past of "${b}" is "${past}", not "${b}ed".`,
+    };
+  }),
+
+  // 1.6 Irregular past participle
+  '1.6': (d) => ruleItems(d, (i) => {
+    const [b, , part] = at(IRRP, i);
+    const who = i % 4 === 0 ? at(WHO_PL, i) : step(WHO, i, 7);
+    const aux = i % 4 === 0 ? 'have' : 'has';
+    return {
+      bad: `${who} ${aux} ${b}ed`,
+      good: `${who} ${aux} ${part}`,
+      explanation: `The past participle of "${b}" is "${part}", so it is "${aux} ${part}".`,
+    };
+  }),
+
+  // 1.7 Comparative / superlative
+  '1.7': (d) => ruleItems(d, (i) => {
+    const [adj, comp, sup] = at(COMP, i);
+    const a = at(COMP_SUBJ, i * 3);
+    const b = at(COMP_SUBJ, i * 3 + 1);
+    if (i % 2 === 0) {
+      return {
+        bad: `${cap(a)} is more ${adj} than ${b}`,
+        good: `${cap(a)} is ${comp} than ${b}`,
+        explanation: `The comparative of "${adj}" is "${comp}".`,
+      };
+    }
+    const group = at(['boxes', 'rooms', 'roads', 'plans', 'tests', 'essays',
+      'walls', 'charts', 'trees', 'trucks', 'lakes', 'farms', 'parks',
+      'floors', 'rooms', 'boxes'], i);
+    return {
+      bad: `Of all the ${group}, ${a} is the most ${adj} one`,
+      good: `Of all the ${group}, ${a} is the ${sup} one`,
+      explanation: `The superlative of "${adj}" is "${sup}".`,
+    };
+  }),
+
+  // 1.8 Adverb formation
+  '1.8': (d) => ruleItems(d, (i) => {
+    const [adj, adv] = at(ADV_FORMS, i);
+    const action = at(ACTION, i * 3);
+    const who = at(WHO, i);
+    return {
+      bad: `${who} ${action} ${adj}`,
+      good: `${who} ${action} ${adv}`,
+      explanation: `The adverb of "${adj}" is "${adv}".`,
+    };
+  }),
+
+  // 1.9 Reflexive forms
+  '1.9': (d) => ruleItems(d, (i) => {
+    const [subj, refl] = at(REFLEX, i);
+    const verb = at(REFLEXIVE_VERBS, i * 3);
+    const wrong = at(REFLEXIVE_WRONG, i);
+    return {
+      bad: `${cap(subj)} ${verb} ${wrong}`,
+      good: `${cap(subj)} ${verb} ${refl}`,
+      explanation: `"${subj}" takes the reflexive "${refl}".`,
+    };
+  }),
+
+  // 1.10 Homophones
+  '1.10': (d) => ruleItems(d, (i) => {
+    const [tmpl, correct, wrong] = at(HOMOPHONES, i);
+    const nice = (s) => s.replace(/\s+([.!?,])/g, '$1').replace(/[.]+$/, '').trim();
+    const good = cap(nice(tmpl.replace('___', correct)));
+    const bad = cap(nice(tmpl.replace('___', wrong)));
+    return { bad: bad, good: good, explanation: `The correct word is "${correct}".` };
+  }),
+
+  // 1.11 Contractions
+  '1.11': (d) => ruleItems(d, (i) => {
+    const [bad, good, full, contr] = at(CONTRACTIONS, i);
+    return {
+      bad,
+      good,
+      explanation: `"${full}" contracts to "${contr}" (keep the apostrophe).`,
+    };
+  }),
+
+  // 1.12 Spelling
+  '1.12': (d) => ruleItems(d, (i) => {
+    const [good, wrong] = at(SPELLINGS, i);
+    return {
+      bad: spellFrame(wrong, i),
+      good: spellFrame(good, i),
+      explanation: `The correct spelling is "${good}".`,
+    };
+  }),
+
+  // 1.13 Numerals and measures
+  '1.13': (d) => ruleItems(d, (i) => {
+    const groups = [
+      'two hundred', 'three hundred', 'four thousand', 'five thousand',
+      'a five-year-old', 'a ten-year', 'a three-hour', 'two hours',
+      'a two-year-old', 'two metres', 'sixty kilograms', 'half an hour',
+      'an hour', 'twelve items', 'ten feet', 'five feet', 'six feet',
+      'two litres', 'eighty kilometres', 'fifty dollars', 'twenty pounds',
+      'a glass', 'two slices', 'sixty minutes', 'twenty-four hours',
+      'a piece', 'one hundred years', 'two months', 'ten minutes', 'a dozen eggs',
+      'two reams', 'three metres', 'five kilometres', 'two cups', 'thirty days',
+      'three weeks', 'four days', 'ten dollars', 'two sets', 'four bowls',
+    ];
+    const wrongs = {
+      'two hundred': 'two hundreds', 'three hundred': 'three hundreds',
+      'four thousand': 'four thousands', 'five thousand': 'five thousands',
+      'a five-year-old': 'a five-years-old', 'a ten-year': 'a ten-years',
+      'a three-hour': 'a three-hours', 'two hours': 'two hour',
+      'a two-year-old': 'a two-years-old', 'two metres': 'two metre',
+      'sixty kilograms': 'sixty kilogram', 'half an hour': 'half an hours',
+      'an hour': 'an hours', 'twelve items': 'twelve item', 'ten feet': 'ten foot',
+      'five feet': 'five foot', 'six feet': 'six foot', 'two litres': 'two litre',
+      'eighty kilometres': 'eighty kilometre', 'fifty dollars': 'fifty dollar',
+      'twenty pounds': 'twenty pound', 'a glass': 'a glasses',
+      'two slices': 'two slice', 'sixty minutes': 'sixty minute',
+      'twenty-four hours': 'twenty-four hour', 'a piece': 'a pieces',
+      'one hundred years': 'one hundred year', 'two months': 'two month',
+      'ten minutes': 'ten minute', 'a dozen eggs': 'a dozen egg',
+      'two reams': 'two ream', 'three metres': 'three metre',
+      'five kilometres': 'five kilometre', 'two cups': 'two cup',
+      'thirty days': 'thirty day', 'three weeks': 'three week',
+      'four days': 'four day', 'ten dollars': 'ten dollar',
+      'two sets': 'two set', 'four bowls': 'four bowl',
+    };
+    const good = at(groups, i);
+    return {
+      bad: `${at(WHO, i)} needed ${wrongs[good]}`,
+      good: `${at(WHO, i)} needed ${good}`,
+      explanation: `The correct form is "${good}".`,
+    };
+  }),
 };

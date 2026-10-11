@@ -26,6 +26,11 @@ const AGENTS = ['the teacher', 'the workers', 'the boy', 'my father', 'the commi
   'the team', 'the driver', 'the artist', 'the cleaner', 'the manager'];
 const NEG_NOUNS = ['money', 'time', 'friends', 'food', 'water', 'ideas', 'questions',
   'plans', 'help', 'tickets', 'letters', 'reasons', 'answers', 'news', 'hope', 'homework'];
+const NEG_MASS = ['money', 'time', 'food', 'water', 'help', 'news', 'hope', 'homework'];
+
+const INTRANS6 = new Set(['arrive', 'go', 'come', 'live', 'smile', 'hope',
+  'decide', 'sleep', 'run', 'jump', 'dance', 'swim', 'fly', 'stand', 'sit']);
+const TRANS6 = VERBS.filter(([b]) => !INTRANS6.has(b));
 
 // ---- 6.1 Auxiliary + verb form -------------------------------------------
 function auxVerbForm(d) {
@@ -574,12 +579,13 @@ function negation(d) {
     });
   }
   return pool40((i) => {
-    const n = pick(NEG_NOUNS, i * 3 + 1);
     const t = pick(TAILS_COMPLEX, i * 7 + 2);
     if (i % 2 === 0) {
+      const n = pick(NEG_MASS, i * 3 + 1);
       return mk(`${cap(t)}, there wasn't no ${n} left.`, `${cap(t)}, there wasn't any ${n} left.`,
         `"wasn't ... no" is a double negative; use "any ${n}".`);
     }
+    const n = pick(NEG_NOUNS, i * 3 + 1);
     return mk(`${cap(t)}, we never found no ${n}.`, `${cap(t)}, we never found any ${n}.`,
       `"never ... no" is a double negative; use "any ${n}".`);
   });
@@ -604,7 +610,7 @@ function imperatives(d) {
     });
   }
   return pool40((i) => {
-    const [b, sg] = pick(VERBS, i * 7 + 1);
+    const [b, sg] = pick(TRANS6, i * 7 + 1);
     const o = pick(OBJECTS, i * 3 + 2);
     const t = pick(TAILS_COMPLEX, i * 5 + 3);
     return mk(`${cap(t)}, don't ${sg} ${o}.`, `${cap(t)}, don't ${b} ${o}.`,
@@ -765,22 +771,24 @@ const CLAUSE_VERBS = ['suggest', 'recommend', 'propose', 'demand', 'insist',
   'request', 'argue', 'maintain'];
 const CLAUSE_VERBS_PAST = ['suggested', 'recommended', 'proposed', 'demanded',
   'insisted', 'requested', 'argued', 'maintained'];
+const CLAUSE_SUBJ = [['I', false], ['We', false], ['They', false],
+  ['The committee', true], ['The board', true], ['The teacher', true],
+  ['The manager', true], ['The council', true]];
 function verbClause(d) {
   if (d === 'easy') {
     return pool40((i) => {
-      const s = pick(['I', 'We', 'They', 'The committee', 'The board',
-        'The teacher', 'The manager', 'The council'], i);
+      const [s, sgSubject] = pick(CLAUSE_SUBJ, i);
       const v = pick(CLAUSE_VERBS, i * 3 + 1);
+      const vv = sgSubject ? `${v}s` : v;
       const [b] = pick(VERBS, i * 7 + 2);
       const t = pick(PLACES, i * 5 + 3);
-      return mk(`${s} ${v} him to ${b} ${t}.`, `${s} ${v} that he ${b} ${t}.`,
+      return mk(`${s} ${vv} him to ${b} ${t}.`, `${s} ${vv} that he ${b} ${t}.`,
         `"${v}" takes a that-clause, not an object plus infinitive.`);
     });
   }
   if (d === 'medium') {
     return pool40((i) => {
-      const s = pick(['I', 'We', 'They', 'The committee', 'The board',
-        'The teacher', 'The manager', 'The council'], i * 3 + 1);
+      const [s] = pick(CLAUSE_SUBJ, i * 3 + 1);
       const v = pick(CLAUSE_VERBS_PAST, i * 7 + 2);
       const [b] = pick(VERBS, i * 5 + 3);
       const t = pick(PLACES, i);
@@ -789,8 +797,7 @@ function verbClause(d) {
     });
   }
   return pool40((i) => {
-    const s = pick(['I', 'We', 'They', 'The committee', 'The board',
-      'The teacher', 'The manager', 'The council'], i * 5 + 1);
+    const [s] = pick(CLAUSE_SUBJ, i * 5 + 1);
     const v = pick(CLAUSE_VERBS_PAST, i * 3 + 2);
     const [b] = pick(VERBS, i * 7 + 1);
     const t = pick(TAILS_COMPLEX, i);

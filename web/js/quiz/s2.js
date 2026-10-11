@@ -7,6 +7,10 @@ import {
 const BARE_SG = NOUNS.map(([s]) => s);
 const BARE_PL = NOUNS.map(([, p]) => p);
 
+const INTRANS = new Set(['arrive', 'go', 'come', 'live', 'smile', 'hope',
+  'decide', 'sleep', 'run', 'jump', 'dance', 'swim', 'fly', 'stand', 'sit']);
+const TRANS = VERBS.filter(([b]) => !INTRANS.has(b));
+
 const OBJ3 = ['the letter', 'the car', 'the door', 'the garden', 'the report',
   'the homework', 'the dishes', 'the song', 'the piano', 'the picture'];
 
@@ -35,7 +39,7 @@ function svSimple(d) {
       const s = pick(SG_SUBJ, i);
       const [b, sg] = pick(VERBS, i * 3 + 1);
       const o = pick(OBJ3, i * 7 + 2);
-      return mk(`${s} ${b} ${o} every day.`, `${s} ${sg} ${o} every day.`,
+      return mk(cap(`${s} ${b} ${o} every day.`), cap(`${s} ${sg} ${o} every day.`),
         `A singular subject takes "${sg}", not "${b}".`);
     });
   }
@@ -45,7 +49,7 @@ function svSimple(d) {
       const [b, sg] = pick(VERBS, i * 5 + 2);
       const o = pick(OBJ3, i * 3 + 1);
       const adv = pick(ADV, i);
-      return mk(`${s} ${sg} ${o} ${adv}.`, `${s} ${b} ${o} ${adv}.`,
+      return mk(cap(`${s} ${sg} ${o} ${adv}.`), cap(`${s} ${b} ${o} ${adv}.`),
         `The plural subject "${s}" takes "${b}", not "${sg}".`);
     });
   }
@@ -54,7 +58,7 @@ function svSimple(d) {
     const [b, sg] = pick(VERBS, i * 7 + 3);
     const o = pick(OBJ3, i * 5 + 1);
     const t = pick(TAILS_COMPLEX, i);
-    return mk(`${s} ${b} ${o} ${t}.`, `${s} ${sg} ${o} ${t}.`,
+    return mk(cap(`${s} ${b} ${o} ${t}.`), cap(`${s} ${sg} ${o} ${t}.`),
       `Even in this longer sentence the subject "${s}" takes "${sg}".`);
   });
 }
@@ -66,7 +70,7 @@ function svIntervening(d) {
       const s = pick(SG_SUBJ, i);
       const inter = pick(INTER_PL, i * 3 + 1);
       const [b, sg] = pick(VERBS, i * 7 + 2);
-      return mk(`${s} ${inter} ${b} home.`, `${s} ${inter} ${sg} home.`,
+      return mk(cap(`${s} ${inter} ${b} home.`), cap(`${s} ${inter} ${sg} home.`),
         `The verb agrees with "${s}", not with the plural noun in "${inter}".`);
     });
   }
@@ -75,7 +79,7 @@ function svIntervening(d) {
       const s = pick(PL_SUBJ, i);
       const inter = pick(INTER_SG, i * 3 + 1);
       const [b, sg] = pick(VERBS, i * 7 + 2);
-      return mk(`${s} ${inter} ${sg} home.`, `${s} ${inter} ${b} home.`,
+      return mk(cap(`${s} ${inter} ${sg} home.`), cap(`${s} ${inter} ${b} home.`),
         `The head noun "${s}" is plural, so use "${b}" despite "${inter}".`);
     });
   }
@@ -84,7 +88,7 @@ function svIntervening(d) {
     const inter = pick(INTER_PL, i * 3 + 1);
     const [b, sg] = pick(VERBS, i * 5 + 2);
     const t = pick(TAILS_COMPLEX, i);
-    return mk(`${s} ${inter} ${b} home ${t}.`, `${s} ${inter} ${sg} home ${t}.`,
+    return mk(cap(`${s} ${inter} ${b} home ${t}.`), cap(`${s} ${inter} ${sg} home ${t}.`),
       `Only the head noun "${s}" controls the verb, so use "${sg}".`);
   });
 }
@@ -200,7 +204,7 @@ function inversion(d) {
   if (d === 'medium') {
     return pool40((i) => {
       const p = pick(PL_SUBJ, i);
-      const [b] = pick(VERBS, i * 7 + 1);
+      const [b] = pick(TRANS, i * 7 + 1);
       const o = pick(OBJ3, i * 3 + 2);
       return mk(`Does ${p} ${b} ${o}?`, `Do ${p} ${b} ${o}?`,
         `With the plural subject "${p}" the question uses "Do".`);
@@ -401,6 +405,8 @@ function quantifierNoun(d) {
 const ANTECEDENT_PL = ['The girls', 'The boys', 'The students', 'The teachers', 'My friends',
   'The children', 'The workers', 'The players', 'The doctors', 'The drivers', 'The women', 'The men'];
 const POSS_THINGS = ['bag', 'coat', 'book', 'car', 'house', 'ticket', 'umbrella', 'phone', 'laptop', 'jacket'];
+const BARE_OBJ = ['message', 'letter', 'report', 'picture', 'story', 'project', 'plan', 'essay',
+  'novel', 'parcel', 'puzzle', 'basket', 'test', 'list', 'cake'];
 const SG_ANT = [
   ['The boy', 'his'], ['The girl', 'her'], ['The man', 'his'], ['The woman', 'her'],
   ['My father', 'his'], ['My mother', 'her'], ['The actor', 'his'], ['The actress', 'her'],
@@ -431,7 +437,7 @@ function pronouns(d) {
   return pool40((i) => {
     const [a, poss] = pick(SG_ANT, i);
     const adv = pick(ADV, i);
-    const obj = pick(OBJECTS, i * 3 + 1);
+    const obj = pick(BARE_OBJ, i * 3 + 1);
     const t = pick(TAILS_COMPLEX, i * 7 + 2);
     return mk(`${cap(t)}, ${a} ${adv} blamed their ${obj}.`, `${cap(t)}, ${a} ${adv} blamed ${poss} ${obj}.`,
       `The antecedent "${a}" controls the pronoun, which must be "${poss}".`);
@@ -489,8 +495,8 @@ function reflexives(d) {
   if (d === 'easy') {
     return pool40((i) => {
       const [s, refl, wrong] = pick(REFL, i);
-      const [b] = pick(VERBS, i * 3 + 1);
-      return mk(`${s} ${b} ${wrong} in the mirror.`, `${s} ${b} ${refl} in the mirror.`,
+      const [, sg] = pick(VERBS, i * 3 + 1);
+      return mk(`${s} ${sg} ${wrong} in the mirror.`, `${s} ${sg} ${refl} in the mirror.`,
         `The singular subject "${s}" takes the reflexive "${refl}".`);
     });
   }

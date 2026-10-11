@@ -68,9 +68,32 @@ DET_NUMREQ = {
     'these': 'pl', 'those': 'pl', 'both': 'pl', 'many': 'pl', 'several': 'pl',
 }
 MODALS = {'will', 'would', 'shall', 'should', 'can', 'could', 'may', 'might', 'must'}
+# After 'a', these quantifier adjectives pass the article's number to a later
+# head: "a few boxes", "a dozen eggs", "a couple of chairs".
+QUANT_AFTER_A = {'few', 'little', 'dozen', 'couple', 'lot', 'number', 'good',
+                 'great'}
 BE_FORM = {'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being'}
 HAVE_FORM = {'have', 'has', 'had', 'having'}
 DO_FORM = {'do', 'does', 'did', 'doing', 'done'}
+
+# The tokenizer splits contractions into clitic tokens ("I'm tired" -> "'m").
+# Map each back to the auxiliary class it belongs to so copular / perfect /
+# modal checks treat them like the full forms.
+def _clitic_core(surface):
+    s = surface.replace('\u2019', "'").lower()
+    if s == "'m":
+        return 'be'
+    if s in {"'re", "'s"}:
+        # "'s" is '"is" (bare is also "has", e.g. "he's gone")
+        return 'be'
+    if s == "'ve":
+        return 'have'
+    if s == "'ll" or s == "'d":
+        return 'modal'
+    return None
+
+
+CLITIC_SURFACES = {"'m", "'re", "'s", "'ve", "'ll", "'d"}
 
 # Possessive determiners that can never head an NP (unlike the standalone
 # possessive pronouns 'mine/yours/ours/theirs/hers/his').
@@ -81,10 +104,23 @@ POSS_DET_PLAIN = {'my', 'your', 'our', 'their', 'its'}
 # Determinatives that double as standalone (anaphoric) pronoun heads of an NP:
 # "This is good.", "These are mine.", "Each is important."
 DEMONSTRATIVE_STANDALONE = {'this', 'that', 'these', 'those',
-                            'each', 'some', 'one', 'all', 'several', 'any'}
+                            'each', 'some', 'one', 'all', 'several', 'any',
+                            'either', 'neither', 'another', 'many',
+                            'much', 'more', 'most', 'less', 'few', 'little',
+                            'both', 'half', 'enough', 'plenty'}
 
 PRON_SUBJ_PLAIN = {'i', 'we', 'he', 'she', 'they'}
 PRON_OBJ_PLAIN = {'me', 'us', 'him', 'her', 'them'}
+
+# Adjectives that legitimately follow a verb / copula without an -ly form
+# (fixed predicate adjectives and idiomatic flat adverbs): 'was closed',
+# 'went wrong', 'next to X', 'came late', 'is open/out'.
+PRED_ADJ_EXEMPT = {'next', 'out', 'open', 'wrong', 'late', 'closed', 'lit',
+                   'well', 'ill', 'alone', 'alive', 'awake', 'asleep',
+                   'afraid', 'ready', 'sure', 'gone', 'far', 'full'}
+
+# Possessive pronouns that the parser may tag as singular nouns.
+POSS_PRON_SURFACES = {'mine', 'yours', 'hers', 'ours', 'theirs'}
 
 # Words spelled with a leading vowel letter that nevertheless take 'a'
 # (consonant /j/, /w/ sound): a university, a union, a one-time ...
@@ -138,13 +174,29 @@ NONCOUNT_NOUNS = {
     'truth', 'honesty', 'education', 'health', 'happiness', 'freedom',
     'justice', 'love', 'hate', 'nature', 'history', 'grammar', 'art',
     'music', 'sports', 'mathematics', 'math', 'science', 'physics',
-    'society', 'democracy', 'defense',     'food', 'fun', 'bread', 'butter', 'cheese', 'eggs', 'meat', 'fish',
+    'society', 'democracy', 'defense', 'peace', 'morale', 'spirit',
+    'stationery', 'accommodation', 'equality', 'patience', 'courage',
+    'anger', 'happiness',
+    'food', 'fun', 'bread', 'butter', 'cheese', 'eggs', 'meat', 'fish',
     'chicken', 'beef', 'pork', 'rice', 'noodles', 'pasta', 'soup',
     'cake', 'candy', 'chocolate', 'ice cream', 'sushi', 'pizza',
     # sports/activities
     'soccer', 'football', 'basketball', 'tennis', 'baseball', 'hockey',
     'volleyball', 'golf', 'rugby', 'swimming', 'running', 'jogging',
     'cycling', 'skiing', 'football', 'cricket', 'badminton', 'music',
+    'chess', 'geography', 'chemistry', 'biology', 'ecology', 'economics',
+    'politics', 'statistics', 'linguistics', 'gymnastics', 'athletics',
+    'fashion', 'literature', 'philosophy', 'psychology',
+    # workplace / abstract mass nouns flagged by the corpus
+    'progress', 'help', 'cooperation', 'assistance', 'support', 'staff',
+    'paperwork', 'feedback', 'homework', 'housework', 'workload',
+    # materials often used with bare singular determiners
+    'flour', 'soap', 'shampoo', 'vinegar', 'beer', 'whiskey',
+    'concrete', 'cement', 'brick',
+    # gerundial / activity nominals
+    'jumping', 'think', 'calling', 'teaching', 'crying', 'laughing',
+    'singing', 'talking', 'running', 'swim', 'reading', 'writing',
+    'smoking',
 }
 BARE_ARG_NOUNS = {
     'home', 'school', 'work', 'bed', 'church', 'town', 'court', 'class',
@@ -481,7 +533,7 @@ IRREGULAR_VBN = {
     'stand': 'stood', 'steal': 'stolen', 'swim': 'swum', 'take': 'taken',
     'teach': 'taught', 'tell': 'told', 'think': 'thought', 'throw': 'thrown',
     'understand': 'understood', 'wear': 'worn', 'win': 'won', 'write': 'written',
-    'become': 'become', 'wake': 'woken', 'awake': 'awoken',
+    'become': 'become', 'wake': 'woken', 'awake': 'awoken', 'light': 'lit',
 }
 
 IRREGULAR_PAST = {
@@ -597,6 +649,7 @@ def _plural_noun(word):
     w = word.lower()
     if w in IRREGULAR_PLURAL:
         return IRREGULAR_PLURAL[w]
+        return IRREGULAR_PLURAL[w]
     for singular_suffix, plural_suffix in LATIN_PLURAL_SUFFIXES:
         if w.endswith(singular_suffix) and len(w) > len(singular_suffix):
             return w[:-len(singular_suffix)] + plural_suffix
@@ -646,6 +699,18 @@ def _singular_noun(leaf):
     return word
 
 
+# Learner-irregular but correct plural forms that generic inflectors cannot be
+# trusted to recognise (crises, appendices, nuclei, ...). They must never be
+# reported as "not a normal plural".
+ACCEPTED_PLURALS = {
+    'crises', 'theses', 'analyses', 'bases', 'diagnoses', 'synopses',
+    'parentheses', 'hypotheses', 'oases', 'axes', 'indices', 'appendices',
+    'matrices', 'vertices', 'formulae', 'larvae', 'radii', 'cacti', 'fungi',
+    'nuclei', 'stimuli', 'alumni', 'curricula', 'errata', 'addenda', 'bacteria',
+    'criteria', 'phenomena', 'media', 'data', 'centa', 'genera', 'viscera',
+}
+
+
 def _noun_form_issue(leaf):
     """Return (singular, expected_plural) for a malformed plural, else None.
 
@@ -657,6 +722,8 @@ def _noun_form_issue(leaf):
     if leaf['type'] not in NOUN_PLURAL | NOUN_SINGULAR:
         return None
     observed = _lower(leaf['surface'])
+    if observed in ACCEPTED_PLURALS or observed in POSS_PRON_SURFACES:
+        return None
     singular = _singular_noun(leaf)
     if not singular or singular == observed or singular is False:
         return None
@@ -745,6 +812,9 @@ def _is_valid_verb_form(leaf):
             for base in IRREGULAR_PAST
         }
     if pos == 'VBN':
+        if word == 'got':
+            # British-English 'have got' uses 'got' as the past participle.
+            return True
         if word in IRREGULAR_PAST.values() and word not in IRREGULAR_VBN.values():
             return False
         return word not in {
@@ -919,6 +989,49 @@ def verb_key(leaf):
     return None
 
 
+MANDATIVE_VERBS = {
+    'insist', 'insists', 'insisted', 'demand', 'demands', 'demanded',
+    'suggest', 'suggests', 'suggested', 'require', 'requires', 'required',
+    'recommend', 'recommends', 'recommended', 'propose', 'proposes',
+    'proposed', 'request', 'requests', 'requested', 'ask', 'asks', 'asked',
+    'order', 'orders', 'ordered', 'command', 'commands', 'commanded',
+    'urge', 'urges', 'urged', 'mandate', 'mandates', 'mandated', 'stipulate',
+    'stipulates', 'stipulated', 'prefer', 'prefers', 'preferred', 'desire',
+    'desires', 'desired', 'important', 'essential', 'necessary', 'vital',
+    'imperative', 'crucial',
+    'maintain', 'maintains', 'maintained', 'argue', 'argues', 'argued',
+    'contend', 'contends', 'contended', 'assert', 'asserts', 'asserted',
+}
+
+
+SMALLCLAUSE_LICENSORS = {
+    'make', 'makes', 'made', 'let', 'lets', 'have', 'has', 'had', 'help',
+    'helps', 'helped', 'see', 'saw', 'seen', 'hear', 'heard', 'watch',
+    'watched', 'feel', 'felt', 'notice', 'noticed', 'observe', 'observed',
+}
+
+
+def _gov_verb(grandparent, sbar_gov):
+    """Surface form of the verb governing a complement clause, if identifiable."""
+    if not grandparent:
+        return ''
+    gov = sbar_gov.get(grandparent.get('id'))
+    if gov:
+        return gov
+    if grandparent.get('type') == 'VP':
+        head = phrase_head(grandparent)
+        if head is not None:
+            return _lower(head.get('surface', ''))
+    return ''
+
+
+def _gov_licenses_base(grandparent, sbar_gov):
+    """True when the clause's governing verb licenses a bare base form, so the
+    base verb must not be treated as a finite agreement target."""
+    gov = _gov_verb(grandparent, sbar_gov)
+    return gov in MANDATIVE_VERBS or gov in SMALLCLAUSE_LICENSORS
+
+
 def agree(subject_leaf, verb_leaf):
     """True iff the subject leaf and (finite) verb leaf agree. Deterministic."""
     vk = verb_key(verb_leaf)
@@ -994,6 +1107,8 @@ def _needs_indefinite_article_error(np_node, parent_vp=None):
         return None
     base = _base_form(head)
     surface = _lower(head['surface'])
+    if surface in POSS_PRON_SURFACES:
+        return None
     if base in NONCOUNT_NOUNS or base in BARE_ARG_NOUNS \
             or surface in NONCOUNT_NOUNS or surface in BARE_ARG_NOUNS:
         return None
@@ -1141,8 +1256,26 @@ class MatrixEvaluator:
 
     def evaluate(self, root, text=None):
         self.details = {}
+        self._text = text or root.get('surface', '')
+        # Map each complement SBAR to the verb governing it, so a subjunctive
+        # base form can be recognised only when the *governing* verb is
+        # mandative (not an unrelated word elsewhere in the sentence).
+        self._sbar_gov = {}
+
+        def _scan(node):
+            if node.get('type') == 'VP':
+                head = phrase_head(node)
+                gv = _lower(head.get('surface', '')) if head else ''
+                for c in node.get('children', []):
+                    if c.get('type') == 'SBAR':
+                        self._sbar_gov[c['id']] = gv
+            for c in node.get('children', []):
+                _scan(c)
+
+        _scan(root)
         self.checker_errors = []
         self.lex_stats = {}
+        self._quoted_ids = self._quote_leaf_ids(root)
         self._walk(root)
         self._root_level(root)
         self._merge_findings(root, text)
@@ -1224,11 +1357,30 @@ class MatrixEvaluator:
                 self.details[child['id']] = self._edge(node, child, grandparent)
                 self._walk(child, node)
 
+    def _quote_leaf_ids(self, node):
+        """Id of every leaf falling between a pair of straight double quotes."""
+        ids = set()
+        inside = False
+        for lf in _leaves_list(node):
+            if lf.get('surface') == '"':
+                inside = not inside
+                continue
+            if inside:
+                ids.add(lf['id'])
+        return ids
+
     def _edge(self, parent, child, grandparent=None):
         if child.get('punct'):
             self._detail(child, parent, 'terminal punctuation', 'C-PUNCT', 'valid',
                          'Terminal punctuation; not subject to grammatical constraints.')
             return self.details[child['id']]
+        leaves = _leaves_list(child)
+        if leaves:
+            if all(lf['id'] in self._quoted_ids for lf in leaves):
+                self._detail(child, parent, 'quoted text', 'C-QUOTE', 'valid',
+                             'Quoted material is quoted verbatim and is not subject '
+                             'to the surrounding sentence\'s grammatical constraints.')
+                return self.details[child['id']]
         verdict = self._classify(parent, child, grandparent)
         self._detail(child, parent, self._role_for(verdict[1]),
                      verdict[1], verdict[0], verdict[2])
@@ -1305,6 +1457,10 @@ class MatrixEvaluator:
                         "phrase, which is fine.")
         if pt == 'ADVP':
             if ct in ADJ_CLASS:
+                if _lower(child.get('surface', '')) in PRED_ADJ_EXEMPT:
+                    return ('valid', 'C-ADJ-FIXED',
+                            f"'{child['surface']}' is a fixed predicative adjective "
+                            'here, which is fine.')
                 return ('error', 'C-ADJ-ADV',
                         f"'{child['surface']}' is an adjective, but an adverb is needed here. "
                         f"Change '{child['surface']}' to "
@@ -1378,19 +1534,27 @@ class MatrixEvaluator:
                 return ('valid', 'C-INFINITIVAL-COMPLEMENT',
                         f"The verb phrase '{child['surface']}' is an infinitival complement "
                         "('to' + verb), so no tensed form is needed here; that's fine.")
-            if subj is None:
-                return ('valid', 'C-PREDICATE',
-                        f"The verb phrase '{child['surface']}' works as an imperative or "
-                        'subjectless clause, so a tensed form is not needed; that\'s fine.')
-            if grandparent is not None and grandparent['type'] in {
-                    'VP', 'SBAR', 'PP', 'S', 'SINV', 'SQ', 'SBARQ', 'NP'}:
-                return ('valid', 'C-SMALL-CLAUSE',
-                        f"The verb phrase '{child['surface']}' is an embedded clause whose "
-                        'main verb supplies the tense; that\'s fine.')
-            return ('error', 'C-TENSE-FINITE',
-                    f"The main verb '{vp_head['surface']}' is "
-                    f"{VERB_FORM_LABEL.get(vp_head['type'], 'not a tensed form')}; "
-                    'a main clause needs a tensed verb form (like present or past).')
+            # A bare base-form verb with an overt subject in a finite subordinate
+            # clause ("... that the boy walk to school") still has to agree with
+            # its subject.  Only skip this when the clause is subjunctive or
+            # otherwise licensed by a mandative verb ("... that he be on time").
+            base_with_subject = (
+                vp_head['type'] == 'VB' and subj is not None
+                and not _gov_licenses_base(grandparent, self._sbar_gov))
+            if not base_with_subject:
+                if subj is None:
+                    return ('valid', 'C-PREDICATE',
+                            f"The verb phrase '{child['surface']}' works as an imperative or "
+                            'subjectless clause, so a tensed form is not needed; that\'s fine.')
+                if grandparent is not None and grandparent['type'] in {
+                        'VP', 'SBAR', 'PP', 'S', 'SINV', 'SQ', 'SBARQ', 'NP'}:
+                    return ('valid', 'C-SMALL-CLAUSE',
+                            f"The verb phrase '{child['surface']}' is an embedded clause whose "
+                            'main verb supplies the tense; that\'s fine.')
+                return ('error', 'C-TENSE-FINITE',
+                        f"The main verb '{vp_head['surface']}' is "
+                        f"{VERB_FORM_LABEL.get(vp_head['type'], 'not a tensed form')}; "
+                        'a main clause needs a tensed verb form (like present or past).')
         if subj is None:
             return ('valid', 'C-PREDICATE',
                     f"'{child['surface']}' is the predicate of the clause, which is fine "
@@ -1408,11 +1572,18 @@ class MatrixEvaluator:
         coordinated = is_coordinated(subj)
         skey = ('3', 'pl') if coordinated else subject_key(subj_head)
         vkey = verb_key(vp_head)
+        if vp_head['type'] == 'VB' and subj is not None \
+                and not _gov_licenses_base(grandparent, self._sbar_gov):
+            # base form after an overt subject = present, non-3rd-person
+            # (finite) rather than a non-finite small clause.
+            vkey = ('*', 'non3sg')
         subj_label = '3rd person plural' if coordinated else self._subj_label(subj_head)
         # Handle correlative 'either...or' / 'neither...nor' - agreement with nearest (rightmost) conjunct
         subleaves = _leaves_list(subj)
         correlative = coordinated and any((_lower(l.get('surface','')) if hasattr(l,'get') or isinstance(l,dict) else _lower(str(l))) in ('or','nor') for l in subleaves)
-        if correlative:
+        correlative_b = coordinated and any((_lower(l.get('surface','')) if hasattr(l,'get') or isinstance(l,dict) else _lower(str(l))) in ('not',) for l in subleaves) \
+            and any((_lower(l.get('surface','')) if hasattr(l,'get') or isinstance(l,dict) else _lower(str(l))) == 'but' for l in subleaves)
+        if correlative or correlative_b:
             # find nearest nominal before verb - look for last PRP/NN in subject
             last_nom = None
             for lf in reversed(subleaves):
@@ -1550,6 +1721,11 @@ class MatrixEvaluator:
         if ct in DET_CLASS or ct == 'PRP$' or _lower(child.get('surface', '')) in POSS_DET_PLAIN:
             determinatives = _np_determinatives(parent)
             if len(determinatives) > 1:
+                if any((lf.get('surface') or '').strip() == '-'
+                       for lf in _leaves_list(parent)):
+                    return ('valid', 'C-DETERMINER',
+                            f"'{child['surface']}' is part of a hyphenated compound in "
+                            f"the phrase '{parent['surface']}', not a second determiner.")
                 return ('error', 'C-DET-STACK',
                         f"'{child['surface']}' is a second determiner in the phrase "
                         f"'{parent['surface']}'; only one determiner is allowed. Remove "
@@ -1646,10 +1822,20 @@ class MatrixEvaluator:
         num = num_of(head) if head is not None else None
         child_num = f"'{head['surface']}'" if head else 'the head noun'
         if numreq is not None and num is not None and numreq in ('sg', 'pl') and numreq != num:
-            return ('error', 'C-DETERMINER-AGREEMENT',
-                    f"'{child['surface']}' goes with {'singular' if numreq == 'sg' else 'plural'} "
-                    f"nouns, but '{head['surface']}' is {num}. Change one of them so they "
-                    'match.')
+            # "a few boxes", "a dozen eggs", "a little rice" are grammatical:
+            # from a + quantifier adjective the head noun's number is not bound by
+            # the article.
+            leaves = _leaves_list(parent)
+            idx = next((i for i, lf in enumerate(leaves) if lf['id'] == child['id']), None)
+            after = _lower(leaves[idx + 1]['surface']) if \
+                (idx is not None and idx + 1 < len(leaves)) else ''
+            if det in ('a', 'an') and after in QUANT_AFTER_A:
+                numreq = None
+            else:
+                return ('error', 'C-DETERMINER-AGREEMENT',
+                        f"'{child['surface']}' goes with {'singular' if numreq == 'sg' else 'plural'} "
+                        f"nouns, but '{head['surface']}' is {num}. Change one of them so they "
+                        'match.')
         if det in ('a', 'an'):
             leaves = _leaves_list(parent)
             idx = next((i for i, lf in enumerate(leaves) if lf['id'] == child['id']), None)
@@ -1750,7 +1936,14 @@ class MatrixEvaluator:
         plain action verb (not linking/copular) and there is no object NP that the
         adjective could be complementing."""
         head = phrase_head(vp_node)
-        if head is None or _lower(head['surface']) in LINKING_VERB_FORMS:
+        if head is None:
+            return False
+        if _lower(head['surface']) in LINKING_VERB_FORMS:
+            return False
+        if _clitic_core(head['surface']) == 'be':
+            return False
+        adj_leaves = _leaves_list(adjp_child)
+        if any(_lower(lf['surface']) in PRED_ADJ_EXEMPT for lf in adj_leaves):
             return False
         earlier = [c for c in vp_node['children']
                    if c['id'] != adjp_child['id']
@@ -1797,15 +1990,17 @@ class MatrixEvaluator:
     @staticmethod
     def _aux_class(child):
         return child['type'] in {'MD', 'AUX'} or \
-            _lower(child.get('surface', '')) in (MODALS | BE_FORM | HAVE_FORM | DO_FORM)
+            _lower(child.get('surface', '')) in (MODALS | BE_FORM | HAVE_FORM | DO_FORM) \
+            or _clitic_core(child.get('surface', '')) is not None
 
     def _aux_check(self, parent, child):
         surface = _lower(child['surface'])
-        if child['type'] in {'MD', 'AUX'} or surface in MODALS:
+        clitic = _clitic_core(child['surface'])
+        if child['type'] in {'MD', 'AUX'} or surface in MODALS or clitic == 'modal':
             cls = 'modal'
-        elif surface in BE_FORM:
+        elif surface in BE_FORM or clitic == 'be':
             cls = 'be'
-        elif surface in HAVE_FORM:
+        elif surface in HAVE_FORM or clitic == 'have':
             cls = 'have'
         elif surface in DO_FORM:
             cls = 'do'
@@ -1814,6 +2009,9 @@ class MatrixEvaluator:
         verb_node = self._following_verb(parent, child)
         if verb_node is None:
             return self._verb_head(parent, child)
+        if cls == 'have' and _lower(verb_node.get('surface', '')) == 'got':
+            return ('valid', 'C-AUX-COMPLEMENT',
+                    "'have got' is a fixed way of saying 'possess'; no error here.")
         if not _is_valid_verb_form(verb_node):
             expected = 'the past participle' if cls == 'have' else 'a valid participle'
             low = _lower(verb_node.get('surface', ''))

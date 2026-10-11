@@ -214,17 +214,12 @@ function goSetup(ruleId) {
   if (info) intro.appendChild(el('span', 'sq-bad', info.example || ''));
   body.appendChild(intro);
 
-  const note = el('p', 'sq-soon-text',
-    `Each quiz draws 5 of 40 incorrect sentences for the level you pick. Repair each one in the text box, then press Submit.`);
-  body.appendChild(note);
-
   body.appendChild(el('div', 'sq-label', 'Difficulty'));
   const grid = el('div', 'sq-diff-grid');
   Object.entries(DIFFICULTY).forEach(([key, d]) => {
     const btn = el('button', `sq-diff ${state.difficulty === key ? 'selected' : ''}`);
     btn.type = 'button';
     btn.appendChild(el('span', 'sq-diff-label', d.label));
-    btn.appendChild(el('span', 'sq-diff-count', `${d.count} of ${d.total} sentences`));
     btn.addEventListener('click', () => {
       state.difficulty = key;
       grid.querySelectorAll('.sq-diff').forEach((b) => b.classList.remove('selected'));
@@ -501,7 +496,7 @@ function showFeedbackBox() {
   return $('#explainNode');
 }
 
-function renderSuccess() {
+function renderSuccess(q, payload) {
   const box = showFeedbackBox();
   if (!box) return;
   box.innerHTML = '';
@@ -511,7 +506,23 @@ function renderSuccess() {
   head.appendChild(el('span', 'nc-name', 'Correct'));
   card.appendChild(head);
   card.appendChild(el('p', 'ex-text',
-    'Nice work \u2014 your sentence is now well-formed. The tree below shows the corrected structure.'));
+    'Nice work \u2014 your sentence is well-formed. The tree below shows the corrected structure.'));
+
+  const rem = el('div', 'nc-rem');
+  if (q && q.good) {
+    rem.appendChild(el('div', 'nc-label', 'Corrected sentence'));
+    rem.appendChild(el('p', 'ex-text nc-fix', q.good));
+  }
+  if (q && q.explanation) {
+    rem.appendChild(el('div', 'nc-label', 'Why this is correct'));
+    rem.appendChild(el('p', 'ex-text', q.explanation));
+  }
+  const verdictText = payload && payload.summary && payload.summary.explanation;
+  if (verdictText) {
+    rem.appendChild(el('div', 'nc-label', 'Syntax tree check'));
+    rem.appendChild(el('p', 'ex-text', verdictText));
+  }
+  card.appendChild(rem);
   box.appendChild(card);
 }
 
@@ -543,7 +554,7 @@ function renderFallbackWrong(q) {
 }
 
 function applyFeedback(q, correct, payload) {
-  if (correct) { renderSuccess(); return; }
+  if (correct) { renderSuccess(q, payload); return; }
   const err = firstError(payload);
   if (err && err.detail) {
     renderNodeDetail(null, err.detail, err.node);

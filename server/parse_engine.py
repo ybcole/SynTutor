@@ -139,7 +139,12 @@ class NodeBuilder:
             }
             self.nodes[node_id] = node
             return node
-        children = [self._build_node(p) for p in payload]
+        children = [self._build_node(p) for p in payload if self._nonempty(p)]
+        if not children:
+            # A benepar subtree could come back with an empty payload; drop it
+            # rather than crash while spanning children[0].
+            self.nodes.pop(node_id, None)
+            return None
         start = children[0]['span'][0]
         end = children[-1]['span'][1]
         surface = ' '.join(w for c in children for w in [self._leaf_text(c)])
@@ -152,6 +157,12 @@ class NodeBuilder:
         }
         self.nodes[node_id] = node
         return node
+
+    @staticmethod
+    def _nonempty(payload):
+        if isinstance(payload, str):
+            return bool(payload)
+        return bool(payload)
 
     @staticmethod
     def _leaf_text(node):

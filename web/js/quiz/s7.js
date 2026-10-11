@@ -98,8 +98,8 @@ function adjectiveOrder(d) {
       const a = pick(CAT[c1], i * 3 + 1);
       const b = pick(CAT[c2], i * 5 + 2);
       const n = pick(ADJ_NOUNS, i * 7 + 3);
-      return mk(`${art(b)} ${b} ${a} ${n} stood in the corner.`,
-        `${art(a)} ${a} ${b} ${n} stood in the corner.`,
+      return mk(cap(`${art(b)} ${b} ${a} ${n} stood in the corner.`),
+        cap(`${art(a)} ${a} ${b} ${n} stood in the corner.`),
         `${c1} adjectives (${a}) come before ${c2} adjectives (${b}).`);
     });
   }
@@ -110,8 +110,8 @@ function adjectiveOrder(d) {
       const b = pick(CAT[c2], i * 5 + 2);
       const c = pick(CAT[c3], i * 7 + 3);
       const n = pick(ADJ_NOUNS, i * 3 + 4);
-      return mk(`${art(c)} ${c} ${a} ${b} ${n} caught my eye.`,
-        `${art(a)} ${a} ${b} ${c} ${n} caught my eye.`,
+      return mk(cap(`${art(c)} ${c} ${a} ${b} ${n} caught my eye.`),
+        cap(`${art(a)} ${a} ${b} ${c} ${n} caught my eye.`),
         `Adjective order is ${c1} \u2192 ${c2} \u2192 ${c3}: "${a} ${b} ${c} ${n}".`);
     });
   }
@@ -194,13 +194,13 @@ function participial(d) {
     return pool40((i) => {
       const [ed, ing] = pick(PA, i * 3 + 1);
       const [s, be] = pick(PEOPLE, i * 5 + 2);
-      return mk(`${s} ${be} ${ing}.`, `${s} ${be} ${ed}.`,
+      return mk(cap(`${s} ${be} ${ing}.`), cap(`${s} ${be} ${ed}.`),
         `A person who feels the effect uses the -ed form "${ed}", not "${ing}".`);
     });
   }
   if (d === 'medium') {
-    return cartesian([THINGS, PA], ([t, be], [ed, ing]) => mk(`${t} ${be} ${ed}.`,
-      `${t} ${be} ${ing}.`,
+    return cartesian([THINGS, PA], ([t, be], [ed, ing]) => mk(cap(`${t} ${be} ${ed}.`),
+      cap(`${t} ${be} ${ing}.`),
       `A thing that causes the feeling uses the -ing form "${ing}", not "${ed}".`));
   }
   return pool40((i) => {
@@ -208,12 +208,12 @@ function participial(d) {
     if (i % 2 === 0) {
       const [s, be] = pick(PEOPLE, i * 3 + 2);
       const wc = pick(WHO_CLAUSE, i * 5 + 3);
-      return mk(`${s} who ${wc} ${be} ${ing}.`, `${s} who ${wc} ${be} ${ed}.`,
+      return mk(cap(`${s} who ${wc} ${be} ${ing}.`), cap(`${s} who ${wc} ${be} ${ed}.`),
         `The people described are affected, so use the -ed form "${ed}".`);
     }
     const [t, be] = pick(THINGS, i * 3 + 4);
     const tc = pick(THAT_CLAUSE, i * 5 + 5);
-    return mk(`${t} that ${tc} ${be} ${ed}.`, `${t} that ${tc} ${be} ${ing}.`,
+    return mk(cap(`${t} that ${tc} ${be} ${ed}.`), cap(`${t} that ${tc} ${be} ${ing}.`),
       `The thing described causes the feeling, so use the -ing form "${ing}".`);
   });
 }

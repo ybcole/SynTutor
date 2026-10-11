@@ -159,6 +159,13 @@ def _candidate_stems(low, tag):
     return out
 
 
+# Standard irregular past participles that lemminflect omits from the VBN
+# paradigm of their lemma, so the participle-slot check would misreport them.
+EXTRA_PARTICIPLES = {'lit', 'lighted', 'hidden', 'hung', 'shown', 'spelt',
+                     'dreamt', 'learnt', 'burnt', 'woken', 'broadcast',
+                     'burst', 'slit', 'widened'}
+
+
 def _classify_leaf(low, tag, upos):
     """Return (status, info).
 
@@ -288,6 +295,11 @@ def check_lexicon(leaves, skip_ids=frozenset()):
             # 'had went', 'was ate'.  The aux makes the slot unambiguous.
             if (tag == 'VBN' and not info.get('other_pos')
                     and prev in (ruleset.BE_SURFACES | ruleset.HAVE_SURFACES)):
+                # Some standard irregular participles are missing from the
+                # lexicon ('was lit', 'was hidden'): accept them outright.
+                if surface in EXTRA_PARTICIPLES:
+                    stats['licensed'] += 1
+                    continue
                 stats['malformed'] += 1
                 raw = sorted(_forms(lem, info['upos']).get('VBN', ()))
                 regular = {lem + 'd', lem + 'ed', lem}
@@ -520,6 +532,7 @@ def collect_all(text, root):
     instead of silently discarding every other finding.
     """
     leaves = _leaves(root)
+    quoted = ruleset._quoted_indices(leaves)
     clauses = ruleset._clauses(root)
     findings, errors = [], []
 
@@ -532,7 +545,7 @@ def collect_all(text, root):
     run('ruleset.wordlists', lambda: ruleset._check_wordlists(leaves))
     run('ruleset.basic', lambda: ruleset._check_basic(root, clauses, leaves))
     run('ruleset.adjective_adverb', lambda: ruleset._check_adjective_adverb(leaves))
-    run('ruleset.tree', lambda: ruleset._check_tree(root, clauses, leaves, text))
+    run('ruleset.tree', lambda: ruleset._check_tree(root, clauses, leaves, text, quoted))
     run('ruleset.more', lambda: ruleset._check_more(root, clauses, leaves))
     run('ruleset.context', lambda: ruleset._check_context(root, clauses, leaves))
     run('licensing.relatives', lambda: check_relatives(root))
