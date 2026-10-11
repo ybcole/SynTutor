@@ -112,13 +112,13 @@ export function renderNodeDetail(_session, detail, node) {
   chipRow.appendChild(chip);
   card.appendChild(chipRow);
 
-  const ex = document.createElement('p');
-  ex.className = 'ex-text';
-  ex.textContent = detail.text;
-  card.appendChild(ex);
-
   if (detail.status === 'error' && detail.remediation) {
     card.appendChild(renderRemediation(detail.remediation));
+  } else {
+    const ex = document.createElement('p');
+    ex.className = 'ex-text';
+    ex.textContent = detail.text;
+    card.appendChild(ex);
   }
 
   box.appendChild(card);
@@ -175,7 +175,7 @@ export function renderDiagnostic(title, lines) {
   }
 }
 
-export function renderSentenceVerdict(markupLines, isError) {
+export function renderSentenceVerdict(markupLines, verdict) {
   const box = $('#sentenceVerdict');
   if (!box) return;
   box.innerHTML = '';
@@ -187,8 +187,14 @@ export function renderSentenceVerdict(markupLines, isError) {
     d.textContent = line;
     box.appendChild(d);
   }
-  box.dataset.verdict = isError ? 'error' : 'valid';
-  box.classList.toggle('is-error', Boolean(isError));
+  const state = verdict === 'ungrammatical' || verdict === 'error' || verdict === true
+    ? 'error'
+    : verdict === 'unverified'
+      ? 'unverified'
+      : 'valid';
+  box.dataset.verdict = state;
+  box.classList.toggle('is-error', state === 'error');
+  box.classList.toggle('is-unverified', state === 'unverified');
 }
 
 export function fillDevPanel(payload) {

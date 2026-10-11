@@ -16,10 +16,37 @@ verdict.
 """
 
 import inflect
+import re
+
+try:  # optional: provides exhaustive irregular verb inflection
+    from lemminflect import getInflection as _get_inflection
+except Exception:  # pragma: no cover
+    _get_inflection = None
+
+_DIRE_START = re.compile(
+    r'^(?:so\s+)?(?:write|use|change|replace|add|remove|drop|capitalize|move|'
+    r'keep|put|choose|correct|make|spell)\b', re.I)
+
+try:  # works both as ``server.matrix`` (package) and ``matrix`` (script dir)
+    from . import ruleset
+    try:
+        from . import licensing
+    except Exception:  # lemminflect missing -> degrade to rules-only
+        licensing = None
+except ImportError:  # pragma: no cover
+    import ruleset
+    try:
+        import licensing
+    except Exception:
+        licensing = None
 
 SENTENCE_CLASSES = {'S', 'SINV', 'SQ', 'SBARQ', 'FRAG', 'ROOT'}
 
 NOUN_CLASS = {'NN', 'NNS', 'NNP', 'NNPS', 'PRP', 'NML', 'NX'}
+COLLECTIVE_NOUNS = {
+    'team', 'staff', 'government', 'family', 'committee', 'group', 'audience',
+    'public', 'class', 'crew', 'jury', 'company', 'band', 'crowd',
+}
 VERB_CLASS = {'VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'MD', 'AUX'}
 ADJ_CLASS = {'JJ', 'JJR', 'JJS'}
 ADV_CLASS = {'RB', 'RBR', 'RBS'}
@@ -27,6 +54,7 @@ DET_CLASS = {'DT'}
 PREP_CLASS = {'IN', 'TO', 'POS', 'RP'}
 
 NOUN_PLURAL = {'NNS', 'NNPS'}
+NOUN_PLURAL_SET = {'police','people','children','men','women','feet','teeth','mice','data','cattle'}
 NOUN_SINGULAR = {'NN', 'NNP', 'NML', 'NX'}
 
 PRP_KEY = {
@@ -78,6 +106,18 @@ ASTRAY_FLAT_ADV = {'quick', 'slow', 'good', 'bad', 'real', 'nice', 'easy',
 LINKING_VERBS = (BE_FORM | {'seem', 'appear', 'look', 'feel', 'taste', 'sound',
                             'smell', 'become', 'remain', 'stay', 'turn', 'grow',
                             'prove', 'get'})
+# The same verbs in their inflected / written forms, so "She feels tired."
+# is not mistaken for "she feels tiredly" (the adjective-complement reading is
+# legal after every form of a linking verb).
+LINKING_VERB_FORMS = (LINKING_VERBS |
+                      {'feels', 'felt', 'feeling', 'seems', 'seemed', 'seeming',
+                       'appears', 'appeared', 'appearing', 'looks', 'looked',
+                       'looking', 'tastes', 'tasted', 'tasting', 'sounds',
+                       'sounded', 'sounding', 'smells', 'smelled', 'smelling',
+                       'becomes', 'became', 'becoming', 'remains', 'remained',
+                       'remaining', 'stays', 'stayed', 'staying', 'turns',
+                       'turned', 'turning', 'grew', 'grows', 'growing',
+                       'proves', 'proved', 'proving', 'gets', 'got', 'getting'})
 
 # Nouns that license a bare (article-less) singular argument: mass nouns,
 # gerundial/activity nominals and common institutional/abstract nouns.
@@ -88,6 +128,8 @@ NONCOUNT_NOUNS = {
     'luggage', 'baggage', 'equipment', 'news', 'knowledge', 'research',
     'traffic', 'money', 'cash', 'time', 'work', 'homework', 'housework',
     'weather', 'electricity', 'internet', 'darkness', 'sunshine',
+    'grass', 'sand', 'dirt', 'soil', 'land', 'fire', 'ice', 'steam',
+    'smoke', 'dust', 'mud', 'cotton', 'wool', 'steel', 'iron', 'plastic',
     # gerundial / activity nominals
     'reading', 'swimming', 'running', 'jogging', 'dancing', 'hiking',
     'writing', 'cooking', 'baking', 'fishing', 'hunting', 'shopping',
@@ -96,11 +138,26 @@ NONCOUNT_NOUNS = {
     'truth', 'honesty', 'education', 'health', 'happiness', 'freedom',
     'justice', 'love', 'hate', 'nature', 'history', 'grammar', 'art',
     'music', 'sports', 'mathematics', 'math', 'science', 'physics',
-    'society', 'democracy', 'defense', 'food', 'fun',
+    'society', 'democracy', 'defense',     'food', 'fun', 'bread', 'butter', 'cheese', 'eggs', 'meat', 'fish',
+    'chicken', 'beef', 'pork', 'rice', 'noodles', 'pasta', 'soup',
+    'cake', 'candy', 'chocolate', 'ice cream', 'sushi', 'pizza',
+    # sports/activities
+    'soccer', 'football', 'basketball', 'tennis', 'baseball', 'hockey',
+    'volleyball', 'golf', 'rugby', 'swimming', 'running', 'jogging',
+    'cycling', 'skiing', 'football', 'cricket', 'badminton', 'music',
 }
 BARE_ARG_NOUNS = {
     'home', 'school', 'work', 'bed', 'church', 'town', 'court', 'class',
     'college', 'breakfast', 'lunch', 'dinner', 'supper', 'brunch', 'schoolwork',
+    'tv', 'television', 'radio',  # 'watch TV' is idiomatic without an article
+}
+# Words the parser may tag as NN but which never take an article: indefinite
+# pronouns (everyone, somebody, ...) and bare temporal/deictic adverbs.
+ARTICLE_EXEMPT = {
+    'everyone', 'everybody', 'someone', 'somebody', 'anyone', 'anybody',
+    'nobody', 'nothing', 'everything', 'something', 'anything', 'none',
+    'yesterday', 'today', 'tomorrow', 'tonight', 'now', 'then', 'here',
+    'there',
 }
 
 VERB_FORM_LABEL = {
@@ -111,6 +168,7 @@ VERB_FORM_LABEL = {
 NONFINITE = {'VB', 'VBG', 'VBN'}
 
 CHECK_LABELS = {
+    'C-MLM-ANOMALY': 'Word-Form Anomaly (model-located correction)',
     'C-SUBJECT-AGREEMENT': 'Subject\u2013Verb Agreement',
     'C-PREDICATE': 'Subject\u2013Verb Agreement',
     'C-DETERMINER-AGREEMENT': 'Determiner\u2013Noun Agreement',
@@ -135,6 +193,9 @@ CHECK_LABELS = {
     'C-CLAUSE-SUBJECT': 'Clause Subject Role',
     'C-PRONOUN-CASE': 'Pronoun Case (nominative vs. objective)',
     'C-ADJ-ADV': 'Adjective\u2013Adverb Confusion',
+    'C-ADJ-ORDER': 'Adjective Order',
+    'C-COMPARATIVE-STRUCT': 'Comparative/Superlative Structure',
+    'C-INTENSIFIER': 'Intensifier Placement/Choice',
     'C-ARTICLE': 'Article/Determiner Omission',
     'C-ARTICLE-MISMATCH': 'a\u2013an Article Selection',
     'C-CAPITALIZATION': 'Sentence Capitalization',
@@ -144,6 +205,235 @@ CHECK_LABELS = {
     'C-ADVERBIAL-COMPLEMENT': 'Adverbial Complement',
     'C-VERB-FORM': 'Verb Form',
     'C-NOUN-FORM': 'Noun Form',
+    'C-CONTRACTION': 'Contractions',
+    'C-REFLEXIVE-FORM': 'Reflexive Forms',
+    'C-ADVERB-FORM': 'Adverb Formation',
+    'C-SPELLING': 'Spelling',
+    'C-VERB-ENDING': 'Verb Endings',
+    'C-UNCOUNTABLE': 'Countable vs Uncountable',
+    'C-COMPARATIVE-FORM': 'Comparative/Superlative Formation',
+    'C-PLURAL-ONLY': 'Plural-only / Singular -s Nouns',
+    'C-NUMERAL': 'Numerals and Measures',
+    'C-REDUNDANCY': 'Redundancy',
+    'C-ADJ-PREP': 'Adjective + Preposition',
+    'C-EXTRA-PREP': 'Unnecessary Preposition',
+    'C-MISSING-PREP': 'Missing Preposition',
+    'C-HOMOPHONE': 'Homophones',
+    'C-SOME-ANY': 'some/any',
+    'C-EXISTENTIAL': 'Existential there',
+    'C-INDEFINITE-AGREE': 'Indefinite Pronoun Agreement',
+    'C-REFLEXIVE-ANTECEDENT': 'Reflexive\u2013Antecedent',
+    'C-TO-BASE': 'to + base form',
+    'C-MODAL-TO': 'Modals and Semi-modals',
+    'C-CAUSATIVE-TO': 'Causatives and Perception Verbs',
+    'C-PHRASAL-ORDER': 'Phrasal Verbs',
+    'C-GERUND-INFINITIVE': 'Gerund vs Infinitive',
+    'C-VERB-CLAUSE-PATTERN': 'Verb + Clause Patterns',
+    'C-INTRANSITIVE-PASSIVE': 'Intransitive Passive',
+    'C-STATIVE-PROGRESSIVE': 'Stative Verbs in Progressive',
+    'C-PREP-GERUND': 'Preposition + Gerund',
+    'C-CONJUNCTION-PAIR': 'Conjunction Pairing',
+    'C-TERMINAL-PUNCT': 'Terminal Punctuation',
+    'C-SPACING-REPEAT': 'Spacing and Repeats',
+    'C-APOSTROPHE': 'Apostrophes',
+    'C-QUOTATION': 'Quotation and Dialogue',
+    'C-COLLECTIVE': 'Collective and Notional Nouns',
+    'C-PRON-ANTECEDENT': 'Pronoun\u2013Antecedent',
+    'C-UNNECESSARY-ARTICLE': 'Unnecessary Article',
+    'C-SUBJUNCTIVE': 'Subjunctive and wish',
+    'C-TENSE-TIME': 'Tense\u2013time Agreement',
+    'C-CONNECTOR': 'Connector Misuse',
+    'C-PLURAL-FORM': 'Regular/Irregular Noun Plural',
+    'C-DET-NOUN-AGREE': 'Determiner\u2013Noun Number',
+    'C-COORD-CASE': 'Pronoun Case in Coordination',
+    'C-DUMMY-IT': 'Dummy it/there',
+    'C-TRANSITIVITY': 'Verb Transitivity',
+    'C-COORD-SUBJ-AGREE': 'Coordinated Subject\u2013Verb Agreement',
+    'C-NOUN-MODIFIER-NUMBER': 'Singular Noun Modifier',
+    'C-ADVERB-PLACEMENT': 'Adverb Placement',
+    'C-WRONG-PREPOSITION': 'Wrong Preposition Choice',
+    'C-TIME-PLACE-PREP': 'in/on/at with Time and Place',
+    'C-FRAGMENT': 'Sentence Fragment',
+    'C-RESUMPTIVE-RELATIVE': 'Resumptive Pronoun in Relative Clause',
+    'C-CLAUSE-LINKING': 'Clause Linking (subordinator + to-infinitive)',
+    'C-OBJECT-ORDER': 'Object Order in Ditransitive Verbs',
+    'C-SENTENCE-CAPITAL': 'Sentence-initial Capitalization',
+    'C-DOUBLE-NEGATIVE': 'Double Negation',
+    'C-IMPERATIVE-VERB': 'Imperative Verb Form',
+    'C-CONDITIONAL-WILL': 'Conditional Tense',
+    'C-REPORTED-SPEECH': 'Reported Speech',
+    'C-RUNON': 'Run-on / Fused Sentence',
+    'C-EXTRA-WORD': 'Missing or Extra Word',
+    'C-PROPER-NOUN': 'Proper Nouns and \u201cI\u201d',
+    'C-PARTICIPIAL': 'Participial Adjectives',
+    'C-TENSE-CONSISTENCY': 'Tense Consistency',
+    'C-HYPHEN': 'Hyphens and Dashes',
+    'C-CONFUSABLE': 'Confusable Words',
+    'C-COLLOCATION': 'Collocations',
+    'C-SELECTIONAL': 'Selectional Restrictions',
+    'C-REGISTER': 'Register',
+    'C-L1-INTERFERENCE': 'L1 Interference / False Friends',
+    'C-NUMBER-AGREE': 'Quantified Subject Agreement',
+    'C-SUBJ-AGREE-XP': 'Subject-Verb Agreement Across a Phrase',
+    'C-POSSESSIVE': 'Possessive Pronoun vs Determiner',
+    'C-NUMERAL-FORMAT': 'Numbers, Dates, Abbreviations',
+    'C-CORRELATIVE-AGREE': 'Correlative Agreement',
+    'C-POSSESSIVE-S': "Possessive 's / s'",
+    'C-DANGLING': 'Dangling / Misplaced Modifier',
+    'C-INTRO-COMMA': 'Commas',
+    'C-PUNCT': 'Colons and Semicolons',
+    'C-PRON-AMBIG': 'Ambiguous Reference',
+    'C-PP-ATTACH': 'Structural Ambiguity (PP-attachment)',
+    'C-PASSIVE': 'Passive Formation',
+    'C-WORD-ORDER': 'Word Order in Statements',
+    'C-FIRST-MENTION': 'Definite vs Indefinite',
+    'C-LEXICON-MALFORMED': 'Word Form Licensed by Lexicon',
+    'C-LEXICON-UNKNOWN': 'Unrecognised Word (unverified)',
+    'C-LEXICON-TAG-MISMATCH': 'Parser Tag vs Lexicon (unverified)',
+    'C-RELATIVE-AGREE': 'Relative Clause Agreement',
+    'C-RELATIVE-POSSESSIVE': "Relative 'whose' Needs a Noun",
+    'C-RELATIVE-PRONOUN': 'Relative Pronoun Choice (who/which)',
+}
+
+# Constraint id -> (matrix.md rule id, check method). The method decides how the
+# XAI layer explains the verdict (T: tree subtree, L: word-list lookup,
+# C: condition + options + confidence, shown as a suggestion).
+CONSTRAINT_RULE = {
+    'C-SUBJECT-AGREEMENT': ('2.1', 'T'),
+    'C-PREDICATE': ('2.1', 'T'),
+    'C-DETERMINER-AGREEMENT': ('2.10', 'T'),
+    'C-DETERMINER': ('3.6', 'T'),
+    'C-DET-STACK': ('3.5', 'T'),
+    'C-HEAD-NOUN': ('3.6', 'T'),
+    'C-NOUN-FORM': ('1.2', 'L'),
+    'C-NOUN-ADJUNCT': ('4.2', 'T'),
+    'C-MOD-POS': ('7.7', 'T'),
+    'C-NP-POSTMODIFIER': ('7.7', 'T'),
+    'C-NP-REDUCED-RELATIVE': ('9.10', 'T'),
+    'C-NP-RELATIVE': ('2.7', 'T'),
+    'C-COORDINATOR': ('2.3', 'T'),
+    'C-HEAD-VERB': ('6.2', 'T'),
+    'C-INFINITIVAL-COMPLEMENT': ('6.10', 'T'),
+    'C-INFINITIVAL-MARKER': ('6.10', 'T'),
+    'C-AUXILIARY': ('6.1', 'T'),
+    'C-AUX-COMPLEMENT': ('6.1', 'T'),
+    'C-AUX-FORM': ('6.1', 'T'),
+    'C-TENSE-FINITE': ('6.2', 'T'),
+    'C-DIRECT-OBJECT': ('9.15', 'T'),
+    'C-ADJUNCT': ('8.5', 'L'),
+    'C-PREDICATE-ADJECTIVE': ('7.1', 'T'),
+    'C-ADVERBIAL': ('7.3', 'T'),
+    'C-CLAUSAL-COMPLEMENT': ('6.20', 'L'),
+    'C-PARTICLE': ('6.11', 'L'),
+    'C-HEAD-PREPOSITION': ('8.1', 'C'),
+    'C-PREP-OBJECT': ('8.5', 'L'),
+    'C-HEAD-ADJECTIVE': ('7.1', 'T'),
+    'C-INTENSIFIER': ('7.5', 'T'),
+    'C-ADJ-ORDER': ('7.2', 'L'),
+    'C-COMPARATIVE-STRUCT': ('7.6', 'T'),
+    'C-PARTICIPLE-MODIFIER': ('7.4', 'L'),
+    'C-HEAD-ADVERBIAL': ('7.3', 'T'),
+    'C-CLAUSE-SUBJECT': ('2.1', 'T'),
+    'C-CLAUSE-PREDICATE': ('9.14', 'T'),
+    'C-CLAUSAL-ADVERBIAL': ('9.14', 'T'),
+    'C-RELATIVE-CLAUSE': ('2.7', 'T'),
+    'C-RELATIVE-HEAD': ('5.4', 'T'),
+    'C-RELATIVE-PRONOUN': ('5.4', 'T'),
+    'C-RELATIVE-NOUN': ('5.4', 'T'),
+    'C-COMPLEMENTIZER': ('9.14', 'T'),
+    'C-NP-COMPOUND': ('4.2', 'T'),
+    'C-PUNCT': ('10.3', 'T'),
+    'C-ROOT': ('9.1', 'T'),
+    'C-CAPITALIZATION': ('10.1', 'T'),
+    'C-PRONOUN-CASE': ('5.1', 'T'),
+    'C-ADJ-ADV': ('7.1', 'T'),
+    'C-ARTICLE': ('3.2', 'T'),
+    'C-ARTICLE-MISMATCH': ('3.1', 'L'),
+    'C-QUANTIFIER': ('2.11', 'T'),
+    'C-SMALL-CLAUSE': ('9.15', 'T'),
+    'C-SMALL-CLAUSE-PREDICATE': ('7.1', 'T'),
+    'C-ADVERBIAL-COMPLEMENT': ('7.3', 'T'),
+    'C-VERB-FORM': ('1.5', 'L'),
+    'C-COMPARATIVE-DOUBLE': ('7.6', 'T'),
+    'C-UNLISTED': (None, 'T'),
+    'C-CONTRACTION': ('1.11', 'L'),
+    'C-REFLEXIVE-FORM': ('1.9', 'L'),
+    'C-ADVERB-FORM': ('1.8', 'L'),
+    'C-SPELLING': ('1.12', 'L'),
+    'C-VERB-ENDING': ('1.4', 'L'),
+    'C-UNCOUNTABLE': ('4.1', 'L'),
+    'C-COMPARATIVE-FORM': ('1.7', 'L'),
+    'C-PLURAL-ONLY': ('4.3', 'L'),
+    'C-NUMERAL': ('1.13', 'L'),
+    'C-REDUNDANCY': ('9.12', 'L'),
+    'C-ADJ-PREP': ('8.4', 'L'),
+    'C-EXTRA-PREP': ('8.3', 'L'),
+    'C-MISSING-PREP': ('8.2', 'C'),
+    'C-HOMOPHONE': ('1.10', 'T'),
+    'C-SOME-ANY': ('3.7', 'T'),
+    'C-EXISTENTIAL': ('2.4', 'T'),
+    'C-INDEFINITE-AGREE': ('2.8', 'T'),
+    'C-REFLEXIVE-ANTECEDENT': ('2.14', 'T'),
+    'C-TO-BASE': ('6.10', 'T'),
+    'C-MODAL-TO': ('6.12', 'T'),
+    'C-CAUSATIVE-TO': ('6.19', 'T'),
+    'C-PHRASAL-ORDER': ('6.11', 'L'),
+    'C-GERUND-INFINITIVE': ('6.9', 'L'),
+    'C-VERB-CLAUSE-PATTERN': ('6.20', 'L'),
+    'C-INTRANSITIVE-PASSIVE': ('6.5', 'L'),
+    'C-STATIVE-PROGRESSIVE': ('6.6', 'L'),
+    'C-PREP-GERUND': ('8.6', 'T'),
+    'C-CONJUNCTION-PAIR': ('9.9', 'L'),
+    'C-TERMINAL-PUNCT': ('10.3', 'T'),
+    'C-SPACING-REPEAT': ('10.9', 'T'),
+    'C-APOSTROPHE': ('10.5', 'T'),
+    'C-QUOTATION': ('10.6', 'T'),
+    'C-COLLECTIVE': ('2.5', 'C'),
+    'C-PRON-ANTECEDENT': ('2.12', 'C'),
+    'C-UNNECESSARY-ARTICLE': ('3.3', 'C'),
+    'C-SUBJUNCTIVE': ('6.17', 'C'),
+    'C-TENSE-TIME': ('11.3', 'C'),
+    'C-CONNECTOR': ('11.8', 'C'),
+    'C-PLURAL-FORM': ('1.1', 'L'),
+    'C-DET-NOUN-AGREE': ('3.8', 'L'),
+    'C-COORD-CASE': ('5.2', 'T'),
+    'C-DUMMY-IT': ('5.5', 'T'),
+    'C-TRANSITIVITY': ('6.8', 'L'),
+    'C-DOUBLE-NEGATIVE': ('6.14', 'T'),
+    'C-IMPERATIVE-VERB': ('6.15', 'T'),
+    'C-CONDITIONAL-WILL': ('6.16', 'T'),
+    'C-REPORTED-SPEECH': ('6.18', 'T'),
+    'C-RUNON': ('9.3', 'T'),
+    'C-EXTRA-WORD': ('9.7', 'T'),
+    'C-PROPER-NOUN': ('10.2', 'L'),
+    'C-PARTICIPIAL': ('7.4', 'L'),
+    'C-TENSE-CONSISTENCY': ('6.7', 'C'),
+    'C-HYPHEN': ('10.7', 'C'),
+    'C-CONFUSABLE': ('11.1', 'C'),
+    'C-COLLOCATION': ('11.2', 'C'),
+    'C-SELECTIONAL': ('11.4', 'C'),
+    'C-REGISTER': ('11.6', 'C'),
+    'C-L1-INTERFERENCE': ('11.7', 'C'),
+    'C-NUMBER-AGREE': ('2.9', 'T'),
+    'C-SUBJ-AGREE-XP': ('2.2', 'T'),
+    'C-POSSESSIVE': ('5.6', 'T'),
+    'C-NUMERAL-FORMAT': ('10.10', 'L'),
+    'C-CORRELATIVE-AGREE': ('2.13', 'T'),
+    'C-POSSESSIVE-S': ('1.3', 'T'),
+    'C-DANGLING': ('9.11', 'C'),
+    'C-INTRO-COMMA': ('10.4', 'T'),
+    'C-PUNCT': ('10.8', 'T'),
+    'C-PRON-AMBIG': ('5.3', 'C'),
+    'C-PP-ATTACH': ('11.5', 'C'),
+    'C-PASSIVE': ('6.4', 'T'),
+    'C-WORD-ORDER': ('9.6', 'T'),
+    'C-FIRST-MENTION': ('3.4', 'C'),
+    'C-LEXICON-MALFORMED': ('1.12', 'L'),
+    'C-LEXICON-UNKNOWN': ('1.12', 'L'),
+    'C-LEXICON-TAG-MISMATCH': ('1.12', 'L'),
+    'C-RELATIVE-AGREE': ('2.7', 'T'),
+    'C-RELATIVE-POSSESSIVE': ('5.4', 'T'),
+    'C-RELATIVE-PRONOUN': ('5.4', 'T'),
 }
 
 
@@ -191,7 +481,7 @@ IRREGULAR_VBN = {
     'stand': 'stood', 'steal': 'stolen', 'swim': 'swum', 'take': 'taken',
     'teach': 'taught', 'tell': 'told', 'think': 'thought', 'throw': 'thrown',
     'understand': 'understood', 'wear': 'worn', 'win': 'won', 'write': 'written',
-    'become': 'become',
+    'become': 'become', 'wake': 'woken', 'awake': 'awoken',
 }
 
 IRREGULAR_PAST = {
@@ -236,6 +526,10 @@ def _base_form(leaf):
         return 'have'
     if word in DO_FORM:
         return 'do'
+    if pos in VERB_CLASS:
+        lem = _verb_lemma(word)
+        if lem:
+            return lem
     for base in IRREGULAR_VBN:
         if word in {base + 'd', base + 'ed'}:
             return base
@@ -258,6 +552,50 @@ def _base_form(leaf):
         if word.endswith('ed') and len(word) > 3:
             return word[:-2]
     return word
+
+
+def _verb_lemma(low):
+    """Best-effort lexical base form for a verb surface (irregular-aware).
+
+    A surface may have several verb lemmas (``saw`` -> ``see``/``saw``,
+    ``fell`` -> ``fall``/``fell``).  The true base is the candidate that is
+    *not* the surface itself; when several remain, the one whose past or
+    participle form reproduces the surface wins.
+    """
+    if not low:
+        return None
+    try:
+        if licensing is not None:
+            lemmas = licensing._lemmas(low, 'VERB')
+            if lemmas:
+                cands = set(lemmas)
+                pool = {c for c in cands if c != low} or cands
+                for c in sorted(pool):
+                    if _past_form(c) == low or _vbn_form(c) == low:
+                        return c
+                return sorted(pool)[0]
+    except Exception:  # pragma: no cover - degraded mode
+        pass
+    return None
+
+
+def _past_form(base):
+    """Base verb -> simple past (e.g. eat->ate, kick->kicked)."""
+    w = base.lower()
+    if w in IRREGULAR_PAST:
+        return IRREGULAR_PAST[w]
+    if _get_inflection is not None:
+        try:
+            inf = _get_inflection(w, tag='VBD')
+            if inf:
+                return inf[0]
+        except Exception:  # pragma: no cover
+            pass
+    if w.endswith('e'):
+        return w + 'd'
+    if w.endswith('y') and len(w) > 1 and w[-2] not in 'aeiou':
+        return w[:-1] + 'ied'
+    return w + 'ed'
 
 
 def _plural_noun(word):
@@ -369,6 +707,13 @@ def _vbn_form(base):
     w = base.lower()
     if w in IRREGULAR_VBN:
         return IRREGULAR_VBN[w]
+    if _get_inflection is not None:
+        try:
+            inf = _get_inflection(w, tag='VBN')
+            if inf:
+                return inf[0]
+        except Exception:  # pragma: no cover
+            pass
     if w.endswith('e'):
         return w + 'd'
     return w + 'ed'
@@ -381,8 +726,12 @@ def _vbg_form(base):
         return 'being'
     if w in ('lie', 'die', 'tie'):
         return w[:-1] + 'ying'
-    if w.endswith('e'):
+    if w.endswith('e') and not w.endswith('ee'):
         return w[:-1] + 'ing'
+    vowels = sum(w.count(v) for v in 'aeiou')
+    if len(w) >= 3 and w[-1] not in 'aeiouwxy' and w[-2] in 'aeiou' \
+            and w[-3] not in 'aeiou' and vowels == 1:
+        return w + w[-1] + 'ing'
     return w + 'ing'
 
 
@@ -442,9 +791,10 @@ def _checks_for(detail, details):
     named = CHECK_LABELS.get(detail['constraint'])
     if named:
         add(named, ok_own)
-    membership = (f"Rule membership ({detail['constraint']})" if detail['constraint'] != 'C-UNLISTED'
-                  else 'Matrix coverage (unrated \u00b7 valid-by-default)')
-    add(membership, ok_own)
+    elif detail['constraint'] != 'C-UNLISTED':
+        add(f"Rule membership ({detail['constraint']})", ok_own)
+    else:
+        add('Matrix coverage (unrated \u00b7 valid-by-default)', ok_own)
     for child_id in detail.get('children_ids', []):
         cd = details.get(child_id)
         if not cd:
@@ -459,10 +809,70 @@ def _lower(surface):
     return surface.lower()
 
 
+def _rem_from_text(text, surface=''):
+    """Build a {What's wrong / How to fix it} card from a rule finding text.
+
+    Rule texts are written as "what is wrong; how to fix it", so the last
+    '; ' that starts a directive ("Change 'x' to 'y'.", "Use 'z'.", ...)
+    is the split point.  Non-directive '; ' inside quoted replacements is
+    ignored.  Failing that, a final directive sentence becomes the fix and
+    everything before it the problem.  As a last resort the whole text is
+    the repair, with the flagged surface (when known) named explicitly.
+    """
+    best = -1
+    fix_start = -1
+    start = 0
+    while True:
+        idx = text.find('; ', start)
+        if idx == -1:
+            break
+        after = text[idx + 2:].lstrip()
+        if _DIRE_START.match(after):
+            best = idx
+            fix_start = idx + 2
+        start = idx + 2
+    if best == -1:
+        colon = re.compile(r':\s+((?:so\s+)?(?:write|use|change|replace|add|'
+                           r'remove|drop|capitalize|move|keep|put|choose|correct|'
+                           r'make|spell)\b)', re.I)
+        for m in colon.finditer(text):
+            best = m.start()
+            fix_start = m.start(1)
+    if best != -1:
+        return {'violation': text[:best].strip(),
+                'suggested_fix': text[fix_start:].strip().rstrip('.'),
+                'alternative_fix': None, 'targeted_outcome': None}
+    plain = text.rfind('; ')
+    if plain != -1:
+        return {'violation': text[:plain].strip(),
+                'suggested_fix': text[plain + 2:].strip().rstrip('.'),
+                'alternative_fix': None, 'targeted_outcome': None}
+    segments = re.split(r'(?<=[.!?])\s+', text.strip())
+    if len(segments) > 1 and _DIRE_START.match(segments[-1]):
+        return {'violation': ' '.join(segments[:-1]),
+                'suggested_fix': segments[-1].rstrip('.'),
+                'alternative_fix': None, 'targeted_outcome': None}
+    paren = re.search(r'\((use|write|change|replace|try)\s+([^)]+)\)', text)
+    if paren:
+        before = text[:paren.start()].rstrip()
+        if not before.endswith(('.', '!', '?')):
+            before += '.'
+        return {'violation': before.strip(),
+                'suggested_fix': f"{paren.group(1)} {paren.group(2)}".strip().rstrip('.'),
+                'alternative_fix': None, 'targeted_outcome': None}
+    if surface:
+        return {'violation': text,
+                'suggested_fix': f"Change '{surface}' to the word form the sentence needs.",
+                'alternative_fix': None, 'targeted_outcome': None}
+    return {'violation': text, 'suggested_fix': text,
+            'alternative_fix': None, 'targeted_outcome': None}
+
+
 def num_of(leaf):
     """Grammatical number of a nominal leaf, or None if unmarked."""
     pos = leaf['type']
-    if pos in NOUN_PLURAL:
+    surface = _lower(leaf.get('surface',''))
+    if pos in NOUN_PLURAL or surface in NOUN_PLURAL_SET:
         return 'pl'
     if pos in NOUN_SINGULAR:
         return 'sg'
@@ -559,7 +969,7 @@ def _np_head(node):
     trailing nominal-accepting adjective ('my favorite', 'the rich')."""
     leaves = _leaves_list(node)
     nonposs_nouns = [lf for lf in leaves
-                     if lf['type'] in NOUN_CLASS
+                     if (lf['type'] in NOUN_CLASS or lf['type'] == 'CD')
                      and _lower(lf.get('surface', '')) not in POSS_DET_PLAIN]
     if nonposs_nouns:
         return nonposs_nouns[-1]
@@ -581,7 +991,7 @@ def _np_determinatives(node):
             or _lower(lf.get('surface', '')) in POSS_DET_PLAIN]
 
 
-def _needs_indefinite_article_error(np_node):
+def _needs_indefinite_article_error(np_node, parent_vp=None):
     """Error message if a bare singular common noun heads an argument NP, else
     None. Mass/abstract/activity/institutional nouns are exempt."""
     head = _np_head(np_node)
@@ -592,18 +1002,35 @@ def _needs_indefinite_article_error(np_node):
     if base in NONCOUNT_NOUNS or base in BARE_ARG_NOUNS \
             or surface in NONCOUNT_NOUNS or surface in BARE_ARG_NOUNS:
         return None
+    if base in ARTICLE_EXEMPT or surface in ARTICLE_EXEMPT:
+        return None
     if is_coordinated(np_node):
         return None
     if _np_determinatives(np_node):
         return None
     leaves = _leaves_list(np_node)
+    if leaves:
+        # exempt if NP contains a POS
+        if any(lf.get('type') == 'POS' for lf in leaves):
+            return None
+        # leading quantifier/numeral
+        first = leaves[0]
+        if first.get('type') == 'CD':
+            return None
+        if _lower(first.get('surface','')) in {'one','two','three','four','five','six','seven','eight','nine','ten','some','any','many','few','several','both','all','most','each','every','another','no','such','what','which','whose'}:
+            return None
+    # possessive NP as child
+    for ch in np_node.get('children', []):
+        if ch.get('type') in {'NP','NML','NX'}:
+            chleaves = _leaves_list(ch)
+            if any(lf.get('type') == 'POS' for lf in chleaves):
+                return None
     idx = next((i for i, lf in enumerate(leaves) if lf['id'] == head['id']), None)
     if idx and _lower(leaves[idx - 1]['surface']) in {'next', 'last', 'this', 'that'}:
         return None
     art = _indefinite_article(head['surface'])
-    return (f"Noun '{head['surface']}' is a singular count noun and requires a "
-            f"determiner in this argument position; add '{art}' (or an article "
-            f"such as 'the'/'this') before it.")
+    return (f"'{head['surface']}' is a singular noun that names one countable thing, so it "
+            f"needs a little word like 'a' or 'the' before it. Add '{art}' (or 'the'/'this').")
 
 
 def _object_pronoun_error(np_node, verb_leaf):
@@ -618,9 +1045,8 @@ def _object_pronoun_error(np_node, verb_leaf):
     if surf not in PRON_SUBJ_PLAIN:
         return None
     target = {'i': 'me', 'we': 'us', 'he': 'him', 'she': 'her', 'they': 'them'}[surf]
-    return (f"Pronoun-case violation: '{h['surface']}' is the nominative form, but this "
-            f"argument follows the verb '{verb_leaf['surface']}' and must be objective \u2014 "
-            f"use '{target}'.")
+    return (f"'{h['surface']}' is a subject form, but it is the object of the verb "
+            f"'{verb_leaf['surface']}'. Change '{h['surface']}' to '{target}'.")
 
 
 def phrase_head(node):
@@ -647,14 +1073,43 @@ def phrase_head(node):
     return None
 
 
+def subject_head(node):
+    """Head noun of a subject NP, ignoring nouns buried inside a following PP
+    (so 'The boy with the bags' resolves to 'boy', enabling rule 2.2) or a
+    relative/complement clause (so 'The man who I saw' resolves to 'man', not
+    the pronoun inside the clause)."""
+    leaves = _leaves_list(node)
+    pp_ids = set()
+    for ch in node.get('children', []):
+        if ch.get('type') in ('PP', 'SBAR'):
+            for lf in _leaves_list(ch):
+                pp_ids.add(lf['id'])
+    cands = [lf for lf in leaves
+             if lf['id'] not in pp_ids and lf['type'] in NOUN_CLASS]
+    if cands:
+        return cands[-1]
+    return phrase_head(node)
+
+
 def clause_subject_and_verb(s_node):
     subj = None
     vp = None
+    fallback = None
     for child in s_node['children']:
-        if child['type'] == 'NP' and subj is None:
-            subj = child
+        if child['type'] == 'NP':
+            if fallback is None:
+                fallback = child
+            head = _np_head(child)
+            if head is not None and _lower(head.get('surface', '')) in {
+                    'today', 'yesterday', 'tomorrow', 'tonight', 'now',
+                    'later', 'then', 'soon'}:
+                continue
+            if subj is None:
+                subj = child
         if child['type'] == 'VP' and vp is None:
             vp = child
+    if subj is None:
+        subj = fallback
     return subj, vp
 
 
@@ -686,18 +1141,87 @@ class MatrixEvaluator:
 
     def __init__(self):
         self.details = {}
+        self.checker_errors = []
+        self.lex_stats = {}
 
-    def evaluate(self, root):
+    def evaluate(self, root, text=None):
         self.details = {}
+        self.checker_errors = []
+        self.lex_stats = {}
         self._walk(root)
         self._root_level(root)
+        self._merge_findings(root, text)
         for detail in self.details.values():
+            cid = detail['constraint']
+            rule_id, method = CONSTRAINT_RULE.get(cid, (None, 'T'))
+            detail.setdefault('rule_id', rule_id)
+            detail.setdefault('method', method)
+            detail.setdefault('evidence', self._evidence(root, detail))
+            detail.setdefault('findings', [])
             detail['checks'] = _checks_for(detail, self.details)
-            if detail['status'] == 'error':
+            if detail['status'] == 'error' and 'remediation' not in detail:
                 remediation = self._remediate(root, detail)
                 if remediation:
                     detail['remediation'] = remediation
         return {'details': self.details, 'summary': self._summarize(root)}
+
+    def _merge_findings(self, root, text):
+        """Run the docs/matrix.md rule set and attach findings to their nodes."""
+        text = text if text is not None else root.get('surface', '')
+        # Every checker runs in isolation; a crash is recorded and degrades the
+        # verdict to 'unverified' instead of silently turning into "no errors".
+        if licensing is not None:
+            findings, self.checker_errors, self.lex_stats = \
+                licensing.collect_all(text, root)
+        else:  # licensing layer unavailable -> rules/tree only
+            findings = ruleset.collect(text, root)
+            self.checker_errors = []
+            self.lex_stats = {}
+        for finding in findings:
+            nid = finding.get('node_id')
+            detail = self.details.get(nid) if nid else None
+            if detail is None:
+                detail = self.details.get(root['id'])
+            if detail is None:
+                continue
+            item = dict(finding)
+            item['id'] = f"{nid}:{finding.get('rule_id')}"
+            detail.setdefault('findings', []).append(item)
+            if finding['status'] == 'error':
+                # The front end keys token colouring on the node's own status,
+                # so a rule finding must also mark its node as an error or the
+                # tree renders green despite an INVALID verdict.
+                detail.setdefault('_finding_errors', True)
+                detail['status'] = 'error'
+        for detail in self.details.values():
+            if not detail.pop('_finding_errors', None):
+                continue
+            err = next((f for f in detail.get('findings', [])
+                        if f['status'] == 'error'), None)
+            if err is None:
+                continue
+            detail['text'] = err['text']
+            rem = err.get('remediation')
+            detail['remediation'] = (rem if isinstance(rem, dict)
+                                     else _rem_from_text(err['text'],
+                                                         detail.get('surface', '')))
+
+    def _evidence(self, root, detail):
+        """Generic evidence record matching the XAI table in docs/matrix.md."""
+        method = detail.get('method')
+        if method == 'L':
+            return {'used': 'wordlist', 'lookup': detail.get('surface', ''),
+                    'accepted': [], 'source': f"rule {detail.get('rule_id')}"}
+        if method == 'C':
+            return {'used': 'context', 'condition': detail.get('text', ''),
+                    'options': [], 'confidence': 0.5}
+        parent = self._find_node(root, detail['parent']) if detail.get('parent') else None
+        conflict = [{'node': detail['id']}]
+        if parent is not None:
+            conflict.append({'node': parent['id']})
+        return {'used': 'tree', 'subtree': detail['id'],
+                'rule': detail.get('rule'), 'conflict': conflict}
+
 
     def _walk(self, node, grandparent=None):
         if 'children' in node:
@@ -721,20 +1245,23 @@ class MatrixEvaluator:
             if ct == 'NP':
                 return self._s_subject(parent, child)
             if ct == 'VP':
-                return self._s_predicate(parent, child)
+                return self._s_predicate(parent, child, grandparent)
             if ct == 'ADJP':
                 return ('valid', 'C-SMALL-CLAUSE-PREDICATE',
-                        f"Adjective phrase '{child['surface']}' is the predicate of a "
-                        'small-clause complement.')
+                        f"The adjective phrase '{child['surface']}' works as the predicate "
+                        'of the clause here, which is fine.')
             if ct == 'ADVP':
                 return ('valid', 'C-CLAUSAL-ADVERBIAL',
-                        f"Adverbial phrase '{child['surface']}' modifies the clause; licensed at sentence level.")
+                        f"'{child['surface']}' is an adverbial phrase that adds detail to the "
+                        'whole clause, which is fine.')
             if ct == 'PP':
                 return ('valid', 'C-CLAUSAL-ADVERBIAL',
-                        f"Prepositional phrase '{child['surface']}' is an adjunct modifying the clause.")
+                        f"The phrase '{child['surface']}' adds extra detail to the clause, "
+                        'which is allowed.')
             if ct == 'SBAR':
                 return ('valid', 'C-CLAUSAL-COMPLEMENT',
-                        f"Clause '{child['surface']}' functions as a clausal constituent of the sentence.")
+                        f"The clause '{child['surface']}' fits here as part of the sentence, "
+                        'which is fine.')
         if pt == 'NP':
             return self._np_rule(parent, child, grandparent)
         if pt == 'VP':
@@ -742,7 +1269,8 @@ class MatrixEvaluator:
         if pt == 'PP':
             if ct in PREP_CLASS:
                 return ('valid', 'C-HEAD-PREPOSITION',
-                        f"Preposition '{child['surface']}' heads the PP.")
+                        f"'{child['surface']}' is the preposition at the start of this "
+                        'phrase, which is fine.')
             if ct == 'NP':
                 h = phrase_head(parent)
                 head = h['surface'] if h else '?'
@@ -752,129 +1280,251 @@ class MatrixEvaluator:
                     target = {'i': 'me', 'we': 'us', 'he': 'him',
                               'she': 'her', 'they': 'them'}[_lower(onp['surface'])]
                     return ('error', 'C-PRONOUN-CASE',
-                            f"Pronoun-case violation: '{onp['surface']}' is the nominative "
-                            f"form, but the object of the preposition '{head}' must be "
-                            f"objective \u2014 use '{target}'.")
+                            f"'{onp['surface']}' is a subject form, but it comes after the "
+                            f"preposition '{head}'. Change '{onp['surface']}' to '{target}'.")
                 return ('valid', 'C-PREP-OBJECT',
-                        f"NP '{child['surface']}' is the object of the preposition '{head}'.")
+                        f"'{child['surface']}' is the thing the preposition '{head}' points "
+                        'to, which is fine.')
         if pt == 'ADJP':
             if ct in ADJ_CLASS:
                 return ('valid', 'C-HEAD-ADJECTIVE',
-                        f"'{child['surface']}' heads the adjective phrase.")
+                        f"'{child['surface']}' is the main word of the adjective phrase, "
+                        'which is fine.')
             if ct in {'RBR', 'RBS'}:
                 for sibling in parent['children']:
                     if sibling['type'] in {'JJR', 'JJS'}:
                         return ('error', 'C-COMPARATIVE-DOUBLE',
-                                f"Double comparative/superlative: '{child['surface']}' (degree "
-                                f"marker) duplicates the morphological "
+                                f"'{child['surface']}' is a degree word and '{sibling['surface']}' "
+                                f"is already the "
                                 f"{'comparative' if sibling['type'] == 'JJR' else 'superlative'} "
-                                f"'{sibling['surface']}'; drop one of them.")
+                                f"form, so the phrase shows comparison twice. Keep only one of "
+                                "them.")
                 return ('valid', 'C-INTENSIFIER',
-                        f"Degree marker '{child['surface']}' scopes over the adjective phrase.")
+                        f"'{child['surface']}' strengthens the adjective phrase, which is fine.")
             if ct in ADV_CLASS:
                 return ('valid', 'C-INTENSIFIER',
-                        f"Intensifier '{child['surface']}' scopes over the adjective phrase.")
+                        f"'{child['surface']}' strengthens the adjective phrase, which is fine.")
             if ct in {'VBN', 'VBG'}:
                 return ('valid', 'C-PARTICIPLE-MODIFIER',
-                        f"Participle '{child['surface']}' modifies the adjective phrase.")
+                        f"The word '{child['surface']}' is used to describe the adjective "
+                        "phrase, which is fine.")
         if pt == 'ADVP':
             if ct in ADJ_CLASS:
                 return ('error', 'C-ADJ-ADV',
-                        f"Adjective\u2013adverb confusion: '{child['surface']}' is an adjective "
-                        f"({ct}), but an adverb phrase requires an adverb (use "
-                        f"'{self._adverbial_form(child['surface'])}').")
+                        f"'{child['surface']}' is an adjective, but an adverb is needed here. "
+                        f"Change '{child['surface']}' to "
+                        f"'{self._adverbial_form(child['surface'])}'.")
             if ct == 'NP':
                 return ('valid', 'C-ADVERBIAL-COMPLEMENT',
-                        f"NP '{child['surface']}' is a temporal/measure complement inside the "
-                        'adverbial phrase.')
+                        f"The noun phrase '{child['surface']}' gives a time or a measure in "
+                        "the adverb phrase, which is fine.")
             if ct in ADV_CLASS or ct == 'ADVP':
                 return ('valid', 'C-HEAD-ADVERBIAL',
-                        f"Adverbial '{child['surface']}' heads/extends the adverb phrase.")
+                        f"'{child['surface']}' acts as an adverb here, which is fine.")
             if ct == 'CC':
                 return ('valid', 'C-COORDINATOR',
-                        f"Coordinator '{child['surface']}' joins adverbial conjuncts.")
+                        f"'{child['surface']}' joins two adverb parts, which is fine.")
         if pt == 'SBAR':
             if ct == 'S':
                 return ('valid', 'C-RELATIVE-CLAUSE',
-                        f"Clause '{child['surface']}' is the complement of the "
-                        'relative/complementizer construction.')
+                        f"The clause '{child['surface']}' completes the relative clause, "
+                        'which is fine.')
             if ct == 'IN':
                 return ('valid', 'C-COMPLEMENTIZER',
-                        f"Complementizer '{child['surface']}' introduces the subordinate clause.")
+                        f"'{child['surface']}' introduces the subordinate clause, which is fine.")
             if ct in {'WHNP', 'WHPP', 'WHADVP', 'WADVP', 'WPP'}:
                 return ('valid', 'C-RELATIVE-HEAD',
-                        f"Wh-phrase '{child['surface']}' heads the relative clause.")
+                        f"The question-word phrase '{child['surface']}' begins the relative "
+                        "clause, which is fine.")
         if pt == 'WHNP':
             if ct in {'WP', 'WDT', 'WP$'}:
                 return ('valid', 'C-RELATIVE-PRONOUN',
-                        f"Relative pronoun '{child['surface']}' heads the wh-phrase.")
+                        f"'{child['surface']}' is the question word here, which is fine.")
             if ct in NOUN_CLASS:
                 return ('valid', 'C-RELATIVE-NOUN',
-                        f"Noun '{child['surface']}' is the nominal head of the wh-phrase.")
+                        f"'{child['surface']}' is the main noun of the question-word phrase, "
+                        'which is fine.')
         if pt in {'WHPP', 'WHADVP', 'WADVP', 'WPP'}:
             return ('valid', 'C-RELATIVE-HEAD',
-                    f"Wh-phrase '{child['surface']}' extends the relative-clause structure.")
+                    f"The wh-phrase '{child['surface']}' fits the relative-clause structure, "
+                    'which is fine.')
         if pt in SENTENCE_CLASSES and pt != 'S':
             if ct == 'NP':
                 return ('valid', 'C-CLAUSE-SUBJECT',
-                        f"NP '{child['surface']}' is the subject of the clause.")
+                        f"'{child['surface']}' is the subject of the clause, which is fine.")
             if ct == 'VP':
                 return ('valid', 'C-CLAUSE-PREDICATE',
-                        f"VP '{child['surface']}' is the predicate of the clause.")
+                        f"'{child['surface']}' is the predicate (what is said about the "
+                        'subject) of the clause, which is fine.')
         return self._unlisted(parent, child)
 
     @staticmethod
     def _unlisted(parent, child):
         return ('unlisted', 'C-UNLISTED',
-                f"Edge {child['type']} \u2192 {parent['type']} has no dedicated rule in the matrix; "
-                'reported as unrated (valid-by-default).')
+                f"'{child['surface']}' is used with '{parent['surface']}' in an arrangement "
+                'the checker does not special-case, so it is treated as fine unless another '
+                'rule objects.')
 
     @staticmethod
     def _s_subject(parent, child):
         return ('valid', 'C-SUBJECT-ROLE',
-                f"NP '{child['surface']}' functions as the clause subject; "
-                'subject-verb agreement is evaluated on the predicate edge.')
+                f"'{child['surface']}' is the subject of the clause, which is fine; "
+                'agreement between the subject and the verb is checked separately.')
 
-    def _s_predicate(self, parent, child):
+    def _s_predicate(self, parent, child, grandparent=None):
         subj, _vp = clause_subject_and_verb(parent)
         vp_head = phrase_head(child)
         if vp_head is None:
             return ('error', 'C-TENSE-FINITE',
-                    f"Clause '{parent['surface']}' has no finite predicate verb.")
+                    f"The clause '{parent['surface']}' has no main verb in a tensed form; "
+                    'it needs one.')
         if vp_head['type'] in NONFINITE:
             if child['children'] and child['children'][0].get('type') == 'TO':
                 return ('valid', 'C-INFINITIVAL-COMPLEMENT',
-                        f"VP '{child['surface']}' is the non-finite to-infinitive complement of "
-                        'the clause; no finite form is required here.')
+                        f"The verb phrase '{child['surface']}' is an infinitival complement "
+                        "('to' + verb), so no tensed form is needed here; that's fine.")
+            if subj is None:
+                return ('valid', 'C-PREDICATE',
+                        f"The verb phrase '{child['surface']}' works as an imperative or "
+                        'subjectless clause, so a tensed form is not needed; that\'s fine.')
+            if grandparent is not None and grandparent['type'] in {
+                    'VP', 'SBAR', 'PP', 'S', 'SINV', 'SQ', 'SBARQ', 'NP'}:
+                return ('valid', 'C-SMALL-CLAUSE',
+                        f"The verb phrase '{child['surface']}' is an embedded clause whose "
+                        'main verb supplies the tense; that\'s fine.')
             return ('error', 'C-TENSE-FINITE',
-                    f"Predicate verb '{vp_head['surface']}' is "
-                    f"{VERB_FORM_LABEL.get(vp_head['type'], 'non-finite')}; "
-                    'a main clause requires a finite verb.')
+                    f"The main verb '{vp_head['surface']}' is "
+                    f"{VERB_FORM_LABEL.get(vp_head['type'], 'not a tensed form')}; "
+                    'a main clause needs a tensed verb form (like present or past).')
         if subj is None:
             return ('valid', 'C-PREDICATE',
-                    f"Predicate '{child['surface']}' licenses the clause (no subject edge to agree with).")
-        subj_head = phrase_head(subj)
+                    f"'{child['surface']}' is the predicate of the clause, which is fine "
+                    '(there is no subject here to disagree with).')
+        subj_head = subject_head(subj)
         if subj_head is None:
             return ('valid', 'C-PREDICATE',
-                    f"Predicate '{child['surface']}' licenses the clause.")
+                    f"'{child['surface']}' is the predicate of the clause, which is fine.")
         if subj_head['type'] == 'PRP' and _lower(subj_head['surface']) in PRON_OBJ_PLAIN:
             target = {'me': 'I', 'us': 'we', 'him': 'he', 'her': 'she',
                       'them': 'they'}[_lower(subj_head['surface'])]
             return ('error', 'C-PRONOUN-CASE',
-                    f"Pronoun-case violation: '{subj_head['surface']}' is the objective form, "
-                    f"but the clause subject must be nominative \u2014 use '{target}'.")
+                    f"'{subj_head['surface']}' is an object form, but it is the subject of "
+                    f"the clause. Change '{subj_head['surface']}' to '{target}'.")
         coordinated = is_coordinated(subj)
         skey = ('3', 'pl') if coordinated else subject_key(subj_head)
         vkey = verb_key(vp_head)
         subj_label = '3rd person plural' if coordinated else self._subj_label(subj_head)
+        # Handle correlative 'either...or' / 'neither...nor' - agreement with nearest (rightmost) conjunct
+        subleaves = _leaves_list(subj)
+        correlative = coordinated and any((_lower(l.get('surface','')) if hasattr(l,'get') or isinstance(l,dict) else _lower(str(l))) in ('or','nor') for l in subleaves)
+        if correlative:
+            # find nearest nominal before verb - look for last PRP/NN in subject
+            last_nom = None
+            for lf in reversed(subleaves):
+                if lf.get('type') in ('PRP','NN','NNS','NNP','NNPS') and _lower(lf.get('surface','')) not in ('either','neither'):
+                    last_nom = lf; break
+            if last_nom is not None:
+                k = subject_key(last_nom)
+                if k is not None:
+                    skey = k
+                    subj_label = self._subj_label(last_nom)
+        # quantifier forcing on the full subject NP
+        force_pl = False
+        force_sg = False
+        subleaves = _leaves_list(subj)
+        if subleaves:
+            surf0 = _lower(subleaves[0]['surface'])
+            surf1 = _lower(subleaves[1]['surface']) if len(subleaves) > 1 else ''
+            surf2 = _lower(subleaves[2]['surface']) if len(subleaves) > 2 else ''
+            # a number of / the number of
+            if surf0 == 'a' and 'number' in surf1:
+                force_pl = True
+            if surf0 == 'a' and surf1 == 'number':
+                force_pl = True  # handle both
+            if 'number' in (surf0 + ' ' + surf1 + ' ' + surf2):
+                if surf0 == 'a':
+                    force_pl = True
+                if surf0 == 'the':
+                    force_sg = True
+            # each/every/neither/either/one
+            if not correlative and surf0 in ('each','every','neither','either','one'):
+                force_sg = True
+            # a lot/couple of etc
+            if (surf0 in ('a','an') and surf1 in ('lot','couple','few','little','majority')):
+                force_pl = True
+            if surf0 in ('many','several','plenty','most'):
+                force_pl = True
+        if force_pl:
+            skey = ('3', 'pl')
+            subj_label = '3rd person plural'
+        if force_sg:
+            p = skey[0] if skey else '3'
+            skey = (p, 'sg')
+            subj_label = self._subj_label({'type': 'PRP', 'surface': 'I'}) if p == '1' else ('3rd person singular' if p == '3' else self._subj_label(subj_head))
+        # coordinated predicates: every finite conjunct verb must agree with the
+        # subject too ('They are stupid and lacks manners.' -> 'lacks' is wrong).
+        for h in self._coordinated_predicate_heads(child, vp_head):
+            if not _agreement_ok(skey, verb_key(h)):
+                sk = skey
+                target = (_preserve_case(h['surface'], _third_present(_base_form(h)))
+                          if sk == ('3', 'sg') else
+                          _preserve_case(h['surface'], _nonthird_present(_base_form(h))))
+                return ('error', 'C-SUBJECT-AGREEMENT',
+                        f"The verb '{h['surface']}' does not agree with the subject "
+                        f"'{subj['surface']}' ({subj_label}). Change '{h['surface']}' to "
+                        f"'{target}'.")
         if _agreement_ok(skey, vkey):
             return ('valid', 'C-PREDICATE',
-                    f"Subject '{subj['surface']}' ({subj_label}) and predicate verb "
-                    f"'{vp_head['surface']}' ({self._verb_label(vp_head)}) agree in person and number.")
+                    f"The subject '{subj['surface']}' ({subj_label}) and the verb "
+                    f"'{vp_head['surface']}' ({self._verb_label(vp_head)}) agree in person "
+                    'and number, which is fine.')
+        subj_leaf = _np_head(subj) or phrase_head(subj)
+        if subj_leaf is not None and _lower(subj_leaf.get('surface', '')) in COLLECTIVE_NOUNS:
+            return ('valid', 'C-COLLECTIVE',
+                    f"'{subj['surface']}' names a group, so a singular or a plural verb both "
+                    'sound fine; this is treated as a style note rather than an error.')
+        has_pp = any(c.get('type') == 'PP' for c in subj.get('children', []))
+        if has_pp:
+            target = (_preserve_case(vp_head['surface'], _third_present(_base_form(vp_head)))
+                      if skey == ('3', 'sg') else
+                      _preserve_case(vp_head['surface'], _nonthird_present(_base_form(vp_head))))
+            return ('error', 'C-SUBJ-AGREE-XP',
+                    f"The words after the subject do not change its number: '{subj['surface']}' "
+                    f"is {subj_label}, so the verb '{vp_head['surface']}' is wrong. Change it "
+                    f"to '{target}'.")
+        target = (_preserve_case(vp_head['surface'], _third_present(_base_form(vp_head)))
+                  if skey == ('3', 'sg') else
+                  _preserve_case(vp_head['surface'], _nonthird_present(_base_form(vp_head))))
         return ('error', 'C-SUBJECT-AGREEMENT',
-                f"Subject-verb agreement violated: subject '{subj['surface']}' is "
-                f"{subj_label}, but predicate verb '{vp_head['surface']}' is "
-                f"{self._verb_label(vp_head)}.")
+                f"The subject '{subj['surface']}' is {subj_label}, but '{vp_head['surface']}' "
+                f"is {self._verb_label(vp_head)}, so they do not agree. Change "
+                f"'{vp_head['surface']}' to '{target}'.")
+
+    def _coordinated_predicate_heads(self, vp, primary):
+        """Finite verb heads of predicate-coordination conjuncts other than the
+        primary head. Covers nested '... are stupid and lacks manners' (VP (VP ..)
+        (CC and) (VP ..)) and flat '... runs and plays football'
+        (VP (VBZ ..) (CC and) (VBZ ..))."""
+        heads = []
+        kids = vp.get('children', []) if isinstance(vp, dict) else []
+        if not isinstance(kids, list) or not kids:
+            return heads
+        if not any(k.get('type') == 'CC' for k in kids):
+            return heads
+        seen = {primary['id']} if primary is not None else set()
+        for k in kids:
+            kid_type = k.get('type') if isinstance(k, dict) else None
+            if kid_type == 'VP':
+                h = phrase_head(k)
+                if h is not None and h.get('type') in VERB_CLASS \
+                        and h.get('id') not in seen:
+                    heads.append(h)
+                    seen.add(h['id'])
+            elif kid_type in ('VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'MD') \
+                    and k.get('id') not in seen:
+                heads.append(k)
+                seen.add(k['id'])
+        return heads
 
     @staticmethod
     def _subj_label(head):
@@ -906,29 +1556,31 @@ class MatrixEvaluator:
             determinatives = _np_determinatives(parent)
             if len(determinatives) > 1:
                 return ('error', 'C-DET-STACK',
-                        f"'{child['surface']}' stacks a second determiner in this NP; "
-                        'an NP has at most one determinative position.')
+                        f"'{child['surface']}' is a second determiner in the phrase "
+                        f"'{parent['surface']}'; only one determiner is allowed. Remove "
+                        "one of them.")
             if head is None:
                 if _lower(child.get('surface', '')) in DEMONSTRATIVE_STANDALONE:
                     return ('valid', 'C-DETERMINER',
-                            f"Demonstrative/quantifier '{child['surface']}' stands alone as the "
-                            'pronoun head of this NP; license accepted.')
+                            f"'{child['surface']}' stands alone as the noun of the phrase, "
+                            'which is allowed for this word.')
                 return ('error', 'C-HEAD-NOUN',
-                        f"'{child['surface']}' is a determiner/possessive, but this NP has no "
-                        'nominal head; a determiner must modify a noun (or nominalized '
-                        "adjective). Add a noun after the determiner.")
+                        f"'{child['surface']}' needs a noun to go with it, but the phrase "
+                        f"'{parent['surface']}' has no noun. Add a noun after "
+                        f"'{child['surface']}'.")
             if ct in DET_CLASS:
                 return self._det_num(parent, child, head)
             return ('valid', 'C-DETERMINER',
-                    f"Genitive determiner '{child['surface']}' marks possession of the NP.")
+                    f"'{child['surface']}' marks that the noun belongs to someone; that's "
+                    'fine.')
         if ct in NOUN_CLASS:
             if head is not None and child['id'] == head['id']:
                 noun_issue = _noun_form_issue(child)
                 if noun_issue is not None:
                     singular, expected = noun_issue
                     return ('error', 'C-NOUN-FORM',
-                            f"Noun-form violation: '{child['surface']}' is not an "
-                            f"accepted plural of '{singular}'; use '{expected}'.")
+                            f"'{child['surface']}' is not a normal plural of '{singular}'. "
+                            f"Change it to '{expected}'.")
                 num = num_of(child)
                 if child['type'] == 'NN' and (grandparent is not None
                                               and grandparent['type'] in {'S', 'SINV', 'SQ',
@@ -937,10 +1589,10 @@ class MatrixEvaluator:
                     if need is not None:
                         return ('error', 'C-ARTICLE', need)
                 return ('valid', 'C-HEAD-NOUN',
-                        f"Noun '{child['surface']}' ({num or 'unmarked'}) is the head of the NP.")
+                        f"'{child['surface']}' is the main noun of the phrase, which is fine.")
             return ('valid', 'C-NOUN-ADJUNCT',
-                    f"Noun '{child['surface']}' modifies the NP head "
-                    f"('{head['surface'] if head else '?'}').")
+                    f"'{child['surface']}' is used to describe the noun "
+                    f"'{head['surface'] if head else '?'}', which is fine.")
         if ct in ADJ_CLASS or ct == 'ADJP':
             if ct in ADJ_CLASS and _lower(child.get('surface', '')) in \
                     {'less', 'fewer', 'much', 'many', 'little', 'few'}:
@@ -950,20 +1602,21 @@ class MatrixEvaluator:
             return self._modifier_pos(parent, child)
         if ct == 'PP':
             return ('valid', 'C-NP-POSTMODIFIER',
-                    f"PP '{child['surface']}' postmodifies the NP headed by "
-                    f"'{head['surface'] if head else '?'}'.")
+                    f"The phrase '{child['surface']}' comes after and describes the noun "
+                    f"'{head['surface'] if head else '?'}', which is fine.")
         if ct == 'VP':
             return ('valid', 'C-NP-REDUCED-RELATIVE',
-                    f"VP '{child['surface']}' is a reduced relative clause postmodifying the NP.")
+                    f"The phrase '{child['surface']}' describes the noun after it, which "
+                    'is fine.')
         if ct in {'SBAR', 'S'}:
             return ('valid', 'C-NP-RELATIVE',
-                    f"Clause '{child['surface']}' is a relative clause modifying the NP.")
+                    f"The clause '{child['surface']}' describes the noun, which is fine.")
         if ct == 'CC':
             return ('valid', 'C-COORDINATOR',
-                    f"Coordinator '{child['surface']}' joins NP conjuncts.")
+                    f"'{child['surface']}' joins two nouns, which is fine.")
         if ct in {'NP', 'NML', 'NX'}:
             return ('valid', 'C-NP-COMPOUND',
-                    f"NP '{child['surface']}' supplies the internal structure of the NP.")
+                    f"'{child['surface']}' builds up the noun phrase, which is fine.")
         return self._unlisted(parent, child)
 
     @staticmethod
@@ -971,7 +1624,8 @@ class MatrixEvaluator:
         word = _lower(child['surface'])
         if head is None:
             return ('error', 'C-QUANTIFIER',
-                    f"Quantifier '{child['surface']}' has no count/mass noun to modify.")
+                    f"'{child['surface']}' is a quantity word, but there is no noun here "
+                    'for it to go with.')
         base = _base_form(head)
         num = num_of(head)
         # selection map: word -> required number (None = number-neutral)
@@ -982,13 +1636,13 @@ class MatrixEvaluator:
                   'little': 'few', 'few': 'little'}[word]
         if num is not None and req != num:
             return ('error', 'C-QUANTIFIER',
-                    f"Quantifier-noun agreement violated: '{child['surface']}' selects "
-                    f"{'singular/mass' if req == 'sg' else 'plural count'} nouns, but the "
-                    f"head noun '{head['surface']}' is {num}; use '{paired}' before "
-                    f"{'plural count' if req == 'sg' else 'mass/singular'} nouns.")
+                    f"'{child['surface']}' is used with "
+                    f"{'singular or uncountable' if req == 'sg' else 'plural countable'} "
+                    f"nouns, but '{head['surface']}' is {num}. Change '{child['surface']}' to "
+                    f"'{paired}'.")
         return ('valid', 'C-QUANTIFIER',
-                f"Quantifier '{child['surface']}' agrees with the head noun "
-                f"'{head['surface']}' ({num or 'unmarked'}).")
+                f"'{child['surface']}' goes with the noun '{head['surface']}' correctly, "
+                'which is fine.')
 
     @staticmethod
     def _det_num(parent, child, head):
@@ -998,8 +1652,9 @@ class MatrixEvaluator:
         child_num = f"'{head['surface']}'" if head else 'the head noun'
         if numreq is not None and num is not None and numreq in ('sg', 'pl') and numreq != num:
             return ('error', 'C-DETERMINER-AGREEMENT',
-                    f"Determiner-noun agreement violated: determiner '{child['surface']}' selects "
-                    f"number {numreq}, but the head noun '{head['surface']}' is {num}.")
+                    f"'{child['surface']}' goes with {'singular' if numreq == 'sg' else 'plural'} "
+                    f"nouns, but '{head['surface']}' is {num}. Change one of them so they "
+                    'match.')
         if det in ('a', 'an'):
             leaves = _leaves_list(parent)
             idx = next((i for i, lf in enumerate(leaves) if lf['id'] == child['id']), None)
@@ -1008,28 +1663,29 @@ class MatrixEvaluator:
                 need = _indefinite_article(nxt)
                 if need != det:
                     return ('error', 'C-ARTICLE-MISMATCH',
-                            f"Article-selection error: '{child['surface']}' precedes "
-                            f"'{nxt}', which starts with a "
-                            f"{'vowel sound' if need == 'an' else 'consonant sound'}; "
-                            f"use '{'an' if need == 'an' else 'a'}' instead.")
+                            f"'{child['surface']}' is the wrong word before '{nxt}', which "
+                            f"starts with a "
+                            f"{'vowel' if need == 'an' else 'consonant'} sound. Change "
+                            f"'{child['surface']}' to '{need}'.")
         if numreq is not None and num is not None:
             return ('valid', 'C-DETERMINER',
-                    f"Determiner '{child['surface']}' (number {numreq}) agrees with head noun "
-                    f"'{head['surface']}' ({num}).")
+                    f"'{child['surface']}' and the noun '{head['surface']}' match in "
+                    'singular/plural, which is fine.')
         return ('valid', 'C-DETERMINER',
-                f"Determiner '{child['surface']}' is number-neutral (or {child_num} is unmarked); "
-                'no number conflict.')
+                f"'{child['surface']}' works with '{head['surface'] if head else 'the noun'}', "
+                'which is fine.')
 
     @staticmethod
     def _modifier_pos(parent, child):
         head = phrase_head(parent)
         if head is not None and child['span'][0] > head['span'][0]:
             return ('error', 'C-MOD-POS',
-                    f"Modifier placement: '{child['surface']}' appears after the head noun "
-                    f"'{head['surface']}'; NP modifiers must precede their head.")
+                    f"'{child['surface']}' should come before the noun '{head['surface']}', "
+                    f"but it comes after it. Move '{child['surface']}' before "
+                    f"'{head['surface']}'.")
         return ('valid', 'C-MOD-POS',
-                f"Modifier '{child['surface']}' precedes the head noun "
-                f"'{head['surface'] if head else '?'}'; position licensed.")
+                f"'{child['surface']}' comes before the noun "
+                f"'{head['surface'] if head else '?'}', which is the right order.")
 
     def _vp_rule(self, parent, child):
         ct = child['type']
@@ -1041,52 +1697,56 @@ class MatrixEvaluator:
                 return self._verb_head(parent, child)
         if ct in NOUN_CLASS:
             return ('error', 'C-HEAD-VERB',
-                    f"A VP must be headed by a verb, but '{child['surface']}' is a noun "
-                    f"({ct}); the parser could not find a verb head in '{parent['surface']}'.")
+                    f"The phrase '{parent['surface']}' needs a verb as its main word, but "
+                    f"'{child['surface']}' is a noun. Add a real verb.")
         if ct == 'VP':
             return ('valid', 'C-AUX-COMPLEMENT',
-                    f"VP '{child['surface']}' is the complement of the auxiliary structure.")
+                    f"The verb phrase '{child['surface']}' completes the auxiliary "
+                    'structure, which is fine.')
         if ct == 'NP':
             obj_pron = _object_pronoun_error(child, head)
             if obj_pron is not None:
                 return ('error', 'C-PRONOUN-CASE', obj_pron)
             return ('valid', 'C-DIRECT-OBJECT',
-                    f"NP '{child['surface']}' is the direct object of "
-                    f"'{head['surface'] if head else 'the verb'}'.")
+                    f"'{child['surface']}' is the object of the verb "
+                    f"'{head['surface'] if head else 'the verb'}', which is fine.")
         if ct == 'PP':
             return ('valid', 'C-ADJUNCT',
-                    f"PP '{child['surface']}' is an oblique/adjunct modifier of the VP.")
+                    f"The phrase '{child['surface']}' adds extra detail about the verb, "
+                    'which is fine.')
         if ct == 'ADJP':
             if self._vp_predicate_adj_err(parent, child):
                 return ('error', 'C-ADJ-ADV',
-                        f"Adjective\u2013adverb confusion: '{child['surface']}' is an adjective "
-                        f"phrase used after action verb '{head['surface'] if head else 'the verb'}', "
-                        f"which is not a linking verb; use the adverb form "
-                        f"('{self._adverbial_form(child['surface'].split()[-1])}') instead.")
+                        f"'{child['surface']}' is an adjective, but it describes an action "
+                        f"verb ('{head['surface'] if head else 'the verb'}'), which is not a "
+                        f'linking verb like \'seem\'. Use the adverb '
+                        f"'{self._adverbial_form(child['surface'].split()[-1])}' instead.")
             return ('valid', 'C-PREDICATE-ADJECTIVE',
-                    f"Adjective phrase '{child['surface']}' is a predicate/object complement.")
+                    f"The adjective phrase '{child['surface']}' describes the subject, "
+                    'which is fine.')
         if ct == 'ADVP':
             adv = phrase_head(child)
             if adv is not None and _lower(adv['surface']) in ASTRAY_FLAT_ADV:
                 return ('error', 'C-ADJ-ADV',
-                        f"Adjective\u2013adverb confusion: '{adv['surface']}' is a flat "
-                        f"adjective form; use the adverb '{self._adverbial_form(adv['surface'])}' "
-                        f"after action verb '{head['surface'] if head else 'the verb'}'.")
+                        f"'{adv['surface']}' is an adjective, but it describes the action of "
+                        f"'{head['surface'] if head else 'the verb'}'. Change "
+                        f"'{adv['surface']}' to the adverb "
+                        f"'{self._adverbial_form(adv['surface'])}'.")
             return ('valid', 'C-ADVERBIAL',
-                    f"Adverbial '{child['surface']}' modifies the VP.")
+                    f"'{child['surface']}' adds detail about the verb, which is fine.")
         if ct == 'SBAR':
             return ('valid', 'C-CLAUSAL-COMPLEMENT',
-                    f"Clause '{child['surface']}' is the complement of the VP.")
+                    f"The clause '{child['surface']}' completes the verb phrase, which is fine.")
         if ct == 'S':
             return ('valid', 'C-SMALL-CLAUSE',
-                    f"Clause '{child['surface']}' is a small-clause/object complement of the "
-                    f"verb '{head['surface'] if head else 'the verb'}'.")
+                    f"The clause '{child['surface']}' is an object of the verb "
+                    f"'{head['surface'] if head else 'the verb'}', which is fine.")
         if ct == 'TO':
             return ('valid', 'C-INFINITIVAL-MARKER',
-                    f"Marker 'to' introduces the non-finite infinitive verb phrase.")
+                    "'to' introduces the infinitive verb phrase that follows, which is fine.")
         if ct == 'RP':
             return ('valid', 'C-PARTICLE',
-                    f"Particle '{child['surface']}' completes a phrasal verb construction.")
+                    f"'{child['surface']}' completes the phrasal verb, which is fine.")
         return self._unlisted(parent, child)
 
     @staticmethod
@@ -1095,7 +1755,7 @@ class MatrixEvaluator:
         plain action verb (not linking/copular) and there is no object NP that the
         adjective could be complementing."""
         head = phrase_head(vp_node)
-        if head is None or _lower(head['surface']) in LINKING_VERBS:
+        if head is None or _lower(head['surface']) in LINKING_VERB_FORMS:
             return False
         earlier = [c for c in vp_node['children']
                    if c['id'] != adjp_child['id']
@@ -1129,12 +1789,15 @@ class MatrixEvaluator:
         role = 'finite' if child['type'] in {'VBZ', 'VBP', 'VBD', 'MD'} else 'non-finite'
         if not _is_valid_verb_form(child):
             expected = 'past tense' if child['type'] == 'VBD' else 'past participle'
+            low = _lower(child.get('surface', ''))
+            base = _verb_lemma(low) or _base_form(child)
+            target = _past_form(base) if expected == 'past tense' else _vbn_form(base)
             return ('error', 'C-VERB-FORM',
-                    f"Verb '{child['surface']}' is not a valid {expected} form; "
-                    'use the lexical form required by the verb.')
+                    f"'{child['surface']}' is not a valid {expected} form. "
+                    f"Change it to '{target}'.")
         return ('valid', 'C-HEAD-VERB',
-                f"Verb '{child['surface']}' ({VERB_FORM_LABEL.get(child['type'], role)}) is the "
-                f"{role} head of the VP.")
+                f"'{child['surface']}' is the main verb of the verb phrase and it is "
+                f"a {role} form, which is fine.")
 
     @staticmethod
     def _aux_class(child):
@@ -1158,9 +1821,12 @@ class MatrixEvaluator:
             return self._verb_head(parent, child)
         if not _is_valid_verb_form(verb_node):
             expected = 'the past participle' if cls == 'have' else 'a valid participle'
+            low = _lower(verb_node.get('surface', ''))
+            base = _verb_lemma(low) or _base_form(verb_node)
+            target = _vbn_form(base) if cls in ('have', 'be') else base
             return ('error', 'C-VERB-FORM',
-                    f"Verb-form violation: '{verb_node['surface']}' is not {expected}; "
-                    f"do not use a regularized or past-tense form after '{child['surface']}'.")
+                    f"'{verb_node['surface']}' is not {expected}, and it comes right after "
+                    f"'{child['surface']}'. Change '{verb_node['surface']}' to '{target}'.")
         required = {'modal': 'the base form', 'do': 'the base form',
                     'have': 'the past participle',
                     'be': 'a participle (progressive or passive)'}[cls]
@@ -1169,11 +1835,16 @@ class MatrixEvaluator:
         got = VERB_FORM_LABEL.get(verb_node['type'], verb_node['type'])
         if verb_node['type'] in ok_forms[cls]:
             return ('valid', 'C-AUXILIARY',
-                    f"Auxiliary '{child['surface']}' ({cls}) is correctly followed by "
-                    f"'{verb_node['surface']}' ({got}).")
+                    f"'{child['surface']}' is correctly followed by '{verb_node['surface']}' "
+                    f"({got}), which is fine.")
+        base = _base_form(verb_node)
+        target = {'modal': base, 'do': base,
+                  'have': _vbn_form(base),
+                  'be': _vbg_form(base)}[cls]
         return ('error', 'C-AUX-FORM',
-                f"Auxiliary verb-form violated: '{child['surface']}' ({cls}) requires "
-                f"{required}, but the next verb '{verb_node['surface']}' is {got}.")
+                f"'{child['surface']}' ({cls}) must be followed by {required}, but the next "
+                f"word '{verb_node['surface']}' is {got}. Change '{verb_node['surface']}' to "
+                f"'{target}'.")
 
     @staticmethod
     def _following_verb(parent, aux_child):
@@ -1248,33 +1919,37 @@ class MatrixEvaluator:
     def _rem_agreement(self, node, parent):
         subj, vp = clause_subject_and_verb(parent)
         vp_head = phrase_head(node) if vp is None else phrase_head(vp)
-        subj_head = phrase_head(subj)
-        if subj is None or subj_head is None or vp_head is None:
+        if subj is None:
+            return None
+        subj_head = subject_head(subj)
+        if subj_head is None or vp_head is None:
             return None
         coordinated = is_coordinated(subj)
         sk = ('3', 'pl') if coordinated else subject_key(subj_head)
         subj_label = '3rd person plural' if coordinated else self._subj_label(subj_head)
         verb_surface = vp_head['surface']
         verb_label = self._verb_label(vp_head)
-        violation = (f"Subject\u2013Verb Agreement Conflict: the subject '{subj['surface']}' is "
-                     f"{subj_label}, but the predicate verb '{verb_surface}' is {verb_label}.")
+        violation = (f"The subject '{subj['surface']}' is {subj_label}, but the verb "
+                     f"'{verb_surface}' is {verb_label}, so they do not match.")
         if sk == ('3', 'sg'):
             target = _preserve_case(verb_surface, _third_present(_base_form(vp_head)))
             target_pos = 'VBZ'
         else:
             target = _preserve_case(verb_surface, _nonthird_present(_base_form(vp_head)))
             target_pos = 'VBP'
-        suggested = (f"Change '{verb_surface}' to '{target}' "
-                     f"({'third-person singular present' if target_pos == 'VBZ' else 'non-third-person present'}) "
-                     f"so it agrees with the {subj_label} subject '{subj['surface']}'.")
+        if target_pos == 'VBZ':
+            form_desc = 'the third-person singular present form'
+        else:
+            form_desc = f"the form used with plural subjects like '{subj_head['surface']}'"
+        suggested = (f"Change '{verb_surface}' to '{target}' ({form_desc}) "
+                     f"so it matches the {subj_label} subject '{subj['surface']}'.")
         return {
             'violation': violation,
             'suggested_fix': suggested,
             'alternative_fix': self._subject_fix_alternative(subj, subj_head, vp_head),
-            'targeted_outcome': (f"Subject NP ({subj_label}) + verb {target_pos} "
-                                 f"instead of Subject NP ({subj_label}) + verb {vp_head['type']}"),
+            'targeted_outcome': (f"Subject ({subj_label}) + verb {target_pos} "
+                                 f"instead of Subject ({subj_label}) + verb {vp_head['type']}"),
             'edit': _edit(vp_head['span'][0], vp_head['span'][1], target)
-
         }
 
     @staticmethod
@@ -1287,9 +1962,9 @@ class MatrixEvaluator:
                     head_word = _preserve_case(subj_head['surface'], _singular_noun(subj_head))
                 else:
                     head_word = 'she/he'
-                return (f"Or rewrite with a single singular subject so it agrees with "
-                        f"'{verb_surface}': drop the conjunction and use just "
-                        f"'{head_word}' instead of the coordinate subject '{subj['surface']}'.")
+                return (f"Or use a single singular subject with '{verb_surface}': drop the "
+                        f"conjunction and keep just '{head_word}' instead of the paired "
+                        f"subject '{subj['surface']}'.")
             return None
         if verb_key(vp_head) == ('3', 'sg'):
             if subj_head['type'] == 'PRP':
@@ -1299,18 +1974,18 @@ class MatrixEvaluator:
                 if swap is None:
                     return None
                 return (f"Or change the subject pronoun '{subj_head['surface']}' to "
-                        f"'{swap}' so it agrees with '{verb_surface}'.")
+                        f"'{swap}' so it matches '{verb_surface}'.")
             singular = _replace_subject_head(subj, subj_head, _singular_noun(subj_head))
-            return (f"Or change the subject so it agrees with '{verb_surface}': use "
-                    f"'{singular}' (singular) instead of '{subj['surface']}'.")
+            return (f"Or change the subject to the singular '{singular}' instead of "
+                    f"'{subj['surface']}', so it matches '{verb_surface}'.")
         plural = _plural_noun(_singular_noun(subj_head))
         if subj_head['type'] == 'PRP':
             swap = {'they': 'they', 'we': 'we', 'he': 'he or she'}.get(_base_form(subj_head))
             return (f"Or keep the subject '{subj['surface']}' and change the verb instead, so "
-                    f"the pair agrees.")
-        return (f"Or change the subject to plural so it agrees with '{verb_surface}': use "
+                    f"the two match.")
+        return (f"Or change the subject to the plural "
                 f"'{_preserve_case(subj_head['surface'], plural)}' instead of "
-                f"'{subj['surface']}'.")
+                f"'{subj['surface']}', so it matches '{verb_surface}'.")
 
     def _rem_det(self, node, parent):
         head = phrase_head(parent) if parent else None
@@ -1322,22 +1997,22 @@ class MatrixEvaluator:
             return None
         det_s = node['surface']
         noun_s = head['surface']
-        violation = (f"Determiner\u2013Noun Agreement Conflict: the determiner '{det_s}' selects "
-                     f"number {numreq}, but the head noun '{noun_s}' is {num}.")
+        violation = (f"'{det_s}' goes with {'singular' if numreq == 'sg' else 'plural'} nouns, "
+                     f"but the noun '{noun_s}' is {num}, so they do not match.")
         if numreq == 'pl':
             fix_noun = _preserve_case(noun_s, _plural_noun(_singular_noun(head)))
-            suggested = (f"Change '{noun_s}' to the plural '{fix_noun}' so it matches the "
-                         f"plural determiner '{det_s}'.")
-            alternative = (f"Or change the determiner to a singular one (e.g. 'this', 'that', "
-                           f"'a', 'an') so it matches the singular noun '{noun_s}'.")
-            outcome = f"DT (number: {numreq}) + NNS instead of DT (number: {numreq}) + {head['type']}"
+            suggested = (f"Change '{noun_s}' to the plural '{fix_noun}' so it matches "
+                         f"'{det_s}'.")
+            alternative = (f"Or change '{det_s}' to a singular word like 'this' or 'a' so it "
+                           f"matches the singular noun '{noun_s}'.")
+            outcome = f"'{det_s}' + plural noun instead of '{det_s}' + '{noun_s}'"
         else:  # numreq == 'sg', noun plural
             fix_noun = _preserve_case(noun_s, _singular_noun(head))
-            suggested = (f"Change '{noun_s}' to the singular '{fix_noun}' so it matches the "
-                         f"singular determiner '{det_s}'.")
-            alternative = (f"Or change the determiner to a plural one (e.g. 'these', 'those') "
-                           f"so it matches the plural noun '{noun_s}'.")
-            outcome = f"DT (number: {numreq}) + NN instead of DT (number: {numreq}) + {head['type']}"
+            suggested = (f"Change '{noun_s}' to the singular '{fix_noun}' so it matches "
+                         f"'{det_s}'.")
+            alternative = (f"Or change '{det_s}' to a plural word like 'these' or 'those' so "
+                           f"it matches the plural noun '{noun_s}'.")
+            outcome = f"'{det_s}' + singular noun instead of '{det_s}' + '{noun_s}'"
         return {
             'violation': violation,
             'suggested_fix': suggested,
@@ -1354,18 +2029,17 @@ class MatrixEvaluator:
         singular, expected = issue
         observed = node['surface']
         if expected == singular:
-            correction = (f"Use '{_preserve_case(observed, expected)}' instead; "
+            correction = (f"Change '{observed}' to '{_preserve_case(observed, expected)}'; "
                           f"'{singular}' is already the complete plural form.")
         else:
-            correction = (f"Replace '{observed}' with '{_preserve_case(observed, expected)}'; "
-                          f"the standard plural of '{singular}' is '{expected}'.")
+            correction = (f"Change '{observed}' to '{_preserve_case(observed, expected)}'; "
+                          f"the normal plural of '{singular}' is '{expected}'.")
         return {
-            'violation': (f"Noun Form Conflict: '{observed}' is not the accepted plural "
-                          f"form of '{singular}'."),
+            'violation': (f"'{observed}' is not the normal plural of '{singular}'."),
             'suggested_fix': correction,
             'alternative_fix': (f"Or use the singular noun '{_preserve_case(observed, singular)}' "
-                                "with a singular determiner such as 'a' or 'this'."),
-            'targeted_outcome': f"{singular} + NNS with an accepted plural form",
+                                "with a singular word like 'a' or 'this'."),
+            'targeted_outcome': f"'{singular}' with a correct plural form",
             'edit': _edit(node['span'][0], node['span'][1], _preserve_case(observed, expected))
         }
 
@@ -1385,39 +2059,40 @@ class MatrixEvaluator:
         if verb is None or parent is None:
             return None
         got_label = VERB_FORM_LABEL.get(verb['type'], verb['type'])
-        base = _base_form(verb)
+        base = _verb_lemma(_lower(verb.get('surface', ''))) or _base_form(verb)
         aux_s = node['surface']
         v_s = verb['surface']
         required = ('the base form' if cls in ('modal', 'do')
                     else 'the past participle' if cls == 'have'
                     else 'a participle (progressive or passive)')
-        violation = (f"Auxiliary Verb-Form Conflict: the auxiliary '{aux_s}' requires the main "
-                     f"verb in {required}, but '{v_s}' is {got_label}.")
+        violation = (f"'{aux_s}' is an auxiliary word that must be followed by {required}, "
+                     f"but the next verb '{v_s}' is {got_label}.")
         if cls in ('modal', 'do'):
             target = _preserve_case(v_s, base)
             auxiliary_kind = 'modal' if cls == 'modal' else 'do-form'
-            suggested = (f"Change '{v_s}' to the base form '{target}' after "
-                         f"'{aux_s}' ({auxiliary_kind} auxiliary).")
+            suggested = (f"Change '{v_s}' to the base form '{target}' so it follows "
+                         f"'{aux_s}' ({auxiliary_kind}).")
             if cls == 'modal':
-                alternative = (f"Or drop the modal '{aux_s}' and keep a finite verb, e.g. "
-                               f"'{_preserve_case(v_s, _third_present(base))}' when the subject "
-                               f"is third-person singular.")
+                alternative = (f"Or drop '{aux_s}' and use a tensed verb like "
+                               f"'{_preserve_case(v_s, _third_present(base))}' (when the "
+                               'subject is third-person singular) or the past form.')
             else:
-                alternative = (f"Or rephrase to avoid 'do' + '{v_s}' (e.g. use a simple finite "
-                               f"present or past verb).")
-            outcome = f"MD/AUX + VB instead of MD/AUX + {verb['type']}"
+                alternative = (f"Or rephrase so '{v_s}' stands alone as a tensed verb "
+                               f"(for example, past or present) instead of using 'do'.")
+            outcome = f"'{aux_s}' + '{target}' instead of '{aux_s}' + '{v_s}'"
         elif cls == 'have':
             target = _preserve_case(v_s, _vbn_form(base))
             suggested = (f"Change '{v_s}' to the past participle '{target}' after '{aux_s}', "
-                         f"because a 'have'-form auxiliary requires a past participle.")
+                          f"because '{aux_s}' is a 'have' word and needs the past participle.")
             alternative = None
-            outcome = f"AUX(have) + VBN instead of AUX(have) + {verb['type']}"
+            outcome = f"'{aux_s}' + '{target}' instead of '{aux_s}' + '{v_s}'"
         else:  # be
             target = _preserve_case(v_s, _vbg_form(base))
             suggested = (f"Change '{v_s}' to the present participle '{target}' after '{aux_s}' "
-                         f"(or keep a past participle for a passive sentence).")
-            alternative = None
-            outcome = f"AUX(be) + VBG/VBN instead of AUX(be) + {verb['type']}"
+                          f"(or a past participle for a passive sentence).")
+            alternative = (f"Or drop '{aux_s}' and use the simple present "
+                            f"'{_preserve_case(v_s, base)}'.")
+            outcome = f"'{aux_s}' + '{target}' instead of '{aux_s}' + '{v_s}'"
         return {
             'violation': violation,
             'suggested_fix': suggested,
@@ -1436,12 +2111,12 @@ class MatrixEvaluator:
         keep = dets[0]['surface']
         extras = ', '.join(f"'{d['surface']}'" for d in dets[1:])
         return {
-            'violation': (f"Determiner-Stacking Conflict: the NP '{parent['surface']}' contains "
-                          f"more than one determiner."),
-            'suggested_fix': f"Remove the extra determiner(s) {extras} and keep '{keep}'.",
-            'alternative_fix': (f"Or merge the determiners into one (e.g. use a single "
-                                f"possessive or quantifier instead of several)."),
-            'targeted_outcome': "DT + NP (single determinative) instead of DT + DT + NP",
+            'violation': (f"The phrase '{parent['surface']}' has more than one determiner "
+                          f'({keep} and {extras}).'),
+            'suggested_fix': f"Remove {extras} and keep '{keep}'.",
+            'alternative_fix': (f"Or keep a different one instead: drop '{keep}' and keep "
+                                f"{extras}, so only one determiner remains."),
+            'targeted_outcome': "One determiner in the phrase",
             'edit': _edit(dets[1]['span'][0], dets[1]['span'][1], '')
         }
 
@@ -1455,14 +2130,12 @@ class MatrixEvaluator:
             edit = _edit(head['span'][0], node['span'][1], f"{node['surface']} {head['surface']}")
         
         return {
-            'violation': (f"Modifier Placement Conflict: '{node['surface']}' appears after the "
-                          f"head noun '{head['surface']}'."),
-            'suggested_fix': (f"Move '{node['surface']}' so it precedes the head noun: NP "
-                              f"modifiers come before their head (e.g. '{node['surface']} "
-                              f"{head['surface']}')."),
+            'violation': (f"'{node['surface']}' comes after the noun '{head['surface']}', but "
+                          "it should come before it."),
+            'suggested_fix': (f"Move '{node['surface']}' in front of '{head['surface']}': "
+                              f"'{node['surface']} {head['surface']}'."),
             'alternative_fix': None,
-            'targeted_outcome': f"Modifier + {head['type']} (head-final order) instead of "
-                                f"{head['type']} + modifier",
+            'targeted_outcome': f"'{node['surface']}' before '{head['surface']}'",
             'edit': edit
         }
 
@@ -1470,14 +2143,20 @@ class MatrixEvaluator:
         if parent is None:
             return None
         det_s = node['surface'] if node is not None else 'a determiner'
+        adj_leaves = [lf for lf in _leaves_list(parent)
+                      if lf['type'] in ADJ_CLASS]
+        if adj_leaves:
+            target = f"{det_s} {adj_leaves[0]['surface']} one"
+        else:
+            target = f"{det_s} one"
         return {
-            'violation': (f"Head Noun Conflict: the NP '{parent['surface']}' contains the "
-                          f"determiner/possessive '{det_s}' but no noun can head it."),
-            'suggested_fix': (f"Add the noun that '{det_s}' modifies so the NP has a head, "
-                              f"e.g. write '{det_s} idea' instead of using '{det_s}' alone."),
-            'alternative_fix': (f"Or replace the whole phrase with a proper name or noun "
-                                f"phrase that can stand as the argument."),
-            'targeted_outcome': f"NP \u2192 {parent['type']} + NN instead of a bare determiner phrase",
+            'violation': (f"'{det_s}' needs a noun to go with it, but the phrase "
+                          f"'{parent['surface']}' has no noun."),
+            'suggested_fix': (f"Add a noun after '{det_s}': write '{target}' instead of "
+                              f"just '{det_s}'."),
+            'alternative_fix': (f"Or replace the whole phrase '{parent['surface']}' with a "
+                                "person's name or a full noun phrase."),
+            'targeted_outcome': f"'{det_s}' followed by a noun",
         }
 
     @staticmethod
@@ -1497,20 +2176,21 @@ class MatrixEvaluator:
             head = phrase_head(node) if node else None
         if head is None or head['type'] != 'PRP':
             return None
-        objective_needed = self._pronoun_case_needed(head, parent)
+        objective_needed = parent is not None and parent['type'] not in SENTENCE_CLASSES
         target = self._pronoun_target(_lower(head['surface']), objective_needed)
-        position = 'object' if objective_needed else 'subject'
-        demand = 'objective' if objective_needed else 'nominative'
+        if target is None:
+            return None
+        position = 'the object' if objective_needed else 'the subject'
+        demand = 'an object' if objective_needed else 'a subject'
         return {
-            'violation': (f"Pronoun Case Conflict: '{head['surface']}' appears in {position} "
-                          f"position but is the '{'objective' if not objective_needed else 'nominative'}' "
-                          f"form."),
-            'suggested_fix': (f"Change '{head['surface']}' to the {demand} form '{target}' "
-                              f"because the {position} of a clause/preposition must be {demand}. "
-                              f"(Write '{target}' instead of '{head['surface']}'.)"),
-            'alternative_fix': (f"Or rewrite so the pronoun is not in {position} position "
-                                f"(e.g. use a noun phrase instead of a pronoun)."),
-            'targeted_outcome': f"PRP ({demand}) instead of PRP ({'objective' if not objective_needed else 'nominative'})",
+            'violation': (f"'{head['surface']}' is the wrong form for {position}. "
+                          f"(It is the "
+                          f"{'subject' if not objective_needed else 'object'} form.)"),
+            'suggested_fix': (f"Change '{head['surface']}' to '{target}', because a pronoun "
+                              f"used as {demand} needs the '{demand}' form."),
+            'alternative_fix': (f"Or use the person's name or another noun in place of "
+                                f"'{head['surface']}' instead."),
+            'targeted_outcome': f"'{target}' instead of '{head['surface']}'",
             'edit': _edit(head['span'][0], head['span'][1], _preserve_case(head['surface'], target))
         }
 
@@ -1534,13 +2214,12 @@ class MatrixEvaluator:
             leaf = node
             wrong, right = node['surface'], self._adverbial_form(node['surface'])
         return {
-            'violation': (f"Adjective\u2013Adverb Confusion: '{wrong}' is an adjective form used "
-                          f"where an adverb is required."),
-            'suggested_fix': (f"Change '{wrong}' to the adverb '{right}' to modify the verb "
-                              f"(verbs are modified by adverbs, not adjectives)."),
-            'alternative_fix': (f"Or rephrase with an adjective predicated of the subject, e.g. "
-                                f"change the verb so the adjective modifies a noun instead."),
-            'targeted_outcome': "ADVP \u2192 RB (adverb) instead of ADVP/ADJP \u2192 JJ (adjective)",
+            'violation': (f"'{wrong}' is an adjective, but an adverb is needed here."),
+            'suggested_fix': (f"Change '{wrong}' to the adverb '{right}', because this word "
+                              'describes how an action is done.'),
+            'alternative_fix': (f"Or rephrase so '{wrong}' describes a noun instead of a verb "
+                                f"(for example by using a linking verb like 'seem' before it)."),
+            'targeted_outcome': f"'{right}' instead of '{wrong}'",
             'edit': (_edit(leaf['span'][0], leaf['span'][1], _preserve_case(wrong, right))
              if 'children' not in leaf else None)
         }
@@ -1558,16 +2237,15 @@ class MatrixEvaluator:
             else:
                 edit = _edit(parent['span'][0], parent['span'][0], art)
         return {
-            'violation': (f"Article Omission Conflict: the singular count noun "
-                          f"'{node['surface']}' is used without a determiner in an argument "
-                          f"position."),
-            'suggested_fix': (f"Insert the indefinite article '{art}' before "
-                              f"'{node['surface']}' \u2192 '{art} {node['surface']}'."),
-            'alternative_fix': (f"Or use a definite/other determiner: 'the {node['surface']}', "
-                                f"'this {node['surface']}', 'my {node['surface']}'."),
-            'targeted_outcome': f"DT + NN (determined noun) instead of bare NN",\
+            'violation': (f"'{node['surface']}' is a singular noun that names one countable "
+                          "thing, but it is used without a little word like 'a' or 'the' before "
+                          'it.'),
+            'suggested_fix': (f"Add '{art}' before '{node['surface']}' \u2192 "
+                              f"'{art} {node['surface']}'."),
+            'alternative_fix': (f"Or use another word before it: 'the {node['surface']}', "
+                                f"'this {node['surface']}', or 'my {node['surface']}'."),
+            'targeted_outcome': f"'{node['surface']}' with a determiner before it",
             'edit': edit
-                
         }
 
     def _rem_article_mismatch(self, node, parent):
@@ -1582,14 +2260,13 @@ class MatrixEvaluator:
         if need == node['surface'].lower() or need not in ('a', 'an'):
             return None
         return {
-            'violation': (f"Article Selection Conflict: '{node['surface']}' precedes "
-                          f"'{nxt}', which starts with a "
-                          f"{'vowel sound' if need == 'an' else 'consonant sound'}."),
-            'suggested_fix': (f"Change '{node['surface']}' to '{'an' if need == 'an' else 'a'}' "
-                              f"so the article matches the following sound "
-                              f"(\u2192 '{need} {nxt} ...')."),
+            'violation': (f"'{node['surface']}' is the wrong word before '{nxt}', because "
+                          f"'{nxt}' starts with a "
+                          f"{'vowel' if need == 'an' else 'consonant'} sound."),
+            'suggested_fix': (f"Change '{node['surface']}' to '{need}': "
+                              f"'{need} {nxt}'."),
             'alternative_fix': None,
-            'targeted_outcome': f"DT ({need}) + noun instead of DT ({node['surface']}) + noun",
+            'targeted_outcome': f"'{need}' instead of '{node['surface']}'",
             'edit': _edit(node['span'][0], node['span'][1], _preserve_case(node['surface'], need))
         }
 
@@ -1601,12 +2278,11 @@ class MatrixEvaluator:
         first = words[0]
         rewritten = first[0].upper() + first[1:]
         return {
-            'violation': (f"Capitalization Conflict: the sentence begins with lowercase "
-                          f"'{first}'."),
+            'violation': (f"The sentence begins with '{first}' without a capital letter."),
             'suggested_fix': (f"Capitalize the first letter: '{first}' \u2192 '{rewritten}', "
                               f"so the sentence reads '{rewritten + ' ' + ' '.join(words[1:])}'."),
             'alternative_fix': None,
-            'targeted_outcome': "Sentence-initial capital letter",
+            'targeted_outcome': "The sentence starts with a capital letter",
             'edit': _edit(0, 1, rewritten)
         }
 
@@ -1618,24 +2294,25 @@ class MatrixEvaluator:
         head = _np_head(parent)
         noun_s = head['surface'] if head else 'the noun'
         if word == 'less':
-            suggested = (f"Change '{node['surface']}' to 'fewer' because '{noun_s}' is a "
-                         f"plural count noun: '{node['surface']} {noun_s}' \u2192 'fewer {noun_s}'.")
-            alternative = (f"Or use an uncountable noun so '{node['surface']}' is licensed, "
-                           f"e.g. '{node['surface']} information'.")
-            outcome = f"fewer + NNS instead of less + {head['type'] if head else 'NNS'}"
+            suggested = (f"Change '{node['surface']}' to 'fewer', because '{noun_s}' is a "
+                         f"plural noun you can count: '{node['surface']} {noun_s}' \u2192 "
+                         f"'fewer {noun_s}'.")
+            alternative = (f"Or change the noun so it is not countable, letting '{node['surface']}' "
+                           f"stay \u2014 for example use the singular '{head['surface']}' as a "
+                           'mass noun.')
+            outcome = f"'fewer {noun_s}' instead of 'less {noun_s}'"
         else:
-            suggested = (f"Change '{node['surface']}' to 'less' because '{noun_s}' is a "
-                         f"singular/uncountable noun: '{node['surface']} {noun_s}' \u2192 "
+            suggested = (f"Change '{node['surface']}' to 'less', because '{noun_s}' is a "
+                         f"singular noun that is not counted: '{node['surface']} {noun_s}' \u2192 "
                          f"'less {noun_s}'.")
-            alternative = (f"Or make the noun plural count, so 'fewer' is licensed: "
+            alternative = (f"Or make '{noun_s}' plural and countable, so 'fewer' works: "
                            f"'{_plural_noun(_singular_noun(head))}'.")
-            outcome = f"less + NN instead of fewer + {head['type'] if head else 'NN'}"
+            outcome = f"'less {noun_s}' instead of 'fewer {noun_s}'"
 
         new_word = 'fewer' if word == 'less' else 'less'
 
         return {
-            'violation': (f"Quantifier\u2013Noun Agreement Conflict: '{node['surface']}' does "
-                          f"not match the noun '{noun_s}'."),
+            'violation': (f"'{node['surface']}' does not match the noun '{noun_s}'."),
             'suggested_fix': suggested,
             'alternative_fix': alternative,
             'targeted_outcome': outcome,
@@ -1653,28 +2330,42 @@ class MatrixEvaluator:
                 break
         if sibling is None:
             return None
+        plain = sibling['surface']
+        if plain.endswith('est'):
+            plain = plain[:-3]
+        elif plain.endswith('er'):
+            plain = plain[:-2]
         return {
-            'violation': (f"Double-Comparative Conflict: '{marker}' + '{sibling['surface']}' "
-                          f"both express {'comparative' if sibling['type'] == 'JJR' else 'superlative'}."),
-            'suggested_fix': (f"Use only the morphological form: '{sibling['surface']}' "
-                              f"(drop '{marker}')."),
-            'alternative_fix': (f"Or use only the degree marker on the positive form: "
-                                f"'{marker} {sibling['surface'][1:]}' is not needed \u2014 prefer "
-                                f"'{sibling['surface']}'."),
-            'targeted_outcome': f"JJR/JJS alone instead of RBR/RBS + JJR/JJS",
+            'violation': (f"'{marker}' and '{sibling['surface']}' both show that something is "
+                          f"{'more of a quality' if sibling['type'] == 'JJR' else 'the most'}, "
+                          'so the comparison is said twice.'),
+            'suggested_fix': (f"Keep just '{sibling['surface']}' and drop '{marker}'."),
+            'alternative_fix': (f"Or keep '{marker}' and write the plain form: "
+                                f"'{marker} {plain}' instead of '{sibling['surface']}'."),
+            'targeted_outcome': f"'{sibling['surface']}' alone (no '{marker}')",
             'edit': _edit(node['span'][0], node['span'][1], '')
         }
 
     def _rem_vp_head_noun(self, node, parent):
         noun_s = node['surface'] if node is not None else '?'
+        phrase_s = parent['surface'] if parent else ''
+        verb_guess = _lower(noun_s)
+        if verb_guess.endswith('ies') and len(verb_guess) > 3:
+            verb_guess = verb_guess[:-3] + 'y'
+        elif verb_guess.endswith('es') and len(verb_guess) > 3:
+            verb_guess = verb_guess[:-2]
+        elif verb_guess.endswith('s') and len(verb_guess) > 2 \
+                and verb_guess not in {'is', 'has', 'does'}:
+            verb_guess = verb_guess[:-1]
         return {
-            'violation': (f"Verb-Head Conflict: the VP '{parent['surface'] if parent else ''}' "
-                          f"is headed by the noun '{noun_s}' instead of a verb."),
-            'suggested_fix': (f"Provide a real verb in the predicate: supply an auxiliary + "
-                              f"participle (e.g. replace the noun '{noun_s}' with the matching "
-                              f"verb form) so the VP is headed by a verb."),
-            'alternative_fix': f"Write a full VP \u2192 V (verb) + complements instead of V \u2192 {node['type'] if node else 'NN'}.",
-            'targeted_outcome': "VP \u2192 verb-headed structure",
+            'violation': (f"The phrase '{phrase_s}' needs a verb as "
+                          f"its main word, but '{noun_s}' is a noun."),
+            'suggested_fix': (f"Put a verb where the noun '{noun_s}' sits: "
+                              f"write '{verb_guess}' (the verb form), or the "
+                              f"action verb this sentence really needs."),
+            'alternative_fix': (f"Or reorder the phrase '{phrase_s}' so the noun "
+                                f"'{noun_s}' is not the main word."),
+            'targeted_outcome': "The clause is headed by a real verb",
         }
 
     def _rem_finite_verb(self, node, parent):
@@ -1685,22 +2376,21 @@ class MatrixEvaluator:
         base = _base_form(vp_head)
         got = VERB_FORM_LABEL.get(vp_head['type'], vp_head['type'])
         finite = _preserve_case(h, _third_present(base))
-        violation = (f"Clause Finiteness Conflict: the predicate verb '{h}' is {got}; a main "
-                     f"clause requires a finite (tensed) verb.")
+        violation = (f"The main verb '{h}' is {got}; a main clause needs a verb in a tensed "
+                     'form (like present or past).')
         if vp_head['type'] == 'VBG':
-            suggested = (f"Make the clause finite: add the auxiliary 'is' before '{h}' "
-                         f"(\u2192 'is {h}'), or change '{h}' to a finite form such as "
-                         f"'{finite}'.")
-            outcome = f"AUX(VBZ) + VBG (or a VBZ head) instead of {vp_head['type']}"
+            suggested = (f"Two ways: add the auxiliary 'is' before '{h}' (\u2192 'is {h}'), "
+                          f"or change '{h}' to a tensed form like '{finite}'.")
+            outcome = f"'{h}' used with a tensed form or 'is'"
         elif vp_head['type'] == 'VBN':
-            suggested = (f"Make the clause finite: add a finite form of 'be' before '{h}' "
-                         f"(e.g. 'is {h}') for the passive, or use a finite auxiliary + "
-                         f"participle.")
-            outcome = f"AUX(VBZ) + VBN instead of {vp_head['type']}"
+            suggested = (f"Add a form of 'be' before '{h}' for a passive sentence "
+                          f"(\u2192 'is {h}'), or change '{h}' to a tensed verb.")
+            outcome = f"'{h}' used with 'be' or as a tensed verb"
         else:  # VB base
-            suggested = (f"Make '{h}' finite: change it to '{finite}' (third-person singular "
-                         f"present) when the subject is singular, or add a finite auxiliary.")
-            outcome = f"VBZ/VBP head instead of {vp_head['type']}"
+            suggested = (f"Make '{h}' tensed: change it to '{finite}' (for a singular subject "
+                         f"like 'he' or 'she'), or add an auxiliary such as "
+                         f"'does' before it: 'does {h}'.")
+            outcome = f"'{h}' changed to a tensed form"
         return {
             'violation': violation,
             'suggested_fix': suggested,
@@ -1712,25 +2402,18 @@ class MatrixEvaluator:
         words = node['surface'].split()
         stripped = ' '.join(w for w in words
                             if not all(ch in '.,;:!?\u2018\u2019\u201c\u201d' for ch in w))
-        example = f"'{stripped} runs.'" if stripped else "e.g. 'The boy runs.'"
+        example = f"'{stripped} runs.'" if stripped else "'The boy runs.'"
         return {
-            'violation': (f"Clause Finiteness Conflict: the input parses as a {node['type']} "
-                          f"fragment, not a full clause \u2014 it has no finite predicate verb."),
-            'suggested_fix': (f"Add a finite predicate verb to complete the clause: restructure "
-                              f"the root so it is S \u2192 NP + VP, e.g. {example}."),
+            'violation': (f"This input reads as a {node['type']}, not a full sentence, because "
+                          'it has no verb in a tensed form.'),
+            'suggested_fix': (f"Add a main verb so it becomes a complete sentence \u2014 for "
+                              f"example {example} (or use the verb you really mean)."),
             'alternative_fix': None,
-            'targeted_outcome': f"root S (NP + VP) instead of a {node['type']} fragment",
+            'targeted_outcome': "A complete sentence with a subject and a verb",
         }
 
     def _rem_generic(self, detail):
-        label = CHECK_LABELS.get(detail['constraint'], detail['constraint'])
-        return {
-            'violation': detail['text'],
-            'suggested_fix': (f"Adjust this constituent so that the {label} check is satisfied; "
-                              f"see the focused Violation Breakdown above."),
-            'alternative_fix': None,
-            'targeted_outcome': None,
-        }
+        return _rem_from_text(detail['text'], detail.get('surface', ''))
 
     def _root_level(self, root):
         if root['type'] in SENTENCE_CLASSES:
@@ -1739,15 +2422,16 @@ class MatrixEvaluator:
             if first and first[0].isalpha() and first[0].islower():
                 self._detail(root, None, 'sentence capitalization', 'C-CAPITALIZATION',
                              'error',
-                             f"The sentence begins with the lowercase word '{first}'; "
+                             f"The sentence begins with '{first}' without a capital letter; "
                              'sentences must start with a capital letter.')
                 return
             self._detail(root, None, 'sentence root', 'C-ROOT', 'valid',
-                         f"Root {root['type']} spans the full sentence '{root['surface']}'.")
+                         f"The whole input '{root['surface']}' is a complete sentence with a "
+                         'subject and a verb, which is fine.')
             return
         self._detail(root, None, 'fragment root', 'C-TENSE-FINITE', 'error',
-                     f"This input parses as a {root['type']} fragment, not a full clause (S). "
-                     'The clause has no finite predicate verb, so the sentence is incomplete.')
+                     f"This input reads as a {root['type']}, not a full sentence, because it "
+                     'has no verb in a tensed form; the sentence is incomplete.')
 
     def _detail(self, node, parent, role, constraint, status, text):
         self.details[node['id']] = {
@@ -1765,6 +2449,7 @@ class MatrixEvaluator:
             'constraint': constraint,
             'status': status,
             'text': text,
+            'findings': [],
         }
 
     def _role_for(self, constraint):
@@ -1833,27 +2518,61 @@ class MatrixEvaluator:
         unlisted = [d for d in edges if d['status'] == 'unlisted']
         root_detail = self.details.get(root['id'])
         root_error = root_detail is not None and root_detail['status'] == 'error'
-        violations = list(errors)
+        error_findings = []
+        suggestions = []
+        unverified = []
+        for detail in self.details.values():
+            for finding in detail.get('findings', []):
+                if finding['status'] == 'error':
+                    error_findings.append(finding)
+                elif finding['status'] == 'suggestion':
+                    suggestions.append(finding)
+                elif finding['status'] == 'unverified':
+                    unverified.append(finding)
+        violations = list(errors) + error_findings
         if root_error:
             violations.append(root_detail)
         if root_error:
             message = root_detail['text']
         elif errors:
             message = errors[0]['text']
+        elif error_findings:
+            message = error_findings[0]['text']
+        elif unverified or self.checker_errors:
+            message = (f"The rules found no definite mistake in "
+                       f"'{root['surface']}', but {len(unverified)} word(s) could not be "
+                       'confirmed and the check ran into an issue, so this sentence cannot '
+                       'yet be marked fully grammatical.')
         else:
-            message = (f"All {len(valid)} validated edge(s) are licensed by the matrix; "
-                       'the sentence is grammatical.')
+            message = (f"'{root['surface']}' is grammatical: every word is used in an "
+                       'allowed way.')
+        if violations:
+            verdict = 'ungrammatical'
+        elif unverified or self.checker_errors:
+            verdict = 'unverified'
+        else:
+            verdict = 'grammatical'
+        content = self.lex_stats.get('content', 0)
         return {
+            # 'valid' keeps its old meaning (no violation found).  UIs should now
+            # key on 'verdict' so "unverified" is not shown as a green tick.
+            'verdict': verdict,
+            'lexical_coverage': (round(self.lex_stats.get('licensed', 0) / content, 3)
+                                 if content else None),
+            'unverified': [f.get('id') for f in unverified],
+            'checker_errors': list(self.checker_errors),
             'valid': len(violations) == 0,
             'valid_edges': len(valid),
-            'violated_edges': len(errors),
-            'violations': [d['id'] for d in errors],
+            'violated_edges': len(errors) + len(error_findings),
+            'violations': [d.get('id') for d in violations],
             'unrated_edges': len(unlisted),
+            'suggested': len(suggestions),
+            'suggestions': [f.get('id') for f in suggestions],
             'constraints_fired': sorted({d['constraint'] for d in violations}),
             'root_error': root_error,
             'explanation': message,
         }
 
 
-def evaluate(root):
-    return MatrixEvaluator().evaluate(root)
+def evaluate(root, text=None):
+    return MatrixEvaluator().evaluate(root, text=text)

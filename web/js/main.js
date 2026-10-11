@@ -1,4 +1,5 @@
 import { loadClerk, createSupabaseClient } from './auth.js';
+import { API_BASE } from './config.js';
 import { TreeRenderer } from './renderer.js';
 import { getSavedTheme, setTheme } from './theme.js';
 import {
@@ -711,10 +712,10 @@ async function executePipeline(opts = {}) {
   const body = { text };
   if (opts.index !== undefined && opts.index !== null) body.sentence_index = opts.index;
   const target = opts.index !== undefined && opts.index !== null ? `sentence #${opts.index + 1}` : 'first sentence';
-  log(`Stage 2: POST /api/parse (target: ${target})`);
+  log(`Stage 2: POST ${API_BASE}/api/parse (target: ${target})`);
   let res;
   try {
-    res = await fetch('/api/parse', {
+    res = await fetch(`${API_BASE}/api/parse`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
@@ -752,7 +753,7 @@ async function executePipeline(opts = {}) {
   const s = payload.summary;
   log(`Stage 5: rule-matrix validation \u2014 ${s.valid_edges} valid / ${s.violated_edges} violated / ${s.unrated_edges} unrated \u00b7 fired${JSON.stringify(s.constraints_fired)}`);
 
-  renderSentenceVerdict(payload.explainers.basic.split('\n'), !payload.summary.valid);
+  renderSentenceVerdict(payload.explainers.basic.split('\n'), payload.summary.verdict || payload.summary.valid);
   log(`Stage 6: explanations generated \u2014 basic + ${payload.explainers.contrastive ? 'contrastive' : '(none)'}`);
 
   session = { payload };
