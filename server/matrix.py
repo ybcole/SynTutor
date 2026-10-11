@@ -96,6 +96,18 @@ ASTRAY_FLAT_ADV = {'quick', 'slow', 'good', 'bad', 'real', 'nice', 'easy',
 LINKING_VERBS = (BE_FORM | {'seem', 'appear', 'look', 'feel', 'taste', 'sound',
                             'smell', 'become', 'remain', 'stay', 'turn', 'grow',
                             'prove', 'get'})
+# The same verbs in their inflected / written forms, so "She feels tired."
+# is not mistaken for "she feels tiredly" (the adjective-complement reading is
+# legal after every form of a linking verb).
+LINKING_VERB_FORMS = (LINKING_VERBS |
+                      {'feels', 'felt', 'feeling', 'seems', 'seemed', 'seeming',
+                       'appears', 'appeared', 'appearing', 'looks', 'looked',
+                       'looking', 'tastes', 'tasted', 'tasting', 'sounds',
+                       'sounded', 'sounding', 'smells', 'smelled', 'smelling',
+                       'becomes', 'became', 'becoming', 'remains', 'remained',
+                       'remaining', 'stays', 'stayed', 'staying', 'turns',
+                       'turned', 'turning', 'grew', 'grows', 'growing',
+                       'proves', 'proved', 'proving', 'gets', 'got', 'getting'})
 
 # Nouns that license a bare (article-less) singular argument: mass nouns,
 # gerundial/activity nominals and common institutional/abstract nouns.
@@ -127,6 +139,7 @@ NONCOUNT_NOUNS = {
 BARE_ARG_NOUNS = {
     'home', 'school', 'work', 'bed', 'church', 'town', 'court', 'class',
     'college', 'breakfast', 'lunch', 'dinner', 'supper', 'brunch', 'schoolwork',
+    'tv', 'television', 'radio',  # 'watch TV' is idiomatic without an article
 }
 # Words the parser may tag as NN but which never take an article: indefinite
 # pronouns (everyone, somebody, ...) and bare temporal/deictic adverbs.
@@ -145,6 +158,7 @@ VERB_FORM_LABEL = {
 NONFINITE = {'VB', 'VBG', 'VBN'}
 
 CHECK_LABELS = {
+    'C-MLM-ANOMALY': 'Word-Form Anomaly (model-located correction)',
     'C-SUBJECT-AGREEMENT': 'Subject\u2013Verb Agreement',
     'C-PREDICATE': 'Subject\u2013Verb Agreement',
     'C-DETERMINER-AGREEMENT': 'Determiner\u2013Noun Agreement',
@@ -1560,7 +1574,7 @@ class MatrixEvaluator:
         plain action verb (not linking/copular) and there is no object NP that the
         adjective could be complementing."""
         head = phrase_head(vp_node)
-        if head is None or _lower(head['surface']) in LINKING_VERBS:
+        if head is None or _lower(head['surface']) in LINKING_VERB_FORMS:
             return False
         earlier = [c for c in vp_node['children']
                    if c['id'] != adjp_child['id']

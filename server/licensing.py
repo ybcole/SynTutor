@@ -70,6 +70,31 @@ SUFFIX_FAMILIES = (
 FAMILY_UPOS = {'s': ('NOUN', 'VERB', 'ADJ'), 'verbal': ('VERB',), 'cmp': ('ADJ',)}
 OPEN_TAGS = {'NN', 'NNS', 'JJ', 'VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ'}
 
+# Words lemminflect cannot vouch for but that are unquestionably English:
+# quantifiers the parser tags open-class, indefinite compound pronouns, the
+# most common irregular plurals, high-frequency adverbs, and a handful of
+# abbreviations.  Without this, perfectly clean sentences would degrade to
+# 'unverified' (false positives), which is worse than a miss on a typo.
+HIGH_FREQ = {
+    # quantifiers / determiners benepar tags as NN/JJ
+    'many', 'much', 'few', 'couple', 'several', 'both', 'each', 'either',
+    'neither', 'all', 'some', 'any', 'enough', 'plenty', 'most', 'more',
+    'less', 'least', 'numerous', 'various', 'such', 'several',
+    # indefinite compound pronouns
+    'everyone', 'everybody', 'everything', 'everywhere',
+    'anyone', 'anybody', 'anything', 'anywhere',
+    'someone', 'somebody', 'something', 'somewhere',
+    'nobody', 'nothing', 'nowhere', 'noone',
+    # irregular plurals lemminflect does not license as inflections
+    'people', 'children', 'women', 'men', 'mice', 'teeth', 'feet', 'geese',
+    # high-frequency adverbs / time words
+    'here', 'there', 'now', 'then', 'today', 'tomorrow', 'yesterday', 'home',
+    'soon', 'often', 'always', 'already', 'just', 'also', 'still', 'yet',
+    'really', 'very', 'well', 'never', 'sometimes', 'usually', 'again',
+    'almost', 'nearly', 'only', 'too', 'quite', 'rather', 'maybe', 'perhaps',
+    # abbreviations / acronyms
+    'tv', 'ok', 'okay',
+}
 
 _LEMMA_CACHE = {}
 _FORMS_CACHE = {}
@@ -213,6 +238,9 @@ def check_lexicon(leaves, skip_ids=frozenset()):
             continue
         stats['content'] += 1
         low = surface.lower()
+        if low in HIGH_FREQ:
+            stats['licensed'] += 1
+            continue
         status, info = _classify_leaf(low, tag, upos)
 
         if status == 'licensed':
@@ -489,6 +517,7 @@ def collect_all(text, root):
             errors.append({'checker': name, 'error': f'{type(exc).__name__}: {exc}'})
 
     run('ruleset.wordlists', lambda: ruleset._check_wordlists(leaves))
+    run('ruleset.basic', lambda: ruleset._check_basic(root, clauses, leaves))
     run('ruleset.adjective_adverb', lambda: ruleset._check_adjective_adverb(leaves))
     run('ruleset.tree', lambda: ruleset._check_tree(root, clauses, leaves, text))
     run('ruleset.more', lambda: ruleset._check_more(root, clauses, leaves))

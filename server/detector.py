@@ -88,6 +88,33 @@ def classify(text):
         return None
 
 
+def classify_many(texts):
+    """Classify a batch of candidate sentences. Aligned list of classify-style
+    dicts (or None when the detector is out / a call fails)."""
+    pipe = load_detector()
+    if pipe is None or not texts:
+        return [None] * len(texts)
+    try:
+        outs = pipe(texts)
+    except Exception:  # noqa: BLE001 - inert by design
+        return [None] * len(texts)
+    rows = []
+    for out in outs:
+        label = out['label']
+        score = float(out['score'])
+        acceptable = label in _ACCEPTABLE_LABELS
+        rows.append({
+            'available': True,
+            'model': _MODEL_ID,
+            'label': 'acceptable' if acceptable else 'unacceptable',
+            'acceptable': acceptable,
+            'acceptable_prob': round(score if acceptable else 1.0 - score, 4),
+            'confidence': round(max(score, 1.0 - score), 4),
+            'explanation': '',  # batch path carries no prose per candidate
+        })
+    return rows
+
+
 def combine(summary, det):
     """Merge the rules verdict with the detection channel (never mutates)."""
     if det is None:

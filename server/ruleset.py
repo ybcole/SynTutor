@@ -180,6 +180,8 @@ CONTRACTIONS = {
 REFLEXIVE_FIX = {
     'hisself': 'himself', 'theirselves': 'themselves', 'ourselfs': 'ourselves',
     'themselfs': 'themselves', 'yourselfs': 'yourselves',
+    'thereselves': 'themselves', 'theirself': 'themselves', 'theyselves': 'themselves',
+    'theirselfes': 'themselves',
 }
 
 ADVERB_FIX = {
@@ -1360,6 +1362,8 @@ def _check_more(root, clauses, leaves):
             fix = KNOWN_PLURALS[low]
             if low == fix:
                 continue
+            if low == 'person' and lf.get('type') == 'NN':
+                continue  # 'a person' is correct; only 'persons' is odd
             out.append(_finding('1.1', 'error', 'C-PLURAL-FORM', 'noun number',
                                 lf['id'],
                                 f"Wrong plural/singular form '{lf['surface']}'; "
@@ -2192,6 +2196,502 @@ def _check_more(root, clauses, leaves):
                                     _tree_evidence(root['id'],
                                                    'sentence-initial token',
                                                    [{'node': first['id']}])))
+
+    return out
+
+
+# --------------------------------------------------------------------------- #
+# Basic high-frequency surface errors (the "learners' English" layer).         #
+# Deterministic token-stream checks for the most common mistakes: modals,      #
+# existential 'there', numerals before singulars, many/much, preposition +     #
+# subject pronoun, the it's/its and there/their/your homophones, -ing vs       #
+# to-infinitive, 'since' with a non-perfect tense, and stacked/mismatched      #
+# forms.  Each finding maps onto an existing RULEBOOK id.                       #
+# --------------------------------------------------------------------------- #
+MODAL_SURFACES = {'can', 'could', 'may', 'might', 'must', 'shall', 'should',
+                  'will', 'would'}
+TRUE_PREPS = {'in', 'on', 'at', 'to', 'for', 'with', 'by', 'from', 'of',
+              'about', 'over', 'under', 'between', 'among', 'against',
+              'without', 'through', 'into', 'onto', 'off', 'out', 'up', 'down',
+              'around', 'along', 'across', 'beside', 'behind', 'below', 'above',
+              'near', 'past', 'during', 'towards', 'toward', 'upon', 'beyond',
+              'except', 'despite', 'within'}
+SUBJECT_PRON = {'i', 'we', 'he', 'she', 'they'}
+# Numeral / plural-requiring quantifiers (not mass: much / little / less).
+PLURALIZERS = {'many', 'several', 'various', 'numerous', 'both'}
+# Verbs that take a gerund, never a to-infinitive.
+GERUND_TAKERS = {'enjoy', 'finish', 'mind', 'avoid', 'consider', 'suggest',
+                 'keep', 'practice', 'quit', 'imagine', 'admit', 'deny',
+                 'mention', 'miss', 'postpone', 'resist', 'appreciate',
+                 'delay', 'discuss', 'dislike', 'recall', 'recommend'}
+# Indefinite pronouns that are always singular.
+INDEF_SINGULAR = {'everyone', 'everybody', 'anyone', 'anybody', 'someone',
+                  'somebody', 'nobody'}
+NONSTANDARD_ADV = {'fastly', 'succesfully'}
+# Stative verbs in the progressive ('He is liking this book.').
+STATIVE_ING = {'liking', 'knowing', 'wanting', 'needing', 'meaning',
+               'believing', 'understanding', 'remembering', 'forgetting',
+               'realizing', 'recognizing', 'preferring', 'hating', 'belonging',
+               'owning', 'seeming', 'existing', 'mattering', 'consisting',
+               'containing', 'depending', 'doubting', 'agreeing', 'deserving',
+               'resembling'}
+BE_SURFACES_LEAF = {'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being'}
+WH_WORDS = {'where', 'when', 'how', 'why', 'what', 'which', 'who', 'whom'}
+WH_AUX = {'is', 'are', 'was', 'were', 'do', 'does', 'did', 'have', 'has', 'had'}
+SUBJ_PRON_BARE = {'i', 'he', 'she', 'we', 'they'}
+
+
+def _inflected(lemma):
+    forms = {lemma, lemma + 's', lemma + 'ed', lemma + 'ing'}
+    if lemma.endswith('y'):
+        forms.update({lemma[:-1] + 'ies', lemma[:-1] + 'ied'})
+    elif lemma.endswith('e'):
+        forms.update({lemma[:-1] + 'd', lemma[:-1] + 'ing'})
+    elif lemma.endswith('s') or lemma.endswith('x') or lemma.endswith('z') \
+            or lemma.endswith('ch') or lemma.endswith('sh'):
+        forms.add(lemma + 'es')
+    else:
+        forms.add(lemma + 'es')
+    return forms
+
+
+def _base_of(low):
+    """Best-effort base form for a verb surface ending in -s / -ed / -ing."""
+    if low.endswith('ies'):
+        return low[:-3] + 'y'
+    if low.endswith('ing'):
+        return low[:-3]
+    if low.endswith('ed'):
+        return low[: -1] if low.endswith('ied') else low[:-2]
+    if low.endswith('es'):
+        return low[:-2]
+    if low.endswith('s'):
+        return low[:-1]
+    return low
+
+
+def _is_3sg_marked(nlow):
+    """True when a surface ending in -s is the parser-normalised 3rd-singular of
+    a verb (benepar happily retags 'must goes' so 'goes' looks like a bare VB)."""
+    if not nlow.endswith('s') or nlow in ('is', 'has', 'does', 'was'):
+        return False
+    try:
+        from licensing import _lemmas
+        bases = _lemmas(nlow, 'VERB')
+        return bool(bases) and nlow not in bases
+    except Exception:  # pragma: no cover - licensing unavailable -> heuristic
+        return True
+
+
+def _check_basic(root, clauses, leaves):
+    out = []
+    lows = [_lower(x) for x in leaves]
+    verb_tags = ('VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ')
+
+    # --- 6.1 / 6.12 modals --------------------------------------------------- #
+    for i, lf in enumerate(leaves):
+        low = lows[i]
+        if low not in MODAL_SURFACES or i + 1 >= len(leaves):
+            continue
+        nxt = leaves[i + 1]
+        nt = nxt.get('type')
+        nlow = _lower(nxt)
+        if nt in ('VBZ', 'VBP') or (nt == 'VB' and _is_3sg_marked(nlow)):
+            lemma = _base_of(nlow) if _is_3sg_marked(nlow) else nlow
+            out.append(_finding(
+                '6.1', 'error', 'C-MODAL-VERB-FORM', 'verb form', nxt['id'],
+                f"The modal '{lf['surface']}' takes the bare infinitive, but "
+                f"'{nxt['surface']}' is a 3rd-singular form; use '{lemma}'.",
+                _wordlist_evidence(f"{low} {nlow}", [f"{low} {lemma}"],
+                                   'modal + base verb')))
+        elif nlow == 'to':
+            n2 = _lower(leaves[i + 2]) if i + 2 < len(leaves) else '...'
+            out.append(_finding(
+                '6.12', 'error', 'C-MODAL-TO', 'verb form', nxt['id'],
+                f"The modal '{lf['surface']}' is followed by the bare infinitive, "
+                f"not 'to {n2}'.",
+                _tree_evidence(nxt['id'], 'MD + to', [{'node': nxt['id']}])))
+        elif nlow in MODAL_SURFACES:
+            out.append(_finding(
+                '6.12', 'error', 'C-MODAL-STACK', 'verb form', nxt['id'],
+                f"English modals do not stack: drop one of '{lf['surface']}' / "
+                f"'{nxt['surface']}'.",
+                _tree_evidence(nxt['id'], 'MD + MD', [{'node': nxt['id']}])))
+
+    # --- 2.4 existential 'there' + have/has ---------------------------------- #
+    for i, lf in enumerate(leaves):
+        if lows[i] != 'there' or i + 2 >= len(leaves):
+            continue
+        n1, n2 = _lower(leaves[i + 1]), _lower(leaves[i + 2])
+        if n1 in ('have', 'has', 'had') and n2 != 'been':
+            fix = {'have': 'are', 'has': 'is', 'had': 'were'}[n1]
+            out.append(_finding(
+                '2.4', 'error', 'C-EXISTENTIAL-VERB', 'existential',
+                leaves[i + 1]['id'],
+                f"The existential construction uses 'be': 'There {fix} ...', "
+                f"not 'There {n1} ...'.",
+                _wordlist_evidence(f"there {n1}", [f"there {fix}"],
+                                   'existential there + be')))
+
+    # --- 2.10 / 2.11 numeral & quantifier before a singular noun ------------- #
+    for i, lf in enumerate(leaves):
+        low = lows[i]
+        pl = lf.get('type') == 'CD' or low in PLURALIZERS
+        if not pl or i + 1 >= len(leaves):
+            continue
+        if i > 0 and leaves[i - 1].get('type') in (
+                'NN', 'NNS', 'NNP', 'NNPS', 'CD'):
+            continue  # 'page five' / identifier reading
+        j = i + 1
+        while j < len(leaves) and leaves[j].get('type') in ('JJ', 'JJR', 'JJS'):
+            j += 1
+        if j >= len(leaves):
+            continue
+        nxt = leaves[j]
+        if nxt.get('type') == 'IN':
+            continue  # 'many of the ...'
+        if nxt.get('type') == 'NNS':
+            continue
+        if nxt.get('type') == 'NN':
+            rule = '2.10' if lf.get('type') == 'CD' else '2.11'
+            art = ('the numeral' if lf.get('type') == 'CD' else f"'{low}'")
+            out.append(_finding(
+                rule, 'error', 'C-QUANT-PLURAL', 'noun number', nxt['id'],
+                f"After {art} '{lf['surface']}' the noun must be plural: "
+                f"'{nxt['surface']}' \u2192 '{nxt['surface']}s'.",
+                _wordlist_evidence(f"{low} {_lower(nxt)}",
+                                   [f"{low} {_lower(nxt)}s"],
+                                   'numeral/quantifier + plural noun')))
+
+    # --- 2.11 many/much/less with the wrong noun class ----------------------- #
+    for i, lf in enumerate(leaves):
+        low = lows[i]
+        if i + 1 >= len(leaves):
+            continue
+        nxt = leaves[i + 1]
+        nt, nlow = nxt.get('type'), _lower(nxt)
+        if low == 'much' and nt == 'NNS':
+            out.append(_finding(
+                '2.11', 'error', 'C-QUANTIFIER-CLASS', 'quantifier', nxt['id'],
+                f"'much' combines with mass nouns, not count plural '{nxt['surface']}'; "
+                f"use 'many'.",
+                _wordlist_evidence(f"much {nlow}", [f"many {nlow}"],
+                                   'much (mass) vs many (count)')))
+        elif low == 'many' and nt == 'NN':
+            out.append(_finding(
+                '2.11', 'error', 'C-QUANTIFIER-CLASS', 'quantifier', nxt['id'],
+                f"'many' combines with plural count nouns, not singular "
+                f"'{nxt['surface']}'; use 'much' (or a plural noun).",
+                _wordlist_evidence(f"many {nlow}", [f"much {nlow}"],
+                                   'many (count) vs much (mass)')))
+        elif low == 'less' and nt == 'NNS':
+            out.append(_finding(
+                '2.11', 'error', 'C-QUANTIFIER-CLASS', 'quantifier', nxt['id'],
+                f"'less' is for mass nouns; with count plural '{nxt['surface']}' "
+                f"use 'fewer'.",
+                _wordlist_evidence(f"less {nlow}", [f"fewer {nlow}"],
+                                   'less (mass) vs fewer (count)')))
+
+    # --- 5.1 preposition + subject-form pronoun ------------------------------ #
+    for i, lf in enumerate(leaves):
+        if lows[i] in TRUE_PREPS and i + 1 < len(leaves):
+            nxt = _lower(leaves[i + 1]).rstrip('.,;:!?')
+            if nxt in SUBJECT_PRON:
+                obj = {'i': 'me', 'we': 'us', 'he': 'him', 'she': 'her',
+                       'they': 'them'}[nxt]
+                out.append(_finding(
+                    '5.1', 'error', 'C-PREP-PRON-CASE', 'pronoun case',
+                    leaves[i + 1]['id'],
+                    f"The object of the preposition '{lf['surface']}' must be "
+                    f"objective: '{nxt}' \u2192 '{obj}'.",
+                    _tree_evidence(lf['id'],
+                                   'preposition + nominative pronoun',
+                                   [{'node': lf['id']},
+                                    {'node': leaves[i + 1]['id']}])))
+
+    # --- 1.10 homophones: there/their, its/it's, your/you're ------------------ #
+    DT_WORDS = {'a', 'an', 'the', 'this', 'that', 'my', 'your', 'his', 'her',
+                'our', 'their', 'its', 'some', 'any', 'no', 'every'}
+    for i, lf in enumerate(leaves):
+        low = lows[i]
+        nxt = leaves[i + 1] if i + 1 < len(leaves) else None
+        if nxt is None:
+            continue
+        nt, nlow = nxt.get('type'), _lower(nxt)
+        # there vs their: 'there' + noun (right after a verb or sentence start)
+        if low == 'there' and nt in ('NN', 'NNS', 'NNP', 'NNPS') \
+                and nlow not in ('is', 'are', 'was', 'were'):
+            prev_ok = i == 0 or (i > 0 and leaves[i - 1].get('type') in verb_tags
+                                 or _lower(leaves[i - 1]) == 'to')
+            if prev_ok:
+                out.append(_finding(
+                    '1.10', 'error', 'C-HOMOPHONE', 'spelling', lf['id'],
+                    f"Possessive 'their' was spelled '{lf['surface']}': "
+                    f"'{lf['surface']} {nxt['surface']}' \u2192 "
+                    f"'their {nxt['surface']}'.",
+                    _tree_evidence(lf['id'], 'there + NN (possessive slot)',
+                                   [{'node': lf['id']}, {'node': nxt['id']}])))
+        # its vs it's
+        elif low == 'its' and (nlow in DT_WORDS or nt in verb_tags + ('MD',)):
+            out.append(_finding(
+                '1.10', 'error', 'C-HOMOPHONE', 'spelling', lf['id'],
+                f"'it's' (it is) was written '{lf['surface']}': a possessive "
+                f"'its' has no apostrophe and takes no following verb/article.",
+                _tree_evidence(lf['id'], 'its + verb/article (it is slot)',
+                               [{'node': lf['id']}])))
+        # your vs you're
+        elif low == 'your' and (nlow in ('a', 'an', 'the') or nt in verb_tags
+                                or nlow in ('going', 'wanting')):
+            out.append(_finding(
+                '1.10', 'error', 'C-HOMOPHONE', 'spelling', lf['id'],
+                f"'you're' (you are) was written '{lf['surface']}': the "
+                f"possessive 'your' takes a noun, not a verb/article.",
+                _tree_evidence(lf['id'], 'your + verb/article (you are slot)',
+                               [{'node': lf['id']}])))
+
+    # --- 2.8 indefinite pronouns take a singular verb -------------------------- #
+    for i, lf in enumerate(leaves):
+        if lows[i] not in INDEF_SINGULAR or i + 1 >= len(leaves):
+            continue
+        nlow = _lower(leaves[i + 1])
+        if nlow in ('are', 'were', 'have', 'do'):
+            sg = {'are': 'is', 'were': 'was', 'have': 'has', 'do': 'does'}[nlow]
+            out.append(_finding(
+                '2.8', 'error', 'C-INDEF-AGREE', 'subject-verb agreement',
+                leaves[i + 1]['id'],
+                f"'{lf['surface']}' is always singular: use '{sg}', not "
+                f"'{nlow}'.",
+                _wordlist_evidence(f"{low} {nlow}", [f"{low} {sg}"],
+                                   'indefinite pronoun + singular verb')))
+
+    # --- 6.9 gerund vs to-infinitive (enjoy, finish, ...; want + -ing) -------- #
+    gerund_forms = set()
+    for v in GERUND_TAKERS:
+        gerund_forms |= _inflected(v)
+    for i, lf in enumerate(leaves):
+        low = lows[i]
+        if low in gerund_forms and i + 2 < len(leaves):
+            nln = _lower(leaves[i + 1])
+            if nln == 'to':
+                n2 = _lower(leaves[i + 2])
+                out.append(_finding(
+                    '6.9', 'error', 'C-GERUND-INFIN', 'verb complement',
+                    leaves[i + 1]['id'],
+                    f"'{lf['surface']}' takes a gerund: use "
+                    f"'{lf['surface']} {n2}ing' "
+                    f"(not '{lf['surface']} to {n2}').",
+                    _wordlist_evidence(f"{low} to {n2}",
+                                       [f"{low} {n2}ing"],
+                                       'gerund-taking verb')))
+            elif leaves[i + 1].get('type') == 'VB':
+                out.append(_finding(
+                    '6.9', 'error', 'C-GERUND-INFIN', 'verb complement',
+                    leaves[i + 1]['id'],
+                    f"'{lf['surface']}' takes a gerund: use "
+                    f"'{lf['surface']} {nln}ing' (not '{low} {nln}').",
+                    _wordlist_evidence(f"{low} {nln}", [f"{low} {nln}ing"],
+                                       'gerund-taking verb')))
+        elif low in ('want', 'wants', 'wanted', 'wanting'):
+            if leaves[i + 1].get('type') == 'VBG':
+                vbg = _lower(leaves[i + 1])
+                out.append(_finding(
+                    '6.9', 'error', 'C-GERUND-INFIN', 'verb complement',
+                    leaves[i + 1]['id'],
+                    f"'want' takes a to-infinitive: "
+                    f"'{low} to {_base_of(vbg)}', not "
+                    f"'{low} {vbg}'.",
+                    _wordlist_evidence(f"{low} {vbg}",
+                                       [f"{low} to {_base_of(vbg)}"],
+                                       'want + to-infinitive')))
+
+    # --- 8.6 preposition + to-infinitive; 'look forward to' ------------------- #
+    for i, lf in enumerate(leaves):
+        if i + 1 >= len(leaves):
+            continue
+        low = lows[i]
+        nln = _lower(leaves[i + 1])
+        if low == 'at' and nln == 'to':
+            out.append(_finding(
+                '8.6', 'error', 'C-PREP-GERUND', 'verb complement',
+                leaves[i + 1]['id'],
+                f"After the preposition 'at' use the gerund: 'good at {'singing'}' "
+                f"is 'at + -ing', not 'at to ...'.",
+                _tree_evidence(lf['id'], 'preposition + to-infinitive',
+                               [{'node': lf['id']},
+                                {'node': leaves[i + 1]['id']}])))
+        if low in ('look', 'looks', 'looked') and nln == 'forward' \
+                and i + 2 < len(leaves) and _lower(leaves[i + 2]) == 'to' \
+                and i + 3 < len(leaves) \
+                and leaves[i + 3].get('type') in ('VB', 'VBZ'):
+            nxtv = _lower(leaves[i + 3])
+            out.append(_finding(
+                '8.6', 'error', 'C-PREP-GERUND', 'verb complement',
+                leaves[i + 3]['id'],
+                f"After 'look forward to' use the gerund: "
+                f"'{nxtv}ing' (not 'to {nxtv}').",
+                _wordlist_evidence(f"look forward to {nxtv}",
+                                   [f"look forward to {nxtv}ing"],
+                                   'look forward to + gerund')))
+
+    # --- 11.3 'since' needs (have/had) + past participle ---------------------- #
+    for i, lf in enumerate(leaves):
+        if lows[i] != 'since':
+            continue
+        have_in = any(_lower(x) in ('have', 'has', 'had')
+                      for x in leaves[max(0, i - 3):i])
+        if have_in:
+            continue
+        present_finite = None
+        for k in range(i - 1, max(-1, i - 5), -1):
+            tag = leaves[k].get('type')
+            if tag in ('VBZ', 'VBP') or _lower(leaves[k]) in (
+                    'am', 'is', 'are', 'do', 'does'):
+                present_finite = leaves[k]
+                break
+        if present_finite is not None:
+            out.append(_finding(
+                '11.3', 'error', 'C-TENSE-SINCE', 'tense',
+                present_finite['id'],
+                f"With 'since' a perfect tense is required: 'have/has (been) + "
+                f"past participle since ...', not the present "
+                f"'{present_finite['surface']}'.",
+                _tree_evidence(present_finite['id'], 'present verb + since',
+                               [{'node': present_finite['id']},
+                                {'node': lf['id']}])))
+
+    # --- 6.6 stative verb in the progressive ---------------------------------- #
+    for i, lf in enumerate(leaves):
+        if lows[i] not in STATIVE_ING:
+            continue
+        for k in range(max(0, i - 2), i):
+            if _lower(leaves[k]) in BE_SURFACES_LEAF:
+                verb = lows[i][:-3]  # 'liking' -> 'like'
+                out.append(_finding(
+                    '6.6', 'error', 'C-STATIVE-PROG', 'verb form', lf['id'],
+                    f"'{lf['surface']}' is a stative verb: it does not take the "
+                    f"progressive. Use the simple form, e.g. '{verb}' / "
+                    f"'{verb}s'.",
+                    _wordlist_evidence(f"{_lower(leaves[k])} {lows[i]}",
+                                       [verb, verb + 's'],
+                                       'stative verb + no progressive')))
+                break
+
+    # --- 9.13 indirect question word order ------------------------------------ #
+    for i, lf in enumerate(leaves):
+        if lows[i] not in WH_WORDS or i == 0 or i + 2 >= len(leaves):
+            continue
+        if _lower(leaves[i + 1]) not in WH_AUX:
+            continue
+        if leaves[i + 2].get('type') in ('VB', 'VBG', 'VBN', 'MD'):
+            continue  # wh-word is the subject: 'I know who is coming' (valid)
+        out.append(_finding(
+            '9.13', 'error', 'C-INDIRECT-WH-INVERSION', 'word order',
+            leaves[i + 1]['id'],
+            f"An indirect question keeps statement order: "
+            f"'{leaves[i + 1]['surface']}' must follow the subject here "
+            f"('... {leaves[i + 2]['surface']} {leaves[i + 1]['surface']} ...').",
+            _tree_evidence(leaves[i + 1]['id'], 'wh + aux + subject (inverted)',
+                           [{'node': lf['id']}, {'node': leaves[i + 1]['id']}])))
+
+    # --- 8.1 arrive + 'to' ----------------------------------------------------- #
+    ARRIVE_FORM = {'arrive', 'arrives', 'arrived', 'arriving'}
+    for i, lf in enumerate(leaves):
+        if lows[i] in ARRIVE_FORM and i + 1 < len(leaves) \
+                and _lower(leaves[i + 1]) == 'to':
+            out.append(_finding(
+                '8.1', 'error', 'C-PREP-CHOICE', 'preposition', lf['id'],
+                f"'arrive' takes 'at' (or 'in' for a country/city), not 'to': "
+                f"'{low} to' \u2192 'arrive at'.",
+                _wordlist_evidence(f"{lows[i]} to",
+                                   [f"arrive at", f"arrive in"],
+                                   'verb + preposition')))
+
+    # --- 6.3 'please to' -------------------------------------------------------- #
+    for i, lf in enumerate(leaves):
+        if lows[i] == 'please' and i + 1 < len(leaves) \
+                and _lower(leaves[i + 1]) == 'to':
+            out.append(_finding(
+                '6.3', 'error', 'C-PLEASE-TO', 'verb form', lf['id'],
+                f"An imperative with 'please' takes the bare verb: drop 'to' "
+                f"('please {leaves[i + 2]['surface'] if i + 2 < len(leaves) else 'sit'}' "
+                f"), not 'please to ...'.",
+                _tree_evidence(lf['id'], 'please + to',
+                               [{'node': lf['id']}, {'node': leaves[i + 1]['id']}])))
+
+    # --- 7.4 participial adjective: -ing + 'in' -------------------------------- #
+    for i, lf in enumerate(leaves):
+        if lows[i] in PARTICIPIAL_ADJ and i + 1 < len(leaves) \
+                and _lower(leaves[i + 1]) == 'in':
+            ed = lows[i][:-3] + 'ed' if not lows[i].endswith('ing') else \
+                (lows[i][:-4] + 'ied' if lows[i][:-3].endswith('y')
+                 else lows[i][:-3] + 'ed')
+            out.append(_finding(
+                '7.4', 'error', 'C-PARTICIPIAL-ADJ', 'adjective form', lf['id'],
+                f"'{lf['surface']} in' describes a person; use the -ed form "
+                f"'{ed} in' (e.g. 'interested in'), or rephrase with the "
+                f"-ing adjective for the thing itself.",
+                _wordlist_evidence(f"{lows[i]} in", [f"{ed} in"],
+                                   'participial adjective (-ing/-ed)')))
+
+    # --- 2.1 'we/they/you was' --------------------------------------------------- #
+    for i, lf in enumerate(leaves):
+        if _lower(lf) in ('we', 'they', 'you') and i + 1 < len(leaves) \
+                and _lower(leaves[i + 1]) == 'was':
+            out.append(_finding(
+                '2.1', 'error', 'C-WAS-WERE', 'subject-verb agreement',
+                leaves[i + 1]['id'],
+                f"'{lf['surface']}' takes 'were', not 'was'.",
+                _wordlist_evidence(f"{lows[i]} was", [f"{lows[i]} were"],
+                                   'was/were agreement')))
+
+    # --- 1.6 bare VBN as simple past ('I seen him') ----------------------------- #
+    # Both VBN tokens and VBN-only surfaces the parser retags VBD.
+    VBN_ONLY = {'seen', 'done', 'gone', 'eaten', 'beaten', 'given', 'taken',
+                'written', 'broken', 'known', 'thrown', 'driven', 'grown',
+                'chosen', 'spoken', 'woken', 'fallen', 'blown', 'forgotten',
+                'bitten', 'hidden'}
+    for i, lf in enumerate(leaves):
+        tag = lf.get('type')
+        is_participle = tag == 'VBN' or (tag == 'VBD' and lows[i] in VBN_ONLY)
+        if is_participle and i > 0 \
+                and leaves[i - 1].get('type') == 'PRP' \
+                and _lower(leaves[i - 1]) in SUBJ_PRON_BARE:
+            try:
+                from licensing import _lemmas
+                base = sorted(_lemmas(lows[i], 'VERB'))[0] if _lemmas(
+                    lows[i], 'VERB') else lows[i]
+            except Exception:  # pragma: no cover
+                base = lows[i]
+            out.append(_finding(
+                '1.6', 'error', 'C-VBN-SIMPLE-PAST', 'verb form', lf['id'],
+                f"'{lf['surface']}' is a past participle, not a simple-past "
+                f"form. After the subject pronoun '{leaves[i - 1]['surface']}' "
+                f"use the simple-past form of '{base}' (or a perfect with "
+                f"'have {lows[i]}').",
+                _wordlist_evidence(f"{_lower(leaves[i - 1])} {lows[i]}",
+                                   [f"{base} (simple past)",
+                                    f"have {lows[i]}"],
+                                   'bare past participle')))
+
+    # --- 1.9 reflexive / 7.1 nonstandard-adverb forms -------------------------- #
+    for i, lf in enumerate(leaves):
+        low = lows[i]
+        if low in REFLEXIVE_FIX:
+            out.append(_finding(
+                '1.9', 'error', 'C-REFLEXIVE-FORM', 'reflexive pronoun',
+                lf['id'],
+                f"'{lf['surface']}' \u2192 '{REFLEXIVE_FIX[low]}'.",
+                _wordlist_evidence(lf['surface'], [REFLEXIVE_FIX[low]],
+                                   'reflexive forms')))
+        elif lf.get('type') in ('RB', 'RBR', 'RBS') and low in NONSTANDARD_ADV:
+            fix = 'fast' if low == 'fastly' else (low[:-2] if low.endswith('ly')
+                                                  else low + 'ly')
+            out.append(_finding(
+                '7.1', 'error', 'C-ADJ-ADV', 'adverb form', lf['id'],
+                f"'{lf['surface']}' is not a standard adverb; use "
+                f"'{fix}'.",
+                _wordlist_evidence(lf['surface'], [fix],
+                                   'standard adverb forms')))
 
     return out
 
