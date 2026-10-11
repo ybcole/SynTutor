@@ -144,7 +144,10 @@ function initSidebar() {
     toggle?.setAttribute('aria-expanded', 'false');
   };
 
-  toggle?.addEventListener('click', open);
+  toggle?.addEventListener('click', () => {
+    if (backdrop?.classList.contains('active')) close();
+    else open();
+  });
   document.querySelector('#closeSidebarBtn')?.addEventListener('click', close);
   backdrop?.addEventListener('click', (e) => {
     if (e.target === backdrop) close();
@@ -152,17 +155,20 @@ function initSidebar() {
 
   document.querySelectorAll('.sidebar-item[data-view]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const view = btn.dataset.view;
-      document.querySelectorAll('.sidebar-item').forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      close();
-      if (view === 'quiz') openQuizView();
-      else closeQuizView();
+      if (btn.dataset.view === 'quiz') {
+        openQuizView();
+      } else {
+        closeQuizView();
+        close();
+      }
     });
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && backdrop?.classList.contains('active')) close();
+    if (e.key !== 'Escape' || !backdrop?.classList.contains('active')) return;
+    const quizPanel = document.querySelector('#quizPanel');
+    if (quizPanel && !quizPanel.hidden) return;
+    close();
   });
 }
 

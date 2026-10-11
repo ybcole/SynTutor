@@ -1,5 +1,6 @@
-// Matrix Quiz UI controller: category browser (scroll + search), difficulty
-// setup, the quiz runner, the right-hand "quest" panel, skip, results, quit.
+// Matrix Quiz UI controller. Everything renders inside the left sidebar panel
+// (#quizPanel): a searchable, scrollable, vertical list of rule quizzes, the
+// difficulty setup, the question runner, and the results screen.
 
 import {
   MATRIX_SECTIONS, DIFFICULTY, questionPool, ruleInfo, hasQuiz, INDEX_OPTIONS,
@@ -15,70 +16,97 @@ function el(tag, cls, text) {
 }
 
 const state = {
-  open: false,
   view: 'list', // list | setup | quiz | results
   ruleId: null,
   difficulty: 'easy',
   questions: [],
   index: 0,
-  entries: [], // { question, chosen, correct, skipped }
+  entries: [],
   search: '',
+  body: null,
 };
 
 // ---------------------------------------------------------------------------
-// Open / close the quiz view
+// Open / close
 // ---------------------------------------------------------------------------
 export function openQuizView() {
-  const view = $('#quizView');
-  if (!view) return;
-  state.open = true;
-  view.hidden = false;
-  view.classList.add('active');
-  document.body.classList.add('quiz-open');
+  const panel = $('#quizPanel');
+  if (!panel) return;
+  panel.hidden = false;
+  $('#appSidebar')?.classList.add('quiz-active');
+  $('#appSidebarBackdrop')?.classList.add('active');
+  $('#sidebarToggleBtn')?.setAttribute('aria-expanded', 'true');
+  document.querySelectorAll('.sidebar-item').forEach((b) => {
+    b.classList.toggle('active', b.dataset.view === 'quiz');
+  });
   goList();
 }
 
 export function closeQuizView() {
-  const view = $('#quizView');
-  if (!view) return;
-  state.open = false;
-  view.classList.remove('active');
-  view.hidden = true;
-  document.body.classList.remove('quiz-open');
-  hideQuest();
+  const panel = $('#quizPanel');
+  if (panel) { panel.hidden = true; panel.innerHTML = ''; }
+  $('#appSidebar')?.classList.remove('quiz-active');
+  document.querySelectorAll('.sidebar-item').forEach((b) => {
+    b.classList.toggle('active', b.dataset.view === 'tutor');
+  });
 }
 
 export function isQuizOpen() {
-  return state.open;
+  return Boolean($('#quizPanel') && !$('#quizPanel').hidden);
 }
 
 // ---------------------------------------------------------------------------
-// View: categories list
+// Panel shell
+// ---------------------------------------------------------------------------
+function shell({ title, back, search, meta }) {
+  const panel = $('#quizPanel');
+  panel.innerHTML = '';
+
+  const head = el('div', 'sq-head');
+  if (back) {
+    const backBtn = el('button', 'sq-back');
+    backBtn.type = 'button';
+    backBtn.setAttribute('aria-label', 'Back');
+    backBtn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+    backBtn.addEventListener('click', back);
+    head.appendChild(backBtn);
+  }
+  head.appendChild(el('h2', 'sq-title', title));
+  panel.appendChild(head);
+
+  if (search) {
+    const box = el('div', 'sq-searchbox');
+    const input = el('input', 'sq-search');
+    input.type = 'search';
+    input.placeholder = 'Search rules, ids, examples\u2026';
+    input.value = state.search;
+    input.addEventListener('input', (e) => {
+      state.search = e.target.value;
+      if (state.view === 'list') renderList();
+    });
+    box.appendChild(input);
+    panel.appendChild(box);
+  }
+
+  if (meta) panel.appendChild(meta);
+
+  const body = el('div', 'sq-body');
+  panel.appendChild(body);
+  state.body = body;
+  return body;
+}
+
+// ---------------------------------------------------------------------------
+// List
 // ---------------------------------------------------------------------------
 function goList() {
   state.view = 'list';
-  hideQuest();
-  setToolbar({ title: 'Matrix Quiz', subtitle: 'Pick a rule to practise \u2014 every question is drawn at random.' });
-  showSearch(true);
+  shell({ title: 'Matrix Quiz', search: true });
   renderList();
 }
 
-function setToolbar({ title, subtitle, back = true }) {
-  const t = $('#quizTitle');
-  const s = $('#quizSubtitle');
-  if (t) t.textContent = title;
-  if (s) s.textContent = subtitle || '';
-  const backBtn = $('#quizBackBtn');
-  if (backBtn) backBtn.hidden = !back;
-}
-
-function showSearch(show) {
-  const wrap = $('#quizSearchWrap');
-  if (wrap) wrap.hidden = !show;
-}
-
 function renderList() {
-  const body = $('#quizBody');
+  const body = state.body;
   if (!body) return;
   body.innerHTML = '';
   const query = state.search.trim().toLowerCase();
@@ -94,116 +122,93 @@ function renderList() {
     if (!matches.length) return;
     total += matches.length;
 
-    const group = el('section', 'quiz-group');
-    const h = el('div', 'quiz-group-head');
-    h.appendChild(el('span', 'quiz-group-id', `${section.id}`));
-    h.appendChild(el('h3', 'quiz-group-title', section.title));
-    h.appendChild(el('span', 'quiz-group-count', `${matches.length}`));
+    const group = el('div', 'sq-group');
+    const h = el('div', 'sq-group-head');
+    h.appendChild(el('span', 'sq-group-id', `${section.id}`));
+    h.appendChild(el('span', 'sq-group-title', section.title));
+    h.appendChild(el('span', 'sq-group-count', `${matches.length}`));
     group.appendChild(h);
 
-    const grid = el('div', 'quiz-grid');
-    matches.forEach((rule) => grid.appendChild(ruleCard(rule)));
-    group.appendChild(grid);
+    matches.forEach((rule) => group.appendChild(ruleRow(rule)));
     body.appendChild(group);
   });
 
-  if (!total) {
-    const empty = el('p', 'quiz-empty', 'No rules match your search.');
-    body.appendChild(empty);
-  }
+  if (!total) body.appendChild(el('p', 'sq-empty', 'No rules match your search.'));
 }
 
-function ruleCard(rule) {
-  const card = el('button', 'quiz-card');
-  card.type = 'button';
-  card.dataset.rule = rule.id;
+function ruleRow(rule) {
+  const row = el('button', 'sq-row');
+  row.type = 'button';
+  row.dataset.rule = rule.id;
 
-  const top = el('div', 'quiz-card-top');
-  top.appendChild(el('span', 'quiz-card-id', rule.id));
-  const cap = hasQuiz(rule.id);
-  const tag = el('span', `quiz-card-tag ${cap ? 'ready' : 'soon'}`, cap ? 'Ready' : 'Soon');
-  top.appendChild(tag);
-  card.appendChild(top);
+  const top = el('div', 'sq-row-top');
+  top.appendChild(el('span', 'sq-row-id', rule.id));
+  top.appendChild(el('span', 'sq-row-rule', rule.rule));
+  const ready = hasQuiz(rule.id);
+  top.appendChild(el('span', `sq-dot ${ready ? 'ready' : 'soon'}`, ''));
+  row.appendChild(top);
 
-  card.appendChild(el('div', 'quiz-card-rule', rule.rule));
-
-  const foot = el('div', 'quiz-card-foot');
-  const bad = el('span', 'quiz-bad', rule.example || '');
-  foot.appendChild(bad);
+  const foot = el('div', 'sq-row-foot');
+  foot.appendChild(el('span', 'sq-bad', rule.example || ''));
   (rule.check || '').split('+').forEach((c) => {
     if (!c) return;
-    foot.appendChild(el('span', `quiz-check check-${c.toLowerCase()}`, c));
+    foot.appendChild(el('span', `sq-check check-${c.toLowerCase()}`, c));
   });
-  card.appendChild(foot);
+  if (!ready) foot.appendChild(el('span', 'sq-soon', 'soon'));
+  row.appendChild(foot);
 
-  card.addEventListener('click', () => goSetup(rule.id));
-  return card;
+  row.addEventListener('click', () => goSetup(rule.id));
+  return row;
 }
 
 // ---------------------------------------------------------------------------
-// View: difficulty setup
+// Setup
 // ---------------------------------------------------------------------------
 function goSetup(ruleId) {
   state.ruleId = ruleId;
   state.view = 'setup';
-  hideQuest();
-  showSearch(false);
   const info = ruleInfo(ruleId);
-  setToolbar({ title: `${ruleId} \u00b7 ${info ? info.rule : 'Quiz'}`, subtitle: 'Choose a difficulty to begin.' });
-  renderSetup();
-}
+  const body = shell({ title: ruleId, back: goList });
+  state.body = body;
 
-function renderSetup() {
-  const body = $('#quizBody');
-  if (!body) return;
-  body.innerHTML = '';
-  const info = ruleInfo(state.ruleId);
-  const card = el('div', 'quiz-setup');
-
-  if (!hasQuiz(state.ruleId)) {
-    const soon = el('div', 'quiz-soon');
-    soon.appendChild(el('h3', null, 'Quizzes coming soon'));
-    soon.appendChild(el('p', null,
-      `We are still writing exercises for \u201c${info ? info.rule : state.ruleId}\u201d. `
-      + 'Word Forms is fully playable today \u2014 the rest of the matrix follows the same order.'));
-    card.appendChild(soon);
-    body.appendChild(card);
+  if (!hasQuiz(ruleId)) {
+    const soon = el('div', 'sq-soon-box');
+    soon.appendChild(el('p', 'sq-soon-text',
+      `Quizzes for \u201c${info ? info.rule : ruleId}\u201d are coming soon. Word Forms is fully playable now.`));
+    body.appendChild(soon);
     return;
   }
 
-  const meta = el('div', 'quiz-setup-meta');
-  if (info) {
-    meta.appendChild(el('span', 'quiz-bad', info.example || ''));
-    meta.appendChild(el('span', 'quiz-setup-section', info.section));
-  }
-  card.appendChild(meta);
+  const intro = el('div', 'sq-intro');
+  intro.appendChild(el('span', 'sq-intro-id', ruleId));
+  intro.appendChild(el('span', 'sq-intro-rule', info ? info.rule : ''));
+  if (info) intro.appendChild(el('span', 'sq-bad', info.example || ''));
+  body.appendChild(intro);
 
-  card.appendChild(el('h3', 'quiz-setup-head', 'Difficulty'));
-  const grid = el('div', 'quiz-diff-grid');
+  body.appendChild(el('div', 'sq-label', 'Difficulty'));
+  const grid = el('div', 'sq-diff-grid');
   Object.entries(DIFFICULTY).forEach(([key, d]) => {
-    const btn = el('button', `quiz-diff ${state.difficulty === key ? 'selected' : ''}`);
+    const btn = el('button', `sq-diff ${state.difficulty === key ? 'selected' : ''}`);
     btn.type = 'button';
-    btn.appendChild(el('span', 'quiz-diff-label', d.label));
-    btn.appendChild(el('span', 'quiz-diff-count', `${d.count} questions`));
+    btn.appendChild(el('span', 'sq-diff-label', d.label));
+    btn.appendChild(el('span', 'sq-diff-count', `${d.count} questions`));
     btn.addEventListener('click', () => {
       state.difficulty = key;
-      grid.querySelectorAll('.quiz-diff').forEach((b) => b.classList.remove('selected'));
+      grid.querySelectorAll('.sq-diff').forEach((b) => b.classList.remove('selected'));
       btn.classList.add('selected');
     });
     grid.appendChild(btn);
   });
-  card.appendChild(grid);
+  body.appendChild(grid);
 
-  const start = el('button', 'quiz-start-btn', 'Start Quiz');
+  const start = el('button', 'sq-primary', 'Start Quiz');
   start.type = 'button';
   start.addEventListener('click', startQuiz);
-  card.appendChild(start);
-
-  body.appendChild(card);
+  body.appendChild(start);
 }
 
 // ---------------------------------------------------------------------------
-// View: quiz runner
+// Runner
 // ---------------------------------------------------------------------------
 function startQuiz() {
   const pool = questionPool(state.ruleId);
@@ -212,86 +217,95 @@ function startQuiz() {
   state.index = 0;
   state.entries = [];
   state.view = 'quiz';
-  showSearch(false);
   renderQuestion();
 }
 
 function renderQuestion() {
-  const body = $('#quizBody');
-  if (!body) return;
   const q = state.questions[state.index];
   if (!q) { showResults(); return; }
-  body.innerHTML = '';
   const info = ruleInfo(state.ruleId);
-  setToolbar({
-    title: `${state.ruleId} \u00b7 ${info ? info.rule : ''}`,
-    subtitle: '',
+  const body = shell({
+    title: state.ruleId,
+    back: quitConfirm,
+    meta: questMeta(info, q),
   });
 
-  const wrap = el('div', 'quiz-question');
+  body.appendChild(el('p', 'sq-num', `Question ${state.index + 1} of ${state.questions.length}`));
+  body.appendChild(el('p', 'sq-prompt', q.prompt));
 
-  const num = el('div', 'quiz-qnum', `Question ${state.index + 1} of ${state.questions.length}`);
-  wrap.appendChild(num);
-
-  wrap.appendChild(el('p', 'quiz-prompt', q.prompt));
-
-  const opts = el('div', 'quiz-options');
+  const opts = el('div', 'sq-options');
   q.options.forEach((opt, i) => {
-    const btn = el('button', 'quiz-option');
+    const btn = el('button', 'sq-option');
     btn.type = 'button';
     btn.dataset.index = String(i);
-    btn.appendChild(el('span', 'quiz-option-key', INDEX_OPTIONS[i] || String(i + 1)));
-    btn.appendChild(el('span', 'quiz-option-text', opt));
+    btn.appendChild(el('span', 'sq-option-key', INDEX_OPTIONS[i] || String(i + 1)));
+    btn.appendChild(el('span', 'sq-option-text', opt));
     btn.addEventListener('click', () => chooseOption(i));
     opts.appendChild(btn);
   });
-  wrap.appendChild(opts);
+  body.appendChild(opts);
 
-  const feedback = el('div', 'quiz-feedback');
-  feedback.id = 'quizFeedback';
-  wrap.appendChild(feedback);
+  const fb = el('div', 'sq-feedback');
+  fb.id = 'sqFeedback';
+  body.appendChild(fb);
 
-  const nav = el('div', 'quiz-nav');
-  const skip = el('button', 'quiz-skip-btn', 'Skip');
+  const nav = el('div', 'sq-nav');
+  const skip = el('button', 'sq-ghost', 'Skip');
   skip.type = 'button';
   skip.addEventListener('click', skipQuestion);
   nav.appendChild(skip);
-  const next = el('button', 'quiz-next-btn', state.index + 1 >= state.questions.length ? 'Finish' : 'Next');
+  const next = el('button', 'sq-primary', state.index + 1 >= state.questions.length ? 'Finish' : 'Next');
   next.type = 'button';
-  next.id = 'quizNextBtn';
+  next.id = 'sqNextBtn';
   next.disabled = true;
   next.addEventListener('click', advance);
   nav.appendChild(next);
-  wrap.appendChild(nav);
+  body.appendChild(nav);
+}
 
-  body.appendChild(wrap);
-  renderQuest();
+function questMeta(info, q) {
+  const meta = el('div', 'sq-meta');
+  const line = el('div', 'sq-meta-line');
+  line.appendChild(el('span', 'sq-meta-rule', info ? info.rule : ''));
+  line.appendChild(el('span', 'sq-meta-diff', DIFFICULTY[state.difficulty].label));
+  meta.appendChild(line);
+
+  const progress = el('div', 'sq-progress');
+  const fill = el('div', 'sq-progress-fill');
+  const done = state.entries.filter(Boolean).length;
+  fill.style.width = `${Math.round((done / state.questions.length) * 100)}%`;
+  progress.appendChild(fill);
+  meta.appendChild(progress);
+
+  const sent = el('div', 'sq-sentence');
+  sent.appendChild(el('span', 'sq-sentence-label', 'Sentence'));
+  sent.appendChild(el('p', null, q.sentence));
+  meta.appendChild(sent);
+  return meta;
 }
 
 function chooseOption(i) {
   const q = state.questions[state.index];
   const entry = state.entries[state.index];
-  if (entry && !entry.skipped) return; // already answered
+  if (entry && !entry.skipped) return;
   const correct = i === q.answer;
   state.entries[state.index] = { question: q, chosen: i, correct, skipped: false };
 
-  const opts = document.querySelectorAll('#quizBody .quiz-option');
-  opts.forEach((btn) => {
+  document.querySelectorAll('#quizPanel .sq-option').forEach((btn) => {
     btn.disabled = true;
     const idx = Number(btn.dataset.index);
     if (idx === q.answer) btn.classList.add('correct');
     if (idx === i && !correct) btn.classList.add('wrong');
   });
 
-  const fb = $('#quizFeedback');
+  const fb = $('#sqFeedback');
   if (fb) {
     fb.classList.add('show', correct ? 'ok' : 'err');
     fb.appendChild(el('strong', null, correct ? 'Correct.' : 'Not quite.'));
     fb.appendChild(el('span', null, ` ${q.explanation}`));
   }
-  const next = $('#quizNextBtn');
+  const next = $('#sqNextBtn');
   if (next) next.disabled = false;
-  renderQuest();
 }
 
 function skipQuestion() {
@@ -301,191 +315,78 @@ function skipQuestion() {
 }
 
 function advance() {
-  if (state.index + 1 >= state.questions.length) {
-    showResults();
-    return;
-  }
+  if (state.index + 1 >= state.questions.length) { showResults(); return; }
   state.index += 1;
   renderQuestion();
 }
 
 // ---------------------------------------------------------------------------
-// View: results
+// Results
 // ---------------------------------------------------------------------------
 function showResults() {
   state.view = 'results';
-  const body = $('#quizBody');
-  if (!body) return;
-  body.innerHTML = '';
   const info = ruleInfo(state.ruleId);
-
   const correct = state.entries.filter((e) => e && e.correct).length;
   const total = state.questions.length;
   const skipped = state.entries.filter((e) => e && e.skipped).length;
   const pct = total ? Math.round((correct / total) * 100) : 0;
 
-  const card = el('div', 'quiz-results');
-  card.appendChild(el('h2', 'quiz-results-score', `${correct} / ${total}`));
-  card.appendChild(el('p', 'quiz-results-sub',
-    `${info ? info.rule : ''} \u00b7 ${DIFFICULTY[state.difficulty].label}${skipped ? ` \u00b7 ${skipped} skipped` : ''}`));
+  const body = shell({ title: 'Results', back: goList });
 
-  const bar = el('div', 'quiz-result-bar');
-  const fill = el('div', 'quiz-result-fill');
+  const score = el('div', 'sq-score');
+  score.appendChild(el('span', 'sq-score-num', `${correct} / ${total}`));
+  score.appendChild(el('span', 'sq-score-sub',
+    `${info ? info.rule : ''} \u00b7 ${DIFFICULTY[state.difficulty].label}${skipped ? ` \u00b7 ${skipped} skipped` : ''}`));
+  body.appendChild(score);
+
+  const bar = el('div', 'sq-progress');
+  const fill = el('div', 'sq-progress-fill');
   fill.style.width = `${pct}%`;
   bar.appendChild(fill);
-  card.appendChild(bar);
+  body.appendChild(bar);
 
-  const review = el('div', 'quiz-review');
+  const review = el('div', 'sq-review');
   state.entries.forEach((entry, i) => {
     if (!entry) return;
-    const row = el('div', `quiz-review-row ${entry.correct ? 'ok' : entry.skipped ? 'skip' : 'err'}`);
     const q = entry.question;
-    const head = el('div', 'quiz-review-head');
-    head.appendChild(el('span', 'quiz-review-i', `${i + 1}`));
-    head.appendChild(el('span', 'quiz-review-sent', q.sentence));
-    head.appendChild(el('span', 'quiz-review-mark', entry.correct ? '\u2713' : entry.skipped ? '\u2013' : '\u2717'));
+    const row = el('div', `sq-review-row ${entry.correct ? 'ok' : entry.skipped ? 'skip' : 'err'}`);
+    const head = el('div', 'sq-review-head');
+    head.appendChild(el('span', 'sq-review-i', `${i + 1}`));
+    head.appendChild(el('span', 'sq-review-sent', q.sentence));
+    head.appendChild(el('span', 'sq-review-mark', entry.correct ? '\u2713' : entry.skipped ? '\u2013' : '\u2717'));
     row.appendChild(head);
-    const answers = el('div', 'quiz-review-answers');
-    answers.appendChild(el('span', 'quiz-review-correct', `Correct: ${q.options[q.answer]}`));
-    if (!entry.correct && !entry.skipped && entry.chosen != null) {
-      answers.appendChild(el('span', 'quiz-review-yours', `You: ${q.options[entry.chosen]}`));
-    } else if (entry.skipped) {
-      answers.appendChild(el('span', 'quiz-review-yours', 'Skipped'));
-    }
-    row.appendChild(answers);
+    const ans = el('div', 'sq-review-ans');
+    ans.appendChild(el('span', 'sq-review-correct', `Correct: ${q.options[q.answer]}`));
+    if (entry.skipped) ans.appendChild(el('span', 'sq-review-yours', 'Skipped'));
+    else if (!entry.correct && entry.chosen != null) ans.appendChild(el('span', 'sq-review-yours', `You: ${q.options[entry.chosen]}`));
+    row.appendChild(ans);
     review.appendChild(row);
   });
-  card.appendChild(review);
+  body.appendChild(review);
 
-  const actions = el('div', 'quiz-results-actions');
-  const again = el('button', 'quiz-start-btn', 'Try again');
+  const actions = el('div', 'sq-actions');
+  const again = el('button', 'sq-primary', 'Try again');
   again.type = 'button';
   again.addEventListener('click', startQuiz);
-  const another = el('button', 'quiz-ghost-btn', 'Choose another rule');
+  const another = el('button', 'sq-ghost', 'Choose another');
   another.type = 'button';
   another.addEventListener('click', goList);
-  const quit = el('button', 'quiz-ghost-btn', 'Quit');
-  quit.type = 'button';
-  quit.addEventListener('click', closeQuizView);
   actions.appendChild(again);
   actions.appendChild(another);
-  actions.appendChild(quit);
-  card.appendChild(actions);
-
-  body.appendChild(card);
-  renderResultsQuest(correct, total, skipped);
+  body.appendChild(actions);
 }
 
 // ---------------------------------------------------------------------------
-// Right-hand quest panel
-// ---------------------------------------------------------------------------
-function hideQuest() {
-  const q = $('#quizQuest');
-  if (q) { q.hidden = true; q.innerHTML = ''; }
+function quitConfirm() {
+  if (state.view === 'list') { closeQuizView(); return; }
+  if (state.view === 'setup' || state.view === 'results') { goList(); return; }
+  if (confirm('Leave this quiz? Your progress will be lost.')) goList();
 }
 
-function showQuest() {
-  const q = $('#quizQuest');
-  if (q) q.hidden = false;
-  return q;
-}
-
-function renderQuest() {
-  const panel = showQuest();
-  if (!panel) return;
-  panel.innerHTML = '';
-  const info = ruleInfo(state.ruleId);
-  const q = state.questions[state.index];
-
-  const head = el('div', 'quest-head');
-  head.appendChild(el('span', 'quest-eyebrow', 'Quest'));
-  head.appendChild(el('h3', 'quest-rule', info ? info.rule : ''));
-  head.appendChild(el('span', 'quest-id', state.ruleId));
-  panel.appendChild(head);
-
-  const meta = el('div', 'quest-meta');
-  meta.appendChild(el('span', 'quest-tag', DIFFICULTY[state.difficulty].label));
-  meta.appendChild(el('span', 'quest-count', `${state.index + 1} / ${state.questions.length}`));
-  panel.appendChild(meta);
-
-  const progress = el('div', 'quest-progress');
-  const fill = el('div', 'quest-progress-fill');
-  const done = state.entries.filter(Boolean).length;
-  fill.style.width = `${Math.round((done / state.questions.length) * 100)}%`;
-  progress.appendChild(fill);
-  panel.appendChild(progress);
-
-  const sentBox = el('div', 'quest-sentence');
-  sentBox.appendChild(el('span', 'quest-sentence-label', 'Sentence'));
-  sentBox.appendChild(el('p', null, q.sentence));
-  panel.appendChild(sentBox);
-
-  const actions = el('div', 'quest-actions');
-  const skip = el('button', 'quest-skip', 'Skip to next');
-  skip.type = 'button';
-  skip.addEventListener('click', skipQuestion);
-  const quit = el('button', 'quest-quit', 'Quit quiz');
-  quit.type = 'button';
-  quit.addEventListener('click', () => {
-    if (confirm('Quit this quiz? Your progress will be lost.')) closeQuizView();
-  });
-  actions.appendChild(skip);
-  actions.appendChild(quit);
-  panel.appendChild(actions);
-}
-
-function renderResultsQuest(correct, total, skipped) {
-  const panel = showQuest();
-  if (!panel) return;
-  panel.innerHTML = '';
-  const info = ruleInfo(state.ruleId);
-
-  const head = el('div', 'quest-head');
-  head.appendChild(el('span', 'quest-eyebrow', 'Quest complete'));
-  head.appendChild(el('h3', 'quest-rule', info ? info.rule : ''));
-  head.appendChild(el('span', 'quest-id', state.ruleId));
-  panel.appendChild(head);
-
-  const score = el('div', 'quest-score');
-  score.appendChild(el('span', 'quest-score-num', `${correct}/${total}`));
-  score.appendChild(el('span', 'quest-score-label', skipped ? `${skipped} skipped` : 'all answered'));
-  panel.appendChild(score);
-
-  const actions = el('div', 'quest-actions');
-  const again = el('button', 'quest-skip', 'Try again');
-  again.type = 'button';
-  again.addEventListener('click', startQuiz);
-  const quit = el('button', 'quest-quit', 'Quit quiz');
-  quit.type = 'button';
-  quit.addEventListener('click', closeQuizView);
-  actions.appendChild(again);
-  actions.appendChild(quit);
-  panel.appendChild(actions);
-}
-
-// ---------------------------------------------------------------------------
-// Wiring
-// ---------------------------------------------------------------------------
 export function initQuiz() {
-  $('#quizSearch')?.addEventListener('input', (e) => {
-    state.search = e.target.value;
-    if (state.view === 'list') renderList();
-  });
-
-  $('#quizBackBtn')?.addEventListener('click', () => {
-    if (state.view === 'list') closeQuizView();
-    else if (state.view === 'setup') goList();
-    else if (state.view === 'quiz') {
-      if (confirm('Leave this quiz? Your progress will be lost.')) goList();
-    } else goList();
-  });
-
   document.addEventListener('keydown', (e) => {
-    if (!state.open || e.key !== 'Escape') return;
-    const view = $('#quizView');
-    if (view && !view.hidden) {
-      if (state.view === 'list') closeQuizView();
-      else goList();
-    }
+    if (e.key !== 'Escape') return;
+    const panel = $('#quizPanel');
+    if (panel && !panel.hidden) quitConfirm();
   });
 }
