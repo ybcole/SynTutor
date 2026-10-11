@@ -7,6 +7,7 @@ import {
   clearOverlay, showCanvasMessage, renderSentenceVerdict, renderNodeDetail,
   renderDiagnostic, fillDevPanel, applySentenceSelection, plainName,
 } from './ui.js';
+import { openQuizView, closeQuizView, initQuiz } from './quiz.js';
 
 let clerk = null;
 let supabase = null;
@@ -100,6 +101,8 @@ export function boot() {
   });
   wireEvents();
   initThemeAndMenu();
+  initSidebar();
+  initQuiz();
   transition(STATES.IDLE, 'system ready');
   log(`SynTutor engine ready \u2014 full-stack pipeline: spaCy + benepar + rule matrix (${isGuest ? 'guest mode' : 'authenticated'})`);
 }
@@ -127,6 +130,40 @@ function initThemeAndMenu() {
 
   initDevPanel();
   initProfileMenu();
+}
+
+function initSidebar() {
+  const backdrop = document.querySelector('#appSidebarBackdrop');
+  const toggle = document.querySelector('#sidebarToggleBtn');
+  const open = () => {
+    backdrop?.classList.add('active');
+    toggle?.setAttribute('aria-expanded', 'true');
+  };
+  const close = () => {
+    backdrop?.classList.remove('active');
+    toggle?.setAttribute('aria-expanded', 'false');
+  };
+
+  toggle?.addEventListener('click', open);
+  document.querySelector('#closeSidebarBtn')?.addEventListener('click', close);
+  backdrop?.addEventListener('click', (e) => {
+    if (e.target === backdrop) close();
+  });
+
+  document.querySelectorAll('.sidebar-item[data-view]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const view = btn.dataset.view;
+      document.querySelectorAll('.sidebar-item').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      close();
+      if (view === 'quiz') openQuizView();
+      else closeQuizView();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop?.classList.contains('active')) close();
+  });
 }
 
 function openHistoryDrawer() {
