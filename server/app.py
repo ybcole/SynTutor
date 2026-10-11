@@ -14,7 +14,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
 
 from parse_engine import ParseFailure, analyze, load_models
-from matrix import evaluate
+from matrix import evaluate, _rem_from_text
 from detector import classify, classify_many, combine
 from licensing import _leaves as _tree_leaves
 from licensing import _finding
@@ -221,8 +221,13 @@ def _apply_correction(located, root, details, summary, sentence, det):
          'source': (f"masked-language-model sweep ({corrector._MLM_MODEL}) "
                     f"+ acceptability flip (p(acceptable)={located['cola_p']:.2f})")},
         remediation)
-    finding['id'] = bad_id
-    details[bad_id] = finding
+    detail = details.get(bad_id) or details.get(root['id'], {})
+    finding['id'] = f"{bad_id}:11.4"
+    detail.setdefault('findings', []).append(finding)
+    detail['status'] = 'error'
+    detail['text'] = text
+    detail['remediation'] = _rem_from_text(text, bad)
+    details[bad_id] = detail
 
     summary['flagged'] = True
     summary['verdict'] = 'ungrammatical'
@@ -268,9 +273,13 @@ def _contrastive(summary, details):
         'C-TENSE-FINITE': 'adding a finite predicate verb',
         'C-MLM-ANOMALY': 'replacing the anomalous word with the form the structure requires',
     }
-    repair = breaks.get(first['constraint'], f'satisfying {first["constraint"]}')
-    return (f"Contrastive candidate: the edge '{first['id']}' violates {first['constraint']}; "
-            f"the sentence would be licensed after {repair}.")
+    repair = breaks.get(first['constraint'])
+    surface = first.get('surface', '') or first['id']
+    if repair is None:
+        repair = (f"fixing the flagged word '{surface}' so the "
+                  f"constraint '{first['constraint']}' is satisfied")
+    return (f"A repair appears possible: the word '{surface}' is the point of "
+            f"the violation, and the sentence would be licensed after {repair}.")
 
 
 class Handler(BaseHTTPRequestHandler):

@@ -173,7 +173,8 @@ def _classify_leaf(low, tag, upos):
             f = _forms(lem, u)
             if any(low in f.get(t, ()) for t in _tag_group(tag)):
                 return 'licensed', {'lemma': lem}
-        lem, u = sorted(lemmas)[0]
+        non_self = [(lem, u) for (lem, u) in lemmas if lem != low]
+        lem, u = sorted(non_self or lemmas)[0]
         return 'tag_mismatch', {'lemma': lem, 'upos': u,
                                 'paradigm': _paradigm_text(lem, u)}
 
@@ -183,7 +184,8 @@ def _classify_leaf(low, tag, upos):
             continue
         found = _lemmas(low, u)
         if found:
-            lem = sorted(found)[0]
+            non_self = [leaf for leaf in found if leaf != low]
+            lem = sorted(non_self or found)[0]
             return 'tag_mismatch', {'lemma': lem, 'upos': u,
                                     'paradigm': _paradigm_text(lem, u),
                                     'other_pos': True}
@@ -255,17 +257,24 @@ def check_lexicon(leaves, skip_ids=frozenset()):
             stats['malformed'] += 1
             stem, u, para = info['lemma'], info['upos'], info['paradigm']
             tagged_forms = _forms(stem, u).get(tag)
-            fix = sorted(tagged_forms)[0] if tagged_forms else None
+            if tagged_forms:
+                regular = {stem + 'd', stem + 'ed', stem}
+                strong = [f for f in tagged_forms if f not in regular]
+                fix = sorted(strong or tagged_forms)[0]
+            else:
+                fix = None
             if u == 'ADJ' and tag in ('NN', 'NNS', 'JJ'):
-                text = (f"'{surface}' is not a word form: '{stem}' is an adjective "
-                        f"and takes no plural -s.")
-                fix_text = (f"Use the bare adjective '{stem}' "
-                            f"(e.g. 'I am {stem}'), or add a noun: '{stem} people'.")
+                text = (f"The word '{surface}' is not a real word form: "
+                        f"'{stem}' is an adjective and takes no '-s'.")
+                fix_text = (f"Replace '{surface}' with the bare adjective '{stem}', "
+                            f"which takes no '-s': write 'I am {stem}' or "
+                            f"'{stem} people' instead.")
             else:
                 text = (f"'{surface}' is not a valid form of '{stem}'. "
                         f"Accepted forms: {', '.join(para)}.")
-                fix_text = (f"Use '{fix}' ({tag})." if fix
-                            else f"Choose the form you need from: {', '.join(para)}.")
+                fix_text = (f"Replace '{surface}' with '{fix}'." if fix
+                            else f"Choose the needed form of '{stem}' from: "
+                                 f"{', '.join(para)}.")
             out.append(_finding(
                 _lex_rule(upos, tag), 'error', 'C-LEXICON-MALFORMED', 'word form',
                 lf['id'], text,
@@ -280,7 +289,10 @@ def check_lexicon(leaves, skip_ids=frozenset()):
             if (tag == 'VBN' and not info.get('other_pos')
                     and prev in (ruleset.BE_SURFACES | ruleset.HAVE_SURFACES)):
                 stats['malformed'] += 1
-                part = sorted(_forms(lem, info['upos']).get('VBN', ()))
+                raw = sorted(_forms(lem, info['upos']).get('VBN', ()))
+                regular = {lem + 'd', lem + 'ed', lem}
+                strong = [p for p in raw if p not in regular]
+                part = tuple(strong or raw)
                 out.append(_finding(
                     '1.6', 'error', 'C-LEXICON-MALFORMED', 'verb form', lf['id'],
                     f"After '{leaves[i - 1]['surface']}' a past participle is "
@@ -293,9 +305,9 @@ def check_lexicon(leaves, skip_ids=frozenset()):
                 out.append(_finding(
                     '1.12', 'unverified', 'C-LEXICON-TAG-MISMATCH', 'word form',
                     lf['id'],
-                    f"'{surface}' was tagged {tag}, but the lexicon lists it only "
-                    f"as another form/part of speech; the parse may have "
-                    f"normalised an error.",
+                    f"'{surface}' is not the word form this sentence needs, but "
+                    f"the lexicon lists it only as another form of '{lem}'; its "
+                    f"form could not be verified.",
                     _wordlist_evidence(surface, info['paradigm'],
                                        f"lexicon paradigm of '{lem}'")))
         else:  # unknown
@@ -317,8 +329,9 @@ def check_lexicon(leaves, skip_ids=frozenset()):
             fix = low[:-3] + 'ily'
             out.append(_finding('1.8', 'error', 'C-ADVERB-FORM', 'adverb form',
                                 lf['id'],
-                                f"Adverb-formation error: '{lf['surface']}' "
-                                f"\u2192 '{fix}'.",
+                                f"'{lf['surface']}' is not a real adverb: adverbs made "
+                                f"from adjectives ending in -y take the form "
+                                f"'{fix}'.",
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    '-y adjective + -ly rule')))
     return out, stats

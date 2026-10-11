@@ -246,6 +246,18 @@ PAST_AS_PARTICIPLE = {
     'sat', 'slept', 'stood', 'stole', 'swam', 'threw', 'wore', 'won',
 }
 
+PAST_PARTICIPLE_OF = {
+    'went': 'gone', 'ate': 'eaten', 'drank': 'drunk', 'ran': 'run',
+    'took': 'taken', 'bought': 'bought', 'brought': 'brought',
+    'taught': 'taught', 'thought': 'thought', 'wrote': 'written',
+    'knew': 'known', 'caught': 'caught', 'chose': 'chosen', 'spoke': 'spoken',
+    'gave': 'given', 'made': 'made', 'found': 'found', 'saw': 'seen',
+    'came': 'come', 'did': 'done', 'got': 'got', 'said': 'said',
+    'sold': 'sold', 'sent': 'sent', 'sang': 'sung', 'sat': 'sat',
+    'slept': 'slept', 'stood': 'stood', 'stole': 'stolen', 'swam': 'swum',
+    'threw': 'thrown', 'wore': 'worn', 'won': 'won',
+}
+
 UNCOUNTABLE_PLURAL = {
     'informations', 'advices', 'knowledges', 'furnitures', 'luggages',
     'equipments', 'homeworks', 'evidences', 'softwares', 'moneys',
@@ -321,6 +333,21 @@ NEEDS_PREP = {
     'arrive': 'at', 'arrives': 'at', 'arrived': 'at',
     'belong': 'to', 'belongs': 'to', 'belonged': 'to',
     'apologize': 'to', 'apologizes': 'to', 'apologized': 'to',
+}
+
+# Words that can follow the verbs above without being their object, so the
+# "missing preposition" rule must not fire on them (arrived home / yesterday).
+BARE_OBJECTS = {
+    'yesterday', 'today', 'tomorrow', 'tonight', 'now', 'later', 'soon',
+    'early', 'late', 'home', 'here', 'there', 'back', 'ahead', 'abroad',
+}
+
+# '-ing' words that are not gerunds, so parallelism/gerund rules skip them.
+ING_NONVERBS = {
+    'during', 'morning', 'evening', 'thing', 'nothing', 'something',
+    'anything', 'everything', 'spring', 'string', 'king', 'ring', 'bring',
+    'sing', 'sting', 'swing', 'wing', 'cling', 'fling', 'sling', 'wring',
+    'ceiling', 'evening', 'darling', 'underling', 'sibling', 'offing',
 }
 
 REDUNDANT_BIGRAMS = {
@@ -610,23 +637,23 @@ def _check_wordlists(leaves):
                 observed = lf['surface']
             out.append(_finding('1.11', 'error', 'C-CONTRACTION', 'contraction',
                                 lf['id'],
-                                f"Missing apostrophe: '{observed}' is an unmarked "
-                                f"contraction; write '{fix}'.",
+                                f"The word '{observed}' is a contraction but is "
+                                f"missing its apostrophe; write it as '{fix}'.",
                                 _wordlist_evidence(observed, [fix],
                                                    'contraction table'),
-                                _rem(f"Unmarked contraction '{observed}'.",
+                                _rem(f"'{observed}' is a contraction missing its apostrophe.",
                                      f"Add the apostrophe: '{observed}' \u2192 '{fix}'.",
-                                     None, "Contraction written with an apostrophe")))
+                                     None, "The word is written as '{fix}'")))
 
         if low in REFLEXIVE_FIX:
             fix = REFLEXIVE_FIX[low]
             out.append(_finding('1.9', 'error', 'C-REFLEXIVE-FORM', 'reflexive',
                                 lf['id'],
-                                f"Reflexive-form error: '{lf['surface']}' is not a "
-                                f"standard reflexive; use '{fix}'.",
+                                f"The word '{lf['surface']}' is not a standard "
+                                f"reflexive pronoun; use '{fix}' instead.",
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    'reflexive table'),
-                                _rem(f"Non-standard reflexive '{lf['surface']}'.",
+                                _rem(f"'{lf['surface']}' is not a standard reflexive pronoun.",
                                      f"Use '{fix}' instead of '{lf['surface']}'.",
                                      None, 'Standard reflexive pronoun')))
 
@@ -634,38 +661,40 @@ def _check_wordlists(leaves):
             fix = ADVERB_FIX[low]
             out.append(_finding('1.8', 'error', 'C-ADVERB-FORM', 'adverb form',
                                 lf['id'],
-                                f"Adverb-formation error: '{lf['surface']}' should be "
-                                f"'{fix}'.",
+                                f"'{lf['surface']}' is not a correct adverb form; use "
+                                f"'{fix}' instead.",
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    'adverb-formation table'),
-                                _rem(f"Misspelled adverb '{lf['surface']}'.",
+                                _rem(f"'{lf['surface']}' is not a correct adverb form.",
                                      f"Write '{fix}' instead of '{lf['surface']}'.")))
 
         if low in SPELLING_FIX:
             fix = SPELLING_FIX[low]
             out.append(_finding('1.12', 'error', 'C-SPELLING', 'spelling',
                                 lf['id'],
-                                f"Misspelling: '{lf['surface']}' \u2192 '{fix}'.",
+                                f"'{lf['surface']}' is misspelled; write it as '{fix}'.",
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    'spelling table'),
-                                _rem(f"Misspelled word '{lf['surface']}'.",
+                                _rem(f"'{lf['surface']}' is misspelled.",
                                      f"Correct the spelling to '{fix}'.")))
 
         if low in VERB_ENDING_FIX:
             fix = VERB_ENDING_FIX[low]
             out.append(_finding('1.4', 'error', 'C-VERB-ENDING', 'verb ending',
                                 lf['id'],
-                                f"Verb-ending error: '{lf['surface']}' \u2192 '{fix}'.",
+                                f"'{lf['surface']}' is a misspelled verb form; "
+                                f"write it as '{fix}'.",
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    'verb-ending table'),
-                                _rem(f"Misspelled verb form '{lf['surface']}'.",
+                                _rem(f"'{lf['surface']}' is a misspelled verb form.",
                                      f"Write '{fix}' instead of '{lf['surface']}'.")))
 
         if low in UNCOUNTABLE_PLURAL:
             out.append(_finding('4.1', 'error', 'C-UNCOUNTABLE', 'noun number',
                                 lf['id'],
-                                f"'{lf['surface']}' is an uncountable noun and has no "
-                                f"plural form; use the singular '{low.rstrip('s')}'.",
+                                f"'{lf['surface']}' is an uncountable noun, so in this "
+                                f"sentence it has no plural form; use the singular "
+                                f"'{low.rstrip('s')}'.",
                                 _wordlist_evidence(lf['surface'], [low.rstrip('s')],
                                                    'uncountable-noun list')))
 
@@ -673,7 +702,8 @@ def _check_wordlists(leaves):
             fix = IRREGULAR_COMPARATIVE[low]
             out.append(_finding('1.7', 'error', 'C-COMPARATIVE-FORM',
                                 'comparative form', lf['id'],
-                                f"Irregular comparative: '{lf['surface']}' \u2192 '{fix}'.",
+                                f"'{lf['surface']}' is not the correct comparative form; "
+                                f"use '{fix}' instead.",
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    'irregular-comparative table')))
 
@@ -681,25 +711,28 @@ def _check_wordlists(leaves):
             fix = ORAL_PAST_REGULARIZED[low]
             out.append(_finding('1.5', 'error', 'C-VERB-FORM', 'verb form',
                                 lf['id'],
-                                f"Irregular past-tense error: '{lf['surface']}' \u2192 '{fix}'.",
+                                f"'{lf['surface']}' is not the correct past-tense form; "
+                                f"use '{fix}' instead.",
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    'irregular-past table')))
 
         if lf.get('type') == 'VBN' and low in PAST_AS_PARTICIPLE:
+            part = PAST_PARTICIPLE_OF.get(low, low)
             out.append(_finding('1.6', 'error', 'C-VERB-FORM', 'verb form',
                                 lf['id'],
-                                f"Past participle required, but '{lf['surface']}' is the "
-                                f"past-tense form.",
+                                f"This sentence needs the past participle of the verb, "
+                                f"but '{lf['surface']}' is the past-tense form; "
+                                f"use '{part}' instead.",
                                 _wordlist_evidence(lf['surface'],
-                                                   [IRREGULAR_PART_REGULARIZED.get(low, '')],
+                                                   [part],
                                                    'participle table')))
 
         if lf.get('type') == 'VBN' and low in IRREGULAR_PART_REGULARIZED:
             fix = IRREGULAR_PART_REGULARIZED[low]
             out.append(_finding('1.6', 'error', 'C-VERB-FORM', 'verb form',
                                 lf['id'],
-                                f"Regularized participle after 'have': '{lf['surface']}' "
-                                f"\u2192 '{fix}'.",
+                                f"After the word 'have', '{lf['surface']}' is not the "
+                                f"correct participle form; use '{fix}' instead.",
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    'participle table')))
 
@@ -707,8 +740,9 @@ def _check_wordlists(leaves):
                 and _lower(prev) in ('a', 'an'):
             out.append(_finding('4.1', 'error', 'C-UNCOUNTABLE', 'articles',
                                 lf['id'],
-                                f"'{lf['surface']}' is uncountable and takes no "
-                                f"indefinite article; drop '{prev['surface']}'.",
+                                f"The word '{lf['surface']}' is uncountable and cannot "
+                                f"follow the article '{prev['surface']}'; remove "
+                                f"'{prev['surface']}' in this sentence.",
                                 _wordlist_evidence(f"{prev['surface']} {lf['surface']}",
                                                    [lf['surface']],
                                                    'uncountable-noun list')))
@@ -716,8 +750,9 @@ def _check_wordlists(leaves):
         if low in PLURAL_ONLY and prev is not None and _lower(prev) in ('a', 'an'):
             out.append(_finding('4.3', 'error', 'C-PLURAL-ONLY', 'noun number',
                                 lf['id'],
-                                f"'{lf['surface']}' is plural-only and cannot follow "
-                                f"'{prev['surface']}'; use 'a pair of {lf['surface']}'.",
+                                f"The word '{lf['surface']}' is only used as a plural and "
+                                f"cannot follow '{prev['surface']}' in this sentence; "
+                                f"say 'a pair of {lf['surface']}' instead.",
                                 _wordlist_evidence(f"{prev['surface']} {lf['surface']}",
                                                    [f"pair of {lf['surface']}"],
                                                    'plural-only noun list')))
@@ -726,8 +761,9 @@ def _check_wordlists(leaves):
                 'are', 'were', 'have', 'do'):
             out.append(_finding('4.3', 'error', 'C-PLURAL-ONLY', 'noun number',
                                 lf['id'],
-                                f"'news' is singular in form and takes a singular verb, "
-                                f"not '{nxt['surface']}'.",
+                                f"The word 'news' is singular even though it ends in 's', "
+                                f"so in this sentence it does not go with the verb "
+                                f"'{nxt['surface']}'.",
                                 _wordlist_evidence('news', ['is', 'was'],
                                                    'singular -s noun list')))
 
@@ -739,9 +775,10 @@ def _check_wordlists(leaves):
                      'eight', 'nine', 'ten', 'eleven', 'twelve'}):
             out.append(_finding('1.13', 'error', 'C-NUMERAL', 'numeral',
                                 lf['id'],
-                                f"After a number the scale word stays singular: "
-                                f"'{prev['surface']} {lf['surface']}' \u2192 "
-                                f"'{prev['surface']} {low[:-1]}'.",
+                                f"After a number the scale word '{lf['surface']}' in this "
+                                f"sentence stays singular: write "
+                                f"'{prev['surface']} {low[:-1]}' instead of "
+                                f"'{prev['surface']} {lf['surface']}'.",
                                 _wordlist_evidence(lf['surface'], [low[:-1]],
                                                    'numeral-scale rule')))
 
@@ -749,8 +786,9 @@ def _check_wordlists(leaves):
         if prev is not None and (_lower(prev), low) in REDUNDANT_BIGRAMS:
             out.append(_finding('9.12', 'error', 'C-REDUNDANCY', 'redundancy',
                                 lf['id'],
-                                f"Redundant pair: '{prev['surface']} {lf['surface']}' "
-                                f"expresses the same idea twice.",
+                                f"The words '{prev['surface']}' and '{lf['surface']}' in "
+                                f"this sentence express the same idea twice; keep "
+                                f"only one.",
                                 _wordlist_evidence(f"{prev['surface']} {lf['surface']}",
                                                    [prev['surface']],
                                                    'redundancy table')))
@@ -761,8 +799,9 @@ def _check_wordlists(leaves):
             correct = ADJ_PREP_FIX[low][_lower(nxt)]
             out.append(_finding('8.4', 'error', 'C-ADJ-PREP', 'preposition',
                                 nxt['id'],
-                                f"Preposition selection: '{low} {nxt['surface']}' "
-                                f"\u2192 '{low} {correct}'.",
+                                f"'{low}' takes the preposition '{correct}', not "
+                                f"'{nxt['surface']}'; write '{low} {correct}', not "
+                                f"'{low} {nxt['surface']}'.",
                                 _wordlist_evidence(nxt['surface'], [correct],
                                                    'adjective+preposition table')))
 
@@ -770,20 +809,22 @@ def _check_wordlists(leaves):
         if prev is not None and (_lower(prev), low) in EXTRA_PREP:
             out.append(_finding('8.3', 'error', 'C-EXTRA-PREP', 'preposition',
                                 lf['id'],
-                                f"'{prev['surface']}' does not license the preposition "
-                                f"'{lf['surface']}'; remove it.",
+                                f"The preposition '{lf['surface']}' is unnecessary after "
+                                f"'{prev['surface']}'; remove '{lf['surface']}'.",
                                 _wordlist_evidence(f"{prev['surface']} {lf['surface']}",
                                                    [prev['surface']],
                                                    'verb-preposition table')))
 
         # Missing preposition (listen music -> listen to music)
         if low in NEEDS_PREP and nxt is not None \
-                and nxt.get('type') in {'NN', 'NNS', 'NNP', 'NNPS', 'PRP'}:
+                and nxt.get('type') in {'NN', 'NNS', 'NNP', 'NNPS', 'PRP'} \
+                and _lower(nxt) not in BARE_OBJECTS:
             prep = NEEDS_PREP[low]
             out.append(_finding('8.2', 'error', 'C-MISSING-PREP', 'preposition',
                                 lf['id'],
-                                f"Missing preposition: '{low}' requires '{prep}' before "
-                                f"'{nxt['surface']}' \u2192 '{low} {prep} {nxt['surface']}'.",
+                                f"'{low}' needs the preposition '{prep}' before the word "
+                                f"'{nxt['surface']}': write '{low} {prep} {nxt['surface']}' "
+                                f"in this sentence.",
                                 _wordlist_evidence(low, [f"{low} {prep}"],
                                                    'verb-preposition table')))
 
@@ -792,30 +833,34 @@ def _check_wordlists(leaves):
                 and (nxt.get('type') == 'VBG' or _lower(nxt) in HOMOPHONE_ITS_VERBS):
             out.append(_finding('1.10', 'error', 'C-HOMOPHONE', 'homophone',
                                 lf['id'],
-                                f"Homophone: '{lf['surface']}' here means 'it is' \u2192 "
-                                f"'It's {nxt['surface']}'.",
+                                f"The word '{lf['surface']}' in this sentence means "
+                                f"'it is', so write 'it\u2019s' before "
+                                f"'{nxt['surface']}'.",
                                 _wordlist_evidence(lf['surface'], ["it's"],
                                                    'homophone table')))
         if low == 'their' and nxt is not None and _lower(nxt) in BE_SURFACES:
             out.append(_finding('1.10', 'error', 'C-HOMOPHONE', 'homophone',
                                 lf['id'],
-                                f"Homophone: '{lf['surface']} {nxt['surface']}' \u2192 "
-                                f"'there {nxt['surface']}'.",
+                                f"Before the verb '{nxt['surface']}', the word "
+                                f"'{lf['surface']}' should be spelled 'there': "
+                                f"write 'there {nxt['surface']}'.",
                                 _wordlist_evidence(f"{lf['surface']} {nxt['surface']}",
                                                    [f"there {nxt['surface']}"],
                                                    'homophone table')))
         if low == 'your' and nxt is not None and _lower(nxt) == 'welcome':
             out.append(_finding('1.10', 'error', 'C-HOMOPHONE', 'homophone',
                                 lf['id'],
-                                f"Homophone: 'your welcome' \u2192 'you're welcome'.",
+                                f"The phrase 'your welcome' in this sentence should be "
+                                f"spelled 'you're welcome'.",
                                 _wordlist_evidence('your welcome', ["you're welcome"],
                                                    'homophone table')))
         if low == 'then' and prev is not None and _lower(prev) in ('more', 'less',
                                                                    'rather', 'other'):
             out.append(_finding('1.10', 'error', 'C-HOMOPHONE', 'homophone',
                                 lf['id'],
-                                f"Homophone: '{prev['surface']} then' \u2192 "
-                                f"'{prev['surface']} than' (comparison).",
+                                f"The word 'then' after '{prev['surface']}' is a "
+                                f"comparison; write '{prev['surface']} than' in this "
+                                f"sentence.",
                                 _wordlist_evidence(f"{prev['surface']} then",
                                                    [f"{prev['surface']} than"],
                                                    'homophone table')))
@@ -826,10 +871,10 @@ def _check_wordlists(leaves):
             if any(_lower(x) in NEGATIONS for x in leaves):
                 out.append(_finding('3.7', 'error', 'C-SOME-ANY', 'determiner',
                                     lf['id'],
-                                    f"In a negative clause, use 'any' rather than "
-                                    f"'{lf['surface']}'.",
+f"This sentence is negative, so use 'any' instead of "
+                                f"'{lf['surface']}'.",
                                     _tree_evidence(lf['id'], 'negative + some'),
-                                    _rem(f"'some' in a negative clause.",
+                                    _rem(f"'{lf['surface']}' is used in a negative sentence.",
                                          f"Change '{lf['surface']}' to 'any'.")))
     return out
 
@@ -863,16 +908,16 @@ def _check_tree(root, clauses, leaves, text=None):
                         if be_sg and noun_pl:
                             out.append(_finding('2.4', 'error', 'C-EXISTENTIAL',
                                                 'existential there', nxt['id'],
-                                                f"Existential agreement: 'there {nxt['surface']}' "
-                                                f"but the following noun '{head['surface']}' is "
-                                                f"plural; use 'there are'.",
+                                                f"In this sentence, 'there {nxt['surface']}' is followed "
+                                                f"by the plural noun '{head['surface']}'; write "
+                                                f"'there are' instead.",
                                                 _tree_evidence(clause['id'], 'there + be + NP')))
                         elif (not be_sg) and not noun_pl:
                             out.append(_finding('2.4', 'error', 'C-EXISTENTIAL',
                                                 'existential there', nxt['id'],
-                                                f"Existential agreement: 'there {nxt['surface']}' "
-                                                f"but '{head['surface']}' is singular; use "
-                                                f"'there is'.",
+                                                f"In this sentence, 'there {nxt['surface']}' is followed "
+                                                f"by the singular noun '{head['surface']}'; write "
+                                                f"'there is' instead.",
                                                 _tree_evidence(clause['id'], 'there + be + NP')))
 
     # 2.8 Indefinite pronoun agreement
@@ -887,8 +932,9 @@ def _check_tree(root, clauses, leaves, text=None):
                         if vk == ('*', 'non3sg'):
                             out.append(_finding('2.8', 'error', 'C-INDEFINITE-AGREE',
                                                 'subject-verb agreement', nxt['id'],
-                                                f"'{lf['surface']}' is singular, but "
-                                                f"'{nxt['surface']}' is plural.",
+                                                f"'{lf['surface']}' is singular, so it needs a singular "
+                                                f"verb; '{nxt['surface']}' is plural and does not "
+                                                f"agree with it.",
                                                 _tree_evidence(clause['id'], 'indefinite + finite',
                                                                [{'node': lf['id']},
                                                                 {'node': nxt['id']}])))
@@ -920,8 +966,8 @@ def _check_tree(root, clauses, leaves, text=None):
                 if bad:
                     out.append(_finding('2.14', 'error', 'C-REFLEXIVE-ANTECEDENT',
                                         'reflexive agreement', lf['id'],
-                                        f"The reflexive '{lf['surface']}' does not match "
-                                        f"the subject '{subj['surface']}'.",
+                                        f"The reflexive '{lf['surface']}' does not match the "
+                                        f"subject '{subj['surface']}' in this sentence.",
                                         _tree_evidence(clause['id'], 'subject ... reflexive',
                                                        [{'node': subj['id']},
                                                         {'node': lf['id']}])))
@@ -939,9 +985,9 @@ def _check_tree(root, clauses, leaves, text=None):
         if head is not None and _lower(head) in REFLEXIVE_KEY:
             out.append(_finding('5.7', 'error', 'C-REFLEXIVE-SUBJECT', 'subject',
                                 head['id'],
-                                f"'{head['surface']}' is a reflexive and cannot be the "
-                                f"clause subject; use a personal pronoun "
-                                f"(e.g. 'I') instead.",
+                                f"'{head['surface']}' is a reflexive pronoun and cannot "
+                                f"be the subject of this clause; use a personal "
+                                f"pronoun such as 'I' or 'he' instead.",
                                 _tree_evidence(clause['id'], 'reflexive subject')))
 
     # 6.3 Missing copula (She very happy)
@@ -957,9 +1003,9 @@ def _check_tree(root, clauses, leaves, text=None):
                 lf.get('type') in FINITE_TYPES for lf in _leaves(clause)):
             out.append(_finding('6.3', 'error', 'C-COPULA', 'predicate',
                                 clause['id'],
-                                f"The clause '{clause['surface']}' has a subject and a "
-                                f"predicate but no verb; supply a form of 'be' "
-                                f"(e.g. 'is'/'was').",
+                                f"The clause '{clause['surface']}' names a subject and a "
+                                f"predicate but has no verb; add a form of 'be' "
+                                f"such as '{'is'}' or '{'was'}'.",
                                 _tree_evidence(clause['id'], 'S -> NP + predicate, no VP')))
 
     # 9.5 Double subject (My brother he runs)
@@ -985,9 +1031,9 @@ def _check_tree(root, clauses, leaves, text=None):
                         and 'CC' not in [c.get('type') for c in kids[i].get('children', [])]:
                     out.append(_finding('9.5', 'error', 'C-DOUBLE-SUBJECT', 'subject',
                                         prp_leaf['id'],
-                                        f"Double subject: '{kids[i]['surface']} "
-                                        f"{prp_leaf['surface']}' repeats the subject; keep "
-                                        f"only one.",
+                                        f"'{kids[i]['surface']} "
+                                        f"{prp_leaf['surface']}' in this sentence says the "
+                                        f"subject twice; keep only one of them.",
                                         _tree_evidence(clause['id'], 'NP + PRP + VP')))
 
     # 9.2 Missing subject (Went to school)
@@ -1010,8 +1056,8 @@ def _check_tree(root, clauses, leaves, text=None):
             continue  # imperative
         out.append(_finding('9.2', 'error', 'C-MISSING-SUBJECT', 'subject',
                             clause['id'],
-                            f"The clause '{clause['surface']}' has no subject; add the "
-                            f"subject the verb requires.",
+                            f"The clause '{clause['surface']}' has a verb but no "
+                            f"subject; add the subject that the verb requires.",
                             _tree_evidence(clause['id'], 'S -> VP (no subject)')))
 
     # 2.6 / 6.13 Question structure and subject-verb agreement
@@ -1025,8 +1071,9 @@ def _check_tree(root, clauses, leaves, text=None):
         if clause.get('type') == 'SBARQ' and 'S' in types and 'SQ' not in types:
             out.append(_finding('6.13', 'error', 'C-QUESTION-INVERSION',
                                 'inversion', clause['id'],
-                                "A wh-question needs subject-auxiliary inversion "
-                                "(e.g. 'Where are you going?').",
+                                "A wh-question like this one needs the subject and "
+                                "the auxiliary verb to change places, for example "
+                                "'where are you going?'.",
                                 _tree_evidence(clause['id'], 'SBARQ -> S (no SQ)')))
         cl = _leaves(clause)
         verb = next((lf for lf in cl if lf.get('type') in
@@ -1042,7 +1089,7 @@ def _check_tree(root, clauses, leaves, text=None):
             if not _agree(skey, _verb_key(verb)):
                 out.append(_finding('2.6', 'error', 'C-SUBJECT-AGREEMENT',
                                     'subject-verb agreement', verb['id'],
-                                    f"Question agreement: the subject "
+                                    f"In this question, the subject "
                                     f"'{head['surface']}' and the verb "
                                     f"'{verb['surface']}' do not agree.",
                                     _tree_evidence(clause['id'], 'question subject + verb',
@@ -1063,8 +1110,9 @@ def _check_tree(root, clauses, leaves, text=None):
                 if any(_lower(x) in PRON_SUBJ for x in cl[1:]):
                     out.append(_finding('9.13', 'error', 'C-INDIRECT-Q-ORDER',
                                         'word order', cl[0]['id'],
-                                        "An embedded (indirect) question uses statement "
-                                        "order (subject before verb), not inversion.",
+                                        "An embedded question like this one keeps normal "
+                                        "statement order, with the subject before the "
+                                        "verb; it should not be inverted.",
                                         _tree_evidence(child['id'], 'SBAR -> S starting with verb')))
 
     # 9.4 Comma splice / fused sentence
@@ -1083,6 +1131,9 @@ def _check_tree(root, clauses, leaves, text=None):
         first_words = [_lower(x) for x in before[:3]]
         if any(w in SUBORDINATORS for w in first_words):
             continue
+        if any(_lower(x) in ('which', 'who', 'whom', 'whose', 'that')
+               for x in before):
+            continue
         if before[0].get('type') in ('IN', 'TO', 'PP') or _lower(before[0]) in SUBORDINATORS:
             continue
         if before and _lower(before[-1]) in {'and', 'but', 'or', 'nor', 'so',
@@ -1094,10 +1145,13 @@ def _check_tree(root, clauses, leaves, text=None):
                                           'furthermore', 'thus', 'hence',
                                           'otherwise', 'meanwhile'}:
             continue
+        clause_a = ' '.join(x.get('surface', '') for x in before).rstrip().rstrip(' .')
+        clause_b = ' '.join(x.get('surface', '') for x in after).rstrip().rstrip(' .')
         out.append(_finding('9.4', 'error', 'C-COMMA-SPLICE', 'punctuation',
                             lf['id'],
-                            "Comma splice: two independent clauses are joined by a comma "
-                            "alone; use a semicolon, a period, or a conjunction.",
+                            f"This sentence joins two complete clauses with a comma "
+                            f"alone; put a semicolon between them: "
+                            f"'{clause_a}; {clause_b}'.",
                             _tree_evidence(lf['id'], 'clause , clause')))
 
     # 9.8 Parallel structure (to run, swimming)
@@ -1108,12 +1162,15 @@ def _check_tree(root, clauses, leaves, text=None):
                 if x.get('type') in FINITE_TYPES or x.get('type') in ('VB', 'TO'):
                     break
                 xlow = _lower(x)
-                if x.get('type') == 'VBG' or xlow.endswith('ing'):
+                if x.get('type') == 'VBG' and xlow not in ING_NONVERBS:
+                    match = _base_of(_lower(x))
                     out.append(_finding('9.8', 'error', 'C-PARALLEL', 'parallelism',
                                         x['id'],
-                                        f"Items in a list must share a form; "
-                                        f"'{tops[i + 1]['surface']}' (base) and "
-                                        f"'{x['surface']}' (gerund) do not match.",
+                                        f"Everything in this list should take the same form, but "
+                                        f"'{tops[i + 1]['surface']}' is a base verb while "
+                                        f"'{x['surface']}' ends in 'ing'; change "
+                                        f"'{x['surface']}' to '{match}' to match "
+                                        f"'{tops[i + 1]['surface']}'.",
                                         _tree_evidence(lf['id'], 'to VB + VBG')))
                     break
 
@@ -1123,26 +1180,31 @@ def _check_tree(root, clauses, leaves, text=None):
             nxt = leaves[i + 1]
             finite = nxt.get('type') in ('VBD', 'VBZ', 'VBP') \
                 or nxt.get('ftag') in ('VBD', 'VBZ', 'VBP') \
-                or nxt.get('fpos') == 'AUX' \
+                or (nxt.get('fpos') == 'AUX'
+                    and _lower(nxt) not in ('have', 'be', 'do')) \
                 or _lower(nxt).endswith(('ies', 'es'))
             if finite:
+                base = {'is': 'be', 'are': 'be', 'was': 'be', 'were': 'be',
+                        'am': 'be', 'been': 'be', 'has': 'have', 'had': 'have',
+                        'does': 'do', 'did': 'do'}.get(_lower(nxt)) \
+                    or _base_of(_lower(nxt))
                 out.append(_finding('6.10', 'error', 'C-TO-BASE', 'infinitive',
                                     nxt['id'],
-                                    f"'to' must be followed by the base form, not "
-                                    f"'{nxt['surface']}' ({nxt['type'].lower()}).",
+                                    f"After 'to' in this sentence the verb must be in its "
+                                    f"base form, but '{nxt['surface']}' is not.",
                                     _tree_evidence(lf['id'], 'TO + finite verb',
                                                    [{'node': lf['id']},
                                                     {'node': nxt['id']}]),
-                                    _rem(f"'{nxt['surface']}' after 'to'.",
-                                         f"Use the base form after 'to' instead of "
+                                    _rem(f"'{nxt['surface']}' follows 'to' in this sentence.",
+                                         f"Write '{base}' after 'to' instead of "
                                          f"'{nxt['surface']}'.")))
         # 6.12 modal + to
         if (_lower(lf) in MODAL_SURFACES or lf.get('type') == 'MD') \
                 and i + 1 < len(leaves) and leaves[i + 1].get('type') == 'TO':
             out.append(_finding('6.12', 'error', 'C-MODAL-TO', 'modal',
                                 lf['id'],
-                                f"A modal verb takes no 'to': drop 'to' after "
-                                f"'{lf['surface']}'.",
+                                f"The modal '{lf['surface']}' takes the verb directly "
+                                f"without 'to'; drop 'to' here.",
                                 _tree_evidence(lf['id'], 'MD + TO')))
 
     # 6.19 Causative + to (make/let + pronoun object + to + VB)
@@ -1158,8 +1220,8 @@ def _check_tree(root, clauses, leaves, text=None):
             if obj is not None and j < len(leaves) and leaves[j].get('type') == 'TO':
                 out.append(_finding('6.19', 'error', 'C-CAUSATIVE-TO', 'causative',
                                     obj['id'],
-                                    f"After causative '{lf['surface']}', the object takes a "
-                                    f"bare infinitive: drop 'to' before "
+                                    f"After the verb '{lf['surface']}', the object takes a "
+                                    f"bare verb without 'to'; drop 'to' before "
                                     f"'{leaves[j + 1]['surface'] if j + 1 < len(leaves) else 'the verb'}'.",
                                     _tree_evidence(lf['id'], 'make/let + NP + TO')))
 
@@ -1170,9 +1232,10 @@ def _check_tree(root, clauses, leaves, text=None):
                 and _lower(leaves[i + 1]) in PRON_OBJ:
             out.append(_finding('6.11', 'error', 'C-PHRASAL-ORDER', 'phrasal verb',
                                 lf['id'],
-                                f"With a pronoun object the particle comes last: "
-                                f"'{lf['surface']} {leaves[i + 1]['surface']}' \u2192 "
-                                f"'{leaves[i + 1]['surface']} {lf['surface']}'.",
+                                f"With the pronoun object '{leaves[i + 1]['surface']}', "
+                                f"the particle comes last: write "
+                                f"'{leaves[i + 1]['surface']} {lf['surface']}' "
+                                f"instead of '{lf['surface']} {leaves[i + 1]['surface']}'.",
                                 _wordlist_evidence('V + up/it', ['pick it up'],
                                                    'phrasal-verb order')))
 
@@ -1180,11 +1243,15 @@ def _check_tree(root, clauses, leaves, text=None):
     for i, lf in enumerate(leaves):
         if _lower(lf) in GERUND_VERBS and i + 1 < len(leaves) \
                 and leaves[i + 1].get('type') == 'TO':
+            ger = _vbg_of(_base_of(_lower(leaves[i + 2]))) \
+                if i + 2 < len(leaves) else 'the -ing form'
             out.append(_finding('6.9', 'error', 'C-GERUND-INFINITIVE',
                                 'complement type', lf['id'],
-                                f"'{lf['surface']}' takes a gerund, not a to-infinitive; "
-                                f"use 'enjoying' rather than 'to enjoy'.",
-                                _wordlist_evidence(lf['surface'], [lf['surface'] + 'ing'],
+                                f"'{lf['surface']}' takes a gerund (the 'ing' form), not "
+                                f"a 'to' + verb; write "
+                                f"'{lf['surface']} {ger}' "
+                                f"instead of '{lf['surface']} to {_lower(leaves[i + 2]) if i + 2 < len(leaves) else '...'}'.",
+                                _wordlist_evidence(lf['surface'], [ger],
                                                    'gerund-taking verbs')))
 
     # 6.20 Verb + clause pattern (suggest him to go)
@@ -1192,11 +1259,19 @@ def _check_tree(root, clauses, leaves, text=None):
         if _lower(lf) in CLAUSE_PATTERN_VERBS and i + 1 < len(leaves) \
                 and leaves[i + 1].get('type') == 'PRP' \
                 and i + 2 < len(leaves) and leaves[i + 2].get('type') == 'TO':
+            base = _base_of(_lower(leaves[i + 3])) if i + 3 < len(leaves) \
+                else 'go'
+            ger = _vbg_of(base)
+            subj = {'him': 'he', 'her': 'she', 'them': 'they', 'me': 'I',
+                    'us': 'we', 'you': 'you', 'it': 'it'}.get(
+                        _lower(leaves[i + 1]), 'they')
             out.append(_finding('6.20', 'error', 'C-VERB-CLAUSE-PATTERN',
                                 'complement clause', lf['id'],
-                                f"'{lf['surface']}' does not take an object + to-infinitive; "
-                                f"use '{lf['surface']} that he go' or "
-                                f"'{lf['surface']} going'.",
+                                f"'{lf['surface']}' does not take an object and then a "
+                                f"'to' + verb form; write "
+                                f"'{lf['surface']} that {subj} {base}' "
+                                f"or '{lf['surface']} {ger}' "
+                                f"instead.",
                                 _wordlist_evidence(lf['surface'],
                                                    [lf['surface'] + ' that ...'],
                                                    'verb + clause patterns')))
@@ -1208,16 +1283,17 @@ def _check_tree(root, clauses, leaves, text=None):
             if nxt.get('type') == 'VBN' and _lower(nxt) in INTRANSITIVE_VBN:
                 out.append(_finding('6.5', 'error', 'C-INTRANSITIVE-PASSIVE',
                                     'voice', nxt['id'],
-                                    f"'{nxt['surface']}' is intransitive and has no "
-                                    f"passive; use the active voice.",
+                                    f"'{nxt['surface']}' cannot be used in the passive "
+                                    f"because it is intransitive; use the active voice.",
                                     _wordlist_evidence(nxt['surface'],
                                                        [f"active: '{nxt['surface']}'"],
                                                        'intransitive-verb list')))
             if nxt.get('type') == 'VBG' and _lower(nxt)[:-3] in STATIVE_PROGRESSIVE:
                 out.append(_finding('6.6', 'error', 'C-STATIVE-PROGRESSIVE',
                                     'aspect', nxt['id'],
-                                    f"'{nxt['surface']}' is a stative verb and is not "
-                                    f"used in the progressive; use the simple form.",
+                                    f"'{nxt['surface']}' is a stative verb, which in this "
+                                    f"sentence is not used in the progressive; "
+                                    f"use the simple form instead.",
                                     _wordlist_evidence(nxt['surface'],
                                                        [_lower(nxt)[:-3] + 's'],
                                                        'stative-verb list')))
@@ -1230,11 +1306,13 @@ def _check_tree(root, clauses, leaves, text=None):
             if tuple(lows[i:i + plen]) == phrase:
                 after = i + plen
                 if after < len(leaves) and leaves[after].get('type') == 'VB':
+                    ger = _vbg_of(_base_of(_lower(leaves[after])))
                     out.append(_finding('8.6', 'error', 'C-PREP-GERUND',
                                         'preposition + gerund', leaves[after]['id'],
                                         f"After the prepositional 'to' in "
-                                        f"'{' '.join(phrase)}', use a gerund "
-                                        f"('the-ing' form), not '{leaves[after]['surface']}'.",
+                                        f"'{' '.join(phrase)}', the verb takes the 'ing' "
+                                        f"form; write '{ger}', not "
+                                        f"'{leaves[after]['surface']}'.",
                                         _tree_evidence(leaves[i]['id'],
                                                        'P + to + VBG')))
 
@@ -1244,8 +1322,8 @@ def _check_tree(root, clauses, leaves, text=None):
         idx = next(i for i, x in enumerate(lows) if x == 'but')
         out.append(_finding('9.9', 'error', 'C-CONJUNCTION-PAIR', 'conjunction',
                             leaves[idx]['id'],
-                            "Use either 'although' or 'but', not both, to link the "
-                            "clauses.",
+                            "This sentence links its two clauses with both "
+                            "'although' and 'but'; use one of them, not both.",
                             _wordlist_evidence('although ... but', ['although ...'],
                                                'conjunction-pairing table')))
 
@@ -1254,8 +1332,9 @@ def _check_tree(root, clauses, leaves, text=None):
     if raw and raw[-1] not in '.?!':
         out.append(_finding('10.3', 'error', 'C-TERMINAL-PUNCT', 'punctuation',
                             root['id'],
-                            "The sentence does not end with a terminal mark "
-                            "('.', '?' or '!').",
+                            "This sentence does not end with '.', '?' or '!'; put the "
+                            "right end mark after the last word \u2014 a period ('.') "
+                            "for a statement.",
                             _tree_evidence(root['id'], 'sentence boundary')))
 
     # 10.9 Spacing and repeats (function-word doubling)
@@ -1266,7 +1345,8 @@ def _check_tree(root, clauses, leaves, text=None):
                             'his', 'her', 'its', 'our', 'their'}:
             out.append(_finding('10.9', 'error', 'C-SPACING-REPEAT', 'spacing',
                                 leaves[i]['id'],
-                                f"Repeated word '{leaves[i]['surface']}'.",
+                                f"The word '{leaves[i]['surface']}' is written twice in a "
+                                f"row; remove the second one.",
                                 _tree_evidence(leaves[i]['id'], 'token i == token i+1')))
 
     # 10.5 Apostrophe (decade)
@@ -1276,15 +1356,16 @@ def _check_tree(root, clauses, leaves, text=None):
         if m.group(1).endswith('0'):
             out.append(_finding('10.5', 'error', 'C-APOSTROPHE', 'apostrophe',
                                 leaves[0]['id'],
-                                f"Decades are written without an apostrophe: "
-                                f"'{m.group(0)}' \u2192 '{m.group(1)}s'.",
+                                f"Decades are written without an apostrophe: write "
+                                f"'{m.group(1)}s' instead of '{m.group(0)}'.",
                                 _tree_evidence(leaves[0]['id'], 'decade apostrophe')))
 
     # 10.6 Quotation marks (unbalanced)
     if surface.count('"') % 2 == 1 or surface.count('\u201c') != surface.count('\u201d'):
         out.append(_finding('10.6', 'error', 'C-QUOTATION', 'quotation',
                             root['id'],
-                            "Unbalanced quotation marks.",
+                            "The quotation marks in this sentence do not match up: "
+                            "every opening mark needs a closing one.",
                             _tree_evidence(root['id'], 'matching quotes')))
 
     return out
@@ -1303,8 +1384,9 @@ def _check_adjective_adverb(leaves):
             if r1 is not None and r2 is not None and r1 > r2:
                 out.append(_finding('7.2', 'error', 'C-ADJ-ORDER', 'adjective order',
                                     lf['id'],
-                                    f"Adjective order: '{lf['surface']} {nxt['surface']}' "
-                                    f"should be '{nxt['surface']} {lf['surface']}'.",
+                                    f"The adjectives in '{lf['surface']} {nxt['surface']}' "
+                                    f"are in the wrong order; write "
+                                    f"'{nxt['surface']} {lf['surface']}' instead.",
                                     _wordlist_evidence(
                                         f"{lf['surface']} {nxt['surface']}",
                                         [f"{nxt['surface']} {lf['surface']}"],
@@ -1314,15 +1396,18 @@ def _check_adjective_adverb(leaves):
                 'JJ', 'JJR', 'JJS'):
             out.append(_finding('7.5', 'error', 'C-INTENSIFIER', 'intensifier',
                                 lf['id'],
-                                f"'enough' follows the adjective: "
-                                f"'{nxt['surface']} enough', not 'enough {nxt['surface']}'.",
+                                f"With the adjective '{nxt['surface']}', the word "
+                                f"'enough' comes after it: write "
+                                f"'{nxt['surface']} enough', not "
+                                f"'enough {nxt['surface']}'.",
                                 _tree_evidence(lf['id'], 'enough + JJ')))
         if low == 'much' and i >= 1 and _lower(leaves[i - 1]) == 'too' \
                 and nxt is not None and nxt.get('type') in ('JJ', 'JJR', 'JJS'):
             out.append(_finding('7.5', 'error', 'C-INTENSIFIER', 'intensifier',
                                 lf['id'],
-                                f"'{nxt['surface']}' is a gradable adjective; use "
-                                f"'too {nxt['surface']}', not 'too much {nxt['surface']}'.",
+                                f"'{nxt['surface']}' is a gradable adjective, so in this "
+                                f"sentence write 'too {nxt['surface']}', not "
+                                f"'too much {nxt['surface']}'.",
                                 _tree_evidence(lf['id'], 'too much + JJ')))
         # 7.6 as tall than
         if low == 'as' and nxt is not None and nxt.get('type') in ('JJ', 'JJR', 'JJS'):
@@ -1330,7 +1415,8 @@ def _check_adjective_adverb(leaves):
                 if _lower(leaves[k]) == 'than':
                     out.append(_finding('7.6', 'error', 'C-COMPARATIVE-STRUCT',
                                         'comparative', leaves[k]['id'],
-                                        f"Use 'as \u2026 as', not 'as \u2026 than'.",
+                                        f"With '{nxt['surface']}' and the word 'than', use "
+                                        f"'as ... as', not 'as ... than'.",
                                         _tree_evidence(lf['id'], 'as ADJ than')))
                     break
         # 7.6 more tall (analytic + morphological)
@@ -1339,8 +1425,9 @@ def _check_adjective_adverb(leaves):
             cmp_form = _lower(nxt) + ('er' if low == 'more' else 'est')
             out.append(_finding('7.6', 'error', 'C-COMPARATIVE-STRUCT',
                                 'comparative', nxt['id'],
-                                f"'{nxt['surface']}' takes the morphological form "
-                                f"'{cmp_form}', not '{low} {nxt['surface']}'.",
+                                f"'{nxt['surface']}' is a short adjective and in this "
+                                f"sentence takes the form '{cmp_form}', not "
+                                f"'{low} {nxt['surface']}'.",
                                 _wordlist_evidence(f"{low} {nxt['surface']}",
                                                    [cmp_form],
                                                    'short-adjective comparative rule')))
@@ -1366,8 +1453,8 @@ def _check_more(root, clauses, leaves):
                 continue  # 'a person' is correct; only 'persons' is odd
             out.append(_finding('1.1', 'error', 'C-PLURAL-FORM', 'noun number',
                                 lf['id'],
-                                f"Wrong plural/singular form '{lf['surface']}'; "
-                                f"use '{fix}'.",
+                                f"'{lf['surface']}' is the wrong plural or singular "
+                                f"form here; use '{fix}' instead.",
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    'plural-forms table')))
 
@@ -1379,8 +1466,9 @@ def _check_more(root, clauses, leaves):
             if nxt.get('type') in ('NNS', 'NNPS'):
                 out.append(_finding('3.8', 'error', 'C-DET-NOUN-AGREE',
                                     'determiner', lf['id'],
-                                    f"'{lf['surface']}' takes a singular count noun, "
-                                    f"not the plural '{nxt['surface']}'.",
+                                    f"'{lf['surface']}' takes a singular noun, so in this "
+                                    f"sentence it should not be followed by the plural "
+                                    f"'{nxt['surface']}'.",
                                     _wordlist_evidence(f"{lf['surface']} {nxt['surface']}",
                                                        [f"{lf['surface']} <singular noun>"],
                                                        'determiner\u2013noun number')))
@@ -1410,8 +1498,9 @@ def _check_more(root, clauses, leaves):
                    'them': 'they'}[_lower(cl[0])]
             out.append(_finding('5.2', 'error', 'C-COORD-CASE', 'pronoun case',
                                 cl[0]['id'],
-                                f"Subject pronouns take the nominative case: "
-                                f"'{cl[0]['surface']}' \u2192 '{fix}'.",
+                                f"'{cl[0]['surface']}' is the subject of this clause "
+                                f"and must take the subject form: write "
+                                f"'{fix}' instead.",
                                 _tree_evidence(clause['id'], 'coordinate NP subject',
                                                [{'node': cl[0]['id']}])))
 
@@ -1428,8 +1517,9 @@ def _check_more(root, clauses, leaves):
                 and cl[1].get('type') in ('VBG', 'VBN', 'JJ'):
             out.append(_finding('5.5', 'error', 'C-DUMMY-IT', 'subject',
                                 clause['id'],
-                                f"Add the dummy subject 'It' (e.g. 'It is "
-                                f"{cl[1]['surface']}').",
+                                f"This clause starts with '{cl[0]['surface']}' but has "
+                                f"no subject; add the dummy subject 'it': for example, "
+                                f"'it is {cl[1]['surface']}'.",
                                 _tree_evidence(clause['id'], 'VP with no subject')))
 
     # 6.5 intransitive passive (was happened)
@@ -1443,7 +1533,7 @@ def _check_more(root, clauses, leaves):
                 out.append(_finding('6.5', 'error', 'C-INTRANSITIVE-PASSIVE',
                                     'voice', lf['id'],
                                     f"'{leaves[i + 1]['surface']}' is intransitive and "
-                                    'cannot be used in the passive.',
+                                    'cannot be used in the passive in this sentence.',
                                     _wordlist_evidence(
                                         f"{lf['surface']} {leaves[i + 1]['surface']}",
                                         [], 'intransitive-verb list')))
@@ -1465,11 +1555,12 @@ def _check_more(root, clauses, leaves):
             if nxt.get('type') in ('DT', 'NN', 'NNS', 'NNP', 'PRP') \
                     and _lower(nxt) not in ('home', 'here', 'there', 'abroad',
                                             'up', 'down', 'in', 'out',
-                                            'back', 'away'):
+                                            'back', 'away') \
+                    and _lower(nxt) not in BARE_OBJECTS:
                 out.append(_finding('6.8', 'error', 'C-TRANSITIVITY',
                                     'transitivity', lf['id'],
                                     f"'{lf['surface']}' does not take a direct object; "
-                                    'a preposition is required.',
+                                    f"in this sentence it needs a preposition instead.",
                                     _wordlist_evidence(lf['surface'], [],
                                                        'verb transitivity list')))
 
@@ -1482,8 +1573,9 @@ def _check_more(root, clauses, leaves):
         if len(negs) >= 2:
             out.append(_finding('6.14', 'error', 'C-DOUBLE-NEGATIVE', 'negation',
                                 clause['id'],
-                                'Two negatives in one clause; standard English '
-                                'uses a single negation.',
+                                f"In this clause, '{negs[0]['surface']}' and "
+                                f"'{negs[1]['surface']}' are two negatives; "
+                                'standard English uses only one negation.',
                                 _tree_evidence(clause['id'], 'neg + neg',
                                                [{'node': negs[0]['id']},
                                                 {'node': negs[1]['id']}])))
@@ -1495,9 +1587,12 @@ def _check_more(root, clauses, leaves):
             v = leaves[i + 2]
             if _lower(v) in ('goes', 'went', 'has', 'does', 'is', 'was') \
                     or v.get('type') in ('VBZ', 'VBD'):
+                base = _base_of(_lower(v))
                 out.append(_finding('6.15', 'error', 'C-IMPERATIVE-VERB',
                                     'imperative', v['id'],
-                                    'After an imperative negator use the base form.',
+                                    f"After the negator '{leaves[i + 1]['surface']}', the "
+                                    f"verb must be in its base form; use '{base}' instead "
+                                    f"of '{v['surface']}'.",
                                     _tree_evidence(lf['id'], "do + n't + finite")))
 
     # 6.16 conditional with 'will' (If I will go)
@@ -1508,8 +1603,8 @@ def _check_more(root, clauses, leaves):
             if hit:
                 out.append(_finding('6.16', 'error', 'C-CONDITIONAL-WILL',
                                     'conditional', leaves[i]['id'],
-                                    f"Use the present tense in an 'if'-clause, not "
-                                    f"'{hit}'.",
+                                    f"The clause after 'if' takes the present tense, not "
+                                    f"'{hit}'; drop '{hit}' and use the present tense there.",
                                     _tree_evidence(lf['id'], 'if + will')))
 
     # 6.18 reported speech (She said me)
@@ -1519,8 +1614,9 @@ def _check_more(root, clauses, leaves):
                 and _lower(leaves[i + 1]) not in ('it',):
             out.append(_finding('6.18', 'error', 'C-REPORTED-SPEECH',
                                 'reported speech', lf['id'],
-                                f"'{lf['surface']}' takes 'to' before the recipient: "
-                                f"'{lf['surface']} to {leaves[i + 1]['surface']}'.",
+                                f"'{lf['surface']}' needs 'to' before the person it is "
+                                f"said to; write '{lf['surface']} to {leaves[i + 1]['surface']}' "
+                                f"instead of '{lf['surface']} {leaves[i + 1]['surface']}'.",
                                 _tree_evidence(lf['id'], 'say + object pronoun')))
 
     # 9.3 run-on / fused sentence (two finite clauses with no linker)
@@ -1555,8 +1651,10 @@ def _check_more(root, clauses, leaves):
                 if any(b.get('type') in ('PRP', 'NN', 'NNS', 'NNP') for b in between):
                     out.append(_finding('9.3', 'error', 'C-RUNON',
                                         'sentence boundary', x['id'],
-                                        "Run-on sentence: two finite clauses are "
-                                        "joined without punctuation or a conjunction.",
+                                        f"In this sentence two finite clauses are joined "
+                                        "without punctuation or a conjunction; write each "
+                                        "clause as its own sentence (add a period), or join "
+                                        "them with a word like 'and' or 'because'.",
                                         _tree_evidence(x['id'], 'finite ... finite',
                                                        [{'node': lf['id']},
                                                         {'node': x['id']}])))
@@ -1568,7 +1666,8 @@ def _check_more(root, clauses, leaves):
                 and leaves[i + 1].get('type') == 'DT':
             out.append(_finding('9.7', 'error', 'C-EXTRA-WORD', 'word order',
                                 leaves[i + 1]['id'],
-                                f"Unexpected determiner after '{lf['surface']}'.",
+                                f"The determiner after '{lf['surface']}' in this "
+                                f"sentence is unexpected; remove it.",
                                 _tree_evidence(lf['id'], 'adverb + determiner')))
 
     # 2.9 quantified subject: 'the number of X' takes a singular verb
@@ -1579,8 +1678,8 @@ def _check_more(root, clauses, leaves):
                 if lf.get('type') == 'VBP' or _lower(lf) in ('are', 'were'):
                     out.append(_finding('2.9', 'error', 'C-NUMBER-AGREE',
                                         'agreement', lf['id'],
-                                        "'The number of' takes a singular verb "
-                                        "(only 'a number of' takes a plural).",
+                                        f"With the phrase 'the number of', this sentence takes "
+                                        f"a singular verb, not '{lf['surface']}'.",
                                         _tree_evidence(leaves[i + 1]['id'],
                                                        'the number of + plural verb')))
                     break
@@ -1593,15 +1692,17 @@ def _check_more(root, clauses, leaves):
         low = surface.lower()
         if surface == 'i':
             out.append(_finding('10.2', 'error', 'C-PROPER-NOUN', 'capitalization',
-                                lf['id'], "The pronoun 'I' is always capitalized.",
+                                lf['id'], f"The pronoun '{surface}' here means 'I' and is "
+                                "always capitalized.",
                                 _wordlist_evidence('i', ['I'], 'capitalization list')))
         elif low in DAYS or (low in MONTHS and low not in {'may', 'march',
                                                            'august'}):
             if surface[:1].islower():
                 out.append(_finding('10.2', 'error', 'C-PROPER-NOUN',
                                     'capitalization', lf['id'],
-                                    f"'{surface}' (day/month) must be capitalized "
-                                    f"as '{surface.capitalize()}'.",
+                                    f"'{surface}' names a day or month and must be "
+                                    f"capitalized in this sentence as "
+                                    f"'{surface.capitalize()}'.",
                                     _wordlist_evidence(surface, [surface.capitalize()],
                                                        'day/month list')))
 
@@ -1613,9 +1714,9 @@ def _check_more(root, clauses, leaves):
                      or leaves[i + 1].get('type') in ('.', ',', '!', '?', ';', ':')):
             out.append(_finding('5.6', 'error', 'C-POSSESSIVE', 'determiner',
                                 lf['id'],
-                                f"The possessive determiner '{lf['surface']}' needs a "
-                                'noun; a possessive pronoun stands alone instead '
-                                f"(e.g. 'mine'/'yours').",
+f"The possessive '{lf['surface']}' in this sentence "
+                                f"needs a noun after it; write a possessive pronoun "
+                                f"that stands alone, like 'mine' or 'yours'.",
                                 _wordlist_evidence(lf['surface'],
                                                    ['mine', 'yours', 'his', 'hers',
                                                     'ours', 'theirs'],
@@ -1636,8 +1737,8 @@ def _check_more(root, clauses, leaves):
         if suffix != correct:
             out.append(_finding('10.10', 'error', 'C-NUMERAL-FORMAT',
                                 'numeral format', lf['id'],
-                                f"Wrong ordinal suffix: '{surface}' \u2192 "
-                                f"'{num}{correct}'.",
+                                f"'{surface}' has the wrong ordinal suffix; write "
+                                f"'{num}{correct}' instead.",
                                 _wordlist_evidence(surface, [f"{num}{correct}"],
                                                    'ordinal-suffix rule')))
 
@@ -1678,17 +1779,17 @@ def _check_more(root, clauses, leaves):
         if nlow == 'i' and vlow not in ('am', 'was'):
             out.append(_finding('2.13', 'error', 'C-CORRELATIVE-AGREE', 'agreement',
                                 vhead['id'],
-                                f"With correlatives, the verb agrees with the nearest "
-                                f"subject '{nearest['surface']}': use 'am', not "
-                                f"'{vhead['surface']}'.",
+                                f"With the correlative subject, the verb agrees with the "
+                                f"nearest subject '{nearest['surface']}': use 'am', "
+                                f"not '{vhead['surface']}'.",
                                 _tree_evidence(nearest['id'],
                                                'nearest subject + verb')))
         elif nlow in ('he', 'she', 'it') and vlow in ('are', 'were'):
             out.append(_finding('2.13', 'error', 'C-CORRELATIVE-AGREE', 'agreement',
                                 vhead['id'],
-                                f"With correlatives, the verb agrees with the nearest "
-                                f"subject '{nearest['surface']}': use 'is/was', not "
-                                f"'{vhead['surface']}'.",
+                                f"With the correlative subject, the verb agrees with the "
+                                f"nearest subject '{nearest['surface']}': use "
+                                f"'is/was', not '{vhead['surface']}'.",
                                 _tree_evidence(nearest['id'],
                                                'nearest subject + verb')))
 
@@ -1716,8 +1817,8 @@ def _check_more(root, clauses, leaves):
                 continue
             out.append(_finding('1.3', 'error', 'C-POSSESSIVE-S', 'possessive',
                                 ahead['id'],
-                                f"Possessive needed: '{ahead['surface']}' + "
-                                f"'{bhead['surface']}' \u2192 "
+                                f"In '{ahead['surface']} {bhead['surface']}', the first "
+                                f"noun needs an apostrophe to show ownership: write "
                                 f"'{ahead['surface']}\u2019 {bhead['surface']}'.",
                                 _wordlist_evidence(f"{ahead['surface']} {bhead['surface']}",
                                                    [f"{ahead['surface']}\u2019 {bhead['surface']}"],
@@ -1769,8 +1870,9 @@ def _check_more(root, clauses, leaves):
                 and cleaves[1].get('type') in ('PRP', 'DT', 'NNP', 'NNPS', 'NNS'):
             out.append(_finding('10.4', 'error', 'C-INTRO-COMMA', 'punctuation',
                                 cleaves[0]['id'],
-                                f"An introductory connector is followed by a comma: "
-                                f"'{cleaves[0]['surface']}, ...'.",
+                                f"At the start of this sentence, the connector "
+                                f"'{cleaves[0]['surface']}' needs a comma after it: "
+                                f"write '{cleaves[0]['surface']}, ...'.",
                                 _wordlist_evidence(cleaves[0]['surface'],
                                                    [f"{cleaves[0]['surface']},"],
                                                    'punctuation rule')))
@@ -1783,8 +1885,8 @@ def _check_more(root, clauses, leaves):
             if (lf.get('surface') or '') == ';':
                 out.append(_finding('10.8', 'error', 'C-PUNCT', 'punctuation',
                                     lf['id'],
-                                    "A semicolon joins independent clauses; use a comma "
-                                    'for items in a list.',
+                                    f"The ';' inside this list should be a comma; a "
+                                    "semicolon joins whole clauses instead.",
                                     _wordlist_evidence(';', [','], 'punctuation rule')))
                 break
 
@@ -1813,9 +1915,10 @@ def _check_more(root, clauses, leaves):
         if has_by and verb.get('type') in ('VBD', 'VB', 'VBN'):
             out.append(_finding('6.4', 'error', 'C-PASSIVE', 'voice',
                                 verb['id'],
-                                f"Passive voice needs 'be' + past participle: "
-                                f"'{subhead['surface']} was {verb['surface']}' "
-                                '(or a correct participle).',
+                                f"This passive needs a form of 'be' plus the past "
+                                f"participle; write "
+                                f"'{subhead['surface']} was {verb['surface']}', or "
+                                'use the correct participle form.',
                                 _tree_evidence(verb['id'],
                                                'be + VBN + by-phrase')))
 
@@ -1842,8 +1945,8 @@ def _check_more(root, clauses, leaves):
                 vl = _leaves(vp)
                 out.append(_finding('9.6', 'error', 'C-WORD-ORDER', 'word order',
                                     vl[0]['id'] if vl else vp['id'],
-                                    'In a statement the object follows the verb; this '
-                                    'looks like object-before-verb order.',
+                                    f"In this statement the object comes before the verb; "
+                                    'the object should follow the verb instead.',
                                     _tree_evidence(vp['id'],
                                                    'object NP + VP')))
                 break
@@ -1891,9 +1994,10 @@ def _check_more(root, clauses, leaves):
             if vkey == ('3', 'sg') or vlow in ('is', 'was', 'has', 'does'):
                 out.append(_finding('2.3', 'error', 'C-COORD-SUBJ-AGREE',
                                     'subject-verb agreement', vhead['id'],
-                                    f"A coordinated subject is plural: "
-                                    f"'{subj['surface']}' needs a plural verb, not "
-                                    f"'{vhead['surface']}'.",
+                                    f"'{subj['surface']}' joins two subjects with "
+                                    f"'{conj}', which makes it plural; this verb "
+                                    f"'{vhead['surface']}' is singular and does not "
+                                    "agree.",
                                     _tree_evidence(ccs[0]['id'],
                                                    'NP CC NP + singular verb',
                                                    [{'node': ccs[0]['id']},
@@ -1912,7 +2016,7 @@ def _check_more(root, clauses, leaves):
             if nkey[1] == 'sg' and vkey in (('*', 'non3sg'), ('3', 'pl')):
                 out.append(_finding('2.3', 'error', 'C-COORD-SUBJ-AGREE',
                                     'subject-verb agreement', vhead['id'],
-                                    f"With 'or'/'nor' the verb agrees with the "
+                                    f"After '{conj}', the verb agrees with the "
                                     f"nearest subject '{near['surface']}': use the "
                                     f"singular form, not '{vhead['surface']}'.",
                                     _tree_evidence(near['id'],
@@ -1923,8 +2027,10 @@ def _check_more(root, clauses, leaves):
                                       or vlow in ('is', 'was', 'has', 'does')):
                 out.append(_finding('2.3', 'error', 'C-COORD-SUBJ-AGREE',
                                     'subject-verb agreement', vhead['id'],
-                                    f"With 'or'/'nor' the verb agrees with the "
-                                    f"nearest subject '{near['surface']}' (plural).",
+                                    f"After '{conj}', the verb agrees with the "
+                                    f"nearest subject '{near['surface']}', which is "
+                                    f"plural; this verb '{vhead['surface']}' does not "
+                                    "agree.",
                                     _tree_evidence(near['id'],
                                                    'nearest NP + verb',
                                                    [{'node': near['id']},
@@ -1948,9 +2054,9 @@ def _check_more(root, clauses, leaves):
                 fix = MEASURE_SG[_lower(a)]
                 out.append(_finding('4.2', 'error', 'C-NOUN-MODIFIER-NUMBER',
                                     'noun modifier', a['id'],
-                                    f"An attributive noun is singular: "
-                                    f"'{a['surface']} {b['surface']}' \u2192 "
-                                    f"'{fix} {b['surface']}'.",
+                                    f"'{a['surface']}' describes '{b['surface']}', and a "
+                                    f"describing noun stays singular: write "
+                                    f"'{fix} {b['surface']}' instead.",
                                     _tree_evidence(node['id'],
                                                    'plural modifier + head noun',
                                                    [{'node': a['id']},
@@ -1977,9 +2083,9 @@ def _check_more(root, clauses, leaves):
             out.append(_finding('7.3', 'error', 'C-ADVERB-PLACEMENT',
                                 'adverb position', k['id'],
                                 f"The adverbial '{k['surface']}' sits between the "
-                                f"verb and its pronoun object; move it after "
-                                f"'{nhead['surface']}' "
-                                f"(e.g. '... {nhead['surface']} {k['surface']}').",
+                                f"verb and its pronoun object '{nhead['surface']}'; "
+                                f"move it after the pronoun, as in "
+                                f"'... {nhead['surface']} {k['surface']}'.",
                                 _tree_evidence(node['id'],
                                                'V + ADVP + PRP object',
                                                [{'node': k['id']},
@@ -2003,7 +2109,11 @@ def _check_more(root, clauses, leaves):
             continue
         w = _lower(nxt)
         after = [_lower(x) for x in leaves[i + 1:i + 4]]
-        is_clock = nxt.get('type') == 'CD' or any(a in CLOCK for a in after)
+        cd_surface = nxt.get('surface', '') or ''
+        is_clock = (nxt.get('type') == 'CD'
+                    and (':' in cd_surface
+                         or (cd_surface.isdigit() and len(cd_surface) <= 2))) \
+            or any(a in CLOCK for a in after)
         tgt = None
         if low == 'at' and w in DAY_WORDS:
             tgt = 'on'
@@ -2028,8 +2138,8 @@ def _check_more(root, clauses, leaves):
         if tgt:
             out.append(_finding('8.5', 'error', 'C-TIME-PLACE-PREP',
                                 'preposition choice', nxt['id'],
-                                f"For a time expression, '{low} {w}...' is not "
-                                f"standard; use '{tgt}'.",
+                                f"For a time expression like '{low} {w}...' in this "
+                                f"sentence, the correct preposition is '{tgt}'.",
                                 _wordlist_evidence(f"{low} {w}",
                                                    [f"{tgt} {w}"],
                                                    'in/on/at time table')))
@@ -2043,8 +2153,8 @@ def _check_more(root, clauses, leaves):
                     'spring', 'fall'):
                 out.append(_finding('8.5', 'error', 'C-TIME-PLACE-PREP',
                                     'preposition choice', nxt['id'],
-                                    f"'{low} {w} {w2}' takes no preposition: use "
-                                    f"'{w} {w2}'.",
+                                    f"'{low} {w} {w2}' in this sentence has too many "
+                                    f"prepositions; write '{w} {w2}' instead.",
                                     _wordlist_evidence(f"{low} {w} {w2}",
                                                        [f"{w} {w2}"],
                                                        'in/on/at time table')))
@@ -2053,9 +2163,9 @@ def _check_more(root, clauses, leaves):
     if root.get('type') == 'SBAR':
         out.append(_finding('9.1', 'error', 'C-FRAGMENT', 'sentence structure',
                             root['id'],
-                            "This is a subordinate clause with no main clause "
-                            "(a fragment). Add a main clause to complete the "
-                            "sentence.",
+                            "This sentence starts with a subordinate clause and has "
+                            "no main clause, so it is only a fragment; add a main "
+                            "clause to complete the sentence.",
                             _tree_evidence(root['id'],
                                            'SBAR without a matrix S')))
 
@@ -2093,9 +2203,9 @@ def _check_more(root, clauses, leaves):
             continue
         out.append(_finding('9.10', 'error', 'C-RESUMPTIVE-RELATIVE',
                             'relative clause', obj['id'],
-                            f"Resumptive pronoun '{obj['surface']}': the relative "
-                            f"pronoun '{wl[0]['surface']}' already fills the object "
-                            'slot, so the noun should not be repeated.',
+                            f"The relative pronoun '{wl[0]['surface']}' already "
+                            f"stands for the object, so '{obj['surface']}' repeats "
+                            "it; remove the repetition.",
                             _tree_evidence(node['id'],
                                            'SBAR(WHNP S(NP VP NP-PRP))',
                                            [{'node': wl[0]['id']},
@@ -2125,9 +2235,9 @@ def _check_more(root, clauses, leaves):
         if 'TO' in vpl or (_leaves(vp) and _leaves(vp)[0].get('type') == 'TO'):
             out.append(_finding('9.14', 'error', 'C-CLAUSE-LINKING',
                                 'clause joining', inc['id'],
-                                f"'{inc['surface']}' introduces a finite "
-                                "clause; a bare 'to'-infinitive (with no subject) "
-                                "cannot follow it directly.",
+                                f"'{inc['surface']}' joins a whole clause, so a bare "
+                                f"'to' + verb with no subject cannot follow it "
+                                "directly in this sentence.",
                                 _tree_evidence(sc['id'],
                                                'IN + S(VP(TO ...))',
                                                [{'node': inc['id']},
@@ -2165,10 +2275,12 @@ def _check_more(root, clauses, leaves):
                 continue
             out.append(_finding('9.15', 'error', 'C-OBJECT-ORDER',
                                 'object order', verb['id'],
-                                f"Object-order error: the direct object should "
-                                f"come right after the verb (e.g. '{verb['surface']} "
-                                f"{pobj['surface']} «noun»') or after the whole "
-                                f"prepositional phrase.",
+                                f"The direct object in this sentence should come "
+                                f"right after the verb '{verb['surface']}'; write "
+                                f"'{verb['surface']} {pobj['surface']} "
+                                f"{nxt.get('surface', '')}', or "
+                                f"'{verb['surface']} {nxt.get('surface', '')} "
+                                f"{kl[0]['surface']} {pobj['surface']}'.",
                                 _tree_evidence(node['id'],
                                                'V + PP(to/for + PRP) + NP',
                                                [{'node': verb['id']},
@@ -2190,8 +2302,8 @@ def _check_more(root, clauses, leaves):
             if low not in ('i',) and low not in DAYS and low not in MONTH_WORDS:
                 out.append(_finding('10.1', 'error', 'C-SENTENCE-CAPITAL',
                                     'capitalization', first['id'],
-                                    f"Sentences begin with a capital letter: "
-                                    f"'{surf}' \u2192 "
+                                    f"This sentence begins with '{surf}', but sentences "
+                                    f"start with a capital letter; write "
                                     f"'{surf[0].upper() + surf[1:]}'.",
                                     _tree_evidence(root['id'],
                                                    'sentence-initial token',
@@ -2270,6 +2382,35 @@ def _base_of(low):
     return low
 
 
+def _vbg_of(base):
+    """Base verb -> '-ing' form (run->running, make->making, die->dying)."""
+    w = base.lower()
+    if w == 'be':
+        return 'being'
+    if w in ('lie', 'die', 'tie'):
+        return w[:-1] + 'ying'
+    if w.endswith('e') and not w.endswith('ee'):
+        return w[:-1] + 'ing'
+    vowels = sum(w.count(v) for v in 'aeiou')
+    if len(w) >= 3 and w[-1] not in 'aeiouwxy' and w[-2] in 'aeiou' \
+            and w[-3] not in 'aeiou' and vowels == 1:
+        return w + w[-1] + 'ing'
+    return w + 'ing'
+
+
+def _past_of(base):
+    """Best-effort simple-past form for a verb base (see->saw, kick->kicked)."""
+    try:
+        from lemminflect import getInflection
+        inf = getInflection(base.lower(), tag='VBD')
+        if inf:
+            return inf[0]
+    except Exception:  # pragma: no cover
+        pass
+    w = base.lower()
+    return w + 'd' if w.endswith('e') else w + 'ed'
+
+
 def _is_3sg_marked(nlow):
     """True when a surface ending in -s is the parser-normalised 3rd-singular of
     a verb (benepar happily retags 'must goes' so 'goes' looks like a bare VB)."""
@@ -2300,22 +2441,25 @@ def _check_basic(root, clauses, leaves):
             lemma = _base_of(nlow) if _is_3sg_marked(nlow) else nlow
             out.append(_finding(
                 '6.1', 'error', 'C-MODAL-VERB-FORM', 'verb form', nxt['id'],
-                f"The modal '{lf['surface']}' takes the bare infinitive, but "
-                f"'{nxt['surface']}' is a 3rd-singular form; use '{lemma}'.",
+                f"After the modal '{lf['surface']}', the verb must be "
+                f"in its base form, but '{nxt['surface']}' is a third-person-"
+                f"singular form; use '{lemma}'.",
                 _wordlist_evidence(f"{low} {nlow}", [f"{low} {lemma}"],
                                    'modal + base verb')))
         elif nlow == 'to':
             n2 = _lower(leaves[i + 2]) if i + 2 < len(leaves) else '...'
             out.append(_finding(
                 '6.12', 'error', 'C-MODAL-TO', 'verb form', nxt['id'],
-                f"The modal '{lf['surface']}' is followed by the bare infinitive, "
-                f"not 'to {n2}'.",
+                f"The modal '{lf['surface']}' is followed directly by "
+                f"the verb, without 'to': write '{lf['surface']} {n2}', not "
+                f"'to {n2}'.",
                 _tree_evidence(nxt['id'], 'MD + to', [{'node': nxt['id']}])))
         elif nlow in MODAL_SURFACES:
             out.append(_finding(
                 '6.12', 'error', 'C-MODAL-STACK', 'verb form', nxt['id'],
-                f"English modals do not stack: drop one of '{lf['surface']}' / "
-                f"'{nxt['surface']}'.",
+                f"This sentence has two modals in a row, "
+                f"'{lf['surface']}' and '{nxt['surface']}'; "
+                'English uses only one modal.',
                 _tree_evidence(nxt['id'], 'MD + MD', [{'node': nxt['id']}])))
 
     # --- 2.4 existential 'there' + have/has ---------------------------------- #
@@ -2328,8 +2472,9 @@ def _check_basic(root, clauses, leaves):
             out.append(_finding(
                 '2.4', 'error', 'C-EXISTENTIAL-VERB', 'existential',
                 leaves[i + 1]['id'],
-                f"The existential construction uses 'be': 'There {fix} ...', "
-                f"not 'There {n1} ...'.",
+                f"The phrase 'there {n1}' is not correct; with "
+                f"'there' this sentence uses a form of 'be', so write "
+                f"'there {fix}'.",
                 _wordlist_evidence(f"there {n1}", [f"there {fix}"],
                                    'existential there + be')))
 
@@ -2354,11 +2499,11 @@ def _check_basic(root, clauses, leaves):
             continue
         if nxt.get('type') == 'NN':
             rule = '2.10' if lf.get('type') == 'CD' else '2.11'
-            art = ('the numeral' if lf.get('type') == 'CD' else f"'{low}'")
             out.append(_finding(
                 rule, 'error', 'C-QUANT-PLURAL', 'noun number', nxt['id'],
-                f"After {art} '{lf['surface']}' the noun must be plural: "
-                f"'{nxt['surface']}' \u2192 '{nxt['surface']}s'.",
+                f"After '{lf['surface']}' the noun must be "
+                f"plural: write '{nxt['surface']}s' instead of "
+                f"'{nxt['surface']}'.",
                 _wordlist_evidence(f"{low} {_lower(nxt)}",
                                    [f"{low} {_lower(nxt)}s"],
                                    'numeral/quantifier + plural noun')))
@@ -2373,22 +2518,23 @@ def _check_basic(root, clauses, leaves):
         if low == 'much' and nt == 'NNS':
             out.append(_finding(
                 '2.11', 'error', 'C-QUANTIFIER-CLASS', 'quantifier', nxt['id'],
-                f"'much' combines with mass nouns, not count plural '{nxt['surface']}'; "
-                f"use 'many'.",
+                f"'much' is used with uncountable nouns, but here "
+                f"'{nxt['surface']}' is a count plural; use 'many'.",
                 _wordlist_evidence(f"much {nlow}", [f"many {nlow}"],
                                    'much (mass) vs many (count)')))
         elif low == 'many' and nt == 'NN':
             out.append(_finding(
                 '2.11', 'error', 'C-QUANTIFIER-CLASS', 'quantifier', nxt['id'],
-                f"'many' combines with plural count nouns, not singular "
-                f"'{nxt['surface']}'; use 'much' (or a plural noun).",
+                f"'many' is used with plural count nouns, but here "
+                f"'{nxt['surface']}' is singular; use 'much' or make the "
+                "noun plural.",
                 _wordlist_evidence(f"many {nlow}", [f"much {nlow}"],
                                    'many (count) vs much (mass)')))
         elif low == 'less' and nt == 'NNS':
             out.append(_finding(
                 '2.11', 'error', 'C-QUANTIFIER-CLASS', 'quantifier', nxt['id'],
-                f"'less' is for mass nouns; with count plural '{nxt['surface']}' "
-                f"use 'fewer'.",
+                f"'less' is used with uncountable nouns; with the count "
+                f"plural '{nxt['surface']}' here, use 'fewer'.",
                 _wordlist_evidence(f"less {nlow}", [f"fewer {nlow}"],
                                    'less (mass) vs fewer (count)')))
 
@@ -2402,8 +2548,8 @@ def _check_basic(root, clauses, leaves):
                 out.append(_finding(
                     '5.1', 'error', 'C-PREP-PRON-CASE', 'pronoun case',
                     leaves[i + 1]['id'],
-                    f"The object of the preposition '{lf['surface']}' must be "
-                    f"objective: '{nxt}' \u2192 '{obj}'.",
+                    f"After the preposition '{lf['surface']}', the pronoun "
+                    f"must be '{obj}', not '{nxt}'.",
                     _tree_evidence(lf['id'],
                                    'preposition + nominative pronoun',
                                    [{'node': lf['id']},
@@ -2426,17 +2572,17 @@ def _check_basic(root, clauses, leaves):
             if prev_ok:
                 out.append(_finding(
                     '1.10', 'error', 'C-HOMOPHONE', 'spelling', lf['id'],
-                    f"Possessive 'their' was spelled '{lf['surface']}': "
-                    f"'{lf['surface']} {nxt['surface']}' \u2192 "
-                    f"'their {nxt['surface']}'.",
+                    f"In '{lf['surface']} {nxt['surface']}', the first "
+                    f"word shows ownership and should be 'their', not "
+                    f"'{lf['surface']}'.",
                     _tree_evidence(lf['id'], 'there + NN (possessive slot)',
                                    [{'node': lf['id']}, {'node': nxt['id']}])))
         # its vs it's
         elif low == 'its' and (nlow in DT_WORDS or nt in verb_tags + ('MD',)):
             out.append(_finding(
                 '1.10', 'error', 'C-HOMOPHONE', 'spelling', lf['id'],
-                f"'it's' (it is) was written '{lf['surface']}': a possessive "
-                f"'its' has no apostrophe and takes no following verb/article.",
+                f"Here the word '{lf['surface']}' means 'it is', so "
+                f"it needs an apostrophe: write 'it\u2019s'.",
                 _tree_evidence(lf['id'], 'its + verb/article (it is slot)',
                                [{'node': lf['id']}])))
         # your vs you're
@@ -2444,8 +2590,8 @@ def _check_basic(root, clauses, leaves):
                                 or nlow in ('going', 'wanting')):
             out.append(_finding(
                 '1.10', 'error', 'C-HOMOPHONE', 'spelling', lf['id'],
-                f"'you're' (you are) was written '{lf['surface']}': the "
-                f"possessive 'your' takes a noun, not a verb/article.",
+                f"Here the word '{lf['surface']}' means 'you are', so "
+                f"it needs an apostrophe: write 'you\u2019re'.",
                 _tree_evidence(lf['id'], 'your + verb/article (you are slot)',
                                [{'node': lf['id']}])))
 
@@ -2459,7 +2605,8 @@ def _check_basic(root, clauses, leaves):
             out.append(_finding(
                 '2.8', 'error', 'C-INDEF-AGREE', 'subject-verb agreement',
                 leaves[i + 1]['id'],
-                f"'{lf['surface']}' is always singular: use '{sg}', not "
+                f"'{lf['surface']}' is always singular, so in this "
+                f"sentence the verb must be '{sg}', not "
                 f"'{nlow}'.",
                 _wordlist_evidence(f"{low} {nlow}", [f"{low} {sg}"],
                                    'indefinite pronoun + singular verb')))
@@ -2474,22 +2621,25 @@ def _check_basic(root, clauses, leaves):
             nln = _lower(leaves[i + 1])
             if nln == 'to':
                 n2 = _lower(leaves[i + 2])
+                ger = _vbg_of(_base_of(n2))
                 out.append(_finding(
                     '6.9', 'error', 'C-GERUND-INFIN', 'verb complement',
                     leaves[i + 1]['id'],
-                    f"'{lf['surface']}' takes a gerund: use "
-                    f"'{lf['surface']} {n2}ing' "
-                    f"(not '{lf['surface']} to {n2}').",
+                    f"'{lf['surface']}' takes an 'ing' form as its "
+                    f"complement: write '{lf['surface']} {ger}' "
+                    f"instead of '{lf['surface']} to {n2}'.",
                     _wordlist_evidence(f"{low} to {n2}",
-                                       [f"{low} {n2}ing"],
+                                       [f"{low} {ger}"],
                                        'gerund-taking verb')))
             elif leaves[i + 1].get('type') == 'VB':
+                ger = _vbg_of(_base_of(nln))
                 out.append(_finding(
                     '6.9', 'error', 'C-GERUND-INFIN', 'verb complement',
                     leaves[i + 1]['id'],
-                    f"'{lf['surface']}' takes a gerund: use "
-                    f"'{lf['surface']} {nln}ing' (not '{low} {nln}').",
-                    _wordlist_evidence(f"{low} {nln}", [f"{low} {nln}ing"],
+                    f"'{lf['surface']}' takes an 'ing' form as its "
+                    f"complement: write '{lf['surface']} {ger}' "
+                    f"instead of '{low} {nln}'.",
+                    _wordlist_evidence(f"{low} {nln}", [f"{low} {ger}"],
                                        'gerund-taking verb')))
         elif low in ('want', 'wants', 'wanted', 'wanting'):
             if leaves[i + 1].get('type') == 'VBG':
@@ -2497,7 +2647,7 @@ def _check_basic(root, clauses, leaves):
                 out.append(_finding(
                     '6.9', 'error', 'C-GERUND-INFIN', 'verb complement',
                     leaves[i + 1]['id'],
-                    f"'want' takes a to-infinitive: "
+                    f"'want' takes a 'to' + verb form: write "
                     f"'{low} to {_base_of(vbg)}', not "
                     f"'{low} {vbg}'.",
                     _wordlist_evidence(f"{low} {vbg}",
@@ -2511,11 +2661,13 @@ def _check_basic(root, clauses, leaves):
         low = lows[i]
         nln = _lower(leaves[i + 1])
         if low == 'at' and nln == 'to':
+            ger = _vbg_of(_lower(leaves[i + 2])) if i + 2 < len(leaves) else 'the verb'
             out.append(_finding(
                 '8.6', 'error', 'C-PREP-GERUND', 'verb complement',
                 leaves[i + 1]['id'],
-                f"After the preposition 'at' use the gerund: 'good at {'singing'}' "
-                f"is 'at + -ing', not 'at to ...'.",
+                f"After the preposition 'at', the verb takes the 'ing' "
+                f"form; write '{ger}' instead of 'to "
+                f"{_lower(leaves[i + 2]) if i + 2 < len(leaves) else '...'}'.",
                 _tree_evidence(lf['id'], 'preposition + to-infinitive',
                                [{'node': lf['id']},
                                 {'node': leaves[i + 1]['id']}])))
@@ -2524,21 +2676,43 @@ def _check_basic(root, clauses, leaves):
                 and i + 3 < len(leaves) \
                 and leaves[i + 3].get('type') in ('VB', 'VBZ'):
             nxtv = _lower(leaves[i + 3])
+            ger = _vbg_of(nxtv)
             out.append(_finding(
                 '8.6', 'error', 'C-PREP-GERUND', 'verb complement',
                 leaves[i + 3]['id'],
-                f"After 'look forward to' use the gerund: "
-                f"'{nxtv}ing' (not 'to {nxtv}').",
+                f"After the phrase 'look forward to', the verb takes the 'ing' "
+                f"form; write '{ger}' instead of '{nxtv}'.",
                 _wordlist_evidence(f"look forward to {nxtv}",
-                                   [f"look forward to {nxtv}ing"],
+                                   [f"look forward to {ger}"],
                                    'look forward to + gerund')))
 
     # --- 11.3 'since' needs (have/had) + past participle ---------------------- #
+    SINCE_NUMWORDS = {'one', 'two', 'three', 'four', 'five', 'six', 'seven',
+                      'eight', 'nine', 'ten', 'a', 'an', 'few', 'several',
+                      'many', 'couple'}
+    SINCE_UNITS = {'year', 'years', 'month', 'months', 'week', 'weeks', 'day',
+                   'days', 'hour', 'hours', 'minute', 'minutes', 'second',
+                   'seconds', 'decade', 'decades', 'century', 'centuries',
+                   'while', 'ages'}
     for i, lf in enumerate(leaves):
         if lows[i] != 'since':
             continue
+        # 'since' + a length of time should be 'for' (since three years).
+        if i + 2 < len(leaves):
+            a, b = leaves[i + 1], leaves[i + 2]
+            if (a.get('type') == 'CD' or _lower(a) in SINCE_NUMWORDS) \
+                    and _lower(b) in SINCE_UNITS:
+                out.append(_finding(
+                    '11.3', 'error', 'C-TENSE-SINCE', 'tense', lf['id'],
+                    f"With a length of time like '{a['surface']} {b['surface']}', "
+                    f"use 'for', not 'since'; write 'for {a['surface']} "
+                    f"{b['surface']}'.",
+                    _wordlist_evidence(f"since {a['surface']} {b['surface']}",
+                                       [f"for {a['surface']} {b['surface']}"],
+                                       'for + length of time')))
+                continue
         have_in = any(_lower(x) in ('have', 'has', 'had')
-                      for x in leaves[max(0, i - 3):i])
+                      for x in leaves[max(0, i - 5):i])
         if have_in:
             continue
         present_finite = None
@@ -2552,8 +2726,8 @@ def _check_basic(root, clauses, leaves):
             out.append(_finding(
                 '11.3', 'error', 'C-TENSE-SINCE', 'tense',
                 present_finite['id'],
-                f"With 'since' a perfect tense is required: 'have/has (been) + "
-                f"past participle since ...', not the present "
+                f"With the word 'since', this sentence needs a perfect "
+                f"tense ('have/has' plus a past participle), not the present "
                 f"'{present_finite['surface']}'.",
                 _tree_evidence(present_finite['id'], 'present verb + since',
                                [{'node': present_finite['id']},
@@ -2568,9 +2742,8 @@ def _check_basic(root, clauses, leaves):
                 verb = lows[i][:-3]  # 'liking' -> 'like'
                 out.append(_finding(
                     '6.6', 'error', 'C-STATIVE-PROG', 'verb form', lf['id'],
-                    f"'{lf['surface']}' is a stative verb: it does not take the "
-                    f"progressive. Use the simple form, e.g. '{verb}' / "
-                    f"'{verb}s'.",
+                    f"'{lf['surface']}' is a stative verb, which does not take "
+                    f"the progressive form; use '{verb}' or '{verb}s' instead.",
                     _wordlist_evidence(f"{_lower(leaves[k])} {lows[i]}",
                                        [verb, verb + 's'],
                                        'stative verb + no progressive')))
@@ -2600,8 +2773,9 @@ def _check_basic(root, clauses, leaves):
                 and _lower(leaves[i + 1]) == 'to':
             out.append(_finding(
                 '8.1', 'error', 'C-PREP-CHOICE', 'preposition', lf['id'],
-                f"'arrive' takes 'at' (or 'in' for a country/city), not 'to': "
-                f"'{low} to' \u2192 'arrive at'.",
+                f"In this sentence, '{lows[i]}' needs 'at' (or 'in' for "
+                f"a country or city) after it, not 'to'; write "
+                f"'{lows[i]} at', not '{lows[i]} to'.",
                 _wordlist_evidence(f"{lows[i]} to",
                                    [f"arrive at", f"arrive in"],
                                    'verb + preposition')))
@@ -2612,9 +2786,10 @@ def _check_basic(root, clauses, leaves):
                 and _lower(leaves[i + 1]) == 'to':
             out.append(_finding(
                 '6.3', 'error', 'C-PLEASE-TO', 'verb form', lf['id'],
-                f"An imperative with 'please' takes the bare verb: drop 'to' "
-                f"('please {leaves[i + 2]['surface'] if i + 2 < len(leaves) else 'sit'}' "
-                f"), not 'please to ...'.",
+                f"The word 'please' at the start takes the verb directly; "
+                f"write "
+                f"'please {leaves[i + 2]['surface'] if i + 2 < len(leaves) else 'the verb'}', "
+                f"not 'please to ...'.",
                 _tree_evidence(lf['id'], 'please + to',
                                [{'node': lf['id']}, {'node': leaves[i + 1]['id']}])))
 
@@ -2627,9 +2802,8 @@ def _check_basic(root, clauses, leaves):
                  else lows[i][:-3] + 'ed')
             out.append(_finding(
                 '7.4', 'error', 'C-PARTICIPIAL-ADJ', 'adjective form', lf['id'],
-                f"'{lf['surface']} in' describes a person; use the -ed form "
-                f"'{ed} in' (e.g. 'interested in'), or rephrase with the "
-                f"-ing adjective for the thing itself.",
+                f"'{lf['surface']} in' describes how a person feels; "
+                f"write '{ed} in' instead.",
                 _wordlist_evidence(f"{lows[i]} in", [f"{ed} in"],
                                    'participial adjective (-ing/-ed)')))
 
@@ -2665,9 +2839,9 @@ def _check_basic(root, clauses, leaves):
             out.append(_finding(
                 '1.6', 'error', 'C-VBN-SIMPLE-PAST', 'verb form', lf['id'],
                 f"'{lf['surface']}' is a past participle, not a simple-past "
-                f"form. After the subject pronoun '{leaves[i - 1]['surface']}' "
-                f"use the simple-past form of '{base}' (or a perfect with "
-                f"'have {lows[i]}').",
+                f"form; after the subject pronoun '{leaves[i - 1]['surface']}' "
+                f"write '{_past_of(base)}', or use a perfect with "
+                f"'have {lows[i]}'.",
                 _wordlist_evidence(f"{_lower(leaves[i - 1])} {lows[i]}",
                                    [f"{base} (simple past)",
                                     f"have {lows[i]}"],
@@ -2680,7 +2854,8 @@ def _check_basic(root, clauses, leaves):
             out.append(_finding(
                 '1.9', 'error', 'C-REFLEXIVE-FORM', 'reflexive pronoun',
                 lf['id'],
-                f"'{lf['surface']}' \u2192 '{REFLEXIVE_FIX[low]}'.",
+                f"The reflexive pronoun '{lf['surface']}' is not a "
+                f"standard form; write '{REFLEXIVE_FIX[low]}' instead.",
                 _wordlist_evidence(lf['surface'], [REFLEXIVE_FIX[low]],
                                    'reflexive forms')))
         elif lf.get('type') in ('RB', 'RBR', 'RBS') and low in NONSTANDARD_ADV:
@@ -2711,15 +2886,15 @@ def _check_context(root, clauses, leaves):
                     if _verb_key(nxt) == ('*', 'non3sg'):
                         out.append(_finding('2.5', 'suggestion', 'C-COLLECTIVE',
                                             'notional agreement', lf['id'],
-                                            f"'{lf['surface']}' can take a singular verb in "
-                                            f"American English; 'is' may read better than "
+                                            f"'{lf['surface']}' can take a singular verb; in "
+                                            f"this sentence 'is' may read better than "
                                             f"'{nxt['surface']}'.",
                                             _context_evidence(
                                                 f"collective noun '{lf['surface']}' + plural verb",
-                                                [{'option': 'singular verb',
-                                                  'evidence': 'US usage prefers the team is'},
-                                                 {'option': 'plural verb',
-                                                  'evidence': 'UK usage allows the team are'}],
+                                                [{'option': 'is',
+                                                  'evidence': 'US usage prefers the singular form'},
+                                                 {'option': 'are',
+                                                  'evidence': 'UK usage allows the plural form'}],
                                                 0.6)))
                     break
 
@@ -2819,12 +2994,13 @@ def _check_context(root, clauses, leaves):
     if ', however' in surface.lower() and ';' not in surface:
         out.append(_finding('11.8', 'suggestion', 'C-CONNECTOR', 'connector',
                             root['id'],
-                            "'however' is a conjunctive adverb; link the clauses with a "
-                            "semicolon or a full stop, not just a comma.",
+                            f"This sentence joins two clauses with a comma before "
+                            "'however'; use '; however,' or start a new sentence "
+                            "with '. However,' instead.",
                             _context_evidence(
                                 "comma + however across two clauses",
                                 [{'option': '; however,',
-                                  'evidence': 'two independent clauses need a semicolon'},
+                                  'evidence': 'two complete clauses need a semicolon'},
                                  {'option': '. However,',
                                   'evidence': 'or start a new sentence'}],
                                 0.65)))
@@ -2879,12 +3055,13 @@ def _check_context(root, clauses, leaves):
                     x.get('type') == 'VBD' for x in leaves[:i]):
                 out.append(_finding('6.7', 'suggestion', 'C-TENSE-CONSISTENCY',
                                     'tense', lf['id'],
-                                    'A past reporting verb usually takes a past/non-future '
-                                    "form (backshift to 'would').",
+                                    f"'{lf['surface']}' follows a past-tense verb in this "
+                                    'sentence; after a past verb, English usually '
+                                    "shifts it to 'would'.",
                                     _context_evidence(
                                         'past verb + will',
                                         [{'option': 'would',
-                                          'evidence': 'backshift after a past verb'},
+                                          'evidence': 'matches the past reporting verb'},
                                          {'option': 'will',
                                           'evidence': 'if the fact still holds'}],
                                         0.6)))
@@ -2974,11 +3151,11 @@ def _check_context(root, clauses, leaves):
         if low in INFORMAL_WORDS:
             out.append(_finding('11.6', 'suggestion', 'C-REGISTER', 'register',
                                 lf['id'],
-                                f"'{lf['surface']}' is informal; prefer a formal "
-                                'equivalent in academic writing.',
+                                f"'{lf['surface']}' is an informal word; in an "
+                                'academic sentence, choose a formal word instead.',
                                 _context_evidence(
                                     'informal vocabulary',
-                                    [{'option': 'formal synonym',
+                                    [{'option': 'a formal synonym',
                                       'evidence': 'matches an academic register'},
                                      {'option': lf['surface'],
                                       'evidence': 'informal register'}],
@@ -2990,15 +3167,16 @@ def _check_context(root, clauses, leaves):
                 and _lower(leaves[i + 1]) in ('agree', 'disagree'):
             out.append(_finding('11.7', 'suggestion', 'C-L1-INTERFERENCE',
                                 'L1 interference', leaves[i + 1]['id'],
-                                f"'{leaves[i + 1]['surface']}' is a verb, not an "
-                                "adjective: use 'I agree', not 'I am agree'.",
-                                _context_evidence(
-                                    "be + verb",
-                                    [{'option': 'I agree',
-                                      'evidence': 'agree is lexical verb'},
-                                     {'option': 'I am agree',
-                                      'evidence': 'L1 transfer pattern'}],
-                                    0.65)))
+f"In this sentence, '{leaves[i + 1]['surface']}' is a "
+                            "verb, not an adjective, so it should not follow a form "
+                            f"of 'be' such as '{lf['surface']}'.",
+                            _context_evidence(
+                                "be + verb",
+                                [{'option': leaves[i + 1]['surface'],
+                                  'evidence': 'used as a normal verb'},
+                                 {'option': f"{lf['surface']} {leaves[i + 1]['surface']}",
+                                  'evidence': 'L1 transfer pattern'}],
+                                0.65)))
 
     # 5.3 ambiguous pronoun reference (Tom told Jim he...)
     nnp_idx = [i for i, lf in enumerate(leaves)

@@ -112,13 +112,13 @@ export function renderNodeDetail(_session, detail, node) {
   chipRow.appendChild(chip);
   card.appendChild(chipRow);
 
-  const ex = document.createElement('p');
-  ex.className = 'ex-text';
-  ex.textContent = detail.text;
-  card.appendChild(ex);
-
   if (detail.status === 'error' && detail.remediation) {
     card.appendChild(renderRemediation(detail.remediation));
+  } else {
+    const ex = document.createElement('p');
+    ex.className = 'ex-text';
+    ex.textContent = detail.text;
+    card.appendChild(ex);
   }
 
   box.appendChild(card);
