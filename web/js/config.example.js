@@ -8,3 +8,7 @@ export const SUPABASE_CONFIG = {
   url: 'YOUR_SUPABASE_URL',
   anonKey: 'YOUR_SUPABASE_ANON_KEY',
 };
+
+// Base URL of the SynTutor NLP backend (no trailing slash).
+// Leave '' to call same-origin '/api/parse' (local `python3 server/app.py`).
+export const API_BASE = 'https://YOUR_BACKEND_HOST';

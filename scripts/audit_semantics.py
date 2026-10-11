@@ -173,14 +173,34 @@ def gate_1(corpus):
     return fails
 
 
+def _matrix_clean(result):
+    """True when the rule matrix reports neither an error nor an advisory
+    finding.  Only such sentences count as semantically neutral: when the
+    matrix already flags a sentence the semantic layer may legitimately
+    corroborate it, so those rows are not false-positive guards."""
+    if not result['summary'].get('valid'):
+        return False
+    return not any(d.get('findings') for d in result['details'].values())
+
+
 def gate_2(texts):
-    """No semantic finding on ordinary / neutral sentences (false positives)."""
+    """No semantic finding on matrix-clean / neutral sentences (false positives).
+
+    The rule matrix is the syntax authority; the branch's corpus now also carries
+    lexical/collocation/tense sentences that the matrix deliberately flags (as
+    errors or advisory suggestions).  Those are excluded here so the semantic
+    layer is only required to stay silent where the matrix is silent too.
+    """
     fails = []
+    guard = 0
     for text in texts:
-        _, _, semantics = run(text)
+        _, result, semantics = run(text)
+        if not _matrix_clean(result):
+            continue
+        guard += 1
         if semantics['findings']:
             fails.append((text, [f['constraint'] for f in semantics['findings']]))
-    return fails
+    return fails, guard
 
 
 QUALITATIVE_LABELS = frozenset({
@@ -395,9 +415,9 @@ def main() -> int:
     print(BAR)
     print('SynTutor semantic-layer audit (R11.2/R8.1, R11.3, R11.4, R11.5, R11.6)')
     print(BAR)
-    print('Syntax corpus : GOLD (semantically neutral)')
+    print('Syntax corpus : GOLD (matrix-clean subset guarded)')
     print('Semantic cases: SEMANTIC_CASES (explicit expected findings)')
-    print('Neutral guard : GOLD + SEMANTIC_NEUTRAL_EXTRA')
+    print('Neutral guard : GOLD (matrix-clean rows) + SEMANTIC_NEUTRAL_EXTRA')
 
     fails = []
 
@@ -411,14 +431,15 @@ def main() -> int:
         print('   pass: summary.valid + constraints_fired unchanged for every sentence')
 
     neutral = [row[0] for row in GOLD] + list(SEMANTIC_NEUTRAL_EXTRA)
-    print(f'\nGate 2  [semantic false-positive guard]  {len(neutral)} sentences')
-    g2 = gate_2(neutral)
+    g2, guarded = gate_2(neutral)
+    print(f'\nGate 2  [semantic false-positive guard]  {guarded}/{len(neutral)} '
+          'matrix-clean sentences')
     if g2:
         fails.append('Gate 2 FAILED')
         for text, fired in g2:
             print(f'   {text!r}: unexpected findings {fired}')
     else:
-        print('   pass: 0 semantic findings across the neutral corpus')
+        print('   pass: 0 semantic findings across the matrix-clean corpus')
 
     print(f'\nGate 3  [finding-set guard]  {len(SEMANTIC_CASES)} cases')
     g3 = gate_3()

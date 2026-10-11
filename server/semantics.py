@@ -521,9 +521,12 @@ def _check_collocations(root, findings):
                     f"insert '{required}' after '{head['surface']}'",
                 ))
 
-        # (b) light-verb collocations: ``do/make/take/have`` + object noun.
-        #     Perfect / progressive / passive VPs are not collocation contexts.
-        if (base in ('make', 'do', 'take', 'have')
+        # (b) light-verb collocations: ``do``/``make`` + object noun.  ``have``
+        #     and ``take`` are deliberately *not* flagged: they freely substitute
+        #     for the canonical light verb ("have a plan", "take a break"), so
+        #     treating them as errors would be a false positive.  Perfect /
+        #     progressive / passive VPs are not collocation contexts.
+        if (base in ('make', 'do')
                 and not any(l['type'] in ('VBG', 'VBN') for l in leaves)):
             obj = next((c for c in children if c['type'] == 'NP'), None)
             if obj is not None:

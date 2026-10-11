@@ -1,0 +1,7 @@
+server/
+scripts/audit_rules.py
+requirements.txt
+supabase/
+docs/
+**/__pycache__/
+**/*.pyc

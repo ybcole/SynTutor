@@ -25,10 +25,21 @@ def load_models():
     if _load_error is not None:
         raise _load_error
     try:
+        import torch
         import spacy
         import benepar  # noqa: F401  (registered component required)
-        nlp = spacy.load(PARSER_BUNDLE)
-        nlp.add_pipe('benepar', config={'model': PARSER_MODEL})
+        # benepar calls `.cuda()` whenever torch.cuda.is_available(). Under
+        # ZeroGPU that probe reports True (emulated) even though no GPU exists,
+        # which kills the process with a low-level CUDA init error. Pin it to
+        # False just for the load so the parser stays on CPU (SynTutor is
+        # CPU-only), then restore the emulated value.
+        _orig_is_available = torch.cuda.is_available
+        torch.cuda.is_available = lambda: False
+        try:
+            nlp = spacy.load(PARSER_BUNDLE)
+            nlp.add_pipe('benepar', config={'model': PARSER_MODEL})
+        finally:
+            torch.cuda.is_available = _orig_is_available
         _nlp = nlp
         return _nlp
     except Exception as exc:  # pragma: no cover - depends on local model install
@@ -149,6 +160,16 @@ class NodeBuilder:
         return node['surface']
 
 
+def _ordered_leaves(node):
+    """Yield leaf nodes (no children) in left-to-right token order."""
+    kids = node.get('children')
+    if not kids:
+        yield node
+        return
+    for child in kids:
+        yield from _ordered_leaves(child)
+
+
 def token_metadata(nlp, doc, target):
     """Serialize spaCy token metadata for the analysis-sentence span."""
     out = []
@@ -191,6 +212,14 @@ def analyze(text, sentence_index=0):
     builder = NodeBuilder()
     root = builder.build(tagged, leaf_count=len(target))
     meta = token_metadata(nlp, doc, target)
+    # Enrich leaves with spaCy's fine-grained tag/lemma, aligned by token order,
+    # so morphology-sensitive rules (e.g. 'to' + finite verb) are not limited to
+    # benepar's coarse Penn tags.
+    leaves = _ordered_leaves(root)
+    for i, leaf in enumerate(leaves):
+        if i < len(meta):
+            leaf['ftag'] = meta[i]['tag']
+            leaf['fpos'] = meta[i]['pos']
     return {
         'sentence': target.text,
         'sentence_index': idx,

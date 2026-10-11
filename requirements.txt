@@ -1,7 +1,8 @@
-spacy
-benepar
-transformers<4.47
+spacy==3.8.16
+benepar==0.2.0
+transformers==4.46.3
 inflect>=7.5,<8
+lemminflect>=0.2.3,<0.3
 # Noun entity classification fallback (server/lexicon.py). The WordNet corpus
 # itself is NOT vendored: run `python -m nltk.downloader wordnet` once at setup.
 # The app degrades gracefully (classification -> None) when it is absent.

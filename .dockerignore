@@ -1,0 +1,11 @@
+.git
+.vercel
+.vercelignore
+node_modules
+dist
+**/__pycache__
+**/*.pyc
+supabase
+scripts
+docs
+*.md

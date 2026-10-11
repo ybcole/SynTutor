@@ -1,6 +1,6 @@
 // SynTutor UI regression audit (semantic panel + ambiguity view).
 //
-// Runs js/ui.js under a tiny hand-written DOM shim so the deterministic
+// Runs web/js/ui.js under a tiny hand-written DOM shim so the deterministic
 // rendering contract of the semantic panel is checked without a browser or any
 // dependency (no jsdom/Playwright).  It guards the behaviour the backend audit
 // cannot see:
@@ -81,7 +81,7 @@ globalThis.document = {
 
 const here = dirname(fileURLToPath(import.meta.url));
 const { renderSemantics, renderRightPanelTabs, confidenceLabel } =
-  await import(`file://${join(here, '..', 'js', 'ui.js')}`);
+  await import(`file://${join(here, '..', 'web', 'js', 'ui.js')}`);
 
 let failures = 0;
 const check = (label, cond) => {
