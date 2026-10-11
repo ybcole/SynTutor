@@ -162,6 +162,10 @@ def token_metadata(nlp, doc, target):
             'tag': tok.tag_,
             'dep': tok.dep_,
             'head': tok.head.text,
+            # Named-entity metadata (blank when the model has no NER pipe).
+            # Additive: consumed by the semantic layer's proper-noun handling.
+            'ent_iob': tok.ent_iob_,
+            'ent': tok.ent_type_,
         })
     return out
 

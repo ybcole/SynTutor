@@ -10,6 +10,7 @@ roadmap or a guarantee that every feature is production-ready.
 |---|---:|---|
 | Core parsing and syntax-tree generation | 95% | Implemented |
 | Deterministic grammar validation | 90% | Implemented; rule coverage can still grow |
+| Semantic validation (Stage 11) | 70% | Implemented over closed lexicons; coverage can grow |
 | Explanations and learner feedback | 85% | Implemented |
 | Interactive browser UI | 90% | Implemented |
 | Backend/API and error handling | 85% | Implemented |
@@ -63,7 +64,8 @@ should not be interpreted as a percentage of lines completed.
 - Distinguishes irregular past tense (`came`) from past participle (`come`) and
   rejects regularized irregular forms such as `becomed`.
 - Checks clause finiteness.
-- Checks modifier ordering.
+- Checks modifier ordering, distinguishing a postnominal numerical identifier
+  (`the number seven` → `C-NUM-IDENT`) from a genuine misplaced modifier.
 - Checks determiner stacking.
 - Checks noun, verb, adjective, adverb, and preposition heads.
 - Checks pronoun case.
@@ -78,6 +80,39 @@ should not be interpreted as a percentage of lines completed.
   constraints.
 - Produces deterministic repair suggestions for supported violations.
 - Does not use a generative model to create grammar feedback.
+
+### Semantic validation (Stage 11)
+
+- Runs a deterministic, additive semantic layer after the syntax matrix; it
+  never changes the syntax verdict.
+- Governed prepositions and light-verb collocations (`S-PREPOSITION`,
+  `S-COLLOCATION`).
+- Per-clause tense–time agreement (`S-TENSE-TIME`): a deictic cue (`yesterday`,
+  `ago`, `now`, `tomorrow`, `last/next <noun>`) must match the predicate of the
+  *same* clause. Habitual/frequency adverbs no longer blanket-suppress a
+  sentence, so `Yesterday I go to school every day.` is reported while
+  `The children play in the park every day.` is not.
+- Selectional restrictions for a small set of verbs (`S-SELECTIONAL`).
+- Subject–predicate compatibility (`S-PREDICATE-COMPAT`), reported as an advisory
+  `warning` "under a literal interpretation": **physiological** states (`hungry,
+  thirsty, tired, sleepy, exhausted, starving, pregnant, sick`) require an
+  animate subject and **life/death** states (`dead, alive`) a living one; at most
+  one finding per (clause, subclass).
+- Two hedged, **preposition-aware** PP-attachment readings with a non-exhaustive
+  scope note — `with` = instrument/accompaniment vs. possession; `in`/`at`/`on`
+  = location/setting; `for` = purpose/beneficiary (R11.5).
+- Classifies nouns via explicit lexicons plus an **optional local WordNet
+  fallback**, a conservative pronoun table and spaCy `PERSON` NER; a lemma no
+  evidence classifies stays *unclassified* and is never flagged. WordNet is never
+  downloaded at request time and the app degrades to the explicit lexicons when
+  it is absent.
+- Emits **qualitative** confidence labels (`Direct Rule Match` / `Advisory
+  Suggestion` / `Insufficient Evidence`) plus a `provenance` string — never a
+  fabricated numeric probability.
+- Reports `status`/`available` so a controlled semantic failure is shown as
+  "unavailable" and never as a clean "no findings" result.
+- Renders advisory findings distinctly from definitive semantic errors, and shows
+  **independent Syntax and Semantics status indicators**.
 
 ### Explanations and feedback
 
@@ -146,6 +181,11 @@ should not be interpreted as a percentage of lines completed.
 - The audit checks that exercised edge types are covered by matrix rules.
 - Current audit target: no gold regressions and no unlisted edge types in the
   corpus.
+- `npm run audit:semantics` runs a six-gate semantic-layer audit: matrix
+  invariance, false-positive and false-negative guards, R11.5 ambiguity, the
+  target sentence, and semantic-failure handling.
+- `npm run audit:ui` runs a dependency-free DOM-shim audit of the semantic
+  panel (advisory vs. error rendering, the unavailable notice, ambiguity pills).
 - Documentation exists for quick start, architecture, grammar rules, and the
   design thesis.
 
@@ -199,6 +239,20 @@ These are explicit design choices, not accidental omissions:
 - **Broad linguistic coverage:** the rule matrix covers the audited grammar
   patterns, but English has many constructions and lexical exceptions outside
   the current inventory.
+- **Semantic lexicon breadth:** the Stage-11 layer starts from explicit lexicons
+  and falls back to a local WordNet corpus; a lemma neither covers is left
+  unclassified (no finding), so recall depends on those sources and WordNet's
+  sense coverage. WordNet is optional — without it the app runs on the explicit
+  lexicons alone.
+- **Biological-state predicate coverage:** R11.6 recognises a fixed set of
+  physiological states (`hungry, thirsty, tired, sleepy, exhausted, starving,
+  pregnant, sick`) and life/death states (`dead, alive`); other predicates are not
+  covered, and the check is advisory (it never changes the syntax verdict).
+- **Semantic confidence labels:** findings carry qualitative labels
+  (`Direct Rule Match` / `Advisory Suggestion` / `Insufficient Evidence`) and a
+  provenance string, not a calibrated probability.
+- **Responsive layout:** the sidebar collapses below/over the canvas at narrow
+  widths; very dense trees may still require scrolling rather than shrinking.
 - **Model download automation:** missing models are reported with install hints,
   but the application does not download or manage models automatically.
 - **Versioned API contract:** the JSON payload is documented, but there is no
@@ -221,16 +275,40 @@ The highest-value follow-up work is:
 
 ## Verification snapshot
 
-The latest maintained verification command is:
+The latest maintained verification commands are:
 
 ```bash
 npm run audit
+npm run audit:semantics
+npm run audit:ui
 ```
 
-The audit currently verifies:
+`npm run audit` currently verifies:
 
-- 99 gold-corpus sentences
-- 51 expected-valid sentences
-- 48 expected-invalid sentences
+- 108 gold-corpus sentences
+- 56 expected-valid sentences
+- 52 expected-invalid sentences
 - 0 gold regressions
-- 0 unlisted edge types in the exercised corpus
+- 0 unrated edge types in the exercised corpus (963 edges)
+
+`npm run audit:semantics` runs six gates and verifies:
+
+- the semantic layer never changes the syntax verdict on the gold corpus;
+- the semantically-neutral corpus produces zero findings;
+- each expectation sentence produces *exactly* the documented finding set
+  (rule / constraint / severity / count) — a stray extra finding fails too — and
+  every finding carries a qualitative `confidence_label` and a `provenance`;
+- R11.5 yields two distinct, span-valid, preposition-aware, hedged readings with
+  a two-reading, non-exhaustive scope note;
+- `The number seven is hungry.` is syntactically valid with no false
+  `C-MOD-POS` and yields the advisory R11.6 warning labelled
+  `Advisory Suggestion`;
+- a controlled semantic failure preserves the syntax verdict and reports
+  `semantics.status = "unavailable"`.
+
+`npm run audit:ui` (dependency-free DOM shim) verifies that findings render the
+qualitative labels and never a fabricated decimal, that an advisory card is
+visually distinct from a definitive error, that `unavailable` shows the dedicated
+notice rather than the empty state, that the independent Syntax/Semantics status
+chips cover all four semantic states, and that R11.5 pills render, state the
+two-reading scope, and dispatch selection.

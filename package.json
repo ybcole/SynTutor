@@ -6,7 +6,9 @@
   "scripts": {
     "build": "node scripts/build.js",
     "serve": "python3 server/app.py",
-    "audit": "python3 scripts/audit_rules.py"
+    "audit": "python3 scripts/audit_rules.py",
+    "audit:semantics": "python3 scripts/audit_semantics.py",
+    "audit:ui": "node scripts/audit_ui.mjs"
   },
   "license": "MIT"
 }

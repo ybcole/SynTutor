@@ -139,6 +139,14 @@ GOLD: list[tuple[str, bool, str]] = [
     ("I wanted to go home.", True, "to-infinitive complement clause (valid)"),
     ("She decided to stay.", True, "to-infinitive complement clause (valid)"),
     ("He is more beautiful.", True, "analytic comparative, degree marker + positive (valid)"),
+
+    # postnominal numerical identifiers: a cardinal after a numbered/labelled
+    # head noun is an identifier, not a misplaced modifier (matrix C-NUM-IDENT)
+    ("The number seven is prime.", True, "postnominal numeral identifier (valid)"),
+    ("The boy is hungry.", True, "animate subject + predicate adjective (valid)"),
+    ("Seven students are waiting.", True, "prenominal cardinal + plural noun (valid)"),
+    ("The honesty seven is rare.", False,
+     "postnominal numeral after a non-identifier head (modifier placement)"),
 ]
 
 

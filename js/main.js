@@ -5,6 +5,8 @@ import {
   log,
   clearOverlay, showCanvasMessage, renderSentenceVerdict, renderNodeDetail,
   renderDiagnostic, fillDevPanel, applySentenceSelection, plainName,
+  renderSemantics,
+  setActiveRightPanelTab, initRightPanelTabs, renderRightPanelTabs,
 } from './ui.js';
 
 let clerk = null;
@@ -125,6 +127,7 @@ function initThemeAndMenu() {
   });
 
   initDevPanel();
+  initRightPanelTabs();
   initProfileMenu();
 }
 
@@ -489,6 +492,10 @@ function startNewSession() {
   renderer.clear();
   clearOverlay();
   renderNodeDetail(null, null, null);
+  // Reset the semantic panel: clears findings, tabs, and the ambiguity view.
+  renderSemantics(null, {});
+  setActiveRightPanelTab('syntax');
+  renderRightPanelTabs();
   renderSentenceVerdict(['Submit a sentence to see the auto-generated pedagogical summary.'], false);
 
   const parseStr = document.querySelector('#parseString');
@@ -516,6 +523,8 @@ function activateSentenceAtCaret() {
 
 function failPipeline(title, lines) {
   showCanvasMessage('error', title, lines);
+  setActiveRightPanelTab('syntax');
+  renderRightPanelTabs();
   renderSentenceVerdict([`\u{26D4} ${title}`, ...lines], true);
   renderDiagnostic(title, lines);
   transition(STATES.VIEWING, 'request failed -> diagnostic shown');
@@ -547,6 +556,8 @@ async function executePipeline(opts = {}) {
   const text = document.querySelector('#inputText').value.trim();
   if (!text) {
     showCanvasMessage('error', 'No analyzable sentence', ['Enter some English text first, then submit it.']);
+    setActiveRightPanelTab('syntax');
+    renderRightPanelTabs();
     renderSentenceVerdict(['\u26D4 No analyzable sentence', 'Enter some English text first, then submit it.'], true);
     renderDiagnostic('No analyzable sentence', ['Enter some English text first, then submit it.']);
     transition(STATES.IDLE, 'empty input -> back to idle');
@@ -599,6 +610,7 @@ async function executePipeline(opts = {}) {
   log(`Stage 5: rule-matrix validation \u2014 ${s.valid_edges} valid / ${s.violated_edges} violated / ${s.unrated_edges} unrated \u00b7 fired${JSON.stringify(s.constraints_fired)}`);
 
   renderSentenceVerdict(payload.explainers.basic.split('\n'), !payload.summary.valid);
+  renderRightPanelTabs({ syntaxValid: payload.summary.valid, semantics: payload.semantics });
   log(`Stage 6: explanations generated \u2014 basic + ${payload.explainers.contrastive ? 'contrastive' : '(none)'}`);
 
   session = { payload };
@@ -616,6 +628,21 @@ async function executePipeline(opts = {}) {
 
   document.querySelector('#emptyTreeState')?.classList.add('hidden');
   renderer.setTree(payload.tree);
+
+  // Semantic layer (spec R11). The pristine matrix details are captured before
+  // any reading is chosen so switching readings always merges from the base.
+  const baseNodeDetails = payload.node_details;
+  const onSelectReading = (index) => {
+    const reading = payload.semantics?.ambiguity?.readings?.[index];
+    if (!reading || !reading.tree) return;
+    renderer.setTree(reading.tree);
+    if (session?.payload) {
+      session.payload.node_details = mergeReadingDetails(baseNodeDetails, reading.node_details);
+    }
+    renderSemantics(payload.semantics, { onSelectReading, activeIndex: index });
+    log(`Stage 7b: semantic reading selected \u2014 ${reading.label || `Reading ${index + 1}`}`);
+  };
+  renderSemantics(payload.semantics, { onSelectReading });
   transition(STATES.VIEWING, 'output ready -> viewing');
   log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
 
@@ -748,6 +775,24 @@ function syncHighlightScroll() {
   }
 }
 
+// Merge one reading's node details onto the pristine matrix details. The
+// reading supplies reading-specific `role`/`note` for every node; the base
+// keeps the matrix-owned fields (status, constraint, remediation) so the
+// explainer still renders correctly. When a reading provides a ``note`` it
+// becomes the displayed explanation for that node.
+function mergeReadingDetails(baseDetails, readingDetails) {
+  const merged = { ...(baseDetails || {}) };
+  for (const [id, detail] of Object.entries(readingDetails || {})) {
+    const previous = merged[id] || {};
+    merged[id] = {
+      ...previous,
+      ...detail,
+      text: detail.note || previous.text || '',
+    };
+  }
+  return merged;
+}
+
 function applyStatuses(tree, details) {
   const walk = (node) => {
     const d = details[node.id];
@@ -770,6 +815,7 @@ function handleNodeSelect(id) {
   const detail = session.payload.node_details[id];
   const node = session.payload.nodes[id];
   if (!node || !detail) return;
+  setActiveRightPanelTab('syntax');
   renderNodeDetail(session, detail, node);
   renderer.select(id);
   if (state !== STATES.PROCESSING) {

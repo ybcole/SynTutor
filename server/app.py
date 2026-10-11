@@ -10,11 +10,16 @@ Endpoints:
 import json
 import os
 import sys
+import traceback
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
 
 from parse_engine import ParseFailure, analyze, load_models
 from matrix import evaluate
+try:  # package context (imported as server.app)
+    from server.semantics import analyze_semantics
+except ImportError:  # script context (python3 server/app.py)
+    from semantics import analyze_semantics
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PORT = int(os.environ.get('SYNTUTOR_PORT', '8000'))
@@ -55,6 +60,36 @@ def _model_status():
     return _MODEL_STATUS
 
 
+def _unavailable_semantics():
+    """Schema-consistent semantic payload for a controlled analysis failure.
+
+    Mirrors the live contract (:func:`server.semantics.analyze_semantics`) but
+    marks the layer ``unavailable`` so the frontend can distinguish "completed
+    with no findings" from "could not be completed" and never silently shows a
+    failed analysis as an all-clear.
+    """
+    return {
+        'status': 'unavailable',
+        'available': False,
+        'findings': [],
+        'ambiguous': False,
+        'ambiguity': None,
+        'tree_variants': [],
+        'summary': {
+            'status': 'unavailable',
+            'available': False,
+            'valid': None,
+            'findings': 0,
+            'errors': 0,
+            'warnings': 0,
+            'constraints_fired': [],
+            'ambiguous_attachments': [],
+            'tree_variants': 0,
+            'explanation': 'semantic analysis unavailable',
+        },
+    }
+
+
 def build_payload(text, sentence_index=0):
     """Deterministic full payload for one user input, targeting ``sentence_index``."""
     analysis = analyze(text, sentence_index=sentence_index)
@@ -63,6 +98,23 @@ def build_payload(text, sentence_index=0):
     summary = result['summary']
     root = analysis['root']
     tokens = analysis['tokens']
+
+    # Semantic layer (spec R11).  Purely additive and never fatal: a failure is
+    # logged server-side with a traceback and replaced by an explicitly
+    # ``unavailable`` payload, so an unexpected semantic error can never break
+    # the syntax response (nor masquerade as a clean "no findings" result).
+    try:
+        semantics = analyze_semantics(analysis, result)
+        semantics.setdefault('status', 'ok')
+        semantics.setdefault('available', True)
+        if 'ambiguity' not in semantics:
+            semantics['ambiguity'] = (
+                semantics.get('tree_variants') or None
+            )
+    except Exception:  # noqa: BLE001
+        print('SynTutor: analyze_semantics failed:\n'
+              + traceback.format_exc(), file=sys.stderr)
+        semantics = _unavailable_semantics()
 
     token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
     tag_word = summary['explanation']
@@ -103,6 +155,7 @@ def build_payload(text, sentence_index=0):
         'nodes': analysis['nodes'],
         'node_details': details,
         'summary': summary,
+        'semantics': semantics,
         'explainers': {
             'basic': '\n'.join(basic_lines),
             'contrastive': contrastive,

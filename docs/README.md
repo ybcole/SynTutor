@@ -18,6 +18,11 @@ pip3 install -r requirements.txt
 python3 -m spacy download en_core_web_md
 python3 -c "import benepar; benepar.download('benepar_en3')"
 
+# 1b. (optional) provision the local WordNet corpus for noun classification.
+#     Skip it and the app still works — noun classification just falls back to
+#     the explicit lexicons only.
+python3 -m nltk.downloader wordnet
+
 # 2. run the server
 python3 server/app.py        # or: npm run serve
 ```
@@ -81,6 +86,7 @@ The `POST /api/parse` payload bundles the complete precomputed analysis. Accepts
 - `node_details` — precomputed XAI explanation per node: `role`, `constraint`, `status` (`valid`/`error`/`unlisted`), `text`, parent/children.
 - `summary` — counts + verdict + fired constraints.
 - `explainers` — `basic` and `contrastive` (deterministic templates); `surprisal`, `perturbation`, `llm_note` are `null` by design.
+- `semantics` — additive Stage-11 meaning layer (see below): `status` (`ok`/`unavailable`), `findings` (`rule`, `constraint`, `status` = `error`/`warning`, `category`, `text`, `evidence`, `suggestion`, `confidence_label` = `Direct Rule Match`/`Advisory Suggestion`, `provenance`), `ambiguity` (`readings` + `preposition` + two-reading `scope` note), and `summary`. It never changes the syntax verdict; a controlled failure returns `status: "unavailable"` rather than looking like a clean "no findings" run. No numeric confidence is ever emitted.
 - `meta` — `deterministic: true`, model names, sentence count, `target_sentence`.
 
 ---
@@ -187,25 +193,69 @@ Transitions are logged live in the right-hand panel.
 
 ---
 
+## Semantic layer (Stage 11)
+
+`server/semantics.py` adds deterministic meaning checks **on top of** the matrix
+— it is strictly additive and never changes the syntax verdict:
+
+| rule | constraint | severity | check |
+|------|------------|----------|-------|
+| R11.2 / R8.1 | `S-PREPOSITION` | error | governed preposition (`depend in` → `on`) |
+| R11.2 / R8.1 | `S-COLLOCATION` | error | light-verb collocation (`do a decision` → `make`) |
+| R11.3 | `S-TENSE-TIME` | error | deictic time cue clashing with a same-clause predicate (`Yesterday I go`) |
+| R11.4 | `S-SELECTIONAL` | error | subject/object selectional restrictions (`The book eats the boy.`) |
+| R11.6 | `S-PREDICATE-COMPAT` | warning | biological-state predicate on an unsupported subject (`The number seven is hungry.`) |
+| R11.5 | — | ambiguity | two hedged, preposition-aware PP-attachment readings (`The boy saw the man with a telescope.`) |
+
+Entities are classified into **animate**, **living**, **inanimate physical** and
+**abstract** classes (plus *unclassified*): explicit project lexicons are
+consulted first, then an optional local WordNet fallback (`server/lexicon.py`,
+NLTK), a conservative pronoun table, and spaCy `PERSON` named entities. A noun
+no evidence classifies stays *unclassified* and is never flagged. WordNet is
+never downloaded at request time and the app degrades to the explicit lexicons
+when it is absent.
+
+R11.6 groups predicates into a **physiological** subclass (`hungry, thirsty,
+tired, sleepy, exhausted, starving, pregnant, sick`) and a **life/death**
+subclass (`dead, alive`); at most one finding is emitted per (clause, subclass).
+The R11.3 check is per clause — a habitual adverb no longer blanket-suppresses a
+sentence — and R11.5 states its readings as *candidates* with a non-exhaustive
+two-reading scope note. `error` findings are definitive rules while R11.6 is an
+advisory *"anomalous under a literal interpretation"* warning; each finding
+carries a qualitative `confidence_label` and a `provenance` string (never a
+numeric probability). The UI shows **independent Syntax and Semantics status
+indicators**. The layer is verified by `npm run audit:semantics` (six gates —
+matrix invariance, false-positive and full finding-set guards, R11.5 + §6
+preposition-aware structure, the target sentence, and failure handling). See
+`docs/ARCHITECTURE.md` §17.
+
+---
+
 ## Project layout
 
 ```
 server/
   parse_engine.py        spaCy tokenization/POS + benepar parse-string -> node graph
   matrix.py              Linguistic Constraint Matrix + deterministic XAI evaluation
+  semantics.py           Stage-11 semantic layer (R11 checks)
+  lexicon.py             entity classification: explicit lexicons + optional WordNet fallback
   app.py                 stdlib HTTP server: static files + /api/parse + /api/health
 index.html               UI shell
 login.html               Clerk sign-in / sign-up (email-code verification)
 css/style.css            styling
 js/
   renderer.js            canvas layout, edges, hitboxes, pan/zoom
-  ui.js                  DOM views (explainer/diagnostic/log/pipeline UI)
+  ui.js                  DOM views (explainer/diagnostic/log/pipeline UI + semantics panel)
   auth.js                Clerk bootstrap, Clerk->Supabase JWT bridging, login form
   config-hint.js         dev-only preflight hook warning when js/config.js is missing
   main.js                FSM + pipeline orchestration + memory-cached node explanations
   config.js              (git-ignored) Clerk + Supabase keys — see config.example.js
 supabase/
   migrations/            analysis_history schema + RLS policies
+scripts/
+  audit_rules.py         gold-corpus matrix coverage audit (npm run audit)
+  audit_semantics.py     six-gate semantic-layer audit (npm run audit:semantics)
+  audit_ui.mjs           dependency-free DOM-shim audit of the semantic panel (npm run audit:ui)
 package.json             npm run serve -> python3 server/app.py
 docs/
   THESIS.md              design specification (input document)
@@ -215,7 +265,8 @@ docs/
 FEATURES.md              feature inventory, progress, and known gaps
 ```
 
-Tests are excluded per the project spec. The maintained verification command
-is `npm run audit`, which runs the gold-corpus rule coverage audit without
-starting HTTP; runtime verification can be done through `/api/health` and
-`/api/parse`.
+Tests are excluded per the project spec. The maintained verification commands
+are `npm run audit` (gold-corpus matrix coverage), `npm run audit:semantics`
+(six-gate semantic-layer audit) and `npm run audit:ui` (dependency-free DOM-shim
+check of the semantic panel); all run without starting HTTP. Runtime
+verification can be done through `/api/health` and `/api/parse`.

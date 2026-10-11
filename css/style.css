@@ -720,7 +720,9 @@ button:disabled {
   flex: 1 1 auto;
   min-height: 0;
   display: grid;
-  grid-template-columns: 1fr 340px;
+  /* Fluid canvas + a sidebar that never collapses below 300px nor grows past
+     380px, so the semantic panel cannot be squeezed into overflow/clipping. */
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
   grid-template-rows: minmax(0, 1fr);
   gap: 16px;
   padding: 10px 18px 8px;
@@ -729,8 +731,85 @@ button:disabled {
 .panel { min-height: 0; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 
 .right-panel {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   border-radius: var(--radius);
+}
+
+/* ── Right-panel segmented tabs (Syntax vs. Semantics) ──────────────────── */
+.panel-tab-bar {
+  display: flex;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  flex: 0 0 auto;
+}
+
+.panel-tab {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.panel-tab:hover {
+  color: var(--ink);
+}
+
+.panel-tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.panel-tab.active {
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+  flex: 0 0 auto;
+}
+.tab-dot.ok { background: var(--ok); }
+.tab-dot.err { background: var(--err); }
+.tab-dot.warn { background: var(--warn); }
+
+.tab-count-badge {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+[data-theme="dark"] .tab-count-badge { color: var(--accent-strong); }
+.tab-count-badge[hidden] { display: none; }
+
+.tab-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tab-content[hidden] {
+  display: none;
 }
 
 .card {
@@ -817,14 +896,14 @@ button:disabled {
 }
 
 .primary-explainer {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
 }
-.node-explainer { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+.node-explainer { flex: 0 1 auto; overflow: visible; }
 
 .empty-state-explain {
   position: absolute;
@@ -993,6 +1072,194 @@ button:disabled {
 .nc-fix { color: var(--ok); }
 .muted { color: var(--muted); font-size: 12.5px; }
 
+/* ── Semantic layer (spec R11) ─────────────────────────────────────────── */
+.semantics-card {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+}
+.semantics-card[hidden] { display: none; }
+
+.sem-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.semantics-card .sem-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+}
+
+/* Advisory "suggestion" pill — deliberately neutral/accent so it stays
+   visually distinct from the red syntax-error treatment (--err). */
+.sem-badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+[data-theme="dark"] .sem-badge {
+  color: var(--accent-strong);
+}
+
+/* Advisory literal-interpretation warnings (R11.6) get an amber treatment so
+   they are visually distinct from definitive semantic errors and syntax red. */
+.sem-badge.advisory {
+  background: color-mix(in srgb, var(--warn) 14%, transparent);
+  color: var(--warn);
+  border-color: color-mix(in srgb, var(--warn) 32%, transparent);
+}
+.sem-card.advisory {
+  border-left: 3px solid var(--warn);
+}
+
+.semantics-unavailable[hidden] { display: none; }
+.semantics-unavailable {
+  margin-top: 4px;
+  border: 1px dashed var(--border);
+  border-left: 3px solid var(--warn);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  padding: 10px 12px;
+}
+.semantics-unavailable .sem-unavailable-title {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--warn);
+}
+
+.sem-findings { display: flex; flex-direction: column; gap: 10px; }
+.sem-findings:empty { display: none; }
+.sem-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  padding: 12px;
+  min-width: 0;
+}
+.sem-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.sem-rule {
+  margin-left: auto;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--muted);
+}
+#semanticsSection .sem-category {
+  display: inline-block;
+  margin: 0 0 6px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+#semanticsSection .sem-card-text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+#semanticsSection .sem-suggestion {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+#semanticsSection .sem-suggestion::before {
+  content: "\2192\00a0";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.ambiguity-block { margin-top: 14px; }
+.ambiguity-block[hidden] { display: none; }
+.semantics-card .sem-subtitle {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+}
+.ambiguity-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.ambiguity-scope {
+  margin: 0 0 10px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.ambiguity-pill {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    background var(--dur-fast) var(--ease);
+}
+.ambiguity-pill:hover { border-color: var(--accent); color: var(--accent); }
+.ambiguity-pill:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ambiguity-pill.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+[data-theme="dark"] .ambiguity-pill.active {
+  color: var(--accent-strong);
+}
+
+.ambiguity-explanation {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  padding: 10px 12px;
+}
+#semanticsSection .ambiguity-paraphrase {
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.thematic-grid {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 12px;
+  align-items: baseline;
+}
+.thematic-role {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+}
+.thematic-value { font-size: 12.5px; color: var(--ink); }
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -1116,6 +1383,16 @@ button:disabled {
   .dev-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Below ~1100px the fluid canvas + a 300px-minimum sidebar no longer fit
+   comfortably side by side, so stack them (canvas on top, panel below). */
+@media (max-width: 1100px) {
+  .app-main {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(300px, 58vh) auto;
+  }
+  .right-panel { min-height: 0; overflow-y: visible; }
+}
+
 @media (max-width: 900px) {
   .dev-grid { grid-template-columns: 1fr; }
 }
@@ -1130,6 +1407,6 @@ button:disabled {
     padding-left: 12px;
     padding-right: 12px;
   }
-  .right-panel { min-height: 260px; }
+  .right-panel { min-height: 0; }
   .dev-overlay { width: calc(100vw - 16px); }
 }

@@ -137,16 +137,56 @@
       </section>
 
       <aside class="panel right-panel">
-        <section class="card primary-explainer">
-          <div id="explainNode" class="node-explainer"></div>
-          <div id="emptyExplainState" class="empty-state-explain">
-            <svg class="empty-book-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              <path d="M12 2v15"></path>
-            </svg>
-            <p class="empty-explain-title">Ready for Analysis</p>
-          </div>
+        <div class="panel-tab-bar" role="tablist" aria-label="Explainer Views">
+          <button id="tabSyntaxBtn" class="panel-tab active" role="tab" aria-selected="true" aria-controls="syntaxTabView" type="button">
+            <span class="tab-dot" id="syntaxTabDot"></span>
+            <span>Syntax</span>
+          </button>
+          <button id="tabSemanticsBtn" class="panel-tab" role="tab" aria-selected="false" aria-controls="semanticsTabView" type="button">
+            <span class="tab-dot" id="semanticsTabDot"></span>
+            <span>Semantics</span>
+            <span id="semanticsTabCount" class="tab-count-badge" hidden>0</span>
+          </button>
+        </div>
+
+        <!-- View 1: Syntax Node Explainer -->
+        <section id="syntaxTabView" class="tab-content active" role="tabpanel" aria-labelledby="tabSyntaxBtn">
+          <section class="card primary-explainer">
+            <div id="explainNode" class="node-explainer"></div>
+            <div id="emptyExplainState" class="empty-state-explain">
+              <svg class="empty-book-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                <path d="M12 2v15"></path>
+              </svg>
+              <p class="empty-explain-title">Ready for Analysis</p>
+            </div>
+          </section>
+        </section>
+
+        <!-- View 2: Semantic Analysis & Ambiguity -->
+        <section id="semanticsTabView" class="tab-content" role="tabpanel" aria-labelledby="tabSemanticsBtn" hidden>
+          <section id="semanticsSection" class="card semantics-card" aria-label="Semantic analysis">
+            <div class="sem-head">
+              <h4 class="sem-title">Semantic analysis</h4>
+            </div>
+
+            <div id="ambiguityContainer" class="ambiguity-block" hidden>
+              <h5 class="sem-subtitle">Primary Attachment Ambiguity</h5>
+              <p id="ambiguityScope" class="ambiguity-scope">Two readings are compared — this is not an exhaustive list of possible analyses.</p>
+              <div id="ambiguityTabs" class="ambiguity-tabs" role="tablist" aria-label="Ambiguity readings"></div>
+              <div id="ambiguityExplanation" class="ambiguity-explanation"></div>
+            </div>
+
+            <div id="semanticFindingsList" class="sem-findings"></div>
+
+            <p id="emptySemanticsState" class="muted">No semantic anomalies detected.</p>
+
+            <div id="semanticsUnavailable" class="semantics-unavailable" hidden>
+              <p class="sem-unavailable-title">Semantic analysis unavailable</p>
+              <p class="muted">The syntax verdict above is unaffected. The meaning-level checks could not be completed for this sentence.</p>
+            </div>
+          </section>
         </section>
       </aside>
     </main>

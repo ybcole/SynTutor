@@ -39,22 +39,17 @@ Hard guarantees:
 
 ## 2. Repository layout & module inventory
 
-```
-SynTutor/
-  index.html              UI shell (all 16 wired element IDs, §3)
-  package.json            {serve, audit} npm scripts
-  README.md               quick start + spec-level overview
-  RULES.md                full rule-matrix inventory (sibling doc)
-  THESIS.md               original design specification (input document)
-  ARCHITECTURE.md         this file
-  css/style.css           394-line design system (§4)
   js/main.js              FSM + pipeline orchestration, highlighting, auth, and history
   js/renderer.js          387 lines: canvas layout/draw/hitbox/zoom/keyboard
-  js/ui.js                291 lines: DOM views, explainer, dev panel, logs
-  server/app.py           240 lines: HTTP server + payload assembly
-  server/parse_engine.py  202 lines: NLP load, parse-string -> node graph
-  server/matrix.py        1615 lines: rule matrix + XAI + remediation
-  scripts/audit_rules.py  238 lines: gold-corpus coverage audit (exit-code gate)
+  js/ui.js                DOM views, explainer, semantic panel, status chips, dev panel, logs
+  server/app.py           HTTP server + payload assembly
+  server/parse_engine.py  NLP load, parse-string -> node graph (+ spaCy NER token metadata)
+  server/matrix.py        rule matrix + XAI + remediation
+  server/semantics.py     Stage-11 semantic layer (R11.2-R11.6)
+  server/lexicon.py       noun classification: explicit lexicons + optional WordNet, pronouns, NER
+  scripts/audit_rules.py  gold-corpus coverage audit (exit-code gate)
+  scripts/audit_semantics.py  six-gate semantic-layer audit
+  scripts/audit_ui.mjs    dependency-free DOM-shim semantic-panel audit
 ```
 
 ### The seven pipeline stages (as implemented)
@@ -93,6 +88,11 @@ Element registry (all are read or written by the JS, exact ids):
 | `#treeCanvas` | canvas | `tabindex=0`, keyboard navigable, aria-label |
 | `#canvasOverlay` | div | `.canvas-overlay`, `pointer-events:none` (see §4) |
 | `#explainNode` | div | primary plain-English explainer container (no header/clear button — filled by `renderNodeDetail`/`renderDiagnostic`) |
+| `#statusStrip` | div | `.status-strip` row of the two independent status chips (hidden until an analysis completes) |
+| `#syntaxStatus` | span | `.status-chip` — Syntax state from the matrix (`Valid` / `Issues Found`) |
+| `#semanticsStatus` | span | `.status-chip` — Semantics state from the semantic layer (`No Findings` / `Suggestions Available` / `Issues Found` / `Analysis Unavailable`) |
+| `#semanticsSection` | section | Stage-11 semantic findings / ambiguity panel |
+| `#ambiguityScope` | p | `.ambiguity-scope` two-reading, non-exhaustive scope note for R11.5 |
 | `#devPanel` | `<details>` | collapsible developer panel |
 | `#sentenceVerdict` | div | auto-generated pedagogical summary |
 | `#parseString` | `<pre>` | raw benepar parse string |
@@ -121,7 +121,9 @@ Design tokens (`:root`):
 
 Key layout facts:
 
-- `.app-main`: `grid-template-columns: 1fr 340px`; gap 14px; padding `10px 14px 6px`.
+- `.app-main`: `grid-template-columns: minmax(0,1fr) minmax(300px,380px)`; gap
+  14px; padding `10px 14px 6px`. The flexible tracks let the canvas shrink and
+  the sidebar grow within bounds so neither ever overflows its column.
 - `.app-header`: fixed 60px; `.state-badge` data-state palettes; PROCESSING pulses.
 - `.canvas-wrap`: `position:relative; flex:1; overflow:hidden`.
 - **`.canvas-overlay`**: `position:absolute; inset:0; pointer-events:none` —
@@ -130,25 +132,42 @@ Key layout facts:
   the background is fully transparent.
 - `.dev-panel[open]`: `max-height:46vh; overflow:auto`. `.dev-grid`:
   `repeat(4, 1fr)` — verdict / parse string / token stream / log.
-- `.primary-explainer` + `.node-explainer`: column flex, inner scroll.
+- `.primary-explainer` + `.node-explainer`: column flex, inner scroll;
+  `flex: 0 1 auto` so they shrink within the sidebar instead of forcing it wider.
+- `.status-strip` / `.status-chip`: the two independent Syntax / Semantics
+  indicators; advisory and error chips adopt the `--warn` / `--err` accents.
+  `.ambiguity-scope`: muted note under the R11.5 reading pills.
 - Explainer sections: `.ex-sec .ex-label .ex-identity .ex-badge(.root)
   .ex-role .ex-plain(mark) .ex-rule .ex-text .ex-checks(.ck.ok/.no)`.
 - Remediation (Case B): `.remediation` (red top border), `.rem-title`,
   `.rem-body`, `.rem-row`, `.rem-key`, `.rem-value`, `.rem-outcome`.
 - Canvas focus: `#treeCanvas:focus { outline: 2px solid var(--accent) }`.
-- Responsive `@media (max-width: 1100px)`: `.app-main` stacks to one column,
-  the right panel becomes a 2-col grid, `.log-card` spans both.
+- Responsive `@media (max-width: 1100px)`: `.app-main` stacks to one column
+  (canvas above the sidebar, no overlap/clipping), the right panel becomes a
+  2-col grid, `.log-card` spans both; the status strip wraps.
 
 ---
 
 ## 5. Frontend — `js/ui.js` (views, logs, dev panel)
 
-Exports: `setStateBadge, log, clearOverlay, showCanvasMessage,
-renderSentenceVerdict, renderNodeDetail, renderDiagnostic, fillDevPanel,
-applySentenceSelection, setProcessBusy`.
+Exports: `plainName, confidenceLabel, log, clearOverlay, showCanvasMessage,
+renderNodeDetail, renderDiagnostic, renderSentenceVerdict, renderSemantics,
+fillDevPanel, applySentenceSelection, renderStatusStrip`.
 
 - `PLAIN_NAME` — canonical Penn-label → plain-English dictionary (~45 entries)
   used by `plainName(type)`; unknown labels fall back to the raw type.
+- `confidenceLabel(finding)` — maps a finding to a **qualitative** confidence
+  label (`Direct Rule Match` / `Advisory Suggestion` / `Insufficient Evidence`),
+  preferring the backend `confidence_label` and falling back to a constraint →
+  label table. No numeric probability is ever produced.
+- `renderSemantics(semantics, {onSelectReading, activeIndex})` — fills
+  `#semanticsSection`: an `unavailable` payload shows `#semanticsUnavailable`
+  (never the empty state); otherwise findings render as `.sem-card` (advisory vs.
+  error) with the qualitative badge + `provenance` title, and an R11.5 ambiguity
+  renders reading pills plus the `#ambiguityScope` two-reading note.
+- `renderStatusStrip({syntaxValid, semantics})` — paints the independent
+  `#syntaxStatus` / `#semanticsStatus` chips from the internal `semanticsStatus()`
+  helper; called with no argument it hides `#statusStrip`.
 - `log(entry)` — prepends a timestamped `<div class=log-entry>` to `#logPanel`
   (HH:MM:SS, 24h, en-GB).
 - `showCanvasMessage(kind, title, lines)` — overlay card (`.overlay-card error`).
@@ -231,7 +250,10 @@ RE-ENTRY loop:          any state → PROCESSING on resubmit
     own `edgeResult` for edge coloring) and logs the summary counters + fired
     constraint set;
   - stage 6: `renderSentenceVerdict(payload.explainers.basic.split('\n'),
-    !payload.summary.valid)`;
+    !payload.summary.valid)` and `renderSemantics(payload.semantics, {…})`;
+    `renderStatusStrip({syntaxValid: payload.summary.valid, semantics:
+    payload.semantics})` paints the two independent status chips (cleared on
+    reset / empty input / failure);
   - **`session = { payload }`** ← the in-memory cache that powers the
     Interaction Loop; input is locked and the highlight overlay renders the
     analyzed sentence/error spans, then stage 7:
@@ -554,6 +576,15 @@ phonetic article check (silent-h `an hour`; vowel-letter-with-consonant-sound
 `_modifier_pos` — if modifier span starts after head span start → error
 `C-MOD-POS` (modifier after head); else valid (precedes head).
 
+`_is_postnominal_numeral` — a `CD` child whose singular noun head is in the
+closed `POSTNOMINAL_NUMERAL_HEADS` set (numbered/labelled entities: *the number
+seven*, *the year 2020*, *page three*), appears immediately after that head, and
+is the final leaf of the `NP` → valid `C-NUM-IDENT` (postnominal numerical
+identifier). A cardinal after any other head, or anywhere else in the `NP`,
+falls through to `_modifier_pos` and stays a genuine `C-MOD-POS` violation
+(e.g. *the honesty seven*), so the change refines — never disables — the CD
+modifier-position check.
+
 **`VP`** → `_vp_rule`:
 - verb-class child → `_aux_class` ? classify aux → see `_aux_check` : head:
   `_verb_head` (finite/non-finite role text, `C-HEAD-VERB`).
@@ -693,6 +724,22 @@ targeted_outcome}` (alternative/outcome may be None).
   "explainers": {
     "basic": "<multi-line text>", "contrastive": "<text>",
     "surprisal": null, "perturbation": null, "llm_note": null
+  },
+  "semantics": {
+    "status": "ok",              // 'ok' | 'unavailable'
+    "available": true,           // false on a controlled semantic-layer failure
+    "findings": [ { rule, constraint, status,   // status: 'error' | 'warning'
+                    category, text, evidence, suggestion,
+                    confidence_label,           // qualitative: 'Direct Rule Match'
+                                                // | 'Advisory Suggestion'
+                    provenance } ],             // e.g. "deterministic rule R11.6 (...)"
+    "ambiguous": false,
+    "ambiguity": { "ambiguous": false, "readings": [ ... ],
+                   "preposition": "with", "scope": "<two-reading, non-exhaustive>" } | null,
+    "tree_variants": [ { attachment, root, pp, np } ],
+    "summary": { status, available, valid, findings, errors, warnings,
+                 constraints_fired[], ambiguous_attachments[],
+                 tree_variants, explanation }
   }
 }
 ```
@@ -700,7 +747,13 @@ targeted_outcome}` (alternative/outcome may be None).
 `explainers.basic` (line-by-line): Input · benepar parse string · token stream ·
 matrix counts (`N validated · M violated · K unrated`) · `Verdict: VALID/INVALID`
 · explanation · determinism note.
-`status` ∈ `valid|error|unlisted`; `constraint` is a `C-*` id.
+`node_details[].status` ∈ `valid|error|unlisted`; `constraint` is a `C-*` id.
+The additive `semantics` block (Stage 11, §17) never changes the syntax result.
+Findings always carry a **qualitative** `confidence_label` and a `provenance`
+string — no numeric probability is ever emitted. When the semantic layer raises,
+the server logs the traceback and returns `semantics.status = 'unavailable'`,
+`available: false`, `findings: []` — a failure is never presented as an ordinary
+"no findings" result.
 
 ---
 
@@ -725,6 +778,11 @@ matrix counts (`N validated · M violated · K unrated`) · `Verdict: VALID/INVA
 - `report()` — prints the verdict summary, regressions (with `fired`),
   edge totals, the edge-coverage matrix (`[NP] -> DT x38`, …), unlisted-edge
   list, and a `SUMMARY: gold regressions=N  unrated_edge_types=N  edges=N` line.
+- `npm run audit` = `python3 scripts/audit_rules.py`. The semantic layer has its
+  own six-gate audit, `npm run audit:semantics` =
+  `python3 scripts/audit_semantics.py` (see §17). The syntax corpus (`GOLD`) is
+  kept semantically neutral so syntax-correctness tests and semantic-expectation
+  tests stay separate.
 - `main()` returns **exit 1 if any regression or any unrated edge type**, else 0.
   Run via `python3 scripts/audit_rules.py` or `npm run audit`.
   Current green state: 99 sentences, 888 edges, 0 distinct+unrated, 0
@@ -799,3 +857,158 @@ implementation as-built; `THESIS.md` remains the specification.
 - Sentence verdict summary text is deterministic and re-stated verbatim in
   `explainers.basic`; node detail text is generated once at parse time and
   served from memory thereafter.
+- The semantic layer emits **qualitative** confidence labels
+  (`Direct Rule Match` / `Advisory Suggestion` / `Insufficient Evidence`) and a
+  human-readable `provenance` string. There are no numeric confidence values —
+  the feedback path contains no trained/probabilistic model (`audit_ui.mjs`
+  fails if a fabricated decimal reappears).
+- The semantic lexicons are open-world at the edges: explicit project lexicons
+  are consulted first, then an **optional local WordNet (NLTK) fallback**; a noun
+  that neither establishes is left *unclassified* and is never turned into a
+  finding, so false positives are favoured against at the cost of some recall.
+  WordNet is never downloaded at request time and the app degrades to the
+  explicit lexicons when it is absent.
+- R11.6's biological-state class is organised into a **physiological** subclass
+  (`hungry, thirsty, tired, sleepy, exhausted, starving, pregnant, sick`) and a
+  **life/death** subclass (`dead, alive`); at most one finding is emitted per
+  (clause, subclass), so `hungry and starving` is not reported twice.
+- R11.3 is evaluated **per clause**: a deictic anchor and the predicate it
+  clashes with must share a clause. The earlier blanket "any habitual marker
+  anywhere suppresses the sentence" rule was removed — genericity is signalled
+  structurally by the absence of a deictic anchor, so `The children play in the
+  park every day.` still never fires while `Yesterday I go to school every day.`
+  correctly does.
+- The UI shows **two independent status indicators** — Syntax (`Valid` /
+  `Issues Found`, from the matrix) and Semantics (`No Findings` / `Suggestions
+  Available` / `Issues Found` / `Analysis Unavailable`, from the semantic layer) —
+  so an unavailable analysis can never be mistaken for a clean syntax verdict.
+- `C-NUM-IDENT` licenses a postnominal cardinal only after a head noun in the
+  closed `POSTNOMINAL_NUMERAL_HEADS` list; any other head keeps `C-MOD-POS`.
+- A `warning` finding is advisory only and never affects the syntax
+  `summary.valid` / `constraints_fired`.
+
+---
+
+## 17. Semantic layer (Stage 11, spec R11)
+
+`server/semantics.py` is a **deterministic, additive** layer that runs after the
+matrix (in `app.build_payload`). It never mutates the analysis or the matrix
+result, so the syntax verdict is preserved bit-for-bit (audit Gate 1). There is
+no ML/HF/cloud dependency in the meaning checks: its inputs are the token stream
+and the benepar tree. Classification starts from explicit project lexicons and
+optionally falls back to a local, offline WordNet corpus exposed by
+`server/lexicon.py`. The layer is *additive*: it never changes
+`summary.valid` / `constraints_fired`, and a failure is isolated.
+
+### 17.1 Findings
+
+| rule | constraint | status | check |
+|---|---|---|---|
+| R11.2 / R8.1 | `S-PREPOSITION` | `error` | governed preposition (`depend in` → `on`) |
+| R11.2 / R8.1 | `S-COLLOCATION` | `error` | light-verb collocation (`do a decision` → `make`) |
+| R11.3 | `S-TENSE-TIME` | `error` | deictic past/future/present cue clashing with the predicate of the *same clause* (`Yesterday I go`); no deictic anchor ⇒ no finding |
+| R11.4 | `S-SELECTIONAL` | `error` | animate subject / classed object (`The book eats the boy`) |
+| R11.6 | `S-PREDICATE-COMPAT` | **`warning`** | copular biological-state predicate on an unsupported subject (`The number seven is hungry.`) |
+| R11.5 | — | (ambiguity) | PP-attachment candidate readings |
+
+The R11.3 check is clause-scoped: a habitual/frequency adverb no longer
+blanket-suppresses the sentence, so a genuine mismatch in the main clause is
+reported even when a subordinate clause is generic (and vice-versa).
+
+Each finding exposes `rule`, `constraint`, `status`, `category`, `text`,
+`evidence`, `suggestion`, plus a qualitative `confidence_label`
+(`Direct Rule Match` for definitive rules, `Advisory Suggestion` for the hedged
+R11.6 warning) and a `provenance` string. No numeric confidence is emitted.
+
+R11.5 does not assert a single "correct" attachment: it presents **two primary,
+hedged candidate readings** — a verb-phrase (adjunct) reading and a noun-phrase
+(modifier) reading — whose wording is **preposition-aware** (`with` =
+instrument/accompaniment vs. possession/attribute; `in`/`at`/`on` =
+location/setting; `for` = purpose/beneficiary), plus a `scope` note stating the
+comparison is not exhaustive. Unmodelled prepositions fall back to neutral
+candidate wording.
+
+### 17.2 Entity taxonomy and uncertainty
+
+The layer classifies a common-noun lemma into one of four coarse classes plus an
+explicit *unclassified* result:
+
+| class | source / example |
+|---|---|
+| `animate` | explicit `ANIMATE_NOUNS`, WordNet `animal/person` hypernyms (`dog`), a personal pronoun (`I/we/you/he/she`), or a spaCy `PERSON` named entity |
+| `living` | WordNet `living_thing.n.01` without an animate sense (`bacterium`) |
+| `inanimate` | explicit `INANIMATE_OBJECTS` / edible / drinkable sets, or WordNet `artifact` (`car`, `telescope`) |
+| `abstract` | explicit `ABSTRACT_NOUNS`, or WordNet `abstraction` (`number`, `algorithm`) |
+| `None` | no evidence — an unknown word (`zorblax`) or a genuinely ambiguous/polysemous one (`bank`) |
+
+Precedence is explicit project lexicon → optional WordNet fallback → pronoun /
+NER → `None`. `ABSTRACT_NOUNS` is deliberately *not* a reuse of the object
+lexicon: a number is not a physical object merely because both are non-animate.
+An `None` class is **not** collapsed into "inanimate", so an unknown noun never
+supports a finding. WordNet classification requires a **strict majority** of a
+noun's synsets to agree (deterministic tie-break by class name); a split noun
+stays `None`. `server/lexicon.py` loads WordNet lazily, caches results
+in-process, never downloads at request time, and degrades to the explicit
+lexicons when NLTK/the corpus is absent.
+
+R11.6 matches the subject's class against the predicate's subclass:
+**physiological** states (`hungry, thirsty, tired, sleepy, exhausted, starving,
+pregnant, sick`) require an animate subject (abstract/inanimate flagged; a mere
+*living* organism is not); **life/death** states (`dead, alive`) require a living
+subject (only abstract subjects are flagged — a "dead battery" is idiomatic). At
+most one finding is emitted per (clause, subclass), so `hungry and starving` is
+reported once. The message frames the result as an anomaly *"under a literal
+interpretation"* that invites a figurative or personified reading; it never
+claims the sentence is objectively meaningless or ungrammatical.
+
+### 17.3 Output contract and failure handling
+
+`analyze_semantics` returns `{status, available, findings, ambiguous, ambiguity,
+tree_variants, summary}` (see §11). On an unexpected exception, `app.py` logs the
+full traceback server-side and substitutes a schema-consistent payload with
+`status='unavailable'`, `available=false`, `findings=[]`. `js/ui.js` then shows a
+distinct "Semantic analysis unavailable" notice — never the ordinary
+"No semantic anomalies detected" state — while the syntax verdict stays visible.
+
+The UI surfaces two **independent** status chips (`renderStatusStrip` in
+`js/ui.js`): **Syntax** (`Valid` / `Issues Found`, from `summary.valid`) and
+**Semantics** (`No Findings` / `Suggestions Available` / `Issues Found` /
+`Analysis Unavailable`, derived from the semantic payload). They never overwrite
+one another, so an unavailable semantic analysis can never be read as a clean
+syntax verdict.
+
+### 17.4 Audit
+
+`npm run audit:semantics` (`scripts/audit_semantics.py`) runs six gates:
+
+1. **matrix invariance** — `summary.valid` + `constraints_fired` are identical
+   before and after `analyze_semantics` for every gold sentence;
+2. **false-positive guard** — the semantically-neutral corpus (gold + extras,
+   including unclassified nouns) produces zero findings;
+3. **finding-set guard** — each expectation sentence produces *exactly* the
+   documented finding multiset (rule / constraint / severity / count): a stray
+   extra finding fails as loudly as a missing one, and every finding must carry
+   a qualitative `confidence_label` and a `provenance` string;
+4. **R11.5 + §6** — `The boy saw the man with a telescope.` yields two
+   structurally distinct, span-valid, hedged readings with distinct paraphrase /
+   node_details, the `scope` note states the two-reading, non-exhaustive scope,
+   and the candidate wording is preposition-aware (`with` / `on` / `for` cases);
+5. **target** — `The number seven is hungry.` is syntactically valid with no
+   false `C-MOD-POS` on `seven` and yields the advisory literal-interpretation
+   warning (labelled `Advisory Suggestion`);
+6. **failure handling** — a simulated `analyze_semantics` failure preserves the
+   syntax verdict and reports `semantics.status='unavailable'`.
+
+The syntax gold corpus is kept semantically neutral, so syntax-correctness tests
+and semantic-expectation tests (`SEMANTIC_CASES` / `SEMANTIC_NEUTRAL_EXTRA`) are
+separated cleanly.
+
+The semantic panel itself is covered by a dependency-free DOM-shim audit,
+`npm run audit:ui` (`scripts/audit_ui.mjs`): it asserts that findings carry the
+qualitative labels (`Direct Rule Match` / `Advisory Suggestion` / `Insufficient
+Evidence`) and never a fabricated decimal, that an advisory (`warning`) card is
+rendered distinctly from a definitive error, that an `unavailable` payload shows
+the dedicated notice rather than the empty "no findings" state, that the
+independent Syntax/Semantics status indicators cover all four documented states,
+and that R11.5 pills render, state the two-reading scope, and dispatch the
+selection callback.

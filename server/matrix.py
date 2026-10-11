@@ -55,6 +55,26 @@ POSS_DET_PLAIN = {'my', 'your', 'our', 'their', 'its'}
 DEMONSTRATIVE_STANDALONE = {'this', 'that', 'these', 'those',
                             'each', 'some', 'one', 'all', 'several', 'any'}
 
+# Head nouns that can be labelled by a *postnominal* cardinal identifier in
+# English: "the number seven", "the year 2020", "page three", "room 101".
+# A cardinal immediately after one of these singular heads is an identifier,
+# not a misplaced prenominal modifier.  This is a closed, transparent class of
+# numbered/labelled entities; a cardinal after any other noun still counts as a
+# modifier-placement violation (see ``_is_postnominal_numeral``).
+POSTNOMINAL_NUMERAL_HEADS = {
+    # labels / identifiers for a numbered entity
+    'number', 'numeral', 'figure', 'value', 'score', 'index', 'code', 'id',
+    'entry', 'item', 'unit', 'module', 'model', 'version', 'edition',
+    # ordered documents / media
+    'page', 'chapter', 'section', 'paragraph', 'volume', 'issue', 'article',
+    'rule', 'law', 'line', 'part', 'step', 'phase', 'stage', 'grade',
+    'level', 'episode', 'season', 'act', 'scene', 'track',
+    # numbered places / vehicles / positions
+    'room', 'suite', 'apartment', 'floor', 'gate', 'door', 'seat', 'row',
+    'flight', 'train', 'bus', 'platform', 'route', 'highway', 'exit',
+    'bay', 'slot', 'terminal', 'year', 'rank', 'place', 'position',
+}
+
 PRON_SUBJ_PLAIN = {'i', 'we', 'he', 'she', 'they'}
 PRON_OBJ_PLAIN = {'me', 'us', 'him', 'her', 'them'}
 
@@ -119,6 +139,7 @@ CHECK_LABELS = {
     'C-AUXILIARY': 'Auxiliary Verb-Form Selection',
     'C-TENSE-FINITE': 'Clause Finiteness (finite predicate required)',
     'C-MOD-POS': 'Modifier Before Head Noun',
+    'C-NUM-IDENT': 'Postnominal Numerical Identifier',
     'C-DET-STACK': 'Single Determiner per NP',
     'C-HEAD-NOUN': 'Head Noun Identification',
     'C-HEAD-VERB': 'Head Verb Identification',
@@ -568,6 +589,26 @@ def _np_head(node):
     return None
 
 
+def _is_postnominal_numeral(parent, head, child):
+    """True when a cardinal-number child is a licensed postnominal identifier.
+
+    English labels a numbered/labelled entity with a following cardinal
+    (``the number seven``, ``the year 2020``, ``page three``) when the head
+    noun belongs to :data:`POSTNOMINAL_NUMERAL_HEADS`.  The number must appear
+    immediately after a singular noun head and be the final element of the NP;
+    a cardinal after any other head (or elsewhere in the NP) is still a genuine
+    modifier-placement violation.
+    """
+    if head is None or head['type'] not in NOUN_SINGULAR:
+        return False
+    if child['span'][0] != head['span'][1]:
+        return False
+    leaves = _leaves_list(parent)
+    if not leaves or leaves[-1]['id'] != child['id']:
+        return False
+    return _singular_noun(head).lower() in POSTNOMINAL_NUMERAL_HEADS
+
+
 def _np_determinatives(node):
     """List of determinative leaves inside an NP (DT, PRP$, or a bare
     possessive-determiner surface typed as PRP)."""
@@ -941,6 +982,11 @@ class MatrixEvaluator:
                     {'less', 'fewer', 'much', 'many', 'little', 'few'}:
                 return self._quantifier_check(parent, child, head)
             return self._modifier_pos(parent, child)
+        if ct == 'CD' and _is_postnominal_numeral(parent, head, child):
+            return ('valid', 'C-NUM-IDENT',
+                    f"'{child['surface']}' is a postnominal numerical identifier "
+                    f"for the head noun '{head['surface']}' (a numbered/labelled "
+                    'entity); the cardinal is licensed after its head.')
         if ct in {'CD', 'PDT', 'QP'}:
             return self._modifier_pos(parent, child)
         if ct == 'PP':
@@ -1737,6 +1783,7 @@ class MatrixEvaluator:
             'C-DETERMINER-AGREEMENT': 'determiner-noun agreement link',
             'C-DET-STACK': 'determiner stacking',
             'C-MOD-POS': 'NP modifier position',
+            'C-NUM-IDENT': 'postnominal numeric identifier',
             'C-NP-POSTMODIFIER': 'postmodifier',
             'C-NP-REDUCED-RELATIVE': 'reduced relative clause',
             'C-NP-RELATIVE': 'relative clause',
