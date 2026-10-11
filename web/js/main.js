@@ -40,6 +40,12 @@ let lastAnalyzedText = null;
 const recordedTexts = new Set();
 let historySpans = [];
 
+// Monotonic id for the current analysis. The hybrid (acceptability) verification
+// runs after the tree is already on screen; when a newer submission starts it
+// bumps this so any in-flight verification is discarded instead of overwriting
+// the newer payload.
+let pipelineSeq = 0;
+
 let cachedHistory = [];
 let activeHistoryFilter = 'all';
 
@@ -474,6 +480,9 @@ function returnToLocked(payload = null) {
 function startNewSession() {
   if (state === STATES.PROCESSING) return;
 
+  // Discard any in-flight hybrid verification for the session being cleared.
+  pipelineSeq += 1;
+
   recordedTexts.clear();
   session = null;
   lastAnalyzedText = null;
@@ -566,6 +575,9 @@ async function executePipeline(opts = {}) {
   }
   log(`Stage 1: user input captured \u2014 ${JSON.stringify(text)}`);
 
+  // Any in-flight hybrid verification for a previous input is now stale.
+  const seq = ++pipelineSeq;
+
   const body = { text };
   if (opts.index !== undefined && opts.index !== null) body.sentence_index = opts.index;
   const target = opts.index !== undefined && opts.index !== null ? `sentence #${opts.index + 1}` : 'first sentence';
@@ -594,58 +606,14 @@ async function executePipeline(opts = {}) {
     return;
   }
   const payload = await res.json();
-  fillDevPanel(payload);
-  log(`Stage 2: payload received (${Object.keys(payload.nodes).length} nodes) \u00b7${payload.meta.backend}`);
+  renderPayload(text, payload, opts);
 
-  const tokens = payload.parse.tokens;
-  const posInfo = tokens.map((t) => `${t.t}/${t.pos}`).join(' ');
-  log(`Stage 3: spaCy tokenization + POS \u2014 ${posInfo}`);
-  if (payload.meta.sentence_count > 1) {
-    log(`Stage 3: ${payload.meta.sentence_count} sentence(s) detected \u2014 analyzing sentence${payload.meta.target_sentence} (deterministic policy)`);
+  // The syntax tree is already on screen. Ask for the hybrid acceptability
+  // channel as a follow-up request so the tree never waits on the trained
+  // models (which may still be loading/downloading on a cold server).
+  if (payload.meta.detection === 'pending') {
+    verifyHybrid(text, payload.meta.target_sentence - 1, seq);
   }
-
-  log(`Stage 4: benepar parse string \u2014 ${payload.parse.parse_string}`);
-
-  applyStatuses(payload.tree, payload.node_details);
-  const s = payload.summary;
-  log(`Stage 5: rule-matrix validation \u2014 ${s.valid_edges} valid / ${s.violated_edges} violated / ${s.unrated_edges} unrated \u00b7 fired${JSON.stringify(s.constraints_fired)}`);
-
-  renderSentenceVerdict(payload.explainers.basic.split('\n'), payload.summary.verdict || payload.summary.valid);
-  renderRightPanelTabs({ syntaxValid: payload.summary.valid, semantics: payload.semantics });
-  log(`Stage 6: explanations generated \u2014 basic + ${payload.explainers.contrastive ? 'contrastive' : '(none)'}`);
-
-  session = { payload };
-  lastAnalyzedText = text;
-
-  document.querySelector('#inputText').value = text;
-  const spans = buildHighlightSpans(text, payload);
-  if (opts.isSentenceNav) {
-    historySpans = mergeHighlightSpans(historySpans, spans);
-  } else {
-    historySpans = spans;
-  }
-  returnToLocked(payload);
-  applySentenceSelection(payload);
-
-  document.querySelector('#emptyTreeState')?.classList.add('hidden');
-  renderer.setTree(payload.tree);
-
-  // Semantic layer (spec R11). The pristine matrix details are captured before
-  // any reading is chosen so switching readings always merges from the base.
-  const baseNodeDetails = payload.node_details;
-  const onSelectReading = (index) => {
-    const reading = payload.semantics?.ambiguity?.readings?.[index];
-    if (!reading || !reading.tree) return;
-    renderer.setTree(reading.tree);
-    if (session?.payload) {
-      session.payload.node_details = mergeReadingDetails(baseNodeDetails, reading.node_details);
-    }
-    renderSemantics(payload.semantics, { onSelectReading, activeIndex: index });
-    log(`Stage 7b: semantic reading selected \u2014 ${reading.label || `Reading ${index + 1}`}`);
-  };
-  renderSemantics(payload.semantics, { onSelectReading });
-  transition(STATES.VIEWING, 'output ready -> viewing');
-  log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
 
   const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
   if (!isNavigation && !recordedTexts.has(text)) {
@@ -681,6 +649,117 @@ async function executePipeline(opts = {}) {
       log('Stage 6b: analysis history recorded locally (guest session)');
     }
   }
+}
+
+// Paint a payload into the UI: dev panel, syntax tree, matrix verdict,
+// semantics and input highlights. Idempotent, so it runs once for the fast
+// deterministic /api/parse response and again (via applyHybrid) when the
+// acceptability model answers (applyHybrid updates in place).
+function renderPayload(text, payload, opts = {}) {
+  fillDevPanel(payload);
+  log(`Stage 2: payload received (${Object.keys(payload.nodes).length} nodes) \u00b7${payload.meta.backend}`);
+
+  const tokens = payload.parse.tokens;
+  const posInfo = tokens.map((t) => `${t.t}/${t.pos}`).join(' ');
+  log(`Stage 3: spaCy tokenization + POS \u2014 ${posInfo}`);
+  if (payload.meta.sentence_count > 1) {
+    log(`Stage 3: ${payload.meta.sentence_count} sentence(s) detected \u2014 analyzing sentence${payload.meta.target_sentence} (deterministic policy)`);
+  }
+
+  log(`Stage 4: benepar parse string \u2014 ${payload.parse.parse_string}`);
+
+  applyStatuses(payload.tree, payload.node_details);
+  const s = payload.summary;
+  log(`Stage 5: rule-matrix validation \u2014 ${s.valid_edges} valid / ${s.violated_edges} violated / ${s.unrated_edges} unrated \u00b7 fired${JSON.stringify(s.constraints_fired)}`);
+
+  const verdictLines = payload.explainers.basic.split('\n');
+  if (payload.meta.detection === 'pending') {
+    verdictLines.push('\u2026 checking the acceptability model (hybrid channel)');
+  }
+  renderSentenceVerdict(verdictLines, payload.summary.verdict || payload.summary.valid);
+  renderRightPanelTabs({ syntaxValid: payload.summary.valid, semantics: payload.semantics });
+  log(`Stage 6: explanations generated \u2014 basic + ${payload.explainers.contrastive ? 'contrastive' : '(none)'}`);
+
+  session = { payload };
+  lastAnalyzedText = text;
+
+  document.querySelector('#inputText').value = text;
+  const spans = buildHighlightSpans(text, payload);
+  if (opts.isSentenceNav) {
+    historySpans = mergeHighlightSpans(historySpans, spans);
+  } else {
+    historySpans = spans;
+  }
+  returnToLocked(payload);
+  applySentenceSelection(payload);
+
+  document.querySelector('#emptyTreeState')?.classList.add('hidden');
+  renderer.setTree(payload.tree);
+
+  // Semantic layer (spec R11). The pristine matrix details are captured before
+  // any reading is chosen so switching readings always merges from the base.
+  const baseNodeDetails = payload.node_details;
+  const onSelectReading = (index) => {
+    const reading = payload.semantics?.ambiguity?.readings?.[index];
+    if (!reading || !reading.tree) return;
+    renderer.setTree(reading.tree);
+    if (session?.payload) {
+      session.payload.node_details = mergeReadingDetails(baseNodeDetails, reading.node_details);
+    }
+    renderSemantics(payload.semantics, { onSelectReading, activeIndex: index });
+    log(`Stage 7b: semantic reading selected \u2014 ${reading.label || `Reading ${index + 1}`}`);
+  };
+  renderSemantics(payload.semantics, { onSelectReading });
+  transition(STATES.VIEWING, 'output ready -> viewing');
+  log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
+}
+
+// Follow-up request for the hybrid acceptability channel. Fire-and-forget: the
+// tree is already rendered, so a slow/lazily-downloading model cannot block it.
+// The pipelineSeq guard drops the answer if a newer submission has started.
+async function verifyHybrid(text, sentenceIndex, seq) {
+  let res;
+  try {
+    res = await fetch(`${API_BASE}/api/verify`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, sentence_index: sentenceIndex }),
+    });
+  } catch (_e) {
+    if (seq === pipelineSeq) log('Stage 8: acceptability model unreachable \u2014 rule verdict kept');
+    return;
+  }
+  if (seq !== pipelineSeq) return;
+  if (!res.ok) {
+    log(`Stage 8: hybrid channel unavailable (HTTP ${res.status}) \u2014 rule verdict kept`);
+    return;
+  }
+  let payload;
+  try {
+    payload = await res.json();
+  } catch (_e) {
+    return;
+  }
+  if (seq !== pipelineSeq) return;
+  applyHybrid(text, payload);
+}
+
+// Merge the hybrid verdict into the on-screen tree without resetting the
+// canvas: update statuses, verdict, tabs, highlights and the dev panel in
+// place, leaving pan/zoom and node selection untouched.
+function applyHybrid(text, payload) {
+  session = { payload };
+  fillDevPanel(payload);
+  if (renderer.tree) {
+    applyStatuses(renderer.tree, payload.node_details);
+    renderer.draw();
+  }
+  renderSentenceVerdict(payload.explainers.basic.split('\n'), payload.summary.verdict || payload.summary.valid);
+  renderRightPanelTabs({ syntaxValid: payload.summary.valid, semantics: payload.semantics });
+  renderInputHighlights(document.querySelector('#inputText').value, payload);
+  const det = payload.summary.detector;
+  log(`Stage 8: acceptability verification \u2014 ${payload.summary.verdict}`
+    + (det ? ` (${det.label})` : ' (model offline)'));
 }
 
 function buildHighlightSpans(text, payload) {

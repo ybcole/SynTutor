@@ -1,15 +1,22 @@
-"""SynTutor backend: serves the static front end and the /api/parse endpoint.
+"""SynTutor backend: serves the static front end and the parse/verify endpoints.
 
 Run:  python3 server/app.py            (then open http://127.0.0.1:8000)
 Endpoints:
     GET  /                  static front end (index.html, css, js)
     GET  /api/health        model/pipeline availability
-    POST /api/parse         {text} -> JSON payload (tree + node descriptions)
+    POST /api/parse         {text} -> fast deterministic payload (tree + matrix)
+    POST /api/verify        {text} -> same payload + the hybrid acceptability
+                            channel (CoLA detector + MLM correction search)
+
+The heavyweight trained models (CoLA detector, MLM corrector) run in their own
+request so the syntax tree renders immediately; ``/api/parse`` never blocks on
+them. Both are warmed in the background at startup.
 """
 
 import json
 import os
 import sys
+import threading
 import traceback
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
@@ -99,13 +106,20 @@ def _unavailable_semantics():
     }
 
 
-def build_payload(text, sentence_index=0):
-    """Hybrid payload for one user input, targeting ``sentence_index``.
+def build_payload(text, sentence_index=0, detect=True):
+    """Payload for one user input, targeting ``sentence_index``.
 
     Two channels: the rule matrix explains (deterministic), and a CoLA
     acceptability model detects (trained). A sentence is grammatical only if
     both accept; a rules-clean but model-rejected sentence is UNVERIFIED, and
     the model's reasoning is surfaced because the rules cannot explain it.
+
+    The trained channel is optional and slow (model load/download, per-token
+    MLM sweep), so callers may ask for the deterministic half first with
+    ``detect=False`` -- that payload always keeps ``meta['detection'] ==
+    'pending'`` and leaves ``summary['detector']`` absent -- and request the
+    hybrid verdict afterwards via ``/api/verify``.  This is what keeps the
+    syntax tree from waiting on the models.
     """
     analysis = analyze(text, sentence_index=sentence_index)
     result = evaluate(analysis['root'], text=analysis['sentence'])
@@ -114,26 +128,28 @@ def build_payload(text, sentence_index=0):
     root = analysis['root']
     tokens = analysis['tokens']
 
-    det = classify(analysis['sentence'])
     perturbation = None
-    if det is not None:
-        summary = combine(summary, det)
-        # Text-space correction search: the rules could not explain the model's
-        # rejection, so locate the single-token swap that restores acceptability
-        # and derive the explanation from the morphological delta (corrector).
-        if (summary.get('verdict') == 'unverified'
-                and not det['acceptable'] and det.get('available')):
-            span_zero = (analysis['sentences'][analysis['sentence_index']]['start']
-                         if analysis['sentences'] else 0)
-            spans = [(t['start'] - span_zero, t['end'] - span_zero)
-                     for t in tokens if (t['t'] or '').isalpha()]
-            located = corrector.sweep(
-                analysis['sentence'], classify_many, spans=spans)
-            if located is not None:
-                promoted = _apply_correction(
-                    located, root, details, summary, analysis['sentence'], det)
-                if promoted is not None:
-                    perturbation = promoted['perturbation']
+    if detect:
+        det = classify(analysis['sentence'])
+        if det is not None:
+            summary = combine(summary, det)
+            # Text-space correction search: the rules could not explain the
+            # model's rejection, so locate the single-token swap that restores
+            # acceptability and derive the explanation from the morphological
+            # delta (corrector).
+            if (summary.get('verdict') == 'unverified'
+                    and not det['acceptable'] and det.get('available')):
+                span_zero = (analysis['sentences'][analysis['sentence_index']]['start']
+                             if analysis['sentences'] else 0)
+                spans = [(t['start'] - span_zero, t['end'] - span_zero)
+                         for t in tokens if (t['t'] or '').isalpha()]
+                located = corrector.sweep(
+                    analysis['sentence'], classify_many, spans=spans)
+                if located is not None:
+                    promoted = _apply_correction(
+                        located, root, details, summary, analysis['sentence'], det)
+                    if promoted is not None:
+                        perturbation = promoted['perturbation']
 
     # Semantic layer (spec R11).  Purely additive and never fatal: a failure is
     # logged server-side with a traceback and replaced by an explicitly
@@ -168,19 +184,20 @@ def build_payload(text, sentence_index=0):
         f"   {tag_word}",
         'Deterministic matrix over the benepar tree; identical inputs always produce identical verdicts.',
     ]
-    if 'detector' in summary:
-        det_m = summary['detector']
-        basic_lines.append(
-            f"Hybrid detection ({det_m['model']}): {det_m['label']} "
-            f"(p(acceptable)={det_m['acceptable_prob']:.2f})")
-        basic_lines.append(f"   {summary['detector_note']}")
-        if summary.get('verdict') == 'unverified' and det_m['label'] == 'unacceptable':
+    if detect:
+        if 'detector' in summary:
+            det_m = summary['detector']
             basic_lines.append(
-                'The matrix could not explain the rejection, so the verdict stays '
-                'UNVERIFIED rather than UNGRAMMATICAL.')
-    elif summary.get('unverified'):
-        basic_lines.append(
-            'Detection channel offline - verdict reflects the rule matrix only.')
+                f"Hybrid detection ({det_m['model']}): {det_m['label']} "
+                f"(p(acceptable)={det_m['acceptable_prob']:.2f})")
+            basic_lines.append(f"   {summary['detector_note']}")
+            if summary.get('verdict') == 'unverified' and det_m['label'] == 'unacceptable':
+                basic_lines.append(
+                    'The matrix could not explain the rejection, so the verdict stays '
+                    'UNVERIFIED rather than UNGRAMMATICAL.')
+        elif summary.get('unverified'):
+            basic_lines.append(
+                'Detection channel offline - verdict reflects the rule matrix only.')
 
     if perturbation:
         basic_lines.append(f"MLM correction search: {perturbation['note']}")
@@ -191,6 +208,11 @@ def build_payload(text, sentence_index=0):
     return {
         'meta': {
             'deterministic': 'detector' not in summary,
+            # 'pending'  -> deterministic half only (caller will /api/verify)
+            # 'done'     -> hybrid verdict present
+            # 'offline'  -> model unavailable; rules-only verdict is authoritative
+            'detection': ('pending' if not detect
+                          else 'done' if 'detector' in summary else 'offline'),
             'k': 1,
             'parser': 'benepar_en3',
             'spacy': 'en_core_web_md',
@@ -412,32 +434,45 @@ class Handler(BaseHTTPRequestHandler):
         with open(full, 'rb') as fh:
             self._send(200, fh.read(), ctype)
 
-    def do_POST(self):
-        path = urlparse(self.path).path
-        if path != '/api/parse':
-            self._json(404, {'error': 'not found'})
-            return
+    def _read_parse_request(self):
+        """Parse/validate the POST body. Returns ``(text, sentence_index)`` or
+        ``None`` after already having written the error response."""
         try:
             length = int(self.headers.get('Content-Length', 0))
             body = self.rfile.read(length) if length else b'{}'
             data = json.loads(body.decode('utf-8'))
         except Exception as exc:  # noqa: BLE001
             self._json(400, {'error': f'invalid request payload: {exc}'})
-            return
+            return None
         text = (data.get('text') or '').strip()
         if not text:
             self._json(422, {'error': 'empty input', 'hint': 'Provide an English sentence in "text".'})
-            return
+            return None
         try:
             sentence_index = int(data.get('sentence_index', 0))
         except (TypeError, ValueError):
             self._json(400, {'error': 'sentence_index must be an integer'})
-            return
+            return None
         if sentence_index < 0:
             self._json(400, {'error': 'sentence_index must be >= 0'})
+            return None
+        return text, sentence_index
+
+    def do_POST(self):
+        path = urlparse(self.path).path
+        if path == '/api/parse':
+            detect = False  # fast deterministic half; hybrid runs via /api/verify
+        elif path == '/api/verify':
+            detect = True
+        else:
+            self._json(404, {'error': 'not found'})
             return
+        request = self._read_parse_request()
+        if request is None:
+            return
+        text, sentence_index = request
         try:
-            payload = build_payload(text, sentence_index=sentence_index)
+            payload = build_payload(text, sentence_index=sentence_index, detect=detect)
         except ParseFailure as exc:
             self._json(422, {'error': str(exc), 'input': text})
             return
@@ -450,12 +485,31 @@ class Handler(BaseHTTPRequestHandler):
         self._json(200, payload)
 
 
+def _warm_hybrid():
+    """Warm the optional trained channels in the background.
+
+    Loading (and the one-time model download) stays off the request path so
+    ``/api/parse`` never waits on it. Failures are inert: the channels degrade
+    to ``None`` exactly as they do everywhere else.
+    """
+    try:
+        from detector import load_detector
+        load_detector()
+    except Exception:  # noqa: BLE001 - degraded mode is by design
+        pass
+    try:
+        corrector.load_mlm()
+    except Exception:  # noqa: BLE001 - degraded mode is by design
+        pass
+
+
 def main():
+    threading.Thread(target=_warm_hybrid, daemon=True).start()
     default_host = '0.0.0.0' if os.environ.get('PORT') else '127.0.0.1'
     host = os.environ.get('SYNTUTOR_HOST', default_host)
     server = ThreadingHTTPServer((host, PORT), Handler)
     print(f'SynTutor full-stack server on http://{host}:{PORT}')
-    print('Endpoints: GET /  \u00b7 GET /api/health \u00b7 POST /api/parse')
+    print('Endpoints: GET /  \u00b7 GET /api/health \u00b7 POST /api/parse \u00b7 POST /api/verify')
     try:
         server.serve_forever()
     except KeyboardInterrupt:

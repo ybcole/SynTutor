@@ -73,7 +73,8 @@ SynTutor/
 | # | Stage | Producer | Consumer | UI feedback |
 |---|-------|----------|----------|-------------|
 | 1 | User Input | textarea `#inputText` | `main.js executePipeline` | session label "Processing…" |
-| 2 | Request `/api/parse` | `fetch` POST JSON (API base = `web/js/config.js` `API_BASE`) | `build_payload` (local `server/app.py`; HF `server/hf_space.py` mounts the identical handler) | FSM badge PROCESSING |
+| 2 | Request `/api/parse` | `fetch` POST JSON (API base = `web/js/config.js` `API_BASE`) | `build_payload(..., detect=False)` (local `server/app.py`; HF `server/hf_space.py` mounts the identical handler) | FSM badge PROCESSING |
+| 2b | Request `/api/verify` (follow-up) | `fetch` POST JSON, fire-and-forget after the tree renders | `build_payload(..., detect=True)` — CoLA detector + MLM correction search | verdict line updates in place |
 | 3 | Tokenize + POS | spaCy `nlp(text)` | `parse_engine.token_metadata` | token stream |
 | 4 | Parse tree | benepar `span._.parse_string` | `parse_parse_string` → `NodeBuilder` | parse string |
 | 5 | Validate Ψ matrix | `matrix.evaluate(root)` | `MatrixEvaluator` | node colors |
@@ -255,7 +256,9 @@ RE-ENTRY loop:          any state → PROCESSING on resubmit
   log, `Stage N:` lines — no UI chips):
   - clears overlay/selection/explainer; takes `#inputText` trimmed;
   - **empty input** → overlay + verdict + diagnostic, → IDLE;
-  - `POST /api/parse` JSON `{text, sentence_index?}`; on network failure →
+  - `POST /api/parse` JSON `{text, sentence_index?}` — the fast deterministic
+    half (tree + rule matrix + semantics; the trained channel is deferred, so
+    `meta.detection == 'pending'`). On network failure →
     failPipeline("Backend unreachable", [server start hint]); on `!res.ok`
     pick title by code (503 models / 422 no parse / `Backend error (HTTP n)`)
     and body lines `[error, hint]`;
@@ -278,6 +281,12 @@ RE-ENTRY loop:          any state → PROCESSING on resubmit
     New submissions are inserted into `analysis_history`; sentence navigation
     and history replay do not create duplicate rows. The recorded-text guard is
     updated only after a successful insert.
+  - When `payload.meta.detection === 'pending'`, `verifyHybrid(text,
+    sentence_index, seq)` fires a follow-up `POST /api/verify` **without
+    blocking the tree**; the returned hybrid payload updates the verdict,
+    node statuses and dev panel in place (`applyHybrid`). A newer submission
+    bumps `pipelineSeq`, so a stale verification is discarded rather than
+    overwriting the current payload.
 - `loadAndRenderHistory()` / `renderHistoryItems()` — load the authenticated
   user's recent history, filter valid/invalid entries, and create safe DOM
   nodes for sentence text and constraint chips.
@@ -376,9 +385,10 @@ selectedStroke `#c98f00`.
 This is the canonical full-stack/local server (stdlib `http.server` + static
 files from `web/` + `/api/*`). In production the same logic runs behind
 `server/hf_space.py` (HF Space): Gradio is launched on port 7860 to satisfy the
-ZeroGPU startup scan, then the identical `/api/health` and `/api/parse` handlers
-are mounted on the FastAPI app Gradio returns. `server/app.py` is only ever used
-directly for local development / the container image.
+ZeroGPU startup scan, then the identical `/api/health`, `/api/parse` and
+`/api/verify` handlers are mounted on the FastAPI app Gradio returns.
+`server/app.py` is only ever used directly for local development / the container
+image.
 
 - `ROOT` = project dir (parent of `server/`); `PORT = env SYNTUTOR_PORT|8000`;
   host `127.0.0.1` / `SYNTUTOR_HOST`.
@@ -395,20 +405,36 @@ directly for local development / the container image.
 | `GET /` (or `/index.html`) | serves `index.html` |
 | `GET /file…` | path-normalized read from `ROOT`; `..`/absolute → 403; missing → 404; `Cache-Control: no-store` |
 | `GET /api/health` | 200 + model JSON when ready, else 503 + `install_hint` |
-| `POST /api/parse` | see below |
+| `POST /api/parse` | fast deterministic half — see below |
+| `POST /api/verify` | same body; adds the hybrid acceptability channel — see below |
 
-### `POST /api/parse`
+### `POST /api/parse` and `POST /api/verify`
 
-- Bad JSON body → 400. Empty/missing `text` → 422 `{error, hint}`.
-  `sentence_index` (optional, 0-based integer) → 400 on non-integer/negative.
-- `build_payload(text, sentence_index=0)`:
+Both endpoints take the same body (`{text, sentence_index?}`) and share all
+validation: bad JSON → 400; empty/missing `text` → 422 `{error, hint}`;
+`sentence_index` (optional, 0-based integer) → 400 on non-integer/negative.
+`ParseFailure` → 422 `{error, input}`; any other exception (model missing) →
+503 `{error, hint}` where hint comes from `_model_status().error` or the
+canonical install command (`pip install spacy benepar transformers==4.46.3` +
+model downloads).
+
+They differ only in whether the trained hybrid channel runs:
+
+- `POST /api/parse` → `build_payload(text, sentence_index, detect=False)`:
   1. `analyze(text, sentence_index)` (parse_engine) → analysis,
   2. `evaluate(analysis['root'])` (matrix) → details + summary,
-  3. emits the JSON contract (§10).
-- `ParseFailure` → 422 `{error, input}`.
-- Any other exception (model missing) → 503 `{error, hint}` where hint comes
-  from `_model_status().error` or the canonical install command
-  (`pip install spacy benepar transformers==4.46.3` + model downloads).
+  3. emits the JSON contract (§10) with `meta.detection == 'pending'` and no
+     `summary.detector`. This is deliberately **free of the CoLA detector and
+     the MLM correction search**, so the syntax tree renders immediately instead
+     of waiting on model load / inference / download.
+- `POST /api/verify` → `build_payload(text, sentence_index, detect=True)`:
+  runs the CoLA acceptability model (`detector.classify`) and, for a
+  matrix-clean but model-rejected sentence, the MLM correction sweep
+  (`corrector.sweep`). `meta.detection` is then `'done'` (hybrid verdict in
+  `summary`) or `'offline'` (model unavailable → rules-only verdict).
+
+The trained models are warmed in a background thread at server start
+(`_warm_hybrid`), so `/api/parse` never blocks on them.
 
 `_contrastive(summary, details)` — deterministic contrastive text:
 valid & no root error → "No grammatical alternative is observed…";
@@ -819,11 +845,14 @@ the server logs the traceback and returns `semantics.status = 'unavailable'`,
 (override `SYNTUTOR_PORT`), host 127.0.0.1 (override `SYNTUTOR_HOST`).
 - Health: `curl -s http://127.0.0.1:8000/api/health`.
 - Parse: `curl -s -X POST http://127.0.0.1:8000/api/parse -H 'Content-Type:
-  application/json' -d '{"text":"The boys runs."}'`.
+  application/json' -d '{"text":"The boys runs."}'` (fast, rules-only;
+  `meta.detection == 'pending'`).
+- Verify: same body against `/api/verify` for the hybrid acceptability +
+  correction verdict (`meta.detection` becomes `done`/`offline`).
 
 **Production (HF Space):** `server/hf_space.py` launches Gradio on port 7860 (the
-platform's `PORT`/`GRADIO_SERVER_PORT`) and mounts `/api/health` + `/api/parse`
-on it; the frontend on Vercel calls the API cross-origin via `API_BASE` in
+platform's `PORT`/`GRADIO_SERVER_PORT`) and mounts `/api/health` + `/api/parse` +
+`/api/verify` on it; the frontend on Vercel calls the API cross-origin via `API_BASE` in
 `web/js/config.js` (currently `https://ybcole-syntutor.hf.space`). CORS headers
 are emitted by the API handlers; `GRADIO_SSR_MODE=false` is set so the mounted
 routes are served reliably. `@spaces.GPU` on `_zerogpu_noop` satisfies ZeroGPU's

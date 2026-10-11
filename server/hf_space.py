@@ -51,11 +51,31 @@ def _zerogpu_noop(value: str = 'ok') -> str:
     return value
 
 
+def _warm_hybrid():
+    """Warm the optional trained channels off the request path.
+
+    ``/api/parse`` returns the deterministic tree immediately and never waits on
+    these; ``/api/verify`` picks them up once they are cached. Absent weights
+    simply leave the channels inert.
+    """
+    try:
+        import detector
+        detector.load_detector()
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        import corrector
+        corrector.load_mlm()
+    except Exception:  # noqa: BLE001
+        pass
+
+
 def _warm_models():
     import parse_engine
     try:
         parse_engine.load_models()
         print('[syntutor] models ready', flush=True)
+        _warm_hybrid()
         return
     except Exception:
         pass
@@ -72,6 +92,7 @@ def _warm_models():
         print('[syntutor] models ready after download', flush=True)
     except Exception as exc:  # noqa: BLE001
         print(f'[syntutor] model load failed: {exc}', flush=True)
+    _warm_hybrid()
 
 
 threading.Thread(target=_warm_models, daemon=True).start()
@@ -81,10 +102,12 @@ with gr.Blocks(title='SynTutor') as demo:
     gr.Markdown(
         '# SynTutor\n\n'
         'Parsing backend for the SynTutor app '
-        '(https://syntutor.vercel.app) — spaCy + benepar + rule matrix.\n\n'
+        '(https://syntutor.vercel.app) — spaCy + benepar + rule matrix + '
+        'CoLA acceptability model (hybrid).\n\n'
         'The app calls these internally:\n\n'
         '- `GET /api/health`\n'
-        '- `POST /api/parse` with `{"text": "..."}`\n'
+        '- `POST /api/parse` with `{"text": "..."}` (fast tree)\n'
+        '- `POST /api/verify` with `{"text": "..."}` (hybrid verdict)\n'
     )
     _probe_in = gr.Textbox(value='ok', visible=False)
     _probe_out = gr.Textbox(visible=False)
@@ -118,7 +141,7 @@ async def api_health(request: Request):
     return JSONResponse(payload, status_code=code, headers=CORS)
 
 
-async def api_parse(request: Request):
+async def _build_endpoint(request: Request, detect: bool):
     try:
         data = await request.json()
     except Exception as exc:  # noqa: BLE001
@@ -138,7 +161,8 @@ async def api_parse(request: Request):
         return JSONResponse({'error': 'sentence_index must be >= 0'},
                             status_code=400, headers=CORS)
     try:
-        payload = _server.build_payload(text, sentence_index=sentence_index)
+        payload = _server.build_payload(
+            text, sentence_index=sentence_index, detect=detect)
     except _server.ParseFailure as exc:
         return JSONResponse({'error': str(exc), 'input': text},
                             status_code=422, headers=CORS)
@@ -148,6 +172,16 @@ async def api_parse(request: Request):
         return JSONResponse({'error': str(exc), 'hint': hint},
                             status_code=503, headers=CORS)
     return JSONResponse(payload, status_code=200, headers=CORS)
+
+
+async def api_parse(request: Request):
+    """Fast deterministic half (no trained model) -> tree renders immediately."""
+    return await _build_endpoint(request, detect=False)
+
+
+async def api_verify(request: Request):
+    """Hybrid half: acceptability model + correction search."""
+    return await _build_endpoint(request, detect=True)
 
 
 async def api_options(request: Request):
@@ -174,8 +208,10 @@ def main():
     )
     _mount(app, '/api/health', api_health, ['GET', 'HEAD'])
     _mount(app, '/api/parse', api_parse, ['POST'])
+    _mount(app, '/api/verify', api_verify, ['POST'])
     _mount(app, '/api/health', api_options, ['OPTIONS'])
     _mount(app, '/api/parse', api_options, ['OPTIONS'])
+    _mount(app, '/api/verify', api_options, ['OPTIONS'])
     print(f'[syntutor] serving on http://0.0.0.0:{port}', flush=True)
     while True:
         time.sleep(3600)

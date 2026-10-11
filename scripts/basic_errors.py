@@ -1,6 +1,8 @@
 import json, sys, urllib.request
 
-BASE = 'http://127.0.0.1:8000/api/parse'
+# /api/verify returns the full hybrid payload; /api/parse is the fast
+# deterministic half (no acceptability model), so this diagnostic uses verify.
+BASE = 'http://127.0.0.1:8000/api/verify'
 
 BATTERY = [
     # (WRONG, CORRECT control, category)
