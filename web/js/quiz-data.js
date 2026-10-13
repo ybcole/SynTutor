@@ -200,10 +200,24 @@ export const DIFFICULTY = {
   hard: { label: 'Hard', count: 5 },
 };
 
+// Each rule advertises a default difficulty derived from its matrix check
+// type: lexical errors are easy, tree/structural are medium, context is hard.
+export function ruleDifficulty(rule) {
+  const check = String(rule?.check || '');
+  if (check.includes('C')) return 'hard';
+  if (check.includes('T')) return 'medium';
+  return 'easy';
+}
+
 export function ruleInfo(ruleId) {
   for (const section of MATRIX_SECTIONS) {
     const found = section.rules.find((r) => r.id === ruleId);
-    if (found) return { ...found, section: section.title, sectionId: section.id };
+    if (found) return {
+      ...found,
+      section: section.title,
+      sectionId: section.id,
+      difficulty: ruleDifficulty(found),
+    };
   }
   return null;
 }

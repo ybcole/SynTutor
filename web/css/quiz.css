@@ -712,3 +712,112 @@
 .qq-xp-total,
 .qq-xp-up { font-size: 11.5px; color: var(--muted); }
 .qq-xp-up { color: var(--ok); font-weight: 800; }
+
+.sq-progress-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Difficulty filter above the rule catalog */
+.sq-filter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0 10px;
+}
+.sq-filter-chip {
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease);
+}
+.sq-filter-chip:hover { border-color: var(--accent); color: var(--accent-strong); }
+.sq-filter-chip.selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.sq-filter-hint {
+  margin: 10px 2px 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* Per-rule difficulty badge */
+.sq-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+.sq-diff-badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sq-diff-badge.easy { background: color-mix(in srgb, var(--ok) 14%, transparent); color: var(--ok); }
+.sq-diff-badge.medium { background: color-mix(in srgb, var(--warn) 16%, transparent); color: var(--warn); }
+.sq-diff-badge.hard { background: color-mix(in srgb, var(--err) 14%, transparent); color: var(--err); }
+
+/* Achievements view */
+.sq-achievement-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.sq-achievement-count {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.sq-ach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.sq-ach {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  opacity: 0.62;
+}
+.sq-ach.unlocked {
+  opacity: 1;
+  border-color: color-mix(in srgb, var(--xp) 45%, var(--border));
+  background: color-mix(in srgb, var(--xp) 7%, var(--surface));
+}
+.sq-ach-icon { font-size: 18px; line-height: 1; }
+.sq-ach.unlocked .sq-ach-icon { filter: saturate(1.3); }
+.sq-ach-title { font-size: 12px; font-weight: 800; color: var(--ink); }
+.sq-ach-desc { font-size: 10.5px; color: var(--muted); line-height: 1.35; }
+.sq-ach-state { margin-top: 2px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+.sq-ach:not(.unlocked) .sq-ach-state { color: var(--muted); }
+.sq-ach.unlocked .sq-ach-state { color: var(--xp); }
+
+/* Achievement toast on the results panel */
+.qq-ach-unlocked {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 4px 0;
+  padding: 8px 10px;
+  border: 1px solid color-mix(in srgb, var(--xp) 45%, transparent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--xp) 9%, transparent);
+}
+.qq-ach-icon { font-size: 16px; }
+.qq-ach-note { font-size: 11.5px; font-weight: 800; color: var(--xp); white-space: pre-line; }

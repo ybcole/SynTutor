@@ -9,6 +9,7 @@ import {
 } from './ui.js';
 import { openQuizView, closeQuizView, initQuiz, quizInputHint } from './quiz.js';
 import { levelFromXp } from './quiz/level.js';
+import { computeUnlocked } from './quiz/achievements.js';
 
 let clerk = null;
 let supabase = null;
@@ -161,7 +162,11 @@ function initSidebar() {
   document.querySelectorAll('.sidebar-item[data-view]').forEach((btn) => {
     btn.addEventListener('click', () => {
       if (btn.dataset.view === 'quiz') {
-        openQuizView();
+        openQuizView('list');
+      } else if (btn.dataset.view === 'leaderboard') {
+        openQuizView('leaderboard');
+      } else if (btn.dataset.view === 'achievements') {
+        openQuizView('achievements');
       } else {
         closeQuizView();
         close();
@@ -230,6 +235,7 @@ function updateAuthState() {
     document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
   }
   renderProfileMenu();
+  refreshProfileStats();
 }
 
 let devPanelOpen = false;
@@ -274,8 +280,50 @@ function setProfileMenu(open) {
     menu.setAttribute('aria-hidden', String(!open));
   }
   chip?.setAttribute('aria-expanded', String(open));
-  if (open) showProfileMenuMain();
+  if (open) {
+    showProfileMenuMain();
+    refreshProfileStats();
+  }
   if (open) focusFirstMenuItem();
+}
+
+function refreshProfileStats() {
+  const box = document.querySelector('#profileStats');
+  if (!box) return;
+  if (!isGuest && clerk?.session && supabase) {
+    box.innerHTML = '<span>Loading progress\u2026</span>';
+    loadPlayerProgress().then((p) => {
+      if (!box) return;
+      const stats = p || { xp: 0, level: 0 };
+      const level = levelFromXp(stats.xp);
+      box.innerHTML = '';
+      const row = document.createElement('div');
+      row.className = 'profile-stats-stats';
+      const lvl = document.createElement('span');
+      lvl.className = 'profile-stats-level';
+      lvl.textContent = `Level ${stats.level}`;
+      const xp = document.createElement('span');
+      xp.className = 'profile-stats-xp';
+      xp.textContent = `${stats.xp} XP`;
+      row.appendChild(lvl);
+      row.appendChild(xp);
+      box.appendChild(row);
+      const bar = document.createElement('div');
+      bar.className = 'profile-stats-bar';
+      const fill = document.createElement('div');
+      fill.className = 'profile-stats-fill';
+      fill.style.width = `${level.span ? Math.min(100, Math.round((level.into / level.span) * 100)) : 0}%`;
+      bar.appendChild(fill);
+      box.appendChild(bar);
+      const note = document.createElement('span');
+      note.textContent = `${level.into} / ${level.span} XP to Level ${stats.level + 1}`;
+      box.appendChild(note);
+    }).catch(() => {
+      if (box) box.textContent = 'Progress unavailable right now.';
+    });
+  } else {
+    box.textContent = 'Guest mode \u2014 sign in to earn XP and achievements.';
+  }
 }
 
 function visibleMenuItems() {
@@ -416,7 +464,7 @@ function wireEvents() {
     editor?.classList.add('editing');
     ta.readOnly = false;
     ta.classList.add('editing');
-    setEditHint(true);
+    setHint(true);
     ta.focus();
   });
   ta.addEventListener('scroll', syncHighlightScroll);
@@ -427,8 +475,7 @@ function wireEvents() {
   ta.addEventListener('blur', () => {
     if (quizMode) {
       returnToLocked();
-      const hint = document.querySelector('#inputHint');
-      if (hint) hint.textContent = quizInputHint();
+      setQuizHintText();
       analyzeForQuiz(ta.value);
       return;
     }
@@ -506,11 +553,20 @@ function wireEvents() {
   });
 }
 
-function setEditHint(editing) {
-  const hint = document.querySelector('#inputHint');
-  hint.textContent = editing
-    ? 'Editing \u2014 click away to lock and analyze.'
-    : 'Locked \u2014 click any sentence to view its syntax tree. Double-click to edit.';
+const DEFAULT_INPUT_HINT = 'Double-click the panel to edit. When locked, click any sentence to view its syntax tree.';
+
+function setHint(editing) {
+  const overlay = document.querySelector('#inputHighlights');
+  if (overlay) {
+    overlay.dataset.hint = editing
+      ? 'Editing \u2014 click away to lock and analyze. (Type above)'
+      : DEFAULT_INPUT_HINT;
+  }
+}
+
+function setQuizHintText() {
+  const overlay = document.querySelector('#inputHighlights');
+  if (overlay) overlay.dataset.hint = quizInputHint();
 }
 
 function returnToLocked(payload = null) {
@@ -519,7 +575,7 @@ function returnToLocked(payload = null) {
   ta.readOnly = true;
   ta.classList.remove('editing');
   editor?.classList.remove('editing');
-  setEditHint(false);
+  setHint(false);
   renderInputHighlights(ta.value, payload);
 }
 
@@ -537,7 +593,7 @@ function startNewSession() {
   ta.readOnly = true;
   ta.classList.remove('editing');
   editor?.classList.remove('editing');
-  setEditHint(false);
+  setHint(false);
   renderInputHighlights('');
   syncHighlightScroll();
 
@@ -666,12 +722,59 @@ async function loadLeaderboard(limit = 25) {
   return data;
 }
 
+async function loadQuizProgress() {
+  if (!supabase || !clerk?.user?.id) return [];
+  const { data, error } = await supabase
+    .from('quiz_progress')
+    .select('rule_id, difficulty, completed_count, perfect_count')
+    .eq('user_id', clerk.user.id);
+  if (error) {
+    console.warn('Failed to load quiz progress:', error.message);
+    return [];
+  }
+  return data || [];
+}
+
+// Records a finished quiz run (upserts a completion for rule+difficulty) and
+// returns the achievement ids that this run newly unlocked.
+async function trackQuizCompletion({ ruleId, difficulty, perfect }) {
+  if (!progressAvailable()) return { newlyUnlocked: [], ran: false };
+  const before = computeUnlocked(await loadQuizProgress());
+  const existing = await supabase
+    .from('quiz_progress')
+    .select('completed_count, perfect_count')
+    .eq('user_id', clerk.user.id)
+    .eq('rule_id', ruleId)
+    .eq('difficulty', difficulty)
+    .maybeSingle();
+  const prev = existing?.error ? {} : (existing?.data || {});
+  const { error } = await supabase.from('quiz_progress').upsert({
+    user_id: clerk.user.id,
+    rule_id: ruleId,
+    difficulty,
+    completed_count: (prev.completed_count || 0) + 1,
+    perfect_count: (prev.perfect_count || 0) + (perfect ? 1 : 0),
+    last_completed_at: new Date().toISOString(),
+  }, { onConflict: 'user_id,rule_id,difficulty' });
+  if (error) {
+    console.warn('Failed to record quiz completion:', error.message);
+    return { newlyUnlocked: [], ran: false };
+  }
+  const after = computeUnlocked(await loadQuizProgress());
+  return {
+    newlyUnlocked: [...after].filter((id) => !before.has(id)),
+    ran: true,
+  };
+}
+
 const progress = {
   isAvailable: progressAvailable,
   myId: () => (clerk?.user?.id ? clerk.user.id : null),
   load: loadPlayerProgress,
   award: awardPlayerXp,
   leaderboard: loadLeaderboard,
+  getQuizProgress: loadQuizProgress,
+  trackCompletion: trackQuizCompletion,
 };
 
 // Quiz-only analysis: parses the sentence, renders its tree, and returns the

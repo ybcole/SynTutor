@@ -8,12 +8,13 @@
 // the same rule-matrix remediation used by the tutor.
 
 import {
-  MATRIX_SECTIONS, DIFFICULTY, questionPool, ruleInfo, hasQuiz,
+  MATRIX_SECTIONS, DIFFICULTY, questionPool, ruleInfo, ruleDifficulty, hasQuiz,
 } from './quiz-data.js';
 import {
   isParagraphQuizAnswerCorrect, isQuizAnswerCorrect, hasSyntaxError,
 } from './quiz/answer.js';
 import { XP_PER_CORRECT, PERFECT_QUIZ_BONUS, levelFromXp } from './quiz/level.js';
+import { achievementCatalog, computeUnlocked } from './quiz/achievements.js';
 import { renderNodeDetail } from './ui.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -26,9 +27,10 @@ function el(tag, cls, text) {
 }
 
 const state = {
-  view: 'list', // list | setup | quiz | results | leaderboard
+  view: 'list', // list | setup | quiz | results | leaderboard | achievements
   ruleId: null,
   difficulty: 'easy',
+  difficultyFilter: null, // null = all rules
   questions: [],
   index: 0,
   entries: [],
@@ -42,6 +44,7 @@ const state = {
   xpEarned: 0,
   xpPerfect: false,
   xpResult: null,
+  unlockedNow: [],
   progress: null,
   progressAvailable: false,
 };
@@ -49,17 +52,21 @@ const state = {
 // ---------------------------------------------------------------------------
 // Open / close
 // ---------------------------------------------------------------------------
-export function openQuizView() {
+export function openQuizView(view = 'list') {
   const panel = $('#quizPanel');
   if (!panel) return;
+  if (state.active) endQuiz();
   panel.hidden = false;
   $('#appSidebar')?.classList.add('quiz-active');
   $('#appSidebarBackdrop')?.classList.add('active');
   $('#sidebarToggleBtn')?.setAttribute('aria-expanded', 'true');
+  const activeView = { quiz: 'quiz', leaderboard: 'leaderboard', achievements: 'achievements' }[view] || 'quiz';
   document.querySelectorAll('.sidebar-item').forEach((b) => {
-    b.classList.toggle('active', b.dataset.view === 'quiz');
+    b.classList.toggle('active', b.dataset.view === activeView);
   });
-  goList();
+  if (view === 'leaderboard') goLeaderboard();
+  else if (view === 'achievements') goAchievements();
+  else goList();
 }
 
 export function closeQuizView() {
@@ -130,7 +137,18 @@ function shell({ title, back, search, meta }) {
 // ---------------------------------------------------------------------------
 function goList() {
   state.view = 'list';
-  shell({ title: 'Matrix Quiz', search: true });
+  const filter = el('div', 'sq-filter');
+  const options = [['', 'All'], ...Object.entries(DIFFICULTY).map(([key, d]) => [key, d.label])];
+  for (const [key, label] of options) {
+    const chip = el('button', `sq-filter-chip${state.difficultyFilter === key ? ' selected' : ''}`, label);
+    chip.type = 'button';
+    chip.addEventListener('click', () => {
+      state.difficultyFilter = key || null;
+      goList();
+    });
+    filter.appendChild(chip);
+  }
+  shell({ title: 'Matrix Quiz', search: true, meta: filter });
   renderList();
   refreshProgress();
 }
@@ -160,10 +178,16 @@ function progressStrip() {
   const head = el('div', 'sq-progress-head');
   head.appendChild(el('span', 'sq-level',
     state.progress ? `Level ${state.progress.level}` : 'Progress'));
+  const links = el('div', 'sq-progress-links');
   const board = el('button', 'sq-link', 'Leaderboard');
   board.type = 'button';
   board.addEventListener('click', goLeaderboard);
-  head.appendChild(board);
+  const ach = el('button', 'sq-link', 'Achievements');
+  ach.type = 'button';
+  ach.addEventListener('click', goAchievements);
+  links.appendChild(board);
+  links.appendChild(ach);
+  head.appendChild(links);
   wrap.appendChild(head);
 
   if (!state.progressAvailable) {
@@ -235,20 +259,80 @@ async function renderLeaderboard() {
     'Rankings are permanent and ordered by level (XP breaks ties).'));
 }
 
+function goAchievements() {
+  state.view = 'achievements';
+  shell({ title: 'Achievements', back: goList });
+  renderAchievements();
+}
+
+async function renderAchievements() {
+  const body = state.body;
+  if (!body) return;
+  body.innerHTML = '';
+  const progress = state.controller?.progress;
+  let rows = [];
+  if (progress?.getQuizProgress) {
+    try {
+      rows = await progress.getQuizProgress();
+    } catch {
+      rows = [];
+    }
+  }
+  const catalog = achievementCatalog();
+  const unlocked = computeUnlocked(rows);
+  const unlockedCount = catalog.filter((ach) => unlocked.has(ach.id)).length;
+
+  const summary = el('div', 'sq-achievement-summary');
+  summary.appendChild(el('span', 'sq-achievement-count',
+    `${unlockedCount} / ${catalog.length} unlocked`));
+  if (!progress?.isAvailable?.()) {
+    summary.appendChild(el('p', 'sq-progress-note',
+      'Sign in to earn achievements \u2014 your progress counts once you are signed in.'));
+  }
+  body.appendChild(summary);
+
+  const grid = el('div', 'sq-ach-grid');
+  for (const ach of catalog) {
+    const tile = el('div', `sq-ach${unlocked.has(ach.id) ? ' unlocked' : ''}`);
+    tile.appendChild(el('span', 'sq-ach-icon', ach.icon));
+    const t = el('span', 'sq-ach-title', ach.title);
+    const d = el('span', 'sq-ach-desc', ach.description);
+    const s = el('span', 'sq-ach-state', unlocked.has(ach.id) ? 'Unlocked' : 'Locked');
+    tile.appendChild(t);
+    tile.appendChild(d);
+    tile.appendChild(s);
+    grid.appendChild(tile);
+  }
+  body.appendChild(grid);
+  if (!progress?.isAvailable?.()) {
+    body.appendChild(el('p', 'sq-board-note',
+      'Achievements: complete a quiz in every section to become a Grammar Grandmaster.'));
+  } else {
+    const done = MATRIX_SECTIONS.filter((section) => unlocked.has(`section_${section.id}`)).length;
+    body.appendChild(el('p', 'sq-board-note', `${done} / ${MATRIX_SECTIONS.length} sections explored.`));
+  }
+}
+
 function renderList() {
   const body = state.body;
   if (!body) return;
   body.innerHTML = '';
   body.appendChild(progressStrip());
   const query = state.search.trim().toLowerCase();
+  const diffFilter = state.difficultyFilter;
+  const hint = diffFilter
+    ? `Showing ${DIFFICULTY[diffFilter].label} rules \u2014 click a rule to start that quiz.`
+    : 'Click a rule to choose a difficulty, or pick one from the filter to start instantly.';
 
   let total = 0;
   MATRIX_SECTIONS.forEach((section) => {
     const matches = section.rules.filter((r) => {
-      if (!query) return true;
-      return r.id.includes(query)
-        || r.rule.toLowerCase().includes(query)
-        || (r.example || '').toLowerCase().includes(query);
+      if (query) {
+        const haystack = `${r.id} ${r.rule} ${r.example || ''}`.toLowerCase();
+        if (!haystack.includes(query)) return false;
+      }
+      if (diffFilter && ruleDifficulty(r) !== diffFilter) return false;
+      return true;
     });
     if (!matches.length) return;
     total += matches.length;
@@ -264,7 +348,8 @@ function renderList() {
     body.appendChild(group);
   });
 
-  if (!total) body.appendChild(el('p', 'sq-empty', 'No rules match your search.'));
+  body.appendChild(el('p', 'sq-filter-hint', hint));
+  if (!total) body.appendChild(el('p', 'sq-empty', 'No rules match your search or filter.'));
 }
 
 function ruleRow(rule) {
@@ -275,8 +360,12 @@ function ruleRow(rule) {
   const top = el('div', 'sq-row-top');
   top.appendChild(el('span', 'sq-row-id', rule.id));
   top.appendChild(el('span', 'sq-row-rule', rule.rule));
+  const meta = el('span', 'sq-row-meta');
+  const diff = ruleDifficulty(rule);
+  meta.appendChild(el('span', `sq-diff-badge ${diff}`, DIFFICULTY[diff].label));
   const ready = hasQuiz(rule.id);
-  top.appendChild(el('span', `sq-dot ${ready ? 'ready' : 'soon'}`, ''));
+  meta.appendChild(el('span', `sq-dot ${ready ? 'ready' : 'soon'}`, ''));
+  top.appendChild(meta);
   row.appendChild(top);
 
   const foot = el('div', 'sq-row-foot');
@@ -284,7 +373,15 @@ function ruleRow(rule) {
   if (!ready) foot.appendChild(el('span', 'sq-soon', 'soon'));
   row.appendChild(foot);
 
-  row.addEventListener('click', () => goSetup(rule.id));
+  row.addEventListener('click', () => {
+    if (state.difficultyFilter) {
+      state.ruleId = rule.id;
+      state.difficulty = state.difficultyFilter;
+      startQuiz();
+    } else {
+      goSetup(rule.id);
+    }
+  });
   return row;
 }
 
@@ -503,6 +600,18 @@ function renderResultsInto(body) {
   }
   body.appendChild(xp);
 
+  if (state.unlockedNow.length) {
+    const catalog = achievementCatalog();
+    const names = state.unlockedNow
+      .map((id) => catalog.find((ach) => ach.id === id)?.title || id)
+      .join('\n');
+    const ach = el('div', 'qq-ach-unlocked');
+    ach.appendChild(el('span', 'qq-ach-icon', '\u{1F3C6}'));
+    const note = el('span', 'qq-ach-note', `Achievement unlocked: ${names}`);
+    ach.appendChild(note);
+    body.appendChild(ach);
+  }
+
   const review = el('div', 'sq-review');
   state.entries.forEach((entry, i) => {
     if (!entry) return;
@@ -566,6 +675,7 @@ function startQuiz() {
   state.xpEarned = 0;
   state.xpPerfect = false;
   state.xpResult = null;
+  state.unlockedNow = [];
   state.progressAvailable = Boolean(state.controller?.progress?.isAvailable?.());
   setQuizMode(true);
   hideSidebar();
@@ -585,8 +695,8 @@ async function loadQuestion() {
     ta.classList.remove('editing');
   }
   editor?.classList.remove('editing');
-  const hint = $('#inputHint');
-  if (hint) hint.textContent = quizInputHint();
+  const overlay = $('#inputHighlights');
+  if (overlay) overlay.dataset.hint = quizInputHint();
 
   renderQuest();
   renderNodeDetail(null, null, null);
@@ -781,20 +891,27 @@ async function awardQuizXp() {
   state.xpEarned = outcome.earned;
   state.xpPerfect = outcome.perfect;
   const progress = state.controller?.progress;
-  if (!progress?.isAvailable?.()) {
-    state.xpResult = null;
-    return;
-  }
-  const before = state.progress?.level ?? null;
+  const beforeLevel = state.progress?.level ?? 0;
+  state.unlockedNow = [];
   let result = null;
   try {
-    result = await progress.award?.(outcome.earned);
+    const tracked = await progress?.trackCompletion?.({
+      ruleId: state.ruleId,
+      difficulty: state.difficulty,
+      perfect: outcome.perfect,
+    });
+    state.unlockedNow = tracked?.newlyUnlocked || [];
+    if (progress?.isAvailable?.()) {
+      result = await progress.award?.(outcome.earned);
+    }
   } catch {
     result = null;
   }
   if (result) {
-    state.xpResult = { ...result, leveledUp: before !== null && result.level > before };
+    state.xpResult = { ...result, leveledUp: result.level > beforeLevel };
     state.progress = { xp: result.xp, level: result.level, ...levelFromXp(result.xp) };
+  } else {
+    state.xpResult = null;
   }
   renderQuest();
 }
@@ -808,9 +925,9 @@ function endQuiz() {
   state.answered = false;
   setQuizMode(false);
   clearQuestPanel();
-  const hint = $('#inputHint');
-  if (hint) {
-    hint.textContent = 'Locked \u2014 click any sentence to view its syntax tree. Double-click to edit.';
+  const overlay = $('#inputHighlights');
+  if (overlay) {
+    overlay.dataset.hint = 'Double-click the panel to edit. When locked, click any sentence to view its syntax tree.';
   }
 }
 
