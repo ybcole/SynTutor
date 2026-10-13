@@ -10,7 +10,9 @@
 import {
   MATRIX_SECTIONS, DIFFICULTY, questionPool, ruleInfo, hasQuiz,
 } from './quiz-data.js';
-import { isQuizAnswerCorrect } from './quiz/answer.js';
+import {
+  isParagraphQuizAnswerCorrect, isQuizAnswerCorrect,
+} from './quiz/answer.js';
 import { renderNodeDetail } from './ui.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -290,6 +292,7 @@ function renderQuest() {
 function renderQuestionInto(body) {
   const q = state.questions[state.index];
   if (!q) { showResults(); return; }
+  const paragraphQuestion = isRegularPluralParagraph(q);
   const done = state.entries.filter(Boolean).length;
   const total = state.questions.length;
 
@@ -306,20 +309,26 @@ function renderQuestionInto(body) {
   body.appendChild(meta);
 
   const target = el('div', 'qq-target');
-  target.appendChild(el('span', 'qq-label', 'Correct this sentence'));
-  target.appendChild(el('p', 'qq-sentence', q.bad));
+  target.appendChild(el('span', 'qq-label', paragraphQuestion
+    ? 'Correct plural errors in this paragraph. Some sentences are already correct.'
+    : 'Correct this sentence'));
+  if (paragraphQuestion) appendNumberedSentences(target, q.sentences, 'bad');
+  else target.appendChild(el('p', 'qq-sentence', q.bad));
   body.appendChild(target);
 
   const answer = el('div', 'qq-answer');
-  answer.appendChild(el('span', 'qq-label', 'Correct answer'));
-  answer.appendChild(el('p', 'qq-good', q.good));
+  answer.appendChild(el('span', 'qq-label', paragraphQuestion
+    ? 'Corrected paragraph'
+    : 'Correct answer'));
+  if (paragraphQuestion) appendNumberedSentences(answer, q.sentences, 'good');
+  else answer.appendChild(el('p', 'qq-good', q.good));
   answer.hidden = !state.answered;
   body.appendChild(answer);
 
   const nav = el('div', 'qq-nav');
   if (state.answered) {
     const next = el('button', 'sq-primary qq-next',
-      state.index + 1 >= total ? 'Finish' : 'Next sentence');
+      state.index + 1 >= total ? 'Finish' : paragraphQuestion ? 'Next paragraph' : 'Next sentence');
     next.type = 'button';
     next.addEventListener('click', advance);
     nav.appendChild(next);
@@ -339,6 +348,23 @@ function renderQuestionInto(body) {
   quit.type = 'button';
   quit.addEventListener('click', quitConfirm);
   body.appendChild(quit);
+}
+
+function isRegularPluralParagraph(question) {
+  return state.ruleId === '1.1'
+    && state.difficulty === 'hard'
+    && Array.isArray(question.sentences);
+}
+
+function appendNumberedSentences(parent, sentences, field) {
+  const list = el('ol', 'qq-paragraph');
+  sentences.forEach((sentence, index) => {
+    const item = el('li', 'qq-paragraph-line');
+    item.value = index + 1;
+    item.appendChild(el('span', 'qq-sentence', sentence[field]));
+    list.appendChild(item);
+  });
+  parent.appendChild(list);
 }
 
 function renderResultsInto(body) {
@@ -438,7 +464,11 @@ async function loadQuestion() {
     ta.value = q.bad;
   }
   const hint = $('#inputHint');
-  if (hint) hint.textContent = 'Repair the sentence, then press Submit.';
+  if (hint) {
+    hint.textContent = isRegularPluralParagraph(q)
+      ? 'Correct the plural errors in the paragraph; leave correct sentences unchanged, then press Submit.'
+      : 'Repair the sentence, then press Submit.';
+  }
 
   renderQuest();
   renderNodeDetail(null, null, null);
@@ -456,10 +486,28 @@ async function submitAnswer() {
 
   state.answered = true;
   setQuizLoading(true);
-  const payload = await state.controller?.analyze(text);
+  const paragraphQuestion = isRegularPluralParagraph(q);
+  let payload;
+  let correct;
+  if (paragraphQuestion) {
+    const lines = text.split(/\r\n?|\n/);
+    const payloads = [];
+    for (const line of lines) {
+      payloads.push(line.trim() ? await state.controller?.analyze(line) : null);
+    }
+    payload = payloads.find((item) => item?.summary?.verdict === 'ungrammatical')
+      || payloads.at(-1);
+    correct = isParagraphQuizAnswerCorrect(
+      text,
+      q.sentences.map((sentence) => sentence.good),
+      payloads,
+    );
+  } else {
+    payload = await state.controller?.analyze(text);
+    correct = isQuizAnswerCorrect(text, q.good, payload);
+  }
   setQuizLoading(false);
 
-  const correct = isQuizAnswerCorrect(text, q.good, payload);
   state.entries[state.index] = { question: q, answer: text, correct, skipped: false };
   applyFeedback(q, correct, payload);
   renderQuest();

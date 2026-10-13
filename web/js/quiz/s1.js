@@ -300,40 +300,302 @@ const spellFrame = (word, i) => cap(at([
   `she read the word "${word}" off the page`,
 ], i));
 
+const unchangedSentence = (text) => [text, text];
+const pluralErrorSentence = (before, incorrect, correct, after) => [
+  `${before}${incorrect}${after}`,
+  `${before}${correct}${after}`,
+];
+
+const HARD_REGULAR_PLURAL_PARAGRAPHS = [
+  [
+    pluralErrorSentence('The drama club painted the costume ', 'boxs', 'boxes', ' before opening night.'),
+    pluralErrorSentence('The stage crew carried ', 'boxs', 'boxes', ' of painted scenery backstage.'),
+    unchangedSentence('The actors waited quietly behind the curtain.'),
+    pluralErrorSentence('After the final song, the audience sent the cast several thank-you ', 'cardss', 'cards', '.'),
+  ],
+  [
+    unchangedSentence('Our class visited the history museum on Friday.'),
+    pluralErrorSentence('The guide displayed old ', 'watchs', 'watches', ' beside the clock collection.'),
+    pluralErrorSentence('Several ', 'citys', 'cities', ' had sent maps for the new exhibit.'),
+    unchangedSentence('We copied our favorite dates into our notebooks.'),
+  ],
+  [
+    unchangedSentence('The community garden held its first harvest day.'),
+    pluralErrorSentence('Volunteers filled several ', 'basket', 'baskets', ' with fresh produce.'),
+    pluralErrorSentence('They set the ripe ', 'berrys', 'berries', ' beside jars of local honey.'),
+    pluralErrorSentence('By noon, the gardeners had picked three ', 'boxs', 'boxes', ' of tomatoes.'),
+  ],
+  [
+    pluralErrorSentence('The library displayed new ', 'storys', 'stories', ' for its reading afternoon.'),
+    unchangedSentence('Staff arranged picture books on a table near the entrance.'),
+    unchangedSentence('Families settled into the reading room after lunch.'),
+    pluralErrorSentence('Young readers borrowed several ', 'copys', 'copies', ' of the adventure book.'),
+  ],
+  [
+    unchangedSentence('The bakery prepared for the weekend market.'),
+    pluralErrorSentence('The bakers washed the mixing ', 'dishs', 'dishes', ' before dawn.'),
+    pluralErrorSentence('They packed warm ', 'loafs', 'loaves', ' in paper bags for the stall.'),
+    unchangedSentence('The first customers arrived just as the doors opened.'),
+  ],
+  [
+    unchangedSentence('The science club built a display about city wildlife.'),
+    pluralErrorSentence('Students placed small models of ', 'foxs', 'foxes', ' beside the park map.'),
+    unchangedSentence('A volunteer explained how animals find food near roads.'),
+    pluralErrorSentence('The class added drawings of nesting ', 'branchs', 'branches', ' to the display.'),
+  ],
+  [
+    unchangedSentence('The art studio prepared a show for visiting families.'),
+    pluralErrorSentence('Painters hung three colorful ', 'canvas', 'canvases', ' along the main wall.'),
+    pluralErrorSentence('The children arranged paper ', 'boxs', 'boxes', ' to hold their clay models.'),
+    unchangedSentence('Everyone left space for the musicians near the window.'),
+  ],
+  [
+    pluralErrorSentence('Visitors arrived from nearby ', 'churchs', 'churches', ' for the spring fair.'),
+    pluralErrorSentence('Vendors decorated their stalls with yellow ', 'lilys', 'lilies', ' and green ribbons.'),
+    unchangedSentence('A local band played near the fountain all afternoon.'),
+    unchangedSentence('The organizers handed out maps of nearby churches and gardens.'),
+  ],
+  [
+    unchangedSentence('The students planned a trip to the coast.'),
+    pluralErrorSentence('They packed towels, snacks, and two beach ', 'towel', 'towels', ' for each group.'),
+    pluralErrorSentence('At the shore, the children watched many ', 'crab', 'crabs', ' move across the sand.'),
+    unchangedSentence('Their teacher reminded everyone to stay with a partner.'),
+  ],
+  [
+    pluralErrorSentence('The school newspaper interviewed the team ', 'coachs', 'coaches', ' after practice.'),
+    unchangedSentence('Reporters took notes beside the main entrance.'),
+    unchangedSentence('The editor checked every quote before publication.'),
+    pluralErrorSentence('The editor placed the best photographs on two ', 'pagees', 'pages', ' of the paper.'),
+  ],
+  [
+    unchangedSentence('A family opened a small shop beside the station.'),
+    pluralErrorSentence('The owners displayed handmade ', 'brushs', 'brushes', ' near the front window.'),
+    pluralErrorSentence('They also sold bright ', 'toies', 'toys', ' made by a local carpenter.'),
+    unchangedSentence('Neighbors stopped in to welcome them on opening day.'),
+  ],
+  [
+    pluralErrorSentence('The orchestra stored spare ', 'instrument', 'instruments', ' before its summer concert.'),
+    pluralErrorSentence('Musicians placed their music on wooden ', 'shelfs', 'shelves', ' around the hall.'),
+    unchangedSentence('The conductor asked everyone to listen for the quiet introduction.'),
+    unchangedSentence('After rehearsal, the players packed the music into padded cases.'),
+  ],
+  [
+    unchangedSentence('The farm stand opened early during peach season.'),
+    pluralErrorSentence('Workers sorted ripe ', 'peachs', 'peaches', ' into baskets for customers.'),
+    pluralErrorSentence('The farmers set several glass ', 'dishs', 'dishes', ' beside the tasting table.'),
+    unchangedSentence('By midday, the orchard road was busy with visitors.'),
+  ],
+  [
+    unchangedSentence('The neighborhood group organized a weekend cleanup.'),
+    pluralErrorSentence('Volunteers collected plastic ', 'boxs', 'boxes', ' from the riverbank.'),
+    unchangedSentence('A few residents swept leaves from the walking path.'),
+    pluralErrorSentence('The children tied bright ', 'ribbones', 'ribbons', ' around the new recycling bins.'),
+  ],
+  [
+    pluralErrorSentence('The photography club displayed pictures from several ', 'citys', 'cities', ' across the region.'),
+    unchangedSentence('Members showed scenes from crowded streets near the coast.'),
+    unchangedSentence('One wall featured a quiet street just after sunrise.'),
+    pluralErrorSentence('They placed the winning prints in black ', 'framees', 'frames', ' near the entrance.'),
+  ],
+  [
+    unchangedSentence('The school kitchen prepared lunch for visiting parents.'),
+    pluralErrorSentence('Cooks arranged three clean ', 'tray', 'trays', ' beside the serving counter.'),
+    pluralErrorSentence('They filled large ', 'dishs', 'dishes', ' with rice and roasted vegetables.'),
+    unchangedSentence('Students helped carry the meals to the tables.'),
+  ],
+  [
+    unchangedSentence('The hiking group planned a route through the hills.'),
+    pluralErrorSentence('The leader marked several safe ', 'pathes', 'paths', ' on a paper map.'),
+    unchangedSentence('Everyone checked the weather before leaving the cabin.'),
+    pluralErrorSentence('Along the way, they crossed two wooden ', 'bridgeses', 'bridges', ' over narrow streams.'),
+  ],
+  [
+    pluralErrorSentence('The local theater welcomed several touring ', 'companys', 'companies', ' for its dance festival.'),
+    unchangedSentence('Crew members carried metal benches into the rehearsal room.'),
+    pluralErrorSentence('The dancers hung their costumes on portable ', 'rackes', 'racks', ' near the mirrors.'),
+    unchangedSentence('The director thanked the volunteers before the evening show.'),
+  ],
+  [
+    unchangedSentence('The market offered a special display of local fruit.'),
+    pluralErrorSentence('Farmers brought sweet ', 'cherrys', 'cherries', ' in shallow wooden crates.'),
+    unchangedSentence('A sign listed the farms that supplied the produce.'),
+    pluralErrorSentence('Customers chose ripe ', 'appleses', 'apples', ' for pies and lunch boxes.'),
+  ],
+  [
+    pluralErrorSentence('The history teacher prepared a lesson comparing several ', 'countrys', 'countries', ' and their trade routes.'),
+    pluralErrorSentence('The class studied maps of old trade ', 'road', 'roads', ' across the country.'),
+    pluralErrorSentence('They compared those routes with modern ', 'highwayes', 'highways', ' on a large wall chart.'),
+    unchangedSentence('Each group shared one discovery with the class.'),
+  ],
+  [
+    unchangedSentence('The school garden club met after the last bell.'),
+    pluralErrorSentence('Students planted several young ', 'bush', 'bushes', ' along the greenhouse wall.'),
+    unchangedSentence('They watered the seedlings and checked the soil.'),
+    pluralErrorSentence('The club labeled the rows with small wooden ', 'marker', 'markers', ' before going home.'),
+  ],
+  [
+    unchangedSentence('The museum opened an exhibit about old inventions.'),
+    pluralErrorSentence('Visitors examined metal ', 'watchs', 'watches', ' that once belonged to local families.'),
+    pluralErrorSentence('The guide pointed out tiny ', 'gearss', 'gears', ' inside a restored clock.'),
+    unchangedSentence('A short film showed how the mechanism worked.'),
+  ],
+  [
+    unchangedSentence('The bookshop held a signing with a visiting author.'),
+    pluralErrorSentence('Staff stacked the new ', 'copys', 'copies', ' on a table near the stage.'),
+    unchangedSentence('Readers waited patiently beside the display.'),
+    pluralErrorSentence('The author wrote personal notes on the inside ', 'pagees', 'pages', ' of each book.'),
+  ],
+  [
+    pluralErrorSentence('The town council discussed plans for nearby ', 'parkes', 'parks', ' along the river.'),
+    pluralErrorSentence('Residents suggested new walking ', 'pathes', 'paths', ' around the pond.'),
+    unchangedSentence('They also requested better lighting beneath the trees.'),
+    unchangedSentence('The council promised to review every suggestion.'),
+  ],
+  [
+    unchangedSentence('The cooking class prepared a meal from family recipes.'),
+    pluralErrorSentence('Students chopped fresh ', 'tomatos', 'tomatoes', ' for a large salad.'),
+    unchangedSentence('The instructor demonstrated how to season the soup.'),
+    pluralErrorSentence('They served the dishes on colorful ', 'platees', 'plates', ' from the school kitchen.'),
+  ],
+  [
+    unchangedSentence('The community center hosted an evening for new neighbors.'),
+    pluralErrorSentence('Volunteers arranged folding ', 'chairies', 'chairs', ' around the meeting room.'),
+    pluralErrorSentence('Several ', 'familys', 'families', ' brought food to share with everyone.'),
+    unchangedSentence('The children played board games near the back wall.'),
+  ],
+  [
+    unchangedSentence('The repair team restored the old railway platform.'),
+    pluralErrorSentence('Workers replaced three broken ', 'window', 'windows', ' in the waiting room.'),
+    unchangedSentence('The station manager checked the timetable before reopening.'),
+    pluralErrorSentence('They painted the platform ', 'benchies', 'benches', ' and cleaned the entrance signs.'),
+  ],
+  [
+    unchangedSentence('The school choir practiced for a holiday performance.'),
+    pluralErrorSentence('The choir prepared for several ', 'concert', 'concerts', ' during the week.'),
+    pluralErrorSentence('The accompanist placed spare ', 'copys', 'copies', ' beside the piano.'),
+    unchangedSentence('Their teacher listened from the back of the hall.'),
+  ],
+  [
+    unchangedSentence('The farm hosted a morning tour for local children.'),
+    pluralErrorSentence('The guide showed them several young ', 'calfs', 'calves', ' near the fence.'),
+    unchangedSentence('Everyone stayed behind the painted safety line.'),
+    pluralErrorSentence('They followed the marked ', 'pathes', 'paths', ' back to the visitor barn.'),
+  ],
+  [
+    pluralErrorSentence('The art teacher set out spare ', 'brushs', 'brushes', ' before students arrived.'),
+    unchangedSentence('She placed water cups beside the paint.'),
+    pluralErrorSentence('The students mounted their drawings on large ', 'boardes', 'boards', ' along the corridor.'),
+    unchangedSentence('Parents visited the exhibit after the afternoon concert.'),
+  ],
+  [
+    unchangedSentence('The library team prepared for a week of storytelling.'),
+    pluralErrorSentence('They selected folk ', 'storys', 'stories', ' from several countries.'),
+    unchangedSentence('A volunteer practiced reading aloud in the children’s room.'),
+    pluralErrorSentence('Staff put extra ', 'chairies', 'chairs', ' near the small stage.'),
+  ],
+  [
+    unchangedSentence('The coastal town prepared for its annual sailing race.'),
+    pluralErrorSentence('Sailors checked their ', 'boatss', 'boats', ' before sunrise.'),
+    pluralErrorSentence('The harbor crew repaired two wooden ', 'benchies', 'benches', ' beside the pier.'),
+    unchangedSentence('Families watched the boats leave the harbor together.'),
+  ],
+  [
+    unchangedSentence('The school hosted a fair to raise money for new books.'),
+    pluralErrorSentence('Parents donated board ', 'gamees', 'games', ' for the activity table.'),
+    unchangedSentence('Student volunteers welcomed visitors at the entrance.'),
+    pluralErrorSentence('The organizers placed the raffle ', 'boxs', 'boxes', ' beside the refreshments.'),
+  ],
+  [
+    unchangedSentence('The neighborhood prepared a surprise party for its coach.'),
+    pluralErrorSentence('Players hung paper ', 'streamerss', 'streamers', ' across the gym.'),
+    pluralErrorSentence('They arranged small ', 'tablees', 'tables', ' around the room for snacks.'),
+    unchangedSentence('The coach arrived just as everyone shouted hello.'),
+  ],
+  [
+    unchangedSentence('A group of students visited a working print shop.'),
+    pluralErrorSentence('The printer showed them stacks of fresh ', 'copys', 'copies', ' from the morning order.'),
+    unchangedSentence('They watched the machine place ink on each page.'),
+    pluralErrorSentence('Finished posters were packed into flat ', 'boxs', 'boxes', ' for delivery.'),
+  ],
+  [
+    pluralErrorSentence('The museum garden displayed rose ', 'bushs', 'bushes', ' along the entrance path.'),
+    unchangedSentence('Gardeners trimmed the rose bushes before opening day.'),
+    pluralErrorSentence('They planted new ', 'lilys', 'lilies', ' beside the stone fountain.'),
+    unchangedSentence('Visitors could now walk around the whole garden.'),
+  ],
+  [
+    unchangedSentence('The school band traveled to a music festival nearby.'),
+    pluralErrorSentence('Musicians loaded their ', 'instrumentss', 'instruments', ' onto the bus before dawn.'),
+    unchangedSentence('The driver checked the route with the festival staff.'),
+    pluralErrorSentence('At the venue, helpers set out folding ', 'chairies', 'chairs', ' for the audience.'),
+  ],
+  [
+    unchangedSentence('The market square hosted a weekend craft workshop.'),
+    pluralErrorSentence('Makers displayed carved wooden ', 'toyies', 'toys', ' near the fountain.'),
+    pluralErrorSentence('Children painted small ', 'boxs', 'boxes', ' to take home after the class.'),
+    unchangedSentence('The workshop leader thanked every family for coming.'),
+  ],
+  [
+    unchangedSentence('The hospital organized a welcome room for new parents.'),
+    pluralErrorSentence('Nurses placed clean ', 'brushs', 'brushes', ' and towels in each cabinet.'),
+    unchangedSentence('The room had comfortable chairs beside the windows.'),
+    pluralErrorSentence('Visitors left kind ', 'wishs', 'wishes', ' on cards near the entrance.'),
+  ],
+  [
+    unchangedSentence('The hiking club explored a trail through the forest.'),
+    pluralErrorSentence('Members crossed two narrow wooden ', 'bridgeses', 'bridges', ' above the creek.'),
+    pluralErrorSentence('They noticed fresh animal ', 'trackes', 'tracks', ' in the soft mud.'),
+    unchangedSentence('The guide led everyone back before the rain began.'),
+  ],
+];
+
+function regularPluralParagraph(rows) {
+  const sentences = rows.map(([bad, good]) => ({ bad, good }));
+  return {
+    bad: sentences.map((sentence) => sentence.bad).join('\n'),
+    good: sentences.map((sentence) => sentence.good).join('\n'),
+    sentences,
+    explanation: 'Correct the regular plural spelling in the sentences that need it; some sentences are already correct.',
+  };
+}
+
 export default {
   // 1.1 Regular noun plurals
-  '1.1': (d) => ruleItems(d, (i) => {
-    const [sg, pl] = at(REG, i);
-    const num = at(NUMWORD, i * 3);
-    const wrong = wrongPlural(sg, pl);
-    // Vary syntactic structure
-    const variants = [
-      () => `${at(WHO, i)} ${step(COUNT, i, 5)} ${num} ${wrong}`,
-      () => `${at(WHO, i)} found ${num} ${wrong} ${at(PLACE, i)}`,
-      () => `We saw ${num} ${wrong} ${at(PLACE, i * 2)}`,
-      () => `The shelf held ${num} ${wrong}`,
-      () => `${num} ${wrong} were left ${at(PLACE, i * 3)}`,
-      () => `${at(WHO, i)} sorted ${num} ${wrong} into piles`,
-      () => `She packed ${num} ${wrong} for the trip`,
-      () => `They donated ${num} ${wrong} to charity`,
-    ];
-    const g_variants = [
-      () => `${at(WHO, i)} ${step(COUNT, i, 5)} ${num} ${pl}`,
-      () => `${at(WHO, i)} found ${num} ${pl} ${at(PLACE, i)}`,
-      () => `We saw ${num} ${pl} ${at(PLACE, i * 2)}`,
-      () => `The shelf held ${num} ${pl}`,
-      () => `${num} ${pl} were left ${at(PLACE, i * 3)}`,
-      () => `${at(WHO, i)} sorted ${num} ${pl} into piles`,
-      () => `She packed ${num} ${pl} for the trip`,
-      () => `They donated ${num} ${pl} to charity`,
-    ];
-    const v = i % variants.length;
-    return {
-      bad: variants[v](),
-      good: g_variants[v](),
-      explanation: `The plural of "${sg}" is "${pl}".`
-    };
-  }),
+  '1.1': (d) => {
+    if (d === 'hard') return HARD_REGULAR_PLURAL_PARAGRAPHS.map(regularPluralParagraph);
+    return ruleItems(d, (i) => {
+      const [sg, pl] = at(REG, i);
+      const num = at(NUMWORD, i * 3);
+      const wrong = wrongPlural(sg, pl);
+      // Vary syntactic structure
+      const variants = [
+        () => `${at(WHO, i)} ${step(COUNT, i, 5)} ${num} ${wrong}`,
+        () => `${at(WHO, i)} found ${num} ${wrong} ${at(PLACE, i)}`,
+        () => `We saw ${num} ${wrong} ${at(PLACE, i * 2)}`,
+        () => `The shelf held ${num} ${wrong}`,
+        () => `${num} ${wrong} were left ${at(PLACE, i * 3)}`,
+        () => `${at(WHO, i)} sorted ${num} ${wrong} into piles`,
+        () => `She packed ${num} ${wrong} for the trip`,
+        () => `They donated ${num} ${wrong} to charity`,
+      ];
+      const g_variants = [
+        () => `${at(WHO, i)} ${step(COUNT, i, 5)} ${num} ${pl}`,
+        () => `${at(WHO, i)} found ${num} ${pl} ${at(PLACE, i)}`,
+        () => `We saw ${num} ${pl} ${at(PLACE, i * 2)}`,
+        () => `The shelf held ${num} ${pl}`,
+        () => `${num} ${pl} were left ${at(PLACE, i * 3)}`,
+        () => `${at(WHO, i)} sorted ${num} ${pl} into piles`,
+        () => `She packed ${num} ${pl} for the trip`,
+        () => `They donated ${num} ${pl} to charity`,
+      ];
+      const v = i % variants.length;
+      return {
+        bad: variants[v](),
+        good: g_variants[v](),
+        explanation: `The plural of "${sg}" is "${pl}".`
+      };
+    });
+  },
 
   // 1.2 Irregular noun plurals
   '1.2': (d) => ruleItems(d, (i) => {

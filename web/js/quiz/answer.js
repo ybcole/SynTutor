@@ -20,3 +20,16 @@ export function hasSyntaxError(payload) {
 export function isQuizAnswerCorrect(answer, expected, payload) {
   return normalize(answer) === normalize(expected) && !hasSyntaxError(payload);
 }
+
+export function isParagraphQuizAnswerCorrect(answer, expectedSentences, payloads) {
+  const answers = (answer || '').split(/\r\n?|\n/);
+  if (answers.length !== expectedSentences.length
+      || payloads.length !== answers.length
+      || payloads.some((payload) => !payload)) {
+    return false;
+  }
+  return answers.every((line, index) =>
+    line.trim()
+      && normalize(line) === normalize(expectedSentences[index])
+      && !hasSyntaxError(payloads[index]));
+}

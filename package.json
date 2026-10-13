@@ -7,7 +7,8 @@
     "build": "node scripts/build.js",
     "serve": "python3 server/app.py",
     "audit": "python3 scripts/audit_rules.py",
-    "test:quiz": "node scripts/test_quiz.js"
+    "test:quiz": "node scripts/test_quiz.js",
+    "test:quiz:regular-plurals": "node scripts/test_regular_plural_paragraphs.js"
   },
   "license": "MIT"
 }

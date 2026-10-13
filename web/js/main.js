@@ -615,10 +615,9 @@ async function analyzeForQuiz(text) {
   applyStatuses(payload.tree, payload.node_details, payload.summary);
   session = { payload };
   lastAnalyzedText = clean;
-  const ta = document.querySelector('#inputText');
-  ta.value = clean;
   historySpans = [];
-  renderInputHighlights(clean);
+  const input = document.querySelector('#inputText');
+  if (input?.value.trim() === clean) renderInputHighlights(clean);
   document.querySelector('#emptyTreeState')?.classList.add('hidden');
   renderer.setTree(payload.tree);
   transition(STATES.VIEWING, 'quiz sentence analyzed');
