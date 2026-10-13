@@ -3,10 +3,10 @@
 //
 // A quiz item is { bad, good, explanation }: `bad` is the incorrect sentence
 // the learner must repair in the text box and `good` is the expected
-// correction. Every rule has 40 items per difficulty tier; a run samples 5.
+// correction. Banks provide at least 5 and up to 40 items per tier; a run samples 5.
 
 import {
-  questionPool, hasQuiz, QUESTION_COUNT,
+  questionPool, hasQuiz,
 } from './quiz/index.js';
 
 export { questionPool, hasQuiz };
@@ -195,9 +195,9 @@ export const MATRIX_SECTIONS = [
 ];
 
 export const DIFFICULTY = {
-  easy: { label: 'Easy', count: 5, total: QUESTION_COUNT },
-  medium: { label: 'Medium', count: 5, total: QUESTION_COUNT },
-  hard: { label: 'Hard', count: 5, total: QUESTION_COUNT },
+  easy: { label: 'Easy', count: 5 },
+  medium: { label: 'Medium', count: 5 },
+  hard: { label: 'Hard', count: 5 },
 };
 
 export function ruleInfo(ruleId) {

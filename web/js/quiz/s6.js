@@ -1,5 +1,5 @@
-// Section 6 — Verbs (20 rules). One builder per rule; each returns 40 items
-// per difficulty tier ('easy' | 'medium' | 'hard').
+// Section 6 — Verbs (20 rules). One builder per rule; each returns at least
+// five items and up to 40 per difficulty tier.
 import {
   SG_SUBJ, PL_SUBJ, VERBS, OBJECTS, TAILS_SIMPLE, TAILS_COMPLEX,
   ADJ, ADV, pick, mk, pool40, cap,
@@ -619,42 +619,65 @@ function imperatives(d) {
 }
 
 // ---- 6.16 Conditionals ----------------------------------------------------
-const WX = [
-  ['rain', 'rains', 'rained', 'rained'], ['snow', 'snows', 'snowed', 'snowed'],
-  ['stop', 'stops', 'stopped', 'stopped'], ['start', 'starts', 'started', 'started'],
-  ['come', 'comes', 'came', 'come'], ['wait', 'waits', 'waited', 'waited'],
-  ['help', 'helps', 'helped', 'helped'], ['work', 'works', 'worked', 'worked'],
-  ['change', 'changes', 'changed', 'changed'], ['matter', 'matters', 'mattered', 'mattered'],
-  ['clear', 'clears', 'cleared', 'cleared'], ['improve', 'improves', 'improved', 'improved'],
+const FIRST_CONDITIONALS = [
+  ['the rain', 'stop', 'stops', 'before noon', 'we will continue the match outdoors'],
+  ['the sky', 'clear', 'clears', 'by sunrise', 'the hikers will leave before noon'],
+  ['the snow', 'melt', 'melts', 'this weekend', 'the mountain road will reopen'],
+  ['the wind', 'ease', 'eases', 'later today', 'the ferry will leave the harbour'],
+  ['the temperature', 'drop', 'drops', 'tonight', 'the lake will freeze'],
+  ['the weather', 'improve', 'improves', 'by Friday', 'the outdoor festival will continue'],
+  ['the river', 'rise', 'rises', 'overnight', 'the lower path will close'],
+  ['the storm', 'pass', 'passes', 'before sunset', 'the rescue team will return'],
+  ['the fog', 'lift', 'lifts', 'in the morning', 'the planes will land safely'],
+  ['the clouds', 'gather', 'gather', 'this afternoon', 'the farmers will cover the crops'],
+  ['the rain', 'return', 'returns', 'before the game ends', 'we will move to the shelter'],
+  ['the snow', 'fall', 'falls', 'after dark', 'the crews will clear the roads'],
+];
+const PRESENT_CONDITIONALS = [
+  ['the workers', 'finish', 'the repairs by Friday', 'the bridge will reopen'],
+  ['the students', 'complete', 'the survey before the lesson ends', 'the teacher will review the results'],
+  ['the guests', 'arrive', 'before sunset', 'the host will begin dinner'],
+  ['the drivers', 'follow', 'the detour signs through town', 'everyone will reach the venue'],
+  ['the gardeners', 'plant', 'the seeds this week', 'the garden will bloom in spring'],
+  ['the team', 'practice', 'every afternoon', 'the players will improve quickly'],
+  ['the volunteers', 'deliver', 'the supplies before noon', 'the families will have enough food'],
+  ['the builders', 'repair', 'the water main today', 'the neighborhood will receive water again'],
+  ['the library staff', 'catalogue', 'the new books this month', 'readers will find them more easily'],
+  ['the musicians', 'rehearse', 'the final piece after work', 'the performance will sound polished'],
+  ['the cooks', 'prepare', 'the meal before the guests arrive', 'everyone will eat on time'],
+  ['the hikers', 'leave', 'early', 'they will return by noon'],
+];
+const SECOND_CONDITIONALS = [
+  ['the students', 'review', 'reviewed', 'the final chapter', 'they would understand the topic better'],
+  ['the crew', 'leave', 'left', 'before dawn', 'they would reach the village before noon'],
+  ['the team', 'practice', 'practiced', 'every afternoon', 'they would perform with more confidence'],
+  ['the family', 'save', 'saved', 'a little more each month', 'they could replace the old car'],
+  ['the guide', 'follow', 'followed', 'the marked trail', 'the hikers would find the lake'],
+  ['the manager', 'review', 'reviewed', 'the draft carefully', 'the editor would catch the remaining errors'],
+  ['the volunteers', 'finish', 'finished', 'the repairs sooner', 'the shelter would reopen'],
+  ['the neighbors', 'work', 'worked', 'together', 'the project would be completed sooner'],
+  ['the shop owner', 'open', 'opened', 'an hour earlier', 'more customers would arrive'],
+  ['the committee', 'meet', 'met', 'before the deadline', 'it would make a timely decision'],
+  ['the nurse', 'call', 'called', 'the clinic in advance', 'the doctor would prepare a room'],
+  ['the pilots', 'check', 'checked', 'the weather report first', 'they would choose a safer route'],
 ];
 function conditionals(d) {
   if (d === 'easy') {
-    return pool40((i) => {
-      const [b, sg] = pick(WX, i);
-      const when = pick(['tomorrow', 'tonight', 'later today', 'next week', 'this weekend'], i * 3 + 1);
-      return mk(`If it will ${b} ${when}, we will stay inside.`,
-        `If it ${sg} ${when}, we will stay inside.`,
-        `The if-clause of a first conditional takes the present "${sg}", not "will ${b}".`);
-    });
+    return FIRST_CONDITIONALS.map(([subject, base, present, time, result]) => mk(
+      `If ${subject} will ${base} ${time}, ${result}.`,
+      `If ${subject} ${present} ${time}, ${result}.`,
+      `The if-clause of a first conditional takes the present "${present}", not "will ${base}".`));
   }
   if (d === 'medium') {
-    return pool40((i) => {
-      const p = pick(PLUR_SUBJ, i);
-      const [b] = pick(WX, i * 5 + 1);
-      const t = pick(TAILS_SIMPLE, i * 3 + 2);
-      return mk(`If ${p} will ${b} ${t}, everything will be fine.`,
-        `If ${p} ${b} ${t}, everything will be fine.`,
-        `Never use "will" in the if-clause; use the present base "${b}".`);
-    });
+    return PRESENT_CONDITIONALS.map(([subject, base, action, result]) => mk(
+      `If ${subject} will ${base} ${action}, ${result}.`,
+      `If ${subject} ${base} ${action}, ${result}.`,
+      `Never use "will" in the if-clause; use the present base "${base}".`));
   }
-  return pool40((i) => {
-    const s = pick(SING_SUBJ, i);
-    const [b, , past] = pick(WX, i * 5 + 1);
-    const t = pick(TAILS_SIMPLE, i * 7 + 3);
-    return mk(`If ${s} would ${b} ${t}, ${s} would succeed.`,
-      `If ${s} ${past} ${t}, ${s} would succeed.`,
-      `A second conditional uses the past "${past}" in the if-clause, not "would ${b}".`);
-  });
+  return SECOND_CONDITIONALS.map(([subject, base, past, action, result]) => mk(
+    `If ${subject} would ${base} ${action}, ${result}.`,
+    `If ${subject} ${past} ${action}, ${result}.`,
+    `A second conditional uses the past "${past}" in the if-clause, not "would ${base}".`));
 }
 
 // ---- 6.17 Subjunctive and wish -------------------------------------------

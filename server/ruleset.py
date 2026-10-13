@@ -5,8 +5,8 @@ that document is registered here with its check method:
 
     T  tree rule            -- deterministic over the parsed constituency tree
     L  word list/morphology -- deterministic lookup against a curated list
-    C  context/meaning      -- cannot be decided deterministically, so a hit is
-                               reported as a *suggestion* (never as an error)
+    C  context/meaning      -- normally reported as a suggestion; only a
+                               high-confidence contradiction is an error
 
 For each rule the checker returns an *evidence* record that matches the XAI
 table at the bottom of ``docs/matrix.md``:
@@ -456,8 +456,11 @@ COLLOCATION_FIX = {
 # --- rule 11.4 selectional restrictions (suggestion) ----------------------- #
 HUMAN_ONLY_VERBS = {'eat', 'drink', 'sleep', 'dream', 'eat', 'swallow',
                     'smile', 'laugh', 'walk', 'run', 'think', 'feel'}
+HUMAN_ONLY_PARTICIPLES = {'eating', 'drinking', 'sleeping', 'dreaming',
+                          'swallowing', 'smiling', 'laughing', 'walking',
+                          'running', 'thinking', 'feeling', 'sitting'}
 INANIMATE_SUBJECTS = {'book', 'table', 'chair', 'house', 'car', 'stone',
-                      'weather', 'rain', 'idea', 'plan'}
+                      'weather', 'rain', 'idea', 'plan', 'sky', 'phone', 'bus'}
 # --- rule 11.6 register (suggestion) --------------------------------------- #
 INFORMAL_WORDS = {'gonna', 'wanna', 'gotta', 'kinda', 'sorta', 'ain\'t',
                   'yeah', 'stuff', 'kids', 'guys', 'lots'}
@@ -1259,7 +1262,10 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                 if x.get('type') in FINITE_TYPES or x.get('type') in ('VB', 'TO'):
                     break
                 xlow = _lower(x)
-                if x.get('type') == 'VBG' and xlow not in ING_NONVERBS:
+                is_gerund = x.get('type') == 'VBG' or (
+                    x.get('type') in ('NN', 'NNS') and xlow.endswith('ing'))
+                follows_list_separator = j > 0 and tops[j - 1].get('type') in (',', 'CC')
+                if is_gerund and follows_list_separator and xlow not in ING_NONVERBS:
                     match = _base_of(_lower(x))
                     out.append(_finding('9.8', 'error', 'C-PARALLEL', 'parallelism',
                                         x['id'],
@@ -1268,7 +1274,7 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                         f"'{x['surface']}' ends in 'ing'; change "
                                         f"'{x['surface']}' to '{match}' to match "
                                         f"'{tops[i + 1]['surface']}'.",
-                                        _tree_evidence(lf['id'], 'to VB + VBG')))
+                                        _tree_evidence(lf['id'], 'to VB + list separator + gerund')))
                     break
 
     # 6.10 to + base form
@@ -1720,8 +1726,13 @@ def _check_more(root, clauses, leaves):
     # 6.16 conditional with 'will' (If I will go)
     for i, lf in enumerate(leaves):
         if _lower(lf) == 'if':
-            window = [_lower(x) for x in leaves[i + 1:i + 4]]
-            hit = next((w for w in window if w in ('will', 'would')), None)
+            hit = None
+            for candidate in leaves[i + 1:]:
+                if candidate.get('type') == ',' or candidate.get('surface') == ',':
+                    break
+                if _lower(candidate) in ('will', 'would'):
+                    hit = _lower(candidate)
+                    break
             if hit:
                 out.append(_finding('6.16', 'error', 'C-CONDITIONAL-WILL',
                                     'conditional', leaves[i]['id'],
@@ -1988,7 +1999,10 @@ f"The possessive '{lf['surface']}' in this sentence "
                     continue
                 mhead = _leaves(msubj)[-1] if _leaves(msubj) else None
                 if mhead is not None and _lower(mhead) in INANIMATE_SUBJECTS:
-                    out.append(_finding('9.11', 'suggestion', 'C-DANGLING',
+                    high_confidence = _lower(cleaves[0]) in HUMAN_ONLY_PARTICIPLES
+                    status = 'error' if high_confidence else 'suggestion'
+                    confidence = 0.95 if high_confidence else 0.55
+                    out.append(_finding('9.11', status, 'C-DANGLING',
                                         'modifier', cleaves[0]['id'],
                                         f"The opener '{cleaves[0]['surface']} ...' describes "
                                         'the subject of the main clause, but '
@@ -1999,7 +2013,7 @@ f"The possessive '{lf['surface']}' in this sentence "
                                               'evidence': 'the subject cannot do the action'},
                                              {'option': 'move the modifier',
                                               'evidence': 'attach it to the doer'}],
-                                            0.55)))
+                                            confidence)))
                 break
 
     # 10.4 missing comma after an introductory connector
@@ -3058,7 +3072,7 @@ def _check_basic(root, clauses, leaves):
 
 
 # --------------------------------------------------------------------------- #
-# C-layer checks (context/meaning) -- always suggestions                       #
+# C-layer checks (context/meaning); high-confidence contradictions may be errors.
 # --------------------------------------------------------------------------- #
 def _check_context(root, clauses, leaves):
     out = []

@@ -304,17 +304,82 @@ export default {
   // 1.1 Regular noun plurals
   '1.1': (d) => ruleItems(d, (i) => {
     const [sg, pl] = at(REG, i);
-    const bad = `${at(WHO, i)} ${step(COUNT, i, 5)} ${at(NUMWORD, i * 3)} ${wrongPlural(sg, pl)}`;
-    const good = `${at(WHO, i)} ${step(COUNT, i, 5)} ${at(NUMWORD, i * 3)} ${pl}`;
-    return { bad, good, explanation: `The plural of "${sg}" is "${pl}".` };
+    const num = at(NUMWORD, i * 3);
+    const wrong = wrongPlural(sg, pl);
+    // Vary syntactic structure
+    const variants = [
+      () => `${at(WHO, i)} ${step(COUNT, i, 5)} ${num} ${wrong}`,
+      () => `${at(WHO, i)} found ${num} ${wrong} ${at(PLACE, i)}`,
+      () => `We saw ${num} ${wrong} ${at(PLACE, i * 2)}`,
+      () => `The shelf held ${num} ${wrong}`,
+      () => `${num} ${wrong} were left ${at(PLACE, i * 3)}`,
+      () => `${at(WHO, i)} sorted ${num} ${wrong} into piles`,
+      () => `She packed ${num} ${wrong} for the trip`,
+      () => `They donated ${num} ${wrong} to charity`,
+    ];
+    const g_variants = [
+      () => `${at(WHO, i)} ${step(COUNT, i, 5)} ${num} ${pl}`,
+      () => `${at(WHO, i)} found ${num} ${pl} ${at(PLACE, i)}`,
+      () => `We saw ${num} ${pl} ${at(PLACE, i * 2)}`,
+      () => `The shelf held ${num} ${pl}`,
+      () => `${num} ${pl} were left ${at(PLACE, i * 3)}`,
+      () => `${at(WHO, i)} sorted ${num} ${pl} into piles`,
+      () => `She packed ${num} ${pl} for the trip`,
+      () => `They donated ${num} ${pl} to charity`,
+    ];
+    const v = i % variants.length;
+    return {
+      bad: variants[v](),
+      good: g_variants[v](),
+      explanation: `The plural of "${sg}" is "${pl}".`
+    };
   }),
 
   // 1.2 Irregular noun plurals
   '1.2': (d) => ruleItems(d, (i) => {
     const [sg, pl] = at(IRREG, i);
-    const bad = `${at(WHO, i)} ${step(COUNT, i, 3)} ${at(NUMWORD, i * 3)} ${wrongIrregular(sg, pl)}`;
-    const good = `${at(WHO, i)} ${step(COUNT, i, 3)} ${at(NUMWORD, i * 3)} ${pl}`;
-    return { bad, good, explanation: `"${sg}" has the irregular plural "${pl}".` };
+    const num = at(NUMWORD, i * 3);
+    const wrong = wrongIrregular(sg, pl);
+    const variants = [
+      () => `${at(WHO, i)} ${step(COUNT, i, 3)} ${num} ${wrong}`,
+      () => `${at(WHO, i)} saw ${num} ${wrong} ${at(PLACE, i)}`,
+      () => `The barn held ${num} ${wrong}`,
+      () => `${num} ${wrong} were grazing ${at(PLACE, i * 2)}`,
+      () => `${at(WHO, i)} fed ${num} ${wrong} this morning`,
+      () => `We observed ${num} ${wrong} in the field`,
+      () => `${num} ${wrong} approached the gate`,
+      () => `${at(WHO, i)} rescued ${num} ${wrong} from danger`,
+    ];
+    const g_variants = variants.map((fn) => {
+      // Replace wrong with pl in the constructed string - easier to just reconstruct
+      return () => {
+        const vlist = [
+          `${at(WHO, i)} ${step(COUNT, i, 3)} ${num} ${pl}`,
+          `${at(WHO, i)} saw ${num} ${pl} ${at(PLACE, i)}`,
+          `The barn held ${num} ${pl}`,
+          `${num} ${pl} were grazing ${at(PLACE, i * 2)}`,
+          `${at(WHO, i)} fed ${num} ${pl} this morning`,
+          `We observed ${num} ${pl} in the field`,
+          `${num} ${pl} approached the gate`,
+          `${at(WHO, i)} rescued ${num} ${pl} from danger`,
+        ];
+        return vlist[i % vlist.length];
+      };
+    });
+    const v = i % variants.length;
+    // Simpler: just build both directly
+    const builds = [
+      [`${at(WHO, i)} ${step(COUNT, i, 3)} ${num} ${wrong}`, `${at(WHO, i)} ${step(COUNT, i, 3)} ${num} ${pl}`],
+      [`${at(WHO, i)} saw ${num} ${wrong} ${at(PLACE, i)}`, `${at(WHO, i)} saw ${num} ${pl} ${at(PLACE, i)}`],
+      [`The barn held ${num} ${wrong}`, `The barn held ${num} ${pl}`],
+      [`${num} ${wrong} were grazing ${at(PLACE, i * 2)}`, `${num} ${pl} were grazing ${at(PLACE, i * 2)}`],
+      [`${at(WHO, i)} fed ${num} ${wrong} this morning`, `${at(WHO, i)} fed ${num} ${pl} this morning`],
+      [`We observed ${num} ${wrong} in the field`, `We observed ${num} ${pl} in the field`],
+      [`${num} ${wrong} approached the gate`, `${num} ${pl} approached the gate`],
+      [`${at(WHO, i)} rescued ${num} ${wrong} from danger`, `${at(WHO, i)} rescued ${num} ${pl} from danger`],
+    ];
+    const b = builds[v];
+    return { bad: b[0], good: b[1], explanation: `"${sg}" has the irregular plural "${pl}".` };
   }),
 
   // 1.3 Possessive 's / s'
@@ -342,24 +407,51 @@ export default {
     const who = step(WHO, i, 3);
     if (d === 'medium') {
       const [b, , ed] = at(INTR_TRIX, i);
+      const builds = [
+        [`${who} ${b}ed`, `${who} ${ed}`],
+        [`${who} has ${b}ed`, `${who} has ${ed}`],
+        [`Yesterday ${who} ${b}ed`, `Yesterday ${who} ${ed}`],
+        [`${who} ${b}ed very well`, `${who} ${ed} very well`],
+        [`By noon, ${who} had ${b}ed`, `By noon, ${who} had ${ed}`],
+        [`The crowd saw that ${who} ${b}ed`, `The crowd saw that ${who} ${ed}`],
+      ];
+      const bb = builds[i % builds.length];
       return {
-        bad: `${who} ${b}ed`,
-        good: `${who} ${ed}`,
+        bad: bb[0],
+        good: bb[1],
         explanation: `The past tense is "${ed}", not "${b}ed".`,
       };
     }
     if (d === 'hard') {
       const [b, , , ing] = at(INTR_HARD, i);
+      const builds = [
+        [`${who} is ${b}ing`, `${who} is ${ing}`],
+        [`${who} was ${b}ing`, `${who} was ${ing}`],
+        [`Look, ${who} is ${b}ing`, `Look, ${who} is ${ing}`],
+        [`${who} has been ${b}ing`, `${who} has been ${ing}`],
+        [`I noticed ${who} was ${b}ing`, `I noticed ${who} was ${ing}`],
+        [`While working, ${who} was ${b}ing`, `While working, ${who} was ${ing}`],
+      ];
+      const bb = builds[i % builds.length];
       return {
-        bad: `${who} is ${b}ing`,
-        good: `${who} is ${ing}`,
+        bad: bb[0],
+        good: bb[1],
         explanation: `The -ing form of "${b}" is "${ing}".`,
       };
     }
     const [b, s] = at(INTR_REG, i);
+    const builds = [
+      [`${who} ${b}`, `${who} ${s}`],
+      [`Every day ${who} ${b}`, `Every day ${who} ${s}`],
+      [`${who} usually ${b}`, `${who} usually ${s}`],
+      [`In the morning, ${who} ${b}`, `In the morning, ${who} ${s}`],
+      [`${who} never ${b} alone`, `${who} never ${s} alone`],
+      [`It seems ${who} ${b} often`, `It seems ${who} ${s} often`],
+    ];
+    const bb = builds[i % builds.length];
     return {
-      bad: `${who} ${b}`,
-      good: `${who} ${s}`,
+      bad: bb[0],
+      good: bb[1],
       explanation: `A singular subject takes "${s}".`,
     };
   }),
@@ -368,9 +460,20 @@ export default {
   '1.5': (d) => ruleItems(d, (i) => {
     const [b, past] = at(IRRP, i);
     const who = step(WHO, i, 7);
+    const builds = [
+      [`${who} ${b}ed`, `${who} ${past}`],
+      [`Yesterday ${who} ${b}ed`, `Yesterday ${who} ${past}`],
+      [`Last week ${who} ${b}ed`, `Last week ${who} ${past}`],
+      [`${who} ${b}ed early`, `${who} ${past} early`],
+      [`We saw that ${who} ${b}ed`, `We saw that ${who} ${past}`],
+      [`Earlier today, ${who} ${b}ed`, `Earlier today, ${who} ${past}`],
+      [`${who} ${b}ed very quickly`, `${who} ${past} very quickly`],
+      [`That morning, ${who} ${b}ed`, `That morning, ${who} ${past}`],
+    ];
+    const bb = builds[i % builds.length];
     return {
-      bad: `${who} ${b}ed`,
-      good: `${who} ${past}`,
+      bad: bb[0],
+      good: bb[1],
       explanation: `The simple past of "${b}" is "${past}", not "${b}ed".`,
     };
   }),
@@ -380,9 +483,20 @@ export default {
     const [b, , part] = at(IRRP, i);
     const who = i % 4 === 0 ? at(WHO_PL, i) : step(WHO, i, 7);
     const aux = i % 4 === 0 ? 'have' : 'has';
+    const builds = [
+      [`${who} ${aux} ${b}ed`, `${who} ${aux} ${part}`],
+      [`${who} ${aux} never ${b}ed`, `${who} ${aux} never ${part}`],
+      [`${who} ${aux} already ${b}ed`, `${who} ${aux} already ${part}`],
+      [`${who} ${aux} just ${b}ed`, `${who} ${aux} just ${part}`],
+      [`By now, ${who} ${aux} ${b}ed`, `By now, ${who} ${aux} ${part}`],
+      [`It seems ${who} ${aux} ${b}ed`, `It seems ${who} ${aux} ${part}`],
+      [`${who} ${aux} ${b}ed twice`, `${who} ${aux} ${part} twice`],
+      [`Recently, ${who} ${aux} ${b}ed`, `Recently, ${who} ${aux} ${part}`],
+    ];
+    const bb = builds[i % builds.length];
     return {
-      bad: `${who} ${aux} ${b}ed`,
-      good: `${who} ${aux} ${part}`,
+      bad: bb[0],
+      good: bb[1],
       explanation: `The past participle of "${b}" is "${part}", so it is "${aux} ${part}".`,
     };
   }),
@@ -393,18 +507,38 @@ export default {
     const a = at(COMP_SUBJ, i * 3);
     const b = at(COMP_SUBJ, i * 3 + 1);
     if (i % 2 === 0) {
+      const builds = [
+        [`${cap(a)} is more ${adj} than ${b}`, `${cap(a)} is ${comp} than ${b}`],
+        [`${cap(a)} seems more ${adj} than ${b}`, `${cap(a)} seems ${comp} than ${b}`],
+        [`Compared to ${b}, ${a} is more ${adj}`, `Compared to ${b}, ${a} is ${comp}`],
+        [`${cap(a)} looks more ${adj} than ${b}`, `${cap(a)} looks ${comp} than ${b}`],
+        [`This year, ${a} is more ${adj} than before`, `This year, ${a} is ${comp} than before`],
+        [`Most agree ${a} is more ${adj} than ${b}`, `Most agree ${a} is ${comp} than ${b}`],
+        [`${cap(a)} proved more ${adj} than ${b}`, `${cap(a)} proved ${comp} than ${b}`],
+        [`In tests, ${a} is more ${adj} than ${b}`, `In tests, ${a} is ${comp} than ${b}`],
+      ];
+      const bb = builds[i % builds.length];
       return {
-        bad: `${cap(a)} is more ${adj} than ${b}`,
-        good: `${cap(a)} is ${comp} than ${b}`,
+        bad: bb[0],
+        good: bb[1],
         explanation: `The comparative of "${adj}" is "${comp}".`,
       };
     }
     const group = at(['boxes', 'rooms', 'roads', 'plans', 'tests', 'essays',
       'walls', 'charts', 'trees', 'trucks', 'lakes', 'farms', 'parks',
       'floors', 'rooms', 'boxes'], i);
+    const builds = [
+      [`Of all the ${group}, ${a} is the most ${adj} one`, `Of all the ${group}, ${a} is the ${sup} one`],
+      [`Among the ${group}, ${a} is the most ${adj}`, `Among the ${group}, ${a} is the ${sup}`],
+      [`Judged against other ${group}, ${a} is most ${adj}`, `Judged against other ${group}, ${a} is ${sup}`],
+      [`Of these ${group}, ${a} stands out as most ${adj}`, `Of these ${group}, ${a} stands out as ${sup}`],
+      [`After reviewing ${group}, we saw ${a} is most ${adj}`, `After reviewing ${group}, we saw ${a} is ${sup}`],
+      [`In the set of ${group}, ${a} proved most ${adj}`, `In the set of ${group}, ${a} proved ${sup}`],
+    ];
+    const bb = builds[i % builds.length];
     return {
-      bad: `Of all the ${group}, ${a} is the most ${adj} one`,
-      good: `Of all the ${group}, ${a} is the ${sup} one`,
+      bad: bb[0],
+      good: bb[1],
       explanation: `The superlative of "${adj}" is "${sup}".`,
     };
   }),
@@ -414,9 +548,20 @@ export default {
     const [adj, adv] = at(ADV_FORMS, i);
     const action = at(ACTION, i * 3);
     const who = at(WHO, i);
+    const builds = [
+      [`${who} ${action} ${adj}`, `${who} ${action} ${adv}`],
+      [`${who} completed the task ${adj}`, `${who} completed the task ${adv}`],
+      [`${who} handled the situation ${adj}`, `${who} handled the situation ${adv}`],
+      [`${who} spoke ${adj} to the audience`, `${who} spoke ${adv} to the audience`],
+      [`Despite pressure, ${who} worked ${adj}`, `Despite pressure, ${who} worked ${adv}`],
+      [`We noticed ${who} moved ${adj}`, `We noticed ${who} moved ${adv}`],
+      [`${who} reacted ${adj} to the news`, `${who} reacted ${adv} to the news`],
+      [`The team saw ${who} perform ${adj}`, `The team saw ${who} perform ${adv}`],
+    ];
+    const bb = builds[i % builds.length];
     return {
-      bad: `${who} ${action} ${adj}`,
-      good: `${who} ${action} ${adv}`,
+      bad: bb[0],
+      good: bb[1],
       explanation: `The adverb of "${adj}" is "${adv}".`,
     };
   }),
@@ -426,9 +571,20 @@ export default {
     const [subj, refl] = at(REFLEX, i);
     const verb = at(REFLEXIVE_VERBS, i * 3);
     const wrong = at(REFLEXIVE_WRONG, i);
+    const builds = [
+      [`${cap(subj)} ${verb} ${wrong}`, `${cap(subj)} ${verb} ${refl}`],
+      [`${cap(subj)} tried to ${verb} ${wrong}`, `${cap(subj)} tried to ${verb} ${refl}`],
+      [`Before leaving, ${subj} ${verb} ${wrong}`, `Before leaving, ${subj} ${verb} ${refl}`],
+      [`${cap(subj)} ${verb} ${wrong} in the mirror`, `${cap(subj)} ${verb} ${refl} in the mirror`],
+      [`After the fall, ${subj} ${verb} ${wrong}`, `After the fall, ${subj} ${verb} ${refl}`],
+      [`${cap(subj)} quietly ${verb} ${wrong}`, `${cap(subj)} quietly ${verb} ${refl}`],
+      [`In private, ${subj} ${verb} ${wrong}`, `In private, ${subj} ${verb} ${refl}`],
+      [`${cap(subj)} took a moment to ${verb} ${wrong}`, `${cap(subj)} took a moment to ${verb} ${refl}`],
+    ];
+    const bb = builds[i % builds.length];
     return {
-      bad: `${cap(subj)} ${verb} ${wrong}`,
-      good: `${cap(subj)} ${verb} ${refl}`,
+      bad: bb[0],
+      good: bb[1],
       explanation: `"${subj}" takes the reflexive "${refl}".`,
     };
   }),
@@ -439,15 +595,58 @@ export default {
     const nice = (s) => s.replace(/\s+([.!?,])/g, '$1').replace(/[.]+$/, '').trim();
     const good = cap(nice(tmpl.replace('___', correct)));
     const bad = cap(nice(tmpl.replace('___', wrong)));
-    return { bad: bad, good: good, explanation: `The correct word is "${correct}".` };
+    // Add contextual variation around homophone templates
+    const prefixes = [
+      '', 'Yesterday I noticed: ', 'The teacher said, ', 'My friend asked, ',
+      'I realised that ', 'She pointed out that ', 'It occurred to me that ',
+      'During class we learned that ', 'He whispered that ',
+    ];
+    const suffixes = [
+      '', ' earlier today', ' just now', ' last week',
+    ];
+    const p = prefixes[i % prefixes.length];
+    const sfx = suffixes[(i * 3) % suffixes.length];
+    // Only add prefix/suffix if not too awkward - but templates are full sentences mostly
+    if (p && !p.endsWith(' ')) {
+      // handle
+    }
+    const make = (txt) => {
+      let out = txt;
+      if (p.startsWith('Yesterday') || p.startsWith('The teacher') || p.startsWith('My friend') || p.startsWith('During') || p.startsWith('He')) {
+        // prefix might need sentence structure
+        out = p + out.charAt(0).toLowerCase() + out.slice(1) + sfx;
+        if (out.endsWith(' ') || !out.match(/[.!?]$/)) out = out + '.';
+      } else if (p) {
+        out = p + out + sfx;
+        if (!out.match(/[.!?]$/)) out = out + '.';
+      }
+      return out;
+    };
+    return { bad: make(bad), good: make(good), explanation: `The correct word is "${correct}".` };
   }),
 
   // 1.11 Contractions
   '1.11': (d) => ruleItems(d, (i) => {
     const [bad, good, full, contr] = at(CONTRACTIONS, i);
+    const context = [
+      '',
+      'At this time, ',
+      'Right now, ',
+      'After all, ',
+      'To be honest, ',
+      'As it happens, ',
+      'In fact, ',
+      'Clearly, ',
+    ];
+    const ctxt = context[i % context.length];
+    const wrap = (s) => {
+      if (!ctxt) return s;
+      let lower = s.charAt(0).toLowerCase() + s.slice(1);
+      return ctxt + lower;
+    };
     return {
-      bad,
-      good,
+      bad: wrap(bad),
+      good: wrap(good),
       explanation: `"${full}" contracts to "${contr}" (keep the apostrophe).`,
     };
   }),
@@ -455,6 +654,29 @@ export default {
   // 1.12 Spelling
   '1.12': (d) => ruleItems(d, (i) => {
     const [good, wrong] = at(SPELLINGS, i);
+    const extra = [
+      (w) => `I made sure to use the word "${w}" correctly`,
+      (w) => `The answer required the word "${w}"`,
+      (w) => `We practised writing "${w}" in our notes`,
+      (w) => `Her essay contained the word "${w}" twice`,
+      (w) => `He carefully wrote "${w}" in the margin`,
+      (w) => `The test asked for "${w}" in context`,
+      (w) => `She misspelt nothing when using "${w}"`, // placeholder
+      (w) => `Careful writers always get "${w}" right`,
+    ];
+    // easier: alternate between spellFrame and extra forms
+    const useExtra = (i % 2 === 1);
+    if (useExtra) {
+      const ex = extra[i % extra.length];
+      const bad = ex(wrong);
+      const good = ex(good);
+      // fix the "misspelt nothing" case for bad
+      return {
+        bad: bad.replace('misspelt nothing when using', 'used the incorrect form of'),
+        good: good.replace('misspelt nothing when using', 'correctly used'),
+        explanation: `The correct spelling is "${good}".`,
+      };
+    }
     return {
       bad: spellFrame(wrong, i),
       good: spellFrame(good, i),
@@ -497,9 +719,22 @@ export default {
       'two sets': 'two set', 'four bowls': 'four bowl',
     };
     const good = at(groups, i);
+    const builds = [
+      [`${at(WHO, i)} needed ${wrongs[good]}`, `${at(WHO, i)} needed ${good}`],
+      [`${at(WHO, i)} ordered ${wrongs[good]}`, `${at(WHO, i)} ordered ${good}`],
+      [`${at(WHO, i)} bought ${wrongs[good]}`, `${at(WHO, i)} bought ${good}`],
+      [`We measured ${wrongs[good]} for the job`, `We measured ${good} for the job`],
+      [`The list included ${wrongs[good]}`, `The list included ${good}`],
+      [`${at(WHO, i)} estimated ${wrongs[good]}`, `${at(WHO, i)} estimated ${good}`],
+      [`They requested ${wrongs[good]}`, `They requested ${good}`],
+      [`${at(WHO, i)} counted ${wrongs[good]}`, `${at(WHO, i)} counted ${good}`],
+      [`The recipe called for ${wrongs[good]}`, `The recipe called for ${good}`],
+      [`For the project, ${at(WHO, i)} required ${wrongs[good]}`, `For the project, ${at(WHO, i)} required ${good}`],
+    ];
+    const bb = builds[i % builds.length];
     return {
-      bad: `${at(WHO, i)} needed ${wrongs[good]}`,
-      good: `${at(WHO, i)} needed ${good}`,
+      bad: bb[0],
+      good: bb[1],
       explanation: `The correct form is "${good}".`,
     };
   }),

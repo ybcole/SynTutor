@@ -87,7 +87,16 @@ const UNNEC_FR = {
   play: {
     easy: { pre: (s) => `${s} plays `, post: ' every weekend.' },
     medium: { pre: (s) => `${s} plays `, post: ' with the local team after school.' },
-    hard: { pre: (s) => `${s} has played `, post: ' since childhood, even though nobody expected it.' },
+    hard: {
+      pre: (s) => `${s} has played `,
+      post: [
+        ' since childhood, despite several setbacks.',
+        ' in the spring league for three consecutive years.',
+        ' with the neighbourhood team since primary school.',
+        ' at the local club whenever the season allows.',
+        ' in several tournaments over the past decade.',
+      ],
+    },
   },
   have: {
     easy: { pre: (s) => `${s} has `, post: ' at seven.' },
@@ -128,7 +137,8 @@ function unnecessary(d) {
     const [kind, badObj, goodObj] = pick(list, i);
     const subj = pick(subjects, i);
     const fr = UNNEC_FR[kind][d];
-    return mk(fr.pre(subj) + badObj + fr.post, fr.pre(subj) + goodObj + fr.post, UNNEC_WHY[kind]);
+    const post = Array.isArray(fr.post) ? pick(fr.post, i) : fr.post;
+    return mk(fr.pre(subj) + badObj + post, fr.pre(subj) + goodObj + post, UNNEC_WHY[kind]);
   });
 }
 

@@ -1,4 +1,4 @@
-Check method key: T = tree rule (deterministic over the parse), L = word list or morphology (deterministic), C = needs context or meaning (flag as suggestion).
+Check method key: T = tree rule (deterministic over the parse), L = word list or morphology (deterministic), C = needs context or meaning (normally a suggestion; a high-confidence contradiction may be invalid).
 1. Word forms
 ID        Rule        Example error        Check
 1.1        Regular noun plurals        boxs        L
@@ -136,10 +136,10 @@ ID        Rule        Example error        Check
 Type        App looks at        Example error        Reliable?
 T        The tree’s structure        The boy go        Yes, always the same answer
 L        A word list        goed        Yes, if the list is complete
-C        Meaning and context        the dog (first mention)        No, so show it as a “suggestion”
+C        Meaning and context        the dog (first mention)        Usually a suggestion; high-confidence contradictions may be invalid
 
 that table is the backbone of the XAI (explainable AI) layer, because the check method decides what the explanation can honestly show. In XAI, a good explanation shows the actual evidence the decision used, not a story written afterwards. Each type uses different evidence.
 Type        Evidence the decision used        What the explanation shows
 T        Specific nodes and edges in the tree        The highlighted subtree, the rule that fired, and the two nodes in conflict (e.g. the boy [singular] vs go [plural form])
 L        A specific entry in a word list        The list lookup: “go → past tense went; goed is not in the accepted forms”
-C        Context cues and a judgment, not a fixed rule        The condition, the evidence for each option, and a confidence level, all labeled as a suggestion
+C        Context cues and a judgment, not a fixed rule        The condition, evidence, and confidence; label uncertain cases as suggestions

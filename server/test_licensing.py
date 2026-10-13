@@ -44,6 +44,10 @@ CASES = [
      '(S (NP (NP (DT The) (NN man)) (SBAR (WHNP (WP who)) (S (VP (VBP live) (ADVP (RB here)))))) (VP (VBZ is) (ADJP (JJ old))) (. .))', 'bad'),
     ('The man which lives here is old.',
      '(S (NP (NP (DT The) (NN man)) (SBAR (WHNP (WDT which)) (S (VP (VBZ lives) (ADVP (RB here)))))) (VP (VBZ is) (ADJP (JJ old))) (. .))', 'bad'),
+    ('She enjoys dancing, to read and cooking.',
+     '(S (NP (PRP She)) (VP (VBZ enjoys) (NP (NP (NN dancing)) (, ,) (TO to) (VB read) (CC and) (NN cooking))) (. .))', 'bad'),
+    ('Walking home, the rain started.',
+     '(S (S (VP (VBG Walking) (NP (NN home)))) (, ,) (NP (DT the) (NN rain)) (VP (VBD started)) (. .))', 'bad'),
     # ---- grammatical controls: must NOT be called ungrammatical ----
     ('The clever boy reads a book.', '(S (NP (DT The) (JJ clever) (NN boy)) (VP (VBZ reads) (NP (DT a) (NN book))) (. .))', 'good'),
     ('The men are running.', '(S (NP (DT The) (NNS men)) (VP (VBP are) (VP (VBG running))) (. .))', 'good'),
@@ -63,6 +67,10 @@ CASES = [
     ('The plan was stopped.', '(S (NP (DT The) (NN plan)) (VP (VBD was) (VP (VBN stopped))) (. .))', 'good'),
     ('They have planned it.', '(S (NP (PRP They)) (VP (VBP have) (VP (VBN planned) (NP (PRP it)))) (. .))', 'good'),
     ('Maria bought a smartphone.  (OOV word)', '(S (NP (NNP Maria)) (VP (VBD bought) (NP (DT a) (NN smartphone))) (. .))', 'good'),
+    ('Walking home, I saw the rain start.',
+     '(S (S (VP (VBG Walking) (NP (NN home)))) (, ,) (NP (PRP I)) (VP (VBD saw) (S (NP (DT the) (NN rain)) (VP (VB start)))) (. .))', 'good'),
+    ('She enjoys dancing, reading and cooking.',
+     '(S (NP (PRP She)) (VP (VBZ enjoys) (VP (VBG dancing) (, ,) (VBG reading) (CC and) (VBG cooking))) (. .))', 'good'),
 ]
 
 

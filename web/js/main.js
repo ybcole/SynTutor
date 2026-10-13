@@ -612,7 +612,7 @@ async function analyzeForQuiz(text) {
     return null;
   }
   fillDevPanel(payload);
-  applyStatuses(payload.tree, payload.node_details);
+  applyStatuses(payload.tree, payload.node_details, payload.summary);
   session = { payload };
   lastAnalyzedText = clean;
   const ta = document.querySelector('#inputText');
@@ -690,7 +690,7 @@ async function executePipeline(opts = {}) {
 
   log(`Stage 4: benepar parse string \u2014 ${payload.parse.parse_string}`);
 
-  applyStatuses(payload.tree, payload.node_details);
+  applyStatuses(payload.tree, payload.node_details, payload.summary);
   const s = payload.summary;
   log(`Stage 5: rule-matrix validation \u2014 ${s.valid_edges} valid / ${s.violated_edges} violated / ${s.unrated_edges} unrated \u00b7 fired${JSON.stringify(s.constraints_fired)}`);
 
@@ -844,13 +844,17 @@ function syncHighlightScroll() {
   }
 }
 
-function applyStatuses(tree, details) {
+function applyStatuses(tree, details, summary) {
   const walk = (node) => {
     const d = details[node.id];
     node.edgeResult = { status: d ? d.status : 'valid' };
     for (const c of node.children || []) walk(c);
   };
   walk(tree);
+  if (summary?.verdict === 'ungrammatical'
+      && !Object.values(details).some((detail) => detail?.status === 'error')) {
+    tree.edgeResult = { status: 'error' };
+  }
   return tree;
 }
 

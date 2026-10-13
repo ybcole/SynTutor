@@ -10,6 +10,7 @@
 import {
   MATRIX_SECTIONS, DIFFICULTY, questionPool, ruleInfo, hasQuiz,
 } from './quiz-data.js';
+import { isQuizAnswerCorrect } from './quiz/answer.js';
 import { renderNodeDetail } from './ui.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -35,16 +36,6 @@ const state = {
   collapsed: false,
   controller: null,
 };
-
-function normalize(text) {
-  return (text || '')
-    .toLowerCase()
-    .replace(/[\u2018\u2019]/g, "'")
-    .replace(/[\u201C\u201D]/g, '"')
-    .replace(/[.!?]+$/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
 
 // ---------------------------------------------------------------------------
 // Open / close
@@ -179,10 +170,6 @@ function ruleRow(rule) {
 
   const foot = el('div', 'sq-row-foot');
   foot.appendChild(el('span', 'sq-bad', rule.example || ''));
-  (rule.check || '').split('+').forEach((c) => {
-    if (!c) return;
-    foot.appendChild(el('span', `sq-check check-${c.toLowerCase()}`, c));
-  });
   if (!ready) foot.appendChild(el('span', 'sq-soon', 'soon'));
   row.appendChild(foot);
 
@@ -409,9 +396,23 @@ function renderResultsInto(body) {
 // ---------------------------------------------------------------------------
 function startQuiz() {
   if (!state.ruleId || !hasQuiz(state.ruleId)) return;
-  const pool = questionPool(state.ruleId, state.difficulty);
   const count = DIFFICULTY[state.difficulty].count;
-  state.questions = pool.slice(0, Math.min(count, pool.length));
+  let pool;
+  try {
+    pool = questionPool(state.ruleId, state.difficulty);
+  } catch (error) {
+    console.error(`Failed to build the ${state.ruleId} quiz question pool.`, error);
+    state.body?.appendChild(el('p', 'sq-empty',
+      'This quiz could not be started because its question bank failed to load.'));
+    return;
+  }
+  if (pool.length < count) {
+    console.error(`The ${state.ruleId} quiz has ${pool.length} questions; ${count} are required.`);
+    state.body?.appendChild(el('p', 'sq-empty',
+      `This quiz needs ${count} questions to start, but only ${pool.length} are available.`));
+    return;
+  }
+  state.questions = pool.slice(0, count);
   state.index = 0;
   state.entries = [];
   state.answered = false;
@@ -454,11 +455,11 @@ async function submitAnswer() {
   if (!text) return;
 
   state.answered = true;
-  const correct = normalize(text) === normalize(q.good);
   setQuizLoading(true);
   const payload = await state.controller?.analyze(text);
   setQuizLoading(false);
 
+  const correct = isQuizAnswerCorrect(text, q.good, payload);
   state.entries[state.index] = { question: q, answer: text, correct, skipped: false };
   applyFeedback(q, correct, payload);
   renderQuest();
@@ -505,8 +506,13 @@ function renderSuccess(q, payload) {
   head.appendChild(el('span', 'nc-dot ok', ''));
   head.appendChild(el('span', 'nc-name', 'Correct'));
   card.appendChild(head);
+  const verdict = payload?.summary?.verdict;
   card.appendChild(el('p', 'ex-text',
-    'Nice work \u2014 your sentence is well-formed. The tree below shows the corrected structure.'));
+    verdict === 'grammatical'
+      ? 'Nice work \u2014 your sentence is well-formed. The tree below shows the corrected structure.'
+      : verdict === 'unverified'
+        ? 'Your correction matches the expected answer, but the syntax checker could not fully verify the sentence.'
+        : 'Your correction matches the expected answer, but the syntax check is unavailable.'));
 
   const rem = el('div', 'nc-rem');
   if (q && q.good) {
@@ -539,7 +545,7 @@ function renderSkipped() {
   box.appendChild(card);
 }
 
-function renderFallbackWrong(q) {
+function renderFallbackWrong(q, payload) {
   const box = showFeedbackBox();
   if (!box) return;
   box.innerHTML = '';
@@ -548,18 +554,25 @@ function renderFallbackWrong(q) {
   head.appendChild(el('span', 'nc-dot err', ''));
   head.appendChild(el('span', 'nc-name', 'Not quite'));
   card.appendChild(head);
-  card.appendChild(el('p', 'ex-text',
-    q.explanation || 'Your sentence does not match the expected correction.'));
+  const verdict = payload?.summary?.verdict;
+  const message = verdict === 'ungrammatical'
+    ? payload.summary.explanation
+    : verdict === 'grammatical'
+      ? `The syntax checker found no structural violation, but your answer does not match the expected correction: ${q.good}`
+      : verdict === 'unverified'
+        ? `Your answer does not match the expected correction, and the syntax checker could not verify its structure: ${q.good}`
+        : q.explanation || 'Your sentence does not match the expected correction.';
+  card.appendChild(el('p', 'ex-text', message));
   box.appendChild(card);
 }
 
 function applyFeedback(q, correct, payload) {
   if (correct) { renderSuccess(q, payload); return; }
   const err = firstError(payload);
-  if (err && err.detail) {
+  if (err && err.detail && err.node) {
     renderNodeDetail(null, err.detail, err.node);
   } else {
-    renderFallbackWrong(q);
+    renderFallbackWrong(q, payload);
   }
 }
 

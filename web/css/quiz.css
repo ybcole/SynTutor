@@ -217,17 +217,6 @@
 .sq-dot.soon { background: var(--muted); opacity: 0.5; }
 .sq-row-foot { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .sq-bad { font-size: 11.5px; font-style: italic; color: var(--err); }
-.sq-check {
-  font-size: 9.5px;
-  font-weight: 700;
-  padding: 1px 5px;
-  border-radius: 999px;
-  background: var(--header-chip-bg);
-  color: var(--muted);
-}
-.sq-check.check-t { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
-.sq-check.check-l { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
-.sq-check.check-c { background: color-mix(in srgb, var(--ok) 16%, transparent); color: var(--ok); }
 .sq-soon {
   font-size: 9.5px;
   font-weight: 700;

@@ -1,4 +1,4 @@
-// Section 9 — Sentence structure. One builder per rule; 40 items per tier.
+// Section 9 — Sentence structure. One builder per rule; at least 5 and up to 40 items per tier.
 import {
   pick, mk, pool40, cartesian, cap, withPeriod, NOUNS, NAMES,
 } from './core.js';
@@ -106,15 +106,52 @@ function runOn(d) {
 }
 
 // ---- 9.4 Comma splice (I came, I saw.) -----------------------------------
+const COMMA_SPLICE_SCENARIOS = {
+  easy: [
+    ['The bus broke down', 'we missed the meeting'],
+    ['The rain stopped', 'the players returned to the field'],
+    ['I forgot my umbrella', 'I got soaked on the walk home'],
+    ['The shop had already closed', 'we went to the market instead'],
+    ['The lights went out', 'everyone reached for a flashlight'],
+    ['The baby woke up', 'her parents went to the nursery'],
+    ['We found the missing keys', 'we opened the front door'],
+    ['The train was delayed', 'the passengers waited on the platform'],
+  ],
+  medium: [
+    ['The forecast promised clear skies', 'we packed our bags for the coast'],
+    ['The manager finished the report', 'she sent it to the board'],
+    ['The team practiced every afternoon', 'they improved before the final'],
+    ['The road reopened before noon', 'the buses returned to their usual route'],
+    ['The guests arrived early', 'we served dinner ahead of schedule'],
+    ['I left my notes at home', 'I had to borrow a copy from Sam'],
+    ['The museum closed for repairs', 'visitors used the temporary gallery'],
+    ['The neighbors heard the alarm', 'they called the fire department'],
+    ['We missed the first train', 'we arrived after the opening remarks'],
+    ['The director approved the budget', 'the project started the following week'],
+    ['The river rose overnight', 'officials closed the riverside path'],
+    ['The wind grew stronger', 'the sailors returned to the harbor'],
+  ],
+  hard: [
+    ['The committee reviewed every application', 'it announced its decision the following morning'],
+    ['The engineers tested the prototype', 'they recorded several design flaws'],
+    ['The storm had reached the coast', 'the ferries cancelled their evening crossings'],
+    ['The gallery had closed its doors', 'the curator invited visitors into the new wing'],
+    ['Our reservations disappeared from the system', 'the hotel found a room at another property'],
+    ['The researchers repeated the experiment', 'their measurements matched the original results'],
+    ['The orchestra rehearsed past midnight', 'its conductor changed the final movement'],
+    ['The hikers followed the marked trail', 'they reached the lake before sunset'],
+    ['The council rejected the first proposal', 'the architects submitted a revised plan'],
+    ['A power failure stopped the printing press', 'the staff delivered the notices by hand'],
+    ['The software update fixed the login issue', 'customers could access their accounts again'],
+    ['The pilot received a weather warning', 'the aircraft changed its route'],
+  ],
+};
+
 function commaSplice(d) {
-  const pool = d === 'easy' ? IND.slice(0, 16) : d === 'medium' ? IND.slice(6, 24) : IND;
-  return cartesian([TAIL_ON[d], JOIN, pool, pool], (tail, j, b, a) => {
-    if (a === b) return null;
-    return mk(
-      withPeriod(`${cap(a)}, ${lc(b)}${tail}`),
-      `${cap(a)}. ${cap(b)}${tail}.`,
-      'A comma alone cannot join two independent clauses; use a full stop or a conjunction.');
-  });
+  return COMMA_SPLICE_SCENARIOS[d].map(([first, second]) => mk(
+    `${first}, ${second}.`,
+    `${first}. ${cap(second)}.`,
+    'A comma alone cannot join two independent clauses; use a full stop or a conjunction.'));
 }
 
 // ---- 9.5 Double subject (My brother he...) -------------------------------
@@ -191,13 +228,17 @@ const GER = [['swim', 'swimming'], ['read', 'reading'], ['sing', 'singing'],
 
 function parallel(d) {
   const s3 = d === 'easy' ? S3.slice(0, 5) : S3;
-  return cartesian([GER, GER, GER, s3], ([, g1], [b2, g2], [, g3], s) => {
+  return pool40((i) => {
+    const [, g1] = pick(GER, Math.floor(i / 4));
+    const [b2, g2] = pick(GER, i * 11 + 1);
+    const [, g3] = pick(GER, i * 13 + 2);
+    const s = pick(s3, i * 3 + Math.floor(i / 20));
     if (g1 === g2 || g2 === g3 || g1 === g3) return null;
     return mk(
       withPeriod(`${s} enjoys ${g1}, to ${b2} and ${g3}`),
       withPeriod(`${s} enjoys ${g1}, ${g2} and ${g3}`),
       'List items must be parallel; after "enjoys" use gerunds throughout, not a to-infinitive.');
-  }, 40);
+  });
 }
 
 // ---- 9.9 Conjunction pairing (Although..., but...) -----------------------
@@ -251,27 +292,39 @@ function relativeClause(d) {
 }
 
 // ---- 9.11 Dangling / misplaced modifier (Walking home, ...) --------------
-const DM_MOD = ['Walking home', 'Running to catch the bus', 'Reading the letter',
-  'Opening the window', 'Climbing the steep hill', 'Waiting for the train',
-  'Looking out of the window', 'Sitting in the garden', 'Driving to work', 'Finishing the report',
-  'Climbing the ladder', 'Looking at the map', 'Cleaning the kitchen', 'Listening to the radio',
-  'Standing at the door', 'Chopping the vegetables'];
+const DM_MOD = ['Walking home', 'Running to catch the bus',
+  'Dreaming about the holiday', 'Sleeping through the alarm',
+  'Thinking about the answer', 'Feeling cold after the swim',
+  'Smiling at the photograph'];
 const DM_CLAUSE = {
-  easy: ['the rain started', 'the trees looked beautiful', 'the phone rang', 'the sky turned dark'],
-  medium: ['the bus finally arrived', 'the wind grew stronger', 'the lights went out',
-    'the door creaked open', 'dinner was ready'],
-  hard: ['the fire alarms sounded across the whole building',
-    'the music from the hall could be heard for miles',
-    'the train was already pulling out of the station',
-    'the guests began to arrive one after another'],
+  easy: ['the rain started', 'the weather changed', 'the phone rang',
+    'the sky turned dark', 'the bus stopped at the crossing',
+    'the house looked empty', 'the car broke down', 'the stone rolled down the hill'],
+  medium: ['the table was covered in dust', 'the weather grew colder',
+    'the house needed repairs', 'the car was parked outside',
+    'the book fell from the shelf', 'the chair broke beneath me',
+    'the plan changed at the last minute', 'the phone rang again'],
+  hard: ['the weather had changed before dawn',
+    'the bus was already leaving the station',
+    'the phone had been ringing for several minutes',
+    'the house was still standing after the storm',
+    'the car had stopped beside the road',
+    'the book was lying open on the table',
+    'the stone had fallen from the wall',
+    'the plan had already been approved'],
 };
 
 function danglingModifier(d) {
   const mods = DM_MOD;
-  return cartesian([mods, DM_CLAUSE[d]], (m, cl) => mk(
+  const clauses = DM_CLAUSE[d];
+  return pool40((i) => {
+    const m = pick(mods, i * 7 + Math.floor(i / 5));
+    const cl = pick(clauses, Math.floor(i / 5));
+    return mk(
     `${m}, ${cl}.`,
     `As I was ${lc(m)}, ${cl}.`,
-    'The participial phrase describes the subject of the main clause; reword with "As I was ...".'));
+    'The participial phrase describes the subject of the main clause; reword with "As I was ...".');
+  });
 }
 
 // ---- 9.12 Redundancy (return back) ---------------------------------------
