@@ -12,8 +12,12 @@ const correctedPositions = new Set();
 for (const [index, item] of hardPool.entries()) {
   assert.equal(item.sentences.length, 4,
     `1.1 Hard paragraph ${index + 1} must contain four sentences`);
-  assert.equal(item.bad, item.sentences.map((sentence) => sentence.bad).join('\n'));
-  assert.equal(item.good, item.sentences.map((sentence) => sentence.good).join('\n'));
+  assert.equal(item.bad, item.sentences.map((sentence) => sentence.bad).join(' '),
+    '1.1 Hard paragraphs must render as a single flowing line (no newlines)');
+  assert.equal(item.good, item.sentences.map((sentence) => sentence.good).join(' '),
+    '1.1 Hard corrected paragraphs must render as a single flowing line');
+  assert.ok(!/[\r\n]/.test(item.bad) && !/[\r\n]/.test(item.good),
+    `1.1 Hard paragraph ${index + 1} must not contain newline characters`);
   const corrected = item.sentences
     .map((sentence, sentenceIndex) => sentence.bad !== sentence.good ? sentenceIndex + 1 : null)
     .filter(Boolean);
@@ -47,28 +51,29 @@ assert.equal(BUILDERS['1.1']('medium').some((item) => item.sentences), false,
 
 const sampleParagraph = sample[0];
 const validLinePayload = { summary: { verdict: 'grammatical', valid: true } };
+const goodSentences = sampleParagraph.sentences.map((sentence) => sentence.good);
 const paragraphPayloads = sampleParagraph.sentences.map(() => validLinePayload);
 assert.equal(isParagraphQuizAnswerCorrect(
-  sampleParagraph.good.replaceAll('\n', '\r\n'),
-  sampleParagraph.sentences.map((sentence) => sentence.good),
+  goodSentences,
+  goodSentences,
   paragraphPayloads,
-), true, 'Paragraph grading should accept correct CRLF-delimited answers');
+), true, 'Paragraph grading should accept fully corrected sentence segmentation');
 assert.equal(isParagraphQuizAnswerCorrect(
-  sampleParagraph.good,
-  sampleParagraph.sentences.map((sentence) => sentence.good),
-  paragraphPayloads,
-), true, 'Paragraph grading should accept correct LF-delimited answers');
-assert.equal(isParagraphQuizAnswerCorrect(
-  sampleParagraph.good,
-  sampleParagraph.sentences.map((sentence) => sentence.good),
+  goodSentences,
+  goodSentences,
   paragraphPayloads.map((_, index) => index === 1
     ? { summary: { verdict: 'ungrammatical', valid: false } }
     : validLinePayload),
 ), false, 'An incorrect sentence verdict must fail the whole paragraph');
 assert.equal(isParagraphQuizAnswerCorrect(
-  sampleParagraph.good,
-  sampleParagraph.sentences.map((sentence) => sentence.good),
+  goodSentences,
+  goodSentences,
   paragraphPayloads.map((_, index) => index === 0 ? null : validLinePayload),
 ), false, 'An unavailable sentence parse must not count as a correct paragraph');
+assert.equal(isParagraphQuizAnswerCorrect(
+  goodSentences.slice(0, 3),
+  goodSentences,
+  paragraphPayloads,
+), false, 'A paragraph missing a sentence must fail grading');
 
-console.log('1.1 Hard paragraph-pool checks passed (40 paragraphs; 5-question sample).');
+console.log('1.1 Hard paragraph-pool checks passed (40 single-line paragraphs; 5-question sample).');

@@ -11,8 +11,9 @@ import {
   MATRIX_SECTIONS, DIFFICULTY, questionPool, ruleInfo, hasQuiz,
 } from './quiz-data.js';
 import {
-  isParagraphQuizAnswerCorrect, isQuizAnswerCorrect,
+  isParagraphQuizAnswerCorrect, isQuizAnswerCorrect, hasSyntaxError,
 } from './quiz/answer.js';
+import { XP_PER_CORRECT, PERFECT_QUIZ_BONUS, levelFromXp } from './quiz/level.js';
 import { renderNodeDetail } from './ui.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -25,7 +26,7 @@ function el(tag, cls, text) {
 }
 
 const state = {
-  view: 'list', // list | setup | quiz | results
+  view: 'list', // list | setup | quiz | results | leaderboard
   ruleId: null,
   difficulty: 'easy',
   questions: [],
@@ -37,6 +38,12 @@ const state = {
   answered: false,
   collapsed: false,
   controller: null,
+  awarded: false,
+  xpEarned: 0,
+  xpPerfect: false,
+  xpResult: null,
+  progress: null,
+  progressAvailable: false,
 };
 
 // ---------------------------------------------------------------------------
@@ -125,12 +132,114 @@ function goList() {
   state.view = 'list';
   shell({ title: 'Matrix Quiz', search: true });
   renderList();
+  refreshProgress();
+}
+
+function refreshProgress() {
+  const progress = state.controller?.progress;
+  state.progressAvailable = Boolean(progress?.isAvailable?.());
+  if (!state.progressAvailable) {
+    state.progress = null;
+    if (state.view === 'list') renderList();
+    return;
+  }
+  progress.load?.().then((data) => {
+    state.progress = data
+      ? { xp: data.xp, level: data.level, ...levelFromXp(data.xp) }
+      : null;
+    if (state.view === 'list') renderList();
+  }).catch(() => {
+    state.progress = null;
+    if (state.view === 'list') renderList();
+  });
+}
+
+function progressStrip() {
+  const wrap = el('div', 'sq-progress-card');
+
+  const head = el('div', 'sq-progress-head');
+  head.appendChild(el('span', 'sq-level',
+    state.progress ? `Level ${state.progress.level}` : 'Progress'));
+  const board = el('button', 'sq-link', 'Leaderboard');
+  board.type = 'button';
+  board.addEventListener('click', goLeaderboard);
+  head.appendChild(board);
+  wrap.appendChild(head);
+
+  if (!state.progressAvailable) {
+    wrap.appendChild(el('p', 'sq-progress-note',
+      'Sign in to earn XP and join the leaderboard.'));
+    return wrap;
+  }
+  if (!state.progress) {
+    wrap.appendChild(el('p', 'sq-progress-note', 'Loading progress\u2026'));
+    return wrap;
+  }
+
+  const { into, span, level } = state.progress;
+  const bar = el('div', 'sq-xp-bar');
+  const fill = el('div', 'sq-xp-fill');
+  fill.style.width = `${span ? Math.min(100, Math.round((into / span) * 100)) : 0}%`;
+  bar.appendChild(fill);
+  wrap.appendChild(bar);
+  wrap.appendChild(el('p', 'sq-progress-note',
+    `${state.progress.xp} XP \u00b7 ${into} / ${span} to Level ${level + 1}`));
+  return wrap;
+}
+
+function goLeaderboard() {
+  state.view = 'leaderboard';
+  shell({ title: 'Leaderboard', back: goList });
+  renderLeaderboard();
+}
+
+async function renderLeaderboard() {
+  const body = state.body;
+  if (!body) return;
+  body.innerHTML = '';
+  const progress = state.controller?.progress;
+  if (!progress) {
+    body.appendChild(el('p', 'sq-empty', 'The leaderboard is unavailable.'));
+    return;
+  }
+  body.appendChild(el('p', 'sq-empty', 'Loading leaderboard\u2026'));
+  let rows;
+  try {
+    rows = await progress.leaderboard?.();
+  } catch {
+    rows = null;
+  }
+  body.innerHTML = '';
+  if (!rows || !rows.length) {
+    body.appendChild(el('p', 'sq-empty',
+      'No rankings yet \u2014 finish a quiz signed in to earn your first XP!'));
+    return;
+  }
+  const myId = progress.myId ? progress.myId() : null;
+  const list = el('ol', 'sq-board');
+  rows.forEach((player, index) => {
+    const item = el('li', `sq-board-row${player.user_id === myId ? ' me' : ''}`);
+    const rank = el('span', 'sq-board-rank', `${index + 1}`);
+    const meta = el('span', 'sq-board-meta');
+    meta.appendChild(el('span', 'sq-board-name', player.display_name || 'Learner'));
+    meta.appendChild(el('span', 'sq-board-xp', `${player.xp} XP`));
+    item.appendChild(rank);
+    item.appendChild(meta);
+    const levelBadge = el('span', 'sq-board-level', `Lv ${player.level}`);
+    item.appendChild(levelBadge);
+    if (player.user_id === myId) item.setAttribute('aria-label', 'Your ranking');
+    list.appendChild(item);
+  });
+  body.appendChild(list);
+  body.appendChild(el('p', 'sq-board-note',
+    'Rankings are permanent and ordered by level (XP breaks ties).'));
 }
 
 function renderList() {
   const body = state.body;
   if (!body) return;
   body.innerHTML = '';
+  body.appendChild(progressStrip());
   const query = state.search.trim().toLowerCase();
 
   let total = 0;
@@ -306,22 +415,23 @@ function renderQuestionInto(body) {
   meta.appendChild(el('span', 'qq-num', `Question ${state.index + 1} of ${total}`));
   const score = state.entries.filter((e) => e && e.correct).length;
   meta.appendChild(el('span', 'qq-score', `Score ${score}`));
+  if (state.progressAvailable) {
+    meta.appendChild(el('span', 'qq-xp', `+${score * XP_PER_CORRECT} XP`));
+  }
   body.appendChild(meta);
 
   const target = el('div', 'qq-target');
   target.appendChild(el('span', 'qq-label', paragraphQuestion
     ? 'Correct plural errors in this paragraph. Some sentences are already correct.'
     : 'Correct this sentence'));
-  if (paragraphQuestion) appendNumberedSentences(target, q.sentences, 'bad');
-  else target.appendChild(el('p', 'qq-sentence', q.bad));
+  target.appendChild(el('p', 'qq-sentence', q.bad));
   body.appendChild(target);
 
   const answer = el('div', 'qq-answer');
   answer.appendChild(el('span', 'qq-label', paragraphQuestion
     ? 'Corrected paragraph'
     : 'Correct answer'));
-  if (paragraphQuestion) appendNumberedSentences(answer, q.sentences, 'good');
-  else answer.appendChild(el('p', 'qq-good', q.good));
+  answer.appendChild(el('p', 'qq-good', q.good));
   answer.hidden = !state.answered;
   body.appendChild(answer);
 
@@ -356,17 +466,6 @@ function isRegularPluralParagraph(question) {
     && Array.isArray(question.sentences);
 }
 
-function appendNumberedSentences(parent, sentences, field) {
-  const list = el('ol', 'qq-paragraph');
-  sentences.forEach((sentence, index) => {
-    const item = el('li', 'qq-paragraph-line');
-    item.value = index + 1;
-    item.appendChild(el('span', 'qq-sentence', sentence[field]));
-    list.appendChild(item);
-  });
-  parent.appendChild(list);
-}
-
 function renderResultsInto(body) {
   const info = ruleInfo(state.ruleId);
   const correct = state.entries.filter((e) => e && e.correct).length;
@@ -385,6 +484,24 @@ function renderResultsInto(body) {
   fill.style.width = `${pct}%`;
   bar.appendChild(fill);
   body.appendChild(bar);
+
+  const xp = el('div',
+    `qq-xp-earned${state.xpPerfect ? ' perfect' : ''}${state.xpResult ? ' awarded' : ''}`);
+  if (state.progressAvailable) {
+    xp.appendChild(el('span', 'qq-xp-amount', `+${state.xpEarned} XP earned`));
+    if (state.xpPerfect) xp.appendChild(el('span', 'qq-xp-bonus', `Flawless run +${PERFECT_QUIZ_BONUS} bonus`));
+    if (state.xpResult) {
+      xp.appendChild(el('span', 'qq-xp-total',
+        `${state.xpResult.xp} XP total \u00b7 Level ${state.xpResult.level}`));
+      if (state.xpResult.leveledUp) {
+        xp.appendChild(el('span', 'qq-xp-up', `\u2b06 Level ${state.xpResult.level}!`));
+      }
+    }
+  } else {
+    xp.appendChild(el('span', 'qq-xp-amount',
+      `+${state.xpEarned} XP earned \u00b7 sign in to keep it`));
+  }
+  body.appendChild(xp);
 
   const review = el('div', 'sq-review');
   state.entries.forEach((entry, i) => {
@@ -445,6 +562,11 @@ function startQuiz() {
   state.collapsed = false;
   state.active = true;
   state.view = 'quiz';
+  state.awarded = false;
+  state.xpEarned = 0;
+  state.xpPerfect = false;
+  state.xpResult = null;
+  state.progressAvailable = Boolean(state.controller?.progress?.isAvailable?.());
   setQuizMode(true);
   hideSidebar();
   loadQuestion();
@@ -457,24 +579,28 @@ async function loadQuestion() {
 
   const ta = $('#inputText');
   const editor = document.querySelector('.input-editor');
-  editor?.classList.add('editing');
   if (ta) {
-    ta.readOnly = false;
-    ta.classList.add('editing');
     ta.value = q.bad;
+    ta.readOnly = true;
+    ta.classList.remove('editing');
   }
+  editor?.classList.remove('editing');
   const hint = $('#inputHint');
-  if (hint) {
-    hint.textContent = isRegularPluralParagraph(q)
-      ? 'Correct the plural errors in the paragraph; leave correct sentences unchanged, then press Submit.'
-      : 'Repair the sentence, then press Submit.';
-  }
+  if (hint) hint.textContent = quizInputHint();
 
   renderQuest();
   renderNodeDetail(null, null, null);
   setQuizLoading(true);
-  await state.controller?.analyze(q.bad);
+  await state.controller?.analyze(q.bad, 0);
   setQuizLoading(false);
+}
+
+export function quizInputHint() {
+  const q = state.questions[state.index];
+  const paragraph = q && isRegularPluralParagraph(q);
+  return paragraph
+    ? 'Click any sentence to view its tree; double-click to edit the paragraph, then press Submit.'
+    : 'Click to view the tree; double-click to edit the sentence, then press Submit.';
 }
 
 async function submitAnswer() {
@@ -490,15 +616,15 @@ async function submitAnswer() {
   let payload;
   let correct;
   if (paragraphQuestion) {
-    const lines = text.split(/\r\n?|\n/);
-    const payloads = [];
-    for (const line of lines) {
-      payloads.push(line.trim() ? await state.controller?.analyze(line) : null);
+    const first = await state.controller?.analyze(text, 0);
+    const sentences = (first?.parse?.sentences || []).map((sentence) => sentence.text);
+    const payloads = [first];
+    for (let index = 1; index < sentences.length; index += 1) {
+      payloads.push(await state.controller?.analyze(text, index));
     }
-    payload = payloads.find((item) => item?.summary?.verdict === 'ungrammatical')
-      || payloads.at(-1);
+    payload = payloads.find((item) => item && hasSyntaxError(item)) || first;
     correct = isParagraphQuizAnswerCorrect(
-      text,
+      sentences,
       q.sentences.map((sentence) => sentence.good),
       payloads,
     );
@@ -630,6 +756,46 @@ function applyFeedback(q, correct, payload) {
 function showResults() {
   state.view = 'results';
   state.answered = false;
+  if (!state.awarded) {
+    state.awarded = true;
+    awardQuizXp();
+  }
+  renderQuest();
+}
+
+function quizXpEarned() {
+  const entries = state.entries.filter(Boolean);
+  const total = state.questions.length;
+  const correct = entries.filter((entry) => entry.correct).length;
+  const perfect = entries.length === total && entries.every((entry) => entry && entry.correct);
+  return {
+    correct,
+    total,
+    perfect,
+    earned: correct * XP_PER_CORRECT + (perfect ? PERFECT_QUIZ_BONUS : 0),
+  };
+}
+
+async function awardQuizXp() {
+  const outcome = quizXpEarned();
+  state.xpEarned = outcome.earned;
+  state.xpPerfect = outcome.perfect;
+  const progress = state.controller?.progress;
+  if (!progress?.isAvailable?.()) {
+    state.xpResult = null;
+    return;
+  }
+  const before = state.progress?.level ?? null;
+  let result = null;
+  try {
+    result = await progress.award?.(outcome.earned);
+  } catch {
+    result = null;
+  }
+  if (result) {
+    state.xpResult = { ...result, leveledUp: before !== null && result.level > before };
+    state.progress = { xp: result.xp, level: result.level, ...levelFromXp(result.xp) };
+  }
   renderQuest();
 }
 

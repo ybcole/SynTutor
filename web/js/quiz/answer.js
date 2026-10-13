@@ -21,15 +21,18 @@ export function isQuizAnswerCorrect(answer, expected, payload) {
   return normalize(answer) === normalize(expected) && !hasSyntaxError(payload);
 }
 
-export function isParagraphQuizAnswerCorrect(answer, expectedSentences, payloads) {
-  const answers = (answer || '').split(/\r\n?|\n/);
-  if (answers.length !== expectedSentences.length
-      || payloads.length !== answers.length
+// `userSentences` are the learner's corrected sentences as segmented by the
+// parser (payload.parse.sentences[i].text); the paragraph itself is a single
+// flowing line, so sentence boundaries come from the server, not from newlines.
+export function isParagraphQuizAnswerCorrect(userSentences, expectedSentences, payloads) {
+  if (!Array.isArray(userSentences) || !Array.isArray(expectedSentences)) return false;
+  if (userSentences.length !== expectedSentences.length
+      || payloads.length !== userSentences.length
       || payloads.some((payload) => !payload)) {
     return false;
   }
-  return answers.every((line, index) =>
-    line.trim()
-      && normalize(line) === normalize(expectedSentences[index])
+  return userSentences.every((sentence, index) =>
+    String(sentence).trim()
+      && normalize(sentence) === normalize(expectedSentences[index])
       && !hasSyntaxError(payloads[index]));
 }

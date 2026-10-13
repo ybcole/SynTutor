@@ -552,8 +552,8 @@ const HARD_REGULAR_PLURAL_PARAGRAPHS = [
 function regularPluralParagraph(rows) {
   const sentences = rows.map(([bad, good]) => ({ bad, good }));
   return {
-    bad: sentences.map((sentence) => sentence.bad).join('\n'),
-    good: sentences.map((sentence) => sentence.good).join('\n'),
+    bad: sentences.map((sentence) => sentence.bad).join(' '),
+    good: sentences.map((sentence) => sentence.good).join(' '),
     sentences,
     explanation: 'Correct the regular plural spelling in the sentences that need it; some sentences are already correct.',
   };
@@ -931,12 +931,12 @@ export default {
     if (useExtra) {
       const ex = extra[i % extra.length];
       const bad = ex(wrong);
-      const good = ex(good);
+      const right = ex(good);
       // fix the "misspelt nothing" case for bad
       return {
         bad: bad.replace('misspelt nothing when using', 'used the incorrect form of'),
-        good: good.replace('misspelt nothing when using', 'correctly used'),
-        explanation: `The correct spelling is "${good}".`,
+        good: right.replace('misspelt nothing when using', 'correctly used'),
+        explanation: `The correct spelling is "${right}".`,
       };
     }
     return {

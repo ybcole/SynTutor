@@ -7,7 +7,8 @@ import {
   clearOverlay, showCanvasMessage, renderSentenceVerdict, renderNodeDetail,
   renderDiagnostic, fillDevPanel, applySentenceSelection, plainName,
 } from './ui.js';
-import { openQuizView, closeQuizView, initQuiz } from './quiz.js';
+import { openQuizView, closeQuizView, initQuiz, quizInputHint } from './quiz.js';
+import { levelFromXp } from './quiz/level.js';
 
 let clerk = null;
 let supabase = null;
@@ -17,8 +18,11 @@ try {
   clerk = await loadClerk();
   if (clerk?.session) {
     isGuest = false;
-    supabase = await createSupabaseClient();
   }
+  // Create the Supabase client for every mode: authenticated reads/writes use
+  // the Clerk session token, while guests get an anonymous client that can
+  // still read the public leaderboard.
+  supabase = await createSupabaseClient();
   clerk?.addListener(() => {
     isGuest = !clerk.session;
     updateAuthState();
@@ -103,7 +107,7 @@ export function boot() {
   wireEvents();
   initThemeAndMenu();
   initSidebar();
-  initQuiz({ analyze: analyzeForQuiz, setQuizMode });
+  initQuiz({ analyze: analyzeForQuiz, setQuizMode, progress });
   transition(STATES.IDLE, 'system ready');
   log(`SynTutor engine ready \u2014 full-stack pipeline: spaCy + benepar + rule matrix (${isGuest ? 'guest mode' : 'authenticated'})`);
 }
@@ -421,7 +425,13 @@ function wireEvents() {
     renderInputHighlights(ta.value);
   });
   ta.addEventListener('blur', () => {
-    if (quizMode) return;
+    if (quizMode) {
+      returnToLocked();
+      const hint = document.querySelector('#inputHint');
+      if (hint) hint.textContent = quizInputHint();
+      analyzeForQuiz(ta.value);
+      return;
+    }
     const changed = ta.value !== lastAnalyzedText;
     returnToLocked();
     if (changed) runPipeline();
@@ -555,9 +565,13 @@ function activateSentenceAtCaret() {
   const sents = session.payload.parse.sentences || [];
   const caret = ta.selectionStart;
   const hit = sents.find((s) => caret >= s.start && caret < s.end);
-  if (hit && hit.ordinal - 1 !== (session.payload.meta.target_sentence || 1) - 1) {
-    runPipeline({ index: hit.ordinal - 1, isSentenceNav: true });
+  if (!hit) return;
+  const alreadyTarget = hit.ordinal - 1 === (session.payload.meta.target_sentence || 1) - 1;
+  if (quizMode) {
+    if (!alreadyTarget) analyzeForQuiz(ta.value, hit.ordinal - 1);
+    return;
   }
+  if (!alreadyTarget) runPipeline({ index: hit.ordinal - 1, isSentenceNav: true });
 }
 
 function failPipeline(title, lines) {
@@ -588,9 +602,81 @@ function setQuizMode(active) {
   if (renderer) renderer.setInteractive(!active);
 }
 
+// ---------------------------------------------------------------------------
+// Gamification: XP, levels, and the permanent leaderboard.
+// XP is only banked for signed-in users (guests see the UI but nothing saves).
+// ---------------------------------------------------------------------------
+function progressAvailable() {
+  return !isGuest && !!clerk?.user?.id && !!supabase;
+}
+
+function playerDisplayName() {
+  const user = clerk?.user;
+  return user?.firstName
+    || user?.username
+    || user?.primaryEmailAddress?.emailAddress?.split('@')[0]
+    || 'Learner';
+}
+
+async function loadPlayerProgress() {
+  if (!progressAvailable()) return null;
+  const { data, error } = await supabase
+    .from('player_stats')
+    .select('xp, level')
+    .eq('user_id', clerk.user.id)
+    .maybeSingle();
+  if (error) {
+    console.warn('Failed to load player progress:', error.message);
+    return null;
+  }
+  return data || { xp: 0, level: 0 };
+}
+
+async function awardPlayerXp(amount) {
+  if (!progressAvailable() || !Number.isFinite(amount) || amount <= 0) return null;
+  const current = await loadPlayerProgress();
+  const xp = (current?.xp || 0) + amount;
+  const { level } = levelFromXp(xp);
+  const { error } = await supabase.from('player_stats').upsert({
+    user_id: clerk.user.id,
+    display_name: playerDisplayName(),
+    xp,
+    level,
+    updated_at: new Date().toISOString(),
+  }, { onConflict: 'user_id' });
+  if (error) {
+    console.warn('Failed to save XP:', error.message);
+    return null;
+  }
+  return { xp, ...levelFromXp(xp), earned: amount };
+}
+
+async function loadLeaderboard(limit = 25) {
+  if (!supabase) return null;
+  const { data, error } = await supabase
+    .from('player_stats')
+    .select('user_id, display_name, xp, level')
+    .order('level', { ascending: false })
+    .order('xp', { ascending: false })
+    .limit(limit);
+  if (error) {
+    console.warn('Failed to load the leaderboard:', error.message);
+    return null;
+  }
+  return data;
+}
+
+const progress = {
+  isAvailable: progressAvailable,
+  myId: () => (clerk?.user?.id ? clerk.user.id : null),
+  load: loadPlayerProgress,
+  award: awardPlayerXp,
+  leaderboard: loadLeaderboard,
+};
+
 // Quiz-only analysis: parses the sentence, renders its tree, and returns the
 // payload WITHOUT touching history, highlights, or the locked/editable state.
-async function analyzeForQuiz(text) {
+async function analyzeForQuiz(text, index = null) {
   if (!text || !text.trim()) return null;
   const clean = text.trim();
   clearOverlay();
@@ -598,7 +684,7 @@ async function analyzeForQuiz(text) {
   renderNodeDetail(null, null, null);
   let payload;
   try {
-    const out = await postParse(clean);
+    const out = await postParse(clean, index);
     if (out.error) {
       showCanvasMessage('error', 'Unable to analyze', [out.error.error || 'The backend rejected the request.']);
       return null;
