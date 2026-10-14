@@ -89,7 +89,8 @@ export function createSupabaseClient() {
 //   index.html  — in-app login modal; successful sign-in reloads the current
 //                 page so the boot flow picks the session up as "authenticated".
 // In-flight email-code verification state is shared across surfaces because
-// only one form exists on a given page.
+// only one form exists on a given page. Email codes are now only used for
+// second-factor sign-in on existing accounts — registration never sends one.
 let activeSignIn = null;
 let activeSignUp = null;
 let pendingCodeAction = null;
@@ -102,6 +103,24 @@ function formatClerkError(err) {
   return err?.message || 'An authentication error occurred.';
 }
 
+// Password requirements checked live on the registration form so the learner
+// is told exactly what is missing instead of getting a generic rejection (or
+// an email code) back from the backend. The Clerk instance requires 15+
+// characters; the character-class tips are advisory only.
+const PASSWORD_RULES = [
+  { key: 'length', required: true, test: (p) => p.length >= 15, label: 'At least 15 characters' },
+  { key: 'upper', required: false, test: (p) => /[A-Z]/.test(p), label: 'An uppercase letter (recommended)' },
+  { key: 'lower', required: false, test: (p) => /[a-z]/.test(p), label: 'A lowercase letter (recommended)' },
+  { key: 'number', required: false, test: (p) => /[0-9]/.test(p), label: 'A number (recommended)' },
+  { key: 'symbol', required: false, test: (p) => /[!@#$%^&*()_+\-=[\]{};':"\\|,<>/?~]/.test(p), label: 'A symbol (recommended)' },
+];
+
+function passwordIssues(password) {
+  return PASSWORD_RULES
+    .filter((rule) => rule.required && !rule.test(password))
+    .map((rule) => rule.label);
+}
+
 function wireAuthForm(ctx) {
   const {
     form,
@@ -112,6 +131,7 @@ function wireAuthForm(ctx) {
     signInBtn,
     statusMsg,
     finishRedirect,
+    reqsId,
   } = ctx;
 
   if (!form) return;
@@ -120,6 +140,44 @@ function wireAuthForm(ctx) {
     if (!statusMsg) return;
     statusMsg.textContent = text;
     statusMsg.className = `msg ${isError ? 'err' : 'ok'}`;
+  }
+
+  function syncPasswordReqs() {
+    if (!reqsId || !passwordInput) return;
+    const reqsEl = document.querySelector(reqsId);
+    if (!reqsEl) return;
+    const value = passwordInput.value || '';
+    reqsEl.innerHTML = '';
+    PASSWORD_RULES.forEach((rule) => {
+      const ok = rule.test(value);
+      const row = document.createElement('span');
+      row.className = `pw-req${ok ? ' ok' : rule.required ? ' missing' : ' soft'}`;
+      row.textContent = `${ok ? '\u2713' : '\u2022'} ${rule.label}`;
+      reqsEl.appendChild(row);
+    });
+    reqsEl.hidden = !value;
+  }
+  if (passwordInput && reqsId) {
+    passwordInput.addEventListener('input', syncPasswordReqs);
+    passwordInput.addEventListener('focus', () => {
+      if (passwordInput.value) syncPasswordReqs();
+    });
+    passwordInput.addEventListener('blur', () => {
+      const reqsEl = document.querySelector(reqsId);
+      if (reqsEl && !passwordInput.value) reqsEl.hidden = true;
+    });
+  }
+
+  const pwToggle = form.querySelector('.password-toggle');
+  if (pwToggle && passwordInput) {
+    pwToggle.addEventListener('click', () => {
+      const show = passwordInput.type === 'password';
+      passwordInput.type = show ? 'text' : 'password';
+      pwToggle.classList.toggle('shown', show);
+      pwToggle.setAttribute('aria-pressed', String(show));
+      pwToggle.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+      passwordInput.focus();
+    });
   }
 
   function showCodeStep(message) {
@@ -188,19 +246,6 @@ function wireAuthForm(ctx) {
           }
         }
 
-        if (pendingCodeAction === 'signup_verification' && activeSignUp) {
-          const attempt = await activeSignUp.attemptVerification({
-            strategy: 'email_code',
-            code: codeInput.value,
-          });
-          if (attempt.status === 'complete') {
-            createdSessionId = attempt.createdSessionId;
-          } else {
-            setStatus('Verification failed. Check the code and try again.', true);
-            return;
-          }
-        }
-
         resetCodeStep();
         if (createdSessionId) await completeSignIn(clerk, createdSessionId);
         return;
@@ -248,6 +293,12 @@ function wireAuthForm(ctx) {
       setStatus('Enter an email and password to register.', true);
       return;
     }
+    const missing = passwordIssues(password);
+    if (missing.length) {
+      setStatus(`Password needs: ${missing.join('; ')}.`, true);
+      passwordInput?.focus();
+      return;
+    }
     // Register path collects a new credential, not an existing one.
     passwordInput?.setAttribute('autocomplete', 'new-password');
 
@@ -262,12 +313,26 @@ function wireAuthForm(ctx) {
         return;
       }
 
+      // Registration no longer sends a verification code. If Clerk still has
+      // something to collect, report exactly what is missing (normally a
+      // failed password requirement) so the learner can fix it and retry.
+      const required = new Set(signUp.requiredFields || []);
+      const missingFields = new Set(signUp.missingFields || []);
       const emailVerification = signUp.verifications?.email_address;
-      if (signUp.status === 'missing_requirements' && emailVerification && emailVerification.status === 'unverified') {
-        await signUp.prepareVerification({ strategy: 'email_code' });
-        activeSignUp = signUp;
-        pendingCodeAction = 'signup_verification';
-        showCodeStep('A verification code was sent to your email.');
+
+      if (required.has('password_requirements') || missingFields.has('password_requirements')) {
+        const still = passwordIssues(password);
+        setStatus(still.length
+          ? `Password needs: ${still.join('; ')}.`
+          : 'The password does not meet the registration requirements.', true);
+        return;
+      }
+      if (emailVerification && emailVerification.status === 'unverified') {
+        setStatus(
+          'Email confirmation is required, but verification emails are disabled here. '
+          + 'Enable \u201cskip email verification\u201d in your Clerk dashboard to register without a code.',
+          true,
+        );
         return;
       }
 
@@ -287,6 +352,7 @@ wireAuthForm({
   signUpBtn: document.querySelector('#signUpBtn'),
   signInBtn: document.querySelector('#signInBtn'),
   statusMsg: document.querySelector('#authStatus'),
+  reqsId: '#passwordReqs',
   finishRedirect: true,
 });
 
@@ -298,6 +364,7 @@ wireAuthForm({
   signUpBtn: document.querySelector('#authSignUpBtn'),
   signInBtn: document.querySelector('#authSignInBtn'),
   statusMsg: document.querySelector('#authModalStatus'),
+  reqsId: '#authPasswordReqs',
   finishRedirect: false,
 });
 

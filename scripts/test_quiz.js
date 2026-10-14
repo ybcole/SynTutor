@@ -16,25 +16,30 @@ for (const [first, last] of batches) {
     for (const rule of section.rules) {
       const build = BUILDERS[rule.id];
       assert.equal(typeof build, 'function', `Missing builder for ${rule.id}`);
+      const mergedTiers = [];
       for (const difficulty of ['easy', 'medium', 'hard']) {
         const fullPool = build(difficulty) || [];
-        const sample = questionPool(rule.id, difficulty, 5);
-        assert.equal(sample.length, 5, `${rule.id} ${difficulty} must supply five questions`);
-        assert.equal(new Set(sample.map((item) => item.bad)).size, 5,
-          `${rule.id} ${difficulty} contains duplicate questions in the sample`);
-        assert.ok(sample.every((item) => item.bad && item.good && item.bad !== item.good),
+        assert.ok(fullPool.every((item) => item.bad && item.good && item.bad !== item.good),
           `${rule.id} ${difficulty} contains an invalid correction pair`);
-
-        const distinctContexts = new Set(fullPool.map(contextKey)).size;
-        if (distinctContexts >= 5) {
-          assert.equal(new Set(sample.map(contextKey)).size, 5,
-            `${rule.id} ${difficulty} repeats a sentence context in the sample`);
-        }
-        reviewed += 1;
+        mergedTiers.push(...fullPool);
       }
+
+      const sample = questionPool(rule.id, 5);
+      assert.equal(sample.length, 5, `${rule.id} must supply five questions`);
+      assert.equal(new Set(sample.map((item) => item.bad)).size, 5,
+        `${rule.id} contains duplicate questions in the sample`);
+      assert.ok(sample.every((item) => item.bad && item.good && item.bad !== item.good),
+        `${rule.id} contains an invalid correction pair`);
+
+      const distinctContexts = new Set(mergedTiers.map(contextKey)).size;
+      if (distinctContexts >= 5) {
+        assert.equal(new Set(sample.map(contextKey)).size, 5,
+          `${rule.id} repeats a sentence context in the sample`);
+      }
+      reviewed += 1;
     }
   }
-  console.log(`Sections ${first}-${last}: reviewed ${reviewed} rule/difficulty pools.`);
+  console.log(`Sections ${first}-${last}: reviewed ${reviewed} rule pools.`);
 }
 
 for (const difficulty of ['easy', 'medium', 'hard']) {

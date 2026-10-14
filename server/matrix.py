@@ -33,12 +33,20 @@ try:  # works both as ``server.matrix`` (package) and ``matrix`` (script dir)
         from . import licensing
     except Exception:  # lemminflect missing -> degrade to rules-only
         licensing = None
+    try:
+        from . import master
+    except Exception:
+        master = None
 except ImportError:  # pragma: no cover
     import ruleset
     try:
         import licensing
     except Exception:
         licensing = None
+    try:
+        import master
+    except Exception:
+        master = None
 
 SENTENCE_CLASSES = {'S', 'SINV', 'SQ', 'SBARQ', 'FRAG', 'ROOT'}
 
@@ -965,28 +973,47 @@ def subject_key(leaf):
 
 def verb_key(leaf):
     """Agreement key of a finite verb leaf: ('3','sg'), ('*','non3sg'), or None
-    (person-neutral: past tense/modals)."""
+    (person-neutral: past tense/modals).
+
+    The surface form of 'be'/'have'/'do' is checked *before* the POS fallbacks:
+    benepar tags 'was'/'were' as VBD, so a bare ``pos == 'VBD' -> None`` short-
+    circuit would make past-tense 'be' agreement invisible ('The pile were').
+    """
     pos = leaf['type']
     surface = _lower(leaf['surface'])
     if pos == 'MD':
         return None
-    if pos == 'VBD':
-        return None
+    if surface == 'was':
+        return ('13', 'sg')
+    if surface in ('is', 'has', 'does'):
+        return ('3', 'sg')
+    if surface == 'am':
+        return ('1', 'sg')
+    if surface in ('are', 'were', 'have', 'do'):
+        return ('*', 'non3sg')
     if pos == 'VBZ':
         return ('3', 'sg')
     if pos == 'VBP':
         return ('*', 'non3sg')
-    if surface in BE_FORM:
-        if surface in ('is', 'was'):
-            return ('3', 'sg')
-        if surface == 'am':
-            return ('1', 'sg')
-        return ('*', 'non3sg')
-    if surface in HAVE_FORM:
-        return ('3', 'sg') if surface == 'has' else ('*', 'non3sg')
-    if surface in DO_FORM:
-        return ('3', 'sg') if surface == 'does' else ('*', 'non3sg')
     return None
+
+
+# Context that licenses the counterfactual subjunctive 'were' with a singular
+# subject ('if I were you', 'I wish I were there').  Agreement must not fire on
+# these, or a grammatical subjunctive would be reported as a number error.
+SUBJUNCTIVE_WERE = re.compile(
+    r"\b(if|wish|wishes|wished|as\s+if|as\s+though|suppose|supposing|unless|"
+    r"imagine)\b", re.I)
+
+
+# Subject heads whose grammatical number is genuinely ambiguous ('none of the
+# goals were' and 'none of the goals was' are both standard).  Agreement is not
+# enforced against these, so a plural verb is never reported as an error.
+NUMBER_AMBIGUOUS_HEADS = {
+    'none', 'rest', 'half', 'all', 'lot', 'lots', 'plenty', 'more', 'most',
+    'some', 'part', 'portion', 'remainder', 'majority', 'minority', 'couple',
+    'dozen', 'number', 'variety', 'range', 'series',
+}
 
 
 MANDATIVE_VERBS = {
@@ -1040,6 +1067,8 @@ def agree(subject_leaf, verb_leaf):
     sk = subject_key(subject_leaf)
     if sk is None:
         return True
+    if vk == ('13', 'sg'):
+        return sk in (('1', 'sg'), ('3', 'sg'))
     if vk == ('*', 'non3sg'):
         return sk != ('3', 'sg')
     if sk == ('2', None):
@@ -1239,6 +1268,8 @@ def _agreement_ok(skey, vkey):
     """Agreement test for a subject key and a finite-verb key (deterministic)."""
     if vkey is None or skey is None:
         return True
+    if vkey == ('13', 'sg'):
+        return skey in (('1', 'sg'), ('3', 'sg'))
     if vkey == ('*', 'non3sg'):
         return skey != ('3', 'sg')
     if skey == ('2', None):
@@ -1314,6 +1345,8 @@ class MatrixEvaluator:
                 continue
             item = dict(finding)
             item['id'] = f"{nid}:{finding.get('rule_id')}"
+            if master is not None:
+                item['concept'] = master.concept(finding.get('rule_id'))
             detail.setdefault('findings', []).append(item)
             if finding['status'] == 'error':
                 # The front end keys token colouring on the node's own status,
@@ -1524,6 +1557,21 @@ class MatrixEvaluator:
 
     def _s_predicate(self, parent, child, grandparent=None):
         subj, _vp = clause_subject_and_verb(parent)
+        # If the subject is immediately followed by a comma, the actual subject
+        # is likely the next NP preceding the VP (dislocation). Recompute with
+        # the correct subject.
+        if subj is not None:
+            _kids = parent.get('children', [])
+            for _i, _k in enumerate(_kids):
+                if _k is subj and _i + 1 < len(_kids) \
+                        and _kids[_i + 1].get('type') in (',', ':'):
+                    # Look for a later NP that is followed by VP
+                    for _j in range(_i + 2, len(_kids)):
+                        _ck = _kids[_j]
+                        if _ck.get('type') == 'NP':
+                            subj = _ck
+                            break
+                    break
         vp_head = phrase_head(child)
         if vp_head is None:
             return ('error', 'C-TENSE-FINITE',
@@ -1563,6 +1611,22 @@ class MatrixEvaluator:
         if subj_head is None:
             return ('valid', 'C-PREDICATE',
                     f"'{child['surface']}' is the predicate of the clause, which is fine.")
+        # A fronted phrase set off by a comma ('Thanks to this, every task was
+        # finished') is a topic/adverbial, not the subject, so agreement must not
+        # be checked against it.
+        _kids = parent.get('children', [])
+        for _i, _k in enumerate(_kids):
+            if _k is subj and _i + 1 < len(_kids) \
+                    and _kids[_i + 1].get('type') in (',', ':'):
+                return ('valid', 'C-SUBJECT-ROLE',
+                        f"'{subj['surface']}' is a fronted phrase set off by a comma, "
+                        'not the clause subject, so agreement is not checked against it.')
+        # Number-ambiguous subject heads ('none of the goals were') accept either
+        # a singular or a plural verb, so they are never a number error.
+        if _lower(subj_head.get('surface', '')) in NUMBER_AMBIGUOUS_HEADS:
+            return ('valid', 'C-PREDICATE',
+                    f"'{subj['surface']}' can take a singular or a plural verb, so "
+                    'this is treated as fine.')
         if subj_head['type'] == 'PRP' and _lower(subj_head['surface']) in PRON_OBJ_PLAIN:
             target = {'me': 'I', 'us': 'we', 'him': 'he', 'her': 'she',
                       'them': 'they'}[_lower(subj_head['surface'])]
@@ -1627,6 +1691,13 @@ class MatrixEvaluator:
             p = skey[0] if skey else '3'
             skey = (p, 'sg')
             subj_label = self._subj_label({'type': 'PRP', 'surface': 'I'}) if p == '1' else ('3rd person singular' if p == '3' else self._subj_label(subj_head))
+        # Counterfactual subjunctive 'were' ('if I were', 'I wish I were') is
+        # correct with any subject, so it is never a number error.
+        if _lower(vp_head['surface']) == 'were' \
+                and SUBJUNCTIVE_WERE.search(self._text or ''):
+            return ('valid', 'C-PREDICATE',
+                    "The verb 'were' here is the counterfactual subjunctive "
+                    "('if I were', 'I wish I were'), which is correct with any subject.")
         # coordinated predicates: every finite conjunct verb must agree with the
         # subject too ('They are stupid and lacks manners.' -> 'lacks' is wrong).
         for h in self._coordinated_predicate_heads(child, vp_head):

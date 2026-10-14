@@ -40,7 +40,7 @@ for (const [index, item] of hardPool.entries()) {
 assert.ok(correctionCounts.size > 1, 'The number of corrections should vary');
 assert.ok(correctedPositions.size > 1, 'Correction locations should vary by paragraph');
 
-const sample = questionPool('1.1', 'hard', 5);
+const sample = questionPool('1.1', 5);
 assert.equal(sample.length, 5, 'Each quiz session must still draw five questions');
 assert.ok(sample.every((item) => item.sentences.length === 4),
   'Sampling must retain each complete paragraph');

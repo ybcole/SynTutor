@@ -1,7 +1,7 @@
 // Achievements catalog + unlock rules for the Matrix Quiz.
 //
 // Achievements are derived deterministically from the learner's signed-in
-// quiz_progress rows (a completion per rule+difficulty), so nothing extra has
+// quiz_progress rows (a completion per rule), so nothing extra has
 // to be persisted: the earned set is recomputed on demand and stored progress
 // only lives in the quiz_progress table.
 

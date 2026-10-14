@@ -275,6 +275,53 @@
     .msg.err { color: #d64545; }
     .msg.ok { color: #2e8b57; }
 
+    .password-reqs[hidden] { display: none; }
+    .password-reqs {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin: -4px 0 2px;
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--btn-bg);
+      background: color-mix(in srgb, var(--btn-bg) 6%, transparent);
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .pw-req { white-space: nowrap; }
+    .pw-req.ok { color: #2e8b57; font-weight: 600; }
+    .pw-req.missing { color: #d64545; font-weight: 600; }
+    .pw-req.soft { color: var(--muted); }
+
+    .password-field { position: relative; }
+    .password-field input { padding-right: 40px; }
+    .password-field .password-toggle {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .password-field .password-toggle:hover {
+      color: var(--ink);
+      background: color-mix(in srgb, var(--ink) 8%, transparent);
+    }
+    .password-toggle .eye-off { display: none; }
+    .password-toggle.shown .eye-open { display: none; }
+    .password-toggle.shown .eye-off { display: block; }
+
     @media (max-width: 540px) {
       .landing-header { padding: 0 16px; }
       .brand-title { font-size: 62px; }
@@ -312,7 +359,14 @@
         <form id="loginForm" class="auth-form">
           <div class="step-auth">
             <input type="email" id="email" class="input-field" placeholder="Email address" required autocomplete="email" />
+            <div class="password-field">
             <input type="password" id="password" class="input-field" placeholder="Password" required autocomplete="current-password" />
+            <button type="button" class="password-toggle" aria-label="Show password" aria-pressed="false">
+              <svg class="eye-open" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              <svg class="eye-off" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+            </button>
+          </div>
+          <div id="passwordReqs" class="password-reqs" hidden></div>
           </div>
           <div class="code-field" style="display:none">
             <input type="text" id="verificationCode" class="input-field" placeholder="6-digit verification code" inputmode="numeric" />

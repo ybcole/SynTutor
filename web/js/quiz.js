@@ -1,14 +1,14 @@
 // Matrix Quiz UI controller.
 //
-// The sidebar panel (#quizPanel) still hosts the searchable rule catalog and
-// the difficulty setup. Once a run starts, the quiz moves onto the main canvas:
+// The sidebar panel (#quizPanel) still hosts the searchable rule catalog.
+// Once a run starts, the quiz moves onto the main canvas:
 // the learner repairs the incorrect sentence in the top textarea and the syntax
 // tree is rendered below, while a collapsible quest panel on the right shows the
 // category, progress, score, and Skip / Submit controls. Wrong answers surface
 // the same rule-matrix remediation used by the tutor.
 
 import {
-  MATRIX_SECTIONS, DIFFICULTY, questionPool, ruleInfo, ruleDifficulty, hasQuiz,
+  MATRIX_SECTIONS, DIFFICULTY, QUIZ_LENGTH, questionPool, ruleInfo, ruleDifficulty, hasQuiz,
 } from './quiz-data.js';
 import {
   isParagraphQuizAnswerCorrect, isQuizAnswerCorrect, hasSyntaxError,
@@ -27,9 +27,9 @@ function el(tag, cls, text) {
 }
 
 const state = {
-  view: 'list', // list | setup | quiz | results | leaderboard | achievements
+  view: 'list', // list | quiz | results | leaderboard | achievements
   ruleId: null,
-  difficulty: 'easy',
+  expandedRule: null,
   difficultyFilter: null, // null = all rules
   questions: [],
   index: 0,
@@ -158,57 +158,15 @@ function refreshProgress() {
   state.progressAvailable = Boolean(progress?.isAvailable?.());
   if (!state.progressAvailable) {
     state.progress = null;
-    if (state.view === 'list') renderList();
     return;
   }
   progress.load?.().then((data) => {
     state.progress = data
       ? { xp: data.xp, level: data.level, ...levelFromXp(data.xp) }
       : null;
-    if (state.view === 'list') renderList();
   }).catch(() => {
     state.progress = null;
-    if (state.view === 'list') renderList();
   });
-}
-
-function progressStrip() {
-  const wrap = el('div', 'sq-progress-card');
-
-  const head = el('div', 'sq-progress-head');
-  head.appendChild(el('span', 'sq-level',
-    state.progress ? `Level ${state.progress.level}` : 'Progress'));
-  const links = el('div', 'sq-progress-links');
-  const board = el('button', 'sq-link', 'Leaderboard');
-  board.type = 'button';
-  board.addEventListener('click', goLeaderboard);
-  const ach = el('button', 'sq-link', 'Achievements');
-  ach.type = 'button';
-  ach.addEventListener('click', goAchievements);
-  links.appendChild(board);
-  links.appendChild(ach);
-  head.appendChild(links);
-  wrap.appendChild(head);
-
-  if (!state.progressAvailable) {
-    wrap.appendChild(el('p', 'sq-progress-note',
-      'Sign in to earn XP and join the leaderboard.'));
-    return wrap;
-  }
-  if (!state.progress) {
-    wrap.appendChild(el('p', 'sq-progress-note', 'Loading progress\u2026'));
-    return wrap;
-  }
-
-  const { into, span, level } = state.progress;
-  const bar = el('div', 'sq-xp-bar');
-  const fill = el('div', 'sq-xp-fill');
-  fill.style.width = `${span ? Math.min(100, Math.round((into / span) * 100)) : 0}%`;
-  bar.appendChild(fill);
-  wrap.appendChild(bar);
-  wrap.appendChild(el('p', 'sq-progress-note',
-    `${state.progress.xp} XP \u00b7 ${into} / ${span} to Level ${level + 1}`));
-  return wrap;
 }
 
 function goLeaderboard() {
@@ -317,12 +275,8 @@ function renderList() {
   const body = state.body;
   if (!body) return;
   body.innerHTML = '';
-  body.appendChild(progressStrip());
   const query = state.search.trim().toLowerCase();
   const diffFilter = state.difficultyFilter;
-  const hint = diffFilter
-    ? `Showing ${DIFFICULTY[diffFilter].label} rules \u2014 click a rule to start that quiz.`
-    : 'Click a rule to choose a difficulty, or pick one from the filter to start instantly.';
 
   let total = 0;
   MATRIX_SECTIONS.forEach((section) => {
@@ -344,26 +298,30 @@ function renderList() {
     h.appendChild(el('span', 'sq-group-count', `${matches.length}`));
     group.appendChild(h);
 
-    matches.forEach((rule) => group.appendChild(ruleRow(rule)));
+    matches.forEach((rule) => group.appendChild(ruleItem(rule)));
     body.appendChild(group);
   });
 
+  const hint = diffFilter
+    ? `Showing ${DIFFICULTY[diffFilter].label} rules \u2014 click a rule to start its quiz.`
+    : 'Click a rule to start its quiz.';
   body.appendChild(el('p', 'sq-filter-hint', hint));
   if (!total) body.appendChild(el('p', 'sq-empty', 'No rules match your search or filter.'));
 }
 
-function ruleRow(rule) {
+function ruleItem(rule) {
+  const item = el('div', 'sq-rule-item');
+  item.dataset.rule = rule.id;
+
   const row = el('button', 'sq-row');
   row.type = 'button';
-  row.dataset.rule = rule.id;
-
   const top = el('div', 'sq-row-top');
   top.appendChild(el('span', 'sq-row-id', rule.id));
   top.appendChild(el('span', 'sq-row-rule', rule.rule));
   const meta = el('span', 'sq-row-meta');
+  const ready = hasQuiz(rule.id);
   const diff = ruleDifficulty(rule);
   meta.appendChild(el('span', `sq-diff-badge ${diff}`, DIFFICULTY[diff].label));
-  const ready = hasQuiz(rule.id);
   meta.appendChild(el('span', `sq-dot ${ready ? 'ready' : 'soon'}`, ''));
   top.appendChild(meta);
   row.appendChild(top);
@@ -372,62 +330,54 @@ function ruleRow(rule) {
   foot.appendChild(el('span', 'sq-bad', rule.example || ''));
   if (!ready) foot.appendChild(el('span', 'sq-soon', 'soon'));
   row.appendChild(foot);
+  row.addEventListener('click', () => toggleRule(item, rule.id));
+  item.appendChild(row);
 
-  row.addEventListener('click', () => {
-    if (state.difficultyFilter) {
-      state.ruleId = rule.id;
-      state.difficulty = state.difficultyFilter;
-      startQuiz();
-    } else {
-      goSetup(rule.id);
-    }
-  });
-  return row;
+  const panel = rulePanel(rule);
+  if (state.expandedRule === rule.id) {
+    item.classList.add('open');
+    panel.hidden = false;
+  }
+  item.appendChild(panel);
+  return item;
 }
 
-// ---------------------------------------------------------------------------
-// Setup
-// ---------------------------------------------------------------------------
-function goSetup(ruleId) {
-  state.ruleId = ruleId;
-  state.view = 'setup';
-  const info = ruleInfo(ruleId);
-  const body = shell({ title: ruleId, back: goList });
-  state.body = body;
-
-  if (!hasQuiz(ruleId)) {
-    const soon = el('div', 'sq-soon-box');
-    soon.appendChild(el('p', 'sq-soon-text',
-      `Quizzes for \u201c${info ? info.rule : ruleId}\u201d are coming soon.`));
-    body.appendChild(soon);
+function toggleRule(item, ruleId) {
+  const wasOpen = state.expandedRule === ruleId;
+  document.querySelectorAll('.sq-rule-item.open').forEach((node) => {
+    node.classList.remove('open');
+    const panel = node.querySelector('.sq-rule-panel');
+    if (panel) panel.hidden = true;
+  });
+  if (wasOpen) {
+    state.expandedRule = null;
     return;
   }
+  state.expandedRule = ruleId;
+  item.classList.add('open');
+  const panel = item.querySelector('.sq-rule-panel');
+  if (panel) panel.hidden = false;
+}
 
-  const intro = el('div', 'sq-intro');
-  intro.appendChild(el('span', 'sq-intro-id', ruleId));
-  intro.appendChild(el('span', 'sq-intro-rule', info ? info.rule : ''));
-  if (info) intro.appendChild(el('span', 'sq-bad', info.example || ''));
-  body.appendChild(intro);
+function rulePanel(rule) {
+  const panel = el('div', 'sq-rule-panel');
+  panel.hidden = true;
 
-  body.appendChild(el('div', 'sq-label', 'Difficulty'));
-  const grid = el('div', 'sq-diff-grid');
-  Object.entries(DIFFICULTY).forEach(([key, d]) => {
-    const btn = el('button', `sq-diff ${state.difficulty === key ? 'selected' : ''}`);
-    btn.type = 'button';
-    btn.appendChild(el('span', 'sq-diff-label', d.label));
-    btn.addEventListener('click', () => {
-      state.difficulty = key;
-      grid.querySelectorAll('.sq-diff').forEach((b) => b.classList.remove('selected'));
-      btn.classList.add('selected');
-    });
-    grid.appendChild(btn);
-  });
-  body.appendChild(grid);
+  if (!hasQuiz(rule.id)) {
+    panel.appendChild(el('p', 'sq-soon-text',
+      'Quizzes for this rule are coming soon.'));
+    return panel;
+  }
 
-  const start = el('button', 'sq-primary', 'Start Quiz');
+  const start = el('button', 'sq-start-inline', 'Start Quiz');
   start.type = 'button';
-  start.addEventListener('click', startQuiz);
-  body.appendChild(start);
+  start.addEventListener('click', (event) => {
+    event.stopPropagation();
+    state.ruleId = rule.id;
+    startQuiz();
+  });
+  panel.appendChild(start);
+  return panel;
 }
 
 // ---------------------------------------------------------------------------
@@ -467,7 +417,9 @@ function renderQuest() {
   const info = ruleInfo(state.ruleId);
   headMain.appendChild(el('span', 'qq-cat',
     `${state.ruleId}${info ? ` \u00b7 ${info.rule}` : ''}`));
-  if (state.view === 'quiz') headMain.appendChild(el('span', 'qq-diff', DIFFICULTY[state.difficulty].label));
+  if (!state.collapsed && info && info.concept) {
+    headMain.appendChild(el('p', 'qq-concept', info.concept));
+  }
   head.appendChild(headMain);
   const caret = el('button', 'qq-collapse');
   caret.type = 'button';
@@ -518,9 +470,9 @@ function renderQuestionInto(body) {
   body.appendChild(meta);
 
   const target = el('div', 'qq-target');
-  target.appendChild(el('span', 'qq-label', paragraphQuestion
-    ? 'Correct plural errors in this paragraph. Some sentences are already correct.'
-    : 'Correct this sentence'));
+  if (!paragraphQuestion) {
+    target.appendChild(el('span', 'qq-label', 'Correct this sentence'));
+  }
   target.appendChild(el('p', 'qq-sentence', q.bad));
   body.appendChild(target);
 
@@ -558,9 +510,7 @@ function renderQuestionInto(body) {
 }
 
 function isRegularPluralParagraph(question) {
-  return state.ruleId === '1.1'
-    && state.difficulty === 'hard'
-    && Array.isArray(question.sentences);
+  return Array.isArray(question?.sentences) && question.sentences.length > 1;
 }
 
 function renderResultsInto(body) {
@@ -573,7 +523,7 @@ function renderResultsInto(body) {
   const score = el('div', 'sq-score');
   score.appendChild(el('span', 'sq-score-num', `${correct} / ${total}`));
   score.appendChild(el('span', 'sq-score-sub',
-    `${info ? info.rule : ''} \u00b7 ${DIFFICULTY[state.difficulty].label}${skipped ? ` \u00b7 ${skipped} skipped` : ''}`));
+    `${info ? info.rule : ''}${skipped ? ` \u00b7 ${skipped} skipped` : ''}`));
   body.appendChild(score);
 
   const bar = el('div', 'sq-progress');
@@ -648,10 +598,11 @@ function renderResultsInto(body) {
 // ---------------------------------------------------------------------------
 function startQuiz() {
   if (!state.ruleId || !hasQuiz(state.ruleId)) return;
-  const count = DIFFICULTY[state.difficulty].count;
+  state.expandedRule = null;
+  const count = QUIZ_LENGTH;
   let pool;
   try {
-    pool = questionPool(state.ruleId, state.difficulty);
+    pool = questionPool(state.ruleId);
   } catch (error) {
     console.error(`Failed to build the ${state.ruleId} quiz question pool.`, error);
     state.body?.appendChild(el('p', 'sq-empty',
@@ -897,7 +848,6 @@ async function awardQuizXp() {
   try {
     const tracked = await progress?.trackCompletion?.({
       ruleId: state.ruleId,
-      difficulty: state.difficulty,
       perfect: outcome.perfect,
     });
     state.unlockedNow = tracked?.newlyUnlocked || [];

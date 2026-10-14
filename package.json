@@ -4,11 +4,13 @@
   "description": "SynTutor - explainable tutoring system for English phrase-structure syntax (spaCy + benepar backend, rule-matrix XAI)",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.js",
+    "build": "node scripts/build_master.js && node scripts/build.js",
+    "build:master": "node scripts/build_master.js",
     "serve": "python3 server/app.py",
     "audit": "python3 scripts/audit_rules.py",
     "test:quiz": "node scripts/test_quiz.js",
-    "test:quiz:regular-plurals": "node scripts/test_regular_plural_paragraphs.js"
+    "test:quiz:regular-plurals": "node scripts/test_regular_plural_paragraphs.js",
+    "sheet": "python3 scripts/master_sheet.py"
   },
   "license": "MIT"
 }

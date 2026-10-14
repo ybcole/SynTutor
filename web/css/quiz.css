@@ -226,6 +226,31 @@
 }
 .sq-empty { color: var(--muted); font-size: 13px; padding: 24px 4px; text-align: center; }
 
+/* ---- Inline rule expansion ------------------------------------------ */
+.sq-rule-item { display: flex; flex-direction: column; }
+.sq-rule-panel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 0 4px 6px;
+}
+.sq-rule-panel[hidden] { display: none; }
+.sq-rule-panel .sq-soon-text { margin: 0; width: 100%; text-align: left; }
+.sq-start-inline {
+  padding: 6px 14px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.sq-start-inline:hover { background: var(--accent-strong); }
+.sq-start-inline:active { transform: scale(0.98); }
+
 /* ---- Setup ---------------------------------------------------------- */
 .sq-intro {
   display: flex;
@@ -236,33 +261,6 @@
 }
 .sq-intro-id { font-size: 12px; font-weight: 700; color: var(--accent); }
 .sq-intro-rule { font-size: 12.5px; color: var(--ink); }
-.sq-label {
-  padding: 4px 4px 8px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-}
-.sq-diff-grid { display: flex; flex-direction: column; gap: 8px; padding: 0 4px 14px; }
-.sq-diff {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 11px 12px;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  color: var(--ink);
-  text-align: left;
-  cursor: pointer;
-  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
-}
-.sq-diff:hover { border-color: var(--accent); }
-.sq-diff.selected { border-color: var(--accent); background: var(--accent-soft); }
-.sq-diff-label { font-size: 13.5px; font-weight: 700; }
-.sq-diff-count { font-size: 11.5px; color: var(--muted); }
 .sq-primary {
   padding: 11px 16px;
   margin: 0 4px;
@@ -469,7 +467,7 @@
   border-bottom: 1px solid var(--border);
   cursor: pointer;
 }
-.qq-head-main { display: flex; align-items: center; gap: 8px; flex: 1 1 auto; min-width: 0; }
+.qq-head-main { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; flex: 1 1 auto; min-width: 0; }
 .qq-cat {
   font-size: 13px;
   font-weight: 700;
@@ -478,16 +476,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.qq-diff {
-  flex: 0 0 auto;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent-strong);
+.qq-concept {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--muted);
 }
 .qq-collapse {
   display: flex;
@@ -573,47 +566,7 @@
 /* ------------------------------------------------------------------ */
 /* Gamification — XP / level / permanent leaderboard                   */
 /* ------------------------------------------------------------------ */
-.sq-progress-card {
-  padding: 10px 12px;
-  margin: 0 0 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-}
-.sq-progress-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-.sq-level { font-size: 13.5px; font-weight: 800; color: var(--accent-strong); }
-.sq-link {
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--accent-strong);
-  font-size: 11.5px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
-}
-.sq-link:hover { background: var(--accent-soft); border-color: var(--accent); }
 .sq-progress-note { margin: 0; font-size: 11.5px; color: var(--muted); }
-.sq-xp-bar {
-  height: 8px;
-  margin: 6px 0 7px;
-  border-radius: 999px;
-  background: var(--header-chip-bg);
-  overflow: hidden;
-}
-.sq-xp-fill {
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
-  transition: width var(--dur) var(--ease);
-}
 
 .sq-board {
   display: flex;
@@ -712,12 +665,6 @@
 .qq-xp-total,
 .qq-xp-up { font-size: 11.5px; color: var(--muted); }
 .qq-xp-up { color: var(--ok); font-weight: 800; }
-
-.sq-progress-links {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
 
 /* Difficulty filter above the rule catalog */
 .sq-filter {

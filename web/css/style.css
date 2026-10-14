@@ -1178,6 +1178,49 @@ button:disabled {
 .msg.err { color: var(--err); }
 .msg.ok { color: var(--ok); }
 
+.password-reqs[hidden] { display: none; }
+.password-reqs {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: -4px 0 2px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--header-chip-bg);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.pw-req { white-space: nowrap; }
+.pw-req.ok { color: var(--ok); font-weight: 600; }
+.pw-req.missing { color: var(--err); font-weight: 600; }
+.pw-req.soft { color: var(--muted); }
+
+.password-field { position: relative; }
+.password-field input { padding-right: 40px; }
+.password-field .password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.password-field .password-toggle:hover { color: var(--ink); background: var(--header-hover); }
+.password-toggle .eye-off { display: none; }
+.password-toggle.shown .eye-open { display: none; }
+.password-toggle.shown .eye-off { display: block; }
+
 @media (max-width: 1400px) {
   .dev-grid { grid-template-columns: repeat(2, 1fr); }
 }

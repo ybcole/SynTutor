@@ -1,6 +1,10 @@
 // Aggregate every section's rule builders into one lookup keyed by rule id.
-// Each value is (difficulty: 'easy'|'medium'|'hard') => item[] where an item is
+// Each value is (tier: 'easy'|'medium'|'hard') => item[] where an item is
 // { bad, good, explanation }. Builders provide at least 5 and up to 40 items.
+//
+// The tiers only vary sentence *structure*; the error a learner must fix is the
+// same in every tier. Quizzes have no difficulty setting, so a rule's pool is
+// the union of all tiers (deduped) -- more variety, one uniform run length.
 import s1 from './s1.js';
 import s2 from './s2.js';
 import s3 from './s3.js';
@@ -12,6 +16,7 @@ import s8 from './s8.js';
 import s9 from './s9.js';
 import s10 from './s10.js';
 import s11 from './s11.js';
+import { PARAGRAPHS } from './paragraphs.js';
 
 export const BUILDERS = {
   ...s1, ...s2, ...s3, ...s4, ...s5, ...s6,
@@ -96,21 +101,52 @@ function diverseSample(pool, limit) {
   return selected.map(({ question }) => question);
 }
 
-// Returns a shuffled pool of up to `limit` (default 40) items for a
-// rule + difficulty. Cached per rule+difficulty so a run does not rebuild the
-// whole bank, but re-shuffled and selected for contextual variety on every run.
-export function questionPool(ruleId, difficulty = 'easy', limit = QUESTION_COUNT) {
+const tiers = ['easy', 'medium', 'hard'];
+
+// Rule 1.1 is the one exception: its 'hard' tier holds the multi-sentence
+// paragraph task, which *is* its quiz, so it does not merge with the
+// single-sentence tiers.
+const SINGLE_TIER_RULES = { '1.1': 'hard' };
+
+function dedupeById(items) {
+  const seen = new Set();
+  const out = [];
+  for (const item of items) {
+    if (!item || seen.has(item.bad)) continue;
+    seen.add(item.bad);
+    out.push(item);
+  }
+  return out;
+}
+
+// Returns the fully materialized, deduped pool for a rule (every tier combined).
+// This is what scripts/build_master.js freezes into web/content/master.json.
+// Rules with hand-authored paragraphs (./paragraphs.js) use those directly; the
+// rest fall back to the tier-merged single-sentence generators.
+export function materializePool(ruleId) {
+  const authored = PARAGRAPHS[ruleId];
+  if (Array.isArray(authored) && authored.length) return dedupeById(authored);
   const build = BUILDERS[ruleId];
   if (typeof build !== 'function') return [];
-  const key = `${ruleId}:${difficulty}`;
-  if (!cache.has(key)) {
-    const pool = build(difficulty);
-    if (!Array.isArray(pool)) {
-      throw new TypeError(`Question builder for ${ruleId} (${difficulty}) did not return an array.`);
+  const list = SINGLE_TIER_RULES[ruleId] ? [SINGLE_TIER_RULES[ruleId]] : tiers;
+  const pool = [];
+  for (const tier of list) {
+    const items = build(tier);
+    if (!Array.isArray(items)) {
+      throw new TypeError(`Question builder for ${ruleId} (${tier}) did not return an array.`);
     }
-    cache.set(key, pool);
+    pool.push(...items);
   }
-  return diverseSample(shuffle(cache.get(key)), Math.max(0, limit));
+  return dedupeById(pool);
+}
+
+// Returns a shuffled pool of up to `limit` (default 40) items for a rule,
+// drawn from every tier and selected for contextual variety. Cached per rule so
+// a run does not rebuild the whole bank, but re-shuffled and re-sampled on
+// every run.
+export function questionPool(ruleId, limit = QUESTION_COUNT) {
+  if (!cache.has(ruleId)) cache.set(ruleId, materializePool(ruleId));
+  return diverseSample(shuffle(cache.get(ruleId)), Math.max(0, limit));
 }
 
 export function shuffle(arr) {
@@ -121,3 +157,5 @@ export function shuffle(arr) {
   }
   return out;
 }
+
+export { diverseSample };

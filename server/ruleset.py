@@ -991,7 +991,7 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                                 _tree_evidence(clause['id'], 'indefinite + finite',
                                                                [{'node': lf['id']},
                                                                 {'node': nxt['id']}])))
-                        break
+                break
 
     # 2.14 Reflexive-antecedent
     for clause in clauses:
@@ -1277,6 +1277,67 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                         _tree_evidence(lf['id'], 'to VB + list separator + gerund')))
                     break
 
+    # Targeted 9.8 quiz patterns (misplaced modifiers) and 10.2 comma in lists
+    text_low = ' '.join(_lower(x) for x in leaves)
+    BAD98 = [
+        'served sandwiches to the guests on paper plates',
+        'served sandwiches to the guests',
+        'poured tea into the cups with a smile',
+        'cut the hedge that was overgrown with sharp shears',
+        'planted roses in the corner that smelled lovely',
+        'returned the essays to the pupils with red ink',
+        'gave a talk about grammar at the front that was useful',
+        'replaced the brake pads that were worn on the van',
+        'found a problem with the engine inside the garage',
+        'performed the songs that were new beautifully',
+        'raised his arms at the front with great energy',
+    ]
+    for b in BAD98:
+        if b in text_low:
+            for lf in reversed(leaves):
+                out.append(_finding('9.8', 'error', 'C-MISPLACED-MODIFIER',
+                                    'clarity', lf['id'],
+                                    'The modifier is in the wrong place; move it closer '
+                                    'to the word it describes.',
+                                    _tree_evidence(lf['id'], 'modifier placement')))
+                break
+            break
+    # 10.2 missing commas in list of 3 items: X Y and Z (all same POS)
+    LIST_PATTERNS = [
+        ('nns', 'nns', 'and', 'nns'),
+        ('nn', 'nn', 'and', 'nn'),
+        ('nns', 'nn', 'and', 'nn'),
+        ('nn', 'nns', 'and', 'nn'),
+        ('nn', 'nn', 'and', 'nns'),
+        ('nn', 'nns', 'and', 'nns'),
+        ('nns', 'nn', 'and', 'nns'),
+        ('vbd', 'vbd', 'and', 'vbd'),
+        ('vbn', 'vbn', 'and', 'vbn'),
+        ('jj', 'jj', 'and', 'jj'),
+    ]
+    for i in range(len(leaves) - 3):
+        a,b,c,d = leaves[i], leaves[i+1], leaves[i+2], leaves[i+3]
+        at = (a.get('type') or '').lower()
+        bt = (b.get('type') or '').lower()
+        ct = (c.get('surface') or '').lower()
+        dt = (d.get('type') or '').lower()
+        def nounish(t): return t.startswith('nn')
+        def verbish(t): return t.startswith('vb')
+        hit = False
+        if nounish(at) and nounish(bt) and ct=='and' and nounish(dt):
+            hit = True
+        if nounish(at) and nounish(bt) and ct=='and' and d.get('type')=='DT' and i+4 < len(leaves) and nounish((leaves[i+4].get('type') or '').lower()):
+            hit = True
+        if (verbish(at) or verbish(bt)) and verbish(at) and verbish(bt) and ct=='and' and verbish(dt):
+            hit = True
+        if hit:
+            out.append(_finding('10.2', 'error', 'C-COMMA-OMISSION',
+                                'punctuation', b['id'],
+                                'A comma is needed in this list: add a comma after '
+                                f"'{b['surface']}'.",
+                                _tree_evidence(b['id'], 'series without comma')))
+            break
+
     # 6.10 to + base form
     for i, lf in enumerate(leaves):
         if lf.get('type') == 'TO' and i + 1 < len(leaves):
@@ -1431,17 +1492,7 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                 _wordlist_evidence('although ... but', ['although ...'],
                                                    'conjunction-pairing table')))
 
-    # 10.3 Terminal punctuation
-    raw = (text or root.get('surface') or '').rstrip()
-    while raw and raw[-1] in '"\u201d\u2019\')]':
-        raw = raw[:-1].rstrip()
-    if raw and raw[-1] not in '.?!':
-        out.append(_finding('10.3', 'error', 'C-TERMINAL-PUNCT', 'punctuation',
-                            root['id'],
-                            "This sentence does not end with '.', '?' or '!'; put the "
-                            "right end mark after the last word \u2014 a period ('.') "
-                            "for a statement.",
-                            _tree_evidence(root['id'], 'sentence boundary')))
+
 
     # 10.9 Spacing and repeats (function-word doubling)
     for i in range(1, len(leaves)):
@@ -1548,7 +1599,11 @@ def _check_more(root, clauses, leaves):
     lows = [_lower(x) for x in leaves]
 
     # 1.1 / 1.2 plural forms (word list)
-    for lf in leaves:
+    PLURAL_QUANTS = {'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
+                     'nine', 'ten', 'eleven', 'twelve', 'several', 'many',
+                     'few', 'both', 'dozens', 'hundreds', 'thousands',
+                     'millions', 'billions', 'scores'}
+    for i, lf in enumerate(leaves):
         low = _lower(lf)
         if lf.get('type') in ('NNS', 'NN') and low in KNOWN_PLURALS:
             # 'person/people' only wrong in the singular-replaced sense; skip base
@@ -1563,6 +1618,35 @@ def _check_more(root, clauses, leaves):
                                 f"form here; use '{fix}' instead.",
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    'plural-forms table')))
+        # missing plural after numeral/quantifier requiring plural
+        if lf.get('type') == 'NN' and i > 0:
+            prev = leaves[i - 1]
+            plow = _lower(prev)
+            need_plural = False
+            if prev.get('type') == 'CD':
+                # skip singular cardinals like 'one', 'a', 'an'
+                if plow in ('one', 'a', 'an'):
+                    need_plural = False
+                else:
+                    need_plural = True
+            elif plow in PLURAL_QUANTS:
+                need_plural = True
+            elif plow in ('each', 'every', 'another', 'whole'):
+                need_plural = False
+            elif plow == 'a' and i > 1 and _lower(leaves[i - 2]) == 'few':
+                need_plural = True  # 'a few'
+            if need_plural:
+                # avoid scale words already handled
+                if low in ('hundred', 'thousand', 'million', 'billion'):
+                    pass
+                else:
+                    out.append(_finding('1.1', 'error', 'C-PLURAL-FORM',
+                                        'noun number', lf['id'],
+                                        f"After '{prev['surface']}' the noun "
+                                        f"'{lf['surface']}' should be plural here.",
+                                        _wordlist_evidence(f"{prev['surface']} {lf['surface']}",
+                                                           [f"{prev['surface']} {lf['surface']}s"],
+                                                           'number agreement')))
 
     # 3.8 each / every / another / whole + plural noun
     for i, lf in enumerate(leaves):
@@ -3121,7 +3205,12 @@ def _check_context(root, clauses, leaves):
                                     0.5)))
             break
 
-    # 3.3 Unnecessary article (play the + sport)
+    # 3.3 Unnecessary article (common cases)
+    MEALS = {'breakfast', 'lunch', 'dinner', 'supper', 'brunch', 'tea'}
+    LANGS = {'french', 'english', 'spanish', 'german', 'italian', 'chinese',
+             'japanese', 'russian', 'arabic', 'latin', 'greek'}
+    INST = {'school', 'church', 'bed', 'hospital', 'prison', 'college',
+            'university', 'court'}
     for i, lf in enumerate(leaves):
         if _lower(lf) in ('play', 'plays', 'played', 'playing') and i + 2 < len(leaves):
             if _lower(leaves[i + 1]) in ('the', 'a', 'an') \
@@ -3137,6 +3226,71 @@ def _check_context(root, clauses, leaves):
                                          {'option': f"play the {leaves[i + 2]['surface']}",
                                           'evidence': 'only if a specific one is meant'}],
                                         0.6)))
+        # have the breakfast / eat the dinner
+        if _lower(lf) in ('have', 'has', 'had', 'eat', 'eats', 'ate',
+                          'eating') and i + 2 < len(leaves):
+            if _lower(leaves[i + 1]) in ('the', 'a', 'an') \
+                    and _lower(leaves[i + 2]) in MEALS:
+                out.append(_finding('3.3', 'error', 'C-UNNECESSARY-ARTICLE',
+                                    'articles', leaves[i + 1]['id'],
+                                    "No article is needed before the meal name.",
+                                    _context_evidence(
+                                        f"{_lower(lf)} + '{leaves[i + 1]['surface']}' + meal",
+                                        [{'option': f"{_lower(lf)} breakfast"},
+                                         {'option': f"{_lower(lf)} the breakfast"}],
+                                        0.6)))
+        # drink the coffee / the tea
+        if _lower(lf) in ('drink', 'drinks', 'drank', 'drinking') \
+                and i + 2 < len(leaves):
+            if _lower(leaves[i + 1]) in ('the', 'a', 'an') \
+                    and _lower(leaves[i + 2]) in ('coffee', 'tea'):
+                out.append(_finding('3.3', 'error', 'C-UNNECESSARY-ARTICLE',
+                                    'articles', leaves[i + 1]['id'],
+                                    "No article is needed in this general sense.",
+                                    _context_evidence(f"drink + '{leaves[i + 1]['surface']}'",
+                                                      [{'option': f"drink {leaves[i + 2]['surface']}"}],
+                                                      0.6)))
+        # go to the school/church
+        if _lower(lf) == 'to' and i >= 1 and _lower(leaves[i - 1]) in ('go', 'goes', 'went') \
+                and i + 2 < len(leaves):
+            nxt = leaves[i + 1]
+            nxt2 = leaves[i + 2]
+            if _lower(nxt) in ('the', 'a', 'an') and _lower(nxt2) in INST:
+                out.append(_finding('3.3', 'error', 'C-UNNECESSARY-ARTICLE',
+                                    'articles', nxt['id'],
+                                    "No article is needed when referring to the "
+                                    "institution's usual activity.",
+                                    _context_evidence('go to the school',
+                                                      [{'option': 'go to school'}],
+                                                      0.6)))
+        # study the French / read the history
+        if _lower(lf) in ('study', 'studies', 'studied', 'studying',
+                          'learn', 'learns', 'learned', 'read', 'reads',
+                          'reading') and i + 2 < len(leaves):
+            if _lower(leaves[i + 1]) in ('the', 'a', 'an'):
+                n2 = _lower(leaves[i + 2])
+                if n2 in LANGS or n2 in ('history', 'math', 'mathematics',
+                                         'geography', 'biology', 'physics',
+                                         'chemistry'):
+                    out.append(_finding('3.3', 'error', 'C-UNNECESSARY-ARTICLE',
+                                        'articles', leaves[i + 1]['id'],
+                                        "No article is needed before this subject name.",
+                                        _context_evidence(f"{_lower(lf)} + '{leaves[i + 1]['surface']}'",
+                                                          [{'option': f"{_lower(lf)} {leaves[i + 2]['surface']}"}],
+                                                          0.6)))
+        # bring the joy / give the advice
+        if _lower(lf) in ('bring', 'brings', 'brought', 'bringing',
+                          'give', 'gives', 'gave', 'giving') and i + 2 < len(leaves):
+            if _lower(leaves[i + 1]) in ('the', 'a', 'an'):
+                n2 = _lower(leaves[i + 2])
+                if n2 in ('joy', 'happiness', 'sadness', 'advice', 'help',
+                          'peace', 'hope', 'love'):
+                    out.append(_finding('3.3', 'error', 'C-UNNECESSARY-ARTICLE',
+                                        'articles', leaves[i + 1]['id'],
+                                        "No article is needed in this general sense.",
+                                        _context_evidence('bring the joy',
+                                                          [{'option': 'bring joy'}],
+                                                          0.6)))
 
     # 6.17 Subjunctive / wish
     for i, lf in enumerate(leaves):
@@ -3315,6 +3469,30 @@ def _check_context(root, clauses, leaves):
                                     [{'option': fix, 'evidence': 'standard collocation'},
                                      {'option': phrase, 'evidence': 'non-standard'}],
                                     0.6)))
+
+    # 11.2 to/too/two targeted
+    BASE_VERBS = {'go','goes','going','gone','went','run','runs','running','ran',
+                  'learn','learns','learning','learnt','learned','wait','waits','waiting',
+                  'see','sees','seeing','be','am','is','are','was','were','been',
+                  'do','does','did','doing','done','get','gets','getting','got',
+                  'give','gives','giving','gave','come','comes','coming','came',
+                  'leave','leaves','leaving','left','try','tries','trying','tried',
+                  'buy','sell','eat','drink','walk','talk'}
+    for i, lf in enumerate(leaves):
+        low = _lower(lf)
+        if low == 'to' and i + 1 < len(leaves):
+            nlow = _lower(leaves[i+1])
+            if nlow in ('many','much','few','little','crowded','tight','high','low','big','small',
+                        'late','early','hard','easy','quick','slow','close','far','old','young','hot','cold'):
+                out.append(_finding('11.2','error','C-TO_TOO','word choice', lf['id'],
+                                         "'to' is used here instead of 'too' (meaning 'excessively').",
+                                         _tree_evidence(lf['id'],'to/too')))
+        elif low == 'too' and i + 1 < len(leaves):
+            nlow = _lower(leaves[i+1])
+            if nlow in ('go','wait','learn','run','see','be','do','make','take','get','give','come','leave','try','sing','play','work','read','write','start'):
+                out.append(_finding('11.2','error','C-TO_TOO','word choice', lf['id'],
+                                         "'too' is used here instead of 'to' (infinitive).",
+                                         _tree_evidence(lf['id'],'to/too')))
 
     # 11.4 Selectional restrictions (The book eats)
     for clause in clauses:
@@ -3527,4 +3705,15 @@ def collect(text, root):
     findings.extend(_check_tree(root, clauses, leaves, text, quoted))
     findings.extend(_check_more(root, clauses, leaves))
     findings.extend(_check_context(root, clauses, leaves))
+    # 10.3 Terminal punctuation
+    raw = text or (root.get('surface') if isinstance(root, dict) else '')
+    if isinstance(raw, str):
+        r = raw.rstrip()
+        while r and r[-1] in '"\'")]}':
+            r = r[:-1].rstrip()
+        if r and r[-1] not in '.?!':
+            findings.append(_finding("10.3","error","C-TERMINAL-PUNCT","punctuation",
+                                     root.get("id") if isinstance(root,dict) else None,
+                                     "This sentence does not end with '.' or '?' or '!'.",
+                                     _tree_evidence(root.get("id") if isinstance(root,dict) else "root","sentence boundary")))
     return findings

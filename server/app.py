@@ -30,7 +30,7 @@ ALLOW_ORIGIN = os.environ.get('SYNTUTOR_ALLOW_ORIGIN', '*')
 
 # Only these top-level frontend entries may be served statically. Anything else
 # under ROOT (server/, supabase/, scripts/, migrations, config) stays private.
-PUBLIC_TOP = {'index.html', 'login.html', 'css', 'js'}
+PUBLIC_TOP = {'index.html', 'login.html', 'css', 'js', 'content'}
 
 MIME = {
     '.html': 'text/html; charset=utf-8',

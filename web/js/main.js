@@ -476,7 +476,8 @@ function wireEvents() {
     if (quizMode) {
       returnToLocked();
       setQuizHintText();
-      analyzeForQuiz(ta.value);
+      const currentIndex = (session?.payload?.meta?.target_sentence || 1) - 1;
+      analyzeForQuiz(ta.value, currentIndex);
       return;
     }
     const changed = ta.value !== lastAnalyzedText;
@@ -726,7 +727,7 @@ async function loadQuizProgress() {
   if (!supabase || !clerk?.user?.id) return [];
   const { data, error } = await supabase
     .from('quiz_progress')
-    .select('rule_id, difficulty, completed_count, perfect_count')
+    .select('rule_id, completed_count, perfect_count')
     .eq('user_id', clerk.user.id);
   if (error) {
     console.warn('Failed to load quiz progress:', error.message);
@@ -735,9 +736,9 @@ async function loadQuizProgress() {
   return data || [];
 }
 
-// Records a finished quiz run (upserts a completion for rule+difficulty) and
-// returns the achievement ids that this run newly unlocked.
-async function trackQuizCompletion({ ruleId, difficulty, perfect }) {
+// Records a finished quiz run (upserts a completion for the rule) and returns
+// the achievement ids that this run newly unlocked.
+async function trackQuizCompletion({ ruleId, perfect }) {
   if (!progressAvailable()) return { newlyUnlocked: [], ran: false };
   const before = computeUnlocked(await loadQuizProgress());
   const existing = await supabase
@@ -745,17 +746,15 @@ async function trackQuizCompletion({ ruleId, difficulty, perfect }) {
     .select('completed_count, perfect_count')
     .eq('user_id', clerk.user.id)
     .eq('rule_id', ruleId)
-    .eq('difficulty', difficulty)
     .maybeSingle();
   const prev = existing?.error ? {} : (existing?.data || {});
   const { error } = await supabase.from('quiz_progress').upsert({
     user_id: clerk.user.id,
     rule_id: ruleId,
-    difficulty,
     completed_count: (prev.completed_count || 0) + 1,
     perfect_count: (prev.perfect_count || 0) + (perfect ? 1 : 0),
     last_completed_at: new Date().toISOString(),
-  }, { onConflict: 'user_id,rule_id,difficulty' });
+  }, { onConflict: 'user_id,rule_id' });
   if (error) {
     console.warn('Failed to record quiz completion:', error.message);
     return { newlyUnlocked: [], ran: false };
@@ -837,9 +836,6 @@ async function executePipeline(opts = {}) {
 
   const text = document.querySelector('#inputText').value.trim();
   if (!text) {
-    showCanvasMessage('error', 'No analyzable sentence', ['Enter some English text first, then submit it.']);
-    renderSentenceVerdict(['\u26D4 No analyzable sentence', 'Enter some English text first, then submit it.'], true);
-    renderDiagnostic('No analyzable sentence', ['Enter some English text first, then submit it.']);
     transition(STATES.IDLE, 'empty input -> back to idle');
     return;
   }

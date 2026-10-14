@@ -6,11 +6,10 @@
 create table if not exists public.quiz_progress (
   user_id text not null,
   rule_id text not null,
-  difficulty text not null check (difficulty in ('easy', 'medium', 'hard')),
   completed_count integer not null default 0 check (completed_count >= 0),
   perfect_count integer not null default 0 check (perfect_count >= 0),
   last_completed_at timestamp with time zone default timezone('utc'::text, now()) not null,
-  primary key (user_id, rule_id, difficulty)
+  primary key (user_id, rule_id)
 );
 
 -- Achievements only need the user's own rows, but leaderboards may one day
