@@ -100,12 +100,6 @@
             <polyline points="12 6 12 12 16 14"></polyline>
           </svg>
         </button>
-        <button id="devPanelToggle" class="menu-btn" type="button" aria-expanded="false" aria-controls="devPanelOverlay" aria-label="Developer panel" title="Developer panel">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="4 17 10 11 4 5"></polyline>
-            <line x1="12" y1="19" x2="20" y2="19"></line>
-          </svg>
-        </button>
       </div>
     </header>
 
@@ -159,7 +153,7 @@
 
     <div class="topbar">
       <div class="chat-badge-row">
-        <span class="chat-tag">Untitled chat...</span>
+        <span id="chatTitle" class="chat-tag">Untitled chat...</span>
       </div>
       <div class="input-row">
         <div class="input-editor">
@@ -208,30 +202,15 @@
       </aside>
     </main>
 
-    <div id="devPanelOverlay" class="dev-overlay" aria-hidden="true">
-      <div class="dev-grid">
-        <section class="card">
-          <h3>Sentence verdict</h3>
-          <div id="sentenceVerdict"><p class="muted">Submit a sentence to see the auto-generated pedagogical summary.</p></div>
-        </section>
-        <section class="card">
-          <h3>benepar parse string</h3>
-          <pre id="parseString" class="mono">—</pre>
-        </section>
-        <section class="card">
-          <h3>Token stream (spaCy)</h3>
-          <pre id="tokenStream" class="mono">—</pre>
-        </section>
-        <section class="card log-card">
-          <h3>System log / State machine</h3>
-          <div id="logPanel" class="log-panel"></div>
-        </section>
-      </div>
-    </div>
-
     <div id="historyDrawerBackdrop" class="drawer-backdrop">
       <aside class="history-drawer" aria-label="Analysis history">
         <div class="drawer-header">
+          <button id="historyNewSessionBtn" type="button" aria-label="Start a new blank session" title="Start a new blank session">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </button>
           <h2>Analysis History</h2>
           <button id="closeDrawerBtn" class="drawer-close" type="button" aria-label="Close history">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

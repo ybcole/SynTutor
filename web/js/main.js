@@ -4,8 +4,8 @@ import { TreeRenderer } from './renderer.js';
 import { getSavedTheme, setTheme } from './theme.js';
 import {
   log,
-  clearOverlay, showCanvasMessage, renderSentenceVerdict, renderNodeDetail,
-  renderDiagnostic, fillDevPanel, applySentenceSelection, plainName,
+  clearOverlay, showCanvasMessage, renderNodeDetail,
+  renderDiagnostic, applySentenceSelection, plainName,
 } from './ui.js';
 import { openQuizView, closeQuizView, initQuiz, quizInputHint } from './quiz.js';
 import { levelFromXp } from './quiz/level.js';
@@ -14,17 +14,28 @@ import { computeUnlocked } from './quiz/achievements.js';
 let clerk = null;
 let supabase = null;
 let isGuest = true;
+let activeSessionId = null;
 
 try {
   clerk = await loadClerk();
   if (clerk?.session) {
     isGuest = false;
+    activeSessionId = clerk.session.id;
   }
   // Create the Supabase client for every mode: authenticated reads/writes use
   // the Clerk session token, while guests get an anonymous client that can
   // still read the public leaderboard.
   supabase = await createSupabaseClient();
   clerk?.addListener(() => {
+    const sessionId = clerk.session?.id ?? null;
+    if (sessionId !== activeSessionId) {
+      // Identity changed (account switch, sign-in, or sign-out): the
+      // in-memory history caches belong to the previous identity, so drop
+      // them. History reloads lazily from Supabase on the next drawer open.
+      activeSessionId = sessionId;
+      recordedTexts.clear();
+      cachedHistory = [];
+    }
     isGuest = !clerk.session;
     updateAuthState();
   });
@@ -109,7 +120,6 @@ function initThemeAndMenu() {
     openHistoryDrawer();
   });
 
-  initDevPanel();
   initProfileMenu();
 }
 
@@ -157,22 +167,37 @@ function initSidebar() {
   });
 }
 
+function setChatTitle(title) {
+  const el = document.querySelector('#chatTitle');
+  if (!el) return;
+  el.textContent = title && title.trim() ? title : 'Untitled chat...';
+  el.title = title && title.trim() ? title : '';
+}
+
 function openHistoryDrawer() {
   if (isGuest) return; // history is an account-only feature
   document.querySelector('#historyDrawerBackdrop')?.classList.add('active');
   loadAndRenderHistory();
 }
 
-function openAuthModal() {
+function openAuthModal(mode = 'signin') {
   const backdrop = document.querySelector('#authModalBackdrop');
   if (!backdrop) return;
+  // The add-account flow runs while already signed in, so offering
+  // "Continue as guest" there is meaningless — hide that row.
+  const guestRow = backdrop.querySelector('.modal-close-row');
+  if (guestRow) guestRow.hidden = mode === 'add-account';
   backdrop.classList.add('active');
   const email = document.querySelector('#authEmail');
   if (email) setTimeout(() => email.focus(), 0);
 }
 
 function closeAuthModal() {
-  document.querySelector('#authModalBackdrop')?.classList.remove('active');
+  const backdrop = document.querySelector('#authModalBackdrop');
+  backdrop?.classList.remove('active');
+  // Restore the guest row so the next open starts from the default state.
+  const guestRow = backdrop?.querySelector('.modal-close-row');
+  if (guestRow) guestRow.hidden = false;
 }
 
 function applyTheme(theme) {
@@ -213,24 +238,6 @@ function updateAuthState() {
   }
   renderProfileMenu();
   refreshProfileStats();
-}
-
-let devPanelOpen = false;
-
-function setDevPanelOpen(open) {
-  devPanelOpen = open;
-  const overlay = document.querySelector('#devPanelOverlay');
-  const toggle = document.querySelector('#devPanelToggle');
-  overlay?.classList.toggle('open', open);
-  toggle?.classList.toggle('open', open);
-  toggle?.setAttribute('aria-expanded', String(open));
-  overlay?.setAttribute('aria-hidden', String(!open));
-}
-
-function initDevPanel() {
-  document.querySelector('#devPanelToggle')?.addEventListener('click', () => {
-    setDevPanelOpen(!devPanelOpen);
-  });
 }
 
 let profileMenuOpen = false;
@@ -306,7 +313,10 @@ function refreshProfileStats() {
 function visibleMenuItems() {
   const menu = document.querySelector('#profileMenu');
   if (!menu) return [];
-  return [...menu.querySelectorAll('.profile-menu-item')].filter((el) => !el.hidden);
+  // offsetParent excludes items inside the currently-hidden view, so arrow
+  // keys never jump into the view that isn't showing.
+  return [...menu.querySelectorAll('.profile-menu-item, .profile-account-item')]
+    .filter((el) => !el.hidden && el.offsetParent !== null);
 }
 
 function focusFirstMenuItem() {
@@ -392,7 +402,7 @@ async function openProfileAccounts() {
 function initProfileMenu() {
   document.querySelector('#profileAddAccount')?.addEventListener('click', () => {
     setProfileMenu(false);
-    openAuthModal();
+    openAuthModal('add-account');
   });
   document.querySelector('#profileSwitchAccount')?.addEventListener('click', () => {
     openProfileAccounts();
@@ -406,7 +416,7 @@ function initProfileMenu() {
   });
   document.querySelector('#profileSignIn')?.addEventListener('click', () => {
     setProfileMenu(false);
-    openAuthModal();
+    openAuthModal('signin');
   });
   document.addEventListener('click', (e) => {
     if (profileMenuOpen && !e.target.closest('.profile-anchor')) setProfileMenu(false);
@@ -477,6 +487,10 @@ function wireEvents() {
   document.querySelector('#closeDrawerBtn')?.addEventListener('click', () => {
     drawer?.classList.remove('active');
   });
+  document.querySelector('#historyNewSessionBtn')?.addEventListener('click', () => {
+    drawer?.classList.remove('active');
+    startNewSession();
+  });
   drawer?.addEventListener('click', (e) => {
     if (e.target === drawer) drawer.classList.remove('active');
   });
@@ -496,7 +510,6 @@ function wireEvents() {
       setProfileMenu(false);
       return;
     }
-    if (devPanelOpen) setDevPanelOpen(false);
   });
 
   document.querySelectorAll('#historyFilters .filter-pill').forEach((btn) => {
@@ -559,6 +572,7 @@ function startNewSession() {
   session = null;
   lastAnalyzedText = null;
   historySpans = [];
+  setChatTitle('');
 
   const ta = document.querySelector('#inputText');
   const editor = document.querySelector('.input-editor');
@@ -574,12 +588,6 @@ function startNewSession() {
   renderer.clear();
   clearOverlay();
   renderNodeDetail(null, null, null);
-  renderSentenceVerdict(['Submit a sentence to see the auto-generated pedagogical summary.'], false);
-
-  const parseStr = document.querySelector('#parseString');
-  const tokStream = document.querySelector('#tokenStream');
-  if (parseStr) parseStr.textContent = '\u2014';
-  if (tokStream) tokStream.textContent = '\u2014';
 
   document.querySelector('#emptyTreeState')?.classList.remove('hidden');
 
@@ -605,7 +613,6 @@ function activateSentenceAtCaret() {
 
 function failPipeline(title, lines) {
   showCanvasMessage('error', title, lines);
-  renderSentenceVerdict([`\u{26D4} ${title}`, ...lines], true);
   renderDiagnostic(title, lines);
   transition(STATES.VIEWING, 'request failed -> diagnostic shown');
   log(`Request failed: ${title} \u2014${lines[0] || ''}`);
@@ -773,7 +780,6 @@ async function analyzeForQuiz(text, index = null) {
     ]);
     return null;
   }
-  fillDevPanel(payload);
   applyStatuses(payload.tree, payload.node_details, payload.summary);
   session = { payload };
   lastAnalyzedText = clean;
@@ -811,7 +817,6 @@ async function executePipeline(opts = {}) {
   const text = document.querySelector('#inputText').value.trim();
   if (!text) {
     showCanvasMessage('error', 'No analyzable sentence', ['Enter some English text first, then submit it.']);
-    renderSentenceVerdict(['\u26D4 No analyzable sentence', 'Enter some English text first, then submit it.'], true);
     renderDiagnostic('No analyzable sentence', ['Enter some English text first, then submit it.']);
     transition(STATES.IDLE, 'empty input -> back to idle');
     return;
@@ -839,7 +844,6 @@ async function executePipeline(opts = {}) {
     ]);
     return;
   }
-  fillDevPanel(payload);
   log(`Stage 2: payload received (${Object.keys(payload.nodes).length} nodes) \u00b7${payload.meta.backend}`);
 
   const tokens = payload.parse.tokens;
@@ -855,11 +859,11 @@ async function executePipeline(opts = {}) {
   const s = payload.summary;
   log(`Stage 5: rule-matrix validation \u2014 ${s.valid_edges} valid / ${s.violated_edges} violated / ${s.unrated_edges} unrated \u00b7 fired${JSON.stringify(s.constraints_fired)}`);
 
-  renderSentenceVerdict(payload.explainers.basic.split('\n'), payload.summary.verdict || payload.summary.valid);
   log(`Stage 6: explanations generated \u2014 basic + ${payload.explainers.contrastive ? 'contrastive' : '(none)'}`);
 
   session = { payload };
   lastAnalyzedText = text;
+  setChatTitle(text);
 
   document.querySelector('#inputText').value = text;
   const spans = buildHighlightSpans(text, payload);
@@ -1081,28 +1085,18 @@ function renderHistoryItems() {
 
   container.innerHTML = '';
   filtered.forEach((entry) => {
-    const card = document.createElement('div');
-    card.className = 'history-item';
-    card.setAttribute('role', 'button');
-    card.setAttribute('tabindex', '0');
-    card.title = 'Open this analysis';
-
-    const date = new Date(entry.created_at).toLocaleDateString('en-US', {
-      month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit',
-    });
-
     const isError = !entry.is_valid;
 
-    const head = document.createElement('div');
-    head.className = 'hist-head';
+    const card = document.createElement('div');
+    card.className = `history-item ${isError ? 'is-invalid' : 'is-valid'}`;
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.title = entry.sentence;
+    card.setAttribute('aria-label', `${entry.sentence} — ${entry.is_valid ? 'Valid' : 'Invalid'}`);
 
-    const badge = document.createElement('span');
-    badge.className = `hist-badge ${isError ? 'err' : 'ok'}`;
-    badge.textContent = entry.is_valid ? 'Valid' : 'Invalid';
-
-    const timeSpan = document.createElement('span');
-    timeSpan.className = 'hist-time';
-    timeSpan.textContent = date;
+    const titleP = document.createElement('p');
+    titleP.className = 'hist-title';
+    titleP.textContent = entry.sentence;
 
     const delBtn = document.createElement('button');
     delBtn.type = 'button';
@@ -1115,40 +1109,12 @@ function renderHistoryItems() {
       </svg>
     `;
 
-    const openSvg = document.createElement('span');
-    openSvg.className = 'hist-open';
-    openSvg.setAttribute('aria-hidden', 'true');
-    openSvg.innerHTML = `
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    `;
-
-    head.appendChild(badge);
-    head.appendChild(timeSpan);
-    head.appendChild(delBtn);
-    head.appendChild(openSvg);
-
-    const sentenceP = document.createElement('p');
-    sentenceP.className = 'hist-sentence';
-    sentenceP.textContent = entry.sentence;
-    sentenceP.title = entry.sentence;
-
-    const chipsDiv = document.createElement('div');
-    chipsDiv.className = 'hist-chips';
-    (entry.constraints_fired || []).forEach((constraint) => {
-      const chip = document.createElement('span');
-      chip.className = `hist-chip ${isError ? 'err' : ''}`;
-      chip.textContent = constraint;
-      chipsDiv.appendChild(chip);
-    });
-
-    card.appendChild(head);
-    card.appendChild(sentenceP);
-    if (entry.constraints_fired?.length) card.appendChild(chipsDiv);
+    card.appendChild(titleP);
+    card.appendChild(delBtn);
 
     const openEntry = () => {
       document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
+      setChatTitle(entry.sentence);
       const ta = document.querySelector('#inputText');
       ta.value = entry.sentence;
       recordedTexts.add(entry.sentence);
