@@ -61,42 +61,16 @@ function syncCanvasEmptyState() {
   empty.classList.toggle('hidden', state !== STATES.IDLE);
 }
 
-function getGuestHistory() {
+// Analysis history is an account-only feature: entries live in Supabase, scoped
+// to the signed-in user. Guests have no server-side identity, so nothing is
+// collected or persisted for them. This one-time cleanup drops entries written
+// by older builds that cached guest history in localStorage.
+function purgeLegacyGuestHistory() {
   try {
-    const stored = JSON.parse(localStorage.getItem('syntutor_guest_history') || '[]');
-    return Array.isArray(stored) ? stored : [];
+    localStorage.removeItem('syntutor_guest_history');
   } catch {
-    return [];
+    // localStorage unavailable — nothing to clean up.
   }
-}
-
-function deleteGuestHistory(id) {
-  const items = getGuestHistory().filter((item) => item.id !== id);
-  localStorage.setItem('syntutor_guest_history', JSON.stringify(items));
-}
-
-// Mirror of the server-side history cap (Supabase query uses LIMIT 50).
-const GUEST_HISTORY_LIMIT = 50;
-
-function guestHistoryId() {
-  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
-    return `guest-${crypto.randomUUID()}`;
-  }
-  return `guest-${Date.now()}-${Math.floor(Math.random() * 1e6)}`;
-}
-
-function appendGuestHistory(entry) {
-  try {
-    const items = getGuestHistory().filter((item) => item.sentence !== entry.sentence);
-    items.unshift(entry);
-    localStorage.setItem('syntutor_guest_history', JSON.stringify(items.slice(0, GUEST_HISTORY_LIMIT)));
-  } catch (err) {
-    console.warn('Failed to save guest history:', err);
-  }
-}
-
-function clearGuestHistory() {
-  localStorage.removeItem('syntutor_guest_history');
 }
 
 export function boot() {
@@ -107,6 +81,7 @@ export function boot() {
   });
   wireEvents();
   initThemeAndMenu();
+  purgeLegacyGuestHistory();
   initSidebar();
   initQuiz({ analyze: analyzeForQuiz, setQuizMode, progress });
   transition(STATES.IDLE, 'system ready');
@@ -183,6 +158,7 @@ function initSidebar() {
 }
 
 function openHistoryDrawer() {
+  if (isGuest) return; // history is an account-only feature
   document.querySelector('#historyDrawerBackdrop')?.classList.add('active');
   loadAndRenderHistory();
 }
@@ -231,7 +207,8 @@ function updateAuthState() {
       </svg>
     `;
     chip.title = 'Log In / Sign Up';
-    if (historyBtn) historyBtn.hidden = false;
+    if (historyBtn) historyBtn.hidden = true;
+    cachedHistory = [];
     document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
   }
   renderProfileMenu();
@@ -532,24 +509,20 @@ function wireEvents() {
   });
 
   document.querySelector('#clearHistoryBtn')?.addEventListener('click', async () => {
-    if (!cachedHistory.length) return;
-    if (confirm('Clear all analysis history? This action cannot be undone.')) {
-      if (!isGuest && supabase && clerk?.user?.id) {
-        const { error } = await supabase
-          .from('analysis_history')
-          .delete()
-          .eq('user_id', clerk.user.id);
+    if (isGuest || !supabase || !clerk?.user?.id || !cachedHistory.length) return;
+    if (!confirm('Clear all analysis history? This action cannot be undone.')) return;
 
-        if (error) {
-          alert('Failed to clear history: ' + error.message);
-          return;
-        }
-      } else {
-        clearGuestHistory();
-      }
-      cachedHistory = [];
-      renderHistoryItems();
+    const { error } = await supabase
+      .from('analysis_history')
+      .delete()
+      .eq('user_id', clerk.user.id);
+
+    if (error) {
+      alert('Failed to clear history: ' + error.message);
+      return;
     }
+    cachedHistory = [];
+    renderHistoryItems();
   });
 }
 
@@ -904,37 +877,26 @@ async function executePipeline(opts = {}) {
   log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
 
   const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
-  if (!isNavigation && !recordedTexts.has(text)) {
-    if (!isGuest && supabase && clerk?.user?.id) {
-      try {
-        const { error: insertError } = await supabase.from('analysis_history').insert({
-          user_id: clerk.user.id,
-          sentence: text,
-          is_valid: payload.summary.valid,
-          constraints_fired: payload.summary.constraints_fired,
-        });
-
-        if (insertError) {
-          console.warn('Failed to log history to Supabase:', insertError.message);
-          log(`Warning: Failed to save analysis history \u2014 ${insertError.message}`);
-        } else {
-          recordedTexts.add(text);
-          log('Stage 6b: analysis history recorded in Supabase');
-        }
-      } catch (dbErr) {
-        console.warn('Network error logging history:', dbErr);
-        log('Warning: Network error saving history');
-      }
-    } else {
-      recordedTexts.add(text);
-      appendGuestHistory({
-        id: guestHistoryId(),
+  // History is account-only: guests are never recorded.
+  if (!isNavigation && !isGuest && supabase && clerk?.user?.id && !recordedTexts.has(text)) {
+    try {
+      const { error: insertError } = await supabase.from('analysis_history').insert({
+        user_id: clerk.user.id,
         sentence: text,
         is_valid: payload.summary.valid,
         constraints_fired: payload.summary.constraints_fired,
-        created_at: new Date().toISOString(),
       });
-      log('Stage 6b: analysis history recorded locally (guest session)');
+
+      if (insertError) {
+        console.warn('Failed to log history to Supabase:', insertError.message);
+        log(`Warning: Failed to save analysis history \u2014 ${insertError.message}`);
+      } else {
+        recordedTexts.add(text);
+        log('Stage 6b: analysis history recorded in Supabase');
+      }
+    } catch (dbErr) {
+      console.warn('Network error logging history:', dbErr);
+      log('Warning: Network error saving history');
     }
   }
 }
@@ -1089,8 +1051,6 @@ async function loadAndRenderHistory() {
       return;
     }
     cachedHistory = data || [];
-  } else if (isGuest) {
-    cachedHistory = getGuestHistory();
   } else {
     cachedHistory = [];
   }
@@ -1112,9 +1072,9 @@ function renderHistoryItems() {
     container.textContent = '';
     const note = document.createElement('p');
     note.className = 'history-empty';
-    note.textContent = (isGuest && !cachedHistory.length)
-      ? 'No guest history yet — analyses you run will appear here and persist in this browser.'
-      : 'No matching analyses found.';
+    note.textContent = cachedHistory.length
+      ? 'No matching analyses found.'
+      : 'No history yet — analyses you run will appear here.';
     container.appendChild(note);
     return;
   }
@@ -1205,21 +1165,18 @@ function renderHistoryItems() {
 
     delBtn.addEventListener('click', async (e) => {
       e.stopPropagation();
+      if (isGuest || !supabase || !clerk?.user?.id) return;
       delBtn.disabled = true;
 
-      if (!isGuest && supabase) {
-        const { error } = await supabase
-          .from('analysis_history')
-          .delete()
-          .eq('id', entry.id);
+      const { error } = await supabase
+        .from('analysis_history')
+        .delete()
+        .eq('id', entry.id);
 
-        if (error) {
-          alert('Failed to delete item: ' + error.message);
-          delBtn.disabled = false;
-          return;
-        }
-      } else {
-        deleteGuestHistory(entry.id);
+      if (error) {
+        alert('Failed to delete item: ' + error.message);
+        delBtn.disabled = false;
+        return;
       }
 
       cachedHistory = cachedHistory.filter((item) => item.id !== entry.id);
