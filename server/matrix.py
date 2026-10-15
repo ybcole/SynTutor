@@ -1949,8 +1949,37 @@ class MatrixEvaluator:
             'alternative_fix': self._subject_fix_alternative(subj, subj_head, vp_head),
             'targeted_outcome': (f"Subject ({subj_label}) + verb {target_pos} "
                                  f"instead of Subject ({subj_label}) + verb {vp_head['type']}"),
-            'edit': _edit(vp_head['span'][0], vp_head['span'][1], target)
+            'edit': _edit(vp_head['span'][0], vp_head['span'][1], target),
+            'alternative_edit': self._subject_alt_edit(subj, subj_head, vp_head)
         }
+
+    def _subject_alt_edit(self, subj, subj_head, vp_head):
+        """Deterministic edit for the alternative subject-based agreement repair."""
+        if subj is None or subj_head is None or vp_head is None:
+            return None
+        if is_coordinated(subj):
+            if verb_key(vp_head) != ('3', 'sg'):
+                return None
+            if person_of(subj_head) == '3':
+                word = _preserve_case(subj_head['surface'], _singular_noun(subj_head))
+            else:
+                word = 'she/he'
+            return _edit(subj['span'][0], subj['span'][1], word)
+        vkey = verb_key(vp_head)
+        if vkey == ('3', 'sg'):
+            if subj_head['type'] == 'PRP':
+                swap = {'they': 'he or she', 'we': 'I'}.get(_base_form(subj_head))
+                if swap is None:
+                    return None
+                return _edit(subj_head['span'][0], subj_head['span'][1],
+                            _preserve_case(subj_head['surface'], swap))
+            return _edit(subj_head['span'][0], subj_head['span'][1],
+                        _preserve_case(subj_head['surface'], _singular_noun(subj_head)))
+        if subj_head['type'] == 'PRP':
+            return None
+        plural = _plural_noun(_singular_noun(subj_head))
+        return _edit(subj_head['span'][0], subj_head['span'][1],
+                    _preserve_case(subj_head['surface'], plural))
 
     @staticmethod
     def _subject_fix_alternative(subj, subj_head, vp_head):
@@ -2018,7 +2047,10 @@ class MatrixEvaluator:
             'suggested_fix': suggested,
             'alternative_fix': alternative,
             'targeted_outcome': outcome,
-            'edit': _edit(head['span'][0], head['span'][1], fix_noun)
+            'edit': _edit(head['span'][0], head['span'][1], fix_noun),
+            'alternative_edit': _edit(node['span'][0], node['span'][1],
+                                    _preserve_case(node['surface'],
+                                                   'these' if numreq == 'sg' else 'this'))
         }
 
     @staticmethod
@@ -2040,7 +2072,9 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or use the singular noun '{_preserve_case(observed, singular)}' "
                                 "with a singular word like 'a' or 'this'."),
             'targeted_outcome': f"'{singular}' with a correct plural form",
-            'edit': _edit(node['span'][0], node['span'][1], _preserve_case(observed, expected))
+            'edit': _edit(node['span'][0], node['span'][1], _preserve_case(observed, expected)),
+            'alternative_edit': _edit(node['span'][0], node['span'][1],
+                                    _preserve_case(observed, singular))
         }
 
     def _rem_aux(self, node, parent):
@@ -2098,7 +2132,12 @@ class MatrixEvaluator:
             'suggested_fix': suggested,
             'alternative_fix': alternative,
             'targeted_outcome': outcome,
-            'edit': _edit(verb['span'][0], verb['span'][1], target)
+            'edit': _edit(verb['span'][0], verb['span'][1], target),
+            'alternative_edit': (
+                _edit(node['span'][0], verb['span'][1],
+                      _preserve_case(verb['surface'], _third_present(base)))
+                if cls in ('modal', 'do') else None
+            )
         }
 
     def _rem_det_stack(self, node, parent):
@@ -2117,7 +2156,8 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or keep a different one instead: drop '{keep}' and keep "
                                 f"{extras}, so only one determiner remains."),
             'targeted_outcome': "One determiner in the phrase",
-            'edit': _edit(dets[1]['span'][0], dets[1]['span'][1], '')
+            'edit': _edit(dets[1]['span'][0], dets[1]['span'][1], ''),
+            'alternative_edit': _edit(dets[0]['span'][0], dets[0]['span'][1], '')
         }
 
     def _rem_mod_pos(self, node, parent):
@@ -2157,6 +2197,8 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or replace the whole phrase '{parent['surface']}' with a "
                                 "person's name or a full noun phrase."),
             'targeted_outcome': f"'{det_s}' followed by a noun",
+            'edit': _edit(node['span'][1], node['span'][1],
+                          (adj_leaves[0]['surface'] + ' one') if adj_leaves else 'one')
         }
 
     @staticmethod
@@ -2316,7 +2358,13 @@ class MatrixEvaluator:
             'suggested_fix': suggested,
             'alternative_fix': alternative,
             'targeted_outcome': outcome,
-            'edit': _edit(node['span'][0], node['span'][1], _preserve_case(node['surface'], new_word))
+            'edit': _edit(node['span'][0], node['span'][1], _preserve_case(node['surface'], new_word)),
+            'alternative_edit': (
+                _edit(head['span'][0], head['span'][1],
+                      _preserve_case(head['surface'],
+                                     _plural_noun(_singular_noun(head))))
+                if word == 'fewer' else None
+            )
         }
 
     def _rem_double_comparative(self, node, parent):
@@ -2343,7 +2391,9 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or keep '{marker}' and write the plain form: "
                                 f"'{marker} {plain}' instead of '{sibling['surface']}'."),
             'targeted_outcome': f"'{sibling['surface']}' alone (no '{marker}')",
-            'edit': _edit(node['span'][0], node['span'][1], '')
+            'edit': _edit(node['span'][0], node['span'][1], ''),
+            'alternative_edit': _edit(sibling['span'][0], sibling['span'][1],
+                                    _preserve_case(sibling['surface'], plain))
         }
 
     def _rem_vp_head_noun(self, node, parent):
@@ -2396,6 +2446,11 @@ class MatrixEvaluator:
             'suggested_fix': suggested,
             'alternative_fix': None,
             'targeted_outcome': outcome,
+            'edit': (
+                _edit(vp_head['span'][0], vp_head['span'][0], 'is')
+                if vp_head['type'] in ('VBG', 'VBN')
+                else _edit(vp_head['span'][0], vp_head['span'][1], finite)
+            )
         }
 
     def _rem_fragment(self, node):

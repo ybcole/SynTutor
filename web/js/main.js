@@ -48,9 +48,11 @@ let activeHistoryFilter = 'all';
 let focus = null;               // active correction target
 let correctionMode = 'original'; // 'original' | 'corrected'
 let focusResult = null;          // {kind:'fixed'|'still', message}
+let previewLoading = null;       // 'corrected' | 'alternative' | null
 
 const correctionHandlers = {
-  onShowCorrected: () => showCorrected(),
+  onShowCorrected: () => showCorrected('corrected'),
+  onShowAlternative: () => showCorrected('alternative'),
   onShowOriginal: () => showOriginal(),
 };
 
@@ -63,7 +65,10 @@ function refreshCorrectionUi() {
     label: focus.label,
     mode: correctionMode,
     canCorrect: Boolean(focus.edit),
+    alternativeCanCorrect: Boolean(focus.alternativeEdit),
     correctedText: focus.corrected ? focus.corrected.text : '',
+    alternativeCorrectedText: focus.alternativeCorrected ? focus.alternativeCorrected.text : '',
+    loading: previewLoading,
     result: focusResult,
   }, correctionHandlers);
 }
@@ -84,7 +89,9 @@ function enterFocus(id, detail) {
     sentenceIndex: (payload.meta.target_sentence || 1) - 1,
     context: contextWords(payload, plan.scopeId),
     edit: (detail.remediation && detail.remediation.edit) || null,
+    alternativeEdit: (detail.remediation && detail.remediation.alternative_edit) || null,
     corrected: null,
+    alternativeCorrected: null,
   };
   correctionMode = 'original';
   focusResult = null;
@@ -93,37 +100,49 @@ function enterFocus(id, detail) {
   refreshCorrectionUi();
 }
 
-async function showCorrected() {
-  if (!focus || !focus.edit || !session) return;
-  if (!focus.corrected) {
-    const text = applyEdit(session.payload, focus.edit);
+async function showCorrected(variant = 'corrected') {
+  if (!focus || !session) return;
+  const isAlternative = variant === 'alternative';
+  const edit = isAlternative ? focus.alternativeEdit : focus.edit;
+  if (!edit) return;
+
+  const cacheKey = isAlternative ? 'alternativeCorrected' : 'corrected';
+  const modeValue = isAlternative ? 'alternative' : 'corrected';
+  const logLabel = isAlternative ? 'Alternative corrected preview' : 'Corrected preview';
+
+  if (!focus[cacheKey]) {
+    previewLoading = modeValue;
+    refreshCorrectionUi();
+    const text = applyEdit(session.payload, edit);
     let res = null;
     try {
-      res = await fetch('/api/parse', {
+      res = await fetch(`${API_BASE}/api/parse`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text }),
       });
     } catch (_e) { /* handled below */ }
+    previewLoading = null;
     if (!res || !res.ok) {
-      focusResult = { kind: 'still', message: 'Could not build the corrected tree right now.' };
+      focusResult = { kind: 'still', message: 'Could not build the preview tree right now.' };
       refreshCorrectionUi();
       return;
     }
     const cp = await res.json();
     applyStatuses(cp.tree, cp.node_details);
-    const expected = expectedScopeWords(session.payload, focus.scopeId, focus.edit);
-    focus.corrected = {
+    const expected = expectedScopeWords(session.payload, focus.scopeId, edit);
+    focus[cacheKey] = {
       payload: cp,
       text,
       scopeId: expected ? findScopeNode(cp, focus.scopeType, expected) : null,
     };
   }
-  correctionMode = 'corrected';
+
+  correctionMode = modeValue;
   focusResult = null;
-  renderer.setTree(focus.corrected.payload.tree);
-  if (focus.corrected.scopeId) renderer.focusSubtree(focus.corrected.scopeId, []);
-  log('Corrected preview: showing re-parsed tree (the learner\u2019s text is unchanged)');
+  renderer.setTree(focus[cacheKey].payload.tree);
+  if (focus[cacheKey].scopeId) renderer.focusSubtree(focus[cacheKey].scopeId, []);
+  log(`${logLabel}: showing re-parsed tree (the learner\u2019s text is unchanged)`);
   refreshCorrectionUi();
 }
 

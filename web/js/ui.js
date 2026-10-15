@@ -226,7 +226,13 @@ export function renderCorrectionPanel(info, handlers = {}) {
   if (!info) { box.hidden = true; return; }
   box.hidden = false;
 
-  if (info.label) {
+  const label = info.label || '';
+  const mode = info.mode || 'original';
+  const loading = info.loading || null;
+  const canCorrect = Boolean(info.canCorrect);
+  const altCanCorrect = Boolean(info.alternativeCanCorrect);
+
+  if (label) {
     const title = document.createElement('div');
     title.className = 'cp-title';
     title.textContent = 'Grammar feedback';
@@ -234,8 +240,22 @@ export function renderCorrectionPanel(info, handlers = {}) {
 
     const errorName = document.createElement('div');
     errorName.className = 'cp-error-name';
-    errorName.textContent = info.label;
+    errorName.textContent = label;
     box.appendChild(errorName);
+
+    if (loading) {
+      const loadingRow = document.createElement('div');
+      loadingRow.className = 'cp-loading';
+      const spinner = document.createElement('span');
+      spinner.className = 'loading-spinner';
+      const text = document.createElement('span');
+      text.textContent = loading === 'alternative'
+        ? 'Building alternative preview\u2026'
+        : 'Building corrected preview\u2026';
+      loadingRow.appendChild(spinner);
+      loadingRow.appendChild(text);
+      box.appendChild(loadingRow);
+    }
 
     const row = document.createElement('div');
     row.className = 'cp-actions';
@@ -248,12 +268,25 @@ export function renderCorrectionPanel(info, handlers = {}) {
       if (fn) b.addEventListener('click', fn);
       return b;
     };
-    if (info.mode === 'corrected') {
-      row.appendChild(mk('Return to original tree', '', handlers.onShowOriginal, false));
-    } else {
-      row.appendChild(mk('Check the corrected tree', 'primary', handlers.onShowCorrected, !info.canCorrect));
+
+    if (mode === 'corrected' || mode === 'alternative') {
+      row.appendChild(mk('Return to original tree', '', handlers.onShowOriginal, loading));
     }
-    box.appendChild(row);
+    if (mode === 'original') {
+      row.appendChild(mk('Preview suggested fix', 'primary', handlers.onShowCorrected,
+        loading || !canCorrect));
+      if (altCanCorrect) {
+        row.appendChild(mk('Preview alternative fix', '', handlers.onShowAlternative, loading));
+      }
+    } else if (mode === 'corrected') {
+      if (altCanCorrect) {
+        row.appendChild(mk('Preview alternative fix', '', handlers.onShowAlternative, loading));
+      }
+    } else if (mode === 'alternative') {
+      row.appendChild(mk('Preview suggested fix', 'primary', handlers.onShowCorrected,
+        loading || !canCorrect));
+    }
+    if (row.childElementCount) box.appendChild(row);
   }
 
   if (info.result) {
