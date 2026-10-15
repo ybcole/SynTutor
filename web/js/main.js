@@ -52,18 +52,13 @@ let focusResult = null;          // {kind:'fixed'|'still', message}
 const correctionHandlers = {
   onShowCorrected: () => showCorrected(),
   onShowOriginal: () => showOriginal(),
-  onCheck: () => checkEdit(),
 };
 
 function refreshCorrectionUi() {
-  const bar = document.querySelector('#focusBar');
   if (!focus) {
-    if (bar) bar.hidden = true;
     renderCorrectionPanel(focusResult ? { result: focusResult } : null, correctionHandlers);
     return;
   }
-  if (bar) bar.hidden = false;
-  document.querySelector('#focusLabel').textContent = `Zoomed: ${focus.label}`;
   renderCorrectionPanel({
     label: focus.label,
     mode: correctionMode,
@@ -93,15 +88,9 @@ function enterFocus(id, detail) {
   };
   correctionMode = 'original';
   focusResult = null;
-  renderer.focusSubtree(plan.scopeId, plan.pair);
+  renderer.focusNode(plan.nodeId, plan.scopeId, plan.pair);
   log(`Zoom: ${detail.constraint} \u2192 subtree ${plan.scopeType} (${plan.pair.length} linked node(s))`);
   refreshCorrectionUi();
-}
-
-function exitFocus() {
-  if (correctionMode === 'corrected' && session) renderer.setTree(session.payload.tree);
-  renderer.clearFocus();
-  resetFocusState();
 }
 
 async function showCorrected() {
@@ -142,14 +131,9 @@ function showOriginal() {
   if (!focus || !session) return;
   correctionMode = 'original';
   renderer.setTree(session.payload.tree);
-  renderer.focusSubtree(focus.scopeId, focus.pair);
+  renderer.focusNode(focus.nodeId, focus.scopeId, focus.pair);
   renderer.select(focus.nodeId);
   refreshCorrectionUi();
-}
-
-function checkEdit() {
-  if (!focus) return;
-  runPipeline({ index: focus.sentenceIndex });
 }
 
 // Called after a re-parse while a correction target is active.
@@ -169,12 +153,12 @@ function recheckFocus(payload) {
   const left = payload.summary.violations.length + (payload.summary.root_error ? 1 : 0);
   focus = null;
   correctionMode = 'original';
-  focusResult = {
-    kind: 'fixed',
-    message: left
-      ? `That error is fixed. ${left} other issue(s) remain \u2014 click a red word to continue.`
-      : 'Fixed! The sentence passes every check \u2014 here is its syntax tree.',
-  };
+  focusResult = left
+    ? {
+      kind: 'fixed',
+      message: `That error is fixed. ${left} other issue(s) remain \u2014 click a red word to continue.`,
+    }
+    : null;
   renderer.clearFocus();
   refreshCorrectionUi();
   log(`Re-check: ${prev.constraint} no longer fires \u2014 ${left} issue(s) left`);
@@ -532,8 +516,6 @@ function wireEvents() {
       activateSentenceAtCaret();
     }
   });
-
-  document.querySelector('#backToTreeBtn')?.addEventListener('click', exitFocus);
 
   const drawer = document.querySelector('#historyDrawerBackdrop');
   document.querySelector('#closeDrawerBtn')?.addEventListener('click', () => {

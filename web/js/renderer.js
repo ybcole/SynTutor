@@ -378,7 +378,6 @@ export class TreeRenderer {
     for (const l of this.layoutData.layout.values()) {
       this._drawNode(l);
     }
-    this._drawPairLink();
 
     ctx.restore();
     this._drawTooltip();
@@ -505,6 +504,31 @@ export class TreeRenderer {
       scale,
       tx: w / 2 - ((x0 + x1) / 2) * scale,
       ty: h / 2 - ((y0 + y1) / 2) * scale,
+    });
+    return true;
+  }
+
+  /** Center and emphasize an error node without reducing the current zoom. */
+  focusNode(nodeId, scopeId, pairIds = []) {
+    const L = this.layoutData;
+    const target = L && L.layout.get(nodeId);
+    if (!target) return false;
+    const inScope = new Set();
+    const scopeNode = scopeId && L.layout.get(scopeId) ? L.layout.get(scopeId).node : null;
+    const walk = (n) => {
+      inScope.add(n.id);
+      for (const c of n.children || []) walk(c);
+    };
+    if (scopeNode) walk(scopeNode);
+    else inScope.add(nodeId);
+    const w = this.canvas.clientWidth || this.canvas.width;
+    const h = this.canvas.clientHeight || this.canvas.height;
+    const scale = Math.min(Math.max(this.view.scale, 2.2), 3);
+    this.focus = { scopeId: scopeId || nodeId, inScope, pair: pairIds.filter((id) => L.layout.has(id)) };
+    this._animateTo({
+      scale,
+      tx: w / 2 - target.x * scale,
+      ty: h / 2 - target.y * scale,
     });
     return true;
   }

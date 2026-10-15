@@ -229,8 +229,13 @@ export function renderCorrectionPanel(info, handlers = {}) {
   if (info.label) {
     const title = document.createElement('div');
     title.className = 'cp-title';
-    title.textContent = `Fix this error \u2014 ${info.label}`;
+    title.textContent = 'Grammar feedback';
     box.appendChild(title);
+
+    const errorName = document.createElement('div');
+    errorName.className = 'cp-error-name';
+    errorName.textContent = info.label;
+    box.appendChild(errorName);
 
     const row = document.createElement('div');
     row.className = 'cp-actions';
@@ -243,27 +248,18 @@ export function renderCorrectionPanel(info, handlers = {}) {
       if (fn) b.addEventListener('click', fn);
       return b;
     };
-    row.appendChild(mk('Show corrected tree', '', handlers.onShowCorrected,
-      !info.canCorrect || info.mode === 'corrected'));
-    row.appendChild(mk('Back to original', '', handlers.onShowOriginal, info.mode !== 'corrected'));
-    row.appendChild(mk('Check my sentence', 'primary', handlers.onCheck, false));
-    box.appendChild(row);
-
-    const note = document.createElement('p');
-    note.className = 'cp-note';
     if (info.mode === 'corrected') {
-      note.textContent = `Showing the tree of \u201c${info.correctedText}\u201d. Your sentence has not changed \u2014 edit it yourself (double-click the text box), then press Check.`;
-    } else if (info.canCorrect) {
-      note.textContent = 'Edit the sentence yourself (double-click the text box), then press Check. Stuck? Preview the corrected tree.';
+      row.appendChild(mk('Return to original tree', '', handlers.onShowOriginal, false));
     } else {
-      note.textContent = 'Edit the sentence yourself, then press Check. No corrected-tree preview exists for this error type.';
+      row.appendChild(mk('Check the corrected tree', 'primary', handlers.onShowCorrected, !info.canCorrect));
     }
-    box.appendChild(note);
+    box.appendChild(row);
   }
 
   if (info.result) {
     const r = document.createElement('p');
     r.className = `cp-result ${info.result.kind === 'fixed' ? 'ok' : 'err'}`;
+    r.setAttribute('aria-live', 'polite');
     r.textContent = info.result.message;
     box.appendChild(r);
   }

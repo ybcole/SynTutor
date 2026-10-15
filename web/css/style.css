@@ -455,8 +455,6 @@ button:disabled {
 
 .word-invalid {
   color: var(--err);
-  text-decoration: underline wavy currentColor;
-  text-decoration-thickness: 1px;
 }
 
 .sentence-selected {
@@ -1146,25 +1144,15 @@ button:disabled {
 
 [hidden] { display: none !important; }
 
-.focus-bar {
-  position: absolute; top: 10px; right: 10px; z-index: 3;
-  display: flex; align-items: center; gap: 10px;
-  padding: 6px 8px 6px 12px;
-  background: #fff; border: 1px solid var(--err); border-radius: 999px;
-  box-shadow: 0 4px 14px rgba(43, 36, 64, 0.14);
-  font-size: 12px; font-weight: 600; color: var(--err);
-}
-.focus-bar button {
-  border: 1px solid var(--border); background: var(--surface); color: var(--ink);
-  border-radius: 999px; padding: 5px 11px; font: 600 12px Inter, sans-serif; cursor: pointer;
-}
-.focus-bar button:hover { border-color: var(--accent); color: var(--accent); }
-
 .correction-panel {
   border: 1px solid var(--border); border-radius: 10px; background: var(--surface);
-  padding: 12px; margin-bottom: 12px;
+  flex: 0 0 auto; padding: 14px; margin-bottom: 12px;
 }
-.cp-title { font-size: 12.5px; font-weight: 700; color: var(--err); margin-bottom: 8px; }
+.cp-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--err); margin-bottom: 4px;
+}
+.cp-error-name { font-size: 15px; font-weight: 700; line-height: 1.35; color: var(--ink); }
 .cp-actions { display: flex; flex-wrap: wrap; gap: 6px; }
 .cp-btn {
   border: 1px solid var(--border); background: var(--panel); color: var(--ink);
@@ -1174,7 +1162,6 @@ button:disabled {
 .cp-btn:disabled { opacity: 0.45; cursor: default; }
 .cp-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 .cp-btn.primary:hover:not(:disabled) { color: #fff; filter: brightness(1.08); }
-.cp-note { margin: 8px 0 0; font-size: 12px; line-height: 1.5; color: var(--muted); }
 .cp-result { margin: 8px 0 0; font-size: 12.5px; font-weight: 600; line-height: 1.5; }
 .cp-result.ok { color: var(--ok); }
 .cp-result.err { color: var(--err); }
