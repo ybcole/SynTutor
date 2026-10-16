@@ -1,0 +1,2011 @@
+category	label	sentence
+adjunct_island	good	Who should Derek hug after shocking Richard?
+adjunct_island	bad	Who should Derek hug Richard after shocking?
+adjunct_island	good	What had Theresa walked through while talking about that high school?
+adjunct_island	bad	What had Theresa walked through that high school while talking about?
+adjunct_island	good	Who will Katherine discover without hiring Erin?
+adjunct_island	bad	Who will Katherine discover Erin without hiring?
+adjunct_island	good	Who has Colleen aggravated before kissing Judy?
+adjunct_island	bad	Who has Colleen aggravated Judy before kissing?
+adjunct_island	good	What could a lot of cats break while finding all convertibles?
+adjunct_island	bad	What could a lot of cats break all convertibles while finding?
+adjunct_island	good	Who have most people discovered while embarrassing Erin?
+adjunct_island	bad	Who have most people discovered Erin while embarrassing?
+adjunct_island	good	Who was William firing before talking about Maria?
+adjunct_island	bad	Who was William firing Maria before talking about?
+adjunct_island	good	What is Denise descending while hiding a lot of hills?
+adjunct_island	bad	What is Denise descending a lot of hills while hiding?
+adjunct_island	good	Who does John leave while alarming Beverly?
+adjunct_island	bad	Who does John leave Beverly while alarming?
+adjunct_island	good	What was Melanie going to after taking those rivers?
+adjunct_island	bad	What was Melanie going to those rivers after taking?
+adjunct_island	good	Who could Bethany research before discussing Winston Churchill?
+adjunct_island	bad	Who could Bethany research Winston Churchill before discussing?
+adjunct_island	good	What could Jessica sell before noticing these spotlights?
+adjunct_island	bad	What could Jessica sell these spotlights before noticing?
+adjunct_island	good	What had Helen biked to without bothering Spain?
+adjunct_island	bad	What had Helen biked to Spain without bothering?
+adjunct_island	good	Who is Mary irritating after approaching Kenneth?
+adjunct_island	bad	Who is Mary irritating Kenneth after approaching?
+adjunct_island	good	Who might Rose flee from before returning to this customer?
+adjunct_island	bad	Who might Rose flee from this customer before returning to?
+anaphor_gender_agreement	good	Katherine can't help herself.
+anaphor_gender_agreement	bad	Katherine can't help himself.
+anaphor_gender_agreement	good	Karla could listen to herself.
+anaphor_gender_agreement	bad	Karla could listen to himself.
+anaphor_gender_agreement	good	Marie won't think about herself.
+anaphor_gender_agreement	bad	Marie won't think about itself.
+anaphor_gender_agreement	good	Mark hasn't discussed himself.
+anaphor_gender_agreement	bad	Mark hasn't discussed itself.
+anaphor_gender_agreement	good	Stephen impressed himself.
+anaphor_gender_agreement	bad	Stephen impressed itself.
+anaphor_gender_agreement	good	Christina boasts about herself.
+anaphor_gender_agreement	bad	Christina boasts about himself.
+anaphor_gender_agreement	good	Suzanne would irritate herself.
+anaphor_gender_agreement	bad	Suzanne would irritate itself.
+anaphor_gender_agreement	good	Rose couldn't reference herself.
+anaphor_gender_agreement	bad	Rose couldn't reference itself.
+anaphor_gender_agreement	good	Paul should stun himself.
+anaphor_gender_agreement	bad	Paul should stun herself.
+anaphor_gender_agreement	good	Kristen praises herself.
+anaphor_gender_agreement	bad	Kristen praises himself.
+anaphor_gender_agreement	good	Tamara might work with herself.
+anaphor_gender_agreement	bad	Tamara might work with himself.
+anaphor_gender_agreement	good	Valerie remembers herself.
+anaphor_gender_agreement	bad	Valerie remembers itself.
+anaphor_gender_agreement	good	Kristen hasn't worked with herself.
+anaphor_gender_agreement	bad	Kristen hasn't worked with itself.
+anaphor_gender_agreement	good	Kendra disturbed herself.
+anaphor_gender_agreement	bad	Kendra disturbed himself.
+anaphor_gender_agreement	good	Lawrence had boasted about himself.
+anaphor_gender_agreement	bad	Lawrence had boasted about herself.
+anaphor_number_agreement	good	Susan revealed herself.
+anaphor_number_agreement	bad	Susan revealed themselves.
+anaphor_number_agreement	good	Renee hasn't hurt herself.
+anaphor_number_agreement	bad	Renee hasn't hurt themselves.
+anaphor_number_agreement	good	These patients do respect themselves.
+anaphor_number_agreement	bad	These patients do respect himself.
+anaphor_number_agreement	good	Mary should criticize herself.
+anaphor_number_agreement	bad	Mary should criticize themselves.
+anaphor_number_agreement	good	Kristin irritated herself.
+anaphor_number_agreement	bad	Kristin irritated themselves.
+anaphor_number_agreement	good	Tracy described herself.
+anaphor_number_agreement	bad	Tracy described themselves.
+anaphor_number_agreement	good	A lot of girls had bothered themselves.
+anaphor_number_agreement	bad	A lot of girls had bothered himself.
+anaphor_number_agreement	good	Many teenagers were helping themselves.
+anaphor_number_agreement	bad	Many teenagers were helping herself.
+anaphor_number_agreement	good	Girls talked to themselves.
+anaphor_number_agreement	bad	Girls talked to itself.
+anaphor_number_agreement	good	All senators listened to themselves.
+anaphor_number_agreement	bad	All senators listened to itself.
+anaphor_number_agreement	good	Laura hired herself.
+anaphor_number_agreement	bad	Laura hired themselves.
+anaphor_number_agreement	good	Claire won't conceal herself.
+anaphor_number_agreement	bad	Claire won't conceal themselves.
+anaphor_number_agreement	good	Becca shouldn't impress herself.
+anaphor_number_agreement	bad	Becca shouldn't impress themselves.
+anaphor_number_agreement	good	This woman has criticized herself.
+anaphor_number_agreement	bad	This woman has criticized themselves.
+anaphor_number_agreement	good	Sonia would cure herself.
+anaphor_number_agreement	bad	Sonia would cure themselves.
+animate_subject_passive	good	Amanda was respected by some waitresses.
+animate_subject_passive	bad	Amanda was respected by some picture.
+animate_subject_passive	good	Some lake was passed by some cashiers.
+animate_subject_passive	bad	Some lake was passed by some phenomena.
+animate_subject_passive	good	Lisa was kissed by the boys.
+animate_subject_passive	bad	Lisa was kissed by the blouses.
+animate_subject_passive	good	Amanda isn't respected by the children.
+animate_subject_passive	bad	Amanda isn't respected by the cups.
+animate_subject_passive	good	The glove was noticed by some woman.
+animate_subject_passive	bad	The glove was noticed by some mouse.
+animate_subject_passive	good	Gerald is hated by the teachers.
+animate_subject_passive	bad	Gerald is hated by the pie.
+animate_subject_passive	good	Most actresses weren't discussed by some offspring.
+animate_subject_passive	bad	Most actresses weren't discussed by some ladder.
+animate_subject_passive	good	These students were talked about by the teacher.
+animate_subject_passive	bad	These students were talked about by the books.
+animate_subject_passive	good	Deborah was talked to by the teacher.
+animate_subject_passive	bad	Deborah was talked to by the ellipses.
+animate_subject_passive	good	Cafes were cleaned by some lady.
+animate_subject_passive	bad	Cafes were cleaned by some hat.
+animate_subject_passive	good	Patricia is referenced by some offspring.
+animate_subject_passive	bad	Patricia is referenced by some shawl.
+animate_subject_passive	good	Galileo is concealed by the woman.
+animate_subject_passive	bad	Galileo is concealed by the horse.
+animate_subject_passive	good	A lot of high schools aren't visited by some teachers.
+animate_subject_passive	bad	A lot of high schools aren't visited by some socks.
+animate_subject_passive	good	Andrew was questioned by some pedestrian.
+animate_subject_passive	bad	Andrew was questioned by some apple.
+animate_subject_passive	good	A lot of computers aren't bought by the senators.
+animate_subject_passive	bad	A lot of computers aren't bought by the gate.
+animate_subject_trans	good	Tina revealed Margaret.
+animate_subject_trans	bad	The horse revealed Margaret.
+animate_subject_trans	good	Danielle visited Irene.
+animate_subject_trans	bad	The eye visited Irene.
+animate_subject_trans	good	Paul runs around the art galleries.
+animate_subject_trans	bad	The river runs around the art galleries.
+animate_subject_trans	good	Most banks have praised Raymond.
+animate_subject_trans	bad	The jackets have praised Raymond.
+animate_subject_trans	good	Every doctor was selling some restaurants.
+animate_subject_trans	bad	A cup was selling some restaurants.
+animate_subject_trans	good	Steve bikes to a public park.
+animate_subject_trans	bad	Every fork bikes to a public park.
+animate_subject_trans	good	Beth scares Roger.
+animate_subject_trans	bad	A carriage scares Roger.
+animate_subject_trans	good	Melissa will clean a gate.
+animate_subject_trans	bad	This mouth will clean a gate.
+animate_subject_trans	good	Tanya conceals Adam.
+animate_subject_trans	bad	This ice cream conceals Adam.
+animate_subject_trans	good	Renee had praised Eric.
+animate_subject_trans	bad	The beef had praised Eric.
+animate_subject_trans	good	Mark hasn't respected a lot of actors.
+animate_subject_trans	bad	Every government hasn't respected a lot of actors.
+animate_subject_trans	good	Matt could argue about Bethany.
+animate_subject_trans	bad	Every mall could argue about Bethany.
+animate_subject_trans	good	Kathleen can't fix every carriage.
+animate_subject_trans	bad	Some newspaper article can't fix every carriage.
+animate_subject_trans	good	Denise wasn't referencing Homer.
+animate_subject_trans	bad	Rice wasn't referencing Homer.
+animate_subject_trans	good	Vanessa visits Judy.
+animate_subject_trans	bad	The ice cream visits Judy.
+causative	good	Aaron breaks the glass.
+causative	bad	Aaron appeared the glass.
+causative	good	April had dropped the truck.
+causative	bad	April had existed the truck.
+causative	good	All actors train Tonya's brothers.
+causative	bad	All actors appeared Tonya's brothers.
+causative	good	Raymond was stretching that shirt.
+causative	bad	Raymond was vanishing that shirt.
+causative	good	Benjamin would wrinkle every scarf.
+causative	bad	Benjamin would fall every scarf.
+causative	good	Most students hide away sisters of Gerald.
+causative	bad	Most students wept sisters of Gerald.
+causative	good	Michael had wrinkled many blouses.
+causative	bad	Michael had existed many blouses.
+causative	good	Phillip isn't hiding away Monica.
+causative	bad	Phillip isn't departing Monica.
+causative	good	Alan twirls that dress.
+causative	bad	Alan existed that dress.
+causative	good	Dawn had condensed ice.
+causative	bad	Dawn had existed ice.
+causative	good	Most guys hide away David's friends.
+causative	bad	Most guys divorced David's friends.
+causative	good	Rodney was moving Victoria.
+causative	bad	Rodney was sighing Victoria.
+causative	good	Kimberley had slowed every skateboard.
+causative	bad	Kimberley had rusted every skateboard.
+causative	good	All doctors fray gloves.
+causative	bad	All doctors waste away gloves.
+causative	good	Winston Churchill hasn't rolled most trucks.
+causative	bad	Winston Churchill hasn't wasted away most trucks.
+complex_NP_island	good	Who aren't most hospitals that hadn't talked about most waitresses alarming?
+complex_NP_island	bad	Who aren't most waitresses alarming most hospitals that hadn't talked about?
+complex_NP_island	good	Who hasn't this sister of these dancers who shocked Cheryl attacked?
+complex_NP_island	bad	Who hasn't Cheryl attacked this sister of these dancers who shocked?
+complex_NP_island	good	Who should Lawrence's lawyers who have scared some grandsons of Janice hate?
+complex_NP_island	bad	Who should some grandsons of Janice hate Lawrence's lawyers who have scared?
+complex_NP_island	good	Who hadn't some driver who would fire Jennifer's colleague embarrassed?
+complex_NP_island	bad	Who hadn't Jennifer's colleague embarrassed some driver who would fire?
+complex_NP_island	good	Who haven't these fathers of Gerald who impressed Deborah's tutors loved?
+complex_NP_island	bad	Who haven't Deborah's tutors loved these fathers of Gerald who impressed?
+complex_NP_island	good	Who couldn't nephews of Victoria that did conceal Carmen observe?
+complex_NP_island	bad	Who couldn't Carmen observe nephews of Victoria that did conceal?
+complex_NP_island	good	Who wouldn't all mothers of Florence who disturbed Katherine forget?
+complex_NP_island	bad	Who wouldn't Katherine forget all mothers of Florence who disturbed?
+complex_NP_island	good	Who couldn't some teacher's piano teachers that were criticizing a movie about politics upset?
+complex_NP_island	bad	Who couldn't a movie about politics upset some teacher's piano teachers that were criticizing?
+complex_NP_island	good	Who weren't these people that had hated the dancers admiring?
+complex_NP_island	bad	Who weren't the dancers admiring these people that had hated?
+complex_NP_island	good	Who did this actor that wouldn't astound Anna's dentists disturb?
+complex_NP_island	bad	Who did Anna's dentists disturb this actor that wouldn't astound?
+complex_NP_island	good	Who was Gary's lawyer who could respect Tonya approaching?
+complex_NP_island	bad	Who was Tonya approaching Gary's lawyer who could respect?
+complex_NP_island	good	Who haven't Edward's plumbers that had listened to Tonya's daughters questioned?
+complex_NP_island	bad	Who haven't Tonya's daughters questioned Edward's plumbers that had listened to?
+complex_NP_island	good	What can't a guest who would like some actor argue about?
+complex_NP_island	bad	What can't some actor argue about a guest who would like?
+complex_NP_island	good	Who wasn't that actor's father who can't bore Samuel healing?
+complex_NP_island	bad	Who wasn't Samuel healing that actor's father who can't bore?
+complex_NP_island	good	Who was Andrew's ex-wife who isn't insulting Kevin approaching?
+complex_NP_island	bad	Who was Kevin approaching Andrew's ex-wife who isn't insulting?
+coordinate_structure_constraint_complex_left_branch	good	What senators was Alicia approaching and some teachers scaring?
+coordinate_structure_constraint_complex_left_branch	bad	What was Alicia approaching senators and some teachers scaring?
+coordinate_structure_constraint_complex_left_branch	good	Whose restaurants is Clyde exiting and Amelia talking about?
+coordinate_structure_constraint_complex_left_branch	bad	Whose is Clyde exiting restaurants and Amelia talking about?
+coordinate_structure_constraint_complex_left_branch	good	Which teenagers had Tamara hired and Grace fired?
+coordinate_structure_constraint_complex_left_branch	bad	Which had Tamara hired teenagers and Grace fired?
+coordinate_structure_constraint_complex_left_branch	good	What lights could Spain sell and Andrea discover?
+coordinate_structure_constraint_complex_left_branch	bad	What could Spain sell lights and Andrea discover?
+coordinate_structure_constraint_complex_left_branch	good	What paintings has Melissa looked like and Erin revealed?
+coordinate_structure_constraint_complex_left_branch	bad	What has Melissa looked like paintings and Erin revealed?
+coordinate_structure_constraint_complex_left_branch	good	Which carriages has Melanie found and Diana revealed?
+coordinate_structure_constraint_complex_left_branch	bad	Which has Melanie found carriages and Diana revealed?
+coordinate_structure_constraint_complex_left_branch	good	What offspring has William stunned and Melinda escaped from?
+coordinate_structure_constraint_complex_left_branch	bad	What has William stunned offspring and Melinda escaped from?
+coordinate_structure_constraint_complex_left_branch	good	What alumni might some socks shock and Denise appreciate?
+coordinate_structure_constraint_complex_left_branch	bad	What might some socks shock alumni and Denise appreciate?
+coordinate_structure_constraint_complex_left_branch	good	Which girls is the dress irritating and the Lutherans revealing?
+coordinate_structure_constraint_complex_left_branch	bad	Which is the dress irritating girls and the Lutherans revealing?
+coordinate_structure_constraint_complex_left_branch	good	What guys could those girls flee from and a lot of socks bore?
+coordinate_structure_constraint_complex_left_branch	bad	What could those girls flee from guys and a lot of socks bore?
+coordinate_structure_constraint_complex_left_branch	good	What schools were many cars embarrassing and Daniel driving to?
+coordinate_structure_constraint_complex_left_branch	bad	What were many cars embarrassing schools and Daniel driving to?
+coordinate_structure_constraint_complex_left_branch	good	What cafes could some teenager skate around and a lot of committees conceal?
+coordinate_structure_constraint_complex_left_branch	bad	What could some teenager skate around cafes and a lot of committees conceal?
+coordinate_structure_constraint_complex_left_branch	good	What lakes had Elaine escaped from and Gary thought about?
+coordinate_structure_constraint_complex_left_branch	bad	What had Elaine escaped from lakes and Gary thought about?
+coordinate_structure_constraint_complex_left_branch	good	What mountains is Aaron lifting and that woman insulting?
+coordinate_structure_constraint_complex_left_branch	bad	What is Aaron lifting mountains and that woman insulting?
+coordinate_structure_constraint_complex_left_branch	good	Which children had Phillip worried and Dawn disturbed?
+coordinate_structure_constraint_complex_left_branch	bad	Which had Phillip worried children and Dawn disturbed?
+coordinate_structure_constraint_object_extraction	good	Who were all men and Eric leaving?
+coordinate_structure_constraint_object_extraction	bad	Who were all men leaving and Eric?
+coordinate_structure_constraint_object_extraction	good	Who will Elizabeth and Gregory cure?
+coordinate_structure_constraint_object_extraction	bad	Who could Elizabeth cure and Gregory?
+coordinate_structure_constraint_object_extraction	good	What do that legislature and Janice bother?
+coordinate_structure_constraint_object_extraction	bad	What could that legislature bother and Janice?
+coordinate_structure_constraint_object_extraction	good	What were some museum and a lot of patients insulting?
+coordinate_structure_constraint_object_extraction	bad	What is some museum insulting and a lot of patients?
+coordinate_structure_constraint_object_extraction	good	Who should Keith and Andrea climb up?
+coordinate_structure_constraint_object_extraction	bad	Who might Keith climb up and Andrea?
+coordinate_structure_constraint_object_extraction	good	What are Rose and a picture scaring?
+coordinate_structure_constraint_object_extraction	bad	What is Rose scaring and a picture?
+coordinate_structure_constraint_object_extraction	good	Who should that company and Caroline boast about?
+coordinate_structure_constraint_object_extraction	bad	Who does that company boast about and Caroline?
+coordinate_structure_constraint_object_extraction	good	Who should Denise and every adult boast about?
+coordinate_structure_constraint_object_extraction	bad	Who will Denise boast about and every adult?
+coordinate_structure_constraint_object_extraction	good	What were the photograph and the prints looking like?
+coordinate_structure_constraint_object_extraction	bad	What was the photograph looking like and the prints?
+coordinate_structure_constraint_object_extraction	good	What had Jesus and Andrea arrived at?
+coordinate_structure_constraint_object_extraction	bad	What had Jesus arrived at and Andrea?
+coordinate_structure_constraint_object_extraction	good	Who were Kristen and Melinda biking to?
+coordinate_structure_constraint_object_extraction	bad	Who is Kristen biking to and Melinda?
+coordinate_structure_constraint_object_extraction	good	Who might Beverly and those waitresses exit?
+coordinate_structure_constraint_object_extraction	bad	Who does Beverly exit and those waitresses?
+coordinate_structure_constraint_object_extraction	good	Who could Joel and this fish hurt?
+coordinate_structure_constraint_object_extraction	bad	Who would Joel hurt and this fish?
+coordinate_structure_constraint_object_extraction	good	What have Brian and Galileo escaped from?
+coordinate_structure_constraint_object_extraction	bad	What had Brian escaped from and Galileo?
+coordinate_structure_constraint_object_extraction	good	Who were some windows and Douglas aggravating?
+coordinate_structure_constraint_object_extraction	bad	Who were some windows aggravating and Douglas?
+determiner_noun_agreement_1	good	Raymond is selling this sketch.
+determiner_noun_agreement_1	bad	Raymond is selling this sketches.
+determiner_noun_agreement_1	good	Craig explored that grocery store.
+determiner_noun_agreement_1	bad	Craig explored that grocery stores.
+determiner_noun_agreement_1	good	Eva has scared these children.
+determiner_noun_agreement_1	bad	Eva has scared these child.
+determiner_noun_agreement_1	good	Marcus would conceal that pamphlet.
+determiner_noun_agreement_1	bad	Marcus would conceal that pamphlets.
+determiner_noun_agreement_1	good	Carmen hadn't shocked these customers.
+determiner_noun_agreement_1	bad	Carmen hadn't shocked these customer.
+determiner_noun_agreement_1	good	The Impressionists were walking through this library.
+determiner_noun_agreement_1	bad	The Impressionists were walking through this libraries.
+determiner_noun_agreement_1	good	Some men weren't touring those cafes.
+determiner_noun_agreement_1	bad	Some men weren't touring those cafe.
+determiner_noun_agreement_1	good	Leslie isn't firing that actress.
+determiner_noun_agreement_1	bad	Leslie isn't firing that actresses.
+determiner_noun_agreement_1	good	Jennifer concealed those cups.
+determiner_noun_agreement_1	bad	Jennifer concealed those cup.
+determiner_noun_agreement_1	good	A waitress does take those hospitals.
+determiner_noun_agreement_1	bad	A waitress does take those hospital.
+determiner_noun_agreement_1	good	The man walks through those hospitals.
+determiner_noun_agreement_1	bad	The man walks through those hospital.
+determiner_noun_agreement_1	good	Winston Churchill boycotts these public parks.
+determiner_noun_agreement_1	bad	Winston Churchill boycotts these public park.
+determiner_noun_agreement_1	good	This sock disturbs that customer.
+determiner_noun_agreement_1	bad	This sock disturbs that customers.
+determiner_noun_agreement_1	good	William described this movie.
+determiner_noun_agreement_1	bad	William described this movies.
+determiner_noun_agreement_1	good	Monet dropped by those libraries.
+determiner_noun_agreement_1	bad	Monet dropped by those library.
+determiner_noun_agreement_2	good	Some dog stunned this committee.
+determiner_noun_agreement_2	bad	Some dog stunned these committee.
+determiner_noun_agreement_2	good	Tracy passed these art galleries.
+determiner_noun_agreement_2	bad	Tracy passed this art galleries.
+determiner_noun_agreement_2	good	Sarah has sounded like these children.
+determiner_noun_agreement_2	bad	Sarah has sounded like this children.
+determiner_noun_agreement_2	good	Craig had cared for that dancer.
+determiner_noun_agreement_2	bad	Craig had cared for those dancer.
+determiner_noun_agreement_2	good	Most children return to those senators.
+determiner_noun_agreement_2	bad	Most children return to that senators.
+determiner_noun_agreement_2	good	The Impressionists impress those hospitals.
+determiner_noun_agreement_2	bad	The Impressionists impress that hospitals.
+determiner_noun_agreement_2	good	Carl cures those horses.
+determiner_noun_agreement_2	bad	Carl cures that horses.
+determiner_noun_agreement_2	good	The Borgias should pass these college campuses.
+determiner_noun_agreement_2	bad	The Borgias should pass this college campuses.
+determiner_noun_agreement_2	good	Natalie had passed those public parks.
+determiner_noun_agreement_2	bad	Natalie had passed that public parks.
+determiner_noun_agreement_2	good	All grocery stores didn't shock these adults.
+determiner_noun_agreement_2	bad	All grocery stores didn't shock this adults.
+determiner_noun_agreement_2	good	This person bothered these libraries.
+determiner_noun_agreement_2	bad	This person bothered this libraries.
+determiner_noun_agreement_2	good	This actress isn't taking that dress.
+determiner_noun_agreement_2	bad	This actress isn't taking those dress.
+determiner_noun_agreement_2	good	The turtle alarmed these legislatures.
+determiner_noun_agreement_2	bad	The turtle alarmed this legislatures.
+determiner_noun_agreement_2	good	The Borgias attack those customers.
+determiner_noun_agreement_2	bad	The Borgias attack that customers.
+determiner_noun_agreement_2	good	Jerry messes up these chairs.
+determiner_noun_agreement_2	bad	Jerry messes up this chairs.
+determiner_noun_agreement_irregular_1	good	Laurie hasn't lifted those cacti.
+determiner_noun_agreement_irregular_1	bad	Laurie hasn't lifted those cactus.
+determiner_noun_agreement_irregular_1	good	Adam hadn't discussed these analyses.
+determiner_noun_agreement_irregular_1	bad	Adam hadn't discussed these analysis.
+determiner_noun_agreement_irregular_1	good	Some customers know these men.
+determiner_noun_agreement_irregular_1	bad	Some customers know these man.
+determiner_noun_agreement_irregular_1	good	Phillip was lifting this mouse.
+determiner_noun_agreement_irregular_1	bad	Phillip was lifting this mice.
+determiner_noun_agreement_irregular_1	good	The driver reveals these mice.
+determiner_noun_agreement_irregular_1	bad	The driver reveals these mouse.
+determiner_noun_agreement_irregular_1	good	Anna will buy that louse.
+determiner_noun_agreement_irregular_1	bad	Anna will buy that lice.
+determiner_noun_agreement_irregular_1	good	Rhonda had insulted these men.
+determiner_noun_agreement_irregular_1	bad	Rhonda had insulted these man.
+determiner_noun_agreement_irregular_1	good	All plays shock this alumnus.
+determiner_noun_agreement_irregular_1	bad	All plays shock this alumni.
+determiner_noun_agreement_irregular_1	good	Grace noticed that axis.
+determiner_noun_agreement_irregular_1	bad	Grace noticed that axes.
+determiner_noun_agreement_irregular_1	good	Patricia cleans these teeth.
+determiner_noun_agreement_irregular_1	bad	Patricia cleans these tooth.
+determiner_noun_agreement_irregular_1	good	Alan examined those analyses.
+determiner_noun_agreement_irregular_1	bad	Alan examined those analysis.
+determiner_noun_agreement_irregular_1	good	Travis fired these children.
+determiner_noun_agreement_irregular_1	bad	Travis fired these child.
+determiner_noun_agreement_irregular_1	good	The picture can't look like these nuclei.
+determiner_noun_agreement_irregular_1	bad	The picture can't look like these nucleus.
+determiner_noun_agreement_irregular_1	good	The waitresses haven't cleaned this thesis.
+determiner_noun_agreement_irregular_1	bad	The waitresses haven't cleaned this theses.
+determiner_noun_agreement_irregular_1	good	Pamela might boast about those bases.
+determiner_noun_agreement_irregular_1	bad	Pamela might boast about those basis.
+determiner_noun_agreement_irregular_2	good	All boys boast about that child.
+determiner_noun_agreement_irregular_2	bad	All boys boast about those child.
+determiner_noun_agreement_irregular_2	good	Candice has taken that axis.
+determiner_noun_agreement_irregular_2	bad	Candice has taken those axis.
+determiner_noun_agreement_irregular_2	good	Those ladies walk through those oases.
+determiner_noun_agreement_irregular_2	bad	Those ladies walk through that oases.
+determiner_noun_agreement_irregular_2	good	The legislatures praise this woman.
+determiner_noun_agreement_irregular_2	bad	The legislatures praise these woman.
+determiner_noun_agreement_irregular_2	good	Many icicles do bore that child.
+determiner_noun_agreement_irregular_2	bad	Many icicles do bore those child.
+determiner_noun_agreement_irregular_2	good	Actors see this tooth.
+determiner_noun_agreement_irregular_2	bad	Actors see these tooth.
+determiner_noun_agreement_irregular_2	good	Diane lifts these oxen.
+determiner_noun_agreement_irregular_2	bad	Diane lifts this oxen.
+determiner_noun_agreement_irregular_2	good	Sonia hadn't boasted about those men.
+determiner_noun_agreement_irregular_2	bad	Sonia hadn't boasted about that men.
+determiner_noun_agreement_irregular_2	good	Benjamin wasn't running around this oasis.
+determiner_noun_agreement_irregular_2	bad	Benjamin wasn't running around these oasis.
+determiner_noun_agreement_irregular_2	good	Elaine isn't breaking that foot.
+determiner_noun_agreement_irregular_2	bad	Elaine isn't breaking those foot.
+determiner_noun_agreement_irregular_2	good	This window hadn't embarrassed those people.
+determiner_noun_agreement_irregular_2	bad	This window hadn't embarrassed that people.
+determiner_noun_agreement_irregular_2	good	A pedestrian lifted this axis.
+determiner_noun_agreement_irregular_2	bad	A pedestrian lifted these axis.
+determiner_noun_agreement_irregular_2	good	Kathleen wouldn't discuss that alumnus.
+determiner_noun_agreement_irregular_2	bad	Kathleen wouldn't discuss those alumnus.
+determiner_noun_agreement_irregular_2	good	Candice skated around these oases.
+determiner_noun_agreement_irregular_2	bad	Candice skated around this oases.
+determiner_noun_agreement_irregular_2	good	Helen argued about these syntheses.
+determiner_noun_agreement_irregular_2	bad	Helen argued about this syntheses.
+determiner_noun_agreement_with_adj_2	good	Cynthia scans these hard books.
+determiner_noun_agreement_with_adj_2	bad	Cynthia scans this hard books.
+determiner_noun_agreement_with_adj_2	good	Donna might hire this serious actress.
+determiner_noun_agreement_with_adj_2	bad	Donna might hire these serious actress.
+determiner_noun_agreement_with_adj_2	good	Wendy forgot those upset doctors.
+determiner_noun_agreement_with_adj_2	bad	Wendy forgot that upset doctors.
+determiner_noun_agreement_with_adj_2	good	Carlos hasn't fired those uncertain students.
+determiner_noun_agreement_with_adj_2	bad	Carlos hasn't fired that uncertain students.
+determiner_noun_agreement_with_adj_2	good	Claire will conceal those hopeful cashiers.
+determiner_noun_agreement_with_adj_2	bad	Claire will conceal that hopeful cashiers.
+determiner_noun_agreement_with_adj_2	good	Some actors buy these gray books.
+determiner_noun_agreement_with_adj_2	bad	Some actors buy this gray books.
+determiner_noun_agreement_with_adj_2	good	Jerry appreciates this lost report.
+determiner_noun_agreement_with_adj_2	bad	Jerry appreciates these lost report.
+determiner_noun_agreement_with_adj_2	good	Deanna reveals these black public parks.
+determiner_noun_agreement_with_adj_2	bad	Deanna reveals this black public parks.
+determiner_noun_agreement_with_adj_2	good	Tracy has boasted about those unsure children.
+determiner_noun_agreement_with_adj_2	bad	Tracy has boasted about that unsure children.
+determiner_noun_agreement_with_adj_2	good	This eggplant distracts this hopeful girl.
+determiner_noun_agreement_with_adj_2	bad	This eggplant distracts these hopeful girl.
+determiner_noun_agreement_with_adj_2	good	That sweater had resembled that out in the open drawing.
+determiner_noun_agreement_with_adj_2	bad	That sweater had resembled those out in the open drawing.
+determiner_noun_agreement_with_adj_2	good	Nancy astounded that young pedestrian.
+determiner_noun_agreement_with_adj_2	bad	Nancy astounded those young pedestrian.
+determiner_noun_agreement_with_adj_2	good	The documentaries can aggravate those busy actors.
+determiner_noun_agreement_with_adj_2	bad	The documentaries can aggravate that busy actors.
+determiner_noun_agreement_with_adj_2	good	Most senators aren't exiting this popular restaurant.
+determiner_noun_agreement_with_adj_2	bad	Most senators aren't exiting these popular restaurant.
+determiner_noun_agreement_with_adj_2	good	Wayne looked like those bad paintings.
+determiner_noun_agreement_with_adj_2	bad	Wayne looked like that bad paintings.
+determiner_noun_agreement_with_adj_irregular_1	good	Some waiters broke this lost foot.
+determiner_noun_agreement_with_adj_irregular_1	bad	Some waiters broke this lost feet.
+determiner_noun_agreement_with_adj_irregular_1	good	The company talks about those big women.
+determiner_noun_agreement_with_adj_irregular_1	bad	The company talks about those big woman.
+determiner_noun_agreement_with_adj_irregular_1	good	This blouse astounds this lost woman.
+determiner_noun_agreement_with_adj_irregular_1	bad	This blouse astounds this lost women.
+determiner_noun_agreement_with_adj_irregular_1	good	David wasn't kissing these standing children.
+determiner_noun_agreement_with_adj_irregular_1	bad	David wasn't kissing these standing child.
+determiner_noun_agreement_with_adj_irregular_1	good	This person shouldn't criticize this upset child.
+determiner_noun_agreement_with_adj_irregular_1	bad	This person shouldn't criticize this upset children.
+determiner_noun_agreement_with_adj_irregular_1	good	These tomatoes astound that concealed person.
+determiner_noun_agreement_with_adj_irregular_1	bad	These tomatoes astound that concealed people.
+determiner_noun_agreement_with_adj_irregular_1	good	Sally hasn't cleaned these white oxen.
+determiner_noun_agreement_with_adj_irregular_1	bad	Sally hasn't cleaned these white ox.
+determiner_noun_agreement_with_adj_irregular_1	good	These doors would astound those happy children.
+determiner_noun_agreement_with_adj_irregular_1	bad	These doors would astound those happy child.
+determiner_noun_agreement_with_adj_irregular_1	good	Katherine is biking to these red oases.
+determiner_noun_agreement_with_adj_irregular_1	bad	Katherine is biking to these red oasis.
+determiner_noun_agreement_with_adj_irregular_1	good	Katherine hadn't praised this lost man.
+determiner_noun_agreement_with_adj_irregular_1	bad	Katherine hadn't praised this lost men.
+determiner_noun_agreement_with_adj_irregular_1	good	The driver sees that unlucky person.
+determiner_noun_agreement_with_adj_irregular_1	bad	The driver sees that unlucky people.
+determiner_noun_agreement_with_adj_irregular_1	good	Edward hadn't described this nice woman.
+determiner_noun_agreement_with_adj_irregular_1	bad	Edward hadn't described this nice women.
+determiner_noun_agreement_with_adj_irregular_1	good	Heidi returns to that big woman.
+determiner_noun_agreement_with_adj_irregular_1	bad	Heidi returns to that big women.
+determiner_noun_agreement_with_adj_irregular_1	good	Sara listened to that unconvinced person.
+determiner_noun_agreement_with_adj_irregular_1	bad	Sara listened to that unconvinced people.
+determiner_noun_agreement_with_adj_irregular_1	good	Samuel had listened to these concealed people.
+determiner_noun_agreement_with_adj_irregular_1	bad	Samuel had listened to these concealed person.
+determiner_noun_agreement_with_adj_irregular_2	good	Alexander didn't walk through that new oasis.
+determiner_noun_agreement_with_adj_irregular_2	bad	Alexander didn't walk through those new oasis.
+determiner_noun_agreement_with_adj_irregular_2	good	This hair irritates these old alumni.
+determiner_noun_agreement_with_adj_irregular_2	bad	This hair irritates this old alumni.
+determiner_noun_agreement_with_adj_irregular_2	good	Winston Churchill was escaping from this serious person.
+determiner_noun_agreement_with_adj_irregular_2	bad	Winston Churchill was escaping from these serious person.
+determiner_noun_agreement_with_adj_irregular_2	good	Anna walks through these purple oases.
+determiner_noun_agreement_with_adj_irregular_2	bad	Anna walks through this purple oases.
+determiner_noun_agreement_with_adj_irregular_2	good	Alicia sounded like this good analysis.
+determiner_noun_agreement_with_adj_irregular_2	bad	Alicia sounded like these good analysis.
+determiner_noun_agreement_with_adj_irregular_2	good	Jeffrey might complain about this gray thesis.
+determiner_noun_agreement_with_adj_irregular_2	bad	Jeffrey might complain about these gray thesis.
+determiner_noun_agreement_with_adj_irregular_2	good	Meredith approaches these concealed women.
+determiner_noun_agreement_with_adj_irregular_2	bad	Meredith approaches this concealed women.
+determiner_noun_agreement_with_adj_irregular_2	good	Julia questioned those small children.
+determiner_noun_agreement_with_adj_irregular_2	bad	Julia questioned that small children.
+determiner_noun_agreement_with_adj_irregular_2	good	That adult has brought that purple octopus.
+determiner_noun_agreement_with_adj_irregular_2	bad	That adult has brought those purple octopus.
+determiner_noun_agreement_with_adj_irregular_2	good	The people hug this displeased woman.
+determiner_noun_agreement_with_adj_irregular_2	bad	The people hug these displeased woman.
+determiner_noun_agreement_with_adj_irregular_2	good	That beef did bore these displeased people.
+determiner_noun_agreement_with_adj_irregular_2	bad	That beef did bore this displeased people.
+determiner_noun_agreement_with_adj_irregular_2	good	These libraries talk about these long synopses.
+determiner_noun_agreement_with_adj_irregular_2	bad	These libraries talk about this long synopses.
+determiner_noun_agreement_with_adj_irregular_2	good	Lori wasn't hiring those delighted men.
+determiner_noun_agreement_with_adj_irregular_2	bad	Lori wasn't hiring that delighted men.
+determiner_noun_agreement_with_adj_irregular_2	good	The teachers are running around this concealed oasis.
+determiner_noun_agreement_with_adj_irregular_2	bad	The teachers are running around these concealed oasis.
+determiner_noun_agreement_with_adj_irregular_2	good	Those bananas embarrass these delighted people.
+determiner_noun_agreement_with_adj_irregular_2	bad	Those bananas embarrass this delighted people.
+determiner_noun_agreement_with_adjective_1	good	Rebecca was criticizing those good documentaries.
+determiner_noun_agreement_with_adjective_1	bad	Rebecca was criticizing those good documentary.
+determiner_noun_agreement_with_adjective_1	good	Some college campus embarrassed those bad legislatures.
+determiner_noun_agreement_with_adjective_1	bad	Some college campus embarrassed those bad legislature.
+determiner_noun_agreement_with_adjective_1	good	All men weren't questioning these unemployed cashiers.
+determiner_noun_agreement_with_adjective_1	bad	All men weren't questioning these unemployed cashier.
+determiner_noun_agreement_with_adjective_1	good	Sara hasn't bored this displeased senator.
+determiner_noun_agreement_with_adjective_1	bad	Sara hasn't bored this displeased senators.
+determiner_noun_agreement_with_adjective_1	good	A lot of pedestrians kiss this displeased teenager.
+determiner_noun_agreement_with_adjective_1	bad	A lot of pedestrians kiss this displeased teenagers.
+determiner_noun_agreement_with_adjective_1	good	James is healing this uncertain actress.
+determiner_noun_agreement_with_adjective_1	bad	James is healing this uncertain actresses.
+determiner_noun_agreement_with_adjective_1	good	Diane should complain about these unconvinced drivers.
+determiner_noun_agreement_with_adjective_1	bad	Diane should complain about these unconvinced driver.
+determiner_noun_agreement_with_adjective_1	good	Phillip liked that smooth horse.
+determiner_noun_agreement_with_adjective_1	bad	Phillip liked that smooth horses.
+determiner_noun_agreement_with_adjective_1	good	Tracy praises those lucky guys.
+determiner_noun_agreement_with_adjective_1	bad	Tracy praises those lucky guy.
+determiner_noun_agreement_with_adjective_1	good	A doctor had returned to these fast girls.
+determiner_noun_agreement_with_adjective_1	bad	A doctor had returned to these fast girl.
+determiner_noun_agreement_with_adjective_1	good	A lot of drawings had irritated those clean hospitals.
+determiner_noun_agreement_with_adjective_1	bad	A lot of drawings had irritated those clean hospital.
+determiner_noun_agreement_with_adjective_1	good	Many customers do clean those yellow plates.
+determiner_noun_agreement_with_adjective_1	bad	Many customers do clean those yellow plate.
+determiner_noun_agreement_with_adjective_1	good	Scott hadn't fired that uncertain actor.
+determiner_noun_agreement_with_adjective_1	bad	Scott hadn't fired that uncertain actors.
+determiner_noun_agreement_with_adjective_1	good	Many men have these messy cups.
+determiner_noun_agreement_with_adjective_1	bad	Many men have these messy cup.
+determiner_noun_agreement_with_adjective_1	good	Martha shouldn't upset these excited doctors.
+determiner_noun_agreement_with_adjective_1	bad	Martha shouldn't upset these excited doctor.
+distractor_agreement_relational_noun	good	A niece of most senators hasn't descended most slopes.
+distractor_agreement_relational_noun	bad	A niece of most senators haven't descended most slopes.
+distractor_agreement_relational_noun	good	The sketch of those trucks hasn't hurt Alan.
+distractor_agreement_relational_noun	bad	The sketch of those trucks haven't hurt Alan.
+distractor_agreement_relational_noun	good	A newspaper article about the Borgias has disagreed with Marcus.
+distractor_agreement_relational_noun	bad	A newspaper article about the Borgias have disagreed with Marcus.
+distractor_agreement_relational_noun	good	The niece of most guests has cleaned every college campus.
+distractor_agreement_relational_noun	bad	The niece of most guests have cleaned every college campus.
+distractor_agreement_relational_noun	good	A sketch of lights doesn't appear.
+distractor_agreement_relational_noun	bad	A sketch of lights don't appear.
+distractor_agreement_relational_noun	good	The movies about Galileo were astounding Melanie.
+distractor_agreement_relational_noun	bad	The movies about Galileo was astounding Melanie.
+distractor_agreement_relational_noun	good	A cousin of a lot of dancers anticipates Naomi to aggravate Angela.
+distractor_agreement_relational_noun	bad	A cousin of a lot of dancers anticipate Naomi to aggravate Angela.
+distractor_agreement_relational_noun	good	A movie about the Impressionists hasn't scared Harvard University.
+distractor_agreement_relational_noun	bad	A movie about the Impressionists haven't scared Harvard University.
+distractor_agreement_relational_noun	good	The pamphlets about Galileo are winning.
+distractor_agreement_relational_noun	bad	The pamphlets about Galileo is winning.
+distractor_agreement_relational_noun	good	The daughter of those senators works with Patrick.
+distractor_agreement_relational_noun	bad	The daughter of those senators work with Patrick.
+distractor_agreement_relational_noun	good	A story about the Balkans doesn't irritate a person.
+distractor_agreement_relational_noun	bad	A story about the Balkans don't irritate a person.
+distractor_agreement_relational_noun	good	The sisters of Timothy judge Randolf to weep.
+distractor_agreement_relational_noun	bad	The sisters of Timothy judges Randolf to weep.
+distractor_agreement_relational_noun	good	The daughter of the Lutherans hasn't argued about that waitress.
+distractor_agreement_relational_noun	bad	The daughter of the Lutherans haven't argued about that waitress.
+distractor_agreement_relational_noun	good	A nephew of senators is wanting to murmur.
+distractor_agreement_relational_noun	bad	A nephew of senators were wanting to murmur.
+distractor_agreement_relational_noun	good	The prints of that high school are impressing Helen.
+distractor_agreement_relational_noun	bad	The prints of that high school was impressing Helen.
+distractor_agreement_relative_clause	good	This customer who had visited most children has worn some shoes.
+distractor_agreement_relative_clause	bad	This customer who had visited most children have worn some shoes.
+distractor_agreement_relative_clause	good	This boy that didn't question all guests has forgotten about what wasn't vaporizing.
+distractor_agreement_relative_clause	bad	This boy that didn't question all guests have forgotten about what wasn't vaporizing.
+distractor_agreement_relative_clause	good	Boys that aren't disturbing Natalie suffer.
+distractor_agreement_relative_clause	bad	Boys that aren't disturbing Natalie suffers.
+distractor_agreement_relative_clause	good	Some customers who irritates Amelia do persuade Galileo to come here.
+distractor_agreement_relative_clause	bad	Some customers who irritates Amelia does persuade Galileo to come here.
+distractor_agreement_relative_clause	good	Many children that had questioned this government do cooperate.
+distractor_agreement_relative_clause	bad	Many children that had questioned this government does cooperate.
+distractor_agreement_relative_clause	good	A lot of schools that have concealed Adam worry.
+distractor_agreement_relative_clause	bad	A lot of schools that have concealed Adam worries.
+distractor_agreement_relative_clause	good	All pedestrians that wouldn't shock William read.
+distractor_agreement_relative_clause	bad	All pedestrians that wouldn't shock William reads.
+distractor_agreement_relative_clause	good	The girl who had visited most guests is curing a woman.
+distractor_agreement_relative_clause	bad	The girl who had visited most guests were curing a woman.
+distractor_agreement_relative_clause	good	Those guys that hid Kenneth explain Rhonda won't skate around a lot of restaurants.
+distractor_agreement_relative_clause	bad	Those guys that hid Kenneth explains Rhonda won't skate around a lot of restaurants.
+distractor_agreement_relative_clause	good	A doctor who researched the Clintons waves.
+distractor_agreement_relative_clause	bad	A doctor who researched the Clintons wave.
+distractor_agreement_relative_clause	good	Some mushroom that will bother the Lutherans has upset Regina.
+distractor_agreement_relative_clause	bad	Some mushroom that will bother the Lutherans have upset Regina.
+distractor_agreement_relative_clause	good	The girl who doesn't annoy these adults works with Kristin.
+distractor_agreement_relative_clause	bad	The girl who doesn't annoy these adults work with Kristin.
+distractor_agreement_relative_clause	good	Some legislature that alarmed the pedestrians has needed Sandra to blink.
+distractor_agreement_relative_clause	bad	Some legislature that alarmed the pedestrians have needed Sandra to blink.
+distractor_agreement_relative_clause	good	The drawing that can't look like most sketches isn't looking like Elaine.
+distractor_agreement_relative_clause	bad	The drawing that can't look like most sketches aren't looking like Elaine.
+distractor_agreement_relative_clause	good	The waitress who was upsetting these associations doesn't admire this cat.
+distractor_agreement_relative_clause	bad	The waitress who was upsetting these associations don't admire this cat.
+drop_argument	good	Travis is touring.
+drop_argument	bad	Travis is revealing.
+drop_argument	good	Noah approached.
+drop_argument	bad	Noah works with.
+drop_argument	good	The Lutherans couldn't skate around.
+drop_argument	bad	The Lutherans couldn't disagree with.
+drop_argument	good	A lot of teenagers haven't left.
+drop_argument	bad	A lot of teenagers haven't arrived at.
+drop_argument	good	Rhonda's employees hadn't run around.
+drop_argument	bad	Rhonda's employees hadn't boasted about.
+drop_argument	good	Renee could descend.
+drop_argument	bad	Renee could flee from.
+drop_argument	good	This student's supervisors descended.
+drop_argument	bad	This student's supervisors admired.
+drop_argument	good	Karen's dentists buy.
+drop_argument	bad	Karen's dentists found.
+drop_argument	good	A lot of mothers of Steve observe.
+drop_argument	bad	A lot of mothers of Steve talk to.
+drop_argument	good	Bill's wife saw.
+drop_argument	bad	Bill's wife returns to.
+drop_argument	good	Tara's doctors have watched.
+drop_argument	bad	Tara's doctors have examined.
+drop_argument	good	William wasn't helping.
+drop_argument	bad	William wasn't boasting about.
+drop_argument	good	Christopher climbed up.
+drop_argument	bad	Christopher walks through.
+drop_argument	good	That guy remembers.
+drop_argument	bad	That guy looked like.
+drop_argument	good	Nancy sold.
+drop_argument	bad	Nancy argued about.
+ellipsis_n_bar_1	good	Dawn's ex-husband wasn't going to one rough grocery store and Becca wasn't going to many.
+ellipsis_n_bar_1	bad	Dawn's ex-husband wasn't going to one grocery store and Becca wasn't going to many rough.
+ellipsis_n_bar_1	good	Most men irritates two happy students and a snake irritates three.
+ellipsis_n_bar_1	bad	Most men irritates two students and a snake irritates three happy.
+ellipsis_n_bar_1	good	A pedestrian's brothers had loved one smart dancer and Phillip's mother had loved few.
+ellipsis_n_bar_1	bad	A pedestrian's brothers had loved one dancer and Phillip's mother had loved few smart.
+ellipsis_n_bar_1	good	Brad passed one big museum and Eva passed several.
+ellipsis_n_bar_1	bad	Brad passed one museum and Eva passed several big.
+ellipsis_n_bar_1	good	The daughters of Michelle weren't hurting one displeased ex-wife and Stephanie's classmates weren't hurting three.
+ellipsis_n_bar_1	bad	The daughters of Michelle weren't hurting one ex-wife and Stephanie's classmates weren't hurting three displeased.
+ellipsis_n_bar_1	good	Most ladies can appreciate one good essay and Matt's dermatologist can appreciate two.
+ellipsis_n_bar_1	bad	Most ladies can appreciate one essay and Matt's dermatologist can appreciate two good.
+ellipsis_n_bar_1	good	Those actresses' guests discovered three hard socks and Jason's ex-boyfriends discovered more.
+ellipsis_n_bar_1	bad	Those actresses' guests discovered three socks and Jason's ex-boyfriends discovered more hard.
+ellipsis_n_bar_1	good	That lady has resembled one hidden print and Guy's colleague has resembled four.
+ellipsis_n_bar_1	bad	That lady has resembled one print and Guy's colleague has resembled four hidden.
+ellipsis_n_bar_1	good	Every actress's piano teachers skate around five messy college campuses and Carolyn's dentists skate around four.
+ellipsis_n_bar_1	bad	Every actress's piano teachers skate around five college campuses and Carolyn's dentists skate around four messy.
+ellipsis_n_bar_1	good	This print scares a lot of busy senators and Benjamin scares a few.
+ellipsis_n_bar_1	bad	This print scares a lot of senators and Benjamin scares a few busy.
+ellipsis_n_bar_1	good	Florence's handymen think about no happy best friends and Ellen's best friends think about some.
+ellipsis_n_bar_1	bad	Florence's handymen think about no best friends and Ellen's best friends think about some happy.
+ellipsis_n_bar_1	good	The customers don't walk through one orange public park and Ellen might walk through few.
+ellipsis_n_bar_1	bad	The customers don't walk through one public park and Ellen might walk through few orange.
+ellipsis_n_bar_1	good	Amy's lawyers examine one upset grandson and a lot of cashiers examine few.
+ellipsis_n_bar_1	bad	Amy's lawyers examine one grandson and a lot of cashiers examine few upset.
+ellipsis_n_bar_1	good	Jerry was cleaning few gray public parks and some grandson of Ann was cleaning many.
+ellipsis_n_bar_1	bad	Jerry was cleaning few public parks and some grandson of Ann was cleaning many gray.
+ellipsis_n_bar_1	good	Jerry fired a few hopeful employees and Daniel's sons fired several.
+ellipsis_n_bar_1	bad	Jerry fired a few employees and Daniel's sons fired several hopeful.
+ellipsis_n_bar_2	good	A friend of Pamela hasn't attacked one person and Ann hasn't attacked more unsure person.
+ellipsis_n_bar_2	bad	A friend of Pamela hasn't attacked one unemployed person and Ann hasn't attacked more unsure.
+ellipsis_n_bar_2	good	Larry talked to five dermatologists and Rose talked to four displeased dermatologists.
+ellipsis_n_bar_2	bad	Larry talked to five small dermatologists and Rose talked to four displeased.
+ellipsis_n_bar_2	good	That legislature has three peppers and Charles has at least as many small peppers.
+ellipsis_n_bar_2	bad	That legislature has three hidden peppers and Charles has at least as many small.
+ellipsis_n_bar_2	good	A picture does look like four shawls and the photographs of Douglas couldn't look like five red shawls.
+ellipsis_n_bar_2	bad	A picture does look like four blue shawls and the photographs of Douglas couldn't look like five red.
+ellipsis_n_bar_2	good	Bill's associate fires a lot of adults and Galileo fires a few old adults.
+ellipsis_n_bar_2	bad	Bill's associate fires a lot of popular adults and Galileo fires a few old.
+ellipsis_n_bar_2	good	Melissa's granddaughter complained about four friends of and some people complained about five big friends of.
+ellipsis_n_bar_2	bad	Melissa's granddaughter complained about four unemployed friends of and some people complained about five big.
+ellipsis_n_bar_2	good	Roger isn't exploring one college campus and some friend of Dan isn't exploring a lot red college campus.
+ellipsis_n_bar_2	bad	Roger isn't exploring one smooth college campus and some friend of Dan isn't exploring a lot red.
+ellipsis_n_bar_2	good	Curtis's boss discussed four sons and Andrew discussed five sick sons.
+ellipsis_n_bar_2	bad	Curtis's boss discussed four happy sons and Andrew discussed five sick.
+ellipsis_n_bar_2	good	Robert's best friend helped one dentist and some universities helped more displeased dentist.
+ellipsis_n_bar_2	bad	Robert's best friend helped one hopeful dentist and some universities helped more displeased.
+ellipsis_n_bar_2	good	A waitress's mentee isn't climbing down three mountains and Charles isn't climbing down at least as many exposed mountains.
+ellipsis_n_bar_2	bad	A waitress's mentee isn't climbing down three important mountains and Charles isn't climbing down at least as many exposed.
+ellipsis_n_bar_2	good	Renee helps one girlfriend and Roger helps a few ill girlfriend.
+ellipsis_n_bar_2	bad	Renee helps one unlucky girlfriend and Roger helps a few ill.
+ellipsis_n_bar_2	good	That newspaper article about Winston Churchill astounded one waitress and Donald astounded several unemployed waitress.
+ellipsis_n_bar_2	bad	That newspaper article about Winston Churchill astounded one confident waitress and Donald astounded several unemployed.
+ellipsis_n_bar_2	good	Jodi's plumbers climb down no mountains and the snakes climb down some rough mountains.
+ellipsis_n_bar_2	bad	Jodi's plumbers climb down no small mountains and the snakes climb down some rough.
+ellipsis_n_bar_2	good	A lady fixes a lot of bicycles and Bethany's spouse fixes a few concealed bicycles.
+ellipsis_n_bar_2	bad	A lady fixes a lot of purple bicycles and Bethany's spouse fixes a few concealed.
+ellipsis_n_bar_2	good	A lot of patients' girlfriend sells one popsicle and Steve sells few concealed popsicle.
+ellipsis_n_bar_2	bad	A lot of patients' girlfriend sells one red popsicle and Steve sells few concealed.
+existential_there_object_raising	good	William has declared there to be no guests getting fired.
+existential_there_object_raising	bad	William has obliged there to be no guests getting fired.
+existential_there_object_raising	good	Richard believed there to be many boxes stunning Ellen.
+existential_there_object_raising	bad	Richard sways there to be many boxes stunning Ellen.
+existential_there_object_raising	good	Teresa finds there to be many bananas stunning Claire.
+existential_there_object_raising	bad	Teresa swayed there to be many bananas stunning Claire.
+existential_there_object_raising	good	Mary can declare there to be some ladders falling.
+existential_there_object_raising	bad	Mary can entreat there to be some ladders falling.
+existential_there_object_raising	good	An actress wouldn't declare there to be a print looking like that ice.
+existential_there_object_raising	bad	An actress wouldn't command there to be a print looking like that ice.
+existential_there_object_raising	good	Christina anticipates there to be many coats tightening.
+existential_there_object_raising	bad	Christina urged there to be many coats tightening.
+existential_there_object_raising	good	Gregory is declaring there to be a movie irritating Douglas.
+existential_there_object_raising	bad	Gregory is pushing there to be a movie irritating Douglas.
+existential_there_object_raising	good	Dana hasn't declared there to be a unicycle dropping.
+existential_there_object_raising	bad	Dana hasn't ordered there to be a unicycle dropping.
+existential_there_object_raising	good	Frank judged there to be a photograph of Michael looking like Sherry.
+existential_there_object_raising	bad	Frank compelled there to be a photograph of Michael looking like Sherry.
+existential_there_object_raising	good	Sarah was judging there to be a cashier exiting that mountain.
+existential_there_object_raising	bad	Sarah was enticing there to be a cashier exiting that mountain.
+existential_there_object_raising	good	Cynthia believed there to be a lot of apples boring Kevin.
+existential_there_object_raising	bad	Cynthia advised there to be a lot of apples boring Kevin.
+existential_there_object_raising	good	Many organizations have believed there to be no stories distracting some company.
+existential_there_object_raising	bad	Many organizations have induced there to be no stories distracting some company.
+existential_there_object_raising	good	Ann hadn't believed there to be no birds disappearing.
+existential_there_object_raising	bad	Ann hadn't urged there to be no birds disappearing.
+existential_there_object_raising	good	Anna's best friend believes there to be more than three cashiers helping Bruce.
+existential_there_object_raising	bad	Anna's best friend prompted there to be more than three cashiers helping Bruce.
+existential_there_object_raising	good	Steven's tutors wouldn't expect there to be a father of some women pressing that waitress to study.
+existential_there_object_raising	bad	Steven's tutors wouldn't advise there to be a father of some women pressing that waitress to study.
+existential_there_quantifiers_1	good	There was a documentary about music irritating Allison.
+existential_there_quantifiers_1	bad	There was each documentary about music irritating Allison.
+existential_there_quantifiers_1	good	There were no legislatures working hard.
+existential_there_quantifiers_1	bad	There were most legislatures working hard.
+existential_there_quantifiers_1	good	There was a sweater shocking David.
+existential_there_quantifiers_1	bad	There was each sweater shocking David.
+existential_there_quantifiers_1	good	There are some brothers of Rachel arriving at a library.
+existential_there_quantifiers_1	bad	There are all brothers of Rachel arriving at a library.
+existential_there_quantifiers_1	good	There aren't many lights darkening.
+existential_there_quantifiers_1	bad	There aren't all lights darkening.
+existential_there_quantifiers_1	good	There are many rugs embarrassing Galileo.
+existential_there_quantifiers_1	bad	There are most rugs embarrassing Galileo.
+existential_there_quantifiers_1	good	There is a mother of Theodore imagining those adults responded.
+existential_there_quantifiers_1	bad	There is each mother of Theodore imagining those adults responded.
+existential_there_quantifiers_1	good	There wasn't a window chipping.
+existential_there_quantifiers_1	bad	There wasn't each window chipping.
+existential_there_quantifiers_1	good	There isn't a dancer slumping over.
+existential_there_quantifiers_1	bad	There isn't every dancer slumping over.
+existential_there_quantifiers_1	good	There is a committee coping.
+existential_there_quantifiers_1	bad	There is every committee coping.
+existential_there_quantifiers_1	good	There are some sisters of Ann climbing up all ladders.
+existential_there_quantifiers_1	bad	There are all sisters of Ann climbing up all ladders.
+existential_there_quantifiers_1	good	There is an essay about Winston Churchill irritating Alexander.
+existential_there_quantifiers_1	bad	There is each essay about Winston Churchill irritating Alexander.
+existential_there_quantifiers_1	good	There was a rug disappearing.
+existential_there_quantifiers_1	bad	There was every rug disappearing.
+existential_there_quantifiers_1	good	There aren't few documentaries disturbing some actors.
+existential_there_quantifiers_1	bad	There aren't all documentaries disturbing some actors.
+existential_there_quantifiers_1	good	There are no peppers upsetting all governments.
+existential_there_quantifiers_1	bad	There are all peppers upsetting all governments.
+existential_there_quantifiers_2	good	All convertibles weren't there existing.
+existential_there_quantifiers_2	bad	There weren't all convertibles existing.
+existential_there_quantifiers_2	good	Every fish was there astounding Sally.
+existential_there_quantifiers_2	bad	There was every fish astounding Sally.
+existential_there_quantifiers_2	good	All sisters of Roger weren't there going to this school.
+existential_there_quantifiers_2	bad	There weren't all sisters of Roger going to this school.
+existential_there_quantifiers_2	good	Every documentary is there annoying Anna.
+existential_there_quantifiers_2	bad	There is every documentary annoying Anna.
+existential_there_quantifiers_2	good	Each government was there hurting Rhonda.
+existential_there_quantifiers_2	bad	There was each government hurting Rhonda.
+existential_there_quantifiers_2	good	Every newspaper article wasn't there wasting away.
+existential_there_quantifiers_2	bad	There wasn't every newspaper article wasting away.
+existential_there_quantifiers_2	good	Every student wasn't there leaving Andrew.
+existential_there_quantifiers_2	bad	There wasn't every student leaving Andrew.
+existential_there_quantifiers_2	good	Each screen is there alarming Tara.
+existential_there_quantifiers_2	bad	There is each screen alarming Tara.
+existential_there_quantifiers_2	good	Most universities weren't there hurting this child.
+existential_there_quantifiers_2	bad	There weren't most universities hurting this child.
+existential_there_quantifiers_2	good	Each book is there disturbing Margaret.
+existential_there_quantifiers_2	bad	There is each book disturbing Margaret.
+existential_there_quantifiers_2	good	Each art gallery was there irritating a lot of committees.
+existential_there_quantifiers_2	bad	There was each art gallery irritating a lot of committees.
+existential_there_quantifiers_2	good	All students weren't there noticing some box.
+existential_there_quantifiers_2	bad	There weren't all students noticing some box.
+existential_there_quantifiers_2	good	Each mother of a teenager isn't there asking Mark to scratch.
+existential_there_quantifiers_2	bad	There isn't each mother of a teenager asking Mark to scratch.
+existential_there_quantifiers_2	good	Most shows about the Great Lakes are there distracting Lisa.
+existential_there_quantifiers_2	bad	There are most shows about the Great Lakes distracting Lisa.
+existential_there_quantifiers_2	good	Most nephews of Irene were there telephoning.
+existential_there_quantifiers_2	bad	There were most nephews of Irene telephoning.
+existential_there_subject_raising	good	There is soon to be a cat existing.
+existential_there_subject_raising	bad	There is willing to be a cat existing.
+existential_there_subject_raising	good	There was bound to be a fish escaping.
+existential_there_subject_raising	bad	There was unable to be a fish escaping.
+existential_there_subject_raising	good	There weren't about to be few prints of this eggplant scaring Paula.
+existential_there_subject_raising	bad	There weren't unwilling to be few prints of this eggplant scaring Paula.
+existential_there_subject_raising	good	There were looking to be a lot of children assembling.
+existential_there_subject_raising	bad	There were hoping to be a lot of children assembling.
+existential_there_subject_raising	good	There were likely to be some books about the Borgias disturbing this senator.
+existential_there_subject_raising	bad	There were ready to be some books about the Borgias disturbing this senator.
+existential_there_subject_raising	good	There can't threaten to be hair confusing Travis.
+existential_there_subject_raising	bad	There can't want to be hair confusing Travis.
+existential_there_subject_raising	good	There wasn't about to be a light fading.
+existential_there_subject_raising	bad	There wasn't willing to be a light fading.
+existential_there_subject_raising	good	There are appearing to be many pedestrians falling asleep.
+existential_there_subject_raising	bad	There are neglecting to be many pedestrians falling asleep.
+existential_there_subject_raising	good	There looked to be plates chipping.
+existential_there_subject_raising	bad	There proposed to be plates chipping.
+existential_there_subject_raising	good	There is sure to be chicken falling.
+existential_there_subject_raising	bad	There is eager to be chicken falling.
+existential_there_subject_raising	good	There aren't appearing to be screens disgusting that guy.
+existential_there_subject_raising	bad	There aren't wishing to be screens disgusting that guy.
+existential_there_subject_raising	good	There turned out to be more than three college campuses falling.
+existential_there_subject_raising	bad	There try to be more than three college campuses falling.
+existential_there_subject_raising	good	There appear to be few bananas blackening.
+existential_there_subject_raising	bad	There proposed to be few bananas blackening.
+existential_there_subject_raising	good	There didn't prove to be more than three commentaries confusing Frank.
+existential_there_subject_raising	bad	There didn't bother to be more than three commentaries confusing Frank.
+existential_there_subject_raising	good	There might look to be few associations answering.
+existential_there_subject_raising	bad	There might try to be few associations answering.
+expletive_it_object_raising	good	Tara would ascertain it to be noteworthy that Kenneth didn't wash.
+expletive_it_object_raising	bad	Tara wouldn't entice it to be noteworthy that Kenneth didn't wash.
+expletive_it_object_raising	good	Carla could declare it to be not so important that these doctors observe Rhonda.
+expletive_it_object_raising	bad	Carla can convince it to be not so important that these doctors observe Rhonda.
+expletive_it_object_raising	good	Nina anticipated it to be nice that Jacqueline exists.
+expletive_it_object_raising	bad	Nina obligated it to be nice that Jacqueline exists.
+expletive_it_object_raising	good	Some granddaughter of Bruce did find it to be expected that a lot of legislatures try to conceal Colleen.
+expletive_it_object_raising	bad	Some granddaughter of Bruce would force it to be expected that a lot of legislatures try to conceal Colleen.
+expletive_it_object_raising	good	Charles's brothers hadn't considered it to be not so amusing that every man exercised.
+expletive_it_object_raising	bad	Charles's brothers motivate it to be not so amusing that every man exercised.
+expletive_it_object_raising	good	Maria discovers it to be not so good that Karla couldn't need Carlos to question Candice.
+expletive_it_object_raising	bad	Maria shouldn't ask it to be not so good that Karla couldn't need Carlos to question Candice.
+expletive_it_object_raising	good	Walter considers it to be lucky that Angela walks through many museums.
+expletive_it_object_raising	bad	Walter hadn't pressed it to be lucky that Angela walks through many museums.
+expletive_it_object_raising	good	Noah can't predict it to be not so funny that some pasta blackens.
+expletive_it_object_raising	bad	Noah is pressuring it to be not so funny that some pasta blackens.
+expletive_it_object_raising	good	Aaron was predicting it to be amusing that Bradley motivates Jennifer to yawn.
+expletive_it_object_raising	bad	Aaron asked it to be amusing that Bradley motivates Jennifer to yawn.
+expletive_it_object_raising	good	Ronald does need it to be not so pleasant that those actors hide away.
+expletive_it_object_raising	bad	Ronald asked it to be not so pleasant that those actors hide away.
+expletive_it_object_raising	good	Michelle's mentors anticipate it to be bad that the Impressionists were hugging.
+expletive_it_object_raising	bad	Michelle's mentors do tempt it to be bad that the Impressionists were hugging.
+expletive_it_object_raising	good	Winston Churchill found it to be not so obvious that Jill isn't wearing that hat.
+expletive_it_object_raising	bad	Winston Churchill commissioned it to be not so obvious that Jill isn't wearing that hat.
+expletive_it_object_raising	good	Jane believed it to be not so amusing that Heidi wouldn't blink.
+expletive_it_object_raising	bad	Jane hadn't enticed it to be not so amusing that Heidi wouldn't blink.
+expletive_it_object_raising	good	Jacqueline ascertains it to be nice that Adam was disturbing Guy.
+expletive_it_object_raising	bad	Jacqueline would spur it to be nice that Adam was disturbing Guy.
+expletive_it_object_raising	good	Tanya is needing it to be expected that Sharon couldn't forget about who talks to Kenneth.
+expletive_it_object_raising	bad	Tanya had ordered it to be expected that Sharon couldn't forget about who talks to Kenneth.
+inchoative	good	Patricia had changed.
+inchoative	bad	Patricia had forgotten.
+inchoative	good	A lot of closets could fling open.
+inchoative	bad	A lot of closets could buy.
+inchoative	good	All pants loosen.
+inchoative	bad	All pants brought.
+inchoative	good	Many glasses aren't warping.
+inchoative	bad	Many glasses aren't messing up.
+inchoative	good	A screen was fading.
+inchoative	bad	A screen was cleaning.
+inchoative	good	Every mountain sells.
+inchoative	bad	Every mountain climbs down.
+inchoative	good	All rivers can't melt.
+inchoative	bad	All rivers can't reveal.
+inchoative	good	That skirt isn't unfolding.
+inchoative	bad	That skirt isn't cleaning.
+inchoative	good	That shawl shrank.
+inchoative	bad	That shawl reveals.
+inchoative	good	Those bananas are ripening.
+inchoative	bad	Those bananas are cleaning.
+inchoative	good	A lot of chairs shattered.
+inchoative	bad	A lot of chairs found.
+inchoative	good	These carriages have maneuvered.
+inchoative	bad	These carriages have looked like.
+inchoative	good	Clyde's oncologists weren't reuniting.
+inchoative	bad	Clyde's oncologists weren't boring.
+inchoative	good	Benjamin's tutors spin around.
+inchoative	bad	Benjamin's tutors respect.
+inchoative	good	The sock isn't flattening.
+inchoative	bad	The sock isn't wearing.
+intransitive	good	Todd can't yawn.
+intransitive	bad	Todd can't walk through.
+intransitive	good	Some guests hadn't left.
+intransitive	bad	Some guests hadn't boasted about.
+intransitive	good	This niece of Elizabeth protests.
+intransitive	bad	This niece of Elizabeth walks through.
+intransitive	good	Regina is shouting.
+intransitive	bad	Regina is boasting about.
+intransitive	good	This guest's plumber complains.
+intransitive	bad	This guest's plumber wore.
+intransitive	good	Anna's grandmothers aren't benefiting.
+intransitive	bad	Anna's grandmothers aren't arguing about.
+intransitive	good	Some glaciers are vaporizing.
+intransitive	bad	Some glaciers are scaring.
+intransitive	good	Stephanie succeeds.
+intransitive	bad	Stephanie boasts about.
+intransitive	good	Tara's contractors scream.
+intransitive	bad	Tara's contractors drive to.
+intransitive	good	All gloves weren't crumpling.
+intransitive	bad	All gloves weren't looking like.
+intransitive	good	Patricia's hairdressers hadn't cooked.
+intransitive	bad	Patricia's hairdressers hadn't gone to.
+intransitive	good	The spotlights faded.
+intransitive	bad	The spotlights scared.
+intransitive	good	The muffins were scorching.
+intransitive	bad	The muffins were scaring.
+intransitive	good	Those friends of Sally were painting.
+intransitive	bad	Those friends of Sally were walking through.
+intransitive	good	This screen does brighten.
+intransitive	bad	This screen does resemble.
+irregular_past_participle_adjectives	good	The hidden offspring aren't confident.
+irregular_past_participle_adjectives	bad	The hid offspring aren't confident.
+irregular_past_participle_adjectives	good	The hidden bicycles weren't exposed.
+irregular_past_participle_adjectives	bad	The hid bicycles weren't exposed.
+irregular_past_participle_adjectives	good	The hidden glass was big.
+irregular_past_participle_adjectives	bad	The hid glass was big.
+irregular_past_participle_adjectives	good	The worn skirts aren't important.
+irregular_past_participle_adjectives	bad	The wore skirts aren't important.
+irregular_past_participle_adjectives	good	The worn hats aren't big.
+irregular_past_participle_adjectives	bad	The wore hats aren't big.
+irregular_past_participle_adjectives	good	The broken mirrors were blue.
+irregular_past_participle_adjectives	bad	The broke mirrors were blue.
+irregular_past_participle_adjectives	good	The worn pants weren't big.
+irregular_past_participle_adjectives	bad	The wore pants weren't big.
+irregular_past_participle_adjectives	good	The known children were nice.
+irregular_past_participle_adjectives	bad	The knew children were nice.
+irregular_past_participle_adjectives	good	The forgotten newspaper article was bad.
+irregular_past_participle_adjectives	bad	The forgot newspaper article was bad.
+irregular_past_participle_adjectives	good	The known adult was exposed.
+irregular_past_participle_adjectives	bad	The knew adult was exposed.
+irregular_past_participle_adjectives	good	The hidden patients weren't busy.
+irregular_past_participle_adjectives	bad	The hid patients weren't busy.
+irregular_past_participle_adjectives	good	The worn scarf was popular.
+irregular_past_participle_adjectives	bad	The wore scarf was popular.
+irregular_past_participle_adjectives	good	The taken rabbit wasn't popular.
+irregular_past_participle_adjectives	bad	The took rabbit wasn't popular.
+irregular_past_participle_adjectives	good	The known girl is important.
+irregular_past_participle_adjectives	bad	The knew girl is important.
+irregular_past_participle_adjectives	good	The broken dishes weren't red.
+irregular_past_participle_adjectives	bad	The broke dishes weren't red.
+irregular_past_participle_verbs	good	The Borgias wore a lot of scarves.
+irregular_past_participle_verbs	bad	The Borgias worn a lot of scarves.
+irregular_past_participle_verbs	good	Teresa hid every senator.
+irregular_past_participle_verbs	bad	Teresa hidden every senator.
+irregular_past_participle_verbs	good	The mushroom went bad.
+irregular_past_participle_verbs	bad	The mushroom gone bad.
+irregular_past_participle_verbs	good	Cheryl came here.
+irregular_past_participle_verbs	bad	Cheryl come here.
+irregular_past_participle_verbs	good	Christopher hid a spotlight.
+irregular_past_participle_verbs	bad	Christopher hidden a spotlight.
+irregular_past_participle_verbs	good	Edward hid the cats.
+irregular_past_participle_verbs	bad	Edward hidden the cats.
+irregular_past_participle_verbs	good	Erin went to some schools.
+irregular_past_participle_verbs	bad	Erin gone to some schools.
+irregular_past_participle_verbs	good	Joel came here.
+irregular_past_participle_verbs	bad	Joel come here.
+irregular_past_participle_verbs	good	Paula broke some plates.
+irregular_past_participle_verbs	bad	Paula broken some plates.
+irregular_past_participle_verbs	good	Raymond woke up.
+irregular_past_participle_verbs	bad	Raymond woken up.
+irregular_past_participle_verbs	good	Randolf drove to a mall.
+irregular_past_participle_verbs	bad	Randolf driven to a mall.
+irregular_past_participle_verbs	good	Laura broke this cart.
+irregular_past_participle_verbs	bad	Laura broken this cart.
+irregular_past_participle_verbs	good	Victoria wore that hat.
+irregular_past_participle_verbs	bad	Victoria worn that hat.
+irregular_past_participle_verbs	good	Carrie took most bikes.
+irregular_past_participle_verbs	bad	Carrie taken most bikes.
+irregular_past_participle_verbs	good	Nancy sang.
+irregular_past_participle_verbs	bad	Nancy sung.
+irregular_plural_subject_verb_agreement_1	good	Those radii have scared that teenager.
+irregular_plural_subject_verb_agreement_1	bad	Those radii has scared that teenager.
+irregular_plural_subject_verb_agreement_1	good	This goose isn't bothering Edward.
+irregular_plural_subject_verb_agreement_1	bad	This goose weren't bothering Edward.
+irregular_plural_subject_verb_agreement_1	good	The axes haven't stunned that teenager.
+irregular_plural_subject_verb_agreement_1	bad	The axes hasn't stunned that teenager.
+irregular_plural_subject_verb_agreement_1	good	The radius is boring Carla.
+irregular_plural_subject_verb_agreement_1	bad	The radius were boring Carla.
+irregular_plural_subject_verb_agreement_1	good	All hypotheses have hurt Beth.
+irregular_plural_subject_verb_agreement_1	bad	All hypotheses has hurt Beth.
+irregular_plural_subject_verb_agreement_1	good	That woman isn't irritating Dennis.
+irregular_plural_subject_verb_agreement_1	bad	That woman weren't irritating Dennis.
+irregular_plural_subject_verb_agreement_1	good	An alumnus doubts every sweater flattens.
+irregular_plural_subject_verb_agreement_1	bad	An alumnus doubt every sweater flattens.
+irregular_plural_subject_verb_agreement_1	good	The people weren't boycotting those mountains.
+irregular_plural_subject_verb_agreement_1	bad	The people isn't boycotting those mountains.
+irregular_plural_subject_verb_agreement_1	good	These hypotheses embarrass Dennis.
+irregular_plural_subject_verb_agreement_1	bad	These hypotheses embarrasses Dennis.
+irregular_plural_subject_verb_agreement_1	good	Men have compromised.
+irregular_plural_subject_verb_agreement_1	bad	Men has compromised.
+irregular_plural_subject_verb_agreement_1	good	All radii weren't upsetting every bank.
+irregular_plural_subject_verb_agreement_1	bad	All radii wasn't upsetting every bank.
+irregular_plural_subject_verb_agreement_1	good	Some parentheses scare these adults.
+irregular_plural_subject_verb_agreement_1	bad	Some parentheses scares these adults.
+irregular_plural_subject_verb_agreement_1	good	Some analyses weren't astounding this actress.
+irregular_plural_subject_verb_agreement_1	bad	Some analyses wasn't astounding this actress.
+irregular_plural_subject_verb_agreement_1	good	Many people have hidden away.
+irregular_plural_subject_verb_agreement_1	bad	Many people has hidden away.
+irregular_plural_subject_verb_agreement_1	good	Mice are hurting a waiter.
+irregular_plural_subject_verb_agreement_1	bad	Mice was hurting a waiter.
+irregular_plural_subject_verb_agreement_2	good	The women meet.
+irregular_plural_subject_verb_agreement_2	bad	The woman meet.
+irregular_plural_subject_verb_agreement_2	good	The child isn't attacking Becky.
+irregular_plural_subject_verb_agreement_2	bad	The children isn't attacking Becky.
+irregular_plural_subject_verb_agreement_2	good	The woman cleans every public park.
+irregular_plural_subject_verb_agreement_2	bad	The women cleans every public park.
+irregular_plural_subject_verb_agreement_2	good	The man works with some pedestrian.
+irregular_plural_subject_verb_agreement_2	bad	The men works with some pedestrian.
+irregular_plural_subject_verb_agreement_2	good	The men have revealed Christina.
+irregular_plural_subject_verb_agreement_2	bad	The man have revealed Christina.
+irregular_plural_subject_verb_agreement_2	good	The men weren't benefiting.
+irregular_plural_subject_verb_agreement_2	bad	The man weren't benefiting.
+irregular_plural_subject_verb_agreement_2	good	The children haven't loved Julie.
+irregular_plural_subject_verb_agreement_2	bad	The child haven't loved Julie.
+irregular_plural_subject_verb_agreement_2	good	The woman is skated around every art gallery.
+irregular_plural_subject_verb_agreement_2	bad	The women is skated around every art gallery.
+irregular_plural_subject_verb_agreement_2	good	The child is breaking most plates.
+irregular_plural_subject_verb_agreement_2	bad	The children is breaking most plates.
+irregular_plural_subject_verb_agreement_2	good	The person was leaving.
+irregular_plural_subject_verb_agreement_2	bad	The people was leaving.
+irregular_plural_subject_verb_agreement_2	good	The teeth tip over.
+irregular_plural_subject_verb_agreement_2	bad	The tooth tip over.
+irregular_plural_subject_verb_agreement_2	good	The men have admired Ronald.
+irregular_plural_subject_verb_agreement_2	bad	The man have admired Ronald.
+irregular_plural_subject_verb_agreement_2	good	The person was firing James.
+irregular_plural_subject_verb_agreement_2	bad	The people was firing James.
+irregular_plural_subject_verb_agreement_2	good	The people conspire.
+irregular_plural_subject_verb_agreement_2	bad	The person conspire.
+irregular_plural_subject_verb_agreement_2	good	The people debate.
+irregular_plural_subject_verb_agreement_2	bad	The person debate.
+left_branch_island_echo_question	good	Irene had messed up whose rug?
+left_branch_island_echo_question	bad	Whose had Irene messed up rug?
+left_branch_island_echo_question	good	Edward has returned to which customers?
+left_branch_island_echo_question	bad	Which has Edward returned to customers?
+left_branch_island_echo_question	good	Holly is taking which blouse?
+left_branch_island_echo_question	bad	Which is Holly taking blouse?
+left_branch_island_echo_question	good	All women had known what teachers?
+left_branch_island_echo_question	bad	What had all women known teachers?
+left_branch_island_echo_question	good	That truck will hurt which senator?
+left_branch_island_echo_question	bad	Which will that truck hurt senator?
+left_branch_island_echo_question	good	Helen did drive to whose glacier?
+left_branch_island_echo_question	bad	Whose did Helen drive to glacier?
+left_branch_island_echo_question	good	Some documentary has disagreed with what commentaries?
+left_branch_island_echo_question	bad	What has some documentary disagreed with commentaries?
+left_branch_island_echo_question	good	Cheryl is selling what malls?
+left_branch_island_echo_question	bad	What is Cheryl selling malls?
+left_branch_island_echo_question	good	David would cure what snake?
+left_branch_island_echo_question	bad	What would David cure snake?
+left_branch_island_echo_question	good	Theresa did scare which men?
+left_branch_island_echo_question	bad	Which did Theresa scare men?
+left_branch_island_echo_question	good	Some chairs should embarrass what guys?
+left_branch_island_echo_question	bad	What should some chairs embarrass guys?
+left_branch_island_echo_question	good	This committee can shock which student?
+left_branch_island_echo_question	bad	Which can this committee shock student?
+left_branch_island_echo_question	good	Jane can discover whose dogs?
+left_branch_island_echo_question	bad	Whose can Jane discover dogs?
+left_branch_island_echo_question	good	Julia is boycotting what mountain?
+left_branch_island_echo_question	bad	What is Julia boycotting mountain?
+left_branch_island_echo_question	good	Carla had argued about what series?
+left_branch_island_echo_question	bad	What had Carla argued about series?
+left_branch_island_simple_question	good	Whose museums had Dana alarmed?
+left_branch_island_simple_question	bad	Whose had Dana alarmed museums?
+left_branch_island_simple_question	good	Whose hat should Tonya wear?
+left_branch_island_simple_question	bad	Whose should Tonya wear hat?
+left_branch_island_simple_question	good	What movies is Renee concealing?
+left_branch_island_simple_question	bad	What is Renee concealing movies?
+left_branch_island_simple_question	good	What bicycle was Rebecca noticing?
+left_branch_island_simple_question	bad	What was Rebecca noticing bicycle?
+left_branch_island_simple_question	good	Which senator should Jesus visit?
+left_branch_island_simple_question	bad	Which should Jesus visit senator?
+left_branch_island_simple_question	good	What fish is a person healing?
+left_branch_island_simple_question	bad	What is a person healing fish?
+left_branch_island_simple_question	good	What dancers should Kristen respect?
+left_branch_island_simple_question	bad	What should Kristen respect dancers?
+left_branch_island_simple_question	good	What waiter has James hurt?
+left_branch_island_simple_question	bad	What has James hurt waiter?
+left_branch_island_simple_question	good	Which adult was Larry distracting?
+left_branch_island_simple_question	bad	Which was Larry distracting adult?
+left_branch_island_simple_question	good	What waitresses has Monica approached?
+left_branch_island_simple_question	bad	What has Monica approached waitresses?
+left_branch_island_simple_question	good	Which waiters has Thomas disliked?
+left_branch_island_simple_question	bad	Which has Thomas disliked waiters?
+left_branch_island_simple_question	good	What senator is a truck hurting?
+left_branch_island_simple_question	bad	What is a truck hurting senator?
+left_branch_island_simple_question	good	Which carriages might Alice break?
+left_branch_island_simple_question	bad	Which might Alice break carriages?
+left_branch_island_simple_question	good	Which newspaper articles can the student dislike?
+left_branch_island_simple_question	bad	Which can the student dislike newspaper articles?
+left_branch_island_simple_question	good	Which oasis has Diane dropped by?
+left_branch_island_simple_question	bad	Which has Diane dropped by oasis?
+matrix_question_npi_licensor_present	good	Had Bruce ever played?
+matrix_question_npi_licensor_present	bad	Bruce had ever played.
+matrix_question_npi_licensor_present	good	Had Patrick ever answered?
+matrix_question_npi_licensor_present	bad	Patrick had ever answered.
+matrix_question_npi_licensor_present	good	Do some carts ever accelerate?
+matrix_question_npi_licensor_present	bad	Some carts do ever accelerate.
+matrix_question_npi_licensor_present	good	Will Dawn ever know Jeffrey?
+matrix_question_npi_licensor_present	bad	Dawn will ever know Jeffrey.
+matrix_question_npi_licensor_present	good	Should Monica ever grin?
+matrix_question_npi_licensor_present	bad	Monica should ever grin.
+matrix_question_npi_licensor_present	good	Has Cindy ever anticipated most dancers to study?
+matrix_question_npi_licensor_present	bad	Cindy has ever anticipated most dancers to study.
+matrix_question_npi_licensor_present	good	Had Denise ever doubted Galileo can't bother to train?
+matrix_question_npi_licensor_present	bad	Denise had ever doubted Galileo can't bother to train.
+matrix_question_npi_licensor_present	good	Has Jane ever worried Tonya?
+matrix_question_npi_licensor_present	bad	Jane has ever worried Tonya.
+matrix_question_npi_licensor_present	good	Would many customers ever bake?
+matrix_question_npi_licensor_present	bad	Many customers would ever bake.
+matrix_question_npi_licensor_present	good	Should Mitchell ever know Eva?
+matrix_question_npi_licensor_present	bad	Mitchell should ever know Eva.
+matrix_question_npi_licensor_present	good	Could many doctors ever clash?
+matrix_question_npi_licensor_present	bad	Many doctors could ever clash.
+matrix_question_npi_licensor_present	good	Has Sandra ever planned to get a job?
+matrix_question_npi_licensor_present	bad	Sandra has ever planned to get a job.
+matrix_question_npi_licensor_present	good	Will the horse ever come here?
+matrix_question_npi_licensor_present	bad	The horse will ever come here.
+matrix_question_npi_licensor_present	good	Did children ever cope?
+matrix_question_npi_licensor_present	bad	Children did ever cope.
+matrix_question_npi_licensor_present	good	Did Carolyn ever argue?
+matrix_question_npi_licensor_present	bad	Carolyn did ever argue.
+npi_present_1	good	Even Suzanne has really joked around.
+npi_present_1	bad	Even Suzanne has ever joked around.
+npi_present_1	good	Even many teenagers clearly boycott those legislatures.
+npi_present_1	bad	Even many teenagers ever boycott those legislatures.
+npi_present_1	good	Even every cashier had clearly found out who hasn't sung.
+npi_present_1	bad	Even every cashier had ever found out who hasn't sung.
+npi_present_1	good	Even Mark might often irritate the pedestrians.
+npi_present_1	bad	Even Mark might ever irritate the pedestrians.
+npi_present_1	good	Even Tara had really baked.
+npi_present_1	bad	Even Tara had ever baked.
+npi_present_1	good	Even these trucks have often slowed.
+npi_present_1	bad	Even these trucks have ever slowed.
+npi_present_1	good	Even Deanna did also require Rodney to disappear.
+npi_present_1	bad	Even Deanna did ever require Rodney to disappear.
+npi_present_1	good	Even Galileo really climbs down these hills.
+npi_present_1	bad	Even Galileo ever climbs down these hills.
+npi_present_1	good	Even a lot of lamps often brighten.
+npi_present_1	bad	Even a lot of lamps ever brighten.
+npi_present_1	good	Even Brad often convinces John's doctors to debate.
+npi_present_1	bad	Even Brad ever convinces John's doctors to debate.
+npi_present_1	good	Even this carriage also maneuvers.
+npi_present_1	bad	Even this carriage ever maneuvers.
+npi_present_1	good	Even a muffin can certainly blacken.
+npi_present_1	bad	Even a muffin can ever blacken.
+npi_present_1	good	Even Wayne had also answered.
+npi_present_1	bad	Even Wayne had ever answered.
+npi_present_1	good	Even that shawl often frays.
+npi_present_1	bad	Even that shawl ever frays.
+npi_present_1	good	Even Susan could also clean this screen.
+npi_present_1	bad	Even Susan could ever clean this screen.
+npi_present_2	good	Tamara really exited those mountains.
+npi_present_2	bad	Tamara ever exited those mountains.
+npi_present_2	good	Karen could certainly boycott this association.
+npi_present_2	bad	Karen could ever boycott this association.
+npi_present_2	good	Every committee could often sell a river.
+npi_present_2	bad	Every committee could ever sell a river.
+npi_present_2	good	Charles had often arrived at those restaurants.
+npi_present_2	bad	Charles had ever arrived at those restaurants.
+npi_present_2	good	Many skateboards also roll.
+npi_present_2	bad	Many skateboards ever roll.
+npi_present_2	good	Some river really vaporizes.
+npi_present_2	bad	Some river ever vaporizes.
+npi_present_2	good	Guy has really listened to all customers.
+npi_present_2	bad	Guy has ever listened to all customers.
+npi_present_2	good	Mark certainly struggles.
+npi_present_2	bad	Mark ever struggles.
+npi_present_2	good	Ladies also answer.
+npi_present_2	bad	Ladies ever answer.
+npi_present_2	good	A driver has clearly taken many snakes.
+npi_present_2	bad	A driver has ever taken many snakes.
+npi_present_2	good	Homer certainly spins around.
+npi_present_2	bad	Homer ever spins around.
+npi_present_2	good	That pepper might certainly go bad.
+npi_present_2	bad	That pepper might ever go bad.
+npi_present_2	good	Some waiter clearly praised every documentary.
+npi_present_2	bad	Some waiter ever praised every documentary.
+npi_present_2	good	Janice really broke the chairs.
+npi_present_2	bad	Janice ever broke the chairs.
+npi_present_2	good	Andrew had certainly hugged Sonia.
+npi_present_2	bad	Andrew had ever hugged Sonia.
+only_npi_licensor_present	good	Only Bill would ever complain.
+only_npi_licensor_present	bad	Even Bill would ever complain.
+only_npi_licensor_present	good	Only Lori had ever healed Carl.
+only_npi_licensor_present	bad	Even Lori had ever healed Carl.
+only_npi_licensor_present	good	Only these pedestrians ever obligate Carl to aggravate Brad.
+only_npi_licensor_present	bad	Even these pedestrians ever obligate Carl to aggravate Brad.
+only_npi_licensor_present	good	Only Alexander ever looked like this drawing.
+only_npi_licensor_present	bad	Even Alexander ever looked like this drawing.
+only_npi_licensor_present	good	Only libraries ever sway Sally to salute.
+only_npi_licensor_present	bad	Even libraries ever sway Sally to salute.
+only_npi_licensor_present	good	Only Meredith should ever wear the shawl.
+only_npi_licensor_present	bad	Even Meredith should ever wear the shawl.
+only_npi_licensor_present	good	Only Grace ever reveals Janice.
+only_npi_licensor_present	bad	Even Grace ever reveals Janice.
+only_npi_licensor_present	good	Only Aaron ever messes up some couches.
+only_npi_licensor_present	bad	Even Aaron ever messes up some couches.
+only_npi_licensor_present	good	Only Elizabeth ever doubted Patricia has arrived at the hospital.
+only_npi_licensor_present	bad	Even Elizabeth ever doubted Patricia has arrived at the hospital.
+only_npi_licensor_present	good	Only Chad ever preferred Robert to waste away.
+only_npi_licensor_present	bad	Even Chad ever preferred Robert to waste away.
+only_npi_licensor_present	good	Only the boys ever managed to watch most teenagers.
+only_npi_licensor_present	bad	Even the boys ever managed to watch most teenagers.
+only_npi_licensor_present	good	Only the sweaters ever twirl.
+only_npi_licensor_present	bad	Even the sweaters ever twirl.
+only_npi_licensor_present	good	Only Susan ever tries to exercise.
+only_npi_licensor_present	bad	Even Susan ever tries to exercise.
+only_npi_licensor_present	good	Only Melanie ever investigates who reunite.
+only_npi_licensor_present	bad	Even Melanie ever investigates who reunite.
+only_npi_licensor_present	good	Only waiters ever cope.
+only_npi_licensor_present	bad	Even waiters ever cope.
+only_npi_scope	good	Only the grandsons of the Impressionists who Colleen is appreciating ever encourage Phillip to stretch.
+only_npi_scope	bad	The grandsons of the Impressionists who only Colleen is appreciating ever encourage Phillip to stretch.
+only_npi_scope	good	Only that story about Monet that Mark would research does ever worry Richard.
+only_npi_scope	bad	That story about Monet that only Mark would research does ever worry Richard.
+only_npi_scope	good	Only a popsicle that Danielle admires ever freezes.
+only_npi_scope	bad	A popsicle that only Danielle admires ever freezes.
+only_npi_scope	good	Only Naomi's sisters that Martin had questioned ever seem to look like a light.
+only_npi_scope	bad	Naomi's sisters that only Martin had questioned ever seem to look like a light.
+only_npi_scope	good	Only those companies that these associations stun had ever enticed Benjamin's ex-husband to write.
+only_npi_scope	bad	Those companies that only these associations stun had ever enticed Benjamin's ex-husband to write.
+only_npi_scope	good	Only many people who George likes ever clashed.
+only_npi_scope	bad	Many people who only George likes ever clashed.
+only_npi_scope	good	Only Tammy's plumber who a pedestrian has respected ever knows some actors.
+only_npi_scope	bad	Tammy's plumber who only a pedestrian has respected ever knows some actors.
+only_npi_scope	good	Only Douglas's ex-husbands who all photographs looked like ever hurts Peter.
+only_npi_scope	bad	Douglas's ex-husbands who only all photographs looked like ever hurts Peter.
+only_npi_scope	good	Only those doctors who Karla respects ever conceal many snakes.
+only_npi_scope	bad	Those doctors who only Karla respects ever conceal many snakes.
+only_npi_scope	good	Only a cousin of Lucille that a lot of rivers have hurt ever learned who have married.
+only_npi_scope	bad	A cousin of Lucille that only a lot of rivers have hurt ever learned who have married.
+only_npi_scope	good	Only Katherine's podiatrist who Sheila discusses ever conceals Mary.
+only_npi_scope	bad	Katherine's podiatrist who only Sheila discusses ever conceals Mary.
+only_npi_scope	good	Only every government that Lawrence confused has ever respected Dana.
+only_npi_scope	bad	Every government that only Lawrence confused has ever respected Dana.
+only_npi_scope	good	Only cashiers' piano teachers that Judy does attack ever disturbed patients.
+only_npi_scope	bad	Cashiers' piano teachers that only Judy does attack ever disturbed patients.
+only_npi_scope	good	Only these shirts that paintings have looked like could ever soak.
+only_npi_scope	bad	These shirts that only paintings have looked like could ever soak.
+only_npi_scope	good	Only cashiers that broccoli was distracting had ever thought about a face.
+only_npi_scope	bad	Cashiers that only broccoli was distracting had ever thought about a face.
+passive_1	good	Lucille's sisters are confused by Amy.
+passive_1	bad	Lucille's sisters are communicated by Amy.
+passive_1	good	A lot of hospitals were astounded by some actress.
+passive_1	bad	A lot of hospitals were cooperated by some actress.
+passive_1	good	Larry's oncologists aren't helped by Spain.
+passive_1	bad	Larry's oncologists aren't struggled by Spain.
+passive_1	good	Jeffrey's sons are insulted by Tina's supervisor.
+passive_1	bad	Jeffrey's sons are smiled by Tina's supervisor.
+passive_1	good	Tracy isn't fired by Jodi's daughter.
+passive_1	bad	Tracy isn't muttered by Jodi's daughter.
+passive_1	good	Eva's bosses weren't cared for by drivers.
+passive_1	bad	Eva's bosses weren't interacted by drivers.
+passive_1	good	Some guys are disgusted by Angela.
+passive_1	bad	Some guys are corresponded by Angela.
+passive_1	good	That guest's supervisor wasn't disliked by Wayne's partners.
+passive_1	bad	That guest's supervisor wasn't screamed by Wayne's partners.
+passive_1	good	Curtis was distracted by these high schools.
+passive_1	bad	Curtis was argued by these high schools.
+passive_1	good	David wasn't disgusted by these hospitals.
+passive_1	bad	David wasn't shouted by these hospitals.
+passive_1	good	The students weren't approached by Amy.
+passive_1	bad	The students weren't shouted by Amy.
+passive_1	good	The teenagers are irritated by that coat.
+passive_1	bad	The teenagers are flirted by that coat.
+passive_1	good	Girls' students were alarmed by Brenda.
+passive_1	bad	Girls' students were chatted by Brenda.
+passive_1	good	Thomas's oncologist isn't talked about by a student.
+passive_1	bad	Thomas's oncologist isn't laughed by a student.
+passive_1	good	Karen isn't remembered by Homer.
+passive_1	bad	Karen isn't joked around by Homer.
+passive_2	good	A lot of nieces of some actor aren't scared.
+passive_2	bad	A lot of nieces of some actor aren't wept.
+passive_2	good	Mitchell's grandfathers are forgotten.
+passive_2	bad	Mitchell's grandfathers are concurred.
+passive_2	good	The Clintons were attacked.
+passive_2	bad	The Clintons were replied.
+passive_2	good	Most cashiers are disliked.
+passive_2	bad	Most cashiers are flirted.
+passive_2	good	A lot of libraries were distracted.
+passive_2	bad	A lot of libraries were communicated.
+passive_2	good	Kristen wasn't visited.
+passive_2	bad	Kristen wasn't muttered.
+passive_2	good	Stephen was disliked.
+passive_2	bad	Stephen was laughed.
+passive_2	good	Steve isn't disliked.
+passive_2	bad	Steve isn't lied.
+passive_2	good	The actresses weren't bored.
+passive_2	bad	The actresses weren't retaliated.
+passive_2	good	Mary wasn't known.
+passive_2	bad	Mary wasn't cried.
+passive_2	good	Many teachers aren't visited.
+passive_2	bad	Many teachers aren't conspired.
+passive_2	good	Leslie's piano teachers were hired.
+passive_2	bad	Leslie's piano teachers were flirted.
+passive_2	good	Most actors are described.
+passive_2	bad	Most actors are corresponded.
+passive_2	good	Some guy's granddaughter was investigated.
+passive_2	bad	Some guy's granddaughter was screamed.
+passive_2	good	Edward was hurt.
+passive_2	bad	Edward was spoken up.
+principle_A_c_command	good	A lot of patients who can sell some couch didn't investigate themselves.
+principle_A_c_command	bad	A lot of patients who can sell some couch didn't investigate itself.
+principle_A_c_command	good	A lot of actresses that thought about Alice healed themselves.
+principle_A_c_command	bad	A lot of actresses that thought about Alice healed herself.
+principle_A_c_command	good	A guy that has seen the wheelbarrow notices himself.
+principle_A_c_command	bad	A guy that has seen the wheelbarrow notices itself.
+principle_A_c_command	good	The children that were complaining about Gregory hated themselves.
+principle_A_c_command	bad	The children that were complaining about Gregory hated himself.
+principle_A_c_command	good	Every boy that isn't selling the grocery stores isn't healing himself.
+principle_A_c_command	bad	Every boy that isn't selling the grocery stores isn't healing themselves.
+principle_A_c_command	good	The hospitals that talk to Ann talked to themselves.
+principle_A_c_command	bad	The hospitals that talk to Ann talked to herself.
+principle_A_c_command	good	Many skirts that stun some waitress are boring themselves.
+principle_A_c_command	bad	Many skirts that stun some waitress are boring herself.
+principle_A_c_command	good	All men that might fire Tiffany have worked with themselves.
+principle_A_c_command	bad	All men that might fire Tiffany have worked with herself.
+principle_A_c_command	good	That actress who admired the cup praises herself.
+principle_A_c_command	bad	That actress who admired the cup praises itself.
+principle_A_c_command	good	This lady who is healing Charles wasn't hiding herself.
+principle_A_c_command	bad	This lady who is healing Charles wasn't hiding himself.
+principle_A_c_command	good	Every woman that was hiring the Borgias argued about herself.
+principle_A_c_command	bad	Every woman that was hiring the Borgias argued about themselves.
+principle_A_c_command	good	Every lady who does walk through a lot of movie theaters hadn't hugged herself.
+principle_A_c_command	bad	Every lady who does walk through a lot of movie theaters hadn't hugged themselves.
+principle_A_c_command	good	These doctors who do leave Melissa fled from themselves.
+principle_A_c_command	bad	These doctors who do leave Melissa fled from herself.
+principle_A_c_command	good	These ladies that hadn't forgotten Victoria fled from themselves.
+principle_A_c_command	bad	These ladies that hadn't forgotten Victoria fled from herself.
+principle_A_c_command	good	The customers who embarrass Kevin are discussing themselves.
+principle_A_c_command	bad	The customers who embarrass Kevin are discussing himself.
+principle_A_case_1	good	The teenagers explain that they aren't breaking all glasses.
+principle_A_case_1	bad	The teenagers explain that themselves aren't breaking all glasses.
+principle_A_case_1	good	Carl can't imagine that he complained about Lisa.
+principle_A_case_1	bad	Carl can't imagine that himself complained about Lisa.
+principle_A_case_1	good	Angela wasn't thinking that she likes Susan.
+principle_A_case_1	bad	Angela wasn't thinking that herself likes Susan.
+principle_A_case_1	good	Tara thinks that she sounded like Wayne.
+principle_A_case_1	bad	Tara thinks that herself sounded like Wayne.
+principle_A_case_1	good	Those waiters explain that they did climb down mountains.
+principle_A_case_1	bad	Those waiters explain that themselves did climb down mountains.
+principle_A_case_1	good	Tina wasn't saying that she descends most ladders.
+principle_A_case_1	bad	Tina wasn't saying that herself descends most ladders.
+principle_A_case_1	good	Cindy explained that she has concealed all cashiers.
+principle_A_case_1	bad	Cindy explained that herself has concealed all cashiers.
+principle_A_case_1	good	Bethany has imagined that she has fired Margaret.
+principle_A_case_1	bad	Bethany has imagined that herself has fired Margaret.
+principle_A_case_1	good	Pamela thinks that she isn't returning to Stephanie.
+principle_A_case_1	bad	Pamela thinks that herself isn't returning to Stephanie.
+principle_A_case_1	good	A lot of doctors say that they had skated around that college campus.
+principle_A_case_1	bad	A lot of doctors say that themselves had skated around that college campus.
+principle_A_case_1	good	Many women explain that they fix the cart.
+principle_A_case_1	bad	Many women explain that themselves fix the cart.
+principle_A_case_1	good	Donna has imagined that she is breaking the bicycle.
+principle_A_case_1	bad	Donna has imagined that herself is breaking the bicycle.
+principle_A_case_1	good	Alan was explaining that he criticizes Holly.
+principle_A_case_1	bad	Alan was explaining that himself criticizes Holly.
+principle_A_case_1	good	Michelle thinks that she was discussing Natalie.
+principle_A_case_1	bad	Michelle thinks that herself was discussing Natalie.
+principle_A_case_1	good	Janet explains that she will hurt Leslie.
+principle_A_case_1	bad	Janet explains that herself will hurt Leslie.
+principle_A_case_2	good	Eric imagines himself taking every rug.
+principle_A_case_2	bad	Eric imagines himself took every rug.
+principle_A_case_2	good	Stacy imagines herself praising this actress.
+principle_A_case_2	bad	Stacy imagines herself praises this actress.
+principle_A_case_2	good	All pedestrians think about themselves exploring museums.
+principle_A_case_2	bad	All pedestrians think about themselves explored museums.
+principle_A_case_2	good	Cheryl is forgetting about herself thinking about Beverly.
+principle_A_case_2	bad	Cheryl is forgetting about herself thought about Beverly.
+principle_A_case_2	good	Some guests imagine themselves exploring a library.
+principle_A_case_2	bad	Some guests imagine themselves explored a library.
+principle_A_case_2	good	Tonya is thinking about herself listening to Andrew.
+principle_A_case_2	bad	Tonya is thinking about herself listened to Andrew.
+principle_A_case_2	good	Christina hasn't thought about herself noticing Sheila.
+principle_A_case_2	bad	Christina hasn't thought about herself notices Sheila.
+principle_A_case_2	good	Ann wouldn't forget about herself passing banks.
+principle_A_case_2	bad	Ann wouldn't forget about herself passed banks.
+principle_A_case_2	good	These patients think about themselves concealing that girl.
+principle_A_case_2	bad	These patients think about themselves concealed that girl.
+principle_A_case_2	good	That association is forgetting about itself impressing Renee.
+principle_A_case_2	bad	That association is forgetting about itself impresses Renee.
+principle_A_case_2	good	Some teachers imagine themselves bringing many carriages.
+principle_A_case_2	bad	Some teachers imagine themselves brought many carriages.
+principle_A_case_2	good	Stacy won't imagine herself biking to all malls.
+principle_A_case_2	bad	Stacy won't imagine herself biked to all malls.
+principle_A_case_2	good	Most men forget about themselves climbing down the ladder.
+principle_A_case_2	bad	Most men forget about themselves climb down the ladder.
+principle_A_case_2	good	Paula hasn't forgotten about herself complaining about Deborah.
+principle_A_case_2	bad	Paula hasn't forgotten about herself complained about Deborah.
+principle_A_case_2	good	Steven doesn't think about himself listening to Theresa.
+principle_A_case_2	bad	Steven doesn't think about himself listened to Theresa.
+principle_A_domain_1	good	Carla had explained that Samuel has discussed her.
+principle_A_domain_1	bad	Carla had explained that Samuel has discussed herself.
+principle_A_domain_1	good	Alice hadn't said that some people weren't escaping from her.
+principle_A_domain_1	bad	Alice hadn't said that some people weren't escaping from herself.
+principle_A_domain_1	good	Carl imagines that Maria does leave him.
+principle_A_domain_1	bad	Carl imagines that Maria does leave himself.
+principle_A_domain_1	good	Those waiters think that Robert flees from them.
+principle_A_domain_1	bad	Those waiters think that Robert flees from themselves.
+principle_A_domain_1	good	Florence did think that Walter stunned her.
+principle_A_domain_1	bad	Florence did think that Walter stunned herself.
+principle_A_domain_1	good	Carlos said that Lori helped him.
+principle_A_domain_1	bad	Carlos said that Lori helped himself.
+principle_A_domain_1	good	All people think that Tamara investigated them.
+principle_A_domain_1	bad	All people think that Tamara investigated themselves.
+principle_A_domain_1	good	A lot of people imagined that Sabrina had aggravated them.
+principle_A_domain_1	bad	A lot of people imagined that Sabrina had aggravated themselves.
+principle_A_domain_1	good	Emily is thinking that Samuel will love her.
+principle_A_domain_1	bad	Emily is thinking that Samuel will love herself.
+principle_A_domain_1	good	A lot of children say that Allison hadn't approached them.
+principle_A_domain_1	bad	A lot of children say that Allison hadn't approached themselves.
+principle_A_domain_1	good	Paul wasn't thinking that Marie had distracted him.
+principle_A_domain_1	bad	Paul wasn't thinking that Marie had distracted himself.
+principle_A_domain_1	good	A lot of actors imagined that Kenneth loves them.
+principle_A_domain_1	bad	A lot of actors imagined that Kenneth loves themselves.
+principle_A_domain_1	good	A waitress hasn't thought that many drivers talked about her.
+principle_A_domain_1	bad	A waitress hasn't thought that many drivers talked about herself.
+principle_A_domain_1	good	Joseph isn't imagining that Veronica could remember him.
+principle_A_domain_1	bad	Joseph isn't imagining that Veronica could remember himself.
+principle_A_domain_1	good	Kathleen thinks that Carlos was irritating her.
+principle_A_domain_1	bad	Kathleen thinks that Carlos was irritating herself.
+principle_A_domain_2	good	Donald can imagine those college campuses are boring themselves.
+principle_A_domain_2	bad	Donald can imagine those college campuses are boring himself.
+principle_A_domain_2	good	Gerald was explaining Patricia was revealing herself.
+principle_A_domain_2	bad	Gerald was explaining Patricia was revealing himself.
+principle_A_domain_2	good	Mark imagines Erin might admire herself.
+principle_A_domain_2	bad	Mark imagines Erin might admire himself.
+principle_A_domain_2	good	Gary imagined most reports upset themselves.
+principle_A_domain_2	bad	Gary imagined most reports upset himself.
+principle_A_domain_2	good	A lot of doctors hadn't imagined Denise notices herself.
+principle_A_domain_2	bad	A lot of doctors hadn't imagined Denise notices themselves.
+principle_A_domain_2	good	Edward didn't think some teachers weren't discussing themselves.
+principle_A_domain_2	bad	Edward didn't think some teachers weren't discussing himself.
+principle_A_domain_2	good	The Borgias explain Scott had talked to himself.
+principle_A_domain_2	bad	The Borgias explain Scott had talked to themselves.
+principle_A_domain_2	good	Valerie doesn't think Russell sounds like himself.
+principle_A_domain_2	bad	Valerie doesn't think Russell sounds like herself.
+principle_A_domain_2	good	Craig hasn't thought Jessica praised herself.
+principle_A_domain_2	bad	Craig hasn't thought Jessica praised himself.
+principle_A_domain_2	good	Holly would say some slope didn't irritate itself.
+principle_A_domain_2	bad	Holly would say some slope didn't irritate herself.
+principle_A_domain_2	good	Sally wouldn't explain Rodney confused himself.
+principle_A_domain_2	bad	Sally wouldn't explain Rodney confused herself.
+principle_A_domain_2	good	The dancer said Jeffrey doesn't find himself.
+principle_A_domain_2	bad	The dancer said Jeffrey doesn't find herself.
+principle_A_domain_2	good	Beverly had said Homer was concealing himself.
+principle_A_domain_2	bad	Beverly had said Homer was concealing herself.
+principle_A_domain_2	good	The Impressionists think that window distracted itself.
+principle_A_domain_2	bad	The Impressionists think that window distracted themselves.
+principle_A_domain_2	good	Those waitresses say Curtis hadn't alarmed himself.
+principle_A_domain_2	bad	Those waitresses say Curtis hadn't alarmed themselves.
+principle_A_domain_3	good	Steven explains Kayla won't hurt herself.
+principle_A_domain_3	bad	Kayla explains Steven won't hurt herself.
+principle_A_domain_3	good	Gina explains Alan fires himself.
+principle_A_domain_3	bad	Alan explains Gina fires himself.
+principle_A_domain_3	good	Paul did think Alice hugs herself.
+principle_A_domain_3	bad	Alice did think Paul hugs herself.
+principle_A_domain_3	good	Beverly imagines Carla's ex-boyfriend hates himself.
+principle_A_domain_3	bad	Carla's ex-boyfriend imagines Beverly hates himself.
+principle_A_domain_3	good	Randolf imagines Kayla sounds like herself.
+principle_A_domain_3	bad	Kayla imagines Randolf sounds like herself.
+principle_A_domain_3	good	Tonya explains Kevin would boast about himself.
+principle_A_domain_3	bad	Kevin explains Tonya would boast about himself.
+principle_A_domain_3	good	Adam can explain Katherine will describe herself.
+principle_A_domain_3	bad	Katherine can explain Adam will describe herself.
+principle_A_domain_3	good	Nancy could say every guy hides himself.
+principle_A_domain_3	bad	Every guy could say Nancy hides himself.
+principle_A_domain_3	good	Claire says Lawrence attacks himself.
+principle_A_domain_3	bad	Lawrence says Claire attacks himself.
+principle_A_domain_3	good	Donna explains Gerald could boast about himself.
+principle_A_domain_3	bad	Gerald explains Donna could boast about himself.
+principle_A_domain_3	good	Rachel did explain Steve couldn't praise himself.
+principle_A_domain_3	bad	Steve did explain Rachel couldn't praise himself.
+principle_A_domain_3	good	Jeffrey would imagine Caroline watches herself.
+principle_A_domain_3	bad	Caroline would imagine Jeffrey watches herself.
+principle_A_domain_3	good	Martha should think Wayne conceals himself.
+principle_A_domain_3	bad	Wayne should think Martha conceals himself.
+principle_A_domain_3	good	Maria imagines Bill praises himself.
+principle_A_domain_3	bad	Bill imagines Maria praises himself.
+principle_A_domain_3	good	Jill could explain Ronald will hide himself.
+principle_A_domain_3	bad	Ronald could explain Jill will hide himself.
+principle_A_reconstruction	good	It's himself that this cashier attacked.
+principle_A_reconstruction	bad	It's himself that attacked this cashier.
+principle_A_reconstruction	good	It's herself that Andrea attacked.
+principle_A_reconstruction	bad	It's herself that attacked Andrea.
+principle_A_reconstruction	good	It's herself that Sharon talked about.
+principle_A_reconstruction	bad	It's herself that talked about Sharon.
+principle_A_reconstruction	good	It's himself that Todd described.
+principle_A_reconstruction	bad	It's himself that described Todd.
+principle_A_reconstruction	good	It's themselves that some spotlights astounded.
+principle_A_reconstruction	bad	It's themselves that astounded some spotlights.
+principle_A_reconstruction	good	It's herself who Karen criticized.
+principle_A_reconstruction	bad	It's herself who criticized Karen.
+principle_A_reconstruction	good	It's itself that some ice isn't stunning.
+principle_A_reconstruction	bad	It's itself that isn't stunning some ice.
+principle_A_reconstruction	good	It's himself who Robert discusses.
+principle_A_reconstruction	bad	It's himself who discusses Robert.
+principle_A_reconstruction	good	It's herself who Judy wasn't firing.
+principle_A_reconstruction	bad	It's herself who wasn't firing Judy.
+principle_A_reconstruction	good	It's herself that Carmen won't stun.
+principle_A_reconstruction	bad	It's herself that won't stun Carmen.
+principle_A_reconstruction	good	It's herself who Gina did work with.
+principle_A_reconstruction	bad	It's herself who did work with Gina.
+principle_A_reconstruction	good	It's itself that that pork would stun.
+principle_A_reconstruction	bad	It's itself that would stun that pork.
+principle_A_reconstruction	good	It's itself that this committee has referenced.
+principle_A_reconstruction	bad	It's itself that has referenced this committee.
+principle_A_reconstruction	good	It's herself that Allison couldn't insult.
+principle_A_reconstruction	bad	It's herself that couldn't insult Allison.
+principle_A_reconstruction	good	It's themselves that many college campuses haven't disgusted.
+principle_A_reconstruction	bad	It's themselves that haven't disgusted many college campuses.
+regular_plural_subject_verb_agreement_1	good	Paula references Robert.
+regular_plural_subject_verb_agreement_1	bad	Paula reference Robert.
+regular_plural_subject_verb_agreement_1	good	Most legislatures haven't disliked children.
+regular_plural_subject_verb_agreement_1	bad	Most legislatures hasn't disliked children.
+regular_plural_subject_verb_agreement_1	good	Some organizations aren't disturbing Vanessa.
+regular_plural_subject_verb_agreement_1	bad	Some organizations isn't disturbing Vanessa.
+regular_plural_subject_verb_agreement_1	good	The cups alarm Angela.
+regular_plural_subject_verb_agreement_1	bad	The cups alarms Angela.
+regular_plural_subject_verb_agreement_1	good	Tina isn't ascending that mountain.
+regular_plural_subject_verb_agreement_1	bad	Tina weren't ascending that mountain.
+regular_plural_subject_verb_agreement_1	good	The Borgias see Veronica.
+regular_plural_subject_verb_agreement_1	bad	The Borgias sees Veronica.
+regular_plural_subject_verb_agreement_1	good	Jeffrey hasn't criticized Donald.
+regular_plural_subject_verb_agreement_1	bad	Jeffrey haven't criticized Donald.
+regular_plural_subject_verb_agreement_1	good	Michelle is impressing Deanna.
+regular_plural_subject_verb_agreement_1	bad	Michelle were impressing Deanna.
+regular_plural_subject_verb_agreement_1	good	Meredith researches this mountain.
+regular_plural_subject_verb_agreement_1	bad	Meredith research this mountain.
+regular_plural_subject_verb_agreement_1	good	Walter was bringing the bank.
+regular_plural_subject_verb_agreement_1	bad	Walter were bringing the bank.
+regular_plural_subject_verb_agreement_1	good	Randolf hasn't fled from Kayla.
+regular_plural_subject_verb_agreement_1	bad	Randolf haven't fled from Kayla.
+regular_plural_subject_verb_agreement_1	good	Winston Churchill wasn't embarrassing Keith.
+regular_plural_subject_verb_agreement_1	bad	Winston Churchill weren't embarrassing Keith.
+regular_plural_subject_verb_agreement_1	good	All mirrors disgust Suzanne.
+regular_plural_subject_verb_agreement_1	bad	All mirrors disgusts Suzanne.
+regular_plural_subject_verb_agreement_1	good	A spotlight worries Jason.
+regular_plural_subject_verb_agreement_1	bad	A spotlight worry Jason.
+regular_plural_subject_verb_agreement_1	good	Carl hasn't irritated Brett.
+regular_plural_subject_verb_agreement_1	bad	Carl haven't irritated Brett.
+regular_plural_subject_verb_agreement_2	good	The students perform.
+regular_plural_subject_verb_agreement_2	bad	The student perform.
+regular_plural_subject_verb_agreement_2	good	The associations talk about Stacey.
+regular_plural_subject_verb_agreement_2	bad	The association talk about Stacey.
+regular_plural_subject_verb_agreement_2	good	The glove tightens.
+regular_plural_subject_verb_agreement_2	bad	The gloves tightens.
+regular_plural_subject_verb_agreement_2	good	The actresses compromise.
+regular_plural_subject_verb_agreement_2	bad	The actress compromise.
+regular_plural_subject_verb_agreement_2	good	The customer is suffering.
+regular_plural_subject_verb_agreement_2	bad	The customers is suffering.
+regular_plural_subject_verb_agreement_2	good	The cashiers marry.
+regular_plural_subject_verb_agreement_2	bad	The cashier marry.
+regular_plural_subject_verb_agreement_2	good	The hospital appreciates Claire.
+regular_plural_subject_verb_agreement_2	bad	The hospitals appreciates Claire.
+regular_plural_subject_verb_agreement_2	good	The dress crumples.
+regular_plural_subject_verb_agreement_2	bad	The dresses crumples.
+regular_plural_subject_verb_agreement_2	good	The customers haven't whispered.
+regular_plural_subject_verb_agreement_2	bad	The customer haven't whispered.
+regular_plural_subject_verb_agreement_2	good	The adult talks.
+regular_plural_subject_verb_agreement_2	bad	The adults talks.
+regular_plural_subject_verb_agreement_2	good	The universities aren't working hard.
+regular_plural_subject_verb_agreement_2	bad	The university aren't working hard.
+regular_plural_subject_verb_agreement_2	good	The adult has concealed all stories.
+regular_plural_subject_verb_agreement_2	bad	The adults has concealed all stories.
+regular_plural_subject_verb_agreement_2	good	The universities appreciate all teenagers.
+regular_plural_subject_verb_agreement_2	bad	The university appreciate all teenagers.
+regular_plural_subject_verb_agreement_2	good	The teachers weren't murmuring.
+regular_plural_subject_verb_agreement_2	bad	The teacher weren't murmuring.
+regular_plural_subject_verb_agreement_2	good	The couch has tipped over.
+regular_plural_subject_verb_agreement_2	bad	The couchs has tipped over.
+sentential_negation_npi_licensor_present	good	Teresa had not ever sold a movie theater.
+sentential_negation_npi_licensor_present	bad	Teresa had probably ever sold a movie theater.
+sentential_negation_npi_licensor_present	good	Allison has not ever taken that ice cream.
+sentential_negation_npi_licensor_present	bad	Allison has fortunately ever taken that ice cream.
+sentential_negation_npi_licensor_present	good	Teresa would not ever ascertain Carmen to remember Jessica.
+sentential_negation_npi_licensor_present	bad	Teresa would fortunately ever ascertain Carmen to remember Jessica.
+sentential_negation_npi_licensor_present	good	Sharon might not ever argue.
+sentential_negation_npi_licensor_present	bad	Sharon might probably ever argue.
+sentential_negation_npi_licensor_present	good	Those banks had not ever lied.
+sentential_negation_npi_licensor_present	bad	Those banks had really ever lied.
+sentential_negation_npi_licensor_present	good	All children do not ever struggle.
+sentential_negation_npi_licensor_present	bad	All children do really ever struggle.
+sentential_negation_npi_licensor_present	good	Theresa can not ever shock the Impressionists.
+sentential_negation_npi_licensor_present	bad	Theresa can fortunately ever shock the Impressionists.
+sentential_negation_npi_licensor_present	good	Theodore can not ever beg Sandra to stretch.
+sentential_negation_npi_licensor_present	bad	Theodore can really ever beg Sandra to stretch.
+sentential_negation_npi_licensor_present	good	Valerie does not ever manage to like some coats.
+sentential_negation_npi_licensor_present	bad	Valerie does probably ever manage to like some coats.
+sentential_negation_npi_licensor_present	good	Barbara has not ever boycotted that river.
+sentential_negation_npi_licensor_present	bad	Barbara has really ever boycotted that river.
+sentential_negation_npi_licensor_present	good	Sherry had not ever remembered who wasn't arriving at some closets.
+sentential_negation_npi_licensor_present	bad	Sherry had really ever remembered who wasn't arriving at some closets.
+sentential_negation_npi_licensor_present	good	Those children can not ever exercise.
+sentential_negation_npi_licensor_present	bad	Those children can fortunately ever exercise.
+sentential_negation_npi_licensor_present	good	Angela did not ever heal Becca.
+sentential_negation_npi_licensor_present	bad	Angela did probably ever heal Becca.
+sentential_negation_npi_licensor_present	good	Julia had not ever forced Kirsten to get a job.
+sentential_negation_npi_licensor_present	bad	Julia had really ever forced Kirsten to get a job.
+sentential_negation_npi_licensor_present	good	Anna does not ever hunt.
+sentential_negation_npi_licensor_present	bad	Anna does fortunately ever hunt.
+sentential_negation_npi_scope	good	The associations that had worried Cynthia have not ever planned to shock every actress.
+sentential_negation_npi_scope	bad	The associations that had not worried Cynthia have ever planned to shock every actress.
+sentential_negation_npi_scope	good	Every son of Jerry who has insulted Jerry can not ever die.
+sentential_negation_npi_scope	bad	Every son of Jerry who has not insulted Jerry can ever die.
+sentential_negation_npi_scope	good	Most pedestrians' tutors that have hired Alice can not ever kiss.
+sentential_negation_npi_scope	bad	Most pedestrians' tutors that have not hired Alice can ever kiss.
+sentential_negation_npi_scope	good	The doctor that has referenced Diane might not ever move.
+sentential_negation_npi_scope	bad	The doctor that has not referenced Diane might ever move.
+sentential_negation_npi_scope	good	Some glasses that did disturb Craig could not ever flatten.
+sentential_negation_npi_scope	bad	Some glasses that did not disturb Craig could ever flatten.
+sentential_negation_npi_scope	good	Every skirt that has disgusted Beverly had not ever unfolded.
+sentential_negation_npi_scope	bad	Every skirt that has not disgusted Beverly had ever unfolded.
+sentential_negation_npi_scope	good	Every plane that was aggravating this waiter could not ever accelerate.
+sentential_negation_npi_scope	bad	Every plane that was not aggravating this waiter could ever accelerate.
+sentential_negation_npi_scope	good	Those turtles that are boring April could not ever break those couches.
+sentential_negation_npi_scope	bad	Those turtles that are not boring April could ever break those couches.
+sentential_negation_npi_scope	good	Every coat that did scare Nina has not ever wrinkled.
+sentential_negation_npi_scope	bad	Every coat that did not scare Nina has ever wrinkled.
+sentential_negation_npi_scope	good	A lot of men who should hate Sharon can not ever struggle.
+sentential_negation_npi_scope	bad	A lot of men who should not hate Sharon can ever struggle.
+sentential_negation_npi_scope	good	Renee's piano teachers that had referenced Cindy could not ever refuse to perform.
+sentential_negation_npi_scope	bad	Renee's piano teachers that had not referenced Cindy could ever refuse to perform.
+sentential_negation_npi_scope	good	Tonya's sons who were observing Stephanie can not ever talk about Carla.
+sentential_negation_npi_scope	bad	Tonya's sons who were not observing Stephanie can ever talk about Carla.
+sentential_negation_npi_scope	good	Many candles that might astound Naomi did not ever fade.
+sentential_negation_npi_scope	bad	Many candles that might not astound Naomi did ever fade.
+sentential_negation_npi_scope	good	Jeffrey's son that has climbed down the mountain has not ever argued.
+sentential_negation_npi_scope	bad	Jeffrey's son that has not climbed down the mountain has ever argued.
+sentential_negation_npi_scope	good	William's senators that should complain about Jodi might not ever stretch.
+sentential_negation_npi_scope	bad	William's senators that should not complain about Jodi might ever stretch.
+sentential_subject_island	good	Who had the patients' cleaning those banks upset.
+sentential_subject_island	bad	Who had the patients' cleaning upset those banks.
+sentential_subject_island	good	Who has the waitress's observing Christine bothered.
+sentential_subject_island	bad	Who has the waitress's observing bothered Christine.
+sentential_subject_island	good	Who have a lot of adults' scanning this play disagreed with.
+sentential_subject_island	bad	Who have a lot of adults' scanning disagreed with this play.
+sentential_subject_island	good	Who have many women's touring Spain embarrassed.
+sentential_subject_island	bad	Who have many women's touring embarrassed Spain.
+sentential_subject_island	good	Who should pedestrians' curing Deanna scare.
+sentential_subject_island	bad	Who should pedestrians' curing scare Deanna.
+sentential_subject_island	good	Who are a lot of guys' kissing Heather aggravating.
+sentential_subject_island	bad	Who are a lot of guys' kissing aggravating Heather.
+sentential_subject_island	good	Who should a woman's selling the bank distract.
+sentential_subject_island	bad	Who should a woman's selling distract the bank.
+sentential_subject_island	good	Who will a lot of waiters' attacking Claire irritate.
+sentential_subject_island	bad	Who will a lot of waiters' attacking irritate Claire.
+sentential_subject_island	good	Who have these girls' complaining about Phillip aggravated.
+sentential_subject_island	bad	Who have these girls' complaining about aggravated Phillip.
+sentential_subject_island	good	Who had most girls' kissing a lady annoyed.
+sentential_subject_island	bad	Who had most girls' kissing annoyed a lady.
+sentential_subject_island	good	Who would those carriages' shocking Sara worry.
+sentential_subject_island	bad	Who would those carriages' shocking worry Sara.
+sentential_subject_island	good	Who should all shoes' boring Judy impress.
+sentential_subject_island	bad	Who should all shoes' boring impress Judy.
+sentential_subject_island	good	Who have all senators' admiring William distracted.
+sentential_subject_island	bad	Who have all senators' admiring distracted William.
+sentential_subject_island	good	Who should many guests' thinking about Leslie scare.
+sentential_subject_island	bad	Who should many guests' thinking about scare Leslie.
+sentential_subject_island	good	Who had every museum's boasting about Dana impressed.
+sentential_subject_island	bad	Who had every museum's boasting about impressed Dana.
+superlative_quantifiers_1	good	No girl attacked fewer than two waiters.
+superlative_quantifiers_1	bad	No girl attacked at most two waiters.
+superlative_quantifiers_1	good	No person would bring fewer than three gates.
+superlative_quantifiers_1	bad	No person would bring at most three gates.
+superlative_quantifiers_1	good	No actor had driven to fewer than four malls.
+superlative_quantifiers_1	bad	No actor had driven to at most four malls.
+superlative_quantifiers_1	good	No pedestrian is observing more than seven waiters.
+superlative_quantifiers_1	bad	No pedestrian is observing at least seven waiters.
+superlative_quantifiers_1	good	No boy could reference fewer than nine drivers.
+superlative_quantifiers_1	bad	No boy could reference at most nine drivers.
+superlative_quantifiers_1	good	No actor has sounded like more than nine mountains.
+superlative_quantifiers_1	bad	No actor has sounded like at least nine mountains.
+superlative_quantifiers_1	good	No sock annoyed more than seven companies.
+superlative_quantifiers_1	bad	No sock annoyed at least seven companies.
+superlative_quantifiers_1	good	No man has revealed more than five forks.
+superlative_quantifiers_1	bad	No man has revealed at least five forks.
+superlative_quantifiers_1	good	No customer would resemble more than eight pictures.
+superlative_quantifiers_1	bad	No customer would resemble at least eight pictures.
+superlative_quantifiers_1	good	No waiter had referenced more than ten teenagers.
+superlative_quantifiers_1	bad	No waiter had referenced at least ten teenagers.
+superlative_quantifiers_1	good	No adult skated around more than seven lakes.
+superlative_quantifiers_1	bad	No adult skated around at least seven lakes.
+superlative_quantifiers_1	good	No woman exited fewer than five public parks.
+superlative_quantifiers_1	bad	No woman exited at most five public parks.
+superlative_quantifiers_1	good	No hamster had climbed down more than five hills.
+superlative_quantifiers_1	bad	No hamster had climbed down at least five hills.
+superlative_quantifiers_1	good	No university might confuse fewer than four men.
+superlative_quantifiers_1	bad	No university might confuse at most four men.
+superlative_quantifiers_1	good	No lady brought more than two high schools.
+superlative_quantifiers_1	bad	No lady brought at least two high schools.
+superlative_quantifiers_2	good	The teenager does tour at most nine restaurants.
+superlative_quantifiers_2	bad	No teenager does tour at most nine restaurants.
+superlative_quantifiers_2	good	That car looks like at least seven prints.
+superlative_quantifiers_2	bad	No car looks like at least seven prints.
+superlative_quantifiers_2	good	The doctor brought at most eight gates.
+superlative_quantifiers_2	bad	No doctor brought at most eight gates.
+superlative_quantifiers_2	good	An actor arrived at at most six lakes.
+superlative_quantifiers_2	bad	No actor arrived at at most six lakes.
+superlative_quantifiers_2	good	Every senator notices at most four windows.
+superlative_quantifiers_2	bad	No senator notices at most four windows.
+superlative_quantifiers_2	good	The hospital had fired at most four people.
+superlative_quantifiers_2	bad	No hospital had fired at most four people.
+superlative_quantifiers_2	good	Each customer has watched at least six teenagers.
+superlative_quantifiers_2	bad	No customer has watched at least six teenagers.
+superlative_quantifiers_2	good	Every girl climbed up at most ten hills.
+superlative_quantifiers_2	bad	No girl climbed up at most ten hills.
+superlative_quantifiers_2	good	Each actor has revealed at most four shawls.
+superlative_quantifiers_2	bad	No actor has revealed at most four shawls.
+superlative_quantifiers_2	good	A banana has disgusted at least ten women.
+superlative_quantifiers_2	bad	No banana has disgusted at least ten women.
+superlative_quantifiers_2	good	Each dancer would return to at least seven schools.
+superlative_quantifiers_2	bad	No dancer would return to at least seven schools.
+superlative_quantifiers_2	good	The waiter noticed at most six mountains.
+superlative_quantifiers_2	bad	No waiter noticed at most six mountains.
+superlative_quantifiers_2	good	This man is talking to at most three pedestrians.
+superlative_quantifiers_2	bad	No man is talking to at most three pedestrians.
+superlative_quantifiers_2	good	That person can lift at most nine turtles.
+superlative_quantifiers_2	bad	No person can lift at most nine turtles.
+superlative_quantifiers_2	good	The customer could kiss at most three girls.
+superlative_quantifiers_2	bad	No customer could kiss at most three girls.
+tough_vs_raising_1	good	James is pleasant to flee from.
+tough_vs_raising_1	bad	James is apt to flee from.
+tough_vs_raising_1	good	Samuel's lawyer was easy to reference.
+tough_vs_raising_1	bad	Samuel's lawyer was certain to reference.
+tough_vs_raising_1	good	Benjamin's tutor was easy to boast about.
+tough_vs_raising_1	bad	Benjamin's tutor was certain to boast about.
+tough_vs_raising_1	good	Laura isn't interesting to cure.
+tough_vs_raising_1	bad	Laura isn't soon to cure.
+tough_vs_raising_1	good	Some jacket wasn't ready to wear.
+tough_vs_raising_1	bad	Some jacket wasn't bound to wear.
+tough_vs_raising_1	good	Many drivers aren't difficult to reference.
+tough_vs_raising_1	bad	Many drivers aren't likely to reference.
+tough_vs_raising_1	good	Julia wasn't fun to talk to.
+tough_vs_raising_1	bad	Julia wasn't unlikely to talk to.
+tough_vs_raising_1	good	Valerie's colleagues aren't pleasant to respect.
+tough_vs_raising_1	bad	Valerie's colleagues aren't likely to respect.
+tough_vs_raising_1	good	Veronica isn't boring to conceal.
+tough_vs_raising_1	bad	Veronica isn't unlikely to conceal.
+tough_vs_raising_1	good	Stacey wasn't interesting to listen to.
+tough_vs_raising_1	bad	Stacey wasn't soon to listen to.
+tough_vs_raising_1	good	Those glasses aren't hard work to wear.
+tough_vs_raising_1	bad	Those glasses aren't soon to wear.
+tough_vs_raising_1	good	Linda was interesting to reference.
+tough_vs_raising_1	bad	Linda was soon to reference.
+tough_vs_raising_1	good	This waitress is exciting to conceal.
+tough_vs_raising_1	bad	This waitress is unlikely to conceal.
+tough_vs_raising_1	good	Some drivers are tough to listen to.
+tough_vs_raising_1	bad	Some drivers are apt to listen to.
+tough_vs_raising_1	good	Omar wasn't interesting to reference.
+tough_vs_raising_1	bad	Omar wasn't soon to reference.
+tough_vs_raising_2	good	Every hospital isn't about to tempt Tiffany to reference Matt.
+tough_vs_raising_2	bad	Every hospital isn't fun to tempt Tiffany to reference Matt.
+tough_vs_raising_2	good	Rachel was apt to talk to Alicia.
+tough_vs_raising_2	bad	Rachel was exciting to talk to Alicia.
+tough_vs_raising_2	good	This doctor's cousins aren't soon to question Kirsten.
+tough_vs_raising_2	bad	This doctor's cousins aren't interesting to question Kirsten.
+tough_vs_raising_2	good	Sheila is certain to find Stephen to describe this customer.
+tough_vs_raising_2	bad	Sheila is difficult to find Stephen to describe this customer.
+tough_vs_raising_2	good	Liam's French teachers were sure to want to aggravate many people.
+tough_vs_raising_2	bad	Liam's French teachers were irritating to want to aggravate many people.
+tough_vs_raising_2	good	Thomas isn't sure to hug Margaret.
+tough_vs_raising_2	bad	Thomas isn't annoying to hug Margaret.
+tough_vs_raising_2	good	Carrie is bound to explore some public park.
+tough_vs_raising_2	bad	Carrie is pleasant to explore some public park.
+tough_vs_raising_2	good	Timothy is about to respect most guys.
+tough_vs_raising_2	bad	Timothy is annoying to respect most guys.
+tough_vs_raising_2	good	Derek's guest is likely to like to forfeit.
+tough_vs_raising_2	bad	Derek's guest is difficult to like to forfeit.
+tough_vs_raising_2	good	Melinda's guests aren't about to yearn to sit down.
+tough_vs_raising_2	bad	Melinda's guests aren't unpleasant to yearn to sit down.
+tough_vs_raising_2	good	Mark wasn't certain to climb down the ladder.
+tough_vs_raising_2	bad	Mark wasn't fun to climb down the ladder.
+tough_vs_raising_2	good	Jesus's tutor wasn't soon to remember Dawn.
+tough_vs_raising_2	bad	Jesus's tutor wasn't tough to remember Dawn.
+tough_vs_raising_2	good	Those organizations were certain to respond.
+tough_vs_raising_2	bad	Those organizations were tough to respond.
+tough_vs_raising_2	good	Bradley isn't soon to encourage Stephanie to scream.
+tough_vs_raising_2	bad	Bradley isn't hard work to encourage Stephanie to scream.
+tough_vs_raising_2	good	Tina wasn't sure to conceal what are profiting.
+tough_vs_raising_2	bad	Tina wasn't exciting to conceal what are profiting.
+transitive	good	Some turtles alarm Kimberley.
+transitive	bad	Some turtles come here Kimberley.
+transitive	good	Diane watched Alan.
+transitive	bad	Diane screamed Alan.
+transitive	good	This cousin of Theodore buys some mushroom.
+transitive	bad	This cousin of Theodore wept some mushroom.
+transitive	good	Rhonda was arguing about this nephew of Dana.
+transitive	bad	Rhonda was going fishing this nephew of Dana.
+transitive	good	A lot of actresses' nieces have toured that art gallery.
+transitive	bad	A lot of actresses' nieces have coped that art gallery.
+transitive	good	Debra wears many skirts.
+transitive	bad	Debra slumps over many skirts.
+transitive	good	Chad's daughters embarrasses Erin's girlfriend.
+transitive	bad	Chad's daughters screamed Erin's girlfriend.
+transitive	good	Elaine criticized Jill.
+transitive	bad	Elaine shrugs Jill.
+transitive	good	The pedestrians question some people.
+transitive	bad	The pedestrians wave some people.
+transitive	good	Vanessa has gone to a lot of college campuses.
+transitive	bad	Vanessa has smiled a lot of college campuses.
+transitive	good	Those committees listened to Kristen.
+transitive	bad	Those committees react Kristen.
+transitive	good	Most pedestrians' father might climb up the slope.
+transitive	bad	Most pedestrians' father might murmur the slope.
+transitive	good	Theresa shouldn't scan this essay.
+transitive	bad	Theresa shouldn't murmur this essay.
+transitive	good	Andrea's ex-husbands toured this art gallery.
+transitive	bad	Andrea's ex-husbands cry this art gallery.
+transitive	good	A lot of girls' son hadn't insulted Jerry.
+transitive	bad	A lot of girls' son hadn't sighed Jerry.
+wh_island	good	Who have those men revealed they helped?
+wh_island	bad	Who have those men revealed who helped?
+wh_island	good	Who isn't Craig realizing he kisses?
+wh_island	bad	Who isn't Craig realizing who kisses?
+wh_island	good	Who are those associations discovering they saw?
+wh_island	bad	Who are those associations discovering who saw?
+wh_island	good	What wasn't Nicole discovering she climbed down?
+wh_island	bad	What wasn't Nicole discovering who climbed down?
+wh_island	good	What could Alan discover he has run around?
+wh_island	bad	What could Alan discover who has run around?
+wh_island	good	Who shouldn't Andrew find out he was embarrassing?
+wh_island	bad	Who shouldn't Andrew find out what was embarrassing?
+wh_island	good	What was this woman revealing she would examine?
+wh_island	bad	What was this woman revealing who would examine?
+wh_island	good	What didn't Edward conceal he hasn't noticed?
+wh_island	bad	What didn't Edward conceal who hasn't noticed?
+wh_island	good	Who hadn't Tanya known she hadn't visited?
+wh_island	bad	Who hadn't Tanya known who hadn't visited?
+wh_island	good	Who wasn't Teresa forgetting she sees?
+wh_island	bad	Who wasn't Teresa forgetting who sees?
+wh_island	good	Who can't Douglas realize he had investigated?
+wh_island	bad	Who can't Douglas realize who had investigated?
+wh_island	good	What had the museums learned they weren't skated around?
+wh_island	bad	What had the museums learned who weren't skated around?
+wh_island	good	Who haven't these associations discovered they could annoy?
+wh_island	bad	Who haven't these associations discovered what could annoy?
+wh_island	good	Who can't some universities forget they aggravated?
+wh_island	bad	Who can't some universities forget what aggravated?
+wh_island	good	What shouldn't these guys remember they are climbing down?
+wh_island	bad	What shouldn't these guys remember what are climbing down?
+wh_questions_object_gap	good	Joel discovered the vase that Patricia might take.
+wh_questions_object_gap	bad	Joel discovered what Patricia might take the vase.
+wh_questions_object_gap	good	Rodney thought about many paintings that Wendy had thought about.
+wh_questions_object_gap	bad	Rodney thought about what Wendy had thought about many paintings.
+wh_questions_object_gap	good	Susan wasn't thinking about the rivers that Kenneth wasn't bringing.
+wh_questions_object_gap	bad	Susan wasn't thinking about what Kenneth wasn't bringing the rivers.
+wh_questions_object_gap	good	A driver has thought about those deer that many pictures look like.
+wh_questions_object_gap	bad	A driver has thought about what many pictures look like those deer.
+wh_questions_object_gap	good	Amy has seen every skateboard that all guests see.
+wh_questions_object_gap	bad	Amy has seen what all guests see every skateboard.
+wh_questions_object_gap	good	Michelle can see this banana that Maria did sell.
+wh_questions_object_gap	bad	Michelle can see what Maria did sell this banana.
+wh_questions_object_gap	good	Rachelle thought about a screen that Galileo hides.
+wh_questions_object_gap	bad	Rachelle thought about what Galileo hides a screen.
+wh_questions_object_gap	good	These waitresses see some mirrors that Phillip found.
+wh_questions_object_gap	bad	These waitresses see what Phillip found some mirrors.
+wh_questions_object_gap	good	Pamela thought about most students that a lot of libraries haven't praised.
+wh_questions_object_gap	bad	Pamela thought about who a lot of libraries haven't praised most students.
+wh_questions_object_gap	good	Mark discovers most analyses that Randolf remembered.
+wh_questions_object_gap	bad	Mark discovers what Randolf remembered most analyses.
+wh_questions_object_gap	good	Caroline forgets most customers that Michelle has admired.
+wh_questions_object_gap	bad	Caroline forgets who Michelle has admired most customers.
+wh_questions_object_gap	good	Bill wasn't noticing the pedestrian that Joseph wasn't talking to.
+wh_questions_object_gap	bad	Bill wasn't noticing who Joseph wasn't talking to the pedestrian.
+wh_questions_object_gap	good	Teresa knew that man that April remembered.
+wh_questions_object_gap	bad	Teresa knew who April remembered that man.
+wh_questions_object_gap	good	This boy knew a lot of pedestrians that the Clintons watch.
+wh_questions_object_gap	bad	This boy knew who the Clintons watch a lot of pedestrians.
+wh_questions_object_gap	good	Most patients investigate most patients that Sonia was insulting.
+wh_questions_object_gap	bad	Most patients investigate who Sonia was insulting most patients.
+wh_questions_subject_gap	good	Brian had questioned an association that can astound Diana.
+wh_questions_subject_gap	bad	Brian had questioned who an association can astound Diana.
+wh_questions_subject_gap	good	Leslie remembered some guest that has bothered women.
+wh_questions_subject_gap	bad	Leslie remembered who some guest has bothered women.
+wh_questions_subject_gap	good	Deanna discovers all essays that hadn't bored Elaine.
+wh_questions_subject_gap	bad	Deanna discovers who all essays hadn't bored Elaine.
+wh_questions_subject_gap	good	The woman hadn't thought about those screens that aren't worrying Andrew.
+wh_questions_subject_gap	bad	The woman hadn't thought about who those screens aren't worrying Andrew.
+wh_questions_subject_gap	good	Phillip sees some teeth that are upsetting Kendra.
+wh_questions_subject_gap	bad	Phillip sees who some teeth are upsetting Kendra.
+wh_questions_subject_gap	good	Cheryl thought about some dog that upset Sandra.
+wh_questions_subject_gap	bad	Cheryl thought about who some dog upset Sandra.
+wh_questions_subject_gap	good	Christine remembered those pamphlets that can't irritate men.
+wh_questions_subject_gap	bad	Christine remembered who those pamphlets can't irritate men.
+wh_questions_subject_gap	good	Rebecca knew all alumni that have helped a boy.
+wh_questions_subject_gap	bad	Rebecca knew who all alumni have helped a boy.
+wh_questions_subject_gap	good	Tammy notices a coat that hurt Tiffany.
+wh_questions_subject_gap	bad	Tammy notices who a coat hurt Tiffany.
+wh_questions_subject_gap	good	Leslie thinks about the phenomenon that annoys a lot of dancers.
+wh_questions_subject_gap	bad	Leslie thinks about who the phenomenon annoys a lot of dancers.
+wh_questions_subject_gap	good	Omar forgets most commentaries that haven't embarrassed Wendy.
+wh_questions_subject_gap	bad	Omar forgets who most commentaries haven't embarrassed Wendy.
+wh_questions_subject_gap	good	Bethany remembers this waiter that is approaching Amanda.
+wh_questions_subject_gap	bad	Bethany remembers who this waiter is approaching Amanda.
+wh_questions_subject_gap	good	Sabrina is researching a story that confused Mark.
+wh_questions_subject_gap	bad	Sabrina is researching who a story confused Mark.
+wh_questions_subject_gap	good	Vanessa forgot a boy that hasn't investigated Carl.
+wh_questions_subject_gap	bad	Vanessa forgot who a boy hasn't investigated Carl.
+wh_questions_subject_gap	good	Elaine questions most adults that didn't observe Lisa.
+wh_questions_subject_gap	bad	Elaine questions who most adults didn't observe Lisa.
+wh_questions_subject_gap_long_distance	good	Dennis has seen this tooth that Kristin wasn't concealing that is astounding men.
+wh_questions_subject_gap_long_distance	bad	Dennis has seen who this tooth that Kristin wasn't concealing is astounding men.
+wh_questions_subject_gap_long_distance	good	Renee investigates these offspring that some drivers boast about that would heal some dog.
+wh_questions_subject_gap_long_distance	bad	Renee investigates what these offspring that some drivers boast about would heal some dog.
+wh_questions_subject_gap_long_distance	good	The cashiers should notice a lot of cafes that Roger will drop by that resemble all prints.
+wh_questions_subject_gap_long_distance	bad	The cashiers should notice what a lot of cafes that Roger will drop by resemble all prints.
+wh_questions_subject_gap_long_distance	good	All pedestrians research those ellipses that Ellen has appreciated that disgusted this actress.
+wh_questions_subject_gap_long_distance	bad	All pedestrians research who those ellipses that Ellen has appreciated disgusted this actress.
+wh_questions_subject_gap_long_distance	good	Heidi shouldn't think about many pedestrians that every movie could disagree with that messed up this rug.
+wh_questions_subject_gap_long_distance	bad	Heidi shouldn't think about what many pedestrians that every movie could disagree with messed up this rug.
+wh_questions_subject_gap_long_distance	good	The Lutherans know the man that the casserole confuses that impressed the waitresses.
+wh_questions_subject_gap_long_distance	bad	The Lutherans know who the man that the casserole confuses impressed the waitresses.
+wh_questions_subject_gap_long_distance	good	That teenager hasn't seen this tomato that that girl had bought that had stunned some actors.
+wh_questions_subject_gap_long_distance	bad	That teenager hasn't seen who this tomato that that girl had bought had stunned some actors.
+wh_questions_subject_gap_long_distance	good	Holly investigates every cashier that Carol cares for that hasn't argued about all movies.
+wh_questions_subject_gap_long_distance	bad	Holly investigates what every cashier that Carol cares for hasn't argued about all movies.
+wh_questions_subject_gap_long_distance	good	Susan won't discover a car that Jane admired that is aggravating a lot of cashiers.
+wh_questions_subject_gap_long_distance	bad	Susan won't discover who a car that Jane admired is aggravating a lot of cashiers.
+wh_questions_subject_gap_long_distance	good	Most customers notice a lot of mushrooms that this cashier hides that won't aggravate the children.
+wh_questions_subject_gap_long_distance	bad	Most customers notice who a lot of mushrooms that this cashier hides won't aggravate the children.
+wh_questions_subject_gap_long_distance	good	Victoria isn't thinking about all media that Tiffany hadn't appreciated that confused those guys.
+wh_questions_subject_gap_long_distance	bad	Victoria isn't thinking about who all media that Tiffany hadn't appreciated confused those guys.
+wh_questions_subject_gap_long_distance	good	Most teachers question some actresses that Melissa boasted about that walk through a closet.
+wh_questions_subject_gap_long_distance	bad	Most teachers question what some actresses that Melissa boasted about walk through a closet.
+wh_questions_subject_gap_long_distance	good	Many guys notice those teeth that Tina can't have that will scare a library.
+wh_questions_subject_gap_long_distance	bad	Many guys notice what those teeth that Tina can't have will scare a library.
+wh_questions_subject_gap_long_distance	good	These senators think about some student that Candice is hurting that can't descend a hill.
+wh_questions_subject_gap_long_distance	bad	These senators think about what some student that Candice is hurting can't descend a hill.
+wh_questions_subject_gap_long_distance	good	The actors haven't remembered some public parks that Janet likes that couldn't astound many cashiers.
+wh_questions_subject_gap_long_distance	bad	The actors haven't remembered who some public parks that Janet likes couldn't astound many cashiers.
+wh_vs_that_no_gap	good	Mark figured out that most governments appreciate Steve.
+wh_vs_that_no_gap	bad	Mark figured out who most governments appreciate Steve.
+wh_vs_that_no_gap	good	Danielle finds out that many organizations have alarmed Chad.
+wh_vs_that_no_gap	bad	Danielle finds out who many organizations have alarmed Chad.
+wh_vs_that_no_gap	good	Veronica investigated that students might remember Julie.
+wh_vs_that_no_gap	bad	Veronica investigated who students might remember Julie.
+wh_vs_that_no_gap	good	The Impressionists learn that some stories can't sound like Carl.
+wh_vs_that_no_gap	bad	The Impressionists learn who some stories can't sound like Carl.
+wh_vs_that_no_gap	good	The waiters learn that most guests wouldn't have every hospital.
+wh_vs_that_no_gap	bad	The waiters learn what most guests wouldn't have every hospital.
+wh_vs_that_no_gap	good	Some girls revealed that all waitresses hadn't cleaned the cup.
+wh_vs_that_no_gap	bad	Some girls revealed what all waitresses hadn't cleaned the cup.
+wh_vs_that_no_gap	good	Sandra was figuring out that these guys saw Douglas.
+wh_vs_that_no_gap	bad	Sandra was figuring out who these guys saw Douglas.
+wh_vs_that_no_gap	good	The Lutherans know that some fungi were alarming that association.
+wh_vs_that_no_gap	bad	The Lutherans know what some fungi were alarming that association.
+wh_vs_that_no_gap	good	Carmen finds out that the customers have run around many cafes.
+wh_vs_that_no_gap	bad	Carmen finds out what the customers have run around many cafes.
+wh_vs_that_no_gap	good	Carrie should find out that some cart disturbs Nancy.
+wh_vs_that_no_gap	bad	Carrie should find out who some cart disturbs Nancy.
+wh_vs_that_no_gap	good	Deborah has forgotten that the offspring ran around the mountains.
+wh_vs_that_no_gap	bad	Deborah has forgotten what the offspring ran around the mountains.
+wh_vs_that_no_gap	good	Katherine found out that that cashier didn't sell some ice cream.
+wh_vs_that_no_gap	bad	Katherine found out what that cashier didn't sell some ice cream.
+wh_vs_that_no_gap	good	Connie forgot that the woman doesn't describe some stories.
+wh_vs_that_no_gap	bad	Connie forgot what the woman doesn't describe some stories.
+wh_vs_that_no_gap	good	Randolf has found out that a lot of adults aren't working with these teenagers.
+wh_vs_that_no_gap	bad	Randolf has found out who a lot of adults aren't working with these teenagers.
+wh_vs_that_no_gap	good	Rebecca has forgotten that a pepper upset Ronald.
+wh_vs_that_no_gap	bad	Rebecca has forgotten who a pepper upset Ronald.
+wh_vs_that_no_gap_long_distance	good	Every association figured out that most drivers that forfeit investigated Irene.
+wh_vs_that_no_gap_long_distance	bad	Every association figured out who most drivers that forfeit investigated Irene.
+wh_vs_that_no_gap_long_distance	good	Kathleen was revealing that this actress that can sit down was skated around this museum.
+wh_vs_that_no_gap_long_distance	bad	Kathleen was revealing what this actress that can sit down was skated around this museum.
+wh_vs_that_no_gap_long_distance	good	Jodi was learning that a library that hadn't communicated was working with Randolf.
+wh_vs_that_no_gap_long_distance	bad	Jodi was learning who a library that hadn't communicated was working with Randolf.
+wh_vs_that_no_gap_long_distance	good	Drivers remembered that those hospitals that should waste away are listening to Angela.
+wh_vs_that_no_gap_long_distance	bad	Drivers remembered who those hospitals that should waste away are listening to Angela.
+wh_vs_that_no_gap_long_distance	good	Every cashier wouldn't investigate that some birds that weren't distracting Steve broke some unicycles.
+wh_vs_that_no_gap_long_distance	bad	Every cashier wouldn't investigate what some birds that weren't distracting Steve broke some unicycles.
+wh_vs_that_no_gap_long_distance	good	Tamara had figured out that most governments that had fired these guests won't have a window.
+wh_vs_that_no_gap_long_distance	bad	Tamara had figured out what most governments that had fired these guests won't have a window.
+wh_vs_that_no_gap_long_distance	good	Adam isn't forgetting that many actors that did buy a snake should pass the high school.
+wh_vs_that_no_gap_long_distance	bad	Adam isn't forgetting what many actors that did buy a snake should pass the high school.
+wh_vs_that_no_gap_long_distance	good	Melinda investigated that this girl that looked like those drawings might attack Cindy.
+wh_vs_that_no_gap_long_distance	bad	Melinda investigated who this girl that looked like those drawings might attack Cindy.
+wh_vs_that_no_gap_long_distance	good	Most cashiers conceal that most guys that can run around a cafe had skated around those banks.
+wh_vs_that_no_gap_long_distance	bad	Most cashiers conceal what most guys that can run around a cafe had skated around those banks.
+wh_vs_that_no_gap_long_distance	good	Martin had remembered that this man that sold most eyes hides the coat.
+wh_vs_that_no_gap_long_distance	bad	Martin had remembered what this man that sold most eyes hides the coat.
+wh_vs_that_no_gap_long_distance	good	Mark concealed that a lot of drawings that weren't irritating Beverly stunned Derek.
+wh_vs_that_no_gap_long_distance	bad	Mark concealed who a lot of drawings that weren't irritating Beverly stunned Derek.
+wh_vs_that_no_gap_long_distance	good	Martin is revealing that the pictures that hadn't stunned Nina shock Curtis.
+wh_vs_that_no_gap_long_distance	bad	Martin is revealing who the pictures that hadn't stunned Nina shock Curtis.
+wh_vs_that_no_gap_long_distance	good	Those students aren't learning that that library that cooperates hasn't looked like a print.
+wh_vs_that_no_gap_long_distance	bad	Those students aren't learning what that library that cooperates hasn't looked like a print.
+wh_vs_that_no_gap_long_distance	good	Joseph discovered that a woman that couldn't discuss Sabrina approached the dancer.
+wh_vs_that_no_gap_long_distance	bad	Joseph discovered who a woman that couldn't discuss Sabrina approached the dancer.
+wh_vs_that_no_gap_long_distance	good	Eva discovered that all pedestrians that have performed upset Candice.
+wh_vs_that_no_gap_long_distance	bad	Eva discovered who all pedestrians that have performed upset Candice.
+wh_vs_that_with_gap	good	A lady has remembered who the actors conceal.
+wh_vs_that_with_gap	bad	A lady has remembered that the actors conceal.
+wh_vs_that_with_gap	good	Teenagers know what all ladies haven't examined.
+wh_vs_that_with_gap	bad	Teenagers know that all ladies haven't examined.
+wh_vs_that_with_gap	good	Dancers hadn't figured out who the actress didn't reveal.
+wh_vs_that_with_gap	bad	Dancers hadn't figured out that the actress didn't reveal.
+wh_vs_that_with_gap	good	All guys find out who some patient was scaring.
+wh_vs_that_with_gap	bad	All guys find out that some patient was scaring.
+wh_vs_that_with_gap	good	Nina has learned who most men sound like.
+wh_vs_that_with_gap	bad	Nina has learned that most men sound like.
+wh_vs_that_with_gap	good	Kirsten doesn't conceal what that man wasn't driving to.
+wh_vs_that_with_gap	bad	Kirsten doesn't conceal that that man wasn't driving to.
+wh_vs_that_with_gap	good	The boy was figuring out who some women shouldn't listen to.
+wh_vs_that_with_gap	bad	The boy was figuring out that some women shouldn't listen to.
+wh_vs_that_with_gap	good	Sarah discovers what some pedestrian had examined.
+wh_vs_that_with_gap	bad	Sarah discovers that some pedestrian had examined.
+wh_vs_that_with_gap	good	Sarah should forget who some waiter dislikes.
+wh_vs_that_with_gap	bad	Sarah should forget that some waiter dislikes.
+wh_vs_that_with_gap	good	Janice hasn't learned what this offspring didn't examine.
+wh_vs_that_with_gap	bad	Janice hasn't learned that this offspring didn't examine.
+wh_vs_that_with_gap	good	Wayne has revealed who most hospitals admired.
+wh_vs_that_with_gap	bad	Wayne has revealed that most hospitals admired.
+wh_vs_that_with_gap	good	Those teenagers realize who all guests flee from.
+wh_vs_that_with_gap	bad	Those teenagers realize that all guests flee from.
+wh_vs_that_with_gap	good	George forgets what some car has looked like.
+wh_vs_that_with_gap	bad	George forgets that some car has looked like.
+wh_vs_that_with_gap	good	Some child would conceal who most guys are listening to.
+wh_vs_that_with_gap	bad	Some child would conceal that most guys are listening to.
+wh_vs_that_with_gap	good	The cashier wouldn't figure out what a person hasn't arrived at.
+wh_vs_that_with_gap	bad	The cashier wouldn't figure out that a person hasn't arrived at.
+wh_vs_that_with_gap_long_distance	good	Kayla concealed who a lot of guests that were scaring many people complain about.
+wh_vs_that_with_gap_long_distance	bad	Kayla concealed that a lot of guests that were scaring many people complain about.
+wh_vs_that_with_gap_long_distance	good	Martin did find out what every cashier that shouldn't drink wore.
+wh_vs_that_with_gap_long_distance	bad	Martin did find out that every cashier that shouldn't drink wore.
+wh_vs_that_with_gap_long_distance	good	The Borgias haven't figured out what blouses that have disgusted Kenneth look like.
+wh_vs_that_with_gap_long_distance	bad	The Borgias haven't figured out that blouses that have disgusted Kenneth look like.
+wh_vs_that_with_gap_long_distance	good	Colleen has revealed what every print that isn't existing looked like.
+wh_vs_that_with_gap_long_distance	bad	Colleen has revealed that every print that isn't existing looked like.
+wh_vs_that_with_gap_long_distance	good	All banks forget what many steps that couldn't irritate Carrie resemble.
+wh_vs_that_with_gap_long_distance	bad	All banks forget that many steps that couldn't irritate Carrie resemble.
+wh_vs_that_with_gap_long_distance	good	Some pedestrians haven't realized who those ladies that alarms Samantha had boasted about.
+wh_vs_that_with_gap_long_distance	bad	Some pedestrians haven't realized that those ladies that alarms Samantha had boasted about.
+wh_vs_that_with_gap_long_distance	good	A waiter has realized who all hospitals that protested listened to.
+wh_vs_that_with_gap_long_distance	bad	A waiter has realized that all hospitals that protested listened to.
+wh_vs_that_with_gap_long_distance	good	That actor had found out what all men that had ascended every hill dislike.
+wh_vs_that_with_gap_long_distance	bad	That actor had found out that all men that had ascended every hill dislike.
+wh_vs_that_with_gap_long_distance	good	The school forgets who every legislature that astounded Heather references.
+wh_vs_that_with_gap_long_distance	bad	The school forgets that every legislature that astounded Heather references.
+wh_vs_that_with_gap_long_distance	good	All universities discover what some actress that isn't speaking up had gone to.
+wh_vs_that_with_gap_long_distance	bad	All universities discover that some actress that isn't speaking up had gone to.
+wh_vs_that_with_gap_long_distance	good	Carmen discovered who many cashiers that have sold every report returned to.
+wh_vs_that_with_gap_long_distance	bad	Carmen discovered that many cashiers that have sold every report returned to.
+wh_vs_that_with_gap_long_distance	good	Stacy wasn't remembering who the banks that have vanished can't boast about.
+wh_vs_that_with_gap_long_distance	bad	Stacy wasn't remembering that the banks that have vanished can't boast about.
+wh_vs_that_with_gap_long_distance	good	Phillip forgot what some senator that was escaping from Stacy goes to.
+wh_vs_that_with_gap_long_distance	bad	Phillip forgot that some senator that was escaping from Stacy goes to.
+wh_vs_that_with_gap_long_distance	good	Tara had figured out who the teenagers that marry won't boast about.
+wh_vs_that_with_gap_long_distance	bad	Tara had figured out that the teenagers that marry won't boast about.
+wh_vs_that_with_gap_long_distance	good	Many teenagers realized who these teenagers that shouldn't surrender wouldn't listen to.
+wh_vs_that_with_gap_long_distance	bad	Many teenagers realized that these teenagers that shouldn't surrender wouldn't listen to.
