@@ -103,6 +103,22 @@ function formatClerkError(err) {
   return err?.message || 'An authentication error occurred.';
 }
 
+// Clerk rejects signIn.create()/signUp.create() while a session is active
+// unless the application allows multiple sessions ("You're already signed
+// in."). Detect that case so the UI can explain the actual fix instead of
+// echoing the raw error.
+function isAlreadySignedInError(err) {
+  const match = (s) => typeof s === 'string' && /already signed in/i.test(s);
+  if (match(err?.message)) return true;
+  const errs = err?.errors;
+  return Array.isArray(errs) && errs.some((e) =>
+    e?.code === 'already_signed_in' || match(e?.message) || match(e?.longMessage));
+}
+
+const ALREADY_SIGNED_IN_HELP = 'Already signed in. To add another account, turn on '
+  + 'multi-session in the Clerk Dashboard (Sessions → Multi-session handling). '
+  + 'To use a different account instead, log out first.';
+
 // Password requirements checked live on the registration form so the learner
 // is told exactly what is missing instead of getting a generic rejection (or
 // an email code) back from the backend. The Clerk instance requires 15+
@@ -120,7 +136,6 @@ function passwordIssues(password) {
     .filter((rule) => rule.required && !rule.test(password))
     .map((rule) => rule.label);
 }
-
 function wireAuthForm(ctx) {
   const {
     form,
@@ -281,7 +296,7 @@ function wireAuthForm(ctx) {
       setStatus(`Sign-in is not complete (status: ${signIn.status}).`, true);
     } catch (err) {
       resetCodeStep();
-      setStatus(formatClerkError(err), true);
+      setStatus(isAlreadySignedInError(err) ? ALREADY_SIGNED_IN_HELP : formatClerkError(err), true);
     }
   });
 
@@ -339,7 +354,7 @@ function wireAuthForm(ctx) {
       setStatus(`Registration is not complete (status: ${signUp.status}).`, true);
     } catch (err) {
       resetCodeStep();
-      setStatus(formatClerkError(err), true);
+      setStatus(isAlreadySignedInError(err) ? ALREADY_SIGNED_IN_HELP : formatClerkError(err), true);
     }
   });
 }

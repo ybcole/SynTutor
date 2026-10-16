@@ -175,39 +175,6 @@ export function renderDiagnostic(title, lines) {
   }
 }
 
-export function renderSentenceVerdict(markupLines, verdict) {
-  const box = $('#sentenceVerdict');
-  if (!box) return;
-  box.innerHTML = '';
-  const h = document.createElement('h4');
-  h.textContent = 'Sentence verdict';
-  box.appendChild(h);
-  for (const line of markupLines) {
-    const d = document.createElement('p');
-    d.textContent = line;
-    box.appendChild(d);
-  }
-  const state = verdict === 'ungrammatical' || verdict === 'error' || verdict === true
-    ? 'error'
-    : verdict === 'unverified'
-      ? 'unverified'
-      : 'valid';
-  box.dataset.verdict = state;
-  box.classList.toggle('is-error', state === 'error');
-  box.classList.toggle('is-unverified', state === 'unverified');
-}
-
-export function fillDevPanel(payload) {
-  const parseStr = $('#parseString');
-  const tokStream = $('#tokenStream');
-  if (parseStr) parseStr.textContent = payload.parse.parse_string;
-  if (tokStream) {
-    tokStream.textContent = payload.parse.tokens
-      .map((t, i) => `${i + 1}\t${t.t}\t${t.pos}\t${t.tag}`)
-      .join('\n');
-  }
-}
-
 export function applySentenceSelection(payload) {
   const ta = $('#inputText');
   const sents = payload.parse.sentences || [];
