@@ -173,7 +173,9 @@ export function dotHit(model, x, y) {
   for (const n of Object.values(model.nodes)) {
     if (n.kind !== NODE.PHRASE) continue;
     const d = dotOf(n);
-    if (Math.hypot(x - d.x, y - d.y) <= d.r + 4) return n;
+    // Generous hit area so clicking just below a phrase box starts a link
+    // instead of dragging the box.
+    if (Math.hypot(x - d.x, y - d.y) <= d.r + 12) return n;
   }
   return null;
 }

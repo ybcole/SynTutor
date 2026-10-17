@@ -12,7 +12,7 @@
 //   drag a box body           -> move it
 //   double-click a box        -> edit its word text / relabel the phrase
 //   Delete/Backspace          -> remove the selected box
-//   drag empty space          -> pan      wheel -> zoom
+//   drag empty space          -> marquee-select nodes (no modifier key)  wheel -> zoom
 
 import {
   POS_TYPES, PHRASE_NODE_TYPES, NODE_TYPE_GROUPS, NODE,
@@ -38,7 +38,6 @@ function themeColors() {
     tag: dark ? '#94a3b8' : '#77708f',
     selected: '#eab308',
     error: '#d64545',
-    valid: '#16a34a',
   };
 }
 
@@ -59,6 +58,8 @@ const state = {
   onComplete: null,
   solved: false,
   treeCorrect: false,
+  snapped: false,
+  snappedLayout: null,
   root: null,
   canvas: null,
   ctx: null,
@@ -101,11 +102,14 @@ export function openBuilderView(opts = {}) {
   // and the tree is checked automatically.
   bar.hidden = Boolean(state.challenge);
   if (!state.challenge) {
-    document.getElementById('builderTitle').textContent = 'Syntax Builder';
-    document.getElementById('builderHint').textContent =
-      'Double-click to type words · Right-click to add a phrase · Drag a dot to connect';
     document.getElementById('builderTarget').hidden = true;
     document.getElementById('builderCheck').hidden = true;
+    // Remove the builder instructions from the top of the canvas; only the
+    // action buttons (Clear / Snap to tree / Done) remain.
+    document.getElementById('builderTitle').textContent = '';
+    const hint = document.getElementById('builderHint');
+    hint.textContent = '';
+    hint.hidden = true;
   }
   hideToast();
   resize();
@@ -176,6 +180,8 @@ export function newModel() {
   state.drag = null;
   state.link = null;
   state.marquee = null;
+  state.snapped = false;
+  state.snappedLayout = null;
   const target = document.getElementById('builderTarget');
   if (target) target.classList.remove('builder-target-ok');
 }
@@ -200,10 +206,6 @@ function ensureWired() {
     draw();
   });
   document.getElementById('builderSnap')?.addEventListener('click', snapToTree);
-  document.getElementById('builderClose')?.addEventListener('click', () => {
-    closeBuilderView();
-    markSidebar('tutor');
-  });
   document.getElementById('builderCheck')?.addEventListener('click', checkTree);
   document.getElementById('builderNext')?.addEventListener('click', () => {
     const cb = state.challenge && state.challenge.onNext;
@@ -263,9 +265,26 @@ function wireCanvas(canvas) {
 }
 
 function onMouseDown(e) {
-  if (e.button === 2) return; // right-click handled elsewhere
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
+
+  // Right-click on empty space starts a marquee (multi) selection; right-click
+  // on a node falls through to the context menu below.
+  if (e.button === 2) {
+    const dot = dotHit(state.model, w.x, w.y);
+    const endpoint = endpointHit(state.model, w.x, w.y);
+    const node = nodeHit(state.model, w.x, w.y);
+    if (!dot && !endpoint && !node) {
+      e.preventDefault(); // suppress the browser context menu
+      closeMenu();
+      clearSelection();
+      state.marquee = { x0: w.x, y0: w.y, x1: w.x, y1: w.y, base: new Set(state.selection) };
+      draw();
+      explainSelected();
+      return;
+    }
+    return; // let the contextmenu handler open the node menu
+  }
 
   const dot = dotHit(state.model, w.x, w.y);
   if (dot) {
@@ -313,13 +332,8 @@ function onMouseDown(e) {
     explainSelected();
     return;
   }
-  // empty space: shift-drag starts a marquee selection, otherwise pan
+  // empty space: left-drag pans the canvas for exploration.
   closeMenu();
-  if (e.shiftKey) {
-    state.marquee = { x0: w.x, y0: w.y, x1: w.x, y1: w.y, base: new Set(state.selection) };
-    draw();
-    return;
-  }
   clearSelection();
   state.pan = { sx, sy, ox: state.view.ox, oy: state.view.oy };
   draw();
@@ -522,6 +536,13 @@ async function validateWords(nodes) {
 }
 
 function onContextMenu(e) {
+  // Don't open the context menu when the user right-dragged empty space to
+  // marquee-select nodes.
+  if (state.marquee) {
+    e.preventDefault();
+    closeMenu();
+    return;
+  }
   e.preventDefault();
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
@@ -553,6 +574,8 @@ function onKeyDown(e) {
     }
     state.link = null;
     state.drag = null;
+    state.pan = null;
+    state.marquee = null;
     state.hoverTarget = null;
     draw();
     return;
@@ -863,6 +886,10 @@ function explainSelected() {
 // Called after every structural change: redraw, and (when a quiz is running)
 // re-check the tree automatically so there is no "Check" button.
 function changed() {
+  // Any structural edit after a snap leaves the snapped layout, so the builder
+  // falls back to measuring boxes from their content.
+  state.snapped = false;
+  state.snappedLayout = null;
   draw();
   state.treeCorrect = treeIsComplete();
   if (state.challenge && !state.solved) checkTree();
@@ -1003,13 +1030,14 @@ function wordsInOrder() {
 // Snap to syntax-tree structure (hierarchical layout like the tutor canvas)
 // ---------------------------------------------------------------------------
 
-// Compute a hierarchical layout for the current builder model: leaves spread
-// evenly left-to-right, each phrase centered over its children, depth-based
-// rows. Returns {x, y, w, h} per node id (centre coordinates) or null when
+// Compute a hierarchical layout for the current builder model that mirrors the
+// generator (renderer.js createLayout): leaves spread evenly left-to-right in
+// uniform slots, each phrase centred over its children, depth-based rows.
+// Returns {layout, ...} keyed by node id with centre coordinates, or null when
 // there is no connected tree to lay out.
 function computeTreeLayout() {
   const nodes = Object.values(state.model.nodes);
-  if (!nodes.length) return null;
+  if (!nodes.length || !state.ctx) return null;
 
   const roots = nodes.filter((n) => !n.parent);
   if (!roots.length) return null;
@@ -1036,10 +1064,24 @@ function computeTreeLayout() {
   const leafIndex = new Map();
   leafIds.forEach((id, i) => leafIndex.set(id, i));
 
-  const SLOT = 110;
+  const BOX_H = 34;
+  const MIN_BOX_W = 54;
+  const H_PAD = 14;
+  const GAP = 26;
+  const V_GAP = 40;
   const TOP_PAD = 24;
-  const V_GAP = 44;
-  const NODE_H = 34;
+
+  // Uniform leaf slot sized from the widest leaf label (matches the generator).
+  let maxLeafW = MIN_BOX_W;
+  state.ctx.save();
+  state.ctx.setTransform(1, 0, 0, 1, 0, 0);
+  state.ctx.font = WORD_FONT;
+  for (const id of leafIds) {
+    const n = state.model.nodes[id];
+    maxLeafW = Math.max(maxLeafW, state.ctx.measureText(n.text || '').width + H_PAD * 2);
+  }
+  state.ctx.restore();
+  const SLOT = maxLeafW + GAP;
 
   // Bottom-up span (leaf range each node covers).
   const span = new Map();
@@ -1066,28 +1108,30 @@ function computeTreeLayout() {
   const layout = new Map();
   for (const n of nodes) {
     const d = depth.get(n.id) || 0;
-    const y = TOP_PAD + d * (NODE_H + V_GAP) + NODE_H / 2;
+    const y = TOP_PAD + d * (BOX_H + V_GAP) + BOX_H / 2;
     const kids = kidsOf.get(n.id);
     if (!kids.length) {
       const i = leafIndex.get(n.id);
-      layout.set(n.id, { x: SLOT * i + SLOT / 2, y, w: SLOT, h: NODE_H });
+      layout.set(n.id, { x: SLOT * i + SLOT / 2, y, w: SLOT, h: BOX_H });
     } else {
       const s = span.get(n.id);
       const x = ((s[0] + s[1]) / 2 + 0.5) * SLOT;
       const w = (s[1] - s[0] + 1) * SLOT;
-      layout.set(n.id, { x, y, w, h: NODE_H });
+      layout.set(n.id, { x, y, w, h: BOX_H });
     }
   }
-  return layout;
+  return { layout, SLOT, maxDepth, TOP_PAD, BOX_H, V_GAP };
 }
 
-// Re-arrange every node into the hierarchical syntax-tree layout.
+// Re-arrange every node into the hierarchical syntax-tree layout so it matches
+// the tree SynTutor's generator produces.
 function snapToTree() {
-  const layout = computeTreeLayout();
-  if (!layout) {
+  const result = computeTreeLayout();
+  if (!result) {
     state.onStatus('Build a connected tree first — drag connector dots to link nodes.');
     return;
   }
+  const { layout } = result;
   for (const [id, pos] of layout) {
     const n = state.model.nodes[id];
     if (n) {
@@ -1097,8 +1141,12 @@ function snapToTree() {
       n.h = pos.h;
     }
   }
-  state.onStatus('Tree snapped into syntax-tree structure.');
+  // changed() clears the snapped flag, so re-apply it after the redraw is queued.
   changed();
+  state.snapped = true;
+  state.snappedLayout = layout;
+  draw();
+  state.onStatus('Tree snapped into syntax-tree structure.');
 }
 
 // ---------------------------------------------------------------------------
@@ -1146,20 +1194,28 @@ function render() {
   ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr); // clear background
 
   // Measure boxes before applying the view transform — measuring resets the
-  // canvas transform, so it must happen first.
+  // canvas transform, so it must happen first. When the tree has been snapped
+  // into the generator layout, keep the snapped slot sizes instead.
   const nodes = paintOrder();
-  for (const n of nodes) sizeNode(n);
+  if (!state.snapped) {
+    for (const n of nodes) sizeNode(n);
+  }
 
   ctx.save();
   ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * ox, dpr * oy);
 
-  // edges first (straight, thin, like the tutor tree)
+  // edges first (straight, thin, centred on each box with a small gap, like the
+  // generator tree)
   for (const n of nodes) {
     if (!n.parent) continue;
     const parent = state.model.nodes[n.parent];
     if (!parent) continue;
-    drawEdge(ctx, { x: parent.x + parent.w / 2, y: parent.y + parent.h },
-      { x: n.x + n.w / 2, y: n.y });
+    const childIsLeaf = childrenOf(state.model, n.id).length === 0;
+    const below = 3;                    // small gap below the parent box
+    const above = childIsLeaf ? 36 : 20; // clear the POS tag on word leaves
+    drawEdge(ctx,
+      { x: parent.x + parent.w / 2, y: parent.y + parent.h + below },
+      { x: n.x + n.w / 2, y: n.y - above });
   }
 
   // rubber-band link being dragged
@@ -1203,9 +1259,7 @@ function drawNode(ctx, n) {
   const invalid = n.kind === NODE.WORD && n.valid === false && !state.treeCorrect;
 
   let color = c.text;
-  if (isPhrase) color = c.accent;
   if (invalid || rejected) color = c.error;
-  if (state.treeCorrect && !isPhrase && !invalid && !rejected) color = c.valid;
   if (hovered) color = c.accent;
   if (selected) color = c.selected;
 
@@ -1245,11 +1299,12 @@ function drawNode(ctx, n) {
     ctx.fillStyle = c.accent;
     ctx.fill();
   }
-  // Connector dot (phrase) — drag it to start a new connection.
-  if (isPhrase && (hovered || state.link)) {
+  // Connector dot (phrase) — drag it to start a new connection. Always shown so
+  // the connect target is easy to find and click.
+  if (isPhrase) {
     const d = { x: cx, y: n.y + n.h + 6 };
     ctx.beginPath();
-    ctx.arc(d.x, d.y, 4, 0, Math.PI * 2);
+    ctx.arc(d.x, d.y, 5, 0, Math.PI * 2);
     ctx.fillStyle = c.accent;
     ctx.fill();
   }
