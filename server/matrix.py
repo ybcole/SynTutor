@@ -864,7 +864,9 @@ def _rem_from_text(text, surface=''):
         return {'violation': text,
                 'suggested_fix': f"Change '{surface}' to the word form the sentence needs.",
                 'alternative_fix': None, 'targeted_outcome': None}
-    return {'violation': text, 'suggested_fix': text,
+    # Last resort: turn the error text itself into an actionable fix.
+    return {'violation': text,
+            'suggested_fix': f"Review the highlighted word and correct it so the rule above is satisfied.",
             'alternative_fix': None, 'targeted_outcome': None}
 
 
@@ -1161,8 +1163,20 @@ class MatrixEvaluator:
             detail['checks'] = _checks_for(detail, self.details)
             if detail['status'] == 'error' and 'remediation' not in detail:
                 remediation = self._remediate(root, detail)
-                if remediation:
-                    detail['remediation'] = remediation
+                if not remediation:
+                    # No constraint-specific repair exists for this error. Derive a
+                    # repair from the error text so every detected error carries a
+                    # suggested fix the user can act on (never leave an error with
+                    # no suggested fix).
+                    remediation = _rem_from_text(detail.get('text', ''),
+                                                 detail.get('surface', ''))
+                # Guarantee a usable, non-empty suggested fix on every error.
+                if not remediation.get('suggested_fix'):
+                    surf = detail.get('surface') or ''
+                    remediation['suggested_fix'] = (
+                        f"Change '{surf}' to the word form the sentence needs."
+                        if surf else 'Fix the highlighted issue.')
+                detail['remediation'] = remediation
         return {'details': self.details, 'summary': self._summarize(root)}
 
     def _merge_findings(self, root, text):
@@ -1872,49 +1886,55 @@ class MatrixEvaluator:
     def _remediate(self, root, detail):
         """Deterministic, pedagogical correction guide for an invalid node.
 
-        Returns a dict {violation, suggested_fix, alternative_fix, targeted_outcome}
-        for the constraints the matrix can remediate, else None.
+        Always returns a dict (never None) so every error detail carries a
+        suggested fix the learner can act on. Falls back to _rem_generic when
+        no specific handler applies or a handler cannot produce a fix.
         """
         cid = detail['constraint']
         node = self._find_node(root, detail['id'])
         parent = self._find_node(root, detail['parent']) if detail.get('parent') else None
         if node is None:
-            return None
+            return self._rem_generic(detail)
         if cid == 'C-SUBJECT-AGREEMENT':
-            return self._rem_agreement(node, parent)
-        if cid == 'C-DETERMINER-AGREEMENT':
-            return self._rem_det(node, parent)
-        if cid == 'C-NOUN-FORM':
-            return self._rem_noun_form(node)
-        if cid == 'C-AUX-FORM':
-            return self._rem_aux(node, parent)
-        if cid == 'C-DET-STACK':
-            return self._rem_det_stack(node, parent)
-        if cid == 'C-MOD-POS':
-            return self._rem_mod_pos(node, parent)
-        if cid == 'C-PRONOUN-CASE':
-            return self._rem_pronoun_case(node, parent)
-        if cid == 'C-ADJ-ADV':
-            return self._rem_adj_adv(node, parent)
-        if cid == 'C-ARTICLE':
-            return self._rem_article(node, parent)
-        if cid == 'C-ARTICLE-MISMATCH':
-            return self._rem_article_mismatch(node, parent)
-        if cid == 'C-CAPITALIZATION':
-            return self._rem_capitalization(node)
-        if cid == 'C-QUANTIFIER':
-            return self._rem_quantifier(node, parent)
-        if cid == 'C-HEAD-VERB':
-            return self._rem_vp_head_noun(node, parent)
-        if cid == 'C-COMPARATIVE-DOUBLE':
-            return self._rem_double_comparative(node, parent)
-        if cid == 'C-HEAD-NOUN':
-            return self._rem_head_noun(node, parent)
-        if cid == 'C-TENSE-FINITE':
+            rem = self._rem_agreement(node, parent)
+        elif cid == 'C-DETERMINER-AGREEMENT':
+            rem = self._rem_det(node, parent)
+        elif cid == 'C-NOUN-FORM':
+            rem = self._rem_noun_form(node)
+        elif cid == 'C-AUX-FORM':
+            rem = self._rem_aux(node, parent)
+        elif cid == 'C-DET-STACK':
+            rem = self._rem_det_stack(node, parent)
+        elif cid == 'C-MOD-POS':
+            rem = self._rem_mod_pos(node, parent)
+        elif cid == 'C-PRONOUN-CASE':
+            rem = self._rem_pronoun_case(node, parent)
+        elif cid == 'C-ADJ-ADV':
+            rem = self._rem_adj_adv(node, parent)
+        elif cid == 'C-ARTICLE':
+            rem = self._rem_article(node, parent)
+        elif cid == 'C-ARTICLE-MISMATCH':
+            rem = self._rem_article_mismatch(node, parent)
+        elif cid == 'C-CAPITALIZATION':
+            rem = self._rem_capitalization(node)
+        elif cid == 'C-QUANTIFIER':
+            rem = self._rem_quantifier(node, parent)
+        elif cid == 'C-HEAD-VERB':
+            rem = self._rem_vp_head_noun(node, parent)
+        elif cid == 'C-COMPARATIVE-DOUBLE':
+            rem = self._rem_double_comparative(node, parent)
+        elif cid == 'C-HEAD-NOUN':
+            rem = self._rem_head_noun(node, parent)
+        elif cid == 'C-TENSE-FINITE':
             if detail['role'] == 'fragment root':
-                return self._rem_fragment(node)
-            return self._rem_finite_verb(node, parent)
-        return self._rem_generic(detail)
+                rem = self._rem_fragment(node)
+            else:
+                rem = self._rem_finite_verb(node, parent)
+        else:
+            rem = self._rem_generic(detail)
+        if rem is None or not rem.get('suggested_fix'):
+            rem = self._rem_generic(detail)
+        return rem
 
     def _rem_agreement(self, node, parent):
         subj, vp = clause_subject_and_verb(parent)

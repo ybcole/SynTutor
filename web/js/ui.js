@@ -112,8 +112,13 @@ export function renderNodeDetail(_session, detail, node) {
   chipRow.appendChild(chip);
   card.appendChild(chipRow);
 
-  if (detail.status === 'error' && detail.remediation) {
-    card.appendChild(renderRemediation(detail.remediation));
+  if (detail.status === 'error') {
+    const rm = detail.remediation || {
+      violation: detail.text || 'This part of the sentence has a grammar issue.',
+      suggested_fix: 'Review the highlighted word and correct it so the sentence follows the rule above.',
+      alternative_fix: null,
+    };
+    card.appendChild(renderRemediation(rm));
   } else {
     const ex = document.createElement('p');
     ex.className = 'ex-text';
@@ -235,7 +240,7 @@ export function renderCorrectionPanel(info, handlers = {}) {
   if (label) {
     const title = document.createElement('div');
     title.className = 'cp-title';
-    title.textContent = 'Grammar feedback';
+    title.textContent = 'Grammar error';
     box.appendChild(title);
 
     const errorName = document.createElement('div');
