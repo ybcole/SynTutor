@@ -38,6 +38,7 @@ function themeColors() {
     tag: dark ? '#94a3b8' : '#77708f',
     selected: '#eab308',
     error: '#d64545',
+    valid: '#16a34a',
   };
 }
 
@@ -57,6 +58,7 @@ const state = {
   onStatus: () => {},
   onComplete: null,
   solved: false,
+  treeCorrect: false,
   root: null,
   canvas: null,
   ctx: null,
@@ -109,6 +111,7 @@ export function openBuilderView(opts = {}) {
   resize();
   canvas.focus();
   explainSelected();
+  state.treeCorrect = treeIsComplete();
   draw();
 }
 
@@ -196,6 +199,7 @@ function ensureWired() {
     newModel();
     draw();
   });
+  document.getElementById('builderSnap')?.addEventListener('click', snapToTree);
   document.getElementById('builderClose')?.addEventListener('click', () => {
     closeBuilderView();
     markSidebar('tutor');
@@ -423,12 +427,9 @@ function onMouseUp(e) {
       if (tgt && canConnect(state.model, state.link.parentId, tgt.id)) {
         connect(state.model, state.link.parentId, tgt.id);
       } else if (tgt) {
-        // Rejected: the word is not in SynTutor's model, or the link would loop.
-        const reason = (tgt.kind === NODE.WORD && tgt.valid === false)
-          ? `“${tgt.text}” is not a word SynTutor knows${tgt.suggestion ? ` — did you mean “${tgt.suggestion}”?` : ''}.`
-          : 'That connection is not allowed.';
+        // Rejected: a self-link or a cycle would break the tree.
         flashRejected(tgt.id);
-        state.onStatus(reason);
+        state.onStatus('That connection is not allowed.');
       }
     }
     state.link = null;
@@ -487,7 +488,8 @@ function onDoubleClick(e) {
 }
 
 // Ask SynTutor's own model which of these words are real. Invalid words are
-// marked and cannot be connected (canConnect rejects child.valid === false).
+// Words SynTutor doesn't recognise are still flagged visually, but they can
+// now be connected like any other node.
 async function validateWords(nodes) {
   const words = nodes.map((n) => n.text);
   let results = null;
@@ -615,9 +617,14 @@ function editNode(node, clientX, clientY) {
 }
 
 function closeEditor() {
-  if (state.editor) {
-    state.editor.remove();
-    state.editor = null;
+  const editor = state.editor;
+  if (!editor) return;
+  // Null first so a re-entrant `blur` handler can't remove the same node twice.
+  state.editor = null;
+  try {
+    editor.remove();
+  } catch {
+    // The editor may already be detached from the DOM.
   }
 }
 
@@ -857,7 +864,25 @@ function explainSelected() {
 // re-check the tree automatically so there is no "Check" button.
 function changed() {
   draw();
+  state.treeCorrect = treeIsComplete();
   if (state.challenge && !state.solved) checkTree();
+}
+
+// True when every node is connected under a single root — i.e. the tree is
+// structurally complete (no orphan boxes, no cycles).
+function treeIsComplete() {
+  const nodes = Object.values(state.model.nodes);
+  if (!nodes.length) return false;
+  const roots = nodes.filter((n) => !n.parent);
+  if (roots.length !== 1) return false;
+  const root = roots[0];
+  const visited = new Set();
+  const walk = (id) => {
+    visited.add(id);
+    for (const c of childrenOf(state.model, id)) walk(c.id);
+  };
+  walk(root.id);
+  return visited.size === nodes.length;
 }
 
 function showToast(msg, ok) {
@@ -975,6 +1000,108 @@ function wordsInOrder() {
 }
 
 // ---------------------------------------------------------------------------
+// Snap to syntax-tree structure (hierarchical layout like the tutor canvas)
+// ---------------------------------------------------------------------------
+
+// Compute a hierarchical layout for the current builder model: leaves spread
+// evenly left-to-right, each phrase centered over its children, depth-based
+// rows. Returns {x, y, w, h} per node id (centre coordinates) or null when
+// there is no connected tree to lay out.
+function computeTreeLayout() {
+  const nodes = Object.values(state.model.nodes);
+  if (!nodes.length) return null;
+
+  const roots = nodes.filter((n) => !n.parent);
+  if (!roots.length) return null;
+  const root = roots[0];
+
+  // Children map (sorted by current x for stable reading order).
+  const kidsOf = new Map();
+  for (const n of nodes) kidsOf.set(n.id, []);
+  for (const n of nodes) if (n.parent) kidsOf.get(n.parent).push(n);
+
+  // Depth + leaf order (DFS).
+  const depth = new Map();
+  const leafIds = [];
+  let maxDepth = 0;
+  const walk = (n, d) => {
+    maxDepth = Math.max(maxDepth, d);
+    depth.set(n.id, d);
+    const kids = kidsOf.get(n.id).slice().sort((a, b) => a.x - b.x);
+    if (!kids.length) leafIds.push(n.id);
+    for (const c of kids) walk(c, d + 1);
+  };
+  walk(root, 0);
+
+  const leafIndex = new Map();
+  leafIds.forEach((id, i) => leafIndex.set(id, i));
+
+  const SLOT = 110;
+  const TOP_PAD = 24;
+  const V_GAP = 44;
+  const NODE_H = 34;
+
+  // Bottom-up span (leaf range each node covers).
+  const span = new Map();
+  const collectSpan = (id) => {
+    if (span.has(id)) return span.get(id);
+    const kids = kidsOf.get(id);
+    if (!kids.length) {
+      const s = [leafIndex.get(id), leafIndex.get(id)];
+      span.set(id, s);
+      return s;
+    }
+    let lo = Infinity, hi = -Infinity;
+    for (const c of kids) {
+      const cs = collectSpan(c.id);
+      lo = Math.min(lo, cs[0]);
+      hi = Math.max(hi, cs[1]);
+    }
+    const s = [lo, hi];
+    span.set(id, s);
+    return s;
+  };
+  collectSpan(root.id);
+
+  const layout = new Map();
+  for (const n of nodes) {
+    const d = depth.get(n.id) || 0;
+    const y = TOP_PAD + d * (NODE_H + V_GAP) + NODE_H / 2;
+    const kids = kidsOf.get(n.id);
+    if (!kids.length) {
+      const i = leafIndex.get(n.id);
+      layout.set(n.id, { x: SLOT * i + SLOT / 2, y, w: SLOT, h: NODE_H });
+    } else {
+      const s = span.get(n.id);
+      const x = ((s[0] + s[1]) / 2 + 0.5) * SLOT;
+      const w = (s[1] - s[0] + 1) * SLOT;
+      layout.set(n.id, { x, y, w, h: NODE_H });
+    }
+  }
+  return layout;
+}
+
+// Re-arrange every node into the hierarchical syntax-tree layout.
+function snapToTree() {
+  const layout = computeTreeLayout();
+  if (!layout) {
+    state.onStatus('Build a connected tree first — drag connector dots to link nodes.');
+    return;
+  }
+  for (const [id, pos] of layout) {
+    const n = state.model.nodes[id];
+    if (n) {
+      n.x = pos.x - pos.w / 2;
+      n.y = pos.y - pos.h / 2;
+      n.w = pos.w;
+      n.h = pos.h;
+    }
+  }
+  state.onStatus('Tree snapped into syntax-tree structure.');
+  changed();
+}
+
+// ---------------------------------------------------------------------------
 // Rendering
 // ---------------------------------------------------------------------------
 
@@ -1070,11 +1197,15 @@ function drawNode(ctx, n) {
   const hovered = state.hover === n.id || state.hoverTarget === n.id || state.hoverEndpoint === n.id;
   const rejected = state.reject && state.reject.id === n.id;
   const isPhrase = n.kind === NODE.PHRASE;
-  const invalid = n.kind === NODE.WORD && n.valid === false;
+  // Words known to SynTutor are never red. Unknown words show red only until
+  // the tree is structurally complete — once everything connects, the builder
+  // stops flagging them so the finished tree reads cleanly.
+  const invalid = n.kind === NODE.WORD && n.valid === false && !state.treeCorrect;
 
   let color = c.text;
   if (isPhrase) color = c.accent;
   if (invalid || rejected) color = c.error;
+  if (state.treeCorrect && !isPhrase && !invalid && !rejected) color = c.valid;
   if (hovered) color = c.accent;
   if (selected) color = c.selected;
 

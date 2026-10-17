@@ -132,15 +132,17 @@ export function roots(model) {
 }
 
 // Would attaching child under parent create a cycle? (parent is a descendant
-// of child.) Also rejects self-links and attaching to a word node.
+// of child.) Also rejects self-links.
+//
+// The builder is intentionally permissive: any node may connect to any other
+// node, even if the combination is not a valid constituency. A word like NNP
+// can be a parent, and a word SynTutor doesn't recognise can be a child — the
+// tree still gets built so the builder stays functional.
 export function canConnect(model, parentId, childId) {
   if (parentId === childId) return false;
   const parent = model.nodes[parentId];
   const child = model.nodes[childId];
   if (!parent || !child) return false;
-  if (parent.kind !== NODE.PHRASE) return false;
-  // A node SynTutor's model rejects as a word cannot be attached at all.
-  if (child.kind === NODE.WORD && child.valid === false) return false;
   let cur = parent;
   while (cur) {
     if (cur.id === childId) return false;
