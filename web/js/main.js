@@ -7,9 +7,10 @@ import {
   clearOverlay, showCanvasMessage, renderNodeDetail,
   renderDiagnostic, applySentenceSelection, plainName,
 } from './ui.js';
-import { openQuizView, closeQuizView, initQuiz, quizInputHint } from './quiz.js';
-import { levelFromXp } from './quiz/level.js';
-import { computeUnlocked } from './quiz/achievements.js';
+import { openQuizView, closeQuizView, initQuiz, quizInputHint } from './tree-quiz.js';
+import { initSyntaxBuilder, openBuilderView, closeBuilderView } from './syntax-builder-ui.js';
+import { levelFromXp } from './level.js';
+import { computeUnlocked } from './achievements.js';
 
 let clerk = null;
 let supabase = null;
@@ -94,6 +95,7 @@ export function boot() {
   initThemeAndMenu();
   purgeLegacyGuestHistory();
   initSidebar();
+  initSyntaxBuilder({ onStatusChange: (msg) => log(msg) });
   initQuiz({ analyze: analyzeForQuiz, setQuizMode, progress });
   transition(STATES.IDLE, 'system ready');
   log(`SynTutor engine ready \u2014 full-stack pipeline: spaCy + benepar + rule matrix (${isGuest ? 'guest mode' : 'authenticated'})`);
@@ -146,13 +148,23 @@ function initSidebar() {
 
   document.querySelectorAll('.sidebar-item[data-view]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (btn.dataset.view === 'quiz') {
-        openQuizView('list');
+      if (btn.dataset.view === 'builder') {
+        closeQuizView();
+        openBuilderView();
+      } else if (btn.dataset.view === 'quiz') {
+        closeBuilderView();
+        openQuizView('quiz');
+      } else if (btn.dataset.view === 'lessons') {
+        closeBuilderView();
+        openQuizView('lessons');
       } else if (btn.dataset.view === 'leaderboard') {
+        closeBuilderView();
         openQuizView('leaderboard');
       } else if (btn.dataset.view === 'achievements') {
+        closeBuilderView();
         openQuizView('achievements');
       } else {
+        closeBuilderView();
         closeQuizView();
         close();
       }

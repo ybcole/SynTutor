@@ -1,11 +1,11 @@
 // Rule concepts — the "what" behind each rule: a plain-language explanation of
 // what the rule governs and why the example error is wrong. This is the
-// conceptual half of the masterfile; the per-sentence half ("what is wrong in
-// *this* sentence") lives on each generated question.
+// conceptual half of the content sheet.
 //
-// The generator (scripts/build_master.js) merges these into
-// web/content/master.json, so the whole system (quiz UI + server) reads one
-// table. Keep the text short and learner-facing. Keys must match catalog.js.
+// The generator (scripts/tree_sheet.py) folds these into
+// web/content/tree_sheet.json (Stage 4), so the whole system (tree quiz +
+// server XAI) reads one table. Keep the text short and learner-facing. Keys
+// must match the rule ids in server/ruleset.py's RULEBOOK.
 
 export const RULE_CONCEPTS = {
   // 1. Word forms

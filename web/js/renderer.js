@@ -246,6 +246,10 @@ export class TreeRenderer {
     return { x: (p.x - this.view.tx) / this.view.scale, y: (p.y - this.view.ty) / this.view.scale };
   }
 
+  hitTest(mx, my) {
+    return this.layoutData ? this._hitTest(mx, my) : null;
+  }
+
   _hitTest(mx, my) {
     const w = this._toWorld({ x: mx, y: my });
     let best = null;

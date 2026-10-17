@@ -120,7 +120,7 @@
               <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
               <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
             </svg>
-            <span>Grammar Tutor</span>
+            <span>SynTutor</span>
           </button>
           <button class="sidebar-item" type="button" data-view="quiz">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -128,7 +128,25 @@
               <line x1="12" y1="17" x2="12.01" y2="17"></line>
               <circle cx="12" cy="12" r="10"></circle>
             </svg>
-            <span>Matrix Quiz</span>
+            <span>Quiz</span>
+          </button>
+          <button class="sidebar-item" type="button" data-view="lessons">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            <span>Lessons</span>
+          </button>
+          <button class="sidebar-item" type="button" data-view="builder">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="4" r="2"></circle>
+              <circle cx="5" cy="19" r="2"></circle>
+              <circle cx="19" cy="19" r="2"></circle>
+              <line x1="12" y1="6" x2="12" y2="11"></line>
+              <line x1="12" y1="11" x2="5" y2="17"></line>
+              <line x1="12" y1="11" x2="19" y2="17"></line>
+            </svg>
+            <span>Syntax Builder</span>
           </button>
           <button class="sidebar-item" type="button" data-view="leaderboard">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -167,22 +185,35 @@
 
     <main class="app-main">
       <section class="canvas-wrap">
-        <canvas id="treeCanvas" tabindex="0" aria-label="Interactive syntax tree; click a node, or use arrow keys and Enter"></canvas>
-        <div id="canvasOverlay" class="canvas-overlay"></div>
-        <div id="emptyTreeState" class="empty-state-canvas">
-          <svg class="empty-tree-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="32" cy="16" r="7" />
-            <circle cx="16" cy="48" r="7" />
-            <circle cx="48" cy="48" r="7" />
-            <line x1="27" y1="21" x2="20" y2="42" />
-            <line x1="37" y1="21" x2="44" y2="42" />
-          </svg>
-          <h3 class="empty-tree-title">No Syntax tree to generate yet!</h3>
-          <p class="empty-tree-sub">Add your text to see the syntax tree here</p>
+        <div id="builderBar" class="builder-bar" hidden>
+          <span id="builderTitle" class="builder-title">Syntax Builder</span>
+          <span id="builderHint" class="builder-hint"></span>
+          <span id="builderTarget" class="builder-target" hidden></span>
+          <span class="builder-spacer"></span>
+          <button id="builderCheck" class="builder-btn builder-btn-primary" type="button" hidden>Check tree</button>
+          <button id="builderNext" class="builder-btn builder-btn-primary" type="button" hidden>Next →</button>
+          <button id="builderClear" class="builder-btn" type="button">Clear</button>
+          <button id="builderClose" class="builder-btn" type="button">Done</button>
         </div>
-        <div id="loadingIndicator" class="loading-pill" aria-hidden="true">
-          <span class="loading-spinner" aria-hidden="true"></span>
-          <span>Generating syntax tree&hellip;</span>
+        <div class="canvas-stage">
+          <canvas id="treeCanvas" tabindex="0" aria-label="Interactive syntax tree; click a node, or use arrow keys and Enter"></canvas>
+          <canvas id="builderCanvas" class="builder-canvas" tabindex="0" aria-label="Syntax builder canvas" hidden></canvas>
+          <div id="canvasOverlay" class="canvas-overlay"></div>
+          <div id="emptyTreeState" class="empty-state-canvas">
+            <svg class="empty-tree-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="32" cy="16" r="7" />
+              <circle cx="16" cy="48" r="7" />
+              <circle cx="48" cy="48" r="7" />
+              <line x1="27" y1="21" x2="20" y2="42" />
+              <line x1="37" y1="21" x2="44" y2="42" />
+            </svg>
+            <h3 class="empty-tree-title">No Syntax tree to generate yet!</h3>
+            <p class="empty-tree-sub">Add your text to see the syntax tree here</p>
+          </div>
+          <div id="loadingIndicator" class="loading-pill" aria-hidden="true">
+            <span class="loading-spinner" aria-hidden="true"></span>
+            <span>Generating syntax tree&hellip;</span>
+          </div>
         </div>
       </section>
 

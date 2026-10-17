@@ -23,4 +23,4 @@ COPY web/ ./web/
 
 EXPOSE 7860
 
-CMD ["python", "server/app.py"]
+CMD ["python", "server/webapp.py"]

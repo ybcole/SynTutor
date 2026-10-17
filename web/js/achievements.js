@@ -1,20 +1,20 @@
-// Achievements catalog + unlock rules for the Matrix Quiz.
+// Achievements catalog + unlock rules for the Syntax-Tree Quiz.
 //
 // Achievements are derived deterministically from the learner's signed-in
-// quiz_progress rows (a completion per rule), so nothing extra has
-// to be persisted: the earned set is recomputed on demand and stored progress
-// only lives in the quiz_progress table.
+// quiz_progress rows (one completion per stage id, "1".."4"), so nothing extra
+// has to be persisted: the earned set is recomputed on demand and stored
+// progress only lives in the quiz_progress table.
 
-import { MATRIX_SECTIONS, ruleInfo } from '../quiz-data.js';
+import { TREE_SECTIONS, stageInfo } from './tree-catalog.js';
 
 export function achievementCatalog() {
   const catalog = [];
-  for (const section of MATRIX_SECTIONS) {
+  for (const section of TREE_SECTIONS) {
     catalog.push({
-      id: `section_${section.id}`,
+      id: `stage_${section.id}`,
       icon: '\u{1F393}',
       title: `${section.title} Scholar`,
-      description: `Complete a quiz in \u201c${section.title}\u201d.`,
+      description: `Complete the quiz for \u201c${section.title}\u201d.`,
       sectionId: section.id,
     });
   }
@@ -22,7 +22,7 @@ export function achievementCatalog() {
     id: 'first_quiz',
     icon: '\u{1F3AF}',
     title: 'First Steps',
-    description: 'Complete your first Matrix Quiz.',
+    description: 'Complete your first Syntax-Tree Quiz.',
   });
   catalog.push({
     id: 'flawless',
@@ -33,8 +33,8 @@ export function achievementCatalog() {
   catalog.push({
     id: 'all_sections',
     icon: '\u{1F3C6}',
-    title: 'Grammar Grandmaster',
-    description: 'Complete a quiz in every section.',
+    title: 'Tree Grandmaster',
+    description: 'Complete a quiz in every stage.',
   });
   return catalog;
 }
@@ -45,8 +45,8 @@ export function computeUnlocked(rows, catalog = achievementCatalog()) {
   const list = rows || [];
   const completedSections = new Set();
   for (const row of list) {
-    const info = ruleInfo(row.rule_id);
-    if (info) completedSections.add(info.sectionId);
+    const info = stageInfo(row.rule_id);
+    if (info) completedSections.add(info.id);
   }
   const unlocked = new Set();
   if (list.length > 0) unlocked.add('first_quiz');
@@ -54,7 +54,7 @@ export function computeUnlocked(rows, catalog = achievementCatalog()) {
   for (const ach of catalog) {
     if (ach.sectionId && completedSections.has(ach.sectionId)) unlocked.add(ach.id);
   }
-  if (MATRIX_SECTIONS.every((section) => completedSections.has(section.id))) {
+  if (TREE_SECTIONS.every((section) => completedSections.has(section.id))) {
     unlocked.add('all_sections');
   }
   return unlocked;
