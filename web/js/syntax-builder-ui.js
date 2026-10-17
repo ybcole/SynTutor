@@ -12,7 +12,7 @@
 //   drag a box body           -> move it
 //   double-click a box        -> edit its word text / relabel the phrase
 //   Delete/Backspace          -> remove the selected box
-//   drag empty space          -> marquee-select nodes (no modifier key)  wheel -> zoom
+//   drag empty space          -> marquee-select nodes (Alt+drag to pan)   wheel -> zoom
 
 import {
   POS_TYPES, PHRASE_NODE_TYPES, NODE_TYPE_GROUPS, NODE,
@@ -265,26 +265,10 @@ function wireCanvas(canvas) {
 }
 
 function onMouseDown(e) {
+  // Right-click always opens the context menu (on a node or on empty space).
+  if (e.button === 2) return;
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
-
-  // Right-click on empty space starts a marquee (multi) selection; right-click
-  // on a node falls through to the context menu below.
-  if (e.button === 2) {
-    const dot = dotHit(state.model, w.x, w.y);
-    const endpoint = endpointHit(state.model, w.x, w.y);
-    const node = nodeHit(state.model, w.x, w.y);
-    if (!dot && !endpoint && !node) {
-      e.preventDefault(); // suppress the browser context menu
-      closeMenu();
-      clearSelection();
-      state.marquee = { x0: w.x, y0: w.y, x1: w.x, y1: w.y, base: new Set(state.selection) };
-      draw();
-      explainSelected();
-      return;
-    }
-    return; // let the contextmenu handler open the node menu
-  }
 
   const dot = dotHit(state.model, w.x, w.y);
   if (dot) {
@@ -292,9 +276,6 @@ function onMouseDown(e) {
     closeMenu();
     return;
   }
-  // Grab an existing connection at the child's endpoint to re-route or remove
-  // it. Detaching straight away means a plain click deletes the connection;
-  // dragging it onto another phrase re-attaches it there.
   const endpoint = endpointHit(state.model, w.x, w.y);
   if (endpoint) {
     const oldParent = endpoint.parent;
@@ -332,10 +313,15 @@ function onMouseDown(e) {
     explainSelected();
     return;
   }
-  // empty space: left-drag pans the canvas for exploration.
+  // Empty space: left-drag starts a marquee selection (Alt+drag pans instead).
   closeMenu();
   clearSelection();
-  state.pan = { sx, sy, ox: state.view.ox, oy: state.view.oy };
+  const isPan = e.altKey;
+  if (isPan) {
+    state.pan = { sx, sy, ox: state.view.ox, oy: state.view.oy };
+  } else {
+    state.marquee = { x0: w.x, y0: w.y, x1: w.x, y1: w.y, base: new Set() };
+  }
   draw();
   explainSelected();
 }
@@ -386,12 +372,14 @@ function onMouseMove(e) {
   if (state.marquee) {
     state.marquee.x1 = w.x;
     state.marquee.y1 = w.y;
+    state.canvas.style.cursor = 'crosshair';
     draw();
     return;
   }
   if (state.pan) {
     state.view.ox = state.pan.ox + (sx - state.pan.sx);
     state.view.oy = state.pan.oy + (sy - state.pan.sy);
+    state.canvas.style.cursor = 'grabbing';
     draw();
     return;
   }
@@ -451,10 +439,10 @@ function onMouseUp(e) {
     changed();
   }
   if (state.marquee) {
-    const { x0, y0, x1, y1, base } = state.marquee;
+    const { x0, y0, x1, y1 } = state.marquee;
     const minX = Math.min(x0, x1), maxX = Math.max(x0, x1);
     const minY = Math.min(y0, y1), maxY = Math.max(y0, y1);
-    const next = new Set(base || []);
+    const next = new Set();
     for (const n of Object.values(state.model.nodes)) {
       const cx = n.x + n.w / 2;
       const cy = n.y + n.h / 2;
@@ -467,6 +455,7 @@ function onMouseUp(e) {
   }
   state.drag = null;
   state.pan = null;
+  state.canvas.style.cursor = '';
 }
 
 function nodeLabel(node) {
@@ -536,8 +525,7 @@ async function validateWords(nodes) {
 }
 
 function onContextMenu(e) {
-  // Don't open the context menu when the user right-dragged empty space to
-  // marquee-select nodes.
+  // Don't open the context menu while a marquee selection is in progress.
   if (state.marquee) {
     e.preventDefault();
     closeMenu();
@@ -577,6 +565,7 @@ function onKeyDown(e) {
     state.pan = null;
     state.marquee = null;
     state.hoverTarget = null;
+    state.canvas.style.cursor = '';
     draw();
     return;
   }
@@ -1204,6 +1193,7 @@ function render() {
   ctx.save();
   ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * ox, dpr * oy);
 
+  const c = themeColors();
   // edges first (straight, thin, centred on each box with a small gap, like the
   // generator tree)
   for (const n of nodes) {
@@ -1232,6 +1222,20 @@ function render() {
   // nodes
   for (const n of nodes) {
     drawNode(ctx, n);
+  }
+
+  // marquee selection rectangle (drawn in world space, on top of nodes)
+  if (state.marquee) {
+    const { x0, y0, x1, y1 } = state.marquee;
+    const minX = Math.min(x0, x1), maxX = Math.max(x0, x1);
+    const minY = Math.min(y0, y1), maxY = Math.max(y0, y1);
+    ctx.strokeStyle = c.accent;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([6, 4]);
+    ctx.strokeRect(minX, minY, maxX - minX, maxY - minY);
+    ctx.setLineDash([]);
+    ctx.fillStyle = c.accent + '20';
+    ctx.fillRect(minX, minY, maxX - minX, maxY - minY);
   }
   ctx.restore();
 }
