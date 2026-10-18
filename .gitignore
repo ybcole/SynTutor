@@ -1,11 +1,6 @@
 __pycache__/
 *.py[cod]
 .DS_Store
-<<<<<<< HEAD
-js/config.js
-supabase/.temp/
-=======
 supabase/.temp/
 node_modules/
 dist/
->>>>>>> 3a6c291729a3a5986acf2232a8be1fd637dc0182
