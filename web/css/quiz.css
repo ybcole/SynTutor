@@ -1,5 +1,14 @@
 /* ------------------------------------------------------------------ */
-/* Left navigation drawer                                              */
+/* Left navigation rail (docked) / drawer (mobile)                    */
+/*                                                                     */
+/* Desktop: #appSidebar is docked in the shell's first grid column as a */
+/* ChatGPT-style rail — a 60px icon column by default, 248px with       */
+/* .expanded, and min(360px, 94vw) while the in-sidebar quiz panel     */
+/* (.quiz-active, set by tree-quiz.js) is up. There the #appSidebar    */
+/* backdrop stops being a fixed overlay and becomes the plain grid     */
+/* wrapper, so the .active toggles tree-quiz.js still performs are     */
+/* harmless no-ops. On small screens (≤760px) the original slide-over  */
+/* drawer behaviour is kept, opened with #mobileNavBtn.                */
 /* ------------------------------------------------------------------ */
 .app-sidebar-backdrop {
   position: fixed;
@@ -21,41 +30,123 @@
 .app-sidebar {
   display: flex;
   flex-direction: column;
-  width: min(280px, 82vw);
+  width: 60px; /* collapsed icon rail */
   height: 100%;
-  padding: 18px 14px 0;
-  overflow: hidden;
+  padding: 14px 8px 10px;
   background: var(--panel);
-  box-shadow: 8px 0 24px rgba(0, 0, 0, 0.15);
-  transform: translateX(-100%);
-  transition: transform var(--dur) var(--ease), width var(--dur) var(--ease);
+  border-right: 1px solid var(--border);
+  min-width: 0;
+  /* Persistent rail: above the Lessons overlay (190), below the history
+     drawer (200) and the auth modal (300). */
+  position: relative;
+  z-index: 195;
+  transition: width var(--dur) var(--ease);
 }
-.app-sidebar-backdrop.active .app-sidebar {
-  transform: translateX(0);
+.app-sidebar.expanded { width: 248px; padding: 14px 12px 10px; }
+.app-sidebar.quiz-active { width: min(360px, 94vw); padding: 14px 12px 10px; }
+
+@media (min-width: 761px) {
+  .app-sidebar-backdrop {
+    position: static;
+    inset: auto;
+    z-index: auto;
+    display: flex;
+    justify-content: flex-start;
+    background: transparent;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: none;
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+  /* Icon rail: labels, the collapse toggle and the account name appear
+     with .expanded (or while the wide quiz panel is showing). */
+  .app-sidebar:not(.expanded):not(.quiz-active) .sidebar-item { justify-content: center; padding: 11px 0; gap: 0; }
+  .app-sidebar:not(.expanded):not(.quiz-active) .sidebar-item span,
+  .app-sidebar:not(.expanded):not(.quiz-active) .brand-title,
+  .app-sidebar:not(.expanded):not(.quiz-active) #identityLabel { display: none; }
+  .app-sidebar:not(.expanded):not(.quiz-active) .sidebar-brand { justify-content: center; padding: 6px 2px; }
+  .app-sidebar:not(.expanded):not(.quiz-active) .app-sidebar-foot .menu-btn { justify-content: center; }
+  .app-sidebar:not(.expanded):not(.quiz-active) .profile-anchor { justify-content: center; }
+  .app-sidebar:not(.expanded):not(.quiz-active) .identity-chip { padding: 4px; }
+  /* `:not(.quiz-active)` keeps the collapse toggle available while the wide
+     quiz panel shows; the .sidebar-close selector out-ranks the later
+     .drawer-close base rule that would otherwise re-show it. */
+  .app-sidebar:not(.expanded):not(.quiz-active) .sidebar-toggle { display: none; }
+  .app-sidebar .sidebar-close { display: none; }
 }
-.app-sidebar.quiz-active {
-  width: min(360px, 94vw);
+
+@media (max-width: 760px) {
+  .app-sidebar,
+  .app-sidebar.expanded,
+  .app-sidebar.quiz-active {
+    width: min(280px, 82vw);
+    padding: 18px 14px 10px;
+    transform: translateX(-100%);
+    box-shadow: 8px 0 24px rgba(0, 0, 0, 0.15);
+    border-right: none;
+    transition: transform var(--dur) var(--ease), width var(--dur) var(--ease);
+  }
+  .app-sidebar-backdrop.active .app-sidebar {
+    transform: translateX(0);
+  }
+  .app-sidebar.quiz-active { width: min(360px, 94vw); }
+  .sidebar-toggle { display: none; }
 }
-.app-sidebar-head {
+
+/* Top zone: brand mark + expand/collapse toggle (+ mobile drawer close) */
+.app-sidebar-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 6px 14px;
-  margin-bottom: 8px;
-  border-bottom: 1px solid var(--border);
+  gap: 4px;
   flex: 0 0 auto;
+  margin-bottom: 10px;
 }
-.app-brand-name {
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 5px 6px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
   color: var(--ink);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease);
 }
+.sidebar-brand:hover { background: var(--header-hover); }
+.brand-monogram {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 800;
+}
+.brand-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.sidebar-toggle { flex: 0 0 auto; }
+
+/* Middle zone: actions + view navigation */
 .app-sidebar-nav {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
 }
 .sidebar-item {
   display: flex;
@@ -71,13 +162,28 @@
   font-weight: 600;
   text-align: left;
   cursor: pointer;
+  overflow: hidden;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 .sidebar-item svg { color: var(--muted); flex: 0 0 auto; }
+.sidebar-item span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .sidebar-item:hover { background: var(--accent-soft); }
 .sidebar-item:hover svg { color: var(--accent); }
 .sidebar-item.active { background: var(--accent-soft); color: var(--accent-strong); }
 .sidebar-item.active svg { color: var(--accent-strong); }
+.sidebar-item[hidden] { display: none; }
+
+/* Bottom zone: theme toggle + account chip (the menu opens to the right) */
+.app-sidebar-foot {
+  margin-top: auto;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.app-sidebar-foot .menu-btn { justify-content: flex-start; padding: 7px 12px; }
 
 .drawer-close {
   display: flex;
@@ -95,6 +201,13 @@
 .drawer-close:hover { background: var(--accent-soft); color: var(--accent); }
 .drawer-close:active { transform: scale(0.92); }
 
+.app-brand-name {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--ink);
+}
+
 /* ------------------------------------------------------------------ */
 /* Quiz panel (inside the sidebar)                                     */
 /* ------------------------------------------------------------------ */
@@ -103,6 +216,8 @@
   flex-direction: column;
   flex: 1 1 auto;
   min-height: 0;
+  min-width: 0;
+  overflow: hidden;
   margin-top: 8px;
   border-top: 1px solid var(--border);
   padding-top: 10px;
@@ -974,8 +1089,9 @@
 /* ------------------------------------------------------------------ */
 .lessons-overlay {
   position: fixed;
-  top: 52px;
-  left: 0;
+  top: 0;
+  /* Starts right of the docked rail (0 on mobile, where the drawer is closed). */
+  left: var(--rail-w, 0px);
   right: 0;
   bottom: 0;
   z-index: 190;

@@ -127,17 +127,93 @@ function initThemeAndMenu() {
 
 function initSidebar() {
   const backdrop = document.querySelector('#appSidebarBackdrop');
+  const sidebar = document.querySelector('#appSidebar');
   const toggle = document.querySelector('#sidebarToggleBtn');
+  const brand = document.querySelector('#sidebarBrandBtn');
+  const mobileNav = document.querySelector('#mobileNavBtn');
+  const isDocked = () => window.matchMedia('(min-width: 761px)').matches;
+
+  // Canvases live in the workspace column, so re-fit them once the rail
+  // finishes resizing; the fallback timer covers transitions that never run.
+  let resizeFallback = 0;
+  const dispatchResize = () => {
+    window.clearTimeout(resizeFallback);
+    window.dispatchEvent(new Event('resize'));
+  };
+  const scheduleResize = () => {
+    window.clearTimeout(resizeFallback);
+    resizeFallback = window.setTimeout(dispatchResize, 400);
+  };
+
+  const syncRailState = () => {
+    const expanded = Boolean(sidebar?.classList.contains('expanded'));
+    const label = expanded ? 'Collapse sidebar' : 'Expand sidebar';
+    // Only write when needed: this also self-corrects the stale
+    // aria-expanded writes tree-quiz.js still makes for the old drawer.
+    if (toggle && toggle.getAttribute('aria-expanded') !== String(expanded)) {
+      toggle.setAttribute('aria-expanded', String(expanded));
+    }
+    for (const el of [toggle, brand]) {
+      if (!el) continue;
+      if (el.getAttribute('aria-label') !== label) el.setAttribute('aria-label', label);
+      if (el.title !== label) el.title = label;
+    }
+  };
+
+  const setExpanded = (next) => {
+    sidebar?.classList.toggle('expanded', next);
+    syncRailState();
+    scheduleResize();
+  };
+  const toggleExpanded = () => setExpanded(!sidebar?.classList.contains('expanded'));
+
+  // On desktop the collapsed rail peeks open when its top zone is hovered.
+  let hoverTimer = 0;
+  document.querySelector('.app-sidebar-top')?.addEventListener('mouseenter', () => {
+    if (!isDocked() || sidebar?.classList.contains('expanded')) return;
+    window.clearTimeout(hoverTimer);
+    hoverTimer = window.setTimeout(() => setExpanded(true), 180);
+  });
+  document.querySelector('.app-sidebar-top')?.addEventListener('mouseleave', () => {
+    window.clearTimeout(hoverTimer);
+  });
+
+  toggle?.addEventListener('click', toggleExpanded);
+  brand?.addEventListener('click', toggleExpanded);
+  sidebar?.addEventListener('transitionend', (e) => {
+    if (e.propertyName === 'width' && e.target === sidebar) dispatchResize();
+  });
+  // The quiz panel in tree-quiz.js also resizes the rail (.quiz-active).
+  let railKey = `${sidebar?.classList.contains('expanded')}-${sidebar?.classList.contains('quiz-active')}`;
+  new MutationObserver(() => {
+    const next = `${sidebar?.classList.contains('expanded')}-${sidebar?.classList.contains('quiz-active')}`;
+    if (next === railKey) return;
+    railKey = next;
+    syncRailState();
+    scheduleResize();
+  }).observe(sidebar, { attributes: true, attributeFilter: ['class'] });
+  syncRailState();
+
+  // Small screens open the rail as a slide-over drawer (tree-quiz.js also
+  // toggles the backdrop directly, so mirror its aria state).
+  const syncDrawerAria = () => {
+    const active = Boolean(backdrop?.classList.contains('active'));
+    if (mobileNav && mobileNav.getAttribute('aria-expanded') !== String(active)) {
+      mobileNav.setAttribute('aria-expanded', String(active));
+    }
+  };
+  new MutationObserver(syncDrawerAria).observe(backdrop, { attributes: true, attributeFilter: ['class'] });
   const open = () => {
     backdrop?.classList.add('active');
-    toggle?.setAttribute('aria-expanded', 'true');
+    syncDrawerAria();
   };
   const close = () => {
     backdrop?.classList.remove('active');
-    toggle?.setAttribute('aria-expanded', 'false');
+    syncDrawerAria();
   };
+  syncDrawerAria();
 
-  toggle?.addEventListener('click', () => {
+  mobileNav?.addEventListener('click', () => {
     if (backdrop?.classList.contains('active')) close();
     else open();
   });
