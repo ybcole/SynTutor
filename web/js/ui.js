@@ -26,6 +26,13 @@ export function plainName(type) {
 
 export function log(entry) {
   const panel = $('#logPanel');
+  if (!panel) return;
+  if (!panel.dataset.autoscrollBound) {
+    panel.dataset.autoscrollBound = '1';
+    panel.addEventListener('scroll', () => {
+      panel.dataset.stickToBottom = panel.scrollHeight - panel.scrollTop - panel.clientHeight < 24 ? '1' : '0';
+    });
+  }
   const div = document.createElement('div');
   div.className = 'log-entry';
   const time = new Date().toLocaleTimeString('en-GB', { hour12: false });
@@ -36,15 +43,20 @@ export function log(entry) {
   const body = document.createElement('span');
   body.textContent = entry;
   div.appendChild(body);
-  panel.prepend(div);
+  panel.appendChild(div);
+  if (panel.dataset.stickToBottom !== '0') {
+    panel.scrollTop = panel.scrollHeight;
+  }
 }
 
 export function clearOverlay() {
-  $('#canvasOverlay').innerHTML = '';
+  const overlay = $('#canvasOverlay');
+  if (overlay) overlay.innerHTML = '';
 }
 
 export function showCanvasMessage(kind, title, lines) {
   const holder = $('#canvasOverlay');
+  if (!holder) return;
   holder.innerHTML = '';
   const card = document.createElement('div');
   card.className = `overlay-card ${kind}`;
@@ -59,14 +71,18 @@ export function showCanvasMessage(kind, title, lines) {
   holder.appendChild(card);
 }
 
-/* ---------------- primary panel: node explanation ---------------- */
-
 export function renderNodeDetail(_session, detail, node) {
   const box = $('#explainNode');
+  const emptyState = $('#emptyExplainState');
+  if (!box) return;
   box.innerHTML = '';
+
   if (!detail || !node) {
+    if (emptyState) emptyState.classList.remove('hidden');
     return;
   }
+
+  if (emptyState) emptyState.classList.add('hidden');
 
   const card = document.createElement('div');
   card.className = 'node-card';
@@ -83,7 +99,7 @@ export function renderNodeDetail(_session, detail, node) {
   if (detail.surface) {
     const surf = document.createElement('span');
     surf.className = 'nc-surface';
-    surf.textContent = `\u2014 "${detail.surface}"`;
+    surf.textContent = ` \u2014 "${detail.surface}"`;
     head.appendChild(surf);
   }
   card.appendChild(head);
@@ -139,12 +155,14 @@ function renderRemediation(rm) {
     wrap.appendChild(al);
   }
 
-
   return wrap;
 }
 
 export function renderDiagnostic(title, lines) {
   const box = $('#explainNode');
+  const emptyState = $('#emptyExplainState');
+  if (emptyState) emptyState.classList.add('hidden');
+  if (!box) return;
   box.innerHTML = '';
   const h = document.createElement('h4');
   h.textContent = title;
@@ -157,10 +175,9 @@ export function renderDiagnostic(title, lines) {
   }
 }
 
-/* ---------------- secondary (collapsible) dev panel ---------------- */
-
 export function renderSentenceVerdict(markupLines, isError) {
   const box = $('#sentenceVerdict');
+  if (!box) return;
   box.innerHTML = '';
   const h = document.createElement('h4');
   h.textContent = 'Sentence verdict';
@@ -175,10 +192,14 @@ export function renderSentenceVerdict(markupLines, isError) {
 }
 
 export function fillDevPanel(payload) {
-  $('#parseString').textContent = payload.parse.parse_string;
-  $('#tokenStream').textContent = payload.parse.tokens
-    .map((t, i) => `${i + 1}\t${t.t}\t${t.pos}\t${t.tag}`)
-    .join('\n');
+  const parseStr = $('#parseString');
+  const tokStream = $('#tokenStream');
+  if (parseStr) parseStr.textContent = payload.parse.parse_string;
+  if (tokStream) {
+    tokStream.textContent = payload.parse.tokens
+      .map((t, i) => `${i + 1}\t${t.t}\t${t.pos}\t${t.tag}`)
+      .join('\n');
+  }
 }
 
 export function applySentenceSelection(payload) {
