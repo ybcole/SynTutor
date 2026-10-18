@@ -12,7 +12,9 @@
 //   drag a box body           -> move it
 //   double-click a box        -> edit its word text / relabel the phrase
 //   Delete/Backspace          -> remove the selected box
-//   drag empty space          -> marquee-select nodes (Alt+drag to pan)   wheel -> zoom
+//   drag empty space          -> pan the canvas   wheel -> zoom
+//   right-click (click)       -> add a node menu
+//   right-click (hold) + drag -> marquee-select multiple nodes
 
 import {
   POS_TYPES, PHRASE_NODE_TYPES, NODE_TYPE_GROUPS, NODE,
@@ -21,7 +23,7 @@ import {
   dotOf, dotHit, nodeHit, endpointOf, endpointHit, toTree, compareTrees, leavesOf, leafText,
   seedWords, leavesWithTags, childrenOf,
 } from './syntax-builder.js';
-import { renderNodeDetail } from './ui.js';
+import { renderNodeDetail, renderDiagnostic, clearOverlay } from './ui.js';
 
 const WORD_FONT = '500 15px Inter, system-ui, sans-serif';
 const TAG_FONT = '600 10px Inter, system-ui, sans-serif';
@@ -60,6 +62,9 @@ const state = {
   treeCorrect: false,
   snapped: false,
   snappedLayout: null,
+  // Per-node validation errors produced by the last Build tree check:
+  // id -> detail record (same shape as the tutor's payload.node_details[id]).
+  nodeErrors: new Map(),
   root: null,
   canvas: null,
   ctx: null,
@@ -67,6 +72,9 @@ const state = {
   menu: null,
   dpr: 1,
   frame: 0,
+  rightHoldTimer: null,
+  holdingRight: false,
+  rightDownStart: null,
 };
 
 export function initSyntaxBuilder({ onStatusChange } = {}) {
@@ -90,6 +98,10 @@ export function openBuilderView(opts = {}) {
   canvas.hidden = false;
   if (treeCanvas) treeCanvas.hidden = true;
   document.getElementById('emptyTreeState')?.classList.add('hidden');
+  // The shared canvas overlay (e.g. "No analyzable sentence" from the parser)
+  // belongs to the main tree view, not the builder — clear it so it never
+  // bleeds into this page.
+  clearOverlay();
   markSidebar('builder');
   state.challenge = opts.challenge || null;
   state.onComplete = opts.onComplete || null;
@@ -105,7 +117,7 @@ export function openBuilderView(opts = {}) {
     document.getElementById('builderTarget').hidden = true;
     document.getElementById('builderCheck').hidden = true;
     // Remove the builder instructions from the top of the canvas; only the
-    // action buttons (Clear / Snap to tree / Done) remain.
+    // action buttons (Clear / Build tree / Done) remain.
     document.getElementById('builderTitle').textContent = '';
     const hint = document.getElementById('builderHint');
     hint.textContent = '';
@@ -182,6 +194,10 @@ export function newModel() {
   state.marquee = null;
   state.snapped = false;
   state.snappedLayout = null;
+  state.nodeErrors = new Map();
+  if (state.rightHoldTimer) { clearTimeout(state.rightHoldTimer); state.rightHoldTimer = null; }
+  state.holdingRight = false;
+  state.rightDownStart = null;
   const target = document.getElementById('builderTarget');
   if (target) target.classList.remove('builder-target-ok');
 }
@@ -205,7 +221,7 @@ function ensureWired() {
     newModel();
     draw();
   });
-  document.getElementById('builderSnap')?.addEventListener('click', snapToTree);
+  document.getElementById('builderSnap')?.addEventListener('click', buildTree);
   document.getElementById('builderCheck')?.addEventListener('click', checkTree);
   document.getElementById('builderNext')?.addEventListener('click', () => {
     const cb = state.challenge && state.challenge.onNext;
@@ -265,65 +281,76 @@ function wireCanvas(canvas) {
 }
 
 function onMouseDown(e) {
-  // Right-click always opens the context menu (on a node or on empty space).
-  if (e.button === 2) return;
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
 
-  const dot = dotHit(state.model, w.x, w.y);
-  if (dot) {
-    state.link = { parentId: dot.id, childId: null, free: 'child', x: w.x, y: w.y };
-    closeMenu();
+  // Right-click: short click opens the add-node menu; hold starts multi-selection.
+  if (e.button === 2) {
+    if (state.rightHoldTimer) clearTimeout(state.rightHoldTimer);
+    state.rightDownStart = { sx, sy, clientX: e.clientX, clientY: e.clientY };
+    state.holdingRight = false;
+    state.rightHoldTimer = setTimeout(() => {
+      state.holdingRight = true;
+      // On hold, start marquee selection from this point (treat like left-drag marquee)
+      closeMenu();
+      state.marquee = { x0: w.x, y0: w.y, x1: w.x, y1: w.y, base: new Set() };
+      draw();
+    }, 200); // 200ms hold threshold
     return;
   }
-  const endpoint = endpointHit(state.model, w.x, w.y);
-  if (endpoint) {
-    const oldParent = endpoint.parent;
-    endpoint.parent = null;
-    state.link = {
-      parentId: null, childId: endpoint.id, free: 'parent',
-      originalParent: oldParent, x: w.x, y: w.y,
-    };
-    selectOnly(endpoint.id);
-    closeMenu();
-    draw();
-    explainSelected();
-    return;
-  }
-  const node = nodeHit(state.model, w.x, w.y);
-  if (node) {
-    const additive = e.shiftKey || e.metaKey || e.ctrlKey;
-    if (additive) {
-      toggleSelect(node.id);
+
+  if (e.button === 0) {
+    const dot = dotHit(state.model, w.x, w.y);
+    if (dot) {
+      state.link = { parentId: dot.id, childId: null, free: 'child', x: w.x, y: w.y };
+      closeMenu();
+      return;
+    }
+    const endpoint = endpointHit(state.model, w.x, w.y);
+    if (endpoint) {
+      const oldParent = endpoint.parent;
+      endpoint.parent = null;
+      state.link = {
+        parentId: null, childId: endpoint.id, free: 'parent',
+        originalParent: oldParent, x: w.x, y: w.y,
+      };
+      selectOnly(endpoint.id);
+      closeMenu();
       draw();
       explainSelected();
       return;
     }
-    if (!state.selection.has(node.id)) selectOnly(node.id);
-    // Drag every selected box together.
-    const ids = [...state.selection];
-    const origins = {};
-    for (const id of ids) {
-      const n = state.model.nodes[id];
-      if (n) origins[id] = { x: n.x, y: n.y };
+    const node = nodeHit(state.model, w.x, w.y);
+    if (node) {
+      const additive = e.shiftKey || e.metaKey || e.ctrlKey;
+      if (additive) {
+        toggleSelect(node.id);
+        draw();
+        explainSelected();
+        return;
+      }
+      if (!state.selection.has(node.id)) selectOnly(node.id);
+      // Drag every selected box together.
+      const ids = [...state.selection];
+      const origins = {};
+      for (const id of ids) {
+        const n = state.model.nodes[id];
+        if (n) origins[id] = { x: n.x, y: n.y };
+      }
+      state.drag = { ids, origins, start: { x: w.x, y: w.y }, moved: false };
+      canvas_focus();
+      draw();
+      explainSelected();
+      return;
     }
-    state.drag = { ids, origins, start: { x: w.x, y: w.y }, moved: false };
-    canvas_focus();
+    // Empty space: hold left-click and drag to move within the canvas (pan).
+    closeMenu();
+    clearSelection();
+    state.pan = { sx, sy, ox: state.view.ox, oy: state.view.oy };
+    state.canvas.style.cursor = 'grabbing';
     draw();
     explainSelected();
-    return;
   }
-  // Empty space: left-drag starts a marquee selection (Alt+drag pans instead).
-  closeMenu();
-  clearSelection();
-  const isPan = e.altKey;
-  if (isPan) {
-    state.pan = { sx, sy, ox: state.view.ox, oy: state.view.oy };
-  } else {
-    state.marquee = { x0: w.x, y0: w.y, x1: w.x, y1: w.y, base: new Set() };
-  }
-  draw();
-  explainSelected();
 }
 
 function isSelected(id) {
@@ -411,6 +438,51 @@ function onMouseMove(e) {
 }
 
 function onMouseUp(e) {
+  if (e.button === 2) {
+    if (state.rightHoldTimer) {
+      clearTimeout(state.rightHoldTimer);
+      state.rightHoldTimer = null;
+    }
+    const start = state.rightDownStart;
+    state.rightDownStart = null;
+    if (state.holdingRight) {
+      const m = state.marquee;
+      const moved = m && (Math.abs(m.x1 - m.x0) > 3 || Math.abs(m.y1 - m.y0) > 3);
+      if (moved) {
+        const { x0, y0, x1, y1 } = m;
+        const minX = Math.min(x0, x1), maxX = Math.max(x0, x1);
+        const minY = Math.min(y0, y1), maxY = Math.max(y0, y1);
+        const next = new Set();
+        for (const n of Object.values(state.model.nodes)) {
+          const cx = n.x + n.w / 2;
+          const cy = n.y + n.h / 2;
+          if (cx >= minX && cx <= maxX && cy >= minY && cy <= maxY) next.add(n.id);
+        }
+        state.selection = next;
+        explainSelected();
+      } else {
+        // Held but never dragged: treat as a normal right-click on empty space.
+        state.marquee = null;
+        const { sx, sy } = eventPos(e);
+        const w = toWorld(sx, sy);
+        const node = nodeHit(state.model, w.x, w.y);
+        openMenu(start ? start.clientX : e.clientX, start ? start.clientY : e.clientY, w, node);
+      }
+      state.marquee = null;
+      state.holdingRight = false;
+      state.canvas.style.cursor = '';
+      draw();
+      return;
+    }
+    // Quick right-click: open the add-node menu ourselves (contextmenu is
+    // suppressed) so the menu only appears for a genuine click.
+    const { sx, sy } = eventPos(e);
+    const w = toWorld(sx, sy);
+    const node = nodeHit(state.model, w.x, w.y);
+    openMenu(start ? start.clientX : e.clientX, start ? start.clientY : e.clientY, w, node);
+    return;
+  }
+
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
   if (state.link) {
@@ -525,17 +597,9 @@ async function validateWords(nodes) {
 }
 
 function onContextMenu(e) {
-  // Don't open the context menu while a marquee selection is in progress.
-  if (state.marquee) {
-    e.preventDefault();
-    closeMenu();
-    return;
-  }
+  // The builder owns the right-click interaction (click = add-node menu,
+  // hold + drag = multi-select), so never show the browser's native menu.
   e.preventDefault();
-  const { sx, sy } = eventPos(e);
-  const w = toWorld(sx, sy);
-  const node = nodeHit(state.model, w.x, w.y);
-  openMenu(e.clientX, e.clientY, w, node);
 }
 
 function onWheel(e) {
@@ -564,6 +628,9 @@ function onKeyDown(e) {
     state.drag = null;
     state.pan = null;
     state.marquee = null;
+    if (state.rightHoldTimer) { clearTimeout(state.rightHoldTimer); state.rightHoldTimer = null; }
+    state.holdingRight = false;
+    state.rightDownStart = null;
     state.hoverTarget = null;
     state.canvas.style.cursor = '';
     draw();
@@ -816,6 +883,10 @@ function nodeLeafText(id) {
 
 // Build a node-detail record shaped like the tutor's payload.node_details[id].
 function describeNode(node) {
+  // A Build-tree validation error takes priority so selecting a red node shows
+  // the exact problem in the right-hand panel.
+  const flagged = state.nodeErrors.get(node.id);
+  if (flagged) return flagged;
   if (node.kind === NODE.PHRASE) {
     const info = INFO.phrase?.get(node.type);
     return {
@@ -879,6 +950,9 @@ function changed() {
   // falls back to measuring boxes from their content.
   state.snapped = false;
   state.snappedLayout = null;
+  // The user edited the tree, so stale Build-tree validation errors no longer
+  // apply — clear them and let the words fall back to their lexical colouring.
+  state.nodeErrors = new Map();
   draw();
   state.treeCorrect = treeIsComplete();
   if (state.challenge && !state.solved) checkTree();
@@ -1028,23 +1102,51 @@ function computeTreeLayout() {
   const nodes = Object.values(state.model.nodes);
   if (!nodes.length || !state.ctx) return null;
 
-  const roots = nodes.filter((n) => !n.parent);
-  if (!roots.length) return null;
-  const root = roots[0];
-
-  // Children map (sorted by current x for stable reading order).
+  // Children map over every node, sorted by current x for a stable reading order.
   const kidsOf = new Map();
   for (const n of nodes) kidsOf.set(n.id, []);
-  for (const n of nodes) if (n.parent) kidsOf.get(n.parent).push(n);
+  for (const n of nodes) {
+    if (n.parent && state.model.nodes[n.parent]) kidsOf.get(n.parent).push(n);
+  }
 
-  // Depth + leaf order (DFS).
+  // Count how many nodes are reachable from a given root (cycle-safe).
+  const reachableFrom = (start) => {
+    const seen = new Set();
+    const stack = [start];
+    while (stack.length) {
+      const n = stack.pop();
+      if (!n || seen.has(n.id)) continue;
+      seen.add(n.id);
+      for (const c of kidsOf.get(n.id) || []) stack.push(c);
+    }
+    return seen;
+  };
+
+  // Pick the parentless node that reaches the most nodes; prefer a phrase root.
+  const parentless = nodes.filter((n) => !n.parent);
+  const candidates = parentless.length ? parentless : nodes;
+  let root = null;
+  let best = -1;
+  for (const n of candidates) {
+    const size = reachableFrom(n).size + (n.kind === NODE.PHRASE ? 0.5 : 0);
+    if (size > best) {
+      best = size;
+      root = n;
+    }
+  }
+  if (!root) return null;
+
+  // Depth + leaf order (DFS from the chosen root only).
   const depth = new Map();
   const leafIds = [];
   let maxDepth = 0;
+  const visited = new Set();
   const walk = (n, d) => {
+    if (!n || visited.has(n.id)) return;
+    visited.add(n.id);
     maxDepth = Math.max(maxDepth, d);
     depth.set(n.id, d);
-    const kids = kidsOf.get(n.id).slice().sort((a, b) => a.x - b.x);
+    const kids = (kidsOf.get(n.id) || []).slice().sort((a, b) => a.x - b.x);
     if (!kids.length) leafIds.push(n.id);
     for (const c of kids) walk(c, d + 1);
   };
@@ -1067,7 +1169,8 @@ function computeTreeLayout() {
   state.ctx.font = WORD_FONT;
   for (const id of leafIds) {
     const n = state.model.nodes[id];
-    maxLeafW = Math.max(maxLeafW, state.ctx.measureText(n.text || '').width + H_PAD * 2);
+    if (!n) continue;
+    maxLeafW = Math.max(maxLeafW, state.ctx.measureText(n.text || n.type || '').width + H_PAD * 2);
   }
   state.ctx.restore();
   const SLOT = maxLeafW + GAP;
@@ -1076,7 +1179,7 @@ function computeTreeLayout() {
   const span = new Map();
   const collectSpan = (id) => {
     if (span.has(id)) return span.get(id);
-    const kids = kidsOf.get(id);
+    const kids = kidsOf.get(id) || [];
     if (!kids.length) {
       const s = [leafIndex.get(id), leafIndex.get(id)];
       span.set(id, s);
@@ -1094,11 +1197,13 @@ function computeTreeLayout() {
   };
   collectSpan(root.id);
 
+  // Lay out every node reachable from the root only; leave orphans untouched.
   const layout = new Map();
   for (const n of nodes) {
+    if (!visited.has(n.id)) continue;
     const d = depth.get(n.id) || 0;
     const y = TOP_PAD + d * (BOX_H + V_GAP) + BOX_H / 2;
-    const kids = kidsOf.get(n.id);
+    const kids = kidsOf.get(n.id) || [];
     if (!kids.length) {
       const i = leafIndex.get(n.id);
       layout.set(n.id, { x: SLOT * i + SLOT / 2, y, w: SLOT, h: BOX_H });
@@ -1109,33 +1214,208 @@ function computeTreeLayout() {
       layout.set(n.id, { x, y, w, h: BOX_H });
     }
   }
+  if (!layout.size) return null;
   return { layout, SLOT, maxDepth, TOP_PAD, BOX_H, V_GAP };
 }
 
 // Re-arrange every node into the hierarchical syntax-tree layout so it matches
-// the tree SynTutor's generator produces.
-function snapToTree() {
+// the tree SynTutor's generator produces. Also re-validates every word so the
+// red "unknown word" styling clears once the tree is structurally complete.
+async function buildTree() {
   const result = computeTreeLayout();
   if (!result) {
     state.onStatus('Build a connected tree first — drag connector dots to link nodes.');
     return;
   }
   const { layout } = result;
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   for (const [id, pos] of layout) {
     const n = state.model.nodes[id];
-    if (n) {
-      n.x = pos.x - pos.w / 2;
-      n.y = pos.y - pos.h / 2;
-      n.w = pos.w;
-      n.h = pos.h;
-    }
+    if (!n) continue;
+    n.x = pos.x - pos.w / 2;
+    n.y = pos.y - pos.h / 2;
+    n.w = pos.w;
+    n.h = pos.h;
+    minX = Math.min(minX, n.x);
+    minY = Math.min(minY, n.y);
+    maxX = Math.max(maxX, n.x + n.w);
+    maxY = Math.max(maxY, n.y + n.h);
   }
-  // changed() clears the snapped flag, so re-apply it after the redraw is queued.
+  // Fit the view to the built tree so it reads like the generated tree (centred
+  // and scaled to the canvas).
+  const cw = state.canvas.clientWidth;
+  const ch = state.canvas.clientHeight;
+  const totalW = Math.max(maxX - minX, 1);
+  const totalH = Math.max(maxY - minY, 1);
+  if (cw && ch) {
+    const pad = 30;
+    let scale = Math.min((cw - pad * 2) / totalW, (ch - pad * 2) / totalH, 1.7) * 1.25;
+    scale = Math.max(Math.min(scale, 1.7), 0.2);
+    state.view.scale = scale;
+    state.view.ox = (cw - totalW * scale) / 2 - minX * scale;
+    state.view.oy = (ch - totalH * scale) / 2 - minY * scale;
+  }
   changed();
   state.snapped = true;
   state.snappedLayout = layout;
   draw();
-  state.onStatus('Tree snapped into syntax-tree structure.');
+  // Re-validate every word against SynTutor's model so that recognised words
+  // lose their red styling once the tree is structurally complete.
+  const wordNodes = Object.values(state.model.nodes).filter((n) => n.kind === NODE.WORD);
+  if (wordNodes.length) {
+    await validateWords(wordNodes);
+  }
+  state.treeCorrect = treeIsComplete();
+  draw();
+  // Surface the constructed sentence in the tutor's top input box so the page
+  // reads like a normal analysis of that sentence.
+  const sentence = wordsInOrder().join(' ');
+  const ta = document.getElementById('inputText');
+  if (ta) ta.value = sentence;
+  // Check the node connections and the overall structure, mark anything invalid
+  // red, and report the findings in the right-hand explain panel.
+  await validateBuiltTree();
+}
+
+// ---------------------------------------------------------------------------
+// Build-tree validation
+// ---------------------------------------------------------------------------
+
+// Structural + lexical check run after Build tree. Invalid nodes are recorded
+// in state.nodeErrors (id -> detail shaped like the tutor's
+// payload.node_details[id]), painted red on the canvas, and the first problem
+// is surfaced in the right-hand explain panel — the same way the tutor
+// reports errors.
+async function validateBuiltTree() {
+  const errors = state.nodeErrors;
+  const nodes = Object.values(state.model.nodes);
+  if (!nodes.length) return;
+
+  // --- 1. Structural checks (client-side) ----------------------------
+  const roots = nodes.filter((n) => !n.parent);
+
+  // More than one root: everything after the first is a stray tree.
+  if (roots.length > 1) {
+    for (const r of roots.slice(1)) {
+      if (!errors.has(r.id)) errors.set(r.id, disconnectedDetail(r));
+    }
+  }
+
+  // Orphans: nodes unreachable from the primary root.
+  if (roots.length >= 1) {
+    const seen = new Set();
+    const walk = (id) => { seen.add(id); for (const c of childrenOf(state.model, id)) walk(c.id); };
+    walk(roots[0].id);
+    for (const n of nodes) {
+      if (!seen.has(n.id) && !errors.has(n.id)) errors.set(n.id, disconnectedDetail(n));
+    }
+  }
+
+  // Phrase nodes must dominate something.
+  for (const n of nodes) {
+    if (n.kind === NODE.PHRASE && childrenOf(state.model, n.id).length === 0 && !errors.has(n.id)) {
+      errors.set(n.id, emptyPhraseDetail(n));
+    }
+  }
+
+  // Words SynTutor doesn't recognise.
+  for (const n of nodes) {
+    if (n.kind === NODE.WORD && n.valid === false && !errors.has(n.id)) {
+      errors.set(n.id, describeNode(n));
+    }
+  }
+
+  // --- 2. Grammaticality of the constructed sentence (best-effort) ---
+  const sentence = wordsInOrder().join(' ');
+  let verdictLine = null;
+  if (sentence.trim()) {
+    try {
+      const res = await fetch('/api/parse', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: sentence }),
+      });
+      if (res.ok) {
+        const payload = await res.json();
+        const summary = payload.summary || {};
+        if (summary.verdict === 'ungrammatical') {
+          verdictLine = summary.explanation
+            || `SynTutor reads “${sentence}” as ungrammatical.`;
+        } else if (summary.verdict === 'grammatical') {
+          verdictLine = null;
+        }
+      }
+    } catch {
+      // Backend unreachable — the structural checks above still apply.
+    }
+  }
+
+  // --- 3. Report ----------------------------------------------------
+  state.treeCorrect = errors.size === 0 && treeIsComplete();
+  draw();
+  reportBuildResult(sentence, errors, verdictLine);
+}
+
+function disconnectedDetail(n) {
+  return {
+    type: n.kind === NODE.PHRASE ? n.type : (n.tag || 'WORD'),
+    surface: n.kind === NODE.PHRASE ? nodeLeafText(n.id) : n.text,
+    status: 'error',
+    role: 'Disconnected',
+    text: `“${nodeLabel(n)}” is not connected to the tree — every node must hang under a single root.`,
+    remediation: {
+      violation: `“${nodeLabel(n)}” forms its own tree, so the builder holds more than one root.`,
+      suggested_fix: 'Drag its connector dot onto the main tree to attach it as a child.',
+      alternative_fix: null,
+    },
+  };
+}
+
+function emptyPhraseDetail(n) {
+  return {
+    type: n.type,
+    surface: '',
+    status: 'error',
+    role: 'Empty phrase',
+    text: `The ${n.type} phrase has nothing under it.`,
+    remediation: {
+      violation: `A ${n.type} phrase must dominate at least one word or sub-phrase.`,
+      suggested_fix: 'Drag a word or another phrase’s dot onto this phrase to fill it.',
+      alternative_fix: null,
+    },
+  };
+}
+
+// Surface the first error in the right-hand panel (mirroring the tutor's
+// node-card), or a summary when the tree is clean.
+function reportBuildResult(sentence, errors, verdictLine) {
+  if (errors.size) {
+    const firstId = [...errors.keys()][0];
+    const node = state.model.nodes[firstId];
+    if (node) {
+      selectOnly(firstId);
+      renderNodeDetail(null, errors.get(firstId), node);
+      draw();
+    }
+    const n = errors.size;
+    state.onStatus(`Tree built — ${n} problem${n === 1 ? '' : 's'} found (see panel).`);
+    return;
+  }
+  if (verdictLine) {
+    renderDiagnostic('Sentence may be ungrammatical', [verdictLine]);
+    state.onStatus('Tree built — but SynTutor flags the sentence itself (see panel).');
+    return;
+  }
+  // Clean: show a green summary card in the panel.
+  const root = Object.values(state.model.nodes).find((x) => !x.parent);
+  renderNodeDetail(null, {
+    type: root && root.kind === NODE.PHRASE ? root.type : 'S',
+    surface: sentence,
+    status: 'valid',
+    role: 'Sentence',
+    text: `“${sentence}” is connected and every node is structurally valid.`,
+  }, root || { id: '__summary__' });
+  state.onStatus('Tree built — the sentence and its structure are valid.');
 }
 
 // ---------------------------------------------------------------------------
@@ -1194,28 +1474,35 @@ function render() {
   ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * ox, dpr * oy);
 
   const c = themeColors();
-  // edges first (straight, thin, centred on each box with a small gap, like the
-  // generator tree)
+  // edges first (straight, thin). Anchors hug the rendered labels so the line
+  // reads as directly connected to each node.
   for (const n of nodes) {
     if (!n.parent) continue;
     const parent = state.model.nodes[n.parent];
     if (!parent) continue;
     const childIsLeaf = childrenOf(state.model, n.id).length === 0;
-    const below = 3;                    // small gap below the parent box
-    const above = childIsLeaf ? 36 : 20; // clear the POS tag on word leaves
+    // Stop just above a leaf's POS tag when it has one, otherwise hug the word.
+    const childGap = childIsLeaf && n.tag ? 24 : 12;
+    // An edge into a node that failed validation is drawn red, like the tutor.
+    const bad = state.nodeErrors.has(n.id);
     drawEdge(ctx,
-      { x: parent.x + parent.w / 2, y: parent.y + parent.h + below },
-      { x: n.x + n.w / 2, y: n.y - above });
+      { x: parent.x + parent.w / 2, y: parent.y + parent.h / 2 + 12 },
+      { x: n.x + n.w / 2, y: n.y + n.h / 2 - childGap },
+      bad ? c.error : undefined);
   }
 
   // rubber-band link being dragged
   if (state.link) {
     if (state.link.free === 'parent') {
       const child = state.model.nodes[state.link.childId];
-      if (child) drawEdge(ctx, { x: child.x + child.w / 2, y: child.y }, { x: state.link.x, y: state.link.y });
+      if (child) {
+        const childIsLeaf = childrenOf(state.model, child.id).length === 0;
+        const childGap = childIsLeaf && child.tag ? 24 : 12;
+        drawEdge(ctx, { x: child.x + child.w / 2, y: child.y + child.h / 2 - childGap }, { x: state.link.x, y: state.link.y });
+      }
     } else {
       const parent = state.model.nodes[state.link.parentId];
-      if (parent) drawEdge(ctx, { x: parent.x + parent.w / 2, y: parent.y + parent.h }, { x: state.link.x, y: state.link.y });
+      if (parent) drawEdge(ctx, { x: parent.x + parent.w / 2, y: parent.y + parent.h / 2 + 12 }, { x: state.link.x, y: state.link.y });
     }
   }
 
@@ -1240,9 +1527,9 @@ function render() {
   ctx.restore();
 }
 
-function drawEdge(ctx, a, b) {
+function drawEdge(ctx, a, b, color) {
   ctx.save();
-  ctx.strokeStyle = themeColors().edge;
+  ctx.strokeStyle = color || themeColors().edge;
   ctx.lineWidth = 1.5;
   ctx.beginPath();
   ctx.moveTo(a.x, a.y);
@@ -1257,10 +1544,10 @@ function drawNode(ctx, n) {
   const hovered = state.hover === n.id || state.hoverTarget === n.id || state.hoverEndpoint === n.id;
   const rejected = state.reject && state.reject.id === n.id;
   const isPhrase = n.kind === NODE.PHRASE;
-  // Words known to SynTutor are never red. Unknown words show red only until
-  // the tree is structurally complete — once everything connects, the builder
-  // stops flagging them so the finished tree reads cleanly.
-  const invalid = n.kind === NODE.WORD && n.valid === false && !state.treeCorrect;
+  // A node is red when Build tree flagged it (state.nodeErrors), or when it is
+  // an unknown word and the tree is not yet structurally complete.
+  const invalid = state.nodeErrors.has(n.id)
+    || (n.kind === NODE.WORD && n.valid === false && !state.treeCorrect);
 
   let color = c.text;
   if (invalid || rejected) color = c.error;
