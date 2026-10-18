@@ -218,6 +218,15 @@
       </section>
 
       <aside class="panel right-panel">
+        <div id="rightPanelTabs" class="right-panel-tabs" hidden>
+          <button id="rightPanelBookmark" class="right-panel-bookmark" type="button" aria-pressed="false" title="Show the read analysis panel">
+            <span id="rightPanelBookmarkDot" class="right-panel-bookmark-dot" hidden aria-hidden="true"></span>
+            <svg class="right-panel-bookmark-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span id="rightPanelBookmarkLabel" class="right-panel-bookmark-label">Read analysis</span>
+          </button>
+        </div>
         <div id="quizQuestHost"></div>
         <section class="card primary-explainer">
           <div id="explainNode" class="node-explainer"></div>
@@ -232,6 +241,28 @@
         </section>
       </aside>
     </main>
+
+    <div id="lessonsOverlay" class="lessons-overlay">
+      <div class="lessons-sheet" role="dialog" aria-label="Lessons">
+        <header class="lessons-head">
+          <div>
+            <h2 class="lessons-title">Lessons</h2>
+            <p id="lessonsSummary" class="lessons-summary"></p>
+          </div>
+          <button id="lessonsCloseBtn" class="lessons-close" type="button" aria-label="Close lessons">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </header>
+        <nav id="lessonsTabs" class="lessons-tabs" aria-label="Lesson categories"></nav>
+        <div id="lessonsGrid" class="lessons-grid"></div>
+        <footer class="lessons-foot">
+          <button id="lessonsFreeBuilder" class="lessons-free" type="button">Free practice: build any tree on a blank canvas</button>
+        </footer>
+      </div>
+    </div>
 
     <div id="historyDrawerBackdrop" class="drawer-backdrop">
       <aside class="history-drawer" aria-label="Analysis history">

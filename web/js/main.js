@@ -7,7 +7,7 @@ import {
   clearOverlay, showCanvasMessage, renderNodeDetail,
   renderDiagnostic, applySentenceSelection, plainName,
 } from './ui.js';
-import { openQuizView, closeQuizView, initQuiz, quizInputHint } from './tree-quiz.js';
+import { openQuizView, closeQuizView, initQuiz, quizInputHint, clearActiveLesson } from './tree-quiz.js';
 import { initSyntaxBuilder, openBuilderView, closeBuilderView } from './syntax-builder-ui.js';
 import { levelFromXp } from './level.js';
 import { computeUnlocked } from './achievements.js';
@@ -150,12 +150,12 @@ function initSidebar() {
     btn.addEventListener('click', () => {
       if (btn.dataset.view === 'builder') {
         closeQuizView();
+        clearActiveLesson();
         openBuilderView();
       } else if (btn.dataset.view === 'quiz') {
         closeBuilderView();
         openQuizView('quiz');
       } else if (btn.dataset.view === 'lessons') {
-        closeBuilderView();
         openQuizView('lessons');
       } else if (btn.dataset.view === 'leaderboard') {
         closeBuilderView();
@@ -581,6 +581,7 @@ function returnToLocked(payload = null) {
 function startNewSession() {
   if (state === STATES.PROCESSING) return;
 
+  clearActiveLesson();
   recordedTexts.clear();
   session = null;
   lastAnalyzedText = null;

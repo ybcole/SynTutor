@@ -367,6 +367,10 @@ button:disabled {
   gap: 6px;
 }
 
+/* While the Lessons catalog overlay is open it owns the whole workspace:
+   the input panel stays hidden until a lesson is actually entered. */
+body.lessons-overlay-open .topbar { visibility: hidden; }
+
 .chat-badge-row {
   display: flex;
 }
@@ -746,7 +750,7 @@ button:disabled {
   flex: 1 1 auto;
   min-height: 0;
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr clamp(380px, 32vw, 440px);
   grid-template-rows: minmax(0, 1fr);
   gap: 16px;
   padding: 10px 18px 8px;
@@ -754,10 +758,65 @@ button:disabled {
 
 .panel { min-height: 0; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 
+/* `overflow: visible` lets the bookmark ribbon tab hang off the panel's outer
+   left edge; both panes keep their own clipping (`.card`, `.sq-lesson-body`). */
 .right-panel {
-  overflow: hidden;
+  position: relative;
+  overflow: visible;
   border-radius: var(--radius);
 }
+
+/* Bookmark ribbon tab: physically attached to the panel's outer left edge,
+   notebook-ribbon style. Flips the right panel between the lesson/quiz card
+   and the read-analysis inspector while a lesson (or its quiz) is active. */
+.right-panel-tabs {
+  position: absolute;
+  left: -34px;
+  top: 18px;
+  z-index: 12;
+}
+.right-panel-tabs[hidden] { display: none; }
+.right-panel-bookmark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 34px;
+  padding: 11px 0 13px;
+  border: 1px solid var(--card-border);
+  border-right: none;
+  border-radius: 9px 0 0 9px;
+  background: var(--panel);
+  color: var(--muted);
+  font: inherit;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: -3px 3px 9px rgba(0, 0, 0, 0.07);
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.right-panel-bookmark:hover,
+.right-panel-bookmark[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--card-border));
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+.right-panel-bookmark-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
+}
+.right-panel-bookmark-icon { flex: 0 0 auto; color: var(--accent); }
+.right-panel-bookmark-dot {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.right-panel-bookmark-dot[hidden] { display: none; }
 
 .card {
   background: var(--panel);
@@ -857,7 +916,28 @@ button:disabled {
   min-height: 0;
   overflow: hidden;
   position: relative;
+  padding: 20px;
 }
+
+/* One pane at a time while a lesson/quiz card is open: the lesson card by
+   default, the read analysis behind the bookmark tab. The lesson card is a
+   fixed-height, non-scrolling wizard with the same card chrome as the read
+   pane, so the ribbon tab always joins a card edge. */
+.right-panel.lesson-on .primary-explainer { display: none; }
+.right-panel.lesson-on.read-on .primary-explainer { display: flex; }
+.right-panel.lesson-on #quizQuestHost {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.right-panel.lesson-on.read-on #quizQuestHost { display: none; }
 .node-explainer { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 
 .empty-state-explain {
@@ -1172,7 +1252,8 @@ button:disabled {
   .app-main {
     grid-template-columns: 1fr;
     grid-template-rows: minmax(280px, 55vh) auto;
-    padding-left: 12px;
+    /* 36px of left padding leaves room for the bookmark ribbon tab */
+    padding-left: 36px;
     padding-right: 12px;
   }
   .right-panel { min-height: 260px; }

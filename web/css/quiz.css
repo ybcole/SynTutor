@@ -453,7 +453,9 @@
 /* ------------------------------------------------------------------ */
 /* Quest panel — lives on the canvas in the right-hand column          */
 /* ------------------------------------------------------------------ */
-#quizQuestHost { flex: 0 0 auto; min-width: 0; max-height: 66%; overflow-y: auto; }
+/* The host fills the right panel; whichever pane is active owns 100% of the
+   height (see the `.lesson-on` rules in style.css). Empty → nothing. */
+#quizQuestHost { flex: 1 1 auto; min-width: 0; min-height: 0; overflow: hidden; }
 #quizQuestHost:empty { display: none; }
 
 .quiz-quest { padding: 0; overflow: hidden; }
@@ -911,6 +913,437 @@
   color: var(--accent);
 }
 .sq-rule-text { margin: 0; font-size: 13px; line-height: 1.5; }
+.sq-rule-body { min-width: 0; }
+.sq-rule-detail { margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+
+/* Step-by-step tree-building guide for the active example */
+.sq-steps-box {
+  padding: 12px;
+  margin: 8px 0 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.sq-steps-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; margin: 0 0 8px; }
+.sq-steps-label {
+  font-size: 9.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--accent-strong);
+}
+.sq-steps-sentence { font-size: 13px; font-weight: 700; color: var(--ink); }
+/* Opens the interactive spotlight guide on this step (or stops it) */
+.sq-steps-guide {
+  margin-left: auto;
+  padding: 4px 11px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font: inherit;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.sq-steps-guide:hover { background: var(--accent); color: #fff; }
+.sq-steps { display: flex; flex-direction: column; gap: 7px; margin: 0; padding-left: 22px; }
+/* Steps are clickable rows: the guide jumps to the step you pick */
+.sq-steps li {
+  font-size: 12.5px;
+  line-height: 1.5;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.sq-steps li:hover { background: var(--accent-soft); }
+.sq-steps li.is-current { background: var(--accent-soft); color: var(--accent-strong); font-weight: 600; }
+.sq-steps li::marker { color: var(--accent-strong); font-weight: 800; }
+
+/* Active row in the Practice page's example list */
+.sq-challenge.is-active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Lessons overlay — full-workspace frosted catalog, one page at a time */
+/* ------------------------------------------------------------------ */
+.lessons-overlay {
+  position: fixed;
+  top: 52px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 190;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 18px;
+  overflow: hidden;
+  background: rgba(15, 17, 23, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease), visibility 0s linear var(--dur);
+}
+.lessons-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity var(--dur) var(--ease);
+}
+[data-theme="dark"] .lessons-overlay { background: rgba(8, 10, 16, 0.62); }
+
+.lessons-sheet {
+  width: min(1280px, 100%);
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  transform: translateY(8px);
+  transition: transform var(--dur) var(--ease);
+}
+.lessons-overlay.open .lessons-sheet { transform: none; }
+
+.lessons-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.lessons-title { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #fff; }
+.lessons-summary { margin: 4px 0 0; font-size: 12.5px; color: rgba(255, 255, 255, 0.7); }
+.lessons-close {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.lessons-close:hover { background: rgba(255, 255, 255, 0.24); border-color: rgba(255, 255, 255, 0.55); }
+.lessons-close:active { transform: scale(0.94); }
+
+.lessons-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.lessons-tab {
+  padding: 7px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.82);
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.lessons-tab:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.lessons-tab.is-active { background: var(--panel); color: var(--ink); border-color: transparent; box-shadow: var(--shadow-sm); }
+[data-theme="dark"] .lessons-tab.is-active {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  box-shadow: none;
+}
+
+.lessons-grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-content: center;
+  align-content: safe center;
+  overflow: hidden;
+}
+
+.lesson-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 172px;
+  padding: 16px 18px 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.lesson-card:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.lesson-card:active { transform: translateY(0); }
+.lesson-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.lesson-badge {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+.lesson-card-title { font-size: 19px; font-weight: 800; letter-spacing: -0.3px; line-height: 1.25; }
+.lesson-card-overview {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.lesson-card-count { margin-top: auto; font-size: 11.5px; color: var(--muted); }
+
+.lesson-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; }
+.lesson-bar-fill { display: block; height: 100%; width: 0; background: var(--accent); transition: width var(--dur) var(--ease); }
+.lesson-card.is-complete .lesson-bar-fill { background: var(--ok); }
+
+.lessons-foot { display: flex; justify-content: center; }
+.lessons-free {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.lessons-free:hover { color: #fff; border-color: rgba(255, 255, 255, 0.55); background: rgba(255, 255, 255, 0.08); }
+
+/* ------------------------------------------------------------------ */
+/* Active lesson card — four-page wizard in the right panel            */
+/* ------------------------------------------------------------------ */
+.sq-lesson { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 10px; }
+
+/* Enlarged lesson title, scoped so the base `.sq-title` (sidebar quiz
+   views) stays small. Wrapping beats ellipsizing at narrow panel widths. */
+.sq-lesson .sq-title {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+.sq-lesson-body { flex: 1 1 auto; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 8px; }
+.sq-lesson-nav { flex: 0 0 auto; display: flex; gap: 8px; }
+.sq-lesson-nav .sq-ghost { margin: 0; flex: 0 0 auto; }
+.sq-lesson-nav .sq-primary { margin: 0; flex: 1 1 auto; }
+.sq-lesson-nav .sq-ghost:disabled { opacity: .45; cursor: not-allowed; }
+.sq-lesson-nav .sq-ghost, .sq-lesson-nav .sq-primary { padding: 9px 12px; font-size: 12.5px; }
+
+.sq-lesson-body .sq-rule,
+.sq-lesson-body .sq-steps-box,
+.sq-lesson-body .sq-challenge { margin: 0; }
+.sq-lesson-body .sq-group { margin: 0; }
+
+/* Compact type so every wizard page fits the panel without scrolling */
+.sq-lesson-body .sq-rule { padding: 10px; }
+.sq-lesson-body .sq-rule-text { font-size: 12.5px; line-height: 1.45; }
+.sq-lesson-body .sq-rule-detail { margin-top: 6px; font-size: 11.5px; line-height: 1.45; }
+.sq-lesson-body .sq-steps li { font-size: 12px; line-height: 1.45; }
+
+.sq-lessons-back {
+  align-self: flex-start;
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.sq-lessons-back:hover { color: var(--accent-strong); border-color: var(--accent); background: var(--accent-soft); }
+
+.sq-pager { display: flex; gap: 6px; }
+.sq-pager-pill {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 4px 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.sq-pager-pill:hover { color: var(--accent-strong); border-color: var(--accent); }
+.sq-pager-pill.is-active { color: var(--accent-strong); background: var(--accent-soft); border-color: var(--accent); }
+
+.sq-example-pills { flex: 0 0 auto; display: flex; gap: 6px; }
+.sq-example-pill {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--muted);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.sq-example-pill:hover { border-color: var(--accent); color: var(--accent-strong); }
+.sq-example-pill.is-done { border-color: var(--ok); color: var(--ok); }
+.sq-example-pill.is-active { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-strong); }
+
+/* ------------------------------------------------------------------ */
+/* Lesson quiz page — the module's only quiz, at the very end          */
+/* ------------------------------------------------------------------ */
+.sq-quiz-summary {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+.sq-quiz-summary p { margin: 0; font-size: 12px; line-height: 1.5; }
+.sq-quiz-list { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.sq-quiz-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 12px;
+}
+.sq-quiz-mark { flex: 0 0 auto; font-weight: 800; color: var(--muted); }
+.sq-quiz-mark.is-done { color: var(--ok); }
+.sq-quiz-sent { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ------------------------------------------------------------------ */
+/* Interactive step guide — spotlight ring + tooltip over the canvas   */
+/* ------------------------------------------------------------------ */
+/* The layer never intercepts pointer events (the learner must be able to
+   right-click and drag on the canvas while following a step); only the
+   tooltip card itself is interactive. Sits above the canvas/panel chrome
+   but below the right-click menu (z 60), the topbar (z 180), the lessons
+   overlay (z 190) and modals (z 300). */
+.step-guide {
+  position: fixed;
+  inset: 0;
+  z-index: 29;
+  pointer-events: none;
+}
+.step-guide[hidden] { display: none; }
+.step-guide-ring {
+  position: fixed;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 9999px rgba(15, 17, 23, 0.3),
+    0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+[data-theme="dark"] .step-guide-ring {
+  box-shadow:
+    0 0 0 9999px rgba(4, 6, 12, 0.45),
+    0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
+}
+.step-guide-card {
+  position: fixed;
+  width: min(300px, calc(100vw - 24px));
+  padding: 12px 14px 14px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: var(--shadow-md);
+  pointer-events: auto;
+}
+.step-guide-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.step-guide-kicker {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--accent-strong);
+}
+.step-guide-close {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.step-guide-close:hover { background: var(--accent-soft); color: var(--accent-strong); }
+.step-guide-text { margin: 0; font-size: 12.5px; line-height: 1.5; }
+.step-guide-nav { display: flex; gap: 8px; margin-top: 12px; }
+.step-guide-nav .sq-ghost, .step-guide-nav .sq-primary { margin: 0; flex: 1 1 auto; padding: 7px 10px; font-size: 12px; }
+
+/* Narrow screens keep three columns unless there is height for a third row */
+@media (max-width: 1020px) {
+  .lesson-card-overview { -webkit-line-clamp: 3; }
+}
+@media (max-width: 1020px) and (min-height: 820px) {
+  .lessons-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .lessons-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lesson-card { min-height: 0; }
+  .lesson-card-overview { -webkit-line-clamp: 2; }
+}
+@media (max-width: 520px) {
+  .lessons-overlay { padding: 10px; }
+  .lessons-title { font-size: 18px; }
+  .lessons-tab { padding: 6px 12px; font-size: 11.5px; }
+  .lesson-card-title { font-size: 17px; }
+}
+@media (max-height: 620px) {
+  .lessons-overlay { padding: 10px 14px; }
+  .lessons-sheet { gap: 10px; }
+  .lesson-card { min-height: 140px; padding: 12px 14px 14px; }
+  .lesson-card-title { font-size: 18px; }
+  .lesson-card-overview { -webkit-line-clamp: 2; }
+}
 
 
 

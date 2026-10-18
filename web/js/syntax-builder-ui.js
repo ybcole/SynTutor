@@ -87,7 +87,11 @@ export function openBuilderView(opts = {}) {
   canvas.hidden = false;
   if (treeCanvas) treeCanvas.hidden = true;
   document.getElementById('emptyTreeState')?.classList.add('hidden');
-  markSidebar('builder');
+  // Lessons and quizzes build in place on this canvas; only the standalone
+  // Syntax Builder (no challenge) highlights its own sidebar tab, unless the
+  // caller asks for a specific tab via `opts.sidebarView`.
+  const sidebarView = opts.sidebarView || (opts.challenge ? null : 'builder');
+  if (sidebarView) markSidebar(sidebarView);
   state.challenge = opts.challenge || null;
   state.onComplete = opts.onComplete || null;
   state.solved = false;
@@ -96,14 +100,28 @@ export function openBuilderView(opts = {}) {
   if (state.challenge) seedForChallenge(state.challenge);
 
   // A quiz shows no builder chrome at all — the sentence lives in the input box
-  // and the tree is checked automatically.
-  bar.hidden = Boolean(state.challenge);
+  // and the tree is checked automatically. Lesson practice keeps a slim hint
+  // bar instead: the canvas is the same node editor as the standalone Syntax
+  // Builder (right-click to add boxes, drag a dot to connect, grab a link end
+  // to re-route or delete), so spell the affordances out where they apply.
+  const practice = Boolean(state.challenge) && Boolean(opts.practice);
+  bar.hidden = Boolean(state.challenge) && !practice;
   if (!state.challenge) {
     document.getElementById('builderTitle').textContent = 'Syntax Builder';
     document.getElementById('builderHint').textContent =
       'Double-click to type words · Right-click to add a phrase · Drag a dot to connect';
     document.getElementById('builderTarget').hidden = true;
     document.getElementById('builderCheck').hidden = true;
+    document.getElementById('builderNext').hidden = true;
+    document.getElementById('builderClose').hidden = false;
+  } else if (practice) {
+    document.getElementById('builderTitle').textContent = 'Lesson practice';
+    document.getElementById('builderHint').textContent =
+      'Right-click to add a phrase · drag a dot to connect · grab a link end to re-route or delete';
+    document.getElementById('builderTarget').hidden = true;
+    document.getElementById('builderCheck').hidden = true;
+    document.getElementById('builderNext').hidden = true;
+    document.getElementById('builderClose').hidden = true;
   }
   hideToast();
   resize();
@@ -153,7 +171,11 @@ export function closeBuilderView() {
   if (treeCanvas) treeCanvas.hidden = false;
   state.challenge = null;
   state.onComplete = null;
+  onBuilderClose();
 }
+
+let onBuilderClose = () => {};
+export function setBuilderCloseHandler(fn) { onBuilderClose = fn || (() => {}); }
 
 export function isBuilderOpen() {
   const bar = document.getElementById('builderBar');
@@ -837,11 +859,11 @@ function describeNode(node) {
 // Re-render the side panel for the current selection.
 function explainSelected() {
   const ids = [...state.selection];
-  if (!ids.length) {
-    renderNodeDetail(null, null, null);
-    return;
-  }
-  const node = state.model.nodes[ids[ids.length - 1]];
+  const node = ids.length ? state.model.nodes[ids[ids.length - 1]] : null;
+  // Bookmark dot: a canvas node is selected, so the read analysis has
+  // something to show when the learner flips to it.
+  const dot = document.getElementById('rightPanelBookmarkDot');
+  if (dot) dot.hidden = !node;
   if (!node) {
     renderNodeDetail(null, null, null);
     return;
@@ -1142,3 +1164,97 @@ function getCss(name, fallback) {
 
 // Re-export a couple of helpers the quiz reuses.
 export { toTree, compareTrees, leavesOf };
+
+// ---------------------------------------------------------------------------
+// Step-guide spotlight — client-space boxes for the lesson's interactive guide
+// ---------------------------------------------------------------------------
+
+// Client-pixel rectangle the lesson step guide should spotlight. `target` is
+// one of:
+//   { kind: 'words' }          the pre-placed word boxes (with their tags)
+//   { kind: 'phrase', type }   an existing phrase box, e.g. { type: 'NP' }
+//   { kind: 'dot', type }      that box's connector dot
+//   { kind: 'spot' }           the empty region where the next box gets added
+//   { kind: 'canvas' }         the whole canvas
+// Returns { left, top, width, height } in client coordinates, or null when
+// the canvas is hidden or the target does not exist (yet).
+export function canvasGuideBox(target = {}) {
+  const canvas = state.canvas;
+  if (!canvas || canvas.hidden || !state.ctx) return null;
+  const rect = canvas.getBoundingClientRect();
+  if (!rect.width || !rect.height) return null;
+  const pad = 12; // world units of breathing room around nodes
+  const toClient = (wx, wy) => {
+    const p = toScreen(wx, wy);
+    return { x: rect.left + p.x, y: rect.top + p.y };
+  };
+  const boxOf = (x0, y0, x1, y1) => {
+    const a = toClient(x0, y0);
+    const b = toClient(x1, y1);
+    return { left: a.x, top: a.y, width: b.x - a.x, height: b.y - a.y };
+  };
+  const nodes = Object.values(state.model.nodes);
+  const phraseOf = (type) => nodes.find((n) => n.kind === NODE.PHRASE && n.type === type) || null;
+  const bbox = (list) => {
+    if (!list.length) return null;
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (const n of list) {
+      sizeNode(n);
+      x0 = Math.min(x0, n.x);
+      y0 = Math.min(y0, n.y);
+      x1 = Math.max(x1, n.x + n.w);
+      y1 = Math.max(y1, n.y + n.h);
+    }
+    return { x0, y0, x1, y1 };
+  };
+
+  switch (target.kind) {
+    case 'words': {
+      // Word boxes are drawn with their POS tag above, so pad a little higher.
+      const b = bbox(nodes.filter((n) => n.kind === NODE.WORD));
+      if (!b) return null;
+      return boxOf(b.x0 - pad, b.y0 - pad - 4, b.x1 + pad, b.y1 + pad);
+    }
+    case 'phrase': {
+      const n = phraseOf(target.type);
+      if (!n) return null;
+      sizeNode(n);
+      return boxOf(n.x - pad, n.y - pad, n.x + n.w + pad, n.y + n.h + pad);
+    }
+    case 'dot': {
+      const n = phraseOf(target.type);
+      if (!n) return null;
+      sizeNode(n);
+      const cx = n.x + n.w / 2;
+      const cy = n.y + n.h + 6;
+      return boxOf(cx - 14, cy - 14, cx + 14, cy + 14);
+    }
+    case 'spot': {
+      // An empty patch just above the word row (or the view's centre) — where
+      // the learner is about to drop the next box.
+      const b = bbox(nodes.filter((n) => n.kind === NODE.WORD));
+      let cx;
+      let y1;
+      if (b) {
+        cx = (b.x0 + b.x1) / 2;
+        y1 = b.y0 - 40;
+      } else {
+        const w0 = toWorld(0, 0);
+        const w1 = toWorld(rect.width, rect.height);
+        cx = (w0.x + w1.x) / 2;
+        y1 = (w0.y + w1.y) / 2 + 40;
+      }
+      const cl = boxOf(cx - 150, y1 - 120, cx + 150, y1);
+      // Keep the spotlight inside the canvas when there is room.
+      const m = 14;
+      return {
+        left: Math.max(rect.left + m, Math.min(cl.left, rect.right - cl.width - m)),
+        top: Math.max(rect.top + m, Math.min(cl.top, rect.bottom - cl.height - m)),
+        width: cl.width,
+        height: cl.height,
+      };
+    }
+    default:
+      return { left: rect.left + 10, top: rect.top + 10, width: rect.width - 20, height: rect.height - 20 };
+  }
+}
