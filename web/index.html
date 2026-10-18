@@ -18,10 +18,10 @@
     <div id="appSidebarBackdrop" class="app-sidebar-backdrop">
       <aside id="appSidebar" class="app-sidebar" aria-label="Main menu">
         <div class="app-sidebar-top">
-          <button id="sidebarBrandBtn" class="sidebar-brand" type="button" aria-label="Expand sidebar" title="Expand sidebar">
+          <span id="sidebarBrandBtn" class="sidebar-brand">
             <span class="brand-monogram" aria-hidden="true">S</span>
             <span class="brand-title app-brand-name">SynTutor</span>
-          </button>
+          </span>
           <button id="sidebarToggleBtn" class="menu-btn sidebar-toggle" type="button" aria-label="Expand sidebar" title="Expand sidebar" aria-expanded="false" aria-controls="appSidebar">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="4" width="18" height="16" rx="2"></rect>
@@ -164,29 +164,41 @@
           </span>
         </div>
       </aside>
-    </div>
 
-    <div class="topbar">
-      <div class="chat-badge-row">
-        <button id="mobileNavBtn" class="menu-btn mobile-nav-btn" type="button" aria-label="Open menu" title="Menu" aria-expanded="false" aria-controls="appSidebar">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-        <span id="chatTitle" class="chat-tag">Untitled chat...</span>
+      <!-- Left sub-panels: slide out directly beside the rail (History stays
+           behind its own ID so every existing listener keeps working). -->
+      <div id="historyDrawerBackdrop" class="drawer-backdrop">
+        <aside class="history-drawer" aria-label="Analysis history">
+          <div class="drawer-header">
+            <button id="historyNewSessionBtn" type="button" aria-label="Start a new blank session" title="Start a new blank session">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </button>
+            <h2>Analysis History</h2>
+            <button id="closeDrawerBtn" class="drawer-close" type="button" aria-label="Close history">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <div class="history-toolbar">
+            <div id="historyFilters" class="filter-pills">
+              <button class="filter-pill active" type="button" data-filter="all">All</button>
+              <button class="filter-pill" type="button" data-filter="error">Errors</button>
+              <button class="filter-pill" type="button" data-filter="valid">Valid</button>
+            </div>
+            <button id="clearHistoryBtn" type="button">Clear all</button>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </aside>
       </div>
-      <div class="input-row">
-        <div class="input-editor">
-          <div id="inputHighlights" aria-hidden="true" data-hint="Double-click the panel to edit. When locked, click any sentence to view its syntax tree."></div>
-          <textarea id="inputText" rows="2" readonly
-                    placeholder="Double-click the panel to edit. When locked, click any sentence to view its syntax tree."
-                    spellcheck="false"></textarea>
-        </div>
-      </div>
+      <!-- Second slide-out sub-panel: Achievements / Leaderboard / quiz-finish
+           content (rendered by tree-quiz.js). -->
+      <section id="subpanelPlaceholder" class="side-subpanel" aria-label="Side panel"></section>
     </div>
-
     <main class="app-main">
       <section class="canvas-wrap">
         <div id="builderBar" class="builder-bar" hidden>
@@ -221,29 +233,50 @@
         </div>
       </section>
 
-      <aside class="panel right-panel">
-        <div id="rightPanelTabs" class="right-panel-tabs" hidden>
-          <button id="rightPanelBookmark" class="right-panel-bookmark" type="button" aria-pressed="false" title="Show the read analysis panel">
-            <span id="rightPanelBookmarkDot" class="right-panel-bookmark-dot" hidden aria-hidden="true"></span>
-            <svg class="right-panel-bookmark-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-            </svg>
-            <span id="rightPanelBookmarkLabel" class="right-panel-bookmark-label">Read analysis</span>
-          </button>
-        </div>
-        <div id="quizQuestHost"></div>
-        <section class="card primary-explainer">
-          <div id="explainNode" class="node-explainer"></div>
-          <div id="emptyExplainState" class="empty-state-explain">
-            <svg class="empty-book-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              <path d="M12 2v15"></path>
-            </svg>
-            <p class="empty-explain-title">Ready for Analysis</p>
+      <div id="colResizer" class="resizer resizer-col" role="separator" aria-orientation="vertical"
+           aria-label="Resize the workspace — drag, or double-click to reset" title="Drag to resize · double-click to reset"></div>
+
+      <div class="pane-side">
+        <section class="pane pane-input">
+          <header class="pane-head">
+            <button id="mobileNavBtn" class="menu-btn mobile-nav-btn" type="button" aria-label="Open menu" title="Menu" aria-expanded="false" aria-controls="appSidebar">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+            <span id="chatTitle" class="chat-tag">Untitled chat...</span>
+          </header>
+          <div class="input-row">
+            <div class="input-editor">
+              <div id="inputHighlights" aria-hidden="true" data-hint="Double-click the panel to edit. When locked, click any sentence to view its syntax tree."></div>
+              <textarea id="inputText" rows="2" readonly
+                        placeholder="Double-click the panel to edit. When locked, click any sentence to view its syntax tree."
+                        spellcheck="false"></textarea>
+            </div>
           </div>
+          <div id="quizQuestHost"></div>
         </section>
-      </aside>
+
+        <div id="rowResizer" class="resizer resizer-row" role="separator" aria-orientation="horizontal"
+             aria-label="Resize the workspace — drag, or double-click to reset" title="Drag to resize · double-click to reset"></div>
+
+        <section class="pane pane-explain">
+          <div id="lessonGuideHost" class="card"></div>
+          <section class="card primary-explainer">
+            <div id="explainNode" class="node-explainer"></div>
+            <div id="emptyExplainState" class="empty-state-explain">
+              <svg class="empty-book-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                <path d="M12 2v15"></path>
+              </svg>
+              <p class="empty-explain-title">Ready for Analysis</p>
+            </div>
+          </section>
+        </section>
+      </div>
     </main>
 
     <div id="lessonsOverlay" class="lessons-overlay">
@@ -266,35 +299,6 @@
           <button id="lessonsFreeBuilder" class="lessons-free" type="button">Free practice: build any tree on a blank canvas</button>
         </footer>
       </div>
-    </div>
-
-    <div id="historyDrawerBackdrop" class="drawer-backdrop">
-      <aside class="history-drawer" aria-label="Analysis history">
-        <div class="drawer-header">
-          <button id="historyNewSessionBtn" type="button" aria-label="Start a new blank session" title="Start a new blank session">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 20h9"></path>
-              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-            </svg>
-          </button>
-          <h2>Analysis History</h2>
-          <button id="closeDrawerBtn" class="drawer-close" type="button" aria-label="Close history">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-        <div class="history-toolbar">
-          <div id="historyFilters" class="filter-pills">
-            <button class="filter-pill active" type="button" data-filter="all">All</button>
-            <button class="filter-pill" type="button" data-filter="error">Errors</button>
-            <button class="filter-pill" type="button" data-filter="valid">Valid</button>
-          </div>
-          <button id="clearHistoryBtn" type="button">Clear all</button>
-        </div>
-        <div id="historyList" class="history-list"></div>
-      </aside>
     </div>
 
     <div id="authModalBackdrop" class="modal-backdrop">

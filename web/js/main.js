@@ -96,7 +96,14 @@ export function boot() {
   purgeLegacyGuestHistory();
   initSidebar();
   initSyntaxBuilder({ onStatusChange: (msg) => log(msg) });
-  initQuiz({ analyze: analyzeForQuiz, setQuizMode, progress });
+  initQuiz({
+    analyze: analyzeForQuiz,
+    setQuizMode,
+    progress,
+    setChatTitle,
+    lastChatTitle: () => lastAnalyzedText || '',
+  });
+  initResizers();
   transition(STATES.IDLE, 'system ready');
   log(`SynTutor engine ready \u2014 full-stack pipeline: spaCy + benepar + rule matrix (${isGuest ? 'guest mode' : 'authenticated'})`);
 }
@@ -129,9 +136,7 @@ function initSidebar() {
   const backdrop = document.querySelector('#appSidebarBackdrop');
   const sidebar = document.querySelector('#appSidebar');
   const toggle = document.querySelector('#sidebarToggleBtn');
-  const brand = document.querySelector('#sidebarBrandBtn');
   const mobileNav = document.querySelector('#mobileNavBtn');
-  const isDocked = () => window.matchMedia('(min-width: 761px)').matches;
 
   // Canvases live in the workspace column, so re-fit them once the rail
   // finishes resizing; the fallback timer covers transitions that never run.
@@ -153,10 +158,9 @@ function initSidebar() {
     if (toggle && toggle.getAttribute('aria-expanded') !== String(expanded)) {
       toggle.setAttribute('aria-expanded', String(expanded));
     }
-    for (const el of [toggle, brand]) {
-      if (!el) continue;
-      if (el.getAttribute('aria-label') !== label) el.setAttribute('aria-label', label);
-      if (el.title !== label) el.title = label;
+    if (toggle) {
+      if (toggle.getAttribute('aria-label') !== label) toggle.setAttribute('aria-label', label);
+      if (toggle.title !== label) toggle.title = label;
     }
   };
 
@@ -167,26 +171,14 @@ function initSidebar() {
   };
   const toggleExpanded = () => setExpanded(!sidebar?.classList.contains('expanded'));
 
-  // On desktop the collapsed rail peeks open when its top zone is hovered.
-  let hoverTimer = 0;
-  document.querySelector('.app-sidebar-top')?.addEventListener('mouseenter', () => {
-    if (!isDocked() || sidebar?.classList.contains('expanded')) return;
-    window.clearTimeout(hoverTimer);
-    hoverTimer = window.setTimeout(() => setExpanded(true), 180);
-  });
-  document.querySelector('.app-sidebar-top')?.addEventListener('mouseleave', () => {
-    window.clearTimeout(hoverTimer);
-  });
-
+  // The rail expands only via the toggle button — never on hover.
   toggle?.addEventListener('click', toggleExpanded);
-  brand?.addEventListener('click', toggleExpanded);
   sidebar?.addEventListener('transitionend', (e) => {
     if (e.propertyName === 'width' && e.target === sidebar) dispatchResize();
   });
-  // The quiz panel in tree-quiz.js also resizes the rail (.quiz-active).
-  let railKey = `${sidebar?.classList.contains('expanded')}-${sidebar?.classList.contains('quiz-active')}`;
+  let railKey = String(sidebar?.classList.contains('expanded'));
   new MutationObserver(() => {
-    const next = `${sidebar?.classList.contains('expanded')}-${sidebar?.classList.contains('quiz-active')}`;
+    const next = String(sidebar?.classList.contains('expanded'));
     if (next === railKey) return;
     railKey = next;
     syncRailState();
@@ -255,6 +247,76 @@ function initSidebar() {
   });
 }
 
+// ---------------------------------------------------------------------------
+// Workspace splitters — LeetCode-style gutters between the panes
+// ---------------------------------------------------------------------------
+// #colResizer splits the canvas column from the right column (.app-main's
+// --col-split), #rowResizer splits the input pane from the explain pane
+// (.pane-side's --row-split). Drag writes the percentage inline; double-click
+// restores the 58% default. Canvas redraws ride a rAF-throttled resize event.
+function initResizers() {
+  const main = document.querySelector('.app-main');
+  const sidePane = document.querySelector('.pane-side');
+  let frame = 0;
+  const dispatchResize = () => {
+    window.cancelAnimationFrame(frame);
+    frame = window.requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+  };
+
+  const wire = (sel, container, prop, axis, min, max) => {
+    const gutter = document.querySelector(sel);
+    if (!gutter || !container) return;
+    gutter.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      e.preventDefault();
+      // Synthetic pointer events (tests) have no active pointer, so capture
+      // is best-effort: real drags still get it, and the listeners below
+      // keep the drag working either way.
+      try { gutter.setPointerCapture(e.pointerId); } catch { /* no active pointer */ }
+      gutter.classList.add('dragging');
+      document.body.classList.add('is-resizing');
+      const rect = container.getBoundingClientRect();
+      const total = axis === 'x' ? rect.width : rect.height;
+      const origin = axis === 'x' ? rect.left : rect.top;
+      if (!total) return;
+      const move = (ev) => {
+        const pos = (axis === 'x' ? ev.clientX : ev.clientY) - origin;
+        const pct = Math.min(max, Math.max(min, (pos / total) * 100));
+        container.style.setProperty(prop, `${pct.toFixed(2)}%`);
+        dispatchResize();
+      };
+      const up = (ev) => {
+        if (gutter.hasPointerCapture?.(ev.pointerId)) gutter.releasePointerCapture(ev.pointerId);
+        gutter.classList.remove('dragging');
+        document.body.classList.remove('is-resizing');
+        gutter.removeEventListener('pointermove', move);
+        gutter.removeEventListener('pointerup', up);
+        gutter.removeEventListener('pointercancel', up);
+        dispatchResize();
+      };
+      gutter.addEventListener('pointermove', move);
+      gutter.addEventListener('pointerup', up);
+      gutter.addEventListener('pointercancel', up);
+      move(e);
+    });
+    gutter.addEventListener('dblclick', () => {
+      container.style.removeProperty(prop);
+      dispatchResize();
+    });
+  };
+
+  wire('#colResizer', main, '--col-split', 'x', 35, 75);
+  wire('#rowResizer', sidePane, '--row-split', 'y', 22, 78);
+
+  // A left sub-panel opening/closing shifts the workspace grid on desktop;
+  // re-fit the canvases once its slide transition ends.
+  for (const sel of ['#subpanelPlaceholder', '#historyDrawerBackdrop']) {
+    document.querySelector(sel)?.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'width') dispatchResize();
+    });
+  }
+}
+
 function setChatTitle(title) {
   const el = document.querySelector('#chatTitle');
   if (!el) return;
@@ -264,6 +326,10 @@ function setChatTitle(title) {
 
 function openHistoryDrawer() {
   if (isGuest) return; // history is an account-only feature
+  // History and the tree-quiz sub-panel share the same slide-out slot —
+  // opening one dismisses the other.
+  const sub = document.querySelector('#subpanelPlaceholder');
+  if (sub) { sub.classList.remove('active'); sub.innerHTML = ''; }
   document.querySelector('#historyDrawerBackdrop')?.classList.add('active');
   loadAndRenderHistory();
 }
@@ -582,6 +648,24 @@ function wireEvents() {
   });
   drawer?.addEventListener('click', (e) => {
     if (e.target === drawer) drawer.classList.remove('active');
+  });
+
+  // Escape closes an open left sub-panel first (the tree-quiz panel, then
+  // History); stopImmediatePropagation keeps the sidebar's own Escape from
+  // also dismissing the mobile drawer in the same keypress.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const sub = document.querySelector('#subpanelPlaceholder');
+    if (sub?.classList.contains('active')) {
+      sub.classList.remove('active');
+      sub.innerHTML = '';
+      e.stopImmediatePropagation();
+      return;
+    }
+    if (drawer?.classList.contains('active')) {
+      drawer.classList.remove('active');
+      e.stopImmediatePropagation();
+    }
   });
 
   const authModal = document.querySelector('#authModalBackdrop');
@@ -1114,6 +1198,10 @@ function handleNodeSelect(id) {
   const node = session.payload.nodes[id];
   if (!node || !detail) return;
   renderNodeDetail(session, detail, node);
+  // Keep the fresh detail card visible in the bottom-right explain pane
+  // without yanking the rest of the workspace.
+  document.querySelector('#explainNode')
+    ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   renderer.select(id);
   if (state !== STATES.PROCESSING) {
     transition(STATES.EXPLORING, 'user selects syntax node (cache hit \u2014 no HTTP request)');

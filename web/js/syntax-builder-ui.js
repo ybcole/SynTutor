@@ -856,19 +856,21 @@ function describeNode(node) {
   };
 }
 
-// Re-render the side panel for the current selection.
+// Re-render the node inspector for the current selection, and nudge the
+// bottom-right explain pane so the fresh detail card is visible without
+// yanking the rest of the workspace (block: 'nearest' only scrolls if needed).
 function explainSelected() {
   const ids = [...state.selection];
   const node = ids.length ? state.model.nodes[ids[ids.length - 1]] : null;
-  // Bookmark dot: a canvas node is selected, so the read analysis has
-  // something to show when the learner flips to it.
-  const dot = document.getElementById('rightPanelBookmarkDot');
-  if (dot) dot.hidden = !node;
   if (!node) {
     renderNodeDetail(null, null, null);
     return;
   }
-  loadInfo().then(() => renderNodeDetail(null, describeNode(node), node));
+  loadInfo().then(() => {
+    renderNodeDetail(null, describeNode(node), node);
+    document.getElementById('explainNode')
+      ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  });
 }
 
 // ---------------------------------------------------------------------------

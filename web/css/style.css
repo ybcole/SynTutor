@@ -117,15 +117,23 @@ button:disabled {
   height: 100vh;
   overflow: hidden;
   display: grid;
-  /* Column 1 is the docked sidebar rail (via #appSidebarBackdrop, which
-     becomes a plain grid wrapper on desktop — see quiz.css); column 2 holds
-     the workspace: the topbar over the canvas/panel area. */
+  /* Column 1 is the docked sidebar rail (via #appSidebarBackdrop, a plain
+     grid wrapper on desktop — see quiz.css) plus the left sub-panels that
+     slide out beside it; column 2 is the whole workspace (.app-main). */
   grid-template-columns: auto minmax(0, 1fr);
-  grid-template-rows: auto minmax(0, 1fr);
-  /* Rail width, so fixed overlays (the Lessons picker) stop clear of it. */
+  grid-template-rows: minmax(0, 1fr);
+  /* Rail width, so fixed overlays (the Lessons picker) stop clear of it;
+     sub-panels widen the column while open (desktop only, below). */
   --rail-w: 60px;
+  --subpanel-w: 336px;
 }
 .app-shell:has(.app-sidebar.expanded) { --rail-w: 248px; }
+@media (min-width: 761px) {
+  .app-shell:has(#historyDrawerBackdrop.active),
+  .app-shell:has(#subpanelPlaceholder.active) { --rail-w: calc(60px + var(--subpanel-w)); }
+  .app-shell:has(.app-sidebar.expanded:has(#historyDrawerBackdrop.active)),
+  .app-shell:has(.app-sidebar.expanded:has(#subpanelPlaceholder.active)) { --rail-w: calc(248px + var(--subpanel-w)); }
+}
 
 .menu-btn {
   background: transparent;
@@ -331,25 +339,19 @@ button:disabled {
   .identity-chip { max-width: 116px; }
 }
 
-.topbar {
-  grid-column: 2;
-  grid-row: 1;
-  min-width: 0;
-  padding: 14px 18px 4px;
+/* The pane head is a slim row inside the input pane: hamburger (small
+   screens only) + the dynamic chat title. */
+.pane-head {
+  flex: 0 0 auto;
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
 }
 
 /* While the Lessons catalog overlay is open it owns the whole workspace:
-   the input panel stays hidden until a lesson is actually entered. */
-body.lessons-overlay-open .topbar { visibility: hidden; }
-
-.chat-badge-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+   the input pane stays hidden until a lesson is actually entered. */
+body.lessons-overlay-open .pane-input { visibility: hidden; }
 
 /* The docked rail replaces the header on desktop; small screens open it
    with this hamburger, which stays reachable above the Lessons overlay. */
@@ -362,6 +364,11 @@ body.lessons-overlay-open .topbar { visibility: hidden; }
   background: rgba(128, 128, 128, 0.12);
   padding: 3px 9px;
   border-radius: 4px;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .input-row {
@@ -514,35 +521,70 @@ body.lessons-overlay-open .topbar { visibility: hidden; }
   transition: width var(--dur) var(--ease);
 }
 
-.drawer-backdrop {
+/* Left slide-out sub-panels (History + the tree-quiz panel). Base styles are
+   the small-screen behaviour: a fixed full-screen dim backdrop with the panel
+   sliding in from the left edge. On desktop (min-width: 761px, below) both
+   become static flex children of the shell's rail column — width 0 → 336px,
+   so the workspace grid shifts instead of being covered. */
+.drawer-backdrop,
+.side-subpanel {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: 210;
   display: flex;
-  justify-content: flex-end;
   background: rgba(20, 16, 36, 0.4);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity var(--dur) var(--ease), visibility var(--dur) var(--ease);
 }
-.drawer-backdrop.active {
+.drawer-backdrop.active,
+.side-subpanel.active {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 .history-drawer {
-  width: min(440px, 100%);
+  width: var(--subpanel-w, 336px);
+  max-width: 100%;
   height: 100%;
   padding: 18px 16px 20px;
   overflow-y: auto;
   background: var(--panel);
-  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
-  transform: translateX(100%);
+  box-shadow: 8px 0 24px rgba(0, 0, 0, 0.15);
+  transform: translateX(-100%);
   transition: transform var(--dur) var(--ease);
 }
-.drawer-backdrop.active .history-drawer {
+.drawer-backdrop.active .history-drawer,
+.side-subpanel.active .history-drawer {
   transform: translateX(0);
+}
+@media (min-width: 761px) {
+  .drawer-backdrop,
+  .side-subpanel {
+    position: static;
+    inset: auto;
+    z-index: auto;
+    width: 0;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+    background: none;
+    transition: width var(--dur) var(--ease);
+  }
+  .drawer-backdrop.active,
+  .side-subpanel.active {
+    width: var(--subpanel-w, 336px);
+    pointer-events: auto;
+  }
+  .drawer-backdrop.active .history-drawer,
+  .side-subpanel.active .history-drawer {
+    flex: 0 0 var(--subpanel-w, 336px);
+    transform: none;
+    box-shadow: none;
+    transition: none;
+  }
 }
 .drawer-header {
   display: flex;
@@ -728,77 +770,110 @@ body.lessons-overlay-open .topbar { visibility: hidden; }
 
 .app-main {
   grid-column: 2;
-  grid-row: 2;
+  grid-row: 1;
   min-height: 0;
   min-width: 0;
   display: grid;
-  grid-template-columns: 1fr clamp(380px, 32vw, 440px);
-  grid-template-rows: minmax(0, 1fr);
-  gap: 16px;
+  /* Canvas column | 8px gutter | right column; the split is a percentage
+     var written by the #colResizer drag handler. */
+  grid-template-columns: minmax(0, var(--col-split, 58%)) 8px minmax(0, 1fr);
+  column-gap: 12px;
   padding: 10px 18px 8px;
 }
 
-.panel { min-height: 0; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-
-/* `overflow: visible` lets the bookmark ribbon tab hang off the panel's outer
-   left edge; both panes keep their own clipping (`.card`, `.sq-lesson-body`). */
-.right-panel {
+/* ── Draggable gutters between the panes ── */
+/* The gutter is a transparent 8px track with a small pill indicator that
+   turns accent-colored on hover / while dragging (see .resizer::after). */
+.resizer {
   position: relative;
-  overflow: visible;
-  border-radius: var(--radius);
+  z-index: 5;
+  align-self: stretch;
+  justify-self: center;
+  touch-action: none;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
-
-/* Bookmark ribbon tab: physically attached to the panel's outer left edge,
-   notebook-ribbon style. Flips the right panel between the lesson/quiz card
-   and the read-analysis inspector while a lesson (or its quiz) is active. */
-.right-panel-tabs {
+.resizer::after {
+  content: '';
   position: absolute;
-  left: -34px;
-  top: 18px;
-  z-index: 12;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted) 45%, transparent);
+  transition: background var(--dur-fast) var(--ease), width var(--dur-fast) var(--ease), height var(--dur-fast) var(--ease);
 }
-.right-panel-tabs[hidden] { display: none; }
-.right-panel-bookmark {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 9px;
-  width: 34px;
-  padding: 11px 0 13px;
-  border: 1px solid var(--card-border);
-  border-right: none;
-  border-radius: 9px 0 0 9px;
-  background: var(--panel);
-  color: var(--muted);
-  font: inherit;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  box-shadow: -3px 3px 9px rgba(0, 0, 0, 0.07);
-  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
-}
-.right-panel-bookmark:hover,
-.right-panel-bookmark[aria-pressed="true"] {
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--card-border));
-  background: var(--accent-soft);
-  color: var(--accent-strong);
-}
-.right-panel-bookmark-label {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  white-space: nowrap;
-}
-.right-panel-bookmark-icon { flex: 0 0 auto; color: var(--accent); }
-.right-panel-bookmark-dot {
-  flex: 0 0 auto;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
+.resizer:hover::after,
+.resizer.dragging::after {
   background: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
 }
-.right-panel-bookmark-dot[hidden] { display: none; }
+.resizer-col { cursor: col-resize; width: 100%; }
+.resizer-col::after { width: 3px; height: 46px; }
+.resizer-col.dragging::after { height: 72px; }
+.resizer-row {
+  cursor: row-resize;
+  align-self: center;
+  width: 100%;
+  height: 8px;
+}
+.resizer-row::after { width: 46px; height: 3px; }
+.resizer-row.dragging::after { width: 72px; }
+body.is-resizing { user-select: none; -webkit-user-select: none; }
+
+/* Right column: the input pane over the explain pane, split by #rowResizer. */
+.pane-side {
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  grid-template-rows: minmax(0, var(--row-split, 58%)) 8px minmax(0, 1fr);
+  row-gap: 12px;
+}
+.pane {
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pane-input {
+  padding: 12px 16px 14px;
+  background: var(--panel);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+/* The explain pane is a plain slot; its children (#lessonGuideHost and the
+   node inspector) are the cards. */
+.pane-explain { overflow: visible; }
+
+/* Lesson controls (#quizQuestHost) and page content (#lessonGuideHost) are
+   rendered by tree-quiz.js; when empty they must not reserve card chrome. */
+#quizQuestHost:empty,
+#lessonGuideHost:empty { display: none; }
+#lessonGuideHost {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+/* Every pane in the new layout scrolls, so tint the native Firefox
+   scrollbars (scrollbar-color; Chromium already has the ::-webkit-* rules
+   above) instead of the UA default — a white track is glaring in dark mode. */
+#lessonGuideHost,
+#quizQuestHost,
+.pane-input,
+.node-explainer,
+.side-subpanel,
+.history-drawer {
+  scrollbar-color: color-mix(in srgb, var(--muted) 45%, transparent) transparent;
+}
+/* While a lesson is open but no node is picked, the lesson guide owns the
+   whole explain pane; picking a canvas node brings the inspector back
+   underneath it. */
+body:has(#lessonGuideHost:not(:empty)) .primary-explainer:has(#emptyExplainState:not(.hidden)) {
+  display: none;
+}
 
 .card {
   background: var(--panel);
@@ -839,8 +914,8 @@ body.lessons-overlay-open .topbar { visibility: hidden; }
   position: relative;
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
-  min-height: 260px;
+  min-height: 0;
+  min-width: 0;
   background: var(--panel);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
@@ -901,25 +976,9 @@ body.lessons-overlay-open .topbar { visibility: hidden; }
   padding: 20px;
 }
 
-/* One pane at a time while a lesson/quiz card is open: the lesson card by
-   default, the read analysis behind the bookmark tab. The lesson card is a
-   fixed-height, non-scrolling wizard with the same card chrome as the read
-   pane, so the ribbon tab always joins a card edge. */
-.right-panel.lesson-on .primary-explainer { display: none; }
-.right-panel.lesson-on.read-on .primary-explainer { display: flex; }
-.right-panel.lesson-on #quizQuestHost {
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  padding: 20px;
-  background: var(--panel);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-}
-.right-panel.lesson-on.read-on #quizQuestHost { display: none; }
+/* Node inspection shares the explain pane with the lesson guide: the guide
+   sits on top, the inspector fills what is left (and is hidden outright
+   while the guide has content and nothing is selected — see above). */
 .node-explainer { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 
 .empty-state-explain {
@@ -1240,7 +1299,6 @@ body.lessons-overlay-open .topbar { visibility: hidden; }
     --rail-w: 0px;
   }
   .app-shell:has(.app-sidebar.expanded) { --rail-w: 0px; }
-  .topbar { padding-left: 12px; padding-right: 12px; }
   .mobile-nav-btn {
     display: flex;
     position: relative;
@@ -1251,14 +1309,22 @@ body.lessons-overlay-open .topbar { visibility: hidden; }
   body.lessons-overlay-open .mobile-nav-btn { visibility: visible; }
   /* Inside the narrow drawer the account menu opens upward, within it. */
   .profile-menu { left: 0; }
+  /* The workspace stacks vertically: canvas, then input, then explain pane.
+     Drag gutters are a desktop-only affordance. */
   .app-main {
-    grid-template-columns: 1fr;
-    grid-template-rows: minmax(280px, 55vh) auto;
-    /* 36px of left padding leaves room for the bookmark ribbon tab */
-    padding-left: 36px;
-    padding-right: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 12px 8px;
   }
-  .right-panel { min-height: 260px; }
+  .resizer { display: none; }
+  .canvas-wrap { min-height: 42vh; }
+  .pane-side {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pane-explain { min-height: 280px; }
 }
 /* ── Syntax Builder ── */
 :root {

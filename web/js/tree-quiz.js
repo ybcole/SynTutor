@@ -54,36 +54,35 @@ const state = {
 const LESSONS = [
   {
     type: 'NP', title: 'Noun phrase', group: 'Phrases',
-    rule: 'A noun phrase is built around a noun head. Put a determiner in front, then any adjectives, then the noun: DT → ADJP → N. So "the", "big", "cat" combine into a single NP.',
-    detail: 'A noun phrase names a person, thing, or idea. Its head is a noun (NN, NNS, NNP) or a pronoun (PRP), and the phrase is the unit that serves as the subject or object of a clause. Modifiers sit in front of the head - a determiner (DT), a possessive (PRP$), or one or more adjectives grouped into an adjective phrase (ADJP) - while complements such as a prepositional phrase (PP) or a relative clause (SBAR) follow it. To recognize a noun phrase, ask "who or what?" about the clause verb: the answer is typically an NP, and its head noun is the last major word of the phrase.',
+    rule: 'A noun phrase keeps its modifiers flat around the noun head: determiner or possessive, then any adjectives, then the noun - all direct children of one NP. So "the big cat" is (NP (DT the) (JJ big) (NN cat)).',
+    detail: 'A noun phrase names a person, thing, or idea. Its head is a noun (NN, NNS, NNP) or a pronoun (PRP), and the phrase serves as the subject or object of a clause. Determiners (DT), possessives (PRP$) and adjectives (JJ/JJR/JJS) sit in front of the head as plain sister leaves - SynTutor does not wrap them in an adjective box, so "the big cat" is a flat NP over DT + JJ + NN. A prepositional phrase completes the noun from behind, and when it brings its own object the parser nests a small inner NP: "a student of physics" is (NP (NP (DT a) (NN student)) (PP (IN of) (NP (NNS physics)))). To recognize an NP, ask "who or what?" about the clause verb - the answer is the NP.',
     steps: [
-      'Read the pre-placed leaves and their POS tags: the determiner (DT), any adjectives (JJ/JJR/JJS), the noun head (NN/NNS/NNP), and any prepositional-phrase words (IN ... ).',
-      'If the phrase has adjectives, right-click an empty spot on the canvas and add an ADJP box; drag its connector dot onto the adjective word(s).',
-      'Right-click again and add the NP box; drag its connector dot onto its children in reading order - determiner, ADJP (if any), then the noun head.',
-      'If a prepositional phrase completes the noun, add a PP box, connect it to the NP after the head, and attach the preposition and its own noun-phrase object beneath it.',
-      'Check that the NP leaves read left to right exactly like the example sentence - the canvas checks the tree automatically as you connect boxes.',
+      'Read the pre-placed leaves and their POS tags: the determiner (DT) or possessive (PRP$), any adjectives (JJ/JJR/JJS), the noun head (NN/NNS), and any prepositional words (IN ...) that follow.',
+      'Right-click the canvas and add the NP box; drag its connector dot onto each leaf in reading order - determiner or possessive first, then the adjective(s), then the noun head.',
+      'If a prepositional phrase completes the noun, first wrap the head and its determiner in an inner NP box, then add a PP box for the preposition and its object, and connect both boxes under the outer NP.',
+      'Check that the NP leaves read left to right exactly like the example phrase - the canvas checks the tree automatically as you connect boxes.',
     ],
     examples: ['the big cat', 'a student of physics', 'my older sister'],
   },
   {
     type: 'ADJP', title: 'Adjective phrase', group: 'Phrases',
-    rule: 'An adjective phrase is built around an adjective. An adverb may go before it and a prepositional phrase may follow: (RB) → ADJ → (PP).',
-    detail: 'An adjective phrase describes a quality and is headed by an adjective (JJ, JJR, JJS). It works either attributively, inside a noun phrase ("the very happy child"), or predicatively, as the complement of a linking verb ("she is very happy"). A degree adverb (RB) may modify the head in front of it, and a prepositional phrase (PP) or infinitive clause may complete it from behind. Recognize it by asking "what kind?" or "how ...?" about a noun: the answer is an ADJP whose head is the last adjective in the phrase.',
+    rule: 'An adjective phrase heads on an adjective: an optional degree adverb in front and an optional PP after it - (RB) + JJ + (PP), all direct children of one ADJP.',
+    detail: 'An adjective phrase describes a quality and is headed by an adjective (JJ, JJR, JJS). It works either attributively, inside a noun phrase ("the very happy child"), or predicatively, as the complement of a linking verb ("she is very happy"). A degree adverb (RB) modifies the head from in front and a prepositional phrase (PP) completes it from behind - both attach directly to the ADJP as sister leaves: "very happy" is (ADJP (RB very) (JJ happy)) and "fond of music" is (ADJP (JJ fond) (PP (IN of) (NP (NN music)))). Recognize it by asking "what kind?" or "how ...?" about a noun: the head is the last adjective of the phrase.',
     steps: [
       'Find the head adjective (JJ) and everything attached to it: a degree adverb (RB) before the head and/or a prepositional phrase (PP) after it.',
-      'Right-click the canvas and add the ADJP box; drag its connector dot onto the degree adverb and the adjective head, in reading order.',
-      'If a prepositional phrase complements the adjective, add a PP box, connect it to the ADJP after the head, and attach the preposition and its noun-phrase object underneath.',
+      'Right-click the canvas and add the ADJP box; drag its connector dot onto the degree adverb (if any) and the adjective head, in reading order.',
+      'If a prepositional phrase complements the adjective, add a PP box for the preposition and its object, and connect it to the ADJP after the head.',
       'Check that the leaves match the example phrase exactly - the canvas checks the tree automatically.',
     ],
     examples: ['very happy', 'fond of music', 'extremely proud of her'],
   },
   {
     type: 'ADVP', title: 'Adverb phrase', group: 'Phrases',
-    rule: 'An adverb phrase is built around an adverb. A degree adverb may modify it: (RB) → ADV.',
-    detail: 'An adverb phrase tells how, when, where, or to what degree, and its head is an adverb (RB, RBR, RBS). Adverb phrases modify verbs, adjectives, or other adverbs ("runs very quickly"), and some act as clausal adjuncts ("rarely does he complain"). A degree adverb (RB) can stand in front of the head, which is normally the last adverb of the phrase. To recognize one, ask "how?", "when?", or "where?" about the verb or adjective it attaches to.',
+    rule: 'An adverb phrase heads on an adverb, with an optional degree adverb in front: (RB) + ADV, both direct children of one ADVP.',
+    detail: 'An adverb phrase tells how, when, where, or to what degree, and its head is the last adverb of the phrase (RB, RBR, RBS). A degree adverb (RB) stands in front of the head as a sister leaf - "very quickly" is (ADVP (RB very) (RB quickly)) - and the pair modifies verbs, adjectives, or other adverbs ("runs very quickly"). Some adverb phrases act as clausal adjuncts ("rarely does he complain"). To recognize one, ask "how?", "when?", or "where?" about the verb or adjective it attaches to.',
     steps: [
       'Spot the adverb head (RB/RBR/RBS) and any degree adverb (RB) that modifies it.',
-      'Right-click the canvas and add the ADVP box; connect it to the degree adverb first, then to the adverb head.',
+      'Right-click the canvas and add the ADVP box; drag its connector dot onto the degree adverb first, then the adverb head.',
       'If the adverb has no modifiers, connect the ADVP straight to the single adverb.',
       'Check that the leaves match the example phrase - the canvas checks the tree automatically.',
     ],
@@ -91,85 +90,87 @@ const LESSONS = [
   },
   {
     type: 'VP', title: 'Verb phrase', group: 'Phrases',
-    rule: 'A verb phrase is built around a verb, together with its object or complement: V → (NP) → (PP).',
-    detail: 'A verb phrase is headed by a verb (VB, VBZ, VBD, VBG, VBN, VBP, MD) and carries the clause predicate: it says what the subject does or is. Auxiliaries and modals come first, then the main verb, followed by its complements - a direct-object noun phrase (NP) or a prepositional phrase (PP). Recognize a VP because it contains the finite verb together with everything that belongs with it, and it agrees with the subject ("the dog chased the ball").',
+    rule: 'A verb phrase is built around its verb: main verb first, then its complements (NP, PP). Auxiliaries stack into an outer VP around an inner one - "is running" is (VP (VBZ is) (VP (VBG running))).',
+    detail: 'A verb phrase is headed by a verb (VB, VBZ, VBD, VBG, VBN, VBP, MD) and carries the clause predicate: it says what the subject does or is. Auxiliaries and modals sit in an outer VP that wraps an inner VP holding the main verb and its complements: "has eaten the cake" is (VP (VBZ has) (VP (VBN eaten) (NP (DT the) (NN cake)))). The direct-object noun phrase (NP) and any prepositional phrase (PP) follow the main verb as their own boxes. Recognize a VP because it contains the finite verb together with everything that belongs with it, and it agrees with the subject ("the dog chased the ball").',
     steps: [
       'Identify the verb leaves: any auxiliary or modal, the main verb, and the object or complement that follows.',
       'Right-click the canvas and add the VP box; drag its connector dot onto the verb word(s) in reading order.',
-      'If there is a direct object, add an NP box, connect it to the VP after the verb, and attach its determiner and noun underneath.',
-      'If a prepositional phrase follows the verb, add a PP box and connect the preposition and its noun-phrase object beneath it.',
+      'If an auxiliary fronts the verb, add an inner VP box for the main verb and its complements, and connect the auxiliary outside it with the inner VP inside the outer one.',
+      'If there is a direct object, add an NP box, connect it to the inner VP after the verb, and attach its determiner and noun underneath; a following prepositional phrase gets its own PP box.',
       'Check that the VP leaves match the example - the canvas checks the tree automatically.',
     ],
     examples: ['is running', 'has eaten the cake'],
   },
   {
     type: 'PP', title: 'Prepositional phrase', group: 'Phrases',
-    rule: 'A prepositional phrase is a preposition followed by a noun phrase: IN → NP.',
-    detail: 'A prepositional phrase is headed by a preposition (IN) and always takes a noun-phrase object (NP). It usually expresses place, time, manner, or possession ("in the garden", "of physics") and attaches to the word it modifies - a noun, verb, or adjective. The preposition is the head and comes first; everything after it forms the object NP. Recognize it by the leading preposition: a phrase that begins with in, on, of, to, or with is almost certainly a PP with the pattern IN → NP.',
+    rule: 'A prepositional phrase is a preposition followed by its noun-phrase object: IN → NP. So "in the garden" is (PP (IN in) (NP (DT the) (NN garden))).',
+    detail: 'A prepositional phrase is headed by a preposition (IN) and always takes a noun-phrase object (NP). It usually expresses place, time, manner, or possession ("in the garden", "of physics") and attaches to the word it modifies - a noun, verb, or adjective. The preposition is the head and comes first; everything after it forms the object NP, which may be flat ("on the small table" keeps DT + JJ + NN directly under the NP) or a bare noun ("of physics" is an NP over NN alone). Recognize it by the leading preposition: a phrase that begins with in, on, of, to, or with is almost certainly a PP with the pattern IN → NP.',
     steps: [
-      'Identify the preposition (IN) and the noun-phrase object that follows it (determiner + noun, or a pronoun).',
+      'Identify the preposition (IN) and the noun-phrase object that follows it (determiner + adjective(s) + noun, or a pronoun).',
       'Right-click the canvas and add the PP box; drag its connector dot onto the preposition.',
-      'Add an NP box for the object and connect it to the PP after the preposition; attach the object determiner and noun beneath the NP.',
+      'Add an NP box for the object and connect it to the PP after the preposition; attach the object words beneath the NP in reading order.',
       'Check that the PP leaves read like the example phrase - the canvas checks the tree automatically.',
     ],
     examples: ['in the garden', 'of physics', 'on the small table'],
   },
   {
     type: 'QP', title: 'Quantifier phrase', group: 'Phrases',
-    rule: 'A quantifier phrase expresses an amount, often with a comparative and "than": (JJR) → (IN) → CD.',
-    detail: 'A quantifier phrase expresses an amount or quantity. Its head is a cardinal number (CD), often modified by a comparative (JJR, e.g. "more") and linked by a comparative preposition (IN, e.g. "than"). Quantifier phrases sit inside noun phrases ("more than five people") or act as measure expressions in their own right. Recognize one when the phrase answers "how many?" or "how much?" and ends in a number.',
+    rule: 'A quantifier phrase expresses an amount around a number head: (JJR) + (IN) + CD, sitting inside a noun phrase - "more than five" is (QP (JJR More) (IN than) (CD five)).',
+    detail: 'A quantifier phrase expresses an amount or quantity. Its head is a cardinal number (CD), often modified by a comparative (JJR, e.g. "more") and linked by a comparative preposition (IN, e.g. "than"); all three words hang directly under the QP. Quantifier phrases sit inside noun phrases ("more than five people" puts the QP in front of the noun) or act as measure expressions in their own right. Recognize one when the phrase answers "how many?" or "how much?" and ends in a number.',
     steps: [
       'Pick out the quantity leaves: the comparative (JJR) if there is one, the linking word than (IN), and the cardinal number (CD) head.',
       'Right-click the canvas and add the QP box; drag its connector dot onto each leaf in reading order - comparative, than, number.',
-      'If the phrase has no comparative, connect the QP straight to the number.',
+      'Connect the QP inside the noun phrase, directly in front of the noun it quantifies (more than five + people).',
       'Check that the quantifier leaves match the example - the canvas checks the tree automatically.',
     ],
     examples: ['More than five people came.'],
   },
   {
     type: 'S', title: 'Clause (sentence)', group: 'Clauses',
-    rule: 'A clause joins a subject noun phrase to a predicate verb phrase: NP → VP. This is the top of a normal sentence.',
-    detail: 'A clause (S) is the complete sentence-level unit: it pairs a subject noun phrase with a predicate verb phrase (NP → VP), optionally with an adverb or prepositional phrase on the edge. The subject is what the sentence is about; the VP says something about it, and the verb inside the VP determines which complements are needed. Recognize a full clause by that subject-predicate pairing - unlike a fragment, it can stand alone as a grammatical sentence.',
+    rule: 'A clause pairs a subject noun phrase with a predicate verb phrase under one S box, and keeps the sentence-final punctuation as its last child: NP → VP → (.).',
+    detail: 'A clause (S) is the complete sentence-level unit: it pairs a subject noun phrase with a predicate verb phrase (NP → VP), and SynTutor keeps the sentence-final punctuation - (. .) or (. ?) - as a third child of the S. The subject is what the sentence is about; the VP says something about it, and the verb inside the VP determines which complements are needed. Recognize a full clause by that subject-predicate pairing - unlike a fragment, it can stand alone as a grammatical sentence.',
     steps: [
-      'Split the sentence into its two biggest pieces: the subject NP (who or what the sentence is about) and the predicate VP (what is said about it).',
-      'Right-click the canvas and add the S box first; drag its connector dot onto the subject NP and the predicate VP.',
-      'Build the subject NP beneath: determiner, any adjectives, then the noun head.',
+      'Split the sentence into its three biggest pieces: the subject NP (who or what the sentence is about), the predicate VP, and the final punctuation leaf (. or ?).',
+      'Right-click the canvas and add the S box first; drag its connector dot onto the subject NP and the predicate VP in reading order.',
+      'Build the subject NP beneath: determiner or possessive, any adjectives, then the noun head.',
       'Build the predicate VP: auxiliary or modal, the main verb, then any object NP or PP beneath it.',
+      'Attach the sentence-final punctuation leaf as the last child of the S box - SynTutor keeps it inside the clause.',
       'Check that the S spans every word of the sentence - the canvas checks the tree automatically.',
     ],
     examples: ['The cat sat.', 'The dog chased the ball.', 'Birds sing.'],
   },
   {
     type: 'SQ', title: 'Yes/no question', group: 'Clauses',
-    rule: 'A yes/no question inverts the auxiliary and the subject: AUX → NP → VP.',
-    detail: 'A yes/no question (SQ) is a clause whose auxiliary has moved in front of the subject ("Is it raining?", "Did she leave?"). It expects a yes or no answer, so no wh-phrase is involved; the pattern is AUX → NP → VP with the auxiliary or modal at the very front and the subject directly after it. Recognize one by that inverted order - verb before subject - usually ending in a question mark.',
+    rule: 'A yes/no question inverts the auxiliary and the subject: fronted AUX, then the subject NP, then the VP - "Is it raining?" is (SQ (VBZ Is) (NP (PRP it)) (VP (VBG raining)) (. ?)).',
+    detail: 'A yes/no question (SQ) is a clause whose auxiliary has moved in front of the subject ("Is it raining?", "Did she leave?"). It expects a yes or no answer, so no wh-phrase is involved; the pattern is AUX → NP → VP with the auxiliary or modal at the very front and the subject directly after it, plus the question mark on a standalone question. A copula may carry the whole predicate ("Where is the cat?" leaves SQ with just AUX + NP), and when the subject is the wh-word of a higher question it sits outside ("Who ate the cake?" keeps only the VP inside SQ). Inside a wh-question the same SQ nests under SBARQ and the question mark belongs to the SBARQ instead. Recognize one by that inverted order - verb before subject - usually ending in a question mark.',
     steps: [
-      'Find the fronted auxiliary or modal and the subject NP that follows it.',
+      'Find the fronted auxiliary or modal and the subject NP that follows it - a wh-word in front fills the subject role, so the SQ may start straight with its VP.',
       'Right-click the canvas and add the SQ box; drag its connector dot onto the auxiliary first, then the subject NP.',
-      'Add the VP for the predicate and connect it to the SQ after the subject; attach the main verb and its complements beneath.',
-      'Check that the leaves read exactly like the question - the canvas checks the tree automatically.',
+      'Add the VP for the predicate and connect it to the SQ after the subject; attach the main verb and its complements beneath. If the fronted verb carries the whole predicate, add no separate VP.',
+      'Check that the leaves read exactly like the question - a standalone yes/no question also keeps the question mark inside the SQ.',
     ],
     examples: ['Is it raining?', 'Did she leave?', 'Can you swim?'],
   },
   {
     type: 'SBARQ', title: 'Wh-question', group: 'Clauses',
-    rule: 'A wh-question puts a wh-phrase first, then inverts the auxiliary with the subject: WH-phrase → AUX → NP.',
-    detail: 'A wh-question (SBARQ) begins with a wh-phrase - a wh-noun phrase (WHNP), wh-adjective phrase, wh-adverb phrase (WHADVP), or wh-prepositional phrase (WHPP) - followed by an inverted clause (SQ) whose auxiliary has moved past the subject. Wh-questions ask for missing information ("What did you say?"), and the wh-word is normally the first word. Recognize one by the fronted wh-word plus subject-auxiliary inversion, with a question mark at the end.',
+    rule: 'A wh-question stacks three pieces under one SBARQ box: the fronted wh-phrase, an inner SQ with the inverted clause, and the question mark.',
+    detail: 'A wh-question (SBARQ) begins with a wh-phrase - a wh-noun phrase (WHNP), wh-adjective phrase, wh-adverb phrase (WHADVP), or wh-prepositional phrase (WHPP) - followed by an inverted clause (SQ) whose auxiliary has moved past the subject, then the question mark as the final child: "What did you say?" is (SBARQ (WHNP (WP What)) (SQ (VBD did) (NP (PRP you)) (VP (VB say))) (. ?)). Wh-questions ask for missing information, the wh-word is normally the first word, and the punctuation sits above the SQ, not inside it. Recognize one by the fronted wh-word plus subject-auxiliary inversion, with a question mark at the end.',
     steps: [
       'Identify the wh-phrase at the front (what/which → WHNP, where/how → WHADVP, whom → WHPP) and the inverted clause that follows.',
-      'Right-click the canvas and add the SBARQ box; connect it to the wh-phrase first.',
+      'Right-click the canvas and add the SBARQ box; drag its connector dot onto the wh-phrase first.',
       'Build the wh-phrase subtree beneath its own box (wh-word and noun, if present).',
-      'Right-click again and add the SQ box for the inverted clause; connect the auxiliary, the subject NP, and the VP under it.',
+      'Right-click again and add the SQ box for the inverted clause; connect the auxiliary, the subject NP, and the VP under it - whichever of them the question has.',
+      'Attach the question mark as the last child of the SBARQ - in a wh-question it sits above the SQ.',
       'Check that the leaves match the question - the canvas checks the tree automatically.',
     ],
     examples: ['What did you say?', 'Who ate the cake?', 'Where is the cat?'],
   },
   {
     type: 'SBAR', title: 'Subordinate clause', group: 'Clauses',
-    rule: 'A subordinate clause is introduced by a complementizer (or a relative pronoun) followed by a clause: IN → S.',
-    detail: 'A subordinate clause (SBAR) is a clause introduced by a complementizer or relative pronoun (IN/WDT/WP, e.g. "because", "that", "which") with a full clause beneath it. It does not stand alone; it fills a role inside a larger sentence - the complement of a verb ("I think that she knows") or a modifier of a noun ("the book which I saw"). Recognize it by the leading subordinator followed by its own subject-predicate clause.',
+    rule: 'A subordinate clause is a subordinator plus its own clause under one SBAR box: IN/WDT/WP → S - "because he left" is (SBAR (IN because) (S (NP (PRP he)) (VP (VBD left)))).',
+    detail: 'A subordinate clause (SBAR) is a clause introduced by a complementizer or relative pronoun (IN/WDT/WP, e.g. "because", "that", "which") with a full clause (S) beneath it. It does not stand alone; it fills a role inside a larger sentence - the complement of a verb ("I think that she knows") or a modifier of a noun ("the book which I saw" opens its SBAR with a WHNP, as does "which I saw"). The introducer is the first child of the SBAR and the S box follows it. Recognize it by the leading subordinator followed by its own subject-predicate clause.',
     steps: [
-      'Find the introducing complementizer or relative word and the clause (S) that follows it.',
+      'Find the introducing complementizer or relative word (IN, WDT, WP) and the clause (S) that follows it.',
       'Right-click the canvas and add the SBAR box; connect it to the introducer first.',
       'Add an S box beneath for the embedded clause and build its subject NP and predicate VP.',
       'Check that the SBAR leaves match the example phrase - the canvas checks the tree automatically.',
@@ -178,20 +179,21 @@ const LESSONS = [
   },
   {
     type: 'SINV', title: 'Inverted clause', group: 'Clauses',
-    rule: 'An inverted clause fronts a negative or restrictive phrase and inverts the auxiliary with the subject: ADVP → AUX → NP.',
-    detail: 'An inverted declarative clause (SINV) fronts a negative or restrictive phrase ("never", "rarely", "only then") and then inverts the auxiliary with the subject ("Never have I seen such a thing."). It is a stylistic declarative, not a question, so no wh-word is involved; the giveaway is the adverb or prepositional phrase before the inverted auxiliary. The pattern is ADVP/PP → AUX → NP → VP.',
+    rule: 'An inverted clause fronts a restrictive phrase, then inverts auxiliary and subject: ADVP → AUX → NP → VP → (.) - the fronted negative or restrictive adverb, then the auxiliary, then the subject NP and the rest of the predicate.',
+    detail: 'An inverted declarative clause (SINV) fronts a negative or restrictive phrase ("never", "rarely", "only then") and then inverts the auxiliary with the subject ("Never have I seen such a thing." is (SINV (ADVP (RB Never)) (VBP have) (NP (PRP I)) (VP (VBN seen) (NP (PDT such) (DT a) (NN thing))) (. .))). It is a stylistic declarative, not a question, so no wh-word is involved; the giveaway is the fronted adverb before the inverted auxiliary. Object noun phrases may open with a predeterminer - such a thing is (NP (PDT such) (DT a) (NN thing)) - and the sentence-final punctuation closes the SINV. The pattern is ADVP → AUX → subject NP → VP → punctuation.',
     steps: [
-      'Spot the fronted negative or restrictive phrase and the inverted auxiliary after it.',
-      'Right-click the canvas and add the SINV box; connect the fronted phrase first, then the auxiliary.',
-      'Add the subject NP and the predicate VP, and connect both beneath, building their own subtrees.',
+      'Spot the fronted negative or restrictive phrase (an ADVP such as never or rarely) and the inverted auxiliary after it.',
+      'Right-click the canvas and add the SINV box; drag its connector dot onto the fronted phrase first, then the auxiliary.',
+      'Add the subject NP and the predicate VP, and connect both beneath; inside the object NP watch for a predeterminer (PDT) in front of the determiner.',
+      'Attach the sentence-final punctuation leaf as the last child of the SINV box.',
       'Check that the leaves match the example sentence - the canvas checks the tree automatically.',
     ],
     examples: ['Never have I seen such a thing.', 'Rarely does he complain.'],
   },
   {
     type: 'WHNP', title: 'Wh-noun phrase', group: 'Wh-phrases',
-    rule: 'A wh-noun phrase begins with a wh-determiner or wh-pronoun and then the noun that belongs to it: WDT → N.',
-    detail: 'A wh-noun phrase (WHNP) is a noun phrase built on a wh-word: a wh-determiner (WDT, "which/what") or wh-pronoun (WP, "who/whom") plus the noun it determines. It names the unknown person or thing a question asks about ("which book", "what color") and usually serves as the fronted phrase of a wh-question or the object of a preposition. Recognize it by the wh-word at its left edge directly followed by (or standing in for) a noun.',
+    rule: 'A wh-noun phrase begins with a wh-word and carries its noun beside it: WDT/WP (+ N) under one WHNP - "which book" is (WHNP (WDT which) (NN book)).',
+    detail: 'A wh-noun phrase (WHNP) is a noun phrase built on a wh-word: a wh-determiner (WDT, "which/what") or wh-pronoun (WP, "who/whom") plus the noun it determines when there is one. It names the unknown person or thing a question asks about ("which book", "what color") and usually serves as the fronted phrase of a wh-question, where it fills the subject role - "Who ate the cake?" then keeps the whole SQ down to its VP - or the object of a preposition. A lone wh-pronoun is a WHNP of its own. Recognize it by the wh-word at its left edge, with or without a following noun.',
     steps: [
       'Find the wh-word (WDT/WP) and the noun it belongs with.',
       'Right-click the canvas and add the WHNP box; drag its connector dot onto the wh-word and the noun in reading order.',
@@ -202,10 +204,10 @@ const LESSONS = [
   },
   {
     type: 'WHADJP', title: 'Wh-adjective phrase', group: 'Wh-phrases',
-    rule: 'A wh-adjective phrase asks "how …?" about an adjective: how → ADJ.',
-    detail: 'A wh-adjective phrase (WHADJP) asks "how ...?" about a quality and is headed by how plus an adjective ("how old", "how tall"). It typically fronts a question or appears as the complement of a linking verb. Recognize it by the fixed opening word how immediately followed by an adjective.',
+    rule: 'A wh-adjective phrase asks "how …?" about an adjective: WRB + ADJ under one WHADJP - "how old" is (WHADJP (WRB how) (JJ old)).',
+    detail: 'A wh-adjective phrase (WHADJP) asks "how ...?" about a quality and pairs the adverb how (WRB) with an adjective (JJ) as its two direct children ("how old", "how tall"). It typically fronts a question or appears as the complement of a linking verb. Recognize it by the fixed opening word how immediately followed by an adjective.',
     steps: [
-      'Identify the pair: how plus an adjective (JJ).',
+      'Identify the pair: how (WRB) plus an adjective (JJ).',
       'Right-click the canvas and add the WHADJP box; drag its connector dot onto how first, then the adjective.',
       'Check that the two leaves read in sentence order - the canvas checks the tree automatically.',
     ],
@@ -213,8 +215,8 @@ const LESSONS = [
   },
   {
     type: 'WHADVP', title: 'Wh-adverb phrase', group: 'Wh-phrases',
-    rule: 'A wh-adverb phrase is a single wh-adverb standing in for when/where/how/why: WRB.',
-    detail: 'A wh-adverb phrase (WHADVP) is a single wh-adverb (WRB) - where, when, how, or why - standing as a whole phrase. It asks for a place, time, manner, or reason, and either fronts a question ("Where is the cat?") or introduces a subordinate clause ("the town where I grew up"). Recognize it because the phrase is exactly one interrogative adverb.',
+    rule: 'A wh-adverb phrase is a single wh-adverb standing in for when/where/how/why: one WRB leaf under the WHADVP box - "where" is (WHADVP (WRB where)).',
+    detail: 'A wh-adverb phrase (WHADVP) is a single wh-adverb (WRB) - where, when, how, or why - standing as a whole phrase, so the box wraps one leaf: (WHADVP (WRB where)). It asks for a place, time, manner, or reason, and either fronts a question ("Where is the cat?") or introduces a subordinate clause ("the town where I grew up"). Recognize it because the phrase is exactly one interrogative adverb.',
     steps: [
       'Find the single wh-adverb (WRB).',
       'Right-click the canvas and add the WHADVP box; drag its connector dot straight onto the adverb.',
@@ -224,11 +226,11 @@ const LESSONS = [
   },
   {
     type: 'WHPP', title: 'Wh-prepositional phrase', group: 'Wh-phrases',
-    rule: 'A wh-prepositional phrase is a preposition with a wh-noun phrase: IN → WHNP.',
-    detail: 'A wh-prepositional phrase (WHPP) is a prepositional phrase whose object is a wh-noun phrase: a preposition (IN) followed by WHNP ("to whom", "for what"). It questions the object of a preposition and is often fronted in a question. Recognize it by the preposition in first position and a wh-word in the object slot.',
+    rule: 'A wh-prepositional phrase is a preposition with a wh-noun phrase: IN (or TO) → WHNP - "to whom" is (WHPP (TO to) (WHNP (WP whom))).',
+    detail: 'A wh-prepositional phrase (WHPP) is a prepositional phrase whose object is a wh-noun phrase: a preposition followed by WHNP ("to whom", "for what"). SynTutor tags the preposition IN, except for the infinitive "to", which stays TO: (WHPP (TO to) (WHNP (WP whom))). It questions the object of a preposition and is often fronted in a question. Recognize it by the preposition in first position and a wh-word in the object slot.',
     steps: [
-      'Identify the preposition (IN) and the wh-object that follows (wh-word plus noun, if any).',
-      'Right-click the canvas and add the WHPP box; connect the preposition first.',
+      'Identify the preposition - IN, or TO for "to" - and the wh-object that follows (wh-word plus noun, if any).',
+      'Right-click the canvas and add the WHPP box; connect it to the preposition first.',
       'Add the WHNP box and connect it after the preposition; attach the wh-word and noun beneath it.',
       'Check that the leaves match the example phrase - the canvas checks the tree automatically.',
     ],
@@ -236,61 +238,61 @@ const LESSONS = [
   },
   {
     type: 'CONJP', title: 'Conjunction phrase', group: 'Special phrases',
-    rule: 'A conjunction phrase links two items using a multi-word conjunction: CC → X.',
-    detail: 'A conjunction phrase (CONJP) links two parallel items with a multi-word conjunction - "as well as", "not to mention", "let alone". Its head is the conjunction (CC/IN), and whatever follows it forms the second half of the link; the first half sits outside the CONJP as a sibling. Recognize it by a multi-word connective joining two otherwise complete units of the same kind.',
+    rule: 'A conjunction phrase is a multi-word linker whose parts hang directly under one CONJP box - "as well as" is (CONJP (RB as) (RB well) (IN as)).',
+    detail: 'A conjunction phrase (CONJP) links two parallel items with a multi-word conjunction - "as well as", "not to mention", "let alone". SynTutor tags no CC head inside it: each linker word hangs directly under the CONJP as it falls ("as well as" reads RB + RB + IN), and the first conjunct sits outside the CONJP as a sibling. Recognize it by a multi-word connective joining two otherwise complete units of the same kind.',
     steps: [
       'Find the multi-word conjunction that links the two items.',
-      'Right-click the canvas and add the CONJP box; drag its connector dot onto the connector words in order.',
-      'If a word follows the conjunction as part of the link, give it its own box (e.g. a PP) and connect it to the CONJP.',
+      'Right-click the canvas and add the CONJP box; drag its connector dot onto each linker word in order - as, well, as.',
+      'Keep the first conjunct outside the CONJP as its sibling - the box holds only the linker words.',
       'Check that the CONJP leaves match the example - the canvas checks the tree automatically.',
     ],
     examples: ['as well as'],
   },
   {
     type: 'UCP', title: 'Unlike-coordinated phrase', group: 'Special phrases',
-    rule: 'An unlike-coordinated phrase coordinates two items of different categories: X → CC → Y.',
-    detail: 'An unlike-coordinated phrase (UCP) coordinates two expressions of different grammatical categories - for example a noun phrase with an adjective phrase, or a clause with an adverb - joined by a coordinating conjunction (CC). Its head is the conjunction, and unlike ordinary coordination it does not require both conjuncts to match in category. Recognize it when "X and Y" combines items that play the same role but have different phrase types.',
+    rule: 'An unlike-coordinated phrase coordinates two items of different categories with no conjunction between them - "first, second" is (UCP (ADVP (JJ first)) (, ,) (JJ second)).',
+    detail: 'An unlike-coordinated phrase (UCP) coordinates two expressions of different grammatical categories without a coordinating conjunction: SynTutor wraps the left item in its own phrase box (an ADVP around first), keeps the punctuation as a sibling leaf, and leaves the right item as a bare adjective: (UCP (ADVP (JJ first)) (, ,) (JJ second)). Unlike ordinary coordination it does not require both conjuncts to match in category. Recognize it when two differently-typed items play the same role side by side, typically joined by punctuation rather than and/or.',
     steps: [
-      'Identify the two unlike conjuncts and the coordinating conjunction (CC) between them.',
+      'Identify the two unlike conjuncts and the punctuation between them - there is no conjunction word inside the UCP.',
       'Right-click the canvas and add the UCP box first.',
-      'Connect the left conjunct, the conjunction, and the right conjunct to the UCP in reading order, building each conjunct subtree.',
+      'Connect the left conjunct (wrapped in its own phrase box, here an ADVP), then the punctuation leaf, then the right conjunct - a bare adjective leaf.',
       'Check that the leaves match the example - the canvas checks the tree automatically.',
     ],
     examples: ['first, second'],
   },
   {
     type: 'PRT', title: 'Particle', group: 'Special phrases',
-    rule: 'A particle is a small adverb-like word that completes a phrasal verb. It hangs directly off the verb phrase: VB → PRT.',
-    detail: 'A particle (PRT) is a small adverb-like word (RP) that belongs to a phrasal verb - away, up, off, out, down. It hangs directly off the verb phrase (VB → PRT) and changes the verb meaning ("throw away", "give up"). Unlike a preposition, a particle takes no object of its own, so it can appear before or after the object NP. Recognize it because it completes the verb rather than introducing a phrase.',
+    rule: 'A particle is the small word that completes a phrasal verb. It hangs under the verb phrase in its own PRT box, tagged RB or RP, wherever the sentence puts it.',
+    detail: 'A particle (PRT) is a small adverb-like word that belongs to a phrasal verb - away, up, off, out, down - and changes the verb meaning ("throw away", "give up"). SynTutor tags it RB (away) or RP (up) and tucks the PRT box inside the VP: "Throw it away." puts the particle after the object (VP over VB + NP + PRT) while "Give up the fight." puts it before (VP over VB + PRT + NP). Unlike a preposition, a particle takes no object of its own. Recognize it because it completes the verb rather than introducing a phrase.',
     steps: [
-      'Find the phrasal verb and the particle (RP) that completes it.',
+      'Find the phrasal verb and the particle (RB/RP) that completes it.',
       'Right-click the canvas and add the PRT box; drag its connector dot onto the particle word.',
-      'Build the VP (or S) around it: connect the VP to the verb and the PRT, plus any object NP.',
-      'Check that the leaves reflect the sentence order - the canvas checks the tree automatically.',
+      'Build the VP around it: connect the verb, the object NP if there is one, and the PRT box in sentence order - the particle follows the object in "Throw it away" but precedes it in "Give up the fight."',
+      'Wrap the VP in an S box with the sentence-final punctuation, then check that the leaves match - the canvas checks the tree automatically.',
     ],
     examples: ['Throw it away.', 'Give up the fight.'],
   },
   {
     type: 'FRAG', title: 'Fragment', group: 'Special phrases',
-    rule: 'A fragment is a phrase standing alone as an utterance, without a subject and predicate.',
-    detail: 'A fragment (FRAG) is a phrase used as a standalone utterance without a subject-predicate core - greetings, headlines, labels, answers ("Hello there."). It is headed by whatever word gives it its content (a noun, interjection, or adverb), and the parser marks it FRAG when no full clause can be built. Recognize it by the absence of a verb with a subject: the utterance works in context but not as a grammatical sentence.',
+    rule: 'A fragment is a phrase standing alone as an utterance, without a subject and predicate; its words hang directly under one FRAG box - "Hello there." is (FRAG (UH Hello) (RB there) (. .)).',
+    detail: 'A fragment (FRAG) is a phrase used as a standalone utterance without a subject-predicate core - greetings, headlines, labels, answers. Its leaves hang directly under the FRAG box with no inner phrase: "Hello there." reads UH + RB + the final punctuation as three sister leaves. It is headed by whatever word gives it its content (an interjection, noun, or adverb), and the parser marks it FRAG when no full clause can be built. Recognize it by the absence of a verb with a subject: the utterance works in context but not as a grammatical sentence.',
     steps: [
-      'Identify the words of the utterance and what kind of phrase they form (NP, INTJ, ADVP ...).',
+      'Identify the words of the utterance and their POS tags - an interjection (UH), an adverb (RB), and the final punctuation.',
       'Right-click the canvas and add the FRAG box for the utterance as a whole.',
-      'Build the inner phrase beneath it - for "Hello there." connect the FRAG to the interjection and its word.',
+      'Drag the FRAG connector dot onto each leaf in reading order - greeting word, adverb, punctuation.',
       'Check that the leaves match the example - the canvas checks the tree automatically.',
     ],
     examples: ['Hello there.'],
   },
   {
     type: 'INTJ', title: 'Interjection', group: 'Special phrases',
-    rule: 'An interjection is a word that expresses emotion on its own: Wow! Hey!',
-    detail: 'An interjection (INTJ) is a single emotive word - wow, hey, oh, alas - that expresses a reaction on its own. It stands outside the subject-predicate structure (it is not the head of any longer phrase) and adds affect rather than propositional meaning to the utterance. Recognize it by the exclamation word plus punctuation; nothing is attached beneath it.',
+    rule: 'An interjection is a word that expresses emotion on its own: Wow! Hey! Its punctuation hangs beside it under one INTJ box.',
+    detail: 'An interjection (INTJ) is a single emotive word - wow, hey, oh, alas - that expresses a reaction on its own, with the exclamation mark kept as a sibling leaf inside the same box: (INTJ (UH Wow) (. !)). It stands outside the subject-predicate structure (it is not the head of any longer phrase) and adds affect rather than propositional meaning to the utterance. Recognize it by the exclamation word plus its punctuation; nothing else is attached beneath it.',
     steps: [
-      'Find the single interjection word and its punctuation.',
-      'Right-click the canvas and add the INTJ box above it.',
-      'Drag the INTJ connector dot onto the interjection word.',
-      'Check that the leaf matches the example - the canvas checks the tree automatically.',
+      'Find the single interjection word (UH) and its punctuation (!).',
+      'Right-click the canvas and add the INTJ box above them.',
+      'Drag the INTJ connector dot onto the interjection word first, then the punctuation leaf.',
+      'Check that the leaves match the example - the canvas checks the tree automatically.',
     ],
     examples: ['Wow!', 'Hey!'],
   },
@@ -326,17 +328,13 @@ export function openQuizView(view = 'quiz') {
 }
 
 function showPlaceholder(view) {
-  const panel = $('#quizPanel');
-  if (!panel) return;
   closeBuilderView();
-  panel.hidden = false;
-  $('#appSidebar')?.classList.add('quiz-active');
   $('#appSidebarBackdrop')?.classList.add('active');
   document.querySelectorAll('.sidebar-item').forEach((b) => {
     b.classList.toggle('active', b.dataset.view === view);
   });
-  panel.innerHTML = '';
-  const body = shell({ title: view === 'leaderboard' ? 'Leaderboard' : 'Achievements' });
+  const body = openSubpanel(view === 'leaderboard' ? 'Leaderboard' : 'Achievements');
+  if (!body) return;
   body.appendChild(el('p', 'sq-intro', 'Coming soon.'));
 }
 
@@ -345,6 +343,7 @@ export function closeQuizView() {
   const panel = $('#quizPanel');
   if (panel) { panel.hidden = true; panel.innerHTML = ''; }
   $('#appSidebar')?.classList.remove('quiz-active');
+  closeSubpanel();
 }
 
 export function isQuizOpen() {
@@ -357,44 +356,46 @@ export function quizInputHint() {
 
 export function initQuiz(controller) {
   state.controller = controller || null;
-  ensurePanelTabs();
 }
 
 // ---------------------------------------------------------------------------
-// Right panel: lesson/quiz card vs. read-analysis panes
+// Left sub-panel: Achievements / Leaderboard / quiz finish (next to the rail)
 // ---------------------------------------------------------------------------
-let panelTabsWired = false;
+// main.js owns #historyDrawerBackdrop (History); tree-quiz.js owns
+// #subpanelPlaceholder. Both slide out in the same grid column, so only one
+// is ever open — opening one closes the other. `openSubpanel` builds the
+// shared chrome (title + close) and hands back the scrollable body.
 
-// Bookmark tab that flips the right panel between the lesson card and the
-// read-analysis inspector while a lesson (or its quiz) is active.
-function ensurePanelTabs() {
-  if (panelTabsWired) return;
-  panelTabsWired = true;
-  $('#rightPanelBookmark')?.addEventListener('click', () => {
-    const panel = $('.right-panel');
-    if (!panel || !panel.classList.contains('lesson-on')) return;
-    setRightPane(panel.classList.contains('read-on') ? 'lesson' : 'read');
-  });
+function closeSubpanel() {
+  $('#historyDrawerBackdrop')?.classList.remove('active');
+  const host = $('#subpanelPlaceholder');
+  if (!host) return;
+  host.classList.remove('active');
+  host.innerHTML = '';
 }
 
-// `pane` is 'lesson' (full-height lesson/quiz card), 'read' (full-height read
-// analysis), or null for standard SynTutor mode (analysis visible by default).
-function setRightPane(pane) {
-  const panel = $('.right-panel');
-  const active = pane === 'lesson' || pane === 'read';
-  if (panel) {
-    panel.classList.toggle('lesson-on', active);
-    panel.classList.toggle('read-on', pane === 'read');
-  }
-  const tabs = $('#rightPanelTabs');
-  if (tabs) tabs.hidden = !active;
-  const label = $('#rightPanelBookmarkLabel');
-  if (label) label.textContent = pane === 'read' ? (state.session ? 'Quiz' : 'Lesson') : 'Read analysis';
-  const btn = $('#rightPanelBookmark');
-  if (btn) {
-    btn.setAttribute('aria-pressed', String(pane === 'read'));
-    btn.title = pane === 'read' ? 'Back to the lesson card' : 'Show the read analysis panel';
-  }
+function openSubpanel(title) {
+  const host = $('#subpanelPlaceholder');
+  if (!host) return null;
+  $('#historyDrawerBackdrop')?.classList.remove('active');
+  host.innerHTML = '';
+  const drawer = el('aside', 'history-drawer');
+  drawer.setAttribute('aria-label', title);
+  const head = el('div', 'drawer-header');
+  head.appendChild(el('h2', null, title));
+  const close = el('button', 'drawer-close');
+  close.type = 'button';
+  close.setAttribute('aria-label', 'Close panel');
+  close.title = 'Close panel';
+  close.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+  close.addEventListener('click', closeSubpanel);
+  head.appendChild(close);
+  drawer.appendChild(head);
+  const body = el('div', 'sq-body subpanel-body');
+  drawer.appendChild(body);
+  host.appendChild(drawer);
+  host.classList.add('active');
+  return body;
 }
 
 // ---------------------------------------------------------------------------
@@ -488,44 +489,18 @@ async function advance() {
 function finishSession() {
   state.session = null;
   closeBuilderView();
-  const panel = $('#quizPanel');
-  if (!panel) return;
-  panel.hidden = false;
-  $('#appSidebar')?.classList.add('quiz-active');
   $('#appSidebarBackdrop')?.classList.add('active');
   document.querySelectorAll('.sidebar-item').forEach((b) => {
     b.classList.toggle('active', b.dataset.view === 'quiz');
   });
-  panel.innerHTML = '';
-  const body = shell({ title: "You've built every tree!" });
+  const body = openSubpanel("You've built every tree!");
+  if (!body) return;
   body.appendChild(el('p', 'sq-intro', 'Nice work — you constructed every phrase type SynTutor knows.'));
   const again = el('button', 'sq-stage sq-stage-alt');
   again.type = 'button';
   again.appendChild(el('span', 'sq-stage-title', 'Start again'));
   again.addEventListener('click', () => { closeQuizView(); startSession(flatExamples()); });
   body.appendChild(again);
-}
-
-// ---------------------------------------------------------------------------
-// Shell + lesson views
-// ---------------------------------------------------------------------------
-function shell({ title, back }) {
-  const panel = $('#quizPanel');
-  panel.innerHTML = '';
-  const head = el('div', 'sq-head');
-  if (back) {
-    const b = el('button', 'sq-back');
-    b.type = 'button';
-    b.setAttribute('aria-label', 'Back');
-    b.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
-    b.addEventListener('click', back);
-    head.appendChild(b);
-  }
-  head.appendChild(el('h2', 'sq-title', title));
-  panel.appendChild(head);
-  const body = el('div', 'sq-body');
-  panel.appendChild(body);
-  return body;
 }
 
 // ---------------------------------------------------------------------------
@@ -637,26 +612,28 @@ function openLesson(lesson) {
   state.lessonIndex = lesson.type;
   state.view = 'lesson';
   state.exampleIndex = 0;
-  setRightPane('lesson');
   showExample(lesson, 0);
 }
 
 // ---------------------------------------------------------------------------
 // Lesson: one construction + its examples + its quiz
 // ---------------------------------------------------------------------------
-// The active lesson is a four-page wizard in the right panel — Concept &
-// Rule, Step-by-Step Tree Guide, Practice walkthroughs, and the module's
-// comprehensive Lesson Quiz — switched by the page pills or the Back / Next
-// buttons, so nothing ever scrolls. The quiz lives exclusively on the last
-// page, after every step and example has been reviewed.
+// The active lesson is a four-page wizard split across two panes: the
+// upper-right #quizQuestHost holds the compact controls (← All lessons, the
+// title, the page pills, the example picker — always visible — and the
+// Back / Next / Start-quiz nav), while the bottom-right #lessonGuideHost
+// shows the current page's content (Concept & Rule, Step-by-Step Tree Guide,
+// Practice walkthroughs, and the module's comprehensive Lesson Quiz). The
+// quiz lives exclusively on the last page, after every step and example has
+// been reviewed.
 const LESSON_PAGES = ['Concept', 'Steps', 'Practice', 'Quiz'];
 
 function renderLesson() {
   const lesson = LESSONS.find((l) => l.type === state.lessonIndex);
   if (!lesson) return;
   const host = $('#quizQuestHost');
-  if (!host) return;
-  ensurePanelTabs();
+  const guideHost = $('#lessonGuideHost');
+  if (!host || !guideHost) return;
   const index = Math.max(0, Math.min(state.exampleIndex || 0, lesson.examples.length - 1));
   state.exampleIndex = index;
   state.lessonPage = Math.max(1, Math.min(state.lessonPage || 1, LESSON_PAGES.length));
@@ -694,6 +671,25 @@ function renderLesson() {
   });
   wrap.appendChild(pager);
 
+  // The example picker sits with the controls (not inside a page), so the
+  // learner can switch examples from any of the four pages.
+  if (lesson.examples.length > 1) {
+    const pills = el('div', 'sq-example-pills');
+    lesson.examples.forEach((sentence, i) => {
+      let cls = 'sq-example-pill';
+      if (i === index) cls += ' is-active';
+      else if (state.done.has(`${lesson.type}:${sentence}`)) cls += ' is-done';
+      const pill = el('button', cls, String(i + 1));
+      pill.type = 'button';
+      pill.title = sentence;
+      pill.setAttribute('aria-label', `Example ${i + 1}: ${sentence}`);
+      pill.addEventListener('click', () => showExample(lesson, i));
+      pills.appendChild(pill);
+    });
+    wrap.appendChild(pills);
+  }
+
+  // ---- Current page content, rendered into the bottom-right guide pane ----
   const body = el('div', 'sq-lesson-body');
   if (page === 1) {
     const rule = el('div', 'sq-rule');
@@ -704,21 +700,6 @@ function renderLesson() {
     rule.appendChild(ruleBody);
     body.appendChild(rule);
   } else if (page === 2) {
-    if (lesson.examples.length > 1) {
-      const pills = el('div', 'sq-example-pills');
-      lesson.examples.forEach((sentence, i) => {
-        let cls = 'sq-example-pill';
-        if (i === index) cls += ' is-active';
-        else if (state.done.has(`${lesson.type}:${sentence}`)) cls += ' is-done';
-        const pill = el('button', cls, String(i + 1));
-        pill.type = 'button';
-        pill.title = sentence;
-        pill.setAttribute('aria-label', `Example ${i + 1}: ${sentence}`);
-        pill.addEventListener('click', () => showExample(lesson, i));
-        pills.appendChild(pill);
-      });
-      body.appendChild(pills);
-    }
     const steps = el('div', 'sq-steps-box');
     const stepsHead = el('div', 'sq-steps-head');
     stepsHead.appendChild(el('span', 'sq-steps-label', 'Target sentence'));
@@ -778,7 +759,6 @@ function renderLesson() {
     }
     body.appendChild(list);
   }
-  wrap.appendChild(body);
 
   const nav = el('div', 'sq-lesson-nav');
   const prev = el('button', 'sq-ghost', '← Back');
@@ -806,6 +786,10 @@ function renderLesson() {
   wrap.appendChild(nav);
 
   host.appendChild(wrap);
+
+  // The page content lives in the bottom pane, above the node inspector.
+  guideHost.innerHTML = '';
+  guideHost.appendChild(body);
 
   // Keep an open spotlight guide in sync with the fresh DOM (the Steps list
   // and the guide button were just re-created).
@@ -845,12 +829,24 @@ function setInputSentence(text) {
   if (highlights) highlights.textContent = text;
 }
 
+// Tell the workspace header which lesson/quiz is active so #chatTitle reads
+// "NP · Noun phrase" in a lesson and "Quiz · NP" during a session.
+// main.js restores the last analysed sentence via clearActiveLesson().
+function syncChatTitle(lesson) {
+  const ctl = state.controller;
+  if (!ctl || typeof ctl.setChatTitle !== 'function') return;
+  ctl.setChatTitle(state.session
+    ? `Quiz · ${lesson.type}`
+    : `${lesson.type} · ${lesson.title}`);
+}
+
 async function startChallenge(lesson, example, onDone) {
   if (state.view === 'lesson') {
     const i = lesson.examples.indexOf(example);
     if (i >= 0) state.exampleIndex = i;
   }
   setInputSentence(example);
+  syncChatTitle(lesson);
   refreshLessonPanel();
 
   closeQuizView();
@@ -909,19 +905,27 @@ function record(lesson, example, ok) {
   }
 }
 
-// Clear the lesson view rendered in the right panel (#quizQuestHost) and
-// return the panel to standard SynTutor mode. Called when leaving lesson mode:
-// new session, standalone Syntax Builder, standalone quiz, or builder close.
+// Clear the lesson view (controls in #quizQuestHost, page content in
+// #lessonGuideHost) and return the workspace to standard SynTutor mode.
+// Called when leaving lesson mode: new session, standalone Syntax Builder,
+// standalone quiz, or builder close.
 export function clearActiveLesson() {
   closeStepGuide();
   closeLessonsOverlay();
+  closeSubpanel();
   state.view = 'lessons';
   state.lessonIndex = null;
   state.exampleIndex = 0;
   state.lessonPage = 1;
   const host = $('#quizQuestHost');
   if (host) host.innerHTML = '';
-  setRightPane(null);
+  const guideHost = $('#lessonGuideHost');
+  if (guideHost) guideHost.innerHTML = '';
+  // Restore the chat title to whatever sentence the workspace last analysed.
+  const ctl = state.controller;
+  if (ctl && typeof ctl.setChatTitle === 'function') {
+    ctl.setChatTitle(typeof ctl.lastChatTitle === 'function' ? ctl.lastChatTitle() : '');
+  }
 }
 
 // Re-render the active lesson panel so `state.done` checkmarks stay current
