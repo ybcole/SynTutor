@@ -139,7 +139,12 @@ class NodeBuilder:
             }
             self.nodes[node_id] = node
             return node
-        children = [self._build_node(p) for p in payload]
+        children = [self._build_node(p) for p in payload if self._nonempty(p)]
+        if not children:
+            # A benepar subtree could come back with an empty payload; drop it
+            # rather than crash while spanning children[0].
+            self.nodes.pop(node_id, None)
+            return None
         start = children[0]['span'][0]
         end = children[-1]['span'][1]
         surface = ' '.join(w for c in children for w in [self._leaf_text(c)])
@@ -154,21 +159,59 @@ class NodeBuilder:
         return node
 
     @staticmethod
+    def _nonempty(payload):
+        if isinstance(payload, str):
+            return bool(payload)
+        return bool(payload)
+
+    @staticmethod
     def _leaf_text(node):
         if 'children' not in node:
             return node['surface']
         return node['surface']
 
 
-def token_metadata(nlp, doc, target):
+def _ordered_leaves(node):
+    """Yield leaf nodes (no children) in left-to-right token order."""
+    kids = node.get('children')
+    if not kids:
+        yield node
+        return
+    for child in kids:
+        yield from _ordered_leaves(child)
+
+
+def _normalize_parser_text(text):
+    """Collapse whitespace for Benepar and retain offsets into the input."""
+    chars = []
+    starts = []
+    ends = []
+    index = 0
+    while index < len(text):
+        if text[index].isspace():
+            start = index
+            while index < len(text) and text[index].isspace():
+                index += 1
+            chars.append(' ')
+            starts.append(start)
+            ends.append(index)
+        else:
+            chars.append(text[index])
+            starts.append(index)
+            ends.append(index + 1)
+            index += 1
+    return ''.join(chars), starts, ends
+
+
+def token_metadata(nlp, doc, target, offset_starts, offset_ends):
     """Serialize spaCy token metadata for the analysis-sentence span."""
     out = []
     for tok in target:
         out.append({
             'i': tok.i - target.start,
             't': tok.text,
-            'start': tok.idx,
-            'end': tok.idx + len(tok),
+            'start': offset_starts[tok.idx],
+            'end': offset_ends[tok.idx + len(tok) - 1],
             'pos': tok.pos_,
             'tag': tok.tag_,
             'dep': tok.dep_,
@@ -187,7 +230,8 @@ def analyze(text, sentence_index=0):
     (start/end) valid against the exact ``text`` string passed in.
     """
     nlp = load_models()
-    doc = nlp(text)
+    parser_text, offset_starts, offset_ends = _normalize_parser_text(text)
+    doc = nlp(parser_text)
     sents = [s for s in doc.sents]
     if not sents:
         raise ParseFailure('no sentences detected')
@@ -197,12 +241,22 @@ def analyze(text, sentence_index=0):
     tagged = parse_parse_string(parse_string)
     builder = NodeBuilder()
     root = builder.build(tagged, leaf_count=len(target))
-    meta = token_metadata(nlp, doc, target)
+    meta = token_metadata(nlp, doc, target, offset_starts, offset_ends)
+    # Enrich leaves with spaCy's fine-grained tag/lemma, aligned by token order,
+    # so morphology-sensitive rules (e.g. 'to' + finite verb) are not limited to
+    # benepar's coarse Penn tags.
+    leaves = _ordered_leaves(root)
+    for i, leaf in enumerate(leaves):
+        if i < len(meta):
+            leaf['ftag'] = meta[i]['tag']
+            leaf['fpos'] = meta[i]['pos']
     return {
         'sentence': target.text,
         'sentence_index': idx,
         'sentence_count': len(sents),
-        'sentences': [{'ordinal': i + 1, 'start': s.start_char, 'end': s.end_char,
+        'sentences': [{'ordinal': i + 1,
+                       'start': offset_starts[s.start_char],
+                       'end': offset_ends[s.end_char - 1],
                        'text': s.text} for i, s in enumerate(sents)],
         'tokens': meta,
         'parse_string': parse_string,

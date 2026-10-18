@@ -6,7 +6,7 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const srcRoot = join(root, 'web');
 const out = join(root, 'dist');
 
-const ENTRIES = ['index.html', 'login.html', 'css', 'js'];
+const ENTRIES = ['index.html', 'login.html', 'css', 'js', 'content'];
 
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });

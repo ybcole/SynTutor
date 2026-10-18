@@ -112,13 +112,13 @@ export function renderNodeDetail(_session, detail, node) {
   chipRow.appendChild(chip);
   card.appendChild(chipRow);
 
-  const ex = document.createElement('p');
-  ex.className = 'ex-text';
-  ex.textContent = detail.text;
-  card.appendChild(ex);
-
   if (detail.status === 'error' && detail.remediation) {
     card.appendChild(renderRemediation(detail.remediation));
+  } else {
+    const ex = document.createElement('p');
+    ex.className = 'ex-text';
+    ex.textContent = detail.text;
+    card.appendChild(ex);
   }
 
   box.appendChild(card);
@@ -172,33 +172,6 @@ export function renderDiagnostic(title, lines) {
     p.className = 'ex-text';
     p.textContent = line;
     box.appendChild(p);
-  }
-}
-
-export function renderSentenceVerdict(markupLines, isError) {
-  const box = $('#sentenceVerdict');
-  if (!box) return;
-  box.innerHTML = '';
-  const h = document.createElement('h4');
-  h.textContent = 'Sentence verdict';
-  box.appendChild(h);
-  for (const line of markupLines) {
-    const d = document.createElement('p');
-    d.textContent = line;
-    box.appendChild(d);
-  }
-  box.dataset.verdict = isError ? 'error' : 'valid';
-  box.classList.toggle('is-error', Boolean(isError));
-}
-
-export function fillDevPanel(payload) {
-  const parseStr = $('#parseString');
-  const tokStream = $('#tokenStream');
-  if (parseStr) parseStr.textContent = payload.parse.parse_string;
-  if (tokStream) {
-    tokStream.textContent = payload.parse.tokens
-      .map((t, i) => `${i + 1}\t${t.t}\t${t.pos}\t${t.tag}`)
-      .join('\n');
   }
 }
 

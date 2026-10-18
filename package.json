@@ -4,9 +4,14 @@
   "description": "SynTutor - explainable tutoring system for English phrase-structure syntax (spaCy + benepar backend, rule-matrix XAI)",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.js",
-    "serve": "python3 server/app.py",
-    "audit": "python3 scripts/audit_rules.py"
+    "build": "python3 scripts/tree_sheet.py && node scripts/build.js",
+    "serve": "python3 server/webapp.py",
+    "serve:legacy": "python3 server/app.py",
+    "audit": "python3 scripts/audit_rules.py",
+    "test:quiz": "node scripts/test_tree_quiz.js",
+    "sheet": "python3 scripts/master_sheet.py",
+    "tree:sheet": "python3 scripts/tree_sheet.py",
+    "explanation-sheet": "python3 scripts/explanation_sheet.py"
   },
   "license": "MIT"
 }

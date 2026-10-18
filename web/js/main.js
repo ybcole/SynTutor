@@ -4,21 +4,39 @@ import { TreeRenderer } from './renderer.js';
 import { getSavedTheme, setTheme } from './theme.js';
 import {
   log,
-  clearOverlay, showCanvasMessage, renderSentenceVerdict, renderNodeDetail,
-  renderDiagnostic, fillDevPanel, applySentenceSelection, plainName,
+  clearOverlay, showCanvasMessage, renderNodeDetail,
+  renderDiagnostic, applySentenceSelection, plainName,
 } from './ui.js';
+import { openQuizView, closeQuizView, initQuiz, quizInputHint } from './tree-quiz.js';
+import { initSyntaxBuilder, openBuilderView, closeBuilderView } from './syntax-builder-ui.js';
+import { levelFromXp } from './level.js';
+import { computeUnlocked } from './achievements.js';
 
 let clerk = null;
 let supabase = null;
 let isGuest = true;
+let activeSessionId = null;
 
 try {
   clerk = await loadClerk();
   if (clerk?.session) {
     isGuest = false;
-    supabase = await createSupabaseClient();
+    activeSessionId = clerk.session.id;
   }
+  // Create the Supabase client for every mode: authenticated reads/writes use
+  // the Clerk session token, while guests get an anonymous client that can
+  // still read the public leaderboard.
+  supabase = await createSupabaseClient();
   clerk?.addListener(() => {
+    const sessionId = clerk.session?.id ?? null;
+    if (sessionId !== activeSessionId) {
+      // Identity changed (account switch, sign-in, or sign-out): the
+      // in-memory history caches belong to the previous identity, so drop
+      // them. History reloads lazily from Supabase on the next drawer open.
+      activeSessionId = sessionId;
+      recordedTexts.clear();
+      cachedHistory = [];
+    }
     isGuest = !clerk.session;
     updateAuthState();
   });
@@ -35,6 +53,7 @@ let state = STATES.IDLE;
 let session = null;
 let renderer = null;
 let lastAnalyzedText = null;
+let quizMode = false;
 const recordedTexts = new Set();
 let historySpans = [];
 
@@ -54,42 +73,16 @@ function syncCanvasEmptyState() {
   empty.classList.toggle('hidden', state !== STATES.IDLE);
 }
 
-function getGuestHistory() {
+// Analysis history is an account-only feature: entries live in Supabase, scoped
+// to the signed-in user. Guests have no server-side identity, so nothing is
+// collected or persisted for them. This one-time cleanup drops entries written
+// by older builds that cached guest history in localStorage.
+function purgeLegacyGuestHistory() {
   try {
-    const stored = JSON.parse(localStorage.getItem('syntutor_guest_history') || '[]');
-    return Array.isArray(stored) ? stored : [];
+    localStorage.removeItem('syntutor_guest_history');
   } catch {
-    return [];
+    // localStorage unavailable — nothing to clean up.
   }
-}
-
-function deleteGuestHistory(id) {
-  const items = getGuestHistory().filter((item) => item.id !== id);
-  localStorage.setItem('syntutor_guest_history', JSON.stringify(items));
-}
-
-// Mirror of the server-side history cap (Supabase query uses LIMIT 50).
-const GUEST_HISTORY_LIMIT = 50;
-
-function guestHistoryId() {
-  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
-    return `guest-${crypto.randomUUID()}`;
-  }
-  return `guest-${Date.now()}-${Math.floor(Math.random() * 1e6)}`;
-}
-
-function appendGuestHistory(entry) {
-  try {
-    const items = getGuestHistory().filter((item) => item.sentence !== entry.sentence);
-    items.unshift(entry);
-    localStorage.setItem('syntutor_guest_history', JSON.stringify(items.slice(0, GUEST_HISTORY_LIMIT)));
-  } catch (err) {
-    console.warn('Failed to save guest history:', err);
-  }
-}
-
-function clearGuestHistory() {
-  localStorage.removeItem('syntutor_guest_history');
 }
 
 export function boot() {
@@ -100,6 +93,10 @@ export function boot() {
   });
   wireEvents();
   initThemeAndMenu();
+  purgeLegacyGuestHistory();
+  initSidebar();
+  initSyntaxBuilder({ onStatusChange: (msg) => log(msg) });
+  initQuiz({ analyze: analyzeForQuiz, setQuizMode, progress });
   transition(STATES.IDLE, 'system ready');
   log(`SynTutor engine ready \u2014 full-stack pipeline: spaCy + benepar + rule matrix (${isGuest ? 'guest mode' : 'authenticated'})`);
 }
@@ -125,25 +122,94 @@ function initThemeAndMenu() {
     openHistoryDrawer();
   });
 
-  initDevPanel();
   initProfileMenu();
 }
 
+function initSidebar() {
+  const backdrop = document.querySelector('#appSidebarBackdrop');
+  const toggle = document.querySelector('#sidebarToggleBtn');
+  const open = () => {
+    backdrop?.classList.add('active');
+    toggle?.setAttribute('aria-expanded', 'true');
+  };
+  const close = () => {
+    backdrop?.classList.remove('active');
+    toggle?.setAttribute('aria-expanded', 'false');
+  };
+
+  toggle?.addEventListener('click', () => {
+    if (backdrop?.classList.contains('active')) close();
+    else open();
+  });
+  document.querySelector('#closeSidebarBtn')?.addEventListener('click', close);
+  backdrop?.addEventListener('click', (e) => {
+    if (e.target === backdrop) close();
+  });
+
+  document.querySelectorAll('.sidebar-item[data-view]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.view === 'builder') {
+        closeQuizView();
+        openBuilderView();
+      } else if (btn.dataset.view === 'quiz') {
+        closeBuilderView();
+        openQuizView('quiz');
+      } else if (btn.dataset.view === 'lessons') {
+        closeBuilderView();
+        openQuizView('lessons');
+      } else if (btn.dataset.view === 'leaderboard') {
+        closeBuilderView();
+        openQuizView('leaderboard');
+      } else if (btn.dataset.view === 'achievements') {
+        closeBuilderView();
+        openQuizView('achievements');
+      } else {
+        closeBuilderView();
+        closeQuizView();
+        close();
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !backdrop?.classList.contains('active')) return;
+    const quizPanel = document.querySelector('#quizPanel');
+    if (quizPanel && !quizPanel.hidden) return;
+    close();
+  });
+}
+
+function setChatTitle(title) {
+  const el = document.querySelector('#chatTitle');
+  if (!el) return;
+  el.textContent = title && title.trim() ? title : 'Untitled chat...';
+  el.title = title && title.trim() ? title : '';
+}
+
 function openHistoryDrawer() {
+  if (isGuest) return; // history is an account-only feature
   document.querySelector('#historyDrawerBackdrop')?.classList.add('active');
   loadAndRenderHistory();
 }
 
-function openAuthModal() {
+function openAuthModal(mode = 'signin') {
   const backdrop = document.querySelector('#authModalBackdrop');
   if (!backdrop) return;
+  // The add-account flow runs while already signed in, so offering
+  // "Continue as guest" there is meaningless — hide that row.
+  const guestRow = backdrop.querySelector('.modal-close-row');
+  if (guestRow) guestRow.hidden = mode === 'add-account';
   backdrop.classList.add('active');
   const email = document.querySelector('#authEmail');
   if (email) setTimeout(() => email.focus(), 0);
 }
 
 function closeAuthModal() {
-  document.querySelector('#authModalBackdrop')?.classList.remove('active');
+  const backdrop = document.querySelector('#authModalBackdrop');
+  backdrop?.classList.remove('active');
+  // Restore the guest row so the next open starts from the default state.
+  const guestRow = backdrop?.querySelector('.modal-close-row');
+  if (guestRow) guestRow.hidden = false;
 }
 
 function applyTheme(theme) {
@@ -178,28 +244,12 @@ function updateAuthState() {
       </svg>
     `;
     chip.title = 'Log In / Sign Up';
-    if (historyBtn) historyBtn.hidden = false;
+    if (historyBtn) historyBtn.hidden = true;
+    cachedHistory = [];
     document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
   }
   renderProfileMenu();
-}
-
-let devPanelOpen = false;
-
-function setDevPanelOpen(open) {
-  devPanelOpen = open;
-  const overlay = document.querySelector('#devPanelOverlay');
-  const toggle = document.querySelector('#devPanelToggle');
-  overlay?.classList.toggle('open', open);
-  toggle?.classList.toggle('open', open);
-  toggle?.setAttribute('aria-expanded', String(open));
-  overlay?.setAttribute('aria-hidden', String(!open));
-}
-
-function initDevPanel() {
-  document.querySelector('#devPanelToggle')?.addEventListener('click', () => {
-    setDevPanelOpen(!devPanelOpen);
-  });
+  refreshProfileStats();
 }
 
 let profileMenuOpen = false;
@@ -226,14 +276,59 @@ function setProfileMenu(open) {
     menu.setAttribute('aria-hidden', String(!open));
   }
   chip?.setAttribute('aria-expanded', String(open));
-  if (open) showProfileMenuMain();
+  if (open) {
+    showProfileMenuMain();
+    refreshProfileStats();
+  }
   if (open) focusFirstMenuItem();
+}
+
+function refreshProfileStats() {
+  const box = document.querySelector('#profileStats');
+  if (!box) return;
+  if (!isGuest && clerk?.session && supabase) {
+    box.innerHTML = '<span>Loading progress\u2026</span>';
+    loadPlayerProgress().then((p) => {
+      if (!box) return;
+      const stats = p || { xp: 0, level: 0 };
+      const level = levelFromXp(stats.xp);
+      box.innerHTML = '';
+      const row = document.createElement('div');
+      row.className = 'profile-stats-stats';
+      const lvl = document.createElement('span');
+      lvl.className = 'profile-stats-level';
+      lvl.textContent = `Level ${stats.level}`;
+      const xp = document.createElement('span');
+      xp.className = 'profile-stats-xp';
+      xp.textContent = `${stats.xp} XP`;
+      row.appendChild(lvl);
+      row.appendChild(xp);
+      box.appendChild(row);
+      const bar = document.createElement('div');
+      bar.className = 'profile-stats-bar';
+      const fill = document.createElement('div');
+      fill.className = 'profile-stats-fill';
+      fill.style.width = `${level.span ? Math.min(100, Math.round((level.into / level.span) * 100)) : 0}%`;
+      bar.appendChild(fill);
+      box.appendChild(bar);
+      const note = document.createElement('span');
+      note.textContent = `${level.into} / ${level.span} XP to Level ${stats.level + 1}`;
+      box.appendChild(note);
+    }).catch(() => {
+      if (box) box.textContent = 'Progress unavailable right now.';
+    });
+  } else {
+    box.textContent = 'Guest mode \u2014 sign in to earn XP and achievements.';
+  }
 }
 
 function visibleMenuItems() {
   const menu = document.querySelector('#profileMenu');
   if (!menu) return [];
-  return [...menu.querySelectorAll('.profile-menu-item')].filter((el) => !el.hidden);
+  // offsetParent excludes items inside the currently-hidden view, so arrow
+  // keys never jump into the view that isn't showing.
+  return [...menu.querySelectorAll('.profile-menu-item, .profile-account-item')]
+    .filter((el) => !el.hidden && el.offsetParent !== null);
 }
 
 function focusFirstMenuItem() {
@@ -319,7 +414,7 @@ async function openProfileAccounts() {
 function initProfileMenu() {
   document.querySelector('#profileAddAccount')?.addEventListener('click', () => {
     setProfileMenu(false);
-    openAuthModal();
+    openAuthModal('add-account');
   });
   document.querySelector('#profileSwitchAccount')?.addEventListener('click', () => {
     openProfileAccounts();
@@ -333,7 +428,7 @@ function initProfileMenu() {
   });
   document.querySelector('#profileSignIn')?.addEventListener('click', () => {
     setProfileMenu(false);
-    openAuthModal();
+    openAuthModal('signin');
   });
   document.addEventListener('click', (e) => {
     if (profileMenuOpen && !e.target.closest('.profile-anchor')) setProfileMenu(false);
@@ -368,7 +463,7 @@ function wireEvents() {
     editor?.classList.add('editing');
     ta.readOnly = false;
     ta.classList.add('editing');
-    setEditHint(true);
+    setHint(true);
     ta.focus();
   });
   ta.addEventListener('scroll', syncHighlightScroll);
@@ -377,6 +472,13 @@ function wireEvents() {
     renderInputHighlights(ta.value);
   });
   ta.addEventListener('blur', () => {
+    if (quizMode) {
+      returnToLocked();
+      setQuizHintText();
+      const currentIndex = (session?.payload?.meta?.target_sentence || 1) - 1;
+      analyzeForQuiz(ta.value, currentIndex);
+      return;
+    }
     const changed = ta.value !== lastAnalyzedText;
     returnToLocked();
     if (changed) runPipeline();
@@ -398,6 +500,10 @@ function wireEvents() {
   document.querySelector('#closeDrawerBtn')?.addEventListener('click', () => {
     drawer?.classList.remove('active');
   });
+  document.querySelector('#historyNewSessionBtn')?.addEventListener('click', () => {
+    drawer?.classList.remove('active');
+    startNewSession();
+  });
   drawer?.addEventListener('click', (e) => {
     if (e.target === drawer) drawer.classList.remove('active');
   });
@@ -417,7 +523,6 @@ function wireEvents() {
       setProfileMenu(false);
       return;
     }
-    if (devPanelOpen) setDevPanelOpen(false);
   });
 
   document.querySelectorAll('#historyFilters .filter-pill').forEach((btn) => {
@@ -430,32 +535,37 @@ function wireEvents() {
   });
 
   document.querySelector('#clearHistoryBtn')?.addEventListener('click', async () => {
-    if (!cachedHistory.length) return;
-    if (confirm('Clear all analysis history? This action cannot be undone.')) {
-      if (!isGuest && supabase && clerk?.user?.id) {
-        const { error } = await supabase
-          .from('analysis_history')
-          .delete()
-          .eq('user_id', clerk.user.id);
+    if (isGuest || !supabase || !clerk?.user?.id || !cachedHistory.length) return;
+    if (!confirm('Clear all analysis history? This action cannot be undone.')) return;
 
-        if (error) {
-          alert('Failed to clear history: ' + error.message);
-          return;
-        }
-      } else {
-        clearGuestHistory();
-      }
-      cachedHistory = [];
-      renderHistoryItems();
+    const { error } = await supabase
+      .from('analysis_history')
+      .delete()
+      .eq('user_id', clerk.user.id);
+
+    if (error) {
+      alert('Failed to clear history: ' + error.message);
+      return;
     }
+    cachedHistory = [];
+    renderHistoryItems();
   });
 }
 
-function setEditHint(editing) {
-  const hint = document.querySelector('#inputHint');
-  hint.textContent = editing
-    ? 'Editing \u2014 click away to lock and analyze.'
-    : 'Locked \u2014 click any sentence to view its syntax tree. Double-click to edit.';
+const DEFAULT_INPUT_HINT = 'Double-click the panel to edit. When locked, click any sentence to view its syntax tree.';
+
+function setHint(editing) {
+  const overlay = document.querySelector('#inputHighlights');
+  if (overlay) {
+    overlay.dataset.hint = editing
+      ? 'Editing \u2014 click away to lock and analyze. (Type above)'
+      : DEFAULT_INPUT_HINT;
+  }
+}
+
+function setQuizHintText() {
+  const overlay = document.querySelector('#inputHighlights');
+  if (overlay) overlay.dataset.hint = quizInputHint();
 }
 
 function returnToLocked(payload = null) {
@@ -464,7 +574,7 @@ function returnToLocked(payload = null) {
   ta.readOnly = true;
   ta.classList.remove('editing');
   editor?.classList.remove('editing');
-  setEditHint(false);
+  setHint(false);
   renderInputHighlights(ta.value, payload);
 }
 
@@ -475,6 +585,7 @@ function startNewSession() {
   session = null;
   lastAnalyzedText = null;
   historySpans = [];
+  setChatTitle('');
 
   const ta = document.querySelector('#inputText');
   const editor = document.querySelector('.input-editor');
@@ -482,7 +593,7 @@ function startNewSession() {
   ta.readOnly = true;
   ta.classList.remove('editing');
   editor?.classList.remove('editing');
-  setEditHint(false);
+  setHint(false);
   renderInputHighlights('');
   syncHighlightScroll();
 
@@ -490,12 +601,6 @@ function startNewSession() {
   renderer.clear();
   clearOverlay();
   renderNodeDetail(null, null, null);
-  renderSentenceVerdict(['Submit a sentence to see the auto-generated pedagogical summary.'], false);
-
-  const parseStr = document.querySelector('#parseString');
-  const tokStream = document.querySelector('#tokenStream');
-  if (parseStr) parseStr.textContent = '\u2014';
-  if (tokStream) tokStream.textContent = '\u2014';
 
   document.querySelector('#emptyTreeState')?.classList.remove('hidden');
 
@@ -510,17 +615,192 @@ function activateSentenceAtCaret() {
   const sents = session.payload.parse.sentences || [];
   const caret = ta.selectionStart;
   const hit = sents.find((s) => caret >= s.start && caret < s.end);
-  if (hit && hit.ordinal - 1 !== (session.payload.meta.target_sentence || 1) - 1) {
-    runPipeline({ index: hit.ordinal - 1, isSentenceNav: true });
+  if (!hit) return;
+  const alreadyTarget = hit.ordinal - 1 === (session.payload.meta.target_sentence || 1) - 1;
+  if (quizMode) {
+    if (!alreadyTarget) analyzeForQuiz(ta.value, hit.ordinal - 1);
+    return;
   }
+  if (!alreadyTarget) runPipeline({ index: hit.ordinal - 1, isSentenceNav: true });
 }
 
 function failPipeline(title, lines) {
   showCanvasMessage('error', title, lines);
-  renderSentenceVerdict([`\u{26D4} ${title}`, ...lines], true);
   renderDiagnostic(title, lines);
   transition(STATES.VIEWING, 'request failed -> diagnostic shown');
   log(`Request failed: ${title} \u2014${lines[0] || ''}`);
+}
+
+async function postParse(text, index = null) {
+  const body = { text };
+  if (index !== undefined && index !== null) body.sentence_index = index;
+  const res = await fetch(`${API_BASE}/api/parse`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    return { error: { status: res.status, error: data.error, hint: data.hint } };
+  }
+  return { payload: await res.json() };
+}
+
+function setQuizMode(active) {
+  quizMode = active;
+  if (renderer) renderer.setInteractive(!active);
+}
+
+// ---------------------------------------------------------------------------
+// Gamification: XP, levels, and the permanent leaderboard.
+// XP is only banked for signed-in users (guests see the UI but nothing saves).
+// ---------------------------------------------------------------------------
+function progressAvailable() {
+  return !isGuest && !!clerk?.user?.id && !!supabase;
+}
+
+function playerDisplayName() {
+  const user = clerk?.user;
+  return user?.firstName
+    || user?.username
+    || user?.primaryEmailAddress?.emailAddress?.split('@')[0]
+    || 'Learner';
+}
+
+async function loadPlayerProgress() {
+  if (!progressAvailable()) return null;
+  const { data, error } = await supabase
+    .from('player_stats')
+    .select('xp, level')
+    .eq('user_id', clerk.user.id)
+    .maybeSingle();
+  if (error) {
+    console.warn('Failed to load player progress:', error.message);
+    return null;
+  }
+  return data || { xp: 0, level: 0 };
+}
+
+async function awardPlayerXp(amount) {
+  if (!progressAvailable() || !Number.isFinite(amount) || amount <= 0) return null;
+  const current = await loadPlayerProgress();
+  const xp = (current?.xp || 0) + amount;
+  const { level } = levelFromXp(xp);
+  const { error } = await supabase.from('player_stats').upsert({
+    user_id: clerk.user.id,
+    display_name: playerDisplayName(),
+    xp,
+    level,
+    updated_at: new Date().toISOString(),
+  }, { onConflict: 'user_id' });
+  if (error) {
+    console.warn('Failed to save XP:', error.message);
+    return null;
+  }
+  return { xp, ...levelFromXp(xp), earned: amount };
+}
+
+async function loadLeaderboard(limit = 25) {
+  if (!supabase) return null;
+  const { data, error } = await supabase
+    .from('player_stats')
+    .select('user_id, display_name, xp, level')
+    .order('level', { ascending: false })
+    .order('xp', { ascending: false })
+    .limit(limit);
+  if (error) {
+    console.warn('Failed to load the leaderboard:', error.message);
+    return null;
+  }
+  return data;
+}
+
+async function loadQuizProgress() {
+  if (!supabase || !clerk?.user?.id) return [];
+  const { data, error } = await supabase
+    .from('quiz_progress')
+    .select('rule_id, completed_count, perfect_count')
+    .eq('user_id', clerk.user.id);
+  if (error) {
+    console.warn('Failed to load quiz progress:', error.message);
+    return [];
+  }
+  return data || [];
+}
+
+// Records a finished quiz run (upserts a completion for the rule) and returns
+// the achievement ids that this run newly unlocked.
+async function trackQuizCompletion({ ruleId, perfect }) {
+  if (!progressAvailable()) return { newlyUnlocked: [], ran: false };
+  const before = computeUnlocked(await loadQuizProgress());
+  const existing = await supabase
+    .from('quiz_progress')
+    .select('completed_count, perfect_count')
+    .eq('user_id', clerk.user.id)
+    .eq('rule_id', ruleId)
+    .maybeSingle();
+  const prev = existing?.error ? {} : (existing?.data || {});
+  const { error } = await supabase.from('quiz_progress').upsert({
+    user_id: clerk.user.id,
+    rule_id: ruleId,
+    completed_count: (prev.completed_count || 0) + 1,
+    perfect_count: (prev.perfect_count || 0) + (perfect ? 1 : 0),
+    last_completed_at: new Date().toISOString(),
+  }, { onConflict: 'user_id,rule_id' });
+  if (error) {
+    console.warn('Failed to record quiz completion:', error.message);
+    return { newlyUnlocked: [], ran: false };
+  }
+  const after = computeUnlocked(await loadQuizProgress());
+  return {
+    newlyUnlocked: [...after].filter((id) => !before.has(id)),
+    ran: true,
+  };
+}
+
+const progress = {
+  isAvailable: progressAvailable,
+  myId: () => (clerk?.user?.id ? clerk.user.id : null),
+  load: loadPlayerProgress,
+  award: awardPlayerXp,
+  leaderboard: loadLeaderboard,
+  getQuizProgress: loadQuizProgress,
+  trackCompletion: trackQuizCompletion,
+};
+
+// Quiz-only analysis: parses the sentence, renders its tree, and returns the
+// payload WITHOUT touching history, highlights, or the locked/editable state.
+async function analyzeForQuiz(text, index = null) {
+  if (!text || !text.trim()) return null;
+  const clean = text.trim();
+  clearOverlay();
+  renderer.select(null);
+  renderNodeDetail(null, null, null);
+  let payload;
+  try {
+    const out = await postParse(clean, index);
+    if (out.error) {
+      showCanvasMessage('error', 'Unable to analyze', [out.error.error || 'The backend rejected the request.']);
+      return null;
+    }
+    payload = out.payload;
+  } catch (_e) {
+    showCanvasMessage('error', 'Backend unreachable', [
+      'The SynTutor NLP server is not responding.',
+      'Start it with:  python3 server/app.py',
+    ]);
+    return null;
+  }
+  applyStatuses(payload.tree, payload.node_details, payload.summary);
+  session = { payload };
+  lastAnalyzedText = clean;
+  historySpans = [];
+  const input = document.querySelector('#inputText');
+  if (input?.value.trim() === clean) renderInputHighlights(clean);
+  document.querySelector('#emptyTreeState')?.classList.add('hidden');
+  renderer.setTree(payload.tree);
+  transition(STATES.VIEWING, 'quiz sentence analyzed');
+  return payload;
 }
 
 async function runPipeline(opts = {}) {
@@ -548,24 +828,26 @@ async function executePipeline(opts = {}) {
   const text = document.querySelector('#inputText').value.trim();
   if (!text) {
     showCanvasMessage('error', 'No analyzable sentence', ['Enter some English text first, then submit it.']);
-    renderSentenceVerdict(['\u26D4 No analyzable sentence', 'Enter some English text first, then submit it.'], true);
     renderDiagnostic('No analyzable sentence', ['Enter some English text first, then submit it.']);
     transition(STATES.IDLE, 'empty input -> back to idle');
     return;
   }
   log(`Stage 1: user input captured \u2014 ${JSON.stringify(text)}`);
 
-  const body = { text };
-  if (opts.index !== undefined && opts.index !== null) body.sentence_index = opts.index;
   const target = opts.index !== undefined && opts.index !== null ? `sentence #${opts.index + 1}` : 'first sentence';
   log(`Stage 2: POST ${API_BASE}/api/parse (target: ${target})`);
-  let res;
+  let payload;
   try {
-    res = await fetch(`${API_BASE}/api/parse`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    });
+    const out = await postParse(text, opts.index);
+    if (out.error) {
+      const { status, error, hint } = out.error;
+      const title = status === 503
+        ? 'NLP models unavailable'
+        : status === 422 ? 'Unable to produce a parse' : `Backend error (HTTP ${status})`;
+      failPipeline(title, [error || 'The backend rejected the request.', hint || ''].filter(Boolean));
+      return;
+    }
+    payload = out.payload;
   } catch (_e) {
     failPipeline('Backend unreachable', [
       'The SynTutor NLP server is not responding.',
@@ -573,17 +855,6 @@ async function executePipeline(opts = {}) {
     ]);
     return;
   }
-  if (!res.ok) {
-    const data = await res.json().catch(() => ({}));
-    const title = res.status === 503
-      ? 'NLP models unavailable'
-      : res.status === 422 ? 'Unable to produce a parse' : `Backend error (HTTP ${res.status})`;
-    const lines = [data.error || 'The backend rejected the request.', data.hint || ''].filter(Boolean);
-    failPipeline(title, lines);
-    return;
-  }
-  const payload = await res.json();
-  fillDevPanel(payload);
   log(`Stage 2: payload received (${Object.keys(payload.nodes).length} nodes) \u00b7${payload.meta.backend}`);
 
   const tokens = payload.parse.tokens;
@@ -595,15 +866,15 @@ async function executePipeline(opts = {}) {
 
   log(`Stage 4: benepar parse string \u2014 ${payload.parse.parse_string}`);
 
-  applyStatuses(payload.tree, payload.node_details);
+  applyStatuses(payload.tree, payload.node_details, payload.summary);
   const s = payload.summary;
   log(`Stage 5: rule-matrix validation \u2014 ${s.valid_edges} valid / ${s.violated_edges} violated / ${s.unrated_edges} unrated \u00b7 fired${JSON.stringify(s.constraints_fired)}`);
 
-  renderSentenceVerdict(payload.explainers.basic.split('\n'), !payload.summary.valid);
   log(`Stage 6: explanations generated \u2014 basic + ${payload.explainers.contrastive ? 'contrastive' : '(none)'}`);
 
   session = { payload };
   lastAnalyzedText = text;
+  setChatTitle(text);
 
   document.querySelector('#inputText').value = text;
   const spans = buildHighlightSpans(text, payload);
@@ -621,37 +892,26 @@ async function executePipeline(opts = {}) {
   log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
 
   const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
-  if (!isNavigation && !recordedTexts.has(text)) {
-    if (!isGuest && supabase && clerk?.user?.id) {
-      try {
-        const { error: insertError } = await supabase.from('analysis_history').insert({
-          user_id: clerk.user.id,
-          sentence: text,
-          is_valid: payload.summary.valid,
-          constraints_fired: payload.summary.constraints_fired,
-        });
-
-        if (insertError) {
-          console.warn('Failed to log history to Supabase:', insertError.message);
-          log(`Warning: Failed to save analysis history \u2014 ${insertError.message}`);
-        } else {
-          recordedTexts.add(text);
-          log('Stage 6b: analysis history recorded in Supabase');
-        }
-      } catch (dbErr) {
-        console.warn('Network error logging history:', dbErr);
-        log('Warning: Network error saving history');
-      }
-    } else {
-      recordedTexts.add(text);
-      appendGuestHistory({
-        id: guestHistoryId(),
+  // History is account-only: guests are never recorded.
+  if (!isNavigation && !isGuest && supabase && clerk?.user?.id && !recordedTexts.has(text)) {
+    try {
+      const { error: insertError } = await supabase.from('analysis_history').insert({
+        user_id: clerk.user.id,
         sentence: text,
         is_valid: payload.summary.valid,
         constraints_fired: payload.summary.constraints_fired,
-        created_at: new Date().toISOString(),
       });
-      log('Stage 6b: analysis history recorded locally (guest session)');
+
+      if (insertError) {
+        console.warn('Failed to log history to Supabase:', insertError.message);
+        log(`Warning: Failed to save analysis history \u2014 ${insertError.message}`);
+      } else {
+        recordedTexts.add(text);
+        log('Stage 6b: analysis history recorded in Supabase');
+      }
+    } catch (dbErr) {
+      console.warn('Network error logging history:', dbErr);
+      log('Warning: Network error saving history');
     }
   }
 }
@@ -749,17 +1009,22 @@ function syncHighlightScroll() {
   }
 }
 
-function applyStatuses(tree, details) {
+function applyStatuses(tree, details, summary) {
   const walk = (node) => {
     const d = details[node.id];
     node.edgeResult = { status: d ? d.status : 'valid' };
     for (const c of node.children || []) walk(c);
   };
   walk(tree);
+  if (summary?.verdict === 'ungrammatical'
+      && !Object.values(details).some((detail) => detail?.status === 'error')) {
+    tree.edgeResult = { status: 'error' };
+  }
   return tree;
 }
 
 function handleNodeSelect(id) {
+  if (quizMode) return;
   if (!id || !session) {
     if (session) {
       renderer.select(null);
@@ -801,8 +1066,6 @@ async function loadAndRenderHistory() {
       return;
     }
     cachedHistory = data || [];
-  } else if (isGuest) {
-    cachedHistory = getGuestHistory();
   } else {
     cachedHistory = [];
   }
@@ -824,37 +1087,27 @@ function renderHistoryItems() {
     container.textContent = '';
     const note = document.createElement('p');
     note.className = 'history-empty';
-    note.textContent = (isGuest && !cachedHistory.length)
-      ? 'No guest history yet — analyses you run will appear here and persist in this browser.'
-      : 'No matching analyses found.';
+    note.textContent = cachedHistory.length
+      ? 'No matching analyses found.'
+      : 'No history yet — analyses you run will appear here.';
     container.appendChild(note);
     return;
   }
 
   container.innerHTML = '';
   filtered.forEach((entry) => {
-    const card = document.createElement('div');
-    card.className = 'history-item';
-    card.setAttribute('role', 'button');
-    card.setAttribute('tabindex', '0');
-    card.title = 'Open this analysis';
-
-    const date = new Date(entry.created_at).toLocaleDateString('en-US', {
-      month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit',
-    });
-
     const isError = !entry.is_valid;
 
-    const head = document.createElement('div');
-    head.className = 'hist-head';
+    const card = document.createElement('div');
+    card.className = `history-item ${isError ? 'is-invalid' : 'is-valid'}`;
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.title = entry.sentence;
+    card.setAttribute('aria-label', `${entry.sentence} — ${entry.is_valid ? 'Valid' : 'Invalid'}`);
 
-    const badge = document.createElement('span');
-    badge.className = `hist-badge ${isError ? 'err' : 'ok'}`;
-    badge.textContent = entry.is_valid ? 'Valid' : 'Invalid';
-
-    const timeSpan = document.createElement('span');
-    timeSpan.className = 'hist-time';
-    timeSpan.textContent = date;
+    const titleP = document.createElement('p');
+    titleP.className = 'hist-title';
+    titleP.textContent = entry.sentence;
 
     const delBtn = document.createElement('button');
     delBtn.type = 'button';
@@ -867,40 +1120,12 @@ function renderHistoryItems() {
       </svg>
     `;
 
-    const openSvg = document.createElement('span');
-    openSvg.className = 'hist-open';
-    openSvg.setAttribute('aria-hidden', 'true');
-    openSvg.innerHTML = `
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    `;
-
-    head.appendChild(badge);
-    head.appendChild(timeSpan);
-    head.appendChild(delBtn);
-    head.appendChild(openSvg);
-
-    const sentenceP = document.createElement('p');
-    sentenceP.className = 'hist-sentence';
-    sentenceP.textContent = entry.sentence;
-    sentenceP.title = entry.sentence;
-
-    const chipsDiv = document.createElement('div');
-    chipsDiv.className = 'hist-chips';
-    (entry.constraints_fired || []).forEach((constraint) => {
-      const chip = document.createElement('span');
-      chip.className = `hist-chip ${isError ? 'err' : ''}`;
-      chip.textContent = constraint;
-      chipsDiv.appendChild(chip);
-    });
-
-    card.appendChild(head);
-    card.appendChild(sentenceP);
-    if (entry.constraints_fired?.length) card.appendChild(chipsDiv);
+    card.appendChild(titleP);
+    card.appendChild(delBtn);
 
     const openEntry = () => {
       document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
+      setChatTitle(entry.sentence);
       const ta = document.querySelector('#inputText');
       ta.value = entry.sentence;
       recordedTexts.add(entry.sentence);
@@ -917,21 +1142,18 @@ function renderHistoryItems() {
 
     delBtn.addEventListener('click', async (e) => {
       e.stopPropagation();
+      if (isGuest || !supabase || !clerk?.user?.id) return;
       delBtn.disabled = true;
 
-      if (!isGuest && supabase) {
-        const { error } = await supabase
-          .from('analysis_history')
-          .delete()
-          .eq('id', entry.id);
+      const { error } = await supabase
+        .from('analysis_history')
+        .delete()
+        .eq('id', entry.id);
 
-        if (error) {
-          alert('Failed to delete item: ' + error.message);
-          delBtn.disabled = false;
-          return;
-        }
-      } else {
-        deleteGuestHistory(entry.id);
+      if (error) {
+        alert('Failed to delete item: ' + error.message);
+        delBtn.disabled = false;
+        return;
       }
 
       cachedHistory = cachedHistory.filter((item) => item.id !== entry.id);

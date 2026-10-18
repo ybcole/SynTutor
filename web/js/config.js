@@ -6,7 +6,7 @@ export const CLERK_CONFIG = {
 // Base URL of the SynTutor NLP backend (no trailing slash).
 // Leave '' to call same-origin '/api/parse' (local `python3 server/app.py`).
 // Set to your deployed backend, e.g. 'https://syntutor-api.onrender.com'.
-export const API_BASE = 'https://ybcole-syntutor.hf.space';
+export const API_BASE = ''; // same-origin: local `python3 server/app.py` (deploy: set to the hf.space URL)
 
 export const SUPABASE_CONFIG = {
   url: 'https://bgjzmnqqeqfcttjpotwg.supabase.co',

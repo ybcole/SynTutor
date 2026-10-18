@@ -13,8 +13,8 @@ import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
 
-from parse_engine import ParseFailure, analyze, load_models
-from matrix import evaluate
+from parse_engine import ParseFailure
+from api import build_payload, model_status as _model_status, word_info
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB_DIR = os.path.join(ROOT, 'web')
@@ -26,7 +26,7 @@ ALLOW_ORIGIN = os.environ.get('SYNTUTOR_ALLOW_ORIGIN', '*')
 
 # Only these top-level frontend entries may be served statically. Anything else
 # under ROOT (server/, supabase/, scripts/, migrations, config) stays private.
-PUBLIC_TOP = {'index.html', 'login.html', 'css', 'js'}
+PUBLIC_TOP = {'index.html', 'login.html', 'css', 'js', 'content'}
 
 MIME = {
     '.html': 'text/html; charset=utf-8',
@@ -38,106 +38,6 @@ MIME = {
     '.ico': 'image/x-icon',
     '.md': 'text/markdown; charset=utf-8',
 }
-
-_MODEL_STATUS = None
-
-
-def _model_status():
-    global _MODEL_STATUS
-    if _MODEL_STATUS is None:
-        status = {'ready': False, 'spacy': None, 'benepar': None, 'error': None}
-        try:
-            nlp = load_models()
-            status = {
-                'ready': True,
-                'spacy': (nlp.meta or {}).get('version'),
-                'benepar': 'benepar_en3',
-                'pipeline': list(nlp.pipe_names),
-            }
-        except Exception as exc:  # noqa: BLE001
-            status['error'] = str(exc)
-        _MODEL_STATUS = status
-    return _MODEL_STATUS
-
-
-def build_payload(text, sentence_index=0):
-    """Deterministic full payload for one user input, targeting ``sentence_index``."""
-    analysis = analyze(text, sentence_index=sentence_index)
-    result = evaluate(analysis['root'])
-    details = result['details']
-    summary = result['summary']
-    root = analysis['root']
-    tokens = analysis['tokens']
-
-    token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
-    tag_word = summary['explanation']
-    label = 'VALID' if summary['valid'] else 'INVALID'
-
-    basic_lines = [
-        f"Input: {analysis['sentence']}",
-        f"Neural parse (benepar_en3): {analysis['parse_string']}",
-        f"Token stream: {token_line}",
-        f"Constraint matrix: {summary['valid_edges']} validated \u00b7 "
-        f"{summary['violated_edges']} violated \u00b7 {summary['unrated_edges']} unrated",
-        f"Verdict: {label}",
-        f"   {tag_word}",
-        'Deterministic matrix over the benepar tree; identical inputs always produce identical verdicts.',
-    ]
-
-    error_ids = [d for d in details.values() if d['status'] == 'error']
-    contrastive = _contrastive(summary, details)
-
-    return {
-        'meta': {
-            'deterministic': True,
-            'k': 1,
-            'parser': 'benepar_en3',
-            'spacy': 'en_core_web_md',
-            'backend': 'spaCy + benepar (neural constituency) + rule matrix (XAI)',
-            'sentence_count': analysis['sentence_count'],
-            'target_sentence': analysis['sentence_index'] + 1,
-        },
-        'parse': {
-            'text': analysis['sentence'],
-            'sentence_count': analysis['sentence_count'],
-            'sentences': analysis['sentences'],
-            'tokens': tokens,
-            'parse_string': analysis['parse_string'],
-        },
-        'tree': root,
-        'nodes': analysis['nodes'],
-        'node_details': details,
-        'summary': summary,
-        'explainers': {
-            'basic': '\n'.join(basic_lines),
-            'contrastive': contrastive,
-            'surprisal': None,
-            'perturbation': None,
-            'llm_note': None,
-        },
-    }
-
-
-def _contrastive(summary, details):
-    if summary['valid'] and not summary.get('root_error'):
-        return ('No grammatical alternative is observed: every edge is licensed, so no repair is '
-                'needed. The sentence is fully determined by the matrix.')
-    errors = [d for d in details.values() if d['status'] == 'error']
-    if not errors:
-        return 'No edge violation to repair.'
-    first = errors[0]
-    breaks = {
-        'C-SUBJECT-AGREEMENT': 'making the predicate verb agree with the subject',
-        'C-DETERMINER-AGREEMENT': 'switching the determiner to the number forced by its noun',
-        'C-DET-STACK': 'removing one of the stacked determiners',
-        'C-MOD-POS': 'moving the modifier before its head noun',
-        'C-AUX-FORM': 'using the verb form required by the auxiliary',
-        'C-TENSE-FINITE': 'adding a finite predicate verb',
-    }
-    repair = breaks.get(first['constraint'], f'satisfying {first["constraint"]}')
-    return (f"Contrastive candidate: the edge '{first['id']}' violates {first['constraint']}; "
-            f"the sentence would be licensed after {repair}.")
-
 
 class Handler(BaseHTTPRequestHandler):
     server_version = 'SynTutor/2.0'
@@ -218,7 +118,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         path = urlparse(self.path).path
-        if path != '/api/parse':
+        if path not in ('/api/parse', '/api/words'):
             self._json(404, {'error': 'not found'})
             return
         try:
@@ -228,6 +128,17 @@ class Handler(BaseHTTPRequestHandler):
         except Exception as exc:  # noqa: BLE001
             self._json(400, {'error': f'invalid request payload: {exc}'})
             return
+
+        if path == '/api/words':
+            raw = data.get('words')
+            if isinstance(raw, str):
+                raw = raw.split()
+            if not isinstance(raw, list):
+                self._json(422, {'error': 'provide "words" as a list'})
+                return
+            self._json(200, {'results': word_info(raw[:100])})
+            return
+
         text = (data.get('text') or '').strip()
         if not text:
             self._json(422, {'error': 'empty input', 'hint': 'Provide an English sentence in "text".'})

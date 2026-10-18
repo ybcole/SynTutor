@@ -24,5 +24,7 @@ Run locally:
 pip install -r requirements.txt
 python -m spacy download en_core_web_md
 python -c "import benepar; benepar.download('benepar_en3')"
-python3 server/app.py
+python3 server/webapp.py     # Flask backend: serves the front end + /api
 ```
+
+(The stdlib `http.server` variant is still available as `python3 server/app.py`.)
