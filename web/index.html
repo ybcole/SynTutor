@@ -37,12 +37,12 @@
           </button>
         </div>
         <nav class="app-sidebar-nav">
-          <button id="newSessionBtn" class="sidebar-item" type="button" aria-label="Start a new blank session" title="New Session">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <button id="newSessionBtn" class="sidebar-item active" type="button" data-view="tutor" aria-label="Syntax Generator" title="Syntax Generator">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 20h9"></path>
               <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
             </svg>
-            <span>New Session</span>
+            <span>Syntax Generator</span>
           </button>
           <button id="headerHistoryBtn" class="sidebar-item" type="button" aria-label="Open analysis history" title="History" hidden>
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -50,21 +50,6 @@
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
             <span>History</span>
-          </button>
-          <button class="sidebar-item active" type="button" data-view="tutor" title="SynTutor">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-            </svg>
-            <span>SynTutor</span>
-          </button>
-          <button class="sidebar-item" type="button" data-view="quiz" title="Quiz">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-              <line x1="12" y1="17" x2="12.01" y2="17"></line>
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-            <span>Quiz</span>
           </button>
           <button class="sidebar-item" type="button" data-view="lessons" title="Lessons">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -201,19 +186,18 @@
     </div>
     <main class="app-main">
       <section class="canvas-wrap">
-        <div id="builderBar" class="builder-bar" hidden>
-          <span id="builderTitle" class="builder-title">Syntax Builder</span>
-          <span id="builderHint" class="builder-hint"></span>
-          <span id="builderTarget" class="builder-target" hidden></span>
-          <span class="builder-spacer"></span>
-          <button id="builderCheck" class="builder-btn builder-btn-primary" type="button" hidden>Check tree</button>
-          <button id="builderNext" class="builder-btn builder-btn-primary" type="button" hidden>Next →</button>
-          <button id="builderClear" class="builder-btn" type="button">Clear</button>
-          <button id="builderSnap" class="builder-btn" type="button">Build tree</button>
-        </div>
         <div class="canvas-stage">
           <canvas id="treeCanvas" tabindex="0" aria-label="Interactive syntax tree; click a node, or use arrow keys and Enter"></canvas>
           <canvas id="builderCanvas" class="builder-canvas" tabindex="0" aria-label="Syntax builder canvas" hidden></canvas>
+          <div id="canvasControls" class="canvas-controls" hidden>
+            <button id="builderClear" class="builder-btn" type="button">Clear</button>
+            <button id="builderSnap" class="builder-btn" type="button">Build tree</button>
+            <button id="builderCheck" class="builder-btn builder-btn-primary" type="button" hidden>Check tree</button>
+            <button id="builderNext" class="builder-btn builder-btn-primary" type="button" hidden>Next &rarr;</button>
+            <button id="builderDone" class="builder-btn" type="button">Done</button>
+            <span id="builderHint" class="builder-hint" hidden></span>
+            <span id="builderTarget" class="builder-target" hidden></span>
+          </div>
           <div id="canvasOverlay" class="canvas-overlay"></div>
           <div id="emptyTreeState" class="empty-state-canvas">
             <svg class="empty-tree-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -238,24 +222,22 @@
 
       <div class="pane-side">
         <section class="pane pane-input">
-          <header class="pane-head">
-            <button id="mobileNavBtn" class="menu-btn mobile-nav-btn" type="button" aria-label="Open menu" title="Menu" aria-expanded="false" aria-controls="appSidebar">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-              </svg>
-            </button>
-            <span id="chatTitle" class="chat-tag">Untitled chat...</span>
-          </header>
+          <button id="mobileNavBtn" class="menu-btn mobile-nav-btn" type="button" aria-label="Open menu" title="Menu" aria-expanded="false" aria-controls="appSidebar">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
           <div class="input-row">
             <div class="input-editor">
-              <div id="inputHighlights" aria-hidden="true" data-hint="Double-click the panel to edit. When locked, click any sentence to view its syntax tree."></div>
+              <div id="inputHighlights" aria-hidden="true" data-hint="Click the panel to write a sentence. SynTutor builds its syntax tree and analysis automatically."></div>
               <textarea id="inputText" rows="2" readonly
-                        placeholder="Double-click the panel to edit. When locked, click any sentence to view its syntax tree."
+                        placeholder="Click the panel to write a sentence. SynTutor builds its syntax tree and analysis automatically."
                         spellcheck="false"></textarea>
             </div>
           </div>
+          <button id="inputClearBtn" class="input-clear" type="button" aria-label="Clear input" title="Clear text">×</button>
           <div id="quizQuestHost"></div>
         </section>
 
@@ -263,41 +245,36 @@
              aria-label="Resize the workspace — drag, or double-click to reset" title="Drag to resize · double-click to reset"></div>
 
         <section class="pane pane-explain">
-          <div id="lessonGuideHost" class="card"></div>
-          <section class="card primary-explainer">
-            <div id="explainNode" class="node-explainer"></div>
-            <div id="emptyExplainState" class="empty-state-explain">
-              <svg class="empty-book-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                <path d="M12 2v15"></path>
-              </svg>
-              <p class="empty-explain-title">Ready for Analysis</p>
-            </div>
-          </section>
+          <div id="lessonGuideHost" class="guide-host"></div>
+          <div id="explainNode" class="node-explainer"></div>
+          <div id="emptyExplainState" class="empty-state-explain">
+            <svg class="empty-book-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              <path d="M12 2v15"></path>
+            </svg>
+            <p class="empty-explain-title">Ready for Analysis</p>
+          </div>
         </section>
       </div>
     </main>
 
     <div id="lessonsOverlay" class="lessons-overlay">
       <div class="lessons-sheet" role="dialog" aria-label="Lessons">
-        <header class="lessons-head">
-          <div>
-            <h2 class="lessons-title">Lessons</h2>
+        <div class="lessons-body">
+          <aside class="lessons-tabs-col" id="lessonsTabsCol">
+            <button id="lessonsTabsToggle" class="lessons-tabs-toggle" type="button" aria-label="Collapse lesson categories" aria-expanded="true" title="Collapse categories">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <nav id="lessonsTabs" class="lessons-tabs" aria-label="Lesson categories"></nav>
+          </aside>
+          <div class="lessons-main">
             <p id="lessonsSummary" class="lessons-summary"></p>
+            <div id="lessonsGrid" class="lessons-grid"></div>
           </div>
-          <button id="lessonsCloseBtn" class="lessons-close" type="button" aria-label="Close lessons">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </header>
-        <nav id="lessonsTabs" class="lessons-tabs" aria-label="Lesson categories"></nav>
-        <div id="lessonsGrid" class="lessons-grid"></div>
-        <footer class="lessons-foot">
-          <button id="lessonsFreeBuilder" class="lessons-free" type="button">Free practice: build any tree on a blank canvas</button>
-        </footer>
+        </div>
       </div>
     </div>
 

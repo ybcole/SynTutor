@@ -39,12 +39,14 @@ const state = {
   view: 'lessons',    // lessons | lesson
   lessonIndex: null,
   exampleIndex: 0,    // active example inside the open lesson
-  lessonPage: 1,      // lesson sub-view: 1 concept | 2 steps | 3 practice | 4 quiz
+  lessonPage: 1,      // lesson node: 1 concept | 2 steps & practice | 3 quiz
   lessonsTab: 0,      // active category page in the lessons overlay
   controller: null,
   cache: new Map(),   // sentence -> gold
   done: new Set(),    // `${type}:${example}`
-  session: null,      // { seq: [{lesson, example}], pos }
+  visitedPages: new Set(), // `${type}:${page}` seen at least once
+  quizDone: new Set(),     // lesson.type whose end-of-lesson quiz was finished
+  session: null,      // { seq: [{lesson, example}], pos, quizLesson }
 };
 
 // The textbook, in order. `type` is the official parser label; `rule` is the
@@ -411,12 +413,15 @@ function ensureLessonsOverlay() {
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeLessonsOverlay();
   });
-  $('#lessonsCloseBtn', overlay)?.addEventListener('click', closeLessonsOverlay);
-  $('#lessonsFreeBuilder', overlay)?.addEventListener('click', () => {
-    closeLessonsOverlay();
-    clearActiveLesson();
-    closeQuizView();
-    openBuilderView();
+  // The category rail collapses to a slim strip; its toggle flips the chevron
+  // and the aria state.
+  const tabsCol = $('#lessonsTabsCol');
+  const tabsToggle = $('#lessonsTabsToggle');
+  tabsToggle?.addEventListener('click', () => {
+    const collapsed = Boolean(tabsCol?.classList.toggle('is-collapsed'));
+    tabsToggle.setAttribute('aria-expanded', String(!collapsed));
+    tabsToggle.setAttribute('aria-label', collapsed ? 'Expand lesson categories' : 'Collapse lesson categories');
+    tabsToggle.title = collapsed ? 'Expand categories' : 'Collapse categories';
   });
 }
 
@@ -433,6 +438,7 @@ function onLessonsOverlayKeydown(e) {
 function openLessonsOverlay() {
   ensureLessonsOverlay();
   closeStepGuide();
+  closeGuideCard();
   closeQuizView();
   $('#appSidebarBackdrop')?.classList.remove('active');
   $('#sidebarToggleBtn')?.setAttribute('aria-expanded', 'false');
@@ -445,7 +451,7 @@ function openLessonsOverlay() {
   document.body.classList.add('lessons-overlay-open');
   overlay.classList.add('open');
   document.addEventListener('keydown', onLessonsOverlayKeydown);
-  $('#lessonsCloseBtn', overlay)?.focus({ preventScroll: true });
+  $('#lessonsTabs .lessons-tab.is-active', overlay)?.focus({ preventScroll: true });
 }
 
 function closeLessonsOverlay() {
@@ -465,8 +471,8 @@ function flatExamples() {
   return seq;
 }
 
-function startSession(seq, pos = 0) {
-  state.session = { seq, pos };
+function startSession(seq, pos = 0, quizLesson = null) {
+  state.session = { seq, pos, quizLesson };
   advance();
 }
 
@@ -487,11 +493,14 @@ async function advance() {
 }
 
 function finishSession() {
+  const lessonType = state.session?.quizLesson || null;
+  if (lessonType) state.quizDone.add(lessonType);
   state.session = null;
   closeBuilderView();
+  closeGuideCard();
   $('#appSidebarBackdrop')?.classList.add('active');
   document.querySelectorAll('.sidebar-item').forEach((b) => {
-    b.classList.toggle('active', b.dataset.view === 'quiz');
+    b.classList.toggle('active', b.dataset.view === 'lessons');
   });
   const body = openSubpanel("You've built every tree!");
   if (!body) return;
@@ -602,9 +611,10 @@ function renderLessons() {
 // the builder canvas in place (no sidebar tab switch).
 function openLesson(lesson) {
   closeLessonsOverlay();
+  closeGuideCard();
   // Picking a lesson leaves any quiz session behind — the learner is now in
-  // focused practice, not the session's in-order walk (this also re-enables
-  // the practice affordance bar; see startChallenge).
+  // focused practice, not the session's in-order walk. It opens on Node 1
+  // (Concept); entering Steps & Practice loads an example onto the canvas.
   state.session = null;
   const gi = lessonsGroups().findIndex((g) => g.lessons.includes(lesson));
   if (gi >= 0) state.lessonsTab = gi;
@@ -612,7 +622,7 @@ function openLesson(lesson) {
   state.lessonIndex = lesson.type;
   state.view = 'lesson';
   state.exampleIndex = 0;
-  showExample(lesson, 0);
+  renderLesson();
 }
 
 // ---------------------------------------------------------------------------
@@ -626,7 +636,127 @@ function openLesson(lesson) {
 // Practice walkthroughs, and the module's comprehensive Lesson Quiz). The
 // quiz lives exclusively on the last page, after every step and example has
 // been reviewed.
-const LESSON_PAGES = ['Concept', 'Steps', 'Practice', 'Quiz'];
+// The active lesson is a three-node branch across two panes: the upper-right
+// #quizQuestHost holds the compact controls (← All lessons, the title, the
+// node branch, the clickable examples, and the Back / Next / Start-quiz nav),
+// while the bottom-right #lessonGuideHost shows the current node's content.
+// Node 1 is the Concept, Node 2 unifies Steps & Practice (pick an example, it
+// loads on the canvas with a step-by-step guide card whose Play button walks
+// the steps), and Node 3 is the module's comprehensive quiz.
+const LESSON_NODES = [
+  { page: 1, label: 'Concept' },
+  { page: 2, label: 'Steps & Practice' },
+  { page: 3, label: 'Quiz' },
+];
+
+// A node is "completed" once its activity is done: the concept has been seen,
+// every example has been built, or the end-of-lesson quiz has been finished.
+function lessonNodeDone(lesson, page, current) {
+  if (page === 1) return page !== current && state.visitedPages.has(`${lesson.type}:1`);
+  if (page === 2) {
+    const p = lessonProgress(lesson);
+    return p.total > 0 && p.done === p.total;
+  }
+  return state.quizDone.has(lesson.type);
+}
+
+// The node-and-branch progress: Node 1 → Node 2 → Node 3, each clickable, with
+// a green ✓ once completed and a live example counter under Node 2.
+function renderLessonNodes(lesson, current) {
+  const wrap = el('div', 'sq-nodes');
+  const progress = lessonProgress(lesson);
+  LESSON_NODES.forEach((node, i) => {
+    const done = lessonNodeDone(lesson, node.page, current);
+    let cls = 'sq-node';
+    if (node.page === current) cls += ' is-active';
+    if (done) cls += ' is-done';
+    const btn = el('button', cls);
+    btn.type = 'button';
+    btn.setAttribute('aria-pressed', String(node.page === current));
+    btn.appendChild(el('span', 'sq-node-badge', done ? '✓' : String(node.page)));
+    const meta = el('span', 'sq-node-meta');
+    meta.appendChild(el('span', 'sq-node-label', node.label));
+    if (node.page === 2 && progress.total > 0) {
+      meta.appendChild(el('span', 'sq-node-count', `${progress.done}/${progress.total} examples`));
+    }
+    btn.appendChild(meta);
+    btn.addEventListener('click', () => goLessonNode(lesson, node.page));
+    wrap.appendChild(btn);
+    if (i < LESSON_NODES.length - 1) wrap.appendChild(el('span', 'sq-node-branch'));
+  });
+  return wrap;
+}
+
+// Node content: Concept (rule + detail), Steps & Practice (the active
+// example's numbered guide), or Quiz (summary + example checklist).
+function renderLessonBody(lesson, page, example) {
+  const body = el('div', 'sq-lesson-body');
+  if (page === 1) {
+    const rule = el('div', 'sq-rule');
+    rule.appendChild(el('span', 'sq-rule-tag', lesson.type));
+    const ruleBody = el('div', 'sq-rule-body');
+    ruleBody.appendChild(el('p', 'sq-rule-text', lesson.rule));
+    ruleBody.appendChild(el('p', 'sq-rule-detail', lesson.detail));
+    rule.appendChild(ruleBody);
+    body.appendChild(rule);
+    return body;
+  }
+  if (page === 2) {
+    if (state.session) {
+      body.appendChild(el('p', 'sq-hint', 'Quiz in progress — build each tree on the canvas.'));
+      return body;
+    }
+    body.appendChild(el('p', 'sq-hint',
+      `Follow the step-by-step guide on the canvas for “${example}”. `
+      + 'Press ▶ Play to animate through the steps as the ring points at each part of the tree.'));
+    const steps = el('div', 'sq-steps-box');
+    const list = el('ol', 'sq-steps');
+    lesson.steps.forEach((step, i) => {
+      const li = el('li', guide.open && i === guide.step ? 'is-current' : null, step);
+      li.dataset.step = String(i);
+      li.title = 'Show this step on the canvas';
+      li.addEventListener('click', () => openStepGuide(lesson, i));
+      list.appendChild(li);
+    });
+    steps.appendChild(list);
+    body.appendChild(steps);
+    return body;
+  }
+  const summary = el('div', 'sq-quiz-summary');
+  summary.appendChild(el('p', null,
+    'You have read the concept, walked the build steps, and practiced the examples. '
+    + 'The quiz rebuilds every example of this lesson in order — one tree each, checked live '
+    + "against SynTutor's parse. Practiced examples are marked ✓."));
+  body.appendChild(summary);
+  const list = el('ul', 'sq-quiz-list');
+  for (const sentence of lesson.examples) {
+    const item = el('li', 'sq-quiz-item');
+    const done = state.done.has(`${lesson.type}:${sentence}`);
+    item.appendChild(el('span', done ? 'sq-quiz-mark is-done' : 'sq-quiz-mark', done ? '✓' : '○'));
+    item.appendChild(el('span', 'sq-quiz-sent', sentence));
+    list.appendChild(item);
+  }
+  body.appendChild(list);
+  return body;
+}
+
+// Move between nodes. Entering Steps & Practice loads the first not-yet-built
+// example so the canvas and its guide card are ready to follow.
+function goLessonNode(lesson, page) {
+  const target = Math.max(1, Math.min(page, LESSON_NODES.length));
+  if (target === 2) {
+    state.lessonPage = 2;
+    const first = lesson.examples.findIndex((e) => !state.done.has(`${lesson.type}:${e}`));
+    showExample(lesson, first < 0 ? 0 : first);
+    return;
+  }
+  state.lessonPage = target;
+  // Leaving Steps & Practice takes the example spotlight and its canvas card
+  // with it; re-entering Node 2 reloads the example and reopens both.
+  closeStepGuide();
+  closeGuideCard();
+  renderLesson();
+}
 
 function renderLesson() {
   const lesson = LESSONS.find((l) => l.type === state.lessonIndex);
@@ -636,15 +766,17 @@ function renderLesson() {
   if (!host || !guideHost) return;
   const index = Math.max(0, Math.min(state.exampleIndex || 0, lesson.examples.length - 1));
   state.exampleIndex = index;
-  state.lessonPage = Math.max(1, Math.min(state.lessonPage || 1, LESSON_PAGES.length));
+  state.lessonPage = Math.max(1, Math.min(state.lessonPage || 1, LESSON_NODES.length));
   const page = state.lessonPage;
   const example = lesson.examples[index];
+  state.visitedPages.add(`${lesson.type}:${page}`);
 
-  // The spotlight guide only belongs on this lesson's Steps page, for the
-  // example it was opened on; a page pill, example switch, or new lesson
-  // dismisses it. Plain re-renders (a solved example refreshing the check-
-  // marks) keep it alive — updateStepGuide() re-syncs the highlight below.
-  if (guide.open && (page !== 2 || guide.lesson !== lesson.type || guide.example !== example)) {
+  // The spotlight guide only belongs to the example it was opened on; a node
+  // switch, example switch, or new lesson dismisses it. Plain re-renders (a
+  // solved example refreshing the checkmarks) keep it alive — syncGuideCard()
+  // re-syncs the highlight below.
+  if (guide.open
+    && (guide.lesson !== lesson.type || guide.example !== example || page !== 2)) {
     closeStepGuide();
   }
 
@@ -658,124 +790,37 @@ function renderLesson() {
   wrap.appendChild(back);
   wrap.appendChild(el('h2', 'sq-title', `${lesson.type} · ${lesson.title}`));
 
-  const pager = el('div', 'sq-pager');
-  LESSON_PAGES.forEach((label, i) => {
-    const pill = el('button', i + 1 === page ? 'sq-pager-pill is-active' : 'sq-pager-pill', `${i + 1} ${label}`);
-    pill.type = 'button';
-    pill.setAttribute('aria-pressed', String(i + 1 === page));
-    pill.addEventListener('click', () => {
-      state.lessonPage = i + 1;
-      renderLesson();
-    });
-    pager.appendChild(pill);
+  wrap.appendChild(renderLessonNodes(lesson, page));
+
+  // Clickable examples: pick one to seed its words on the canvas and follow its
+  // step-by-step guide. A built example gets a green ✓.
+  const examples = el('div', 'sq-examples');
+  lesson.examples.forEach((sentence, i) => {
+    const done = state.done.has(`${lesson.type}:${sentence}`);
+    let cls = 'sq-example';
+    if (i === index) cls += ' is-active';
+    if (done) cls += ' is-done';
+    const btn = el('button', cls);
+    btn.type = 'button';
+    btn.title = sentence;
+    btn.setAttribute('aria-label', `Example ${i + 1}: ${sentence}`);
+    btn.appendChild(el('span', 'sq-example-mark', done ? '✓' : String(i + 1)));
+    btn.appendChild(el('span', 'sq-example-sentence', sentence));
+    btn.addEventListener('click', () => showExample(lesson, i));
+    examples.appendChild(btn);
   });
-  wrap.appendChild(pager);
-
-  // The example picker sits with the controls (not inside a page), so the
-  // learner can switch examples from any of the four pages.
-  if (lesson.examples.length > 1) {
-    const pills = el('div', 'sq-example-pills');
-    lesson.examples.forEach((sentence, i) => {
-      let cls = 'sq-example-pill';
-      if (i === index) cls += ' is-active';
-      else if (state.done.has(`${lesson.type}:${sentence}`)) cls += ' is-done';
-      const pill = el('button', cls, String(i + 1));
-      pill.type = 'button';
-      pill.title = sentence;
-      pill.setAttribute('aria-label', `Example ${i + 1}: ${sentence}`);
-      pill.addEventListener('click', () => showExample(lesson, i));
-      pills.appendChild(pill);
-    });
-    wrap.appendChild(pills);
-  }
-
-  // ---- Current page content, rendered into the bottom-right guide pane ----
-  const body = el('div', 'sq-lesson-body');
-  if (page === 1) {
-    const rule = el('div', 'sq-rule');
-    rule.appendChild(el('span', 'sq-rule-tag', lesson.type));
-    const ruleBody = el('div', 'sq-rule-body');
-    ruleBody.appendChild(el('p', 'sq-rule-text', lesson.rule));
-    ruleBody.appendChild(el('p', 'sq-rule-detail', lesson.detail));
-    rule.appendChild(ruleBody);
-    body.appendChild(rule);
-  } else if (page === 2) {
-    const steps = el('div', 'sq-steps-box');
-    const stepsHead = el('div', 'sq-steps-head');
-    stepsHead.appendChild(el('span', 'sq-steps-label', 'Target sentence'));
-    stepsHead.appendChild(el('span', 'sq-steps-sentence', example));
-    const guideBtn = el('button', 'sq-steps-guide', guide.open ? '■ Stop guide' : '▶ Guide me');
-    guideBtn.type = 'button';
-    guideBtn.title = 'Point at each step on the canvas, one at a time';
-    guideBtn.setAttribute('aria-pressed', String(guide.open));
-    guideBtn.addEventListener('click', () => {
-      if (guide.open) closeStepGuide();
-      else openStepGuide(lesson, 0);
-    });
-    stepsHead.appendChild(guideBtn);
-    steps.appendChild(stepsHead);
-    const list = el('ol', 'sq-steps');
-    lesson.steps.forEach((step, i) => {
-      const li = el('li', guide.open && i === guide.step ? 'is-current' : null, step);
-      li.title = 'Show this step on the canvas';
-      li.addEventListener('click', () => openStepGuide(lesson, i));
-      list.appendChild(li);
-    });
-    steps.appendChild(list);
-    body.appendChild(steps);
-  } else if (page === 3) {
-    body.appendChild(el('div', 'sq-group', 'Practice walkthroughs'));
-    lesson.examples.forEach((sentence, i) => {
-      const row = el('button', 'sq-challenge');
-      row.type = 'button';
-      if (i === index) row.classList.add('is-active');
-      const isDone = state.done.has(`${lesson.type}:${sentence}`);
-      if (isDone) row.classList.add('is-done');
-      row.appendChild(el('span', 'sq-challenge-mark', isDone ? '✓' : '▸'));
-      row.appendChild(el('span', 'sq-challenge-sentence', sentence));
-      // Pick an example and drop straight into its step-by-step walkthrough.
-      row.addEventListener('click', () => {
-        state.lessonPage = 2;
-        showExample(lesson, i);
-      });
-      body.appendChild(row);
-    });
-  } else {
-    // Page 4: the module's only quiz, at the very end of the lesson.
-    body.appendChild(el('div', 'sq-group', 'Lesson quiz'));
-    const summary = el('div', 'sq-quiz-summary');
-    summary.appendChild(el('p', null,
-      'You have read the concept, walked the build steps, and practiced the examples. '
-      + 'The quiz rebuilds every example of this lesson in order — one tree each, checked live '
-      + "against SynTutor's parse. Practiced examples are marked ✓."));
-    body.appendChild(summary);
-    const list = el('ul', 'sq-quiz-list');
-    for (const sentence of lesson.examples) {
-      const item = el('li', 'sq-quiz-item');
-      const done = state.done.has(`${lesson.type}:${sentence}`);
-      item.appendChild(el('span', done ? 'sq-quiz-mark is-done' : 'sq-quiz-mark', done ? '✓' : '○'));
-      item.appendChild(el('span', 'sq-quiz-sent', sentence));
-      list.appendChild(item);
-    }
-    body.appendChild(list);
-  }
+  wrap.appendChild(examples);
 
   const nav = el('div', 'sq-lesson-nav');
   const prev = el('button', 'sq-ghost', '← Back');
   prev.type = 'button';
   prev.disabled = page === 1;
-  prev.addEventListener('click', () => {
-    state.lessonPage = Math.max(1, page - 1);
-    renderLesson();
-  });
+  prev.addEventListener('click', () => goLessonNode(lesson, page - 1));
   nav.appendChild(prev);
-  if (page < LESSON_PAGES.length) {
+  if (page < LESSON_NODES.length) {
     const next = el('button', 'sq-primary', 'Next →');
     next.type = 'button';
-    next.addEventListener('click', () => {
-      state.lessonPage = page + 1;
-      renderLesson();
-    });
+    next.addEventListener('click', () => goLessonNode(lesson, page + 1));
     nav.appendChild(next);
   } else {
     const quiz = el('button', 'sq-primary', 'Start quiz');
@@ -787,12 +832,11 @@ function renderLesson() {
 
   host.appendChild(wrap);
 
-  // The page content lives in the bottom pane, above the node inspector.
+  // The node content lives in the bottom pane, above the node inspector.
   guideHost.innerHTML = '';
-  guideHost.appendChild(body);
+  guideHost.appendChild(renderLessonBody(lesson, page, example));
 
-  // Keep an open spotlight guide in sync with the fresh DOM (the Steps list
-  // and the guide button were just re-created).
+  // Keep an open spotlight guide in sync with the fresh DOM.
   if (guide.open) updateStepGuide();
 }
 
@@ -808,9 +852,10 @@ function showExample(lesson, index) {
 // lesson's final page — the spotlight guide has no place once the quiz starts.
 function startLessonQuiz(lesson) {
   closeStepGuide();
+  closeGuideCard();
   closeQuizView();
   $('#appSidebarBackdrop')?.classList.remove('active');
-  startSession(lesson.examples.map((example) => ({ lesson, example })));
+  startSession(lesson.examples.map((example) => ({ lesson, example })), 0, lesson.type);
 }
 
 // ---------------------------------------------------------------------------
@@ -829,9 +874,9 @@ function setInputSentence(text) {
   if (highlights) highlights.textContent = text;
 }
 
-// Tell the workspace header which lesson/quiz is active so #chatTitle reads
-// "NP · Noun phrase" in a lesson and "Quiz · NP" during a session.
-// main.js restores the last analysed sentence via clearActiveLesson().
+// Keep the workspace controller informed of which lesson/quiz is active
+// ("NP · Noun phrase" in a lesson, "Quiz · NP" during a session). main.js
+// restores the last analysed sentence via clearActiveLesson().
 function syncChatTitle(lesson) {
   const ctl = state.controller;
   if (!ctl || typeof ctl.setChatTitle !== 'function') return;
@@ -894,6 +939,10 @@ async function startChallenge(lesson, example, onDone) {
       onDone?.(ok);
     },
   });
+  // Lesson practice shows the step-by-step guide card docked at the canvas's
+  // bottom-left; quiz sessions get no card.
+  if (practice) openGuideCard(lesson, example);
+  else closeGuideCard();
 }
 
 function record(lesson, example, ok) {
@@ -911,6 +960,7 @@ function record(lesson, example, ok) {
 // standalone quiz, or builder close.
 export function clearActiveLesson() {
   closeStepGuide();
+  closeGuideCard();
   closeLessonsOverlay();
   closeSubpanel();
   state.view = 'lessons';
@@ -937,39 +987,116 @@ function refreshLessonPanel() {
 // ---------------------------------------------------------------------------
 // Interactive step guide — a spotlight that points at what each step means
 // ---------------------------------------------------------------------------
-// Opened from the Steps page ("▶ Guide me", or any step row). A fixed ring
+// A step-by-step guide card is docked at the bottom-left of the canvas while a
+// lesson example is loaded. Its step rows are clickable and its ▶ Play button
+// animates through the steps. A fixed spotlight ring (pointer-events: none)
 // highlights the canvas region, word row, phrase box, or connector dot the
-// current step talks about, with a tooltip card carrying the step text and
-// Prev / Next controls. The layer is pointer-events: none (only the card is
-// interactive), so the learner can still right-click, drag, and re-route on
-// the canvas while following along. A rAF loop keeps the ring glued to its
-// target while the canvas pans, zooms, or the boxes move.
-const guide = { open: false, step: 0, lesson: null, example: null, raf: 0 };
+// current step talks about; the learner can still right-click, drag, and
+// re-route on the canvas while following along. A rAF loop keeps the ring
+// glued to its target while the canvas pans, zooms, or the boxes move.
+const guide = { open: false, step: 0, lesson: null, example: null, raf: 0, playing: false, timer: 0 };
 
 function ensureStepGuideDom() {
   if ($('#stepGuide')) return;
   const wrap = el('div', 'step-guide');
   wrap.id = 'stepGuide';
   wrap.hidden = true;
-  wrap.innerHTML =
-    '<div class="step-guide-ring" aria-hidden="true"></div>'
-    + '<div class="step-guide-card" role="dialog" aria-label="Step-by-step guide">'
-    + '<div class="step-guide-top"><span class="step-guide-kicker"></span>'
-    + '<button type="button" class="step-guide-close" aria-label="Close guide">×</button></div>'
-    + '<p class="step-guide-text"></p>'
-    + '<div class="step-guide-nav">'
-    + '<button type="button" class="sq-ghost step-guide-prev">← Previous</button>'
-    + '<button type="button" class="sq-primary step-guide-next">Next →</button>'
-    + '</div></div>';
+  wrap.innerHTML = '<div class="step-guide-ring" aria-hidden="true"></div>';
   document.body.appendChild(wrap);
-  wrap.querySelector('.step-guide-close').addEventListener('click', closeStepGuide);
-  wrap.querySelector('.step-guide-prev').addEventListener('click', () => stepGuideMove(-1));
-  wrap.querySelector('.step-guide-next').addEventListener('click', () => {
-    // On the last step the primary button finishes the guide.
-    const lesson = LESSONS.find((l) => l.type === guide.lesson);
-    if (lesson && guide.step >= lesson.steps.length - 1) closeStepGuide();
-    else stepGuideMove(1);
+}
+
+function ensureGuideCard() {
+  const existing = $('#canvasGuideCard');
+  if (existing) return existing;
+  const stage = $('.canvas-stage');
+  if (!stage) return null;
+  const card = el('div', 'canvas-guide-card');
+  card.id = 'canvasGuideCard';
+  card.hidden = true;
+  const head = el('div', 'canvas-guide-head');
+  head.appendChild(el('span', 'canvas-guide-label', 'Step-by-step guide'));
+  const play = el('button', 'canvas-guide-play', '▶ Play');
+  play.type = 'button';
+  play.title = 'Animate through the steps, pointing at the canvas';
+  play.addEventListener('click', toggleGuidePlay);
+  head.appendChild(play);
+  card.appendChild(head);
+  card.appendChild(el('p', 'canvas-guide-sentence'));
+  card.appendChild(el('ol', 'canvas-guide-list'));
+  stage.appendChild(card);
+  return card;
+}
+
+function openGuideCard(lesson, example) {
+  const card = ensureGuideCard();
+  if (!card) return;
+  card.querySelector('.canvas-guide-sentence').textContent = example;
+  const list = card.querySelector('.canvas-guide-list');
+  list.textContent = '';
+  lesson.steps.forEach((step, i) => {
+    const li = el('li', guide.open && guide.lesson === lesson.type && i === guide.step ? 'is-current' : null, step);
+    li.dataset.step = String(i);
+    li.title = 'Show this step on the canvas';
+    li.addEventListener('click', () => openStepGuide(lesson, i));
+    list.appendChild(li);
   });
+  card.hidden = false;
+  syncGuideCard();
+}
+
+function closeGuideCard() {
+  stopGuidePlay();
+  const card = $('#canvasGuideCard');
+  if (card) card.hidden = true;
+}
+
+// Reflect the live guide state on the canvas card and both step lists: the
+// Play/Stop button follows `guide.playing` and the highlighted row follows
+// `guide.step`. Called whenever the guide opens, moves, plays, or stops, and on
+// every lesson re-render so the checkmarks and highlight stay truthful.
+function syncGuideCard() {
+  const play = $('#canvasGuideCard')?.querySelector('.canvas-guide-play');
+  if (play) {
+    play.textContent = guide.playing ? '■ Stop' : '▶ Play';
+    play.setAttribute('aria-pressed', String(guide.playing));
+    play.classList.toggle('is-playing', guide.playing);
+  }
+  document.querySelectorAll('.canvas-guide-list li, .sq-steps li').forEach((li) => {
+    li.classList.toggle('is-current', guide.open && li.dataset.step === String(guide.step));
+  });
+}
+
+function toggleGuidePlay() {
+  const lesson = LESSONS.find((l) => l.type === guide.lesson);
+  if (!lesson) return;
+  if (guide.playing) {
+    stopGuidePlay();
+    return;
+  }
+  if (!guide.open || guide.lesson !== lesson.type) openStepGuide(lesson, 0);
+  startGuidePlay(lesson);
+}
+
+function startGuidePlay(lesson) {
+  stopGuidePlay(false);
+  guide.playing = true;
+  syncGuideCard();
+  const tick = () => {
+    if (!guide.open || !guide.playing || guide.step >= lesson.steps.length - 1) {
+      stopGuidePlay();
+      return;
+    }
+    guide.step += 1;
+    updateStepGuide();
+    guide.timer = window.setTimeout(tick, 2600);
+  };
+  guide.timer = window.setTimeout(tick, 2600);
+}
+
+function stopGuidePlay(render = true) {
+  guide.playing = false;
+  if (guide.timer) { window.clearTimeout(guide.timer); guide.timer = 0; }
+  if (render) syncGuideCard();
 }
 
 function openStepGuide(lesson, step = 0) {
@@ -989,15 +1116,11 @@ function closeStepGuide() {
   guide.open = false;
   if (guide.raf) cancelAnimationFrame(guide.raf);
   guide.raf = 0;
+  stopGuidePlay(false);
   const wrap = $('#stepGuide');
   if (wrap) wrap.hidden = true;
   document.removeEventListener('keydown', onStepGuideKeydown);
-  document.querySelectorAll('.sq-steps li.is-current').forEach((li) => li.classList.remove('is-current'));
-  const btn = $('.sq-steps-guide');
-  if (btn) {
-    btn.textContent = '▶ Guide me';
-    btn.setAttribute('aria-pressed', 'false');
-  }
+  syncGuideCard();
 }
 
 function stepGuideMove(d) {
@@ -1019,64 +1142,35 @@ function onStepGuideKeydown(e) {
   else if (e.key === 'ArrowLeft') stepGuideMove(-1);
 }
 
-// Push the guide state into the tooltip card and the Steps list.
+// Push the guide state into the canvas card and both step lists. The ring's
+// position is interpolated by the rAF loop, so this only syncs the chrome.
 function updateStepGuide() {
   const lesson = LESSONS.find((l) => l.type === guide.lesson);
   if (!lesson) return closeStepGuide();
-  const wrap = $('#stepGuide');
-  if (!wrap) return;
-  const last = lesson.steps.length - 1;
-  wrap.querySelector('.step-guide-kicker').textContent =
-    `Step ${guide.step + 1} of ${lesson.steps.length} · ${lesson.type}`;
-  wrap.querySelector('.step-guide-text').textContent = lesson.steps[guide.step];
-  wrap.querySelector('.step-guide-prev').disabled = guide.step === 0;
-  wrap.querySelector('.step-guide-next').textContent = guide.step === last ? 'Done ✓' : 'Next →';
-  // Highlight the matching row in the Steps list + flip the launch button.
-  document.querySelectorAll('.sq-steps li').forEach((li, i) => {
-    li.classList.toggle('is-current', i === guide.step);
-  });
-  const btn = $('.sq-steps-guide');
-  if (btn) {
-    btn.textContent = '■ Stop guide';
-    btn.setAttribute('aria-pressed', 'true');
-  }
+  syncGuideCard();
 }
 
-// One frame of the spotlight: resolve the step's target, park the ring on it,
-// seat the card beside it (clamped to the viewport), and schedule the next
-// frame. No CSS transitions on position — the rAF loop is the interpolation.
+// One frame of the spotlight: resolve the step's target and park the ring on
+// it. No CSS transitions on position — the rAF loop is the interpolation, and
+// it tracks the target as the canvas pans, zooms, or the boxes move.
 function guideLoopFrame() {
   guide.raf = 0;
   if (!guide.open) return;
   const lesson = LESSONS.find((l) => l.type === guide.lesson);
   const wrap = $('#stepGuide');
   if (!lesson || !wrap) return closeStepGuide();
+  const ring = wrap.querySelector('.step-guide-ring');
   const box = canvasGuideBox(guideTargetFor(lesson.steps[guide.step] || ''))
     || canvasGuideBox({ kind: 'canvas' });
-  const ring = wrap.querySelector('.step-guide-ring');
-  const card = wrap.querySelector('.step-guide-card');
   if (box) {
     ring.style.display = '';
     ring.style.left = `${Math.round(box.left - 6)}px`;
     ring.style.top = `${Math.round(box.top - 6)}px`;
     ring.style.width = `${Math.round(box.width + 12)}px`;
     ring.style.height = `${Math.round(box.height + 12)}px`;
-    // Seat the card to the ring's right, then its left, then clamp inside.
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    const cw = card.offsetWidth;
-    const ch = card.offsetHeight;
-    let left = box.left + box.width + 14;
-    if (left + cw > vw - 10) left = box.left - cw - 14;
-    if (left < 10) left = Math.max(10, Math.min(box.left, vw - cw - 10));
-    const top = Math.max(10, Math.min(box.top, vh - ch - 10));
-    card.style.left = `${Math.round(left)}px`;
-    card.style.top = `${Math.round(top)}px`;
   } else {
-    // No target (canvas hidden): dim nothing, but keep the card reachable.
+    // No target (canvas hidden): dim nothing and keep the learner's view clear.
     ring.style.display = 'none';
-    card.style.left = `${Math.round(window.innerWidth - 340)}px`;
-    card.style.top = '70px';
   }
   guide.raf = requestAnimationFrame(guideLoopFrame);
 }

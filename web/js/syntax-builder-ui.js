@@ -90,7 +90,7 @@ export function builderModel() {
 // ---------------------------------------------------------------------------
 
 export function openBuilderView(opts = {}) {
-  const bar = document.getElementById('builderBar');
+  const bar = document.getElementById('canvasControls');
   const canvas = document.getElementById('builderCanvas');
   const treeCanvas = document.getElementById('treeCanvas');
   if (!bar || !canvas) return;
@@ -116,30 +116,37 @@ export function openBuilderView(opts = {}) {
 
   // A quiz shows no builder chrome at all — the sentence lives in the input box
   // and the tree is checked automatically. Lesson practice keeps a slim hint
-  // bar instead: the canvas is the same node editor as the standalone Syntax
-  // Builder (right-click to add boxes, drag a dot to connect, grab a link end
-  // to re-route or delete), so spell the affordances out where they apply.
+  // floating in the upper-left of the canvas: the canvas is the same node
+  // editor as the standalone Syntax Builder (right-click to add boxes, drag a
+  // dot to connect, grab a link end to re-route or delete), so spell the
+  // affordances out where they apply.
   const practice = Boolean(state.challenge) && Boolean(opts.practice);
   bar.hidden = Boolean(state.challenge) && !practice;
+  const target = document.getElementById('builderTarget');
+  const check = document.getElementById('builderCheck');
+  const next = document.getElementById('builderNext');
+  const done = document.getElementById('builderDone');
+  const hint = document.getElementById('builderHint');
   if (!state.challenge) {
-    document.getElementById('builderTarget').hidden = true;
-    document.getElementById('builderCheck').hidden = true;
-    document.getElementById('builderNext').hidden = true;
-    document.getElementById('builderClose').hidden = false;
-    // Remove the builder instructions from the top of the canvas; only the
-    // action buttons (Clear / Build tree / Done) remain.
-    document.getElementById('builderTitle').textContent = '';
-    const hint = document.getElementById('builderHint');
-    hint.textContent = '';
-    hint.hidden = true;
+    // Standalone Syntax Builder: only the action buttons (Clear / Build tree /
+    // Done) float over the canvas — no instructions, no target sentence.
+    if (target) target.hidden = true;
+    if (check) check.hidden = true;
+    if (next) next.hidden = true;
+    if (done) done.hidden = false;
+    if (hint) { hint.textContent = ''; hint.hidden = true; }
   } else if (practice) {
-    document.getElementById('builderTitle').textContent = 'Lesson practice';
-    document.getElementById('builderHint').textContent =
-      'Right-click to add a phrase · drag a dot to connect · grab a link end to re-route or delete';
-    document.getElementById('builderTarget').hidden = true;
-    document.getElementById('builderCheck').hidden = true;
-    document.getElementById('builderNext').hidden = true;
-    document.getElementById('builderClose').hidden = true;
+    // Lesson practice keeps the affordances spelled out; the lesson's own node
+    // navigation handles leaving, so there is no Done button here.
+    if (hint) {
+      hint.textContent =
+        'Right-click to add a phrase · drag a dot to connect · grab a link end to re-route or delete';
+      hint.hidden = false;
+    }
+    if (target) target.hidden = true;
+    if (check) check.hidden = true;
+    if (next) next.hidden = true;
+    if (done) done.hidden = true;
   }
   hideToast();
   resize();
@@ -179,7 +186,7 @@ function measureWords(nodes) {
 }
 
 export function closeBuilderView() {
-  const bar = document.getElementById('builderBar');
+  const bar = document.getElementById('canvasControls');
   const canvas = document.getElementById('builderCanvas');
   const treeCanvas = document.getElementById('treeCanvas');
   if (!bar) return;
@@ -197,7 +204,7 @@ let onBuilderClose = () => {};
 export function setBuilderCloseHandler(fn) { onBuilderClose = fn || (() => {}); }
 
 export function isBuilderOpen() {
-  const bar = document.getElementById('builderBar');
+  const bar = document.getElementById('canvasControls');
   return !!bar && !bar.hidden;
 }
 
@@ -244,6 +251,7 @@ function ensureWired() {
     draw();
   });
   document.getElementById('builderSnap')?.addEventListener('click', buildTree);
+  document.getElementById('builderDone')?.addEventListener('click', () => closeBuilderView());
   document.getElementById('builderCheck')?.addEventListener('click', checkTree);
   document.getElementById('builderNext')?.addEventListener('click', () => {
     const cb = state.challenge && state.challenge.onNext;
@@ -1411,7 +1419,7 @@ function emptyPhraseDetail(n) {
 }
 
 // Surface the first error in the right-hand panel (mirroring the tutor's
-// node-card), or a summary when the tree is clean.
+// node detail), or a summary when the tree is clean.
 function reportBuildResult(sentence, errors, verdictLine) {
   if (errors.size) {
     const firstId = [...errors.keys()][0];
