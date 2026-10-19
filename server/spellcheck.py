@@ -10,7 +10,13 @@ in order of preference:
 
 1. the ``SYNTUTOR_DICT`` environment variable (a newline-separated word file),
 2. the system dictionary (``/usr/share/dict/words``),
-3. spaCy's vocabulary (already a hard dependency of the pipeline).
+3. the 82k-word English frequency dictionary bundled with SymSpell
+   (``symspellpy``) -- installed with the project, so it is available on
+   Windows and in the Docker image too, where neither of the above exists.
+
+When *no* lexicon can be loaded, ``known_word`` accepts every token instead of
+rejecting it: a missing typo check is a far safer failure mode than flagging
+valid words as unknown.
 
 Spelling repair is powered by **SymSpell** (``symspellpy``): a fast,
 frequency-ranked symmetric-delete lookup against an 82k-word English
@@ -37,7 +43,6 @@ _SYSTEM_DICTS = ('/usr/share/dict/words', '/usr/dict/words')
 
 _WORDS = None
 _WORDS_BY_LEN = None
-_SPACY_VOCAB = None
 _STOP_PUNCT = '.,!?;:"\'()[]{}'
 
 
@@ -50,12 +55,18 @@ def _load_words():
     if env:
         paths.append(env)
     paths.extend(_SYSTEM_DICTS)
+    freq = _frequency_dict_path()
+    if freq:
+        paths.append(freq)
     words = set()
     for path in paths:
         try:
             with open(path, encoding='utf-8', errors='ignore') as fh:
                 for line in fh:
-                    w = line.strip()
+                    # Frequency lists are "word count"; plain word lists are
+                    # one word per line.  The first field covers both.
+                    parts = line.split()
+                    w = parts[0] if parts else ''
                     if w and w.isascii() and w.replace("'", '').isalpha():
                         words.add(w.lower())
             if words:
@@ -66,16 +77,17 @@ def _load_words():
     return _WORDS
 
 
-def _get_spacy_vocab():
-    global _SPACY_VOCAB
-    if _SPACY_VOCAB is not None:
-        return _SPACY_VOCAB
+def _frequency_dict_path():
+    """Path of the 82k-word frequency dictionary shipped with symspellpy."""
     try:
-        import spacy
-        _SPACY_VOCAB = spacy.blank('en').vocab
-    except Exception:  # noqa: BLE001
-        _SPACY_VOCAB = False
-    return _SPACY_VOCAB
+        import symspellpy
+        path = os.path.join(os.path.dirname(symspellpy.__file__),
+                            'frequency_dictionary_en_82_765.txt')
+        if os.path.exists(path):
+            return path
+    except Exception:  # noqa: BLE001 - optional dependency
+        pass
+    return None
 
 
 # --------------------------------------------------------------------------- #
@@ -100,13 +112,11 @@ def _get_symspell():
     if _SYMSPELL_TRIED:
         return _SYMSPELL
     _SYMSPELL_TRIED = True
+    path = _frequency_dict_path()
+    if not path:
+        return None
     try:
-        import symspellpy
         from symspellpy import SymSpell
-        path = os.path.join(os.path.dirname(symspellpy.__file__),
-                            'frequency_dictionary_en_82_765.txt')
-        if not os.path.exists(path):
-            return None
         engine = SymSpell(max_dictionary_edit_distance=_SYMSPELL_MAX_DIST,
                           prefix_length=_SYMSPELL_PREFIX)
         engine.load_dictionary(path, term_index=0, count_index=1)
@@ -218,11 +228,10 @@ def known_word(word):
         if _contraction_ok(core):
             return True
     if not words:
-        # No dictionary: fall back to spaCy's vocab, then accept by default.
-        vocab = _get_spacy_vocab()
-        if not vocab:
-            return True
-        return not vocab[core].is_oov
+        # No lexicon at all (no dictionary, no symspellpy): accept by
+        # default.  spaCy's *blank* vocabulary marks every token OOV, so
+        # consulting it here would reject valid words like "is".
+        return True
     for variant in _morph_variants(core):
         if variant in words:
             return True

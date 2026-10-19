@@ -47,6 +47,19 @@ SynTutor/
   web/login.html          Clerk sign-in / sign-up shell
   package.json            {build, serve, audit} npm scripts
   README.md               quick start + spec-level overview
+<<<<<<< HEAD
+  RULES.md                full rule-matrix inventory (sibling doc)
+  THESIS.md               original design specification (input document)
+  ARCHITECTURE.md         this file
+  css/style.css           394-line design system (§4)
+  js/main.js              FSM + pipeline orchestration, highlighting, auth, and history
+  js/renderer.js          387 lines: canvas layout/draw/hitbox/zoom/keyboard
+  js/ui.js                291 lines: DOM views, explainer, dev panel, logs
+  server/app.py           240 lines: HTTP server + payload assembly
+  server/parse_engine.py  202 lines: NLP load, parse-string -> node graph
+  server/matrix.py        1615 lines: rule matrix + XAI + remediation
+  scripts/audit_rules.py  238 lines: gold-corpus coverage audit (exit-code gate)
+=======
   docs/                   ARCHITECTURE.md (this file) + rule/thesis sources
   web/css/style.css       394-line design system (§4)
   web/js/main.js          FSM + pipeline orchestration, highlighting, auth, and history
@@ -59,6 +72,7 @@ SynTutor/
   scripts/audit_rules.py  gold-corpus coverage audit (exit-code gate)
   vercel.json             Vercel config (outputDirectory: dist, framework: null)
   Dockerfile              local full-stack image (server/app.py on port 7860)
+>>>>>>> 3a6c291729a3a5986acf2232a8be1fd637dc0182
 ```
 
 ### The seven pipeline stages (as implemented)
