@@ -8,6 +8,8 @@
   --accent-strong: #5946d4;
   --accent-soft: #efeafc;
   --ok: #2e8b57;
+  /* Semantic alias for the success colour (completed stages, solved trees). */
+  --success: var(--ok);
   --err: #d64545;
   --warn: #c98f00;
   --xp: #d97706;
@@ -126,6 +128,45 @@ button:disabled {
   --subpanel-w: 336px;
 }
 .app-shell:has(.app-sidebar.expanded) { --rail-w: 248px; }
+
+/* --------------------------------------------------------------------------
+   Left rail: one uniform width transition
+   -------------------------------------------------------------------------- */
+/* width, min-width, and max-width share a single 200ms curve so the rail
+   collapses in one continuous motion instead of several competing ones, and
+   `will-change`/`contain` keep the compositor on the width alone — no layout
+   thrashing from the children fading in and out mid-animation. */
+#appSidebar {
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow 200ms cubic-bezier(0.2, 0, 0, 1),
+    width 200ms cubic-bezier(0.2, 0, 0, 1),
+    min-width 200ms cubic-bezier(0.2, 0, 0, 1),
+    max-width 200ms cubic-bezier(0.2, 0, 0, 1);
+  will-change: width;
+  contain: layout style;
+}
+
+/* --------------------------------------------------------------------------
+   Rail active state — exactly one destination at a time
+   -------------------------------------------------------------------------- */
+/* main.js owns the `active` class and keeps it exclusive: the Syntax
+   Generator, Lessons, Syntax Builder, History, Leaderboard, and Achievements
+   never highlight at the same time, and the active one is always the module
+   the workspace is currently showing. */
+.sidebar-item.active {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+.sidebar-item.active svg {
+  color: var(--accent-strong);
+  stroke: var(--accent-strong);
+}
+/* Icons that paint a filled shape take the accent fill as well; the hollow,
+   stroke-only icons keep their shape. */
+.sidebar-item.active svg:not([fill="none"]) {
+  fill: var(--accent-strong);
+}
 
 .menu-btn {
   background: transparent;
@@ -357,31 +398,61 @@ body.lessons-overlay-open .pane-input { visibility: hidden; }
   position: relative;
   flex: 1 1 auto;
   min-width: 0;
+  width: 100%;
   height: 100%;
 }
 
-/* The editor fills the upper-right pane edge-to-edge — no card chrome,
-   no gaps: just the text (or the highlight overlay while locked). */
+/* While the Syntax Builder is open, the input box is a mirror of the canvas:
+   it shows the words that are on the canvas and stays read-only, so it reads
+   as a live readout rather than a second editing surface. */
+body.builder-active .input-editor {
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+body.builder-active #inputText { cursor: default; }
+
+/* The editor fills the upper-right pane edge-to-edge — no card chrome, no
+   gaps: just the text (or the highlight overlay while locked).
+   The textarea and the highlight overlay share ONE box model — same inset,
+   padding, font, and line height — so the highlights sit exactly under the
+   text they belong to. */
 #inputHighlights,
 #inputText {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   min-height: 0;
   max-height: none;
-  padding: 16px 18px;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  font: 15px/1.55 Inter, "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 18px 20px;
+  box-sizing: border-box;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: inherit;
   white-space: pre-wrap;
+  word-wrap: break-word;
   overflow-wrap: break-word;
   scrollbar-gutter: stable;
   transition: box-shadow var(--dur-fast) var(--ease);
 }
 
+/* The highlight overlay is only a surface for the analysis spans. It never
+   renders text of its own — the native textarea placeholder is the only
+   prompt in the input panel, so the two can never overlap. */
+#inputHighlights::before,
+#inputHighlights::after {
+  content: none !important;
+}
+
+/* The overlay sits above the textarea: while the input is locked it shows the
+   analysed text and its spans, and the textarea's own text stays transparent
+   underneath. */
 #inputHighlights {
-  position: absolute;
-  inset: 0;
   z-index: 2;
   overflow: hidden;
   color: var(--ink);
@@ -389,24 +460,18 @@ body.lessons-overlay-open .pane-input { visibility: hidden; }
 }
 
 #inputText {
-  position: relative;
   z-index: 1;
   resize: none;
   color: var(--ink);
-  outline: none;
+  caret-color: var(--accent);
 }
 
+/* The one and only placeholder in the input panel. */
 #inputText::placeholder {
   color: var(--muted);
-  opacity: 1;
-}
-
-#inputHighlights:empty::before {
-  content: attr(data-hint);
-  display: block;
-  color: var(--muted);
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
+  opacity: 0.7;
+  font: inherit;
+  line-height: inherit;
 }
 
 #inputText[readonly] {
@@ -417,7 +482,8 @@ body.lessons-overlay-open .pane-input { visibility: hidden; }
 }
 
 #inputText.editing {
-  box-shadow: inset 0 0 0 2px var(--focus-ring);
+  /* The focus ring is the only chrome the editor ever shows. */
+  box-shadow: inset 0 0 0 2px var(--focus-ring) !important;
   color: var(--ink);
   caret-color: var(--accent);
   cursor: text;
@@ -604,8 +670,7 @@ body:has(#newSessionBtn.active) #inputClearBtn:not([hidden]) { display: flex; }
   color: var(--ink);
   letter-spacing: -0.2px;
 }
-#closeDrawerBtn,
-#historyNewSessionBtn {
+#closeDrawerBtn {
   background: transparent;
   border: none;
   color: var(--muted);
@@ -619,13 +684,11 @@ body:has(#newSessionBtn.active) #inputClearBtn:not([hidden]) { display: flex; }
   flex: 0 0 auto;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
-#closeDrawerBtn:hover,
-#historyNewSessionBtn:hover {
+#closeDrawerBtn:hover {
   background: var(--accent-soft);
   color: var(--accent);
 }
-#closeDrawerBtn:active,
-#historyNewSessionBtn:active {
+#closeDrawerBtn:active {
   transform: scale(0.92);
 }
 .history-toolbar {
@@ -672,12 +735,18 @@ body:has(#newSessionBtn.active) #inputClearBtn:not([hidden]) { display: flex; }
   color: var(--err);
   background: color-mix(in srgb, var(--err) 10%, transparent);
 }
-.history-list { display: grid; gap: 8px; }
+/* The list is a single column that can never be wider than the drawer, and
+   every card can shrink inside it — a long sentence truncates with an
+   ellipsis instead of pushing the drawer out of the workspace. */
+.history-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
 .history-item {
   position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -717,6 +786,24 @@ body:has(#newSessionBtn.active) #inputClearBtn:not([hidden]) { display: flex; }
 }
 .history-item.is-invalid:focus-visible {
   box-shadow: 0 0 0 2px var(--focus-ring), inset 0 0 0 1px color-mix(in srgb, var(--err) 35%, transparent);
+}
+/* The card head and the sentence itself are the two levels that carry the
+   text: both must be allowed to shrink, and the sentence truncates to a
+   single line with an ellipsis. */
+.hist-head {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.hist-sentence {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .hist-title {
   flex: 1 1 auto;
@@ -904,6 +991,32 @@ body.is-resizing .resizer::after { opacity: 1; background: var(--accent); }
 /* While a lesson is open but no node is picked, the lesson guide owns the
    whole explain pane; picking a canvas node brings the inspector back. */
 body:has(#lessonGuideHost:not(:empty)) #emptyExplainState { display: none; }
+
+/* --------------------------------------------------------------------------
+   Lesson view — the lesson owns the right-hand panes
+   -------------------------------------------------------------------------- */
+/* The Grammar Tutor's input surface steps aside while a lesson is open: the
+   lesson controls are the only thing in the upper-right pane, so its
+   placeholder never bleeds through behind them. */
+body.lesson-view #tutorSurface,
+body.lesson-view .input-editor { display: none; }
+body.lesson-view #quizQuestHost {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+/* The lesson guide fills the explain pane and scrolls on its own, so long
+   explanations are never clipped at the bottom. */
+body.lesson-view .pane-explain { padding: 0; }
+body.lesson-view #lessonGuideHost {
+  flex: 1 1 auto;
+  max-height: none;
+  min-height: 0;
+  overflow: hidden;
+}
+/* The node inspector has nothing to show while a lesson is open — it must not
+   take half the pane away from the lesson guide. */
+body.lesson-view #explainNode:empty { display: none; }
 
 .canvas-wrap {
   position: relative;
@@ -1336,35 +1449,66 @@ body:has(#lessonGuideHost:not(:empty)) #emptyExplainState { display: none; }
 
 /* Floating action cluster, upper-left of the canvas stage — the Syntax
    Builder's Clear / Build tree / Done buttons live here; there is no
-   separate header bar any more. */
-.canvas-controls {
+   separate header bar any more.
+   The cluster itself carries NO chrome: no border, no background, no shadow,
+   no padding. Each action is its own standalone pill, so the buttons never
+   look like buttons trapped inside another button. */
+#canvasControls,
+.canvas-controls,
+#builderBar,
+.builder-bar,
+.builder-controls {
   position: absolute;
   top: 12px;
   left: 12px;
   z-index: 8;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
   flex-wrap: wrap;
   max-width: calc(100% - 24px);
-  padding: 6px 8px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: color-mix(in srgb, var(--panel) 92%, transparent);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: var(--shadow-sm);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
   font-size: 13px;
 }
-.canvas-controls[hidden] { display: none; }
-.canvas-controls .builder-hint { color: var(--muted); font-size: 12px; }
+/* `display: inline-flex !important` above would beat the UA [hidden] rule,
+   so the hidden state needs to be explicit. */
+#canvasControls[hidden],
+.canvas-controls[hidden] { display: none !important; }
+/* The practice hint floats on its own, under the action buttons — it is no
+   longer a child of the (now chrome-less) action cluster. */
+.builder-hint {
+  position: absolute;
+  top: 50px;
+  left: 14px;
+  z-index: 8;
+  max-width: min(520px, calc(100% - 28px));
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .builder-hint[hidden] { display: none; }
+/* The target chip sits in the opposite corner of the canvas. */
 .builder-target {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  left: auto;
+  z-index: 8;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 12px;
   padding: 3px 8px;
   border: 1px solid var(--border);
   border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1375,18 +1519,49 @@ body:has(#lessonGuideHost:not(:empty)) #emptyExplainState { display: none; }
   border-color: color-mix(in srgb, var(--ok, #2e7d32) 55%, transparent);
   background: color-mix(in srgb, var(--ok, #2e7d32) 12%, transparent);
 }
+/* The canvas actions are standalone pills: their own surface, border, and
+   radius — no enclosing card around them. */
+#builderBar button,
+.builder-bar button,
+.builder-controls button,
 .builder-btn {
-  font: inherit; font-size: 12.5px; padding: 6px 12px; cursor: pointer;
-  border: 1px solid var(--border, #ccc); border-radius: 6px;
-  background: transparent; color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+#builderBar button:hover,
+.builder-bar button:hover,
+.builder-controls button:hover,
+.builder-btn:hover {
+  background: var(--surface-hover, var(--border));
+  border-color: var(--muted);
+}
+#builderBar button:active,
+.builder-bar button:active,
+.builder-controls button:active,
+.builder-btn:active {
+  transform: scale(0.97);
 }
 .builder-btn[hidden] { display: none; }
-.builder-btn:hover { border-color: var(--accent); }
+/* The primary actions (Check tree / Next) keep the accent fill; the hover
+   state must not fall back to the neutral pill background. */
 .builder-btn-primary {
-  background: var(--accent, #6d5ae6); border-color: var(--accent, #6d5ae6);
+  background: var(--accent, #6d5ae6);
+  border-color: var(--accent, #6d5ae6);
   color: #fff;
 }
-.builder-btn-primary:hover { background: var(--accent-strong, var(--accent)); }
+.builder-btn-primary:hover {
+  background: var(--accent-strong, var(--accent));
+  border-color: var(--accent-strong, var(--accent));
+  color: #fff;
+}
 
 .builder-canvas {
   position: absolute;
@@ -1416,6 +1591,11 @@ body:has(#lessonGuideHost:not(:empty)) #emptyExplainState { display: none; }
   pointer-events: none;
   transition: opacity 0.18s ease, transform 0.18s ease;
   z-index: 40;
+  /* A long message truncates instead of stretching across the canvas. */
+  max-width: min(420px, calc(100% - 32px));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .builder-toast.show {
   opacity: 1;

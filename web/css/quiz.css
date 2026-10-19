@@ -46,7 +46,12 @@
   z-index: 220;
   transform: translateX(-100%);
   box-shadow: 8px 0 24px rgba(0, 0, 0, 0.15);
-  transition: transform var(--dur) var(--ease), width var(--dur) var(--ease);
+  /* The rail's width uses the same 200ms curve as #appSidebar (style.css);
+     only the mobile slide-over transform keeps the slower drawer timing. */
+  transition: transform var(--dur) var(--ease),
+              width 200ms cubic-bezier(0.2, 0, 0, 1),
+              min-width 200ms cubic-bezier(0.2, 0, 0, 1),
+              max-width 200ms cubic-bezier(0.2, 0, 0, 1);
   pointer-events: auto;
 }
 .app-sidebar-backdrop.active .app-sidebar { transform: translateX(0); }
@@ -70,34 +75,76 @@
     bottom: 0;
     left: 0;
     width: 60px; /* collapsed icon rail */
+    min-width: 60px;
+    max-width: 60px;
     padding: 14px 8px 10px;
     border-right: 1px solid var(--border);
     box-shadow: none;
     transform: none;
-    transition: width var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    transition: width 200ms cubic-bezier(0.2, 0, 0, 1),
+                min-width 200ms cubic-bezier(0.2, 0, 0, 1),
+                max-width 200ms cubic-bezier(0.2, 0, 0, 1),
+                box-shadow 200ms cubic-bezier(0.2, 0, 0, 1);
+    will-change: width;
+    contain: layout style;
   }
   .app-sidebar.expanded {
     width: 248px;
+    min-width: 248px;
+    max-width: 248px;
     padding: 14px 12px 10px;
     box-shadow: 8px 0 24px rgba(0, 0, 0, 0.15);
   }
-  /* Icon rail: labels and the account name appear with .expanded only. */
-  .app-sidebar:not(.expanded) .sidebar-item { justify-content: center; padding: 11px 0; gap: 0; }
+  /* Collapsed rail: only the icons remain. The labels are clipped out of the
+     flow — no display toggles, no delays — so the collapse starts the
+     instant #sidebarToggleBtn is clicked, and the icons stay anchored to the
+     left edge instead of sliding across the shrinking rail. */
+  .app-sidebar:not(.expanded) .app-sidebar-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .app-sidebar:not(.expanded) .sidebar-brand {
+    justify-content: flex-start;
+    gap: 0;
+    padding: 6px 12px;
+  }
+  .app-sidebar:not(.expanded) .sidebar-item {
+    justify-content: flex-start;
+    padding: 11px 12px;
+    gap: 0;
+  }
+  /* Text labels and secondary chrome: clipped and faded out immediately.
+     `white-space`/`overflow` keep the text from spilling out of the rail,
+     the opacity cutoff runs with no delay, and no child transition is ever
+     scheduled after the rail's own width transition. */
   .app-sidebar:not(.expanded) .sidebar-item span,
   .app-sidebar:not(.expanded) .brand-title,
-  .app-sidebar:not(.expanded) #identityLabel { display: none; }
-  .app-sidebar:not(.expanded) .sidebar-brand { justify-content: center; padding: 6px 2px; }
-  .app-sidebar:not(.expanded) .app-sidebar-foot .menu-btn { justify-content: center; padding: 7px 0; }
-  .app-sidebar:not(.expanded) .profile-anchor { justify-content: center; }
-  .app-sidebar:not(.expanded) .identity-chip { padding: 4px; }
+  .app-sidebar:not(.expanded) #identityLabel {
+    display: block;
+    width: 0;
+    min-width: 0;
+    max-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 120ms ease;
+    transition-delay: 0s;
+  }
+  .app-sidebar:not(.expanded) .app-sidebar-foot { align-items: flex-start; }
+  .app-sidebar:not(.expanded) .app-sidebar-foot .menu-btn {
+    justify-content: center;
+    padding: 7px 12px;
+  }
+  .app-sidebar:not(.expanded) .profile-anchor {
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .app-sidebar:not(.expanded) .identity-chip { gap: 0; padding: 4px 4px 4px 12px; }
   /* Collapsed, the expand toggle is hidden — the brand monogram is the
      affordance that expands the rail (see main.js). */
   .app-sidebar:not(.expanded) .sidebar-toggle { display: none; }
-  .app-sidebar:not(.expanded) .app-sidebar-top {
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
   .sidebar-brand { cursor: pointer; }
   .sidebar-brand:hover .brand-monogram { filter: brightness(1.08); }
   /* The .sidebar-close selector out-ranks the later .drawer-close base
@@ -141,6 +188,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0;
+  /* Fades with the rail: no delay, so the label is there the moment the
+     rail finishes widening. */
+  transition: opacity 120ms ease;
+  transition-delay: 0s;
 }
 .sidebar-toggle { flex: 0 0 auto; }
 
@@ -170,12 +221,26 @@
   overflow: hidden;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
-.sidebar-item svg { color: var(--muted); flex: 0 0 auto; }
-.sidebar-item span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.sidebar-item svg {
+  color: var(--muted);
+  flex: 0 0 auto;
+  transition: color var(--dur-fast) var(--ease);
+  transition-delay: 0s;
+}
+/* The label fades with the rail — never on a delay, so collapsing the rail
+   starts hiding the text the instant the toggle is pressed. */
+.sidebar-item span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  transition: opacity 120ms ease;
+  transition-delay: 0s;
+}
 .sidebar-item:hover { background: var(--accent-soft); }
 .sidebar-item:hover svg { color: var(--accent); }
-.sidebar-item.active { background: var(--accent-soft); color: var(--accent-strong); }
-.sidebar-item.active svg { color: var(--accent-strong); }
+/* The active rail destination is styled in style.css (.sidebar-item.active):
+   exactly one destination is active at a time and main.js owns the class. */
 .sidebar-item[hidden] { display: none; }
 
 /* Bottom zone: theme toggle + account chip. Expanded, the toggle sits
@@ -420,8 +485,8 @@
 .sq-primary:focus-visible,
 .sq-ghost:focus-visible,
 .sq-node:focus-visible,
-.sq-example:focus-visible,
-.sq-lessons-back:focus-visible {
+.sq-example-chip:focus-visible,
+.sq-lesson-book:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
@@ -1027,6 +1092,28 @@
 .sq-start:hover { background: var(--accent); }
 .sq-start:active { transform: scale(0.98); }
 
+/* The canvas action cluster carries no chrome of its own — the buttons are
+   standalone pills floating over the canvas, never buttons trapped inside
+   another button. (The cluster's layout lives in style.css; this is the
+   module-scoped safety net.) */
+#builderBar,
+.builder-bar,
+.builder-controls,
+.builder-controls {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+#builderBar[hidden],
+.builder-bar[hidden],
+.builder-controls[hidden],
+.builder-controls[hidden] { display: none !important; }
+
 /* Builder status feedback in the bar */
 .builder-hint-ok { color: var(--ok, #2e7d32); font-weight: 600; }
 .builder-hint-no { color: var(--err); font-weight: 600; }
@@ -1042,35 +1129,37 @@
 }
 .sq-group:first-child { margin-top: 4px; }
 
+/* The concept text sits directly on the explain pane: no nested card, no
+   left accent bar, no tag badge — just the explanation, on the surface. */
 .sq-rule {
-  display: flex;
-  gap: 10px;
-  padding: 12px;
-  margin: 8px 0 4px;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--accent) 5%, transparent);
+  display: block;
+  flex: 0 0 auto;
+  height: 100%;
+  margin: 0;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
-.sq-rule-tag {
-  flex: none;
-  align-self: flex-start;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--accent);
+.sq-concept {
+  padding: 20px 24px;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
 }
-.sq-rule-text { margin: 0; font-size: 13px; line-height: 1.5; }
-.sq-rule-body { min-width: 0; }
-.sq-rule-detail { margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+.sq-rule-text { margin: 0; font-size: 15px; line-height: 1.7; color: var(--ink); font-weight: 600; }
+.sq-rule-detail { margin: 10px 0 0; font-size: 15px; line-height: 1.7; color: var(--muted); }
 
-/* Step-by-step tree-building guide for the active example */
+/* Step-by-step tree-building guide for the active example — flat on the
+   pane surface, like the concept text. */
 .sq-steps-box {
-  padding: 12px;
-  margin: 8px 0 4px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
 }
 /* Intro line under a node's controls (e.g. the Steps & Practice hint) */
 .sq-hint {
@@ -1132,7 +1221,7 @@
 [data-theme="dark"] .lessons-overlay { background: rgba(8, 10, 16, 0.62); }
 
 .lessons-sheet {
-  width: min(1400px, 100%);
+  width: min(1600px, 100%);
   height: 100%;
   max-height: 100%;
   display: flex;
@@ -1143,70 +1232,99 @@
 }
 .lessons-overlay.open .lessons-sheet { transform: none; }
 
-/* Two-column catalog: a collapsible category rail on the left, the module
-   cards on the right. */
-.lessons-body {
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  gap: 20px;
-  overflow: hidden;
-}
-.lessons-tabs-col {
+/* Catalog toolbar: the category expander on the left, the completion
+   counter on the right. */
+.sq-catalog-toolbar {
   flex: 0 0 auto;
-  width: 216px;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  transition: width var(--dur) var(--ease);
-}
-.lessons-tabs-col.is-collapsed { width: 48px; }
-.lessons-tabs-toggle {
-  flex: 0 0 auto;
-  align-self: flex-start;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.12);
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  padding-bottom: 2px;
+}
+
+/* The category selector: a compact trigger pill that grows into a
+   horizontal row of category pills, inline with the toolbar. */
+.sq-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.cat-trigger {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
   cursor: pointer;
   transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
-.lessons-tabs-toggle:hover { background: rgba(255, 255, 255, 0.24); border-color: rgba(255, 255, 255, 0.55); }
-.lessons-tabs-toggle:active { transform: scale(0.94); }
-.lessons-tabs-toggle svg { transition: transform var(--dur) var(--ease); }
-.lessons-tabs-col.is-collapsed .lessons-tabs-toggle svg { transform: rotate(180deg); }
-
-.lessons-tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-height: 0;
-  overflow-y: auto;
+.cat-trigger:hover { background: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.45); }
+.cat-trigger:active { transform: scale(0.97); }
+.cat-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.cat-trigger-label { white-space: nowrap; }
+.cat-chevron {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.lessons-tabs-col.is-collapsed .lessons-tabs { display: none; }
-.lessons-tab {
-  width: 100%;
-  padding: 11px 16px;
+.sq-cat.is-open .cat-chevron { transform: rotate(90deg); }
+
+/* The row of category pills grows out of the trigger: max-width drives the
+   expansion, opacity fades the pills in. While it is collapsed the row is
+   hidden from pointer and keyboard focus (after the collapse finishes). */
+.cat-options {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-width 240ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 200ms ease,
+              visibility 0s linear 240ms;
+}
+.sq-cat.is-open .cat-options {
+  max-width: 600px;
+  opacity: 1;
+  visibility: visible;
+  transition: max-width 240ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 200ms ease,
+              visibility 0s linear 0s;
+}
+.cat-pill {
+  flex: 0 0 auto;
+  padding: 7px 14px;
   border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 12px;
+  border-radius: 999px;
   background: rgba(255, 255, 255, 0.06);
   color: rgba(255, 255, 255, 0.86);
   font: inherit;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  text-align: left;
+  white-space: nowrap;
   cursor: pointer;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
 }
-.lessons-tab:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
-.lessons-tab.is-active { background: var(--panel); color: var(--ink); border-color: transparent; box-shadow: var(--shadow-sm); }
-[data-theme="dark"] .lessons-tab.is-active {
+.cat-pill:hover { background: rgba(255, 255, 255, 0.16); color: #fff; }
+.cat-pill.is-active {
+  background: var(--panel);
+  color: var(--ink);
+  border-color: transparent;
+  box-shadow: var(--shadow-sm);
+}
+[data-theme="dark"] .cat-pill.is-active {
   background: var(--accent-soft);
   color: var(--accent-strong);
   border-color: color-mix(in srgb, var(--accent) 45%, transparent);
@@ -1221,246 +1339,334 @@
   flex-direction: column;
   gap: 16px;
 }
-.lessons-summary { margin: 0; font-size: 14px; color: rgba(255, 255, 255, 0.78); }
+.lessons-summary {
+  margin: 0;
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+}
 
-.lessons-grid {
+/* The card grid fills the whole overlay width — no category rail beside it. */
+.sq-catalog-grid {
   flex: 1 1 auto;
   min-height: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
   align-content: start;
   overflow-y: auto;
   padding-bottom: 4px;
 }
 
-.lesson-card {
+.sq-card {
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
-  gap: 10px;
-  min-height: 200px;
-  padding: 20px 22px 24px;
+  gap: 0;
+  min-height: 180px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px 26px;
   overflow: hidden;
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--panel);
+  border-radius: 14px;
   color: var(--ink);
   font: inherit;
   text-align: left;
   cursor: pointer;
-  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
-.lesson-card:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
-.lesson-card:active { transform: translateY(0); }
-.lesson-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.sq-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+.sq-card:active { transform: translateY(0); }
+.sq-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-.lesson-badge {
+.sq-card-tag {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
   color: var(--accent-strong);
   background: var(--accent-soft);
 }
-.lesson-card-title { font-size: 22px; font-weight: 800; letter-spacing: -0.3px; line-height: 1.25; }
-.lesson-card-overview {
+.sq-card-title {
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-top: 10px;
+}
+.sq-card-overview {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
   overflow: hidden;
+  margin-top: 8px;
   font-size: 14px;
   line-height: 1.55;
   color: var(--muted);
 }
-.lesson-card-count { margin-top: auto; font-size: 13px; color: var(--muted); }
+.sq-card-count {
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
 
-.lesson-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; }
-.lesson-bar-fill { display: block; height: 100%; width: 0; background: var(--accent); transition: width var(--dur) var(--ease); }
-.lesson-card.is-complete .lesson-bar-fill { background: var(--ok); }
+/* Full-width progress bar along the bottom of the card. */
+.sq-card-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: color-mix(in srgb, var(--border) 70%, transparent);
+}
+.sq-card-bar-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width var(--dur) var(--ease);
+}
+.sq-card.is-complete .sq-card-bar-fill { background: var(--ok); }
 
 /* ------------------------------------------------------------------ */
 /* Active lesson — controls in #quizQuestHost, page in #lessonGuideHost */
 /* ------------------------------------------------------------------ */
-.sq-lesson { flex: 0 0 auto; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.sq-lesson { flex: 0 0 auto; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
 
-/* Lesson title sized for its slot above the pager (scoped so the base
-   `.sq-title` — sidebar quiz views — stays small). Wrapping beats
-   ellipsizing at narrow pane widths. */
-.sq-lesson .sq-title {
-  font-size: 18px;
+/* The lesson header is one row: the book button and the title on the left,
+   the compact stage progress bar on the right. */
+.sq-lesson-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.sq-lesson-head-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.sq-lesson-book {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.sq-lesson-book:hover { color: var(--accent-strong); border-color: var(--accent); background: var(--accent-soft); }
+.sq-lesson-book:active { transform: scale(0.95); }
+.sq-lesson-title {
+  margin: 0;
+  min-width: 0;
+  font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.2px;
-  line-height: 1.3;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: clip;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+/* The stage content of the upper-right pane. */
+.sq-lesson-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.sq-lesson-summary {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.sq-lesson-objective { margin: 0; font-size: 14px; line-height: 1.55; color: var(--ink); }
+.sq-lesson-cta { width: 100%; }
+
+/* The sentence currently on the canvas. */
+.sq-active-sentence {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.sq-active-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent-strong);
+}
+.sq-active-text { margin: 0; font-size: 15px; font-weight: 600; line-height: 1.45; color: var(--ink); }
+
+/* The example switcher: the other examples collapse into numbered chips. */
+.sq-example-switcher { display: flex; flex-wrap: wrap; gap: 6px; }
+.sq-example-chip {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.sq-example-chip:hover { border-color: var(--accent); color: var(--accent-strong); }
+.sq-example-chip.is-active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.sq-example-chip.is-done { border-color: color-mix(in srgb, var(--success) 55%, var(--border)); color: var(--success); }
+.sq-example-chip.is-active.is-done { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* The step pager: ← Step X of Y → */
+.sq-step-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.sq-step-pager-label { font-size: 12.5px; font-weight: 700; color: var(--muted); }
+.sq-step-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+}
+.sq-step-btn:disabled { opacity: .45; cursor: not-allowed; }
+
+/* The quiz stage: the prompts, the score, and the way in. */
+.sq-quiz-score { display: flex; align-items: baseline; gap: 6px; }
+.sq-quiz-score-value { font-size: 20px; font-weight: 800; color: var(--accent-strong); }
+.sq-quiz-score-label { font-size: 12px; font-weight: 600; color: var(--muted); }
+
 .sq-lesson-nav { flex: 0 0 auto; display: flex; gap: 8px; }
 .sq-lesson-nav .sq-ghost { margin: 0; flex: 0 0 auto; }
 .sq-lesson-nav .sq-primary { margin: 0; flex: 1 1 auto; }
 .sq-lesson-nav .sq-ghost:disabled { opacity: .45; cursor: not-allowed; }
 .sq-lesson-nav .sq-ghost, .sq-lesson-nav .sq-primary { padding: 9px 12px; font-size: 12.5px; }
 
-.sq-lesson-body .sq-rule,
-.sq-lesson-body .sq-steps-box,
-.sq-lesson-body .sq-challenge { margin: 0; }
 .sq-lesson-body .sq-group { margin: 0; }
 
-/* The page body lives in the scrollable #lessonGuideHost card, so the
-   content may breathe: larger type than the old fixed-height wizard. */
-.sq-lesson-body { flex: 0 0 auto; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-.sq-lesson-body .sq-rule { padding: 12px; }
-.sq-lesson-body .sq-rule-text { font-size: 14.5px; line-height: 1.55; }
-.sq-lesson-body .sq-rule-detail { margin-top: 8px; font-size: 13.5px; line-height: 1.6; }
+/* The stage content scrolls on its own inside the explain pane, so long
+   explanations are never clipped at the bottom. */
+.sq-lesson-body {
+  flex: 0 0 auto;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 .sq-lesson-body .sq-steps li { font-size: 14px; line-height: 1.6; }
 
-.sq-lessons-back {
-  align-self: flex-start;
-  padding: 3px 9px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--muted);
-  font: inherit;
-  font-size: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
-}
-.sq-lessons-back:hover { color: var(--accent-strong); border-color: var(--accent); background: var(--accent-soft); }
-
-/* Node-and-branch progress: Node 1 — Node 2 — Node 3, each a clickable chip
-   with a numbered (or ✓) badge, a label, and a live example counter. */
+/* Node-and-branch progress: three compact nodes (1 — 2 — 3) joined by short
+   branch lines. Each node is a clickable stage marker: the active one is
+   accented, a finished one carries a green ✓. */
 .sq-nodes {
-  display: flex;
-  align-items: stretch;
-  gap: 4px;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 0;
 }
 .sq-node {
-  flex: 1 1 0;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 9px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: 50%;
   background: var(--surface);
   color: var(--muted);
   font: inherit;
-  text-align: left;
   cursor: pointer;
-  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
 }
 .sq-node:hover { border-color: var(--accent); color: var(--accent-strong); }
 .sq-node.is-active {
+  background: var(--accent);
   border-color: var(--accent);
-  background: var(--accent-soft);
-  color: var(--accent-strong);
+  color: #fff;
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
-.sq-node.is-done { border-color: color-mix(in srgb, var(--ok) 55%, var(--border)); }
+.sq-node.is-done {
+  background: var(--success);
+  border-color: var(--success);
+  color: #fff;
+}
 .sq-node-badge {
-  flex: 0 0 auto;
-  width: 22px;
-  height: 22px;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--muted) 16%, transparent);
-  color: var(--muted);
-  font-size: 11.5px;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
   font-weight: 800;
+  line-height: 1;
 }
-.sq-node.is-active .sq-node-badge { background: var(--accent); color: #fff; }
-.sq-node.is-done .sq-node-badge { background: var(--ok); color: #fff; }
-.sq-node-meta { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
-.sq-node-label {
-  font-size: 11.5px;
-  font-weight: 700;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.sq-node-count { font-size: 10px; font-weight: 600; opacity: .8; }
 .sq-node-branch {
   flex: 0 0 auto;
-  align-self: center;
-  width: 10px;
+  width: 20px;
   height: 2px;
-  border-radius: 2px;
   background: var(--border);
-}
-
-/* Clickable example rows: pick one to seed its words on the canvas and follow
-   its step-by-step guide; a built example shows a green ✓. */
-.sq-examples { display: flex; flex-direction: column; gap: 6px; }
-.sq-example {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 8px 10px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  color: var(--ink);
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
-}
-.sq-example:hover { border-color: var(--accent); color: var(--accent-strong); }
-.sq-example.is-active { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-strong); }
-.sq-example.is-done { border-color: color-mix(in srgb, var(--ok) 55%, var(--border)); }
-.sq-example-mark {
-  flex: 0 0 auto;
-  width: 22px;
-  height: 22px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--muted) 16%, transparent);
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 800;
-}
-.sq-example.is-active .sq-example-mark { background: var(--accent); color: #fff; }
-.sq-example.is-done .sq-example-mark { background: var(--ok); color: #fff; }
-.sq-example-sentence {
-  min-width: 0;
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /* ------------------------------------------------------------------ */
 /* Lesson quiz page — the module's only quiz, at the very end          */
 /* ------------------------------------------------------------------ */
+/* The module quiz briefing — flat on the pane surface, like the concept. */
 .sq-quiz-summary {
-  padding: 10px;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--accent) 5%, transparent);
+  padding: 0;
+  border: none;
+  background: transparent;
 }
 .sq-quiz-summary p { margin: 0; font-size: 13px; line-height: 1.55; }
-.sq-quiz-list { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.sq-quiz-list { display: flex; flex-direction: column; gap: 4px; margin: 0; padding: 0; list-style: none; }
 .sq-quiz-item {
   display: flex;
   align-items: baseline;
   gap: 8px;
-  padding: 8px 10px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
+  padding: 5px 0;
   font-size: 13px;
+  color: var(--ink);
 }
 .sq-quiz-mark { flex: 0 0 auto; font-weight: 800; color: var(--muted); }
 .sq-quiz-mark.is-done { color: var(--ok); }
@@ -1497,33 +1703,29 @@
 
 /* Narrow screens keep three columns unless there is height for a third row */
 @media (max-width: 1020px) {
-  .lesson-card-overview { -webkit-line-clamp: 3; }
-}
-@media (max-width: 1020px) and (min-height: 820px) {
-  .lessons-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sq-card-overview { -webkit-line-clamp: 3; }
+  .sq-catalog-grid { grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); }
 }
 @media (max-width: 760px) {
-  .lessons-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .lesson-card { min-height: 0; }
-  .lesson-card-overview { -webkit-line-clamp: 2; }
-  /* Stack the catalog: categories become a wrapping row above the grid, so the
-     collapsible rail never steals the little width there is. */
-  .lessons-body { flex-direction: column; gap: 12px; }
-  .lessons-tabs-col { width: auto; flex-direction: row; align-items: center; gap: 8px; }
-  .lessons-tabs-col.is-collapsed { width: auto; }
-  .lessons-tabs { flex-direction: row; flex-wrap: wrap; gap: 6px; overflow: visible; }
+  .sq-catalog-grid { grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); }
+  .sq-card { min-height: 0; }
+  .sq-card-overview { -webkit-line-clamp: 2; }
+  /* The toolbar stacks: the expander on top, the counter underneath. */
+  .sq-catalog-toolbar { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .lessons-summary { white-space: normal; }
 }
 @media (max-width: 520px) {
   .lessons-overlay { padding: 10px; }
-  .lessons-tab { padding: 6px 12px; font-size: 11.5px; }
-  .lesson-card-title { font-size: 17px; }
+  .sq-catalog-grid { grid-template-columns: minmax(0, 1fr); }
+  .sq-card-title { font-size: 18px; }
+  .cat-pill { padding: 6px 12px; font-size: 11.5px; }
 }
 @media (max-height: 620px) {
   .lessons-overlay { padding: 10px 14px; }
   .lessons-sheet { gap: 10px; }
-  .lesson-card { min-height: 140px; padding: 12px 14px 14px; }
-  .lesson-card-title { font-size: 18px; }
-  .lesson-card-overview { -webkit-line-clamp: 2; }
+  .sq-card { min-height: 140px; padding: 12px 14px 14px; }
+  .sq-card-title { font-size: 18px; }
+  .sq-card-overview { -webkit-line-clamp: 2; }
 }
 
 

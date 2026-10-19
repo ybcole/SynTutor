@@ -155,12 +155,6 @@
       <div id="historyDrawerBackdrop" class="drawer-backdrop">
         <aside class="history-drawer" aria-label="Analysis history">
           <div class="drawer-header">
-            <button id="historyNewSessionBtn" type="button" aria-label="Start a new blank session" title="Start a new blank session">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 20h9"></path>
-                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-              </svg>
-            </button>
             <h2>Analysis History</h2>
             <button id="closeDrawerBtn" class="drawer-close" type="button" aria-label="Close history">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -190,14 +184,14 @@
           <canvas id="treeCanvas" tabindex="0" aria-label="Interactive syntax tree; click a node, or use arrow keys and Enter"></canvas>
           <canvas id="builderCanvas" class="builder-canvas" tabindex="0" aria-label="Syntax builder canvas" hidden></canvas>
           <div id="canvasControls" class="canvas-controls" hidden>
-            <button id="builderClear" class="builder-btn" type="button">Clear</button>
-            <button id="builderSnap" class="builder-btn" type="button">Build tree</button>
-            <button id="builderCheck" class="builder-btn builder-btn-primary" type="button" hidden>Check tree</button>
-            <button id="builderNext" class="builder-btn builder-btn-primary" type="button" hidden>Next &rarr;</button>
-            <button id="builderDone" class="builder-btn" type="button">Done</button>
-            <span id="builderHint" class="builder-hint" hidden></span>
-            <span id="builderTarget" class="builder-target" hidden></span>
+            <button id="builderClear" class="builder-btn" type="button" data-action="clear">Clear</button>
+            <button id="builderSnap" class="builder-btn" type="button" data-action="build-tree">Build tree</button>
+            <button id="builderCheck" class="builder-btn builder-btn-primary" type="button" data-action="check-tree" hidden>Check tree</button>
+            <button id="builderNext" class="builder-btn builder-btn-primary" type="button" data-action="next" hidden>Next &rarr;</button>
+            <button id="builderDone" class="builder-btn" type="button" data-action="done">Done</button>
           </div>
+          <span id="builderHint" class="builder-hint" hidden></span>
+          <span id="builderTarget" class="builder-target" hidden></span>
           <div id="canvasOverlay" class="canvas-overlay"></div>
           <div id="emptyTreeState" class="empty-state-canvas">
             <svg class="empty-tree-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -229,12 +223,11 @@
               <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
           </button>
-          <div class="input-row">
+          <div class="input-row" id="tutorSurface">
             <div class="input-editor">
-              <div id="inputHighlights" aria-hidden="true" data-hint="Click the panel to write a sentence. SynTutor builds its syntax tree and analysis automatically."></div>
-              <textarea id="inputText" rows="2" readonly
-                        placeholder="Click the panel to write a sentence. SynTutor builds its syntax tree and analysis automatically."
-                        spellcheck="false"></textarea>
+              <div id="inputHighlights" aria-hidden="true"></div>
+              <textarea id="inputText" class="input-textarea" rows="4" readonly spellcheck="false"
+                        placeholder="Click the panel to write a sentence. SynTutor builds its syntax tree and analysis automatically."></textarea>
             </div>
           </div>
           <button id="inputClearBtn" class="input-clear" type="button" aria-label="Clear input" title="Clear text">×</button>
@@ -261,19 +254,14 @@
 
     <div id="lessonsOverlay" class="lessons-overlay">
       <div class="lessons-sheet" role="dialog" aria-label="Lessons">
-        <div class="lessons-body">
-          <aside class="lessons-tabs-col" id="lessonsTabsCol">
-            <button id="lessonsTabsToggle" class="lessons-tabs-toggle" type="button" aria-label="Collapse lesson categories" aria-expanded="true" title="Collapse categories">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            <nav id="lessonsTabs" class="lessons-tabs" aria-label="Lesson categories"></nav>
-          </aside>
-          <div class="lessons-main">
+        <div class="lessons-main">
+          <!-- Catalog toolbar: the inline category expander on the left, the
+               completion counter on the right. -->
+          <div class="sq-catalog-toolbar" id="lessonsToolbar">
+            <div class="sq-cat" id="lessonsCategory"></div>
             <p id="lessonsSummary" class="lessons-summary"></p>
-            <div id="lessonsGrid" class="lessons-grid"></div>
           </div>
+          <div id="lessonsGrid" class="sq-catalog-grid"></div>
         </div>
       </div>
     </div>

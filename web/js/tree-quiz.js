@@ -40,7 +40,7 @@ const state = {
   lessonIndex: null,
   exampleIndex: 0,    // active example inside the open lesson
   lessonPage: 1,      // lesson node: 1 concept | 2 steps & practice | 3 quiz
-  lessonsTab: 0,      // active category page in the lessons overlay
+  activeGroup: 'All', // active category filter in the lessons catalog
   controller: null,
   cache: new Map(),   // sentence -> gold
   done: new Set(),    // `${type}:${example}`
@@ -332,9 +332,8 @@ export function openQuizView(view = 'quiz') {
 function showPlaceholder(view) {
   closeBuilderView();
   $('#appSidebarBackdrop')?.classList.add('active');
-  document.querySelectorAll('.sidebar-item').forEach((b) => {
-    b.classList.toggle('active', b.dataset.view === view);
-  });
+  // The side panel takes the rail highlight while it is open.
+  state.controller?.setOverlayView?.(view);
   const body = openSubpanel(view === 'leaderboard' ? 'Leaderboard' : 'Achievements');
   if (!body) return;
   body.appendChild(el('p', 'sq-intro', 'Coming soon.'));
@@ -368,9 +367,12 @@ export function initQuiz(controller) {
 // is ever open — opening one closes the other. `openSubpanel` builds the
 // shared chrome (title + close) and hands back the scrollable body.
 
-function closeSubpanel() {
+// Closing the side panel also releases the rail highlight it was holding:
+// main.js hands it back to the module underneath.
+export function closeSubpanel() {
   $('#historyDrawerBackdrop')?.classList.remove('active');
   const host = $('#subpanelPlaceholder');
+  state.controller?.setOverlayView?.(null);
   if (!host) return;
   host.classList.remove('active');
   host.innerHTML = '';
@@ -413,23 +415,15 @@ function ensureLessonsOverlay() {
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeLessonsOverlay();
   });
-  // The category rail collapses to a slim strip; its toggle flips the chevron
-  // and the aria state.
-  const tabsCol = $('#lessonsTabsCol');
-  const tabsToggle = $('#lessonsTabsToggle');
-  tabsToggle?.addEventListener('click', () => {
-    const collapsed = Boolean(tabsCol?.classList.toggle('is-collapsed'));
-    tabsToggle.setAttribute('aria-expanded', String(!collapsed));
-    tabsToggle.setAttribute('aria-label', collapsed ? 'Expand lesson categories' : 'Collapse lesson categories');
-    tabsToggle.title = collapsed ? 'Expand categories' : 'Collapse categories';
-  });
 }
 
 // Esc closes the picker, but only after an open sidebar drawer has had its
-// turn — the drawer sits above the overlay.
+// turn — the drawer sits above the overlay. An open category expander closes
+// first, so Esc never skips a step.
 function onLessonsOverlayKeydown(e) {
   if (e.key !== 'Escape') return;
   if ($('#appSidebarBackdrop')?.classList.contains('active')) return;
+  if (category.open) { setCategoryOpen(false); return; }
   closeLessonsOverlay();
 }
 
@@ -442,19 +436,20 @@ function openLessonsOverlay() {
   closeQuizView();
   $('#appSidebarBackdrop')?.classList.remove('active');
   $('#sidebarToggleBtn')?.setAttribute('aria-expanded', 'false');
-  document.querySelectorAll('.sidebar-item').forEach((b) => {
-    b.classList.toggle('active', b.dataset.view === 'lessons');
-  });
+  // The Lessons module owns the workspace (and the rail highlight) while it
+  // is open.
+  state.controller?.setWorkspaceView?.('lessons');
   renderLessons();
   const overlay = $('#lessonsOverlay');
   if (!overlay) return;
   document.body.classList.add('lessons-overlay-open');
   overlay.classList.add('open');
   document.addEventListener('keydown', onLessonsOverlayKeydown);
-  $('#lessonsTabs .lessons-tab.is-active', overlay)?.focus({ preventScroll: true });
+  $('.cat-trigger', overlay)?.focus({ preventScroll: true });
 }
 
 function closeLessonsOverlay() {
+  setCategoryOpen(false);
   document.removeEventListener('keydown', onLessonsOverlayKeydown);
   document.body.classList.remove('lessons-overlay-open');
   $('#lessonsOverlay')?.classList.remove('open');
@@ -499,9 +494,8 @@ function finishSession() {
   closeBuilderView();
   closeGuideCard();
   $('#appSidebarBackdrop')?.classList.add('active');
-  document.querySelectorAll('.sidebar-item').forEach((b) => {
-    b.classList.toggle('active', b.dataset.view === 'lessons');
-  });
+  // The session belongs to the Lessons module.
+  state.controller?.setWorkspaceView?.('lessons');
   const body = openSubpanel("You've built every tree!");
   if (!body) return;
   body.appendChild(el('p', 'sq-intro', 'Nice work — you constructed every phrase type SynTutor knows.'));
@@ -538,7 +532,7 @@ function renderLessonsSummary() {
 }
 
 // The lessons split into their categories (Phrases, Clauses, Wh-phrases,
-// Special phrases) — each small enough to show as one non-scrolling page.
+// Special phrases) — the catalog groups the cards by them.
 function lessonsGroups() {
   const groups = [];
   for (const lesson of LESSONS) {
@@ -552,21 +546,109 @@ function lessonsGroups() {
   return groups;
 }
 
-// One minimal module card: tag pill, title, and a thin progress line.
+// ---------------------------------------------------------------------------
+// Category selector: an inline expander in the catalog toolbar
+// ---------------------------------------------------------------------------
+// Collapsed it is a single trigger pill showing the active category; clicking
+// it grows a horizontal row of category pills out of the toolbar, and picking
+// one filters the cards and collapses the row again.
+const category = { open: false, host: null, trigger: null, label: null };
+
+const ALL_CATEGORIES = 'All';
+
+function categoryNames(groups) {
+  return [ALL_CATEGORIES, ...groups.map((g) => g.name)];
+}
+
+// The label on the trigger: the active category, or 'All' when the filter
+// points at a category the catalog no longer has.
+function activeCategoryLabel(groups) {
+  if (state.activeGroup === ALL_CATEGORIES) return ALL_CATEGORIES;
+  return groups.some((g) => g.name === state.activeGroup) ? state.activeGroup : ALL_CATEGORIES;
+}
+
+// Build (or rebuild) the trigger and the row of category pills.
+function buildCategorySelector(groups) {
+  const host = $('#lessonsCategory');
+  if (!host) return;
+  host.innerHTML = '';
+
+  const trigger = el('button', 'cat-trigger');
+  trigger.type = 'button';
+  trigger.setAttribute('aria-haspopup', 'true');
+  trigger.setAttribute('aria-expanded', 'false');
+  trigger.setAttribute('aria-label', 'Choose a lesson category');
+  const label = el('span', 'cat-trigger-label', activeCategoryLabel(groups));
+  const chevron = el('span', 'cat-chevron');
+  chevron.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>';
+  trigger.appendChild(label);
+  trigger.appendChild(chevron);
+  trigger.addEventListener('click', () => setCategoryOpen(!category.open));
+  host.appendChild(trigger);
+
+  const options = el('div', 'cat-options');
+  options.setAttribute('role', 'group');
+  options.setAttribute('aria-label', 'Lesson categories');
+  categoryNames(groups).forEach((name) => {
+    const pill = el('button', name === state.activeGroup ? 'cat-pill is-active' : 'cat-pill', name);
+    pill.type = 'button';
+    pill.setAttribute('aria-pressed', String(name === state.activeGroup));
+    pill.addEventListener('click', () => selectCategory(name));
+    options.appendChild(pill);
+  });
+  host.appendChild(options);
+
+  category.host = host;
+  category.trigger = trigger;
+  category.label = label;
+  // The row is rebuilt on every render, so the open state is re-applied here.
+  host.classList.toggle('is-open', category.open);
+  trigger.setAttribute('aria-expanded', String(category.open));
+}
+
+// Open or close the expander. While it is open, a click outside collapses
+// it again.
+function setCategoryOpen(open) {
+  const host = category.host;
+  if (!host) return;
+  category.open = Boolean(open);
+  host.classList.toggle('is-open', category.open);
+  category.trigger?.setAttribute('aria-expanded', String(category.open));
+  if (category.open) {
+    document.addEventListener('click', onClickOutsideCategory, true);
+  } else {
+    document.removeEventListener('click', onClickOutsideCategory, true);
+  }
+}
+
+function onClickOutsideCategory(e) {
+  const host = category.host;
+  if (!host || host.contains(e.target)) return;
+  setCategoryOpen(false);
+}
+
+// Pick a category: filter the cards, relabel the trigger, collapse the row.
+function selectCategory(name) {
+  state.activeGroup = name;
+  setCategoryOpen(false);
+  renderLessons();
+}
+
+// One module card: tag pill, title, overview, progress counter and bar.
 function lessonCard(lesson) {
   const { done, total, pct } = lessonProgress(lesson);
   const complete = done === total;
-  const card = el('button', complete ? 'lesson-card is-complete' : 'lesson-card');
+  const card = el('button', complete ? 'sq-card is-complete' : 'sq-card');
   card.type = 'button';
   card.title = `${lesson.title} — ${done}/${total} completed`;
 
-  card.appendChild(el('span', 'lesson-badge', lesson.type));
-  card.appendChild(el('span', 'lesson-card-title', lesson.title));
-  card.appendChild(el('span', 'lesson-card-overview', lesson.rule));
-  card.appendChild(el('span', 'lesson-card-count', complete ? `✓ ${done}/${total}` : `${done}/${total}`));
+  card.appendChild(el('span', 'sq-card-tag', lesson.type));
+  card.appendChild(el('span', 'sq-card-title', lesson.title));
+  card.appendChild(el('span', 'sq-card-overview', lesson.rule));
+  card.appendChild(el('span', 'sq-card-count', complete ? `✓ ${done}/${total}` : `${done}/${total}`));
 
-  const bar = el('span', 'lesson-bar');
-  const fill = el('span', 'lesson-bar-fill');
+  const bar = el('span', 'sq-card-bar');
+  const fill = el('span', 'sq-card-bar-fill');
   fill.style.width = `${pct}%`;
   bar.appendChild(fill);
   card.appendChild(bar);
@@ -575,33 +657,21 @@ function lessonCard(lesson) {
   return card;
 }
 
-// The catalog shows one category page at a time; the tabs switch pages and
-// nothing ever scrolls.
+// The catalog: a toolbar with the category expander and the completion
+// counter, and a grid of the cards for the active category.
 function renderLessons() {
   ensureLessonsOverlay();
   renderLessonsSummary();
   const groups = lessonsGroups();
-  state.lessonsTab = Math.max(0, Math.min(state.lessonsTab || 0, groups.length - 1));
-
-  const tabs = $('#lessonsTabs');
-  if (tabs) {
-    tabs.innerHTML = '';
-    groups.forEach((group, i) => {
-      const tab = el('button', i === state.lessonsTab ? 'lessons-tab is-active' : 'lessons-tab', group.name);
-      tab.type = 'button';
-      tab.setAttribute('aria-pressed', String(i === state.lessonsTab));
-      tab.addEventListener('click', () => {
-        state.lessonsTab = i;
-        renderLessons();
-      });
-      tabs.appendChild(tab);
-    });
-  }
+  buildCategorySelector(groups);
 
   const grid = $('#lessonsGrid');
   if (!grid) return;
   grid.innerHTML = '';
-  for (const lesson of groups[state.lessonsTab].lessons) {
+  const visible = state.activeGroup === ALL_CATEGORIES
+    ? LESSONS
+    : groups.filter((g) => g.name === state.activeGroup).flatMap((g) => g.lessons);
+  for (const lesson of visible) {
     grid.appendChild(lessonCard(lesson));
   }
 }
@@ -616,8 +686,7 @@ function openLesson(lesson) {
   // focused practice, not the session's in-order walk. It opens on Node 1
   // (Concept); entering Steps & Practice loads an example onto the canvas.
   state.session = null;
-  const gi = lessonsGroups().findIndex((g) => g.lessons.includes(lesson));
-  if (gi >= 0) state.lessonsTab = gi;
+  state.activeGroup = lesson.group;
   state.lessonPage = 1;
   state.lessonIndex = lesson.type;
   state.view = 'lesson';
@@ -628,21 +697,13 @@ function openLesson(lesson) {
 // ---------------------------------------------------------------------------
 // Lesson: one construction + its examples + its quiz
 // ---------------------------------------------------------------------------
-// The active lesson is a four-page wizard split across two panes: the
-// upper-right #quizQuestHost holds the compact controls (← All lessons, the
-// title, the page pills, the example picker — always visible — and the
-// Back / Next / Start-quiz nav), while the bottom-right #lessonGuideHost
-// shows the current page's content (Concept & Rule, Step-by-Step Tree Guide,
-// Practice walkthroughs, and the module's comprehensive Lesson Quiz). The
-// quiz lives exclusively on the last page, after every step and example has
-// been reviewed.
-// The active lesson is a three-node branch across two panes: the upper-right
-// #quizQuestHost holds the compact controls (← All lessons, the title, the
-// node branch, the clickable examples, and the Back / Next / Start-quiz nav),
-// while the bottom-right #lessonGuideHost shows the current node's content.
-// Node 1 is the Concept, Node 2 unifies Steps & Practice (pick an example, it
-// loads on the canvas with a step-by-step guide card whose Play button walks
-// the steps), and Node 3 is the module's comprehensive quiz.
+// The active lesson is a three-stage branch across two panes: the upper-right
+// #quizQuestHost holds the lesson header (the book button, the title, and the
+// compact stage progress bar) plus the controls of the *current* stage only,
+// while the bottom-right #lessonGuideHost shows that stage's explanation.
+// Stage 1 is the Concept, Stage 2 unifies Steps & Practice (pick an example,
+// it loads on the canvas with a step-by-step guide card whose Play button
+// walks the steps), and Stage 3 is the module's comprehensive quiz.
 const LESSON_NODES = [
   { page: 1, label: 'Concept' },
   { page: 2, label: 'Steps & Practice' },
@@ -660,11 +721,13 @@ function lessonNodeDone(lesson, page, current) {
   return state.quizDone.has(lesson.type);
 }
 
-// The node-and-branch progress: Node 1 → Node 2 → Node 3, each clickable, with
-// a green ✓ once completed and a live example counter under Node 2.
+// The node-and-branch progress: three compact nodes (1 → 2 → 3) joined by
+// short branch lines. Each node is clickable, shows a ✓ once its stage is
+// done, and marks the stage the learner is on.
 function renderLessonNodes(lesson, current) {
   const wrap = el('div', 'sq-nodes');
-  const progress = lessonProgress(lesson);
+  wrap.setAttribute('role', 'group');
+  wrap.setAttribute('aria-label', 'Lesson stages');
   LESSON_NODES.forEach((node, i) => {
     const done = lessonNodeDone(lesson, node.page, current);
     let cls = 'sq-node';
@@ -672,14 +735,10 @@ function renderLessonNodes(lesson, current) {
     if (done) cls += ' is-done';
     const btn = el('button', cls);
     btn.type = 'button';
+    btn.title = `${node.label}${done ? ' — done' : ''}`;
+    btn.setAttribute('aria-label', node.label);
     btn.setAttribute('aria-pressed', String(node.page === current));
     btn.appendChild(el('span', 'sq-node-badge', done ? '✓' : String(node.page)));
-    const meta = el('span', 'sq-node-meta');
-    meta.appendChild(el('span', 'sq-node-label', node.label));
-    if (node.page === 2 && progress.total > 0) {
-      meta.appendChild(el('span', 'sq-node-count', `${progress.done}/${progress.total} examples`));
-    }
-    btn.appendChild(meta);
     btn.addEventListener('click', () => goLessonNode(lesson, node.page));
     wrap.appendChild(btn);
     if (i < LESSON_NODES.length - 1) wrap.appendChild(el('span', 'sq-node-branch'));
@@ -687,17 +746,117 @@ function renderLessonNodes(lesson, current) {
   return wrap;
 }
 
-// Node content: Concept (rule + detail), Steps & Practice (the active
-// example's numbered guide), or Quiz (summary + example checklist).
+// The upper-right stage content. Every stage shows only what belongs to it:
+// the Concept never lists the examples, the Practice stage never repeats the
+// concept, and the Quiz stage is the only one that talks about the score.
+function renderLessonStage(lesson, page, index, example) {
+  const stage = el('div', 'sq-lesson-stage');
+
+  if (page === 1) {
+    // Concept: a short objective and the way forward. The example sentences
+    // stay hidden until the learner starts practising.
+    const summary = el('div', 'sq-lesson-summary');
+    summary.appendChild(el('p', 'sq-lesson-objective', lesson.rule));
+    stage.appendChild(summary);
+    const cta = el('button', 'sq-primary sq-lesson-cta', 'Start Steps & Practice →');
+    cta.type = 'button';
+    cta.addEventListener('click', () => goLessonNode(lesson, 2));
+    stage.appendChild(cta);
+    return stage;
+  }
+
+  if (page === 2) {
+    // Practice: the sentence on the canvas, a compact switcher for the other
+    // examples, the step pager, and the way into the quiz.
+    const active = el('div', 'sq-active-sentence');
+    active.appendChild(el('span', 'sq-active-label', 'On the canvas'));
+    active.appendChild(el('p', 'sq-active-text', example));
+    stage.appendChild(active);
+
+    const switcher = el('div', 'sq-example-switcher');
+    switcher.setAttribute('role', 'group');
+    switcher.setAttribute('aria-label', 'Lesson examples');
+    lesson.examples.forEach((sentence, i) => {
+      const done = state.done.has(`${lesson.type}:${sentence}`);
+      let cls = 'sq-example-chip';
+      if (i === index) cls += ' is-active';
+      if (done) cls += ' is-done';
+      const chip = el('button', cls, done ? '✓' : String(i + 1));
+      chip.type = 'button';
+      chip.title = sentence;
+      chip.setAttribute('aria-label', `Example ${i + 1}: ${sentence}`);
+      chip.addEventListener('click', () => showExample(lesson, i));
+      switcher.appendChild(chip);
+    });
+    stage.appendChild(switcher);
+
+    const pager = el('div', 'sq-step-pager');
+    const prev = el('button', 'sq-ghost sq-step-btn', '←');
+    prev.type = 'button';
+    prev.title = 'Previous step';
+    prev.disabled = guide.step <= 0;
+    prev.addEventListener('click', () => openStepGuide(lesson, guide.step - 1));
+    const label = el('span', 'sq-step-pager-label', `Step ${guide.step + 1} of ${lesson.steps.length}`);
+    const next = el('button', 'sq-ghost sq-step-btn', '→');
+    next.type = 'button';
+    next.title = 'Next step';
+    next.disabled = guide.step >= lesson.steps.length - 1;
+    next.addEventListener('click', () => openStepGuide(lesson, guide.step + 1));
+    pager.appendChild(prev);
+    pager.appendChild(label);
+    pager.appendChild(next);
+    stage.appendChild(pager);
+
+    const quiz = el('button', 'sq-primary', 'Start Quiz →');
+    quiz.type = 'button';
+    quiz.addEventListener('click', () => startLessonQuiz(lesson));
+    stage.appendChild(quiz);
+    return stage;
+  }
+
+  // Quiz: the prompts (the examples the quiz walks through) and the score.
+  if (state.session) {
+    const live = el('div', 'sq-active-sentence');
+    live.appendChild(el('span', 'sq-active-label', 'Build this tree'));
+    live.appendChild(el('p', 'sq-active-text', state.session.seq[state.session.pos]?.example || ''));
+    stage.appendChild(live);
+  } else {
+    const list = el('ul', 'sq-quiz-list');
+    for (const sentence of lesson.examples) {
+      const item = el('li', 'sq-quiz-item');
+      const done = state.done.has(`${lesson.type}:${sentence}`);
+      item.appendChild(el('span', done ? 'sq-quiz-mark is-done' : 'sq-quiz-mark', done ? '✓' : '○'));
+      item.appendChild(el('span', 'sq-quiz-sent', sentence));
+      list.appendChild(item);
+    }
+    stage.appendChild(list);
+  }
+  const progress = lessonProgress(lesson);
+  const score = el('div', 'sq-quiz-score');
+  score.appendChild(el('span', 'sq-quiz-score-value', state.session
+    ? `${state.session.pos}/${state.session.seq.length}`
+    : `${progress.done}/${progress.total}`));
+  score.appendChild(el('span', 'sq-quiz-score-label', state.session ? 'trees built' : 'examples built'));
+  stage.appendChild(score);
+  if (!state.session) {
+    const start = el('button', 'sq-primary', 'Start Quiz →');
+    start.type = 'button';
+    start.addEventListener('click', () => startLessonQuiz(lesson));
+    stage.appendChild(start);
+  }
+  return stage;
+}
+
+// The bottom-right content: the current stage's explanation, rendered
+// directly on the pane surface — no nested card, no clipped text.
 function renderLessonBody(lesson, page, example) {
   const body = el('div', 'sq-lesson-body');
   if (page === 1) {
     const rule = el('div', 'sq-rule');
-    rule.appendChild(el('span', 'sq-rule-tag', lesson.type));
-    const ruleBody = el('div', 'sq-rule-body');
-    ruleBody.appendChild(el('p', 'sq-rule-text', lesson.rule));
-    ruleBody.appendChild(el('p', 'sq-rule-detail', lesson.detail));
-    rule.appendChild(ruleBody);
+    const concept = el('div', 'sq-concept');
+    concept.appendChild(el('p', 'sq-rule-text', lesson.rule));
+    concept.appendChild(el('p', 'sq-rule-detail', lesson.detail));
+    rule.appendChild(concept);
     body.appendChild(rule);
     return body;
   }
@@ -728,15 +887,6 @@ function renderLessonBody(lesson, page, example) {
     + 'The quiz rebuilds every example of this lesson in order — one tree each, checked live '
     + "against SynTutor's parse. Practiced examples are marked ✓."));
   body.appendChild(summary);
-  const list = el('ul', 'sq-quiz-list');
-  for (const sentence of lesson.examples) {
-    const item = el('li', 'sq-quiz-item');
-    const done = state.done.has(`${lesson.type}:${sentence}`);
-    item.appendChild(el('span', done ? 'sq-quiz-mark is-done' : 'sq-quiz-mark', done ? '✓' : '○'));
-    item.appendChild(el('span', 'sq-quiz-sent', sentence));
-    list.appendChild(item);
-  }
-  body.appendChild(list);
   return body;
 }
 
@@ -771,6 +921,10 @@ function renderLesson() {
   const example = lesson.examples[index];
   state.visitedPages.add(`${lesson.type}:${page}`);
 
+  // The lesson view owns the upper-right pane: the Grammar Tutor's input
+  // surface steps aside so only the lesson controls are left there.
+  document.body.classList.add('lesson-view');
+
   // The spotlight guide only belongs to the example it was opened on; a node
   // switch, example switch, or new lesson dismisses it. Plain re-renders (a
   // solved example refreshing the checkmarks) keep it alive — syncGuideCard()
@@ -783,56 +937,28 @@ function renderLesson() {
   host.innerHTML = '';
   const wrap = el('div', 'sq-lesson');
 
-  const back = el('button', 'sq-lessons-back', '← All lessons');
-  back.type = 'button';
-  back.title = 'Show all lesson modules';
-  back.addEventListener('click', () => openLessonsOverlay());
-  wrap.appendChild(back);
-  wrap.appendChild(el('h2', 'sq-title', `${lesson.type} · ${lesson.title}`));
+  // One header row: the book button and the lesson title on the left, the
+  // compact stage progress bar on the right.
+  const head = el('header', 'sq-lesson-head');
+  const headMain = el('div', 'sq-lesson-head-main');
+  const book = el('button', 'sq-lesson-book');
+  book.type = 'button';
+  book.title = 'Show all lesson modules';
+  book.setAttribute('aria-label', 'Show all lesson modules');
+  book.innerHTML = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>';
+  book.addEventListener('click', () => openLessonsOverlay());
+  headMain.appendChild(book);
+  headMain.appendChild(el('h2', 'sq-lesson-title', lesson.title));
+  head.appendChild(headMain);
+  head.appendChild(renderLessonNodes(lesson, page));
+  wrap.appendChild(head);
 
-  wrap.appendChild(renderLessonNodes(lesson, page));
-
-  // Clickable examples: pick one to seed its words on the canvas and follow its
-  // step-by-step guide. A built example gets a green ✓.
-  const examples = el('div', 'sq-examples');
-  lesson.examples.forEach((sentence, i) => {
-    const done = state.done.has(`${lesson.type}:${sentence}`);
-    let cls = 'sq-example';
-    if (i === index) cls += ' is-active';
-    if (done) cls += ' is-done';
-    const btn = el('button', cls);
-    btn.type = 'button';
-    btn.title = sentence;
-    btn.setAttribute('aria-label', `Example ${i + 1}: ${sentence}`);
-    btn.appendChild(el('span', 'sq-example-mark', done ? '✓' : String(i + 1)));
-    btn.appendChild(el('span', 'sq-example-sentence', sentence));
-    btn.addEventListener('click', () => showExample(lesson, i));
-    examples.appendChild(btn);
-  });
-  wrap.appendChild(examples);
-
-  const nav = el('div', 'sq-lesson-nav');
-  const prev = el('button', 'sq-ghost', '← Back');
-  prev.type = 'button';
-  prev.disabled = page === 1;
-  prev.addEventListener('click', () => goLessonNode(lesson, page - 1));
-  nav.appendChild(prev);
-  if (page < LESSON_NODES.length) {
-    const next = el('button', 'sq-primary', 'Next →');
-    next.type = 'button';
-    next.addEventListener('click', () => goLessonNode(lesson, page + 1));
-    nav.appendChild(next);
-  } else {
-    const quiz = el('button', 'sq-primary', 'Start quiz');
-    quiz.type = 'button';
-    quiz.addEventListener('click', () => startLessonQuiz(lesson));
-    nav.appendChild(quiz);
-  }
-  wrap.appendChild(nav);
+  // Only the current stage's controls live in the upper-right pane.
+  wrap.appendChild(renderLessonStage(lesson, page, index, example));
 
   host.appendChild(wrap);
 
-  // The node content lives in the bottom pane, above the node inspector.
+  // The stage content lives in the bottom pane, above the node inspector.
   guideHost.innerHTML = '';
   guideHost.appendChild(renderLessonBody(lesson, page, example));
 
@@ -845,6 +971,8 @@ function renderLesson() {
 function showExample(lesson, index) {
   const last = lesson.examples.length - 1;
   const i = Math.max(0, Math.min(index, last));
+  // A new example starts at its first build step.
+  guide.step = 0;
   return startChallenge(lesson, lesson.examples[i]);
 }
 
@@ -967,6 +1095,8 @@ export function clearActiveLesson() {
   state.lessonIndex = null;
   state.exampleIndex = 0;
   state.lessonPage = 1;
+  // Hand the upper-right pane back to the Grammar Tutor.
+  document.body.classList.remove('lesson-view');
   const host = $('#quizQuestHost');
   if (host) host.innerHTML = '';
   const guideHost = $('#lessonGuideHost');
@@ -1229,7 +1359,9 @@ function apiTree(node) {
 
 function setBuilderHint(msg) {
   const hint = $('#builderHint');
-  if (hint) hint.textContent = msg;
+  // The hint floats on its own (outside the action cluster), so it has to be
+  // unhidden explicitly for the message to be readable.
+  if (hint) { hint.textContent = msg; hint.className = 'builder-hint builder-hint-no'; hint.hidden = false; }
 }
 
 // Whenever the builder closes, drop any active lesson view so a stale lesson

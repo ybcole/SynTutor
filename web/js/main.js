@@ -4,11 +4,13 @@ import { TreeRenderer } from './renderer.js';
 import { getSavedTheme, setTheme } from './theme.js';
 import {
   log,
-  clearOverlay, showCanvasMessage, renderNodeDetail,
+  clearOverlay, clearDiagnostics, showCanvasMessage, renderNodeDetail,
   renderDiagnostic, applySentenceSelection, plainName,
 } from './ui.js';
-import { openQuizView, closeQuizView, initQuiz, quizInputHint, clearActiveLesson } from './tree-quiz.js';
-import { initSyntaxBuilder, openBuilderView, closeBuilderView } from './syntax-builder-ui.js';
+import {
+  openQuizView, closeQuizView, closeSubpanel, initQuiz, quizInputHint, clearActiveLesson,
+} from './tree-quiz.js';
+import { initSyntaxBuilder, openBuilderView, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
 import { levelFromXp } from './level.js';
 import { computeUnlocked } from './achievements.js';
 
@@ -60,6 +62,65 @@ let historySpans = [];
 let cachedHistory = [];
 let activeHistoryFilter = 'all';
 
+// ---------------------------------------------------------------------------
+// Rail navigation — exactly one active destination
+// ---------------------------------------------------------------------------
+// The rail never highlights two destinations at once, and never highlights
+// none: `setActiveNav` is the single painter. The module that owns the
+// workspace is remembered separately from the drawer or side panel that may
+// be sitting on top of it, so closing an overlay hands the highlight back to
+// the module underneath.
+const NAV_TARGETS = {
+  tutor: '#newSessionBtn',
+  history: '#headerHistoryBtn',
+  lessons: '.sidebar-item[data-view="lessons"]',
+  builder: '.sidebar-item[data-view="builder"]',
+  leaderboard: '.sidebar-item[data-view="leaderboard"]',
+  achievements: '.sidebar-item[data-view="achievements"]',
+  // A standalone quiz session is part of the Lessons module.
+  quiz: '.sidebar-item[data-view="lessons"]',
+};
+
+// View names that mean the same destination in the rail.
+const VIEW_ALIASES = { quiz: 'lessons' };
+
+// The workspace module currently in charge: 'tutor' | 'lessons' | 'builder'.
+let workspaceView = 'tutor';
+// The drawer / side panel currently on top of the workspace, if any.
+let overlayView = null;
+
+function setActiveNav(viewName) {
+  const resolve = (name) => {
+    const selector = NAV_TARGETS[name]
+      || (name ? `.sidebar-item[data-view="${name}"]` : null);
+    return selector ? document.querySelector(selector) : null;
+  };
+  let target = resolve(viewName);
+  // The rail always shows exactly one active destination: an unknown view
+  // falls back to the module that owns the workspace.
+  if (!target) target = resolve(workspaceView);
+  document.querySelectorAll('.sidebar-item').forEach((btn) => {
+    const on = Boolean(target) && btn === target;
+    btn.classList.toggle('active', on);
+    if (on) btn.setAttribute('aria-current', 'page');
+    else btn.removeAttribute('aria-current');
+  });
+}
+
+// The module that owns the workspace. It owns the rail highlight unless an
+// overlay is on top of it.
+function setWorkspaceView(viewName) {
+  workspaceView = VIEW_ALIASES[viewName] || viewName;
+  if (!overlayView) setActiveNav(workspaceView);
+}
+
+// A drawer or side panel takes the highlight while it is open; closing it
+// restores the highlight of the workspace underneath.
+function setOverlayView(viewName) {
+  overlayView = viewName || null;
+  setActiveNav(overlayView || workspaceView);
+}
+
 function transition(next, event) {
   const from = state;
   state = next;
@@ -95,13 +156,17 @@ export function boot() {
   initThemeAndMenu();
   purgeLegacyGuestHistory();
   initSidebar();
-  initSyntaxBuilder({ onStatusChange: (msg) => log(msg) });
+  // The rail starts on the Syntax Generator: exactly one active destination.
+  setActiveNav(workspaceView);
+  initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView });
   initQuiz({
     analyze: analyzeForQuiz,
     setQuizMode,
     progress,
     setChatTitle,
     lastChatTitle: () => lastAnalyzedText || '',
+    setWorkspaceView,
+    setOverlayView,
   });
   initResizers();
   syncInputClearBtn();
@@ -124,31 +189,21 @@ function initThemeAndMenu() {
   });
 
   document.querySelector('#newSessionBtn')?.addEventListener('click', () => {
-    const btn = document.querySelector('#newSessionBtn');
-    closeQuizView();
-    closeBuilderView();
-    closeLessonsOverlay();
-    quizMode = false;
-    const tree = document.querySelector('#treeCanvas');
-    const empty = document.querySelector('#emptyTreeState');
-    const build = document.querySelector('#builderCanvas');
-    if (tree) tree.hidden = false;
-    if (empty) empty.classList.remove('hidden');
-    if (build) build.hidden = true;
-    const controls = document.querySelector('#canvasControls');
-    if (controls) controls.hidden = true;
-    startNewSession();
-    syncInputClearBtn();
-    // Dismiss the mobile drawer so the workspace is visible again.
-    document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
-    document.querySelectorAll('.sidebar-item').forEach((b) => b.classList.toggle('active', b === btn));
+    enterTutorMode();
   });
 
   // The subtle × in the upper-right of the input pane: clears the text,
   // resets the highlights, and drops the workspace back to STATES.IDLE with
   // the empty canvas state (startNewSession owns all of that reset).
+  // While the Syntax Builder is open the input box mirrors the canvas, so the
+  // × clears the canvas instead.
   document.querySelector('#inputClearBtn')?.addEventListener('click', () => {
     if (state === STATES.PROCESSING) return;
+    if (isBuilderOpen()) {
+      clearBuilder();
+      syncInputClearBtn();
+      return;
+    }
     startNewSession();
     syncInputClearBtn();
   });
@@ -156,8 +211,7 @@ function initThemeAndMenu() {
   // "Done" leaves the standalone Syntax Builder and lands back in the plain
   // analyzer — put Syntax Generator (and its clear affordance) in charge.
   document.querySelector('#builderDone')?.addEventListener('click', () => {
-    const gen = document.querySelector('#newSessionBtn');
-    document.querySelectorAll('.sidebar-item').forEach((b) => b.classList.toggle('active', b === gen));
+    setWorkspaceView('tutor');
   });
 
   document.querySelector('#headerHistoryBtn')?.addEventListener('click', () => {
@@ -258,36 +312,22 @@ function initSidebar() {
   document.querySelectorAll('.sidebar-item[data-view]').forEach((btn) => {
     btn.addEventListener('click', () => {
       if (btn.id === 'newSessionBtn') return;
-      // Launching any other module deactivates Syntax Generator (so the
-      // input clear affordance disappears outside the plain analyzer tab).
-      const markActive = () => {
-        document.querySelectorAll('.sidebar-item').forEach((b) => b.classList.toggle('active', b === btn));
-      };
-      if (btn.dataset.view === 'builder') {
-        markActive();
-        closeQuizView();
-        clearActiveLesson();
-        openBuilderView();
-      } else if (btn.dataset.view === 'lessons') {
-        markActive();
-        openQuizView('lessons');
-      } else if (btn.dataset.view === 'leaderboard') {
-        markActive();
-        closeBuilderView();
-        openQuizView('leaderboard');
-      } else if (btn.dataset.view === 'achievements') {
-        markActive();
-        closeBuilderView();
-        openQuizView('achievements');
-      } else {
-        // Syntax Generator: leave any lesson/quiz/builder session, return to
-        // plain analyzer and mark Syntax Generator as active.
-        closeBuilderView();
-        closeQuizView();
-        clearActiveLesson();
-        const gen = document.querySelector('#newSessionBtn');
-        document.querySelectorAll('.sidebar-item').forEach((b) => b.classList.toggle('active', b === gen));
-        close();
+      switch (btn.dataset.view) {
+        case 'builder':
+          enterBuilderMode();
+          break;
+        case 'lessons':
+          enterLessonsMode();
+          break;
+        case 'leaderboard':
+        case 'achievements':
+          enterPanelMode(btn.dataset.view);
+          break;
+        default:
+          // Syntax Generator: leave any lesson/quiz/builder session and
+          // return to the plain analyzer.
+          enterTutorMode();
+          close();
       }
     });
   });
@@ -298,6 +338,107 @@ function initSidebar() {
     if (quizPanel && !quizPanel.hidden) return;
     close();
   });
+}
+
+// ---------------------------------------------------------------------------
+// Mode switching — teardown first, then setup
+// ---------------------------------------------------------------------------
+// The workspace has three modes: the Grammar Tutor (Syntax Generator), the
+// Lessons module, and the standalone Syntax Builder. Every switch starts by
+// dismantling the previous mode completely — no lesson panels, no builder
+// canvas or floating controls, no canvas overlay, no node diagnostics — so
+// nothing from one mode can bleed into the next.
+
+// Close the History drawer and hand the rail highlight back to the module
+// underneath it.
+function closeHistoryDrawer() {
+  document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
+  if (overlayView === 'history') setOverlayView(null);
+}
+
+// Tear the workspace down to a clean slate: no module owns anything.
+function teardownWorkspace() {
+  // Lessons: the picker overlay, the lesson panels, the guide card, the quiz
+  // panel in the rail, and the side sub-panel.
+  closeQuizView();
+  clearActiveLesson();
+  // Syntax Builder: the canvas, its floating controls, and the inline editor
+  // or context menu it may have opened.
+  closeBuilderView();
+  // The canvas overlay and the node inspector belong to the Grammar Tutor.
+  clearDiagnostics();
+  // Back to the plain analyzer surfaces.
+  const tree = document.querySelector('#treeCanvas');
+  const builder = document.querySelector('#builderCanvas');
+  const empty = document.querySelector('#emptyTreeState');
+  const controls = document.querySelector('#canvasControls');
+  if (tree) tree.hidden = false;
+  if (builder) builder.hidden = true;
+  if (empty) empty.classList.remove('hidden');
+  if (controls) controls.hidden = true;
+  // The upper-right pane returns to a single-surface input editor: the
+  // lesson controls are gone and the editor is locked again.
+  document.body.classList.remove('lesson-view');
+  const ta = document.querySelector('#inputText');
+  const editor = document.querySelector('.input-editor');
+  if (ta) {
+    ta.readOnly = true;
+    ta.classList.remove('editing');
+  }
+  editor?.classList.remove('editing');
+}
+
+// Syntax Generator: the plain analyzer, with a fresh session.
+function enterTutorMode() {
+  teardownWorkspace();
+  setQuizMode(false);
+  setWorkspaceView('tutor');
+  startNewSession();
+  syncInputClearBtn();
+  // Dismiss the mobile drawer so the workspace is visible again.
+  document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
+}
+
+// Lessons: the module picker and its in-place builder. The Grammar Tutor's
+// blur/pipeline listeners stay quiet — the lesson owns the input box.
+function enterLessonsMode() {
+  teardownWorkspace();
+  setQuizMode(true);
+  setWorkspaceView('lessons');
+  openQuizView('lessons');
+}
+
+// Syntax Builder: the standalone node editor. No Grammar Tutor pipeline and
+// no diagnostics may fire while it owns the canvas.
+function enterBuilderMode() {
+  teardownWorkspace();
+  setQuizMode(false);
+  setWorkspaceView('builder');
+  openBuilderView();
+}
+
+// Leaderboard / Achievements: a side panel next to the rail. The workspace
+// underneath keeps its own mode; the panel takes the rail highlight while it
+// is open.
+function enterPanelMode(viewName) {
+  teardownWorkspace();
+  setQuizMode(false);
+  setWorkspaceView('tutor');
+  openQuizView(viewName);
+}
+
+// Replaying a past analysis: the workspace returns to the Syntax Generator
+// (every other mode is torn down first) and the stored sentence is analyzed
+// again.
+function replayHistoryEntry(sentence) {
+  teardownWorkspace();
+  setQuizMode(false);
+  setWorkspaceView('tutor');
+  setChatTitle(sentence);
+  const ta = document.querySelector('#inputText');
+  if (ta) ta.value = sentence;
+  recordedTexts.add(sentence);
+  runPipeline({ isReplay: true });
 }
 
 // ---------------------------------------------------------------------------
@@ -399,9 +540,11 @@ function openHistoryDrawer() {
   if (isGuest) return; // history is an account-only feature
   // History and the tree-quiz sub-panel share the same slide-out slot —
   // opening one dismisses the other.
-  const sub = document.querySelector('#subpanelPlaceholder');
-  if (sub) { sub.classList.remove('active'); sub.innerHTML = ''; }
+  closeSubpanel();
   document.querySelector('#historyDrawerBackdrop')?.classList.add('active');
+  // The drawer owns the rail highlight while it is open; closing it hands
+  // the highlight back to the module underneath.
+  setOverlayView('history');
   loadAndRenderHistory();
 }
 
@@ -459,7 +602,7 @@ function updateAuthState() {
     chip.title = 'Log In / Sign Up';
     if (historyBtn) historyBtn.hidden = true;
     cachedHistory = [];
-    document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
+    closeHistoryDrawer();
   }
   renderProfileMenu();
   refreshProfileStats();
@@ -698,6 +841,7 @@ function wireEvents() {
     const idx = Number(span.dataset.sentIdx);
     if (!Number.isInteger(idx)) return;
     if (idx === (session?.sentence_index ?? -1)) { enterEditMode(); return; }
+    if (workspaceView === 'builder') return;   // the builder owns the canvas
     if (quizMode) { analyzeForQuiz(ta.value, idx); return; }
     // Inspect: flip the target sentence immediately (so the highlight moves
     // as soon as the payload lands) and rebuild the canvas for it.
@@ -708,6 +852,9 @@ function wireEvents() {
     if (ta.readOnly === true && e.target.closest?.('.sentence-span')) enterEditMode();
   });
   ta.addEventListener('blur', () => {
+    // The Syntax Builder owns the workspace: no Grammar Tutor pipeline and
+    // no diagnostics may run while it is open.
+    if (workspaceView === 'builder') return;
     if (quizMode) {
       returnToLocked();
       setQuizHintText();
@@ -730,7 +877,7 @@ function wireEvents() {
     }
     if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
       e.preventDefault();
-      runPipeline();
+      if (workspaceView !== 'builder') runPipeline();
       return;
     }
     if (e.key === 'Enter' && ta.readOnly) {
@@ -741,30 +888,26 @@ function wireEvents() {
 
   const drawer = document.querySelector('#historyDrawerBackdrop');
   document.querySelector('#closeDrawerBtn')?.addEventListener('click', () => {
-    drawer?.classList.remove('active');
-  });
-  document.querySelector('#historyNewSessionBtn')?.addEventListener('click', () => {
-    drawer?.classList.remove('active');
-    startNewSession();
+    closeHistoryDrawer();
   });
   drawer?.addEventListener('click', (e) => {
-    if (e.target === drawer) drawer.classList.remove('active');
+    if (e.target === drawer) closeHistoryDrawer();
   });
 
   // Escape closes an open left sub-panel first (the tree-quiz panel, then
   // History); stopImmediatePropagation keeps the sidebar's own Escape from
-  // also dismissing the mobile drawer in the same keypress.
+  // also dismissing the mobile drawer in the same keypress. Either way the
+  // rail highlight goes back to the module underneath.
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
     const sub = document.querySelector('#subpanelPlaceholder');
     if (sub?.classList.contains('active')) {
-      sub.classList.remove('active');
-      sub.innerHTML = '';
+      closeSubpanel();
       e.stopImmediatePropagation();
       return;
     }
     if (drawer?.classList.contains('active')) {
-      drawer.classList.remove('active');
+      closeHistoryDrawer();
       e.stopImmediatePropagation();
     }
   });
@@ -816,17 +959,22 @@ function wireEvents() {
 const DEFAULT_INPUT_HINT = 'Click the panel to write a sentence. SynTutor builds its syntax tree and analysis automatically.';
 
 function setHint(editing) {
-  const overlay = document.querySelector('#inputHighlights');
-  if (overlay) {
-    overlay.dataset.hint = editing
+  // The input panel's prompt lives on the textarea itself: the highlight
+  // overlay never renders text of its own, so the two can never overlap.
+  // The Syntax Builder owns the panel while it is open \u2014 its prompt stays
+  // until the builder closes.
+  if (!editing && isBuilderOpen()) return;
+  const ta = document.querySelector('#inputText');
+  if (ta) {
+    ta.placeholder = editing
       ? 'Editing \u2014 click away to lock and analyze. (Type above)'
       : DEFAULT_INPUT_HINT;
   }
 }
 
 function setQuizHintText() {
-  const overlay = document.querySelector('#inputHighlights');
-  if (overlay) overlay.dataset.hint = quizInputHint();
+  const ta = document.querySelector('#inputText');
+  if (ta) ta.placeholder = quizInputHint();
 }
 
 // The session doubles as the source for locked-mode sentence navigation:
@@ -856,6 +1004,9 @@ function enterEditMode() {
   const ta = document.querySelector('#inputText');
   const editor = document.querySelector('.input-editor');
   if (!ta) return;
+  // The Syntax Builder owns the input box: it mirrors the words on the
+  // canvas, so it stays locked (and the canvas stays the only place to type).
+  if (isBuilderOpen()) return;
   if (ta.readOnly === false) { ta.focus(); return; }
   editor?.classList.add('editing');
   ta.readOnly = false;
@@ -909,6 +1060,7 @@ function startNewSession() {
 function activateSentenceAtCaret() {
   const ta = document.querySelector('#inputText');
   if (!session || ta.readOnly !== true) return;
+  if (workspaceView === 'builder') return;   // the builder owns the canvas
   if (ta.selectionStart !== ta.selectionEnd) return;
   const sents = session.payload.parse.sentences || [];
   const caret = ta.selectionStart;
@@ -1103,6 +1255,9 @@ async function analyzeForQuiz(text, index = null) {
 
 async function runPipeline(opts = {}) {
   if (state === STATES.PROCESSING) return;
+  // Only the Grammar Tutor runs the analysis pipeline: the Lessons module
+  // and the Syntax Builder own the workspace in their own way.
+  if (workspaceView !== 'tutor') return;
   transition(STATES.PROCESSING, 'user submits text');
   setLoadingIndicator(true);
   try {
@@ -1375,6 +1530,7 @@ function applyStatuses(tree, details, summary) {
 
 function handleNodeSelect(id) {
   if (quizMode) return;
+  if (workspaceView !== 'tutor') return;
   if (!id || !session) {
     if (session) {
       renderer.select(null);
@@ -1460,7 +1616,9 @@ function renderHistoryItems() {
     card.setAttribute('aria-label', `${entry.sentence} — ${entry.is_valid ? 'Valid' : 'Invalid'}`);
 
     const titleP = document.createElement('p');
-    titleP.className = 'hist-title';
+    // `hist-sentence` carries the single-line ellipsis truncation: a long
+    // sentence never widens the card or the drawer.
+    titleP.className = 'hist-title hist-sentence';
     titleP.textContent = entry.sentence;
 
     const delBtn = document.createElement('button');
@@ -1478,12 +1636,8 @@ function renderHistoryItems() {
     card.appendChild(delBtn);
 
     const openEntry = () => {
-      document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
-      setChatTitle(entry.sentence);
-      const ta = document.querySelector('#inputText');
-      ta.value = entry.sentence;
-      recordedTexts.add(entry.sentence);
-      runPipeline({ isReplay: true });
+      closeHistoryDrawer();
+      replayHistoryEntry(entry.sentence);
     };
 
     card.addEventListener('click', openEntry);

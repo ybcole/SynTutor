@@ -54,6 +54,15 @@ export function clearOverlay() {
   if (overlay) overlay.innerHTML = '';
 }
 
+// Tear down everything the Grammar Tutor may have left on the canvas or in
+// the explain pane: the overlay message (errors, hints) and the node
+// inspector. Used when the workspace switches modes, so a diagnostic from
+// the previous mode never survives into the next one.
+export function clearDiagnostics() {
+  clearOverlay();
+  renderNodeDetail(null, null, null);
+}
+
 export function showCanvasMessage(kind, title, lines) {
   const holder = $('#canvasOverlay');
   if (!holder) return;

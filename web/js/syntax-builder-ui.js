@@ -21,7 +21,7 @@ import {
   createModel, addWordsFromText, addPhrase, moveNode, setType,
   removeNode, connect, canConnect, disconnect,
   dotOf, dotHit, nodeHit, endpointOf, endpointHit, toTree, compareTrees, leavesOf, leafText,
-  seedWords, leavesWithTags, childrenOf,
+  seedWords, leavesWithTags, childrenOf, getSentenceFromLeaves as sentenceFromLeaves,
 } from './syntax-builder.js';
 import { renderNodeDetail, renderDiagnostic, clearOverlay } from './ui.js';
 
@@ -29,6 +29,13 @@ const WORD_FONT = '500 15px Inter, system-ui, sans-serif';
 const TAG_FONT = '600 10px Inter, system-ui, sans-serif';
 const PHRASE_FONT = '600 16px Inter, system-ui, sans-serif';
 const NODE_H = 34;
+
+// The upper-right input box shows one of two prompts: the Grammar Tutor's
+// while the workspace analyses text, and the builder's while the canvas owns
+// the words.
+const TUTOR_PLACEHOLDER = 'Click the panel to write a sentence. SynTutor builds its syntax tree and analysis automatically.';
+const BUILDER_PLACEHOLDER = 'Words typed on the canvas will appear here...';
+
 
 // Colours mirror the grammar-tutor tree renderer so the builder looks identical.
 function themeColors() {
@@ -58,6 +65,7 @@ const state = {
   challenge: null,
   onStatus: () => {},
   onComplete: null,
+  setWorkspaceView: null,
   solved: false,
   treeCorrect: false,
   snapped: false,
@@ -77,12 +85,57 @@ const state = {
   rightDownStart: null,
 };
 
-export function initSyntaxBuilder({ onStatusChange } = {}) {
+export function initSyntaxBuilder({ onStatusChange, setWorkspaceView } = {}) {
   state.onStatus = onStatusChange || (() => {});
+  state.setWorkspaceView = setWorkspaceView || null;
 }
 
 export function builderModel() {
   return state.model;
+}
+
+// ---------------------------------------------------------------------------
+// Canvas ↔ input panel
+// ---------------------------------------------------------------------------
+// The builder canvas and the upper-right input box are one surface: the words
+// the learner places on the canvas ARE the sentence in the input panel. The
+// panel is a mirror, not a second editing surface — it stays locked and is
+// refreshed from the canvas on every word mutation.
+
+// The sentence the canvas currently spells out.
+export function getSentenceFromLeaves() {
+  return sentenceFromLeaves(state.model);
+}
+
+// Mirror the canvas into the input panel. The update is programmatic, so it
+// must never start the Grammar Tutor's analysis pipeline: the 'input' event
+// only refreshes the highlight overlay and the × affordance (main.js's
+// listener never runs the pipeline — the blur handler does, and it is
+// disabled while the builder owns the workspace).
+function syncCanvasToInput() {
+  const sentence = getSentenceFromLeaves();
+  const input = document.getElementById('inputText');
+  if (!input) return sentence;
+  if (input.value === sentence) return sentence;
+  input.value = sentence;
+  const highlights = document.getElementById('inputHighlights');
+  if (highlights) highlights.textContent = sentence;
+  input.dispatchEvent(new Event('input', { bubbles: true }));
+  return sentence;
+}
+
+// The input panel's prompt follows the active mode. It lives on the
+// textarea only — the highlight overlay never renders a prompt of its own.
+function setInputPlaceholder(text) {
+  const input = document.getElementById('inputText');
+  if (input) input.placeholder = text;
+}
+
+// Empty the canvas — and with it the sentence in the input panel.
+export function clearBuilder() {
+  newModel();
+  draw();
+  syncCanvasToInput();
 }
 
 // ---------------------------------------------------------------------------
@@ -122,6 +175,10 @@ export function openBuilderView(opts = {}) {
   // affordances out where they apply.
   const practice = Boolean(state.challenge) && Boolean(opts.practice);
   bar.hidden = Boolean(state.challenge) && !practice;
+  // The builder owns the input panel now: it mirrors the canvas, so it gets
+  // the builder's prompt and stays read-only.
+  document.body.classList.add('builder-active');
+  setInputPlaceholder(BUILDER_PLACEHOLDER);
   const target = document.getElementById('builderTarget');
   const check = document.getElementById('builderCheck');
   const next = document.getElementById('builderNext');
@@ -141,12 +198,17 @@ export function openBuilderView(opts = {}) {
     if (hint) {
       hint.textContent =
         'Right-click to add a phrase · drag a dot to connect · grab a link end to re-route or delete';
+      hint.className = 'builder-hint';
       hint.hidden = false;
     }
     if (target) target.hidden = true;
     if (check) check.hidden = true;
     if (next) next.hidden = true;
     if (done) done.hidden = true;
+  } else {
+    // A quiz shows no builder chrome at all: the action buttons and the
+    // practice hint both stay off the canvas.
+    if (hint) { hint.textContent = ''; hint.hidden = true; }
   }
   hideToast();
   resize();
@@ -193,8 +255,15 @@ export function closeBuilderView() {
   closeEditor();
   closeMenu();
   bar.hidden = true;
+  // The practice hint floats on its own (outside the action cluster), so it
+  // has to be dismissed with the cluster.
+  const hint = document.getElementById('builderHint');
+  if (hint) hint.hidden = true;
   if (canvas) canvas.hidden = true;
   if (treeCanvas) treeCanvas.hidden = false;
+  // The Grammar Tutor takes the input panel back, with its own prompt.
+  document.body.classList.remove('builder-active');
+  setInputPlaceholder(TUTOR_PLACEHOLDER);
   state.challenge = null;
   state.onComplete = null;
   onBuilderClose();
@@ -231,10 +300,11 @@ export function newModel() {
   if (target) target.classList.remove('builder-target-ok');
 }
 
+// The rail highlight is owned by main.js (setActiveNav): the builder only
+// reports which module it is showing for, so exactly one destination stays
+// active.
 function markSidebar(view) {
-  document.querySelectorAll('.sidebar-item[data-view]').forEach((b) => {
-    b.classList.toggle('active', b.dataset.view === view);
-  });
+  if (view) state.setWorkspaceView?.(view);
 }
 
 // ---------------------------------------------------------------------------
@@ -246,10 +316,7 @@ function ensureWired() {
   wired = true;
   state.canvas = document.getElementById('builderCanvas');
   state.ctx = state.canvas.getContext('2d');
-  document.getElementById('builderClear')?.addEventListener('click', () => {
-    newModel();
-    draw();
-  });
+  document.getElementById('builderClear')?.addEventListener('click', clearBuilder);
   document.getElementById('builderSnap')?.addEventListener('click', buildTree);
   document.getElementById('builderDone')?.addEventListener('click', () => closeBuilderView());
   document.getElementById('builderCheck')?.addEventListener('click', checkTree);
@@ -555,9 +622,13 @@ function onMouseUp(e) {
     draw();
     explainSelected();
   }
+  // A word dragged sideways can change the reading order, so the input panel
+  // follows once the drag ends.
+  const dragged = state.drag;
   state.drag = null;
   state.pan = null;
   state.canvas.style.cursor = '';
+  if (dragged?.moved) syncCanvasToInput();
 }
 
 function nodeLabel(node) {
@@ -987,6 +1058,9 @@ function changed() {
   state.nodeErrors = new Map();
   draw();
   state.treeCorrect = treeIsComplete();
+  // Words were added, edited, re-ordered, or removed: the input panel mirrors
+  // the canvas again.
+  syncCanvasToInput();
   if (state.challenge && !state.solved) checkTree();
 }
 
@@ -1300,10 +1374,9 @@ async function buildTree() {
   state.treeCorrect = treeIsComplete();
   draw();
   // Surface the constructed sentence in the tutor's top input box so the page
-  // reads like a normal analysis of that sentence.
-  const sentence = wordsInOrder().join(' ');
-  const ta = document.getElementById('inputText');
-  if (ta) ta.value = sentence;
+  // reads like a normal analysis of that sentence — the input panel always
+  // mirrors the canvas, and building the tree only re-orders it.
+  syncCanvasToInput();
   // Check the node connections and the overall structure, mark anything invalid
   // red, and report the findings in the right-hand explain panel.
   await validateBuiltTree();
