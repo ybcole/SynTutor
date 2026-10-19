@@ -126,6 +126,12 @@ body {
   pointer-events: none;
 }
 
+/* The highlight overlay only ever carries the analysis spans — it never
+   renders a prompt of its own, so it can never overlap the textarea's
+   placeholder. */
+#inputHighlights::before,
+#inputHighlights::after { content: none !important; }
+
 #inputText {
   position: relative;
   z-index: 1;

@@ -54,6 +54,15 @@ export function clearOverlay() {
   if (overlay) overlay.innerHTML = '';
 }
 
+// Tear down everything the Grammar Tutor may have left on the canvas or in
+// the explain pane: the overlay message (errors, hints) and the node
+// inspector. Used when the workspace switches modes, so a diagnostic from
+// the previous mode never survives into the next one.
+export function clearDiagnostics() {
+  clearOverlay();
+  renderNodeDetail(null, null, null);
+}
+
 export function showCanvasMessage(kind, title, lines) {
   const holder = $('#canvasOverlay');
   if (!holder) return;
@@ -84,9 +93,8 @@ export function renderNodeDetail(_session, detail, node) {
 
   if (emptyState) emptyState.classList.add('hidden');
 
-  const card = document.createElement('div');
-  card.className = 'node-card';
-
+  // Render the inspector's content directly into the explain pane: no inner
+  // card wrapper, so the diagnostics/lesson explanation fill the whole panel.
   const head = document.createElement('div');
   head.className = 'nc-head';
   const dot = document.createElement('span');
@@ -102,7 +110,7 @@ export function renderNodeDetail(_session, detail, node) {
     surf.textContent = ` \u2014 "${detail.surface}"`;
     head.appendChild(surf);
   }
-  card.appendChild(head);
+  box.appendChild(head);
 
   const chipRow = document.createElement('div');
   chipRow.className = 'nc-chiprow';
@@ -110,18 +118,16 @@ export function renderNodeDetail(_session, detail, node) {
   chip.className = detail.status === 'error' ? 'nc-chip err' : 'nc-chip';
   chip.textContent = detail.role;
   chipRow.appendChild(chip);
-  card.appendChild(chipRow);
+  box.appendChild(chipRow);
 
   if (detail.status === 'error' && detail.remediation) {
-    card.appendChild(renderRemediation(detail.remediation));
+    box.appendChild(renderRemediation(detail.remediation));
   } else {
     const ex = document.createElement('p');
     ex.className = 'ex-text';
     ex.textContent = detail.text;
-    card.appendChild(ex);
+    box.appendChild(ex);
   }
-
-  box.appendChild(card);
 }
 
 function label(body, text) {

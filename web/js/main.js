@@ -4,11 +4,13 @@ import { TreeRenderer } from './renderer.js';
 import { getSavedTheme, setTheme } from './theme.js';
 import {
   log,
-  clearOverlay, showCanvasMessage, renderNodeDetail,
+  clearOverlay, clearDiagnostics, showCanvasMessage, renderNodeDetail,
   renderDiagnostic, applySentenceSelection, plainName,
 } from './ui.js';
-import { openQuizView, closeQuizView, initQuiz, quizInputHint } from './tree-quiz.js';
-import { initSyntaxBuilder, openBuilderView, closeBuilderView } from './syntax-builder-ui.js';
+import {
+  openQuizView, closeQuizView, closeSubpanel, initQuiz, quizInputHint, clearActiveLesson,
+} from './tree-quiz.js';
+import { initSyntaxBuilder, openBuilderView, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
 import { levelFromXp } from './level.js';
 import { computeUnlocked } from './achievements.js';
 
@@ -60,6 +62,65 @@ let historySpans = [];
 let cachedHistory = [];
 let activeHistoryFilter = 'all';
 
+// ---------------------------------------------------------------------------
+// Rail navigation — exactly one active destination
+// ---------------------------------------------------------------------------
+// The rail never highlights two destinations at once, and never highlights
+// none: `setActiveNav` is the single painter. The module that owns the
+// workspace is remembered separately from the drawer or side panel that may
+// be sitting on top of it, so closing an overlay hands the highlight back to
+// the module underneath.
+const NAV_TARGETS = {
+  tutor: '#newSessionBtn',
+  history: '#headerHistoryBtn',
+  lessons: '.sidebar-item[data-view="lessons"]',
+  builder: '.sidebar-item[data-view="builder"]',
+  leaderboard: '.sidebar-item[data-view="leaderboard"]',
+  achievements: '.sidebar-item[data-view="achievements"]',
+  // A standalone quiz session is part of the Lessons module.
+  quiz: '.sidebar-item[data-view="lessons"]',
+};
+
+// View names that mean the same destination in the rail.
+const VIEW_ALIASES = { quiz: 'lessons' };
+
+// The workspace module currently in charge: 'tutor' | 'lessons' | 'builder'.
+let workspaceView = 'tutor';
+// The drawer / side panel currently on top of the workspace, if any.
+let overlayView = null;
+
+function setActiveNav(viewName) {
+  const resolve = (name) => {
+    const selector = NAV_TARGETS[name]
+      || (name ? `.sidebar-item[data-view="${name}"]` : null);
+    return selector ? document.querySelector(selector) : null;
+  };
+  let target = resolve(viewName);
+  // The rail always shows exactly one active destination: an unknown view
+  // falls back to the module that owns the workspace.
+  if (!target) target = resolve(workspaceView);
+  document.querySelectorAll('.sidebar-item').forEach((btn) => {
+    const on = Boolean(target) && btn === target;
+    btn.classList.toggle('active', on);
+    if (on) btn.setAttribute('aria-current', 'page');
+    else btn.removeAttribute('aria-current');
+  });
+}
+
+// The module that owns the workspace. It owns the rail highlight unless an
+// overlay is on top of it.
+function setWorkspaceView(viewName) {
+  workspaceView = VIEW_ALIASES[viewName] || viewName;
+  if (!overlayView) setActiveNav(workspaceView);
+}
+
+// A drawer or side panel takes the highlight while it is open; closing it
+// restores the highlight of the workspace underneath.
+function setOverlayView(viewName) {
+  overlayView = viewName || null;
+  setActiveNav(overlayView || workspaceView);
+}
+
 function transition(next, event) {
   const from = state;
   state = next;
@@ -95,10 +156,23 @@ export function boot() {
   initThemeAndMenu();
   purgeLegacyGuestHistory();
   initSidebar();
-  initSyntaxBuilder({ onStatusChange: (msg) => log(msg) });
-  initQuiz({ analyze: analyzeForQuiz, setQuizMode, progress });
+  // The rail starts on the Syntax Generator: exactly one active destination.
+  setActiveNav(workspaceView);
+  initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView });
+  initQuiz({
+    analyze: analyzeForQuiz,
+    setQuizMode,
+    progress,
+    setChatTitle,
+    lastChatTitle: () => lastAnalyzedText || '',
+    setWorkspaceView,
+    setOverlayView,
+  });
+  initResizers();
+  syncInputClearBtn();
   transition(STATES.IDLE, 'system ready');
   log(`SynTutor engine ready \u2014 full-stack pipeline: spaCy + benepar + rule matrix (${isGuest ? 'guest mode' : 'authenticated'})`);
+  maybeStartOnboarding();
 }
 
 function initThemeAndMenu() {
@@ -115,7 +189,29 @@ function initThemeAndMenu() {
   });
 
   document.querySelector('#newSessionBtn')?.addEventListener('click', () => {
+    enterTutorMode();
+  });
+
+  // The subtle × in the upper-right of the input pane: clears the text,
+  // resets the highlights, and drops the workspace back to STATES.IDLE with
+  // the empty canvas state (startNewSession owns all of that reset).
+  // While the Syntax Builder is open the input box mirrors the canvas, so the
+  // × clears the canvas instead.
+  document.querySelector('#inputClearBtn')?.addEventListener('click', () => {
+    if (state === STATES.PROCESSING) return;
+    if (isBuilderOpen()) {
+      clearBuilder();
+      syncInputClearBtn();
+      return;
+    }
     startNewSession();
+    syncInputClearBtn();
+  });
+
+  // "Done" leaves the standalone Syntax Builder and lands back in the plain
+  // analyzer — put Syntax Generator (and its clear affordance) in charge.
+  document.querySelector('#builderDone')?.addEventListener('click', () => {
+    setWorkspaceView('tutor');
   });
 
   document.querySelector('#headerHistoryBtn')?.addEventListener('click', () => {
@@ -127,17 +223,84 @@ function initThemeAndMenu() {
 
 function initSidebar() {
   const backdrop = document.querySelector('#appSidebarBackdrop');
+  const sidebar = document.querySelector('#appSidebar');
   const toggle = document.querySelector('#sidebarToggleBtn');
+  const mobileNav = document.querySelector('#mobileNavBtn');
+
+  // Canvases live in the workspace column, so re-fit them once the rail
+  // finishes resizing; the fallback timer covers transitions that never run.
+  let resizeFallback = 0;
+  const dispatchResize = () => {
+    window.clearTimeout(resizeFallback);
+    window.dispatchEvent(new Event('resize'));
+  };
+  const scheduleResize = () => {
+    window.clearTimeout(resizeFallback);
+    resizeFallback = window.setTimeout(dispatchResize, 400);
+  };
+
+  const syncRailState = () => {
+    const expanded = Boolean(sidebar?.classList.contains('expanded'));
+    const label = expanded ? 'Collapse sidebar' : 'Expand sidebar';
+    // Only write when needed: this also self-corrects the stale
+    // aria-expanded writes tree-quiz.js still makes for the old drawer.
+    if (toggle && toggle.getAttribute('aria-expanded') !== String(expanded)) {
+      toggle.setAttribute('aria-expanded', String(expanded));
+    }
+    if (toggle) {
+      if (toggle.getAttribute('aria-label') !== label) toggle.setAttribute('aria-label', label);
+      if (toggle.title !== label) toggle.title = label;
+    }
+  };
+
+  const setExpanded = (next) => {
+    sidebar?.classList.toggle('expanded', next);
+    syncRailState();
+    scheduleResize();
+  };
+  const toggleExpanded = () => setExpanded(!sidebar?.classList.contains('expanded'));
+
+  // The rail expands only via the toggle button (or the brand monogram when
+  // collapsed) — never on hover.
+  toggle?.addEventListener('click', toggleExpanded);
+  const isDesktop = () => window.matchMedia('(min-width: 761px)').matches;
+  document.querySelector('#sidebarBrandBtn')?.addEventListener('click', () => {
+    if (!isDesktop()) return;
+    setExpanded(!sidebar?.classList.contains('expanded'));
+  });
+  sidebar?.addEventListener('transitionend', (e) => {
+    if (e.propertyName === 'width' && e.target === sidebar) dispatchResize();
+  });
+  let railKey = String(sidebar?.classList.contains('expanded'));
+  new MutationObserver(() => {
+    const next = String(sidebar?.classList.contains('expanded'));
+    if (next === railKey) return;
+    railKey = next;
+    syncRailState();
+    scheduleResize();
+  }).observe(sidebar, { attributes: true, attributeFilter: ['class'] });
+  syncRailState();
+
+  // Small screens open the rail as a slide-over drawer (tree-quiz.js also
+  // toggles the backdrop directly, so mirror its aria state).
+  const syncDrawerAria = () => {
+    const active = Boolean(backdrop?.classList.contains('active'));
+    if (mobileNav && mobileNav.getAttribute('aria-expanded') !== String(active)) {
+      mobileNav.setAttribute('aria-expanded', String(active));
+    }
+  };
+  new MutationObserver(syncDrawerAria).observe(backdrop, { attributes: true, attributeFilter: ['class'] });
   const open = () => {
     backdrop?.classList.add('active');
-    toggle?.setAttribute('aria-expanded', 'true');
+    syncDrawerAria();
   };
   const close = () => {
     backdrop?.classList.remove('active');
-    toggle?.setAttribute('aria-expanded', 'false');
+    syncDrawerAria();
   };
+  syncDrawerAria();
 
-  toggle?.addEventListener('click', () => {
+  mobileNav?.addEventListener('click', () => {
     if (backdrop?.classList.contains('active')) close();
     else open();
   });
@@ -148,25 +311,23 @@ function initSidebar() {
 
   document.querySelectorAll('.sidebar-item[data-view]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (btn.dataset.view === 'builder') {
-        closeQuizView();
-        openBuilderView();
-      } else if (btn.dataset.view === 'quiz') {
-        closeBuilderView();
-        openQuizView('quiz');
-      } else if (btn.dataset.view === 'lessons') {
-        closeBuilderView();
-        openQuizView('lessons');
-      } else if (btn.dataset.view === 'leaderboard') {
-        closeBuilderView();
-        openQuizView('leaderboard');
-      } else if (btn.dataset.view === 'achievements') {
-        closeBuilderView();
-        openQuizView('achievements');
-      } else {
-        closeBuilderView();
-        closeQuizView();
-        close();
+      if (btn.id === 'newSessionBtn') return;
+      switch (btn.dataset.view) {
+        case 'builder':
+          enterBuilderMode();
+          break;
+        case 'lessons':
+          enterLessonsMode();
+          break;
+        case 'leaderboard':
+        case 'achievements':
+          enterPanelMode(btn.dataset.view);
+          break;
+        default:
+          // Syntax Generator: leave any lesson/quiz/builder session and
+          // return to the plain analyzer.
+          enterTutorMode();
+          close();
       }
     });
   });
@@ -179,6 +340,195 @@ function initSidebar() {
   });
 }
 
+// ---------------------------------------------------------------------------
+// Mode switching — teardown first, then setup
+// ---------------------------------------------------------------------------
+// The workspace has three modes: the Grammar Tutor (Syntax Generator), the
+// Lessons module, and the standalone Syntax Builder. Every switch starts by
+// dismantling the previous mode completely — no lesson panels, no builder
+// canvas or floating controls, no canvas overlay, no node diagnostics — so
+// nothing from one mode can bleed into the next.
+
+// Close the History drawer and hand the rail highlight back to the module
+// underneath it.
+function closeHistoryDrawer() {
+  document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
+  if (overlayView === 'history') setOverlayView(null);
+}
+
+// Tear the workspace down to a clean slate: no module owns anything.
+function teardownWorkspace() {
+  // Lessons: the picker overlay, the lesson panels, the guide card, the quiz
+  // panel in the rail, and the side sub-panel.
+  closeQuizView();
+  clearActiveLesson();
+  // Syntax Builder: the canvas, its floating controls, and the inline editor
+  // or context menu it may have opened.
+  closeBuilderView();
+  // The canvas overlay and the node inspector belong to the Grammar Tutor.
+  clearDiagnostics();
+  // Back to the plain analyzer surfaces.
+  const tree = document.querySelector('#treeCanvas');
+  const builder = document.querySelector('#builderCanvas');
+  const empty = document.querySelector('#emptyTreeState');
+  const controls = document.querySelector('#canvasControls');
+  if (tree) tree.hidden = false;
+  if (builder) builder.hidden = true;
+  if (empty) empty.classList.remove('hidden');
+  if (controls) controls.hidden = true;
+  // The upper-right pane returns to a single-surface input editor: the
+  // lesson controls are gone and the editor is locked again.
+  document.body.classList.remove('lesson-view');
+  const ta = document.querySelector('#inputText');
+  const editor = document.querySelector('.input-editor');
+  if (ta) {
+    ta.readOnly = true;
+    ta.classList.remove('editing');
+  }
+  editor?.classList.remove('editing');
+}
+
+// Syntax Generator: the plain analyzer, with a fresh session.
+function enterTutorMode() {
+  teardownWorkspace();
+  setQuizMode(false);
+  setWorkspaceView('tutor');
+  startNewSession();
+  syncInputClearBtn();
+  // Dismiss the mobile drawer so the workspace is visible again.
+  document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
+}
+
+// Lessons: the module picker and its in-place builder. The Grammar Tutor's
+// blur/pipeline listeners stay quiet — the lesson owns the input box.
+function enterLessonsMode() {
+  teardownWorkspace();
+  setQuizMode(true);
+  setWorkspaceView('lessons');
+  openQuizView('lessons');
+}
+
+// Syntax Builder: the standalone node editor. No Grammar Tutor pipeline and
+// no diagnostics may fire while it owns the canvas.
+function enterBuilderMode() {
+  teardownWorkspace();
+  setQuizMode(false);
+  setWorkspaceView('builder');
+  openBuilderView();
+}
+
+// Leaderboard / Achievements: a side panel next to the rail. The workspace
+// underneath keeps its own mode; the panel takes the rail highlight while it
+// is open.
+function enterPanelMode(viewName) {
+  teardownWorkspace();
+  setQuizMode(false);
+  setWorkspaceView('tutor');
+  openQuizView(viewName);
+}
+
+// Replaying a past analysis: the workspace returns to the Syntax Generator
+// (every other mode is torn down first) and the stored sentence is analyzed
+// again.
+function replayHistoryEntry(sentence) {
+  teardownWorkspace();
+  setQuizMode(false);
+  setWorkspaceView('tutor');
+  setChatTitle(sentence);
+  const ta = document.querySelector('#inputText');
+  if (ta) ta.value = sentence;
+  recordedTexts.add(sentence);
+  runPipeline({ isReplay: true });
+}
+
+// ---------------------------------------------------------------------------
+// Workspace splitters — LeetCode-style gutters between the panes
+// ---------------------------------------------------------------------------
+// #colResizer splits the canvas column from the right column (.app-main's
+// --col-split), #rowResizer splits the input pane from the explain pane
+// (.pane-side's --row-split). Both vars are unitless fractions (0..1) of the
+// grid content box, written inline by the drag handler; the handles sit in the
+// 8px gap between panels. Double-click restores the 0.58 default. Canvas
+// redraws ride a rAF-throttled resize event.
+function initResizers() {
+  const main = document.querySelector('.app-main');
+  const sidePane = document.querySelector('.pane-side');
+  let frame = 0;
+  const dispatchResize = () => {
+    window.cancelAnimationFrame(frame);
+    frame = window.requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+  };
+
+  const wire = (sel, container, prop, axis, min, max) => {
+    const gutter = document.querySelector(sel);
+    if (!gutter || !container) return;
+    gutter.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      e.preventDefault();
+      // Synthetic pointer events (tests) have no active pointer, so capture
+      // is best-effort: real drags still get it, and the listeners below
+      // keep the drag working either way.
+      try { gutter.setPointerCapture(e.pointerId); } catch { /* no active pointer */ }
+      gutter.classList.add('dragging');
+      document.body.classList.add('is-resizing');
+      const rect = container.getBoundingClientRect();
+      // Percentage grid tracks resolve against the content box, so the drag
+      // math strips .app-main's padding (8px per side) off the measurement.
+      const cs = window.getComputedStyle(container);
+      const padA = parseFloat(axis === 'x' ? cs.paddingLeft : cs.paddingTop) || 0;
+      const padB = parseFloat(axis === 'x' ? cs.paddingRight : cs.paddingBottom) || 0;
+      const total = (axis === 'x' ? rect.width : rect.height) - padA - padB;
+      const origin = (axis === 'x' ? rect.left : rect.top) + padA;
+      if (!total) return;
+      const move = (ev) => {
+        const pos = (axis === 'x' ? ev.clientX : ev.clientY) - origin;
+        const pct = Math.min(max, Math.max(min, (pos / total) * 100));
+        container.style.setProperty(prop, (pct / 100).toFixed(4));
+        dispatchResize();
+      };
+      const up = (ev) => {
+        if (gutter.hasPointerCapture?.(ev.pointerId)) gutter.releasePointerCapture(ev.pointerId);
+        gutter.classList.remove('dragging');
+        document.body.classList.remove('is-resizing');
+        gutter.removeEventListener('pointermove', move);
+        gutter.removeEventListener('pointerup', up);
+        gutter.removeEventListener('pointercancel', up);
+        dispatchResize();
+      };
+      gutter.addEventListener('pointermove', move);
+      gutter.addEventListener('pointerup', up);
+      gutter.addEventListener('pointercancel', up);
+      move(e);
+    });
+    gutter.addEventListener('dblclick', () => {
+      container.style.removeProperty(prop);
+      dispatchResize();
+    });
+  };
+
+  wire('#colResizer', main, '--col-split', 'x', 35, 75);
+  wire('#rowResizer', sidePane, '--row-split', 'y', 22, 78);
+
+  // Any layout change inside the workspace — a resizer drag, the rail
+  // expanding/collapsing, or a sub-panel sliding open — reflows the canvases
+  // and textareas in real time. ResizeObserver fires synchronously with the
+  // layout, and the rAF-throttled dispatch coalesces bursts.
+  if (typeof ResizeObserver !== 'undefined') {
+    const ro = new ResizeObserver(() => dispatchResize());
+    for (const node of [main, sidePane, document.querySelector('.canvas-wrap'), document.querySelector('.pane-side')]) {
+      if (node) ro.observe(node);
+    }
+  }
+
+  // A left sub-panel opening/closing shifts the workspace grid on desktop;
+  // re-fit the canvases once its slide transition ends.
+  for (const sel of ['#subpanelPlaceholder', '#historyDrawerBackdrop']) {
+    document.querySelector(sel)?.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'width') dispatchResize();
+    });
+  }
+}
+
 function setChatTitle(title) {
   const el = document.querySelector('#chatTitle');
   if (!el) return;
@@ -188,7 +538,13 @@ function setChatTitle(title) {
 
 function openHistoryDrawer() {
   if (isGuest) return; // history is an account-only feature
+  // History and the tree-quiz sub-panel share the same slide-out slot —
+  // opening one dismisses the other.
+  closeSubpanel();
   document.querySelector('#historyDrawerBackdrop')?.classList.add('active');
+  // The drawer owns the rail highlight while it is open; closing it hands
+  // the highlight back to the module underneath.
+  setOverlayView('history');
   loadAndRenderHistory();
 }
 
@@ -246,7 +602,7 @@ function updateAuthState() {
     chip.title = 'Log In / Sign Up';
     if (historyBtn) historyBtn.hidden = true;
     cachedHistory = [];
-    document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
+    closeHistoryDrawer();
   }
   renderProfileMenu();
   refreshProfileStats();
@@ -458,20 +814,47 @@ function initProfileMenu() {
 
 function wireEvents() {
   const ta = document.querySelector('#inputText');
-  const editor = document.querySelector('.input-editor');
-  ta.addEventListener('dblclick', () => {
-    editor?.classList.add('editing');
-    ta.readOnly = false;
-    ta.classList.add('editing');
-    setHint(true);
-    ta.focus();
-  });
+  // Single-click editing (empty input / single sentence / active sentence /
+  // blank space): this listener is registered before activateSentenceAtCaret,
+  // so once readOnly flips false the sentence-nav click short-circuits.
+  ta.addEventListener('click', () => enterEditMode());
   ta.addEventListener('scroll', syncHighlightScroll);
   ta.addEventListener('input', () => {
     historySpans = [];
     renderInputHighlights(ta.value);
+    syncInputClearBtn();
+  });
+  // Locked passages (session.sentences.length > 1) render one interactive
+  // span per sentence in the highlight overlay. Inspecting a different
+  // sentence reruns the pipeline for it WITHOUT unlocking the textarea;
+  // clicking the active sentence — or double-clicking a span — edits.
+  // The action runs on mousedown + preventDefault: that keeps focus where it
+  // is, so the blur → highlight re-render never swaps the span out from under
+  // the click.
+  const layer = document.querySelector('#inputHighlights');
+  layer?.addEventListener('mousedown', (e) => {
+    if (ta.readOnly !== true) return;
+    const span = e.target.closest?.('.sentence-span');
+    if (!span) return;
+    e.preventDefault();
+    if (state === STATES.PROCESSING) return;
+    const idx = Number(span.dataset.sentIdx);
+    if (!Number.isInteger(idx)) return;
+    if (idx === (session?.sentence_index ?? -1)) { enterEditMode(); return; }
+    if (workspaceView === 'builder') return;   // the builder owns the canvas
+    if (quizMode) { analyzeForQuiz(ta.value, idx); return; }
+    // Inspect: flip the target sentence immediately (so the highlight moves
+    // as soon as the payload lands) and rebuild the canvas for it.
+    if (session) session.sentence_index = idx;
+    runPipeline({ index: idx, isSentenceNav: true });
+  });
+  layer?.addEventListener('dblclick', (e) => {
+    if (ta.readOnly === true && e.target.closest?.('.sentence-span')) enterEditMode();
   });
   ta.addEventListener('blur', () => {
+    // The Syntax Builder owns the workspace: no Grammar Tutor pipeline and
+    // no diagnostics may run while it is open.
+    if (workspaceView === 'builder') return;
     if (quizMode) {
       returnToLocked();
       setQuizHintText();
@@ -485,9 +868,16 @@ function wireEvents() {
   });
   ta.addEventListener('click', activateSentenceAtCaret);
   ta.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && ta.readOnly === false) {
+      // Exit edit mode: blur re-locks the textarea and the blur handler
+      // reruns the pipeline only when the text actually changed.
+      e.preventDefault();
+      ta.blur();
+      return;
+    }
     if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
       e.preventDefault();
-      runPipeline();
+      if (workspaceView !== 'builder') runPipeline();
       return;
     }
     if (e.key === 'Enter' && ta.readOnly) {
@@ -498,14 +888,28 @@ function wireEvents() {
 
   const drawer = document.querySelector('#historyDrawerBackdrop');
   document.querySelector('#closeDrawerBtn')?.addEventListener('click', () => {
-    drawer?.classList.remove('active');
-  });
-  document.querySelector('#historyNewSessionBtn')?.addEventListener('click', () => {
-    drawer?.classList.remove('active');
-    startNewSession();
+    closeHistoryDrawer();
   });
   drawer?.addEventListener('click', (e) => {
-    if (e.target === drawer) drawer.classList.remove('active');
+    if (e.target === drawer) closeHistoryDrawer();
+  });
+
+  // Escape closes an open left sub-panel first (the tree-quiz panel, then
+  // History); stopImmediatePropagation keeps the sidebar's own Escape from
+  // also dismissing the mobile drawer in the same keypress. Either way the
+  // rail highlight goes back to the module underneath.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const sub = document.querySelector('#subpanelPlaceholder');
+    if (sub?.classList.contains('active')) {
+      closeSubpanel();
+      e.stopImmediatePropagation();
+      return;
+    }
+    if (drawer?.classList.contains('active')) {
+      closeHistoryDrawer();
+      e.stopImmediatePropagation();
+    }
   });
 
   const authModal = document.querySelector('#authModalBackdrop');
@@ -552,20 +956,63 @@ function wireEvents() {
   });
 }
 
-const DEFAULT_INPUT_HINT = 'Double-click the panel to edit. When locked, click any sentence to view its syntax tree.';
+const DEFAULT_INPUT_HINT = 'Click the panel to write a sentence. SynTutor builds its syntax tree and analysis automatically.';
 
 function setHint(editing) {
-  const overlay = document.querySelector('#inputHighlights');
-  if (overlay) {
-    overlay.dataset.hint = editing
+  // The input panel's prompt lives on the textarea itself: the highlight
+  // overlay never renders text of its own, so the two can never overlap.
+  // The Syntax Builder owns the panel while it is open \u2014 its prompt stays
+  // until the builder closes.
+  if (!editing && isBuilderOpen()) return;
+  const ta = document.querySelector('#inputText');
+  if (ta) {
+    ta.placeholder = editing
       ? 'Editing \u2014 click away to lock and analyze. (Type above)'
       : DEFAULT_INPUT_HINT;
   }
 }
 
 function setQuizHintText() {
-  const overlay = document.querySelector('#inputHighlights');
-  if (overlay) overlay.dataset.hint = quizInputHint();
+  const ta = document.querySelector('#inputText');
+  if (ta) ta.placeholder = quizInputHint();
+}
+
+// The session doubles as the source for locked-mode sentence navigation:
+// `sentences` holds the passage's sentence boundaries and `sentence_index`
+// is the sentence currently rendered on the canvas.
+function buildSession(payload) {
+  return {
+    payload,
+    sentences: payload.parse.sentences || [],
+    sentence_index: (payload.meta.target_sentence || 1) - 1,
+  };
+}
+
+// The × in the upper-right of the input pane only shows while there is
+// something to clear (CSS additionally scopes it to the Syntax Generator tab).
+function syncInputClearBtn() {
+  const btn = document.querySelector('#inputClearBtn');
+  const ta = document.querySelector('#inputText');
+  if (!btn || !ta) return;
+  btn.hidden = !ta.value.trim();
+}
+
+// Locked -> edit: unlock the textarea and hide the highlight overlay (the
+// .editing class on .input-editor drops it from the layout) so typing goes
+// straight into the textarea.
+function enterEditMode() {
+  const ta = document.querySelector('#inputText');
+  const editor = document.querySelector('.input-editor');
+  if (!ta) return;
+  // The Syntax Builder owns the input box: it mirrors the words on the
+  // canvas, so it stays locked (and the canvas stays the only place to type).
+  if (isBuilderOpen()) return;
+  if (ta.readOnly === false) { ta.focus(); return; }
+  editor?.classList.add('editing');
+  ta.readOnly = false;
+  ta.classList.add('editing');
+  setHint(true);
+  ta.focus();
 }
 
 function returnToLocked(payload = null) {
@@ -581,6 +1028,7 @@ function returnToLocked(payload = null) {
 function startNewSession() {
   if (state === STATES.PROCESSING) return;
 
+  clearActiveLesson();
   recordedTexts.clear();
   session = null;
   lastAnalyzedText = null;
@@ -595,6 +1043,7 @@ function startNewSession() {
   editor?.classList.remove('editing');
   setHint(false);
   renderInputHighlights('');
+  syncInputClearBtn();
   syncHighlightScroll();
 
   renderer.select(null);
@@ -611,6 +1060,7 @@ function startNewSession() {
 function activateSentenceAtCaret() {
   const ta = document.querySelector('#inputText');
   if (!session || ta.readOnly !== true) return;
+  if (workspaceView === 'builder') return;   // the builder owns the canvas
   if (ta.selectionStart !== ta.selectionEnd) return;
   const sents = session.payload.parse.sentences || [];
   const caret = ta.selectionStart;
@@ -792,7 +1242,7 @@ async function analyzeForQuiz(text, index = null) {
     return null;
   }
   applyStatuses(payload.tree, payload.node_details, payload.summary);
-  session = { payload };
+  session = buildSession(payload);
   lastAnalyzedText = clean;
   historySpans = [];
   const input = document.querySelector('#inputText');
@@ -805,6 +1255,9 @@ async function analyzeForQuiz(text, index = null) {
 
 async function runPipeline(opts = {}) {
   if (state === STATES.PROCESSING) return;
+  // Only the Grammar Tutor runs the analysis pipeline: the Lessons module
+  // and the Syntax Builder own the workspace in their own way.
+  if (workspaceView !== 'tutor') return;
   transition(STATES.PROCESSING, 'user submits text');
   setLoadingIndicator(true);
   try {
@@ -872,19 +1325,29 @@ async function executePipeline(opts = {}) {
 
   log(`Stage 6: explanations generated \u2014 basic + ${payload.explainers.contrastive ? 'contrastive' : '(none)'}`);
 
-  session = { payload };
+  session = buildSession(payload);
   lastAnalyzedText = text;
   setChatTitle(text);
 
-  document.querySelector('#inputText').value = text;
+  // If the learner jumped back into edit mode while the request was in
+  // flight, don't yank the textarea back to locked or overwrite their
+  // typing — the highlights re-render from historySpans on the next blur.
+  const input = document.querySelector('#inputText');
+  const editingMidFlight = input != null && input.readOnly === false;
+  if (!editingMidFlight && input) {
+    input.value = text;
+    syncInputClearBtn();
+  }
   const spans = buildHighlightSpans(text, payload);
   if (opts.isSentenceNav) {
     historySpans = mergeHighlightSpans(historySpans, spans);
   } else {
     historySpans = spans;
   }
-  returnToLocked(payload);
-  applySentenceSelection(payload);
+  if (!editingMidFlight) {
+    returnToLocked(payload);
+    applySentenceSelection(payload);
+  }
 
   document.querySelector('#emptyTreeState')?.classList.add('hidden');
   renderer.setTree(payload.tree);
@@ -960,27 +1423,30 @@ function mergeHighlightSpans(existing, additions) {
 
 function renderInputHighlights(text, payload = null) {
   const layer = document.querySelector('#inputHighlights');
+  const ta = document.querySelector('#inputText');
   if (!layer) return;
   layer.textContent = '';
   if (!text) return;
   const spans = payload ? mergeHighlightSpans(historySpans, buildHighlightSpans(text, payload)) : historySpans;
   const target = payload?.parse?.sentences?.[(payload.meta.target_sentence || 1) - 1];
-  const sentenceStart = target?.start ?? -1;
-  const sentenceEnd = target?.end ?? -1;
+  let sentenceStart = target?.start ?? -1;
+  let sentenceEnd = target?.end ?? -1;
+  const off = (n) => Math.max(0, Math.min(n, text.length));
   const boundaries = new Set([0, text.length]);
   spans.forEach((span) => {
-    boundaries.add(Math.max(0, Math.min(span.start, text.length)));
-    boundaries.add(Math.max(0, Math.min(span.end, text.length)));
+    boundaries.add(off(span.start));
+    boundaries.add(off(span.end));
   });
   if (sentenceStart >= 0) {
     boundaries.add(sentenceStart);
     boundaries.add(sentenceEnd);
   }
-  const points = [...boundaries].sort((a, b) => a - b);
-  for (let index = 0; index < points.length - 1; index += 1) {
-    const start = points[index];
-    const end = points[index + 1];
-    if (start === end) continue;
+  const sents = session?.sentences || [];
+  const activeIdx = session?.sentence_index ?? ((payload?.meta?.target_sentence || 1) - 1);
+
+  // One styled <mark> for the [start, end) slice, or null when it carries
+  // no highlighting.
+  const segment = (start, end) => {
     const wordSpan = spans.find((span) => span.start <= start && end <= span.end);
     const selected = sentenceStart >= 0 && start >= sentenceStart && end <= sentenceEnd;
     const classes = [];
@@ -988,14 +1454,53 @@ function renderInputHighlights(text, payload = null) {
     if (wordSpan && HIGHLIGHT_STATUSES.has(wordSpan.status) && HIGHLIGHT_CLASSES[wordSpan.status]) {
       classes.push(HIGHLIGHT_CLASSES[wordSpan.status]);
     }
-    if (classes.length) {
-      const mark = document.createElement('span');
-      mark.className = classes.join(' ');
-      mark.textContent = text.slice(start, end);
-      layer.appendChild(mark);
-    } else {
-      layer.appendChild(document.createTextNode(text.slice(start, end)));
-    }
+    if (!classes.length) return null;
+    const mark = document.createElement('span');
+    mark.className = classes.join(' ');
+    mark.textContent = text.slice(start, end);
+    return mark;
+  };
+
+  const multi = ta?.readOnly === true && sents.length > 1;
+  if (multi) {
+    // Locked multi-sentence passage: every sentence becomes an interactive
+    // span (see the click delegation in wireEvents) — clicking a non-active
+    // one inspects that sentence, clicking the active one edits.
+    const active = sents[activeIdx];
+    if (active) { sentenceStart = active.start; sentenceEnd = active.end; }
+    const points = [...boundaries].sort((a, b) => a - b);
+    let cursor = 0;
+    const appendRange = (from, to, parent) => {
+      let pos = from;
+      for (const p of [...points.filter((b) => b > from && b < to), to]) {
+        if (p <= pos) continue;
+        parent.appendChild(segment(pos, p) || document.createTextNode(text.slice(pos, p)));
+        pos = p;
+      }
+    };
+    sents.forEach((s, i) => {
+      const start = off(s.start);
+      const end = Math.max(start, off(s.end));
+      if (start > cursor) layer.appendChild(document.createTextNode(text.slice(cursor, start)));
+      const span = document.createElement('span');
+      span.className = 'sentence-span' + (i === activeIdx ? ' is-active' : '');
+      span.dataset.sentIdx = String(i);
+      appendRange(start, end, span);
+      layer.appendChild(span);
+      cursor = Math.max(cursor, end);
+    });
+    if (cursor < text.length) layer.appendChild(document.createTextNode(text.slice(cursor)));
+    syncHighlightScroll();
+    return;
+  }
+
+  const points = [...boundaries].sort((a, b) => a - b);
+  for (let index = 0; index < points.length - 1; index += 1) {
+    const start = points[index];
+    const end = points[index + 1];
+    if (start === end) continue;
+    const mark = segment(start, end);
+    layer.appendChild(mark || document.createTextNode(text.slice(start, end)));
   }
   syncHighlightScroll();
 }
@@ -1025,6 +1530,7 @@ function applyStatuses(tree, details, summary) {
 
 function handleNodeSelect(id) {
   if (quizMode) return;
+  if (workspaceView !== 'tutor') return;
   if (!id || !session) {
     if (session) {
       renderer.select(null);
@@ -1037,6 +1543,10 @@ function handleNodeSelect(id) {
   const node = session.payload.nodes[id];
   if (!node || !detail) return;
   renderNodeDetail(session, detail, node);
+  // Keep the fresh detail card visible in the bottom-right explain pane
+  // without yanking the rest of the workspace.
+  document.querySelector('#explainNode')
+    ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   renderer.select(id);
   if (state !== STATES.PROCESSING) {
     transition(STATES.EXPLORING, 'user selects syntax node (cache hit \u2014 no HTTP request)');
@@ -1106,7 +1616,9 @@ function renderHistoryItems() {
     card.setAttribute('aria-label', `${entry.sentence} — ${entry.is_valid ? 'Valid' : 'Invalid'}`);
 
     const titleP = document.createElement('p');
-    titleP.className = 'hist-title';
+    // `hist-sentence` carries the single-line ellipsis truncation: a long
+    // sentence never widens the card or the drawer.
+    titleP.className = 'hist-title hist-sentence';
     titleP.textContent = entry.sentence;
 
     const delBtn = document.createElement('button');
@@ -1124,12 +1636,8 @@ function renderHistoryItems() {
     card.appendChild(delBtn);
 
     const openEntry = () => {
-      document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
-      setChatTitle(entry.sentence);
-      const ta = document.querySelector('#inputText');
-      ta.value = entry.sentence;
-      recordedTexts.add(entry.sentence);
-      runPipeline({ isReplay: true });
+      closeHistoryDrawer();
+      replayHistoryEntry(entry.sentence);
     };
 
     card.addEventListener('click', openEntry);
@@ -1162,6 +1670,180 @@ function renderHistoryItems() {
 
     container.appendChild(card);
   });
+}
+
+// ---------------------------------------------------------------------------
+// First-visit onboarding — a step-by-step spotlight tour of the workspace
+// ---------------------------------------------------------------------------
+// Runs once per browser. It preloads a friendly example sentence so the tree,
+// the analysis, and every zone the tour points at are populated, then walks
+// four steps: input panel, canvas/tree, bottom-right analysis, and the sidebar
+// (Lessons / Syntax Builder). Skip / Next / Back / Got it are all supported.
+const ONBOARDING_KEY = 'syntutor_onboarding_seen';
+const ONBOARDING_SENTENCE = 'The clever boy reads a book.';
+const ONBOARDING_STEPS = [
+  {
+    sel: '.pane-input',
+    title: 'Write a sentence',
+    text: 'Click the panel, type any English sentence, then click away. SynTutor parses it and highlights anything ungrammatical.',
+  },
+  {
+    sel: '.canvas-stage',
+    title: 'Explore the syntax tree',
+    text: 'Each word and phrase becomes a node. Click a node to see its role — the tree is the explanation.',
+  },
+  {
+    sel: '.pane-explain',
+    title: 'Read the analysis',
+    text: 'This pane explains the node you selected, and flags grammar issues with hints on how to fix them.',
+  },
+  {
+    sel: '#appSidebar',
+    title: 'Learn and build',
+    text: 'Open Lessons for guided practice, or Syntax Builder to construct phrase-structure trees by hand.',
+  },
+];
+
+let onboardingStep = 0;
+let onboardingEls = null;
+
+function maybeStartOnboarding() {
+  let seen = false;
+  try { seen = localStorage.getItem(ONBOARDING_KEY) === '1'; } catch { seen = false; }
+  if (seen) return;
+  // First visit: seed the example sentence so the canvas and analysis are
+  // populated for the tour. isReplay keeps it out of the analysis history.
+  const ta = document.querySelector('#inputText');
+  if (ta) ta.value = ONBOARDING_SENTENCE;
+  syncInputClearBtn();
+  Promise.resolve()
+    .then(() => runPipeline({ isReplay: true }))
+    .catch(() => {})
+    .finally(() => window.setTimeout(showOnboarding, 400));
+}
+
+function ensureOnboarding() {
+  if (onboardingEls) return onboardingEls;
+  const root = document.createElement('div');
+  root.className = 'onboarding';
+  root.id = 'onboarding';
+  root.hidden = true;
+  const ring = document.createElement('div');
+  ring.className = 'onboarding-ring';
+  ring.setAttribute('aria-hidden', 'true');
+  const card = document.createElement('div');
+  card.className = 'onboarding-card';
+  card.setAttribute('role', 'dialog');
+  card.setAttribute('aria-label', 'Welcome to SynTutor');
+  card.innerHTML =
+    '<span class="onboarding-kicker"></span>'
+    + '<h3 class="onboarding-title"></h3>'
+    + '<p class="onboarding-text"></p>'
+    + '<div class="onboarding-dots"></div>'
+    + '<div class="onboarding-nav">'
+    + '<button type="button" class="onboarding-skip">Skip</button>'
+    + '<button type="button" class="sq-ghost onboarding-back">Back</button>'
+    + '<button type="button" class="sq-primary onboarding-next">Next \u2192</button>'
+    + '</div>';
+  root.appendChild(ring);
+  root.appendChild(card);
+  document.body.appendChild(root);
+  card.querySelector('.onboarding-skip').addEventListener('click', finishOnboarding);
+  card.querySelector('.onboarding-back').addEventListener('click', () => onboardingGo(-1));
+  card.querySelector('.onboarding-next').addEventListener('click', () => onboardingGo(1));
+  onboardingEls = { root, ring, card };
+  return onboardingEls;
+}
+
+function renderOnboarding() {
+  const { card } = ensureOnboarding();
+  const step = ONBOARDING_STEPS[onboardingStep];
+  card.querySelector('.onboarding-kicker').textContent =
+    `Step ${onboardingStep + 1} of ${ONBOARDING_STEPS.length}`;
+  card.querySelector('.onboarding-title').textContent = step.title;
+  card.querySelector('.onboarding-text').textContent = step.text;
+  const dots = card.querySelector('.onboarding-dots');
+  dots.textContent = '';
+  ONBOARDING_STEPS.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.className = i === onboardingStep ? 'onboarding-dot is-active' : 'onboarding-dot';
+    dots.appendChild(dot);
+  });
+  card.querySelector('.onboarding-back').disabled = onboardingStep === 0;
+  card.querySelector('.onboarding-next').textContent =
+    onboardingStep === ONBOARDING_STEPS.length - 1 ? 'Got it \u2713' : 'Next \u2192';
+  window.requestAnimationFrame(positionOnboarding);
+}
+
+function positionOnboarding() {
+  if (!onboardingEls) return;
+  const { ring, card } = onboardingEls;
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const pad = 8;
+  const target = document.querySelector(ONBOARDING_STEPS[onboardingStep].sel);
+  let rect = target ? target.getBoundingClientRect() : null;
+  // Ignore targets that are hidden or off-screen (e.g. the mobile drawer).
+  if (rect && (!rect.width || !rect.height || rect.right < 4 || rect.left > vw - 4)) rect = null;
+  if (rect) {
+    ring.style.display = '';
+    ring.style.left = `${Math.round(rect.left - pad)}px`;
+    ring.style.top = `${Math.round(rect.top - pad)}px`;
+    ring.style.width = `${Math.round(rect.width + pad * 2)}px`;
+    ring.style.height = `${Math.round(rect.height + pad * 2)}px`;
+  } else {
+    ring.style.display = 'none';
+  }
+  const cw = card.offsetWidth;
+  const ch = card.offsetHeight;
+  let left;
+  let top;
+  if (rect) {
+    left = rect.right + 16;
+    if (left + cw > vw - 12) left = rect.left - cw - 16;
+    if (left < 12) left = Math.max(12, Math.min(rect.left, vw - cw - 12));
+    top = Math.max(12, Math.min(rect.top, vh - ch - 12));
+  } else {
+    left = Math.round((vw - cw) / 2);
+    top = Math.round((vh - ch) / 2);
+  }
+  card.style.left = `${left}px`;
+  card.style.top = `${top}px`;
+}
+
+function onboardingGo(d) {
+  const next = onboardingStep + d;
+  if (next < 0) return;
+  if (next >= ONBOARDING_STEPS.length) {
+    finishOnboarding();
+    return;
+  }
+  onboardingStep = next;
+  renderOnboarding();
+}
+
+function showOnboarding() {
+  const { root } = ensureOnboarding();
+  onboardingStep = 0;
+  root.hidden = false;
+  renderOnboarding();
+  document.addEventListener('keydown', onOnboardingKeydown);
+  window.addEventListener('resize', positionOnboarding);
+  window.addEventListener('scroll', positionOnboarding, true);
+}
+
+function finishOnboarding() {
+  try { localStorage.setItem(ONBOARDING_KEY, '1'); } catch { /* storage unavailable */ }
+  if (onboardingEls) onboardingEls.root.hidden = true;
+  document.removeEventListener('keydown', onOnboardingKeydown);
+  window.removeEventListener('resize', positionOnboarding);
+  window.removeEventListener('scroll', positionOnboarding, true);
+}
+
+function onOnboardingKeydown(e) {
+  if (e.key === 'Escape') finishOnboarding();
+  else if (e.key === 'ArrowRight') onboardingGo(1);
+  else if (e.key === 'ArrowLeft') onboardingGo(-1);
 }
 
 if (typeof window !== 'undefined') {

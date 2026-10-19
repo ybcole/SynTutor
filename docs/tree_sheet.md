@@ -3,7 +3,7 @@
 > Chronological + exhaustive: every part of SynTutor's analysis,
 > in the order the pipeline produces it. 1:1 with the model.
 
-*Generated 2026-10-17  •  48 POS tags  •  24 phrase nodes  •  111 rules  •  169 constraints*
+*Generated 2026-10-20  •  48 POS tags  •  24 phrase nodes  •  111 rules  •  169 constraints*
 
 ---
 

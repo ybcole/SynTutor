@@ -8,6 +8,8 @@
   --accent-strong: #5946d4;
   --accent-soft: #efeafc;
   --ok: #2e8b57;
+  /* Semantic alias for the success colour (completed stages, solved trees). */
+  --success: var(--ok);
   --err: #d64545;
   --warn: #c98f00;
   --xp: #d97706;
@@ -112,42 +114,58 @@ button:disabled {
 }
 
 .app-shell {
+  position: relative;
   flex: 1 1 auto;
   min-height: 0;
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  /* The sidebar is a pure fixed overlay that floats above the workspace:
+     the collapsed icon rail reserves --rail-dock at the left edge of the
+     workspace, while the expanded rail (--rail-w, 248px) and the left
+     sub-panels hover over the workspace without ever reflowing it. */
+  --rail-w: 60px;
+  --rail-dock: 60px;
+  --subpanel-w: 336px;
+}
+.app-shell:has(.app-sidebar.expanded) { --rail-w: 248px; }
+
+/* --------------------------------------------------------------------------
+   Left rail: one uniform width transition
+   -------------------------------------------------------------------------- */
+/* width, min-width, and max-width share a single 200ms curve so the rail
+   collapses in one continuous motion instead of several competing ones, and
+   `will-change`/`contain` keep the compositor on the width alone — no layout
+   thrashing from the children fading in and out mid-animation. */
+#appSidebar {
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow 200ms cubic-bezier(0.2, 0, 0, 1),
+    width 200ms cubic-bezier(0.2, 0, 0, 1),
+    min-width 200ms cubic-bezier(0.2, 0, 0, 1),
+    max-width 200ms cubic-bezier(0.2, 0, 0, 1);
+  will-change: width;
+  contain: layout style;
 }
 
-.app-header {
-  height: 52px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 10px;
-  padding: 0 14px;
-  background: var(--header-bg);
-  color: var(--header-text);
-  flex: 0 0 auto;
-  position: relative;
-  border-bottom: 1px solid var(--header-border);
-  z-index: 180;
+/* --------------------------------------------------------------------------
+   Rail active state — exactly one destination at a time
+   -------------------------------------------------------------------------- */
+/* main.js owns the `active` class and keeps it exclusive: the Syntax
+   Generator, Lessons, Syntax Builder, History, Leaderboard, and Achievements
+   never highlight at the same time, and the active one is always the module
+   the workspace is currently showing. */
+.sidebar-item.active {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
 }
-
-.header-aside {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-width: 0;
+.sidebar-item.active svg {
+  color: var(--accent-strong);
+  stroke: var(--accent-strong);
 }
-
-.header-left { justify-content: flex-start; }
-.header-right { justify-content: flex-end; }
-
-.header-brand {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
+/* Icons that paint a filled shape take the accent fill as well; the hollow,
+   stroke-only icons keep their shape. */
+.sidebar-item.active svg:not([fill="none"]) {
+  fill: var(--accent-strong);
 }
 
 .menu-btn {
@@ -202,12 +220,16 @@ button:disabled {
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .profile-menu {
   position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
+  /* Opens to the right of the rail, anchored at the bottom account chip. */
+  bottom: 0;
+  top: auto;
+  left: calc(100% + 10px);
+  transform-origin: bottom left;
   z-index: 210;
   min-width: 215px;
   background: var(--panel);
@@ -221,8 +243,7 @@ button:disabled {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(-6px) scale(0.98);
-  transform-origin: top left;
+  transform: translateY(6px) scale(0.98);
   transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease), visibility var(--dur) var(--ease);
 }
 .profile-menu.open {
@@ -347,95 +368,110 @@ button:disabled {
   color: var(--header-text);
 }
 
-.app-brand-name {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.3px;
-  color: var(--header-text);
-  white-space: nowrap;
-}
-
 @media (max-width: 520px) {
   .identity-chip { max-width: 116px; }
 }
 
-.topbar {
-  flex: 0 0 auto;
-  padding: 14px 18px 4px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+/* While the Lessons catalog overlay is open it owns the whole workspace:
+   the input pane stays hidden until a lesson is actually entered. */
+body.lessons-overlay-open .pane-input { visibility: hidden; }
 
-.chat-badge-row {
-  display: flex;
-}
-
-.chat-tag {
-  font-size: 11.5px;
-  font-weight: 500;
-  color: var(--muted);
-  background: rgba(128, 128, 128, 0.12);
-  padding: 3px 9px;
-  border-radius: 4px;
+/* The docked rail replaces the header on desktop; small screens open it
+   with this hamburger, which floats in the corner of the input pane and
+   stays reachable above the Lessons overlay. */
+.mobile-nav-btn {
+  display: none;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 6;
 }
 
 .input-row {
   display: flex;
+  flex: 1 1 auto;
   width: 100%;
+  min-height: 0;
 }
 
 .input-editor {
   position: relative;
   flex: 1 1 auto;
   min-width: 0;
+  width: 100%;
+  height: 100%;
 }
 
+/* While the Syntax Builder is open, the input box is a mirror of the canvas:
+   it shows the words that are on the canvas and stays read-only, so it reads
+   as a live readout rather than a second editing surface. */
+body.builder-active .input-editor {
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+body.builder-active #inputText { cursor: default; }
+
+/* The editor fills the upper-right pane edge-to-edge — no card chrome, no
+   gaps: just the text (or the highlight overlay while locked).
+   The textarea and the highlight overlay share ONE box model — same inset,
+   padding, font, and line height — so the highlights sit exactly under the
+   text they belong to. */
 #inputHighlights,
 #inputText {
-  width: 100%;
-  min-height: 46px;
-  max-height: 180px;
-  padding: 12px 16px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  font: 14px/1.5 Inter, "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  scrollbar-gutter: stable;
-  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
-}
-
-#inputHighlights {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  margin: 0;
+  padding: 18px 20px;
+  box-sizing: border-box;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: inherit;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  scrollbar-gutter: stable;
+  transition: box-shadow var(--dur-fast) var(--ease);
+}
+
+/* The highlight overlay is only a surface for the analysis spans. It never
+   renders text of its own — the native textarea placeholder is the only
+   prompt in the input panel, so the two can never overlap. */
+#inputHighlights::before,
+#inputHighlights::after {
+  content: none !important;
+}
+
+/* The overlay sits above the textarea: while the input is locked it shows the
+   analysed text and its spans, and the textarea's own text stays transparent
+   underneath. */
+#inputHighlights {
   z-index: 2;
   overflow: hidden;
   color: var(--ink);
-  background: var(--surface);
   pointer-events: none;
 }
 
 #inputText {
-  position: relative;
   z-index: 1;
-  resize: vertical;
+  resize: none;
   color: var(--ink);
-  background: var(--surface);
-  outline: none;
+  caret-color: var(--accent);
 }
 
+/* The one and only placeholder in the input panel. */
 #inputText::placeholder {
   color: var(--muted);
-  opacity: 1;
-}
-
-#inputHighlights:empty::before {
-  content: attr(data-hint);
-  display: block;
-  color: var(--muted);
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
+  opacity: 0.7;
+  font: inherit;
+  line-height: inherit;
 }
 
 #inputText[readonly] {
@@ -446,9 +482,8 @@ button:disabled {
 }
 
 #inputText.editing {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px var(--focus-ring);
-  background: var(--surface);
+  /* The focus ring is the only chrome the editor ever shows. */
+  box-shadow: inset 0 0 0 2px var(--focus-ring) !important;
   color: var(--ink);
   caret-color: var(--accent);
   cursor: text;
@@ -461,6 +496,34 @@ button:disabled {
 .input-editor:not(.editing) #inputHighlights {
   display: block;
 }
+
+/* Subtle clear affordance, upper-right of the input pane: shown only while
+   the Syntax Generator tab is the active view (never mid-lesson/build) AND
+   the textarea actually holds text (#inputClearBtn.hidden mirrors emptiness). */
+.input-clear {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 6;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.input-clear:hover { color: var(--err); border-color: var(--err); }
+.input-clear:active { transform: scale(0.92); }
+body:has(#newSessionBtn.active) #inputClearBtn:not([hidden]) { display: flex; }
 
 .word-invalid {
   color: var(--err);
@@ -475,6 +538,23 @@ button:disabled {
 
 [data-theme="dark"] .sentence-selected {
   background: rgba(109, 90, 230, 0.22);
+}
+
+/* Locked multi-sentence passages render one interactive span per sentence.
+   Clicking a non-active span inspects that sentence (pipeline rerun, no
+   unlock); clicking the active one — or empty space — enters edit mode. */
+.input-editor:not(.editing) #inputHighlights .sentence-span {
+  pointer-events: auto;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.input-editor:not(.editing) #inputHighlights .sentence-span:hover {
+  background: var(--accent-soft);
+}
+.input-editor:not(.editing) #inputHighlights .sentence-span.is-active {
+  /* The active sentence is the editable one — but keep the pointer cue so
+     the click target reads as interactive (click = edit). */
+  cursor: pointer;
 }
 
 .input-hint {
@@ -530,34 +610,48 @@ button:disabled {
   transition: width var(--dur) var(--ease);
 }
 
-.drawer-backdrop {
+/* Left slide-out sub-panels (History + the tree-quiz panel) at every
+   width: fixed overlays that hover just right of the docked rail, over
+   the workspace, without ever shrinking or pushing it. The dim cover only
+   extends over the workspace (left: var(--rail-w)), so the rail stays
+   usable. */
+.drawer-backdrop,
+.side-subpanel {
   position: fixed;
-  inset: 0;
-  z-index: 200;
+  top: 0;
+  bottom: 0;
+  left: var(--rail-w, 60px);
+  right: 0;
+  z-index: 225;
   display: flex;
-  justify-content: flex-end;
-  background: rgba(20, 16, 36, 0.4);
+  justify-content: flex-start;
+  background: rgba(20, 16, 36, 0.32);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity var(--dur) var(--ease), visibility var(--dur) var(--ease);
 }
-.drawer-backdrop.active {
+.drawer-backdrop.active,
+.side-subpanel.active {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 .history-drawer {
-  width: min(440px, 100%);
+  width: var(--subpanel-w, 336px);
+  max-width: 100%;
+  flex: 0 0 auto;
   height: 100%;
   padding: 18px 16px 20px;
   overflow-y: auto;
   background: var(--panel);
-  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
-  transform: translateX(100%);
+  border-right: 1px solid var(--border);
+  box-shadow: 8px 0 24px rgba(0, 0, 0, 0.15);
+  transform: translateX(-16px);
   transition: transform var(--dur) var(--ease);
 }
-.drawer-backdrop.active .history-drawer {
+.drawer-backdrop.active .history-drawer,
+.side-subpanel.active .history-drawer {
   transform: translateX(0);
 }
 .drawer-header {
@@ -576,8 +670,7 @@ button:disabled {
   color: var(--ink);
   letter-spacing: -0.2px;
 }
-#closeDrawerBtn,
-#historyNewSessionBtn {
+#closeDrawerBtn {
   background: transparent;
   border: none;
   color: var(--muted);
@@ -591,13 +684,11 @@ button:disabled {
   flex: 0 0 auto;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
-#closeDrawerBtn:hover,
-#historyNewSessionBtn:hover {
+#closeDrawerBtn:hover {
   background: var(--accent-soft);
   color: var(--accent);
 }
-#closeDrawerBtn:active,
-#historyNewSessionBtn:active {
+#closeDrawerBtn:active {
   transform: scale(0.92);
 }
 .history-toolbar {
@@ -644,12 +735,18 @@ button:disabled {
   color: var(--err);
   background: color-mix(in srgb, var(--err) 10%, transparent);
 }
-.history-list { display: grid; gap: 8px; }
+/* The list is a single column that can never be wider than the drawer, and
+   every card can shrink inside it — a long sentence truncates with an
+   ellipsis instead of pushing the drawer out of the workspace. */
+.history-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
 .history-item {
   position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -689,6 +786,24 @@ button:disabled {
 }
 .history-item.is-invalid:focus-visible {
   box-shadow: 0 0 0 2px var(--focus-ring), inset 0 0 0 1px color-mix(in srgb, var(--err) 35%, transparent);
+}
+/* The card head and the sentence itself are the two levels that carry the
+   text: both must be allowed to shrink, and the sentence truncates to a
+   single line with an ellipsis. */
+.hist-head {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.hist-sentence {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .hist-title {
   flex: 1 1 auto;
@@ -743,68 +858,176 @@ button:disabled {
 }
 
 .app-main {
+  position: relative;
+  height: 100%;
+  margin-left: var(--rail-dock);
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  /* Canvas column | right column with a clean 8px gutter. --col-split is a
+     unitless fraction (0..1) written by the drag handler; the column width
+     resolves against the content box, so #colResizer's left formula subtracts
+     the 8px padding on each side. */
+  grid-template-columns: minmax(0, calc(var(--col-split, 0.58) * 100%)) minmax(0, 1fr);
+  gap: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* ── Edge-drag handles between the panes ──
+   The panels are separated by an 8px grid gutter, and each handle sits dead
+   centre inside that gutter (never overlapping the panel borders): the col
+   handle accounts for .app-main's 8px padding because --col-split sizes the
+   column against the content box while `left` resolves against the padding
+   box. */
+.resizer {
+  position: absolute;
+  z-index: 6;
+  touch-action: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.resizer::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted) 55%, transparent);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease), width var(--dur-fast) var(--ease), height var(--dur-fast) var(--ease);
+}
+.resizer:hover::after,
+.resizer.dragging::after {
+  background: var(--accent);
+  opacity: 1;
+}
+.resizer-col {
+  top: 8px;
+  bottom: 8px;
+  /* 8px padding + first column (fraction of the content box) + half the gap. */
+  left: calc(8px + (100% - 16px) * var(--col-split, 0.58) + 1px);
+  width: 6px;
+  cursor: col-resize;
+}
+.resizer-col::after { width: 3px; height: 46px; }
+.resizer-col.dragging::after { height: 72px; }
+.resizer-row {
+  left: 0;
+  right: 0;
+  /* .pane-side has no padding: row boundary + half the 8px gap - half the handle. */
+  top: calc(100% * var(--row-split, 0.58) + 1px);
+  height: 6px;
+  cursor: row-resize;
+}
+.resizer-row::after { width: 46px; height: 3px; }
+.resizer-row.dragging::after { width: 72px; }
+body.is-resizing { user-select: none; -webkit-user-select: none; }
+body.is-resizing .resizer::after { opacity: 1; background: var(--accent); }
+
+/* Right column: the input pane over the explain pane, flush and separated
+   by the row resizer. */
+.pane-side {
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  grid-template-rows: minmax(0, calc(var(--row-split, 0.58) * 100%)) minmax(0, 1fr);
+  gap: 8px;
+}
+.pane {
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.pane-input {
+  position: relative;
+  padding: 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+/* The explain pane is a plain slot: the node inspector / lesson guide fill
+   it directly, with the pane (not a card) providing the frame. */
+.pane-explain {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Lesson controls (#quizQuestHost) and page content (#lessonGuideHost) are
+   rendered by tree-quiz.js; when empty they must not reserve chrome. */
+#quizQuestHost:empty,
+#lessonGuideHost:empty { display: none; }
+/* The lesson guide (bottom-right) never outgrows the node inspector. */
+#lessonGuideHost {
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: 62%;
+  overflow-y: auto;
+}
+/* Every pane in the new layout scrolls, so tint the native Firefox
+   scrollbars (scrollbar-color; Chromium already has the ::-webkit-* rules
+   above) instead of the UA default — a white track is glaring in dark mode. */
+#lessonGuideHost,
+#quizQuestHost,
+.pane-input,
+.node-explainer,
+.side-subpanel,
+.history-drawer {
+  scrollbar-color: color-mix(in srgb, var(--muted) 45%, transparent) transparent;
+}
+/* While a lesson is open but no node is picked, the lesson guide owns the
+   whole explain pane; picking a canvas node brings the inspector back. */
+body:has(#lessonGuideHost:not(:empty)) #emptyExplainState { display: none; }
+
+/* --------------------------------------------------------------------------
+   Lesson view — the lesson owns the right-hand panes
+   -------------------------------------------------------------------------- */
+/* The Grammar Tutor's input surface steps aside while a lesson is open: the
+   lesson controls are the only thing in the upper-right pane, so its
+   placeholder never bleeds through behind them. */
+body.lesson-view #tutorSurface,
+body.lesson-view .input-editor { display: none; }
+body.lesson-view #quizQuestHost {
   flex: 1 1 auto;
   min-height: 0;
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  grid-template-rows: minmax(0, 1fr);
-  gap: 16px;
-  padding: 10px 18px 8px;
+  overflow-y: auto;
 }
-
-.panel { min-height: 0; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-
-.right-panel {
+/* The lesson guide fills the explain pane and scrolls on its own, so long
+   explanations are never clipped at the bottom. */
+body.lesson-view .pane-explain { padding: 0; }
+body.lesson-view #lessonGuideHost {
+  flex: 1 1 auto;
+  max-height: none;
+  min-height: 0;
   overflow: hidden;
-  border-radius: var(--radius);
 }
-
-.card {
-  background: var(--panel);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: var(--shadow-sm);
-  min-width: 0;
-}
-
-.card h3 {
-  margin: 0 0 10px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  color: var(--ink);
-}
-
-.card h4 {
-  margin: 0 0 10px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--accent);
-}
-
-.card p {
-  line-height: 1.55;
-}
-
-.card p:not(.ex-text):not(.muted) {
-  font-size: 12.5px;
-  color: var(--ink);
-}
+/* The node inspector has nothing to show while a lesson is open — it must not
+   take half the pane away from the lesson guide. */
+body.lesson-view #explainNode:empty { display: none; }
 
 .canvas-wrap {
   position: relative;
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
-  min-height: 260px;
+  min-height: 0;
+  min-width: 0;
   background: var(--panel);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
 }
 .canvas-stage {
   position: relative;
@@ -850,14 +1073,9 @@ button:disabled {
   margin: 0;
 }
 
-.primary-explainer {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-  position: relative;
-}
+/* Node inspection fills the explain pane; the lesson guide sits above it
+   when a lesson is open. Both render directly into the pane — no inner
+   card chrome (the pane itself is the frame). */
 .node-explainer { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 
 .empty-state-explain {
@@ -969,12 +1187,6 @@ button:disabled {
   transform: rotate(180deg);
 }
 
-.node-card {
-  padding: 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--panel);
-}
 .nc-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
 .nc-dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
 .nc-dot.ok { background: var(--ok); }
@@ -1167,15 +1379,46 @@ button:disabled {
 }
 @media (max-width: 760px) {
   body { overflow: auto; }
-  .app-shell { min-height: 100vh; }
-  .topbar { padding-left: 12px; padding-right: 12px; }
-  .app-main {
-    grid-template-columns: 1fr;
-    grid-template-rows: minmax(280px, 55vh) auto;
-    padding-left: 12px;
-    padding-right: 12px;
+  /* No docked rail on small screens: the shell scrolls and the sidebar is
+     a slide-over drawer again (#appSidebarBackdrop). */
+  .app-shell {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    --rail-w: 0px;
+    --rail-dock: 0px;
   }
-  .right-panel { min-height: 260px; }
+  .app-shell:has(.app-sidebar.expanded) { --rail-w: 0px; }
+  .mobile-nav-btn {
+    display: flex;
+    top: 8px;
+    left: 8px;
+  }
+  /* Keep the hamburger usable while the full-screen Lessons overlay is open. */
+  body.lessons-overlay-open .mobile-nav-btn { visibility: visible; }
+  /* Inside the narrow drawer the account menu opens upward, within it. */
+  .profile-menu { left: 0; }
+  /* The workspace stacks vertically: canvas, then input, then explain pane.
+     Drag gutters are a desktop-only affordance. */
+  .app-main {
+    height: auto;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 12px 8px;
+  }
+  .resizer { display: none; }
+  .canvas-wrap { min-height: 42vh; }
+  .pane-side {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pane-input { border: 1px solid var(--border); border-radius: var(--radius); min-height: 120px; }
+  .pane-explain { min-height: 280px; }
 }
 /* ── Syntax Builder ── */
 :root {
@@ -1204,46 +1447,121 @@ button:disabled {
   --builder-danger-bg: #3a1f22;
 }
 
-.builder-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* Floating action cluster, upper-left of the canvas stage — the Syntax
+   Builder's Clear / Build tree / Done buttons live here; there is no
+   separate header bar any more.
+   The cluster itself carries NO chrome: no border, no background, no shadow,
+   no padding. Each action is its own standalone pill, so the buttons never
+   look like buttons trapped inside another button. */
+#canvasControls,
+.canvas-controls,
+#builderBar,
+.builder-bar,
+.builder-controls {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 8;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
   flex-wrap: wrap;
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  max-width: calc(100% - 24px);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
   font-size: 13px;
 }
-.builder-bar[hidden] { display: none; }
-.builder-title { font-weight: 700; }
-.builder-hint { color: var(--muted); flex: 1 1 220px; min-width: 120px; }
+/* `display: inline-flex !important` above would beat the UA [hidden] rule,
+   so the hidden state needs to be explicit. */
+#canvasControls[hidden],
+.canvas-controls[hidden] { display: none !important; }
+/* The practice hint floats on its own, under the action buttons — it is no
+   longer a child of the (now chrome-less) action cluster. */
+.builder-hint {
+  position: absolute;
+  top: 50px;
+  left: 14px;
+  z-index: 8;
+  max-width: min(520px, calc(100% - 28px));
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.builder-hint[hidden] { display: none; }
+/* The target chip sits in the opposite corner of the canvas. */
 .builder-target {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  left: auto;
+  z-index: 8;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 12.5px;
+  font-size: 12px;
   padding: 3px 8px;
   border: 1px solid var(--border);
   border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 46%;
 }
+.builder-target[hidden] { display: none; }
 .builder-target-ok {
   border-color: color-mix(in srgb, var(--ok, #2e7d32) 55%, transparent);
   background: color-mix(in srgb, var(--ok, #2e7d32) 12%, transparent);
 }
-.builder-spacer { flex: 1 1 auto; }
+/* The canvas actions are standalone pills: their own surface, border, and
+   radius — no enclosing card around them. */
+#builderBar button,
+.builder-bar button,
+.builder-controls button,
 .builder-btn {
-  font: inherit; font-size: 12.5px; padding: 6px 12px; cursor: pointer;
-  border: 1px solid var(--border, #ccc); border-radius: 6px;
-  background: transparent; color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
-.builder-btn:hover { border-color: var(--accent); }
+#builderBar button:hover,
+.builder-bar button:hover,
+.builder-controls button:hover,
+.builder-btn:hover {
+  background: var(--surface-hover, var(--border));
+  border-color: var(--muted);
+}
+#builderBar button:active,
+.builder-bar button:active,
+.builder-controls button:active,
+.builder-btn:active {
+  transform: scale(0.97);
+}
+.builder-btn[hidden] { display: none; }
+/* The primary actions (Check tree / Next) keep the accent fill; the hover
+   state must not fall back to the neutral pill background. */
 .builder-btn-primary {
-  background: var(--accent, #6d5ae6); border-color: var(--accent, #6d5ae6);
+  background: var(--accent, #6d5ae6);
+  border-color: var(--accent, #6d5ae6);
   color: #fff;
 }
-.builder-btn-primary:hover { background: var(--accent-strong, var(--accent)); }
+.builder-btn-primary:hover {
+  background: var(--accent-strong, var(--accent));
+  border-color: var(--accent-strong, var(--accent));
+  color: #fff;
+}
 
 .builder-canvas {
   position: absolute;
@@ -1273,6 +1591,11 @@ button:disabled {
   pointer-events: none;
   transition: opacity 0.18s ease, transform 0.18s ease;
   z-index: 40;
+  /* A long message truncates instead of stretching across the canvas. */
+  max-width: min(420px, calc(100% - 32px));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .builder-toast.show {
   opacity: 1;
@@ -1358,3 +1681,142 @@ button:disabled {
 .builder-menu-item.is-phrase:hover { color: #fff; }
 .builder-menu-item.is-current { background: color-mix(in srgb, var(--accent) 16%, transparent); }
 
+
+/* ------------------------------------------------------------------ */
+/* First-visit onboarding — spotlight tour over the four workspace zones */
+/* ------------------------------------------------------------------ */
+/* A non-intercepting layer: the dimming comes from the huge spread shadow
+   on the ring, so the highlighted zone stays bright while the rest of the
+   workspace darkens. Only the tooltip card takes pointer events. */
+.onboarding {
+  position: fixed;
+  inset: 0;
+  z-index: 320;
+  pointer-events: none;
+}
+.onboarding[hidden] { display: none; }
+.onboarding-ring {
+  position: fixed;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 9999px rgba(15, 17, 23, 0.5),
+    0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+  transition: left var(--dur) var(--ease), top var(--dur) var(--ease),
+              width var(--dur) var(--ease), height var(--dur) var(--ease);
+}
+[data-theme="dark"] .onboarding-ring {
+  box-shadow:
+    0 0 0 9999px rgba(4, 6, 12, 0.62),
+    0 0 0 4px color-mix(in srgb, var(--accent) 26%, transparent);
+}
+.onboarding-card {
+  position: fixed;
+  width: min(360px, calc(100vw - 24px));
+  padding: 18px 20px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: var(--shadow-md);
+  pointer-events: auto;
+  transition: left var(--dur) var(--ease), top var(--dur) var(--ease);
+}
+.onboarding-kicker {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-strong);
+  margin-bottom: 6px;
+}
+.onboarding-title { margin: 0 0 6px; font-size: 17px; font-weight: 800; letter-spacing: -0.2px; }
+.onboarding-text { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--ink); }
+.onboarding-dots { display: flex; gap: 6px; margin: 14px 0 0; }
+.onboarding-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--border);
+}
+.onboarding-dot.is-active { background: var(--accent); }
+.onboarding-nav { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
+.onboarding-skip {
+  margin-right: auto;
+  padding: 6px 4px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.onboarding-skip:hover { color: var(--accent); }
+.onboarding-nav .sq-ghost,
+.onboarding-nav .sq-primary { margin: 0; padding: 8px 14px; font-size: 12.5px; }
+
+/* ------------------------------------------------------------------ */
+/* Step-by-step guide card — docked bottom-left of the canvas          */
+/* ------------------------------------------------------------------ */
+/* Shown while a lesson example is loaded: the numbered steps for the
+   sentence, with a ▶ Play control that animates through them while the
+   spotlight ring (below) points at the matching nodes on the canvas. */
+.canvas-guide-card {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 9;
+  width: min(360px, calc(100% - 32px));
+  max-height: min(60%, 420px);
+  display: flex;
+  flex-direction: column;
+  padding: 12px 14px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--panel) 96%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: var(--shadow-md);
+}
+.canvas-guide-card[hidden] { display: none; }
+.canvas-guide-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.canvas-guide-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-strong);
+}
+.canvas-guide-sentence {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.canvas-guide-play {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.canvas-guide-play:hover { background: var(--accent-strong); }
+.canvas-guide-play:active { transform: scale(0.96); }
+.canvas-guide-play.is-playing { background: var(--err); }
+.canvas-guide-list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
+.canvas-guide-list li { font-size: 12.5px; line-height: 1.5; color: var(--ink); }
+.canvas-guide-list li::marker { color: var(--accent-strong); font-weight: 800; }
+.canvas-guide-list li.is-current { color: var(--accent-strong); font-weight: 600; }

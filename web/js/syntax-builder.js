@@ -103,6 +103,20 @@ export function moveNode(model, id, x, y) {
   return n;
 }
 
+// The sentence the canvas currently spells out: every word node on it, read
+// left to right by its X position and joined with single spaces. This is what
+// the upper-right input panel mirrors while the learner builds, so the two
+// surfaces never drift apart.
+export function getSentenceFromLeaves(model) {
+  const leaves = Object.values(model?.nodes || {})
+    .filter((n) => n && (n.kind === NODE.WORD || n.type === 'word'))
+    .sort((a, b) => (a.x || 0) - (b.x || 0));
+  return leaves
+    .map((n) => String(n.text ?? n.word ?? '').trim())
+    .filter(Boolean)
+    .join(' ');
+}
+
 export function setType(model, id, type) {
   const n = model.nodes[id];
   if (!n) return null;
