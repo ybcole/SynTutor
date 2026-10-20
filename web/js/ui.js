@@ -120,8 +120,16 @@ export function renderNodeDetail(_session, detail, node) {
   chipRow.appendChild(chip);
   box.appendChild(chipRow);
 
-  if (detail.status === 'error' && detail.remediation) {
-    box.appendChild(renderRemediation(detail.remediation));
+  if (detail.status === 'error') {
+    // Every error carries a repair: the server guarantees a suggested fix, and
+    // this fallback keeps the card complete if a detail ever arrives without
+    // one (e.g. an older payload).
+    const rm = detail.remediation || {
+      violation: detail.text || 'This part of the sentence has a grammar issue.',
+      suggested_fix: 'Review the highlighted word and correct it so the sentence follows the rule above.',
+      alternative_fix: null,
+    };
+    box.appendChild(renderRemediation(rm));
   } else {
     const ex = document.createElement('p');
     ex.className = 'ex-text';
@@ -190,4 +198,124 @@ export function applySentenceSelection(payload) {
   const st = ta.scrollTop;
   ta.setSelectionRange(s.start, s.end);
   ta.scrollTop = st;
+}
+
+// ---------------------------------------------------------------------------
+// Interactive corrective feedback
+// ---------------------------------------------------------------------------
+// The correction panel is the action surface of the tutor page: it names the
+// grammar error that is currently selected, offers the suggested (and the
+// alternative) repair as a preview, and reports whether the learner's own
+// correction actually fixed the problem.
+export function renderCorrectionPanel(info, handlers = {}) {
+  const box = $('#correctionPanel');
+  if (!box) return;
+  box.innerHTML = '';
+  if (!info) { box.hidden = true; return; }
+  box.hidden = false;
+
+  const label = info.label || '';
+  const mode = info.mode || 'original';
+  const loading = info.loading || null;
+  const canCorrect = Boolean(info.canCorrect);
+  const altCanCorrect = Boolean(info.alternativeCanCorrect);
+
+  if (label) {
+    const head = document.createElement('div');
+    head.className = 'cp-head';
+    const title = document.createElement('div');
+    title.className = 'cp-title';
+    title.textContent = 'Grammar error';
+    head.appendChild(title);
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'cp-close';
+    close.setAttribute('aria-label', 'Close the correction');
+    close.title = 'Close the correction';
+    close.textContent = '\u00d7';
+    if (handlers.onClose) close.addEventListener('click', handlers.onClose);
+    head.appendChild(close);
+    box.appendChild(head);
+
+    const errorName = document.createElement('div');
+    errorName.className = 'cp-error-name';
+    errorName.textContent = label;
+    box.appendChild(errorName);
+
+    if (info.suggestedFix) {
+      const fix = document.createElement('p');
+      fix.className = 'cp-fix';
+      fix.textContent = info.suggestedFix;
+      box.appendChild(fix);
+    }
+
+    if (loading) {
+      const loadingRow = document.createElement('div');
+      loadingRow.className = 'cp-loading';
+      const spinner = document.createElement('span');
+      spinner.className = 'loading-spinner';
+      const text = document.createElement('span');
+      text.textContent = loading === 'alternative'
+        ? 'Building alternative preview…'
+        : 'Building corrected preview…';
+      loadingRow.appendChild(spinner);
+      loadingRow.appendChild(text);
+      box.appendChild(loadingRow);
+    }
+
+    const row = document.createElement('div');
+    row.className = 'cp-actions';
+    const mk = (text, cls, fn, disabled) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = `cp-btn ${cls}`.trim();
+      b.textContent = text;
+      b.disabled = Boolean(disabled);
+      if (fn) b.addEventListener('click', fn);
+      return b;
+    };
+
+    if (mode === 'corrected' || mode === 'alternative') {
+      row.appendChild(mk('Return to original tree', '', handlers.onShowOriginal, loading));
+    }
+    if (mode === 'original') {
+      row.appendChild(mk('Preview suggested fix', 'primary', handlers.onShowCorrected,
+        loading || !canCorrect));
+      if (altCanCorrect) {
+        row.appendChild(mk('Preview alternative fix', '', handlers.onShowAlternative, loading));
+      }
+    } else if (mode === 'corrected') {
+      if (altCanCorrect) {
+        row.appendChild(mk('Preview alternative fix', '', handlers.onShowAlternative, loading));
+      }
+    } else if (mode === 'alternative') {
+      row.appendChild(mk('Preview suggested fix', 'primary', handlers.onShowCorrected,
+        loading || !canCorrect));
+    }
+    if (row.childElementCount) box.appendChild(row);
+  }
+
+  // The sentence the preview produced — the correction the learner can copy
+  // into the input box.
+  const preview = mode === 'alternative'
+    ? info.alternativeCorrectedText
+    : info.correctedText;
+  if (preview) {
+    const cap = document.createElement('div');
+    cap.className = 'nc-label';
+    cap.textContent = mode === 'alternative' ? 'Alternative correction' : 'Suggested correction';
+    box.appendChild(cap);
+    const line = document.createElement('p');
+    line.className = 'cp-sentence';
+    line.textContent = preview;
+    box.appendChild(line);
+  }
+
+  if (info.result) {
+    const r = document.createElement('p');
+    r.className = `cp-result ${info.result.kind === 'fixed' ? 'ok' : 'err'}`;
+    r.setAttribute('aria-live', 'polite');
+    r.textContent = info.result.message;
+    box.appendChild(r);
+  }
 }

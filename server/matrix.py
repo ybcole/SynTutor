@@ -571,6 +571,14 @@ def _preserve_case(source, word):
     return word
 
 
+def _edit(start, end, text):
+    """Token-level correction on the target sentence: replace tokens
+    [start, end) with ``text``. start == end inserts before token ``start``;
+    text == '' deletes. Token indices are relative to the analysed sentence,
+    the same coordinate system the node spans use."""
+    return {'start': start, 'end': end, 'text': text}
+
+
 def _base_form(leaf):
     """Approximate a lexical base form from the observed surface and POS."""
     word = leaf['surface'].lower()
@@ -937,7 +945,10 @@ def _rem_from_text(text, surface=''):
         return {'violation': text,
                 'suggested_fix': f"Change '{surface}' to the word form the sentence needs.",
                 'alternative_fix': None, 'targeted_outcome': None}
-    return {'violation': text, 'suggested_fix': text,
+    # Last resort: turn the error text itself into an actionable fix.
+    return {'violation': text,
+            'suggested_fix': 'Review the highlighted word and correct it so the rule above '
+                             'is satisfied.',
             'alternative_fix': None, 'targeted_outcome': None}
 
 
@@ -1320,8 +1331,20 @@ class MatrixEvaluator:
             detail['checks'] = _checks_for(detail, self.details)
             if detail['status'] == 'error' and 'remediation' not in detail:
                 remediation = self._remediate(root, detail)
-                if remediation:
-                    detail['remediation'] = remediation
+                if not remediation:
+                    # No constraint-specific repair exists for this error. Derive a
+                    # repair from the error text so every detected error carries a
+                    # suggested fix the user can act on (never leave an error with
+                    # no suggested fix).
+                    remediation = _rem_from_text(detail.get('text', ''),
+                                                 detail.get('surface', ''))
+                # Guarantee a usable, non-empty suggested fix on every error.
+                if not remediation.get('suggested_fix'):
+                    surf = detail.get('surface') or ''
+                    remediation['suggested_fix'] = (
+                        f"Change '{surf}' to the word form the sentence needs."
+                        if surf else 'Fix the highlighted issue.')
+                detail['remediation'] = remediation
         return {'details': self.details, 'summary': self._summarize(root)}
 
     def _merge_findings(self, root, text):
@@ -1353,6 +1376,10 @@ class MatrixEvaluator:
                 # so a rule finding must also mark its node as an error or the
                 # tree renders green despite an INVALID verdict.
                 detail.setdefault('_finding_errors', True)
+                # Remember what the matrix itself thought of this node: only a
+                # node the matrix already flagged may lend its rewrite to the
+                # finding (see the merge below).
+                detail.setdefault('_matrix_status', detail['status'])
                 detail['status'] = 'error'
         for detail in self.details.values():
             if not detail.pop('_finding_errors', None):
@@ -1363,9 +1390,20 @@ class MatrixEvaluator:
                 continue
             detail['text'] = err['text']
             rem = err.get('remediation')
-            detail['remediation'] = (rem if isinstance(rem, dict)
-                                     else _rem_from_text(err['text'],
-                                                         detail.get('surface', '')))
+            merged = (rem if isinstance(rem, dict)
+                      else _rem_from_text(err['text'], detail.get('surface', '')))
+            # A finding knows how to describe the problem but not how to rewrite
+            # the sentence, so the structural edit the matrix computed for this
+            # node is carried over when the finding does not supply one. Only a
+            # node the matrix flagged itself may lend its rewrite: a finding
+            # that merely reuses a constraint id must never inherit an
+            # unrelated correction.
+            if detail.pop('_matrix_status', None) == 'error':
+                matrix_rem = self._remediate(root, detail) or {}
+                for key in ('edit', 'alternative_edit'):
+                    if not merged.get(key) and matrix_rem.get(key):
+                        merged[key] = matrix_rem[key]
+            detail['remediation'] = merged
 
     def _evidence(self, root, detail):
         """Generic evidence record matching the XAI table in docs/matrix.md."""
@@ -2136,49 +2174,55 @@ class MatrixEvaluator:
     def _remediate(self, root, detail):
         """Deterministic, pedagogical correction guide for an invalid node.
 
-        Returns a dict {violation, suggested_fix, alternative_fix, targeted_outcome}
-        for the constraints the matrix can remediate, else None.
+        Always returns a dict (never None) so every error detail carries a
+        suggested fix the learner can act on. Falls back to _rem_generic when
+        no specific handler applies or a handler cannot produce a fix.
         """
         cid = detail['constraint']
         node = self._find_node(root, detail['id'])
         parent = self._find_node(root, detail['parent']) if detail.get('parent') else None
         if node is None:
-            return None
+            return self._rem_generic(detail)
         if cid == 'C-SUBJECT-AGREEMENT':
-            return self._rem_agreement(node, parent)
-        if cid == 'C-DETERMINER-AGREEMENT':
-            return self._rem_det(node, parent)
-        if cid == 'C-NOUN-FORM':
-            return self._rem_noun_form(node)
-        if cid == 'C-AUX-FORM':
-            return self._rem_aux(node, parent)
-        if cid == 'C-DET-STACK':
-            return self._rem_det_stack(node, parent)
-        if cid == 'C-MOD-POS':
-            return self._rem_mod_pos(node, parent)
-        if cid == 'C-PRONOUN-CASE':
-            return self._rem_pronoun_case(node, parent)
-        if cid == 'C-ADJ-ADV':
-            return self._rem_adj_adv(node, parent)
-        if cid == 'C-ARTICLE':
-            return self._rem_article(node, parent)
-        if cid == 'C-ARTICLE-MISMATCH':
-            return self._rem_article_mismatch(node, parent)
-        if cid == 'C-CAPITALIZATION':
-            return self._rem_capitalization(node)
-        if cid == 'C-QUANTIFIER':
-            return self._rem_quantifier(node, parent)
-        if cid == 'C-HEAD-VERB':
-            return self._rem_vp_head_noun(node, parent)
-        if cid == 'C-COMPARATIVE-DOUBLE':
-            return self._rem_double_comparative(node, parent)
-        if cid == 'C-HEAD-NOUN':
-            return self._rem_head_noun(node, parent)
-        if cid == 'C-TENSE-FINITE':
+            rem = self._rem_agreement(node, parent)
+        elif cid == 'C-DETERMINER-AGREEMENT':
+            rem = self._rem_det(node, parent)
+        elif cid == 'C-NOUN-FORM':
+            rem = self._rem_noun_form(node, parent)
+        elif cid == 'C-AUX-FORM':
+            rem = self._rem_aux(node, parent)
+        elif cid == 'C-DET-STACK':
+            rem = self._rem_det_stack(node, parent)
+        elif cid == 'C-MOD-POS':
+            rem = self._rem_mod_pos(node, parent)
+        elif cid == 'C-PRONOUN-CASE':
+            rem = self._rem_pronoun_case(node, parent)
+        elif cid == 'C-ADJ-ADV':
+            rem = self._rem_adj_adv(node, parent)
+        elif cid == 'C-ARTICLE':
+            rem = self._rem_article(node, parent)
+        elif cid == 'C-ARTICLE-MISMATCH':
+            rem = self._rem_article_mismatch(node, parent)
+        elif cid == 'C-CAPITALIZATION':
+            rem = self._rem_capitalization(node)
+        elif cid == 'C-QUANTIFIER':
+            rem = self._rem_quantifier(node, parent)
+        elif cid == 'C-HEAD-VERB':
+            rem = self._rem_vp_head_noun(node, parent)
+        elif cid == 'C-COMPARATIVE-DOUBLE':
+            rem = self._rem_double_comparative(node, parent)
+        elif cid == 'C-HEAD-NOUN':
+            rem = self._rem_head_noun(node, parent)
+        elif cid == 'C-TENSE-FINITE':
             if detail['role'] == 'fragment root':
-                return self._rem_fragment(node)
-            return self._rem_finite_verb(node, parent)
-        return self._rem_generic(detail)
+                rem = self._rem_fragment(node)
+            else:
+                rem = self._rem_finite_verb(node, parent)
+        else:
+            rem = self._rem_generic(detail)
+        if rem is None or not rem.get('suggested_fix'):
+            rem = self._rem_generic(detail)
+        return rem
 
     def _rem_agreement(self, node, parent):
         subj, vp = clause_subject_and_verb(parent)
@@ -2213,7 +2257,44 @@ class MatrixEvaluator:
             'alternative_fix': self._subject_fix_alternative(subj, subj_head, vp_head),
             'targeted_outcome': (f"Subject ({subj_label}) + verb {target_pos} "
                                  f"instead of Subject ({subj_label}) + verb {vp_head['type']}"),
+            'edit': _edit(vp_head['span'][0], vp_head['span'][1], target),
+            'alternative_edit': self._subject_alt_edit(subj, subj_head, vp_head),
         }
+
+    def _subject_alt_edit(self, subj, subj_head, vp_head):
+        """Deterministic edit for the alternative subject-based agreement repair.
+
+        The subject is changed so that it agrees with the verb that is already
+        there: a third-person singular verb needs a singular subject, any other
+        verb needs a plural one. The verb keeps its form, so the rewrite stays
+        a single, contiguous edit.
+        """
+        if subj is None or subj_head is None or vp_head is None:
+            return None
+        if is_coordinated(subj):
+            if verb_key(vp_head) != ('3', 'sg'):
+                return None
+            # A paired subject becomes one singular subject.
+            if subj_head['type'] == 'PRP':
+                word = 'he or she'
+            else:
+                word = _preserve_case(subj_head['surface'], _singular_noun(subj_head))
+            return _edit(subj['span'][0], subj['span'][1], word)
+        vkey = verb_key(vp_head)
+        if vkey == ('3', 'sg'):
+            if subj_head['type'] == 'PRP':
+                swap = {'they': 'he or she', 'we': 'he or she'}.get(_base_form(subj_head))
+                if swap is None:
+                    return None
+                return _edit(subj_head['span'][0], subj_head['span'][1],
+                             _preserve_case(subj_head['surface'], swap))
+            return _edit(subj_head['span'][0], subj_head['span'][1],
+                         _preserve_case(subj_head['surface'], _singular_noun(subj_head)))
+        if subj_head['type'] == 'PRP':
+            return None
+        plural = _plural_noun(_singular_noun(subj_head))
+        return _edit(subj_head['span'][0], subj_head['span'][1],
+                     _preserve_case(subj_head['surface'], plural))
 
     @staticmethod
     def _subject_fix_alternative(subj, subj_head, vp_head):
@@ -2221,10 +2302,10 @@ class MatrixEvaluator:
         verb_surface = vp_head['surface']
         if is_coordinated(subj):
             if verb_key(vp_head) == ('3', 'sg'):
-                if person_of(subj_head) == '3':
-                    head_word = _preserve_case(subj_head['surface'], _singular_noun(subj_head))
+                if subj_head['type'] == 'PRP':
+                    head_word = 'he or she'
                 else:
-                    head_word = 'she/he'
+                    head_word = _preserve_case(subj_head['surface'], _singular_noun(subj_head))
                 return (f"Or use a single singular subject with '{verb_surface}': drop the "
                         f"conjunction and keep just '{head_word}' instead of the paired "
                         f"subject '{subj['surface']}'.")
@@ -2232,7 +2313,7 @@ class MatrixEvaluator:
         if verb_key(vp_head) == ('3', 'sg'):
             if subj_head['type'] == 'PRP':
                 swap = {
-                    'they': 'he or she', 'we': 'I', 'they\'re': 'he or she is',
+                    'they': 'he or she', 'we': 'he or she', 'they\'re': 'he or she is',
                 }.get(_base_form(subj_head))
                 if swap is None:
                     return None
@@ -2281,10 +2362,14 @@ class MatrixEvaluator:
             'suggested_fix': suggested,
             'alternative_fix': alternative,
             'targeted_outcome': outcome,
+            'edit': _edit(head['span'][0], head['span'][1], fix_noun),
+            'alternative_edit': _edit(node['span'][0], node['span'][1],
+                                     _preserve_case(node['surface'],
+                                                    'these' if numreq == 'sg' else 'this')),
         }
 
     @staticmethod
-    def _rem_noun_form(node):
+    def _rem_noun_form(node, parent=None):
         issue = _noun_form_issue(node)
         if issue is None:
             return None
@@ -2296,12 +2381,25 @@ class MatrixEvaluator:
         else:
             correction = (f"Change '{observed}' to '{_preserve_case(observed, expected)}'; "
                           f"the normal plural of '{singular}' is '{expected}'.")
+        # The alternative repair swaps the plural for the singular, so a numeral
+        # in front of it has to go as well ("two mans" -> "a man").
+        alt_edit = _edit(node['span'][0], node['span'][1],
+                         _preserve_case(observed, singular))
+        if parent is not None:
+            numeral = next((lf for lf in _leaves_list(parent) if lf['type'] == 'CD'), None)
+            if numeral is not None:
+                alt_edit = _edit(numeral['span'][0], node['span'][1],
+                                 f"{_preserve_case(numeral['surface'], 'a')} "
+                                 f"{_preserve_case(observed, singular)}")
         return {
             'violation': (f"'{observed}' is not the normal plural of '{singular}'."),
             'suggested_fix': correction,
             'alternative_fix': (f"Or use the singular noun '{_preserve_case(observed, singular)}' "
                                 "with a singular word like 'a' or 'this'."),
             'targeted_outcome': f"'{singular}' with a correct plural form",
+            'edit': _edit(node['span'][0], node['span'][1],
+                          _preserve_case(observed, expected)),
+            'alternative_edit': alt_edit,
         }
 
     def _rem_aux(self, node, parent):
@@ -2359,6 +2457,12 @@ class MatrixEvaluator:
             'suggested_fix': suggested,
             'alternative_fix': alternative,
             'targeted_outcome': outcome,
+            'edit': _edit(verb['span'][0], verb['span'][1], target),
+            'alternative_edit': (
+                _edit(node['span'][0], verb['span'][1],
+                      _preserve_case(verb['surface'], _third_present(base)))
+                if cls in ('modal', 'do') else None
+            ),
         }
 
     def _rem_det_stack(self, node, parent):
@@ -2377,12 +2481,22 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or keep a different one instead: drop '{keep}' and keep "
                                 f"{extras}, so only one determiner remains."),
             'targeted_outcome': "One determiner in the phrase",
+            'edit': _edit(dets[1]['span'][0], dets[1]['span'][1], ''),
+            'alternative_edit': _edit(dets[0]['span'][0], dets[0]['span'][1], ''),
         }
 
     def _rem_mod_pos(self, node, parent):
         head = phrase_head(parent) if parent else None
         if head is None:
             return None
+
+        # Moving the modifier in front of the head is a single token-range
+        # rewrite: replace "head ... modifier" with "modifier head".
+        edit = None
+        if node['span'][0] == head['span'][1]:      # modifier directly after head
+            edit = _edit(head['span'][0], node['span'][1],
+                         f"{node['surface']} {head['surface']}")
+
         return {
             'violation': (f"'{node['surface']}' comes after the noun '{head['surface']}', but "
                           "it should come before it."),
@@ -2390,10 +2504,16 @@ class MatrixEvaluator:
                               f"'{node['surface']} {head['surface']}'."),
             'alternative_fix': None,
             'targeted_outcome': f"'{node['surface']}' before '{head['surface']}'",
+            'edit': edit,
         }
 
     def _rem_head_noun(self, node, parent):
         if parent is None:
+            return None
+        # The rule fires on the determiner that has no noun to go with; a node
+        # of any other kind means this is a different problem wearing the same
+        # constraint id, so no noun-inserting edit is offered.
+        if node is not None and node['type'] not in DET_CLASS and node['type'] != 'PRP':
             return None
         det_s = node['surface'] if node is not None else 'a determiner'
         adj_leaves = [lf for lf in _leaves_list(parent)
@@ -2410,6 +2530,8 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or replace the whole phrase '{parent['surface']}' with a "
                                 "person's name or a full noun phrase."),
             'targeted_outcome': f"'{det_s}' followed by a noun",
+            'edit': _edit(node['span'][1], node['span'][1],
+                          (adj_leaves[0]['surface'] + ' one') if adj_leaves else 'one'),
         }
 
     @staticmethod
@@ -2421,12 +2543,18 @@ class MatrixEvaluator:
                 'them': 'they'}.get(surf)
 
     def _rem_pronoun_case(self, node, parent):
-        head = phrase_head(node) if node else None
+        # A subject-case error is flagged on the VP (the whole predicate sits in
+        # the subject slot), so the pronoun to repair is the clause subject's.
+        if node is not None and node['type'] == 'VP' and parent is not None \
+                and parent['type'] in SENTENCE_CLASSES:
+            subj, _vp = clause_subject_and_verb(parent)
+            head = phrase_head(subj) if subj else None
+        else:
+            head = phrase_head(node) if node else None
         if head is None or head['type'] != 'PRP':
             return None
-        surf = _lower(head['surface'])
         objective_needed = parent is not None and parent['type'] not in SENTENCE_CLASSES
-        target = self._pronoun_target(surf, objective_needed)
+        target = self._pronoun_target(_lower(head['surface']), objective_needed)
         if target is None:
             return None
         position = 'the object' if objective_needed else 'the subject'
@@ -2440,23 +2568,28 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or use the person's name or another noun in place of "
                                 f"'{head['surface']}' instead."),
             'targeted_outcome': f"'{target}' instead of '{head['surface']}'",
+            'edit': _edit(head['span'][0], head['span'][1],
+                          _preserve_case(head['surface'], target)),
         }
 
     def _rem_adj_adv(self, node, parent):
         if node is None:
             return None
+        leaf = None
         if node['type'] == 'ADJP':
             adj = phrase_head(node) or (node.get('children') or [None])[0]
             if adj is None:
                 return None
-            adv = self._adverbial_form(adj['surface'])
-            wrong, right = adj['surface'], adv
+            leaf = adj
+            wrong, right = adj['surface'], self._adverbial_form(adj['surface'])
         elif node['type'] == 'ADVP':
             adv_leaf = phrase_head(node)
             if adv_leaf is None:
                 return None
+            leaf = adv_leaf
             wrong, right = adv_leaf['surface'], self._adverbial_form(adv_leaf['surface'])
         else:  # adjective leaf inside an adverb phrase
+            leaf = node
             wrong, right = node['surface'], self._adverbial_form(node['surface'])
         return {
             'violation': (f"'{wrong}' is an adjective, but an adverb is needed here."),
@@ -2465,12 +2598,27 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or rephrase so '{wrong}' describes a noun instead of a verb "
                                 f"(for example by using a linking verb like 'seem' before it)."),
             'targeted_outcome': f"'{right}' instead of '{wrong}'",
+            'edit': (_edit(leaf['span'][0], leaf['span'][1], _preserve_case(wrong, right))
+                     if 'children' not in leaf else None),
         }
 
     def _rem_article(self, node, parent):
         if node is None:
             return None
+        if node['type'] not in NOUN_CLASS:
+            return None
         art = _indefinite_article(node['surface'])
+        # The article belongs in front of the whole noun phrase: when the
+        # phrase opens the sentence the new determiner also has to carry the
+        # sentence's capital letter.
+        first = _leaves_list(parent)[0] if parent else None
+        edit = None
+        if first is not None:
+            art = _indefinite_article(first['surface'])
+            if parent['span'][0] == 0 and first['type'] not in {'NNP', 'NNPS'}:
+                edit = _edit(0, 1, f"{art.capitalize()} {first['surface'].lower()}")
+            else:
+                edit = _edit(parent['span'][0], parent['span'][0], art)
         return {
             'violation': (f"'{node['surface']}' is a singular noun that names one countable "
                           "thing, but it is used without a little word like 'a' or 'the' before "
@@ -2480,6 +2628,7 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or use another word before it: 'the {node['surface']}', "
                                 f"'this {node['surface']}', or 'my {node['surface']}'."),
             'targeted_outcome': f"'{node['surface']}' with a determiner before it",
+            'edit': edit,
         }
 
     def _rem_article_mismatch(self, node, parent):
@@ -2501,6 +2650,8 @@ class MatrixEvaluator:
                               f"'{need} {nxt}'."),
             'alternative_fix': None,
             'targeted_outcome': f"'{need}' instead of '{node['surface']}'",
+            'edit': _edit(node['span'][0], node['span'][1],
+                          _preserve_case(node['surface'], need)),
         }
 
     @staticmethod
@@ -2516,6 +2667,7 @@ class MatrixEvaluator:
                               f"so the sentence reads '{rewritten + ' ' + ' '.join(words[1:])}'."),
             'alternative_fix': None,
             'targeted_outcome': "The sentence starts with a capital letter",
+            'edit': _edit(0, 1, rewritten),
         }
 
     @staticmethod
@@ -2540,11 +2692,22 @@ class MatrixEvaluator:
             alternative = (f"Or make '{noun_s}' plural and countable, so 'fewer' works: "
                            f"'{_plural_noun(_singular_noun(head))}'.")
             outcome = f"'less {noun_s}' instead of 'fewer {noun_s}'"
+
+        new_word = 'fewer' if word == 'less' else 'less'
+
         return {
             'violation': (f"'{node['surface']}' does not match the noun '{noun_s}'."),
             'suggested_fix': suggested,
             'alternative_fix': alternative,
             'targeted_outcome': outcome,
+            'edit': _edit(node['span'][0], node['span'][1],
+                          _preserve_case(node['surface'], new_word)),
+            'alternative_edit': (
+                _edit(head['span'][0], head['span'][1],
+                      _preserve_case(head['surface'],
+                                     _plural_noun(_singular_noun(head))))
+                if word == 'fewer' and head is not None else None
+            ),
         }
 
     def _rem_double_comparative(self, node, parent):
@@ -2571,6 +2734,11 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or keep '{marker}' and write the plain form: "
                                 f"'{marker} {plain}' instead of '{sibling['surface']}'."),
             'targeted_outcome': f"'{sibling['surface']}' alone (no '{marker}')",
+            'edit': _edit(node['span'][0], node['span'][1], ''),
+            # No alternative rewrite: keeping the marker needs a plain-form
+            # adjective ("more good than before" is not English), so dropping
+            # the marker is the only sound repair.
+            'alternative_edit': None,
         }
 
     def _rem_vp_head_noun(self, node, parent):
@@ -2623,6 +2791,11 @@ class MatrixEvaluator:
             'suggested_fix': suggested,
             'alternative_fix': None,
             'targeted_outcome': outcome,
+            'edit': (
+                _edit(vp_head['span'][0], vp_head['span'][0], 'is')
+                if vp_head['type'] in ('VBG', 'VBN')
+                else _edit(vp_head['span'][0], vp_head['span'][1], finite)
+            ),
         }
 
     def _rem_fragment(self, node):

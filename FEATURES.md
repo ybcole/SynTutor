@@ -93,6 +93,24 @@ should not be interpreted as a percentage of lines completed.
 - Uses distinct visual states for valid, invalid, unlisted, selected, and
   hovered nodes.
 
+### Interactive corrective feedback
+
+- Selecting an invalid node zooms the canvas to the subtree the rule talks
+  about, fades the rest of the tree back, and links the two nodes the rule
+  relates with a dashed curve.
+- The correction panel names the rule, shows the suggested fix, and offers
+  `Preview suggested fix` / `Preview alternative fix` as a live re-parse of
+  the corrected sentence — the learner's own text is never rewritten.
+- `Return to original tree` brings the original parse back.
+- Every detected error carries a machine-applicable edit
+  (`remediation.edit` / `remediation.alternative_edit`) that rewrites the
+  sentence at token level.
+- While a correction is open the sentence is re-analysed as the learner
+  types; the error is re-identified by rule + surrounding words, and the
+  tutor reports whether the correction fixed the problem.
+- A correction never survives a workspace switch, a new session, or a
+  sentence navigation.
+
 ### Interactive syntax-tree canvas
 
 - Renders phrase-structure trees in an HTML5 canvas.
@@ -106,6 +124,9 @@ should not be interpreted as a percentage of lines completed.
   `Adverb Phrase` rather than `ADVP — Adverb Phrase`.
 - Supports drag-to-pan.
 - Supports wheel zoom anchored to the cursor.
+- Zooms and centres on an invalid node and its linked nodes when a
+  correction is opened, and fits the corrected subtree for a preview.
+- Fades the parts of the tree outside the focused subtree back.
 - Fits the tree to the available canvas area.
 - Supports keyboard navigation with arrow keys.
 - Supports Enter/Space selection for the focused canvas.

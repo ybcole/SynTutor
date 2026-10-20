@@ -9,6 +9,7 @@
     "serve:legacy": "python3 server/app.py",
     "audit": "python3 scripts/audit_rules.py",
     "test:quiz": "node scripts/test_tree_quiz.js",
+    "test:correction": "node scripts/test_correction.js",
     "sheet": "python3 scripts/master_sheet.py",
     "tree:sheet": "python3 scripts/tree_sheet.py",
     "explanation-sheet": "python3 scripts/explanation_sheet.py"
