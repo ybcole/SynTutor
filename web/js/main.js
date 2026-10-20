@@ -514,9 +514,17 @@ function wireEvents() {
     ta.focus();
   });
   ta.addEventListener('scroll', syncHighlightScroll);
+  let parseDebounce = null;
   ta.addEventListener('input', () => {
     historySpans = [];
     renderInputHighlights(ta.value);
+    // Re-parse as the user edits so the syntax tree below reflects the
+    // (corrected) version of the sentence without requiring a click-away.
+    if (parseDebounce) clearTimeout(parseDebounce);
+    parseDebounce = setTimeout(() => {
+      parseDebounce = null;
+      runPipeline();
+    }, 400);
   });
   ta.addEventListener('blur', () => {
     const changed = ta.value !== lastAnalyzedText;
@@ -921,6 +929,8 @@ function handleNodeSelect(id) {
   if (!id || !session) {
     if (session) {
       renderer.select(null);
+      renderer.clearFocus();      // view the entire tree, unselected
+      resetFocusState();          // clear the correction focus so nothing is highlighted
       transition(STATES.VIEWING, 'selection cleared');
     }
     return;
