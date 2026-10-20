@@ -397,8 +397,6 @@ export class TreeRenderer {
       this._drawNode(l);
     }
 
-    this._drawPairLink();
-
     ctx.restore();
     this._drawTooltip();
   }
@@ -581,40 +579,5 @@ export class TreeRenderer {
   clearFocus() {
     this.focus = null;
     if (this.layoutData) this._animateTo(this._fitTarget());
-  }
-
-  _drawPairLink() {
-    const f = this.focus;
-    if (!f || !f.pair.length || !this.layoutData) return;
-    const ctx = this.ctx;
-    const ls = f.pair.map((id) => this.layoutData.layout.get(id)).filter(Boolean);
-    const colors = getThemeColors();
-    ctx.save();
-    ctx.strokeStyle = colors.edgeError;
-    ctx.fillStyle = colors.edgeError;
-    ctx.lineWidth = 2;
-    ctx.lineCap = 'round';
-    ctx.setLineDash([7, 5]);
-    if (ls.length >= 2) {
-      const [a, b] = ls;
-      const d = 34 + Math.min(Math.abs(a.x - b.x) * 0.1, 24);
-      ctx.beginPath();
-      ctx.moveTo(a.x, a.y + 16);
-      ctx.bezierCurveTo(a.x, a.y + 16 + d, b.x, b.y + 16 + d, b.x, b.y + 16);
-      ctx.stroke();
-      ctx.setLineDash([]);
-      for (const l of [a, b]) {
-        ctx.beginPath();
-        ctx.arc(l.x, l.y + 16, 3.5, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    } else if (ls.length === 1) {
-      const l = ls[0];
-      const bw = this._measure(nodeLabel(l.node)) + 16;
-      ctx.beginPath();
-      ctx.roundRect(l.x - bw / 2, l.y - 10, bw, 26, 8);
-      ctx.stroke();
-    }
-    ctx.restore();
   }
 }
