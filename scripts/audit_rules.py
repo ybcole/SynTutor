@@ -415,7 +415,8 @@ def run_corpus() -> tuple[list[dict], Counter, Counter, set]:
         result = evaluate(analysis['root'], text=analysis['sentence'])
         details = result['details']
         summary = result['summary']
-        actual = summary['valid']
+        actual = summary.get('verdict')
+        want = 'grammatical' if expected else 'ungrammatical'
         edges = list(edge_iter(details))
         edge_counter.update((pt, ct) for pt, ct, _, _ in edges)
         status_counter.update(st for _, _, _, st in edges)
@@ -438,7 +439,8 @@ def run_corpus() -> tuple[list[dict], Counter, Counter, set]:
             'expected': expected,
             'actual': actual,
             'why': why,
-            'ok': expected == actual,
+            'ok': actual == want and not summary.get('checker_errors'),
+            'checker_errors': summary.get('checker_errors', []),
             'edges': len(edges),
             'fired': sorted(summary['constraints_fired']),
             'suggested': summary.get('suggested', 0),
@@ -460,8 +462,11 @@ def report(records, edge_counter, status_counter, unlisted_edges,
     if failed:
         print(f'\n!! REGRESSIONS ({len(failed)})')
         for r in failed:
-            print(f'   {r["text"]!r}: expected {"valid" if r["expected"] else "INVALID"} '
-                  f'but got {"valid" if r["actual"] else "INVALID"}  [{r["why"]}]  fired={r["fired"]}')
+            print(f'   {r["text"]!r}: expected '
+                  f'{"grammatical" if r["expected"] else "ungrammatical"} '
+                  f'but got {r["actual"]}  [{r["why"]}]  fired={r["fired"]}'
+                  + (f'  checker_errors={r["checker_errors"]}'
+                     if r.get('checker_errors') else ''))
     else:
         print('   all expected verdicts matched  [no false positives / no false negatives]')
 

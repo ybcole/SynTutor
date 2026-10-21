@@ -1,837 +1,1239 @@
-# SynTutor — Complete Architecture Reference
+# SynTutor — Architecture and Logic
 
-Every module, function, data field, constant, and state rule in the running
-implementation. This is the **implementation** document (what the code actually
-does); `THESIS.md` is the **design specification**; `RULES.md` is the
-**linguistic rule inventory**. A spec-vs-implementation compliance map is in
-§14 at the end.
+This document describes how SynTutor actually works, from the first browser
+byte to the final node explanation, and from a source sentence to a verdict.
+It is derived from the code in this repository, not from a design proposal.
+Where a number or model name appears, it is the number the code uses today.
 
 ---
 
-## 1. System overview
+## 0. The system in one page
 
-SynTutor is a deterministic, explainable, intelligent tutoring system for
-English phrase-structure syntax. It:
+SynTutor answers four different questions about a sentence, and deliberately
+keeps the answers in four separate layers:
 
-1. Tokenizes + POS-tags with spaCy (`en_core_web_md`),
-2. Produces a single best **constituency parse tree** via benepar (`benepar_en3`),
-3. Validates **every parent→child edge** against a hand-authored **Linguistic
-   Constraint Matrix** (no ML in the feedback path),
-4. Renders an interactive canvas tree and explains each node from a
-   precomputed payload (no re-parse on click).
+| Question | Layer | Technology | Output |
+|---|---|---|---|
+| How is the sentence structured? | Parser | spaCy `en_core_web_md` + benepar `benepar_en3` | A constituency tree (`S → NP VP .`) |
+| Why is that structure valid or invalid? | Rule matrix | Hand-authored constraints in `server/matrix.py`, `server/ruleset.py`, `server/licensing.py` | Per-node verdicts and explanations |
+| Is the sentence acceptable English? | Detector | `textattack/roberta-base-CoLA` acceptability classifier | `acceptable` / `unacceptable` |
+| What single edit repairs it? | Corrector | DistilBERT masked-LM sweep + clean-tree verification | One word replacement with a morphological reason |
 
-Hard guarantees:
+The central design decision is that **the neural model locates structure but
+does not author explanations**. benepar produces the tree; the symbolic matrix
+walks that tree and produces the "why". A trained detector may *flag* a
+sentence the rules cannot explain, but it is never allowed to invent a rule
+reason: that case becomes `unverified`, not `ungrammatical`.
 
-- **Determinism** — identical input ⇒ identical verdict, always.
-- **No auto-correction** — the system shows a violation + a deterministic
-  correction *suggestion*; the learner edits the text themselves (dual-loop).
-- **Phrase-structure only** — no dependency-parse trees are used for feedback.
+## Contents
 
-| | |
+- [0. The system in one page](#0-the-system-in-one-page)
+- [1. Repository and runtime topology](#1-repository-and-runtime-topology)
+- [2. The request lifecycle, stage by stage](#2-the-request-lifecycle-stage-by-stage)
+- [3. The rule matrix in detail](#3-the-rule-matrix-in-detail)
+- [4. Lessons, quiz, and Syntax Builder](#4-lessons-quiz-and-syntax-builder)
+- [5. Content pipeline and generated sheets](#5-content-pipeline-and-generated-sheets)
+- [6. Authentication and data model](#6-authentication-and-data-model)
+- [7. Failure modes and degradation](#7-failure-modes-and-degradation)
+- [8. Determinism, auditing, and known limits](#8-determinism-auditing-and-known-limits)
+- [9. How to extend the system](#9-how-to-extend-the-system)
+- [Appendix A — Key data shapes](#appendix-a--key-data-shapes)
+- [Appendix B — Glossary](#appendix-b--glossary)
+
+```
+Browser (web/)
+  main.js ──POST /api/parse──▶ server/webapp.py (Flask)
+                                   │
+                                   ▼
+                              server/api.py ── build_payload()
+                                   │
+              ┌────────────────────┼─────────────────────┐
+              ▼                    ▼                     ▼
+    parse_engine.analyze     matrix.evaluate       detector.classify
+    spaCy → benepar →        _walk / _classify     CoLA acceptability
+    NodeBuilder              + licensing layer           │
+              │                    │                     ▼
+              │                    │              combine(summary, det)
+              │                    │                     │
+              │                    └──── verdict ────────┘
+              │                                          │
+              │                         if unverified: corrector.sweep
+              │                                          │
+              └──────────────► payload JSON ◀────────────┘
+                                   │
+        ┌──────────────────────────┼──────────────────────────┐
+        ▼                          ▼                          ▼
+  TreeRenderer               Lessons / Quiz            Syntax Builder
+  (canvas tree)              (tree-quiz.js)            (node editor)
+```
+
+---
+
+## 1. Repository and runtime topology
+
+```
+server/
+  webapp.py         Flask transport; serves web/ and /api/*
+  app.py            Legacy stdlib http.server with the same API
+  hf_space.py       Hugging Face Spaces entrypoint (Gradio + mounted API)
+  api.py            Transport-independent request/response logic
+  parse_engine.py   Stage 1–3: tokenization, POS, benepar parse, node graph
+  matrix.py         Stage 4: constraint matrix, node details, remediation
+  ruleset.py        Rulebook (111 rules) + tree/wordlist/context checkers
+  licensing.py      Positive-evidence lexical licensing + relative clauses
+  detector.py       CoLA acceptability classifier (optional)
+  corrector.py      MLM correction search (optional)
+  spellcheck.py     Pre-parser lexicon and spelling repair
+  master.py         Accessor for the generated content sheet
+
+web/
+  index.html        Application shell
+  login.html        Standalone Clerk form
+  css/style.css     Shell, workspace, canvas, themes
+  css/quiz.css      Lessons, quiz, builder, drawers
+  js/main.js        Workspace state machine, pipeline client, history
+  js/renderer.js    Canvas tree layout and interaction
+  js/ui.js          Node inspector, diagnostics, sentence selection
+  js/tree-quiz.js   Lessons, quiz sessions, guide cards, progress
+  js/syntax-builder.js      DOM-free node-graph model + tree comparison
+  js/syntax-builder-ui.js   Canvas editor, Build-tree validation, XAI
+  js/auth.js        Clerk + Supabase client
+  js/level.js       XP / level curve
+  js/achievements.js Achievement derivation
+  js/rule-concepts.js       Rule concept text (folded into the tree sheet)
+  js/tree-catalog.js        Four pipeline stages for achievements
+  js/theme.js       Theme persistence
+  js/config.js      Client keys + API_BASE (template: config.example.js)
+
+scripts/
+  tree_sheet.py           Generate docs/tree_sheet.* + web/content/tree_sheet.json
+  build.js                Copy web/ to dist/ for Vercel
+  master_sheet.py         Detection audit over the quiz corpus
+  explanation_sheet.py    Explanation audit over valid node details
+  audit_rules.py          Rule-regression audit
+  test_tree_quiz.js       Quiz content audit (npm run test:quiz)
+```
+
+Runtime entry points:
+
+- Local development: `python3 server/webapp.py` (Flask, port 8000) or
+  `npm run serve`; legacy server `python3 server/app.py` (`npm run serve:legacy`).
+- Production frontend: `npm run build` → `dist/`, deployed by Vercel
+  (`vercel.json`: build command `npm run build`, output `dist`).
+- Hugging Face Space: `server/hf_space.py` imports `server/app.py` and mounts
+  its handler on the Gradio/FastAPI app. A no-op `@spaces.GPU` function exists
+  only to satisfy ZeroGPU's startup scan; all inference is CPU-only.
+
+---
+
+## 2. The request lifecycle, stage by stage
+
+### Stage 1 — Browser boot
+
+`web/index.html` does four things in order:
+
+1. An inline script reads `syntutor_theme` from `localStorage` and sets
+   `data-theme` before first paint (no flash of the wrong theme).
+2. Loads `css/style.css` and `css/quiz.css`.
+3. Loads `js/config-hint.js`, a classic script that probes for `js/config.js`
+   and prints a setup warning if a fresh checkout is missing it.
+4. Loads `js/main.js` as an ES module.
+
+`main.js` runs its top-level authentication bootstrap before defining the
+workspace:
+
+- `loadClerk()` dynamically injects `clerk.browser.js` from the Frontend API
+  domain derived from the publishable key. It is a deferred singleton, so the
+  bundle loads once.
+- `createSupabaseClient()` builds a Supabase client whose `accessToken`
+  callback returns the current Clerk session token. Clerk is registered as a
+  third-party auth provider in Supabase, so the Clerk JWT is accepted by RLS.
+- If Clerk cannot load, the app continues in guest mode instead of failing.
+- A Clerk listener watches identity changes (sign-in, sign-out, account
+  switch). When the session id changes, the in-memory history cache and the
+  de-duplication set are cleared so one account never sees another's data.
+
+`boot()` then creates the `TreeRenderer`, wires events, restores the theme,
+purges legacy guest history, initializes the sidebar, calls
+`initSyntaxBuilder(...)` and `initQuiz({...})` with the controller object
+(quiz analysis, mode switching, progress, chat title), installs the pane
+resizers, enters the `IDLE` state, and optionally starts the first-visit
+onboarding tour.
+
+### Stage 2 — Input capture
+
+The input is a textarea (`#inputText`) overlaid by a highlight layer
+(`#inputHighlights`). It starts read-only and locked.
+
+- Clicking the textarea enters edit mode (`readOnly = false`).
+- Blur re-locks it. If the text changed since the last analysis, blur calls
+  `runPipeline()`.
+- `Ctrl+Enter` / `Cmd+Enter` submits while editing; `Escape` leaves edit mode.
+- In a locked multi-sentence passage, the overlay draws one clickable span per
+  sentence. Clicking a non-active sentence re-runs the pipeline with that
+  sentence's `sentence_index` without unlocking the textarea. Clicking the
+  active sentence (or double-clicking a span) edits the whole passage.
+- `runPipeline()` refuses to run unless the workspace is the Grammar Tutor
+  (`workspaceView === 'tutor'`); Lessons and the Syntax Builder own the canvas
+  through separate paths.
+
+The request is:
+
+```http
+POST /api/parse
+Content-Type: application/json
+
+{ "text": "The clever boy reads a book.", "sentence_index": 0 }
+```
+
+`main.js` uses `API_BASE` from `js/config.js`; an empty value means
+same-origin, which is how the local Flask server and the Vercel build are
+wired.
+
+### Stage 3 — Transport validation
+
+`server/webapp.py` (`app.py` mirrors it) validates before touching a model:
+
+| Condition | Response |
 |---|---|
-| Frontend | Vanilla ES modules, HTML5 `<canvas>`, no frameworks, no transpilation; build = `scripts/build.js` copy `web/` → `dist/` (Vercel) |
-| Backend | Local: Python 3.10+ stdlib `http.server` (`server/app.py`); production: the same `build_payload`/`analyze` logic mounted on Gradio/FastAPI (`server/hf_space.py`) on the HF Space |
-| NLP | spaCy `en_core_web_md` + benepar `benepar_en3` + `transformers==4.46.3` pin |
-| Parsing output | single MAP constituent tree drawn from `span._.parse_string` |
-| Verification | `python3 scripts/audit_rules.py` (gold corpus, fails loud) |
-| Deployment | Vercel static frontend (`syntutor.vercel.app`) + HF Space API (`ybcole-syntutor.hf.space`); push to `main` redeploys both |
+| Body is not JSON | `400 invalid request payload` |
+| `text` empty after trim | `422 empty input` + hint |
+| `sentence_index` not an integer | `400 sentence_index must be an integer` |
+| `sentence_index < 0` | `400 sentence_index must be >= 0` |
+| `ParseFailure` from the parser | `422` with the input |
+| Any other exception (models unavailable) | `503` with install hint |
 
----
+Static serving is restricted to `PUBLIC_TOP = {index.html, login.html, css,
+js, content}`. Anything else under the repository (server code, scripts,
+migrations, configuration) is never exposed. CORS is controlled by
+`SYNTUTOR_ALLOW_ORIGIN` (default `*`) and responses are `Cache-Control:
+no-store`.
 
-## 2. Repository layout & module inventory
+### Stage 4 — Segmentation, POS tagging, and constituency parsing
 
+`server/parse_engine.py::analyze(text, sentence_index)` is the only NLP entry
+point. Its pipeline:
+
+1. **Whitespace normalization.** `_normalize_parser_text` collapses every run
+   of whitespace into one space but keeps two parallel arrays (`starts`,
+   `ends`) mapping each normalized character back to the original input. This
+   is what lets the frontend highlight the exact character range the user
+   typed even after normalization.
+2. **spaCy run.** `load_models()` loads `en_core_web_md` once and adds the
+   `benepar` pipe with `benepar_en3`. During load, `torch.cuda.is_available`
+   is temporarily forced to `False`; under ZeroGPU that probe reports a
+   phantom GPU and kills the process. It is restored immediately afterwards.
+   Both success and failure are cached (`_nlp`, `_load_error`).
+3. **Sentence selection.** `doc.sents` gives sentence boundaries.
+   `sentence_index` is clamped to `[0, len(sents)-1]`; out-of-range indices do
+   not error, they select the nearest sentence.
+4. **Constituency parse.** The target `Span` carries benepar's
+   `_.parse_string`, the deterministic S-expression rendering of the selected
+   tree.
+5. **Decode.** `parse_parse_string` is a recursive-descent parser over the
+   regex token stream `\(|\)|[^\s()]+`. It returns nested
+   `(label, children)` tuples.
+6. **Node graph.** `NodeBuilder` walks that nested structure and emits JSON
+   nodes:
+   - id: `n0`, `n1`, … in depth-first order;
+   - leaves: `type` = PTB tag, `pos` = same tag, `span = [i, i+1]`,
+     `surface` = word, `punct` = whether the tag is punctuation;
+   - internal nodes: `type` = phrase label, `span = [first leaf, last leaf)`,
+     `surface` = joined leaf text, `children`.
+   - An empty benepar subtree is dropped instead of crashing.
+   - After the build, the leaf counter must equal `len(target)`; otherwise
+     `ParseFailure('span alignment mismatch: …')`.
+7. **Token metadata.** `token_metadata` records `i`, `t`, `start`, `end`,
+   `pos` (UPOS), `tag` (PTB), `dep`, `head` for every token, with character
+   offsets mapped through the normalization arrays.
+8. **Fine-grained tags.** Leaves are enriched by token order with `ftag`
+   (spaCy PTB tag) and `fpos` (UPOS), so morphology checks are not limited to
+   benepar's coarse tags.
+
+The function returns the target sentence, sentence count, all sentence spans
+with original character offsets, the token list, the parse string, the root
+node, and the flat `nodes` map.
+
+### Stage 5 — The deterministic constraint matrix
+
+`server/matrix.py::evaluate(root, text)` instantiates `MatrixEvaluator` and
+runs five phases.
+
+#### 5.1 Pre-scan
+
+`evaluate` first walks the tree and records, for every `VP` that directly
+contains an `SBAR`, the head verb governing that clause
+(`self._sbar_gov`). This lets subjunctive licensing depend on the actual
+governing verb rather than a nearby word. It also records quoted leaf spans
+(`_quoted_ids`).
+
+#### 5.2 Edge walk
+
+`_walk` visits every parent/child edge and creates one detail record per
+child:
+
+- **Punctuation** → `C-PUNCT`, `valid`, "the punctuation … closes the …".
+- **Fully quoted subtree** → `C-QUOTE`, `valid`, verbatim material not judged
+  by the surrounding grammar.
+- **Everything else** → `_classify(parent, child, grandparent)`, a dispatch
+  over the parent's phrase type:
+  - `S` / `SINV` / `SQ`: subject role and predicate role, agreement,
+    finiteness, question inversion;
+  - `NP`: head noun, determiners, determiner agreement, determiner stacking,
+    modifiers, possessives, quantifiers, postmodifiers, reduced relatives,
+    noun form, pronoun case, compound nominals;
+  - `VP`: verb head, auxiliaries and required complement forms, objects,
+    particles, adverbials, predicate adjectives, clausal complements,
+    coordination;
+  - `PP`, `ADJP`, `ADVP`, `WHNP`, `WHADVP`, `WHPP`, `SBAR`, `FRAG`: head
+    licensing, complements, modifiers, relative pronouns;
+  - a small-clause path for `S` under `VP`;
+  - anything unrecognized → `C-UNLISTED`, `unlisted`
+    ("valid by default, but not covered by the matrix").
+  Each branch returns `(status, constraint_id, explanation_text)`.
+- `_detail` stores the record. It also normalizes explanations through
+  `_strip_preface`, which removes the repeated
+  `In the sentence '<sentence>', ` boilerplate from the generator strings and
+  re-capitalizes the first letter. The sentence itself is still referenced
+  through the quoted word/phrase inside the explanation.
+
+A detail record has:
+
+```json
+{
+  "id": "n12",
+  "type": "NP",
+  "pos": null,
+  "surface": "the big cat",
+  "span": [1, 4],
+  "parent": "n3",
+  "rule": "NP → DT + JJ + NN",
+  "children_ids": ["n13", "n14", "n15"],
+  "children": [{"id": "n13", "type": "DT", "surface": "the"}],
+  "role": "clause subject",
+  "constraint": "C-SUBJECT-ROLE",
+  "status": "valid",
+  "text": "The NP 'the big cat' is the subject …",
+  "findings": []
+}
 ```
-SynTutor/
-  server/hf_space.py      HF Space entrypoint: minimal Gradio app (ZeroGPU) + mounted /api routes
-  web/index.html          UI shell (all 16 wired element IDs, §3)
-  web/login.html          Clerk sign-in / sign-up shell
-  package.json            {build, serve, audit} npm scripts
-  README.md               quick start + spec-level overview
-<<<<<<< HEAD
-  RULES.md                full rule-matrix inventory (sibling doc)
-  THESIS.md               original design specification (input document)
-  ARCHITECTURE.md         this file
-  css/style.css           394-line design system (§4)
-  js/main.js              FSM + pipeline orchestration, highlighting, auth, and history
-  js/renderer.js          387 lines: canvas layout/draw/hitbox/zoom/keyboard
-  js/ui.js                291 lines: DOM views, explainer, dev panel, logs
-  server/app.py           240 lines: HTTP server + payload assembly
-  server/parse_engine.py  202 lines: NLP load, parse-string -> node graph
-  server/matrix.py        1615 lines: rule matrix + XAI + remediation
-  scripts/audit_rules.py  238 lines: gold-corpus coverage audit (exit-code gate)
-=======
-  docs/                   ARCHITECTURE.md (this file) + rule/thesis sources
-  web/css/style.css       394-line design system (§4)
-  web/js/main.js          FSM + pipeline orchestration, highlighting, auth, and history
-  web/js/renderer.js      387 lines: canvas layout/draw/hitbox/zoom/keyboard
-  web/js/ui.js            291 lines: DOM views, explainer, dev panel, logs
-  server/app.py           HTTP server + payload assembly (local full-stack)
-  server/parse_engine.py  NLP load, parse-string -> node graph
-  server/matrix.py        rule matrix + XAI + remediation
-  scripts/build.js        Vercel build: copies web/ (index.html, login.html, css, js) -> dist/
-  scripts/audit_rules.py  gold-corpus coverage audit (exit-code gate)
-  vercel.json             Vercel config (outputDirectory: dist, framework: null)
-  Dockerfile              local full-stack image (server/app.py on port 7860)
->>>>>>> 3a6c291729a3a5986acf2232a8be1fd637dc0182
+
+Statuses are `valid`, `error`, `unlisted` (and findings may carry
+`suggestion` or `unverified`).
+
+#### 5.3 Root-level checks
+
+`_root_level(root)` handles the node that has no parent:
+
+- If the root type is in `SENTENCE_CLASSES` (`S`, `SINV`, `SQ`, `SBARQ`,
+  `FRAG`, `ROOT`) and the first character of the surface is a lowercase
+  letter → `C-CAPITALIZATION`, `error`.
+- Otherwise the root gets `C-ROOT`, `valid`: it contains a subject daughter
+  and a predicate daughter.
+- If the root is not a sentence class → `C-TENSE-FINITE`, `error`: the input
+  has no finite predicate VP and is a fragment.
+
+The ruleset contains a parallel sentence-initial capitalization check
+(rule 10.1, `C-SENTENCE-CAPITAL`) inside `_check_basic`; the matrix root check
+covers the root node, the ruleset check covers the token-level rulebook
+numbering.
+
+#### 5.4 Finding merge
+
+`_merge_findings` is where the rulebook and licensing layer meet the tree:
+
+1. Run `licensing.collect_all(text, root)` when the licensing module is
+   available. Otherwise fall back to `ruleset.collect(text, root)`.
+   `collect_all` isolates every checker; a crash is recorded in
+   `checker_errors` and degrades the verdict instead of deleting all findings.
+2. Attach each finding to its `node_id` detail (falling back to the root
+   detail). The finding id becomes `<node_id>:<rule_id>`.
+3. For error findings, wrap the bare check text with structural context:
+
+   ```
+   The <node type> '<surface>'[ inside the <parent type> '<parent surface>'] is flagged: <finding text>
+   ```
+
+   The "inside the …" clause appears only when the node has a parent detail.
+4. Attach the rule concept from `server/master.py::concept(rule_id)` when the
+   content sheet is available.
+5. Mark the node's own status `error` so the frontend paints it red even when
+   the error came from a wordlist/context finding rather than the edge
+   classifier.
+6. Reconcile the detail's prose with its findings:
+   - if the detail was already an error before merging (`_own_error`), keep
+     its own explanation when no finding matches;
+   - otherwise prefer a finding whose `rule_id` equals the detail's
+     `rule_id`;
+   - then a finding whose `constraint` equals the detail's `constraint`;
+   - then the first error finding;
+   - normalize its remediation through `_rem_from_text` when the finding did
+     not supply a structured remediation.
+
+This ordering is why a capitalization detail shows the capitalization text
+rather than an unrelated agreement finding, and why "walked home." shows the
+capitalization problem rather than "missing subject".
+
+#### 5.5 Finalization and summary
+
+For every detail, `evaluate` fills in:
+
+- `rule_id` and `method` from `CONSTRAINT_RULE` (constraint id → `(rule id,
+  T/L/C method)`);
+- generic `evidence` when the checker did not supply one (tree, wordlist, or
+  context shape);
+- `findings` (always a list);
+- `checks`: a deterministic checklist built by `_checks_for` from the node's
+  own verdict plus its immediate children's verdicts;
+- `remediation` for errors that do not already have one, via `_remediate`
+  (constraint-specific repair functions followed by a generic fallback).
+
+`_summarize` produces the verdict:
+
+```text
+violations         = error details + error findings (+ root detail if root error)
+root_error         = the root detail is an error
+verdict            = "ungrammatical" if violations
+                   | "unverified"    if unverified findings or checker crashes
+                   | "grammatical"   otherwise
+valid              = len(violations) == 0       # legacy: "nothing fired"
 ```
 
-### The seven pipeline stages (as implemented)
+It also reports `valid_edges`, `violated_edges`, `unrated_edges`,
+`violations`, `suggested`, `suggestions`, `constraints_fired`,
+`checker_errors`, `lexical_coverage`, `unverified`, and a human
+`explanation`.
 
-| # | Stage | Producer | Consumer | UI feedback |
-|---|-------|----------|----------|-------------|
-| 1 | User Input | textarea `#inputText` | `main.js executePipeline` | session label "Processing…" |
-| 2 | Request `/api/parse` | `fetch` POST JSON (API base = `web/js/config.js` `API_BASE`) | `build_payload` (local `server/app.py`; HF `server/hf_space.py` mounts the identical handler) | FSM badge PROCESSING |
-| 3 | Tokenize + POS | spaCy `nlp(text)` | `parse_engine.token_metadata` | token stream |
-| 4 | Parse tree | benepar `span._.parse_string` | `parse_parse_string` → `NodeBuilder` | parse string |
-| 5 | Validate Ψ matrix | `matrix.evaluate(root)` | `MatrixEvaluator` | node colors |
-| 6 | Generate explanations | `build_payload` (`basic`, `contrastive`) | `renderSentenceVerdict` | verdict card |
-| 7 | Canvas + feedback loop | `TreeRenderer.setTree` | cache in `session` memory | Explorer |
+Important semantic detail: `summary.valid` means "no violation was found", not
+"the sentence is grammatical". A sentence can be `valid: true` and
+`verdict: "unverified"`. All UI code keys on `verdict` (and on node status),
+not on `valid`.
 
-The seven steps are **not shown as UI chips anymore** — progress is visible
-only via the FSM badge, the session label, and the dev-panel log (each stage
-logs a `Stage N:` line).
+The matrix uses only deterministic libraries: `inflect` for noun forms,
+`lemminflect` when available for irregular verb forms, and explicit
+feature functions for agreement, determiner number, auxiliary form,
+finiteness, modifier order, and so on. There is no scoring model inside the
+matrix. The same tree always yields the same details.
 
----
+### Stage 6 — Positive-evidence licensing
 
-## 3. Frontend — `web/index.html`
+`server/licensing.py` exists because the matrix is a blacklist: "no rule
+fired" is not the same as "the word form is real". benepar is trained on
+grammatical text and will happily parse `I am stupids` or `the men are
+runned`.
 
-Layout is a three-column shell; `<body>` is `flex column; overflow:hidden`
-(no page scroll — the canvas and panels scroll internally).
+`collect_all` replaces `ruleset.collect`: it runs the rulebook's wordlist,
+basic, adjective/adverb, tree, "more", and context checkers plus the licensing
+checks, each inside its own `try` block. The licensing module contributes
+three counter-measures:
 
-Element registry (all are read or written by the JS, exact ids):
+1. **Lexical licensing** (`check_lexicon`). Every open-class leaf
+   (noun/verb/adjective/adverb tag) is checked against the lemminflect
+   paradigm for the lemma and POS the parser assigned. Results:
+   - `licensed`: the surface is an inflected form of a known lemma, or is in
+     `HIGH_FREQ` (quantifiers, indefinite pronouns, irregular plurals, common
+     adverbs, `tv`/`ok`);
+   - `malformed`: a form outside the lemma's paradigm (`goed`, `runned`,
+     `stupids`, `mans`) → rule-specific error (`C-LEXICON-MALFORMED`), with
+     the accepted forms and a suggested replacement;
+   - `tag_mismatch`: the surface is a form of the lemma but not the form the
+     parser's tag requires. A `VBN` slot after `be`/`have` is a hard error
+     (rule 1.6); other mismatches are `unverified`
+     (`C-LEXICON-TAG-MISMATCH`);
+   - `unknown`: not in the lexicon at all → `unverified`
+     (`C-LEXICON-UNKNOWN`), not an automatic error, because names and new
+     words are legitimate.
+   - A second pass catches adjective-derived adverbs of the `happyly` type
+     (`-y` + `-ly`) as rule 1.8 errors.
+   - `skip_ids` prevents double-reporting leaves another checker already
+     flagged.
+2. **Relative-clause rules** (`check_relatives`). Implements the registered
+   but previously missing rules 2.7 and 5.4:
+   - `whose` directly followed by a verb has no possessed noun;
+   - `which` after a human antecedent / `who` after a non-human antecedent;
+   - subject-gap relative `the boys who plays` → verb must agree with the
+     antecedent NP, with an inflection suggestion.
+3. **Tri-state accounting.** `stats` counts `content`, `licensed`,
+   `unverified`, `malformed`. Unknown or unverifiable words keep the
+   sentence out of the `grammatical` verdict. A checker exception becomes a
+   `checker_errors` entry, which also forces `unverified`.
 
-| Element | Kind | Role |
+The licensing layer is optional at import time: if lemminflect is missing,
+`matrix.py` sets `licensing = None` and falls back to `ruleset.collect`,
+which runs the same rulebook without the paradigm checks.
+
+### Stage 7 — Hybrid detection
+
+`server/detector.py` adds the acceptability channel:
+
+- Model: `textattack/roberta-base-CoLA` by default, overridable with
+  `SYNTUTOR_DETECTOR_MODEL`.
+- Loaded once, CPU-only (`device=-1`), through a Hugging Face
+  `text-classification` pipeline. Load failure is cached and degrades the
+  system to rules-only; it never crashes a request.
+- `classify(sentence)` returns `available`, `model`, `label`
+  (`acceptable`/`unacceptable`), `acceptable`, `acceptable_prob`,
+  `confidence`, and an `explanation` string.
+- `classify_many(texts)` is the batch path used by the corrector; it returns
+  one record per input, or a list of `None` when the detector is out.
+
+`combine(summary, det)` is a pure merge:
+
+| Matrix verdict | Detector | Combined verdict |
 |---|---|---|
-| `#stateBadge` | span | FSM state pill (data-state colors: IDLE/PROCESSING/VIEWING/EXPLORING) |
-| `#sessionLabel` | span | "Idle" / "Processing…" |
-| `.input-editor` | div | positions the textarea and read-only highlight overlay |
-| `#inputText` | textarea | paragraph-capable input; starts `readOnly`. Double-click enters edit mode with native text and caret; blur re-locks and auto-re-analyzes changed text; locked clicks activate the sentence at the caret |
-| `#inputHighlights` | div | safe text-node overlay showing red invalid words and the selected-sentence background while locked |
-| `#inputHint` | p | `.input-hint` — live instruction line (editing ↔ locked) |
-| `#treeCanvas` | canvas | `tabindex=0`, keyboard navigable, aria-label |
-| `#canvasOverlay` | div | `.canvas-overlay`, `pointer-events:none` (see §4) |
-| `#explainNode` | div | primary plain-English explainer container (no header/clear button — filled by `renderNodeDetail`/`renderDiagnostic`) |
-| `#devPanel` | `<details>` | collapsible developer panel |
-| `#sentenceVerdict` | div | auto-generated pedagogical summary |
-| `#parseString` | `<pre>` | raw benepar parse string |
-| `#tokenStream` | `<pre>` | spaCy token table (i, t, pos, tag) |
-| `#logPanel` | div | prepend-most-recent system/FSM log |
-
-Module graph (`<script type=module src=js/main.js>`):
-
-```
-main.js ──> auth.js       (Supabase client and session)
-   ├─────> renderer.js    (TreeRenderer, createLayout, COLORS)
-   └─────> ui.js          (FSM badge, logs, views, fillDevPanel)
-```
-
----
-
-## 4. Frontend — stylesheet `web/css/style.css`
-
-Design tokens (`:root`):
-
-```css
---bg #f4f3fb  --panel #ffffff  --ink #2b2440  --muted #77708f
---accent #6d5ae6  --accent-soft #efeafc  --ok #2e8b57  --err #d64545
---warn #c98f00  --border #e3e0f2  --radius 12px
-```
-
-Key layout facts:
-
-- `.app-main`: `grid-template-columns: 1fr 340px`; gap 14px; padding `10px 14px 6px`.
-- `.app-header`: fixed 60px; `.state-badge` data-state palettes; PROCESSING pulses.
-- `.canvas-wrap`: `position:relative; flex:1; overflow:hidden`.
-- **`.canvas-overlay`**: `position:absolute; inset:0; pointer-events:none` —
-  this is the fix that made node clicks reach the canvas again (an earlier
-  `pointer-events:auto` version swallowed every mouse event). When `:empty`
-  the background is fully transparent.
-- `.dev-panel[open]`: `max-height:46vh; overflow:auto`. `.dev-grid`:
-  `repeat(4, 1fr)` — verdict / parse string / token stream / log.
-- `.primary-explainer` + `.node-explainer`: column flex, inner scroll.
-- Explainer sections: `.ex-sec .ex-label .ex-identity .ex-badge(.root)
-  .ex-role .ex-plain(mark) .ex-rule .ex-text .ex-checks(.ck.ok/.no)`.
-- Remediation (Case B): `.remediation` (red top border), `.rem-title`,
-  `.rem-body`, `.rem-row`, `.rem-key`, `.rem-value`, `.rem-outcome`.
-- Canvas focus: `#treeCanvas:focus { outline: 2px solid var(--accent) }`.
-- Responsive `@media (max-width: 1100px)`: `.app-main` stacks to one column,
-  the right panel becomes a 2-col grid, `.log-card` spans both.
-
----
-
-## 5. Frontend — `web/js/ui.js` (views, logs, dev panel)
-
-Exports: `setStateBadge, log, clearOverlay, showCanvasMessage,
-renderSentenceVerdict, renderNodeDetail, renderDiagnostic, fillDevPanel,
-applySentenceSelection, setProcessBusy`.
-
-- `PLAIN_NAME` — canonical Penn-label → plain-English dictionary (~45 entries)
-  used by `plainName(type)`; unknown labels fall back to the raw type.
-- `log(entry)` — prepends a timestamped `<div class=log-entry>` to `#logPanel`
-  (HH:MM:SS, 24h, en-GB).
-- `showCanvasMessage(kind, title, lines)` — overlay card (`.overlay-card error`).
-- `renderNodeDetail(_session, detail, node)` — builds 5 sections + Case B:
-  1. **Node Identity** — badge `detail.type` (+`.root`), plain name (adds
-     `(fragment)` if NP & role == fragment root), `Grammatical role:` line.
-  2. **Text Span** — `<mark>` surface + `Token n` / `Tokens n–m` (1-based).
-  3. **Structural Rule** — `<pre class=ex-rule>` with `detail.rule`.
-  4. **Plain-English Explanation** — `detail.text`.
-  5. **Constraint Matrix Checks** — `<ul class=ex-checks>` of `detail.checks`
-     with ✓/✗ icons.
-  Then, if `status === 'error'` **and** `remediation` exists, the **Case B
-  block**: title `Case B: Invalid Node [STATUS: INVALID / VIOLATION · C-*]`,
-  then *Violation Breakdown* (`rm.violation`), then *Actionable Correction
-  Guide* with `Suggested Fix`, `Alternative Structural Fix` (if present), and
-  `Targeted Outcome` (as `<pre class=rem-outcome>`).
-- `renderDiagnostic(title, lines)` — fills `#explainNode` with an error card
-  (used by `failPipeline`).
-- `renderSentenceVerdict(markupLines, isError)` — fills `#sentenceVerdict`
-  with `data-verdict=valid|error` and `.is-error` toggling.
-- `fillDevPanel(payload)` — parse string → `#parseString`; token stream →
-  `#tokenStream` (tab-separated `i  t  pos  tag`).
-
----
-
-## 6. Frontend — `web/js/main.js` (FSM + orchestration)
-
-State machine (exact states/events):
-
-```
-IDLE ──user submits text──────────► PROCESSING ──output ready──► VIEWING
-   ▲                                 │   │                        │  ▲
-   │empty input / system ready       │   └─request failed──► (VIEWING, diagnostic)
-   └─────────────────────────────────┘   (empty input ──► IDLE)  │  │
-                                                    user selects node   │
-                                                    ▼                    │
-                                                  EXPLORING ─back to tree┘
-USER interaction loop: VIEWING ⇄ EXPLORING   (node explanations from memory)
-RE-ENTRY loop:          any state → PROCESSING on resubmit
-```
-
-- Module state: `let state, session, renderer`.
-- `transition(next, event)` — sets state, badge, appends `FSM: from → next
-  (event)` to the log.
-- `boot()` — constructs `TreeRenderer(#treeCanvas, { onSelect:
-  handleNodeSelect, onHover: noop, describe: plainName })`, wires events, → IDLE.
-- `wireEvents()` — no submit buttons. Textarea **double-click** → edit mode
-  (`readOnly=false`, `.editing` accent ring); **blur** → re-lock and, only if
-  the text changed since the last analysis, auto-`runPipeline()`; textarea
-  click while locked → `activateSentenceAtCaret()` (reads `selectionStart`,
-  finds the containing sentence span, re-runs `runPipeline({index})` for that
-  sentence — so **clicking any sentence in the paragraph swaps its syntax
-  tree in**); keydown (Ctrl/Cmd+Enter → full re-analyze; plain Enter while
-  locked → re-analyze the sentence at the caret).
-  Deselection happens by clicking empty canvas space (no Clear-selection
-  button).
-- `returnToLocked()` — after analysis or blur, restores `readOnly = true`,
-  hides the native textarea text behind the overlay, and renders the selected
-  sentence/error highlights while preserving scroll offsets.
-- `buildHighlightSpans()` / `renderInputHighlights()` — map parser token ranges
-  and error node spans to safe DOM text nodes. These spans are local UI state
-  and are never written to Supabase history.
-  `lastAnalyzedText` guards the blur path so unchanged text never re-parses.
-- `failPipeline(title, lines)` — canvas overlay error, verdict error lines,
-  diagnostic, → VIEWING, logs.
-- `runPipeline()` — guards against re-entry while PROCESSING; sets busy;
-  `executePipeline` in try/finally (always un-busy).
-- `executePipeline()` — the 7-stage walk (progress visible only in the dev-panel
-  log, `Stage N:` lines — no UI chips):
-  - clears overlay/selection/explainer; takes `#inputText` trimmed;
-  - **empty input** → overlay + verdict + diagnostic, → IDLE;
-  - `POST /api/parse` JSON `{text, sentence_index?}`; on network failure →
-    failPipeline("Backend unreachable", [server start hint]); on `!res.ok`
-    pick title by code (503 models / 422 no parse / `Backend error (HTTP n)`)
-    and body lines `[error, hint]`;
-  - stores `payload.parse.tokens`; logs stage 3 POS stream; if
-    `meta.sentence_count > 1` logs the selected-sentence policy; stage 4 logs
-    `parse.parse_string`;
-  - stage 5: `applyStatuses(tree, node_details)` (annotates each node with its
-    own `edgeResult` for edge coloring) and logs the summary counters + fired
-    constraint set;
-  - stage 6: `renderSentenceVerdict(payload.explainers.basic.split('\n'),
-    !payload.summary.valid)`;
-  - **`session = { payload }`** ← the in-memory cache that powers the
-    Interaction Loop; input is locked and the highlight overlay renders the
-    analyzed sentence/error spans, then stage 7:
-    `renderer.setTree(payload.tree)` → VIEWING.
-  - Renders the tree and highlights before starting the background history save.
-    New submissions are inserted into `analysis_history`; sentence navigation
-    and history replay do not create duplicate rows. The recorded-text guard is
-    updated only after a successful insert.
-- `loadAndRenderHistory()` / `renderHistoryItems()` — load the authenticated
-  user's recent history, filter valid/invalid entries, and create safe DOM
-  nodes for sentence text and constraint chips.
-- `replayHistory()` / `clearHistory()` — replay an entry without inserting a
-  duplicate and delete only the authenticated user's selected history rows.
-- `applyStatuses(tree, details)` — DFS; `node.edgeResult = {status}` (default
-  'valid' if missing) — the renderer reads this per child edge.
-- `handleNodeSelect(id)` — no-op if no session; `renderNodeDetail(session,
-  detail, node)` from `session.payload.node_details`/`nodes`; `renderer.select
-  (id)`; → EXPLORING (unless PROCESSING) with log `Exploring: cached XAI for
-  node …`.
-
-Error-handling matrix (frontend):
-
-| Failure | UI path |
-|---|---|
-| Empty input | overlay, verdict, → IDLE |
-| Network unreachable | failPipeline(Backend unreachable) |
-| 503 | failPipeline(NLP models unavailable) |
-| 422 | failPipeline(Unable to produce a parse) |
-| other status | failPipeline(Backend error (HTTP n)) |
-
----
-
-## 7. Frontend — `web/js/renderer.js` (canvas layout, drawing, interaction)
-
-### Layout algorithm (`createLayout`)
-
-Constants: `BOX_H=34, MIN_BOX_W=54, H_PAD=14, GAP=26, V_GAP=40, TOP_PAD=24,
-SIDE_PAD=24`.
-
-The layout is a **uniform-slot grid**: every leaf occupies the same-width slot,
-so columns are perfectly aligned and every internal node is dead-centered over
-its leaf span — no stair-stepping, no off-center parents.
-
-1. `collectNodes` — DFS pre-order list.
-2. Assign `nodeDepth` (root=0) and `maxDepth`.
-3. `SLOT = max over leaves(measuredLabel + 2·H_PAD) + GAP` — one shared slot
-   width. Leaf `i` sits at `x = SLOT·i + SLOT/2` (evenly spaced columns).
-4. `span` map: each node = `[firstLeafIndex, lastLeafIndex]` (recursive min/max).
-5. Internal node x = midpoint of its span `=(lo+hi+1)·SLOT/2` (hence exactly
-   centered over its children), `w = (hi−lo+1)·SLOT`; y =
-   `TOP_PAD + depth·(34+40) + 17` for every node at that depth → rows align.
-6. `totalW = max(leafCount·SLOT + 48, 320)`;
-   `totalH = max(TOP_PAD + maxDepth·74 + BOX_H + SIDE_PAD·2, 160)` (bottom room
-   reserved for leaf POS tags).
-
-`nodeLabel`: phrase → `node.type`; leaf → `node.surface`.
-
-`COLORS`: nodeStroke `#6d5ae6`, text `#2b2440`, edge `#000000`, edgeValid
-`#000000` (default line color), edgeError `#d64545`, edgeText `#77708f`,
-selectedStroke `#c98f00`.
-
-### `TreeRenderer` (canvas, opts {onSelect, onHover, describe})
-
-- `describe(label)` (from `ui.plainName`) turns a Penn tag into its
-  plain-English meaning for the hover tooltip.
-- `view = {scale, tx, ty}`; events: mousedown/move/up/leave, wheel (passive:
-  false), keydown, window resize.
-- **Viewport math**: `_toScreen`/`_toWorld` linear transforms; `_fitView`
-  scale = `min((w−80)/totalW, (h−80)/totalH, 1.4)` floored at 0.2, centered;
-  wheel zoom clamps 0.15…3 anchored at the cursor; drag pans (3px threshold
-  before it counts as a drag); DPR-aware resize (`devicePixelRatio`).
-- **Hit-testing**: candidates = layout boxes inflated +8px each side; ties
-  broken toward the **largest y** (front-most); returns node id or null.
-- **Interaction loop**: mousedown records start + base pan; mouseup without
-  movement = click → `onSelect(hitId)`; mousemove (not dragging) → hover
-  (`pointer` cursor) + repaint (cursor tracked for tooltip anchoring);
-  mouseleave clears hover.
-- **Keyboard nav** (`_onKey`, canvas focused): ArrowLeft/Up = prev, ArrowRight/
-  Down = next, in **DFS order** (`dfsOrder` + `indexById`), clamped; Enter/Space
-  = select the currently selected node.
-- `draw()`: clear → "No syntax tree yet" hint if empty → translate+scale →
-  optional selection **span-band** (translucent `rgba(255,217,77,0.16)` from
-  the selected node's top down to the tree bottom, covering its leaf span) →
-  edges colored by child `edgeResult.status` (error red / valid green /
-  unlisted base) → node labels → restores transform → `_drawTooltip()`.
-- `_drawTooltip()`: when hovering a node whose `describe(node.type)` returns a
-  real meaning, draws a dark rounded pill near the cursor
-  `NNP — Proper noun (singular)` (clamped to the canvas; skipped when the
-  meaning equals the bare label, i.e. unknown tags).
-- `_drawNode`: minimalist **text-only** rendering — no boxes or outlines.
-  Label color: error node → red, root/hover → purple, selected → amber
-  (`#c98f00`) with a heavier weight, else ink. Leaves draw their POS type in
-  small 10px muted text **above** the word (word sits slightly below the row
-  center; the incoming edge terminates **well above the tag** — ~11px of clear
-  gap — so the annotation never touches the line).
-  Hitboxes/layout still use the (now invisible) box geometry from
-  `createLayout`. Selection highlight comes from the translucent span-band
-  rather than a box fill.
-
----
-
-## 8. Backend — `server/app.py` (HTTP + payload)
-
-This is the canonical full-stack/local server (stdlib `http.server` + static
-files from `web/` + `/api/*`). In production the same logic runs behind
-`server/hf_space.py` (HF Space): Gradio is launched on port 7860 to satisfy the
-ZeroGPU startup scan, then the identical `/api/health` and `/api/parse` handlers
-are mounted on the FastAPI app Gradio returns. `server/app.py` is only ever used
-directly for local development / the container image.
-
-- `ROOT` = project dir (parent of `server/`); `PORT = env SYNTUTOR_PORT|8000`;
-  host `127.0.0.1` / `SYNTUTOR_HOST`.
-- `ThreadingHTTPServer` + `Handler` (server_version `SynTutor/2.0`).
-- `MIME` map for `.html .js .css .json .svg .png .ico .md`.
-- `_model_status()` — cached lazily; tries `load_models()` and reports
-  `{ready, spacy version, benepar: 'benepar_en3', pipeline pipe names}`;
-  on failure captures the exception text.
-
-### Endpoints
-
-| Method&Path | Behavior |
-|---|---|
-| `GET /` (or `/index.html`) | serves `index.html` |
-| `GET /file…` | path-normalized read from `ROOT`; `..`/absolute → 403; missing → 404; `Cache-Control: no-store` |
-| `GET /api/health` | 200 + model JSON when ready, else 503 + `install_hint` |
-| `POST /api/parse` | see below |
-
-### `POST /api/parse`
-
-- Bad JSON body → 400. Empty/missing `text` → 422 `{error, hint}`.
-  `sentence_index` (optional, 0-based integer) → 400 on non-integer/negative.
-- `build_payload(text, sentence_index=0)`:
-  1. `analyze(text, sentence_index)` (parse_engine) → analysis,
-  2. `evaluate(analysis['root'])` (matrix) → details + summary,
-  3. emits the JSON contract (§10).
-- `ParseFailure` → 422 `{error, input}`.
-- Any other exception (model missing) → 503 `{error, hint}` where hint comes
-  from `_model_status().error` or the canonical install command
-  (`pip install spacy benepar transformers==4.46.3` + model downloads).
-
-`_contrastive(summary, details)` — deterministic contrastive text:
-valid & no root error → "No grammatical alternative is observed…";
-otherwise take the **first** error detail and phrase the repair from a break
-map (`C-SUBJECT-AGREEMENT`, `C-DETERMINER-AGREEMENT`, `C-DET-STACK`,
-`C-MOD-POS`, `C-AUX-FORM`, `C-TENSE-FINITE`), falling back to a generic
-"after satisfying C-*".
-
-`explainers` also reserves `surprisal: null`, `perturbation: null`,
-`llm_note: null` — intentionally absent by design (see §15).
-
----
-
-## 9. Backend — `server/parse_engine.py` (stages 3–4)
-
-- Constants: `PARSER_BUNDLE='en_core_web_md'`, `PARSER_MODEL='benepar_en3'`.
-- `load_models()` — module-level singleton `_nlp`; caches failures in
-  `_load_error` and re-raises; builds `spacy.load(bundle)` + 
-  `nlp.add_pipe('benepar', config={'model': model})`.
-- `ParseFailure(Exception)` — the payload's 422 path.
-- `parse_parse_string(tree_text)` — hand-rolled recursive-descent parser over
-  the benepar `( ... )` string. Tokenizes with
-  `re.findall(r'\(|\)|[^\s()]+', text)`. Returns nested tuples
-  `('S', [('NP', [...]), ('VP', [...]), ('.', '.')])`. A node with exactly one
-  child collapses to that child; raises on trailing tokens or bad structure.
-- `NodeBuilder`:
-  - ids: `n0, n1, …` (pre-order counter).
-  - Builds for each leaf `{id, type(=pos), pos, span:[i,i+1), surface, punct}`
-    where `punct` ⇔ tag ∈ `{., ,, :, ;, ?, !, \`\`, '', -RRB-, -LRB-}`,
-  - for each internal node `{id, type(=phrase label or 'ROOT'/'PHRASE'),
-    span:[first,last), surface (space-joined leaves), children:[…]}`,
-  - **alignment guard**: after building, the number of consumed leaves must
-    equal `leaf_count` (spaCy sentence token count) else `ParseFailure`.
-- `token_metadata(nlp, doc, target)` — per token:
-  `{i (0-based within sentence), t, pos, tag, dep, head(text)}`.
-- `analyze(text, sentence_index=0)`:
-  1. `nlp = load_models()`; `doc = nlp(text)`,
-  2. segments `doc.sents`; **clamps** `sentence_index` into range; the target
-     sentence is `sents[idx]` (multi-sentence policy: exactly one sentence
-     analyzed per request, deterministically selectable),
-  3. `parse_string = target._.parse_string`,
-  4. `parse_parse_string` → `NodeBuilder.build(tagged, len(target))`,
-  5. includes the full segmentation `sentences = [{ordinal, start, end,
-     text}]` where `start`/`end` are **character offsets into the exact
-     `text` string passed** (used by the frontend to map textarea carets to
-     sentences),
-  7. returns `{sentence, sentence_index, sentence_count, sentences, tokens,
-     parse_string, root, nodes}`.
-
----
-
-## 10. Backend — `server/matrix.py` (Stage 5 XAI, full detail)
-
-### 10.1 Classification sets & feature tables
-
-```
-SENTENCE_CLASSES  = {S, SINV, SQ, SBARQ, FRAG, ROOT}
-NOUN_CLASS        = {NN, NNS, NNP, NNPS, PRP, NML, NX}
-VERB_CLASS        = {VB, VBD, VBG, VBN, VBP, VBZ, MD, AUX}
-ADJ_CLASS         = {JJ, JJR, JJS}   ADV_CLASS = {RB, RBR, RBS}
-DET_CLASS         = {DT}             PREP_CLASS = {IN, TO, POS, RP}
-NOUN_PLURAL       = {NNS, NNPS}      NOUN_SINGULAR = {NN, NNP, NML, NX}
-NONFINITE         = {VB, VBG, VBN}
-```
-
-Language tables (deterministic, hard-coded):
-
-- `PRP_KEY` — pronoun features: `I→(1,sg) we→(1,pl) you→(2,None) he/she/it→
-  (3,sg) they→(3,pl)`.
-- `DET_NUMREQ` — determiner number requirement: `a an one this that each every
-  another much → sg`; `these those both many several → pl`.
-- `MODALS = will would shall should can could may might must`.
-- `BE_FORM = am is are was were be been being`; `HAVE_FORM = have has had
-  having`; `DO_FORM = do does did doing done`.
-- `VERB_FORM_LABEL` — Penn verb tag → human form name.
-- `IRREGULAR_PLURAL` — θ→θ shapes (child→children … sheep→sheep, fish→fish…).
-- `inflect` — deterministic lexical/productive noun morphology used by
-  `C-NOUN-FORM`; accepts legitimate alternatives (`cacti`/`cactuses`,
-  `people`/`persons`) and rejects malformed plurals (`foots`, `childs`).
-- `IRREGULAR_VBN` — 70+ irregular past-participles (be→been, eat→eaten…).
-- `IRREGULAR_PAST` — irregular past-tense forms used to distinguish `VBD`
-  (`came`) from `VBN` (`come`).
-
-### 10.2 Morphological helpers
-
-- `_preserve_case(source, word)` — mirrors leading capitalization.
-- `_base_form(leaf)` — derives a best-effort base form from the observed
-  surface and POS tag; no lemma is included in the payload.
-- `_noun_form_issue(leaf)` — compares a parser-tagged plural with `inflect`'s
-  accepted singular/plural relation; returns the canonical singular and
-  expected plural for malformed forms, else `None`.
-- `_plural_noun(word)` — irregular table → `s/x/z/ch/sh`→`+es` →
-  consonant+y→`+ies` → `+s`.
-- `_singular_noun(leaf)` — derives a singular noun form from the observed
-  surface, including the maintained irregular-noun table.
-- `_third_present(base)` — 3sg present: `be→is have→has do→does go→goes`,
-  `s/x/z/ch/sh/o→+es`, consonant+y→`+ies`, else `+s`.
-- `_nonthird_present(base)` — `be→are`, else base.
-- `_vbn_form(base)` — irregular → VBN; `+e→+d`, else `+ed`.
-- `_vbg_form(base)` — `be→being`, `lie/die/tie→ying`, `+e→-e+ing`, else `+ing`.
-- `_replace_subject_head(subj, head, newword)` — rewrites the subject surface,
-  swapping the trailing head for the replacement (capitalization preserved).
-
-### 10.3 Feature functions
-
-- `num_of(leaf)` — pl/sg from tag; PRP via `PRP_KEY`; else None.
-- `person_of(leaf)` — NN*→'3'; PRP via key; else None.
-- `subject_key(leaf)` — `(person, num)` or None.
-- `verb_key(leaf)` — `MD/VBD → None` (person-neutral); `VBZ → ('3','sg')`;
-  `VBP → ('*','non3sg')`; be/have/do special-cased by surface
-  (`is/was→('3','sg')`, `am→('1','sg')`, `has/does→('3','sg')`, else
-  `('*','non3sg')`).
-- `agree(subject_leaf, verb_leaf)` — True if the verb is neutral, the subject
-  is unmarked, or when the strict equality (with `('*','non3sg')` and
-  `('2',None)` special cases) holds.
-- `_is_valid_verb_form(leaf)` — rejects regularized irregular forms such as
-  `becomed` and past-tense forms such as `came` when benepar places them in a
-  `VBN` context.
-- `phrase_head(node)` — deterministic head pick by phrase label:
-  NP/NML/NX → **last** noun; VP → **first** verb; PP → **first** prep;
-  ADJP → **last** adjective; ADVP → **first** adverb; S-clauses → **first**
-  verb; else None.
-- `clause_subject_and_verb(s_node)` — first NP child (subject), first VP child.
-- `is_coordinated(node)` — True if the node has a `CC`/`CONJP`/`UCP` child;
-  **a coordinated subject is always plural** (the "Jaisen and Kielle" fix).
-- `_agreement_ok(skey, vkey)` — same logic as `agree` but on precomputed keys.
-
-### 10.4 The edge evaluator (`MatrixEvaluator`)
-
-`evaluate(root)`:
-1. `_walk` fills `self.details[child_id] = _edge(parent, child)` for every non-root node,
-2. `_root_level(root)`,
-3. for each detail: build `checks`; if status error, attach `remediation` via `_remediate` (may be None),
-4. returns `{details, summary}`.
-
-`_edge(parent, child)`:
-- punctuation child → valid `C-PUNCT` immediately (no matrix row),
-- else `_classify(parent, child)` → `(status, constraint, text)` → `_detail(...)`
-  with role from `_role_for(constraint)`.
-
-#### `_classify` — the rule table (parent type → child type → verdict)
-
-**`S`** (the heart):
-- `NP` → `_s_subject`: valid `C-SUBJECT-ROLE` (agreement checked on predicate edge).
-- `ADJP` → valid `C-SMALL-CLAUSE-PREDICATE` (small-clause predicate complement).
-- `VP` → `_s_predicate`:
-  - no verb head → error `C-TENSE-FINITE` ("no finite predicate verb"),
-  - head is `NONFINITE` (VB/VBG/VBN): if the VP begins with the infinitival
-    marker `TO` → valid `C-INFINITIVAL-COMPLEMENT` (`want to go`); else error
-    `C-TENSE-FINITE`,
-  - **pronoun case (subject)**: subject head is a `PRP` in `PRON_OBJ_PLAIN`
-    (`me/us/him/her/them`) → error `C-PRONOUN-CASE` (use nominative),
-  - else compute `subj_head`, `coordinated = is_coordinated(subj)`,
-    `skey = ('3','pl') if coordinated else subject_key(subj_head)`,
-    `vkey = verb_key(vp_head)`; if `_agreement_ok` → valid `C-PREDICATE`
-    naming subject label + verb form; else **error `C-SUBJECT-AGREEMENT`**.
-- `ADVP`/`PP` → valid `C-CLAUSAL-ADVERBIAL`; `SBAR` → valid `C-CLAUSAL-COMPLEMENT`.
-
-**`NP`** → `_np_rule(parent, child, grandparent)`:
-- determinative child (`DT`, `PRP$`, or a bare `PRP` surfacing as one of
-  `my/your/our/their/its`): if **two determinatives** → error `C-DET-STACK`;
-  DT → `_det_num`; else possessive → valid `C-DETERMINER`. If the NP has
-  **no nominal head** after a determiner → error **`C-HEAD-NOUN`** (head
-  licensing: `I hate your.`), unless the determiner is a standalone
-  demonstrative/quantifier (`this/that/these/those/each/some/one/all/...`)
-  which may head an NP.
-- noun head: valid `C-HEAD-NOUN` (with number); **and** if the head is a bare
-  singular common `NN` in an argument position (grandparent `S`/`VP`), with no
-  determinative and not exempt (mass/gerund/institutional nouns) → error
-  **`C-ARTICLE`** (`Dog is barking.`); other noun → `C-NOUN-ADJUNCT`.
-- `JJ/JJR/JJS/ADJP` or `CD/PDT/QP` → `_modifier_pos` (head must precede it);
-  quantifier adjectives `less/fewer/much/many/little/few` → `_quantifier_check`
-  (error `C-QUANTIFIER` on number mismatch, `less cookies`→`fewer`).
-- `PP` → `C-NP-POSTMODIFIER`; `VP` → `C-NP-REDUCED-RELATIVE`;
-  `SBAR`/`S` → `C-NP-RELATIVE`; `CC` → `C-COORDINATOR`;
-  `NP/NML/NX` → `C-NP-COMPOUND`; else `_unlisted`.
-
-`phrase_head` → `_np_head` for NPs: noun candidates **exclude** possessive
-determiner surfaces (`my/your/our/their/its`); with a determinative present and
-no noun, a trailing adjective may serve as a nominalized head (`my favorite`).
-
-`_det_num` — `numreq = DET_NUMREQ[lower(det)]`, `num = num_of(head)`; mismatch
-→ error `C-DETERMINER-AGREEMENT`; match → valid `C-DETERMINER` (number stated);
-no info → `C-DETERMINER` (number-neutral). For `a/an_` additionally runs the
-phonetic article check (silent-h `an hour`; vowel-letter-with-consonant-sound
-`a university`) → error `C-ARTICLE-MISMATCH`.
-
-`_modifier_pos` — if modifier span starts after head span start → error
-`C-MOD-POS` (modifier after head); else valid (precedes head).
-
-**`VP`** → `_vp_rule`:
-- verb-class child → `_aux_class` ? classify aux → see `_aux_check` : head:
-  `_verb_head` (finite/non-finite role text, `C-HEAD-VERB`).
-- noun child → error **`C-HEAD-VERB`** (VP headed by a noun, e.g.
-  `I am agree.`); `VP` → `C-AUX-COMPLEMENT`; `NP` → `C-DIRECT-OBJECT`, but a
-  nominative pronoun head (`I/we/he/she/they`) after an action verb → error
-  **`C-PRONOUN-CASE`** (`call she` → `call her`); `PP` → `C-ADJUNCT`;
-  `ADJP` → `C-PREDICATE-ADJECTIVE`, but after a non-linking verb with no
-  preceding object NP → error **`C-ADJ-ADV`** (`sings beautiful`);
-  `ADVP` → `C-ADVERBIAL`, but flat-adjective-head adverbs
-  (`quick/slow/good/real/...`) → error **`C-ADJ-ADV`** (`runs quick`);
-  `SBAR` → `C-CLAUSAL-COMPLEMENT`; `S` → `C-SMALL-CLAUSE`;
-  `TO` → `C-INFINITIVAL-MARKER`; `RP` → `C-PARTICLE`; else unlisted.
-
-`_aux_class(child)` — type MD/AUX or surface ∈ MODALS/BE/HAVE/DO.
-
-`_aux_check` — class modal/be/have/do; find `_following_verb` (first verb leaf in
-the sibling VP) and require forms:
-- modal & do → `{VB}` (base), have → `{VBN}` (past participle),
-  be → `{VBG, VBN}` (participle).
-- match → valid `C-AUXILIARY`; mismatch → **error `C-AUX-FORM`**.
-- missing following verb → falls back to `_verb_head` (valid).
-
-**`PP`**: prep child → `C-HEAD-PREPOSITION`; `NP` → `C-PREP-OBJECT`, but a
-nominative pronoun object → error **`C-PRONOUN-CASE`** (`to she` → `to her`).
-
-**`ADJP`**: `ADJ_CLASS` → `C-HEAD-ADJECTIVE`;
-`RBR`/`RBS` (`more`/`most`): a `JJR`/`JJS` sibling → error **`C-COMPARATIVE-DOUBLE`**
-(`more smarter`), else `C-INTENSIFIER`; RB → `C-INTENSIFIER`; VBN/VBG →
-`C-PARTICIPLE-MODIFIER`.
-
-**`ADVP`**: `ADJ_CLASS` → error **`C-ADJ-ADV`**; `NP` → `C-ADVERBIAL-COMPLEMENT`
-(`an hour ago`); RB/RBR/RBS/ADVP → `C-HEAD-ADVERBIAL`; `CC` → `C-COORDINATOR`.
-
-**`SBAR`**: `S` → `C-RELATIVE-CLAUSE`; `IN` → `C-COMPLEMENTIZER`;
-`WHNP/WHPP/WHADVP/WADVP/WPP` → `C-RELATIVE-HEAD`.
-
-**`WHNP`**: `WP/WDT/WP$` → `C-RELATIVE-PRONOUN`; `NOUN_CLASS` → `C-RELATIVE-NOUN`.
-
-**`WHPP/WHADVP/WADVP/WPP`**: → `C-RELATIVE-HEAD`.
-
-**Sentence classes (SINV/SQ/SBARQ/FRAG/ROOT)**: `NP` → `C-CLAUSE-SUBJECT`;
-`VP` → `C-CLAUSE-PREDICATE`.
-
-**Any unmatched pair** → `_unlisted` → `('unlisted','C-UNLISTED', …)` — the
-audit's sentinel; must stay at 0 for the corpus.
-
-### 10.5 Root-level check
-
-`_root_level(root)` — root type ∈ `SENTENCE_CLASSES`: first token begins with a
-**lowercase** letter → error **`C-CAPITALIZATION`** (needs a capital); else
-valid `C-ROOT`. Root not in `SENTENCE_CLASSES` → **error `C-TENSE-FINITE`** with
-role `'fragment root'` (fragment input, e.g. "The boy running.").
-
-### 10.6 Node detail schema + checks
-
-`_detail(...)` emits:
-```
-{ id, type, pos, surface, span, parent, rule, children_ids,
-  children: [{id,type,surface}], role, constraint, status, text }
-```
-`_rule_for` → `"NP → DT + JJ + NN"` or `"NN → 'boy'"`.
-`_checks_for` — deduped checklist: the node's named check (`CHECK_LABELS`),
-a "Rule membership (C-*)" row (or "Matrix coverage (unrated · valid-by-default)"),
-plus named checks of each child (grouped by shared label).
-
-### 10.7 Case-B remediation dispatcher (`_remediate`)
-
-Constraint → method:
-
-| constraint | method | produces |
-|---|---|---|
-| `C-SUBJECT-AGREEMENT` | `_rem_agreement` | violation; `suggested_fix` re-conjugates verb to the correct form; `alternative_fix` via `_subject_fix_alternative`; outcome `Subject NP + VBZ/VBP` |
-| `C-DETERMINER-AGREEMENT` | `_rem_det` | change noun (pl/sg) or swap determiner; outcome `DT + NNS` / `DT + NN` |
-| `C-AUX-FORM` | `_rem_aux` | modal/do→base (`VB`), have→VBN, be→VBG/VBN; alternative for modal ("drop modal, use finite verb") and do (rephrase) |
-| `C-DET-STACK` | `_rem_det_stack` | remove extra determiners, keep first |
-| `C-MOD-POS` | `_rem_mod_pos` | move modifier before head |
-| `C-HEAD-NOUN` | `_rem_head_noun` | add a noun after the bare determiner (`your` → `your idea`) |
-| `C-PRONOUN-CASE` | `_rem_pronoun_case` | swap nominative↔objective from `SENTENCE_CLASSES`/`VP`/`PP` parent position |
-| `C-ADJ-ADV` | `_rem_adj_adv` | `-ly` adverb form via `_adverbial_form` (`quick`→`quickly`, `good`→`well`) |
-| `C-ARTICLE` | `_rem_article` | insert `_indefinite_article(head)` before the noun |
-| `C-ARTICLE-MISMATCH` | `_rem_article_mismatch` | swap `a`↔`an` to the phonetic match |
-| `C-CAPITALIZATION` | `_rem_capitalization` | capitalize the first letter |
-| `C-QUANTIFIER` | `_rem_quantifier` | `less`↔`fewer`, `much`↔`many`, `little`↔`few` |
-| `C-HEAD-VERB` | `_rem_vp_head_noun` | give the VP a real verb head (auxiliary + participle) |
-| `C-COMPARATIVE-DOUBLE` | `_rem_double_comparative` | keep the morphological `JJR`/`JJS` only |
-| `C-TENSE-FINITE` (root fragment) | `_rem_fragment` | restructure as `S → NP + VP`, e.g. "'… runs.'" |
-| `C-TENSE-FINITE` (non-finite predicate) | `_rem_finite_verb` | add `is` before VBG or finite VBZ; outcomes per VBG/VBN/VB |
-| any other | `_rem_generic` | generic: "satisfy the {check}" |
-
-Every remediation is `{violation, suggested_fix, alternative_fix,
-targeted_outcome}` (alternative/outcome may be None).
-
-`_subject_fix_alternative` details:
-- coordinated subject → "drop the conjunction and use just '{head}'"; uses
-  `she/he` as a neutral singular placeholder for non-3rd-person heads (avoids
-  mispaired pronouns like "I is").
-- non-coordinated: match the verb's (3,sg) vs plural side, incl. pronoun swaps
-  (`they→he or she`, `we→I`, `he→he or she`).
-
-### 10.8 Summary
-
-`_summarize(root)`:
-- edges = all details except root; `valid/violated/unrated` counts;
-- `violations` = error edges (+ root detail if root error);
-- `valid` = no violations;
-- `explanation` priority: root-error text → first error text → "All N validated
-  edge(s) are licensed … grammatical.";
-- `constraints_fired` = sorted unique constraint ids across violations;
-- `root_error` bool.
-
----
-
-## 11. REST payload contract (`build_payload` output)
-
-```jsonc
+| `ungrammatical` | any | `ungrammatical`; detector note attached, `flagged = true` |
+| `grammatical` | acceptable | `grammatical` |
+| `grammatical` / `unverified` | unacceptable | `unverified`; note explains that the rules cannot account for the rejection |
+| `unverified` | acceptable | `unverified` (the matrix could not positively verify it) |
+| any | detector unavailable | matrix verdict unchanged |
+
+The `unverified` branch is deliberate: the system refuses to label a sentence
+ungrammatical without a rule-level reason. The detector's view is surfaced in
+`summary.detector` and `summary.detector_note`, and in the payload's
+`explainers.basic`.
+
+### Stage 8 — Correction search
+
+When and only when the verdict is `unverified`, the detector rejected the
+sentence, and the detector is available, `api.py` attempts a text-space
+repair with `server/corrector.py`:
+
+1. **Span selection.** The sentence's alphabetic token spans come from the
+   parse tokens (offsets relative to the target sentence). When no spans are
+   supplied, the corrector's own scanner skips contractions and punctuation.
+2. **MLM sweep.** For each candidate word (up to `SYNTUTOR_MLM_MAX_TOKENS`,
+   default 40):
+   - mask it with `[MASK]`;
+   - ask `distilbert-base-uncased` (`SYNTUTOR_MLM_MODEL`) for the top
+     `SYNTUTOR_MLM_TOP_K` (default 5) replacements;
+   - recast the replacement to the original casing;
+   - keep only candidates that share a lemma with the original
+     (`corrector._shared_lemma` via lemminflect), so a flat meaning swap such
+     as `He → I` cannot be promoted as a grammatical repair;
+   - batch-classify the candidate sentences with `classify_many`;
+   - the first candidate that flips to `acceptable` becomes the located
+     repair: `{position, bad, good, cola_p, corrected_text, …}`.
+3. **Promotion guard** (`api.py::_apply_correction`):
+   - the original must be clearly rejected (`acceptable_prob < 0.45`);
+   - the flipped candidate must be clearly accepted (`cola_p >= 0.6`);
+   - the corrected sentence is re-analyzed from scratch;
+   - the clean matrix must be `valid`, with no root error and no error
+     details. This is the "clean AST projection": the good word's POS tag
+     comes from a tree the matrix itself licensed;
+   - both trees must have the same leaf count;
+   - `corrector.morph_diff` must prove the two words are forms of one lemma
+     and yield the used form label and required form label
+     (`EXTENDED_TAG_LABEL`).
+4. **Finding synthesis.** The repair becomes a normal-looking finding:
+   - rule `11.4`, constraint `C-MLM-ANOMALY`, role "word form";
+   - text: `The word '<bad>'[ inside the <parent type> '<parent>'] is used
+     where the structure requires the <required> form. <dynamic template>`;
+   - remediation: replace bad with good;
+   - the summary is promoted to `ungrammatical`, `violated_edges` increments,
+     and `C-MLM-ANOMALY` joins `constraints_fired`;
+   - `explainers.perturbation` carries the full note (masked word,
+     replacement, acceptability probability, projected tag).
+
+If any guard fails, the sentence stays `unverified`. The corrector is
+optional, just like the detector: no network, no weights, or no flip simply
+means no promotion.
+
+### Stage 9 — Payload assembly
+
+`api.py::build_payload` returns one JSON object with six top-level keys.
+
+```json
 {
   "meta": {
-    "deterministic": true, "k": 1,
-    "parser": "benepar_en3", "spacy": "en_core_web_md",
-    "backend": "spaCy + benepar (neural constituency) + rule matrix (XAI)",
-    "sentence_count": <int>, "target_sentence": <1-based index analyzed>
+    "deterministic": false,
+    "k": 1,
+    "parser": "benepar_en3",
+    "spacy": "en_core_web_md",
+    "backend": "spaCy + benepar (neural constituency) + rule matrix (XAI) + CoLA acceptability model (hybrid)",
+    "sentence_count": 1,
+    "target_sentence": 1
   },
   "parse": {
-    "text": "<target sentence>", "sentence_count": <int>,
-    "sentences": [ { "ordinal", "start", "end", "text" } ],  // char offsets into input
-    "tokens": [ { "i", "t", "pos", "tag", "dep", "head" } ],
-    "parse_string": "(S (NP ...) (VP ...) (. .))"
+    "text": "The clever boy reads a book.",
+    "sentence_count": 1,
+    "sentences": [{"ordinal": 1, "start": 0, "end": 29, "text": "…"}],
+    "tokens": [{"i": 0, "t": "The", "start": 0, "end": 3, "pos": "DET", "tag": "DT", "dep": "det", "head": "boy"}],
+    "parse_string": "(S (NP (DT The) (JJ clever) (NN boy)) (VP (VBZ reads) (NP (DT a) (NN book))) (. .))"
   },
-  "tree":   <nested {id,type,span,surface,children?}>,
-  "nodes":  { "n0": <node>, ... },
-  "node_details": { "n0": { id,type,pos,surface,span,parent,rule,children_ids,
-                            children[], role, constraint, status, text, checks[],
-                            remediation? } },
-  "summary": { valid, valid_edges, violated_edges, violations[],
-               unrated_edges, constraints_fired[], root_error, explanation },
+  "tree": { "id": "n0", "type": "S", "span": [0, 6], "surface": "…", "children": [] },
+  "nodes": { "n0": {} },
+  "node_details": { "n1": {} },
+  "summary": {},
   "explainers": {
-    "basic": "<multi-line text>", "contrastive": "<text>",
-    "surprisal": null, "perturbation": null, "llm_note": null
+    "basic": "…",
+    "contrastive": "…",
+    "surprisal": null,
+    "perturbation": null,
+    "llm_note": null,
+    "pipeline": {"stages": [], "verdict": "…", "constraints_fired": []},
+    "concepts": [{"rule": "2.1", "concept": "…", "note": "…"}]
   }
 }
 ```
 
-`explainers.basic` (line-by-line): Input · benepar parse string · token stream ·
-matrix counts (`N validated · M violated · K unrated`) · `Verdict: VALID/INVALID`
-· explanation · determinism note.
-`status` ∈ `valid|error|unlisted`; `constraint` is a `C-*` id.
+`meta.deterministic` is true only when the detector did not run; the corrector
+only runs when the detector is present, so this flag is a conservative proxy
+for "rules-only response".
+
+`explainers.pipeline` is the four-stage narration shared with the Lessons
+copy and the Syntax Builder:
+
+1. Tokenizer — token count and token list.
+2. Part-of-speech tagger — `word/POS` pairs.
+3. Constituency parser — the benepar parse string.
+4. Rule matrix — validated / violated / unrated edge counts.
+
+`explainers.concepts` maps every fired rule id to the concept text from
+`web/content/tree_sheet.json` via `master.concept`.
+
+`explainers.contrastive` describes the first repairable violation (or states
+that no repair is needed / no violation exists). `explainers.basic` is a
+plain-text report: input, parse string, token stream, edge counts, verdict,
+hybrid detector line, correction line.
+
+### Stage 10 — Browser rendering
+
+When the payload arrives, `main.js`:
+
+1. `applyStatuses(payload.tree, payload.node_details, payload.summary)` copies
+   each node's detail status onto `node.edgeResult`. If the verdict is
+   `ungrammatical` but no detail is an error (a finding attached to the root),
+   the root is marked red.
+2. Builds the session object (payload, sentences, sentence index) and stores
+   the analyzed text.
+3. Computes highlight spans from token offsets, merging sentence navigation
+   spans when the user inspects another sentence.
+4. Re-locks the input and applies the active sentence selection.
+5. Calls `renderer.setTree(payload.tree)`.
+6. Transitions to `VIEWING`.
+7. If signed in, not a replay/navigation run, and the sentence has not already
+   been recorded, inserts the analysis into Supabase `analysis_history`.
+
+#### Tree layout and interaction
+
+`web/js/renderer.js` implements a tidy tree layout:
+
+- Leaves are measured and assigned equal-width slots; internal nodes are
+  centered over the span of their leaf slots.
+- Each depth is a row (`BOX_H + V_GAP` apart).
+- The whole tree is fit into the canvas (scale clamped to 0.2–1.7).
+- Mouse drag pans; wheel zooms around the cursor; hit-testing picks the
+  deepest box under the pointer; arrow keys move through depth-first order;
+  Enter/Space selects.
+- Node colors come from `edgeResult.status`: ok / error / unlisted.
+- Selection is local: `handleNodeSelect` reads
+  `session.payload.node_details[id]` and renders it immediately. There is no
+  second HTTP request for a node explanation.
+
+#### Node inspector
+
+`web/js/ui.js::renderNodeDetail` renders the right-hand explain pane:
+
+- a status dot (ok / error / unlisted) and the phrase or tag name;
+- the node surface;
+- a role chip (`detail.role`);
+- if the node is an error and has a remediation object: a
+  "What's wrong / How to fix it / Alternative fix" card;
+- otherwise: the explanation text.
+
+This is the point where the symbolic matrix becomes learner-facing: every
+phrase and word has a cached, deterministic explanation or repair card.
+
+#### Workspace modes
+
+`main.js` keeps three workspace owners (`workspaceView`): `tutor`, `lessons`,
+`builder`, plus overlays (History, sub-panels, lessons overlay). Every mode
+switch starts with `teardownWorkspace()`, which closes the quiz view, clears
+the active lesson, closes the builder, clears diagnostics, restores the plain
+textarea, and hides builder-only controls. The rail paints exactly one active
+destination and hands the highlight to an overlay while it is open.
+
+The frontend state machine is `IDLE → PROCESSING → VIEWING ⇄ EXPLORING`
+(`END` is defined but not currently reached), with `PROCESSING` guarding
+against double submits. The status strip logs
+the same stages the payload describes (input, POST, spaCy, benepar, matrix,
+explanations, render, history).
+
+### Stage 11 — History and persistence
+
+History is account-only:
+
+- Guests never write; their history list is empty.
+- Signed-in analyses insert `{user_id, sentence, is_valid,
+  constraints_fired}` into `analysis_history`.
+- The drawer loads the 50 most recent rows, filters by all/valid/error in
+  memory, supports deleting a row, and replays an entry by tearing down the
+  workspace, restoring the tutor, filling the textarea, and re-running the
+  pipeline with `isReplay: true` (which skips a duplicate history insert).
+- The identity listener clears caches on account switch.
 
 ---
 
-## 12. Coverage audit — `scripts/audit_rules.py`
+## 3. The rule matrix in detail
 
-- `GOLD`: **99 sentences** (51 expected-valid / 48 expected-invalid) tagged with
-  a `why` note — including the regression cases that previously slipped through:
-  coordinated-subject agreement ("Jaisen and Kielle is…"), determiner stacking
-  ("The my book…", "His the car…"), NP head-licensing ("I hate your.",
-  "Their is a problem."), pronoun case ("Me likes music.", "to she"),
-  adjective–adverb confusion ("runs quick.", "sings beautiful"), missing/mismatched
-  articles ("Dog is barking.", "a elephant", "an hour" happy path), capitalization
-  ("he runs fast."), quantifier agreement ("less cookies", "many apple"),
-  double comparatives ("more smarter"), and the clause-level structures added
-  during this session ("In the park, they run fast.", "That he left is true.",
-  relative clauses, to-infinitive complements, small clauses).
-- `edge_iter(details)` — yields `(parent_type, child_type, constraint, status)`
-  for every non-root detail (parent type recovered from the details map).
-- `run_corpus()` — drives the **real** `parse_engine.analyze` + `matrix.evaluate`
-  (imports via `sys.path` root insert); collects per-sentence verdict match,
-  edge-type counter, status counter, and the set of `unlisted` edge types.
-- `report()` — prints the verdict summary, regressions (with `fired`),
-  edge totals, the edge-coverage matrix (`[NP] -> DT x38`, …), unlisted-edge
-  list, and a `SUMMARY: gold regressions=N  unrated_edge_types=N  edges=N` line.
-- `main()` returns **exit 1 if any regression or any unrated edge type**, else 0.
-  Run via `python3 scripts/audit_rules.py` or `npm run audit`.
-  Current green state: 99 sentences, 888 edges, 0 distinct+unrated, 0
-  regressions, 0 unrated.
+### 3.1 Rulebook
+
+`server/ruleset.py::RULEBOOK` contains 111 numbered rules in 11 sections:
+word forms, agreement, articles/determiners, nouns, pronouns, verbs,
+adjectives/adverbs, prepositions, sentence structure, punctuation, and
+meaning/usage. Each entry is:
+
+```python
+'2.1': ('Subject-verb, simple', 'The boy go', METHOD_T)
+```
+
+`METHOD_T` / `METHOD_L` / `METHOD_C` describe the evidence type in the XAI
+table: tree structure, word list/morphology, or context. `method_of(rule_id)`
+resolves the method when a finding does not carry one.
+
+Rule ids are the stable key across the system: findings, the content sheet,
+the tree quiz, and the explanation sheet all index by the same `"2.1"`
+string.
+
+### 3.2 Constraint ids
+
+Every node detail carries a `C-*` constraint id. `CONSTRAINT_RULE` maps each
+constraint to `(rule_id, method)`, which is how an internal matrix check gets
+a human rulebook number. Examples:
+
+| Constraint | Rule |
+|---|---|
+| `C-SUBJECT-AGREEMENT` | 2.1 |
+| `C-DETERMINER-AGREEMENT` | 2.10 |
+| `C-DET-STACK` | 3.5 |
+| `C-AUX-FORM` | 6.1 |
+| `C-TENSE-FINITE` | 6.2 |
+| `C-MOD-POS` | 7.7 |
+| `C-CAPITALIZATION` | 10.1 |
+| `C-RELATIVE-AGREE` | 2.7 |
+| `C-LEXICON-MALFORMED` | 1.1 noun, 1.4–1.6 verb by form, 1.7 adjective, 1.8 other |
+| `C-MLM-ANOMALY` | 11.4 |
+
+The matrix dispatch map currently holds 133 unique constraint ids; the
+generated tree sheet counts 169 distinct constraints once licensing and
+ruleset-only constraints are included. Not every rulebook entry has a
+dedicated tree branch; unimplemented semantic rules simply do not fire, and
+unrecognized edges are marked `C-UNLISTED` rather than silently passing as
+valid.
+
+### 3.3 Findings
+
+A finding (from `ruleset._finding`, reused by licensing) has:
+
+```json
+{
+  "rule_id": "2.1",
+  "method": "T",
+  "status": "error",
+  "constraint": "C-SUBJECT-AGREEMENT",
+  "role": "subject-verb agreement link",
+  "node_id": "n14",
+  "text": "…",
+  "evidence": {"used": "tree", "subtree": "n14", "rule": "…", "conflict": [{"node": "n14"}]},
+  "remediation": {
+    "violation": "…",
+    "suggested_fix": "…",
+    "alternative_fix": null,
+    "targeted_outcome": "…"
+  }
+}
+```
+
+Evidence has three shapes:
+
+- tree: `{used: 'tree', subtree, rule, conflict}`;
+- word list: `{used: 'wordlist', lookup, accepted, source}`;
+- context: `{used: 'context', condition, options, confidence}`.
+
+This is the explicit XAI contract: every explanation can cite either the
+subtree, the lexicon lookup, or the contextual condition that produced it.
+
+### 3.4 Remediation
+
+Two paths produce the "How to fix it" card:
+
+- **Explicit** — the checker supplies a `remediation` dict with a violation,
+  suggested fix, optional alternative fix, and targeted outcome.
+- **Derived** — `_rem_from_text` splits the explanation text at the last
+  directive clause (`Change …`, `Use …`, `Replace …`, `Add …`, etc.),
+  ignoring non-directive semicolons inside quoted replacements. If no
+  directive exists, it falls back to a final-sentence split, a parenthetical
+  `(use …)`, or a generic "change the flagged word" suggestion.
+
+Constraint-specific `_rem_*` methods handle agreement, determiners,
+auxiliaries, determiners stacking, modifier position, pronoun case,
+article choice, capitalization, quantifiers, comparatives, finite verbs, and
+fragments before the generic fallback.
+
+### 3.5 Explanation style
+
+Explanations are generated in source with the sentence/context scaffold, then
+centralized cleanup runs:
+
+- `_pretty` tidies parse surfaces for quoting (spaces before punctuation,
+  clitics, `n't`);
+- `_strip_preface` removes the leading `In the sentence '<sentence>', `;
+- `P`/`_p` and labels render node surfaces and phrase names;
+- `_sc()` exposes the current sentence to the generator.
+
+The result is a unique, structure-specific sentence such as:
+
+> The VBD 'goed' inside the VP 'goed home' is flagged: 'goed' is not the
+> correct past-tense form; use 'went' instead.
+
+rather than a repeated template beginning with the same boilerplate. This
+was an explicit product requirement: only the unique explanation text should
+be shown; the sentence is still referenced through the quoted material.
 
 ---
 
-## 13. Runtime configuration & verification
+## 4. Lessons, quiz, and Syntax Builder
 
-**Local (full-stack):** `python3 server/app.py` (or `npm run serve`); port 8000
-(override `SYNTUTOR_PORT`), host 127.0.0.1 (override `SYNTUTOR_HOST`).
-- Health: `curl -s http://127.0.0.1:8000/api/health`.
-- Parse: `curl -s -X POST http://127.0.0.1:8000/api/parse -H 'Content-Type:
-  application/json' -d '{"text":"The boys runs."}'`.
+### 4.1 Lessons as a textbook
 
-**Production (HF Space):** `server/hf_space.py` launches Gradio on port 7860 (the
-platform's `PORT`/`GRADIO_SERVER_PORT`) and mounts `/api/health` + `/api/parse`
-on it; the frontend on Vercel calls the API cross-origin via `API_BASE` in
-`web/js/config.js` (currently `https://ybcole-syntutor.hf.space`). CORS headers
-are emitted by the API handlers; `GRADIO_SSR_MODE=false` is set so the mounted
-routes are served reliably. `@spaces.GPU` on `_zerogpu_noop` satisfies ZeroGPU's
-startup scan but is never invoked (CPU-only backend, so no GPU quota is consumed).
+`web/js/tree-quiz.js` defines `LESSONS`, 20 phrase/clause constructions in
+pedagogical order, grouped into Phrases, Clauses, Wh-phrases, and Special
+phrases. Each lesson has:
 
-- Local static assets are read from disk **per request** (served with
-  `no-store`), so JS/CSS/index edits show up on a hard refresh; **Python
-  changes require a server restart**.
-- Model pin: `transformers==4.46.3` (benepar's retokenizer relies on
-  `T5Tokenizer.build_inputs_with_special_tokens`, which newer transformers
-  removed). On the Space, `torch.cuda.is_available()` is forced to `False`
-  while models load so benepar stays on CPU under ZeroGPU's CUDA emulation.
-- Determinism premise: benepar + spaCy with identical serialized input produce
-  the same tree/tags; the matrix has zero randomness; multi-sentence input is
-  pinned to **sentence 1** (`sents[0]`).
+- `type` — the official parser label (`NP`, `VP`, `PP`, `S`, `SBAR`, …);
+- `title`, `group`;
+- `rule` — a one-line construction summary used as the canvas hint;
+- `detail` — the in-depth explanation of role, head, modifiers, recognition;
+- `steps` — a numbered guide for building the example tree;
+- `examples` — sentences used for practice.
+
+A lesson page sequence is Concept → Steps & Practice → end-of-lesson quiz.
+The lesson-picker overlay shows per-lesson progress derived from completed
+examples.
+
+### 4.2 Gold trees come from the server
+
+Every practice or quiz sentence is parsed live:
+
+```js
+const res = await fetch('/api/parse', { method: 'POST', body: JSON.stringify({ text: sentence }) });
+```
+
+`apiTree(payload.tree)` reduces the server node graph to
+`{type, children}` / `{type, leaf, surface}`. `leavesWithTags` flattens it to
+the word/tag row the builder seeds. Results are cached per sentence in
+`state.cache`, so a repeated example does not re-query the model. This is the
+"gold tree can never drift" rule: the exercise is graded against SynTutor's
+own parse, not a hand-maintained copy.
+
+### 4.3 The Syntax Builder model
+
+`web/js/syntax-builder.js` is DOM-free and independently testable:
+
+- `createModel()` → `{nodes: {}, counter: 0}`.
+- `addWord`, `addPhrase`, `moveNode`, `setType`, `removeNode`.
+- Phrase palette: 24 phrase labels (S, NP, VP, PP, ADJP, ADVP, SBAR, SBARQ,
+  SINV, SQ, FRAG, NML, WHNP, WHADVP, WHADJP, WHPP, QP, NX, CONJP, UCP, LST, X,
+  INTJ, PRT).
+- POS palette: 48 lexical tags.
+- `connect(parent, child)` attaches a child to a parent after
+  `canConnect` rejects self-links and cycles. The builder is intentionally
+  permissive: any node can be a parent or child, even if the combination is
+  not a valid constituency, so the learner can always build and then be
+  corrected.
+- A phrase exposes a bottom-center connector dot; a connected node exposes a
+  top-center endpoint used to re-route or delete the edge.
+- `toTree(model)` converts the graph to a nested tree; `leavesOf`,
+  `phraseSpans`, and `compareTrees` support grading.
+
+### 4.4 Grading: structural, not textual
+
+`compareTrees(userTree, goldTree)` compares phrase spans, not strings:
+
+- every phrase node is reduced to `${type}[${start}-${end}]`, where
+  `start`/`end` are leaf indices;
+- a span present in the user tree but not the gold tree is `extra`;
+- a gold span absent from the user tree is `missing`;
+- `correct` iff both lists are empty.
+
+This means moving a box without changing its span still counts as correct
+(the layout is presentation), while attaching the right label at the wrong
+span is wrong. Leaf text is compared separately so a wrong sentence can be
+reported independently.
+
+The builder supports four challenge kinds:
+
+| Kind | Task |
+|---|---|
+| `tokens` | Type the sentence; match SynTutor's tokenization |
+| `tags` | Give each word the POS tag SynTutor assigns |
+| `phrases` | Words/tags given; add and connect phrase boxes |
+| `full` | Type the words and build the complete tree |
+
+The Lessons and quiz currently use `full`.
+
+### 4.5 Builder validation and XAI
+
+"Build tree" (`checkTree` / `validateBuiltTree` in
+`syntax-builder-ui.js`) does three layers:
+
+1. **Structure (client-side).** More than one root, unreachable orphans,
+   empty phrase boxes, and unrecognized words become node errors.
+2. **Lexical (server).** Word boxes are sent to `POST /api/words`, which uses
+   `spellcheck.known_word`, spaCy tagging, and `best_correction` to decide
+   whether a word is valid and to suggest a spelling fix.
+3. **Grammar (server).** The assembled sentence is sent to `/api/parse`;
+   an `ungrammatical` verdict becomes a sentence-level diagnostic in the
+   explain pane, while a clean verdict clears it.
+
+Errors are shaped like tutor `node_details`, so selecting a red box in the
+builder shows the same kind of `renderNodeDetail` card as the tutor. When a
+node is clean, the builder reads its POS/phrase description from
+`web/content/tree_sheet.json` (fetched once and cached in `INFO`), so the
+builder and the tutor describe the same tag with the same text.
+
+The builder can also snap the constructed tree into the same fitted layout as
+the read-only renderer, so the finished exercise looks like the generated
+tree.
+
+### 4.6 Gamification
+
+`web/js/level.js` defines the XP curve:
+
+- 5 XP per correct answer + 5 bonus for a flawless run.
+- Level spans grow geometrically: `50 * 1.6^level` (50, 80, 128, 205, …);
+  `levelFromXp` decomposes total XP into level, progress into the current
+  span, and the next threshold.
+
+`main.js` exposes a `progress` controller with `load`, `award`, `leaderboard`,
+`getQuizProgress`, and `trackCompletion`. The implemented path today is
+completion tracking:
+
+- finishing a lesson calls `trackCompletion({ruleId: lesson.type, perfect:
+  true})`, which upserts a row in Supabase `quiz_progress`
+  (`completed_count`, `perfect_count`, `last_completed_at`);
+- `computeUnlocked` derives the achievement set from those rows
+  deterministically (First Steps, Flawless Run, per-stage scholars, Tree
+  Grandmaster);
+- the `award` helper exists and writes `player_stats` XP/level, but the
+  current lesson/quiz path does not call it;
+- guests see the UI but nothing is persisted (`progressAvailable()` gates on
+  `!isGuest && clerk.user.id && supabase`).
+
+`web/js/achievements.js` builds the catalog from the four pipeline stages and
+extra milestones. Note that `computeUnlocked` maps `quiz_progress.rule_id`
+through `stageInfo`, which expects a numeric stage id (1–4), while lesson
+completions currently store the lesson's phrase type (`NP`, `VP`, …). The
+catalog and derivation are deterministic, but the stage-specific achievements
+will not unlock until that key mapping is aligned.
+
+The Leaderboard and Achievements panels are currently placeholders
+("Coming soon") in `tree-quiz.js`; the data helpers exist in `main.js` but the
+dedicated views are not implemented.
 
 ---
 
-## 14. Compliance with `THESIS.md` (the design spec)
+## 5. Content pipeline and generated sheets
 
-| Spec section | Status | Where |
+### 5.1 `web/content/master.json`
+
+The quiz corpus: 11 sections (one per rulebook section) and 111 rule
+questions. Each question has a `bad` sentence and its `good` correction.
+`scripts/master_sheet.py` runs the real model over every question and
+classifies the result as detected / miss / false positive / accepted. This is
+the detection-regression sheet used to review model behavior, not a unit test
+that must be perfectly green.
+
+### 5.2 `web/content/tree_sheet.json`
+
+`scripts/tree_sheet.py` generates the learning sheet directly from the live
+code:
+
+- Stage 1 Tokenizer;
+- Stage 2 POS tagger — 48 lexical tags;
+- Stage 3 Constituency parser — 24 phrase labels;
+- Stage 4 Rule matrix — 111 rules with concept text, examples, methods, and
+  constraint ids.
+
+Outputs:
+
+- `docs/tree_sheet.md` (human-readable);
+- `docs/tree_sheet.json` (full data);
+- `web/content/tree_sheet.json` (what the browser and `server/master.py`
+  read).
+
+The generator also merges `web/content/exhaustive_rules.json`:
+
+- for each rule id, the exhaustive explanation becomes the stage-4 `concept`;
+- the same map is stored under `sheet['exhaustive_explanations']`.
+
+This merge is essential: `npm run build` runs `tree_sheet.py` first, and
+without the merge a build would wipe the user-edited exhaustive concepts.
+The patch is guarded with `os.path.exists` and `except (OSError, ValueError)`
+so a missing or malformed file degrades to the built-in concepts instead of
+breaking the build.
+
+Current sheet metadata: 4 stages, 48 POS tags, 24 phrase nodes, 111 rules,
+169 constraints, 242 total items, plus 210 exhaustive explanations.
+
+### 5.3 `web/content/exhaustive_rules.json`
+
+A 210-entry rule id → `{name, explanation, template, category}` map. It is the
+surviving source of truth for the exhaustive explanations that were once in a
+deleted Markdown document. `tree_sheet.py` is the only writer that folds it
+into the published sheet; do not hand-edit the generated JSON.
+
+### 5.4 Explanation sheet
+
+`scripts/explanation_sheet.py` audits the *valid* side of the XAI output:
+
+- run the real model over the quiz sentences;
+- collect every `valid` node explanation;
+- normalize quoted material to `{X}` and group by constraint;
+- report template counts and flag explanations that quote no part of the
+  sentence.
+
+Final audit after the prefix cleanup: **2,893 sentences, 44 constraints,
+40,124 explanations, 377 unique templates, 0 without a quoted reference.**
+The earlier 608-template count reflected the repeated
+`In the sentence '…', ` scaffolding; removing it collapsed the templates to
+377 without losing the sentence reference, because the quoted word/phrase
+inside each explanation remains.
+
+### 5.5 Build and deploy
+
+`npm run build` = `python3 scripts/tree_sheet.py && node scripts/build.js`.
+`build.js` deletes `dist/`, copies `web/index.html`, `web/login.html`,
+`web/css`, `web/js`, `web/content` into `dist/`, and leaves server code out.
+Vercel serves `dist/`; the frontend calls the API origin configured in
+`js/config.js` (`API_BASE`). The local Flask server serves the same `web/`
+tree, so development and production share one frontend.
+
+Useful commands:
+
+```bash
+python3 server/webapp.py        # Flask backend + static frontend
+npm run serve                   # same
+npm run serve:legacy            # stdlib server
+npm run build                   # regenerate sheet + dist/
+npm run test:quiz               # quiz content audit
+npm run audit                   # rule regression audit
+npm run sheet                   # detection master sheet
+npm run tree:sheet              # regenerate tree sheet only
+npm run explanation-sheet       # regenerate explanation audit
+```
+
+---
+
+## 6. Authentication and data model
+
+Frontend auth lives in `web/js/auth.js`:
+
+- Clerk is loaded from its Frontend API domain derived from the publishable
+  key; `loadClerk()` is a singleton promise.
+- `createSupabaseClient()` creates the Supabase JS client with
+  `persistSession: false`, `autoRefreshToken: false`,
+  `detectSessionInUrl: false`, and an `accessToken` callback that returns
+  `clerk.session.getToken()`.
+- The same form logic is used by `login.html` (standalone, redirects to
+  `index.html`) and the in-app auth modal (reloads on success).
+- Keys live in `web/js/config.js`; the repository ships
+  `config.example.js` as the template and warns when config is absent.
+
+Tables used by the client:
+
+| Table | Purpose | Client operations |
 |---|---|---|
-| 7-stage IPO pipeline | ✅ Implemented | §2 table, `main.js` |
-| PCFG 5-tuple `G=(N,Σ,R,S,P)` | ⚠️ **Diverged** | replaced by trained neural parser (§15) |
-| CYK + Viterbi `π(i,j,A)`, CNF, backpointers, `O(n³·\|G\|)` | ❌ Not implemented | see §15 |
-| MAP tree `argmax P(T)`, S-rooted phrase structure | ✅ Output contract met | benepar `parse_string` |
-| XAI `E(v_d,v_p)` vs `𝒞`, `f_valid`/`f_error` | ✅ Implemented | §10.4 |
-| Deterministic non-generative feedback | ✅ Implemented | whole matrix |
-| FSM `IDLE→PROCESSING→VIEWING⇄EXPLORING→END` | ✅ Implemented (`END` defined, no transition wires it) | §6 |
-| Interaction Loop (memory, no re-parse) | ✅ Implemented | `session.payload`, `handleNodeSelect` |
-| Re-Entry Loop, **no auto-correction** | ✅ Implemented | suggestion-only remediation |
-| Phrase-structure only; dependency parsing excluded | ✅ | benepar is constituency-based; dep tags only appear in `parse.tokens` metadata diagnostics |
-| English-only scope | ✅ | spaCy/benepar English models |
+| `analysis_history` | Saved analyses | insert, select recent 50, delete |
+| `player_stats` | XP and level | upsert, select own row, leaderboard read |
+| `quiz_progress` | Per-rule completion/perfect counts | select, upsert, completion tracking |
 
-### 15. The one intentional divergence — the parser engine
-
-The spec's stages 1–2 (PCFG+CYK+Viterbi, CNF binarization, `π(i,j,A)` table,
-backpointer serialization) were **not reimplemented**; the tree is instead
-produced by benepar, a trained neural constituency parser. Rationale from the
-project decision:
-
-- The spec's mathematical parser — hand-authored grammar, `O(n³·|G|)` — is a
-  textbook construction; a manually authored grammar cannot cover the range of
-  real learner sentences. benepar reproduces the **same output contract**
-  (single best S-rooted constituent tree consumed deterministically by the
-  matrix) with far better coverage.
-- Every downstream guarantee the spec cares about — XAI integrity (100%
-  deterministic, no hallucination), explainer grounding in the tree, dual-loop
-  feedback — is independent of which parser produced the tree.
-
-This remains an open design decision; the current implementation makes no
-representations that it runs CYK. `README.md` and `RULES.md` describe the
-implementation as-built; `THESIS.md` remains the specification.
+Reads work anonymously for the public leaderboard. Signed-in writes depend on
+Clerk being registered as a Supabase third-party auth provider; when that
+configuration is missing, writes fail with RLS `42501` (a known deployment
+issue, not a frontend logic bug).
 
 ---
 
-## 16. Known design notes
+## 7. Failure modes and degradation
 
-- `END` is declared in `STATES` but never reached by a transition event (the
-  app keeps the session alive in VIEWING/EXPLORING).
-- `explainers.surprisal/perturbation/llm_note` are always `null` — reserved
-  slots that are intentionally not implemented (generative paths are excluded).
-- `build_payload` computes a local `error_ids` list that the contrastive
-  builder does not consume (it re-derives errors) — harmless.
-- Sentence verdict summary text is deterministic and re-stated verbatim in
-  `explainers.basic`; node detail text is generated once at parse time and
-  served from memory thereafter.
+| Failure | Behavior |
+|---|---|
+| spaCy/benepar missing or unloadable | `model_status().ready = false`; `/api/health` returns 503; `/api/parse` returns 503 with install hint |
+| Input has no sentences | `ParseFailure('no sentences detected')` → 422 |
+| Parse tree leaves ≠ sentence tokens | `ParseFailure('span alignment mismatch: …')` → 422 |
+| Detector unavailable | rules-only verdict; `meta.deterministic = true`; basic report notes the offline channel |
+| Corrector unavailable | no promotion; sentence stays `unverified` |
+| One licensing/ruleset checker crashes | `checker_errors` records it; other checkers still run; verdict becomes `unverified` |
+| Lexicon cannot load at all | spelling layer accepts tokens rather than rejecting valid words |
+| Unknown word not in lexicon | `unverified`, not `ungrammatical` (names/new words are legitimate) |
+| Matrix clean, detector rejects | `unverified` with a detector note; never a fabricated rule error |
+| Frontend backend unreachable | canvas diagnostic "Backend unreachable" with the run command |
+| Supabase write forbidden | warning logged; analysis still renders; history not saved |
+
+---
+
+## 8. Determinism, auditing, and known limits
+
+### Determinism
+
+- Tree construction is deterministic for a given sentence/index (benepar
+  top-ranked parse).
+- The matrix, licensing, remediation, and summary are pure functions of the
+  tree and sentence; no random sampling and no classifier scores.
+- The detector is a model and can vary in edge cases; it only changes the
+  verdict when the matrix is clean (to `unverified`), never the explanation
+  of a matrix violation.
+- The corrector is only attempted for `unverified` sentences and is gated by
+  both classifier margins and a clean-matrix re-analysis.
+
+### Audits in the repository
+
+- `scripts/master_sheet.py` — detection review over 111 quiz questions.
+- `scripts/explanation_sheet.py` — valid-explanation review (quoted-reference
+  check, template deduplication).
+- `scripts/audit_rules.py` — rule-regression checks over the gold corpus.
+- `scripts/test_tree_quiz.js` — asserts the quiz content/lesson inventory is
+  consistent (`npm run test:quiz`).
+- `py_compile` on the server modules and live `/api/health` + smoke sentences
+  are the quick backend checks.
+
+### Known limits
+
+- benepar can produce a linguistically wrong tree. The matrix explains the
+  tree it is given, so a parse error can produce a misleading explanation.
+- Edges not covered by the matrix are `C-UNLISTED` and valid by default; the
+  sheet tracks coverage but coverage is not total.
+- The semantic rulebook section (meaning/usage) is only partially backed by
+  deterministic checks; several rules are registered but do not fire.
+- The detector can return `unverified` for colloquial but acceptable input
+  (e.g. fragment-like answers); this is intentional conservatism.
+- The master sheet still contains known false positives (roughly 40 at the
+  time of writing) and a gold regression on `He runs fast` (missing terminal
+  punctuation interacts with rules 10.8/10.3).
+- Leaderboard and Achievements views are placeholders; the backing helpers
+  exist but the panels are not built. `award` is not called by the current
+  quiz path, and stage achievements expect numeric stage ids while
+  `quiz_progress` stores lesson types, so that mapping needs alignment.
+- Supabase writes require the Clerk third-party auth configuration described
+  above.
+
+---
+
+## 9. How to extend the system
+
+### Add a grammar rule
+
+1. Add the rule id/name/example/method to `RULEBOOK` in
+   `server/ruleset.py`.
+2. Map its constraint to the rule id in `CONSTRAINT_RULE` in
+   `server/matrix.py` (or emit a finding with the rule id directly from a
+   checker).
+3. Implement the check:
+   - tree edge: add a branch in `_classify` / the relevant `_s_*`, `_np_*`,
+     `_vp_*` method and return `(status, constraint, text)`;
+   - word list: add to the appropriate `_check_*` function in
+     `ruleset.py`/`licensing.py`;
+   - context: use `_context_evidence`.
+4. Add remediation (`_rem_*` or an explicit dict) if the default split is not
+   good enough.
+5. Add the concept text to `web/content/exhaustive_rules.json` and run
+   `npm run tree:sheet` (or `npm run build`).
+6. Add a quiz question to `web/content/master.json` if the rule should be
+   exercised by the quiz/audit.
+7. Run `npm run test:quiz`, `npm run explanation-sheet`, and the smoke
+   sentences.
+
+### Add a lesson or example
+
+Edit `LESSONS` in `web/js/tree-quiz.js`: `type`, `title`, `group`, `rule`,
+`detail`, numbered `steps`, and `examples`. Gold trees are fetched live, so no
+tree data needs to be stored. Keep the lesson's `type` aligned with a phrase
+label benepar can emit.
+
+### Change an explanation
+
+Add or edit the generator strings in `server/matrix.py` or the checker in
+`ruleset.py`/`licensing.py`. Do not add the `In the sentence …` prefix to new
+strings; `_strip_preface` removes it centrally, but new text should start
+with the unique structural statement. Run `py_compile` and regenerate the
+explanation sheet to see the template effect.
+
+---
+
+## Appendix A — Key data shapes
+
+### Node
+
+```json
+{
+  "id": "n4",
+  "type": "NP",
+  "span": [1, 4],
+  "surface": "the big cat",
+  "children": [
+    {"id": "n5", "type": "DT", "pos": "DT", "span": [1, 2], "surface": "the", "punct": false}
+  ]
+}
+```
+
+Leaves also carry `pos`, and after parsing they carry `ftag` / `fpos`.
+
+### Detail
+
+See §2 Stage 5.2. A detail is keyed by node id in `payload.node_details`.
+`status` is one of `valid`, `error`, `unlisted`.
+
+### Finding
+
+See §3.3. Findings live in `detail.findings`; error findings also promote the
+containing node to `status: "error"`.
+
+### Summary
+
+```json
+{
+  "verdict": "ungrammatical",
+  "valid": false,
+  "valid_edges": 7,
+  "violated_edges": 1,
+  "unrated_edges": 0,
+  "violations": ["n12"],
+  "constraints_fired": ["C-SUBJECT-AGREEMENT"],
+  "root_error": false,
+  "explanation": "The VBZ 'goes' is flagged: …",
+  "lexical_coverage": 1.0,
+  "detector": {"label": "unacceptable", "acceptable": false, "acceptable_prob": 0.02},
+  "detector_note": "Acceptability model …"
+}
+```
+
+Key rule: the UI reads `verdict` and per-node `status`, not `valid`.
+
+### Remediation
+
+```json
+{
+  "violation": "The subject 'The boys' is plural but the verb 'goes' is singular.",
+  "suggested_fix": "Change 'goes' to 'go'.",
+  "alternative_fix": null,
+  "targeted_outcome": "verb agrees with the subject"
+}
+```
+
+---
+
+## Appendix B — Glossary
+
+| Term | Meaning |
+|---|---|
+| Constituency tree | Nested phrase structure from benepar (`S`, `NP`, `VP`, …) |
+| Edge | A parent → child relation in the tree; the matrix validates edges |
+| Detail | SynTutor's per-node record: role, constraint, status, text, findings |
+| Constraint (`C-*`) | Stable id for a check; maps to a rulebook id |
+| Rule id (`2.1`) | Numbered grammar rule shared by matrix, sheet, and quiz |
+| Gold tree | The live `/api/parse` output used to grade a builder exercise |
+| Licensing | Positive-evidence check that a word form is real for its POS |
+| Unverified | The system cannot prove the sentence grammatical or explain why not |
+| Unlisted | An edge outside the matrix's coverage, valid by default |
+| Flawless run | A quiz with no wrong or skipped answers (XP bonus) |

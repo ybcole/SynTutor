@@ -153,6 +153,10 @@ export class TreeRenderer {
     // hidden or zero-sized). The tree is re-fitted as soon as the canvas has
     // a size again — otherwise it would come back squished into a corner.
     this.needsFit = false;
+    // Interactive corrective feedback: the subtree the current error lives in
+    // (and the pair of nodes the rule links together).
+    this.focus = null;
+    this._raf = null;
     this._setup();
     this._resize();
   }
@@ -191,6 +195,7 @@ export class TreeRenderer {
   }
 
   setTree(root) {
+    this.focus = null;
     this.tree = root;
     this.layoutData = createLayout(root, (label) => this._measure(label));
     this.dfsOrder = collectNodes(root).map((n) => n.id);
@@ -221,11 +226,12 @@ export class TreeRenderer {
     this.indexById = new Map();
     this.selectedId = null;
     this.hoverId = null;
+    this.focus = null;
     this.view = { scale: 1, tx: 0, ty: 0 };
     this.draw();
   }
 
-  _fitView() {
+  _fitTarget() {
     const w = this.canvas.clientWidth || this.canvas.width;
     const h = this.canvas.clientHeight || this.canvas.height;
     // No room to draw (the canvas is hidden or has no size yet): don't
@@ -235,11 +241,18 @@ export class TreeRenderer {
       return;
     }
     const pad = 30;
-    const scale = Math.min((w - pad * 2) / this.layoutData.totalW, (h - pad * 2) / this.layoutData.totalH, 1.7) * 1.25;
-    this.view.scale = Math.max(Math.min(scale, 1.7), 0.2);
-    this.view.tx = (w - this.layoutData.totalW * this.view.scale) / 2;
-    this.view.ty = (h - this.layoutData.totalH * this.view.scale) / 2;
-    this.needsFit = false;
+    const raw = Math.min((w - pad * 2) / this.layoutData.totalW, (h - pad * 2) / this.layoutData.totalH, 1.7) * 1.25;
+    const scale = Math.max(Math.min(raw, 1.7), 0.2);
+    return {
+      scale,
+      tx: (w - this.layoutData.totalW * scale) / 2,
+      ty: (h - this.layoutData.totalH * scale) / 2,
+    };
+  }
+
+  _fitView() {
+    Object.assign(this.view, this._fitTarget());
+      this.needsFit = false;
   }
 
   _resize() {
@@ -384,8 +397,13 @@ export class TreeRenderer {
     for (const l of this.layoutData.layout.values()) {
       for (const c of ch(l.node)) {
         const cl = this.layoutData.layout.get(c.id);
-        const status = c.edgeResult ? c.edgeResult.status : 'valid';
+        const status = c.edgeResult ? c.edgeResult.status : 'neutral';
         const gap = cl.leaf ? 36 : LABEL_GAP;
+        // While a correction is focused, everything outside the error's scope
+        // fades back so the rule and its linked nodes stand out.
+        const dimEdge = this.focus
+          && !(this.focus.inScope.has(c.id) && this.focus.inScope.has(l.node.id));
+        ctx.globalAlpha = dimEdge ? 0.12 : 1;
         ctx.strokeStyle = this._edgeColor(status);
         ctx.lineWidth = 1.5;
         ctx.beginPath();
@@ -394,6 +412,7 @@ export class TreeRenderer {
         ctx.stroke();
       }
     }
+    ctx.globalAlpha = 1;
 
     for (const l of this.layoutData.layout.values()) {
       this._drawNode(l);
@@ -450,17 +469,25 @@ export class TreeRenderer {
     const isSel = n.id === this.selectedId;
     const isHov = n.id === this.hoverId;
     const err = n.edgeResult && n.edgeResult.status === 'error';
+    // Nodes outside the focused scope fade back; the pair the rule links
+    // together is painted in the error colour.
+    const dim = this.focus && !this.focus.inScope.has(n.id);
+    const paired = this.focus && this.focus.pair.includes(n.id);
+
+    ctx.save();
+    if (dim) ctx.globalAlpha = 0.18;
 
     let color = err ? colors.edgeError : colors.text;
     if (isRoot) color = colors.nodeStroke;
     if (isHov) color = colors.nodeStroke;
+    if (paired) color = colors.edgeError;
     if (isSel) color = colors.selectedStroke;
 
     ctx.fillStyle = color;
     if (ch(n).length === 0) {
-      ctx.font = '500 15px Inter, system-ui, sans-serif';
+      ctx.font = paired ? '700 15px Inter, system-ui, sans-serif' : '500 15px Inter, system-ui, sans-serif';
     } else {
-      ctx.font = isSel ? '700 16px Inter, system-ui, sans-serif' : '600 16px Inter, system-ui, sans-serif';
+      ctx.font = (isSel || paired) ? '700 16px Inter, system-ui, sans-serif' : '600 16px Inter, system-ui, sans-serif';
     }
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -471,5 +498,107 @@ export class TreeRenderer {
       ctx.font = '600 10px Inter, system-ui, sans-serif';
       ctx.fillText(n.type, l.x, l.y - 14);
     }
+    ctx.restore();
+  }
+
+  _animateTo(target, ms = 380) {
+    cancelAnimationFrame(this._raf);
+    const from = { ...this.view };
+    const t0 = performance.now();
+    const step = (now) => {
+      const k = Math.min(1, (now - t0) / ms);
+      const e = 1 - (1 - k) ** 3;
+      this.view.scale = from.scale + (target.scale - from.scale) * e;
+      this.view.tx = from.tx + (target.tx - from.tx) * e;
+      this.view.ty = from.ty + (target.ty - from.ty) * e;
+      this.draw();
+      if (k < 1) this._raf = requestAnimationFrame(step);
+    };
+    this._raf = requestAnimationFrame(step);
+  }
+
+  /** Zoom to the subtree rooted at scopeId; pairIds are linked with a dashed red curve. */
+  focusSubtree(scopeId, pairIds = []) {
+    const L = this.layoutData;
+    const sl = L && L.layout.get(scopeId);
+    if (!sl) return false;
+    const inScope = new Set();
+    let maxY = sl.y;
+    const walk = (n) => {
+      inScope.add(n.id);
+      const l = L.layout.get(n.id);
+      if (l) maxY = Math.max(maxY, l.y);
+      for (const c of ch(n)) walk(c);
+    };
+    walk(sl.node);
+    const s = L.span.get(scopeId);
+    if (!s) return false;
+    const x0 = s[0] * L.slot;
+    const x1 = (s[1] + 1) * L.slot;
+    const y0 = sl.y - BOX_H / 2 - 12;
+    const y1 = maxY + 80; // word + POS tag + room for the pair link
+    const w = this.canvas.clientWidth || this.canvas.width;
+    const h = this.canvas.clientHeight || this.canvas.height;
+    const pad = 40;
+    const scale = Math.max(Math.min((w - pad * 2) / (x1 - x0), (h - pad * 2) / (y1 - y0), 2), 0.2);
+    this.focus = { scopeId, inScope, pair: pairIds.filter((id) => L.layout.has(id)) };
+    this._animateTo({
+      scale,
+      tx: w / 2 - ((x0 + x1) / 2) * scale,
+      ty: h / 2 - ((y0 + y1) / 2) * scale,
+    });
+    return true;
+  }
+
+  /** Center and emphasize an error node without reducing the current zoom. */
+  focusNode(nodeId, scopeId, pairIds = []) {
+    const L = this.layoutData;
+    const target = L && L.layout.get(nodeId);
+    if (!target) return false;
+    const inScope = new Set();
+    const scopeNode = scopeId && L.layout.get(scopeId) ? L.layout.get(scopeId).node : null;
+    const walk = (n) => {
+      inScope.add(n.id);
+      for (const c of n.children || []) walk(c);
+    };
+    if (scopeNode) walk(scopeNode);
+    else inScope.add(nodeId);
+    const w = this.canvas.clientWidth || this.canvas.width;
+    const h = this.canvas.clientHeight || this.canvas.height;
+
+    // The error and the node(s) the rule links it to must stay on screen —
+    // that link is the whole point of the zoom — so the view is fitted to
+    // their range instead of to the whole tree.
+    const wanted = [nodeId, ...pairIds].filter((id) => L.layout.has(id));
+    let lo = Infinity;
+    let hi = -Infinity;
+    let top = Infinity;
+    let bottom = -Infinity;
+    for (const id of wanted) {
+      const s = L.span.get(id);
+      const l = L.layout.get(id);
+      if (s) { lo = Math.min(lo, s[0]); hi = Math.max(hi, s[1]); }
+      if (l) { top = Math.min(top, l.y); bottom = Math.max(bottom, l.y); }
+    }
+    if (!Number.isFinite(lo)) { lo = 0; hi = 0; }
+    if (!Number.isFinite(top)) { top = target.y; bottom = target.y; }
+    const pad = 64;
+    const x0 = lo * L.slot - pad;
+    const x1 = (hi + 1) * L.slot + pad;
+    const y0 = top - BOX_H / 2 - pad / 2;
+    const y1 = bottom + BOX_H / 2 + pad / 2;
+    const scale = Math.max(Math.min((w - 24) / (x1 - x0), (h - 24) / (y1 - y0), 2.6), 0.35);
+    this.focus = { scopeId: scopeId || nodeId, inScope, pair: pairIds.filter((id) => L.layout.has(id)) };
+    this._animateTo({
+      scale,
+      tx: w / 2 - ((x0 + x1) / 2) * scale,
+      ty: h / 2 - ((y0 + y1) / 2) * scale,
+    });
+    return true;
+  }
+
+  clearFocus() {
+    this.focus = null;
+    if (this.layoutData) this._animateTo(this._fitTarget());
   }
 }

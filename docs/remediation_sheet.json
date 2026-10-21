@@ -1,0 +1,990 @@
+{
+  "constraints": {
+    "C-NOUN-FORM": {
+      "'{X}' is not the normal plural of '{X}'. || Change '{X}' to '{X}'; the normal plural of '{X}' is '{X}'. || Or use the singular noun '{X}' with a singular word like '{X}' or '{X}'.": {
+        "count": 50,
+        "example": "The drama club painted the costume boxs before opening night.",
+        "role": "noun form",
+        "fix": "Change 'boxs' to 'boxes'; the normal plural of 'box' is 'boxes'."
+      },
+      "'{X}' is not the normal plural of '{X}'. || Change '{X}' to '{X}'; '{X}' is already the complete plural form. || Or use the singular noun '{X}' with a singular word like '{X}' or '{X}'.": {
+        "count": 4,
+        "example": "The teacher showed them photos of several unusual fishes from the deep ocean.",
+        "role": "noun form",
+        "fix": "Change 'fishes' to 'fish'; 'fish' is already the complete plural form."
+      }
+    },
+    "C-PLURAL-FORM": {
+      "After '{X}' the noun '{X}' should be plural here. || Change '{X}' to the plural '{X}' || ": {
+        "count": 1,
+        "example": "After the final song, the audience sent the cast several thank-you cardss.",
+        "role": "noun number",
+        "fix": "Change 'thank' to the plural 'thanks'"
+      },
+      "'{X}' is the wrong plural or singular form here || Use '{X}' instead || ": {
+        "count": 2,
+        "example": "The two mouses in the barn always hide behind the grain sacks.",
+        "role": "noun number",
+        "fix": "Use 'mice' instead"
+      }
+    },
+    "C-LEXICON-MALFORMED": {
+      "'{X}' is not a correct form of '{X}'. || Replace '{X}' with '{X}'. || ": {
+        "count": 78,
+        "example": "The guide displayed old watchs beside the clock collection.",
+        "role": "word form",
+        "fix": "Replace 'watchs' with 'watches'."
+      },
+      "'{X}' is not a correct form of '{X}'. || Choose the needed form of '{X}' from: famous. || ": {
+        "count": 2,
+        "example": "It is also the most famousest peak in the world.",
+        "role": "word form",
+        "fix": "Choose the needed form of 'famous' from: famous."
+      },
+      "'{X}' is not a correct form of '{X}'. || Choose the needed form of '{X}' from: unlucky. || ": {
+        "count": 2,
+        "example": "It was also the most unluckiest day.",
+        "role": "word form",
+        "fix": "Choose the needed form of 'unlucky' from: unlucky."
+      }
+    },
+    "C-ARTICLE": {
+      "'{X}' is a singular noun that names one countable thing, but it is used without a little word like '{X}' or '{X}' before it. || Add '{X}' before '{X}' \u2192 '{X}'. || Or use another word before it: '{X}', '{X}', or '{X}'.": {
+        "count": 41,
+        "example": "The orchestra stored spare instrument before its summer concert.",
+        "role": "article omission",
+        "fix": "Add 'an' before 'instrument' \u2192 'an instrument'."
+      }
+    },
+    "C-COMMA-SPLICE": {
+      "This sentence joins two complete clauses with a comma alone || Put a semicolon between them: '{X}' || ": {
+        "count": 35,
+        "example": "My grandmother keeps a small farm near the coast, where she has lived for forty years.",
+        "role": "punctuation",
+        "fix": "Put a semicolon between them: 'My grandmother keeps a small farm near the coast; where she has lived for forty years'"
+      },
+      "This sentence joins two complete clauses with a comma alone || Put a semicolon between them: '{X}'t it ?' || ": {
+        "count": 2,
+        "example": "You are coming, isn't it?",
+        "role": "punctuation",
+        "fix": "Put a semicolon between them: 'You are coming; is n't it ?'"
+      },
+      "This sentence joins two complete clauses with a comma alone || Put a semicolon between them: '{X}'t she ?' || ": {
+        "count": 1,
+        "example": "She can swim well, doesn't she?",
+        "role": "punctuation",
+        "fix": "Put a semicolon between them: 'She can swim well; does n't she ?'"
+      },
+      "This sentence joins two complete clauses with a comma alone || Put a semicolon between them: '{X}'t they ?' || ": {
+        "count": 1,
+        "example": "They had left already, didn't they?",
+        "role": "punctuation",
+        "fix": "Put a semicolon between them: 'They had left already; did n't they ?'"
+      },
+      "This sentence joins two complete clauses with a comma alone || Put a semicolon between them: '{X}'t like coffee; do n'{X}' || ": {
+        "count": 1,
+        "example": "You don't like coffee, don't you?",
+        "role": "punctuation",
+        "fix": "Put a semicolon between them: 'You do n't like coffee; do n't you ?'"
+      },
+      "This sentence joins two complete clauses with a comma alone || Put a semicolon between them: '{X}'t coming; is n'{X}' || ": {
+        "count": 1,
+        "example": "She isn't coming, isn't she?",
+        "role": "punctuation",
+        "fix": "Put a semicolon between them: 'She is n't coming; is n't she ?'"
+      }
+    },
+    "C-PRONOUN-CASE": {
+      "'{X}' is the wrong form for the object. (It is the object form.) || Change '{X}' to '{X}', because a pronoun used as an object needs the '{X}' form. || Or use the person'{X}'they' instead.": {
+        "count": 3,
+        "example": "Every morning, before breakfast, she collects the eggs they have laid.",
+        "role": "pronoun case",
+        "fix": "Change 'they' to 'them', because a pronoun used as an object needs the 'an object' form."
+      },
+      "'{X}' is the wrong form for the object. (It is the object form.) || Change '{X}' to '{X}', because a pronoun used as an object needs the '{X}' form. || Or use the person'{X}'we' instead.": {
+        "count": 6,
+        "example": "By the time we arrived, guests had already ate most of the bread.",
+        "role": "pronoun case",
+        "fix": "Change 'we' to 'us', because a pronoun used as an object needs the 'an object' form."
+      },
+      "'{X}' is the wrong form for the object. (It is the object form.) || Change '{X}' to '{X}', because a pronoun used as an object needs the '{X}' form. || Or use the person'{X}'she' instead.": {
+        "count": 2,
+        "example": "The heavy bags were a problem for she.",
+        "role": "pronoun case",
+        "fix": "Change 'she' to 'her', because a pronoun used as an object needs the 'an object' form."
+      },
+      "'{X}' is the wrong form for the object. (It is the object form.) || Change '{X}' to '{X}', because a pronoun used as an object needs the '{X}' form. || Or use the person'{X}'I' instead.": {
+        "count": 5,
+        "example": "The card arrived for I just before the holiday.",
+        "role": "pronoun case",
+        "fix": "Change 'I' to 'me', because a pronoun used as an object needs the 'an object' form."
+      },
+      "'{X}' is the wrong form for the object. (It is the object form.) || Change '{X}' to '{X}', because a pronoun used as an object needs the '{X}' form. || Or use the person'{X}'he' instead.": {
+        "count": 1,
+        "example": "He works hard he wants good marks.",
+        "role": "pronoun case",
+        "fix": "Change 'he' to 'him', because a pronoun used as an object needs the 'an object' form."
+      }
+    },
+    "C-DET-NOUN-AGREE": {
+      "'{X}' takes a singular noun, so in this sentence it should not be followed by the plural '{X}'. || Change '{X}' to the singular '{X}' || ": {
+        "count": 2,
+        "example": "Each players jersey had a number on the back.",
+        "role": "determiner",
+        "fix": "Change 'players' to the singular 'player'"
+      }
+    },
+    "C-DOUBLE-SUBJECT": {
+      "'{X}' in this sentence says the subject twice; keep only one of them. || Remove the repeated word '{X}' || ": {
+        "count": 10,
+        "example": "Every morning she runing around the lake before school.",
+        "role": "subject",
+        "fix": "Remove the repeated word 'she'"
+      }
+    },
+    "C-FINITE-VERB": {
+      "The part '{X}' has a subject but no full verb || '{X}' cannot be the main verb on its own. Use a form like '{X}' or add a helping word like '{X}' || ": {
+        "count": 18,
+        "example": "Every morning she runing around the lake before school.",
+        "role": "clause finiteness",
+        "fix": "'runing' cannot be the main verb on its own. Use a form like 'runs' or add a helping word like 'is running'"
+      }
+    },
+    "C-VERB-ENDING": {
+      "'{X}' is a misspelled verb form. || Write '{X}' instead of '{X}'. || ": {
+        "count": 7,
+        "example": "Every morning she runing around the lake before school.",
+        "role": "verb ending",
+        "fix": "Write 'running' instead of 'runing'."
+      }
+    },
+    "C-WORD-ORDER": {
+      "In this statement the object comes before the verb; the object should follow the verb instead. || Move the object so it comes after the verb, e.g. after '{X}' || ": {
+        "count": 8,
+        "example": "Every Wednesday she watchs the choir rehearse after lessons.",
+        "role": "word order",
+        "fix": "Move the object so it comes after the verb, e.g. after 'watchs'"
+      }
+    },
+    "C-SUBJECT-AGREEMENT": {
+      "The subject '{X}' is 3rd person singular, but the verb '{X}' is base, so they do not match. || Change '{X}' to '{X}' (the third-person singular present form) so it matches the 3rd person singular subject '{X}'. || Or change the subject to the plural '{X}' instead of '{X}', so it matches '{X}'.": {
+        "count": 1,
+        "example": "Every Wednesday she watchs the choir rehearse after lessons.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'rehearse' to 'rehearses' (the third-person singular present form) so it matches the 3rd person singular subject 'the choir'."
+      },
+      "The subject '{X}' is 3rd person singular, but the verb '{X}' is non-third-person present, so they do not match. || Change '{X}' to '{X}' (the third-person singular present form) so it matches the 3rd person singular subject '{X}'. || Or change the subject to the plural '{X}' instead of '{X}', so it matches '{X}'.": {
+        "count": 17,
+        "example": "Every afternoon we eat ice cream together on the porch.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'eat' to 'eats' (the third-person singular present form) so it matches the 3rd person singular subject 'Every afternoon'."
+      },
+      "The subject '{X}' is 3rd person plural, but the verb '{X}' is third-person singular present, so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person plural subject '{X}'. || Or change the subject to the singular '{X}' instead of '{X}', so it matches '{X}'.": {
+        "count": 9,
+        "example": "At the end, two students asks a question.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'asks' to 'ask' (the form used with plural subjects like 'students') so it matches the 3rd person plural subject 'two students'."
+      },
+      "The subject '{X}' is 3rd person singular, but the verb '{X}' is non-third-person present, so they do not match. || Change '{X}' to '{X}' (the third-person singular present form) so it matches the 3rd person singular subject '{X}'. || Or keep the subject '{X}' and change the verb instead, so the two match.": {
+        "count": 1,
+        "example": "He lock the doors and switch off the lights.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'lock' to 'locks' (the third-person singular present form) so it matches the 3rd person singular subject 'He'."
+      },
+      "The subject '{X}' is 3rd person plural, but the verb '{X}' is third-person singular present (is), so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person plural subject '{X}'. || Or use a single singular subject with '{X}': drop the conjunction and keep just '{X}' instead of the paired subject '{X}'.": {
+        "count": 5,
+        "example": "Tom and Anna is planning a trip together.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'is' to 'are' (the form used with plural subjects like 'Anna') so it matches the 3rd person plural subject 'Tom and Anna'."
+      },
+      "The subject '{X}' is 3rd person plural, but the verb '{X}' is non-third-person present (have), so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person plural subject '{X}'. || ": {
+        "count": 1,
+        "example": "Tom or Anna have visited the coast before.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'have' to 'have' (the form used with plural subjects like 'Anna') so it matches the 3rd person plural subject 'Tom or Anna'."
+      },
+      "The subject '{X}' is 3rd person plural, but the verb '{X}' is third-person singular present, so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person plural subject '{X}'. || Or use a single singular subject with '{X}': drop the conjunction and keep just '{X}' instead of the paired subject '{X}'.": {
+        "count": 4,
+        "example": "The teacher and the students prepares questions together.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'prepares' to 'prepare' (the form used with plural subjects like 'students') so it matches the 3rd person plural subject 'The teacher and the students'."
+      },
+      "The subject '{X}' is 3rd person plural, but the verb '{X}' is non-third-person present, so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person plural subject '{X}'. || ": {
+        "count": 2,
+        "example": "Neither the boys nor the girl know the answer.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'know' to 'know' (the form used with plural subjects like 'girl') so it matches the 3rd person plural subject 'Neither the boys nor the girl'."
+      },
+      "The subject '{X}' is 3rd person plural, but the verb '{X}' is past (was), so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person plural subject '{X}'. || ": {
+        "count": 5,
+        "example": "The manager and the clerk was discussing the schedule.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'was' to 'were' (the form used with plural subjects like 'clerk') so it matches the 3rd person plural subject 'The manager and the clerk'."
+      },
+      "The subject '{X}' is 3rd person plural, but the verb '{X}' is third-person singular present (has), so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person plural subject '{X}'. || Or use a single singular subject with '{X}': drop the conjunction and keep just '{X}' instead of the paired subject '{X}'.": {
+        "count": 1,
+        "example": "Either the designer or the writers has the final copy.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'has' to 'have' (the form used with plural subjects like 'writers') so it matches the 3rd person plural subject 'Either the designer or the writers'."
+      },
+      "The subject '{X}' is 3rd person singular, but the verb '{X}' is third-person singular present (is), so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person singular subject '{X}'. || Or change the subject to the singular '{X}' instead of '{X}', so it matches '{X}'.": {
+        "count": 1,
+        "example": "The police is investigating the cause.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'is' to 'are' (the form used with plural subjects like 'police') so it matches the 3rd person singular subject 'The police'."
+      },
+      "The subject '{X}' is 3rd person singular, but the verb '{X}' is non-third-person present (are), so they do not match. || Change '{X}' to '{X}' (the third-person singular present form) so it matches the 3rd person singular subject '{X}'. || Or change the subject to the plural '{X}' instead of '{X}', so it matches '{X}'.": {
+        "count": 4,
+        "example": "Tonight the choir are singing beautifully.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'are' to 'is' (the third-person singular present form) so it matches the 3rd person singular subject 'the choir'."
+      },
+      "The subject '{X}' is 3rd person singular, but the verb '{X}' is non-third-person present (have), so they do not match. || Change '{X}' to '{X}' (the third-person singular present form) so it matches the 3rd person singular subject '{X}'. || Or change the subject to the plural '{X}' instead of '{X}', so it matches '{X}'.": {
+        "count": 4,
+        "example": "In the meantime, the board have approved the yearly budget.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'have' to 'has' (the third-person singular present form) so it matches the 3rd person singular subject 'the board'."
+      },
+      "The subject '{X}' is 3rd person singular, but the verb '{X}' is past (were), so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person singular subject '{X}'. || Or change the subject to the plural '{X}' instead of '{X}', so it matches '{X}'.": {
+        "count": 3,
+        "example": "Everybody were excited about the new season.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'were' to 'was' (the form used with plural subjects like 'Everybody') so it matches the 3rd person singular subject 'Everybody'."
+      },
+      "The subject '{X}' is 3rd person plural, but the verb '{X}' is non-third-person present (are), so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person plural subject '{X}'. || ": {
+        "count": 2,
+        "example": "Either Tom or Anna are going to speak first.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'are' to 'are' (the form used with plural subjects like 'Anna') so it matches the 3rd person plural subject 'Either Tom or Anna'."
+      },
+      "The subject '{X}' is 3rd person plural, but the verb '{X}' is past (were), so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person plural subject '{X}'. || ": {
+        "count": 2,
+        "example": "Neither rice nor pasta were needed that night.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'were' to 'were' (the form used with plural subjects like 'pasta') so it matches the 3rd person plural subject 'Neither rice nor pasta'."
+      },
+      "The subject '{X}' is 3rd person plural, but the verb '{X}' is past (were), so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person plural subject '{X}'. || Or change the subject to the plural '{X}' instead of '{X}', so it matches '{X}'.": {
+        "count": 1,
+        "example": "Every stalls were full of colourful fruit.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'were' to 'was' (the form used with plural subjects like 'stalls') so it matches the 3rd person plural subject 'Every stalls'."
+      },
+      "The subject '{X}' is 3rd person plural, but the verb '{X}' is past (was), so they do not match. || Change '{X}' to '{X}' (the form used with plural subjects like '{X}') so it matches the 3rd person plural subject '{X}'. || Or change the subject to the plural '{X}' instead of '{X}', so it matches '{X}'.": {
+        "count": 2,
+        "example": "His glasses was on the table by the window.",
+        "role": "subject-verb agreement link",
+        "fix": "Change 'was' to 'were' (the form used with plural subjects like 'glasses') so it matches the 3rd person plural subject 'His glasses'."
+      },
+      "In this question, the subject '{X}' and the verb '{X}' do not agree. || Change '{X}' to the form that agrees with the subject || ": {
+        "count": 2,
+        "example": "How you make the soup so quickly?",
+        "role": "subject-verb agreement",
+        "fix": "Change 'make' to the form that agrees with the subject"
+      }
+    },
+    "C-MOD-POS": {
+      "'{X}' comes after the noun '{X}', but it should come before it. || Move '{X}' in front of '{X}': '{X}'. || ": {
+        "count": 8,
+        "example": "The bus left the school gates at seven sharp.",
+        "role": "NP modifier position",
+        "fix": "Move 'sharp' in front of 'seven': 'sharp seven'."
+      }
+    },
+    "C-VERB-FORM": {
+      "'{X}' is not the correct past-tense form || Use '{X}' instead || ": {
+        "count": 8,
+        "example": "On Saturday we goed to the old museum near the river.",
+        "role": "verb form",
+        "fix": "Use 'went' instead"
+      },
+      "'{X}' is the verb in '{X}', but it is not the correct past tense form. Change it to '{X}'. || Change '{X}' to '{X}' || ": {
+        "count": 1,
+        "example": "She rided it around the park all morning.",
+        "role": "unrated",
+        "fix": "Change 'rided' to 'rode'"
+      },
+      "After '{X}', the verb must be the past participle, but '{X}' is not. Change it to '{X}'. || Change '{X}' to '{X}' || ": {
+        "count": 15,
+        "example": "They had went by bus and then on foot up the steep track.",
+        "role": "unrated",
+        "fix": "Change 'had' to 'gone'"
+      },
+      "'{X}' is the verb in '{X}', but it is not the correct past participle form. Change it to '{X}'. || Change '{X}' to '{X}' || ": {
+        "count": 15,
+        "example": "They had went by bus and then on foot up the steep track.",
+        "role": "unrated",
+        "fix": "Change 'went' to 'gone'"
+      }
+    },
+    "C-TRANSITIVITY": {
+      "'{X}' does not take a direct object; in this sentence it needs a preposition instead. || Add a preposition after '{X}' (for example '{X}') || ": {
+        "count": 6,
+        "example": "Everyone agreed the show was a great success.",
+        "role": "transitivity",
+        "fix": "Add a preposition after 'agreed' (for example 'agreed to ...')"
+      }
+    },
+    "C-RUNON": {
+      "Two full parts are joined here without punctuation or a conjunction || Write each clause as its own sentence (add a period), or join them with a word like '{X}' or '{X}' || ": {
+        "count": 32,
+        "example": "Everyone agreed the show was a great success.",
+        "role": "sentence boundary",
+        "fix": "Write each clause as its own sentence (add a period), or join them with a word like 'and' or 'because'"
+      }
+    },
+    "C-HEAD-NOUN": {
+      "'{X}' is used without a noun, but '{X}' has no noun for it. || Add the noun you mean after '{X}' \u2014 for example, write '{X}' instead of just '{X}'. || Or name the person or thing directly, e.g. '{X}' instead of '{X}'.": {
+        "count": 10,
+        "example": "Ben said his was more stronger than the rest.",
+        "role": "head noun",
+        "fix": "Add the noun you mean after 'his' \u2014 for example, write 'his book' instead of just 'his'."
+      }
+    },
+    "C-COMPARATIVE-DOUBLE": {
+      "'{X}' and '{X}' both show that something is more of a quality, so the comparison is said twice. || Keep just '{X}' and drop '{X}'. || Or keep '{X}' and write the plain form: '{X}' instead of '{X}'.": {
+        "count": 13,
+        "example": "Ben said his was more stronger than the rest.",
+        "role": "double comparative",
+        "fix": "Keep just 'stronger' and drop 'more'."
+      },
+      "'{X}' and '{X}' both show that something is the most, so the comparison is said twice. || Keep just '{X}' and drop '{X}'. || Or keep '{X}' and write the plain form: '{X}' instead of '{X}'.": {
+        "count": 13,
+        "example": "Tom was the more fastest on the long straight.",
+        "role": "double comparative",
+        "fix": "Keep just 'fastest' and drop 'more'."
+      }
+    },
+    "C-COMPARATIVE-FORM": {
+      "'{X}' is not the correct comparative form || Use '{X}' instead || ": {
+        "count": 1,
+        "example": "The owner boasted that these apples are gooder than the ones last week.",
+        "role": "comparative form",
+        "fix": "Use 'better' instead"
+      }
+    },
+    "C-ADVERB-FORM": {
+      "'{X}' is not a correct adverb form. || Write '{X}' instead of '{X}'. || ": {
+        "count": 2,
+        "example": "The singers practiced happyly for two whole hours.",
+        "role": "adverb form",
+        "fix": "Write 'happily' instead of 'happyly'."
+      }
+    },
+    "C-ADJ-ADV": {
+      "'{X}' is an adjective, but an adverb is needed here. || Change '{X}' to the adverb '{X}', because this word describes how an action is done. || Or rephrase so '{X}' describes a noun instead of a verb (for example by using a '{X}'-type verb like '{X}' before it).": {
+        "count": 32,
+        "example": "The soloist sang so good that everyone in the hall smiled.",
+        "role": "adjective-adverb confusion",
+        "fix": "Change 'good' to the adverb 'well', because this word describes how an action is done."
+      }
+    },
+    "C-REFLEXIVE-FORM": {
+      "'{X}' is not a standard reflexive pronoun. || Use '{X}' instead of '{X}'. || ": {
+        "count": 20,
+        "example": "While gluing the towers, Tom cut hisself on a sharp edge.",
+        "role": "reflexive",
+        "fix": "Use 'himself' instead of 'hisself'."
+      }
+    },
+    "C-CONTRACTION": {
+      "'{X}' is a contraction missing its apostrophe. || Add the apostrophe: '{X}' \u2192 '{X}'t'. || ": {
+        "count": 12,
+        "example": "\"We dont want to start yet,\" they called out.",
+        "role": "contraction",
+        "fix": "Add the apostrophe: 'dont' \u2192 'do't'."
+      }
+    },
+    "C-MISSING-SUBJECT": {
+      "The part '{X}' has a verb but no subject; add the subject that the verb requires. || Add the subject that does the action, before the verb (for example, start with '{X}' or '{X}') || ": {
+        "count": 11,
+        "example": "\"Its a fair result,\" said the captain.",
+        "role": "subject",
+        "fix": "Add the subject that does the action, before the verb (for example, start with 'she' or 'they')"
+      }
+    },
+    "C-SPELLING": {
+      "'{X}' is misspelled. || Correct the spelling to '{X}'. || ": {
+        "count": 12,
+        "example": "Every morning they recieve a new bundle from the post.",
+        "role": "spelling",
+        "fix": "Correct the spelling to 'receive'."
+      }
+    },
+    "C-AUX-FORM": {
+      "'{X}' is a helping word that must be followed by the plain form, but the next verb '{X}' is past participle. || Change '{X}' to the plain form '{X}' so it follows '{X}' (modal). || Or drop '{X}' and use a tensed verb like '{X}' (when the subject is third-person singular) or the past form.": {
+        "count": 1,
+        "example": "She added that a short test will occured next Friday.",
+        "role": "auxiliary-verb form",
+        "fix": "Change 'occured' to the plain form 'occur' so it follows 'will' (modal)."
+      },
+      "'{X}' is a helping word that must be followed by the plain form, but the next verb '{X}' is third-person singular present. || Change '{X}' to the plain form '{X}' so it follows '{X}' (modal). || Or drop '{X}' and use a tensed verb like '{X}' (when the subject is third-person singular) or the past form.": {
+        "count": 5,
+        "example": "Mia can runs faster than anyone in her class.",
+        "role": "auxiliary-verb form",
+        "fix": "Change 'runs' to the plain form 'run' so it follows 'can' (modal)."
+      }
+    },
+    "C-NUMERAL": {
+      "After a number the scale word '{X}' in this sentence stays singular || Write '{X}' instead of '{X}' || ": {
+        "count": 9,
+        "example": "Three hundreds people joined the first group alone.",
+        "role": "numeral",
+        "fix": "Write 'Three hundred' instead of 'Three hundreds'"
+      }
+    },
+    "C-SUBJ-AGREE-XP": {
+      "The subject '{X}' has extra words after its main noun, but they do not change whether it is one thing or many. The verb '{X}' does not match, so change it to '{X}'. || Change '{X}' to '{X}' || ": {
+        "count": 27,
+        "example": "The box of tools are too heavy to lift alone.",
+        "role": "unrated",
+        "fix": "Change 'are too heavy to lift alone' to 'is'"
+      }
+    },
+    "C-COORD-SUBJ-AGREE": {
+      "'{X}' joins two subjects with '{X}', which makes it plural || This verb '{X}' is singular and does not agree || ": {
+        "count": 7,
+        "example": "Tom and Anna is planning a trip together.",
+        "role": "subject-verb agreement",
+        "fix": "This verb 'is' is singular and does not agree"
+      },
+      "After '{X}', the verb agrees with the nearest subject '{X}' || Use the singular form, not '{X}' || ": {
+        "count": 1,
+        "example": "Tom or Anna have visited the coast before.",
+        "role": "subject-verb agreement",
+        "fix": "Use the singular form, not 'have'"
+      }
+    },
+    "C-RELATIVE-AGREE": {
+      "'{X}': antecedent and verb disagree. || Change '{X}' to '{X}'. || ": {
+        "count": 21,
+        "example": "The boys who plays in the park are my neighbours.",
+        "role": "relative clause",
+        "fix": "Change 'plays' to 'play'."
+      }
+    },
+    "C-INDEF-AGREE": {
+      "'{X}' is always singular, so in this sentence the verb must be '{X}', not '{X}'. || Change '{X}' to '{X}' || ": {
+        "count": 5,
+        "example": "Everyone have a seat near the stage.",
+        "role": "subject-verb agreement",
+        "fix": "Change 'have' to 'has'"
+      }
+    },
+    "C-INDEFINITE-AGREE": {
+      "'{X}' is singular, so it needs a singular verb || '{X}' is plural and does not agree with it || ": {
+        "count": 4,
+        "example": "Meanwhile, somebody forget their ticket at home.",
+        "role": "subject-verb agreement",
+        "fix": "'forget' is plural and does not agree with it"
+      }
+    },
+    "C-DETERMINER-AGREEMENT": {
+      "'{X}' goes with plural nouns, but the noun '{X}' is sg, so they do not match. || Change '{X}' to the plural '{X}' so it matches '{X}'. || Or change '{X}' to a singular word like '{X}' or '{X}' so it matches the singular noun '{X}'.": {
+        "count": 4,
+        "example": "These book are on sale this week.",
+        "role": "determiner-noun agreement link",
+        "fix": "Change 'book' to the plural 'books' so it matches 'These'."
+      },
+      "'{X}' goes with singular nouns, but the noun '{X}' is pl, so they do not match. || Change '{X}' to the singular '{X}' so it matches '{X}'. || Or change '{X}' to a plural word like '{X}' or '{X}' so it matches the plural noun '{X}'.": {
+        "count": 17,
+        "example": "Meanwhile, this chairs came from the back room.",
+        "role": "determiner-noun agreement link",
+        "fix": "Change 'chairs' to the singular 'chair' so it matches 'this'."
+      }
+    },
+    "C-QUANTIFIER": {
+      "'{X}' does not match the noun '{X}'. || Change '{X}' to '{X}', because '{X}' is a plural noun you can count: '{X}' \u2192 '{X}'. || Or change the noun so it is not countable, letting '{X}' stay \u2014 for example use the singular '{X}' as a mass noun.": {
+        "count": 9,
+        "example": "There are less bottles of juice than before.",
+        "role": "quantifier-noun agreement",
+        "fix": "Change 'less' to 'fewer', because 'bottles' is a plural noun you can count: 'less bottles' \u2192 'fewer bottles'."
+      }
+    },
+    "C-QUANTIFIER-CLASS": {
+      "'{X}' is used with uncountable nouns || With the count plural '{X}' here, use '{X}' || ": {
+        "count": 9,
+        "example": "There are less bottles of juice than before.",
+        "role": "quantifier",
+        "fix": "With the count plural 'bottles' here, use 'fewer'"
+      },
+      "'{X}' is used with uncountable nouns, but here '{X}' is a count plural || Use '{X}' || ": {
+        "count": 2,
+        "example": "There is too much people in the aisle.",
+        "role": "quantifier",
+        "fix": "Use 'many'"
+      }
+    },
+    "C-REFLEXIVE-ANTECEDENT": {
+      "The reflexive '{X}' does not match the subject '{X}' in this sentence. || Change '{X}' to '{X}' || ": {
+        "count": 1,
+        "example": "She taught himself to play the piano.",
+        "role": "reflexive agreement",
+        "fix": "Change 'himself' to 'herself'"
+      },
+      "The reflexive '{X}' does not match the subject '{X}' in this sentence. || Change '{X}' to the subject form '{X}' || ": {
+        "count": 3,
+        "example": "Ourselves cooked the main course.",
+        "role": "reflexive agreement",
+        "fix": "Change 'Ourselves' to the subject form 'we'"
+      }
+    },
+    "C-ARTICLE-MISMATCH": {
+      "'{X}' is the wrong word before '{X}', because '{X}' starts with a vowel sound. || Change '{X}' to '{X}': '{X}'. || ": {
+        "count": 10,
+        "example": "They packed a apple and some sandwiches for the road.",
+        "role": "article selection",
+        "fix": "Change 'a' to 'an': 'an apple'."
+      }
+    },
+    "C-COMMA-OMISSION": {
+      "A comma is needed in this list || Add a comma after '{X}' || ": {
+        "count": 12,
+        "example": "The chef added a egg dish and a fruit salad.",
+        "role": "punctuation",
+        "fix": "Add a comma after 'dish'"
+      }
+    },
+    "C-UNNECESSARY-ARTICLE": {
+      "No article is needed before the meal name. || Remove '{X}' || ": {
+        "count": 1,
+        "example": "We usually have the breakfast before seven.",
+        "role": "articles",
+        "fix": "Remove 'the'"
+      },
+      "No article is needed in this general sense. || Remove '{X}' || ": {
+        "count": 2,
+        "example": "He drinks the coffee on the way.",
+        "role": "articles",
+        "fix": "Remove 'the'"
+      },
+      "No article is needed when referring to the institution's usual activity. || Remove '{X}' || ": {
+        "count": 2,
+        "example": "They go to the school together.",
+        "role": "articles",
+        "fix": "Remove 'the'"
+      },
+      "No article is needed before this subject name. || Remove '{X}' || ": {
+        "count": 2,
+        "example": "She studies the French every evening.",
+        "role": "articles",
+        "fix": "Remove 'the'"
+      }
+    },
+    "C-DET-STACK": {
+      "The phrase '{X}' has more than one determiner (the and '{X}'). || Remove '{X}' and keep '{X}'. || Or keep a different one instead: drop '{X}' and keep '{X}', so only one determiner remains.": {
+        "count": 20,
+        "example": "Each child found the my note in the lunch box.",
+        "role": "determiner stacking",
+        "fix": "Remove 'my' and keep 'the'."
+      }
+    },
+    "C-POSSESSIVE": {
+      "The possessive '{X}' in this sentence needs a noun after it || Write a possessive pronoun that stands alone, like '{X}' or '{X}' || ": {
+        "count": 11,
+        "example": "\"This one is my,\" said Sam.",
+        "role": "determiner",
+        "fix": "Write a possessive pronoun that stands alone, like 'mine' or 'yours'"
+      }
+    },
+    "C-SOME-ANY": {
+      "'{X}' is used in a negative sentence. || Change '{X}' to '{X}'. || ": {
+        "count": 4,
+        "example": "We did not have some milk left.",
+        "role": "determiner",
+        "fix": "Change 'some' to 'any'."
+      }
+    },
+    "C-UNCOUNTABLE": {
+      "'{X}' is an uncountable noun, so in this sentence it has no plural form || Use the singular '{X}' || ": {
+        "count": 5,
+        "example": "The students asked for more equipments for the lab.",
+        "role": "noun number",
+        "fix": "Use the singular 'equipment'"
+      }
+    },
+    "C-NOUN-MODIFIER-NUMBER": {
+      "'{X}' describes '{X}', and a describing noun stays singular || Write '{X}' instead || ": {
+        "count": 6,
+        "example": "They designed a ten-years plan for the staff.",
+        "role": "noun modifier",
+        "fix": "Write 'year plan' instead"
+      }
+    },
+    "C-PLURAL-ONLY": {
+      "The word '{X}' is only used as a plural and cannot follow '{X}' in this sentence || Say '{X}' instead || ": {
+        "count": 1,
+        "example": "The nurse laid out a scissors and a tray.",
+        "role": "noun number",
+        "fix": "Say 'a pair of scissors' instead"
+      }
+    },
+    "C-COORD-CASE": {
+      "'{X}' is the subject here and must take the subject form || Write '{X}' instead || ": {
+        "count": 5,
+        "example": "Me and him packed the bags the night before.",
+        "role": "pronoun case",
+        "fix": "Write 'I' instead"
+      }
+    },
+    "C-RELATIVE-PRONOUN": {
+      "'{X}' does not refer to people || Use '{X}' (or '{X}') after '{X}' || ": {
+        "count": 1,
+        "example": "The woman which lives there is a doctor.",
+        "role": "relative pronoun",
+        "fix": "Use 'who' (or 'that') after 'woman'"
+      },
+      "'{X}' refers to people || Use '{X}' (or '{X}') after '{X}' || ": {
+        "count": 1,
+        "example": "The books who fill the shelves are all new.",
+        "role": "relative pronoun",
+        "fix": "Use 'which' (or 'that') after 'books'"
+      }
+    },
+    "C-REFLEXIVE-SUBJECT": {
+      "'{X}' is a reflexive pronoun and cannot be the subject here || Use a personal pronoun such as '{X}' or '{X}' instead || ": {
+        "count": 8,
+        "example": "Myself painted the big banner.",
+        "role": "subject",
+        "fix": "Use a personal pronoun such as 'I' or 'he' instead"
+      }
+    },
+    "C-MODAL-VERB-FORM": {
+      "After the modal '{X}', the verb must be in its base form, but '{X}' is a third-person-singular form || Use '{X}' || ": {
+        "count": 5,
+        "example": "Mia can runs faster than anyone in her class.",
+        "role": "verb form",
+        "fix": "Use 'run'"
+      }
+    },
+    "C-TENSE-FINITE": {
+      "This input reads as a NP, not a full sentence, because it has no verb in a tensed form. || Add a verb so it becomes a full sentence \u2014 for example '{X}' || ": {
+        "count": 13,
+        "example": "The captain standing near the centre.",
+        "role": "fragment root",
+        "fix": "Add a verb so it becomes a full sentence \u2014 for example 'The captain standing near the centre runs.'"
+      },
+      "This input reads as a SBAR, not a full sentence, because it has no verb in a tensed form. || Add a verb so it becomes a full sentence \u2014 for example '{X}' || ": {
+        "count": 6,
+        "example": "Because the bus was late.",
+        "role": "fragment root",
+        "fix": "Add a verb so it becomes a full sentence \u2014 for example 'Because the bus was late runs.'"
+      },
+      "This input reads as a WHADVP, not a full sentence, because it has no verb in a tensed form. || Add a verb so it becomes a full sentence \u2014 for example '{X}' || ": {
+        "count": 2,
+        "example": "Where are you going",
+        "role": "fragment root",
+        "fix": "Add a verb so it becomes a full sentence \u2014 for example 'Where are you going runs.'"
+      }
+    },
+    "C-COPULA": {
+      "The part '{X}' names a subject and a description but has no verb || Add a form of '{X}' such as '{X}' or '{X}' || ": {
+        "count": 6,
+        "example": "The doctor ready to see the next person.",
+        "role": "predicate",
+        "fix": "Add a form of 'be' such as 'is' or 'was'"
+      }
+    },
+    "C-TIME-PLACE-PREP": {
+      "'{X}' in this sentence has too many prepositions || Write '{X}' instead || ": {
+        "count": 1,
+        "example": "The rules approve at last week's meeting.",
+        "role": "preposition choice",
+        "fix": "Write 'last week' instead"
+      }
+    },
+    "C-EXTRA-PREP": {
+      "The preposition '{X}' is unnecessary after '{X}' || Remove '{X}' || ": {
+        "count": 4,
+        "example": "I am knowing the answer to the first question.",
+        "role": "preposition",
+        "fix": "Remove 'to'"
+      }
+    },
+    "C-GERUND-INFINITIVE": {
+      "'{X}' is followed by the '{X}' form, not a '{X}' + verb || Write '{X}' instead of '{X}' || ": {
+        "count": 4,
+        "example": "She enjoys to swim in the sea in summer.",
+        "role": "complement type",
+        "fix": "Write 'enjoys swimming' instead of 'enjoys to swim'"
+      }
+    },
+    "C-GERUND-INFIN": {
+      "'{X}' is followed by an '{X}' form || Write '{X}' instead of '{X}' || ": {
+        "count": 4,
+        "example": "She enjoys to swim in the sea in summer.",
+        "role": "verb complement",
+        "fix": "Write 'enjoys swimming' instead of 'enjoys to swim'"
+      },
+      "'{X}' takes a '{X}' + verb form || Write '{X}', not '{X}' || ": {
+        "count": 1,
+        "example": "They wanted choosing the tiles themselves.",
+        "role": "verb complement",
+        "fix": "Write 'wanted to choos', not 'wanted choosing'"
+      }
+    },
+    "C-PREP-GERUND": {
+      "After the phrase '{X}', the verb takes the '{X}' form || Write '{X}' instead of '{X}' || ": {
+        "count": 1,
+        "example": "They look forward to swim in the sea.",
+        "role": "verb complement",
+        "fix": "Write 'swimming' instead of 'swim'"
+      }
+    },
+    "C-TO-BASE": {
+      "'{X}' follows '{X}' in this sentence. || Write '{X}' after '{X}' instead of '{X}'. || ": {
+        "count": 14,
+        "example": "He has begun to collects old stamps.",
+        "role": "infinitive",
+        "fix": "Write 'collect' after 'to' instead of 'collects'."
+      }
+    },
+    "C-HEAD-VERB": {
+      "'{X}' is a noun, but '{X}' needs a verb (an action word) here. || Change '{X}' to the plain form '{X}', because after '{X}' the verb keeps its plain form. || Or use a different verb if your sentence means a different action.": {
+        "count": 3,
+        "example": "They hoped to finishes before dinner.",
+        "role": "verb head",
+        "fix": "Change 'finishes' to the plain form 'finish', because after 'to' the verb keeps its plain form."
+      },
+      "'{X}' is a noun, but '{X}' needs a verb (an action word) here. || Change '{X}' to the verb '{X}', because this part of the sentence must have a verb (an action word). || Or use a different verb if your sentence means a different action.": {
+        "count": 4,
+        "example": "She likes swimming, running and to ride a bike.",
+        "role": "verb head",
+        "fix": "Change 'running' to the verb 'runnings', because this part of the sentence must have a verb (an action word)."
+      }
+    },
+    "C-ADVERB-PLACEMENT": {
+      "The adverbial '{X}' sits between the verb and its pronoun object '{X}' || Move it after the pronoun, as in '{X}' || ": {
+        "count": 9,
+        "example": "Please take out it before the truck arrives.",
+        "role": "adverb position",
+        "fix": "Move it after the pronoun, as in '... it out'"
+      }
+    },
+    "C-PHRASAL-ORDER": {
+      "With the pronoun object '{X}', the particle comes last || Write '{X}' instead of '{X}' || ": {
+        "count": 9,
+        "example": "Please take out it before the truck arrives.",
+        "role": "phrasal verb",
+        "fix": "Write 'it out' instead of 'out it'"
+      }
+    },
+    "C-PREP-CHOICE": {
+      "In this sentence, '{X}' needs '{X}' (or '{X}' for a country or city) after it, not '{X}' || Write '{X}', not '{X}' || ": {
+        "count": 3,
+        "example": "A van arrived to collect the boxes.",
+        "role": "preposition",
+        "fix": "Write 'arrived at', not 'arrived to'"
+      }
+    },
+    "C-MODAL-TO": {
+      "The modal '{X}' takes the verb directly without '{X}' || Drop '{X}' here || ": {
+        "count": 10,
+        "example": "Everyone must to bring a packed lunch.",
+        "role": "modal",
+        "fix": "Drop 'to' here"
+      },
+      "The modal '{X}' is followed directly by the verb, without '{X}' || Write '{X}', not '{X}' || ": {
+        "count": 10,
+        "example": "Everyone must to bring a packed lunch.",
+        "role": "verb form",
+        "fix": "Write 'must bring', not 'to bring'"
+      }
+    },
+    "C-QUESTION-INVERSION": {
+      "A wh-question like this one needs the subject and the auxiliary verb to change places, for example '{X}'. || Change '{X}' to '{X}' || ": {
+        "count": 3,
+        "example": "What she does read in the evenings?",
+        "role": "inversion",
+        "fix": "Change 'What she does read in the evenings ?' to 'where are you going?'"
+      }
+    },
+    "C-DOUBLE-NEGATIVE": {
+      "Here, '{X}' and '{X}' are two negatives; standard English uses only one negation. || Use only one negative word here \u2014 remove '{X}' || ": {
+        "count": 1,
+        "example": "Nobody did not help with the chairs.",
+        "role": "negation",
+        "fix": "Use only one negative word here \u2014 remove 'not'"
+      }
+    },
+    "C-IMPERATIVE-VERB": {
+      "After the negator '{X}'t', the verb must be in its base form || Use '{X}' instead of '{X}' || ": {
+        "count": 4,
+        "example": "\"Don't goes upstairs yet,\" said their mother.",
+        "role": "imperative",
+        "fix": "Use 'go' instead of 'goes'"
+      }
+    },
+    "C-CONDITIONAL-WILL": {
+      "After '{X}', use the present tense, not '{X}' || Drop '{X}' and use the present tense there || ": {
+        "count": 10,
+        "example": "If I will water the plants daily, they will survive.",
+        "role": "conditional",
+        "fix": "Drop 'will' and use the present tense there"
+      }
+    },
+    "C-CAUSATIVE-TO": {
+      "After the verb '{X}', the object takes a bare verb without '{X}' || Drop '{X}' before '{X}' || ": {
+        "count": 5,
+        "example": "It made me to cry at the end.",
+        "role": "causative",
+        "fix": "Drop 'to' before 'cry'"
+      }
+    },
+    "C-VERB-CLAUSE-PATTERN": {
+      "'{X}' does not take an object and then a '{X}' + verb form || Write '{X}' or '{X}' instead || ": {
+        "count": 5,
+        "example": "They suggested him to apply for the grant.",
+        "role": "complement clause",
+        "fix": "Write 'suggested that he apply' or 'suggested applying' instead"
+      }
+    },
+    "C-ADJ-ORDER": {
+      "The adjectives in '{X}' are in the wrong order || Write '{X}' instead || ": {
+        "count": 3,
+        "example": "He keeps a red small sports car in the garage.",
+        "role": "adjective order",
+        "fix": "Write 'small red' instead"
+      }
+    },
+    "C-COMPARATIVE-STRUCT": {
+      "With '{X}' and the word '{X}', use '{X}', not '{X}'. || Write '{X}' instead of '{X}' || ": {
+        "count": 6,
+        "example": "Tom is as tall than his brother.",
+        "role": "comparative",
+        "fix": "Write 'as ... as' instead of 'as ... than'"
+      }
+    },
+    "C-CLAUSE-LINKING": {
+      "'{X}' joins two full parts, so a bare '{X}' + verb with no subject cannot follow it directly in this sentence. || Change '{X}' to '{X}' || ": {
+        "count": 5,
+        "example": "Reading is quieter than to watch television.",
+        "role": "clause joining",
+        "fix": "Change 'than' to 'to'"
+      }
+    },
+    "C-ADJ-PREP": {
+      "'{X}' takes the preposition '{X}', not '{X}' || Write '{X}', not '{X}' || ": {
+        "count": 7,
+        "example": "She is married with a teacher.",
+        "role": "preposition",
+        "fix": "Write 'married to', not 'married with'"
+      }
+    },
+    "C-MISSING-PREP": {
+      "'{X}' needs the preposition '{X}' before the word '{X}' || Write '{X}' in this sentence || ": {
+        "count": 1,
+        "example": "He listens music every evening.",
+        "role": "preposition",
+        "fix": "Write 'listens to music' in this sentence"
+      }
+    },
+    "C-PASSIVE": {
+      "This passive needs a form of '{X}' plus the past form || Write '{X}', or use the correct participle form || ": {
+        "count": 1,
+        "example": "The sky turned grey by noon.",
+        "role": "voice",
+        "fix": "Write 'sky was turned', or use the correct participle form"
+      }
+    },
+    "C-DANGLING": {
+      "The opener '{X}' describes the subject of the main clause, but '{X}' cannot perform it. || Change '{X}' to '{X}' || ": {
+        "count": 1,
+        "example": "Walking home, the rain started.",
+        "role": "modifier",
+        "fix": "Change 'Walking' to 'rain'"
+      }
+    },
+    "C-MISPLACED-MODIFIER": {
+      "The modifier in '{X}' is in the wrong place; move the describing phrase right next to the word it describes. || Move the describing phrase in '{X}' so it sits right next to the word it describes || ": {
+        "count": 10,
+        "example": "She served sandwiches to the guests on paper plates.",
+        "role": "clarity",
+        "fix": "Move the describing phrase in 'served sandwiches to the guests on paper plates' so it sits right next to the word it describes"
+      }
+    },
+    "C-PARALLEL": {
+      "Everything in this list should take the same form, but '{X}' is a base verb while '{X}' ends in '{X}' || Change '{X}' to '{X}' to match '{X}' || ": {
+        "count": 1,
+        "example": "Her goals are to stay fit, to have fun and making friends.",
+        "role": "parallelism",
+        "fix": "Change 'making' to 'mak' to match 'have'"
+      }
+    },
+    "C-RESUMPTIVE-RELATIVE": {
+      "The relative pronoun '{X}' already stands for the object, so '{X}' repeats it; remove the repetition. || Remove one of the repeated words: keep '{X}' or '{X}', not both || ": {
+        "count": 1,
+        "example": "The pupil whom she praised him was pleased.",
+        "role": "relative clause",
+        "fix": "Remove one of the repeated words: keep 'whom' or 'him', not both"
+      }
+    },
+    "C-TERMINAL-PUNCT": {
+      "This sentence does not end with '{X}' or '{X}' or '{X}'. || Add the missing end punctuation ('{X}', '{X}' or '{X}') || ": {
+        "count": 1,
+        "example": "The rain had stopped",
+        "role": "punctuation",
+        "fix": "Add the missing end punctuation ('.', '!' or '?')"
+      }
+    },
+    "C-SENTENCE-CAPITAL": {
+      "This sentence begins with '{X}', but sentences start with a capital letter || Write '{X}' || ": {
+        "count": 15,
+        "example": "did you bring your lunch",
+        "role": "capitalization",
+        "fix": "Write 'Did'"
+      }
+    },
+    "C-CAPITALIZATION": {
+      "The sentence begins with '{X}' without a capital letter. || Capitalize the first letter: '{X}' \u2192 '{X}', so the sentence reads '{X}'. || ": {
+        "count": 14,
+        "example": "did you bring your lunch",
+        "role": "sentence capitalization",
+        "fix": "Capitalize the first letter: 'did' \u2192 'Did', so the sentence reads 'Did you bring your lunch'."
+      }
+    },
+    "C-PROPER-NOUN": {
+      "'{X}' names a day or month and must be capitalized in this sentence as '{X}'. || Change '{X}' to '{X}' || ": {
+        "count": 6,
+        "example": "we visited paris in july.",
+        "role": "capitalization",
+        "fix": "Change 'july' to 'July'"
+      }
+    },
+    "C-TO_TOO": {
+      "'{X}' is used here instead of '{X}' (infinitive). || Change '{X}' to '{X}' || ": {
+        "count": 3,
+        "example": "I wanted too go before sunrise.",
+        "role": "word choice",
+        "fix": "Change 'too' to 'to'"
+      },
+      "'{X}' is used here instead of '{X}' (meaning '{X}'). || Change '{X}' to '{X}' || ": {
+        "count": 3,
+        "example": "There were to many delays.",
+        "role": "word choice",
+        "fix": "Change 'to' to 'too'"
+      }
+    },
+    "C-HOMOPHONE": {
+      "The word '{X}' after '{X}' is a comparison || Write '{X}' in this sentence || ": {
+        "count": 1,
+        "example": "It costs more then the old one.",
+        "role": "homophone",
+        "fix": "Write 'more than' in this sentence"
+      }
+    },
+    "C-REDUNDANCY": {
+      "The words '{X}' and '{X}' in this sentence express the same idea twice; keep only one. || Remove one of the repeated words: keep '{X}' or '{X}', not both || ": {
+        "count": 3,
+        "example": "The final outcome was a clear success.",
+        "role": "redundancy",
+        "fix": "Remove one of the repeated words: keep 'final' or 'outcome', not both"
+      }
+    }
+  },
+  "summary": {
+    "sentences": 2893,
+    "constraints": 85,
+    "cards": 996,
+    "vague_fixes": 0
+  }
+}

@@ -1,1760 +1,1398 @@
 {
   "constraints": {
     "C-SUBJECT-ROLE": {
-      "In '{X}', '{X}' is the subject of the clause; subject-verb agreement is checked separately.": {
-        "count": 3061,
+      "'{X}' is the subject of '{X}' \u2014 the person or thing the sentence is about.": {
+        "count": 3034,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "In 'The drama club painted the costume boxs before opening night .', 'The drama club' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'The drama club' is the subject of 'The drama club painted the costume boxs before opening night.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s help , they built a simple set for the stage .'{X}'they' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s help, they built a simple set for the stage.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "With the teacher's help, they built a simple set for the stage.",
-        "text": "In 'With the teacher 's help , they built a simple set for the stage .', 'they' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'they' is the subject of 'With the teacher's help, they built a simple set for the stage.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}', '{X}' is set off by a comma, so it is a fronted phrase or addressee, not the subject the verb agrees with.": {
+      "'{X}' comes before the verb with a comma. It is extra information at the front, not the subject the verb must match.": {
         "count": 6,
         "example": "Anna, meanwhile, kept a steady pace just behind him.",
-        "text": "In 'Anna , meanwhile , kept a steady pace just behind him .', 'Anna' is set off by a comma, so it is a fronted phrase or addressee, not the subject the verb agrees with."
+        "text": "'Anna' comes before the verb with a comma. It is extra information at the front, not the subject the verb must match."
       },
-      "In '{X}'s delight , she could stand easy on her own .'{X}'she' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s delight, she could stand easy on her own.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "Soon, to everyone's delight, she could stand easy on her own.",
-        "text": "In 'Soon , to everyone 's delight , she could stand easy on her own .', 'she' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'she' is the subject of 'Soon, to everyone's delight, she could stand easy on her own.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'re baskets would be safe beside them .'{X}'They' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'re baskets would be safe beside them.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "They said they're baskets would be safe beside them.",
-        "text": "In 'They said they 're baskets would be safe beside them .', 'They' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'They' is the subject of 'They said they're baskets would be safe beside them.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'re baskets would be safe beside them'{X}'they' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'re baskets would be safe beside them' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "They said they're baskets would be safe beside them.",
-        "text": "In 'they 're baskets would be safe beside them', 'they' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'they' is the subject of 'they're baskets would be safe beside them' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'re visit .'{X}'They' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'re visit.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "They were excited about they're visit.",
-        "text": "In 'They were excited about they 're visit .', 'They' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'They' is the subject of 'They were excited about they're visit.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'re visit'{X}'they' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'re visit' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "They were excited about they're visit.",
-        "text": "In 'they 're visit', 'they' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'they' is the subject of 'they're visit' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s windows were full of fresh bread .'{X}'it '{X}' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}'s windows'{X}'From the street, it'{X}' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "From the street, it's windows were full of fresh bread.",
-        "text": "In 'From the street , it 's windows were full of fresh bread .', 'it 's windows' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'it's windows' is the subject of 'From the street, it's windows were full of fresh bread.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'re coffee was the best in town .'{X}'Many' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'re coffee was the best in town.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "Many agreed that they're coffee was the best in town.",
-        "text": "In 'Many agreed that they 're coffee was the best in town .', 'Many' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'Many' is the subject of 'Many agreed that they're coffee was the best in town.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'re coffee was the best in town'{X}'they' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'re coffee was the best in town' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "Many agreed that they're coffee was the best in town.",
-        "text": "In 'they 're coffee was the best in town', 'they' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'they' is the subject of 'they're coffee was the best in town' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s tidy , \" she promised .'{X}'she' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s tidy, \" she promised.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "\"Ill call you when it's tidy,\" she promised.",
-        "text": "In '\" Ill call you when it 's tidy , \" she promised .', 'she' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'she' is the subject of '\" Ill call you when it's tidy, \" she promised.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s results .'{X}'The team' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s results.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "The team reviewed the season's results.",
-        "text": "In 'The team reviewed the season 's results .', 'The team' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'The team' is the subject of 'The team reviewed the season's results.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s meeting .'{X}'The rules' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s meeting.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "The rules approve at last week's meeting.",
-        "text": "In 'The rules approve at last week 's meeting .', 'The rules' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'The rules' is the subject of 'The rules approve at last week's meeting.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s decision .'{X}'The coach' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s decision.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "The coach is doubting the referee's decision.",
-        "text": "In 'The coach is doubting the referee 's decision .', 'The coach' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'The coach' is the subject of 'The coach is doubting the referee's decision.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'t loses your positions , \" he warned .'{X}'he' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'t loses your positions, \" he warned.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "\"Don't loses your positions,\" he warned.",
-        "text": "In '\" Do n't loses your positions , \" he warned .', 'he' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'he' is the subject of '\" Don't loses your positions, \" he warned.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'t talks during the test , \" she added .'{X}'she' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'t talks during the test, \" she added.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "\"Don't talks during the test,\" she added.",
-        "text": "In '\" Do n't talks during the test , \" she added .', 'she' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'she' is the subject of '\" Don't talks during the test, \" she added.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'t rushes , \" he warned the group .'{X}'he' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'t rushes, \" he warned the group.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "\"Don't rushes,\" he warned the group.",
-        "text": "In '\" Do n't rushes , \" he warned the group .', 'he' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'he' is the subject of '\" Don't rushes, \" he warned the group.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'t forgets the pepper , \" the chef added .'{X}'the chef' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'t forgets the pepper, \" the chef added.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "\"Don't forgets the pepper,\" the chef added.",
-        "text": "In '\" Do n't forgets the pepper , \" the chef added .', 'the chef' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'the chef' is the subject of '\" Don't forgets the pepper, \" the chef added.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s notes .'{X}'The doctor' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s notes.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "The doctor reviewed the patient's notes.",
-        "text": "In 'The doctor reviewed the patient 's notes .', 'The doctor' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'The doctor' is the subject of 'The doctor reviewed the patient's notes.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'t it ?'{X}'it' is the subject of the clause; subject-verb agreement is checked separately.": {
-        "count": 13,
-        "example": "You are late again, isn't it?",
-        "text": "In 'You are late again , is n't it ?', 'it' is the subject of the clause; subject-verb agreement is checked separately."
-      },
-      "In '{X}'t it ?'{X}'We' is the subject of the clause; subject-verb agreement is checked separately.": {
-        "count": 1,
-        "example": "We have quite sure, hasn't it?",
-        "text": "In 'We have quite sure , has n't it ?', 'We' is the subject of the clause; subject-verb agreement is checked separately."
-      },
-      "In '{X}'s .'{X}'Its coffee' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "Its coffee is as good than the other's.",
-        "text": "In 'Its coffee is as good than the other 's .', 'Its coffee' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'Its coffee' is the subject of 'Its coffee is as good than the other's.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s history .'{X}'People' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s history.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "People are proud for the market's history.",
-        "text": "In 'People are proud for the market 's history .', 'People' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'People' is the subject of 'People are proud for the market's history.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'t like coffee'{X}'You' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'t it?' \u2014 the person or thing the sentence is about.": {
+        "count": 2,
+        "example": "You are coming, isn't it?",
+        "text": "'it' is the subject of 'You are coming, isn't it?' \u2014 the person or thing the sentence is about."
+      },
+      "'{X}' is the subject of '{X}'t like coffee' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "You don't like coffee, don't you?",
-        "text": "In 'You do n't like coffee', 'You' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'You' is the subject of 'You don't like coffee' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'t coming'{X}'She' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'t coming' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "She isn't coming, isn't she?",
-        "text": "In 'She is n't coming', 'She' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'She' is the subject of 'She isn't coming' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s paw .'{X}'The cat' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s paw.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "The cat licked it's paw.",
-        "text": "In 'The cat licked it 's paw .', 'The cat' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'The cat' is the subject of 'The cat licked it's paw.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s power .'{X}'The machine' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s power.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "The machine lost it's power.",
-        "text": "In 'The machine lost it 's power .', 'The machine' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'The machine' is the subject of 'The machine lost it's power.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s leaves early .'{X}'The old oak shed' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s leaves early.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "The old oak shed it's leaves early.",
-        "text": "In 'The old oak shed it 's leaves early .', 'The old oak shed' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'The old oak shed' is the subject of 'The old oak shed it's leaves early.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s leaves early'{X}'it' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s leaves early' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "The old oak shed it's leaves early.",
-        "text": "In 'it 's leaves early', 'it' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'it' is the subject of 'it's leaves early' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s roof repaired .'{X}'The building' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s roof repaired.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "The building had it's roof repaired.",
-        "text": "In 'The building had it 's roof repaired .', 'The building' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'The building' is the subject of 'The building had it's roof repaired.' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s roof repaired'{X}'it '{X}' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}'s roof'{X}'it'{X}' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "The building had it's roof repaired.",
-        "text": "In 'it 's roof repaired', 'it 's roof' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'it's roof' is the subject of 'it's roof repaired' \u2014 the person or thing the sentence is about."
       },
-      "In '{X}'s tail happily .'{X}'The puppy' is the subject of the clause; subject-verb agreement is checked separately.": {
+      "'{X}' is the subject of '{X}'s tail happily.' \u2014 the person or thing the sentence is about.": {
         "count": 1,
         "example": "The puppy wagged it's tail happily.",
-        "text": "In 'The puppy wagged it 's tail happily .', 'The puppy' is the subject of the clause; subject-verb agreement is checked separately."
+        "text": "'The puppy' is the subject of 'The puppy wagged it's tail happily.' \u2014 the person or thing the sentence is about."
       }
     },
     "C-DETERMINER": {
-      "In '{X}', '{X}' works with the noun '{X}'.": {
-        "count": 2818,
+      "The word '{X}' comes before the noun '{X}' in '{X}'.": {
+        "count": 2795,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "In 'The drama club', 'The' works with the noun 'club'."
+        "text": "The word 'The' comes before the noun 'club' in 'The drama club'."
       },
-      "In '{X}', '{X}' marks that the noun belongs to someone.": {
-        "count": 328,
+      "The word '{X}' comes before the noun in '{X}' and shows who it belongs to.": {
+        "count": 327,
         "example": "Our class visited the history museum on Friday.",
-        "text": "In 'Our class', 'Our' marks that the noun belongs to someone."
+        "text": "The word 'Our' comes before the noun in 'Our class' and shows who it belongs to."
       },
-      "In '{X}', '{X}' and the noun '{X}' match in singular/plural.": {
-        "count": 704,
+      "The word '{X}' and the noun '{X}' in '{X}' both point to one thing or to more than one, so they match.": {
+        "count": 703,
         "example": "Staff arranged picture books on a table near the entrance.",
-        "text": "In 'a table', 'a' and the noun 'table' match in singular/plural."
+        "text": "The word 'a' and the noun 'table' in 'a table' both point to one thing or to more than one, so they match."
       },
-      "In '{X}'s'{X}'the'{X}'teacher'.": {
-        "count": 1,
+      "The word '{X}' comes before the noun '{X}' in '{X}'s'.": {
+        "count": 6,
         "example": "With the teacher's help, they built a simple set for the stage.",
-        "text": "In 'the teacher 's', 'the' works with the noun 'teacher'."
+        "text": "The word 'the' comes before the noun 'teacher' in 'the teacher's'."
       },
-      "In '{X}', '{X}' stands alone as a pronoun, which this word can do.": {
+      "'{X}' can stand alone as the whole group '{X}' with no noun after it, which is allowed.": {
         "count": 29,
         "example": "Both agreed it had been a fair contest.",
-        "text": "In 'Both', 'Both' stands alone as a pronoun, which this word can do."
-      },
-      "In '{X}'s'{X}'the'{X}'season'.": {
-        "count": 1,
-        "example": "The team reviewed the season's results.",
-        "text": "In 'the season 's', 'the' works with the noun 'season'."
-      },
-      "In '{X}'s'{X}'the'{X}'referee'.": {
-        "count": 1,
-        "example": "The coach is doubting the referee's decision.",
-        "text": "In 'the referee 's', 'the' works with the noun 'referee'."
-      },
-      "In '{X}'s'{X}'the'{X}'patient'.": {
-        "count": 1,
-        "example": "The doctor reviewed the patient's notes.",
-        "text": "In 'the patient 's', 'the' works with the noun 'patient'."
-      },
-      "In '{X}'s'{X}'the'{X}'other'.": {
-        "count": 1,
-        "example": "Its coffee is as good than the other's.",
-        "text": "In 'the other 's', 'the' works with the noun 'other'."
-      },
-      "In '{X}'s'{X}'the'{X}'market'.": {
-        "count": 1,
-        "example": "People are proud for the market's history.",
-        "text": "In 'the market 's', 'the' works with the noun 'market'."
+        "text": "'Both' can stand alone as the whole group 'Both' with no noun after it, which is allowed."
       }
     },
     "C-NOUN-ADJUNCT": {
-      "In '{X}', '{X}' is a noun used like an adjective to describe '{X}'.": {
-        "count": 342,
+      "In '{X}', the word '{X}' describes the noun '{X}' (it tells us what kind). It is not a second main noun.": {
+        "count": 343,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "In 'The drama club', 'drama' is a noun used like an adjective to describe 'club'."
+        "text": "In 'The drama club', the word 'drama' describes the noun 'club' (it tells us what kind). It is not a second main noun."
       }
     },
     "C-HEAD-NOUN": {
-      "In '{X}', '{X}' is the main noun of the phrase.": {
-        "count": 6252,
+      "The noun '{X}' is the main word of '{X}'. It tells us whether the group of words means one thing or many.": {
+        "count": 4960,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "In 'The drama club', 'club' is the main noun of the phrase."
+        "text": "The noun 'club' is the main word of 'The drama club'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s'{X}'teacher' is the main noun of the phrase.": {
+      "The pronoun '{X}' is the main word of '{X}'. It tells us whether the group of words means one thing or many.": {
+        "count": 1244,
+        "example": "We copied our favorite dates into our notebooks.",
+        "text": "The pronoun 'We' is the main word of 'We'. It tells us whether the group of words means one thing or many."
+      },
+      "The noun '{X}' is the main word of '{X}'s'. It tells us whether the group of words means one thing or many.": {
+        "count": 7,
+        "example": "With the teacher's help, they built a simple set for the stage.",
+        "text": "The noun 'teacher' is the main word of 'the teacher's'. It tells us whether the group of words means one thing or many."
+      },
+      "The noun '{X}' is the main word of '{X}'s help'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "With the teacher's help, they built a simple set for the stage.",
-        "text": "In 'the teacher 's', 'teacher' is the main noun of the phrase."
+        "text": "The noun 'help' is the main word of 'the teacher's help'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s help'{X}'help' is the main noun of the phrase.": {
-        "count": 1,
-        "example": "With the teacher's help, they built a simple set for the stage.",
-        "text": "In 'the teacher 's help', 'help' is the main noun of the phrase."
-      },
-      "In '{X}'s'{X}'everyone' is the main noun of the phrase.": {
+      "The noun '{X}' is the main word of '{X}'s delight'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "Soon, to everyone's delight, she could stand easy on her own.",
-        "text": "In 'everyone 's', 'everyone' is the main noun of the phrase."
+        "text": "The noun 'delight' is the main word of 'everyone's delight'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s delight'{X}'delight' is the main noun of the phrase.": {
-        "count": 1,
-        "example": "Soon, to everyone's delight, she could stand easy on her own.",
-        "text": "In 'everyone 's delight', 'delight' is the main noun of the phrase."
-      },
-      "In '{X}'s'{X}'it' is the main noun of the phrase.": {
+      "The pronoun '{X}' is the main word of '{X}'s'. It tells us whether the group of words means one thing or many.": {
         "count": 5,
         "example": "From the street, it's windows were full of fresh bread.",
-        "text": "In 'it 's', 'it' is the main noun of the phrase."
+        "text": "The pronoun 'it' is the main word of 'it's'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s windows'{X}'windows' is the main noun of the phrase.": {
+      "The noun '{X}' is the main word of '{X}'s windows'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "From the street, it's windows were full of fresh bread.",
-        "text": "In 'it 's windows', 'windows' is the main noun of the phrase."
+        "text": "The noun 'windows' is the main word of 'it's windows'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s'{X}'season' is the main noun of the phrase.": {
+      "The noun '{X}' is the main word of '{X}'s results'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "The team reviewed the season's results.",
-        "text": "In 'the season 's', 'season' is the main noun of the phrase."
+        "text": "The noun 'results' is the main word of 'the season's results'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s results'{X}'results' is the main noun of the phrase.": {
-        "count": 1,
-        "example": "The team reviewed the season's results.",
-        "text": "In 'the season 's results', 'results' is the main noun of the phrase."
-      },
-      "In '{X}'s'{X}'week' is the main noun of the phrase.": {
+      "The noun '{X}' is the main word of '{X}'s meeting'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "The rules approve at last week's meeting.",
-        "text": "In 'last week 's', 'week' is the main noun of the phrase."
+        "text": "The noun 'meeting' is the main word of 'last week's meeting'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s meeting'{X}'meeting' is the main noun of the phrase.": {
-        "count": 1,
-        "example": "The rules approve at last week's meeting.",
-        "text": "In 'last week 's meeting', 'meeting' is the main noun of the phrase."
-      },
-      "In '{X}'s'{X}'referee' is the main noun of the phrase.": {
+      "The noun '{X}' is the main word of '{X}'s decision'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "The coach is doubting the referee's decision.",
-        "text": "In 'the referee 's', 'referee' is the main noun of the phrase."
+        "text": "The noun 'decision' is the main word of 'the referee's decision'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s decision'{X}'decision' is the main noun of the phrase.": {
-        "count": 1,
-        "example": "The coach is doubting the referee's decision.",
-        "text": "In 'the referee 's decision', 'decision' is the main noun of the phrase."
-      },
-      "In '{X}'s'{X}'patient' is the main noun of the phrase.": {
+      "The noun '{X}' is the main word of '{X}'s notes'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "The doctor reviewed the patient's notes.",
-        "text": "In 'the patient 's', 'patient' is the main noun of the phrase."
+        "text": "The noun 'notes' is the main word of 'the patient's notes'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s notes'{X}'notes' is the main noun of the phrase.": {
-        "count": 1,
-        "example": "The doctor reviewed the patient's notes.",
-        "text": "In 'the patient 's notes', 'notes' is the main noun of the phrase."
-      },
-      "In '{X}'s'{X}'market' is the main noun of the phrase.": {
+      "The noun '{X}' is the main word of '{X}'s history'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "People are proud for the market's history.",
-        "text": "In 'the market 's', 'market' is the main noun of the phrase."
+        "text": "The noun 'history' is the main word of 'the market's history'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s history'{X}'history' is the main noun of the phrase.": {
-        "count": 1,
-        "example": "People are proud for the market's history.",
-        "text": "In 'the market 's history', 'history' is the main noun of the phrase."
-      },
-      "In '{X}'s paw'{X}'paw' is the main noun of the phrase.": {
+      "The noun '{X}' is the main word of '{X}'s paw'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "The cat licked it's paw.",
-        "text": "In 'it 's paw', 'paw' is the main noun of the phrase."
+        "text": "The noun 'paw' is the main word of 'it's paw'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s power'{X}'power' is the main noun of the phrase.": {
+      "The noun '{X}' is the main word of '{X}'s power'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "The machine lost it's power.",
-        "text": "In 'it 's power', 'power' is the main noun of the phrase."
+        "text": "The noun 'power' is the main word of 'it's power'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s roof'{X}'roof' is the main noun of the phrase.": {
+      "The noun '{X}' is the main word of '{X}'s roof'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "The building had it's roof repaired.",
-        "text": "In 'it 's roof', 'roof' is the main noun of the phrase."
+        "text": "The noun 'roof' is the main word of 'it's roof'. It tells us whether the group of words means one thing or many."
       },
-      "In '{X}'s tail'{X}'tail' is the main noun of the phrase.": {
+      "The noun '{X}' is the main word of '{X}'s tail'. It tells us whether the group of words means one thing or many.": {
         "count": 1,
         "example": "The puppy wagged it's tail happily.",
-        "text": "In 'it 's tail', 'tail' is the main noun of the phrase."
+        "text": "The noun 'tail' is the main word of 'it's tail'. It tells us whether the group of words means one thing or many."
       }
     },
     "C-PREDICATE": {
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (past) match in person and number.": {
-        "count": 1050,
+      "The subject '{X}' and the verb '{X}' go together correctly.": {
+        "count": 2804,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "In 'The drama club painted the costume boxs before opening night .', the subject 'The drama club' (3rd person singular) and the verb 'painted' (past) match in person and number."
+        "text": "The subject 'The drama club' and the verb 'painted' go together correctly."
       },
-      "In '{X}', the subject '{X}' (3rd person plural) and the verb '{X}' (past) match in person and number.": {
-        "count": 519,
-        "example": "The actors waited quietly behind the curtain.",
-        "text": "In 'The actors waited quietly behind the curtain .', the subject 'The actors' (3rd person plural) and the verb 'waited' (past) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person plural) and the verb '{X}' (past (had)) match in person and number.": {
-        "count": 20,
-        "example": "Several citys had sent maps for the new exhibit.",
-        "text": "In 'Several citys had sent maps for the new exhibit .', the subject 'Several citys' (3rd person plural) and the verb 'had' (past (had)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person plural) and the verb '{X}' (past) match in person and number.": {
-        "count": 110,
-        "example": "We copied our favorite dates into our notebooks.",
-        "text": "In 'We copied our favorite dates into our notebooks .', the subject 'We' (1st person plural) and the verb 'copied' (past) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person plural) and the verb '{X}' (non-third-person present) match in person and number.": {
-        "count": 103,
-        "example": "They set the ripe berrys beside jars of local honey.",
-        "text": "In 'They set the ripe berrys beside jars of local honey .', the subject 'They' (3rd person plural) and the verb 'set' (non-third-person present) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (past (was)) match in person and number.": {
-        "count": 287,
-        "example": "By midday, the orchard road was busy with visitors.",
-        "text": "In 'By midday , the orchard road was busy with visitors .', the subject 'the orchard road' (3rd person singular) and the verb 'was' (past (was)) match in person and number."
-      },
-      "The verb phrase '{X}' is an imperative (a command with no stated subject), so it correctly needs no tensed form.": {
-        "count": 78,
+      "The words '{X}' are a command. There is no subject, so the plain form is correct.": {
+        "count": 77,
         "example": "Students helped carry the meals to the tables.",
-        "text": "The verb phrase 'carry the meals to the tables' is an imperative (a command with no stated subject), so it correctly needs no tensed form."
+        "text": "The words 'carry the meals to the tables' are a command. There is no subject, so the plain form is correct."
       },
-      "'{X}' is the predicate of the clause '{X}', and there is no subject for it to disagree with.": {
+      "The words '{X}' are the verb part of '{X}'. There is no subject, so there is nothing to match.": {
         "count": 56,
         "example": "A sign listed the farms that supplied the produce.",
-        "text": "'supplied the produce' is the predicate of the clause 'supplied the produce', and there is no subject for it to disagree with."
+        "text": "The words 'supplied the produce' are the verb part of 'supplied the produce'. There is no subject, so there is nothing to match."
       },
-      "In '{X}', the subject '{X}' (3rd person plural) and the verb '{X}' (past (were)) match in person and number.": {
-        "count": 59,
-        "example": "Finished posters were packed into flat boxs for delivery.",
-        "text": "In 'Finished posters were packed into flat boxs for delivery .', the subject 'Finished posters' (3rd person plural) and the verb 'were' (past (were)) match in person and number."
+      "The words '{X}' are the verb part of '{X}'. The subject is not a single word, so this is accepted.": {
+        "count": 53,
+        "example": "Many had saw the same letters online before.",
+        "text": "The words 'had saw the same letters online before' are the verb part of 'Many had saw the same letters online before.'. The subject is not a single word, so this is accepted."
       },
-      "In '{X}', the subject '{X}' (3rd person plural) and the verb '{X}' (a modal auxiliary) match in person and number.": {
-        "count": 34,
-        "example": "Visitors could now walk around the whole garden.",
-        "text": "In 'Visitors could now walk around the whole garden .', the subject 'Visitors' (3rd person plural) and the verb 'could' (a modal auxiliary) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (past (had)) match in person and number.": {
-        "count": 41,
-        "example": "The room had comfortable chairs beside the windows.",
-        "text": "In 'The room had comfortable chairs beside the windows .', the subject 'The room' (3rd person singular) and the verb 'had' (past (had)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (third-person singular present) match in person and number.": {
-        "count": 229,
-        "example": "My grandmother keeps a small farm near the coast, where she has lived for forty years.",
-        "text": "In 'My grandmother keeps a small farm near the coast , where she has lived for forty years .', the subject 'My grandmother' (3rd person singular) and the verb 'keeps' (third-person singular present) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (third-person singular present (has)) match in person and number.": {
-        "count": 35,
-        "example": "My grandmother keeps a small farm near the coast, where she has lived for forty years.",
-        "text": "In 'she has lived for forty years', the subject 'she' (3rd person singular) and the verb 'has' (third-person singular present (has)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person plural) and the verb '{X}' (non-third-person present (have)) match in person and number.": {
-        "count": 10,
-        "example": "Every morning, before breakfast, she collects the eggs they have laid.",
-        "text": "In 'they have laid', the subject 'they' (3rd person plural) and the verb 'have' (non-third-person present (have)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person singular) and the verb '{X}' (non-third-person present) match in person and number.": {
-        "count": 9,
-        "example": "I still keep a photo of that day.",
-        "text": "In 'I still keep a photo of that day .', the subject 'I' (1st person singular) and the verb 'keep' (non-third-person present) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (a modal auxiliary) match in person and number.": {
-        "count": 34,
-        "example": "By evening, Anna could ride without wobbling.",
-        "text": "In 'By evening , Anna could ride without wobbling .', the subject 'Anna' (3rd person singular) and the verb 'could' (a modal auxiliary) match in person and number."
-      },
-      "In '{X}'s help , they built a simple set for the stage .'{X}'they'{X}'built' (past) match in person and number.": {
-        "count": 1,
-        "example": "With the teacher's help, they built a simple set for the stage.",
-        "text": "In 'With the teacher 's help , they built a simple set for the stage .', the subject 'they' (3rd person plural) and the verb 'built' (past) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (third-person singular present (is)) match in person and number.": {
-        "count": 133,
-        "example": "Now the garden is full of busy workers.",
-        "text": "In 'Now the garden is full of busy workers .', the subject 'the garden' (3rd person singular) and the verb 'is' (third-person singular present (is)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person plural) and the verb '{X}' (non-third-person present (are)) match in person and number.": {
-        "count": 36,
-        "example": "The owner boasted that these apples are gooder than the ones last week.",
-        "text": "In 'these apples are gooder than the ones last week', the subject 'these apples' (3rd person plural) and the verb 'are' (non-third-person present (are)) match in person and number."
-      },
-      "In '{X}'s delight , she could stand easy on her own .'{X}'she'{X}'could' (a modal auxiliary) match in person and number.": {
-        "count": 1,
-        "example": "Soon, to everyone's delight, she could stand easy on her own.",
-        "text": "In 'Soon , to everyone 's delight , she could stand easy on her own .', the subject 'she' (3rd person singular) and the verb 'could' (a modal auxiliary) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person singular) and the verb '{X}' (past) match in person and number.": {
-        "count": 37,
-        "example": "For once, I corrected my mistakes all by meself.",
-        "text": "In 'For once , I corrected my mistakes all by meself .', the subject 'I' (1st person singular) and the verb 'corrected' (past) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person plural) and the verb '{X}' (past (had)) match in person and number.": {
-        "count": 5,
-        "example": "We had divided the work fairly among ourself.",
-        "text": "In 'We had divided the work fairly among ourself .', the subject 'We' (1st person plural) and the verb 'had' (past (had)) match in person and number."
-      },
-      "In '{X}'re baskets would be safe beside them .'{X}'They'{X}'said' (past) match in person and number.": {
-        "count": 1,
+      "The subject '{X}' and the verb '{X}'re' go together correctly.": {
+        "count": 3,
         "example": "They said they're baskets would be safe beside them.",
-        "text": "In 'They said they 're baskets would be safe beside them .', the subject 'They' (3rd person plural) and the verb 'said' (past) match in person and number."
+        "text": "The subject 'they' and the verb ''re' go together correctly."
       },
-      "In '{X}'re baskets would be safe beside them'{X}'they'{X}''{X}' (non-third-person present) match in person and number.": {
-        "count": 1,
-        "example": "They said they're baskets would be safe beside them.",
-        "text": "In 'they 're baskets would be safe beside them', the subject 'they' (3rd person plural) and the verb ''re' (non-third-person present) match in person and number."
-      },
-      "In '{X}'re visit .'{X}'They'{X}'were' (past (were)) match in person and number.": {
-        "count": 1,
-        "example": "They were excited about they're visit.",
-        "text": "In 'They were excited about they 're visit .', the subject 'They' (3rd person plural) and the verb 'were' (past (were)) match in person and number."
-      },
-      "In '{X}'re visit'{X}'they'{X}''{X}' (non-third-person present) match in person and number.": {
-        "count": 1,
-        "example": "They were excited about they're visit.",
-        "text": "In 'they 're visit', the subject 'they' (3rd person plural) and the verb ''re' (non-third-person present) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (past (were)) match in person and number.": {
-        "count": 9,
-        "example": "When they arrived, their were long queues at the entrance.",
-        "text": "In 'When they arrived , their were long queues at the entrance .', the subject 'their' (3rd person singular) and the verb 'were' (past (were)) match in person and number."
-      },
-      "In '{X}'s windows were full of fresh bread .'{X}'it '{X}' (3rd person plural) and the verb '{X}' (past (were)) match in person and number.": {
+      "The subject '{X}'s windows'{X}'were' go together correctly.": {
         "count": 1,
         "example": "From the street, it's windows were full of fresh bread.",
-        "text": "In 'From the street , it 's windows were full of fresh bread .', the subject 'it 's windows' (3rd person plural) and the verb 'were' (past (were)) match in person and number."
+        "text": "The subject 'it's windows' and the verb 'were' go together correctly."
       },
-      "In '{X}'re coffee was the best in town .'{X}'Many'{X}'agreed' (past) match in person and number.": {
+      "The words '{X}'re coffee was the best in town'{X}'Many agreed that they'{X}'. The subject is not a single word, so this is accepted.": {
         "count": 1,
         "example": "Many agreed that they're coffee was the best in town.",
-        "text": "In 'Many agreed that they 're coffee was the best in town .', the subject 'Many' (3rd person plural) and the verb 'agreed' (past) match in person and number."
+        "text": "The words 'agreed that they're coffee was the best in town' are the verb part of 'Many agreed that they're coffee was the best in town.'. The subject is not a single word, so this is accepted."
       },
-      "In '{X}'re coffee was the best in town'{X}'they'{X}''{X}' (non-third-person present) match in person and number.": {
-        "count": 1,
-        "example": "Many agreed that they're coffee was the best in town.",
-        "text": "In 'they 're coffee was the best in town', the subject 'they' (3rd person plural) and the verb ''re' (non-third-person present) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person plural) and the verb '{X}' (non-third-person present) match in person and number.": {
-        "count": 11,
-        "example": "So we usually drive her there in the morning.",
-        "text": "In 'So we usually drive her there in the morning .', the subject 'we' (1st person plural) and the verb 'drive' (non-third-person present) match in person and number."
-      },
-      "In '{X}'s tidy , \" she promised .'{X}'she'{X}'promised' (past) match in person and number.": {
-        "count": 1,
-        "example": "\"Ill call you when it's tidy,\" she promised.",
-        "text": "In '\" Ill call you when it 's tidy , \" she promised .', the subject 'she' (3rd person singular) and the verb 'promised' (past) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (third-person singular present (does)) match in person and number.": {
-        "count": 4,
-        "example": "He doesnt know about it yet, so please keep quiet.",
-        "text": "In 'He does nt know about it yet', the subject 'He' (3rd person singular) and the verb 'does' (third-person singular present (does)) match in person and number."
-      },
-      "In '{X}', '{X}' can take either a singular or a plural verb, so '{X}' is accepted with it.": {
-        "count": 9,
-        "example": "Outside, a number of parents were waiting.",
-        "text": "In 'Outside , a number of parents were waiting .', 'a number of parents' can take either a singular or a plural verb, so 'were' is accepted with it."
-      },
-      "In '{X}'s results .'{X}'The team'{X}'reviewed' (past) match in person and number.": {
-        "count": 1,
-        "example": "The team reviewed the season's results.",
-        "text": "In 'The team reviewed the season 's results .', the subject 'The team' (3rd person singular) and the verb 'reviewed' (past) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (non-third-person present (are)) match in person and number.": {
+      "The subject '{X}' can be seen as one thing or many, so the verb '{X}' is correct either way.": {
         "count": 8,
-        "example": "There are less bottles of juice than before.",
-        "text": "In 'There are less bottles of juice than before .', the subject 'There' (3rd person singular) and the verb 'are' (non-third-person present (are)) match in person and number."
+        "example": "Outside, a number of parents were waiting.",
+        "text": "The subject 'a number of parents' can be seen as one thing or many, so the verb 'were' is correct either way."
       },
-      "In '{X}', the subject '{X}' (1st person plural) and the verb '{X}' (non-third-person present (have)) match in person and number.": {
-        "count": 4,
-        "example": "We have less chairs than we need.",
-        "text": "In 'We have less chairs than we need .', the subject 'We' (1st person plural) and the verb 'have' (non-third-person present (have)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person singular) and the verb '{X}' (a modal auxiliary) match in person and number.": {
-        "count": 6,
-        "example": "I will bring some fruit and some juice.",
-        "text": "In 'I will bring some fruit and some juice .', the subject 'I' (1st person singular) and the verb 'will' (a modal auxiliary) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person plural) and the verb '{X}' (past (did)) match in person and number.": {
-        "count": 1,
-        "example": "We did not have some milk left.",
-        "text": "In 'We did not have some milk left .', the subject 'We' (1st person plural) and the verb 'did' (past (did)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person plural) and the verb '{X}' (past (were)) match in person and number.": {
-        "count": 9,
-        "example": "We were preparing for the visitors.",
-        "text": "In 'We were preparing for the visitors .', the subject 'We' (1st person plural) and the verb 'were' (past (were)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person plural) and the verb '{X}' (a modal auxiliary) match in person and number.": {
-        "count": 14,
-        "example": "We will certainly go again.",
-        "text": "In 'We will certainly go again .', the subject 'We' (1st person plural) and the verb 'will' (a modal auxiliary) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (a pronoun) and the verb '{X}' (past) match in person and number.": {
-        "count": 4,
-        "example": "Myself painted the big banner.",
-        "text": "In 'Myself painted the big banner .', the subject 'Myself' (a pronoun) and the verb 'painted' (past) match in person and number."
-      },
-      "In '{X}'s meeting .'{X}'The rules'{X}'approve' (non-third-person present) match in person and number.": {
-        "count": 1,
-        "example": "The rules approve at last week's meeting.",
-        "text": "In 'The rules approve at last week 's meeting .', the subject 'The rules' (3rd person plural) and the verb 'approve' (non-third-person present) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person singular) and the verb '{X}' (non-third-person present (am)) match in person and number.": {
-        "count": 6,
-        "example": "I am knowing the answer to the first question.",
-        "text": "In 'I am knowing the answer to the first question .', the subject 'I' (1st person singular) and the verb 'am' (non-third-person present (am)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person plural) and the verb '{X}' (non-third-person present (are)) match in person and number.": {
-        "count": 5,
-        "example": "We are wanting a larger garden.",
-        "text": "In 'We are wanting a larger garden .', the subject 'We' (1st person plural) and the verb 'are' (non-third-person present (are)) match in person and number."
-      },
-      "In '{X}'s decision .'{X}'The coach'{X}'is' (third-person singular present (is)) match in person and number.": {
-        "count": 1,
-        "example": "The coach is doubting the referee's decision.",
-        "text": "In 'The coach is doubting the referee 's decision .', the subject 'The coach' (3rd person singular) and the verb 'is' (third-person singular present (is)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (2nd person) and the verb '{X}' (a modal auxiliary) match in person and number.": {
-        "count": 2,
-        "example": "You may to book a session online.",
-        "text": "In 'You may to book a session online .', the subject 'You' (2nd person) and the verb 'may' (a modal auxiliary) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (2nd person) and the verb '{X}' (non-third-person present (are)) match in person and number.": {
-        "count": 5,
-        "example": "Where you are going after school?",
-        "text": "In 'you are going after school', the subject 'you' (2nd person) and the verb 'are' (non-third-person present (are)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (2nd person) and the verb '{X}' (non-third-person present (have)) match in person and number.": {
-        "count": 3,
-        "example": "Where you have put the tickets?",
-        "text": "In 'you have put the tickets', the subject 'you' (2nd person) and the verb 'have' (non-third-person present (have)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (2nd person) and the verb '{X}' (non-third-person present) match in person and number.": {
-        "count": 3,
-        "example": "How you make the soup so quickly?",
-        "text": "In 'you make the soup so quickly', the subject 'you' (2nd person) and the verb 'make' (non-third-person present) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person plural) and the verb '{X}' (past (did)) match in person and number.": {
-        "count": 6,
-        "example": "They did not score no goals in the first half.",
-        "text": "In 'They did not score no goals in the first half .', the subject 'They' (3rd person plural) and the verb 'did' (past (did)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (past (did)) match in person and number.": {
-        "count": 3,
-        "example": "Nobody did not help with the chairs.",
-        "text": "In 'Nobody did not help with the chairs .', the subject 'Nobody' (3rd person singular) and the verb 'did' (past (did)) match in person and number."
-      },
-      "In '{X}'t loses your positions , \" he warned .'{X}'he'{X}'warned' (past) match in person and number.": {
-        "count": 1,
-        "example": "\"Don't loses your positions,\" he warned.",
-        "text": "In '\" Do n't loses your positions , \" he warned .', the subject 'he' (3rd person singular) and the verb 'warned' (past) match in person and number."
-      },
-      "In '{X}'t talks during the test , \" she added .'{X}'she'{X}'added' (past) match in person and number.": {
-        "count": 1,
-        "example": "\"Don't talks during the test,\" she added.",
-        "text": "In '\" Do n't talks during the test , \" she added .', the subject 'she' (3rd person singular) and the verb 'added' (past) match in person and number."
-      },
-      "In '{X}'t rushes , \" he warned the group .'{X}'he'{X}'warned' (past) match in person and number.": {
-        "count": 1,
-        "example": "\"Don't rushes,\" he warned the group.",
-        "text": "In '\" Do n't rushes , \" he warned the group .', the subject 'he' (3rd person singular) and the verb 'warned' (past) match in person and number."
-      },
-      "In '{X}'t forgets the pepper , \" the chef added .'{X}'the chef'{X}'added' (past) match in person and number.": {
-        "count": 1,
-        "example": "\"Don't forgets the pepper,\" the chef added.",
-        "text": "In '\" Do n't forgets the pepper , \" the chef added .', the subject 'the chef' (3rd person singular) and the verb 'added' (past) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person singular) and the verb '{X}' (past (was)) match in person and number.": {
-        "count": 3,
-        "example": "I wish I was somewhere warm.",
-        "text": "In 'I was somewhere warm', the subject 'I' (1st person singular) and the verb 'was' (past (was)) match in person and number."
-      },
-      "In '{X}'s notes .'{X}'The doctor'{X}'reviewed' (past) match in person and number.": {
-        "count": 1,
-        "example": "The doctor reviewed the patient's notes.",
-        "text": "In 'The doctor reviewed the patient 's notes .', the subject 'The doctor' (3rd person singular) and the verb 'reviewed' (past) match in person and number."
-      },
-      "In '{X}'t it ?'{X}'We'{X}'have' (non-third-person present (have)) match in person and number.": {
-        "count": 1,
-        "example": "We have quite sure, hasn't it?",
-        "text": "In 'We have quite sure , has n't it ?', the subject 'We' (1st person plural) and the verb 'have' (non-third-person present (have)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (2nd person) and the verb '{X}' (past (were)) match in person and number.": {
-        "count": 2,
-        "example": "You were waiting outside, wasn't it?",
-        "text": "In 'You were waiting outside', the subject 'You' (2nd person) and the verb 'were' (past (were)) match in person and number."
-      },
-      "In '{X}'s .'{X}'Its coffee'{X}'is' (third-person singular present (is)) match in person and number.": {
-        "count": 1,
-        "example": "Its coffee is as good than the other's.",
-        "text": "In 'Its coffee is as good than the other 's .', the subject 'Its coffee' (3rd person singular) and the verb 'is' (third-person singular present (is)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person plural) and the verb '{X}' (non-third-person present (do)) match in person and number.": {
-        "count": 1,
-        "example": "They do always their chores first.",
-        "text": "In 'They do always their chores first .', the subject 'They' (3rd person plural) and the verb 'do' (non-third-person present (do)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (non-third-person present) match in person and number.": {
-        "count": 2,
-        "example": "Both keep you fit.",
-        "text": "In 'Both keep you fit .', the subject 'Both' (3rd person singular) and the verb 'keep' (non-third-person present) match in person and number."
-      },
-      "In '{X}'s history .'{X}'People'{X}'are' (non-third-person present (are)) match in person and number.": {
-        "count": 1,
-        "example": "People are proud for the market's history.",
-        "text": "In 'People are proud for the market 's history .', the subject 'People' (3rd person plural) and the verb 'are' (non-third-person present (are)) match in person and number."
-      },
-      "In '{X}'t like coffee'{X}'You'{X}'do' (non-third-person present (do)) match in person and number.": {
-        "count": 1,
-        "example": "You don't like coffee, don't you?",
-        "text": "In 'You do n't like coffee', the subject 'You' (2nd person) and the verb 'do' (non-third-person present (do)) match in person and number."
-      },
-      "In '{X}'t coming'{X}'She'{X}'is' (third-person singular present (is)) match in person and number.": {
-        "count": 1,
-        "example": "She isn't coming, isn't she?",
-        "text": "In 'She is n't coming', the subject 'She' (3rd person singular) and the verb 'is' (third-person singular present (is)) match in person and number."
-      },
-      "In '{X}'s paw .'{X}'The cat'{X}'licked' (past) match in person and number.": {
-        "count": 1,
-        "example": "The cat licked it's paw.",
-        "text": "In 'The cat licked it 's paw .', the subject 'The cat' (3rd person singular) and the verb 'licked' (past) match in person and number."
-      },
-      "In '{X}'s power .'{X}'The machine'{X}'lost' (past) match in person and number.": {
-        "count": 1,
-        "example": "The machine lost it's power.",
-        "text": "In 'The machine lost it 's power .', the subject 'The machine' (3rd person singular) and the verb 'lost' (past) match in person and number."
-      },
-      "In '{X}'s leaves early'{X}'it'{X}''{X}' (third-person singular present) match in person and number.": {
+      "The subject '{X}' and the verb '{X}'s' go together correctly.": {
         "count": 1,
         "example": "The old oak shed it's leaves early.",
-        "text": "In 'it 's leaves early', the subject 'it' (3rd person singular) and the verb ''s' (third-person singular present) match in person and number."
-      },
-      "In '{X}'s roof repaired .'{X}'The building'{X}'had' (past (had)) match in person and number.": {
-        "count": 1,
-        "example": "The building had it's roof repaired.",
-        "text": "In 'The building had it 's roof repaired .', the subject 'The building' (3rd person singular) and the verb 'had' (past (had)) match in person and number."
-      },
-      "In '{X}'s tail happily .'{X}'The puppy'{X}'wagged' (past) match in person and number.": {
-        "count": 1,
-        "example": "The puppy wagged it's tail happily.",
-        "text": "In 'The puppy wagged it 's tail happily .', the subject 'The puppy' (3rd person singular) and the verb 'wagged' (past) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (1st person singular) and the verb '{X}' (non-third-person present (have)) match in person and number.": {
-        "count": 1,
-        "example": "I have three hobbies swimming, running and reading.",
-        "text": "In 'I have three hobbies swimming , running and reading .', the subject 'I' (1st person singular) and the verb 'have' (non-third-person present (have)) match in person and number."
-      },
-      "In '{X}', the subject '{X}' (3rd person singular) and the verb '{X}' (past (done)) match in person and number.": {
-        "count": 1,
-        "example": "He done a mistake in the first sum.",
-        "text": "In 'He done a mistake in the first sum .', the subject 'He' (3rd person singular) and the verb 'done' (past (done)) match in person and number."
+        "text": "The subject 'it' and the verb ''s' go together correctly."
       }
     },
     "C-HEAD-VERB": {
-      "In '{X}', '{X}' is the main verb, and it is a finite form.": {
-        "count": 2632,
+      "The verb '{X}' is the main action word in '{X}'.": {
+        "count": 3215,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "In 'painted the costume boxs before opening night', 'painted' is the main verb, and it is a finite form."
+        "text": "The verb 'painted' is the main action word in 'painted the costume boxs before opening night'."
       },
-      "In '{X}', '{X}' is the main verb, and it is a non-finite form.": {
-        "count": 613,
-        "example": "Several citys had sent maps for the new exhibit.",
-        "text": "In 'sent maps for the new exhibit', 'sent' is the main verb, and it is a non-finite form."
-      },
-      "In '{X}'re baskets would be safe beside them'{X}'said' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'re baskets would be safe beside them'.": {
         "count": 1,
         "example": "They said they're baskets would be safe beside them.",
-        "text": "In 'said they 're baskets would be safe beside them', 'said' is the main verb, and it is a finite form."
+        "text": "The verb 'said' is the main action word in 'said they're baskets would be safe beside them'."
       },
-      "In '{X}'re baskets would be safe beside them'{X}''{X}' is the main verb, and it is a finite form.": {
-        "count": 1,
+      "The verb '{X}'re'{X}''{X}'.": {
+        "count": 2,
         "example": "They said they're baskets would be safe beside them.",
-        "text": "In ''re baskets would be safe beside them', ''re' is the main verb, and it is a finite form."
+        "text": "The verb ''re' is the main action word in ''re baskets would be safe beside them'."
       },
-      "In '{X}'re visit'{X}'were' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'re visit'.": {
         "count": 1,
         "example": "They were excited about they're visit.",
-        "text": "In 'were excited about they 're visit', 'were' is the main verb, and it is a finite form."
+        "text": "The verb 'were' is the main action word in 'were excited about they're visit'."
       },
-      "In '{X}'re coffee was the best in town'{X}'agreed' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'re coffee was the best in town'.": {
         "count": 1,
         "example": "Many agreed that they're coffee was the best in town.",
-        "text": "In 'agreed that they 're coffee was the best in town', 'agreed' is the main verb, and it is a finite form."
+        "text": "The verb 'agreed' is the main action word in 'agreed that they're coffee was the best in town'."
       },
-      "In '{X}'re coffee was the best in town'{X}''{X}' is the main verb, and it is a finite form.": {
-        "count": 1,
-        "example": "Many agreed that they're coffee was the best in town.",
-        "text": "In ''re coffee was the best in town', ''re' is the main verb, and it is a finite form."
-      },
-      "In '{X}'s results'{X}'reviewed' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'s results'.": {
         "count": 1,
         "example": "The team reviewed the season's results.",
-        "text": "In 'reviewed the season 's results', 'reviewed' is the main verb, and it is a finite form."
+        "text": "The verb 'reviewed' is the main action word in 'reviewed the season's results'."
       },
-      "In '{X}'s meeting'{X}'approve' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'s meeting'.": {
         "count": 1,
         "example": "The rules approve at last week's meeting.",
-        "text": "In 'approve at last week 's meeting', 'approve' is the main verb, and it is a finite form."
+        "text": "The verb 'approve' is the main action word in 'approve at last week's meeting'."
       },
-      "In '{X}'s notes'{X}'reviewed' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'s notes'.": {
         "count": 1,
         "example": "The doctor reviewed the patient's notes.",
-        "text": "In 'reviewed the patient 's notes', 'reviewed' is the main verb, and it is a finite form."
+        "text": "The verb 'reviewed' is the main action word in 'reviewed the patient's notes'."
       },
-      "In '{X}'s'{X}'is' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'s'.": {
         "count": 1,
         "example": "Its coffee is as good than the other's.",
-        "text": "In 'is as good than the other 's', 'is' is the main verb, and it is a finite form."
+        "text": "The verb 'is' is the main action word in 'is as good than the other's'."
       },
-      "In '{X}'s history'{X}'are' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'s history'.": {
         "count": 1,
         "example": "People are proud for the market's history.",
-        "text": "In 'are proud for the market 's history', 'are' is the main verb, and it is a finite form."
+        "text": "The verb 'are' is the main action word in 'are proud for the market's history'."
       },
-      "In '{X}'s paw'{X}'licked' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'s paw'.": {
         "count": 1,
         "example": "The cat licked it's paw.",
-        "text": "In 'licked it 's paw', 'licked' is the main verb, and it is a finite form."
+        "text": "The verb 'licked' is the main action word in 'licked it's paw'."
       },
-      "In '{X}'s power'{X}'lost' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'s power'.": {
         "count": 1,
         "example": "The machine lost it's power.",
-        "text": "In 'lost it 's power', 'lost' is the main verb, and it is a finite form."
+        "text": "The verb 'lost' is the main action word in 'lost it's power'."
       },
-      "In '{X}'s roof repaired'{X}'had' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'s roof repaired'.": {
         "count": 1,
         "example": "The building had it's roof repaired.",
-        "text": "In 'had it 's roof repaired', 'had' is the main verb, and it is a finite form."
+        "text": "The verb 'had' is the main action word in 'had it's roof repaired'."
       },
-      "In '{X}'s tail happily'{X}'wagged' is the main verb, and it is a finite form.": {
+      "The verb '{X}' is the main action word in '{X}'s tail happily'.": {
         "count": 1,
         "example": "The puppy wagged it's tail happily.",
-        "text": "In 'wagged it 's tail happily', 'wagged' is the main verb, and it is a finite form."
+        "text": "The verb 'wagged' is the main action word in 'wagged it's tail happily'."
       }
     },
     "C-DIRECT-OBJECT": {
-      "In '{X}', '{X}' is the object of the verb '{X}'.": {
-        "count": 1752,
+      "'{X}' is the object of the verb '{X}' in '{X}'. It is the thing the action happens to.": {
+        "count": 1744,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "In 'painted the costume boxs before opening night', 'the costume boxs' is the object of the verb 'painted'."
+        "text": "'the costume boxs' is the object of the verb 'painted' in 'painted the costume boxs before opening night'. It is the thing the action happens to."
       },
-      "In '{X}'re visit'{X}'visit'{X}''{X}'.": {
-        "count": 1,
+      "'{X}' is the object of the verb '{X}'re'{X}''{X}'. It is the thing the action happens to.": {
+        "count": 2,
         "example": "They were excited about they're visit.",
-        "text": "In ''re visit', 'visit' is the object of the verb ''re'."
+        "text": "'visit' is the object of the verb ''re' in ''re visit'. It is the thing the action happens to."
       },
-      "In '{X}'re coffee was the best in town'{X}'coffee was the best in town'{X}''{X}'.": {
-        "count": 1,
-        "example": "Many agreed that they're coffee was the best in town.",
-        "text": "In ''re coffee was the best in town', 'coffee was the best in town' is the object of the verb ''re'."
-      },
-      "In '{X}'s results'{X}'the season '{X}' is the object of the verb '{X}'.": {
+      "'{X}'s results'{X}'reviewed'{X}'reviewed the season'{X}'. It is the thing the action happens to.": {
         "count": 1,
         "example": "The team reviewed the season's results.",
-        "text": "In 'reviewed the season 's results', 'the season 's results' is the object of the verb 'reviewed'."
+        "text": "'the season's results' is the object of the verb 'reviewed' in 'reviewed the season's results'. It is the thing the action happens to."
       },
-      "In '{X}'s decision'{X}'the referee '{X}' is the object of the verb '{X}'.": {
+      "'{X}'s decision'{X}'doubting'{X}'doubting the referee'{X}'. It is the thing the action happens to.": {
         "count": 1,
         "example": "The coach is doubting the referee's decision.",
-        "text": "In 'doubting the referee 's decision', 'the referee 's decision' is the object of the verb 'doubting'."
+        "text": "'the referee's decision' is the object of the verb 'doubting' in 'doubting the referee's decision'. It is the thing the action happens to."
       },
-      "In '{X}'s notes'{X}'the patient '{X}' is the object of the verb '{X}'.": {
+      "'{X}'s notes'{X}'reviewed'{X}'reviewed the patient'{X}'. It is the thing the action happens to.": {
         "count": 1,
         "example": "The doctor reviewed the patient's notes.",
-        "text": "In 'reviewed the patient 's notes', 'the patient 's notes' is the object of the verb 'reviewed'."
+        "text": "'the patient's notes' is the object of the verb 'reviewed' in 'reviewed the patient's notes'. It is the thing the action happens to."
       },
-      "In '{X}'t it'{X}'it'{X}'have'.": {
-        "count": 1,
-        "example": "We have quite sure, hasn't it?",
-        "text": "In 'have quite sure , has n't it', 'it' is the object of the verb 'have'."
-      },
-      "In '{X}'s paw'{X}'it '{X}' is the object of the verb '{X}'.": {
+      "'{X}'s paw'{X}'licked'{X}'licked it'{X}'. It is the thing the action happens to.": {
         "count": 1,
         "example": "The cat licked it's paw.",
-        "text": "In 'licked it 's paw', 'it 's paw' is the object of the verb 'licked'."
+        "text": "'it's paw' is the object of the verb 'licked' in 'licked it's paw'. It is the thing the action happens to."
       },
-      "In '{X}'s power'{X}'it '{X}' is the object of the verb '{X}'.": {
+      "'{X}'s power'{X}'lost'{X}'lost it'{X}'. It is the thing the action happens to.": {
         "count": 1,
         "example": "The machine lost it's power.",
-        "text": "In 'lost it 's power', 'it 's power' is the object of the verb 'lost'."
+        "text": "'it's power' is the object of the verb 'lost' in 'lost it's power'. It is the thing the action happens to."
       },
-      "In '{X}'s tail happily'{X}'it '{X}' is the object of the verb '{X}'.": {
+      "'{X}'s tail'{X}'wagged'{X}'wagged it'{X}'. It is the thing the action happens to.": {
         "count": 1,
         "example": "The puppy wagged it's tail happily.",
-        "text": "In 'wagged it 's tail happily', 'it 's tail' is the object of the verb 'wagged'."
+        "text": "'it's tail' is the object of the verb 'wagged' in 'wagged it's tail happily'. It is the thing the action happens to."
       }
     },
     "C-ADJUNCT": {
-      "In '{X}', the phrase '{X}' adds extra detail about the verb '{X}'.": {
-        "count": 1232,
+      "'{X}' tells us more about the action in '{X}' \u2014 such as when, where or how. It is not the object.": {
+        "count": 1224,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "In 'painted the costume boxs before opening night', the phrase 'before opening night' adds extra detail about the verb 'painted'."
+        "text": "'before opening night' tells us more about the action in 'painted the costume boxs before opening night' \u2014 such as when, where or how. It is not the object."
       },
-      "In '{X}'s meeting'{X}'at last week '{X}' adds extra detail about the verb '{X}'.": {
+      "'{X}'s meeting'{X}'approve at last week'{X}' \u2014 such as when, where or how. It is not the object.": {
         "count": 1,
         "example": "The rules approve at last week's meeting.",
-        "text": "In 'approve at last week 's meeting', the phrase 'at last week 's meeting' adds extra detail about the verb 'approve'."
+        "text": "'at last week's meeting' tells us more about the action in 'approve at last week's meeting' \u2014 such as when, where or how. It is not the object."
       }
     },
     "C-HEAD-PREPOSITION": {
-      "In '{X}', '{X}' is the preposition that heads the phrase.": {
-        "count": 1701,
+      "The word '{X}' links the words after it to the rest of the sentence in '{X}'.": {
+        "count": 1691,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "In 'before opening night', 'before' is the preposition that heads the phrase."
+        "text": "The word 'before' links the words after it to the rest of the sentence in 'before opening night'."
       },
-      "In '{X}'s help'{X}'With' is the preposition that heads the phrase.": {
+      "The word '{X}' links the words after it to the rest of the sentence in '{X}'s help'.": {
         "count": 1,
         "example": "With the teacher's help, they built a simple set for the stage.",
-        "text": "In 'With the teacher 's help', 'With' is the preposition that heads the phrase."
+        "text": "The word 'With' links the words after it to the rest of the sentence in 'With the teacher's help'."
       },
-      "In '{X}'s delight'{X}'to' is the preposition that heads the phrase.": {
+      "The word '{X}' links the words after it to the rest of the sentence in '{X}'s delight'.": {
         "count": 1,
         "example": "Soon, to everyone's delight, she could stand easy on her own.",
-        "text": "In 'to everyone 's delight', 'to' is the preposition that heads the phrase."
+        "text": "The word 'to' links the words after it to the rest of the sentence in 'to everyone's delight'."
       },
-      "In '{X}'re visit'{X}'about' is the preposition that heads the phrase.": {
+      "The word '{X}' links the words after it to the rest of the sentence in '{X}'re visit'.": {
         "count": 1,
         "example": "They were excited about they're visit.",
-        "text": "In 'about they 're visit', 'about' is the preposition that heads the phrase."
+        "text": "The word 'about' links the words after it to the rest of the sentence in 'about they're visit'."
       },
-      "In '{X}'s meeting'{X}'at' is the preposition that heads the phrase.": {
+      "The word '{X}' links the words after it to the rest of the sentence in '{X}'s meeting'.": {
         "count": 1,
         "example": "The rules approve at last week's meeting.",
-        "text": "In 'at last week 's meeting', 'at' is the preposition that heads the phrase."
+        "text": "The word 'at' links the words after it to the rest of the sentence in 'at last week's meeting'."
       }
     },
     "C-PREP-OBJECT": {
-      "In '{X}', the preposition '{X}' points to '{X}', which is its object.": {
-        "count": 1659,
+      "After the word '{X}', we expect a noun. Here it is '{X}'; together they make '{X}'.": {
+        "count": 1644,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "In 'before opening night', the preposition 'before' points to 'opening night', which is its object."
+        "text": "After the word 'before', we expect a noun. Here it is 'opening night'; together they make 'before opening night'."
       },
-      "In '{X}'s help'{X}'With'{X}'the teacher '{X}', which is its object.": {
+      "After the word '{X}', we expect a noun. Here it is '{X}'s help'{X}'With the teacher'{X}'.": {
         "count": 1,
         "example": "With the teacher's help, they built a simple set for the stage.",
-        "text": "In 'With the teacher 's help', the preposition 'With' points to 'the teacher 's help', which is its object."
+        "text": "After the word 'With', we expect a noun. Here it is 'the teacher's help'; together they make 'With the teacher's help'."
       },
-      "In '{X}'s delight'{X}'to'{X}'everyone '{X}', which is its object.": {
+      "After the word '{X}', we expect a noun. Here it is '{X}'s delight'{X}'to everyone'{X}'.": {
         "count": 1,
         "example": "Soon, to everyone's delight, she could stand easy on her own.",
-        "text": "In 'to everyone 's delight', the preposition 'to' points to 'everyone 's delight', which is its object."
+        "text": "After the word 'to', we expect a noun. Here it is 'everyone's delight'; together they make 'to everyone's delight'."
       },
-      "In '{X}'s meeting'{X}'at'{X}'last week '{X}', which is its object.": {
+      "After the word '{X}', we expect a noun. Here it is '{X}'s meeting'{X}'at last week'{X}'.": {
         "count": 1,
         "example": "The rules approve at last week's meeting.",
-        "text": "In 'at last week 's meeting', the preposition 'at' points to 'last week 's meeting', which is its object."
+        "text": "After the word 'at', we expect a noun. Here it is 'last week's meeting'; together they make 'at last week's meeting'."
       },
-      "In '{X}'s'{X}'than'{X}'the other '{X}', which is its object.": {
+      "After the word '{X}', we expect a noun. Here it is '{X}'s'{X}'than the other'{X}'.": {
         "count": 1,
         "example": "Its coffee is as good than the other's.",
-        "text": "In 'than the other 's', the preposition 'than' points to 'the other 's', which is its object."
+        "text": "After the word 'than', we expect a noun. Here it is 'the other's'; together they make 'than the other's'."
       },
-      "In '{X}'s history'{X}'for'{X}'the market '{X}', which is its object.": {
+      "After the word '{X}', we expect a noun. Here it is '{X}'s history'{X}'for the market'{X}'.": {
         "count": 1,
         "example": "People are proud for the market's history.",
-        "text": "In 'for the market 's history', the preposition 'for' points to 'the market 's history', which is its object."
+        "text": "After the word 'for', we expect a noun. Here it is 'the market's history'; together they make 'for the market's history'."
       }
     },
     "C-PUNCT": {
-      "'{X}' is the punctuation that closes '{X}'.": {
-        "count": 3233,
+      "The mark '{X}' shows where '{X}' ends.": {
+        "count": 3225,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "'.' is the punctuation that closes 'The drama club painted the costume boxs before opening night .'."
+        "text": "The mark '.' shows where 'The drama club painted the costume boxs before opening night.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s help , they built a simple set for the stage .'.": {
+      "The mark '{X}' shows where '{X}'s help, they built a simple set for the stage.' ends.": {
         "count": 2,
         "example": "With the teacher's help, they built a simple set for the stage.",
-        "text": "',' is the punctuation that closes 'With the teacher 's help , they built a simple set for the stage .'."
+        "text": "The mark ',' shows where 'With the teacher's help, they built a simple set for the stage.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s delight , she could stand easy on her own .'.": {
+      "The mark '{X}' shows where '{X}'s delight, she could stand easy on her own.' ends.": {
         "count": 3,
         "example": "Soon, to everyone's delight, she could stand easy on her own.",
-        "text": "',' is the punctuation that closes 'Soon , to everyone 's delight , she could stand easy on her own .'."
+        "text": "The mark ',' shows where 'Soon, to everyone's delight, she could stand easy on her own.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'re baskets would be safe beside them .'.": {
+      "The mark '{X}' shows where '{X}'re baskets would be safe beside them.' ends.": {
         "count": 1,
         "example": "They said they're baskets would be safe beside them.",
-        "text": "'.' is the punctuation that closes 'They said they 're baskets would be safe beside them .'."
+        "text": "The mark '.' shows where 'They said they're baskets would be safe beside them.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'re visit .'.": {
+      "The mark '{X}' shows where '{X}'re visit.' ends.": {
         "count": 1,
         "example": "They were excited about they're visit.",
-        "text": "'.' is the punctuation that closes 'They were excited about they 're visit .'."
+        "text": "The mark '.' shows where 'They were excited about they're visit.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s windows were full of fresh bread .'.": {
+      "The mark '{X}' shows where '{X}'s windows were full of fresh bread.' ends.": {
         "count": 2,
         "example": "From the street, it's windows were full of fresh bread.",
-        "text": "',' is the punctuation that closes 'From the street , it 's windows were full of fresh bread .'."
+        "text": "The mark ',' shows where 'From the street, it's windows were full of fresh bread.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'re coffee was the best in town .'.": {
+      "The mark '{X}' shows where '{X}'re coffee was the best in town.' ends.": {
         "count": 1,
         "example": "Many agreed that they're coffee was the best in town.",
-        "text": "'.' is the punctuation that closes 'Many agreed that they 're coffee was the best in town .'."
+        "text": "The mark '.' shows where 'Many agreed that they're coffee was the best in town.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s tidy , \" she promised .'.": {
+      "The mark '{X}' shows where '{X}'s tidy, \" she promised.' ends.": {
         "count": 4,
         "example": "\"Ill call you when it's tidy,\" she promised.",
-        "text": "'\"' is the punctuation that closes '\" Ill call you when it 's tidy , \" she promised .'."
+        "text": "The mark '\"' shows where '\" Ill call you when it's tidy, \" she promised.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s results .'.": {
+      "The mark '{X}' shows where '{X}'s results.' ends.": {
         "count": 1,
         "example": "The team reviewed the season's results.",
-        "text": "'.' is the punctuation that closes 'The team reviewed the season 's results .'."
+        "text": "The mark '.' shows where 'The team reviewed the season's results.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s meeting .'.": {
+      "The mark '{X}' shows where '{X}'s meeting.' ends.": {
         "count": 1,
         "example": "The rules approve at last week's meeting.",
-        "text": "'.' is the punctuation that closes 'The rules approve at last week 's meeting .'."
+        "text": "The mark '.' shows where 'The rules approve at last week's meeting.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s decision .'.": {
+      "The mark '{X}' shows where '{X}'s decision.' ends.": {
         "count": 1,
         "example": "The coach is doubting the referee's decision.",
-        "text": "'.' is the punctuation that closes 'The coach is doubting the referee 's decision .'."
+        "text": "The mark '.' shows where 'The coach is doubting the referee's decision.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'t goes upstairs yet , \" said their mother .'.": {
+      "The mark '{X}' shows where '{X}'t goes upstairs yet, \" said their mother.' ends.": {
         "count": 4,
         "example": "\"Don't goes upstairs yet,\" said their mother.",
-        "text": "'\"' is the punctuation that closes '\" Do n't goes upstairs yet , \" said their mother .'."
+        "text": "The mark '\"' shows where '\" Don't goes upstairs yet, \" said their mother.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'t loses your positions , \" he warned .'.": {
+      "The mark '{X}' shows where '{X}'t loses your positions, \" he warned.' ends.": {
         "count": 4,
         "example": "\"Don't loses your positions,\" he warned.",
-        "text": "'\"' is the punctuation that closes '\" Do n't loses your positions , \" he warned .'."
+        "text": "The mark '\"' shows where '\" Don't loses your positions, \" he warned.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'t talks during the test , \" she added .'.": {
+      "The mark '{X}' shows where '{X}'t talks during the test, \" she added.' ends.": {
         "count": 4,
         "example": "\"Don't talks during the test,\" she added.",
-        "text": "'\"' is the punctuation that closes '\" Do n't talks during the test , \" she added .'."
+        "text": "The mark '\"' shows where '\" Don't talks during the test, \" she added.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'t rushes , \" he warned the group .'.": {
+      "The mark '{X}' shows where '{X}'t rushes, \" he warned the group.' ends.": {
         "count": 4,
         "example": "\"Don't rushes,\" he warned the group.",
-        "text": "'\"' is the punctuation that closes '\" Do n't rushes , \" he warned the group .'."
+        "text": "The mark '\"' shows where '\" Don't rushes, \" he warned the group.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'t forgets the pepper , \" the chef added .'.": {
+      "The mark '{X}' shows where '{X}'t forgets the pepper, \" the chef added.' ends.": {
         "count": 4,
         "example": "\"Don't forgets the pepper,\" the chef added.",
-        "text": "'\"' is the punctuation that closes '\" Do n't forgets the pepper , \" the chef added .'."
+        "text": "The mark '\"' shows where '\" Don't forgets the pepper, \" the chef added.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s notes .'.": {
+      "The mark '{X}' shows where '{X}'s notes.' ends.": {
         "count": 1,
         "example": "The doctor reviewed the patient's notes.",
-        "text": "'.' is the punctuation that closes 'The doctor reviewed the patient 's notes .'."
+        "text": "The mark '.' shows where 'The doctor reviewed the patient's notes.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'t it ?'.": {
-        "count": 51,
-        "example": "You are ready, isn't it?",
-        "text": "',' is the punctuation that closes 'You are ready , is n't it ?'."
-      },
-      "'{X}' is the punctuation that closes '{X}'t it'.": {
-        "count": 1,
-        "example": "We have quite sure, hasn't it?",
-        "text": "',' is the punctuation that closes 'have quite sure , has n't it'."
-      },
-      "'{X}' is the punctuation that closes '{X}'s .'.": {
+      "The mark '{X}' shows where '{X}'s.' ends.": {
         "count": 1,
         "example": "Its coffee is as good than the other's.",
-        "text": "'.' is the punctuation that closes 'Its coffee is as good than the other 's .'."
+        "text": "The mark '.' shows where 'Its coffee is as good than the other's.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s history .'.": {
+      "The mark '{X}' shows where '{X}'s history.' ends.": {
         "count": 1,
         "example": "People are proud for the market's history.",
-        "text": "'.' is the punctuation that closes 'People are proud for the market 's history .'."
+        "text": "The mark '.' shows where 'People are proud for the market's history.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'t she ?'.": {
+      "The mark '{X}' shows where '{X}'t it?' ends.": {
         "count": 2,
+        "example": "You are coming, isn't it?",
+        "text": "The mark '?' shows where 'You are coming, isn't it?' ends."
+      },
+      "The mark '{X}' shows where '{X}'t she?' ends.": {
+        "count": 1,
         "example": "She can swim well, doesn't she?",
-        "text": "',' is the punctuation that closes 'She can swim well , does n't she ?'."
+        "text": "The mark '?' shows where 'She can swim well, doesn't she?' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'t they ?'.": {
-        "count": 2,
+      "The mark '{X}' shows where '{X}'t they?' ends.": {
+        "count": 1,
         "example": "They had left already, didn't they?",
-        "text": "',' is the punctuation that closes 'They had left already , did n't they ?'."
+        "text": "The mark '?' shows where 'They had left already, didn't they?' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'t like coffee , do n'{X}'.": {
-        "count": 2,
+      "The mark '{X}' shows where '{X}'t like coffee, don'{X}' ends.": {
+        "count": 1,
         "example": "You don't like coffee, don't you?",
-        "text": "',' is the punctuation that closes 'You do n't like coffee , do n't you ?'."
+        "text": "The mark '?' shows where 'You don't like coffee, don't you?' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'t coming , is n'{X}'.": {
-        "count": 2,
+      "The mark '{X}' shows where '{X}'t coming, isn'{X}' ends.": {
+        "count": 1,
         "example": "She isn't coming, isn't she?",
-        "text": "',' is the punctuation that closes 'She is n't coming , is n't she ?'."
+        "text": "The mark '?' shows where 'She isn't coming, isn't she?' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s paw .'.": {
+      "The mark '{X}' shows where '{X}'s paw.' ends.": {
         "count": 1,
         "example": "The cat licked it's paw.",
-        "text": "'.' is the punctuation that closes 'The cat licked it 's paw .'."
+        "text": "The mark '.' shows where 'The cat licked it's paw.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s power .'.": {
+      "The mark '{X}' shows where '{X}'s power.' ends.": {
         "count": 1,
         "example": "The machine lost it's power.",
-        "text": "'.' is the punctuation that closes 'The machine lost it 's power .'."
+        "text": "The mark '.' shows where 'The machine lost it's power.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s leaves early .'.": {
+      "The mark '{X}' shows where '{X}'s leaves early.' ends.": {
         "count": 1,
         "example": "The old oak shed it's leaves early.",
-        "text": "'.' is the punctuation that closes 'The old oak shed it 's leaves early .'."
+        "text": "The mark '.' shows where 'The old oak shed it's leaves early.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s roof repaired .'.": {
+      "The mark '{X}' shows where '{X}'s roof repaired.' ends.": {
         "count": 1,
         "example": "The building had it's roof repaired.",
-        "text": "'.' is the punctuation that closes 'The building had it 's roof repaired .'."
+        "text": "The mark '.' shows where 'The building had it's roof repaired.' ends."
       },
-      "'{X}' is the punctuation that closes '{X}'s tail happily .'.": {
+      "The mark '{X}' shows where '{X}'s tail happily.' ends.": {
         "count": 1,
         "example": "The puppy wagged it's tail happily.",
-        "text": "'.' is the punctuation that closes 'The puppy wagged it 's tail happily .'."
+        "text": "The mark '.' shows where 'The puppy wagged it's tail happily.' ends."
       }
     },
     "C-ROOT": {
-      "The whole input '{X}' is a complete sentence: it has a subject and a verb.": {
-        "count": 2789,
+      "The whole sentence '{X}' has a subject and a verb, so it is a complete sentence.": {
+        "count": 2801,
         "example": "The drama club painted the costume boxs before opening night.",
-        "text": "The whole input 'The drama club painted the costume boxs before opening night .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'The drama club painted the costume boxs before opening night.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s help , they built a simple set for the stage .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s help, they built a simple set for the stage.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "With the teacher's help, they built a simple set for the stage.",
-        "text": "The whole input 'With the teacher 's help , they built a simple set for the stage .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'With the teacher's help, they built a simple set for the stage.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s delight , she could stand easy on her own .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s delight, she could stand easy on her own.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "Soon, to everyone's delight, she could stand easy on her own.",
-        "text": "The whole input 'Soon , to everyone 's delight , she could stand easy on her own .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'Soon, to everyone's delight, she could stand easy on her own.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'re baskets would be safe beside them .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'re baskets would be safe beside them.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "They said they're baskets would be safe beside them.",
-        "text": "The whole input 'They said they 're baskets would be safe beside them .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'They said they're baskets would be safe beside them.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'re visit .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'re visit.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "They were excited about they're visit.",
-        "text": "The whole input 'They were excited about they 're visit .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'They were excited about they're visit.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s windows were full of fresh bread .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s windows were full of fresh bread.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "From the street, it's windows were full of fresh bread.",
-        "text": "The whole input 'From the street , it 's windows were full of fresh bread .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'From the street, it's windows were full of fresh bread.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'re coffee was the best in town .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'re coffee was the best in town.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "Many agreed that they're coffee was the best in town.",
-        "text": "The whole input 'Many agreed that they 're coffee was the best in town .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'Many agreed that they're coffee was the best in town.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s tidy , \" she promised .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s tidy, \" she promised.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "\"Ill call you when it's tidy,\" she promised.",
-        "text": "The whole input '\" Ill call you when it 's tidy , \" she promised .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence '\" Ill call you when it's tidy, \" she promised.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s results .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s results.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "The team reviewed the season's results.",
-        "text": "The whole input 'The team reviewed the season 's results .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'The team reviewed the season's results.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s meeting .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s meeting.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "The rules approve at last week's meeting.",
-        "text": "The whole input 'The rules approve at last week 's meeting .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'The rules approve at last week's meeting.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s decision .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s decision.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "The coach is doubting the referee's decision.",
-        "text": "The whole input 'The coach is doubting the referee 's decision .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'The coach is doubting the referee's decision.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'t goes upstairs yet , \" said their mother .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'t goes upstairs yet, \" said their mother.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "\"Don't goes upstairs yet,\" said their mother.",
-        "text": "The whole input '\" Do n't goes upstairs yet , \" said their mother .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence '\" Don't goes upstairs yet, \" said their mother.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'t loses your positions , \" he warned .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'t loses your positions, \" he warned.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "\"Don't loses your positions,\" he warned.",
-        "text": "The whole input '\" Do n't loses your positions , \" he warned .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence '\" Don't loses your positions, \" he warned.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'t talks during the test , \" she added .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'t talks during the test, \" she added.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "\"Don't talks during the test,\" she added.",
-        "text": "The whole input '\" Do n't talks during the test , \" she added .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence '\" Don't talks during the test, \" she added.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'t rushes , \" he warned the group .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'t rushes, \" he warned the group.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "\"Don't rushes,\" he warned the group.",
-        "text": "The whole input '\" Do n't rushes , \" he warned the group .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence '\" Don't rushes, \" he warned the group.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'t forgets the pepper , \" the chef added .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'t forgets the pepper, \" the chef added.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "\"Don't forgets the pepper,\" the chef added.",
-        "text": "The whole input '\" Do n't forgets the pepper , \" the chef added .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence '\" Don't forgets the pepper, \" the chef added.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s notes .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s notes.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "The doctor reviewed the patient's notes.",
-        "text": "The whole input 'The doctor reviewed the patient 's notes .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'The doctor reviewed the patient's notes.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'t it ?' is a complete sentence: it has a subject and a verb.": {
-        "count": 26,
-        "example": "You are ready, isn't it?",
-        "text": "The whole input 'You are ready , is n't it ?' is a complete sentence: it has a subject and a verb."
-      },
-      "The whole input '{X}'s .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "Its coffee is as good than the other's.",
-        "text": "The whole input 'Its coffee is as good than the other 's .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'Its coffee is as good than the other's.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s history .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s history.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "People are proud for the market's history.",
-        "text": "The whole input 'People are proud for the market 's history .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'People are proud for the market's history.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'t she ?' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'t it?' has a subject and a verb, so it is a complete sentence.": {
+        "count": 2,
+        "example": "You are coming, isn't it?",
+        "text": "The whole sentence 'You are coming, isn't it?' has a subject and a verb, so it is a complete sentence."
+      },
+      "The whole sentence '{X}'t she?' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "She can swim well, doesn't she?",
-        "text": "The whole input 'She can swim well , does n't she ?' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'She can swim well, doesn't she?' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'t they ?' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'t they?' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "They had left already, didn't they?",
-        "text": "The whole input 'They had left already , did n't they ?' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'They had left already, didn't they?' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'t like coffee , do n'{X}' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'t like coffee, don'{X}' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "You don't like coffee, don't you?",
-        "text": "The whole input 'You do n't like coffee , do n't you ?' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'You don't like coffee, don't you?' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'t coming , is n'{X}' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'t coming, isn'{X}' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "She isn't coming, isn't she?",
-        "text": "The whole input 'She is n't coming , is n't she ?' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'She isn't coming, isn't she?' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s paw .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s paw.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "The cat licked it's paw.",
-        "text": "The whole input 'The cat licked it 's paw .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'The cat licked it's paw.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s power .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s power.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "The machine lost it's power.",
-        "text": "The whole input 'The machine lost it 's power .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'The machine lost it's power.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s leaves early .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s leaves early.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "The old oak shed it's leaves early.",
-        "text": "The whole input 'The old oak shed it 's leaves early .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'The old oak shed it's leaves early.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s roof repaired .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s roof repaired.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "The building had it's roof repaired.",
-        "text": "The whole input 'The building had it 's roof repaired .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'The building had it's roof repaired.' has a subject and a verb, so it is a complete sentence."
       },
-      "The whole input '{X}'s tail happily .' is a complete sentence: it has a subject and a verb.": {
+      "The whole sentence '{X}'s tail happily.' has a subject and a verb, so it is a complete sentence.": {
         "count": 1,
         "example": "The puppy wagged it's tail happily.",
-        "text": "The whole input 'The puppy wagged it 's tail happily .' is a complete sentence: it has a subject and a verb."
+        "text": "The whole sentence 'The puppy wagged it's tail happily.' has a subject and a verb, so it is a complete sentence."
       }
     },
     "C-NP-COMPOUND": {
-      "In '{X}', '{X}' is a noun that builds up the larger noun phrase.": {
+      "The words '{X}' are part of the larger group '{X}'.": {
         "count": 543,
         "example": "The stage crew carried boxs of painted scenery backstage.",
-        "text": "In 'boxs of painted scenery', 'boxs' is a noun that builds up the larger noun phrase."
+        "text": "The words 'boxs' are part of the larger group 'boxs of painted scenery'."
       },
-      "In '{X}'s help'{X}'the teacher '{X}' is a noun that builds up the larger noun phrase.": {
+      "The words '{X}'s'{X}'the teacher'{X}'.": {
         "count": 1,
         "example": "With the teacher's help, they built a simple set for the stage.",
-        "text": "In 'the teacher 's help', 'the teacher 's' is a noun that builds up the larger noun phrase."
+        "text": "The words 'the teacher's' are part of the larger group 'the teacher's help'."
       },
-      "In '{X}'s delight'{X}'everyone '{X}' is a noun that builds up the larger noun phrase.": {
+      "The words '{X}'s'{X}'everyone'{X}'.": {
         "count": 1,
         "example": "Soon, to everyone's delight, she could stand easy on her own.",
-        "text": "In 'everyone 's delight', 'everyone 's' is a noun that builds up the larger noun phrase."
+        "text": "The words 'everyone's' are part of the larger group 'everyone's delight'."
       },
-      "In '{X}'s windows'{X}'it '{X}' is a noun that builds up the larger noun phrase.": {
-        "count": 1,
+      "The words '{X}'s'{X}'it'{X}'.": {
+        "count": 5,
         "example": "From the street, it's windows were full of fresh bread.",
-        "text": "In 'it 's windows', 'it 's' is a noun that builds up the larger noun phrase."
+        "text": "The words 'it's' are part of the larger group 'it's windows'."
       },
-      "In '{X}'s results'{X}'the season '{X}' is a noun that builds up the larger noun phrase.": {
+      "The words '{X}'s'{X}'the season'{X}'.": {
         "count": 1,
         "example": "The team reviewed the season's results.",
-        "text": "In 'the season 's results', 'the season 's' is a noun that builds up the larger noun phrase."
+        "text": "The words 'the season's' are part of the larger group 'the season's results'."
       },
-      "In '{X}'s meeting'{X}'last week '{X}' is a noun that builds up the larger noun phrase.": {
+      "The words '{X}'s'{X}'last week'{X}'.": {
         "count": 1,
         "example": "The rules approve at last week's meeting.",
-        "text": "In 'last week 's meeting', 'last week 's' is a noun that builds up the larger noun phrase."
+        "text": "The words 'last week's' are part of the larger group 'last week's meeting'."
       },
-      "In '{X}'s decision'{X}'the referee '{X}' is a noun that builds up the larger noun phrase.": {
+      "The words '{X}'s'{X}'the referee'{X}'.": {
         "count": 1,
         "example": "The coach is doubting the referee's decision.",
-        "text": "In 'the referee 's decision', 'the referee 's' is a noun that builds up the larger noun phrase."
+        "text": "The words 'the referee's' are part of the larger group 'the referee's decision'."
       },
-      "In '{X}'s notes'{X}'the patient '{X}' is a noun that builds up the larger noun phrase.": {
+      "The words '{X}'s'{X}'the patient'{X}'.": {
         "count": 1,
         "example": "The doctor reviewed the patient's notes.",
-        "text": "In 'the patient 's notes', 'the patient 's' is a noun that builds up the larger noun phrase."
+        "text": "The words 'the patient's' are part of the larger group 'the patient's notes'."
       },
-      "In '{X}'s history'{X}'the market '{X}' is a noun that builds up the larger noun phrase.": {
+      "The words '{X}'s'{X}'the market'{X}'.": {
         "count": 1,
         "example": "People are proud for the market's history.",
-        "text": "In 'the market 's history', 'the market 's' is a noun that builds up the larger noun phrase."
-      },
-      "In '{X}'s paw'{X}'it '{X}' is a noun that builds up the larger noun phrase.": {
-        "count": 1,
-        "example": "The cat licked it's paw.",
-        "text": "In 'it 's paw', 'it 's' is a noun that builds up the larger noun phrase."
-      },
-      "In '{X}'s power'{X}'it '{X}' is a noun that builds up the larger noun phrase.": {
-        "count": 1,
-        "example": "The machine lost it's power.",
-        "text": "In 'it 's power', 'it 's' is a noun that builds up the larger noun phrase."
-      },
-      "In '{X}'s roof'{X}'it '{X}' is a noun that builds up the larger noun phrase.": {
-        "count": 1,
-        "example": "The building had it's roof repaired.",
-        "text": "In 'it 's roof', 'it 's' is a noun that builds up the larger noun phrase."
-      },
-      "In '{X}'s tail'{X}'it '{X}' is a noun that builds up the larger noun phrase.": {
-        "count": 1,
-        "example": "The puppy wagged it's tail happily.",
-        "text": "In 'it 's tail', 'it 's' is a noun that builds up the larger noun phrase."
+        "text": "The words 'the market's' are part of the larger group 'the market's history'."
       }
     },
     "C-NP-POSTMODIFIER": {
-      "In '{X}', the phrase '{X}' comes after the noun '{X}' and describes it.": {
-        "count": 274,
+      "The words '{X}' come after the noun in '{X}' and tell us more about it.": {
+        "count": 273,
         "example": "The stage crew carried boxs of painted scenery backstage.",
-        "text": "In 'boxs of painted scenery', the phrase 'of painted scenery' comes after the noun 'scenery' and describes it."
+        "text": "The words 'of painted scenery' come after the noun in 'boxs of painted scenery' and tell us more about it."
       }
     },
     "C-ADVERBIAL": {
-      "In '{X}', '{X}' tells how the verb '{X}' happens.": {
-        "count": 538,
+      "'{X}' tells us how, when or where the verb '{X}' happens.": {
+        "count": 532,
         "example": "The stage crew carried boxs of painted scenery backstage.",
-        "text": "In 'carried boxs of painted scenery backstage', 'backstage' tells how the verb 'carried' happens."
-      },
-      "In '{X}'s tail happily'{X}'happily'{X}'wagged' happens.": {
-        "count": 1,
-        "example": "The puppy wagged it's tail happily.",
-        "text": "In 'wagged it 's tail happily', 'happily' tells how the verb 'wagged' happens."
+        "text": "'backstage' tells us how, when or where the verb 'carried' happens."
       }
     },
     "C-HEAD-ADVERBIAL": {
-      "In '{X}', '{X}' is the adverb that heads the phrase.": {
-        "count": 810,
+      "'{X}' tells us how, when or where something happens.": {
+        "count": 812,
         "example": "The stage crew carried boxs of painted scenery backstage.",
-        "text": "In 'backstage', 'backstage' is the adverb that heads the phrase."
+        "text": "'backstage' tells us how, when or where something happens."
       }
     },
     "C-CLAUSAL-ADVERBIAL": {
-      "In '{X}', the phrase '{X}' adds extra detail about the whole clause.": {
-        "count": 90,
+      "The words '{X}' add extra information to the whole sentence '{X}'.": {
+        "count": 268,
         "example": "After the final song, the audience sent the cast several thank-you cardss.",
-        "text": "In 'After the final song , the audience sent the cast several thank - you cardss .', the phrase 'After the final song' adds extra detail about the whole clause."
+        "text": "The words 'After the final song' add extra information to the whole sentence 'After the final song, the audience sent the cast several thank - you cardss.'."
       },
-      "In '{X}', the adverbial phrase '{X}' tells when, where, or how the whole clause happens.": {
-        "count": 172,
-        "example": "They also sold bright toies made by a local carpenter.",
-        "text": "In 'They also sold bright toies made by a local carpenter .', the adverbial phrase 'also' tells when, where, or how the whole clause happens."
-      },
-      "In '{X}'s help , they built a simple set for the stage .'{X}'With the teacher '{X}' adds extra detail about the whole clause.": {
+      "The words '{X}'s help'{X}'With the teacher'{X}'.": {
         "count": 1,
         "example": "With the teacher's help, they built a simple set for the stage.",
-        "text": "In 'With the teacher 's help , they built a simple set for the stage .', the phrase 'With the teacher 's help' adds extra detail about the whole clause."
+        "text": "The words 'With the teacher's help' add extra information to the whole sentence 'With the teacher's help, they built a simple set for the stage.'."
       },
-      "In '{X}'s delight , she could stand easy on her own .'{X}'Soon' tells when, where, or how the whole clause happens.": {
+      "The words '{X}' add extra information to the whole sentence '{X}'s delight, she could stand easy on her own.'.": {
         "count": 1,
         "example": "Soon, to everyone's delight, she could stand easy on her own.",
-        "text": "In 'Soon , to everyone 's delight , she could stand easy on her own .', the adverbial phrase 'Soon' tells when, where, or how the whole clause happens."
+        "text": "The words 'Soon' add extra information to the whole sentence 'Soon, to everyone's delight, she could stand easy on her own.'."
       },
-      "In '{X}'s delight , she could stand easy on her own .'{X}'to everyone '{X}' adds extra detail about the whole clause.": {
+      "The words '{X}'s delight'{X}'Soon, to everyone'{X}'.": {
         "count": 1,
         "example": "Soon, to everyone's delight, she could stand easy on her own.",
-        "text": "In 'Soon , to everyone 's delight , she could stand easy on her own .', the phrase 'to everyone 's delight' adds extra detail about the whole clause."
+        "text": "The words 'to everyone's delight' add extra information to the whole sentence 'Soon, to everyone's delight, she could stand easy on her own.'."
       },
-      "In '{X}'s windows were full of fresh bread .'{X}'From the street' adds extra detail about the whole clause.": {
+      "The words '{X}' add extra information to the whole sentence '{X}'s windows were full of fresh bread.'.": {
         "count": 1,
         "example": "From the street, it's windows were full of fresh bread.",
-        "text": "In 'From the street , it 's windows were full of fresh bread .', the phrase 'From the street' adds extra detail about the whole clause."
+        "text": "The words 'From the street' add extra information to the whole sentence 'From the street, it's windows were full of fresh bread.'."
       }
     },
     "C-MOD-POS": {
-      "In '{X}', '{X}' correctly comes before the noun '{X}'.": {
-        "count": 1172,
+      "'{X}' comes before the noun '{X}' in '{X}', which is the right place for it.": {
+        "count": 1159,
         "example": "After the final song, the audience sent the cast several thank-you cardss.",
-        "text": "In 'the final song', 'final' correctly comes before the noun 'song'."
+        "text": "'final' comes before the noun 'song' in 'the final song', which is the right place for it."
       },
-      "In '{X}'s'{X}'other'{X}'other'.": {
+      "'{X}' is the main word of '{X}'. There is no noun after it, so it carries the meaning here.": {
+        "count": 8,
+        "example": "By the time we arrived, guests had already ate most of the bread.",
+        "text": "'most' is the main word of 'most'. There is no noun after it, so it carries the meaning here."
+      },
+      "'{X}' comes before the noun '{X}' in '{X}'s', which is the right place for it.": {
         "count": 1,
         "example": "Its coffee is as good than the other's.",
-        "text": "In 'the other 's', 'other' correctly comes before the noun 'other'."
+        "text": "'other' comes before the noun 'other' in 'the other's', which is the right place for it."
       }
     },
     "C-AUXILIARY": {
-      "In '{X}', the auxiliary '{X}' is correctly followed by '{X}' (past participle).": {
-        "count": 162,
+      "'{X}' shows an action that was already finished before another time.": {
+        "count": 58,
         "example": "Several citys had sent maps for the new exhibit.",
-        "text": "In 'had sent maps for the new exhibit', the auxiliary 'had' is correctly followed by 'sent' (past participle)."
+        "text": "'had sent' shows an action that was already finished before another time."
       },
-      "In '{X}', the auxiliary '{X}' is correctly followed by '{X}' (base).": {
-        "count": 83,
+      "'{X}' shows an action done to the subject.": {
+        "count": 100,
+        "example": "Finished posters were packed into flat boxs for delivery.",
+        "text": "'were packed' shows an action done to the subject."
+      },
+      "'{X}' shows that the action is possible, necessary or allowed. The verb after it stays in its plain form.": {
+        "count": 73,
         "example": "Visitors could now walk around the whole garden.",
-        "text": "In 'could now walk around the whole garden', the auxiliary 'could' is correctly followed by 'walk' (base)."
+        "text": "'could' shows that the action is possible, necessary or allowed. The verb after it stays in its plain form."
       },
-      "In '{X}', the auxiliary '{X}' is correctly followed by '{X}' (present participle).": {
+      "'{X}' shows an action happening now or around now.": {
         "count": 54,
         "example": "The science class was studying a chapter about life in the sea.",
-        "text": "In 'was studying a chapter about life in the sea', the auxiliary 'was' is correctly followed by 'studying' (present participle)."
+        "text": "'was studying' shows an action happening now or around now."
       },
-      "In '{X}'s decision'{X}'is'{X}'doubting' (present participle).": {
-        "count": 1,
-        "example": "The coach is doubting the referee's decision.",
-        "text": "In 'is doubting the referee 's decision', the auxiliary 'is' is correctly followed by 'doubting' (present participle)."
-      },
-      "In '{X}'t like coffee'{X}'do'{X}'like' (base).": {
-        "count": 1,
-        "example": "You don't like coffee, don't you?",
-        "text": "In 'do n't like coffee', the auxiliary 'do' is correctly followed by 'like' (base)."
-      },
-      "In '{X}'t coming'{X}'is'{X}'coming' (present participle).": {
-        "count": 1,
-        "example": "She isn't coming, isn't she?",
-        "text": "In 'is n't coming', the auxiliary 'is' is correctly followed by 'coming' (present participle)."
+      "'{X}' is used to ask a question, say '{X}', or add emphasis.": {
+        "count": 11,
+        "example": "He doesnt know about it yet, so please keep quiet.",
+        "text": "'does know' is used to ask a question, say 'no', or add emphasis."
       }
     },
     "C-AUX-COMPLEMENT": {
-      "In '{X}', the verb phrase '{X}' is the main verb the auxiliary pairs with.": {
-        "count": 619,
+      "'{X}' is the main verb of the sentence. It works together with the helping word in '{X}'.": {
+        "count": 606,
         "example": "Several citys had sent maps for the new exhibit.",
-        "text": "In 'had sent maps for the new exhibit', the verb phrase 'sent maps for the new exhibit' is the main verb the auxiliary pairs with."
+        "text": "'sent maps for the new exhibit' is the main verb of the sentence. It works together with the helping word in 'had sent maps for the new exhibit'."
       },
-      "In '{X}'s decision'{X}'doubting the referee '{X}' is the main verb the auxiliary pairs with.": {
+      "'{X}'s decision'{X}'is doubting the referee'{X}'.": {
         "count": 1,
         "example": "The coach is doubting the referee's decision.",
-        "text": "In 'is doubting the referee 's decision', the verb phrase 'doubting the referee 's decision' is the main verb the auxiliary pairs with."
+        "text": "'doubting the referee's decision' is the main verb of the sentence. It works together with the helping word in 'is doubting the referee's decision'."
       },
-      "In '{X}'t it'{X}'have quite sure' is the main verb the auxiliary pairs with.": {
-        "count": 1,
-        "example": "We have quite sure, hasn't it?",
-        "text": "In 'have quite sure , has n't it', the verb phrase 'have quite sure' is the main verb the auxiliary pairs with."
-      },
-      "In '{X}'t like coffee'{X}'like coffee' is the main verb the auxiliary pairs with.": {
+      "'{X}' is the main verb of the sentence. It works together with the helping word in '{X}'t like coffee'.": {
         "count": 1,
         "example": "You don't like coffee, don't you?",
-        "text": "In 'do n't like coffee', the verb phrase 'like coffee' is the main verb the auxiliary pairs with."
+        "text": "'like coffee' is the main verb of the sentence. It works together with the helping word in 'don't like coffee'."
       },
-      "In '{X}'t coming'{X}'coming' is the main verb the auxiliary pairs with.": {
+      "'{X}' is the main verb of the sentence. It works together with the helping word in '{X}'t coming'.": {
         "count": 1,
         "example": "She isn't coming, isn't she?",
-        "text": "In 'is n't coming', the verb phrase 'coming' is the main verb the auxiliary pairs with."
+        "text": "'coming' is the main verb of the sentence. It works together with the helping word in 'isn't coming'."
       },
-      "In '{X}'s leaves early'{X}'leaves early' is the main verb the auxiliary pairs with.": {
+      "'{X}' is the main verb of the sentence. It works together with the helping word in '{X}'s leaves early'.": {
         "count": 1,
         "example": "The old oak shed it's leaves early.",
-        "text": "In ''s leaves early', the verb phrase 'leaves early' is the main verb the auxiliary pairs with."
+        "text": "'leaves early' is the main verb of the sentence. It works together with the helping word in ''s leaves early'."
       }
     },
     "C-CLAUSAL-COMPLEMENT": {
-      "In '{X}', the clause '{X}' completes the verb phrase.": {
+      "'{X}' goes with the verb in '{X}' and completes its meaning.": {
         "count": 83,
         "example": "The first customers arrived just as the doors opened.",
-        "text": "In 'arrived just as the doors opened', the clause 'just as the doors opened' completes the verb phrase."
+        "text": "'just as the doors opened' goes with the verb in 'arrived just as the doors opened' and completes its meaning."
       },
-      "In '{X}', the clause '{X}' completes the sentence.": {
-        "count": 40,
+      "The words '{X}' go with the sentence '{X}' and complete its meaning.": {
+        "count": 43,
         "example": "When she returned it, she left a kind note for the librarian.",
-        "text": "In 'When she returned it , she left a kind note for the librarian .', the clause 'When she returned it' completes the sentence."
+        "text": "The words 'When she returned it' go with the sentence 'When she returned it, she left a kind note for the librarian.' and complete its meaning."
       },
-      "In '{X}'re baskets would be safe beside them'{X}'they '{X}' completes the verb phrase.": {
+      "'{X}'re baskets would be safe beside them'{X}'said they'{X}' and completes its meaning.": {
         "count": 1,
         "example": "They said they're baskets would be safe beside them.",
-        "text": "In 'said they 're baskets would be safe beside them', the clause 'they 're baskets would be safe beside them' completes the verb phrase."
+        "text": "'they're baskets would be safe beside them' goes with the verb in 'said they're baskets would be safe beside them' and completes its meaning."
       },
-      "In '{X}'re baskets would be safe beside them'{X}'baskets would be safe beside them' completes the verb phrase.": {
+      "'{X}' goes with the verb in '{X}'re baskets would be safe beside them' and completes its meaning.": {
         "count": 1,
         "example": "They said they're baskets would be safe beside them.",
-        "text": "In ''re baskets would be safe beside them', the clause 'baskets would be safe beside them' completes the verb phrase."
+        "text": "'baskets would be safe beside them' goes with the verb in ''re baskets would be safe beside them' and completes its meaning."
       },
-      "In '{X}'re coffee was the best in town'{X}'that they '{X}' completes the verb phrase.": {
+      "'{X}'re coffee was the best in town'{X}'agreed that they'{X}' and completes its meaning.": {
         "count": 1,
         "example": "Many agreed that they're coffee was the best in town.",
-        "text": "In 'agreed that they 're coffee was the best in town', the clause 'that they 're coffee was the best in town' completes the verb phrase."
+        "text": "'that they're coffee was the best in town' goes with the verb in 'agreed that they're coffee was the best in town' and completes its meaning."
       },
-      "In '{X}'s leaves early .'{X}'it '{X}' completes the sentence.": {
+      "The words '{X}'s leaves early'{X}'The old oak shed it'{X}' and complete its meaning.": {
         "count": 1,
         "example": "The old oak shed it's leaves early.",
-        "text": "In 'The old oak shed it 's leaves early .', the clause 'it 's leaves early' completes the sentence."
+        "text": "The words 'it's leaves early' go with the sentence 'The old oak shed it's leaves early.' and complete its meaning."
       }
     },
     "C-COMPLEMENTIZER": {
-      "'{X}' introduces the subordinate clause '{X}'.": {
-        "count": 80,
+      "The word '{X}' starts the part '{X}' and joins it to the sentence.": {
+        "count": 81,
         "example": "The first customers arrived just as the doors opened.",
-        "text": "'as' introduces the subordinate clause 'just as the doors opened'."
+        "text": "The word 'as' starts the part 'just as the doors opened' and joins it to the sentence."
       },
-      "'{X}' introduces the subordinate clause '{X}'re coffee was the best in town'.": {
+      "The word '{X}' starts the part '{X}'re coffee was the best in town' and joins it to the sentence.": {
         "count": 1,
         "example": "Many agreed that they're coffee was the best in town.",
-        "text": "'that' introduces the subordinate clause 'that they 're coffee was the best in town'."
+        "text": "The word 'that' starts the part 'that they're coffee was the best in town' and joins it to the sentence."
       }
     },
     "C-RELATIVE-CLAUSE": {
-      "In '{X}', the clause '{X}' supplies the rest of the relative clause.": {
+      "'{X}' is the main part of '{X}'.": {
         "count": 235,
         "example": "The first customers arrived just as the doors opened.",
-        "text": "In 'just as the doors opened', the clause 'the doors opened' supplies the rest of the relative clause."
+        "text": "'the doors opened' is the main part of 'just as the doors opened'."
       },
-      "In '{X}'re baskets would be safe beside them'{X}'they '{X}' supplies the rest of the relative clause.": {
+      "'{X}'re baskets would be safe beside them'{X}'they'{X}'.": {
         "count": 1,
         "example": "They said they're baskets would be safe beside them.",
-        "text": "In 'they 're baskets would be safe beside them', the clause 'they 're baskets would be safe beside them' supplies the rest of the relative clause."
+        "text": "'they're baskets would be safe beside them' is the main part of 'they're baskets would be safe beside them'."
       },
-      "In '{X}'re coffee was the best in town'{X}'they '{X}' supplies the rest of the relative clause.": {
+      "'{X}'re coffee was the best in town'{X}'that they'{X}'.": {
         "count": 1,
         "example": "Many agreed that they're coffee was the best in town.",
-        "text": "In 'that they 're coffee was the best in town', the clause 'they 're coffee was the best in town' supplies the rest of the relative clause."
+        "text": "'they're coffee was the best in town' is the main part of 'that they're coffee was the best in town'."
       },
-      "In '{X}'s leaves early'{X}'it '{X}' supplies the rest of the relative clause.": {
+      "'{X}'s leaves early'{X}'it'{X}'.": {
         "count": 1,
         "example": "The old oak shed it's leaves early.",
-        "text": "In 'it 's leaves early', the clause 'it 's leaves early' supplies the rest of the relative clause."
+        "text": "'it's leaves early' is the main part of 'it's leaves early'."
       }
     },
     "C-RELATIVE-HEAD": {
-      "In '{X}', the question-word phrase '{X}' begins the relative clause.": {
+      "The word '{X}' starts '{X}' and links it to what comes before.": {
         "count": 67,
         "example": "A volunteer explained how animals find food near roads.",
-        "text": "In 'how animals find food near roads', the question-word phrase 'how' begins the relative clause."
+        "text": "The word 'how' starts 'how animals find food near roads' and links it to what comes before."
       },
-      "In '{X}', the question-word phrase '{X}' fits the relative-clause structure.": {
-        "count": 30,
+      "The word '{X}' starts the question '{X}' and comes first in it.": {
+        "count": 29,
         "example": "A volunteer explained how animals find food near roads.",
-        "text": "In 'how', the question-word phrase 'how' fits the relative-clause structure."
+        "text": "The word 'how' starts the question 'how' and comes first in it."
       }
     },
     "C-SMALL-CLAUSE": {
-      "In '{X}', the clause '{X}' is the object of the verb '{X}'.": {
-        "count": 217,
+      "'{X}' goes with the verb in '{X}' and tells us more about the object of '{X}'.": {
+        "count": 214,
         "example": "The children arranged paper boxs to hold their clay models.",
-        "text": "In 'arranged paper boxs to hold their clay models', the clause 'to hold their clay models' is the object of the verb 'arranged'."
+        "text": "'to hold their clay models' goes with the verb in 'arranged paper boxs to hold their clay models' and tells us more about the object of 'arranged'."
       },
-      "The verb phrase '{X}' is an embedded clause, so it takes its tense from the verb around it.": {
-        "count": 13,
+      "The words '{X}' are inside '{X}'. They have no time of their own; the main verb shows the time.": {
+        "count": 12,
         "example": "At the shore, the children watched many crab move across the sand.",
-        "text": "The verb phrase 'move across the sand' is an embedded clause, so it takes its tense from the verb around it."
+        "text": "The words 'move across the sand' are inside 'watched many crab move across the sand'. They have no time of their own; the main verb shows the time."
       },
-      "In '{X}'s roof repaired'{X}'it '{X}' is the object of the verb '{X}'.": {
+      "'{X}'s roof repaired'{X}'had it'{X}' and tells us more about the object of '{X}'.": {
         "count": 1,
         "example": "The building had it's roof repaired.",
-        "text": "In 'had it 's roof repaired', the clause 'it 's roof repaired' is the object of the verb 'had'."
+        "text": "'it's roof repaired' goes with the verb in 'had it's roof repaired' and tells us more about the object of 'had'."
+      },
+      "The words '{X}' are inside '{X}'s roof repaired'. They have no time of their own; the main verb shows the time.": {
+        "count": 1,
+        "example": "The building had it's roof repaired.",
+        "text": "The words 'repaired' are inside 'had it's roof repaired'. They have no time of their own; the main verb shows the time."
       }
     },
     "C-INFINITIVAL-COMPLEMENT": {
-      "The verb phrase '{X}' is an infinitive ('{X}' + verb), so it takes its tense from the main clause and needs none of its own.": {
-        "count": 189,
+      "The words '{X}' name an action after '{X}'. They have no time of their own; the main verb shows the time.": {
+        "count": 186,
         "example": "The children arranged paper boxs to hold their clay models.",
-        "text": "The verb phrase 'to hold their clay models' is an infinitive ('to' + verb), so it takes its tense from the main clause and needs none of its own."
+        "text": "The words 'to hold their clay models' name an action after 'to'. They have no time of their own; the main verb shows the time."
       }
     },
     "C-INFINITIVAL-MARKER": {
-      "'{X}' introduces the infinitive phrase '{X}'.": {
-        "count": 183,
+      "The word '{X}' comes before a verb to name an action in '{X}'.": {
+        "count": 182,
         "example": "The children arranged paper boxs to hold their clay models.",
-        "text": "'to' introduces the infinitive phrase 'to hold their clay models'."
+        "text": "The word 'to' comes before a verb to name an action in 'to hold their clay models'."
       }
     },
     "C-COORDINATOR": {
-      "In '{X}', '{X}' joins the two nouns.": {
+      "The word '{X}' joins the two nouns in '{X}' into one.": {
         "count": 96,
         "example": "Vendors decorated their stalls with yellow lilys and green ribbons.",
-        "text": "In 'yellow lilys and green ribbons', 'and' joins the two nouns."
+        "text": "The word 'and' joins the two nouns in 'yellow lilys and green ribbons' into one."
       },
-      "In '{X}', '{X}' joins the two adverb parts.": {
+      "The word '{X}' joins two sentences into one and keeps them equal.": {
+        "count": 18,
+        "example": "The village school held its spring fair on Saturday, and by mid-morning the whole playground was full.",
+        "text": "The word 'and' joins two sentences into one and keeps them equal."
+      },
+      "The word '{X}' joins two describing words into one.": {
         "count": 1,
         "example": "Now and then its tail twitched as it dreamed.",
-        "text": "In 'Now and then', 'and' joins the two adverb parts."
+        "text": "The word 'and' joins two describing words into one."
+      },
+      "The word '{X}' joins the two parts on either side of it into one.": {
+        "count": 1,
+        "example": "They walked along a ridge and down the other side.",
+        "text": "The word 'and' joins the two parts on either side of it into one."
       }
     },
     "C-NP-REDUCED-RELATIVE": {
-      "In '{X}', the phrase '{X}' is a reduced relative clause describing '{X}'.": {
+      "The words '{X}' come after the noun in '{X}' and describe it, without a word like '{X}' or '{X}'.": {
         "count": 18,
         "example": "They also sold bright toies made by a local carpenter.",
-        "text": "In 'bright toies made by a local carpenter', the phrase 'made by a local carpenter' is a reduced relative clause describing 'carpenter'."
+        "text": "The words 'made by a local carpenter' come after the noun in 'bright toies made by a local carpenter' and describe it, without a word like 'that' or 'which'."
       }
     },
     "C-PREDICATE-ADJECTIVE": {
-      "In '{X}', the adjective phrase '{X}' describes the subject of the clause.": {
-        "count": 427,
+      "'{X}' comes after the verb in '{X}' and describes the subject.": {
+        "count": 411,
         "example": "By midday, the orchard road was busy with visitors.",
-        "text": "In 'was busy with visitors', the adjective phrase 'busy with visitors' describes the subject of the clause."
+        "text": "'busy with visitors' comes after the verb in 'was busy with visitors' and describes the subject."
       },
-      "In '{X}'re visit'{X}'excited about they '{X}' describes the subject of the clause.": {
+      "'{X}'re visit'{X}'were excited about they'{X}' and describes the subject.": {
         "count": 1,
         "example": "They were excited about they're visit.",
-        "text": "In 'were excited about they 're visit', the adjective phrase 'excited about they 're visit' describes the subject of the clause."
+        "text": "'excited about they're visit' comes after the verb in 'were excited about they're visit' and describes the subject."
       },
-      "In '{X}'s'{X}'as good than the other '{X}' describes the subject of the clause.": {
+      "'{X}'s'{X}'is as good than the other'{X}' and describes the subject.": {
         "count": 1,
         "example": "Its coffee is as good than the other's.",
-        "text": "In 'is as good than the other 's', the adjective phrase 'as good than the other 's' describes the subject of the clause."
+        "text": "'as good than the other's' comes after the verb in 'is as good than the other's' and describes the subject."
       },
-      "In '{X}'s history'{X}'proud for the market '{X}' describes the subject of the clause.": {
+      "'{X}'s history'{X}'are proud for the market'{X}' and describes the subject.": {
         "count": 1,
         "example": "People are proud for the market's history.",
-        "text": "In 'are proud for the market 's history', the adjective phrase 'proud for the market 's history' describes the subject of the clause."
+        "text": "'proud for the market's history' comes after the verb in 'are proud for the market's history' and describes the subject."
       }
     },
     "C-HEAD-ADJECTIVE": {
-      "In '{X}', '{X}' is the adjective that is the main word of the phrase.": {
-        "count": 518,
+      "The describing word '{X}' is the main word of '{X}'. The other words there add detail about it.": {
+        "count": 504,
         "example": "By midday, the orchard road was busy with visitors.",
-        "text": "In 'busy with visitors', 'busy' is the adjective that is the main word of the phrase."
+        "text": "The describing word 'busy' is the main word of 'busy with visitors'. The other words there add detail about it."
       },
-      "In '{X}'re visit'{X}'excited' is the adjective that is the main word of the phrase.": {
+      "The describing word '{X}' is the main word of '{X}'re visit'. The other words there add detail about it.": {
         "count": 1,
         "example": "They were excited about they're visit.",
-        "text": "In 'excited about they 're visit', 'excited' is the adjective that is the main word of the phrase."
+        "text": "The describing word 'excited' is the main word of 'excited about they're visit'. The other words there add detail about it."
       },
-      "In '{X}'s history'{X}'proud' is the adjective that is the main word of the phrase.": {
+      "The describing word '{X}' is the main word of '{X}'s history'. The other words there add detail about it.": {
         "count": 1,
         "example": "People are proud for the market's history.",
-        "text": "In 'proud for the market 's history', 'proud' is the adjective that is the main word of the phrase."
+        "text": "The describing word 'proud' is the main word of 'proud for the market's history'. The other words there add detail about it."
       }
     },
     "C-QUANTIFIER": {
-      "In '{X}', '{X}' correctly goes with the noun '{X}'.": {
-        "count": 36,
+      "The word '{X}' and the noun '{X}' go together correctly.": {
+        "count": 35,
         "example": "A few residents swept leaves from the walking path.",
-        "text": "In 'A few residents', 'few' correctly goes with the noun 'residents'."
-      },
-      "In '{X}', '{X}' stands alone as a pronoun, which this word can do.": {
-        "count": 2,
-        "example": "Many had saw the same letters online before.",
-        "text": "In 'Many', 'Many' stands alone as a pronoun, which this word can do."
+        "text": "The word 'few' and the noun 'residents' go together correctly."
       }
     },
     "C-NP-RELATIVE": {
-      "In '{X}', the clause '{X}' is a relative clause describing '{X}'.": {
+      "The words '{X}' come after the noun in '{X}' and describe it. They have their own subject and verb.": {
         "count": 84,
         "example": "A sign listed the farms that supplied the produce.",
-        "text": "In 'the farms that supplied the produce', the clause 'that supplied the produce' is a relative clause describing 'produce'."
+        "text": "The words 'that supplied the produce' come after the noun in 'the farms that supplied the produce' and describe it. They have their own subject and verb."
       }
     },
     "C-RELATIVE-PRONOUN": {
-      "In '{X}', '{X}' is the question word that heads the phrase.": {
+      "The word '{X}' starts '{X}' and connects it to the noun it describes.": {
         "count": 53,
         "example": "A sign listed the farms that supplied the produce.",
-        "text": "In 'that', 'that' is the question word that heads the phrase."
+        "text": "The word 'that' starts 'that' and connects it to the noun it describes."
       }
     },
     "C-QUOTE": {
-      "'{X}' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it.": {
-        "count": 663,
+      "The words '{X}' are a quotation inside '{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 646,
         "example": "\"And how many tooths have you lost this year?\" she asked.",
-        "text": "'And' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it."
+        "text": "The words 'And' are a quotation inside '\" And how many tooths have you lost this year? \" she asked.'. They are someone's exact words, so we do not check the grammar inside the quotation."
       },
-      "'{X}'s tidy' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it.": {
-        "count": 6,
-        "example": "\"Ill call you when it's tidy,\" she promised.",
-        "text": "'Ill call you when it 's tidy' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it."
-      },
-      "'{X}'s' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it.": {
+      "The words '{X}'s tidy'{X}'\" Ill call you when it'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
         "count": 1,
         "example": "\"Ill call you when it's tidy,\" she promised.",
-        "text": "''s' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it."
+        "text": "The words 'Ill call you when it's tidy' are a quotation inside '\" Ill call you when it's tidy, \" she promised.'. They are someone's exact words, so we do not check the grammar inside the quotation."
       },
-      "'{X}'t goes upstairs yet' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it.": {
+      "The words '{X}'s tidy'{X}'Ill call you when it'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 2,
+        "example": "\"Ill call you when it's tidy,\" she promised.",
+        "text": "The words 'Ill call you when it's tidy' are a quotation inside 'Ill call you when it's tidy'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}' are a quotation inside '{X}'s tidy'{X}'s exact words, so we do not check the grammar inside the quotation.": {
+        "count": 6,
+        "example": "\"Ill call you when it's tidy,\" she promised.",
+        "text": "The words 'Ill' are a quotation inside 'Ill call you when it's tidy'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}'s tidy'{X}'call you when it'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Ill call you when it's tidy,\" she promised.",
+        "text": "The words 'when it's tidy' are a quotation inside 'call you when it's tidy'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}'s tidy'{X}'when it'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Ill call you when it's tidy,\" she promised.",
+        "text": "The words 'it's tidy' are a quotation inside 'when it's tidy'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}'s tidy'{X}'it'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Ill call you when it's tidy,\" she promised.",
+        "text": "The words ''s tidy' are a quotation inside 'it's tidy'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}'s'{X}''{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Ill call you when it's tidy,\" she promised.",
+        "text": "The words ''s' are a quotation inside ''s tidy'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}'t goes upstairs yet'{X}'\" Don'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Don't goes upstairs yet,\" said their mother.",
+        "text": "The words 'Don't goes upstairs yet' are a quotation inside '\" Don't goes upstairs yet, \" said their mother.'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}'t goes upstairs yet'{X}'Don'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Don't goes upstairs yet,\" said their mother.",
+        "text": "The words 'Don't goes upstairs yet' are a quotation inside 'Don't goes upstairs yet'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}' are a quotation inside '{X}'t goes upstairs yet'{X}'s exact words, so we do not check the grammar inside the quotation.": {
         "count": 2,
         "example": "\"Don't goes upstairs yet,\" said their mother.",
-        "text": "'Do n't goes upstairs yet' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it."
+        "text": "The words 'Do' are a quotation inside 'Don't goes upstairs yet'. They are someone's exact words, so we do not check the grammar inside the quotation."
       },
-      "'{X}'t' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it.": {
+      "The words '{X}'t'{X}'Don'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
         "count": 5,
         "example": "\"Don't goes upstairs yet,\" said their mother.",
-        "text": "'n't' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it."
+        "text": "The words 'n't' are a quotation inside 'Don't goes upstairs yet'. They are someone's exact words, so we do not check the grammar inside the quotation."
       },
-      "'{X}'t loses your positions' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it.": {
+      "The words '{X}'t loses your positions'{X}'\" Don'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Don't loses your positions,\" he warned.",
+        "text": "The words 'Don't loses your positions' are a quotation inside '\" Don't loses your positions, \" he warned.'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}'t loses your positions'{X}'Don'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Don't loses your positions,\" he warned.",
+        "text": "The words 'Don't loses your positions' are a quotation inside 'Don't loses your positions'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}' are a quotation inside '{X}'t loses your positions'{X}'s exact words, so we do not check the grammar inside the quotation.": {
         "count": 2,
         "example": "\"Don't loses your positions,\" he warned.",
-        "text": "'Do n't loses your positions' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it."
+        "text": "The words 'Do' are a quotation inside 'Don't loses your positions'. They are someone's exact words, so we do not check the grammar inside the quotation."
       },
-      "'{X}'t talks during the test' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it.": {
+      "The words '{X}'t talks during the test'{X}'\" Don'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Don't talks during the test,\" she added.",
+        "text": "The words 'Don't talks during the test' are a quotation inside '\" Don't talks during the test, \" she added.'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}'t talks during the test'{X}'Don'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Don't talks during the test,\" she added.",
+        "text": "The words 'Don't talks during the test' are a quotation inside 'Don't talks during the test'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}' are a quotation inside '{X}'t talks during the test'{X}'s exact words, so we do not check the grammar inside the quotation.": {
         "count": 2,
         "example": "\"Don't talks during the test,\" she added.",
-        "text": "'Do n't talks during the test' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it."
+        "text": "The words 'Do' are a quotation inside 'Don't talks during the test'. They are someone's exact words, so we do not check the grammar inside the quotation."
       },
-      "'{X}'t rushes' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it.": {
+      "The words '{X}'t rushes'{X}'\" Don'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Don't rushes,\" he warned the group.",
+        "text": "The words 'Don't rushes' are a quotation inside '\" Don't rushes, \" he warned the group.'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}'t rushes'{X}'Don'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Don't rushes,\" he warned the group.",
+        "text": "The words 'Don't rushes' are a quotation inside 'Don't rushes'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}' are a quotation inside '{X}'t rushes'{X}'s exact words, so we do not check the grammar inside the quotation.": {
         "count": 2,
         "example": "\"Don't rushes,\" he warned the group.",
-        "text": "'Do n't rushes' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it."
+        "text": "The words 'Do' are a quotation inside 'Don't rushes'. They are someone's exact words, so we do not check the grammar inside the quotation."
       },
-      "'{X}'t forgets the pepper' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it.": {
+      "The words '{X}'t forgets the pepper'{X}'\" Don'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Don't forgets the pepper,\" the chef added.",
+        "text": "The words 'Don't forgets the pepper' are a quotation inside '\" Don't forgets the pepper, \" the chef added.'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}'t forgets the pepper'{X}'Don'{X}'. They are someone's exact words, so we do not check the grammar inside the quotation.": {
+        "count": 1,
+        "example": "\"Don't forgets the pepper,\" the chef added.",
+        "text": "The words 'Don't forgets the pepper' are a quotation inside 'Don't forgets the pepper'. They are someone's exact words, so we do not check the grammar inside the quotation."
+      },
+      "The words '{X}' are a quotation inside '{X}'t forgets the pepper'{X}'s exact words, so we do not check the grammar inside the quotation.": {
         "count": 2,
         "example": "\"Don't forgets the pepper,\" the chef added.",
-        "text": "'Do n't forgets the pepper' is quoted verbatim, so the rules that govern the rest of the sentence do not apply to it."
+        "text": "The words 'Do' are a quotation inside 'Don't forgets the pepper'. They are someone's exact words, so we do not check the grammar inside the quotation."
       }
     },
     "C-INTENSIFIER": {
-      "In '{X}', '{X}' strengthens the adjective in the phrase.": {
+      "The word '{X}' makes '{X}' stronger.": {
         "count": 97,
         "example": "The newspaper office was unusually busy before the morning edition.",
-        "text": "In 'unusually busy', 'unusually' strengthens the adjective in the phrase."
-      }
-    },
-    "C-POSTPOSITIVE-ADJ": {
-      "In '{X}', '{X}' follows '{X}' as a postpositive adjective.": {
-        "count": 5,
-        "example": "The bus left the school gates at seven sharp.",
-        "text": "In 'seven sharp', 'sharp' follows 'seven' as a postpositive adjective."
+        "text": "The word 'unusually' makes 'unusually busy' stronger."
       }
     },
     "C-ADVERBIAL-COMPLEMENT": {
-      "In '{X}', the noun phrase '{X}' gives a time or a measure inside the adverb phrase.": {
+      "The words '{X}' give a time or an amount inside '{X}'.": {
         "count": 20,
         "example": "The students measured two model towers side by side.",
-        "text": "In 'side by side', the noun phrase 'side' gives a time or a measure inside the adverb phrase."
+        "text": "The words 'side' give a time or an amount inside 'side by side'."
       }
     },
     "C-SMALL-CLAUSE-PREDICATE": {
-      "In '{X}', the adjective phrase '{X}' is the predicate: it says what the subject is.": {
-        "count": 22,
+      "The word '{X}' describes the subject in '{X}'.": {
+        "count": 21,
         "example": "The right path, though shorter, was the most steepest of the two.",
-        "text": "In 'shorter', the adjective phrase 'shorter' is the predicate: it says what the subject is."
+        "text": "The word 'shorter' describes the subject in 'shorter'."
       }
     },
     "C-CLAUSE-PREDICATE": {
-      "In '{X}', '{X}' is the predicate: it says what the subject does or is.": {
+      "'{X}' is the verb part of '{X}' \u2014 it tells what the subject does or is.": {
         "count": 22,
         "example": "\"Im sorry for the short notice,\" said the librarian.",
-        "text": "In '\" I m sorry for the short notice , \" said the librarian .', 'said' is the predicate: it says what the subject does or is."
+        "text": "'said' is the verb part of '\" I m sorry for the short notice, \" said the librarian.' \u2014 it tells what the subject does or is."
       },
-      "In '{X}'t goes upstairs yet , \" said their mother .'{X}'said' is the predicate: it says what the subject does or is.": {
+      "'{X}' is the verb part of '{X}'t goes upstairs yet, \" said their mother.' \u2014 it tells what the subject does or is.": {
         "count": 1,
         "example": "\"Don't goes upstairs yet,\" said their mother.",
-        "text": "In '\" Do n't goes upstairs yet , \" said their mother .', 'said' is the predicate: it says what the subject does or is."
+        "text": "'said' is the verb part of '\" Don't goes upstairs yet, \" said their mother.' \u2014 it tells what the subject does or is."
       }
     },
     "C-CLAUSE-SUBJECT": {
-      "In '{X}', '{X}' is the subject of the clause.": {
+      "'{X}' is the subject of '{X}' \u2014 the person or thing it is about.": {
         "count": 29,
         "example": "\"Im sorry for the short notice,\" said the librarian.",
-        "text": "In '\" I m sorry for the short notice , \" said the librarian .', 'the librarian' is the subject of the clause."
+        "text": "'the librarian' is the subject of '\" I m sorry for the short notice, \" said the librarian.' \u2014 the person or thing it is about."
       },
-      "In '{X}'t goes upstairs yet , \" said their mother .'{X}'their mother' is the subject of the clause.": {
+      "'{X}' is the subject of '{X}'t goes upstairs yet, \" said their mother.' \u2014 the person or thing it is about.": {
         "count": 1,
         "example": "\"Don't goes upstairs yet,\" said their mother.",
-        "text": "In '\" Do n't goes upstairs yet , \" said their mother .', 'their mother' is the subject of the clause."
+        "text": "'their mother' is the subject of '\" Don't goes upstairs yet, \" said their mother.' \u2014 the person or thing it is about."
       },
-      "In '{X}'t it ?'{X}'it' is the subject of the clause.": {
-        "count": 12,
-        "example": "You are ready, isn't it?",
-        "text": "In 'is n't it ?', 'it' is the subject of the clause."
-      },
-      "In '{X}'t she ?'{X}'she' is the subject of the clause.": {
+      "'{X}' is the subject of '{X}'t she?' \u2014 the person or thing it is about.": {
         "count": 1,
         "example": "She can swim well, doesn't she?",
-        "text": "In 'She can swim well , does n't she ?', 'she' is the subject of the clause."
+        "text": "'she' is the subject of 'She can swim well, doesn't she?' \u2014 the person or thing it is about."
       },
-      "In '{X}'t they ?'{X}'they' is the subject of the clause.": {
+      "'{X}' is the subject of '{X}'t they?' \u2014 the person or thing it is about.": {
         "count": 1,
         "example": "They had left already, didn't they?",
-        "text": "In 'They had left already , did n't they ?', 'they' is the subject of the clause."
+        "text": "'they' is the subject of 'They had left already, didn't they?' \u2014 the person or thing it is about."
       },
-      "In '{X}'t like coffee , do n'{X}', '{X}' is the subject of the clause.": {
+      "'{X}' is the subject of '{X}'t like coffee, don'{X}' \u2014 the person or thing it is about.": {
         "count": 1,
         "example": "You don't like coffee, don't you?",
-        "text": "In 'You do n't like coffee , do n't you ?', 'you' is the subject of the clause."
+        "text": "'you' is the subject of 'You don't like coffee, don't you?' \u2014 the person or thing it is about."
       },
-      "In '{X}'t coming , is n'{X}', '{X}' is the subject of the clause.": {
+      "'{X}' is the subject of '{X}'t coming, isn'{X}' \u2014 the person or thing it is about.": {
         "count": 1,
         "example": "She isn't coming, isn't she?",
-        "text": "In 'She is n't coming , is n't she ?', 'she' is the subject of the clause."
+        "text": "'she' is the subject of 'She isn't coming, isn't she?' \u2014 the person or thing it is about."
       }
     },
     "C-PARTICIPLE-MODIFIER": {
-      "In '{X}', the participle '{X}' describes the adjective in the phrase.": {
-        "count": 28,
+      "The word '{X}' describes '{X}'.": {
+        "count": 26,
         "example": "Its owner was worried about the buisness at first.",
-        "text": "In 'worried about the buisness', the participle 'worried' describes the adjective in the phrase."
+        "text": "The word 'worried' describes 'worried about the buisness'."
       }
     },
     "C-COLLECTIVE": {
-      "In '{X}', '{X}' names a group, so a singular or a plural verb both sound natural with it.": {
+      "The subject '{X}' has the group word '{X}', which can mean one group or its members, so the verb is accepted.": {
         "count": 11,
         "example": "The team are training on the field every evening.",
-        "text": "In 'The team are training on the field every evening .', 'The team' names a group, so a singular or a plural verb both sound natural with it."
+        "text": "The subject 'The team' has the group word 'team', which can mean one group or its members, so the verb is accepted."
       }
     },
     "C-ADJ-FIXED": {
-      "In '{X}', '{X}' is a fixed predicative adjective, so it correctly follows the verb.": {
-        "count": 2,
+      "In '{X}', the word '{X}' always keeps this form.": {
+        "count": 1,
         "example": "A woman moved into the house next door.",
-        "text": "In 'next door', 'next' is a fixed predicative adjective, so it correctly follows the verb."
+        "text": "In 'next door', the word 'next' always keeps this form."
       }
     },
     "C-RELATIVE-NOUN": {
-      "In '{X}', '{X}' is the noun that heads the question-word phrase.": {
+      "The noun '{X}' is the main word of '{X}', which the question word asks about.": {
         "count": 1,
         "example": "What time does it close",
-        "text": "In 'What time', 'time' is the noun that heads the question-word phrase."
+        "text": "The noun 'time' is the main word of 'What time', which the question word asks about."
       }
     }
   },
   "summary": {
-    "sentences": 2921,
-    "constraints": 45,
-    "explanations": 40319,
+    "sentences": 2893,
+    "constraints": 44,
+    "explanations": 39966,
     "without_reference": 0
   }
 }

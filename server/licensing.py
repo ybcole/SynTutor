@@ -93,7 +93,7 @@ HIGH_FREQ = {
     'really', 'very', 'well', 'never', 'sometimes', 'usually', 'again',
     'almost', 'nearly', 'only', 'too', 'quite', 'rather', 'maybe', 'perhaps',
     # abbreviations / acronyms
-    'tv', 'ok', 'okay',
+    'tv', 'ok', 'okay', 'pm', 'am', 'etc', 'vs',
 }
 
 _LEMMA_CACHE = {}
@@ -255,6 +255,13 @@ def check_lexicon(leaves, skip_ids=frozenset()):
         if status == 'licensed':
             stats['licensed'] += 1
             continue
+        # A gerund used as a noun ('dancing', 'cooking') is a licensed NP head
+        # even when benepar tags it NN/NNS: the lexicon only lists the VBG form.
+        if (status == 'tag_mismatch' and tag in ('NN', 'NNS')
+                and info.get('upos') == 'VERB'
+                and low in _forms(info['lemma'], 'VERB').get('VBG', ())):
+            stats['licensed'] += 1
+            continue
         if lf['id'] in skip_ids:
             stats['malformed'] += 1
             continue
@@ -286,9 +293,9 @@ def check_lexicon(leaves, skip_ids=frozenset()):
                 _lex_rule(upos, tag), 'error', 'C-LEXICON-MALFORMED', 'word form',
                 lf['id'], text,
                 _wordlist_evidence(surface, para,
-                                   f"lexicon paradigm of '{stem}' ({u})"),
-                _rem(f"'{surface}' is not in the paradigm of '{stem}'.", fix_text,
-                     None, f"{tag} drawn from the paradigm of '{stem}'")))
+                                   f"forms of '{stem}' ({u})"),
+                _rem(f"'{surface}' is not a correct form of '{stem}'.", fix_text,
+                     None, f"{tag} taken from the forms of '{stem}'")))
         elif status == 'tag_mismatch':
             lem = info['lemma']
             # Participle slot (have/be + VBN) filled by a non-participle form:
@@ -307,11 +314,11 @@ def check_lexicon(leaves, skip_ids=frozenset()):
                 part = tuple(strong or raw)
                 out.append(_finding(
                     '1.6', 'error', 'C-LEXICON-MALFORMED', 'verb form', lf['id'],
-                    f"After '{leaves[i - 1]['surface']}' a past participle is "
-                    f"required, but '{surface}' is not one"
+                    f"After '{leaves[i - 1]['surface']}', the verb needs its '-ed' "
+                    f"form, but '{surface}' is not one"
                     + (f" (use '{part[0]}')." if part else '.'),
                     _wordlist_evidence(surface, part,
-                                       f"lexicon paradigm of '{lem}' (VBN)")))
+                                       f"forms of '{lem}' (VBN)")))
             else:
                 stats['unverified'] += 1
                 out.append(_finding(
@@ -321,7 +328,7 @@ def check_lexicon(leaves, skip_ids=frozenset()):
                     f"the lexicon lists it only as another form of '{lem}'; its "
                     f"form could not be verified.",
                     _wordlist_evidence(surface, info['paradigm'],
-                                       f"lexicon paradigm of '{lem}'")))
+                                       f"forms of '{lem}'")))
         else:  # unknown
             stats['unverified'] += 1
             out.append(_finding(
@@ -548,6 +555,7 @@ def collect_all(text, root):
     run('ruleset.tree', lambda: ruleset._check_tree(root, clauses, leaves, text, quoted))
     run('ruleset.more', lambda: ruleset._check_more(root, clauses, leaves))
     run('ruleset.context', lambda: ruleset._check_context(root, clauses, leaves))
+    run('ruleset.terminal', lambda: ruleset._check_terminal(root, text))
     run('licensing.relatives', lambda: check_relatives(root))
 
     flagged = {f['node_id'] for f in findings if f['status'] == 'error'}

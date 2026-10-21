@@ -311,7 +311,11 @@ def build():
             s['count'] for s in stages if s['count'] is not None
         ) + 1,  # + tokenizer stage (implicit)
     }
-    return {'meta': meta, 'stages': stages}
+    sheet = {'meta': meta, 'stages': stages}
+    # The learner-facing concept for each rule comes from rule-concepts.js and is
+    # already plain language.  We deliberately do not fold in the older
+    # "exhaustive" explanations, which were written in heavy syntactic jargon.
+    return sheet
 
 
 def write_md(sheet):

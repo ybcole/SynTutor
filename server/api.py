@@ -12,6 +12,7 @@ from detector import classify, classify_many, combine
 from licensing import _leaves as _tree_leaves
 from licensing import _finding
 import corrector
+import corrections
 
 _MODEL_STATUS = None
 
@@ -117,7 +118,8 @@ def build_payload(text, sentence_index=0):
         # rejection, so locate the single-token swap that restores acceptability
         # and derive the explanation from the morphological delta (corrector).
         if (summary.get('verdict') == 'unverified'
-                and not det['acceptable'] and det.get('available')):
+                and not det['acceptable'] and det.get('available')
+                and not summary.get('suggested')):
             span_zero = (analysis['sentences'][analysis['sentence_index']]['start']
                          if analysis['sentences'] else 0)
             spans = [(t['start'] - span_zero, t['end'] - span_zero)
@@ -128,7 +130,17 @@ def build_payload(text, sentence_index=0):
                 promoted = _apply_correction(
                     located, root, details, summary, analysis['sentence'], det)
                 if promoted is not None:
-                    perturbation = promoted['perturbation']
+                    perturbation = promoted
+
+    correction = None
+    if (summary.get('verdict') != 'grammatical'
+            or corrections.has_actionable(details)):
+        correction = corrections.assemble(
+            analysis['sentence'], details, tokens,
+            validate=_validate_correction)
+        if correction is not None:
+            summary['correction'] = correction
+            summary['corrected_sentence'] = correction['corrected_sentence']
 
     token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
     tag_word = summary['explanation']
@@ -162,6 +174,24 @@ def build_payload(text, sentence_index=0):
 
     if perturbation:
         basic_lines.append(f"MLM correction search: {perturbation['note']}")
+    if correction is not None:
+        basic_lines.append(corrections.describe(correction))
+
+    # Sentence-level truth gating: a node may be structurally well formed while
+    # the sentence as a whole is not.  Never show a green "valid" badge on an
+    # ungrammatical/unverified sentence; keep the structural description as
+    # neutral instead.  UIs should key on display_status.
+    verdict = summary.get('verdict')
+    for detail in details.values():
+        if not isinstance(detail, dict):
+            continue
+        raw_status = detail.get('status')
+        if raw_status == 'error':
+            detail['display_status'] = 'error'
+        elif raw_status == 'valid' and verdict == 'grammatical':
+            detail['display_status'] = 'valid'
+        else:
+            detail['display_status'] = 'neutral'
 
     contrastive = _contrastive(summary, details)
     pipeline = _pipeline_narration(analysis, summary, details)
@@ -196,6 +226,7 @@ def build_payload(text, sentence_index=0):
             'contrastive': contrastive,
             'surprisal': None,
             'perturbation': perturbation['note'] if perturbation else None,
+            'correction': corrections.describe(correction),
             'llm_note': None,
             'pipeline': pipeline,
             'concepts': concepts,
@@ -277,6 +308,21 @@ def _rule_concepts(details, summary):
     return out
 
 
+def _validate_correction(candidate):
+    """A correction is only exposed when the matrix and detector both accept it."""
+    try:
+        analysis = analyze(candidate, sentence_index=0)
+        summary = evaluate(analysis['root'], text=analysis['sentence'])['summary']
+        if summary.get('verdict') != 'grammatical' or summary.get('checker_errors'):
+            return False
+        det = classify(analysis['sentence'])
+        if det is not None and det.get('available') and not det.get('acceptable'):
+            return False
+        return True
+    except Exception:  # noqa: BLE001 - a failed candidate is simply skipped
+        return False
+
+
 def _apply_correction(located, root, details, summary, sentence, det):
     """Promote a located single-token correction to a deterministic finding.
 
@@ -318,7 +364,14 @@ def _apply_correction(located, root, details, summary, sentence, det):
         return None
     _lemma, _bad_tag, bad_label, _good_tag_l, good_label = diff
     required_label = corrector.EXTENDED_TAG_LABEL.get(good_tag, '') or good_label
-    text = corrector.template(bad, good, required_label, bad_label)
+    core = corrector.template(bad, good, required_label, bad_label)
+    bad_detail = details.get(bad_id) or {}
+    parent = details.get(bad_detail.get('parent') or '') if bad_detail else None
+    where = ''
+    if parent is not None:
+        where = f" inside the {parent.get('type')} '{parent.get('surface', '')}'"
+    text = (f"The word '{bad}'{where} is used where the structure requires "
+            f"the {required_label} form. {core}")
     remediation = (f"Replace '{bad}' with '{good}' "
                    f"({required_label or 'the required form'}).")
 

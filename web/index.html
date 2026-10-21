@@ -216,6 +216,7 @@
           <div id="canvasControls" class="canvas-controls" hidden>
             <button id="builderClear" class="builder-btn" type="button" data-action="clear">Clear</button>
             <button id="builderSnap" class="builder-btn" type="button" data-action="build-tree">Build tree</button>
+            <button id="builderModel" class="builder-btn" type="button" data-action="model" hidden>Show model tree</button>
             <button id="builderCheck" class="builder-btn builder-btn-primary" type="button" data-action="check-tree" hidden>Check tree</button>
             <button id="builderNext" class="builder-btn builder-btn-primary" type="button" data-action="next" hidden>Next &rarr;</button>
             <button id="builderDone" class="builder-btn" type="button" data-action="done">Done</button>
@@ -269,6 +270,7 @@
 
         <section class="pane pane-explain panel-lower-right analysis-panel">
           <div id="lessonGuideHost" class="guide-host"></div>
+          <div id="correctionPanel" class="correction-panel" hidden></div>
           <div id="explainNode" class="node-explainer"></div>
           <div id="emptyExplainState" class="empty-state-explain">
             <svg class="empty-book-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -284,9 +286,18 @@
 
     <div id="lessonsOverlay" class="lessons-overlay">
       <div class="lessons-sheet" role="dialog" aria-label="Lessons">
+        <header class="lessons-hero">
+          <div class="lessons-hero-text">
+            <p class="lessons-hero-kicker">Grammar Course Library</p>
+            <h2 class="lessons-hero-title">Choose a module to master</h2>
+            <p class="lessons-hero-sub">Pick a phrase or clause construction, then build its syntax trees step by step.</p>
+          </div>
+          <button id="lessonsCloseBtn" class="lessons-close" type="button" aria-label="Close library" title="Close">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </header>
         <div class="lessons-main sq-catalog-container">
-          <!-- The content body: the toolbar and the card grid. The page header
-               above it is rendered by tree-quiz.js. -->
+          <!-- The content body: the toolbar and the card grid. -->
           <div class="sq-catalog-content">
             <!-- Catalog toolbar: the inline category expander on the left, the
                  completion counter on the right. -->

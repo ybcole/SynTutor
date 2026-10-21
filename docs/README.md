@@ -100,10 +100,14 @@ Browser
     |                    \
     v                     v
   renderer.js          ui.js
-  canvas tree          DOM explanations, verdicts, logs
-        |
-        | POST /api/parse {text, sentence_index?}
-        v
+  canvas tree          DOM explanations, correction panel, logs
+     |      \
+     |       v
+     |    correction.js
+     |    error scope, linked pairs, token-level edits
+     |
+     | POST /api/parse {text, sentence_index?}
+     v
 Python server/app.py
     |
     +--> parse_engine.py
@@ -119,6 +123,17 @@ The browser keeps each complete response in the in-memory `session` object.
 Selecting or hovering a node is therefore a local operation; it does not
 trigger another parse request. Editing the textarea and submitting changed
 text starts a new full pipeline run.
+
+### Interactive corrective feedback
+
+Picking an invalid node opens a correction: the canvas zooms to the subtree
+the rule talks about (`renderer.js`), the correction panel offers the server's
+suggested repair as a live preview of the re-parsed sentence
+(`ui.js` + `correction.js`), and the error is re-checked against the learner's
+own edit so the tutor can confirm that the correction worked. The machine-level
+repair travels with the payload: every error detail carries a
+`remediation.edit` (and often a `remediation.alternative_edit`) that rewrites
+the sentence at token level.
 
 ## The 7-stage pipeline
 
@@ -181,7 +196,7 @@ Each explanation is tagged with its δ. Clicking any node reads its explanation 
 - **Exploring** — cached node explanations. "Back to syntax tree" returns to **Viewing**.
 
 - **Interaction Loop (lightweight)** — clicking a node looks up its precomputed explanation by node ID in local session memory; no HTTP request.
-- **Re-Entry Loop (full restart)** — editing and resubmitting restarts the pipeline. Auto-correction is intentionally prohibited: SynTutor shows the violation and a deterministic correction *suggestion* (contrastive explainer), but the learner fixes the text.
+- **Re-Entry Loop (full restart)** — editing and resubmitting restarts the pipeline. Auto-correction is intentionally prohibited: SynTutor shows the violation and a deterministic correction *suggestion* (contrastive explainer), but the learner fixes the text. The correction *preview* is a read-only re-parse: the learner's own text is never rewritten by SynTutor.
 
 Transitions are logged live in the right-hand panel.
 
@@ -198,8 +213,9 @@ index.html               UI shell
 login.html               Clerk sign-in / sign-up (email-code verification)
 css/style.css            styling
 js/
-  renderer.js            canvas layout, edges, hitboxes, pan/zoom
-  ui.js                  DOM views (explainer/diagnostic/log/pipeline UI)
+  renderer.js            canvas layout, edges, hitboxes, pan/zoom, correction focus
+  ui.js                  DOM views (explainer/diagnostic/correction panel/log)
+  correction.js          error scope + linked pairs, token-level edits, re-check
   auth.js                Clerk bootstrap, Clerk->Supabase JWT bridging, login form
   config-hint.js         dev-only preflight hook warning when js/config.js is missing
   main.js                FSM + pipeline orchestration + memory-cached node explanations
@@ -218,4 +234,7 @@ FEATURES.md              feature inventory, progress, and known gaps
 Tests are excluded per the project spec. The maintained verification command
 is `npm run audit`, which runs the gold-corpus rule coverage audit without
 starting HTTP; runtime verification can be done through `/api/health` and
-`/api/parse`.
+`/api/parse`. Two focused regression checks ship with the code and need no
+server: `npm run test:correction` (the corrective-feedback module) and
+`python3 server/test_matrix_remediation.py` (every detected error carries a
+suggested fix).
