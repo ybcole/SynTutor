@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generatedAt": "2026-10-20",
+    "generatedAt": "2026-10-21",
     "stageCount": 4,
     "posTagCount": 48,
     "phraseNodeCount": 24,
-    "ruleCount": 111,
-    "constraintCount": 169,
-    "totalItems": 242
+    "ruleCount": 112,
+    "constraintCount": 175,
+    "totalItems": 248
   },
   "stages": [
     {
@@ -400,7 +400,7 @@
       "title": "Rule matrix (SynTutor)",
       "engine": "server/matrix.py + server/licensing.py + server/ruleset.py",
       "summary": "SynTutor's own analysis: walks the tree and fires grammar constraints. Each maps to a numbered rule.",
-      "count": 169,
+      "count": 175,
       "items": [
         {
           "constraint": "C-PLURAL-FORM",
@@ -436,7 +436,7 @@
           "example": "runing",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Verb endings must match their use: -s for third-person singular, -ed for past, -ing after be or as a gerund; spelling changes can apply (\"run → running\")."
+          "concept": "Verb endings must match their use: -s for third-person singular, -ed for past, -ing after be or as an -ing naming word; spelling changes can apply (\"run → running\")."
         },
         {
           "constraint": "C-VERB-FORM",
@@ -481,7 +481,7 @@
           "example": "hisself",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Reflexive pronouns end in -self/-selves and must match the subject (\"himself\", \"yourself\"), never non-standard forms like \"hisself\"."
+          "concept": "Words like myself, himself end in -self/-selves and must match the subject (\"himself\", \"yourself\"), never non-standard forms like \"hisself\"."
         },
         {
           "constraint": "C-HOMOPHONE",
@@ -652,7 +652,7 @@
           "example": "the boys who plays",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Inside a relative clause the verb agrees with the relative pronoun’s antecedent (\"the boys who play\", not \"who plays\")."
+          "concept": "In a who/which/that clause the verb agrees with the noun it describes (\"the boys who play\", not \"who plays\")."
         },
         {
           "constraint": "C-RELATIVE-AGREE",
@@ -661,7 +661,7 @@
           "example": "the boys who plays",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Inside a relative clause the verb agrees with the relative pronoun’s antecedent (\"the boys who play\", not \"who plays\")."
+          "concept": "In a who/which/that clause the verb agrees with the noun it describes (\"the boys who play\", not \"who plays\")."
         },
         {
           "constraint": "C-RELATIVE-CLAUSE",
@@ -670,7 +670,7 @@
           "example": "the boys who plays",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Inside a relative clause the verb agrees with the relative pronoun’s antecedent (\"the boys who play\", not \"who plays\")."
+          "concept": "In a who/which/that clause the verb agrees with the noun it describes (\"the boys who play\", not \"who plays\")."
         },
         {
           "constraint": "C-INDEF-AGREE",
@@ -679,7 +679,7 @@
           "example": "Everyone have",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Indefinite pronouns like everyone, somebody, each take a singular verb (\"Everyone has\")."
+          "concept": "Words like everyone, somebody, each take a singular verb (\"Everyone has\")."
         },
         {
           "constraint": "C-INDEFINITE-AGREE",
@@ -688,7 +688,7 @@
           "example": "Everyone have",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Indefinite pronouns like everyone, somebody, each take a singular verb (\"Everyone has\")."
+          "concept": "Words like everyone, somebody, each take a singular verb (\"Everyone has\")."
         },
         {
           "constraint": "C-NUMBER-AGREE",
@@ -697,7 +697,7 @@
           "example": "A number of / Each of the boys are",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Quantified subjects agree according to the head: \"each/a number of\" patterns determine singular or plural (\"Each of the boys is\")."
+          "concept": "The words before the verb decide its number: \"each/a number of\" patterns determine singular or plural (\"Each of the boys is\")."
         },
         {
           "constraint": "C-DETERMINER-AGREEMENT",
@@ -706,7 +706,7 @@
           "example": "these book",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Demonstratives must match noun number: \"this/that\" with singular, \"these/those\" with plural (\"these books\")."
+          "concept": "Use \"this/that\" with singular nouns and \"these/those\" with plural (\"these books\")."
         },
         {
           "constraint": "C-QUANTIFIER",
@@ -715,7 +715,7 @@
           "example": "less books, much books",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Quantifiers pair with the right noun type: \"much/little\" with uncountable, \"many/few\" with countable (\"less water\", \"fewer books\")."
+          "concept": "\"Much/little\" go with nouns you cannot count; \"many/few\" go with nouns you can count (\"less water\", \"fewer books\")."
         },
         {
           "constraint": "C-QUANTIFIER-CLASS",
@@ -724,7 +724,7 @@
           "example": "less books, much books",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Quantifiers pair with the right noun type: \"much/little\" with uncountable, \"many/few\" with countable (\"less water\", \"fewer books\")."
+          "concept": "\"Much/little\" go with nouns you cannot count; \"many/few\" go with nouns you can count (\"less water\", \"fewer books\")."
         },
         {
           "constraint": "C-PRON-ANTECEDENT",
@@ -733,7 +733,7 @@
           "example": "The girls lost her bag",
           "method": "METHOD_C",
           "layer": "T",
-          "concept": "A pronoun must match its antecedent in number and gender (\"The girls lost their bags\")."
+          "concept": "A pronoun must match the noun it refers to in number and gender (\"The girls lost their bags\")."
         },
         {
           "constraint": "C-CORRELATIVE-AGREE",
@@ -742,7 +742,7 @@
           "example": "Either he or I am",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "With correlatives (either...or, neither...nor) the verb agrees with the nearer subject (\"Either he or I am\")."
+          "concept": "With either...or and neither...nor the verb agrees with the nearer subject (\"Either he or I am\")."
         },
         {
           "constraint": "C-REFLEXIVE-ANTECEDENT",
@@ -751,7 +751,7 @@
           "example": "She hurt himself",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A reflexive pronoun must refer back to the subject of the clause (\"She hurt herself\")."
+          "concept": "A -self word must refer back to the subject (\"She hurt herself\")."
         },
         {
           "constraint": "C-ARTICLE-MISMATCH",
@@ -769,7 +769,7 @@
           "example": "I saw dog",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Singular countable nouns need a determiner in most contexts (\"I saw a dog\"), unless the meaning is generic or indefinite plural."
+          "concept": "A singular noun you can count needs a small word before it in most contexts (\"I saw a dog\"), unless the meaning is generic or indefinite plural."
         },
         {
           "constraint": "C-UNNECESSARY-ARTICLE",
@@ -796,7 +796,7 @@
           "example": "the my book",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Only one central determiner is allowed per noun phrase — do not stack them (\"my book\", not \"the my book\")."
+          "concept": "Use only one small word before a noun, not two (\"my book\", not \"the my book\")."
         },
         {
           "constraint": "C-DETERMINER",
@@ -805,7 +805,7 @@
           "example": "the my",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A determiner must modify a noun; it cannot stand alone without one (\"the my\" is incomplete)."
+          "concept": "A small word before a noun needs that noun; it cannot stand alone (\"the my\" is incomplete)."
         },
         {
           "constraint": "C-HEAD-NOUN",
@@ -814,7 +814,7 @@
           "example": "the my",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A determiner must modify a noun; it cannot stand alone without one (\"the my\" is incomplete)."
+          "concept": "A small word before a noun needs that noun; it cannot stand alone (\"the my\" is incomplete)."
         },
         {
           "constraint": "C-SOME-ANY",
@@ -832,7 +832,16 @@
           "example": "another books",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Distributive determiners match noun number and meaning: \"each/every\" + singular, \"another\" + singular, \"other/all\" + plural."
+          "concept": "Words like each/every and other/all must match the noun number: \"each/every\" + singular, \"another\" + singular, \"other/all\" + plural."
+        },
+        {
+          "constraint": "C-COUNT-MASS",
+          "rule": "3.15",
+          "name": "much/many with the right noun class",
+          "example": "much books",
+          "method": "METHOD_L",
+          "layer": "T",
+          "concept": "Use \"many/few\" with nouns you can count and \"much/little\" with nouns you cannot count (\"many books\", \"much water\")."
         },
         {
           "constraint": "C-UNCOUNTABLE",
@@ -841,7 +850,7 @@
           "example": "informations, an advice",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Uncountable nouns have no plural and take no \"a/an\" (\"information\", \"advice\"), unlike countable nouns (\"a fact\", \"two facts\")."
+          "concept": "Some nouns have no plural and take no \"a/an\" (\"information\", \"advice\"); nouns you can count do (\"a fact\", \"two facts\")."
         },
         {
           "constraint": "C-NOUN-ADJUNCT",
@@ -904,7 +913,7 @@
           "example": "Me and him went, taller than I",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "In coordinated or compared phrases, keep the pronoun in the case the role requires (\"He and I went\", not \"Me and him went\")."
+          "concept": "Keep the pronoun in the form its job needs (\"He and I went\", not \"Me and him went\")."
         },
         {
           "constraint": "C-PRON-AMBIG",
@@ -913,7 +922,7 @@
           "example": "Tom told Jim he...",
           "method": "METHOD_C",
           "layer": "T",
-          "concept": "A pronoun should refer clearly to one antecedent; if two nouns could be meant, the reference is ambiguous and should be rewritten."
+          "concept": "A pronoun should refer clearly to one noun; if two nouns could be meant, the reference is ambiguous and should be rewritten."
         },
         {
           "constraint": "C-RELATIVE-HEAD",
@@ -922,7 +931,7 @@
           "example": "the man which",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Choose the relative pronoun by the antecedent: \"who\" for people, \"which\" for things, \"that\" for either in restrictive clauses."
+          "concept": "Choose \"who/which/that\" by the noun it refers to: \"who\" for people, \"which\" for things, \"that\" for either."
         },
         {
           "constraint": "C-RELATIVE-NOUN",
@@ -931,7 +940,7 @@
           "example": "the man which",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Choose the relative pronoun by the antecedent: \"who\" for people, \"which\" for things, \"that\" for either in restrictive clauses."
+          "concept": "Choose \"who/which/that\" by the noun it refers to: \"who\" for people, \"which\" for things, \"that\" for either."
         },
         {
           "constraint": "C-RELATIVE-POSSESSIVE",
@@ -940,7 +949,7 @@
           "example": "the man which",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Choose the relative pronoun by the antecedent: \"who\" for people, \"which\" for things, \"that\" for either in restrictive clauses."
+          "concept": "Choose \"who/which/that\" by the noun it refers to: \"who\" for people, \"which\" for things, \"that\" for either."
         },
         {
           "constraint": "C-RELATIVE-PRONOUN",
@@ -949,7 +958,7 @@
           "example": "the man which",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Choose the relative pronoun by the antecedent: \"who\" for people, \"which\" for things, \"that\" for either in restrictive clauses."
+          "concept": "Choose \"who/which/that\" by the noun it refers to: \"who\" for people, \"which\" for things, \"that\" for either."
         },
         {
           "constraint": "C-DUMMY-IT",
@@ -958,7 +967,7 @@
           "example": "Is raining",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Dummy \"it\"/\"there\" must be present where English requires a subject (\"It is raining\", not \"Is raining\")."
+          "concept": "English needs a subject, so keep \"it\"/\"there\" (\"It is raining\", not \"Is raining\")."
         },
         {
           "constraint": "C-POSSESSIVE",
@@ -967,7 +976,7 @@
           "example": "This is my",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A possessive determiner (\"my\") needs a following noun; a possessive pronoun (\"mine\") stands alone (\"This is mine\", not \"This is my\")."
+          "concept": "\"My\" needs a following noun; \"mine\" stands alone (\"This is mine\", not \"This is my\")."
         },
         {
           "constraint": "C-REFLEXIVE-SUBJECT",
@@ -976,7 +985,7 @@
           "example": "Myself am happy",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A reflexive pronoun cannot be the subject of a finite clause; use an ordinary pronoun (\"I am happy\", not \"Myself am happy\")."
+          "concept": "A -self word cannot be the subject of a verb; use an ordinary pronoun (\"I am happy\", not \"Myself am happy\")."
         },
         {
           "constraint": "C-AUX-COMPLEMENT",
@@ -1006,6 +1015,15 @@
           "concept": "After an auxiliary or modal, use the required form: base form after modals (\"can go\"), past participle after have, -ing after be."
         },
         {
+          "constraint": "C-MODAL-OF",
+          "rule": "6.1",
+          "name": "Auxiliary + verb form",
+          "example": "She can goes",
+          "method": "METHOD_T",
+          "layer": "T",
+          "concept": "After an auxiliary or modal, use the required form: base form after modals (\"can go\"), past participle after have, -ing after be."
+        },
+        {
           "constraint": "C-MODAL-VERB-FORM",
           "rule": "6.1",
           "name": "Auxiliary + verb form",
@@ -1015,13 +1033,40 @@
           "concept": "After an auxiliary or modal, use the required form: base form after modals (\"can go\"), past participle after have, -ing after be."
         },
         {
+          "constraint": "C-BE-BASE",
+          "rule": "6.2",
+          "name": "Finite main verb",
+          "example": "She going to school",
+          "method": "METHOD_T",
+          "layer": "T",
+          "concept": "A main clause needs a real verb with tense, not just an -ing or to form with no helping verb (\"She goes to school\")."
+        },
+        {
+          "constraint": "C-BE-PAST",
+          "rule": "6.2",
+          "name": "Finite main verb",
+          "example": "She going to school",
+          "method": "METHOD_T",
+          "layer": "T",
+          "concept": "A main clause needs a real verb with tense, not just an -ing or to form with no helping verb (\"She goes to school\")."
+        },
+        {
+          "constraint": "C-FINITE-VERB",
+          "rule": "6.2",
+          "name": "Finite main verb",
+          "example": "She going to school",
+          "method": "METHOD_T",
+          "layer": "T",
+          "concept": "A main clause needs a real verb with tense, not just an -ing or to form with no helping verb (\"She goes to school\")."
+        },
+        {
           "constraint": "C-HEAD-VERB",
           "rule": "6.2",
           "name": "Finite main verb",
           "example": "She going to school",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A main clause needs a finite verb (tensed and agreeing), not a bare -ing or infinitive with no auxiliary (\"She goes to school\")."
+          "concept": "A main clause needs a real verb with tense, not just an -ing or to form with no helping verb (\"She goes to school\")."
         },
         {
           "constraint": "C-TENSE-FINITE",
@@ -1030,7 +1075,7 @@
           "example": "She going to school",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A main clause needs a finite verb (tensed and agreeing), not a bare -ing or infinitive with no auxiliary (\"She goes to school\")."
+          "concept": "A main clause needs a real verb with tense, not just an -ing or to form with no helping verb (\"She goes to school\")."
         },
         {
           "constraint": "C-COPULA",
@@ -1039,7 +1084,7 @@
           "example": "She very happy",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "English clauses need a verb, including the copula \"be\"; adjectives cannot stand alone as predicates (\"She is very happy\")."
+          "concept": "Every clause needs a verb, including \"be\"; an adjective cannot be the whole verb part (\"She is very happy\")."
         },
         {
           "constraint": "C-PLEASE-TO",
@@ -1048,7 +1093,7 @@
           "example": "She very happy",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "English clauses need a verb, including the copula \"be\"; adjectives cannot stand alone as predicates (\"She is very happy\")."
+          "concept": "Every clause needs a verb, including \"be\"; an adjective cannot be the whole verb part (\"She is very happy\")."
         },
         {
           "constraint": "C-PASSIVE",
@@ -1066,7 +1111,7 @@
           "example": "It was happened",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Intransitive verbs (happen, arrive, sleep) have no passive because they take no object (\"It happened\", not \"It was happened\")."
+          "concept": "Some verbs (happen, arrive, sleep) take no object, so they have no passive (\"It happened\", not \"It was happened\")."
         },
         {
           "constraint": "C-STATIVE-PROG",
@@ -1075,7 +1120,7 @@
           "example": "I am knowing",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Stative verbs (know, like, believe) describe states and are not normally used in the progressive (\"I know\", not \"I am knowing\")."
+          "concept": "Verbs like know, like, believe describe states and are not normally used with -ing (\"I know\", not \"I am knowing\")."
         },
         {
           "constraint": "C-STATIVE-PROGRESSIVE",
@@ -1084,7 +1129,7 @@
           "example": "I am knowing",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Stative verbs (know, like, believe) describe states and are not normally used in the progressive (\"I know\", not \"I am knowing\")."
+          "concept": "Verbs like know, like, believe describe states and are not normally used with -ing (\"I know\", not \"I am knowing\")."
         },
         {
           "constraint": "C-TENSE-CONSISTENCY",
@@ -1102,7 +1147,7 @@
           "example": "discuss about, arrived the station",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Verbs take the complements their meaning allows; some need no preposition (\"discuss\", not \"discuss about\")."
+          "concept": "Verbs take the words their meaning allows; some need no preposition (\"discuss\", not \"discuss about\")."
         },
         {
           "constraint": "C-GERUND-INFIN",
@@ -1111,7 +1156,7 @@
           "example": "enjoy to swim",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Some verbs are followed by a gerund, some by an infinitive, and some by both with a change in meaning (\"enjoy swimming\")."
+          "concept": "Some verbs are followed by an -ing form, some by to + verb, and some by both with a change in meaning (\"enjoy swimming\")."
         },
         {
           "constraint": "C-GERUND-INFINITIVE",
@@ -1120,7 +1165,7 @@
           "example": "enjoy to swim",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Some verbs are followed by a gerund, some by an infinitive, and some by both with a change in meaning (\"enjoy swimming\")."
+          "concept": "Some verbs are followed by an -ing form, some by to + verb, and some by both with a change in meaning (\"enjoy swimming\")."
         },
         {
           "constraint": "C-INFINITIVAL-COMPLEMENT",
@@ -1129,7 +1174,7 @@
           "example": "to goes",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "After the infinitive marker \"to\" use the base form (\"to go\", not \"to goes\")."
+          "concept": "After \"to\" use the plain form (\"to go\", not \"to goes\")."
         },
         {
           "constraint": "C-INFINITIVAL-MARKER",
@@ -1138,7 +1183,7 @@
           "example": "to goes",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "After the infinitive marker \"to\" use the base form (\"to go\", not \"to goes\")."
+          "concept": "After \"to\" use the plain form (\"to go\", not \"to goes\")."
         },
         {
           "constraint": "C-TO-BASE",
@@ -1147,7 +1192,7 @@
           "example": "to goes",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "After the infinitive marker \"to\" use the base form (\"to go\", not \"to goes\")."
+          "concept": "After \"to\" use the plain form (\"to go\", not \"to goes\")."
         },
         {
           "constraint": "C-PARTICLE",
@@ -1168,13 +1213,22 @@
           "concept": "A phrasal verb keeps its particle next to it, and a pronoun object must go between verb and particle (\"pick it up\")."
         },
         {
+          "constraint": "C-MODAL-ABLE",
+          "rule": "6.12",
+          "name": "Modals and semi-modals",
+          "example": "must to go, use to go",
+          "method": "METHOD_T",
+          "layer": "T",
+          "concept": "Modals take the plain form and add no \"-s\" or \"-ed\" (\"must go\", not \"must to go\")."
+        },
+        {
           "constraint": "C-MODAL-STACK",
           "rule": "6.12",
           "name": "Modals and semi-modals",
           "example": "must to go, use to go",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Modals take the bare base form and add no \"-s\" or \"-ed\" (\"must go\", not \"must to go\")."
+          "concept": "Modals take the plain form and add no \"-s\" or \"-ed\" (\"must go\", not \"must to go\")."
         },
         {
           "constraint": "C-MODAL-TO",
@@ -1183,7 +1237,7 @@
           "example": "must to go, use to go",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Modals take the bare base form and add no \"-s\" or \"-ed\" (\"must go\", not \"must to go\")."
+          "concept": "Modals take the plain form and add no \"-s\" or \"-ed\" (\"must go\", not \"must to go\")."
         },
         {
           "constraint": "C-QUESTION-INVERSION",
@@ -1228,7 +1282,7 @@
           "example": "I wish I was",
           "method": "METHOD_C",
           "layer": "T",
-          "concept": "After \"wish\" and in the subjunctive, use the past or base form for hypotheticals (\"I wish I were here\")."
+          "concept": "After wish and for unreal situations, use the past or plain form (\"I wish I were here\")."
         },
         {
           "constraint": "C-REPORTED-SPEECH",
@@ -1246,7 +1300,7 @@
           "example": "made me to cry",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Causative and perception verbs take specific structures: \"make/let + base\", \"have/get + past participle\", \"see + base/-ing\"."
+          "concept": "Verbs like make/let/have/see take specific patterns: \"make/let + base\", \"have/get + past participle\", \"see + base/-ing\"."
         },
         {
           "constraint": "C-CLAUSAL-COMPLEMENT",
@@ -1255,7 +1309,7 @@
           "example": "suggest him to go",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Different verbs select different clause patterns (\"suggest going\", \"advise someone to go\"), so the complement must match the verb."
+          "concept": "Different verbs take different patterns (\"suggest going\", \"advise someone to go\"), so the words after it must match the verb."
         },
         {
           "constraint": "C-VERB-CLAUSE-PATTERN",
@@ -1264,7 +1318,7 @@
           "example": "suggest him to go",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Different verbs select different clause patterns (\"suggest going\", \"advise someone to go\"), so the complement must match the verb."
+          "concept": "Different verbs take different patterns (\"suggest going\", \"advise someone to go\"), so the words after it must match the verb."
         },
         {
           "constraint": "C-ADJ-ADV",
@@ -1354,7 +1408,7 @@
           "example": "I am boring",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Participial adjectives differ: \"-ing\" describes the cause (\"boring\"), \"-ed\" describes the feeler (\"bored\")."
+          "concept": "-ing and -ed adjectives differ: \"-ing\" describes the cause (\"boring\"), \"-ed\" describes the feeler (\"bored\")."
         },
         {
           "constraint": "C-PARTICIPIAL-ADJ",
@@ -1363,7 +1417,7 @@
           "example": "I am boring",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Participial adjectives differ: \"-ing\" describes the cause (\"boring\"), \"-ed\" describes the feeler (\"bored\")."
+          "concept": "-ing and -ed adjectives differ: \"-ing\" describes the cause (\"boring\"), \"-ed\" describes the feeler (\"bored\")."
         },
         {
           "constraint": "C-PARTICIPLE-MODIFIER",
@@ -1372,7 +1426,7 @@
           "example": "I am boring",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Participial adjectives differ: \"-ing\" describes the cause (\"boring\"), \"-ed\" describes the feeler (\"bored\")."
+          "concept": "-ing and -ed adjectives differ: \"-ing\" describes the cause (\"boring\"), \"-ed\" describes the feeler (\"bored\")."
         },
         {
           "constraint": "C-INTENSIFIER",
@@ -1408,7 +1462,7 @@
           "example": "the car red",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "English puts most modifiers before the noun; reversing the order (\"the car red\") is ungrammatical."
+          "concept": "English usually puts describing words before the noun; reversing the order (\"the car red\") is ungrammatical."
         },
         {
           "constraint": "C-NP-POSTMODIFIER",
@@ -1417,7 +1471,7 @@
           "example": "the car red",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "English puts most modifiers before the noun; reversing the order (\"the car red\") is ungrammatical."
+          "concept": "English usually puts describing words before the noun; reversing the order (\"the car red\") is ungrammatical."
         },
         {
           "constraint": "C-HEAD-PREPOSITION",
@@ -1426,7 +1480,7 @@
           "example": "depends in",
           "method": "METHOD_C",
           "layer": "T",
-          "concept": "The preposition a verb or adjective takes is fixed by convention (\"depend on\", not \"depend in\")."
+          "concept": "The preposition after a verb or adjective is fixed (\"depend on\", not \"depend in\")."
         },
         {
           "constraint": "C-PREP-CHOICE",
@@ -1435,7 +1489,7 @@
           "example": "depends in",
           "method": "METHOD_C",
           "layer": "T",
-          "concept": "The preposition a verb or adjective takes is fixed by convention (\"depend on\", not \"depend in\")."
+          "concept": "The preposition after a verb or adjective is fixed (\"depend on\", not \"depend in\")."
         },
         {
           "constraint": "C-WRONG-PREPOSITION",
@@ -1444,7 +1498,7 @@
           "example": "depends in",
           "method": "METHOD_C",
           "layer": "T",
-          "concept": "The preposition a verb or adjective takes is fixed by convention (\"depend on\", not \"depend in\")."
+          "concept": "The preposition after a verb or adjective is fixed (\"depend on\", not \"depend in\")."
         },
         {
           "constraint": "C-MISSING-PREP",
@@ -1471,7 +1525,7 @@
           "example": "interested on",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Adjective + preposition pairs are fixed (\"interested in\", \"good at\", \"afraid of\")."
+          "concept": "Adjectives take a fixed preposition (\"interested in\", \"good at\", \"afraid of\")."
         },
         {
           "constraint": "C-ADJUNCT",
@@ -1507,7 +1561,7 @@
           "example": "look forward to see",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A preposition is followed by a noun or a gerund (\"look forward to seeing\"), not a bare infinitive."
+          "concept": "After a preposition use a noun or an -ing form (\"look forward to seeing\"), not to + verb."
         },
         {
           "constraint": "C-FRAGMENT",
@@ -1516,7 +1570,7 @@
           "example": "Because I was late.",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A sentence needs at least one independent clause; a subordinate clause alone is a fragment (\"Because I was late\" cannot stand alone)."
+          "concept": "A sentence needs at least one full clause; a because/that clause alone is not a sentence (\"Because I was late\" cannot stand alone)."
         },
         {
           "constraint": "C-ROOT",
@@ -1525,7 +1579,7 @@
           "example": "Because I was late.",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A sentence needs at least one independent clause; a subordinate clause alone is a fragment (\"Because I was late\" cannot stand alone)."
+          "concept": "A sentence needs at least one full clause; a because/that clause alone is not a sentence (\"Because I was late\" cannot stand alone)."
         },
         {
           "constraint": "C-MISSING-SUBJECT",
@@ -1534,7 +1588,7 @@
           "example": "Went to school.",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A finite clause needs a subject; leaving it out produces a fragment (\"I went to school\")."
+          "concept": "A full clause needs a subject; leaving it out produces a fragment (\"I went to school\")."
         },
         {
           "constraint": "C-RUNON",
@@ -1543,7 +1597,7 @@
           "example": "I like tea she likes coffee",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Two independent clauses cannot sit side by side without a conjunction or punctuation (\"I like tea, but she likes coffee\")."
+          "concept": "Two full clauses cannot sit side by side without a joining word or punctuation (\"I like tea, but she likes coffee\")."
         },
         {
           "constraint": "C-COMMA-SPLICE",
@@ -1552,7 +1606,7 @@
           "example": "I came, I saw.",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A comma alone cannot join two independent clauses; use a conjunction, a semicolon, or a full stop."
+          "concept": "A comma alone cannot join two full clauses; use a conjunction, a semicolon, or a full stop."
         },
         {
           "constraint": "C-DOUBLE-SUBJECT",
@@ -1588,7 +1642,7 @@
           "example": "to run, swimming",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Items in a list or comparison must share the same grammatical form (\"to run and to swim\", not \"to run and swimming\")."
+          "concept": "Items in a list or comparison must have the same form (\"to run and to swim\", not \"to run and swimming\")."
         },
         {
           "constraint": "C-PARALLEL",
@@ -1597,7 +1651,7 @@
           "example": "to run, swimming",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Items in a list or comparison must share the same grammatical form (\"to run and to swim\", not \"to run and swimming\")."
+          "concept": "Items in a list or comparison must have the same form (\"to run and to swim\", not \"to run and swimming\")."
         },
         {
           "constraint": "C-CONJUNCTION-PAIR",
@@ -1606,7 +1660,7 @@
           "example": "Although..., but...",
           "method": "METHOD_L",
           "layer": "T",
-          "concept": "Correlative conjunctions come in fixed pairs; do not add a second connector (\"Although X, Y\" without \"but\")."
+          "concept": "Either...or and neither...nor come in fixed pairs; do not add a second connector (\"Although X, Y\" without \"but\")."
         },
         {
           "constraint": "C-NP-REDUCED-RELATIVE",
@@ -1615,7 +1669,7 @@
           "example": "the man who I saw him",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A relative clause already contains the role of the antecedent, so do not repeat it with a pronoun (\"the man who I saw\")."
+          "concept": "In a who/which/that clause do not repeat the noun with a pronoun (\"the man who I saw\")."
         },
         {
           "constraint": "C-RESUMPTIVE-RELATIVE",
@@ -1624,7 +1678,7 @@
           "example": "the man who I saw him",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "A relative clause already contains the role of the antecedent, so do not repeat it with a pronoun (\"the man who I saw\")."
+          "concept": "In a who/which/that clause do not repeat the noun with a pronoun (\"the man who I saw\")."
         },
         {
           "constraint": "C-DANGLING",
@@ -1633,7 +1687,7 @@
           "example": "Walking home, the rain started",
           "method": "METHOD_C",
           "layer": "T",
-          "concept": "A modifier at the start of a sentence should describe the subject of the main clause (\"Walking home, I saw the rain start\")."
+          "concept": "A phrase at the start of a sentence should describe the subject (\"Walking home, I saw the rain start\")."
         },
         {
           "constraint": "C-REDUNDANCY",
@@ -1813,7 +1867,7 @@
           "example": "misuse",
           "method": "METHOD_T",
           "layer": "T",
-          "concept": "Use a colon to introduce a list or explanation and a semicolon to join closely related independent clauses."
+          "concept": "Use a colon to introduce a list or explanation and a semicolon to join two closely related full clauses."
         },
         {
           "constraint": "C-SPACING-REPEAT",

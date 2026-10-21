@@ -1191,7 +1191,8 @@ body.lesson-view #explainNode:empty { display: none; }
 .nc-dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
 .nc-dot.ok { background: var(--ok); }
 .nc-dot.err { background: var(--err); }
-.nc-dot.un { background: var(--warn); }
+.nc-dot.un, .nc-dot.nt { background: var(--warn); }
+.nc-note { margin: 0 0 10px; color: var(--muted); font-size: 0.78rem; line-height: 1.45; }
 .nc-name { font-size: 15px; font-weight: 700; color: var(--ink); }
 .nc-surface { font-size: 12.5px; color: var(--muted); font-style: italic; }
 .nc-chiprow { margin: 0 0 12px; display: flex; gap: 8px; flex-wrap: wrap; }
@@ -1205,6 +1206,9 @@ body.lesson-view #explainNode:empty { display: none; }
 .ex-text { font-size: 13px; line-height: 1.6; color: var(--ink); margin: 0; }
 .nc-rem { margin-top: 4px; }
 .nc-fix { color: var(--ok); }
+.nc-correction-original { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+.nc-correction-fixed { font-size: 14px; font-weight: 600; }
+.nc-correction-edits { margin: 4px 0 0; padding-left: 18px; color: var(--muted); font-size: 12.5px; line-height: 1.6; }
 .muted { color: var(--muted); font-size: 12.5px; }
 
 .modal-backdrop {

@@ -97,8 +97,9 @@ export function renderNodeDetail(_session, detail, node) {
   // card wrapper, so the diagnostics/lesson explanation fill the whole panel.
   const head = document.createElement('div');
   head.className = 'nc-head';
+  const status = detail.display_status || detail.status;
   const dot = document.createElement('span');
-  dot.className = `nc-dot ${detail.status === 'error' ? 'err' : detail.status === 'unlisted' ? 'un' : 'ok'}`;
+  dot.className = `nc-dot ${status === 'error' ? 'err' : status === 'neutral' || status === 'unlisted' ? 'nt' : 'ok'}`;
   const name = document.createElement('span');
   name.className = 'nc-name';
   name.textContent = plainName(detail.type);
@@ -120,7 +121,7 @@ export function renderNodeDetail(_session, detail, node) {
   chipRow.appendChild(chip);
   box.appendChild(chipRow);
 
-  if (detail.status === 'error' && detail.remediation) {
+  if (status === 'error' && detail.remediation) {
     box.appendChild(renderRemediation(detail.remediation));
   } else {
     const ex = document.createElement('p');
@@ -162,6 +163,71 @@ function renderRemediation(rm) {
   }
 
   return wrap;
+}
+
+export function renderCorrection(summary) {
+  const box = $('#explainNode');
+  const emptyState = $('#emptyExplainState');
+  if (!box) return false;
+  const correction = summary?.correction;
+  if (!correction?.corrected_sentence) return false;
+  if (emptyState) emptyState.classList.add('hidden');
+  box.innerHTML = '';
+
+  const head = document.createElement('div');
+  head.className = 'nc-head';
+  const dot = document.createElement('span');
+  dot.className = 'nc-dot ok';
+  const name = document.createElement('span');
+  name.className = 'nc-name';
+  name.textContent = 'Verified correction';
+  head.appendChild(dot);
+  head.appendChild(name);
+  box.appendChild(head);
+
+  const chipRow = document.createElement('div');
+  chipRow.className = 'nc-chiprow';
+  const chip = document.createElement('span');
+  chip.className = 'nc-chip';
+  chip.textContent = 'rule-checked';
+  chipRow.appendChild(chip);
+  box.appendChild(chipRow);
+
+  label(box, 'Original');
+  const original = document.createElement('p');
+  original.className = 'ex-text nc-correction-original';
+  original.textContent = correction.original_sentence || summary.sentence || '';
+  box.appendChild(original);
+
+  label(box, 'Corrected sentence');
+  const fixed = document.createElement('p');
+  fixed.className = 'ex-text nc-fix nc-correction-fixed';
+  fixed.textContent = correction.corrected_sentence;
+  box.appendChild(fixed);
+
+  if (Array.isArray(correction.edits) && correction.edits.length) {
+    label(box, 'Edits');
+    const list = document.createElement('ul');
+    list.className = 'nc-correction-edits';
+    for (const edit of correction.edits) {
+      const item = document.createElement('li');
+      const from = edit.original || '(insert)';
+      const to = edit.replacement || '(remove)';
+      item.textContent = `${from} \u2192 ${to}`;
+      list.appendChild(item);
+    }
+    box.appendChild(list);
+  }
+
+  if (summary.explanation) {
+    label(box, 'Why');
+    const why = document.createElement('p');
+    why.className = 'ex-text';
+    why.textContent = summary.explanation;
+    box.appendChild(why);
+  }
+
+  return true;
 }
 
 export function renderDiagnostic(title, lines) {

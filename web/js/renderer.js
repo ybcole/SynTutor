@@ -363,7 +363,7 @@ export class TreeRenderer {
     for (const l of this.layoutData.layout.values()) {
       for (const c of ch(l.node)) {
         const cl = this.layoutData.layout.get(c.id);
-        const status = c.edgeResult ? c.edgeResult.status : 'valid';
+        const status = c.edgeResult ? c.edgeResult.status : 'neutral';
         const gap = cl.leaf ? 36 : LABEL_GAP;
         ctx.strokeStyle = this._edgeColor(status);
         ctx.lineWidth = 1.5;

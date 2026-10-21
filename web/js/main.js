@@ -5,7 +5,7 @@ import { getSavedTheme, setTheme } from './theme.js';
 import {
   log,
   clearOverlay, clearDiagnostics, showCanvasMessage, renderNodeDetail,
-  renderDiagnostic, applySentenceSelection, plainName,
+  renderDiagnostic, renderCorrection, applySentenceSelection, plainName,
 } from './ui.js';
 import {
   openQuizView, closeQuizView, closeSubpanel, initQuiz, quizInputHint, clearActiveLesson,
@@ -1351,6 +1351,7 @@ async function executePipeline(opts = {}) {
 
   document.querySelector('#emptyTreeState')?.classList.add('hidden');
   renderer.setTree(payload.tree);
+  if (!quizMode) renderCorrection(payload.summary);
   transition(STATES.VIEWING, 'output ready -> viewing');
   log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
 
@@ -1361,7 +1362,7 @@ async function executePipeline(opts = {}) {
       const { error: insertError } = await supabase.from('analysis_history').insert({
         user_id: clerk.user.id,
         sentence: text,
-        is_valid: payload.summary.valid,
+        is_valid: payload.summary.verdict === 'grammatical',
         constraints_fired: payload.summary.constraints_fired,
       });
 
@@ -1401,8 +1402,9 @@ function buildHighlightSpans(text, payload) {
       cursor = start + token.t.length;
     }
   }
+  const sentenceClean = payload.summary?.verdict === 'grammatical';
   return tokenRanges.map((token) => {
-    let status = 'valid';
+    let status = sentenceClean ? 'valid' : 'neutral';
     const isSentenceInitialToken = token.index === tokenRanges[0]?.index;
     for (const detail of Object.values(payload.node_details)) {
       if (detail.status === 'error' && detail.span[0] <= token.index && token.index < detail.span[1]) {
@@ -1515,9 +1517,11 @@ function syncHighlightScroll() {
 }
 
 function applyStatuses(tree, details, summary) {
+  const fallback = summary?.verdict === 'grammatical' ? 'valid' : 'neutral';
   const walk = (node) => {
     const d = details[node.id];
-    node.edgeResult = { status: d ? d.status : 'valid' };
+    const raw = d?.display_status || d?.status || fallback;
+    node.edgeResult = { status: raw === 'error' ? 'error' : raw === 'valid' ? 'valid' : 'neutral' };
     for (const c of node.children || []) walk(c);
   };
   walk(tree);

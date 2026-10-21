@@ -3,7 +3,7 @@
 > Chronological + exhaustive: every part of SynTutor's analysis,
 > in the order the pipeline produces it. 1:1 with the model.
 
-*Generated 2026-10-20  •  48 POS tags  •  24 phrase nodes  •  111 rules  •  169 constraints*
+*Generated 2026-10-21  •  48 POS tags  •  24 phrase nodes  •  112 rules  •  175 constraints*
 
 ---
 
@@ -165,6 +165,7 @@ SynTutor's own analysis: walks the tree and fires grammar constraints. Each maps
 | `3.6` | `C-HEAD-NOUN` | Determiner with no noun | T |
 | `3.7` | `C-SOME-ANY` | some/any | T |
 | `3.8` | `C-DET-NOUN-AGREE` | each/every/all/whole/other/another | T |
+| `3.15` | `C-COUNT-MASS` | much/many with the right noun class | T |
 | `4.1` | `C-UNCOUNTABLE` | Countable vs uncountable | T |
 | `4.2` | `C-NOUN-ADJUNCT` | Noun as modifier (number) | T |
 | `4.2` | `C-NOUN-MODIFIER-NUMBER` | Noun as modifier (number) | T |
@@ -184,7 +185,11 @@ SynTutor's own analysis: walks the tree and fires grammar constraints. Each maps
 | `6.1` | `C-AUX-COMPLEMENT` | Auxiliary + verb form | T |
 | `6.1` | `C-AUX-FORM` | Auxiliary + verb form | T |
 | `6.1` | `C-AUXILIARY` | Auxiliary + verb form | T |
+| `6.1` | `C-MODAL-OF` | Auxiliary + verb form | T |
 | `6.1` | `C-MODAL-VERB-FORM` | Auxiliary + verb form | T |
+| `6.2` | `C-BE-BASE` | Finite main verb | T |
+| `6.2` | `C-BE-PAST` | Finite main verb | T |
+| `6.2` | `C-FINITE-VERB` | Finite main verb | T |
 | `6.2` | `C-HEAD-VERB` | Finite main verb | T |
 | `6.2` | `C-TENSE-FINITE` | Finite main verb | T |
 | `6.3` | `C-COPULA` | Missing verb / copula | T |
@@ -202,6 +207,7 @@ SynTutor's own analysis: walks the tree and fires grammar constraints. Each maps
 | `6.10` | `C-TO-BASE` | to + base form | T |
 | `6.11` | `C-PARTICLE` | Phrasal verbs | T |
 | `6.11` | `C-PHRASAL-ORDER` | Phrasal verbs | T |
+| `6.12` | `C-MODAL-ABLE` | Modals and semi-modals | T |
 | `6.12` | `C-MODAL-STACK` | Modals and semi-modals | T |
 | `6.12` | `C-MODAL-TO` | Modals and semi-modals | T |
 | `6.13` | `C-QUESTION-INVERSION` | Question formation | T |
