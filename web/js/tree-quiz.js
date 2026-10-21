@@ -64,6 +64,8 @@ const state = {
   seenExamples: new Set(),
   // The last live validation message from the builder (quiz stage).
   checkStatus: null,
+  // The lesson whose XP has been claimed (a finished guided walkthrough).
+  lessonClaimed: null,
 };
 
 // The textbook, in order. `type` is the official parser label; `rule` is the
@@ -736,6 +738,7 @@ function lessonsGroups() {
 // it grows a horizontal row of category pills out of the toolbar, and picking
 // one filters the cards and collapses the row again.
 const category = { open: false, host: null, trigger: null, label: null };
+let categoryDelegateBound = false;
 
 const ALL_CATEGORIES = 'All';
 
@@ -750,69 +753,107 @@ function activeCategoryLabel(groups) {
   return groups.some((g) => g.name === state.activeGroup) ? state.activeGroup : ALL_CATEGORIES;
 }
 
-// Build (or rebuild) the trigger and the row of category pills.
+// Build (or rebuild) the category selector: the same expanding pill row the
+// achievements view uses.
 function buildCategorySelector(groups) {
   const host = $('#lessonsCategory');
   if (!host) return;
   host.innerHTML = '';
 
-  const trigger = el('button', 'cat-trigger');
+  const wrapper = el('div', 'expanding-cat-wrapper');
+  wrapper.id = 'lessonsCatExpander';
+
+  const trigger = el('button', 'cat-trigger-pill');
   trigger.type = 'button';
+  trigger.id = 'lessonsCatTrigger';
   trigger.setAttribute('aria-haspopup', 'true');
   trigger.setAttribute('aria-expanded', 'false');
   trigger.setAttribute('aria-label', 'Choose a lesson category');
   const label = el('span', 'cat-trigger-label', activeCategoryLabel(groups));
+  trigger.appendChild(label);
   const chevron = el('span', 'cat-chevron');
   chevron.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>';
-  trigger.appendChild(label);
   trigger.appendChild(chevron);
-  trigger.addEventListener('click', () => setCategoryOpen(!category.open));
-  host.appendChild(trigger);
+  wrapper.appendChild(trigger);
 
-  const options = el('div', 'cat-options');
-  options.setAttribute('role', 'group');
-  options.setAttribute('aria-label', 'Lesson categories');
+  // The pills start collapsed: the toolbar shows the trigger alone until the
+  // learner asks for the categories.
+  const pills = el('div', 'expanding-cat-pills');
+  pills.id = 'lessonsCatPills';
+  pills.setAttribute('role', 'group');
+  pills.setAttribute('aria-label', 'Lesson categories');
   categoryNames(groups).forEach((name) => {
     const pill = el('button', name === state.activeGroup ? 'cat-pill is-active' : 'cat-pill', name);
     pill.type = 'button';
+    pill.dataset.lessonCategory = name;
     pill.setAttribute('aria-pressed', String(name === state.activeGroup));
-    pill.addEventListener('click', () => selectCategory(name));
-    options.appendChild(pill);
+    pills.appendChild(pill);
   });
-  host.appendChild(options);
+  wrapper.appendChild(pills);
+  host.appendChild(wrapper);
 
   category.host = host;
   category.trigger = trigger;
   category.label = label;
-  // The row is rebuilt on every render, so the open state is re-applied here.
-  host.classList.toggle('is-open', category.open);
-  trigger.setAttribute('aria-expanded', String(category.open));
 }
 
-// Open or close the expander. While it is open, a click outside collapses
-// it again.
+// The selector is driven from the document, not from the buttons: the
+// catalog is re-rendered often, and a re-render must never leave the
+// selector dead.
+function initCategorySelector() {
+  if (categoryDelegateBound) return;
+  categoryDelegateBound = true;
+
+  document.addEventListener('click', (e) => {
+    // 1. The trigger toggles the row.
+    const trigger = e.target.closest('#lessonsCatTrigger');
+    if (trigger) {
+      e.stopPropagation();
+      const wrapper = trigger.closest('#lessonsCatExpander');
+      if (wrapper) {
+        const isOpen = wrapper.classList.toggle('is-open');
+        trigger.setAttribute('aria-expanded', String(isOpen));
+      }
+      return;
+    }
+
+    // 2. A category pill selects and filters.
+    const pill = e.target.closest('.cat-pill[data-lesson-category]');
+    if (pill && pill.closest('#lessonsCatExpander')) {
+      selectCategory(pill.getAttribute('data-lesson-category'));
+      return;
+    }
+
+    // 3. A click anywhere else folds the row away.
+    const open = document.querySelector('#lessonsCatExpander.is-open');
+    if (open) {
+      open.classList.remove('is-open');
+      const triggerBtn = open.querySelector('#lessonsCatTrigger');
+      if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
 function setCategoryOpen(open) {
-  const host = category.host;
-  if (!host) return;
+  const wrapper = document.querySelector('#lessonsCatExpander');
+  if (!wrapper) return;
   category.open = Boolean(open);
-  host.classList.toggle('is-open', category.open);
-  category.trigger?.setAttribute('aria-expanded', String(category.open));
-  if (category.open) {
-    document.addEventListener('click', onClickOutsideCategory, true);
-  } else {
-    document.removeEventListener('click', onClickOutsideCategory, true);
-  }
+  wrapper.classList.toggle('is-open', category.open);
+  const trigger = wrapper.querySelector('#lessonsCatTrigger');
+  if (trigger) trigger.setAttribute('aria-expanded', String(category.open));
 }
 
-function onClickOutsideCategory(e) {
-  const host = category.host;
-  if (!host || host.contains(e.target)) return;
-  setCategoryOpen(false);
-}
-
-// Pick a category: filter the cards, relabel the trigger, collapse the row.
 function selectCategory(name) {
   state.activeGroup = name;
+  // The row folds away again, and the trigger carries the new name.
+  const wrapper = document.getElementById('lessonsCatExpander');
+  if (wrapper) {
+    const label = wrapper.querySelector('#lessonsCatTrigger .cat-trigger-label');
+    if (label) label.textContent = name;
+    wrapper.querySelectorAll('.cat-pill').forEach((other) => other.classList.remove('active'));
+    const active = wrapper.querySelector('.cat-pill[data-lesson-category]');
+    if (active && active.getAttribute('data-lesson-category') === name) active.classList.add('active');
+  }
   setCategoryOpen(false);
   renderLessons();
 }
@@ -884,7 +925,6 @@ function lessonCard(lesson) {
   }
   face.appendChild(titleRow);
   face.appendChild(el('span', 'sq-card-overview', lesson.summary || lesson.rule));
-  face.appendChild(el('span', 'sq-card-count', complete ? `\u2713 ${done}/${total}` : `${done}/${total}`));
 
   // The sub-topics a module teaches, as preview chips.
   if (isModule) {
@@ -895,12 +935,11 @@ function lessonCard(lesson) {
     face.appendChild(chips);
   }
 
-  // Full-width progress bar along the bottom of the card.
-  const bar = el('span', 'sq-card-bar');
-  const fill = el('span', 'sq-card-bar-fill');
-  fill.style.width = `${pct}%`;
-  bar.appendChild(fill);
-  face.appendChild(bar);
+  // The footer: how far the learner has come, and what the lesson ends with.
+  const footer = el('div', 'sq-card-footer');
+  footer.appendChild(el('span', 'sq-card-count', complete ? `\u2713 ${done}/${total}` : `${done}/${total}`));
+  footer.appendChild(el('span', 'sq-card-kind', lessonQuizzes(lesson).length ? 'Quiz' : 'Walkthrough'));
+  face.appendChild(footer);
 
   face.addEventListener('click', () => {
     if (locked) {
@@ -1117,6 +1156,8 @@ const LESSON_NODES = [
 // tree is read-only, so its hint says so instead of inviting the learner to
 // build something they cannot build yet.
 const CONCEPT_HINT = 'Reference Tree · Observe the hierarchy and constituent branches';
+// What a finished guided walkthrough is worth.
+const LESSON_COMPLETION_XP = 25;
 const PRACTICE_HINT = 'Right-click to add a phrase · drag a dot to connect · grab a link end to re-route or delete';
 const QUIZ_HINT = 'Build the tree, then check it against SynTutor’s parse';
 
@@ -1147,35 +1188,64 @@ function lessonNodeDone(lesson, page, current) {
   return state.quizDone.has(lesson.type);
 }
 
-// The node-and-branch progress: three compact nodes (1 → 2 → 3) joined by
-// short branch lines. Each node is clickable, shows a ✓ once its stage is
-// done, and marks the stage the learner is on.
-function renderLessonNodes(lesson, current) {
+// The quiz items of a lesson: the trees the learner has to build at the
+// end. A module lesson (one split into types) has no quiz of its own - it
+// walks the learner through its examples instead.
+function lessonQuizzes(lesson) {
+  if (Array.isArray(lesson.quizzes)) return lesson.quizzes;
+  return lesson.sections ? [] : (lesson.examples || []);
+}
+
+// The stages a lesson walks through. A lesson with a quiz goes
+// Concept → Practice → Quiz; a lesson without one goes
+// Concept → Guided Walkthrough.
+function lessonStages(lesson) {
+  const hasQuiz = lessonQuizzes(lesson).length > 0;
+  return hasQuiz
+    ? [
+      { page: 1, label: 'Concept' },
+      { page: 2, label: 'Practice' },
+      { page: 3, label: 'Quiz' },
+    ]
+    : [
+      { page: 1, label: 'Concept' },
+      { page: 2, label: 'Guided Walkthrough' },
+    ];
+}
+
+// The stage progress: one badge per stage, with its name beside it. A
+// finished stage keeps its green checkmark.
+function renderStageStepper(lesson) {
+  const stages = lessonStages(lesson);
+  const current = state.lessonPage;
   const wrap = el('div', 'stage-stepper-tracker');
   wrap.setAttribute('role', 'group');
   wrap.setAttribute('aria-label', 'Lesson stages');
-  LESSON_NODES.forEach((node, i) => {
-    const done = lessonNodeDone(lesson, node.page, current);
-    let cls = 'sq-progress-node';
-    if (node.page === current) cls += ' active';
-    if (done) cls += ' completed';
-    const btn = el('button', cls);
+  stages.forEach((stage, i) => {
+    const done = lessonNodeDone(lesson, stage.page, current);
+    const group = el('div', 'sq-stage-step');
+    if (stage.page === current) group.classList.add('is-active');
+    if (done) group.classList.add('is-done');
+    const btn = el('button', 'sq-progress-node');
     btn.type = 'button';
-    btn.title = `${node.label}${done ? ' — done' : ''}`;
-    btn.setAttribute('aria-label', node.label);
-    btn.setAttribute('aria-pressed', String(node.page === current));
-    btn.appendChild(el('span', 'sq-progress-node-badge', done ? '✓' : String(node.page)));
-    btn.addEventListener('click', () => goLessonNode(lesson, node.page));
-    wrap.appendChild(btn);
-    if (i < LESSON_NODES.length - 1) wrap.appendChild(el('span', 'sq-progress-line'));
+    btn.title = `${stage.label}${done ? ' — done' : ''}`;
+    btn.setAttribute('aria-label', stage.label);
+    btn.setAttribute('aria-pressed', String(stage.page === current));
+    btn.appendChild(el('span', 'sq-progress-node-badge', done ? '✓' : String(stage.page)));
+    btn.addEventListener('click', () => goLessonNode(lesson, stage.page));
+    group.appendChild(btn);
+    group.appendChild(el('span', 'sq-stage-step-label', stage.label));
+    wrap.appendChild(group);
+    if (i < stages.length - 1) wrap.appendChild(el('span', 'sq-progress-line'));
   });
   return wrap;
 }
 
-// The example switcher: labelled pills, so the learner knows which sentence
-// each one opens. A built example carries a green ✓.
+// The example switcher: one segmented bar, one tab per example. The tab
+// carries the number and the sentence, so the learner knows what each one
+// opens; a built example keeps a green checkmark.
 function renderExampleSwitcher(lesson, index) {
-  const bar = el('div', 'example-pill-selector');
+  const bar = el('div', 'example-switcher-bar');
   bar.setAttribute('role', 'group');
   bar.setAttribute('aria-label', 'Lesson examples');
   lesson.examples.forEach((sentence, i) => {
@@ -1183,6 +1253,7 @@ function renderExampleSwitcher(lesson, index) {
     const tab = el('button', done ? 'example-tab is-done' : 'example-tab');
     if (i === index) tab.classList.add('active');
     tab.type = 'button';
+    tab.dataset.index = String(i);
     tab.appendChild(document.createTextNode(`${i + 1}. `));
     tab.appendChild(el('span', 'example-tab-text', sentence));
     if (done) tab.appendChild(el('span', 'example-tab-check', '✓'));
@@ -1356,7 +1427,8 @@ function renderLessonStage(lesson, page, index, example) {
 function fillActiveStep(box, lesson) {
   box.innerHTML = '';
   const index = Math.max(0, Math.min(guide.step, lesson.steps.length - 1));
-  box.appendChild(el('h3', 'sq-active-step-title', stepTitle(lesson, index)));
+  box.appendChild(el('h3', 'sq-active-step-title',
+    `Step ${index + 1} of ${lesson.steps.length}: ${stepTitle(lesson, index)}`));
   box.appendChild(el('p', 'sq-active-step-text', lesson.steps[index]));
 }
 
@@ -1509,6 +1581,24 @@ const HEAD_RULES = {
 // panel says "constituents" there instead of "modifiers".
 const MODIFIER_PHRASES = new Set(['NP', 'ADJP', 'ADVP', 'PP', 'QP', 'NML', 'NX']);
 
+// What the dependents of a phrase are called: the modifiers that sit around
+// its head, the complements a verb takes, or the constituents of a clause.
+const DEPENDENT_LABELS = {
+  NP: 'Direct modifiers',
+  NML: 'Direct modifiers',
+  NX: 'Direct modifiers',
+  ADJP: 'Direct modifiers',
+  ADVP: 'Direct modifiers',
+  QP: 'Direct modifiers',
+  PP: 'Complements',
+  VP: 'Complements',
+  S: 'Constituents',
+  SQ: 'Constituents',
+  SBARQ: 'Constituents',
+  SBAR: 'Constituents',
+  SINV: 'Constituents',
+};
+
 // The head of a phrase: the child that carries its meaning.
 function phraseHead(node) {
   if (!node) return null;
@@ -1527,7 +1617,7 @@ function phraseParts(node) {
   return {
     head: head || null,
     parts: kids.filter((k) => k !== head),
-    label: modifierPhrase ? 'Direct modifiers' : 'Constituents',
+    label: DEPENDENT_LABELS[node?.type] || (modifierPhrase ? 'Direct modifiers' : 'Constituents'),
     modifierPhrase,
   };
 }
@@ -1579,7 +1669,7 @@ function ruleBadge(label, formula) {
 // The live breakdown of the example on the canvas: the leaves with their POS
 // tags, the head of the phrase, the modifiers around it, and why they attach
 // where they do.
-function renderBreakdown(lesson, example) {
+function renderBreakdown(lesson, example, formula) {
   const box = el('div', 'sq-breakdown');
   const gold = goldFor(example);
   if (!gold?.tree) {
@@ -1615,7 +1705,7 @@ function renderBreakdown(lesson, example) {
   box.appendChild(el('p', 'syntax-explanation', attachmentNote(tree, parts)));
 
   // The rule the whole thing follows.
-  box.appendChild(ruleBadge('RULE IN PLAY', lesson.formula));
+  box.appendChild(ruleBadge('RULE IN PLAY', formula || lesson.formula || ''));
   return box;
 }
 
@@ -1759,7 +1849,22 @@ function defaultExampleIndex(lesson) {
   return first < 0 ? 0 : first;
 }
 function goLessonNode(lesson, page) {
-  const target = Math.max(1, Math.min(page, LESSON_NODES.length));
+  const target = Math.max(1, Math.min(page, lessonStages(lesson).length));
+  if (target === 2 && lesson.sections) {
+    // The walkthrough opens on the first example of the active type.
+    state.lessonPage = 2;
+    const section = lesson.sections[state.sectionIndex] || lesson.sections[0];
+    const flat = lesson.examples || [];
+    const first = flat.findIndex((e) => !state.done.has(`${lesson.type}:${e}`));
+    const next = first >= 0 ? flat[first] : flat[0];
+    if (next) {
+      state.exampleIndex = flat.indexOf(next);
+      openModelExample(lesson, next);
+    } else {
+      renderLesson();
+    }
+    return;
+  }
   if (target === 2) {
     state.lessonPage = 2;
     if (lesson.sections) {
@@ -1797,6 +1902,12 @@ function renderLesson() {
   const lesson = LESSONS.find((l) => l.type === state.lessonIndex);
   if (!lesson) return;
   if (lesson.sections) {
+    // A module lesson: the concept page shows the read-only model trees, the
+    // guided walkthrough takes the learner through the examples.
+    if (state.lessonPage >= 2) {
+      renderModuleWalkthrough(lesson);
+      return;
+    }
     renderModuleLesson(lesson);
     return;
   }
@@ -1850,7 +1961,7 @@ function renderLesson() {
   headMain.appendChild(book);
   headMain.appendChild(el('h2', 'lesson-panel-title', lesson.title));
   head.appendChild(headMain);
-  head.appendChild(renderLessonNodes(lesson, page));
+  head.appendChild(renderStageStepper(lesson));
   wrap.appendChild(head);
 
   // Only the current stage's controls live in the upper-right pane.
@@ -1997,8 +2108,8 @@ function renderModuleLesson(lesson) {
 
   const wrap = el('div', 'sq-lesson sq-module');
 
-  // Header: the way back to the library and the module title. The old mode
-  // pill is gone because a module lesson now only ever shows model trees.
+  // Header: the way back to the library, the module title, and the stage
+  // stepper — the module walks Concept → Guided Walkthrough.
   const head = el('header', 'panel-header-row');
   const headMain = el('div', 'panel-title-group');
   const book = el('button', 'panel-book-btn');
@@ -2010,6 +2121,7 @@ function renderModuleLesson(lesson) {
   headMain.appendChild(book);
   headMain.appendChild(el('h2', 'lesson-panel-title', lesson.title));
   head.appendChild(headMain);
+  head.appendChild(renderStageStepper(lesson));
   wrap.appendChild(head);
 
   wrap.appendChild(renderSubtypeNav(lesson));
@@ -2023,6 +2135,167 @@ function renderModuleLesson(lesson) {
   } else if (focusExample !== null) {
     wrap.querySelector(`.sq-sample-button[data-example-index="${focusExample}"]`)?.focus({ preventScroll: true });
   }
+}
+
+// The guided walkthrough of a module lesson: the learner steps through the
+// examples of the active type, and the lower panel shows the live breakdown
+// of the example on the canvas. The last example of the last type claims the
+// lesson's XP.
+function renderModuleWalkthrough(lesson) {
+  const host = $('#quizQuestHost');
+  const guideHost = $('#lessonGuideHost');
+  if (!host || !guideHost) return;
+
+  // The walkthrough is an ordinary cockpit: the lower panel is back.
+  document.body.classList.add('lesson-view', 'lesson-model');
+  document.body.classList.remove('module-lesson');
+  closeStepGuide();
+  closeGuideCard();
+  syncChatTitle(lesson);
+
+  const flat = lesson.examples || [];
+  const index = Math.max(0, Math.min(state.exampleIndex || 0, flat.length - 1));
+  const example = flat[index];
+  const section = lesson.sections.find((s) => (s.examples || []).includes(example))
+    || lesson.sections[state.sectionIndex] || lesson.sections[0];
+  const inSection = Math.max(0, (section.examples || []).indexOf(example));
+
+  host.innerHTML = '';
+  const wrap = el('div', 'sq-lesson');
+
+  // The header: the way back to the library, the title, the stepper.
+  const head = el('header', 'panel-header-row');
+  const headMain = el('div', 'panel-title-group');
+  const book = el('button', 'panel-book-btn');
+  book.type = 'button';
+  book.title = 'Show all lesson modules';
+  book.setAttribute('aria-label', 'Show all lesson modules');
+  book.innerHTML = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>';
+  book.addEventListener('click', () => openLessonsOverlay());
+  headMain.appendChild(book);
+  headMain.appendChild(el('h2', 'lesson-panel-title', lesson.title));
+  head.appendChild(headMain);
+  head.appendChild(renderStageStepper(lesson));
+  wrap.appendChild(head);
+
+  const stage = el('div', 'sq-lesson-stage');
+
+  // The types of the module, and the examples of the active one.
+  stage.appendChild(renderSubtypeNav(lesson));
+  stage.appendChild(renderModuleExampleTabs(lesson, section, example));
+
+  // The step header: which example of which type, and what it shows.
+  const stepBox = el('div', 'sq-active-step');
+  stepBox.appendChild(el('h3', 'sq-active-step-title',
+    `Example ${inSection + 1} of ${section.examples.length}: ${section.name}`));
+  stepBox.appendChild(el('p', 'sq-active-step-text', section.detail || ''));
+  stage.appendChild(stepBox);
+
+  // The pagination: the examples of the active type.
+  const pager = el('div', 'sq-step-pager');
+  const prev = el('button', 'sq-ghost sq-step-btn', '←');
+  prev.type = 'button';
+  prev.id = 'sqStepPrev';
+  prev.title = 'Previous example';
+  prev.disabled = inSection <= 0;
+  prev.addEventListener('click', () => openModuleExample(lesson, section.examples[inSection - 1]));
+  const label = el('span', 'sq-step-pager-label',
+    `Example ${inSection + 1} of ${section.examples.length}`);
+  label.id = 'sqStepLabel';
+  const next = el('button', 'sq-ghost sq-step-btn', '→');
+  next.type = 'button';
+  next.id = 'sqStepNext';
+  next.title = 'Next example';
+  next.disabled = inSection >= section.examples.length - 1;
+  next.addEventListener('click', () => openModuleExample(lesson, section.examples[inSection + 1]));
+  pager.appendChild(prev);
+  pager.appendChild(label);
+  pager.appendChild(next);
+  stage.appendChild(pager);
+
+  // The pinned action: the next example, or the lesson's XP at the very end.
+  const claimed = state.lessonClaimed?.lesson === lesson.type;
+  const isLast = index >= flat.length - 1;
+  if (claimed) {
+    const done = el('div', 'sq-lesson-complete');
+    done.appendChild(el('span', 'sq-lesson-complete-title',
+      `Lesson complete — ${state.lessonClaimed.xp} XP claimed.`));
+    const back = el('button', 'sq-ghost sq-stage-cta', 'Back to the library');
+    back.type = 'button';
+    back.addEventListener('click', () => {
+      closeQuizView();
+      openLessonsOverlay();
+    });
+    done.appendChild(back);
+    stage.appendChild(done);
+  } else {
+    const cta = el('button', 'sq-primary quiz-primary-btn sq-stage-cta',
+      isLast ? 'Complete Lesson & Claim XP ✓' : 'Next Example →');
+    cta.type = 'button';
+    cta.id = 'sqStageCta';
+    cta.addEventListener('click', () => {
+      if (isLast) {
+        completeModuleLesson(lesson);
+        return;
+      }
+      const nextExample = flat[index + 1];
+      if (nextExample) openModuleExample(lesson, nextExample);
+    });
+    stage.appendChild(cta);
+  }
+  wrap.appendChild(stage);
+  host.appendChild(wrap);
+
+  // The lower panel: the live breakdown of the example on the canvas.
+  guideHost.innerHTML = '';
+  guideHost.appendChild(el('div', 'analysis-section-label', 'SYNTAX BREAKDOWN'));
+  guideHost.appendChild(renderBreakdown(lesson, example, section.formula));
+}
+
+// The example tabs of a module lesson: the examples of the active type.
+function renderModuleExampleTabs(lesson, section, example) {
+  const bar = el('div', 'example-switcher-bar');
+  bar.setAttribute('role', 'group');
+  bar.setAttribute('aria-label', `${section.name} examples`);
+  (section.examples || []).forEach((sentence, i) => {
+    const done = state.done.has(`${lesson.type}:${sentence}`);
+    const tab = el('button', done ? 'example-tab is-done' : 'example-tab');
+    if (sentence === example) tab.classList.add('active');
+    tab.type = 'button';
+    tab.dataset.index = String(i);
+    tab.appendChild(document.createTextNode(`${i + 1}. `));
+    tab.appendChild(el('span', 'example-tab-text', sentence));
+    if (done) tab.appendChild(el('span', 'example-tab-check', '✓'));
+    tab.setAttribute('aria-label', `Example ${i + 1}: ${sentence}`);
+    tab.addEventListener('click', () => openModuleExample(lesson, sentence));
+    bar.appendChild(tab);
+  });
+  return bar;
+}
+
+// Show one example of a module lesson on the canvas.
+function openModuleExample(lesson, sentence) {
+  const index = (lesson.examples || []).indexOf(sentence);
+  if (index >= 0) state.exampleIndex = index;
+  const section = lesson.sections.find((s) => (s.examples || []).includes(sentence));
+  if (section) state.sectionIndex = lesson.sections.indexOf(section);
+  openModelExample(lesson, sentence);
+}
+
+// The walkthrough is done: the lesson counts as finished, its XP is claimed
+// and the panel offers the way back to the library.
+async function completeModuleLesson(lesson) {
+  state.quizDone.add(lesson.type);
+  let xp = LESSON_COMPLETION_XP;
+  const progress = state.controller?.progress;
+  if (progress && typeof progress.award === 'function') {
+    try {
+      const earned = await progress.award(LESSON_COMPLETION_XP);
+      if (earned && typeof earned.earned === 'number') xp = earned.earned;
+    } catch { /* the XP is claimed again on the next visit */ }
+  }
+  state.lessonClaimed = { lesson: lesson.type, xp };
+  renderModuleWalkthrough(lesson);
 }
 
 function renderSubtypeNav(lesson) {
@@ -2849,6 +3122,8 @@ setBuilderCloseHandler(clearActiveLesson);
 
 // The builder reports every live check; the lesson's diagnostics panel shows
 // that verdict under the question.
+initCategorySelector();
+
 setCheckResultHandler((message, kind) => {
   state.checkStatus = { message, kind };
   updateValidationStatus();

@@ -1290,29 +1290,10 @@
   gap: 8px;
   min-width: 0;
 }
-.cat-trigger {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 15px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink);
-  font: inherit;
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
-}
-.cat-trigger:hover {
-  background: var(--surface-hover, rgba(255, 255, 255, 0.04));
-  border-color: var(--border-hover, var(--border));
-}
-.cat-trigger:active { transform: scale(0.97); }
-.cat-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+
+
+
 .cat-trigger-label { white-space: nowrap; }
 .cat-chevron {
   display: inline-flex;
@@ -1321,54 +1302,16 @@
   flex-shrink: 0;
 }
 /* Open: the right-pointing chevron turns a quarter turn to point down. */
-.sq-cat.is-open .cat-chevron { transform: rotate(90deg); }
+
 
 /* The row of category pills grows out of the trigger: max-width drives the
    expansion, opacity fades the pills in. While it is collapsed the row is
    hidden from pointer and keyboard focus (after the collapse finishes). */
-.cat-options {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  overflow: hidden;
-  max-width: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: max-width 240ms cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 200ms ease,
-              visibility 0s linear 240ms;
-}
-.sq-cat.is-open .cat-options {
-  max-width: 600px;
-  opacity: 1;
-  visibility: visible;
-  transition: max-width 240ms cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 200ms ease,
-              visibility 0s linear 0s;
-}
-.cat-pill {
-  flex: 0 0 auto;
-  padding: 8px 15px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--muted);
-  font: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
-}
-.cat-pill:hover {
-  background: var(--surface-hover, rgba(255, 255, 255, 0.04));
-  color: var(--text);
-}
-.cat-pill.is-active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-}
+
+
+
+
+
 
 /* The catalog frame: the page that scrolls. The header and the content body
    sit inside it, exactly as in the leaderboard and the achievements. */
@@ -1477,32 +1420,37 @@
   line-height: 1.55;
   color: var(--muted);
 }
-.sq-card.is-complete .sq-card-bar-fill { background: var(--ok); }
-.sq-card-bar-fill {
-  display: block;
-  height: 100%;
-  width: 0;
-  background: var(--accent);
-  transition: width var(--dur) var(--ease);
-}
-.sq-card-bar {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 4px;
-  background: color-mix(in srgb, var(--border) 70%, transparent);
+
+
+
+.sq-card-footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 14px;
 }
 .sq-card-count {
-  margin-top: auto;
   font-size: 14px;
   font-weight: 600;
   color: var(--muted);
+}
+/* What the lesson ends with: a quiz to run, or a walkthrough to finish. */
+.sq-card-kind {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
 }
 .sq-card-title-row {
   display: flex;
   align-items: center;
   gap: 10px;
+  /* The row spans the card, so the lock badge can sit at its right edge. */
+  width: 100%;
   margin-bottom: 12px;
   flex-wrap: wrap;
 }
@@ -1722,6 +1670,9 @@ body.lesson-view .panel-lower-right {
 body.lesson-view .panel-upper-right {
   padding: 20px 24px;
   justify-content: space-between;
+  overflow-y: auto;
+  /* The analysis is long: it scrolls smoothly, never in jerks. */
+  scroll-behavior: smooth;
 }
 body.lesson-view .panel-lower-right {
   padding: 20px 24px;
@@ -1750,7 +1701,6 @@ body.lesson-view #rowResizer { display: none; }
 .sq-lesson-stage {
   flex: 1 1 auto;
   min-height: 0;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -1858,7 +1808,7 @@ body.lesson-view #rowResizer { display: none; }
 /* The example switcher: one segmented bar, one tab per example. The tab
    carries the number and the sentence, so the learner knows what each one
    opens; a built example keeps a green checkmark. */
-.example-pill-selector {
+.example-switcher-bar {
 /* Section picker (module-style lessons): one pill per section/type. */
 .sq-section-picker { display: flex; flex-wrap: wrap; gap: 6px; }
 .sq-section-pill {
@@ -2231,7 +2181,24 @@ body.lesson-view #rowResizer { display: none; }
   flex: 0 0 auto;
   flex-shrink: 0;
   gap: 0;
+  min-width: 0;
 }
+/* One stage: its badge and its name. */
+.sq-stage-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.sq-stage-step-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.sq-stage-step.is-active .sq-stage-step-label { color: var(--text); }
+.sq-stage-step.is-done .sq-stage-step-label { color: var(--ok); }
 .sq-progress-node {
   flex: 0 0 auto;
   width: 28px;
@@ -2634,4 +2601,22 @@ body.lesson-model #treeCanvas:active { cursor: default; }
 @media (prefers-reduced-motion: reduce) {
   .sq-sample-button,
   .sq-module-pills .sq-section-pill { transition: none; }
+}
+
+/* The finished walkthrough: the XP it claimed, and the way back to the
+   library. */
+.sq-lesson-complete {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--success, #22c55e) 32%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--success, #22c55e) 8%, transparent);
+}
+.sq-lesson-complete-title {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--success, #22c55e);
 }
