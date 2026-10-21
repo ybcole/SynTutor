@@ -854,50 +854,53 @@ function lessonCard(lesson) {
   const locked = isLessonGated(lesson) && isGuestSession();
   const isModule = Boolean(lesson.sections?.length);
   const expanded = isModule && state.openModule === lesson.type;
-  const card = el('article', 'sq-card-cell');
 
-
-  // A module tile reads like a course card: a header band carrying the module
-  // name, then a body with the description and its sub-topic preview chips.
-  const face = el('button', 'sq-card');
+  // The card face: the title with its phrase capsule and the lock badge, the
+  // one-line overview, the completion counter and the progress bar.
+  const face = el('button', locked ? 'sq-card is-locked' : complete ? 'sq-card is-complete' : 'sq-card');
   face.type = 'button';
-  face.title = isModule ? `${lesson.title} — pick a sub-topic` : lesson.title;
-
-  if (locked) face.classList.add('is-locked');
-  else if (complete) face.classList.add('is-complete');
   face.dataset.lessonId = lesson.type;
-  if (locked) {
-    face.title = `${lesson.title} — create a free account to open it`;
-  }
+  face.title = locked
+    ? `${lesson.title} — create a free account to open it`
+    : `${lesson.title} — ${done}/${total} completed`;
 
-  const head = el('span', 'sq-card-head');
-  if (!isModule) head.appendChild(el('span', 'sq-card-tag', lesson.type));
-  head.appendChild(el('span', 'sq-card-title', lesson.title));
+  // The title and the phrase capsule share one row: the capsule sits right
+  // beside the title, not stacked above it.
+  const titleRow = el('div', 'sq-card-title-row');
+  titleRow.appendChild(el('h3', 'sq-card-title', lesson.title));
+  titleRow.appendChild(el('span', 'sq-card-tag', lesson.type));
   if (locked) {
     const badge = el('span', 'sq-card-lock-badge');
     badge.setAttribute('aria-label', 'Locked');
     badge.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>';
-    head.appendChild(badge);
+    titleRow.appendChild(badge);
   }
   if (isModule) {
+    // A module card opens its sub-topics: the chevron says so.
     const chevron = el('span', expanded ? 'sq-card-expand is-open' : 'sq-card-expand');
     chevron.setAttribute('aria-hidden', 'true');
     chevron.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
-    head.appendChild(chevron);
+    titleRow.appendChild(chevron);
   }
-  face.appendChild(head);
+  face.appendChild(titleRow);
+  face.appendChild(el('span', 'sq-card-overview', lesson.summary || lesson.rule));
+  face.appendChild(el('span', 'sq-card-count', complete ? `\u2713 ${done}/${total}` : `${done}/${total}`));
 
-  const body = el('span', 'sq-card-body');
-  body.appendChild(el('span', 'sq-card-overview', lesson.summary || lesson.rule));
-  body.appendChild(el('span', 'sq-card-count', complete ? `✓ ${done}/${total}` : `${done}/${total}`));
+  // The sub-topics a module teaches, as preview chips.
   if (isModule) {
-    const chips = el('span', 'sq-card-topics');
+    const chips = el('div', 'sq-card-topics');
     for (const section of lesson.sections) {
       chips.appendChild(el('span', 'sq-card-topic-chip', section.name));
     }
-    body.appendChild(chips);
+    face.appendChild(chips);
   }
-  face.appendChild(body);
+
+  // Full-width progress bar along the bottom of the card.
+  const bar = el('span', 'sq-card-bar');
+  const fill = el('span', 'sq-card-bar-fill');
+  fill.style.width = `${pct}%`;
+  bar.appendChild(fill);
+  face.appendChild(bar);
 
   face.addEventListener('click', () => {
     if (locked) {
@@ -910,9 +913,16 @@ function lessonCard(lesson) {
     if (isModule) toggleModule(lesson);
     else openLesson(lesson);
   });
-  card.appendChild(face);
-  if (expanded) card.appendChild(moduleSubtopics(lesson));
-  return card;
+
+  // A module card expands its sub-topics under the card, so it needs a
+  // container; every other lesson is one button.
+  if (!isModule) return face;
+  const cell = el('article', 'sq-card-cell');
+  cell.dataset.lessonId = lesson.type;
+  face.title = `${lesson.title} — pick a sub-topic`;
+  cell.appendChild(face);
+  if (expanded) cell.appendChild(moduleSubtopics(lesson));
+  return cell;
 }
 
 // The catalog's page header: the same title, baseline and dividing line as
