@@ -5,8 +5,11 @@ import { getSavedTheme, setTheme } from './theme.js';
 import {
   log,
   clearOverlay, clearDiagnostics, showCanvasMessage, renderNodeDetail,
-  renderDiagnostic, renderCorrection, applySentenceSelection, plainName,
+  renderDiagnostic, renderCorrection, applySentenceSelection, plainName, renderCorrectionPanel,
 } from './ui.js';
+import {
+  planFocus, contextWords, applyEdit, expectedScopeWords, findScopeNode, findTargetError,
+} from './correction.js';
 import {
   openQuizView, closeQuizView, closeSubpanel, initQuiz, quizInputHint, clearActiveLesson,
 } from './tree-quiz.js';
@@ -61,6 +64,212 @@ let historySpans = [];
 
 let cachedHistory = [];
 let activeHistoryFilter = 'all';
+
+// ---------------------------------------------------------------------------
+// Interactive corrective feedback
+// ---------------------------------------------------------------------------
+// The learner picks a grammar error (a red node in the tree), the canvas zooms
+// to the subtree the rule talks about, and the correction panel offers the
+// server's suggested repair as a live preview of the re-parsed sentence.
+// `focus` holds everything about the error that is currently selected.
+let focus = null;                 // active correction target
+let correctionMode = 'original';  // 'original' | 'corrected' | 'alternative'
+let focusResult = null;           // {kind:'fixed'|'still', message}
+let previewLoading = null;        // 'corrected' | 'alternative' | null
+let liveReparseTimer = null;      // debounce handle for the live re-parse
+let liveReparsePending = false;   // a live re-parse that had to wait
+
+// Live re-parse: while the learner edits the sentence of an open correction,
+// the tree follows along, so a fix is confirmed the moment it is typed.
+// It only runs while a correction is open — ordinary editing keeps the
+// original click-away behaviour.
+function scheduleLiveReparse() {
+  if (liveReparseTimer) clearTimeout(liveReparseTimer);
+  liveReparseTimer = setTimeout(() => {
+    liveReparseTimer = null;
+    if (!focus || workspaceView !== 'tutor' || quizMode) return;
+    const ta = document.querySelector('#inputText');
+    if (!ta || ta.readOnly === true || !ta.value.trim()) return;
+    if (state === STATES.PROCESSING) { liveReparsePending = true; return; }
+    // Keep the sentence the learner is looking at: a passage has one tree per
+    // sentence, and the correction belongs to this one.
+    const index = session?.sentence_index ?? focus.sentenceIndex ?? 0;
+    runPipeline({ isLive: true, index, mergeSpans: true });
+  }, 500);
+}
+
+function cancelLiveReparse() {
+  if (liveReparseTimer) { clearTimeout(liveReparseTimer); liveReparseTimer = null; }
+  liveReparsePending = false;
+}
+
+const correctionHandlers = {
+  onShowCorrected: () => showCorrected('corrected'),
+  onShowAlternative: () => showCorrected('alternative'),
+  onShowOriginal: () => showOriginal(),
+  onClose: () => dismissFocus(),
+};
+
+// The preview currently on the canvas, if any. While a preview is showing the
+// canvas holds a re-parsed (corrected) sentence, whose node ids differ from
+// the original tree's.
+function activePreview() {
+  if (!focus) return null;
+  if (correctionMode === 'corrected') return focus.corrected || null;
+  if (correctionMode === 'alternative') return focus.alternativeCorrected || null;
+  return null;
+}
+
+function refreshCorrectionUi() {
+  if (!focus) {
+    renderCorrectionPanel(focusResult ? { result: focusResult } : null, correctionHandlers);
+    return;
+  }
+  renderCorrectionPanel({
+    label: focus.label,
+    mode: correctionMode,
+    canCorrect: Boolean(focus.edit),
+    alternativeCanCorrect: Boolean(focus.alternativeEdit),
+    suggestedFix: focus.suggestedFix || '',
+    correctedText: focus.corrected ? focus.corrected.text : '',
+    alternativeCorrectedText: focus.alternativeCorrected ? focus.alternativeCorrected.text : '',
+    loading: previewLoading,
+    result: focusResult,
+  }, correctionHandlers);
+}
+
+// Leave the correction: the panel closes and the canvas returns to the whole
+// tree. This is the explicit way out — clicking empty canvas only drops the
+// node selection, so a correction in progress is never thrown away by the
+// click that dismisses the keyboard.
+function dismissFocus() {
+  cancelLiveReparse();
+  focus = null;
+  correctionMode = 'original';
+  focusResult = null;
+  renderer.clearFocus();
+  refreshCorrectionUi();
+}
+
+function resetFocusState() {
+  dismissFocus();
+}
+
+// Select an error and zoom the canvas to the part of the tree the rule is
+// about. Only the original tree can start a correction.
+function enterFocus(id, detail) {
+  const payload = session?.payload;
+  if (!payload || !detail || detail.status !== 'error') return;
+  const plan = planFocus(payload, id);
+  if (!plan) return;
+  const remediation = detail.remediation || {};
+  focus = {
+    ...plan,
+    constraint: detail.constraint,
+    sentenceIndex: (payload.meta.target_sentence || 1) - 1,
+    context: contextWords(payload, plan.scopeId),
+    edit: remediation.edit || null,
+    alternativeEdit: remediation.alternative_edit || null,
+    suggestedFix: remediation.suggested_fix || '',
+    corrected: null,
+    alternativeCorrected: null,
+  };
+  correctionMode = 'original';
+  focusResult = null;
+  renderer.focusNode(plan.nodeId, plan.scopeId, plan.pair);
+  renderer.select(plan.nodeId);
+  log(`Zoom: ${detail.constraint} → subtree ${plan.scopeType} (${plan.pair.length} linked node(s))`);
+  refreshCorrectionUi();
+}
+
+// Rebuild the sentence with the suggested (or alternative) correction and show
+// the re-parsed tree. The learner's own text is never touched.
+async function showCorrected(variant = 'corrected') {
+  if (!focus || !session) return;
+  const isAlternative = variant === 'alternative';
+  const edit = isAlternative ? focus.alternativeEdit : focus.edit;
+  if (!edit) return;
+
+  const target = focus;
+  const cacheKey = isAlternative ? 'alternativeCorrected' : 'corrected';
+  const modeValue = isAlternative ? 'alternative' : 'corrected';
+  const logLabel = isAlternative ? 'Alternative corrected preview' : 'Corrected preview';
+
+  if (!target[cacheKey]) {
+    previewLoading = modeValue;
+    refreshCorrectionUi();
+    const text = applyEdit(session.payload, edit);
+    let cp = null;
+    try {
+      const out = await postParse(text);
+      if (!out.error) cp = out.payload;
+    } catch (_e) { /* handled below */ }
+    previewLoading = null;
+    // The learner may have picked another error while the preview was built.
+    if (focus !== target) return;
+    if (!cp) {
+      focusResult = { kind: 'still', message: 'Could not build the preview tree right now.' };
+      refreshCorrectionUi();
+      return;
+    }
+    applyStatuses(cp.tree, cp.node_details, cp.summary);
+    const expected = expectedScopeWords(session.payload, target.scopeId, edit);
+    target[cacheKey] = {
+      payload: cp,
+      text,
+      scopeId: expected ? findScopeNode(cp, target.scopeType, expected) : null,
+    };
+  }
+
+  correctionMode = modeValue;
+  focusResult = null;
+  renderer.setTree(target[cacheKey].payload.tree);
+  if (target[cacheKey].scopeId) renderer.focusSubtree(target[cacheKey].scopeId, []);
+  log(`${logLabel}: showing re-parsed tree (the learner's text is unchanged)`);
+  refreshCorrectionUi();
+}
+
+function showOriginal() {
+  if (!focus || !session) return;
+  correctionMode = 'original';
+  renderer.setTree(session.payload.tree);
+  renderer.focusNode(focus.nodeId, focus.scopeId, focus.pair);
+  renderer.select(focus.nodeId);
+  refreshCorrectionUi();
+}
+
+// Called after a re-parse while a correction target is active: is the error the
+// learner was working on still there, or did their own correction fix it?
+function recheckFocus(payload) {
+  const prev = focus;
+  if (!prev) return;
+  const hit = findTargetError(payload, prev);
+  if (hit) {
+    handleNodeSelect(hit.detail.id); // re-zooms on the error's new location
+    focusResult = {
+      kind: 'still',
+      message: 'Still flagged — re-read the explanation and try again.',
+    };
+    refreshCorrectionUi();
+    log(`Re-check: ${prev.constraint} re-identified by constraint + context (score ${hit.score.toFixed(2)})`);
+    return;
+  }
+  const left = (payload.summary.violations || []).length;
+  focus = null;
+  correctionMode = 'original';
+  focusResult = {
+    kind: 'fixed',
+    message: left
+      ? `That error is fixed. ${left} other issue(s) remain — click a red node to continue.`
+      : 'That error is fixed — this sentence is clean now.',
+  };
+  // The inspector described the error that is gone: it steps aside so the
+  // correction panel carries the message on its own.
+  renderNodeDetail(null, null, null);
+  renderer.clearFocus();
+  refreshCorrectionUi();
+  log(`Re-check: ${prev.constraint} no longer fires — ${left} issue(s) left`);
+}
 
 // ---------------------------------------------------------------------------
 // Rail navigation — exactly one active destination
@@ -167,6 +376,8 @@ export function boot() {
     lastChatTitle: () => lastAnalyzedText || '',
     setWorkspaceView,
     setOverlayView,
+    showModelTree: showLessonModelTree,
+    clearModelTree: clearLessonModelTree,
   });
   initResizers();
   syncInputClearBtn();
@@ -365,8 +576,14 @@ function teardownWorkspace() {
   // Syntax Builder: the canvas, its floating controls, and the inline editor
   // or context menu it may have opened.
   closeBuilderView();
+  // A lesson may have left the valid benepar tree on #treeCanvas; it belongs to
+  // the lesson, not to the next workspace mode.
+  clearLessonModelTree();
   // The canvas overlay and the node inspector belong to the Grammar Tutor.
   clearDiagnostics();
+  // ...and so does the correction panel: a correction never survives a
+  // switch to another workspace module.
+  resetFocusState();
   // Back to the plain analyzer surfaces.
   const tree = document.querySelector('#treeCanvas');
   const builder = document.querySelector('#builderCanvas');
@@ -823,6 +1040,9 @@ function wireEvents() {
     historySpans = [];
     renderInputHighlights(ta.value);
     syncInputClearBtn();
+    // A correction is open: re-parse as the learner types so the tree (and
+    // the re-check of the error) follow the edit.
+    if (focus) scheduleLiveReparse();
   });
   // Locked passages (session.sentences.length > 1) render one interactive
   // span per sentence in the highlight overlay. Inspecting a different
@@ -864,7 +1084,9 @@ function wireEvents() {
     }
     const changed = ta.value !== lastAnalyzedText;
     returnToLocked();
-    if (changed) runPipeline();
+    // With a correction open the re-analysis has to look at the same sentence
+    // the correction belongs to, otherwise the error could not be re-checked.
+    if (changed) runPipeline(focus ? { index: focus.sentenceIndex } : {});
   });
   ta.addEventListener('click', activateSentenceAtCaret);
   ta.addEventListener('keydown', (e) => {
@@ -1050,6 +1272,7 @@ function startNewSession() {
   renderer.clear();
   clearOverlay();
   renderNodeDetail(null, null, null);
+  resetFocusState();
 
   document.querySelector('#emptyTreeState')?.classList.remove('hidden');
 
@@ -1099,6 +1322,76 @@ async function postParse(text, index = null) {
 function setQuizMode(active) {
   quizMode = active;
   if (renderer) renderer.setInteractive(!active);
+}
+
+// ---------------------------------------------------------------------------
+// Lessons: the read-only model tree
+// ---------------------------------------------------------------------------
+// True while #treeCanvas holds a lesson model tree. The tree can outlive the
+// Model state (Practice hides the canvas but the renderer keeps the tree), so
+// teardown uses this flag to clear a lesson tree without wiping the Grammar
+// Tutor's own analysis when an unrelated panel opens.
+let lessonModelActive = false;
+// Module lessons render a read-only parsed tree on #treeCanvas. Legacy
+// single-unit lessons may still hand #builderCanvas to the builder; this is the
+// counterpart that hands the shared canvas back to the static renderer without
+// touching the lesson panels or the tutor's history/session state. Callers
+// decide whether to paint a tree or clear it.
+function prepareLessonModelCanvas() {
+  const treeCanvas = document.querySelector('#treeCanvas');
+  const builderCanvas = document.querySelector('#builderCanvas');
+  const controls = document.querySelector('#canvasControls');
+  const hint = document.querySelector('#builderHint');
+  const target = document.querySelector('#builderTarget');
+  const empty = document.querySelector('#emptyTreeState');
+  if (builderCanvas) builderCanvas.hidden = true;
+  if (treeCanvas) {
+    treeCanvas.hidden = false;
+    treeCanvas.setAttribute('aria-label', 'Parsed syntax tree (read-only)');
+  }
+  if (controls) controls.hidden = true;
+  if (hint) hint.hidden = true;
+  if (target) target.hidden = true;
+  if (empty) empty.classList.add('hidden');
+  document.querySelector('.builder-toast')?.classList.remove('show');
+  document.querySelector('#loadingIndicator')?.classList.remove('visible');
+  document.body.classList.remove('builder-active');
+  document.body.classList.add('lesson-model');
+  clearOverlay();
+  if (renderer) renderer.setInteractive(false);
+}
+
+function showLessonModelTree(payload, focusId = null) {
+  if (!payload || !payload.tree || !renderer) return;
+  prepareLessonModelCanvas();
+  lessonModelActive = true;
+  applyStatuses(payload.tree, payload.node_details || {}, payload.summary || {});
+  renderer.setTree(payload.tree);
+  if (focusId) renderer.select(focusId);
+  // The canvas was hidden while the builder owned it; refit once the browser
+  // has had a chance to lay the visible canvas out.
+  requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+}
+
+// Drop the lesson model tree. Used when switching examples/sections and when
+// the lesson view is torn down, so no ghost tree survives either swap. Returns
+// true when a tree was actually cleared. `force` also clears the Grammar
+// Tutor's tree when a lesson is opening over it; teardown omits it so opening
+// a side panel does not wipe an analysis the tutor should keep.
+function clearLessonModelTree({ force = false } = {}) {
+  if (!renderer) return false;
+  if (!force && !lessonModelActive) return false;
+  prepareLessonModelCanvas();
+  renderer.clear();
+  renderer.setInteractive(!quizMode);
+  document.body.classList.remove('lesson-model');
+  lessonModelActive = false;
+  const treeCanvas = document.querySelector('#treeCanvas');
+  if (treeCanvas) {
+    treeCanvas.setAttribute('aria-label',
+      'Interactive syntax tree; click a node, or use arrow keys and Enter');
+  }
+  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -1226,6 +1519,7 @@ async function analyzeForQuiz(text, index = null) {
   clearOverlay();
   renderer.select(null);
   renderNodeDetail(null, null, null);
+  resetFocusState();
   let payload;
   try {
     const out = await postParse(clean, index);
@@ -1254,7 +1548,12 @@ async function analyzeForQuiz(text, index = null) {
 }
 
 async function runPipeline(opts = {}) {
-  if (state === STATES.PROCESSING) return;
+  if (state === STATES.PROCESSING) {
+    // A live re-parse that landed while the previous run was still in flight
+    // is re-queued instead of dropped, so the tree always catches up.
+    if (opts.isLive) liveReparsePending = true;
+    return;
+  }
   // Only the Grammar Tutor runs the analysis pipeline: the Lessons module
   // and the Syntax Builder own the workspace in their own way.
   if (workspaceView !== 'tutor') return;
@@ -1264,6 +1563,10 @@ async function runPipeline(opts = {}) {
     await executePipeline(opts);
   } finally {
     setLoadingIndicator(false);
+    if (liveReparsePending) {
+      liveReparsePending = false;
+      scheduleLiveReparse();
+    }
   }
 }
 
@@ -1277,6 +1580,13 @@ async function executePipeline(opts = {}) {
   clearOverlay();
   renderer.select(null);
   renderNodeDetail(null, null, null);
+
+  // A fresh analysis replaces whatever correction was on screen: sentence
+  // navigation and a replay start from a clean slate. A live re-parse keeps
+  // the correction target — that is the one run whose whole point is to
+  // re-check it.
+  if (opts.isSentenceNav || opts.isReplay) resetFocusState();
+  else if (!focus) refreshCorrectionUi();
 
   const text = document.querySelector('#inputText').value.trim();
   if (!text) {
@@ -1339,7 +1649,7 @@ async function executePipeline(opts = {}) {
     syncInputClearBtn();
   }
   const spans = buildHighlightSpans(text, payload);
-  if (opts.isSentenceNav) {
+  if (opts.isSentenceNav || opts.mergeSpans) {
     historySpans = mergeHighlightSpans(historySpans, spans);
   } else {
     historySpans = spans;
@@ -1355,7 +1665,18 @@ async function executePipeline(opts = {}) {
   transition(STATES.VIEWING, 'output ready -> viewing');
   log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
 
-  const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay);
+  // The correction target (if any) is re-checked against the new analysis:
+  // the learner may have fixed the error with their own edit. A re-parse
+  // invalidates the preview too — the canvas shows the learner's own
+  // sentence again.
+  if (focus) {
+    correctionMode = 'original';
+    focus.corrected = null;
+    focus.alternativeCorrected = null;
+    recheckFocus(payload);
+  }
+
+  const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay || opts.isLive);
   // History is account-only: guests are never recorded.
   if (!isNavigation && !isGuest && supabase && clerk?.user?.id && !recordedTexts.has(text)) {
     try {
@@ -1525,7 +1846,8 @@ function applyStatuses(tree, details, summary) {
     for (const c of node.children || []) walk(c);
   };
   walk(tree);
-  if (summary?.verdict === 'ungrammatical'
+  const ungrammatical = summary?.valid === false || summary?.verdict === 'ungrammatical';
+  if (ungrammatical
       && !Object.values(details).some((detail) => detail?.status === 'error')) {
     tree.edgeResult = { status: 'error' };
   }
@@ -1537,14 +1859,20 @@ function handleNodeSelect(id) {
   if (workspaceView !== 'tutor') return;
   if (!id || !session) {
     if (session) {
+      // Empty canvas: the node selection goes, the open correction stays —
+      // the learner may still be typing the fix for it.
       renderer.select(null);
       renderNodeDetail(null, null, null);
       transition(STATES.VIEWING, 'selection cleared');
     }
     return;
   }
-  const detail = session.payload.node_details[id];
-  const node = session.payload.nodes[id];
+  // While a correction preview is on the canvas the tree belongs to the
+  // re-parsed sentence, so the node is looked up in that payload.
+  const preview = activePreview();
+  const payload = preview ? preview.payload : session.payload;
+  const detail = payload.node_details[id];
+  const node = payload.nodes[id];
   if (!node || !detail) return;
   renderNodeDetail(session, detail, node);
   // Keep the fresh detail card visible in the bottom-right explain pane
@@ -1552,6 +1880,10 @@ function handleNodeSelect(id) {
   document.querySelector('#explainNode')
     ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   renderer.select(id);
+  // An error node is the entry point of the corrective feedback: it zooms the
+  // canvas to the rule's scope and opens the correction panel. A preview tree
+  // never starts a new correction — the original error stays the target.
+  if (!preview && detail.status === 'error') enterFocus(id, detail);
   if (state !== STATES.PROCESSING) {
     transition(STATES.EXPLORING, 'user selects syntax node (cache hit \u2014 no HTTP request)');
     log(`Exploring: cached XAI for node ${node.type} \u2014 ${detail.constraint} (${detail.status})`);
