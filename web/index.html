@@ -17,10 +17,12 @@
   <div class="app-shell">
     <div id="appSidebarBackdrop" class="app-sidebar-backdrop">
       <aside id="appSidebar" class="app-sidebar" aria-label="Main menu">
-        <div class="app-sidebar-top">
-          <span id="sidebarBrandBtn" class="sidebar-brand">
-            <span class="brand-monogram" aria-hidden="true">S</span>
-            <span class="brand-title app-brand-name">SynTutor</span>
+        <div class="app-sidebar-top sidebar-header">
+          <span id="sidebarBrandBtn" class="sidebar-brand brand-logo-btn">
+            <span class="sidebar-icon brand-icon" aria-hidden="true">
+              <span class="brand-monogram">S</span>
+            </span>
+            <span class="brand-title app-brand-name sidebar-label">SynTutor</span>
           </span>
           <button id="sidebarToggleBtn" class="menu-btn sidebar-toggle" type="button" aria-label="Expand sidebar" title="Expand sidebar" aria-expanded="false" aria-controls="appSidebar">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -38,117 +40,145 @@
         </div>
         <nav class="app-sidebar-nav">
           <button id="newSessionBtn" class="sidebar-item active" type="button" data-view="tutor" aria-label="Syntax Generator" title="Syntax Generator">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 20h9"></path>
-              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-            </svg>
-            <span>Syntax Generator</span>
+            <span class="sidebar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </span>
+            <span class="sidebar-label">Syntax Generator</span>
           </button>
-          <button id="headerHistoryBtn" class="sidebar-item" type="button" aria-label="Open analysis history" title="History" hidden>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            <span>History</span>
+          <button id="headerHistoryBtn" class="sidebar-item is-guest-hidden" type="button" data-view="history" aria-label="Open analysis history" title="History" hidden>
+            <span class="sidebar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </span>
+            <span class="sidebar-label">History</span>
           </button>
           <button class="sidebar-item" type="button" data-view="lessons" title="Lessons">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-            </svg>
-            <span>Lessons</span>
+            <span class="sidebar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </span>
+            <span class="sidebar-label">Lessons</span>
           </button>
           <button class="sidebar-item" type="button" data-view="builder" title="Syntax Builder">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="4" r="2"></circle>
-              <circle cx="5" cy="19" r="2"></circle>
-              <circle cx="19" cy="19" r="2"></circle>
-              <line x1="12" y1="6" x2="12" y2="11"></line>
-              <line x1="12" y1="11" x2="5" y2="17"></line>
-              <line x1="12" y1="11" x2="19" y2="17"></line>
-            </svg>
-            <span>Syntax Builder</span>
+            <span class="sidebar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="4" r="2"></circle>
+                <circle cx="5" cy="19" r="2"></circle>
+                <circle cx="19" cy="19" r="2"></circle>
+                <line x1="12" y1="6" x2="12" y2="11"></line>
+                <line x1="12" y1="11" x2="5" y2="17"></line>
+                <line x1="12" y1="11" x2="19" y2="17"></line>
+              </svg>
+            </span>
+            <span class="sidebar-label">Syntax Builder</span>
           </button>
           <button class="sidebar-item" type="button" data-view="leaderboard" title="Leaderboard">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="20" x2="18" y2="10"></line>
-              <line x1="12" y1="20" x2="12" y2="4"></line>
-              <line x1="6" y1="20" x2="6" y2="14"></line>
-              <path d="M3 20h18"></path>
-            </svg>
-            <span>Leaderboard</span>
+            <span class="sidebar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+                <path d="M3 20h18"></path>
+              </svg>
+            </span>
+            <span class="sidebar-label">Leaderboard</span>
           </button>
           <button class="sidebar-item" type="button" data-view="achievements" title="Achievements">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="6"></circle>
-              <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path>
-            </svg>
-            <span>Achievements</span>
+            <span class="sidebar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="6"></circle>
+                <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path>
+              </svg>
+            </span>
+            <span class="sidebar-label">Achievements</span>
           </button>
         </nav>
         <div id="quizPanel" class="sidebar-quiz" hidden></div>
+        <!-- The footer: two consistent stacked rows — the theme toggle and the
+             account chip — so nothing morphs from a column into a row while
+             the rail animates. -->
         <div class="app-sidebar-foot">
-          <button id="themeToggleBtn" class="menu-btn" type="button" aria-label="Toggle dark mode" title="Dark / Light mode">
-            <svg id="themeIcon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
+          <span class="rail-divider" aria-hidden="true"></span>
+          <button id="themeToggleBtn" class="sidebar-item" type="button" aria-label="Toggle dark mode" title="Dark / Light mode">
+            <span class="sidebar-icon" aria-hidden="true">
+              <svg id="themeIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </span>
+            <span class="sidebar-label">Light / Dark</span>
           </button>
           <span class="profile-anchor">
-            <button id="identityChip" class="identity-chip" type="button" title="Log in / Sign in" aria-haspopup="menu">
-              <span id="identityAvatar" class="identity-avatar guest" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
+            <button id="identityChip" class="identity-chip profile-chip sidebar-item" type="button" title="Log in / Sign in" aria-haspopup="menu">
+              <span class="sidebar-icon profile-icon" aria-hidden="true">
+                <span id="identityAvatar" class="identity-avatar profile-avatar guest">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </span>
               </span>
-              <span id="identityLabel">Guest</span>
+              <span id="identityLabel" class="sidebar-label">Guest</span>
             </button>
-            <div id="profileMenu" class="profile-menu" role="menu" aria-hidden="true">
-              <div id="profileMenuMain" class="profile-menu-view">
-                <div id="profileStats" class="profile-stats" role="presentation"></div>
-                <button id="profileAddAccount" class="profile-menu-item" type="button" role="menuitem" hidden>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="8.5" cy="7" r="4"></circle>
-                    <line x1="20" y1="8" x2="20" y2="14"></line>
-                    <line x1="23" y1="11" x2="17" y2="11"></line>
-                  </svg>
-                  Add Account
-                </button>
-                <button id="profileSwitchAccount" class="profile-menu-item" type="button" role="menuitem" hidden>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M8 3L4 7l4 4"></path>
-                    <path d="M4 7h16"></path>
-                    <path d="M16 21l4-4-4-4"></path>
-                    <path d="M20 17H4"></path>
-                  </svg>
-                  Switch Account
-                </button>
-                <div id="profileMenuDivider" class="profile-menu-divider" hidden></div>
-                <button id="profileLogout" class="profile-menu-item danger" type="button" role="menuitem" hidden>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                    <polyline points="16 17 21 12 16 7"></polyline>
-                    <line x1="21" y1="12" x2="9" y2="12"></line>
-                  </svg>
-                  Log Out
-                </button>
-                <button id="profileSignIn" class="profile-menu-item" type="button" role="menuitem">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-                    <polyline points="10 17 15 12 10 7"></polyline>
-                    <line x1="15" y1="12" x2="3" y2="12"></line>
-                  </svg>
-                  Log In / Sign Up
-                </button>
-              </div>
-              <div id="profileAccounts" class="profile-menu-view" aria-hidden="true" hidden>
-                <div id="profileAccountsList" class="profile-accounts-list"></div>
-              </div>
-            </div>
           </span>
         </div>
       </aside>
+
+      <!-- The account menu lives outside the rail: the rail clips its own
+           overflow while the width animates, and the popover opens beside it. -->
+      <div id="profileMenu" class="profile-menu" role="menu" aria-hidden="true">
+        <div id="profileMenuMain" class="profile-menu-view">
+          <!-- A minimal identity label, not a card. -->
+          <div class="profile-menu-header">
+            <span class="profile-menu-name" id="profileMenuName">Learner</span>
+            <span class="profile-menu-email" id="profileMenuEmail"></span>
+          </div>
+          <button id="profileAddAccount" class="profile-menu-item" type="button" role="menuitem" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="8.5" cy="7" r="4"></circle>
+              <line x1="20" y1="8" x2="20" y2="14"></line>
+              <line x1="23" y1="11" x2="17" y2="11"></line>
+            </svg>
+            Add Account
+          </button>
+          <button id="profileSwitchAccount" class="profile-menu-item" type="button" role="menuitem" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 3L4 7l4 4"></path>
+              <path d="M4 7h16"></path>
+              <path d="M16 21l4-4-4-4"></path>
+              <path d="M20 17H4"></path>
+            </svg>
+            Switch Account
+          </button>
+          <div id="profileMenuDivider" class="profile-menu-divider" hidden></div>
+          <button id="profileLogout" class="profile-menu-item danger" type="button" role="menuitem" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            Log Out
+          </button>
+          <button id="profileSignIn" class="profile-menu-item" type="button" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            Log In / Sign Up
+          </button>
+        </div>
+        <div id="profileAccounts" class="profile-menu-view" aria-hidden="true" hidden>
+          <div id="profileAccountsList" class="profile-accounts-list"></div>
+        </div>
+      </div>
 
       <!-- Left sub-panels: slide out directly beside the rail (History stays
            behind its own ID so every existing listener keeps working). -->
@@ -254,43 +284,129 @@
 
     <div id="lessonsOverlay" class="lessons-overlay">
       <div class="lessons-sheet" role="dialog" aria-label="Lessons">
-        <div class="lessons-main">
-          <!-- Catalog toolbar: the inline category expander on the left, the
-               completion counter on the right. -->
-          <div class="sq-catalog-toolbar" id="lessonsToolbar">
-            <div class="sq-cat" id="lessonsCategory"></div>
-            <p id="lessonsSummary" class="lessons-summary"></p>
+        <div class="lessons-main sq-catalog-container">
+          <!-- The content body: the toolbar and the card grid. The page header
+               above it is rendered by tree-quiz.js. -->
+          <div class="sq-catalog-content">
+            <!-- Catalog toolbar: the inline category expander on the left, the
+                 completion counter on the right. -->
+            <div class="sq-catalog-toolbar" id="lessonsToolbar">
+              <div class="sq-cat" id="lessonsCategory"></div>
+              <p id="lessonsSummary" class="lessons-summary"></p>
+            </div>
+            <div id="lessonsGrid" class="sq-catalog-grid"></div>
           </div>
-          <div id="lessonsGrid" class="sq-catalog-grid"></div>
         </div>
       </div>
     </div>
 
-    <div id="authModalBackdrop" class="modal-backdrop">
-      <div class="auth-modal" role="dialog" aria-modal="true" aria-label="Log in or sign in">
-        <form id="authModalForm" class="auth-modal-form">
-          <div class="step-auth">
-            <input type="email" id="authEmail" class="modal-input" placeholder="Email address" autocomplete="email" required />
-            <div class="password-field">
-              <input type="password" id="authPassword" class="modal-input" placeholder="Password" autocomplete="current-password" required />
-              <button type="button" class="password-toggle" aria-label="Show password" aria-pressed="false">
-                <svg class="eye-open" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                <svg class="eye-off" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+    <!-- Leaderboard: a full-bleed workspace view, docked next to the rail —
+     the same surface the lessons catalog uses, not a centered dialog. -->
+    <div id="leaderboardView" class="workspace-view" aria-hidden="true">
+      <header class="view-header leaderboard-header">
+        <h2 class="view-title">Leaderboard</h2>
+      </header>
+      <div class="leaderboard-content-wrapper">
+        <!-- The podium: the three strongest learners, side by side. -->
+        <div class="podium-grid" id="leaderboardPodium"></div>
+        <section class="standings-section">
+          <h2 class="standings-title">Standings</h2>
+          <div class="standings-table-container">
+            <table class="standings-table">
+              <thead>
+                <tr>
+                  <th scope="col">Rank</th>
+                  <th scope="col">Learner</th>
+                  <th scope="col" class="num">Trees Built</th>
+                  <th scope="col" class="num">Accuracy</th>
+                  <th scope="col" class="num">XP</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboardRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Achievements: a full-bleed workspace view — the same page frame as the
+         leaderboard, with the category filters above the card grid. -->
+    <div id="achievementsView" class="workspace-view" aria-hidden="true">
+      <header class="view-header achievements-header">
+        <h2 class="view-title">Achievements</h2>
+        <div class="achievements-xp-tracker">
+          <div class="xp-tracker-label" id="achievementsProgressLabel">Sign in to track your progress.</div>
+          <div class="xp-progress-bar-track">
+            <div class="xp-progress-bar-fill" id="achievementsProgressFill"></div>
+          </div>
+        </div>
+      </header>
+      <div class="achievements-content-wrapper">
+        <div class="achievements-toolbar">
+          <!-- The category selector unfurls inline, lessons-catalog style. -->
+          <div class="expanding-cat-wrapper" id="achievementsCatExpander">
+            <button class="cat-trigger-pill" id="achievementsCatTrigger" type="button" aria-expanded="false" aria-haspopup="true">
+              <span class="cat-trigger-label">All</span>
+              <svg class="cat-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+            <div class="expanding-cat-pills" id="achievementsCatPills">
+              <button class="cat-pill active" type="button" data-category="all">All</button>
+              <button class="cat-pill" type="button" data-category="basics">Syntax Basics</button>
+              <button class="cat-pill" type="button" data-category="speed">Speed &amp; Accuracy</button>
+              <button class="cat-pill" type="button" data-category="streaks">Streaks</button>
+              <button class="cat-pill" type="button" data-category="mastery">Mastery</button>
+            </div>
+          </div>
+          <div class="achievements-stats-counter" id="achievementsStatsCounter">0 of 0 unlocked · 0% completed</div>
+        </div>
+        <div class="achievements-grid" id="achievementsGrid"></div>
+      </div>
+    </div>
+
+    <!-- The one auth dialog: the sidebar login and the lessons gateway use
+         this very same modal, only the framing changes. -->
+    <div id="authModal" class="auth-modal-backdrop" hidden>
+      <div class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+        <button id="authModalCloseBtn" class="auth-modal-close" type="button" aria-label="Close modal">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+
+        <h3 id="authModalTitle" class="auth-modal-title">Sign in to SynTutor</h3>
+        <p id="authModalSubtitle" class="auth-modal-subtitle">Save your progress, sync syntax trees, and view rankings.</p>
+
+        <!-- Mode Switcher Tabs -->
+        <div class="auth-tab-group">
+          <button id="authTabSignIn" class="auth-tab-pill active" type="button">Sign In</button>
+          <button id="authTabRegister" class="auth-tab-pill" type="button">Create Account</button>
+        </div>
+
+        <!-- Unified Form -->
+        <form id="authForm" class="auth-form" autocomplete="on">
+          <div class="auth-field-group">
+            <label for="authEmailInput">EMAIL</label>
+            <input id="authEmailInput" type="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="auth-field-group">
+            <label for="authPasswordInput">PASSWORD</label>
+            <div class="auth-password-wrapper">
+              <input id="authPasswordInput" type="password" placeholder="At least 6 characters" required />
+              <button type="button" id="authTogglePasswordBtn" class="auth-password-eye" aria-label="Toggle password visibility">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
               </button>
             </div>
             <div id="authPasswordReqs" class="password-reqs" hidden></div>
           </div>
-          <div class="code-field" style="display:none">
-            <input type="text" id="authCode" class="modal-input" placeholder="6-digit verification code" inputmode="numeric" />
-          </div>
-          <div class="modal-actions">
-            <button type="submit" id="authSignInBtn" class="modal-btn-primary">Sign In</button>
-            <button type="button" id="authSignUpBtn" class="modal-btn-secondary">Register</button>
-          </div>
-          <div id="authModalStatus" class="msg"></div>
+
+          <p id="authModalStatus" class="auth-modal-status" hidden></p>
+
+          <button id="authSubmitBtn" class="auth-primary-btn" type="submit">Sign In</button>
         </form>
-        <div class="modal-close-row">
-          <button id="authContinueGuestBtn" class="modal-ghost-btn" type="button">Continue as guest</button>
+
+        <!-- Bottom Switcher Links -->
+        <div class="auth-footer-links">
+          <button id="authSwitchModeBtn" class="auth-text-link" type="button">Need an account? Create one</button>
+          <button id="authDismissGuestBtn" class="auth-text-link muted" type="button">Continue as guest</button>
         </div>
       </div>
     </div>

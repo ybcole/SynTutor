@@ -4,6 +4,10 @@
   --surface: #ffffff;
   --ink: #1e2029;
   --muted: #64748b;
+  /* Semantic aliases: the lesson chrome names its greys after their role. */
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --accent-border: rgba(99, 102, 241, 0.25);
   --accent: #6d5ae6;
   --accent-strong: #5946d4;
   --accent-soft: #efeafc;
@@ -15,6 +19,8 @@
   --xp: #d97706;
   --border: #e2e8f0;
   --card-border: #e2e8f0;
+  /* Connector lines and other quiet borders: visible, never faint. */
+  --border-subtle: #c3cddb;
   --radius: 12px;
   --radius-sm: 8px;
   --header-bg: #ffffff;
@@ -27,6 +33,7 @@
   --focus-ring: color-mix(in srgb, var(--accent) 22%, transparent);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.14);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.28);
   --ease: cubic-bezier(0.33, 0.6, 0.4, 1);
   --dur-fast: 0.2s;
   --dur: 0.3s;
@@ -40,11 +47,15 @@
   --surface: #1e222d;
   --ink: #f1f5f9;
   --muted: #94a3b8;
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --accent-border: color-mix(in srgb, #8b7cf1 32%, transparent);
   --accent: #8b7cf1;
   --accent-strong: #a295ff;
   --accent-soft: rgba(109, 90, 230, 0.16);
   --border: #2e3442;
   --card-border: #2e3442;
+  --border-subtle: rgba(255, 255, 255, 0.22);
   --header-bg: #13151f;
   --header-text: #f8fafc;
   --header-border: rgba(255, 255, 255, 0.08);
@@ -54,6 +65,7 @@
   --empty-icon: #64748b;
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.6);
   color-scheme: dark;
 }
 
@@ -127,7 +139,7 @@ button:disabled {
   --rail-dock: 60px;
   --subpanel-w: 336px;
 }
-.app-shell:has(.app-sidebar.expanded) { --rail-w: 248px; }
+.app-shell:has(.app-sidebar.expanded) { --rail-w: 240px; }
 
 /* --------------------------------------------------------------------------
    Left rail: one uniform width transition
@@ -148,6 +160,235 @@ button:disabled {
 }
 
 /* --------------------------------------------------------------------------
+   The History rail item is an account-only feature: for a guest session it
+   is hidden outright, so the column closes up without a gap or a ghost
+   border where it used to sit.
+   -------------------------------------------------------------------------- */
+#appSidebar .sidebar-item[data-view="history"].is-guest-hidden {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Left rail: a fixed icon slot, so the icons never move
+   --------------------------------------------------------------------------
+   The icon column is anchored. A 40px slot starts 10px from the rail's left
+   edge in BOTH states: collapsed (60px) it reads as a centred column, expanded
+   (240px) the label simply unfurls to the right of the very same slot. The
+   icons therefore never travel a single pixel sideways. */
+@media (min-width: 761px) {
+  #appSidebar {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    padding: 12px 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* width, min-width and max-width share one curve, so the rail opens in a
+       single continuous motion instead of three competing ones. */
+    transition:
+      width 220ms cubic-bezier(0.2, 0, 0, 1),
+      min-width 220ms cubic-bezier(0.2, 0, 0, 1),
+      max-width 220ms cubic-bezier(0.2, 0, 0, 1);
+    contain: layout style;
+    will-change: width;
+  }
+  #appSidebar.expanded {
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
+  }
+
+  /* The header row stays a row in both states. */
+  #appSidebar .app-sidebar-top {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  #appSidebar .sidebar-brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 0;
+    padding: 0;
+  }
+
+  /* Every rail row: the same height, the same padding-free box, the same
+     radius — an active destination highlights as a clean 40px pill. */
+  #appSidebar .sidebar-item {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    min-height: 40px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 0;
+    margin: 2px 0;
+    gap: 0;
+    text-decoration: none;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+
+  /* The fixed icon slot: 40px wide, never shrinking, always the same
+     distance from the rail's left edge. */
+  #appSidebar .sidebar-item .sidebar-icon,
+  #appSidebar .brand-logo-btn .sidebar-icon {
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  /* The glyph inside the slot keeps its own size, dead centre. */
+  #appSidebar .sidebar-item svg,
+  #appSidebar .brand-logo-btn svg,
+  #appSidebar .sidebar-toggle svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: auto;
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+
+  /* The labels: clipped, faded out while collapsed, faded back in with a
+     short delay once the rail has opened — never a reflow, never a pop. */
+  #appSidebar .sidebar-label {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    padding-left: 6px;
+    opacity: 0;
+    transform: translateX(-6px);
+    pointer-events: none;
+    transition: opacity 120ms ease, transform 120ms ease;
+  }
+  #appSidebar.expanded .sidebar-label {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    transition: opacity 180ms ease 50ms, transform 180ms ease 50ms;
+  }
+
+  /* The brand: a 40px monogram slot and a title that fades in with the rail. */
+  #appSidebar .brand-logo-btn .brand-icon {
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  #appSidebar .brand-monogram {
+    margin: 0 auto;
+  }
+  #appSidebar .brand-title {
+    font-size: 18px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  /* The collapse toggle only exists while the rail is open — collapsed it
+     would steal the icon's lane, so it is not rendered at all. */
+  #appSidebar .sidebar-toggle {
+    flex: 0 0 auto;
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 120ms ease;
+  }
+  #appSidebar.expanded .sidebar-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    pointer-events: auto;
+    animation: sidebar-fade-in 180ms ease 50ms;
+  }
+  @keyframes sidebar-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* The footer: two stacked rows, always. The theme toggle and the account
+     chip are rail rows like every other destination, so nothing morphs from a
+     column into a row while the width animates. */
+  #appSidebar .app-sidebar-foot {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    width: 100%;
+    margin-top: auto;
+    border-top: none;
+    padding-top: 0;
+  }
+  #appSidebar .profile-anchor {
+    display: block;
+    width: 100%;
+  }
+  #appSidebar .profile-chip {
+    justify-content: flex-start;
+  }
+  /* The account avatar: a 32px circle inside the same 40px lane. */
+  #appSidebar .profile-icon {
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  #appSidebar .profile-avatar {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+  }
+  /* The separator above the footer: a short rule, centred. */
+  .rail-divider { display: none; }
+  #appSidebar:not(.expanded) .rail-divider {
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--border);
+    margin: 8px auto;
+    border: none;
+    transition: width 220ms ease;
+  }
+  #appSidebar.expanded .rail-divider {
+    display: block;
+    width: calc(100% - 12px);
+    height: 1px;
+    background: var(--border);
+    margin: 8px auto;
+    border: none;
+    transition: width 220ms ease;
+  }
+
+  /* The navigation list: one tidy rhythm. */
+  #appSidebar .app-sidebar-nav { gap: 4px; }
+}
+
+/* --------------------------------------------------------------------------
    Rail active state — exactly one destination at a time
    -------------------------------------------------------------------------- */
 /* main.js owns the `active` class and keeps it exclusive: the Syntax
@@ -155,8 +396,8 @@ button:disabled {
    never highlight at the same time, and the active one is always the module
    the workspace is currently showing. */
 .sidebar-item.active {
-  background: var(--accent-soft);
-  color: var(--accent-strong);
+  background: var(--accent-soft, rgba(99, 102, 241, 0.15));
+  color: var(--accent-strong, #818cf8);
 }
 .sidebar-item.active svg {
   color: var(--accent-strong);
@@ -222,21 +463,34 @@ button:disabled {
   align-items: center;
   justify-content: flex-start;
 }
+/* The account chip is a rail row like every other destination: the pill
+   chrome is gone, the avatar keeps its own circle. */
+#appSidebar .profile-chip {
+  max-width: none;
+  padding: 0;
+  gap: 0;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  font-size: inherit;
+}
 
 .profile-menu {
-  position: absolute;
-  /* Opens to the right of the rail, anchored at the bottom account chip. */
-  bottom: 0;
+  /* The menu sits outside the rail (the rail clips its own overflow while the
+     width animates), so it is anchored to the viewport: just beside the
+     collapsed rail, level with the account chip. */
+  position: fixed;
+  bottom: 14px;
   top: auto;
-  left: calc(100% + 10px);
+  left: 70px;
   transform-origin: bottom left;
-  z-index: 210;
-  min-width: 215px;
-  background: var(--panel);
-  border: 1px solid var(--card-border);
+  z-index: 232;
+  min-width: 200px;
+  padding: 8px;
   border-radius: 12px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
-  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -253,25 +507,51 @@ button:disabled {
   transform: none;
 }
 .profile-menu-view { display: flex; flex-direction: column; gap: 2px; }
+/* The identity label: a quiet header, never a card — and no rule between
+   it and the menu items. */
+.profile-menu-header {
+  padding: 8px 12px 4px 12px;
+  border-bottom: none !important;
+  margin-bottom: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.profile-menu-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.profile-menu-email {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
 .profile-menu-item[hidden],
 .profile-menu-view[hidden] { display: none; }
 .profile-menu-item {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
   width: 100%;
-  padding: 8px 10px;
-  border: none;
-  border-radius: var(--radius-sm);
-  background: transparent;
-  color: var(--ink);
-  font-family: inherit;
+  padding: 8px 12px;
+  border-radius: 8px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  font-family: inherit;
   text-align: left;
   cursor: pointer;
   white-space: nowrap;
-  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  transition: background var(--dur) var(--ease);
 }
 .profile-menu-item svg {
   flex: 0 0 auto;
@@ -280,14 +560,17 @@ button:disabled {
   color: var(--muted);
   transition: color var(--dur-fast) var(--ease);
 }
-.profile-menu-item:hover { background: var(--header-hover); }
-.profile-menu-item.danger { color: var(--err); }
-.profile-menu-item.danger svg { color: var(--err); }
-.profile-menu-item.danger:hover { background: color-mix(in srgb, var(--err) 10%, transparent); }
+.profile-menu-item:hover { background: var(--surface-hover, var(--header-hover)); }
+.profile-menu-item.danger { color: var(--danger, #ef4444); }
+.profile-menu-item.danger svg { color: var(--danger, #ef4444); }
+.profile-menu-item.danger:hover { background: color-mix(in srgb, var(--danger, #ef4444) 10%, transparent); }
+/* The separator above Log Out. */
 .profile-menu-divider {
   height: 1px;
-  margin: 4px 6px;
-  background: var(--card-border);
+  margin: 8px 0;
+  background: var(--border-subtle);
+  border: none;
+  border-top: 1px solid var(--border-subtle);
 }
 .profile-menu-note {
   margin: 0;
@@ -561,53 +844,6 @@ body:has(#newSessionBtn.active) #inputClearBtn:not([hidden]) { display: flex; }
   font-size: 11.5px;
   color: var(--muted);
   margin: 2px 2px 0;
-}
-
-.profile-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 8px 12px;
-  margin: 0 4px 6px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--header-chip-bg);
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.profile-stats-stats {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.profile-stats-level {
-  font-size: 13px;
-  font-weight: 800;
-  color: var(--accent-strong);
-}
-
-.profile-stats-xp {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: var(--xp);
-}
-
-.profile-stats-bar {
-  height: 6px;
-  margin-top: 6px;
-  border-radius: 999px;
-  background: var(--header-chip-bg);
-  overflow: hidden;
-}
-
-.profile-stats-fill {
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
-  transition: width var(--dur) var(--ease);
 }
 
 /* Left slide-out sub-panels (History + the tree-quiz panel) at every
@@ -959,6 +1195,7 @@ body.is-resizing .resizer::after { opacity: 1; background: var(--accent); }
   display: flex;
   flex-direction: column;
   gap: 14px;
+  box-sizing: border-box;
   padding: 18px 20px;
   background: var(--panel);
   border: 1px solid var(--border);
@@ -1000,19 +1237,31 @@ body:has(#lessonGuideHost:not(:empty)) #emptyExplainState { display: none; }
    placeholder never bleeds through behind them. */
 body.lesson-view #tutorSurface,
 body.lesson-view .input-editor { display: none; }
+/* The lesson owns the upper-right pane: its controls sit on the panel
+   surface with a comfortable margin from the panel edges. */
+body.lesson-view .pane-input {
+  padding: 20px 24px;
+  box-sizing: border-box;
+}
 body.lesson-view #quizQuestHost {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
+  /* The stage controls never scroll sideways — a stray horizontal scrollbar
+     reads as a stray gray line under the panel. */
+  overflow-x: hidden;
 }
 /* The lesson guide fills the explain pane and scrolls on its own, so long
    explanations are never clipped at the bottom. */
-body.lesson-view .pane-explain { padding: 0; }
+body.lesson-view .pane-explain { padding: 0; overflow: hidden; }
 body.lesson-view #lessonGuideHost {
   flex: 1 1 auto;
-  max-height: none;
+  height: 100%;
+  max-height: 100%;
   min-height: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 /* The node inspector has nothing to show while a lesson is open — it must not
    take half the pane away from the lesson guide. */
@@ -1075,8 +1324,16 @@ body.lesson-view #explainNode:empty { display: none; }
 
 /* Node inspection fills the explain pane; the lesson guide sits above it
    when a lesson is open. Both render directly into the pane — no inner
-   card chrome (the pane itself is the frame). */
-.node-explainer { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+   card chrome (the pane itself is the frame). The padding at the bottom
+   keeps the last line of an explanation clear of the panel border. */
+.node-explainer {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding-bottom: 48px;
+  scroll-behavior: smooth;
+}
 
 .empty-state-explain {
   position: absolute;
@@ -1207,124 +1464,190 @@ body.lesson-view #explainNode:empty { display: none; }
 .nc-fix { color: var(--ok); }
 .muted { color: var(--muted); font-size: 12.5px; }
 
-.modal-backdrop {
+/* ------------------------------------------------------------------ */
+/* The one auth modal                                                 */
+/* ------------------------------------------------------------------ */
+/* The sidebar login and the lessons gateway open this very same dialog:
+   only the framing changes — the title, the subtitle and the dismiss
+   link. One component, one set of styles, one form. */
+.auth-modal-backdrop {
   position: fixed;
   inset: 0;
   z-index: 300;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(15, 17, 23, 0.55);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
   padding: 16px;
   opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity var(--dur) var(--ease), visibility var(--dur) var(--ease);
+  transition: opacity var(--dur) var(--ease);
 }
-.modal-backdrop.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-.auth-modal {
-  width: 100%;
-  max-width: 380px;
-  background: var(--panel);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  transform: translateY(12px) scale(0.98);
-  transition: transform var(--dur) var(--ease);
-}
-.modal-backdrop.active .auth-modal {
-  transform: none;
-}
-.auth-modal-form {
+.auth-modal-backdrop[hidden] { display: none; }
+.auth-modal-backdrop.is-open { opacity: 1; }
+.auth-modal-card {
+  width: min(420px, 92vw);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-sizing: border-box;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  box-shadow: var(--shadow-lg);
 }
-.modal-input {
-  width: 100%;
-  height: 40px;
-  padding: 0 2px;
-  border: none;
-  border-bottom: 1px solid var(--border);
-  border-radius: 0;
-  font-size: 13.5px;
-  background: transparent;
-  color: var(--ink);
-  outline: none;
-  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
-}
-.modal-input::placeholder {
-  color: var(--muted);
-  opacity: 1;
-}
-.modal-input:hover {
-  border-bottom-color: color-mix(in srgb, var(--border) 60%, var(--ink));
-}
-.modal-input:focus {
-  border-bottom-color: var(--accent);
-  box-shadow: 0 2px 10px -3px color-mix(in srgb, var(--accent) 55%, transparent);
-}
-.modal-input:focus-visible {
-  outline: none;
-}
-.modal-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 2px;
-}
-.modal-btn-primary {
-  height: 40px;
-  border: none;
-  border-radius: 8px;
-  background: var(--accent);
-  color: #ffffff;
-  font-size: 13.5px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
-}
-.modal-btn-primary:hover { background: var(--accent-strong); }
-.modal-btn-primary:active { transform: scale(0.99); }
-.modal-btn-secondary {
-  height: 34px;
+.auth-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   border: none;
   border-radius: 8px;
   background: transparent;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 600;
+  color: var(--text-muted);
   cursor: pointer;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
-.modal-btn-secondary:hover { background: var(--accent-soft); color: var(--accent); }
-.modal-close-row {
-  display: flex;
-  justify-content: center;
-  margin-top: 8px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
+.auth-modal-close:hover { background: var(--accent-soft); color: var(--accent); }
+.auth-modal-title {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
 }
-.modal-close-row[hidden] { display: none; }
-.modal-ghost-btn {
-  background: none;
+.auth-modal-subtitle {
+  margin: 0 0 20px 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+/* The two ways in: sign in, or create an account. */
+.auth-tab-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bg);
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.auth-tab-pill {
   border: none;
-  color: var(--muted);
-  font-size: 12.5px;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  padding: 6px 8px;
-  border-radius: 6px;
-  transition: color var(--dur-fast) var(--ease);
+  transition: all var(--dur) var(--ease);
 }
-.modal-ghost-btn:hover { color: var(--accent); }
-.msg { font-size: 12.5px; margin-top: 2px; min-height: 18px; }
-.msg.err { color: var(--err); }
+.auth-tab-pill.active {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+.auth-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.auth-field-group label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+.auth-field-group input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+  transition: border-color var(--dur) var(--ease);
+}
+.auth-field-group input::placeholder { color: var(--text-muted); opacity: 1; }
+.auth-field-group input:focus { border-color: var(--accent); }
+.auth-password-wrapper { position: relative; }
+.auth-password-wrapper input { padding-right: 42px; }
+.auth-password-eye {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.auth-password-eye:hover { color: var(--text); background: var(--surface-hover, var(--header-hover)); }
+.auth-modal-status {
+  margin: 0 0 10px 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.auth-modal-status.is-error { color: var(--err); }
+.auth-primary-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: opacity var(--dur) var(--ease);
+}
+.auth-primary-btn:hover { opacity: 0.92; }
+.auth-footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+.auth-text-link {
+  background: transparent;
+  border: none;
+  color: var(--accent-strong, #818cf8);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.auth-text-link:hover { text-decoration: underline; }
+.auth-text-link.muted {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.auth-text-link.muted:hover { color: var(--accent); text-decoration: none; }
 .msg.ok { color: var(--ok); }
 
 .password-reqs[hidden] { display: none; }
@@ -1346,29 +1669,6 @@ body.lesson-view #explainNode:empty { display: none; }
 .pw-req.missing { color: var(--err); font-weight: 600; }
 .pw-req.soft { color: var(--muted); }
 
-.password-field { position: relative; }
-.password-field input { padding-right: 40px; }
-.password-field .password-toggle {
-  position: absolute;
-  top: 50%;
-  right: 8px;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  border: none;
-  border-radius: 6px;
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-}
-.password-field .password-toggle:hover { color: var(--ink); background: var(--header-hover); }
-.password-toggle .eye-off { display: none; }
-.password-toggle.shown .eye-open { display: none; }
-.password-toggle.shown .eye-off { display: block; }
 
 @media (max-width: 1400px) {
   .dev-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1399,7 +1699,7 @@ body.lesson-view #explainNode:empty { display: none; }
   /* Keep the hamburger usable while the full-screen Lessons overlay is open. */
   body.lessons-overlay-open .mobile-nav-btn { visibility: visible; }
   /* Inside the narrow drawer the account menu opens upward, within it. */
-  .profile-menu { left: 0; }
+  .profile-menu { left: 12px; bottom: 12px; }
   /* The workspace stacks vertically: canvas, then input, then explain pane.
      Drag gutters are a desktop-only affordance. */
   .app-main {
@@ -1479,21 +1779,28 @@ body.lesson-view #explainNode:empty { display: none; }
 #canvasControls[hidden],
 .canvas-controls[hidden] { display: none !important; }
 /* The practice hint floats on its own, under the action buttons — it is no
-   longer a child of the (now chrome-less) action cluster. */
+   longer a child of the (now chrome-less) action cluster. It keeps a clear
+   margin from the panel's rounded edges, so it never looks crammed against
+   the border. */
 .builder-hint {
   position: absolute;
-  top: 50px;
-  left: 14px;
+  top: 18px;
+  left: 20px;
+  margin: 0;
   z-index: 8;
-  max-width: min(520px, calc(100% - 28px));
-  color: var(--muted);
-  font-size: 12px;
+  max-width: min(720px, calc(100% - 40px));
+  color: var(--text-muted);
+  font-size: 13px;
   line-height: 1.4;
   min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  pointer-events: none;
 }
+/* While the action cluster (Clear / Build tree) is up, the hint sits below
+   it instead of on top of it. */
+.builder-hint.with-actions { top: 54px; }
 .builder-hint[hidden] { display: none; }
 /* The target chip sits in the opposite corner of the canvas. */
 .builder-target {
@@ -1761,38 +2068,41 @@ body.lesson-view #explainNode:empty { display: none; }
 /* Shown while a lesson example is loaded: the numbered steps for the
    sentence, with a ▶ Play control that animates through them while the
    spotlight ring (below) points at the matching nodes on the canvas. */
+/* The card is a prompt, not a panel: it names the step the learner is on and
+   carries the ▶ Play auto-guide. The step text itself lives in the
+   bottom-right pane, so nothing is printed twice — and the card stays out of
+   the way of the words and the boxes on the canvas. */
 .canvas-guide-card {
   position: absolute;
-  left: 16px;
-  bottom: 16px;
+  left: 20px;
+  bottom: 20px;
   z-index: 9;
-  width: min(360px, calc(100% - 32px));
-  max-height: min(60%, 420px);
+  max-width: min(420px, calc(100% - 40px));
   display: flex;
   flex-direction: column;
-  padding: 12px 14px;
+  padding: 7px 8px 7px 14px;
   border: 1px solid var(--card-border);
-  border-radius: var(--radius);
+  border-radius: 999px;
   background: color-mix(in srgb, var(--panel) 96%, transparent);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   box-shadow: var(--shadow-md);
+  animation: guide-card-in 0.22s ease;
+}
+@keyframes guide-card-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
 }
 .canvas-guide-card[hidden] { display: none; }
-.canvas-guide-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.canvas-guide-head { display: flex; align-items: center; gap: 10px; margin-bottom: 0; }
 .canvas-guide-label {
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent-strong);
-}
-.canvas-guide-sentence {
   flex: 1 1 auto;
   min-width: 0;
-  font-size: 12.5px;
-  font-weight: 700;
-  color: var(--ink);
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent-strong);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1816,7 +2126,725 @@ body.lesson-view #explainNode:empty { display: none; }
 .canvas-guide-play:hover { background: var(--accent-strong); }
 .canvas-guide-play:active { transform: scale(0.96); }
 .canvas-guide-play.is-playing { background: var(--err); }
-.canvas-guide-list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
-.canvas-guide-list li { font-size: 12.5px; line-height: 1.5; color: var(--ink); }
-.canvas-guide-list li::marker { color: var(--accent-strong); font-weight: 800; }
-.canvas-guide-list li.is-current { color: var(--accent-strong); font-weight: 600; }
+
+
+/* --------------------------------------------------------------------------
+   Full-bleed workspace views — Leaderboard & Achievements
+   --------------------------------------------------------------------------
+   Not dialogs: the view fills the whole surface to the right of the rail,
+   exactly like the lessons catalog. No backdrop, no scrim, no centered box —
+   the workspace simply steps aside and the view takes its place. */
+.workspace-view {
+  position: fixed;
+  top: 0;
+  left: var(--rail-w, 60px);
+  width: calc(100vw - var(--rail-w, 60px));
+  height: 100vh;
+  background: var(--bg);
+  z-index: 210;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 180ms ease, visibility 0s linear 180ms;
+}
+.workspace-view.active-view {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 180ms ease;
+}
+.workspace-view[hidden] { display: none; }
+/* While a full-bleed view is up, the three-pane workspace steps aside. */
+body.workspace-view-open .app-main { display: none; }
+
+/* The page header: the same row, the same height and the same dividing line
+   in every view — the lessons catalog, the leaderboard and the achievements. */
+.view-header,
+.view-toolbar,
+.lessons-header,
+.leaderboard-header,
+.achievements-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  height: 72px;
+  min-height: 72px;
+  max-height: 72px;
+  padding: 0 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  box-sizing: border-box;
+}
+.view-header h2,
+.lessons-header h2,
+.leaderboard-header h2,
+.achievements-header h2,
+.view-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1;
+}
+.view-toolbar-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+/* The overall completion stats, next to the title. */
+/* The level tracker in the top-right corner of the achievements header. */
+/* The level tracker in the top-right corner of the header. */
+.achievements-xp-tracker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.xp-tracker-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.xp-progress-bar-track {
+  width: 220px;
+  height: 6px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.xp-progress-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.view-toolbar-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   Leaderboard — a podium of cards above a full-width standings table
+   -------------------------------------------------------------------------- */
+/* Both full-bleed views scroll as one page: the header sits flush at the top
+   and the content frame scrolls beneath it. */
+#leaderboardView,
+#achievementsView {
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+}
+
+/* The content body directly beneath the header divider: the same padding and
+   the same rhythm in every view. */
+.view-body,
+.sq-catalog-content,
+.leaderboard-content-wrapper,
+.achievements-content-wrapper {
+  flex: 0 0 auto;
+  width: 100%;
+  padding: 24px 32px 48px 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+/* The podium: three cards, side by side, right under the header. */
+.podium-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.podium-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+/* The champion is lifted out of the row with a gold rim and a soft glow. */
+.podium-card.is-1 {
+  border: 1px solid rgba(234, 179, 8, 0.45);
+  background: var(--surface);
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.08);
+}
+.podium-card.is-2 { border-color: color-mix(in srgb, #94a3b8 38%, var(--border)); }
+.podium-card.is-3 { border-color: color-mix(in srgb, #d97706 38%, var(--border)); }
+.podium-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+/* The avatar with the rank pill tucked into its bottom-right corner. */
+.podium-avatar {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+.podium-rank {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+}
+.podium-card.is-1 .podium-rank { background: #eab308; color: #1a1a1a; }
+.podium-card.is-2 .podium-rank { background: #94a3b8; color: #1a1a1a; }
+.podium-card.is-3 .podium-rank { background: #d97706; color: #fff; }
+.podium-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.podium-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.podium-handle {
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* The medal in a subtle disc in the top-right corner of the card. */
+.podium-medal {
+  flex: 0 0 auto;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-muted);
+}
+.podium-medal svg { width: 20px; height: 20px; display: block; }
+.podium-card.is-1 .podium-medal { color: #eab308; }
+.podium-card.is-2 .podium-medal { color: #94a3b8; }
+.podium-card.is-3 .podium-medal { color: #d97706; }
+/* The metrics: three columns, framed by a hairline above and below. */
+.podium-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 18px 0;
+  padding: 12px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.podium-stat {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.podium-stat-value {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.podium-stat-label {
+  margin-top: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* The reward tag at the foot of the card. */
+.podium-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.podium-card.is-1 .podium-tag {
+  background: rgba(234, 179, 8, 0.12);
+  color: #facc15;
+  border: 1px solid rgba(234, 179, 8, 0.25);
+}
+.podium-card.is-2 .podium-tag {
+  background: rgba(148, 163, 184, 0.12);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+.podium-card.is-3 .podium-tag {
+  background: rgba(217, 119, 6, 0.12);
+  color: #f0a05a;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+}
+/* An empty podium slot: a dashed card that invites the next learner. */
+.podium-card.is-open {
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  border: 1px dashed var(--border);
+  background: rgba(255, 255, 255, 0.015);
+}
+.podium-open-medal { color: var(--text-muted); opacity: 0.55; }
+.podium-open-medal svg { width: 28px; height: 28px; display: block; }
+.podium-open-rank {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.podium-open-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+.podium-empty {
+  grid-column: 1 / -1;
+  padding: 28px 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+/* Standings: the full learner table. */
+.standings-section { display: flex; flex-direction: column; }
+.standings-title {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+}
+.standings-table-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.standings-table th {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.standings-table td {
+  height: 64px;
+  padding: 0 20px;
+  font-size: 14px;
+  color: var(--text);
+}
+/* Strict column proportions: the rank is centred, the metrics are right
+   aligned, and every column keeps the same padding in the header and the
+   body so the numbers sit exactly under their labels. */
+.standings-table th:nth-child(1),
+.standings-table td:nth-child(1) {
+  width: 90px;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: center;
+}
+.standings-table th:nth-child(2),
+.standings-table td:nth-child(2) {
+  text-align: left;
+  padding-left: 12px;
+}
+.standings-table th:nth-child(3),
+.standings-table td:nth-child(3),
+.standings-table th:nth-child(4),
+.standings-table td:nth-child(4) {
+  width: 150px;
+  padding-right: 24px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.standings-table th:nth-child(5),
+.standings-table td:nth-child(5) {
+  width: 120px;
+  padding-right: 32px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.standings-table td:nth-child(5) { font-weight: 700; color: var(--accent); }
+.standings-table tr {
+  height: 64px;
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.05));
+  transition: background var(--dur) var(--ease);
+}
+.standings-table tbody tr:last-child { border-bottom: none; }
+.standings-table tbody tr:hover {
+  background: var(--surface-hover, rgba(255, 255, 255, 0.02));
+}
+/* The learner's own row: a soft accent wash with a solid accent edge. */
+.standings-table tr.current-user {
+  background: var(--accent-soft, rgba(99, 102, 241, 0.08));
+  position: relative;
+}
+.standings-table tr.current-user td:first-child {
+  border-left: 3px solid var(--accent);
+}
+/* The rank: a clean monospace number. */
+.standings-rank {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+/* The learner: an avatar plus the name and handle. */
+.standings-learner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.standings-avatar {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 800;
+}
+.standings-learner-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.standings-learner-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.standings-learner-handle {
+  font-size: 12px;
+  color: var(--text-muted);
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* The learner's own row carries a small streak chip. */
+.standings-streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 10.5px;
+  font-weight: 700;
+  vertical-align: middle;
+}
+.standings-value { font-variant-numeric: tabular-nums; }
+/* The shared "nothing here yet" note. */
+.empty-note {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Achievements
+   -------------------------------------------------------------------------- */
+/* The toolbar above the cards: the inline category selector on the left, the
+   completion counter on the right. */
+.achievements-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 4px;
+}
+.achievements-stats-counter {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* The inline, horizontally expanding category selector: a trigger pill that
+   unfurls into the full row of categories. */
+.expanding-cat-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  min-width: 0;
+}
+.cat-trigger-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.cat-trigger-pill:hover {
+  background: var(--surface-hover, rgba(255, 255, 255, 0.04));
+  border-color: var(--border-hover, var(--border));
+}
+/* The chevron turns a quarter turn when the row opens. */
+.cat-chevron {
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  flex-shrink: 0;
+}
+.expanding-cat-wrapper .cat-chevron {
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  flex-shrink: 0;
+}
+/* The expanding row: collapsed it takes no space at all, so the toolbar
+   shows only the trigger until the learner asks for the categories. */
+.expanding-cat-pills {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: max-width 240ms cubic-bezier(0.22, 1, 0.36, 1), opacity 180ms ease;
+}
+.expanding-cat-wrapper.is-open .expanding-cat-pills {
+  max-width: 650px !important;
+  opacity: 1 !important;
+  pointer-events: auto;
+}
+/* Open: the right-pointing chevron turns a quarter turn to point down. */
+.expanding-cat-wrapper.is-open .cat-chevron {
+  transform: rotate(90deg);
+}
+/* The category pills (scoped, so the lessons catalog keeps its own). */
+.expanding-cat-pills .cat-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.expanding-cat-pills .cat-pill:hover {
+  background: var(--surface-hover, rgba(255, 255, 255, 0.04));
+  color: var(--text);
+}
+.expanding-cat-pills .cat-pill.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  align-content: start;
+}
+.achievement-card {
+  display: flex;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.achievement-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+.achievement-card.is-locked { opacity: 0.78; }
+/* The badge: a glowing ring when unlocked, a muted disc when locked. */
+.achievement-badge {
+  position: relative;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.achievement-badge svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.achievement-card.is-locked .achievement-badge {
+  background: var(--border);
+  color: var(--text-muted);
+  box-shadow: none;
+  filter: grayscale(1);
+}
+.achievement-lock {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text-muted);
+  box-shadow: 0 0 0 1px var(--border);
+}
+.achievement-lock svg {
+  width: 10px;
+  height: 10px;
+  stroke-width: 2.2;
+}
+.achievement-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.achievement-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+.achievement-desc {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.achievement-progress { margin-top: 12px; }
+.achievement-progress-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+}
+.achievement-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+  transition: width 300ms var(--ease);
+}
+.achievement-progress-label {
+  margin-top: 5px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+.achievement-reward {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 11.5px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* Narrow screens: the leaderboard drops its side column under the table. */
+@media (max-width: 900px) {
+  .view-toolbar { flex-wrap: wrap; gap: 14px; padding: 16px 20px; }
+  .view-toolbar-filters { margin-left: 0; }
+  .view-header,
+  .view-toolbar,
+  .lessons-header,
+  .leaderboard-header,
+  .achievements-header { padding: 0 18px; }
+  .view-body,
+  .sq-catalog-content,
+  .leaderboard-content-wrapper,
+  .achievements-content-wrapper { padding: 18px 18px 28px 18px; gap: 16px; }
+  .podium-grid { grid-template-columns: 1fr; }
+  .achievements-grid { grid-template-columns: 1fr; }
+}

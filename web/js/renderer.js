@@ -149,6 +149,10 @@ export class TreeRenderer {
     this._drag = null;
     this.dfsOrder = [];
     this.indexById = new Map();
+    // True when the last fit attempt found no room to draw (the canvas was
+    // hidden or zero-sized). The tree is re-fitted as soon as the canvas has
+    // a size again — otherwise it would come back squished into a corner.
+    this.needsFit = false;
     this._setup();
     this._resize();
   }
@@ -224,22 +228,39 @@ export class TreeRenderer {
   _fitView() {
     const w = this.canvas.clientWidth || this.canvas.width;
     const h = this.canvas.clientHeight || this.canvas.height;
+    // No room to draw (the canvas is hidden or has no size yet): don't
+    // squeeze the tree into a corner — fit it again when there is space.
+    if (!w || !h) {
+      this.needsFit = true;
+      return;
+    }
     const pad = 30;
     const scale = Math.min((w - pad * 2) / this.layoutData.totalW, (h - pad * 2) / this.layoutData.totalH, 1.7) * 1.25;
     this.view.scale = Math.max(Math.min(scale, 1.7), 0.2);
     this.view.tx = (w - this.layoutData.totalW * this.view.scale) / 2;
     this.view.ty = (h - this.layoutData.totalH * this.view.scale) / 2;
+    this.needsFit = false;
   }
 
   _resize() {
     const dpr = window.devicePixelRatio || 1;
     const w = this.canvas.clientWidth;
     const h = this.canvas.clientHeight;
-    if (!w || !h) return;
+    if (!w || !h) {
+      // The canvas has no size (it is hidden): keep the backing store and
+      // remember that the tree still has to be fitted.
+      this.needsFit = true;
+      return;
+    }
     this.canvas.width = Math.round(w * dpr);
     this.canvas.height = Math.round(h * dpr);
     this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    if (this.tree) this.draw();
+    if (this.tree) {
+      // A canvas that had no size could not be fitted: fit it now that it is
+      // back, so the tree is centred instead of squished.
+      if (this.needsFit) this._fitView();
+      this.draw();
+    }
   }
 
   _toWorld(p) {

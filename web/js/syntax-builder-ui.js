@@ -36,6 +36,39 @@ const NODE_H = 34;
 const TUTOR_PLACEHOLDER = 'Click the panel to write a sentence. SynTutor builds its syntax tree and analysis automatically.';
 const BUILDER_PLACEHOLDER = 'Words typed on the canvas will appear here...';
 
+// The affordance hints that float in the upper-left of the canvas. The
+// practice stage invites the learner to build; the quiz stage asks for a
+// tree that matches SynTutor's parse.
+const PRACTICE_HINT = 'Right-click to add a phrase · drag a dot to connect · grab a link end to re-route or delete';
+const QUIZ_HINT = 'Build the tree, then check it against SynTutor’s parse';
+
+// The canvas hint (top-left): a static line telling the learner what the
+// stage expects, replaced by the live validation message while a check runs.
+// Exported so the lesson can drive it per stage.
+export function setCanvasHint(msg, kind) {
+  const hint = document.getElementById('builderHint');
+  if (!hint) return;
+  if (!msg) {
+    hint.textContent = '';
+    hint.hidden = true;
+    return;
+  }
+  hint.textContent = msg;
+  const cls = ['builder-hint'];
+  if (kind) cls.push(`builder-hint-${kind}`);
+  if (hint.classList.contains('with-actions')) cls.push('with-actions');
+  hint.className = cls.join(' ');
+  hint.hidden = false;
+}
+
+// Whether the hint sits below the floating action cluster (Clear / Build
+// tree) instead of on top of it.
+export function setHintBelowActions(visible) {
+  const hint = document.getElementById('builderHint');
+  if (!hint) return;
+  hint.classList.toggle('with-actions', Boolean(visible));
+}
+
 
 // Colours mirror the grammar-tutor tree renderer so the builder looks identical.
 function themeColors() {
@@ -70,6 +103,10 @@ const state = {
   treeCorrect: false,
   snapped: false,
   snappedLayout: null,
+  // The static hint of the current stage; a live check message replaces it
+  // for a few seconds and then gives it back.
+  hintBase: '',
+  hintTimer: 0,
   // Per-node validation errors produced by the last Build tree check:
   // id -> detail record (same shape as the tutor's payload.node_details[id]).
   nodeErrors: new Map(),
@@ -167,14 +204,14 @@ export function openBuilderView(opts = {}) {
   if (opts.reset) newModel();
   if (state.challenge) seedForChallenge(state.challenge);
 
-  // A quiz shows no builder chrome at all — the sentence lives in the input box
-  // and the tree is checked automatically. Lesson practice keeps a slim hint
-  // floating in the upper-left of the canvas: the canvas is the same node
-  // editor as the standalone Syntax Builder (right-click to add boxes, drag a
-  // dot to connect, grab a link end to re-route or delete), so spell the
-  // affordances out where they apply.
-  const practice = Boolean(state.challenge) && Boolean(opts.practice);
-  bar.hidden = Boolean(state.challenge) && !practice;
+  // Two builder stages live inside a lesson: the practice stage (Step 2) and
+  // the quiz stage (Step 3). Both keep the canvas controls and the affordance
+  // hint up; the standalone builder and the standalone quiz keep their own
+  // chrome.
+  const practice = Boolean(opts.practice);
+  const quiz = Boolean(opts.quiz);
+  const interactive = practice || quiz;
+  bar.hidden = Boolean(state.challenge) && !interactive;
   // The builder owns the input panel now: it mirrors the canvas, so it gets
   // the builder's prompt and stays read-only.
   document.body.classList.add('builder-active');
@@ -183,7 +220,6 @@ export function openBuilderView(opts = {}) {
   const check = document.getElementById('builderCheck');
   const next = document.getElementById('builderNext');
   const done = document.getElementById('builderDone');
-  const hint = document.getElementById('builderHint');
   if (!state.challenge) {
     // Standalone Syntax Builder: only the action buttons (Clear / Build tree /
     // Done) float over the canvas — no instructions, no target sentence.
@@ -191,26 +227,27 @@ export function openBuilderView(opts = {}) {
     if (check) check.hidden = true;
     if (next) next.hidden = true;
     if (done) done.hidden = false;
-    if (hint) { hint.textContent = ''; hint.hidden = true; }
-  } else if (practice) {
-    // Lesson practice keeps the affordances spelled out; the lesson's own node
-    // navigation handles leaving, so there is no Done button here.
-    if (hint) {
-      hint.textContent =
-        'Right-click to add a phrase · drag a dot to connect · grab a link end to re-route or delete';
-      hint.className = 'builder-hint';
-      hint.hidden = false;
-    }
+    state.hintBase = '';
+    setCanvasHint('');
+  } else if (interactive) {
+    // Lesson practice and the lesson quiz both float the actions and the
+    // hint. The quiz can also check on demand; the practice tree checks
+    // itself as it is built.
+    state.hintBase = opts.hint || (practice ? PRACTICE_HINT : QUIZ_HINT);
+    setCanvasHint(state.hintBase);
     if (target) target.hidden = true;
-    if (check) check.hidden = true;
+    if (check) check.hidden = !quiz;
     if (next) next.hidden = true;
     if (done) done.hidden = true;
   } else {
-    // A quiz shows no builder chrome at all: the action buttons and the
-    // practice hint both stay off the canvas.
-    if (hint) { hint.textContent = ''; hint.hidden = true; }
+    // A standalone quiz shows no builder chrome at all: the action buttons
+    // and the practice hint both stay off the canvas.
+    state.hintBase = '';
+    setCanvasHint('');
   }
   hideToast();
+  // The hint steps below the action cluster whenever that cluster is up.
+  setHintBelowActions(!bar.hidden);
   resize();
   canvas.focus();
   explainSelected();
@@ -259,6 +296,9 @@ export function closeBuilderView() {
   // has to be dismissed with the cluster.
   const hint = document.getElementById('builderHint');
   if (hint) hint.hidden = true;
+  state.hintBase = '';
+  window.clearTimeout(state.hintTimer);
+  state.hintTimer = 0;
   if (canvas) canvas.hidden = true;
   if (treeCanvas) treeCanvas.hidden = false;
   // The Grammar Tutor takes the input panel back, with its own prompt.
@@ -1100,6 +1140,33 @@ function hideToast() {
   document.querySelector('.builder-toast')?.classList.remove('show');
 }
 
+// A listener for the live check result, so the lesson's quiz panel can show
+// the validation status next to the question.
+let checkResultHandler = null;
+export function setCheckResultHandler(fn) { checkResultHandler = fn || null; }
+
+// Run a check on the current tree — the lesson's quiz stage asks for it.
+export function checkBuilderTree() {
+  if (!state.challenge) return false;
+  checkTree();
+  return true;
+}
+
+// The result of a check goes to the app log and — while a lesson stage is
+// running — to the canvas hint, where the learner is actually looking. The
+// stage's own hint comes back after a few seconds.
+function reportCheck(message, kind) {
+  state.onStatus?.(message);
+  checkResultHandler?.(message, kind);
+  if (!state.hintBase) return;
+  setCanvasHint(message, kind);
+  window.clearTimeout(state.hintTimer);
+  state.hintTimer = window.setTimeout(() => {
+    state.hintTimer = 0;
+    setCanvasHint(state.hintBase);
+  }, 6000);
+}
+
 function checkTree() {
   const challenge = state.challenge || {};
   const target = document.getElementById('builderTarget');
@@ -1120,11 +1187,11 @@ function checkTree() {
     const want = (challenge.gold || []).map((l) => l.surface).join(' ');
     if (got === want) {
       mark(true);
-      state.onStatus('Correct — those are exactly SynTutor\'s tokens.');
+      reportCheck('Correct — those are exactly SynTutor\'s tokens.', 'ok');
       state.onComplete?.(true, {});
     } else {
       mark(false);
-      state.onStatus(`Not quite. SynTutor splits it as: ${want}`);
+      reportCheck(`Not quite. SynTutor splits it as: ${want}`, 'no');
       state.onComplete?.(false, {});
     }
     return;
@@ -1135,7 +1202,7 @@ function checkTree() {
     const got = wordNodesInOrder();
     if (got.length !== want.length) {
       mark(false);
-      state.onStatus(`Add the ${want.length} words first (you have ${got.length}).`);
+      reportCheck(`Add the ${want.length} words first (you have ${got.length}).`, 'no');
       state.onComplete?.(false, {});
       return;
     }
@@ -1145,11 +1212,11 @@ function checkTree() {
     });
     if (!wrong.length) {
       mark(true);
-      state.onStatus('Correct — every word carries its official tag.');
+      reportCheck('Correct — every word carries its official tag.', 'ok');
       state.onComplete?.(true, {});
     } else {
       mark(false);
-      state.onStatus(`Not quite: ${wrong.join(', ')}. Right-click a word to set its tag.`);
+      reportCheck(`Not quite: ${wrong.join(', ')}. Right-click a word to set its tag.`, 'no');
       state.onComplete?.(false, {});
     }
     return;
@@ -1158,18 +1225,20 @@ function checkTree() {
   // phrases / full: compare the phrase structure against SynTutor's parse.
   const tree = toTree(state.model);
   if (!tree) {
-    state.onStatus('Add a phrase box (right-click) and connect everything first.');
+    // The tree is not connected yet: report it, but do not call the
+    // completion callback — the learner is still building, not failing.
+    reportCheck('Add a phrase box (right-click) and connect everything first.', 'no');
     return;
   }
   const gold = challenge.goldTree;
   if (!gold) {
-    state.onStatus('Tree built.');
+    reportCheck('Tree built.', 'ok');
     return;
   }
   const result = compareTrees(tree, gold);
   if (result.correct) {
     mark(true);
-    state.onStatus('Correct — your tree matches SynTutor\'s parse.');
+    reportCheck('Correct — your tree matches SynTutor\'s parse.', 'ok');
     state.onComplete?.(true, result);
     return;
   }
@@ -1181,7 +1250,7 @@ function checkTree() {
     parts.push(`extra ${result.extra.map((s) => `${s.type} (${s.start}-${s.end})`).join(', ')}`);
   }
   mark(false);
-  state.onStatus(`Not quite — ${parts.join('; ')}.`);
+  reportCheck(`Not quite — ${parts.join('; ')}.`, 'no');
   state.onComplete?.(false, result);
 }
 
