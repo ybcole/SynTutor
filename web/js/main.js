@@ -376,6 +376,8 @@ export function boot() {
     lastChatTitle: () => lastAnalyzedText || '',
     setWorkspaceView,
     setOverlayView,
+    showModelTree: showLessonModelTree,
+    clearModelTree: clearLessonModelTree,
   });
   initResizers();
   syncInputClearBtn();
@@ -574,6 +576,9 @@ function teardownWorkspace() {
   // Syntax Builder: the canvas, its floating controls, and the inline editor
   // or context menu it may have opened.
   closeBuilderView();
+  // A lesson may have left the valid benepar tree on #treeCanvas; it belongs to
+  // the lesson, not to the next workspace mode.
+  clearLessonModelTree();
   // The canvas overlay and the node inspector belong to the Grammar Tutor.
   clearDiagnostics();
   // ...and so does the correction panel: a correction never survives a
@@ -1320,6 +1325,76 @@ function setQuizMode(active) {
 }
 
 // ---------------------------------------------------------------------------
+// Lessons: the read-only model tree
+// ---------------------------------------------------------------------------
+// True while #treeCanvas holds a lesson model tree. The tree can outlive the
+// Model state (Practice hides the canvas but the renderer keeps the tree), so
+// teardown uses this flag to clear a lesson tree without wiping the Grammar
+// Tutor's own analysis when an unrelated panel opens.
+let lessonModelActive = false;
+// Module lessons render a read-only parsed tree on #treeCanvas. Legacy
+// single-unit lessons may still hand #builderCanvas to the builder; this is the
+// counterpart that hands the shared canvas back to the static renderer without
+// touching the lesson panels or the tutor's history/session state. Callers
+// decide whether to paint a tree or clear it.
+function prepareLessonModelCanvas() {
+  const treeCanvas = document.querySelector('#treeCanvas');
+  const builderCanvas = document.querySelector('#builderCanvas');
+  const controls = document.querySelector('#canvasControls');
+  const hint = document.querySelector('#builderHint');
+  const target = document.querySelector('#builderTarget');
+  const empty = document.querySelector('#emptyTreeState');
+  if (builderCanvas) builderCanvas.hidden = true;
+  if (treeCanvas) {
+    treeCanvas.hidden = false;
+    treeCanvas.setAttribute('aria-label', 'Parsed syntax tree (read-only)');
+  }
+  if (controls) controls.hidden = true;
+  if (hint) hint.hidden = true;
+  if (target) target.hidden = true;
+  if (empty) empty.classList.add('hidden');
+  document.querySelector('.builder-toast')?.classList.remove('show');
+  document.querySelector('#loadingIndicator')?.classList.remove('visible');
+  document.body.classList.remove('builder-active');
+  document.body.classList.add('lesson-model');
+  clearOverlay();
+  if (renderer) renderer.setInteractive(false);
+}
+
+function showLessonModelTree(payload, focusId = null) {
+  if (!payload || !payload.tree || !renderer) return;
+  prepareLessonModelCanvas();
+  lessonModelActive = true;
+  applyStatuses(payload.tree, payload.node_details || {}, payload.summary || {});
+  renderer.setTree(payload.tree);
+  if (focusId) renderer.select(focusId);
+  // The canvas was hidden while the builder owned it; refit once the browser
+  // has had a chance to lay the visible canvas out.
+  requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+}
+
+// Drop the lesson model tree. Used when switching examples/sections and when
+// the lesson view is torn down, so no ghost tree survives either swap. Returns
+// true when a tree was actually cleared. `force` also clears the Grammar
+// Tutor's tree when a lesson is opening over it; teardown omits it so opening
+// a side panel does not wipe an analysis the tutor should keep.
+function clearLessonModelTree({ force = false } = {}) {
+  if (!renderer) return false;
+  if (!force && !lessonModelActive) return false;
+  prepareLessonModelCanvas();
+  renderer.clear();
+  renderer.setInteractive(!quizMode);
+  document.body.classList.remove('lesson-model');
+  lessonModelActive = false;
+  const treeCanvas = document.querySelector('#treeCanvas');
+  if (treeCanvas) {
+    treeCanvas.setAttribute('aria-label',
+      'Interactive syntax tree; click a node, or use arrow keys and Enter');
+  }
+  return true;
+}
+
+// ---------------------------------------------------------------------------
 // Gamification: XP, levels, and the permanent leaderboard.
 // XP is only banked for signed-in users (guests see the UI but nothing saves).
 // ---------------------------------------------------------------------------
@@ -1767,7 +1842,8 @@ function applyStatuses(tree, details, summary) {
     for (const c of node.children || []) walk(c);
   };
   walk(tree);
-  if (summary?.verdict === 'ungrammatical'
+  const ungrammatical = summary?.valid === false || summary?.verdict === 'ungrammatical';
+  if (ungrammatical
       && !Object.values(details).some((detail) => detail?.status === 'error')) {
     tree.edgeResult = { status: 'error' };
   }

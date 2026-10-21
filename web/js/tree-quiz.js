@@ -6,9 +6,9 @@
 // quantifiers to whole clauses, questions and special phrases. Each lesson
 // gives an in-depth explanation, its own practice on the builder canvas, and
 // its own quiz. Module-style lessons (like the verb phrase) split their
-// content into sections — one per type — that the learner picks between;
-// learning there is focused on building each section's syntax trees directly,
-// with no step-by-step guide.
+// content into sections - one per type - that the learner picks between;
+// those lessons show read-only model trees with a live sentence breakdown
+// instead of a canvas-building practice mode.
 //
 // Two entry points:
 //   * Quiz (sidebar)    — starts a quiz straight away and walks every
@@ -20,14 +20,16 @@
 //                         pages; the module's comprehensive quiz appears
 //                         exclusively at the very end, on page 3.
 //
-// Each example is done *in the Syntax Builder*: the sentence is shown in the
+// Most examples are done *in the Syntax Builder*: the sentence is shown in the
 // input box with its words already laid out, the learner builds the phrase
-// structure by hand — right-clicking to add phrase boxes and dragging
-// connector dots to connect them, re-route, or delete — and the tree is
-// checked against SynTutor's own parse — fetched live from /api/parse, so the
+// structure by hand - right-clicking to add phrase boxes and dragging
+// connector dots to connect them, re-route, or delete - and the tree is
+// checked against SynTutor's own parse - fetched live from /api/parse, so the
 // gold tree can never drift from the model. Lessons with numbered build steps
 // can hand the learner an interactive spotlight guide that points at the exact
-// canvas region, word row, or box each step talks about.
+// canvas region, word row, or box each step talks about. Module lessons are
+// the exception: their canvas is a read-only model tree, and selecting a sample
+// sentence updates both that tree and the breakdown beside it.
 //
 // Exports the surface main.js imports:
 //   openQuizView, closeQuizView, isQuizOpen, initQuiz, quizInputHint,
@@ -48,7 +50,10 @@ const state = {
   openModule: null,   // lesson.type whose sub-topics are expanded in the catalog
   controller: null,
   cache: new Map(),   // sentence -> gold
+  pendingGold: new Map(), // sentence -> in-flight /api/parse promise
   done: new Set(),    // `${type}:${example}`
+  goldLoading: null,    // sentence whose tree is being fetched
+  goldError: null,      // message when the model tree could not be loaded
   visitedPages: new Set(), // `${type}:${page}` seen at least once
   quizDone: new Set(),     // lesson.type whose end-of-lesson quiz was finished
   session: null,      // { seq: [{lesson, example}], pos, quizLesson }
@@ -115,31 +120,41 @@ const LESSONS = [
         name: 'Intransitive',
         title: 'Intransitive verb phrases',
         detail: 'The verb of a verb phrase is intransitive when it does not contain objects or complements, but it can contain auxiliary verbs and/or modifiers.',
+        formula: 'VP → V',
         examples: ['The server crashed.', 'The baby is crying.', 'The student studied in the library.'],
+        hasObject: false,
       },
       {
-        name: 'Linking',
+        name: 'Linking / Copular',
         title: 'Linking verb phrases',
         detail: 'Linking verb phrases include the subject complements together with any auxiliary verbs and modifiers.',
+        formula: 'VP → V + AP or V → NP',
         examples: ['We are ready for the test.', 'He is a researcher.', 'The system remained stable.'],
+        hasObject: false,
       },
       {
         name: 'Transitive',
         title: 'Transitive verb phrases',
         detail: 'When the main verb phrase is transitive, the phrase must contain a direct object and may contain modifiers and auxiliary verbs.',
+        formula: 'VP → V + NP',
         examples: ['The algorithm parsed the sentence.', 'She evaluated the results.'],
+        hasObject: true,
       },
       {
         name: 'Ditransitive',
         title: 'Ditransitive verb phrases',
         detail: 'A ditransitive verb phrase is anchored by a main verb that takes two complements: an indirect object followed by a direct object, or a direct object followed by a prepositional phrase.',
+        formula: 'VP → V + NP + NP or V → NP + PP',
         examples: ['The evaluator gave the student explicit feedback.', 'She handed the money to the cashier.'],
+        hasObject: true,
       },
       {
-        name: 'Complex transitive',
+        name: 'Complex Transitive',
         title: 'Complex transitive verb phrases',
         detail: 'The transitive verbs in complex transitive verb phrases are followed by both a direct object and an object complement.',
-        examples: ['They considered the workflow inefficient.', 'The group elected their president.'],
+        formula: 'VP → V + NP + AP or V → NP + NP',
+        examples: ['They considered the workflow inefficient.', 'They elected him president.'],
+        hasObject: true,
       },
     ],
   },
@@ -802,9 +817,19 @@ function renderLessons() {
 function openLesson(lesson) {
   closeLessonsOverlay();
   closeGuideCard();
-  // Picking a lesson leaves any quiz session behind — the learner is now in
-  // focused practice, not the session's in-order walk. It opens on Node 1
-  // (Concept); entering Practice loads an example onto the canvas.
+  // Switching lessons invalidates any /api/parse response still in flight and
+  // drops the previous lesson's tree; a non-module lesson starts with a clear
+  // canvas, a module lesson immediately loads its own model below.
+  goldRequest += 1;
+  state.goldLoading = null;
+  state.goldError = null;
+  // A lesson owns the canvas, so clear whatever was on it (the tutor's tree or
+  // the previous lesson's model) before painting the new one.
+  state.controller?.clearModelTree?.({ force: true });
+  if (!lesson.sections) document.querySelector('#emptyTreeState')?.classList.remove('hidden');
+  // Picking a lesson leaves any quiz session behind. The learner is now in
+  // focused study, not the session's in-order walk. Single-unit lessons open
+  // on Node 1 (Concept); module lessons open directly on their first sample.
   state.session = null;
   state.openModule = null;
   state.activeGroup = lesson.group;
@@ -813,15 +838,25 @@ function openLesson(lesson) {
   state.view = 'lesson';
   state.exampleIndex = 0;
   state.sectionIndex = 0;
+  if (lesson.sections) {
+    state.exampleIndex = defaultExampleIndex(lesson);
+    renderLesson();
+    const host = $('#quizQuestHost');
+    if (host) host.scrollTop = 0;
+    openModelExample(lesson, lesson.examples[state.exampleIndex]);
+    return;
+  }
   renderLesson();
 }
 
-// Open a module straight onto one of its sub-topics: the lesson comes up on
-// its Concept page with that section preselected, so entering Practice lands
-// the learner on the sub-topic they picked.
+// Open a module straight onto one of its sub-topics: the section's first
+// sample loads on the read-only canvas and the LMS panel follows it.
 function openLessonAtSection(lesson, sectionIndex) {
   closeLessonsOverlay();
   closeGuideCard();
+  // The catalog can be opened over the tutor, so the lesson must take the
+  // canvas over explicitly instead of leaving the tutor's tree underneath.
+  state.controller?.clearModelTree?.({ force: true });
   state.session = null;
   state.openModule = null;
   state.activeGroup = lesson.group;
@@ -829,10 +864,13 @@ function openLessonAtSection(lesson, sectionIndex) {
   state.lessonIndex = lesson.type;
   state.view = 'lesson';
   state.sectionIndex = Math.max(0, Math.min(sectionIndex, lesson.sections.length - 1));
-  const section = lesson.sections[state.sectionIndex];
-  const first = section.examples.findIndex((e) => !state.done.has(`${lesson.type}:${e}`));
-  state.exampleIndex = lesson.examples.indexOf(section.examples[first < 0 ? 0 : first]);
+  state.goldError = null;
+  state.goldLoading = null;
+  state.exampleIndex = defaultExampleIndex(lesson);
   renderLesson();
+  const host = $('#quizQuestHost');
+  if (host) host.scrollTop = 0;
+  openModelExample(lesson, lesson.examples[state.exampleIndex]);
 }
 
 // ---------------------------------------------------------------------------
@@ -1096,13 +1134,26 @@ function renderLessonBody(lesson, page, example) {
   return body;
 }
 
-// Pick a section of a module-style lesson: show its first not-yet-built
-// example on the canvas and re-render the lesson panel around it.
+// Pick a section of a module-style lesson: load its first sample and re-render
+// the LMS lesson panel around it.
 function selectSection(lesson, i) {
   state.sectionIndex = Math.max(0, Math.min(i, lesson.sections.length - 1));
-  const section = lesson.sections[state.sectionIndex];
-  const first = section.examples.findIndex((e) => !state.done.has(`${lesson.type}:${e}`));
-  showExample(lesson, lesson.examples.indexOf(section.examples[first < 0 ? 0 : first]));
+  state.exampleIndex = defaultExampleIndex(lesson);
+  state.goldError = null;
+  state.goldLoading = null;
+  renderLesson();
+  const host = $('#quizQuestHost');
+  if (host) host.scrollTop = 0;
+  openModelExample(lesson, lesson.examples[state.exampleIndex]);
+}
+
+// The example a section should open on: its first sample.
+function defaultExampleIndex(lesson) {
+  const section = lesson.sections?.[state.sectionIndex] || lesson.sections?.[0];
+  if (!section) return 0;
+  const example = section.examples[0];
+  const index = lesson.examples.indexOf(example);
+  return index < 0 ? 0 : index;
 }
 
 // Move between nodes. Entering Practice loads the first not-yet-built
@@ -1133,6 +1184,13 @@ function goLessonNode(lesson, page) {
 function renderLesson() {
   const lesson = LESSONS.find((l) => l.type === state.lessonIndex);
   if (!lesson) return;
+  if (lesson.sections) {
+    renderModuleLesson(lesson);
+    return;
+  }
+  // Leaving a module lesson for a single-unit lesson must also leave its
+  // single-column sidebar layout behind.
+  document.body.classList.remove('module-lesson', 'lesson-model');
   const host = $('#quizQuestHost');
   const guideHost = $('#lessonGuideHost');
   if (!host || !guideHost) return;
@@ -1187,6 +1245,492 @@ function renderLesson() {
   // Keep an open spotlight guide in sync with the fresh DOM.
   if (guide.open) updateStepGuide();
 }
+
+// ---------------------------------------------------------------------------
+// Module lessons (Verb phrase): read-only model trees + LMS lesson panel
+// ---------------------------------------------------------------------------
+// A module-style lesson presents one scrolling column: subtype pills, the
+// active subtype's title and definition, a live sentence explanation, and the
+// section's sample sentences. Selecting a sample paints its parsed tree on the
+// read-only #treeCanvas and updates the explanation above; there is no builder,
+// no task card, and no practice mode in this view.
+
+// One monotonic token guards every /api/parse request made for the lesson
+// canvas. A late response for a previous example must never overwrite the
+// tree the learner is looking at now.
+let goldRequest = 0;
+
+function renderModuleLesson(lesson) {
+  const host = $('#quizQuestHost');
+  const guideHost = $('#lessonGuideHost');
+  if (!host || !guideHost) return;
+  // Re-rendering after a sample switch must not jump the lesson column back to
+  // the top, and keyboard focus should stay on the control that caused it.
+  const scrollTop = host.scrollTop;
+  const active = document.activeElement;
+  const focusWasPill = Boolean(active?.classList?.contains('sq-section-pill'));
+  const focusExample = active?.dataset?.exampleIndex ?? null;
+
+  // The module never uses the legacy spotlight guide or its docked card.
+  closeStepGuide();
+  closeGuideCard();
+  document.body.classList.add('lesson-view', 'module-lesson', 'lesson-model');
+  host.innerHTML = '';
+  guideHost.innerHTML = '';
+  syncChatTitle(lesson);
+
+  state.sectionIndex = Math.max(0, Math.min(state.sectionIndex || 0, lesson.sections.length - 1));
+  const section = lesson.sections[state.sectionIndex];
+  state.exampleIndex = Math.max(0, Math.min(state.exampleIndex || 0, lesson.examples.length - 1));
+  const example = lesson.examples[state.exampleIndex];
+
+  const wrap = el('div', 'sq-lesson sq-module');
+
+  // Header: the way back to the library and the module title. The old mode
+  // pill is gone because a module lesson now only ever shows model trees.
+  const head = el('header', 'sq-lesson-head');
+  const headMain = el('div', 'sq-lesson-head-main');
+  const book = el('button', 'sq-lesson-book');
+  book.type = 'button';
+  book.title = 'Show all lesson modules';
+  book.setAttribute('aria-label', 'Show all lesson modules');
+  book.innerHTML = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>';
+  book.addEventListener('click', () => openLessonsOverlay());
+  headMain.appendChild(book);
+  headMain.appendChild(el('h2', 'sq-lesson-title', lesson.title));
+  head.appendChild(headMain);
+  wrap.appendChild(head);
+
+  wrap.appendChild(renderSubtypeNav(lesson));
+  wrap.appendChild(renderOverviewPanel(section, example));
+  wrap.appendChild(renderSamplesCard(lesson, section));
+
+  host.appendChild(wrap);
+  host.scrollTop = scrollTop;
+  if (focusWasPill) {
+    wrap.querySelector('.sq-section-pill.is-active')?.focus({ preventScroll: true });
+  } else if (focusExample !== null) {
+    wrap.querySelector(`.sq-sample-button[data-example-index="${focusExample}"]`)?.focus({ preventScroll: true });
+  }
+}
+
+function renderSubtypeNav(lesson) {
+  const nav = el('nav', 'sq-module-nav');
+  nav.setAttribute('aria-label', `${lesson.title} subtypes`);
+  const pills = el('div', 'sq-module-pills');
+  pills.setAttribute('role', 'group');
+  pills.setAttribute('aria-label', 'Choose a subtype');
+  lesson.sections.forEach((section, i) => {
+    const pill = el('button', i === state.sectionIndex ? 'sq-section-pill is-active' : 'sq-section-pill', section.name);
+    pill.type = 'button';
+    pill.title = section.title;
+    pill.setAttribute('aria-pressed', String(i === state.sectionIndex));
+    pill.addEventListener('click', () => selectSection(lesson, i));
+    pills.appendChild(pill);
+  });
+  nav.appendChild(pills);
+  return nav;
+}
+
+function renderOverviewPanel(section, example) {
+  const panel = el('section', 'sq-module-overview');
+  panel.appendChild(el('p', 'sq-module-eyebrow', 'Subtype'));
+  panel.appendChild(el('h3', 'sq-module-title', section.title));
+  panel.appendChild(el('p', 'sq-module-definition', section.detail));
+  if (section.formula) panel.appendChild(renderFormula(section.formula));
+  panel.appendChild(renderSentenceExplanation(section, example));
+  return panel;
+}
+
+// Structural formula for the active verb-phrase subtype, shown below the
+// definition and above the live sentence explanation. Acronyms expose a hover
+// tooltip spelling out what they stand for.
+const FORMULA_TERMS = {
+  VP: 'Verb phrase',
+  V: 'Verb (the main verb)',
+  NP: 'Noun phrase',
+  AP: 'Adjective phrase',
+  PP: 'Prepositional phrase',
+};
+function renderFormula(formula) {
+  const container = el('div', 'sq-module-formula');
+  container.appendChild(el('div', 'sq-module-formula-label', 'Structural Formula:'));
+  const text = el('div', 'sq-module-formula-text');
+  text.innerHTML = formula.replace(/\b(VPV|VP|V|NP|AP|PP)\b/g, (m) => {
+    const term = FORMULA_TERMS[m] || m;
+    return `<span class="sq-acronym" data-term="${term}">${m}</span>`;
+  });
+  container.appendChild(text);
+  return container;
+}
+
+// Position the fixed-position hover tooltip over each acronym so it escapes
+// the canvas stacking context and always renders on top.
+function positionAcronymTooltip(el) {
+  const rect = el.getBoundingClientRect();
+  el.style.setProperty('--ac-tooltip-left', `${rect.left + rect.width / 2}px`);
+  el.style.setProperty('--ac-tooltip-top', `${rect.top}px`);
+}
+document.addEventListener('mouseover', (ev) => {
+  const ac = ev.target.closest('.sq-acronym');
+  if (!ac) return;
+  positionAcronymTooltip(ac);
+});
+
+function renderSentenceExplanation(section, example) {
+  const gold = state.cache.get(example);
+  let text;
+  let tone = '';
+  if (state.goldLoading === example) {
+    text = `Reading the parsed tree for ${quoteSurface(example)}...`;
+    tone = ' is-status';
+  } else if (state.goldError) {
+    text = state.goldError;
+    tone = ' is-error';
+  } else if (!gold) {
+    text = `The parsed tree for ${quoteSurface(example)} is not available yet.`;
+    tone = ' is-status';
+  } else {
+    text = describeSentence(gold, section, example);
+  }
+  const explanation = el('p', `sq-module-explanation${tone}`, text);
+  explanation.setAttribute('aria-live', 'polite');
+  return explanation;
+}
+
+function renderSamplesCard(lesson, section) {
+  const card = el('section', 'sq-module-samples');
+  const head = el('header', 'sq-module-section-head');
+  head.appendChild(el('h3', 'sq-module-section-title', 'Sample sentences'));
+  const count = section.examples.length;
+  head.appendChild(el('span', 'sq-module-section-count', `${count} ${count === 1 ? 'example' : 'examples'}`));
+  card.appendChild(head);
+
+  const list = el('ul', 'sq-sample-list');
+  section.examples.forEach((sentence) => {
+    const index = lesson.examples.indexOf(sentence);
+    const isActive = index === state.exampleIndex;
+    const item = el('li', 'sq-sample-item');
+    const button = el('button', isActive ? 'sq-sample-button is-active' : 'sq-sample-button');
+    button.type = 'button';
+    button.dataset.exampleIndex = String(index);
+    button.setAttribute('aria-current', isActive ? 'true' : 'false');
+    button.title = `Show the model tree for ${quoteSurface(sentence)}`;
+    button.appendChild(el('span', 'sq-sample-text', sentence));
+    const chevron = el('span', 'sq-sample-chevron');
+    chevron.setAttribute('aria-hidden', 'true');
+    chevron.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>';
+    button.appendChild(chevron);
+    button.addEventListener('click', () => openModelExample(lesson, sentence));
+    item.appendChild(button);
+    list.appendChild(item);
+  });
+  card.appendChild(list);
+  return card;
+}
+
+async function openModelExample(lesson, example) {
+  const token = ++goldRequest;
+  state.goldError = null;
+  state.goldLoading = null;
+  const index = lesson.examples.indexOf(example);
+  if (index >= 0) state.exampleIndex = index;
+  setInputSentence(example);
+  syncChatTitle(lesson);
+  renderLesson();
+
+  let gold = state.cache.get(example);
+  if (!gold) {
+    // Never leave the previous sample's tree on screen while this one loads.
+    state.controller?.clearModelTree?.({ force: true });
+    state.goldLoading = example;
+    renderLesson();
+    try {
+      gold = await loadGold(example);
+    } catch (err) {
+      if (token !== goldRequest) return;
+      state.goldLoading = null;
+      state.goldError = `Could not load the parsed tree (${err.message}).`;
+      renderLesson();
+      return;
+    }
+    state.cache.set(example, gold);
+  }
+  if (token !== goldRequest) return;
+  state.goldLoading = null;
+  state.controller?.showModelTree?.(gold.payload, findVpId(gold.payload));
+  renderLesson();
+}
+
+// Resolve the node whose edge is the clause predicate; selecting it gives the
+// model view a visible VP band without turning the tree into an editor.
+function findVpId(payload) {
+  const details = Object.values(payload?.node_details || {});
+  const predicate = details.find((d) => d.type === 'VP' && d.constraint === 'C-PREDICATE');
+  const vp = predicate || details.find((d) => d.type === 'VP');
+  return vp?.id || null;
+}
+
+// ---------------------------------------------------------------------------
+// Sentence explanation: turn the parsed tree into a short plain-language lesson
+// ---------------------------------------------------------------------------
+const VERB_POS = new Set(['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'MD', 'AUX']);
+const PUNCT_POS = new Set(['.', ',', ':', ';', '``', "''", '-LRB-', '-RRB-', 'HYPH', 'NFP', 'SYM']);
+const AUX_SURFACES = new Set([
+  'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+  'have', 'has', 'had', 'do', 'does', 'did',
+  'will', 'would', 'shall', 'should', 'can', 'could', 'may', 'might', 'must', 'ought',
+  "'m", "'s", "'re", "'ve", "'d",
+]);
+const PHRASE_LABELS = {
+  NP: 'noun phrase',
+  VP: 'verb phrase',
+  PP: 'prepositional phrase',
+  ADJP: 'adjective phrase',
+  ADVP: 'adverb phrase',
+  S: 'clause',
+  SBAR: 'subordinate clause',
+  SQ: 'question clause',
+  SBARQ: 'wh-question clause',
+  WHNP: 'wh-noun phrase',
+  WHADVP: 'wh-adverb phrase',
+  WHPP: 'wh-prepositional phrase',
+  QP: 'quantifier phrase',
+  PRT: 'particle',
+  FRAG: 'fragment',
+  INTJ: 'interjection',
+};
+
+function cleanSurface(value) {
+  return String(value ?? '').replace(/\s+/g, ' ').trim();
+}
+
+function quoteSurface(value) {
+  const text = cleanSurface(value);
+  return text ? `\u201C${text}\u201D` : 'an empty phrase';
+}
+
+function listText(items) {
+  const values = items.filter(Boolean);
+  if (!values.length) return '';
+  if (values.length === 1) return values[0];
+  if (values.length === 2) return `${values[0]} and ${values[1]}`;
+  return `${values.slice(0, -1).join(', ')}, and ${values[values.length - 1]}`;
+}
+
+function isLeafNode(node) {
+  return Boolean(node) && !(node.children && node.children.length);
+}
+
+function nodePos(node) {
+  return node?.pos || node?.type || '';
+}
+
+function isVerbLeaf(node) {
+  return isLeafNode(node) && VERB_POS.has(nodePos(node));
+}
+
+function isPunctLeaf(node) {
+  return isLeafNode(node) && PUNCT_POS.has(nodePos(node));
+}
+
+function isAuxForm(node) {
+  const pos = nodePos(node);
+  if (pos === 'MD' || pos === 'AUX') return true;
+  return AUX_SURFACES.has(cleanSurface(node?.surface).toLowerCase());
+}
+
+// Follow the auxiliary VP chain down to the VP that owns the main verb. A
+// nested VP is only treated as an auxiliary chain when the outer VP's direct
+// verb leaves are all auxiliaries (has eaten, was being chased); an infinitival
+// complement such as "wanted to leave" is therefore not mistaken for one.
+function headVpNode(gold, vpId) {
+  const nodes = gold?.payload?.nodes || {};
+  let node = nodes[vpId];
+  const seen = new Set();
+  while (node && !seen.has(node.id)) {
+    seen.add(node.id);
+    const children = node.children || [];
+    const directVerbs = children.filter(isVerbLeaf);
+    const nestedVp = children.find((child) => child.type === 'VP' && !isLeafNode(child));
+    if (nestedVp && directVerbs.length && directVerbs.every(isAuxForm)) {
+      node = nestedVp;
+      continue;
+    }
+    break;
+  }
+  return node;
+}
+
+function mainVerbLeaf(head) {
+  if (!head) return null;
+  const direct = (head.children || []).filter(isVerbLeaf);
+  if (direct.length) return direct[direct.length - 1];
+  let found = null;
+  const walk = (node) => {
+    for (const child of node.children || []) {
+      if (isVerbLeaf(child)) found = child;
+      else walk(child);
+    }
+  };
+  walk(head);
+  return found;
+}
+
+function verbLeavesUnder(gold, vpId) {
+  const root = gold?.payload?.nodes?.[vpId];
+  const out = [];
+  const walk = (node) => {
+    if (!node) return;
+    if (isVerbLeaf(node)) {
+      out.push(node);
+      return;
+    }
+    for (const child of node.children || []) walk(child);
+  };
+  walk(root);
+  return out.sort((a, b) => (a.span?.[0] ?? 0) - (b.span?.[0] ?? 0));
+}
+
+function auxiliaryLeaves(gold, vpId, main) {
+  if (!main) return [];
+  const mainStart = main.span?.[0] ?? 0;
+  return verbLeavesUnder(gold, vpId)
+    .filter((leaf) => leaf.id !== main.id && (leaf.span?.[0] ?? 0) < mainStart);
+}
+
+// The phrase-level children that follow the main verb: objects, complements,
+// particles, and modifiers, in reading order.
+function componentNodes(head, main) {
+  if (!head) return [];
+  const mainEnd = main?.span?.[1] ?? -1;
+  return (head.children || [])
+    .filter((child) => !isLeafNode(child) && !isPunctLeaf(child))
+    .filter((child) => (child.span?.[0] ?? 0) >= mainEnd)
+    .sort((a, b) => (a.span?.[0] ?? 0) - (b.span?.[0] ?? 0));
+}
+
+function describeNode(node) {
+  const label = PHRASE_LABELS[node?.type] || 'phrase';
+  return `the ${label} ${quoteSurface(node?.surface)}`;
+}
+
+function describeNodeList(nodes) {
+  return listText(nodes.map(describeNode));
+}
+
+function describeSentence(gold, section, example) {
+  const details = Object.values(gold?.payload?.node_details || {});
+  const vpDetail = details.find((detail) => detail.type === 'VP' && detail.constraint === 'C-PREDICATE')
+    || details.find((detail) => detail.type === 'VP');
+  if (!vpDetail) {
+    return `In ${quoteSurface(example)}, the model tree is ready, but no verb phrase was found to describe.`;
+  }
+
+  const vpSurface = cleanSurface(vpDetail.surface) || example;
+  const head = headVpNode(gold, vpDetail.id);
+  const main = mainVerbLeaf(head);
+  const auxiliaries = auxiliaryLeaves(gold, vpDetail.id, main);
+  const components = componentNodes(head, main);
+  const linking = /linking|copular/i.test(section?.name || '');
+  const hasObject = section?.hasObject !== false;
+  const sentenceText = cleanSurface(example);
+  const sentenceWithPunctuation = /[.!?]$/.test(sentenceText) ? sentenceText : `${sentenceText}.`;
+  const parts = [
+    `The sentence is ${quoteSurface(sentenceWithPunctuation)} The verb phrase is ${quoteSurface(vpSurface)} \u2014 the predicate of the clause.`,
+  ];
+
+  if (main) {
+    if (auxiliaries.length) {
+      const auxList = listText(auxiliaries.map((leaf) => quoteSurface(leaf.surface)));
+      if (auxiliaries.length === 1) {
+        parts.push(`The auxiliary verb is ${auxList}; it helps the main verb ${quoteSurface(main.surface)}.`);
+      } else {
+        parts.push(`The auxiliary verbs are ${auxList}; together they help the main verb ${quoteSurface(main.surface)}.`);
+      }
+    } else {
+      parts.push(`The main verb is ${quoteSurface(main.surface)}.`);
+    }
+  } else {
+    parts.push('The parse does not identify a main verb in this phrase.');
+  }
+
+  if (!hasObject && linking) {
+    if (components.length) {
+      const complement = cleanSurface(components.map((node) => node.surface).join(' '));
+      parts.push(`The linking verb is followed by the subject complement ${quoteSurface(complement)}. No direct object follows; the complement describes the subject.`);
+    } else {
+      parts.push('No subject complement follows the linking verb in this parse.');
+    }
+  } else if (!hasObject) {
+    if (components.length) {
+      parts.push(`The supporting ${components.length === 1 ? 'component is' : 'components are'} ${describeNodeList(components)}. There is no object or complement, so the verb phrase is intransitive.`);
+    } else {
+      parts.push('There is no object, complement, or supporting component, so the verb phrase is intransitive.');
+    }
+    if (!auxiliaries.length) parts.push('No auxiliary verbs are present.');
+  } else {
+    const nounPhrases = components.filter((node) => node.type === 'NP');
+    const prepositional = components.filter((node) => node.type === 'PP');
+    const others = components.filter((node) => node.type !== 'NP' && node.type !== 'PP');
+    const subtype = section?.name || '';
+
+    if (/ditransitive/i.test(subtype)) {
+      if (nounPhrases.length >= 2) {
+        parts.push(`It takes two objects: the indirect object is ${describeNode(nounPhrases[0])}, and the direct object is ${describeNode(nounPhrases[1])}.`);
+        const extras = [...nounPhrases.slice(2), ...prepositional, ...others];
+        if (extras.length) {
+          parts.push(`The supporting ${extras.length === 1 ? 'component is' : 'components are'} ${describeNodeList(extras)}.`);
+        }
+      } else if (nounPhrases.length === 1 && prepositional.length) {
+        parts.push(`Its direct object is ${describeNode(nounPhrases[0])}, and the prepositional phrase ${quoteSurface(prepositional[0].surface)} names the recipient.`);
+        const extras = [...prepositional.slice(1), ...others];
+        if (extras.length) {
+          parts.push(`The supporting ${extras.length === 1 ? 'component is' : 'components are'} ${describeNodeList(extras)}.`);
+        }
+      } else if (nounPhrases.length === 1) {
+        parts.push(`Its direct object is ${describeNode(nounPhrases[0])}.`);
+      } else {
+        parts.push('This parse does not show a direct object after the verb.');
+      }
+    } else if (/complex transitive/i.test(subtype)) {
+      // Benepar often wraps the object + object complement in a small-clause
+      // S ("considered [the workflow inefficient]"). Unwrap that S so the
+      // object and the complement can be named separately.
+      const expanded = components.flatMap((node) => (
+        node.type === 'S' ? (node.children || []).filter((child) => !isPunctLeaf(child)) : [node]
+      ));
+      const direct = expanded.find((node) => node.type === 'NP') || expanded[0] || null;
+      const complement = direct
+        ? expanded.find((node) => node !== direct
+          && ['ADJP', 'ADVP', 'NP', 'PP'].includes(node.type)
+          && (node.span?.[0] ?? 0) >= (direct.span?.[1] ?? 0))
+        : null;
+      if (direct) parts.push(`Its direct object is ${describeNode(direct)}.`);
+      if (complement) {
+        parts.push(`The object complement is ${describeNode(complement)}; it describes that object.`);
+      } else {
+        parts.push('This parse does not show a separate object complement.');
+      }
+      const extras = expanded.filter((node) => node !== direct && node !== complement);
+      if (extras.length) {
+        parts.push(`The supporting ${extras.length === 1 ? 'component is' : 'components are'} ${describeNodeList(extras)}.`);
+      }
+    } else {
+      const direct = nounPhrases[0] || components[0] || null;
+      if (direct) parts.push(`Its direct object is ${describeNode(direct)}.`);
+      else parts.push('This parse does not show a direct object after the verb.');
+      const extras = components.filter((node) => node !== direct);
+      if (extras.length) {
+        parts.push(`The supporting ${extras.length === 1 ? 'component is' : 'components are'} ${describeNodeList(extras)}.`);
+      }
+    }
+    if (!auxiliaries.length) parts.push('No auxiliary verbs are present.');
+  }
+
+  return parts.join(' ');
+}
+
 
 // Show one example of the open lesson: sync the top input, re-render the
 // lesson panel (so its step-by-step guide matches), then load it on the canvas.
@@ -1290,6 +1834,11 @@ async function startChallenge(lesson, example, onDone) {
       onDone?.(ok);
     },
   });
+  // Module lessons are now read-only and single-unit lessons have no Model
+  // state to return to, so the builder's "Show model tree" escape hatch is
+  // never needed in a lesson practice session.
+  const modelBtn = document.querySelector('#builderModel');
+  if (modelBtn) modelBtn.hidden = true;
   // Lesson practice shows the step-by-step guide card docked at the canvas's
   // bottom-left when the lesson has numbered build steps; module-style
   // lessons (sections, no steps) teach by building, so they get no card.
@@ -1316,11 +1865,28 @@ export function clearActiveLesson() {
   closeGuideCard();
   closeLessonsOverlay();
   closeSubpanel();
+  // A module lesson may have left its read-only tree in the renderer even while
+  // Practice hid the canvas. Drop it here as well as in teardown so closing the
+  // builder cannot reveal a ghost tree; only show the empty state when a lesson
+  // was actually open (opening a side panel must leave the tutor's tree alone).
+  const wasLesson = document.body.classList.contains('lesson-view');
+  const clearedModel = state.controller?.clearModelTree?.() === true;
+  if (wasLesson || clearedModel) {
+    document.querySelector('#emptyTreeState')?.classList.remove('hidden');
+  }
   state.view = 'lessons';
   state.lessonIndex = null;
   state.exampleIndex = 0;
   state.lessonPage = 1;
   state.sectionIndex = 0;
+  state.goldLoading = null;
+  state.goldError = null;
+  // Invalidate any in-flight gold request so it cannot paint a canvas after
+  // the lesson has closed.
+  goldRequest += 1;
+  const modelBtn = $('#builderModel');
+  if (modelBtn) modelBtn.hidden = true;
+  document.body.classList.remove('lesson-model', 'lesson-practice', 'module-lesson');
   // Hand the upper-right pane back to the Grammar Tutor.
   document.body.classList.remove('lesson-view');
   const host = $('#quizQuestHost');
@@ -1561,15 +2127,27 @@ function guideTargetFor(step) {
 // Gold data straight from SynTutor's own parser
 // ---------------------------------------------------------------------------
 async function loadGold(sentence) {
-  const res = await fetch('/api/parse', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text: sentence }),
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const payload = await res.json();
-  const tree = apiTree(payload.tree);
-  return { tree, leaves: leavesWithTags(tree) };
+  // A rapid second click (or a task started while the model is loading) must
+  // share the first request instead of firing another identical parse.
+  const pending = state.pendingGold.get(sentence);
+  if (pending) return pending;
+  const request = (async () => {
+    const res = await fetch('/api/parse', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: sentence }),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const payload = await res.json();
+    const tree = apiTree(payload.tree);
+    return { tree, leaves: leavesWithTags(tree), payload };
+  })();
+  state.pendingGold.set(sentence, request);
+  try {
+    return await request;
+  } finally {
+    state.pendingGold.delete(sentence);
+  }
 }
 
 // Reduce /api/parse's node tree to the {type, children|leaf, surface} shape the

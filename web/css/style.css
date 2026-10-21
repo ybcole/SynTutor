@@ -1018,6 +1018,47 @@ body.lesson-view #lessonGuideHost {
    take half the pane away from the lesson guide. */
 body.lesson-view #explainNode:empty { display: none; }
 
+/* Module lessons (Verb phrase) use one scrolling sidebar column: the lesson
+   cards replace both the input pane and the split explain pane. #quizQuestHost
+   lives inside .pane-input, so that pane stays as the scroll host. */
+@media (min-width: 761px) {
+  body.lesson-view.module-lesson .pane-side {
+    grid-template-rows: minmax(0, 1fr);
+  }
+  body.lesson-view.module-lesson .pane-explain,
+  body.lesson-view.module-lesson #rowResizer,
+  body.lesson-view.module-lesson .input-row,
+  body.lesson-view.module-lesson #inputClearBtn {
+    display: none;
+  }
+  body.lesson-view.module-lesson .pane-input {
+    border: none;
+    background: transparent;
+    overflow: visible;
+  }
+  body.lesson-view.module-lesson #quizQuestHost {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 2px;
+  }
+}
+@media (max-width: 760px) {
+  body.lesson-view.module-lesson .input-row,
+  body.lesson-view.module-lesson #inputClearBtn,
+  body.lesson-view.module-lesson .pane-explain,
+  body.lesson-view.module-lesson #rowResizer {
+    display: none;
+  }
+  body.lesson-view.module-lesson #quizQuestHost {
+    overflow: visible;
+    max-height: none;
+    /* Clear the floating hamburger so the lesson-library button stays usable;
+       the inset keeps the card borders off the pane's own border. */
+    padding: 46px 12px 16px;
+  }
+}
+
 .canvas-wrap {
   position: relative;
   display: flex;

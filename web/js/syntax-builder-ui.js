@@ -163,9 +163,18 @@ export function openBuilderView(opts = {}) {
   state.challenge = opts.challenge || null;
   state.onComplete = opts.onComplete || null;
   state.solved = false;
-  if (opts.model) state.model = opts.model;
   if (opts.reset) newModel();
-  if (state.challenge) seedForChallenge(state.challenge);
+  if (opts.model) {
+    // A caller may supply a fully seeded model (e.g. a deliberately broken
+    // tree for a repair task). Reset every transient editor state so nothing
+    // from the previous exercise survives the swap.
+    state.model = opts.model;
+    resetTransientState();
+  }
+  if (state.challenge && !opts.model) seedForChallenge(state.challenge);
+  // A fresh exercise starts from a known viewport; a previous pan/zoom must
+  // not leave the new word row off-screen.
+  if (opts.reset || opts.model) state.view = { ox: 60, oy: 60, scale: 1 };
 
   // A quiz shows no builder chrome at all — the sentence lives in the input box
   // and the tree is checked automatically. Lesson practice keeps a slim hint
@@ -175,9 +184,14 @@ export function openBuilderView(opts = {}) {
   // affordances out where they apply.
   const practice = Boolean(state.challenge) && Boolean(opts.practice);
   bar.hidden = Boolean(state.challenge) && !practice;
+  // The "Show model tree" escape hatch only exists for lesson practice; it is
+  // wired by tree-quiz.js and must never appear in the standalone builder.
+  const modelBtn = document.getElementById('builderModel');
+  if (modelBtn) modelBtn.hidden = !practice;
   // The builder owns the input panel now: it mirrors the canvas, so it gets
   // the builder's prompt and stays read-only.
   document.body.classList.add('builder-active');
+  document.body.classList.remove('lesson-model');
   setInputPlaceholder(BUILDER_PLACEHOLDER);
   const target = document.getElementById('builderTarget');
   const check = document.getElementById('builderCheck');
@@ -212,6 +226,14 @@ export function openBuilderView(opts = {}) {
   }
   hideToast();
   resize();
+  if (opts.model) {
+    const words = Object.values(state.model.nodes)
+      .filter((n) => n.kind === NODE.WORD)
+      .sort((a, b) => a.x - b.x);
+    if (words.length) measureWords(words);
+    applyTreeLayout({ fit: true });
+    syncCanvasToInput();
+  }
   canvas.focus();
   explainSelected();
   state.treeCorrect = treeIsComplete();
@@ -233,7 +255,11 @@ function seedForChallenge(challenge) {
   if (!leaves.length) return;
   if (challenge.kind === 'tokens') return;
   const withTags = challenge.kind !== 'tags';
-  const words = seedWords(state.model, leaves, 60, 360, withTags);
+  // Keep the seeded word row on screen on short (mobile) canvases instead of
+  // parking it below the fold at the desktop height.
+  const canvasH = state.canvas?.parentElement?.clientHeight || 480;
+  const rowY = Math.max(140, Math.min(360, canvasH - 120));
+  const words = seedWords(state.model, leaves, 60, rowY, withTags);
   measureWords(words);
 }
 
@@ -284,20 +310,34 @@ export function setChallenge(challenge, onComplete) {
   openBuilderView({ challenge, onComplete });
 }
 
-export function newModel() {
-  state.model = createModel();
+// Drop every transient interaction (selection, drag/link/marquee, hover, a
+// rejected-connection flash, an open menu/editor) so a new model or a supplied
+// repair model starts clean.
+function resetTransientState() {
   state.selection.clear();
   state.drag = null;
+  state.pan = null;
   state.link = null;
   state.marquee = null;
+  state.hover = null;
+  state.hoverTarget = null;
+  state.hoverEndpoint = null;
+  state.reject = null;
   state.snapped = false;
   state.snappedLayout = null;
   state.nodeErrors = new Map();
   if (state.rightHoldTimer) { clearTimeout(state.rightHoldTimer); state.rightHoldTimer = null; }
   state.holdingRight = false;
   state.rightDownStart = null;
+  closeMenu();
+  closeEditor();
   const target = document.getElementById('builderTarget');
   if (target) target.classList.remove('builder-target-ok');
+}
+
+export function newModel() {
+  state.model = createModel();
+  resetTransientState();
 }
 
 // The rail highlight is owned by main.js (setActiveNav): the builder only
@@ -1062,6 +1102,55 @@ function changed() {
   // the canvas again.
   syncCanvasToInput();
   if (state.challenge && !state.solved) checkTree();
+  // Structural feedback is independent of the gold comparison: a detached
+  // branch or an empty phrase box turns red as soon as the edit lands. The
+  // standalone builder keeps its existing Build-tree validation instead.
+  if (state.challenge) flagStructuralIssues();
+}
+
+// Paint disconnected nodes and empty phrase boxes. Skipped while the model is
+// still only a word row (task 1 starts that way; every word is parentless by
+// design until the learner adds the first phrase box).
+function flagStructuralIssues() {
+  const nodes = Object.values(state.model.nodes);
+  if (!nodes.some((n) => n.kind === NODE.PHRASE)) return;
+  const reach = (start) => {
+    const seen = new Set();
+    const stack = [start];
+    while (stack.length) {
+      const n = stack.pop();
+      if (!n || seen.has(n.id)) continue;
+      seen.add(n.id);
+      for (const child of childrenOf(state.model, n.id)) stack.push(child);
+    }
+    return seen;
+  };
+  const roots = nodes.filter((n) => !n.parent);
+  let main = null;
+  let best = -1;
+  for (const root of roots) {
+    const size = reach(root).size;
+    if (size > best) {
+      best = size;
+      main = root;
+    }
+  }
+  const seen = main ? reach(main) : new Set();
+  for (const n of nodes) {
+    // Bare words are expected to sit unconnected while the learner is still
+    // assembling the tree; a detached *phrase*, however, is a real orphan.
+    if (n.kind === NODE.PHRASE && !seen.has(n.id) && !state.nodeErrors.has(n.id)) {
+      state.nodeErrors.set(n.id, disconnectedDetail(n));
+    }
+  }
+  for (const n of nodes) {
+    if (n.kind === NODE.PHRASE
+        && childrenOf(state.model, n.id).length === 0
+        && !state.nodeErrors.has(n.id)) {
+      state.nodeErrors.set(n.id, emptyPhraseDetail(n));
+    }
+  }
+  draw();
 }
 
 // True when every node is connected under a single root — i.e. the tree is
@@ -1156,6 +1245,12 @@ function checkTree() {
   }
 
   // phrases / full: compare the phrase structure against SynTutor's parse.
+  // A full-tree task is only done when every box belongs to one connected
+  // tree; otherwise stray words could be ignored by the comparison.
+  if (challenge.kind === 'full' && !treeIsComplete()) {
+    state.onStatus('Connect every word and phrase into one tree first.');
+    return;
+  }
   const tree = toTree(state.model);
   if (!tree) {
     state.onStatus('Add a phrase box (right-click) and connect everything first.');
@@ -1180,9 +1275,56 @@ function checkTree() {
   if (result.extra.length) {
     parts.push(`extra ${result.extra.map((s) => `${s.type} (${s.start}-${s.end})`).join(', ')}`);
   }
+  const message = `Not quite — ${parts.join('; ')}.`;
   mark(false);
-  state.onStatus(`Not quite — ${parts.join('; ')}.`);
+  flagMismatchedBranches(result);
+  // A wrong branch gets an immediate on-canvas toast; a tree that is merely
+  // unfinished (missing constituents, no extras) only updates the status line
+  // so the hint does not nag after every added box.
+  if (result.extra.length) showToast(message, false);
+  state.onStatus(message);
   state.onComplete?.(false, result);
+}
+
+// Paint the phrase boxes that the learner drew but SynTutor's parse does not
+// contain. Missing constituents can only be described (there is no box to
+// paint), but an extra branch gets an immediate red mark on the canvas.
+function flagMismatchedBranches(result) {
+  if (!result || !result.extra?.length) return;
+  const bySpan = new Map();
+  const root = Object.values(state.model.nodes)
+    .find((n) => !n.parent && n.kind === NODE.PHRASE);
+  if (!root) return;
+  let cursor = 0;
+  const walk = (node) => {
+    const kids = childrenOf(state.model, node.id);
+    if (!kids.length) {
+      const start = cursor;
+      cursor += 1;
+      return;
+    }
+    const start = cursor;
+    for (const kid of kids) walk(kid);
+    bySpan.set(`${node.type}[${start}-${cursor}]`, node);
+  };
+  walk(root);
+  for (const span of result.extra) {
+    const node = bySpan.get(`${span.type}[${span.start}-${span.end}]`);
+    if (!node || state.nodeErrors.has(node.id)) continue;
+    state.nodeErrors.set(node.id, {
+      type: node.type,
+      surface: nodeLeafText(node.id),
+      status: 'error',
+      role: 'Not in SynTutor’s parse',
+      text: `This ${node.type} covers “${nodeLeafText(node.id)}”, but SynTutor’s parse does not group those words that way.`,
+      remediation: {
+        violation: `The ${node.type} branch adds a constituent the parser does not license here.`,
+        suggested_fix: 'Re-attach its children to the constituent that actually dominates them, or remove the extra phrase box.',
+        alternative_fix: null,
+      },
+    });
+  }
+  draw();
 }
 
 // Word boxes ordered left-to-right by x (their reading order).
@@ -1325,14 +1467,11 @@ function computeTreeLayout() {
 }
 
 // Re-arrange every node into the hierarchical syntax-tree layout so it matches
-// the tree SynTutor's generator produces. Also re-validates every word so the
-// red "unknown word" styling clears once the tree is structurally complete.
-async function buildTree() {
+// the tree SynTutor's generator produces. Returns the layout map (or null when
+// there is no connected tree). `fit` controls whether the viewport is refitted.
+function applyTreeLayout({ fit = true } = {}) {
   const result = computeTreeLayout();
-  if (!result) {
-    state.onStatus('Build a connected tree first — drag connector dots to link nodes.');
-    return;
-  }
+  if (!result) return null;
   const { layout } = result;
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   for (const [id, pos] of layout) {
@@ -1347,8 +1486,7 @@ async function buildTree() {
     maxX = Math.max(maxX, n.x + n.w);
     maxY = Math.max(maxY, n.y + n.h);
   }
-  // Fit the view to the built tree so it reads like the generated tree (centred
-  // and scaled to the canvas).
+  if (!fit) return layout;
   const cw = state.canvas.clientWidth;
   const ch = state.canvas.clientHeight;
   const totalW = Math.max(maxX - minX, 1);
@@ -1360,6 +1498,15 @@ async function buildTree() {
     state.view.scale = scale;
     state.view.ox = (cw - totalW * scale) / 2 - minX * scale;
     state.view.oy = (ch - totalH * scale) / 2 - minY * scale;
+  }
+  return layout;
+}
+
+async function buildTree() {
+  const layout = applyTreeLayout({ fit: true });
+  if (!layout) {
+    state.onStatus('Build a connected tree first — drag connector dots to link nodes.');
+    return;
   }
   changed();
   state.snapped = true;
@@ -1443,11 +1590,9 @@ async function validateBuiltTree() {
       if (res.ok) {
         const payload = await res.json();
         const summary = payload.summary || {};
-        if (summary.verdict === 'ungrammatical') {
+        if (summary.valid === false) {
           verdictLine = summary.explanation
             || `SynTutor reads “${sentence}” as ungrammatical.`;
-        } else if (summary.verdict === 'grammatical') {
-          verdictLine = null;
         }
       }
     } catch {
