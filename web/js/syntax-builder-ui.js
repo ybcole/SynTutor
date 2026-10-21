@@ -205,9 +205,8 @@ export function openBuilderView(opts = {}) {
   if (state.challenge) seedForChallenge(state.challenge);
 
   // Two builder stages live inside a lesson: the practice stage (Step 2) and
-  // the quiz stage (Step 3). Both keep the canvas controls and the affordance
-  // hint up; the standalone builder and the standalone quiz keep their own
-  // chrome.
+  // the quiz stage (Step 3). The lesson's right panel owns the actions in
+  // both, so the canvas carries no second way to submit a check.
   const practice = Boolean(opts.practice);
   const quiz = Boolean(opts.quiz);
   const interactive = practice || quiz;
@@ -217,6 +216,8 @@ export function openBuilderView(opts = {}) {
   document.body.classList.add('builder-active');
   setInputPlaceholder(BUILDER_PLACEHOLDER);
   const target = document.getElementById('builderTarget');
+  const clear = document.getElementById('builderClear');
+  const snap = document.getElementById('builderSnap');
   const check = document.getElementById('builderCheck');
   const next = document.getElementById('builderNext');
   const done = document.getElementById('builderDone');
@@ -230,15 +231,26 @@ export function openBuilderView(opts = {}) {
     state.hintBase = '';
     setCanvasHint('');
   } else if (interactive) {
-    // Lesson practice and the lesson quiz both float the actions and the
-    // hint. The quiz can also check on demand; the practice tree checks
-    // itself as it is built.
+    // Lesson practice and the lesson quiz keep the affordance hint, but the
+    // actions live in the lesson's right panel: the canvas never offers a
+    // second way to submit a check.
     state.hintBase = opts.hint || (practice ? PRACTICE_HINT : QUIZ_HINT);
     setCanvasHint(state.hintBase);
     if (target) target.hidden = true;
-    if (check) check.hidden = !quiz;
+    if (check) check.hidden = true;
     if (next) next.hidden = true;
     if (done) done.hidden = true;
+    if (practice) {
+      // Guided practice is a walkthrough: the canvas stays clean, and the
+      // step pager in the right panel drives it.
+      bar.hidden = true;
+    } else {
+      // The quiz keeps the two harmless canvas actions — clear the canvas,
+      // reset the layout — and nothing else.
+      bar.hidden = false;
+      if (clear) clear.hidden = false;
+      if (snap) snap.hidden = false;
+    }
   } else {
     // A standalone quiz shows no builder chrome at all: the action buttons
     // and the practice hint both stay off the canvas.
@@ -1145,6 +1157,11 @@ function hideToast() {
 let checkResultHandler = null;
 export function setCheckResultHandler(fn) { checkResultHandler = fn || null; }
 
+// A listener for every change to the built tree, so the lesson's diagnostics
+// can follow the learner while they build.
+let modelChangeHandler = null;
+export function setModelChangeHandler(fn) { modelChangeHandler = fn || null; }
+
 // Run a check on the current tree — the lesson's quiz stage asks for it.
 export function checkBuilderTree() {
   if (!state.challenge) return false;
@@ -1624,6 +1641,8 @@ function draw() {
   if (!state.ctx) return;
   cancelAnimationFrame(state.frame);
   state.frame = requestAnimationFrame(render);
+  // The tree changed: whoever watches it (the lesson's diagnostics) follows.
+  modelChangeHandler?.();
 }
 
 function render() {

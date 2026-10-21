@@ -30,8 +30,8 @@
 //   openQuizView, closeQuizView, isQuizOpen, initQuiz, quizInputHint,
 //   clearActiveLesson
 
-import { openBuilderView, closeBuilderView, setBuilderCloseHandler, builderModel, canvasGuideBox, setCanvasHint, setHintBelowActions, setCheckResultHandler, checkBuilderTree } from './syntax-builder-ui.js';
-import { leavesWithTags, NODE, PHRASE_NODE_TYPES } from './syntax-builder.js';
+import { openBuilderView, closeBuilderView, setBuilderCloseHandler, builderModel, canvasGuideBox, setCanvasHint, setHintBelowActions, setCheckResultHandler, setModelChangeHandler, checkBuilderTree } from './syntax-builder-ui.js';
+import { leavesWithTags, childrenOf, NODE, PHRASE_NODE_TYPES } from './syntax-builder.js';
 import { isGuestSession, subscribeAuthState, openAuthModal, recordGuestProgress } from './auth.js';
 import { XP_PER_CORRECT } from './level.js';
 
@@ -66,7 +66,7 @@ const LESSONS = [
     formula: 'NP → (DT) (JJ)* NN',
     goal: 'Recognise a noun phrase by asking "who or what?" about the clause verb.',
     rule: 'A noun phrase keeps its modifiers flat around the noun head: determiner or possessive, then any adjectives, then the noun - all direct children of one NP. So "the big cat" is (NP (DT the) (JJ big) (NN cat)).',
-    detail: 'A noun phrase names a person, thing, or idea. Its head is a noun (NN, NNS, NNP) or a pronoun (PRP), and the phrase serves as the subject or object of a clause. Determiners (DT), possessives (PRP$) and adjectives (JJ/JJR/JJS) sit in front of the head as plain sister leaves - SynTutor does not wrap them in an adjective box, so "the big cat" is a flat NP over DT + JJ + NN. A prepositional phrase completes the noun from behind, and when it brings its own object the parser nests a small inner NP: "a student of physics" is (NP (NP (DT a) (NN student)) (PP (IN of) (NP (NNS physics)))). To recognize an NP, ask "who or what?" about the clause verb - the answer is the NP.',
+    detail: 'A noun phrase names a person, thing, or idea. Its head is a noun (NN, NNS, NNP) or a pronoun (PRP), and the phrase serves as the subject or object of a clause. Determiners (DT), possessives (PRP$) and adjectives (JJ/JJR/JJS) sit in front of the head as plain sister leaves - SynTutor does not wrap them in an adjective box, so "the big cat" is a flat NP over DT + JJ + NN. A prepositional phrase completes the noun from behind, and when it brings its own object the parser nests a small inner NP: "a student of physics" is (NP (NP (DT a) (NN student)) (PP (IN of) (NP (NNS physics)))).',
     steps: [
       'Read the pre-placed leaves and their POS tags: the determiner (DT) or possessive (PRP$), any adjectives (JJ/JJR/JJS), the noun head (NN/NNS), and any prepositional words (IN ...) that follow.',
       'Right-click the canvas and add the NP box; drag its connector dot onto each leaf in reading order - determiner or possessive first, then the adjective(s), then the noun head.',
@@ -80,7 +80,7 @@ const LESSONS = [
     formula: 'ADJP → (RB) JJ (PP)',
     goal: 'Recognise an adjective phrase by asking "what kind?" about a noun.',
     rule: 'An adjective phrase heads on an adjective: an optional degree adverb in front and an optional PP after it - (RB) + JJ + (PP), all direct children of one ADJP.',
-    detail: 'An adjective phrase describes a quality and is headed by an adjective (JJ, JJR, JJS). It works either attributively, inside a noun phrase ("the very happy child"), or predicatively, as the complement of a linking verb ("she is very happy"). A degree adverb (RB) modifies the head from in front and a prepositional phrase (PP) completes it from behind - both attach directly to the ADJP as sister leaves: "very happy" is (ADJP (RB very) (JJ happy)) and "fond of music" is (ADJP (JJ fond) (PP (IN of) (NP (NN music)))). Recognize it by asking "what kind?" or "how ...?" about a noun: the head is the last adjective of the phrase.',
+    detail: 'An adjective phrase describes a quality and is headed by an adjective (JJ, JJR, JJS). It works either attributively, inside a noun phrase ("the very happy child"), or predicatively, as the complement of a linking verb ("she is very happy"). A degree adverb (RB) modifies the head from in front and a prepositional phrase (PP) completes it from behind - both attach directly to the ADJP as sister leaves: "very happy" is (ADJP (RB very) (JJ happy)) and "fond of music" is (ADJP (JJ fond) (PP (IN of) (NP (NN music)))).',
     steps: [
       'Find the head adjective (JJ) and everything attached to it: a degree adverb (RB) before the head and/or a prepositional phrase (PP) after it.',
       'Right-click the canvas and add the ADJP box; drag its connector dot onto the degree adverb (if any) and the adjective head, in reading order.',
@@ -94,7 +94,7 @@ const LESSONS = [
     formula: 'ADVP → (RB) ADV',
     goal: 'Spot an adverb phrase by asking "how?", "when?" or "where?" about the verb.',
     rule: 'An adverb phrase heads on an adverb, with an optional degree adverb in front: (RB) + ADV, both direct children of one ADVP.',
-    detail: 'An adverb phrase tells how, when, where, or to what degree, and its head is the last adverb of the phrase (RB, RBR, RBS). A degree adverb (RB) stands in front of the head as a sister leaf - "very quickly" is (ADVP (RB very) (RB quickly)) - and the pair modifies verbs, adjectives, or other adverbs ("runs very quickly"). Some adverb phrases act as clausal adjuncts ("rarely does he complain"). To recognize one, ask "how?", "when?", or "where?" about the verb or adjective it attaches to.',
+    detail: 'An adverb phrase tells how, when, where, or to what degree, and its head is the last adverb of the phrase (RB, RBR, RBS). A degree adverb (RB) stands in front of the head as a sister leaf - "very quickly" is (ADVP (RB very) (RB quickly)) - and the pair modifies verbs, adjectives, or other adverbs ("runs very quickly"). Some adverb phrases act as clausal adjuncts ("rarely does he complain").',
     steps: [
       'Spot the adverb head (RB/RBR/RBS) and any degree adverb (RB) that modifies it.',
       'Right-click the canvas and add the ADVP box; drag its connector dot onto the degree adverb first, then the adverb head.',
@@ -108,7 +108,7 @@ const LESSONS = [
     formula: 'VP → (AUX) VP',
     goal: 'Recognise a verb phrase by the finite verb and everything that belongs with it.',
     rule: 'A verb phrase is built around its verb: main verb first, then its complements (NP, PP). Auxiliaries stack into an outer VP around an inner one - "is running" is (VP (VBZ is) (VP (VBG running))).',
-    detail: 'A verb phrase is headed by a verb (VB, VBZ, VBD, VBG, VBN, VBP, MD) and carries the clause predicate: it says what the subject does or is. Auxiliaries and modals sit in an outer VP that wraps an inner VP holding the main verb and its complements: "has eaten the cake" is (VP (VBZ has) (VP (VBN eaten) (NP (DT the) (NN cake)))). The direct-object noun phrase (NP) and any prepositional phrase (PP) follow the main verb as their own boxes. Recognize a VP because it contains the finite verb together with everything that belongs with it, and it agrees with the subject ("the dog chased the ball").',
+    detail: 'A verb phrase is headed by a verb (VB, VBZ, VBD, VBG, VBN, VBP, MD) and carries the clause predicate: it says what the subject does or is. Auxiliaries and modals sit in an outer VP that wraps an inner VP holding the main verb and its complements: "has eaten the cake" is (VP (VBZ has) (VP (VBN eaten) (NP (DT the) (NN cake)))). The direct-object noun phrase (NP) and any prepositional phrase (PP) follow the main verb as their own boxes.',
     steps: [
       'Identify the verb leaves: any auxiliary or modal, the main verb, and the object or complement that follows.',
       'Right-click the canvas and add the VP box; drag its connector dot onto the verb word(s) in reading order.',
@@ -123,7 +123,7 @@ const LESSONS = [
     formula: 'PP → IN NP',
     goal: 'Recognise a prepositional phrase by its leading preposition.',
     rule: 'A prepositional phrase is a preposition followed by its noun-phrase object: IN → NP. So "in the garden" is (PP (IN in) (NP (DT the) (NN garden))).',
-    detail: 'A prepositional phrase is headed by a preposition (IN) and always takes a noun-phrase object (NP). It usually expresses place, time, manner, or possession ("in the garden", "of physics") and attaches to the word it modifies - a noun, verb, or adjective. The preposition is the head and comes first; everything after it forms the object NP, which may be flat ("on the small table" keeps DT + JJ + NN directly under the NP) or a bare noun ("of physics" is an NP over NN alone). Recognize it by the leading preposition: a phrase that begins with in, on, of, to, or with is almost certainly a PP with the pattern IN → NP.',
+    detail: 'A prepositional phrase is headed by a preposition (IN) and always takes a noun-phrase object (NP). It usually expresses place, time, manner, or possession ("in the garden", "of physics") and attaches to the word it modifies - a noun, verb, or adjective. The preposition is the head and comes first; everything after it forms the object NP, which may be flat ("on the small table" keeps DT + JJ + NN directly under the NP) or a bare noun ("of physics" is an NP over NN alone).',
     steps: [
       'Identify the preposition (IN) and the noun-phrase object that follows it (determiner + adjective(s) + noun, or a pronoun).',
       'Right-click the canvas and add the PP box; drag its connector dot onto the preposition.',
@@ -137,7 +137,7 @@ const LESSONS = [
     formula: 'QP → (JJR) (IN) CD',
     goal: 'Recognise a quantifier phrase by the number it heads.',
     rule: 'A quantifier phrase expresses an amount around a number head: (JJR) + (IN) + CD, sitting inside a noun phrase - "more than five" is (QP (JJR More) (IN than) (CD five)).',
-    detail: 'A quantifier phrase expresses an amount or quantity. Its head is a cardinal number (CD), often modified by a comparative (JJR, e.g. "more") and linked by a comparative preposition (IN, e.g. "than"); all three words hang directly under the QP. Quantifier phrases sit inside noun phrases ("more than five people" puts the QP in front of the noun) or act as measure expressions in their own right. Recognize one when the phrase answers "how many?" or "how much?" and ends in a number.',
+    detail: 'A quantifier phrase expresses an amount or quantity. Its head is a cardinal number (CD), often modified by a comparative (JJR, e.g. "more") and linked by a comparative preposition (IN, e.g. "than"); all three words hang directly under the QP. Quantifier phrases sit inside noun phrases ("more than five people" puts the QP in front of the noun) or act as measure expressions in their own right.',
     steps: [
       'Pick out the quantity leaves: the comparative (JJR) if there is one, the linking word than (IN), and the cardinal number (CD) head.',
       'Right-click the canvas and add the QP box; drag its connector dot onto each leaf in reading order - comparative, than, number.',
@@ -151,7 +151,7 @@ const LESSONS = [
     formula: 'S → NP VP (.?)',
     goal: 'Recognise a clause by its subject–predicate pairing.',
     rule: 'A clause pairs a subject noun phrase with a predicate verb phrase under one S box, and keeps the sentence-final punctuation as its last child: NP → VP → (.).',
-    detail: 'A clause (S) is the complete sentence-level unit: it pairs a subject noun phrase with a predicate verb phrase (NP → VP), and SynTutor keeps the sentence-final punctuation - (. .) or (. ?) - as a third child of the S. The subject is what the sentence is about; the VP says something about it, and the verb inside the VP determines which complements are needed. Recognize a full clause by that subject-predicate pairing - unlike a fragment, it can stand alone as a grammatical sentence.',
+    detail: 'A clause (S) is the complete sentence-level unit: it pairs a subject noun phrase with a predicate verb phrase (NP → VP), and SynTutor keeps the sentence-final punctuation - (. .) or (. ?) - as a third child of the S. The subject is what the sentence is about; the VP says something about it, and the verb inside the VP determines which complements are needed.',
     steps: [
       'Split the sentence into its three biggest pieces: the subject NP (who or what the sentence is about), the predicate VP, and the final punctuation leaf (. or ?).',
       'Right-click the canvas and add the S box first; drag its connector dot onto the subject NP and the predicate VP in reading order.',
@@ -167,7 +167,7 @@ const LESSONS = [
     formula: 'SQ → AUX NP VP (.?)',
     goal: 'Recognise a yes/no question by the inverted auxiliary.',
     rule: 'A yes/no question inverts the auxiliary and the subject: fronted AUX, then the subject NP, then the VP - "Is it raining?" is (SQ (VBZ Is) (NP (PRP it)) (VP (VBG raining)) (. ?)).',
-    detail: 'A yes/no question (SQ) is a clause whose auxiliary has moved in front of the subject ("Is it raining?", "Did she leave?"). It expects a yes or no answer, so no wh-phrase is involved; the pattern is AUX → NP → VP with the auxiliary or modal at the very front and the subject directly after it, plus the question mark on a standalone question. A copula may carry the whole predicate ("Where is the cat?" leaves SQ with just AUX + NP), and when the subject is the wh-word of a higher question it sits outside ("Who ate the cake?" keeps only the VP inside SQ). Inside a wh-question the same SQ nests under SBARQ and the question mark belongs to the SBARQ instead. Recognize one by that inverted order - verb before subject - usually ending in a question mark.',
+    detail: 'A yes/no question (SQ) is a clause whose auxiliary has moved in front of the subject ("Is it raining?", "Did she leave?"). It expects a yes or no answer, so no wh-phrase is involved; the pattern is AUX → NP → VP with the auxiliary or modal at the very front and the subject directly after it, plus the question mark on a standalone question. A copula may carry the whole predicate ("Where is the cat?" leaves SQ with just AUX + NP), and when the subject is the wh-word of a higher question it sits outside ("Who ate the cake?" keeps only the VP inside SQ). Inside a wh-question the same SQ nests under SBARQ and the question mark belongs to the SBARQ instead.',
     steps: [
       'Find the fronted auxiliary or modal and the subject NP that follows it - a wh-word in front fills the subject role, so the SQ may start straight with its VP.',
       'Right-click the canvas and add the SQ box; drag its connector dot onto the auxiliary first, then the subject NP.',
@@ -181,7 +181,7 @@ const LESSONS = [
     formula: 'SBARQ → WH* SQ (.?)',
     goal: 'Recognise a wh-question by the fronted wh-phrase plus subject–auxiliary inversion.',
     rule: 'A wh-question stacks three pieces under one SBARQ box: the fronted wh-phrase, an inner SQ with the inverted clause, and the question mark.',
-    detail: 'A wh-question (SBARQ) begins with a wh-phrase - a wh-noun phrase (WHNP), wh-adjective phrase, wh-adverb phrase (WHADVP), or wh-prepositional phrase (WHPP) - followed by an inverted clause (SQ) whose auxiliary has moved past the subject, then the question mark as the final child: "What did you say?" is (SBARQ (WHNP (WP What)) (SQ (VBD did) (NP (PRP you)) (VP (VB say))) (. ?)). Wh-questions ask for missing information, the wh-word is normally the first word, and the punctuation sits above the SQ, not inside it. Recognize one by the fronted wh-word plus subject-auxiliary inversion, with a question mark at the end.',
+    detail: 'A wh-question (SBARQ) begins with a wh-phrase - a wh-noun phrase (WHNP), wh-adjective phrase, wh-adverb phrase (WHADVP), or wh-prepositional phrase (WHPP) - followed by an inverted clause (SQ) whose auxiliary has moved past the subject, then the question mark as the final child: "What did you say?" is (SBARQ (WHNP (WP What)) (SQ (VBD did) (NP (PRP you)) (VP (VB say))) (. ?)). Wh-questions ask for missing information, the wh-word is normally the first word, and the punctuation sits above the SQ, not inside it.',
     steps: [
       'Identify the wh-phrase at the front (what/which → WHNP, where/how → WHADVP, whom → WHPP) and the inverted clause that follows.',
       'Right-click the canvas and add the SBARQ box; drag its connector dot onto the wh-phrase first.',
@@ -197,7 +197,7 @@ const LESSONS = [
     formula: 'SBAR → (IN|WDT|WP) S',
     goal: 'Recognise a subordinate clause by the complementizer that introduces it.',
     rule: 'A subordinate clause is a subordinator plus its own clause under one SBAR box: IN/WDT/WP → S - "because he left" is (SBAR (IN because) (S (NP (PRP he)) (VP (VBD left)))).',
-    detail: 'A subordinate clause (SBAR) is a clause introduced by a complementizer or relative pronoun (IN/WDT/WP, e.g. "because", "that", "which") with a full clause (S) beneath it. It does not stand alone; it fills a role inside a larger sentence - the complement of a verb ("I think that she knows") or a modifier of a noun ("the book which I saw" opens its SBAR with a WHNP, as does "which I saw"). The introducer is the first child of the SBAR and the S box follows it. Recognize it by the leading subordinator followed by its own subject-predicate clause.',
+    detail: 'A subordinate clause (SBAR) is a clause introduced by a complementizer or relative pronoun (IN/WDT/WP, e.g. "because", "that", "which") with a full clause (S) beneath it. It does not stand alone; it fills a role inside a larger sentence - the complement of a verb ("I think that she knows") or a modifier of a noun ("the book which I saw" opens its SBAR with a WHNP, as does "which I saw"). The introducer is the first child of the SBAR and the S box follows it.',
     steps: [
       'Find the introducing complementizer or relative word (IN, WDT, WP) and the clause (S) that follows it.',
       'Right-click the canvas and add the SBAR box; connect it to the introducer first.',
@@ -226,7 +226,7 @@ const LESSONS = [
     formula: 'WHNP → (WDT|WP) NN',
     goal: 'Recognise a wh-noun phrase by its leading wh-word.',
     rule: 'A wh-noun phrase begins with a wh-word and carries its noun beside it: WDT/WP (+ N) under one WHNP - "which book" is (WHNP (WDT which) (NN book)).',
-    detail: 'A wh-noun phrase (WHNP) is a noun phrase built on a wh-word: a wh-determiner (WDT, "which/what") or wh-pronoun (WP, "who/whom") plus the noun it determines when there is one. It names the unknown person or thing a question asks about ("which book", "what color") and usually serves as the fronted phrase of a wh-question, where it fills the subject role - "Who ate the cake?" then keeps the whole SQ down to its VP - or the object of a preposition. A lone wh-pronoun is a WHNP of its own. Recognize it by the wh-word at its left edge, with or without a following noun.',
+    detail: 'A wh-noun phrase (WHNP) is a noun phrase built on a wh-word: a wh-determiner (WDT, "which/what") or wh-pronoun (WP, "who/whom") plus the noun it determines when there is one. It names the unknown person or thing a question asks about ("which book", "what color") and usually serves as the fronted phrase of a wh-question, where it fills the subject role - "Who ate the cake?" then keeps the whole SQ down to its VP - or the object of a preposition. A lone wh-pronoun is a WHNP of its own.',
     steps: [
       'Find the wh-word (WDT/WP) and the noun it belongs with.',
       'Right-click the canvas and add the WHNP box; drag its connector dot onto the wh-word and the noun in reading order.',
@@ -240,7 +240,7 @@ const LESSONS = [
     formula: 'WHADJP → WRB JJ',
     goal: 'Recognise a wh-adjective phrase by "how" plus an adjective.',
     rule: 'A wh-adjective phrase asks "how …?" about an adjective: WRB + ADJ under one WHADJP - "how old" is (WHADJP (WRB how) (JJ old)).',
-    detail: 'A wh-adjective phrase (WHADJP) asks "how ...?" about a quality and pairs the adverb how (WRB) with an adjective (JJ) as its two direct children ("how old", "how tall"). It typically fronts a question or appears as the complement of a linking verb. Recognize it by the fixed opening word how immediately followed by an adjective.',
+    detail: 'A wh-adjective phrase (WHADJP) asks "how ...?" about a quality and pairs the adverb how (WRB) with an adjective (JJ) as its two direct children ("how old", "how tall"). It typically fronts a question or appears as the complement of a linking verb.',
     steps: [
       'Identify the pair: how (WRB) plus an adjective (JJ).',
       'Right-click the canvas and add the WHADJP box; drag its connector dot onto how first, then the adjective.',
@@ -253,7 +253,7 @@ const LESSONS = [
     formula: 'WHADVP → WRB',
     goal: 'Recognise a wh-adverb phrase by its single interrogative adverb.',
     rule: 'A wh-adverb phrase is a single wh-adverb standing in for when/where/how/why: one WRB leaf under the WHADVP box - "where" is (WHADVP (WRB where)).',
-    detail: 'A wh-adverb phrase (WHADVP) is a single wh-adverb (WRB) - where, when, how, or why - standing as a whole phrase, so the box wraps one leaf: (WHADVP (WRB where)). It asks for a place, time, manner, or reason, and either fronts a question ("Where is the cat?") or introduces a subordinate clause ("the town where I grew up"). Recognize it because the phrase is exactly one interrogative adverb.',
+    detail: 'A wh-adverb phrase (WHADVP) is a single wh-adverb (WRB) - where, when, how, or why - standing as a whole phrase, so the box wraps one leaf: (WHADVP (WRB where)). It asks for a place, time, manner, or reason, and either fronts a question ("Where is the cat?") or introduces a subordinate clause ("the town where I grew up").',
     steps: [
       'Find the single wh-adverb (WRB).',
       'Right-click the canvas and add the WHADVP box; drag its connector dot straight onto the adverb.',
@@ -266,7 +266,7 @@ const LESSONS = [
     formula: 'WHPP → (IN|TO) WHNP',
     goal: 'Recognise a wh-prepositional phrase by the wh-word in the object slot.',
     rule: 'A wh-prepositional phrase is a preposition with a wh-noun phrase: IN (or TO) → WHNP - "to whom" is (WHPP (TO to) (WHNP (WP whom))).',
-    detail: 'A wh-prepositional phrase (WHPP) is a prepositional phrase whose object is a wh-noun phrase: a preposition followed by WHNP ("to whom", "for what"). SynTutor tags the preposition IN, except for the infinitive "to", which stays TO: (WHPP (TO to) (WHNP (WP whom))). It questions the object of a preposition and is often fronted in a question. Recognize it by the preposition in first position and a wh-word in the object slot.',
+    detail: 'A wh-prepositional phrase (WHPP) is a prepositional phrase whose object is a wh-noun phrase: a preposition followed by WHNP ("to whom", "for what"). SynTutor tags the preposition IN, except for the infinitive "to", which stays TO: (WHPP (TO to) (WHNP (WP whom))). It questions the object of a preposition and is often fronted in a question.',
     steps: [
       'Identify the preposition - IN, or TO for "to" - and the wh-object that follows (wh-word plus noun, if any).',
       'Right-click the canvas and add the WHPP box; connect it to the preposition first.',
@@ -280,7 +280,7 @@ const LESSONS = [
     formula: 'CONJP → (RB|IN|CC)+',
     goal: 'Recognise a conjunction phrase by its multi-word connective.',
     rule: 'A conjunction phrase is a multi-word linker whose parts hang directly under one CONJP box - "as well as" is (CONJP (RB as) (RB well) (IN as)).',
-    detail: 'A conjunction phrase (CONJP) links two parallel items with a multi-word conjunction - "as well as", "not to mention", "let alone". SynTutor tags no CC head inside it: each linker word hangs directly under the CONJP as it falls ("as well as" reads RB + RB + IN), and the first conjunct sits outside the CONJP as a sibling. Recognize it by a multi-word connective joining two otherwise complete units of the same kind.',
+    detail: 'A conjunction phrase (CONJP) links two parallel items with a multi-word conjunction - "as well as", "not to mention", "let alone". SynTutor tags no CC head inside it: each linker word hangs directly under the CONJP as it falls ("as well as" reads RB + RB + IN), and the first conjunct sits outside the CONJP as a sibling.',
     steps: [
       'Find the multi-word conjunction that links the two items.',
       'Right-click the canvas and add the CONJP box; drag its connector dot onto each linker word in order - as, well, as.',
@@ -294,7 +294,7 @@ const LESSONS = [
     formula: 'UCP → X , X',
     goal: 'Recognise an unlike-coordinated phrase by two conjuncts of different categories.',
     rule: 'An unlike-coordinated phrase coordinates two items of different categories with no conjunction between them - "first, second" is (UCP (ADVP (JJ first)) (, ,) (JJ second)).',
-    detail: 'An unlike-coordinated phrase (UCP) coordinates two expressions of different grammatical categories without a coordinating conjunction: SynTutor wraps the left item in its own phrase box (an ADVP around first), keeps the punctuation as a sibling leaf, and leaves the right item as a bare adjective: (UCP (ADVP (JJ first)) (, ,) (JJ second)). Unlike ordinary coordination it does not require both conjuncts to match in category. Recognize it when two differently-typed items play the same role side by side, typically joined by punctuation rather than and/or.',
+    detail: 'An unlike-coordinated phrase (UCP) coordinates two expressions of different grammatical categories without a coordinating conjunction: SynTutor wraps the left item in its own phrase box (an ADVP around first), keeps the punctuation as a sibling leaf, and leaves the right item as a bare adjective: (UCP (ADVP (JJ first)) (, ,) (JJ second)). Unlike ordinary coordination it does not require both conjuncts to match in category.',
     steps: [
       'Identify the two unlike conjuncts and the punctuation between them - there is no conjunction word inside the UCP.',
       'Right-click the canvas and add the UCP box first.',
@@ -308,7 +308,7 @@ const LESSONS = [
     formula: 'PRT → (RB|RP)',
     goal: 'Recognise a particle by the phrasal verb it completes.',
     rule: 'A particle is the small word that completes a phrasal verb. It hangs under the verb phrase in its own PRT box, tagged RB or RP, wherever the sentence puts it.',
-    detail: 'A particle (PRT) is a small adverb-like word that belongs to a phrasal verb - away, up, off, out, down - and changes the verb meaning ("throw away", "give up"). SynTutor tags it RB (away) or RP (up) and tucks the PRT box inside the VP: "Throw it away." puts the particle after the object (VP over VB + NP + PRT) while "Give up the fight." puts it before (VP over VB + PRT + NP). Unlike a preposition, a particle takes no object of its own. Recognize it because it completes the verb rather than introducing a phrase.',
+    detail: 'A particle (PRT) is a small adverb-like word that belongs to a phrasal verb - away, up, off, out, down - and changes the verb meaning ("throw away", "give up"). SynTutor tags it RB (away) or RP (up) and tucks the PRT box inside the VP: "Throw it away." puts the particle after the object (VP over VB + NP + PRT) while "Give up the fight." puts it before (VP over VB + PRT + NP). Unlike a preposition, a particle takes no object of its own.',
     steps: [
       'Find the phrasal verb and the particle (RB/RP) that completes it.',
       'Right-click the canvas and add the PRT box; drag its connector dot onto the particle word.',
@@ -322,7 +322,7 @@ const LESSONS = [
     formula: 'FRAG → (UH|RB|.)+',
     goal: 'Recognise a fragment by the missing subject and predicate.',
     rule: 'A fragment is a phrase standing alone as an utterance, without a subject and predicate; its words hang directly under one FRAG box - "Hello there." is (FRAG (UH Hello) (RB there) (. .)).',
-    detail: 'A fragment (FRAG) is a phrase used as a standalone utterance without a subject-predicate core - greetings, headlines, labels, answers. Its leaves hang directly under the FRAG box with no inner phrase: "Hello there." reads UH + RB + the final punctuation as three sister leaves. It is headed by whatever word gives it its content (an interjection, noun, or adverb), and the parser marks it FRAG when no full clause can be built. Recognize it by the absence of a verb with a subject: the utterance works in context but not as a grammatical sentence.',
+    detail: 'A fragment (FRAG) is a phrase used as a standalone utterance without a subject-predicate core - greetings, headlines, labels, answers. Its leaves hang directly under the FRAG box with no inner phrase: "Hello there." reads UH + RB + the final punctuation as three sister leaves. It is headed by whatever word gives it its content (an interjection, noun, or adverb), and the parser marks it FRAG when no full clause can be built.',
     steps: [
       'Identify the words of the utterance and their POS tags - an interjection (UH), an adverb (RB), and the final punctuation.',
       'Right-click the canvas and add the FRAG box for the utterance as a whole.',
@@ -336,7 +336,7 @@ const LESSONS = [
     formula: 'INTJ → UH (.!)',
     goal: 'Recognise an interjection by the standalone emotive word and its punctuation.',
     rule: 'An interjection is a word that expresses emotion on its own: Wow! Hey! Its punctuation hangs beside it under one INTJ box.',
-    detail: 'An interjection (INTJ) is a single emotive word - wow, hey, oh, alas - that expresses a reaction on its own, with the exclamation mark kept as a sibling leaf inside the same box: (INTJ (UH Wow) (. !)). It stands outside the subject-predicate structure (it is not the head of any longer phrase) and adds affect rather than propositional meaning to the utterance. Recognize it by the exclamation word plus its punctuation; nothing else is attached beneath it.',
+    detail: 'An interjection (INTJ) is a single emotive word - wow, hey, oh, alas - that expresses a reaction on its own, with the exclamation mark kept as a sibling leaf inside the same box: (INTJ (UH Wow) (. !)). It stands outside the subject-predicate structure (it is not the head of any longer phrase) and adds affect rather than propositional meaning to the utterance.',
     steps: [
       'Find the single interjection word (UH) and its punctuation (!).',
       'Right-click the canvas and add the INTJ box above them.',
@@ -953,7 +953,10 @@ function lessonNodeDone(lesson, page, current) {
   if (page === 1) return page !== current && state.visitedPages.has(`${lesson.type}:1`);
   if (page === 2) {
     const p = lessonProgress(lesson);
-    return p.total > 0 && p.done === p.total;
+    if (p.total > 0 && p.done === p.total) return true;
+    // The learner worked through the practice and moved on to the quiz: the
+    // stage keeps its checkmark instead of falling back to its number.
+    return current > 2 && state.visitedPages.has(`${lesson.type}:2`);
   }
   return state.quizDone.has(lesson.type);
 }
@@ -962,7 +965,7 @@ function lessonNodeDone(lesson, page, current) {
 // short branch lines. Each node is clickable, shows a ✓ once its stage is
 // done, and marks the stage the learner is on.
 function renderLessonNodes(lesson, current) {
-  const wrap = el('div', 'sq-nodes');
+  const wrap = el('div', 'stage-stepper-tracker');
   wrap.setAttribute('role', 'group');
   wrap.setAttribute('aria-label', 'Lesson stages');
   LESSON_NODES.forEach((node, i) => {
@@ -986,25 +989,23 @@ function renderLessonNodes(lesson, current) {
 // The example switcher: labelled pills, so the learner knows which sentence
 // each one opens. A built example carries a green ✓.
 function renderExampleSwitcher(lesson, index) {
-  const switcher = el('div', 'sq-example-switcher');
-  switcher.setAttribute('role', 'group');
-  switcher.setAttribute('aria-label', 'Lesson examples');
+  const bar = el('div', 'example-pill-selector');
+  bar.setAttribute('role', 'group');
+  bar.setAttribute('aria-label', 'Lesson examples');
   lesson.examples.forEach((sentence, i) => {
     const done = state.done.has(`${lesson.type}:${sentence}`);
-    let cls = 'sq-example-pill';
-    if (i === index) cls += ' is-active';
-    if (done) cls += ' is-done';
-    const pill = el('button', cls);
-    pill.type = 'button';
-    pill.appendChild(el('span', 'sq-example-pill-index', `Ex ${i + 1}`));
-    pill.appendChild(el('span', 'sq-example-pill-text', sentence));
-    if (done) pill.appendChild(el('span', 'sq-example-pill-check', '✓'));
-    pill.title = sentence;
-    pill.setAttribute('aria-label', `Example ${i + 1}: ${sentence}`);
-    pill.addEventListener('click', () => showExample(lesson, i));
-    switcher.appendChild(pill);
+    const tab = el('button', done ? 'example-tab is-done' : 'example-tab');
+    if (i === index) tab.classList.add('active');
+    tab.type = 'button';
+    tab.appendChild(document.createTextNode(`${i + 1}. `));
+    tab.appendChild(el('span', 'example-tab-text', sentence));
+    if (done) tab.appendChild(el('span', 'example-tab-check', '✓'));
+    // The sentence is already on the tab: no tooltip on top of it.
+    tab.setAttribute('aria-label', `Example ${i + 1}: ${sentence}`);
+    tab.addEventListener('click', () => showExample(lesson, i));
+    bar.appendChild(tab);
   });
-  return switcher;
+  return bar;
 }
 
 // The primary action of the practice stage follows the learner through the
@@ -1066,7 +1067,7 @@ function renderLessonStage(lesson, page, index, example) {
     overview.appendChild(el('p', 'sq-overview-goal', lesson.goal));
 
     stage.appendChild(overview);
-    const cta = el('button', 'sq-primary sq-lesson-cta', 'Start Steps & Practice →');
+    const cta = el('button', 'sq-primary quiz-primary-btn sq-lesson-cta', 'Start Steps & Practice →');
     cta.type = 'button';
     cta.addEventListener('click', () => goLessonNode(lesson, 2));
     stage.appendChild(cta);
@@ -1074,18 +1075,18 @@ function renderLessonStage(lesson, page, index, example) {
   }
 
   if (page === 2) {
-    // Practice: the example switcher, the sentence on the canvas, the step
-    // pager and the action that walks the learner through them. All of it
-    // renders straight on the panel surface — no inner cards.
+    // Practice: the example switcher, the step the learner is on, and the
+    // action that walks them through it. The analysis of the example belongs
+    // to the lower pane — nothing is printed twice.
     stage.appendChild(renderExampleSwitcher(lesson, index));
 
-    const active = el('div', 'sq-active-sentence');
-    active.appendChild(el('span', 'sq-active-label', 'On the canvas'));
-    active.appendChild(el('p', 'sq-active-text', example));
-    stage.appendChild(active);
+    // The step itself: what to do right now.
+    const stepBox = el('div', 'sq-active-step');
+    stepBox.id = 'sqActiveStep';
+    fillActiveStep(stepBox, lesson);
+    stage.appendChild(stepBox);
 
-    // The step navigation belongs to the example it walks through, and the
-    // guide toggle brings the canvas overlay back when the learner wants it.
+    // The step navigation: the learner moves through the steps themselves.
     const pager = el('div', 'sq-step-pager');
     const prev = el('button', 'sq-ghost sq-step-btn', '←');
     prev.type = 'button';
@@ -1104,19 +1105,9 @@ function renderLessonStage(lesson, page, index, example) {
     pager.appendChild(prev);
     pager.appendChild(label);
     pager.appendChild(next);
+    stage.appendChild(pager);
 
-    const row = el('div', 'sq-step-row');
-    row.appendChild(pager);
-    const toggle = el('button', 'sq-ghost sq-guide-toggle',
-      guide.cardShown ? 'Hide Steps' : 'Show Steps');
-    toggle.type = 'button';
-    toggle.id = 'sqGuideToggle';
-    toggle.title = 'Show the step-by-step guide on the canvas';
-    toggle.addEventListener('click', () => toggleGuideCard(lesson));
-    row.appendChild(toggle);
-    stage.appendChild(row);
-
-    const cta = el('button', 'sq-primary sq-stage-cta', practiceCta(lesson).label);
+    const cta = el('button', 'sq-primary quiz-primary-btn sq-stage-cta', practiceCta(lesson).label);
     cta.type = 'button';
     cta.id = 'sqStageCta';
     cta.addEventListener('click', () => runPracticeCta(lesson));
@@ -1125,23 +1116,15 @@ function renderLessonStage(lesson, page, index, example) {
   }
 
   // Quiz: the stage IS the quiz — it is already running, so the panel shows
-  // the live question, the validation status, and the way on. No launcher to
-  // a quiz that is not happening, no static list of prompts.
+  // the live question, the progress, and the way on. The diagnostics belong
+  // to the lower pane.
   if (state.session) {
     const live = el('div', 'sq-active-sentence');
     live.appendChild(el('span', 'sq-active-label is-quiz',
-      `Question ${state.session.pos + 1} of ${state.session.seq.length}`));
+      `QUESTION ${state.session.pos + 1} OF ${state.session.seq.length}`));
     live.appendChild(el('p', 'sq-active-text',
       `Build the syntax tree for “${state.session.seq[state.session.pos]?.example || ''}”`));
     stage.appendChild(live);
-
-    const status = el('p', 'sq-validation-status',
-      state.checkStatus ? state.checkStatus.message
-        : 'The tree checks itself against SynTutor’s parse as you build.');
-    status.id = 'sqValidationStatus';
-    if (state.checkStatus?.kind === 'ok') status.classList.add('is-ok');
-    if (state.checkStatus?.kind === 'no') status.classList.add('is-no');
-    stage.appendChild(status);
 
     const score = el('div', 'sq-quiz-score');
     score.appendChild(el('span', 'sq-quiz-score-value',
@@ -1149,8 +1132,8 @@ function renderLessonStage(lesson, page, index, example) {
     score.appendChild(el('span', 'sq-quiz-score-label', 'trees built'));
     stage.appendChild(score);
 
-    const cta = el('button', 'sq-primary sq-stage-cta',
-      state.session.answered ? 'Next Question →' : 'Check tree →');
+    const cta = el('button', 'sq-primary quiz-primary-btn sq-stage-cta',
+      state.session.answered ? 'Next Question →' : 'Check Tree →');
     cta.type = 'button';
     cta.id = 'sqStageCta';
     cta.addEventListener('click', () => {
@@ -1171,7 +1154,7 @@ function renderLessonStage(lesson, page, index, example) {
     list.appendChild(item);
   }
   stage.appendChild(list);
-  const start = el('button', 'sq-primary', 'Start Quiz →');
+  const start = el('button', 'sq-primary quiz-primary-btn', 'Start Quiz →');
   start.type = 'button';
   start.addEventListener('click', () => startLessonQuiz(lesson));
   stage.appendChild(start);
@@ -1185,14 +1168,8 @@ function renderLessonStage(lesson, page, index, example) {
 function fillActiveStep(box, lesson) {
   box.innerHTML = '';
   const index = Math.max(0, Math.min(guide.step, lesson.steps.length - 1));
-  box.appendChild(el('p', 'sq-active-step-counter',
-    `Step ${index + 1} of ${lesson.steps.length}`));
   box.appendChild(el('h3', 'sq-active-step-title', stepTitle(lesson, index)));
   box.appendChild(el('p', 'sq-active-step-text', lesson.steps[index]));
-  const rule = el('div', 'sq-active-step-rule');
-  rule.appendChild(el('span', 'sq-overview-label', 'Rule in play'));
-  rule.appendChild(el('code', 'sq-overview-formula', lesson.formula));
-  box.appendChild(rule);
 }
 
 // Keep the practice stage in step with the guide: the pager, the active step
@@ -1214,20 +1191,48 @@ function updateStepUI(lesson) {
     cta.textContent = action.label;
     cta.dataset.kind = action.kind;
   }
-  const toggle = $('#sqGuideToggle');
-  if (toggle) toggle.textContent = guide.cardShown ? 'Hide Steps' : 'Show Steps';
 }
 
 // The live validation status of the quiz stage: what the last check said
 // about the tree the learner is building.
-function updateValidationStatus() {
-  const node = $('#sqValidationStatus');
-  if (!node) return;
+function updateValidationStatus(target) {
+  const box = target || $('#sqValidationResult');
+  if (!box) return;
+  box.innerHTML = '';
   const status = state.checkStatus;
-  node.textContent = status ? status.message
-    : 'The tree checks itself against SynTutor’s parse as you build.';
-  node.classList.toggle('is-ok', Boolean(status && status.kind === 'ok'));
-  node.classList.toggle('is-no', Boolean(status && status.kind === 'no'));
+  const lesson = activeLesson();
+
+  // Nothing checked yet: the rule, the instructions, and no answer.
+  if (!status) {
+    if (lesson) box.appendChild(diagnosticIdleState(lesson));
+    return;
+  }
+
+  const card = el('div', 'validation-result-card');
+  card.classList.add(status.kind === 'ok' ? 'is-ok' : 'is-no');
+
+  if (status.kind === 'ok') {
+    card.appendChild(el('span', 'validation-card-title', '✓ Correct — the constituency is valid.'));
+    card.appendChild(el('p', 'validation-card-body', constituencyExplanation(
+      lesson, state.session?.seq[state.session.pos]?.example)));
+    box.appendChild(card);
+    return;
+  }
+
+  // Not quite: the check said what is wrong, and the tree says where.
+  card.appendChild(el('span', 'validation-card-title', '✕ Not quite — the tree does not match SynTutor’s parse.'));
+  card.appendChild(el('p', 'validation-card-body', status.message));
+  box.appendChild(card);
+
+  // The findings: what is valid, and what to fix.
+  const findings = describeFindings();
+  if (findings.length) {
+    const list = el('div', 'validation-findings');
+    for (const note of findings) {
+      list.appendChild(el('p', 'validation-finding', note));
+    }
+    box.appendChild(list);
+  }
 }
 
 // Move on to the next question of the running quiz.
@@ -1246,55 +1251,302 @@ function nextQuizQuestion() {
 function renderLessonBody(lesson, page, example) {
   const body = el('div', 'sq-lesson-body');
   if (page === 1) {
-    // Concept: the whole bottom-right surface belongs to the in-depth
-    // breakdown — the constituency rule, then how it works in detail.
-    const rule = el('div', 'sq-rule');
-    const concept = el('div', 'sq-concept sq-rule-content');
-    concept.appendChild(el('h3', 'sq-concept-heading', 'Constituency rule'));
-    concept.appendChild(el('p', 'sq-rule-text', lesson.rule));
-    concept.appendChild(el('h3', 'sq-concept-heading', 'In depth'));
-    concept.appendChild(el('p', 'sq-rule-detail', lesson.detail));
-    rule.appendChild(concept);
-    body.appendChild(rule);
+    // Concept: the whole lower surface belongs to the theory — the
+    // constituency rule, then how it works in detail. One section label, one
+    // key-value grid: no stacked headers.
+    body.appendChild(el('div', 'analysis-section-label', 'CONSTITUENCY ANALYSIS'));
+    const grid = el('div', 'syntax-role-grid');
+    grid.appendChild(el('span', 'syntax-role-label', 'Constituency rule'));
+    grid.appendChild(el('span', 'syntax-role-value', lesson.rule));
+    grid.appendChild(el('span', 'syntax-role-label', 'In depth'));
+    grid.appendChild(el('span', 'syntax-role-value', lesson.detail));
+    body.appendChild(grid);
     return body;
   }
   if (page === 2) {
-    if (state.session) {
-      body.appendChild(el('p', 'sq-hint', 'Quiz in progress — build each tree on the canvas.'));
-      return body;
-    }
-    // Only the step the learner is on: the navigator lives in the upper-right
-    // pane and the canvas card carries the prompt, so the step text is never
-    // printed three times.
-    const stepBox = el('div', 'sq-active-step');
-    stepBox.id = 'sqActiveStep';
-    fillActiveStep(stepBox, lesson);
-    body.appendChild(stepBox);
+    // Practice: the live breakdown of the example on the canvas — its leaves,
+    // its head, and the modifiers hanging off that head.
+    body.appendChild(el('div', 'analysis-section-label', 'SYNTAX BREAKDOWN'));
+    body.appendChild(renderBreakdown(lesson, example));
     return body;
   }
 
-  // Quiz: the live challenge. No static list of prompts — the stage IS the
-  // quiz, and it is already running.
-  const quizBox = el('div', 'sq-active-step');
-  if (state.session) {
-    const idx = Math.max(0, Math.min(state.session.pos, state.session.seq.length - 1));
-    const sentence = state.session.seq[idx]?.example || '';
-    quizBox.appendChild(el('p', 'sq-active-step-counter',
-      `Question ${idx + 1} of ${state.session.seq.length}`));
-    quizBox.appendChild(el('h3', 'sq-active-step-title', 'Build the syntax tree'));
-    quizBox.appendChild(el('p', 'sq-active-step-text',
-      `“${sentence}” — add the phrase boxes and connect them. `
-      + 'The tree checks itself against SynTutor’s parse as you build.'));
-    const rule = el('div', 'sq-active-step-rule');
-    rule.appendChild(el('span', 'sq-overview-label', 'Rule in play'));
-    rule.appendChild(el('code', 'sq-overview-formula', lesson.formula));
-    quizBox.appendChild(rule);
-  } else {
-    quizBox.appendChild(el('p', 'sq-hint',
-      'The quiz is not running yet — press Start Quiz to begin.'));
-  }
-  body.appendChild(quizBox);
+  // Quiz: the diagnostics. The question itself lives in the upper pane; this
+  // one says what to build and what SynTutor thinks of the result.
+  body.appendChild(el('div', 'analysis-section-label', 'VALIDATION & SYNTACTIC DIAGNOSTICS'));
+  body.appendChild(renderDiagnostics(lesson, example));
   return body;
+}
+
+// ---------------------------------------------------------------------------
+// The lower panel: the grammar's side of the lesson
+// ---------------------------------------------------------------------------
+// The upper panel belongs to the learner (the controls, the active step, the
+// question, the action); this one belongs to the grammar (the theory, the
+// breakdown of the current example, the validation diagnostics). The two
+// never print the same words twice.
+
+// The cached parse of an example: its tree and its tagged leaves.
+function goldFor(example) {
+  return state.cache.get(example) || null;
+}
+
+// The words a node covers, in reading order.
+function leafText(node) {
+  if (!node) return '';
+  if (node.leaf || !node.children) return node.surface ?? '';
+  return node.children.map(leafText).join(' ');
+}
+
+// The head of a phrase is the child that carries its meaning: the noun in an
+// NP, the verb in a VP, the adjective in an ADJP. Each phrase type puts its
+// head in its own place, so each gets its own rule.
+const HEAD_RULES = {
+  NP: (kids) => {
+    // A nested NP (a prepositional complement, as in "a student of physics")
+    // keeps the head inside it.
+    const inner = kids.find((k) => k.type === 'NP');
+    if (inner) return phraseHead(inner);
+    return [...kids].reverse().find((k) => /^NN/.test(k.type));
+  },
+  VP: (kids) => kids.find((k) => /^VB/.test(k.type)),
+  ADJP: (kids) => [...kids].reverse().find((k) => /^JJ/.test(k.type)),
+  ADVP: (kids) => [...kids].reverse().find((k) => /^RB/.test(k.type)),
+  PP: (kids) => kids.find((k) => k.type === 'IN')
+    || [...kids].reverse().find((k) => /^NN/.test(k.type)),
+};
+
+// The phrase types whose children are modifiers around a head. In a clause
+// the children are constituents — the subject and the predicate — so the
+// panel says "constituents" there instead of "modifiers".
+const MODIFIER_PHRASES = new Set(['NP', 'ADJP', 'ADVP', 'PP', 'QP', 'NML', 'NX']);
+
+// The head of a phrase: the child that carries its meaning.
+function phraseHead(node) {
+  if (!node) return null;
+  const kids = node.children || [];
+  const rule = HEAD_RULES[node.type];
+  const head = (rule ? rule(kids) : null)
+    || [...kids].reverse().find((k) => !k.leaf);
+  return head || null;
+}
+
+// The head of a phrase, and the parts around it.
+function phraseParts(node) {
+  const kids = node && node.children ? node.children : [];
+  const head = phraseHead(node);
+  const modifierPhrase = node ? MODIFIER_PHRASES.has(node.type) : false;
+  return {
+    head: head || null,
+    parts: kids.filter((k) => k !== head),
+    label: modifierPhrase ? 'Direct modifiers' : 'Constituents',
+    modifierPhrase,
+  };
+}
+
+// What each modifier does to the phrase it hangs off.
+const MODIFIER_ROLES = {
+  DT: 'a determiner that selects the noun',
+  JJ: 'an adjective that modifies the head',
+  JJR: 'a comparative adjective that modifies the head',
+  JJS: 'a superlative adjective that modifies the head',
+  RB: 'an adverb that modifies the head',
+  IN: 'a marker that introduces the phrase as its complement',
+  TO: 'a marker that introduces the phrase as its complement',
+  PP: 'a prepositional phrase that completes the phrase',
+  CC: 'a coordinator that joins two constituents',
+  PRP: 'a pronoun that stands for the phrase',
+  'PRP$': 'a possessive pronoun that stands for the phrase',
+  POS: 'a possessive marker that attaches to the head',
+  CD: 'a numeral that quantifies the head',
+  WDT: 'a wh-determiner that fills the phrase',
+  WP: 'a wh-word that fills the phrase',
+  'WP$': 'a possessive wh-word that fills the phrase',
+};
+
+// Why the modifiers attach to the phrase node rather than to one another.
+function attachmentNote(tree, parts) {
+  if (!parts.parts.length) {
+    return `The ${tree.type} has no parts of its own: the head stands alone.`;
+  }
+  if (!parts.modifierPhrase) {
+    return `The ${tree.type} is built from ${parts.parts
+      .map((m) => `${m.type} (${leafText(m)})`).join(' and ')} — the constituents the phrase is made of.`;
+  }
+  const roles = parts.parts.map((m) => {
+    const role = MODIFIER_ROLES[m.type] || 'a modifier of the phrase';
+    return `${m.type} (${leafText(m)}) is ${role}`;
+  });
+  return `${roles.join('; ')}. They attach to the ${tree.type} node itself — the modifiers hang off the phrase, not off one another.`;
+}
+
+// The monospace rule badge that closes every analysis panel.
+function ruleBadge(label, formula) {
+  const badge = el('div', 'rule-chip');
+  badge.appendChild(el('span', 'rule-chip-label', `${label}: `));
+  badge.appendChild(el('code', 'rule-chip-code', formula));
+  return badge;
+}
+
+// The live breakdown of the example on the canvas: the leaves with their POS
+// tags, the head of the phrase, the modifiers around it, and why they attach
+// where they do.
+function renderBreakdown(lesson, example) {
+  const box = el('div', 'sq-breakdown');
+  const gold = goldFor(example);
+  if (!gold?.tree) {
+    box.appendChild(el('p', 'sq-panel-empty',
+      'SynTutor is still reading this sentence — the breakdown follows in a moment.'));
+    return box;
+  }
+  const tree = gold.tree;
+
+  // The leaves, one by one, with the tag SynTutor gave them.
+  const tokens = el('div', 'syntax-token-row');
+  for (const leaf of leavesWithTags(tree)) {
+    const token = el('span', 'syntax-token');
+    token.appendChild(el('span', 'syntax-token-word', leaf.surface));
+    token.appendChild(el('span', 'syntax-token-tag', `[${leaf.tag}]`));
+    tokens.appendChild(token);
+  }
+  box.appendChild(tokens);
+
+  // The head of the phrase and the parts around it.
+  const parts = phraseParts(tree);
+  const grid = el('div', 'syntax-role-grid');
+  grid.appendChild(el('span', 'syntax-role-label', 'Head'));
+  grid.appendChild(el('span', 'syntax-role-value',
+    parts.head ? `${parts.head.type} (${leafText(parts.head)})` : '—'));
+  grid.appendChild(el('span', 'syntax-role-label', parts.label));
+  grid.appendChild(el('span', 'syntax-role-value', parts.parts.length
+    ? parts.parts.map((m) => `${m.type} (${leafText(m)})`).join(', ')
+    : 'none'));
+  box.appendChild(grid);
+
+  // Why the modifiers attach to this node.
+  box.appendChild(el('p', 'syntax-explanation', attachmentNote(tree, parts)));
+
+  // The rule the whole thing follows.
+  box.appendChild(ruleBadge('RULE IN PLAY', lesson.formula));
+  return box;
+}
+
+// The live diagnostic of the quiz stage. While the quiz is running the panel
+// says nothing about the answer: the learner gets the rule, a nudge, and —
+// once they press Check Tree — the verdict with the reasons behind it.
+function renderDiagnostics(lesson, example) {
+  const box = el('div', 'sq-diagnostics');
+  const result = el('div', 'sq-diag-block');
+  result.id = 'sqValidationResult';
+  box.appendChild(result);
+  // The block is not in the document yet: hand it over directly.
+  updateValidationStatus(result);
+  return box;
+}
+
+// The lesson the workspace is in right now.
+function activeLesson() {
+  return LESSONS.find((l) => l.type === state.lessonIndex) || null;
+}
+
+// Why the constituency is valid — the explanation that comes with a correct
+// build, once the answer is no longer a spoiler.
+function constituencyExplanation(lesson, example) {
+  const gold = goldFor(example);
+  if (!gold?.tree) {
+    return 'Every word hangs under the right head, and the phrase spans them in the right order.';
+  }
+  const parts = phraseParts(gold.tree);
+  const head = parts.head ? `${parts.head.type} (${leafText(parts.head)})` : 'its head';
+  if (!parts.parts.length) {
+    return `The ${gold.tree.type} is just ${head}: nothing else hangs off it.`;
+  }
+  const others = parts.parts.map((m) => `${m.type} (${leafText(m)})`).join(', ');
+  return `The ${gold.tree.type} spans ${others} and the head ${head}. `
+    + (parts.modifierPhrase
+      ? 'The modifiers hang off the phrase itself, flat around the head — the constituency is valid.'
+      : 'The constituents sit in the right order under their head — the constituency is valid.');
+}
+
+// Before the first check: the target rule and the instructions that get the
+// learner to it. Nothing that gives the answer away.
+function diagnosticIdleState(lesson) {
+  const card = el('div', 'validation-guidelines-card');
+  card.appendChild(el('span', 'validation-card-label', 'Target rule'));
+  card.appendChild(el('code', 'validation-rule', lesson.formula));
+  card.appendChild(el('p', 'validation-instructions',
+    'Use right-click to spawn constituent phrase boxes, then drag from connector dots '
+    + 'to attach leaves. Click Check Tree when ready.'));
+  return card;
+}
+
+// What the learner's own tree says: the leaves that hang free, the phrases
+// that dominate nothing, a second root, a circular reference, and the words
+// whose tag no longer matches the one SynTutor gave them.
+function describeFindings() {
+  const model = builderModel();
+  const nodes = Object.values(model?.nodes || {});
+  if (!nodes.length) return [];
+  const notes = [];
+  const words = nodes.filter((n) => n.kind === NODE.WORD);
+  const phrases = nodes.filter((n) => n.kind === NODE.PHRASE);
+  const detached = words.filter((n) => !n.parent);
+  const empty = phrases.filter((n) => childrenOf(model, n.id).length === 0);
+  // A second phrase box with nothing above it is a second tree; the words
+  // waiting to be attached are reported as detached leaves instead.
+  const roots = phrases.filter((n) => !n.parent);
+  if (detached.length) {
+    notes.push(`Detached leaves: ${detached
+      .map((n) => `${n.tag || 'word'} (${n.text})`).join(', ')} — every word must hang under a phrase.`);
+  }
+  if (empty.length) {
+    notes.push(`Empty phrases: ${empty.map((n) => n.type).join(', ')} — a phrase box must dominate something.`);
+  }
+  if (roots.length > 1) {
+    notes.push(`More than one root: ${roots
+      .map((n) => n.type).join(', ')} — the tree must hang under a single root.`);
+  }
+  const cycle = findCycle(model, nodes);
+  if (cycle) {
+    notes.push(`Circular reference: ${cycle} — a node cannot be its own ancestor.`);
+  }
+  const wrong = mismatchedTags(words);
+  if (wrong.length) {
+    notes.push(`Mismatched tags: ${wrong.join('; ')} — right-click the word to give it the tag SynTutor reads.`);
+  }
+  return notes;
+}
+
+// A node that is its own ancestor: the builder refuses such a connection, but
+// a broken model still has to be reported.
+function findCycle(model, nodes) {
+  for (const node of nodes) {
+    const seen = new Set();
+    let cur = node.parent;
+    while (cur) {
+      if (cur === node.id) return `${node.type || node.text} (${node.text || node.type})`;
+      if (seen.has(cur)) break;
+      seen.add(cur);
+      cur = model.nodes[cur]?.parent ?? null;
+    }
+  }
+  return null;
+}
+
+// The words whose tag no longer matches the one SynTutor gave them.
+function mismatchedTags(words) {
+  const example = state.session?.seq[state.session.pos]?.example;
+  const gold = example ? goldFor(example) : null;
+  if (!gold?.leaves?.length) return [];
+  const ordered = [...words].sort((a, b) => (a.x || 0) - (b.x || 0));
+  const wrong = [];
+  gold.leaves.forEach((leaf, i) => {
+    const node = ordered[i];
+    if (!node || !leaf.tag) return;
+    const tag = node.tag || leaf.tag;
+    if (tag !== leaf.tag) wrong.push(`${node.text}: ${tag} (SynTutor reads ${leaf.tag})`);
+  });
+  return wrong;
 }
 
 // Move between nodes. Entering Steps & Practice loads the first not-yet-built
@@ -1346,6 +1598,10 @@ function renderLesson() {
   // surface steps aside so only the lesson controls are left there.
   document.body.classList.add('lesson-view');
 
+  // …and the canvas panel wears the lesson's own surface, so the three
+  // panels of the workspace share one radius, one border and one colour.
+  $('.canvas-wrap')?.classList.add('lesson-canvas-panel');
+
   // …and it owns the left canvas too: the Grammar Tutor's empty state is
   // hidden and any tree left over from an earlier analysis is wiped, so no
   // squished ghost tree can sit behind the lesson.
@@ -1353,8 +1609,7 @@ function renderLesson() {
 
   // The spotlight guide only belongs to the example it was opened on; a node
   // switch, example switch, or new lesson dismisses it. Plain re-renders (a
-  // solved example refreshing the checkmarks) keep it alive — syncGuideCard()
-  // re-syncs the highlight below.
+  // solved example refreshing the checkmarks) keep it alive.
   if (guide.open
     && (guide.lesson !== lesson.type || guide.example !== example || page !== 2)) {
     closeStepGuide();
@@ -1363,18 +1618,18 @@ function renderLesson() {
   host.innerHTML = '';
   const wrap = el('div', 'sq-lesson');
 
-  // One header row: the book button and the lesson title on the left, the
-  // compact stage progress bar on the right.
-  const head = el('header', 'sq-lesson-head');
-  const headMain = el('div', 'sq-lesson-head-main');
-  const book = el('button', 'sq-lesson-book');
+  // One header row in every stage: the book button and the lesson title on
+  // the left, the stage stepper on the right.
+  const head = el('header', 'panel-header-row');
+  const headMain = el('div', 'panel-title-group');
+  const book = el('button', 'panel-book-btn');
   book.type = 'button';
   book.title = 'Show all lesson modules';
   book.setAttribute('aria-label', 'Show all lesson modules');
-  book.innerHTML = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>';
+  book.innerHTML = '<svg class="panel-book-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path><path d="M6 2v20"></path></svg>';
   book.addEventListener('click', () => openLessonsOverlay());
   headMain.appendChild(book);
-  headMain.appendChild(el('h2', 'sq-lesson-title', lesson.title));
+  headMain.appendChild(el('h2', 'lesson-panel-title', lesson.title));
   head.appendChild(headMain);
   head.appendChild(renderLessonNodes(lesson, page));
   wrap.appendChild(head);
@@ -1577,6 +1832,9 @@ async function startChallenge(lesson, example, onDone) {
       return;
     }
     state.cache.set(example, gold);
+    // The parse is here now: the analysis panel can show the breakdown of
+    // this example (its leaves, its head, its modifiers).
+    refreshLessonPanel();
   }
 
   openBuilderView({
@@ -1601,10 +1859,9 @@ async function startChallenge(lesson, example, onDone) {
       onDone?.(ok);
     },
   });
-  // Lesson practice shows the step-by-step guide card docked at the canvas's
-  // bottom-left; the quiz and the standalone session get no card.
-  if (practice) openGuideCard(lesson, example);
-  else closeGuideCard();
+  // The canvas belongs to the learner's tree: the step-by-step guide lives in
+  // the upper panel now, so no pill floats over the bottom-left of the canvas.
+  closeGuideCard();
 }
 
 function record(lesson, example, ok) {
@@ -1642,6 +1899,9 @@ export function clearActiveLesson() {
   state.lessonPage = 1;
   // Hand the upper-right pane back to the Grammar Tutor.
   document.body.classList.remove('lesson-view');
+  // …and the canvas panel with it: it wears the lesson's surface only while
+  // a lesson is open.
+  $('.canvas-wrap')?.classList.remove('lesson-canvas-panel');
   const host = $('#quizQuestHost');
   if (host) host.innerHTML = '';
   const guideHost = $('#lessonGuideHost');
@@ -1666,14 +1926,13 @@ function refreshLessonPanel() {
 // ---------------------------------------------------------------------------
 // Interactive step guide — a spotlight that points at what each step means
 // ---------------------------------------------------------------------------
-// A step-by-step guide card is docked at the bottom-left of the canvas while a
-// lesson example is loaded. Its step rows are clickable and its ▶ Play button
-// animates through the steps. A fixed spotlight ring (pointer-events: none)
-// highlights the canvas region, word row, phrase box, or connector dot the
-// current step talks about; the learner can still right-click, drag, and
-// re-route on the canvas while following along. A rAF loop keeps the ring
-// glued to its target while the canvas pans, zooms, or the boxes move.
-const guide = { open: false, step: 0, lesson: null, example: null, raf: 0, playing: false, timer: 0, cardShown: false };
+// A fixed spotlight ring (pointer-events: none) highlights the canvas region,
+// word row, phrase box, or connector dot the current step talks about; the
+// learner can still right-click, drag, and re-route on the canvas while
+// following along. A rAF loop keeps the ring glued to its target while the
+// canvas pans, zooms, or the boxes move. The step itself is spelled out in
+// the upper panel, so the canvas keeps nothing but the learner's tree.
+const guide = { open: false, step: 0, lesson: null, example: null, raf: 0 };
 
 function ensureStepGuideDom() {
   if ($('#stepGuide')) return;
@@ -1690,8 +1949,7 @@ function exampleKey(lesson, example) {
 }
 
 // Has the learner already walked through this example? A revisited example
-// keeps the canvas clean: the tutorial overlay only comes back when they ask
-// for it.
+// keeps the canvas clean: the walk-through is not replayed on a later visit.
 function exampleSeen(lesson, example) {
   return state.seenExamples.has(exampleKey(lesson, example));
 }
@@ -1700,110 +1958,11 @@ function markExampleSeen(lesson, example) {
   state.seenExamples.add(exampleKey(lesson, example));
 }
 
-// Bring the canvas walk-through back (or send it away) on demand.
-function toggleGuideCard(lesson) {
-  const card = ensureGuideCard();
-  if (!card) return;
-  guide.cardShown = !guide.cardShown;
-  card.hidden = !guide.cardShown;
-  syncGuideCard();
-  updateStepUI(lesson);
-}
-
-// The canvas card is deliberately minimal: a prompt for the step the learner
-// is on plus the ▶ Play auto-guide. The step text itself lives in the
-// bottom-right pane, so nothing is printed twice — and the card stays out of
-// the way of the words and the boxes on the canvas.
-function ensureGuideCard() {
-  const existing = $('#canvasGuideCard');
-  if (existing) return existing;
-  const stage = $('.canvas-stage');
-  if (!stage) return null;
-  const card = el('div', 'canvas-guide-card');
-  card.id = 'canvasGuideCard';
-  card.hidden = true;
-  const head = el('div', 'canvas-guide-head');
-  head.appendChild(el('span', 'canvas-guide-label', 'Step 1 of 4'));
-  const play = el('button', 'canvas-guide-play', '▶ Play');
-  play.type = 'button';
-  play.title = 'Animate through the steps, pointing at the canvas';
-  play.addEventListener('click', toggleGuidePlay);
-  head.appendChild(play);
-  card.appendChild(head);
-  stage.appendChild(card);
-  return card;
-}
-
-// The card's prompt: which step the learner is on, by name.
-function updateGuideCardLabel(lesson) {
-  const label = $('#canvasGuideCard .canvas-guide-label');
-  if (!label || !lesson) return;
-  const index = Math.max(0, Math.min(guide.step, lesson.steps.length - 1));
-  label.textContent = `Step ${index + 1} of ${lesson.steps.length} · ${stepTitle(lesson, index)}`;
-}
-
-function openGuideCard(lesson, example) {
-  const card = ensureGuideCard();
-  if (!card) return;
-  // A revisited example keeps the canvas clean: the walk-through overlay
-  // only comes back when the learner asks for it.
-  guide.cardShown = !exampleSeen(lesson, example);
-  updateGuideCardLabel(lesson);
-  card.hidden = !guide.cardShown;
-  syncGuideCard();
-}
-
+// The canvas card is gone — the step guide lives in the upper panel now — but
+// every caller that used to close it keeps working.
 function closeGuideCard() {
-  stopGuidePlay();
   const card = $('#canvasGuideCard');
   if (card) card.hidden = true;
-}
-
-// Reflect the live guide state on the canvas card: the Play/Stop button
-// follows `guide.playing` and the prompt follows `guide.step`. Called whenever
-// the guide opens, moves, plays, or stops.
-function syncGuideCard() {
-  const play = $('#canvasGuideCard')?.querySelector('.canvas-guide-play');
-  if (play) {
-    play.textContent = guide.playing ? '■ Stop' : '▶ Play';
-    play.setAttribute('aria-pressed', String(guide.playing));
-    play.classList.toggle('is-playing', guide.playing);
-  }
-  const lesson = guide.lesson ? LESSONS.find((l) => l.type === guide.lesson) : null;
-  if (lesson) updateGuideCardLabel(lesson);
-}
-
-function toggleGuidePlay() {
-  const lesson = LESSONS.find((l) => l.type === guide.lesson);
-  if (!lesson) return;
-  if (guide.playing) {
-    stopGuidePlay();
-    return;
-  }
-  if (!guide.open || guide.lesson !== lesson.type) openStepGuide(lesson, 0);
-  startGuidePlay(lesson);
-}
-
-function startGuidePlay(lesson) {
-  stopGuidePlay(false);
-  guide.playing = true;
-  syncGuideCard();
-  const tick = () => {
-    if (!guide.open || !guide.playing || guide.step >= lesson.steps.length - 1) {
-      stopGuidePlay();
-      return;
-    }
-    guide.step += 1;
-    updateStepGuide();
-    guide.timer = window.setTimeout(tick, 2600);
-  };
-  guide.timer = window.setTimeout(tick, 2600);
-}
-
-function stopGuidePlay(render = true) {
-  guide.playing = false;
-  if (guide.timer) { window.clearTimeout(guide.timer); guide.timer = 0; }
-  if (render) syncGuideCard();
 }
 
 function openStepGuide(lesson, step = 0) {
@@ -1823,11 +1982,9 @@ function closeStepGuide() {
   guide.open = false;
   if (guide.raf) cancelAnimationFrame(guide.raf);
   guide.raf = 0;
-  stopGuidePlay(false);
   const wrap = $('#stepGuide');
   if (wrap) wrap.hidden = true;
   document.removeEventListener('keydown', onStepGuideKeydown);
-  syncGuideCard();
 }
 
 function stepGuideMove(d) {
@@ -1855,16 +2012,12 @@ function onStepGuideKeydown(e) {
 function updateStepGuide() {
   const lesson = LESSONS.find((l) => l.type === guide.lesson);
   if (!lesson) return closeStepGuide();
-  // The overlay steps aside on the final step: the walk-through is over, so
-  // the canvas belongs to the learner's tree again — and the example counts
-  // as seen, so it is not replayed on a later visit.
+  // The walk-through is over on the final step: the canvas belongs to the
+  // learner's tree again — and the example counts as seen, so it is not
+  // replayed on a later visit.
   if (guide.step >= lesson.steps.length - 1) {
-    guide.cardShown = false;
     markExampleSeen(lesson, guide.example ?? lesson.examples[0]);
   }
-  const card = $('#canvasGuideCard');
-  if (card) card.hidden = !guide.cardShown;
-  syncGuideCard();
   updateStepUI(lesson);
 }
 
@@ -1958,9 +2111,15 @@ function setBuilderHint(msg) {
 // Builder session.
 setBuilderCloseHandler(clearActiveLesson);
 
-// The builder reports every live check; the lesson's quiz panel shows that
-// validation status next to the question.
+// The builder reports every live check; the lesson's diagnostics panel shows
+// that verdict under the question.
 setCheckResultHandler((message, kind) => {
   state.checkStatus = { message, kind };
   updateValidationStatus();
+});
+
+// …and every change to the tree itself, so the findings (detached leaves,
+// empty phrases, a second root) follow the learner while they build.
+setModelChangeHandler(() => {
+  if (state.view === 'lesson' && state.lessonPage === 3) updateValidationStatus();
 });

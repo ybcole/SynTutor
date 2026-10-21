@@ -23,6 +23,12 @@
   --border-subtle: #c3cddb;
   --radius: 12px;
   --radius-sm: 8px;
+  /* Workspace layout tokens — one gap, one padding and one radius for every
+     panel of every workspace. The Syntax Generator and the Lessons rail read
+     the same values, so the two can never drift apart. */
+  --workspace-padding: 8px;
+  --workspace-gap: 8px;
+  --panel-radius: 12px;
   --header-bg: #ffffff;
   --header-text: #1e2029;
   --header-border: #e2e8f0;
@@ -1100,20 +1106,20 @@ body:has(#newSessionBtn.active) #inputClearBtn:not([hidden]) { display: flex; }
   min-height: 0;
   min-width: 0;
   display: grid;
-  /* Canvas column | right column with a clean 8px gutter. --col-split is a
+  /* Canvas column | right column with a clean gutter. --col-split is a
      unitless fraction (0..1) written by the drag handler; the column width
      resolves against the content box, so #colResizer's left formula subtracts
-     the 8px padding on each side. */
+     the workspace padding on each side. */
   grid-template-columns: minmax(0, calc(var(--col-split, 0.58) * 100%)) minmax(0, 1fr);
-  gap: 8px;
-  padding: 8px;
+  gap: var(--workspace-gap);
+  padding: var(--workspace-padding);
   box-sizing: border-box;
 }
 
 /* ── Edge-drag handles between the panes ──
-   The panels are separated by an 8px grid gutter, and each handle sits dead
+   The panels are separated by one grid gutter, and each handle sits dead
    centre inside that gutter (never overlapping the panel borders): the col
-   handle accounts for .app-main's 8px padding because --col-split sizes the
+   handle accounts for .app-main's padding because --col-split sizes the
    column against the content box while `left` resolves against the padding
    box. */
 .resizer {
@@ -1141,10 +1147,11 @@ body:has(#newSessionBtn.active) #inputClearBtn:not([hidden]) { display: flex; }
   opacity: 1;
 }
 .resizer-col {
-  top: 8px;
-  bottom: 8px;
-  /* 8px padding + first column (fraction of the content box) + half the gap. */
-  left: calc(8px + (100% - 16px) * var(--col-split, 0.58) + 1px);
+  top: var(--workspace-padding);
+  bottom: var(--workspace-padding);
+  /* The workspace padding + the first column (fraction of the content box)
+     + half the gap. */
+  left: calc(var(--workspace-padding) + (100% - 2 * var(--workspace-padding)) * var(--col-split, 0.58) + 1px);
   width: 6px;
   cursor: col-resize;
 }
@@ -1171,7 +1178,7 @@ body.is-resizing .resizer::after { opacity: 1; background: var(--accent); }
   min-width: 0;
   display: grid;
   grid-template-rows: minmax(0, calc(var(--row-split, 0.58) * 100%)) minmax(0, 1fr);
-  gap: 8px;
+  gap: var(--workspace-gap);
 }
 .pane {
   min-height: 0;
@@ -1185,7 +1192,7 @@ body.is-resizing .resizer::after { opacity: 1; background: var(--accent); }
   padding: 0;
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--panel-radius);
   overflow: hidden;
 }
 /* The explain pane is a plain slot: the node inspector / lesson guide fill
@@ -1199,7 +1206,7 @@ body.is-resizing .resizer::after { opacity: 1; background: var(--accent); }
   padding: 18px 20px;
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--panel-radius);
   overflow: hidden;
 }
 
@@ -1237,29 +1244,25 @@ body:has(#lessonGuideHost:not(:empty)) #emptyExplainState { display: none; }
    placeholder never bleeds through behind them. */
 body.lesson-view #tutorSurface,
 body.lesson-view .input-editor { display: none; }
-/* The lesson owns the upper-right pane: its controls sit on the panel
-   surface with a comfortable margin from the panel edges. */
-body.lesson-view .pane-input {
-  padding: 20px 24px;
-  box-sizing: border-box;
-}
+/* The input box is gone, so its clear button goes with it: nothing else may
+   float over the lesson's control panel. */
+body.lesson-view #inputClearBtn { display: none; }
+
+/* The right rail of a lesson - its two surfaces and their fixed split -
+   lives in quiz.css, with the rest of the lesson's own styles. */
+/* The lesson controls sit on the panel surface with a comfortable margin from
+   its edges, and the panel itself does the scrolling. */
 body.lesson-view #quizQuestHost {
   flex: 1 1 auto;
   min-height: 0;
-  overflow-y: auto;
-  /* The stage controls never scroll sideways — a stray horizontal scrollbar
-     reads as a stray gray line under the panel. */
-  overflow-x: hidden;
+  overflow: visible;
 }
-/* The lesson guide fills the explain pane and scrolls on its own, so long
+/* The lesson guide fills the analysis panel and scrolls on its own, so long
    explanations are never clipped at the bottom. */
-body.lesson-view .pane-explain { padding: 0; overflow: hidden; }
 body.lesson-view #lessonGuideHost {
   flex: 1 1 auto;
-  height: 100%;
-  max-height: 100%;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex-direction: column;
 }
@@ -1275,7 +1278,7 @@ body.lesson-view #explainNode:empty { display: none; }
   min-width: 0;
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--panel-radius);
   overflow: hidden;
 }
 .canvas-stage {
@@ -1679,6 +1682,8 @@ body.lesson-view #explainNode:empty { display: none; }
 }
 @media (max-width: 760px) {
   body { overflow: auto; }
+  /* The stacked workspace keeps the same tokens, one step looser. */
+  :root { --workspace-padding: 12px; --workspace-gap: 12px; }
   /* No docked rail on small screens: the shell scrolls and the sidebar is
      a slide-over drawer again (#appSidebarBackdrop). */
   .app-shell {
@@ -1707,7 +1712,7 @@ body.lesson-view #explainNode:empty { display: none; }
     margin-left: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--workspace-gap);
     padding: 10px 12px 8px;
   }
   .resizer { display: none; }
@@ -1715,9 +1720,9 @@ body.lesson-view #explainNode:empty { display: none; }
   .pane-side {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--workspace-gap);
   }
-  .pane-input { border: 1px solid var(--border); border-radius: var(--radius); min-height: 120px; }
+  .pane-input { border: 1px solid var(--border); border-radius: var(--panel-radius); min-height: 120px; }
   .pane-explain { min-height: 280px; }
 }
 /* ── Syntax Builder ── */
@@ -2062,70 +2067,6 @@ body.lesson-view #explainNode:empty { display: none; }
 .onboarding-nav .sq-ghost,
 .onboarding-nav .sq-primary { margin: 0; padding: 8px 14px; font-size: 12.5px; }
 
-/* ------------------------------------------------------------------ */
-/* Step-by-step guide card — docked bottom-left of the canvas          */
-/* ------------------------------------------------------------------ */
-/* Shown while a lesson example is loaded: the numbered steps for the
-   sentence, with a ▶ Play control that animates through them while the
-   spotlight ring (below) points at the matching nodes on the canvas. */
-/* The card is a prompt, not a panel: it names the step the learner is on and
-   carries the ▶ Play auto-guide. The step text itself lives in the
-   bottom-right pane, so nothing is printed twice — and the card stays out of
-   the way of the words and the boxes on the canvas. */
-.canvas-guide-card {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  z-index: 9;
-  max-width: min(420px, calc(100% - 40px));
-  display: flex;
-  flex-direction: column;
-  padding: 7px 8px 7px 14px;
-  border: 1px solid var(--card-border);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--panel) 96%, transparent);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: var(--shadow-md);
-  animation: guide-card-in 0.22s ease;
-}
-@keyframes guide-card-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
-}
-.canvas-guide-card[hidden] { display: none; }
-.canvas-guide-head { display: flex; align-items: center; gap: 10px; margin-bottom: 0; }
-.canvas-guide-label {
-  flex: 1 1 auto;
-  min-width: 0;
-  font-size: 10.5px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--accent-strong);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.canvas-guide-play {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 12px;
-  border: none;
-  border-radius: 999px;
-  background: var(--accent);
-  color: #fff;
-  font: inherit;
-  font-size: 11.5px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
-}
-.canvas-guide-play:hover { background: var(--accent-strong); }
-.canvas-guide-play:active { transform: scale(0.96); }
-.canvas-guide-play.is-playing { background: var(--err); }
 
 
 /* --------------------------------------------------------------------------
