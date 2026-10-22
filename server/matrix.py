@@ -2511,7 +2511,9 @@ class MatrixEvaluator:
         elif cid == 'C-QUANTIFIER':
             rem = self._rem_quantifier(node, parent)
         elif cid == 'C-HEAD-VERB':
-            rem = self._rem_vp_head_noun(node, parent)
+            # The whole tree is needed to read the word before the noun (the
+            # auxiliary that fixes the verb form: 'is' -> -ing, 'to' -> plain).
+            rem = self._rem_vp_head_noun(node, parent, root)
         elif cid == 'C-COMPARATIVE-DOUBLE':
             rem = self._rem_double_comparative(node, parent)
         elif cid == 'C-HEAD-NOUN':
@@ -2521,6 +2523,17 @@ class MatrixEvaluator:
                 rem = self._rem_fragment(node)
             else:
                 rem = self._rem_finite_verb(node, parent)
+                if rem is None and node is not None:
+                    # The phrase has no verb head at all ("He decided to
+                    # stays."): repair the word that has to become the verb,
+                    # using the form-aware rewrite from C-HEAD-VERB (after
+                    # "to" the plain form is required).
+                    leaves = _leaves_list(node)
+                    for i, lf in enumerate(leaves):
+                        if (i and lf['type'] in (NOUN_CLASS - {'PRP'})
+                                and _lower(leaves[i - 1].get('surface', '')) == 'to'):
+                            rem = self._rem_vp_head_noun(lf, node, root)
+                            break
         else:
             rem = self._rem_generic(detail)
         if rem is None or not rem.get('suggested_fix'):
@@ -2834,11 +2847,12 @@ class MatrixEvaluator:
     def _rem_head_noun(self, node, parent):
         if parent is None:
             return None
-        # The rule fires on the determiner that has no noun to go with; a node
-        # of any other kind means this is a different problem wearing the same
-        # constraint id, so no noun-inserting edit is offered.
-        if node is not None and node['type'] not in DET_CLASS and node['type'] != 'PRP':
-            return None
+        # The rule fires on the determiner that has no noun to go with. Other
+        # node kinds can wear the same constraint id (e.g. a possessive
+        # pronoun); the specific repair still applies to them, but only a
+        # determiner gets the noun-inserting edit.
+        can_insert = (node is not None
+                      and (node['type'] in DET_CLASS or node['type'] == 'PRP'))
         det_s = node['surface'] if node is not None else 'a determiner'
         adj_leaves = [lf for lf in _leaves_list(parent)
                       if lf['type'] in ADJ_CLASS]
@@ -2854,8 +2868,9 @@ class MatrixEvaluator:
             'alternative_fix': (f"Or name the person or thing directly, e.g. 'Maya' "
                                 f"instead of '{det_s}'."),
             'targeted_outcome': f"'{det_s}' followed by a noun",
-            'edit': _edit(node['span'][1], node['span'][1],
-                          (adj_leaves[0]['surface'] + ' one') if adj_leaves else 'one'),
+            'edit': (_edit(node['span'][1], node['span'][1],
+                           (adj_leaves[0]['surface'] + ' one') if adj_leaves else 'one')
+                     if can_insert else None),
         }
 
     @staticmethod
@@ -2939,28 +2954,51 @@ class MatrixEvaluator:
             return None
         if node['type'] not in NOUN_CLASS:
             return None
-        art = _indefinite_article(node['surface'])
-        # The article belongs in front of the whole noun phrase: when the
-        # phrase opens the sentence the new determiner also has to carry the
-        # sentence's capital letter.
+        # The article belongs in front of the whole noun phrase when the phrase
+        # opens with modifiers: in "spare instrument" it is the phrase's first
+        # word ("a spare instrument"), not the noun, that decides a/an. Naming
+        # the noun there would produce "a instrument". A phrase that opens with
+        # something else (a stray pronoun, an existential "there") has no safe
+        # single-token insertion, so the fix stays a written instruction.
         first = _leaves_list(parent)[0] if parent else None
+        leads = first is not None and first['id'] == node['id']
+        modifier = (first is not None and not leads
+                    and (first['type'] in ADJ_CLASS
+                         or first['type'] in (NOUN_CLASS - {'PRP'})
+                         or first['type'] in {'VBG', 'VBN'}))
+        if modifier:
+            target = first['surface']
+            phrase = parent['surface']
+            target_at = parent['span'][0]
+        else:
+            target = node['surface']
+            phrase = node['surface']
+            target_at = node['span'][0]
+        art = _indefinite_article(target)
         edit = None
-        if first is not None:
-            art = _indefinite_article(first['surface'])
-            if parent['span'][0] == 0 and first['type'] not in {'NNP', 'NNPS'}:
-                edit = _edit(0, 1, f"{art.capitalize()} {first['surface'].lower()}")
+        edit_node = first['id'] if modifier else node['id']
+        if modifier or leads:
+            if target_at == 0 and first['type'] not in {'NNP', 'NNPS'}:
+                # The phrase opens the sentence, so the new determiner carries
+                # the capital letter and the first word loses it.
+                fixed_phrase = f"{art.capitalize()} {phrase[0].lower() + phrase[1:]}"
+                edit = _edit(0, 1, fixed_phrase)
             else:
-                edit = _edit(parent['span'][0], parent['span'][0], art)
+                fixed_phrase = f"{art} {phrase}"
+                edit = _edit(target_at, target_at, art)
+            shown = fixed_phrase
+        else:
+            # No safe insertion point: keep the instruction, skip the preview.
+            shown = f"{art} {node['surface']}"
         return {
             'violation': (f"'{node['surface']}' is a singular noun that names one countable "
                           "thing, but it is used without a little word like 'a' or 'the' before "
                           'it.'),
-            'suggested_fix': (f"Add '{art}' before '{node['surface']}' \u2192 "
-                              f"'{art} {node['surface']}'."),
+            'suggested_fix': f"Add '{art}' before '{target}' \u2192 '{shown}'.",
             'alternative_fix': (f"Or use another word before it: 'the {node['surface']}', "
                                 f"'this {node['surface']}', or 'my {node['surface']}'."),
             'targeted_outcome': f"'{node['surface']}' with a determiner before it",
-            'edits': [{'node': node['id'], 'insert_before': art}],
+            'edits': [{'node': edit_node, 'insert_before': art}],
             'edit': edit,
         }
 
