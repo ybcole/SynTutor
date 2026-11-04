@@ -1,0 +1,69 @@
+{
+  "chapter": 1,
+  "convention_version": "V1",
+  "source": "Burton-Roberts, Analysing Sentences, Ch1 (printed page numbers)",
+  "evidence": "IMG: transcribed from page images; every tree below was read off the figure itself, except where status says otherwise",
+  "trees": [
+    {"id":"ch1-2","fig":"[2]","page":7,"status":"IMG","note":"non-linguistic; ellipsis dots mean 'other things'",
+     "tree":{"label":"bicycle","children":[{"word":"wheel"},{"word":"wheel"},{"word":"frame"},{"word":"chain"},{"word":"handlebars"},{"word":"...","ellipsis":true}]}},
+    {"id":"ch1-3a","fig":"[3a]","page":8,"status":"IMG","note":"WRONG analysis (spokes directly under bicycle)",
+     "correct":false,
+     "tree":{"label":"bicycle","children":[{"word":"wheel"},{"word":"spoke"},{"word":"spoke"},{"word":"...","ellipsis":true}]}},
+    {"id":"ch1-3b","fig":"[3b]","page":8,"status":"IMG","note":"book's preferred analysis",
+     "tree":{"label":"bicycle","children":[{"label":"wheel","children":[{"word":"spoke"},{"word":"spoke"},{"word":"...","ellipsis":true}]},{"word":"...","ellipsis":true}]}},
+    {"id":"ch1-5","fig":"[5]","page":9,"sentence":"Old Sam sunbathed beside a stream","status":"IMG","correct":false,
+     "note":"flat tree; book says it is wrong because it gives the sentence no structure",
+     "tree":{"label":"Sentence","children":[{"word":"Old"},{"word":"Sam"},{"word":"sunbathed"},{"word":"beside"},{"word":"a"},{"word":"stream"}]}},
+    {"id":"ch1-25a","fig":"[25a]","page":13,"sentence":"beside a stream","status":"IMG","correct":false,
+     "tree":{"label":"Phrase","children":[{"label":"Phrase","children":[{"word":"beside"},{"word":"a"}]},{"word":"stream"}]}},
+    {"id":"ch1-25b","fig":"[25b]","page":13,"sentence":"beside a stream","status":"IMG","correct":true,
+     "note":"book's chosen analysis",
+     "tree":{"label":"Phrase","children":[{"word":"beside"},{"label":"Phrase","children":[{"word":"a"},{"word":"stream"}]}]}},
+    {"id":"ch1-25c","fig":"[25c]","page":13,"sentence":"beside a stream","status":"IMG","correct":false,
+     "tree":{"label":"Phrase","children":[{"word":"beside"},{"word":"a"},{"word":"stream"}]}},
+    {"id":"ch1-34","fig":"[34]","page":16,"sentence":"Sam sunbathed beside a stream that had dried up","status":"IMG",
+     "note":"partial tree: only the PP part of the sentence is drawn; triangle under PHRASE-b",
+     "tree":{"label":"PHRASE-a","children":[{"word":"beside"},{"label":"PHRASE-b","triangle":true,"words":["a","stream","that","had","dried","up"]}]}},
+    {"id":"ch1-35","fig":"[35]","page":17,"status":"IMG","correct":false,
+     "note":"top node is printed with an asterisk in the book; two triangles",
+     "tree":{"label":"PHRASE-a","starred":true,"children":[{"label":"PHRASE-b","triangle":true,"words":["beside","a","stream"]},{"label":"PHRASE-c","triangle":true,"words":["that","had","dried","up"]}]}},
+    {"id":"ch1-ex1","fig":"Ex1 diagram","page":19,"status":"IMG","note":"abstract letters; used for dominance exercises",
+     "tree":{"label":"A","children":[
+        {"label":"B","children":[{"label":"D","children":[{"word":"a"},{"word":"b"}]},{"label":"E","children":[{"word":"c"},{"word":"d"}]}]},
+        {"label":"C","children":[{"label":"F","children":[{"word":"e"},{"word":"f"}]},{"word":"g"},{"word":"h"}]}]}},
+    {"id":"ch1-ex3a","fig":"Ex3(a) answer","page":21,"sentence":"their rather dubious jokes","status":"IMG",
+     "tree":{"label":"Phrase","children":[{"word":"their"},{"label":"Phrase","children":[{"label":"Phrase","children":[{"word":"rather"},{"word":"dubious"}]},{"word":"jokes"}]}]}},
+    {"id":"ch1-ex3b","fig":"Ex3(b) answer","page":21,"sentence":"men from the Ministry","status":"IMG",
+     "tree":{"label":"Phrase","children":[{"word":"men"},{"label":"Phrase","children":[{"word":"from"},{"label":"Phrase","children":[{"word":"the"},{"word":"Ministry"}]}]}]}},
+    {"id":"ch1-ex6a","fig":"Ex6(a) answer","page":22,"sentence":"Old Sam sunbathed beside a stream","status":"IMG",
+     "note":"the analysis the book adopts from Ch2 onward (decision J1)",
+     "tree":{"label":"Sentence","children":[
+        {"label":"Phrase","children":[{"word":"Old"},{"word":"Sam"}]},
+        {"label":"Phrase","children":[{"word":"sunbathed"},{"label":"Phrase","children":[{"word":"beside"},{"label":"Phrase","children":[{"word":"a"},{"word":"stream"}]}]}]}]}},
+    {"id":"ch1-ex6b","fig":"Ex6(b) answer","page":22,"sentence":"Old Sam sunbathed beside a stream","status":"IMG",
+     "tree":{"label":"Sentence","children":[
+        {"label":"Phrase","children":[{"label":"Phrase","children":[{"word":"Old"},{"word":"Sam"}]},{"word":"sunbathed"}]},
+        {"label":"Phrase","children":[{"word":"beside"},{"label":"Phrase","children":[{"word":"a"},{"word":"stream"}]}]}]}},
+    {"id":"ch1-ex6c","fig":"Ex6(c) answer","page":22,"sentence":"Old Sam sunbathed beside a stream","status":"IMG",
+     "tree":{"label":"Sentence","children":[
+        {"label":"Phrase","children":[{"word":"Old"},{"word":"Sam"}]},
+        {"word":"sunbathed"},
+        {"label":"Phrase","children":[{"word":"beside"},{"label":"Phrase","children":[{"word":"a"},{"word":"stream"}]}]}]}}
+  ],
+  "no_book_tree_needs_derivation": [
+    {"ex":"Further Ex2","sentence":"no previous experience of syntax","status":"DERIVED_FROM_INSTRUCTIONS","page":23,
+     "note":"book gives no answer; the instruction states the nesting, so the tree is fully determined",
+     "tree":{"label":"Phrase","children":[{"word":"no"},{"label":"Phrase","children":[{"word":"previous"},{"label":"Phrase","children":[{"word":"experience"},{"label":"Phrase","children":[{"word":"of"},{"word":"syntax"}]}]}]}]}},
+    {"ex":"Further Ex3","sentence":"the new students are very worried","status":"DERIVED_FROM_INSTRUCTIONS","page":23,
+     "note":"book gives no answer; the instruction states the nesting, so the tree is fully determined",
+     "tree":{"label":"Sentence","children":[
+        {"label":"Phrase","children":[{"word":"the"},{"label":"Phrase","children":[{"word":"new"},{"word":"students"}]}]},
+        {"label":"Phrase","children":[{"word":"are"},{"label":"Phrase","children":[{"word":"very"},{"word":"worried"}]}]}]}}
+  ],
+  "exercise_answers_from_book": {
+    "ex1": {"page":20,"answers":{"1":true,"2":false,"3":false,"4":true,"5":true,"6":false,"7":false,"8":true,"9":true},
+            "sequences":{"1":["c","d"],"2":["a","b","c"],"3":["c","d","e","f"],"4":["e","f"],"5":["e","f","g","h"],"6":["g","h"],"7":["E","C"],"8":["D","E"],"9":["F","g","h"]},
+            "note":"items 7-9 mix node names and words; the book treats E, C, D, F as the words under them"},
+    "ex2": {"page":20,"answers":{"A":["B","C"],"B":["D","E"],"C":["F","g","h"]}}
+  }
+}

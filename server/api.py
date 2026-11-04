@@ -13,6 +13,7 @@ from licensing import _leaves as _tree_leaves
 from licensing import _finding
 import corrector
 import corrections
+from plain import apply_plain_language, plain_text
 
 _MODEL_STATUS = None
 
@@ -142,6 +143,8 @@ def build_payload(text, sentence_index=0):
             summary['correction'] = correction
             summary['corrected_sentence'] = correction['corrected_sentence']
 
+    apply_plain_language(details, summary)
+
     token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
     tag_word = summary['explanation']
     label = {'grammatical': 'VALID', 'ungrammatical': 'INVALID',
@@ -193,7 +196,7 @@ def build_payload(text, sentence_index=0):
         else:
             detail['display_status'] = 'neutral'
 
-    contrastive = _contrastive(summary, details)
+    contrastive = plain_text(_contrastive(summary, details))
     pipeline = _pipeline_narration(analysis, summary, details)
     concepts = _rule_concepts(details, summary)
 

@@ -244,9 +244,10 @@ ARTICLE_EXEMPT = {
 }
 
 VERB_FORM_LABEL = {
-    'VB': 'base', 'VBD': 'past', 'VBG': 'present participle',
-    'VBN': 'past participle', 'VBP': 'non-third-person present',
-    'VBZ': 'third-person singular present', 'MD': 'modal',
+    'VB': 'base form', 'VBD': 'past form', 'VBG': '-ing form',
+    'VBN': 'past participle (third form)',
+    'VBP': 'present form for I/you/we/they',
+    'VBZ': 'he/she/it present form', 'MD': 'modal verb',
 }
 NONFINITE = {'VB', 'VBG', 'VBN'}
 
@@ -519,6 +520,18 @@ CONSTRAINT_RULE = {
     'C-RELATIVE-PRONOUN': ('5.4', 'T'),
 }
 
+SPECIFIC_FINDING_OVERRIDES = {
+    'C-HOMOPHONE', 'C-PRONOUN-CASE', 'C-PREP-PRON-CASE', 'C-POSSESSIVE',
+    'C-COUNT-MASS', 'C-QUANTIFIER', 'C-MODAL-VERB-FORM', 'C-MODAL-TO',
+    'C-MODAL-ABLE', 'C-MODAL-OF', 'C-BE-PAST', 'C-REPORTED-SPEECH',
+    'C-VBN-SIMPLE-PAST', 'C-STATIVE-PROGRESSIVE', 'C-STATIVE-PROG',
+    'C-PLURAL-ONLY', 'C-REFLEXIVE-FORM', 'C-DOUBLE-NEGATIVE',
+}
+GENERIC_OWN_ERRORS = {
+    'C-HEAD-NOUN', 'C-HEAD-VERB', 'C-DET-STACK', 'C-TENSE-FINITE',
+    'C-VERB-FORM', 'C-AUX-FORM', 'C-ROOT', 'C-QUANTIFIER',
+}
+
 
 IRREGULAR_PLURAL = {
     'child': 'children', 'man': 'men', 'woman': 'women', 'foot': 'feet',
@@ -585,6 +598,10 @@ IRREGULAR_PAST = {
     'think': 'thought', 'throw': 'threw', 'understand': 'understood',
     'wear': 'wore', 'win': 'won', 'write': 'wrote', 'become': 'became',
 }
+
+SIMPLE_PAST_ONLY = (set(IRREGULAR_PAST.values())
+                    - set(IRREGULAR_VBN.values())
+                    - {'was', 'were'})
 
 
 def _preserve_case(source, word):
@@ -1033,7 +1050,10 @@ def _rem_from_text(text, surface=''):
     m = re.search(r"instead of '([^']+)'", text)
     if m and surface:
         return card(f"Change '{surface}' to '{m.group(1)}'.")
-    m = re.search(r"change (?:it|them|the \w+|'[^']+') to '([^']+)'", text, re.I)
+    m = re.search(r"change '([^']+)' to '([^']+)'", text, re.I)
+    if m:
+        return card(f"Change '{m.group(1)}' to '{m.group(2)}'.")
+    m = re.search(r"change (?:it|them|the \w+) to '([^']+)'", text, re.I)
     if m and surface:
         return card(f"Change '{surface}' to '{m.group(1)}'.")
     if 'must be capitalized' in text:
@@ -1596,6 +1616,11 @@ class MatrixEvaluator:
                 err = next((f for f in errs
                             if f.get('constraint') == detail.get('constraint')),
                            None)
+            if err is None and own_error:
+                err = next((f for f in errs
+                            if f.get('constraint') in SPECIFIC_FINDING_OVERRIDES
+                            and detail.get('constraint') in GENERIC_OWN_ERRORS),
+                           None)
             if err is None:
                 if own_error:
                     continue
@@ -1622,6 +1647,33 @@ class MatrixEvaluator:
                     if not merged.get(key) and matrix_rem.get(key):
                         merged[key] = matrix_rem[key]
             detail['remediation'] = merged
+        self._suppress_be_past_duplicates()
+
+    def _suppress_be_past_duplicates(self):
+        has_be_past = any(
+            finding.get('constraint') == 'C-BE-PAST'
+            and finding.get('status') == 'error'
+            for detail in self.details.values()
+            for finding in detail.get('findings', []) or [])
+        if not has_be_past:
+            return
+        for detail in self.details.values():
+            if detail.get('constraint') == 'C-BE-PAST':
+                continue
+            surface = _lower(detail.get('surface', ''))
+            if surface not in SIMPLE_PAST_ONLY:
+                continue
+            if detail.get('constraint') not in {'C-VERB-FORM',
+                                                'C-LEXICON-MALFORMED'}:
+                continue
+            detail['status'] = 'valid'
+            detail['text'] = (f"'{detail.get('surface')}' is the past verb; it is "
+                              'correct once the extra helping word is removed.')
+            detail.pop('remediation', None)
+            detail['findings'] = [
+                f for f in detail.get('findings', []) or []
+                if f.get('constraint') not in {'C-VERB-FORM',
+                                               'C-LEXICON-MALFORMED'}]
 
     def _evidence(self, root, detail):
         """Generic evidence record matching the XAI table in docs/matrix.md."""
@@ -2013,10 +2065,9 @@ class MatrixEvaluator:
                   if skey == ('3', 'sg') else
                   _preserve_case(vp_head['surface'], _nonthird_present(_base_form(vp_head))))
         return ('error', 'C-SUBJECT-AGREEMENT',
-                f"The subject '{self._p(subj)}' has the main word "
-                f"'{subj_head['surface']}' ({subj_label}), but the verb "
-                f"'{vp_head['surface']}' does not match it. Change "
-                f"'{vp_head['surface']}' to '{target}'.")
+                f"The subject '{self._p(subj)}' and the verb "
+                f"'{vp_head['surface']}' do not match. Use "
+                f"'{target}' with this subject.")
 
     def _coordinated_predicate_heads(self, vp, primary):
         """Finite verb heads of predicate-coordination conjuncts other than the
@@ -2340,6 +2391,9 @@ class MatrixEvaluator:
                    and c['span'][0] < adjp_child['span'][0]]
         if any(c['type'] == 'NP' for c in earlier):
             return False
+        if (head['type'] == 'MD' or _lower(head['surface']) in MODALS) \
+                and any(_lower(lf['surface']) == 'able' for lf in adj_leaves):
+            return False
         return True
 
 
@@ -2369,9 +2423,11 @@ class MatrixEvaluator:
             low = _lower(child.get('surface', ''))
             base = _verb_lemma(low) or _base_form(child)
             target = _past_form(base) if expected == 'past tense' else _vbn_form(base)
+            label = ('past participle (third form)' if expected == 'past participle'
+                     else 'past tense')
             return ('error', 'C-VERB-FORM',
                     f"'{self._p(child)}' is the verb in '{self._p(parent)}', but it "
-                    f"is not the correct {expected} form. Change it to '{target}'.")
+                    f"is not in the {label}. Change it to '{target}'.")
         return ('valid', 'C-HEAD-VERB',
                 f"The verb '{self._p(child)}' is the main action word in "
                 f"'{self._p(parent)}'.")
@@ -2398,21 +2454,40 @@ class MatrixEvaluator:
         verb_node = self._following_verb(parent, child)
         if verb_node is None:
             return self._verb_head(parent, child)
+        leaves = _leaves_list(parent)
+        idx = next((i for i, lf in enumerate(leaves)
+                    if lf.get('id') == child.get('id')), None)
+        if cls == 'modal' and idx is not None and idx + 1 < len(leaves) \
+                and _lower(leaves[idx + 1].get('surface', '')) == 'of':
+            return ('valid', 'C-AUX-COMPLEMENT',
+                    "The word after the modal is 'of'; the separate modal rule "
+                    'explains the fix.')
         if cls == 'have' and _lower(verb_node.get('surface', '')) == 'got':
             return ('valid', 'C-AUX-COMPLEMENT',
                     f"'{self._p(child)} {self._p(verb_node)}' means 'possess', so it is "
                     'correct here.')
+        if cls == 'be' and surface not in {'was', 'were'} \
+                and _lower(verb_node.get('surface', '')) in SIMPLE_PAST_ONLY:
+            return ('error', 'C-BE-PAST',
+                    f"Do not use '{self._p(child)}' before the past verb "
+                    f"'{self._p(verb_node)}'. Use the past verb by itself.")
         if not _is_valid_verb_form(verb_node):
-            expected = 'the past participle' if cls == 'have' else 'an -ing or -ed form'
             low = _lower(verb_node.get('surface', ''))
             base = _verb_lemma(low) or _base_form(verb_node)
             target = _vbn_form(base) if cls in ('have', 'be') else base
+            if cls == 'have':
+                expected = 'the past participle (third form)'
+            elif cls == 'be' and target == _vbn_form(base):
+                expected = 'the past participle (third form)'
+            else:
+                expected = 'the -ing form'
             return ('error', 'C-VERB-FORM',
-                    f"After '{self._p(child)}', the verb must be {expected}, but "
-                    f"'{self._p(verb_node)}' is not. Change it to '{target}'.")
-        required = {'modal': 'the plain form', 'do': 'the plain form',
-                    'have': 'the past participle',
-                    'be': 'an -ing or -ed form'}[cls]
+                    f"After '{self._p(child)}', use {expected}, not "
+                    f"'{self._p(verb_node)}'. Change '{self._p(verb_node)}' to "
+                    f"'{target}'.")
+        required = {'modal': 'the base form', 'do': 'the base form',
+                    'have': 'the past participle (third form)',
+                    'be': 'the -ing form'}[cls]
 
         def gloss():
             if cls == 'modal':
@@ -2448,8 +2523,9 @@ class MatrixEvaluator:
                   'have': _vbn_form(base),
                   'be': _vbg_form(base)}[cls]
         return ('error', 'C-AUX-FORM',
-                f"After '{self._p(child)}', the verb must be {required}, but "
-                f"'{self._p(verb_node)}' is not. Change it to '{target}'.")
+                f"After '{self._p(child)}', use {required}, not "
+                f"'{self._p(verb_node)}'. Change '{self._p(verb_node)}' to "
+                f"'{target}'.")
 
     @staticmethod
     def _following_verb(parent, aux_child):
@@ -2487,36 +2563,45 @@ class MatrixEvaluator:
         if node is None:
             return self._rem_generic(detail)
         if cid == 'C-SUBJECT-AGREEMENT':
-            rem = self._rem_agreement(node, parent)
-        elif cid == 'C-DETERMINER-AGREEMENT':
-            rem = self._rem_det(node, parent)
-        elif cid == 'C-NOUN-FORM':
-            rem = self._rem_noun_form(node, parent)
-        elif cid == 'C-AUX-FORM':
-            rem = self._rem_aux(node, parent)
-        elif cid == 'C-DET-STACK':
-            rem = self._rem_det_stack(node, parent)
-        elif cid == 'C-MOD-POS':
-            rem = self._rem_mod_pos(node, parent)
-        elif cid == 'C-PRONOUN-CASE':
-            rem = self._rem_pronoun_case(node, parent)
-        elif cid == 'C-ADJ-ADV':
-            rem = self._rem_adj_adv(node, parent)
-        elif cid == 'C-ARTICLE':
-            rem = self._rem_article(node, parent)
-        elif cid == 'C-ARTICLE-MISMATCH':
-            rem = self._rem_article_mismatch(node, parent)
-        elif cid == 'C-CAPITALIZATION':
-            rem = self._rem_capitalization(node)
-        elif cid == 'C-QUANTIFIER':
-            rem = self._rem_quantifier(node, parent)
-        elif cid == 'C-HEAD-VERB':
-            rem = self._rem_vp_head_noun(node, parent)
-        elif cid == 'C-COMPARATIVE-DOUBLE':
-            rem = self._rem_double_comparative(node, parent)
-        elif cid == 'C-HEAD-NOUN':
-            rem = self._rem_head_noun(node, parent)
-        elif cid == 'C-TENSE-FINITE':
+            return self._rem_agreement(node, parent)
+        if cid == 'C-DETERMINER-AGREEMENT':
+            return self._rem_det(node, parent)
+        if cid == 'C-NOUN-FORM':
+            return self._rem_noun_form(node)
+        if cid == 'C-AUX-FORM':
+            return self._rem_aux(node, parent)
+        if cid == 'C-BE-PAST':
+            return {
+                'violation': (f"Do not use '{node['surface']}' before a past verb."),
+                'suggested_fix': (f"Remove '{node['surface']}' and use the past verb "
+                                  'by itself.'),
+                'alternative_fix': None,
+                'targeted_outcome': 'the past verb without a form of be',
+                'edits': [{'node': node['id'], 'delete': True}],
+            }
+        if cid == 'C-DET-STACK':
+            return self._rem_det_stack(node, parent)
+        if cid == 'C-MOD-POS':
+            return self._rem_mod_pos(node, parent)
+        if cid == 'C-PRONOUN-CASE':
+            return self._rem_pronoun_case(node, parent)
+        if cid == 'C-ADJ-ADV':
+            return self._rem_adj_adv(node, parent)
+        if cid == 'C-ARTICLE':
+            return self._rem_article(node, parent)
+        if cid == 'C-ARTICLE-MISMATCH':
+            return self._rem_article_mismatch(node, parent)
+        if cid == 'C-CAPITALIZATION':
+            return self._rem_capitalization(node)
+        if cid == 'C-QUANTIFIER':
+            return self._rem_quantifier(node, parent)
+        if cid == 'C-HEAD-VERB':
+            return self._rem_vp_head_noun(node, parent, root)
+        if cid == 'C-COMPARATIVE-DOUBLE':
+            return self._rem_double_comparative(node, parent)
+        if cid == 'C-HEAD-NOUN':
+            return self._rem_head_noun(node, parent)
+        if cid == 'C-TENSE-FINITE':
             if detail['role'] == 'fragment root':
                 rem = self._rem_fragment(node)
             else:
@@ -2546,25 +2631,21 @@ class MatrixEvaluator:
                 'another'}:
             sk = ('3', 'sg')
             coordinated = False
-        subj_label = '3rd person plural' if coordinated else self._subj_label(subj_head)
         verb_surface = vp_head['surface']
-        verb_label = self._verb_label(vp_head)
-        violation = (f"The subject '{subj['surface']}' is {subj_label}, but the verb "
-                     f"'{verb_surface}' is {verb_label}, so they do not match.")
         target = _preserve_case(verb_surface, _agree_form(vp_head, sk))
         target_pos = _agree_tag(vp_head, sk)
-        if target_pos == 'VBZ':
-            form_desc = 'the third-person singular present form'
+        if sk == ('3', 'sg'):
+            form_desc = 'the he/she/it form'
         else:
-            form_desc = f"the form used with plural subjects like '{subj_head['surface']}'"
-        suggested = (f"Change '{verb_surface}' to '{target}' ({form_desc}) "
-                     f"so it matches the {subj_label} subject '{subj['surface']}'.")
+            form_desc = 'the form used with I/you/we/they'
+        violation = (f"The subject '{subj['surface']}' and the verb "
+                     f"'{verb_surface}' do not match. Use {form_desc}.")
+        suggested = f"Change '{verb_surface}' to '{target}'."
         return {
             'violation': violation,
             'suggested_fix': suggested,
             'alternative_fix': self._subject_fix_alternative(subj, subj_head, vp_head),
-            'targeted_outcome': (f"Subject ({subj_label}) + verb {target_pos} "
-                                 f"instead of Subject ({subj_label}) + verb {vp_head['type']}"),
+            'targeted_outcome': f"'{target}' instead of '{verb_surface}'",
             'edits': [{'node': vp_head['id'], 'replacement': target}],
             'edit': _edit(vp_head['span'][0], vp_head['span'][1], target),
             'alternative_edit': self._subject_alt_edit(subj, subj_head, vp_head),
@@ -2650,8 +2731,10 @@ class MatrixEvaluator:
             return None
         det_s = node['surface']
         noun_s = head['surface']
-        violation = (f"'{det_s}' goes with {'singular' if numreq == 'sg' else 'plural'} nouns, "
-                     f"but the noun '{noun_s}' is {num}, so they do not match.")
+        num_label = 'singular' if num == 'sg' else 'plural'
+        violation = (f"'{det_s}' goes with "
+                     f"{'one thing' if numreq == 'sg' else 'more than one thing'}, "
+                     f"but the noun '{noun_s}' is {num_label}.")
         if numreq == 'pl':
             fix_noun = _preserve_case(noun_s, _plural_noun(_singular_noun(head)))
             suggested = (f"Change '{noun_s}' to the plural '{fix_noun}' so it matches "
@@ -2743,16 +2826,16 @@ class MatrixEvaluator:
         base = _verb_lemma(_lower(verb.get('surface', ''))) or _base_form(verb)
         aux_s = node['surface']
         v_s = verb['surface']
-        required = ('the plain form' if cls in ('modal', 'do')
-                    else "the '-ed' form (past participle)" if cls == 'have'
+        required = ('the base form' if cls in ('modal', 'do')
+                    else "the past participle (third form)" if cls == 'have'
                     else "the '-ing' form")
-        violation = (f"'{aux_s}' is a helping word that must be followed by {required}, "
-                     f"but the next verb '{v_s}' is {got_label}.")
+        violation = (f"'{aux_s}' is a helping word that needs {required} after it, "
+                     f"but the next verb '{v_s}' is in the {got_label}.")
         if cls in ('modal', 'do'):
             target = _preserve_case(v_s, base)
             auxiliary_kind = 'modal' if cls == 'modal' else 'do-form'
-            suggested = (f"Change '{v_s}' to the plain form '{target}' so it follows "
-                         f"'{aux_s}' ({auxiliary_kind}).")
+            suggested = (f"Change '{v_s}' to the base form '{target}' so it follows "
+                         f"'{aux_s}'.")
             if cls == 'modal':
                 alternative = (f"Or drop '{aux_s}' and use a tensed verb like "
                                f"'{_preserve_case(v_s, _third_present(base))}' (when the "
@@ -2763,14 +2846,14 @@ class MatrixEvaluator:
             outcome = f"'{aux_s}' + '{target}' instead of '{aux_s}' + '{v_s}'"
         elif cls == 'have':
             target = _preserve_case(v_s, _vbn_form(base))
-            suggested = (f"Change '{v_s}' to '{target}' after '{aux_s}', because a 'have' "
-                          "word is followed by the '-ed' form (past participle).")
+            suggested = (f"Change '{v_s}' to '{target}' after '{aux_s}', because "
+                          "'have' is followed by the past participle (third form).")
             alternative = None
             outcome = f"'{aux_s}' + '{target}' instead of '{aux_s}' + '{v_s}'"
         else:  # be
             target = _preserve_case(v_s, _vbg_form(base))
-            suggested = (f"Change '{v_s}' to the '-ing' form '{target}' after '{aux_s}' "
-                          f"(or use the '-ed' form for a passive sentence).")
+            suggested = (f"Change '{v_s}' to the '-ing' form '{target}' after "
+                          f"'{aux_s}'.")
             alternative = (f"Or drop '{aux_s}' and use the simple present "
                             f"'{_preserve_case(v_s, base)}'.")
             outcome = f"'{aux_s}' + '{target}' instead of '{aux_s}' + '{v_s}'"
@@ -2798,12 +2881,12 @@ class MatrixEvaluator:
         keep = dets[0]['surface']
         extras = ', '.join(f"'{d['surface']}'" for d in dets[1:])
         return {
-            'violation': (f"The phrase '{parent['surface']}' has more than one determiner "
-                          f"({keep} and {extras})."),
+            'violation': (f"The phrase '{parent['surface']}' has more than one "
+                          f"word before the noun ({keep} and {extras})."),
             'suggested_fix': f"Remove {extras} and keep '{keep}'.",
             'alternative_fix': (f"Or keep a different one instead: drop '{keep}' and keep "
-                                f"{extras}, so only one determiner remains."),
-            'targeted_outcome': "One determiner in the phrase",
+                                f"{extras}, so only one word comes before the noun."),
+            'targeted_outcome': "One word before the noun",
             'edits': [{'node': d['id'], 'delete': True} for d in dets[1:]],
             'edit': _edit(dets[1]['span'][0], dets[1]['span'][1], ''),
             'alternative_edit': _edit(dets[0]['span'][0], dets[0]['span'][1], ''),
@@ -3108,12 +3191,12 @@ class MatrixEvaluator:
                    f"after '{prev}' the verb takes '-ing'.")
         elif prev in HAVE_FORM:
             target = _preserve_case(noun_s, _vbn_form(base))
-            fix = (f"Change '{noun_s}' to '{target}' (the '-ed' form), because "
-                   f"after '{prev}' the verb takes '-ed'.")
+            fix = (f"Change '{noun_s}' to '{target}' (the past participle), because "
+                   f"after '{prev}' the verb takes that form.")
         elif prev == 'to' or prev in DO_FORM or prev in MODALS:
             target = _preserve_case(noun_s, base)
-            fix = (f"Change '{noun_s}' to the plain form '{target}', because after "
-                   f"'{prev}' the verb keeps its plain form.")
+            fix = (f"Change '{noun_s}' to the base form '{target}', because after "
+                   f"'{prev}' the verb keeps its base form.")
         else:
             target = _preserve_case(noun_s, _third_present(base)) if base else noun_s
             if target.lower() == noun_s.lower() and base:
@@ -3137,8 +3220,8 @@ class MatrixEvaluator:
         base = _base_form(vp_head)
         got = VERB_FORM_LABEL.get(vp_head['type'], vp_head['type'])
         finite = _preserve_case(h, _third_present(base))
-        violation = (f"The main verb '{h}' is {got}; a sentence needs a verb with a "
-                     'time (present or past).')
+        violation = (f"The main verb '{h}' is in the {got}; a sentence needs a "
+                     'verb with a tense (present or past).')
         if vp_head['type'] == 'VBG':
             suggested = (f"Change '{h}' to a full verb like '{finite}', or add the "
                          f"helping word 'is' before it: 'is {h}'.")
@@ -3169,8 +3252,8 @@ class MatrixEvaluator:
                             if not all(ch in '.,;:!?\u2018\u2019\u201c\u201d' for ch in w))
         example = f"'{stripped} runs.'" if stripped else "'The boy runs.'"
         return {
-            'violation': (f"This input reads as a {node['type']}, not a full sentence, because "
-                          'it has no verb in a tensed form.'),
+            'violation': ('This is not a full sentence because it has no main '
+                          'verb with a tense.'),
             'suggested_fix': (f"Add a verb so it becomes a full sentence — for "
                               f"example {example}"),
             'alternative_fix': None,
@@ -3195,7 +3278,7 @@ class MatrixEvaluator:
                          'verb, so it is a complete sentence.')
             return
         self._detail(root, None, 'fragment root', 'C-TENSE-FINITE', 'error',
-                     f"This input '{self._p(root)}' has no subject and verb, so it is "
+                     f"This input '{self._p(root)}' has no subject or verb, so it is "
                      'not a complete sentence.')
 
     def _detail(self, node, parent, role, constraint, status, text):
@@ -3298,10 +3381,10 @@ class MatrixEvaluator:
         violations = list(errors) + error_findings
         if root_error:
             violations.append(root_detail)
-        if root_error:
-            message = root_detail['text']
-        elif errors:
+        if errors:
             message = errors[0]['text']
+        elif root_error:
+            message = root_detail['text']
         elif error_findings:
             message = error_findings[0]['text']
         elif unverified or self.checker_errors:

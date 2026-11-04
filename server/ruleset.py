@@ -265,6 +265,9 @@ PAST_PARTICIPLE_OF = {
     'threw': 'thrown', 'wore': 'worn', 'won': 'won',
 }
 
+PAST_ONLY = {past for past, participle in PAST_PARTICIPLE_OF.items()
+             if past != participle}
+
 UNCOUNTABLE_PLURAL = {
     'informations', 'advices', 'knowledges', 'furnitures', 'luggages',
     'equipments', 'homeworks', 'evidences', 'softwares', 'moneys',
@@ -812,13 +815,20 @@ def _check_wordlists(leaves):
 
         if low == 'news' and nxt is not None and _lower(nxt) in (
                 'are', 'were', 'have', 'do'):
+            target = {'are': 'is', 'were': 'was', 'have': 'has',
+                      'do': 'does'}.get(_lower(nxt), 'is')
             out.append(_finding('4.3', 'error', 'C-PLURAL-ONLY', 'noun number',
                                 lf['id'],
                                 f"The word 'news' is singular even though it ends in 's', "
-                                f"so in this sentence it does not go with the verb "
-                                f"'{nxt['surface']}'.",
+                                f"so use '{target}', not '{nxt['surface']}'.",
                                 _wordlist_evidence('news', ['is', 'was'],
-                                                   'singular -s noun list')))
+                                                   'singular -s noun list'),
+                                remediation={
+                                    'suggested_fix': f"write '{target}' instead of "
+                                                     f"'{nxt['surface']}'",
+                                    'edits': [{'node': nxt['id'],
+                                               'replacement': target}],
+                                }))
 
         # Scales: two hundreds / three thousands
         if low in ('hundreds', 'thousands', 'millions', 'billions') \
@@ -1670,8 +1680,8 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
             idx = next(i for i, x in enumerate(lows) if x == 'but')
             out.append(_finding('9.9', 'error', 'C-CONJUNCTION-PAIR', 'conjunction',
                                 leaves[idx]['id'],
-                                "This sentence links its two clauses with both "
-                                "'although' and 'but'; use one of them, not both.",
+                                "This sentence uses both 'although' and 'but' "
+                                "to join two ideas. Use only one of them.",
                                 _wordlist_evidence('although ... but', ['although ...'],
                                                    'conjunction-pairing table'),
                                 remediation={
@@ -1826,6 +1836,8 @@ def _check_more(root, clauses, leaves):
             if need_plural:
                 # avoid scale words already handled
                 if low in ('hundred', 'thousand', 'million', 'billion'):
+                    pass
+                elif low in UNCOUNTABLE_SINGULAR:
                     pass
                 else:
                     out.append(_finding('1.1', 'error', 'C-PLURAL-FORM',
@@ -2005,7 +2017,7 @@ def _check_more(root, clauses, leaves):
 
     # 6.15 imperative don't + finite verb
     for i, lf in enumerate(leaves):
-        if _lower(lf) in ('do', 'does', 'did') and i + 2 < len(leaves) \
+        if _lower(lf) == 'do' and i + 2 < len(leaves) \
                 and _lower(leaves[i + 1]) in ("n't", 'nt', 'not'):
             v = leaves[i + 2]
             if _lower(v) in ('goes', 'went', 'has', 'does', 'is', 'was') \
@@ -2851,6 +2863,13 @@ def _inflected(lemma):
 
 def _base_of(low):
     """Best-effort base form for a verb surface ending in -s / -ed / -ing."""
+    try:
+        from licensing import _lemmas
+        bases = _lemmas(low, 'VERB')
+        if bases:
+            return sorted(bases)[0]
+    except Exception:  # pragma: no cover - licensing unavailable
+        pass
     if low.endswith('ies'):
         return low[:-3] + 'y'
     if low.endswith('ing'):
@@ -2962,15 +2981,19 @@ def _check_basic(root, clauses, leaves):
                     'suggested_fix': f"write '{lf['surface']} {verb}'",
                     'edits': [{'nodes': delete_nodes, 'delete': True}],
                 }))
-        elif nt in ('VBZ', 'VBP') or (nt == 'VB' and _is_3sg_marked(nlow)):
+        elif nt in ('VBZ', 'VBP') or (nt in ('VB', 'NN', 'NNS')
+                                       and _is_3sg_marked(nlow)):
             lemma = _base_of(nlow) if _is_3sg_marked(nlow) else nlow
             out.append(_finding(
                 '6.1', 'error', 'C-MODAL-VERB-FORM', 'verb form', nxt['id'],
-                f"After the modal '{lf['surface']}', the verb must be "
-                f"in its base form, but '{nxt['surface']}' is a third-person-"
-                f"singular form; use '{lemma}'.",
+                f"After the modal '{lf['surface']}', use the base form of the "
+                f"verb: write '{lemma}', not '{nxt['surface']}'.",
                 _wordlist_evidence(f"{low} {nlow}", [f"{low} {lemma}"],
-                                   'modal + base verb')))
+                                   'modal + base verb'),
+                remediation={
+                    'suggested_fix': f"write '{lemma}' after '{lf['surface']}'",
+                    'edits': [{'node': nxt['id'], 'replacement': lemma}],
+                }))
         elif nlow == 'to':
             n2 = _lower(leaves[i + 2]) if i + 2 < len(leaves) else '...'
             out.append(_finding(
@@ -3063,8 +3086,8 @@ def _check_basic(root, clauses, leaves):
                    'both': 'some'}[low]
             out.append(_finding(
                 '3.15', 'error', 'C-COUNT-MASS', 'quantifier', lf['id'],
-                f"'{lf['surface']}' goes with countable nouns, but "
-                f"'{leaves[i + 1]['surface']}' is uncountable; use '{fix}'.",
+                f"'{lf['surface']}' is for things you can count, but this "
+                f"noun cannot be counted. Use '{fix}' instead.",
                 _wordlist_evidence(f"{low} {nlow}", [f"{fix} {nlow}"],
                                    'count/mass quantifier table'),
                 remediation={
@@ -3076,8 +3099,8 @@ def _check_basic(root, clauses, leaves):
             fix = 'many' if low == 'much' else 'few'
             out.append(_finding(
                 '3.15', 'error', 'C-COUNT-MASS', 'quantifier', lf['id'],
-                f"'{lf['surface']}' goes with uncountable nouns, but "
-                f"'{leaves[i + 1]['surface']}' is a count plural; use '{fix}'.",
+                f"'{lf['surface']}' is for things you cannot count, but "
+                f"'{leaves[i + 1]['surface']}' is plural. Use '{fix}' instead.",
                 _wordlist_evidence(f"{low} {nlow}", [f"{fix} {nlow}"],
                                    'count/mass quantifier table'),
                 remediation={
@@ -3088,13 +3111,14 @@ def _check_basic(root, clauses, leaves):
     # --- be + simple past (I am went) ------------------------------------------ #
     for i, lf in enumerate(leaves[:-1]):
         nxt_tag = leaves[i + 1].get('type')
-        if lows[i] in BE_SURFACES_LEAF and nxt_tag == 'VBD' \
-                and _lower(leaves[i + 1]) not in BE_SURFACES_LEAF:
+        nxt_low = _lower(leaves[i + 1])
+        if lows[i] in BE_SURFACES_LEAF - {'was', 'were'} \
+                and (nxt_tag == 'VBD' or nxt_low in PAST_ONLY) \
+                and nxt_low not in BE_SURFACES_LEAF:
             out.append(_finding(
                 '6.2', 'error', 'C-BE-PAST', 'verb form', lf['id'],
-                f"The verb 'be' cannot take the simple past "
-                f"'{leaves[i + 1]['surface']}' here; use the past tense "
-                f"directly: '{leaves[i + 1]['surface']} ...'.",
+                f"Do not use '{lf['surface']}' before the past verb "
+                f"'{leaves[i + 1]['surface']}'. Use the past verb by itself.",
                 _wordlist_evidence(
                     f"{lows[i]} {_lower(leaves[i + 1])}",
                     [_lower(leaves[i + 1])], 'be + simple past'),
@@ -3159,9 +3183,8 @@ def _check_basic(root, clauses, leaves):
             out.append(_finding(
                 '2.4', 'error', 'C-EXISTENTIAL-VERB', 'existential',
                 leaves[i + 1]['id'],
-                f"The phrase 'there {n1}' is not correct; with "
-                f"'there' this sentence uses a form of 'be', so write "
-                f"'there {be}'.",
+                f"After 'there', use 'is' or 'are', not '{n1}'. "
+                f"Write 'there {be}'.",
                 _wordlist_evidence(f"there {n1}", [f"there {be}"],
                                    'existential there + be'),
                 remediation={
@@ -3197,6 +3220,8 @@ def _check_basic(root, clauses, leaves):
         if nxt.get('type') == 'NNS':
             continue
         if nxt.get('type') == 'NN':
+            if _lower(nxt) in UNCOUNTABLE_SINGULAR:
+                continue
             rule = '2.10' if lf.get('type') == 'CD' else '2.11'
             if _lower(nxt) == 'bread':
                 good = 'loaves of bread'
@@ -3502,9 +3527,8 @@ def _check_basic(root, clauses, leaves):
             out.append(_finding(
                 '11.3', 'error', 'C-TENSE-SINCE', 'tense',
                 present_finite['id'],
-                f"With the word 'since', this sentence needs a perfect "
-                f"tense ('have/has' plus the '-ed' form), not the present "
-                f"'{present_finite['surface']}'.",
+                f"With 'since', use 'have been' or 'has been', not the "
+                f"present '{present_finite['surface']}'.",
                 _tree_evidence(present_finite['id'], 'present verb + since',
                                [{'node': present_finite['id']},
                                 {'node': lf['id']}]),
@@ -3591,9 +3615,9 @@ def _check_basic(root, clauses, leaves):
         out.append(_finding(
             '9.13', 'error', 'C-INDIRECT-WH-INVERSION', 'word order',
             leaves[i + 1]['id'],
-            f"An indirect question keeps statement order: "
-            f"'{leaves[i + 1]['surface']}' must follow the subject here "
-            f"('... {leaves[i + 2]['surface']} {leaves[i + 1]['surface']} ...').",
+            (f"In an indirect question, keep the subject before the verb. "
+             f"Write '{good}'." if good else
+             "In an indirect question, keep the subject before the verb."),
             _tree_evidence(leaves[i + 1]['id'], 'wh + aux + subject (inverted)',
                            [{'node': lf['id']}, {'node': leaves[i + 1]['id']}]),
             remediation=rem))
@@ -3674,10 +3698,9 @@ def _check_basic(root, clauses, leaves):
                 base = lows[i]
             out.append(_finding(
                 '1.6', 'error', 'C-VBN-SIMPLE-PAST', 'verb form', lf['id'],
-                f"'{lf['surface']}' is the '-ed' form, not the simple past "
-                f"form; after the subject pronoun '{leaves[i - 1]['surface']}' "
-                f"write '{_past_of(base)}', or use a perfect with "
-                f"'have {lows[i]}'.",
+                f"'{lf['surface']}' is the past participle, not the simple "
+                f"past. For the past, write '{_past_of(base)}' after "
+                f"'{leaves[i - 1]['surface']}'; or use 'have {lows[i]}'.",
                 _wordlist_evidence(f"{_lower(leaves[i - 1])} {lows[i]}",
                                    [f"{base} (simple past)",
                                     f"have {lows[i]}"],
