@@ -1,0 +1,522 @@
+{
+  "chapter": 11,
+  "title": "Languages, sentences and grammars",
+  "lesson_type": "text_only_closing_lesson",
+  "convention_version": null,
+  "source": {
+    "author": "Noel Burton-Roberts",
+    "work": "Analysing Sentences: An Introduction to English Syntax",
+    "chapter": 11,
+    "printed_pages": [
+      254,
+      268
+    ],
+    "uploaded_source": "Chapter 11 - Languages, sentences and grammars.pdf"
+  },
+  "purpose": "A closing, theory-focused chapter. It places the phrase-marker work of the earlier chapters in the broader task of describing languages and explains why a grammar must state rules that define, predict, and structurally describe grammatical sentences.",
+  "tree_policy": {
+    "trees_included": false,
+    "node_fragments_included": false,
+    "reason": "The chapter explicitly presents itself as background to, and the purpose of, the earlier analyses rather than as an extension of them. The repository convention identifies Chapter 11 as having no new tree conventions and as a text-only closing lesson.",
+    "note": "The chapter discusses a phrase marker assigned to an ungrammatical sequence as an illustration of the limits of phrase markers alone. That illustration is not transcribed as a new gold tree."
+  },
+  "concepts": [
+    {
+      "id": "ch11-language-conceptions",
+      "title": "Different conceptions of a language",
+      "kind": "new",
+      "explanation": "The chapter contrasts a language understood as a communication system with the working proposal that a language is a set of its grammatical sentences. The second proposal is used to develop the chapter's account of linguistic description; it is not presented as the only everyday use of the expression language.",
+      "source": {
+        "chapter": 11,
+        "page": 254,
+        "kind": "principle"
+      }
+    },
+    {
+      "id": "ch11-language-variation",
+      "title": "Variation and overlapping language sets",
+      "kind": "new",
+      "explanation": "If individual languages are identified with sets of grammatical sentences, speakers can differ in the sentences they accept. The chapter also notes that a familiar label such as English remains useful for a broad, overlapping group of varieties, despite geographical, social, educational, political, age-related, and historical differences.",
+      "source": {
+        "chapter": 11,
+        "page": 255,
+        "kind": "principle"
+      }
+    },
+    {
+      "id": "ch11-infinite-language",
+      "title": "The infinity of natural languages",
+      "kind": "new",
+      "explanation": "A natural language is not limited to the sentences a person has already used or heard. It includes sentences available in principle. The chapter argues that natural languages are infinite, while distinguishing this capacity from the finite amount of language any person actually uses during a lifetime.",
+      "source": {
+        "chapter": 11,
+        "page": 257,
+        "kind": "principle"
+      }
+    },
+    {
+      "id": "ch11-productivity",
+      "title": "Productivity through coordination and relative clauses",
+      "kind": "new",
+      "explanation": "Coordination can combine two or more sentences into a further sentence, and relative clauses can be repeatedly embedded inside newly introduced noun phrases. These devices illustrate how sentence length and complexity can be extended without a fixed maximum imposed by the language itself.",
+      "source": {
+        "chapter": 11,
+        "page": 258,
+        "kind": "worked_example"
+      }
+    },
+    {
+      "id": "ch11-list-vs-rule",
+      "title": "Lists and rules as descriptions",
+      "kind": "new",
+      "explanation": "A finite artificial language can be described by listing all its sentences. An infinite language cannot be completely described by a list. A rule can instead state how further sentences are formed, allowing a finite description of an infinite set.",
+      "source": {
+        "chapter": 11,
+        "page": 260,
+        "kind": "principle"
+      }
+    },
+    {
+      "id": "ch11-justen-models",
+      "title": "Justen and Justenand",
+      "kind": "new",
+      "explanation": "Justen is the imagined finite set of ten simple items and can be described by listing them. Adding the coordination device and produces Justenand, an infinite set that requires both the original list and a rule for combining listed items. The contrast shows why a list alone is not an adequate model of a natural language.",
+      "source": {
+        "chapter": 11,
+        "page": 259,
+        "kind": "worked_example"
+      }
+    },
+    {
+      "id": "ch11-grammaticality-definition",
+      "title": "A general definition of grammatical sentence",
+      "kind": "new",
+      "explanation": "To describe an infinite language, a grammar must specify general conditions that determine which word sequences count as grammatical sentences. Applying those conditions makes predictions about sequences not previously encountered and supports an explanation of why a rejected sequence is not grammatical.",
+      "source": {
+        "chapter": 11,
+        "page": 261,
+        "kind": "principle"
+      }
+    },
+    {
+      "id": "ch11-grammar",
+      "title": "Grammar as a description of a language",
+      "kind": "new",
+      "explanation": "A grammar is a description that specifies which sequences belong to a language's set of sentences and which do not. For the finite toy language Justen, the list itself serves as the grammar; the chapter treats this as an unusual limiting case rather than a realistic natural-language grammar.",
+      "source": {
+        "chapter": 11,
+        "page": 262,
+        "kind": "definition"
+      }
+    },
+    {
+      "id": "ch11-competence",
+      "title": "Language as internal competence",
+      "kind": "new",
+      "explanation": "The chapter presents language knowledge as an internal mental capacity to utter and understand an unlimited range of sentences. It distinguishes that capacity from the particular sentences a person happens to use or understand.",
+      "source": {
+        "chapter": 11,
+        "page": 259,
+        "kind": "principle"
+      }
+    },
+    {
+      "id": "ch11-langue-parole",
+      "title": "Saussure's langue and parole contrasted with the sentence-based proposal",
+      "kind": "new",
+      "explanation": "The chapter contrasts Saussure's restriction of langue to finitely listable linguistic items with the sentence-centred approach associated with Chomsky, which treats the description of a person's language as an account of the capacity to produce and understand infinitely many sentences.",
+      "source": {
+        "chapter": 11,
+        "page": 259,
+        "kind": "contrast"
+      }
+    },
+    {
+      "id": "ch11-generative-grammar",
+      "title": "Generative grammar",
+      "kind": "new",
+      "explanation": "A generative grammar states a general definition of sentence in the form of rules. Those rules admit sequences that conform, exclude sequences that do not, and provide structural descriptions for the sequences they admit. The account also aims to support explanations of ungrammaticality.",
+      "source": {
+        "chapter": 11,
+        "page": 267,
+        "kind": "definition"
+      }
+    },
+    {
+      "id": "ch11-implicit-knowledge",
+      "title": "Implicit knowledge of grammatical rules",
+      "kind": "new",
+      "explanation": "Possessors of a language make extensive grammaticality judgements without consciously applying a taught rulebook. The generative grammarian's task, as framed here, is to make explicit the rules that language users know implicitly and acquire without deliberate instruction.",
+      "source": {
+        "chapter": 11,
+        "page": 267,
+        "kind": "principle"
+      }
+    },
+    {
+      "id": "ch11-phrase-markers-limit",
+      "title": "What phrase markers do and do not explain",
+      "kind": "revised_from_earlier_chapters",
+      "explanation": "Phrase markers give explicit structural descriptions in terms of category, function, and constituency. By themselves, however, they do not define what counts as a grammatical sentence, predict which sequences are excluded, or explain why an ungrammatical sequence fails. The chapter argues that phrase-marker descriptions must be connected to the rules of a grammar.",
+      "source": {
+        "chapter": 11,
+        "page": 265,
+        "kind": "principle"
+      }
+    },
+    {
+      "id": "ch11-reciprocal-development",
+      "title": "Rules and structural descriptions inform one another",
+      "kind": "new",
+      "explanation": "The chapter does not treat phrase-marker analysis as a finished system to which rules are merely added afterwards. Attempting to formulate explicit rules may lead the analyst to revise what counts as the best structural description; analysis and rule formulation can inform each other.",
+      "source": {
+        "chapter": 11,
+        "page": 267,
+        "kind": "principle"
+      }
+    }
+  ],
+  "lesson_steps": [
+    {
+      "id": "ch11-step-1",
+      "title": "What counts as a language?",
+      "explain": "Begin with the chapter's proposed view of a language as a set of grammatical sentences. Follow its consequence: individual speakers may differ, while a broader language label can still name varieties with substantial overlap.",
+      "concept_ids": [
+        "ch11-language-conceptions",
+        "ch11-language-variation"
+      ],
+      "example_ids": [
+        "ch11-ex-variation"
+      ],
+      "source": {
+        "chapter": 11,
+        "page": 255,
+        "kind": "principle"
+      }
+    },
+    {
+      "id": "ch11-step-2",
+      "title": "Why natural languages are infinite",
+      "explain": "Distinguish the sentences a person has actually used from the sentences available in principle. Coordination and repeated relative-clause embedding show how a language can make further and longer sentences possible.",
+      "concept_ids": [
+        "ch11-infinite-language",
+        "ch11-productivity"
+      ],
+      "example_ids": [
+        "ch11-ex-coordination",
+        "ch11-ex-relative-recursion"
+      ],
+      "source": {
+        "chapter": 11,
+        "page": 258,
+        "kind": "worked_example"
+      }
+    },
+    {
+      "id": "ch11-step-3",
+      "title": "Why a list is not enough",
+      "explain": "Use the contrast between Justen and Justenand to see why an infinite set cannot be completely described by listing its members. A finite list can be supplemented by a rule that forms further members.",
+      "concept_ids": [
+        "ch11-list-vs-rule",
+        "ch11-justen-models"
+      ],
+      "example_ids": [
+        "ch11-ex-justen"
+      ],
+      "source": {
+        "chapter": 11,
+        "page": 260,
+        "kind": "worked_example"
+      }
+    },
+    {
+      "id": "ch11-step-4",
+      "title": "Grammar defines and predicts grammaticality",
+      "explain": "A grammar must provide general conditions for sentencehood. Applying the rules classifies new word sequences, supplies structural descriptions for admitted sequences, and makes it possible to explain why rejected sequences fail.",
+      "concept_ids": [
+        "ch11-grammaticality-definition",
+        "ch11-grammar",
+        "ch11-generative-grammar"
+      ],
+      "example_ids": [
+        "ch11-ex-prediction"
+      ],
+      "source": {
+        "chapter": 11,
+        "page": 262,
+        "kind": "principle"
+      }
+    },
+    {
+      "id": "ch11-step-5",
+      "title": "Language as internal knowledge",
+      "explain": "The chapter shifts attention from the visible sentence on a page to the language user's internal knowledge. The difference between particular uses and underlying competence is central to explaining how a person can make judgements about sentences never previously encountered.",
+      "concept_ids": [
+        "ch11-competence",
+        "ch11-langue-parole",
+        "ch11-implicit-knowledge"
+      ],
+      "example_ids": [
+        "ch11-ex-internal-interpretation"
+      ],
+      "source": {
+        "chapter": 11,
+        "page": 264,
+        "kind": "worked_example"
+      }
+    },
+    {
+      "id": "ch11-step-6",
+      "title": "The place of phrase markers and generative grammar",
+      "explain": "Phrase markers are important structural descriptions, but they do not by themselves state the rules that make a sequence grammatical. Generative grammar connects the rules with the structures they assign, and the chapter closes by noting that explicit rule formulation can also lead to improved structural analyses.",
+      "concept_ids": [
+        "ch11-phrase-markers-limit",
+        "ch11-generative-grammar",
+        "ch11-reciprocal-development"
+      ],
+      "example_ids": [
+        "ch11-ex-ungrammatical-marker"
+      ],
+      "source": {
+        "chapter": 11,
+        "page": 266,
+        "kind": "principle"
+      }
+    }
+  ],
+  "examples": [
+    {
+      "id": "ch11-ex-variation",
+      "title": "Regional and social variation",
+      "description": "The chapter compares sentence patterns associated with different English-speaking communities to illustrate that speakers grouped under one language name need not accept exactly the same set of sentences.",
+      "source_reference": "[4]–[6]",
+      "source": {
+        "chapter": 11,
+        "page": 255,
+        "kind": "example"
+      }
+    },
+    {
+      "id": "ch11-ex-coordination",
+      "title": "Coordination can keep extending a sentence",
+      "description": "A finite toy set of sentence symbols can be extended by joining two or more members with the coordination word and; the combinations can themselves be combined again.",
+      "source_reference": "Justenand examples (i)–(iv)",
+      "source": {
+        "chapter": 11,
+        "page": 258,
+        "kind": "worked_example"
+      }
+    },
+    {
+      "id": "ch11-ex-relative-recursion",
+      "title": "Repeated relative-clause embedding",
+      "description": "The chapter uses the cumulative structure of a nursery-rhyme sentence to illustrate how each relative clause can be placed inside a newly introduced noun phrase, allowing further embedding.",
+      "source_reference": "The final sentence of the nursery-rhyme example",
+      "source": {
+        "chapter": 11,
+        "page": 258,
+        "kind": "worked_example"
+      }
+    },
+    {
+      "id": "ch11-ex-justen",
+      "title": "The finite Justen list and the rule for Justenand",
+      "description": "Justen is represented by a finite list of ten items. Justenand retains that list and adds a rule allowing any two or more Justen sentences to be joined by and, creating an infinite set with a finite description.",
+      "source_reference": "Justen and Justenand",
+      "source": {
+        "chapter": 11,
+        "page": 260,
+        "kind": "worked_example"
+      }
+    },
+    {
+      "id": "ch11-ex-prediction",
+      "title": "Predicting membership in an infinite language",
+      "description": "The rule for Justenand does more than classify the combinations already displayed: it predicts further combinations and gives a partial structural account of them.",
+      "source_reference": "The rule-based account of Justenand",
+      "source": {
+        "chapter": 11,
+        "page": 260,
+        "kind": "principle"
+      }
+    },
+    {
+      "id": "ch11-ex-internal-interpretation",
+      "title": "A small visible change with a substantial interpretive difference",
+      "description": "The chapter compares two sentences from the preceding chapter that differ in the wh-expression. It asks whether the pronoun in each can refer to the earlier noun phrase, using the contrast to argue that linguistic knowledge cannot be reduced to noticing the visible letter sequence.",
+      "source_reference": "[9]–[10]",
+      "source": {
+        "chapter": 11,
+        "page": 264,
+        "kind": "worked_example"
+      }
+    },
+    {
+      "id": "ch11-ex-ungrammatical-marker",
+      "title": "A phrase marker does not itself establish grammaticality",
+      "description": "The chapter notes that an ungrammatical word sequence can still be assigned a plausible-looking phrase marker. A separate system of rules is needed to state why the sequence and its proposed constituents are not grammatical in the language.",
+      "source_reference": "[11]–[12]",
+      "source": {
+        "chapter": 11,
+        "page": 265,
+        "kind": "worked_example"
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "id": "term-language-set",
+      "term": "language (sentence-set sense)",
+      "definition": "The set of word sequences that count as grammatical sentences for a language possessor.",
+      "concept_id": "ch11-language-conceptions",
+      "source": {
+        "chapter": 11,
+        "page": 254,
+        "kind": "definition"
+      }
+    },
+    {
+      "id": "term-competence",
+      "term": "competence",
+      "definition": "The internal capacity to utter and understand an unlimited range of sentences.",
+      "concept_id": "ch11-competence",
+      "source": {
+        "chapter": 11,
+        "page": 259,
+        "kind": "definition"
+      }
+    },
+    {
+      "id": "term-langue",
+      "term": "langue",
+      "definition": "In the contrast discussed here, the finitely listable linguistic material Saussure treated as the language system.",
+      "concept_id": "ch11-langue-parole",
+      "source": {
+        "chapter": 11,
+        "page": 259,
+        "kind": "contrast"
+      }
+    },
+    {
+      "id": "term-parole",
+      "term": "parole",
+      "definition": "In the contrast discussed here, an individual's particular use of language, to which Saussure assigned sentences.",
+      "concept_id": "ch11-langue-parole",
+      "source": {
+        "chapter": 11,
+        "page": 259,
+        "kind": "contrast"
+      }
+    },
+    {
+      "id": "term-grammar",
+      "term": "grammar",
+      "definition": "A description of a language that specifies which word sequences belong to its set of sentences and which do not.",
+      "concept_id": "ch11-grammar",
+      "source": {
+        "chapter": 11,
+        "page": 262,
+        "kind": "definition"
+      }
+    },
+    {
+      "id": "term-generative-grammar",
+      "term": "generative grammar",
+      "definition": "A grammar that gives a general definition of sentence through rules that admit sentences and assign them structural descriptions.",
+      "concept_id": "ch11-generative-grammar",
+      "source": {
+        "chapter": 11,
+        "page": 267,
+        "kind": "definition"
+      }
+    },
+    {
+      "id": "term-phrase-marker",
+      "term": "phrase marker",
+      "definition": "An explicit structural description of a sentence in terms of categories, functions, and constituency; it is not, by itself, a complete grammar.",
+      "concept_id": "ch11-phrase-markers-limit",
+      "source": {
+        "chapter": 11,
+        "page": 265,
+        "kind": "definition"
+      }
+    },
+    {
+      "id": "term-justen",
+      "term": "Justen",
+      "definition": "The imagined finite toy language consisting of ten listed items.",
+      "concept_id": "ch11-justen-models",
+      "source": {
+        "chapter": 11,
+        "page": 257,
+        "kind": "example"
+      }
+    },
+    {
+      "id": "term-justenand",
+      "term": "Justenand",
+      "definition": "The infinite toy language formed by augmenting Justen with a rule for coordination.",
+      "concept_id": "ch11-justen-models",
+      "source": {
+        "chapter": 11,
+        "page": 260,
+        "kind": "example"
+      }
+    }
+  ],
+  "questions_raised_by_source": [
+    {
+      "id": "ch11-q-language",
+      "question_paraphrase": "What should count as a language?",
+      "response_summary": "The chapter explores both a broad communicative conception and the sentence-set proposal, then uses context to explain why the expression can be used at different levels of generality.",
+      "source": {
+        "chapter": 11,
+        "page": 254,
+        "kind": "question_and_discussion"
+      },
+      "status": "discussed_in_chapter"
+    },
+    {
+      "id": "ch11-q-infinite-description",
+      "question_paraphrase": "How can an infinite set of sentences be described?",
+      "response_summary": "Not by listing every member. The chapter motivates a finite set of rules that defines sentencehood and predicts further members.",
+      "source": {
+        "chapter": 11,
+        "page": 259,
+        "kind": "question_and_discussion"
+      },
+      "status": "discussed_in_chapter"
+    },
+    {
+      "id": "ch11-q-best-rules",
+      "question_paraphrase": "What are the best rules, and what makes them best?",
+      "response_summary": "The chapter raises this as part of the research programme opened by generative grammar; it does not provide a final answer.",
+      "source": {
+        "chapter": 11,
+        "page": 266,
+        "kind": "open_question"
+      },
+      "status": "open_question_in_source"
+    },
+    {
+      "id": "ch11-q-category-inventory",
+      "question_paraphrase": "Which syntactic categories are needed, and can one phrase marker express everything about a sentence?",
+      "response_summary": "The chapter leaves these as open questions for the broader enterprise of grammar construction.",
+      "source": {
+        "chapter": 11,
+        "page": 266,
+        "kind": "open_question"
+      },
+      "status": "open_question_in_source"
+    }
+  ],
+  "book_exercises": {
+    "present": false,
+    "note": "The supplied Chapter 11 contains no exercise section or printed exercise answer key. No new exercises or answer keys have been invented."
+  },
+  "review_notes": [
+    "This chapter is theory-focused and does not introduce a new phrase-marker convention or tree inventory.",
+    "The examples are paraphrased; the file does not reproduce textbook passages or full exercise wording.",
+    "The chapter raises further research questions about the best rules, category inventory, and representational adequacy without resolving them; these are marked as open rather than answered by inference."
+  ]
+}
