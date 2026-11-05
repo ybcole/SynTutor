@@ -1,0 +1,122 @@
+[
+  {
+    "from_rule": "MORPH-008",
+    "to": "MORPH-007",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-008",
+    "to": "MORPH-015",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-009",
+    "to": "MORPH-008",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-009",
+    "to": "MORPH-010",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-010",
+    "to": "MORPH-008",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-010",
+    "to": "MORPH-014",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-011",
+    "to": "MORPH-003",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-011",
+    "to": "MORPH-001",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-012",
+    "to": "MORPH-010",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-012",
+    "to": "MORPH-013",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-013",
+    "to": "MORPH-014",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-013",
+    "to": "MORPH-007",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-014",
+    "to": "MORPH-013",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-014",
+    "to": "MORPH-010",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-015",
+    "to": "MORPH-008",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-015",
+    "to": "MORPH-007",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-011",
+    "to": "Cambridge Chapter 18 §4.2 (genitive)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "MORPH-014",
+    "to": "Cambridge Chapter 18 §4.1.2 (irregular s plurals)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "MORPH-012",
+    "to": "Cambridge Chapter 18 §2.2.4 (s/es alternation)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "MORPH-009",
+    "to": "Cambridge Chapter 19 (lexical word-formation)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]
