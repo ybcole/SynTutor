@@ -521,8 +521,8 @@
       "WCAT-006"
     ],
     "confidence": "high",
-    "review_notes": "This adds the four-form number-by-case paradigm to the existing MORPH-003 case analysis without duplicating its account of noun and pronoun case marking.",
+    "review_notes": "This adds the four-form number-by-case paradigm to the existing MORPH-003 case analysis without duplicating its account of noun and pronoun case marking. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "NEEDS_REVIEW"
+    "status": "APPROVED"
   }
 ]
