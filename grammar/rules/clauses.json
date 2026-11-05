@@ -6023,35 +6023,39 @@
       "correct": [
         {
           "id": "c1",
-          "text": "I regret having left the keys inside. [perfect have]",
+          "text": "I regret waiting for the call. [simple gerund-participial]",
           "origin": "ai_authored",
           "pair_id": "p1"
         },
         {
           "id": "c2",
-          "text": "She disliked being watched during the rehearsal. [passive be]",
+          "text": "She remembers driving home. [simple gerund-participial]",
           "origin": "ai_authored",
           "pair_id": "p2"
         },
         {
           "id": "c3",
-          "text": "I remembered waiting outside at noon. [simple gerund-participial]",
-          "origin": "ai_authored",
-          "pair_id": "p3"
+          "text": "She regretted having missed the briefing. [perfect have]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "She resented being interrupted. [passive be]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": [
         {
           "id": "i1",
-          "text": "*I regretted being having left the keys inside. [progressive be applied to perfect have is not the established gerund-participial pattern]",
+          "text": "*I regret being waiting for the call. [productive progressive be excluded in established Present-day English]",
           "origin": "ai_authored",
           "pair_id": "p1"
         },
         {
           "id": "i2",
-          "text": "*I remembered being waiting outside at noon. [progressive be inside gerund-participial]",
+          "text": "*She remembers being driving home. [same excluded progressive pattern]",
           "origin": "ai_authored",
-          "pair_id": "p3"
+          "pair_id": "p2"
         }
       ],
       "contrast": [
