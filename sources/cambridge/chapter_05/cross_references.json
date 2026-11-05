@@ -1,0 +1,80 @@
+[
+  {
+    "from_rule": "MORPH-007",
+    "to": "MORPH-003",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-007",
+    "to": "WCAT-006",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-014",
+    "to": "WCAT-004",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-014",
+    "to": "PHR-005",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-014",
+    "to": "PHR-006",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-015",
+    "to": "WCAT-004",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-015",
+    "to": "PHR-008",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-016",
+    "to": "PHR-010",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-016",
+    "to": "CLS-046",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-017",
+    "to": "CLS-048",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-017",
+    "to": "Cambridge Ch. 4 §3.2.2",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-018",
+    "to": "PHR-011",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-018",
+    "to": "COMP-006",
+    "relation": "depends_on",
+    "verified": true
+  }
+]

@@ -2178,5 +2178,173 @@
       "complement",
       "verb subclass"
     ]
+  },
+  {
+    "term": "noun",
+    "gloss": "A lexical category whose members characteristically head NPs, prototypically inflect for number and case, and do not take objects.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          326
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "noun phrase (NP)",
+      "pronoun",
+      "nominal"
+    ]
+  },
+  {
+    "term": "noun phrase (NP)",
+    "gloss": "A phrase prototypically headed by a noun and capable, in an appropriate case form, of serving as a clause complement such as subject, object, or predicative complement.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          326
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "noun",
+      "nominal",
+      "complement",
+      "fused head"
+    ]
+  },
+  {
+    "term": "noun inflectional paradigm",
+    "gloss": "The typical four-form pattern created by crossing singular/plural number with plain/genitive case.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          326
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "plain case",
+      "genitive case",
+      "singular",
+      "plural"
+    ]
+  },
+  {
+    "term": "noun-specific dependents",
+    "gloss": "Dependents that occur exclusively or almost exclusively with nouns as head, including certain determinatives, pre-head AdjPs, and relative clauses.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          326
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "noun",
+      "determiner",
+      "attributive modifier",
+      "relative clause"
+    ]
+  },
+  {
+    "term": "functions of NPs beyond clause complements",
+    "gloss": "The additional PP-complement, subject-determiner, adjunct, modifier, supplement, and vocative functions available to NPs.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          327
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "subject-determiner",
+      "adjunct",
+      "supplement",
+      "vocative",
+      "modifier"
+    ]
+  },
+  {
+    "term": "dummy there as an NP",
+    "gloss": "The semantically empty there used as a clause subject, which is treated as an NP by virtue of occurring in a clausal complement position.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          327,
+          328
+        ],
+        "pdf_pages": [
+          5,
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "dummy pronoun",
+      "existential clause",
+      "raised object"
+    ]
+  },
+  {
+    "term": "bare role NP",
+    "gloss": "A determinerless NP denoting a role, such as president, that can function as a predicative complement.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          328
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "predicative complement",
+      "singular count noun",
+      "determiner"
+    ]
   }
 ]

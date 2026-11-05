@@ -1,0 +1,836 @@
+{
+  "meta": {
+    "chapter": 5,
+    "section": "§1 Distinctive properties of nouns and NPs",
+    "printed_pages": [
+      326,
+      328
+    ],
+    "pdf_pages": [
+      4,
+      6
+    ],
+    "page_offset": "PDF page = printed page - 322.",
+    "processed_by": "OpenAI GPT-6",
+    "protocol_version": "1.0",
+    "highest_existing_rule_ids": {
+      "morphology": "MORPH-006",
+      "word_categories": "WCAT-013",
+      "phrases": "PHR-015",
+      "clauses": "CLS-051",
+      "complementation": "COMP-018",
+      "agreement": "AGR-002",
+      "other": "OTH-003"
+    },
+    "input_gaps": [
+      "No Burton-Roberts chapter material or concept index was supplied or found in the repository's expected sources/burton_roberts/existing_ch01_to_ch11/ path; all Burton-Roberts mappings remain unverified.",
+      "Printed page 328 contains the end of §1 and the beginning of §2; only the bare-role-NP discussion belonging to §1 is included."
+    ]
+  },
+  "concepts": [
+    {
+      "term": "noun",
+      "gloss": "A lexical category whose members characteristically head NPs, prototypically inflect for number and case, and do not take objects.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            326
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "noun phrase (NP)",
+        "pronoun",
+        "nominal"
+      ]
+    },
+    {
+      "term": "noun phrase (NP)",
+      "gloss": "A phrase prototypically headed by a noun and capable, in an appropriate case form, of serving as a clause complement such as subject, object, or predicative complement.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            326
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "noun",
+        "nominal",
+        "complement",
+        "fused head"
+      ]
+    },
+    {
+      "term": "noun inflectional paradigm",
+      "gloss": "The typical four-form pattern created by crossing singular/plural number with plain/genitive case.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            326
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "plain case",
+        "genitive case",
+        "singular",
+        "plural"
+      ]
+    },
+    {
+      "term": "noun-specific dependents",
+      "gloss": "Dependents that occur exclusively or almost exclusively with nouns as head, including certain determinatives, pre-head AdjPs, and relative clauses.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            326
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "noun",
+        "determiner",
+        "attributive modifier",
+        "relative clause"
+      ]
+    },
+    {
+      "term": "functions of NPs beyond clause complements",
+      "gloss": "The additional PP-complement, subject-determiner, adjunct, modifier, supplement, and vocative functions available to NPs.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            327
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "subject-determiner",
+        "adjunct",
+        "supplement",
+        "vocative",
+        "modifier"
+      ]
+    },
+    {
+      "term": "dummy there as an NP",
+      "gloss": "The semantically empty there used as a clause subject, which is treated as an NP by virtue of occurring in a clausal complement position.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            327,
+            328
+          ],
+          "pdf_pages": [
+            5,
+            6
+          ]
+        }
+      ],
+      "related_concepts": [
+        "dummy pronoun",
+        "existential clause",
+        "raised object"
+      ]
+    },
+    {
+      "term": "bare role NP",
+      "gloss": "A determinerless NP denoting a role, such as president, that can function as a predicative complement.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            328
+          ],
+          "pdf_pages": [
+            6
+          ]
+        }
+      ],
+      "related_concepts": [
+        "predicative complement",
+        "singular count noun",
+        "determiner"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "MORPH-007",
+      "domain": "morphology",
+      "concept": "inflectional paradigm of prototypical nouns",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "word",
+      "statement": "Prototypical nouns distinguish singular and plural number and plain and genitive case, yielding singular plain, singular genitive, plural plain, and plural genitive forms.",
+      "condition": "For a prototypical noun lexeme with both singular and plural forms, the paradigm crosses the number distinction (singular/plural) with the case distinction (plain/genitive).",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "Not all nouns have both number forms: equipment has no plural counterpart, while outskirts has no singular counterpart; the chapter defers the wider treatment to §3.2.",
+          "pages": [
+            326
+          ],
+          "example_ids": [
+            "x3",
+            "x4"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "dog / dog’s / dogs / dogs’ [singular plain, singular genitive, plural plain, plural genitive]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "child / child’s / children / children’s [singular plain, singular genitive, plural plain, plural genitive]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "equipment [no plural counterpart in the cited example]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "note": "Tests the number-form exception.",
+            "tests_exception": true
+          },
+          {
+            "id": "x4",
+            "text": "outskirts [no singular counterpart in the cited example]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "note": "Tests the number-form exception.",
+            "tests_exception": true
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            326
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "inflectional paradigm of prototypical nouns",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+        }
+      ],
+      "related_rules": [
+        "MORPH-003",
+        "WCAT-006"
+      ],
+      "confidence": "high",
+      "review_notes": "This adds the four-form number-by-case paradigm to the existing MORPH-003 case analysis without duplicating its account of noun and pronoun case marking. Explicitly approved by the repository owner on 2026-11-05.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "WCAT-014",
+      "domain": "word_categories",
+      "concept": "noun-specific dependents",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "phrase",
+      "statement": "Certain determinatives, pre-head adjective phrases, and relative clauses occur exclusively or almost exclusively with nouns as head.",
+      "condition": "When a noun heads an NP or nominal, its dependent set may include noun-associated determinatives, pre-head AdjPs, and relative clauses, which occur exclusively or almost exclusively with nouns as head.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "a lantern [determinative with noun head]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "bright lanterns [pre-head AdjP with noun head]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "lanterns that glow [relative clause with noun head]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "every weekend [determinative with noun head]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            326
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "noun-specific dependents",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+        }
+      ],
+      "related_rules": [
+        "WCAT-004",
+        "PHR-005",
+        "PHR-006"
+      ],
+      "confidence": "high",
+      "review_notes": "The source says 'exclusively or almost exclusively'; this is a distributional generalization, not an absolute restriction. Explicitly approved by the repository owner on 2026-11-05.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "WCAT-015",
+      "domain": "word_categories",
+      "concept": "nouns do not take objects",
+      "traditional_terms": [],
+      "rule_type": "constraint",
+      "scope": "phrase",
+      "statement": "A noun does not take a direct object, unlike a verb; nominal dependents that express related content are not direct objects of the noun.",
+      "condition": "When a noun functions as the head of a nominal, it cannot be followed by an NP functioning as its direct object; a related dependent may instead occur in a construction licensed by the noun, such as a PP.",
+      "violation": "A noun head is analysed as taking a bare NP direct object, as though it were a transitive verb.",
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "The students criticized the decision.",
+            "origin": "ai_authored",
+            "pair_id": "p1",
+            "note": "The verb takes the direct object NP."
+          },
+          {
+            "id": "c2",
+            "text": "The students’ criticism of the decision was clear.",
+            "origin": "ai_authored",
+            "pair_id": "p1",
+            "note": "The noun is followed by a PP, not a direct object."
+          },
+          {
+            "id": "c3",
+            "text": "The guide described the route.",
+            "origin": "ai_authored",
+            "pair_id": "p2",
+            "note": "The verb takes the direct object NP."
+          },
+          {
+            "id": "c4",
+            "text": "The guide’s description of the route was accurate.",
+            "origin": "ai_authored",
+            "pair_id": "p2",
+            "note": "The noun is followed by a PP, not a direct object."
+          }
+        ],
+        "incorrect": [
+          {
+            "id": "i1",
+            "text": "*The students’ criticism the decision was clear.",
+            "origin": "ai_authored",
+            "pair_id": "p1"
+          },
+          {
+            "id": "i2",
+            "text": "*The guide’s description the route was accurate.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            326
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "noun complementation; nouns do not take objects",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+        }
+      ],
+      "related_rules": [
+        "WCAT-004",
+        "PHR-008"
+      ],
+      "confidence": "high",
+      "review_notes": "The contrast concerns the grammatical relation object, not the broader ability of nouns to take complements. The examples use PP dependents in the acceptable nominal constructions. Explicitly approved by the repository owner on 2026-11-05.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "PHR-016",
+      "domain": "phrases",
+      "concept": "functions of NPs beyond clause complements",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "Besides subject, object, and predicative-complement functions in clause structure, NPs can function as PP complements, subject-determiners in NPs, clause adjuncts, modifiers in AdjPs, AdvPs and PPs, supplements, and vocatives.",
+      "condition": "When classifying an NP in context, consider the larger constituent it combines with: an NP may be a complement within a PP, a subject-determiner inside a larger NP, an adjunct or modifier, a supplement, or a vocative rather than a clause-level subject, object, or predicative complement.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "The source says the adjunct, modifier, supplement, and vocative functions illustrated in [6iii–ix] accept only a restricted range of NPs; one or two NP expressions are specialised for modifying functions and do not occur as clause complements.",
+          "pages": [
+            327
+          ],
+          "example_ids": [
+            "x9"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The hikers spoke to the guide. [the guide: complement of a preposition]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Mara’s notes were missing. [Mara’s: subject-determiner in an NP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "We waited three hours. [three hours: clause adjunct]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "The shelf was two metres high. [two metres: modifier in an AdjP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "They arrived two hours late. [two hours: modifier in an AdvP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x6",
+            "text": "The wreck lay a mile under the sea. [a mile: modifier in a PP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x7",
+            "text": "We met Lina, an experienced guide. [an experienced guide: supplement]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x8",
+            "text": "Ava, your taxi is here. [Ava: vocative]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "note": "Illustrates a non-clausal NP function; the source restricts the range of NPs available for this and related peripheral functions.",
+            "tests_exception": true
+          },
+          {
+            "id": "x9",
+            "text": "The shelf was a good deal too narrow. [a good deal: NP modifier in an AdjP]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "note": "Tests an NP expression specialised for modifier use.",
+            "tests_exception": true
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            327
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "functions of noun phrases",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+        }
+      ],
+      "related_rules": [
+        "PHR-010",
+        "CLS-046",
+        "COMP-001"
+      ],
+      "confidence": "high",
+      "review_notes": "The subject-determiner function is already represented by PHR-010; this record adds the broader inventory of NP functions and does not recreate that rule. The source's restricted-distribution caveat is retained. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "PHR-017",
+      "domain": "phrases",
+      "concept": "dummy there as an NP",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "The semantically empty dummy there qualifies as an NP because it occurs in at least one of the clause-complement positions, most clearly as subject in an existential construction.",
+      "condition": "When determining whether a noun-headed unit belongs to the NP category, occurrence in at least one of subject, object, or predicative-complement function is sufficient; dummy there qualifies through subject function and also occurs as object in a related raised-object construction.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "Dummy there does not occur in all three major clause-complement positions; the source only establishes subject use and the related raised-object use.",
+          "pages": [
+            327,
+            328
+          ],
+          "example_ids": [
+            "x1",
+            "x2"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "There are several options available. [dummy there as subject]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "I believe there to be several options available. [dummy there in a raised-object construction]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            327,
+            328
+          ],
+          "pdf_pages": [
+            5,
+            6
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "dummy there; NP category",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+        }
+      ],
+      "related_rules": [
+        "CLS-047",
+        "CLS-048"
+      ],
+      "confidence": "high",
+      "review_notes": "The source explicitly points back to Cambridge Chapter 4 §3.2.2 for the analysis of there as subject. The NP classification here is distinct from the already approved clause-structure analysis in CLS-048. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "PHR-018",
+      "domain": "phrases",
+      "concept": "bare role NPs",
+      "traditional_terms": [
+        "bare role expressions"
+      ],
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "A determinerless bare role expression such as president or deputy leader of the party qualifies as an NP when it functions as a predicative complement.",
+      "condition": "When a determinerless noun phrase denotes a role and functions as the predicative complement of a verb such as be, become, appoint, or elect, classify it as an NP despite the absence of a determiner.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Mira hopes to become president. [president: bare role NP as predicative complement]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The members elected Noor deputy leader. [deputy leader: bare role NP as predicative complement]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 5,
+          "section": "§1 Distinctive properties of nouns and NPs",
+          "pages": [
+            328
+          ],
+          "pdf_pages": [
+            6
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "bare role NPs",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+        }
+      ],
+      "related_rules": [
+        "PHR-011",
+        "COMP-006",
+        "PHR-005"
+      ],
+      "confidence": "high",
+      "review_notes": "This is the category-membership observation. The separate restriction on using singular bare role NPs as subject or object is recorded as an exception to PHR-011. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "MORPH-007",
+      "to": "MORPH-003",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-007",
+      "to": "WCAT-006",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "WCAT-014",
+      "to": "WCAT-004",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "WCAT-014",
+      "to": "PHR-005",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "WCAT-014",
+      "to": "PHR-006",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "WCAT-015",
+      "to": "WCAT-004",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "WCAT-015",
+      "to": "PHR-008",
+      "relation": "contrasts",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-016",
+      "to": "PHR-010",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-016",
+      "to": "CLS-046",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-017",
+      "to": "CLS-048",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-017",
+      "to": "Cambridge Ch. 4 §3.2.2",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-018",
+      "to": "PHR-011",
+      "relation": "contrasts",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-018",
+      "to": "COMP-006",
+      "relation": "depends_on",
+      "verified": true
+    }
+  ],
+  "conflicts": [],
+  "uncertain_items": [],
+  "coverage_report": {
+    "pages_fully_covered": [
+      {
+        "printed_pages": [
+          326,
+          327
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ],
+        "section": "§1 Distinctive properties of nouns and NPs"
+      }
+    ],
+    "pages_partially_covered": [
+      {
+        "printed_pages": [
+          328
+        ],
+        "pdf_pages": [
+          6
+        ],
+        "reason": "The final bare-role-NP discussion completing §1 is included; §2 begins later on the same printed page and is excluded."
+      }
+    ],
+    "pages_not_covered": [
+      {
+        "printed_pages": [
+          328,
+          522
+        ],
+        "pdf_pages": [
+          6,
+          201
+        ],
+        "reason": "§2 and all later sections are outside this extraction pass; page 328 is only partially covered."
+      }
+    ],
+    "counts": {
+      "concepts": 7,
+      "rules": {
+        "constraint": 1,
+        "descriptive_generalization": 2,
+        "classification": 3,
+        "stylistic_or_prescriptive": 0,
+        "variety_restricted": 0
+      },
+      "examples": {
+        "ai_authored": 27,
+        "book": 0
+      },
+      "cross_references": 13,
+      "conflicts": 0,
+      "uncertain_items": 0
+    },
+    "skipped_subsections": [
+      {
+        "section": "§2 Overview of noun classes and NP structure and all later sections",
+        "reason": "The protocol requires one section per pass and an approval gate at the end of each section."
+      }
+    ]
+  }
+}
