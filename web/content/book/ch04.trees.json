@@ -1,0 +1,1080 @@
+{
+ "chapter": 4,
+ "convention_version": "V4",
+ "source": "Burton-Roberts, Ch4 (printed pages)",
+ "trees": [
+  {
+   "id": "ch4-21",
+   "fig": "[21]",
+   "page": 71,
+   "sentence": "Phil dreads affectionate cats",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Phil"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "trans"
+        ],
+        "children": [
+         {
+          "word": "dreads"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "affectionate",
+         "cats"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-22",
+   "fig": "[22]",
+   "page": 72,
+   "sentence": "Omar sighed",
+   "status": "IMG",
+   "note": "intransitive V is a complete VP; NP is drawn as NP > name",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "children": [
+       {
+        "label": "name",
+        "children": [
+         {
+          "word": "Omar"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "intrans"
+        ],
+        "children": [
+         {
+          "word": "sighed"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-26",
+   "fig": "[26]",
+   "page": 72,
+   "sentence": "William gave Millie some bleach",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "William"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "ditrans"
+        ],
+        "children": [
+         {
+          "word": "gave"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "Millie"
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "some",
+         "bleach"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-32",
+   "fig": "[32]",
+   "page": 73,
+   "sentence": "William gave some bleach to Millie",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "William"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "ditrans"
+        ],
+        "children": [
+         {
+          "word": "gave"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "some",
+         "bleach"
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "to",
+         "Millie"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-46a",
+   "fig": "[46a]",
+   "page": 76,
+   "sentence": "Sigmund was an auctioneer",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Sigmund"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "intens"
+        ],
+        "children": [
+         {
+          "word": "was"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "an",
+         "auctioneer"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-46b",
+   "fig": "[46b]",
+   "page": 76,
+   "sentence": "Sigmund spotted an auctioneer",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Sigmund"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "trans"
+        ],
+        "children": [
+         {
+          "word": "spotted"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "an",
+         "auctioneer"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-51",
+   "fig": "[51]",
+   "page": 77,
+   "sentence": "Jack finds his own jokes extremely funny",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Jack"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "complex"
+        ],
+        "children": [
+         {
+          "word": "finds"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "his",
+         "own",
+         "jokes"
+        ]
+       },
+       {
+        "label": "AP",
+        "triangle": true,
+        "words": [
+         "extremely",
+         "funny"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-52b",
+   "fig": "[52b]",
+   "page": 78,
+   "sentence": "Max found Bill an amusing companion",
+   "status": "IMG",
+   "ambiguous": true,
+   "note": "ONE tree, TWO readings: the V carries '(a) [ditrans]' and '(b) [complex]' in the figure",
+   "readings": {
+    "a": {
+     "feature": "ditrans",
+     "meaning": "Max found an amusing companion for Bill"
+    },
+    "b": {
+     "feature": "complex",
+     "meaning": "Max found Bill to be an amusing companion"
+    }
+   },
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Max"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "ditrans",
+         "complex"
+        ],
+        "children": [
+         {
+          "word": "found"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "Bill"
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "an",
+         "amusing",
+         "companion"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-56",
+   "fig": "[56]",
+   "page": 78,
+   "sentence": "Max glanced at the falling acrobat",
+   "status": "IMG",
+   "note": "the figure prints the node over Max as 'Name' (capital); normalised here to 'name' as in Ch3",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "children": [
+       {
+        "label": "name",
+        "children": [
+         {
+          "word": "Max"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "prep"
+        ],
+        "children": [
+         {
+          "word": "glanced"
+         }
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "at",
+         "the",
+         "falling",
+         "acrobat"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-ex4a",
+   "fig": "Ex4(a) answer",
+   "page": 83,
+   "sentence": "Nicholas felt strangely euphoric",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Nicholas"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "intens"
+        ],
+        "children": [
+         {
+          "word": "felt"
+         }
+        ]
+       },
+       {
+        "label": "AP",
+        "triangle": true,
+        "words": [
+         "strangely",
+         "euphoric"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-ex4b",
+   "fig": "Ex4(b) answer",
+   "page": 84,
+   "sentence": "The local gallery lends us the materials",
+   "status": "IMG",
+   "note": "the NP over 'us' is a (small) triangle in the figure",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "The",
+       "local",
+       "gallery"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "ditrans"
+        ],
+        "children": [
+         {
+          "word": "lends"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "us"
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "the",
+         "materials"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-ex4c",
+   "fig": "Ex4(c) answer",
+   "page": 84,
+   "sentence": "The condition of the cakes left out overnight deteriorated",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "The",
+       "condition",
+       "of",
+       "the",
+       "cakes",
+       "left",
+       "out",
+       "overnight"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "intrans"
+        ],
+        "children": [
+         {
+          "word": "deteriorated"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-ex4d",
+   "fig": "Ex4(d) answer",
+   "page": 84,
+   "sentence": "They voted the Grand Master out of office",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "They"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "complex"
+        ],
+        "children": [
+         {
+          "word": "voted"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "the",
+         "Grand",
+         "Master"
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "out",
+         "of",
+         "office"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-ex4e",
+   "fig": "Ex4(e) answer",
+   "page": 84,
+   "sentence": "A bucket of cold water revived that particular patient",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "A",
+       "bucket",
+       "of",
+       "cold",
+       "water"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "trans"
+        ],
+        "children": [
+         {
+          "word": "revived"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "that",
+         "particular",
+         "patient"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch4-ex4f",
+   "fig": "Ex4(f) answer",
+   "page": 84,
+   "sentence": "The Venetians submitted to Napoleon's demands",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "The",
+       "Venetians"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "prep"
+        ],
+        "children": [
+         {
+          "word": "submitted"
+         }
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "to",
+         "Napoleon's",
+         "demands"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "no_book_tree": [
+  "Further Ex1-3 (no book answer); Ex1 gives function labels, not trees (stored as exercise answers)",
+  "[19]/[20] pronoun-case tables are not trees"
+ ],
+ "exercise_answers_from_book": {
+  "ex1": {
+   "page": 82,
+   "items": [
+    {
+     "item": "a",
+     "feature": "complex",
+     "functions": [
+      [
+       "S",
+       "The girl in the palace"
+      ],
+      [
+       "V",
+       "dyed"
+      ],
+      [
+       "dO",
+       "her hair"
+      ],
+      [
+       "oP",
+       "deep purple"
+      ]
+     ]
+    },
+    {
+     "item": "b",
+     "feature": "intrans",
+     "functions": [
+      [
+       "S",
+       "Hot air"
+      ],
+      [
+       "V",
+       "rises"
+      ]
+     ]
+    },
+    {
+     "item": "c",
+     "feature": "ditrans",
+     "functions": [
+      [
+       "S",
+       "Richard"
+      ],
+      [
+       "V",
+       "promised"
+      ],
+      [
+       "iO",
+       "me"
+      ],
+      [
+       "dO",
+       "his spaghetti machine"
+      ]
+     ]
+    },
+    {
+     "item": "d",
+     "feature": "intens",
+     "functions": [
+      [
+       "S",
+       "The sedan-chair"
+      ],
+      [
+       "V",
+       "proved"
+      ],
+      [
+       "sP",
+       "very useful"
+      ]
+     ]
+    },
+    {
+     "item": "e",
+     "feature": "trans",
+     "functions": [
+      [
+       "S",
+       "Someone"
+      ],
+      [
+       "V",
+       "stole"
+      ],
+      [
+       "dO",
+       "my contact lenses"
+      ]
+     ]
+    },
+    {
+     "item": "f",
+     "feature": "intens",
+     "functions": [
+      [
+       "S",
+       "It"
+      ],
+      [
+       "V",
+       "sounds"
+      ],
+      [
+       "sP",
+       "like a really good film"
+      ]
+     ]
+    },
+    {
+     "item": "g",
+     "feature": "trans",
+     "functions": [
+      [
+       "S",
+       "The candidate's antics"
+      ],
+      [
+       "V",
+       "amused"
+      ],
+      [
+       "dO",
+       "the board of examiners"
+      ]
+     ]
+    },
+    {
+     "item": "h",
+     "feature": "complex",
+     "functions": [
+      [
+       "S",
+       "The committee"
+      ],
+      [
+       "V",
+       "nominated"
+      ],
+      [
+       "dO",
+       "her"
+      ],
+      [
+       "oP",
+       "Acrobat of the Year"
+      ]
+     ]
+    },
+    {
+     "item": "i",
+     "feature": "ditrans",
+     "functions": [
+      [
+       "S",
+       "Oscar"
+      ],
+      [
+       "V",
+       "feeds"
+      ],
+      [
+       "iO",
+       "his cat"
+      ],
+      [
+       "dO",
+       "smoked salmon"
+      ]
+     ]
+    },
+    {
+     "item": "j",
+     "feature": "complex",
+     "functions": [
+      [
+       "S",
+       "I"
+      ],
+      [
+       "V",
+       "like"
+      ],
+      [
+       "dO",
+       "my curries"
+      ],
+      [
+       "oP",
+       "as hot as you can make them"
+      ]
+     ]
+    },
+    {
+     "item": "k",
+     "feature": "prep",
+     "functions": [
+      [
+       "S",
+       "This"
+      ],
+      [
+       "V",
+       "calls"
+      ],
+      [
+       "PC",
+       "for a celebration"
+      ]
+     ]
+    },
+    {
+     "item": "l",
+     "feature": "intrans",
+     "functions": [
+      [
+       "S",
+       "The main witness for the prosecution"
+      ],
+      [
+       "V",
+       "disappeared"
+      ]
+     ]
+    },
+    {
+     "item": "m",
+     "feature": "prep",
+     "functions": [
+      [
+       "S",
+       "He"
+      ],
+      [
+       "V",
+       "applied"
+      ],
+      [
+       "PC",
+       "for a gun licence"
+      ]
+     ]
+    }
+   ]
+  },
+  "ex2_ditransitive_PP": {
+   "page": 83,
+   "answers": {
+    "a": false,
+    "b": true,
+    "c": false,
+    "d": true,
+    "e": true,
+    "f": false,
+    "g": false,
+    "h": true
+   },
+   "reason": "a PP belongs to the complementation of a ditransitive verb only if it corresponds to an indirect-object NP"
+  },
+  "in_text_word_categories": {
+   "page": 80,
+   "answers": {
+    "1": "Verb",
+    "2": "Adjective",
+    "3": "Adjective",
+    "4": "Verb",
+    "5": "Noun",
+    "6": "Preposition",
+    "7": "Verb",
+    "8": "Adjective",
+    "9": "Noun",
+    "10": "Verb",
+    "11": "Preposition",
+    "12": "Noun",
+    "13": "Verb",
+    "14": "Verb"
+   }
+  },
+  "in_text_verb_uses": {
+   "page": 80,
+   "answers": {
+    "1": "intransitive",
+    "2": "transitive",
+    "3": "intransitive",
+    "4": "transitive",
+    "5": "intransitive",
+    "6": "transitive"
+   }
+  },
+  "in_text_transitive_vs_intensive_NP": {
+   "page": 75,
+   "direct_object": [
+    39,
+    40,
+    42,
+    45
+   ],
+   "predicative": [
+    38,
+    41,
+    43,
+    44
+   ]
+  },
+  "in_text_ditransitive_verbs": {
+   "page": 72,
+   "ditransitive": [
+    "show",
+    "offer",
+    "tell"
+   ],
+   "not": [
+    "see",
+    "announce"
+   ]
+  },
+  "function_table": {
+   "page": 79,
+   "trans": [
+    "dO"
+   ],
+   "intrans": [],
+   "ditrans": [
+    "iO",
+    "dO"
+   ],
+   "intens": [
+    "sP"
+   ],
+   "complex": [
+    "dO",
+    "oP"
+   ],
+   "prep": [
+    "PC"
+   ]
+  }
+ }
+}
