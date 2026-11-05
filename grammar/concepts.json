@@ -1838,5 +1838,345 @@
       "subject-verb agreement",
       "irrealis mood"
     ]
+  },
+  {
+    "term": "core complement",
+    "gloss": "A complement directly related to the verb; NPs are its prototypical form in this section.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          216
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "complement",
+      "non-core complement",
+      "subject",
+      "object"
+    ]
+  },
+  {
+    "term": "non-core complement",
+    "gloss": "A complement related to the verb indirectly through a preposition; PPs are its prototypical form in this section.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          216
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "complement",
+      "core complement",
+      "oblique"
+    ]
+  },
+  {
+    "term": "oblique",
+    "gloss": "An NP inside a PP complement that is connected to the verb indirectly by the preposition.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          216
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "non-core complement",
+      "preposition phrase"
+    ]
+  },
+  {
+    "term": "external complement",
+    "gloss": "The subject in a canonical clause, structurally outside the VP that realises the predicate.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          216
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "subject",
+      "internal complement",
+      "predicate"
+    ]
+  },
+  {
+    "term": "internal complement",
+    "gloss": "A non-subject complement contained within the VP in a canonical clause.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          216
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "external complement",
+      "object",
+      "predicative complement"
+    ]
+  },
+  {
+    "term": "dual-transitivity verb",
+    "gloss": "A verb that has both an intransitive use without an object and a transitive use with an object.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          216,
+          217
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "transitivity",
+      "object"
+    ]
+  },
+  {
+    "term": "predicand",
+    "gloss": "The entity of which a predicative complement expresses a property; it can function as subject or object of the governing verb.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          217
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "predicative complement",
+      "subject",
+      "object"
+    ]
+  },
+  {
+    "term": "predicative complement orientation",
+    "gloss": "The relation of a predicative complement to its predicand, described as subject-oriented or object-oriented.",
+    "traditional_terms": [
+      "subjective / objective predicative complement"
+    ],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          217
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "predicative complement",
+      "predicand",
+      "complex-intransitive clause",
+      "complex-transitive clause"
+    ]
+  },
+  {
+    "term": "complex-intransitive clause",
+    "gloss": "An intransitive clause with a predicative complement in addition to its subject and predicator.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          217,
+          218
+        ],
+        "pdf_pages": [
+          5,
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "predicative complement",
+      "copular clause",
+      "intransitive clause"
+    ]
+  },
+  {
+    "term": "complex-transitive clause",
+    "gloss": "A transitive clause containing an object and a further predicative complement.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          217
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "predicative complement",
+      "object",
+      "transitive clause"
+    ]
+  },
+  {
+    "term": "copular clause",
+    "gloss": "The term used here for the complex-intransitive construction with be as predicator and a predicative complement.",
+    "traditional_terms": [
+      "copular construction"
+    ],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          218
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "be",
+      "predicative complement",
+      "complex-intransitive clause"
+    ]
+  },
+  {
+    "term": "valency",
+    "gloss": "In this chapter, the number of syntactic complements a verb combines with in a clause.",
+    "traditional_terms": [
+      "monovalency",
+      "bivalency",
+      "trivalency",
+      "quadrivalency"
+    ],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          218,
+          219
+        ],
+        "pdf_pages": [
+          6,
+          7
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adicity",
+      "complementation",
+      "transitivity"
+    ]
+  },
+  {
+    "term": "adicity",
+    "gloss": "A term for counting semantic arguments rather than syntactic complements; the source notes monadic and dyadic labels in this sense.",
+    "traditional_terms": [
+      "monadic",
+      "dyadic"
+    ],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          219
+        ],
+        "pdf_pages": [
+          7
+        ]
+      }
+    ],
+    "related_concepts": [
+      "valency",
+      "semantic role",
+      "argument"
+    ]
+  },
+  {
+    "term": "complementation",
+    "gloss": "In the terminology distinguished in the footnote, the number and kind of complements a verb takes, contrasted with valency used only for number.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          219
+        ],
+        "pdf_pages": [
+          7
+        ]
+      }
+    ],
+    "related_concepts": [
+      "valency",
+      "complement",
+      "verb subclass"
+    ]
   }
 ]
