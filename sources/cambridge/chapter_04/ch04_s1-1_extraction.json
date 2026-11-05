@@ -438,9 +438,9 @@
         "COMP-004"
       ],
       "confidence": "high",
-      "review_notes": "The section names verbs that occur both with and without an object as dual-transitivity verbs. This refines, rather than replaces, the existing COMP-002 treatment of verb subclasses.",
+      "review_notes": "The section names verbs that occur both with and without an object as dual-transitivity verbs. This refines, rather than replaces, the existing COMP-002 treatment of verb subclasses. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "COMP-012",
@@ -517,9 +517,9 @@
         "COMP-006"
       ],
       "confidence": "high",
-      "review_notes": "The source describes NPs and PPs as prototypical forms and later explicitly extends core complements to AdjPs when discussing predicative complements. The rule is therefore descriptive, not a grammatical form constraint.",
+      "review_notes": "The source describes NPs and PPs as prototypical forms and later explicitly extends core complements to AdjPs when discussing predicative complements. The rule is therefore descriptive, not a grammatical form constraint. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "COMP-013",
@@ -575,9 +575,9 @@
         "COMP-012"
       ],
       "confidence": "high",
-      "review_notes": "The source also notes that the preposition can contribute to identifying the semantic role of the oblique; that semantic contribution is not made a separate constraint here.",
+      "review_notes": "The source also notes that the preposition can contribute to identifying the semantic role of the oblique; that semantic contribution is not made a separate constraint here. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "COMP-014",
@@ -632,9 +632,9 @@
         "COMP-006"
       ],
       "confidence": "high",
-      "review_notes": "This adds Cambridge's explicit term predicand to the existing predicative-complement classification; it does not re-create COMP-006.",
+      "review_notes": "This adds Cambridge's explicit term predicand to the existing predicative-complement classification; it does not re-create COMP-006. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "COMP-015",
@@ -696,9 +696,9 @@
         "COMP-014"
       ],
       "confidence": "high",
-      "review_notes": "The source hedges the predictability of orientation with 'normally'; this is retained as a descriptive generalization, not an absolute constraint.",
+      "review_notes": "The source hedges the predictability of orientation with 'normally'; this is retained as a descriptive generalization, not an absolute constraint. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "COMP-016",
@@ -766,9 +766,9 @@
         "CLS-015"
       ],
       "confidence": "high",
-      "review_notes": "The source says the sets of verbs entering the two patterns overlap only to a relatively small extent. The examples here show verbs explicitly presented as allowing both patterns; the record does not generalise that all such verbs allow both. The chapter introduction names Ch. 11 for finite clause complements.",
+      "review_notes": "The source says the sets of verbs entering the two patterns overlap only to a relatively small extent. The examples here show verbs explicitly presented as allowing both patterns; the record does not generalise that all such verbs allow both. The chapter introduction names Ch. 11 for finite clause complements. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "COMP-017",
@@ -838,9 +838,9 @@
         "COMP-007"
       ],
       "confidence": "high",
-      "review_notes": "The source explicitly records broader usage elsewhere, then states that this chapter restricts 'copular' to the be construction. This is a terminology choice, not a claim that other complex-intransitive verbs are ungrammatical.",
+      "review_notes": "The source explicitly records broader usage elsewhere, then states that this chapter restricts 'copular' to the be construction. This is a terminology choice, not a claim that other complex-intransitive verbs are ungrammatical. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "COMP-018",
@@ -916,9 +916,9 @@
         "COMP-005"
       ],
       "confidence": "high",
-      "review_notes": "Footnote 7 notes alternative scholarly uses: some use valency for number plus type of complements (for which this chapter uses complementation), while others count semantic arguments instead of syntactic complements (adicity). This record preserves the chapter's local definition and does not generalise it to all theoretical traditions.",
+      "review_notes": "Footnote 7 notes alternative scholarly uses: some use valency for number plus type of complements (for which this chapter uses complementation), while others count semantic arguments instead of syntactic complements (adicity). This record preserves the chapter's local definition and does not generalise it to all theoretical traditions. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     }
   ],
   "cross_references": [
