@@ -1,0 +1,26 @@
+[
+  {
+    "from_rule": "CLS-070",
+    "to": "CLS-035",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-070",
+    "to": "CLS-037",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-070",
+    "to": "PHR-009",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-037",
+    "to": "CLS-070",
+    "relation": "refines",
+    "verified": true
+  }
+]
