@@ -1,0 +1,122 @@
+[
+  {
+    "from_rule": "OTH-011",
+    "to": "OTH-012",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-011",
+    "to": "OTH-013",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-011",
+    "to": "OTH-018",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-012",
+    "to": "OTH-011",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-013",
+    "to": "OTH-018",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-014",
+    "to": "OTH-012",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-014",
+    "to": "OTH-013",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-015",
+    "to": "OTH-012",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-016",
+    "to": "OTH-015",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-017",
+    "to": "OTH-011",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-017",
+    "to": "OTH-018",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-018",
+    "to": "OTH-013",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-018",
+    "to": "OTH-017",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-011",
+    "to": "Cambridge Chapter 20 §1.2 (indicators and characters)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "OTH-014",
+    "to": "Cambridge Chapter 20 §2 (primary terminals)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "OTH-017",
+    "to": "Cambridge Chapter 20 §6 (quotation marks and related indicators)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "OTH-014",
+    "to": "Cambridge Chapter 20 §7 (capitalisation)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "OTH-012",
+    "to": "Cambridge Chapter 20 §8.1 (word boundaries)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "OTH-015",
+    "to": "Cambridge Chapter 20 §8.2 (hyphens)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "OTH-015",
+    "to": "Cambridge Chapter 20 §8.3 (apostrophe)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]
