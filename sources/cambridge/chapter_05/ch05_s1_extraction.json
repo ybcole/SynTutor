@@ -279,9 +279,9 @@
         "WCAT-006"
       ],
       "confidence": "high",
-      "review_notes": "This adds the four-form number-by-case paradigm to the existing MORPH-003 case analysis without duplicating its account of noun and pronoun case marking.",
+      "review_notes": "This adds the four-form number-by-case paradigm to the existing MORPH-003 case analysis without duplicating its account of noun and pronoun case marking. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "WCAT-014",
@@ -350,9 +350,9 @@
         "PHR-006"
       ],
       "confidence": "high",
-      "review_notes": "The source says 'exclusively or almost exclusively'; this is a distributional generalization, not an absolute restriction.",
+      "review_notes": "The source says 'exclusively or almost exclusively'; this is a distributional generalization, not an absolute restriction. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "WCAT-015",
@@ -436,9 +436,9 @@
         "PHR-008"
       ],
       "confidence": "high",
-      "review_notes": "The contrast concerns the grammatical relation object, not the broader ability of nouns to take complements. The examples use PP dependents in the acceptable nominal constructions.",
+      "review_notes": "The contrast concerns the grammatical relation object, not the broader ability of nouns to take complements. The examples use PP dependents in the acceptable nominal constructions. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "PHR-016",
@@ -457,7 +457,7 @@
             327
           ],
           "example_ids": [
-            "x8"
+            "x9"
           ]
         }
       ],
@@ -514,6 +514,14 @@
             "judgement": "possible",
             "note": "Illustrates a non-clausal NP function; the source restricts the range of NPs available for this and related peripheral functions.",
             "tests_exception": true
+          },
+          {
+            "id": "x9",
+            "text": "The shelf was a good deal too narrow. [a good deal: NP modifier in an AdjP]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "note": "Tests an NP expression specialised for modifier use.",
+            "tests_exception": true
           }
         ]
       },
@@ -543,9 +551,9 @@
         "COMP-001"
       ],
       "confidence": "high",
-      "review_notes": "The subject-determiner function is already represented by PHR-010; this record adds the broader inventory of NP functions and does not recreate that rule. The source's restricted-distribution caveat is retained.",
+      "review_notes": "The subject-determiner function is already represented by PHR-010; this record adds the broader inventory of NP functions and does not recreate that rule. The source's restricted-distribution caveat is retained. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "PHR-017",
@@ -615,9 +623,9 @@
         "CLS-048"
       ],
       "confidence": "high",
-      "review_notes": "The source explicitly points back to Cambridge Chapter 4 §3.2.2 for the analysis of there as subject. The NP classification here is distinct from the already approved clause-structure analysis in CLS-048.",
+      "review_notes": "The source explicitly points back to Cambridge Chapter 4 §3.2.2 for the analysis of there as subject. The NP classification here is distinct from the already approved clause-structure analysis in CLS-048. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "PHR-018",
@@ -676,9 +684,9 @@
         "PHR-005"
       ],
       "confidence": "high",
-      "review_notes": "This is the category-membership observation. The separate restriction on using singular bare role NPs as subject or object is recorded as an exception to PHR-011.",
+      "review_notes": "This is the category-membership observation. The separate restriction on using singular bare role NPs as subject or object is recorded as an exception to PHR-011. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     }
   ],
   "cross_references": [
@@ -811,7 +819,7 @@
         "variety_restricted": 0
       },
       "examples": {
-        "ai_authored": 26,
+        "ai_authored": 27,
         "book": 0
       },
       "cross_references": 13,
