@@ -1328,9 +1328,10 @@
         },
         {
           "id": "c8",
-          "text": "Some speakers: The actors didn't rehearse, didn't they? [negative-negative tag; different intonation/pragmatics]",
+          "text": "The actors didn't rehearse, didn't they? [same-polarity tag, accepted by some speakers with a distinct pragmatic effect]",
           "origin": "ai_authored",
-          "tests_exception": true
+          "tests_exception": true,
+          "note": "Some speakers accept negative-negative tags; the source distinguishes their prosody and pragmatics from neutral confirmation tags."
         }
       ],
       "incorrect": []
