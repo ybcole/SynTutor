@@ -1077,6 +1077,19 @@
           79,
           80
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          786,
+          787
+        ],
+        "pdf_pages": [
+          2,
+          3
+        ]
       }
     ],
     "related_concepts": []
@@ -1095,6 +1108,19 @@
         ],
         "pdf_pages": [
           80
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          786,
+          787
+        ],
+        "pdf_pages": [
+          2,
+          3
         ]
       }
     ],
@@ -3058,6 +3084,139 @@
     ],
     "related_concepts": [
       "adjunct"
+    ]
+  },
+  {
+    "term": "clause polarity",
+    "gloss": "Positive or negative syntactic status of a clause, diagnosed by its distribution rather than simply by the presence of a negative word.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          786
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clausal negation",
+      "subclausal negation"
+    ]
+  },
+  {
+    "term": "polarity diagnostic",
+    "gloss": "A test of a clause's positive or negative status using a permitted continuation, confirmation tag, or prenuclear inversion.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          786,
+          787
+        ],
+        "pdf_pages": [
+          2,
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause polarity"
+    ]
+  },
+  {
+    "term": "not even continuation",
+    "gloss": "A prosodically detached supplementary continuation whose negative form presupposes a negative host clause.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          786
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause polarity",
+      "supplement"
+    ]
+  },
+  {
+    "term": "neutral reversed-polarity confirmation tag",
+    "gloss": "An interrogative tag that seeks confirmation and bears the opposite polarity from the host clause.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          787
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause polarity"
+    ]
+  },
+  {
+    "term": "connective polarity continuation",
+    "gloss": "A reduced follow-up clause whose connective reflects the preceding clause's syntactic polarity, such as neither/nor versus so.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          786,
+          787
+        ],
+        "pdf_pages": [
+          2,
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause polarity"
+    ]
+  },
+  {
+    "term": "prenuclear negative constituent",
+    "gloss": "A negative-marked constituent before the nucleus whose position triggers obligatory subject–auxiliary inversion.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          787
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause polarity",
+      "subject-auxiliary inversion"
     ]
   }
 ]
