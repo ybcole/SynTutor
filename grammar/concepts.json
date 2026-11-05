@@ -189,6 +189,17 @@
           66,
           67
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          600
+        ],
+        "pdf_pages": [
+          4
+        ]
       }
     ],
     "related_concepts": []
@@ -980,6 +991,17 @@
         "pdf_pages": [
           78
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          599
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "related_concepts": []
@@ -1000,6 +1022,17 @@
         "pdf_pages": [
           78,
           79
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          602
+        ],
+        "pdf_pages": [
+          6
         ]
       }
     ],
@@ -2460,6 +2493,213 @@
     "related_concepts": [
       "adjective phrase (AdjP)",
       "complement"
+    ]
+  },
+  {
+    "term": "preposition",
+    "gloss": "A head word of a PP, classed here without requiring an NP complement or even any complement.",
+    "traditional_terms": [
+      "adverb",
+      "subordinating conjunction"
+    ],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          598,
+          603
+        ],
+        "pdf_pages": [
+          2,
+          7
+        ]
+      }
+    ],
+    "related_concepts": [
+      "preposition phrase",
+      "grammaticised preposition"
+    ]
+  },
+  {
+    "term": "preposition complement licensing",
+    "gloss": "Selection by individual preposition heads among NP, PP, AdvP, clausal, and predicative AdjP complements.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          599
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "preposition",
+      "complement"
+    ]
+  },
+  {
+    "term": "grammaticised preposition",
+    "gloss": "A use of a preposition that expresses grammatical relations or assigned roles rather than an independently identifiable spatial or other meaning.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          601
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "preposition",
+      "non-grammaticised preposition"
+    ]
+  },
+  {
+    "term": "non-grammaticised preposition",
+    "gloss": "A use where the preposition contributes a recognisable independent meaning, as distinct from a grammaticised use.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          601
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "grammaticised preposition"
+    ]
+  },
+  {
+    "term": "complementless preposition",
+    "gloss": "A preposition that heads a PP without a complement; the same lexeme may optionally take a complement, or never take one.",
+    "traditional_terms": [
+      "traditional adverb"
+    ],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          600,
+          601
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "preposition phrase"
+    ]
+  },
+  {
+    "term": "postposed preposition",
+    "gloss": "An exceptional PP head that can follow its own complement, as with notwithstanding.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          602
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "preposition",
+      "head-complement order"
+    ]
+  },
+  {
+    "term": "head-complement order",
+    "gloss": "The relative position of a phrase head and its complement; the Cambridge preposition category is not defined by order alone.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          602
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "postposed preposition",
+      "preposition stranding"
+    ]
+  },
+  {
+    "term": "adposition",
+    "gloss": "A typological term that can cover both prepositions and postpositions without imposing a linear position on the category.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          602
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "preposition",
+      "head-complement order"
+    ]
+  },
+  {
+    "term": "subordinating conjunction",
+    "gloss": "Traditional category of words introducing subordinate clauses; most of its members are classified as prepositions here, apart from the specified subordinators.",
+    "traditional_terms": [
+      "subordinating conjunction"
+    ],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          600
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "preposition",
+      "subordinator"
     ]
   }
 ]

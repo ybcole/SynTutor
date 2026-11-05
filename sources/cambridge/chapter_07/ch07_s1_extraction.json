@@ -1,0 +1,678 @@
+{
+  "meta": {
+    "chapter": 7,
+    "section": "§1 The category of prepositions",
+    "printed_pages": [
+      598,
+      603
+    ],
+    "pdf_pages": [
+      2,
+      7
+    ],
+    "page_offset": "Local PDF page = printed page - 596.",
+    "processed_by": "OpenAI GPT-6",
+    "protocol_version": "1.0",
+    "highest_existing_rule_ids": {
+      "morphology": "MORPH-007",
+      "word_categories": "WCAT-015",
+      "phrases": "PHR-018",
+      "clauses": "CLS-051",
+      "complementation": "COMP-018",
+      "agreement": "AGR-002",
+      "other": "OTH-003"
+    },
+    "approval": "User explicitly approved all Chapter 7 §1 items in the request on 2026-11-05; independent second-pass review not performed.",
+    "input_gaps": [
+      "Burton-Roberts reference material was not provided; mappings remain unverified."
+    ]
+  },
+  "concepts": [
+    {
+      "term": "preposition",
+      "gloss": "A head word of a PP, classed here without requiring an NP complement or even any complement.",
+      "traditional_terms": [
+        "adverb",
+        "subordinating conjunction"
+      ],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            598,
+            603
+          ],
+          "pdf_pages": [
+            2,
+            7
+          ]
+        }
+      ],
+      "related_concepts": [
+        "preposition phrase",
+        "grammaticised preposition"
+      ]
+    },
+    {
+      "term": "preposition complement licensing",
+      "gloss": "Selection by individual preposition heads among NP, PP, AdvP, clausal, and predicative AdjP complements.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            599
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "preposition",
+        "complement"
+      ]
+    },
+    {
+      "term": "grammaticised preposition",
+      "gloss": "A use of a preposition that expresses grammatical relations or assigned roles rather than an independently identifiable spatial or other meaning.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            601
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "preposition",
+        "non-grammaticised preposition"
+      ]
+    },
+    {
+      "term": "non-grammaticised preposition",
+      "gloss": "A use where the preposition contributes a recognisable independent meaning, as distinct from a grammaticised use.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            601
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "grammaticised preposition"
+      ]
+    },
+    {
+      "term": "complementless preposition",
+      "gloss": "A preposition that heads a PP without a complement; the same lexeme may optionally take a complement, or never take one.",
+      "traditional_terms": [
+        "traditional adverb"
+      ],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            600,
+            601
+          ],
+          "pdf_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "preposition phrase"
+      ]
+    },
+    {
+      "term": "postposed preposition",
+      "gloss": "An exceptional PP head that can follow its own complement, as with notwithstanding.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            602
+          ],
+          "pdf_pages": [
+            6
+          ]
+        }
+      ],
+      "related_concepts": [
+        "preposition",
+        "head-complement order"
+      ]
+    },
+    {
+      "term": "head-complement order",
+      "gloss": "The relative position of a phrase head and its complement; the Cambridge preposition category is not defined by order alone.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            602
+          ],
+          "pdf_pages": [
+            6
+          ]
+        }
+      ],
+      "related_concepts": [
+        "postposed preposition",
+        "preposition stranding"
+      ]
+    },
+    {
+      "term": "adposition",
+      "gloss": "A typological term that can cover both prepositions and postpositions without imposing a linear position on the category.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            602
+          ],
+          "pdf_pages": [
+            6
+          ]
+        }
+      ],
+      "related_concepts": [
+        "preposition",
+        "head-complement order"
+      ]
+    },
+    {
+      "term": "subordinating conjunction",
+      "gloss": "Traditional category of words introducing subordinate clauses; most of its members are classified as prepositions here, apart from the specified subordinators.",
+      "traditional_terms": [
+        "subordinating conjunction"
+      ],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            600
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "preposition",
+        "subordinator"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "WCAT-016",
+      "domain": "word_categories",
+      "concept": "subordinators excluded from the preposition category",
+      "traditional_terms": [
+        "subordinating conjunction"
+      ],
+      "rule_type": "classification",
+      "scope": "word",
+      "statement": "Cambridge treats traditional subordinating conjunctions as prepositions except whether, interrogative if equivalent to whether, and that when introducing a subordinate clause, which function as subordinators.",
+      "condition": "When classifying a word associated with a subordinate content clause, treat whether, if introducing an embedded interrogative, and clause-introducing that as subordination markers rather than heads; prepositions such as after may instead head PPs with clause complements.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The dancers rested after the music stopped. [after: preposition with declarative clause complement]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Mara wondered whether the music had stopped. [whether: subordinator]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Mara asked if the music had stopped. [interrogative if: subordinator]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Mara believed that the music had stopped. [that: subordinator]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "If the music stops, the dancers will rest. [conditional if: preposition under Cambridge's analysis]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            600
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "subordinators excluded from the preposition category",
+          "relation": "unverified",
+          "note": "No corresponding Burton-Roberts chapter material was supplied or available for verification; no Burton-Roberts analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "WCAT-012",
+        "CLS-029"
+      ],
+      "confidence": "high",
+      "review_notes": "The three explicitly stated exceptions are lexical/use-specific; conditional if is not the interrogative-if exception. The original extraction AI and this approval action are not a separate second-pass review.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "WCAT-017",
+      "domain": "word_categories",
+      "concept": "grammaticised uses of prepositions",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "word",
+      "statement": "In grammaticised uses a preposition primarily signals a constructional or semantic role rather than a separately identifiable meaning, and these uses normally take NP complements and resist independent modification.",
+      "condition": "When by introduces the agent in a passive, of links an NP to a nominal head, or a selected preposition connects an NP to an adjective or verb, analyse the grammatical relation as a grammaticised use; distinguish spatial or other independently meaningful uses of the same preposition.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "A preposition that has grammaticised uses can also have non-grammaticised uses with an independently identifiable meaning; many prepositions have no grammaticised use at all.",
+          "pages": [
+            601
+          ],
+          "example_ids": [
+            "x2"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The mural was restored by a volunteer. [by marks the passive agent]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The volunteer waited by the gate. [by has spatial meaning; non-grammaticised]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          },
+          {
+            "id": "x3",
+            "text": "the demolition of the warehouse [of links an NP to the noun demolition]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "The athlete was pleased with the result. [with is selected by the adjective pleased]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            601
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "grammaticised uses of prepositions",
+          "relation": "unverified",
+          "note": "No corresponding Burton-Roberts chapter material was supplied or available for verification; no Burton-Roberts analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "WCAT-012",
+        "COMP-012"
+      ],
+      "confidence": "high",
+      "review_notes": "The source states virtually restricted to NP complements in grammaticised uses, not an exceptionless ban on other complements. No free-modifier prohibition is converted into an unsourced global error rule.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "COMP-019",
+      "domain": "complementation",
+      "concept": "preposition-specific complement licensing",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "Individual prepositions select different complement categories, including NP, PP, AdvP, interrogative clause, and predicative AdjP, so a complement category available after one preposition need not be licensed by another.",
+      "condition": "When analysing a PP, determine the category and grammatical function licensed by its specific head rather than assuming every preposition accepts the same complement types; for example until licenses an AdvP, on an interrogative clause, and for a predicative AdjP.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The cat emerged from behind the wardrobe. [PP complement of from]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The museum remained closed until quite recently. [AdvP complement of until]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The group disagreed on whether the bridge was safe. [interrogative clause complement of on]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "The hikers took the stranger for dead. [predicative AdjP complement of for]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            599
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "preposition-specific complement licensing",
+          "relation": "unverified",
+          "note": "No corresponding Burton-Roberts chapter material was supplied or available for verification; no Burton-Roberts analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "PHR-014",
+        "COMP-006",
+        "WCAT-012"
+      ],
+      "confidence": "high",
+      "review_notes": "The source explicitly contrasts until (AdvP permitted, interrogative clause excluded) with on (interrogative clause permitted, AdvP excluded). Examples demonstrate licensed positive patterns; this classification is not an unrestricted grammar checker prohibition.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "PHR-019",
+      "domain": "phrases",
+      "concept": "postposed preposition after its complement",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "A very small set of English prepositions, including notwithstanding, can follow their NP complement inside PP structure instead of preceding it.",
+      "condition": "For the exceptional preposition notwithstanding, recognise both head-before-complement and complement-before-head structures as PPs; do not confuse complement-before-head order with preposition stranding in a non-canonical clause.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Notwithstanding the storm, the crew continued. [head before NP complement]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The storm notwithstanding, the crew continued. [NP complement before head]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Which storm were they discussing? [ordinary fronting, not a postposed-preposition PP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 7,
+          "section": "§1 The category of prepositions",
+          "pages": [
+            602
+          ],
+          "pdf_pages": [
+            6
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "postposed preposition after its complement",
+          "relation": "unverified",
+          "note": "No corresponding Burton-Roberts chapter material was supplied or available for verification; no Burton-Roberts analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "PHR-015",
+        "PHR-014"
+      ],
+      "confidence": "high",
+      "review_notes": "The source describes the notwithstanding pattern as a very small exception and directs details to Ch. 7 §4.2. Avoid generalising postposing to all prepositions.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "WCAT-016",
+      "to": "WCAT-012",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "WCAT-016",
+      "to": "CLS-029",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "WCAT-017",
+      "to": "WCAT-012",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "WCAT-017",
+      "to": "COMP-012",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "COMP-019",
+      "to": "PHR-014",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "COMP-019",
+      "to": "WCAT-012",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "COMP-019",
+      "to": "COMP-006",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-019",
+      "to": "PHR-015",
+      "relation": "contrasts",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-019",
+      "to": "PHR-014",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "WCAT-012",
+      "to": "Cambridge Chapter 11 §8.1 (subordinators)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "PHR-015",
+      "to": "Cambridge Chapter 7 §4.1 (stranding)",
+      "relation": "refines",
+      "verified": false
+    },
+    {
+      "from_rule": "PHR-019",
+      "to": "Cambridge Chapter 7 §4.2 (complement-head order)",
+      "relation": "depends_on",
+      "verified": false
+    }
+  ],
+  "conflicts": [],
+  "uncertain_items": [],
+  "coverage_report": {
+    "pages_fully_covered": [
+      {
+        "printed_pages": [
+          598,
+          602
+        ],
+        "pdf_pages": [
+          2,
+          6
+        ],
+        "section": "§1 The category of prepositions"
+      }
+    ],
+    "pages_partially_covered": [
+      {
+        "printed_pages": [
+          603
+        ],
+        "pdf_pages": [
+          7
+        ],
+        "reason": "§1 general definition only; §2 begins later on the same page."
+      }
+    ],
+    "pages_not_covered": [
+      {
+        "printed_pages": [
+          603,
+          661
+        ],
+        "pdf_pages": [
+          7,
+          65
+        ],
+        "reason": "§2 and later sections outside this single-section pass (p. 603 only partially uncovered)."
+      }
+    ],
+    "counts": {
+      "concepts": 9,
+      "rules": {
+        "constraint": 0,
+        "descriptive_generalization": 1,
+        "classification": 3,
+        "stylistic_or_prescriptive": 0,
+        "variety_restricted": 0
+      },
+      "examples": {
+        "ai_authored": 16,
+        "book": 0
+      },
+      "cross_references": 12,
+      "conflicts": 0,
+      "uncertain_items": 0
+    },
+    "existing_rule_refinements": [
+      "WCAT-012",
+      "PHR-014",
+      "PHR-015"
+    ],
+    "skipped_subsections": [
+      {
+        "section": "§2 Distinctive properties of prepositions in English through §6 Grammaticised prepositions",
+        "reason": "Protocol requires an approval/stop boundary after each printed section."
+      }
+    ]
+  }
+}

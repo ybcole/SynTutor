@@ -1250,5 +1250,76 @@
     "review_notes": "Footnote 7 notes alternative scholarly uses: some use valency for number plus type of complements (for which this chapter uses complementation), while others count semantic arguments instead of syntactic complements (adicity). This record preserves the chapter's local definition and does not generalise it to all theoretical traditions. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
     "status": "APPROVED"
+  },
+  {
+    "id": "COMP-019",
+    "domain": "complementation",
+    "concept": "preposition-specific complement licensing",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Individual prepositions select different complement categories, including NP, PP, AdvP, interrogative clause, and predicative AdjP, so a complement category available after one preposition need not be licensed by another.",
+    "condition": "When analysing a PP, determine the category and grammatical function licensed by its specific head rather than assuming every preposition accepts the same complement types; for example until licenses an AdvP, on an interrogative clause, and for a predicative AdjP.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The cat emerged from behind the wardrobe. [PP complement of from]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The museum remained closed until quite recently. [AdvP complement of until]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The group disagreed on whether the bridge was safe. [interrogative clause complement of on]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The hikers took the stranger for dead. [predicative AdjP complement of for]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          599
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "preposition-specific complement licensing",
+        "relation": "unverified",
+        "note": "No corresponding Burton-Roberts chapter material was supplied or available for verification; no Burton-Roberts analysis is inferred."
+      }
+    ],
+    "related_rules": [
+      "PHR-014",
+      "COMP-006",
+      "WCAT-012"
+    ],
+    "confidence": "high",
+    "review_notes": "The source explicitly contrasts until (AdvP permitted, interrogative clause excluded) with on (interrogative clause permitted, AdvP excluded). Examples demonstrate licensed positive patterns; this classification is not an unrestricted grammar checker prohibition.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
   }
 ]
