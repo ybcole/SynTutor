@@ -1,0 +1,1172 @@
+{
+  "meta": {
+    "chapter": 18,
+    "section": "§1.1 Lexical base, morphological operations, and alternation",
+    "printed_pages": [
+      1568,
+      1569
+    ],
+    "pdf_pages": [
+      4,
+      5
+    ],
+    "page_offset": "PDF page number = printed page - 1564",
+    "processed_by": "OpenAI GPT-6",
+    "protocol_version": "1.0",
+    "highest_existing_rule_ids": {
+      "morphology": "MORPH-007",
+      "word_categories": "WCAT-017",
+      "phrases": "PHR-019",
+      "clauses": "CLS-098",
+      "complementation": "COMP-019",
+      "agreement": "AGR-002",
+      "other": "OTH-010"
+    },
+    "approval": "The user explicitly approved everything requiring approval for Chapter 18 in the current request. No independent second-pass AI review was performed.",
+    "input_gaps": [
+      "Burton-Roberts mapping unverified without review of underlying source/index.",
+      "The upper part of printed page 1568 belongs to the §1 introduction and lower part of page 1569 begins §1.2; both excluded.",
+      "Detailed suffix-selection conditions and other morphological processes are deferred to later sections."
+    ]
+  },
+  "concepts": [
+    {
+      "term": "lexical base",
+      "gloss": "Morphological starting point for describing a lexeme's inflectional forms, not necessarily itself an attested form.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "variable lexeme"
+      ]
+    },
+    {
+      "term": "simple lexical base",
+      "gloss": "A lexical base not divided into smaller morphological units in the relevant analysis.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "lexical base"
+      ]
+    },
+    {
+      "term": "complex lexical base",
+      "gloss": "A lexical base containing smaller morphological units, e.g. a derived base, which is inflected as a whole.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "lexical base"
+      ]
+    },
+    {
+      "term": "defective lexeme",
+      "gloss": "A lexeme lacking some inflectional forms characteristic of its syntactic category.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "lexical base"
+      ]
+    },
+    {
+      "term": "morphological operation",
+      "gloss": "A process such as suffixation or base change used in producing an inflectional form.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "lexical base"
+      ]
+    },
+    {
+      "term": "suffixation",
+      "gloss": "A morphological operation adding a suffix to a base or an inflected form.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568,
+            1569
+          ],
+          "pdf_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "morphological operation"
+      ]
+    },
+    {
+      "term": "base modification",
+      "gloss": "A morphological operation changing the shape of a lexical base, such as its vowel or final consonant.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "morphological operation"
+      ]
+    },
+    {
+      "term": "two-step inflection",
+      "gloss": "Formation of an inflected form from another inflectional form rather than directly from the lexical base.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1569
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "morphological operation"
+      ]
+    },
+    {
+      "term": "morphological alternation",
+      "gloss": "Context-conditioned different realisations of one morphological unit.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1569
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "morphological operation"
+      ]
+    },
+    {
+      "term": "regular inflectional form",
+      "gloss": "An inflectional form produced by a general rule without requiring a particular lexeme to be separately specified.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1569
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "morphological alternation"
+      ]
+    },
+    {
+      "term": "irregular inflectional form",
+      "gloss": "An inflectional form requiring information particular to a lexeme, whether in the suffix or the base alternant.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1569
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "regular inflectional form"
+      ]
+    },
+    {
+      "term": "special base alternant",
+      "gloss": "A lexeme-specific variant of a lexical base used for a particular inflectional form.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1569
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "base modification"
+      ]
+    },
+    {
+      "term": "syncretism",
+      "gloss": "Phonological or orthographic identity of different inflectional forms of one lexeme.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1569
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "inflectional paradigm"
+      ]
+    },
+    {
+      "term": "inflectional form",
+      "gloss": "A form of a lexeme associated with a grammatical category in its paradigm.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "variable lexeme"
+      ]
+    },
+    {
+      "term": "morphological division notation",
+      "gloss": "Use of a raised dot in grammatical descriptions to show division between morphological units.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "morphological operation"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "MORPH-008",
+      "domain": "morphology",
+      "concept": "lexical base distinguished from inflectional forms",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "word",
+      "statement": "A lexical base is the reference form from which the inflectional paradigm is described; it is distinct from any individual inflectional form even though one or more inflected forms often coincide with the base.",
+      "condition": "For a variable lexeme, identify its lexical base separately from its attested singular, plural or other inflectional forms; a defective lexeme can have a base for which no corresponding independent form exists, and several forms can coincide with the base.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "Defective lexemes may lack a surface form corresponding to the lexical base; several inflectional forms can also be identical to the lexical base.",
+          "pages": [
+            1568
+          ],
+          "example_ids": [
+            "x1",
+            "x2",
+            "x3"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The dregs settled at the bottom. [plural-only noun, with a lexical base dreg- not used as a plain singular form]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          },
+          {
+            "id": "x2",
+            "text": "One sheep escaped through the fence. [singular coincides with the lexical base]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          },
+          {
+            "id": "x3",
+            "text": "Several sheep escaped through the fence. [plural also coincides with the same lexical base]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          },
+          {
+            "id": "x4",
+            "text": "A worker greeted the visitors. [the singular matches the lexical base of worker]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "lexical base distinguished from inflectional forms",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts material or concept index was not available; no equivalent analysis is asserted."
+        }
+      ],
+      "related_rules": [
+        "MORPH-007",
+        "MORPH-015"
+      ],
+      "confidence": "high",
+      "review_notes": "Source p. 1568 explicitly distinguishes lexical base from inflectional form using defective dregs and syncretic sheep. It does not claim every lexical base has an attested standalone inflectional form. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "MORPH-009",
+      "domain": "morphology",
+      "concept": "inflection of simple and complex lexical bases",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "word",
+      "statement": "In English, a lexeme's base can be internally simple or morphologically complex, and regular inflectional operations generally apply to either kind without changing their basic formation rules.",
+      "condition": "When a noun's lexical base is simple (e.g., dog) or consists of morphological units (e.g., worker), apply the ordinary plural suffixation operation to the complete lexical base, rather than treating internal derivational complexity as a reason for a different plural rule.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Two dogs waited outside the office. [simple base dog, regular plural]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Two workers waited outside the office. [complex base worker, regular plural]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The trainer hired three workers. [inflection attaches to the whole complex lexical base]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "inflection of simple and complex lexical bases",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts material or concept index was not available; no equivalent analysis is asserted."
+        }
+      ],
+      "related_rules": [
+        "MORPH-008",
+        "MORPH-010"
+      ],
+      "confidence": "high",
+      "review_notes": "The source specifically contrasts the simple dog and complex worker lexical bases while leaving their internal derivation to Chapter 19. Generalisation is restricted to inflectional treatment; it does not say all complex bases inflect regularly. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "MORPH-010",
+      "domain": "morphology",
+      "concept": "morphological operations in English inflection",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "word",
+      "statement": "English inflection can use suffixation, change to a lexical base such as vowel alternation, or a combination of a suffix and a modified base.",
+      "condition": "When describing the formation of a noun or verb inflectional form, distinguish a suffix added to an unchanged base from internal vowel replacement and from the combined use of suffixation and a modified base.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Several workers arrived for the shift. [plural formed by -s suffixation]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The dentist examined the patient's teeth. [plural uses a base-internal vowel change]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The bell rang at daybreak. [preterite uses a base-internal vowel change]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "The drawer contained six knives. [plural suffix accompanies a changed base-final consonant]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1568
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "morphological operations in English inflection",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts material or concept index was not available; no equivalent analysis is asserted."
+        }
+      ],
+      "related_rules": [
+        "MORPH-008",
+        "MORPH-012",
+        "MORPH-014"
+      ],
+      "confidence": "high",
+      "review_notes": "The source lists three mechanisms on p. 1568 and notes other minor operations will be described in later sections. These cases do not form an exhaustive taxonomy of all English inflection. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "MORPH-011",
+      "domain": "morphology",
+      "concept": "multi-step inflection from an already inflected form",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "word",
+      "statement": "Most English inflectional forms coincide with or are formed directly from the lexical base, but some forms are produced by an additional operation on another inflectional form.",
+      "condition": "When analysing the genitive plural of a noun such as child, attach the genitive suffix to its plural rather than to the singular base; for the small set of past participles exemplified by trodden, identify the preterite trod as the input to a further -en suffixation.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "The multi-step pattern applies to genitive plurals and only a small subset of past participles, rather than to all inflected forms.",
+          "pages": [
+            1569
+          ],
+          "example_ids": [
+            "x1",
+            "x3"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The children's shoes were lined up outside. [genitive plural: child → children → children's]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          },
+          {
+            "id": "x2",
+            "text": "The child's shoes were lined up outside. [genitive singular contrasted with the plural input]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The old path had been trodden by many travellers. [tread → trod → trodden]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          },
+          {
+            "id": "x4",
+            "text": "The travellers trod the path at sunrise. [the preterite provides the input for trodden]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1569
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "multi-step inflection from an already inflected form",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts material or concept index was not available; no equivalent analysis is asserted."
+        }
+      ],
+      "related_rules": [
+        "MORPH-003",
+        "MORPH-001",
+        "MORPH-007",
+        "MORPH-010"
+      ],
+      "confidence": "high",
+      "review_notes": "The source on p. 1569 limits the multi-step pattern to some forms, specifically genitive plurals and a small subset of past participles. The doubling in trodden is orthographic, not a separate general inflection category. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "MORPH-012",
+      "domain": "morphology",
+      "concept": "morphological alternation",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "word",
+      "statement": "Morphological alternation occurs when the same morphological unit has different surface realisations depending on its context, such as the written plural suffix variants -s and -es.",
+      "condition": "When comparing inflectional forms that encode the same category, identify contextual differences in the realisation of the morphological unit, rather than assigning separate grammatical categories to regular written suffix variants.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The cats rested near the gate. [written plural suffix -s]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The boxes stood by the gate. [written plural suffix -es]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Two foxes crossed the garden. [written plural suffix -es in the same category]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Two birds crossed the garden. [written plural suffix -s in the same category]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1569
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "morphological alternation",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts material or concept index was not available; no equivalent analysis is asserted."
+        }
+      ],
+      "related_rules": [
+        "MORPH-010",
+        "MORPH-013"
+      ],
+      "confidence": "high",
+      "review_notes": "Only the existence of -s/-es contextual variation is established in §1.1; the detailed spelling and phonological selection conditions belong to later Chapter 18 sections. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "MORPH-013",
+      "domain": "morphology",
+      "concept": "regular versus irregular inflection",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "word",
+      "statement": "An inflectional form is regular if its formation follows a lexeme-independent general rule, but irregular if the lexeme requires specific stored information about that form or one of its components.",
+      "condition": "When classifying plural, preterite or participial forms, check whether their formation follows productive formation rules without lexical exceptions; where the resulting form must be separately specified for a particular lexeme, classify it as irregular even if it also contains an ordinary affix.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The painter opened two crates. [regular plural formed by general suffixation]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The guests talked until dusk. [regular preterite]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Several children visited the workshop. [lexeme-specific irregular plural]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "The shopkeeper bought fresh bread. [irregular preterite]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "She knitted a scarf for her friend. [regular spelling change by consonant doubling]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1569
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "regular versus irregular inflection",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts material or concept index was not available; no equivalent analysis is asserted."
+        }
+      ],
+      "related_rules": [
+        "MORPH-012",
+        "MORPH-014",
+        "MORPH-007"
+      ],
+      "confidence": "high",
+      "review_notes": "The source explicitly treats consonant doubling in knitted as regular because it follows a general pattern. It does not give permission to classify all spelling changes as irregular. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "MORPH-014",
+      "domain": "morphology",
+      "concept": "lexeme-specific base alternants within irregular inflection",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "word",
+      "statement": "An inflectional form may be irregular because a lexeme selects a special modified version of its base, even when the suffix itself follows a productive general rule.",
+      "condition": "For plural nouns such as thief with a voiced base-final consonant in the plural, distinguish ordinary suffixation from the lexeme-specific change in the base; comparison with a lexeme such as chief that lacks this change shows why the whole formation is irregular.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "A base-final f is not generally voiced in plural formation; lexeme-specific nouns such as chief and proof keep the usual consonant.",
+          "pages": [
+            1569
+          ],
+          "example_ids": [
+            "x2",
+            "x4"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The guards caught two thieves. [thief has a lexeme-specific voiced plural base alternant plus regular plural suffix]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Three chiefs met in the council room. [chief does not share that irregular consonant change]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          },
+          {
+            "id": "x3",
+            "text": "The farmer checked the horses' hooves. [hoof has a specialised plural base in the source]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "The inspector compared two proofs. [proof retains the ordinary base-final consonant]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1569
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "lexeme-specific base alternants within irregular inflection",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts material or concept index was not available; no equivalent analysis is asserted."
+        }
+      ],
+      "related_rules": [
+        "MORPH-010",
+        "MORPH-013"
+      ],
+      "confidence": "high",
+      "review_notes": "The source's thief/chief and hoof/proof comparisons demonstrate a nonproductive voiced-base plural alternant; do not generalise it to every noun ending in f. Any additional regional alternants require later source verification. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "MORPH-015",
+      "domain": "morphology",
+      "concept": "syncretism of inflectional forms",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "word",
+      "statement": "Syncretism is identity of pronunciation or spelling between two or more distinct inflectional forms of the same lexeme.",
+      "condition": "For one lexeme whose paradigm distinguishes grammatical categories such as singular and plural, classify identically pronounced or written forms in those different paradigm cells as syncretic, not as evidence that only one grammatical number exists.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "One sheep was resting beneath the tree. [plain singular sheep]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Five sheep were resting beneath the tree. [plain plural sheep, same pronunciation and spelling]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "That sheep is marked with blue paint. [singular agreement despite unchanged noun form]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Those sheep are marked with blue paint. [plural agreement despite unchanged noun form]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 18,
+          "section": "§1.1 Lexical base, morphological operations, and alternation",
+          "pages": [
+            1569
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "syncretism of inflectional forms",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts material or concept index was not available; no equivalent analysis is asserted."
+        }
+      ],
+      "related_rules": [
+        "MORPH-008",
+        "MORPH-007"
+      ],
+      "confidence": "high",
+      "review_notes": "The source gives sheep as explicit syncretism, distinct from identity with the lexical base. No claim is made that forms must be homophonous and homographic together: pronunciation OR spelling identity suffices. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "MORPH-008",
+      "to": "MORPH-007",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-008",
+      "to": "MORPH-015",
+      "relation": "contrasts",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-009",
+      "to": "MORPH-008",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-009",
+      "to": "MORPH-010",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-010",
+      "to": "MORPH-008",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-010",
+      "to": "MORPH-014",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-011",
+      "to": "MORPH-003",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-011",
+      "to": "MORPH-001",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-012",
+      "to": "MORPH-010",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-012",
+      "to": "MORPH-013",
+      "relation": "contrasts",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-013",
+      "to": "MORPH-014",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-013",
+      "to": "MORPH-007",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-014",
+      "to": "MORPH-013",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-014",
+      "to": "MORPH-010",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-015",
+      "to": "MORPH-008",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-015",
+      "to": "MORPH-007",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "MORPH-011",
+      "to": "Cambridge Chapter 18 §4.2 (genitive)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "MORPH-014",
+      "to": "Cambridge Chapter 18 §4.1.2 (irregular s plurals)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "MORPH-012",
+      "to": "Cambridge Chapter 18 §2.2.4 (s/es alternation)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "MORPH-009",
+      "to": "Cambridge Chapter 19 (lexical word-formation)",
+      "relation": "depends_on",
+      "verified": false
+    }
+  ],
+  "conflicts": [],
+  "uncertain_items": [
+    {
+      "pages": [
+        1569
+      ],
+      "issue": "The subsection gives the existence of contextual suffix alternation, not the full phonological and spelling conditions selecting -s versus -es.",
+      "what_is_needed": "Inspect §§2.1.1 and 2.2.4 before creating productive suffix-selection constraints."
+    },
+    {
+      "pages": [
+        1568,
+        1569
+      ],
+      "issue": "The subsection notes other minor morphological operations and more detailed distribution in later sections but does not enumerate them.",
+      "what_is_needed": "Process the later Chapter 18 sections before claiming an exhaustive classification of all English inflectional operations."
+    }
+  ],
+  "coverage_report": {
+    "pages_fully_covered": [],
+    "pages_partially_covered": [
+      {
+        "printed_pages": [
+          1568
+        ],
+        "pdf_pages": [
+          4
+        ],
+        "reason": "Only §1.1 from its heading on this page; preceding preliminaries belong to §1 and were excluded."
+      },
+      {
+        "printed_pages": [
+          1569
+        ],
+        "pdf_pages": [
+          5
+        ],
+        "reason": "The concluding part of §1.1 is covered; §1.2 begins later on the same page and was excluded."
+      }
+    ],
+    "pages_not_covered": [
+      {
+        "printed_pages": [
+          1567,
+          1568
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ],
+        "reason": "The §1 opening preliminary text ends on p. 1568 and was excluded from §1.1."
+      },
+      {
+        "printed_pages": [
+          1569,
+          1620
+        ],
+        "pdf_pages": [
+          5,
+          56
+        ],
+        "reason": "§1.2 through §6.4 not extracted; p. 1569 includes the later §1.2 heading."
+      }
+    ],
+    "counts": {
+      "concepts": 15,
+      "rules": {
+        "constraint": 0,
+        "descriptive_generalization": 2,
+        "classification": 6,
+        "stylistic_or_prescriptive": 0,
+        "variety_restricted": 0
+      },
+      "examples": {
+        "ai_authored": 32,
+        "book": 0
+      },
+      "cross_references": 20,
+      "conflicts": 0,
+      "uncertain_items": 2
+    },
+    "existing_rule_refinements": [
+      "MORPH-007",
+      "MORPH-001"
+    ],
+    "skipped_subsections": [
+      {
+        "section": "§1 opening introduction; §1.2 Overview of inflectional categories through §6.4 Liaison",
+        "reason": "The same first-subsection stop rule used in Chapters 3–17 was applied."
+      }
+    ]
+  }
+}
