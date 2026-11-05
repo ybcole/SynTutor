@@ -1066,7 +1066,7 @@
     "concept": "semantic categories of adjuncts",
     "rule_type": "classification",
     "scope": "clause",
-    "statement": "Adjuncts and some peripheral complements are classified by semantic function, including manner, means, instrument, act-related evaluation, spatial and temporal location, source, goal, path, direction, extent, duration, aspectuality, frequency, serial order, degree, purpose, reason, result, concession, condition, domain, modality, evaluation, speech act relation and connective function.",
+    "statement": "Adjuncts and some peripheral complements are classified by semantic function, including manner, means, instrument, act-related meaning, spatial and temporal location, source, goal, path, direction, extent, duration, aspectuality, frequency, serial order, degree, purpose, reason, result, concession, condition, domain, modality, evaluation, speech act relation and connective function.",
     "condition": "When classifying a clause-level adjunct or peripheral complement, identify its semantic contribution to the situation, proposition or speech act; categories generally differ but conditionals and reasons can also have modal or speech-act interpretations.",
     "violation": null,
     "exceptions": [],
@@ -3404,8 +3404,8 @@
     "traditional_terms": [],
     "rule_type": "classification",
     "scope": "clause",
-    "statement": "An if-conditional or because-reason phrase can constrain a situation, qualify the speaker's commitment, or comment on the act of asserting the proposition.",
-    "condition": "For an if- or because-headed adjunct, distinguish whether it relates to the event described, the modal status of the proposition, or the speaker's act of asserting it.",
+    "statement": "Conditional adjuncts may have basic, modal, or speech act-related readings, while reason adjuncts may express an ordinary reason or a reason for the speaker's assertion.",
+    "condition": "For an if-headed conditional, distinguish a condition on the situation, a qualification of the proposition, and a comment on the speech act. For a because-headed reason adjunct, distinguish a cause or reason for the situation from grounds offered for the speaker's assertion.",
     "violation": null,
     "exceptions": [],
     "examples": {
@@ -3898,7 +3898,13 @@
         },
         {
           "id": "x7",
-          "text": "His jacket soaked, Milo entered the cabin. [verbless clause]",
+          "text": "The curtains drawn, Mira switched on the lamp. [past-participial adjunct]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x8",
+          "text": "His hands in his pockets, Milo entered the room. [verbless adjunct]",
           "origin": "ai_authored",
           "judgement": "possible"
         }
