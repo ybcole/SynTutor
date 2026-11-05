@@ -1556,6 +1556,17 @@
         "pdf_pages": [
           83
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§1 Terminological preliminaries",
+        "pages": [
+          1033
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "related_concepts": []
@@ -3704,6 +3715,52 @@
     "related_concepts": [
       "finite clause",
       "subjunctive"
+    ]
+  },
+  {
+    "term": "relative construction",
+    "gloss": "A general class including ordinary relative clauses and fused relatives with phrase status.",
+    "traditional_terms": [
+      "relative clause (broader traditional usage)"
+    ],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§1 Terminological preliminaries",
+        "pages": [
+          1033
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "relative clause",
+      "fused relative construction"
+    ]
+  },
+  {
+    "term": "relative clause",
+    "gloss": "A construction in the relative family whose constituent is a clause, as distinct from a fused relative NP.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§1 Terminological preliminaries",
+        "pages": [
+          1033
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "relative construction",
+      "fused relative construction"
     ]
   }
 ]
