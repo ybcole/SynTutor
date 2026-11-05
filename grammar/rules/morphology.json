@@ -209,5 +209,236 @@
     "related_rules": [
       "PHR-010"
     ]
+  },
+  {
+    "id": "MORPH-004",
+    "domain": "morphology",
+    "concept": "negative forms of lexical verbs",
+    "traditional_terms": [],
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "Auxiliaries have additional negative primary forms, whereas lexical verbs do not have corresponding negative inflectional forms.",
+    "condition": "When a verb lexeme is lexical rather than auxiliary, its primary verb form (including a preterite or present-tense form) cannot itself bear the auxiliary negative form -n't.",
+    "violation": "A negative -n't form is created by attaching -n't directly to a lexical verb form, such as a lexical preterite or third-person-singular present form.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The driver doesn't stop at the crossing.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "c2",
+          "text": "The guests haven't arrived yet.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*The driver stopsn't at the crossing.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "*The guests arrivedn't yet.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          75
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "negative verb forms; auxiliary and lexical verb paradigms",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "WCAT-001",
+      "MORPH-001"
+    ],
+    "confidence": "high",
+    "review_notes": "The rule records the inflectional contrast only. The separate syntactic behavior of auxiliary negation is covered by WCAT-001; this record does not restate that rule. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "MORPH-005",
+    "domain": "morphology",
+    "concept": "absence of secondary forms in modal auxiliaries",
+    "traditional_terms": [
+      "defective modal verbs"
+    ],
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "Modal auxiliaries lack all secondary verb forms: the plain form, gerund-participle, and past participle.",
+    "condition": "When a modal auxiliary is required in a position selecting a secondary verb form—after infinitival to, in a gerund-participial construction, or after perfect have—the modal auxiliary has no form that can fill that position.",
+    "violation": "A modal auxiliary is used as though it had a plain form after infinitival to, a gerund-participle form with -ing, or a past participle after perfect have.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They hope to swim soon.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "c2",
+          "text": "I regret not swimming.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "c3",
+          "text": "They have swum before.",
+          "origin": "ai_authored",
+          "pair_id": "p3"
+        },
+        {
+          "id": "c4",
+          "text": "They can swim soon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*They hope to can swim soon.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "*I regret not canning swim.",
+          "origin": "book",
+          "page": 75,
+          "pair_id": "p2",
+          "note": "Short source example illustrating the unavailable modal gerund-participle."
+        },
+        {
+          "id": "i3",
+          "text": "*They have could swim before.",
+          "origin": "ai_authored",
+          "pair_id": "p3"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          75
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "modal auxiliary inflection; defective verb paradigm",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "MORPH-001",
+      "WCAT-003"
+    ],
+    "confidence": "high",
+    "review_notes": "The examples test the three secondary-form gaps separately. The source also says that must and one or two other modal auxiliaries lack preterite forms; the unnamed additional item(s) are recorded under uncertain_items rather than guessed. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "MORPH-006",
+    "domain": "morphology",
+    "concept": "invariant present form of modal auxiliaries",
+    "traditional_terms": [],
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "A modal auxiliary has one present-tense form for subjects of every person and number; it does not take a third-person-singular -s form.",
+    "condition": "When a modal auxiliary is the finite verb in a present-tense clause, its form remains the same with first-, second-, and third-person singular and plural subjects.",
+    "violation": "A present-tense modal auxiliary is given a third-person-singular -s suffix.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A trainee can swim.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "c2",
+          "text": "Several trainees can swim.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*A trainee cans swim.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "*Several trainees cans swim.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          75
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "modal auxiliary agreement and inflection",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "WCAT-003",
+      "AGR-002"
+    ],
+    "confidence": "high",
+    "review_notes": "The source explicitly identifies the absence of a third-person-singular -s form. This contrasts with the unqualified scope of AGR-002, which currently says that present-tense verbs agree with their subject. See the conflict entry; do not revise the earlier rule silently. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
   }
 ]
