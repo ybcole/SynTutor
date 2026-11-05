@@ -1,0 +1,924 @@
+{
+ "chapter": 3,
+ "convention_version": "V3",
+ "source": "Burton-Roberts, Ch3 (printed pages)",
+ "trees": [
+  {
+   "id": "ch3-7",
+   "fig": "[7]",
+   "page": 51,
+   "sentence": "their extremely subtle tactics",
+   "status": "IMG",
+   "note": "PHRASE-a is categorised NP; N added over tactics; the other nodes keep their Ch2-style PHRASE labels",
+   "tree": {
+    "label": "NP",
+    "children": [
+     {
+      "word": "their"
+     },
+     {
+      "label": "PHRASE-b",
+      "children": [
+       {
+        "label": "PHRASE-c",
+        "children": [
+         {
+          "word": "extremely"
+         },
+         {
+          "word": "subtle"
+         }
+        ]
+       },
+       {
+        "label": "N",
+        "children": [
+         {
+          "word": "tactics"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-14",
+   "fig": "[14]",
+   "page": 52,
+   "sentence": "Max",
+   "status": "IMG",
+   "note": "names are full NPs; the book's label for the node over a name is lowercase 'name'",
+   "tree": {
+    "label": "NP",
+    "children": [
+     {
+      "label": "name",
+      "children": [
+       {
+        "word": "Max"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-18",
+   "fig": "[18]",
+   "page": 53,
+   "sentence": "they",
+   "status": "IMG",
+   "note": "pronouns are one-word NPs; label 'pronoun'",
+   "tree": {
+    "label": "NP",
+    "children": [
+     {
+      "label": "pronoun",
+      "children": [
+       {
+        "word": "they"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-19a",
+   "fig": "[19a]",
+   "page": 57,
+   "sentence": "there",
+   "status": "IMG",
+   "tree": {
+    "label": "PP",
+    "children": [
+     {
+      "label": "P",
+      "children": [
+       {
+        "word": "there"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-19b",
+   "fig": "[19b]",
+   "page": 57,
+   "sentence": "beside a stream",
+   "status": "IMG",
+   "tree": {
+    "label": "PP",
+    "children": [
+     {
+      "label": "P",
+      "children": [
+       {
+        "word": "beside"
+       }
+      ]
+     },
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "a",
+       "stream"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-29",
+   "fig": "[29]",
+   "page": 59,
+   "sentence": "Max and Adrian",
+   "status": "IMG",
+   "tree": {
+    "label": "NP",
+    "children": [
+     {
+      "label": "NP",
+      "children": [
+       {
+        "label": "name",
+        "children": [
+         {
+          "word": "Max"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "word": "and"
+     },
+     {
+      "label": "NP",
+      "children": [
+       {
+        "label": "name",
+        "children": [
+         {
+          "word": "Adrian"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-30",
+   "fig": "[30]",
+   "page": 59,
+   "sentence": "the clowns and the acrobats",
+   "status": "IMG",
+   "tree": {
+    "label": "NP",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "the",
+       "clowns"
+      ]
+     },
+     {
+      "word": "and"
+     },
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "the",
+       "acrobats"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-40a",
+   "fig": "[40a]",
+   "page": 61,
+   "sentence": "stuffy and too hot",
+   "status": "IMG",
+   "note": "two APs co-ordinated; the first is a simple A",
+   "tree": {
+    "label": "AP",
+    "children": [
+     {
+      "label": "AP",
+      "children": [
+       {
+        "label": "A",
+        "children": [
+         {
+          "word": "stuffy"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "word": "and"
+     },
+     {
+      "label": "AP",
+      "children": [
+       {
+        "label": "DEG",
+        "children": [
+         {
+          "word": "too"
+         }
+        ]
+       },
+       {
+        "label": "A",
+        "children": [
+         {
+          "word": "hot"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-40b",
+   "fig": "[40b]",
+   "page": 61,
+   "sentence": "too hot and stuffy",
+   "status": "IMG",
+   "note": "too modifies the co-ordinate adjective; means 'too hot and too stuffy'",
+   "tree": {
+    "label": "AP",
+    "children": [
+     {
+      "label": "DEG",
+      "children": [
+       {
+        "word": "too"
+       }
+      ]
+     },
+     {
+      "label": "A",
+      "children": [
+       {
+        "label": "A",
+        "children": [
+         {
+          "word": "hot"
+         }
+        ]
+       },
+       {
+        "word": "and"
+       },
+       {
+        "label": "A",
+        "children": [
+         {
+          "word": "stuffy"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-41a",
+   "fig": "[41a]",
+   "page": 61,
+   "sentence": "up and down the staircase",
+   "status": "IMG",
+   "note": "lexical co-ordination: the NP complements a co-ordination of Ps",
+   "tree": {
+    "label": "PP",
+    "children": [
+     {
+      "label": "P",
+      "children": [
+       {
+        "label": "P",
+        "children": [
+         {
+          "word": "up"
+         }
+        ]
+       },
+       {
+        "word": "and"
+       },
+       {
+        "label": "P",
+        "children": [
+         {
+          "word": "down"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "the",
+       "staircase"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-41b",
+   "fig": "[41b]",
+   "page": 61,
+   "sentence": "in the foundations and under the rafters",
+   "status": "IMG",
+   "note": "phrasal co-ordination of PPs",
+   "tree": {
+    "label": "PP",
+    "children": [
+     {
+      "label": "PP",
+      "children": [
+       {
+        "label": "P",
+        "children": [
+         {
+          "word": "in"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "the",
+         "foundations"
+        ]
+       }
+      ]
+     },
+     {
+      "word": "and"
+     },
+     {
+      "label": "PP",
+      "children": [
+       {
+        "label": "P",
+        "children": [
+         {
+          "word": "under"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "the",
+         "rafters"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-text-a",
+   "fig": "in-text diagram (a)",
+   "page": 62,
+   "sentence": "very energetic",
+   "status": "IMG",
+   "tree": {
+    "label": "AP",
+    "children": [
+     {
+      "label": "DEG",
+      "children": [
+       {
+        "word": "very"
+       }
+      ]
+     },
+     {
+      "label": "A",
+      "children": [
+       {
+        "word": "energetic"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-text-b",
+   "fig": "in-text diagram (b)",
+   "page": 62,
+   "sentence": "more obviously artificial",
+   "status": "IMG",
+   "tree": {
+    "label": "AP",
+    "children": [
+     {
+      "label": "AdvP",
+      "children": [
+       {
+        "label": "DEG",
+        "children": [
+         {
+          "word": "more"
+         }
+        ]
+       },
+       {
+        "label": "Adv",
+        "children": [
+         {
+          "word": "obviously"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "label": "A",
+      "children": [
+       {
+        "word": "artificial"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-ex3a",
+   "fig": "Ex3(a) answer",
+   "page": 64,
+   "sentence": "for you and Pete",
+   "status": "IMG",
+   "tree": {
+    "label": "PP",
+    "children": [
+     {
+      "label": "P",
+      "children": [
+       {
+        "word": "for"
+       }
+      ]
+     },
+     {
+      "label": "NP",
+      "children": [
+       {
+        "label": "NP",
+        "children": [
+         {
+          "label": "pronoun",
+          "children": [
+           {
+            "word": "you"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "word": "and"
+       },
+       {
+        "label": "NP",
+        "children": [
+         {
+          "label": "name",
+          "children": [
+           {
+            "word": "Pete"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-ex3b",
+   "fig": "Ex3(b) answer",
+   "page": 64,
+   "sentence": "rather nervous but very excited",
+   "status": "IMG",
+   "tree": {
+    "label": "AP",
+    "children": [
+     {
+      "label": "AP",
+      "children": [
+       {
+        "label": "DEG",
+        "children": [
+         {
+          "word": "rather"
+         }
+        ]
+       },
+       {
+        "label": "A",
+        "children": [
+         {
+          "word": "nervous"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "word": "but"
+     },
+     {
+      "label": "AP",
+      "children": [
+       {
+        "label": "DEG",
+        "children": [
+         {
+          "word": "very"
+         }
+        ]
+       },
+       {
+        "label": "A",
+        "children": [
+         {
+          "word": "excited"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-ex3c",
+   "fig": "Ex3(c) answer",
+   "page": 64,
+   "sentence": "slowly and very carefully",
+   "status": "IMG",
+   "tree": {
+    "label": "AdvP",
+    "children": [
+     {
+      "label": "AdvP",
+      "children": [
+       {
+        "label": "Adv",
+        "children": [
+         {
+          "word": "slowly"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "word": "and"
+     },
+     {
+      "label": "AdvP",
+      "children": [
+       {
+        "label": "DEG",
+        "children": [
+         {
+          "word": "very"
+         }
+        ]
+       },
+       {
+        "label": "Adv",
+        "children": [
+         {
+          "word": "carefully"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-ex3d",
+   "fig": "Ex3(d) answer",
+   "page": 64,
+   "sentence": "Fernandez drank brandy and smoked cheroots",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "children": [
+       {
+        "label": "name",
+        "children": [
+         {
+          "word": "Fernandez"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "triangle": true,
+        "words": [
+         "drank",
+         "brandy"
+        ]
+       },
+       {
+        "word": "and"
+       },
+       {
+        "label": "VP",
+        "triangle": true,
+        "words": [
+         "smoked",
+         "cheroots"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-ex3e",
+   "fig": "Ex3(e) answer",
+   "page": 64,
+   "sentence": "Herbert struck the board and I had to mend it",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "children": [
+         {
+          "label": "name",
+          "children": [
+           {
+            "word": "Herbert"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "triangle": true,
+        "words": [
+         "struck",
+         "the",
+         "board"
+        ]
+       }
+      ]
+     },
+     {
+      "word": "and"
+     },
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "children": [
+         {
+          "label": "pronoun",
+          "children": [
+           {
+            "word": "I"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "triangle": true,
+        "words": [
+         "had",
+         "to",
+         "mend",
+         "it"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch3-ex4",
+   "fig": "Ex4 answer (so very touchy)",
+   "page": 65,
+   "sentence": "so very touchy",
+   "status": "IMG",
+   "note": "the book draws only (a); it says (b) and (c) get the same kind of analysis. The wording of the exercise states that very touchy is also an AP",
+   "tree": {
+    "label": "AP",
+    "children": [
+     {
+      "label": "DEG",
+      "children": [
+       {
+        "word": "so"
+       }
+      ]
+     },
+     {
+      "label": "AP",
+      "children": [
+       {
+        "label": "DEG",
+        "children": [
+         {
+          "word": "very"
+         }
+        ]
+       },
+       {
+        "label": "A",
+        "children": [
+         {
+          "word": "touchy"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "no_book_tree": [
+  "Further Ex1, Ex2, Ex3 (draw yourself; no book answer); in-text 'draw the phrase marker' tasks are answered by [40]-[41] and in-text diagrams"
+ ],
+ "label_notes": "Ch3 trees print the degree-adverb label as DEG in figures and as 'deg' in the text; node labels 'name' and 'pronoun' are lowercase in the book.",
+ "exercise_answers_from_book": {
+  "ex1": {
+   "page": 63,
+   "nouns": [
+    "court",
+    "cheek",
+    "officials",
+    "club",
+    "home",
+    "being",
+    "sensitivity",
+    "people",
+    "feelings"
+   ],
+   "adjectives": [
+    "outrageous",
+    "warm",
+    "loving",
+    "human",
+    "full"
+   ],
+   "degree_adverbs": [
+    "perfectly",
+    "incredibly"
+   ],
+   "general_adverbs": [
+    "openly",
+    "recently"
+   ],
+   "prepositions": [
+    "on",
+    "towards",
+    "by",
+    "at",
+    "of",
+    "for"
+   ]
+  },
+  "ex2": {
+   "page": 63,
+   "NPs": [
+    "the court",
+    "she",
+    "a perfectly outrageous cheek",
+    "officials recently appointed by the club",
+    "the club"
+   ],
+   "heads": [
+    "court",
+    "she",
+    "cheek",
+    "officials",
+    "club"
+   ],
+   "functions": {
+    "the court": "complement of on",
+    "she": "subject",
+    "a perfectly outrageous cheek": "neither subject nor complement of a preposition",
+    "officials recently appointed by the club": "complement of towards",
+    "the club": "complement of by"
+   }
+  },
+  "in_text_lists": {
+   "page": 50,
+   "nouns_passage": [
+    "Max",
+    "Adrian",
+    "daylight",
+    "West",
+    "clouds",
+    "chill",
+    "air",
+    "conversation",
+    "lights",
+    "steamer",
+    "thoughts",
+    "minds",
+    "men",
+    "Adrian",
+    "result",
+    "tiredness",
+    "sand",
+    "shoes"
+   ]
+  },
+  "in_text_lists2": {
+   "page": 55,
+   "adjectives": [
+    "great",
+    "architectural",
+    "royal",
+    "precise",
+    "grotesque",
+    "flamboyant",
+    "gorgeous",
+    "purple",
+    "artificial",
+    "difficult",
+    "edgy",
+    "fantastic",
+    "modest",
+    "shy",
+    "silent",
+    "natural"
+   ],
+   "degree_adverbs": [
+    "so",
+    "too",
+    "entirely"
+   ],
+   "nouns": [
+    "interest",
+    "palace",
+    "William",
+    "moment",
+    "eyes",
+    "Millie",
+    "hair",
+    "hue",
+    "admiration"
+   ]
+  }
+ }
+}
