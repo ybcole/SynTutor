@@ -960,5 +960,162 @@
       "WCAT-005",
       "CLS-040"
     ]
+  },
+  {
+    "id": "WCAT-014",
+    "domain": "word_categories",
+    "concept": "noun-specific dependents",
+    "traditional_terms": [],
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Certain determinatives, pre-head adjective phrases, and relative clauses occur exclusively or almost exclusively with nouns as head.",
+    "condition": "When a noun heads an NP or nominal, its dependent set may include noun-associated determinatives, pre-head AdjPs, and relative clauses, which occur exclusively or almost exclusively with nouns as head.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "a lantern [determinative with noun head]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "bright lanterns [pre-head AdjP with noun head]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "lanterns that glow [relative clause with noun head]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "every weekend [determinative with noun head]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          326
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "noun-specific dependents",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "WCAT-004",
+      "PHR-005",
+      "PHR-006"
+    ],
+    "confidence": "high",
+    "review_notes": "The source says 'exclusively or almost exclusively'; this is a distributional generalization, not an absolute restriction.",
+    "protocol_version": "1.0",
+    "status": "NEEDS_REVIEW"
+  },
+  {
+    "id": "WCAT-015",
+    "domain": "word_categories",
+    "concept": "nouns do not take objects",
+    "traditional_terms": [],
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A noun does not take a direct object, unlike a verb; nominal dependents that express related content are not direct objects of the noun.",
+    "condition": "When a noun functions as the head of a nominal, it cannot be followed by an NP functioning as its direct object; a related dependent may instead occur in a construction licensed by the noun, such as a PP.",
+    "violation": "A noun head is analysed as taking a bare NP direct object, as though it were a transitive verb.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The students criticized the decision.",
+          "origin": "ai_authored",
+          "pair_id": "p1",
+          "note": "The verb takes the direct object NP."
+        },
+        {
+          "id": "c2",
+          "text": "The students’ criticism of the decision was clear.",
+          "origin": "ai_authored",
+          "pair_id": "p1",
+          "note": "The noun is followed by a PP, not a direct object."
+        },
+        {
+          "id": "c3",
+          "text": "The guide described the route.",
+          "origin": "ai_authored",
+          "pair_id": "p2",
+          "note": "The verb takes the direct object NP."
+        },
+        {
+          "id": "c4",
+          "text": "The guide’s description of the route was accurate.",
+          "origin": "ai_authored",
+          "pair_id": "p2",
+          "note": "The noun is followed by a PP, not a direct object."
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*The students’ criticism the decision was clear.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "*The guide’s description the route was accurate.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          326
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "noun complementation; nouns do not take objects",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "WCAT-004",
+      "PHR-008"
+    ],
+    "confidence": "high",
+    "review_notes": "The contrast concerns the grammatical relation object, not the broader ability of nouns to take complements. The examples use PP dependents in the acceptable nominal constructions.",
+    "protocol_version": "1.0",
+    "status": "NEEDS_REVIEW"
   }
 ]
