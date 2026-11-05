@@ -30,11 +30,11 @@
 | PHR-017 | Dummy there as an NP | classification | APPROVED |
 | PHR-018 | Bare role NPs | classification | APPROVED |
 
-Existing WCAT-004 (pronouns as a noun subcategory), PHR-005 (NP structure), PHR-009 (fused heads), and PHR-010 (subject-determiner) were retained and cross-referenced, not re-extracted. Existing PHR-011 was refined to make explicit the source's bare-role-NP exception: singular bare role NPs may occur as predicative complements, but not as subject or object without a determiner. Six new examples were added to PHR-011; these are separate from the 26 examples in the six new rules.
+Existing WCAT-004 (pronouns as a noun subcategory), PHR-005 (NP structure), PHR-009 (fused heads), and PHR-010 (subject-determiner) were retained and cross-referenced, not re-extracted. Existing PHR-011 was refined to make explicit the source's bare-role-NP exception: singular bare role NPs may occur as predicative complements, but not as subject or object without a determiner. Six new examples were added to PHR-011; these are separate from the 27 examples in the six new rules.
 
 ## Validation and review notes
 
-- All 6 new rule records and the refined PHR-011 were checked against `grammar/schema.json`: **0 schema errors**.
+- All 6 new rule records and the refined PHR-011 were checked against `grammar/schema.json`: **0 schema errors**. PHR-016's modifier-only NP exception has a dedicated contrast example.
 - IDs continue the existing domain sequences; no ID collisions.
 - WCAT-015, the constraint, has 4 correct and 2 incorrect examples.
 - Non-constraint records use contrast examples, not invented ungrammatical examples.
