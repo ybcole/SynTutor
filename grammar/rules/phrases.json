@@ -688,15 +688,18 @@
     "rule_type": "constraint",
     "scope": "phrase",
     "statement": "A singular count noun cannot in general head an NP without a determiner.",
-    "condition": "Applies to NPs whose head is a singular noun in a count sense: such an NP needs a determiner (the, a, your, ...).",
-    "violation": "A singular count noun heads a subject or complement NP with no determiner.",
+    "condition": "Applies to NPs whose head is a singular noun in a count sense and whose function is subject or object: such an NP generally requires a determiner. Bare role NPs used as predicative complements are an explicit exception.",
+    "violation": "A singular count common noun occurs as a subject or object with no determiner, outside the bare-role predicative-complement exception.",
     "exceptions": [
       {
-        "description": "The source says 'in general', so exceptions exist but are not listed on this page.",
+        "description": "Bare role NPs such as president or deputy leader can occur without a determiner as predicative complements with verbs such as be, become, appoint, and elect; this exception does not license the same bare singular NP as subject or object.",
         "pages": [
-          57
+          328
         ],
-        "example_ids": []
+        "example_ids": [
+          "c7",
+          "c8"
+        ]
       }
     ],
     "examples": {
@@ -722,6 +725,30 @@
           "id": "c4",
           "text": "My car broke down.",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "The president arrived early.",
+          "origin": "ai_authored",
+          "pair_id": "p3"
+        },
+        {
+          "id": "c6",
+          "text": "I met the president after class.",
+          "origin": "ai_authored",
+          "pair_id": "p4"
+        },
+        {
+          "id": "c7",
+          "text": "Mira became president.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c8",
+          "text": "The members elected Noor deputy leader.",
+          "origin": "ai_authored",
+          "tests_exception": true
         }
       ],
       "incorrect": [
@@ -746,6 +773,18 @@
           "id": "i4",
           "text": "*Car broke down.",
           "origin": "ai_authored"
+        },
+        {
+          "id": "i5",
+          "text": "*President arrived early.",
+          "origin": "ai_authored",
+          "pair_id": "p3"
+        },
+        {
+          "id": "i6",
+          "text": "*I met president after class.",
+          "origin": "ai_authored",
+          "pair_id": "p4"
         }
       ]
     },
@@ -759,6 +798,17 @@
         ],
         "pdf_pages": [
           77
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          328
+        ],
+        "pdf_pages": [
+          6
         ]
       }
     ],
@@ -774,9 +824,10 @@
     "status": "APPROVED",
     "related_rules": [
       "WCAT-006",
-      "AGR-001"
+      "AGR-001",
+      "PHR-018"
     ],
-    "review_notes": "Hedged by the source ('in general'). Do not flag cases like bare plurals, non-count nouns or proper nouns: those are outside the rule's scope; unlisted exceptions with count nouns need Ch. 5."
+    "review_notes": "Hedged by the source ('in general'). Do not flag cases like bare plurals, non-count nouns or proper nouns: those are outside the rule's scope; unlisted exceptions with count nouns need Ch. 5. Refined with the explicit bare-role-NP exception from Cambridge Ch. 5 §1, p. 328; the owner approved this refinement on 2026-11-05. Bare role NPs are permitted as predicative complements but not as bare singular subject/object NPs."
   },
   {
     "id": "PHR-012",
