@@ -439,5 +439,90 @@
     "review_notes": "The source explicitly identifies the absence of a third-person-singular -s form. This contrasts with the unqualified scope of AGR-002, which currently says that present-tense verbs agree with their subject. See the conflict entry; do not revise the earlier rule silently. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
     "protocol_version": "1.0",
     "status": "APPROVED"
+  },
+  {
+    "id": "MORPH-007",
+    "domain": "morphology",
+    "concept": "inflectional paradigm of prototypical nouns",
+    "traditional_terms": [],
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Prototypical nouns distinguish singular and plural number and plain and genitive case, yielding singular plain, singular genitive, plural plain, and plural genitive forms.",
+    "condition": "For a prototypical noun lexeme with both singular and plural forms, the paradigm crosses the number distinction (singular/plural) with the case distinction (plain/genitive).",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not all nouns have both number forms: equipment has no plural counterpart, while outskirts has no singular counterpart; the chapter defers the wider treatment to §3.2.",
+        "pages": [
+          326
+        ],
+        "example_ids": [
+          "x3",
+          "x4"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "dog / dog’s / dogs / dogs’ [singular plain, singular genitive, plural plain, plural genitive]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "child / child’s / children / children’s [singular plain, singular genitive, plural plain, plural genitive]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "equipment [no plural counterpart in the cited example]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "note": "Tests the number-form exception.",
+          "tests_exception": true
+        },
+        {
+          "id": "x4",
+          "text": "outskirts [no singular counterpart in the cited example]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "note": "Tests the number-form exception.",
+          "tests_exception": true
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          326
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "inflectional paradigm of prototypical nouns",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "MORPH-003",
+      "WCAT-006"
+    ],
+    "confidence": "high",
+    "review_notes": "This adds the four-form number-by-case paradigm to the existing MORPH-003 case analysis without duplicating its account of noun and pronoun case marking.",
+    "protocol_version": "1.0",
+    "status": "NEEDS_REVIEW"
   }
 ]
