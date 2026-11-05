@@ -436,8 +436,8 @@
     "concept": "adjective functions",
     "rule_type": "classification",
     "scope": "word",
-    "statement": "Adjectives have two major uses, attributive modifier in NP structure and predicative complement in clause structure; most adjectives occur in both, and adjectives can also be postpositive (post-head modifier).",
-    "condition": "Applies to adjective use: attributive = before the noun inside an NP; predicative = complement of a verb such as be; postpositive = after the head noun (something unusual, the money available).",
+    "statement": "Adjectives have attributive, predicative-complement, and postpositive uses; in predicative constructions such as be + AdjP, the adjective supplies the main semantic predicate while be primarily carries tense and subject agreement.",
+    "condition": "Applies when an adjective heads an AdjP: it can be an attributive modifier inside an NP, a predicative complement licensed by a verb such as be or seem, or a postpositive modifier after an NP head. In be + adjective constructions, the adjective expresses the principal property predicated while be carries tense and agreement.",
     "violation": null,
     "exceptions": [],
     "examples": {
@@ -461,6 +461,16 @@
           "id": "c4",
           "text": "the money available [postpositive]",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "She was awake. [awake: predicative adjective; be carries tense]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "She was dead. [dead: predicative adjective; be carries tense]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": []
@@ -475,6 +485,28 @@
         ],
         "pdf_pages": [
           77
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          526
+        ],
+        "pdf_pages": [
+          2
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          527
+        ],
+        "pdf_pages": [
+          3
         ]
       }
     ],
@@ -491,7 +523,8 @@
     "related_rules": [
       "WCAT-008",
       "PHR-006"
-    ]
+    ],
+    "review_notes": " Cambridge Ch. 6 §1, pp. 526–527, characterises the adjective in be + AdjP as the semantic centre of the predicate while be carries tense and agreement; paired verb expressions (was awake/awoke; was dead/died) illustrate the relation."
   },
   {
     "id": "WCAT-008",
@@ -664,6 +697,17 @@
         "pdf_pages": [
           77
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          527
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -680,7 +724,7 @@
       "WCAT-007",
       "WCAT-010"
     ],
-    "review_notes": "Stated generally on p. 57; Cambridge's treatment of words like 'there' or 'well' in this position is not given here, so exclude them from engine checks until Ch. 6 is processed."
+    "review_notes": "Stated generally on p. 57; Cambridge's treatment of words like 'there' or 'well' in this position is not given here, so exclude them from engine checks until Ch. 6 is processed. Cambridge Ch. 6 §1, p. 527, states that adverbs have no predicative function; this corroborates the existing narrower rule that they do not function as predicative complements. The engine rule remains limited to the predicative-complement construction."
   },
   {
     "id": "WCAT-010",
@@ -688,8 +732,8 @@
     "concept": "adverbs as modifiers of non-nominals",
     "rule_type": "classification",
     "scope": "word",
-    "statement": "Adverbs generally function as modifiers (or supplements); adjectives modify nominals whereas adverbs modify other categories, including verbs, adjectives, adverbs and NPs, though not every adverb can modify every category.",
-    "condition": "Applies to modification: nominal heads take adjective modifiers; verbs, adjectives, adverbs and NPs take adverb modifiers; supplements are adverbs detached prosodically from the clause.",
+    "statement": "Adverbs generally function as modifiers (or supplements); adjectives characteristically modify nominals, whereas adverbs characteristically modify other categories, including verbs, adjectives, prepositions, determinatives, and other adverbs, with NP modification also attested; not every adverb modifies every category.",
+    "condition": "Applies to modifier distribution: adjectives characteristically modify nouns/nominals; adverbs characteristically modify verbs, adjectives, prepositions, determinatives, other adverbs, and in some constructions NPs. Do not infer that an individual adverb can modify every category.",
     "violation": null,
     "exceptions": [],
     "examples": {
@@ -733,6 +777,17 @@
         "pdf_pages": [
           77
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          526
+        ],
+        "pdf_pages": [
+          2
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -749,7 +804,7 @@
       "WCAT-009",
       "WCAT-011"
     ],
-    "review_notes": "'Not all adverbs can modify heads of all these categories' (p. 57); the engine must not assume 'almost'-style freedom for every adverb."
+    "review_notes": "'Not all adverbs can modify heads of all these categories' (p. 57); the engine must not assume 'almost'-style freedom for every adverb. Cambridge Ch. 6 §1, p. 526, explicitly lists verbs, adjectives, prepositions, determinatives, and other adverbs among the categories modified by adverbs; it illustrates unnecessarily modifying a verb, an adjective, and an adverb. The existing NP-modifier examples remain grounded in earlier source material."
   },
   {
     "id": "WCAT-011",
@@ -794,6 +849,17 @@
           77,
           78
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          527
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -813,7 +879,7 @@
     "traditional_terms": [
       "adverb (broader)"
     ],
-    "review_notes": "Includes the §6 statement that only a very small number of adverbs license complements (independently of such considerations)."
+    "review_notes": "Includes the §6 statement that only a very small number of adverbs license complements (independently of such considerations). Cambridge Ch. 6 §1, p. 527, notes that many adverbs are morphologically derived from adjectives by -ly suffixation."
   },
   {
     "id": "WCAT-012",
