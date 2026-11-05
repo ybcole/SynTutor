@@ -1,0 +1,15 @@
+[
+  {
+    "rules": [
+      "OTH-001",
+      "OTH-009",
+      "OTH-010"
+    ],
+    "kind": "cambridge_internal",
+    "description": "The earlier approved OTH-001 rule could be read as making utterance-act anchoring invariably speaker/writer-centred. Chapter 17 §1.1 p. 1453 explicitly describes reader-centred and reported-perspective exceptions.",
+    "proposed_resolution": "RESOLVED with the owner's blanket approval: qualify OTH-001 as ordinarily speaker-centred, record shifted-centre cases in OTH-009/OTH-010, and keep the historical overlap in the conflict log.",
+    "needs_human": false,
+    "status": "RESOLVED",
+    "approval": "Owner expressly approved all required Chapter 17 changes on 2026-11-05."
+  }
+]
