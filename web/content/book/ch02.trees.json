@@ -1,0 +1,835 @@
+{
+ "chapter": 2,
+ "convention_version": "V2",
+ "source": "Burton-Roberts, Ch2 (printed pages)",
+ "trees": [
+  {
+   "id": "ch2-2",
+   "fig": "[2]",
+   "page": 24,
+   "sentence": "Ducks paddle",
+   "status": "IMG",
+   "convention_version": "V2",
+   "tree": {
+    "label": "Sentence",
+    "children": [
+     {
+      "word": "Ducks"
+     },
+     {
+      "word": "paddle"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-33",
+   "fig": "[33]",
+   "page": 30,
+   "sentence": "Those gigantic ducks were paddling away furiously",
+   "status": "IMG",
+   "convention_version": "V2",
+   "note": "functions (Subject)/(Predicate) are printed under the tree but are NOT part of the phrase marker (book p.30); S is introduced here",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Those",
+       "gigantic",
+       "ducks"
+      ]
+     },
+     {
+      "label": "VP",
+      "triangle": true,
+      "words": [
+       "were",
+       "paddling",
+       "away",
+       "furiously"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-34",
+   "fig": "[34]",
+   "page": 31,
+   "sentence": "The pianist has rejected the chiropodist",
+   "status": "IMG",
+   "convention_version": "V2",
+   "note": "VP is a triangle; the NP 'the chiropodist' lies inside it, so it is not immediately dominated by S and is not the subject",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "The",
+       "pianist"
+      ]
+     },
+     {
+      "label": "VP",
+      "triangle": true,
+      "words": [
+       "has",
+       "rejected",
+       "the",
+       "chiropodist"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-35",
+   "fig": "[35]",
+   "page": 31,
+   "status": "IMG",
+   "note": "abstract: sisters B and C, daughters of mother A",
+   "tree": {
+    "label": "A",
+    "children": [
+     {
+      "label": "B",
+      "children": []
+     },
+     {
+      "label": "C",
+      "children": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-36",
+   "fig": "[36]",
+   "page": 32,
+   "sentence": "their rather dubious jokes",
+   "status": "IMG",
+   "convention_version": "V2",
+   "tree": {
+    "label": "PHRASE-a",
+    "children": [
+     {
+      "word": "their"
+     },
+     {
+      "label": "PHRASE-b",
+      "children": [
+       {
+        "label": "PHRASE-c",
+        "children": [
+         {
+          "word": "rather"
+         },
+         {
+          "word": "dubious"
+         }
+        ]
+       },
+       {
+        "word": "jokes"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-38",
+   "fig": "[38]",
+   "page": 34,
+   "sentence": "their rather dubious jokes",
+   "status": "IMG",
+   "correct": false,
+   "tree": {
+    "label": "PHRASE-a",
+    "children": [
+     {
+      "label": "PHRASE-b",
+      "children": [
+       {
+        "word": "their"
+       },
+       {
+        "word": "rather"
+       }
+      ]
+     },
+     {
+      "label": "PHRASE-c",
+      "children": [
+       {
+        "word": "dubious"
+       },
+       {
+        "word": "jokes"
+       }
+      ]
+     }
+    ]
+   },
+   "starred_root": true
+  },
+  {
+   "id": "ch2-39",
+   "fig": "[39]",
+   "page": 34,
+   "sentence": "their rather dubious jokes",
+   "status": "IMG",
+   "correct": false,
+   "tree": {
+    "label": "PHRASE-a",
+    "children": [
+     {
+      "word": "their"
+     },
+     {
+      "label": "PHRASE-b",
+      "children": [
+       {
+        "word": "rather"
+       },
+       {
+        "label": "PHRASE-c",
+        "children": [
+         {
+          "word": "dubious"
+         },
+         {
+          "word": "jokes"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "starred_root": true
+  },
+  {
+   "id": "ch2-42",
+   "fig": "[42]",
+   "page": 35,
+   "sentence": "their dubious jokes",
+   "status": "IMG",
+   "tree": {
+    "label": "PHRASE-a",
+    "children": [
+     {
+      "word": "their"
+     },
+     {
+      "label": "PHRASE-b",
+      "children": [
+       {
+        "word": "dubious"
+       },
+       {
+        "word": "jokes"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-43",
+   "fig": "[43]",
+   "page": 35,
+   "sentence": "beside a stream",
+   "status": "IMG",
+   "tree": {
+    "label": "PHRASE-a",
+    "children": [
+     {
+      "word": "beside"
+     },
+     {
+      "label": "PHRASE-b",
+      "children": [
+       {
+        "word": "a"
+       },
+       {
+        "word": "stream"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-ex5a",
+   "fig": "Ex5(a)",
+   "page": 39,
+   "sentence": "the old Romanian history teacher",
+   "status": "IMG",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "word": "the"
+     },
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "word": "old"
+       },
+       {
+        "label": "PHRASE",
+        "children": [
+         {
+          "word": "Romanian"
+         },
+         {
+          "label": "PHRASE",
+          "children": [
+           {
+            "word": "history"
+           },
+           {
+            "word": "teacher"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-ex5b",
+   "fig": "Ex5(b)",
+   "page": 39,
+   "sentence": "the old Romanian history teacher",
+   "status": "IMG",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "word": "the"
+     },
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "label": "PHRASE",
+        "children": [
+         {
+          "word": "old"
+         },
+         {
+          "label": "PHRASE",
+          "children": [
+           {
+            "word": "Romanian"
+           },
+           {
+            "word": "history"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "word": "teacher"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-ex5c",
+   "fig": "Ex5(c)",
+   "page": 39,
+   "sentence": "the old Romanian history teacher",
+   "status": "IMG",
+   "book_interpretation": "the old teacher of Romanian history",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "word": "the"
+     },
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "word": "old"
+       },
+       {
+        "label": "PHRASE",
+        "children": [
+         {
+          "label": "PHRASE",
+          "children": [
+           {
+            "word": "Romanian"
+           },
+           {
+            "word": "history"
+           }
+          ]
+         },
+         {
+          "word": "teacher"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-ex3a",
+   "fig": "Ex3 answer (a)",
+   "page": 41,
+   "sentence": "more exciting ideas",
+   "status": "IMG",
+   "book_interpretation": "more ideas that are exciting",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "word": "more"
+     },
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "word": "exciting"
+       },
+       {
+        "word": "ideas"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-ex3b",
+   "fig": "Ex3 answer (b)",
+   "page": 41,
+   "sentence": "more exciting ideas",
+   "status": "IMG",
+   "book_interpretation": "ideas that are more exciting",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "word": "more"
+       },
+       {
+        "word": "exciting"
+       }
+      ]
+     },
+     {
+      "word": "ideas"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-ex4a",
+   "fig": "Ex4 answer (a)",
+   "page": 41,
+   "sentence": "young car salesmen",
+   "status": "IMG",
+   "book_interpretation": "young salesmen of cars",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "word": "young"
+     },
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "word": "car"
+       },
+       {
+        "word": "salesmen"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-ex4b",
+   "fig": "Ex4 answer (b)",
+   "page": 41,
+   "sentence": "second-hand car salesmen",
+   "status": "IMG",
+   "book_interpretation": "salesmen of second-hand cars",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "word": "second-hand"
+       },
+       {
+        "word": "car"
+       }
+      ]
+     },
+     {
+      "word": "salesmen"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-ex5-3",
+   "fig": "Ex5(3) answer",
+   "page": 42,
+   "sentence": "the Old Romanian history teacher",
+   "status": "IMG",
+   "book_interpretation": "the history teacher from Old Romania",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "word": "the"
+     },
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "label": "PHRASE",
+        "children": [
+         {
+          "word": "Old"
+         },
+         {
+          "word": "Romanian"
+         }
+        ]
+       },
+       {
+        "label": "PHRASE",
+        "children": [
+         {
+          "word": "history"
+         },
+         {
+          "word": "teacher"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-fex2a",
+   "fig": "Further Ex2 (a)",
+   "page": 44,
+   "status": "IMG",
+   "note": "no book answer says which phrases go with which marker",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "word": "word"
+       },
+       {
+        "word": "word"
+       }
+      ]
+     },
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "word": "word"
+       },
+       {
+        "word": "word"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-fex2b",
+   "fig": "Further Ex2 (b)",
+   "page": 44,
+   "status": "IMG",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "word": "word"
+     },
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "word": "word"
+       },
+       {
+        "label": "PHRASE",
+        "children": [
+         {
+          "word": "word"
+         },
+         {
+          "word": "word"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-fex2c",
+   "fig": "Further Ex2 (c)",
+   "page": 44,
+   "status": "IMG",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "label": "PHRASE",
+        "children": [
+         {
+          "word": "word"
+         },
+         {
+          "word": "word"
+         }
+        ]
+       },
+       {
+        "word": "word"
+       }
+      ]
+     },
+     {
+      "word": "word"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch2-fex2d",
+   "fig": "Further Ex2 (d)",
+   "page": 44,
+   "status": "IMG",
+   "tree": {
+    "label": "PHRASE",
+    "children": [
+     {
+      "word": "word"
+     },
+     {
+      "label": "PHRASE",
+      "children": [
+       {
+        "label": "PHRASE",
+        "children": [
+         {
+          "word": "word"
+         },
+         {
+          "word": "word"
+         }
+        ]
+       },
+       {
+        "word": "word"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "dependency_diagrams": [
+  {
+   "id": "ch2-37",
+   "fig": "[37]",
+   "page": 33,
+   "status": "IMG",
+   "phrase": "their rather dubious jokes",
+   "type": "dependency",
+   "relations": [
+    {
+     "M": "their",
+     "H": "rather dubious jokes"
+    },
+    {
+     "M": "rather dubious",
+     "H": "jokes"
+    },
+    {
+     "M": "rather",
+     "H": "dubious"
+    }
+   ]
+  },
+  {
+   "id": "ch2-46",
+   "fig": "[46]",
+   "page": 37,
+   "status": "IMG",
+   "phrase": "beside a stream",
+   "type": "dependency",
+   "relations": [
+    {
+     "H": "beside",
+     "C": "a stream",
+     "mutual": true
+    },
+    {
+     "M": "a",
+     "H": "stream"
+    }
+   ]
+  },
+  {
+   "id": "ch2-48",
+   "fig": "[48]",
+   "page": 37,
+   "status": "IMG",
+   "sentence": "Phil dreads affectionate cats",
+   "type": "dependency",
+   "relations": [
+    {
+     "S": "Phil",
+     "P": "dreads affectionate cats",
+     "mutual": true
+    },
+    {
+     "H": "dreads",
+     "C": "affectionate cats",
+     "mutual": true
+    },
+    {
+     "M": "affectionate",
+     "H": "cats"
+    }
+   ]
+  },
+  {
+   "id": "ch2-ex7",
+   "fig": "Ex7 answer",
+   "page": 43,
+   "sentence": "Old Sam sunbathed beside a stream",
+   "type": "dependency",
+   "status": "IMG",
+   "relations": [
+    {
+     "S": "Old Sam",
+     "P": "sunbathed beside a stream",
+     "mutual": true
+    },
+    {
+     "M": "old",
+     "H": "Sam"
+    },
+    {
+     "M": "beside a stream",
+     "H": "sunbathed"
+    },
+    {
+     "H": "beside",
+     "C": "a stream",
+     "mutual": true
+    },
+    {
+     "M": "a",
+     "H": "stream"
+    }
+   ]
+  }
+ ],
+ "no_book_tree": [
+  "Further Ex1 (sentence markers like [33]); Further Ex3, Ex4 (no book answer)"
+ ],
+ "exercise_answers_from_book": {
+  "ex1_subject_predicate": {
+   "page": 40,
+   "note": "book splits each sentence into [subject][predicate]; used for lessons, not tree grading",
+   "answers": {
+    "a": [
+     "No one",
+     "has ordered my lovely prune-and-spinach fritters"
+    ],
+    "b": [
+     "Her memory for names",
+     "was a constant source of amazement to him"
+    ],
+    "c": [
+     "There",
+     "are too many uninvited guests here"
+    ],
+    "d": [
+     "Only six of the domino-toppling contestants",
+     "came properly equipped"
+    ],
+    "e": [
+     "It",
+     "was Lydia who finally trapped the pig"
+    ],
+    "g": [
+     "Laura",
+     "learned the Health and Safety Regulations by heart"
+    ]
+   }
+  },
+  "ex2_categories": {
+   "page": 41,
+   "NP": [
+    "d",
+    "e"
+   ],
+   "VP": [
+    "b",
+    "g"
+   ],
+   "other": [
+    "a",
+    "c",
+    "f"
+   ]
+  },
+  "ex5": {
+   "page": 42,
+   "interpretation_of_c": "the old teacher of Romanian history"
+  }
+ }
+}
