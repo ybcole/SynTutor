@@ -1,0 +1,104 @@
+[
+  {
+    "from_rule": "CLS-065",
+    "to": "CLS-029",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-065",
+    "to": "CLS-046",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-066",
+    "to": "CLS-011",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-066",
+    "to": "CLS-035",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-067",
+    "to": "CLS-029",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-067",
+    "to": "CLS-066",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-068",
+    "to": "CLS-036",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-068",
+    "to": "CLS-046",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-069",
+    "to": "CLS-011",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-069",
+    "to": "CLS-013",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-015",
+    "to": "CLS-029",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-029",
+    "to": "CLS-067",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-066",
+    "to": "Cambridge Chapter 11 §3.1 (omission of subordinator that)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-069",
+    "to": "Cambridge Chapter 11 §5.3.1 (main-form interrogatives in dependent constructions)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-015",
+    "to": "Cambridge Chapter 3 §1.8 (subjunctive finiteness)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-015",
+    "to": "Cambridge Chapter 14 (non-finite subordinate clauses)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-068",
+    "to": "Cambridge Chapter 10 §10 (minor clause types)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]
