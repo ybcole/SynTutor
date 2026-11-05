@@ -1028,9 +1028,9 @@
       "PHR-006"
     ],
     "confidence": "high",
-    "review_notes": "The source says 'exclusively or almost exclusively'; this is a distributional generalization, not an absolute restriction.",
+    "review_notes": "The source says 'exclusively or almost exclusively'; this is a distributional generalization, not an absolute restriction. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "NEEDS_REVIEW"
+    "status": "APPROVED"
   },
   {
     "id": "WCAT-015",
@@ -1114,8 +1114,8 @@
       "PHR-008"
     ],
     "confidence": "high",
-    "review_notes": "The contrast concerns the grammatical relation object, not the broader ability of nouns to take complements. The examples use PP dependents in the acceptable nominal constructions.",
+    "review_notes": "The contrast concerns the grammatical relation object, not the broader ability of nouns to take complements. The examples use PP dependents in the acceptable nominal constructions. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "NEEDS_REVIEW"
+    "status": "APPROVED"
   }
 ]
