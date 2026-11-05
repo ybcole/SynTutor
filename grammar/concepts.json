@@ -434,6 +434,17 @@
         "pdf_pages": [
           71
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
+        ]
       }
     ],
     "related_concepts": []
@@ -452,6 +463,17 @@
         ],
         "pdf_pages": [
           71
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
         ]
       }
     ],
@@ -994,6 +1016,19 @@
         "pdf_pages": [
           5
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          949,
+          950
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
       }
     ],
     "related_concepts": []
@@ -1383,6 +1418,19 @@
         "pdf_pages": [
           82
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          949,
+          950
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
       }
     ],
     "related_concepts": []
@@ -1401,6 +1449,17 @@
         ],
         "pdf_pages": [
           82
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
         ]
       }
     ],
@@ -3471,6 +3530,180 @@
     ],
     "related_concepts": [
       "clause type"
+    ]
+  },
+  {
+    "term": "subordinate clause status",
+    "gloss": "The grammatical status usually marked by dependent function or by distinct subordinate form, not equivalent in every instance to being a dependent.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          949,
+          950
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "subordinate clause",
+      "main clause"
+    ]
+  },
+  {
+    "term": "main clause head function",
+    "gloss": "The status of a head clause within a containing construction, even when a different clause also appears in the sentence.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          949
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "matrix clause"
+    ]
+  },
+  {
+    "term": "structural marking of subordination",
+    "gloss": "Internal syntactic cues to subordination, including a subordinator, a relative gap, or open-interrogative phrase placement and subject–predicator order.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          949
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "subordinator",
+      "subordinate clause"
+    ]
+  },
+  {
+    "term": "structurally unmarked subordinate content clause",
+    "gloss": "A content clause licensed as a complement yet internally identical in form to a main declarative clause.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          949
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "content clause"
+    ]
+  },
+  {
+    "term": "independent subordinate-form content clause",
+    "gloss": "A subordinate-marked clause in an elliptical answer or rare independent exclamatory construction with no governing predicate.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "subordinate clause"
+    ]
+  },
+  {
+    "term": "subordinate-form supplementary relative",
+    "gloss": "A wh-relative clause functioning as a supplement rather than an integrated dependent, despite its subordinate syntax.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "supplement",
+      "relative clause"
+    ]
+  },
+  {
+    "term": "main-clause-form dependent interrogative",
+    "gloss": "A dependent clause that preserves main interrogative inversion in a restricted construction, with the complete distribution deferred to §5.3.1.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "subordinate clause"
+    ]
+  },
+  {
+    "term": "finite subjunctive content clause",
+    "gloss": "A subordinate content clause with a subjunctive plain-form verb classified as finite rather than infinitival.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "finite clause",
+      "subjunctive"
     ]
   }
 ]
