@@ -1,0 +1,2421 @@
+{
+  "chapter": 9,
+  "convention_version": "V9",
+  "source": "Burton-Roberts, Analysing Sentences, Chapter 9 (uploaded page images)",
+  "node_fragments": [
+    {
+      "id": "ch9-frag-10",
+      "fig": "[10] fragment",
+      "page": 198,
+      "status": "IMG",
+      "node": {
+        "label": "S-dbar",
+        "children": [
+          {
+            "label": "C2",
+            "children": []
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": []
+              },
+              {
+                "label": "S",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The schematic two-complementiser-layer configuration: S-double-bar dominates C2 and S-bar; S-bar dominates C1 and S."
+    }
+  ],
+  "no_book_tree": [
+    "Further Exercises 1–9: no complete phrase-marker answer key is printed in the supplied chapter."
+  ],
+  "book_flags": [
+    "Wh-clauses use S-double-bar → C2 + S-bar and S-bar → C1 + S. C2 contains the fronted wh-expression; C1 is the lower complementiser position.",
+    "All clause-initial wh-expressions are represented in C2. The chapter assumes C1 auxiliary-fronting in every non-echo main wh-question, including wh-subject questions.",
+    "Wh-fronting leaves a gap of the corresponding category; the wh-phrase category in C2 need not be labelled, but the gap category must be represented.",
+    "Subordinate wh-interrogatives have an empty C1; auxiliary-fronting occurs only in main wh-questions.",
+    "Relative clauses are wh-clauses. Restrictive relatives are sisters of NOM; non-restrictive relatives are sisters of NP. Noun-complement clauses are sisters of N and have no gap.",
+    "In relative clauses, the book adopts that as an alternative relative form in C2, not as a C1 complementiser.",
+    "The in-text figures [39], [59], and [60] use triangles for internal relative-clause structure; their wh-gap information is retained as metadata rather than expanded inside the triangle.",
+    "Movement arrows and dotted movement lines are not part of the phrase marker; they are kept separately in movement metadata where useful."
+  ],
+  "discussion_answers": [
+    {
+      "discussion": 1,
+      "page": 211,
+      "tree_ids": [
+        "ch9-d1a",
+        "ch9-d1bi",
+        "ch9-d1bii",
+        "ch9-d1c",
+        "ch9-d1d"
+      ]
+    },
+    {
+      "discussion": 2,
+      "page": 213,
+      "tree_ids": [
+        "ch9-d2"
+      ]
+    },
+    {
+      "discussion": 3,
+      "page": 213,
+      "tree_ids": [
+        "ch9-d3a",
+        "ch9-d3b"
+      ]
+    },
+    {
+      "discussion": 4,
+      "page": 214,
+      "tree_ids": [
+        "ch9-d4-20",
+        "ch9-d4-22"
+      ]
+    },
+    {
+      "discussion": 5,
+      "page": 215,
+      "tree_ids": [
+        "ch9-d5"
+      ]
+    },
+    {
+      "discussion": 6,
+      "page": 215,
+      "tree_ids": [
+        "ch9-d6-53a",
+        "ch9-d6-53b"
+      ]
+    }
+  ],
+  "exercise_answers_from_book": {
+    "exercise_1": {
+      "page": 218,
+      "answer_type": "Form the corresponding main wh-question; wh-subject questions retain the subject position in surface order."
+    },
+    "exercise_2": {
+      "page": 218,
+      "answer_type": "Embed the supplied finite relative clause in the noun phrase; use the full wh-phrase when the gap is a complement of a preposition."
+    },
+    "exercise_3": {
+      "page": 218,
+      "items": [
+        {
+          "item": "a",
+          "answer": "Non-restrictive only"
+        },
+        {
+          "item": "b",
+          "answer": "Restrictive only"
+        },
+        {
+          "item": "c",
+          "answer": "Both relative clauses must be restrictive"
+        },
+        {
+          "item": "d",
+          "answer": "Restrictive or non-restrictive"
+        },
+        {
+          "item": "e",
+          "answer": "Non-restrictive only"
+        }
+      ],
+      "tree_ids": [
+        "ch9-ex3a"
+      ]
+    },
+    "exercise_4": {
+      "page": 219,
+      "acas": [
+        "ch9-ex4a",
+        "ch9-ex4b",
+        "ch9-ex4c",
+        "ch9-ex4d"
+      ]
+    }
+  },
+  "acas": [
+    {
+      "id": "ch9-ex4a",
+      "page": 219,
+      "bracketing": "S1[I never understood S2[how the theory worked] S3[until I read your book]]",
+      "clauses": [
+        {
+          "id": "S1",
+          "main": true,
+          "text": "I never understood",
+          "contains": [
+            "S2",
+            "S3"
+          ],
+          "lexical_verb": "understood",
+          "form": "finite",
+          "function": "main clause"
+        },
+        {
+          "id": "S2",
+          "main": false,
+          "text": "how the theory worked",
+          "contains": [],
+          "lexical_verb": "worked",
+          "form": "wh-interrogative",
+          "function": "direct-object complement of understood"
+        },
+        {
+          "id": "S3",
+          "main": false,
+          "text": "until I read your book",
+          "contains": [],
+          "lexical_verb": "read",
+          "form": "finite subordinate clause",
+          "function": "complement of P until"
+        }
+      ]
+    },
+    {
+      "id": "ch9-ex4b",
+      "page": 219,
+      "bracketing": "S1[S2[Why Max did not answer the accusation S3[that he had cheated]] is a mystery]",
+      "clauses": [
+        {
+          "id": "S1",
+          "main": true,
+          "text": "is a mystery",
+          "contains": [
+            "S2"
+          ],
+          "lexical_verb": "is",
+          "form": "finite",
+          "function": "main clause"
+        },
+        {
+          "id": "S2",
+          "main": false,
+          "text": "Why Max did not answer the accusation",
+          "contains": [
+            "S3"
+          ],
+          "lexical_verb": "answer",
+          "form": "wh-interrogative",
+          "function": "subject of S1"
+        },
+        {
+          "id": "S3",
+          "main": false,
+          "text": "that he had cheated",
+          "contains": [],
+          "lexical_verb": "cheated",
+          "form": "that-clause",
+          "function": "complement of N accusation"
+        }
+      ]
+    },
+    {
+      "id": "ch9-ex4c",
+      "page": 219,
+      "bracketing": "S1[S2[Why Max did not answer the poor man S3[that he had cheated]] is a mystery]",
+      "clauses": [
+        {
+          "id": "S1",
+          "main": true,
+          "text": "is a mystery",
+          "contains": [
+            "S2"
+          ],
+          "lexical_verb": "is",
+          "form": "finite",
+          "function": "main clause"
+        },
+        {
+          "id": "S2",
+          "main": false,
+          "text": "Why Max did not answer the poor man",
+          "contains": [
+            "S3"
+          ],
+          "lexical_verb": "answer",
+          "form": "wh-interrogative",
+          "function": "subject of S1"
+        },
+        {
+          "id": "S3",
+          "main": false,
+          "text": "that he had cheated",
+          "contains": [],
+          "lexical_verb": "cheated",
+          "form": "restrictive relative",
+          "function": "modifier of NOM poor man; dO gap"
+        }
+      ]
+    },
+    {
+      "id": "ch9-ex4d",
+      "page": 220,
+      "bracketing": "S1[the acrobat S2[who is injured] is insistent S3[that the high-wire is strengthened S4[if it is used again]]]",
+      "clauses": [
+        {
+          "id": "S1",
+          "main": true,
+          "text": "the acrobat is insistent",
+          "contains": [
+            "S2",
+            "S3"
+          ],
+          "lexical_verb": "is",
+          "form": "finite",
+          "function": "main clause"
+        },
+        {
+          "id": "S2",
+          "main": false,
+          "text": "who is injured",
+          "contains": [],
+          "lexical_verb": "injured",
+          "form": "non-restrictive relative",
+          "function": "modifier of NP the acrobat"
+        },
+        {
+          "id": "S3",
+          "main": false,
+          "text": "that the high-wire is strengthened",
+          "contains": [
+            "S4"
+          ],
+          "lexical_verb": "strengthened",
+          "form": "that-clause",
+          "function": "complement of A insistent"
+        },
+        {
+          "id": "S4",
+          "main": false,
+          "text": "if it is used again",
+          "contains": [],
+          "lexical_verb": "used",
+          "form": "adverbial clause",
+          "function": "adverbial to S3"
+        }
+      ]
+    }
+  ],
+  "review_notes": [
+    "The schematic [10] is stored as a node fragment rather than a complete sentence tree.",
+    "For [39], [59], and [60], the source figure intentionally triangles the internal relative clause; the wh-gap category is described in metadata, not expanded in the printed tree.",
+    "In Discussion 3(a), the book gives AP as the usual gap category for how, but explicitly notes a PP alternative; both are recorded.",
+    "Exercise 1 and Exercise 2 are represented by concise answer-type notes rather than reproducing the book’s full answer wording; no unprinted phrase markers have been invented.",
+    "Further Exercises have no complete tree/ACA answer key in this chapter and are excluded from gold trees."
+  ],
+  "trees": [
+    {
+      "id": "ch9-11a",
+      "fig": "[11a]",
+      "page": 199,
+      "sentence": "Vince is taking what to Athens",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "Vince"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "PROG",
+                    "features": [
+                      "pres"
+                    ],
+                    "children": [
+                      {
+                        "word": "is"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "trans"
+                        ],
+                        "children": [
+                          {
+                            "word": "taking"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "what"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "to",
+                  "Athens"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Echo/unfronted wh-question; what remains in the direct-object NP position.",
+      "surface_from_tree": "Vince is taking what to Athens"
+    },
+    {
+      "id": "ch9-11b",
+      "fig": "[11b]",
+      "page": 199,
+      "sentence": "What is Vince taking to Athens",
+      "status": "IMG",
+      "tree": {
+        "label": "S-dbar",
+        "children": [
+          {
+            "label": "C2",
+            "children": [
+              {
+                "word": "what"
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": [
+                  {
+                    "word": "is"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "Vince"
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "PROG",
+                            "features": [
+                              "pres"
+                            ],
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "V",
+                                "features": [
+                                  "trans"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "taking"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "NP",
+                                "children": [
+                                  {
+                                    "gap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "PP",
+                        "triangle": true,
+                        "words": [
+                          "to",
+                          "Athens"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Wh-NP moves to C2; the tensed progressive auxiliary moves to C1; the NP object and PROG positions are gaps.",
+      "movement": [
+        {
+          "from": "direct-object NP",
+          "to": "C2"
+        },
+        {
+          "from": "PROG auxiliary position",
+          "to": "C1"
+        }
+      ],
+      "wh_gap_category": "NP",
+      "surface_from_tree": "what is Vince taking to Athens"
+    },
+    {
+      "id": "ch9-26",
+      "fig": "[26]",
+      "page": 203,
+      "sentence": "Marcel wasn't certain who he sent the flowers to",
+      "status": "IMG_ANOMALY",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "Marcel"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "intens",
+                  "pres"
+                ],
+                "children": [
+                  {
+                    "word": "wasn't"
+                  }
+                ]
+              },
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "certain"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S-dbar",
+                    "children": [
+                      {
+                        "label": "C2",
+                        "children": [
+                          {
+                            "word": "who"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "S-bar",
+                        "children": [
+                          {
+                            "label": "C1",
+                            "children": []
+                          },
+                          {
+                            "label": "S",
+                            "children": [
+                              {
+                                "label": "NP",
+                                "triangle": true,
+                                "words": [
+                                  "he"
+                                ]
+                              },
+                              {
+                                "label": "VP",
+                                "children": [
+                                  {
+                                    "label": "V",
+                                    "features": [
+                                      "ditrans",
+                                      "past"
+                                    ],
+                                    "children": [
+                                      {
+                                        "word": "sent"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "NP",
+                                    "triangle": true,
+                                    "words": [
+                                      "the",
+                                      "flowers"
+                                    ]
+                                  },
+                                  {
+                                    "label": "PP",
+                                    "children": [
+                                      {
+                                        "label": "P",
+                                        "children": [
+                                          {
+                                            "word": "to"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "label": "NP",
+                                        "children": [
+                                          {
+                                            "gap": true
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The printed figure labels wasn’t with [pres]; preserve that label as printed. The subordinate C1 is empty; who is complement of P to.",
+      "wh_gap_category": "NP",
+      "surface_from_tree": "Marcel wasn't certain who he sent the flowers to"
+    },
+    {
+      "id": "ch9-38",
+      "fig": "[38]",
+      "page": 205,
+      "sentence": "the conclusion that Mars was inhabited",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "conclusion"
+                  }
+                ]
+              },
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C1",
+                    "children": [
+                      {
+                        "word": "that"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S",
+                    "triangle": true,
+                    "words": [
+                      "Mars",
+                      "was",
+                      "inhabited"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Noun-complement clause: C1 that introduces a complete S; no wh-fronting gap.",
+      "surface_from_tree": "the conclusion that Mars was inhabited"
+    },
+    {
+      "id": "ch9-39",
+      "fig": "[39]",
+      "page": 206,
+      "sentence": "the conclusion which Gomez disputes",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "conclusion"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "S-dbar",
+                "triangle": true,
+                "words": [
+                  "which",
+                  "Gomez",
+                  "disputes"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Restrictive relative clause is sister of NOM; the printed figure triangles the internal S-double-bar. The gap is understood as NP/dO.",
+      "appendix_nom": true,
+      "wh_gap_category": "NP",
+      "surface_from_tree": "the conclusion which Gomez disputes"
+    },
+    {
+      "id": "ch9-59",
+      "fig": "[59]",
+      "page": 210,
+      "sentence": "the dogs which have rabies",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "triangle": true,
+            "words": [
+              "the"
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "dogs"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "S-dbar",
+                "triangle": true,
+                "words": [
+                  "which",
+                  "have",
+                  "rabies"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Restrictive relative clause remains within the NOM determined by the; the printed S-double-bar is triangular. The wh-subject gap is not expanded.",
+      "appendix_nom": true,
+      "wh_gap_category": "NP",
+      "surface_from_tree": "the dogs which have rabies"
+    },
+    {
+      "id": "ch9-60",
+      "fig": "[60]",
+      "page": 210,
+      "sentence": "the dogs which have rabies",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "triangle": true,
+                "words": [
+                  "the"
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "dogs"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S-dbar",
+            "triangle": true,
+            "words": [
+              "which",
+              "have",
+              "rabies"
+            ]
+          }
+        ]
+      },
+      "note": "Non-restrictive relative clause modifies the complete NP; the printed S-double-bar is triangular. The wh-subject gap is not expanded.",
+      "appendix_nom": true,
+      "wh_gap_category": "NP",
+      "surface_from_tree": "the dogs which have rabies"
+    },
+    {
+      "id": "ch9-d1a",
+      "fig": "Discussion 1(a)",
+      "page": 211,
+      "sentence": "Which books are you giving to Bill",
+      "status": "IMG",
+      "tree": {
+        "label": "S-dbar",
+        "children": [
+          {
+            "label": "C2",
+            "children": [
+              {
+                "triangle": true,
+                "words": [
+                  "which",
+                  "books"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": [
+                  {
+                    "word": "are"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "you"
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "PROG",
+                        "features": [
+                          "pres"
+                        ],
+                        "children": [
+                          {
+                            "gap": true
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "ditrans"
+                            ],
+                            "children": [
+                              {
+                                "word": "giving"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          },
+                          {
+                            "label": "PP",
+                            "triangle": true,
+                            "words": [
+                              "to",
+                              "Bill"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Wh-NP is fronted from the first NP complement slot of ditransitive give; the auxiliary is fronted to C1.",
+      "movement": [
+        {
+          "from": "NP complement of give",
+          "to": "C2"
+        },
+        {
+          "from": "PROG auxiliary position",
+          "to": "C1"
+        }
+      ],
+      "wh_gap_category": "NP",
+      "surface_from_tree": "which books are you giving to Bill"
+    },
+    {
+      "id": "ch9-d1bi",
+      "fig": "Discussion 1(b)(i)",
+      "page": 211,
+      "sentence": "Who will Julia give the pen to",
+      "status": "IMG",
+      "tree": {
+        "label": "S-dbar",
+        "children": [
+          {
+            "label": "C2",
+            "children": [
+              {
+                "word": "who"
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": [
+                  {
+                    "word": "will"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "Julia"
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "MOD",
+                        "features": [
+                          "pres"
+                        ],
+                        "children": [
+                          {
+                            "gap": true
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "ditrans"
+                            ],
+                            "children": [
+                              {
+                                "word": "give"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "triangle": true,
+                            "words": [
+                              "the",
+                              "pen"
+                            ]
+                          },
+                          {
+                            "label": "PP",
+                            "children": [
+                              {
+                                "label": "P",
+                                "children": [
+                                  {
+                                    "word": "to"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "NP",
+                                "children": [
+                                  {
+                                    "gap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Only the wh-NP is fronted; the preposition to remains in the subordinate PP, leaving an NP gap.",
+      "movement": [
+        {
+          "from": "NP complement of P to",
+          "to": "C2"
+        },
+        {
+          "from": "MOD position",
+          "to": "C1"
+        }
+      ],
+      "wh_gap_category": "NP",
+      "surface_from_tree": "who will Julia give the pen to"
+    },
+    {
+      "id": "ch9-d1bii",
+      "fig": "Discussion 1(b)(ii)",
+      "page": 212,
+      "sentence": "To whom will Julia give the pen",
+      "status": "IMG",
+      "tree": {
+        "label": "S-dbar",
+        "children": [
+          {
+            "label": "C2",
+            "children": [
+              {
+                "triangle": true,
+                "words": [
+                  "to",
+                  "whom"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": [
+                  {
+                    "word": "will"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "Julia"
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "MOD",
+                        "features": [
+                          "pres"
+                        ],
+                        "children": [
+                          {
+                            "gap": true
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "ditrans"
+                            ],
+                            "children": [
+                              {
+                                "word": "give"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "triangle": true,
+                            "words": [
+                              "the",
+                              "pen"
+                            ]
+                          },
+                          {
+                            "label": "PP",
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The whole PP to whom is fronted, leaving a PP gap.",
+      "movement": [
+        {
+          "from": "PP complement of give",
+          "to": "C2"
+        },
+        {
+          "from": "MOD position",
+          "to": "C1"
+        }
+      ],
+      "wh_gap_category": "PP",
+      "surface_from_tree": "to whom will Julia give the pen"
+    },
+    {
+      "id": "ch9-d1c",
+      "fig": "Discussion 1(c)",
+      "page": 212,
+      "sentence": "How quickly did he drink that beer",
+      "status": "IMG",
+      "tree": {
+        "label": "S-dbar",
+        "children": [
+          {
+            "label": "C2",
+            "children": [
+              {
+                "triangle": true,
+                "words": [
+                  "how",
+                  "quickly"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": [
+                  {
+                    "word": "did"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "he"
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "TENSE",
+                        "features": [
+                          "past"
+                        ],
+                        "children": [
+                          {
+                            "gap": true
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "V",
+                                "features": [
+                                  "trans"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "drink"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "NP",
+                                "triangle": true,
+                                "words": [
+                                  "that",
+                                  "beer"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "label": "AdvP",
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The entire AdvP how quickly is fronted; did occupies C1 and leaves a TENSE gap.",
+      "movement": [
+        {
+          "from": "AdvP adjunct position",
+          "to": "C2"
+        },
+        {
+          "from": "TENSE position",
+          "to": "C1"
+        }
+      ],
+      "wh_gap_category": "AdvP",
+      "surface_from_tree": "how quickly did he drink that beer"
+    },
+    {
+      "id": "ch9-d1d",
+      "fig": "Discussion 1(d)",
+      "page": 212,
+      "sentence": "How tall is Max",
+      "status": "IMG",
+      "tree": {
+        "label": "S-dbar",
+        "children": [
+          {
+            "label": "C2",
+            "children": [
+              {
+                "triangle": true,
+                "words": [
+                  "how",
+                  "tall"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": [
+                  {
+                    "word": "is"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "Max"
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "intens",
+                          "pres"
+                        ],
+                        "children": [
+                          {
+                            "gap": true
+                          }
+                        ]
+                      },
+                      {
+                        "label": "AP",
+                        "children": [
+                          {
+                            "gap": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The entire AP how tall is fronted; copula be occupies C1.",
+      "movement": [
+        {
+          "from": "AP complement position",
+          "to": "C2"
+        },
+        {
+          "from": "V[intens,pres] position",
+          "to": "C1"
+        }
+      ],
+      "wh_gap_category": "AP",
+      "surface_from_tree": "how tall is Max"
+    },
+    {
+      "id": "ch9-d2",
+      "fig": "Discussion 2 [14]",
+      "page": 213,
+      "sentence": "Who is taking Violetta’s icon to Athens",
+      "status": "IMG",
+      "tree": {
+        "label": "S-dbar",
+        "children": [
+          {
+            "label": "C2",
+            "children": [
+              {
+                "word": "Who"
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": [
+                  {
+                    "word": "is"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "gap": true
+                      }
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "PROG",
+                            "features": [
+                              "pres"
+                            ],
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "V",
+                                "features": [
+                                  "trans"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "taking"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "NP",
+                                "triangle": true,
+                                "words": [
+                                  "Violetta's",
+                                  "icon"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "PP",
+                        "triangle": true,
+                        "words": [
+                          "to",
+                          "Athens"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Wh-subject is represented in C2; the book assumes auxiliary fronting to C1 even though word order does not change.",
+      "movement": [
+        {
+          "from": "subject NP position",
+          "to": "C2"
+        },
+        {
+          "from": "PROG auxiliary position",
+          "to": "C1"
+        }
+      ],
+      "wh_gap_category": "NP",
+      "surface_from_tree": "Who is taking Violetta's icon to Athens"
+    },
+    {
+      "id": "ch9-d3a",
+      "fig": "Discussion 3(a)",
+      "page": 213,
+      "sentence": "How are you",
+      "status": "IMG",
+      "tree": {
+        "label": "S-dbar",
+        "children": [
+          {
+            "label": "C2",
+            "children": [
+              {
+                "word": "how"
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": [
+                  {
+                    "word": "are"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "pronoun",
+                        "children": [
+                          {
+                            "word": "you"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "intens",
+                          "pres"
+                        ],
+                        "children": [
+                          {
+                            "gap": true
+                          }
+                        ]
+                      },
+                      {
+                        "label": "AP",
+                        "children": [
+                          {
+                            "gap": true
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The usual answer is AP (well/good); the book also allows a PP gap.",
+      "accepted_alternatives": [
+        {
+          "wh_gap_category": "PP",
+          "note": "A PP such as in good spirits is also possible."
+        }
+      ],
+      "wh_gap_category": "AP",
+      "surface_from_tree": "how are you"
+    },
+    {
+      "id": "ch9-d3b",
+      "fig": "Discussion 3(b)",
+      "page": 213,
+      "sentence": "Where did Lisa put it",
+      "status": "IMG",
+      "tree": {
+        "label": "S-dbar",
+        "children": [
+          {
+            "label": "C2",
+            "children": [
+              {
+                "word": "where"
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": [
+                  {
+                    "word": "did"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "name",
+                        "children": [
+                          {
+                            "word": "Lisa"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "TENSE",
+                        "features": [
+                          "past"
+                        ],
+                        "children": [
+                          {
+                            "gap": true
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "complex"
+                            ],
+                            "children": [
+                              {
+                                "word": "put"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "children": [
+                              {
+                                "label": "pronoun",
+                                "children": [
+                                  {
+                                    "word": "it"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "label": "PP",
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Where corresponds to a PP gap because put is represented as complex transitive.",
+      "wh_gap_category": "PP",
+      "surface_from_tree": "where did Lisa put it"
+    },
+    {
+      "id": "ch9-d4-20",
+      "fig": "Discussion 4 [20]",
+      "page": 214,
+      "sentence": "Martha enquired why he wore it on his foot",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "Martha"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "trans",
+                  "past"
+                ],
+                "children": [
+                  {
+                    "word": "enquired"
+                  }
+                ]
+              },
+              {
+                "label": "NP",
+                "children": [
+                  {
+                    "label": "S-dbar",
+                    "children": [
+                      {
+                        "label": "C2",
+                        "children": [
+                          {
+                            "word": "why"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "S-bar",
+                        "children": [
+                          {
+                            "label": "C1",
+                            "children": []
+                          },
+                          {
+                            "label": "S",
+                            "children": [
+                              {
+                                "label": "NP",
+                                "triangle": true,
+                                "words": [
+                                  "he"
+                                ]
+                              },
+                              {
+                                "label": "VP",
+                                "children": [
+                                  {
+                                    "label": "VP",
+                                    "children": [
+                                      {
+                                        "label": "VP",
+                                        "children": [
+                                          {
+                                            "label": "V",
+                                            "features": [
+                                              "trans",
+                                              "past"
+                                            ],
+                                            "children": [
+                                              {
+                                                "word": "wore"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "label": "NP",
+                                            "triangle": true,
+                                            "words": [
+                                              "it"
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "label": "PP",
+                                        "triangle": true,
+                                        "words": [
+                                          "on",
+                                          "his",
+                                          "foot"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "AdvP",
+                                    "children": [
+                                      {
+                                        "gap": true
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Subordinate wh-interrogative is the direct object of enquired; why corresponds to an AdvP gap.",
+      "wh_gap_category": "AdvP",
+      "surface_from_tree": "Martha enquired why he wore it on his foot"
+    },
+    {
+      "id": "ch9-d4-22",
+      "fig": "Discussion 4 [22]",
+      "page": 214,
+      "sentence": "It is my affair what I wear at night",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "children": [
+              {
+                "word": "It"
+              }
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "intens",
+                  "pres"
+                ],
+                "children": [
+                  {
+                    "word": "is"
+                  }
+                ]
+              },
+              {
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "my",
+                  "affair"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S-dbar",
+            "children": [
+              {
+                "label": "C2",
+                "children": [
+                  {
+                    "word": "what"
+                  }
+                ]
+              },
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C1",
+                    "children": []
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "label": "pronoun",
+                            "children": [
+                              {
+                                "word": "I"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "trans",
+                              "pres"
+                            ],
+                            "children": [
+                              {
+                                "word": "wear"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          },
+                          {
+                            "label": "PP",
+                            "triangle": true,
+                            "words": [
+                              "at",
+                              "night"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Wh-clause is an extraposed subject; the S-double-bar is a daughter of the main S.",
+      "wh_gap_category": "NP",
+      "surface_from_tree": "It is my affair what I wear at night"
+    },
+    {
+      "id": "ch9-d5",
+      "fig": "Discussion 5 [34b]",
+      "page": 215,
+      "sentence": "the claim with which he ended his lecture",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "claim"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "S-dbar",
+                "children": [
+                  {
+                    "label": "C2",
+                    "children": [
+                      {
+                        "triangle": true,
+                        "words": [
+                          "with",
+                          "which"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S-bar",
+                    "children": [
+                      {
+                        "label": "C1",
+                        "children": []
+                      },
+                      {
+                        "label": "S",
+                        "children": [
+                          {
+                            "label": "NP",
+                            "triangle": true,
+                            "words": [
+                              "he"
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "VP",
+                                "children": [
+                                  {
+                                    "label": "V",
+                                    "features": [
+                                      "trans",
+                                      "past"
+                                    ],
+                                    "children": [
+                                      {
+                                        "word": "ended"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "NP",
+                                    "triangle": true,
+                                    "words": [
+                                      "his",
+                                      "lecture"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "PP",
+                                "children": [
+                                  {
+                                    "gap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Restrictive relative clause is sister of NOM; the entire PP with which is fronted, leaving a PP gap.",
+      "appendix_nom": true,
+      "wh_gap_category": "PP",
+      "surface_from_tree": "the claim with which he ended his lecture"
+    },
+    {
+      "id": "ch9-d6-53a",
+      "fig": "Discussion 6 [53a]",
+      "page": 215,
+      "sentence": "a proposal that we should support",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "proposal"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "S-dbar",
+                "children": [
+                  {
+                    "label": "C2",
+                    "children": [
+                      {
+                        "word": "that"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S-bar",
+                    "children": [
+                      {
+                        "label": "C1",
+                        "children": []
+                      },
+                      {
+                        "label": "S",
+                        "children": [
+                          {
+                            "label": "NP",
+                            "triangle": true,
+                            "words": [
+                              "we"
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "MOD",
+                                "features": [
+                                  "past"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "should"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "VP",
+                                "children": [
+                                  {
+                                    "label": "V",
+                                    "features": [
+                                      "trans"
+                                    ],
+                                    "children": [
+                                      {
+                                        "word": "support"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "NP",
+                                    "children": [
+                                      {
+                                        "gap": true
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "That is treated as the relative wh-form in C2; it leaves an NP direct-object gap.",
+      "appendix_nom": true,
+      "wh_gap_category": "NP",
+      "surface_from_tree": "a proposal that we should support"
+    },
+    {
+      "id": "ch9-d6-53b",
+      "fig": "Discussion 6 [53b]",
+      "page": 216,
+      "sentence": "a proposal that we should support the strike",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "proposal"
+                  }
+                ]
+              },
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C1",
+                    "children": [
+                      {
+                        "word": "that"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "we"
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "MOD",
+                            "features": [
+                              "past"
+                            ],
+                            "children": [
+                              {
+                                "word": "should"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "V",
+                                "features": [
+                                  "trans"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "support"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "NP",
+                                "triangle": true,
+                                "words": [
+                                  "the",
+                                  "strike"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Noun-complement clause is introduced by C1 that and has a complete S with no gap.",
+      "surface_from_tree": "a proposal that we should support the strike"
+    },
+    {
+      "id": "ch9-ex3a",
+      "fig": "Exercise 3(a)",
+      "page": 219,
+      "sentence": "Napoleon who inaugurated the penal code died in exile",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "NP",
+                "children": [
+                  {
+                    "label": "name",
+                    "children": [
+                      {
+                        "word": "Napoleon"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "S-dbar",
+                "children": [
+                  {
+                    "label": "C2",
+                    "children": [
+                      {
+                        "word": "who"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S-bar",
+                    "children": [
+                      {
+                        "label": "C1",
+                        "children": []
+                      },
+                      {
+                        "label": "S",
+                        "children": [
+                          {
+                            "label": "NP",
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "V",
+                                "features": [
+                                  "trans",
+                                  "past"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "inaugurated"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "NP",
+                                "triangle": true,
+                                "words": [
+                                  "the",
+                                  "penal",
+                                  "code"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "V",
+                    "features": [
+                      "intrans",
+                      "past"
+                    ],
+                    "children": [
+                      {
+                        "word": "died"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "in",
+                  "exile"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The relative clause modifies the complete NP Napoleon; the book says this context permits only a non-restrictive relative.",
+      "wh_gap_category": "NP",
+      "surface_from_tree": "Napoleon who inaugurated the penal code died in exile"
+    }
+  ]
+}
