@@ -310,9 +310,9 @@
         "MORPH-001"
       ],
       "confidence": "high",
-      "review_notes": "The rule records the inflectional contrast only. The separate syntactic behavior of auxiliary negation is covered by WCAT-001; this record does not restate that rule.",
+      "review_notes": "The rule records the inflectional contrast only. The separate syntactic behavior of auxiliary negation is covered by WCAT-001; this record does not restate that rule. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "MORPH-005",
@@ -401,9 +401,9 @@
         "WCAT-003"
       ],
       "confidence": "high",
-      "review_notes": "The examples test the three secondary-form gaps separately. The source also says that must and one or two other modal auxiliaries lack preterite forms; the unnamed additional item(s) are recorded under uncertain_items rather than guessed.",
+      "review_notes": "The examples test the three secondary-form gaps separately. The source also says that must and one or two other modal auxiliaries lack preterite forms; the unnamed additional item(s) are recorded under uncertain_items rather than guessed. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "MORPH-006",
@@ -471,9 +471,9 @@
         "AGR-002"
       ],
       "confidence": "high",
-      "review_notes": "The source explicitly identifies the absence of a third-person-singular -s form. This contrasts with the unqualified scope of AGR-002, which currently says that present-tense verbs agree with their subject. See the conflict entry; do not revise the earlier rule silently.",
+      "review_notes": "The source explicitly identifies the absence of a third-person-singular -s form. This contrasts with the unqualified scope of AGR-002, which currently says that present-tense verbs agree with their subject. See the conflict entry; do not revise the earlier rule silently. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
       "protocol_version": "1.0",
-      "status": "NEEDS_REVIEW"
+      "status": "APPROVED"
     }
   ],
   "cross_references": [
@@ -521,9 +521,9 @@
         "AGR-002"
       ],
       "kind": "cambridge_vs_existing_rule",
-      "description": "Chapter 3 §1.1 says modal auxiliaries use one present-tense form with all subjects and have no third-person-singular -s form. Existing AGR-002 states without a modal exception that a present-tense verb agrees in person and number with its subject.",
-      "proposed_resolution": "Review AGR-002 and explicitly exclude modal auxiliaries from its present-tense agreement condition, while preserving the distinct agreement forms of be and other inflecting verbs. Do not modify AGR-002 until human approval.",
-      "needs_human": true
+      "description": "Conflict originally identified because Chapter 3 §1.1 states that modal auxiliaries use one present-tense form with all subjects and do not take a third-person-singular -s ending, while the original wording of AGR-002 generalized present-tense agreement to all verbs. Resolved by narrowing AGR-002 to present-tense non-modal verbs and adding the modal exception with examples and a Chapter 3 source.",
+      "proposed_resolution": "RESOLVED with explicit human approval on 2026-11-05: AGR-002 now excludes modal auxiliaries from present-tense subject-verb agreement and cites Chapter 3 §1.1, p. 75. The new MORPH-006 rule records the invariant modal form.",
+      "needs_human": false
     }
   ],
   "uncertain_items": [
