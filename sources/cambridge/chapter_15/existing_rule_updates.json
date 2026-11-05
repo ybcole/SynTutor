@@ -1,0 +1,14 @@
+[
+  {
+    "rule_id": "CLS-003",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 15 §1.1, printed pp. 1275, 1276",
+    "change": "Chapter 15 §1.1 confirms coordination is a non-headed syntactic category, and a mixed NP/PP-coordination cannot be categorised as either a simple NP or a simple PP; labels reflect coordinate categories."
+  },
+  {
+    "rule_id": "CLS-045",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 15 §1.1, printed pp. 1275, 1276, 1277",
+    "change": "Chapter 15 §1.1 describes coordinates of equal status, usually but not necessarily linked by a coordinator; replacement of the whole by one coordinate and coordinate order reversal are diagnostics that normally, not invariably, work. The p. 1275 footnote gives joint coordination as a counterexample to independent replacement; its detailed analysis is deferred to §1.3.2."
+  }
+]
