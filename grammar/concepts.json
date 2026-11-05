@@ -5376,6 +5376,17 @@
         "pdf_pages": [
           4
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "related_concepts": [
@@ -5417,6 +5428,17 @@
         ],
         "pdf_pages": [
           4
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623
+        ],
+        "pdf_pages": [
+          3
         ]
       }
     ],
@@ -5676,6 +5698,269 @@
     ],
     "related_concepts": [
       "morphological operation"
+    ]
+  },
+  {
+    "term": "established word",
+    "gloss": "A recognised item of vocabulary known conventionally to speakers, not merely an output of an available productive rule.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "lexical base"
+    ]
+  },
+  {
+    "term": "potential word",
+    "gloss": "A word conforming to current word-formation rules that has not become established, regardless of whether it has ever been used.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1624
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "established word"
+    ]
+  },
+  {
+    "term": "nonce-word",
+    "gloss": "A non-established word actually used on an occasion; a subset of potential words where the form is well formed.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1624
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "potential word"
+    ]
+  },
+  {
+    "term": "morphological grammaticality",
+    "gloss": "Conformity to the rules of present-day English word-formation, distinct from lexical establishment and stylistic approval.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623,
+          1624
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "potential word"
+    ]
+  },
+  {
+    "term": "lexical establishment",
+    "gloss": "Conventional recognition of a word as part of vocabulary, as distinct from its formal morphological admissibility.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "established word"
+    ]
+  },
+  {
+    "term": "word-formation constraints",
+    "gloss": "Conditions restricting which novel word forms can be produced by currently available morphological processes.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623,
+          1624
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "morphological grammaticality"
+    ]
+  },
+  {
+    "term": "stylistic acceptability of a coinage",
+    "gloss": "A subjective reaction to the elegance or suitability of a proposed new word, distinct from its structural well-formedness.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "morphological grammaticality"
+    ]
+  },
+  {
+    "term": "layered -able/-ity derivation",
+    "gloss": "A productive verb-to-adjective -able step followed by an adjective-to-noun nominalization with -ity.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "complex lexical base"
+    ]
+  },
+  {
+    "term": "nonproductive -ric pattern",
+    "gloss": "An inherited suffixation pattern present in established words but no longer available for ordinary creation of novel Present-day English words.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623,
+          1624
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "established word"
+    ]
+  },
+  {
+    "term": "nonproductive verb-object agent compound",
+    "gloss": "An inherited agent-forming compound type made from plain verb and its direct-object noun, no longer productive for new words.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623,
+          1624
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "established word"
+    ]
+  },
+  {
+    "term": "lexical survival of historical formations",
+    "gloss": "Retention of established words despite the loss of productivity of their original formation processes.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1624
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "established word"
+    ]
+  },
+  {
+    "term": "dictionary inventory versus word inventory",
+    "gloss": "The distinction between dictionaries' entries, including idiomatic multiword expressions, and the larger set of grammatical established and potential words.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623,
+          1624
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "established word",
+      "potential word"
     ]
   }
 ]
