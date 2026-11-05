@@ -1624,5 +1624,219 @@
       }
     ],
     "related_concepts": []
+  },
+  {
+    "term": "lexical verb",
+    "gloss": "A verb that is not one of the limited auxiliary verbs; this is Cambridge's label for the remainder of the verb inventory.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          74
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "verb",
+      "auxiliary verb"
+    ]
+  },
+  {
+    "term": "variable lexeme",
+    "gloss": "A lexeme that has more than one inflectional form and therefore has a paradigm.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          74
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "paradigm",
+      "verb"
+    ]
+  },
+  {
+    "term": "paradigm",
+    "gloss": "The complete set of inflectional forms associated with a variable lexeme.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          74
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "variable lexeme",
+      "primary form",
+      "secondary form"
+    ]
+  },
+  {
+    "term": "primary verb form",
+    "gloss": "A member of the primary part of a verb's inflectional paradigm; the section's lexical-verb table identifies preterite and present-tense forms, while auxiliaries also have negative primary forms.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          74,
+          75
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "preterite",
+      "negative form",
+      "secondary verb form"
+    ]
+  },
+  {
+    "term": "secondary verb form",
+    "gloss": "One of the plain form, gerund-participle, or past participle forms in the lexical-verb paradigm; modal auxiliaries lack this set.",
+    "traditional_terms": [
+      "non-finite verb forms"
+    ],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          74,
+          75
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "plain form",
+      "gerund-participle",
+      "past participle",
+      "defective modal auxiliary"
+    ]
+  },
+  {
+    "term": "negative form",
+    "gloss": "An additional primary inflectional form available to auxiliaries but not to lexical verbs.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          75
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "auxiliary verb",
+      "lexical verb",
+      "primary verb form"
+    ]
+  },
+  {
+    "term": "defective modal auxiliary",
+    "gloss": "A modal auxiliary whose paradigm lacks all secondary forms; some modal auxiliaries also lack a preterite form.",
+    "traditional_terms": [
+      "defective verb"
+    ],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          75
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "modal auxiliary",
+      "secondary verb form",
+      "preterite"
+    ]
+  },
+  {
+    "term": "invariant present form of modal auxiliaries",
+    "gloss": "The single present-tense form of a modal auxiliary, used with subjects of every person and number rather than taking a third-person-singular -s form.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          75
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "modal auxiliary",
+      "subject-verb agreement",
+      "present tense"
+    ]
+  },
+  {
+    "term": "person-number agreement in be",
+    "gloss": "The additional person-and-number distinctions displayed by be in its primary forms, compared with other verbs.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          75
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "be",
+      "subject-verb agreement",
+      "irrealis mood"
+    ]
   }
 ]
