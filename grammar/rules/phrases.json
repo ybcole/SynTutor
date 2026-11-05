@@ -1094,5 +1094,253 @@
       "CLS-012"
     ],
     "review_notes": "Only the 'most central' prepositions; which ones are not listed here. Do not use as an error rule."
+  },
+  {
+    "id": "PHR-016",
+    "domain": "phrases",
+    "concept": "functions of NPs beyond clause complements",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Besides subject, object, and predicative-complement functions in clause structure, NPs can function as PP complements, subject-determiners in NPs, clause adjuncts, modifiers in AdjPs, AdvPs and PPs, supplements, and vocatives.",
+    "condition": "When classifying an NP in context, consider the larger constituent it combines with: an NP may be a complement within a PP, a subject-determiner inside a larger NP, an adjunct or modifier, a supplement, or a vocative rather than a clause-level subject, object, or predicative complement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source says the adjunct, modifier, supplement, and vocative functions illustrated in [6iii–ix] accept only a restricted range of NPs; one or two NP expressions are specialised for modifying functions and do not occur as clause complements.",
+        "pages": [
+          327
+        ],
+        "example_ids": [
+          "x9"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The hikers spoke to the guide. [the guide: complement of a preposition]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "Mara’s notes were missing. [Mara’s: subject-determiner in an NP]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "We waited three hours. [three hours: clause adjunct]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The shelf was two metres high. [two metres: modifier in an AdjP]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x5",
+          "text": "They arrived two hours late. [two hours: modifier in an AdvP]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x6",
+          "text": "The wreck lay a mile under the sea. [a mile: modifier in a PP]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x7",
+          "text": "We met Lina, an experienced guide. [an experienced guide: supplement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x8",
+          "text": "Ava, your taxi is here. [Ava: vocative]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "note": "Illustrates a non-clausal NP function; the source restricts the range of NPs available for this and related peripheral functions.",
+          "tests_exception": true
+        },
+        {
+          "id": "x9",
+          "text": "The shelf was a good deal too narrow. [a good deal: NP modifier in an AdjP]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "note": "Tests an NP expression specialised for modifier use.",
+          "tests_exception": true
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          327
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "functions of noun phrases",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "PHR-010",
+      "CLS-046",
+      "COMP-001"
+    ],
+    "confidence": "high",
+    "review_notes": "The subject-determiner function is already represented by PHR-010; this record adds the broader inventory of NP functions and does not recreate that rule. The source's restricted-distribution caveat is retained. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "PHR-017",
+    "domain": "phrases",
+    "concept": "dummy there as an NP",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The semantically empty dummy there qualifies as an NP because it occurs in at least one of the clause-complement positions, most clearly as subject in an existential construction.",
+    "condition": "When determining whether a noun-headed unit belongs to the NP category, occurrence in at least one of subject, object, or predicative-complement function is sufficient; dummy there qualifies through subject function and also occurs as object in a related raised-object construction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Dummy there does not occur in all three major clause-complement positions; the source only establishes subject use and the related raised-object use.",
+        "pages": [
+          327,
+          328
+        ],
+        "example_ids": [
+          "x1",
+          "x2"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "There are several options available. [dummy there as subject]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "I believe there to be several options available. [dummy there in a raised-object construction]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          327,
+          328
+        ],
+        "pdf_pages": [
+          5,
+          6
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "dummy there; NP category",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "CLS-047",
+      "CLS-048"
+    ],
+    "confidence": "high",
+    "review_notes": "The source explicitly points back to Cambridge Chapter 4 §3.2.2 for the analysis of there as subject. The NP classification here is distinct from the already approved clause-structure analysis in CLS-048. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "PHR-018",
+    "domain": "phrases",
+    "concept": "bare role NPs",
+    "traditional_terms": [
+      "bare role expressions"
+    ],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A determinerless bare role expression such as president or deputy leader of the party qualifies as an NP when it functions as a predicative complement.",
+    "condition": "When a determinerless noun phrase denotes a role and functions as the predicative complement of a verb such as be, become, appoint, or elect, classify it as an NP despite the absence of a determiner.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Mira hopes to become president. [president: bare role NP as predicative complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The members elected Noor deputy leader. [deputy leader: bare role NP as predicative complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1 Distinctive properties of nouns and NPs",
+        "pages": [
+          328
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "bare role NPs",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "PHR-011",
+      "COMP-006",
+      "PHR-005"
+    ],
+    "confidence": "high",
+    "review_notes": "This is the category-membership observation. The separate restriction on using singular bare role NPs as subject or object is recorded as an exception to PHR-011. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
   }
 ]
