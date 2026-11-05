@@ -1,0 +1,1031 @@
+{
+  "meta": {
+    "chapter": 13,
+    "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+    "printed_pages": [
+      1099,
+      1101
+    ],
+    "pdf_pages": [
+      3,
+      5
+    ],
+    "page_offset": "Local PDF page = printed page - 1096.",
+    "processed_by": "OpenAI GPT-6",
+    "protocol_version": "1.0",
+    "highest_existing_rule_ids": {
+      "morphology": "MORPH-007",
+      "word_categories": "WCAT-017",
+      "phrases": "PHR-019",
+      "clauses": "CLS-070",
+      "complementation": "COMP-019",
+      "agreement": "AGR-002",
+      "other": "OTH-003"
+    },
+    "approval": "The user explicitly approved everything requiring approval in the Chapter 13 request on 2026-11-05. Independent second-pass AI review has not been performed.",
+    "input_gaps": [
+      "Burton-Roberts comparative source/index unavailable; all mappings unverified.",
+      "The opening paragraph of §1 and the beginning of §1.2 share the physical source pages with §1.1 but are excluded from this pass.",
+      "The source offers illustrative negative-polarity licensing environments, not a comprehensive inventory of word senses."
+    ]
+  },
+  "concepts": [
+    {
+      "term": "scalar comparison",
+      "gloss": "Comparison of degrees or positions on a gradable scale.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1099,
+            1100
+          ],
+          "pdf_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "non-scalar comparison"
+      ]
+    },
+    {
+      "term": "non-scalar comparison",
+      "gloss": "Comparison of identity, non-identity, likeness or unlikeness rather than gradable magnitude.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1099,
+            1100
+          ],
+          "pdf_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "scalar comparison"
+      ]
+    },
+    {
+      "term": "comparison of equality",
+      "gloss": "The comparative relation marked primarily by as across both scalar degree and non-scalar identity/likeness patterns.",
+      "traditional_terms": [
+        "equative (scalar use)"
+      ],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1099,
+            1100
+          ],
+          "pdf_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "comparison of inequality"
+      ]
+    },
+    {
+      "term": "comparison of inequality",
+      "gloss": "The comparative relation opposed to equality, including scalar degree differences and non-scalar difference.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1099,
+            1100
+          ],
+          "pdf_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "comparison of equality"
+      ]
+    },
+    {
+      "term": "scalar superiority",
+      "gloss": "A grammatical type of scalar inequality marked by -er or analytic more, independently of scale orientation.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1100
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "scalar inferiority"
+      ]
+    },
+    {
+      "term": "scalar inferiority",
+      "gloss": "A grammatical type of scalar inequality marked by less, independently of scale orientation.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1100
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "scalar superiority"
+      ]
+    },
+    {
+      "term": "scalar orientation",
+      "gloss": "The direction associated with the lexical meaning of a compared property, which can differ from the grammatical superiority/inferiority distinction.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1100
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "scalar superiority",
+        "scalar inferiority"
+      ]
+    },
+    {
+      "term": "scalar equality lower bound",
+      "gloss": "Ordinary scalar as ... as states that a compared degree reaches at least the standard; superiority may also hold.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1100,
+            1101
+          ],
+          "pdf_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "comparison of equality"
+      ]
+    },
+    {
+      "term": "analytic scalar comparison",
+      "gloss": "Degree comparison expressed with separate items such as more, less or as rather than a comparative suffix.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1100
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "scalar superiority",
+        "scalar inferiority"
+      ]
+    },
+    {
+      "term": "metalinguistic negation of comparative equality",
+      "gloss": "Negation used to reject the sufficiency of an as ... as description, allowing correction upward rather than denoting inferiority.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1101
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "scalar equality lower bound"
+      ]
+    },
+    {
+      "term": "comparative licensing of non-affirmative items",
+      "gloss": "Licensing of negative-polarity any/ever forms by three comparison types, contrasted with the plain non-scalar equality type.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1101
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "polarity-sensitive item"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "CLS-071",
+      "domain": "clauses",
+      "concept": "scalar versus non-scalar comparison",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Scalar comparison evaluates relative positions on a gradable scale, whereas non-scalar comparison concerns identity, difference, likeness, or unlikeness rather than degree.",
+      "condition": "Classify a comparison as scalar when the compared property permits degrees on a scale; classify it as non-scalar when the relation is primarily sameness or difference of entities or kinds instead of graded magnitude.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Asha is as tall as Noam. [scalar comparison of height]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Asha is taller than Noam. [scalar difference of degree]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "We took the same shuttle as yesterday. [non-scalar comparison of identity]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "We took a different shuttle from yesterday. [non-scalar comparison of non-identity]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1099,
+            1100
+          ],
+          "pdf_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "scalar versus non-scalar comparison",
+          "relation": "unverified",
+          "note": "Burton-Roberts source material and concept index were not available for comparison; no Burton-Roberts position is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-040",
+        "WCAT-013"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "The scalar/non-scalar distinction concerns comparison of degree versus identity/likeness. Scalar comparative inflection is central, but the source does not treat all comparative forms as an inflectional suffix. Owner approved; independent second-pass review outstanding."
+    },
+    {
+      "id": "CLS-072",
+      "domain": "clauses",
+      "concept": "equality versus inequality in scalar and non-scalar comparison",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Equality and inequality cross-cut scalar and non-scalar comparisons: scalar relations concern degrees, while non-scalar relations concern sameness or likeness versus difference; as marks major equality patterns and than certain inequality patterns.",
+      "condition": "When assigning equality or inequality, first determine whether the relation is scalar or non-scalar: an as ... as degree comparison and same ... as identity comparison both fall in the equality category, whereas -er/more ... than and different ... from/other ... than illustrate inequality.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "The preposition than with different is available in some varieties of English; do not generalise its distribution or reject its use outright.",
+          "pages": [
+            1100
+          ],
+          "example_ids": [
+            "x5"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Mara is as strong as Jo. [scalar equality]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Mara is stronger than Jo. [scalar inequality]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "This is the same model as the earlier prototype. [non-scalar equality]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "This is a different model from the earlier prototype. [non-scalar inequality]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "The design is different than the earlier prototype. [non-scalar inequality; accepted in some varieties]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1099,
+            1100
+          ],
+          "pdf_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "equality versus inequality in scalar and non-scalar comparison",
+          "relation": "unverified",
+          "note": "Burton-Roberts source material and concept index were not available for comparison; no Burton-Roberts position is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-071",
+        "CLS-040"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "The source treats equality/inequality as grammatical labels across the two dimensions. Non-scalar same does not imply numerical equality. Different than is explicitly variety-sensitive; owner-approved, no independent second pass."
+    },
+    {
+      "id": "CLS-073",
+      "domain": "clauses",
+      "concept": "superiority versus inferiority in scalar inequality",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Scalar inequality divides into superiority, expressed with comparative -er or analytic more, and inferiority, expressed with less; scalar equality is typically expressed with as.",
+      "condition": "For a scalar degree comparison, classify an -er/more form as grammatical superiority and a less form as grammatical inferiority relative to the scale named by the compared predicate, rather than regarding less as another way to mark comparative inflection.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The steel beam is heavier than the timber beam. [-er superiority]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The method is more reliable than the older method. [analytic superiority]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The alternative is less reliable than the older method. [inferiority]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "The steel beam is as heavy as the timber beam. [equality]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1100
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "superiority versus inferiority in scalar inequality",
+          "relation": "unverified",
+          "note": "Burton-Roberts source material and concept index were not available for comparison; no Burton-Roberts position is inferred."
+        }
+      ],
+      "related_rules": [
+        "WCAT-013",
+        "CLS-072"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "Human approval is explicitly given by the user's Chapter 13 request; no independent second-pass AI review was performed. This record must not be used as an automatic grammar-error prohibition."
+    },
+    {
+      "id": "CLS-074",
+      "domain": "clauses",
+      "concept": "lexical orientation versus grammatical superiority",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "The superiority/inferiority distinction is grammatical, while the direction of the measured scale is determined by the lexical meaning of the compared adjective; a comparative such as younger is still grammatically a superiority comparison.",
+      "condition": "When classifying a graded comparative, use the form -er/more versus less to identify grammatical superiority or inferiority, and separately interpret whether the lexical property orients the scale toward a larger or smaller physical value.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The younger cyclist was seventeen. [younger: grammatical superiority on the youth-oriented scale]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The older cyclist was nineteen. [older: grammatical superiority on the age-oriented scale]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The route is less narrow than the old one. [grammatical inferiority despite greater width]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "The route is narrower than the old one. [grammatical superiority despite lesser width]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1100
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "lexical orientation versus grammatical superiority",
+          "relation": "unverified",
+          "note": "Burton-Roberts source material and concept index were not available for comparison; no Burton-Roberts position is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-073",
+        "WCAT-013"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "The reference point is the lexical scale, not a universal physical-more-than ordering. In particular younger is still superiority although the age is lower; source p. 1100."
+    },
+    {
+      "id": "CLS-075",
+      "domain": "clauses",
+      "concept": "lower-bound interpretation of scalar equality",
+      "traditional_terms": [
+        "equative"
+      ],
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "An unnegated scalar equality comparison normally sets a lower bound: the compared degree is at least that of the comparison standard and may exceed it, rather than necessarily being exactly equal.",
+      "condition": "When interpreting an affirmative scalar as ... as comparison without a contextual requirement for exact identity of measurement, treat it as excluding inferiority but allowing equality or superiority; allow context to strengthen the pragmatic suggestion of exact equality.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "Certain forms and discourse contexts strongly favour, or pragmatically suggest, an exact-equality interpretation even though the ordinary scalar equality comparison supplies a lower bound.",
+          "pages": [
+            1101
+          ],
+          "example_ids": [
+            "x3"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Nina is as quick as Paulo; she may be quicker. [equality comparison permits superiority]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The new engine is as efficient as the old one. [at least equal efficiency]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The student made as many as twenty corrections. [number expression may strongly suggest the stated exact count]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          },
+          {
+            "id": "x4",
+            "text": "The new bridge is as wide as the old bridge, perhaps even wider. [lower-bound semantics]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1100,
+            1101
+          ],
+          "pdf_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "lower-bound interpretation of scalar equality",
+          "relation": "unverified",
+          "note": "Burton-Roberts source material and concept index were not available for comparison; no Burton-Roberts position is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-072",
+        "CLS-040"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "The source says normally and notes contextual variation; equative is the traditional term but Cambridge also treats the construction as comparative. Do not infer that as ... as always means exact equality."
+    },
+    {
+      "id": "CLS-076",
+      "domain": "clauses",
+      "concept": "ordinary negation of scalar equality yields inferiority",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "Under ordinary truth-functional negation, denying an as ... as scalar comparison entails that the compared degree is lower than the standard; metalinguistic negation may instead reject the wording as insufficiently strong while the degree is higher.",
+      "condition": "Where a scalar equality comparison is directly negated, distinguish ordinary negation of the lower-bound relation from metalinguistic correction of an overly weak assertion; only the ordinary-negation interpretation entails inferiority.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "Metalinguistic negation can reject as ... as as an insufficient description and follow it with an assertion of superiority, rather than entailing inferiority.",
+          "pages": [
+            1101
+          ],
+          "example_ids": [
+            "x3"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Lena isn't as patient as Omar. [ordinary negation: Lena is less patient]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The new model isn't as quiet as the prototype. [ordinary negation: less quiet]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The new model isn't as quiet as the prototype—it's much quieter! [metalinguistic correction, not ordinary denial]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1101
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "ordinary negation of scalar equality yields inferiority",
+          "relation": "unverified",
+          "note": "Burton-Roberts source material and concept index were not available for comparison; no Burton-Roberts position is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-075",
+        "CLS-024"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "Footnote 4 on p. 1101 explicitly points to Chapter 9 §1.2 for metalinguistic negation. The main-text entailment is explicitly restricted to ordinary negation."
+    },
+    {
+      "id": "CLS-077",
+      "domain": "clauses",
+      "concept": "negative-polarity items in comparative constructions",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "Negatively oriented any/ever-type items are licensed by scalar inequality, scalar equality and non-scalar inequality comparatives, but non-scalar equality by itself does not provide the same licensing in the illustrated negative-polarity reading.",
+      "condition": "When interpreting a negative-polarity sense of any, anyone, anything or ever in a comparison, check the comparative subtype: scalar inequality, scalar equality or non-scalar inequality can supply a licensing environment even without overt clause negation, while a plain affirmative non-scalar same ... as comparison normally cannot without another licenser.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "Free-choice senses of any and independent negative-polarity licensers are distinct from the negative-polarity use in these plain affirmative comparison examples; absence of comparative licensing is not a ban on every surface sequence same ... as any.",
+          "pages": [
+            1101
+          ],
+          "example_ids": [
+            "x4"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The cyclist finished faster than anyone had predicted. [scalar inequality licenses anyone]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "She climbed as high as she had ever climbed before. [scalar equality licenses ever]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The solution was different from anything we had previously tried. [non-scalar inequality licenses anything]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "?The solution was the same as anything we had previously tried. [non-scalar equality does not itself license the intended negative-polarity reading]",
+            "origin": "ai_authored",
+            "judgement": "unusual",
+            "tests_exception": true
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 13,
+          "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+          "pages": [
+            1101
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "negative-polarity items in comparative constructions",
+          "relation": "unverified",
+          "note": "Burton-Roberts source material and concept index were not available for comparison; no Burton-Roberts position is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-022",
+        "CLS-071",
+        "CLS-072"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "The source explicitly contrasts three licensing categories with a starred non-scalar equality example. Avoid a global ban on any with same; retain CLS-022's separate sense-dependent/free-choice exception."
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "CLS-071",
+      "to": "CLS-040",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-071",
+      "to": "WCAT-013",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-072",
+      "to": "CLS-071",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-072",
+      "to": "CLS-040",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-073",
+      "to": "WCAT-013",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-073",
+      "to": "CLS-072",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-074",
+      "to": "CLS-073",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-074",
+      "to": "WCAT-013",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-075",
+      "to": "CLS-072",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-075",
+      "to": "CLS-040",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-076",
+      "to": "CLS-075",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-076",
+      "to": "CLS-024",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-077",
+      "to": "CLS-022",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-077",
+      "to": "CLS-071",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-077",
+      "to": "CLS-072",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-076",
+      "to": "Cambridge Chapter 9 §1.2 (metalinguistic negation)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-072",
+      "to": "Cambridge Chapter 13 §5.4 (different from/to/than)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-040",
+      "to": "Cambridge Chapter 11 §8.1 (than as preposition)",
+      "relation": "depends_on",
+      "verified": false
+    }
+  ],
+  "conflicts": [
+    {
+      "rules": [
+        "CLS-022",
+        "CLS-077"
+      ],
+      "kind": "cambridge_internal",
+      "description": "The earlier approved CLS-022 restricted negatively oriented items to negation, interrogatives or conditionals and excluded all positive assertions, but Chapter 13 §1.1 pp. 1101 supplies affirmative scalar and non-scalar comparatives licensing some such items.",
+      "proposed_resolution": "Approved and implemented: expand CLS-022 to recognise the three licensed comparative categories for negative-polarity senses while retaining separate restrictions for other affirmative clauses, free-choice any, and non-scalar same ... as constructions.",
+      "needs_human": false,
+      "status": "RESOLVED",
+      "approval": "Explicit user approval in this Chapter 13 request"
+    }
+  ],
+  "uncertain_items": [
+    {
+      "pages": [
+        1101
+      ],
+      "issue": "The section illustrates the licensing contrast for negatively oriented any/ever in four comparative patterns but does not enumerate every sense and every independent negative-polarity licenser.",
+      "what_is_needed": "Keep the rule restricted to the identified negative-polarity readings and source patterns; verify extensions from the fuller Chapter 9 discussion if needed."
+    }
+  ],
+  "coverage_report": {
+    "pages_fully_covered": [
+      {
+        "printed_pages": [
+          1100
+        ],
+        "pdf_pages": [
+          4
+        ],
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality"
+      }
+    ],
+    "pages_partially_covered": [
+      {
+        "printed_pages": [
+          1099
+        ],
+        "pdf_pages": [
+          3
+        ],
+        "reason": "§1 opening overview appears above §1.1; only §1.1 text is extracted."
+      },
+      {
+        "printed_pages": [
+          1101
+        ],
+        "pdf_pages": [
+          5
+        ],
+        "reason": "Only the concluding §1.1 discussion, examples and its footnotes; §1.2 starts later on the page."
+      }
+    ],
+    "pages_not_covered": [
+      {
+        "printed_pages": [
+          1101,
+          1167
+        ],
+        "pdf_pages": [
+          5,
+          71
+        ],
+        "reason": "§1.2 through §6.3 are outside this single-section pass; page 1101 is partially covered."
+      }
+    ],
+    "counts": {
+      "concepts": 11,
+      "rules": {
+        "constraint": 0,
+        "descriptive_generalization": 3,
+        "classification": 4,
+        "stylistic_or_prescriptive": 0,
+        "variety_restricted": 0
+      },
+      "examples": {
+        "ai_authored": 28,
+        "book": 0
+      },
+      "cross_references": 18,
+      "conflicts": 1,
+      "uncertain_items": 1
+    },
+    "existing_rule_refinements": [
+      "CLS-022",
+      "CLS-040",
+      "WCAT-013"
+    ],
+    "skipped_subsections": [
+      {
+        "section": "§1 opening overview and §§1.2–6.3",
+        "reason": "Protocol requires a single printed subsection pass, and §1.1 was the first requested subsection."
+      }
+    ]
+  }
+}

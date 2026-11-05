@@ -1176,6 +1176,17 @@
         "pdf_pages": [
           80
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1101
+        ],
+        "pdf_pages": [
+          5
+        ]
       }
     ],
     "related_concepts": []
@@ -1232,6 +1243,17 @@
         ],
         "pdf_pages": [
           80
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1101
+        ],
+        "pdf_pages": [
+          5
         ]
       }
     ],
@@ -1606,6 +1628,17 @@
         ],
         "pdf_pages": [
           84
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1101
+        ],
+        "pdf_pages": [
+          5
         ]
       }
     ],
@@ -3761,6 +3794,251 @@
     "related_concepts": [
       "relative construction",
       "fused relative construction"
+    ]
+  },
+  {
+    "term": "scalar comparison",
+    "gloss": "Comparison of degrees or positions on a gradable scale.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1099,
+          1100
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "non-scalar comparison"
+    ]
+  },
+  {
+    "term": "non-scalar comparison",
+    "gloss": "Comparison of identity, non-identity, likeness or unlikeness rather than gradable magnitude.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1099,
+          1100
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "scalar comparison"
+    ]
+  },
+  {
+    "term": "comparison of equality",
+    "gloss": "The comparative relation marked primarily by as across both scalar degree and non-scalar identity/likeness patterns.",
+    "traditional_terms": [
+      "equative (scalar use)"
+    ],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1099,
+          1100
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "comparison of inequality"
+    ]
+  },
+  {
+    "term": "comparison of inequality",
+    "gloss": "The comparative relation opposed to equality, including scalar degree differences and non-scalar difference.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1099,
+          1100
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "comparison of equality"
+    ]
+  },
+  {
+    "term": "scalar superiority",
+    "gloss": "A grammatical type of scalar inequality marked by -er or analytic more, independently of scale orientation.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1100
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "scalar inferiority"
+    ]
+  },
+  {
+    "term": "scalar inferiority",
+    "gloss": "A grammatical type of scalar inequality marked by less, independently of scale orientation.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1100
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "scalar superiority"
+    ]
+  },
+  {
+    "term": "scalar orientation",
+    "gloss": "The direction associated with the lexical meaning of a compared property, which can differ from the grammatical superiority/inferiority distinction.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1100
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "scalar superiority",
+      "scalar inferiority"
+    ]
+  },
+  {
+    "term": "scalar equality lower bound",
+    "gloss": "Ordinary scalar as ... as states that a compared degree reaches at least the standard; superiority may also hold.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1100,
+          1101
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "comparison of equality"
+    ]
+  },
+  {
+    "term": "analytic scalar comparison",
+    "gloss": "Degree comparison expressed with separate items such as more, less or as rather than a comparative suffix.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1100
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "scalar superiority",
+      "scalar inferiority"
+    ]
+  },
+  {
+    "term": "metalinguistic negation of comparative equality",
+    "gloss": "Negation used to reject the sufficiency of an as ... as description, allowing correction upward rather than denoting inferiority.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1101
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "scalar equality lower bound"
+    ]
+  },
+  {
+    "term": "comparative licensing of non-affirmative items",
+    "gloss": "Licensing of negative-polarity any/ever forms by three comparison types, contrasted with the plain non-scalar equality type.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1101
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "polarity-sensitive item"
     ]
   }
 ]
