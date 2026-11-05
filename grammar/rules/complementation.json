@@ -700,5 +700,555 @@
       "CLS-017"
     ],
     "review_notes": "'Mostly adjuncts' and 'generally complements' are hedged; Ch. 4/8 hold the tests."
+  },
+  {
+    "id": "COMP-011",
+    "domain": "complementation",
+    "concept": "transitivity of verb uses and dual-transitivity verbs",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Transitivity classifies both clauses and particular uses of verbs: a dual-transitivity verb has one use with an object and another without one.",
+    "condition": "When classifying a canonical clause by its internal core complements, determine whether that particular use of the verb has an object; do not assume that every use of a lexeme has the same transitivity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Mira read quietly. [intransitive use of read]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "Mira read the instructions. [transitive use of read]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The window opened. [intransitive use of open]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "Nia opened the window. [transitive use of open]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          216,
+          217
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "transitivity of verb uses and dual-transitivity verbs",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "COMP-002",
+      "COMP-004"
+    ],
+    "confidence": "high",
+    "review_notes": "The section names verbs that occur both with and without an object as dual-transitivity verbs. This refines, rather than replaces, the existing COMP-002 treatment of verb subclasses. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "COMP-012",
+    "domain": "complementation",
+    "concept": "core and non-core complements",
+    "traditional_terms": [],
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Core complements are prototypically NPs related directly to the verb, whereas non-core complements are prototypically PPs that relate their NP to the verb through a preposition.",
+    "condition": "When describing the prototypical form and relation of a verb complement in clause structure, distinguish direct NP core complements from PP non-core complements; the distinction is a prototype, not an exceptionless form requirement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The NP/PP pattern is prototypical rather than exhaustive: core predicative complements can also be realised by AdjPs as well as NPs.",
+        "pages": [
+          217
+        ],
+        "example_ids": [
+          "x3"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Ravi sent Mira the parcel. [the subject and both object NPs are core complements]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "Ravi sent the parcel to Mira. [to Mira is a non-core PP complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The visitors seemed remarkably patient. [AdjP predicative complement; core complement beyond the NP prototype]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "note": "Tests the stated restriction on the NP prototype.",
+          "tests_exception": true
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          216,
+          217
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "core and non-core complements",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "COMP-001",
+      "COMP-005",
+      "COMP-006"
+    ],
+    "confidence": "high",
+    "review_notes": "The source describes NPs and PPs as prototypical forms and later explicitly extends core complements to AdjPs when discussing predicative complements. The rule is therefore descriptive, not a grammatical form constraint. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "COMP-013",
+    "domain": "complementation",
+    "concept": "oblique",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An oblique is an NP related to the verb indirectly through a preposition, rather than directly as a core NP complement.",
+    "condition": "When an NP occurs inside a PP that functions as a complement of the verb, classify the PP as the verb's complement and the NP inside that PP as an oblique.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Ava gave Leo a book. [Leo is an NP core complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "Ava gave a book to Leo. [to Leo is a PP complement; Leo is its oblique]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          216
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "oblique",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "COMP-005",
+      "COMP-012"
+    ],
+    "confidence": "high",
+    "review_notes": "The source also notes that the preposition can contribute to identifying the semantic role of the oblique; that semantic contribution is not made a separate constraint here. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "COMP-014",
+    "domain": "complementation",
+    "concept": "predicand",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The predicand of a predicative complement is the entity to which that complement attributes a property; it may be the clause subject or an object, and it is not thereby the syntactic subject of the predicative complement.",
+    "condition": "In a clause containing a predicative complement, identify the NP or pronoun of which the predicative complement makes a predication; label that constituent the predicand whether it functions as subject or object of the governing verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Noah seemed calm. [Noah is subject of seemed and predicand of calm]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The coach considered Noah calm. [Noah is object of considered and predicand of calm]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          217
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "predicand",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "COMP-006"
+    ],
+    "confidence": "high",
+    "review_notes": "This adds Cambridge's explicit term predicand to the existing predicative-complement classification; it does not re-create COMP-006. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "COMP-015",
+    "domain": "complementation",
+    "concept": "orientation of predicative complements",
+    "traditional_terms": [],
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Predicative complements are normally subject-oriented in complex-intransitive clauses and object-oriented in complex-transitive clauses; in a passive counterpart, an object-oriented predicative complement is re-oriented to the subject.",
+    "condition": "When a predicative complement occurs in a complex-intransitive or complex-transitive construction, determine its orientation by the predicand; in a passive counterpart of a complex-transitive clause, the predicand becomes subject and the predicative complement is subject-oriented.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Elena seemed calm. [subject-oriented predicative complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The panel considered Elena calm. [object-oriented predicative complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "Elena was considered calm. [passive; predicative complement re-oriented to subject]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          217
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "subject-oriented and object-oriented predicative complements",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "COMP-006",
+      "COMP-014"
+    ],
+    "confidence": "high",
+    "review_notes": "The source hedges the predictability of orientation with 'normally'; this is retained as a descriptive generalization, not an absolute constraint. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "COMP-016",
+    "domain": "complementation",
+    "concept": "predicative complement construction versus finite clause complement construction",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clause with a predicative complement and a corresponding construction with a finite subordinate clause are syntactically distinct, even when they convey closely related predications.",
+    "condition": "When comparing a matrix verb's predicative-complement pattern with a finite-clause pattern, distinguish the predicative complement directly licensed in the first construction from the subordinate clause functioning as complement in the second.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Rae seemed nervous. [predicative complement construction]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "It seemed that Rae was nervous. [finite subordinate clause complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "Rae considered Malik reliable. [predicative complement construction]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "Rae considered that Malik was reliable. [finite subordinate clause complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          218
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "predicative complements and finite clause complements",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "COMP-006",
+      "CLS-015"
+    ],
+    "confidence": "high",
+    "review_notes": "The source says the sets of verbs entering the two patterns overlap only to a relatively small extent. The examples here show verbs explicitly presented as allowing both patterns; the record does not generalise that all such verbs allow both. The chapter introduction names Ch. 11 for finite clause complements. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "COMP-017",
+    "domain": "complementation",
+    "concept": "copular clause",
+    "traditional_terms": [
+      "copula"
+    ],
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In this chapter's terminology, a copular clause is the common complex-intransitive construction with be as predicator and a predicative complement.",
+    "condition": "When a complex-intransitive clause has be as its predicator and a predicative complement related to its subject, classify it as a copular clause under the terminology adopted in this chapter.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Although some usage applies 'copular' more broadly to complex-intransitive constructions with verbs other than be, this chapter reserves the term for the be construction and uses complex-intransitive for the broader pattern.",
+        "pages": [
+          218
+        ],
+        "example_ids": [
+          "x2"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Sam was exhausted. [copular clause: be as predicator]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "Sam became exhausted. [complex-intransitive, but not called copular under this chapter's narrower terminology]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "note": "Tests the chapter's restriction of the term copular.",
+          "tests_exception": true
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          218
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "copular clause",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "COMP-006",
+      "COMP-007"
+    ],
+    "confidence": "high",
+    "review_notes": "The source explicitly records broader usage elsewhere, then states that this chapter restricts 'copular' to the be construction. This is a terminology choice, not a claim that other complex-intransitive verbs are ungrammatical. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "COMP-018",
+    "domain": "complementation",
+    "concept": "valency",
+    "traditional_terms": [
+      "monovalent",
+      "bivalent",
+      "trivalent",
+      "quadrivalent"
+    ],
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In this chapter, valency classifies a verb by the number of syntactic complements it combines with: one, two, three, or four complements correspond to monovalent, bivalent, trivalent, and quadrivalent patterns.",
+    "condition": "When assigning valency in this chapter's sense, count the clause's syntactic complements, including the subject and any internal complements, without using transitivity alone as the count.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Mia slept. [monovalent: one complement, the subject]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The price depends on the supplier. [bivalent: subject and PP complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "Owen sent Mira a parcel. [trivalent: subject and two object complements]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "I bet you ten dollars that the train will be late. [quadrivalent: subject and three further complements]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1 Types of complement and canonical clause structures",
+        "pages": [
+          218,
+          219
+        ],
+        "pdf_pages": [
+          6,
+          7
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "valency and valency classes",
+        "relation": "unverified",
+        "note": "No Burton-Roberts source material for this concept was supplied or found in the repository's expected source directory."
+      }
+    ],
+    "related_rules": [
+      "COMP-001",
+      "COMP-004",
+      "COMP-005"
+    ],
+    "confidence": "high",
+    "review_notes": "Footnote 7 notes alternative scholarly uses: some use valency for number plus type of complements (for which this chapter uses complementation), while others count semantic arguments instead of syntactic complements (adicity). This record preserves the chapter's local definition and does not generalise it to all theoretical traditions. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
   }
 ]
