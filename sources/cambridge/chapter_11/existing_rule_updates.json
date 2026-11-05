@@ -1,0 +1,26 @@
+[
+  {
+    "rule_id": "CLS-011",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 11 §1, printed pages 949",
+    "change": "Ch. 11 §1 p. 949 identifies prenuclear interrogative phrase plus uninverted subject–predicator order as one marker of subordinate interrogative form; the corresponding main interrogative typically has inversion."
+  },
+  {
+    "rule_id": "CLS-015",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 11 §1, printed pages 950",
+    "change": "Ch. 11 §1 p. 950 confirms that finite subordinate clauses include subjunctives despite use of the plain form, as well as clauses with present, preterite or irrealis forms. Non-finite clauses include infinitival, gerund-participial and past-participial constructions."
+  },
+  {
+    "rule_id": "CLS-029",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 11 §1, printed pages 950",
+    "change": "Ch. 11 §1 p. 950 confirms relative, comparative and content as the principal finite subordinate types; content is the default, lacking the special gap properties of relative and comparative clauses. This does not convert the descriptive default into a grammatical prohibition."
+  },
+  {
+    "rule_id": "CLS-036",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 11 §1, printed pages 950",
+    "change": "Ch. 11 §1 p. 950 explicitly describes supplementary wh-relatives as subordinate in form, though supplements are not integrated syntactic dependents."
+  }
+]
