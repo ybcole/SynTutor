@@ -1,0 +1,1016 @@
+{
+  "meta": {
+    "chapter": 17,
+    "section": "§1.1 The concept of deixis",
+    "printed_pages": [
+      1451,
+      1453
+    ],
+    "pdf_pages": [
+      3,
+      5
+    ],
+    "page_offset": "PDF page = printed page - 1448",
+    "processed_by": "OpenAI GPT-6",
+    "protocol_version": "1.0",
+    "highest_existing_rule_ids": {
+      "morphology": "MORPH-007",
+      "word_categories": "WCAT-017",
+      "phrases": "PHR-019",
+      "clauses": "CLS-098",
+      "complementation": "COMP-019",
+      "agreement": "AGR-002",
+      "other": "OTH-003"
+    },
+    "approval": "User explicitly approved all necessary Chapter 17 changes on November 5, 2026. No independent second-pass AI review has been performed.",
+    "input_gaps": [
+      "Burton-Roberts source or concept index not available; mappings unverified.",
+      "Printed page 1453 contains both §1.1 and the opening of §1.2; the latter is excluded.",
+      "§10.2 supplies detailed conditions for shifted deictic-centre interpretations and has not yet been extracted."
+    ]
+  },
+  "concepts": [
+    {
+      "term": "utterance-act",
+      "gloss": "An occasion of spoken or written expression with a time, place, speaker/writer, and addressee.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1451
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "temporal deixis",
+      "gloss": "Time interpreted relative to the utterance act or an available shifted perspective.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1451
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "locative deixis",
+      "gloss": "Place interpreted in relation to utterance location or relative proximity.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1451
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "person deixis",
+      "gloss": "Interpretation of first/second-person forms from the roles of speaker and addressee.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1451
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "deictic reference anchoring",
+      "gloss": "Systematic interpretation through utterance-act parameters, unlike ordinary variation in proper-name reference.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1451
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "non-deictic spatial or temporal location",
+      "gloss": "Location specified by named places or non-utterance reference events.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1452
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "deictic expression",
+      "gloss": "Whole phrase or word whose referent is identified through deixis.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1452
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "deictic marker",
+      "gloss": "Item encoding deictic information, possibly within a larger deictic expression.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1452
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "indexing act",
+      "gloss": "Pointing, gaze, touch or graphic mark used to clarify deictic reference.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1452,
+            1453
+          ],
+          "pdf_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "deictic centre",
+      "gloss": "Perspective from which deictic reference is interpreted, ordinarily the current speaker.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1453
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "speaker-centred deixis",
+      "gloss": "Default reading of deictic expressions from a speaker/writer perspective.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1453
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "reader-centred deixis",
+      "gloss": "Interpretation of a notice from its current reader's temporal perspective.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1453
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    },
+    {
+      "term": "shifted deictic centre",
+      "gloss": "Deictic perspective transferred to a reader or represented thinker in particular contexts.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1453
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "deixis"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "OTH-004",
+      "domain": "other",
+      "concept": "utterance-act anchoring of deictic reference",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "text",
+      "statement": "Deictic reference shifts systematically with the time, place or participants of an utterance-act; a proper name may vary in reference without having such a deictic meaning.",
+      "condition": "When interpreting I, now, here, this or that, identify the relevant utterance-act anchor; contrast with a proper name whose choice of bearer is context-dependent but not systematically anchored to utterance roles.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "A says, 'I will call tomorrow.' [I refers to A]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "B says, 'I will call tomorrow.' [I refers to B]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "A says, 'Casey called.' [the proper name is not deictic]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "B says, 'Casey called.' [a different Casey may be intended]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1451
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "utterance-act anchoring of deictic reference",
+          "relation": "unverified",
+          "note": "Burton-Roberts source/index unavailable; no verified comparison."
+        }
+      ],
+      "related_rules": [
+        "OTH-001"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    },
+    {
+      "id": "OTH-005",
+      "domain": "other",
+      "concept": "deictic and non-deictic spatial and temporal location",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "text",
+      "statement": "Time and place may be located deictically relative to an utterance-act or non-deictically relative to a named place or independently identified event.",
+      "condition": "Classify here and last week as utterance-relative when so used; distinguish explicit place-names and times measured from independently established events, which do not acquire deictic status merely by varying in reference.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Our courier works here. [utterance-relative place]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Our courier works in Bristol. [named non-deictic place]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "We arrived last Friday. [deictic time]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "We arrived the Friday after the conference. [non-deictic time]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1452
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "deictic and non-deictic spatial and temporal location",
+          "relation": "unverified",
+          "note": "Burton-Roberts source/index unavailable; no verified comparison."
+        }
+      ],
+      "related_rules": [
+        "OTH-001",
+        "OTH-004"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    },
+    {
+      "id": "OTH-006",
+      "domain": "other",
+      "concept": "deictic expression versus deictic marker",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "text",
+      "statement": "A deictic expression is the whole utterance-anchored referring constituent; its deictic marker is the word that encodes this property, which may be a proper part of the expression or the entire expression.",
+      "condition": "In those blue folders, treat the NP as the expression and those as its marker; in last month, last is the marker; with a stand-alone item such as here, marker and expression coincide.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Put those blue folders away. [those = marker, whole NP = expression]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "We met last month. [last = marker, last month = expression]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Please stand here. [here = marker and expression]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "I can reach this. [this = marker and expression]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1452
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "deictic expression versus deictic marker",
+          "relation": "unverified",
+          "note": "Burton-Roberts source/index unavailable; no verified comparison."
+        }
+      ],
+      "related_rules": [
+        "OTH-001",
+        "OTH-005"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    },
+    {
+      "id": "OTH-007",
+      "domain": "other",
+      "concept": "indexing acts in deictic interpretation",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "text",
+      "statement": "Pointing, gaze, touch and diagrammatic marks can identify deictic referents and cooperate with nominal descriptions; gestures are sometimes necessary but are not universally required.",
+      "condition": "Where here, there, this, that or another locally dependent form is ambiguous among visible alternatives, examine accompanying gesture, eye contact or diagram arrows; when the context is clear, no special indexing act need be present.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "[Pointing at a shelf] Place the parcel there. [gesture identifies place]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "[Pointing among red binders] Please pass that red binder. [gesture and words cooperate]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "[Beside the only door] Wait here. [no explicit gesture needed]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "[Arrow on a printed map] Our cabin is here. [diagrammatic index]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1452,
+            1453
+          ],
+          "pdf_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "indexing acts in deictic interpretation",
+          "relation": "unverified",
+          "note": "Burton-Roberts source/index unavailable; no verified comparison."
+        }
+      ],
+      "related_rules": [
+        "OTH-001",
+        "OTH-006"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    },
+    {
+      "id": "OTH-008",
+      "domain": "other",
+      "concept": "speaker-centred deictic centre",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "text",
+      "statement": "The deictic centre is ordinarily the speaker or writer and changes between speakers; expressions written in a personal message may be anchored to the time of writing rather than reading.",
+      "condition": "Interpret first-person, local and temporal deictics by default from the current utterer's perspective and recalculate that anchor after a conversational speaker change, subject to specially shifted-centre uses.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "Deictic interpretation can shift from the speaker/writer to a reader of a standing notice or a represented thinker's viewpoint, as the same subsection expressly notes.",
+          "pages": [
+            1453
+          ],
+          "example_ids": [
+            "x5"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "A: 'I am sitting here.' [I/here anchored to A]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "B: 'I am sitting here too.' [I/here anchored to B]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "In a letter: 'I began this draft two hours ago.' [writer's time]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "'This cup is warmer than that one.' [proximity assessed from speaker]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "[Notice] 'Now submit your ticket.' [now shifts to each reader's time rather than the writer's]",
+            "origin": "ai_authored",
+            "judgement": "possible",
+            "tests_exception": true
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1453
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "speaker-centred deictic centre",
+          "relation": "unverified",
+          "note": "Burton-Roberts source/index unavailable; no verified comparison."
+        }
+      ],
+      "related_rules": [
+        "OTH-001",
+        "OTH-009",
+        "OTH-010"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    },
+    {
+      "id": "OTH-009",
+      "domain": "other",
+      "concept": "reader-centred deixis in standing written notices",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "text",
+      "statement": "A standing written notice can anchor now to the time each addressee reads it, rather than to the author's writing time.",
+      "condition": "When the utterance is a notice addressed to successive readers, interpret an instruction's now relative to the reader's occasion of reading or action; do not extend this to all written occurrences of now.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "[Sign beside sink] 'Now rinse your hands.' [reader's time]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "[A different reader encounters the sign later] 'Now rinse your hands.' [time shifts]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "[Letter] 'I am writing now.' [writer's time, contrasting context]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1453
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "reader-centred deixis in standing written notices",
+          "relation": "unverified",
+          "note": "Burton-Roberts source/index unavailable; no verified comparison."
+        }
+      ],
+      "related_rules": [
+        "OTH-001",
+        "OTH-008"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    },
+    {
+      "id": "OTH-010",
+      "domain": "other",
+      "concept": "deictic-centre shift in reported perspective",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "text",
+      "statement": "Temporal expressions in reports of another person's thoughts may be anchored to the reported person's perspective rather than to the actual utterance; both readings can be possible.",
+      "condition": "In Mina realised the guests had left two days ago, allow ago to locate an interval before Mina's realisation or before the current speaker's utterance, without treating shifted interpretation as obligatory.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Mina realised the guests had left two days ago. [possible Mina-centred reading]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Mina realised the guests had left two days ago. [possible speaker-centred reading]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The investigator thought the parcel had arrived a week ago. [reported viewpoint may anchor ago]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "The parcel arrived a week ago. [normal utterance-centred reference]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 17,
+          "section": "§1.1 The concept of deixis",
+          "pages": [
+            1453
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "deictic-centre shift in reported perspective",
+          "relation": "unverified",
+          "note": "Burton-Roberts source/index unavailable; no verified comparison."
+        }
+      ],
+      "related_rules": [
+        "OTH-001",
+        "OTH-008",
+        "OTH-009"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "OTH-004",
+      "to": "OTH-001",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-005",
+      "to": "OTH-001",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-005",
+      "to": "OTH-004",
+      "relation": "contrasts",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-006",
+      "to": "OTH-001",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-006",
+      "to": "OTH-005",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-007",
+      "to": "OTH-006",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-007",
+      "to": "OTH-001",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-008",
+      "to": "OTH-001",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-008",
+      "to": "OTH-004",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-009",
+      "to": "OTH-008",
+      "relation": "contrasts",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-009",
+      "to": "OTH-001",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-010",
+      "to": "OTH-008",
+      "relation": "contrasts",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-010",
+      "to": "OTH-009",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-001",
+      "to": "OTH-009",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-001",
+      "to": "OTH-010",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-010",
+      "to": "Cambridge Chapter 17 §10.2 (shift of deictic centre)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "OTH-006",
+      "to": "Cambridge Chapter 17 §5 (demonstratives)",
+      "relation": "depends_on",
+      "verified": false
+    }
+  ],
+  "conflicts": [
+    {
+      "rules": [
+        "OTH-001",
+        "OTH-009",
+        "OTH-010"
+      ],
+      "kind": "cambridge_internal",
+      "description": "The earlier approved OTH-001 rule could be read as making utterance-act anchoring invariably speaker/writer-centred. Chapter 17 §1.1 p. 1453 explicitly describes reader-centred and reported-perspective exceptions.",
+      "proposed_resolution": "RESOLVED with the owner's blanket approval: qualify OTH-001 as ordinarily speaker-centred, record shifted-centre cases in OTH-009/OTH-010, and keep the historical overlap in the conflict log.",
+      "needs_human": false,
+      "status": "RESOLVED",
+      "approval": "Owner expressly approved all required Chapter 17 changes on 2026-11-05."
+    }
+  ],
+  "uncertain_items": [
+    {
+      "pages": [
+        1453
+      ],
+      "issue": "§1.1 illustrates optional perspective-shifted ago in reported thought but defers the broader account to §10.2.",
+      "what_is_needed": "Process §10.2 before generalising temporal-centre shifts to other constructions or expressions."
+    },
+    {
+      "pages": [
+        1452,
+        1453
+      ],
+      "issue": "The need for indexing acts depends on visibility, referent distinctiveness, discourse and physical context, and writing medium.",
+      "what_is_needed": "Keep indexing acts as contextual descriptive analysis and avoid a blanket grammaticality test requiring gestures."
+    }
+  ],
+  "coverage_report": {
+    "pages_fully_covered": [
+      {
+        "printed_pages": [
+          1451,
+          1452
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ],
+        "section": "§1.1 The concept of deixis"
+      }
+    ],
+    "pages_partially_covered": [
+      {
+        "printed_pages": [
+          1453
+        ],
+        "pdf_pages": [
+          5
+        ],
+        "reason": "Only the end of §1.1 is included; §1.2 begins on the same page."
+      }
+    ],
+    "pages_not_covered": [
+      {
+        "printed_pages": [
+          1453,
+          1564
+        ],
+        "pdf_pages": [
+          5,
+          116
+        ],
+        "reason": "§1.2 through §10.2 and the remainder of p. 1453 have not been processed."
+      }
+    ],
+    "counts": {
+      "concepts": 13,
+      "rules": {
+        "constraint": 0,
+        "descriptive_generalization": 3,
+        "classification": 4,
+        "stylistic_or_prescriptive": 0,
+        "variety_restricted": 0
+      },
+      "examples": {
+        "ai_authored": 28,
+        "book": 0
+      },
+      "cross_references": 17,
+      "conflicts": 1,
+      "uncertain_items": 2
+    },
+    "existing_rule_refinements": [
+      "OTH-001"
+    ],
+    "skipped_subsections": [
+      {
+        "section": "§1.2 Anaphora: anaphors and antecedents through §10.2 Shift of deictic centre",
+        "reason": "Protocol requires stopping at the end of the current subsection."
+      }
+    ]
+  }
+}
