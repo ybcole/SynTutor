@@ -782,7 +782,20 @@
       "verified": false
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    {
+      "rules": [
+        "CLS-047",
+        "CLS-094"
+      ],
+      "kind": "cambridge_internal",
+      "description": "Existing approved CLS-047 from Cambridge Chapter 2 §16 presented unchanged truth conditions as invariant across information-packaging constructions; Chapter 16 §1 pp. 1365–1366 explicitly qualifies this because relative scope of many and negation can change truth conditions.",
+      "proposed_resolution": "Approved and implemented: CLS-047 now says truth conditions and force are characteristically, not invariably, preserved. CLS-094 separately records the scope-sensitive exceptions. No blanket claim of semantic equivalence remains.",
+      "needs_human": false,
+      "status": "RESOLVED",
+      "approval": "User explicitly approved Chapter 16 changes in current request, November 5, 2026."
+    }
+  ],
   "uncertain_items": [
     {
       "pages": [
@@ -852,7 +865,7 @@
         "book": 0
       },
       "cross_references": 19,
-      "conflicts": 0,
+      "conflicts": 1,
       "uncertain_items": 2
     },
     "existing_rule_refinements": [
