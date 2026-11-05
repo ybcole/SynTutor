@@ -1,0 +1,14 @@
+[
+  {
+    "rules": [
+      "CLS-022",
+      "CLS-077"
+    ],
+    "kind": "cambridge_internal",
+    "description": "The earlier approved CLS-022 restricted negatively oriented items to negation, interrogatives or conditionals and excluded all positive assertions, but Chapter 13 §1.1 pp. 1101 supplies affirmative scalar and non-scalar comparatives licensing some such items.",
+    "proposed_resolution": "Approved and implemented: expand CLS-022 to recognise the three licensed comparative categories for negative-polarity senses while retaining separate restrictions for other affirmative clauses, free-choice any, and non-scalar same ... as constructions.",
+    "needs_human": false,
+    "status": "RESOLVED",
+    "approval": "Explicit user approval in this Chapter 13 request"
+  }
+]
