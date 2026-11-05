@@ -352,6 +352,17 @@
         "pdf_pages": [
           5
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1174
+        ],
+        "pdf_pages": [
+          4
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -363,10 +374,12 @@
     ],
     "related_rules": [
       "MORPH-001",
-      "WCAT-003"
+      "WCAT-003",
+      "CLS-078",
+      "CLS-079"
     ],
     "confidence": "high",
-    "review_notes": "The examples test the three secondary-form gaps separately. The source also says that must and one or two other modal auxiliaries lack preterite forms; the unnamed additional item(s) are recorded under uncertain_items rather than guessed. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
+    "review_notes": "The examples test the three secondary-form gaps separately. The source also says that must and one or two other modal auxiliaries lack preterite forms; the unnamed additional item(s) are recorded under uncertain_items rather than guessed. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied. Ch. 14 §1.1 p. 1174 adds direct support that modal auxiliaries cannot occur in non-finite clauses; supportive do is handled separately by CLS-078.",
     "protocol_version": "1.0",
     "status": "APPROVED"
   },
