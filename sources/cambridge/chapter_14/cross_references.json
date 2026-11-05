@@ -1,0 +1,146 @@
+[
+  {
+    "from_rule": "CLS-078",
+    "to": "CLS-014",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-078",
+    "to": "MORPH-005",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-079",
+    "to": "CLS-041",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-079",
+    "to": "CLS-016",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-080",
+    "to": "CLS-079",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-080",
+    "to": "CLS-041",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-081",
+    "to": "CLS-079",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-081",
+    "to": "MORPH-001",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-082",
+    "to": "CLS-042",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-082",
+    "to": "COMP-003",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-083",
+    "to": "CLS-082",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-083",
+    "to": "PHR-006",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-084",
+    "to": "CLS-035",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-084",
+    "to": "CLS-041",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-085",
+    "to": "CLS-041",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-085",
+    "to": "PHR-008",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-086",
+    "to": "CLS-058",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-086",
+    "to": "CLS-085",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-042",
+    "to": "CLS-082",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-041",
+    "to": "CLS-081",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-084",
+    "to": "Cambridge Chapter 11 §5.3.5 (interrogative to-infinitivals)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-084",
+    "to": "Cambridge Chapter 12 §5 (relative infinitivals)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-042",
+    "to": "Cambridge Chapter 14 §1.3 (subject of to-infinitivals)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-080",
+    "to": "Cambridge Chapter 14 §1.5 (gerund-participial construction)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]
