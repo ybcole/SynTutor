@@ -1,0 +1,26 @@
+[
+  {
+    "rule_id": "CLS-025",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 10 §1",
+    "change": "Ch. 10 §1 pp. 853–855 defines five mutually exclusive grammatical clause types, with characteristic—but not one-to-one—relations to use; classify clauses rather than sentences. Exclamatory meaning does not by itself make an utterance an exclamative."
+  },
+  {
+    "rule_id": "CLS-027",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 10 §1",
+    "change": "Ch. 10 §1 pp. 853–854 correlates declaratives with statements, closed/open interrogatives with closed/open questions, exclamatives with exclamatory statements, and imperatives with directives; each is a characteristic, not obligatory, use. Directive includes requests, commands, and instructions."
+  },
+  {
+    "rule_id": "CLS-028",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 10 §1",
+    "change": "Ch. 10 §1 p. 854 exemplifies conventional indirect directives expressed with declaratives and closed interrogatives; no one-to-one correspondence between form and force."
+  },
+  {
+    "rule_id": "CLS-031",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 10 §1",
+    "change": "Ch. 10 §1 p. 854 confirms subordinate declarative, closed-interrogative, open-interrogative and exclamative clauses; imperatives are normally main clauses, with marginal apparent embeddings retaining main-clause-like structure (footnote). Chapter 11 is identified for subordinate clause types, and Ch. 10 §9.8 for the rejection of subordinate imperatives."
+  }
+]
