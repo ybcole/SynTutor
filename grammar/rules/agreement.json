@@ -186,7 +186,6 @@
           "text": "A trainee can swim.",
           "origin": "ai_authored",
           "tests_exception": true,
-          "pair_id": "p3",
           "note": "Modal auxiliary can keeps the same present form with a third-person-singular subject."
         },
         {
@@ -194,7 +193,6 @@
           "text": "Several trainees can swim.",
           "origin": "ai_authored",
           "tests_exception": true,
-          "pair_id": "p3",
           "note": "Modal auxiliary can keeps the same present form with a plural subject."
         }
       ],
