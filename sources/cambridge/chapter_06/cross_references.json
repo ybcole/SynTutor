@@ -1,0 +1,38 @@
+[
+  {
+    "from_rule": "WCAT-007",
+    "to": "COMP-006",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-009",
+    "to": "PHR-013",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-010",
+    "to": "WCAT-011",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-012",
+    "to": "PHR-013",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-012",
+    "to": "COMP-006",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-013",
+    "to": "WCAT-009",
+    "relation": "depends_on",
+    "verified": true
+  }
+]
