@@ -1,0 +1,1599 @@
+{
+ "chapter": 5,
+ "convention_version": "V5",
+ "source": "Burton-Roberts, Ch5 (printed pages)",
+ "trees": [
+  {
+   "id": "ch5-11",
+   "fig": "[11]",
+   "page": 88,
+   "sentence": "Max spotted those wildcats in the spring",
+   "status": "IMG",
+   "correct": false,
+   "note": "the book rejects this analysis ('cannot be the right analysis', p.89): the adjunct PP sits next to V inside one VP",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Max"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "trans"
+        ],
+        "children": [
+         {
+          "word": "spotted"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "those",
+         "wildcats"
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "in",
+         "the",
+         "spring"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-12",
+   "fig": "[12]",
+   "page": 89,
+   "sentence": "Max spotted those wildcats in the spring",
+   "status": "IMG",
+   "note": "two levels of VP; VP1 = basic VP, VP2 = VP1 + adjunct; the numbers are for ease of reference in the book",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Max"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "trans"
+          ],
+          "children": [
+           {
+            "word": "spotted"
+           }
+          ]
+         },
+         {
+          "label": "NP",
+          "triangle": true,
+          "words": [
+           "those",
+           "wildcats"
+          ]
+         }
+        ],
+        "ref": "VP1"
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "in",
+         "the",
+         "spring"
+        ]
+       }
+      ],
+      "ref": "VP2"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-15",
+   "fig": "[15]",
+   "page": 90,
+   "sentence": "Bevis mended his car in the garage",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Bevis"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "trans"
+          ],
+          "children": [
+           {
+            "word": "mended"
+           }
+          ]
+         },
+         {
+          "label": "NP",
+          "triangle": true,
+          "words": [
+           "his",
+           "car"
+          ]
+         }
+        ],
+        "ref": "VP1"
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "in",
+         "the",
+         "garage"
+        ]
+       }
+      ],
+      "ref": "VP2"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-16",
+   "fig": "[16]",
+   "page": 90,
+   "sentence": "Bevis put his car in the garage",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Bevis"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "complex"
+        ],
+        "children": [
+         {
+          "word": "put"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "his",
+         "car"
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "in",
+         "the",
+         "garage"
+        ]
+       }
+      ],
+      "ref": "VP1"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-32",
+   "fig": "[32]",
+   "page": 93,
+   "sentence": "she very surreptitiously put it under the bed",
+   "status": "IMG",
+   "simplification": true,
+   "note": "preceding adjunct = sister of VP, drawn with a higher VP. The book calls this a simplification (p.93) and says displaced adverbials are beyond its scope",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "she"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "AdvP",
+        "triangle": true,
+        "words": [
+         "very",
+         "surreptitiously"
+        ]
+       },
+       {
+        "label": "VP",
+        "triangle": true,
+        "words": [
+         "put",
+         "it",
+         "under",
+         "the",
+         "bed"
+        ]
+       }
+      ],
+      "ref": "VP2"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-35",
+   "fig": "[35]",
+   "page": 94,
+   "sentence": "he called up the boss",
+   "status": "IMG",
+   "note": "phrasal verb: V carries [trans][phrasal] and is drawn as a triangle over 'called up'",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "he"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "trans",
+         "phrasal"
+        ],
+        "triangle": true,
+        "words": [
+         "called",
+         "up"
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "the",
+         "boss"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-39",
+   "fig": "[39]",
+   "page": 95,
+   "sentence": "called the boss up",
+   "status": "IMG",
+   "note": "particle after the direct object; label Prt",
+   "tree": {
+    "label": "VP",
+    "children": [
+     {
+      "label": "V",
+      "features": [
+       "trans",
+       "phrasal"
+      ],
+      "children": [
+       {
+        "word": "called"
+       }
+      ]
+     },
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "the",
+       "boss"
+      ]
+     },
+     {
+      "label": "Prt",
+      "children": [
+       {
+        "word": "up"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-46",
+   "fig": "[46]",
+   "page": 97,
+   "sentence": "William gave some bleach",
+   "status": "IMG",
+   "note": "ellipsis: the missing indirect-object NP is drawn as NP > E (E = elided element); E takes no word span",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "William"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "ditrans"
+        ],
+        "children": [
+         {
+          "word": "gave"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "children": [
+         {
+          "elided": true,
+          "symbol": "E"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "some",
+         "bleach"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-55a",
+   "fig": "[55a]",
+   "page": 99,
+   "sentence": "Buster admitted everything frankly",
+   "status": "IMG",
+   "note": "VP-adverbial: AdvP is a sister of the VP inside a higher VP",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Buster"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "triangle": true,
+        "words": [
+         "admitted",
+         "everything"
+        ]
+       },
+       {
+        "label": "AdvP",
+        "triangle": true,
+        "words": [
+         "frankly"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-55b",
+   "fig": "[55b]",
+   "page": 100,
+   "sentence": "Buster admitted everything frankly",
+   "status": "IMG",
+   "simplification": true,
+   "note": "S-adverbial: AdvP is a sister of S inside a higher S; the book calls this representation a simplification (p.100)",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "Buster"
+        ]
+       },
+       {
+        "label": "VP",
+        "triangle": true,
+        "words": [
+         "admitted",
+         "everything"
+        ]
+       }
+      ]
+     },
+     {
+      "label": "AdvP",
+      "triangle": true,
+      "words": [
+       "frankly"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-58",
+   "fig": "[58]",
+   "page": 100,
+   "sentence": "in short you're fired",
+   "status": "IMG",
+   "simplification": true,
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "PP",
+      "triangle": true,
+      "words": [
+       "in",
+       "short"
+      ]
+     },
+     {
+      "label": "S",
+      "triangle": true,
+      "words": [
+       "you're",
+       "fired"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-d1",
+   "fig": "Discussion 1",
+   "page": 101,
+   "sentence": "Sam sunbathed beside a stream",
+   "status": "IMG",
+   "note": "intransitive V is a complete VP; the adjunct PP is its sister inside a higher VP",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Sam"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "intrans"
+          ],
+          "children": [
+           {
+            "word": "sunbathed"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "beside",
+         "a",
+         "stream"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-d2",
+   "fig": "Discussion 2",
+   "page": 101,
+   "sentence": "Humphrey drove his car on the left in France",
+   "status": "IMG",
+   "did_so": {
+    "[25]": "VP1",
+    "[24]": "VP2",
+    "[23]": "VP3"
+   },
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Humphrey"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "trans"
+            ],
+            "children": [
+             {
+              "word": "drove"
+             }
+            ]
+           },
+           {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+             "his",
+             "car"
+            ]
+           }
+          ],
+          "ref": "VP1"
+         },
+         {
+          "label": "PP",
+          "triangle": true,
+          "words": [
+           "on",
+           "the",
+           "left"
+          ]
+         }
+        ],
+        "ref": "VP2"
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "in",
+         "France"
+        ]
+       }
+      ],
+      "ref": "VP3"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-d3",
+   "fig": "Discussion 3",
+   "page": 102,
+   "sentence": "She hardly slept last night",
+   "status": "IMG",
+   "note": "two adjuncts: last night is the higher one (hardly slept is a VP); book's hint: last night can move to the front, hardly cannot",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "She"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "AdvP",
+          "triangle": true,
+          "words": [
+           "hardly"
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "intrans"
+            ],
+            "children": [
+             {
+              "word": "slept"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "last",
+         "night"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-ex2a",
+   "fig": "Ex2(a) answer",
+   "page": 105,
+   "sentence": "That so-called music very quickly drove him mad",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "That",
+       "so-called",
+       "music"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "AdvP",
+        "triangle": true,
+        "words": [
+         "very",
+         "quickly"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "complex"
+          ],
+          "children": [
+           {
+            "word": "drove"
+           }
+          ]
+         },
+         {
+          "label": "NP",
+          "triangle": true,
+          "words": [
+           "him"
+          ]
+         },
+         {
+          "label": "AP",
+          "triangle": true,
+          "words": [
+           "mad"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-ex2b",
+   "fig": "Ex2(b) answer",
+   "page": 105,
+   "sentence": "Margaret & Michael celebrated their success with a bottle of champagne",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Margaret",
+       "&",
+       "Michael"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "trans"
+          ],
+          "children": [
+           {
+            "word": "celebrated"
+           }
+          ]
+         },
+         {
+          "label": "NP",
+          "triangle": true,
+          "words": [
+           "their",
+           "success"
+          ]
+         }
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "with",
+         "a",
+         "bottle",
+         "of",
+         "champagne"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-ex2c",
+   "fig": "Ex2(c) answer",
+   "page": 105,
+   "sentence": "They were in the office for 12 hours every single day",
+   "status": "IMG",
+   "note": "the figure prints 'for 12 hours'; the exercise sentence says 'twelve hours'",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "They"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "intens"
+            ],
+            "children": [
+             {
+              "word": "were"
+             }
+            ]
+           },
+           {
+            "label": "PP",
+            "triangle": true,
+            "words": [
+             "in",
+             "the",
+             "office"
+            ]
+           }
+          ]
+         },
+         {
+          "label": "PP",
+          "triangle": true,
+          "words": [
+           "for",
+           "12",
+           "hours"
+          ]
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "every",
+         "single",
+         "day"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-ex2d",
+   "fig": "Ex2(d) answer",
+   "page": 106,
+   "sentence": "Incidentally I sold your vests to the museum for a small fortune",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "AdvP",
+      "triangle": true,
+      "words": [
+       "Incidentally"
+      ]
+     },
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "I"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "ditrans"
+            ],
+            "children": [
+             {
+              "word": "sold"
+             }
+            ]
+           },
+           {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+             "your",
+             "vests"
+            ]
+           },
+           {
+            "label": "PP",
+            "triangle": true,
+            "words": [
+             "to",
+             "the",
+             "museum"
+            ]
+           }
+          ]
+         },
+         {
+          "label": "PP",
+          "triangle": true,
+          "words": [
+           "for",
+           "a",
+           "small",
+           "fortune"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-ex2e",
+   "fig": "Ex2(e) answer",
+   "page": 106,
+   "sentence": "The acrobats often sleep until ten o'clock",
+   "status": "IMG",
+   "note": "the figure prints 'sleep'; the exercise sentence says 'slept'. Book note: 'Often the acrobats sleep until ten' is fine, '*Until ten the acrobats often sleep' is not",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "The",
+       "acrobats"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "AdvP",
+        "triangle": true,
+        "words": [
+         "often"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "intrans"
+            ],
+            "children": [
+             {
+              "word": "sleep"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "label": "PP",
+          "triangle": true,
+          "words": [
+           "until",
+           "ten",
+           "o'clock"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-ex2f",
+   "fig": "Ex2(f) answer",
+   "page": 106,
+   "sentence": "Luckily enough they gave in in seconds",
+   "status": "IMG",
+   "note": "the figure prints the triangle over 'luckily enough' with the label Adv (not AdvP); kept as printed",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "Adv",
+      "triangle": true,
+      "words": [
+       "luckily",
+       "enough"
+      ]
+     },
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "they"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "intrans",
+             "phrasal"
+            ],
+            "children": [
+             {
+              "word": "gave in",
+              "multiword": true
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "label": "PP",
+          "triangle": true,
+          "words": [
+           "in",
+           "seconds"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-ex6a",
+   "fig": "Ex6(a) answer",
+   "page": 108,
+   "sentence": "Kelvin discovered the law in his study",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Kelvin"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "trans"
+          ],
+          "children": [
+           {
+            "word": "discovered"
+           }
+          ]
+         },
+         {
+          "label": "NP",
+          "triangle": true,
+          "words": [
+           "the",
+           "law"
+          ]
+         }
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "in",
+         "his",
+         "study"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-ex6b",
+   "fig": "Ex6(b) answer",
+   "page": 109,
+   "sentence": "Max discovered rats in his study",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Max"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "V",
+        "features": [
+         "complex"
+        ],
+        "children": [
+         {
+          "word": "discovered"
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "rats"
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "in",
+         "his",
+         "study"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch5-fex-ex",
+   "fig": "Further Exercises, worked example",
+   "page": 109,
+   "sentence": "their spokesman's pronouncements quickly landed him in gaol",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "their",
+       "spokesman's",
+       "pronouncements"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "AdvP",
+        "triangle": true,
+        "words": [
+         "quickly"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "complex"
+          ],
+          "children": [
+           {
+            "word": "landed"
+           }
+          ]
+         },
+         {
+          "label": "NP",
+          "triangle": true,
+          "words": [
+           "him"
+          ]
+         },
+         {
+          "label": "PP",
+          "triangle": true,
+          "words": [
+           "in",
+           "gaol"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "schema_diagrams": [
+  {
+   "id": "ch5-schema",
+   "page": 90,
+   "status": "IMG",
+   "note": "schematic: complements are sisters of V; adjunct adverbials are sisters of VP",
+   "schema": {
+    "VP": [
+     "VP",
+     "Adjunct adverbial"
+    ],
+    "VP (inner)": [
+     "V",
+     "Complement(s)"
+    ]
+   }
+  }
+ ],
+ "book_flags": [
+  "Adjunct-as-sister-of-VP is described by the book as a simplification (p.93, p.100); do not treat as final",
+  "Displaced adverbials are explicitly outside the book's scope (p.93)"
+ ],
+ "no_book_tree": [
+  "Further Exercises Sets I-III have no printed answers except the worked example"
+ ],
+ "exercise_answers_from_book": {
+  "ex1": {
+   "page": 104,
+   "items": [
+    {
+     "item": "a",
+     "feature": "complex",
+     "functions": [
+      [
+       "S",
+       "This so-called music"
+      ],
+      [
+       "aA",
+       "very quickly"
+      ],
+      [
+       "V",
+       "drove"
+      ],
+      [
+       "dO",
+       "him"
+      ],
+      [
+       "oP",
+       "mad"
+      ]
+     ]
+    },
+    {
+     "item": "b",
+     "feature": "trans",
+     "functions": [
+      [
+       "S",
+       "Margaret and Michael"
+      ],
+      [
+       "V",
+       "celebrated"
+      ],
+      [
+       "dO",
+       "their success"
+      ],
+      [
+       "aA",
+       "with a bottle of champagne"
+      ]
+     ]
+    },
+    {
+     "item": "c",
+     "feature": "intens",
+     "functions": [
+      [
+       "S",
+       "They"
+      ],
+      [
+       "V",
+       "were"
+      ],
+      [
+       "sP",
+       "in the office"
+      ],
+      [
+       "aA",
+       "for twelve hours"
+      ],
+      [
+       "aA",
+       "every single day"
+      ]
+     ]
+    },
+    {
+     "item": "d",
+     "feature": "ditrans",
+     "functions": [
+      [
+       "sA",
+       "Incidentally"
+      ],
+      [
+       "S",
+       "I"
+      ],
+      [
+       "V",
+       "sold"
+      ],
+      [
+       "dO",
+       "your vests"
+      ],
+      [
+       "iO",
+       "to the museum"
+      ],
+      [
+       "aA",
+       "for a small fortune"
+      ]
+     ]
+    },
+    {
+     "item": "e",
+     "feature": "intrans",
+     "functions": [
+      [
+       "S",
+       "The acrobats"
+      ],
+      [
+       "aA",
+       "often"
+      ],
+      [
+       "V",
+       "sleep"
+      ],
+      [
+       "aA",
+       "until ten o'clock"
+      ]
+     ]
+    },
+    {
+     "item": "f",
+     "feature": [
+      "phrasal",
+      "intrans"
+     ],
+     "functions": [
+      [
+       "sA",
+       "Luckily enough"
+      ],
+      [
+       "S",
+       "they"
+      ],
+      [
+       "V",
+       "gave in"
+      ],
+      [
+       "aA",
+       "in seconds"
+      ]
+     ]
+    },
+    {
+     "item": "g",
+     "feature": [
+      "phrasal",
+      "trans"
+     ],
+     "functions": [
+      [
+       "S",
+       "Murdstone"
+      ],
+      [
+       "V",
+       "brought"
+      ],
+      [
+       "dO",
+       "the child"
+      ],
+      [
+       "Prt",
+       "up"
+      ],
+      [
+       "aA",
+       "too strictly"
+      ],
+      [
+       "sA",
+       "in my opinion"
+      ]
+     ]
+    },
+    {
+     "item": "h",
+     "feature": "prep",
+     "functions": [
+      [
+       "S",
+       "Few students"
+      ],
+      [
+       "V",
+       "worry"
+      ],
+      [
+       "PC",
+       "about exams"
+      ],
+      [
+       "aA",
+       "until the end of term"
+      ]
+     ]
+    }
+   ]
+  },
+  "ex3": {
+   "page": 107,
+   "note": "book says this is a matter of judgement",
+   "groups": {
+    "a": {
+     "verbs": [
+      "jump",
+      "kick"
+     ],
+     "subcats": [
+      "trans",
+      "intrans"
+     ]
+    },
+    "b": {
+     "verbs": [
+      "read",
+      "pay"
+     ],
+     "subcats": [
+      "trans (absent object = ellipsis)"
+     ],
+     "also": "ditrans; pay also prep"
+    },
+    "c": {
+     "verbs": [
+      "recall",
+      "launch"
+     ],
+     "subcats": [
+      "trans only"
+     ]
+    }
+   }
+  },
+  "ex4": {
+   "page": 107,
+   "answers": {
+    "a": "intens, AP = subject-predicative",
+    "b": "intens, NP = subject-predicative",
+    "c": "intrans, PP = optional adverbial",
+    "d": "ambiguous: intens + PP sP, or intrans + PP adverbial",
+    "e": "intrans (not an elliptical intens)"
+   }
+  },
+  "ex5": {
+   "page": 108,
+   "answers": {
+    "1": "did so replaces 'went'",
+    "2": "went is not a VP",
+    "3": "the PP is a complement",
+    "4": "go is a prepositional verb",
+    "5": "go is both intransitive and prepositional"
+   }
+  },
+  "in_text_disc4": {
+   "page": 102,
+   "answers": {
+    "a": "transitive phrasal verb + NP",
+    "b": "prepositional verb + PP",
+    "c": "prepositional verb + PP",
+    "d": "transitive phrasal verb + NP",
+    "e": "prepositional verb + PP",
+    "f": "transitive phrasal verb + NP",
+    "g": "transitive phrasal verb + NP",
+    "h": "prepositional verb + PP"
+   }
+  }
+ }
+}
