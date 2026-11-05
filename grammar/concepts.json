@@ -896,6 +896,17 @@
         "pdf_pages": [
           79
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          665
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "related_concepts": []
@@ -971,6 +982,17 @@
         ],
         "pdf_pages": [
           77
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          667
+        ],
+        "pdf_pages": [
+          5
         ]
       }
     ],
@@ -1170,6 +1192,17 @@
         "pdf_pages": [
           80,
           81
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          668
+        ],
+        "pdf_pages": [
+          6
         ]
       }
     ],
@@ -2700,6 +2733,331 @@
     "related_concepts": [
       "preposition",
       "subordinator"
+    ]
+  },
+  {
+    "term": "semantic category overlap",
+    "gloss": "A restricted overlap whereby condition or reason phrases can qualify a situation, proposition or speech act.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          666
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "informational focus",
+    "gloss": "Discourse prominence or primary stress on an element, distinct from the scopal focus of adverbs such as only.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          667
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "focus potential",
+    "gloss": "Whether a constituent can be informationally focused in an interrogative, negation contrast or cleft.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          667
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "restrictive adjunct",
+    "gloss": "A dependent that affects the truth conditions of the proposition, as a temporal modifier can.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          667
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "non-restrictive adjunct",
+    "gloss": "An evaluative dependent not altering whether the described situation occurred.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          667
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "questionability of adjuncts",
+    "gloss": "The capacity of an adjunct class to be targeted by an interrogative expression such as when or why.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          667
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "relative scope of adjuncts",
+    "gloss": "The semantic scope of one adjunct relative to another or to negation.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          668
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "bounding potential",
+    "gloss": "The capacity of a goal or extent to make a clause describe a bounded event.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          668,
+          669
+        ],
+        "pdf_pages": [
+          6,
+          7
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "bounded situation",
+    "gloss": "A situation presented with a terminal boundary, such as an accomplishment with a goal.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          668,
+          669
+        ],
+        "pdf_pages": [
+          6,
+          7
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "unbounded situation",
+    "gloss": "An activity presented without a terminal endpoint.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          668
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "syntactic realisation of adjuncts",
+    "gloss": "The surface category forming an adjunct, including AdvP, PP, NP, or finite, non-finite and verbless clauses.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          669
+        ],
+        "pdf_pages": [
+          7
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "front, central and end adjunct positions",
+    "gloss": "The three coarse linear positions of adjuncts, with multiple adjuncts possible in front or end.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          669,
+          670
+        ],
+        "pdf_pages": [
+          7,
+          8
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "speech act-related adjunct",
+    "gloss": "A dependent concerning a speaker's communicative act rather than merely the event described.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          666
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "modal adjunct",
+    "gloss": "An adjunct qualifying the status or likelihood of a proposition.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          666,
+          667
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
+    ]
+  },
+  {
+    "term": "evaluative adjunct",
+    "gloss": "An adjunct conveying a speaker evaluation of a situation, typically non-restrictive.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1 Preliminaries",
+        "pages": [
+          666,
+          667
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjunct"
     ]
   }
 ]
