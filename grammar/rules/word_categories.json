@@ -1041,6 +1041,21 @@
           "id": "c5",
           "text": "It was less painful than I'd expected. [adverb]",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "The shorter path is quicker. [inflectional superiority relative to the short-oriented scale]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c7",
+          "text": "This route is less difficult. [analytic inferiority]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c8",
+          "text": "The lanes are as wide as the old lanes. [analytic equality]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": []
@@ -1056,6 +1071,17 @@
         "pdf_pages": [
           84
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§1.1 Two cross-cutting distinctions: scalar vs non-scalar, equality vs inequality",
+        "pages": [
+          1100
+        ],
+        "pdf_pages": [
+          4
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -1070,8 +1096,11 @@
     "status": "APPROVED",
     "related_rules": [
       "WCAT-005",
-      "CLS-040"
-    ]
+      "CLS-040",
+      "CLS-073",
+      "CLS-074"
+    ],
+    "review_notes": "Chapter 13 §1.1 p. 1100 explicitly contrasts inflectional/analytic superiority, analytic less inferiority and as equality; the lexical orientation of the adjective remains independent."
   },
   {
     "id": "WCAT-014",
