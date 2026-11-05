@@ -1166,8 +1166,8 @@
     "concept": "not even continuation requires a negative clause",
     "rule_type": "constraint",
     "scope": "clause",
-    "statement": "A clause can be continued with 'not even' only if it is negative; a positive clause cannot be so continued.",
-    "condition": "Applies to clauses followed by a ', not even ...' continuation: the host clause must be negative (clausal negation).",
+    "statement": "A clause permits a prosodically detached continuation headed by not even only when the host clause has negative clausal polarity; an otherwise positive clause cannot take that negative continuation.",
+    "condition": "When a supplementary not even + complement or adjunct follows a host clause, use the negative-clause polarity tests: the host must be a negative clause, not merely a positive clause with internal subclausal negation.",
     "violation": "A positive clause (or a clause with only subclausal negation) is followed by a 'not even ...' continuation.",
     "exceptions": [],
     "examples": {
@@ -1192,6 +1192,11 @@
         {
           "id": "c4",
           "text": "We didn't ask anyone, not even Jon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "They couldn't find the note, not even beneath the desk. [supplementary adjunct]",
           "origin": "ai_authored"
         }
       ],
@@ -1232,6 +1237,17 @@
         "pdf_pages": [
           79
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          786
+        ],
+        "pdf_pages": [
+          2
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -1246,9 +1262,10 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-020",
-      "CLS-021"
+      "CLS-021",
+      "CLS-060"
     ],
-    "review_notes": "One of three diagnostic tests; the book describes it as a syntactic distribution difference between negative and positive clauses. 'Never' is treated here as clausal negation by assumption; check Ch. 9 before relying on it."
+    "review_notes": "One of three diagnostic tests; the book describes it as a syntactic distribution difference between negative and positive clauses. 'Never' is treated here as clausal negation by assumption; check Ch. 9 before relying on it. Chapter 9 §1.1 p. 786 identifies not even as a prosodically detached supplement and confirms the diagnostic for negative clausal polarity; the condition is restricted to the supplementary negative continuation."
   },
   {
     "id": "CLS-020",
@@ -1256,10 +1273,21 @@
     "concept": "nor/so continuation and confirmation tags",
     "rule_type": "classification",
     "scope": "clause",
-    "statement": "A negative clause is followed by the connective adjunct nor (or neither) and takes a positive confirmation tag; a positive clause is followed by so and takes a negative tag.",
-    "condition": "Applies to clausal polarity diagnostics: negative clause + 'and nor did ...' + positive tag (did he?); positive clause + 'and so did ...' + negative tag (didn't he?).",
+    "statement": "In polarity-matched reduced connective continuations, negative clauses typically pair with neither/nor (or negative ... either) and positive clauses with so (or positive ... too); ordinary confirmation tags reverse the polarity of the clause to which they attach.",
+    "condition": "When applying clause-polarity diagnostics to anaphorically reduced connective continuations or neutral confirmation tags, use neither/nor or either for negatives and so or too for positives, and reverse the host clause's polarity in a neutral confirmation tag. Do not generalise the pattern to all kinds of interrogative tags or all uses of connective adjuncts.",
     "violation": null,
-    "exceptions": [],
+    "exceptions": [
+      {
+        "description": "Same-polarity tags are available in pragmatically distinct constructions. Positive-positive tags occur, and negative-negative tags are allowed by some speakers; these do not invalidate the reversed-polarity confirmation-tag diagnostic.",
+        "pages": [
+          787
+        ],
+        "example_ids": [
+          "c7",
+          "c8"
+        ]
+      }
+    ],
     "examples": {
       "correct": [
         {
@@ -1281,6 +1309,28 @@
           "id": "c4",
           "text": "He read it, didn't he?",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "The actors didn't rehearse, and the crew didn't either. [negative ... either]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "The actors rehearsed, and the crew did too. [positive ... too]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c7",
+          "text": "The actors rehearsed, did they? [positive-positive tag, pragmatically distinct from confirmation]",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c8",
+          "text": "Some speakers: The actors didn't rehearse, didn't they? [negative-negative tag; different intonation/pragmatics]",
+          "origin": "ai_authored",
+          "tests_exception": true
         }
       ],
       "incorrect": []
@@ -1296,6 +1346,19 @@
         "pdf_pages": [
           79
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          786,
+          787
+        ],
+        "pdf_pages": [
+          2,
+          3
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -1310,9 +1373,10 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-019",
-      "CLS-021"
+      "CLS-021",
+      "CLS-060"
     ],
-    "review_notes": "Described as differences in distribution, not as bans on all other combinations."
+    "review_notes": "Described as differences in distribution, not as bans on all other combinations. Chapter 9 §1.1 pp. 786–787 explicitly distinguishes the neutral reversed-polarity confirmation tag from same-polarity tags with different intonation and pragmatic effects; it also covers connective either/too in post-clause position. The 'some speakers' limitation on negative-negative tags is preserved."
   },
   {
     "id": "CLS-021",
@@ -1320,8 +1384,8 @@
     "concept": "clausal vs subclausal negation",
     "rule_type": "classification",
     "scope": "clause",
-    "statement": "A clause counts as positive by the three tests even if it contains negative words inside it (subclausal negation, e.g. 'not for the first time', 'in no time', 'unfriendly'); such clauses behave as positive: no 'not even', 'so' rather than 'nor', and negative tags.",
-    "condition": "Applies to clauses with a negative element inside a constituent: if the clause fails the negative-clause tests, the negation is subclausal; clausal negation passes them.",
+    "statement": "A clause is syntactically negative only if negation has clausal rather than merely subclausal scope; the available diagnostics include a not even supplement, negative versus positive connective continuations, neutral reversed-polarity tags, and inversion triggered by a prenuclear negative constituent.",
+    "condition": "Classify the host clause's syntactic polarity using the four diagnostics as relevant: not even supplemental continuation, neither/nor versus so connective continuation, reversed-polarity confirmation tags, and obligatory inversion when negation is marked in the prenucleus. Do not infer negative polarity from inversion alone because only and connective so can trigger it as well.",
     "violation": null,
     "exceptions": [],
     "examples": {
@@ -1345,6 +1409,21 @@
           "id": "c4",
           "text": "Not for the first time, she was late, and so was he.",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "Not once did the committee agree. [negative clause with prenuclear negative constituent]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "After lunch, the committee didn't agree. [negative clause without prenuclear negative marker]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c7",
+          "text": "Only occasionally did the committee agree. [inversion by only; not proof of clausal negation]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": []
@@ -1360,6 +1439,19 @@
         "pdf_pages": [
           80
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          786,
+          787
+        ],
+        "pdf_pages": [
+          2,
+          3
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -1374,8 +1466,10 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-019",
-      "CLS-020"
-    ]
+      "CLS-020",
+      "CLS-060"
+    ],
+    "review_notes": "Chapter 9 §1.1 pp. 786–787 presents four diagnostics; inversion must be combined with the other tests because it is not exclusive to negative clauses. This refinement does not pre-empt §1.2's detailed treatment of subclausal negation."
   },
   {
     "id": "CLS-022",
@@ -4018,5 +4112,89 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "review_notes": "The source explicitly defers detailed central placement to §20. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+  },
+  {
+    "id": "CLS-060",
+    "domain": "clauses",
+    "concept": "subject–auxiliary inversion with prenuclear negative constituents",
+    "traditional_terms": [
+      "negative inversion"
+    ],
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "When the negation of a clause is carried by a constituent in the prenucleus, subject–auxiliary inversion is obligatory in the main clause.",
+    "condition": "In a main clause with a negative constituent such as not once or at no time in prenuclear position, invert the finite auxiliary and subject; insert supportive do if needed. The trigger must be the prenuclear negative constituent, not simply the presence of negation elsewhere in the clause.",
+    "violation": "A main clause begins with a negative-marked prenuclear constituent but retains uninverted subject–finite auxiliary order.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not once did the council meet.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "c2",
+          "text": "At no time did the visitors complain.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "c3",
+          "text": "After the lecture, Mina didn't feel well. [negative marker on the verb, not the prenuclear adjunct]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "Only occasionally did Mina attend the lectures. [inversion triggered by only, not by a negative constituent]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*Not once the council met.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "*At no time the visitors complained.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1 Tests for clause polarity",
+        "pages": [
+          787
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "subject-auxiliary inversion after fronted negative constituent",
+        "relation": "unverified",
+        "note": "No Burton-Roberts chapter text or concept index was provided; no comparison is inferred."
+      }
+    ],
+    "related_rules": [
+      "CLS-013",
+      "CLS-019",
+      "CLS-020",
+      "CLS-021"
+    ],
+    "confidence": "high",
+    "review_notes": "The diagnostic is one-way: inversion also appears with connective so and prenuclear only, so inversion alone does not prove negative clause polarity. Nonnegative prenuclear adjuncts can co-occur with verbal negation without inversion. Human approval was explicitly requested on 2026-11-05; no independent second-pass AI review was performed.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
   }
 ]
