@@ -1,0 +1,104 @@
+[
+  {
+    "from_rule": "OTH-004",
+    "to": "OTH-001",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-005",
+    "to": "OTH-001",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-005",
+    "to": "OTH-004",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-006",
+    "to": "OTH-001",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-006",
+    "to": "OTH-005",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-007",
+    "to": "OTH-006",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-007",
+    "to": "OTH-001",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-008",
+    "to": "OTH-001",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-008",
+    "to": "OTH-004",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-009",
+    "to": "OTH-008",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-009",
+    "to": "OTH-001",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-010",
+    "to": "OTH-008",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-010",
+    "to": "OTH-009",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-001",
+    "to": "OTH-009",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-001",
+    "to": "OTH-010",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-010",
+    "to": "Cambridge Chapter 17 §10.2 (shift of deictic centre)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "OTH-006",
+    "to": "Cambridge Chapter 17 §5 (demonstratives)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]
