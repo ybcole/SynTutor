@@ -1,0 +1,14 @@
+[
+  {
+    "rule_id": "MORPH-007",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 18 §1.1, printed pages 1568–1569",
+    "change": "Document the difference between lexical base and inflectional form, plural genitive formation from a plural stem, and number syncretism while preserving the already-approved four-cell noun paradigm."
+  },
+  {
+    "rule_id": "MORPH-001",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 18 §1.1, printed page 1569",
+    "change": "Add the two-step past-participial formation exemplified by trodden based on preterite trod rather than directly on tread."
+  }
+]
