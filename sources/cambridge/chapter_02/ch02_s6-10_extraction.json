@@ -1,0 +1,2137 @@
+{
+  "meta": {
+    "chapter": 2,
+    "section": "§6-§10 (Adjectives and adverbs; Prepositions; Adjuncts; Negation; Clause type and illocutionary force)",
+    "printed_pages": [
+      57,
+      62
+    ],
+    "pdf_pages": [
+      77,
+      82
+    ],
+    "page_offset": "pdf = printed + 20 (full-book PDF); the standalone Chapter_2 PDF uses its own numbering",
+    "processed_by": "Claude",
+    "protocol_version": "1.0",
+    "assumed_inputs": "IDs continue from the §3-§5 batch: CLS-016, MORPH-003, WCAT-006, PHR-011, COMP-009, AGR-002. That batch is not yet merged. No Burton-Roberts index, mappings unverified."
+  },
+  "concepts": [
+    {
+      "term": "adjunct",
+      "gloss": "modifier in clause/VP structure plus related supplements",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§8 The clause: adjuncts",
+          "pages": [
+            59
+          ],
+          "pdf_pages": [
+            79
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "attributive modifier (adjective)",
+      "gloss": "adjective before the head noun",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§6 Adjectives and adverbs",
+          "pages": [
+            57
+          ],
+          "pdf_pages": [
+            77
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "predicative complement (adjective)",
+      "gloss": "adjective as complement of be etc.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§6 Adjectives and adverbs",
+          "pages": [
+            57
+          ],
+          "pdf_pages": [
+            77
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "postpositive",
+      "gloss": "adjective as post-head modifier",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§6 Adjectives and adverbs",
+          "pages": [
+            57
+          ],
+          "pdf_pages": [
+            77
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "supplement",
+      "gloss": "element prosodically detached from its clause",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§6 Adjectives and adverbs",
+          "pages": [
+            57
+          ],
+          "pdf_pages": [
+            77
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "preposition phrase",
+      "gloss": "phrase headed by a preposition with NP, AdvP or clause complement or none",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§7 Prepositions and preposition phrases",
+          "pages": [
+            58
+          ],
+          "pdf_pages": [
+            78
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "preposition stranding",
+      "gloss": "preposition left with a gap in complement position",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§7 Prepositions and preposition phrases",
+          "pages": [
+            58,
+            59
+          ],
+          "pdf_pages": [
+            78,
+            79
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "clausal negation",
+      "gloss": "negation that makes the whole clause negative by the three tests",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            59,
+            60
+          ],
+          "pdf_pages": [
+            79,
+            80
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "subclausal negation",
+      "gloss": "negation within a constituent of a positive clause",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            60
+          ],
+          "pdf_pages": [
+            80
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "polarity-sensitive item",
+      "gloss": "word favouring positive or negative contexts",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            60
+          ],
+          "pdf_pages": [
+            80
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "negatively oriented item",
+      "gloss": "favours negative contexts (any longer, yet, ever)",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            60
+          ],
+          "pdf_pages": [
+            80
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "positively oriented item",
+      "gloss": "favours positive contexts (somewhat, already)",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            60
+          ],
+          "pdf_pages": [
+            80
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "non-affirmative clause",
+      "gloss": "clause not used to make a positive assertion: negative, interrogative, conditional if",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            60
+          ],
+          "pdf_pages": [
+            80
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "scope of negation",
+      "gloss": "part of the sentence to which the negation applies",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            60,
+            61
+          ],
+          "pdf_pages": [
+            80,
+            81
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "clause type",
+      "gloss": "form dimension: declarative, interrogative, exclamative, imperative",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§10 Clause type and illocutionary force",
+          "pages": [
+            61
+          ],
+          "pdf_pages": [
+            81
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "illocutionary force",
+      "gloss": "the speech-act force of an utterance",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§10 Clause type and illocutionary force",
+          "pages": [
+            61
+          ],
+          "pdf_pages": [
+            81
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "directive",
+      "gloss": "force typically associated with imperatives",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§10 Clause type and illocutionary force",
+          "pages": [
+            61
+          ],
+          "pdf_pages": [
+            81
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "polar / alternative / variable question",
+      "gloss": "semantic question types by set of answers",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§10 Clause type and illocutionary force",
+          "pages": [
+            61
+          ],
+          "pdf_pages": [
+            81
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "indirect speech act",
+      "gloss": "utterance with a different force from its literal one",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§10 Clause type and illocutionary force",
+          "pages": [
+            62
+          ],
+          "pdf_pages": [
+            82
+          ]
+        }
+      ],
+      "related_concepts": []
+    }
+  ],
+  "rules": [
+    {
+      "id": "WCAT-007",
+      "domain": "word_categories",
+      "concept": "adjective functions",
+      "rule_type": "classification",
+      "scope": "word",
+      "statement": "Adjectives have two major uses, attributive modifier in NP structure and predicative complement in clause structure; most adjectives occur in both, and adjectives can also be postpositive (post-head modifier).",
+      "condition": "Applies to adjective use: attributive = before the noun inside an NP; predicative = complement of a verb such as be; postpositive = after the head noun (something unusual, the money available).",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "an excellent result [attributive]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "The result was excellent. [predicative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "something unusual [postpositive]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "the money available [postpositive]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§6 Adjectives and adverbs",
+          "pages": [
+            57
+          ],
+          "pdf_pages": [
+            77
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "adjective functions",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "WCAT-008",
+        "PHR-006"
+      ]
+    },
+    {
+      "id": "WCAT-008",
+      "domain": "word_categories",
+      "concept": "adjectives restricted by function",
+      "rule_type": "constraint",
+      "scope": "word",
+      "statement": "Some adjectives (in some senses) are restricted to attributive function and a few cannot be used attributively, so function must be checked word by word.",
+      "condition": "Applies to individual adjectives: an attributive-only adjective such as 'sole' cannot be a predicative complement, and an adjective such as 'asleep' cannot be an attributive modifier.",
+      "violation": "An attributive-only adjective (e.g. sole) is used as predicative complement, or a non-attributive adjective (e.g. asleep) is used before a noun.",
+      "exceptions": [
+        {
+          "description": "The attributive-only restriction can hold only 'in a given sense' of an adjective, not for every sense; most adjectives occur in both functions.",
+          "pages": [
+            57
+          ],
+          "example_ids": []
+        }
+      ],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Their sole parent works nights.",
+            "origin": "ai_authored",
+            "pair_id": "p1"
+          },
+          {
+            "id": "c2",
+            "text": "The baby was asleep.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          },
+          {
+            "id": "c3",
+            "text": "an excellent result",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "The result was excellent.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": [
+          {
+            "id": "i1",
+            "text": "*The parent was sole.",
+            "origin": "book",
+            "page": 57,
+            "pair_id": "p1",
+            "note": "Source example, p. 57."
+          },
+          {
+            "id": "i2",
+            "text": "*an asleep child",
+            "origin": "book",
+            "page": 57,
+            "pair_id": "p2",
+            "note": "Source example, p. 57."
+          },
+          {
+            "id": "i3",
+            "text": "*Mara is sole.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "i4",
+            "text": "*We saw an asleep baby.",
+            "origin": "ai_authored"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§6 Adjectives and adverbs",
+          "pages": [
+            57
+          ],
+          "pdf_pages": [
+            77
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "adjectives restricted by function",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "WCAT-007"
+      ],
+      "review_notes": "Lexical restriction: only the words the book names (sole, asleep) are supported here. The full lists need Ch. 6. Do not generalise to other adjectives."
+    },
+    {
+      "id": "PHR-012",
+      "domain": "phrases",
+      "concept": "AdjP structure",
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "Dependents of adjectives are modifiers (very good, a bit grumpy) or complements (ashamed of him, glad you could come); complements follow the head, so they are hardly permitted in attributive AdjPs but commonly occur in postpositives, and with minor exceptions they are PPs or clauses, not NPs; AdjP has only two levels.",
+      "condition": "Applies to adjective phrases: modifiers precede the head; complements always follow it and are usually PPs or subordinate clauses; with minor exceptions an adjective takes no NP complement; AdjP and adjective are the only two category levels.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "It was very good. [modifier]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "He seems a bit grumpy. [modifier]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "She is ashamed of him. [PP complement]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "I'm glad you could come. [clause complement]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "the minister responsible for the decision [complement in postpositive AdjP]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§6 Adjectives and adverbs",
+          "pages": [
+            57
+          ],
+          "pdf_pages": [
+            77
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "AdjP structure",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "PHR-007",
+        "WCAT-007"
+      ],
+      "review_notes": "Hedges ('hardly permitted', 'minor exceptions') are preserved; do not turn into constraints without Ch. 6."
+    },
+    {
+      "id": "WCAT-009",
+      "domain": "word_categories",
+      "concept": "adverbs not predicative complements",
+      "rule_type": "constraint",
+      "scope": "clause",
+      "statement": "Unlike adjectives, adverbs do not occur as predicative complement.",
+      "condition": "Applies to the predicative complement position (as after be): an adjective may fill it, a (-ly) adverb may not.",
+      "violation": "An adverb (e.g. a form in -ly) is used as predicative complement.",
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Kim was unhappy.",
+            "origin": "ai_authored",
+            "pair_id": "p1"
+          },
+          {
+            "id": "c2",
+            "text": "The result was excellent.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          },
+          {
+            "id": "c3",
+            "text": "She seems quiet.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "The answer was clear.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": [
+          {
+            "id": "i1",
+            "text": "*Kim was unhappily.",
+            "origin": "ai_authored",
+            "pair_id": "p1"
+          },
+          {
+            "id": "i2",
+            "text": "*The result was excellently.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          },
+          {
+            "id": "i3",
+            "text": "*She seems quietly.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "i4",
+            "text": "*The answer was clearly.",
+            "origin": "ai_authored"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§6 Adjectives and adverbs",
+          "pages": [
+            57
+          ],
+          "pdf_pages": [
+            77
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "adverbs not predicative complements",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "WCAT-007",
+        "WCAT-010"
+      ],
+      "review_notes": "Stated generally on p. 57; Cambridge's treatment of words like 'there' or 'well' in this position is not given here, so exclude them from engine checks until Ch. 6 is processed."
+    },
+    {
+      "id": "WCAT-010",
+      "domain": "word_categories",
+      "concept": "adverbs as modifiers of non-nominals",
+      "rule_type": "classification",
+      "scope": "word",
+      "statement": "Adverbs generally function as modifiers (or supplements); adjectives modify nominals whereas adverbs modify other categories, including verbs, adjectives, adverbs and NPs, though not every adverb can modify every category.",
+      "condition": "Applies to modification: nominal heads take adjective modifiers; verbs, adjectives, adverbs and NPs take adverb modifiers; supplements are adverbs detached prosodically from the clause.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "She almost died. [modifies verb]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "an almost empty room [modifies adjective]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "He spoke almost silently. [modifies adverb]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "They ate almost the whole cake. [modifies NP]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "Sadly, the letter arrived late. [supplement]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§6 Adjectives and adverbs",
+          "pages": [
+            57
+          ],
+          "pdf_pages": [
+            77
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "adverbs as modifiers of non-nominals",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "WCAT-009",
+        "WCAT-011"
+      ],
+      "review_notes": "'Not all adverbs can modify heads of all these categories' (p. 57); the engine must not assume 'almost'-style freedom for every adverb."
+    },
+    {
+      "id": "WCAT-011",
+      "domain": "word_categories",
+      "concept": "adverb heterogeneity and -ly",
+      "rule_type": "descriptive_generalization",
+      "scope": "word",
+      "statement": "Adverb is the least homogeneous traditional part of speech; many adverbs are formed from adjectives by adding -ly, and Cambridge reduces the heterogeneity by moving many traditional adverbs into the preposition category.",
+      "condition": "Applies when classifying adverbs: -ly derivation links many adverbs to adjectives (excellent ~ excellently); the adverb/preposition boundary is redrawn so that words like 'before' and 'afterwards' count as prepositions.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "excellent ~ excellently",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "quite excellent ~ quite excellently",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "a remarkably good performance",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§6 Adjectives and adverbs",
+          "pages": [
+            57,
+            58
+          ],
+          "pdf_pages": [
+            77,
+            78
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "adverb",
+          "relation": "unverified",
+          "note": "Cambridge narrows the adverb class; Burton-Roberts's boundary not checked."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "WCAT-012",
+        "WCAT-010"
+      ],
+      "traditional_terms": [
+        "adverb (broader)"
+      ],
+      "review_notes": "Includes the §6 statement that only a very small number of adverbs license complements (independently of such considerations)."
+    },
+    {
+      "id": "PHR-013",
+      "domain": "phrases",
+      "concept": "AdvP structure",
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "Adverbs can be modified much as adjectives are (quite excellently), only a very small number of adverbs license complements (independently of such considerations), and AdvP has only two category levels.",
+      "condition": "Applies to adverb phrases: modifiers precede the head; a complement is licensed only by a very small set of adverbs; the levels are AdvP and adverb.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "quite excellently",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "independently of such considerations",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "a remarkably good performance",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§6 Adjectives and adverbs",
+          "pages": [
+            58
+          ],
+          "pdf_pages": [
+            78
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "AdvP structure",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "PHR-012",
+        "WCAT-010"
+      ]
+    },
+    {
+      "id": "WCAT-012",
+      "domain": "word_categories",
+      "concept": "prepositions as heads of PPs",
+      "rule_type": "classification",
+      "scope": "word",
+      "statement": "Prepositions are heads of preposition phrases, and words like before, until, afterwards are prepositions whether their complement is an NP, a clause, an adverb phrase, or absent; many traditional adverbs and most traditional subordinating conjunctions are therefore prepositions here.",
+      "condition": "Applies when classifying words like before, after, until, if, because: if the word heads a phrase with a complement (NP, AdvP, clause) or none, it is a preposition.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "I saw him before lunch. [NP complement]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "I saw him before he left. [clause complement]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "I hadn't seen him before. [no complement]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "I saw him afterwards. [never takes a complement]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "I haven't met him until recently. [AdvP complement]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c6",
+            "text": "It depends on how much they cost. [clause complement]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§7 Prepositions and preposition phrases",
+          "pages": [
+            58
+          ],
+          "pdf_pages": [
+            78
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "preposition / conjunction / adverb",
+          "relation": "unverified",
+          "note": "A major departure from traditional grammar; compare Burton-Roberts's treatment of 'before', 'if', 'because'."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "PHR-014",
+        "WCAT-011"
+      ],
+      "traditional_terms": [
+        "adverb",
+        "subordinating conjunction"
+      ],
+      "review_notes": "Flag for Burton-Roberts comparison: category boundaries differ."
+    },
+    {
+      "id": "PHR-014",
+      "domain": "phrases",
+      "concept": "PP structure and complements",
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "In a PP the NP in 'to you' or 'of the house' is a complement of the preposition, and modifiers like 'a few minutes' or 'straight' before or after the preposition are modifiers; complements may be objects or predicatives (as a liability) and a PP may have no complement.",
+      "condition": "Applies to PPs: complement = NP object, predicative (after 'as'), AdvP or clause; modifiers precede the preposition phrase; a complement-less PP is allowed (before, afterwards).",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "to you",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "a few minutes before lunch",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "They regard him as a liability.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "It strikes me as quite reasonable.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "I hadn't seen him before.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§7 Prepositions and preposition phrases",
+          "pages": [
+            58
+          ],
+          "pdf_pages": [
+            78
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "PP structure and complements",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "WCAT-012",
+        "COMP-008"
+      ]
+    },
+    {
+      "id": "PHR-015",
+      "domain": "phrases",
+      "concept": "preposition stranding",
+      "rule_type": "descriptive_generalization",
+      "scope": "phrase",
+      "statement": "The most central prepositions can be stranded, i.e. left with a gap in complement position, when their complement is prenuclear in an interrogative or relative clause; the alternative is to keep the PP together in prenuclear position.",
+      "condition": "Applies to central prepositions (to, with) in open interrogatives and relative clauses: the PP can be in prenuclear position, or the preposition is stranded with its complement realised by a co-indexed gap.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "She was talking to a man.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "To whom was she talking? [PP prenuclear]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "Who was she talking to? [stranded]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "the razor-blade with which I cut it [PP prenuclear]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "the razor-blade that I cut it with [stranded]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§7 Prepositions and preposition phrases",
+          "pages": [
+            58,
+            59
+          ],
+          "pdf_pages": [
+            78,
+            79
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "preposition stranding",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-011",
+        "CLS-012"
+      ],
+      "review_notes": "Only the 'most central' prepositions; which ones are not listed here. Do not use as an error rule."
+    },
+    {
+      "id": "CLS-017",
+      "domain": "clauses",
+      "concept": "adjuncts",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Adjunct covers modifiers in clause (or VP) structure together with the related supplements (e.g. 'Unhappily' in 'Unhappily, the letter arrived too late').",
+      "condition": "Applies when naming a clause-level dependent that is not a core complement: a modifier in clause or VP structure, or a related supplement detached prosodically from the clause.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "She left at noon.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Unhappily, the letter arrived too late.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "I spoke to her in the garden.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§8 The clause: adjuncts",
+          "pages": [
+            59
+          ],
+          "pdf_pages": [
+            79
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "adjuncts",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-018",
+        "COMP-010",
+        "COMP-001"
+      ]
+    },
+    {
+      "id": "COMP-010",
+      "domain": "complementation",
+      "concept": "complements semantically related to adjuncts",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "A manner or locative expression is a complement, not an adjunct, when the verb requires it: 'badly' in 'treated us badly' is obligatory (another sense of treat is involved without it), and locatives with verbs of motion are generally complements, including source and goal.",
+      "condition": "Applies to manner and place expressions: manner is a complement if obligatory for the verb sense; locatives are adjuncts with static situations but generally complements with verbs of motion; source marks the starting point and goal the endpoint.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "They treated us badly. [manner complement]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "I spoke to her in the garden. [locative adjunct]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "Kim drove from Berlin to Bonn. [source and goal complements]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§8 The clause: adjuncts",
+          "pages": [
+            59
+          ],
+          "pdf_pages": [
+            79
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "complements semantically related to adjuncts",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "COMP-001",
+        "CLS-017"
+      ],
+      "review_notes": "'Mostly adjuncts' and 'generally complements' are hedged; Ch. 4/8 hold the tests."
+    },
+    {
+      "id": "CLS-018",
+      "domain": "clauses",
+      "concept": "semantic categories of adjuncts",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Adjuncts are named on a semantic basis, including temporal location, duration, frequency, degree, purpose, reason, result, concession and condition, plus less familiar concepts.",
+      "condition": "Applies when labelling adjuncts: choose the label by meaning, using categories such as temporal location, duration, frequency, degree, purpose, reason, result, concession and condition.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "She left at noon. [temporal location]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "They waited for an hour. [duration]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "He calls every week. [frequency]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "I came to help. [purpose]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "If it rains, we'll stay in. [condition]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§8 The clause: adjuncts",
+          "pages": [
+            59
+          ],
+          "pdf_pages": [
+            79
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "semantic categories of adjuncts",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-017"
+      ],
+      "review_notes": "Only the category names appear in the overview; definitions are in Ch. 8."
+    },
+    {
+      "id": "CLS-019",
+      "domain": "clauses",
+      "concept": "not even continuation requires a negative clause",
+      "rule_type": "constraint",
+      "scope": "clause",
+      "statement": "A clause can be continued with 'not even' only if it is negative; a positive clause cannot be so continued.",
+      "condition": "Applies to clauses followed by a ', not even ...' continuation: the host clause must be negative (clausal negation).",
+      "violation": "A positive clause (or a clause with only subclausal negation) is followed by a 'not even ...' continuation.",
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "He didn't read the report, not even the summary.",
+            "origin": "ai_authored",
+            "pair_id": "p1"
+          },
+          {
+            "id": "c2",
+            "text": "They didn't visit the town, not even the museum.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          },
+          {
+            "id": "c3",
+            "text": "She never wrote, not even a postcard.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "We didn't ask anyone, not even Jon.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": [
+          {
+            "id": "i1",
+            "text": "*He read the report, not even the summary.",
+            "origin": "ai_authored",
+            "pair_id": "p1",
+            "note": "Source pattern, p. 59."
+          },
+          {
+            "id": "i2",
+            "text": "*They visited the town, not even the museum.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          },
+          {
+            "id": "i3",
+            "text": "*She wrote often, not even a postcard.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "i4",
+            "text": "*We asked everyone, not even Jon.",
+            "origin": "ai_authored"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            59
+          ],
+          "pdf_pages": [
+            79
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "not even continuation requires a negative clause",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-020",
+        "CLS-021"
+      ],
+      "review_notes": "One of three diagnostic tests; the book describes it as a syntactic distribution difference between negative and positive clauses. 'Never' is treated here as clausal negation by assumption; check Ch. 9 before relying on it."
+    },
+    {
+      "id": "CLS-020",
+      "domain": "clauses",
+      "concept": "nor/so continuation and confirmation tags",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "A negative clause is followed by the connective adjunct nor (or neither) and takes a positive confirmation tag; a positive clause is followed by so and takes a negative tag.",
+      "condition": "Applies to clausal polarity diagnostics: negative clause + 'and nor did ...' + positive tag (did he?); positive clause + 'and so did ...' + negative tag (didn't he?).",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "He didn't read the report, and nor did his son.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "He read the report, and so did his son.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "He didn't read it, did he?",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "He read it, didn't he?",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            59
+          ],
+          "pdf_pages": [
+            79
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "nor/so continuation and confirmation tags",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-019",
+        "CLS-021"
+      ],
+      "review_notes": "Described as differences in distribution, not as bans on all other combinations."
+    },
+    {
+      "id": "CLS-021",
+      "domain": "clauses",
+      "concept": "clausal vs subclausal negation",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "A clause counts as positive by the three tests even if it contains negative words inside it (subclausal negation, e.g. 'not for the first time', 'in no time', 'unfriendly'); such clauses behave as positive: no 'not even', 'so' rather than 'nor', and negative tags.",
+      "condition": "Applies to clauses with a negative element inside a constituent: if the clause fails the negative-clause tests, the negation is subclausal; clausal negation passes them.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Not for the first time, she found his behaviour offensive.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "We'll do it in no time, won't we?",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "They were rather unfriendly, weren't they?",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "Not for the first time, she was late, and so was he.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            60
+          ],
+          "pdf_pages": [
+            80
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "clausal vs subclausal negation",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-019",
+        "CLS-020"
+      ]
+    },
+    {
+      "id": "CLS-022",
+      "domain": "clauses",
+      "concept": "negatively oriented polarity-sensitive items",
+      "rule_type": "constraint",
+      "scope": "clause",
+      "statement": "Negatively oriented polarity-sensitive items (any longer, any, anyone, ever, determinative either, yet, at all, in certain senses) occur in negative and other non-affirmative clauses (interrogatives, if-clauses) but not in positive assertions.",
+      "condition": "Applies to clauses containing a negatively oriented item such as 'any longer' or 'yet': the clause must be non-affirmative, i.e. negative, interrogative or the complement of conditional 'if', and not a positive assertion.",
+      "violation": "A negatively oriented item appears in a positive assertion (not negative, interrogative or conditional).",
+      "exceptions": [
+        {
+          "description": "The orientation holds 'in certain senses at least'; the source does not list which senses are excluded (for example free-choice uses).",
+          "pages": [
+            60
+          ],
+          "example_ids": []
+        }
+      ],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "She doesn't live here any longer.",
+            "origin": "ai_authored",
+            "pair_id": "p1"
+          },
+          {
+            "id": "c2",
+            "text": "Will you be needing me any longer?",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          },
+          {
+            "id": "c3",
+            "text": "If he waits any longer, he will miss it.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "They haven't replied yet.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": [
+          {
+            "id": "i1",
+            "text": "*She lives here any longer.",
+            "origin": "ai_authored",
+            "pair_id": "p1",
+            "note": "Source pattern, p. 60."
+          },
+          {
+            "id": "i2",
+            "text": "*They replied yet.",
+            "origin": "ai_authored",
+            "pair_id": "p3"
+          },
+          {
+            "id": "i3",
+            "text": "*We saw anyone at the party.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "i4",
+            "text": "*He has ever visited us.",
+            "origin": "ai_authored"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            60
+          ],
+          "pdf_pages": [
+            80
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "negatively oriented polarity-sensitive items",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-023",
+        "CLS-021"
+      ],
+      "review_notes": "Sense-dependent. 'Anyone can do it' (a different sense of any) is outside this record; the exceptions and the full item list are in Ch. 9."
+    },
+    {
+      "id": "CLS-023",
+      "domain": "clauses",
+      "concept": "positively oriented polarity-sensitive items",
+      "rule_type": "constraint",
+      "scope": "clause",
+      "statement": "Positively oriented items (somewhat, some, someone, pretty in the degree sense, already, still) favour positive contexts, so 'somewhat' is not acceptable under clausal negation.",
+      "condition": "Applies to clauses with 'somewhat' (or another positively oriented item) under clausal negation: the item is not acceptable inside a negative clause.",
+      "violation": "A positively oriented item such as 'somewhat' occurs inside a negative clause.",
+      "exceptions": [
+        {
+          "description": "The special case where the negative is used to deny or contradict a prior assertion containing the item is set aside by the source.",
+          "pages": [
+            60
+          ],
+          "example_ids": []
+        }
+      ],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "He was feeling somewhat sad.",
+            "origin": "ai_authored",
+            "pair_id": "p1"
+          },
+          {
+            "id": "c2",
+            "text": "The soup was somewhat salty.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          },
+          {
+            "id": "c3",
+            "text": "They look somewhat tired.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "The film was somewhat long.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": [
+          {
+            "id": "i1",
+            "text": "*He wasn't feeling somewhat sad.",
+            "origin": "ai_authored",
+            "pair_id": "p1",
+            "note": "Source pattern, p. 60."
+          },
+          {
+            "id": "i2",
+            "text": "*The soup wasn't somewhat salty.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          },
+          {
+            "id": "i3",
+            "text": "*They don't look somewhat tired.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "i4",
+            "text": "*The film wasn't somewhat long.",
+            "origin": "ai_authored"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            60
+          ],
+          "pdf_pages": [
+            80
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "positively oriented polarity-sensitive items",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-022"
+      ],
+      "review_notes": "Only 'somewhat' has a starred example. For other positive items (some, already, still) the book says only that they favour positive contexts."
+    },
+    {
+      "id": "CLS-024",
+      "domain": "clauses",
+      "concept": "scope of negation",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "The scope of negation is the part of the sentence the negation applies to; it is not fixed by linear order ('need not' has need inside scope, 'must not' has must outside), and some sentences are ambiguous (a because-adjunct inside or outside the scope of not).",
+      "condition": "Applies when interpreting negative clauses with quantifiers, modals or adjuncts: an item is inside the scope of the negation if it is part of what is negated; scope can differ from word order.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Not many students passed. [many inside scope of not]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Many students did not pass. [many outside scope of not]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "You need not answer. [need inside scope]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "You must not answer. [must outside scope]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "I didn't leave because I was angry. [ambiguous]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§9 Negation",
+          "pages": [
+            60,
+            61
+          ],
+          "pdf_pages": [
+            80,
+            81
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "scope of negation",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-021"
+      ],
+      "review_notes": "Interpretation, not grammaticality. Not for the error-detection engine."
+    },
+    {
+      "id": "CLS-025",
+      "domain": "clauses",
+      "concept": "clause types",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Clause type contrasts declaratives, closed interrogatives, open interrogatives, exclamatives and imperatives, and is a category of syntactic form distinct from meaning or use (a declarative with rising intonation can ask a question).",
+      "condition": "Applies when classifying clause type by form: declarative, closed interrogative, open interrogative, exclamative, imperative; form categories are kept separate from meaning and use.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "She is a good player. [declarative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Is she a good player? [closed interrogative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "How good a player is she? [open interrogative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "What a good player she is! [exclamative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "Play well! [imperative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c6",
+            "text": "You're leaving? [declarative in form; used to ask]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§10 Clause type and illocutionary force",
+          "pages": [
+            61
+          ],
+          "pdf_pages": [
+            81
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "clause types",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-005",
+        "CLS-026",
+        "CLS-027"
+      ]
+    },
+    {
+      "id": "CLS-026",
+      "domain": "clauses",
+      "concept": "polar, alternative and variable questions",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Questions are classified by their set of possible answers: polar (yes/no), alternative (a choice among stated options) and variable (an answer supplies a value for a variable).",
+      "condition": "Applies to the semantic classification of questions: polar = yes or no; alternative = answers are the listed alternatives; variable = answer gives a value for the open proposition.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Is this yours? [polar]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Is this Kim's or Pat's? [alternative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "Whose is this? [variable]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§10 Clause type and illocutionary force",
+          "pages": [
+            61
+          ],
+          "pdf_pages": [
+            81
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "polar, alternative and variable questions",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-025"
+      ]
+    },
+    {
+      "id": "CLS-027",
+      "domain": "clauses",
+      "concept": "illocutionary force",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Speech acts such as statements, questions and orders have illocutionary force; directive is the force typically associated with imperatives, and many forces go beyond the syntactic categories (e.g. a declarative used as a promise or apology).",
+      "condition": "Applies when interpreting use rather than form: force is a matter of what the utterance does; a clause type is only typically linked to a force.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Play well! [directive]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "I promise to be home by six. [declarative used as a promise]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "We apologise for the delay. [declarative used as an apology]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§10 Clause type and illocutionary force",
+          "pages": [
+            61
+          ],
+          "pdf_pages": [
+            81
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "illocutionary force",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-025",
+        "CLS-028"
+      ]
+    },
+    {
+      "id": "CLS-028",
+      "domain": "clauses",
+      "concept": "indirect speech acts",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Illocutionary meaning is often conveyed indirectly: a closed interrogative like 'Would you like to close the window?' is syntactically a question but is likely to be used as a polite directive.",
+      "condition": "Applies when an utterance's literal force differs from its likely use; indirect directives are common and are often considered more polite than direct ones.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Would you like to close the window? [closed interrogative used as request]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Close the window. [direct directive]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "Could you pass the salt? [closed interrogative used as request]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§10 Clause type and illocutionary force",
+          "pages": [
+            62
+          ],
+          "pdf_pages": [
+            82
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "indirect speech acts",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-027",
+        "CLS-025"
+      ]
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "PHR-015",
+      "to": "CLS-011 (gap and co-indexing)",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-012",
+      "to": "PHR-007 (attributive modifiers)",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-022",
+      "to": "Ch. 9 (negation, polarity)",
+      "relation": "refines",
+      "verified": false
+    },
+    {
+      "from_rule": "WCAT-012",
+      "to": "Ch. 7 (prepositions)",
+      "relation": "refines",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-025",
+      "to": "Ch. 10 (clause type)",
+      "relation": "refines",
+      "verified": false
+    },
+    {
+      "from_rule": "COMP-010",
+      "to": "COMP-001 (complements vs modifiers)",
+      "relation": "refines",
+      "verified": true
+    }
+  ],
+  "conflicts": [
+    {
+      "rules": [
+        "WCAT-011",
+        "WCAT-012"
+      ],
+      "kind": "cambridge_vs_burton_roberts",
+      "description": "Cambridge moves many traditional adverbs and subordinating conjunctions into the preposition category. Burton-Roberts's boundaries were not supplied and may differ.",
+      "proposed_resolution": "Compare with Burton-Roberts word-class chapters before approval.",
+      "needs_human": true
+    }
+  ],
+  "uncertain_items": [
+    {
+      "pages": [
+        57
+      ],
+      "issue": "§6 begins at the bottom of printed p. 57, immediately after the §5 count/non-count passage; page boundary is shared with the previous batch.",
+      "what_is_needed": "Confirm section cut."
+    },
+    {
+      "pages": [
+        57,
+        58
+      ],
+      "issue": "Words like 'there' and 'well' and their function are not covered, so WCAT-009 (adverbs not predicative) may over-reach.",
+      "what_is_needed": "Ch. 6 treatment before engine use."
+    },
+    {
+      "pages": [
+        60
+      ],
+      "issue": "Full lists of negatively and positively oriented items and the senses in which they apply are not given.",
+      "what_is_needed": "Ch. 9 lists."
+    },
+    {
+      "pages": [
+        59
+      ],
+      "issue": "Whether 'never' and similar words give clausal negation (CLS-019) is not stated in §9.",
+      "what_is_needed": "Ch. 9 check."
+    }
+  ],
+  "coverage_report": {
+    "printed_pages_fully_covered": "57-62",
+    "skipped": [],
+    "counts": {
+      "concepts": 19,
+      "rules": 23,
+      "by_rule_type": {
+        "classification": 16,
+        "constraint": 5,
+        "descriptive_generalization": 2
+      },
+      "by_domain": {
+        "word_categories": 6,
+        "phrases": 4,
+        "clauses": 12,
+        "complementation": 1
+      },
+      "examples_book": 2,
+      "examples_ai_authored": 113,
+      "conflicts": 1,
+      "uncertain_items": 4
+    }
+  }
+}

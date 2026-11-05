@@ -1,0 +1,230 @@
+[
+  {
+    "id": "AGR-001",
+    "domain": "agreement",
+    "concept": "determinative-noun number agreement",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "In an NP the number of the head noun must be compatible with the determinative: this and that agree with the head, and other determinatives select either a singular head (a, each) or a plural head (two, several).",
+    "condition": "Applies to NPs with a determiner that is a determinative: singular-selecting determinatives (a, each, this, that) combine with a singular count head; plural-selecting determinatives (two, several, these, those) combine with a plural head.",
+    "violation": "A singular-selecting determinative is followed by a plural head noun, or a plural-selecting determinative by a singular count head noun.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "a book",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "c2",
+          "text": "each child",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "c3",
+          "text": "two books",
+          "origin": "ai_authored",
+          "pair_id": "p3"
+        },
+        {
+          "id": "c4",
+          "text": "several ideas",
+          "origin": "ai_authored",
+          "pair_id": "p4"
+        },
+        {
+          "id": "c5",
+          "text": "this book",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "those books",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*a books",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "*each children",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "i3",
+          "text": "*two book",
+          "origin": "ai_authored",
+          "pair_id": "p3"
+        },
+        {
+          "id": "i4",
+          "text": "*several idea",
+          "origin": "ai_authored",
+          "pair_id": "p4"
+        },
+        {
+          "id": "i5",
+          "text": "*this books",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i6",
+          "text": "*those book",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          56
+        ],
+        "pdf_pages": [
+          76
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "determinative-noun number agreement",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "AGR-002",
+      "WCAT-006"
+    ],
+    "review_notes": "The page names a, each, two, several; the rest of the determinatives are in Ch. 5. Non-count heads (e.g. 'much equipment') are outside this record. Compound modifiers ('a two-week trip') are not considered."
+  },
+  {
+    "id": "AGR-002",
+    "domain": "agreement",
+    "concept": "subject-verb agreement",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A verb in the present tense (and be in the preterite) agrees in person and number with its subject NP, whose person-number classification normally derives from its head noun.",
+    "condition": "Applies to finite clauses with a present-tense verb (or preterite be) and a subject NP: the verb's form matches the subject's person and number as determined by the head noun of the NP.",
+    "violation": "The verb's number or person form does not match the person and number of the subject NP (as derived from its head noun, subject to the listed departures).",
+    "exceptions": [
+      {
+        "description": "Subjects whose notional number differs from the head noun's form: 'A number of boys were absent' (singular head, plural subject) and 'Three eggs is plenty' (plural head, single-quantity subject). The source says there are 'a good few' such departures.",
+        "pages": [
+          56
+        ],
+        "example_ids": [
+          "c5",
+          "c6"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The nurse has arrived.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "c2",
+          "text": "The nurses have arrived.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "c3",
+          "text": "The dog is asleep.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "The dogs are asleep.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "A number of players were injured.",
+          "origin": "ai_authored",
+          "note": "Head 'number' is singular but the subject counts as plural.",
+          "tests_exception": true
+        },
+        {
+          "id": "c6",
+          "text": "Ten dollars is plenty.",
+          "origin": "ai_authored",
+          "note": "Plural head, but the subject expresses one quantity.",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*The nurse have arrived.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "*The nurses has arrived.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "i3",
+          "text": "*The dog are asleep.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i4",
+          "text": "*The dogs is asleep.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          56
+        ],
+        "pdf_pages": [
+          76
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "subject-verb agreement",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "AGR-001",
+      "MORPH-001",
+      "MORPH-002"
+    ],
+    "review_notes": "Applies to the standard variety; non-standard agreement patterns are not discussed here. The full treatment of agreement departures is in later chapters (not supplied here); check before engine use."
+  }
+]

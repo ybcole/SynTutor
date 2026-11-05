@@ -1,0 +1,1187 @@
+{
+  "meta": {
+    "chapter": 2,
+    "section": "§1-§2 (Sentence and clause; Canonical and non-canonical clauses)",
+    "printed_pages": [
+      44,
+      50
+    ],
+    "pdf_pages": [
+      64,
+      70
+    ],
+    "page_offset": "pdf = printed + 20",
+    "processed_by": "Claude",
+    "protocol_version": "1.0",
+    "assumed_inputs": "No highest-ID list was supplied; numbering starts at CLS-001. No Burton-Roberts index supplied, all mappings 'unverified'."
+  },
+  "concepts": [
+    {
+      "term": "sentence",
+      "gloss": "largest unit of syntax; occurs in sequence in texts",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§1 Sentence and clause",
+          "pages": [
+            44
+          ],
+          "pdf_pages": [
+            64
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "clause",
+      "gloss": "syntactic construction with subject and predicate in central cases; can be embedded",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§1 Sentence and clause",
+          "pages": [
+            44
+          ],
+          "pdf_pages": [
+            64
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "embedded clause",
+      "gloss": "clause contained within a larger clause",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§1 Sentence and clause",
+          "pages": [
+            44
+          ],
+          "pdf_pages": [
+            64
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "clause-coordination",
+      "gloss": "sentence form made of coordinated clauses",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§1 Sentence and clause",
+          "pages": [
+            44,
+            45
+          ],
+          "pdf_pages": [
+            64,
+            65
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "NP/clause-coordination",
+      "gloss": "mixed coordination of a noun phrase and a clause",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§1 Sentence and clause",
+          "pages": [
+            45
+          ],
+          "pdf_pages": [
+            65
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "canonical clause",
+      "gloss": "basic clause construction: positive, declarative, active, main, non-coordinate",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            46
+          ],
+          "pdf_pages": [
+            66
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "non-canonical clause",
+      "gloss": "clause differing from a canonical counterpart on one or more dimensions",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            46
+          ],
+          "pdf_pages": [
+            66
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "counterpart",
+      "gloss": "canonical clause differing only on one dimension",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            47
+          ],
+          "pdf_pages": [
+            67
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "matrix clause",
+      "gloss": "clause in which a subordinate clause is embedded",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            47
+          ],
+          "pdf_pages": [
+            67
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "subordinator",
+      "gloss": "word (e.g. that, to) marking a clause as subordinate",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            46,
+            47
+          ],
+          "pdf_pages": [
+            66,
+            67
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "coordinator",
+      "gloss": "word (e.g. and, or, but) marking coordination",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§1 Sentence and clause",
+          "pages": [
+            44,
+            46,
+            47
+          ],
+          "pdf_pages": [
+            64,
+            66,
+            67
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "prenucleus",
+      "gloss": "position before the nucleus clause, e.g. for fronted wh- elements or auxiliaries",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            48
+          ],
+          "pdf_pages": [
+            68
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "nucleus",
+      "gloss": "clause with subject-predicate structure that follows the prenucleus",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            48
+          ],
+          "pdf_pages": [
+            68
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "gap",
+      "gloss": "abstract element co-indexed with a fronted element, filling its function in the nucleus",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            49
+          ],
+          "pdf_pages": [
+            69
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "process terminology",
+      "gloss": "descriptive labels like passivisation and inversion; not derivations",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            48
+          ],
+          "pdf_pages": [
+            68
+          ]
+        }
+      ],
+      "related_concepts": []
+    }
+  ],
+  "rules": [
+    {
+      "id": "CLS-001",
+      "domain": "clauses",
+      "concept": "sentence vs clause",
+      "rule_type": "classification",
+      "scope": "sentence",
+      "statement": "A sentence is the largest syntactic unit and sentences occur in sequence in a text without generally being contained in one another; a clause is a construction of subject plus predicate (in central cases) and can be embedded inside a larger one.",
+      "condition": "Applies when deciding whether a stretch of text is a sentence or a clause: it is a sentence only if it is one of the units occurring in succession in a text, and a clause if it has subject-predicate structure in the central cases; the same string can be a sentence in one text and merely part of a sentence in another.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Mara left early.",
+            "origin": "ai_authored",
+            "note": "Standalone: both a sentence and a clause."
+          },
+          {
+            "id": "c2",
+            "text": "Mara left early, but Jon stayed.",
+            "origin": "ai_authored",
+            "note": "One sentence; contains two clauses."
+          }
+        ],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "k1",
+            "text": "I heard that Mara left early.",
+            "origin": "ai_authored",
+            "pair_id": "p1",
+            "note": "'Mara left early' is a clause here but not a sentence; it is only part of one.",
+            "judgement": "n/a"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§1 Sentence and clause",
+          "pages": [
+            44
+          ],
+          "pdf_pages": [
+            64
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "sentence / clause",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-002"
+      ],
+      "review_notes": "Also records that relations between sentences in a discourse are outside the book's grammar (p. 44); not made a rule."
+    },
+    {
+      "id": "CLS-002",
+      "domain": "clauses",
+      "concept": "sentence has the form of a clause or clause-coordination",
+      "rule_type": "classification",
+      "scope": "sentence",
+      "statement": "A sentence has either the form of a clause or the form of a coordination of clauses; 'clause', not 'sentence', is the syntactic category used in constituent-structure trees.",
+      "condition": "Applies when assigning a category to the top node of a constituent-structure analysis of a sentence: a sentence with one subject-predicate structure (with or without embedded clauses) is labelled clause; a sentence of coordinated clauses is labelled clause-coordination; the label 'sentence' is not used for syntactic categories.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "The dog barked.",
+            "origin": "ai_authored",
+            "note": "Top node: clause."
+          },
+          {
+            "id": "c2",
+            "text": "The dog barked, and the cat ran off.",
+            "origin": "ai_authored",
+            "note": "Top node: clause-coordination."
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§1 Sentence and clause",
+          "pages": [
+            44,
+            45
+          ],
+          "pdf_pages": [
+            64,
+            65
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "sentence (S) as a category",
+          "relation": "unverified",
+          "note": "Cambridge rejects 'sentence' as a syntactic category label; Burton-Roberts's usage not checked."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-003"
+      ],
+      "review_notes": "Reasons given on p. 45: (a) treating a coordination and its coordinate parts as one category fails for mixed coordinations; (b) it clashes with the everyday sense of 'sentence'. These are Cambridge's analytical arguments, not tested constraints."
+    },
+    {
+      "id": "CLS-003",
+      "domain": "clauses",
+      "concept": "coordination categories",
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "A coordination belongs to a different category from its coordinate parts and is named by what it coordinates: clause-coordination, NP-coordination, or a mixed form such as NP/clause-coordination.",
+      "condition": "Applies to any coordinative construction: the whole is categorised as a coordination of the categories of its parts, and is not assigned the category of any single coordinate; mixed coordinations (e.g. a noun phrase joined to a clause) have a mixed label.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "You should ask [the price and whether we can pay by card].",
+            "origin": "ai_authored",
+            "note": "NP/clause-coordination."
+          },
+          {
+            "id": "c2",
+            "text": "Mara and her brother arrived.",
+            "origin": "ai_authored",
+            "note": "NP-coordination as subject."
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§1 Sentence and clause",
+          "pages": [
+            45
+          ],
+          "pdf_pages": [
+            65
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "coordination",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-002"
+      ],
+      "review_notes": "Detailed treatment is in Ch. 15; this record covers only the Ch. 2 overview."
+    },
+    {
+      "id": "CLS-004",
+      "domain": "clauses",
+      "concept": "simple, complex, compound sentence (traditional)",
+      "rule_type": "stylistic_or_prescriptive",
+      "scope": "sentence",
+      "statement": "Cambridge treats the traditional simple/complex/compound trichotomy as conflating two independent dimensions, embedding and coordination, and so uses non-compound (clausal) vs compound instead, making little further use of simple vs complex.",
+      "condition": "Applies when classifying a sentence by clause structure: embedding (presence of a subordinate clause) and coordination (presence of coordinated clauses) are independent; a sentence can have both, one, or neither.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Mara left.",
+            "origin": "ai_authored",
+            "note": "No embedding, no coordination."
+          },
+          {
+            "id": "c2",
+            "text": "I think Mara left, but Jon stayed.",
+            "origin": "ai_authored",
+            "note": "Both embedding and coordination."
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§1 Sentence and clause",
+          "pages": [
+            45
+          ],
+          "pdf_pages": [
+            65
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "simple/compound/complex sentence",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-007"
+      ],
+      "traditional_terms": [
+        "simple sentence",
+        "complex sentence",
+        "compound sentence"
+      ],
+      "review_notes": "Source is footnote 1, p. 45. Cambridge's stance on a traditional scheme; do not use it to flag 'errors'."
+    },
+    {
+      "id": "CLS-005",
+      "domain": "clauses",
+      "concept": "canonical vs non-canonical clauses",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Canonical clauses are the basic constructions (positive, declarative, active, main, non-coordinate); non-canonical clauses differ from them along one or more of five dimensions: polarity, clause type, information packaging (e.g. passive), subordination, and coordination.",
+      "condition": "Applies when describing a clause: compare it with its canonical counterpart on each of five independent dimensions: polarity (negative), clause type (interrogative, exclamative, imperative), packaging (passive, preposing, existential, it-cleft), subordination (subordinate), coordination (coordinate); a clause may be non-canonical on several dimensions at once.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Mara read the letter.",
+            "origin": "ai_authored",
+            "note": "Canonical."
+          },
+          {
+            "id": "c2",
+            "text": "Mara did not read the letter.",
+            "origin": "ai_authored",
+            "pair_id": "p1",
+            "note": "Non-canonical: negative."
+          },
+          {
+            "id": "c3",
+            "text": "The letter was read by Mara.",
+            "origin": "ai_authored",
+            "note": "Non-canonical: passive (packaging)."
+          },
+          {
+            "id": "c4",
+            "text": "Did Mara read the letter?",
+            "origin": "ai_authored",
+            "note": "Non-canonical: interrogative."
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            46,
+            47
+          ],
+          "pdf_pages": [
+            66,
+            67
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "basic / canonical clause structure",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-006",
+        "CLS-007",
+        "CLS-008",
+        "CLS-009"
+      ],
+      "review_notes": "Cambridge's five dimensions are in the numbered list on pp. 46-47. 'All canonical clauses are declarative' (p. 46) is encoded in the condition."
+    },
+    {
+      "id": "CLS-006",
+      "domain": "clauses",
+      "concept": "negative and interrogative counterparts: auxiliary do",
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "When a canonical clause with no auxiliary verb is made negative or interrogative, the non-canonical form adds the semantically empty auxiliary do; interrogatives also invert subject and predicator.",
+      "condition": "Applies to the specific contrasts illustrated on p. 46 (a positive declarative clause without an auxiliary versus its negative or interrogative counterpart); the full conditions on do-support are given elsewhere in the book (Chs. 3, 9, 10), not here.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Mara did not read the letter.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Did Mara read the letter?",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "k1",
+            "text": "Mara read the letter.",
+            "origin": "ai_authored",
+            "pair_id": "p1",
+            "note": "Canonical counterpart.",
+            "judgement": "n/a"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            46
+          ],
+          "pdf_pages": [
+            66
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "do-support",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-005"
+      ],
+      "review_notes": "This overview only describes the pattern. Do not turn it into an error-detection rule from this source; extract the actual constraint from Chs. 3/9/10."
+    },
+    {
+      "id": "CLS-007",
+      "domain": "clauses",
+      "concept": "subordinate clause, matrix clause, recursion",
+      "rule_type": "classification",
+      "scope": "multi_clause",
+      "statement": "A subordinate clause is embedded in a matrix clause; subordination can repeat, so a matrix clause may itself be embedded in a larger one.",
+      "condition": "Applies when a clause is contained within another clause: the containing clause is the matrix clause for the contained subordinate clause; a subordinate clause may be marked by a subordinator (e.g. 'that') or consist of a VP with a subordinator 'to' with subject and object unexpressed.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Mara said that Jon was ill.",
+            "origin": "ai_authored",
+            "note": "'Jon was ill' is subordinate; the whole is its matrix clause."
+          },
+          {
+            "id": "c2",
+            "text": "I think Mara said that Jon was ill.",
+            "origin": "ai_authored",
+            "note": "Recursive: matrix clause embedded in a larger one."
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            46,
+            47
+          ],
+          "pdf_pages": [
+            66,
+            67
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "subordination / embedding",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-005",
+        "CLS-004"
+      ],
+      "review_notes": "Cambridge notes subordinate clauses can differ from main clauses far more than by a subordinator alone (p. 47)."
+    },
+    {
+      "id": "CLS-008",
+      "domain": "clauses",
+      "concept": "non-canonical features combine independently",
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "Non-canonical properties are independent, so one clause can be negative, interrogative, passive and subordinate at once, and its structure is described by its difference from canonical structure on each dimension separately.",
+      "condition": "Applies to any clause showing more than one non-canonical feature; each feature is analysed on its own dimension, and the counterpart for one feature retains the other features.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "I can't see why the window was not closed by Jon.",
+            "origin": "ai_authored",
+            "note": "Negative, interrogative, passive, subordinate."
+          }
+        ],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "k1",
+            "text": "It wasn't written by Sue.",
+            "origin": "ai_authored",
+            "pair_id": "p2",
+            "note": "Active counterpart: 'Sue didn't write it' (still negative); positive counterpart: 'It was written by Sue' (still passive).",
+            "judgement": "n/a"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            47
+          ],
+          "pdf_pages": [
+            67
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "multiple non-canonical features",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-005",
+        "CLS-009"
+      ]
+    },
+    {
+      "id": "CLS-009",
+      "domain": "clauses",
+      "concept": "non-canonical clauses without well-formed counterparts",
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "Not every non-canonical clause has a grammatically well-formed canonical counterpart, so process descriptions (passivisation, inversion) cannot be read as a derivation from a canonical clause.",
+      "condition": "Applies to non-canonical clauses whose construction is restricted to that form: negative clauses containing negative-polarity items such as 'any longer'; interrogatives containing 'yet'; passive-only 'say + infinitive'; existentials with no non-existential counterpart; subordinate clauses with no main-clause counterpart.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Mara can't stay any longer.",
+            "origin": "ai_authored",
+            "note": "Negative clause with 'any longer'."
+          },
+          {
+            "id": "c2",
+            "text": "Have they replied yet?",
+            "origin": "ai_authored",
+            "note": "Interrogative with 'yet'."
+          }
+        ],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "k1",
+            "text": "*Mara can stay any longer.",
+            "origin": "ai_authored",
+            "pair_id": "p3",
+            "note": "Positive counterpart of a negative: ill-formed in the intended sense (cf. p. 47 [3i]).",
+            "judgement": "n/a"
+          },
+          {
+            "id": "k2",
+            "text": "*They have replied yet.",
+            "origin": "ai_authored",
+            "pair_id": "p4",
+            "note": "Declarative counterpart of an interrogative: ill-formed (cf. p. 47 [3ii]).",
+            "judgement": "n/a"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            47
+          ],
+          "pdf_pages": [
+            67
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "restricted constructions",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-005",
+        "CLS-010"
+      ],
+      "review_notes": "The book shows ill-formed counterparts for illustration, but the constraints on negative-polarity 'any' and 'yet' belong to Ch. 9. Mark these 'contrast', not a testable rule, until Ch. 9 is processed. Cambridge's own example on p. 47 ('It had been for you') is grammatical under a different, referential interpretation."
+    },
+    {
+      "id": "CLS-010",
+      "domain": "clauses",
+      "concept": "process terminology is descriptive",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Terms like subject-auxiliary inversion, passivisation and relativisation are convenient descriptive labels for how a non-canonical clause differs from a canonical one, and do not claim that speakers derive one clause from another.",
+      "condition": "Applies when interpreting process terminology in any chapter: such terms can always be restated in static terms (for example, 'the auxiliary comes before the subject, the reverse of canonical order'); the book is an informal descriptive grammar, not a generative one.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Is Mara still working?",
+            "origin": "ai_authored",
+            "note": "Described as inversion; statically: auxiliary precedes subject."
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            48
+          ],
+          "pdf_pages": [
+            68
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "transformations / derivations",
+          "relation": "unverified",
+          "note": "Burton-Roberts may use derivational terminology; not checked."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-009",
+        "CLS-013"
+      ],
+      "review_notes": "Includes footnote 2 on p. 48."
+    },
+    {
+      "id": "CLS-011",
+      "domain": "clauses",
+      "concept": "prenucleus, nucleus and co-indexed gap",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "In an interrogative subordinate clause such as 'what Liz bought', the fronted element is in the prenucleus position and the rest is the nucleus; the position it is understood to fill within the nucleus is shown by a gap co-indexed with it, rather than by relabelling the fronted element as the object.",
+      "condition": "Applies to clauses where an element before the subject is understood as filling a function (such as object) inside the nucleus clause, including across further embedding: the gap occupies that function in the clause of the verb it belongs to, not in the clause where the fronted element stands.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "I wonder what Mara bought.",
+            "origin": "ai_authored",
+            "note": "'what' is prenuclear and understood as object of 'bought'."
+          },
+          {
+            "id": "c2",
+            "text": "I can't remember what Jon said Mara bought.",
+            "origin": "ai_authored",
+            "note": "'what' is object of 'bought', not 'said'."
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            48,
+            49
+          ],
+          "pdf_pages": [
+            68,
+            69
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "wh-movement / traces",
+          "relation": "unverified",
+          "note": "Burton-Roberts's treatment not checked."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-012",
+        "CLS-013"
+      ],
+      "review_notes": "The tree diagrams are on pp. 48-50; trees were not examined as images for this pass."
+    },
+    {
+      "id": "CLS-012",
+      "domain": "clauses",
+      "concept": "no overt object after an object gap",
+      "rule_type": "constraint",
+      "scope": "clause",
+      "statement": "When an element in the prenucleus is understood as the direct object of the verb in the nucleus, that object position is a gap and no overt direct object may follow the verb.",
+      "condition": "Applies to an interrogative clause (e.g. subordinate, introduced by an interrogative NP like 'what') whose prenuclear NP is understood as the direct object of a transitive verb in the nucleus.",
+      "violation": "An overt direct object appears after the verb whose object is already realised by the prenuclear interrogative element (e.g. 'what Mara bought a watch').",
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "I wonder what Mara bought.",
+            "origin": "ai_authored",
+            "pair_id": "p1"
+          },
+          {
+            "id": "c2",
+            "text": "She asked what Jon had broken.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          }
+        ],
+        "incorrect": [
+          {
+            "id": "i1",
+            "text": "*I wonder what Mara bought a watch.",
+            "origin": "ai_authored",
+            "pair_id": "p1",
+            "note": "Overt object duplicates the object already supplied by 'what'. Source: p. 49."
+          },
+          {
+            "id": "i2",
+            "text": "*She asked what Jon had broken the vase.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            49
+          ],
+          "pdf_pages": [
+            69
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "wh-gap",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-011"
+      ],
+      "review_notes": "Cambridge states this only for a direct object in this section. Confirm in Ch. 12 whether the generalisation extends beyond direct objects and whether any listed exceptions (e.g. resumptive-like constructions) exist."
+    },
+    {
+      "id": "CLS-013",
+      "domain": "clauses",
+      "concept": "subject-auxiliary inversion analysed with a gap",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Subject-auxiliary inversion is analysed as a prenucleus (the auxiliary) plus a nucleus identical to the canonical clause except that the predicator position is a gap co-indexed with the fronted auxiliary, so the grammatical relations among subject, verb and complement stay the same as in the declarative.",
+      "condition": "Applies to main-clause interrogatives with inverted subject and auxiliary: the fronted auxiliary is in the prenucleus, the gap takes its place as predicator in the nucleus; wh-interrogatives therefore involve one prenucleus-plus-nucleus construction inside another.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Is Mara ill?",
+            "origin": "ai_authored",
+            "note": "'is' fronted; its predicator position is a gap."
+          },
+          {
+            "id": "c2",
+            "text": "What had Jon bought?",
+            "origin": "ai_authored",
+            "note": "Nucleus 'had Jon bought' functions inside the outer nucleus."
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§2 Canonical and non-canonical clauses",
+          "pages": [
+            49,
+            50
+          ],
+          "pdf_pages": [
+            69,
+            70
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "subject-auxiliary inversion",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-010",
+        "CLS-011"
+      ],
+      "review_notes": "Diagram [8] on p. 50 was read from text only."
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "CLS-005",
+      "to": "Ch. 9 (negation), Ch. 10 (clause type), Ch. 11-14 (subordination), Ch. 15 (coordination), Ch. 16 (information packaging)",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-006",
+      "to": "Ch. 3 / Ch. 9 / Ch. 10",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-011",
+      "to": "Ch. 12 (unbounded dependencies)",
+      "relation": "refines",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-003",
+      "to": "Ch. 15",
+      "relation": "refines",
+      "verified": false
+    }
+  ],
+  "conflicts": [],
+  "uncertain_items": [
+    {
+      "pages": [
+        44
+      ],
+      "issue": "Opening orientation paragraph and the p. 50 'Organisation of the grammar' passage are book-structure descriptions, not grammatical principles.",
+      "what_is_needed": "None; skipped deliberately."
+    },
+    {
+      "pages": [
+        46
+      ],
+      "issue": "Imperatives are listed as non-canonical but not all have a subject, so 'subject + predicate' only holds in 'central cases'.",
+      "what_is_needed": "Check Ch. 3/10 treatment of imperatives before encoding clause definitions in the engine."
+    },
+    {
+      "pages": [
+        48,
+        49,
+        50
+      ],
+      "issue": "Tree diagrams [5], [7], [8] were read as extracted text only.",
+      "what_is_needed": "Human or visual check of the pages if node labels matter."
+    }
+  ],
+  "coverage_report": {
+    "printed_pages_fully_covered": "44-50",
+    "skipped": [
+      "p. 44 orientation paragraph",
+      "p. 50 organisation-of-grammar paragraph"
+    ],
+    "counts": {
+      "concepts": 15,
+      "rules": 13,
+      "by_rule_type": {
+        "classification": 8,
+        "stylistic_or_prescriptive": 1,
+        "descriptive_generalization": 3,
+        "constraint": 1
+      },
+      "examples_book": 0,
+      "examples_ai_authored": 33,
+      "conflicts": 0,
+      "uncertain_items": 3
+    }
+  }
+}

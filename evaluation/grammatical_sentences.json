@@ -1,0 +1,3770 @@
+[
+  {
+    "text": "a book",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "each child",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "two books",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "several ideas",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "this book",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "those books",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "The nurse has arrived.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "The nurses have arrived.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "The dog is asleep.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "The dogs are asleep.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "A number of players were injured.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ],
+    "tests_exception": true
+  },
+  {
+    "text": "Ten dollars is plenty.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ],
+    "tests_exception": true
+  },
+  {
+    "text": "Mara left early.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-001",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      44
+    ]
+  },
+  {
+    "text": "Mara left early, but Jon stayed.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-001",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      44
+    ]
+  },
+  {
+    "text": "The dog barked.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-002",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      44,
+      45
+    ]
+  },
+  {
+    "text": "The dog barked, and the cat ran off.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-002",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      44,
+      45
+    ]
+  },
+  {
+    "text": "You should ask [the price and whether we can pay by card].",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-003",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      45
+    ]
+  },
+  {
+    "text": "Mara and her brother arrived.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-003",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      45
+    ]
+  },
+  {
+    "text": "Mara left.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-004",
+    "domain": "clauses",
+    "rule_type": "stylistic_or_prescriptive",
+    "source_pages": [
+      45
+    ]
+  },
+  {
+    "text": "I think Mara left, but Jon stayed.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-004",
+    "domain": "clauses",
+    "rule_type": "stylistic_or_prescriptive",
+    "source_pages": [
+      45
+    ]
+  },
+  {
+    "text": "Mara read the letter.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-005",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      46,
+      47
+    ]
+  },
+  {
+    "text": "Mara did not read the letter.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-005",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      46,
+      47
+    ]
+  },
+  {
+    "text": "The letter was read by Mara.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-005",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      46,
+      47
+    ]
+  },
+  {
+    "text": "Did Mara read the letter?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-005",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      46,
+      47
+    ]
+  },
+  {
+    "text": "Mara said that Jon was ill.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-007",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      46,
+      47
+    ]
+  },
+  {
+    "text": "I think Mara said that Jon was ill.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-007",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      46,
+      47
+    ]
+  },
+  {
+    "text": "I can't see why the window was not closed by Jon.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-008",
+    "domain": "clauses",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      47
+    ]
+  },
+  {
+    "text": "Mara can't stay any longer.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-009",
+    "domain": "clauses",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      47
+    ]
+  },
+  {
+    "text": "Have they replied yet?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-009",
+    "domain": "clauses",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      47
+    ]
+  },
+  {
+    "text": "Is Mara still working?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-010",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      48
+    ]
+  },
+  {
+    "text": "I wonder what Mara bought.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-011",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      48,
+      49
+    ]
+  },
+  {
+    "text": "I can't remember what Jon said Mara bought.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-011",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      48,
+      49
+    ]
+  },
+  {
+    "text": "She asked what Jon had broken.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-012",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      49
+    ]
+  },
+  {
+    "text": "Is Mara ill?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-013",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      49,
+      50
+    ]
+  },
+  {
+    "text": "What had Jon bought?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-013",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      49,
+      50
+    ]
+  },
+  {
+    "text": "Take care!",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-014",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "It is vital that she take care.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-014",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "I want her to take care.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-014",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "You must take care.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-014",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "She writes poems.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-015",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "Write soon!",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-015",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "I want to write poems.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-015",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "Writing poems is fun.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-015",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "She is writing a novel.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-016",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "She began writing a novel.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-016",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "She left at noon.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-017",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "Unhappily, the letter arrived too late.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-017",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "I spoke to her in the garden.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-017",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "They waited for an hour.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-018",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "He calls every week.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-018",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "I came to help.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-018",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "If it rains, we'll stay in.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-018",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "He didn't read the report, not even the summary.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-019",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "They didn't visit the town, not even the museum.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-019",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "She never wrote, not even a postcard.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-019",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "We didn't ask anyone, not even Jon.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-019",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "He didn't read the report, and nor did his son.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-020",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "He read the report, and so did his son.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-020",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "He didn't read it, did he?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-020",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "He read it, didn't he?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-020",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "Not for the first time, she found his behaviour offensive.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-021",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "We'll do it in no time, won't we?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-021",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "They were rather unfriendly, weren't they?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-021",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "Not for the first time, she was late, and so was he.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-021",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "She doesn't live here any longer.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-022",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "Will you be needing me any longer?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-022",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "If he waits any longer, he will miss it.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-022",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "They haven't replied yet.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-022",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "He was feeling somewhat sad.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-023",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "The soup was somewhat salty.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-023",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "They look somewhat tired.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-023",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "The film was somewhat long.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-023",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "Not many students passed.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-024",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      60,
+      61
+    ]
+  },
+  {
+    "text": "Many students did not pass.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-024",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      60,
+      61
+    ]
+  },
+  {
+    "text": "You need not answer.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-024",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      60,
+      61
+    ]
+  },
+  {
+    "text": "You must not answer.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-024",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      60,
+      61
+    ]
+  },
+  {
+    "text": "I didn't leave because I was angry.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-024",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      60,
+      61
+    ]
+  },
+  {
+    "text": "She is a good player.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-025",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      61
+    ]
+  },
+  {
+    "text": "Is she a good player?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-025",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      61
+    ]
+  },
+  {
+    "text": "How good a player is she?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-025",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      61
+    ]
+  },
+  {
+    "text": "What a good player she is!",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-025",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      61
+    ]
+  },
+  {
+    "text": "Play well!",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-025",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      61
+    ]
+  },
+  {
+    "text": "You're leaving?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-025",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      61
+    ]
+  },
+  {
+    "text": "Is this yours?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-026",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      61
+    ]
+  },
+  {
+    "text": "Is this Kim's or Pat's?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-026",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      61
+    ]
+  },
+  {
+    "text": "Whose is this?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-026",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      61
+    ]
+  },
+  {
+    "text": "I promise to be home by six.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-027",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      61
+    ]
+  },
+  {
+    "text": "We apologise for the delay.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-027",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      61
+    ]
+  },
+  {
+    "text": "Would you like to close the window?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-028",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "Close the window.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-028",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "Could you pass the salt?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-028",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "The woman who called is my aunt.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-029",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "It took longer than she thought.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-029",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "He said that he was tired.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-029",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "She asked what they wanted.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-029",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "I left before you arrived.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-030",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "We'll stay in if it rains.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-030",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "They left because they were tired.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-030",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "I believe that she is right.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-031",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "He asked whether it was open.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-031",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "She asked how tall he was.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-031",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "She told us what a mess it was.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-031",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "It is vital that he leave early.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-032",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "It is vital that he should leave early.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-032",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "It is vital that he leaves early.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-032",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "I know that you are right.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-033",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "She won't be happy whatever you offer her.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-033",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "What is the matter, that you look so upset?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-033",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      62
+    ]
+  },
+  {
+    "text": "Ed said, 'I shall do it today.'",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "CLS-034",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      63
+    ]
+  },
+  {
+    "text": "Ed said that he would do it today.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-034",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      63
+    ]
+  },
+  {
+    "text": "Here's the book which she wrote.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-035",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      63
+    ]
+  },
+  {
+    "text": "Here's the book that she wrote.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-035",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      63
+    ]
+  },
+  {
+    "text": "Here's the book she wrote.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-035",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      63
+    ]
+  },
+  {
+    "text": "The man who called is here.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-036",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      63
+    ]
+  },
+  {
+    "text": "We met Mara, who had just arrived.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-036",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      63
+    ]
+  },
+  {
+    "text": "I've already spent what you gave me.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-037",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      63
+    ]
+  },
+  {
+    "text": "She took what they offered her.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-037",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      63
+    ]
+  },
+  {
+    "text": "I've already spent the money which you gave me.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-037",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      63
+    ]
+  },
+  {
+    "text": "Here's the book which he said she wrote.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-038",
+    "domain": "clauses",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      63,
+      64
+    ]
+  },
+  {
+    "text": "Here's the book which I think he said she wrote.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-038",
+    "domain": "clauses",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      63,
+      64
+    ]
+  },
+  {
+    "text": "She wrote more plays than he wrote novels.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-039",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "He's as old as I am.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-039",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "They have as many cats as we have dogs.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-039",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "She is taller than he is.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-039",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "She went to the same school as I did.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-040",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "Such cakes as she made were soon eaten.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-040",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "As you know, we can't accept your offer.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-040",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "It was her plan to leave early.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-041",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      64,
+      65
+    ]
+  },
+  {
+    "text": "She helped them paint the fence.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-041",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      64,
+      65
+    ]
+  },
+  {
+    "text": "Calling the police was wise.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-041",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      64,
+      65
+    ]
+  },
+  {
+    "text": "This is the idea suggested by Mara.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-041",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      64,
+      65
+    ]
+  },
+  {
+    "text": "She stood with her hands in her pockets.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-041",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      64,
+      65
+    ]
+  },
+  {
+    "text": "Mara is hard to convince.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-042",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      65
+    ]
+  },
+  {
+    "text": "This idea is worth thinking about.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-042",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      65
+    ]
+  },
+  {
+    "text": "For Jon to leave now would be a mistake.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-042",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      65
+    ]
+  },
+  {
+    "text": "Mara seemed to enjoy it.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-043",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      65
+    ]
+  },
+  {
+    "text": "Jon intended to apply.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-043",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      65
+    ]
+  },
+  {
+    "text": "She asked me to second her motion.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-043",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      65
+    ]
+  },
+  {
+    "text": "He wants to try to learn to swim.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-043",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      65
+    ]
+  },
+  {
+    "text": "You may be right.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-043",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      65
+    ]
+  },
+  {
+    "text": "Mara seemed to like them.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-044",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      65,
+      66
+    ]
+  },
+  {
+    "text": "Everyone believed Kim to be guilty.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-044",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      65,
+      66
+    ]
+  },
+  {
+    "text": "Jill intended to join the army.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-044",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      65,
+      66
+    ]
+  },
+  {
+    "text": "She wants to go, but she can't afford it.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-045",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      66
+    ]
+  },
+  {
+    "text": "I've invited the manager and her husband.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-045",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      66
+    ]
+  },
+  {
+    "text": "She'll be arriving tomorrow or on Friday.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-045",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      66
+    ]
+  },
+  {
+    "text": "Kim and Pat bought two houses.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-045",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      66
+    ]
+  },
+  {
+    "text": "Kim bought and sold two houses.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-045",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      66
+    ]
+  },
+  {
+    "text": "the manager, her husband, the secretary and Alice",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "CLS-045",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      66
+    ]
+  },
+  {
+    "text": "My aunt – she lives in Paris – is visiting.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-046",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      66,
+      67
+    ]
+  },
+  {
+    "text": "I finally volunteered, a decision I quickly regretted.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-046",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      66,
+      67
+    ]
+  },
+  {
+    "text": "Unhappily, the letter arrived late.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-046",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      66,
+      67
+    ]
+  },
+  {
+    "text": "This book I gave to Mara.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-047",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "He gave to charity all the money she had left him.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-047",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "In the bag were two knives.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-047",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "There is one guard outside.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-047",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "It's clear that it's a forgery.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-047",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "It was a bee that stung me.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-047",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "I was attacked by their dog.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-047",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "It is obvious that he lied.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-048",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "I find it odd that nobody called.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-048",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "It was Mara who called.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-049",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "What stung me was a bee.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-049",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "What I need is a rest.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-049",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      67
+    ]
+  },
+  {
+    "text": "I was attacked.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-050",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      68
+    ]
+  },
+  {
+    "text": "Their dog attacked me.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-050",
+    "domain": "clauses",
+    "rule_type": "classification",
+    "source_pages": [
+      68
+    ]
+  },
+  {
+    "text": "He gave to charity all the money she had saved over thirty years.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-051",
+    "domain": "clauses",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      68
+    ]
+  },
+  {
+    "text": "He gave ten dollars to charity.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-051",
+    "domain": "clauses",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      68
+    ]
+  },
+  {
+    "text": "He broke the vase.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-001",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      52,
+      53
+    ]
+  },
+  {
+    "text": "She heard the alarm.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-001",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      52,
+      53
+    ]
+  },
+  {
+    "text": "They met on Friday.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-001",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      52,
+      53
+    ]
+  },
+  {
+    "text": "He used the key.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "She arrived late.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "They demolished the shed.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "The train arrived.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "She read for a while.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ],
+    "tests_exception": true
+  },
+  {
+    "text": "She read the newspaper.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ],
+    "tests_exception": true
+  },
+  {
+    "text": "She read us a story.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ],
+    "tests_exception": true
+  },
+  {
+    "text": "Mara smiled.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-003",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "They gave me the key.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-003",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "It rained all night.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-003",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "She smiled.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-004",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "He washed the car.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-004",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "They gave the key to me.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-005",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "This seems fair.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-006",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "She seems a good teacher.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-006",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "I consider this fair.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-006",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "I find the task easy.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-006",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "This is fair.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-007",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      53,
+      54
+    ]
+  },
+  {
+    "text": "The winner is Mara.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-007",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      53,
+      54
+    ]
+  },
+  {
+    "text": "Mara is the winner.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-007",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      53,
+      54
+    ]
+  },
+  {
+    "text": "She referred to the map.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-008",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      54
+    ]
+  },
+  {
+    "text": "They blamed the delay on Jon.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-008",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      54
+    ]
+  },
+  {
+    "text": "They blamed Jon for the delay.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-008",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      54
+    ]
+  },
+  {
+    "text": "He regards the plan as a risk.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-008",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      54
+    ]
+  },
+  {
+    "text": "This counts as a win.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-008",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      54
+    ]
+  },
+  {
+    "text": "She jumped off the wall.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-009",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      54
+    ]
+  },
+  {
+    "text": "She took off the label.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-009",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      54
+    ]
+  },
+  {
+    "text": "She took the label off.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-009",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      54
+    ]
+  },
+  {
+    "text": "They treated us badly.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-010",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "Kim drove from Berlin to Bonn.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-010",
+    "domain": "complementation",
+    "rule_type": "classification",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "She wrote it.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-001",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "He writes it.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-001",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "They write it.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-001",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "I need to write it.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-001",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "We are writing it.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-001",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "They have written it.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-001",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "I was late.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-002",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "We were late.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-002",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "I am here.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-002",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "She is here.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-002",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "They are here.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-002",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "I wish she were here.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-002",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      50
+    ]
+  },
+  {
+    "text": "we / us / our / ours",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-003",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "the dog's bowl",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-003",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "the dogs' bowls",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-003",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "someone else's bowl",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "MORPH-003",
+    "domain": "morphology",
+    "rule_type": "classification",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "I'll see you here tomorrow.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "OTH-001",
+    "domain": "other",
+    "rule_type": "classification",
+    "source_pages": [
+      68
+    ]
+  },
+  {
+    "text": "Look at that.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "OTH-001",
+    "domain": "other",
+    "rule_type": "classification",
+    "source_pages": [
+      68
+    ]
+  },
+  {
+    "text": "We left yesterday.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "OTH-001",
+    "domain": "other",
+    "rule_type": "classification",
+    "source_pages": [
+      68
+    ]
+  },
+  {
+    "text": "Jill has left her car in the road.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "OTH-002",
+    "domain": "other",
+    "rule_type": "classification",
+    "source_pages": [
+      68,
+      69
+    ]
+  },
+  {
+    "text": "Grapes are expensive and likely to remain so.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "OTH-002",
+    "domain": "other",
+    "rule_type": "classification",
+    "source_pages": [
+      68,
+      69
+    ]
+  },
+  {
+    "text": "I haven't told them yet, but I'll do so tomorrow.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "OTH-002",
+    "domain": "other",
+    "rule_type": "classification",
+    "source_pages": [
+      68,
+      69
+    ]
+  },
+  {
+    "text": "This banana is green: have you got a riper one?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "OTH-002",
+    "domain": "other",
+    "rule_type": "classification",
+    "source_pages": [
+      68,
+      69
+    ]
+  },
+  {
+    "text": "I'd like to help you but I can't.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "OTH-002",
+    "domain": "other",
+    "rule_type": "classification",
+    "source_pages": [
+      68,
+      69
+    ]
+  },
+  {
+    "text": "She was ill.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-001",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "She is ill.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-001",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "She has been ill.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-001",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "She had been ill.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-001",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "She is believed to have been ill.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-001",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "It started yesterday.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-002",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      51,
+      52
+    ]
+  },
+  {
+    "text": "I wish it started tomorrow.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-002",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      51,
+      52
+    ]
+  },
+  {
+    "text": "She will leave tomorrow.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-002",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      51,
+      52
+    ]
+  },
+  {
+    "text": "She was writing a novel.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-003",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "She wrote a novel.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-003",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "You must leave now.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-004",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "It must have been late.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-004",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "Mara can swim well.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-004",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "She is likely to win.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-004",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "Perhaps you are right.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-004",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "I need to leave.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-004",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "a young woman",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-005",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "the guy with black hair",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-005",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "his fear of the dark",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-005",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "quite the worst solution",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-005",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "all these people",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-005",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a tall boy",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-006",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a government inquiry",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-006",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "her many friends",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-006",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a barking dog",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-006",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a recently repaired road",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-006",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a taller boy",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-007",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a boy taller than Jon",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-007",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a quietly sleeping child",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-007",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a child sleeping quietly",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-007",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "his fear of heights",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-008",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "the claim that it was false",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-008",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a worse result than we expected",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-008",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "enough money to buy the car",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-008",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "I need some pens but can't find any.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-009",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "Several of the girls left.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-009",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "Only the rich will benefit.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-009",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "I chose the cheaper of the two.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-009",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "the teacher's advice",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-010",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "the advice of the teacher",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-010",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "Your plan failed, but Mara's worked.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-010",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "Your taxi is here.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-011",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "A child laughed.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-011",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "My car broke down.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-011",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "It was very good.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-012",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "He seems a bit grumpy.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-012",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "She is ashamed of him.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-012",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "I'm glad you could come.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-012",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "the minister responsible for the decision",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-012",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "quite excellently",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-013",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "independently of such considerations",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-013",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "a remarkably good performance",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-013",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "to you",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-014",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "a few minutes before lunch",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-014",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "They regard him as a liability.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-014",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "It strikes me as quite reasonable.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-014",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "I hadn't seen him before.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-014",
+    "domain": "phrases",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "She was talking to a man.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-015",
+    "domain": "phrases",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      58,
+      59
+    ]
+  },
+  {
+    "text": "To whom was she talking?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-015",
+    "domain": "phrases",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      58,
+      59
+    ]
+  },
+  {
+    "text": "Who was she talking to?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-015",
+    "domain": "phrases",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      58,
+      59
+    ]
+  },
+  {
+    "text": "the razor-blade with which I cut it",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-015",
+    "domain": "phrases",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      58,
+      59
+    ]
+  },
+  {
+    "text": "the razor-blade that I cut it with",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-015",
+    "domain": "phrases",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      58,
+      59
+    ]
+  },
+  {
+    "text": "I did not see them.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-001",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "Do you want to go with them?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-001",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "I have not seen them.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-001",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "Will you join us?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-001",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "They are cheap.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-002",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "They are not cheap.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-002",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "Are they cheap?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-002",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "She is working.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-002",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "He was killed.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-002",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "You may leave now.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-003",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "She will call later.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-003",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "I wish he were here.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-003",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "Jon has arrived.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-004",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      54
+    ]
+  },
+  {
+    "text": "They liked it.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-004",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      54
+    ]
+  },
+  {
+    "text": "the book",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-005",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      54,
+      55
+    ]
+  },
+  {
+    "text": "three books",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-005",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      54,
+      55
+    ]
+  },
+  {
+    "text": "these three books",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-005",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      54,
+      55
+    ]
+  },
+  {
+    "text": "much happiness",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-005",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      54,
+      55
+    ]
+  },
+  {
+    "text": "much happier",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-005",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      54,
+      55
+    ]
+  },
+  {
+    "text": "a dog",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-006",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "two dogs",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-006",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "some equipment",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-006",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "much time",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-006",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "a little water",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-006",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "an excellent result",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-007",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "The result was excellent.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-007",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "something unusual",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-007",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "the money available",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-007",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "Their sole parent works nights.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-008",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "The baby was asleep.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-008",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "Kim was unhappy.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-009",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "She seems quiet.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-009",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "The answer was clear.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-009",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "She almost died.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-010",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "an almost empty room",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-010",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "He spoke almost silently.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-010",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "They ate almost the whole cake.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-010",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "Sadly, the letter arrived late.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-010",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "excellent ~ excellently",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-011",
+    "domain": "word_categories",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      57,
+      58
+    ]
+  },
+  {
+    "text": "quite excellent ~ quite excellently",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-011",
+    "domain": "word_categories",
+    "rule_type": "descriptive_generalization",
+    "source_pages": [
+      57,
+      58
+    ]
+  },
+  {
+    "text": "I saw him before lunch.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-012",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "I saw him before he left.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-012",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "I saw him afterwards.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-012",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "I haven't met him until recently.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-012",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "It depends on how much they cost.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-012",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      58
+    ]
+  },
+  {
+    "text": "She wrote more plays than he did.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-013",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "It was more expensive.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-013",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "It was cheaper.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-013",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "I have less patience than you.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-013",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "It was less painful than I'd expected.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-013",
+    "domain": "word_categories",
+    "rule_type": "classification",
+    "source_pages": [
+      64
+    ]
+  }
+]

@@ -1,0 +1,288 @@
+[
+  {
+    "pair_id": "AGR-001:p1",
+    "grammatical": "a book",
+    "ungrammatical": "a books",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "pair_id": "AGR-001:p2",
+    "grammatical": "each child",
+    "ungrammatical": "each children",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "pair_id": "AGR-001:p3",
+    "grammatical": "two books",
+    "ungrammatical": "two book",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "pair_id": "AGR-001:p4",
+    "grammatical": "several ideas",
+    "ungrammatical": "several idea",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "pair_id": "AGR-002:p1",
+    "grammatical": "The nurse has arrived.",
+    "ungrammatical": "The nurse have arrived.",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "pair_id": "AGR-002:p2",
+    "grammatical": "The nurses have arrived.",
+    "ungrammatical": "The nurses has arrived.",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "pair_id": "CLS-012:p2",
+    "grammatical": "She asked what Jon had broken.",
+    "ungrammatical": "She asked what Jon had broken the vase.",
+    "rule_id": "CLS-012",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      49
+    ]
+  },
+  {
+    "pair_id": "CLS-019:p1",
+    "grammatical": "He didn't read the report, not even the summary.",
+    "ungrammatical": "He read the report, not even the summary.",
+    "rule_id": "CLS-019",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "pair_id": "CLS-019:p2",
+    "grammatical": "They didn't visit the town, not even the museum.",
+    "ungrammatical": "They visited the town, not even the museum.",
+    "rule_id": "CLS-019",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "pair_id": "CLS-022:p1",
+    "grammatical": "She doesn't live here any longer.",
+    "ungrammatical": "She lives here any longer.",
+    "rule_id": "CLS-022",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "pair_id": "CLS-023:p1",
+    "grammatical": "He was feeling somewhat sad.",
+    "ungrammatical": "He wasn't feeling somewhat sad.",
+    "rule_id": "CLS-023",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "pair_id": "CLS-023:p2",
+    "grammatical": "The soup was somewhat salty.",
+    "ungrammatical": "The soup wasn't somewhat salty.",
+    "rule_id": "CLS-023",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "pair_id": "CLS-039:p1",
+    "grammatical": "She wrote more plays than he wrote novels.",
+    "ungrammatical": "She wrote more plays than he wrote five novels.",
+    "rule_id": "CLS-039",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "pair_id": "CLS-039:p2",
+    "grammatical": "He's as old as I am.",
+    "ungrammatical": "He's as old as I am old.",
+    "rule_id": "CLS-039",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "pair_id": "COMP-002:p1",
+    "grammatical": "He used the key.",
+    "ungrammatical": "They used.",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "pair_id": "COMP-002:p2",
+    "grammatical": "She arrived late.",
+    "ungrammatical": "She arrived the station.",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "pair_id": "COMP-003:p1",
+    "grammatical": "Mara smiled.",
+    "ungrammatical": "Smiled.",
+    "rule_id": "COMP-003",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "pair_id": "COMP-003:p2",
+    "grammatical": "They gave me the key.",
+    "ungrammatical": "Gave me the key.",
+    "rule_id": "COMP-003",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "pair_id": "PHR-007:p1",
+    "grammatical": "a boy taller than Jon",
+    "ungrammatical": "a taller than Jon boy",
+    "rule_id": "PHR-007",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "pair_id": "PHR-007:p2",
+    "grammatical": "a child sleeping quietly",
+    "ungrammatical": "a sleeping quietly child",
+    "rule_id": "PHR-007",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "pair_id": "PHR-011:p1",
+    "grammatical": "Your taxi is here.",
+    "ungrammatical": "Taxi is here.",
+    "rule_id": "PHR-011",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "pair_id": "WCAT-001:p1",
+    "grammatical": "I did not see them.",
+    "ungrammatical": "I saw not them.",
+    "rule_id": "WCAT-001",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "pair_id": "WCAT-001:p2",
+    "grammatical": "Do you want to go with them?",
+    "ungrammatical": "Want you to go with them?",
+    "rule_id": "WCAT-001",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "pair_id": "WCAT-008:p1",
+    "grammatical": "Their sole parent works nights.",
+    "ungrammatical": "The parent was sole.",
+    "rule_id": "WCAT-008",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "pair_id": "WCAT-008:p2",
+    "grammatical": "The baby was asleep.",
+    "ungrammatical": "an asleep child",
+    "rule_id": "WCAT-008",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "pair_id": "WCAT-009:p1",
+    "grammatical": "Kim was unhappy.",
+    "ungrammatical": "Kim was unhappily.",
+    "rule_id": "WCAT-009",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  }
+]

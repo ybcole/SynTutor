@@ -1,0 +1,37 @@
+[
+  {
+    "rules": [
+      "CLS-016",
+      "WCAT-005",
+      "WCAT-004",
+      "WCAT-002",
+      "PHR-002",
+      "COMP-005"
+    ],
+    "kind": "cambridge_vs_burton_roberts",
+    "description": "These records reflect Cambridge's departures from traditional grammar (auxiliary as head, determinative category, pronoun as noun, copula be as auxiliary, no future tense, narrower 'object'). Burton-Roberts's treatment not supplied; may differ.",
+    "proposed_resolution": "Compare against Burton-Roberts chapter notes before approval; keep both analyses with a mapping if they differ.",
+    "needs_human": true
+  },
+  {
+    "rules": [
+      "WCAT-011",
+      "WCAT-012"
+    ],
+    "kind": "cambridge_vs_burton_roberts",
+    "description": "Cambridge moves many traditional adverbs and subordinating conjunctions into the preposition category. Burton-Roberts's boundaries were not supplied and may differ.",
+    "proposed_resolution": "Compare with Burton-Roberts word-class chapters before approval.",
+    "needs_human": true
+  },
+  {
+    "rules": [
+      "CLS-030",
+      "CLS-035",
+      "CLS-036"
+    ],
+    "kind": "cambridge_vs_burton_roberts",
+    "description": "Cambridge drops noun/adjective/adverb clauses, treats 'that' in relatives as a subordinator, and replaces restrictive/non-restrictive with integrated/supplementary. Burton-Roberts material not supplied.",
+    "proposed_resolution": "Compare with Burton-Roberts's clause chapters; keep both analyses with a mapping.",
+    "needs_human": true
+  }
+]

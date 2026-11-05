@@ -1,0 +1,1628 @@
+[
+  {
+    "term": "sentence",
+    "gloss": "largest unit of syntax; occurs in sequence in texts",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§1 Sentence and clause",
+        "pages": [
+          44
+        ],
+        "pdf_pages": [
+          64
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "clause",
+    "gloss": "syntactic construction with subject and predicate in central cases; can be embedded",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§1 Sentence and clause",
+        "pages": [
+          44
+        ],
+        "pdf_pages": [
+          64
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "embedded clause",
+    "gloss": "clause contained within a larger clause",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§1 Sentence and clause",
+        "pages": [
+          44
+        ],
+        "pdf_pages": [
+          64
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "clause-coordination",
+    "gloss": "sentence form made of coordinated clauses",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§1 Sentence and clause",
+        "pages": [
+          44,
+          45
+        ],
+        "pdf_pages": [
+          64,
+          65
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "NP/clause-coordination",
+    "gloss": "mixed coordination of a noun phrase and a clause",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§1 Sentence and clause",
+        "pages": [
+          45
+        ],
+        "pdf_pages": [
+          65
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "canonical clause",
+    "gloss": "basic clause construction: positive, declarative, active, main, non-coordinate",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§2 Canonical and non-canonical clauses",
+        "pages": [
+          46
+        ],
+        "pdf_pages": [
+          66
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "non-canonical clause",
+    "gloss": "clause differing from a canonical counterpart on one or more dimensions",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§2 Canonical and non-canonical clauses",
+        "pages": [
+          46
+        ],
+        "pdf_pages": [
+          66
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "counterpart",
+    "gloss": "canonical clause differing only on one dimension",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§2 Canonical and non-canonical clauses",
+        "pages": [
+          47
+        ],
+        "pdf_pages": [
+          67
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "matrix clause",
+    "gloss": "clause in which a subordinate clause is embedded",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§2 Canonical and non-canonical clauses",
+        "pages": [
+          47
+        ],
+        "pdf_pages": [
+          67
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "subordinator",
+    "gloss": "word (e.g. that, to) marking a clause as subordinate",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§2 Canonical and non-canonical clauses",
+        "pages": [
+          46,
+          47
+        ],
+        "pdf_pages": [
+          66,
+          67
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "coordinator",
+    "gloss": "word (e.g. and, or, but) marking coordination",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§1 Sentence and clause",
+        "pages": [
+          44,
+          46,
+          47
+        ],
+        "pdf_pages": [
+          64,
+          66,
+          67
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "prenucleus",
+    "gloss": "position before the nucleus clause, e.g. for fronted wh- elements or auxiliaries",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§2 Canonical and non-canonical clauses",
+        "pages": [
+          48
+        ],
+        "pdf_pages": [
+          68
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "nucleus",
+    "gloss": "clause with subject-predicate structure that follows the prenucleus",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§2 Canonical and non-canonical clauses",
+        "pages": [
+          48
+        ],
+        "pdf_pages": [
+          68
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "gap",
+    "gloss": "abstract element co-indexed with a fronted element, filling its function in the nucleus",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§2 Canonical and non-canonical clauses",
+        "pages": [
+          49
+        ],
+        "pdf_pages": [
+          69
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "process terminology",
+    "gloss": "descriptive labels like passivisation and inversion; not derivations",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§2 Canonical and non-canonical clauses",
+        "pages": [
+          48
+        ],
+        "pdf_pages": [
+          68
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "verb",
+    "gloss": "the lexical head of a clause; ultimate head; its properties determine other elements",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          50
+        ],
+        "pdf_pages": [
+          70
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "preterite",
+    "gloss": "primary verb form (e.g. took)",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          50
+        ],
+        "pdf_pages": [
+          70
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "plain form",
+    "gloss": "secondary verb form, used in imperative, subjunctive, infinitival",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          50,
+          51
+        ],
+        "pdf_pages": [
+          70,
+          71
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "gerund-participle",
+    "gloss": "secondary verb form in -ing",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          50
+        ],
+        "pdf_pages": [
+          70
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "past participle",
+    "gloss": "secondary verb form (e.g. taken)",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          50
+        ],
+        "pdf_pages": [
+          70
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "irrealis mood",
+    "gloss": "residual mood form: were with 1st/3rd singular be",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          50
+        ],
+        "pdf_pages": [
+          70
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "finite clause",
+    "gloss": "clause headed by a primary form or an imperative/subjunctive plain form",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          51
+        ],
+        "pdf_pages": [
+          71
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "non-finite clause",
+    "gloss": "clause headed by gerund-participle, past participle or infinitival plain form",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          51
+        ],
+        "pdf_pages": [
+          71
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "auxiliary verb",
+    "gloss": "verb that can take not and invert with the subject; a head in Cambridge",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          51
+        ],
+        "pdf_pages": [
+          71
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "dummy auxiliary do",
+    "gloss": "semantically empty auxiliary used with lexical verbs for negation and inversion",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          51
+        ],
+        "pdf_pages": [
+          71
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "primary tense",
+    "gloss": "tense marked by inflection: preterite vs present",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          51
+        ],
+        "pdf_pages": [
+          71
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "secondary tense",
+    "gloss": "perfect vs non-perfect, marked by auxiliary have",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          51
+        ],
+        "pdf_pages": [
+          71
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "progressive",
+    "gloss": "aspect marked by auxiliary be + gerund-participle",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          52
+        ],
+        "pdf_pages": [
+          72
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "modal auxiliary",
+    "gloss": "can, may, must, will, shall and less central ones",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          52
+        ],
+        "pdf_pages": [
+          72
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "deontic / epistemic / dynamic modality",
+    "gloss": "three kinds of modal meaning",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          52
+        ],
+        "pdf_pages": [
+          72
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "complement",
+    "gloss": "dependent closely related to the verb; licensed by verb subclass",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          52,
+          53
+        ],
+        "pdf_pages": [
+          72,
+          73
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "modifier",
+    "gloss": "dependent less closely related to the verb",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          52
+        ],
+        "pdf_pages": [
+          72
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "subject",
+    "gloss": "external complement; obligatory in canonical clauses",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          53
+        ],
+        "pdf_pages": [
+          73
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "object",
+    "gloss": "internal complement, usually an NP, licensed by some verbs",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          53
+        ],
+        "pdf_pages": [
+          73
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "predicative complement",
+    "gloss": "complement ascribing a property to subject or object; can be AdjP",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          53
+        ],
+        "pdf_pages": [
+          73
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "ascriptive / specifying be",
+    "gloss": "two subtypes of complex-intransitive be clauses",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          53,
+          54
+        ],
+        "pdf_pages": [
+          73,
+          74
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "prepositional verb",
+    "gloss": "verb selecting a PP complement headed by a particular preposition",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          54
+        ],
+        "pdf_pages": [
+          74
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "particle",
+    "gloss": "preposition-alone complement that can precede or follow the direct object",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          54
+        ],
+        "pdf_pages": [
+          74
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "determiner",
+    "gloss": "NP-internal function marking definiteness",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          54
+        ],
+        "pdf_pages": [
+          74
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "determinative",
+    "gloss": "lexical category (the, a, three, much...)",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          54,
+          55
+        ],
+        "pdf_pages": [
+          74,
+          75
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "nominal",
+    "gloss": "unit between NP and noun",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          55
+        ],
+        "pdf_pages": [
+          75
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "attributive modifier",
+    "gloss": "pre-head internal modifier in a nominal",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          55
+        ],
+        "pdf_pages": [
+          75
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "fused head",
+    "gloss": "word functioning as head and dependent simultaneously",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          56
+        ],
+        "pdf_pages": [
+          76
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "subject-determiner",
+    "gloss": "genitive NP combining determiner and subject functions",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          56
+        ],
+        "pdf_pages": [
+          76
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "count / non-count noun",
+    "gloss": "noun senses that do or do not combine with cardinal numerals",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          57
+        ],
+        "pdf_pages": [
+          77
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "adjunct",
+    "gloss": "modifier in clause/VP structure plus related supplements",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§8 The clause: adjuncts",
+        "pages": [
+          59
+        ],
+        "pdf_pages": [
+          79
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "attributive modifier (adjective)",
+    "gloss": "adjective before the head noun",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§6 Adjectives and adverbs",
+        "pages": [
+          57
+        ],
+        "pdf_pages": [
+          77
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "predicative complement (adjective)",
+    "gloss": "adjective as complement of be etc.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§6 Adjectives and adverbs",
+        "pages": [
+          57
+        ],
+        "pdf_pages": [
+          77
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "postpositive",
+    "gloss": "adjective as post-head modifier",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§6 Adjectives and adverbs",
+        "pages": [
+          57
+        ],
+        "pdf_pages": [
+          77
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "supplement",
+    "gloss": "element prosodically detached from its clause",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§6 Adjectives and adverbs",
+        "pages": [
+          57
+        ],
+        "pdf_pages": [
+          77
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "preposition phrase",
+    "gloss": "phrase headed by a preposition with NP, AdvP or clause complement or none",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§7 Prepositions and preposition phrases",
+        "pages": [
+          58
+        ],
+        "pdf_pages": [
+          78
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "preposition stranding",
+    "gloss": "preposition left with a gap in complement position",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§7 Prepositions and preposition phrases",
+        "pages": [
+          58,
+          59
+        ],
+        "pdf_pages": [
+          78,
+          79
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "clausal negation",
+    "gloss": "negation that makes the whole clause negative by the three tests",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§9 Negation",
+        "pages": [
+          59,
+          60
+        ],
+        "pdf_pages": [
+          79,
+          80
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "subclausal negation",
+    "gloss": "negation within a constituent of a positive clause",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§9 Negation",
+        "pages": [
+          60
+        ],
+        "pdf_pages": [
+          80
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "polarity-sensitive item",
+    "gloss": "word favouring positive or negative contexts",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§9 Negation",
+        "pages": [
+          60
+        ],
+        "pdf_pages": [
+          80
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "negatively oriented item",
+    "gloss": "favours negative contexts (any longer, yet, ever)",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§9 Negation",
+        "pages": [
+          60
+        ],
+        "pdf_pages": [
+          80
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "positively oriented item",
+    "gloss": "favours positive contexts (somewhat, already)",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§9 Negation",
+        "pages": [
+          60
+        ],
+        "pdf_pages": [
+          80
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "non-affirmative clause",
+    "gloss": "clause not used to make a positive assertion: negative, interrogative, conditional if",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§9 Negation",
+        "pages": [
+          60
+        ],
+        "pdf_pages": [
+          80
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "scope of negation",
+    "gloss": "part of the sentence to which the negation applies",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§9 Negation",
+        "pages": [
+          60,
+          61
+        ],
+        "pdf_pages": [
+          80,
+          81
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "clause type",
+    "gloss": "form dimension: declarative, interrogative, exclamative, imperative",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§10 Clause type and illocutionary force",
+        "pages": [
+          61
+        ],
+        "pdf_pages": [
+          81
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "illocutionary force",
+    "gloss": "the speech-act force of an utterance",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§10 Clause type and illocutionary force",
+        "pages": [
+          61
+        ],
+        "pdf_pages": [
+          81
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "directive",
+    "gloss": "force typically associated with imperatives",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§10 Clause type and illocutionary force",
+        "pages": [
+          61
+        ],
+        "pdf_pages": [
+          81
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "polar / alternative / variable question",
+    "gloss": "semantic question types by set of answers",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§10 Clause type and illocutionary force",
+        "pages": [
+          61
+        ],
+        "pdf_pages": [
+          81
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "indirect speech act",
+    "gloss": "utterance with a different force from its literal one",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§10 Clause type and illocutionary force",
+        "pages": [
+          62
+        ],
+        "pdf_pages": [
+          82
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "subordinate clause",
+    "gloss": "finite or non-finite clause embedded in a matrix clause",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§11 Content clauses and reported speech",
+        "pages": [
+          62
+        ],
+        "pdf_pages": [
+          82
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "content clause",
+    "gloss": "default finite subordinate clause",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§11 Content clauses and reported speech",
+        "pages": [
+          62
+        ],
+        "pdf_pages": [
+          82
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "mandative construction",
+    "gloss": "content clause with subjunctive, should or tensed verb",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§11 Content clauses and reported speech",
+        "pages": [
+          62
+        ],
+        "pdf_pages": [
+          82
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "direct / indirect reported speech",
+    "gloss": "words quoted in a main clause vs content reported in a subordinate clause",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§11 Content clauses and reported speech",
+        "pages": [
+          63
+        ],
+        "pdf_pages": [
+          83
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "wh relative / that relative / bare relative",
+    "gloss": "types of central relative clause",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§12 Relative constructions and unbounded dependencies",
+        "pages": [
+          63
+        ],
+        "pdf_pages": [
+          83
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "integrated / supplementary relative",
+    "gloss": "relative clause that is or is not detached",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§12 Relative constructions and unbounded dependencies",
+        "pages": [
+          63
+        ],
+        "pdf_pages": [
+          83
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "fused relative construction",
+    "gloss": "NP in which 'what' combines head and prenuclear element",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§12 Relative constructions and unbounded dependencies",
+        "pages": [
+          63
+        ],
+        "pdf_pages": [
+          83
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "unbounded dependency",
+    "gloss": "gap-filler relation with no upper limit on embedding",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§12 Relative constructions and unbounded dependencies",
+        "pages": [
+          63,
+          64
+        ],
+        "pdf_pages": [
+          83,
+          84
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "comparative clause",
+    "gloss": "complement of than, as or like, structurally reduced",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§13 Comparative constructions",
+        "pages": [
+          64
+        ],
+        "pdf_pages": [
+          84
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "hollow clause",
+    "gloss": "non-finite clause lacking a non-subject NP",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§14 Non-finite and verbless clauses",
+        "pages": [
+          65
+        ],
+        "pdf_pages": [
+          85
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "catenative complement",
+    "gloss": "non-finite clause complement of a catenative verb",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§14 Non-finite and verbless clauses",
+        "pages": [
+          65
+        ],
+        "pdf_pages": [
+          85
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "raised complement",
+    "gloss": "complement belonging semantically to a lower clause",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§14 Non-finite and verbless clauses",
+        "pages": [
+          65,
+          66
+        ],
+        "pdf_pages": [
+          85,
+          86
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "coordinate / coordinator",
+    "gloss": "elements of equal status; the linking word",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§15 Coordination and supplementation",
+        "pages": [
+          66
+        ],
+        "pdf_pages": [
+          86
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "anchor and supplement",
+    "gloss": "detached element and the element it relates to",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§15 Coordination and supplementation",
+        "pages": [
+          66,
+          67
+        ],
+        "pdf_pages": [
+          86,
+          87
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "information-packaging construction",
+    "gloss": "non-canonical construction changing presentation not meaning",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§16 Information packaging",
+        "pages": [
+          67
+        ],
+        "pdf_pages": [
+          87
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "cleft / pseudo-cleft",
+    "gloss": "division of a clause into foregrounded and backgrounded parts",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§16 Information packaging",
+        "pages": [
+          67
+        ],
+        "pdf_pages": [
+          87
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "long / short passive",
+    "gloss": "passive with or without a by phrase",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§16 Information packaging",
+        "pages": [
+          68
+        ],
+        "pdf_pages": [
+          88
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "old / new information",
+    "gloss": "familiarity status of information",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§16 Information packaging",
+        "pages": [
+          68
+        ],
+        "pdf_pages": [
+          88
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "deixis",
+    "gloss": "reference tied to the utterance act",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§17 Deixis and anaphora",
+        "pages": [
+          68
+        ],
+        "pdf_pages": [
+          88
+        ]
+      }
+    ],
+    "related_concepts": []
+  },
+  {
+    "term": "anaphor / antecedent",
+    "gloss": "expression interpreted via an earlier expression",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§17 Deixis and anaphora",
+        "pages": [
+          68,
+          69
+        ],
+        "pdf_pages": [
+          88,
+          89
+        ]
+      }
+    ],
+    "related_concepts": []
+  }
+]

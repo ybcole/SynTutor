@@ -1,0 +1,213 @@
+[
+  {
+    "id": "MORPH-001",
+    "domain": "morphology",
+    "concept": "verb inflectional forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Most verbs have six inflectional forms: three primary (preterite, 3rd singular present, plain present) and three secondary (plain form, gerund-participle, past participle).",
+    "condition": "Applies to the inflectional paradigm of an ordinary (non-be) verb lexeme: primary forms are preterite, 3rd person singular present tense and plain present tense; secondary forms are the plain form, the gerund-participle and the past participle.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She wrote it. [preterite]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He writes it. [3rd sg present]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They write it. [plain present]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "I need to write it. [plain form]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "We are writing it. [gerund-participle]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "They have written it. [past participle]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          50
+        ],
+        "pdf_pages": [
+          70
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "verb inflectional forms",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "MORPH-002",
+      "CLS-014",
+      "CLS-015"
+    ],
+    "review_notes": "Auxiliary verbs also have negative forms (isn't, can't), noted on p. 50."
+  },
+  {
+    "id": "MORPH-002",
+    "domain": "morphology",
+    "concept": "be forms and irrealis were",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The verb be has two preterite forms (was, were) and three present forms (am, is, are); irrealis 'were' is a residual mood form found only with be and a 1st or 3rd person singular subject.",
+    "condition": "Applies to the verb be: preterite was/were, present am/is/are; irrealis mood 'were' (as in 'I wish she were here') occurs only with be with a 1st or 3rd person singular subject.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I was late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We were late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I am here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "She is here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "They are here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "I wish she were here. [irrealis were]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          50
+        ],
+        "pdf_pages": [
+          70
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "be forms and irrealis were",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "MORPH-001",
+      "WCAT-003"
+    ],
+    "review_notes": "Descriptive classification only; the conditions under which irrealis 'were' is required or optional are not given here."
+  },
+  {
+    "id": "MORPH-003",
+    "domain": "morphology",
+    "concept": "case forms of pronouns and nouns",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A few pronouns have four case forms (we, us, our, ours); most nouns contrast only genitive and plain case, case is determined by the NP's function, and genitive is marked on the last word of the NP (head genitive or phrasal genitive).",
+    "condition": "Applies to case marking: nominative, accusative, dependent genitive and independent genitive for a few pronouns; plain vs genitive (dog vs dog's, dogs vs dogs') for most nouns; genitive marking falls on the last word, usually the head noun but sometimes on the last word of a post-head dependent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "we / us / our / ours",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "the dog's bowl [head genitive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "the dogs' bowls",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "someone else's bowl [phrasal genitive]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          56
+        ],
+        "pdf_pages": [
+          76
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "case forms of pronouns and nouns",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "PHR-010"
+    ]
+  }
+]

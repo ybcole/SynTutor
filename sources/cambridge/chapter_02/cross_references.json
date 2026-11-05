@@ -1,0 +1,140 @@
+[
+  {
+    "from_rule": "CLS-005",
+    "to": "Ch. 9 (negation), Ch. 10 (clause type), Ch. 11-14 (subordination), Ch. 15 (coordination), Ch. 16 (information packaging)",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-006",
+    "to": "Ch. 3 / Ch. 9 / Ch. 10",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-011",
+    "to": "Ch. 12 (unbounded dependencies)",
+    "relation": "refines",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-003",
+    "to": "Ch. 15",
+    "relation": "refines",
+    "verified": false
+  },
+  {
+    "from_rule": "WCAT-001",
+    "to": "Ch. 3 (verb) and Ch. 9 (negation)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "AGR-002",
+    "to": "Ch. 5 and Ch. 18 (agreement, inflection)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "PHR-007",
+    "to": "Ch. 6 (adjectives) / Ch. 5",
+    "relation": "refines",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-016",
+    "to": "Ch. 3 (auxiliary verbs, catenative constructions)",
+    "relation": "refines",
+    "verified": false
+  },
+  {
+    "from_rule": "COMP-003",
+    "to": "CLS-005 (canonical clause definition, §2)",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-006",
+    "to": "WCAT-001",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-005",
+    "to": "Ch. 5 (determiners) and Ch. 6",
+    "relation": "refines",
+    "verified": false
+  },
+  {
+    "from_rule": "PHR-015",
+    "to": "CLS-011 (gap and co-indexing)",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-012",
+    "to": "PHR-007 (attributive modifiers)",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-022",
+    "to": "Ch. 9 (negation, polarity)",
+    "relation": "refines",
+    "verified": false
+  },
+  {
+    "from_rule": "WCAT-012",
+    "to": "Ch. 7 (prepositions)",
+    "relation": "refines",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-025",
+    "to": "Ch. 10 (clause type)",
+    "relation": "refines",
+    "verified": false
+  },
+  {
+    "from_rule": "COMP-010",
+    "to": "COMP-001 (complements vs modifiers)",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-029",
+    "to": "Ch. 11-14 (subordination)",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-047",
+    "to": "Ch. 16 (information packaging)",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-039",
+    "to": "Ch. 13 (comparatives)",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-045",
+    "to": "Ch. 15 (coordination)",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "OTH-002",
+    "to": "Ch. 17 (deixis and anaphora)",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-038",
+    "to": "CLS-011, PHR-015",
+    "relation": "overlaps",
+    "verified": true
+  }
+]

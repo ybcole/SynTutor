@@ -1,0 +1,2237 @@
+{
+  "meta": {
+    "chapter": 2,
+    "section": "§11-§17 (Content clauses ... Deixis and anaphora)",
+    "printed_pages": [
+      62,
+      69
+    ],
+    "pdf_pages": [
+      82,
+      89
+    ],
+    "page_offset": "pdf = printed + 20 (full-book PDF)",
+    "processed_by": "Claude",
+    "protocol_version": "1.0",
+    "assumed_inputs": "IDs continue from earlier batches: CLS-028, WCAT-012, PHR-015, COMP-010; OTH starts at 001. Text source: standalone Chapter_2 PDF supplied by the user."
+  },
+  "concepts": [
+    {
+      "term": "subordinate clause",
+      "gloss": "finite or non-finite clause embedded in a matrix clause",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§11 Content clauses and reported speech",
+          "pages": [
+            62
+          ],
+          "pdf_pages": [
+            82
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "content clause",
+      "gloss": "default finite subordinate clause",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§11 Content clauses and reported speech",
+          "pages": [
+            62
+          ],
+          "pdf_pages": [
+            82
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "mandative construction",
+      "gloss": "content clause with subjunctive, should or tensed verb",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§11 Content clauses and reported speech",
+          "pages": [
+            62
+          ],
+          "pdf_pages": [
+            82
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "direct / indirect reported speech",
+      "gloss": "words quoted in a main clause vs content reported in a subordinate clause",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§11 Content clauses and reported speech",
+          "pages": [
+            63
+          ],
+          "pdf_pages": [
+            83
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "wh relative / that relative / bare relative",
+      "gloss": "types of central relative clause",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§12 Relative constructions and unbounded dependencies",
+          "pages": [
+            63
+          ],
+          "pdf_pages": [
+            83
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "integrated / supplementary relative",
+      "gloss": "relative clause that is or is not detached",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§12 Relative constructions and unbounded dependencies",
+          "pages": [
+            63
+          ],
+          "pdf_pages": [
+            83
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "fused relative construction",
+      "gloss": "NP in which 'what' combines head and prenuclear element",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§12 Relative constructions and unbounded dependencies",
+          "pages": [
+            63
+          ],
+          "pdf_pages": [
+            83
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "unbounded dependency",
+      "gloss": "gap-filler relation with no upper limit on embedding",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§12 Relative constructions and unbounded dependencies",
+          "pages": [
+            63,
+            64
+          ],
+          "pdf_pages": [
+            83,
+            84
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "comparative clause",
+      "gloss": "complement of than, as or like, structurally reduced",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§13 Comparative constructions",
+          "pages": [
+            64
+          ],
+          "pdf_pages": [
+            84
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "hollow clause",
+      "gloss": "non-finite clause lacking a non-subject NP",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§14 Non-finite and verbless clauses",
+          "pages": [
+            65
+          ],
+          "pdf_pages": [
+            85
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "catenative complement",
+      "gloss": "non-finite clause complement of a catenative verb",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§14 Non-finite and verbless clauses",
+          "pages": [
+            65
+          ],
+          "pdf_pages": [
+            85
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "raised complement",
+      "gloss": "complement belonging semantically to a lower clause",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§14 Non-finite and verbless clauses",
+          "pages": [
+            65,
+            66
+          ],
+          "pdf_pages": [
+            85,
+            86
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "coordinate / coordinator",
+      "gloss": "elements of equal status; the linking word",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§15 Coordination and supplementation",
+          "pages": [
+            66
+          ],
+          "pdf_pages": [
+            86
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "anchor and supplement",
+      "gloss": "detached element and the element it relates to",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§15 Coordination and supplementation",
+          "pages": [
+            66,
+            67
+          ],
+          "pdf_pages": [
+            86,
+            87
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "information-packaging construction",
+      "gloss": "non-canonical construction changing presentation not meaning",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§16 Information packaging",
+          "pages": [
+            67
+          ],
+          "pdf_pages": [
+            87
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "cleft / pseudo-cleft",
+      "gloss": "division of a clause into foregrounded and backgrounded parts",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§16 Information packaging",
+          "pages": [
+            67
+          ],
+          "pdf_pages": [
+            87
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "long / short passive",
+      "gloss": "passive with or without a by phrase",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§16 Information packaging",
+          "pages": [
+            68
+          ],
+          "pdf_pages": [
+            88
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "old / new information",
+      "gloss": "familiarity status of information",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§16 Information packaging",
+          "pages": [
+            68
+          ],
+          "pdf_pages": [
+            88
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "deixis",
+      "gloss": "reference tied to the utterance act",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§17 Deixis and anaphora",
+          "pages": [
+            68
+          ],
+          "pdf_pages": [
+            88
+          ]
+        }
+      ],
+      "related_concepts": []
+    },
+    {
+      "term": "anaphor / antecedent",
+      "gloss": "expression interpreted via an earlier expression",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§17 Deixis and anaphora",
+          "pages": [
+            68,
+            69
+          ],
+          "pdf_pages": [
+            88,
+            89
+          ]
+        }
+      ],
+      "related_concepts": []
+    }
+  ],
+  "rules": [
+    {
+      "id": "CLS-029",
+      "domain": "clauses",
+      "concept": "subordinate clause classification",
+      "rule_type": "classification",
+      "scope": "multi_clause",
+      "statement": "Subordinate clauses are first classified as finite or non-finite, and finite ones as relative, comparative or content; content clauses are the default category without the special features of relatives and comparatives.",
+      "condition": "Applies when classifying a finite subordinate clause: relative (modifies an antecedent), comparative (complement of than, as, like) or content (neither); non-finite clauses are classified separately by verb form.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "The woman who called is my aunt. [relative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "It took longer than she thought. [comparative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "He said that he was tired. [content]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "She asked what they wanted. [content]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§11 Content clauses and reported speech",
+          "pages": [
+            62
+          ],
+          "pdf_pages": [
+            82
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "subordinate clause classification",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-040",
+        "CLS-035",
+        "CLS-041"
+      ]
+    },
+    {
+      "id": "CLS-030",
+      "domain": "clauses",
+      "concept": "no noun, adjective or adverb clauses",
+      "rule_type": "classification",
+      "scope": "multi_clause",
+      "statement": "Cambridge does not use the traditional categories noun clause, adjective clause and adverb clause: classification by word-class analogy is unsatisfactory, and many traditional adverb clauses are PPs headed by a preposition with a content clause as complement.",
+      "condition": "Applies when analysing 'before you mentioned it', 'if it rains', 'because they were tired': each is a PP whose head is the preposition and whose complement is a content clause.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "I left before you arrived. [PP: before + content clause]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "We'll stay in if it rains. [PP: if + content clause]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "They left because they were tired. [PP: because + content clause]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§11 Content clauses and reported speech",
+          "pages": [
+            62
+          ],
+          "pdf_pages": [
+            82
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "subordinate clause types",
+          "relation": "unverified",
+          "note": "Cambridge rejects the traditional functional clause categories; compare with Burton-Roberts."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "WCAT-012",
+        "CLS-029"
+      ],
+      "traditional_terms": [
+        "noun clause",
+        "adjective clause",
+        "adverb clause"
+      ],
+      "review_notes": "Possible cross-framework conflict, see conflicts list."
+    },
+    {
+      "id": "CLS-031",
+      "domain": "clauses",
+      "concept": "clause type in content clauses",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Clause type applies to content clauses as well as main clauses (declarative, closed interrogative, open interrogative, exclamative), but there is no subordinate imperative construction.",
+      "condition": "Applies to content clauses: subordinate declaratives, closed interrogatives, open interrogatives and exclamatives exist; no imperative counterpart is found in subordinate position.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "I believe that she is right. [declarative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "He asked whether it was open. [closed interrogative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "She asked how tall he was. [open interrogative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "She told us what a mess it was. [exclamative]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§11 Content clauses and reported speech",
+          "pages": [
+            62
+          ],
+          "pdf_pages": [
+            82
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "clause type in content clauses",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-025",
+        "CLS-032"
+      ]
+    },
+    {
+      "id": "CLS-032",
+      "domain": "clauses",
+      "concept": "mandative construction",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "In the mandative construction the content clause is subjunctive, with alternants using modal should or a non-modal tensed verb.",
+      "condition": "Applies to content clauses after expressions like 'it is important/essential that': the verb is a plain-form subjunctive, or 'should' + plain form, or an ordinary tensed verb.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "It is vital that he leave early. [subjunctive]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "It is vital that he should leave early. [modal should]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "It is vital that he leaves early. [tensed verb]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§11 Content clauses and reported speech",
+          "pages": [
+            62
+          ],
+          "pdf_pages": [
+            82
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "mandative construction",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-014",
+        "CLS-031"
+      ],
+      "review_notes": "The book lists three alternants as options; none is marked as an error."
+    },
+    {
+      "id": "CLS-033",
+      "domain": "clauses",
+      "concept": "function of content clauses",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Content clauses usually function as complement, but can also be adjuncts, including a distinct interrogative kind that serves as an exhaustive conditional adjunct.",
+      "condition": "Applies to the role of a content clause in a larger clause: complement (I know you are right) or adjunct (What is the matter, that you look so worried?; He won't be satisfied whatever you give him).",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "I know that you are right. [complement]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "She won't be happy whatever you offer her. [exhaustive conditional adjunct]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "What is the matter, that you look so upset? [adjunct]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§11 Content clauses and reported speech",
+          "pages": [
+            62
+          ],
+          "pdf_pages": [
+            82
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "function of content clauses",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-017",
+        "CLS-029"
+      ]
+    },
+    {
+      "id": "CLS-034",
+      "domain": "clauses",
+      "concept": "direct and indirect reported speech",
+      "rule_type": "classification",
+      "scope": "sentence",
+      "statement": "Direct reported speech gives the words as a main clause; indirect reported speech reports the content as a subordinate content clause.",
+      "condition": "Applies to reporting: a direct report quotes the speaker's words in a main clause; an indirect report uses a subordinate clause and conveys only the content.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Ed said, 'I shall do it today.' [direct]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Ed said that he would do it today. [indirect]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§11 Content clauses and reported speech",
+          "pages": [
+            63
+          ],
+          "pdf_pages": [
+            83
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "direct and indirect reported speech",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-029"
+      ]
+    },
+    {
+      "id": "CLS-035",
+      "domain": "clauses",
+      "concept": "relative clause types",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "A central relative clause modifies a nominal head and is a wh relative (with who, whom, whose, which, when, etc.), a that relative (where that is a subordinator, not a pronoun) or a bare relative (no that); in each the object position is a gap co-indexed with the antecedent.",
+      "condition": "Applies to relative clauses modifying a noun: wh relatives contain a relative word that is a pro-form; in a that relative, 'that' is the subordinator also found in declarative content clauses; 'that' can be omitted (bare relative).",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Here's the book which she wrote. [wh relative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Here's the book that she wrote. [that relative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "Here's the book she wrote. [bare relative]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§12 Relative constructions and unbounded dependencies",
+          "pages": [
+            63
+          ],
+          "pdf_pages": [
+            83
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "relative pronoun",
+          "relation": "unverified",
+          "note": "Cambridge says 'that' is a subordinator, not a pro-form; traditional view differs."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-011",
+        "CLS-036"
+      ],
+      "traditional_terms": [
+        "relative pronoun (that)"
+      ],
+      "review_notes": "Flag for Burton-Roberts comparison."
+    },
+    {
+      "id": "CLS-036",
+      "domain": "clauses",
+      "concept": "integrated and supplementary relative clauses",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Integrated relative clauses function as dependents in a larger construction; supplementary relatives are prosodically detached, and the traditional restrictive/non-restrictive labels are misleading because integrated relatives are not always semantically restrictive.",
+      "condition": "Applies when classifying a relative clause: integrated = syntactically and phonologically part of the sentence; supplementary = detached from the rest of the sentence.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "The man who called is here. [integrated]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "We met Mara, who had just arrived. [supplementary]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§12 Relative constructions and unbounded dependencies",
+          "pages": [
+            63
+          ],
+          "pdf_pages": [
+            83
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "integrated and supplementary relative clauses",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-035",
+        "CLS-046"
+      ],
+      "traditional_terms": [
+        "restrictive",
+        "non-restrictive"
+      ]
+    },
+    {
+      "id": "CLS-037",
+      "domain": "clauses",
+      "concept": "fused relative construction",
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "A fused relative construction is an NP, not a clause, in which a word like 'what' combines the head of the NP with the prenuclear element of a relative clause.",
+      "condition": "Applies to expressions like 'what you gave me yesterday' used as an NP: comparable to 'the money which you gave me yesterday'.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "I've already spent what you gave me. [fused relative NP]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "She took what they offered her.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "I've already spent the money which you gave me. [non-fused counterpart]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§12 Relative constructions and unbounded dependencies",
+          "pages": [
+            63
+          ],
+          "pdf_pages": [
+            83
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "fused relative construction",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-035",
+        "PHR-009"
+      ]
+    },
+    {
+      "id": "CLS-038",
+      "domain": "clauses",
+      "concept": "unbounded dependency constructions",
+      "rule_type": "descriptive_generalization",
+      "scope": "multi_clause",
+      "statement": "Relative clauses, open interrogatives, exclamatives and some others are unbounded dependency constructions: the gap may be arbitrarily deeply embedded relative to the element it is co-indexed with.",
+      "condition": "Applies to wh relatives and similar constructions: the relative word is understood as filling a gap in an embedded clause, with no grammatical limit on the depth of embedding.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Here's the book which she wrote.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Here's the book which he said she wrote.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "Here's the book which I think he said she wrote.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§12 Relative constructions and unbounded dependencies",
+          "pages": [
+            63,
+            64
+          ],
+          "pdf_pages": [
+            83,
+            84
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "unbounded dependency constructions",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-011",
+        "PHR-015"
+      ]
+    },
+    {
+      "id": "CLS-039",
+      "domain": "clauses",
+      "concept": "comparative clause: empty measure position",
+      "rule_type": "constraint",
+      "scope": "clause",
+      "statement": "In a comparative clause the element corresponding to the compared measure must be left empty: no determiner or modifier expressing the measure, and no repeated gradable adjective, appears.",
+      "condition": "Applies to comparative clauses as complement of than or as: the position matching the compared quantity or degree is a gap, so an overt measure phrase or a repeated adjective is not allowed.",
+      "violation": "The comparative clause contains an overt measure expression (such as 'five') or repeats the gradable adjective at the position of the compared degree.",
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "She wrote more plays than he wrote novels.",
+            "origin": "ai_authored",
+            "pair_id": "p1"
+          },
+          {
+            "id": "c2",
+            "text": "He's as old as I am.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          },
+          {
+            "id": "c3",
+            "text": "They have as many cats as we have dogs.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "She is taller than he is.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": [
+          {
+            "id": "i1",
+            "text": "*She wrote more plays than he wrote five novels.",
+            "origin": "ai_authored",
+            "pair_id": "p1",
+            "note": "Source pattern, p. 64."
+          },
+          {
+            "id": "i2",
+            "text": "*He's as old as I am old.",
+            "origin": "ai_authored",
+            "pair_id": "p2",
+            "note": "Source pattern, p. 64."
+          },
+          {
+            "id": "i3",
+            "text": "*She read more books than he read ten magazines.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "i4",
+            "text": "*She is as clever as he is clever.",
+            "origin": "ai_authored"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§13 Comparative constructions",
+          "pages": [
+            64
+          ],
+          "pdf_pages": [
+            84
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "comparative clause: empty measure position",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-040"
+      ],
+      "review_notes": "Stated for two examples; full conditions in Ch. 13. Do not extend to all comparatives without checking."
+    },
+    {
+      "id": "CLS-040",
+      "domain": "clauses",
+      "concept": "comparative clauses",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Comparative clauses function as complement to than, as or like and are structurally reduced in specific ways; comparisons of inequality use than, those of equality use as, and 'at least equal' is understood for equality; equality comparisons also follow same, such and as on its own.",
+      "condition": "Applies to comparative clauses: complement of than (inequality), as or like; after same, such, and as alone (as you know) comparisons of equality are found.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "She wrote more plays than he wrote novels. [inequality]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "He's as old as I am. [equality]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "She went to the same school as I did.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "Such cakes as she made were soon eaten.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "As you know, we can't accept your offer.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§13 Comparative constructions",
+          "pages": [
+            64
+          ],
+          "pdf_pages": [
+            84
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "comparative clauses",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-039",
+        "WCAT-013"
+      ]
+    },
+    {
+      "id": "WCAT-013",
+      "domain": "word_categories",
+      "concept": "comparative forms: determinative and adverb",
+      "rule_type": "classification",
+      "scope": "word",
+      "statement": "'More' is the inflectional comparative form of the determinative 'many' and also an adverb in analytic comparatives like 'more expensive'; 'less' is the comparative of determinative 'little' and also an adverb.",
+      "condition": "Applies to more and less: determinative 'more' = comparative of many (more plays); adverb 'more' marks an analytic comparative; 'less' is likewise a determinative form and an adverb.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "She wrote more plays than he did. [determinative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "It was more expensive. [adverb, analytic comparative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "It was cheaper. [inflectional comparative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "I have less patience than you. [determinative]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "It was less painful than I'd expected. [adverb]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§13 Comparative constructions",
+          "pages": [
+            64
+          ],
+          "pdf_pages": [
+            84
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "comparative forms: determinative and adverb",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "WCAT-005",
+        "CLS-040"
+      ]
+    },
+    {
+      "id": "CLS-041",
+      "domain": "clauses",
+      "concept": "non-finite clause classes",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Non-finite clauses are classified by verb form as TO-infinitival, bare infinitival, gerund-participial, past-participial, and verbless; the suffix -al marks terms for clauses, as against terms for verb forms.",
+      "condition": "Applies to non-finite clauses: infinitival (plain form; with or without VP subordinator to), gerund-participial, past-participial, and clauses with no verb.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "It was her plan to leave early. [TO-infinitival]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "She helped them paint the fence. [bare infinitival]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "Calling the police was wise. [gerund-participial]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "This is the idea suggested by Mara. [past-participial]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "She stood with her hands in her pockets. [verbless]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§14 Non-finite and verbless clauses",
+          "pages": [
+            64,
+            65
+          ],
+          "pdf_pages": [
+            84,
+            85
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "non-finite clause classes",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-015",
+        "CLS-014"
+      ]
+    },
+    {
+      "id": "CLS-042",
+      "domain": "clauses",
+      "concept": "subjects of non-finite clauses; hollow clauses",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Most non-finite clauses have no overt subject (an understood subject is retrieved from context); hollow clauses lack a non-subject NP, and a to-infinitival with an overt subject is introduced by 'for', a clause subordinator.",
+      "condition": "Applies to non-finite clauses: understood subject by default; hollow = missing object or prepositional complement understood as another NP; overt subject in a TO-infinitival requires 'for'.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Mara is hard to convince. [hollow: object missing]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "This idea is worth thinking about. [hollow: preposition complement missing]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "For Jon to leave now would be a mistake. [overt subject with 'for']",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§14 Non-finite and verbless clauses",
+          "pages": [
+            65
+          ],
+          "pdf_pages": [
+            85
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "subjects of non-finite clauses; hollow clauses",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-041",
+        "CLS-011"
+      ]
+    },
+    {
+      "id": "CLS-043",
+      "domain": "clauses",
+      "concept": "catenative construction",
+      "rule_type": "classification",
+      "scope": "multi_clause",
+      "statement": "A catenative complement is a non-finite clause complement licensed by verbs such as seem, intend, believe, ask and auxiliaries, forming recursive chains; it is a separate type of complement, not an object or predicative.",
+      "condition": "Applies to verb + non-finite clause: the construction is recursive (a chain of verbs and non-finite complements); simple = clause follows the verb directly; complex = an NP intervenes.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Mara seemed to enjoy it. [simple]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Jon intended to apply. [simple]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "She asked me to second her motion. [complex]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "He wants to try to learn to swim. [chain]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "You may be right. [auxiliary: catenative]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§14 Non-finite and verbless clauses",
+          "pages": [
+            65
+          ],
+          "pdf_pages": [
+            85
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "catenative construction",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-016",
+        "CLS-044"
+      ]
+    },
+    {
+      "id": "CLS-044",
+      "domain": "clauses",
+      "concept": "raised complements",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "A raised complement belongs semantically in a lower clause than the one in which it functions syntactically: Max in 'Max seemed to like them' and Kim in 'Everyone believed Kim to be guilty' are raised, while the intervening NPs after 'intend' and 'ask' are not.",
+      "condition": "Applies to catenative constructions: test by paraphrase with a subordinate clause containing the NP ('It seemed that Max liked them').",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Mara seemed to like them. [raised: subject of seem]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Everyone believed Kim to be guilty. [raised: object of believe]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "Jill intended to join the army. [not raised]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "She asked me to second her motion. [not raised]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§14 Non-finite and verbless clauses",
+          "pages": [
+            65,
+            66
+          ],
+          "pdf_pages": [
+            85,
+            86
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "raised complements",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-043"
+      ]
+    },
+    {
+      "id": "CLS-045",
+      "domain": "clauses",
+      "concept": "coordination",
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "Coordination relates two or more coordinates of equal syntactic status, usually linked by a coordinator; the required likeness is mainly a matter of function rather than category, coordination can occur almost anywhere in structure, and the number of coordinates has no grammatical limit.",
+      "condition": "Applies to coordination: coordinates must be syntactically alike in function (NP/PP-coordination in an adjunct position is possible); any constituent can usually be replaced by a coordination; any number of coordinates is allowed.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "She wants to go, but she can't afford it. [clause-coordination]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "I've invited the manager and her husband. [NP-coordination]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "She'll be arriving tomorrow or on Friday. [NP/PP-coordination]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "Kim and Pat bought two houses.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "Kim bought and sold two houses.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c6",
+            "text": "the manager, her husband, the secretary and Alice",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§15 Coordination and supplementation",
+          "pages": [
+            66
+          ],
+          "pdf_pages": [
+            86
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "coordination",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-003"
+      ],
+      "review_notes": "'In general' likeness of function; exceptions in Ch. 15."
+    },
+    {
+      "id": "CLS-046",
+      "domain": "clauses",
+      "concept": "supplementation",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Supplementation involves an anchor and a supplement: an element semantically related to the anchor but not syntactically a dependent, prosodically detached, often an interpolation or appendage; supplementary relatives are included.",
+      "condition": "Applies to detached elements such as parenthetical clauses and appended noun phrases; they are linked semantically to an anchor but are not integrated into the clause structure.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "My aunt – she lives in Paris – is visiting.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "I finally volunteered, a decision I quickly regretted.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "Unhappily, the letter arrived late.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§15 Coordination and supplementation",
+          "pages": [
+            66,
+            67
+          ],
+          "pdf_pages": [
+            86,
+            87
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "supplementation",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-036",
+        "CLS-017"
+      ]
+    },
+    {
+      "id": "CLS-047",
+      "domain": "clauses",
+      "concept": "information-packaging constructions",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Information-packaging constructions are non-canonical constructions that differ from their basic counterparts not in truth conditions or illocutionary meaning but in how content is presented: preposing, postposing, inversion, existential, extraposition, cleft and passive.",
+      "condition": "Applies when a clause rearranges a basic clause's content without changing its truth conditions: preposing, postposing, subject-dependent inversion, existential, extraposition, cleft, passive.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "This book I gave to Mara. [preposing]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "He gave to charity all the money she had left him. [postposing]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "In the bag were two knives. [inversion]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "There is one guard outside. [existential]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "It's clear that it's a forgery. [extraposition]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c6",
+            "text": "It was a bee that stung me. [cleft]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c7",
+            "text": "I was attacked by their dog. [passive]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§16 Information packaging",
+          "pages": [
+            67
+          ],
+          "pdf_pages": [
+            87
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "information-packaging constructions",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-005",
+        "CLS-048"
+      ]
+    },
+    {
+      "id": "CLS-048",
+      "domain": "clauses",
+      "concept": "packaging constructions: order vs function changes",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Preposing, postposing and inversion differ from the basic clause only in word order, whereas existential, extraposition, cleft and passive involve changes of syntactic function (dummy subject there or it, displaced or extraposed subject, extraposed object).",
+      "condition": "Applies to existentials and extraposition: a dummy pronoun is the subject, and the displaced or extraposed element is interpreted as the subject; extraposed 'it' can also be an object.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "There is one guard outside. [dummy there; displaced subject: one guard]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "It is obvious that he lied. [dummy it; extraposed subject]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "I find it odd that nobody called. [extraposed object]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "In the bag were two knives. [subject-dependent inversion]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§16 Information packaging",
+          "pages": [
+            67
+          ],
+          "pdf_pages": [
+            87
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "packaging constructions: order vs function changes",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-047"
+      ]
+    },
+    {
+      "id": "CLS-049",
+      "domain": "clauses",
+      "concept": "cleft and pseudo-cleft",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "A cleft clause divides its basic counterpart in two: one element is foregrounded as complement of be, the other is backgrounded in a subordinate relative clause; an it-cleft has dummy it as subject, and a pseudo-cleft uses a fused relative construction.",
+      "condition": "Applies to it-clefts and pseudo-clefts: foregrounded complement of 'be', backgrounded relative clause or fused relative.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "It was a bee that stung me. [it-cleft]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "It was Mara who called. [it-cleft]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "What stung me was a bee. [pseudo-cleft]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "What I need is a rest. [pseudo-cleft]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§16 Information packaging",
+          "pages": [
+            67
+          ],
+          "pdf_pages": [
+            87
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "cleft and pseudo-cleft",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-047",
+        "CLS-037"
+      ]
+    },
+    {
+      "id": "CLS-050",
+      "domain": "clauses",
+      "concept": "passive clauses",
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "In a passive the active object appears as subject, the active subject appears as the complement of 'by' (the internalised complement), and the clause contains auxiliary be with a past-participial complement; clauses with the by phrase are long passives and those without it are short passives.",
+      "condition": "Applies to passives: semantic roles are realigned with syntactic functions; the by phrase is optional; be + past participle.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "I was attacked by their dog. [long passive]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "I was attacked. [short passive]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "Their dog attacked me. [active counterpart]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§16 Information packaging",
+          "pages": [
+            68
+          ],
+          "pdf_pages": [
+            88
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "passive clauses",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-047",
+        "CLS-005"
+      ]
+    },
+    {
+      "id": "CLS-051",
+      "domain": "clauses",
+      "concept": "pragmatic constraints on packaging",
+      "rule_type": "descriptive_generalization",
+      "scope": "text",
+      "statement": "Information-packaging constructions are more constrained in discourse than basic constructions; familiarity (old vs new information) and weight (length or complexity of constituents) are two key factors, and postposing generally needs a relatively heavy constituent.",
+      "condition": "Applies to the use of non-canonical packaging in discourse: old information is information assumed to be shared (discourse-old or addressee-old); heavier constituents favour postposing, lighter ones favour the default position.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "He gave to charity all the money she had saved over thirty years. [heavy object: postposing natural]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "He gave ten dollars to charity. [light object: default order]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "k1",
+            "text": "He gave to charity ten dollars.",
+            "origin": "ai_authored",
+            "judgement": "unusual"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§16 Information packaging",
+          "pages": [
+            68
+          ],
+          "pdf_pages": [
+            88
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "pragmatic constraints on packaging",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-047"
+      ],
+      "review_notes": "Pragmatic tendency, not a grammatical rule. Do not use for error detection."
+    },
+    {
+      "id": "OTH-001",
+      "domain": "other",
+      "concept": "deixis",
+      "rule_type": "classification",
+      "scope": "text",
+      "statement": "Deictic expressions have reference determined relative to the utterance act (time, place, speaker and addressee, proximity to the speaker): now, yesterday, today, tomorrow, here, there, this, that, I, we, you and primary tense.",
+      "condition": "Applies to expressions whose reference depends on when and where the utterance takes place and who is speaking to whom.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "I'll see you here tomorrow.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Look at that.",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "We left yesterday.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§17 Deixis and anaphora",
+          "pages": [
+            68
+          ],
+          "pdf_pages": [
+            88
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "deixis",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "PHR-002"
+      ],
+      "review_notes": "Deixis cuts across the parts of speech (p. 68)."
+    },
+    {
+      "id": "OTH-002",
+      "domain": "other",
+      "concept": "anaphora and pro-forms",
+      "rule_type": "classification",
+      "scope": "text",
+      "statement": "Anaphora is the relation between an anaphor and its antecedent: the anaphor's interpretation derives from the antecedent; anaphors may be personal pronouns and other pro-forms (so, do so, one) or gaps, and the relation can be shown by co-indexing.",
+      "condition": "Applies to expressions interpreted by reference to an antecedent: pronouns, pro-forms such as so, do so and one, and gaps in elliptical clauses.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Jill has left her car in the road. [her = Jill]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c2",
+            "text": "Grapes are expensive and likely to remain so. [so]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c3",
+            "text": "I haven't told them yet, but I'll do so tomorrow. [do so]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "This banana is green: have you got a riper one? [one]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c5",
+            "text": "I'd like to help you but I can't. [gap]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": []
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§17 Deixis and anaphora",
+          "pages": [
+            68,
+            69
+          ],
+          "pdf_pages": [
+            88,
+            89
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "anaphora and pro-forms",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "CLS-011",
+        "OTH-001"
+      ]
+    },
+    {
+      "id": "OTH-003",
+      "domain": "other",
+      "concept": "order of anaphor and antecedent",
+      "rule_type": "descriptive_generalization",
+      "scope": "text",
+      "statement": "An anaphor generally follows its antecedent, but under restricted conditions it may precede it.",
+      "condition": "Applies to anaphors and antecedents: the default order is antecedent first; the conditions allowing the reverse are not spelled out in this overview.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Jill has left her car in the road.",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "k1",
+            "text": "If you can, please come a little earlier next week.",
+            "origin": "ai_authored",
+            "note": "Anaphor (gap after can) precedes its antecedent (come earlier).",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 2,
+          "section": "§17 Deixis and anaphora",
+          "pages": [
+            69
+          ],
+          "pdf_pages": [
+            89
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "order of anaphor and antecedent",
+          "relation": "unverified",
+          "note": "No Burton-Roberts material supplied for this job."
+        }
+      ],
+      "confidence": "medium",
+      "protocol_version": "1.0",
+      "status": "NEEDS_REVIEW",
+      "related_rules": [
+        "OTH-002"
+      ],
+      "review_notes": "Restricted conditions are not given in Ch. 2; check Ch. 17."
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "CLS-029",
+      "to": "Ch. 11-14 (subordination)",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-047",
+      "to": "Ch. 16 (information packaging)",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-039",
+      "to": "Ch. 13 (comparatives)",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-045",
+      "to": "Ch. 15 (coordination)",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "OTH-002",
+      "to": "Ch. 17 (deixis and anaphora)",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-038",
+      "to": "CLS-011, PHR-015",
+      "relation": "overlaps",
+      "verified": true
+    }
+  ],
+  "conflicts": [
+    {
+      "rules": [
+        "CLS-030",
+        "CLS-035",
+        "CLS-036"
+      ],
+      "kind": "cambridge_vs_burton_roberts",
+      "description": "Cambridge drops noun/adjective/adverb clauses, treats 'that' in relatives as a subordinator, and replaces restrictive/non-restrictive with integrated/supplementary. Burton-Roberts material not supplied.",
+      "proposed_resolution": "Compare with Burton-Roberts's clause chapters; keep both analyses with a mapping.",
+      "needs_human": true
+    }
+  ],
+  "uncertain_items": [
+    {
+      "pages": [
+        69
+      ],
+      "issue": "Ch. 2 ends at the end of §17 on p. 69; later pages in the supplied text are blank.",
+      "what_is_needed": "None."
+    },
+    {
+      "pages": [
+        65,
+        66
+      ],
+      "issue": "The diagrams-by-text analysis of 'raised' complements (CLS-044) is stated for four examples only.",
+      "what_is_needed": "Ch. 14 for general tests."
+    },
+    {
+      "pages": [
+        69
+      ],
+      "issue": "Conditions allowing an anaphor to precede its antecedent are not stated.",
+      "what_is_needed": "Ch. 17."
+    },
+    {
+      "pages": [
+        64
+      ],
+      "issue": "CLS-039's 'empty measure position' is shown only with more...than and as...as.",
+      "what_is_needed": "Ch. 13 conditions before extending."
+    }
+  ],
+  "coverage_report": {
+    "printed_pages_fully_covered": "62-69",
+    "skipped": [],
+    "counts": {
+      "concepts": 20,
+      "rules": 27,
+      "by_rule_type": {
+        "classification": 23,
+        "descriptive_generalization": 3,
+        "constraint": 1
+      },
+      "by_domain": {
+        "clauses": 23,
+        "word_categories": 1,
+        "other": 3
+      },
+      "examples_book": 0,
+      "examples_ai_authored": 105,
+      "conflicts": 1,
+      "uncertain_items": 4
+    }
+  }
+}

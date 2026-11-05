@@ -1,0 +1,704 @@
+[
+  {
+    "id": "COMP-001",
+    "domain": "complementation",
+    "concept": "complements vs modifiers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Dependents of the verb in clause structure are either complements or modifiers; complements are more closely related to the verb, their presence depends on the verb's subclass, and the semantic role of a complement NP depends on the verb's meaning.",
+    "condition": "Applies when classifying a verb dependent in a clause: complements are licensed by the verb's subclass and linked closely to it; modifiers are less closely linked; the semantic role of the complement (e.g. patient, stimulus) varies with the verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He broke the vase. [object: patient]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She heard the alarm. [object: stimulus]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They met on Friday. [modifier: on Friday]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          52,
+          53
+        ],
+        "pdf_pages": [
+          72,
+          73
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "complements vs modifiers",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "COMP-002",
+      "COMP-004"
+    ]
+  },
+  {
+    "id": "COMP-002",
+    "domain": "complementation",
+    "concept": "verb subclass determines object",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Whether a canonical clause has an object depends on the verb's subclass: some verbs require an object (use), others exclude one (arrive).",
+    "condition": "Applies to canonical clauses headed by a verb whose subclass either requires an object (transitive, as with 'use') or excludes one (intransitive, as with 'arrive').",
+    "violation": "A verb that excludes an object is followed by an object NP, or a verb that requires an object in canonical clauses has none.",
+    "exceptions": [
+      {
+        "description": "Many verbs occur in more than one complementation: 'read' is intransitive, monotransitive or ditransitive depending on the clause.",
+        "pages": [
+          53
+        ],
+        "example_ids": [
+          "c5",
+          "c6",
+          "c7"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He used the key.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "c2",
+          "text": "She arrived late.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "c3",
+          "text": "They demolished the shed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "The train arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "She read for a while.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c6",
+          "text": "She read the newspaper.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c7",
+          "text": "She read us a story.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*She arrived the station.",
+          "origin": "ai_authored",
+          "pair_id": "p2",
+          "note": "Intransitive verb with an object."
+        },
+        {
+          "id": "i2",
+          "text": "*They used.",
+          "origin": "ai_authored",
+          "pair_id": "p1",
+          "note": "Object-requiring verb with no object (canonical clause)."
+        },
+        {
+          "id": "i3",
+          "text": "*They demolished.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i4",
+          "text": "*The train arrived the platform.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          52
+        ],
+        "pdf_pages": [
+          72
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "verb subclass determines object",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "COMP-004",
+      "COMP-003"
+    ],
+    "review_notes": "Verb-by-verb subclass lists belong to Ch. 4; this record only states the principle. Only canonical clauses are covered; non-canonical clauses may omit objects."
+  },
+  {
+    "id": "COMP-003",
+    "domain": "complementation",
+    "concept": "subject obligatory in canonical clauses",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "The subject is an external complement and is obligatory in every canonical clause.",
+    "condition": "Applies to canonical clauses (positive, declarative, active, main, non-coordinate): the subject is an obligatory element located outside the VP.",
+    "violation": "A canonical clause has no subject.",
+    "exceptions": [
+      {
+        "description": "Non-canonical clauses may lack an expressed subject, e.g. imperatives and VP-subordinator clauses ('to use') (the latter noted on p. 47).",
+        "pages": [
+          46,
+          47,
+          53
+        ],
+        "example_ids": []
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara smiled.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "c2",
+          "text": "They gave me the key.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "c3",
+          "text": "The train arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "It rained all night.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*Smiled.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "*Gave me the key.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "i3",
+          "text": "*Arrived late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i4",
+          "text": "*Rained all night.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          53
+        ],
+        "pdf_pages": [
+          73
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "subject obligatory in canonical clauses",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "CLS-005",
+      "COMP-002"
+    ],
+    "review_notes": "Applies only to canonical clauses; informal ellipsis ('Arrived late.') is non-canonical and is outside this source's claim. Engine must first decide that a clause is canonical."
+  },
+  {
+    "id": "COMP-004",
+    "domain": "complementation",
+    "concept": "intransitive, monotransitive, ditransitive",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The three major clause constructions are intransitive (subject + predicator), monotransitive (plus an object) and ditransitive (plus indirect and direct objects); the terms apply to the clause or to the head verb, and most verbs occur in more than one complementation.",
+    "condition": "Applies when classifying clauses by their object complements: no object, one object, or indirect plus direct objects; a given verb may appear in more than one of the three.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She smiled. [intransitive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He washed the car. [monotransitive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They gave me the key. [ditransitive]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          53
+        ],
+        "pdf_pages": [
+          73
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "intransitive, monotransitive, ditransitive",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "COMP-002",
+      "COMP-005"
+    ]
+  },
+  {
+    "id": "COMP-005",
+    "domain": "complementation",
+    "concept": "indirect object vs PP complement",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Objects normally have the form of NPs; in 'gave the key to me' the 'to me' phrase is a PP complement, not an indirect object, although the meaning matches 'gave me the key'.",
+    "condition": "Applies to ditransitive alternations: 'me' in 'gave me the key' is an indirect object (NP form); 'to me' in 'gave the key to me' is a complement with PP form and is not an object.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They gave me the key. [indirect object]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They gave the key to me. [PP complement, not an object]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          53
+        ],
+        "pdf_pages": [
+          73
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "indirect object vs PP complement",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "COMP-004"
+    ],
+    "traditional_terms": [
+      "indirect object (traditional: includes the to-phrase)"
+    ],
+    "review_notes": "Cambridge narrows 'object' to NP forms; traditional grammar calls the to-phrase an indirect object."
+  },
+  {
+    "id": "COMP-006",
+    "domain": "complementation",
+    "concept": "predicative complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A predicative complement is an internal complement that can be realised by an adjective and typically ascribes a property to the subject (complex-intransitive) or object (complex-transitive); objects, by contrast, refer to participants.",
+    "condition": "Applies to clauses with verbs like seem, consider: complex-intransitive = subject + predicator + predicative complement; complex-transitive = subject + predicator + object + predicative complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This seems fair. [complex-intransitive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She seems a good teacher.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I consider this fair. [complex-transitive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "I find the task easy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          53
+        ],
+        "pdf_pages": [
+          73
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "predicative complements",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "COMP-007",
+      "COMP-004"
+    ]
+  },
+  {
+    "id": "COMP-007",
+    "domain": "complementation",
+    "concept": "ascriptive and specifying be",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Be in complex-intransitive clauses is either ascriptive (the predicative gives a property of the subject) or specifying (it identifies the value of a variable); specifying clauses normally allow subject and predicative to be reversed.",
+    "condition": "Applies to clauses with be plus a predicative complement: ascriptive when the predicative ascribes a property to the subject; specifying when the clause identifies something; only the specifying type normally permits reversal of subject and predicative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is fair. [ascriptive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The winner is Mara. [specifying]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Mara is the winner. [specifying, reversed]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          53,
+          54
+        ],
+        "pdf_pages": [
+          73,
+          74
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "ascriptive and specifying be",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "COMP-006",
+      "WCAT-002"
+    ]
+  },
+  {
+    "id": "COMP-008",
+    "domain": "complementation",
+    "concept": "prepositional verbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Prepositional verbs take a PP complement headed by a preposition the verb selects (refer to, blame on/for); the selected preposition belongs in constituent structure with its NP, and with 'regard' and 'count' the complement of 'as' is predicative.",
+    "condition": "Applies to verbs that select a specific preposition for their PP complement: the preposition is part of the PP, not of the verb; in the 'as' constructions, the complement of 'as' is a predicative, not an object.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She referred to the map.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They blamed the delay on Jon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They blamed Jon for the delay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "He regards the plan as a risk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "This counts as a win.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          54
+        ],
+        "pdf_pages": [
+          74
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "prepositional verbs",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "COMP-009",
+      "COMP-006"
+    ],
+    "review_notes": "Cambridge notes blame can select either on or for. This record lists only the verbs the page names."
+  },
+  {
+    "id": "COMP-009",
+    "domain": "complementation",
+    "concept": "particles vs single PP complement",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A complement that is a PP consisting of a preposition alone can precede or follow the direct object; such complements are called particles, whereas in 'jumped off the wall' the VP has one PP complement.",
+    "condition": "Applies to clauses with 'off' or similar prepositions: with a particle the VP has two complements (the preposition and the direct object, in either order); with an ordinary preposition-plus-NP the VP has a single PP complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She jumped off the wall. [one complement: PP]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She took off the label. [particle + object]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She took the label off. [object + particle]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§4 The clause: complements",
+        "pages": [
+          54
+        ],
+        "pdf_pages": [
+          74
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "particles vs single PP complement",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "COMP-008"
+    ]
+  },
+  {
+    "id": "COMP-010",
+    "domain": "complementation",
+    "concept": "complements semantically related to adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A manner or locative expression is a complement, not an adjunct, when the verb requires it: 'badly' in 'treated us badly' is obligatory (another sense of treat is involved without it), and locatives with verbs of motion are generally complements, including source and goal.",
+    "condition": "Applies to manner and place expressions: manner is a complement if obligatory for the verb sense; locatives are adjuncts with static situations but generally complements with verbs of motion; source marks the starting point and goal the endpoint.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They treated us badly. [manner complement]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I spoke to her in the garden. [locative adjunct]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Kim drove from Berlin to Bonn. [source and goal complements]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§8 The clause: adjuncts",
+        "pages": [
+          59
+        ],
+        "pdf_pages": [
+          79
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "complements semantically related to adjuncts",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "COMP-001",
+      "CLS-017"
+    ],
+    "review_notes": "'Mostly adjuncts' and 'generally complements' are hedged; Ch. 4/8 hold the tests."
+  }
+]

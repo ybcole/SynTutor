@@ -1,0 +1,187 @@
+[
+  {
+    "id": "OTH-001",
+    "domain": "other",
+    "concept": "deixis",
+    "rule_type": "classification",
+    "scope": "text",
+    "statement": "Deictic expressions have reference determined relative to the utterance act (time, place, speaker and addressee, proximity to the speaker): now, yesterday, today, tomorrow, here, there, this, that, I, we, you and primary tense.",
+    "condition": "Applies to expressions whose reference depends on when and where the utterance takes place and who is speaking to whom.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'll see you here tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Look at that.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We left yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§17 Deixis and anaphora",
+        "pages": [
+          68
+        ],
+        "pdf_pages": [
+          88
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "deixis",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "PHR-002"
+    ],
+    "review_notes": "Deixis cuts across the parts of speech (p. 68)."
+  },
+  {
+    "id": "OTH-002",
+    "domain": "other",
+    "concept": "anaphora and pro-forms",
+    "rule_type": "classification",
+    "scope": "text",
+    "statement": "Anaphora is the relation between an anaphor and its antecedent: the anaphor's interpretation derives from the antecedent; anaphors may be personal pronouns and other pro-forms (so, do so, one) or gaps, and the relation can be shown by co-indexing.",
+    "condition": "Applies to expressions interpreted by reference to an antecedent: pronouns, pro-forms such as so, do so and one, and gaps in elliptical clauses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jill has left her car in the road. [her = Jill]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Grapes are expensive and likely to remain so. [so]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I haven't told them yet, but I'll do so tomorrow. [do so]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "This banana is green: have you got a riper one? [one]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "I'd like to help you but I can't. [gap]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§17 Deixis and anaphora",
+        "pages": [
+          68,
+          69
+        ],
+        "pdf_pages": [
+          88,
+          89
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "anaphora and pro-forms",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "CLS-011",
+      "OTH-001"
+    ]
+  },
+  {
+    "id": "OTH-003",
+    "domain": "other",
+    "concept": "order of anaphor and antecedent",
+    "rule_type": "descriptive_generalization",
+    "scope": "text",
+    "statement": "An anaphor generally follows its antecedent, but under restricted conditions it may precede it.",
+    "condition": "Applies to anaphors and antecedents: the default order is antecedent first; the conditions allowing the reverse are not spelled out in this overview.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jill has left her car in the road.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "k1",
+          "text": "If you can, please come a little earlier next week.",
+          "origin": "ai_authored",
+          "note": "Anaphor (gap after can) precedes its antecedent (come earlier).",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§17 Deixis and anaphora",
+        "pages": [
+          69
+        ],
+        "pdf_pages": [
+          89
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "order of anaphor and antecedent",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "OTH-002"
+    ],
+    "review_notes": "Restricted conditions are not given in Ch. 2; check Ch. 17."
+  }
+]

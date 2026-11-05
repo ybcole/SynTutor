@@ -1,0 +1,314 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ybcole/SynTutor/grammar/schema.json",
+  "title": "SynTutor grammar rule record",
+  "description": "One atomic, testable grammatical principle extracted from Cambridge (or Burton-Roberts). Protocol version 1.0. See CAMBRIDGE_EXTRACTION_PROMPT.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "domain",
+    "concept",
+    "rule_type",
+    "scope",
+    "condition",
+    "violation",
+    "exceptions",
+    "examples",
+    "sources",
+    "burton_roberts_mapping",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z]{2,8}-[0-9]{3,5}$",
+      "description": "Unique ID, e.g. MORPH-001, AGR-014. Never reused or renumbered."
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "morphology",
+        "word_categories",
+        "phrases",
+        "clauses",
+        "complementation",
+        "agreement",
+        "other"
+      ],
+      "description": "Grammatical phenomenon (not source chapter). Determines the file in grammar/rules/."
+    },
+    "concept": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Cambridge term for the grammatical concept, e.g. 'subject-verb agreement'."
+    },
+    "traditional_terms": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Traditional-grammar labels for the same concept, if the source mentions them."
+    },
+    "rule_type": {
+      "type": "string",
+      "enum": [
+        "constraint",
+        "descriptive_generalization",
+        "classification",
+        "stylistic_or_prescriptive",
+        "variety_restricted"
+      ],
+      "description": "Only 'constraint' and 'variety_restricted' may be used for error detection. Stylistic or prescriptive items must never be treated as grammatical prohibitions."
+    },
+    "variety": {
+      "type": ["string", "null"],
+      "description": "Variety/register/dialect the rule holds for (e.g. 'standard written English', 'informal', 'AmE'). Required when rule_type is variety_restricted."
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "word",
+        "phrase",
+        "clause",
+        "sentence",
+        "multi_clause",
+        "text",
+        "other"
+      ],
+      "description": "Largest unit the rule operates over."
+    },
+    "statement": {
+      "type": "string",
+      "description": "One-sentence paraphrase of the principle, in SynTutor's own words."
+    },
+    "condition": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Precise statement of when the rule applies (construction, category, feature values). Vague conditions are invalid."
+    },
+    "violation": {
+      "type": ["string", "null"],
+      "description": "What breaks the rule, stated so that a checker could detect it. Null for rule types that have no violation (classification, descriptive_generalization)."
+    },
+    "exceptions": {
+      "type": "array",
+      "description": "Every exception or restriction given in the source. Empty means the source states none.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["description", "pages"],
+        "properties": {
+          "description": { "type": "string" },
+          "pages": {
+            "type": "array",
+            "items": { "type": "integer", "minimum": 1 }
+          },
+          "example_ids": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "IDs of examples (in this record) that test the exception."
+          }
+        }
+      }
+    },
+    "examples": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["correct", "incorrect"],
+      "properties": {
+        "correct": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/example" }
+        },
+        "incorrect": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/example" }
+        },
+        "contrast": {
+          "type": "array",
+          "description": "For non-constraints: examples showing a contrast without claiming ungrammaticality.",
+          "items": { "$ref": "#/$defs/example" }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["book", "chapter", "pages"],
+        "properties": {
+          "book": {
+            "type": "string",
+            "examples": ["Cambridge Grammar", "Burton-Roberts"]
+          },
+          "chapter": { "type": "integer", "minimum": 0 },
+          "section": {
+            "type": "string",
+            "description": "Section heading/number as printed."
+          },
+          "pages": {
+            "type": "array",
+            "description": "Printed page numbers (narrowest supporting span). Empty only with status NEEDS_REVIEW or UNCERTAIN.",
+            "items": { "type": "integer", "minimum": 1 }
+          },
+          "pdf_pages": {
+            "type": "array",
+            "items": { "type": "integer", "minimum": 1 }
+          }
+        }
+      }
+    },
+    "burton_roberts_mapping": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["br_concept", "relation"],
+        "properties": {
+          "br_concept": { "type": "string" },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "same",
+              "terminology_differs",
+              "analysis_differs",
+              "not_covered",
+              "unverified"
+            ]
+          },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "related_rules": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[A-Z]{2,8}-[0-9]{3,5}$" }
+    },
+    "supersedes_legacy_rules": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs of rules in the existing 111-rule system that this rule overlaps with or replaces."
+    },
+    "superseded_by": {
+      "type": ["string", "null"],
+      "pattern": "^[A-Z]{2,8}-[0-9]{3,5}$"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"]
+    },
+    "review_notes": {
+      "type": "string"
+    },
+    "protocol_version": {
+      "type": "string",
+      "default": "1.0"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "NEEDS_REVIEW",
+        "UNCERTAIN",
+        "REVIEWED",
+        "APPROVED",
+        "REJECTED",
+        "SUPERSEDED"
+      ],
+      "default": "NEEDS_REVIEW"
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "rule_type": { "const": "variety_restricted" } } },
+      "then": {
+        "required": ["variety"],
+        "properties": { "variety": { "type": "string", "minLength": 1 } }
+      }
+    },
+    {
+      "if": { "properties": { "rule_type": { "const": "constraint" } } },
+      "then": {
+        "properties": {
+          "violation": { "type": "string", "minLength": 10 },
+          "examples": {
+            "properties": {
+              "correct": { "minItems": 2 },
+              "incorrect": { "minItems": 2 }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "rule_type": {
+            "enum": ["descriptive_generalization", "stylistic_or_prescriptive", "classification"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "examples": {
+            "properties": { "incorrect": { "maxItems": 0 } }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "enum": ["APPROVED", "REVIEWED"] } } },
+      "then": {
+        "properties": {
+          "sources": {
+            "items": { "properties": { "pages": { "minItems": 1 } } }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "SUPERSEDED" } } },
+      "then": { "required": ["superseded_by"] }
+    }
+  ],
+  "$defs": {
+    "example": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "origin"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Local ID within the rule, e.g. 'c1', 'i2'."
+        },
+        "text": { "type": "string", "minLength": 1 },
+        "origin": {
+          "type": "string",
+          "enum": ["ai_authored", "book"],
+          "description": "Distinguishes examples written by the AI from examples actually given in the source."
+        },
+        "page": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "description": "Printed page; required when origin is 'book'."
+        },
+        "pair_id": {
+          "type": ["string", "null"],
+          "description": "Shared ID linking the members of a minimal pair."
+        },
+        "tests_exception": {
+          "type": "boolean",
+          "default": false
+        },
+        "judgement": {
+          "type": "string",
+          "enum": ["unusual", "possible", "n/a"],
+          "description": "For 'contrast' examples only."
+        },
+        "note": { "type": "string" }
+      },
+      "if": { "properties": { "origin": { "const": "book" } } },
+      "then": { "required": ["page"], "properties": { "page": { "type": "integer" } } }
+    }
+  }
+}

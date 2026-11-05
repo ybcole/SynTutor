@@ -1,0 +1,1047 @@
+[
+  {
+    "id": "PHR-001",
+    "domain": "phrases",
+    "concept": "primary and secondary tense systems",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "English has two tense systems: a primary one marked by verb inflection (preterite vs present) and a secondary one marked by the presence or absence of auxiliary have (perfect vs non-perfect); the two combine into compound tenses.",
+    "condition": "Applies when describing the tense of a verb phrase: primary tense is preterite or present (inflectional); secondary tense is perfect (have + past participle) or non-perfect; preterite perfect and present perfect are compound tenses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was ill. [preterite]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is ill. [present]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She has been ill. [present perfect]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "She had been ill. [preterite perfect]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "She is believed to have been ill. [perfect, secondary tense]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          51
+        ],
+        "pdf_pages": [
+          71
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "primary and secondary tense systems",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "PHR-002",
+      "MORPH-001"
+    ]
+  },
+  {
+    "id": "PHR-002",
+    "domain": "phrases",
+    "concept": "tense vs time; no future tense",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Tense is a grammatical category and time a semantic one: a preterite form need not refer to past time, and since will and shall are modal auxiliaries, English has no future tense.",
+    "condition": "Applies when assigning tense: the tense category is determined by verb form (preterite vs present), not by the time referred to; will and shall are classed with must, may and can as modal auxiliaries and do not mark a tense.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It started yesterday.",
+          "origin": "ai_authored",
+          "note": "Preterite; past time."
+        },
+        {
+          "id": "c2",
+          "text": "I wish it started tomorrow.",
+          "origin": "ai_authored",
+          "note": "Preterite; not past time."
+        },
+        {
+          "id": "c3",
+          "text": "She will leave tomorrow.",
+          "origin": "ai_authored",
+          "note": "Modal auxiliary 'will', not a tense."
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          51,
+          52
+        ],
+        "pdf_pages": [
+          71,
+          72
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "tense vs time; no future tense",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "PHR-001",
+      "WCAT-003"
+    ],
+    "traditional_terms": [
+      "future tense"
+    ],
+    "review_notes": "Analytic claim that departs from traditional grammar. The engine must not flag 'will' as a 'missing tense'; and must not treat it as part of a tense paradigm."
+  },
+  {
+    "id": "PHR-003",
+    "domain": "phrases",
+    "concept": "aspect and aspectuality",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Grammatical aspect is marked by the presence or absence of auxiliary be (progressive vs non-progressive); the meaning contrast of aspectuality is perfective vs imperfective, and the progressive mainly expresses a kind of imperfective.",
+    "condition": "Applies when describing progressive verb phrases: aspect (form) is progressive (be + gerund-participle) vs non-progressive; aspectuality (meaning) is perfective (situation viewed as a whole) vs imperfective (viewed from within).",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was writing a novel. [progressive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She wrote a novel. [non-progressive]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          52
+        ],
+        "pdf_pages": [
+          72
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "aspect and aspectuality",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "PHR-001",
+      "PHR-002"
+    ]
+  },
+  {
+    "id": "PHR-004",
+    "domain": "phrases",
+    "concept": "kinds of modal meaning",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Modal meaning is of three main kinds: deontic (obligation, permission, prohibition), epistemic (speaker's commitment to the truth of the proposition) and dynamic (properties and dispositions, esp. of the subject); all can also be expressed by lexical verbs, adjectives, adverbs and nouns.",
+    "condition": "Applies when interpreting modal expressions: deontic modality concerns obligation or permission, epistemic modality qualifies the speaker's commitment to truth, dynamic modality concerns the subject's properties or dispositions; non-auxiliary means of expression include lexical verbs, adjectives, adverbs and nouns.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You must leave now. [deontic]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It must have been late. [epistemic]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Mara can swim well. [dynamic]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "She is likely to win. [adjective]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "Perhaps you are right. [adverb]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "I need to leave. [lexical verb]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§3 The verb",
+        "pages": [
+          52
+        ],
+        "pdf_pages": [
+          72
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "kinds of modal meaning",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "WCAT-003"
+    ],
+    "review_notes": "The same modal can carry different kinds of meaning in different sentences; the book flags 'central cases'. Do not use this as an error-detection rule."
+  },
+  {
+    "id": "PHR-005",
+    "domain": "phrases",
+    "concept": "NP structure and dependents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An NP has a determiner and a head nominal; the hierarchy NP > nominal > noun parallels clause > VP > verb; modifiers and complements inside the nominal are internal dependents, while peripheral modifiers and predeterminers are external.",
+    "condition": "Applies to NP analysis: first split is determiner plus nominal; the nominal contains the head noun and its modifiers or complements (internal dependents); elements like 'quite' and 'all' attach to a whole NP (external dependents); the nominal level may be omitted when there is no modifier or complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "a young woman [modifier]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "the guy with black hair [modifier]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "his fear of the dark [complement]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "quite the worst solution [NP-peripheral modifier]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "all these people [predeterminer]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          55
+        ],
+        "pdf_pages": [
+          75
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "NP structure and dependents",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "PHR-006",
+      "PHR-008",
+      "WCAT-005"
+    ]
+  },
+  {
+    "id": "PHR-006",
+    "domain": "phrases",
+    "concept": "attributive modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An attributive modifier is an internal pre-head dependent in a nominal; it is most often an adjective, but can also be a nominal, a determinative or a verb or VP in gerund-participle or past participle form.",
+    "condition": "Applies to modifiers before the head noun: adjectival (young), nominal (federal government inquiry), determinative (her many virtues) or verbal (a sleeping child; a frequently overlooked problem).",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "a tall boy [adjective]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "a government inquiry [nominal]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "her many friends [determinative]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "a barking dog [gerund-participle]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "a recently repaired road [VP, past participle]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          55
+        ],
+        "pdf_pages": [
+          75
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "attributive modifiers",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "PHR-005",
+      "PHR-007"
+    ]
+  },
+  {
+    "id": "PHR-007",
+    "domain": "phrases",
+    "concept": "attributive modifiers and post-head dependents",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "With very restricted exceptions, an attributive modifier before the head noun cannot itself contain a post-head dependent.",
+    "condition": "Applies to a pre-head attributive modifier in a nominal: it may be a simple adjective, nominal or verb form, but may not take its own dependents after it (such as a than-phrase or an adverb following the verb).",
+    "violation": "A pre-head attributive modifier is followed by its own post-head dependent (e.g. a than-phrase or a post-verbal adverb) before the head noun.",
+    "exceptions": [
+      {
+        "description": "The source says there are 'very restricted exceptions' but does not list them on this page; the statement 'with only very restricted exceptions' is recorded as is.",
+        "pages": [
+          55
+        ],
+        "example_ids": []
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "a taller boy",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "c2",
+          "text": "a boy taller than Jon",
+          "origin": "ai_authored",
+          "pair_id": "p1",
+          "note": "Post-head position allows the dependent."
+        },
+        {
+          "id": "c3",
+          "text": "a quietly sleeping child",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "c4",
+          "text": "a child sleeping quietly",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*a taller than Jon boy",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "*a sleeping quietly child",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "i3",
+          "text": "*a smarter than her student",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i4",
+          "text": "*a barking loudly dog",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          55
+        ],
+        "pdf_pages": [
+          75
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "attributive modifiers and post-head dependents",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "PHR-006"
+    ],
+    "review_notes": "Exceptions unlisted here: check Ch. 5 / Ch. 6 before flagging examples with rare modifier patterns as errors."
+  },
+  {
+    "id": "PHR-008",
+    "domain": "phrases",
+    "concept": "direct and indirect complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Direct complements are licensed by the head of the nominal (his fear of the dark; the claim that it was a hoax); indirect complements are licensed by a dependent of the head (a better result than we'd expected; enough time to complete the work) and occur in most kinds of phrase.",
+    "condition": "Applies to complements in NPs: direct if licensed by the head noun; indirect if licensed by a dependent such as a comparative form or 'enough'.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "his fear of heights [direct]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "the claim that it was false [direct]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "a worse result than we expected [indirect: licensed by 'worse']",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "enough money to buy the car [indirect: licensed by 'enough']",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          55
+        ],
+        "pdf_pages": [
+          75
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "direct and indirect complements",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "PHR-005"
+    ]
+  },
+  {
+    "id": "PHR-009",
+    "domain": "phrases",
+    "concept": "fused heads",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In some NPs the head is fused with a dependent, so one word functions as head and as determiner or modifier; words like 'any' and 'several' in such uses are determinatives, not pronouns.",
+    "condition": "Applies to NPs with no separate head noun where one word is both head and determiner (some, any, several) or head and modifier (the rich, the cheaper of the two).",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I need some pens but can't find any.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Several of the girls left.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Only the rich will benefit.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "I chose the cheaper of the two.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          56
+        ],
+        "pdf_pages": [
+          76
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "pronoun / determiner",
+        "relation": "unverified",
+        "note": "Traditional grammar calls these pronouns; Cambridge says determinatives."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "WCAT-005"
+    ],
+    "traditional_terms": [
+      "pronoun (any, several)"
+    ]
+  },
+  {
+    "id": "PHR-010",
+    "domain": "phrases",
+    "concept": "genitive subject-determiner",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A genitive NP typically functions as subject-determiner in a larger NP, combining determiner and subject-complement functions; it can fuse with the head ('Mara's was better').",
+    "condition": "Applies to genitive NPs inside an NP: they mark the NP as definite and function as its subject; in 'the behaviour of the minister' the determiner and complement are realised separately; the genitive may be fused with the head when the head is omitted.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "the teacher's advice [subject-determiner]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "the advice of the teacher [determiner 'the' + internal complement]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Your plan failed, but Mara's worked. [fused genitive]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          56
+        ],
+        "pdf_pages": [
+          76
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "genitive subject-determiner",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "MORPH-003",
+      "WCAT-005"
+    ]
+  },
+  {
+    "id": "PHR-011",
+    "domain": "phrases",
+    "concept": "singular count nouns need a determiner",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A singular count noun cannot in general head an NP without a determiner.",
+    "condition": "Applies to NPs whose head is a singular noun in a count sense: such an NP needs a determiner (the, a, your, ...).",
+    "violation": "A singular count noun heads a subject or complement NP with no determiner.",
+    "exceptions": [
+      {
+        "description": "The source says 'in general', so exceptions exist but are not listed on this page.",
+        "pages": [
+          57
+        ],
+        "example_ids": []
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Your taxi is here.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "c2",
+          "text": "The dog barked.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "c3",
+          "text": "A child laughed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "My car broke down.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*Taxi is here.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "*Dog barked.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "i3",
+          "text": "*Child laughed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i4",
+          "text": "*Car broke down.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5 Nouns and noun phrases",
+        "pages": [
+          57
+        ],
+        "pdf_pages": [
+          77
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "singular count nouns need a determiner",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "WCAT-006",
+      "AGR-001"
+    ],
+    "review_notes": "Hedged by the source ('in general'). Do not flag cases like bare plurals, non-count nouns or proper nouns: those are outside the rule's scope; unlisted exceptions with count nouns need Ch. 5."
+  },
+  {
+    "id": "PHR-012",
+    "domain": "phrases",
+    "concept": "AdjP structure",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Dependents of adjectives are modifiers (very good, a bit grumpy) or complements (ashamed of him, glad you could come); complements follow the head, so they are hardly permitted in attributive AdjPs but commonly occur in postpositives, and with minor exceptions they are PPs or clauses, not NPs; AdjP has only two levels.",
+    "condition": "Applies to adjective phrases: modifiers precede the head; complements always follow it and are usually PPs or subordinate clauses; with minor exceptions an adjective takes no NP complement; AdjP and adjective are the only two category levels.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was very good. [modifier]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He seems a bit grumpy. [modifier]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She is ashamed of him. [PP complement]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "I'm glad you could come. [clause complement]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "the minister responsible for the decision [complement in postpositive AdjP]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§6 Adjectives and adverbs",
+        "pages": [
+          57
+        ],
+        "pdf_pages": [
+          77
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "AdjP structure",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "PHR-007",
+      "WCAT-007"
+    ],
+    "review_notes": "Hedges ('hardly permitted', 'minor exceptions') are preserved; do not turn into constraints without Ch. 6."
+  },
+  {
+    "id": "PHR-013",
+    "domain": "phrases",
+    "concept": "AdvP structure",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Adverbs can be modified much as adjectives are (quite excellently), only a very small number of adverbs license complements (independently of such considerations), and AdvP has only two category levels.",
+    "condition": "Applies to adverb phrases: modifiers precede the head; a complement is licensed only by a very small set of adverbs; the levels are AdvP and adverb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "quite excellently",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "independently of such considerations",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "a remarkably good performance",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§6 Adjectives and adverbs",
+        "pages": [
+          58
+        ],
+        "pdf_pages": [
+          78
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "AdvP structure",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "PHR-012",
+      "WCAT-010"
+    ]
+  },
+  {
+    "id": "PHR-014",
+    "domain": "phrases",
+    "concept": "PP structure and complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In a PP the NP in 'to you' or 'of the house' is a complement of the preposition, and modifiers like 'a few minutes' or 'straight' before or after the preposition are modifiers; complements may be objects or predicatives (as a liability) and a PP may have no complement.",
+    "condition": "Applies to PPs: complement = NP object, predicative (after 'as'), AdvP or clause; modifiers precede the preposition phrase; a complement-less PP is allowed (before, afterwards).",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "to you",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "a few minutes before lunch",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They regard him as a liability.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "It strikes me as quite reasonable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "I hadn't seen him before.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§7 Prepositions and preposition phrases",
+        "pages": [
+          58
+        ],
+        "pdf_pages": [
+          78
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "PP structure and complements",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "WCAT-012",
+      "COMP-008"
+    ]
+  },
+  {
+    "id": "PHR-015",
+    "domain": "phrases",
+    "concept": "preposition stranding",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "The most central prepositions can be stranded, i.e. left with a gap in complement position, when their complement is prenuclear in an interrogative or relative clause; the alternative is to keep the PP together in prenuclear position.",
+    "condition": "Applies to central prepositions (to, with) in open interrogatives and relative clauses: the PP can be in prenuclear position, or the preposition is stranded with its complement realised by a co-indexed gap.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was talking to a man.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "To whom was she talking? [PP prenuclear]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Who was she talking to? [stranded]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "the razor-blade with which I cut it [PP prenuclear]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "the razor-blade that I cut it with [stranded]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§7 Prepositions and preposition phrases",
+        "pages": [
+          58,
+          59
+        ],
+        "pdf_pages": [
+          78,
+          79
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "preposition stranding",
+        "relation": "unverified",
+        "note": "No Burton-Roberts material supplied for this job."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "related_rules": [
+      "CLS-011",
+      "CLS-012"
+    ],
+    "review_notes": "Only the 'most central' prepositions; which ones are not listed here. Do not use as an error rule."
+  }
+]

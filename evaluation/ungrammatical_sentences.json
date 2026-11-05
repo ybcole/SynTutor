@@ -1,0 +1,618 @@
+[
+  {
+    "text": "a books",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "each children",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "two book",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "several idea",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "this books",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "those book",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "AGR-001",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "The nurse have arrived.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "The nurses has arrived.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "The dog are asleep.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "The dogs is asleep.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "AGR-002",
+    "domain": "agreement",
+    "rule_type": "constraint",
+    "source_pages": [
+      56
+    ]
+  },
+  {
+    "text": "I wonder what Mara bought a watch.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-012",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      49
+    ]
+  },
+  {
+    "text": "She asked what Jon had broken the vase.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-012",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      49
+    ]
+  },
+  {
+    "text": "He read the report, not even the summary.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-019",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "They visited the town, not even the museum.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-019",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "She wrote often, not even a postcard.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-019",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "We asked everyone, not even Jon.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-019",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      59
+    ]
+  },
+  {
+    "text": "She lives here any longer.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-022",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "They replied yet.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-022",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "We saw anyone at the party.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-022",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "He has ever visited us.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-022",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "He wasn't feeling somewhat sad.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-023",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "The soup wasn't somewhat salty.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-023",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "They don't look somewhat tired.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-023",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "The film wasn't somewhat long.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-023",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      60
+    ]
+  },
+  {
+    "text": "She wrote more plays than he wrote five novels.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-039",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "He's as old as I am old.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-039",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "She read more books than he read ten magazines.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-039",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "She is as clever as he is clever.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "CLS-039",
+    "domain": "clauses",
+    "rule_type": "constraint",
+    "source_pages": [
+      64
+    ]
+  },
+  {
+    "text": "She arrived the station.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "They used.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "They demolished.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "The train arrived the platform.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-002",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      52
+    ]
+  },
+  {
+    "text": "Smiled.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-003",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "Gave me the key.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-003",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "Arrived late.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-003",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "Rained all night.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "COMP-003",
+    "domain": "complementation",
+    "rule_type": "constraint",
+    "source_pages": [
+      53
+    ]
+  },
+  {
+    "text": "a taller than Jon boy",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-007",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a sleeping quietly child",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-007",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a smarter than her student",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-007",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "a barking loudly dog",
+    "unit": "phrase",
+    "origin": "ai_authored",
+    "rule_id": "PHR-007",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      55
+    ]
+  },
+  {
+    "text": "Taxi is here.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-011",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "Dog barked.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-011",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "Child laughed.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-011",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "Car broke down.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "PHR-011",
+    "domain": "phrases",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "I saw not them.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-001",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "Want you to go with them?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-001",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "She wanted not the prize.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-001",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "Know you the answer?",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-001",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      51
+    ]
+  },
+  {
+    "text": "The parent was sole.",
+    "unit": "sentence",
+    "origin": "book",
+    "rule_id": "WCAT-008",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "an asleep child",
+    "unit": "phrase",
+    "origin": "book",
+    "rule_id": "WCAT-008",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "Mara is sole.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-008",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "We saw an asleep baby.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-008",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "Kim was unhappily.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-009",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "The result was excellently.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-009",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "She seems quietly.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-009",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  },
+  {
+    "text": "The answer was clearly.",
+    "unit": "sentence",
+    "origin": "ai_authored",
+    "rule_id": "WCAT-009",
+    "domain": "word_categories",
+    "rule_type": "constraint",
+    "source_pages": [
+      57
+    ]
+  }
+]
