@@ -2584,6 +2584,17 @@
         "pdf_pages": [
           83
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§1 Terminological preliminaries",
+        "pages": [
+          1033
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -2598,12 +2609,13 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-011",
-      "CLS-036"
+      "CLS-036",
+      "CLS-070"
     ],
     "traditional_terms": [
       "relative pronoun (that)"
     ],
-    "review_notes": "Flag for Burton-Roberts comparison."
+    "review_notes": "Flag for Burton-Roberts comparison. Chapter 12 §1 p. 1033 reserves the term relative clause for clausal relative constructions; detailed formal subtypes are outside this section."
   },
   {
     "id": "CLS-036",
@@ -2686,8 +2698,8 @@
     "concept": "fused relative construction",
     "rule_type": "classification",
     "scope": "phrase",
-    "statement": "A fused relative construction is an NP, not a clause, in which a word like 'what' combines the head of the NP with the prenuclear element of a relative clause.",
-    "condition": "Applies to expressions like 'what you gave me yesterday' used as an NP: comparable to 'the money which you gave me yesterday'.",
+    "statement": "In the fused relative NP construction illustrated with what, the relative element combines the function of the nominal head with that of an element in the relative clause; the resulting constituent is an NP rather than a relative clause on its own.",
+    "condition": "For a fused relative expression such as what you gave me, where the expression functions as an NP, compare it with a larger NP such as the money that you gave me: classify the whole what-expression as an NP, with no separate overt antecedent.",
     "violation": null,
     "exceptions": [],
     "examples": {
@@ -2721,6 +2733,17 @@
         "pdf_pages": [
           83
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§1 Terminological preliminaries",
+        "pages": [
+          1033
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -2735,8 +2758,10 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-035",
-      "PHR-009"
-    ]
+      "PHR-009",
+      "CLS-070"
+    ],
+    "review_notes": " Chapter 12 §1 p. 1033 clarifies that the illustrated what-fused relative is an NP, corresponding to the entire antecedent-plus-relative NP rather than just its subordinate clause. The earlier unqualified NP wording is narrowed to NP-type fused constructions; later relative types are outside the §1 pass. User approved the refinement."
   },
   {
     "id": "CLS-038",
@@ -5022,5 +5047,78 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "review_notes": "The source gives this example and points to §5.3.1 for its detailed distribution. Record only the illustrated predicative-complement pattern; detailed licensing and variety restrictions remain unverified until that later section is processed. User-approved; independent second-pass AI review not performed."
+  },
+  {
+    "id": "CLS-070",
+    "domain": "clauses",
+    "concept": "relative construction as a superordinate category",
+    "traditional_terms": [
+      "relative clause (traditionally used more broadly)"
+    ],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Relative construction is the broad term that includes both relative clauses and fused relative expressions that have phrase status, such as NPs; the more specific term relative clause is reserved for constructions that themselves are clauses.",
+    "condition": "For a construction involving a relative relation, classify the construction as a relative clause only if the relevant constituent has clause status; when a what-headed fused construction functions as the NP corresponding to a larger NP containing an ordinary relative clause, classify that whole constituent as an NP relative construction, not as a relative clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "We catalogued the objects that Dana discovered. [that Dana discovered: relative clause modifying objects; the objects that Dana discovered: NP]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "We catalogued what Dana discovered. [what Dana discovered: fused relative NP]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The things that Niko proposed were interesting. [that Niko proposed: relative clause; the things that Niko proposed: NP]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "What Niko proposed was interesting. [what Niko proposed: fused relative NP]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§1 Terminological preliminaries",
+        "pages": [
+          1033
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "relative clause / fused relative construction",
+        "relation": "unverified",
+        "note": "The Burton-Roberts reference material for this construction was unavailable; no comparative claim is made."
+      }
+    ],
+    "related_rules": [
+      "CLS-035",
+      "CLS-037",
+      "PHR-009"
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "review_notes": "This source section is terminological. It illustrates relative clauses and a fused relative NP; it does not establish an exhaustive taxonomy of all possible fused-relative categories. User explicitly approved requested Chapter 12 work on 2026-11-05; an independent second-pass AI review was not performed."
   }
 ]

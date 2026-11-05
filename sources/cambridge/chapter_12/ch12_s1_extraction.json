@@ -1,0 +1,234 @@
+{
+  "meta": {
+    "chapter": 12,
+    "section": "§1 Terminological preliminaries",
+    "printed_pages": [
+      1033
+    ],
+    "pdf_pages": [
+      3
+    ],
+    "page_offset": "Local PDF page = printed page - 1030.",
+    "processed_by": "OpenAI GPT-6",
+    "protocol_version": "1.0",
+    "highest_existing_rule_ids": {
+      "morphology": "MORPH-007",
+      "word_categories": "WCAT-017",
+      "phrases": "PHR-019",
+      "clauses": "CLS-069",
+      "complementation": "COMP-019",
+      "agreement": "AGR-002",
+      "other": "OTH-003"
+    },
+    "approval": "The user explicitly approved all needed Chapter 12 §1 changes on 2026-11-05; no independent second-pass AI review was performed.",
+    "input_gaps": [
+      "Burton-Roberts chapter material/index unavailable; all mappings remain unverified.",
+      "§1 only establishes that the cited what-fused relative is an NP; classification of additional fused-relative forms is outside this section."
+    ]
+  },
+  "concepts": [
+    {
+      "term": "relative construction",
+      "gloss": "A general class including ordinary relative clauses and fused relatives with phrase status.",
+      "traditional_terms": [
+        "relative clause (broader traditional usage)"
+      ],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 12,
+          "section": "§1 Terminological preliminaries",
+          "pages": [
+            1033
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "relative clause",
+        "fused relative construction"
+      ]
+    },
+    {
+      "term": "relative clause",
+      "gloss": "A construction in the relative family whose constituent is a clause, as distinct from a fused relative NP.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 12,
+          "section": "§1 Terminological preliminaries",
+          "pages": [
+            1033
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "relative construction",
+        "fused relative construction"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "CLS-070",
+      "domain": "clauses",
+      "concept": "relative construction as a superordinate category",
+      "traditional_terms": [
+        "relative clause (traditionally used more broadly)"
+      ],
+      "rule_type": "classification",
+      "scope": "phrase",
+      "statement": "Relative construction is the broad term that includes both relative clauses and fused relative expressions that have phrase status, such as NPs; the more specific term relative clause is reserved for constructions that themselves are clauses.",
+      "condition": "For a construction involving a relative relation, classify the construction as a relative clause only if the relevant constituent has clause status; when a what-headed fused construction functions as the NP corresponding to a larger NP containing an ordinary relative clause, classify that whole constituent as an NP relative construction, not as a relative clause.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "We catalogued the objects that Dana discovered. [that Dana discovered: relative clause modifying objects; the objects that Dana discovered: NP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "We catalogued what Dana discovered. [what Dana discovered: fused relative NP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The things that Niko proposed were interesting. [that Niko proposed: relative clause; the things that Niko proposed: NP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "What Niko proposed was interesting. [what Niko proposed: fused relative NP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 12,
+          "section": "§1 Terminological preliminaries",
+          "pages": [
+            1033
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "relative clause / fused relative construction",
+          "relation": "unverified",
+          "note": "The Burton-Roberts reference material for this construction was unavailable; no comparative claim is made."
+        }
+      ],
+      "related_rules": [
+        "CLS-035",
+        "CLS-037",
+        "PHR-009"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "This source section is terminological. It illustrates relative clauses and a fused relative NP; it does not establish an exhaustive taxonomy of all possible fused-relative categories. User explicitly approved requested Chapter 12 work on 2026-11-05; an independent second-pass AI review was not performed."
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "CLS-070",
+      "to": "CLS-035",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-070",
+      "to": "CLS-037",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-070",
+      "to": "PHR-009",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-037",
+      "to": "CLS-070",
+      "relation": "refines",
+      "verified": true
+    }
+  ],
+  "conflicts": [],
+  "uncertain_items": [],
+  "coverage_report": {
+    "pages_fully_covered": [],
+    "pages_partially_covered": [
+      {
+        "printed_pages": [
+          1033
+        ],
+        "pdf_pages": [
+          3
+        ],
+        "reason": "Only §1 Terminological preliminaries on this page is processed; §2 Types of relative construction begins below it."
+      }
+    ],
+    "pages_not_covered": [
+      {
+        "printed_pages": [
+          1033,
+          1095
+        ],
+        "pdf_pages": [
+          3,
+          65
+        ],
+        "reason": "§2 through §7.5 and subsequent text are outside this single-section pass; printed page 1033 is partially covered."
+      }
+    ],
+    "counts": {
+      "concepts": 2,
+      "rules": {
+        "constraint": 0,
+        "descriptive_generalization": 0,
+        "classification": 1,
+        "stylistic_or_prescriptive": 0,
+        "variety_restricted": 0
+      },
+      "examples": {
+        "ai_authored": 4,
+        "book": 0
+      },
+      "cross_references": 4,
+      "conflicts": 0,
+      "uncertain_items": 0
+    },
+    "existing_rule_refinements": [
+      "CLS-035",
+      "CLS-037"
+    ],
+    "skipped_subsections": [
+      {
+        "section": "§2 Types of relative construction through §7 Unbounded dependency constructions",
+        "reason": "The approved extraction protocol requires stopping after each printed section."
+      }
+    ]
+  }
+}

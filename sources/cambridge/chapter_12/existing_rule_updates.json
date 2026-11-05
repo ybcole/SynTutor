@@ -1,0 +1,14 @@
+[
+  {
+    "rule_id": "CLS-037",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 12 §1, printed p. 1033",
+    "change": "Clarify that the illustrated what-fused construction has NP status; avoid generalising the NP label to all possible future fused-relative forms."
+  },
+  {
+    "rule_id": "CLS-035",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 12 §1, printed p. 1033",
+    "change": "Document the narrower use of relative clause as a constituent with clause status; link broader relative construction taxonomy."
+  }
+]
