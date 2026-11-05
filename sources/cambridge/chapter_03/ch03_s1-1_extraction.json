@@ -414,7 +414,7 @@
       "scope": "word",
       "statement": "A modal auxiliary has one present-tense form for subjects of every person and number; it does not take a third-person-singular -s form.",
       "condition": "When a modal auxiliary is the finite verb in a present-tense clause, its form remains the same with first-, second-, and third-person singular and plural subjects.",
-      "violation": "The present-tense modal auxiliary is changed to agree with its subject by adding a third-person-singular -s ending or another person-number ending.",
+      "violation": "A present-tense modal auxiliary is given a third-person-singular -s suffix.",
       "exceptions": [],
       "examples": {
         "correct": [
@@ -471,7 +471,7 @@
         "AGR-002"
       ],
       "confidence": "high",
-      "review_notes": "Conflicts with the unqualified scope of AGR-002, which currently says that present-tense verbs agree with their subject. See the conflict entry; do not resolve the earlier rule silently.",
+      "review_notes": "The source explicitly identifies the absence of a third-person-singular -s form. This contrasts with the unqualified scope of AGR-002, which currently says that present-tense verbs agree with their subject. See the conflict entry; do not revise the earlier rule silently.",
       "protocol_version": "1.0",
       "status": "NEEDS_REVIEW"
     }
