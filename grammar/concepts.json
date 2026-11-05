@@ -5962,5 +5962,283 @@
       "established word",
       "potential word"
     ]
+  },
+  {
+    "term": "punctuation indicator",
+    "gloss": "A written device indicating grammatical structure or meaning, covering marks, spaces and typographic changes.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "related_concepts": [
+      "segmental punctuation indicator",
+      "non-segmental punctuation modification"
+    ]
+  },
+  {
+    "term": "segmental punctuation indicator",
+    "gloss": "A writing indicator occupying its own linear position in a sequence of written symbols.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "related_concepts": [
+      "punctuation indicator"
+    ]
+  },
+  {
+    "term": "punctuation mark",
+    "gloss": "A segmental symbol used to signal structural or interpretative properties in written text.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "related_concepts": [
+      "segmental punctuation indicator"
+    ]
+  },
+  {
+    "term": "word space",
+    "gloss": "A segmental space separating orthographic words.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "related_concepts": [
+      "segmental punctuation indicator"
+    ]
+  },
+  {
+    "term": "non-segmental punctuation modification",
+    "gloss": "A modification of existing written letter forms used for structural or interpretative signalling.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "related_concepts": [
+      "punctuation indicator"
+    ]
+  },
+  {
+    "term": "typographic modification",
+    "gloss": "Change from the default lower-case roman type to capital, italic, bold or small-capital form.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724,
+          1725
+        ],
+        "pdf_pages": [
+          2,
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "non-segmental punctuation modification"
+    ]
+  },
+  {
+    "term": "sentence-opening capitalisation",
+    "gloss": "Use of a capital at the start of an ordinary written sentence as a non-segmental indicator.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "related_concepts": [
+      "non-segmental punctuation modification"
+    ]
+  },
+  {
+    "term": "sentence-ending punctuation",
+    "gloss": "Use of a full stop, question mark or exclamation mark as a terminal sentence-boundary indicator.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "related_concepts": [
+      "punctuation mark"
+    ]
+  },
+  {
+    "term": "word-internal punctuation",
+    "gloss": "Punctuation placed within written word forms, typically hyphens and apostrophes.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "related_concepts": [
+      "punctuation mark"
+    ]
+  },
+  {
+    "term": "diacritic as word spelling",
+    "gloss": "Accent or other mark usually belonging to spelling rather than to punctuation.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724,
+          1725
+        ],
+        "pdf_pages": [
+          2,
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "word-internal punctuation"
+    ]
+  },
+  {
+    "term": "supra-sentential punctuation",
+    "gloss": "Punctuation such as paired quotes and parentheses that can span multiple sentences.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1725
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "punctuation indicator"
+    ]
+  },
+  {
+    "term": "paragraph division",
+    "gloss": "Break in text signalled by a new line and usually indentation, counted as punctuation.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1725
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "supra-sentential punctuation"
+    ]
+  },
+  {
+    "term": "document-layout exclusion",
+    "gloss": "Exclusion of chapter, section and hierarchical heading layout from the punctuation domain.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1725
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "punctuation indicator"
+    ]
   }
 ]
