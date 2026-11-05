@@ -1,0 +1,86 @@
+[
+  {
+    "from_rule": "CLS-061",
+    "to": "CLS-025",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-061",
+    "to": "CLS-031",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-062",
+    "to": "CLS-025",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-062",
+    "to": "CLS-061",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-063",
+    "to": "CLS-025",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-063",
+    "to": "CLS-027",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-064",
+    "to": "CLS-025",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-064",
+    "to": "CLS-041",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-028",
+    "to": "CLS-027",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-031",
+    "to": "CLS-061",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-031",
+    "to": "Cambridge Chapter 11 (subordinate clause types)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-031",
+    "to": "Cambridge Chapter 10 §9.8 (subordinate imperatives)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-063",
+    "to": "Cambridge Chapter 10 §4.8 (echo questions)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-025",
+    "to": "Cambridge Chapter 10 §2 (distinctive grammatical properties)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]

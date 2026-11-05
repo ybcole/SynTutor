@@ -1249,6 +1249,19 @@
         "pdf_pages": [
           81
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          853,
+          854
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
       }
     ],
     "related_concepts": []
@@ -1268,6 +1281,19 @@
         "pdf_pages": [
           81
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          853,
+          854
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
       }
     ],
     "related_concepts": []
@@ -1286,6 +1312,19 @@
         ],
         "pdf_pages": [
           81
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          853,
+          854
+        ],
+        "pdf_pages": [
+          3,
+          4
         ]
       }
     ],
@@ -3217,6 +3256,221 @@
     "related_concepts": [
       "clause polarity",
       "subject-auxiliary inversion"
+    ]
+  },
+  {
+    "term": "grammatical clause-type system",
+    "gloss": "A five-valued formal system categorising clauses as declarative, closed interrogative, open interrogative, exclamative, or imperative.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          853
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause type"
+    ]
+  },
+  {
+    "term": "characteristic use of a clause type",
+    "gloss": "The typical illocutionary use linked to a syntactic clause type without requiring that use in every instance.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          853,
+          854
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause type",
+      "illocutionary force"
+    ]
+  },
+  {
+    "term": "exclamatory statement",
+    "gloss": "The characteristic use of an exclamative clause, distinguished from exclamatory delivery of other clause types.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          853
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "exclamative"
+    ]
+  },
+  {
+    "term": "directive as cover category",
+    "gloss": "A type of illocutionary force encompassing requests, instructions, commands and similar attempts to influence behaviour.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          853
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "directive"
+    ]
+  },
+  {
+    "term": "clause-type mutual exclusivity",
+    "gloss": "A particular clause instance belongs to one major clause type, even when the same abstract string admits more than one analysis.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          855
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause type"
+    ]
+  },
+  {
+    "term": "clause-type ambiguity",
+    "gloss": "A string whose punctuation, context or intonation allows different analyses as clause types, resolved in an individual instance.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          855
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause type"
+    ]
+  },
+  {
+    "term": "mixed clause-type coordination",
+    "gloss": "A coordinated sentence in which individual clauses have distinct grammatical clause types.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          854,
+          855
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause type"
+    ]
+  },
+  {
+    "term": "verbless clause fragment",
+    "gloss": "A clause lacking a verb that can nevertheless bear a clause-type classification, such as an open interrogative or exclamative.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          855
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause type"
+    ]
+  },
+  {
+    "term": "echo question",
+    "gloss": "A repetition or clarification request built on an earlier utterance, superimposed on rather than replacing the utterance's clause type.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          855
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause type"
+    ]
+  },
+  {
+    "term": "subordinate clause type",
+    "gloss": "The application of declarative, closed/open interrogative, or exclamative categories to subordinate clauses.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1 Type as a grammatical system of the clause",
+        "pages": [
+          854
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "clause type"
     ]
   }
 ]

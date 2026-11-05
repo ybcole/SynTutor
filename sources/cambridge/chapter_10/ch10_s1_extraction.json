@@ -1,0 +1,682 @@
+{
+  "meta": {
+    "chapter": 10,
+    "section": "§1 Type as a grammatical system of the clause",
+    "printed_pages": [
+      853,
+      855
+    ],
+    "pdf_pages": [
+      3,
+      5
+    ],
+    "page_offset": "Local PDF page = printed page - 850.",
+    "processed_by": "OpenAI GPT-6",
+    "protocol_version": "1.0",
+    "highest_existing_rule_ids": {
+      "morphology": "MORPH-007",
+      "word_categories": "WCAT-017",
+      "phrases": "PHR-019",
+      "clauses": "CLS-060",
+      "complementation": "COMP-019",
+      "agreement": "AGR-002",
+      "other": "OTH-003"
+    },
+    "approval": "User explicitly approved all Chapter 10 required items in the request on 2026-11-05; an independent AI second-pass review has not been performed.",
+    "input_gaps": [
+      "Burton-Roberts chapter/index unavailable; all mappings remain unverified.",
+      "Printed page 855 also contains the start of §2, which is excluded from this §1 extraction."
+    ]
+  },
+  "concepts": [
+    {
+      "term": "grammatical clause-type system",
+      "gloss": "A five-valued formal system categorising clauses as declarative, closed interrogative, open interrogative, exclamative, or imperative.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            853
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause type"
+      ]
+    },
+    {
+      "term": "characteristic use of a clause type",
+      "gloss": "The typical illocutionary use linked to a syntactic clause type without requiring that use in every instance.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            853,
+            854
+          ],
+          "pdf_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause type",
+        "illocutionary force"
+      ]
+    },
+    {
+      "term": "exclamatory statement",
+      "gloss": "The characteristic use of an exclamative clause, distinguished from exclamatory delivery of other clause types.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            853
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "exclamative"
+      ]
+    },
+    {
+      "term": "directive as cover category",
+      "gloss": "A type of illocutionary force encompassing requests, instructions, commands and similar attempts to influence behaviour.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            853
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "directive"
+      ]
+    },
+    {
+      "term": "clause-type mutual exclusivity",
+      "gloss": "A particular clause instance belongs to one major clause type, even when the same abstract string admits more than one analysis.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            855
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause type"
+      ]
+    },
+    {
+      "term": "clause-type ambiguity",
+      "gloss": "A string whose punctuation, context or intonation allows different analyses as clause types, resolved in an individual instance.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            855
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause type"
+      ]
+    },
+    {
+      "term": "mixed clause-type coordination",
+      "gloss": "A coordinated sentence in which individual clauses have distinct grammatical clause types.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            854,
+            855
+          ],
+          "pdf_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause type"
+      ]
+    },
+    {
+      "term": "verbless clause fragment",
+      "gloss": "A clause lacking a verb that can nevertheless bear a clause-type classification, such as an open interrogative or exclamative.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            855
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause type"
+      ]
+    },
+    {
+      "term": "echo question",
+      "gloss": "A repetition or clarification request built on an earlier utterance, superimposed on rather than replacing the utterance's clause type.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            855
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause type"
+      ]
+    },
+    {
+      "term": "subordinate clause type",
+      "gloss": "The application of declarative, closed/open interrogative, or exclamative categories to subordinate clauses.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            854
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause type"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "CLS-061",
+      "domain": "clauses",
+      "concept": "clause type applies to clauses rather than whole sentences",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "multi_clause",
+      "statement": "Clause type categorises each clause, including subordinate clauses, rather than the whole sentence; coordinated clauses may have different types within one sentence.",
+      "condition": "When assigning a clause-type category, classify each clause independently, particularly in a sentence that coordinates clauses of different types, instead of assigning a single clause type to their entire coordination.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Please take a chair, or would you rather stand? [imperative + closed interrogative]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "The train is early, but get ready to leave. [declarative + imperative]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "How remarkable the result is, and it came so quickly! [exclamative + declarative]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            854,
+            855
+          ],
+          "pdf_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "clause type applies to clauses rather than whole sentences",
+          "relation": "unverified",
+          "note": "Burton-Roberts source material and concept mappings were unavailable; no cross-framework equivalence is asserted."
+        }
+      ],
+      "related_rules": [
+        "CLS-025",
+        "CLS-031"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "Approved under the user's explicit Chapter 10 instruction on 2026-11-05. Independent second-pass AI review has not been performed. This classification is not a grammaticality-error prohibition."
+    },
+    {
+      "id": "CLS-062",
+      "domain": "clauses",
+      "concept": "mutually exclusive clause types and ambiguity",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "The five grammatical clause types are mutually exclusive for any individual clause instance, although an abstract string without prosodic or contextual specification can permit more than one clause-type analysis.",
+      "condition": "For a particular spoken or written clause in context, assign one of declarative, closed interrogative, open interrogative, exclamative or imperative; when a string is ambiguous without punctuation, intonation or context, record competing possible analyses rather than two simultaneous type memberships.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "How many visitors returned? [open interrogative reading]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "How many visitors returned! [exclamative reading of the same words]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "You have finished the assignment. [declarative instance]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Have you finished the assignment? [closed interrogative instance]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            855
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "mutually exclusive clause types and ambiguity",
+          "relation": "unverified",
+          "note": "Burton-Roberts source material and concept mappings were unavailable; no cross-framework equivalence is asserted."
+        }
+      ],
+      "related_rules": [
+        "CLS-025",
+        "CLS-061"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "Approved under the user's explicit Chapter 10 instruction on 2026-11-05. Independent second-pass AI review has not been performed. This classification is not a grammaticality-error prohibition."
+    },
+    {
+      "id": "CLS-063",
+      "domain": "clauses",
+      "concept": "echo question as a cross-cutting construction",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "An echo question requests repetition or clarification of a previous utterance and is not a sixth grammatical clause type: the echo feature can occur with multiple major clause types.",
+      "condition": "Where a speaker repeats part of a preceding clause while querying an item, classify the echoed clause's grammatical type independently of its echo-question use; an echo based on an imperative remains imperative, and an echo based on a closed interrogative remains closed interrogative.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Pass the folder to Maren. [imperative stimulus]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Pass the folder to whom? [imperative echo question]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Did you order a projector? [closed interrogative stimulus]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Did I order a what? [closed interrogative echo question]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            855
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "echo question as a cross-cutting construction",
+          "relation": "unverified",
+          "note": "Burton-Roberts source material and concept mappings were unavailable; no cross-framework equivalence is asserted."
+        }
+      ],
+      "related_rules": [
+        "CLS-025",
+        "CLS-027"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "The source expressly rejects treating echo questions as a sixth member of the clause-type system; echo is orthogonal to clause type. Approved by user; no independent second-pass review."
+    },
+    {
+      "id": "CLS-064",
+      "domain": "clauses",
+      "concept": "verbless clause fragments retain clause type",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Certain verbless clause fragments can be classified as open interrogatives or exclamatives even though they lack a finite verb.",
+      "condition": "When identifying an utterance such as what about X or an exclamative what + NP fragment, classify its clause type by the relevant construction rather than requiring a finite verbal clause.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "What about the tickets? [verbless open interrogative]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "What a surprise! [verbless exclamative]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "What about tomorrow? [verbless open interrogative]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "What an extraordinary outcome! [verbless exclamative]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 10,
+          "section": "§1 Type as a grammatical system of the clause",
+          "pages": [
+            855
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "verbless clause fragments retain clause type",
+          "relation": "unverified",
+          "note": "Burton-Roberts source material and concept mappings were unavailable; no cross-framework equivalence is asserted."
+        }
+      ],
+      "related_rules": [
+        "CLS-025",
+        "CLS-041"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "The source includes these under clause fragments, not as evidence that all verbless phrases are clauses. Approved by user; no independent second-pass review."
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "CLS-061",
+      "to": "CLS-025",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-061",
+      "to": "CLS-031",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-062",
+      "to": "CLS-025",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-062",
+      "to": "CLS-061",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-063",
+      "to": "CLS-025",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-063",
+      "to": "CLS-027",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-064",
+      "to": "CLS-025",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-064",
+      "to": "CLS-041",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-028",
+      "to": "CLS-027",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-031",
+      "to": "CLS-061",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-031",
+      "to": "Cambridge Chapter 11 (subordinate clause types)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-031",
+      "to": "Cambridge Chapter 10 §9.8 (subordinate imperatives)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-063",
+      "to": "Cambridge Chapter 10 §4.8 (echo questions)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-025",
+      "to": "Cambridge Chapter 10 §2 (distinctive grammatical properties)",
+      "relation": "depends_on",
+      "verified": false
+    }
+  ],
+  "conflicts": [],
+  "uncertain_items": [],
+  "coverage_report": {
+    "pages_fully_covered": [
+      {
+        "printed_pages": [
+          853,
+          854
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ],
+        "section": "§1 Type as a grammatical system of the clause"
+      }
+    ],
+    "pages_partially_covered": [
+      {
+        "printed_pages": [
+          855
+        ],
+        "pdf_pages": [
+          5
+        ],
+        "reason": "Only the final §1 discussion is included; §2 starts later on this page."
+      }
+    ],
+    "pages_not_covered": [
+      {
+        "printed_pages": [
+          855,
+          944
+        ],
+        "pdf_pages": [
+          5,
+          94
+        ],
+        "reason": "§2 through §10 are outside this pass; page 855 is only partially covered."
+      }
+    ],
+    "counts": {
+      "concepts": 10,
+      "rules": {
+        "constraint": 0,
+        "descriptive_generalization": 0,
+        "classification": 4,
+        "stylistic_or_prescriptive": 0,
+        "variety_restricted": 0
+      },
+      "examples": {
+        "ai_authored": 15,
+        "book": 0
+      },
+      "cross_references": 14,
+      "conflicts": 0,
+      "uncertain_items": 0
+    },
+    "existing_rule_refinements": [
+      "CLS-025",
+      "CLS-027",
+      "CLS-028",
+      "CLS-031"
+    ],
+    "skipped_subsections": [
+      {
+        "section": "§2 Distinctive grammatical properties of the major clause types and all later sections through §10",
+        "reason": "Protocol mandates a stop after each section."
+      }
+    ]
+  }
+}
