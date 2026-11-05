@@ -200,6 +200,19 @@
         "pdf_pages": [
           4
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1173,
+          1174
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
       }
     ],
     "related_concepts": []
@@ -377,6 +390,17 @@
         "pdf_pages": [
           70
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1174
+        ],
+        "pdf_pages": [
+          4
+        ]
       }
     ],
     "related_concepts": []
@@ -395,6 +419,17 @@
         ],
         "pdf_pages": [
           70
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1174
+        ],
+        "pdf_pages": [
+          4
         ]
       }
     ],
@@ -445,6 +480,17 @@
         "pdf_pages": [
           4
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1173
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "related_concepts": []
@@ -474,6 +520,21 @@
         ],
         "pdf_pages": [
           4
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1173,
+          1175,
+          1176
+        ],
+        "pdf_pages": [
+          3,
+          5,
+          6
         ]
       }
     ],
@@ -1658,6 +1719,17 @@
         ],
         "pdf_pages": [
           85
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1175
+        ],
+        "pdf_pages": [
+          5
         ]
       }
     ],
@@ -4039,6 +4111,346 @@
     ],
     "related_concepts": [
       "polarity-sensitive item"
+    ]
+  },
+  {
+    "term": "non-finite form-type",
+    "gloss": "One of the three non-finite clause classifications based on its head verb form: infinitival, gerund-participial or past-participial.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1173,
+          1174
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "non-finite clause"
+    ]
+  },
+  {
+    "term": "to-infinitival",
+    "gloss": "An infinitival clause whose VP contains the subordinator to.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1174
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "bare infinitival"
+    ]
+  },
+  {
+    "term": "bare infinitival",
+    "gloss": "An infinitival clause with a plain-form verb and no VP subordinator to; mainly licensed in a limited set of constructions.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1174
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "to-infinitival"
+    ]
+  },
+  {
+    "term": "supportive do in negative infinitivals",
+    "gloss": "The prohibition on auxiliary do as an infinitival negator, contrasted with finite negative imperatives.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1173,
+          1174
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "dummy auxiliary do"
+    ]
+  },
+  {
+    "term": "perfect auxiliary have in non-finites",
+    "gloss": "The perfect auxiliary have as part of a permitted non-finite infinitival, gerund-participial, or perfect participial structure.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1174
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "non-finite form-type"
+    ]
+  },
+  {
+    "term": "progressive auxiliary be in non-finites",
+    "gloss": "The progressive auxiliary is compatible with infinitivals and with perfect participial structures but not productive as an internal gerund-participial auxiliary.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1174
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "non-finite form-type"
+    ]
+  },
+  {
+    "term": "passive auxiliary be in non-finites",
+    "gloss": "The passive auxiliary is permitted in infinitivals and gerund-participials, and inside perfect-participial structures.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1174
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "non-finite form-type"
+    ]
+  },
+  {
+    "term": "perfect past-participial clause",
+    "gloss": "A past-participial construction headed by perfect use of a past participle, usually complement of perfect have.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1174
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "past participle"
+    ]
+  },
+  {
+    "term": "passive past-participial clause",
+    "gloss": "A non-finite past-participial construction headed by passive use of a past participle without its own auxiliary.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1174
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "past participle"
+    ]
+  },
+  {
+    "term": "subjectless VP-headed clause",
+    "gloss": "A non-finite clause whose predicate VP is its only overt nucleus constituent and that has no expressed subject.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1175
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "non-finite clause"
+    ]
+  },
+  {
+    "term": "attributive VP",
+    "gloss": "A VP functioning as a pre-head attributive modifier inside an NP rather than as a clause.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1175
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "attributive modifier"
+    ]
+  },
+  {
+    "term": "to-infinitival interrogative",
+    "gloss": "An open or closed subordinate interrogative with a to-infinitival form.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1175
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "subordinate clause"
+    ]
+  },
+  {
+    "term": "to-infinitival relative",
+    "gloss": "A wh or non-wh relative construction with a to-infinitival verb.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1175
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "relative clause"
+    ]
+  },
+  {
+    "term": "non-finite complement function",
+    "gloss": "A non-finite clause functioning as complement in clause, AdjP, NP or PP structure.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1176
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "non-finite clause"
+    ]
+  },
+  {
+    "term": "non-finite modifier function",
+    "gloss": "A non-finite clause modifying a clause or nominal instead of functioning as a selected complement.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1176
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "modifier"
+    ]
+  },
+  {
+    "term": "non-finite supplement function",
+    "gloss": "A non-finite clause expressing a supplementary comment detached from a clause's integrated syntax.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1 Matters of form and function",
+        "pages": [
+          1176
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "supplement"
     ]
   }
 ]
