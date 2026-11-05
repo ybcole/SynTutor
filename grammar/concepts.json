@@ -2065,6 +2065,17 @@
         "pdf_pages": [
           4
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1568
+        ],
+        "pdf_pages": [
+          4
+        ]
       }
     ],
     "related_concepts": [
@@ -2643,6 +2654,17 @@
         ],
         "pdf_pages": [
           4
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1569
+        ],
+        "pdf_pages": [
+          5
         ]
       }
     ],
@@ -5337,6 +5359,323 @@
     ],
     "related_concepts": [
       "deixis"
+    ]
+  },
+  {
+    "term": "lexical base",
+    "gloss": "Morphological starting point for describing a lexeme's inflectional forms, not necessarily itself an attested form.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1568
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "variable lexeme"
+    ]
+  },
+  {
+    "term": "simple lexical base",
+    "gloss": "A lexical base not divided into smaller morphological units in the relevant analysis.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1568
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "lexical base"
+    ]
+  },
+  {
+    "term": "complex lexical base",
+    "gloss": "A lexical base containing smaller morphological units, e.g. a derived base, which is inflected as a whole.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1568
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "lexical base"
+    ]
+  },
+  {
+    "term": "defective lexeme",
+    "gloss": "A lexeme lacking some inflectional forms characteristic of its syntactic category.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1568
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "lexical base"
+    ]
+  },
+  {
+    "term": "morphological operation",
+    "gloss": "A process such as suffixation or base change used in producing an inflectional form.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1568
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "lexical base"
+    ]
+  },
+  {
+    "term": "suffixation",
+    "gloss": "A morphological operation adding a suffix to a base or an inflected form.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1568,
+          1569
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "morphological operation"
+    ]
+  },
+  {
+    "term": "base modification",
+    "gloss": "A morphological operation changing the shape of a lexical base, such as its vowel or final consonant.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1568
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "morphological operation"
+    ]
+  },
+  {
+    "term": "two-step inflection",
+    "gloss": "Formation of an inflected form from another inflectional form rather than directly from the lexical base.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1569
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "morphological operation"
+    ]
+  },
+  {
+    "term": "morphological alternation",
+    "gloss": "Context-conditioned different realisations of one morphological unit.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1569
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "morphological operation"
+    ]
+  },
+  {
+    "term": "regular inflectional form",
+    "gloss": "An inflectional form produced by a general rule without requiring a particular lexeme to be separately specified.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1569
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "morphological alternation"
+    ]
+  },
+  {
+    "term": "irregular inflectional form",
+    "gloss": "An inflectional form requiring information particular to a lexeme, whether in the suffix or the base alternant.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1569
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "regular inflectional form"
+    ]
+  },
+  {
+    "term": "special base alternant",
+    "gloss": "A lexeme-specific variant of a lexical base used for a particular inflectional form.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1569
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "base modification"
+    ]
+  },
+  {
+    "term": "syncretism",
+    "gloss": "Phonological or orthographic identity of different inflectional forms of one lexeme.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1569
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "inflectional paradigm"
+    ]
+  },
+  {
+    "term": "inflectional form",
+    "gloss": "A form of a lexeme associated with a grammatical category in its paradigm.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1568
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "variable lexeme"
+    ]
+  },
+  {
+    "term": "morphological division notation",
+    "gloss": "Use of a raised dot in grammatical descriptions to show division between morphological units.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1 Lexical base, morphological operations, and alternation",
+        "pages": [
+          1568
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "morphological operation"
     ]
   }
 ]
