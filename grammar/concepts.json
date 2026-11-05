@@ -1988,6 +1988,21 @@
         "pdf_pages": [
           88
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1451,
+          1452,
+          1453
+        ],
+        "pdf_pages": [
+          3,
+          4,
+          5
+        ]
       }
     ],
     "related_concepts": []
@@ -5047,6 +5062,281 @@
     ],
     "related_concepts": [
       "canonical and packaged counterpart"
+    ]
+  },
+  {
+    "term": "utterance-act",
+    "gloss": "An occasion of spoken or written expression with a time, place, speaker/writer, and addressee.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1451
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "temporal deixis",
+    "gloss": "Time interpreted relative to the utterance act or an available shifted perspective.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1451
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "locative deixis",
+    "gloss": "Place interpreted in relation to utterance location or relative proximity.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1451
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "person deixis",
+    "gloss": "Interpretation of first/second-person forms from the roles of speaker and addressee.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1451
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "deictic reference anchoring",
+    "gloss": "Systematic interpretation through utterance-act parameters, unlike ordinary variation in proper-name reference.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1451
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "non-deictic spatial or temporal location",
+    "gloss": "Location specified by named places or non-utterance reference events.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1452
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "deictic expression",
+    "gloss": "Whole phrase or word whose referent is identified through deixis.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1452
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "deictic marker",
+    "gloss": "Item encoding deictic information, possibly within a larger deictic expression.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1452
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "indexing act",
+    "gloss": "Pointing, gaze, touch or graphic mark used to clarify deictic reference.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1452,
+          1453
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "deictic centre",
+    "gloss": "Perspective from which deictic reference is interpreted, ordinarily the current speaker.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1453
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "speaker-centred deixis",
+    "gloss": "Default reading of deictic expressions from a speaker/writer perspective.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1453
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "reader-centred deixis",
+    "gloss": "Interpretation of a notice from its current reader's temporal perspective.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1453
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
+    ]
+  },
+  {
+    "term": "shifted deictic centre",
+    "gloss": "Deictic perspective transferred to a reader or represented thinker in particular contexts.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1 The concept of deixis",
+        "pages": [
+          1453
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "deixis"
     ]
   }
 ]
