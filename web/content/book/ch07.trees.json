@@ -1,0 +1,4790 @@
+{
+  "chapter": 7,
+  "convention_version": "V7",
+  "source": "Burton-Roberts, Analysing Sentences, Chapter 7 (uploaded page images)",
+  "trees": [
+    {
+      "id": "ch7-1",
+      "fig": "[1]",
+      "page": 141,
+      "sentence": "they",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "pronoun",
+            "children": [
+              {
+                "word": "they"
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Non-branching pronoun NP.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-2",
+      "fig": "[2]",
+      "page": 141,
+      "sentence": "Daisy",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "name",
+            "children": [
+              {
+                "word": "Daisy"
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Non-branching name NP.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-3",
+      "fig": "[3]",
+      "page": 141,
+      "sentence": "the clowns",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "clowns"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-4",
+      "fig": "[4]",
+      "page": 141,
+      "sentence": "the sad clowns",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "sad"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "clowns"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Core (pre-Appendix) analysis has one NOM.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-5",
+      "fig": "[5]",
+      "page": 142,
+      "sentence": "those trampolines",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "DEM",
+                "children": [
+                  {
+                    "word": "those"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "trampolines"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-6",
+      "fig": "[6]",
+      "page": 142,
+      "sentence": "some mistake",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "Q",
+                "children": [
+                  {
+                    "word": "some"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "mistake"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-7",
+      "fig": "[7]",
+      "page": 142,
+      "sentence": "my address",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "POSS",
+                "children": [
+                  {
+                    "word": "my"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "address"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-10a",
+      "fig": "[10]",
+      "page": 143,
+      "sentence": "essays",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": []
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "essays"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Empty DET; plural count noun.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-10b",
+      "fig": "[10]",
+      "page": 143,
+      "sentence": "smoke",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": []
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "smoke"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Empty DET; mass noun.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-12",
+      "fig": "[12]",
+      "page": 144,
+      "sentence": "John's father",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "POSS",
+                "children": [
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "name",
+                        "children": [
+                          {
+                            "word": "John"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "word": "'s"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "father"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-14",
+      "fig": "[14]",
+      "page": 144,
+      "sentence": "the book's cover",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "POSS",
+                "children": [
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "DET",
+                        "children": [
+                          {
+                            "label": "ART",
+                            "children": [
+                              {
+                                "word": "the"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NOM",
+                        "children": [
+                          {
+                            "label": "N",
+                            "children": [
+                              {
+                                "word": "book"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "word": "'s"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "cover"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The possessor NP itself has DET + NOM.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-18",
+      "fig": "[18]",
+      "page": 145,
+      "sentence": "all the men",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "PRE-DET",
+            "children": [
+              {
+                "word": "all"
+              }
+            ]
+          },
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": [
+                  {
+                    "label": "ART",
+                    "children": [
+                      {
+                        "word": "the"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "men"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-19",
+      "fig": "[19]",
+      "page": 145,
+      "sentence": "all men",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "PRE-DET",
+            "children": [
+              {
+                "word": "all"
+              }
+            ]
+          },
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": []
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "men"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-20",
+      "fig": "[20]",
+      "page": 145,
+      "sentence": "both men",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "PRE-DET",
+            "children": [
+              {
+                "word": "both"
+              }
+            ]
+          },
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": []
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "men"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-25",
+      "fig": "[25]",
+      "page": 147,
+      "sentence": "very many mistakes",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": []
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "DEG",
+                    "children": [
+                      {
+                        "word": "very"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "QA",
+                    "children": [
+                      {
+                        "word": "many"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "mistakes"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-26",
+      "fig": "[26]",
+      "page": 147,
+      "sentence": "the one mistake",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "QA",
+                    "children": [
+                      {
+                        "word": "one"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "mistake"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-32",
+      "fig": "[32]",
+      "page": 148,
+      "sentence": "some expensive roof maintenance",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "Q",
+                "children": [
+                  {
+                    "word": "some"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "expensive"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "roof"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "maintenance"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "roof maintenance is a compound noun under N.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-36",
+      "fig": "[36]",
+      "page": 149,
+      "sentence": "a new red car",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "new"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "red"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "car"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-39a",
+      "fig": "[39a]",
+      "page": 150,
+      "sentence": "an expedition to the pub",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "an"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "expedition"
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "children": [
+                  {
+                    "label": "P",
+                    "children": [
+                      {
+                        "word": "to"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "DET",
+                        "children": [
+                          {
+                            "label": "ART",
+                            "children": [
+                              {
+                                "word": "the"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NOM",
+                        "children": [
+                          {
+                            "label": "N",
+                            "children": [
+                              {
+                                "word": "pub"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-42",
+      "fig": "[42]",
+      "page": 151,
+      "sentence": "an expedition to the pub for more cherry brandy",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "an"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "expedition"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "to",
+                      "the",
+                      "pub"
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "for",
+                  "more",
+                  "cherry",
+                  "brandy"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The second PP modifies the NOM headed by expedition, not pub.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-53b",
+      "fig": "[53b]",
+      "page": 153,
+      "sentence": "Larry's neat summary of the argument",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "triangle": true,
+            "words": [
+              "Larry's"
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "neat"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "summary"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "of",
+                      "the",
+                      "argument"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "NOM2 corresponds to VP2; NOM1 contains summary plus its complement PP.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-54b",
+      "fig": "[54b]",
+      "page": 153,
+      "sentence": "Larry neatly summarised the argument",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "Larry"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "AdvP",
+                "triangle": true,
+                "words": [
+                  "neatly"
+                ]
+              },
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "V",
+                    "features": [
+                      "trans",
+                      "past"
+                    ],
+                    "children": [
+                      {
+                        "word": "summarised"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "the",
+                      "argument"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "VP2 contains the AdvP and VP1; no sentence function is a node.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-47",
+      "fig": "A/B verdict A",
+      "page": 152,
+      "sentence": "that nuclear scientist from Germany",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "that"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "nuclear"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "scientist"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "from",
+                  "Germany"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Book explicitly selects analysis A on p.153; instantiated from the printed A/B templates on p.152.",
+      "analysis": "A",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-48",
+      "fig": "A/B verdict B",
+      "page": 152,
+      "sentence": "the famous writer of many detective stories",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "famous"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "writer"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "of",
+                      "many",
+                      "detective",
+                      "stories"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Book explicitly selects analysis B on p.153; instantiated from the printed A/B templates on p.152.",
+      "analysis": "B",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-49",
+      "fig": "A/B verdict B",
+      "page": 152,
+      "sentence": "an anxious applicant for the job",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "an"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "anxious"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "applicant"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "for",
+                      "the",
+                      "job"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Book explicitly selects analysis B on p.153; instantiated from the printed A/B templates on p.152.",
+      "analysis": "B",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-50",
+      "fig": "A/B verdict A",
+      "page": 152,
+      "sentence": "structural engineers in disgrace",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": []
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "structural"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "engineers"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "in",
+                  "disgrace"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Book explicitly selects analysis A on p.153; instantiated from the printed A/B templates on p.152.",
+      "analysis": "A",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-51",
+      "fig": "A/B verdict A",
+      "page": 152,
+      "sentence": "the personal assistant in the hat",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "personal"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "assistant"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "in",
+                  "the",
+                  "hat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Book explicitly selects analysis A on p.153; instantiated from the printed A/B templates on p.152.",
+      "analysis": "A",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-52",
+      "fig": "A/B verdict B",
+      "page": 152,
+      "sentence": "their secret visits to the larder",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "POSS",
+                "children": [
+                  {
+                    "word": "their"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "secret"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "visits"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "to",
+                      "the",
+                      "larder"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Book explicitly selects analysis B on p.153; instantiated from the printed A/B templates on p.152.",
+      "analysis": "B",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-55-A/B",
+      "fig": "[55]",
+      "page": 154,
+      "sentence": "the unknown scientist from Germany",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "unknown"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "scientist"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "from",
+                      "Germany"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Both A and B are expressly licensed by the chapter text; the displayed tree is the first listed alternative. See accepted_alternatives.",
+      "accepted_alternatives": [
+        {
+          "label": "A",
+          "tree": {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": [
+                  {
+                    "label": "ART",
+                    "children": [
+                      {
+                        "word": "the"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "AP",
+                        "children": [
+                          {
+                            "label": "A",
+                            "children": [
+                              {
+                                "word": "unknown"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "scientist"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "from",
+                      "Germany"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "B",
+          "tree": {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": [
+                  {
+                    "label": "ART",
+                    "children": [
+                      {
+                        "word": "the"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "unknown"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "scientist"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "PP",
+                        "triangle": true,
+                        "words": [
+                          "from",
+                          "Germany"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "preferred": "B",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-56-A/B",
+      "fig": "[56]",
+      "page": 154,
+      "sentence": "the new railings in the park",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "new"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "railings"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "in",
+                  "the",
+                  "park"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Both A and B are expressly licensed by the chapter text; the displayed tree is the first listed alternative. See accepted_alternatives.",
+      "accepted_alternatives": [
+        {
+          "label": "A",
+          "tree": {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": [
+                  {
+                    "label": "ART",
+                    "children": [
+                      {
+                        "word": "the"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "AP",
+                        "children": [
+                          {
+                            "label": "A",
+                            "children": [
+                              {
+                                "word": "new"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "railings"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "in",
+                      "the",
+                      "park"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "B",
+          "tree": {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": [
+                  {
+                    "label": "ART",
+                    "children": [
+                      {
+                        "word": "the"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "new"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "railings"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "PP",
+                        "triangle": true,
+                        "words": [
+                          "in",
+                          "the",
+                          "park"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "preferred": null,
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-57-A/B",
+      "fig": "[57]",
+      "page": 154,
+      "sentence": "that tall student in the hat",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "DEM",
+                "children": [
+                  {
+                    "word": "that"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "tall"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "student"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "in",
+                  "the",
+                  "hat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Both A and B are expressly licensed by the chapter text; the displayed tree is the first listed alternative. See accepted_alternatives.",
+      "accepted_alternatives": [
+        {
+          "label": "A",
+          "tree": {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": [
+                  {
+                    "label": "DEM",
+                    "children": [
+                      {
+                        "word": "that"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "AP",
+                        "children": [
+                          {
+                            "label": "A",
+                            "children": [
+                              {
+                                "word": "tall"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "student"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "in",
+                      "the",
+                      "hat"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "B",
+          "tree": {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": [
+                  {
+                    "label": "DEM",
+                    "children": [
+                      {
+                        "word": "that"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "tall"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "student"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "PP",
+                        "triangle": true,
+                        "words": [
+                          "in",
+                          "the",
+                          "hat"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "preferred": null,
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-58",
+      "fig": "[58]",
+      "page": 154,
+      "sentence": "that tall student of maths in the hat",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "DEM",
+                "children": [
+                  {
+                    "word": "that"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "tall"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "student"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "PP",
+                        "children": [
+                          {
+                            "label": "P",
+                            "children": [
+                              {
+                                "word": "of"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "children": [
+                              {
+                                "label": "DET",
+                                "children": []
+                              },
+                              {
+                                "label": "NOM",
+                                "children": [
+                                  {
+                                    "label": "N",
+                                    "children": [
+                                      {
+                                        "word": "maths"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "children": [
+                  {
+                    "label": "P",
+                    "children": [
+                      {
+                        "word": "in"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "DET",
+                        "children": [
+                          {
+                            "label": "ART",
+                            "children": [
+                              {
+                                "word": "the"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NOM",
+                        "children": [
+                          {
+                            "label": "N",
+                            "children": [
+                              {
+                                "word": "hat"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Discussion 7 p.159 explicitly gives the hierarchy: tall closest as a property; of maths is sister of student; in the hat modifies the larger NOM.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-67",
+      "fig": "[67]",
+      "page": 155,
+      "sentence": "the chef responsible for the sauces",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "chef"
+                  }
+                ]
+              },
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "responsible"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "for",
+                      "the",
+                      "sauces"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-72a",
+      "fig": "[72a]",
+      "page": 156,
+      "sentence": "anyone intelligent",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "pronoun",
+            "children": [
+              {
+                "word": "anyone"
+              }
+            ]
+          },
+          {
+            "label": "AP",
+            "triangle": true,
+            "words": [
+              "intelligent"
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-72b",
+      "fig": "[72b]",
+      "page": 156,
+      "sentence": "someone in the crowd",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "pronoun",
+            "children": [
+              {
+                "word": "someone"
+              }
+            ]
+          },
+          {
+            "label": "PP",
+            "triangle": true,
+            "words": [
+              "in",
+              "the",
+              "crowd"
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-75",
+      "fig": "[75]",
+      "page": 156,
+      "sentence": "some of the animals",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "Q",
+                "children": [
+                  {
+                    "word": "some"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "E",
+                    "elided": true
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "of",
+                  "the",
+                  "animals"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Elliptical head analysis: the noun head is understood but not overt.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-76",
+      "fig": "[76]",
+      "page": 157,
+      "sentence": "the two in the dungeons",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "QA",
+                    "children": [
+                      {
+                        "word": "two"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "E",
+                        "elided": true
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "children": [
+                      {
+                        "label": "P",
+                        "children": [
+                          {
+                            "word": "in"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "label": "DET",
+                            "children": [
+                              {
+                                "label": "ART",
+                                "children": [
+                                  {
+                                    "word": "the"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NOM",
+                            "children": [
+                              {
+                                "label": "N",
+                                "children": [
+                                  {
+                                    "word": "dungeons"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Discussion 8 p.160; elliptical head, with two retained as QA.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc1",
+      "fig": "Discussion 1",
+      "page": 157,
+      "sentence": "Hieronimo's brother's behaviour",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "POSS",
+                "children": [
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "DET",
+                        "children": [
+                          {
+                            "label": "POSS",
+                            "children": [
+                              {
+                                "label": "NP",
+                                "children": [
+                                  {
+                                    "label": "name",
+                                    "children": [
+                                      {
+                                        "word": "Hieronimo"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "word": "'s"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NOM",
+                        "children": [
+                          {
+                            "label": "N",
+                            "children": [
+                              {
+                                "word": "brother"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "word": "'s"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "behaviour"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Nested genitive possessors; the inner NP is itself possessive.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc2",
+      "fig": "Discussion 2",
+      "page": 157,
+      "sentence": "all mine",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "PRE-DET",
+            "children": [
+              {
+                "word": "all"
+              }
+            ]
+          },
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "pronoun",
+                "children": [
+                  {
+                    "word": "mine"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc3",
+      "fig": "Discussion 3",
+      "page": 158,
+      "sentence": "the rapidly congealing gravy",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "PartP",
+                "children": [
+                  {
+                    "label": "AdvP",
+                    "children": [
+                      {
+                        "label": "Adv",
+                        "children": [
+                          {
+                            "word": "rapidly"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "V-part",
+                    "children": [
+                      {
+                        "word": "congealing"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "gravy"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc4",
+      "fig": "Discussion 4",
+      "page": 158,
+      "sentence": "all those dusty gorilla suits",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "PRE-DET",
+            "children": [
+              {
+                "word": "all"
+              }
+            ]
+          },
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": [
+                  {
+                    "label": "DEM",
+                    "children": [
+                      {
+                        "word": "those"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "dusty"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "gorilla"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "suits"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "gorilla suits is a compound noun.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc5-37",
+      "fig": "Discussion 5 [37]",
+      "page": 158,
+      "sentence": "some large greasy uneaten fritters",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "Q",
+                "children": [
+                  {
+                    "word": "some"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "large"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "greasy"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "AP",
+                        "children": [
+                          {
+                            "label": "A",
+                            "children": [
+                              {
+                                "word": "uneaten"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "fritters"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc5-38",
+      "fig": "Discussion 5 [38]",
+      "page": 158,
+      "sentence": "those two very charming atomic scientists",
+      "status": "IMG_ANOMALY",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "DEM",
+                "children": [
+                  {
+                    "word": "those"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "QA",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "two"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "DEG",
+                        "children": [
+                          {
+                            "word": "very"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "charming"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "AP",
+                        "children": [
+                          {
+                            "label": "A",
+                            "children": [
+                              {
+                                "word": "atomic"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "scientists"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Transcribed as printed: the node above two is QA with an A node below it, unlike the usual AP→QA representation.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc6-43",
+      "fig": "Discussion 6 [printed answer 48]",
+      "page": 159,
+      "sentence": "those observations on alchemy by Newton",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "DEM",
+                "children": [
+                  {
+                    "word": "those"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "observations"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "children": [
+                      {
+                        "label": "P",
+                        "children": [
+                          {
+                            "word": "on"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "label": "DET",
+                            "children": []
+                          },
+                          {
+                            "label": "NOM",
+                            "children": [
+                              {
+                                "label": "N",
+                                "children": [
+                                  {
+                                    "word": "alchemy"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "by",
+                  "Newton"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Answer is keyed to [43] from the preceding exercise; printed answer label reads [48]. Analysis (a).",
+      "printed_answer_label": "[48]",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc6-44",
+      "fig": "Discussion 6 [printed answer 49]",
+      "page": 159,
+      "sentence": "an interpretation of that sentence in Proust’s novel",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "an"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "interpretation"
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "children": [
+                  {
+                    "label": "P",
+                    "children": [
+                      {
+                        "word": "of"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "DET",
+                        "children": [
+                          {
+                            "label": "DEM",
+                            "children": [
+                              {
+                                "word": "that"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NOM",
+                        "children": [
+                          {
+                            "label": "N",
+                            "children": [
+                              {
+                                "word": "sentence"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "PP",
+                            "children": [
+                              {
+                                "label": "P",
+                                "children": [
+                                  {
+                                    "word": "in"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "NP",
+                                "children": [
+                                  {
+                                    "label": "DET",
+                                    "children": [
+                                      {
+                                        "label": "POSS",
+                                        "children": [
+                                          {
+                                            "word": "Proust's"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "NOM",
+                                    "children": [
+                                      {
+                                        "label": "N",
+                                        "children": [
+                                          {
+                                            "word": "novel"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Answer is keyed to [44]; printed answer label reads [49]. Analysis (b).",
+      "printed_answer_label": "[49]",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc6-45",
+      "fig": "Discussion 6 [printed answer 50]",
+      "page": 159,
+      "sentence": "a book of quotations from Shakespeare",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "book"
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "children": [
+                  {
+                    "label": "P",
+                    "children": [
+                      {
+                        "word": "of"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "DET",
+                        "children": []
+                      },
+                      {
+                        "label": "NOM",
+                        "children": [
+                          {
+                            "label": "N",
+                            "children": [
+                              {
+                                "word": "quotations"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "PP",
+                            "triangle": true,
+                            "words": [
+                              "from",
+                              "Shakespeare"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Answer is keyed to [45]; printed answer label reads [50]. Analysis (b).",
+      "printed_answer_label": "[50]",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc6-46",
+      "fig": "Discussion 6 [printed answer 51]",
+      "page": 159,
+      "sentence": "a book of quotations from Oxford University Press",
+      "status": "DERIVED_FROM_INSTRUCTIONS",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "book"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "children": [
+                      {
+                        "label": "P",
+                        "children": [
+                          {
+                            "word": "of"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "label": "DET",
+                            "children": []
+                          },
+                          {
+                            "label": "NOM",
+                            "children": [
+                              {
+                                "label": "N",
+                                "children": [
+                                  {
+                                    "word": "quotations"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "from",
+                  "Oxford",
+                  "University",
+                  "Press"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Answer is keyed to [46]; printed answer label reads [51]. Analysis (a).",
+      "printed_answer_label": "[51]",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc7",
+      "fig": "Discussion 7",
+      "page": 159,
+      "sentence": "that tall student of maths in the hat",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "DEM",
+                "children": [
+                  {
+                    "word": "that"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "tall"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "student"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "PP",
+                        "children": [
+                          {
+                            "label": "P",
+                            "children": [
+                              {
+                                "word": "of"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "children": [
+                              {
+                                "label": "DET",
+                                "children": []
+                              },
+                              {
+                                "label": "NOM",
+                                "children": [
+                                  {
+                                    "label": "N",
+                                    "children": [
+                                      {
+                                        "word": "maths"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "children": [
+                  {
+                    "label": "P",
+                    "children": [
+                      {
+                        "word": "in"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "DET",
+                        "children": [
+                          {
+                            "label": "ART",
+                            "children": [
+                              {
+                                "word": "the"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NOM",
+                        "children": [
+                          {
+                            "label": "N",
+                            "children": [
+                              {
+                                "word": "hat"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Full phrase marker printed in the Discussion 7 answer.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-disc8",
+      "fig": "Discussion 8",
+      "page": 160,
+      "sentence": "the two in the dungeons",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "QA",
+                    "children": [
+                      {
+                        "word": "two"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "E",
+                        "elided": true
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "children": [
+                      {
+                        "label": "P",
+                        "children": [
+                          {
+                            "word": "in"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "label": "DET",
+                            "children": [
+                              {
+                                "label": "ART",
+                                "children": [
+                                  {
+                                    "word": "the"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NOM",
+                            "children": [
+                              {
+                                "label": "N",
+                                "children": [
+                                  {
+                                    "word": "dungeons"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Answer to the page-157 pointer; pointer printed as p.180 although answer appears on p.160.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-ex1-a",
+      "fig": "Exercise 1(a)",
+      "page": 161,
+      "sentence": "experts at syntax",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": []
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "experts"
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "children": [
+                  {
+                    "label": "P",
+                    "children": [
+                      {
+                        "word": "at"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "DET",
+                        "children": []
+                      },
+                      {
+                        "label": "NOM",
+                        "children": [
+                          {
+                            "label": "N",
+                            "children": [
+                              {
+                                "word": "syntax"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Exercise answer p.161.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-ex1-b",
+      "fig": "Exercise 1(b)",
+      "page": 161,
+      "sentence": "those ten paintings of his garden by Monet",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "DEM",
+                "children": [
+                  {
+                    "word": "those"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "QA",
+                    "children": [
+                      {
+                        "word": "ten"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "paintings"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "PP",
+                        "children": [
+                          {
+                            "label": "P",
+                            "children": [
+                              {
+                                "word": "of"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "children": [
+                              {
+                                "label": "DET",
+                                "children": [
+                                  {
+                                    "label": "POSS",
+                                    "children": [
+                                      {
+                                        "word": "his"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "NOM",
+                                "children": [
+                                  {
+                                    "label": "N",
+                                    "children": [
+                                      {
+                                        "word": "garden"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "children": [
+                      {
+                        "label": "P",
+                        "children": [
+                          {
+                            "word": "by"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "label": "name",
+                            "children": [
+                              {
+                                "word": "Monet"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Nested post-modifiers; possessor his is a POSS determiner within the NP complement of of.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-ex1-c-i",
+      "fig": "Exercise 1(c)(i)",
+      "page": 162,
+      "sentence": "more ferocious curries",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": []
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "QA",
+                    "children": [
+                      {
+                        "word": "more"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "ferocious"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "curries"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "First of the two printed readings.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-ex1-c-ii",
+      "fig": "Exercise 1(c)(ii)",
+      "page": 162,
+      "sentence": "more ferocious curries",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": []
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "DEG",
+                    "children": [
+                      {
+                        "word": "more"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "ferocious"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "curries"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Second of the two printed readings.",
+      "accepted_alternatives": [
+        {
+          "label": "i",
+          "tree": {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": []
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "QA",
+                        "children": [
+                          {
+                            "word": "more"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "AP",
+                        "children": [
+                          {
+                            "label": "A",
+                            "children": [
+                              {
+                                "word": "ferocious"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "curries"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "ii",
+          "tree": {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": []
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "DEG",
+                        "children": [
+                          {
+                            "word": "more"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "ferocious"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "curries"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-ex1-d",
+      "fig": "Exercise 1(d)",
+      "page": 162,
+      "sentence": "the dying king's final message",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "POSS",
+                "children": [
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "label": "DET",
+                        "children": [
+                          {
+                            "label": "ART",
+                            "children": [
+                              {
+                                "word": "the"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NOM",
+                        "children": [
+                          {
+                            "label": "PartP",
+                            "children": [
+                              {
+                                "label": "V-part",
+                                "children": [
+                                  {
+                                    "word": "dying"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "label": "N",
+                            "children": [
+                              {
+                                "word": "king"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "word": "'s"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "final"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "message"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The possessor NP contains a participle phrase.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-ex1-e",
+      "fig": "Exercise 1(e)",
+      "page": 162,
+      "sentence": "all Gulbenkian's contributions to charity",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "PRE-DET",
+            "children": [
+              {
+                "word": "all"
+              }
+            ]
+          },
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": [
+                  {
+                    "label": "POSS",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "label": "name",
+                            "children": [
+                              {
+                                "word": "Gulbenkian"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "word": "'s"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "contributions"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "children": [
+                      {
+                        "label": "P",
+                        "children": [
+                          {
+                            "word": "to"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "label": "DET",
+                            "children": []
+                          },
+                          {
+                            "label": "NOM",
+                            "children": [
+                              {
+                                "label": "N",
+                                "children": [
+                                  {
+                                    "word": "charity"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Pre-determiner and genitive determiner.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-ex1-f",
+      "fig": "Exercise 1(f)",
+      "page": 163,
+      "sentence": "some rather off-putting gestures and remarks",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "Q",
+                "children": [
+                  {
+                    "word": "some"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "DEG",
+                    "children": [
+                      {
+                        "word": "rather"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "off-putting"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "gestures"
+                      }
+                    ]
+                  },
+                  {
+                    "word": "and"
+                  },
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "remarks"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Coordination is at lexical N level.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-app-11",
+      "fig": "Appendix [11]",
+      "page": 166,
+      "sentence": "the sad clowns",
+      "status": "IMG_ANOMALY",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "sad"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "clowns"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Appendix D1 extra non-branching NOM over N clowns; prior image review flags an AP-triangle styling anomaly, but the node labels/words are legible.",
+      "appendix_nom": true
+    },
+    {
+      "id": "ch7-app-16",
+      "fig": "Appendix [16]",
+      "page": 169,
+      "sentence": "those observations by Newton",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "DEM",
+                "children": [
+                  {
+                    "word": "those"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "observations"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "by",
+                  "Newton"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Appendix answer: by Newton is sister of NOM (adjunct).",
+      "appendix_nom": true
+    },
+    {
+      "id": "ch7-app-17",
+      "fig": "Appendix [17]",
+      "page": 169,
+      "sentence": "Larry's neat summary",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "triangle": true,
+            "words": [
+              "Larry's"
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "neat"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "summary"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Appendix answer: neat is an adjunct and summary has an extra non-branching NOM.",
+      "appendix_nom": true
+    },
+    {
+      "id": "ch7-app-18",
+      "fig": "Appendix [18]",
+      "page": 170,
+      "sentence": "Larry's summary of the argument",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "triangle": true,
+            "words": [
+              "Larry's"
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "summary"
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "of",
+                  "the",
+                  "argument"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Appendix answer: of the argument is a complement (sister of N), so no extra NOM over summary.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-app-19b",
+      "fig": "Appendix [19b]",
+      "page": 169,
+      "sentence": "one from Poland",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": []
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "word": "one"
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "from",
+                  "Poland"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Pro-NOM one is immediately dominated by NOM, rather than treated as an N or ordinary pronoun.",
+      "appendix_nom": false
+    },
+    {
+      "id": "ch7-app-20b",
+      "fig": "Appendix [20b]",
+      "page": 169,
+      "sentence": "one",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": []
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "word": "one"
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Indefinite one with empty DET; one is the pro-NOM and directly under NOM, not under N.",
+      "appendix_nom": false
+    }
+  ],
+  "node_fragments": [
+    {
+      "id": "ch7-frag-39b",
+      "fig": "[39b] fragment",
+      "page": 151,
+      "status": "IMG",
+      "node": {
+        "label": "NOM",
+        "children": [
+          {
+            "label": "N",
+            "children": [
+              {
+                "word": "pub"
+              }
+            ]
+          },
+          {
+            "label": "PP",
+            "children": [
+              {
+                "label": "P",
+                "children": [
+                  {
+                    "word": "in"
+                  }
+                ]
+              },
+              {
+                "label": "NP",
+                "children": [
+                  {
+                    "label": "DET",
+                    "children": [
+                      {
+                        "label": "ART",
+                        "children": [
+                          {
+                            "word": "the"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "village"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The diagram is shown as a continuation of [39a]; the top of the NOM is linked to the omitted context."
+    },
+    {
+      "id": "ch7-frag-A",
+      "fig": "[A]",
+      "page": 152,
+      "status": "IMG",
+      "node": {
+        "label": "NOM",
+        "children": [
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "AP",
+                "triangle": true,
+                "words": [
+                  "ADJ"
+                ]
+              },
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "HEAD"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PP",
+            "triangle": true,
+            "words": [
+              "PP"
+            ]
+          }
+        ]
+      },
+      "note": "Generic A configuration: AP modifies a NOM headed by N, and PP modifies the larger NOM."
+    },
+    {
+      "id": "ch7-frag-B",
+      "fig": "[B]",
+      "page": 152,
+      "status": "IMG",
+      "node": {
+        "label": "NOM",
+        "children": [
+          {
+            "label": "AP",
+            "triangle": true,
+            "words": [
+              "ADJ"
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "HEAD"
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "PP"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Generic B configuration: AP modifies a NOM whose N is complemented/modified by PP."
+    }
+  ],
+  "no_book_tree": [
+    "Further Exercises 2, Sets I–III: no answers printed in the chapter.",
+    "Further Exercise on complements vs. adjuncts (a–p): no answers printed.",
+    "Unworked examples [27a–b], [28a–d], [30–31], [34–35], [40–41], [47–52], [59–66], [68–71], [73–74] are examples or prompts without separate printed phrase-marker answers; include only where the book gives a tree/answer or where the structure is explicitly fixed.",
+    "Alternative trees for the revision sentences are not supplied in the book."
+  ],
+  "book_flags": [
+    "V7 NP structure: NP branches to DET + NOM except non-branching pronoun/name NPs.",
+    "Empty DET is supported for plural count and mass nouns (p.143).",
+    "PRE-DET is a sister of an NP inside NP; it may precede an empty DET (p.145).",
+    "Quantifying adjectives are AP heads under NOM and precede other APs (p.147).",
+    "Every modifier is immediately dominated by a NOM; NOM is recursive (p.149).",
+    "Compound noun is a single N node with N daughters (p.148).",
+    "Appendix D1 is optional; `appendix_nom` flags whether its extra non-branching NOM is applied.",
+    "Discussion 6 answer labels on p.159 are printed [48]–[51], but they answer in-text [43]–[46]; tree ids are keyed to the prompt items, with the printed answer label preserved.",
+    "The pointer for Discussion 8 says p.180, but the answer appears on printed p.160.",
+    "Discussion 5 [38] preserves the printed QA→A→two structure as IMG_ANOMALY."
+  ],
+  "discussion_answers": [
+    {
+      "discussion": 1,
+      "page": 157,
+      "tree_ids": [
+        "ch7-disc1"
+      ]
+    },
+    {
+      "discussion": 2,
+      "page": 157,
+      "tree_ids": [
+        "ch7-disc2"
+      ]
+    },
+    {
+      "discussion": 3,
+      "page": 158,
+      "tree_ids": [
+        "ch7-disc3"
+      ]
+    },
+    {
+      "discussion": 4,
+      "page": 158,
+      "tree_ids": [
+        "ch7-disc4"
+      ]
+    },
+    {
+      "discussion": 5,
+      "page": 158,
+      "tree_ids": [
+        "ch7-disc5-37",
+        "ch7-disc5-38"
+      ]
+    },
+    {
+      "discussion": 6,
+      "page": 159,
+      "tree_ids": [
+        "ch7-disc6-43",
+        "ch7-disc6-44",
+        "ch7-disc6-45",
+        "ch7-disc6-46"
+      ]
+    },
+    {
+      "discussion": 7,
+      "page": 159,
+      "tree_ids": [
+        "ch7-disc7"
+      ]
+    },
+    {
+      "discussion": 8,
+      "page": 160,
+      "tree_ids": [
+        "ch7-disc8"
+      ]
+    }
+  ],
+  "exercise_answers_from_book": {
+    "exercise_1": {
+      "page": 161,
+      "items": [
+        {
+          "item": "a",
+          "tree_ids": [
+            "ch7-ex1-a"
+          ]
+        },
+        {
+          "item": "b",
+          "tree_ids": [
+            "ch7-ex1-b"
+          ]
+        },
+        {
+          "item": "c",
+          "tree_ids": [
+            "ch7-ex1-c-i",
+            "ch7-ex1-c-ii"
+          ]
+        },
+        {
+          "item": "d",
+          "tree_ids": [
+            "ch7-ex1-d"
+          ]
+        },
+        {
+          "item": "e",
+          "tree_ids": [
+            "ch7-ex1-e"
+          ]
+        },
+        {
+          "item": "f",
+          "tree_ids": [
+            "ch7-ex1-f"
+          ]
+        }
+      ]
+    }
+  },
+  "review_notes": [
+    "Ch7 [38] figure: the printed QA/A nesting is anomalous relative to the chapter generalisation; preserved, not normalised.",
+    "Ch7 Appendix [11] page styling anomaly retained as a note; lexical/category transcription follows the visible phrase marker.",
+    "The answer key labels [48]–[51] were not renumbered in the source; they are mapped to in-text questions [43]–[46].",
+    "Several phrase markers are explicitly derived from book answer bracketings and the chapter’s A/B schema; these carry DERIVED_FROM_INSTRUCTIONS rather than claiming a directly printed full tree."
+  ]
+}
