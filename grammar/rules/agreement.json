@@ -118,9 +118,9 @@
     "concept": "subject-verb agreement",
     "rule_type": "constraint",
     "scope": "clause",
-    "statement": "A verb in the present tense (and be in the preterite) agrees in person and number with its subject NP, whose person-number classification normally derives from its head noun.",
-    "condition": "Applies to finite clauses with a present-tense verb (or preterite be) and a subject NP: the verb's form matches the subject's person and number as determined by the head noun of the NP.",
-    "violation": "The verb's number or person form does not match the person and number of the subject NP (as derived from its head noun, subject to the listed departures).",
+    "statement": "Present-tense non-modal verbs, and be in the preterite, agree in person and number with their subject NP, whose person-number classification normally derives from its head noun.",
+    "condition": "Applies to finite clauses with a present-tense non-modal verb, or with be in the preterite, and a subject NP: the verb's form matches the subject's person and number as determined by the head noun, subject to the listed notional-number departures. Modal auxiliaries are excluded because their present-tense form is invariant across subjects.",
+    "violation": "A present-tense non-modal verb, or be in the preterite, has a person-number form that does not match the person and number of the subject NP, subject to the listed departures.",
     "exceptions": [
       {
         "description": "Subjects whose notional number differs from the head noun's form: 'A number of boys were absent' (singular head, plural subject) and 'Three eggs is plenty' (plural head, single-quantity subject). The source says there are 'a good few' such departures.",
@@ -130,6 +130,16 @@
         "example_ids": [
           "c5",
           "c6"
+        ]
+      },
+      {
+        "description": "Modal auxiliaries have one present-tense form with all subjects and do not take a third-person-singular -s ending; they therefore do not participate in the present-tense subject agreement pattern described here.",
+        "pages": [
+          75
+        ],
+        "example_ids": [
+          "c7",
+          "c8"
         ]
       }
     ],
@@ -170,6 +180,22 @@
           "origin": "ai_authored",
           "note": "Plural head, but the subject expresses one quantity.",
           "tests_exception": true
+        },
+        {
+          "id": "c7",
+          "text": "A trainee can swim.",
+          "origin": "ai_authored",
+          "tests_exception": true,
+          "pair_id": "p3",
+          "note": "Modal auxiliary can keeps the same present form with a third-person-singular subject."
+        },
+        {
+          "id": "c8",
+          "text": "Several trainees can swim.",
+          "origin": "ai_authored",
+          "tests_exception": true,
+          "pair_id": "p3",
+          "note": "Modal auxiliary can keeps the same present form with a plural subject."
         }
       ],
       "incorrect": [
@@ -208,6 +234,17 @@
         "pdf_pages": [
           76
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.1 Summary presentation of the categories",
+        "pages": [
+          75
+        ],
+        "pdf_pages": [
+          5
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -223,8 +260,9 @@
     "related_rules": [
       "AGR-001",
       "MORPH-001",
-      "MORPH-002"
+      "MORPH-002",
+      "MORPH-006"
     ],
-    "review_notes": "Applies to the standard variety; non-standard agreement patterns are not discussed here. The full treatment of agreement departures is in later chapters (not supplied here); check before engine use."
+    "review_notes": "The rule applies to inflecting present-tense verbs and be in the preterite; modal auxiliaries are excluded because their present form is invariant for person and number (Cambridge Ch. 3 §1.1, p. 75). Notional-number departures are retained as a separate exception (Ch. 2 §5, p. 56). Explicit human approval of this refinement was given on 2026-11-05. Burton-Roberts mapping remains unverified."
   }
 ]
