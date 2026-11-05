@@ -1,0 +1,38 @@
+[
+  {
+    "from_rule": "MORPH-004",
+    "to": "WCAT-001",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-005",
+    "to": "MORPH-001",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-005",
+    "to": "WCAT-003",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-006",
+    "to": "WCAT-003",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-006",
+    "to": "AGR-002",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "MORPH-001",
+    "to": "Cambridge Ch. 18 (derivation of verb forms from lexical bases)",
+    "relation": "refines",
+    "verified": false
+  }
+]
