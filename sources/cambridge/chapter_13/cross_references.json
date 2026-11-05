@@ -1,0 +1,110 @@
+[
+  {
+    "from_rule": "CLS-071",
+    "to": "CLS-040",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-071",
+    "to": "WCAT-013",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-072",
+    "to": "CLS-071",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-072",
+    "to": "CLS-040",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-073",
+    "to": "WCAT-013",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-073",
+    "to": "CLS-072",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-074",
+    "to": "CLS-073",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-074",
+    "to": "WCAT-013",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-075",
+    "to": "CLS-072",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-075",
+    "to": "CLS-040",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-076",
+    "to": "CLS-075",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-076",
+    "to": "CLS-024",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-077",
+    "to": "CLS-022",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-077",
+    "to": "CLS-071",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-077",
+    "to": "CLS-072",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-076",
+    "to": "Cambridge Chapter 9 §1.2 (metalinguistic negation)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-072",
+    "to": "Cambridge Chapter 13 §5.4 (different from/to/than)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-040",
+    "to": "Cambridge Chapter 11 §8.1 (than as preposition)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]
