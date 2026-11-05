@@ -1,0 +1,2321 @@
+{
+  "chapter": 10,
+  "convention_version": "V10",
+  "source": "Burton-Roberts, Analysing Sentences, Chapter 10 (uploaded page images)",
+  "trees": [
+    {
+      "id": "ch10-11",
+      "fig": "[11]",
+      "page": 226,
+      "sentence": "to taste the wine",
+      "status": "IMG",
+      "tree": {
+        "label": "VP",
+        "children": [
+          {
+            "label": "AUX",
+            "features": [
+              "-tense"
+            ],
+            "children": [
+              {
+                "word": "to"
+              }
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "trans"
+                ],
+                "children": [
+                  {
+                    "word": "taste"
+                  }
+                ]
+              },
+              {
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "the",
+                  "wine"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The infinitive particle to is analysed as a [-tense] auxiliary heading a VP; taste is the lexical head of the complement VP."
+    },
+    {
+      "id": "ch10-12",
+      "fig": "[12]",
+      "page": 227,
+      "sentence": "to have been beaten",
+      "status": "IMG_ANOMALY",
+      "tree": {
+        "label": "VP",
+        "children": [
+          {
+            "label": "AUX",
+            "features": [
+              "-tense"
+            ],
+            "children": [
+              {
+                "word": "to"
+              }
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "PERF",
+                "children": [
+                  {
+                    "word": "have"
+                  }
+                ]
+              },
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "PASS",
+                    "children": [
+                      {
+                        "word": "been"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "trans"
+                        ],
+                        "children": [
+                          {
+                            "word": "beaten"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "gap": true,
+                            "index": 1
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The printed bottom node is visibly labelled VP; this is preserved exactly as shown, although the gap is in the passive object position. The gap is indexed 1 and, in the full clause, co-indexed with Max.",
+      "external_controller": {
+        "index": 1,
+        "controller": "Max",
+        "source": "Ch10 [10], printed p.226"
+      }
+    },
+    {
+      "id": "ch10-14a",
+      "fig": "[14a]",
+      "page": 228,
+      "sentence": "loaded to capacity",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "children": [
+              {
+                "gap": true,
+                "index": 1
+              }
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "V",
+                    "features": [
+                      "trans",
+                      "-tense"
+                    ],
+                    "children": [
+                      {
+                        "word": "loaded"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "gap": true,
+                        "index": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "triangle": true,
+                "words": [
+                  "to",
+                  "capacity"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The passive participle licenses a subject gap and an object gap; both are co-indexed, then controlled by the matrix subject the palanquin.",
+      "clause_id": "S2",
+      "external_controller": {
+        "index": 1,
+        "controller": "the palanquin",
+        "source": "Ch10 [14], printed p.227"
+      }
+    },
+    {
+      "id": "ch10-21",
+      "fig": "[21]",
+      "page": 228,
+      "sentence": "apologising",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "children": [
+              {
+                "gap": true,
+                "index": 1
+              }
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "intrans",
+                  "-tense"
+                ],
+                "children": [
+                  {
+                    "word": "apologising"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "An -ing participle clause; its covert subject is indexed 1 and controlled by the subject he in [18].",
+      "clause_id": "S2",
+      "external_controller": {
+        "index": 1,
+        "controller": "he",
+        "source": "Ch10 [18], printed p.228"
+      }
+    },
+    {
+      "id": "ch10-22",
+      "fig": "[22]",
+      "page": 229,
+      "sentence": "Murtlock having been hospitalised",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "Murtlock"
+            ],
+            "index": 1
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "PERF",
+                "features": [
+                  "-tense"
+                ],
+                "children": [
+                  {
+                    "word": "having"
+                  }
+                ]
+              },
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "PASS",
+                    "children": [
+                      {
+                        "word": "been"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "trans"
+                        ],
+                        "children": [
+                          {
+                            "word": "hospitalised"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "gap": true,
+                            "index": 1
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The perfect auxiliary having carries [-tense]. The passive object gap is indexed with the overt subject Murtlock.",
+      "clause_id": "S2"
+    },
+    {
+      "id": "ch10-37",
+      "fig": "[37]",
+      "page": 231,
+      "sentence": "how many guests to expect",
+      "status": "IMG",
+      "tree": {
+        "label": "S-dbar",
+        "children": [
+          {
+            "label": "C2",
+            "triangle": true,
+            "words": [
+              "how",
+              "many",
+              "guests"
+            ],
+            "index": 2
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": []
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "gap": true,
+                        "index": 1
+                      }
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "AUX",
+                        "features": [
+                          "-tense"
+                        ],
+                        "children": [
+                          {
+                            "word": "to"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "trans"
+                            ],
+                            "children": [
+                              {
+                                "word": "expect"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "children": [
+                              {
+                                "gap": true,
+                                "index": 2
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The covert subject is co-indexed with Sarah in the higher clause (index 1); the C2 wh-phrase is co-indexed with the direct-object gap (index 2).",
+      "external_controllers": [
+        {
+          "index": 1,
+          "controller": "Sarah",
+          "source": "Ch10 [33], printed p.230"
+        },
+        {
+          "index": 2,
+          "controller": "how many guests in C2",
+          "source": "Ch10 [37], printed p.231"
+        }
+      ]
+    },
+    {
+      "id": "ch10-d1-26",
+      "fig": "Discussion 1 [26]",
+      "page": 244,
+      "sentence": "for Angelo to get all the blame",
+      "status": "IMG",
+      "tree": {
+        "label": "S-bar",
+        "children": [
+          {
+            "label": "C1",
+            "children": [
+              {
+                "word": "for"
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "children": [
+              {
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "Angelo"
+                ]
+              },
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "AUX",
+                    "features": [
+                      "-tense"
+                    ],
+                    "children": [
+                      {
+                        "word": "to"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "trans"
+                        ],
+                        "children": [
+                          {
+                            "word": "get"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "all",
+                          "the",
+                          "blame"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The to-infinitive clause has an overt subject and is introduced by C1 for."
+    },
+    {
+      "id": "ch10-d2-42a",
+      "fig": "Discussion 2 [42a]",
+      "page": 244,
+      "sentence": "stripping wallpaper is a wretched business",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C1",
+                    "children": []
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "gap": true
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "trans",
+                              "-tense"
+                            ],
+                            "children": [
+                              {
+                                "word": "stripping"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "triangle": true,
+                            "words": [
+                              "wallpaper"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "intens",
+                  "pres"
+                ],
+                "children": [
+                  {
+                    "word": "is"
+                  }
+                ]
+              },
+              {
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "a",
+                  "wretched",
+                  "business"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The -ing clause functions as subject; its covert subject is free."
+    },
+    {
+      "id": "ch10-d3-44a",
+      "fig": "Discussion 3 [44a]",
+      "page": 245,
+      "sentence": "Max is reluctant to try it",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "Max"
+            ],
+            "index": 1
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "intens",
+                  "pres"
+                ],
+                "children": [
+                  {
+                    "word": "is"
+                  }
+                ]
+              },
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "reluctant"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S-bar",
+                    "children": [
+                      {
+                        "label": "C1",
+                        "children": []
+                      },
+                      {
+                        "label": "S",
+                        "children": [
+                          {
+                            "label": "NP",
+                            "children": [
+                              {
+                                "gap": true,
+                                "index": 1
+                              }
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "AUX",
+                                "features": [
+                                  "-tense"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "to"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "VP",
+                                "children": [
+                                  {
+                                    "label": "V",
+                                    "features": [
+                                      "trans"
+                                    ],
+                                    "children": [
+                                      {
+                                        "word": "try"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "NP",
+                                    "triangle": true,
+                                    "words": [
+                                      "it"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "With reluctant, the higher subject Max controls the covert subject of the adjective-complement infinitive."
+    },
+    {
+      "id": "ch10-d3-44b",
+      "fig": "Discussion 3 [44b]",
+      "page": 245,
+      "sentence": "that piano is impossible to move",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "That",
+              "piano"
+            ],
+            "index": 1
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "intens",
+                  "pres"
+                ],
+                "children": [
+                  {
+                    "word": "is"
+                  }
+                ]
+              },
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "impossible"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S-bar",
+                    "children": [
+                      {
+                        "label": "C1",
+                        "children": []
+                      },
+                      {
+                        "label": "S",
+                        "children": [
+                          {
+                            "label": "NP",
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "AUX",
+                                "features": [
+                                  "-tense"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "to"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "VP",
+                                "children": [
+                                  {
+                                    "label": "V",
+                                    "features": [
+                                      "trans"
+                                    ],
+                                    "children": [
+                                      {
+                                        "word": "move"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "NP",
+                                    "children": [
+                                      {
+                                        "gap": true,
+                                        "index": 1
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "With impossible, the lower subject is free; the main-clause subject controls the object gap of transitive move."
+    },
+    {
+      "id": "ch10-d4-50",
+      "fig": "Discussion 4 [50]",
+      "page": 246,
+      "sentence": "We became zombies through watching too much TV",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "We"
+            ],
+            "index": 1
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "V",
+                    "features": [
+                      "intens",
+                      "past"
+                    ],
+                    "children": [
+                      {
+                        "word": "became"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "zombies"
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "PP",
+                "children": [
+                  {
+                    "label": "P",
+                    "children": [
+                      {
+                        "word": "through"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "gap": true,
+                            "index": 1
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "trans",
+                              "-tense"
+                            ],
+                            "children": [
+                              {
+                                "word": "watching"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "triangle": true,
+                            "words": [
+                              "too",
+                              "much",
+                              "TV"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The -ing clause complements the preposition through; its covert subject is controlled by We."
+    },
+    {
+      "id": "ch10-d5-55b",
+      "fig": "Discussion 5 [55b]",
+      "page": 246,
+      "sentence": "We returned disappointed by our evening",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "We"
+            ],
+            "index": 1
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "V",
+                    "features": [
+                      "intrans",
+                      "past"
+                    ],
+                    "children": [
+                      {
+                        "word": "returned"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C1",
+                    "children": []
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "gap": true,
+                            "index": 1
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "V",
+                                "features": [
+                                  "trans",
+                                  "-tense"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "disappointed"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "NP",
+                                "children": [
+                                  {
+                                    "gap": true,
+                                    "index": 1
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "label": "PP",
+                            "triangle": true,
+                            "words": [
+                              "by",
+                              "our",
+                              "evening"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The passive-participle adverbial has a covert subject controlled by We; its passive object gap is co-indexed with the same antecedent."
+    },
+    {
+      "id": "ch10-d6-62",
+      "fig": "Discussion 6 [62]",
+      "page": 247,
+      "sentence": "his ability to think",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "POSS",
+                "index": 1,
+                "children": [
+                  {
+                    "word": "his"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "ability"
+                  }
+                ]
+              },
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C1",
+                    "children": []
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "gap": true,
+                            "index": 1
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "AUX",
+                            "features": [
+                              "-tense"
+                            ],
+                            "children": [
+                              {
+                                "word": "to"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "V",
+                                "features": [
+                                  "intrans"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "think"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The possessive determiner his controls the covert subject of the to-infinitive complement of N ability."
+    },
+    {
+      "id": "ch10-ex2a",
+      "fig": "Exercise 2 [a]",
+      "page": 249,
+      "sentence": "It is impossible to move",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "It"
+            ],
+            "index": 1
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "intens",
+                  "pres"
+                ],
+                "children": [
+                  {
+                    "word": "is"
+                  }
+                ]
+              },
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "impossible"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S-bar",
+                    "children": [
+                      {
+                        "label": "C1",
+                        "children": []
+                      },
+                      {
+                        "label": "S",
+                        "children": [
+                          {
+                            "label": "NP",
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "AUX",
+                                "features": [
+                                  "-tense"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "to"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "VP",
+                                "children": [
+                                  {
+                                    "label": "V",
+                                    "features": [
+                                      "trans"
+                                    ],
+                                    "children": [
+                                      {
+                                        "word": "move"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "NP",
+                                    "children": [
+                                      {
+                                        "gap": true,
+                                        "index": 1
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Referring it is the controller of the object gap in transitive move; the lower subject is free.",
+      "interpretation": "it is referential; move is transitive"
+    },
+    {
+      "id": "ch10-ex2b",
+      "fig": "Exercise 2 [b]",
+      "page": 250,
+      "sentence": "It is impossible to move",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "It"
+            ]
+          },
+          {
+            "label": "VP",
+            "triangle": true,
+            "words": [
+              "is",
+              "impossible"
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C1",
+                "children": []
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "children": [
+                      {
+                        "gap": true
+                      }
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "AUX",
+                        "features": [
+                          "-tense"
+                        ],
+                        "children": [
+                          {
+                            "word": "to"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "intrans"
+                            ],
+                            "children": [
+                              {
+                                "word": "move"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Expletive it is not a controller; the to-infinitive is an extraposed subject and move is intransitive.",
+      "interpretation": "it is expletive; move is intransitive"
+    },
+    {
+      "id": "ch10-101b",
+      "fig": "[101b]",
+      "page": 243,
+      "sentence": "They expected the bear to dance",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "They"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "past"
+                ],
+                "verb_type": "I",
+                "children": [
+                  {
+                    "word": "expected"
+                  }
+                ]
+              },
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C1",
+                    "children": []
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "the",
+                          "bear"
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "AUX",
+                            "features": [
+                              "-tense"
+                            ],
+                            "children": [
+                              {
+                                "word": "to"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "V",
+                                "features": [
+                                  "intrans"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "dance"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Type I expected takes one clausal complement with an overt subject NP; the clause is not dominated by an NP node.",
+      "verb_type": "I"
+    },
+    {
+      "id": "ch10-102b",
+      "fig": "[102b]",
+      "page": 243,
+      "sentence": "They persuaded the bear to dance",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "They"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "past"
+                ],
+                "verb_type": "II",
+                "children": [
+                  {
+                    "word": "persuaded"
+                  }
+                ]
+              },
+              {
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "the",
+                  "bear"
+                ],
+                "index": 1
+              },
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C1",
+                    "children": []
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "gap": true,
+                            "index": 1
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "AUX",
+                            "features": [
+                              "-tense"
+                            ],
+                            "children": [
+                              {
+                                "word": "to"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "V",
+                                "features": [
+                                  "intrans"
+                                ],
+                                "children": [
+                                  {
+                                    "word": "dance"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Type II persuaded takes an object NP and a clause with a controlled covert subject; the object NP controls that subject.",
+      "verb_type": "II"
+    }
+  ],
+  "node_fragments": [
+    {
+      "id": "ch10-6",
+      "fig": "[6]",
+      "page": 226,
+      "status": "IMG",
+      "node": {
+        "label": "V",
+        "features": [
+          "trans",
+          "-tense"
+        ],
+        "children": [
+          {
+            "word": "darn"
+          }
+        ]
+      },
+      "note": "Bare infinitive lexical verb: stem only, marked [-tense]."
+    },
+    {
+      "id": "ch10-17",
+      "fig": "[17]",
+      "page": 227,
+      "status": "IMG",
+      "node": {
+        "label": "V",
+        "features": [
+          "trans",
+          "-tense"
+        ],
+        "children": [
+          {
+            "word": "loaded"
+          }
+        ]
+      },
+      "note": "Passive participle lexical verb: passive form, marked [-tense]."
+    }
+  ],
+  "book_flags": [
+    "A non-finite clause has no tensed verb; main clauses remain finite.",
+    "Covert NPs may be free (general, non-specific reference) or controlled by an overt constituent in a higher clause. Controlled gaps, including movement gaps, are co-indexed.",
+    "The four non-finite verb forms are bare infinitive, to-infinitive, passive participle, and -ing participle.",
+    "The infinitive particle to is represented as a [-tense] auxiliary; MOD does not occur in non-finite clauses, while PERF, PROG, and PASS may occur.",
+    "In non-finite relatives, the wh-expression in C2 is covert; relative clauses are restrictive and modify NOM. Bare infinitives are excluded from non-finite relative clauses.",
+    "When a non-finite clause complements a verb, the old six-way V subcategorisation and NP node are not used for the clause complement. Type I verbs take one clause with an overt subject; Type II verbs take an NP plus a clause with a controlled covert subject.",
+    "Promise is Type II but its lower covert subject is controlled by the higher subject, unlike the usual Type II pattern where the object controls it."
+  ],
+  "nonfinite_relative_examples": [
+    {
+      "fig": "[38b]",
+      "page": 232,
+      "form": "bare infinitive",
+      "structure": "[• to use •]",
+      "gaps": [
+        {
+          "position": "subject",
+          "control": "free"
+        },
+        {
+          "position": "object",
+          "control": "controlled",
+          "controller": "covert fronted wh-phrase referring to instrument"
+        }
+      ]
+    },
+    {
+      "fig": "[39b]",
+      "page": 232,
+      "form": "to-infinitive",
+      "structure": "[for [you to review •]]",
+      "gaps": [
+        {
+          "position": "object",
+          "control": "controlled",
+          "controller": "covert fronted wh-phrase referring to book"
+        }
+      ],
+      "overt_subject": "you",
+      "complementiser": "for"
+    },
+    {
+      "fig": "[40b]",
+      "page": 232,
+      "form": "-ing participle",
+      "structure": "[• now departing]",
+      "gaps": [
+        {
+          "position": "subject",
+          "control": "controlled",
+          "controller": "covert fronted wh-phrase referring to train"
+        }
+      ]
+    },
+    {
+      "fig": "[41b]",
+      "page": 232,
+      "form": "passive participle",
+      "structure": "[• fed • on smoked salmon]",
+      "gaps": [
+        {
+          "position": "subject / fronted covert relative phrase",
+          "control": "controlled",
+          "controller": "covert wh-phrase referring to cat"
+        },
+        {
+          "position": "passive object",
+          "control": "co-indexed with promoted subject"
+        }
+      ]
+    }
+  ],
+  "schema_notes": [
+    "AUX with feature -tense and terminal to represents the book’s [-tense] infinitive auxiliary.",
+    "The verb_type field on V nodes uses I or II for the book’s V(I) / V(II) distinction; the ordinary six-way subcategorisation is not added to those clause-complement verbs.",
+    "Chapter figures that label the embedded clause S2 are stored with root label S and a clause_id field, retaining the clause identifier separately from the category label."
+  ],
+  "discussion_answers": [
+    {
+      "discussion": 1,
+      "page": 244,
+      "tree_ids": [
+        "ch10-d1-26"
+      ]
+    },
+    {
+      "discussion": 2,
+      "page": 244,
+      "tree_ids": [
+        "ch10-d2-42a"
+      ]
+    },
+    {
+      "discussion": 3,
+      "page": 245,
+      "tree_ids": [
+        "ch10-d3-44a",
+        "ch10-d3-44b"
+      ]
+    },
+    {
+      "discussion": 4,
+      "page": 246,
+      "tree_ids": [
+        "ch10-d4-50"
+      ]
+    },
+    {
+      "discussion": 5,
+      "page": 246,
+      "tree_ids": [
+        "ch10-d5-55b"
+      ]
+    },
+    {
+      "discussion": 6,
+      "page": 247,
+      "tree_ids": [
+        "ch10-d6-62"
+      ]
+    },
+    {
+      "discussion": 7,
+      "page": 247,
+      "answer_type": "Type I / Type II verb classification"
+    }
+  ],
+  "exercise_answers_from_book": {
+    "exercise_1": {
+      "page": 249,
+      "items": [
+        {
+          "item": "i",
+          "covert": [
+            {
+              "constituent": "subject",
+              "control": "controlled",
+              "controller": "main clause subject I"
+            }
+          ]
+        },
+        {
+          "item": "ii",
+          "covert": []
+        },
+        {
+          "item": "iii",
+          "covert": [
+            {
+              "constituent": "subject",
+              "control": "controlled",
+              "controller": "main clause subject Morgan"
+            }
+          ]
+        },
+        {
+          "item": "iv",
+          "covert": [
+            {
+              "constituent": "subject",
+              "control": "controlled",
+              "controller": "main clause indirect object Bill"
+            }
+          ]
+        },
+        {
+          "item": "v",
+          "covert": [
+            {
+              "constituent": "subject",
+              "control": "controlled",
+              "controller": "main clause object Hedda"
+            }
+          ]
+        },
+        {
+          "item": "vi",
+          "covert": [
+            {
+              "constituent": "subject",
+              "control": "free"
+            }
+          ]
+        },
+        {
+          "item": "vii",
+          "covert": [
+            {
+              "constituent": "subject",
+              "control": "free"
+            },
+            {
+              "constituent": "object",
+              "control": "controlled",
+              "controller": "main clause subject the trombone"
+            }
+          ]
+        },
+        {
+          "item": "viii",
+          "covert": [
+            {
+              "constituent": "subject",
+              "control": "controlled",
+              "controller": "main clause subject Max"
+            }
+          ]
+        },
+        {
+          "item": "ix",
+          "covert": [
+            {
+              "constituent": "subject",
+              "control": "free"
+            },
+            {
+              "constituent": "object of P in PP",
+              "control": "controlled",
+              "controller": "main clause subject Max"
+            }
+          ]
+        },
+        {
+          "item": "x",
+          "covert": [
+            {
+              "constituent": "object",
+              "control": "controlled",
+              "controller": "main clause subject Svengali"
+            }
+          ]
+        },
+        {
+          "item": "xi",
+          "covert": [
+            {
+              "constituent": "subject",
+              "control": "free"
+            }
+          ]
+        },
+        {
+          "item": "xii",
+          "covert": [
+            {
+              "constituent": "subject",
+              "control": "controlled",
+              "controller": "main clause subject John"
+            }
+          ]
+        }
+      ]
+    },
+    "exercise_2": {
+      "page": 249,
+      "tree_ids": [
+        "ch10-ex2a",
+        "ch10-ex2b"
+      ],
+      "interpretations": [
+        {
+          "id": "a",
+          "it": "referring expression",
+          "function": "complement of A",
+          "move": "transitive",
+          "controller": "it controls the object gap"
+        },
+        {
+          "id": "b",
+          "it": "expletive",
+          "function": "extraposed subject",
+          "move": "intransitive",
+          "controller": "none; covert subject is free"
+        }
+      ]
+    },
+    "exercise_3": {
+      "page": 250,
+      "aca_ids": [
+        "ch10-ex3i",
+        "ch10-ex3ii",
+        "ch10-ex3iii",
+        "ch10-ex3iv",
+        "ch10-ex3v"
+      ]
+    }
+  },
+  "acas": [
+    {
+      "id": "ch10-ex3i",
+      "exercise": "3(i)",
+      "page": 250,
+      "bracketing": "S1[The Doge of Venice1 appears S2[•1 to have been eager S3[•1 to join the Crusade]]]",
+      "clauses": [
+        {
+          "id": "S1",
+          "main": true,
+          "text": "The Doge of Venice appears",
+          "contains": [
+            "S2"
+          ],
+          "lexical_verb": "appears",
+          "form": "finite",
+          "function": "main clause"
+        },
+        {
+          "id": "S2",
+          "main": false,
+          "text": "•1 to have been eager",
+          "contains": [
+            "S3"
+          ],
+          "lexical_verb": "have been",
+          "form": "non-finite (to-infinitive)",
+          "function": "complement of V appears",
+          "covert_constituents": [
+            {
+              "constituent": "subject",
+              "index": 1,
+              "control": "controlled",
+              "controller": "The Doge of Venice (S1 subject)"
+            }
+          ]
+        },
+        {
+          "id": "S3",
+          "main": false,
+          "text": "•1 to join the Crusade",
+          "contains": [],
+          "lexical_verb": "join",
+          "form": "non-finite (to-infinitive)",
+          "function": "complement of A eager",
+          "covert_constituents": [
+            {
+              "constituent": "subject",
+              "index": 1,
+              "control": "controlled",
+              "controller": "The Doge of Venice (co-index 1)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch10-ex3ii",
+      "exercise": "3(ii)",
+      "page": 250,
+      "bracketing": "S1[Which authors1 does the professor2 hope S2[•2 to lecture on •1 this term]]",
+      "clauses": [
+        {
+          "id": "S1",
+          "main": true,
+          "text": "Which authors does the professor hope",
+          "contains": [
+            "S2"
+          ],
+          "lexical_verb": "hope",
+          "form": "finite wh-interrogative",
+          "function": "main clause"
+        },
+        {
+          "id": "S2",
+          "main": false,
+          "text": "•2 to lecture on •1 this term",
+          "contains": [],
+          "lexical_verb": "lecture",
+          "form": "non-finite (to-infinitive)",
+          "function": "complement of V hope",
+          "covert_constituents": [
+            {
+              "constituent": "subject",
+              "index": 2,
+              "control": "controlled",
+              "controller": "the professor (S1 subject)"
+            },
+            {
+              "constituent": "complement of P on",
+              "index": 1,
+              "control": "controlled",
+              "controller": "Which authors (fronted wh-phrase)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch10-ex3iii",
+      "exercise": "3(iii)",
+      "page": 250,
+      "bracketing": "S1[plans S2[• to recover the vehicles1 S3[•1 abandoned •1 during the night]] are under consideration]",
+      "clauses": [
+        {
+          "id": "S1",
+          "main": true,
+          "text": "plans are under consideration",
+          "contains": [
+            "S2"
+          ],
+          "lexical_verb": "are",
+          "form": "finite",
+          "function": "main clause"
+        },
+        {
+          "id": "S2",
+          "main": false,
+          "text": "• to recover the vehicles",
+          "contains": [
+            "S3"
+          ],
+          "lexical_verb": "recover",
+          "form": "non-finite (to-infinitive)",
+          "function": "complement of N plans",
+          "covert_constituents": [
+            {
+              "constituent": "subject",
+              "control": "free"
+            }
+          ]
+        },
+        {
+          "id": "S3",
+          "main": false,
+          "text": "•1 abandoned •1 during the night",
+          "contains": [],
+          "lexical_verb": "abandoned",
+          "form": "non-finite passive participle relative",
+          "function": "modifier of NOM vehicles",
+          "covert_constituents": [
+            {
+              "constituent": "subject / fronted covert relative phrase",
+              "index": 1,
+              "control": "controlled",
+              "controller": "vehicles"
+            },
+            {
+              "constituent": "passive object",
+              "index": 1,
+              "control": "controlled",
+              "controller": "vehicles"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch10-ex3iv",
+      "exercise": "3(iv)",
+      "page": 251,
+      "bracketing": "S1[the first chef1 S2[•1 to be informed •1 of it] congratulated Melvin2 on S3[•2 rescuing the steaks without S4[•2 damaging them]]]",
+      "clauses": [
+        {
+          "id": "S1",
+          "main": true,
+          "text": "the first chef congratulated Melvin on",
+          "contains": [
+            "S2",
+            "S3"
+          ],
+          "lexical_verb": "congratulated",
+          "form": "finite",
+          "function": "main clause"
+        },
+        {
+          "id": "S2",
+          "main": false,
+          "text": "•1 to be informed •1 of it",
+          "contains": [],
+          "lexical_verb": "informed",
+          "form": "non-finite (to-infinitive) relative",
+          "function": "modifier of NOM chef",
+          "covert_constituents": [
+            {
+              "constituent": "subject / fronted covert relative phrase",
+              "index": 1,
+              "control": "controlled",
+              "controller": "chef"
+            },
+            {
+              "constituent": "passive object",
+              "index": 1,
+              "control": "controlled",
+              "controller": "chef"
+            }
+          ]
+        },
+        {
+          "id": "S3",
+          "main": false,
+          "text": "•2 rescuing the steaks without",
+          "contains": [
+            "S4"
+          ],
+          "lexical_verb": "rescuing",
+          "form": "non-finite (-ing participle)",
+          "function": "complement of P on",
+          "covert_constituents": [
+            {
+              "constituent": "subject",
+              "index": 2,
+              "control": "controlled",
+              "controller": "Melvin"
+            }
+          ]
+        },
+        {
+          "id": "S4",
+          "main": false,
+          "text": "•2 damaging them",
+          "contains": [],
+          "lexical_verb": "damaging",
+          "form": "non-finite (-ing participle)",
+          "function": "complement of P without",
+          "covert_constituents": [
+            {
+              "constituent": "subject",
+              "index": 2,
+              "control": "controlled",
+              "controller": "Melvin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch10-ex3v",
+      "exercise": "3(v)",
+      "page": 251,
+      "bracketing": "S1[It seems that S2[•1 having been taught by Mozart himself, Joachim1 knew S4[the quintet to be well within his capacities]]]",
+      "clauses": [
+        {
+          "id": "S1",
+          "main": true,
+          "text": "It seems",
+          "contains": [
+            "S2"
+          ],
+          "lexical_verb": "seems",
+          "form": "finite",
+          "function": "main clause"
+        },
+        {
+          "id": "S2",
+          "main": false,
+          "text": "that Joachim knew the quintet to be well within his capacities",
+          "contains": [
+            "S3",
+            "S4"
+          ],
+          "lexical_verb": "knew",
+          "form": "finite that-clause",
+          "function": "extraposed subject"
+        },
+        {
+          "id": "S3",
+          "main": false,
+          "text": "•1 having been taught by Mozart himself",
+          "contains": [],
+          "lexical_verb": "having been taught",
+          "form": "non-finite (-ing participle)",
+          "function": "adverbial",
+          "covert_constituents": [
+            {
+              "constituent": "subject",
+              "index": 1,
+              "control": "controlled",
+              "controller": "Joachim (S2 subject)"
+            }
+          ]
+        },
+        {
+          "id": "S4",
+          "main": false,
+          "text": "the quintet to be well within his capacities",
+          "contains": [],
+          "lexical_verb": "be",
+          "form": "non-finite (to-infinitive)",
+          "function": "complement of V knew"
+        }
+      ]
+    }
+  ],
+  "type_i_verbs": [
+    "assume",
+    "believe",
+    "consider",
+    "desire",
+    "dread",
+    "expect",
+    "feel",
+    "hear",
+    "know",
+    "like",
+    "observe",
+    "prefer",
+    "regret",
+    "suppose",
+    "watch"
+  ],
+  "type_ii_verbs": [
+    "advise",
+    "ask",
+    "coax",
+    "compel",
+    "dare",
+    "encourage",
+    "force",
+    "promise",
+    "persuade"
+  ],
+  "nonfinite_whether_examples": [
+    {
+      "fig": "[30]",
+      "page": 230,
+      "clause": "whether to support the Pope",
+      "form": "to-infinitive interrogative",
+      "subject_control": "controlled",
+      "controller": "King Louis (higher clause subject)",
+      "C1": "whether"
+    },
+    {
+      "fig": "[31]",
+      "page": 230,
+      "clause": "whether to cut the engines",
+      "form": "to-infinitive interrogative",
+      "subject_control": "controlled",
+      "controller": "Olsen (higher clause subject)",
+      "C1": "whether"
+    },
+    {
+      "fig": "[32]",
+      "page": 230,
+      "clause": "whether to permit such activities",
+      "form": "to-infinitive interrogative functioning as subject",
+      "subject_control": "free",
+      "C1": "whether"
+    }
+  ],
+  "nonfinite_wh_examples": [
+    {
+      "fig": "[33]",
+      "page": 230,
+      "clause": "how many guests to expect",
+      "C2": "how many guests",
+      "subject_gap": {
+        "index": 1,
+        "control": "controlled",
+        "controller": "Sarah (matrix subject)"
+      },
+      "wh_gap": {
+        "index": 2,
+        "position": "direct object of expect",
+        "controller": "C2 wh-phrase"
+      }
+    },
+    {
+      "fig": "[34]",
+      "page": 230,
+      "clause": "where to put it",
+      "C2": "where",
+      "subject_gap": {
+        "index": 1,
+        "control": "controlled",
+        "controller": "me (matrix object of told)"
+      },
+      "wh_gap": {
+        "index": 2,
+        "position": "PP-adverbial / location gap",
+        "controller": "C2 wh-phrase"
+      }
+    },
+    {
+      "fig": "[35]",
+      "page": 230,
+      "clause": "who to vote for",
+      "C2": "who",
+      "subject_gap": {
+        "index": 1,
+        "control": "controlled",
+        "controller": "The Orsini (matrix subject)"
+      },
+      "wh_gap": {
+        "index": 2,
+        "position": "complement of P for",
+        "controller": "C2 wh-phrase"
+      }
+    },
+    {
+      "fig": "[36]",
+      "page": 230,
+      "clause": "who to nominate",
+      "C2": "who",
+      "subject_gap": {
+        "control": "free",
+        "reason": "matrix it is expletive and cannot control"
+      },
+      "wh_gap": {
+        "index": 1,
+        "position": "direct object of nominate",
+        "controller": "C2 wh-phrase"
+      }
+    }
+  ],
+  "for_clause_examples": [
+    {
+      "fig": "[26]",
+      "page": 230,
+      "C1": "for",
+      "subject": "Angelo",
+      "comment": "Overt for with an overt subject."
+    },
+    {
+      "fig": "[27]",
+      "page": 230,
+      "C1": "for",
+      "subject": "the vehicles",
+      "comment": "Overt for with an overt subject."
+    },
+    {
+      "fig": "[28]",
+      "page": 230,
+      "C1": "for",
+      "subject": "me",
+      "comment": "Overt for with an overt subject; the subject pronoun is accusative."
+    },
+    {
+      "fig": "[29]",
+      "page": 230,
+      "C1": "empty",
+      "subject": "the rabbits",
+      "comment": "For is not accepted in this example; C1 is empty."
+    }
+  ],
+  "exercise_3_type_classification": {
+    "page": 248,
+    "type_i": [
+      "claim",
+      "love",
+      "find",
+      "hate",
+      "prove",
+      "want",
+      "imagine",
+      "prevent",
+      "mean"
+    ],
+    "type_ii": [
+      "teach",
+      "forbid",
+      "invite",
+      "beg",
+      "warn",
+      "tell",
+      "recommend",
+      "urge"
+    ]
+  },
+  "no_book_tree": [
+    "Further Exercises 1, 3, 4, and 5: no complete phrase-marker / ACA answer key is printed in the supplied chapter.",
+    "Further Exercise 2: the supplied chapter gives the ambiguity instructions but no worked tree answers; no gold trees are invented."
+  ],
+  "review_notes": [
+    "The two node fragments [6] and [17] are stored separately because the book prints single-V analyses rather than full clause phrase markers.",
+    "The [12] passive object gap is indexed 1 and points to the external subject Max in the full example [10].",
+    "The [14a] paired passive gaps are co-indexed 1 and are controlled by the matrix subject the palanquin when embedded in example [14].",
+    "The [21] covert subject is indexed 1 to the external subject he in [18].",
+    "The [37] non-finite wh-interrogative contains a controlled subject gap (index 1) and a wh-controlled object gap (index 2).",
+    "Discussion 3(b) follows the book’s free lower subject plus controlled object analysis for impossible to move.",
+    "In Exercise 3(iii), the to-infinitive complement of plans has a free covert subject; the relative passive clause on vehicles has two co-indexed gaps.",
+    "No phrase-marker trees are supplied for Further Exercises; only book-provided answers are encoded."
+  ]
+}
