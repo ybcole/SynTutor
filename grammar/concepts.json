@@ -2346,5 +2346,120 @@
       "singular count noun",
       "determiner"
     ]
+  },
+  {
+    "term": "adjective phrase (AdjP)",
+    "gloss": "The single higher-level syntactic unit headed by an adjective; the phrase may contain modifiers and, where licensed, complements.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          527
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjective",
+      "predicative complement",
+      "adverb phrase (AdvP)"
+    ]
+  },
+  {
+    "term": "adverb phrase (AdvP)",
+    "gloss": "The single higher-level syntactic unit headed by an adverb; its possible internal expansions are broadly a subset of those available to AdjPs.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          527
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adverb",
+      "adjective phrase (AdjP)"
+    ]
+  },
+  {
+    "term": "predicative function of adjectives",
+    "gloss": "An adjective phrase can function as a clause complement while the adjective supplies the main semantic predicate and be carries tense and subject agreement.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          526,
+          527
+        ],
+        "pdf_pages": [
+          2,
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "predicative complement",
+      "adjective phrase (AdjP)",
+      "be"
+    ]
+  },
+  {
+    "term": "stative and dynamic situations",
+    "gloss": "Adjectives almost always denote states, while verbs are commonly used for dynamic situations, although many verbs also denote states.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          527
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjective",
+      "verb",
+      "state"
+    ]
+  },
+  {
+    "term": "transitive adjective",
+    "gloss": "A rare adjective that takes an NP complement directly; the section names worth and like as examples.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          527
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "adjective phrase (AdjP)",
+      "complement"
+    ]
   }
 ]
