@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "CLS-047",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 16 §1, printed pp. 1365, 1366",
+    "change": "Qualified the typical rather than exceptionless preservation of truth conditions, added dislocation types, and retained absence of a well-formed basic counterpart in certain constructions."
+  },
+  {
+    "rule_id": "CLS-048",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 16 §1, printed pp. 1366, 1367",
+    "change": "Expanded the two-way taxonomy to include dislocation, distinguishing reordering from realignment and avoiding a claim of overt added material in every case."
+  },
+  {
+    "rule_id": "CLS-009",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 16 §1, printed pp. 1365, 1367",
+    "change": "Added §1 examples where a canonical alternative is syntactically or pragmatically unacceptable and clarified that process terms describe structural differences rather than literal transformations."
+  },
+  {
+    "rule_id": "CLS-008",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 16 §1, printed pp. 1367",
+    "change": "Qualified general combinability by the structural compatibility requirements for packaging subtypes: passive plus extraposition can combine, existential plus subject extraposition cannot under these definitions."
+  },
+  {
+    "rule_id": "CLS-024",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 16 §1, printed pp. 1365, 1366",
+    "change": "Recorded Chapter 16's demonstration that the relative scope of many and negation can differ between information-packaging alternants, potentially changing truth conditions."
+  },
+  {
+    "rule_id": "CLS-013",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 16 §1, printed pp. 1366",
+    "change": "Explicitly distinguished auxiliary–subject inversion from subject–dependent inversion as used in the Chapter 16 information-packaging overview."
+  }
+]
