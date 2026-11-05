@@ -1,0 +1,886 @@
+{
+  "meta": {
+    "chapter": 16,
+    "section": "§1 Syntactic overview",
+    "printed_pages": [
+      1365,
+      1367
+    ],
+    "pdf_pages": [
+      3,
+      5
+    ],
+    "page_offset": "PDF page = printed page - 1362",
+    "processed_by": "OpenAI GPT-6",
+    "protocol_version": "1.0",
+    "highest_existing_rule_ids": {
+      "morphology": "MORPH-007",
+      "word_categories": "WCAT-017",
+      "phrases": "PHR-019",
+      "clauses": "CLS-093",
+      "complementation": "COMP-019",
+      "agreement": "AGR-002",
+      "other": "OTH-003"
+    },
+    "approval": "User explicitly approved everything requiring approval for Chapter 16 on November 5, 2026. The human approval is recorded, but no independent second-pass AI review took place.",
+    "input_gaps": [
+      "Relevant Burton-Roberts source text and concept index unavailable; all comparative mappings unverified.",
+      "Printed page 1367 also begins §2; only the final material belonging to §1 is included."
+    ]
+  },
+  "concepts": [
+    {
+      "term": "canonical and packaged counterpart",
+      "gloss": "The more basic and the information-packaged construction used to convey comparable content, when both counterparts are acceptable.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1365
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "information-packaging construction"
+      ]
+    },
+    {
+      "term": "scope-sensitive packaging contrast",
+      "gloss": "A packaging alternation with different quantifier/negative scope and thus potentially different truth conditions.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1365,
+            1366
+          ],
+          "pdf_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "scope of negation"
+      ]
+    },
+    {
+      "term": "left dislocation",
+      "gloss": "Information-packaging pattern with a detached constituent before the clause to which it relates.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1366
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "information-packaging construction"
+      ]
+    },
+    {
+      "term": "right dislocation",
+      "gloss": "Information-packaging pattern with a detached constituent following the clause to which it relates.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1366
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "information-packaging construction"
+      ]
+    },
+    {
+      "term": "subject–dependent inversion",
+      "gloss": "Information-packaging construction with a non-subject dependent before the verb and the subject after it, distinct from subject–auxiliary inversion.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1366
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "subject-auxiliary inversion"
+      ]
+    },
+    {
+      "term": "information-packaging reordering",
+      "gloss": "Non-canonical ordering of clause constituents with their basic syntactic relationships retained, as in preposing, postposing or subject–dependent inversion.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1367
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "information-packaging construction"
+      ]
+    },
+    {
+      "term": "information-packaging realignment",
+      "gloss": "Non-canonical alignment of meaning with syntactic functions, as in existential, extraposition, dislocation, cleft or passive.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1367
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "information-packaging construction"
+      ]
+    },
+    {
+      "term": "combinable information-packaging constructions",
+      "gloss": "Co-occurrence of compatible information-packaging configurations in one clause.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1367
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "information-packaging construction"
+      ]
+    },
+    {
+      "term": "packaging construction incompatibility",
+      "gloss": "Incompatibility of packaging operations whose required syntactic conditions cannot both hold, as with the existential construction and subject extraposition.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1367
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "combinable information-packaging constructions"
+      ]
+    },
+    {
+      "term": "construction name versus clause type",
+      "gloss": "Distinction between terminology naming a construction and naming an entire clause, such as preposing construction versus passive clause.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1366
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "information-packaging construction"
+      ]
+    },
+    {
+      "term": "non-derivational process terminology",
+      "gloss": "Use of expressions such as preposed or extraposed to describe a structural contrast rather than an actual derivation from a more basic sentence.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1367
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "canonical and packaged counterpart"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "CLS-094",
+      "domain": "clauses",
+      "concept": "truth-condition differences from scope-sensitive information packaging",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "Although canonical and information-packaged alternatives normally describe the same truth conditions, differences in the relative scope of a quantifier such as many and clausal negation can change their truth conditions.",
+      "condition": "When comparing a basic clause with a passive, existential, or complement-preposing alternative that changes the relative structural positions of many and not, check whether many takes scope over negation or negation takes scope over many; do not infer semantic equivalence merely because the information-packaging relation is present.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Many instructors were not at the seminar. [many > not: a large number were absent]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "There were not many instructors at the seminar. [not > many: the number present was small]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Leila didn't assess many of the proposals. [negation can have wide scope over many]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Many of the proposals weren't assessed by Leila. [many has wide scope over the negation]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "I haven't greeted many of those neighbours. [ordinary object position]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x6",
+            "text": "Many of those neighbours I haven't greeted. [preposed object; relative scope may differ]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1365,
+            1366
+          ],
+          "pdf_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "truth-condition differences from scope-sensitive information packaging",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts original text/concept index was not supplied for this task; no comparative equivalence is asserted."
+        }
+      ],
+      "related_rules": [
+        "CLS-024",
+        "CLS-047",
+        "CLS-048"
+      ],
+      "confidence": "high",
+      "review_notes": "Printed pp. 1365–1366 explicitly demonstrate that different relative scope of many and negation can change truth conditions for passive, existential and preposed complements. The examples name possible readings, not claims that every use is disambiguated solely by linear order. Owner approved; no independent second pass.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "CLS-095",
+      "domain": "clauses",
+      "concept": "left and right dislocation as information-packaging constructions",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Left and right dislocation are distinct information-packaging patterns in which material linked to a clause appears at the left or right edge, respectively, instead of occupying the corresponding ordinary clause position.",
+      "condition": "For a clause with a detached NP and an associated clause containing a coreferential pronoun, classify the construction as left dislocation when the NP precedes the clause and right dislocation when the NP follows it; compare with an ordinary undislocated counterpart.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Those tickets, they sold out yesterday. [left dislocation]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "They sold out yesterday, those tickets. [right dislocation]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Those tickets sold out yesterday. [ordinary counterpart]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "My neighbour, she has already left. [left dislocation]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "She's already left, my neighbour. [right dislocation]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1366
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "left and right dislocation as information-packaging constructions",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts original text/concept index was not supplied for this task; no comparative equivalence is asserted."
+        }
+      ],
+      "related_rules": [
+        "CLS-047",
+        "CLS-048",
+        "CLS-046"
+      ],
+      "confidence": "high",
+      "review_notes": "Chapter 16 §1, printed p. 1366, illustrates both dislocation constructions in the nine-way overview. These examples identify the common NP/pronoun pattern and do not claim that every dislocation has this exact form. The distinction concerns the position of detached material relative to its host.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "CLS-096",
+      "domain": "clauses",
+      "concept": "subject–dependent inversion contrasted with subject–auxiliary inversion",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Subject–dependent inversion places a non-subject dependent such as a locative complement before the verb, with the subject following the verb; this is distinct from subject–auxiliary inversion where a finite auxiliary precedes the subject.",
+      "condition": "When a clause shows inversion, distinguish the order preposed dependent + verb + subject from auxiliary + subject + other predication material, and reserve the unqualified information-packaging term inversion in this chapter for subject–dependent inversion.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "On the mantelpiece stood two porcelain figures. [subject–dependent inversion]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Two porcelain figures stood on the mantelpiece. [canonical order]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Were two porcelain figures on the mantelpiece? [subject–auxiliary inversion]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Inside the courtyard were three visitors. [subject–dependent inversion]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "Were three visitors inside the courtyard? [subject–auxiliary inversion]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1366
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "subject–dependent inversion contrasted with subject–auxiliary inversion",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts original text/concept index was not supplied for this task; no comparative equivalence is asserted."
+        }
+      ],
+      "related_rules": [
+        "CLS-013",
+        "CLS-047",
+        "CLS-048"
+      ],
+      "confidence": "high",
+      "review_notes": "This is a syntactic distinction in §1 on printed p. 1366, not an automatic requirement to invert every time a locative is fronted. The source explicitly states that Chapter 16's abbreviated inversion means subject–dependent inversion.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "CLS-097",
+      "domain": "clauses",
+      "concept": "compatibility and combination of information-packaging constructions",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "Different information-packaging constructions can occur together in a clause when their structural requirements are compatible, but some pairs cannot be combined; existential formation and subject extraposition are mutually incompatible under the constructions described here.",
+      "condition": "For a candidate clause with more than one information-packaging construction, identify each pattern separately and test whether its required subject and clause structure coexist: preposing plus right dislocation, cleft plus extraposition, or passive plus extraposition may combine, while the defined existential and subject-extraposition constructions demand incompatible structures.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "That draft she endorsed, the committee chair. [complement preposing plus right dislocation]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "It was at midnight that it became clear the signal was lost. [it-cleft plus extraposition]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "It was anticipated by the advisers that the decision would be delayed. [passive plus extraposition]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "There was an unexpected delay at the station. [existential construction]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "It is obvious that the station was closed. [subject extraposition]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x6",
+            "text": "The pianist it was who was congratulated by the judges. [preposing, cleft, passive; marked but interpretable]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1367
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "compatibility and combination of information-packaging constructions",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts original text/concept index was not supplied for this task; no comparative equivalence is asserted."
+        }
+      ],
+      "related_rules": [
+        "CLS-008",
+        "CLS-047",
+        "CLS-048"
+      ],
+      "confidence": "high",
+      "review_notes": "Chapter 16 §1 p. 1367 gives positive combinations and states that existential versus extraposition is blocked by their respective structural preconditions. Record that local incompatibility without falsely treating all information-packaging types as mutually exclusive. The multi-feature cleft is somewhat marked and offered as an analytical example; owner approval is not an independent review.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    },
+    {
+      "id": "CLS-098",
+      "domain": "clauses",
+      "concept": "clause labels versus information-packaging construction names",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Certain information-packaging labels name clause types as well as constructions (passive, existential, cleft), whereas others name only the construction (preposing, postposing, extraposition, dislocation): the clause should instead be described as having a preposed or extraposed constituent.",
+      "condition": "When describing a non-canonical clause, reserve passive clause, existential clause or cleft clause for the recognised clause-level categories; for preposing, postposing, extraposition and dislocation identify the construction and the relevant constituent or position rather than inventing a new clause-type label such as preposing clause.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The portrait was restored by Isla. [passive clause; passive construction]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "There are several lamps in the corridor. [existential clause; existential construction]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "It was Isla who restored the portrait. [cleft clause; cleft construction]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "That portrait Isla restored last week. [clause with a preposed object]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "It was unfortunate that the doors closed early. [clause with an extraposed subject]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 16,
+          "section": "§1 Syntactic overview",
+          "pages": [
+            1366,
+            1367
+          ],
+          "pdf_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "clause labels versus information-packaging construction names",
+          "relation": "unverified",
+          "note": "The relevant Burton-Roberts original text/concept index was not supplied for this task; no comparative equivalence is asserted."
+        }
+      ],
+      "related_rules": [
+        "CLS-047",
+        "CLS-048",
+        "CLS-095"
+      ],
+      "confidence": "high",
+      "review_notes": "The source on p. 1366 explicitly differentiates construction labels from clause labels. The names reflect descriptive conventions, not tests of sentence grammaticality. The examples are new and are not copied from the source.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "CLS-094",
+      "to": "CLS-024",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-094",
+      "to": "CLS-047",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-095",
+      "to": "CLS-047",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-095",
+      "to": "CLS-046",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-096",
+      "to": "CLS-013",
+      "relation": "contrasts",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-096",
+      "to": "CLS-048",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-097",
+      "to": "CLS-008",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-097",
+      "to": "CLS-048",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-098",
+      "to": "CLS-047",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-098",
+      "to": "CLS-095",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-047",
+      "to": "CLS-094",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-047",
+      "to": "CLS-095",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-048",
+      "to": "CLS-096",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-009",
+      "to": "CLS-047",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-024",
+      "to": "CLS-094",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-094",
+      "to": "Cambridge Chapter 5 §5 (quantifiers and relative scope)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-094",
+      "to": "Cambridge Chapter 9 §1.3.2 (scope of negation)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-009",
+      "to": "Cambridge Chapter 2 §2 (process terms)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-097",
+      "to": "Cambridge Chapter 16 §§6–10 (individual packaging constructions)",
+      "relation": "depends_on",
+      "verified": false
+    }
+  ],
+  "conflicts": [
+    {
+      "rules": [
+        "CLS-047",
+        "CLS-094"
+      ],
+      "kind": "cambridge_internal",
+      "description": "Existing approved CLS-047 from Cambridge Chapter 2 §16 presented unchanged truth conditions as invariant across information-packaging constructions; Chapter 16 §1 pp. 1365–1366 explicitly qualifies this because relative scope of many and negation can change truth conditions.",
+      "proposed_resolution": "Approved and implemented: CLS-047 now says truth conditions and force are characteristically, not invariably, preserved. CLS-094 separately records the scope-sensitive exceptions. No blanket claim of semantic equivalence remains.",
+      "needs_human": false,
+      "status": "RESOLVED",
+      "approval": "User explicitly approved Chapter 16 changes in current request, November 5, 2026."
+    }
+  ],
+  "uncertain_items": [
+    {
+      "pages": [
+        1365,
+        1366
+      ],
+      "issue": "§1 shows truth-condition divergence in examples with many and negation but defers full relative-scope analysis to Chapters 5 and 9.",
+      "what_is_needed": "When those sections are independently verified, refine scope assumptions; do not assume every instance of passive, existential or preposing reverses scope."
+    },
+    {
+      "pages": [
+        1367
+      ],
+      "issue": "§1 gives existential/extraposition mutual exclusion within its defined structures but does not exhaustively enumerate all compatible/incompatible combinations of packaging constructions.",
+      "what_is_needed": "Limit the co-occurrence rule to the cited combinations and defer full combinability to the later sections."
+    }
+  ],
+  "coverage_report": {
+    "pages_fully_covered": [
+      {
+        "printed_pages": [
+          1365,
+          1366
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ],
+        "section": "§1 Syntactic overview"
+      }
+    ],
+    "pages_partially_covered": [
+      {
+        "printed_pages": [
+          1367
+        ],
+        "pdf_pages": [
+          5
+        ],
+        "reason": "Only the continuation of §1 (process terminology, reordering/realignment, combination); §2 begins later on the page and is excluded."
+      }
+    ],
+    "pages_not_covered": [
+      {
+        "printed_pages": [
+          1367,
+          1446
+        ],
+        "pdf_pages": [
+          5,
+          84
+        ],
+        "reason": "§2 through §10.2 have not been processed in this first-section pass; printed p. 1367 is only partially covered."
+      }
+    ],
+    "counts": {
+      "concepts": 11,
+      "rules": {
+        "constraint": 0,
+        "descriptive_generalization": 2,
+        "classification": 3,
+        "stylistic_or_prescriptive": 0,
+        "variety_restricted": 0
+      },
+      "examples": {
+        "ai_authored": 27,
+        "book": 0
+      },
+      "cross_references": 19,
+      "conflicts": 1,
+      "uncertain_items": 2
+    },
+    "existing_rule_refinements": [
+      "CLS-047",
+      "CLS-048",
+      "CLS-009",
+      "CLS-008",
+      "CLS-024",
+      "CLS-013"
+    ],
+    "skipped_subsections": [
+      {
+        "section": "§2 Information packaging: concepts and general principles to §10.2 Pragmatic factors favouring actives or passives",
+        "reason": "The section-by-section extraction protocol stops at the end of §1."
+      }
+    ]
+  }
+}

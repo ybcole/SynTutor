@@ -1,0 +1,116 @@
+[
+  {
+    "from_rule": "CLS-094",
+    "to": "CLS-024",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-094",
+    "to": "CLS-047",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-095",
+    "to": "CLS-047",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-095",
+    "to": "CLS-046",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-096",
+    "to": "CLS-013",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-096",
+    "to": "CLS-048",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-097",
+    "to": "CLS-008",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-097",
+    "to": "CLS-048",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-098",
+    "to": "CLS-047",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-098",
+    "to": "CLS-095",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-047",
+    "to": "CLS-094",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-047",
+    "to": "CLS-095",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-048",
+    "to": "CLS-096",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-009",
+    "to": "CLS-047",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-024",
+    "to": "CLS-094",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-094",
+    "to": "Cambridge Chapter 5 §5 (quantifiers and relative scope)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-094",
+    "to": "Cambridge Chapter 9 §1.3.2 (scope of negation)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-009",
+    "to": "Cambridge Chapter 2 §2 (process terms)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-097",
+    "to": "Cambridge Chapter 16 §§6–10 (individual packaging constructions)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]

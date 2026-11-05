@@ -124,6 +124,21 @@
         "pdf_pages": [
           66
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1365,
+          1366,
+          1367
+        ],
+        "pdf_pages": [
+          3,
+          4,
+          5
+        ]
       }
     ],
     "related_concepts": []
@@ -1374,6 +1389,19 @@
         "pdf_pages": [
           6
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1365,
+          1366
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
       }
     ],
     "related_concepts": []
@@ -1868,6 +1896,21 @@
         ],
         "pdf_pages": [
           87
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1365,
+          1366,
+          1367
+        ],
+        "pdf_pages": [
+          3,
+          4,
+          5
         ]
       }
     ],
@@ -4771,6 +4814,239 @@
     ],
     "related_concepts": [
       "expanded coordinate"
+    ]
+  },
+  {
+    "term": "canonical and packaged counterpart",
+    "gloss": "The more basic and the information-packaged construction used to convey comparable content, when both counterparts are acceptable.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1365
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "related_concepts": [
+      "information-packaging construction"
+    ]
+  },
+  {
+    "term": "scope-sensitive packaging contrast",
+    "gloss": "A packaging alternation with different quantifier/negative scope and thus potentially different truth conditions.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1365,
+          1366
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "scope of negation"
+    ]
+  },
+  {
+    "term": "left dislocation",
+    "gloss": "Information-packaging pattern with a detached constituent before the clause to which it relates.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1366
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "information-packaging construction"
+    ]
+  },
+  {
+    "term": "right dislocation",
+    "gloss": "Information-packaging pattern with a detached constituent following the clause to which it relates.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1366
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "information-packaging construction"
+    ]
+  },
+  {
+    "term": "subject–dependent inversion",
+    "gloss": "Information-packaging construction with a non-subject dependent before the verb and the subject after it, distinct from subject–auxiliary inversion.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1366
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "subject-auxiliary inversion"
+    ]
+  },
+  {
+    "term": "information-packaging reordering",
+    "gloss": "Non-canonical ordering of clause constituents with their basic syntactic relationships retained, as in preposing, postposing or subject–dependent inversion.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1367
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "information-packaging construction"
+    ]
+  },
+  {
+    "term": "information-packaging realignment",
+    "gloss": "Non-canonical alignment of meaning with syntactic functions, as in existential, extraposition, dislocation, cleft or passive.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1367
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "information-packaging construction"
+    ]
+  },
+  {
+    "term": "combinable information-packaging constructions",
+    "gloss": "Co-occurrence of compatible information-packaging configurations in one clause.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1367
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "information-packaging construction"
+    ]
+  },
+  {
+    "term": "packaging construction incompatibility",
+    "gloss": "Incompatibility of packaging operations whose required syntactic conditions cannot both hold, as with the existential construction and subject extraposition.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1367
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "combinable information-packaging constructions"
+    ]
+  },
+  {
+    "term": "construction name versus clause type",
+    "gloss": "Distinction between terminology naming a construction and naming an entire clause, such as preposing construction versus passive clause.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1366
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "information-packaging construction"
+    ]
+  },
+  {
+    "term": "non-derivational process terminology",
+    "gloss": "Use of expressions such as preposed or extraposed to describe a structural contrast rather than an actual derivation from a more basic sentence.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1 Syntactic overview",
+        "pages": [
+          1367
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "canonical and packaged counterpart"
     ]
   }
 ]
