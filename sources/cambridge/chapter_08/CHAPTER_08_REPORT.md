@@ -24,7 +24,7 @@
 - **CLS-046**: focus-resistant, non-restrictive evaluative supplements, pp. 666–667.
 
 ## Coverage and validation
-- 15 concepts; 8 rules (4 classification, 4 descriptive generalizations); 38 original contrast examples; 17 cross-references; no known conflicts or uncertain items.
+- 15 concepts; 8 rules (4 classification, 4 descriptive generalizations); 39 original contrast examples; 17 cross-references; no known conflicts or uncertain items.
 - 126 total active rules; 143 unique concept terms, no duplicate rule IDs or missing internal references.
 - All new rules were individually checked for required schema fields, page citations, example provenance, and exception links.
 - No constraints were introduced from descriptions, interpretive tendencies, or construction-specific focus tests.
