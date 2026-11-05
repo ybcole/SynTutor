@@ -1,0 +1,86 @@
+[
+  {
+    "from_rule": "COMP-011",
+    "to": "COMP-002",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-011",
+    "to": "COMP-004",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-012",
+    "to": "COMP-001",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-012",
+    "to": "COMP-005",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-013",
+    "to": "COMP-005",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-014",
+    "to": "COMP-006",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-015",
+    "to": "COMP-014",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-015",
+    "to": "COMP-006",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-016",
+    "to": "Cambridge Ch. 11 (finite subordinate clauses)",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-016",
+    "to": "CLS-015",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-017",
+    "to": "COMP-006",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-017",
+    "to": "COMP-007",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-018",
+    "to": "COMP-004",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-018",
+    "to": "COMP-002",
+    "relation": "overlaps",
+    "verified": true
+  }
+]
