@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "CLS-014",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 14 §1.1, printed pp. 1173–1176",
+    "change": "Add diagnostics separating finite imperative/subjunctive plain-form constructions from infinitival plain-form constructions."
+  },
+  {
+    "rule_id": "CLS-015",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 14 §1.1, printed pp. 1173–1176",
+    "change": "Preserve finiteness as clause status even where the plain form occurs in both systems."
+  },
+  {
+    "rule_id": "CLS-041",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 14 §1.1, printed pp. 1173–1176",
+    "change": "Clarify the three verb-based non-finite form-types and separately identify verbless clauses rather than treating verbless as a verb form."
+  },
+  {
+    "rule_id": "CLS-042",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 14 §1.1, printed pp. 1173–1176",
+    "change": "Distinguish absent subjects from hollow clauses missing a non-subject constituent; preserve limits on matrix recoverability."
+  },
+  {
+    "rule_id": "CLS-058",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 14 §1.1, printed pp. 1173–1176",
+    "change": "Add Chapter 14 evidence distinguishing complement, modifier and supplement uses of non-finite clauses."
+  },
+  {
+    "rule_id": "MORPH-005",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 14 §1.1, printed pp. 1173–1176",
+    "change": "Extend the source citation to Chapter 14's explicit exclusion of modal auxiliaries from all non-finite clause form-types."
+  }
+]
