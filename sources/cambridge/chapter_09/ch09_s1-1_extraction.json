@@ -1,0 +1,368 @@
+{
+  "meta": {
+    "chapter": 9,
+    "section": "§1.1 Tests for clause polarity",
+    "printed_pages": [
+      786,
+      787
+    ],
+    "pdf_pages": [
+      2,
+      3
+    ],
+    "page_offset": "Local PDF page = printed page - 784.",
+    "processed_by": "OpenAI GPT-6",
+    "protocol_version": "1.0",
+    "highest_existing_rule_ids": {
+      "morphology": "MORPH-007",
+      "word_categories": "WCAT-017",
+      "phrases": "PHR-019",
+      "clauses": "CLS-059",
+      "complementation": "COMP-019",
+      "agreement": "AGR-002",
+      "other": "OTH-003"
+    },
+    "approval": "Owner explicitly approved all Chapter 9 work requiring approval in this request on 2026-11-05. No independent second-pass review was performed.",
+    "input_gaps": [
+      "Burton-Roberts source and concept index unavailable; comparison remains unverified.",
+      "Printed page 786 also includes the Chapter 9 introduction, and printed page 787 begins §1.2; extraction includes only the §1.1 text."
+    ]
+  },
+  "concepts": [
+    {
+      "term": "clause polarity",
+      "gloss": "Positive or negative syntactic status of a clause, diagnosed by its distribution rather than simply by the presence of a negative word.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 9,
+          "section": "§1.1 Tests for clause polarity",
+          "pages": [
+            786
+          ],
+          "pdf_pages": [
+            2
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clausal negation",
+        "subclausal negation"
+      ]
+    },
+    {
+      "term": "polarity diagnostic",
+      "gloss": "A test of a clause's positive or negative status using a permitted continuation, confirmation tag, or prenuclear inversion.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 9,
+          "section": "§1.1 Tests for clause polarity",
+          "pages": [
+            786,
+            787
+          ],
+          "pdf_pages": [
+            2,
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause polarity"
+      ]
+    },
+    {
+      "term": "not even continuation",
+      "gloss": "A prosodically detached supplementary continuation whose negative form presupposes a negative host clause.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 9,
+          "section": "§1.1 Tests for clause polarity",
+          "pages": [
+            786
+          ],
+          "pdf_pages": [
+            2
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause polarity",
+        "supplement"
+      ]
+    },
+    {
+      "term": "neutral reversed-polarity confirmation tag",
+      "gloss": "An interrogative tag that seeks confirmation and bears the opposite polarity from the host clause.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 9,
+          "section": "§1.1 Tests for clause polarity",
+          "pages": [
+            787
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause polarity"
+      ]
+    },
+    {
+      "term": "connective polarity continuation",
+      "gloss": "A reduced follow-up clause whose connective reflects the preceding clause's syntactic polarity, such as neither/nor versus so.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 9,
+          "section": "§1.1 Tests for clause polarity",
+          "pages": [
+            786,
+            787
+          ],
+          "pdf_pages": [
+            2,
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause polarity"
+      ]
+    },
+    {
+      "term": "prenuclear negative constituent",
+      "gloss": "A negative-marked constituent before the nucleus whose position triggers obligatory subject–auxiliary inversion.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 9,
+          "section": "§1.1 Tests for clause polarity",
+          "pages": [
+            787
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "clause polarity",
+        "subject-auxiliary inversion"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "CLS-060",
+      "domain": "clauses",
+      "concept": "subject–auxiliary inversion with prenuclear negative constituents",
+      "traditional_terms": [
+        "negative inversion"
+      ],
+      "rule_type": "constraint",
+      "scope": "clause",
+      "statement": "When the negation of a clause is carried by a constituent in the prenucleus, subject–auxiliary inversion is obligatory in the main clause.",
+      "condition": "In a main clause with a negative constituent such as not once or at no time in prenuclear position, invert the finite auxiliary and subject; insert supportive do if needed. The trigger must be the prenuclear negative constituent, not simply the presence of negation elsewhere in the clause.",
+      "violation": "A main clause begins with a negative-marked prenuclear constituent but retains uninverted subject–finite auxiliary order.",
+      "exceptions": [],
+      "examples": {
+        "correct": [
+          {
+            "id": "c1",
+            "text": "Not once did the council meet.",
+            "origin": "ai_authored",
+            "pair_id": "p1"
+          },
+          {
+            "id": "c2",
+            "text": "At no time did the visitors complain.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          },
+          {
+            "id": "c3",
+            "text": "After the lecture, Mina didn't feel well. [negative marker on the verb, not the prenuclear adjunct]",
+            "origin": "ai_authored"
+          },
+          {
+            "id": "c4",
+            "text": "Only occasionally did Mina attend the lectures. [inversion triggered by only, not by a negative constituent]",
+            "origin": "ai_authored"
+          }
+        ],
+        "incorrect": [
+          {
+            "id": "i1",
+            "text": "*Not once the council met.",
+            "origin": "ai_authored",
+            "pair_id": "p1"
+          },
+          {
+            "id": "i2",
+            "text": "*At no time the visitors complained.",
+            "origin": "ai_authored",
+            "pair_id": "p2"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 9,
+          "section": "§1.1 Tests for clause polarity",
+          "pages": [
+            787
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "subject-auxiliary inversion after fronted negative constituent",
+          "relation": "unverified",
+          "note": "No Burton-Roberts chapter text or concept index was provided; no comparison is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-013",
+        "CLS-019",
+        "CLS-020",
+        "CLS-021"
+      ],
+      "confidence": "high",
+      "review_notes": "The diagnostic is one-way: inversion also appears with connective so and prenuclear only, so inversion alone does not prove negative clause polarity. Nonnegative prenuclear adjuncts can co-occur with verbal negation without inversion. Human approval was explicitly requested on 2026-11-05; no independent second-pass AI review was performed.",
+      "protocol_version": "1.0",
+      "status": "APPROVED"
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "CLS-060",
+      "to": "CLS-013",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-060",
+      "to": "CLS-019",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-060",
+      "to": "CLS-020",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-060",
+      "to": "CLS-021",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-020",
+      "to": "CLS-021",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-019",
+      "to": "CLS-046",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-060",
+      "to": "Cambridge Chapter 3 §2.1.2 (inversion triggers)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-020",
+      "to": "Cambridge Chapter 10 §5 (pragmatics of tags)",
+      "relation": "depends_on",
+      "verified": false
+    }
+  ],
+  "conflicts": [],
+  "uncertain_items": [],
+  "coverage_report": {
+    "pages_fully_covered": [],
+    "pages_partially_covered": [
+      {
+        "printed_pages": [
+          786
+        ],
+        "pdf_pages": [
+          2
+        ],
+        "reason": "§1.1 begins after the chapter introduction on the same page; the whole §1.1 portion on this page was processed."
+      },
+      {
+        "printed_pages": [
+          787
+        ],
+        "pdf_pages": [
+          3
+        ],
+        "reason": "§1.1 finishes before §1.2 begins; only §1.1 material on this page was processed."
+      }
+    ],
+    "pages_not_covered": [
+      {
+        "printed_pages": [
+          787,
+          849
+        ],
+        "pdf_pages": [
+          3,
+          65
+        ],
+        "reason": "§1.2 through §7.2 are outside this section pass. Page 787 is partly covered."
+      }
+    ],
+    "counts": {
+      "concepts": 6,
+      "rules": {
+        "constraint": 1,
+        "descriptive_generalization": 0,
+        "classification": 0,
+        "stylistic_or_prescriptive": 0,
+        "variety_restricted": 0
+      },
+      "examples": {
+        "ai_authored": 6,
+        "book": 0
+      },
+      "cross_references": 8,
+      "conflicts": 0,
+      "uncertain_items": 0
+    },
+    "existing_rule_refinements": [
+      "CLS-019",
+      "CLS-020",
+      "CLS-021"
+    ],
+    "skipped_subsections": [
+      {
+        "section": "§1.2 An overview of negation types through §7.2 Anaphoric so and not",
+        "reason": "Extraction protocol requires stopping after the current section."
+      }
+    ]
+  }
+}

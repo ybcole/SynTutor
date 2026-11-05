@@ -1,0 +1,20 @@
+[
+  {
+    "rule_id": "CLS-019",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 9 §1.1",
+    "change": "Sharpen the scope of the not even continuation test, add an adjunct supplement and Ch. 9 citation."
+  },
+  {
+    "rule_id": "CLS-020",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 9 §1.1",
+    "change": "Add continuation pairs either/too and record same-polarity tag exceptions, with source citations."
+  },
+  {
+    "rule_id": "CLS-021",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 9 §1.1",
+    "change": "Record four polarity diagnostics and their interpretation limits, including inversion not being sufficient."
+  }
+]

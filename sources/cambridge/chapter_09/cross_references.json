@@ -1,0 +1,50 @@
+[
+  {
+    "from_rule": "CLS-060",
+    "to": "CLS-013",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-060",
+    "to": "CLS-019",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-060",
+    "to": "CLS-020",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-060",
+    "to": "CLS-021",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-020",
+    "to": "CLS-021",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-019",
+    "to": "CLS-046",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-060",
+    "to": "Cambridge Chapter 3 §2.1.2 (inversion triggers)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-020",
+    "to": "Cambridge Chapter 10 §5 (pragmatics of tags)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]
