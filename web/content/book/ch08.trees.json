@@ -1,0 +1,3231 @@
+{
+  "chapter": 8,
+  "convention_version": "V8",
+  "source": "Burton-Roberts, Analysing Sentences, Chapter 8 (uploaded page images)",
+  "trees": [
+    {
+      "id": "ch8-1b",
+      "fig": "[1b]",
+      "page": 171,
+      "sentence": "Georgette said she burned the fritters",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "Georgette"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "trans",
+                  "past"
+                ],
+                "children": [
+                  {
+                    "word": "said"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "she"
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "trans",
+                          "past"
+                        ],
+                        "children": [
+                          {
+                            "word": "burned"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "the",
+                          "fritters"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Initial analysis as printed before the chapter adopts S-bar/C for all subordinate clauses."
+    },
+    {
+      "id": "ch8-4a",
+      "fig": "[4a]",
+      "page": 172,
+      "sentence": "I thought Georgette said she burned the fritters",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "I",
+              "thought"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "Georgette",
+                  "said"
+                ]
+              },
+              {
+                "label": "S",
+                "index": 3,
+                "children": [
+                  {
+                    "label": "S",
+                    "triangle": true,
+                    "words": [
+                      "she",
+                      "burned",
+                      "the",
+                      "fritters"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "ACA has three clauses, one lexical verb per clause.",
+      "aca": {
+        "bracketing": "S1[I thought S2[Georgette said S3[she burned the fritters]]]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "I thought",
+            "contains": [
+              "S2"
+            ],
+            "lexical_verb": "thought"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "Georgette said",
+            "contains": [
+              "S3"
+            ],
+            "lexical_verb": "said"
+          },
+          {
+            "id": "S3",
+            "main": false,
+            "text": "she burned the fritters",
+            "contains": [],
+            "lexical_verb": "burned"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-9a",
+      "fig": "[9a]",
+      "page": 173,
+      "sentence": "He reminded the men that he was in command at every opportunity",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "He",
+              "reminded",
+              "the",
+              "men"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "that",
+                  "he",
+                  "was",
+                  "in",
+                  "command"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "at",
+              "every",
+              "opportunity"
+            ]
+          }
+        ]
+      },
+      "note": "The final adverbial belongs to S1, not the embedded clause.",
+      "aca": {
+        "bracketing": "S1[He reminded the men S2[that he was in command] at every opportunity]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "He reminded the men at every opportunity",
+            "contains": [
+              "S2"
+            ],
+            "lexical_verb": "reminded"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "that he was in command",
+            "contains": [],
+            "lexical_verb": "was"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-10a",
+      "fig": "[10a]",
+      "page": 174,
+      "sentence": "The fact that you received no greeting from Mars doesn't mean that it is uninhabited",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "The",
+              "fact"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "that",
+                  "you",
+                  "received",
+                  "no",
+                  "greeting",
+                  "from",
+                  "Mars"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "doesn't",
+              "mean"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 3,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "that",
+                  "it",
+                  "is",
+                  "uninhabited"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Both subordinate clauses are directly subordinated to the main clause; S2 is in its subject, S3 in its predicate.",
+      "aca": {
+        "bracketing": "S1[the fact S2[that you received no greeting from Mars] doesn’t mean S3[that it is uninhabited]]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "The fact doesn't mean",
+            "contains": [
+              "S2",
+              "S3"
+            ],
+            "lexical_verb": "mean"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "that you received no greeting from Mars",
+            "contains": [],
+            "lexical_verb": "received"
+          },
+          {
+            "id": "S3",
+            "main": false,
+            "text": "that it is uninhabited",
+            "contains": [],
+            "lexical_verb": "is"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-11a",
+      "fig": "[11a]",
+      "page": 174,
+      "sentence": "that he was in command",
+      "status": "IMG",
+      "tree": {
+        "label": "S-bar",
+        "children": [
+          {
+            "label": "C",
+            "children": [
+              {
+                "word": "that"
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "he",
+              "was",
+              "in",
+              "command"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-11b",
+      "fig": "[11b]",
+      "page": 174,
+      "sentence": "that he was in command",
+      "status": "IMG",
+      "tree": {
+        "label": "S-bar",
+        "triangle": true,
+        "words": [
+          "that",
+          "he",
+          "was",
+          "in",
+          "command"
+        ]
+      },
+      "note": "Abbreviated S-bar triangle."
+    },
+    {
+      "id": "ch8-15",
+      "fig": "[15]",
+      "page": 175,
+      "sentence": "it is uninhabited",
+      "status": "IMG",
+      "tree": {
+        "label": "S-bar",
+        "children": [
+          {
+            "label": "C",
+            "children": [
+              {
+                "word": "that",
+                "elided": true
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "children": [
+              {
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "it"
+                ]
+              },
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "V",
+                    "features": [
+                      "intens",
+                      "pres"
+                    ],
+                    "children": [
+                      {
+                        "word": "is"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "AP",
+                    "triangle": true,
+                    "words": [
+                      "uninhabited"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "C is present but that is ellipted; embedded S is internally shown."
+    },
+    {
+      "id": "ch8-23",
+      "fig": "[23]",
+      "page": 177,
+      "sentence": "that the king was in his counting house disconcerted her",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C",
+                    "children": [
+                      {
+                        "word": "that"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S",
+                    "triangle": true,
+                    "words": [
+                      "the",
+                      "king",
+                      "was",
+                      "in",
+                      "his",
+                      "counting",
+                      "house"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "VP",
+                "triangle": true,
+                "words": [
+                  "disconcerted",
+                  "her"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Clausal subject is dominated by NP; VP is abbreviated as a triangle."
+    },
+    {
+      "id": "ch8-24",
+      "fig": "[24]",
+      "page": 178,
+      "sentence": "it disconcerted her that the king was in his counting house",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "it"
+            ]
+          },
+          {
+            "label": "VP",
+            "triangle": true,
+            "words": [
+              "disconcerted",
+              "her"
+            ]
+          },
+          {
+            "label": "S-bar",
+            "triangle": true,
+            "words": [
+              "that",
+              "the",
+              "king",
+              "was",
+              "in",
+              "his",
+              "counting",
+              "house"
+            ]
+          }
+        ]
+      },
+      "note": "Extraposed S-bar is a daughter of the main S; expletive it occupies subject NP."
+    },
+    {
+      "id": "ch8-36",
+      "fig": "[36]",
+      "page": 180,
+      "sentence": "Anna told him his shirt was hanging out",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "Anna"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "ditrans",
+                  "past"
+                ],
+                "children": [
+                  {
+                    "word": "told"
+                  }
+                ]
+              },
+              {
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "him"
+                ]
+              },
+              {
+                "label": "NP",
+                "children": [
+                  {
+                    "label": "S-bar",
+                    "children": [
+                      {
+                        "label": "C",
+                        "children": [
+                          {
+                            "word": "that",
+                            "elided": true
+                          }
+                        ]
+                      },
+                      {
+                        "label": "S",
+                        "triangle": true,
+                        "words": [
+                          "his",
+                          "shirt",
+                          "was",
+                          "hanging",
+                          "out"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Optional that is absent in the displayed sentence; the C slot remains elided."
+    },
+    {
+      "id": "ch8-47",
+      "fig": "[47]",
+      "page": 182,
+      "sentence": "the men seemed happy they had not been chosen",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "the",
+              "men"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "intens",
+                  "past"
+                ],
+                "children": [
+                  {
+                    "word": "seemed"
+                  }
+                ]
+              },
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "happy"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S-bar",
+                    "children": [
+                      {
+                        "label": "C",
+                        "children": [
+                          {
+                            "word": "that",
+                            "elided": true
+                          }
+                        ]
+                      },
+                      {
+                        "label": "S",
+                        "triangle": true,
+                        "words": [
+                          "they",
+                          "had",
+                          "not",
+                          "been",
+                          "chosen"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The clause is sister of A in AP; that is ellipted in the example."
+    },
+    {
+      "id": "ch8-54",
+      "fig": "[54]",
+      "page": 183,
+      "sentence": "the fact that you received no greetings from Mars",
+      "status": "IMG",
+      "tree": {
+        "label": "NP",
+        "children": [
+          {
+            "label": "DET",
+            "children": [
+              {
+                "label": "ART",
+                "children": [
+                  {
+                    "word": "the"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "NOM",
+            "children": [
+              {
+                "label": "N",
+                "children": [
+                  {
+                    "word": "fact"
+                  }
+                ]
+              },
+              {
+                "label": "S-bar",
+                "triangle": true,
+                "words": [
+                  "that",
+                  "you",
+                  "received",
+                  "no",
+                  "greetings",
+                  "from",
+                  "Mars"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The S-bar complement is sister of N fact inside NOM."
+    },
+    {
+      "id": "ch8-61",
+      "fig": "[61]",
+      "page": 185,
+      "sentence": "about whether they should set up a website",
+      "status": "IMG",
+      "tree": {
+        "label": "PP",
+        "children": [
+          {
+            "label": "P",
+            "children": [
+              {
+                "word": "about"
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C",
+                "children": [
+                  {
+                    "word": "whether"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "they",
+                  "should",
+                  "set",
+                  "up",
+                  "a",
+                  "website"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Book prints Comp; convention stores it as C."
+    },
+    {
+      "id": "ch8-67c",
+      "fig": "[67c]",
+      "page": 185,
+      "sentence": "since you came",
+      "status": "IMG",
+      "tree": {
+        "label": "PP",
+        "children": [
+          {
+            "label": "P",
+            "children": [
+              {
+                "word": "since"
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "you",
+              "came"
+            ]
+          }
+        ]
+      },
+      "note": "Temporal since is a P; its complement is S directly, not S-bar."
+    },
+    {
+      "id": "ch8-71",
+      "fig": "[71]",
+      "page": 186,
+      "sentence": "things will be rather dull if Hieronimo leaves",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "things"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "MOD",
+                    "features": [
+                      "pres"
+                    ],
+                    "children": [
+                      {
+                        "word": "will"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "intens"
+                        ],
+                        "children": [
+                          {
+                            "word": "be"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "AP",
+                        "triangle": true,
+                        "words": [
+                          "rather",
+                          "dull"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C",
+                    "children": [
+                      {
+                        "word": "if"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "Hieronimo"
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "triangle": true,
+                        "words": [
+                          "leaves"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Conditional clause is sister of VP; C is if."
+    },
+    {
+      "id": "ch8-disc1",
+      "fig": "Discussion 1",
+      "page": 188,
+      "sentence": "that the squid sauce was a mistake soon became clear",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C",
+                    "children": [
+                      {
+                        "word": "that"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "the",
+                          "squid",
+                          "sauce"
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "intens",
+                              "past"
+                            ],
+                            "children": [
+                              {
+                                "word": "was"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "triangle": true,
+                            "words": [
+                              "a",
+                              "mistake"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "AdvP",
+                "children": [
+                  {
+                    "label": "Adv",
+                    "children": [
+                      {
+                        "word": "soon"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "V",
+                    "features": [
+                      "intens",
+                      "past"
+                    ],
+                    "children": [
+                      {
+                        "word": "became"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "AP",
+                    "triangle": true,
+                    "words": [
+                      "clear"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Clausal subject under NP; main VP has soon as AdvP and became clear."
+    },
+    {
+      "id": "ch8-disc2",
+      "fig": "Discussion 2",
+      "page": 188,
+      "sentence": "it isn't my fault Max crushed your monocle",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "it"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "intens",
+                  "pres"
+                ],
+                "children": [
+                  {
+                    "word": "isn't"
+                  }
+                ]
+              },
+              {
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "my",
+                  "fault"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C",
+                "children": [
+                  {
+                    "word": "that",
+                    "elided": true
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "Max"
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "trans",
+                          "past"
+                        ],
+                        "children": [
+                          {
+                            "word": "crushed"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "your",
+                          "monocle"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Extraposed-subject S-bar is attached to the main S."
+    },
+    {
+      "id": "ch8-disc3",
+      "fig": "Discussion 3",
+      "page": 188,
+      "sentence": "it was noticed by the critics that the book had a missing chapter",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "it"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "PASS",
+                "features": [
+                  "past"
+                ],
+                "children": [
+                  {
+                    "word": "was"
+                  }
+                ]
+              },
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "trans"
+                        ],
+                        "children": [
+                          {
+                            "word": "noticed"
+                          }
+                        ]
+                      },
+                      {
+                        "gap": true
+                      }
+                    ]
+                  },
+                  {
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "by",
+                      "the",
+                      "critics"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C",
+                "children": [
+                  {
+                    "word": "that"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "the",
+                      "book"
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "trans",
+                          "past"
+                        ],
+                        "children": [
+                          {
+                            "word": "had"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "a",
+                          "missing",
+                          "chapter"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Passive main clause; by the critics is a VP-adverbial; S-bar is extraposed subject."
+    },
+    {
+      "id": "ch8-disc4",
+      "fig": "Discussion 4",
+      "page": 189,
+      "sentence": "the consensus is that you should taste the stew first",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "the",
+              "consensus"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "intens",
+                  "pres"
+                ],
+                "children": [
+                  {
+                    "word": "is"
+                  }
+                ]
+              },
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C",
+                    "children": [
+                      {
+                        "word": "that"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "you"
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "MOD",
+                            "features": [
+                              "past"
+                            ],
+                            "children": [
+                              {
+                                "word": "should"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "VP",
+                            "children": [
+                              {
+                                "label": "VP",
+                                "children": [
+                                  {
+                                    "label": "V",
+                                    "features": [
+                                      "trans"
+                                    ],
+                                    "children": [
+                                      {
+                                        "word": "taste"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "NP",
+                                    "triangle": true,
+                                    "words": [
+                                      "the",
+                                      "stew"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "AdvP",
+                                "children": [
+                                  {
+                                    "label": "Adv",
+                                    "children": [
+                                      {
+                                        "word": "first"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "S-bar is subject-predicative, directly within VP (not under NP)."
+    },
+    {
+      "id": "ch8-disc5",
+      "fig": "Discussion 5",
+      "page": 189,
+      "sentence": "she made him aware that he had overstepped the mark",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "she"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "complex",
+                  "past"
+                ],
+                "children": [
+                  {
+                    "word": "made"
+                  }
+                ]
+              },
+              {
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "him"
+                ]
+              },
+              {
+                "label": "AP",
+                "children": [
+                  {
+                    "label": "A",
+                    "children": [
+                      {
+                        "word": "aware"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S-bar",
+                    "children": [
+                      {
+                        "label": "C",
+                        "children": [
+                          {
+                            "word": "that"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "S",
+                        "triangle": true,
+                        "words": [
+                          "he",
+                          "had",
+                          "overstepped",
+                          "the",
+                          "mark"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "make has two complements; the S-bar is sister of A within AP."
+    },
+    {
+      "id": "ch8-disc6",
+      "fig": "Discussion 6",
+      "page": 190,
+      "sentence": "drivers anxious that they had made mistakes complained",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "children": [
+              {
+                "label": "DET",
+                "children": []
+              },
+              {
+                "label": "NOM",
+                "children": [
+                  {
+                    "label": "N",
+                    "children": [
+                      {
+                        "word": "drivers"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "AP",
+                    "children": [
+                      {
+                        "label": "A",
+                        "children": [
+                          {
+                            "word": "anxious"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "S-bar",
+                        "children": [
+                          {
+                            "label": "C",
+                            "children": [
+                              {
+                                "word": "that"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "S",
+                            "children": [
+                              {
+                                "label": "NP",
+                                "children": [
+                                  {
+                                    "label": "pronoun",
+                                    "children": [
+                                      {
+                                        "word": "they"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "VP",
+                                "children": [
+                                  {
+                                    "label": "PERF",
+                                    "features": [
+                                      "past"
+                                    ],
+                                    "children": [
+                                      {
+                                        "word": "had"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "VP",
+                                    "children": [
+                                      {
+                                        "label": "V",
+                                        "features": [
+                                          "trans"
+                                        ],
+                                        "children": [
+                                          {
+                                            "word": "made"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "label": "NP",
+                                        "children": [
+                                          {
+                                            "label": "DET",
+                                            "children": []
+                                          },
+                                          {
+                                            "label": "NOM",
+                                            "children": [
+                                              {
+                                                "label": "N",
+                                                "children": [
+                                                  {
+                                                    "word": "mistakes"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "V",
+                "features": [
+                  "intrans",
+                  "past"
+                ],
+                "children": [
+                  {
+                    "word": "complained"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The book adds: under the Ch7 Appendix refinement, the AP is sister of an extra non-branching NOM; see accepted_alternatives.",
+      "accepted_alternatives": [
+        {
+          "label": "V7 core as printed",
+          "tree": {
+            "label": "S",
+            "children": [
+              {
+                "label": "NP",
+                "children": [
+                  {
+                    "label": "DET",
+                    "children": []
+                  },
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "N",
+                        "children": [
+                          {
+                            "word": "drivers"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "AP",
+                        "children": [
+                          {
+                            "label": "A",
+                            "children": [
+                              {
+                                "word": "anxious"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "S-bar",
+                            "children": [
+                              {
+                                "label": "C",
+                                "children": [
+                                  {
+                                    "word": "that"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "S",
+                                "children": [
+                                  {
+                                    "label": "NP",
+                                    "children": [
+                                      {
+                                        "label": "pronoun",
+                                        "children": [
+                                          {
+                                            "word": "they"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "VP",
+                                    "children": [
+                                      {
+                                        "label": "PERF",
+                                        "features": [
+                                          "past"
+                                        ],
+                                        "children": [
+                                          {
+                                            "word": "had"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "label": "VP",
+                                        "children": [
+                                          {
+                                            "label": "V",
+                                            "features": [
+                                              "trans"
+                                            ],
+                                            "children": [
+                                              {
+                                                "word": "made"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "label": "NP",
+                                            "children": [
+                                              {
+                                                "label": "DET",
+                                                "children": []
+                                              },
+                                              {
+                                                "label": "NOM",
+                                                "children": [
+                                                  {
+                                                    "label": "N",
+                                                    "children": [
+                                                      {
+                                                        "word": "mistakes"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "V",
+                    "features": [
+                      "intrans",
+                      "past"
+                    ],
+                    "children": [
+                      {
+                        "word": "complained"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Appendix D1 refinement",
+          "tree": {
+            "label": "S",
+            "children": [
+              {
+                "label": "NP",
+                "children": [
+                  {
+                    "label": "DET",
+                    "children": []
+                  },
+                  {
+                    "label": "NOM",
+                    "children": [
+                      {
+                        "label": "NOM",
+                        "children": [
+                          {
+                            "label": "N",
+                            "children": [
+                              {
+                                "word": "drivers"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "AP",
+                        "children": [
+                          {
+                            "label": "A",
+                            "children": [
+                              {
+                                "word": "anxious"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "S-bar",
+                            "children": [
+                              {
+                                "label": "C",
+                                "children": [
+                                  {
+                                    "word": "that"
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "S",
+                                "children": [
+                                  {
+                                    "label": "NP",
+                                    "children": [
+                                      {
+                                        "label": "pronoun",
+                                        "children": [
+                                          {
+                                            "word": "they"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "label": "VP",
+                                    "children": [
+                                      {
+                                        "label": "PERF",
+                                        "features": [
+                                          "past"
+                                        ],
+                                        "children": [
+                                          {
+                                            "word": "had"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "label": "VP",
+                                        "children": [
+                                          {
+                                            "label": "V",
+                                            "features": [
+                                              "trans"
+                                            ],
+                                            "children": [
+                                              {
+                                                "word": "made"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "label": "NP",
+                                            "children": [
+                                              {
+                                                "label": "DET",
+                                                "children": []
+                                              },
+                                              {
+                                                "label": "NOM",
+                                                "children": [
+                                                  {
+                                                    "label": "N",
+                                                    "children": [
+                                                      {
+                                                        "word": "mistakes"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "V",
+                    "features": [
+                      "intrans",
+                      "past"
+                    ],
+                    "children": [
+                      {
+                        "word": "complained"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch8-disc7",
+      "fig": "Discussion 7",
+      "page": 190,
+      "sentence": "taxes are rising because the bankers need huge bonuses",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "taxes"
+            ]
+          },
+          {
+            "label": "VP",
+            "children": [
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "PROG",
+                    "features": [
+                      "pres"
+                    ],
+                    "children": [
+                      {
+                        "word": "are"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "intrans"
+                        ],
+                        "children": [
+                          {
+                            "word": "rising"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C",
+                    "children": [
+                      {
+                        "word": "because"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "the",
+                          "bankers"
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "trans",
+                              "pres"
+                            ],
+                            "children": [
+                              {
+                                "word": "need"
+                              }
+                            ]
+                          },
+                          {
+                            "label": "NP",
+                            "triangle": true,
+                            "words": [
+                              "huge",
+                              "bonuses"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Because-clause is a VP-adverbial."
+    },
+    {
+      "id": "ch8-disc8",
+      "fig": "Discussion 8",
+      "page": 191,
+      "sentence": "unless I'm gravely mistaken, you are King Kong",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "children": [
+          {
+            "label": "S-bar",
+            "children": [
+              {
+                "label": "C",
+                "children": [
+                  {
+                    "word": "unless"
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "children": [
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "I"
+                    ]
+                  },
+                  {
+                    "label": "VP",
+                    "children": [
+                      {
+                        "label": "V",
+                        "features": [
+                          "intens",
+                          "pres"
+                        ],
+                        "children": [
+                          {
+                            "word": "'m"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "AP",
+                        "triangle": true,
+                        "words": [
+                          "gravely",
+                          "mistaken"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "children": [
+              {
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "you"
+                ]
+              },
+              {
+                "label": "VP",
+                "children": [
+                  {
+                    "label": "V",
+                    "features": [
+                      "intens",
+                      "pres"
+                    ],
+                    "children": [
+                      {
+                        "word": "are"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "King",
+                      "Kong"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Unless-clause is an S-adverbial, sister of the main S."
+    },
+    {
+      "id": "ch8-ex1-a",
+      "fig": "Exercise 1(a)",
+      "page": 192,
+      "sentence": "They did not suspect they were being observed at all",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "They",
+              "did",
+              "not",
+              "suspect"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "they",
+                  "were",
+                  "being",
+                  "observed"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "at",
+              "all"
+            ]
+          }
+        ]
+      },
+      "aca": {
+        "bracketing": "S1[They did not suspect S2[they were being observed] at all]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "They did not suspect at all",
+            "contains": [
+              "S2"
+            ],
+            "lexical_verb": "suspect"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "they were being observed",
+            "contains": [],
+            "lexical_verb": "observed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-ex1-b",
+      "fig": "Exercise 1(b)",
+      "page": 192,
+      "sentence": "that the ejector seat didn't work was quite forgotten",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "That",
+                  "the",
+                  "ejector",
+                  "seat",
+                  "didn't",
+                  "work"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "was",
+              "quite",
+              "forgotten"
+            ]
+          }
+        ]
+      },
+      "aca": {
+        "bracketing": "S1[S2[That the ejector seat didn’t work] was quite forgotten]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "was quite forgotten",
+            "contains": [
+              "S2"
+            ],
+            "lexical_verb": "forgotten"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "That the ejector seat didn't work",
+            "contains": [],
+            "lexical_verb": "work"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-ex1-c",
+      "fig": "Exercise 1(c)",
+      "page": 193,
+      "sentence": "I don't think the fact that the moped has an ejector seat is a great selling point",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "I",
+              "don't",
+              "think"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "the",
+                  "fact"
+                ]
+              },
+              {
+                "label": "S",
+                "index": 3,
+                "children": [
+                  {
+                    "label": "S",
+                    "triangle": true,
+                    "words": [
+                      "that",
+                      "the",
+                      "moped",
+                      "has",
+                      "an",
+                      "ejector",
+                      "seat"
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "is",
+                  "a",
+                  "great",
+                  "selling",
+                  "point"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "aca": {
+        "bracketing": "S1[I don’t think S2[the fact S3[that the moped has an ejector seat] is a great selling point]]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "I don't think",
+            "contains": [
+              "S2"
+            ],
+            "lexical_verb": "think"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "the fact is a great selling point",
+            "contains": [
+              "S3"
+            ],
+            "lexical_verb": "is"
+          },
+          {
+            "id": "S3",
+            "main": false,
+            "text": "that the moped has an ejector seat",
+            "contains": [],
+            "lexical_verb": "has"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-ex1-d",
+      "fig": "Exercise 1(d)",
+      "page": 193,
+      "sentence": "your suggestion that Max might refuse a second zabaglione just shows you don't know Max",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "Your",
+              "suggestion"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "that",
+                  "Max",
+                  "might",
+                  "refuse",
+                  "a",
+                  "second",
+                  "zabaglione"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "just",
+              "shows"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 3,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "you",
+                  "don't",
+                  "know",
+                  "Max"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "aca": {
+        "bracketing": "S1[Your suggestion S2[that Max might refuse a second zabaglione] just shows S3[you don’t know Max]]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "Your suggestion just shows",
+            "contains": [
+              "S2",
+              "S3"
+            ],
+            "lexical_verb": "shows"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "that Max might refuse a second zabaglione",
+            "contains": [],
+            "lexical_verb": "refuse"
+          },
+          {
+            "id": "S3",
+            "main": false,
+            "text": "you don't know Max",
+            "contains": [],
+            "lexical_verb": "know"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-ex2-a",
+      "fig": "Exercise 2(a)",
+      "page": 192,
+      "sentence": "until you mentioned it it had not struck me that the book would make a good film",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "Until"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "you",
+                  "mentioned",
+                  "it"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "it",
+              "had",
+              "not",
+              "struck",
+              "me"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 3,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "that",
+                  "the",
+                  "book",
+                  "would",
+                  "make",
+                  "a",
+                  "good",
+                  "film"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The printed diagram/bracketing reads “good film”; text extraction on p.192 has a discrepant “excellent film” in one line. Exercise prompt says “good film”; the tree follows the prompt and page image.",
+      "aca": {
+        "bracketing": "S1[Until S2[you mentioned it] it had not struck me S3[that the book would make a good film]]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "it had not struck me",
+            "contains": [
+              "S2",
+              "S3"
+            ],
+            "lexical_verb": "struck"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "until you mentioned it",
+            "function": "complement to P (until)",
+            "contains": [],
+            "lexical_verb": "mentioned"
+          },
+          {
+            "id": "S3",
+            "main": false,
+            "text": "that the book would make a good film",
+            "function": "extraposed subject",
+            "contains": [],
+            "lexical_verb": "make"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-ex2-b",
+      "fig": "Exercise 2(b)",
+      "page": 193,
+      "sentence": "I am surprised Rory has learned so much because he is usually asleep",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "I",
+              "am",
+              "surprised"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "Rory",
+                  "has",
+                  "learned",
+                  "so",
+                  "much"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "index": 3,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "because",
+                  "he",
+                  "is",
+                  "usually",
+                  "asleep"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The answer says S3 modifies S1, not S2.",
+      "aca": {
+        "bracketing": "S1[I am surprised S2[Rory has learned so much] S3[because he is usually asleep]]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "I am surprised",
+            "contains": [
+              "S2",
+              "S3"
+            ],
+            "lexical_verb": "am"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "Rory has learned so much",
+            "function": "complement to A (surprised)",
+            "contains": [],
+            "lexical_verb": "learned"
+          },
+          {
+            "id": "S3",
+            "main": false,
+            "text": "because he is usually asleep",
+            "function": "VP-adverbial in S1",
+            "contains": [],
+            "lexical_verb": "is"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-ex2-c",
+      "fig": "Exercise 2(c)",
+      "page": 193,
+      "sentence": "as soon as the princess had ascended I knew the palanquin would not budge",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "as",
+                  "soon",
+                  "as",
+                  "the",
+                  "princess",
+                  "had",
+                  "ascended"
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "I",
+              "knew"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 3,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "the",
+                  "palanquin",
+                  "would",
+                  "not",
+                  "budge"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The exercise prompt uses “has ascended”; the printed answer tree and bracketed answer use “had ascended”. Stored sentence follows the answer; prompt_sentence preserves the exercise wording.",
+      "aca": {
+        "bracketing": "S1[S2[As soon as the princess had ascended] I knew S3[the palanquin would not budge]]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "I knew",
+            "contains": [
+              "S2",
+              "S3"
+            ],
+            "lexical_verb": "knew"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "As soon as the princess had ascended",
+            "function": "VP-adverbial",
+            "contains": [],
+            "lexical_verb": "ascended"
+          },
+          {
+            "id": "S3",
+            "main": false,
+            "text": "the palanquin would not budge",
+            "function": "complement to V (knew)",
+            "contains": [],
+            "lexical_verb": "budge"
+          }
+        ]
+      },
+      "prompt_sentence": "as soon as the princess has ascended I knew the palanquin would not budge"
+    },
+    {
+      "id": "ch8-ex2-d",
+      "fig": "Exercise 2(d)",
+      "page": 193,
+      "sentence": "the fact that you endorse Omar's feeling that life is too short doesn't imply you should get drunk every day",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "the",
+              "fact"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "that",
+                  "you",
+                  "endorse",
+                  "Omar's",
+                  "feeling"
+                ]
+              },
+              {
+                "label": "S",
+                "index": 3,
+                "children": [
+                  {
+                    "label": "S",
+                    "triangle": true,
+                    "words": [
+                      "that",
+                      "life",
+                      "is",
+                      "too",
+                      "short"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "doesn't",
+              "imply"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 4,
+            "children": [
+              {
+                "label": "C",
+                "children": [
+                  {
+                    "word": "that",
+                    "elided": true
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "you",
+                  "should",
+                  "get",
+                  "drunk",
+                  "every",
+                  "day"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "aca": {
+        "bracketing": "S1[The fact S2[that you endorse Omar’s feeling S3[that life is too short]] doesn’t imply S4[that you should get drunk every day]]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "the fact doesn't imply",
+            "contains": [
+              "S2",
+              "S4"
+            ],
+            "lexical_verb": "imply"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "that you endorse Omar's feeling",
+            "function": "complement to N (fact)",
+            "contains": [
+              "S3"
+            ],
+            "lexical_verb": "endorse"
+          },
+          {
+            "id": "S3",
+            "main": false,
+            "text": "that life is too short",
+            "function": "complement to N (feeling)",
+            "contains": [],
+            "lexical_verb": "is"
+          },
+          {
+            "id": "S4",
+            "main": false,
+            "text": "that you should get drunk every day",
+            "function": "complement to V (imply)",
+            "contains": [],
+            "lexical_verb": "get"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-ex2-e",
+      "fig": "Exercise 2(e)",
+      "page": 194,
+      "sentence": "it appears that the new chef thought he could slip away before the missing steaks were noticed",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "it",
+              "appears"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "that",
+                  "the",
+                  "new",
+                  "chef",
+                  "thought"
+                ]
+              },
+              {
+                "label": "S",
+                "index": 3,
+                "children": [
+                  {
+                    "label": "S",
+                    "triangle": true,
+                    "words": [
+                      "he",
+                      "could",
+                      "slip",
+                      "away"
+                    ]
+                  },
+                  {
+                    "label": "S",
+                    "index": 4,
+                    "children": [
+                      {
+                        "label": "S",
+                        "triangle": true,
+                        "words": [
+                          "before",
+                          "the",
+                          "missing",
+                          "steaks",
+                          "were",
+                          "noticed"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "aca": {
+        "bracketing": "S1[It appears S2[that the new chef thought S3[he could slip away S4[before the missing steaks were noticed]]]]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "It appears",
+            "contains": [
+              "S2"
+            ],
+            "lexical_verb": "appears"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "that the new chef thought",
+            "function": "extraposed subject",
+            "contains": [
+              "S3"
+            ],
+            "lexical_verb": "thought"
+          },
+          {
+            "id": "S3",
+            "main": false,
+            "text": "he could slip away",
+            "function": "complement to V (thought)",
+            "contains": [
+              "S4"
+            ],
+            "lexical_verb": "slip"
+          },
+          {
+            "id": "S4",
+            "main": false,
+            "text": "before the missing steaks were noticed",
+            "function": "complement to P (before)",
+            "contains": [],
+            "lexical_verb": "noticed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ch8-ex2-f",
+      "fig": "Exercise 2(f)",
+      "page": 194,
+      "sentence": "if you are wondering whether Max is turning up the rumour is that since he's getting married he won't be in for a month",
+      "status": "IMG",
+      "tree": {
+        "label": "S",
+        "index": 1,
+        "children": [
+          {
+            "label": "S",
+            "index": 2,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "if",
+                  "you",
+                  "are",
+                  "wondering"
+                ]
+              },
+              {
+                "label": "S",
+                "index": 3,
+                "children": [
+                  {
+                    "label": "S",
+                    "triangle": true,
+                    "words": [
+                      "whether",
+                      "Max",
+                      "is",
+                      "turning",
+                      "up"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "S",
+            "triangle": true,
+            "words": [
+              "the",
+              "rumour",
+              "is"
+            ]
+          },
+          {
+            "label": "S",
+            "index": 4,
+            "children": [
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "that"
+                ]
+              },
+              {
+                "label": "S",
+                "index": 5,
+                "children": [
+                  {
+                    "label": "S",
+                    "triangle": true,
+                    "words": [
+                      "since",
+                      "he's",
+                      "getting",
+                      "married"
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "he",
+                  "won't",
+                  "be",
+                  "in",
+                  "for",
+                  "a",
+                  "month"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "The answer shows contraction forms he’s / won’t; the exercise sentence prints he’s / he won’t. The sentence token list uses uncontracted expansion for consistency with word tokenization.",
+      "aca": {
+        "bracketing": "S1[S2[If you are wondering S3[whether Max is turning up]] the rumour is S4[that S5[since he’s getting married] he won’t be in for a month]]",
+        "clauses": [
+          {
+            "id": "S1",
+            "main": true,
+            "text": "the rumour is",
+            "contains": [
+              "S2",
+              "S4"
+            ],
+            "lexical_verb": "is"
+          },
+          {
+            "id": "S2",
+            "main": false,
+            "text": "If you are wondering",
+            "function": "S-adverbial",
+            "contains": [
+              "S3"
+            ],
+            "lexical_verb": "wondering"
+          },
+          {
+            "id": "S3",
+            "main": false,
+            "text": "whether Max is turning up",
+            "function": "complement to V (wondering)",
+            "contains": [],
+            "lexical_verb": "turning"
+          },
+          {
+            "id": "S4",
+            "main": false,
+            "text": "that ... he will not be in for a month",
+            "function": "subject-predicative complement to V (is)",
+            "contains": [
+              "S5"
+            ],
+            "lexical_verb": "be"
+          },
+          {
+            "id": "S5",
+            "main": false,
+            "text": "since he's getting married",
+            "function": "VP-adverbial",
+            "contains": [],
+            "lexical_verb": "getting"
+          }
+        ]
+      }
+    }
+  ],
+  "no_book_tree": [
+    "Further Exercises 1(a–i): no answers printed.",
+    "Further Exercises 2(a–h): no complete phrase-marker answers printed.",
+    "Further Exercises 3(a–b) and 4(a–c): prompts only; do not infer functions or trees."
+  ],
+  "book_flags": [
+    "Every subordinate clause introduced by that, whether, or a subordinating conjunction is S-bar → C + S; omitted that is stored as an elided word in C.",
+    "After, until, before, and temporal since are prepositions taking S directly as complement (not S-bar).",
+    "Clausal subject/direct object is dominated by NP; subject-predicative S-bar is directly in VP; extraposed subject S-bar is a daughter of the main S.",
+    "Clause complements of A and N are sisters of the head A or N; whether-clause complements of P sit under PP as S-bar.",
+    "ACA triangles are numbered S1 (main), S2, etc.; include complementizers within subordinate clause triangles. The stored ACA uses numbered S indices and an explicit bracketed representation.",
+    "A clause contains one lexical verb; ACA validator checks the clause count against the explicitly transcribed clause list and preserves the book’s main-clause designation."
+  ],
+  "discussion_answers": [
+    {
+      "discussion": 1,
+      "page": 188,
+      "tree_ids": [
+        "ch8-disc1"
+      ]
+    },
+    {
+      "discussion": 2,
+      "page": 188,
+      "tree_ids": [
+        "ch8-disc2"
+      ]
+    },
+    {
+      "discussion": 3,
+      "page": 188,
+      "tree_ids": [
+        "ch8-disc3"
+      ]
+    },
+    {
+      "discussion": 4,
+      "page": 189,
+      "tree_ids": [
+        "ch8-disc4"
+      ]
+    },
+    {
+      "discussion": 5,
+      "page": 189,
+      "tree_ids": [
+        "ch8-disc5"
+      ]
+    },
+    {
+      "discussion": 6,
+      "page": 190,
+      "tree_ids": [
+        "ch8-disc6"
+      ]
+    },
+    {
+      "discussion": 7,
+      "page": 190,
+      "tree_ids": [
+        "ch8-disc7"
+      ]
+    },
+    {
+      "discussion": 8,
+      "page": 191,
+      "tree_ids": [
+        "ch8-disc8"
+      ]
+    }
+  ],
+  "exercise_answers_from_book": {
+    "exercise_1": {
+      "page": 192,
+      "items": [
+        {
+          "item": "a",
+          "tree_ids": [
+            "ch8-ex1-a"
+          ]
+        },
+        {
+          "item": "b",
+          "tree_ids": [
+            "ch8-ex1-b"
+          ]
+        },
+        {
+          "item": "c",
+          "tree_ids": [
+            "ch8-ex1-c"
+          ]
+        },
+        {
+          "item": "d",
+          "tree_ids": [
+            "ch8-ex1-d"
+          ]
+        }
+      ]
+    },
+    "exercise_2": {
+      "page": 192,
+      "items": [
+        {
+          "item": "a",
+          "tree_ids": [
+            "ch8-ex2-a"
+          ]
+        },
+        {
+          "item": "b",
+          "tree_ids": [
+            "ch8-ex2-b"
+          ]
+        },
+        {
+          "item": "c",
+          "tree_ids": [
+            "ch8-ex2-c"
+          ]
+        },
+        {
+          "item": "d",
+          "tree_ids": [
+            "ch8-ex2-d"
+          ]
+        },
+        {
+          "item": "e",
+          "tree_ids": [
+            "ch8-ex2-e"
+          ]
+        },
+        {
+          "item": "f",
+          "tree_ids": [
+            "ch8-ex2-f"
+          ]
+        }
+      ]
+    }
+  },
+  "review_notes": [
+    "Exercise 2(a): the exercise prompt and the answer diagram show “good film”; one extracted answer line reads “excellent film”. The diagram and prompt were preferred; note retained.",
+    "Exercise 2(c): prompt has “has ascended”; answer bracket text says “had ascended”. The diagram/page image and answer text conflict; note retained; tree follows the bracket text in nested chunk.",
+    "The initial [1b] is intentionally stored as printed with a bare S2; the chapter later generalises to S-bar + C for subordinate clauses.",
+    "Discussion 6 has a note/alternative for the Chapter 7 Appendix refinement of the modifying AP."
+  ]
+}
