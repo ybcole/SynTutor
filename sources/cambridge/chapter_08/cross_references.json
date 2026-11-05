@@ -1,0 +1,104 @@
+[
+  {
+    "from_rule": "CLS-052",
+    "to": "CLS-018",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-052",
+    "to": "CLS-017",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-053",
+    "to": "CLS-046",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-053",
+    "to": "CLS-049",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-054",
+    "to": "CLS-053",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-054",
+    "to": "CLS-046",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-055",
+    "to": "CLS-018",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-055",
+    "to": "CLS-026",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-056",
+    "to": "CLS-024",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-057",
+    "to": "PHR-003",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-058",
+    "to": "CLS-041",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-058",
+    "to": "CLS-017",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-059",
+    "to": "CLS-017",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-057",
+    "to": "CLS-018",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-053",
+    "to": "Cambridge Ch. 16 §9.4.1 (it-cleft focus)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-057",
+    "to": "Cambridge Ch. 3 §3.2 (situation types)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-059",
+    "to": "Cambridge Ch. 8 §20 (adjunct positions)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]
