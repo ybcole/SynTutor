@@ -518,7 +518,17 @@
     "statement": "The deictic centre is ordinarily the speaker or writer and changes between speakers; expressions written in a personal message may be anchored to the time of writing rather than reading.",
     "condition": "Interpret first-person, local and temporal deictics by default from the current utterer's perspective and recalculate that anchor after a conversational speaker change, subject to specially shifted-centre uses.",
     "violation": null,
-    "exceptions": [],
+    "exceptions": [
+      {
+        "description": "Deictic interpretation can shift from the speaker/writer to a reader of a standing notice or a represented thinker's viewpoint, as the same subsection expressly notes.",
+        "pages": [
+          1453
+        ],
+        "example_ids": [
+          "x5"
+        ]
+      }
+    ],
     "examples": {
       "correct": [],
       "incorrect": [],
@@ -546,6 +556,13 @@
           "text": "'This cup is warmer than that one.' [proximity assessed from speaker]",
           "origin": "ai_authored",
           "judgement": "possible"
+        },
+        {
+          "id": "x5",
+          "text": "[Notice] 'Now submit your ticket.' [now shifts to each reader's time rather than the writer's]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "tests_exception": true
         }
       ]
     },
