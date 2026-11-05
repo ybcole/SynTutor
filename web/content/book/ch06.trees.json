@@ -1,0 +1,2251 @@
+{
+ "chapter": 6,
+ "convention_version": "V6",
+ "source": "Burton-Roberts, Ch6 (printed pages)",
+ "trees": [
+  {
+   "id": "ch6-52",
+   "fig": "[52]",
+   "page": 122,
+   "sentence": "Monsieur Blanc is studying the menu",
+   "status": "IMG",
+   "note": "auxiliary = head of its own VP, taking a VP complement (p.121-122). Tense feature only on the first verb (PROG).",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Monsieur",
+       "Blanc"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "PROG",
+        "features": [
+         "pres"
+        ],
+        "children": [
+         {
+          "word": "is"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "trans"
+          ],
+          "children": [
+           {
+            "word": "studying"
+           }
+          ]
+         },
+         {
+          "label": "NP",
+          "triangle": true,
+          "words": [
+           "the",
+           "menu"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-53b",
+   "fig": "[53b]",
+   "page": 122,
+   "sentence": "You should have written an essay",
+   "status": "IMG",
+   "note": "MOD before PERF before V; only MOD carries tense",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "you"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "MOD",
+        "features": [
+         "past"
+        ],
+        "children": [
+         {
+          "word": "should"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "PERF",
+          "children": [
+           {
+            "word": "have"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "trans"
+            ],
+            "children": [
+             {
+              "word": "written"
+             }
+            ]
+           },
+           {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+             "an",
+             "essay"
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-62",
+   "fig": "[62]",
+   "page": 123,
+   "sentence": "That hippo could easily have killed me",
+   "status": "IMG",
+   "note": "Assumption 1 (p.123): an adverbial that precedes a verb modifies the following VP (here the PERF VP)",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "that",
+       "hippo"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "MOD",
+        "features": [
+         "past"
+        ],
+        "children": [
+         {
+          "word": "could"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "AdvP",
+          "triangle": true,
+          "words": [
+           "easily"
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "PERF",
+            "children": [
+             {
+              "word": "have"
+             }
+            ]
+           },
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "trans"
+              ],
+              "children": [
+               {
+                "word": "killed"
+               }
+              ]
+             },
+             {
+              "label": "NP",
+              "triangle": true,
+              "words": [
+               "me"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-66",
+   "fig": "[66]",
+   "page": 124,
+   "sentence": "They have been complaining for the fun of it",
+   "status": "IMG",
+   "note": "Assumption 2 (p.124): a sentence-final adverbial modifies the lexical VP",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "they"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "PERF",
+        "features": [
+         "pres"
+        ],
+        "children": [
+         {
+          "word": "have"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "PROG",
+          "children": [
+           {
+            "word": "been"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "intrans"
+              ],
+              "children": [
+               {
+                "word": "complaining"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "label": "PP",
+            "triangle": true,
+            "words": [
+             "for",
+             "the",
+             "fun",
+             "of",
+             "it"
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-69",
+   "fig": "[69]",
+   "page": 125,
+   "sentence": "They were going to India next week last week",
+   "status": "IMG",
+   "note": "exception to Assumption 2: 'last week' modifies the past-tense PROG VP (past intentions); 'next week' modifies the lexical VP. The book draws 'going to India' as a VP triangle here.",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "they"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "PROG",
+          "features": [
+           "past"
+          ],
+          "children": [
+           {
+            "word": "were"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "VP",
+            "triangle": true,
+            "words": [
+             "going",
+             "to",
+             "India"
+            ]
+           },
+           {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+             "next",
+             "week"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "last",
+         "week"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-78",
+   "fig": "[78]",
+   "page": 127,
+   "sentence": "Max was fired by the boss",
+   "status": "IMG",
+   "note": "passive: the object moved to subject position leaving a gap (the blob) in the object position; [trans] stays on the verb; the by-phrase is an adjunct of the lexical VP. Movement arrow is not part of the tree.",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Max"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "PASS",
+        "features": [
+         "past"
+        ],
+        "children": [
+         {
+          "word": "was"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "trans"
+            ],
+            "children": [
+             {
+              "word": "fired"
+             }
+            ]
+           },
+           {
+            "label": "NP",
+            "children": [
+             {
+              "gap": true,
+              "symbol": "•"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "label": "PP",
+          "triangle": true,
+          "words": [
+           "by",
+           "the",
+           "boss"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-81",
+   "fig": "[81]",
+   "page": 128,
+   "sentence": "Otto was driven mad by the noise",
+   "status": "IMG",
+   "note": "passive of a [complex] verb: dO is the gap, 'mad' is still oP (NOT sP)",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Otto"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "PASS",
+        "features": [
+         "past"
+        ],
+        "children": [
+         {
+          "word": "was"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "complex"
+            ],
+            "children": [
+             {
+              "word": "driven"
+             }
+            ]
+           },
+           {
+            "label": "NP",
+            "children": [
+             {
+              "gap": true,
+              "symbol": "•"
+             }
+            ]
+           },
+           {
+            "label": "AP",
+            "triangle": true,
+            "words": [
+             "mad"
+            ]
+           }
+          ]
+         },
+         {
+          "label": "PP",
+          "triangle": true,
+          "words": [
+           "by",
+           "the",
+           "noise"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-86",
+   "fig": "[86]",
+   "page": 129,
+   "sentence": "Byron would not dance",
+   "status": "IMG",
+   "note": "not/n't is simply attached to the tensed auxiliary (triangle on the MOD node)",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Byron"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "MOD",
+        "features": [
+         "past"
+        ],
+        "triangle": true,
+        "words": [
+         "would",
+         "not"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "intrans"
+          ],
+          "children": [
+           {
+            "word": "dance"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-88",
+   "fig": "[88]",
+   "page": 129,
+   "sentence": "Byron did not dance",
+   "status": "IMG",
+   "note": "do-support: empty auxiliary do is drawn under a TENSE node and carries tense and negation; the lexical V is untensed",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Byron"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "TENSE",
+        "features": [
+         "past"
+        ],
+        "triangle": true,
+        "words": [
+         "did",
+         "not"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "intrans"
+          ],
+          "children": [
+           {
+            "word": "dance"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-91",
+   "fig": "[91]",
+   "page": 130,
+   "sentence": "Was Byron dancing",
+   "status": "IMG",
+   "note": "question: tensed auxiliary fronts to C (daughter of S-bar, sister of S); the gap stays under the PROG node. S-bar is printed S' in the book.",
+   "tree": {
+    "label": "S-bar",
+    "children": [
+     {
+      "label": "C",
+      "children": [
+       {
+        "word": "was"
+       }
+      ]
+     },
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "Byron"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "PROG",
+          "features": [
+           "past"
+          ],
+          "children": [
+           {
+            "gap": true,
+            "symbol": "•"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "intrans"
+            ],
+            "children": [
+             {
+              "word": "dancing"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-93",
+   "fig": "[93]",
+   "page": 131,
+   "sentence": "Does Byron dance",
+   "status": "IMG",
+   "note": "do-support in a question: do (under TENSE) moves to C",
+   "tree": {
+    "label": "S-bar",
+    "children": [
+     {
+      "label": "C",
+      "children": [
+       {
+        "word": "does"
+       }
+      ]
+     },
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "Byron"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "TENSE",
+          "features": [
+           "pres"
+          ],
+          "children": [
+           {
+            "gap": true,
+            "symbol": "•"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "intrans"
+            ],
+            "children": [
+             {
+              "word": "dance"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-103",
+   "fig": "[103]",
+   "page": 132,
+   "sentence": "Was Kubla extravagant",
+   "status": "IMG",
+   "note": "be always behaves like an auxiliary: the lexical (copula) V fronts to C; the gap sits under the V node",
+   "tree": {
+    "label": "S-bar",
+    "children": [
+     {
+      "label": "C",
+      "children": [
+       {
+        "word": "was"
+       }
+      ]
+     },
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "Kubla"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "intens",
+           "past"
+          ],
+          "children": [
+           {
+            "gap": true,
+            "symbol": "•"
+           }
+          ]
+         },
+         {
+          "label": "AP",
+          "triangle": true,
+          "words": [
+           "extravagant"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-d1",
+   "fig": "Disc.1",
+   "page": 133,
+   "sentence": "Monsieur Blanc has studied the menu",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Monsieur",
+       "Blanc"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "PERF",
+        "features": [
+         "pres"
+        ],
+        "children": [
+         {
+          "word": "has"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "trans"
+          ],
+          "children": [
+           {
+            "word": "studied"
+           }
+          ]
+         },
+         {
+          "label": "NP",
+          "triangle": true,
+          "words": [
+           "the",
+           "menu"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-d2",
+   "fig": "Disc.2 [56]",
+   "page": 133,
+   "sentence": "You should have been writing that essay",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "you"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "MOD",
+        "features": [
+         "past"
+        ],
+        "children": [
+         {
+          "word": "should"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "PERF",
+          "children": [
+           {
+            "word": "have"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "PROG",
+            "children": [
+             {
+              "word": "been"
+             }
+            ]
+           },
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "trans"
+              ],
+              "children": [
+               {
+                "word": "writing"
+               }
+              ]
+             },
+             {
+              "label": "NP",
+              "triangle": true,
+              "words": [
+               "that",
+               "essay"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-d3",
+   "fig": "Disc.3 [60]",
+   "page": 133,
+   "sentence": "Matilda had been quietly reading Simon a story",
+   "status": "IMG",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Matilda"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "PERF",
+        "features": [
+         "past"
+        ],
+        "children": [
+         {
+          "word": "had"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "PROG",
+          "children": [
+           {
+            "word": "been"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "AdvP",
+            "triangle": true,
+            "words": [
+             "quietly"
+            ]
+           },
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "ditrans"
+              ],
+              "children": [
+               {
+                "word": "reading"
+               }
+              ]
+             },
+             {
+              "label": "NP",
+              "triangle": true,
+              "words": [
+               "Simon"
+              ]
+             },
+             {
+              "label": "NP",
+              "triangle": true,
+              "words": [
+               "a",
+               "story"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-d4",
+   "fig": "Disc.4 [82b]",
+   "page": 134,
+   "sentence": "The boss was sent an anonymous letter",
+   "status": "IMG",
+   "note": "with a ditransitive the FIRST object (iO) becomes the subject: the gap is the first NP, the direct object stays in place",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "the",
+       "boss"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "PASS",
+        "features": [
+         "past"
+        ],
+        "children": [
+         {
+          "word": "was"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "V",
+          "features": [
+           "ditrans"
+          ],
+          "children": [
+           {
+            "word": "sent"
+           }
+          ]
+         },
+         {
+          "label": "NP",
+          "children": [
+           {
+            "gap": true,
+            "symbol": "•"
+           }
+          ]
+         },
+         {
+          "label": "NP",
+          "triangle": true,
+          "words": [
+           "an",
+           "anonymous",
+           "letter"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-d5",
+   "fig": "Disc.5 [92]",
+   "page": 134,
+   "sentence": "Could Simon have written these words",
+   "status": "IMG",
+   "tree": {
+    "label": "S-bar",
+    "children": [
+     {
+      "label": "C",
+      "children": [
+       {
+        "word": "could"
+       }
+      ]
+     },
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "Simon"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "MOD",
+          "features": [
+           "past"
+          ],
+          "children": [
+           {
+            "gap": true,
+            "symbol": "•"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "PERF",
+            "children": [
+             {
+              "word": "have"
+             }
+            ]
+           },
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "trans"
+              ],
+              "children": [
+               {
+                "word": "written"
+               }
+              ]
+             },
+             {
+              "label": "NP",
+              "triangle": true,
+              "words": [
+               "these",
+               "words"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-d6",
+   "fig": "Disc.6 [94a]",
+   "page": 134,
+   "sentence": "Hasn't Oleg been arrested",
+   "status": "IMG",
+   "note": "question + passive: two gaps (aux gap under PERF, object gap after V). The book draws a small split under C (hasn't = has + n't); stored here as one word.",
+   "tree": {
+    "label": "S-bar",
+    "children": [
+     {
+      "label": "C",
+      "children": [
+       {
+        "word": "hasn't"
+       }
+      ]
+     },
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "Oleg"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "PERF",
+          "features": [
+           "pres"
+          ],
+          "children": [
+           {
+            "gap": true,
+            "symbol": "•"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "PASS",
+            "children": [
+             {
+              "word": "been"
+             }
+            ]
+           },
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "trans"
+              ],
+              "children": [
+               {
+                "word": "arrested"
+               }
+              ]
+             },
+             {
+              "label": "NP",
+              "children": [
+               {
+                "gap": true,
+                "symbol": "•"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-ex1-1",
+   "fig": "Ex.1(1)",
+   "page": 135,
+   "sentence": "Nanny is being a nuisance again",
+   "status": "IMG",
+   "note": "progressive be + lexical be (copula, [intens])",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Nanny"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "PROG",
+        "features": [
+         "pres"
+        ],
+        "children": [
+         {
+          "word": "is"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "intens"
+            ],
+            "children": [
+             {
+              "word": "being"
+             }
+            ]
+           },
+           {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+             "a",
+             "nuisance"
+            ]
+           }
+          ]
+         },
+         {
+          "label": "AdvP",
+          "triangle": true,
+          "words": [
+           "again"
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-ex1-2",
+   "fig": "Ex.1(2)",
+   "page": 136,
+   "sentence": "Millie will have filled the pool by tonight",
+   "status": "IMG",
+   "note": "the book attaches the time adverbial 'by tonight' to the whole MOD VP, not to the lexical VP (cf. the time-adverbial exception, p.124-125)",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Millie"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "MOD",
+          "features": [
+           "pres"
+          ],
+          "children": [
+           {
+            "word": "will"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "PERF",
+            "children": [
+             {
+              "word": "have"
+             }
+            ]
+           },
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "trans"
+              ],
+              "children": [
+               {
+                "word": "filled"
+               }
+              ]
+             },
+             {
+              "label": "NP",
+              "triangle": true,
+              "words": [
+               "the",
+               "pool"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "by",
+         "tonight"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-ex1-3",
+   "fig": "Ex.1(3)",
+   "page": 136,
+   "sentence": "Andy has been on court for five hours now",
+   "status": "IMG",
+   "note": "'for five hours' modifies the lexical VP; 'now' modifies the present-tense PERF VP. The book prints the numeral 5 in the triangle.",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Andy"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "PERF",
+          "features": [
+           "pres"
+          ],
+          "children": [
+           {
+            "word": "has"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "intens"
+              ],
+              "children": [
+               {
+                "word": "been"
+               }
+              ]
+             },
+             {
+              "label": "PP",
+              "triangle": true,
+              "words": [
+               "on",
+               "court"
+              ]
+             }
+            ]
+           },
+           {
+            "label": "PP",
+            "triangle": true,
+            "words": [
+             "for",
+             "five",
+             "hours"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "label": "PP",
+        "triangle": true,
+        "words": [
+         "now"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-ex3a",
+   "fig": "Ex.3(a)",
+   "page": 137,
+   "sentence": "Max and Adrian were having a really tedious conversation this morning",
+   "status": "IMG",
+   "note": "the book prints 'Max & Adrian' in the triangle. 'have' here is the lexical transitive verb. The time NP 'this morning' modifies the PROG VP.",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "Max",
+       "and",
+       "Adrian"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "PROG",
+          "features": [
+           "past"
+          ],
+          "children": [
+           {
+            "word": "were"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "trans"
+            ],
+            "children": [
+             {
+              "word": "having"
+             }
+            ]
+           },
+           {
+            "label": "NP",
+            "triangle": true,
+            "words": [
+             "a",
+             "really",
+             "tedious",
+             "conversation"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "this",
+         "morning"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-ex3b",
+   "fig": "Ex.3(b)",
+   "page": 137,
+   "sentence": "The cattle are being persecuted by flies",
+   "status": "IMG",
+   "note": "PROG + PASS: only PROG is tensed",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "the",
+       "cattle"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "PROG",
+        "features": [
+         "pres"
+        ],
+        "children": [
+         {
+          "word": "are"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "PASS",
+          "children": [
+           {
+            "word": "being"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "trans"
+              ],
+              "children": [
+               {
+                "word": "persecuted"
+               }
+              ]
+             },
+             {
+              "label": "NP",
+              "children": [
+               {
+                "gap": true,
+                "symbol": "•"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "label": "PP",
+            "triangle": true,
+            "words": [
+             "by",
+             "flies"
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-ex3c",
+   "fig": "Ex.3(c)",
+   "page": 137,
+   "sentence": "Could this have been her famous purple wig",
+   "status": "IMG",
+   "tree": {
+    "label": "S-bar",
+    "children": [
+     {
+      "label": "C",
+      "children": [
+       {
+        "word": "could"
+       }
+      ]
+     },
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "this"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "MOD",
+          "features": [
+           "past"
+          ],
+          "children": [
+           {
+            "gap": true,
+            "symbol": "•"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "PERF",
+            "children": [
+             {
+              "word": "have"
+             }
+            ]
+           },
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "intens"
+              ],
+              "children": [
+               {
+                "word": "been"
+               }
+              ]
+             },
+             {
+              "label": "NP",
+              "triangle": true,
+              "words": [
+               "her",
+               "famous",
+               "purple",
+               "wig"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-ex3d",
+   "fig": "Ex.3(d)",
+   "page": 138,
+   "sentence": "Was this put in my pocket by you",
+   "status": "IMG",
+   "note": "question + passive of a [complex] verb: the PP 'in my pocket' is the oP (sister of V); 'by you' is an adjunct",
+   "tree": {
+    "label": "S-bar",
+    "children": [
+     {
+      "label": "C",
+      "children": [
+       {
+        "word": "was"
+       }
+      ]
+     },
+     {
+      "label": "S",
+      "children": [
+       {
+        "label": "NP",
+        "triangle": true,
+        "words": [
+         "this"
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "PASS",
+          "features": [
+           "past"
+          ],
+          "children": [
+           {
+            "gap": true,
+            "symbol": "•"
+           }
+          ]
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "complex"
+              ],
+              "children": [
+               {
+                "word": "put"
+               }
+              ]
+             },
+             {
+              "label": "NP",
+              "children": [
+               {
+                "gap": true,
+                "symbol": "•"
+               }
+              ]
+             },
+             {
+              "label": "PP",
+              "triangle": true,
+              "words": [
+               "in",
+               "my",
+               "pocket"
+              ]
+             }
+            ]
+           },
+           {
+            "label": "PP",
+            "triangle": true,
+            "words": [
+             "by",
+             "you"
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-ex3e",
+   "fig": "Ex.3(e)",
+   "page": 138,
+   "sentence": "His article was accepted and quickly published",
+   "status": "IMG",
+   "note": "co-ordination of two lexical VPs under one PASS; each conjunct has its own object gap; 'and' is a plain word and mother and both conjuncts are VP",
+   "tree": {
+    "label": "S",
+    "children": [
+     {
+      "label": "NP",
+      "triangle": true,
+      "words": [
+       "his",
+       "article"
+      ]
+     },
+     {
+      "label": "VP",
+      "children": [
+       {
+        "label": "PASS",
+        "features": [
+         "past"
+        ],
+        "children": [
+         {
+          "word": "was"
+         }
+        ]
+       },
+       {
+        "label": "VP",
+        "children": [
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "V",
+            "features": [
+             "trans"
+            ],
+            "children": [
+             {
+              "word": "accepted"
+             }
+            ]
+           },
+           {
+            "label": "NP",
+            "children": [
+             {
+              "gap": true,
+              "symbol": "•"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "word": "and"
+         },
+         {
+          "label": "VP",
+          "children": [
+           {
+            "label": "AdvP",
+            "triangle": true,
+            "words": [
+             "quickly"
+            ]
+           },
+           {
+            "label": "VP",
+            "children": [
+             {
+              "label": "V",
+              "features": [
+               "trans"
+              ],
+              "children": [
+               {
+                "word": "published"
+               }
+              ]
+             },
+             {
+              "label": "NP",
+              "children": [
+               {
+                "gap": true,
+                "symbol": "•"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "node_fragments": [
+  {
+   "id": "ch6-8",
+   "fig": "[8]",
+   "page": 113,
+   "status": "IMG",
+   "node": {
+    "label": "V",
+    "features": [
+     "trans",
+     "pres"
+    ],
+    "children": [
+     {
+      "word": "fill"
+     }
+    ]
+   },
+   "note": "book shows alternatives fill(s) / write(s): a lexical V with a tense feature, not segmented into stem + inflection"
+  },
+  {
+   "id": "ch6-9",
+   "fig": "[9]",
+   "page": 113,
+   "status": "IMG",
+   "node": {
+    "label": "V",
+    "features": [
+     "trans",
+     "past"
+    ],
+    "children": [
+     {
+      "word": "filled"
+     }
+    ]
+   },
+   "note": "alternatives filled / wrote"
+  },
+  {
+   "id": "ch6-24",
+   "fig": "[24]",
+   "page": 116,
+   "status": "IMG",
+   "node": {
+    "label": "MOD",
+    "features": [
+     "pres"
+    ],
+    "children": [
+     {
+      "word": "can"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-25",
+   "fig": "[25]",
+   "page": 116,
+   "status": "IMG",
+   "node": {
+    "label": "MOD",
+    "features": [
+     "past"
+    ],
+    "children": [
+     {
+      "word": "could"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-29",
+   "fig": "[29]",
+   "page": 118,
+   "status": "IMG",
+   "node": {
+    "label": "PERF",
+    "features": [
+     "pres"
+    ],
+    "children": [
+     {
+      "word": "has"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-30",
+   "fig": "[30]",
+   "page": 118,
+   "status": "IMG",
+   "node": {
+    "label": "PERF",
+    "features": [
+     "past"
+    ],
+    "children": [
+     {
+      "word": "had"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-36",
+   "fig": "[36]",
+   "page": 119,
+   "status": "IMG",
+   "node": {
+    "label": "PROG",
+    "features": [
+     "pres"
+    ],
+    "children": [
+     {
+      "word": "is"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-37",
+   "fig": "[37]",
+   "page": 119,
+   "status": "IMG",
+   "node": {
+    "label": "PROG",
+    "features": [
+     "past"
+    ],
+    "children": [
+     {
+      "word": "was"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-41",
+   "fig": "[41]",
+   "page": 120,
+   "status": "IMG",
+   "node": {
+    "label": "PASS",
+    "features": [
+     "pres"
+    ],
+    "children": [
+     {
+      "word": "is"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ch6-42",
+   "fig": "[42]",
+   "page": 120,
+   "status": "IMG",
+   "node": {
+    "label": "PASS",
+    "features": [
+     "past"
+    ],
+    "children": [
+     {
+      "word": "was"
+     }
+    ]
+   }
+  }
+ ],
+ "no_book_tree": [
+  "[7] subject-verb agreement table (fill / be) is a table, not a tree",
+  "p.120 table of the three participle forms (progressive / perfect / passive) is a table, not a tree",
+  "[26] table of stem / past tense / perfect participle (forbid, give, go, be, put, fill) is a table",
+  "[94b] shows only the two movements for 'Hasn't Oleg been arrested?' - the full tree is Discussion 6",
+  "Further Exercises (Part I: 1-3; Part II: 4-5) have no printed answers"
+ ],
+ "book_flags": [
+  "Assumption 1 (p.123): an adverbial before a verb modifies the following VP",
+  "Assumption 2 (p.124): a sentence-final adverbial modifies the lexical VP, except certain time adverbials (p.124-125), which modify a higher (tensed) auxiliary VP",
+  "The interaction of adverbials with auxiliary VPs is called 'an intricate topic, well beyond the scope of this book' (p.123): treat these placements as the book's simplification",
+  "S-bar is printed S' in the book (PDF text extraction garbles the primes); stored here as 'S-bar'",
+  "Tense feature (pres/past) only on the FIRST verb of a sequence; do (TENSE) carries tense when no other auxiliary is present"
+ ],
+ "exercise_answers_from_book": {
+  "ex2": {
+   "page": 136,
+   "note": "identify verb forms in the Preface to the Second Edition (needs the book's preface; answers only)",
+   "items": [
+    {
+     "item": 1,
+     "line": "line 4",
+     "word": "be",
+     "answer": "stem form of progressive be"
+    },
+    {
+     "item": 2,
+     "line": "line 8",
+     "word": "were",
+     "answer": "past tense, lexical (copula) be"
+    },
+    {
+     "item": 3,
+     "line": "para 2 line 1",
+     "word": "have",
+     "answer": "present tense, perfect have"
+    },
+    {
+     "item": 4,
+     "line": "para 2 line 1",
+     "word": "made",
+     "answer": "passive participle"
+    },
+    {
+     "item": 5,
+     "line": "para 2 line 2",
+     "word": "made",
+     "answer": "past tense"
+    },
+    {
+     "item": 6,
+     "line": "para 2 line 3",
+     "word": "come",
+     "answer": "perfect participle"
+    },
+    {
+     "item": 7,
+     "line": "para 2 line 5",
+     "word": "want",
+     "answer": "present tense"
+    }
+   ]
+  }
+ }
+}
