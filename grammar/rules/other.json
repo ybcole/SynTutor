@@ -730,5 +730,614 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+  },
+  {
+    "id": "OTH-011",
+    "domain": "other",
+    "concept": "punctuation indicators",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "text",
+    "statement": "Punctuation indicators are written devices that give cues to grammatical structure or meaning, including marks, spaces and eligible changes of typography.",
+    "condition": "For a stretch of written text, identify a punctuation indicator by the grammatical or interpretive cue it supplies, not simply by whether it is a separate printed symbol.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The note ends 'The lane is clear.' [full stop is an indicator]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "A sentence starts 'Tomorrow we leave.' [initial capital is an indicator]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The invented novel title Winter Harbour is printed in italics. [type style marks a title]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The phrase 'Well, we tried' contains a comma. [structural cue]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "punctuation indicators",
+        "relation": "unverified",
+        "note": "Burton-Roberts source materials not reviewed; no cross-framework position inferred."
+      }
+    ],
+    "related_rules": [
+      "OTH-012",
+      "OTH-013",
+      "OTH-018"
+    ],
+    "confidence": "high",
+    "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "OTH-012",
+    "domain": "other",
+    "concept": "segmental punctuation indicators",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "text",
+    "statement": "Segmental punctuation indicators take up distinct positions in written linear sequences; the category comprises punctuation marks and word spaces.",
+    "condition": "Identify a written mark or word-separating blank as segmental when it occupies an independent place in the string, as opposed to changing the presentation of a letter.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Rain fell, then stopped. [comma is a segmental mark]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The sequence 'blue ribbon' includes a segmental word space.",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "Is the bridge open? [terminal question mark]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The two words 'three chairs' are separated by a word space.",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "segmental punctuation indicators",
+        "relation": "unverified",
+        "note": "Burton-Roberts source materials not reviewed; no cross-framework position inferred."
+      }
+    ],
+    "related_rules": [
+      "OTH-011",
+      "OTH-013",
+      "OTH-014"
+    ],
+    "confidence": "high",
+    "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "OTH-013",
+    "domain": "other",
+    "concept": "non-segmental punctuation modifications",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "text",
+    "statement": "Non-segmental punctuation modifies existing written symbols through features such as capitalisation, italics, bold face or small capitals when they serve a punctuation-related purpose.",
+    "condition": "When a change of case or type style conveys sentence beginning, quotation, title or emphasis, classify the change as a non-segmental punctuation modification rather than as another written segment.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Type styling used solely to show larger heading or chapter hierarchy is outside this definition of punctuation.",
+        "pages": [
+          1725
+        ],
+        "example_ids": [
+          "x5"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "After lunch, we left. [first capital modifies a letter]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The imagined title Moonlit Ridge is printed in italics. [title marking]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "A warning prints DANGER in bold. [typographic emphasis]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "A notice sets a defined term in small capitals. [type modification]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x5",
+          "text": "The handbook prints second-level headings in italics. [heading hierarchy, not punctuation]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "tests_exception": true
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724,
+          1725
+        ],
+        "pdf_pages": [
+          2,
+          3
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "non-segmental punctuation modifications",
+        "relation": "unverified",
+        "note": "Burton-Roberts source materials not reviewed; no cross-framework position inferred."
+      }
+    ],
+    "related_rules": [
+      "OTH-011",
+      "OTH-012",
+      "OTH-018"
+    ],
+    "confidence": "high",
+    "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "OTH-014",
+    "domain": "other",
+    "concept": "sentence-opening and sentence-closing indicators",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "sentence",
+    "statement": "In ordinary writing sentence beginnings are indicated non-segmentally through an initial capital, while sentence endings are marked segmentally by a full stop, question mark or exclamation mark.",
+    "condition": "For a typical orthographic sentence in running text, distinguish the initial capital-letter change from its terminal punctuation mark; do not infer a universal rule for all fragment and quotation styles.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The parcel arrived. [capital and full stop]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "Has the parcel arrived? [capital and question mark]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "Watch that step! [capital and exclamation mark]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The line 'The light is on.' begins with a capital and ends with a full stop.",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "sentence-opening and sentence-closing indicators",
+        "relation": "unverified",
+        "note": "Burton-Roberts source materials not reviewed; no cross-framework position inferred."
+      }
+    ],
+    "related_rules": [
+      "OTH-012",
+      "OTH-013"
+    ],
+    "confidence": "high",
+    "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "OTH-015",
+    "domain": "other",
+    "concept": "word-internal punctuation marks",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Apostrophes and hyphens are punctuation marks normally placed within orthographic words, unlike most marks delimiting expressions or sentences.",
+    "condition": "When analysing punctuation inside a written word, classify apostrophes and hyphens as the normal word-internal marks, while distinguishing them from commas and sentence terminal marks.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Mira's notebook was missing. [word-internal apostrophe]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The pre-owned machine was checked. [hyphen in a written compound]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The ferry returned, but the captain stayed. [comma between constituents]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The gardeners' tools were locked away. [apostrophe after a plural ending]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          2
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "word-internal punctuation marks",
+        "relation": "unverified",
+        "note": "Burton-Roberts source materials not reviewed; no cross-framework position inferred."
+      }
+    ],
+    "related_rules": [
+      "OTH-011",
+      "OTH-012"
+    ],
+    "confidence": "high",
+    "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "OTH-016",
+    "domain": "other",
+    "concept": "diacritics as spelling rather than punctuation",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Diacritics on letters are normally aspects of word spelling rather than punctuation, although a diaeresis can have a borderline hyphen-like function in certain American spellings.",
+    "condition": "For accents and other diacritics in a word, treat them as word-spelling rather than punctuational indicators, except for the borderline use of a diaeresis to mark a vowel break in some AmE forms.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The diaeresis in AmE coöperate is a borderline case functioning similarly to a hyphen, unlike ordinary accents in word spelling.",
+        "pages": [
+          1725
+        ],
+        "example_ids": [
+          "x3"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "She updated her résumé. [accents belong to spelling]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "Her fiancé arrived at noon. [accent is not punctuation]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The research groups agreed to coöperate. [AmE diaeresis with hyphen-like function]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "tests_exception": true
+        },
+        {
+          "id": "x4",
+          "text": "The editor instead printed co-operate with a hyphen.",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1724,
+          1725
+        ],
+        "pdf_pages": [
+          2,
+          3
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "diacritics as spelling rather than punctuation",
+        "relation": "unverified",
+        "note": "Burton-Roberts source materials not reviewed; no cross-framework position inferred."
+      }
+    ],
+    "related_rules": [
+      "OTH-011",
+      "OTH-015"
+    ],
+    "confidence": "high",
+    "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "OTH-017",
+    "domain": "other",
+    "concept": "punctuation beyond the single sentence",
+    "traditional_terms": [],
+    "rule_type": "descriptive_generalization",
+    "scope": "text",
+    "statement": "Punctuation may operate above sentence level: quotation marks and parentheses can enclose several sentences, and paragraph breaks may be indicated by a new line and usually indentation.",
+    "condition": "When punctuation encloses writing longer than one sentence, recognise paired quotations or parentheses, or a paragraph division signalled by a new line, as potentially within punctuation's domain.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The notice says: \"The gate is open. Use the left lane.\" [multi-sentence quotation]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "An aside reads (The doors are locked. Use the rear path.) [multi-sentence parenthesis]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The editor separates two paragraphs by a new line and indentation. [paragraph division]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "A transcript encloses a two-sentence reply in quotation marks. [scope above sentence]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1725
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "punctuation beyond the single sentence",
+        "relation": "unverified",
+        "note": "Burton-Roberts source materials not reviewed; no cross-framework position inferred."
+      }
+    ],
+    "related_rules": [
+      "OTH-011",
+      "OTH-018"
+    ],
+    "confidence": "high",
+    "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "OTH-018",
+    "domain": "other",
+    "concept": "functional boundary between punctuation and document layout",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "text",
+    "statement": "A type-style change can indicate punctuation when it marks a title, quotation or emphasis, but is outside punctuation when it simply conveys the structure of chapters, sections or headings.",
+    "condition": "Classify use of italics, bold or similar typography according to function: textual meaning or status marking belongs to punctuation, while heading-level or chapter layout organisation is excluded.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source excludes chapter/section structure and heading formatting from punctuation even when these use the same typographic devices.",
+        "pages": [
+          1725
+        ],
+        "example_ids": [
+          "x3",
+          "x4"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "A reading list italicises the invented title Glass Meadows. [title indication]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The poster displays STOP in bold. [emphasis indication]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The manual italicises a section heading to mark hierarchy. [document layout]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "tests_exception": true
+        },
+        {
+          "id": "x4",
+          "text": "The chapter titles appear in a larger font to mark organisation. [document layout]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "tests_exception": true
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1 The domain of punctuation",
+        "pages": [
+          1725
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "functional boundary between punctuation and document layout",
+        "relation": "unverified",
+        "note": "Burton-Roberts source materials not reviewed; no cross-framework position inferred."
+      }
+    ],
+    "related_rules": [
+      "OTH-011",
+      "OTH-013",
+      "OTH-017"
+    ],
+    "confidence": "high",
+    "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
   }
 ]
