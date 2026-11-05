@@ -1046,6 +1046,21 @@
           "id": "c5",
           "text": "I hadn't seen him before.",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "They came from behind the barn. [PP complement nested within PP]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c7",
+          "text": "The council argued on whether the road should close. [clause complement]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c8",
+          "text": "The children waited just inside the fence. [modifier just]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": []
@@ -1061,6 +1076,17 @@
         "pdf_pages": [
           78
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          599
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -1075,8 +1101,11 @@
     "status": "APPROVED",
     "related_rules": [
       "WCAT-012",
-      "COMP-008"
-    ]
+      "COMP-008",
+      "COMP-019",
+      "PHR-019"
+    ],
+    "review_notes": " Ch. 7 §1 p. 599 further supports PP, AdvP, clause, and predicative AdjP complements and modifiers within PPs. No NP-only restriction is implied."
   },
   {
     "id": "PHR-015",
@@ -1131,6 +1160,17 @@
           78,
           79
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          602
+        ],
+        "pdf_pages": [
+          6
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -1145,9 +1185,10 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-011",
-      "CLS-012"
+      "CLS-012",
+      "PHR-019"
     ],
-    "review_notes": "Only the 'most central' prepositions; which ones are not listed here. Do not use as an error rule."
+    "review_notes": "Only the 'most central' prepositions; which ones are not listed here. Do not use as an error rule. Ch. 7 §1 p. 602 explicitly confines stranding to non-canonical constructions such as interrogatives and relatives and contrasts it with internal complement-head reversal (e.g. notwithstanding)."
   },
   {
     "id": "PHR-016",
@@ -1394,6 +1435,70 @@
     ],
     "confidence": "high",
     "review_notes": "This is the category-membership observation. The separate restriction on using singular bare role NPs as subject or object is recorded as an exception to PHR-011. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "PHR-019",
+    "domain": "phrases",
+    "concept": "postposed preposition after its complement",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A very small set of English prepositions, including notwithstanding, can follow their NP complement inside PP structure instead of preceding it.",
+    "condition": "For the exceptional preposition notwithstanding, recognise both head-before-complement and complement-before-head structures as PPs; do not confuse complement-before-head order with preposition stranding in a non-canonical clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Notwithstanding the storm, the crew continued. [head before NP complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The storm notwithstanding, the crew continued. [NP complement before head]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "Which storm were they discussing? [ordinary fronting, not a postposed-preposition PP]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          602
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "postposed preposition after its complement",
+        "relation": "unverified",
+        "note": "No corresponding Burton-Roberts chapter material was supplied or available for verification; no Burton-Roberts analysis is inferred."
+      }
+    ],
+    "related_rules": [
+      "PHR-015",
+      "PHR-014"
+    ],
+    "confidence": "high",
+    "review_notes": "The source describes the notwithstanding pattern as a very small exception and directs details to Ch. 7 §4.2. Avoid generalising postposing to all prepositions.",
     "protocol_version": "1.0",
     "status": "APPROVED"
   }
