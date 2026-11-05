@@ -835,10 +835,21 @@
     "concept": "AdjP structure",
     "rule_type": "classification",
     "scope": "phrase",
-    "statement": "Dependents of adjectives are modifiers (very good, a bit grumpy) or complements (ashamed of him, glad you could come); complements follow the head, so they are hardly permitted in attributive AdjPs but commonly occur in postpositives, and with minor exceptions they are PPs or clauses, not NPs; AdjP has only two levels.",
-    "condition": "Applies to adjective phrases: modifiers precede the head; complements always follow it and are usually PPs or subordinate clauses; with minor exceptions an adjective takes no NP complement; AdjP and adjective are the only two category levels.",
+    "statement": "The adjective is the head of an adjective phrase (AdjP), which is the single higher-level unit needed for adjectives; unlike nouns and verbs, adjectives have no subject or determiner function motivating a second higher-level category. AdjP dependents are modifiers or complements; complements follow the head and are usually PPs or clauses.",
+    "condition": "Applies to adjective-headed phrases: analyse the adjective and its dependents as an AdjP; there is no further higher-level unit analogous to nominal/NP or VP/clause, since adjectives have no subject or determiner function. Modifiers precede the head; complements follow it and are usually PPs or clauses.",
     "violation": null,
-    "exceptions": [],
+    "exceptions": [
+      {
+        "description": "Only one or two adjectives are transitive and can take an NP complement directly; the source names worth and like. Most adjective-related NPs are instead linked through a preposition.",
+        "pages": [
+          527
+        ],
+        "example_ids": [
+          "c6",
+          "c7"
+        ]
+      }
+    ],
     "examples": {
       "correct": [
         {
@@ -865,6 +876,26 @@
           "id": "c5",
           "text": "the minister responsible for the decision [complement in postpositive AdjP]",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "The old camera is worth a careful inspection.",
+          "origin": "ai_authored",
+          "tests_exception": true,
+          "note": "Worth takes a direct NP complement."
+        },
+        {
+          "id": "c7",
+          "text": "The twins are very like each other.",
+          "origin": "ai_authored",
+          "tests_exception": true,
+          "note": "Like is one of the rare transitive adjectives identified in the source."
+        },
+        {
+          "id": "c8",
+          "text": "She is fond of animals.",
+          "origin": "ai_authored",
+          "note": "The NP is linked to the adjective through a preposition."
         }
       ],
       "incorrect": []
@@ -879,6 +910,17 @@
         ],
         "pdf_pages": [
           77
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          527
+        ],
+        "pdf_pages": [
+          3
         ]
       }
     ],
@@ -896,7 +938,7 @@
       "PHR-007",
       "WCAT-007"
     ],
-    "review_notes": "Hedges ('hardly permitted', 'minor exceptions') are preserved; do not turn into constraints without Ch. 6."
+    "review_notes": "Hedges ('hardly permitted', 'minor exceptions') are preserved; do not turn into constraints without Ch. 6. Cambridge Ch. 6 §1, pp. 526–527, confirms the single AdjP level and explains that adjectives in be + adjective constructions provide the main semantic predicate. It also identifies worth and like as rare transitive adjectives; the ordinary pattern relates an NP to an adjective through a preposition."
   },
   {
     "id": "PHR-013",
@@ -904,8 +946,8 @@
     "concept": "AdvP structure",
     "rule_type": "classification",
     "scope": "phrase",
-    "statement": "Adverbs can be modified much as adjectives are (quite excellently), only a very small number of adverbs license complements (independently of such considerations), and AdvP has only two category levels.",
-    "condition": "Applies to adverb phrases: modifiers precede the head; a complement is licensed only by a very small set of adverbs; the levels are AdvP and adverb.",
+    "statement": "The adverb is the head of an adverb phrase (AdvP), the single higher-level unit needed for adverbs; AdvP can be expanded in ways that are broadly a subset of those available to AdjPs, in part because adverbs have no predicative function.",
+    "condition": "Applies to adverb-headed phrases: analyse the adverb and its dependents as an AdvP; there is no further higher-level unit analogous to nominal/NP or VP/clause. Adverbs allow a narrower range of phrase expansion than adjectives, broadly a subset of AdjP options, and only a very small number license complements.",
     "violation": null,
     "exceptions": [],
     "examples": {
@@ -939,6 +981,17 @@
         "pdf_pages": [
           78
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§1 Preliminaries",
+        "pages": [
+          527
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -954,7 +1007,8 @@
     "related_rules": [
       "PHR-012",
       "WCAT-010"
-    ]
+    ],
+    "review_notes": " Cambridge Ch. 6 §1, p. 527, explicitly states that the possible ways of expanding AdvPs are broadly a subset of those for AdjPs and attributes the reduced possibilities at least partly to adverbs having no predicative function. This is a qualified descriptive generalization, not an exceptionless statement."
   },
   {
     "id": "PHR-014",

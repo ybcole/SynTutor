@@ -1,0 +1,278 @@
+{
+  "meta": {
+    "chapter": 6,
+    "section": "§1 Preliminaries",
+    "printed_pages": [
+      526,
+      527
+    ],
+    "pdf_pages": [
+      2,
+      3
+    ],
+    "page_offset": "PDF page = printed page - 524.",
+    "processed_by": "OpenAI GPT-6",
+    "protocol_version": "1.0",
+    "highest_existing_rule_ids": {
+      "morphology": "MORPH-007",
+      "word_categories": "WCAT-015",
+      "phrases": "PHR-018",
+      "clauses": "CLS-051",
+      "complementation": "COMP-018",
+      "agreement": "AGR-002",
+      "other": "OTH-003"
+    },
+    "owner_approval": "Explicit approval to integrate all items requiring approval was given on 2026-11-05.",
+    "existing_rule_updates": [
+      {
+        "id": "WCAT-007",
+        "domain": "word_categories",
+        "update": "Clarified the adjective's main semantic-predicate role in be + AdjP; added Chapter 6 pp. 526–527 sources and two examples."
+      },
+      {
+        "id": "WCAT-009",
+        "domain": "word_categories",
+        "update": "Added Chapter 6 p. 527 source support for the absence of adverb predicative function; retained the existing engine scope."
+      },
+      {
+        "id": "WCAT-010",
+        "domain": "word_categories",
+        "update": "Expanded the modifier category inventory to include prepositions and determinatives, preserving the caveat that not every adverb modifies every category."
+      },
+      {
+        "id": "WCAT-011",
+        "domain": "word_categories",
+        "update": "Added Chapter 6 p. 527 source support for adjective-to-adverb -ly derivation."
+      },
+      {
+        "id": "PHR-012",
+        "domain": "phrases",
+        "update": "Clarified the single AdjP level and recorded rare direct-NP complement uses of worth and like, with two exception examples and one ordinary PP example."
+      },
+      {
+        "id": "PHR-013",
+        "domain": "phrases",
+        "update": "Clarified the single AdvP level and the qualified generalization that AdvP expansion is broadly a subset of AdjP expansion."
+      }
+    ],
+    "note": "No standalone new rule was necessary: the section's applicable grammatical distinctions were already represented by the approved rule base, and its contribution is source-backed refinement and conceptual clarification."
+  },
+  "concepts": [
+    {
+      "term": "adjective phrase (AdjP)",
+      "gloss": "The single higher-level syntactic unit headed by an adjective; the phrase may contain modifiers and, where licensed, complements.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 6,
+          "section": "§1 Preliminaries",
+          "pages": [
+            527
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjective",
+        "predicative complement",
+        "adverb phrase (AdvP)"
+      ]
+    },
+    {
+      "term": "adverb phrase (AdvP)",
+      "gloss": "The single higher-level syntactic unit headed by an adverb; its possible internal expansions are broadly a subset of those available to AdjPs.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 6,
+          "section": "§1 Preliminaries",
+          "pages": [
+            527
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adverb",
+        "adjective phrase (AdjP)"
+      ]
+    },
+    {
+      "term": "predicative function of adjectives",
+      "gloss": "An adjective phrase can function as a clause complement while the adjective supplies the main semantic predicate and be carries tense and subject agreement.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 6,
+          "section": "§1 Preliminaries",
+          "pages": [
+            526,
+            527
+          ],
+          "pdf_pages": [
+            2,
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "predicative complement",
+        "adjective phrase (AdjP)",
+        "be"
+      ]
+    },
+    {
+      "term": "stative and dynamic situations",
+      "gloss": "Adjectives almost always denote states, while verbs are commonly used for dynamic situations, although many verbs also denote states.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 6,
+          "section": "§1 Preliminaries",
+          "pages": [
+            527
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjective",
+        "verb",
+        "state"
+      ]
+    },
+    {
+      "term": "transitive adjective",
+      "gloss": "A rare adjective that takes an NP complement directly; the section names worth and like as examples.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 6,
+          "section": "§1 Preliminaries",
+          "pages": [
+            527
+          ],
+          "pdf_pages": [
+            3
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjective phrase (AdjP)",
+        "complement"
+      ]
+    }
+  ],
+  "rules": [],
+  "cross_references": [
+    {
+      "from_rule": "WCAT-007",
+      "to": "COMP-006",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "WCAT-009",
+      "to": "PHR-013",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "WCAT-010",
+      "to": "WCAT-011",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-012",
+      "to": "PHR-013",
+      "relation": "contrasts",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-012",
+      "to": "COMP-006",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "PHR-013",
+      "to": "WCAT-009",
+      "relation": "depends_on",
+      "verified": true
+    }
+  ],
+  "conflicts": [],
+  "uncertain_items": [],
+  "coverage_report": {
+    "pages_fully_covered": [
+      {
+        "printed_pages": [
+          526
+        ],
+        "pdf_pages": [
+          2
+        ],
+        "section": "§1 Preliminaries"
+      }
+    ],
+    "pages_partially_covered": [
+      {
+        "printed_pages": [
+          527
+        ],
+        "pdf_pages": [
+          3
+        ],
+        "reason": "The remaining paragraphs of §1 are covered; §2 begins later on the same printed page and is excluded."
+      }
+    ],
+    "pages_not_covered": [
+      {
+        "printed_pages": [
+          527
+        ],
+        "pdf_pages": [
+          3
+        ],
+        "reason": "§2 and the remainder of Chapter 6 are outside this pass; only the start of page 527 is used for the §1 conclusion."
+      }
+    ],
+    "counts": {
+      "concepts": 5,
+      "rules": {
+        "constraint": 0,
+        "descriptive_generalization": 0,
+        "classification": 0,
+        "stylistic_or_prescriptive": 0,
+        "variety_restricted": 0
+      },
+      "examples": {
+        "ai_authored": 0,
+        "book": 0
+      },
+      "existing_rules_updated": 6,
+      "examples_added_to_existing_rules": 5,
+      "cross_references": 6,
+      "conflicts": 0,
+      "uncertain_items": 0
+    },
+    "skipped_subsections": [
+      {
+        "section": "§2 Criterial properties of adjectives and every later section",
+        "reason": "The protocol requires a separate extraction and approval gate for each section."
+      }
+    ]
+  }
+}

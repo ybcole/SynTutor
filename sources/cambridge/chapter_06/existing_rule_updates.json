@@ -1,0 +1,32 @@
+[
+  {
+    "id": "WCAT-007",
+    "domain": "word_categories",
+    "update": "Clarified the adjective's main semantic-predicate role in be + AdjP; added Chapter 6 pp. 526–527 sources and two examples."
+  },
+  {
+    "id": "WCAT-009",
+    "domain": "word_categories",
+    "update": "Added Chapter 6 p. 527 source support for the absence of adverb predicative function; retained the existing engine scope."
+  },
+  {
+    "id": "WCAT-010",
+    "domain": "word_categories",
+    "update": "Expanded the modifier category inventory to include prepositions and determinatives, preserving the caveat that not every adverb modifies every category."
+  },
+  {
+    "id": "WCAT-011",
+    "domain": "word_categories",
+    "update": "Added Chapter 6 p. 527 source support for adjective-to-adverb -ly derivation."
+  },
+  {
+    "id": "PHR-012",
+    "domain": "phrases",
+    "update": "Clarified the single AdjP level and recorded rare direct-NP complement uses of worth and like, with two exception examples and one ordinary PP example."
+  },
+  {
+    "id": "PHR-013",
+    "domain": "phrases",
+    "update": "Clarified the single AdvP level and the qualified generalization that AdvP expansion is broadly a subset of AdjP expansion."
+  }
+]
