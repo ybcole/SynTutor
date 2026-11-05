@@ -6060,17 +6060,11 @@
       ],
       "contrast": [
         {
-          "0": "u",
-          "1": "n",
-          "2": "u",
-          "3": "s",
-          "4": "u",
-          "5": "a",
-          "6": "l",
           "id": "x1",
           "text": "She missed the bus through not being standing at the right stop. [rare casual pattern, not established in Present-day English]",
           "origin": "ai_authored",
-          "judgement": "possible"
+          "judgement": "unusual",
+          "tests_exception": true
         }
       ]
     },
