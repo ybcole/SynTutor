@@ -35,7 +35,7 @@
 
 ## Counts and validation
 - **5** new rules (3 classification, 2 descriptive generalisation), **11** new concepts, **27** original examples, **19** cross-references, **6** approved prior-rule refinements.
-- No new constraints or reported rule conflicts. **2** scoped uncertainties about further quantifier scope analysis and exhaustive combinability; remain flagged until later sections are processed.
+- No new constraints. One resolved historical overgeneralisation is explicitly recorded: CLS-047 versus CLS-094, with the existing rule qualified and the exception encoded separately. **2** scoped uncertainties about further quantifier scope analysis and exhaustive combinability; remain flagged until later sections are processed.
 - Pre-commit repository audit: **165 active rules**, **220 unique concept terms**, no JSON-schema errors, duplicate IDs/concepts, or unresolved verified links.
 - Burton-Roberts mappings remain **unverified** because reference material was unavailable.
 - Source PDF, copyrighted overview table, and long source quotations are not committed.
