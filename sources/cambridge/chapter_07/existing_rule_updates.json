@@ -1,0 +1,17 @@
+[
+  {
+    "rule_id": "WCAT-012",
+    "change": "Broader preposition category with explicit subordinator exceptions and new source citations",
+    "status": "APPROVED"
+  },
+  {
+    "rule_id": "PHR-014",
+    "change": "Complement categories and modifier examples with Ch. 7 §1 source",
+    "status": "APPROVED"
+  },
+  {
+    "rule_id": "PHR-015",
+    "change": "Source-backed stranding versus head-following order distinction",
+    "status": "APPROVED"
+  }
+]
