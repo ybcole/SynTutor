@@ -887,10 +887,21 @@
     "concept": "prepositions as heads of PPs",
     "rule_type": "classification",
     "scope": "word",
-    "statement": "Prepositions are heads of preposition phrases, and words like before, until, afterwards are prepositions whether their complement is an NP, a clause, an adverb phrase, or absent; many traditional adverbs and most traditional subordinating conjunctions are therefore prepositions here.",
-    "condition": "Applies when classifying words like before, after, until, if, because: if the word heads a phrase with a complement (NP, AdvP, clause) or none, it is a preposition.",
+    "statement": "Prepositions head preposition phrases with complements of several categories or without a complement; Cambridge's expanded category includes many traditional adverbs and subordinating conjunctions, but not whether, interrogative if, or clause-introducing that, which are subordinators.",
+    "condition": "Classify the head by its syntactic behaviour rather than solely by a following NP: a preposition may take NP, clause, AdvP or other complements or no complement. In this chapter, the central prepositions form a relatively closed class with spatial and grammaticised roles. Exclude whether, if equivalent to whether, and clause-introducing that from preposition head status.",
     "violation": null,
-    "exceptions": [],
+    "exceptions": [
+      {
+        "description": "Whether, interrogative if equivalent to whether, and that introducing a subordinate clause are subordinators, not prepositions.",
+        "pages": [
+          600
+        ],
+        "example_ids": [
+          "c7",
+          "c8"
+        ]
+      }
+    ],
     "examples": {
       "correct": [
         {
@@ -922,6 +933,23 @@
           "id": "c6",
           "text": "It depends on how much they cost. [clause complement]",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c7",
+          "text": "I asked whether the team had arrived. [whether is a subordinator, not a preposition]",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c8",
+          "text": "She checked if the package had arrived. [interrogative if is a subordinator]",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c9",
+          "text": "The event ended after the guests departed. [after has a clause complement]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": []
@@ -937,6 +965,21 @@
         "pdf_pages": [
           78
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          598,
+          600,
+          603
+        ],
+        "pdf_pages": [
+          2,
+          4,
+          7
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -951,13 +994,16 @@
     "status": "APPROVED",
     "related_rules": [
       "PHR-014",
-      "WCAT-011"
+      "WCAT-011",
+      "WCAT-016",
+      "WCAT-017",
+      "COMP-019"
     ],
     "traditional_terms": [
       "adverb",
       "subordinating conjunction"
     ],
-    "review_notes": "Flag for Burton-Roberts comparison: category boundaries differ."
+    "review_notes": "Flag for Burton-Roberts comparison: category boundaries differ. Chapter 7 §1 pp. 598–603 establishes the broad, relatively closed category and its spatial/grammaticised functions; p. 600 expressly excludes whether, interrogative if, and clause-introducing that. Owner approved this refinement."
   },
   {
     "id": "WCAT-013",
@@ -1181,6 +1227,165 @@
     ],
     "confidence": "high",
     "review_notes": "The contrast concerns the grammatical relation object, not the broader ability of nouns to take complements. The examples use PP dependents in the acceptable nominal constructions. Explicitly approved by the repository owner on 2026-11-05.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "WCAT-016",
+    "domain": "word_categories",
+    "concept": "subordinators excluded from the preposition category",
+    "traditional_terms": [
+      "subordinating conjunction"
+    ],
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Cambridge treats traditional subordinating conjunctions as prepositions except whether, interrogative if equivalent to whether, and that when introducing a subordinate clause, which function as subordinators.",
+    "condition": "When classifying a word associated with a subordinate content clause, treat whether, if introducing an embedded interrogative, and clause-introducing that as subordination markers rather than heads; prepositions such as after may instead head PPs with clause complements.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The dancers rested after the music stopped. [after: preposition with declarative clause complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "Mara wondered whether the music had stopped. [whether: subordinator]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "Mara asked if the music had stopped. [interrogative if: subordinator]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "Mara believed that the music had stopped. [that: subordinator]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x5",
+          "text": "If the music stops, the dancers will rest. [conditional if: preposition under Cambridge's analysis]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          600
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "subordinators excluded from the preposition category",
+        "relation": "unverified",
+        "note": "No corresponding Burton-Roberts chapter material was supplied or available for verification; no Burton-Roberts analysis is inferred."
+      }
+    ],
+    "related_rules": [
+      "WCAT-012",
+      "CLS-029"
+    ],
+    "confidence": "high",
+    "review_notes": "The three explicitly stated exceptions are lexical/use-specific; conditional if is not the interrogative-if exception. The original extraction AI and this approval action are not a separate second-pass review.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "WCAT-017",
+    "domain": "word_categories",
+    "concept": "grammaticised uses of prepositions",
+    "traditional_terms": [],
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "In grammaticised uses a preposition primarily signals a constructional or semantic role rather than a separately identifiable meaning, and these uses normally take NP complements and resist independent modification.",
+    "condition": "When by introduces the agent in a passive, of links an NP to a nominal head, or a selected preposition connects an NP to an adjective or verb, analyse the grammatical relation as a grammaticised use; distinguish spatial or other independently meaningful uses of the same preposition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A preposition that has grammaticised uses can also have non-grammaticised uses with an independently identifiable meaning; many prepositions have no grammaticised use at all.",
+        "pages": [
+          601
+        ],
+        "example_ids": [
+          "x2"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The mural was restored by a volunteer. [by marks the passive agent]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The volunteer waited by the gate. [by has spatial meaning; non-grammaticised]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "tests_exception": true
+        },
+        {
+          "id": "x3",
+          "text": "the demolition of the warehouse [of links an NP to the noun demolition]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The athlete was pleased with the result. [with is selected by the adjective pleased]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§1 The category of prepositions",
+        "pages": [
+          601
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "grammaticised uses of prepositions",
+        "relation": "unverified",
+        "note": "No corresponding Burton-Roberts chapter material was supplied or available for verification; no Burton-Roberts analysis is inferred."
+      }
+    ],
+    "related_rules": [
+      "WCAT-012",
+      "COMP-012"
+    ],
+    "confidence": "high",
+    "review_notes": "The source states virtually restricted to NP complements in grammaticised uses, not an exceptionless ban on other complements. No free-modifier prohibition is converted into an unsourced global error rule.",
     "protocol_version": "1.0",
     "status": "APPROVED"
   }
