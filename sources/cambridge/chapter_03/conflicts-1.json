@@ -5,8 +5,8 @@
       "AGR-002"
     ],
     "kind": "cambridge_vs_existing_rule",
-    "description": "Chapter 3 §1.1 says modal auxiliaries use one present-tense form with all subjects and have no third-person-singular -s form. Existing AGR-002 states without a modal exception that a present-tense verb agrees in person and number with its subject.",
-    "proposed_resolution": "Review AGR-002 and explicitly exclude modal auxiliaries from its present-tense agreement condition, while preserving the distinct agreement forms of be and other inflecting verbs. Do not modify AGR-002 until human approval.",
-    "needs_human": true
+    "description": "Conflict originally identified because Chapter 3 §1.1 states that modal auxiliaries use one present-tense form with all subjects and do not take a third-person-singular -s ending, while the original wording of AGR-002 generalized present-tense agreement to all verbs. Resolved by narrowing AGR-002 to present-tense non-modal verbs and adding the modal exception with examples and a Chapter 3 source.",
+    "proposed_resolution": "RESOLVED with explicit human approval on 2026-11-05: AGR-002 now excludes modal auxiliaries from present-tense subject-verb agreement and cites Chapter 3 §1.1, p. 75. The new MORPH-006 rule records the invariant modal form.",
+    "needs_human": false
   }
 ]
