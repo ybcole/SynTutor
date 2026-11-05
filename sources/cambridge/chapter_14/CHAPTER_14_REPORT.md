@@ -37,7 +37,7 @@
 - Non-finite clauses function as complements within several categories or as modifiers and supplements; constructions that convey a purpose need not share the same syntactic function.
 
 ## Coverage and validation
-- 9 new approved rules (7 classification, 2 constraint); 16 new concepts; 39 original new-rule examples; 24 cross-references; 6 refinements.
+- 9 new approved rules (7 classification, 2 constraint); 16 new concepts; 40 original new-rule examples; 24 cross-references; 6 refinements.
 - Conflicts: 0 identified; uncertain/variation items: 1 (rare casual progressive gerund-participials).
 - Pre-commit mechanical check: 153 rule records, 196 unique terms, no duplicate IDs, missing required fields or unresolved internal references.
 - Burton-Roberts mapping remains **unverified** because reference material was unavailable. Owner approval is **not** independent second-pass verification.
