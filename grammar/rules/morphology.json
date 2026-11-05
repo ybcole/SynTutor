@@ -305,7 +305,7 @@
           "id": "c2",
           "text": "I regret not swimming.",
           "origin": "ai_authored",
-          "pair_id": "p2"
+          "note": "Illustrates a grammatical gerund-participial construction; it is not intended as a semantic minimal pair with the book example."
         },
         {
           "id": "c3",
@@ -331,7 +331,6 @@
           "text": "*I regret not canning swim.",
           "origin": "book",
           "page": 75,
-          "pair_id": "p2",
           "note": "Short source example illustrating the unavailable modal gerund-participle."
         },
         {
