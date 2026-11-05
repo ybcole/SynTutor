@@ -708,6 +708,17 @@
         "pdf_pages": [
           4
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -719,10 +730,11 @@
     ],
     "related_rules": [
       "MORPH-008",
-      "MORPH-010"
+      "MORPH-010",
+      "MORPH-020"
     ],
     "confidence": "high",
-    "review_notes": "The source specifically contrasts the simple dog and complex worker lexical bases while leaving their internal derivation to Chapter 19. Generalisation is restricted to inflectional treatment; it does not say all complex bases inflect regularly. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
+    "review_notes": "The source specifically contrasts the simple dog and complex worker lexical bases while leaving their internal derivation to Chapter 19. Generalisation is restricted to inflectional treatment; it does not say all complex bases inflect regularly. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition. Chapter 19 §1.1 p. 1623 illustrates layered productive derivation from a verb to an -able adjective and then a nominal derivative, providing explicit evidence of a morphologically complex lexical base distinct from ordinary inflection. Owner approved; independent second pass outstanding.",
     "protocol_version": "1.0",
     "status": "APPROVED"
   },
@@ -1179,6 +1191,616 @@
     ],
     "confidence": "high",
     "review_notes": "The source gives sheep as explicit syncretism, distinct from identity with the lexical base. No claim is made that forms must be homophonous and homographic together: pronunciation OR spelling identity suffices. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "MORPH-016",
+    "domain": "morphology",
+    "concept": "established words",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "An established word is recognised by speakers as an individual vocabulary item; it can have an idiosyncratic or historically inherited formation that need not be available for making new words.",
+    "condition": "Classify a lexical item as established when it is conventionally familiar in the language, rather than merely matching a productive construction; an established form can remain usable even when the process that first produced it has ceased to be productive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The museum has an exhibit about the medieval bishopric. [bishopric is an established lexical item, not a productive model for new -ric formations]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The kingdom's eastern border followed the river. [kingdom is an established lexical item]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The editor praised the writer's unfaithfulness to a restrictive style guide. [a conventionally available lexical item]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The speaker proposed a novel expression during the workshop. [coinage alone does not demonstrate establishment]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "established words",
+        "relation": "unverified",
+        "note": "The Burton-Roberts reference and concept index have not been inspected; no claim of equivalence is made."
+      }
+    ],
+    "related_rules": [
+      "MORPH-017",
+      "MORPH-021",
+      "MORPH-023"
+    ],
+    "confidence": "high",
+    "review_notes": "Printed p. 1623 defines establishment by speakers' conventional lexical knowledge. Whether an arbitrary newly coined form has already become established cannot be decided solely by its internal shape. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "MORPH-017",
+    "domain": "morphology",
+    "concept": "potential words",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A potential word is a non-established word whose formation accords with Present-day English word-formation rules, whether or not anyone has previously used it.",
+    "condition": "For a proposed lexical word that is not already part of the established vocabulary, classify it as potential if it is morphologically admissible under an available word-formation process, without requiring prior attestation or a dictionary entry.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Suppose a technician coins 'relabelability' for a report. [candidate potential word if it has not become established; productive derivation]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "Suppose a designer coins 'restackability' for a packing experiment. [candidate potential word if not established]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "A newly coined and well-formed term may be understood before entering a dictionary. [potential word status does not require attestation]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "An established word is not reclassified as merely potential every time a speaker invents a new use for it. [establishment is a separate property]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1624
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "potential words",
+        "relation": "unverified",
+        "note": "The Burton-Roberts reference and concept index have not been inspected; no claim of equivalence is made."
+      }
+    ],
+    "related_rules": [
+      "MORPH-016",
+      "MORPH-018",
+      "MORPH-020"
+    ],
+    "confidence": "high",
+    "review_notes": "The section p.1624 defines potential as grammatical-but-not-established. 'Relabelability' and 'restackability' are illustrative hypothetical coinages; no claim of their actual dictionary status is made. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "MORPH-018",
+    "domain": "morphology",
+    "concept": "nonce-words distinguished from potential words",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A nonce-word has been used on an occasion but has not become established, while the larger class of potential words also includes well-formed coinages that have never been used.",
+    "condition": "When a morphologically admissible word is non-established, record whether it has actually been used: attested ad-hoc use makes it a nonce-word, whereas mere possible formation still qualifies it as a potential word; use alone does not establish permanent vocabulary status.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "During the brainstorming session, the team used 'relabelability' as its temporary term. [illustrative nonce use assuming it is not established]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "A possible but never uttered derivative is still a potential word if it obeys productive morphology. [not a nonce word without use]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The writer coined a word in one newsletter. [one occasion of use does not prove establishment]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "A word already established in the language is not a nonce word simply because it is unusual in one article. [established status is distinct]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1624
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "nonce-words distinguished from potential words",
+        "relation": "unverified",
+        "note": "The Burton-Roberts reference and concept index have not been inspected; no claim of equivalence is made."
+      }
+    ],
+    "related_rules": [
+      "MORPH-016",
+      "MORPH-017"
+    ],
+    "confidence": "high",
+    "review_notes": "The subsection p.1624 explicitly covers nonce-words used without lexical establishment and potential forms that may never have been used. The test examples are metalinguistic and conditional, not independent corpus-attestation claims. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "MORPH-019",
+    "domain": "morphology",
+    "concept": "stylistic preference distinguished from morphological grammaticality",
+    "traditional_terms": [],
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A morphologically well-formed new word may be criticised for awkward style, but stylistic dislike does not by itself make the word ill-formed under word-formation rules.",
+    "condition": "For a proposed lexical word created by a currently available English formation process, evaluate morphological licensing separately from whether particular speakers find the word elegant or idiomatic.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The reviewer found 'relabelability' cumbersome but understood the proposed noun. [style judgement does not determine morphological well-formedness]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The engineer preferred 'ease of repair' to 'repairability'. [wording preference rather than a morphology prohibition]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "A proposed productive derivative can sound ungainly without being morphologically invalid. [independent stylistic dimension]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The editorial team replaced a complex noun with a plain phrase for readability. [an editing choice does not imply ungrammaticality]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623,
+          1624
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "stylistic preference distinguished from morphological grammaticality",
+        "relation": "unverified",
+        "note": "The Burton-Roberts reference and concept index have not been inspected; no claim of equivalence is made."
+      }
+    ],
+    "related_rules": [
+      "MORPH-017",
+      "MORPH-020"
+    ],
+    "confidence": "high",
+    "review_notes": "The source p.1623 explicitly distinguishes stylistic criticism of a morphologically admissible word from a failure to meet the language's word-formation constraints. No prescriptive ban is inferred. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "MORPH-020",
+    "domain": "morphology",
+    "concept": "productive layered verb-to-adjective-to-noun formation",
+    "traditional_terms": [],
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A verb can form an adjective with the productive suffix -able, and that adjective can form a noun with -ity, with a change in the ending, to express a property of the original action.",
+    "condition": "For a verb that licenses -able, analyse a derived nominal such as repairability as an adjective stage in -able followed by noun-forming -ity, taking account of the -able to -ability shape; do not assume every verb must allow this derivation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The two-step pattern is available only where the verb supports the adjective-forming -able derivation; the subsection does not license it indiscriminately for all verbs.",
+        "pages": [
+          1623
+        ],
+        "example_ids": [
+          "x1"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The crew evaluated the repairability of the damaged panel. [repair → repairable → repairability]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "tests_exception": true
+        },
+        {
+          "id": "x2",
+          "text": "The packaging team tested the foldability of the carton. [fold → foldable → foldability]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The inspection focused on the washability of the fabric. [wash → washable → washability]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The engineers discussed the readability of the tiny label. [read → readable → readability]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "productive layered verb-to-adjective-to-noun formation",
+        "relation": "unverified",
+        "note": "The Burton-Roberts reference and concept index have not been inspected; no claim of equivalence is made."
+      }
+    ],
+    "related_rules": [
+      "MORPH-009",
+      "MORPH-017",
+      "MORPH-019"
+    ],
+    "confidence": "high",
+    "review_notes": "The source p.1623 explicitly analyzes a verb + -able + subsequent nominal suffix, modifying -able in the result. This subsection does not specify a universal licensing inventory for individual verb bases. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "MORPH-021",
+    "domain": "morphology",
+    "concept": "nonproductive -ric formation in established lexical words",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The old -ric suffix survives in established lexical items but is not a productive Present-day English device for coining words for new jurisdictions or offices.",
+    "condition": "When a newly proposed noun is modelled by attaching -ric to a title as in an inherited established form such as bishopric, distinguish the historical established lexical item from the unsupported attempt to extend that suffix as an ordinary productive present-day pattern.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Established words formed by the inherited pattern remain established vocabulary even when their formative process is no longer productive.",
+        "pages": [
+          1624
+        ],
+        "example_ids": [
+          "x1",
+          "x2"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The archivist studied the history of the bishopric. [established inherited -ric lexical item]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "tests_exception": true
+        },
+        {
+          "id": "x2",
+          "text": "The records describe an archbishopric. [another established -ric lexical item]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "tests_exception": true
+        },
+        {
+          "id": "x3",
+          "text": "A novelist proposes 'stewardric' to name a newly created steward's territory. [hypothetical analogy, not licensed by a productive -ric rule]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "A student suggests 'curatorric' for the curator's region. [hypothetical coinage modelled on the unproductive pattern]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623,
+          1624
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "nonproductive -ric formation in established lexical words",
+        "relation": "unverified",
+        "note": "The Burton-Roberts reference and concept index have not been inspected; no claim of equivalence is made."
+      }
+    ],
+    "related_rules": [
+      "MORPH-016",
+      "MORPH-017",
+      "MORPH-022"
+    ],
+    "confidence": "high",
+    "review_notes": "Printed pp. 1623–1624 explicitly call the established bishopric process no longer available for creating new words. The examples of new -ric forms are expressly hypothetical, not corpus-based lexicality claims; the source's footnote allows discussing existing inherited forms separately. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "MORPH-022",
+    "domain": "morphology",
+    "concept": "nonproductive verb-object agent-compound pattern",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The inherited agent-denoting compound pattern with a plain-form verb followed by its direct-object noun is no longer generally available for freely coining new Present-day English words, although established historical instances remain.",
+    "condition": "For an intended new agent noun formed as a bare verb followed by the noun denoting its direct object, distinguish historical established compounds such as pickpocket from a novel attempt to apply the same inherited agent-word pattern; do not confuse this with all productive verb-noun compounding.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Established historical words exemplifying the unavailable formation pattern remain valid lexical items.",
+        "pages": [
+          1624
+        ],
+        "example_ids": [
+          "x1",
+          "x4"
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The police caught a pickpocket near the entrance. [established inherited agent compound]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "tests_exception": true
+        },
+        {
+          "id": "x2",
+          "text": "A storyteller proposes 'carrycrate' to mean a person who carries crates. [hypothetical new agent term in the unproductive pattern]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "A child proposes 'mowlawn' to mean a person who mows lawns. [hypothetical new agent term in the unproductive pattern]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The catalogue lists a pickpocket as a character in the story. [an established form is available despite the inactive formation rule]",
+          "origin": "ai_authored",
+          "judgement": "possible",
+          "tests_exception": true
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623,
+          1624
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "nonproductive verb-object agent-compound pattern",
+        "relation": "unverified",
+        "note": "The Burton-Roberts reference and concept index have not been inspected; no claim of equivalence is made."
+      }
+    ],
+    "related_rules": [
+      "MORPH-016",
+      "MORPH-021",
+      "MORPH-017"
+    ],
+    "confidence": "high",
+    "review_notes": "The source p.1623 continuing to 1624 explicitly limits the unavailable construction to the plain verb + direct-object noun pattern used to denote a person. This is not a general prohibition on all novel noun compounds. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "MORPH-023",
+    "domain": "morphology",
+    "concept": "dictionary inventories versus grammatical word inventories",
+    "traditional_terms": [],
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The inventory of dictionary entries differs from the inventory of grammatical words: dictionaries include multiword expressions and need not list every well-formed non-established word.",
+    "condition": "When comparing dictionary coverage with word status, treat lexicalised multiword dictionary entries as distinct from single grammatical words, and recognise morphologically admissible potential words even if absent from dictionary headword lists.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "A dictionary may explain 'break the ice' as a multiword expression. [a dictionary entry need not be one word]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The editor looked up 'red herring' as a fixed multiword expression. [lexical entry and wordhood differ]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "A proposed productive derivative may be absent from the dictionary without being morphologically invalid. [grammaticality not equivalent to headword listing]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "A novel form can be discussed in a grammar without being listed as an established dictionary item. [distinct purposes of grammar and dictionary]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§1.1 Established words and potential words",
+        "pages": [
+          1623,
+          1624
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "dictionary inventories versus grammatical word inventories",
+        "relation": "unverified",
+        "note": "The Burton-Roberts reference and concept index have not been inspected; no claim of equivalence is made."
+      }
+    ],
+    "related_rules": [
+      "MORPH-016",
+      "MORPH-017"
+    ],
+    "confidence": "high",
+    "review_notes": "The source pp.1623–1624 distinguishes dictionary inventory from grammatical words in both directions: multiword lexical entries and unlisted potential words. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
     "protocol_version": "1.0",
     "status": "APPROVED"
   }
