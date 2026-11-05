@@ -636,6 +636,11 @@
           "text": "I can't remember what Jon said Mara bought.",
           "origin": "ai_authored",
           "note": "'what' is object of 'bought', not 'said'."
+        },
+        {
+          "id": "c3",
+          "text": "I wonder which visitor Lina invited. [subordinate interrogative with subject–predicator order]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": []
@@ -653,6 +658,17 @@
           68,
           69
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          949
+        ],
+        "pdf_pages": [
+          3
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -667,9 +683,11 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-012",
-      "CLS-013"
+      "CLS-013",
+      "CLS-066",
+      "CLS-069"
     ],
-    "review_notes": "The tree diagrams are on pp. 48-50; trees were not examined as images for this pass."
+    "review_notes": "The tree diagrams are on pp. 48-50; trees were not examined as images for this pass. Ch. 11 §1 p. 949 identifies prenuclear interrogative phrase plus uninverted subject–predicator order as one marker of subordinate interrogative form; the corresponding main interrogative typically has inversion."
   },
   {
     "id": "CLS-012",
@@ -897,6 +915,16 @@
           "id": "c4",
           "text": "Writing poems is fun. [non-finite]",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "They insisted that the gate be repaired. [finite subjunctive content clause]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "They asked that the gate be repaired rather than replacing it. [finite subjunctive]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": []
@@ -912,6 +940,17 @@
         "pdf_pages": [
           71
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -926,8 +965,10 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-014",
-      "MORPH-001"
-    ]
+      "MORPH-001",
+      "CLS-029"
+    ],
+    "review_notes": "Ch. 11 §1 p. 950 confirms that finite subordinate clauses include subjunctives despite use of the plain form, as well as clauses with present, preterite or irrealis forms. Non-finite clauses include infinitival, gerund-participial and past-participial constructions."
   },
   {
     "id": "CLS-016",
@@ -2119,6 +2160,21 @@
           "id": "c4",
           "text": "She asked what they wanted. [content]",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "The report that Alma wanted was missing. [relative: object of wanted unexpressed]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c6",
+          "text": "We acquired more copies than Alma wanted. [comparative: understood complement omitted]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c7",
+          "text": "I know that Alma wanted the report. [content: overt object]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": []
@@ -2133,6 +2189,17 @@
         ],
         "pdf_pages": [
           82
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
         ]
       }
     ],
@@ -2149,8 +2216,12 @@
     "related_rules": [
       "CLS-040",
       "CLS-035",
-      "CLS-041"
-    ]
+      "CLS-041",
+      "CLS-065",
+      "CLS-066",
+      "CLS-067"
+    ],
+    "review_notes": "Ch. 11 §1 p. 950 confirms relative, comparative and content as the principal finite subordinate types; content is the default, lacking the special gap properties of relative and comparative clauses. This does not convert the descriptive default into a grammatical prohibition."
   },
   {
     "id": "CLS-030",
@@ -2555,6 +2626,11 @@
           "id": "c2",
           "text": "We met Mara, who had just arrived. [supplementary]",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Theo consulted his aunt, who was an experienced planner. [supplementary wh-relative]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": []
@@ -2570,6 +2646,17 @@
         "pdf_pages": [
           83
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -2584,12 +2671,14 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-035",
-      "CLS-046"
+      "CLS-046",
+      "CLS-068"
     ],
     "traditional_terms": [
       "restrictive",
       "non-restrictive"
-    ]
+    ],
+    "review_notes": "Ch. 11 §1 p. 950 explicitly describes supplementary wh-relatives as subordinate in form, though supplements are not integrated syntactic dependents."
   },
   {
     "id": "CLS-037",
@@ -4579,5 +4668,359 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "review_notes": "The source includes these under clause fragments, not as evidence that all verbless phrases are clauses. Approved by user; no independent second-pass review."
+  },
+  {
+    "id": "CLS-065",
+    "domain": "clauses",
+    "concept": "subordination versus main clause head function",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "multi_clause",
+    "statement": "A subordinate clause characteristically functions as a dependent of another construction, while a main clause can be the head of that construction even when it contains other clauses.",
+    "condition": "When assigning a clause's structural status within a larger construction, distinguish a clause functioning as modifier or complement from the head clause; do not classify a clause as subordinate merely because it occurs inside a sentence that contains another clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The article Mira recommended is unavailable. [relative clause modifies article]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "Theo believes that Mira is correct. [that-clause is complement of believes]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "Although the report was lengthy, it was helpful. [although heads an adjunct PP; it was helpful is the main/head clause]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The revised report was helpful. [one main clause without subordination]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          949,
+          950
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "subordination versus main clause head function",
+        "relation": "unverified",
+        "note": "Burton-Roberts chapter material/concept index was unavailable; this is a candidate terminology link, not a verified comparison."
+      }
+    ],
+    "related_rules": [
+      "CLS-029",
+      "CLS-036",
+      "CLS-046"
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "review_notes": "The source says 'characteristically', not invariably: standalone subordinate-form clauses and supplementary relatives are counterexamples to an absolute dependent-only definition (CLS-068). Owner-approved; no independent second pass."
+  },
+  {
+    "id": "CLS-066",
+    "domain": "clauses",
+    "concept": "structural marking of subordinate clause form",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subordinate clause form can be signalled by an introductory subordinator, an understood gap, or the combination of an initial interrogative phrase with subject-before-predicator order.",
+    "condition": "For a subordinate clause, inspect overt structural cues separately: that before a declarative content clause, a relative construction with a missing understood object, or a subordinate open interrogative with a prenuclear interrogative phrase and uninverted subject–predicator order.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "It seems clear that Lea made an error. [subordinator that]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The documents Ben submitted were complete. [relative with an understood object gap]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "They asked which route Farah would take. [subordinate open interrogative: subject Farah before auxiliary would]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "Which route would Farah take? [corresponding main open interrogative with inversion]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          949
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "structural marking of subordinate clause form",
+        "relation": "unverified",
+        "note": "Burton-Roberts chapter material/concept index was unavailable; this is a candidate terminology link, not a verified comparison."
+      }
+    ],
+    "related_rules": [
+      "CLS-011",
+      "CLS-013",
+      "CLS-035",
+      "CLS-029"
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "review_notes": "These are examples of internal marking, not exhaustive necessary conditions: unmarked dependent content clauses are also possible (CLS-067). Source p. 949."
+  },
+  {
+    "id": "CLS-067",
+    "domain": "clauses",
+    "concept": "structurally unmarked subordinate content clause",
+    "traditional_terms": [],
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A finite declarative content clause may function as a subordinate complement even when no part of its internal structure distinguishes it from an independent main clause.",
+    "condition": "When a finite declarative clause is licensed as a complement of a matrix predicate, recognise subordination from its syntactic function even when there is no that marker or other internal cue; whether that can be omitted in a particular construction is addressed separately in Chapter 11 §3.1.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "I know the printer is broken. [bare subordinate content-clause complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The printer is broken. [the same internal words as an independent main clause]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "They said the rehearsal had ended. [bare subordinate content-clause complement]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "They said that the rehearsal had ended. [marked counterpart]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          949
+        ],
+        "pdf_pages": [
+          3
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "structurally unmarked subordinate content clause",
+        "relation": "unverified",
+        "note": "Burton-Roberts chapter material/concept index was unavailable; this is a candidate terminology link, not a verified comparison."
+      }
+    ],
+    "related_rules": [
+      "CLS-029",
+      "CLS-065",
+      "CLS-066"
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "review_notes": "The existence of bare content clauses does not mean every subordinate declarative can omit that. Specific obligatory and excluded environments are deferred by the source to Ch. 11 §3.1."
+  },
+  {
+    "id": "CLS-068",
+    "domain": "clauses",
+    "concept": "subordinate-form clauses without syntactic dependency",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clause with subordinate structural marking need not actually be a dependent: elliptical answers, rare independent exclamatory content clauses, and supplementary relative clauses can retain subordinate form without dependent function.",
+    "condition": "When analysing a structurally subordinate-form clause used as an independent elliptical response, as an independent exclamatory construction, or as a supplementary relative, distinguish its internal subordination marker from whether it is a syntactic dependent in a larger construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "A: What did the committee request? B: That the schedule be revised. [independent elliptical answer with that]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "That everything should end in such confusion! [rare independent exclamatory content clause]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "Nora phoned her old mentor, who now lives nearby. [supplementary relative, not an integrated dependent]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "Nora phoned the mentor who lives nearby. [integrated relative functioning as NP modifier]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "subordinate-form clauses without syntactic dependency",
+        "relation": "unverified",
+        "note": "Burton-Roberts chapter material/concept index was unavailable; this is a candidate terminology link, not a verified comparison."
+      }
+    ],
+    "related_rules": [
+      "CLS-036",
+      "CLS-046",
+      "CLS-065",
+      "CLS-066"
+    ],
+    "confidence": "high",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "review_notes": "This is a limited, explicitly documented classification. The source also notes the reverse mismatch: a dependent may display main-clause form (CLS-069). The independent exclamatory that-clause is expressly described as rare."
+  },
+  {
+    "id": "CLS-069",
+    "domain": "clauses",
+    "concept": "main-clause form in a dependent clause function",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "multi_clause",
+    "statement": "A clause functioning as a dependent may sometimes retain main-clause interrogative structure, including subject–auxiliary inversion, instead of exhibiting the usual subordinate interrogative order.",
+    "condition": "In the specified predicate-complement pattern exemplified on p. 950, recognise that an interrogative with main-clause inversion can function as a dependent; do not generalise the distribution to all embedded interrogatives, which normally retain subject–predicator order.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The real question is why did nobody notify the staff? [main interrogative form in complement function]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The real question is why nobody notified the staff. [ordinary subordinate interrogative form]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "They wondered why nobody notified the staff. [normal subordinate interrogative with no inversion]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1 Subordinate clauses",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "main-clause form in a dependent clause function",
+        "relation": "unverified",
+        "note": "Burton-Roberts chapter material/concept index was unavailable; this is a candidate terminology link, not a verified comparison."
+      }
+    ],
+    "related_rules": [
+      "CLS-011",
+      "CLS-013",
+      "CLS-065",
+      "CLS-067"
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.0",
+    "status": "APPROVED",
+    "review_notes": "The source gives this example and points to §5.3.1 for its detailed distribution. Record only the illustrated predicative-complement pattern; detailed licensing and variety restrictions remain unverified until that later section is processed. User-approved; independent second-pass AI review not performed."
   }
 ]
