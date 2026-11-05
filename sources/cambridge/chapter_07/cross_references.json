@@ -1,0 +1,74 @@
+[
+  {
+    "from_rule": "WCAT-016",
+    "to": "WCAT-012",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-016",
+    "to": "CLS-029",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-017",
+    "to": "WCAT-012",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-017",
+    "to": "COMP-012",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-019",
+    "to": "PHR-014",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-019",
+    "to": "WCAT-012",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "COMP-019",
+    "to": "COMP-006",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-019",
+    "to": "PHR-015",
+    "relation": "contrasts",
+    "verified": true
+  },
+  {
+    "from_rule": "PHR-019",
+    "to": "PHR-014",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "WCAT-012",
+    "to": "Cambridge Chapter 11 §8.1 (subordinators)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "PHR-015",
+    "to": "Cambridge Chapter 7 §4.1 (stranding)",
+    "relation": "refines",
+    "verified": false
+  },
+  {
+    "from_rule": "PHR-019",
+    "to": "Cambridge Chapter 7 §4.2 (complement-head order)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]
