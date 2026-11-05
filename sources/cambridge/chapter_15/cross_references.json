@@ -1,0 +1,110 @@
+[
+  {
+    "from_rule": "CLS-087",
+    "to": "CLS-045",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-087",
+    "to": "CLS-003",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-088",
+    "to": "CLS-045",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-089",
+    "to": "CLS-087",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-089",
+    "to": "CLS-088",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-090",
+    "to": "CLS-089",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-090",
+    "to": "CLS-087",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-091",
+    "to": "CLS-088",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-091",
+    "to": "CLS-089",
+    "relation": "overlaps",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-092",
+    "to": "CLS-003",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-092",
+    "to": "CLS-045",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-093",
+    "to": "CLS-092",
+    "relation": "refines",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-093",
+    "to": "CLS-045",
+    "relation": "depends_on",
+    "verified": true
+  },
+  {
+    "from_rule": "CLS-045",
+    "to": "Cambridge Chapter 15 §1.3.2 (joint coordination)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-090",
+    "to": "Cambridge Chapter 15 §1.2 (layered coordination)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-091",
+    "to": "Cambridge Chapter 15 §2.3 (both and either)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-092",
+    "to": "Cambridge Chapter 15 §4.5 (end-attachment coordination)",
+    "relation": "depends_on",
+    "verified": false
+  },
+  {
+    "from_rule": "CLS-093",
+    "to": "Cambridge Chapter 15 §4.1 (expanded coordinates)",
+    "relation": "depends_on",
+    "verified": false
+  }
+]

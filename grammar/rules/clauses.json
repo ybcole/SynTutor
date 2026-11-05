@@ -144,6 +144,11 @@
           "text": "Mara and her brother arrived.",
           "origin": "ai_authored",
           "note": "NP-coordination as subject."
+        },
+        {
+          "id": "c3",
+          "text": "We can meet after lunch or on Saturday. [NP/PP mixed coordination in temporal adjunct function]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": []
@@ -159,6 +164,19 @@
         "pdf_pages": [
           65
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1275,
+          1276
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -172,9 +190,12 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "related_rules": [
-      "CLS-002"
+      "CLS-002",
+      "CLS-087",
+      "CLS-092",
+      "CLS-093"
     ],
-    "review_notes": "Detailed treatment is in Ch. 15; this record covers only the Ch. 2 overview."
+    "review_notes": "Detailed treatment is in Ch. 15; this record covers only the Ch. 2 overview. Chapter 15 §1.1 confirms coordination is a non-headed syntactic category, and a mixed NP/PP-coordination cannot be categorised as either a simple NP or a simple PP; labels reflect coordinate categories."
   },
   {
     "id": "CLS-004",
@@ -3451,6 +3472,16 @@
           "id": "c6",
           "text": "the manager, her husband, the secretary and Alice",
           "origin": "ai_authored"
+        },
+        {
+          "id": "c7",
+          "text": "Lina and Omar form a committee. [joint coordination: neither participant independently forms a committee]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c8",
+          "text": "Lina will travel this evening or on Saturday. [NP/PP mixed coordination]",
+          "origin": "ai_authored"
         }
       ],
       "incorrect": []
@@ -3466,6 +3497,21 @@
         "pdf_pages": [
           86
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1275,
+          1276,
+          1277
+        ],
+        "pdf_pages": [
+          3,
+          4,
+          5
+        ]
       }
     ],
     "burton_roberts_mapping": [
@@ -3479,9 +3525,15 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "related_rules": [
-      "CLS-003"
+      "CLS-003",
+      "CLS-087",
+      "CLS-088",
+      "CLS-089",
+      "CLS-090",
+      "CLS-091",
+      "CLS-092"
     ],
-    "review_notes": "'In general' likeness of function; exceptions in Ch. 15."
+    "review_notes": "'In general' likeness of function; exceptions in Ch. 15. Chapter 15 §1.1 describes coordinates of equal status, usually but not necessarily linked by a coordinator; replacement of the whole by one coordinate and coordinate order reversal are diagnostics that normally, not invariably, work. The p. 1275 footnote gives joint coordination as a counterexample to independent replacement; its detailed analysis is deferred to §1.3.2."
   },
   {
     "id": "CLS-046",
@@ -6527,6 +6579,515 @@
     ],
     "confidence": "high",
     "review_notes": "The source's range of modifiers and supplements is broader than the examples; these are positive classifications, not prohibitions. Owner explicitly authorised approval in the Chapter 14 request on 2026-11-05. This is not an independent second-pass AI review.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "CLS-087",
+    "domain": "clauses",
+    "concept": "binary and multiple coordination",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A coordination with precisely two bare coordinates is binary, while one containing more than two bare coordinates in the same structure is multiple.",
+    "condition": "Classify a coordinative construction by its number of bare coordinate constituents: exactly two yields binary coordination and three or more at one level yields multiple coordination, independently of whether a coordinator is overt.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "A designer and an engineer reviewed the prototype. [binary NP-coordination]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "A designer, an engineer, and a researcher reviewed the prototype. [multiple NP-coordination]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The door opened and the alarm rang. [binary clause-coordination]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "They will travel by car, by train, or by ferry. [multiple PP-coordination]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "binary and multiple coordination",
+        "relation": "unverified",
+        "note": "The relevant Burton-Roberts text or concept index was not available in this pass; no cross-framework analysis is asserted."
+      }
+    ],
+    "related_rules": [
+      "CLS-003",
+      "CLS-045"
+    ],
+    "confidence": "high",
+    "review_notes": "The source contrasts binary with multiple by number of coordinates. Do not confuse the number of coordinators with the number of coordinates. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "CLS-088",
+    "domain": "clauses",
+    "concept": "syndetic and asyndetic coordination",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A coordination is syndetic when it is overtly linked by a coordinator and asyndetic when its coordinate relation is expressed without an overt coordinator.",
+    "condition": "For an independently identified coordination, inspect whether a syntactic coordinator such as and or or marks the construction; classify overtly coordinated instances as syndetic, and unmarked series as asyndetic, without assuming all comma-separated phrases must be coordinations.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "They consulted the architect and the engineer. [syndetic NP-coordination]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "They consulted the architect, the engineer. [asyndetic series in an appropriate list context]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The guests laughed, the host smiled. [asyndetic clause-coordination]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The guests laughed and the host smiled. [syndetic clause-coordination]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276,
+          1277
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "syndetic and asyndetic coordination",
+        "relation": "unverified",
+        "note": "The relevant Burton-Roberts text or concept index was not available in this pass; no cross-framework analysis is asserted."
+      }
+    ],
+    "related_rules": [
+      "CLS-045",
+      "CLS-087"
+    ],
+    "confidence": "high",
+    "review_notes": "The source warns that absence of an overt marker makes asyndetic coordination sometimes hard to distinguish from non-coordinative constructions. The classification presupposes that coordination has been independently established. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "CLS-089",
+    "domain": "clauses",
+    "concept": "simple-syndetic versus polysyndetic multiple coordination",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Multiple syndetic coordination is simple-syndetic when only the final coordinate has a coordinator, and polysyndetic when each non-initial coordinate is marked by a coordinator.",
+    "condition": "For a single-layer multiple coordination of three or more bare coordinates, examine the coordinators before the second, medial and final coordinates: final-only marking is simple-syndetic and marking before every non-initial coordinate is polysyndetic.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The workshop is scheduled for Tuesday, Thursday, or Saturday. [simple-syndetic]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The workshop is scheduled for Tuesday or Thursday or Saturday. [polysyndetic]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "They ordered soup, rice, and vegetables. [simple-syndetic]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "They ordered soup and rice and vegetables. [polysyndetic]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "simple-syndetic versus polysyndetic multiple coordination",
+        "relation": "unverified",
+        "note": "The relevant Burton-Roberts text or concept index was not available in this pass; no cross-framework analysis is asserted."
+      }
+    ],
+    "related_rules": [
+      "CLS-087",
+      "CLS-088",
+      "CLS-090",
+      "CLS-091"
+    ],
+    "confidence": "high",
+    "review_notes": "The source differentiates marking of bare coordinates in a multiple coordination, not the unrelated question whether a coordinator occurs inside an individual NP. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "CLS-090",
+    "domain": "clauses",
+    "concept": "uniform coordinator marking of medial coordinates in single-layer multiple coordination",
+    "traditional_terms": [],
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "In a single-layer multiple syndetic coordination, medial bare coordinates must be marked consistently: either none is marked or all are marked.",
+    "condition": "In a multiple coordination of four or more bare coordinates analysed at one syntactic layer, with a coordinator marking the final coordinate, apply one marking pattern to all medial coordinates; mixing marked and unmarked medial coordinates violates the described unlayered construction.",
+    "violation": "At least one medial coordinate in the same single-layer coordination has an overt coordinator while another medial coordinate in that layer lacks one.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They can meet on Monday, Tuesday, Wednesday, or Friday. [all medial coordinates unmarked]",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "c2",
+          "text": "They can meet on Monday or Tuesday or Wednesday or Friday or Saturday. [all medial coordinates marked]",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "c3",
+          "text": "The choices were tea, coffee, lemonade, or water. [final-only pattern]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "*They can meet on Monday or Tuesday, Wednesday, or Friday. [mixed medial markers if analysed as one layer]",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "*They can meet on Monday, Tuesday or Wednesday, Friday or Saturday. [mixed medial marking in a proposed single-layer analysis]",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        }
+      ],
+      "contrast": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "uniform coordinator marking of medial coordinates in single-layer multiple coordination",
+        "relation": "unverified",
+        "note": "The relevant Burton-Roberts text or concept index was not available in this pass; no cross-framework analysis is asserted."
+      }
+    ],
+    "related_rules": [
+      "CLS-089",
+      "CLS-087",
+      "CLS-045"
+    ],
+    "confidence": "high",
+    "review_notes": "The source marks a mixed multiple-coordination pattern as ill formed at p. 1276. This is a rule about a SINGLE unlayered analysis, not a claim that all utterances with mixed conjunctions are universally impossible; apparent layering is deferred to §1.2. The second pairing additionally varies the number of coordinates, so only the first pair is strictly minimal. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "CLS-091",
+    "domain": "clauses",
+    "concept": "correlative determinatives in syndetic coordination",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Correlative coordination marks the initial coordinate with a determinative paired with the final coordinator, such as both with and or either with or; the corresponding non-correlative coordination lacks the initial marker.",
+    "condition": "For a syndetic coordination, identify an optional initial correlative determinative paired with the final coordinator: both is paired with and, and either with or. Either may also occur with both simple-syndetic and polysyndetic multiple coordination.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "Both the painter and the sculptor spoke. [correlative both...and]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The painter and the sculptor spoke. [non-correlative]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "Either on Tuesday or on Thursday works for us. [correlative either...or]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The event may run either on Tuesday, on Thursday, or on Saturday. [multiple simple-syndetic with either]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x5",
+          "text": "The event may run either on Tuesday or on Thursday or on Saturday. [multiple polysyndetic with either]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "correlative determinatives in syndetic coordination",
+        "relation": "unverified",
+        "note": "The relevant Burton-Roberts text or concept index was not available in this pass; no cross-framework analysis is asserted."
+      }
+    ],
+    "related_rules": [
+      "CLS-088",
+      "CLS-089",
+      "CLS-045"
+    ],
+    "confidence": "high",
+    "review_notes": "The source classifies initial both and either as determinatives; do not relabel them as the final coordinator. Detailed distribution is deferred to §2.3. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "CLS-092",
+    "domain": "clauses",
+    "concept": "coordinator as marker within the following expanded coordinate",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In Cambridge's constituent analysis, a coordinator is a marker within the coordinate that follows it, rather than an independent head governing two coordinates.",
+    "condition": "For a syndetic construction, group the coordinator and the following bare coordinate into an expanded coordinate; the grouping is supported by their remaining adjacent in end-attachment variants and by prosodic breaks or punctuation preceding the coordinator.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The director or her deputy will present the report. [or her deputy forms an expanded coordinate]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The director will present the report, or her deputy. [end-attached coordinate retains or]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "The team approved the design, and the client signed it. [punctuation before and]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "And the client signed it. [sentence-initial coordinator with its following clause in a discourse continuation]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1277
+        ],
+        "pdf_pages": [
+          5
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "coordinator as marker within the following expanded coordinate",
+        "relation": "unverified",
+        "note": "The relevant Burton-Roberts text or concept index was not available in this pass; no cross-framework analysis is asserted."
+      }
+    ],
+    "related_rules": [
+      "CLS-003",
+      "CLS-045",
+      "CLS-093"
+    ],
+    "confidence": "high",
+    "review_notes": "The three source arguments are movable second-coordinate placement, permitted discourse-initial and/or/but, and intonation/punctuation placement. Sentence-initial coordinator is not intrinsically a grammatical error. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
+    "protocol_version": "1.0",
+    "status": "APPROVED"
+  },
+  {
+    "id": "CLS-093",
+    "domain": "clauses",
+    "concept": "bare versus expanded coordinates",
+    "traditional_terms": [],
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A bare coordinate is the core coordinate constituent; an expanded coordinate also contains its coordinator and/or modifying expressions such as indeed, too, or as well.",
+    "condition": "When analysing a coordinate containing an overt marker or coordinate-oriented modifiers, distinguish the constituent supplying the bare coordinate from its larger expanded coordinate, which includes any attached coordinator and pre- or post-coordinate modifiers.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [],
+      "incorrect": [],
+      "contrast": [
+        {
+          "id": "x1",
+          "text": "The agency praised the volunteers and the organisers. [the organisers: bare coordinate]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x2",
+          "text": "The agency praised the volunteers and especially the organisers too. [and especially the organisers too: expanded coordinate]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x3",
+          "text": "We invited the curator and indeed the archivist as well. [and indeed the archivist as well: expanded coordinate]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        },
+        {
+          "id": "x4",
+          "text": "The artist thanked the audience, her family too. [asyndetic expanded coordinate with too]",
+          "origin": "ai_authored",
+          "judgement": "possible"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1278
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "bare versus expanded coordinates",
+        "relation": "unverified",
+        "note": "The relevant Burton-Roberts text or concept index was not available in this pass; no cross-framework analysis is asserted."
+      }
+    ],
+    "related_rules": [
+      "CLS-092",
+      "CLS-045"
+    ],
+    "confidence": "high",
+    "review_notes": "Figure [9] on printed p. 1278 explicitly places the coordinator and optional Adv modifiers in the expanded coordinate. This distinction can apply without an overt coordinator (modified asyndetic series). Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
     "protocol_version": "1.0",
     "status": "APPROVED"
   }

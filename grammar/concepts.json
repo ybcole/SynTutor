@@ -73,6 +73,19 @@
           64,
           65
         ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1275,
+          1276
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
       }
     ],
     "related_concepts": []
@@ -235,6 +248,19 @@
           64,
           66,
           67
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1275,
+          1277
+        ],
+        "pdf_pages": [
+          3,
+          5
         ]
       }
     ],
@@ -1789,6 +1815,19 @@
         ],
         "pdf_pages": [
           86
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1275,
+          1276
+        ],
+        "pdf_pages": [
+          3,
+          4
         ]
       }
     ],
@@ -4451,6 +4490,287 @@
     ],
     "related_concepts": [
       "supplement"
+    ]
+  },
+  {
+    "term": "non-headed coordination",
+    "gloss": "Coordination is a structure whose coordinates have equal syntactic standing, with neither assigned head or dependent function.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1275,
+          1276
+        ],
+        "pdf_pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "coordination"
+    ]
+  },
+  {
+    "term": "binary coordination",
+    "gloss": "Coordination with two bare coordinates.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "coordination"
+    ]
+  },
+  {
+    "term": "multiple coordination",
+    "gloss": "Coordination with three or more bare coordinates at the level being analysed.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "coordination"
+    ]
+  },
+  {
+    "term": "syndetic coordination",
+    "gloss": "Coordination bearing an overt coordinator.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "coordinator"
+    ]
+  },
+  {
+    "term": "asyndetic coordination",
+    "gloss": "Coordination without an overt coordinator, potentially harder to distinguish from non-coordination.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276,
+          1277
+        ],
+        "pdf_pages": [
+          4,
+          5
+        ]
+      }
+    ],
+    "related_concepts": [
+      "syndetic coordination"
+    ]
+  },
+  {
+    "term": "simple-syndetic coordination",
+    "gloss": "Multiple syndetic coordination where only the final coordinate bears a coordinator.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "multiple coordination"
+    ]
+  },
+  {
+    "term": "polysyndetic coordination",
+    "gloss": "Multiple syndetic coordination where each coordinate after the first bears a coordinator.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "multiple coordination"
+    ]
+  },
+  {
+    "term": "medial coordinate",
+    "gloss": "A bare coordinate in multiple coordination that is neither initial nor final.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "multiple coordination"
+    ]
+  },
+  {
+    "term": "correlative coordination",
+    "gloss": "Syndetic coordination with a correlative determinative such as both or either on the first coordinate.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "coordinator"
+    ]
+  },
+  {
+    "term": "non-correlative coordination",
+    "gloss": "Syndetic coordination lacking an initial correlative determinative.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          4
+        ]
+      }
+    ],
+    "related_concepts": [
+      "correlative coordination"
+    ]
+  },
+  {
+    "term": "bare coordinate",
+    "gloss": "The core coordinate constituent excluding any coordinator or coordinate-related modifiers.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1278
+        ],
+        "pdf_pages": [
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "coordinate / coordinator"
+    ]
+  },
+  {
+    "term": "expanded coordinate",
+    "gloss": "The larger coordinate constituent incorporating the bare coordinate and its marker and/or modifiers.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1277,
+          1278
+        ],
+        "pdf_pages": [
+          5,
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "bare coordinate"
+    ]
+  },
+  {
+    "term": "coordinator–following-coordinate constituency",
+    "gloss": "Cambridge's analysis in which the coordinator forms a constituent with the following coordinate and its possible modifiers.",
+    "traditional_terms": [],
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1 Coordinations, coordinates, and coordinators",
+        "pages": [
+          1277,
+          1278
+        ],
+        "pdf_pages": [
+          5,
+          6
+        ]
+      }
+    ],
+    "related_concepts": [
+      "expanded coordinate"
     ]
   }
 ]
