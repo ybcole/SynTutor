@@ -1,0 +1,20 @@
+[
+  {
+    "rule_id": "CLS-022",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 13 §1.1",
+    "change": "Reconcile prior categorical negative-polarity licensing with positive comparative environments, explicitly excluding distinct free-choice senses."
+  },
+  {
+    "rule_id": "CLS-040",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 13 §1.1",
+    "change": "Limit the lower-bound implication of as ... as to scalar equality, not non-scalar identity comparisons."
+  },
+  {
+    "rule_id": "WCAT-013",
+    "status": "APPROVED",
+    "source": "Cambridge Chapter 13 §1.1",
+    "change": "Record how -er/more signal scalar superiority, less signals inferiority and as equality, without overgeneralising the older word-class analysis."
+  }
+]
