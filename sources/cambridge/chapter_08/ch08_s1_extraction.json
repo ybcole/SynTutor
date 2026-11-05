@@ -1,0 +1,1149 @@
+{
+  "meta": {
+    "chapter": 8,
+    "section": "§1 Preliminaries",
+    "printed_pages": [
+      665,
+      670
+    ],
+    "pdf_pages": [
+      3,
+      8
+    ],
+    "page_offset": "PDF page = printed page - 662.",
+    "processed_by": "OpenAI GPT-6",
+    "protocol_version": "1.0",
+    "highest_existing_rule_ids": {
+      "morphology": "MORPH-007",
+      "word_categories": "WCAT-017",
+      "phrases": "PHR-019",
+      "clauses": "CLS-051",
+      "complementation": "COMP-019",
+      "agreement": "AGR-002",
+      "other": "OTH-003"
+    },
+    "approval": "User expressly approved all Chapter 8 rules and refinements in the request on 2026-11-05; independent second-pass review was not performed.",
+    "input_gaps": [
+      "Burton-Roberts material/index unavailable; all mappings unverified."
+    ]
+  },
+  "concepts": [
+    {
+      "term": "semantic category overlap",
+      "gloss": "A restricted overlap whereby condition or reason phrases can qualify a situation, proposition or speech act.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            666
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "informational focus",
+      "gloss": "Discourse prominence or primary stress on an element, distinct from the scopal focus of adverbs such as only.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            667
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "focus potential",
+      "gloss": "Whether a constituent can be informationally focused in an interrogative, negation contrast or cleft.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            667
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "restrictive adjunct",
+      "gloss": "A dependent that affects the truth conditions of the proposition, as a temporal modifier can.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            667
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "non-restrictive adjunct",
+      "gloss": "An evaluative dependent not altering whether the described situation occurred.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            667
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "questionability of adjuncts",
+      "gloss": "The capacity of an adjunct class to be targeted by an interrogative expression such as when or why.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            667
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "relative scope of adjuncts",
+      "gloss": "The semantic scope of one adjunct relative to another or to negation.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            668
+          ],
+          "pdf_pages": [
+            6
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "bounding potential",
+      "gloss": "The capacity of a goal or extent to make a clause describe a bounded event.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            668,
+            669
+          ],
+          "pdf_pages": [
+            6,
+            7
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "bounded situation",
+      "gloss": "A situation presented with a terminal boundary, such as an accomplishment with a goal.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            668,
+            669
+          ],
+          "pdf_pages": [
+            6,
+            7
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "unbounded situation",
+      "gloss": "An activity presented without a terminal endpoint.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            668
+          ],
+          "pdf_pages": [
+            6
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "syntactic realisation of adjuncts",
+      "gloss": "The surface category forming an adjunct, including AdvP, PP, NP, or finite, non-finite and verbless clauses.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            669
+          ],
+          "pdf_pages": [
+            7
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "front, central and end adjunct positions",
+      "gloss": "The three coarse linear positions of adjuncts, with multiple adjuncts possible in front or end.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            669,
+            670
+          ],
+          "pdf_pages": [
+            7,
+            8
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "speech act-related adjunct",
+      "gloss": "A dependent concerning a speaker's communicative act rather than merely the event described.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            666
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "modal adjunct",
+      "gloss": "An adjunct qualifying the status or likelihood of a proposition.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            666,
+            667
+          ],
+          "pdf_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    },
+    {
+      "term": "evaluative adjunct",
+      "gloss": "An adjunct conveying a speaker evaluation of a situation, typically non-restrictive.",
+      "traditional_terms": [],
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            666,
+            667
+          ],
+          "pdf_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "related_concepts": [
+        "adjunct"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "CLS-052",
+      "domain": "clauses",
+      "concept": "ordinary, modal and speech act-related uses of condition and reason adjuncts",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "An if-conditional or because-reason phrase can constrain a situation, qualify the speaker's commitment, or comment on the act of asserting the proposition.",
+      "condition": "For an if- or because-headed adjunct, distinguish whether it relates to the event described, the modal status of the proposition, or the speaker's act of asserting it.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "We will train outside if the weather is dry. [ordinary conditional]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "If I remember correctly, the team trains on Saturday. [modal qualification]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The team trains on Saturday, if you were wondering. [speech act-related conditional]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Leah stayed home because it was icy. [reason for action]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "Leah must be home, because her bicycle is outside. [reason for asserting a conclusion]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            666
+          ],
+          "pdf_pages": [
+            4
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "ordinary, modal and speech act-related uses of condition and reason adjuncts",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source/index was provided; no comparative analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-017",
+        "CLS-018"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "These are a limited overlap of semantic categories, not an assertion that every conditional has all readings. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    },
+    {
+      "id": "CLS-053",
+      "domain": "clauses",
+      "concept": "informational focus potential of adjuncts",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "Integrated temporal-location adjuncts can typically be informational focus in alternative questions, contrastive negation and clefts, whereas evaluative supplements such as fortunately resist such focus.",
+      "condition": "Compare integrated temporal-location modifiers with evaluative supplements in alternative questions, contrastive negation and it-clefts, allowing that the cleft construction has a narrower range of focal elements.",
+      "violation": null,
+      "exceptions": [
+        {
+          "description": "It-clefts permit a narrower set of focus elements than alternative questions and contrastive negation; some -ly adverbs are less readily focused in clefts.",
+          "pages": [
+            667
+          ],
+          "example_ids": [
+            "x6"
+          ]
+        }
+      ],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The singer arrived on Thursday. [temporal adjunct]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Was it on Thursday that the singer arrived? [cleft focus]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Fortunately, the singer arrived safely. [evaluative supplement]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "?Was it fortunately that the singer arrived safely? [evaluative adjunct resists focus]",
+            "origin": "ai_authored",
+            "judgement": "unusual"
+          },
+          {
+            "id": "x5",
+            "text": "Did the boat move quickly or slowly? [alternative question]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x6",
+            "text": "?Was it quickly that the boat moved? [cleft with -ly adverb is less natural]",
+            "origin": "ai_authored",
+            "judgement": "unusual",
+            "tests_exception": true
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            667
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "informational focus potential of adjuncts",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source/index was provided; no comparative analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-017",
+        "CLS-046",
+        "CLS-049"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "The source distinguishes informational from scopal focus; this is not an absolute prohibition for all adjuncts. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    },
+    {
+      "id": "CLS-054",
+      "domain": "clauses",
+      "concept": "restrictive and non-restrictive adjuncts",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Restrictive adjuncts affect the assertion's truth conditions; non-restrictive evaluative adjuncts do not, while a modal adjunct can be truth-relevant despite resisting focus.",
+      "condition": "Compare a temporal-location modifier, evaluative supplement and epistemic modal adjunct by whether the adjunct contributes to what would make the described proposition true.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "The parcel arrived yesterday. [restrictive temporal qualification]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Fortunately, the parcel arrived. [non-restrictive evaluation]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "The parcel probably arrived. [truth-relevant modal qualification; arrival not entailed]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Surprisingly, the committee agreed. [non-restrictive evaluation]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            667
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "restrictive and non-restrictive adjuncts",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source/index was provided; no comparative analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-017",
+        "CLS-053",
+        "CLS-046"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "Lack of focus does not entail non-restrictiveness. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    },
+    {
+      "id": "CLS-055",
+      "domain": "clauses",
+      "concept": "questionability of adjunct semantic types",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "Most adjunct categories can be questioned by a suitable wh-phrase, but evaluative adjuncts cannot; both reason and purpose can be questioned by why.",
+      "condition": "When selecting an interrogative to target a clause adjunct, check its semantic type: temporal location can use when, reason and purpose can both use why, whereas speaker evaluation has no corresponding adjunct wh-question.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "When did Noor arrive? — On Monday. [temporal location]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Why did Noor open the gate? — To allow the guests in. [purpose]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Why did Noor leave? — Because she felt unwell. [reason]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Fortunately, Noor reached the station. [evaluation is not a questionably targeted adjunct]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            667
+          ],
+          "pdf_pages": [
+            5
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "questionability of adjunct semantic types",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source/index was provided; no comparative analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-018",
+        "CLS-026",
+        "CLS-053"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "Most, not all, adjunct categories are question-compatible. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    },
+    {
+      "id": "CLS-056",
+      "domain": "clauses",
+      "concept": "scope of evaluative and modal adjuncts over frequency",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "Evaluative and epistemic modal adjuncts can take wider semantic scope than frequency adjuncts within the same clause.",
+      "condition": "When an evaluative or epistemic modal adjunct co-occurs with a frequency adjunct, distinguish the reading in which the evaluation or modality applies to the whole frequency-qualified proposition.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Fortunately, Iris seldom misses the train. [evaluation over seldom]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Iris probably visits the library regularly. [probably over regularly]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Happily, the team usually finishes early. [evaluation over usually]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            668
+          ],
+          "pdf_pages": [
+            6
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "scope of evaluative and modal adjuncts over frequency",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source/index was provided; no comparative analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-018",
+        "CLS-024"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "Do not universalise the observed scope ordering; semantic scope is not reducible to linear position. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    },
+    {
+      "id": "CLS-057",
+      "domain": "clauses",
+      "concept": "bounding effects of goal and extent dependents",
+      "traditional_terms": [],
+      "rule_type": "descriptive_generalization",
+      "scope": "clause",
+      "statement": "A terminal goal or extent can turn an unbounded activity reading into a bounded accomplishment reading, affecting how in- and for-duration expressions combine with the clause.",
+      "condition": "Compare an atelic activity lacking a terminal goal with a counterpart whose goal PP or extent NP specifies an endpoint; the latter can support a bounded reading expressed with in-duration.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Omar jogged for fifteen minutes. [unbounded activity]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Omar jogged to the harbour in fifteen minutes. [bounded goal]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Omar walked three kilometres in forty minutes. [measured extent]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Omar jogged along the path for fifteen minutes. [nonterminal path]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            668,
+            669
+          ],
+          "pdf_pages": [
+            6,
+            7
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "bounding effects of goal and extent dependents",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source/index was provided; no comparative analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "PHR-003",
+        "CLS-018"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "A semantic generalization, not an exceptionless error rule for every possible for-duration reading. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    },
+    {
+      "id": "CLS-058",
+      "domain": "clauses",
+      "concept": "syntactic realisation of adjuncts",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "Adjuncts are most often AdvPs or PPs but can also be NPs, finite or non-finite clauses, or verbless clauses, with form and semantic function distinguished.",
+      "condition": "When classifying the form of an adjunct, analyse its constituent as AdvP, PP, NP, inverted conditional finite clause, infinitival, gerund-participial, past-participial or verbless clause as licensed, rather than equating its semantic function with a syntactic category.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Jules responded quietly. [AdvP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "Jules responded after the inspection. [PP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "Jules arrived last Wednesday. [NP]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Had Jules received the notice, she would have replied. [finite conditional]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "Jules stayed late to complete the repair. [infinitival purpose]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x6",
+            "text": "Noticing the smoke, Jules opened the window. [gerund-participial]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x7",
+            "text": "His jacket soaked, Milo entered the cabin. [verbless clause]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            669
+          ],
+          "pdf_pages": [
+            7
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "syntactic realisation of adjuncts",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source/index was provided; no comparative analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-017",
+        "CLS-018",
+        "CLS-041",
+        "WCAT-012"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "With non-finite and verbless clauses the precise semantic relation is often pragmatically inferred. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    },
+    {
+      "id": "CLS-059",
+      "domain": "clauses",
+      "concept": "front central and end positions of adjuncts",
+      "traditional_terms": [],
+      "rule_type": "classification",
+      "scope": "clause",
+      "statement": "The coarse placement distinction for clause adjuncts is front, central, and end; more than one adjunct may appear at the front or end.",
+      "condition": "When describing a clause adjunct's linear position, choose front, central or end relative to the clause structure, allowing multiple front or end adjuncts; finer central-position contrasts are treated elsewhere.",
+      "violation": null,
+      "exceptions": [],
+      "examples": {
+        "correct": [],
+        "incorrect": [],
+        "contrast": [
+          {
+            "id": "x1",
+            "text": "Fortunately, there was enough time. [front]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x2",
+            "text": "There was fortunately enough time. [central]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x3",
+            "text": "There was enough time, fortunately. [end]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x4",
+            "text": "Yesterday beside the river, we found a lost glove. [two front adjuncts]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          },
+          {
+            "id": "x5",
+            "text": "We camped on the hillside for three nights. [two end adjuncts]",
+            "origin": "ai_authored",
+            "judgement": "possible"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "book": "Cambridge Grammar",
+          "chapter": 8,
+          "section": "§1 Preliminaries",
+          "pages": [
+            669,
+            670
+          ],
+          "pdf_pages": [
+            7,
+            8
+          ]
+        }
+      ],
+      "burton_roberts_mapping": [
+        {
+          "br_concept": "front central and end positions of adjuncts",
+          "relation": "unverified",
+          "note": "No Burton-Roberts source/index was provided; no comparative analysis is inferred."
+        }
+      ],
+      "related_rules": [
+        "CLS-017",
+        "CLS-018"
+      ],
+      "confidence": "high",
+      "protocol_version": "1.0",
+      "status": "APPROVED",
+      "review_notes": "The source explicitly defers detailed central placement to §20. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    }
+  ],
+  "cross_references": [
+    {
+      "from_rule": "CLS-052",
+      "to": "CLS-018",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-052",
+      "to": "CLS-017",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-053",
+      "to": "CLS-046",
+      "relation": "depends_on",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-053",
+      "to": "CLS-049",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-054",
+      "to": "CLS-053",
+      "relation": "contrasts",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-054",
+      "to": "CLS-046",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-055",
+      "to": "CLS-018",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-055",
+      "to": "CLS-026",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-056",
+      "to": "CLS-024",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-057",
+      "to": "PHR-003",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-058",
+      "to": "CLS-041",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-058",
+      "to": "CLS-017",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-059",
+      "to": "CLS-017",
+      "relation": "refines",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-057",
+      "to": "CLS-018",
+      "relation": "overlaps",
+      "verified": true
+    },
+    {
+      "from_rule": "CLS-053",
+      "to": "Cambridge Ch. 16 §9.4.1 (it-cleft focus)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-057",
+      "to": "Cambridge Ch. 3 §3.2 (situation types)",
+      "relation": "depends_on",
+      "verified": false
+    },
+    {
+      "from_rule": "CLS-059",
+      "to": "Cambridge Ch. 8 §20 (adjunct positions)",
+      "relation": "depends_on",
+      "verified": false
+    }
+  ],
+  "conflicts": [],
+  "uncertain_items": [],
+  "coverage_report": {
+    "pages_fully_covered": [
+      {
+        "printed_pages": [
+          665,
+          669
+        ],
+        "pdf_pages": [
+          3,
+          7
+        ],
+        "section": "§1 Preliminaries"
+      }
+    ],
+    "pages_partially_covered": [
+      {
+        "printed_pages": [
+          670
+        ],
+        "pdf_pages": [
+          8
+        ],
+        "reason": "Only concluding §1 text; §2 begins later on this page."
+      }
+    ],
+    "pages_not_covered": [
+      {
+        "printed_pages": [
+          670,
+          784
+        ],
+        "pdf_pages": [
+          8,
+          122
+        ],
+        "reason": "Sections §2–§20 are outside this pass; printed p. 670 only partially covered."
+      }
+    ],
+    "counts": {
+      "concepts": 15,
+      "rules": {
+        "constraint": 0,
+        "descriptive_generalization": 4,
+        "classification": 4,
+        "stylistic_or_prescriptive": 0,
+        "variety_restricted": 0
+      },
+      "examples": {
+        "ai_authored": 38,
+        "book": 0
+      },
+      "cross_references": 17,
+      "conflicts": 0,
+      "uncertain_items": 0
+    },
+    "existing_rule_refinements": [
+      "CLS-017",
+      "CLS-018",
+      "CLS-024",
+      "CLS-046"
+    ],
+    "skipped_subsections": [
+      {
+        "section": "§2 Manner, means, and instrument to §20 Linear position of adjuncts",
+        "reason": "Single-section protocol boundary."
+      }
+    ]
+  }
+}
