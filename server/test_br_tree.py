@@ -130,6 +130,80 @@ class BrTreeTests(unittest.TestCase):
                    "triangle": True, "words": ["cats"], "span": [0, 1], "surface": "cats"}
         self.assertTrue(any("function" in e for e in validate_tree(invalid, "V3", ["cats"])))
 
+
+    def test_v5_elided_e_symbol_is_preserved_without_consuming_tokens(self):
+        source_tree = {"label": "S", "children": [
+            {"label": "NP", "triangle": True, "words": ["William"]},
+            {"label": "VP", "children": [
+                {"label": "V", "features": ["ditrans"], "children": [{"word": "gave"}]},
+                {"label": "NP", "children": [{"symbol": "E", "elided": True}]},
+                {"label": "NP", "triangle": True, "words": ["some", "bleach"]},
+            ]},
+        ]}
+        record = {
+            "_convention_version": "V5", "_chapter": 5, "id": "ch5-46",
+            "status": "IMG", "sentence": "William gave some bleach", "tree": source_tree,
+        }
+        tokens = [self.token(0, "William", 0), self.token(1, "gave", 8),
+                  self.token(2, "some", 13), self.token(3, "bleach", 18)]
+        result = normalize_candidate({}, tokens, "William gave some bleach", "V5", [record])
+        self.assertEqual(result["status"], "normalized")
+        elision = result["tree"]["children"][1]["children"][1]["children"][0]
+        self.assertEqual(elision["symbol"], "E")
+        self.assertEqual(elision["span"], [2, 2])
+
+    def test_v9_unlabelled_wh_triangle_is_allowed_only_under_c2(self):
+        tree = {"label": "S-dbar", "children": [
+            {"label": "C2", "children": [{"triangle": True, "words": ["which", "books"]}]},
+            {"label": "S-bar", "children": [
+                {"label": "C1", "children": [{"word": "are"}]},
+                {"label": "S", "children": [
+                    {"label": "NP", "triangle": True, "words": ["you"]},
+                    {"label": "VP", "children": [{"label": "V", "features": ["intrans"],
+                                                   "children": [{"word": "sing"}]}]},
+                ]},
+            ]},
+        ]}
+        runtime = normalize_candidate(
+            {}, None, "Which books are you sing", "V9",
+            [{
+                "_convention_version": "V9", "_chapter": 9, "id": "wh-triangle",
+                "status": "IMG", "sentence": "Which books are you sing", "tree": tree,
+            }],
+        )
+        self.assertEqual(runtime["status"], "normalized")
+        self.assertIsNone(runtime["tree"]["children"][0]["children"][0]["label"])
+
+    def test_v10_nonfinite_feature_is_allowed_on_lexical_and_perfect_heads(self):
+        for head_label in ("V", "PERF"):
+            tree = {"id": "a", "label": head_label, "features": ["-tense"],
+                    "index": None, "triangle": False, "span": [0, 1],
+                    "surface": "having", "children": [
+                        {"id": "b", "word": "having", "span": [0, 1], "surface": "having"}
+                    ]}
+            self.assertEqual(validate_tree(tree, "V10", ["having"]), [])
+
+    def test_indexed_external_controller_is_preserved(self):
+        tree = {"label": "S", "children": [
+            {"label": "NP", "children": [{"gap": True, "index": 1}]},
+            {"label": "VP", "children": [
+                {"label": "V", "features": ["intrans", "-tense"],
+                 "children": [{"word": "apologising"}]}
+            ]},
+        ]}
+        controller = {"index": 1, "controller": "he", "source": "Ch10 [18], p.228"}
+        result = normalize_candidate(
+            {}, None, "apologising", "V10",
+            [{
+                "_convention_version": "V10", "_chapter": 10, "id": "control",
+                "status": "IMG", "sentence": "apologising", "tree": tree,
+                "external_controller": controller,
+            }],
+        )
+        self.assertEqual(result["status"], "normalized")
+        self.assertEqual(result["external_controller"], controller)
+
+
     def test_correction_alignment_handles_replacement_and_insertion(self):
         original, corrected = "She can goes home.", "She can go home now."
         tokens = [self.token(0, "She", 0), self.token(1, "can", 4),
