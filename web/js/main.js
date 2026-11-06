@@ -223,6 +223,7 @@ async function showCorrected(variant = 'corrected') {
 
   correctionMode = modeValue;
   focusResult = null;
+  setTreeAuthorityNotice(target[cacheKey].payload);
   renderer.setTree(target[cacheKey].payload.tree);
   if (target[cacheKey].scopeId) renderer.focusSubtree(target[cacheKey].scopeId, []);
   log(`${logLabel}: showing re-parsed tree (the learner's text is unchanged)`);
@@ -232,6 +233,7 @@ async function showCorrected(variant = 'corrected') {
 function showOriginal() {
   if (!focus || !session) return;
   correctionMode = 'original';
+  setTreeAuthorityNotice(session.payload);
   renderer.setTree(session.payload.tree);
   renderer.focusNode(focus.nodeId, focus.scopeId, focus.pair);
   renderer.select(focus.nodeId);
@@ -1298,6 +1300,7 @@ function activateSentenceAtCaret() {
 }
 
 function failPipeline(title, lines) {
+  clearTreeAuthorityNotice();
   showCanvasMessage('error', title, lines);
   renderDiagnostic(title, lines);
   transition(STATES.VIEWING, 'request failed -> diagnostic shown');
@@ -1317,6 +1320,31 @@ async function postParse(text, index = null) {
     return { error: { status: res.status, error: data.error, hint: data.hint } };
   }
   return { payload: await res.json() };
+}
+
+// The Grammar Tutor canvas still renders the legacy Benepar graph. Make its
+// authority explicit so it cannot be mistaken for the canonical B-R projection.
+function setTreeAuthorityNotice(payload) {
+  const notice = document.querySelector('#treeAuthorityNotice');
+  if (!notice) return;
+  const status = payload?.canonical_analysis?.status
+    || payload?.meta?.canonical_analysis_status
+    || 'unavailable';
+  const detail = (payload?.canonical_analysis?.reasons || [])
+    .map((row) => row?.detail).find(Boolean);
+  if (status === 'normalized') {
+    notice.textContent = 'B-R projection available in the response; this canvas still displays the Benepar diagnostic tree, not the canonical B-R tree.';
+  } else {
+    notice.textContent = `Benepar diagnostic tree only — canonical B-R normalization is ${status}.${detail ? ` ${detail}` : ''}`;
+  }
+  notice.hidden = false;
+}
+
+function clearTreeAuthorityNotice() {
+  const notice = document.querySelector('#treeAuthorityNotice');
+  if (!notice) return;
+  notice.hidden = true;
+  notice.textContent = '';
 }
 
 function setQuizMode(active) {
@@ -1363,6 +1391,7 @@ function prepareLessonModelCanvas() {
 
 function showLessonModelTree(payload, focusId = null) {
   if (!payload || !payload.tree || !renderer) return;
+  clearTreeAuthorityNotice();
   prepareLessonModelCanvas();
   lessonModelActive = true;
   applyStatuses(payload.tree, payload.node_details || {}, payload.summary || {});
@@ -1381,6 +1410,7 @@ function showLessonModelTree(payload, focusId = null) {
 function clearLessonModelTree({ force = false } = {}) {
   if (!renderer) return false;
   if (!force && !lessonModelActive) return false;
+  clearTreeAuthorityNotice();
   prepareLessonModelCanvas();
   renderer.clear();
   renderer.setInteractive(!quizMode);
@@ -1528,6 +1558,7 @@ async function analyzeForQuiz(text, index = null) {
       return null;
     }
     payload = out.payload;
+    setTreeAuthorityNotice(payload);
   } catch (_e) {
     showCanvasMessage('error', 'Backend unreachable', [
       'The SynTutor NLP server is not responding.',
@@ -1611,6 +1642,7 @@ async function executePipeline(opts = {}) {
       return;
     }
     payload = out.payload;
+    setTreeAuthorityNotice(payload);
   } catch (_e) {
     failPipeline('Backend unreachable', [
       'The SynTutor NLP server is not responding.',
