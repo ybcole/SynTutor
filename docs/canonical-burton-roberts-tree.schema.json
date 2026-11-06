@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/ybcole/SynTutor/docs/canonical-burton-roberts-tree.schema.json",
   "title": "SynTutor canonical Burton-Roberts tree envelope",
-  "description": "Milestone 01 proposal. Canonical B-R representation independent of parser-specific Penn-style output. Version 1.0.0.",
+  "description": "Milestone 01 proposal. Canonical B-R representation independent of parser-specific Penn-style output. Version 1.0.0. Chapter 10 fixtures may index triangle nodes; optional triangle index is retained for control/co-reference validation.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -311,6 +311,13 @@
           "items": {
             "type": "string"
           }
+        },
+        "index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
         }
       }
     },
