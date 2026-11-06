@@ -82,15 +82,36 @@ def convention_profile(chapter: int | None = None,
 def _profile_errors(profile: Any) -> list[str]:
     if not isinstance(profile, dict):
         return ["convention_profile must be an object"]
+    allowed = {"chapter", "version", "appendix_nom", "profile_id"}
+    unknown = sorted(set(profile) - allowed)
+    if unknown:
+        return ["unsupported convention_profile field(s): " + ", ".join(unknown)]
     chapter = profile.get("chapter")
     version = profile.get("version")
     if isinstance(chapter, bool) or not isinstance(chapter, int) or not 1 <= chapter <= 10:
         return ["convention_profile.chapter must be an integer from 1 through 10"]
-    expected = "FINAL" if chapter == 10 and version == "FINAL" else f"V{chapter}"
-    if version != expected:
-        return [f"convention_profile.version must be {expected} for chapter {chapter}"]
-    if profile.get("appendix_nom") and not (chapter == 7 or version == "FINAL"):
-        return ["appendix_nom is only valid for V7 or FINAL"]
+
+    if chapter == 10 and version == "FINAL":
+        if profile.get("appendix_nom") is not True:
+            return ["FINAL profile must retain the Appendix D1 NOM refinement"]
+        expected_id = "FINAL-D1"
+    else:
+        expected_version = f"V{chapter}"
+        if version != expected_version:
+            return [f"convention_profile.version must be {expected_version} for chapter {chapter}"]
+        if chapter == 7:
+            appendix = profile.get("appendix_nom", False)
+            if not isinstance(appendix, bool):
+                return ["V7 appendix_nom must be a boolean when supplied"]
+            expected_id = "V7-APPENDIX-D1" if appendix else "V7-CORE"
+        else:
+            if "appendix_nom" in profile:
+                return ["appendix_nom is only valid for V7 or the FINAL profile"]
+            expected_id = f"V{chapter}"
+
+    profile_id = profile.get("profile_id")
+    if profile_id is not None and profile_id != expected_id:
+        return [f"convention_profile.profile_id must be {expected_id!r} for this profile"]
     return []
 
 
@@ -413,36 +434,85 @@ def _align_words_to_sentence(words: list[str], sentence: str | None) -> tuple[li
     return tokens, errors
 
 
+def _preserve_source_node_metadata(out: dict[str, Any],
+                                   raw: dict[str, Any]) -> dict[str, Any]:
+    """Carry source-only node metadata without miscasting it as B-R structure.
+
+    Diagram references are kept in source_refs. Symbols, multiword markers,
+    verb-type notes, and any future node-level fields are retained verbatim in
+    notes until a reviewed typed schema field is approved.
+    """
+    refs = []
+    existing_refs = raw.get("source_refs")
+    if isinstance(existing_refs, list):
+        refs.extend(str(value) for value in existing_refs)
+    elif existing_refs not in (None, ""):
+        out.setdefault("notes", []).append(
+            "unmapped_source_refs=" + json.dumps(existing_refs, ensure_ascii=False, sort_keys=True))
+    if raw.get("ref") not in (None, ""):
+        refs.append(str(raw["ref"]))
+    if refs:
+        # Stable order, but avoid duplicating a reference repeated in both fields.
+        out["source_refs"] = list(dict.fromkeys(refs))
+
+    raw_notes = raw.get("notes")
+    if isinstance(raw_notes, list):
+        out.setdefault("notes", []).extend(str(note) for note in raw_notes)
+    elif raw_notes not in (None, ""):
+        out.setdefault("notes", []).append(
+            "source_node_notes=" + json.dumps(raw_notes, ensure_ascii=False, sort_keys=True))
+
+    semantic_fields = {
+        "id", "label", "children", "word", "triangle", "words", "features",
+        "index", "gap", "ellipsis", "elided", "starred", "ref", "source_refs",
+        "notes",
+    }
+    for key in sorted(set(raw) - semantic_fields):
+        out.setdefault("notes", []).append(
+            f"source_node_metadata:{key}="
+            + json.dumps(raw[key], ensure_ascii=False, sort_keys=True))
+
+    if raw.get("starred"):
+        out.setdefault("notes", []).append("source tree node is starred")
+    if "ellipsis" in raw and raw.get("ellipsis"):
+        out.setdefault("notes", []).append("source ellipsis marker retained")
+    if raw.get("elided"):
+        out.setdefault("notes", []).append("source elided terminal retained")
+    return out
+
+
 def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: list[int],
                      node_id: str, notes: list[str]) -> dict[str, Any]:
     if raw.get("gap") is True:
-        index = raw.get("index")
         out = {"id": node_id, "gap": True}
-        if index is not None:
-            out["index"] = index
-        return out
+        if raw.get("index") is not None:
+            out["index"] = raw["index"]
+        return _preserve_source_node_metadata(out, raw)
+
     if "word" in raw:
         word = str(raw["word"])
         if raw.get("ellipsis") or word == "...":
             notes.append("Source ellipsis marker retained as a non-overt placeholder.")
-            return {"id": node_id, "word": word, "elided": True,
-                    "notes": ["source_ellipsis_marker"]}
+            out = {"id": node_id, "word": word, "elided": True}
+            return _preserve_source_node_metadata(out, raw)
         if raw.get("elided"):
             notes.append(f"Source elided terminal {word!r} retained without overt token coverage.")
-            return {"id": node_id, "word": word, "elided": True,
-                    "notes": ["source_elided_terminal"]}
+            out = {"id": node_id, "word": word, "elided": True}
+            return _preserve_source_node_metadata(out, raw)
         idx = cursor[0]
         if idx >= len(tokens) or tokens[idx]["text"] != word:
             raise ValueError(f"terminal {word!r} does not align with source token {idx}")
         cursor[0] += 1
-        return {"id": node_id, "word": word, "token_span": [idx, idx + 1]}
+        out = {"id": node_id, "word": word, "token_span": [idx, idx + 1]}
+        return _preserve_source_node_metadata(out, raw)
+
     if raw.get("triangle"):
         words = [str(w) for w in raw.get("words", []) if str(w) != "..."]
         start = cursor[0]
         for word in words:
             idx = cursor[0]
             if idx >= len(tokens) or tokens[idx]["text"] != word:
-                raise ValueError(f"triangle word {word!r} does not align with source token {idx}")
+                raise ValueError(f"triangle word {word!r} does not align to source token {idx}")
             cursor[0] += 1
         if not words:
             raise ValueError("triangle contains no overt source words")
@@ -453,7 +523,8 @@ def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: 
             out["index"] = raw["index"]
         if "..." in raw.get("words", []):
             notes.append("A source ellipsis marker inside a triangle was omitted from overt token coverage.")
-        return out
+        return _preserve_source_node_metadata(out, raw)
+
     label = raw.get("label")
     children_raw = raw.get("children")
     if not isinstance(label, str) or not label:
@@ -462,24 +533,22 @@ def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: 
         raise ValueError(f"gold branch {label!r} has no children")
     children = [_build_gold_node(child, tokens, cursor, f"{node_id}-{i}", notes)
                 for i, child in enumerate(children_raw)]
-    overt = [c.get("token_span") for c in children if c.get("token_span")]
-    span = [min(x[0] for x in overt), max(x[1] for x in overt)] if overt else None
+    overt = [child.get("token_span") for child in children if child.get("token_span")]
+    span = [min(item[0] for item in overt), max(item[1] for item in overt)] if overt else None
     out = {"id": node_id, "label": label, "children": children}
     if span is not None:
         out["token_span"] = span
-    features = raw.get("features")
-    if features:
-        if isinstance(features, list) and all(isinstance(x, str) for x in features):
+    if "features" in raw:
+        features = raw.get("features")
+        if isinstance(features, list) and all(isinstance(item, str) for item in features):
             out["features"] = list(features)
         else:
             notes.append(f"Invalid source feature metadata retained in notes for {label!r}.")
-            out["notes"] = ["invalid_source_features=" + json.dumps(features, ensure_ascii=False)]
+            out.setdefault("notes", []).append(
+                "invalid_source_features=" + json.dumps(features, ensure_ascii=False))
     if raw.get("index") is not None:
         out["index"] = raw["index"]
-    if raw.get("starred"):
-        out.setdefault("notes", []).append("source tree is starred")
-    return out
-
+    return _preserve_source_node_metadata(out, raw)
 
 def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any]) -> dict[str, Any]:
     """Project one existing chapter tree record into the canonical schema.
@@ -733,12 +802,16 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
             if node.get("elided"):
                 return None
             span = node.get("token_span")
-            if not (isinstance(span, list) and len(span) == 2 and span[1] == span[0] + 1):
-                errors.append(f"{path}.token_span must cover exactly one token")
+            if not (isinstance(span, list) and len(span) == 2
+                    and all(isinstance(value, int) and not isinstance(value, bool) for value in span)):
+                errors.append(f"{path}.token_span must be a two-integer half-open span")
                 return None
             start, end = span
-            if not (isinstance(start, int) and isinstance(end, int) and 0 <= start < end <= len(tokens)):
+            if not (0 <= start < end <= len(tokens)):
                 errors.append(f"{path}.token_span is out of range")
+                return None
+            if end != start + 1:
+                errors.append(f"{path}.token_span must cover exactly one token")
                 return None
             covered.append(start)
             if tokens[start].get("text") != word:
@@ -766,13 +839,19 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
             label = node.get("label")
             if not isinstance(label, str) or not label:
                 errors.append(f"{path}.label must be non-empty")
+            else:
+                intro = _LABEL_INTRODUCED.get(label)
+                if intro is not None and intro > chapter:
+                    errors.append(f"{path} uses label {label!r} before its introduction in Chapter {intro}")
+                elif intro is None:
+                    warnings.append(f"{path} uses label {label!r} not in the core label inventory; retain source-specific review")
             words = node.get("words")
             if not isinstance(words, list) or not words or any(not isinstance(w, str) or not w for w in words):
                 errors.append(f"{path}.words must contain one or more non-empty strings")
                 return None
             span = node.get("token_span")
             if not (isinstance(span, list) and len(span) == 2
-                    and isinstance(span[0], int) and isinstance(span[1], int)
+                    and all(isinstance(value, int) and not isinstance(value, bool) for value in span)
                     and 0 <= span[0] < span[1] <= len(tokens)):
                 errors.append(f"{path}.token_span is out of range")
                 return None
@@ -807,7 +886,7 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
                 errors.append(f"{path} uses label {label!r} before its introduction in Chapter {intro}")
             elif intro is None:
                 warnings.append(f"{path} uses label {label!r} not in the core label inventory; retain source-specific review")
-        features = node.get("features") or []
+        features = node.get("features", [])
         if not isinstance(features, list):
             errors.append(f"{path}.features must be an array")
             features = []
@@ -848,8 +927,13 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
                 errors.append(f"{path} children overlap or are out of token order")
         span = [child_spans[0][0], child_spans[-1][1]]
         declared = node.get("token_span")
-        if declared is not None and declared != span:
-            errors.append(f"{path}.token_span must equal the span derived from its children")
+        if declared is not None:
+            if not (isinstance(declared, list) and len(declared) == 2
+                    and all(isinstance(value, int) and not isinstance(value, bool) for value in declared)
+                    and 0 <= declared[0] <= declared[1] <= len(tokens)):
+                errors.append(f"{path}.token_span must be a valid two-integer half-open span")
+            elif declared != span:
+                errors.append(f"{path}.token_span must equal the span derived from its children")
         return tuple(span)
 
     root_span = walk(envelope.get("root"), "root")
@@ -913,8 +997,10 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
             alt_unknown = sorted(set(alt) - allowed_alt)
             if alt_unknown:
                 errors.append(f"{path} has unsupported field(s): " + ", ".join(alt_unknown))
-            if not alt.get("analysis_id") or alt.get("acceptance") not in _ACCEPTANCE or not isinstance(alt.get("root"), dict):
-                errors.append(f"{path} requires analysis_id, valid acceptance and root")
+            if (not isinstance(alt.get("analysis_id"), str) or not alt.get("analysis_id")
+                    or alt.get("acceptance") not in _ACCEPTANCE
+                    or not isinstance(alt.get("root"), dict)):
+                errors.append(f"{path} requires a non-empty string analysis_id, valid acceptance and root")
                 continue
             if alt["analysis_id"] in alternative_ids:
                 errors.append(f"{path}.analysis_id must be unique")
