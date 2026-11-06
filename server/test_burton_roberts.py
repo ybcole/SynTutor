@@ -490,5 +490,23 @@ class CanonicalHardeningTests(unittest.TestCase):
         self.assertEqual(result["raw_tree"], record["tree"])
 
 
+    def test_node_provenance_fields_require_string_arrays(self):
+        envelope = {
+            "schema_version": "1.0.0", "tree_id": "bad-provenance",
+            "sentence": "the", "tokens": [
+                {"index": 0, "text": "the", "char_span": [0, 3]},
+            ],
+            "convention_profile": convention_profile(2),
+            "source": {"book": "Burton-Roberts", "chapter": 2, "evidence_status": "IMG"},
+            "root": {"id": "r", "label": "NP", "source_refs": "not-an-array",
+                     "children": [{"id": "w", "word": "the", "token_span": [0, 1]}]},
+            "movement": [], "accepted_alternatives": [],
+        }
+        result = validate_canonical_tree(envelope)
+        self.assertFalse(result["valid"])
+        self.assertTrue(any("source_refs must be an array of strings" in error
+                            for error in result["errors"]))
+
+
 if __name__ == "__main__":
     unittest.main()
