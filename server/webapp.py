@@ -17,6 +17,7 @@ import os
 from flask import Flask, Response, jsonify, request, send_from_directory
 
 from api import ParseFailure, build_payload, health_payload, word_info
+from br_tree import CONVENTIONS
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB_DIR = os.path.join(ROOT, 'web')
@@ -82,9 +83,13 @@ def parse():
         return jsonify({'error': 'sentence_index must be an integer'}), 400
     if sentence_index < 0:
         return jsonify({'error': 'sentence_index must be >= 0'}), 400
+    convention_version = data.get('convention_version') or 'V10'
+    if convention_version not in CONVENTIONS:
+        return jsonify({'error': 'convention_version must be one of V1-V10'}), 400
 
     try:
-        payload = build_payload(text, sentence_index=sentence_index)
+        payload = build_payload(text, sentence_index=sentence_index,
+                                convention_version=convention_version)
     except ParseFailure as exc:
         return jsonify({'error': str(exc), 'input': text}), 422
     except Exception as exc:  # noqa: BLE001 - model/back-end unavailable
