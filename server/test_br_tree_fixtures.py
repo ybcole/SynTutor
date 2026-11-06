@@ -57,8 +57,14 @@ class BurtonRobertsFixtureTests(unittest.TestCase):
             print("Explicitly unresolved source records:")
             for row in rejected:
                 diagnostic = row["diagnostics"][0]
+                details = diagnostic.get("rejected_references") or []
+                detail_text = "; ".join(
+                    f"{item.get('tree_id')}: {item.get('message')}"
+                    for item in details
+                )
                 print(f"  {row['tree_id']} ({row['version']}): "
-                      f"{diagnostic.get('code')} — {diagnostic.get('message')}")
+                      f"{diagnostic.get('code')} — {diagnostic.get('message')} "
+                      f"{detail_text}")
 
 
 if __name__ == "__main__":
