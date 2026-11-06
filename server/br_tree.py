@@ -233,11 +233,15 @@ def validate_tree(tree: dict[str, Any], convention_version: str,
         if label.casefold() in FUNCTION_LABELS:
             errors.append(f"{path}: grammatical function {label!r} must not be a tree label")
         introduced = LABEL_INTRO.get(label)
-        symbolic = bool(re.fullmatch(r"(?:PHRASE-[a-z]+|[A-Z])", label))
+        symbolic = (
+            bool(re.fullmatch(r"PHRASE-[a-z]+", label)) and version <= 3
+        ) or (label in {"B", "C", "D", "F"} and version <= 2)
         if introduced is None and not symbolic and version > 1:
             errors.append(f"{path}: label {label!r} is not in B-R inventory")
         elif introduced is not None and introduced > version:
             errors.append(f"{path}: label {label!r} is introduced after {convention_version}")
+        elif label in {"Sentence", "Phrase"} and version > 1:
+            errors.append(f"{path}: {label} label is replaced by later chapter conventions")
         elif label == "PHRASE" and version > 3:
             errors.append(f"{path}: PHRASE placeholder is not used after V3")
         features = node.get("features", [])
@@ -291,6 +295,18 @@ def validate_tree(tree: dict[str, Any], convention_version: str,
             if start < previous_end:
                 errors.append(f"{path}: children overlap or are out of order")
             previous_end = max(previous_end, end)
+        coordinators = [
+            i for i, child in enumerate(children)
+            if isinstance(child, dict) and str(child.get("word", "")).casefold() in {"and", "or", "but"}
+        ]
+        if coordinators:
+            if len(coordinators) != 1 or coordinators[0] != 1 or len(children) != 3:
+                errors.append(f"{path}: coordination must have two conjuncts and one medial coordinator")
+            else:
+                left = children[0].get("label") if isinstance(children[0], dict) else None
+                right = children[2].get("label") if isinstance(children[2], dict) else None
+                if left != label or right != label:
+                    errors.append(f"{path}: coordination mother and conjuncts must share category {label!r}")
         if spans:
             expected_span = [min(x[0] for x in spans), max(x[1] for x in spans)]
             if span != expected_span:
@@ -303,9 +319,16 @@ def validate_tree(tree: dict[str, Any], convention_version: str,
         if atoms != expected:
             errors.append("tree lexical yield does not match input token sequence")
     if version <= 4 and tree.get("label") == "S":
-        labels = [child.get("label") for child in tree.get("children", []) if isinstance(child, dict)]
-        if labels != ["NP", "VP"]:
-            errors.append(f"{convention_version} S must immediately dominate NP then VP")
+        children = tree.get("children", [])
+        labels = [child.get("label") for child in children if isinstance(child, dict)]
+        coordinated_s = (
+            len(children) == 3
+            and isinstance(children[0], dict) and children[0].get("label") == "S"
+            and isinstance(children[1], dict) and str(children[1].get("word", "")).casefold() in {"and", "or", "but"}
+            and isinstance(children[2], dict) and children[2].get("label") == "S"
+        )
+        if labels != ["NP", "VP"] and not coordinated_s:
+            errors.append(f"{convention_version} S must immediately dominate NP then VP, or be an S coordination")
     return errors
 
 
