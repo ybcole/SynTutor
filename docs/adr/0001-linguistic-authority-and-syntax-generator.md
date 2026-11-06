@@ -65,7 +65,38 @@ Eligibility requires source-page evidence, independent reviewer and date, a reso
 
 The current server/cambridge_registry.py enforces this gate. A complete sentence-level Cambridge evaluator has not yet been implemented.
 
-## Decision 6 — Shared API and backward compatibility
+## Decision 6 — Curriculum, lessons, and assessment separation
+
+Use B-R Chapters 1–10 as the ordered Syntax Foundations spine, respecting the
+convention version taught in each chapter; use Chapter 11 as a theoretical
+synthesis. Add short, relevant Cambridge insight cards where a reviewed
+grammatical distinction, condition, or exception clarifies the B-R topic.
+Put substantially deeper Cambridge material in optional/advanced modules rather
+than overwhelming the core syntax course.
+
+Keep Lessons and Quizzes as separate destinations:
+- Lessons teach, model, scaffold, guide tree construction, and check transfer.
+- Quizzes assess independent retrieval and application using original parallel
+  questions, not copied textbook exercise wording or a replay of the exact lesson
+  examples.
+- B-R tree answer records and Cambridge rule records are source material for
+  authoring assessment items; they are not automatically a publishable question bank.
+
+Lesson completion and quiz performance have different progress semantics and
+must be persisted/versioned separately. XP, assessment rewards, and related
+achievements are specified in their own milestones; no XP gate may hide essential
+instructional content.
+
+## Decision 7 — Shared explanations
+
+The Syntax Generator and Syntax Builder must ultimately call one evidence-based
+explanation service. It distinguishes B-R structural explanations, Cambridge
+grammatical explanations, and remediation feedback. Deterministic analysis and
+reviewed source records supply the facts; an LLM may only help phrase approved
+facts and cannot decide correctness. Missing/conflicting evidence produces an
+explicit unresolved/no-source-basis result.
+
+## Decision 8 — Shared API and backward compatibility
 
 server/api.py returns:
 
