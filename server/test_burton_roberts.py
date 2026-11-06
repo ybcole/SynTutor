@@ -143,3 +143,144 @@ class NormalizationTests(unittest.TestCase):
 
 
 class GoldFixtureTests(unittest.TestCase):
+    def test_chapter_7_gold_tree_projects_without_rewriting_source(self):
+        record = {
+            "id": "ch7-3", "fig": "[3]", "page": 141,
+            "sentence": "the clowns", "status": "IMG", "appendix_nom": False,
+            "tree": {
+                "label": "NP", "children": [
+                    {"label": "DET", "children": [{"label": "ART", "children": [{"word": "the"}]}]},
+                    {"label": "NOM", "children": [{"label": "N", "children": [{"word": "clowns"}]}]},
+                ],
+            },
+        }
+        source_copy = repr(record)
+        result = canonicalize_gold_record(record, {"chapter": 7})
+        self.assertEqual(result["status"], "normalized")
+        self.assertTrue(validate_canonical_tree(result["tree"])["valid"])
+        self.assertEqual(result["tree"]["source"]["printed_page"], 141)
+        self.assertEqual(result["tree"]["source"]["evidence_status"], "IMG")
+        self.assertEqual(repr(record), source_copy)
+
+    def test_future_label_in_early_chapter_is_rejected(self):
+        envelope = {
+            "schema_version": "1.0.0", "tree_id": "bad", "tokens": [
+                {"index": 0, "text": "the", "char_span": [0, 3]},
+            ],
+            "sentence": "the", "convention_profile": convention_profile(6),
+            "source": {"book": "Burton-Roberts", "chapter": 6, "evidence_status": "IMG"},
+            "root": {"id": "r", "label": "NP", "children": [
+                {"id": "n", "label": "NOM", "children": [
+                    {"id": "w", "word": "the", "token_span": [0, 1]},
+                ]},
+            ], "token_span": [0, 1]},
+            "movement": [], "accepted_alternatives": [],
+        }
+        validation = validate_canonical_tree(envelope)
+        self.assertFalse(validation["valid"])
+        self.assertTrue(any("before its introduction" in e for e in validation["errors"]))
+
+    def test_non_tree_alternative_is_preserved_and_reported_unresolved(self):
+        record = {
+            "id": "ch9-test", "sentence": "they spoke", "status": "IMG",
+            "tree": {"label": "S", "children": [{"word": "they"}, {"word": "spoke"}]},
+            "accepted_alternatives": [{"wh_gap_category": "PP", "note": "source alternative"}],
+        }
+        result = canonicalize_gold_record(record, {"chapter": 9})
+        self.assertEqual(result["status"], "unresolved")
+        self.assertTrue(any("has no tree shape" in e for e in result["errors"]))
+        self.assertTrue(any("unmaterialized_accepted_alternative" in n
+                            for n in result["partial_tree"]["notes"]))
+
+    def test_gap_index_features_and_elided_terminal_are_preserved(self):
+        record = {
+            "id": "ch10-gap", "sentence": "Murtlock was taken", "status": "IMG",
+            "tree": {
+                "label": "S", "children": [
+                    {"label": "NP", "children": [
+                        {"label": "N", "index": 1, "children": [{"word": "Murtlock"}]},
+                    ]},
+                    {"label": "VP", "children": [
+                        {"label": "PASS", "features": ["past"], "children": [{"word": "was"}]},
+                        {"label": "VP", "children": [
+                            {"label": "V", "children": [{"word": "taken"}]},
+                            {"gap": True, "index": 1},
+                        ]},
+                    ]},
+                ],
+            },
+        }
+        result = canonicalize_gold_record(record, {"chapter": 10})
+        self.assertEqual(result["status"], "normalized")
+        root = result["tree"]["root"]
+        self.assertEqual(root["children"][0]["children"][0]["index"], 1)
+        gap = root["children"][1]["children"][1]["children"][1]
+        self.assertEqual(gap, {"id": "ch10-gap-root-1-1-1", "gap": True, "index": 1})
+
+    def test_elided_terminal_is_not_counted_as_overt_token(self):
+        record = {
+            "id": "ch8-elided", "sentence": "I said it", "status": "IMG",
+            "tree": {"label": "S", "children": [
+                {"word": "I"}, {"word": "that", "elided": True},
+                {"word": "said"}, {"word": "it"},
+            ]},
+        }
+        result = canonicalize_gold_record(record, {"chapter": 8})
+        self.assertEqual(result["status"], "normalized")
+        self.assertEqual([t["text"] for t in result["tree"]["tokens"]], ["I", "said", "it"])
+        self.assertTrue(result["tree"]["root"]["children"][1]["elided"])
+
+    def test_actual_chapter_10_index_and_controller_pattern(self):
+        record = {
+            "id": "ch10-14a", "fig": "[14a]", "page": 228,
+            "sentence": "loaded to capacity", "status": "IMG",
+            "tree": {"label": "S", "children": [
+                {"label": "NP", "children": [{"gap": True, "index": 1}]},
+                {"label": "VP", "children": [
+                    {"label": "VP", "children": [
+                        {"label": "V", "features": ["trans", "-tense"],
+                         "children": [{"word": "loaded"}]},
+                        {"label": "NP", "children": [{"gap": True, "index": 1}]},
+                    ]},
+                    {"label": "PP", "triangle": True,
+                     "words": ["to", "capacity"]},
+                ]},
+            ]},
+            "note": "The passive participle licenses subject and object gaps.",
+            "clause_id": "S2",
+            "external_controller": {"index": 1, "controller": "the palanquin",
+                                     "source": "Ch10 [14], printed p.227"},
+        }
+        result = canonicalize_gold_record(record, {"chapter": 10})
+        self.assertEqual(result["status"], "normalized", result.get("errors"))
+        envelope = result["tree"]
+        self.assertEqual(envelope["movement"], [{
+            "kind": "external_controller", "index": 1,
+            "controller": "the palanquin", "source_ref": "Ch10 [14], printed p.227",
+        }])
+        self.assertEqual(envelope["root"]["children"][1]["children"][0]["children"][1]["children"][0]["index"], 1)
+        self.assertTrue(validate_canonical_tree(envelope)["valid"])
+
+    def test_alternative_tree_is_validated_and_kept(self):
+        record = {
+            "id": "ch7-alt", "sentence": "the clowns", "status": "IMG",
+            "tree": {"label": "NP", "children": [
+                {"label": "DET", "children": [{"label": "ART", "children": [{"word": "the"}]}]},
+                {"label": "NOM", "children": [{"label": "N", "children": [{"word": "clowns"}]}]},
+            ]},
+            "accepted_alternatives": [{
+                "label": "Alternative NP analysis", "acceptance": "ACCEPTED",
+                "tree": {"label": "NP", "children": [
+                    {"label": "DET", "children": [{"label": "ART", "children": [{"word": "the"}]}]},
+                    {"label": "NOM", "children": [{"label": "N", "children": [{"word": "clowns"}]}]},
+                ]},
+            }],
+        }
+        result = canonicalize_gold_record(record, {"chapter": 7})
+        self.assertEqual(result["status"], "normalized")
+        self.assertEqual(len(result["tree"]["accepted_alternatives"]), 1)
+        self.assertTrue(validate_canonical_tree(result["tree"])["valid"])
+
+
+if __name__ == "__main__":
+    unittest.main()
