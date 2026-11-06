@@ -119,6 +119,72 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
         self.assertEqual(payload["br_analysis"]["diagnostics"][0]["code"], "NO_SAFE_B_R_MAPPING")
         self.assertEqual(payload["tree"], self.candidate())
 
+
+    def test_correction_payload_parses_the_repaired_sentence_separately(self):
+        original = "She goes home."
+        corrected = "She go home."
+
+        def fixture(sentence):
+            words = sentence.rstrip(".").split()
+            tokens = []
+            cursor = 0
+            for i, word in enumerate(words):
+                start = sentence.index(word, cursor)
+                end = start + len(word)
+                tokens.append({"i": i, "t": word, "pos": "NN", "start": start, "end": end})
+                cursor = end
+            if sentence.endswith("."):
+                tokens.append({"i": len(tokens), "t": ".", "pos": ".", 
+                               "start": len(sentence) - 1, "end": len(sentence)})
+            leaves = [
+                {"id": f"leaf-{i}", "type": "NN", "span": [i, i + 1],
+                 "surface": word, "pos": "NN", "punct": False}
+                for i, word in enumerate(words)
+            ]
+            root = {
+                "id": "root", "type": "S", "span": [0, len(tokens)],
+                "surface": sentence, "children": [
+                    {"id": "np", "type": "NP", "span": [0, 1],
+                     "surface": words[0], "children": [leaves[0]]},
+                    {"id": "vp", "type": "VP", "span": [1, len(tokens)],
+                     "surface": " ".join(words[1:]), "children": leaves[1:]},
+                ],
+            }
+            return {
+                "sentence": sentence, "sentence_index": 0, "sentence_count": 1,
+                "sentences": [{"start": 0, "end": len(sentence), "text": sentence}],
+                "tokens": tokens, "parse_string": "(S ...)", "root": root, "nodes": [],
+            }
+
+        def bad_evaluation():
+            result = self.clean_evaluation()
+            result["summary"]["verdict"] = "ungrammatical"
+            result["summary"]["valid"] = False
+            return result
+
+        correction = {"corrected_sentence": corrected}
+        with patch.object(api, "analyze", side_effect=lambda text, sentence_index=0: fixture(text)), \
+             patch.object(api, "evaluate", side_effect=bad_evaluation), \
+             patch.object(api, "classify", return_value=None), \
+             patch.object(api, "_contrastive", return_value=""), \
+             patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
+             patch.object(api, "_rule_concepts", return_value=[]), \
+             patch.object(api.corrections, "has_actionable", return_value=True), \
+             patch.object(api.corrections, "assemble", return_value=correction), \
+             patch.object(api.corrections, "describe", return_value="A correction is available."):
+            payload = api.build_payload(original, convention_version="V10")
+
+        correction_payload = payload["summary"]["correction"]
+        self.assertEqual(correction_payload["corrected_sentence"], corrected)
+        self.assertIn("corrected_br_analysis", correction_payload)
+        self.assertIsNotNone(correction_payload["corrected_candidate_parse"])
+        self.assertIn("go", str(correction_payload["corrected_candidate_parse"]["tree"]))
+        self.assertNotIn("goes", str(correction_payload["corrected_candidate_parse"]["tree"]))
+        replacement = next(edit for edit in correction_payload["alignment"]["edits"]
+                           if edit["operation"] == "replace")
+        self.assertEqual(replacement["original_tokens"][0]["text"], "goes")
+        self.assertEqual(replacement["corrected_tokens"][0]["text"], "go")
+
     def test_invalid_convention_is_rejected_before_parsing(self):
         with patch.object(api, "analyze") as parse:
             with self.assertRaises(ValueError):
