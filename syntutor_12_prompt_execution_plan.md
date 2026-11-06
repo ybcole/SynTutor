@@ -535,3 +535,21 @@ Only individually evidenced items are checked in `master_checklist.md`. Mileston
 ### Approval gate
 
 **Not ready for sign-off.** Review representative normalized V2 output, unresolved FINAL/unsupported constructions, gold import results, test evidence, prompt reconciliation, and remaining integration/source-evidence gaps before using canonical output downstream.
+
+
+---
+
+## Milestone 02 hardening continuation — 7 November 2026
+
+**Branch:** `feature/milestone-02-syntax-generator-hardening-2026-11-07` (based on `feature/milestone-02-syntax-generator-2026-11-07`).
+
+Additional work:
+- Fixed node-level source-metadata loss in the gold-record importer. Diagram references are represented as `source_refs`; source-only symbols, multiword markers, verb-type labels, and other untyped metadata are preserved in node notes as JSON-valued source metadata.
+- Explicitly leaves a zero-word `E` elision marker unresolved because the current canonical schema has no matching node type. It is not conflated with a gap or a lexical elided terminal.
+- Tightened exact profile/refinement validation, chapter-introduction checks for triangle labels, feature-container validation, and token-span integer validation.
+- Added seven focused tests for these cases and a read-only full-corpus audit script: `python scripts/audit_burton_roberts_import.py --expected-count 252`.
+- Updated the API/schema documentation with the importer's preservation and unresolved-state behavior.
+
+**Verification and limitations:** The new test suite and 252-record audit runner have not been run in this environment because a local repository clone was blocked by DNS resolution failure for `github.com`. The 16 focused tests previously recorded as passing belong to the parent branch and have not been rerun against this continuation. The detailed `master_prompt_syntax_generator.md` still was not visible at the expected path or in the accessible branch trees checked during this execution; the work follows the execution plan's Milestone 02 scope, without claiming detailed-prompt compliance. The exact B-R edition/PDF and parser/model-backed E2E path remain unverified. The live frontend still renders the diagnostic Benepar tree rather than the canonical projection.
+
+**Milestone 02 remains unchecked.** The approval gate is not met; do not rely on the canonical output downstream until the detailed prompt is reconciled and the focused tests, corpus audit, transport contract tests, frontend integration, and source-evidence review are completed.
