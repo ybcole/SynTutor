@@ -65,7 +65,11 @@ The live Benepar-to-B-R projection is intentionally narrow. It currently promote
 
 The adapter does not rename arbitrary Penn labels into B-R labels. It returns `unresolved` for other chapter profiles, internally structured NP/VP parses, extra branches, punctuation cases, token mismatches, and unsupported transformations. Those responses retain the raw parse in `diagnostics.raw_candidate_tree`.
 
-Existing B-R chapter records can be projected independently through the read-only `canonicalize_gold_record(record, chapter_data)` importer. It preserves source record identifiers, figure/page/evidence state, tree labels/features, triangles, indexed triangles, gaps, ellipsis/elision, accepted alternatives, external controllers, movement descriptions, and additional chapter-specific answer metadata. Source records are not rewritten. A gold record whose alternative cannot be represented safely remains unresolved with the partial projection and source metadata retained.
+Existing B-R chapter records can be projected independently through the read-only `canonicalize_gold_record(record, chapter_data)` importer. It preserves source record identifiers, figure/page/evidence state, tree labels/features, triangles, indexed triangles, gaps, word-bearing elided terminals, accepted alternatives, external controllers, movement descriptions, and chapter-specific answer metadata. Source records are not rewritten.
+
+Node-level diagram references (for example, `ref: "VP1"`) are retained in canonical `source_refs`. Other source-only node fields—including symbols, multiword-terminal flags, verb-type labels, and future unrecognized node metadata—are serialized into node `notes` as JSON-valued `source_node_metadata:<field>=...` entries until an explicitly reviewed typed field is added to the schema. Existing node notes are retained. This avoids silently dropping source annotations or pretending they are canonical structural features.
+
+One source pattern deliberately remains unresolved: Chapter 5 figure [46] uses a zero-word `E` elision marker inside an NP. The approved v1.0.0 node variants represent a gap or an elided terminal with an explicit word, but do not define a zero-word elided-element node. The importer reports this as unresolved and returns the original raw tree; it does not recast `E` as a gap or invent a lexical terminal.
 
 ## Correction alignment
 
@@ -94,15 +98,16 @@ An HTTP 200 response can still contain `canonical_analysis.status = "unresolved"
 
 ```bash
 python -m unittest server.test_burton_roberts -v
+python scripts/audit_burton_roberts_import.py --expected-count 252
 ```
 
 The focused suite currently covers profile selection, conservative V2 normalization, unsupported-profile and punctuation fallbacks, structural validation, source-authored Chapter 7 and Chapter 10 records, indices/gaps/elision, accepted alternatives, Chapter 9 movement notes, multiple external controllers, and all requested correction edit classes.
 
 ## Outstanding before Milestone 02 approval
 
-- Read and reconcile the pushed `master_prompt_syntax_generator.md` once it is visible through the connected repository view; the connector did not return that path during this execution.
+- Reconcile the detailed `master_prompt_syntax_generator.md` before claiming full prompt compliance. The file was not present in the accessible repository tree/path on the refs checked in this execution; the work recorded here follows the Milestone 02 scope and acceptance criteria in `syntutor_12_prompt_execution_plan.md`.
 - Confirm the B-R edition and inspect the source PDFs. Parser-derived mappings must remain source-review pending until then.
 - Expand live normalization across V1–V10/FINAL only after source-backed transformation rules and reviewed fixtures exist.
-- Add full-corpus fixture runs against all 252 B-R records and the existing chapter validators.
+- Run `python scripts/audit_burton_roberts_import.py --expected-count 252` against all 252 B-R records, then reconcile exceptions/unresolved records against the existing chapter validators.
 - Add Flask/legacy transport contract tests, full backend/frontend integration tests, and renderer adoption of the canonical tree.
 - Compare existing generator behavior against the legacy regression corpus and model-backed parser runtime.
