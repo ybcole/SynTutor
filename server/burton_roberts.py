@@ -628,3 +628,270 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
         if not isinstance(token.get("text"), str) or not token.get("text"):
             errors.append(f"token {i} text must be non-empty")
         span = token.get("char_span")
+        if not (isinstance(span, list) and len(span) == 2
+                and all(isinstance(x, int) and not isinstance(x, bool) for x in span)
+                and 0 <= span[0] <= span[1]):
+            errors.append(f"token {i} char_span must be [start, end] with non-negative integers")
+        else:
+            if span[0] < previous_end:
+                errors.append(f"token {i} character span overlaps or precedes the prior token")
+            previous_end = span[1]
+            if isinstance(sentence, str) and span[1] > len(sentence):
+                errors.append(f"token {i} character span exceeds sentence length")
+            if isinstance(sentence, str) and span[1] > span[0] and sentence[span[0]:span[1]] != token.get("text"):
+                warnings.append(f"token {i} surface differs from sentence substring; this may reflect source tokenization")
+
+    source = envelope.get("source")
+    if not isinstance(source, dict):
+        errors.append("source must be an object")
+    else:
+        source_allowed = {"book", "edition", "chapter", "section", "printed_page", "pdf_page",
+                          "figure_id", "evidence_status", "review_status", "review_note", "source_record_id"}
+        source_unknown = sorted(set(source) - source_allowed)
+        if source_unknown:
+            errors.append("unsupported source field(s): " + ", ".join(source_unknown))
+        if not isinstance(source.get("book"), str) or not source.get("book"):
+            errors.append("source.book must be non-empty")
+        if source.get("evidence_status") not in _EVIDENCE:
+            errors.append("source.evidence_status is not recognized")
+        if source.get("review_status") is not None and source.get("review_status") not in _REVIEW:
+            errors.append("source.review_status is not recognized")
+        if source.get("chapter") != chapter:
+            errors.append("source.chapter must match convention_profile.chapter")
+        for page_key in ("printed_page", "pdf_page"):
+            page = source.get(page_key)
+            if page is not None and (isinstance(page, bool) or not isinstance(page, int) or page < 1):
+                errors.append(f"source.{page_key} must be a positive integer")
+
+    ids: set[str] = set()
+    node_kinds: dict[str, str] = {}
+    node_indices: dict[str, int | None] = {}
+    covered: list[int] = []
+    def walk(node: Any, path: str) -> tuple[int, int] | None:
+        if not isinstance(node, dict):
+            errors.append(f"{path} must be a node object")
+            return None
+        node_id = node.get("id")
+        if node_id is not None:
+            if not isinstance(node_id, str) or not node_id:
+                errors.append(f"{path}.id must be a non-empty string")
+            elif node_id in ids:
+                errors.append(f"duplicate node id {node_id!r}")
+            else:
+                ids.add(node_id)
+        kind = ("terminal" if "word" in node else "gap" if node.get("gap") is True
+                else "triangle" if node.get("triangle") is True else "branch")
+        if node_id is not None and isinstance(node_id, str):
+            node_kinds[node_id] = kind
+        if "word" in node:
+            unknown = sorted(set(node) - {"id", "word", "pos", "elided", "token_span", "source_refs", "notes"})
+            if unknown:
+                errors.append(f"{path} terminal has unsupported field(s): " + ", ".join(unknown))
+            if "children" in node or "triangle" in node or "gap" in node:
+                errors.append(f"{path} terminal cannot also be a branch, triangle or gap")
+            word = node.get("word")
+            if not isinstance(word, str) or not word:
+                errors.append(f"{path}.word must be non-empty")
+            if node.get("elided"):
+                return None
+            span = node.get("token_span")
+            if not (isinstance(span, list) and len(span) == 2 and span[1] == span[0] + 1):
+                errors.append(f"{path}.token_span must cover exactly one token")
+                return None
+            start, end = span
+            if not (isinstance(start, int) and isinstance(end, int) and 0 <= start < end <= len(tokens)):
+                errors.append(f"{path}.token_span is out of range")
+                return None
+            covered.append(start)
+            if tokens[start].get("text") != word:
+                errors.append(f"{path}.word does not match token {start}")
+            return start, end
+        if "gap" in node:
+            unknown = sorted(set(node) - {"id", "gap", "index", "token_span", "source_refs", "notes"})
+            if unknown:
+                errors.append(f"{path} gap has unsupported field(s): " + ", ".join(unknown))
+            if node.get("gap") is not True:
+                errors.append(f"{path}.gap must be true")
+            index = node.get("index")
+            if index is not None and (not isinstance(index, int) or isinstance(index, bool) or index < 0):
+                errors.append(f"{path}.index must be a non-negative integer or null")
+            if node_id is not None:
+                node_indices[node_id] = index
+            return None
+        if "triangle" in node or "words" in node:
+            unknown = sorted(set(node) - {"id", "label", "triangle", "words", "token_span", "index", "source_refs", "notes"})
+            if unknown:
+                errors.append(f"{path} triangle has unsupported field(s): " + ", ".join(unknown))
+        if node.get("triangle") is True:
+            if "children" in node or "gap" in node or "word" in node:
+                errors.append(f"{path} triangle cannot also be a branch, terminal or gap")
+            label = node.get("label")
+            if not isinstance(label, str) or not label:
+                errors.append(f"{path}.label must be non-empty")
+            words = node.get("words")
+            if not isinstance(words, list) or not words or any(not isinstance(w, str) or not w for w in words):
+                errors.append(f"{path}.words must contain one or more non-empty strings")
+                return None
+            span = node.get("token_span")
+            if not (isinstance(span, list) and len(span) == 2
+                    and isinstance(span[0], int) and isinstance(span[1], int)
+                    and 0 <= span[0] < span[1] <= len(tokens)):
+                errors.append(f"{path}.token_span is out of range")
+                return None
+            start, end = span
+            index = node.get("index")
+            if index is not None and (not isinstance(index, int) or isinstance(index, bool) or index < 0):
+                errors.append(f"{path}.index must be a non-negative integer or null")
+            if node_id is not None:
+                node_indices[node_id] = index
+            if end - start != len(words):
+                errors.append(f"{path} triangle token_span width must equal words length")
+            else:
+                for offset, word in enumerate(words):
+                    index = start + offset
+                    covered.append(index)
+                    if tokens[index].get("text") != word:
+                        errors.append(f"{path}.words[{offset}] does not match token {index}")
+            return start, end
+
+        branch_unknown = sorted(set(node) - {"id", "label", "features", "index", "token_span", "children", "source_refs", "notes"})
+        if branch_unknown:
+            errors.append(f"{path} branch has unsupported field(s): " + ", ".join(branch_unknown))
+        if node.get("triangle") is True or node.get("gap") is True or "word" in node:
+            errors.append(f"{path} branch has incompatible node markers")
+        label = node.get("label")
+        children = node.get("children")
+        if not isinstance(label, str) or not label:
+            errors.append(f"{path}.label must be non-empty")
+        else:
+            intro = _LABEL_INTRODUCED.get(label)
+            if intro is not None and intro > chapter:
+                errors.append(f"{path} uses label {label!r} before its introduction in Chapter {intro}")
+            elif intro is None:
+                warnings.append(f"{path} uses label {label!r} not in the core label inventory; retain source-specific review")
+        features = node.get("features") or []
+        if not isinstance(features, list):
+            errors.append(f"{path}.features must be an array")
+            features = []
+        for feature in features:
+            if not isinstance(feature, str):
+                errors.append(f"{path} feature values must be strings")
+                continue
+            if feature not in _FEATURE_INTRODUCED:
+                errors.append(f"{path} uses unknown feature {feature!r}")
+            elif _FEATURE_INTRODUCED[feature] > chapter:
+                errors.append(f"{path} uses feature {feature!r} before Chapter {_FEATURE_INTRODUCED[feature]}")
+            if feature in _VERB_SUBCATEGORIES | {"phrasal"} and label != "V":
+                errors.append(f"{path} feature {feature!r} is only licensed on a V node")
+            if feature in {"pres", "past"} and label not in {"V", "MOD", "PERF", "PROG", "PASS", "TENSE"}:
+                errors.append(f"{path} tense feature {feature!r} is not licensed on {label!r}")
+            if feature == "-tense" and label not in {"AUX", "V", "PERF"}:
+                errors.append(f"{path} feature '-tense' is not licensed on {label!r} in the current convention inventory")
+        if label == "V" and chapter >= 4 and chapter <= 9:
+            if not (set(features) & _VERB_SUBCATEGORIES):
+                errors.append(f"{path} V node in V{chapter} requires a V4 sub-categorisation feature")
+        index = node.get("index")
+        if index is not None and (not isinstance(index, int) or isinstance(index, bool) or index < 0):
+            errors.append(f"{path}.index must be a non-negative integer or null")
+        if node_id is not None:
+            node_indices[node_id] = index
+        if not isinstance(children, list) or not children:
+            errors.append(f"{path}.children must be a non-empty array")
+            return None
+        child_spans = []
+        for i, child in enumerate(children):
+            span = walk(child, f"{path}.children[{i}]")
+            if span:
+                child_spans.append(span)
+        if not child_spans:
+            return None
+        for left, right in zip(child_spans, child_spans[1:]):
+            if left[1] > right[0]:
+                errors.append(f"{path} children overlap or are out of token order")
+        span = [child_spans[0][0], child_spans[-1][1]]
+        declared = node.get("token_span")
+        if declared is not None and declared != span:
+            errors.append(f"{path}.token_span must equal the span derived from its children")
+        return tuple(span)
+
+    root_span = walk(envelope.get("root"), "root")
+    if tokens:
+        if sorted(covered) != list(range(len(tokens))):
+            errors.append("overt terminal/triangle coverage must include each token exactly once")
+        if root_span and root_span != (0, len(tokens)):
+            errors.append("root token_span must cover all canonical tokens")
+    elif root_span is not None:
+        errors.append("a tree with no tokens cannot contain overt token spans")
+
+    movement = envelope.get("movement")
+    if not isinstance(movement, list):
+        errors.append("movement must be an array")
+    else:
+        known_ids = ids
+        for i, item in enumerate(movement):
+            if not isinstance(item, dict) or item.get("kind") not in {
+                    "movement", "control", "co_reference", "external_controller"}:
+                errors.append(f"movement[{i}] has an invalid kind")
+                continue
+            item_unknown = sorted(set(item) - {"kind", "from_node_id", "to_node_id", "gap_node_id",
+                                               "index", "controller", "source_ref", "note"})
+            if item_unknown:
+                errors.append(f"movement[{i}] has unsupported field(s): " + ", ".join(item_unknown))
+            for key in ("from_node_id", "to_node_id", "gap_node_id"):
+                if item.get(key) and item[key] not in known_ids:
+                    errors.append(f"movement[{i}].{key} refers to an unknown node id")
+            index = item.get("index")
+            if index is not None and (not isinstance(index, int) or isinstance(index, bool) or index < 0):
+                errors.append(f"movement[{i}].index must be a non-negative integer")
+            if item.get("kind") == "external_controller" and index is not None:
+                if index not in {value for value in node_indices.values() if value is not None}:
+                    errors.append(f"movement[{i}] external-controller index does not match any indexed node or gap")
+            gap_id = item.get("gap_node_id")
+            if gap_id:
+                if node_kinds.get(gap_id) != "gap":
+                    errors.append(f"movement[{i}].gap_node_id must refer to a gap node")
+                index = item.get("index")
+                gap_index = node_indices.get(gap_id)
+                if index is not None and (not isinstance(index, int) or isinstance(index, bool) or index < 0):
+                    errors.append(f"movement[{i}].index must be a non-negative integer")
+                if index is not None and gap_index is not None and index != gap_index:
+                    errors.append(f"movement[{i}] index does not match the linked gap index")
+                if (profile.get("version") in {"V10", "FINAL"}
+                        and item.get("kind") in {"movement", "control"}
+                        and (index is None or gap_index is None)):
+                    errors.append(f"movement[{i}] requires matching indices on a V10/FINAL movement or control gap")
+
+    alternatives = envelope.get("accepted_alternatives")
+    if not isinstance(alternatives, list):
+        errors.append("accepted_alternatives must be an array")
+    else:
+        alternative_ids: set[str] = set()
+        for i, alt in enumerate(alternatives):
+            path = f"accepted_alternatives[{i}]"
+            if not isinstance(alt, dict):
+                errors.append(f"{path} must be an object")
+                continue
+            allowed_alt = {"analysis_id", "root", "acceptance", "rationale", "meaning_or_context", "source_refs", "notes"}
+            alt_unknown = sorted(set(alt) - allowed_alt)
+            if alt_unknown:
+                errors.append(f"{path} has unsupported field(s): " + ", ".join(alt_unknown))
+            if not alt.get("analysis_id") or alt.get("acceptance") not in _ACCEPTANCE or not isinstance(alt.get("root"), dict):
+                errors.append(f"{path} requires analysis_id, valid acceptance and root")
+                continue
+            if alt["analysis_id"] in alternative_ids:
+                errors.append(f"{path}.analysis_id must be unique")
+            alternative_ids.add(alt["analysis_id"])
+            # Re-use the same envelope invariants against each alternative root.
+            # This prevents an accepted alternative from bypassing token order,
+            # span, label-introduction or node-shape checks.
+            alt_envelope = dict(envelope)
+            alt_envelope["tree_id"] = f"{envelope.get('tree_id')}-alternative-{i}"
+            alt_envelope["root"] = alt["root"]
+            alt_envelope["movement"] = []
+            alt_envelope["accepted_alternatives"] = []
+            alt_validation = validate_canonical_tree(alt_envelope)
+            for error in alt_validation["errors"]:
+                errors.append(f"{path}: {error}")
+            warnings.extend(f"{path}: {warning}" for warning in alt_validation["warnings"])
+
+    return {"valid": not errors, "errors": errors, "warnings": warnings}
