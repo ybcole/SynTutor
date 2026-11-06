@@ -156,7 +156,7 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
                 "tokens": tokens, "parse_string": "(S ...)", "root": root, "nodes": [],
             }
 
-        def bad_evaluation():
+        def bad_evaluation(*args, **kwargs):
             result = self.clean_evaluation()
             result["summary"]["verdict"] = "ungrammatical"
             result["summary"]["valid"] = False
