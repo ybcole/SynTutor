@@ -1,0 +1,24 @@
+{
+  "registry_version": 1,
+  "purpose": "Explicit allow-list for independently reviewed Cambridge rules that have passed source, crosswalk, implementation, and regression gates.",
+  "enabled_rules": [],
+  "policy": {
+    "extraction_status_alone_never_enables_a_rule": true,
+    "permitted_rule_types": [
+      "constraint",
+      "variety_restricted"
+    ],
+    "required_review_state": "independently_reviewed",
+    "required_crosswalk_status": [
+      "compatible",
+      "resolved"
+    ],
+    "required_test_state": "passed",
+    "default_when_absent": "disabled"
+  },
+  "notes": [
+    "No Cambridge rule is runtime-enabled by default.",
+    "The legacy rule matrix is a separate legacy path and is not represented as Cambridge runtime evaluation.",
+    "A rule may be added only after independent review, framework crosswalk resolution, a deterministic implementation, and passing positive, negative, and exception tests."
+  ]
+}
