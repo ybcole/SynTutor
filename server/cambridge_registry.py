@@ -49,8 +49,19 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
                 reasons.append("rule type is not executable")
             if not any(source.get("pages") for source in rule.get("sources", []) if isinstance(source, dict)):
                 reasons.append("source page evidence is missing")
+            mappings = rule.get("burton_roberts_mapping", [])
+            if any(
+                isinstance(mapping, dict)
+                and mapping.get("relation") in {"unverified", "conflict", "incompatible"}
+                for mapping in mappings
+            ):
+                reasons.append("source record still contains an unresolved B-R crosswalk")
         if entry.get("independent_review") is not True:
             reasons.append("independent_review must be true")
+        if not str(entry.get("reviewed_by") or "").strip():
+            reasons.append("reviewer identity is missing")
+        if not str(entry.get("reviewed_on") or "").strip():
+            reasons.append("review date is missing")
         if entry.get("crosswalk_status") not in {"compatible", "resolved"}:
             reasons.append("B-R/Cambridge crosswalk is unresolved")
         if entry.get("test_status") != "passed":
