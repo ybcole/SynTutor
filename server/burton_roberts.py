@@ -208,3 +208,213 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
                                 "detail": f"Punctuation occurs inside the {label} candidate; no B-R punctuation projection is approved here."})
                 continue
             triangles.append({
+                "id": f"sg-{label.lower()}", "label": label, "triangle": True,
+                "words": words,
+            })
+            trace.append({"rule_id": f"V2_TRIANGLE_{label}", "from": label,
+                          "to": f"{label} triangle", "evidence": "CONVENTIONS.md: V2 permits NP/VP triangles; internal parser structure is intentionally not promoted."})
+
+    if reasons:
+        return _unresolved_result(profile, reasons, trace, analysis, tokens)
+
+    # The parser's leaf order must be identical to the token stream produced by
+    # spaCy. A different tokenization is not repaired by guessing.
+    leaves = _raw_leaves(raw_root)
+    leaf_text = [str(x.get("surface", "")) for x in leaves]
+    token_text = [t["text"] for t in tokens]
+    if leaf_text != token_text:
+        reasons.append({"code": "TOKEN_ALIGNMENT_MISMATCH",
+                        "detail": "Benepar leaf text is not identical to the ordered spaCy token stream."})
+        return _unresolved_result(profile, reasons, trace, analysis, tokens)
+
+    cursor = 0
+    for triangle in triangles:
+        width = len(triangle["words"])
+        triangle["token_span"] = [cursor, cursor + width]
+        cursor += width
+    if cursor != len(tokens):
+        reasons.append({"code": "TOKEN_COVERAGE_MISMATCH",
+                        "detail": f"V2 triangles cover {cursor} token(s), but the parser returned {len(tokens)}."})
+        return _unresolved_result(profile, reasons, trace, analysis, tokens)
+
+    root_node = {"id": "sg-s", "label": "S", "token_span": [0, len(tokens)],
+                 "children": triangles}
+    tree_id = _stable_id("sg", sentence + "|V2")
+    envelope = {
+        "schema_version": SCHEMA_VERSION,
+        "tree_id": tree_id,
+        "sentence": sentence,
+        "tokens": tokens,
+        "convention_profile": profile,
+        "source": {"book": BOOK_TITLE, "chapter": 2,
+                   "evidence_status": "NEEDS_REVIEW"},
+        "root": root_node,
+        "movement": [],
+        "accepted_alternatives": [],
+        "notes": ["Benepar remains a candidate parser. This V2 projection is limited to S → NP VP with unanalyzed NP/VP triangles."],
+    }
+    validation = validate_canonical_tree(envelope)
+    if not validation["valid"]:
+        return {"status": "rejected", "tree": None,
+                "reasons": [{"code": "CANONICAL_VALIDATION_FAILED", "detail": e}
+                            for e in validation["errors"]],
+                "normalization_trace": trace,
+                "validation": validation}
+    return {"status": "normalized", "tree": envelope, "reasons": [],
+            "normalization_trace": trace, "validation": validation}
+
+
+def _unresolved_result(profile: dict[str, Any], reasons: list[dict[str, str]],
+                       trace: list[dict[str, Any]], analysis: dict[str, Any],
+                       tokens: list[dict[str, Any]]) -> dict[str, Any]:
+    return {"status": "unresolved", "tree": None, "reasons": reasons,
+            "normalization_trace": trace,
+            "diagnostics": {"parser": "benepar_en3", "parse_string": analysis.get("parse_string"),
+                            "raw_candidate_tree": analysis.get("root"),
+                            "token_count": len(tokens)}}
+
+
+def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = None,
+                             appendix_nom: bool | None = None,
+                             correction: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Build the stable API wrapper around a canonical tree or unresolved state."""
+    profile = convention_profile(chapter, appendix_nom)
+    result = normalize_benepar_candidate(analysis, profile)
+    result["convention_profile"] = profile
+    result.setdefault("diagnostics", {
+        "parser": "benepar_en3", "parse_string": analysis.get("parse_string"),
+        "raw_candidate_tree": analysis.get("root"),
+        "token_count": len(analysis.get("tokens") or []),
+    })
+    if correction:
+        result["correction_alignment"] = align_correction(
+            str(correction.get("original_sentence", analysis.get("sentence", ""))),
+            str(correction.get("corrected_sentence", "")),
+            source_edits=correction.get("edits") or [])
+    else:
+        result["correction_alignment"] = None
+    return result
+
+
+def _tokenize_with_spans(text: str) -> list[dict[str, Any]]:
+    return [{"text": m.group(0), "char_span": [m.start(), m.end()]}
+            for m in _TOKEN_RE.finditer(text)]
+
+
+def align_correction(original: str, corrected: str,
+                     source_edits: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+    """Align correction tokens, retaining substitutions/inserts/deletes and punctuation.
+
+    Contractions are kept as one lexical token when apostrophized; punctuation
+    marks are separate tokens. Multi-token rewrites remain a single operation
+    with explicit token and character ranges on both sides.
+    """
+    before = _tokenize_with_spans(original)
+    after = _tokenize_with_spans(corrected)
+    a = [x["text"].casefold() for x in before]
+    b = [x["text"].casefold() for x in after]
+    matcher = SequenceMatcher(a=a, b=b, autojunk=False)
+    operations = []
+    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+        if tag == "equal":
+            kind = "unchanged"
+        else:
+            left = before[i1:i2]
+            right = after[j1:j2]
+            left_text = [x["text"] for x in left]
+            right_text = [x["text"] for x in right]
+            apostrophe = any("'" in x or "’" in x for x in left_text + right_text)
+            punctuation = any(not any(ch.isalnum() for ch in x)
+                              for x in left_text + right_text)
+            if apostrophe:
+                kind = "contraction"
+            elif punctuation:
+                kind = "punctuation"
+            elif tag == "insert":
+                kind = "insertion"
+            elif tag == "delete":
+                kind = "deletion"
+            elif max(i2 - i1, j2 - j1) > 1:
+                kind = "multi_token_replacement"
+            else:
+                kind = "substitution"
+        left = before[i1:i2]
+        right = after[j1:j2]
+        def char_span(rows: list[dict[str, Any]], fallback: int) -> list[int]:
+            if not rows:
+                return [fallback, fallback]
+            return [rows[0]["char_span"][0], rows[-1]["char_span"][1]]
+        old_point = left[0]["char_span"][0] if left else (before[i1 - 1]["char_span"][1] if i1 else 0)
+        new_point = right[0]["char_span"][0] if right else (after[j1 - 1]["char_span"][1] if j1 else 0)
+        operations.append({
+            "kind": kind,
+            "opcode": tag,
+            "original_token_range": [i1, i2],
+            "corrected_token_range": [j1, j2],
+            "original_char_span": char_span(left, old_point),
+            "corrected_char_span": char_span(right, new_point),
+            "original_tokens": [x["text"] for x in left],
+            "corrected_tokens": [x["text"] for x in right],
+        })
+    return {"original_sentence": original, "corrected_sentence": corrected,
+            "original_tokens": before, "corrected_tokens": after,
+            "operations": operations, "source_edits": source_edits or []}
+
+
+def _tree_words(node: dict[str, Any]) -> list[str]:
+    if node.get("gap") is True:
+        return []
+    if "word" in node:
+        if node.get("ellipsis") or node.get("elided") or node.get("word") == "...":
+            return []
+        return [str(node["word"])]
+    if node.get("triangle"):
+        return [str(w) for w in node.get("words", []) if str(w) != "..."]
+    out: list[str] = []
+    for child in node.get("children") or []:
+        out.extend(_tree_words(child))
+    return out
+
+
+def _align_words_to_sentence(words: list[str], sentence: str | None) -> tuple[list[dict[str, Any]], list[str]]:
+    """Align book-tree terminals monotonically without substring false matches.
+
+    The source's tokenization is retained. Matching is case-insensitive but an
+    alphanumeric terminal must begin/end on a token boundary, so e.g. ``he``
+    cannot accidentally align to the initial letters of ``theory``.
+    """
+    tokens = []
+    errors = []
+    cursor = 0
+    sentence = sentence or ""
+    for i, word in enumerate(words):
+        if not sentence:
+            tokens.append({"index": i, "text": word, "char_span": [0, 0]})
+            continue
+        found = None
+        for match in re.finditer(re.escape(word), sentence[cursor:], re.IGNORECASE):
+            pos = cursor + match.start()
+            end = cursor + match.end()
+            has_word_chars = any(ch.isalnum() or ch == "_" for ch in word)
+            left_ok = (not has_word_chars or pos == 0
+                       or not (sentence[pos - 1].isalnum() or sentence[pos - 1] == "_"))
+            right_ok = (not has_word_chars or end == len(sentence)
+                        or not (sentence[end].isalnum() or sentence[end] == "_"))
+            if left_ok and right_ok:
+                found = (pos, end)
+                break
+        if found is None:
+            errors.append(f"tree terminal {word!r} could not be aligned to the sentence")
+            tokens.append({"index": i, "text": word, "char_span": [cursor, cursor]})
+            continue
+        pos, end = found
+        tokens.append({"index": i, "text": word, "char_span": [pos, end]})
+        cursor = end
+    return tokens, errors
+
+
+def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: list[int],
+                     node_id: str, notes: list[str]) -> dict[str, Any]:
+    if raw.get("gap") is True:
+        index = raw.get("index")
+        out = {"id": node_id, "gap": True}
