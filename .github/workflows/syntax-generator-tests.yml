@@ -23,6 +23,6 @@ jobs:
         run: python -m py_compile server/br_tree.py server/cambridge_registry.py
       - name: Run isolated Syntax Generator tests
         working-directory: server
-        run: python -m unittest -v test_br_tree test_cambridge_registry test_br_tree_fixtures test_br_tree_schema
+        run: python -m unittest -v test_br_tree test_cambridge_registry test_br_tree_fixtures test_br_tree_schema test_api_contract
       - name: Validate canonical tree schema JSON
         run: python -m json.tool grammar/br_tree.schema.json > /dev/null
