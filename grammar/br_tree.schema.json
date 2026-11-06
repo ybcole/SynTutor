@@ -114,6 +114,34 @@
         },
         "additionalProperties": true
       }
+    },
+    "external_controller": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "index",
+            "controller",
+            "source"
+          ],
+          "properties": {
+            "index": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "controller": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
     }
   },
   "allOf": [
@@ -236,6 +264,9 @@
           "$ref": "#/$defs/terminal"
         },
         {
+          "$ref": "#/$defs/symbol"
+        },
+        {
           "$ref": "#/$defs/gap"
         },
         {
@@ -344,7 +375,10 @@
           "minLength": 1
         },
         "label": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "minLength": 1
         },
         "features": {
@@ -465,6 +499,35 @@
           }
         }
       ],
+      "additionalProperties": false
+    },
+    "symbol": {
+      "type": "object",
+      "required": [
+        "id",
+        "symbol",
+        "elided",
+        "span",
+        "surface"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "symbol": {
+          "const": "E"
+        },
+        "elided": {
+          "const": true
+        },
+        "span": {
+          "$ref": "#/$defs/span"
+        },
+        "surface": {
+          "const": "E"
+        }
+      },
       "additionalProperties": false
     }
   }
