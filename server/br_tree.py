@@ -94,11 +94,19 @@ def _source_to_runtime(source: dict[str, Any], positions: list[int],
         if source.get("index") is not None:
             result["index"] = source["index"]
         return result
+    if "symbol" in source:
+        symbol = str(source["symbol"])
+        if symbol != "E" or not source.get("elided"):
+            raise ValueError(f"unsupported B-R terminal symbol: {symbol!r}")
+        start = positions[cursor[0]] if cursor[0] < len(positions) else (
+            positions[-1] + 1 if positions else 0)
+        return {"id": node_id, "symbol": symbol, "elided": True,
+                "span": [start, start], "surface": symbol}
     if "word" in source:
         word = str(source["word"])
         elided = bool(source.get("elided"))
         atoms = [] if elided else _atoms(word)
-        start = positions[cursor[0]] if atoms and cursor[0] < len(positions) else (
+        start = positions[cursor[0]] if cursor[0] < len(positions) else (
             positions[-1] + 1 if positions else 0)
         cursor[0] += len(atoms)
         end = positions[cursor[0] - 1] + 1 if atoms else start
@@ -107,14 +115,15 @@ def _source_to_runtime(source: dict[str, Any], positions: list[int],
             if source.get(key):
                 result[key] = True
         return result
+    is_triangle = bool(source.get("triangle"))
     label = source.get("label")
-    if not isinstance(label, str) or not label:
+    if not is_triangle and (not isinstance(label, str) or not label):
         raise ValueError("B-R constituent is missing a label")
     features = source.get("features") or []
     if not isinstance(features, list) or any(not isinstance(x, str) for x in features):
         raise ValueError(f"invalid feature list on {label}")
     result = {"id": node_id, "label": label, "features": list(features), "index": source.get("index")}
-    if source.get("triangle"):
+    if is_triangle:
         words = [str(x) for x in source.get("words", [])]
         atoms = [a for word in words for a in _atoms(word)]
         start = positions[cursor[0]] if atoms and cursor[0] < len(positions) else (
@@ -189,7 +198,7 @@ def validate_tree(tree: dict[str, Any], convention_version: str,
     version = _version_number(convention_version)
     errors, seen = [], set()
 
-    def visit(node: Any, path: str = "tree") -> tuple[list[str], int, int]:
+    def visit(node: Any, path: str = "tree", parent_label: str | None = None) -> tuple[list[str], int, int]:
         if not isinstance(node, dict):
             errors.append(f"{path}: node must be an object")
             return [], 0, 0
@@ -215,10 +224,20 @@ def validate_tree(tree: dict[str, Any], convention_version: str,
             if span[0] != span[1]:
                 errors.append(f"{path}: gap span must be zero-width")
             return [], span[0], span[1]
+        if "symbol" in node:
+            if node.get("symbol") != "E" or node.get("elided") is not True:
+                errors.append(f"{path}: only the elided B-R symbol E is supported")
+            if any(key in node for key in ("word", "label", "children", "triangle", "gap")):
+                errors.append(f"{path}: symbolic E cannot also be a word, constituent, or gap")
+            if version < 5:
+                errors.append(f"{path}: elision symbol E is introduced in V5")
+            if span[0] != span[1]:
+                errors.append(f"{path}: elision symbol must have a zero-width span")
+            return [], span[0], span[1]
         if "word" in node:
             if not isinstance(node["word"], str) or not node["word"]:
                 errors.append(f"{path}: terminal word must be non-empty text")
-            if any(key in node for key in ("label", "children")) or node.get("triangle"):
+            if any(key in node for key in ("label", "children", "symbol")) or node.get("triangle"):
                 errors.append(f"{path}: terminal cannot also be a constituent")
             atoms = [] if node.get("elided") else _atoms(str(node.get("word", "")))
             if atoms and span[1] - span[0] != len(atoms):
@@ -228,15 +247,19 @@ def validate_tree(tree: dict[str, Any], convention_version: str,
             return atoms, span[0], span[1]
         label = node.get("label")
         if not isinstance(label, str) or not label:
-            errors.append(f"{path}: constituent label is required")
-            label = ""
-        if label.casefold() in FUNCTION_LABELS:
+            if not (node.get("triangle") and parent_label == "C2" and version >= 9 and label is None):
+                errors.append(f"{path}: constituent label is required")
+        if isinstance(label, str) and label.casefold() in FUNCTION_LABELS:
             errors.append(f"{path}: grammatical function {label!r} must not be a tree label")
-        introduced = LABEL_INTRO.get(label)
-        symbolic = (
-            bool(re.fullmatch(r"PHRASE-[a-z]+", label)) and version <= 3
-        ) or (label in {"B", "C", "D", "F"} and version <= 2)
-        if introduced is None and not symbolic and version > 1:
+        introduced = LABEL_INTRO.get(label) if isinstance(label, str) else None
+        symbolic = isinstance(label, str) and (
+            (bool(re.fullmatch(r"PHRASE-[a-z]+", label)) and version <= 3)
+            or (label in {"B", "C", "D", "F"} and version <= 2)
+        )
+        unlabeled_c2_triangle = (
+            node.get("triangle") and parent_label == "C2" and version >= 9 and label is None
+        )
+        if introduced is None and not symbolic and not unlabeled_c2_triangle and version > 1:
             errors.append(f"{path}: label {label!r} is not in B-R inventory")
         elif introduced is not None and introduced > version:
             errors.append(f"{path}: label {label!r} is introduced after {convention_version}")
@@ -258,8 +281,8 @@ def validate_tree(tree: dict[str, Any], convention_version: str,
                 errors.append(f"{path}: feature {feature!r} is only valid on V")
             elif feature in TENSE_FEATURES and label not in {"V", "MOD", "PERF", "PROG", "PASS", "TENSE"}:
                 errors.append(f"{path}: tense feature {feature!r} is not valid on {label!r}")
-            elif feature == "-tense" and label != "AUX":
-                errors.append(f"{path}: -tense is only valid on AUX")
+            elif feature == "-tense" and label not in {"AUX", "PERF", "V"}:
+                errors.append(f"{path}: -tense is not valid on {label!r}")
         if node.get("index") is not None and (
             not isinstance(node["index"], int) or node["index"] < 1
         ):
@@ -287,7 +310,7 @@ def validate_tree(tree: dict[str, Any], convention_version: str,
             return [], span[0], span[1]
         atoms, spans = [], []
         for i, child in enumerate(children):
-            child_atoms, start, end = visit(child, f"{path}.children[{i}]")
+            child_atoms, start, end = visit(child, f"{path}.children[{i}]", label)
             atoms.extend(child_atoms)
             spans.append((start, end))
         previous_end = -1
@@ -374,7 +397,9 @@ def _make_reference(record: dict[str, Any], tokens: list[dict[str, Any]] | None,
             "path": record.get("_source_path"), "method": "exact_verified_reference",
         },
         "tree": runtime_tree, "accepted_alternatives": alternatives,
-        "movement": record.get("movement", []), "diagnostics": diagnostics,
+        "movement": record.get("movement", []),
+        "external_controller": record.get("external_controller"),
+        "diagnostics": diagnostics,
     }
 
 
