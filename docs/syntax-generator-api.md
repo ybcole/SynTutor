@@ -37,7 +37,7 @@ The existing response properties remain available for the current browser render
 - `nodes`, `node_details`, `summary`, `parse`, and `explainers`: existing analysis payload.
 - `meta.canonical_schema_version`: canonical envelope version (`1.0.0`).
 - `meta.canonical_analysis_status`: result of normalization.
-- `meta.displayed_tree_authority`: `benepar_diagnostic_candidate`. The current visual canvas still renders the legacy tree; frontend replacement is not claimed by this milestone.
+- `meta.displayed_tree_authority`: `benepar_diagnostic_candidate`. The current visual canvas still renders the legacy tree. A visible canvas notice now identifies it as a Benepar diagnostic candidate (or states that a B-R projection is available separately); it does not claim the canonical tree is being rendered.
 
 A separate `canonical_analysis` property is returned:
 
@@ -109,5 +109,5 @@ The focused suite currently covers profile selection, conservative V2 normalizat
 - Confirm the B-R edition and inspect the source PDFs. Parser-derived mappings must remain source-review pending until then.
 - Expand live normalization across V1–V10/FINAL only after source-backed transformation rules and reviewed fixtures exist.
 - Run `python scripts/audit_burton_roberts_import.py --expected-count 252` against all 252 B-R records, then reconcile exceptions/unresolved records against the existing chapter validators.
-- Add Flask/legacy transport contract tests, full backend/frontend integration tests, and renderer adoption of the canonical tree.
+- Add Flask/legacy transport contract tests and full backend/frontend integration tests; implement and test an actual canonical-tree renderer (the current canvas notice only labels the legacy Benepar rendering).
 - Compare existing generator behavior against the legacy regression corpus and model-backed parser runtime.
