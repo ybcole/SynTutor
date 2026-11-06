@@ -469,3 +469,69 @@ The matching checklist records verified inventory and architecture tasks, while 
 ### Approval
 
 The project owner granted standing automatic approval for all milestone gates. Milestone 01 is therefore unblocked for Milestone 02 under the documented dependencies.
+
+---
+
+## Milestone 02 progress record — 7 November 2026
+
+**Status:** In progress; do not mark Milestone 02 complete. The implementation covers a conservative subset of the approved scope and is awaiting the approval gate.
+
+**Execution branch:** `feature/milestone-02-syntax-generator-2026-11-07` (based on the Milestone 01 branch).
+
+### Prompt availability
+
+The execution plan names `master_prompt_syntax_generator.md`. During this run, the connected repository tool returned 404 for that exact path on the default branch, Milestone 01 branch, and the newly created feature branch; repository search did not return the file. The code work recorded here therefore follows the Milestone 02 scope and acceptance criteria in this execution plan, but has **not** been checked against the contents of that detailed prompt. Reconcile it against that prompt before approval.
+
+### Files inspected
+
+- `CONVENTIONS.md` and the approved Milestone 01 architecture, compatibility plan, and canonical schema.
+- `server/parse_engine.py`, `server/api.py`, `server/webapp.py`, and `server/app.py`.
+- `server/corrections.py` and the existing correction metadata contract.
+- Chapter tree records and selected validators, including actual Chapter 7, Chapter 9, and Chapter 10 records.
+- `web/js/main.js`, `web/js/renderer.js`, and existing payload/rendering call sites.
+- The Milestone 02 section of this plan and `master_checklist.md`.
+
+### Files created or changed
+
+- `server/burton_roberts.py`: canonical envelope construction, convention profiles, conservative live Benepar projection, read-only gold-record importer, correction alignment, and structural validator.
+- `server/test_burton_roberts.py`: focused unit/regression suite (16 tests).
+- `server/api.py`: adds a separate `canonical_analysis` response while retaining the existing raw `tree` for compatibility and marking its diagnostic authority in metadata.
+- `server/webapp.py` and `server/app.py`: accepts and validates optional chapter and Appendix D1 profile selection.
+- `docs/canonical-burton-roberts-tree.schema.json` and `docs/canonical-burton-roberts-tree-schema.md`: support the indexed triangles present in Chapter 10 fixtures.
+- `docs/syntax-generator-api.md`: API contract, status meanings, current coverage, and outstanding integration work.
+
+No database migration or live data change was made. No frontend renderer replacement was made.
+
+### Acceptance evidence
+
+1. Canonical model/validator exists — **Partially verified**. A v1.0.0 envelope and manual structural validator are implemented; complete linguistic validation across every chapter convention is not.
+2. Traceable decisions/no silent relabelling — **Verified for the implemented scope**. Live projection records transformation IDs/reasons and leaves unsupported or ambiguous output unresolved.
+3. Known B-R gold examples and validators — **Partially verified**. Focused source-shaped fixtures cover Ch7 core, Ch9 movement, Ch10 gaps/features/controllers, and alternatives. The complete set of 252 tree records and all 10 chapter validators have not been run through an integrated import.
+4. Unresolved and accepted alternatives — **Verified for the implemented scope**. Unmappable alternatives are retained in partial-tree notes and make the import unresolved; alternative trees are validated.
+5. API contract and errors — **Partially verified**. Both transports accept profile controls and the contract is documented; HTTP transport tests and end-to-end contract tests remain outstanding.
+6. Existing generator behavior — **Not yet verified**. The legacy `tree` response is kept unchanged, but the full old regression corpus and browser flows were not executed.
+
+### Tests and checks
+
+- `python -m py_compile server/burton_roberts.py` — **PASS**.
+- `python -m unittest server.test_burton_roberts -v` — **PASS**, 16 tests.
+- Verified that the exact Git blob SHAs for `server/burton_roberts.py` and `server/test_burton_roberts.py` match the locally tested files.
+- Confirmed the JSON Schema remains valid JSON and includes optional `index` on triangle nodes.
+- Full repository test scripts, parser/model-backed API calls, browser tests, and whole-repository build were **not run**. The environment could not establish a repository clone because DNS resolution for `github.com` failed; the NLP model/runtime environment was not available for an integrated parse run.
+
+### Important limitations
+
+- The live Benepar adapter currently promotes only a narrow V2 `S → NP VP` shell with unanalyzed NP/VP triangles, no punctuation mapping, and exact token alignment. Other profiles—including default FINAL-D1—return unresolved rather than receiving guessed Penn-to-B-R relabelling.
+- Even the supported parser-derived tree carries `source.evidence_status = NEEDS_REVIEW`; the B-R source PDF and exact edition remain unconfirmed.
+- The existing frontend still renders the legacy Benepar `payload.tree`; it is labelled in response metadata as a diagnostic candidate. Canonical renderer adoption and learner-facing state handling are not complete.
+- Chapter-specific source metadata without typed schema fields is retained in notes. Empty source nodes and movement descriptions lacking stable node references remain unresolved or descriptive; no node identifiers are fabricated.
+- The detailed `master_prompt_syntax_generator.md` was not visible through the repository connector during execution and still requires reconciliation.
+- No Cambridge evaluator, lesson, quiz, builder, XP, leaderboard, auth, or database implementation was included in this milestone.
+
+### Checklist synchronization
+
+Only individually evidenced items are checked in `master_checklist.md`. Milestone 02 itself remains unchecked because the full acceptance criteria and approval gate are not yet met.
+
+### Approval gate
+
+**Not ready for sign-off.** Review representative normalized V2 output, unresolved FINAL/unsupported constructions, gold import results, test evidence, prompt reconciliation, and remaining integration/source-evidence gaps before using canonical output downstream.
