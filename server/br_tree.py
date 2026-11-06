@@ -443,17 +443,35 @@ def normalize_candidate(candidate: dict[str, Any], tokens: list[dict[str, Any]] 
         if _source_yield(record["tree"]) == expected:
             matching.append(record)
     mapped = []
+    reference_failures = []
     for record in matching:
         try:
             mapped.append(_make_reference(record, tokens, sentence, convention_version))
-        except (TypeError, ValueError):
-            continue
+        except (TypeError, ValueError) as exc:
+            reference_failures.append({
+                "tree_id": record.get("id"),
+                "chapter": record.get("_chapter"),
+                "page": record.get("page"),
+                "code": "REFERENCE_VALIDATION_FAILED",
+                "message": str(exc),
+            })
     if mapped:
         signatures = {json.dumps(row["tree"], sort_keys=True, ensure_ascii=False) for row in mapped}
         if len(signatures) > 1:
             return _unresolved(convention_version, "AMBIGUOUS_REFERENCE",
                                "Distinct verified B-R source trees match; no analysis was selected.")
-        return mapped[0]
+        selected = mapped[0]
+        selected["diagnostics"].extend(
+            {"code": "ALTERNATIVE_REFERENCE_REJECTED", **failure}
+            for failure in reference_failures
+        )
+        return selected
+    if reference_failures:
+        return _unresolved(
+            convention_version, "REFERENCE_VALIDATION_FAILED",
+            "A B-R source record matches the sentence but failed canonical validation; the adapter refused to expose it.",
+            rejected_references=reference_failures,
+        )
     if version_number == 2:
         tree = _make_v2_mapping(candidate, tokens, sentence)
         if tree is not None:
