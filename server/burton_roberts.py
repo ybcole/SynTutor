@@ -418,3 +418,213 @@ def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: 
     if raw.get("gap") is True:
         index = raw.get("index")
         out = {"id": node_id, "gap": True}
+        if index is not None:
+            out["index"] = index
+        return out
+    if "word" in raw:
+        word = str(raw["word"])
+        if raw.get("ellipsis") or word == "...":
+            notes.append("Source ellipsis marker retained as a non-overt placeholder.")
+            return {"id": node_id, "word": word, "elided": True,
+                    "notes": ["source_ellipsis_marker"]}
+        if raw.get("elided"):
+            notes.append(f"Source elided terminal {word!r} retained without overt token coverage.")
+            return {"id": node_id, "word": word, "elided": True,
+                    "notes": ["source_elided_terminal"]}
+        idx = cursor[0]
+        if idx >= len(tokens) or tokens[idx]["text"] != word:
+            raise ValueError(f"terminal {word!r} does not align with source token {idx}")
+        cursor[0] += 1
+        return {"id": node_id, "word": word, "token_span": [idx, idx + 1]}
+    if raw.get("triangle"):
+        words = [str(w) for w in raw.get("words", []) if str(w) != "..."]
+        start = cursor[0]
+        for word in words:
+            idx = cursor[0]
+            if idx >= len(tokens) or tokens[idx]["text"] != word:
+                raise ValueError(f"triangle word {word!r} does not align with source token {idx}")
+            cursor[0] += 1
+        if not words:
+            raise ValueError("triangle contains no overt source words")
+        out = {"id": node_id, "label": str(raw.get("label", "")),
+               "triangle": True, "words": words,
+               "token_span": [start, cursor[0]]}
+        if raw.get("index") is not None:
+            out["index"] = raw["index"]
+        if "..." in raw.get("words", []):
+            notes.append("A source ellipsis marker inside a triangle was omitted from overt token coverage.")
+        return out
+    label = raw.get("label")
+    children_raw = raw.get("children")
+    if not isinstance(label, str) or not label:
+        raise ValueError("gold branch node is missing a label")
+    if not isinstance(children_raw, list) or not children_raw:
+        raise ValueError(f"gold branch {label!r} has no children")
+    children = [_build_gold_node(child, tokens, cursor, f"{node_id}-{i}", notes)
+                for i, child in enumerate(children_raw)]
+    overt = [c.get("token_span") for c in children if c.get("token_span")]
+    span = [min(x[0] for x in overt), max(x[1] for x in overt)] if overt else None
+    out = {"id": node_id, "label": label, "children": children}
+    if span is not None:
+        out["token_span"] = span
+    features = raw.get("features")
+    if features:
+        if isinstance(features, list) and all(isinstance(x, str) for x in features):
+            out["features"] = list(features)
+        else:
+            notes.append(f"Invalid source feature metadata retained in notes for {label!r}.")
+            out["notes"] = ["invalid_source_features=" + json.dumps(features, ensure_ascii=False)]
+    if raw.get("index") is not None:
+        out["index"] = raw["index"]
+    if raw.get("starred"):
+        out.setdefault("notes", []).append("source tree is starred")
+    return out
+
+
+def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any]) -> dict[str, Any]:
+    """Project one existing chapter tree record into the canonical schema.
+
+    This function never edits the source JSON. Unsupported metadata is retained
+    in notes and reported; alternatives with tree shapes are mapped explicitly.
+    """
+    chapter = int(chapter_data.get("chapter", 0))
+    profile = convention_profile(chapter,
+                                 bool(record.get("appendix_nom")) if chapter == 7 else None)
+    raw_tree = record.get("tree")
+    if not isinstance(raw_tree, dict):
+        return {"status": "rejected", "tree": None,
+                "errors": ["gold record has no tree object"]}
+    sentence = record.get("sentence")
+    words = _tree_words(raw_tree)
+    tokens, alignment_errors = _align_words_to_sentence(words, sentence)
+    if alignment_errors:
+        return {"status": "unresolved", "tree": None, "errors": alignment_errors,
+                "raw_tree": raw_tree}
+    notes: list[str] = []
+    cursor = [0]
+    tree_id = str(record.get("id") or _stable_id(f"ch{chapter}", json.dumps(raw_tree, sort_keys=True)))
+    try:
+        root = _build_gold_node(raw_tree, tokens, cursor, f"{tree_id}-root", notes)
+        if cursor[0] != len(tokens):
+            raise ValueError(f"tree consumed {cursor[0]} of {len(tokens)} source token(s)")
+    except (TypeError, ValueError) as exc:
+        return {"status": "unresolved", "tree": None, "errors": [str(exc)],
+                "raw_tree": raw_tree}
+
+    source = {"book": BOOK_TITLE, "chapter": chapter,
+              "evidence_status": record.get("status") if record.get("status") in _EVIDENCE else "NEEDS_REVIEW",
+              "source_record_id": tree_id}
+    if record.get("page") is not None:
+        source["printed_page"] = int(record["page"])
+    if record.get("fig") is not None:
+        source["figure_id"] = str(record["fig"])
+    movement_records: list[dict[str, Any]] = []
+    external = record.get("external_controller")
+    if isinstance(external, dict):
+        relation = {"kind": "external_controller"}
+        if external.get("index") is not None:
+            relation["index"] = external["index"]
+        if external.get("controller") is not None:
+            relation["controller"] = str(external["controller"])
+        if external.get("source") is not None:
+            relation["source_ref"] = str(external["source"])
+        movement_records.append(relation)
+    elif external not in (None, "", [], {}):
+        notes.append("unmapped_external_controller=" + json.dumps(external, ensure_ascii=False, sort_keys=True))
+    envelope: dict[str, Any] = {
+        "schema_version": SCHEMA_VERSION, "tree_id": tree_id,
+        "tokens": tokens, "convention_profile": profile,
+        "source": source, "root": root, "movement": movement_records,
+        "accepted_alternatives": [], "notes": notes,
+    }
+    if isinstance(sentence, str):
+        envelope["sentence"] = sentence
+    if record.get("note"):
+        envelope["notes"].append(str(record["note"]))
+    for field in ("book_simplification", "clause_id", "movement"):
+        if record.get(field) not in (None, [], {}, ""):
+            envelope["notes"].append(f"source_metadata:{field}={json.dumps(record[field], ensure_ascii=False, sort_keys=True)}")
+
+    alternative_errors = []
+    for i, alt in enumerate(record.get("accepted_alternatives") or []):
+        if not isinstance(alt, dict) or not isinstance(alt.get("tree"), dict):
+            alternative_errors.append(f"accepted alternative {i + 1} has no tree shape; its metadata is retained in notes")
+            envelope["notes"].append("unmaterialized_accepted_alternative=" + json.dumps(alt, ensure_ascii=False, sort_keys=True))
+            continue
+        alt_words = _tree_words(alt["tree"])
+        if alt_words != words:
+            alternative_errors.append(f"accepted alternative {i + 1} has different terminal sequence")
+            envelope["notes"].append("unaligned_accepted_alternative=" + json.dumps(alt, ensure_ascii=False, sort_keys=True))
+            continue
+        alt_cursor = [0]
+        try:
+            alt_root = _build_gold_node(alt["tree"], tokens, alt_cursor,
+                                        f"{tree_id}-alt-{i + 1}", envelope["notes"])
+            if alt_cursor[0] != len(tokens):
+                raise ValueError(f"alternative consumed {alt_cursor[0]} of {len(tokens)} source token(s)")
+        except (TypeError, ValueError) as exc:
+            alternative_errors.append(f"accepted alternative {i + 1} could not be projected: {exc}")
+            envelope["notes"].append("unprojected_accepted_alternative=" + json.dumps(alt, ensure_ascii=False, sort_keys=True))
+            continue
+        acceptance = alt.get("acceptance", "ACCEPTED")
+        if acceptance not in _ACCEPTANCE:
+            acceptance = "ACCEPTED"
+        alternative = {"analysis_id": f"{tree_id}-alt-{i + 1}",
+                       "root": alt_root, "acceptance": acceptance,
+                       "source_refs": [tree_id]}
+        if alt.get("note") or alt.get("label"):
+            alternative["rationale"] = str(alt.get("note") or alt.get("label"))
+        envelope["accepted_alternatives"].append(alternative)
+    validation = validate_canonical_tree(envelope)
+    errors = list(validation["errors"]) + alternative_errors
+    return {"status": "normalized" if not errors else "unresolved",
+            "tree": envelope if not errors else None,
+            "partial_tree": envelope if errors else None,
+            "errors": errors, "warnings": validation["warnings"],
+            "raw_tree": raw_tree if errors else None}
+
+
+def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
+    """Validate schema-level and B-R structural invariants without dependencies."""
+    errors: list[str] = []
+    warnings: list[str] = []
+    if not isinstance(envelope, dict):
+        return {"valid": False, "errors": ["canonical envelope must be an object"], "warnings": []}
+    required = {"schema_version", "tree_id", "tokens", "convention_profile",
+                "source", "root", "movement", "accepted_alternatives"}
+    allowed_envelope = required | {"sentence", "notes"}
+    missing = sorted(required - set(envelope))
+    if missing:
+        errors.append("missing required envelope field(s): " + ", ".join(missing))
+    unknown_envelope = sorted(set(envelope) - allowed_envelope)
+    if unknown_envelope:
+        errors.append("unsupported envelope field(s): " + ", ".join(unknown_envelope))
+    if envelope.get("schema_version") != SCHEMA_VERSION:
+        errors.append(f"schema_version must be {SCHEMA_VERSION}")
+    if not isinstance(envelope.get("tree_id"), str) or not envelope.get("tree_id"):
+        errors.append("tree_id must be a non-empty string")
+    profile = envelope.get("convention_profile")
+    errors.extend(_profile_errors(profile))
+    if isinstance(profile, dict):
+        profile_unknown = sorted(set(profile) - {"chapter", "version", "appendix_nom", "profile_id"})
+        if profile_unknown:
+            errors.append("unsupported convention_profile field(s): " + ", ".join(profile_unknown))
+    chapter = profile.get("chapter", 0) if isinstance(profile, dict) else 0
+    tokens = envelope.get("tokens")
+    if not isinstance(tokens, list):
+        errors.append("tokens must be an array")
+        tokens = []
+    sentence = envelope.get("sentence")
+    previous_end = -1
+    for i, token in enumerate(tokens):
+        if not isinstance(token, dict):
+            errors.append(f"token {i} must be an object")
+            continue
+        token_unknown = sorted(set(token) - {"index", "text", "char_span", "pos", "parser_tag"})
+        if token_unknown:
+            errors.append(f"token {i} has unsupported field(s): " + ", ".join(token_unknown))
+        if isinstance(token.get("index"), bool) or not isinstance(token.get("index"), int) or token.get("index") != i:
+            errors.append(f"token {i} index must equal its zero-based integer position")
+        if not isinstance(token.get("text"), str) or not token.get("text"):
+            errors.append(f"token {i} text must be non-empty")
+        span = token.get("char_span")
