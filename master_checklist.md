@@ -263,12 +263,13 @@ The three boxes marked above are supported by code and focused tests: the API re
 - Canonical gold-tree import now preserves node diagram references in `source_refs` and serializes untyped source-only node fields (including symbols, multiword flags, and verb-type labels) into node notes.
 - A source-only zero-word Chapter 5 `E` elision marker remains explicitly unresolved. It is not reclassified as a gap or fabricated as a word-bearing terminal.
 - Convention profile identity/refinement combinations are checked; triangle labels are checked against chapter-introduction boundaries; invalid falsey feature containers and boolean token-span coordinates are rejected.
-- Added seven focused regression tests and `scripts/audit_burton_roberts_import.py` for read-only reporting across the 252 chapter records.
+- Added focused regression tests and `scripts/audit_burton_roberts_import.py` for read-only reporting across the 252 chapter records.
+- Added a visible Syntax Tutor canvas notice that labels the currently rendered Benepar tree as diagnostic-only and reports canonical normalization status; lesson-authored canvas trees clear the notice.
 
 **Verification state for this continuation**
-- The new tests and whole-corpus audit runner were committed but could not be executed in this environment. The repository could not be cloned because DNS resolution for `github.com` failed.
+- The new tests, whole-corpus audit runner, and UI changes were committed but could not be executed in this environment. The repository could not be cloned because DNS resolution for `github.com` failed.
 - The 16-test PASS entry above is evidence recorded on the parent Milestone 02 branch, not a fresh run of this continuation branch. The hardening changes therefore remain **unverified at runtime** until the focused suite and audit command are run.
 - The detailed `master_prompt_syntax_generator.md` was not found at the expected root path or in the accessible branch trees checked during this run. This continuation follows the Milestone 02 execution-plan scope but does not claim detailed-prompt compliance.
-- The B-R edition/PDF, full parser/model runtime, frontend canonical renderer adoption, and end-to-end API integration remain outstanding.
+- The B-R edition/PDF, full parser/model runtime, canonical frontend renderer adoption, and end-to-end API integration remain outstanding. The new canvas notice is an authority warning, not canonical rendering.
 
 **Milestone 02 remains unchecked and not approved for downstream use.**
