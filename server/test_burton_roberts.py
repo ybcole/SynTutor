@@ -261,6 +261,74 @@ class GoldFixtureTests(unittest.TestCase):
         self.assertEqual(envelope["root"]["children"][1]["children"][0]["children"][1]["children"][0]["index"], 1)
         self.assertTrue(validate_canonical_tree(envelope)["valid"])
 
+    def test_chapter_9_movement_is_preserved_without_invented_node_links(self):
+        record = {
+            "id": "ch9-11b", "fig": "[11b]", "page": 199,
+            "sentence": "what is Vince taking to Athens", "status": "IMG",
+            "tree": {"label": "S-dbar", "children": [
+                {"label": "C2", "children": [{"word": "what"}]},
+                {"label": "S-bar", "children": [
+                    {"label": "C1", "children": [{"word": "is"}]},
+                    {"label": "S", "children": [
+                        {"label": "NP", "triangle": True, "words": ["Vince"]},
+                        {"label": "VP", "children": [
+                            {"label": "VP", "children": [
+                                {"label": "PROG", "features": ["pres"],
+                                 "children": [{"gap": True}]},
+                                {"label": "VP", "children": [
+                                    {"label": "V", "features": ["trans"],
+                                     "children": [{"word": "taking"}]},
+                                    {"label": "NP", "children": [{"gap": True}]},
+                                ]},
+                            ]},
+                            {"label": "PP", "triangle": True, "words": ["to", "Athens"]},
+                        ]},
+                    ]},
+                ]},
+            ]},
+            "movement": [
+                {"from": "direct-object NP", "to": "C2"},
+                {"from": "PROG auxiliary position", "to": "C1"},
+            ],
+            "wh_gap_category": "NP",
+            "surface_from_tree": "what is Vince taking to Athens",
+        }
+        result = canonicalize_gold_record(record, {"chapter": 9})
+        self.assertEqual(result["status"], "normalized", result.get("errors"))
+        movements = result["tree"]["movement"]
+        self.assertEqual(len(movements), 2)
+        self.assertTrue(all(x["kind"] == "movement" for x in movements))
+        self.assertTrue(all("source_ref" in x and "note" in x for x in movements))
+        self.assertTrue(any(x.startswith("source_metadata:wh_gap_category=")
+                            for x in result["tree"]["notes"]))
+        self.assertTrue(any(x.startswith("source_metadata:surface_from_tree=")
+                            for x in result["tree"]["notes"]))
+
+    def test_multiple_external_controllers_are_preserved(self):
+        record = {
+            "id": "ch10-controller-pairs", "sentence": "expect", "status": "IMG",
+            "tree": {"label": "S", "children": [
+                {"label": "NP", "children": [{"gap": True, "index": 1}]},
+                {"label": "VP", "children": [
+                    {"label": "V", "features": ["trans"],
+                     "children": [{"word": "expect"}]},
+                    {"label": "NP", "children": [{"gap": True, "index": 2}]},
+                ]},
+            ]},
+            "external_controllers": [
+                {"index": 1, "controller": "Alex", "source": "Ch10 source A"},
+                {"index": 2, "controller": "what", "source": "Ch10 source B"},
+            ],
+            "interpretation": "two indexed controllers",
+        }
+        result = canonicalize_gold_record(record, {"chapter": 10})
+        self.assertEqual(result["status"], "normalized", result.get("errors"))
+        rows = result["tree"]["movement"]
+        self.assertEqual([x["index"] for x in rows], [1, 2])
+        self.assertTrue(all(x["kind"] == "external_controller" for x in rows))
+        self.assertTrue(any(x.startswith("source_metadata:interpretation=")
+                            for x in result["tree"]["notes"]))
+
     def test_alternative_tree_is_validated_and_kept(self):
         record = {
             "id": "ch7-alt", "sentence": "the clowns", "status": "IMG",
