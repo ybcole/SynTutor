@@ -99,7 +99,7 @@
 
 - The inspected 196 active records are marked `APPROVED`. Their aggregate rule types are 141 classifications, 22 constraints, 32 descriptive generalisations, and 1 stylistic/prescriptive record. No `variety_restricted` record was present in this active set.
 - All **196/196** active rule records have B-R mapping entries whose relation is `unverified`. There are no verified cross-framework mappings in the inspected active rule registry.
-- Across the 22 raw extractions, **32 uncertain-item records** were present.
+- Across the 22 raw extractions, **33 uncertain-item records** were present (16 in the four Chapter 2 batches and 17 across Chapters 3–20).
 - Across 19 chapter conflict files, **7 conflict records** were present: three in Chapter 2 and one each in Chapters 3, 13, 16, and 17. Chapter reports describe four as resolved within the Cambridge rule set (Chapters 3, 13, 16, 17); the three Chapter 2 cross-framework differences remain unresolved pending B-R comparison.
 - Coverage is section/subsection based, not whole-chapter completion. Chapter 2 reports cover printed pages 43–69 in four batches; Chapters 3–20 generally cover only the first named section/subsection in each report. The detailed list and limitations are in `docs/burton-roberts-cambridge-crosswalk.md`.
 - The Cambridge reports repeatedly state that independent second-pass review has not been performed and B-R mappings remain unverified. Therefore `APPROVED` is recorded as human approval, **not** as evidence of independent review or automatic runtime eligibility.
