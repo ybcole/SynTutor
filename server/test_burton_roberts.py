@@ -472,5 +472,23 @@ class CanonicalHardeningTests(unittest.TestCase):
                             for note in verb.get("notes", [])))
 
 
+    def test_zero_word_elision_marker_is_unresolved_not_recast_as_a_gap(self):
+        record = {
+            "id": "ch5-46", "sentence": "William gave some bleach", "status": "IMG",
+            "tree": {"label": "S", "children": [
+                {"label": "NP", "triangle": True, "words": ["William"]},
+                {"label": "VP", "children": [
+                    {"label": "V", "features": ["ditrans"], "children": [{"word": "gave"}]},
+                    {"label": "NP", "children": [{"elided": True, "symbol": "E"}]},
+                    {"label": "NP", "triangle": True, "words": ["some", "bleach"]},
+                ]},
+            ]},
+        }
+        result = canonicalize_gold_record(record, {"chapter": 5})
+        self.assertEqual(result["status"], "unresolved")
+        self.assertTrue(any("elided-element marker" in error for error in result["errors"]))
+        self.assertEqual(result["raw_tree"], record["tree"])
+
+
 if __name__ == "__main__":
     unittest.main()
