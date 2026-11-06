@@ -519,8 +519,32 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
     if record.get("fig") is not None:
         source["figure_id"] = str(record["fig"])
     movement_records: list[dict[str, Any]] = []
-    external = record.get("external_controller")
-    if isinstance(external, dict):
+    # Ch9 movement notes identify linguistic positions in prose, not stable
+    # node IDs. Preserve those labels as a source-linked movement note rather
+    # than inventing node-to-node links.
+    for movement in record.get("movement") or []:
+        if isinstance(movement, dict):
+            source_position = str(movement.get("from", "unspecified source position"))
+            target_position = str(movement.get("to", "unspecified target position"))
+            movement_records.append({
+                "kind": "movement",
+                "source_ref": tree_id,
+                "note": f"Source-described movement: {source_position} → {target_position}",
+            })
+        else:
+            notes.append("unmapped_movement_item=" + json.dumps(movement, ensure_ascii=False, sort_keys=True))
+    external_rows = []
+    if isinstance(record.get("external_controller"), dict):
+        external_rows.append(record["external_controller"])
+    plural_external = record.get("external_controllers")
+    if isinstance(plural_external, list):
+        external_rows.extend(x for x in plural_external if isinstance(x, dict))
+        invalid_external = [x for x in plural_external if not isinstance(x, dict)]
+        if invalid_external:
+            notes.append("unmapped_external_controllers=" + json.dumps(invalid_external, ensure_ascii=False, sort_keys=True))
+    elif plural_external not in (None, "", [], {}):
+        notes.append("unmapped_external_controllers=" + json.dumps(plural_external, ensure_ascii=False, sort_keys=True))
+    for external in external_rows:
         relation = {"kind": "external_controller"}
         if external.get("index") is not None:
             relation["index"] = external["index"]
@@ -529,8 +553,6 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
         if external.get("source") is not None:
             relation["source_ref"] = str(external["source"])
         movement_records.append(relation)
-    elif external not in (None, "", [], {}):
-        notes.append("unmapped_external_controller=" + json.dumps(external, ensure_ascii=False, sort_keys=True))
     envelope: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION, "tree_id": tree_id,
         "tokens": tokens, "convention_profile": profile,
@@ -541,9 +563,19 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
         envelope["sentence"] = sentence
     if record.get("note"):
         envelope["notes"].append(str(record["note"]))
-    for field in ("book_simplification", "clause_id", "movement"):
-        if record.get(field) not in (None, [], {}, ""):
-            envelope["notes"].append(f"source_metadata:{field}={json.dumps(record[field], ensure_ascii=False, sort_keys=True)}")
+    represented_fields = {
+        "id", "fig", "page", "sentence", "status", "tree", "note",
+        "appendix_nom", "accepted_alternatives", "external_controller",
+        "external_controllers", "movement",
+    }
+    # Preserve every remaining chapter-specific answer/interpretation field.
+    # The schema's notes array is intentionally used as a lossless, readable
+    # escape hatch until dedicated typed fields are approved.
+    for field in sorted(set(record) - represented_fields):
+        value = record[field]
+        if value not in (None, [], {}, ""):
+            envelope["notes"].append(
+                f"source_metadata:{field}={json.dumps(value, ensure_ascii=False, sort_keys=True)}")
 
     alternative_errors = []
     for i, alt in enumerate(record.get("accepted_alternatives") or []):
@@ -574,6 +606,12 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
                        "source_refs": [tree_id]}
         if alt.get("note") or alt.get("label"):
             alternative["rationale"] = str(alt.get("note") or alt.get("label"))
+        alt_metadata = {k: v for k, v in alt.items()
+                        if k not in {"tree", "acceptance", "note", "label"}}
+        if alt_metadata:
+            envelope["notes"].append(
+                f"accepted_alternative_metadata:{i + 1}="
+                + json.dumps(alt_metadata, ensure_ascii=False, sort_keys=True))
         envelope["accepted_alternatives"].append(alternative)
     validation = validate_canonical_tree(envelope)
     errors = list(validation["errors"]) + alternative_errors
