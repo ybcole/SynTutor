@@ -24,6 +24,22 @@ jobs:
       - name: Run isolated Syntax Generator tests
         working-directory: server
         run: python -m unittest -v test_br_tree test_cambridge_registry test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract
+
+      - name: Run all existing B-R chapter validators
+        working-directory: web/content/book
+        run: |
+          set -e
+          for validator in validate_ch*.py; do
+            echo "=== $validator ==="
+            log="/tmp/${validator%.py}.log"
+            python "$validator" > "$log"
+            cat "$log"
+            if grep -Eq '(^PROBLEMS$|^FAIL |FAILED|Traceback)' "$log"; then
+              echo "B-R source validator reported a failure: $validator"
+              exit 1
+            fi
+          done
+
       - name: Run existing model-free parser/matrix and correction regressions
         working-directory: server
         run: |
