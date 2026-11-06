@@ -1,0 +1,28 @@
+name: Syntax Generator model-free checks
+
+on:
+  push:
+    branches:
+      - milestone-02-syntax-generator
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  syntax-generator-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install JSON Schema validator
+        run: python -m pip install "jsonschema>=4.23,<5"
+      - name: Compile new backend modules
+        run: python -m py_compile server/br_tree.py server/cambridge_registry.py
+      - name: Run isolated Syntax Generator tests
+        working-directory: server
+        run: python -m unittest -v test_br_tree test_cambridge_registry
+      - name: Validate canonical tree schema JSON
+        run: python -m json.tool grammar/br_tree.schema.json > /dev/null
