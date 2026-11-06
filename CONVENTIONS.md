@@ -10,13 +10,26 @@
 
 ## 0. Rules for the AI (read first)
 
-1. **The book is the only authority.** Do not use Penn Treebank / benepar conventions, textbook X-bar theory, or your own habits to decide a tree's shape. If the book does not say, output `UNSURE` and stop for human review. Never guess a tree.
+1. **The B-R book is the authority for B-R tree shape.** Do not use Penn Treebank /
+   Benepar conventions, textbook X-bar theory, or your own habits to decide a
+   canonical B-R tree. Benepar may provide a candidate parse to a separately
+   validated adapter, but its output is not canonical. If the B-R book does not
+   support a structural decision, output `UNSURE` and stop for human review.
+   Cambridge may support broader grammatical claims, but cannot change a B-R
+   phrase-marker convention.
 2. **Every tree carries a `convention_version`** (V1–V10, §1). A tree is drawn with the conventions of the chapter it appears in. **Never "upgrade" an early-chapter tree to later conventions**, and never use a later convention in an earlier chapter (e.g. no `NOM` before Ch7, no `S′` before Ch6).
 3. **Functions are not nodes.** Subject, direct object, adjunct, etc. are *read off* tree positions (§6). They are never drawn as labels in a phrase marker (Ch2 p.30; Ch5 p.88).
 4. **Triangles are legitimate.** A triangle means "internal structure not analysed here." Use triangles exactly where the book does (the exercise text usually says which constituents to triangle). A triangle node must still carry its category label.
 5. **Gradable analyses vs. alternatives:** some exercises have more than one accepted analysis (§9). Store them in `accepted_alternatives`, don't pick one silently.
 6. **Evidence grading:** every convention below is tagged `[IMG]` (checked against the book's page images) or `[TXT]` (taken from the book's text only; shape of the tree not yet visually checked). For `[TXT]` items, transcribe from the page image before using them as gold trees.
-7. **Every explanation shown to a learner must come from the book (see §14).** Feedback, hints, "why is this wrong" text and any AI-generated explanation may use only the book's definitions, tests and worked answers, each carrying a chapter+page citation. If the book gives no basis, show nothing invented: output `NO_BOOK_BASIS` and point to the relevant chapter page instead.
+7. **Every explanation shown to a learner must be source-grounded (see §14).**
+   Structural claims about a B-R tree must use B-R definitions, tests, worked
+   answers, and conventions with chapter+printed-page citations. Broader
+   grammatical claims may use separately reviewed Cambridge records with exact
+   printed-page citations, explicit conditions, and exceptions. Keep the source
+   authorities visible and do not force an unverified cross-framework mapping.
+   If the relevant source gives no basis, show nothing invented: use
+   `NO_BOOK_BASIS` or `NO_CAMBRIDGE_BASIS`, as applicable.
 
 ---
 
@@ -491,7 +504,15 @@ Conclusion: **lesson gold trees must be authored from the book**; the parser can
 
 ## 14. Explanations (XAI) must come from the book
 
-**Rule:** anything the app tells a learner about *why* an answer is right or wrong, what a term means, or why a tree has its shape must be grounded in the book. The AI is never an independent source of linguistic reasoning. The same applies to the free-form "Analyze any sentence" mode: no explanation may be shown unless it maps to a book concept with a page.
+**Rule:** anything the app tells a learner about *why* an answer is right or wrong,
+what a term means, or why a tree has its shape must be grounded in a reviewed
+linguistic source. Use Burton-Roberts for phrase-marker shape, tree labels,
+structural functions, and the chapter-specific method. Use reviewed Cambridge
+records for broader grammatical categories, constructions, constraints, conditions,
+and exceptions. The sources remain distinct; Cambridge does not override B-R tree
+conventions. The AI is never an independent source of linguistic reasoning. The
+same applies to free-form analysis: no explanation may be shown unless it maps to
+a source record with a printed-page citation.
 
 ### 14.1 What counts as a valid source
 | `kind` | Meaning | Example |
@@ -501,8 +522,14 @@ Conclusion: **lesson gold trees must be authored from the book**; the parser can
 | `worked_answer` | The book's own "Discussion of exercises" reasoning | Ch1 Ex4 (a)-(g), pp.21-22 |
 | `principle` | A stated principle | an element belongs directly to one phrase only (Ch1 p.17) |
 | `convention` | A drawing convention of that chapter | `S → NP VP`; auxiliary heads its own VP (Ch6) |
+| `cambridge_concept` | A broader grammatical concept from an independently reviewed Cambridge record | Category/construction distinction with exact printed page and concept ID |
+| `cambridge_constraint` | A grammatical constraint or variety-restricted condition from an independently reviewed Cambridge record | Condition, violation, relevant variety/register, exceptions, and exact printed page |
 
-Anything else (the model's own grammar knowledge, Penn Treebank / benepar reasoning, other textbooks) is **not** a valid source.
+Anything else (the model's own grammar knowledge, Penn Treebank / Benepar
+reasoning, unreviewed extracts, or unrelated textbooks) is **not** a valid source.
+A Cambridge record is valid for its stated grammatical domain only after
+independent review, printed-page verification, crosswalk review where relevant,
+and approval for the intended use.
 
 ### 14.2 How explanations are produced
 1. **Engine computes the facts** (which node dominates which words, which test applies, which function a position gives, per §6). Facts are code, not AI opinion.
