@@ -525,6 +525,13 @@ def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: 
             notes.append("A source ellipsis marker inside a triangle was omitted from overt token coverage.")
         return _preserve_source_node_metadata(out, raw)
 
+    if raw.get("elided") and "word" not in raw:
+        symbol = raw.get("symbol", "unspecified")
+        raise ValueError(
+            f"source elided-element marker {symbol!r} has no lexical word; "
+            "canonical v1.0.0 only represents elided terminals with an explicit word"
+        )
+
     label = raw.get("label")
     children_raw = raw.get("children")
     if not isinstance(label, str) or not label:
