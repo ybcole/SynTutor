@@ -785,6 +785,12 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
         if not isinstance(node, dict):
             errors.append(f"{path} must be a node object")
             return None
+        for metadata_key in ("source_refs", "notes"):
+            if metadata_key in node:
+                metadata_value = node[metadata_key]
+                if (not isinstance(metadata_value, list)
+                        or any(not isinstance(value, str) for value in metadata_value)):
+                    errors.append(f"{path}.{metadata_key} must be an array of strings")
         node_id = node.get("id")
         if node_id is not None:
             if not isinstance(node_id, str) or not node_id:
@@ -806,6 +812,8 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
             word = node.get("word")
             if not isinstance(word, str) or not word:
                 errors.append(f"{path}.word must be non-empty")
+            if "elided" in node and not isinstance(node.get("elided"), bool):
+                errors.append(f"{path}.elided must be a boolean")
             if node.get("elided"):
                 return None
             span = node.get("token_span")
