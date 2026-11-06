@@ -83,10 +83,25 @@ def parse():
     if sentence_index < 0:
         return jsonify({'error': 'sentence_index must be >= 0'}), 400
 
+    chapter = data.get('chapter')
+    if chapter is not None and (isinstance(chapter, bool) or not isinstance(chapter, int)
+                                or not 1 <= chapter <= 10):
+        return jsonify({'error': 'chapter must be an integer from 1 through 10'}), 400
+    appendix_nom = data.get('appendix_nom')
+    if appendix_nom is not None and not isinstance(appendix_nom, bool):
+        return jsonify({'error': 'appendix_nom must be true, false, or null'}), 400
+    if appendix_nom is True and chapter not in (None, 7):
+        return jsonify({'error': 'appendix_nom is only valid for Chapter 7 or free analysis'}), 400
+    if appendix_nom is False and chapter is None:
+        return jsonify({'error': 'free analysis uses the declared FINAL-D1 profile; appendix_nom cannot be disabled'}), 400
+
     try:
-        payload = build_payload(text, sentence_index=sentence_index)
+        payload = build_payload(text, sentence_index=sentence_index,
+                                chapter=chapter, appendix_nom=appendix_nom)
     except ParseFailure as exc:
         return jsonify({'error': str(exc), 'input': text}), 422
+    except ValueError as exc:
+        return jsonify({'error': str(exc), 'input': text}), 400
     except Exception as exc:  # noqa: BLE001 - model/back-end unavailable
         hint = (health_payload().get('error') or
                 'Run:  pip install spacy benepar transformers==4.46.3  &&  '
