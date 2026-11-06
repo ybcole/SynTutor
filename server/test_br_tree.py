@@ -223,6 +223,32 @@ class BrTreeTests(unittest.TestCase):
         self.assertEqual(changed["corrected_tokens"][0]["text"], "go")
         self.assertIn("n3", changed["affected_terminal_ids"])
 
+
+    def test_correction_alignment_uses_original_document_offset_and_punctuation(self):
+        original = "She goes home."
+        corrected = "She go home!"
+        tokens = [
+            {"i": 0, "t": "She", "start": 12, "end": 15},
+            {"i": 1, "t": "goes", "start": 16, "end": 20},
+            {"i": 2, "t": "home", "start": 21, "end": 25},
+            {"i": 3, "t": ".", "start": 25, "end": 26},
+        ]
+        tree = {"id": "root", "span": [0, 4], "children": [
+            {"id": "she", "span": [0, 1]},
+            {"id": "goes", "span": [1, 2]},
+            {"id": "home", "span": [2, 3]},
+            {"id": "period", "span": [3, 4]},
+        ]}
+        result = build_correction_alignment(
+            original, corrected, tokens, tree, source_char_offset=12
+        )
+        replacement = next(edit for edit in result["edits"] if edit["operation"] == "replace"
+                           and edit["original_tokens"][0]["text"] == "goes")
+        punctuation = next(edit for edit in result["edits"] if edit["operation"] == "replace"
+                           and edit["original_tokens"][0]["text"] == ".")
+        self.assertIn("goes", replacement["affected_terminal_ids"])
+        self.assertEqual(punctuation["corrected_tokens"][0]["text"], "!")
+
     def test_deletion_alignment_preserves_repeated_word_identity(self):
         result = build_correction_alignment("The the cat.", "The cat.")
         self.assertEqual([edit["operation"] for edit in result["edits"]], ["delete"])
