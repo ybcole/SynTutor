@@ -28,7 +28,17 @@ _stub_module("corrections", has_actionable=lambda details: False,
 _stub_module("plain", apply_plain_language=lambda details, summary: None,
              plain_text=lambda value: value)
 
+_STUB_NAMES = (
+    "parse_engine", "matrix", "detector", "licensing",
+    "corrector", "corrections", "plain",
+)
+_PREVIOUS_MODULES = {name: sys.modules.get(name) for name in _STUB_NAMES}
 import api  # noqa: E402
+for _name, _module in _PREVIOUS_MODULES.items():
+    if _module is None:
+        sys.modules.pop(_name, None)
+    else:
+        sys.modules[_name] = _module
 
 
 class SyntaxGeneratorApiContractTests(unittest.TestCase):
