@@ -121,6 +121,8 @@ The future validator must check:
 - A read-only importer/adapter maps their existing `tree`/node forms into the envelope for validation and downstream consumption.
 - Preserve existing `fig`, `page`, `sentence`, `status`, `note`, `accepted_alternatives`, `book_simplification`, `external_controller`, `movement`, `clause_id`, and chapter-specific metadata during import.
 - Do not bulk-edit or discard the source records.
+- Preserve node-level diagram references in `source_refs`; preserve source-only fields without approved typed schema counterparts in `notes` as explicit source metadata. Do not silently discard them or promote them to structural labels/features.
+- A zero-word elided-element symbol (for example, source marker `E` with no lexical word) is not interchangeable with a gap or a word-bearing elided terminal. Until the schema has an approved node variant for that source structure, keep the source record unresolved and retain its raw form.
 - Add stable IDs and spans in the canonical projection; do not fabricate missing source metadata.
 - Record unmappable fields or structural choices as unresolved rather than dropping them.
 - Only after the importer and validator pass all relevant chapter fixtures should later milestones consider a persisted canonical data migration.
