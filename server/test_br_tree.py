@@ -249,6 +249,15 @@ class BrTreeTests(unittest.TestCase):
         self.assertIn("goes", replacement["affected_terminal_ids"])
         self.assertEqual(punctuation["corrected_tokens"][0]["text"], "!")
 
+
+    def test_correction_alignment_handles_contraction_expansion(self):
+        result = build_correction_alignment(
+            "She doesn't go.", "She does not go."
+        )
+        changed = next(edit for edit in result["edits"] if edit["operation"] != "equal")
+        self.assertEqual([token["text"] for token in changed["original_tokens"]], ["doesn't"])
+        self.assertEqual([token["text"] for token in changed["corrected_tokens"]], ["does", "not"])
+
     def test_deletion_alignment_preserves_repeated_word_identity(self):
         result = build_correction_alignment("The the cat.", "The cat.")
         self.assertEqual([edit["operation"] for edit in result["edits"]], ["delete"])
