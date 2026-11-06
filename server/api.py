@@ -7,6 +7,8 @@ matrix + explainer payload. ``app.py`` (stdlib http.server) and ``webapp.py``
 """
 
 from parse_engine import ParseFailure, analyze, load_models
+from br_tree import normalize_candidate, build_correction_alignment, CONVENTIONS
+from cambridge_registry import load_runtime_registry
 from matrix import evaluate, _rem_from_text
 from detector import classify, classify_many, combine
 from licensing import _leaves as _tree_leaves
@@ -96,7 +98,7 @@ def word_info(words):
 
 
 
-def build_payload(text, sentence_index=0):
+def build_payload(text, sentence_index=0, convention_version='V10'):
     """Hybrid payload for one user input, targeting ``sentence_index``.
 
     Two channels: the rule matrix explains (deterministic), and a CoLA
@@ -104,7 +106,13 @@ def build_payload(text, sentence_index=0):
     both accept; a rules-clean but model-rejected sentence is UNVERIFIED, and
     the model's reasoning is surfaced because the rules cannot explain it.
     """
+    if convention_version not in CONVENTIONS:
+        raise ValueError(f'unsupported B-R convention_version: {convention_version!r}')
     analysis = analyze(text, sentence_index=sentence_index)
+    br_analysis = normalize_candidate(
+        analysis['root'], analysis['tokens'], analysis['sentence'],
+        convention_version=convention_version)
+    cambridge_runtime = load_runtime_registry()
     result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
     summary = result['summary']
@@ -140,6 +148,30 @@ def build_payload(text, sentence_index=0):
             analysis['sentence'], details, tokens,
             validate=_validate_correction)
         if correction is not None:
+            sentence_offset = (analysis['sentences'][analysis['sentence_index']]['start']
+                               if analysis['sentences'] else 0)
+            correction['alignment'] = build_correction_alignment(
+                analysis['sentence'], correction['corrected_sentence'],
+                parser_tokens=tokens, original_tree=root,
+                source_char_offset=sentence_offset)
+            try:
+                corrected_analysis = analyze(correction['corrected_sentence'], sentence_index=0)
+                correction['corrected_candidate_parse'] = {
+                    'parse_string': corrected_analysis['parse_string'],
+                    'tree': corrected_analysis['root'],
+                    'tokens': corrected_analysis['tokens'],
+                    'authority': 'Benepar candidate parse; not the B-R canonical tree',
+                }
+                correction['corrected_br_analysis'] = normalize_candidate(
+                    corrected_analysis['root'], corrected_analysis['tokens'],
+                    corrected_analysis['sentence'], convention_version=convention_version)
+            except Exception as exc:  # correction annotations survive a parser fallback
+                correction['corrected_candidate_parse'] = None
+                correction['corrected_br_analysis'] = {
+                    'status': 'unresolved', 'convention_version': convention_version,
+                    'tree': None, 'diagnostics': [{'code': 'CORRECTED_PARSE_UNAVAILABLE',
+                                                   'message': str(exc)}],
+                }
             summary['correction'] = correction
             summary['corrected_sentence'] = correction['corrected_sentence']
 
@@ -212,6 +244,10 @@ def build_payload(text, sentence_index=0):
                         'spaCy + benepar (neural constituency) + rule matrix (XAI)'),
             'sentence_count': analysis['sentence_count'],
             'target_sentence': analysis['sentence_index'] + 1,
+            'tree_authority': 'B-R canonical analysis is in br_analysis; tree remains a legacy Benepar candidate for current-renderer compatibility',
+            'br_convention_version': convention_version,
+            'br_normalization_status': br_analysis.get('status'),
+            'cambridge_runtime_rule_ids': cambridge_runtime.get('active_rule_ids', []),
         },
         'parse': {
             'text': analysis['sentence'],
@@ -220,7 +256,11 @@ def build_payload(text, sentence_index=0):
             'tokens': tokens,
             'parse_string': analysis['parse_string'],
         },
+        # Backwards-compatible raw parser tree; consumers must check tree_authority.
         'tree': root,
+        'candidate_tree': root,
+        'br_analysis': br_analysis,
+        'cambridge_runtime': cambridge_runtime,
         'nodes': analysis['nodes'],
         'node_details': details,
         'summary': summary,
@@ -258,7 +298,7 @@ def _pipeline_narration(analysis, summary, details):
         },
         {
             'id': 3,
-            'title': 'Constituency parser',
+            'title': 'Candidate constituency parser (Benepar)',
             'summary': analysis['parse_string'],
         },
         {
