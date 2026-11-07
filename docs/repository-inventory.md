@@ -152,9 +152,9 @@ No GitHub Actions workflow or browser E2E test configuration was present in the 
 ## Governance files absent from the repository baseline
 
 The audited `main` tree did not contain:
-- `master_plan.md`
-- `master_checklist.md`
-- `syntutor_12_prompt_execution_plan.md`
+- `docs/planning/master_plan.md`
+- `docs/planning/master_checklist.md`
+- `docs/planning/syntutor_12_prompt_execution_plan.md`
 
 The project owner supplied these governing documents in the working conversation. Milestone 01 adds the checklist and authoritative execution plan to the repository so subsequent milestones can update their sign-off records in place. The Master Plan is treated as contextual reference and is not copied or used as a separate implementation roadmap.
 

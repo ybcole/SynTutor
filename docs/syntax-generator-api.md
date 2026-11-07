@@ -105,7 +105,7 @@ The focused suite currently covers profile selection, conservative V2 normalizat
 
 ## Outstanding before Milestone 02 approval
 
-- Reconcile the detailed `master_prompt_syntax_generator.md` before claiming full prompt compliance. The file was not present in the accessible repository tree/path on the refs checked in this execution; the work recorded here follows the Milestone 02 scope and acceptance criteria in `syntutor_12_prompt_execution_plan.md`.
+- Reconcile the detailed `docs/planning/master_prompt_syntax_generator.md` before claiming full prompt compliance. The file was not present in the accessible repository tree/path on the refs checked in this execution; the work recorded here follows the Milestone 02 scope and acceptance criteria in `docs/planning/syntutor_12_prompt_execution_plan.md`.
 - Confirm the B-R edition and inspect the source PDFs. Parser-derived mappings must remain source-review pending until then.
 - Expand live normalization across V1–V10/FINAL only after source-backed transformation rules and reviewed fixtures exist.
 - Run `python scripts/audit_burton_roberts_import.py --expected-count 252` against all 252 B-R records, then reconcile exceptions/unresolved records against the existing chapter validators.
