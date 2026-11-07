@@ -797,9 +797,20 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
         return {"status": "unresolved", "tree": None, "errors": [str(exc)],
                 "raw_tree": raw_tree}
 
-    source = {"book": BOOK_TITLE, "chapter": chapter,
-              "evidence_status": record.get("status") if record.get("status") in _EVIDENCE else "NEEDS_REVIEW",
-              "source_record_id": tree_id}
+    review_status = record.get("review_status")
+    if review_status not in {"NOT_REVIEWED", "INDEPENDENTLY_REVIEWED", "HUMAN_APPROVED", "REJECTED"}:
+        review_status = "NOT_REVIEWED"
+    source = {
+        "book": BOOK_TITLE, "chapter": chapter,
+        "evidence_status": record.get("status") if record.get("status") in _EVIDENCE else "NEEDS_REVIEW",
+        "review_status": review_status,
+        "review_note": (
+            str(record.get("review_note"))
+            if record.get("review_note")
+            else "IMG indicates image evidence only; this import does not establish independent review or human approval."
+        ),
+        "source_record_id": tree_id,
+    }
     if record.get("page") is not None:
         source["printed_page"] = int(record["page"])
     if record.get("fig") is not None:
