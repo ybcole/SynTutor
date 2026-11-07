@@ -46,7 +46,7 @@ class GrammarSchemaTests(unittest.TestCase):
                 "book": "Cambridge Grammar", "chapter": 1, "pages": [51],
             }],
             "burton_roberts_mapping": [{
-                "br_concept": "test-only mapping", "relation": "compatible",
+                "br_concept": "test-only mapping", "relation": "same",
             }],
             "status": "APPROVED",
             "runtime_check": {
@@ -82,7 +82,7 @@ class GrammarSchemaTests(unittest.TestCase):
                 "book": "Cambridge Grammar", "chapter": 1, "pages": [51],
             }],
             "burton_roberts_mapping": [{
-                "br_concept": "test-only mapping", "relation": "compatible",
+                "br_concept": "test-only mapping", "relation": "same",
             }],
             "status": "APPROVED",
             "runtime_check": {
