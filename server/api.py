@@ -109,6 +109,9 @@ def build_payload(text, sentence_index=0, convention_version=None,
     rule-level violation or replace a matrix explanation. Chapter selection
     determines the B-R convention profile; omitted chapter selects FINAL-D1.
     """
+    if isinstance(sentence_index, bool) or not isinstance(sentence_index, int) or sentence_index < 0:
+        raise ValueError("sentence_index must be a non-negative integer")
+
     if chapter is not None:
         if isinstance(chapter, bool) or not isinstance(chapter, int) or not 1 <= chapter <= 10:
             raise ValueError("chapter must be an integer from 1 through 10")
