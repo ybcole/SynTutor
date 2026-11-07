@@ -105,7 +105,23 @@
 - API contracts and error states are documented and tested.
 - Existing generator behavior that is still required remains covered by regression tests.
 
-**Approval gate:** Present representative outputs, failures, and test evidence for review before relying on the new representation in downstream features.
+**Milestone 02 continuation — 7 November 2026**
+
+**Status: INCOMPLETE — keep `[ ]`.** The detailed root prompt `master_prompt_syntax_generator.md` is present on `main` and was reconciled for this continuation. Work is isolated on `feature/milestone-02-completion-2026-11-07`, with draft PR [#30](https://github.com/ybcole/SynTutor/pull/30).
+
+Additional changes on the continuation branch:
+- Chapter and convention selection are now passed consistently from Flask, stdlib, and hosted transports into the shared analysis function; mismatched chapter/version pairs are rejected.
+- The competing second canonical-analysis path was removed; the single `br_analysis` payload remains separate from the raw Benepar candidate.
+- V7 core and Appendix D1 gold-reference matching are kept separate.
+- Added tests for API profile routing, mismatch errors, Appendix D1, multi-sentence selection, and CoLA's advisory-only role.
+- CI was extended to run the gold-tree importer suite and the read-only 252-record import audit.
+- Updated `docs/syntax-generator-api.md` to document the implemented contract and remaining limitations.
+
+**CI status at report time:** GitHub Actions run [42346139502](https://github.com/ybcole/SynTutor/actions/runs/42346139502) was triggered by PR #30 and was still in progress. No result from that run is claimed here until it completes.
+
+**Still incomplete:** general source-grounded V3–V10 Benepar restructuring; deterministic Cambridge sentence-level evaluation and positive/negative/exception tests (the runtime allow-list enables zero rules); model-backed spaCy/Benepar end-to-end and full/multi-sentence runtime verification; performance and missing-model fallback verification; canonical B-R frontend rendering remains outside this prompt's stop condition; exact source-edition/page metadata is still open. The legacy matrix remains a separate legacy verdict path, not a Cambridge evaluator.
+
+No lesson/Builder migration, UI redesign, Benepar removal, or database/user-progress migration was performed. Milestone 03 remains blocked by the M2 dependency and approval gate.
 
 ---
 
