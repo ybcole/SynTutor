@@ -47,6 +47,8 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
                 reasons.append("source extraction is not reviewed/approved")
             if rule.get("rule_type") not in {"constraint", "variety_restricted"}:
                 reasons.append("rule type is not executable")
+            if rule.get("rule_type") == "variety_restricted" and not str(rule.get("variety") or "").strip():
+                reasons.append("variety-restricted rule must declare its variety")
             if not any(source.get("pages") for source in rule.get("sources", []) if isinstance(source, dict)):
                 reasons.append("source page evidence is missing")
             mappings = rule.get("burton_roberts_mapping", [])
