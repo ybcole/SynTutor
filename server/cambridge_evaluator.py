@@ -36,15 +36,17 @@ def _evaluate_forbidden_sequences(sentence: str,
     tokens = _tokens(sentence)
     forbidden = check.get("forbidden_sequences")
     exceptions = check.get("exception_sequences", [])
-    if not isinstance(forbidden, list) or not forbidden:
+    valid_sequence = lambda value: (
+        isinstance(value, list) and bool(value)
+        and all(isinstance(token, str) and token.strip() for token in value)
+    )
+    if not isinstance(forbidden, list) or not forbidden or not all(valid_sequence(row) for row in forbidden):
         return {"status": "invalid_check", "matched_sequences": []}
-    if not isinstance(exceptions, list):
+    if not isinstance(exceptions, list) or not all(valid_sequence(row) for row in exceptions):
         return {"status": "invalid_check", "matched_sequences": []}
 
     exception_spans = []
     for sequence in exceptions:
-        if not isinstance(sequence, list) or not sequence:
-            return {"status": "invalid_check", "matched_sequences": []}
         exception_spans.extend(
             (start, start + len(sequence), sequence)
             for start in _sequence_positions(tokens, sequence)
@@ -181,7 +183,8 @@ def evaluate_cambridge(analysis: dict[str, Any] | None,
                 "concept": rule.get("concept"),
                 "violation": rule.get("violation"),
                 "sources": rule.get("sources", []),
-                "matched_sequences": outcome["matched_sequences"],
+                "matched_sequences": outcome.get("violating_matches", outcome["matched_sequences"]),
+                "excepted_matches": outcome.get("excepted_matches", []),
             })
     return {
         "status": "evaluated" if evaluated_ids else "no_implemented_rules",
