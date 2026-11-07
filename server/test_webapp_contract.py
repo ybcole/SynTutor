@@ -44,7 +44,38 @@ class FlaskParseContractTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.get_json(), expected)
         build.assert_called_once_with("A sentence.", sentence_index=0,
-                                      convention_version="V10")
+                                      convention_version="V10", chapter=None,
+                                      appendix_nom=None)
+
+    def test_chapter_selects_its_convention_and_is_forwarded(self):
+        expected = {"br_analysis": {"status": "unresolved"}}
+        with patch("webapp.build_payload", return_value=expected) as build:
+            response = self.client.post("/api/parse", json={
+                "text": "A sentence.", "chapter": 2
+            })
+        self.assertEqual(response.status_code, 200)
+        build.assert_called_once_with("A sentence.", sentence_index=0,
+                                      convention_version="V2", chapter=2,
+                                      appendix_nom=None)
+
+    def test_chapter_convention_mismatch_is_rejected_without_parsing(self):
+        with patch("webapp.build_payload") as build:
+            response = self.client.post("/api/parse", json={
+                "text": "A sentence.", "chapter": 2, "convention_version": "V3"
+            })
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("requires convention_version V2", response.get_json()["error"])
+        build.assert_not_called()
+
+    def test_chapter_7_appendix_d1_is_forwarded(self):
+        with patch("webapp.build_payload", return_value={"br_analysis": {"status": "unresolved"}}) as build:
+            response = self.client.post("/api/parse", json={
+                "text": "A sentence.", "chapter": 7, "appendix_nom": True
+            })
+        self.assertEqual(response.status_code, 200)
+        build.assert_called_once_with("A sentence.", sentence_index=0,
+                                      convention_version="V7", chapter=7,
+                                      appendix_nom=True)
 
     def test_parser_failure_returns_422(self):
         with patch("webapp.build_payload", side_effect=ParseFailure("No sentence found")):
