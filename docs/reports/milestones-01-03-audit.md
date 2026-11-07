@@ -1,6 +1,6 @@
 # Milestones 01–03 verification
 
-Audit date: 8 November 2026 (Asia/Manila). Repository read on 7 November UTC.
+Audit date: 7 November 2026 (Asia/Manila).
 
 ## Decision
 
