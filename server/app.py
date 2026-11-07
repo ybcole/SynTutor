@@ -129,6 +129,9 @@ class Handler(BaseHTTPRequestHandler):
         except Exception as exc:  # noqa: BLE001
             self._json(400, {'error': f'invalid request payload: {exc}'})
             return
+        if not isinstance(data, dict):
+            self._json(400, {'error': 'request payload must be a JSON object'})
+            return
 
         if path == '/api/words':
             raw = data.get('words')
