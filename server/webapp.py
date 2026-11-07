@@ -83,8 +83,8 @@ def parse():
         return jsonify({'error': 'sentence_index must be an integer'}), 400
     if sentence_index < 0:
         return jsonify({'error': 'sentence_index must be >= 0'}), 400
-    convention_version = data.get('convention_version') or 'V10'
-    if convention_version not in CONVENTIONS:
+    convention_version = data.get('convention_version')
+    if convention_version is not None and convention_version not in CONVENTIONS:
         return jsonify({'error': 'convention_version must be one of V1-V10'}), 400
 
     chapter = data.get('chapter')
@@ -98,10 +98,18 @@ def parse():
         return jsonify({'error': 'appendix_nom is only valid for Chapter 7 or free analysis'}), 400
     if appendix_nom is False and chapter is None:
         return jsonify({'error': 'free analysis uses the declared FINAL-D1 profile; appendix_nom cannot be disabled'}), 400
+    if chapter is not None:
+        expected_version = f'V{chapter}'
+        if convention_version is not None and convention_version != expected_version:
+            return jsonify({'error': f'chapter {chapter} requires convention_version {expected_version}'}), 400
+        convention_version = expected_version
+    else:
+        convention_version = convention_version or 'V10'
 
     try:
         payload = build_payload(text, sentence_index=sentence_index,
-                                convention_version=convention_version)
+                                convention_version=convention_version,
+                                chapter=chapter, appendix_nom=appendix_nom)
     except ParseFailure as exc:
         return jsonify({'error': str(exc), 'input': text}), 422
     except ValueError as exc:
