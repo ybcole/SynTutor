@@ -271,5 +271,30 @@ class BrTreeTests(unittest.TestCase):
         self.assertEqual([row["text"] for row in changed["corrected_tokens"]], ["is", "going"])
 
 
+    def test_v7_core_and_appendix_d1_gold_references_do_not_cross_match(self):
+        def record(tree_id, label, appendix_nom):
+            return {
+                "_convention_version": "V7", "_chapter": 7,
+                "id": tree_id, "status": "IMG", "sentence": "they",
+                "appendix_nom": appendix_nom,
+                "tree": {"label": "NP", "children": [
+                    {"label": label, "children": [{"word": "they"}]},
+                ]},
+            }
+
+        records = [
+            record("v7-core", "pronoun", False),
+            record("v7-d1", "name", True),
+        ]
+        tokens = [self.token(0, "they", 0)]
+        core = normalize_candidate({}, tokens, "they", "V7", records, appendix_nom=False)
+        appendix = normalize_candidate({}, tokens, "they", "V7", records, appendix_nom=True)
+
+        self.assertEqual(core["status"], "normalized")
+        self.assertEqual(core["source"]["tree_id"], "v7-core")
+        self.assertEqual(appendix["status"], "normalized")
+        self.assertEqual(appendix["source"]["tree_id"], "v7-d1")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
