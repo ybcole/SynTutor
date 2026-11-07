@@ -1,4 +1,4 @@
-import { loadClerk, createSupabaseClient } from './auth.js';
+import { loadClerk, createSupabaseClient, currentUserEmail, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
 import { API_BASE } from './config.js';
 import { TreeRenderer } from './renderer.js';
 import { getSavedTheme, setTheme } from './theme.js';
@@ -14,8 +14,12 @@ import {
   openQuizView, closeQuizView, closeSubpanel, initQuiz, quizInputHint, clearActiveLesson,
 } from './tree-quiz.js';
 import { initSyntaxBuilder, openBuilderView, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
+import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
-import { computeUnlocked } from './achievements.js';
+import {
+  computeUnlocked, achievementProgress, achievementIcons,
+  computeStreak, activeAchievementCategory, initAchievementCategorySelector,
+} from './achievements.js';
 
 let clerk = null;
 let supabase = null;
@@ -339,10 +343,21 @@ function transition(next, event) {
   syncCanvasEmptyState();
 }
 
-function syncCanvasEmptyState() {
+// The Grammar Tutor's empty-canvas prompt. It shows only while the Grammar
+// Tutor owns an empty canvas — never inside a lesson, where the lesson owns
+// the left panel and its own content.
+function setEmptyStateVisible(visible) {
   const empty = document.querySelector('#emptyTreeState');
   if (!empty) return;
-  empty.classList.toggle('hidden', state !== STATES.IDLE);
+  // The class *and* the attribute: the rule sets `display: flex`, which would
+  // defeat the bare `hidden` attribute on its own.
+  empty.classList.toggle('hidden', !visible);
+  empty.hidden = !visible;
+}
+
+function syncCanvasEmptyState() {
+  const lessonOwns = document.body.classList.contains('lesson-view');
+  setEmptyStateVisible(!lessonOwns && state === STATES.IDLE);
 }
 
 // Analysis history is an account-only feature: entries live in Supabase, scoped
@@ -363,6 +378,24 @@ export function boot() {
     onHover: () => {},
     describe: plainName,
   });
+  // The history is account-only: the module owns its rail item, its drawer
+  // and its persistence gate.
+  initHistory({
+    // History and the tree-quiz sub-panel share the same slide-out slot —
+    // opening one dismisses the other.
+    onOpen: () => {
+      closeSubpanel();
+      loadAndRenderHistory();
+    },
+    onOverlay: (view) => setOverlayView(view),
+    onClose: () => { if (overlayView === 'history') setOverlayView(null); },
+  });
+  // The full-bleed views wire their dismissal first, so Escape leaves a view
+  // before anything else reacts to it.
+  initWorkspaceViews();
+  // The achievements category selector: picking a category re-filters the
+  // grid.
+  initAchievementCategorySelector(() => renderAchievements());
   wireEvents();
   initThemeAndMenu();
   purgeLegacyGuestHistory();
@@ -378,11 +411,17 @@ export function boot() {
     lastChatTitle: () => lastAnalyzedText || '',
     setWorkspaceView,
     setOverlayView,
+    renderTree,
+    clearCanvas,
+    setCanvasInteractive,
     showModelTree: showLessonModelTree,
     clearModelTree: clearLessonModelTree,
   });
   initResizers();
   syncInputClearBtn();
+  // The one auth modal: the sidebar login and the lessons gateway both land
+  // in it.
+  initAuthModal();
   transition(STATES.IDLE, 'system ready');
   log(`SynTutor engine ready \u2014 full-stack pipeline: spaCy + benepar + rule matrix (${isGuest ? 'guest mode' : 'authenticated'})`);
   maybeStartOnboarding();
@@ -397,7 +436,13 @@ function initThemeAndMenu() {
     applyTheme(current === 'dark' ? 'light' : 'dark');
   });
 
+  // The bottom-left identity chip: a guest has no account yet, so the chip
+  // opens the one auth modal instead of a menu with nothing in it.
   document.querySelector('#identityChip')?.addEventListener('click', () => {
+    if (isGuest) {
+      openAuthModal({ mode: 'signin', reason: 'sidebar_profile' });
+      return;
+    }
     toggleProfileMenu();
   });
 
@@ -447,9 +492,12 @@ function initSidebar() {
     window.clearTimeout(resizeFallback);
     window.dispatchEvent(new Event('resize'));
   };
+  // The rail's width animates for 220ms; refit the canvases right after it
+  // settles, so the workspace never shows a squeezed tree mid-animation.
+  const RAIL_SETTLE_MS = 260;
   const scheduleResize = () => {
     window.clearTimeout(resizeFallback);
-    resizeFallback = window.setTimeout(dispatchResize, 400);
+    resizeFallback = window.setTimeout(dispatchResize, RAIL_SETTLE_MS);
   };
 
   const syncRailState = () => {
@@ -524,7 +572,8 @@ function initSidebar() {
 
   document.querySelectorAll('.sidebar-item[data-view]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (btn.id === 'newSessionBtn') return;
+      // The Syntax Generator and History have their own handlers.
+      if (btn.id === 'newSessionBtn' || btn.id === 'headerHistoryBtn') return;
       switch (btn.dataset.view) {
         case 'builder':
           enterBuilderMode();
@@ -562,19 +611,15 @@ function initSidebar() {
 // canvas or floating controls, no canvas overlay, no node diagnostics — so
 // nothing from one mode can bleed into the next.
 
-// Close the History drawer and hand the rail highlight back to the module
-// underneath it.
-function closeHistoryDrawer() {
-  document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
-  if (overlayView === 'history') setOverlayView(null);
-}
-
 // Tear the workspace down to a clean slate: no module owns anything.
 function teardownWorkspace() {
   // Lessons: the picker overlay, the lesson panels, the guide card, the quiz
   // panel in the rail, and the side sub-panel.
   closeQuizView();
   clearActiveLesson();
+  // The full-bleed views (Leaderboard / Achievements) are workspace surfaces
+  // too: switching the workspace dismisses them.
+  closeWorkspaceViews();
   // Syntax Builder: the canvas, its floating controls, and the inline editor
   // or context menu it may have opened.
   closeBuilderView();
@@ -589,11 +634,10 @@ function teardownWorkspace() {
   // Back to the plain analyzer surfaces.
   const tree = document.querySelector('#treeCanvas');
   const builder = document.querySelector('#builderCanvas');
-  const empty = document.querySelector('#emptyTreeState');
   const controls = document.querySelector('#canvasControls');
   if (tree) tree.hidden = false;
   if (builder) builder.hidden = true;
-  if (empty) empty.classList.remove('hidden');
+  setEmptyStateVisible(true);
   if (controls) controls.hidden = true;
   // The upper-right pane returns to a single-surface input editor: the
   // lesson controls are gone and the editor is locked again.
@@ -636,14 +680,348 @@ function enterBuilderMode() {
   openBuilderView();
 }
 
-// Leaderboard / Achievements: a side panel next to the rail. The workspace
-// underneath keeps its own mode; the panel takes the rail highlight while it
-// is open.
+// Leaderboard / Achievements: a full-bleed workspace view, docked next to
+// the rail exactly like the lessons catalog. The three-pane workspace steps
+// aside while the view is up.
 function enterPanelMode(viewName) {
   teardownWorkspace();
   setQuizMode(false);
   setWorkspaceView('tutor');
-  openQuizView(viewName);
+  openWorkspaceView(viewName);
+}
+
+// ---------------------------------------------------------------------------
+// Full-bleed workspace views — Leaderboard & Achievements
+// ---------------------------------------------------------------------------
+// Two full-surface views: they fill the screen to the right of the rail, with
+// no backdrop and no dialog chrome — the same shape as the lessons catalog.
+// The workspace underneath is hidden while a view is up, and the rail
+// highlight belongs to the view.
+const WORKSPACE_VIEWS = {
+  leaderboard: { id: 'leaderboardView', view: 'leaderboard' },
+  achievements: { id: 'achievementsView', view: 'achievements' },
+};
+
+let activeWorkspaceView = null;
+
+function el(tag, cls, text) {
+  const node = document.createElement(tag);
+  if (cls) node.className = cls;
+  if (text !== undefined && text !== null) node.textContent = text;
+  return node;
+}
+
+// Show one full-bleed view and put the workspace away.
+function openWorkspaceView(name) {
+  const conf = WORKSPACE_VIEWS[name];
+  if (!conf) return;
+  const view = document.getElementById(conf.id);
+  if (!view) return;
+
+  // The lessons catalog and the other views step aside.
+  document.querySelector('#lessonsOverlay')?.classList.remove('open');
+  document.body.classList.remove('lessons-overlay-open');
+  for (const other of Object.values(WORKSPACE_VIEWS)) {
+    if (other.id === conf.id) continue;
+    const node = document.getElementById(other.id);
+    if (!node) continue;
+    node.classList.remove('active-view');
+    node.setAttribute('aria-hidden', 'true');
+  }
+
+  document.body.classList.add('workspace-view-open');
+  view.classList.add('active-view');
+  view.setAttribute('aria-hidden', 'false');
+  activeWorkspaceView = name;
+  // The rail highlight belongs to the view while it is open.
+  setOverlayView(conf.view);
+
+  if (name === 'leaderboard') renderLeaderboard();
+  else renderAchievements();
+}
+
+// Put every full-bleed view away and bring the workspace back.
+function closeWorkspaceViews() {
+  for (const conf of Object.values(WORKSPACE_VIEWS)) {
+    const view = document.getElementById(conf.id);
+    if (!view) continue;
+    view.classList.remove('active-view');
+    view.setAttribute('aria-hidden', 'true');
+  }
+  activeWorkspaceView = null;
+  document.body.classList.remove('workspace-view-open');
+  // The rail highlight goes back to the workspace underneath.
+  if (overlayView && Object.values(WORKSPACE_VIEWS).some((conf) => conf.view === overlayView)) {
+    setOverlayView(null);
+  }
+}
+
+// Leave a full-bleed view and go back to the Syntax Generator workspace.
+function exitWorkspaceView() {
+  closeWorkspaceViews();
+  enterTutorMode();
+}
+
+// Wire the dismissal path once: Escape leaves the view. The rail itself
+// stays reachable — the Syntax Generator icon (or any other destination)
+// brings the workspace back.
+function initWorkspaceViews() {
+  // Escape leaves the view before anything else can react to it.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !activeWorkspaceView) return;
+    e.stopImmediatePropagation();
+    exitWorkspaceView();
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Leaderboard
+// ---------------------------------------------------------------------------
+// The public quiz progress (every learner's rows), so the leaderboard can
+// count trees and accuracy from the same source the achievements use.
+async function loadPublicQuizProgress() {
+  if (!supabase) return [];
+  const { data, error } = await supabase
+    .from('quiz_progress')
+    .select('user_id, rule_id, completed_count, perfect_count, last_completed_at');
+  if (error) {
+    console.warn('Failed to load the quiz progress:', error.message);
+    return [];
+  }
+  return data || [];
+}
+
+// Join the player stats with the quiz progress and rank the learners.
+function buildLeaderboard(stats, progress) {
+  const byUser = new Map();
+  for (const row of progress || []) {
+    const entry = byUser.get(row.user_id) || { trees: 0, perfect: 0 };
+    entry.trees += row.completed_count || 0;
+    entry.perfect += row.perfect_count || 0;
+    byUser.set(row.user_id, entry);
+  }
+  const entries = (stats || []).map((row) => {
+    const done = byUser.get(row.user_id) || { trees: 0, perfect: 0 };
+    return {
+      id: row.user_id,
+      name: row.display_name || 'Learner',
+      xp: row.xp || 0,
+      level: row.level || 0,
+      trees: done.trees,
+      accuracy: done.trees > 0 ? Math.round((done.perfect / done.trees) * 100) : 0,
+    };
+  });
+  entries.sort((a, b) => b.xp - a.xp || b.trees - a.trees || a.name.localeCompare(b.name));
+  return entries.map((entry, i) => ({ ...entry, rank: i + 1 }));
+}
+
+// The short handle under a learner's name.
+function learnerHandle(entry) {
+  const id = String(entry.id || '');
+  return id ? `@${id.slice(0, 10)}` : '@learner';
+}
+
+// The medal icon in the corner of a podium card.
+const MEDAL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="6"></circle><path d="m8.5 9.5-2-7h4l1.5 4 1.5-4h4l-2 7"></path></svg>';
+
+// The three podium places: their reward tag and their name.
+const PODIUM_PLACES = [
+  { rank: 1, place: '1st', tag: '⭐ Top Contributor' },
+  { rank: 2, place: '2nd', tag: '🥈 Runner Up' },
+  { rank: 3, place: '3rd', tag: '🥉 Third Place' },
+];
+
+// The top three, each in its own podium card. A place nobody has claimed
+// yet shows as an open slot, so the row never ends in a void.
+function renderLeaderboardPodium(entries) {
+  const host = document.getElementById('leaderboardPodium');
+  if (!host) return;
+  host.innerHTML = '';
+  if (!entries.length) {
+    host.appendChild(el('p', 'podium-empty', 'No learners on the board yet.'));
+    return;
+  }
+  for (const place of PODIUM_PLACES) {
+    const entry = entries[place.rank - 1];
+    host.appendChild(entry
+      ? podiumCard(entry, place)
+      : openPodiumCard(place));
+  }
+}
+
+// A claimed podium place.
+function podiumCard(entry, place) {
+  const card = el('article', `podium-card is-${place.rank}`);
+
+  const top = el('div', 'podium-card-top');
+  const avatar = el('span', 'podium-avatar', (entry.name || 'L').charAt(0).toUpperCase());
+  avatar.appendChild(el('span', 'podium-rank', String(place.rank)));
+  top.appendChild(avatar);
+  const identity = el('div', 'podium-identity');
+  identity.appendChild(el('span', 'podium-name', entry.name));
+  identity.appendChild(el('span', 'podium-handle', learnerHandle(entry)));
+  top.appendChild(identity);
+  const medal = el('span', 'podium-medal');
+  medal.innerHTML = MEDAL_SVG;
+  top.appendChild(medal);
+  card.appendChild(top);
+
+  const stats = el('div', 'podium-stats');
+  const stat = (value, label) => {
+    const box = el('div', 'podium-stat');
+    box.appendChild(el('span', 'podium-stat-value', value));
+    box.appendChild(el('span', 'podium-stat-label', label));
+    return box;
+  };
+  stats.appendChild(stat(String(entry.trees), 'Trees Built'));
+  stats.appendChild(stat(`${entry.accuracy}%`, 'Accuracy'));
+  stats.appendChild(stat(entry.xp.toLocaleString(), 'Total XP'));
+  card.appendChild(stats);
+
+  card.appendChild(el('span', 'podium-tag', place.tag));
+  return card;
+}
+
+// A place nobody has claimed yet.
+function openPodiumCard(place) {
+  const card = el('article', 'podium-card is-open');
+  const medal = el('span', 'podium-open-medal');
+  medal.innerHTML = MEDAL_SVG;
+  card.appendChild(medal);
+  card.appendChild(el('span', 'podium-open-rank', `#${place.rank} Open Rank`));
+  card.appendChild(el('span', 'podium-open-hint',
+    `Build syntax trees to claim ${place.place} place`));
+  return card;
+}
+
+// The standings table: every learner, in rank order.
+function renderLeaderboardRows(entries, ownRows) {
+  const host = document.getElementById('leaderboardRows');
+  if (!host) return;
+  host.innerHTML = '';
+  if (!entries.length) {
+    const cell = el('td', 'empty-note', 'No learners on the board yet.');
+    cell.colSpan = 5;
+    const row = el('tr');
+    row.appendChild(cell);
+    host.appendChild(row);
+    return;
+  }
+  const streak = computeStreak(ownRows || []);
+  for (const entry of entries) {
+    const mine = entry.id === activeSessionId;
+    const row = el('tr', mine ? 'current-user' : null);
+    row.appendChild(el('td', 'standings-rank', `#${entry.rank}`));
+
+    const learner = el('td');
+    const wrap = el('div', 'standings-learner');
+    wrap.appendChild(el('span', 'standings-avatar', (entry.name || 'L').charAt(0).toUpperCase()));
+    const meta = el('div', 'standings-learner-meta');
+    const name = el('span', 'standings-learner-name', entry.name);
+    if (mine && streak > 0) {
+      const chip = el('span', 'standings-streak', `\u{1F525} ${streak}d`);
+      name.appendChild(chip);
+    }
+    meta.appendChild(name);
+    meta.appendChild(el('span', 'standings-learner-handle', learnerHandle(entry)));
+    wrap.appendChild(meta);
+    learner.appendChild(wrap);
+    row.appendChild(learner);
+
+    row.appendChild(el('td', 'num standings-value', String(entry.trees)));
+    row.appendChild(el('td', 'num standings-value', `${entry.accuracy}%`));
+    row.appendChild(el('td', 'num standings-value', entry.xp.toLocaleString()));
+    host.appendChild(row);
+  }
+}
+
+// Fill the whole leaderboard view.
+async function renderLeaderboard() {
+  const stats = await loadLeaderboard(100);
+  const progress = await loadPublicQuizProgress();
+  const entries = buildLeaderboard(stats, progress);
+  const ownRows = (progress || []).filter((row) => row.user_id === activeSessionId);
+  renderLeaderboardPodium(entries);
+  renderLeaderboardRows(entries, ownRows);
+}
+
+// ---------------------------------------------------------------------------
+// Achievements
+// ---------------------------------------------------------------------------
+// One achievement card: badge, text, the live progress bar and the reward.
+function achievementCard(achievement) {
+  const card = el('div', achievement.unlocked ? 'achievement-card' : 'achievement-card is-locked');
+  const badge = el('div', 'achievement-badge');
+  badge.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true">${achievementIcons[achievement.icon] || achievementIcons.sparkle}</svg>`;
+  if (!achievement.unlocked) {
+    const lock = el('span', 'achievement-lock');
+    lock.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>';
+    badge.appendChild(lock);
+  }
+  card.appendChild(badge);
+
+  const body = el('div', 'achievement-body');
+  body.appendChild(el('h3', 'achievement-title', achievement.title));
+  body.appendChild(el('p', 'achievement-desc', achievement.description));
+  const progress = el('div', 'achievement-progress');
+  const track = el('div', 'achievement-progress-track');
+  const fill = el('div', 'achievement-progress-fill');
+  fill.style.width = `${achievement.pct}%`;
+  track.appendChild(fill);
+  progress.appendChild(track);
+  progress.appendChild(el('p', 'achievement-progress-label',
+    achievement.unlocked ? 'Unlocked' : achievementProgressLabel(achievement)));
+  body.appendChild(progress);
+  card.appendChild(body);
+
+  card.appendChild(el('span', 'achievement-reward', `+${achievement.xp} XP`));
+  return card;
+}
+
+// The live progress of a tiered goal: "24 / 50 Trees Built".
+function achievementProgressLabel(achievement) {
+  const unit = achievement.unit || 'Progress';
+  if (achievement.metric === 'accuracy') {
+    return `${achievement.progress}% / ${achievement.target}% ${unit}`;
+  }
+  return `${achievement.progress} / ${achievement.target} ${unit}`;
+}
+
+// Fill the whole achievements view.
+async function renderAchievements() {
+  const grid = document.getElementById('achievementsGrid');
+  const counter = document.getElementById('achievementsStatsCounter');
+  const fill = document.getElementById('achievementsProgressFill');
+  const label = document.getElementById('achievementsProgressLabel');
+  const rows = progressAvailable() ? await loadQuizProgress() : [];
+  const list = achievementProgress(rows);
+  const category = activeAchievementCategory();
+  const visible = list.filter((achievement) =>
+    category === 'all' || achievement.category === category);
+  // The completion caption lives in the toolbar, next to the filters.
+  if (counter) {
+    const shown = visible.filter((achievement) => achievement.unlocked).length;
+    const shownPct = visible.length ? Math.round((shown / visible.length) * 100) : 0;
+    counter.textContent = progressAvailable()
+      ? `${shown} of ${visible.length} unlocked · ${shownPct}% completed`
+      : 'Sign in to track your achievements.';
+  }
+  // The level tracker in the top-right corner of the header.
+  const stats = progressAvailable() ? await loadPlayerProgress() : null;
+  const level = levelFromXp(stats?.xp || 0);
+  if (fill) fill.style.width = `${Math.round((level.into / Math.max(1, level.span)) * 100)}%`;
+  if (label) {
+    label.textContent = progressAvailable()
+      ? `Level ${level.level} · ${level.into} / ${level.span} XP to Level ${level.level + 1}`
+      : 'Sign in to track your progress.';
+  }
+  if (!grid) return;
+  grid.innerHTML = '';
+  if (!visible.length) {
+    grid.appendChild(el('p', 'empty-note', 'No achievements in this category yet.'));
+    return;
+  }
+  for (const achievement of visible) grid.appendChild(achievementCard(achievement));
 }
 
 // Replaying a past analysis: the workspace returns to the Syntax Generator
@@ -755,38 +1133,6 @@ function setChatTitle(title) {
   el.title = title && title.trim() ? title : '';
 }
 
-function openHistoryDrawer() {
-  if (isGuest) return; // history is an account-only feature
-  // History and the tree-quiz sub-panel share the same slide-out slot —
-  // opening one dismisses the other.
-  closeSubpanel();
-  document.querySelector('#historyDrawerBackdrop')?.classList.add('active');
-  // The drawer owns the rail highlight while it is open; closing it hands
-  // the highlight back to the module underneath.
-  setOverlayView('history');
-  loadAndRenderHistory();
-}
-
-function openAuthModal(mode = 'signin') {
-  const backdrop = document.querySelector('#authModalBackdrop');
-  if (!backdrop) return;
-  // The add-account flow runs while already signed in, so offering
-  // "Continue as guest" there is meaningless — hide that row.
-  const guestRow = backdrop.querySelector('.modal-close-row');
-  if (guestRow) guestRow.hidden = mode === 'add-account';
-  backdrop.classList.add('active');
-  const email = document.querySelector('#authEmail');
-  if (email) setTimeout(() => email.focus(), 0);
-}
-
-function closeAuthModal() {
-  const backdrop = document.querySelector('#authModalBackdrop');
-  backdrop?.classList.remove('active');
-  // Restore the guest row so the next open starts from the default state.
-  const guestRow = backdrop?.querySelector('.modal-close-row');
-  if (guestRow) guestRow.hidden = false;
-}
-
 function applyTheme(theme) {
   setTheme(theme, document.querySelector('#themeIcon'));
   if (renderer && renderer.tree) {
@@ -794,11 +1140,47 @@ function applyTheme(theme) {
   }
 }
 
+// The lesson's Concept stage paints a reference tree on the canvas: the
+// primary example as SynTutor itself parses it. The renderer lays it out
+// exactly like every other tree — centred, fitted to the canvas, never
+// squashed — and stays read-only while the lesson owns the screen.
+function renderTree(tree) {
+  if (!renderer) return;
+  if (!tree) {
+    renderer.clear();
+    return;
+  }
+  renderer.setInteractive(false);
+  renderer.setTree(tree);
+}
+
+// Wipe the canvas completely: the pixels and the renderer's own copy of the
+// tree, so the next resize cannot paint a stale tree back. The lesson's
+// reference tree is read-only; the Grammar Tutor's canvas is interactive
+// again once the lesson is over.
+function clearCanvas() {
+  if (!renderer) return;
+  renderer.clear();
+  renderer.setInteractive(true);
+}
+
+// Read-only canvas: the lesson's Concept stage shows a reference tree the
+// learner may pan and zoom but not pick apart.
+function setCanvasInteractive(flag) {
+  renderer?.setInteractive(flag !== false);
+}
+
 function updateAuthState() {
+  // Publish the session state: the lesson catalog, the achievements and the
+  // history all follow it (locks, progress, migration).
+  setAuthState({
+    authenticated: !isGuest && Boolean(clerk?.user?.id),
+    user: clerk?.user || null,
+  });
+
   const chip = document.querySelector('#identityChip');
   const label = document.querySelector('#identityLabel');
   const avatar = document.querySelector('#identityAvatar');
-  const historyBtn = document.querySelector('#headerHistoryBtn');
   if (!chip || !label || !avatar) return;
 
   if (!isGuest && clerk?.session) {
@@ -808,7 +1190,6 @@ function updateAuthState() {
     avatar.classList.remove('guest');
     avatar.textContent = name.charAt(0).toUpperCase();
     chip.title = 'Account menu';
-    if (historyBtn) historyBtn.hidden = false;
   } else {
     label.textContent = 'Guest';
     avatar.classList.add('guest');
@@ -819,12 +1200,12 @@ function updateAuthState() {
       </svg>
     `;
     chip.title = 'Log In / Sign Up';
-    if (historyBtn) historyBtn.hidden = true;
     cachedHistory = [];
-    closeHistoryDrawer();
   }
+  // The history is account-only: the rail item appears for an account
+  // session and disappears for a guest — and an open drawer closes with it.
+  setHistoryEnabled(isAccountSession(clerk));
   renderProfileMenu();
-  refreshProfileStats();
 }
 
 let profileMenuOpen = false;
@@ -840,6 +1221,16 @@ function renderProfileMenu() {
   setHidden('#profileMenuDivider', !auth);
   setHidden('#profileLogout', !auth);
   setHidden('#profileSignIn', auth);
+  // The identity label at the top of the menu: the name, and the email
+  // address of the signed-in account (never a raw user id).
+  const name = document.querySelector('#profileMenuName');
+  const email = document.querySelector('#profileMenuEmail');
+  if (name) name.textContent = auth ? playerDisplayName() : 'Guest';
+  if (email) {
+    const address = auth ? currentUserEmail(clerk) : '';
+    email.textContent = address
+      || (auth ? `@${(clerk?.user?.username || String(clerk?.user?.id || '').replace(/^user_/, '') || 'learner')}` : 'Sign in to sync your progress');
+  }
 }
 
 function setProfileMenu(open) {
@@ -853,49 +1244,10 @@ function setProfileMenu(open) {
   chip?.setAttribute('aria-expanded', String(open));
   if (open) {
     showProfileMenuMain();
-    refreshProfileStats();
   }
   if (open) focusFirstMenuItem();
 }
 
-function refreshProfileStats() {
-  const box = document.querySelector('#profileStats');
-  if (!box) return;
-  if (!isGuest && clerk?.session && supabase) {
-    box.innerHTML = '<span>Loading progress\u2026</span>';
-    loadPlayerProgress().then((p) => {
-      if (!box) return;
-      const stats = p || { xp: 0, level: 0 };
-      const level = levelFromXp(stats.xp);
-      box.innerHTML = '';
-      const row = document.createElement('div');
-      row.className = 'profile-stats-stats';
-      const lvl = document.createElement('span');
-      lvl.className = 'profile-stats-level';
-      lvl.textContent = `Level ${stats.level}`;
-      const xp = document.createElement('span');
-      xp.className = 'profile-stats-xp';
-      xp.textContent = `${stats.xp} XP`;
-      row.appendChild(lvl);
-      row.appendChild(xp);
-      box.appendChild(row);
-      const bar = document.createElement('div');
-      bar.className = 'profile-stats-bar';
-      const fill = document.createElement('div');
-      fill.className = 'profile-stats-fill';
-      fill.style.width = `${level.span ? Math.min(100, Math.round((level.into / level.span) * 100)) : 0}%`;
-      bar.appendChild(fill);
-      box.appendChild(bar);
-      const note = document.createElement('span');
-      note.textContent = `${level.into} / ${level.span} XP to Level ${stats.level + 1}`;
-      box.appendChild(note);
-    }).catch(() => {
-      if (box) box.textContent = 'Progress unavailable right now.';
-    });
-  } else {
-    box.textContent = 'Guest mode \u2014 sign in to earn XP and achievements.';
-  }
-}
 
 function visibleMenuItems() {
   const menu = document.querySelector('#profileMenu');
@@ -989,7 +1341,8 @@ async function openProfileAccounts() {
 function initProfileMenu() {
   document.querySelector('#profileAddAccount')?.addEventListener('click', () => {
     setProfileMenu(false);
-    openAuthModal('add-account');
+    // A second account: the same modal, framed for a signed-in learner.
+    openAuthModal({ mode: 'register', reason: 'add_account' });
   });
   document.querySelector('#profileSwitchAccount')?.addEventListener('click', () => {
     openProfileAccounts();
@@ -1003,7 +1356,7 @@ function initProfileMenu() {
   });
   document.querySelector('#profileSignIn')?.addEventListener('click', () => {
     setProfileMenu(false);
-    openAuthModal('signin');
+    openAuthModal({ mode: 'signin', reason: 'sidebar_profile' });
   });
   document.addEventListener('click', (e) => {
     if (profileMenuOpen && !e.target.closest('.profile-anchor')) setProfileMenu(false);
@@ -1111,12 +1464,6 @@ function wireEvents() {
   });
 
   const drawer = document.querySelector('#historyDrawerBackdrop');
-  document.querySelector('#closeDrawerBtn')?.addEventListener('click', () => {
-    closeHistoryDrawer();
-  });
-  drawer?.addEventListener('click', (e) => {
-    if (e.target === drawer) closeHistoryDrawer();
-  });
 
   // Escape closes an open left sub-panel first (the tree-quiz panel, then
   // History); stopImmediatePropagation keeps the sidebar's own Escape from
@@ -1136,17 +1483,9 @@ function wireEvents() {
     }
   });
 
-  const authModal = document.querySelector('#authModalBackdrop');
-  document.querySelector('#authContinueGuestBtn')?.addEventListener('click', closeAuthModal);
-  authModal?.addEventListener('click', (e) => {
-    if (e.target === authModal) closeAuthModal();
-  });
+  // Escape closes the account menu; the auth modal listens for it itself.
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    if (authModal?.classList.contains('active')) {
-      closeAuthModal();
-      return;
-    }
     if (profileMenuOpen) {
       setProfileMenu(false);
       return;
@@ -1276,7 +1615,7 @@ function startNewSession() {
   renderNodeDetail(null, null, null);
   resetFocusState();
 
-  document.querySelector('#emptyTreeState')?.classList.remove('hidden');
+  syncCanvasEmptyState();
 
   transition(STATES.IDLE, 'new session started');
   log('New session \u2014 canvas, input, and analysis cleared.');
@@ -1492,7 +1831,7 @@ async function loadQuizProgress() {
   if (!supabase || !clerk?.user?.id) return [];
   const { data, error } = await supabase
     .from('quiz_progress')
-    .select('rule_id, completed_count, perfect_count')
+    .select('rule_id, completed_count, perfect_count, last_completed_at')
     .eq('user_id', clerk.user.id);
   if (error) {
     console.warn('Failed to load quiz progress:', error.message);
@@ -1572,7 +1911,7 @@ async function analyzeForQuiz(text, index = null) {
   historySpans = [];
   const input = document.querySelector('#inputText');
   if (input?.value.trim() === clean) renderInputHighlights(clean);
-  document.querySelector('#emptyTreeState')?.classList.add('hidden');
+  setEmptyStateVisible(false);
   renderer.setTree(payload.tree);
   transition(STATES.VIEWING, 'quiz sentence analyzed');
   return payload;
@@ -1691,7 +2030,7 @@ async function executePipeline(opts = {}) {
     applySentenceSelection(payload);
   }
 
-  document.querySelector('#emptyTreeState')?.classList.add('hidden');
+  setEmptyStateVisible(false);
   renderer.setTree(payload.tree);
   if (!quizMode) renderCorrection(payload.summary);
   transition(STATES.VIEWING, 'output ready -> viewing');
@@ -1708,9 +2047,11 @@ async function executePipeline(opts = {}) {
     recheckFocus(payload);
   }
 
-  const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay || opts.isLive);
-  // History is account-only: guests are never recorded.
-  if (!isNavigation && !isGuest && supabase && clerk?.user?.id && !recordedTexts.has(text)) {
+    const isNavigation = Boolean(opts.isSentenceNav || opts.isReplay || opts.isLive);
+    // History is account-only: a guest session records nothing, so an anonymous
+    // query stays ephemeral.
+    if (shouldPersistHistory({ isNavigation, text, recorded: recordedTexts })
+        && supabase && clerk?.user?.id) {
     try {
       const { error: insertError } = await supabase.from('analysis_history').insert({
         user_id: clerk.user.id,
