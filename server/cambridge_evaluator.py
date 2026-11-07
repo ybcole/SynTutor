@@ -36,10 +36,10 @@ def _evaluate_forbidden_sequences(sentence: str,
     tokens = _tokens(sentence)
     forbidden = check.get("forbidden_sequences")
     exceptions = check.get("exception_sequences", [])
-    valid_sequence = lambda value: (
-        isinstance(value, list) and bool(value)
-        and all(isinstance(token, str) and token.strip() for token in value)
-    )
+    def valid_sequence(value: Any) -> bool:
+        return (isinstance(value, list) and bool(value)
+                and all(isinstance(token, str) and token.strip() for token in value))
+
     if not isinstance(forbidden, list) or not forbidden or not all(valid_sequence(row) for row in forbidden):
         return {"status": "invalid_check", "matched_sequences": []}
     if not isinstance(exceptions, list) or not all(valid_sequence(row) for row in exceptions):
