@@ -118,6 +118,8 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
         self.assertEqual(payload["meta"]["tree_authority"].split(";")[0],
                          "B-R canonical analysis is in br_analysis")
         self.assertEqual(payload["meta"]["br_convention_version"], "V2")
+        self.assertEqual(payload["cambridge_evaluation"]["status"], "no_runtime_rules")
+        self.assertEqual(payload["cambridge_evaluation"]["evaluated_rule_ids"], [])
 
     def test_unsupported_free_analysis_stays_explicitly_unresolved(self):
         with patch.object(api, "analyze", return_value=self.analysis()), \
