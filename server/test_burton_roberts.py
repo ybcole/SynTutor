@@ -3,6 +3,7 @@
 Run with: python -m unittest server.test_burton_roberts
 """
 import unittest
+from unittest.mock import patch
 import re
 import json
 from pathlib import Path
@@ -620,6 +621,31 @@ class GeneratorCanonicalEnvelopeTests(unittest.TestCase):
         self.assertEqual(result["tree"]["convention_profile"]["profile_id"], "FINAL-D1")
         self.assertTrue(result["tree"]["convention_profile"]["appendix_nom"])
 
+
+    def test_unexpected_candidate_normalizer_error_becomes_unresolved(self):
+        analysis = self.lexical_analysis("A novel sentence with no source match")
+        with patch("server.burton_roberts._matching_gold_records", return_value=[]), \\
+             patch("server.burton_roberts.normalize_benepar_candidate",
+                   side_effect=RuntimeError("synthetic normalizer fault")):
+            result = build_canonical_analysis(analysis, chapter=3)
+
+        self.assertEqual(result["status"], "unresolved")
+        self.assertIsNone(result["tree"])
+        self.assertEqual(result["diagnostics"][0]["code"], "NORMALIZER_FAILURE")
+        self.assertIn("synthetic normalizer fault", result["diagnostics"][0]["message"])
+        self.assertIn("raw_candidate_tree", result["parser_diagnostics"])
+
+    def test_gold_lookup_error_becomes_unresolved_without_candidate_fallback(self):
+        analysis = self.lexical_analysis("A novel sentence with no source match")
+        with patch("server.burton_roberts._matching_gold_records",
+                   side_effect=RuntimeError("synthetic source-index fault")), \\
+             patch("server.burton_roberts.normalize_benepar_candidate") as candidate_fallback:
+            result = build_canonical_analysis(analysis, chapter=3)
+
+        self.assertEqual(result["status"], "unresolved")
+        self.assertIsNone(result["tree"])
+        self.assertEqual(result["diagnostics"][0]["code"], "GOLD_LOOKUP_FAILURE")
+        candidate_fallback.assert_not_called()
 
     def test_img_sentence_aligned_gold_corpus_uses_the_api_normalizer_and_m1_schema(self):
         records = load_reference_records()
