@@ -201,6 +201,25 @@
     "review_notes": {
       "type": "string"
     },
+    "runtime_check": {
+      "type": ["object", "null"],
+      "description": "Optional deterministic implementation contract. Only supported checks may execute, and only after the independent-review, source, crosswalk, positive/negative/exception-test, and runtime allow-list gates pass.",
+      "additionalProperties": false,
+      "required": ["kind", "forbidden_sequences"],
+      "properties": {
+        "kind": { "const": "forbidden_token_sequences" },
+        "forbidden_sequences": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/tokenSequence" }
+        },
+        "exception_sequences": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/tokenSequence" },
+          "default": []
+        }
+      }
+    },
     "protocol_version": {
       "type": "string",
       "default": "1.0"
@@ -272,6 +291,11 @@
     }
   ],
   "$defs": {
+    "tokenSequence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
     "example": {
       "type": "object",
       "additionalProperties": false,

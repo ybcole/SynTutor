@@ -105,8 +105,34 @@
 - API contracts and error states are documented and tested.
 - Existing generator behavior that is still required remains covered by regression tests.
 
-**Approval gate:** Present representative outputs, failures, and test evidence for review before relying on the new representation in downstream features.
+**Milestone 02 continuation — 7 November 2026**
 
+**Status: INCOMPLETE — keep `[ ]`.** The root `master_prompt_syntax_generator.md` was retrieved and reconciled. Implementation remains isolated on `feature/milestone-02-completion-2026-11-07`, draft PR [#30](https://github.com/ybcole/SynTutor/pull/30), targeting `main`.
+
+**Implementation added after the previous M2 report**
+- The live Generator now calls `build_canonical_analysis` and returns the M1-approved envelope from `docs/canonical-burton-roberts-tree.schema.json` in `br_analysis.tree`. `grammar/br_tree.schema.json` is now identified as a deprecated internal projection schema, not the public API contract.
+- Exact sentence- and convention-matched IMG B-R gold records are projected through the read-only importer. Conflicting records, invalid imports, validator exceptions, and unsupported parser analyses remain explicitly unresolved. Chapter 7 core/Appendix D1 records are separated.
+- The non-reference Benepar mapping remains V2 `S → NP VP` with NP/VP triangles. Sentence punctuation remains in the sentence and raw parser diagnostic but is not fabricated as a phrase-marker leaf.
+- Chapter/profile selection, Chapter 7 Appendix D1, strict integer sentence-index validation, out-of-range rejection, corrected-sentence profile propagation, and optional Cambridge variety selection are routed through Flask, stdlib and hosted APIs.
+- A fail-closed Cambridge execution service consumes only allow-listed rules. It supports a typed sentence-scope token-pattern primitive with occurrence-specific exceptions; blocks non-constraint types and unsupported scopes; requires explicit crosswalk/runtime-check eligibility; and requires an explicit matching selected variety for variety-restricted rules. The repository allow-list still enables zero rules because the 196 extracted Cambridge mappings remain unverified.
+- Added API-level M1 schema tests, an IMG corpus audit through the API normalizer, Cambridge evaluator/registry/schema tests (including M1-envelope, malformed-registry, exception-occurrence, scope and variety paths), parser and normalizer exception tests, Flask/stdlib model-failure and JSON transport tests, and parser-backed single-/multi-sentence/corrected-sentence tests.
+- The frontend authority notice now reads `br_analysis.status`, but the canvas still renders the raw Benepar candidate as a diagnostic/compatibility tree.
+- Added `.github/workflows/syntax-generator-runtime.yml` to install spaCy/Benepar models and run live parser/API tests. The model-free workflow now compiles all server code/test files and includes the new tests.
+
+**Verification state — implementation head e51c89c85e17ee8151419ab7739cf1ce03774c5e; PR documentation head 59d0aebaaf8e2b9915541c120c5469d85c7dd0c3**
+
+The latest attempt on the PR documentation head [42351010687](https://github.com/ybcole/SynTutor/actions/runs/42351010687), and the latest attempt on the implementation head [42350898513](https://github.com/ybcole/SynTutor/actions/runs/42350898513), were both push events. Both are attributed to an empty `BuildFailed` workflow registration (workflow ID `410117115`), concluded `startup_failure`, and created zero jobs. The prior push attempt [42350764338](https://github.com/ybcole/SynTutor/actions/runs/42350764338) showed the same signature. No test steps or parser model installation ran. The previous green [run #35](https://github.com/ybcole/SynTutor/actions/runs/42346333169) predates the current API M1-envelope integration and Cambridge evaluator; it is historical baseline evidence only.
+
+A local checkout also failed because DNS could not resolve `github.com`. The repository workflow files are present and include both model-free and parser-backed test jobs. The current startup failures occur before job creation, so they are not test failures and cannot be fixed by changing Syntax Generator tests. The run metadata and the same publicly reported `BuildFailed` signature are recorded in `docs/SYNTUTOR_MILESTONE_02_STATUS.md`; the repository owner must ask GitHub Support to inspect/reindex workflow registration `410117115`.
+
+**Remaining limitations**
+1. General candidate restructuring for arbitrary V3–V10 Benepar analyses remains unsupported. The implemented design uses exact eligible B-R source records and the narrow V2 shell; other shapes return unresolved rather than being falsely relabelled. This is a deliberate safe limit, but representative supported transformations beyond V2 still need to be established if required for the Generator's target scope.
+2. The Cambridge evaluator primitive and its synthetic contract tests exist, but no actual Cambridge grammar rule is eligible or enabled. Rule-specific positive/negative/exception tests cannot be claimed until source review, crosswalk, deterministic implementation, and allow-list gates pass.
+3. The frontend continues to render the raw candidate, clearly labelled diagnostic-only; it does not yet render the M1 B-R envelope as its primary interactive tree. Full UI redesign and Builder migration remain outside this prompt's stop condition.
+4. Exact B-R/Cambridge edition and printed-page metadata still require the original source PDFs.
+5. Current-head compilation/test workflows have not executed due GitHub Actions startup failures. The previous green run cannot certify current code.
+
+No lesson, quiz, Builder, database or learner-progress migration was performed. Milestone 03 has not been started. Automatic approval does not waive the execution plan's requirement for current, passing evidence; Milestone 02 remains unchecked until the current model-free and parser-backed workflows complete and the acceptance report is verified.
 ---
 
 ## 03 — Shared, source-grounded explanation engine
@@ -554,3 +580,14 @@ Additional work:
 **Verification and limitations:** The new test suite and 252-record audit runner have not been run in this environment because a local repository clone was blocked by DNS resolution failure for `github.com`. The 16 focused tests previously recorded as passing belong to the parent branch and have not been rerun against this continuation. The detailed `master_prompt_syntax_generator.md` still was not visible at the expected path or in the accessible branch trees checked during this execution; the work follows the execution plan's Milestone 02 scope, without claiming detailed-prompt compliance. The exact B-R edition/PDF and parser/model-backed E2E path remain unverified. The live frontend now visibly labels the displayed Benepar tree as diagnostic-only, but it still renders that diagnostic tree rather than the canonical projection.
 
 **Milestone 02 remains unchecked.** The approval gate is not met; do not rely on the canonical output downstream until the detailed prompt is reconciled and the focused tests, corpus audit, transport contract tests, frontend integration, and source-evidence review are completed.
+
+
+## M2–M3 remediation continuation — 7 November 2026
+
+Implementation defects and branch/layout conflicts have been repaired. See
+`docs/reports/milestones-02-03-remediation.md` for fresh model-free, real-parser,
+HTTP and browser results. The shared explanation service is now integrated in
+Generator and Builder. Exact source editions, independent review/crosswalk
+resolution, reviewed production templates and supported source coverage remain
+open. **M2 and M3 stay unchecked; source-backed M4 publication is not certified.**
+No prior checkbox or acceptance criterion was weakened.

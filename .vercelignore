@@ -1,4 +1,9 @@
-server/
+# The static content generator reads these three modules as text.
+# Only dist/ is published; the rest of the backend stays out of the build input.
+server/*
+!server/ruleset.py
+!server/matrix.py
+!server/licensing.py
 scripts/audit_rules.py
 requirements.txt
 supabase/

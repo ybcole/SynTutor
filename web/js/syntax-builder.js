@@ -10,6 +10,7 @@
 
 // Every phrase label benepar can emit, grouped for the palette.
 export const PHRASE_NODE_TYPES = [
+  'N', 'V', 'A', 'AP', 'Adv', 'AdvP', 'P', 'DET', 'NOM', 'AUX', 'S-bar', 'S-dbar',
   'S', 'NP', 'VP', 'PP', 'ADJP', 'ADVP',
   'SBAR', 'SBARQ', 'SINV', 'SQ', 'FRAG',
   'NML', 'WHNP', 'WHADVP', 'WHADJP', 'WHPP',
@@ -27,6 +28,7 @@ export const POS_TYPES = [
 ];
 
 export const NODE_TYPE_GROUPS = [
+  { name: 'B-R categories', types: ['N', 'V', 'A', 'AP', 'Adv', 'AdvP', 'P', 'DET', 'NOM', 'AUX', 'S-bar', 'S-dbar'] },
   { name: 'Clauses', types: ['S', 'SBAR', 'SQ', 'SINV', 'SBARQ', 'FRAG'] },
   { name: 'Arguments', types: ['NP', 'VP'] },
   { name: 'Modifiers', types: ['PP', 'ADVP', 'ADJP'] },
@@ -337,4 +339,85 @@ export function phraseSpans(tree) {
 // Compare the leaf text sequence so the quiz can flag a wrong sentence.
 export function leafText(tree) {
   return leavesOf(tree).join(' ');
+}
+
+// M3 bridge: serialize the learner's actual graph, never a re-parsed sentence.
+// Unsupported legacy Penn labels are left for canonical validation to reject;
+// no category is silently relabelled into a B-R category.
+export function toCanonicalEnvelope(model, profile = null) {
+  const all = Object.values(model?.nodes || {});
+  const top = roots(model);
+  if (!all.length || top.length !== 1) throw new Error('Connect all nodes under one root before requesting book evidence.');
+  const sentence = getSentenceFromLeaves(model);
+  const words = all.filter(n => n.kind === NODE.WORD).sort((a, b) => a.x - b.x);
+  let offset = 0;
+  const tokens = words.map((n, index) => {
+    const text = String(n.text || '').trim();
+    if (!text) throw new Error('Empty words cannot be explained.');
+    const token = { index, text, char_span: [offset, offset + text.length] };
+    offset += text.length + 1;
+    return token;
+  });
+  const seen = new Set();
+  const walk = (node, depth = 0) => {
+    if (seen.has(node.id) || depth > 80) throw new Error('The tree contains a cycle or exceeds the supported depth.');
+    seen.add(node.id);
+    const children = childrenOf(model, node.id);
+    if (node.kind === NODE.WORD) {
+      if (children.length) throw new Error('A word cannot dominate another node in the canonical tree.');
+      const index = words.indexOf(node);
+      return { id: node.id, word: node.text.trim(), token_span: [index, index + 1] };
+    }
+    if (!children.length) throw new Error('Connect a child to each phrase before requesting book evidence.');
+    const base = { id: node.id, label: node.type };
+    if (node.canonicalFeatures) base.features = node.canonicalFeatures;
+    if (node.canonicalIndex !== undefined) base.index = node.canonicalIndex;
+    if (node.canonicalTriangle) {
+      if (children.some(child => child.kind !== NODE.WORD)) throw new Error('A triangle can contain words only.');
+      for (const child of children) walk(child, depth + 1);
+      return { ...base, triangle: true, words: children.map(child => child.text.trim()),
+        token_span: [words.indexOf(children[0]), words.indexOf(children.at(-1)) + 1] };
+    }
+    return { ...base, children: children.map(child => walk(child, depth + 1)) };
+  };
+  const root = walk(top[0]);
+  if (seen.size !== all.length) throw new Error('The graph contains disconnected nodes.');
+  return { schema_version: '1.0.0', tree_id: 'learner-builder', sentence, tokens,
+    convention_profile: profile || { chapter: 10, version: 'FINAL', appendix_nom: true, profile_id: 'FINAL-D1' },
+    source: { book: 'Learner construction', chapter: profile?.chapter || 10, evidence_status: 'NEEDS_REVIEW', review_status: 'NOT_REVIEWED' },
+    root, movement: [], accepted_alternatives: [] };
+}
+
+// Import only the canonical subset this editor can preserve exactly. Movement,
+// elision and gap editing remain M6 work; refusing them avoids a lossy round-trip.
+export function fromCanonicalEnvelope(envelope) {
+  if (envelope.movement?.length || envelope.accepted_alternatives?.length) {
+    throw new Error('This editor cannot yet preserve movement or accepted alternatives.');
+  }
+  const model = createModel();
+  let x = 0;
+  const walk = (node, parent = null, depth = 0) => {
+    if (depth > 80 || node.gap || node.elided) throw new Error('Unsupported canonical editor structure.');
+    let made;
+    if ('word' in node) {
+      made = addWord(model, node.word, x, depth * 70); x += 100;
+    } else {
+      made = addPhrase(model, node.label, x, depth * 70);
+      made.canonicalFeatures = node.features;
+      made.canonicalIndex = node.index;
+      if (node.triangle) {
+        made.canonicalTriangle = true;
+        for (const word of node.words) {
+          const child = addWord(model, word, x, (depth + 1) * 70);
+          child.parent = made.id; x += 100;
+        }
+      } else {
+        for (const child of node.children || []) walk(child, made.id, depth + 1);
+      }
+    }
+    made.parent = parent;
+    return made;
+  };
+  walk(envelope.root);
+  return model;
 }

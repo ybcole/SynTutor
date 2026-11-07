@@ -1,0 +1,7 @@
+# Model-free backend transport checks; runtime packages are in requirements.txt.
+jsonschema>=4.23,<5
+inflect>=7.5,<8
+lemminflect>=0.2.3,<0.3
+flask>=3.0,<4
+fastapi>=0.115,<1
+httpx>=0.27,<1

@@ -1,0 +1,407 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "enum": [
+        "NO_BOOK_BASIS",
+        "ANALYSIS_UNRESOLVED",
+        "SOURCE_CONFLICT",
+        "EXPLAINED"
+      ]
+    },
+    "analysis_status": {
+      "type": "string"
+    },
+    "channels": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "structural": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "template_id": {
+                "type": "string"
+              },
+              "node_id": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "deep_text": {
+                "type": "string"
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "book": {
+                      "enum": [
+                        "B-R",
+                        "Cambridge"
+                      ]
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "edition": {
+                      "type": "string"
+                    },
+                    "printed_page": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "evidence_status": {
+                      "enum": [
+                        "IMG",
+                        "TXT",
+                        "NEEDS_REVIEW"
+                      ]
+                    },
+                    "status": {
+                      "enum": [
+                        "approved",
+                        "pending",
+                        "rejected"
+                      ]
+                    },
+                    "crosswalk_status": {
+                      "enum": [
+                        "compatible",
+                        "resolved",
+                        "unverified",
+                        "conflict"
+                      ]
+                    },
+                    "review_status": {
+                      "enum": [
+                        "NOT_REVIEWED",
+                        "INDEPENDENTLY_REVIEWED",
+                        "HUMAN_APPROVED",
+                        "REJECTED"
+                      ]
+                    },
+                    "independent_review": {
+                      "type": "boolean"
+                    },
+                    "reviewed_by": {
+                      "type": "string"
+                    },
+                    "reviewed_on": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "book",
+                    "title",
+                    "edition",
+                    "printed_page",
+                    "evidence_status",
+                    "status",
+                    "crosswalk_status",
+                    "review_status",
+                    "independent_review",
+                    "reviewed_by",
+                    "reviewed_on"
+                  ]
+                }
+              },
+              "facts": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "template_id",
+              "node_id",
+              "text",
+              "deep_text",
+              "sources",
+              "facts"
+            ]
+          }
+        },
+        "grammatical": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "template_id": {
+                "type": "string"
+              },
+              "node_id": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "deep_text": {
+                "type": "string"
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "book": {
+                      "enum": [
+                        "B-R",
+                        "Cambridge"
+                      ]
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "edition": {
+                      "type": "string"
+                    },
+                    "printed_page": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "evidence_status": {
+                      "enum": [
+                        "IMG",
+                        "TXT",
+                        "NEEDS_REVIEW"
+                      ]
+                    },
+                    "status": {
+                      "enum": [
+                        "approved",
+                        "pending",
+                        "rejected"
+                      ]
+                    },
+                    "crosswalk_status": {
+                      "enum": [
+                        "compatible",
+                        "resolved",
+                        "unverified",
+                        "conflict"
+                      ]
+                    },
+                    "review_status": {
+                      "enum": [
+                        "NOT_REVIEWED",
+                        "INDEPENDENTLY_REVIEWED",
+                        "HUMAN_APPROVED",
+                        "REJECTED"
+                      ]
+                    },
+                    "independent_review": {
+                      "type": "boolean"
+                    },
+                    "reviewed_by": {
+                      "type": "string"
+                    },
+                    "reviewed_on": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "book",
+                    "title",
+                    "edition",
+                    "printed_page",
+                    "evidence_status",
+                    "status",
+                    "crosswalk_status",
+                    "review_status",
+                    "independent_review",
+                    "reviewed_by",
+                    "reviewed_on"
+                  ]
+                }
+              },
+              "facts": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "template_id",
+              "node_id",
+              "text",
+              "deep_text",
+              "sources",
+              "facts"
+            ]
+          }
+        },
+        "remediation": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "template_id": {
+                "type": "string"
+              },
+              "node_id": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "deep_text": {
+                "type": "string"
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "book": {
+                      "enum": [
+                        "B-R",
+                        "Cambridge"
+                      ]
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "edition": {
+                      "type": "string"
+                    },
+                    "printed_page": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "evidence_status": {
+                      "enum": [
+                        "IMG",
+                        "TXT",
+                        "NEEDS_REVIEW"
+                      ]
+                    },
+                    "status": {
+                      "enum": [
+                        "approved",
+                        "pending",
+                        "rejected"
+                      ]
+                    },
+                    "crosswalk_status": {
+                      "enum": [
+                        "compatible",
+                        "resolved",
+                        "unverified",
+                        "conflict"
+                      ]
+                    },
+                    "review_status": {
+                      "enum": [
+                        "NOT_REVIEWED",
+                        "INDEPENDENTLY_REVIEWED",
+                        "HUMAN_APPROVED",
+                        "REJECTED"
+                      ]
+                    },
+                    "independent_review": {
+                      "type": "boolean"
+                    },
+                    "reviewed_by": {
+                      "type": "string"
+                    },
+                    "reviewed_on": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "book",
+                    "title",
+                    "edition",
+                    "printed_page",
+                    "evidence_status",
+                    "status",
+                    "crosswalk_status",
+                    "review_status",
+                    "independent_review",
+                    "reviewed_by",
+                    "reviewed_on"
+                  ]
+                }
+              },
+              "facts": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "template_id",
+              "node_id",
+              "text",
+              "deep_text",
+              "sources",
+              "facts"
+            ]
+          }
+        }
+      },
+      "required": [
+        "structural",
+        "grammatical",
+        "remediation"
+      ]
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "status",
+    "analysis_status",
+    "channels",
+    "facts",
+    "diagnostics"
+  ]
+}

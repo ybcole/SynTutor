@@ -7,27 +7,24 @@ matrix + explainer payload. ``app.py`` (stdlib http.server) and ``webapp.py``
 """
 
 from parse_engine import ParseFailure, analyze, load_models
-from br_tree import normalize_candidate, build_correction_alignment, CONVENTIONS
+from br_tree import build_correction_alignment
+from burton_roberts import build_canonical_analysis
 from cambridge_registry import load_runtime_registry
-from matrix import evaluate, _rem_from_text
+from cambridge_evaluator import evaluate_cambridge
+from explanations import explain_analysis, explain_request
+from matrix import evaluate
 from detector import classify, classify_many, combine
 from licensing import _leaves as _tree_leaves
-from licensing import _finding
 import corrector
 import corrections
 from plain import apply_plain_language, plain_text
-
-try:  # support package and script-directory imports
-    from .burton_roberts import build_canonical_analysis
-except ImportError:  # pragma: no cover - direct server script execution
-    from burton_roberts import build_canonical_analysis
 
 _MODEL_STATUS = None
 
 INSTALL_HINT = (
     'Run:  pip install spacy benepar transformers==4.46.3  &&  '
     'python -m spacy download en_core_web_md  &&  '
-    'python -m benepar.download benepar_en3'
+    'python -c "import benepar; benepar.download(\'benepar_en3\')"'
 )
 
 
@@ -103,21 +100,55 @@ def word_info(words):
 
 
 
-def build_payload(text, sentence_index=0, convention_version='V10'):
-    """Hybrid payload for one user input, targeting ``sentence_index``.
+def build_payload(text, sentence_index=0, convention_version=None,
+                  chapter=None, appendix_nom=None, variety=None):
+    """Build the shared analysis payload for the selected sentence.
 
-    Two channels: the rule matrix explains (deterministic), and a CoLA
-    acceptability model detects (trained). A sentence is grammatical only if
-    both accept; a rules-clean but model-rejected sentence is UNVERIFIED, and
-    the model's reasoning is surfaced because the rules cannot explain it.
+    The legacy matrix provides deterministic findings. CoLA is advisory: it
+    may downgrade a clean result to UNVERIFIED, but it cannot create a
+    rule-level violation or replace a matrix explanation. Chapter selection
+    determines the B-R convention profile; omitted chapter selects FINAL-D1.
     """
-    if convention_version not in CONVENTIONS:
-        raise ValueError(f'unsupported B-R convention_version: {convention_version!r}')
+    if isinstance(sentence_index, bool) or not isinstance(sentence_index, int) or sentence_index < 0:
+        raise ValueError("sentence_index must be a non-negative integer")
+    if variety is not None:
+        if not isinstance(variety, str) or not variety.strip():
+            raise ValueError("variety must be a non-empty string or null")
+        variety = variety.strip()
+
+    if chapter is not None:
+        if isinstance(chapter, bool) or not isinstance(chapter, int) or not 1 <= chapter <= 10:
+            raise ValueError("chapter must be an integer from 1 through 10")
+        expected_version = f"V{chapter}"
+        if convention_version is not None and convention_version != expected_version:
+            raise ValueError(
+                f"chapter {chapter} requires convention_version {expected_version}")
+        convention_version = expected_version
+    else:
+        # Free analysis is the approved FINAL-D1 profile. V10 remains accepted
+        # as a backwards-compatible request spelling, but no other chapter
+        # profile may be selected without an explicit chapter.
+        if convention_version not in (None, "V10"):
+            raise ValueError("free analysis uses the declared FINAL-D1 profile; supply chapter to select V1-V10")
+        convention_version = "V10"
+    if appendix_nom is not None and not isinstance(appendix_nom, bool):
+        raise ValueError("appendix_nom must be true, false, or null")
+    if chapter not in (None, 7) and appendix_nom is not None:
+        raise ValueError("appendix_nom is only valid for Chapter 7 or free analysis")
+    if chapter is None and appendix_nom is False:
+        raise ValueError("free analysis uses the declared FINAL-D1 profile; appendix_nom cannot be disabled")
+    if chapter == 7 and appendix_nom is None:
+        appendix_nom = False
+    if chapter is None and appendix_nom is None:
+        appendix_nom = True
+
     analysis = analyze(text, sentence_index=sentence_index)
-    br_analysis = normalize_candidate(
-        analysis['root'], analysis['tokens'], analysis['sentence'],
-        convention_version=convention_version)
+    br_analysis = build_canonical_analysis(
+        analysis, chapter=chapter, appendix_nom=appendix_nom)
+    profile_id = br_analysis.get("convention_profile", {}).get("profile_id", "UNRESOLVED")
     cambridge_runtime = load_runtime_registry()
+    cambridge_evaluation = evaluate_cambridge(
+        br_analysis, cambridge_runtime, variety=variety)
     result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
     summary = result['summary']
@@ -167,9 +198,8 @@ def build_payload(text, sentence_index=0, convention_version='V10'):
                     'tokens': corrected_analysis['tokens'],
                     'authority': 'Benepar candidate parse; not the B-R canonical tree',
                 }
-                correction['corrected_br_analysis'] = normalize_candidate(
-                    corrected_analysis['root'], corrected_analysis['tokens'],
-                    corrected_analysis['sentence'], convention_version=convention_version)
+                correction['corrected_br_analysis'] = build_canonical_analysis(
+                    corrected_analysis, chapter=chapter, appendix_nom=appendix_nom)
             except Exception as exc:  # correction annotations survive a parser fallback
                 correction['corrected_candidate_parse'] = None
                 correction['corrected_br_analysis'] = {
@@ -182,11 +212,8 @@ def build_payload(text, sentence_index=0, convention_version='V10'):
 
     apply_plain_language(details, summary)
 
-    # Preserve the legacy Benepar tree for diagnostics/UI compatibility while
-    # exposing a separate, explicitly validated B-R canonical projection.
-    canonical_analysis = build_canonical_analysis(
-        analysis, chapter=chapter, appendix_nom=appendix_nom, correction=correction)
-
+    # Preserve the raw Benepar tree separately; br_analysis is the one canonical
+    # analysis contract shared by API consumers.
     token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
     tag_word = summary['explanation']
     label = {'grammatical': 'VALID', 'ungrammatical': 'INVALID',
@@ -200,11 +227,10 @@ def build_payload(text, sentence_index=0, convention_version='V10'):
         f"Constraint matrix: {summary['valid_edges']} validated \u00b7 "
         f"{summary['violated_edges']} violated \u00b7 {summary['unrated_edges']} unrated",
         f"Verdict: {label}",
-        f"B-R normalization: {canonical_analysis['status'].upper()} "
-        f"({canonical_analysis['convention_profile'].get('profile_id', canonical_analysis['convention_profile']['version'])})",
-        ('The current tree is a validated canonical B-R projection; source evidence is still marked NEEDS_REVIEW.'
-         if canonical_analysis['status'] == 'normalized' else
-         'The current tree is a Benepar diagnostic candidate only; it is not a verified B-R analysis.'),
+        f"B-R normalization: {br_analysis['status'].upper()} ({profile_id})",
+        ('The canonical B-R analysis is available separately from the raw Benepar candidate.'
+         if br_analysis['status'] == 'normalized' else
+         'No safe canonical B-R mapping was found; the raw Benepar tree remains diagnostic only.'),
         f"   {tag_word}",
         'Deterministic matrix over the benepar tree; identical inputs always produce identical verdicts.',
     ]
@@ -260,9 +286,17 @@ def build_payload(text, sentence_index=0, convention_version='V10'):
             'sentence_count': analysis['sentence_count'],
             'target_sentence': analysis['sentence_index'] + 1,
             'tree_authority': 'B-R canonical analysis is in br_analysis; tree remains a legacy Benepar candidate for current-renderer compatibility',
-            'br_convention_version': convention_version,
+            'br_convention_version': br_analysis.get("convention_profile", {}).get("version"),
+            'br_profile_id': profile_id,
+            'br_chapter': chapter,
+            'br_appendix_nom': appendix_nom,
             'br_normalization_status': br_analysis.get('status'),
+            'acceptability_signal_role': 'advisory_only',
+            'acceptability_signal_can_create_rule_violation': False,
             'cambridge_runtime_rule_ids': cambridge_runtime.get('active_rule_ids', []),
+            'cambridge_evaluated_rule_ids': cambridge_evaluation.get('evaluated_rule_ids', []),
+            'cambridge_evaluation_status': cambridge_evaluation.get('status'),
+            'cambridge_variety': variety,
         },
         'parse': {
             'text': analysis['sentence'],
@@ -275,7 +309,9 @@ def build_payload(text, sentence_index=0, convention_version='V10'):
         'tree': root,
         'candidate_tree': root,
         'br_analysis': br_analysis,
+        'explanation_evidence': explain_analysis(br_analysis, variety=variety),
         'cambridge_runtime': cambridge_runtime,
+        'cambridge_evaluation': cambridge_evaluation,
         'nodes': analysis['nodes'],
         'node_details': details,
         'summary': summary,
@@ -382,15 +418,10 @@ def _validate_correction(candidate):
 
 
 def _apply_correction(located, root, details, summary, sentence, det):
-    """Promote a located single-token correction to a deterministic finding.
+    """Offer a model-proposed edit without mutating grammatical evidence.
 
-    Promotes only when the corrected sentence is *confirmed* grammatical by the
-    rule matrix (so the "good" word's tag comes from a clean, gold-projected
-    tree) and the two words are provably two forms of one lemma (so a flat
-    meaning swap like reddish->red is never turned into a condemnation).  Two
-    confidence margins guard against a noisy classifier falsely "fixing" a
-    grammatical sentence: the original must be rejected by a clear margin and
-    the flip must be accepted by a clear margin.
+    A classifier flip and morphology agreement can suggest a repair, but cannot
+    establish a source-backed rule or promote UNVERIFIED to UNGRAMMATICAL.
     """
     bad, good = located['bad'], located['good']
     corrected = located['corrected_text']
@@ -421,56 +452,12 @@ def _apply_correction(located, root, details, summary, sentence, det):
     if diff is None:
         return None
     _lemma, _bad_tag, bad_label, _good_tag_l, good_label = diff
-    required_label = corrector.EXTENDED_TAG_LABEL.get(good_tag, '') or good_label
-    core = corrector.template(bad, good, required_label, bad_label)
-    bad_detail = details.get(bad_id) or {}
-    parent = details.get(bad_detail.get('parent') or '') if bad_detail else None
-    where = ''
-    if parent is not None:
-        where = f" inside the {parent.get('type')} '{parent.get('surface', '')}'"
-    text = (f"The word '{bad}'{where} is used where the structure requires "
-            f"the {required_label} form. {core}")
-    remediation = (f"Replace '{bad}' with '{good}' "
-                   f"({required_label or 'the required form'}).")
-
-    finding = _finding(
-        '11.4', 'error', 'C-MLM-ANOMALY', 'word form', bad_id, text,
-        {'used': 'mlm', 'lookup': bad, 'accepted': [good],
-         'source': (f"masked-language-model sweep ({corrector._MLM_MODEL}) "
-                    f"+ acceptability flip (p(acceptable)={located['cola_p']:.2f})")},
-        remediation)
-    detail = details.get(bad_id) or details.get(root['id'], {})
-    finding['id'] = f"{bad_id}:11.4"
-    detail.setdefault('findings', []).append(finding)
-    detail['status'] = 'error'
-    detail['text'] = text
-    detail['remediation'] = _rem_from_text(text, bad)
-    details[bad_id] = detail
-
-    summary['flagged'] = True
-    summary['verdict'] = 'ungrammatical'
-    summary['valid'] = False
-    summary['violated_edges'] = summary.get('violated_edges', 0) + 1
-    summary['violations'] = list(summary.get('violations') or [])
-    if bad_id not in summary['violations']:
-        summary['violations'].append(bad_id)
-    summary['constraints_fired'] = list(summary.get('constraints_fired') or [])
-    if 'C-MLM-ANOMALY' not in summary['constraints_fired']:
-        summary['constraints_fired'].append('C-MLM-ANOMALY')
-    summary['explanation'] = text
-
-    note = (f"masking '{bad}' and substituting '{good}' restores "
-            f"acceptability (p(acceptable)={located['cola_p']:.2f}); the "
-            f"corrected sentence passed the rule matrix (projected tag of "
-            f"'{good}' = {good_tag}), so the verdict is promoted to "
-            f"UNGRAMMATICAL. {text}")
     return {
-        'note': note,
-        'method': 'masked-language-model text-space sweep',
-        'bad': bad, 'good': good,
-        'bad_pos': bad_label, 'good_pos': good_tag,
-        'corrected_sentence': corrected,
-        'cola_p': located['cola_p'],
+        'note': (f"Model-proposed edit: replace '{bad}' with '{good}'. "
+                 'This is an advisory suggestion, not a source-backed grammatical judgment.'),
+        'method': 'advisory masked-language-model suggestion',
+        'bad': bad, 'good': good, 'bad_pos': bad_label, 'good_pos': good_tag,
+        'corrected_sentence': corrected, 'cola_p': located['cola_p'],
     }
 
 
