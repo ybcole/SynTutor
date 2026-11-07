@@ -572,6 +572,17 @@ class GeneratorCanonicalEnvelopeTests(unittest.TestCase):
         self.assertEqual(result["tree"]["root"]["label"], "NP")
         self.assertEqual(result["tree"]["convention_profile"]["profile_id"], "V7-CORE")
 
+    def test_exact_gold_preserves_submitted_punctuation_and_rebases_character_offsets(self):
+        result = build_canonical_analysis(
+            self.lexical_analysis("the   clowns!"), chapter=7,
+            reference_records=[self.v7_record("ch7-spaced")],
+        )
+        self.assert_m1_envelope(result)
+        envelope = result["tree"]
+        self.assertEqual(envelope["sentence"], "the   clowns!")
+        self.assertEqual(envelope["tokens"][0]["char_span"], [0, 3])
+        self.assertEqual(envelope["tokens"][1]["char_span"], [6, 12])
+
     def test_conflicting_exact_gold_references_remain_unresolved(self):
         records = [
             self.v7_record("ch7-a", "NOM"),
