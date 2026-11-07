@@ -37,6 +37,23 @@ class StdlibParseTransportTests(unittest.TestCase):
         except HTTPError as error:
             return error.code, json.loads(error.read().decode("utf-8"))
 
+    def test_non_object_json_body_returns_400(self):
+        request = Request(
+            self.base_url + "/api/parse",
+            data=json.dumps(["not", "an", "object"]).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        try:
+            with urlopen(request, timeout=3) as response:
+                status = response.status
+                payload = json.loads(response.read().decode("utf-8"))
+        except HTTPError as error:
+            status = error.code
+            payload = json.loads(error.read().decode("utf-8"))
+        self.assertEqual(status, 400)
+        self.assertIn("JSON object", payload["error"])
+
     def test_chapter_and_variety_are_forwarded_to_shared_analysis(self):
         expected = {"br_analysis": {"status": "unresolved"}}
         with patch.object(stdlib_app, "build_payload", return_value=expected) as build:
