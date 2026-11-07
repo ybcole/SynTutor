@@ -569,8 +569,24 @@ class GeneratorCanonicalEnvelopeTests(unittest.TestCase):
         )
         self.assert_m1_envelope(result)
         self.assertEqual(result["tree"]["source"]["source_record_id"], "ch7-test")
+        self.assertEqual(result["tree"]["source"]["review_status"], "NOT_REVIEWED")
+        self.assertIn("image evidence only", result["tree"]["source"]["review_note"])
         self.assertEqual(result["tree"]["root"]["label"], "NP")
         self.assertEqual(result["tree"]["convention_profile"]["profile_id"], "V7-CORE")
+
+    def test_explicit_source_review_state_is_preserved(self):
+        record = self.v7_record("ch7-reviewed")
+        record["review_status"] = "INDEPENDENTLY_REVIEWED"
+        record["review_note"] = "Independent source review recorded."
+        result = build_canonical_analysis(
+            self.lexical_analysis("the clowns"), chapter=7,
+            reference_records=[record],
+        )
+        self.assert_m1_envelope(result)
+        self.assertEqual(
+            result["tree"]["source"]["review_status"], "INDEPENDENTLY_REVIEWED")
+        self.assertEqual(
+            result["tree"]["source"]["review_note"], "Independent source review recorded.")
 
     def test_exact_gold_preserves_submitted_punctuation_and_rebases_character_offsets(self):
         result = build_canonical_analysis(
