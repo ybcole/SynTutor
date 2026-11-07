@@ -41,7 +41,7 @@ The last request selects the declared free-analysis profile FINAL-D1. Chapter se
 - `parse.sentences` and `meta.sentence_count` preserve passage segmentation; `sentence_index` selects a sentence and `meta.target_sentence` reports its one-based position. Invalid and out-of-range indexes return HTTP 400; the parser no longer silently clamps to the last sentence.
 - `cambridge_runtime` reports the fail-closed rule allow-list; `cambridge_evaluation` reports what was actually evaluated. Neither field re-labels the legacy matrix verdict as a Cambridge verdict.
 
-Source fixture provenance is retained. An IMG marker is evidence of transcription from an image, not by itself independent review or human approval.
+Source fixture provenance is retained. Imported source envelopes preserve an explicit valid source `review_status`; if none is recorded, the importer sets `NOT_REVIEWED` and adds a review note. An IMG marker is evidence of transcription from an image, not by itself independent review or human approval. Exact lexical matches also retain the user's exact submitted sentence (including punctuation/spacing) and rebase canonical token character offsets onto that request text; if this cannot be done monotonically, the result stays unresolved.
 
 ## Canonical schema compatibility — resolved in this continuation
 
