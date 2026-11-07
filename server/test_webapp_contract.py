@@ -61,7 +61,7 @@ class FlaskParseContractTests(unittest.TestCase):
         self.assertEqual(response.get_json(), expected)
         build.assert_called_once_with("A sentence.", sentence_index=0,
                                       convention_version="V10", chapter=None,
-                                      appendix_nom=None)
+                                      appendix_nom=None, variety=None)
 
     def test_chapter_selects_its_convention_and_is_forwarded(self):
         expected = {"br_analysis": {"status": "unresolved"}}
@@ -91,7 +91,23 @@ class FlaskParseContractTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         build.assert_called_once_with("A sentence.", sentence_index=0,
                                       convention_version="V7", chapter=7,
-                                      appendix_nom=True)
+                                      appendix_nom=True, variety=None)
+
+    def test_variety_is_forwarded_and_trimmed(self):
+        with patch("webapp.build_payload", return_value={"br_analysis": {"status": "unresolved"}}) as build:
+            response = self.client.post("/api/parse", json={
+                "text": "A sentence.", "chapter": 2, "variety": " AmE "
+            })
+        self.assertEqual(response.status_code, 200)
+        build.assert_called_once_with("A sentence.", sentence_index=0,
+                                      convention_version="V2", chapter=2,
+                                      appendix_nom=None, variety="AmE")
+
+    def test_empty_variety_returns_400(self):
+        response = self.client.post("/api/parse", json={
+            "text": "A sentence.", "variety": "   "
+        })
+        self.assertEqual(response.status_code, 400)
 
     def test_parser_failure_returns_422(self):
         with patch("webapp.build_payload", side_effect=ParseFailure("No sentence found")):
