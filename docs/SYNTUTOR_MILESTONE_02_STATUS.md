@@ -80,7 +80,7 @@ Do not start Milestone 03 or downstream work that depends on complete canonical 
 **Continuation branch:** `feature/milestone-02-completion-2026-11-07`  
 **Draft PR:** [#30](https://github.com/ybcole/SynTutor/pull/30), targeting `main`, unmerged  
 **Most recent successful CI baseline:** [run #35](https://github.com/ybcole/SynTutor/actions/runs/42346333169), from earlier implementation commit `408ed2fab5abec634177bb462f0f48605e546d9e`  
-**Current verification state:** no successful test execution on the newer current branch head.
+**Current branch head at this report update:** `2b0e73caef146de1f78cc4b4e30165bed241e05d`. **Current verification state:** no successful test execution on the newer current branch head.
 
 ### 1. Files inspected
 
@@ -94,7 +94,7 @@ Do not start Milestone 03 or downstream work that depends on complete canonical 
 ### 2. Files changed on this continuation branch
 
 **Implementation and contracts**
-- `server/burton_roberts.py` — API canonical-envelope assembly from exact eligible IMG source references, conflict handling, importer/validator failure handling, and raw parser diagnostic retention.
+- `server/burton_roberts.py` — API canonical-envelope assembly from exact eligible IMG source references, conflict handling, importer/validator failure handling, raw parser diagnostic retention, default NOT_REVIEWED provenance when source review is not explicit, and exact request-sentence/token-offset rebasing.
 - `server/api.py` — one canonical M1 `br_analysis.tree` output, chapter/free-profile enforcement, selected Cambridge variety, separate Cambridge evaluator output, corrected analysis through the same normalizer.
 - `server/br_tree.py` — Chapter 7 core/Appendix D1 source-reference separation and punctuation alignment.
 - `server/parse_engine.py` — strict sentence-index range checking; it no longer silently clamps an out-of-range index.
