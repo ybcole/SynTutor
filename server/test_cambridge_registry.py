@@ -60,7 +60,7 @@ class CambridgeRegistryTests(unittest.TestCase):
         result = load_runtime_registry(self.root)
         self.assertEqual(result["active_rules"], [])
         self.assertEqual(result["diagnostics"][0]["code"], "RULE_NOT_RUNTIME_ELIGIBLE")
-        self.assertIn("unresolved B-R crosswalk", result["diagnostics"][0]["message"])
+        self.assertIn("unresolved or invalid B-R crosswalk", result["diagnostics"][0]["message"])
 
     def test_rule_without_a_machine_readable_runtime_check_is_blocked(self):
         self.add_rule("same")
@@ -74,7 +74,7 @@ class CambridgeRegistryTests(unittest.TestCase):
                       result["diagnostics"][0]["message"])
 
     def test_fully_reviewed_allow_list_entry_is_eligible(self):
-        self.add_rule("compatible")
+        self.add_rule("same")
         result = load_runtime_registry(self.root)
         self.assertEqual(result["active_rule_ids"], ["TEST-001"])
         self.assertEqual(result["active_rules"][0]["runtime_check"]["kind"],
