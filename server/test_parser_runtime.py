@@ -111,7 +111,7 @@ class ParserBackedRuntimeTests(unittest.TestCase):
         self.assertEqual(corrected_result["status"], "normalized", corrected_result)
         self.assertEqual(corrected_result["tree"]["sentence"], corrected)
         self.assertEqual(list(M1_VALIDATOR.iter_errors(corrected_result["tree"])), [])
-        self.assertTrue(payload["summary"]["correction"]["alignment"]["operations"])
+        self.assertTrue(payload["summary"]["correction"]["alignment"]["edits"])
 
 
 if __name__ == "__main__":
