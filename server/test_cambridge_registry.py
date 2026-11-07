@@ -19,13 +19,14 @@ class CambridgeRegistryTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
-    def add_rule(self, mapping_relation="compatible"):
+    def add_rule(self, mapping_relation="same"):
         rule = {
             "id": "TEST-001",
             "rule_type": "constraint",
+            "scope": "sentence",
             "status": "APPROVED",
             "sources": [{"book": "Cambridge Grammar", "pages": [51]}],
-            "burton_roberts_mapping": [{"relation": mapping_relation}],
+            "burton_roberts_mapping": [{"br_concept": "test concept", "relation": mapping_relation}],
             "runtime_check": {
                 "kind": "forbidden_token_sequences",
                 "forbidden_sequences": [["very", "unique"]],
@@ -62,7 +63,7 @@ class CambridgeRegistryTests(unittest.TestCase):
         self.assertIn("unresolved B-R crosswalk", result["diagnostics"][0]["message"])
 
     def test_rule_without_a_machine_readable_runtime_check_is_blocked(self):
-        self.add_rule("compatible")
+        self.add_rule("same")
         path = self.root / "grammar" / "rules" / "test.json"
         rule = json.loads(path.read_text(encoding="utf-8"))[0]
         rule.pop("runtime_check")
