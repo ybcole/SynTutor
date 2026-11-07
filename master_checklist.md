@@ -40,7 +40,7 @@ Use this as the project sign-off register. Mark a box only when there is evidenc
 - [x] Add gold-tree tests using the B-R chapter JSONs.
 - [ ] Add Cambridge minimal-pair and constraint tests.
 - [x] Add regression tests for the legacy error corpus.
-- [ ] Define CoLA's advisory role and prevent it from inventing rule explanations.
+- [x] Define CoLA's advisory role and prevent it from inventing rule explanations.
 - [x] Implement a shared normalized analysis payload.
 - [ ] Verify full sentence and multi-sentence handling.
 - [ ] Add performance/error/fallback behavior for parser and normalizer failures.
@@ -283,6 +283,6 @@ The three boxes marked above are supported by code and focused tests: the API re
 
 The continuation corrects shared API profile routing across Flask, stdlib, and hosted entry points; removes the competing second canonical-analysis path; separates V7 core and Appendix D1 source-reference matching; adds profile/multi-sentence API contract tests and CoLA advisory-role tests; and expands CI to include the B-R importer suite and read-only 252-record audit. `docs/syntax-generator-api.md` documents the active contract and unsupported states.
 
-The first CI run, [42346139502](https://github.com/ybcole/SynTutor/actions/runs/42346139502), failed in the expanded test stage. The failures identified an accidentally commented-out narration initialization and test isolation/fixture-profile issues. These have been corrected on the branch. The retry workflow result is pending and must be recorded before changing any new checklist boxes. Do not interpret this log as evidence that the retry passed.
+The first expanded CI runs surfaced test and integration defects; these were corrected on the branch. Final run [42346333169](https://github.com/ybcole/SynTutor/actions/runs/42346333169) passed all workflow steps: 46 isolated tests, 24 canonical gold-import tests, the 252-record importer audit (203 normalized, 49 unresolved, expected-count check passed), all 11 B-R validators, legacy licensing/correction regressions, and JSON schema validation. CoLA's advisory-only checklist box is now checked on the basis of its passing contract tests. The remaining unchecked boxes are not satisfied by this model-free run.
 
-The remaining unchecked criteria include source-grounded generalized V3–V10 mapping, a Cambridge sentence-level evaluator with minimal-pair/exception tests, CoLA role verification pending the retry, real model-backed parser integration and full/multi-sentence runtime checks, and performance/fallback verification. Exact book edition/page metadata also remains open. No database/user-progress migration or downstream milestone work was performed.
+The remaining unchecked criteria include source-grounded generalized V3–V10 mapping, a Cambridge sentence-level evaluator with minimal-pair/exception tests, real model-backed parser integration and full/multi-sentence runtime checks, and performance/fallback verification. The live API output schema also remains to be reconciled with the M1-approved tree-envelope schema; passing tests currently validate the runtime wrapper schema and importer envelope separately. Exact book edition/page metadata also remains open. No database/user-progress migration or downstream milestone work was performed.
