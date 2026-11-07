@@ -72,7 +72,10 @@ def parse():
     data = request.get_json(silent=True)
     if data is None and raw:
         return jsonify({'error': 'invalid request payload'}), 400
-    data = data or {}
+    if data is None:
+        data = {}
+    if not isinstance(data, dict):
+        return jsonify({'error': 'request payload must be a JSON object'}), 400
     text = (data.get('text') or '').strip()
     if not text:
         return jsonify({'error': 'empty input',
