@@ -18,6 +18,8 @@ An explainable AI tutoring system for English phrase-structure syntax: parse a
 sentence into a constituency tree and read deterministic, rule-based
 explanations for every relationship (spaCy + benepar + rule-matrix XAI).
 
+Current project status: [M1–M3 acceptance and M4 handoff](docs/reports/milestones-01-03-acceptance-2026-11-08.md). Reviewed book evidence is separate from legacy diagnostic feedback; unsupported canonical analyses remain unresolved.
+
 Run locally:
 
 ```

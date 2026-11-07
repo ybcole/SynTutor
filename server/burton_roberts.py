@@ -16,8 +16,10 @@ import json
 import re
 from typing import Any
 
-SCHEMA_VERSION = "1.0.0"
+SCHEMA_VERSION = "1.1.0"
+SUPPORTED_SCHEMA_VERSIONS = {"1.0.0", SCHEMA_VERSION}
 BOOK_TITLE = "Burton-Roberts, Analysing Sentences"
+BOOK_EDITION = "3rd edition (Pearson Education, 2011; ISBN 9781408233740)"
 _EVIDENCE = {"IMG", "TXT", "DERIVED_FROM_INSTRUCTIONS", "IMG_ANOMALY",
              "NEEDS_REVIEW", "UNCERTAIN"}
 _REVIEW = {"NOT_REVIEWED", "INDEPENDENTLY_REVIEWED", "HUMAN_APPROVED", "REJECTED"}
@@ -298,7 +300,7 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
         "sentence": sentence,
         "tokens": tokens,
         "convention_profile": profile,
-        "source": {"book": BOOK_TITLE, "chapter": 2,
+        "source": {"book": BOOK_TITLE, "edition": BOOK_EDITION, "chapter": 2,
                    "evidence_status": "NEEDS_REVIEW"},
         "root": root_node,
         "movement": [],
@@ -602,7 +604,7 @@ def align_correction(original: str, corrected: str,
 
 
 def _tree_words(node: dict[str, Any]) -> list[str]:
-    if node.get("gap") is True:
+    if node.get("gap") is True or node.get("empty") is True:
         return []
     if "word" in node:
         if node.get("ellipsis") or node.get("elided") or node.get("word") == "...":
@@ -627,16 +629,18 @@ def _align_words_to_sentence(words: list[str], sentence: str | None) -> tuple[li
     errors = []
     cursor = 0
     sentence = sentence or ""
+    search_sentence = sentence.replace("’", "'")
     for i, word in enumerate(words):
+        search_word = word.replace("’", "'")
         if not sentence:
             tokens.append({"index": i, "text": word, "char_span": [0, 0]})
             continue
         found = None
-        for match in re.finditer(re.escape(word), sentence[cursor:], re.IGNORECASE):
+        for match in re.finditer(re.escape(search_word), search_sentence[cursor:], re.IGNORECASE):
             pos = cursor + match.start()
             end = cursor + match.end()
             has_word_chars = any(ch.isalnum() or ch == "_" for ch in word)
-            left_ok = (not has_word_chars or pos == 0
+            left_ok = (search_word.startswith("'") and pos == cursor or not has_word_chars or pos == 0
                        or not (sentence[pos - 1].isalnum() or sentence[pos - 1] == "_"))
             right_ok = (not has_word_chars or end == len(sentence)
                         or not (sentence[end].isalnum() or sentence[end] == "_"))
@@ -738,6 +742,9 @@ def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: 
         out = {"id": node_id, "label": str(raw.get("label", "")),
                "triangle": True, "words": words,
                "token_span": [start, cursor[0]]}
+        if not raw.get("label"):
+            out.pop("label", None)
+            out["unlabelled"] = True
         if raw.get("index") is not None:
             out["index"] = raw["index"]
         if "..." in raw.get("words", []):
@@ -745,21 +752,29 @@ def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: 
         return _preserve_source_node_metadata(out, raw)
 
     if raw.get("elided") and "word" not in raw:
-        symbol = raw.get("symbol", "unspecified")
-        raise ValueError(
-            f"source elided-element marker {symbol!r} has no lexical word; "
-            "canonical v1.0.0 only represents elided terminals with an explicit word"
-        )
+        if raw.get("symbol") != "E":
+            raise ValueError("unknown non-lexical elision symbol")
+        return _preserve_source_node_metadata({
+            "id": node_id, "empty": True, "label": "E", "empty_role": "ellipsis",
+            "token_span": [cursor[0], cursor[0]],
+        }, raw)
 
     label = raw.get("label")
     children_raw = raw.get("children")
     if not isinstance(label, str) or not label:
         raise ValueError("gold branch node is missing a label")
+    if children_raw == [] and label in {"DET", "C1"}:
+        return _preserve_source_node_metadata({
+            "id": node_id, "empty": True, "label": label,
+            "empty_role": {"DET": "determiner", "C1": "complementiser"}[label],
+            "token_span": [cursor[0], cursor[0]],
+        }, raw)
     if not isinstance(children_raw, list) or not children_raw:
         raise ValueError(f"gold branch {label!r} has no children")
     children = [_build_gold_node(child, tokens, cursor, f"{node_id}-{i}", notes)
                 for i, child in enumerate(children_raw)]
-    overt = [child.get("token_span") for child in children if child.get("token_span")]
+    overt = [child.get("token_span") for child in children
+             if child.get("token_span") and not child.get("empty")]
     span = [min(item[0] for item in overt), max(item[1] for item in overt)] if overt else None
     out = {"id": node_id, "label": label, "children": children}
     if span is not None:
@@ -830,7 +845,7 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
                 "evidence only and does not establish independent review or human approval."
             )
     source = {
-        "book": BOOK_TITLE, "chapter": chapter,
+        "book": BOOK_TITLE, "edition": BOOK_EDITION, "chapter": chapter,
         "evidence_status": record.get("status") if record.get("status") in _EVIDENCE else "NEEDS_REVIEW",
         "review_status": review_status,
         "review_note": str(record.get("review_note") or default_review_note),
@@ -959,8 +974,8 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
     unknown_envelope = sorted(set(envelope) - allowed_envelope)
     if unknown_envelope:
         errors.append("unsupported envelope field(s): " + ", ".join(unknown_envelope))
-    if envelope.get("schema_version") != SCHEMA_VERSION:
-        errors.append(f"schema_version must be {SCHEMA_VERSION}")
+    if envelope.get("schema_version") not in SUPPORTED_SCHEMA_VERSIONS:
+        errors.append(f"schema_version must be one of {sorted(SUPPORTED_SCHEMA_VERSIONS)}")
     if not isinstance(envelope.get("tree_id"), str) or not envelope.get("tree_id"):
         errors.append("tree_id must be a non-empty string")
     profile = envelope.get("convention_profile")
@@ -1027,7 +1042,7 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
     node_kinds: dict[str, str] = {}
     node_indices: dict[str, int | None] = {}
     covered: list[int] = []
-    def walk(node: Any, path: str) -> tuple[int, int] | None:
+    def walk(node: Any, path: str, parent_label: str | None = None) -> tuple[int, int] | None:
         if not isinstance(node, dict):
             errors.append(f"{path} must be a node object")
             return None
@@ -1046,9 +1061,27 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
             else:
                 ids.add(node_id)
         kind = ("terminal" if "word" in node else "gap" if node.get("gap") is True
+                else "empty" if node.get("empty") is True
                 else "triangle" if node.get("triangle") is True else "branch")
         if node_id is not None and isinstance(node_id, str):
             node_kinds[node_id] = kind
+        if node.get("empty") is True:
+            if envelope.get("schema_version") != "1.1.0":
+                errors.append(f"{path} zero-word nodes require schema v1.1.0")
+            unknown = set(node) - {"id", "empty", "label", "empty_role", "token_span", "source_refs", "notes"}
+            label = node.get("label")
+            roles = {"DET": ("determiner", 7), "C1": ("complementiser", 9), "E": ("ellipsis", 5)}
+            role, introduced = roles.get(label, (None, 99))
+            if unknown or role is None or node.get("empty_role") != role:
+                errors.append(f"{path} unsupported empty-category shape or role")
+            if chapter < introduced:
+                errors.append(f"{path} empty {label} is not introduced in this chapter")
+            span = node.get("token_span")
+            if not (isinstance(span, list) and len(span) == 2
+                    and all(isinstance(value, int) and not isinstance(value, bool) for value in span)
+                    and 0 <= span[0] == span[1] <= len(tokens)):
+                errors.append(f"{path} empty node must have an in-range zero-width span")
+            return None
         if "word" in node:
             unknown = sorted(set(node) - {"id", "word", "pos", "elided", "token_span", "source_refs", "notes"})
             if unknown:
@@ -1091,14 +1124,19 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
                 node_indices[node_id] = index
             return None
         if "triangle" in node or "words" in node:
-            unknown = sorted(set(node) - {"id", "label", "triangle", "words", "token_span", "index", "source_refs", "notes"})
+            unknown = sorted(set(node) - {"id", "label", "unlabelled", "triangle", "words", "token_span", "index", "source_refs", "notes"})
             if unknown:
                 errors.append(f"{path} triangle has unsupported field(s): " + ", ".join(unknown))
         if node.get("triangle") is True:
             if "children" in node or "gap" in node or "word" in node:
                 errors.append(f"{path} triangle cannot also be a branch, terminal or gap")
             label = node.get("label")
-            if not isinstance(label, str) or not label:
+            if node.get("unlabelled") is True:
+                if label is not None or envelope.get("schema_version") != "1.1.0":
+                    errors.append(f"{path} unlabelled triangle requires v1.1.0 and no label")
+                if chapter < 9 or parent_label != "C2":
+                    errors.append(f"{path} unlabelled triangle is only licensed under C2 from V9")
+            elif not isinstance(label, str) or not label:
                 errors.append(f"{path}.label must be non-empty")
             else:
                 intro = _LABEL_INTRODUCED.get(label)
@@ -1178,7 +1216,7 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
             return None
         child_spans = []
         for i, child in enumerate(children):
-            span = walk(child, f"{path}.children[{i}]")
+            span = walk(child, f"{path}.children[{i}]", label)
             if span:
                 child_spans.append(span)
         if not child_spans:

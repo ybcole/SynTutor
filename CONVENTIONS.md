@@ -19,7 +19,7 @@
    phrase-marker convention.
 2. **Every tree carries a `convention_version`** (V1–V10, §1). A tree is drawn with the conventions of the chapter it appears in. **Never "upgrade" an early-chapter tree to later conventions**, and never use a later convention in an earlier chapter (e.g. no `NOM` before Ch7, no `S′` before Ch6).
 3. **Functions are not nodes.** Subject, direct object, adjunct, etc. are *read off* tree positions (§6). They are never drawn as labels in a phrase marker (Ch2 p.30; Ch5 p.88).
-4. **Triangles are legitimate.** A triangle means "internal structure not analysed here." Use triangles exactly where the book does (the exercise text usually says which constituents to triangle). A triangle node must still carry its category label.
+4. **Triangles are legitimate.** A triangle means "internal structure not analysed here." Use triangles exactly where the book does (the exercise text usually says which constituents to triangle). A triangle normally carries its category label; Chapter 9 explicitly permits an unlabelled wh triangle under C2. Preserve that omission rather than inferring a label.
 5. **Gradable analyses vs. alternatives:** some exercises have more than one accepted analysis (§9). Store them in `accepted_alternatives`, don't pick one silently.
 6. **Evidence grading:** every convention below is tagged `[IMG]` (checked against the book's page images) or `[TXT]` (taken from the book's text only; shape of the tree not yet visually checked). For `[TXT]` items, transcribe from the page image before using them as gold trees.
 7. **Every explanation shown to a learner must be source-grounded (see §14).**
@@ -37,8 +37,8 @@
 
 | Ver. | Chapter | What the trees look like from here on |
 |---|---|---|
-| **V1** | Ch1 (p.1) | No categories. Top node can be `Sentence`; other phrase nodes are unlabelled or lettered `PHRASE-a/b/c`. Words are direct children of their phrase. Triangles introduced. |
-| **V2** | Ch2 (p.24) | Top split is `S → NP VP` (subject/predicate). Only `S`, `NP`, `VP` labels. Everything else still triangle or `PHRASE-x`. |
+| **V1** | Ch1 (p.6) | No categories. Top node can be `Sentence`; other phrase nodes are unlabelled or lettered `PHRASE-a/b/c`. Words are direct children of their phrase. Triangles introduced. |
+| **V2** | Ch2 (pp.24–45; categories pp.29–30) | The p.24 introductory `Sentence` display is retained. The categorical top split is `S → NP VP` (subject/predicate). Only `S`, `NP`, `VP` labels. Everything else still triangle or `PHRASE-x`. |
 | **V3** | Ch3 (p.46) | Lexical + phrasal categories: `N, NP, A, AP, DEG, Adv, AdvP, P, PP`; `name` / `pronoun` words; co-ordination. Internal NP nodes are still **unlabelled/lettered** (no `NOM` yet). |
 | **V4** | Ch4 (p.67) | `V` appears, with **sub-categorisation features**: `[trans] [intrans] [ditrans] [intens] [complex] [prep]`. Complements are sisters of V inside VP. |
 | **V5** | Ch5 (p.87) | **Two levels of VP**: adjunct adverbials are sisters of VP inside a higher VP. S-adverbials are sisters of S inside a higher S. `Prt`, `[phrasal]`, ellipsis `E`. |
@@ -487,7 +487,7 @@ Conclusion: **lesson gold trees must be authored from the book**; the parser can
 - [ ] No functions drawn as nodes.
 - [ ] Every tree's leaves equal its sentence's words, in order (gaps/elided aside).
 - [ ] Every node except the root has exactly one mother.
-- [ ] Triangles only where the book (or the exercise instruction) uses them; each has a label.
+- [ ] Triangles only where the book (or the exercise instruction) uses them; each has a label except the source-permitted unlabelled wh triangle under C2 (V9+).
 - [ ] Ch5+: adjuncts are sisters of VP, complements are sisters of V.
 - [ ] Ch6+: auxiliaries head a VP and take a VP complement; tense feature only on the first verb.
 - [ ] Ch7+: NP is `DET NOM` unless pronoun/name; NOM count = modifier count.
@@ -577,3 +577,9 @@ The 111 rules / 210 explanations in the existing engine are **not** book-sourced
 - Fail the build if any explanation lacks `source.chapter`, `source.page`, `source.kind`, or a known `concept_id`.
 - Fail if `source.page` is outside the chapter's printed page range (Ch1: 6-23).
 - Fail if `text` shares a run of more than 12 consecutive words with the book (run against extracted chapter text).
+
+## Source verification update — 8 November 2026
+
+The supplied eleven chapters match the **third edition**, Pearson Education, copyright 2011, ISBN 9781408233740, printed pp.6–268. See `sources/burton_roberts/source_manifest_2026-11-08.json` and the scoped review receipt in `sources/burton_roberts/reviews/2026-11-08-conventions.json`. The older verification table above records the original transcription pass, not a claim that this review checked every image.
+
+The approved canonical schema is now 1.1.0. It distinguishes zero-word empty DET (V7+), C1 (V9+) and E ellipsis (V5+) from movement gaps and overt terminals. Unlabelled C2 triangles are explicit, not guessed category labels. Existing 1.0.0 envelopes remain accepted for the original subset. The Chapter 9 p.213 PP alternative is text-licensed, not a second printed figure. Source anomalies and review states remain visible.

@@ -1,5 +1,7 @@
 # SynTutor Milestone 02 — Progress and Verification Report
 
+
+**Current status supersedes this historical report:** [M1–M3 acceptance and M4 handoff](reports/milestones-01-03-acceptance-2026-11-08.md).
 ## Latest remediation status
 
 See [M2–M3 remediation](reports/milestones-02-03-remediation.md) for the current

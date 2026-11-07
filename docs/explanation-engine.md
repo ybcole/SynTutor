@@ -32,8 +32,9 @@ Schemas: `grammar/explanation_evidence.schema.json` and
 `grammar/explanation_templates.schema.json`. The versioned
 `grammar/explanation_templates.json` contains repository-owned `sources` and
 `templates` arrays. Production now contains the independently reviewed CLS-001 Cambridge teaching
-note citing printed pp. 44–45 of the 2002 edition. B-R structural templates and
-production grammaticality constraints are not enabled by that review. Other
+note citing printed pp. 44–45 of the 2002 edition, and a B-R basic S/NP/VP
+structural template citing pp.29–30 of the third edition. That template requires
+exact immediate NP/VP children. Production grammaticality constraints remain disabled. Other
 content remains gated; synthetic records exist only in tests.
 
 ## Publication gates
@@ -85,3 +86,5 @@ python scripts/audit_source_readiness.py
 
 A readiness report cannot independently review a source. It lists the records
 and evidence that still need review before milestone 04 can publish lessons.
+
+Legacy matrix verdicts/correction suggestions are diagnostic (`summary.verdict_authority = legacy_diagnostic`, `book_verified = false`). In Generator node cards, legacy linguistic explanation prose is withheld when the shared evidence response exists; reviewed claims are rendered separately under Book evidence. Builder graph/editor diagnostics remain separate. A teaching note never certifies an entire sentence.

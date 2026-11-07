@@ -31,9 +31,11 @@
 
 ## Milestone tracker
 
+Current acceptance: [8 November M1–M3 report](../reports/milestones-01-03-acceptance-2026-11-08.md). Earlier dated continuation entries below are historical. M4 may proceed; it is not complete.
+
 - [x] **01 — Architecture, repository audit, and source governance**
-- [ ] **02 — Syntax Generator and B-R tree normalization**
-- [ ] **03 — Shared, source-grounded explanation engine**
+- [x] **02 — Syntax Generator and B-R tree normalization**
+- [x] **03 — Shared, source-grounded explanation engine**
 - [ ] **04 — Lessons and curriculum**
 - [ ] **05 — Independent quiz system and question bank**
 - [ ] **06 — Syntax Builder integration**
@@ -600,3 +602,7 @@ Cambridge 2002 bibliographic evidence, and independent review of the existing
 CLS-001 teaching paraphrase. Generator and Builder can now render one real
 cited Cambridge classification note. Original B-R mappings, production
 constraints, and M2/M3 milestone boxes remain unchanged.
+
+## Milestones 02–03 acceptance — 8 November 2026
+
+The [current acceptance report](../reports/milestones-01-03-acceptance-2026-11-08.md) maps every applicable M2/M3 criterion to implementation and executed evidence. Source edition checks, scoped independent template review, schema 1.1.0 source-preservation changes, real parser/browser tests and fail-closed source gates resolve the earlier blockers. Both milestones are checked for their existing conservative supported/unresolved scope. No criterion was rewritten. Human sign-off is not inferred from AI review; the owner's recorded standing approval applies. M4 lesson/curriculum work can begin, with each new content record still requiring its source and publication review.

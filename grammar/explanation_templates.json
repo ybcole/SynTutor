@@ -28,6 +28,34 @@
       "independent_review": true,
       "reviewed_by": "Codex — independent second pass against supplied chapter PDF; original extraction predates this review",
       "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-CH02-P0029",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+      "printed_page": 29,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "crosswalk_status": "resolved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — source check of earlier CONVENTIONS paraphrase against supplied B-R page images; no human sign-off claimed",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-CH02-P0030",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+      "printed_page": 30,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "crosswalk_status": "resolved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — source check of earlier CONVENTIONS paraphrase against supplied B-R page images; no human sign-off claimed",
+      "reviewed_on": "2026-11-08"
     }
   ],
   "templates": [
@@ -46,6 +74,27 @@
       "review_status": "INDEPENDENTLY_REVIEWED",
       "independent_review": true,
       "reviewed_by": "Codex — independent second pass against supplied chapter PDF; original extraction predates this review",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-V2-S-NP-VP-V1",
+      "channel": "structural",
+      "node_label": "S",
+      "node_children_labels": [
+        "NP",
+        "VP"
+      ],
+      "source_ids": [
+        "BR-3E-CH02-P0029",
+        "BR-3E-CH02-P0030"
+      ],
+      "claim_key": "BR-BASIC-SUBJECT-PREDICATE",
+      "text": "S → NP VP. Subject = the NP immediately dominated by S; predicate = the VP immediately dominated by S.",
+      "deep_text": "The observed {label} node spans “{surface}”. This note describes the structural convention; it does not certify the sentence as grammatical.",
+      "claim_type": "classification",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — source check of earlier CONVENTIONS paraphrase against supplied B-R page images; no human sign-off claimed",
       "reviewed_on": "2026-11-08"
     }
   ]

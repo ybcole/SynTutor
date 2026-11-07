@@ -1,0 +1,88 @@
+{
+  "review_date": "2026-11-08",
+  "reviewer": "Codex",
+  "review_kind": "Independent AI second pass of earlier repository transcriptions/paraphrases against supplied PDF page images; no human sign-off claimed",
+  "source_manifest": "sources/burton_roberts/source_manifest_2026-11-08.json",
+  "edition": "3rd edition, Pearson Education, copyright 2011, ISBN 9781408233740",
+  "checks": [
+    {
+      "chapter": 2,
+      "printed_pages": [
+        24,
+        26,
+        29,
+        30
+      ],
+      "split_pdf_pages": [
+        1,
+        3,
+        6,
+        7
+      ],
+      "finding": "The introductory Sentence display on p.24 precedes NP/VP category introduction on pp.29\u201330. Preserve its original label; do not silently upgrade that display. Figure 33 and explanatory prose support the basic S/NP/VP structural template."
+    },
+    {
+      "chapter": 5,
+      "printed_pages": [
+        97
+      ],
+      "split_pdf_pages": [
+        11
+      ],
+      "finding": "Figure 46 has an E elision marker under NP. Represent it as zero-word ellipsis, not a movement gap or a fabricated lexical word."
+    },
+    {
+      "chapter": 7,
+      "printed_pages": [
+        143
+      ],
+      "split_pdf_pages": [
+        3
+      ],
+      "finding": "Plural/mass NP diagrams retain an empty DET position. Preserve the position without inventing a determiner."
+    },
+    {
+      "chapter": 9,
+      "printed_pages": [
+        203
+      ],
+      "split_pdf_pages": [
+        8
+      ],
+      "finding": "Subordinate wh diagrams have an empty C1 position. The printed present-tense feature on wasn\u2019t in figure 26 is retained with the pre-existing IMG_ANOMALY flag, not corrected by inference."
+    },
+    {
+      "chapter": 9,
+      "printed_pages": [
+        211
+      ],
+      "split_pdf_pages": [
+        16
+      ],
+      "finding": "Discussion 1(a) uses an unlabelled wh triangle under C2. Do not infer an NP label from its words."
+    },
+    {
+      "chapter": 9,
+      "printed_pages": [
+        213
+      ],
+      "split_pdf_pages": [
+        18
+      ],
+      "finding": "Discussion 3(a) explicitly permits a PP alternative to the printed AP gap analysis. The added PP tree is derived from that text, marked TXT and not represented as a separately printed diagram."
+    }
+  ],
+  "schema_decision": "Canonical 1.1.0 adds typed zero-word DET/C1/E nodes and explicit unlabelled C2 triangles from V9. Existing 1.0.0 envelopes remain supported but cannot contain the new node kinds.",
+  "content_decision": {
+    "template_id": "BR-V2-S-NP-VP-V1",
+    "origin": "Earlier CONVENTIONS.md basic S/NP/VP paraphrase, independently checked against printed pp.29\u201330; sentence-specific additions report observed labels/surfaces only.",
+    "applicability": "S with immediate children NP then VP; no full grammaticality verdict.",
+    "crosswalk": "B-R structural authority only; Cambridge terminology is a separate teaching note and does not rename S."
+  },
+  "not_certified": [
+    "Independent linguistic review of every one of the 252 corpus records",
+    "Arbitrary Penn-to-B-R V3\u2013V10 conversion",
+    "Full grammaticality or a production Cambridge constraint",
+    "Human approval or the physical printing number"
+  ]
+}

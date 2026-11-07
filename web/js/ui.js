@@ -112,6 +112,12 @@ export function renderNodeDetail(_session, detail, node) {
     head.appendChild(surf);
   }
   box.appendChild(head);
+  if (_session?.payload?.explanation_evidence || document.body.classList.contains('builder-active')) {
+    const authority = document.createElement('p');
+    authority.className = 'diagnostic-authority';
+    authority.textContent = 'Diagnostic/editor feedback. Reviewed book claims are shown separately under Book evidence.';
+    box.appendChild(authority);
+  }
 
   const chipRow = document.createElement('div');
   chipRow.className = 'nc-chiprow';
@@ -120,6 +126,9 @@ export function renderNodeDetail(_session, detail, node) {
   chip.textContent = detail.role;
   chipRow.appendChild(chip);
   box.appendChild(chipRow);
+
+  // Legacy matrix prose has not passed the book-source review gates.
+  if (_session?.payload?.explanation_evidence) return;
 
   if (detail.status === 'error') {
     const rm = detail.remediation || {
@@ -185,7 +194,7 @@ export function renderCorrection(summary) {
   dot.className = 'nc-dot ok';
   const name = document.createElement('span');
   name.className = 'nc-name';
-  name.textContent = 'Verified correction';
+  name.textContent = summary?.book_verified === false ? 'Diagnostic correction suggestion' : 'Verified correction';
   head.appendChild(dot);
   head.appendChild(name);
   box.appendChild(head);
@@ -194,7 +203,7 @@ export function renderCorrection(summary) {
   chipRow.className = 'nc-chiprow';
   const chip = document.createElement('span');
   chip.className = 'nc-chip';
-  chip.textContent = 'rule-checked';
+  chip.textContent = summary?.book_verified === false ? 'legacy matrix; book review pending' : 'rule-checked';
   chipRow.appendChild(chip);
   box.appendChild(chipRow);
 

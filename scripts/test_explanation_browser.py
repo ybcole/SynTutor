@@ -56,6 +56,18 @@ try:
         page.wait_for_selector('[data-shared-evidence]')
         generator = page.locator('[data-shared-evidence]').inner_text()
         assert ('Test structure' if fixture_mode else 'A sentence is the largest syntactic unit') in generator, generator
+        page.evaluate("""async () => {
+          const {renderNodeDetail, renderCorrection} = await import('/js/ui.js');
+          renderNodeDetail({payload:{explanation_evidence:{}}}, {
+            type:'NP',surface:'The birds',status:'valid',role:'diagnostic',
+            text:'UNREVIEWED_LINGUISTIC_CLAIM'
+          }, {});
+          if (document.querySelector('#explainNode').textContent.includes('UNREVIEWED_LINGUISTIC_CLAIM'))
+            throw new Error('Legacy prose escaped source gates');
+          renderCorrection({book_verified:false,correction:{original_sentence:'She go',corrected_sentence:'She goes'}});
+          if (document.querySelector('#explainNode').textContent.includes('Verified correction'))
+            throw new Error('Legacy correction presented as verified');
+        }""")
         page.click('#openCanonicalBuilder')
         page.click('#builderSnap')
         page.wait_for_selector('[data-shared-evidence]', timeout=30000)

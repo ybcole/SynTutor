@@ -210,6 +210,8 @@ def build_payload(text, sentence_index=0, convention_version=None,
             summary['correction'] = correction
             summary['corrected_sentence'] = correction['corrected_sentence']
 
+    summary["verdict_authority"] = "legacy_diagnostic"
+    summary["book_verified"] = False
     apply_plain_language(details, summary)
 
     # Preserve the raw Benepar tree separately; br_analysis is the one canonical
