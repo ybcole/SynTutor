@@ -223,8 +223,11 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
     if root.get("type") != "S":
         reasons.append({"code": "UNSUPPORTED_ROOT_LABEL",
                         "detail": f"Expected a B-R V2 S root; received {root.get('type')!r}."})
-    children = root.get("children") or []
-    child_labels = [c.get("type") for c in children if isinstance(c, dict)]
+    children = [
+        child for child in (root.get("children") or [])
+        if isinstance(child, dict) and not _is_parser_punctuation(child)
+    ]
+    child_labels = [c.get("type") for c in children]
     if len(children) != 2 or child_labels != ["NP", "VP"]:
         reasons.append({"code": "UNSUPPORTED_V2_S_SHAPE",
                         "detail": "V2 promotion requires exactly S → NP VP; extra clauses, punctuation or other branches remain unresolved."})
