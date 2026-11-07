@@ -23,7 +23,7 @@ jobs:
         run: python -m compileall -q server
       - name: Run isolated Syntax Generator tests
         working-directory: server
-        run: python -m unittest -v test_br_tree test_cambridge_registry test_cambridge_evaluator test_grammar_schema test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_detector
+        run: python -m unittest -v test_br_tree test_cambridge_registry test_cambridge_evaluator test_grammar_schema test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_stdlib_transport_contract test_detector
 
       - name: Run canonical gold-import regression tests
         run: python -m unittest -v server.test_burton_roberts
