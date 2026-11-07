@@ -295,17 +295,124 @@ def _unresolved_result(profile: dict[str, Any], reasons: list[dict[str, str]],
                             "token_count": len(tokens)}}
 
 
+def _matching_gold_records(sentence: str, profile: dict[str, Any],
+                            reference_records: Any = None) -> list[dict[str, Any]]:
+    """Find exact sentence/profile-matched image-verified B-R source records."""
+    from br_tree import _atoms, _source_yield, load_reference_records
+
+    expected = _atoms(sentence)
+    version = "V10" if profile.get("version") == "FINAL" else profile.get("version")
+    chapter = profile.get("chapter")
+    records = load_reference_records() if reference_records is None else reference_records
+    matches = []
+    for record in records:
+        if record.get("_chapter") != chapter or record.get("_convention_version") != version:
+            continue
+        if record.get("status") != "IMG" or record.get("correct") is False:
+            continue
+        if not isinstance(record.get("sentence"), str):
+            continue
+        if _atoms(record["sentence"]) != expected:
+            continue
+        if not isinstance(record.get("tree"), dict) or _source_yield(record["tree"]) != expected:
+            continue
+        if chapter == 7 and bool(record.get("appendix_nom", False)) != bool(profile.get("appendix_nom", False)):
+            continue
+        matches.append(record)
+    return matches
+
+
 def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = None,
                              appendix_nom: bool | None = None,
-                             correction: dict[str, Any] | None = None) -> dict[str, Any]:
-    """Build the stable API wrapper around a canonical tree or unresolved state."""
+                             correction: dict[str, Any] | None = None,
+                             reference_records: Any = None) -> dict[str, Any]:
+    """Build an API result whose normalized tree uses the M1-approved envelope.
+
+    Exact IMG-verified source trees take priority when sentence and convention
+    match. Conflicting source analyses remain unresolved. Otherwise the narrow
+    parser adapter is attempted; it currently supports only the V2 S → NP VP
+    shell with unanalyzed NP/VP triangles. Other Benepar structures fail closed.
+    """
     profile = convention_profile(chapter, appendix_nom)
-    result = normalize_benepar_candidate(analysis, profile)
+    sentence = str(analysis.get("sentence", ""))
+    matches = _matching_gold_records(sentence, profile, reference_records)
+    if matches:
+        signatures = {
+            json.dumps(
+                {"tree": row.get("tree"),
+                 "accepted_alternatives": row.get("accepted_alternatives") or []},
+                ensure_ascii=False, sort_keys=True,
+            )
+            for row in matches
+        }
+        if len(signatures) > 1:
+            result = {
+                "status": "unresolved", "tree": None,
+                "reasons": [{
+                    "code": "AMBIGUOUS_GOLD_REFERENCE",
+                    "detail": "Different IMG-verified B-R source analyses match this sentence and convention; no tree was selected.",
+                }],
+                "normalization_trace": [{
+                    "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
+                    "evidence": "The matching source records disagree structurally.",
+                }],
+            }
+        else:
+            imported = canonicalize_gold_record(
+                matches[0], {"chapter": int(profile["chapter"])})
+            if imported.get("status") != "normalized" or not isinstance(imported.get("tree"), dict):
+                result = {
+                    "status": "unresolved", "tree": None,
+                    "reasons": [{
+                        "code": "GOLD_SOURCE_IMPORT_UNRESOLVED",
+                        "detail": "; ".join(imported.get("errors") or ["The matching B-R source record could not be projected."]),
+                    }],
+                    "normalization_trace": [{
+                        "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
+                        "evidence": "The matching IMG record was retained as unresolved; no parser fallback was substituted.",
+                    }],
+                }
+            else:
+                envelope = imported["tree"]
+                # The declared free-analysis profile is FINAL-D1 (V10 plus the
+                # adopted Appendix NOM refinement), not merely a Chapter 10 lesson.
+                envelope["convention_profile"] = profile
+                validation = validate_canonical_tree(envelope)
+                if not validation["valid"]:
+                    result = {
+                        "status": "unresolved", "tree": None,
+                        "reasons": [{
+                            "code": "CANONICAL_GOLD_VALIDATION_FAILED",
+                            "detail": "; ".join(validation["errors"]),
+                        }],
+                        "normalization_trace": [{
+                            "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
+                            "evidence": "The imported source envelope failed the approved M1 canonical validator.",
+                        }],
+                    }
+                else:
+                    duplicate_ids = [str(row.get("id")) for row in matches[1:]]
+                    if duplicate_ids:
+                        envelope.setdefault("notes", []).append(
+                            "identical_gold_reference_records=" + ",".join(duplicate_ids))
+                    result = {
+                        "status": "normalized", "tree": envelope, "reasons": [],
+                        "normalization_trace": [{
+                            "rule_id": "EXACT_IMG_GOLD_REFERENCE",
+                            "evidence": "Exact lexical yield and convention-profile match to an IMG-verified Burton-Roberts source record.",
+                            "source_record_id": matches[0].get("id"),
+                        }],
+                        "validation": validation,
+                    }
+    else:
+        result = normalize_benepar_candidate(analysis, profile)
+
     result["convention_profile"] = profile
     result.setdefault("diagnostics", {
         "parser": "benepar_en3", "parse_string": analysis.get("parse_string"),
         "raw_candidate_tree": analysis.get("root"),
         "token_count": len(analysis.get("tokens") or []),
+        "canonical_schema": "docs/canonical-burton-roberts-tree.schema.json",
     })
     if correction:
         result["correction_alignment"] = align_correction(
