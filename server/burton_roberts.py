@@ -129,20 +129,35 @@ def _sentence_start(analysis: dict[str, Any]) -> int:
 
 
 def _candidate_tokens(analysis: dict[str, Any]) -> list[dict[str, Any]]:
-    """Convert parser token offsets to sentence-local canonical token records."""
+    """Convert lexical parser tokens to sentence-local canonical token records.
+
+    Phrase markers in the B-R fixtures omit terminal punctuation. Keep
+    punctuation in the original sentence and parser diagnostics, but do not
+    create artificial punctuation leaves in the canonical phrase marker.
+    """
     start = _sentence_start(analysis)
     result = []
-    for i, token in enumerate(analysis.get("tokens") or []):
+    for token in analysis.get("tokens") or []:
+        text = str(token.get("t", ""))
+        if not any(char.isalnum() or char == "_" for char in text):
+            continue
         char_start = int(token.get("start", start)) - start
         char_end = int(token.get("end", start)) - start
         result.append({
-            "index": i,
-            "text": str(token.get("t", "")),
+            "index": len(result),
+            "text": text,
             "char_span": [char_start, char_end],
             "pos": str(token.get("pos", "")),
             "parser_tag": str(token.get("tag", "")),
         })
     return result
+
+
+def _is_parser_punctuation(node: dict[str, Any]) -> bool:
+    if node.get("punct") is True:
+        return True
+    surface = str(node.get("surface", ""))
+    return bool(surface) and not any(char.isalnum() or char == "_" for char in surface)
 
 
 def _raw_leaves(node: dict[str, Any]) -> list[dict[str, Any]]:
@@ -195,13 +210,15 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
         return _unresolved_result(profile, reasons, trace, analysis, tokens)
 
     root = raw_root
-    while (root.get("type") in {"ROOT", "TOP"}
-           and isinstance(root.get("children"), list)
-           and len(root["children"]) == 1):
+    while root.get("type") in {"ROOT", "TOP"} and isinstance(root.get("children"), list):
+        semantic_children = [child for child in root["children"]
+                             if isinstance(child, dict) and not _is_parser_punctuation(child)]
+        if len(semantic_children) != 1:
+            break
         trace.append({"rule_id": "STRIP_SINGLE_PARSER_WRAPPER",
-                      "from": root.get("type"), "to": root["children"][0].get("type"),
-                      "evidence": "transport wrapper only; no linguistic node relabelled"})
-        root = root["children"][0]
+                      "from": root.get("type"), "to": semantic_children[0].get("type"),
+                      "evidence": "transport wrapper and sentence-final punctuation are not B-R phrase-marker nodes"})
+        root = semantic_children[0]
 
     if root.get("type") != "S":
         reasons.append({"code": "UNSUPPORTED_ROOT_LABEL",
@@ -241,7 +258,8 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
     # The parser's leaf order must be identical to the token stream produced by
     # spaCy. A different tokenization is not repaired by guessing.
     leaves = _raw_leaves(raw_root)
-    leaf_text = [str(x.get("surface", "")) for x in leaves]
+    leaf_text = [str(x.get("surface", "")) for x in leaves
+                 if not _is_parser_punctuation(x)]
     token_text = [t["text"] for t in tokens]
     if leaf_text != token_text:
         reasons.append({"code": "TOKEN_ALIGNMENT_MISMATCH",
