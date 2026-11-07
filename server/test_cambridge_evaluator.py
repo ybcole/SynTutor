@@ -67,12 +67,42 @@ class CambridgeEvaluatorTests(unittest.TestCase):
 
     @staticmethod
     def analysis(sentence):
+        import re
+        token_matches = list(re.finditer(r"\\w+(?:['’]\\w+)*", sentence))
+        tokens = [
+            {"index": index, "text": match.group(0),
+             "char_span": [match.start(), match.end()]}
+            for index, match in enumerate(token_matches)
+        ]
+        split = next((index for index, token in enumerate(tokens)
+                      if token["text"].casefold() == "is"), 2)
         return {
             "status": "normalized",
             "tree": {
                 "schema_version": "1.0.0",
+                "tree_id": "test-envelope",
                 "sentence": sentence,
-                "root": {"id": "root", "label": "S", "children": []},
+                "tokens": tokens,
+                "convention_profile": {
+                    "chapter": 2, "version": "V2", "profile_id": "V2",
+                },
+                "source": {
+                    "book": "Burton-Roberts", "chapter": 2,
+                    "evidence_status": "IMG",
+                },
+                "root": {
+                    "id": "root", "label": "S",
+                    "children": [
+                        {"id": "np", "label": "NP", "triangle": True,
+                         "words": [row["text"] for row in tokens[:split]],
+                         "token_span": [0, split]},
+                        {"id": "vp", "label": "VP", "triangle": True,
+                         "words": [row["text"] for row in tokens[split:]],
+                         "token_span": [split, len(tokens)]},
+                    ],
+                    "token_span": [0, len(tokens)],
+                },
+                "movement": [], "accepted_alternatives": [],
             },
         }
 
@@ -96,6 +126,16 @@ class CambridgeEvaluatorTests(unittest.TestCase):
                 self.assertEqual(result["findings"], [])
                 self.assertEqual(result["diagnostics"][0]["code"],
                                  "INVALID_SELECTED_VARIETY")
+
+    def test_malformed_normalized_envelope_is_rejected_before_evaluation(self):
+        invalid = self.analysis("The item is very unique.")
+        invalid["tree"]["root"]["label"] = "NOT-A-BR-LABEL"
+        result = evaluate_cambridge(invalid, {"active_rules": [{
+            "rule_id": "SHOULD-NOT-RUN", "rule_type": "constraint",
+        }]})
+        self.assertEqual(result["status"], "not_evaluated")
+        self.assertEqual(result["evaluated_rule_ids"], [])
+        self.assertEqual(result["diagnostics"][0]["code"], "CANONICAL_TREE_INVALID")
 
     def test_unresolved_b_r_analysis_skips_cambridge_evaluation(self):
         result = evaluate_cambridge(
