@@ -223,8 +223,9 @@ def token_metadata(nlp, doc, target, offset_starts, offset_ends):
 def analyze(text, sentence_index=0):
     """Full deterministic parse of ``text``, targeting one sentence.
 
-    ``sentence_index`` selects which spaCy sentence (0-based) to parse; it is
-    clamped to the detected sentence range. Returns the target sentence, its
+    ``sentence_index`` selects which spaCy sentence (0-based) to parse; negative
+    and out-of-range values raise ``ValueError`` rather than silently selecting
+    a different sentence. Returns the target sentence, its
     token metadata, the benepar parse string, the rebuilt node graph (root +
     id map), and the full sentence segmentation with character offsets
     (start/end) valid against the exact ``text`` string passed in.
