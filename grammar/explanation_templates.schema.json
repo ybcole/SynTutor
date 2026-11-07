@@ -160,6 +160,12 @@
               "constraint",
               "variety_restricted"
             ]
+          },
+          "node_children_labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [

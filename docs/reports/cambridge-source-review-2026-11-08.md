@@ -1,5 +1,7 @@
 # Cambridge source review — 8 November 2026
 
+
+**Current status supersedes this historical report:** [M1–M3 acceptance and M4 handoff](milestones-01-03-acceptance-2026-11-08.md).
 ## What is now established
 
 The twenty newly supplied files cover Cambridge Chapters 1–20 in 1,762 PDF pages.

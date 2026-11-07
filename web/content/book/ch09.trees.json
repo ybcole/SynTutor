@@ -1581,11 +1581,83 @@
       "accepted_alternatives": [
         {
           "wh_gap_category": "PP",
-          "note": "A PP such as in good spirits is also possible."
+          "note": "Text-licensed PP alternative on printed p.213. Only the unique AP gap category is replaced by PP in the printed base tree; this is not a separately printed diagram.",
+          "tree": {
+            "label": "S-dbar",
+            "children": [
+              {
+                "label": "C2",
+                "children": [
+                  {
+                    "word": "how"
+                  }
+                ]
+              },
+              {
+                "label": "S-bar",
+                "children": [
+                  {
+                    "label": "C1",
+                    "children": [
+                      {
+                        "word": "are"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "S",
+                    "children": [
+                      {
+                        "label": "NP",
+                        "children": [
+                          {
+                            "label": "pronoun",
+                            "children": [
+                              {
+                                "word": "you"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "label": "VP",
+                        "children": [
+                          {
+                            "label": "V",
+                            "features": [
+                              "intens",
+                              "pres"
+                            ],
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          },
+                          {
+                            "label": "PP",
+                            "children": [
+                              {
+                                "gap": true
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "evidence_status": "TXT"
         }
       ],
       "wh_gap_category": "AP",
-      "surface_from_tree": "how are you"
+      "surface_from_tree": "how are you",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "review_note": "Independent source check against supplied third-edition Chapter 9, printed p.213 (split PDF p.18), 2026-11-08. Main diagram and text-licensed PP alternative checked; no human sign-off is claimed."
     },
     {
       "id": "ch9-d3b",

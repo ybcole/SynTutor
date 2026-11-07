@@ -120,6 +120,8 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
         self.assertEqual(payload["meta"]["br_convention_version"], "V2")
         self.assertEqual(payload["cambridge_evaluation"]["status"], "no_runtime_rules")
         self.assertEqual(payload["cambridge_evaluation"]["evaluated_rule_ids"], [])
+        self.assertEqual(payload['summary']['verdict_authority'], 'legacy_diagnostic')
+        self.assertIs(payload['summary']['book_verified'], False)
 
     def test_unsupported_free_analysis_stays_explicitly_unresolved(self):
         with patch.object(api, "analyze", return_value=self.analysis()), \

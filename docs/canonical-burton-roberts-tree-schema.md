@@ -1,6 +1,6 @@
 # Canonical Burton-Roberts tree schema proposal — Milestone 01
 
-**Status:** Proposed, versioned contract for Milestone 02 implementation.  
+**Status:** Implemented, approved versioned contract; current output 1.1.0, legacy 1.0.0 accepted.
 **Compatibility:** Wrap and normalize the existing book tree records; do not rewrite their source data during Milestone 01.
 
 ## 1. Design goals
@@ -26,7 +26,7 @@ A tree record is wrapped in the following envelope:
 
 | Field | Type | Purpose |
 |---|---|---|
-| `schema_version` | string | Version of this canonical contract (proposal: `1.0.0`). |
+| `schema_version` | string | Version of this canonical contract (`1.1.0`; legacy `1.0.0` accepted). |
 | `tree_id` | string | Stable identifier for this analysis/fixture. |
 | `sentence` | string | Full input surface, including punctuation where present. |
 | `tokens` | array | Ordered token records with zero-based token index and character offsets. |
@@ -63,7 +63,7 @@ A terminal contains the lexical surface form. Optional `pos` is parser/source di
 
 `{ "label": "NP", "triangle": true, "words": ["those", "wildcats"], "index": 1 }`
 
-A triangle carries the category label and the unanalyzed words. It must not also contain `children`. It still contributes the overt words to token coverage and order. The optional non-negative `index` preserves Chapter 10 co-indexing when the source indexes an unanalyzed constituent.
+A triangle carries the category label and the unanalyzed words. In 1.1.0, a source-permitted wh triangle under C2 from V9 may instead omit `label` and carry `unlabelled: true`. This does not license arbitrary unlabelled constituents. It must not also contain `children`. It still contributes the overt words to token coverage and order. The optional non-negative `index` preserves Chapter 10 co-indexing when the source indexes an unanalyzed constituent.
 
 ### 3.4 Gap or covert element
 
@@ -169,3 +169,9 @@ The future validator must check:
 ```
 
 This example is a schema illustration based on the repository's Ch7 [3] gold record, not a new claim about the B-R source edition. The production schema may refine optional fields after the source/fixture review in Milestone 02; it must not silently change the principles above.
+
+## 1.1.0 source-backed extension and compatibility
+
+`{"empty":true,"label":"DET","empty_role":"determiner","token_span":[0,0]}` represents a zero-word source position. The only permitted pairs are DET/determiner (V7+), C1/complementiser (V9+) and E/ellipsis (V5+). These nodes never carry lexical words or movement-gap status. Their spans are in range and zero-width. Parent overt spans exclude them.
+
+The source receipt `sources/burton_roberts/reviews/2026-11-08-conventions.json` explains the printed figures. Unlabelled wh triangles also require 1.1.0. The JSON Schema recursively restricts 1.0.0 envelopes to the original node variants; the Python validator enforces the same version boundary. No stored user data migration occurs. Builder editing currently rejects the new variants before replacing the current workspace, pending M6 support.

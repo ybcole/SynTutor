@@ -161,6 +161,9 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
                 continue
             if node.get('label') != template['node_label']:
                 continue
+            expected_children = template.get('node_children_labels')
+            if expected_children is not None and [child.get('label') for child in node.get('children', [])] != expected_children:
+                continue
             facts = {'label': node.get('label', ''), 'surface': _surface(node),
                      'sentence': tree.get('sentence', ''), 'node_id': ident, 'rule_id': rule_id or ''}
             try:

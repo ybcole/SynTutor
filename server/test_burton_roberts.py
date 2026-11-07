@@ -482,7 +482,7 @@ class CanonicalHardeningTests(unittest.TestCase):
                             for note in verb.get("notes", [])))
 
 
-    def test_zero_word_elision_marker_is_unresolved_not_recast_as_a_gap(self):
+    def test_source_verified_zero_word_elision_is_preserved_and_not_a_gap(self):
         record = {
             "id": "ch5-46", "sentence": "William gave some bleach", "status": "IMG",
             "tree": {"label": "S", "children": [
@@ -495,9 +495,15 @@ class CanonicalHardeningTests(unittest.TestCase):
             ]},
         }
         result = canonicalize_gold_record(record, {"chapter": 5})
-        self.assertEqual(result["status"], "unresolved")
-        self.assertTrue(any("elided-element marker" in error for error in result["errors"]))
-        self.assertEqual(result["raw_tree"], record["tree"])
+        self.assertEqual(result["status"], "normalized", result.get("errors"))
+        node = result["tree"]["root"]["children"][1]["children"][1]["children"][0]
+        self.assertTrue(node["empty"])
+        self.assertEqual(node["label"], "E")
+        self.assertEqual(node["empty_role"], "ellipsis")
+        self.assertEqual(node["token_span"], [2, 2])
+        self.assertNotIn("gap", node)
+        self.assertNotIn("word", node)
+        self.assertEqual(result["tree"]["schema_version"], "1.1.0")
 
 
     def test_node_provenance_fields_require_string_arrays(self):

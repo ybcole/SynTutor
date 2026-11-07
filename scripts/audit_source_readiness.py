@@ -34,16 +34,30 @@ def readiness():
                                 source.get('edition') for source in rule.get('sources', []))})
     manifest_path = ROOT / 'sources/cambridge/source_manifest_2026-11-08.json'
     cambridge_basis = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
-    return {'cambridge_bibliographic_identity': {key: cambridge_basis.get(key) for key in ['book', 'edition', 'isbn13', 'publisher_frontmatter_url']},
-            'milestone_04_content_ready': bool(registry.get('active_rules')) and bool(reviewed),
+    br_path = ROOT / 'sources/burton_roberts/source_manifest_2026-11-08.json'
+    br_basis = json.loads(br_path.read_text()) if br_path.exists() else {}
+    structural = [template for template in reviewed if template.get('channel') == 'structural'
+                  and all(sources[ident]['book'] == 'B-R' for ident in template['source_ids'])]
+    cambridge = [template for template in reviewed if template.get('channel') == 'grammatical'
+                 and all(sources[ident]['book'] == 'Cambridge' for ident in template['source_ids'])]
+    ready = bool(structural) and bool(cambridge) and bool(br_basis) and bool(cambridge_basis)
+    return {'readiness_scope': 'Instructional source prerequisites for M4; not completion of lessons or runtime constraint coverage',
+            'br_bibliographic_identity': {key: br_basis.get(key) for key in ['book', 'edition', 'copyright_year', 'isbn13']},
+            'cambridge_bibliographic_identity': {key: cambridge_basis.get(key) for key in ['book', 'edition', 'isbn13', 'publisher_frontmatter_url']},
+            'milestone_04_content_ready': ready,
+            'runtime_constraint_coverage_ready': bool(registry.get('active_rules')),
+            'reviewed_structural_template_count': len(structural),
+            'reviewed_cambridge_template_count': len(cambridge),
             'runtime_enabled_rule_count': len(registry.get('active_rules', [])),
             'reviewed_template_count': len(reviewed),
             'source_rule_count': len(pending), 'rules': pending,
-            'required_external_evidence': [
-                'Confirm the B-R edition and printed-page references against its original supplied source; Cambridge bibliographic identity is now documented in the source manifest.',
-                'Independently review selected B-R structural records and any Cambridge constraints needed for publication; the reviewed CLS-001 teaching note does not enable constraints.',
-                'Review B-R structural teaching templates and any additional Cambridge templates before enabling them; one Cambridge terminology template is already reviewed.',
+            'required_external_evidence': [] if ready else ['Verified bibliography and reviewed starter templates from both B-R and Cambridge are required.'],
+            'publication_follow_up': [
+                'Review each lesson, worked example and additional template before publishing it in M4.',
+                'Enable grammaticality constraints only after source, scope, variety, exception and rule-specific test gates pass.',
+                'No production Cambridge runtime constraint is currently enabled; teaching notes do not determine a full grammaticality verdict.',
             ]}
+
 
 
 if __name__ == '__main__':

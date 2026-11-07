@@ -41,6 +41,13 @@ def registry():
 
 
 class ExplanationEvidenceTests(unittest.TestCase):
+    def test_structural_template_requires_its_specific_child_shape(self):
+        data = registry()
+        data['templates'][0]['node_children_labels'] = ['NP', 'VP']
+        self.assertEqual(explain_analysis(analysis(), registry=data)['status'], 'EXPLAINED')
+        data['templates'][0]['node_children_labels'] = ['VP', 'NP']
+        self.assertEqual(explain_analysis(analysis(), registry=data)['status'], 'NO_BOOK_BASIS')
+
     def test_reviewed_structural_template_is_node_specific_and_cited(self):
         result = explain_analysis(analysis(), registry=registry())
         self.assertEqual(result['status'], 'EXPLAINED')
@@ -163,9 +170,9 @@ class ExplanationEvidenceTests(unittest.TestCase):
     def test_production_has_no_synthetic_reviewed_sources(self):
         production = load_registry()
         self.assertTrue(production['sources'])
-        self.assertEqual([row['id'] for row in production['templates']], ['CGEL-CLS001-TEACHING-V1'])
+        self.assertEqual({row['id'] for row in production['templates']}, {'CGEL-CLS001-TEACHING-V1', 'BR-V2-S-NP-VP-V1'})
         for source in production['sources']:
-            self.assertTrue(source['id'].startswith('CGEL-2002-'))
+            self.assertTrue(source['id'].startswith(('CGEL-2002-', 'BR-3E-')))
             self.assertNotIn('synthetic', source['title'].casefold())
             self.assertTrue(source['independent_review'])
         receipt = json.loads((ROOT / 'sources/cambridge/reviews/2026-11-08-cls-001.json').read_text())
@@ -175,11 +182,14 @@ class ExplanationEvidenceTests(unittest.TestCase):
         rows = rules if isinstance(rules, list) else rules['rules']
         original = next(row for row in rows if row['id'] == 'CLS-001')
         self.assertEqual(production['templates'][0]['text'], original['statement'])
-        self.assertEqual({source['printed_page'] for source in production['sources']}, {44, 45})
+        self.assertEqual({source['printed_page'] for source in production['sources'] if source['book'] == 'Cambridge'}, {44, 45})
+        br_receipt = json.loads((ROOT / 'sources/burton_roberts/reviews/2026-11-08-conventions.json').read_text())
+        self.assertEqual(br_receipt['content_decision']['template_id'], production['templates'][1]['id'])
+        self.assertEqual({source['printed_page'] for source in production['sources'] if source['book'] == 'B-R'}, {29, 30})
         result = explain_analysis(analysis())
         self.assertEqual(result['status'], 'EXPLAINED')
         self.assertTrue(result['channels']['grammatical'])
-        self.assertEqual(result['channels']['structural'], [])
+        self.assertTrue(result['channels']['structural'])
         self.assertEqual(result['channels']['remediation'], [])
 
 

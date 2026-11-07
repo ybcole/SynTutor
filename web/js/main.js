@@ -1,3 +1,4 @@
+import { fromCanonicalEnvelope } from './syntax-builder.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { loadClerk, createSupabaseClient, currentUserEmail, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
 import { API_BASE } from './config.js';
@@ -675,6 +676,7 @@ function enterLessonsMode() {
 // Syntax Builder: the standalone node editor. No Grammar Tutor pipeline and
 // no diagnostics may fire while it owns the canvas.
 function enterBuilderMode(canonicalTree = null) {
+  if (canonicalTree) fromCanonicalEnvelope(canonicalTree); // preflight before clearing the current analysis
   teardownWorkspace();
   setQuizMode(false);
   setWorkspaceView('builder');
@@ -1687,6 +1689,7 @@ function setTreeAuthorityNotice(payload) {
   } else {
     notice.textContent = `Raw Benepar diagnostic candidate only — canonical B-R normalization is ${status}.${detail ? ` ${detail}` : ''}`;
   }
+  notice.textContent += ' Legacy verdicts are diagnostic; the reviewed evidence does not establish a full grammaticality verdict.';
   notice.hidden = false;
   document.querySelector('#openCanonicalBuilder')?.remove();
   if (status === 'normalized' && analysis?.tree) {
@@ -2271,8 +2274,8 @@ function handleNodeSelect(id) {
   const detail = payload.node_details[id];
   const node = payload.nodes[id];
   if (!node || !detail) return;
-  renderNodeDetail(session, detail, node);
-  renderEvidence(session?.payload?.explanation_evidence);
+  renderNodeDetail({ ...session, payload }, detail, node);
+  renderEvidence(payload?.explanation_evidence);
   // Keep the fresh detail card visible in the bottom-right explain pane
   // without yanking the rest of the workspace.
   document.querySelector('#explainNode')

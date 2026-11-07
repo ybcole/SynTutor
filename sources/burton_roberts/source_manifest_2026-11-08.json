@@ -1,0 +1,143 @@
+{
+  "book": "Analysing Sentences: An Introduction to English Syntax",
+  "author": "Noel Burton-Roberts",
+  "edition": "3rd edition",
+  "copyright_year": 2011,
+  "isbn13": "9781408233740",
+  "publisher": "Pearson Education / Longman",
+  "physical_printing": "not established; no printing number is inferred",
+  "bibliographic_evidence": [
+    {
+      "kind": "primary book title/copyright and contents pages, externally accessible reference copy",
+      "url": "https://docs.hoeit.edu.vn/NNA_25_108%20Tinchi/33.%20An%20introduction%20to%20English%20Grammar%20Morphology%20and%20Syntax/TLTK/Analysing%20Sentences%20An%20Introduction%20to%20English%20Syntax.pdf",
+      "basis": "Third Edition, 2011 copyright, ISBN, and distinguishing chapter starts 46/224/254 match supplied chapters."
+    },
+    {
+      "kind": "author institutional publication record",
+      "url": "https://eprints.ncl.ac.uk/157385",
+      "basis": "Third edition and ISBN verified; its 2010 publication metadata differs from the copyright leaf, so the copyright leaf supplies the cited 2011 year."
+    }
+  ],
+  "review_date": "2026-11-08",
+  "chapter_count": 11,
+  "total_pdf_pages": 263,
+  "files": [
+    {
+      "chapter": 1,
+      "filename": "Chapter 1 - Sentence structure - constituents.pdf",
+      "sha256": "67472228a43a7cc90017948ab953249813b65d8068137b41e87f0e4a53d2168a",
+      "pdf_pages": 18,
+      "printed_start": 6,
+      "printed_end": 23,
+      "unconfirmed_page_labels": [],
+      "textless_pages": []
+    },
+    {
+      "chapter": 2,
+      "filename": "Chapter 2 - Sentence structure - functions.pdf",
+      "sha256": "9e8dac474b4cddf5111f671ebd2210efcb02437eafdd9d14fb37407421b63c6c",
+      "pdf_pages": 22,
+      "printed_start": 24,
+      "printed_end": 45,
+      "unconfirmed_page_labels": [],
+      "textless_pages": []
+    },
+    {
+      "chapter": 3,
+      "filename": "Chapter 3 - Sentence structure - categories.pdf",
+      "sha256": "5731a990b39b4dbafe8ba23e2d59682c785774c56590ea185b3f4dd9f651babd",
+      "pdf_pages": 21,
+      "printed_start": 46,
+      "printed_end": 66,
+      "unconfirmed_page_labels": [],
+      "textless_pages": [],
+      "visually_confirmed_page_labels": [
+        {
+          "pdf_page": 10,
+          "printed_page": 55,
+          "reason": "Number omitted from extracted header/footer lines; inspected rendered page."
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "filename": "Chapter 4 - The basic Verb Phrase.pdf",
+      "sha256": "d63c3b1dbd7213c0cb3a0b668b560665fbf553f6593d263f927fe726cd75ffc8",
+      "pdf_pages": 20,
+      "printed_start": 67,
+      "printed_end": 86,
+      "unconfirmed_page_labels": [],
+      "textless_pages": []
+    },
+    {
+      "chapter": 5,
+      "filename": "Chapter 5 - Adverbials and other matters.pdf",
+      "sha256": "26dc648320879997a88024f6599b7235a807bcab6411b3ed430e38e650c5db3c",
+      "pdf_pages": 24,
+      "printed_start": 87,
+      "printed_end": 110,
+      "unconfirmed_page_labels": [],
+      "textless_pages": []
+    },
+    {
+      "chapter": 6,
+      "filename": "Chapter 6 - More on verbs - auxiliary VPs.pdf",
+      "sha256": "bd0e5c336df60a022b488a69874134161a2804f6da8181c33432532fbdf845e9",
+      "pdf_pages": 30,
+      "printed_start": 111,
+      "printed_end": 140,
+      "unconfirmed_page_labels": [],
+      "textless_pages": []
+    },
+    {
+      "chapter": 7,
+      "filename": "Chapter 7 - The structure of Noun Phrases.pdf",
+      "sha256": "94a036bab7e3b141c83e2c20c75ad913984716ffe641e55fc8284e978e2fbd6a",
+      "pdf_pages": 30,
+      "printed_start": 141,
+      "printed_end": 170,
+      "unconfirmed_page_labels": [],
+      "textless_pages": []
+    },
+    {
+      "chapter": 8,
+      "filename": "Chapter 8 - Sentence within sentences.pdf",
+      "sha256": "8e07345ad6e4003bfc14f4fbc1fe8b198bb9ccad940ff736249ff4b7680f3db9",
+      "pdf_pages": 25,
+      "printed_start": 171,
+      "printed_end": 195,
+      "unconfirmed_page_labels": [],
+      "textless_pages": []
+    },
+    {
+      "chapter": 9,
+      "filename": "Chapter 9 - Wh-clauses.pdf",
+      "sha256": "d78ac6e62d6502f332c4cc15677c1d27a6d0b4cfb88db651187e9e74a04ce33b",
+      "pdf_pages": 28,
+      "printed_start": 196,
+      "printed_end": 223,
+      "unconfirmed_page_labels": [],
+      "textless_pages": []
+    },
+    {
+      "chapter": 10,
+      "filename": "Chapter 10 - Non-finite clauses.pdf",
+      "sha256": "3dc4db20988a67a901a691972b3b8f7432006c1913655bc55ce03bfd6897468b",
+      "pdf_pages": 30,
+      "printed_start": 224,
+      "printed_end": 253,
+      "unconfirmed_page_labels": [],
+      "textless_pages": []
+    },
+    {
+      "chapter": 11,
+      "filename": "Chapter 11 - Languages, sentences and grammars.pdf",
+      "sha256": "213ffa3036f3ab76c4f7274e3147187716b0f48566bfcf867150589a38f00890",
+      "pdf_pages": 15,
+      "printed_start": 254,
+      "printed_end": 268,
+      "unconfirmed_page_labels": [],
+      "textless_pages": []
+    }
+  ]
+}

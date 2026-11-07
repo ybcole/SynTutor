@@ -397,7 +397,7 @@ export function fromCanonicalEnvelope(envelope) {
   const model = createModel();
   let x = 0;
   const walk = (node, parent = null, depth = 0) => {
-    if (depth > 80 || node.gap || node.elided) throw new Error('Unsupported canonical editor structure.');
+    if (depth > 80 || node.gap || node.elided || node.empty || node.unlabelled) throw new Error('Unsupported canonical editor structure.');
     let made;
     if ('word' in node) {
       made = addWord(model, node.word, x, depth * 70); x += 100;
