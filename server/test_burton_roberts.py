@@ -434,9 +434,10 @@ class CanonicalHardeningTests(unittest.TestCase):
         self.assertEqual(result["status"], "normalized", result.get("errors"))
         vp = result["tree"]["root"]["children"][1]
         verb = vp["children"][0]
+        terminal = verb["children"][0]
         self.assertEqual(vp["source_refs"], ["VP1"])
         self.assertTrue(any(note.startswith("source_node_metadata:multiword=")
-                            for note in verb.get("notes", [])))
+                            for note in terminal.get("notes", [])))
 
     def test_importer_preserves_gap_symbols_and_verb_type_metadata(self):
         gap_record = {
