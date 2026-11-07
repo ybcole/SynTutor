@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import re
 import threading
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 ROOT=Path(__file__).resolve().parents[1]
 COURSE=json.loads((ROOT/'web/content/lessons/course.json').read_text())
 OUT=Path('/tmp/syntutor-lessons-browser');OUT.mkdir(exist_ok=True)
@@ -41,6 +41,7 @@ try:
    view.locator('input[value="'+lesson['predict']['answer']+'"]').check()
    view.get_by_role('button',name='Continue →',exact=True).click()
    view.get_by_role('button',name='Continue →',exact=True).click()
+   expect(view.locator('.lesson-stepper [aria-current="step"]')).to_have_text('3. See it')
    assert view.locator('svg[role="img"]').count()==1
    view.locator('.lesson-sources').last.locator('summary').click()
    page.screenshot(path=str(OUT/f'{ident}-desktop.png'),full_page=True)
@@ -74,7 +75,7 @@ try:
       assert 'Try again.' in view.locator('.lesson-feedback.retry').inner_text()
      view.locator(f'input[value="{lesson[key]["answer"]}"]').check()
     view.get_by_role('button',name='Complete lesson · 15 XP once' if key=='exit' else 'Continue →',exact=True).click()
-   assert '15 lesson XP awarded' in view.locator('.lesson-save-status').inner_text()
+   expect(view.locator('.lesson-save-status')).to_contain_text('15 lesson XP awarded',timeout=10000)
    if lesson['lesson_id']=='br-11':assert view.locator('svg').count()==0,'Chapter 11 must remain text-only'
   page.evaluate("()=>import('/js/lessons-ui.js').then(m=>m.openLessons('br-01'))")
   view.get_by_role('button',name='Finish review — no extra XP',exact=True).click()
