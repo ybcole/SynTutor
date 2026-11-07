@@ -129,7 +129,7 @@ class CambridgeEvaluatorTests(unittest.TestCase):
 
     def test_malformed_normalized_envelope_is_rejected_before_evaluation(self):
         invalid = self.analysis("The item is very unique.")
-        invalid["tree"]["root"]["label"] = "NOT-A-BR-LABEL"
+        invalid["tree"]["root"]["children"][0]["label"] = "A"
         result = evaluate_cambridge(invalid, {"active_rules": [{
             "rule_id": "SHOULD-NOT-RUN", "rule_type": "constraint",
         }]})
