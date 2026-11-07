@@ -1,17 +1,18 @@
 # Syntax Generator API — Milestone 02
 
-**Status:** Implemented on `feature/milestone-02-syntax-generator-2026-11-07`; partial milestone, not release-approved.
+**Status:** In progress. The API exposes a canonical B-R analysis separately from the raw Benepar candidate. Unsupported mappings remain unresolved; the current live candidate adapter is intentionally narrow.
 
 ## Request
 
-`POST /api/parse` accepts the existing request fields:
+`POST /api/parse` accepts:
 
 | Field | Type | Meaning |
 |---|---|---|
-| `text` | string, required | Input passage or sentence. |
-| `sentence_index` | integer, optional | Zero-based target sentence; defaults to `0`. |
-| `chapter` | integer 1–10 or null, optional | B-R chapter convention to request. When omitted, use the declared `FINAL-D1` free-analysis profile. |
-| `appendix_nom` | boolean or null, optional | For Chapter 7, `true` explicitly selects the Appendix D1 refinement; omitted or `false` selects V7 core. In free analysis, the FINAL-D1 refinement is fixed and cannot be disabled. |
+| `text` | string, required | Input sentence or passage. |
+| `sentence_index` | integer, optional | Zero-based sentence to analyze; defaults to `0`. |
+| `chapter` | integer 1–10 or null, optional | Selects the chapter convention profile V1–V10. |
+| `convention_version` | string V1–V10, optional | Compatibility override. If `chapter` is also supplied, it must match `V{chapter}`. |
+| `appendix_nom` | boolean or null, optional | For Chapter 7, selects V7 core (`false`) or Appendix D1 (`true`). With no chapter, free analysis uses the declared FINAL-D1 profile and cannot disable the refinement. |
 
 Examples:
 
@@ -20,94 +21,74 @@ Examples:
 ```
 
 ```json
-{ "text": "The sad clowns", "chapter": 7, "appendix_nom": true }
+{ "text": "The students laugh", "chapter": 7, "appendix_nom": true }
 ```
 
 ```json
 { "text": "The students laugh" }
 ```
 
-The last request uses FINAL-D1. It will currently be unresolved by the live Benepar adapter because the project has not approved a source-backed mapping for the full V10 + D1 profile.
+The last request selects the declared free-analysis profile (FINAL-D1, represented by V10 in the candidate normalizer). Chapter selection and the Chapter 7 Appendix D1 refinement are forwarded through the Flask, stdlib, and hosted API entry points to the shared analysis function.
 
-## Response and compatibility
+## Response and authority
 
-The existing response properties remain available for the current browser renderer:
+- `tree` and `candidate_tree` retain the raw Benepar candidate for diagnostics and existing-client compatibility. They are not the canonical B-R tree.
+- `br_analysis` is the single canonical-analysis result used by the Generator API. Its `status` is `normalized` or `unresolved`; the raw parse remains separate.
+- `meta.tree_authority` identifies the split. `meta.br_profile_id`, `meta.br_convention_version`, `meta.br_chapter`, and `meta.br_appendix_nom` report the selected profile.
+- `parse.sentences` and `meta.sentence_count` preserve passage segmentation; `sentence_index` determines the selected sentence and `meta.target_sentence` reports its one-based position.
+- `cambridge_runtime` reports only allow-listed Cambridge rule eligibility. It is not itself a sentence-level grammaticality verdict.
 
-- `tree`: unchanged legacy Benepar node graph, retained for compatibility. It is **not** an authoritative B-R tree.
-- `nodes`, `node_details`, `summary`, `parse`, and `explainers`: existing analysis payload.
-- `meta.canonical_schema_version`: canonical envelope version (`1.0.0`).
-- `meta.canonical_analysis_status`: result of normalization.
-- `meta.displayed_tree_authority`: `benepar_diagnostic_candidate`. The current visual canvas still renders the legacy tree. A visible canvas notice now identifies it as a Benepar diagnostic candidate (or states that a B-R projection is available separately); it does not claim the canonical tree is being rendered.
+The normalized `br_analysis` preserves the B-R convention version, profile/refinement, source provenance, canonical tree, accepted alternatives, movement/controller metadata where present, and diagnostics. Source fixture provenance is retained; an IMG marker is evidence of transcription from an image, not by itself independent review or human approval.
 
-A separate `canonical_analysis` property is returned:
+## Safe normalization boundary
 
-| Property | Meaning |
-|---|---|
-| `status` | `normalized`, `unresolved`, or `rejected`. |
-| `tree` | Canonical v1.0.0 envelope when normalized; otherwise null. |
-| `reasons` | Machine-readable reason codes and human-readable details when normalization is not promoted. |
-| `normalization_trace` | Traceable, evidence-labelled transformation steps. |
-| `diagnostics` | Parser identity, original parse string, raw candidate graph, and token count. |
-| `validation` | Structural validator result when validation was reached. |
-| `correction_alignment` | Token/character-aligned edit operations when the existing correction assembler produced a suggestion; otherwise null. |
+The live Benepar-to-B-R mapping remains deliberately conservative:
 
-The canonical envelope carries a convention profile, source metadata, token character spans, B-R root, movement/control metadata, accepted alternatives, and notes. The live Benepar adapter marks parser-derived source provenance as `NEEDS_REVIEW`; it does not claim that the missing B-R source PDF or edition has been verified.
+1. Exact sentence-aligned B-R gold references are used only when the reference has IMG evidence, is not marked incorrect, matches the selected convention version, and passes structural validation.
+2. If distinct matching gold references produce different structures, the result is unresolved rather than arbitrarily selecting one.
+3. The non-reference live mapping is the narrowly supported V2 `S → NP VP` shell. It leaves NP and VP internal structure as triangles; it does not rename arbitrary Penn labels into B-R categories.
+4. Chapter 7 Appendix D1 references are filtered separately from V7 core references.
+5. Other Benepar structures, unsupported profiles, token-yield mismatches, or unsupported punctuation/mapping cases remain unresolved with diagnostics and the raw candidate preserved.
 
-## Current normalization support and limits
+This is not a general V1–V10 Benepar transformer. In particular, arbitrary V3–V10 internal structures are not mapped without reviewed source conventions and gold fixtures.
 
-The live Benepar-to-B-R projection is intentionally narrow. It currently promotes only a candidate matching the Chapter 2 V2 `S → NP VP` shell where:
+The read-only B-R fixture projection also records source-only metadata and accepted alternatives. A source-only zero-word elision marker that has no corresponding canonical node shape remains unresolved; it is not reinterpreted as a gap or fabricated lexical terminal.
 
-1. the root is an `S` with exactly an `NP` followed by a `VP`;
-2. the NP and VP can each be represented as source-unanalysed triangles;
-3. punctuation does not require a mapping decision;
-4. Benepar leaf order and spaCy token order match exactly; and
-5. the resulting envelope passes canonical structural validation.
+## Cambridge rule boundary
 
-The adapter does not rename arbitrary Penn labels into B-R labels. It returns `unresolved` for other chapter profiles, internally structured NP/VP parses, extra branches, punctuation cases, token mismatches, and unsupported transformations. Those responses retain the raw parse in `diagnostics.raw_candidate_tree`.
+`grammar/runtime_registry.json` is a fail-closed allow-list. Extraction status alone never enables a rule. An entry must meet the independent-review, source-page, crosswalk, test, reviewer, and runtime-state gates. Only `constraint` and `variety_restricted` rules are eligible to trigger grammatical errors; descriptive generalizations, classifications, and stylistic/prescriptive material cannot be treated as prohibitions.
 
-Existing B-R chapter records can be projected independently through the read-only `canonicalize_gold_record(record, chapter_data)` importer. It preserves source record identifiers, figure/page/evidence state, tree labels/features, triangles, indexed triangles, gaps, word-bearing elided terminals, accepted alternatives, external controllers, movement descriptions, and chapter-specific answer metadata. Source records are not rewritten.
+**Current state:** the allow-list enables zero Cambridge rules. The registry reports eligibility but a deterministic Cambridge sentence-level evaluator and positive/negative/exception minimal-pair suite are not yet implemented. The legacy rule matrix is separate; it must not be represented as a Cambridge verdict.
 
-Node-level diagram references (for example, `ref: "VP1"`) are retained in canonical `source_refs`. Other source-only node fields—including symbols, multiword-terminal flags, verb-type labels, and future unrecognized node metadata—are serialized into node `notes` as JSON-valued `source_node_metadata:<field>=...` entries until an explicitly reviewed typed field is added to the schema. Existing node notes are retained. This avoids silently dropping source annotations or pretending they are canonical structural features.
+## CoLA / acceptability-model role
 
-One source pattern deliberately remains unresolved: Chapter 5 figure [46] uses a zero-word `E` elision marker inside an NP. The approved v1.0.0 node variants represent a gap or an elided terminal with an explicit word, but do not define a zero-word elided-element node. The importer reports this as unresolved and returns the original raw tree; it does not recast `E` as a gap or invent a lexical terminal.
+The CoLA acceptability model is secondary. If the deterministic rule matrix identifies a rule-level violation, CoLA cannot cancel it. If the matrix is clean but CoLA rejects the sentence, the verdict is downgraded to `UNVERIFIED`, not `UNGRAMMATICAL`. The model does not create a rule ID, a structural claim, or a grammatical explanation. If it is unavailable, the existing rules-only path remains available.
 
-## Correction alignment
+## Corrected sentence data
 
-When the legacy correction assembler emits a correction, `canonical_analysis.correction_alignment` records both original and corrected tokens and character spans. Changed regions are typed as:
-
-- `substitution`
-- `insertion`
-- `deletion`
-- `punctuation`
-- `contraction`
-- `multi_token_replacement`
-
-Unchanged regions are also represented. The original correction edit records are retained as `source_edits`. The corrected string is not silently substituted for the original analysis; it remains an aligned candidate for the existing correction preview and later integration work.
+When the correction assembler returns a suggestion, the response retains the original sentence and separately supplies the corrected sentence, token/character alignment, edit operations, affected original terminal IDs, and a fresh parse/normalization attempt for the corrected text. Supported edit kinds include replacement, insertion, deletion, punctuation, contractions, and multi-token changes. The corrected candidate tree is independently generated from the corrected sentence; the original parse is not silently rewritten. Unsupported corrected analyses stay unresolved.
 
 ## Error states
 
 | HTTP status | Meaning |
 |---|---|
-| `400` | Invalid `sentence_index`, `chapter`, or `appendix_nom` combination. |
+| `400` | Invalid sentence index, chapter/profile combination, or convention version. |
 | `422` | Empty input or parser-level parse failure. |
 | `503` | Backend/model service unavailable or unexpected analysis failure. |
 
-An HTTP 200 response can still contain `canonical_analysis.status = "unresolved"`; this means the request was parsed but no defensible canonical B-R mapping was available. Consumers must check that status before treating `canonical_analysis.tree` as the target tree.
+An HTTP 200 response may contain `br_analysis.status = "unresolved"`. This means parsing completed, but a defensible B-R mapping was not available. Consumers must check this status before treating a canonical tree as present.
 
-## Verification command
+## Verification
 
-```bash
-python -m unittest server.test_burton_roberts -v
-python scripts/audit_burton_roberts_import.py --expected-count 252
-```
+The model-free CI workflow runs the normalizer/API/HTTP contracts, B-R chapter validators, and legacy licensing/correction regressions. It now also runs the CoLA advisory contract tests, the read-only `burton_roberts` importer tests, and the full B-R source-record audit.
 
-The focused suite currently covers profile selection, conservative V2 normalization, unsupported-profile and punctuation fallbacks, structural validation, source-authored Chapter 7 and Chapter 10 records, indices/gaps/elision, accepted alternatives, Chapter 9 movement notes, multiple external controllers, and all requested correction edit classes.
+The following checks still require a configured spaCy/Benepar runtime and have not been established by model-free CI: actual parser-backed smoke tests, live full/multi-sentence parsing, deployed-model fallback/performance behavior, and end-to-end browser consumption of canonical B-R trees.
 
 ## Outstanding before Milestone 02 approval
 
-- Reconcile the detailed `master_prompt_syntax_generator.md` before claiming full prompt compliance. The file was not present in the accessible repository tree/path on the refs checked in this execution; the work recorded here follows the Milestone 02 scope and acceptance criteria in `syntutor_12_prompt_execution_plan.md`.
-- Confirm the B-R edition and inspect the source PDFs. Parser-derived mappings must remain source-review pending until then.
-- Expand live normalization across V1–V10/FINAL only after source-backed transformation rules and reviewed fixtures exist.
-- Run `python scripts/audit_burton_roberts_import.py --expected-count 252` against all 252 B-R records, then reconcile exceptions/unresolved records against the existing chapter validators.
-- Add Flask/legacy transport contract tests and full backend/frontend integration tests; implement and test an actual canonical-tree renderer (the current canvas notice only labels the legacy Benepar rendering).
-- Compare existing generator behavior against the legacy regression corpus and model-backed parser runtime.
+- General source-grounded Benepar-to-B-R mappings for supported V3–V10 constructions remain incomplete.
+- No Cambridge rules are runtime-enabled; no deterministic Cambridge sentence-level evaluator or minimal-pair/exception suite is active.
+- Real spaCy/Benepar-backed end-to-end parsing, multi-sentence behavior, latency, and missing-model fallback need runtime verification.
+- The legacy matrix remains the grammaticality verdict source; it is not a Cambridge evaluator.
+- The frontend still renders the legacy raw candidate tree. This milestone preserves the authority distinction in the API; it does not redesign the UI or migrate the Builder.
+- Exact B-R and Cambridge edition/page metadata still needs confirmation against original source PDFs.
