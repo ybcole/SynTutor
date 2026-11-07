@@ -61,9 +61,9 @@ A terminal contains the lexical surface form. Optional `pos` is parser/source di
 
 ### 3.3 Triangle
 
-`{ "label": "NP", "triangle": true, "words": ["those", "wildcats"] }`
+`{ "label": "NP", "triangle": true, "words": ["those", "wildcats"], "index": 1 }`
 
-A triangle carries the category label and the unanalyzed words. It must not also contain `children`. It still contributes the overt words to token coverage and order.
+A triangle carries the category label and the unanalyzed words. It must not also contain `children`. It still contributes the overt words to token coverage and order. The optional non-negative `index` preserves Chapter 10 co-indexing when the source indexes an unanalyzed constituent.
 
 ### 3.4 Gap or covert element
 

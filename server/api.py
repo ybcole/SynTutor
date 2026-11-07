@@ -17,6 +17,11 @@ import corrector
 import corrections
 from plain import apply_plain_language, plain_text
 
+try:  # support package and script-directory imports
+    from .burton_roberts import build_canonical_analysis
+except ImportError:  # pragma: no cover - direct server script execution
+    from burton_roberts import build_canonical_analysis
+
 _MODEL_STATUS = None
 
 INSTALL_HINT = (
@@ -177,6 +182,11 @@ def build_payload(text, sentence_index=0, convention_version='V10'):
 
     apply_plain_language(details, summary)
 
+    # Preserve the legacy Benepar tree for diagnostics/UI compatibility while
+    # exposing a separate, explicitly validated B-R canonical projection.
+    canonical_analysis = build_canonical_analysis(
+        analysis, chapter=chapter, appendix_nom=appendix_nom, correction=correction)
+
     token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
     tag_word = summary['explanation']
     label = {'grammatical': 'VALID', 'ungrammatical': 'INVALID',
@@ -190,6 +200,11 @@ def build_payload(text, sentence_index=0, convention_version='V10'):
         f"Constraint matrix: {summary['valid_edges']} validated \u00b7 "
         f"{summary['violated_edges']} violated \u00b7 {summary['unrated_edges']} unrated",
         f"Verdict: {label}",
+        f"B-R normalization: {canonical_analysis['status'].upper()} "
+        f"({canonical_analysis['convention_profile'].get('profile_id', canonical_analysis['convention_profile']['version'])})",
+        ('The current tree is a validated canonical B-R projection; source evidence is still marked NEEDS_REVIEW.'
+         if canonical_analysis['status'] == 'normalized' else
+         'The current tree is a Benepar diagnostic candidate only; it is not a verified B-R analysis.'),
         f"   {tag_word}",
         'Deterministic matrix over the benepar tree; identical inputs always produce identical verdicts.',
     ]

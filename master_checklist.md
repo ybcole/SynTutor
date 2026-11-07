@@ -29,12 +29,12 @@ Use this as the project sign-off register. Mark a box only when there is evidenc
 
 ## 2. Syntax Generator
 
-- [ ] Preserve raw Benepar parse output for diagnostics.
+- [x] Preserve raw Benepar parse output for diagnostics.
 - [ ] Build a B-R normalization adapter.
 - [ ] Implement safe mappings/restructuring for supported categories and constructions.
-- [ ] Add explicit unresolved/alternative-analysis outcomes.
+- [x] Add explicit unresolved/alternative-analysis outcomes.
 - [ ] Add B-R tree structural validation.
-- [ ] Validate word order and token-span alignment.
+- [x] Validate word order and token-span alignment.
 - [ ] Validate feature legality and chapter convention restrictions.
 - [ ] Validate gaps, indices, triangles, ellipsis, and accepted alternatives.
 - [ ] Add gold-tree tests using the B-R chapter JSONs.
@@ -194,7 +194,7 @@ Use this as the project sign-off register. Mark a box only when there is evidenc
 |---|---|---|---|---|
 | 0. Governance and inventory | Implementation audit | docs/repository-inventory.md; source file inventory | 7 Nov 2026 | In progress — source editions and live-data rollback remain open |
 | 1. Linguistic architecture | Implementation audit | ADR-001; source-authority matrix; crosswalk; canonical schema proposal | 7 Nov 2026 | In progress — mappings retained unresolved; executable registry remains future work |
-| 2. Syntax Generator |  |  |  | Not started |
+| 2. Syntax Generator | Implementation audit | docs/syntax-generator-api.md; 16 focused unit tests; Milestone 02 progress record in execution plan | 7 Nov 2026 | In progress — conservative V2 only; detailed prompt/integration/source evidence outstanding |
 | 3. Explanation engine |  |  |  | Not started |
 | 4. Lessons |  |  |  | Not started |
 | 5. Quizzes |  |  |  | Not started |
@@ -235,3 +235,19 @@ Use this as the project sign-off register. Mark a box only when there is evidenc
 
 **No implementation code changed.** No parser, rule evaluator, lesson, quiz, builder, frontend, backend, or database migration was edited during this milestone.
 
+
+---
+
+## Milestone 02 progress log — 7 November 2026
+
+**Execution branch:** `feature/milestone-02-syntax-generator-2026-11-07`.
+
+The three boxes marked above are supported by code and focused tests: the API retains the raw Benepar diagnostic tree; the canonical adapter exposes unresolved outcomes and validates/preserves accepted alternatives; the structural validator checks exact overt token coverage and ordering alongside spans. All broader Syntax Generator boxes remain unchecked because the complete chapter/profile implementation, full gold-corpus run, source-backed mapping review, UI adoption, and integration tests are not complete.
+
+**Implemented files:** `server/burton_roberts.py`, `server/test_burton_roberts.py`, `server/api.py`, `server/webapp.py`, `server/app.py`, `docs/syntax-generator-api.md`, and the canonical JSON/Markdown schema updates supporting indexed triangles.
+
+**Verification:** `python -m py_compile server/burton_roberts.py` passed. `python -m unittest server.test_burton_roberts -v` passed (16 tests). Tests cover V2 promotion/fallback, FINAL-D1 unresolved handling, profile validation, corrections (substitution/insertion/deletion/punctuation/contraction/multi-token), selected B-R gold structures, source metadata, gaps, indices, movement, controllers, and alternatives.
+
+**Not yet verified:** full 252-record import/validator run, full legacy tests, parser-model API calls, HTTP contract/E2E tests, frontend renderer adoption, and detailed prompt reconciliation. The repository connector could not retrieve `master_prompt_syntax_generator.md` during this run; this progress entry follows the Milestone 02 section of the execution plan rather than asserting compliance with the missing detailed prompt. The exact B-R source edition/PDF remains unconfirmed.
+
+**Milestone 02 remains unchecked and is not approved for downstream use.**

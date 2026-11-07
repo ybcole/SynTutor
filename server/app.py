@@ -162,6 +162,9 @@ class Handler(BaseHTTPRequestHandler):
         except ParseFailure as exc:
             self._json(422, {'error': str(exc), 'input': text})
             return
+        except ValueError as exc:
+            self._json(400, {'error': str(exc), 'input': text})
+            return
         except Exception as exc:  # model not available
             hint = _model_status().get('error') or (
                 'Run:  pip install spacy benepar transformers==4.46.3  &&  python -m spacy download en_core_web_md  &&  python -m benepar.download benepar_en3'
