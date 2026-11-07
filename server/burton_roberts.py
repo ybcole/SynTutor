@@ -319,7 +319,10 @@ def _unresolved_result(profile: dict[str, Any], reasons: list[dict[str, str]],
 def _matching_gold_records(sentence: str, profile: dict[str, Any],
                             reference_records: Any = None) -> list[dict[str, Any]]:
     """Find exact sentence/profile-matched image-verified B-R source records."""
-    from br_tree import _atoms, _source_yield, load_reference_records
+    try:
+        from .br_tree import _atoms, _source_yield, load_reference_records
+    except ImportError:  # direct script-directory imports
+        from br_tree import _atoms, _source_yield, load_reference_records
 
     expected = _atoms(sentence)
     version = "V10" if profile.get("version") == "FINAL" else profile.get("version")
