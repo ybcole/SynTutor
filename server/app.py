@@ -165,6 +165,11 @@ class Handler(BaseHTTPRequestHandler):
         if appendix_nom is not None and not isinstance(appendix_nom, bool):
             self._json(400, {'error': 'appendix_nom must be true, false, or null'})
             return
+        variety = data.get('variety')
+        if variety is not None and (not isinstance(variety, str) or not variety.strip()):
+            self._json(400, {'error': 'variety must be a non-empty string or null'})
+            return
+        variety = variety.strip() if isinstance(variety, str) else None
         if appendix_nom is True and chapter not in (None, 7):
             self._json(400, {'error': 'appendix_nom is only valid for Chapter 7 or free analysis'})
             return
@@ -182,7 +187,8 @@ class Handler(BaseHTTPRequestHandler):
         try:
             payload = build_payload(text, sentence_index=sentence_index,
                                     convention_version=convention_version,
-                                    chapter=chapter, appendix_nom=appendix_nom)
+                                    chapter=chapter, appendix_nom=appendix_nom,
+                                    variety=variety)
         except ParseFailure as exc:
             self._json(422, {'error': str(exc), 'input': text})
             return
