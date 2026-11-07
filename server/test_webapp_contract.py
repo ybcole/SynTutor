@@ -29,6 +29,22 @@ class FlaskParseContractTests(unittest.TestCase):
         })
         self.assertEqual(response.status_code, 400)
 
+    def test_boolean_sentence_index_returns_400(self):
+        response = self.client.post("/api/parse", json={
+            "text": "A sentence.", "sentence_index": True
+        })
+        self.assertEqual(response.status_code, 400)
+
+    def test_out_of_range_sentence_index_returns_400(self):
+        with patch("webapp.build_payload", side_effect=ValueError(
+                "sentence_index 2 is out of range for 2 detected sentence(s)")) as build:
+            response = self.client.post("/api/parse", json={
+                "text": "One. Two.", "sentence_index": 2
+            })
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("out of range", response.get_json()["error"])
+        build.assert_called_once()
+
     def test_invalid_json_returns_400(self):
         response = self.client.post(
             "/api/parse", data="{invalid", content_type="application/json"
