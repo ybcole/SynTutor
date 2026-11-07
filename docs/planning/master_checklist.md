@@ -5,7 +5,7 @@ Use this as the project sign-off register. Mark a box only when there is evidenc
 ## 0. Governance and inventory
 
 - [ ] Confirm exact Noel Burton-Roberts book title, edition, and page numbering represented by the supplied source PDFs.
-- [ ] Confirm exact Cambridge edition and the bibliographic metadata used in the extraction files.
+- [x] Confirm exact Cambridge edition and the bibliographic metadata used in the extraction files.
 - [x] Inventory all B-R chapter JSONs, tree validators, evidence flags, exercise-answer fields, book flags, fragments, and unresolved items.
 - [ ] Inventory every Cambridge extraction, merged rule, concept, conflict, cross-reference, and uncertain item.
 - [ ] Record which Cambridge sections have been extracted and which remain unprocessed.
@@ -313,3 +313,14 @@ Generator and Builder. Exact source editions, independent review/crosswalk
 resolution, reviewed production templates and supported source coverage remain
 open. **M2 and M3 stay unchecked; source-backed M4 publication is not certified.**
 No prior checkbox or acceptance criterion was weakened.
+
+
+## Cambridge source evidence update — 8 November 2026
+
+The Cambridge edition/bibliography box is checked using the twenty supplied
+chapter PDFs, their matching pagination, and the publisher's 2002 bibliographic
+record/frontmatter. One earlier CLS-001 paraphrase has an independent source
+review and is now a cited teaching template. No runtime constraint or original
+B-R mapping is enabled by that review. See
+`docs/reports/cambridge-source-review-2026-11-08.md`. B-R metadata/source-template
+review and the remaining M2/M3 acceptance issues stay open.

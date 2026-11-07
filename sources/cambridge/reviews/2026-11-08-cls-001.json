@@ -1,0 +1,71 @@
+{
+  "review_date": "2026-11-08",
+  "reviewer": "Codex — independent second pass against supplied chapter PDF; original extraction predates this review",
+  "review_kind": "independent AI source check of an earlier extraction; not a human sign-off",
+  "record_id": "CLS-001",
+  "record_path": "grammar/rules/clauses.json",
+  "decision": "Source paraphrase and example contrast verified for teaching only. No runtime constraint is enabled.",
+  "original_record_status_unchanged": true,
+  "input_filename": "Chapter-2-Syntactic-Overview.pdf",
+  "source_manifest": "sources/cambridge/source_manifest_2026-11-08.json",
+  "page_mapping": [
+    {
+      "printed": 44,
+      "split_pdf": 2,
+      "historical_full_pdf": 64
+    },
+    {
+      "printed": 45,
+      "split_pdf": 3,
+      "historical_full_pdf": 65
+    }
+  ],
+  "checks": [
+    {
+      "claim": "Sentence is treated as a text-level unit; central clauses have subject-predicate structure and can be embedded.",
+      "basis": "Printed p.44 text; inspected source page image.",
+      "result": "verified"
+    },
+    {
+      "claim": "Cambridge uses clause, not sentence, as its constituent-structure category term.",
+      "basis": "Printed p.45 text; inspected source page image.",
+      "result": "verified"
+    },
+    {
+      "claim": "Existing AI-authored standalone/embedded/coordinated examples illustrate the distinction.",
+      "basis": "Compared sentence/clause usage with p.44 examples and p.45 discussion; no book example was copied into the new template.",
+      "result": "verified"
+    }
+  ],
+  "template_content_origin": "CLS-001.statement and CLS-001.condition are reused without changing their linguistic propositions; the additional label/surface text reports observed tree facts and the project authority boundary.",
+  "template_id": "CGEL-CLS001-TEACHING-V1",
+  "crosswalk_resolution": {
+    "scope": "this teaching template only",
+    "decision": "Keep Cambridge sentence/clause terminology separate from canonical B-R labels; do not replace S with clause.",
+    "basis": [
+      "docs/source-authority-matrix.md",
+      "docs/ADR-001-architecture-and-source-governance.md",
+      "CONVENTIONS.md"
+    ],
+    "br_book_comparison_performed": false,
+    "raw_crosswalk_relations_unchanged": true
+  },
+  "additional_findings": [
+    {
+      "record_id": "CLS-002",
+      "status": "needs_narrowing_before_template_use",
+      "finding": "The unconditional opening claim about all sentence forms goes beyond the p.44 example classification. Retain contextual qualification rather than publishing it as a universal template."
+    },
+    {
+      "record_id": "PHR-011",
+      "status": "not_runtime_eligible",
+      "finding": "The source itself hedges bare singular count-noun requirements. Overview and named role-NP exceptions do not justify a general prohibition; full conditions/crosswalk remain open."
+    }
+  ],
+  "not_verified": [
+    "B-R book edition/source pages",
+    "Other 195 merged rule records",
+    "Any runtime grammaticality constraint",
+    "Exact printing of the supplied split PDF copy"
+  ]
+}

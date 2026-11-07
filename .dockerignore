@@ -7,5 +7,6 @@ dist
 **/*.pyc
 supabase
 scripts
-docs
+docs/*
+!docs/canonical-burton-roberts-tree.schema.json
 *.md

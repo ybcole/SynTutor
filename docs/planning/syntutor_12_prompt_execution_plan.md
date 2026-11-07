@@ -591,3 +591,12 @@ Generator and Builder. Exact source editions, independent review/crosswalk
 resolution, reviewed production templates and supported source coverage remain
 open. **M2 and M3 stay unchecked; source-backed M4 publication is not certified.**
 No prior checkbox or acceptance criterion was weakened.
+
+
+## Cambridge starter review — 8 November 2026
+
+See `docs/reports/cambridge-source-review-2026-11-08.md` for the source manifest,
+Cambridge 2002 bibliographic evidence, and independent review of the existing
+CLS-001 teaching paraphrase. Generator and Builder can now render one real
+cited Cambridge classification note. Original B-R mappings, production
+constraints, and M2/M3 milestone boxes remain unchanged.

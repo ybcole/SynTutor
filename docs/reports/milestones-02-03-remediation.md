@@ -1,5 +1,10 @@
 # Milestones 02–03 remediation
 
+Latest source update: [Cambridge starter review, 8 November 2026](cambridge-source-review-2026-11-08.md).
+The zero-template counts in this dated 7 November report are historical; one
+reviewed Cambridge teaching template is now enabled. B-R evidence remains open.
+
+
 Date: 7 November 2026 (Asia/Manila). This report supersedes the software-blocker
 findings in `milestones-01-03-audit.md`; that audit remains historical evidence.
 

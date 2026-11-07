@@ -1,0 +1,497 @@
+{
+  "book": "The Cambridge Grammar of the English Language",
+  "authors": [
+    "Rodney Huddleston",
+    "Geoffrey K. Pullum"
+  ],
+  "edition": "2002 original edition",
+  "publisher": "Cambridge University Press",
+  "isbn13": "9780521431460",
+  "bibliographic_basis": "Publisher frontmatter and chapter table of contents match the supplied chapter headings/pagination. The printing of the uploaded split copy is not established.",
+  "publisher_frontmatter_url": "https://assets.cambridge.org/97805214/31460/frontmatter/9780521431460_frontmatter.pdf",
+  "review_date": "2026-11-08",
+  "chapter_count": 20,
+  "total_pdf_pages": 1762,
+  "files": [
+    {
+      "chapter": 1,
+      "filename": "Chapter-1-Preface.pdf",
+      "sha256": "74d44793eb717f4c1a727fc194576092e7004582e4a191af12fbe28c2ee76018",
+      "pdf_page_count": 42,
+      "printed_start": 1,
+      "printed_end_by_sequence": 42,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 1
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 2
+        }
+      ],
+      "blank_or_textless_pdf_pages": [
+        42
+      ],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 2,
+      "filename": "Chapter-2-Syntactic-Overview.pdf",
+      "sha256": "034d945dd74af085a4f2dc3e66c718b8096e4077afd9f48839ba5017f4fe66ff",
+      "pdf_page_count": 27,
+      "printed_start": 43,
+      "printed_end_by_sequence": 69,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 43
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 44
+        },
+        {
+          "pdf_page": 27,
+          "printed_page": 69
+        }
+      ],
+      "blank_or_textless_pdf_pages": [],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 3,
+      "filename": "Chapter-3-Verb.pdf",
+      "sha256": "1886f98f83e11ee754988ae844bef0f55b03e0ac8ec9d8798487872a6a228fbf",
+      "pdf_page_count": 142,
+      "printed_start": 71,
+      "printed_end_by_sequence": 212,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 71
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 72
+        },
+        {
+          "pdf_page": 142,
+          "printed_page": 212
+        }
+      ],
+      "blank_or_textless_pdf_pages": [],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 4,
+      "filename": "Chapter-4-The-clausecomplements.pdf",
+      "sha256": "c5015bc7b5fe81cf70ae0d95f95300a5bb459ae71da3e1c3c707380169801357",
+      "pdf_page_count": 110,
+      "printed_start": 213,
+      "printed_end_by_sequence": 322,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 213
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 214
+        }
+      ],
+      "blank_or_textless_pdf_pages": [
+        110
+      ],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 5,
+      "filename": "Chapter-5-Nouns-and-noun-phrases.pdf",
+      "sha256": "9ca8ccf08ff882eec8bde2b590e4ba0fedd90994ad30009b5f7ca79232994330",
+      "pdf_page_count": 201,
+      "printed_start": 323,
+      "printed_end_by_sequence": 523,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 323
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 324
+        },
+        {
+          "pdf_page": 201,
+          "printed_page": 523
+        }
+      ],
+      "blank_or_textless_pdf_pages": [],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 6,
+      "filename": "Chapter-6-Adjectives-and-adverbs.pdf",
+      "sha256": "e6ab03068fa7d76cba55718a1c4177e66ab1c653de821f5d9027b00fed1b6e93",
+      "pdf_page_count": 72,
+      "printed_start": 525,
+      "printed_end_by_sequence": 596,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 525
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 526
+        }
+      ],
+      "blank_or_textless_pdf_pages": [
+        72
+      ],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 7,
+      "filename": "Chapter-7-Prepositions-and-preposition-phrases.pdf",
+      "sha256": "82a97cb61553e48f95f6d013b3daf855daa6f86dfa8d92d67a57c08b44f1e13f",
+      "pdf_page_count": 66,
+      "printed_start": 597,
+      "printed_end_by_sequence": 662,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 597
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 598
+        }
+      ],
+      "blank_or_textless_pdf_pages": [
+        66
+      ],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 8,
+      "filename": "Chapter-8-The-clauseadjuncts.pdf",
+      "sha256": "8a6178b3d15a7313f4e62bb6f24ec8d467e722c8a4661d9b193b9d2c3cf0e6f5",
+      "pdf_page_count": 122,
+      "printed_start": 663,
+      "printed_end_by_sequence": 784,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 663
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 664
+        },
+        {
+          "pdf_page": 122,
+          "printed_page": 784
+        }
+      ],
+      "blank_or_textless_pdf_pages": [],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 9,
+      "filename": "Chapter-9-Negation.pdf",
+      "sha256": "8cab896a1829622eac09e298a02f9bb02078a23bff55cd48107ad4e985fe028c",
+      "pdf_page_count": 66,
+      "printed_start": 785,
+      "printed_end_by_sequence": 850,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 785
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 786
+        }
+      ],
+      "blank_or_textless_pdf_pages": [
+        66
+      ],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 10,
+      "filename": "Chapter-10-Clause-type-and-illocutionary-force.pdf",
+      "sha256": "c2cd48d9bd1c5b7e3c97829e55278bd5ca1fff555a913a8d7bed25ac5603b5ba",
+      "pdf_page_count": 96,
+      "printed_start": 851,
+      "printed_end_by_sequence": 946,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 851
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 852
+        }
+      ],
+      "blank_or_textless_pdf_pages": [
+        96
+      ],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 11,
+      "filename": "Chapter 11 - Content clauses and reported speech.pdf",
+      "sha256": "f4e9743d709c01726f8a4cc81476839cb733cd745fc45c92f673f2dbddb41a60",
+      "pdf_page_count": 84,
+      "printed_start": 947,
+      "printed_end_by_sequence": 1030,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 947
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 948
+        },
+        {
+          "pdf_page": 84,
+          "printed_page": 1030
+        }
+      ],
+      "blank_or_textless_pdf_pages": [],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 12,
+      "filename": "Chapter 12 - Relative constructions and unbounded dependencies.pdf",
+      "sha256": "b0ac632541db412f9974f0dd0de9c8fa90df0be8081aad784392fbda511f44e5",
+      "pdf_page_count": 66,
+      "printed_start": 1031,
+      "printed_end_by_sequence": 1096,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 1031
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 1032
+        },
+        {
+          "pdf_page": 66,
+          "printed_page": 1096
+        }
+      ],
+      "blank_or_textless_pdf_pages": [],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 13,
+      "filename": "Chapter 13 - Comparative constructions.pdf",
+      "sha256": "7147a38ff66b08aaf77a82aa11f2f12652b5ef5d1044b0e7981c71a10ccd8271",
+      "pdf_page_count": 74,
+      "printed_start": 1097,
+      "printed_end_by_sequence": 1170,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 1097
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 1098
+        },
+        {
+          "pdf_page": 74,
+          "printed_page": 1170
+        }
+      ],
+      "blank_or_textless_pdf_pages": [],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 14,
+      "filename": "Chapter 14 - Non-finite and verbless clauses.pdf",
+      "sha256": "bab6f624dc9d0dd612c36a247585f9590ec18de32093be93505a5f71688fda54",
+      "pdf_page_count": 102,
+      "printed_start": 1171,
+      "printed_end_by_sequence": 1272,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 1171
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 1172
+        }
+      ],
+      "blank_or_textless_pdf_pages": [
+        102
+      ],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 15,
+      "filename": "Chapter 15 - Coordination and supplementation.pdf",
+      "sha256": "f036b4375304551d44fe9bb980a2d2ab710dfeb841ab5e2f9db1bb79a5665ade",
+      "pdf_page_count": 90,
+      "printed_start": 1273,
+      "printed_end_by_sequence": 1362,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 1273
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 1274
+        },
+        {
+          "pdf_page": 90,
+          "printed_page": 1362
+        }
+      ],
+      "blank_or_textless_pdf_pages": [],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 16,
+      "filename": "Chapter 16 - Information packaging.pdf",
+      "sha256": "357edeaffbdcf1cd80fbfa6068cfb9f4c9bfdd3a0275968acc18517aa64c49a9",
+      "pdf_page_count": 86,
+      "printed_start": 1363,
+      "printed_end_by_sequence": 1448,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 1363
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 1364
+        }
+      ],
+      "blank_or_textless_pdf_pages": [
+        86
+      ],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 17,
+      "filename": "Chapter 17 -Deixis and anaphora.pdf",
+      "sha256": "4514952d290604595ef816914dfb7f8e094ebe820c1d191db728a60cb807a093",
+      "pdf_page_count": 116,
+      "printed_start": 1449,
+      "printed_end_by_sequence": 1564,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 1449
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 1450
+        },
+        {
+          "pdf_page": 116,
+          "printed_page": 1564
+        }
+      ],
+      "blank_or_textless_pdf_pages": [],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 18,
+      "filename": "Chapter 18 - Inflectional morphology and related matters.pdf",
+      "sha256": "363b7cfa537ba4113e06da8eaa44a41f9b2ff324225aaf2f97a17df60140b8a1",
+      "pdf_page_count": 56,
+      "printed_start": 1565,
+      "printed_end_by_sequence": 1620,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 1565
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 1566
+        }
+      ],
+      "blank_or_textless_pdf_pages": [
+        56
+      ],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 19,
+      "filename": "Chapter 19 - Lexical word-formation.pdf",
+      "sha256": "a4ac65346169d78583de3be0e20c6b17292d61f528f7c0815db62fa046a19e1b",
+      "pdf_page_count": 102,
+      "printed_start": 1621,
+      "printed_end_by_sequence": 1722,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 1621
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 1622
+        }
+      ],
+      "blank_or_textless_pdf_pages": [
+        102
+      ],
+      "unconfirmed_page_labels": []
+    },
+    {
+      "chapter": 20,
+      "filename": "Chapter 20 - Punctuation.pdf",
+      "sha256": "1b75cd5fd647e89d6dac932983caf4b1fa73c1439a7b8759a2f269fc5e4b90e2",
+      "pdf_page_count": 42,
+      "printed_start": 1723,
+      "printed_end_by_sequence": 1764,
+      "page_label_check": "expected number found in first/last three extracted lines; not a text-completeness certification",
+      "anchors": [
+        {
+          "pdf_page": 1,
+          "printed_page": 1723
+        },
+        {
+          "pdf_page": 2,
+          "printed_page": 1724
+        },
+        {
+          "pdf_page": 42,
+          "printed_page": 1764
+        }
+      ],
+      "blank_or_textless_pdf_pages": [],
+      "unconfirmed_page_labels": []
+    }
+  ]
+}
