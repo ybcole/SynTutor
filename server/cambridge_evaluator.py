@@ -113,6 +113,18 @@ def evaluate_cambridge(analysis: dict[str, Any] | None,
                 "message": "Cambridge constraints require the validated M1 canonical tree envelope.",
             }],
         }
+    if variety is not None and (not isinstance(variety, str) or not variety.strip()):
+        return {
+            "status": "invalid_variety",
+            "evaluated_rule_ids": [],
+            "findings": [],
+            "diagnostics": [{
+                "code": "INVALID_SELECTED_VARIETY",
+                "message": "Selected variety must be a non-empty string or null.",
+            }],
+        }
+    if isinstance(variety, str):
+        variety = variety.strip()
     if not isinstance(registry, dict):
         registry = {}
     active_rules = registry.get("active_rules", [])
