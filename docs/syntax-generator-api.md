@@ -83,7 +83,7 @@ When the correction assembler returns a suggestion, the response retains the ori
 
 | HTTP status | Meaning |
 |---|---|
-| `400` | Non-integer, negative, or out-of-range sentence index; invalid chapter/profile combination; unsupported convention version; or invalid/empty `variety`. |
+| `400` | Invalid/non-object JSON body; non-integer, negative, or out-of-range sentence index; invalid chapter/profile combination; unsupported convention version; or invalid/empty `variety`. |
 | `422` | Empty input or parser-level parse failure. |
 | `503` | Backend/model service unavailable or unexpected analysis failure. |
 
