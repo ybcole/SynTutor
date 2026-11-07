@@ -360,8 +360,26 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
     """
     profile = convention_profile(chapter, appendix_nom)
     sentence = str(analysis.get("sentence", ""))
-    matches = _matching_gold_records(sentence, profile, reference_records)
-    if matches:
+    try:
+        matches = _matching_gold_records(sentence, profile, reference_records)
+    except Exception as exc:  # malformed source index/data must fail closed
+        matches = []
+        match_failure = exc
+    else:
+        match_failure = None
+    if match_failure is not None:
+        result = {
+            "status": "unresolved", "tree": None,
+            "reasons": [{
+                "code": "GOLD_LOOKUP_FAILURE",
+                "detail": f"Exact B-R source lookup failed safely: {match_failure}",
+            }],
+            "normalization_trace": [{
+                "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
+                "evidence": "Source lookup failed; the raw Benepar candidate was not promoted.",
+            }],
+        }
+    elif matches:
         signatures = {
             json.dumps(
                 {"tree": row.get("tree"),
@@ -430,7 +448,20 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
                         "validation": validation,
                     }
     else:
-        result = normalize_benepar_candidate(analysis, profile)
+        try:
+            result = normalize_benepar_candidate(analysis, profile)
+        except Exception as exc:  # unexpected adapter errors become explicit unresolved data
+            result = {
+                "status": "unresolved", "tree": None,
+                "reasons": [{
+                    "code": "NORMALIZER_FAILURE",
+                    "detail": f"B-R normalization failed safely: {type(exc).__name__}: {exc}",
+                }],
+                "normalization_trace": [{
+                    "rule_id": "FAIL_CLOSED_NORMALIZER",
+                    "evidence": "An adapter exception occurred; no candidate labels were promoted.",
+                }],
+            }
 
     result["convention_profile"] = profile
     result["convention_version"] = profile["version"]
