@@ -1,0 +1,534 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://syntutor.local/schema/br-tree.schema.json",
+  "title": "SynTutor Burton-Roberts canonical analysis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "convention_version",
+    "profile",
+    "source",
+    "tree",
+    "accepted_alternatives",
+    "movement",
+    "diagnostics"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "enum": [
+        "normalized",
+        "unresolved"
+      ]
+    },
+    "convention_version": {
+      "enum": [
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6",
+        "V7",
+        "V8",
+        "V9",
+        "V10"
+      ]
+    },
+    "profile": {
+      "type": "string"
+    },
+    "profile_refinements": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "source": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/source"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "tree": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/node"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "accepted_alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "tree"
+        ],
+        "properties": {
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tree": {
+            "$ref": "#/$defs/node"
+          }
+        }
+      }
+    },
+    "movement": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "external_controller": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "index",
+            "controller",
+            "source"
+          ],
+          "properties": {
+            "index": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "controller": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "normalized"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "source": {
+            "$ref": "#/$defs/source"
+          },
+          "tree": {
+            "$ref": "#/$defs/node"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "unresolved"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "source": {
+            "type": "null"
+          },
+          "tree": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": [
+        "book",
+        "method"
+      ],
+      "properties": {
+        "book": {
+          "const": "Burton-Roberts"
+        },
+        "chapter": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "figure": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tree_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "method": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "span": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "integer",
+          "minimum": 0
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "node": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/terminal"
+        },
+        {
+          "$ref": "#/$defs/symbol"
+        },
+        {
+          "$ref": "#/$defs/gap"
+        },
+        {
+          "$ref": "#/$defs/constituent"
+        }
+      ]
+    },
+    "terminal": {
+      "type": "object",
+      "required": [
+        "id",
+        "word",
+        "span",
+        "surface"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "word": {
+          "type": "string",
+          "minLength": 1
+        },
+        "span": {
+          "$ref": "#/$defs/span"
+        },
+        "surface": {
+          "type": "string"
+        },
+        "elided": {
+          "type": "boolean"
+        },
+        "ellipsis": {
+          "type": "boolean"
+        },
+        "starred": {
+          "type": "boolean"
+        }
+      },
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "label"
+            ]
+          },
+          {
+            "required": [
+              "children"
+            ]
+          },
+          {
+            "required": [
+              "triangle"
+            ]
+          },
+          {
+            "required": [
+              "gap"
+            ]
+          }
+        ]
+      },
+      "additionalProperties": false
+    },
+    "gap": {
+      "type": "object",
+      "required": [
+        "id",
+        "gap",
+        "span"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gap": {
+          "const": true
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "span": {
+          "$ref": "#/$defs/span"
+        }
+      },
+      "additionalProperties": false
+    },
+    "constituent": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "features",
+        "index",
+        "triangle",
+        "span",
+        "surface"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "triangle": {
+          "type": "boolean"
+        },
+        "empty": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/node"
+          }
+        },
+        "words": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "span": {
+          "$ref": "#/$defs/span"
+        },
+        "surface": {
+          "type": "string"
+        },
+        "starred": {
+          "type": "boolean"
+        },
+        "ellipsis": {
+          "type": "boolean"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "triangle": {
+                "const": true
+              }
+            },
+            "required": [
+              "triangle"
+            ]
+          },
+          "then": {
+            "required": [
+              "words"
+            ],
+            "not": {
+              "required": [
+                "children"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "empty": {
+                "const": true
+              }
+            },
+            "required": [
+              "empty"
+            ]
+          },
+          "then": {
+            "required": [
+              "children"
+            ],
+            "properties": {
+              "children": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "triangle": {
+                "const": false
+              }
+            },
+            "required": [
+              "triangle"
+            ],
+            "not": {
+              "required": [
+                "empty"
+              ]
+            }
+          },
+          "then": {
+            "required": [
+              "children"
+            ],
+            "properties": {
+              "children": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "symbol": {
+      "type": "object",
+      "required": [
+        "id",
+        "symbol",
+        "elided",
+        "span",
+        "surface"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "symbol": {
+          "const": "E"
+        },
+        "elided": {
+          "const": true
+        },
+        "span": {
+          "$ref": "#/$defs/span"
+        },
+        "surface": {
+          "const": "E"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

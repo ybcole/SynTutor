@@ -15,6 +15,7 @@ from urllib.parse import urlparse
 
 from parse_engine import ParseFailure
 from api import build_payload, model_status as _model_status, word_info
+from br_tree import CONVENTIONS
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB_DIR = os.path.join(ROOT, 'web')
@@ -151,8 +152,13 @@ class Handler(BaseHTTPRequestHandler):
         if sentence_index < 0:
             self._json(400, {'error': 'sentence_index must be >= 0'})
             return
+        convention_version = data.get('convention_version') or 'V10'
+        if convention_version not in CONVENTIONS:
+            self._json(400, {'error': 'convention_version must be one of V1-V10'})
+            return
         try:
-            payload = build_payload(text, sentence_index=sentence_index)
+            payload = build_payload(text, sentence_index=sentence_index,
+                                    convention_version=convention_version)
         except ParseFailure as exc:
             self._json(422, {'error': str(exc), 'input': text})
             return

@@ -1,0 +1,65 @@
+"""HTTP-level tests for the Flask parse endpoint using a stubbed parser backend."""
+import unittest
+from unittest.mock import patch
+
+from webapp import app, ParseFailure
+
+
+class FlaskParseContractTests(unittest.TestCase):
+    def setUp(self):
+        self.client = app.test_client()
+
+    def test_empty_text_returns_422(self):
+        response = self.client.post("/api/parse", json={"text": "   "})
+        self.assertEqual(response.status_code, 422)
+        self.assertEqual(response.get_json()["error"], "empty input")
+
+    def test_invalid_convention_returns_400_without_calling_parser(self):
+        with patch("webapp.build_payload") as build:
+            response = self.client.post("/api/parse", json={
+                "text": "A sentence.", "convention_version": "V11"
+            })
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("V1-V10", response.get_json()["error"])
+        build.assert_not_called()
+
+    def test_invalid_sentence_index_returns_400(self):
+        response = self.client.post("/api/parse", json={
+            "text": "A sentence.", "sentence_index": -1
+        })
+        self.assertEqual(response.status_code, 400)
+
+    def test_invalid_json_returns_400(self):
+        response = self.client.post(
+            "/api/parse", data="{invalid", content_type="application/json"
+        )
+        self.assertEqual(response.status_code, 400)
+
+    def test_successful_build_returns_payload(self):
+        expected = {"br_analysis": {"status": "unresolved"}}
+        with patch("webapp.build_payload", return_value=expected) as build:
+            response = self.client.post("/api/parse", json={
+                "text": "A sentence.", "convention_version": "V10"
+            })
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json(), expected)
+        build.assert_called_once_with("A sentence.", sentence_index=0,
+                                      convention_version="V10")
+
+    def test_parser_failure_returns_422(self):
+        with patch("webapp.build_payload", side_effect=ParseFailure("No sentence found")):
+            response = self.client.post("/api/parse", json={"text": "A sentence."})
+        self.assertEqual(response.status_code, 422)
+        self.assertEqual(response.get_json()["error"], "No sentence found")
+
+    def test_unexpected_backend_failure_returns_503(self):
+        with patch("webapp.build_payload", side_effect=RuntimeError("backend unavailable")), \
+             patch("webapp.health_payload", return_value={"error": "models unavailable"}):
+            response = self.client.post("/api/parse", json={"text": "A sentence."})
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response.get_json()["error"], "backend unavailable")
+        self.assertIn("hint", response.get_json())
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)

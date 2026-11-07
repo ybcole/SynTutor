@@ -1,7 +1,15 @@
 # MASTER PROMPT — SynTutor book layer (give this to any AI, every session)
 
-You are helping build the "book layer" of SynTutor from Noel Burton-Roberts,
+You are helping build the B-R book-data layer of SynTutor from Noel Burton-Roberts,
 *Analysing Sentences*. Work on ONE chapter per session.
+
+**Scope clarification:** This prompt governs B-R chapter extraction, transcription,
+and chapter-specific teaching data. The approved SynTutor master plan governs
+application architecture and feature implementation. Burton-Roberts is authoritative
+for B-R phrase-marker form and chapter progression. The Cambridge Grammar of the
+English Language may support broader grammatical descriptions, classifications,
+constraints, conditions, and exceptions through separately reviewed, page-cited
+records. Cambridge must not be used to rewrite a B-R tree convention.
 
 ## Files you must have before starting
 - CONVENTIONS.md  (the only rulebook; read ALL of it first)
@@ -12,20 +20,36 @@ You are helping build the "book layer" of SynTutor from Noel Burton-Roberts,
 If a required file is missing, stop and tell me. Do not improvise.
 
 ## Priority order when sources disagree
-1. The book (I check by eye)  2. CONVENTIONS.md  3. chNN.trees.json  4. existing code.
+- **For a B-R phrase marker:** the B-R book page checked by eye, then CONVENTIONS.md,
+  then the chapter tree JSON, then existing code.
+- **For a broader grammatical claim:** use the corresponding reviewed Cambridge
+  extraction/source record and its printed page. Do not infer beyond that record.
+- **When the frameworks differ:** preserve both source-specific analyses, document
+  the non-equivalence, and mark the mapping unresolved. Neither source is allowed
+  to silently override the other's domain.
 Never "fix" a tree or a convention yourself. Conflict or gap -> mark UNSURE and ask me.
 
 ## Hard rules
-- Never use Penn Treebank / benepar / textbook X-bar habits. Book only.
+- Never use Penn Treebank / Benepar / textbook X-bar habits to decide canonical
+  B-R tree shape. The B-R book only governs that structural decision. Benepar may
+  propose a candidate parse for a separate normalization layer; it is not the
+  canonical tree authority.
 - Draw each tree with the conventions of ITS chapter (convention_version). Never use a
   later chapter's labels in an earlier chapter (no NOM before Ch7, no S-bar before Ch6).
 - Functions (subject, dO...) are NOT nodes; they are read off positions (CONVENTIONS §6).
-- Every explanation shown to a learner must be a paraphrase tied to a book page
-  (CONVENTIONS §14). No page -> write NO_BOOK_BASIS, do not invent a reason.
+- Every learner-facing claim must be tied to the source appropriate to that claim:
+  B-R printed pages for tree construction and chapter conventions; reviewed
+  Cambridge printed pages for broader grammatical concepts, constraints, conditions,
+  and exceptions. Cite both when a claim relies on both. No evidence -> write
+  NO_BOOK_BASIS or NO_CAMBRIDGE_BASIS, as applicable; do not invent a reason.
 - Public repo: paraphrase only. No passages, no copied exercise wording. At most a
   few words quoted, always with chapter + printed page.
-- Do not touch the parser, rule matrix, or the 20 existing lessons.
-- Do not invent exercises beyond the book's.
+- During a B-R chapter-extraction session, do not touch the parser, rule matrix,
+  or existing lessons. Application implementation belongs to the approved
+  milestone prompts, not this book-data workflow.
+- Do not copy or reproduce the book's exercise wording. The B-R extraction layer
+  records book-answer evidence. A separate assessment workflow may author original
+  parallel quiz items from reviewed learning objectives, subject to the master plan.
 
 ## Per-chapter workflow (STOP at each gate and wait for my "approved")
 Phase 1 - Trees from page images

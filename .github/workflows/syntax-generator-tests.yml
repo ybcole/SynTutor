@@ -1,0 +1,49 @@
+name: Syntax Generator model-free checks
+
+on:
+  push:
+    branches:
+      - milestone-02-syntax-generator
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  syntax-generator-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install JSON Schema validator
+        run: python -m pip install "jsonschema>=4.23,<5" "inflect>=7.5,<8" "lemminflect>=0.2.3,<0.3" "flask>=3.0,<4"
+      - name: Compile new backend modules
+        run: python -m py_compile server/br_tree.py server/cambridge_registry.py
+      - name: Run isolated Syntax Generator tests
+        working-directory: server
+        run: python -m unittest -v test_br_tree test_cambridge_registry test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract
+
+      - name: Run all existing B-R chapter validators
+        working-directory: web/content/book
+        run: |
+          set -e
+          for validator in validate_ch*.py; do
+            echo "=== $validator ==="
+            log="/tmp/${validator%.py}.log"
+            python "$validator" > "$log"
+            cat "$log"
+            if grep -Eq '(^PROBLEMS$|^FAIL |FAILED|Traceback)' "$log"; then
+              echo "B-R source validator reported a failure: $validator"
+              exit 1
+            fi
+          done
+
+      - name: Run existing model-free parser/matrix and correction regressions
+        working-directory: server
+        run: |
+          python test_licensing.py
+          python test_corrector.py
+      - name: Validate canonical tree schema JSON
+        run: python -m json.tool grammar/br_tree.schema.json > /dev/null
