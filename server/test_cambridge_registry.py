@@ -50,6 +50,37 @@ class CambridgeRegistryTests(unittest.TestCase):
             encoding="utf-8",
         )
 
+    def test_malformed_registry_root_fails_closed(self):
+        (self.root / "grammar" / "runtime_registry.json").write_text(
+            json.dumps(["not", "an", "object"]), encoding="utf-8"
+        )
+        result = load_runtime_registry(self.root)
+        self.assertEqual(result["active_rules"], [])
+        self.assertEqual(result["diagnostics"][0]["code"], "INVALID_REGISTRY")
+
+    def test_malformed_source_pages_block_runtime_rule(self):
+        self.add_rule("same")
+        path = self.root / "grammar" / "rules" / "test.json"
+        rule = json.loads(path.read_text(encoding="utf-8"))[0]
+        rule["sources"] = "not-an-array"
+        path.write_text(json.dumps([rule]), encoding="utf-8")
+        result = load_runtime_registry(self.root)
+        self.assertEqual(result["active_rules"], [])
+        self.assertIn("source page evidence is missing or malformed",
+                      result["diagnostics"][0]["message"])
+
+    def test_variety_restricted_source_requires_string_variety(self):
+        self.add_rule("same")
+        path = self.root / "grammar" / "rules" / "test.json"
+        rule = json.loads(path.read_text(encoding="utf-8"))[0]
+        rule["rule_type"] = "variety_restricted"
+        rule["variety"] = 5
+        path.write_text(json.dumps([rule]), encoding="utf-8")
+        result = load_runtime_registry(self.root)
+        self.assertEqual(result["active_rules"], [])
+        self.assertIn("variety-restricted rule must declare its variety",
+                      result["diagnostics"][0]["message"])
+
     def test_empty_allow_list_enables_no_rules(self):
         result = load_runtime_registry(self.root)
         self.assertEqual(result["active_rules"], [])
