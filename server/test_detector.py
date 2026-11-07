@@ -1,8 +1,18 @@
 """Contract tests: CoLA is an advisory signal, never a rule authority."""
 
+import importlib.util
+from pathlib import Path
 import unittest
 
-from detector import combine
+# Load the real detector module by path. test_api_contract installs temporary
+# sys.modules stubs while importing api.py; that stub must not leak into this
+# independent unit test.
+_SPEC = importlib.util.spec_from_file_location(
+    "_syntutor_detector_under_test", Path(__file__).with_name("detector.py")
+)
+_DETECTOR = importlib.util.module_from_spec(_SPEC)
+_SPEC.loader.exec_module(_DETECTOR)
+combine = _DETECTOR.combine
 
 
 class CoLAAdvisoryContractTests(unittest.TestCase):
