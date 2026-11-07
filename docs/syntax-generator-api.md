@@ -54,7 +54,7 @@ The live Benepar-to-B-R mapping remains deliberately conservative:
 
 1. Exact sentence-aligned B-R gold references are used only when the reference has IMG evidence, is not marked incorrect, matches the selected convention version, and passes structural validation.
 2. If distinct matching gold references produce different structures, the result is unresolved rather than arbitrarily selecting one.
-3. The non-reference live mapping is the narrowly supported V2 `S → NP VP` shell. It leaves NP and VP internal structure as triangles; it does not rename arbitrary Penn labels into B-R categories.
+3. The non-reference live mapping is the narrowly supported V2 `S → NP VP` shell. It leaves NP and VP internal structure as triangles; it does not rename arbitrary Penn labels into B-R categories. Terminal punctuation is retained in the full sentence and raw candidate diagnostics but is not fabricated as a phrase-marker leaf; punctuation inside a phrase that prevents safe alignment remains unresolved.
 4. Chapter 7 Appendix D1 references are filtered separately from V7 core references.
 5. Other Benepar structures, unsupported profiles, token-yield mismatches, or unsupported punctuation/mapping cases remain unresolved with diagnostics and the raw candidate preserved.
 
@@ -82,7 +82,7 @@ When the correction assembler returns a suggestion, the response retains the ori
 
 | HTTP status | Meaning |
 |---|---|
-| `400` | Invalid sentence index, chapter/profile combination, or convention version. |
+| `400` | Non-integer, negative, or out-of-range sentence index; invalid chapter/profile combination; or unsupported convention version. |
 | `422` | Empty input or parser-level parse failure. |
 | `503` | Backend/model service unavailable or unexpected analysis failure. |
 
@@ -96,9 +96,9 @@ A separate `.github/workflows/syntax-generator-runtime.yml` installs the pinned 
 
 ## Outstanding before Milestone 02 approval
 
-- General source-grounded Benepar-to-B-R mappings for supported V3–V10 constructions remain incomplete.
-- No Cambridge rules are runtime-enabled; no deterministic Cambridge sentence-level evaluator or minimal-pair/exception suite is active.
-- Real spaCy/Benepar-backed end-to-end parsing, multi-sentence behavior, latency, and missing-model fallback need runtime verification.
-- The legacy matrix remains the grammaticality verdict source; it is not a Cambridge evaluator.
-- The frontend still renders the legacy raw candidate tree. This milestone preserves the authority distinction in the API; it does not redesign the UI or migrate the Builder.
+- The current candidate normalizer does not generally restructure Benepar analyses into V3–V10 B-R trees. Exact eligible IMG source references and the narrow V2 shell are supported; other candidate shapes remain unresolved unless a separately reviewed source mapping is added.
+- No Cambridge rule is runtime-enabled because the 196 extracted rule records retain unverified B-R mappings and have not cleared the independent-review/runtime gates. The generic evaluator primitive is tested synthetically; rule-specific positive/negative/exception tests remain pending until a rule is eligible.
+- The parser-backed workflow has been added but has not yet produced a successful run in this environment. Its actual spaCy/Benepar parse, multi-sentence, and API tests remain unverified; GitHub Actions has returned startup failures before creating jobs on recent branch commits.
+- Runtime latency/performance and deployed-model missing-model fallback still need evidence. HTTP 400/422/503 error contracts are covered by model-free route tests, but that does not verify the deployed model service.
+- The current frontend retains the Benepar candidate as a diagnostic/compatibility tree and shows the authority notice; it has not been migrated to render the new M1 envelope as its primary interactive tree. This is not a UI redesign or Builder migration.
 - Exact B-R and Cambridge edition/page metadata still needs confirmation against original source PDFs.
