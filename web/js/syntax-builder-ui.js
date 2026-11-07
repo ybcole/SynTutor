@@ -1,3 +1,5 @@
+import { API_BASE } from './config.js';
+import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 // Syntax Builder view: a free-form canvas node editor for assembling syntax
 // trees by hand. It is shown as a sidebar destination (like Achievements) and
 // also drives the Matrix Quiz's "rebuild the tree" questions.
@@ -17,7 +19,7 @@
 //   right-click (hold) + drag -> marquee-select multiple nodes
 
 import {
-  POS_TYPES, PHRASE_NODE_TYPES, NODE_TYPE_GROUPS, NODE,
+  POS_TYPES, PHRASE_NODE_TYPES, NODE_TYPE_GROUPS, NODE, toCanonicalEnvelope, fromCanonicalEnvelope,
   createModel, addWordsFromText, addPhrase, moveNode, setType,
   removeNode, connect, canConnect, disconnect,
   dotOf, dotHit, nodeHit, endpointOf, endpointHit, toTree, compareTrees, leavesOf, leafText,
@@ -180,6 +182,8 @@ export function clearBuilder() {
 // ---------------------------------------------------------------------------
 
 export function openBuilderView(opts = {}) {
+  state.canonicalProfile = opts.canonicalTree?.convention_profile || null;
+  if (opts.canonicalTree) state.model = fromCanonicalEnvelope(opts.canonicalTree);
   const bar = document.getElementById('canvasControls');
   const canvas = document.getElementById('builderCanvas');
   const treeCanvas = document.getElementById('treeCanvas');
@@ -323,6 +327,7 @@ function measureWords(nodes) {
 }
 
 export function closeBuilderView() {
+  evidenceRequest += 1;
   const bar = document.getElementById('canvasControls');
   const canvas = document.getElementById('builderCanvas');
   const treeCanvas = document.getElementById('treeCanvas');
@@ -762,7 +767,7 @@ async function validateWords(nodes) {
   const words = nodes.map((n) => n.text);
   let results = null;
   try {
-    const res = await fetch('/api/words', {
+    const res = await fetch(`${API_BASE}/api/words`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ words }),
@@ -1120,6 +1125,22 @@ function describeNode(node) {
 // Re-render the node inspector for the current selection, and nudge the
 // bottom-right explain pane so the fresh detail card is visible without
 // yanking the rest of the workspace (block: 'nearest' only scrolls if needed).
+let evidenceRequest = 0;
+let lastEvidenceSnapshot = null;
+async function showBuilderEvidence(nodeId = null) {
+  const version = ++evidenceRequest;
+  try {
+    const tree = toCanonicalEnvelope(state.model, state.canonicalProfile);
+    const snapshot = JSON.stringify(tree);
+    lastEvidenceSnapshot = snapshot;
+    const data = await requestEvidence(tree, nodeId);
+    if (snapshot !== JSON.stringify(toCanonicalEnvelope(state.model, state.canonicalProfile))) return;
+    if (version === evidenceRequest && isBuilderOpen()) renderEvidence(data);
+  } catch (error) {
+    if (version === evidenceRequest && isBuilderOpen()) renderEvidence({ status: "ANALYSIS_UNRESOLVED", diagnostics: [{ message: error.message }], channels: {} });
+  }
+}
+
 function explainSelected() {
   const ids = [...state.selection];
   const node = ids.length ? state.model.nodes[ids[ids.length - 1]] : null;
@@ -1129,6 +1150,7 @@ function explainSelected() {
   }
   loadInfo().then(() => {
     renderNodeDetail(null, describeNode(node), node);
+    showBuilderEvidence(node.id);
     document.getElementById('explainNode')
       ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   });
@@ -1671,7 +1693,7 @@ async function validateBuiltTree() {
   let verdictLine = null;
   if (sentence.trim()) {
     try {
-      const res = await fetch('/api/parse', {
+      const res = await fetch(`${API_BASE}/api/parse`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: sentence }),
@@ -1693,6 +1715,7 @@ async function validateBuiltTree() {
   state.treeCorrect = errors.size === 0 && treeIsComplete();
   draw();
   reportBuildResult(sentence, errors, verdictLine);
+  await showBuilderEvidence();
 }
 
 function disconnectedDetail(n) {
@@ -1752,9 +1775,9 @@ function reportBuildResult(sentence, errors, verdictLine) {
     surface: sentence,
     status: 'valid',
     role: 'Sentence',
-    text: `“${sentence}” is connected and every node is structurally valid.`,
+    text: `“${sentence}” is connected. This graph check does not establish grammatical correctness.`,
   }, root || { id: '__summary__' });
-  state.onStatus('Tree built — the sentence and its structure are valid.');
+  state.onStatus('Tree connected. Grammatical correctness requires reviewed source evidence.');
 }
 
 // ---------------------------------------------------------------------------
@@ -1786,6 +1809,16 @@ function paintOrder() {
 }
 
 function draw() {
+  if (lastEvidenceSnapshot !== null) {
+    let current;
+    try { current = JSON.stringify(toCanonicalEnvelope(state.model, state.canonicalProfile)); }
+    catch { current = null; }
+    if (current !== lastEvidenceSnapshot) {
+      lastEvidenceSnapshot = null;
+      evidenceRequest += 1;
+      document.querySelector('[data-shared-evidence]')?.remove();
+    }
+  }
   if (!state.ctx) return;
   cancelAnimationFrame(state.frame);
   state.frame = requestAnimationFrame(render);

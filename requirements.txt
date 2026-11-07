@@ -5,3 +5,4 @@ inflect>=7.5,<8
 lemminflect>=0.2.3,<0.3
 flask>=3.0,<4
 symspellpy>=6.10,<7
+jsonschema>=4.23,<5

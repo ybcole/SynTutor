@@ -7,8 +7,8 @@ Use this as the project sign-off register. Mark a box only when there is evidenc
 - [ ] Confirm exact Noel Burton-Roberts book title, edition, and page numbering represented by the supplied source PDFs.
 - [ ] Confirm exact Cambridge edition and the bibliographic metadata used in the extraction files.
 - [x] Inventory all B-R chapter JSONs, tree validators, evidence flags, exercise-answer fields, book flags, fragments, and unresolved items.
-- [x] Inventory every Cambridge extraction, merged rule, concept, conflict, cross-reference, and uncertain item.
-- [x] Record which Cambridge sections have been extracted and which remain unprocessed.
+- [ ] Inventory every Cambridge extraction, merged rule, concept, conflict, cross-reference, and uncertain item.
+- [ ] Record which Cambridge sections have been extracted and which remain unprocessed.
 - [x] Record the independent-review state separately from human approval.
 - [x] Inventory the legacy rule matrix, parser labels, lesson claims, quiz examples, and old progress rows.
 - [ ] Approve a migration and rollback strategy before changing live user data.
@@ -16,31 +16,31 @@ Use this as the project sign-off register. Mark a box only when there is evidenc
 ## 1. Linguistic architecture and source crosswalk
 
 - [x] Approve a canonical B-R tree JSON schema.
-- [x] Approve a convention-profile registry for V1–V10 and the declared final profile.
+- [ ] Approve a convention-profile registry for V1–V10 and the declared final profile.
 - [x] Confirm the rule for using chapter-specific convention versions in chapter lessons.
 - [x] Define how functions are derived from structural positions rather than encoded as invented nodes.
 - [x] Define how gaps, indices, triangles, elided elements, movement metadata, and accepted alternatives are represented.
 - [x] Build a B-R ↔ Cambridge terminology/analysis crosswalk.
 - [x] Resolve mappings currently marked `unverified` or explicitly retain them as unresolved.
-- [ ] Create a rule runtime registry separate from extraction approval status.
+- [x] Create a rule runtime registry separate from extraction approval status.
 - [x] Define which rule types can trigger errors and which only inform teaching/description.
-- [x] Document how variety, register, exceptions, ambiguity, and low-confidence analysis affect verdicts.
-- [x] Approve copyright handling for stored examples, book answers, and learner-visible content.
+- [ ] Document how variety, register, exceptions, ambiguity, and low-confidence analysis affect verdicts.
+- [ ] Approve copyright handling for stored examples, book answers, and learner-visible content.
 
 ## 2. Syntax Generator
 
 - [x] Preserve raw Benepar parse output for diagnostics.
-- [ ] Build a B-R normalization adapter.
+- [x] Build a B-R normalization adapter.
 - [ ] Implement safe mappings/restructuring for supported categories and constructions.
 - [x] Add explicit unresolved/alternative-analysis outcomes.
-- [ ] Add B-R tree structural validation.
+- [x] Add B-R tree structural validation.
 - [x] Validate word order and token-span alignment.
-- [ ] Validate feature legality and chapter convention restrictions.
-- [ ] Validate gaps, indices, triangles, ellipsis, and accepted alternatives.
-- [ ] Add gold-tree tests using the B-R chapter JSONs.
+- [x] Validate feature legality and chapter convention restrictions.
+- [x] Validate gaps, indices, triangles, ellipsis, and accepted alternatives.
+- [x] Add gold-tree tests using the B-R chapter JSONs.
 - [ ] Add Cambridge minimal-pair and constraint tests.
-- [ ] Add regression tests for the legacy error corpus.
-- [ ] Define CoLA's advisory role and prevent it from inventing rule explanations.
+- [x] Add regression tests for the legacy error corpus.
+- [x] Define CoLA's advisory role and prevent it from inventing rule explanations.
 - [ ] Implement a shared normalized analysis payload.
 - [ ] Verify full sentence and multi-sentence handling.
 - [ ] Add performance/error/fallback behavior for parser and normalizer failures.
@@ -273,3 +273,43 @@ The three boxes marked above are supported by code and focused tests: the API re
 - The B-R edition/PDF, full parser/model runtime, canonical frontend renderer adoption, and end-to-end API integration remain outstanding. The new canvas notice is an authority warning, not canonical rendering.
 
 **Milestone 02 remains unchecked and not approved for downstream use.**
+
+
+## Milestone 02 continuation log — 7 November 2026
+
+**Branch:** `feature/milestone-02-completion-2026-11-07`  
+**Pull request:** [#30](https://github.com/ybcole/SynTutor/pull/30), draft and unmerged  
+**Status:** Incomplete; M2 remains `[ ]`.
+
+The Generator now calls the shared B-R normalizer and exposes the M1-approved envelope from `docs/canonical-burton-roberts-tree.schema.json` inside `br_analysis.tree`. Exact IMG sentence/profile matches use the read-only importer. Source conflicts, invalid projections, lookup failures, validator failures and unsupported candidate conversions remain explicitly unresolved. The candidate adapter still supports only the narrow V2 `S → NP VP` shell when no exact source tree matches. Sentence-final punctuation is retained in the sentence/raw candidate, not fabricated as a B-R leaf.
+
+Flask, stdlib and hosted routes forward chapter convention, Chapter 7 Appendix D1, selected Cambridge variety, and strict sentence indexes. Invalid or out-of-range indexes are rejected rather than silently clamped. Corrected sentences are parsed and normalized independently using the same selected B-R profile. The frontend authority notice now reads the actual `br_analysis.status`; the tree canvas itself remains on the raw Benepar diagnostic candidate.
+
+A deterministic Cambridge evaluator and machine-readable runtime-check schema have been added. The evaluator only consumes allow-listed rules, restricts the supported token-pattern primitive to sentence scope, handles exceptions per occurrence, blocks non-constraint categories, and requires an explicit matching variety for variety-restricted rules. The repository registry still enables zero rules: the 196 extracted Cambridge records retain unverified B-R crosswalk mappings and have not passed runtime eligibility. Synthetic evaluator tests do not establish Cambridge grammaticality judgments.
+
+The new model-free suite includes API-level M1 schema tests, an API-normalizer corpus audit over sentence-aligned IMG records, Cambridge evaluator/registry/schema tests, normalizer failure-path tests, missing-model transport tests, and variety routing. The separate parser-backed workflow installs spaCy/Benepar and exercises real parsing. Neither workflow has a current-head successful execution record yet.
+
+**Verification boundary:** GitHub Actions run [#35](https://github.com/ybcole/SynTutor/actions/runs/42346333169) passed on an earlier snapshot (46 isolated tests, 24 importer tests, 252 source-record audit, 11 chapter validators, legacy licensing/corrector regressions and schema checks). It predates the current M1 API-envelope integration, Cambridge evaluator, API-normalizer corpus audit, strict-index/variety changes, frontend notice update and parser-backed workflow. Newer Actions runs, including [42349400228](https://github.com/ybcole/SynTutor/actions/runs/42349400228), have failed at startup with no jobs created; retry was rejected. A local clone was blocked because `github.com` could not be resolved. Do not report the current-head tests as passed.
+
+**Remaining unchecked M2 items:** actual current-head tests and schema audit; parser-backed single-/multi-sentence and corrected parsing; latency and deployed-model fallback; source-approved Cambridge rule execution and rule-specific minimal-pair tests (no rules currently eligible); any further source-backed V3–V10 candidate transformations required by the supported Generator scope; and confirmation of exact source edition/page metadata. The M1 canonical API contract is now wired in code, but its current-head API schema tests remain unexecuted. No M3, lesson, quiz, Builder, database or learner-progress work was performed.
+
+The CoLA advisory-role item remains checked based on the earlier passing contract tests. The shared normalized payload item is unchecked until the current M1-envelope API output and its schema tests execute successfully. Milestone 02 itself remains `[ ]` pending successful current-head tests and the approval report.
+
+## M2 continuation — latest verification state
+
+Implementation head: `e51c89c85e17ee8151419ab7739cf1ce03774c5e` on `feature/milestone-02-completion-2026-11-07` and `milestone-02-syntax-generator`.
+
+The canonical M1 API envelope, source-reference importer, V2 fail-closed candidate mapping, Cambridge evaluator boundary, profile/transport contracts, parser-runtime workflow, and associated tests are present. However, the latest Actions attempt [42350898513](https://github.com/ybcole/SynTutor/actions/runs/42350898513) is a pre-job `startup_failure`: workflow metadata `name=""`, `path="BuildFailed"`, `workflow_id=410117115`, zero jobs. The previous green run #35 is historical and does not cover the current API/evaluator/runtime changes. A local clone was blocked by DNS. No new M2 acceptance checkbox is checked on the basis of unexecuted tests. Milestone 02 remains `[ ]`.
+
+The fail-closed conversion boundary remains deliberate: exact eligible source records and the supported V2 shell can normalize; unsupported V3–V10 candidate forms remain unresolved. The Cambridge allow-list remains empty because 196 extracted rules have unverified B-R mappings and have not cleared independent review/runtime gates. Model-backed parsing, correction reparse, latency, and missing-model behavior still need an actual successful parser workflow run.
+
+
+## M2–M3 remediation continuation — 7 November 2026
+
+Implementation defects and branch/layout conflicts have been repaired. See
+`docs/reports/milestones-02-03-remediation.md` for fresh model-free, real-parser,
+HTTP and browser results. The shared explanation service is now integrated in
+Generator and Builder. Exact source editions, independent review/crosswalk
+resolution, reviewed production templates and supported source coverage remain
+open. **M2 and M3 stay unchecked; source-backed M4 publication is not certified.**
+No prior checkbox or acceptance criterion was weakened.

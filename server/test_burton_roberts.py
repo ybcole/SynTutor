@@ -3,7 +3,14 @@
 Run with: python -m unittest server.test_burton_roberts
 """
 import unittest
+from unittest.mock import patch
 import re
+import json
+from pathlib import Path
+
+from jsonschema import Draft202012Validator
+
+from server.br_tree import _atoms, _source_yield, load_reference_records
 
 from server.burton_roberts import (
     align_correction,
@@ -104,10 +111,12 @@ class NormalizationTests(unittest.TestCase):
         self.assertIn("PROFILE_MAPPING_NOT_APPROVED", [r["code"] for r in result["reasons"]])
         self.assertIn("raw_candidate_tree", result["diagnostics"])
 
-    def test_punctuation_prevents_unsupported_promotion(self):
+    def test_sentence_final_punctuation_is_not_fabricated_as_a_phrase_marker_node(self):
         result = normalize_benepar_candidate(candidate("The students laugh."), convention_profile(2))
-        self.assertEqual(result["status"], "unresolved")
-        self.assertIn("PUNCTUATION_POLICY_UNVERIFIED", [r["code"] for r in result["reasons"]])
+        self.assertEqual(result["status"], "normalized", result.get("reasons"))
+        self.assertEqual([row["text"] for row in result["tree"]["tokens"]],
+                         ["The", "students", "laugh"])
+        self.assertEqual(result["tree"]["sentence"], "The students laugh.")
 
     def test_correction_alignment_keeps_edit_types_and_spans(self):
         cases = [
@@ -137,7 +146,7 @@ class NormalizationTests(unittest.TestCase):
         result = build_canonical_analysis(candidate("The students laugh"), chapter=2,
                                           correction=correction)
         self.assertEqual(result["status"], "normalized")
-        self.assertIsNotNone(result["diagnostics"]["raw_candidate_tree"])
+        self.assertIsNotNone(result["parser_diagnostics"]["raw_candidate_tree"])
         self.assertIsNotNone(result["correction_alignment"])
         self.assertEqual(result["correction_alignment"]["source_edits"], correction["edits"])
 
@@ -434,9 +443,10 @@ class CanonicalHardeningTests(unittest.TestCase):
         self.assertEqual(result["status"], "normalized", result.get("errors"))
         vp = result["tree"]["root"]["children"][1]
         verb = vp["children"][0]
+        terminal = verb["children"][0]
         self.assertEqual(vp["source_refs"], ["VP1"])
         self.assertTrue(any(note.startswith("source_node_metadata:multiword=")
-                            for note in verb.get("notes", [])))
+                            for note in terminal.get("notes", [])))
 
     def test_importer_preserves_gap_symbols_and_verb_type_metadata(self):
         gap_record = {
@@ -506,6 +516,217 @@ class CanonicalHardeningTests(unittest.TestCase):
         self.assertFalse(result["valid"])
         self.assertTrue(any("source_refs must be an array of strings" in error
                             for error in result["errors"]))
+
+
+class GeneratorCanonicalEnvelopeTests(unittest.TestCase):
+    schema_path = Path(__file__).resolve().parents[1] / "docs" / "canonical-burton-roberts-tree.schema.json"
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    validator = Draft202012Validator(schema)
+
+    @staticmethod
+    def lexical_analysis(sentence):
+        return {
+            "sentence": sentence,
+            "sentence_index": 0,
+            "sentences": [{"start": 0, "end": len(sentence), "text": sentence}],
+            "tokens": [],
+            "parse_string": "(candidate not used for exact B-R source match)",
+            "root": {"id": "candidate", "type": "S", "children": []},
+        }
+
+    @staticmethod
+    def v7_record(tree_id, middle_label="NOM", appendix_nom=False):
+        return {
+            "_chapter": 7, "_convention_version": "V7",
+            "id": tree_id, "fig": "[3]", "page": 141,
+            "status": "IMG", "appendix_nom": appendix_nom,
+            "sentence": "the clowns",
+            "tree": {
+                "label": "NP", "children": [
+                    {"label": "DET", "children": [
+                        {"label": "ART", "children": [{"word": "the"}]},
+                    ]},
+                    {"label": middle_label, "children": [
+                        {"label": "N", "children": [{"word": "clowns"}]},
+                    ]},
+                ],
+            },
+        }
+
+    def assert_m1_envelope(self, result):
+        self.assertEqual(result["status"], "normalized")
+        self.assertIsInstance(result["tree"], dict)
+        errors = list(self.validator.iter_errors(result["tree"]))
+        self.assertEqual(
+            errors, [],
+            [f"{error.json_path}: {error.message}" for error in errors],
+        )
+
+    def test_exact_img_source_record_returns_m1_canonical_envelope(self):
+        result = build_canonical_analysis(
+            self.lexical_analysis("the clowns"), chapter=7,
+            reference_records=[self.v7_record("ch7-test")],
+        )
+        self.assert_m1_envelope(result)
+        self.assertEqual(result["tree"]["source"]["source_record_id"], "ch7-test")
+        self.assertEqual(result["tree"]["source"]["review_status"], "NOT_REVIEWED")
+        self.assertIn("image evidence only", result["tree"]["source"]["review_note"])
+        self.assertEqual(result["tree"]["root"]["label"], "NP")
+        self.assertEqual(result["tree"]["convention_profile"]["profile_id"], "V7-CORE")
+
+    def test_explicit_source_review_state_is_preserved(self):
+        record = self.v7_record("ch7-reviewed")
+        record["review_status"] = "INDEPENDENTLY_REVIEWED"
+        record["review_note"] = "Independent source review recorded."
+        result = build_canonical_analysis(
+            self.lexical_analysis("the clowns"), chapter=7,
+            reference_records=[record],
+        )
+        self.assert_m1_envelope(result)
+        self.assertEqual(
+            result["tree"]["source"]["review_status"], "INDEPENDENTLY_REVIEWED")
+        self.assertEqual(
+            result["tree"]["source"]["review_note"], "Independent source review recorded.")
+
+    def test_unrecognized_source_review_state_is_retained_as_unreviewed(self):
+        record = self.v7_record("ch7-unknown-review")
+        record["review_status"] = "pending-review"
+        result = build_canonical_analysis(
+            self.lexical_analysis("the clowns"), chapter=7,
+            reference_records=[record],
+        )
+        self.assert_m1_envelope(result)
+        source = result["tree"]["source"]
+        self.assertEqual(source["review_status"], "NOT_REVIEWED")
+        self.assertIn("pending-review", source["review_note"])
+        self.assertIn("image evidence only", source["review_note"])
+
+    def test_exact_gold_preserves_submitted_punctuation_and_rebases_character_offsets(self):
+        result = build_canonical_analysis(
+            self.lexical_analysis("the   clowns!"), chapter=7,
+            reference_records=[self.v7_record("ch7-spaced")],
+        )
+        self.assert_m1_envelope(result)
+        envelope = result["tree"]
+        self.assertEqual(envelope["sentence"], "the   clowns!")
+        self.assertEqual(envelope["tokens"][0]["char_span"], [0, 3])
+        self.assertEqual(envelope["tokens"][1]["char_span"], [6, 12])
+
+    def test_conflicting_exact_gold_references_remain_unresolved(self):
+        records = [
+            self.v7_record("ch7-a", "NOM"),
+            self.v7_record("ch7-b", "PHRASE-b"),
+        ]
+        result = build_canonical_analysis(
+            self.lexical_analysis("the clowns"), chapter=7,
+            reference_records=records,
+        )
+        self.assertEqual(result["status"], "unresolved")
+        self.assertIsNone(result["tree"])
+        self.assertEqual(result["diagnostics"][0]["code"], "AMBIGUOUS_GOLD_REFERENCE")
+
+    def test_v7_appendix_profile_does_not_select_core_gold_record(self):
+        records = [
+            self.v7_record("v7-core", appendix_nom=False),
+            self.v7_record("v7-appendix", appendix_nom=True),
+        ]
+        result = build_canonical_analysis(
+            self.lexical_analysis("the clowns"), chapter=7, appendix_nom=True,
+            reference_records=records,
+        )
+        self.assert_m1_envelope(result)
+        self.assertEqual(result["tree"]["source"]["source_record_id"], "v7-appendix")
+        self.assertEqual(result["tree"]["convention_profile"]["profile_id"], "V7-APPENDIX-D1")
+
+    def test_free_analysis_uses_final_d1_profile_and_m1_schema(self):
+        record = {
+            "_chapter": 10, "_convention_version": "V10",
+            "id": "ch10-infinitive", "page": 226, "fig": "[11]",
+            "status": "IMG", "sentence": "to taste the wine",
+            "tree": {
+                "label": "VP", "children": [
+                    {"label": "AUX", "features": ["-tense"], "children": [{"word": "to"}]},
+                    {"label": "VP", "children": [
+                        {"label": "V", "features": ["trans"], "children": [{"word": "taste"}]},
+                        {"label": "NP", "triangle": True, "words": ["the", "wine"]},
+                    ]},
+                ],
+            },
+        }
+        result = build_canonical_analysis(
+            self.lexical_analysis("to taste the wine"), reference_records=[record],
+        )
+        self.assert_m1_envelope(result)
+        self.assertEqual(result["tree"]["convention_profile"]["version"], "FINAL")
+        self.assertEqual(result["tree"]["convention_profile"]["profile_id"], "FINAL-D1")
+        self.assertTrue(result["tree"]["convention_profile"]["appendix_nom"])
+
+
+    def test_unexpected_candidate_normalizer_error_becomes_unresolved(self):
+        analysis = self.lexical_analysis("A novel sentence with no source match")
+        with patch("server.burton_roberts._matching_gold_records", return_value=[]), \
+             patch("server.burton_roberts.normalize_benepar_candidate",
+                   side_effect=RuntimeError("synthetic normalizer fault")):
+            result = build_canonical_analysis(analysis, chapter=3)
+
+        self.assertEqual(result["status"], "unresolved")
+        self.assertIsNone(result["tree"])
+        self.assertEqual(result["diagnostics"][0]["code"], "NORMALIZER_FAILURE")
+        self.assertIn("synthetic normalizer fault", result["diagnostics"][0]["message"])
+        self.assertIn("raw_candidate_tree", result["parser_diagnostics"])
+
+    def test_gold_lookup_error_becomes_unresolved_without_candidate_fallback(self):
+        analysis = self.lexical_analysis("A novel sentence with no source match")
+        with patch("server.burton_roberts._matching_gold_records",
+                   side_effect=RuntimeError("synthetic source-index fault")), \
+             patch("server.burton_roberts.normalize_benepar_candidate") as candidate_fallback:
+            result = build_canonical_analysis(analysis, chapter=3)
+
+        self.assertEqual(result["status"], "unresolved")
+        self.assertIsNone(result["tree"])
+        self.assertEqual(result["diagnostics"][0]["code"], "GOLD_LOOKUP_FAILURE")
+        candidate_fallback.assert_not_called()
+
+    def test_img_sentence_aligned_gold_corpus_uses_the_api_normalizer_and_m1_schema(self):
+        records = load_reference_records()
+        aligned = []
+        normalized = 0
+        unresolved = 0
+        for record in records:
+            if record.get("status") != "IMG" or record.get("correct") is False:
+                continue
+            sentence = record.get("sentence")
+            chapter = record.get("_chapter")
+            version = record.get("_convention_version")
+            tree = record.get("tree")
+            if not isinstance(sentence, str) or not isinstance(tree, dict) or not chapter or not version:
+                continue
+            if _source_yield(tree) != _atoms(sentence):
+                continue
+            aligned.append(record)
+            appendix_nom = bool(record.get("appendix_nom", False)) if chapter == 7 else None
+            result = build_canonical_analysis(
+                {"sentence": sentence, "sentence_index": 0, "tokens": [],
+                 "sentences": [{"start": 0, "end": len(sentence), "text": sentence}],
+                 "root": {"type": "S", "children": []}},
+                chapter=chapter, appendix_nom=appendix_nom,
+                reference_records=[record],
+            )
+            if result["status"] == "normalized":
+                self.assert_m1_envelope(result)
+                normalized += 1
+            else:
+                unresolved += 1
+                self.assertIsNone(result["tree"])
+                self.assertTrue(result["diagnostics"])
+        self.assertGreater(len(aligned), 0)
+        self.assertEqual(normalized + unresolved, len(aligned))
+        print(
+            "Generator M1-envelope source audit: "
+            f"{len(aligned)} sentence-aligned IMG records; "
+            f"{normalized} normalized and schema-valid; "
+            f"{unresolved} explicitly unresolved."
+        )
 
 
 if __name__ == "__main__":

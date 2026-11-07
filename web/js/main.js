@@ -1,3 +1,4 @@
+import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { loadClerk, createSupabaseClient, currentUserEmail, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
 import { API_BASE } from './config.js';
 import { TreeRenderer } from './renderer.js';
@@ -673,11 +674,11 @@ function enterLessonsMode() {
 
 // Syntax Builder: the standalone node editor. No Grammar Tutor pipeline and
 // no diagnostics may fire while it owns the canvas.
-function enterBuilderMode() {
+function enterBuilderMode(canonicalTree = null) {
   teardownWorkspace();
   setQuizMode(false);
   setWorkspaceView('builder');
-  openBuilderView();
+  openBuilderView(canonicalTree ? { canonicalTree } : {});
 }
 
 // Leaderboard / Achievements: a full-bleed workspace view, docked next to
@@ -1658,28 +1659,51 @@ async function postParse(text, index = null) {
     const data = await res.json().catch(() => ({}));
     return { error: { status: res.status, error: data.error, hint: data.hint } };
   }
-  return { payload: await res.json() };
+  const payload = await res.json();
+  try {
+    payload.explanation_evidence = await requestEvidence(payload.br_analysis?.tree, null, { variety: payload.meta?.cambridge_variety });
+  } catch (error) {
+    payload.explanation_evidence = null;
+    log(`Book evidence unavailable: ${error.message}`);
+  }
+  return { payload };
 }
 
 // The Grammar Tutor canvas still renders the legacy Benepar graph. Make its
 // authority explicit so it cannot be mistaken for the canonical B-R projection.
 function setTreeAuthorityNotice(payload) {
+  renderEvidence(payload?.explanation_evidence);
   const notice = document.querySelector('#treeAuthorityNotice');
   if (!notice) return;
-  const status = payload?.canonical_analysis?.status
-    || payload?.meta?.canonical_analysis_status
+  const analysis = payload?.br_analysis;
+  const status = analysis?.status
+    || payload?.meta?.br_normalization_status
     || 'unavailable';
-  const detail = (payload?.canonical_analysis?.reasons || [])
-    .map((row) => row?.detail).find(Boolean);
+  const detail = (analysis?.diagnostics || [])
+    .map((row) => row?.message || row?.detail).find(Boolean)
+    || (analysis?.reasons || []).map((row) => row?.detail).find(Boolean);
   if (status === 'normalized') {
-    notice.textContent = 'B-R projection available in the response; this canvas still displays the Benepar diagnostic tree, not the canonical B-R tree.';
+    notice.textContent = 'Canonical B-R analysis is available in the response; this canvas displays the raw Benepar diagnostic candidate, not the canonical B-R tree.';
   } else {
-    notice.textContent = `Benepar diagnostic tree only — canonical B-R normalization is ${status}.${detail ? ` ${detail}` : ''}`;
+    notice.textContent = `Raw Benepar diagnostic candidate only — canonical B-R normalization is ${status}.${detail ? ` ${detail}` : ''}`;
   }
   notice.hidden = false;
+  document.querySelector('#openCanonicalBuilder')?.remove();
+  if (status === 'normalized' && analysis?.tree) {
+    const button = document.createElement('button');
+    button.id = 'openCanonicalBuilder';
+    button.type = 'button';
+    button.textContent = 'Explore B-R tree in Builder';
+    button.addEventListener('click', () => {
+      try { enterBuilderMode(analysis.tree); }
+      catch (error) { renderDiagnostic('Canonical tree cannot be edited yet', [error.message]); }
+    });
+    notice.after(button);
+  }
 }
 
 function clearTreeAuthorityNotice() {
+  document.querySelector('#openCanonicalBuilder')?.remove();
   const notice = document.querySelector('#treeAuthorityNotice');
   if (!notice) return;
   notice.hidden = true;
@@ -2248,6 +2272,7 @@ function handleNodeSelect(id) {
   const node = payload.nodes[id];
   if (!node || !detail) return;
   renderNodeDetail(session, detail, node);
+  renderEvidence(session?.payload?.explanation_evidence);
   // Keep the fresh detail card visible in the bottom-right explain pane
   // without yanking the rest of the workspace.
   document.querySelector('#explainNode')

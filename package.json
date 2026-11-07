@@ -14,7 +14,8 @@
     "tree:sheet": "python3 scripts/tree_sheet.py",
     "explanation-sheet": "python3 scripts/explanation_sheet.py",
     "remediation-sheet": "python3 scripts/remediation_sheet.py",
-    "test:rules": "python3 scripts/smoke_rules.py"
+    "test:rules": "python3 scripts/smoke_rules.py",
+    "test:evidence": "node scripts/test_explanation_evidence.js"
   },
   "license": "MIT"
 }

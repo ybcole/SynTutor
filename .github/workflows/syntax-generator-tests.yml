@@ -18,12 +18,18 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install JSON Schema validator
-        run: python -m pip install "jsonschema>=4.23,<5" "inflect>=7.5,<8" "lemminflect>=0.2.3,<0.3" "flask>=3.0,<4"
-      - name: Compile new backend modules
-        run: python -m py_compile server/br_tree.py server/cambridge_registry.py
+        run: python -m pip install -r requirements-test.txt
+      - name: Compile backend modules and tests
+        run: python -m compileall -q server
       - name: Run isolated Syntax Generator tests
         working-directory: server
-        run: python -m unittest -v test_br_tree test_cambridge_registry test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract
+        run: python -m unittest -v test_br_tree test_cambridge_registry test_cambridge_evaluator test_grammar_schema test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_stdlib_transport_contract test_detector test_explanations test_explanation_transports
+
+      - name: Run canonical gold-import regression tests
+        run: python -m unittest -v server.test_burton_roberts
+
+      - name: Audit all B-R chapter records
+        run: python scripts/audit_burton_roberts_import.py --expected-count 252
 
       - name: Run all existing B-R chapter validators
         working-directory: web/content/book
@@ -45,5 +51,21 @@ jobs:
         run: |
           python test_licensing.py
           python test_corrector.py
-      - name: Validate canonical tree schema JSON
-        run: python -m json.tool grammar/br_tree.schema.json > /dev/null
+      - name: Validate canonical and Cambridge schema JSON
+        run: |
+          python -m json.tool docs/canonical-burton-roberts-tree.schema.json > /dev/null
+          python -m json.tool grammar/br_tree.schema.json > /dev/null
+          python -m json.tool grammar/schema.json > /dev/null
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check browser modules and evidence bridge
+        run: |
+          node --check web/js/main.js
+          node --check web/js/syntax-builder-ui.js
+          npm run test:evidence
+          npm run test:correction
+          npm run test:quiz
+      - name: Build static application
+        run: npm run build
