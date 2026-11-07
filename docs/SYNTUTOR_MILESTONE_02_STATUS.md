@@ -106,7 +106,7 @@ Do not start Milestone 03 or downstream work that depends on complete canonical 
 - `web/js/main.js` — authority notice now reads `br_analysis.status` and labels the displayed raw Benepar canvas as diagnostic-only.
 
 **Tests and workflows**
-- Updated `server/test_api_contract.py`, `server/test_webapp_contract.py`, `server/test_br_tree.py`, `server/test_br_tree_fixtures.py`, `server/test_burton_roberts.py`, `server/test_cambridge_registry.py`.
+- Updated `server/test_api_contract.py`, `server/test_webapp_contract.py`, `server/test_stdlib_transport_contract.py`, `server/test_br_tree.py`, `server/test_br_tree_fixtures.py`, `server/test_burton_roberts.py`, `server/test_cambridge_registry.py`.
 - Added `server/test_cambridge_evaluator.py`, `server/test_grammar_schema.py`, `server/test_parser_runtime.py`, and `server/test_detector.py`.
 - Updated `.github/workflows/syntax-generator-tests.yml`; added `.github/workflows/syntax-generator-runtime.yml`.
 
@@ -136,7 +136,7 @@ Do not start Milestone 03 or downstream work that depends on complete canonical 
 
 That successful run predates the current M1 API-envelope routing, Cambridge evaluator additions/hardening, new API-normalizer gold-corpus audit, strict sentence-index and variety routing, frontend notice correction, and parser-backed workflow. It must not be described as verification of these later changes.
 
-**Current branch:** Recent GitHub Actions attempts have returned `startup_failure` / `BuildFailed` with zero jobs created. GitHub refused a retry for a startup-failed run. A local checkout/clone was also blocked because DNS could not resolve `github.com`. As a result, current-head `compileall`, the expanded model-free suite, the new M1 API corpus audit, and the parser-backed workflow have **not been executed successfully**.
+**Current branch:** Recent GitHub Actions attempts including [42349400228](https://github.com/ybcole/SynTutor/actions/runs/42349400228) have returned `startup_failure` / `BuildFailed` with zero jobs created; the latest two attempts each report zero jobs. GitHub refused a retry for a startup-failed run. A local checkout/clone was also blocked because DNS could not resolve `github.com`. As a result, current-head `compileall`, the expanded model-free suite, the new M1 API corpus audit, and the parser-backed workflow have **not been executed successfully**.
 
 ### 5. Linguistic/runtime boundaries and outstanding limitations
 
