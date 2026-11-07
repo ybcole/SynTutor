@@ -8,7 +8,7 @@ Local lesson XP is derived from unique completed version keys, not incremented
 on replay. Guest/offline caches are learning aids, not trusted leaderboard data.
 
 The UI saves after an answer/navigation/stage transition and shows account sync
-state. Network failure retains the device cache and offers retry. A storage
+state. Network failure retains the device cache and offers retry. Account requests have a five-second bound; after a failure, later activities remain local until an explicit retry, so an outage cannot stall every lesson action. A storage
 failure retains the in-memory session and clearly reports that persistence is
 unavailable. Signing out/changing account discards the active in-memory view;
 a late response cannot replace the new identity's store.

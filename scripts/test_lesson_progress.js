@@ -52,3 +52,12 @@ let last;
 for(const stage of STAGES){if(first[stage])await synced.act(first,{type:'answer',answer:first[stage].answer});last=await synced.act(first,{type:'advance'});}
 assert.equal(last.earned,0);assert.ok(last.progress.completed_at);assert.equal(lessonXp(synced.records),15);
 console.log('PASS: account server award outcomes are respected when another device completed the version.');
+
+let hungCalls=0;
+const hung=createLessonStore(course,{storage,userId:'user_hung',syncTimeoutMs:5,client:{rpc:()=>{hungCalls+=1;return new Promise(()=>{});}}});
+await hung.act(first,{type:'answer',answer:first.predict.answer});
+assert.match(hung.status,/timed out/);
+await hung.act(first,{type:'advance'});
+assert.equal(hungCalls,1,'failed account sync backs off until an explicit retry');
+assert.equal(hung.records[lessonKey(first)].stage,1,'offline learning continues after timeout');
+console.log('PASS: stalled account requests time out and do not block subsequent local activities.');

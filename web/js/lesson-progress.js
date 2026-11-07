@@ -1,10 +1,19 @@
 import { lessonKey, cleanProgress, reduceProgress, prerequisitesMet, completedCriteria } from './lesson-core.js';
 
-export function createLessonStore(course, { storage, userId = 'guest', client = null } = {}) {
+export function createLessonStore(course, { storage, userId = 'guest', client = null, syncTimeoutMs = 5000 } = {}) {
   const key = `syntutor:lessons:v1:${userId}`;
   let records = {}, status = userId === 'guest' ? 'Saved on this device' : 'Saved on this device; account sync pending';
   let queue = Promise.resolve();
   const remoteAwards = new Map();
+  let syncBlocked = false;
+  async function bounded(request) {
+    let timer;
+    const controller = new AbortController();
+    const job = typeof request.abortSignal === 'function' ? request.abortSignal(controller.signal) : request;
+    try {
+      return await Promise.race([job,new Promise((_resolve,reject) => { timer=setTimeout(() => { controller.abort();reject(new Error('Account sync timed out; progress is saved on this device. Retry when connected.')); },syncTimeoutMs); })]);
+    } finally { clearTimeout(timer); }
+  }
   function read() {
     if (!storage) { status = 'Progress storage unavailable; keep this page open'; return; }
     try {
@@ -27,8 +36,8 @@ export function createLessonStore(course, { storage, userId = 'guest', client = 
     // The course is topologically ordered, so offline prerequisites sync first.
     for (const lesson of course.lessons) {
       const record = records[lessonKey(lesson)]; if (!record || !dirty.has(lessonKey(lesson))) continue;
-      const { data, error } = await client.rpc('save_lesson_progress', { p_lesson_id: lesson.lesson_id,
-        p_content_version: lesson.content_version, p_state: { responses: record.responses, visited: record.visited, stage: record.stage } });
+      const { data, error } = await bounded(client.rpc('save_lesson_progress', { p_lesson_id: lesson.lesson_id,
+        p_content_version: lesson.content_version, p_state: { responses: record.responses, visited: record.visited, stage: record.stage } }));
       if (error) throw new Error('Account sync unavailable. Your lesson progress is saved on this device; retry sync when connected.');
       if (data) { records[lessonKey(lesson)] = cleanProgress(lesson, data); remoteAwards.set(lessonKey(lesson),data.earned || 0); }
       dirty.delete(lessonKey(lesson));
@@ -42,7 +51,7 @@ export function createLessonStore(course, { storage, userId = 'guest', client = 
     async load() {
       if (!client || userId === 'guest') return;
       try {
-        const { data, error } = await client.from('lesson_progress').select('lesson_id,content_version,responses,visited,stage,completed_at');
+        const { data, error } = await bounded(client.from('lesson_progress').select('lesson_id,content_version,responses,visited,stage,completed_at'));
         if (error) throw error;
         for (const row of data || []) {
           const lesson = course.lessons.find(l => l.lesson_id === row.lesson_id && l.content_version === row.content_version);
@@ -51,7 +60,7 @@ export function createLessonStore(course, { storage, userId = 'guest', client = 
           if (!local || row.completed_at) records[lessonKey(lesson)] = cleanProgress(lesson,row);
         }
         await sync();
-      } catch { status = 'Account sync unavailable; progress is saved on this device'; }
+      } catch { syncBlocked=true;status = 'Account sync unavailable; progress is saved on this device'; }
     },
     async act(lesson, event) {
       const run = async () => {
@@ -61,13 +70,13 @@ export function createLessonStore(course, { storage, userId = 'guest', client = 
         const next = reduceProgress(lesson, previous, event, { prerequisites: prerequisitesMet(lesson,records) });
         records[lessonKey(lesson)] = next; dirty.add(lessonKey(lesson)); write();
         remoteAwards.delete(lessonKey(lesson));
-        try { await sync(); } catch (error) { status = error.message; }
+        try { if(!syncBlocked)await sync(); } catch (error) { syncBlocked=true;status = error.message; }
         const earned = remoteAwards.has(lessonKey(lesson)) ? remoteAwards.get(lessonKey(lesson)) : !previous?.completed_at && next.completed_at ? 15 : 0;
         return { progress: records[lessonKey(lesson)], earned };
       };
       const execute = () => globalThis.navigator?.locks?.request ? navigator.locks.request(key,run) : run();
       queue = queue.catch(() => {}).then(execute); return queue;
     },
-    async retry() { try { await sync(); } catch(error) { status = error.message; } },
+    async retry() { try { await sync();syncBlocked=false; } catch(error) { syncBlocked=true;status = error.message; } },
   };
 }
