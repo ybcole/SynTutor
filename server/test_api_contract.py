@@ -2,7 +2,16 @@
 import sys
 import types
 import unittest
+import json
+from pathlib import Path
 from unittest.mock import patch
+
+from jsonschema import Draft202012Validator
+
+
+_M1_SCHEMA_PATH = Path(__file__).resolve().parents[1] / "docs" / "canonical-burton-roberts-tree.schema.json"
+_M1_SCHEMA = json.loads(_M1_SCHEMA_PATH.read_text(encoding="utf-8"))
+_M1_VALIDATOR = Draft202012Validator(_M1_SCHEMA)
 
 
 def _stub_module(name, **attributes):
@@ -99,6 +108,10 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
         self.assertEqual(payload["br_analysis"]["status"], "normalized")
         self.assertEqual(payload["br_analysis"]["convention_version"], "V2")
         self.assertEqual(payload["br_analysis"]["tree"]["root"]["label"], "S")
+        self.assertEqual(
+            list(_M1_VALIDATOR.iter_errors(payload["br_analysis"]["tree"])), [])
+        self.assertEqual(payload["br_analysis"]["canonical_schema"],
+                         "docs/canonical-burton-roberts-tree.schema.json")
         self.assertEqual(payload["tree"], self.candidate())
         self.assertEqual(payload["candidate_tree"], self.candidate())
         self.assertIn("br_analysis", payload)
@@ -229,9 +242,12 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
         analysis["sentence_index"] = 1
         analysis["sentence_count"] = 2
         analysis["sentences"] = [
-            {"start": 0, "end": 14, "text": "The cats sleep."},
+            {"start": 0, "end": 15, "text": "The cats sleep."},
             {"start": 16, "end": 31, "text": self.sentence},
         ]
+        for token in analysis["tokens"]:
+            token["start"] += 16
+            token["end"] += 16
         with patch.object(api, "analyze", return_value=analysis), \
              patch.object(api, "evaluate", return_value=self.clean_evaluation()), \
              patch.object(api, "classify", return_value=None), \
