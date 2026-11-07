@@ -13,6 +13,7 @@
 | `chapter` | integer 1–10 or null, optional | Selects the chapter convention profile V1–V10. |
 | `convention_version` | string V1–V10, optional | Compatibility override. If `chapter` is also supplied, it must match `V{chapter}`. |
 | `appendix_nom` | boolean or null, optional | For Chapter 7, selects V7 core (`false`) or Appendix D1 (`true`). With no chapter, free analysis uses the declared FINAL-D1 profile and cannot disable the refinement. |
+| `variety` | non-empty string or null, optional | Selects the variety/register required by a `variety_restricted` Cambridge rule. No variety-restricted finding is produced unless the selected value matches the reviewed rule. |
 
 Examples:
 
@@ -28,7 +29,7 @@ Examples:
 { "text": "The students laugh" }
 ```
 
-The last request selects the declared free-analysis profile (FINAL-D1, represented by V10 in the candidate normalizer). Chapter selection and the Chapter 7 Appendix D1 refinement are forwarded through the Flask, stdlib, and hosted API entry points to the shared analysis function.
+The last request selects the declared free-analysis profile FINAL-D1. Chapter selection, the Chapter 7 Appendix D1 refinement, and optional variety selection are forwarded through the Flask, stdlib, and hosted API entry points to the shared analysis function. Unchaptered free analysis accepts only the omitted convention or the legacy `V10` spelling; pass `chapter` to select a lesson profile.
 
 ## Response and authority
 
@@ -66,7 +67,7 @@ The read-only B-R fixture projection also records source-only metadata and accep
 
 `grammar/runtime_registry.json` is a fail-closed allow-list. Extraction status alone never enables a rule. An entry must meet the independent-review, source-page, crosswalk, test, reviewer, and runtime-state gates. Only `constraint` and `variety_restricted` rules can trigger grammatical findings; descriptive generalizations, classifications, and stylistic/prescriptive material cannot be treated as prohibitions.
 
-`server/cambridge_evaluator.py` now provides a deterministic execution boundary for explicitly typed `runtime_check` records. The first supported primitive is `forbidden_token_sequences` with exception sequences; rules without a supported machine-readable check are skipped. The rule schema, registry, API payload, and evaluator tests cover allow-list, unresolved-analysis, positive, negative, exception, and non-constraint paths.
+`server/cambridge_evaluator.py` now provides a deterministic execution boundary for explicitly typed `runtime_check` records. The first supported primitive is `forbidden_token_sequences` with occurrence-specific exception sequences. It is restricted to sentence-scope checks, validates token-sequence types, and returns a violation only for non-exempt matching occurrences. Variety-restricted rules require a non-empty declared variety and an explicit matching `variety` request value. Rules without a supported machine-readable check are skipped. The rule schema, registry, API payload, and evaluator tests cover allow-list, unresolved-analysis, positive, negative, exception, non-constraint, unsupported-scope, and variety-selection paths.
 
 **Current source state:** the allow-list enables zero Cambridge rules. All 196 extracted rule records retain unverified B-R mappings, and they have not cleared the independent-review/crosswalk/runtime gates. Therefore no Cambridge grammatical rule is currently evaluated and the API returns `cambridge_evaluation.status = "no_runtime_rules"` for a normalized parse, or `not_evaluated` when B-R normalization is unresolved. The test cases for the generic primitive are synthetic evaluator-contract tests, not claims about Cambridge judgments. The legacy rule matrix remains separate and is not a Cambridge verdict.
 
@@ -82,7 +83,7 @@ When the correction assembler returns a suggestion, the response retains the ori
 
 | HTTP status | Meaning |
 |---|---|
-| `400` | Non-integer, negative, or out-of-range sentence index; invalid chapter/profile combination; or unsupported convention version. |
+| `400` | Non-integer, negative, or out-of-range sentence index; invalid chapter/profile combination; unsupported convention version; or invalid/empty `variety`. |
 | `422` | Empty input or parser-level parse failure. |
 | `503` | Backend/model service unavailable or unexpected analysis failure. |
 
@@ -99,6 +100,7 @@ A separate `.github/workflows/syntax-generator-runtime.yml` installs the pinned 
 - The current candidate normalizer does not generally restructure Benepar analyses into V3–V10 B-R trees. Exact eligible IMG source references and the narrow V2 shell are supported; other candidate shapes remain unresolved unless a separately reviewed source mapping is added.
 - No Cambridge rule is runtime-enabled because the 196 extracted rule records retain unverified B-R mappings and have not cleared the independent-review/runtime gates. The generic evaluator primitive is tested synthetically; rule-specific positive/negative/exception tests remain pending until a rule is eligible.
 - The parser-backed workflow has been added but has not yet produced a successful run in this environment. Its actual spaCy/Benepar parse, multi-sentence, and API tests remain unverified; GitHub Actions has returned startup failures before creating jobs on recent branch commits.
+- An unexpected exact-gold lookup, importer, canonical validator, or Benepar adapter exception is converted to an explicit unresolved result. The raw candidate parse is retained in `parser_diagnostics`; it is never promoted after a failure.
 - Runtime latency/performance and deployed-model missing-model fallback still need evidence. HTTP 400/422/503 error contracts are covered by model-free route tests, but that does not verify the deployed model service.
-- The current frontend retains the Benepar candidate as a diagnostic/compatibility tree and shows the authority notice; it has not been migrated to render the new M1 envelope as its primary interactive tree. This is not a UI redesign or Builder migration.
+- The current frontend retains the Benepar candidate as a diagnostic/compatibility tree and its authority notice now reads `br_analysis.status`; it has not been migrated to render the new M1 envelope as its primary interactive tree. This is not a UI redesign or Builder migration.
 - Exact B-R and Cambridge edition/page metadata still needs confirmation against original source PDFs.
