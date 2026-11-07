@@ -159,6 +159,25 @@ class CambridgeEvaluatorTests(unittest.TestCase):
         self.assertEqual(result["findings"], [])
         self.assertEqual(result["diagnostics"][0]["code"], "UNSUPPORTED_RUNTIME_SCOPE")
 
+    def test_variety_restricted_rule_requires_matching_selected_variety(self):
+        self.add_allowlisted_rule()
+        registry = load_runtime_registry(self.root)
+        rule = registry["active_rules"][0]
+        rule["rule_type"] = "variety_restricted"
+        rule["variety"] = "AmE"
+
+        unselected = evaluate_cambridge(
+            self.analysis("The item is very unique."), registry,
+        )
+        self.assertEqual(unselected["evaluated_rule_ids"], [])
+        self.assertEqual(unselected["evaluations"][0]["status"], "variety_not_selected")
+
+        selected = evaluate_cambridge(
+            self.analysis("The item is very unique."), registry, variety="AmE",
+        )
+        self.assertEqual(selected["evaluated_rule_ids"], ["TEST-001"])
+        self.assertEqual(selected["findings"][0]["rule_id"], "TEST-001")
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
