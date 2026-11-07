@@ -7,7 +7,8 @@ matrix + explainer payload. ``app.py`` (stdlib http.server) and ``webapp.py``
 """
 
 from parse_engine import ParseFailure, analyze, load_models
-from br_tree import normalize_candidate, build_correction_alignment, CONVENTIONS
+from br_tree import build_correction_alignment
+from burton_roberts import build_canonical_analysis
 from cambridge_registry import load_runtime_registry
 from matrix import evaluate, _rem_from_text
 from detector import classify, classify_many, combine
@@ -115,11 +116,13 @@ def build_payload(text, sentence_index=0, convention_version=None,
             raise ValueError(
                 f"chapter {chapter} requires convention_version {expected_version}")
         convention_version = expected_version
-    elif convention_version is None:
+    else:
+        # Free analysis is the approved FINAL-D1 profile. V10 remains accepted
+        # as a backwards-compatible request spelling, but no other chapter
+        # profile may be selected without an explicit chapter.
+        if convention_version not in (None, "V10"):
+            raise ValueError("free analysis uses the declared FINAL-D1 profile; supply chapter to select V1-V10")
         convention_version = "V10"
-
-    if convention_version not in CONVENTIONS:
-        raise ValueError(f'unsupported B-R convention_version: {convention_version!r}')
     if appendix_nom is not None and not isinstance(appendix_nom, bool):
         raise ValueError("appendix_nom must be true, false, or null")
     if chapter not in (None, 7) and appendix_nom is not None:
@@ -131,16 +134,10 @@ def build_payload(text, sentence_index=0, convention_version=None,
     if chapter is None and appendix_nom is None:
         appendix_nom = True
 
-    profile_id = (
-        "FINAL-D1" if chapter is None and convention_version == "V10"
-        else ("V7-APPENDIX-D1" if chapter == 7 and appendix_nom else
-              ("V7-CORE" if chapter == 7 else (f"V{chapter}" if chapter else convention_version)))
-    )
-
     analysis = analyze(text, sentence_index=sentence_index)
-    br_analysis = normalize_candidate(
-        analysis['root'], analysis['tokens'], analysis['sentence'],
-        convention_version=convention_version, appendix_nom=appendix_nom)
+    br_analysis = build_canonical_analysis(
+        analysis, chapter=chapter, appendix_nom=appendix_nom)
+    profile_id = br_analysis.get("convention_profile", {}).get("profile_id", "UNRESOLVED")
     cambridge_runtime = load_runtime_registry()
     result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
@@ -191,10 +188,8 @@ def build_payload(text, sentence_index=0, convention_version=None,
                     'tokens': corrected_analysis['tokens'],
                     'authority': 'Benepar candidate parse; not the B-R canonical tree',
                 }
-                correction['corrected_br_analysis'] = normalize_candidate(
-                    corrected_analysis['root'], corrected_analysis['tokens'],
-                    corrected_analysis['sentence'], convention_version=convention_version,
-                    appendix_nom=appendix_nom)
+                correction['corrected_br_analysis'] = build_canonical_analysis(
+                    corrected_analysis, chapter=chapter, appendix_nom=appendix_nom)
             except Exception as exc:  # correction annotations survive a parser fallback
                 correction['corrected_candidate_parse'] = None
                 correction['corrected_br_analysis'] = {
@@ -281,7 +276,7 @@ def build_payload(text, sentence_index=0, convention_version=None,
             'sentence_count': analysis['sentence_count'],
             'target_sentence': analysis['sentence_index'] + 1,
             'tree_authority': 'B-R canonical analysis is in br_analysis; tree remains a legacy Benepar candidate for current-renderer compatibility',
-            'br_convention_version': convention_version,
+            'br_convention_version': br_analysis.get("convention_profile", {}).get("version"),
             'br_profile_id': profile_id,
             'br_chapter': chapter,
             'br_appendix_nom': appendix_nom,
