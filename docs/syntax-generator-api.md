@@ -32,22 +32,21 @@ The last request selects the declared free-analysis profile (FINAL-D1, represent
 
 ## Response and authority
 
-- `tree` and `candidate_tree` retain the raw Benepar candidate for diagnostics and existing-client compatibility. They are not the canonical B-R tree.
-- `br_analysis` is the single runtime normalizer result used by the current Generator API. Its `status` is `normalized` or `unresolved`; the raw parse remains separate.
-- The runtime payload currently follows `grammar/br_tree.schema.json`. This is the API's active wrapper contract, but it is **not shape-identical** to the M1-approved tree-envelope schema in `docs/canonical-burton-roberts-tree.schema.json`. See the compatibility note below.
+- `tree` and `candidate_tree` retain the raw Benepar candidate and metadata for diagnostics and compatibility. They are not the canonical B-R tree.
+- `br_analysis` is the single shared normalization result. Its `status` is `normalized` or `unresolved`. When normalized, `br_analysis.tree` is the canonical M1 envelope defined by `docs/canonical-burton-roberts-tree.schema.json`; it is not a Penn/Benepar tree.
+- The M1 envelope contains `schema_version`, `tree_id`, `sentence`, lexical `tokens` with character offsets, `convention_profile`, source provenance, `root`, `movement`, `accepted_alternatives`, and notes.
+- `br_analysis.parser_diagnostics` retains the raw parse string/candidate tree separately. `br_analysis.normalization_trace` explains the mapping path; `br_analysis.diagnostics` explains unresolved/rejected cases.
 - `meta.tree_authority` identifies the split. `meta.br_profile_id`, `meta.br_convention_version`, `meta.br_chapter`, and `meta.br_appendix_nom` report the selected profile.
-- `parse.sentences` and `meta.sentence_count` preserve passage segmentation; `sentence_index` determines the selected sentence and `meta.target_sentence` reports its one-based position.
-- `cambridge_runtime` reports only allow-listed Cambridge rule eligibility. It is not itself a sentence-level grammaticality verdict.
+- `parse.sentences` and `meta.sentence_count` preserve passage segmentation; `sentence_index` selects a sentence and `meta.target_sentence` reports its one-based position. Invalid and out-of-range indexes return HTTP 400; the parser no longer silently clamps to the last sentence.
+- `cambridge_runtime` reports the fail-closed rule allow-list; `cambridge_evaluation` reports what was actually evaluated. Neither field re-labels the legacy matrix verdict as a Cambridge verdict.
 
-The normalized `br_analysis` preserves the B-R convention version, profile/refinement, source provenance, canonical tree, accepted alternatives, movement/controller metadata where present, and diagnostics. Source fixture provenance is retained; an IMG marker is evidence of transcription from an image, not by itself independent review or human approval.
+Source fixture provenance is retained. An IMG marker is evidence of transcription from an image, not by itself independent review or human approval.
 
-## Canonical schema compatibility — open M2 issue
+## Canonical schema compatibility — resolved in this continuation
 
-The approved M1 ADR (D3) names `docs/canonical-burton-roberts-tree.schema.json` as the canonical B-R tree envelope. That contract uses fields such as `tokens`, `convention_profile`, `root`, and `token_span`.
+The API normalizer now uses `build_canonical_analysis` from `server/burton_roberts.py`. Exact sentence/profile-matched IMG source records are imported through the read-only gold importer and validated against the M1 envelope validator before being returned. Conflicting source records and source records that fail projection stay unresolved. The narrow V2 candidate mapping also constructs and validates an M1 envelope.
 
-The live Generator's `br_analysis` instead follows `grammar/br_tree.schema.json`, with `convention_version`, `profile`, `tree`, and node `span`/`surface` fields. The read-only source importer in `server/burton_roberts.py` projects source records into the M1 envelope, but that projection is not currently the object returned as the API's `br_analysis`. The two formats are not interchangeable.
-
-CI validates the runtime payload against `grammar/br_tree.schema.json` and separately tests the gold importer against the M1 envelope validator. It does **not** establish that the live API payload conforms to the approved M1 envelope. This conflict must be reconciled and covered by an API-level schema test before Milestone 02 can pass its canonical-output acceptance criterion or be used downstream. The M1-approved contract is not silently amended by this implementation note.
+The API contract tests validate the actual `br_analysis.tree` response against `docs/canonical-burton-roberts-tree.schema.json`. `grammar/br_tree.schema.json` is retained only as a deprecated internal projection schema for the legacy `server/br_tree.py` module and its focused tests; it is not the public Generator canonical-output contract.
 
 ## Safe normalization boundary
 
@@ -65,9 +64,11 @@ The read-only B-R fixture projection also records source-only metadata and accep
 
 ## Cambridge rule boundary
 
-`grammar/runtime_registry.json` is a fail-closed allow-list. Extraction status alone never enables a rule. An entry must meet the independent-review, source-page, crosswalk, test, reviewer, and runtime-state gates. Only `constraint` and `variety_restricted` rules are eligible to trigger grammatical errors; descriptive generalizations, classifications, and stylistic/prescriptive material cannot be treated as prohibitions.
+`grammar/runtime_registry.json` is a fail-closed allow-list. Extraction status alone never enables a rule. An entry must meet the independent-review, source-page, crosswalk, test, reviewer, and runtime-state gates. Only `constraint` and `variety_restricted` rules can trigger grammatical findings; descriptive generalizations, classifications, and stylistic/prescriptive material cannot be treated as prohibitions.
 
-**Current state:** the allow-list enables zero Cambridge rules. The registry reports eligibility but a deterministic Cambridge sentence-level evaluator and positive/negative/exception minimal-pair suite are not yet implemented. The legacy rule matrix is separate; it must not be represented as a Cambridge verdict.
+`server/cambridge_evaluator.py` now provides a deterministic execution boundary for explicitly typed `runtime_check` records. The first supported primitive is `forbidden_token_sequences` with exception sequences; rules without a supported machine-readable check are skipped. The rule schema, registry, API payload, and evaluator tests cover allow-list, unresolved-analysis, positive, negative, exception, and non-constraint paths.
+
+**Current source state:** the allow-list enables zero Cambridge rules. All 196 extracted rule records retain unverified B-R mappings, and they have not cleared the independent-review/crosswalk/runtime gates. Therefore no Cambridge grammatical rule is currently evaluated and the API returns `cambridge_evaluation.status = "no_runtime_rules"` for a normalized parse, or `not_evaluated` when B-R normalization is unresolved. The test cases for the generic primitive are synthetic evaluator-contract tests, not claims about Cambridge judgments. The legacy rule matrix remains separate and is not a Cambridge verdict.
 
 ## CoLA / acceptability-model role
 
@@ -89,9 +90,9 @@ An HTTP 200 response may contain `br_analysis.status = "unresolved"`. This means
 
 ## Verification
 
-The model-free CI workflow runs the normalizer/API/HTTP contracts, B-R chapter validators, and legacy licensing/correction regressions. It now also runs the CoLA advisory contract tests, the read-only `burton_roberts` importer tests, and the full B-R source-record audit.
+The model-free CI workflow runs normalizer/API/HTTP contracts, M1 schema validation of actual API output, importer tests, Cambridge registry/evaluator/schema tests, B-R chapter validators, CoLA advisory contracts, and legacy licensing/correction regressions. It also runs the 252-record read-only B-R importer audit.
 
-The following checks still require a configured spaCy/Benepar runtime and have not been established by model-free CI: actual parser-backed smoke tests, live full/multi-sentence parsing, deployed-model fallback/performance behavior, and end-to-end browser consumption of canonical B-R trees.
+A separate `.github/workflows/syntax-generator-runtime.yml` installs the pinned spaCy/Benepar dependencies and models, verifies model load, and runs parser-backed single-sentence, multi-sentence, out-of-range-index, and actual Generator API tests. This workflow is the evidence source for the model-backed requirements; a model-free pass is not a substitute. Runtime performance/latency and deployed-host fallback still require separate measurement and deployment checks.
 
 ## Outstanding before Milestone 02 approval
 
