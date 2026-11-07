@@ -104,10 +104,12 @@ class NormalizationTests(unittest.TestCase):
         self.assertIn("PROFILE_MAPPING_NOT_APPROVED", [r["code"] for r in result["reasons"]])
         self.assertIn("raw_candidate_tree", result["diagnostics"])
 
-    def test_punctuation_prevents_unsupported_promotion(self):
+    def test_sentence_final_punctuation_is_not_fabricated_as_a_phrase_marker_node(self):
         result = normalize_benepar_candidate(candidate("The students laugh."), convention_profile(2))
-        self.assertEqual(result["status"], "unresolved")
-        self.assertIn("PUNCTUATION_POLICY_UNVERIFIED", [r["code"] for r in result["reasons"]])
+        self.assertEqual(result["status"], "normalized", result.get("reasons"))
+        self.assertEqual([row["text"] for row in result["tree"]["tokens"]],
+                         ["The", "students", "laugh"])
+        self.assertEqual(result["tree"]["sentence"], "The students laugh.")
 
     def test_correction_alignment_keeps_edit_types_and_spans(self):
         cases = [
