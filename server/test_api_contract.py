@@ -103,7 +103,7 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
              patch.object(api, "_contrastive", return_value=""), \
              patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
              patch.object(api, "_rule_concepts", return_value=[]):
-            payload = api.build_payload(self.sentence, convention_version="V2")
+            payload = api.build_payload(self.sentence, chapter=2)
 
         self.assertEqual(payload["br_analysis"]["status"], "normalized")
         self.assertEqual(payload["br_analysis"]["convention_version"], "V2")
