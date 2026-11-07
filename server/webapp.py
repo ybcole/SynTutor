@@ -77,8 +77,11 @@ def parse():
     if not text:
         return jsonify({'error': 'empty input',
                         'hint': 'Provide an English sentence in "text".'}), 422
+    raw_sentence_index = data.get('sentence_index', 0)
+    if isinstance(raw_sentence_index, bool):
+        return jsonify({'error': 'sentence_index must be an integer'}), 400
     try:
-        sentence_index = int(data.get('sentence_index', 0))
+        sentence_index = int(raw_sentence_index)
     except (TypeError, ValueError):
         return jsonify({'error': 'sentence_index must be an integer'}), 400
     if sentence_index < 0:
