@@ -192,5 +192,60 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
             parse.assert_not_called()
 
 
+    def test_chapter_selection_routes_to_matching_convention_profile(self):
+        with patch.object(api, "analyze", return_value=self.analysis()), \
+             patch.object(api, "evaluate", return_value=self.clean_evaluation()), \
+             patch.object(api, "classify", return_value=None), \
+             patch.object(api, "_contrastive", return_value=""), \
+             patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
+             patch.object(api, "_rule_concepts", return_value=[]):
+            payload = api.build_payload(self.sentence, chapter=2)
+
+        self.assertEqual(payload["meta"]["br_convention_version"], "V2")
+        self.assertEqual(payload["meta"]["br_profile_id"], "V2")
+        self.assertEqual(payload["br_analysis"]["convention_version"], "V2")
+
+    def test_chapter_and_explicit_convention_conflict_is_rejected_before_parse(self):
+        with patch.object(api, "analyze") as parse:
+            with self.assertRaisesRegex(ValueError, "chapter 2 requires convention_version V2"):
+                api.build_payload(self.sentence, chapter=2, convention_version="V3")
+            parse.assert_not_called()
+
+    def test_chapter_7_appendix_d1_is_explicit_in_shared_payload(self):
+        with patch.object(api, "analyze", return_value=self.analysis()), \
+             patch.object(api, "evaluate", return_value=self.clean_evaluation()), \
+             patch.object(api, "classify", return_value=None), \
+             patch.object(api, "_contrastive", return_value=""), \
+             patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
+             patch.object(api, "_rule_concepts", return_value=[]):
+            payload = api.build_payload(self.sentence, chapter=7, appendix_nom=True)
+
+        self.assertEqual(payload["meta"]["br_convention_version"], "V7")
+        self.assertEqual(payload["meta"]["br_profile_id"], "V7-APPENDIX-D1")
+        self.assertTrue(payload["meta"]["br_appendix_nom"])
+
+    def test_multi_sentence_request_reports_selected_sentence(self):
+        analysis = self.analysis()
+        analysis["sentence_index"] = 1
+        analysis["sentence_count"] = 2
+        analysis["sentences"] = [
+            {"start": 0, "end": 14, "text": "The cats sleep."},
+            {"start": 16, "end": 31, "text": self.sentence},
+        ]
+        with patch.object(api, "analyze", return_value=analysis), \
+             patch.object(api, "evaluate", return_value=self.clean_evaluation()), \
+             patch.object(api, "classify", return_value=None), \
+             patch.object(api, "_contrastive", return_value=""), \
+             patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
+             patch.object(api, "_rule_concepts", return_value=[]):
+            payload = api.build_payload("The cats sleep. The birds sing.",
+                                        sentence_index=1, chapter=2)
+
+        self.assertEqual(payload["meta"]["sentence_count"], 2)
+        self.assertEqual(payload["meta"]["target_sentence"], 2)
+        self.assertEqual(payload["parse"]["text"], self.sentence)
+        self.assertEqual(payload["br_analysis"]["status"], "normalized")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
