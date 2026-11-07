@@ -4,6 +4,10 @@ Run with: python -m unittest server.test_burton_roberts
 """
 import unittest
 import re
+import json
+from pathlib import Path
+
+from jsonschema import Draft202012Validator
 
 from server.burton_roberts import (
     align_correction,
@@ -509,6 +513,110 @@ class CanonicalHardeningTests(unittest.TestCase):
         self.assertFalse(result["valid"])
         self.assertTrue(any("source_refs must be an array of strings" in error
                             for error in result["errors"]))
+
+
+class GeneratorCanonicalEnvelopeTests(unittest.TestCase):
+    schema_path = Path(__file__).resolve().parents[1] / "docs" / "canonical-burton-roberts-tree.schema.json"
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    validator = Draft202012Validator(schema)
+
+    @staticmethod
+    def lexical_analysis(sentence):
+        return {
+            "sentence": sentence,
+            "sentence_index": 0,
+            "sentences": [{"start": 0, "end": len(sentence), "text": sentence}],
+            "tokens": [],
+            "parse_string": "(candidate not used for exact B-R source match)",
+            "root": {"id": "candidate", "type": "S", "children": []},
+        }
+
+    @staticmethod
+    def v7_record(tree_id, middle_label="NOM", appendix_nom=False):
+        return {
+            "_chapter": 7, "_convention_version": "V7",
+            "id": tree_id, "fig": "[3]", "page": 141,
+            "status": "IMG", "appendix_nom": appendix_nom,
+            "sentence": "the clowns",
+            "tree": {
+                "label": "NP", "children": [
+                    {"label": "DET", "children": [
+                        {"label": "ART", "children": [{"word": "the"}]},
+                    ]},
+                    {"label": middle_label, "children": [
+                        {"label": "N", "children": [{"word": "clowns"}]},
+                    ]},
+                ],
+            },
+        }
+
+    def assert_m1_envelope(self, result):
+        self.assertEqual(result["status"], "normalized")
+        self.assertIsInstance(result["tree"], dict)
+        errors = list(self.validator.iter_errors(result["tree"]))
+        self.assertEqual(
+            errors, [],
+            [f"{error.json_path}: {error.message}" for error in errors],
+        )
+
+    def test_exact_img_source_record_returns_m1_canonical_envelope(self):
+        result = build_canonical_analysis(
+            self.lexical_analysis("the clowns"), chapter=7,
+            reference_records=[self.v7_record("ch7-test")],
+        )
+        self.assert_m1_envelope(result)
+        self.assertEqual(result["tree"]["source"]["source_record_id"], "ch7-test")
+        self.assertEqual(result["tree"]["root"]["label"], "NP")
+        self.assertEqual(result["tree"]["convention_profile"]["profile_id"], "V7-CORE")
+
+    def test_conflicting_exact_gold_references_remain_unresolved(self):
+        records = [
+            self.v7_record("ch7-a", "NOM"),
+            self.v7_record("ch7-b", "PHRASE-b"),
+        ]
+        result = build_canonical_analysis(
+            self.lexical_analysis("the clowns"), chapter=7,
+            reference_records=records,
+        )
+        self.assertEqual(result["status"], "unresolved")
+        self.assertIsNone(result["tree"])
+        self.assertEqual(result["diagnostics"][0]["code"], "AMBIGUOUS_GOLD_REFERENCE")
+
+    def test_v7_appendix_profile_does_not_select_core_gold_record(self):
+        records = [
+            self.v7_record("v7-core", appendix_nom=False),
+            self.v7_record("v7-appendix", appendix_nom=True),
+        ]
+        result = build_canonical_analysis(
+            self.lexical_analysis("the clowns"), chapter=7, appendix_nom=True,
+            reference_records=records,
+        )
+        self.assert_m1_envelope(result)
+        self.assertEqual(result["tree"]["source"]["source_record_id"], "v7-appendix")
+        self.assertEqual(result["tree"]["convention_profile"]["profile_id"], "V7-APPENDIX-D1")
+
+    def test_free_analysis_uses_final_d1_profile_and_m1_schema(self):
+        record = {
+            "_chapter": 10, "_convention_version": "V10",
+            "id": "ch10-infinitive", "page": 226, "fig": "[11]",
+            "status": "IMG", "sentence": "to taste the wine",
+            "tree": {
+                "label": "VP", "children": [
+                    {"label": "AUX", "features": ["-tense"], "children": [{"word": "to"}]},
+                    {"label": "VP", "children": [
+                        {"label": "V", "features": ["trans"], "children": [{"word": "taste"}]},
+                        {"label": "NP", "triangle": True, "words": ["the", "wine"]},
+                    ]},
+                ],
+            },
+        }
+        result = build_canonical_analysis(
+            self.lexical_analysis("to taste the wine"), reference_records=[record],
+        )
+        self.assert_m1_envelope(result)
+        self.assertEqual(result["tree"]["convention_profile"]["version"], "FINAL")
+        self.assertEqual(result["tree"]["convention_profile"]["profile_id"], "FINAL-D1")
+        self.assertTrue(result["tree"]["convention_profile"]["appendix_nom"])
 
 
 if __name__ == "__main__":
