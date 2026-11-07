@@ -423,11 +423,39 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
                 }
             else:
                 envelope = imported["tree"]
-                # The declared free-analysis profile is FINAL-D1 (V10 plus the
-                # adopted Appendix NOM refinement), not merely a Chapter 10 lesson.
-                envelope["convention_profile"] = profile
-                try:
-                    validation = validate_canonical_tree(envelope)
+                # The exact-gold lookup matches lexical yield, not punctuation
+                # or whitespace. Preserve the learner's submitted sentence and
+                # rebase imported lexical-token character offsets onto that text.
+                source_tokens = envelope.get("tokens") or []
+                rebased_tokens, alignment_errors = _align_words_to_sentence(
+                    [str(token.get("text", "")) for token in source_tokens], sentence)
+                if alignment_errors or len(rebased_tokens) != len(source_tokens):
+                    result = {
+                        "status": "unresolved", "tree": None,
+                        "reasons": [{
+                            "code": "REQUEST_TOKEN_ALIGNMENT_FAILED",
+                            "detail": "; ".join(alignment_errors or [
+                                "The selected gold tree's tokenization could not be aligned to the submitted sentence."
+                            ]),
+                        }],
+                        "normalization_trace": [{
+                            "rule_id": "EXACT_IMG_GOLD_REFERENCE",
+                            "evidence": "The lexical source match could not be safely rebased to the exact request text.",
+                        }],
+                    }
+                    envelope = None
+                else:
+                    for token, rebased in zip(source_tokens, rebased_tokens):
+                        token["char_span"] = rebased["char_span"]
+                    envelope["sentence"] = sentence
+                if envelope is None:
+                    result = result
+                else:
+                    # The declared free-analysis profile is FINAL-D1 (V10 plus the
+                    # adopted Appendix NOM refinement), not merely a Chapter 10 lesson.
+                    envelope["convention_profile"] = profile
+                    try:
+                        validation = validate_canonical_tree(envelope)
                 except Exception as exc:  # unexpected validator error cannot promote a tree
                     validation = {
                         "valid": False,
