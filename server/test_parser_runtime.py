@@ -73,6 +73,46 @@ class ParserBackedRuntimeTests(unittest.TestCase):
                          payload["br_analysis"])
         self.assertEqual(list(M1_VALIDATOR.iter_errors(payload["br_analysis"]["tree"])), [])
 
+    def test_corrected_sentence_is_independently_parsed_and_normalized(self):
+        original = "The students laughs."
+        corrected = "The students laugh."
+        synthetic_summary = {
+            "verdict": "ungrammatical", "valid": False,
+            "valid_edges": 1, "violated_edges": 1, "unrated_edges": 0,
+            "explanation": "Synthetic correction-path trigger.",
+            "constraints_fired": ["TEST-TRIGGER"], "checker_errors": [],
+            "suggested": True,
+        }
+        correction = {
+            "corrected_sentence": corrected,
+            "edits": [{
+                "kind": "replacement",
+                "original": "laughs",
+                "corrected": "laugh",
+            }],
+        }
+        with patch.object(api, "classify", return_value=None), \
+             patch.object(api, "evaluate", return_value={
+                 "details": {}, "summary": synthetic_summary,
+             }), \
+             patch.object(api.corrections, "has_actionable", return_value=True), \
+             patch.object(api.corrections, "assemble", return_value=correction), \
+             patch.object(api.corrections, "describe", return_value="Synthetic correction."), \
+             patch.object(api, "apply_plain_language"), \
+             patch.object(api, "plain_text", side_effect=lambda value: value), \
+             patch.object(api, "_contrastive", return_value=""), \
+             patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
+             patch.object(api, "_rule_concepts", return_value=[]):
+            payload = api.build_payload(original, chapter=2)
+
+        corrected_result = payload["summary"]["correction"]["corrected_br_analysis"]
+        self.assertEqual(payload["parse"]["text"], original)
+        self.assertEqual(payload["br_analysis"]["status"], "normalized")
+        self.assertEqual(corrected_result["status"], "normalized", corrected_result)
+        self.assertEqual(corrected_result["tree"]["sentence"], corrected)
+        self.assertEqual(list(M1_VALIDATOR.iter_errors(corrected_result["tree"])), [])
+        self.assertTrue(payload["summary"]["correction"]["alignment"]["operations"])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
