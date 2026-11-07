@@ -101,7 +101,7 @@ def word_info(words):
 
 
 def build_payload(text, sentence_index=0, convention_version=None,
-                  chapter=None, appendix_nom=None):
+                  chapter=None, appendix_nom=None, variety=None):
     """Build the shared analysis payload for the selected sentence.
 
     The legacy matrix provides deterministic findings. CoLA is advisory: it
@@ -111,6 +111,10 @@ def build_payload(text, sentence_index=0, convention_version=None,
     """
     if isinstance(sentence_index, bool) or not isinstance(sentence_index, int) or sentence_index < 0:
         raise ValueError("sentence_index must be a non-negative integer")
+    if variety is not None:
+        if not isinstance(variety, str) or not variety.strip():
+            raise ValueError("variety must be a non-empty string or null")
+        variety = variety.strip()
 
     if chapter is not None:
         if isinstance(chapter, bool) or not isinstance(chapter, int) or not 1 <= chapter <= 10:
@@ -143,7 +147,8 @@ def build_payload(text, sentence_index=0, convention_version=None,
         analysis, chapter=chapter, appendix_nom=appendix_nom)
     profile_id = br_analysis.get("convention_profile", {}).get("profile_id", "UNRESOLVED")
     cambridge_runtime = load_runtime_registry()
-    cambridge_evaluation = evaluate_cambridge(br_analysis, cambridge_runtime)
+    cambridge_evaluation = evaluate_cambridge(
+        br_analysis, cambridge_runtime, variety=variety)
     result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
     summary = result['summary']
@@ -291,6 +296,7 @@ def build_payload(text, sentence_index=0, convention_version=None,
             'cambridge_runtime_rule_ids': cambridge_runtime.get('active_rule_ids', []),
             'cambridge_evaluated_rule_ids': cambridge_evaluation.get('evaluated_rule_ids', []),
             'cambridge_evaluation_status': cambridge_evaluation.get('status'),
+            'cambridge_variety': variety,
         },
         'parse': {
             'text': analysis['sentence'],
