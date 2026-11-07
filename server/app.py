@@ -145,14 +145,10 @@ class Handler(BaseHTTPRequestHandler):
             self._json(422, {'error': 'empty input', 'hint': 'Provide an English sentence in "text".'})
             return
         raw_sentence_index = data.get('sentence_index', 0)
-        if isinstance(raw_sentence_index, bool):
+        if isinstance(raw_sentence_index, bool) or not isinstance(raw_sentence_index, int):
             self._json(400, {'error': 'sentence_index must be an integer'})
             return
-        try:
-            sentence_index = int(raw_sentence_index)
-        except (TypeError, ValueError):
-            self._json(400, {'error': 'sentence_index must be an integer'})
-            return
+        sentence_index = raw_sentence_index
         if sentence_index < 0:
             self._json(400, {'error': 'sentence_index must be >= 0'})
             return
