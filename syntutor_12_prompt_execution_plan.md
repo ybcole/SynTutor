@@ -117,9 +117,17 @@ Additional changes on the continuation branch:
 - CI was extended to run the gold-tree importer suite and the read-only 252-record import audit.
 - Updated `docs/syntax-generator-api.md` to document the implemented contract and remaining limitations.
 
-**CI status at report time:** GitHub Actions run [42346139502](https://github.com/ybcole/SynTutor/actions/runs/42346139502) was triggered by PR #30 and was still in progress. No result from that run is claimed here until it completes.
+**CI verification:** GitHub Actions run [42346333169](https://github.com/ybcole/SynTutor/actions/runs/42346333169) completed successfully for this branch. It passed:
+- `python -m unittest -v test_br_tree test_cambridge_registry test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_detector` — 46 tests.
+- `python -m unittest -v server.test_burton_roberts` — 24 tests.
+- `python scripts/audit_burton_roberts_import.py --expected-count 252` — 252 source records found; 203 normalized and 49 explicitly unresolved; expected-count check passed.
+- All 11 chapter validators, legacy licensing regression (19/19 invalid examples detected and 16/16 controls not rejected), correction regression, and JSON syntax validation.
 
-**Still incomplete:** general source-grounded V3–V10 Benepar restructuring; deterministic Cambridge sentence-level evaluation and positive/negative/exception tests (the runtime allow-list enables zero rules); model-backed spaCy/Benepar end-to-end and full/multi-sentence runtime verification; performance and missing-model fallback verification; canonical B-R frontend rendering remains outside this prompt's stop condition; exact source-edition/page metadata is still open. The legacy matrix remains a separate legacy verdict path, not a Cambridge evaluator.
+The candidate-normalizer IMG fixture test reports 210/211 sentence-aligned records normalized and validated; `ch2-2` remains explicitly unresolved because its Sentence root conflicts with V2. The CI run is model-free: it does not establish live spaCy/Benepar parsing or performance/fallback behavior.
+
+**Still incomplete:** general source-grounded V3–V10 Benepar restructuring; deterministic Cambridge sentence-level evaluation and positive/negative/exception tests (the runtime allow-list enables zero rules); model-backed spaCy/Benepar end-to-end and full/multi-sentence runtime verification; performance and missing-model fallback verification; exact source-edition/page metadata is still open. The legacy matrix remains a separate legacy verdict path, not a Cambridge evaluator.
+
+**Canonical schema acceptance blocker:** the approved M1 ADR names `docs/canonical-burton-roberts-tree.schema.json` as the canonical tree envelope. The live API's `br_analysis` currently follows the separate `grammar/br_tree.schema.json` format. The read-only source importer is tested against the M1 envelope, but its projection is not what the API returns. These formats have not been reconciled; the API-level acceptance criterion that output conforms to the approved M1 schema is therefore **not verified**. See the compatibility note in `docs/syntax-generator-api.md`.
 
 No lesson/Builder migration, UI redesign, Benepar removal, or database/user-progress migration was performed. Milestone 03 remains blocked by the M2 dependency and approval gate.
 
