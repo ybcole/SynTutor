@@ -164,3 +164,64 @@ That successful run predates the current M1 API-envelope routing, Cambridge eval
 ### 8. Approval gate
 
 The owner authorized automatic approvals, so no additional decision is requested. That permission does not waive the plan's evidence requirements. PR #30 remains draft and unmerged. M2 is **not complete** because current-head tests have not run, real parser-backed behavior has not been verified, runtime Cambridge rules are not available, and broader source-supported normalization requirements remain unresolved. Do not start Milestone 03 until those conditions are addressed and an evidence-backed M2 acceptance report can be produced.
+
+
+---
+
+## M2 execution update — latest branch state, 7 November 2026
+
+**Current implementation head:** `e51c89c85e17ee8151419ab7739cf1ce03774c5e`  
+**Continuation PR:** [#30](https://github.com/ybcole/SynTutor/pull/30), draft, open, unmerged  
+**M2 branch:** `milestone-02-syntax-generator` (fast-forwarded to the same implementation head)  
+**Status:** **INCOMPLETE — keep Milestone 02 unchecked.**
+
+### Current implementation disposition
+
+The M1 schema integration is now present: `server/api.py` calls `build_canonical_analysis`, and normalized `br_analysis.tree` uses the M1-approved envelope in `docs/canonical-burton-roberts-tree.schema.json`. The API tests validate that envelope and include a whole sentence-aligned IMG corpus pass-through test.
+
+The normalization policy is deliberately fail-closed. Exact convention-matched IMG source records are imported and validated; a narrow non-reference V2 `S → NP VP` projection is supported; arbitrary unsupported Benepar structures return an explicit unresolved result. This is consistent with the execution plan's rule to map only defensible analyses and not force unsupported conversions. It does not claim a general V1–V10 Benepar transformer.
+
+The Cambridge evaluator is implemented for a restricted, typed sentence-scope token-sequence rule primitive, including occurrence-specific exceptions and explicit variety matching. The production allow-list enables **zero** Cambridge rules because all 196 extracted records still have unverified B-R crosswalks and have not passed the independent-review/runtime gates. Synthetic primitive tests are not presented as Cambridge grammatical judgments. The evaluator's correct current production response is `no_runtime_rules` for a normalized B-R tree, or `not_evaluated` for an unresolved tree.
+
+The frontend continues to show the legacy Benepar tree only as a diagnostic/compatibility rendering and its notice now reports `br_analysis.status`. Replacing the renderer and migrating the Builder are outside the detailed M2 prompt's stop condition.
+
+### Latest Actions evidence — current head is not tested
+
+The most recent attempt against the current head is [run 42350898513](https://github.com/ybcole/SynTutor/actions/runs/42350898513):
+- head SHA: `e51c89c85e17ee8151419ab7739cf1ce03774c5e`
+- event: `push`
+- workflow metadata: `name=""`, `path="BuildFailed"`, `workflow_id=410117115`
+- conclusion: `startup_failure`
+- jobs created: **0**
+- check suite: `114744627948`
+
+A preceding push attempt, [run 42350764338](https://github.com/ybcole/SynTutor/actions/runs/42350764338), has the same `BuildFailed` / `startup_failure` / zero-job signature. Earlier pull-request attempts also failed before job creation. No compile step, unit test, audit, model install, or parser-backed test ran in these attempts.
+
+The latest successful SynTutor model-free run remains [run #35](https://github.com/ybcole/SynTutor/actions/runs/42346333169), but it is from an earlier implementation commit and predates the M1 API-envelope integration, Cambridge evaluator, updated transport contracts, current API-through-corpus test, and parser-backed workflow. It cannot verify the current head.
+
+The repository was also not locally cloneable from this execution environment because DNS resolution for `github.com` failed. Thus there is no independent local test result to substitute for the blocked Actions run.
+
+The `BuildFailed` path, empty workflow name, `startup_failure`, and zero-job signature resembles other publicly reported GitHub Actions workflow-registration failures. This is an observed platform-level blocker, not evidence that SynTutor tests passed or failed. GitHub's troubleshooting guidance recommends diagnosing from workflow run/check-suite metadata when no job logs exist; public community reports describe the same `BuildFailed` signature. See [GitHub Actions troubleshooting](https://docs.github.com/en/actions/how-tos/troubleshoot-workflows) and [community report #211590](https://github.com/orgs/community/discussions/211590). The repository contents API cannot purge GitHub's internal workflow registry. A repository owner needs to ask GitHub Support to inspect/reindex workflow registration `410117115` for `ybcole/SynTutor`.
+
+### M2 acceptance status at this head
+
+| Criterion | Current disposition |
+|---|---|
+| API canonical output uses the approved M1 schema | Implemented; current-head API/schema tests are present but unexecuted |
+| Safe/traceable normalization and no false Penn relabelling | Implemented for exact eligible source references and the narrow V2 mapping; other structures remain explicitly unresolved; current-head tests unexecuted |
+| B-R gold examples and structural validation | Prior audit evidence exists (210/211 sentence-aligned IMG records; 252 total imported records, 203 normalized/49 unresolved), but the new M1 API corpus test has not run on this head |
+| Unresolved and accepted alternatives | Implementation and tests are present; current-head run pending |
+| API/error contracts | Flask, stdlib and hosted transport coverage is present; current-head run pending |
+| Existing Generator regression coverage | Prior legacy licensing/correction regressions passed before the latest API changes; rerun on this head pending |
+| Parser-backed full/multi-sentence/correction tests | Separate model-installing workflow is present; it has not executed on this head |
+
+### Limitations that remain explicit
+
+- Arbitrary V3–V10 Benepar candidate trees are not structurally rewritten without a reviewed mapping. The fail-closed unresolved state is intentional; broader construction coverage remains a product limitation rather than a false claim of parser equivalence.
+- No actual Cambridge rule is runtime-enabled. No extracted rule is treated as an executable constraint until its source, independent review, crosswalk, deterministic runtime check and tests pass.
+- Runtime model loading, real spaCy/Benepar parsing, corrected-sentence parsing, latency/performance and deployed-host missing-model behavior remain unverified.
+- Exact B-R/Cambridge edition and printed-page metadata remain open from M1 and are not invented by this work.
+
+### Decision
+
+Do **not** mark Milestone 02 `[x]`. The M2 code and tests are substantially implemented, but the latest head has no executed test evidence because GitHub Actions fails before jobs exist and local checkout is unavailable. The plan expressly disallows marking a milestone complete when required tests cannot be run. No M3 work, Builder migration, lesson/quiz migration, UI redesign, or database/user-progress migration was performed.
