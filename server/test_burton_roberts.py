@@ -588,6 +588,19 @@ class GeneratorCanonicalEnvelopeTests(unittest.TestCase):
         self.assertEqual(
             result["tree"]["source"]["review_note"], "Independent source review recorded.")
 
+    def test_unrecognized_source_review_state_is_retained_as_unreviewed(self):
+        record = self.v7_record("ch7-unknown-review")
+        record["review_status"] = "pending-review"
+        result = build_canonical_analysis(
+            self.lexical_analysis("the clowns"), chapter=7,
+            reference_records=[record],
+        )
+        self.assert_m1_envelope(result)
+        source = result["tree"]["source"]
+        self.assertEqual(source["review_status"], "NOT_REVIEWED")
+        self.assertIn("pending-review", source["review_note"])
+        self.assertIn("image evidence only", source["review_note"])
+
     def test_exact_gold_preserves_submitted_punctuation_and_rebases_character_offsets(self):
         result = build_canonical_analysis(
             self.lexical_analysis("the   clowns!"), chapter=7,
