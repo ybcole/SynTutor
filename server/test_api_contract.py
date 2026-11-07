@@ -200,6 +200,13 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
         self.assertEqual(replacement["original_tokens"][0]["text"], "goes")
         self.assertEqual(replacement["corrected_tokens"][0]["text"], "go")
 
+    def test_invalid_sentence_index_is_rejected_before_parsing(self):
+        for value in (-1, True, 1.5):
+            with self.subTest(value=value), patch.object(api, "analyze") as parse:
+                with self.assertRaisesRegex(ValueError, "sentence_index"):
+                    api.build_payload(self.sentence, sentence_index=value, chapter=2)
+                parse.assert_not_called()
+
     def test_invalid_convention_is_rejected_before_parsing(self):
         with patch.object(api, "analyze") as parse:
             with self.assertRaises(ValueError):
