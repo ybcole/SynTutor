@@ -57,3 +57,4 @@ jobs:
         run: |
           python scripts/test_explanation_browser.py
           python scripts/test_explanation_browser.py --reviewed-fixture
+          python scripts/test_lessons_browser.py

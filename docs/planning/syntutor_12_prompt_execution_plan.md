@@ -31,12 +31,12 @@
 
 ## Milestone tracker
 
-Current acceptance: [8 November M1–M3 report](../reports/milestones-01-03-acceptance-2026-11-08.md). Earlier dated continuation entries below are historical. M4 may proceed; it is not complete.
+Current acceptance: [8 November M1–M3 report](../reports/milestones-01-03-acceptance-2026-11-08.md). Earlier dated continuation entries below are historical. M4 launch implementation is now complete; see the [M4 acceptance report](../reports/milestone-04-acceptance-2026-11-08.md), including the unapplied account-cloud migration follow-up. Earlier dated findings remain historical.
 
 - [x] **01 — Architecture, repository audit, and source governance**
 - [x] **02 — Syntax Generator and B-R tree normalization**
 - [x] **03 — Shared, source-grounded explanation engine**
-- [ ] **04 — Lessons and curriculum**
+- [x] **04 — Lessons and curriculum**
 - [ ] **05 — Independent quiz system and question bank**
 - [ ] **06 — Syntax Builder integration**
 - [ ] **07 — XP, levels, and progression rules**
@@ -606,3 +606,7 @@ constraints, and M2/M3 milestone boxes remain unchanged.
 ## Milestones 02–03 acceptance — 8 November 2026
 
 The [current acceptance report](../reports/milestones-01-03-acceptance-2026-11-08.md) maps every applicable M2/M3 criterion to implementation and executed evidence. Source edition checks, scoped independent template review, schema 1.1.0 source-preservation changes, real parser/browser tests and fail-closed source gates resolve the earlier blockers. Both milestones are checked for their existing conservative supported/unresolved scope. No criterion was rewritten. Human sign-off is not inferred from AI review; the owner's recorded standing approval applies. M4 lesson/curriculum work can begin, with each new content record still requiring its source and publication review.
+
+## Milestone 04 acceptance — 8 November 2026
+
+The [M4 report](../reports/milestone-04-acceptance-2026-11-08.md) maps all six existing criteria to the 12-lesson launch course and executed schema/source/tree, stage/answer, PostgreSQL and real browser evidence. Representative early/middle/advanced content and desktop/mobile screens were reviewed under the owner's standing authorization; no human instructor sign-off is claimed. The active legacy lesson module is archived and its learner records remain unchanged. The two additive Supabase migrations are prepared/tested but not applied to production: device-local progress works, while account cloud sync/shared XP requires that deployment step. M4 is checked for this explicit implementation scope; neither a live database rollout nor exhaustive textbook coverage is claimed.

@@ -1,0 +1,45 @@
+{
+  "review_date": "2026-11-08",
+  "reviewer": "Codex",
+  "review_kind": "Separate AI source-verification pass after drafting, performed by the same assistant; not a separate human instructor or separate model. No human sign-off is claimed.",
+  "bibliographic_manifest": "sources/cambridge/source_manifest_2026-11-08.json",
+  "representative_review_before_full_catalog_publication": [
+    "cgel-clauses"
+  ],
+  "lesson_sha256": {
+    "cgel-clauses": "40f41cfeaa39d99ef078a2b41de03b0d42539c0f48b072debdd9b700d34b71e5"
+  },
+  "checks": [
+    {
+      "lesson_id": "cgel-clauses",
+      "source_ids": [
+        "CGEL-2002-CH02-P0044",
+        "CGEL-2002-CH02-P0045"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": {
+        "chapter": 2,
+        "version": "V2",
+        "profile_id": "V2"
+      },
+      "runtime_constraint_enabled": false
+    }
+  ],
+  "source_evidence_notes": [
+    "IMG page anchors were visually inspected; TXT anchors were checked in extracted supplied-page prose.",
+    "Original examples and answer trees apply the cited convention; they are not represented as printed diagrams or copied textbook exercises.",
+    "Existing comparison tree IDs retain their original independent-review state. Linking an ID does not certify every corpus transcription.",
+    "Source-derived claims are restricted to the lesson objective; wider chapter constructions remain outside these introductory units."
+  ],
+  "limitations": [
+    "No human instructor sign-off or full-book linguistic recertification.",
+    "Cambridge classification is not a whole-sentence grammaticality verdict.",
+    "No production Cambridge runtime constraints enabled."
+  ],
+  "prior_review": "sources/cambridge/reviews/2026-11-08-cls-001.json",
+  "source_sha256": {
+    "CGEL-2002-CH02-P0044": "fdc5013c46fddcba5699f27a4bcfcdf1da077e9901d95b3907873bc32cc41668",
+    "CGEL-2002-CH02-P0045": "50c368d237f163f2526516106be1db63dd6e88a0de07df9aa8d7a8a82173d265"
+  },
+  "exit_check_alignment": "The final check directly classifies an original embedded subject–predicate clause within its text sentence, rather than testing only project terminology policy."
+}

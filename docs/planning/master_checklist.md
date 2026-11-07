@@ -2,7 +2,7 @@
 
 Use this as the project sign-off register. Mark a box only when there is evidence (a test result, approved record, reviewed screen, migration, or documented decision). “Code exists” is not sufficient evidence of completion.
 
-Current milestone sign-off: [M1–M3 acceptance, 8 November 2026](../reports/milestones-01-03-acceptance-2026-11-08.md). Historical logs below retain their original findings. Checked M2 items use the approved conservative mapping/unresolved policy; evaluator minimal-pair tests are synthetic and do not certify an enabled Cambridge constraint. No live-data migration is approved or performed.
+Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-2026-11-08.md) and [M4 launch curriculum](../reports/milestone-04-acceptance-2026-11-08.md), 8 November 2026. M4 account-cloud migrations are prepared/tested and remain unapplied to production; local progress is available. Historical logs below retain their original findings. Checked M2 items use the approved conservative mapping/unresolved policy; evaluator minimal-pair tests are synthetic and do not certify an enabled Cambridge constraint. No live-data migration is approved or performed.
 
 ## 0. Governance and inventory
 
@@ -74,21 +74,21 @@ Current milestone sign-off: [M1–M3 acceptance, 8 November 2026](../reports/mil
 
 ## 5. Lessons
 
-- [ ] Approve B-R Syntax Foundations curriculum map.
-- [ ] Approve Cambridge Grammar & Analysis track map.
-- [ ] Map all lesson objectives to source sections, concepts, tree IDs, and rule IDs.
-- [ ] Define prerequisites and learning outcomes.
-- [ ] Define diagnostic question, concept explanation, worked tree, guided practice, transfer task, and exit check fields.
-- [ ] Audit each existing hand-authored lesson against source evidence.
-- [ ] Rewrite, replace, move, or remove unsupported legacy claims.
-- [ ] Keep chapter-specific B-R convention versions visible and enforceable.
-- [ ] Select only relevant Cambridge insight cards for core lessons.
-- [ ] Build advanced Cambridge modules separately where needed.
-- [ ] Add original lesson examples and accepted tree alternatives.
-- [ ] Add source references and review status to every lesson.
-- [ ] Persist lesson progress by content version.
-- [ ] Award 15 XP once per completed lesson version.
-- [ ] Add content review and lesson acceptance tests.
+- [x] Approve B-R Syntax Foundations curriculum map.
+- [x] Approve Cambridge Grammar & Analysis track map.
+- [x] Map all lesson objectives to source sections, concepts, tree IDs, and rule IDs.
+- [x] Define prerequisites and learning outcomes.
+- [x] Define diagnostic question, concept explanation, worked tree, guided practice, transfer task, and exit check fields.
+- [x] Audit each existing hand-authored lesson against source evidence.
+- [x] Rewrite, replace, move, or remove unsupported legacy claims.
+- [x] Keep chapter-specific B-R convention versions visible and enforceable.
+- [x] Select only relevant Cambridge insight cards for core lessons.
+- [ ] Build advanced Cambridge modules separately where needed. (17 topic placeholders are mapped; their content is not yet reviewed/published.)
+- [x] Add original lesson examples and accepted tree alternatives.
+- [x] Add source references and review status to every lesson.
+- [x] Persist lesson progress by content version.
+- [x] Award 15 XP once per completed lesson version.
+- [x] Add content review and lesson acceptance tests.
 
 ## 6. Quizzes
 
@@ -198,7 +198,7 @@ Current milestone sign-off: [M1–M3 acceptance, 8 November 2026](../reports/mil
 | 1. Linguistic architecture | Implementation/source audit | ADR-001; schemas; authority matrix; scoped review receipts | 8 Nov 2026 | M1 complete; unresolved mappings retained explicitly |
 | 2. Syntax Generator | Implementation/source audit | Current acceptance report; approved gold, API and parser regressions | 8 Nov 2026 | M2 complete for supported/unresolved scope |
 | 3. Explanation engine | Implementation/source audit | Reviewed B-R/CGEL templates; transport and real browser parity checks | 8 Nov 2026 | M3 complete; M4 may proceed |
-| 4. Lessons |  |  |  | Not started |
+| 4. Lessons | AI source/implementation review | M4 report; 12-lesson/schema/tree/JS/PostgreSQL/browser checks | 8 Nov 2026 | Launch implementation complete; hosted account migration follow-up explicit |
 | 5. Quizzes |  |  |  | Not started |
 | 6. Syntax Builder |  |  |  | Not started |
 | 7. Gamification/leaderboard |  |  |  | Not started |
