@@ -109,6 +109,28 @@ class CambridgeRegistryTests(unittest.TestCase):
         self.assertIn("deterministic runtime_check is missing",
                       result["diagnostics"][0]["message"])
 
+    def test_malformed_runtime_token_sequences_are_blocked(self):
+        self.add_rule("same")
+        path = self.root / "grammar" / "rules" / "test.json"
+        rule = json.loads(path.read_text(encoding="utf-8"))[0]
+        rule["runtime_check"]["forbidden_sequences"] = [["valid", 3]]
+        path.write_text(json.dumps([rule]), encoding="utf-8")
+        result = load_runtime_registry(self.root)
+        self.assertEqual(result["active_rules"], [])
+        self.assertIn("runtime_check forbidden_sequences are malformed",
+                      result["diagnostics"][0]["message"])
+
+    def test_non_string_reviewer_metadata_is_blocked(self):
+        self.add_rule("same")
+        registry_path = self.root / "grammar" / "runtime_registry.json"
+        registry = json.loads(registry_path.read_text(encoding="utf-8"))
+        registry["enabled_rules"][0]["reviewed_by"] = 123
+        registry_path.write_text(json.dumps(registry), encoding="utf-8")
+        result = load_runtime_registry(self.root)
+        self.assertEqual(result["active_rules"], [])
+        self.assertIn("reviewer identity is missing or malformed",
+                      result["diagnostics"][0]["message"])
+
     def test_fully_reviewed_allow_list_entry_is_eligible(self):
         self.add_rule("same")
         result = load_runtime_registry(self.root)
