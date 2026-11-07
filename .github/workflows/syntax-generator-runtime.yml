@@ -41,3 +41,5 @@ jobs:
       - name: Run parser-backed Syntax Generator tests
         working-directory: server
         run: python -m unittest -v test_parser_runtime
+      - name: Run existing LF/CRLF multiline parser regression
+        run: python server/test_multiline_parse.py
