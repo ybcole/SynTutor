@@ -2,7 +2,16 @@
 import sys
 import types
 import unittest
+import json
+from pathlib import Path
 from unittest.mock import patch
+
+from jsonschema import Draft202012Validator
+
+
+_M1_SCHEMA_PATH = Path(__file__).resolve().parents[1] / "docs" / "canonical-burton-roberts-tree.schema.json"
+_M1_SCHEMA = json.loads(_M1_SCHEMA_PATH.read_text(encoding="utf-8"))
+_M1_VALIDATOR = Draft202012Validator(_M1_SCHEMA)
 
 
 def _stub_module(name, **attributes):
@@ -94,17 +103,23 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
              patch.object(api, "_contrastive", return_value=""), \
              patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
              patch.object(api, "_rule_concepts", return_value=[]):
-            payload = api.build_payload(self.sentence, convention_version="V2")
+            payload = api.build_payload(self.sentence, chapter=2)
 
         self.assertEqual(payload["br_analysis"]["status"], "normalized")
         self.assertEqual(payload["br_analysis"]["convention_version"], "V2")
-        self.assertEqual(payload["br_analysis"]["tree"]["label"], "S")
+        self.assertEqual(payload["br_analysis"]["tree"]["root"]["label"], "S")
+        self.assertEqual(
+            list(_M1_VALIDATOR.iter_errors(payload["br_analysis"]["tree"])), [])
+        self.assertEqual(payload["br_analysis"]["canonical_schema"],
+                         "docs/canonical-burton-roberts-tree.schema.json")
         self.assertEqual(payload["tree"], self.candidate())
         self.assertEqual(payload["candidate_tree"], self.candidate())
         self.assertIn("br_analysis", payload)
         self.assertEqual(payload["meta"]["tree_authority"].split(";")[0],
                          "B-R canonical analysis is in br_analysis")
         self.assertEqual(payload["meta"]["br_convention_version"], "V2")
+        self.assertEqual(payload["cambridge_evaluation"]["status"], "no_runtime_rules")
+        self.assertEqual(payload["cambridge_evaluation"]["evaluated_rule_ids"], [])
 
     def test_unsupported_free_analysis_stays_explicitly_unresolved(self):
         with patch.object(api, "analyze", return_value=self.analysis()), \
@@ -116,7 +131,7 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
             payload = api.build_payload(self.sentence, convention_version="V10")
 
         self.assertEqual(payload["br_analysis"]["status"], "unresolved")
-        self.assertEqual(payload["br_analysis"]["diagnostics"][0]["code"], "NO_SAFE_B_R_MAPPING")
+        self.assertEqual(payload["br_analysis"]["diagnostics"][0]["code"], "PROFILE_MAPPING_NOT_APPROVED")
         self.assertEqual(payload["tree"], self.candidate())
 
 
@@ -185,11 +200,94 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
         self.assertEqual(replacement["original_tokens"][0]["text"], "goes")
         self.assertEqual(replacement["corrected_tokens"][0]["text"], "go")
 
+    def test_invalid_sentence_index_is_rejected_before_parsing(self):
+        for value in (-1, True, 1.5):
+            with self.subTest(value=value), patch.object(api, "analyze") as parse:
+                with self.assertRaisesRegex(ValueError, "sentence_index"):
+                    api.build_payload(self.sentence, sentence_index=value, chapter=2)
+                parse.assert_not_called()
+
     def test_invalid_convention_is_rejected_before_parsing(self):
         with patch.object(api, "analyze") as parse:
             with self.assertRaises(ValueError):
                 api.build_payload(self.sentence, convention_version="V11")
             parse.assert_not_called()
+
+
+    def test_chapter_selection_routes_to_matching_convention_profile(self):
+        with patch.object(api, "analyze", return_value=self.analysis()), \
+             patch.object(api, "evaluate", return_value=self.clean_evaluation()), \
+             patch.object(api, "classify", return_value=None), \
+             patch.object(api, "_contrastive", return_value=""), \
+             patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
+             patch.object(api, "_rule_concepts", return_value=[]):
+            payload = api.build_payload(self.sentence, chapter=2)
+
+        self.assertEqual(payload["meta"]["br_convention_version"], "V2")
+        self.assertEqual(payload["meta"]["br_profile_id"], "V2")
+        self.assertEqual(payload["br_analysis"]["convention_version"], "V2")
+
+    def test_chapter_and_explicit_convention_conflict_is_rejected_before_parse(self):
+        with patch.object(api, "analyze") as parse:
+            with self.assertRaisesRegex(ValueError, "chapter 2 requires convention_version V2"):
+                api.build_payload(self.sentence, chapter=2, convention_version="V3")
+            parse.assert_not_called()
+
+    def test_chapter_7_appendix_d1_is_explicit_in_shared_payload(self):
+        with patch.object(api, "analyze", return_value=self.analysis()), \
+             patch.object(api, "evaluate", return_value=self.clean_evaluation()), \
+             patch.object(api, "classify", return_value=None), \
+             patch.object(api, "_contrastive", return_value=""), \
+             patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
+             patch.object(api, "_rule_concepts", return_value=[]):
+            payload = api.build_payload(self.sentence, chapter=7, appendix_nom=True)
+
+        self.assertEqual(payload["meta"]["br_convention_version"], "V7")
+        self.assertEqual(payload["meta"]["br_profile_id"], "V7-APPENDIX-D1")
+        self.assertTrue(payload["meta"]["br_appendix_nom"])
+
+    def test_variety_selection_is_trimmed_and_returned_in_metadata(self):
+        with patch.object(api, "analyze", return_value=self.analysis()), \
+             patch.object(api, "evaluate", return_value=self.clean_evaluation()), \
+             patch.object(api, "classify", return_value=None), \
+             patch.object(api, "_contrastive", return_value=""), \
+             patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
+             patch.object(api, "_rule_concepts", return_value=[]):
+            payload = api.build_payload(self.sentence, chapter=2, variety=" AmE ")
+
+        self.assertEqual(payload["meta"]["cambridge_variety"], "AmE")
+
+    def test_invalid_variety_is_rejected_before_parsing(self):
+        for value in (" ", 5, True):
+            with self.subTest(value=value), patch.object(api, "analyze") as parse:
+                with self.assertRaisesRegex(ValueError, "variety"):
+                    api.build_payload(self.sentence, chapter=2, variety=value)
+                parse.assert_not_called()
+
+    def test_multi_sentence_request_reports_selected_sentence(self):
+        analysis = self.analysis()
+        analysis["sentence_index"] = 1
+        analysis["sentence_count"] = 2
+        analysis["sentences"] = [
+            {"start": 0, "end": 15, "text": "The cats sleep."},
+            {"start": 16, "end": 31, "text": self.sentence},
+        ]
+        for token in analysis["tokens"]:
+            token["start"] += 16
+            token["end"] += 16
+        with patch.object(api, "analyze", return_value=analysis), \
+             patch.object(api, "evaluate", return_value=self.clean_evaluation()), \
+             patch.object(api, "classify", return_value=None), \
+             patch.object(api, "_contrastive", return_value=""), \
+             patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
+             patch.object(api, "_rule_concepts", return_value=[]):
+            payload = api.build_payload("The cats sleep. The birds sing.",
+                                        sentence_index=1, chapter=2)
+
+        self.assertEqual(payload["meta"]["sentence_count"], 2)
+        self.assertEqual(payload["meta"]["target_sentence"], 2)
+        self.assertEqual(payload["parse"]["text"], self.sentence)
+        self.assertEqual(payload["br_analysis"]["status"], "normalized")
 
 
 if __name__ == "__main__":

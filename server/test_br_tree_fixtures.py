@@ -27,7 +27,9 @@ class BurtonRobertsFixtureTests(unittest.TestCase):
             if _source_yield(tree) != _atoms(sentence):
                 continue
             aligned.append(record)
-            result = normalize_candidate({}, None, sentence, version, [record])
+            result = normalize_candidate(
+                {}, None, sentence, version, [record],
+                appendix_nom=bool(record.get("appendix_nom", False)))
             if result.get("status") == "normalized":
                 errors = validate_tree(result["tree"], version, _atoms(sentence))
                 self.assertEqual(errors, [], f"{record.get('id')} returned an invalid normalized tree")

@@ -223,19 +223,25 @@ def token_metadata(nlp, doc, target, offset_starts, offset_ends):
 def analyze(text, sentence_index=0):
     """Full deterministic parse of ``text``, targeting one sentence.
 
-    ``sentence_index`` selects which spaCy sentence (0-based) to parse; it is
-    clamped to the detected sentence range. Returns the target sentence, its
+    ``sentence_index`` selects which spaCy sentence (0-based) to parse; negative
+    and out-of-range values raise ``ValueError`` rather than silently selecting
+    a different sentence. Returns the target sentence, its
     token metadata, the benepar parse string, the rebuilt node graph (root +
     id map), and the full sentence segmentation with character offsets
     (start/end) valid against the exact ``text`` string passed in.
     """
+    if isinstance(sentence_index, bool) or not isinstance(sentence_index, int) or sentence_index < 0:
+        raise ValueError("sentence_index must be a non-negative integer")
     nlp = load_models()
     parser_text, offset_starts, offset_ends = _normalize_parser_text(text)
     doc = nlp(parser_text)
     sents = [s for s in doc.sents]
     if not sents:
         raise ParseFailure('no sentences detected')
-    idx = min(max(sentence_index, 0), len(sents) - 1)
+    if sentence_index >= len(sents):
+        raise ValueError(
+            f"sentence_index {sentence_index} is out of range for {len(sents)} detected sentence(s)")
+    idx = sentence_index
     target = sents[idx]
     parse_string = target._.parse_string
     tagged = parse_parse_string(parse_string)

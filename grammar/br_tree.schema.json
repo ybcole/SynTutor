@@ -1,7 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://syntutor.local/schema/br-tree.schema.json",
-  "title": "SynTutor Burton-Roberts canonical analysis",
+  "$id": "https://syntutor.local/schema/legacy-br-tree-runtime-projection.schema.json",
+  "description": "Deprecated internal projection retained only for br_tree.py compatibility tests. POST /api/parse now returns the approved M1 envelope from docs/canonical-burton-roberts-tree.schema.json inside br_analysis.tree.",
+  "title": "Legacy internal Burton-Roberts runtime projection (deprecated for API output)",
   "type": "object",
   "additionalProperties": false,
   "required": [

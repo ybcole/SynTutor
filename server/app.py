@@ -129,6 +129,9 @@ class Handler(BaseHTTPRequestHandler):
         except Exception as exc:  # noqa: BLE001
             self._json(400, {'error': f'invalid request payload: {exc}'})
             return
+        if not isinstance(data, dict):
+            self._json(400, {'error': 'request payload must be a JSON object'})
+            return
 
         if path == '/api/words':
             raw = data.get('words')
@@ -144,21 +147,51 @@ class Handler(BaseHTTPRequestHandler):
         if not text:
             self._json(422, {'error': 'empty input', 'hint': 'Provide an English sentence in "text".'})
             return
-        try:
-            sentence_index = int(data.get('sentence_index', 0))
-        except (TypeError, ValueError):
+        raw_sentence_index = data.get('sentence_index', 0)
+        if isinstance(raw_sentence_index, bool) or not isinstance(raw_sentence_index, int):
             self._json(400, {'error': 'sentence_index must be an integer'})
             return
+        sentence_index = raw_sentence_index
         if sentence_index < 0:
             self._json(400, {'error': 'sentence_index must be >= 0'})
             return
-        convention_version = data.get('convention_version') or 'V10'
-        if convention_version not in CONVENTIONS:
+        convention_version = data.get('convention_version')
+        if convention_version is not None and convention_version not in CONVENTIONS:
             self._json(400, {'error': 'convention_version must be one of V1-V10'})
             return
+        chapter = data.get('chapter')
+        if chapter is not None and (isinstance(chapter, bool) or not isinstance(chapter, int)
+                                    or not 1 <= chapter <= 10):
+            self._json(400, {'error': 'chapter must be an integer from 1 through 10'})
+            return
+        appendix_nom = data.get('appendix_nom')
+        if appendix_nom is not None and not isinstance(appendix_nom, bool):
+            self._json(400, {'error': 'appendix_nom must be true, false, or null'})
+            return
+        variety = data.get('variety')
+        if variety is not None and (not isinstance(variety, str) or not variety.strip()):
+            self._json(400, {'error': 'variety must be a non-empty string or null'})
+            return
+        variety = variety.strip() if isinstance(variety, str) else None
+        if appendix_nom is True and chapter not in (None, 7):
+            self._json(400, {'error': 'appendix_nom is only valid for Chapter 7 or free analysis'})
+            return
+        if appendix_nom is False and chapter is None:
+            self._json(400, {'error': 'free analysis uses the declared FINAL-D1 profile; appendix_nom cannot be disabled'})
+            return
+        if chapter is not None:
+            expected_version = f'V{chapter}'
+            if convention_version is not None and convention_version != expected_version:
+                self._json(400, {'error': f'chapter {chapter} requires convention_version {expected_version}'})
+                return
+            convention_version = expected_version
+        else:
+            convention_version = convention_version or 'V10'
         try:
             payload = build_payload(text, sentence_index=sentence_index,
-                                    convention_version=convention_version)
+                                    convention_version=convention_version,
+                                    chapter=chapter, appendix_nom=appendix_nom,
+                                    variety=variety)
         except ParseFailure as exc:
             self._json(422, {'error': str(exc), 'input': text})
             return

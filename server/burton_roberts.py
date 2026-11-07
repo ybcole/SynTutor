@@ -129,20 +129,35 @@ def _sentence_start(analysis: dict[str, Any]) -> int:
 
 
 def _candidate_tokens(analysis: dict[str, Any]) -> list[dict[str, Any]]:
-    """Convert parser token offsets to sentence-local canonical token records."""
+    """Convert lexical parser tokens to sentence-local canonical token records.
+
+    Phrase markers in the B-R fixtures omit terminal punctuation. Keep
+    punctuation in the original sentence and parser diagnostics, but do not
+    create artificial punctuation leaves in the canonical phrase marker.
+    """
     start = _sentence_start(analysis)
     result = []
-    for i, token in enumerate(analysis.get("tokens") or []):
+    for token in analysis.get("tokens") or []:
+        text = str(token.get("t", ""))
+        if not any(char.isalnum() or char == "_" for char in text):
+            continue
         char_start = int(token.get("start", start)) - start
         char_end = int(token.get("end", start)) - start
         result.append({
-            "index": i,
-            "text": str(token.get("t", "")),
+            "index": len(result),
+            "text": text,
             "char_span": [char_start, char_end],
             "pos": str(token.get("pos", "")),
             "parser_tag": str(token.get("tag", "")),
         })
     return result
+
+
+def _is_parser_punctuation(node: dict[str, Any]) -> bool:
+    if node.get("punct") is True:
+        return True
+    surface = str(node.get("surface", ""))
+    return bool(surface) and not any(char.isalnum() or char == "_" for char in surface)
 
 
 def _raw_leaves(node: dict[str, Any]) -> list[dict[str, Any]]:
@@ -164,7 +179,8 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
     """Normalize only a tightly supported V2 shell; otherwise fail unresolved.
 
     The currently approved adapter supports B-R V2's S -> NP VP skeleton when
-    both NP and VP are left unanalyzed triangles and punctuation is absent.
+    both NP and VP are left unanalyzed triangles. Sentence-final punctuation
+    is excluded from the phrase marker; punctuation inside a phrase is unresolved.
     POS tags remain token metadata; they are not promoted to B-R phrase nodes.
     Later profiles need additional reviewed mappings (lexical categories,
     verbal features, auxiliary layers, NOM, clauses, gaps, indices and control).
@@ -195,19 +211,24 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
         return _unresolved_result(profile, reasons, trace, analysis, tokens)
 
     root = raw_root
-    while (root.get("type") in {"ROOT", "TOP"}
-           and isinstance(root.get("children"), list)
-           and len(root["children"]) == 1):
+    while root.get("type") in {"ROOT", "TOP"} and isinstance(root.get("children"), list):
+        semantic_children = [child for child in root["children"]
+                             if isinstance(child, dict) and not _is_parser_punctuation(child)]
+        if len(semantic_children) != 1:
+            break
         trace.append({"rule_id": "STRIP_SINGLE_PARSER_WRAPPER",
-                      "from": root.get("type"), "to": root["children"][0].get("type"),
-                      "evidence": "transport wrapper only; no linguistic node relabelled"})
-        root = root["children"][0]
+                      "from": root.get("type"), "to": semantic_children[0].get("type"),
+                      "evidence": "transport wrapper and sentence-final punctuation are not B-R phrase-marker nodes"})
+        root = semantic_children[0]
 
     if root.get("type") != "S":
         reasons.append({"code": "UNSUPPORTED_ROOT_LABEL",
                         "detail": f"Expected a B-R V2 S root; received {root.get('type')!r}."})
-    children = root.get("children") or []
-    child_labels = [c.get("type") for c in children if isinstance(c, dict)]
+    children = [
+        child for child in (root.get("children") or [])
+        if isinstance(child, dict) and not _is_parser_punctuation(child)
+    ]
+    child_labels = [c.get("type") for c in children]
     if len(children) != 2 or child_labels != ["NP", "VP"]:
         reasons.append({"code": "UNSUPPORTED_V2_S_SHAPE",
                         "detail": "V2 promotion requires exactly S → NP VP; extra clauses, punctuation or other branches remain unresolved."})
@@ -241,7 +262,8 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
     # The parser's leaf order must be identical to the token stream produced by
     # spaCy. A different tokenization is not repaired by guessing.
     leaves = _raw_leaves(raw_root)
-    leaf_text = [str(x.get("surface", "")) for x in leaves]
+    leaf_text = [str(x.get("surface", "")) for x in leaves
+                 if not _is_parser_punctuation(x)]
     token_text = [t["text"] for t in tokens]
     if leaf_text != token_text:
         reasons.append({"code": "TOKEN_ALIGNMENT_MISMATCH",
@@ -295,18 +317,206 @@ def _unresolved_result(profile: dict[str, Any], reasons: list[dict[str, str]],
                             "token_count": len(tokens)}}
 
 
+def _matching_gold_records(sentence: str, profile: dict[str, Any],
+                            reference_records: Any = None) -> list[dict[str, Any]]:
+    """Find exact sentence/profile-matched image-verified B-R source records."""
+    try:
+        from .br_tree import _atoms, _source_yield, load_reference_records
+    except ImportError:  # direct script-directory imports
+        from br_tree import _atoms, _source_yield, load_reference_records
+
+    expected = _atoms(sentence)
+    version = "V10" if profile.get("version") == "FINAL" else profile.get("version")
+    chapter = profile.get("chapter")
+    records = load_reference_records() if reference_records is None else reference_records
+    matches = []
+    for record in records:
+        if record.get("_chapter") != chapter or record.get("_convention_version") != version:
+            continue
+        if record.get("status") != "IMG" or record.get("correct") is False:
+            continue
+        if not isinstance(record.get("sentence"), str):
+            continue
+        if _atoms(record["sentence"]) != expected:
+            continue
+        if not isinstance(record.get("tree"), dict) or _source_yield(record["tree"]) != expected:
+            continue
+        if chapter == 7 and bool(record.get("appendix_nom", False)) != bool(profile.get("appendix_nom", False)):
+            continue
+        matches.append(record)
+    return matches
+
+
 def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = None,
                              appendix_nom: bool | None = None,
-                             correction: dict[str, Any] | None = None) -> dict[str, Any]:
-    """Build the stable API wrapper around a canonical tree or unresolved state."""
+                             correction: dict[str, Any] | None = None,
+                             reference_records: Any = None) -> dict[str, Any]:
+    """Build an API result whose normalized tree uses the M1-approved envelope.
+
+    Exact IMG-verified source trees take priority when sentence and convention
+    match. Conflicting source analyses remain unresolved. Otherwise the narrow
+    parser adapter is attempted; it currently supports only the V2 S → NP VP
+    shell with unanalyzed NP/VP triangles. Other Benepar structures fail closed.
+    """
     profile = convention_profile(chapter, appendix_nom)
-    result = normalize_benepar_candidate(analysis, profile)
+    sentence = str(analysis.get("sentence", ""))
+    try:
+        matches = _matching_gold_records(sentence, profile, reference_records)
+    except Exception as exc:  # malformed source index/data must fail closed
+        matches = []
+        match_failure = exc
+    else:
+        match_failure = None
+    if match_failure is not None:
+        result = {
+            "status": "unresolved", "tree": None,
+            "reasons": [{
+                "code": "GOLD_LOOKUP_FAILURE",
+                "detail": f"Exact B-R source lookup failed safely: {match_failure}",
+            }],
+            "normalization_trace": [{
+                "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
+                "evidence": "Source lookup failed; the raw Benepar candidate was not promoted.",
+            }],
+        }
+    elif matches:
+        signatures = {
+            json.dumps(
+                {"tree": row.get("tree"),
+                 "accepted_alternatives": row.get("accepted_alternatives") or []},
+                ensure_ascii=False, sort_keys=True,
+            )
+            for row in matches
+        }
+        if len(signatures) > 1:
+            result = {
+                "status": "unresolved", "tree": None,
+                "reasons": [{
+                    "code": "AMBIGUOUS_GOLD_REFERENCE",
+                    "detail": "Different IMG-verified B-R source analyses match this sentence and convention; no tree was selected.",
+                }],
+                "normalization_trace": [{
+                    "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
+                    "evidence": "The matching source records disagree structurally.",
+                }],
+            }
+        else:
+            try:
+                imported = canonicalize_gold_record(
+                    matches[0], {"chapter": int(profile["chapter"])})
+            except Exception as exc:  # malformed source projection must fail closed
+                imported = {
+                    "status": "unresolved", "tree": None,
+                    "errors": [f"gold source importer failed safely: {type(exc).__name__}: {exc}"],
+                }
+            if imported.get("status") != "normalized" or not isinstance(imported.get("tree"), dict):
+                result = {
+                    "status": "unresolved", "tree": None,
+                    "reasons": [{
+                        "code": "GOLD_SOURCE_IMPORT_UNRESOLVED",
+                        "detail": "; ".join(imported.get("errors") or ["The matching B-R source record could not be projected."]),
+                    }],
+                    "normalization_trace": [{
+                        "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
+                        "evidence": "The matching IMG record was retained as unresolved; no parser fallback was substituted.",
+                    }],
+                }
+            else:
+                envelope = imported["tree"]
+                # The exact-gold lookup matches lexical yield, not punctuation
+                # or whitespace. Preserve the submitted sentence and rebase
+                # lexical-token character offsets onto that exact request text.
+                source_tokens = envelope.get("tokens") or []
+                rebased_tokens, alignment_errors = _align_words_to_sentence(
+                    [str(token.get("text", "")) for token in source_tokens], sentence)
+                if alignment_errors or len(rebased_tokens) != len(source_tokens):
+                    result = {
+                        "status": "unresolved", "tree": None,
+                        "reasons": [{
+                            "code": "REQUEST_TOKEN_ALIGNMENT_FAILED",
+                            "detail": "; ".join(alignment_errors or [
+                                "The selected gold tree's tokenization could not be aligned to the submitted sentence."
+                            ]),
+                        }],
+                        "normalization_trace": [{
+                            "rule_id": "EXACT_IMG_GOLD_REFERENCE",
+                            "evidence": "The lexical source match could not be safely rebased to the exact request text.",
+                        }],
+                    }
+                else:
+                    for token, rebased in zip(source_tokens, rebased_tokens):
+                        token["char_span"] = rebased["char_span"]
+                    envelope["sentence"] = sentence
+                    # The declared free-analysis profile is FINAL-D1 (V10 plus
+                    # the adopted Appendix NOM refinement), not merely a Ch10 lesson.
+                    envelope["convention_profile"] = profile
+                    try:
+                        validation = validate_canonical_tree(envelope)
+                    except Exception as exc:  # unexpected validator error cannot promote a tree
+                        validation = {
+                            "valid": False,
+                            "errors": [f"canonical validator failed safely: {type(exc).__name__}: {exc}"],
+                            "warnings": [],
+                        }
+                    if not validation["valid"]:
+                        result = {
+                            "status": "unresolved", "tree": None,
+                            "reasons": [{
+                                "code": "CANONICAL_GOLD_VALIDATION_FAILED",
+                                "detail": "; ".join(validation["errors"]),
+                            }],
+                            "normalization_trace": [{
+                                "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
+                                "evidence": "The imported source envelope failed the approved M1 canonical validator.",
+                            }],
+                        }
+                    else:
+                        duplicate_ids = [str(row.get("id")) for row in matches[1:]]
+                        if duplicate_ids:
+                            envelope.setdefault("notes", []).append(
+                                "identical_gold_reference_records=" + ",".join(duplicate_ids))
+                        result = {
+                            "status": "normalized", "tree": envelope, "reasons": [],
+                            "normalization_trace": [{
+                                "rule_id": "EXACT_IMG_GOLD_REFERENCE",
+                                "evidence": "Exact lexical yield and convention-profile match to an IMG-verified Burton-Roberts source record.",
+                                "source_record_id": matches[0].get("id"),
+                            }],
+                            "validation": validation,
+                        }
+    else:
+        try:
+            result = normalize_benepar_candidate(analysis, profile)
+        except Exception as exc:  # unexpected adapter errors become explicit unresolved data
+            result = {
+                "status": "unresolved", "tree": None,
+                "reasons": [{
+                    "code": "NORMALIZER_FAILURE",
+                    "detail": f"B-R normalization failed safely: {type(exc).__name__}: {exc}",
+                }],
+                "normalization_trace": [{
+                    "rule_id": "FAIL_CLOSED_NORMALIZER",
+                    "evidence": "An adapter exception occurred; no candidate labels were promoted.",
+                }],
+            }
+
     result["convention_profile"] = profile
-    result.setdefault("diagnostics", {
-        "parser": "benepar_en3", "parse_string": analysis.get("parse_string"),
-        "raw_candidate_tree": analysis.get("root"),
-        "token_count": len(analysis.get("tokens") or []),
-    })
+    result["convention_version"] = profile["version"]
+    raw_diagnostics = result.get("diagnostics")
+    if isinstance(raw_diagnostics, dict):
+        result["parser_diagnostics"] = raw_diagnostics
+    else:
+        result["parser_diagnostics"] = {
+            "parser": "benepar_en3", "parse_string": analysis.get("parse_string"),
+            "raw_candidate_tree": analysis.get("root"),
+            "token_count": len(analysis.get("tokens") or []),
+        }
+    result["canonical_schema"] = "docs/canonical-burton-roberts-tree.schema.json"
+    result["diagnostics"] = [
+        {"code": row.get("code", "NORMALIZATION_UNRESOLVED"),
+         "message": row.get("detail", row.get("message", "The B-R analysis is unresolved."))}
+        for row in result.get("reasons", [])
+    ]
     if correction:
         result["correction_alignment"] = align_correction(
             str(correction.get("original_sentence", analysis.get("sentence", ""))),
@@ -587,9 +797,36 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
         return {"status": "unresolved", "tree": None, "errors": [str(exc)],
                 "raw_tree": raw_tree}
 
-    source = {"book": BOOK_TITLE, "chapter": chapter,
-              "evidence_status": record.get("status") if record.get("status") in _EVIDENCE else "NEEDS_REVIEW",
-              "source_record_id": tree_id}
+    raw_review_status = record.get("review_status")
+    valid_review_statuses = {
+        "NOT_REVIEWED", "INDEPENDENTLY_REVIEWED", "HUMAN_APPROVED", "REJECTED",
+    }
+    if raw_review_status in valid_review_statuses:
+        review_status = raw_review_status
+        default_review_note = (
+            f"Review status {review_status} imported from the source record."
+        )
+    else:
+        review_status = "NOT_REVIEWED"
+        if raw_review_status is None:
+            default_review_note = (
+                "IMG indicates image evidence only; this import does not establish "
+                "independent review or human approval."
+            )
+        else:
+            default_review_note = (
+                "Unrecognized source review_status "
+                + json.dumps(raw_review_status, ensure_ascii=False, sort_keys=True)
+                + "; canonical status retained as NOT_REVIEWED. IMG indicates image "
+                "evidence only and does not establish independent review or human approval."
+            )
+    source = {
+        "book": BOOK_TITLE, "chapter": chapter,
+        "evidence_status": record.get("status") if record.get("status") in _EVIDENCE else "NEEDS_REVIEW",
+        "review_status": review_status,
+        "review_note": str(record.get("review_note") or default_review_note),
+        "source_record_id": tree_id,
+    }
     if record.get("page") is not None:
         source["printed_page"] = int(record["page"])
     if record.get("fig") is not None:
@@ -642,7 +879,7 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
     represented_fields = {
         "id", "fig", "page", "sentence", "status", "tree", "note",
         "appendix_nom", "accepted_alternatives", "external_controller",
-        "external_controllers", "movement",
+        "external_controllers", "movement", "review_status", "review_note",
     }
     # Preserve every remaining chapter-specific answer/interpretation field.
     # The schema's notes array is intentionally used as a lossless, readable
