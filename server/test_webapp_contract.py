@@ -51,6 +51,11 @@ class FlaskParseContractTests(unittest.TestCase):
         )
         self.assertEqual(response.status_code, 400)
 
+    def test_non_object_json_body_returns_400(self):
+        response = self.client.post("/api/parse", json=["not", "an", "object"])
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("JSON object", response.get_json()["error"])
+
     def test_successful_build_returns_payload(self):
         expected = {"br_analysis": {"status": "unresolved"}}
         with patch("webapp.build_payload", return_value=expected) as build:
