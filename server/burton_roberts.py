@@ -797,18 +797,34 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
         return {"status": "unresolved", "tree": None, "errors": [str(exc)],
                 "raw_tree": raw_tree}
 
-    review_status = record.get("review_status")
-    if review_status not in {"NOT_REVIEWED", "INDEPENDENTLY_REVIEWED", "HUMAN_APPROVED", "REJECTED"}:
+    raw_review_status = record.get("review_status")
+    valid_review_statuses = {
+        "NOT_REVIEWED", "INDEPENDENTLY_REVIEWED", "HUMAN_APPROVED", "REJECTED",
+    }
+    if raw_review_status in valid_review_statuses:
+        review_status = raw_review_status
+        default_review_note = (
+            f"Review status {review_status} imported from the source record."
+        )
+    else:
         review_status = "NOT_REVIEWED"
+        if raw_review_status is None:
+            default_review_note = (
+                "IMG indicates image evidence only; this import does not establish "
+                "independent review or human approval."
+            )
+        else:
+            default_review_note = (
+                "Unrecognized source review_status "
+                + json.dumps(raw_review_status, ensure_ascii=False, sort_keys=True)
+                + "; canonical status retained as NOT_REVIEWED. IMG indicates image "
+                "evidence only and does not establish independent review or human approval."
+            )
     source = {
         "book": BOOK_TITLE, "chapter": chapter,
         "evidence_status": record.get("status") if record.get("status") in _EVIDENCE else "NEEDS_REVIEW",
         "review_status": review_status,
-        "review_note": (
-            str(record.get("review_note"))
-            if record.get("review_note")
-            else "IMG indicates image evidence only; this import does not establish independent review or human approval."
-        ),
+        "review_note": str(record.get("review_note") or default_review_note),
         "source_record_id": tree_id,
     }
     if record.get("page") is not None:
