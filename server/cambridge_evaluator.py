@@ -10,6 +10,11 @@ from __future__ import annotations
 import re
 from typing import Any
 
+try:
+    from .burton_roberts import validate_canonical_tree
+except ImportError:  # direct script-directory imports
+    from burton_roberts import validate_canonical_tree
+
 
 _TOKEN_RE = re.compile(r"\w+(?:['’]\w+)*|[^\w\s]", re.UNICODE)
 _SUPPORTED_CHECK = "forbidden_token_sequences"
@@ -125,6 +130,21 @@ def evaluate_cambridge(analysis: dict[str, Any] | None,
         }
     if isinstance(variety, str):
         variety = variety.strip()
+    try:
+        validation = validate_canonical_tree(envelope)
+    except Exception as exc:
+        validation = {"valid": False, "errors": [f"{type(exc).__name__}: {exc}"]}
+    if not validation.get("valid"):
+        return {
+            "status": "not_evaluated",
+            "evaluated_rule_ids": [],
+            "findings": [],
+            "diagnostics": [{
+                "code": "CANONICAL_TREE_INVALID",
+                "message": "Cambridge rules require a valid M1 Burton-Roberts canonical envelope: "
+                           + "; ".join(validation.get("errors") or ["validation failed"]),
+            }],
+        }
     if not isinstance(registry, dict):
         registry = {}
     active_rules = registry.get("active_rules", [])
