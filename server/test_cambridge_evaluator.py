@@ -84,6 +84,19 @@ class CambridgeEvaluatorTests(unittest.TestCase):
         self.assertEqual(result["findings"], [])
         self.assertEqual(result["diagnostics"][-1]["code"], "NO_RUNTIME_ENABLED_RULES")
 
+    def test_invalid_selected_variety_is_rejected(self):
+        self.add_allowlisted_rule()
+        registry = load_runtime_registry(self.root)
+        for value in (" ", 5, True):
+            with self.subTest(value=value):
+                result = evaluate_cambridge(
+                    self.analysis("The item is very unique."), registry, variety=value,
+                )
+                self.assertEqual(result["status"], "invalid_variety")
+                self.assertEqual(result["findings"], [])
+                self.assertEqual(result["diagnostics"][0]["code"],
+                                 "INVALID_SELECTED_VARIETY")
+
     def test_unresolved_b_r_analysis_skips_cambridge_evaluation(self):
         result = evaluate_cambridge(
             {"status": "unresolved", "tree": None},
