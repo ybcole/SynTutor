@@ -7,8 +7,8 @@ Use this as the project sign-off register. Mark a box only when there is evidenc
 - [ ] Confirm exact Noel Burton-Roberts book title, edition, and page numbering represented by the supplied source PDFs.
 - [ ] Confirm exact Cambridge edition and the bibliographic metadata used in the extraction files.
 - [x] Inventory all B-R chapter JSONs, tree validators, evidence flags, exercise-answer fields, book flags, fragments, and unresolved items.
-- [x] Inventory every Cambridge extraction, merged rule, concept, conflict, cross-reference, and uncertain item.
-- [x] Record which Cambridge sections have been extracted and which remain unprocessed.
+- [ ] Inventory every Cambridge extraction, merged rule, concept, conflict, cross-reference, and uncertain item.
+- [ ] Record which Cambridge sections have been extracted and which remain unprocessed.
 - [x] Record the independent-review state separately from human approval.
 - [x] Inventory the legacy rule matrix, parser labels, lesson claims, quiz examples, and old progress rows.
 - [ ] Approve a migration and rollback strategy before changing live user data.
@@ -16,32 +16,32 @@ Use this as the project sign-off register. Mark a box only when there is evidenc
 ## 1. Linguistic architecture and source crosswalk
 
 - [x] Approve a canonical B-R tree JSON schema.
-- [x] Approve a convention-profile registry for V1–V10 and the declared final profile.
+- [ ] Approve a convention-profile registry for V1–V10 and the declared final profile.
 - [x] Confirm the rule for using chapter-specific convention versions in chapter lessons.
 - [x] Define how functions are derived from structural positions rather than encoded as invented nodes.
 - [x] Define how gaps, indices, triangles, elided elements, movement metadata, and accepted alternatives are represented.
 - [x] Build a B-R ↔ Cambridge terminology/analysis crosswalk.
 - [x] Resolve mappings currently marked `unverified` or explicitly retain them as unresolved.
-- [ ] Create a rule runtime registry separate from extraction approval status.
+- [x] Create a rule runtime registry separate from extraction approval status.
 - [x] Define which rule types can trigger errors and which only inform teaching/description.
-- [x] Document how variety, register, exceptions, ambiguity, and low-confidence analysis affect verdicts.
-- [x] Approve copyright handling for stored examples, book answers, and learner-visible content.
+- [ ] Document how variety, register, exceptions, ambiguity, and low-confidence analysis affect verdicts.
+- [ ] Approve copyright handling for stored examples, book answers, and learner-visible content.
 
 ## 2. Syntax Generator
 
 - [x] Preserve raw Benepar parse output for diagnostics.
-- [ ] Build a B-R normalization adapter.
+- [x] Build a B-R normalization adapter.
 - [ ] Implement safe mappings/restructuring for supported categories and constructions.
 - [x] Add explicit unresolved/alternative-analysis outcomes.
-- [ ] Add B-R tree structural validation.
+- [x] Add B-R tree structural validation.
 - [x] Validate word order and token-span alignment.
-- [ ] Validate feature legality and chapter convention restrictions.
-- [ ] Validate gaps, indices, triangles, ellipsis, and accepted alternatives.
-- [ ] Add gold-tree tests using the B-R chapter JSONs.
+- [x] Validate feature legality and chapter convention restrictions.
+- [x] Validate gaps, indices, triangles, ellipsis, and accepted alternatives.
+- [x] Add gold-tree tests using the B-R chapter JSONs.
 - [ ] Add Cambridge minimal-pair and constraint tests.
-- [ ] Add regression tests for the legacy error corpus.
+- [x] Add regression tests for the legacy error corpus.
 - [ ] Define CoLA's advisory role and prevent it from inventing rule explanations.
-- [ ] Implement a shared normalized analysis payload.
+- [x] Implement a shared normalized analysis payload.
 - [ ] Verify full sentence and multi-sentence handling.
 - [ ] Add performance/error/fallback behavior for parser and normalizer failures.
 
@@ -273,3 +273,16 @@ The three boxes marked above are supported by code and focused tests: the API re
 - The B-R edition/PDF, full parser/model runtime, canonical frontend renderer adoption, and end-to-end API integration remain outstanding. The new canvas notice is an authority warning, not canonical rendering.
 
 **Milestone 02 remains unchecked and not approved for downstream use.**
+
+
+## Milestone 02 continuation log — 7 November 2026
+
+**Branch:** `feature/milestone-02-completion-2026-11-07`  
+**Pull request:** [#30](https://github.com/ybcole/SynTutor/pull/30), draft  
+**Status:** Incomplete; the M2 tracker remains `[ ]`.
+
+The continuation corrects shared API profile routing across Flask, stdlib, and hosted entry points; removes the competing second canonical-analysis path; separates V7 core and Appendix D1 source-reference matching; adds profile/multi-sentence API contract tests and CoLA advisory-role tests; and expands CI to include the B-R importer suite and read-only 252-record audit. `docs/syntax-generator-api.md` documents the active contract and unsupported states.
+
+The first CI run, [42346139502](https://github.com/ybcole/SynTutor/actions/runs/42346139502), failed in the expanded test stage. The failures identified an accidentally commented-out narration initialization and test isolation/fixture-profile issues. These have been corrected on the branch. The retry workflow result is pending and must be recorded before changing any new checklist boxes. Do not interpret this log as evidence that the retry passed.
+
+The remaining unchecked criteria include source-grounded generalized V3–V10 mapping, a Cambridge sentence-level evaluator with minimal-pair/exception tests, CoLA role verification pending the retry, real model-backed parser integration and full/multi-sentence runtime checks, and performance/fallback verification. Exact book edition/page metadata also remains open. No database/user-progress migration or downstream milestone work was performed.
