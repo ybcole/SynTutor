@@ -10,6 +10,7 @@ from parse_engine import ParseFailure, analyze, load_models
 from br_tree import build_correction_alignment
 from burton_roberts import build_canonical_analysis
 from cambridge_registry import load_runtime_registry
+from cambridge_evaluator import evaluate_cambridge
 from matrix import evaluate, _rem_from_text
 from detector import classify, classify_many, combine
 from licensing import _leaves as _tree_leaves
@@ -139,6 +140,7 @@ def build_payload(text, sentence_index=0, convention_version=None,
         analysis, chapter=chapter, appendix_nom=appendix_nom)
     profile_id = br_analysis.get("convention_profile", {}).get("profile_id", "UNRESOLVED")
     cambridge_runtime = load_runtime_registry()
+    cambridge_evaluation = evaluate_cambridge(br_analysis, cambridge_runtime)
     result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
     summary = result['summary']
@@ -284,6 +286,8 @@ def build_payload(text, sentence_index=0, convention_version=None,
             'acceptability_signal_role': 'advisory_only',
             'acceptability_signal_can_create_rule_violation': False,
             'cambridge_runtime_rule_ids': cambridge_runtime.get('active_rule_ids', []),
+            'cambridge_evaluated_rule_ids': cambridge_evaluation.get('evaluated_rule_ids', []),
+            'cambridge_evaluation_status': cambridge_evaluation.get('status'),
         },
         'parse': {
             'text': analysis['sentence'],
@@ -297,6 +301,7 @@ def build_payload(text, sentence_index=0, convention_version=None,
         'candidate_tree': root,
         'br_analysis': br_analysis,
         'cambridge_runtime': cambridge_runtime,
+        'cambridge_evaluation': cambridge_evaluation,
         'nodes': analysis['nodes'],
         'node_details': details,
         'summary': summary,
