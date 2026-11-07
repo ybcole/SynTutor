@@ -9,6 +9,8 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
+from server.br_tree import _atoms, _source_yield, load_reference_records
+
 from server.burton_roberts import (
     align_correction,
     build_canonical_analysis,
@@ -617,6 +619,48 @@ class GeneratorCanonicalEnvelopeTests(unittest.TestCase):
         self.assertEqual(result["tree"]["convention_profile"]["version"], "FINAL")
         self.assertEqual(result["tree"]["convention_profile"]["profile_id"], "FINAL-D1")
         self.assertTrue(result["tree"]["convention_profile"]["appendix_nom"])
+
+
+    def test_img_sentence_aligned_gold_corpus_uses_the_api_normalizer_and_m1_schema(self):
+        records = load_reference_records()
+        aligned = []
+        normalized = 0
+        unresolved = 0
+        for record in records:
+            if record.get("status") != "IMG" or record.get("correct") is False:
+                continue
+            sentence = record.get("sentence")
+            chapter = record.get("_chapter")
+            version = record.get("_convention_version")
+            tree = record.get("tree")
+            if not isinstance(sentence, str) or not isinstance(tree, dict) or not chapter or not version:
+                continue
+            if _source_yield(tree) != _atoms(sentence):
+                continue
+            aligned.append(record)
+            appendix_nom = bool(record.get("appendix_nom", False)) if chapter == 7 else None
+            result = build_canonical_analysis(
+                {"sentence": sentence, "sentence_index": 0, "tokens": [],
+                 "sentences": [{"start": 0, "end": len(sentence), "text": sentence}],
+                 "root": {"type": "S", "children": []}},
+                chapter=chapter, appendix_nom=appendix_nom,
+                reference_records=[record],
+            )
+            if result["status"] == "normalized":
+                self.assert_m1_envelope(result)
+                normalized += 1
+            else:
+                unresolved += 1
+                self.assertIsNone(result["tree"])
+                self.assertTrue(result["diagnostics"])
+        self.assertGreater(len(aligned), 0)
+        self.assertEqual(normalized + unresolved, len(aligned))
+        print(
+            "Generator M1-envelope source audit: "
+            f"{len(aligned)} sentence-aligned IMG records; "
+            f"{normalized} normalized and schema-valid; "
+            f"{unresolved} explicitly unresolved."
+        )
 
 
 if __name__ == "__main__":
