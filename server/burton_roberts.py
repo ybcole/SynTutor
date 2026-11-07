@@ -426,12 +426,22 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
         result = normalize_benepar_candidate(analysis, profile)
 
     result["convention_profile"] = profile
-    result.setdefault("diagnostics", {
-        "parser": "benepar_en3", "parse_string": analysis.get("parse_string"),
-        "raw_candidate_tree": analysis.get("root"),
-        "token_count": len(analysis.get("tokens") or []),
-        "canonical_schema": "docs/canonical-burton-roberts-tree.schema.json",
-    })
+    result["convention_version"] = profile["version"]
+    raw_diagnostics = result.get("diagnostics")
+    if isinstance(raw_diagnostics, dict):
+        result["parser_diagnostics"] = raw_diagnostics
+    else:
+        result["parser_diagnostics"] = {
+            "parser": "benepar_en3", "parse_string": analysis.get("parse_string"),
+            "raw_candidate_tree": analysis.get("root"),
+            "token_count": len(analysis.get("tokens") or []),
+        }
+    result["canonical_schema"] = "docs/canonical-burton-roberts-tree.schema.json"
+    result["diagnostics"] = [
+        {"code": row.get("code", "NORMALIZATION_UNRESOLVED"),
+         "message": row.get("detail", row.get("message", "The B-R analysis is unresolved."))}
+        for row in result.get("reasons", [])
+    ]
     if correction:
         result["correction_alignment"] = align_correction(
             str(correction.get("original_sentence", analysis.get("sentence", ""))),
