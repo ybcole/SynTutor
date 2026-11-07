@@ -134,6 +134,31 @@ class CambridgeEvaluatorTests(unittest.TestCase):
         self.assertEqual(result["findings"], [])
         self.assertEqual(result["diagnostics"][0]["code"], "NON_CONSTRAINT_RULE_BLOCKED")
 
+    def test_exception_only_suppresses_the_matching_occurrence(self):
+        self.add_allowlisted_rule()
+        registry = load_runtime_registry(self.root)
+        result = evaluate_cambridge(
+            self.analysis("It is not very unique, but that item is very unique."),
+            registry,
+        )
+        self.assertEqual(result["status"], "evaluated")
+        self.assertEqual(len(result["findings"]), 1)
+        evaluation = result["evaluations"][0]
+        self.assertEqual(evaluation["status"], "violation")
+        self.assertEqual(len(evaluation["excepted_matches"]), 1)
+        self.assertEqual(len(evaluation["violating_matches"]), 1)
+
+    def test_sentence_pattern_executor_rejects_clause_scoped_rule(self):
+        self.add_allowlisted_rule()
+        registry = load_runtime_registry(self.root)
+        registry["active_rules"][0]["scope"] = "clause"
+        result = evaluate_cambridge(
+            self.analysis("The item is very unique."), registry,
+        )
+        self.assertEqual(result["status"], "no_implemented_rules")
+        self.assertEqual(result["findings"], [])
+        self.assertEqual(result["diagnostics"][0]["code"], "UNSUPPORTED_RUNTIME_SCOPE")
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
