@@ -179,7 +179,8 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
     """Normalize only a tightly supported V2 shell; otherwise fail unresolved.
 
     The currently approved adapter supports B-R V2's S -> NP VP skeleton when
-    both NP and VP are left unanalyzed triangles and punctuation is absent.
+    both NP and VP are left unanalyzed triangles. Sentence-final punctuation
+    is excluded from the phrase marker; punctuation inside a phrase is unresolved.
     POS tags remain token metadata; they are not promoted to B-R phrase nodes.
     Later profiles need additional reviewed mappings (lexical categories,
     verbal features, auxiliary layers, NOM, clauses, gaps, indices and control).
