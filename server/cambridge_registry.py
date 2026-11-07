@@ -56,6 +56,13 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
                 for mapping in mappings
             ):
                 reasons.append("source record still contains an unresolved B-R crosswalk")
+            check = rule.get("runtime_check")
+            if not isinstance(check, dict):
+                reasons.append("deterministic runtime_check is missing")
+            elif check.get("kind") != "forbidden_token_sequences":
+                reasons.append("runtime_check kind is not supported by the deterministic evaluator")
+            elif not isinstance(check.get("forbidden_sequences"), list) or not check["forbidden_sequences"]:
+                reasons.append("runtime_check must declare at least one forbidden token sequence")
         if entry.get("independent_review") is not True:
             reasons.append("independent_review must be true")
         if not str(entry.get("reviewed_by") or "").strip():
@@ -76,6 +83,9 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
             "rule_id": rule_id, "rule_type": rule["rule_type"],
             "concept": rule.get("concept"), "sources": rule.get("sources", []),
             "variety": rule.get("variety"),
+            "scope": rule.get("scope"),
+            "violation": rule.get("violation"),
+            "runtime_check": rule.get("runtime_check"),
         })
     return {
         "registry_version": registry.get("registry_version"),
