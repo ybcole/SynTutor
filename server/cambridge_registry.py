@@ -50,12 +50,17 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
             if not any(source.get("pages") for source in rule.get("sources", []) if isinstance(source, dict)):
                 reasons.append("source page evidence is missing")
             mappings = rule.get("burton_roberts_mapping", [])
-            if any(
-                isinstance(mapping, dict)
-                and mapping.get("relation") in {"unverified", "conflict", "incompatible"}
+            allowed_relations = {
+                "same", "terminology_differs", "analysis_differs", "not_covered",
+            }
+            if not isinstance(mappings, list) or not mappings:
+                reasons.append("source record has no explicit B-R crosswalk")
+            elif any(
+                not isinstance(mapping, dict)
+                or mapping.get("relation") not in allowed_relations
                 for mapping in mappings
             ):
-                reasons.append("source record still contains an unresolved B-R crosswalk")
+                reasons.append("source record still contains an unresolved or invalid B-R crosswalk")
             check = rule.get("runtime_check")
             if not isinstance(check, dict):
                 reasons.append("deterministic runtime_check is missing")
