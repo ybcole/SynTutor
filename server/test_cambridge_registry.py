@@ -55,6 +55,11 @@ class CambridgeRegistryTests(unittest.TestCase):
         self.assertEqual(result["active_rules"], [])
         self.assertEqual(result["active_rule_ids"], [])
 
+    def test_repository_extractions_remain_disabled_without_reviewed_runtime_entries(self):
+        result = load_runtime_registry()
+        self.assertEqual(result["active_rules"], [])
+        self.assertEqual(result["active_rule_ids"], [])
+
     def test_unverified_crosswalk_blocks_extracted_approved_rule(self):
         self.add_rule("unverified")
         result = load_runtime_registry(self.root)
