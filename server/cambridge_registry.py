@@ -90,14 +90,27 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
                 reasons.append("deterministic runtime_check is missing")
             elif check.get("kind") != "forbidden_token_sequences":
                 reasons.append("runtime_check kind is not supported by the deterministic evaluator")
-            elif not isinstance(check.get("forbidden_sequences"), list) or not check["forbidden_sequences"]:
-                reasons.append("runtime_check must declare at least one forbidden token sequence")
+            else:
+                forbidden = check.get("forbidden_sequences")
+                exceptions = check.get("exception_sequences", [])
+                def valid_sequence(sequence: Any) -> bool:
+                    return (isinstance(sequence, list) and bool(sequence)
+                            and all(isinstance(token, str) and token.strip()
+                                    for token in sequence))
+                if not isinstance(forbidden, list) or not forbidden or not all(
+                    valid_sequence(sequence) for sequence in forbidden
+                ):
+                    reasons.append("runtime_check forbidden_sequences are malformed")
+                if not isinstance(exceptions, list) or not all(
+                    valid_sequence(sequence) for sequence in exceptions
+                ):
+                    reasons.append("runtime_check exception_sequences are malformed")
         if entry.get("independent_review") is not True:
             reasons.append("independent_review must be true")
-        if not str(entry.get("reviewed_by") or "").strip():
-            reasons.append("reviewer identity is missing")
-        if not str(entry.get("reviewed_on") or "").strip():
-            reasons.append("review date is missing")
+        if not isinstance(entry.get("reviewed_by"), str) or not entry["reviewed_by"].strip():
+            reasons.append("reviewer identity is missing or malformed")
+        if not isinstance(entry.get("reviewed_on"), str) or not entry["reviewed_on"].strip():
+            reasons.append("review date is missing or malformed")
         if entry.get("crosswalk_status") not in {"compatible", "resolved"}:
             reasons.append("B-R/Cambridge crosswalk is unresolved")
         if entry.get("test_status") != "passed":
