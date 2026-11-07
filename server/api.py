@@ -207,7 +207,9 @@ def build_payload(text, sentence_index=0, convention_version=None,
 
     apply_plain_language(details, summary)
 
-    # Preserve the raw Benepar tree separately; br_analysis is the one canonical\n    # analysis contract shared by API consumers.\n    token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
+    # Preserve the raw Benepar tree separately; br_analysis is the one canonical
+    # analysis contract shared by API consumers.
+    token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
     tag_word = summary['explanation']
     label = {'grammatical': 'VALID', 'ungrammatical': 'INVALID',
              'unverified': 'UNVERIFIED'}.get(summary.get('verdict'),
