@@ -107,6 +107,16 @@ class FlaskParseContractTests(unittest.TestCase):
         self.assertEqual(response.get_json()["error"], "backend unavailable")
         self.assertIn("hint", response.get_json())
 
+    def test_real_shared_api_model_failure_returns_503_with_install_hint(self):
+        with patch("api.analyze", side_effect=RuntimeError("benepar model not installed")), \
+             patch("webapp.health_payload", return_value={"error": "benepar model not installed"}):
+            response = self.client.post("/api/parse", json={
+                "text": "A sentence.", "chapter": 2
+            })
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response.get_json()["error"], "benepar model not installed")
+        self.assertIn("hint", response.get_json())
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
