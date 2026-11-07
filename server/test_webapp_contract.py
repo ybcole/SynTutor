@@ -72,7 +72,7 @@ class FlaskParseContractTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         build.assert_called_once_with("A sentence.", sentence_index=0,
                                       convention_version="V2", chapter=2,
-                                      appendix_nom=None)
+                                      appendix_nom=None, variety=None)
 
     def test_chapter_convention_mismatch_is_rejected_without_parsing(self):
         with patch("webapp.build_payload") as build:
