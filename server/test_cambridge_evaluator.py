@@ -26,7 +26,7 @@ class CambridgeEvaluatorTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
-    def add_allowlisted_rule(self, mapping="compatible"):
+    def add_allowlisted_rule(self, mapping="same"):
         rule = {
             "id": "TEST-001",
             "domain": "other",
