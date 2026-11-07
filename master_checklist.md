@@ -41,7 +41,7 @@ Use this as the project sign-off register. Mark a box only when there is evidenc
 - [ ] Add Cambridge minimal-pair and constraint tests.
 - [x] Add regression tests for the legacy error corpus.
 - [x] Define CoLA's advisory role and prevent it from inventing rule explanations.
-- [x] Implement a shared normalized analysis payload.
+- [ ] Implement a shared normalized analysis payload.
 - [ ] Verify full sentence and multi-sentence handling.
 - [ ] Add performance/error/fallback behavior for parser and normalizer failures.
 
@@ -293,4 +293,4 @@ The new model-free suite includes API-level M1 schema tests, an API-normalizer c
 
 **Remaining unchecked M2 items:** actual current-head tests and schema audit; parser-backed single-/multi-sentence and corrected parsing; latency and deployed-model fallback; source-approved Cambridge rule execution and rule-specific minimal-pair tests (no rules currently eligible); any further source-backed V3–V10 candidate transformations required by the supported Generator scope; and confirmation of exact source edition/page metadata. The M1 canonical API contract is now wired in code, but its current-head API schema tests remain unexecuted. No M3, lesson, quiz, Builder, database or learner-progress work was performed.
 
-The CoLA advisory-role item remains checked based on the earlier passing contract tests. Milestone 02 itself remains `[ ]` pending successful current-head tests and the approval report.
+The CoLA advisory-role item remains checked based on the earlier passing contract tests. The shared normalized payload item is unchecked until the current M1-envelope API output and its schema tests execute successfully. Milestone 02 itself remains `[ ]` pending successful current-head tests and the approval report.
