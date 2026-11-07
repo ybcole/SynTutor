@@ -68,7 +68,7 @@ class CambridgeEvaluatorTests(unittest.TestCase):
     @staticmethod
     def analysis(sentence):
         import re
-        token_matches = list(re.finditer(r"\\w+(?:['’]\\w+)*", sentence))
+        token_matches = list(re.finditer(r"\w+(?:['’]\w+)*", sentence))
         tokens = [
             {"index": index, "text": match.group(0),
              "char_span": [match.start(), match.end()]}
