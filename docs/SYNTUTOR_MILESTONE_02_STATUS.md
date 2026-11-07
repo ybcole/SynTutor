@@ -69,3 +69,81 @@ No database schema or user-progress migration was performed. The raw Benepar tre
 Milestone 02 remains unchecked in the 12-Prompt Execution Plan. This is intentional: passing the new adapter tests and source validators does not satisfy the unfinished general normalization, Cambridge evaluator, and actual parser-integration requirements.
 
 Do not start Milestone 03 or downstream work that depends on complete canonical Generator behavior until the owner reviews the sample outputs and the remaining criteria are completed.
+
+
+---
+
+## Milestone 02 continuation report — 7 November 2026
+
+**Status: INCOMPLETE. M2 remains unchecked.**  
+**Continuation branch:** `feature/milestone-02-completion-2026-11-07`  
+**Draft pull request:** [#30](https://github.com/ybcole/SynTutor/pull/30)  
+**Latest successful verification:** [GitHub Actions run #35](https://github.com/ybcole/SynTutor/actions/runs/42346333169)  
+**Verified head:** `408ed2fab5abec634177bb462f0f48605e546d9e`
+
+### 1. Files inspected
+
+The root execution plan, detailed `master_prompt_syntax_generator.md`, master checklist, M1 architecture/source-governance ADRs, canonical schema documents, the runtime `grammar/br_tree.schema.json`, B-R chapter tree JSONs and validators, Cambridge rule registry, API and parser modules, correction modules, existing tests, and the Syntax Generator CI workflow.
+
+### 2. Files changed on this continuation
+
+- `server/api.py` — one active `br_analysis` result, chapter/profile validation, profile metadata, corrected-analysis profile propagation, and CoLA advisory declaration.
+- `server/br_tree.py` — Chapter 7 core/Appendix D1 source-reference separation.
+- `server/webapp.py`, `server/app.py`, `server/hf_space.py` — consistent chapter/profile routing and validation across transports.
+- `server/test_api_contract.py`, `server/test_webapp_contract.py`, `server/test_br_tree.py` — profile routing, mismatch rejection, D1 separation, and selected-sentence API contracts.
+- `server/test_detector.py` — CoLA advisory-only contract tests.
+- `server/test_br_tree_fixtures.py`, `server/test_burton_roberts.py` — source-refinement fixture handling and metadata assertion.
+- `.github/workflows/syntax-generator-tests.yml` — run the additional CoLA suite, importer suite, and full source-record audit.
+- `docs/syntax-generator-api.md` — current request/response boundary, unresolved behavior, and explicit schema compatibility issue.
+- `master_checklist.md`, `syntutor_12_prompt_execution_plan.md` — synchronized progress/evidence records. M2 remains unchecked.
+
+### 3. Acceptance review
+
+| Criterion | Result | Evidence / remaining gap |
+|---|---|---|
+| Generator output conforms to the approved canonical schema | **Not verified** | Runtime `br_analysis` uses `grammar/br_tree.schema.json`, whereas M1 ADR D3 approves `docs/canonical-burton-roberts-tree.schema.json`. The source importer validates its projection against the M1 envelope, but the API does not currently return that envelope. These formats need reconciliation and an API-level schema test. |
+| Traceable normalization; unsupported mappings not silently relabelled | **Partially verified** | Exact IMG source references and the narrow V2 `S → NP VP` mapping are guarded; unsupported analyses return unresolved diagnostics. General V3–V10 candidate transformations remain unsupported. |
+| Known B-R gold examples pass structural validation | **Verified for eligible fixture subset; not universal** | 210/211 sentence-aligned IMG records passed the runtime candidate-normalizer fixture test. `ch2-2` remains unresolved. The separate read-only importer audit processed 252 source records: 203 normalized, 49 unresolved, with the expected-count check passing. |
+| Unresolved and alternative analyses handled explicitly | **Verified at unit-test level** | Runtime normalizer and importer tests cover unresolved, ambiguous, accepted-alternative, and source-only metadata cases. |
+| API contracts and error states documented and tested | **Partially verified** | Flask contract tests and shared-payload tests pass. Chapter routing is forwarded in Flask, stdlib, and hosted transports; direct integration tests for every deployment transport remain limited. |
+| Existing required Generator behavior covered by regression tests | **Partially verified** | Model-free legacy licensing/matrix and correction regressions pass. Actual spaCy/Benepar-backed end-to-end parsing is not included in this model-free CI run. |
+
+### 4. Tests and checks run
+
+All were run by GitHub Actions on 7 November 2026:
+
+- `python -m unittest -v test_br_tree test_cambridge_registry test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_detector` — **46 passed**.
+- `python -m unittest -v server.test_burton_roberts` — **24 passed**.
+- `python scripts/audit_burton_roberts_import.py --expected-count 252` — **passed**; 252 source records across 10 chapters; 203 normalized and 49 unresolved.
+- All 11 chapter validators — **passed**.
+- Legacy licensing regression — **19/19** invalid examples detected; **16/16** grammatical controls not rejected.
+- Corrector regression — **passed**.
+- New backend module compile step — **passed**.
+- `python -m json.tool grammar/br_tree.schema.json` — **passed**.
+
+The separate IMG fixture regression printed **210/211** normalized and validated, with `ch2-2` explicitly unresolved because its stored `Sentence` root conflicts with V2's `S → NP VP` convention.
+
+### 5. Known limitations and unresolved issues
+
+1. The runtime API schema and M1-approved canonical tree envelope are not yet reconciled; API output conformance is not verified.
+2. General source-grounded Benepar transformations for V3–V10 are not implemented. The adapter supports exact eligible B-R source references and a narrow non-reference V2 top-level mapping; all other unsupported shapes remain unresolved.
+3. `grammar/runtime_registry.json` enables zero Cambridge rules. `server/cambridge_registry.py` is an eligibility gate, not a sentence-level Cambridge evaluator. No Cambridge positive/negative/exception minimal-pair suite is available.
+4. The CI workflow does not install `en_core_web_md` or `benepar_en3`. Live parser output, multi-sentence runtime behavior, correction parsing with the real models, latency, and missing-model fallback remain unverified.
+5. The current frontend retains the raw candidate tree for compatibility. It has an authority notice, but it has not been migrated to render the runtime canonical representation as the primary tree. The detailed prompt's stop condition keeps a full UI redesign/Builder migration out of this workstream.
+6. Exact B-R/Cambridge edition and page metadata still require confirmation against original source PDFs.
+7. The full importer audit's 49 unresolved records are not failures hidden by the audit; many correspond to convention restrictions, unsupported zero-word elision, source fragments/metadata shapes, or other cases that must stay unresolved until reviewed.
+
+### 6. Data, schema, and migration implications
+
+The API now forwards `chapter`, `convention_version`, and `appendix_nom` across supported transports and reports selected-profile metadata. Chapter/version mismatches are rejected. No database schema, live user progress, lesson content, quiz content, or Builder data was migrated. Beneath the API, the two schema representations remain separate and must be reconciled before downstream consumption.
+
+### 7. Checklist updates
+
+- The CoLA advisory-role checkbox is now checked based on passing focused tests.
+- The normalizer, unresolved/alternative, validator, token-order/span, profile/feature, tree-feature, gold-fixture, legacy regression, and shared-payload boxes retain the evidence-based states in `master_checklist.md`.
+- Cambridge minimal-pair/evaluator, general safe V3–V10 mapping, parser-backed full/multi-sentence runtime, and performance/fallback boxes remain unchecked.
+- Milestone 02 itself remains `[ ]`; no later milestone was marked.
+
+### 8. Approval gate and dependency
+
+The PR is a **draft**, remains unmerged, and targets `main`. The final CI run passed, but the M2 approval gate is not satisfied because the approved-schema integration, Cambridge evaluator boundary, and real parser-backed runtime checks remain open. Automatic approval of roadmap gates does not turn unverified acceptance criteria into completed work. Milestone 03 is not started.
