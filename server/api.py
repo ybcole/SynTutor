@@ -17,11 +17,6 @@ import corrector
 import corrections
 from plain import apply_plain_language, plain_text
 
-try:  # support package and script-directory imports
-    from .burton_roberts import build_canonical_analysis
-except ImportError:  # pragma: no cover - direct server script execution
-    from burton_roberts import build_canonical_analysis
-
 _MODEL_STATUS = None
 
 INSTALL_HINT = (
@@ -103,20 +98,49 @@ def word_info(words):
 
 
 
-def build_payload(text, sentence_index=0, convention_version='V10'):
-    """Hybrid payload for one user input, targeting ``sentence_index``.
+def build_payload(text, sentence_index=0, convention_version=None,
+                  chapter=None, appendix_nom=None):
+    """Build the shared analysis payload for the selected sentence.
 
-    Two channels: the rule matrix explains (deterministic), and a CoLA
-    acceptability model detects (trained). A sentence is grammatical only if
-    both accept; a rules-clean but model-rejected sentence is UNVERIFIED, and
-    the model's reasoning is surfaced because the rules cannot explain it.
+    The legacy matrix provides deterministic findings. CoLA is advisory: it
+    may downgrade a clean result to UNVERIFIED, but it cannot create a
+    rule-level violation or replace a matrix explanation. Chapter selection
+    determines the B-R convention profile; omitted chapter selects FINAL-D1.
     """
+    if chapter is not None:
+        if isinstance(chapter, bool) or not isinstance(chapter, int) or not 1 <= chapter <= 10:
+            raise ValueError("chapter must be an integer from 1 through 10")
+        expected_version = f"V{chapter}"
+        if convention_version is not None and convention_version != expected_version:
+            raise ValueError(
+                f"chapter {chapter} requires convention_version {expected_version}")
+        convention_version = expected_version
+    elif convention_version is None:
+        convention_version = "V10"
+
     if convention_version not in CONVENTIONS:
         raise ValueError(f'unsupported B-R convention_version: {convention_version!r}')
+    if appendix_nom is not None and not isinstance(appendix_nom, bool):
+        raise ValueError("appendix_nom must be true, false, or null")
+    if chapter not in (None, 7) and appendix_nom is not None:
+        raise ValueError("appendix_nom is only valid for Chapter 7 or free analysis")
+    if chapter is None and appendix_nom is False:
+        raise ValueError("free analysis uses the declared FINAL-D1 profile; appendix_nom cannot be disabled")
+    if chapter == 7 and appendix_nom is None:
+        appendix_nom = False
+    if chapter is None and appendix_nom is None:
+        appendix_nom = True
+
+    profile_id = (
+        "FINAL-D1" if chapter is None and convention_version == "V10"
+        else ("V7-APPENDIX-D1" if chapter == 7 and appendix_nom else
+              ("V7-CORE" if chapter == 7 else (f"V{chapter}" if chapter else convention_version)))
+    )
+
     analysis = analyze(text, sentence_index=sentence_index)
     br_analysis = normalize_candidate(
         analysis['root'], analysis['tokens'], analysis['sentence'],
-        convention_version=convention_version)
+        convention_version=convention_version, appendix_nom=appendix_nom)
     cambridge_runtime = load_runtime_registry()
     result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
@@ -169,7 +193,8 @@ def build_payload(text, sentence_index=0, convention_version='V10'):
                 }
                 correction['corrected_br_analysis'] = normalize_candidate(
                     corrected_analysis['root'], corrected_analysis['tokens'],
-                    corrected_analysis['sentence'], convention_version=convention_version)
+                    corrected_analysis['sentence'], convention_version=convention_version,
+                    appendix_nom=appendix_nom)
             except Exception as exc:  # correction annotations survive a parser fallback
                 correction['corrected_candidate_parse'] = None
                 correction['corrected_br_analysis'] = {
@@ -182,12 +207,7 @@ def build_payload(text, sentence_index=0, convention_version='V10'):
 
     apply_plain_language(details, summary)
 
-    # Preserve the legacy Benepar tree for diagnostics/UI compatibility while
-    # exposing a separate, explicitly validated B-R canonical projection.
-    canonical_analysis = build_canonical_analysis(
-        analysis, chapter=chapter, appendix_nom=appendix_nom, correction=correction)
-
-    token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
+    # Preserve the raw Benepar tree separately; br_analysis is the one canonical\n    # analysis contract shared by API consumers.\n    token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
     tag_word = summary['explanation']
     label = {'grammatical': 'VALID', 'ungrammatical': 'INVALID',
              'unverified': 'UNVERIFIED'}.get(summary.get('verdict'),
@@ -200,11 +220,10 @@ def build_payload(text, sentence_index=0, convention_version='V10'):
         f"Constraint matrix: {summary['valid_edges']} validated \u00b7 "
         f"{summary['violated_edges']} violated \u00b7 {summary['unrated_edges']} unrated",
         f"Verdict: {label}",
-        f"B-R normalization: {canonical_analysis['status'].upper()} "
-        f"({canonical_analysis['convention_profile'].get('profile_id', canonical_analysis['convention_profile']['version'])})",
-        ('The current tree is a validated canonical B-R projection; source evidence is still marked NEEDS_REVIEW.'
-         if canonical_analysis['status'] == 'normalized' else
-         'The current tree is a Benepar diagnostic candidate only; it is not a verified B-R analysis.'),
+        f"B-R normalization: {br_analysis['status'].upper()} ({profile_id})",
+        ('The canonical B-R analysis is available separately from the raw Benepar candidate.'
+         if br_analysis['status'] == 'normalized' else
+         'No safe canonical B-R mapping was found; the raw Benepar tree remains diagnostic only.'),
         f"   {tag_word}",
         'Deterministic matrix over the benepar tree; identical inputs always produce identical verdicts.',
     ]
@@ -261,7 +280,12 @@ def build_payload(text, sentence_index=0, convention_version='V10'):
             'target_sentence': analysis['sentence_index'] + 1,
             'tree_authority': 'B-R canonical analysis is in br_analysis; tree remains a legacy Benepar candidate for current-renderer compatibility',
             'br_convention_version': convention_version,
+            'br_profile_id': profile_id,
+            'br_chapter': chapter,
+            'br_appendix_nom': appendix_nom,
             'br_normalization_status': br_analysis.get('status'),
+            'acceptability_signal_role': 'advisory_only',
+            'acceptability_signal_can_create_rule_violation': False,
             'cambridge_runtime_rule_ids': cambridge_runtime.get('active_rule_ids', []),
         },
         'parse': {
