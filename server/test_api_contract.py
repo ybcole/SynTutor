@@ -98,7 +98,7 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
 
         self.assertEqual(payload["br_analysis"]["status"], "normalized")
         self.assertEqual(payload["br_analysis"]["convention_version"], "V2")
-        self.assertEqual(payload["br_analysis"]["tree"]["label"], "S")
+        self.assertEqual(payload["br_analysis"]["tree"]["root"]["label"], "S")
         self.assertEqual(payload["tree"], self.candidate())
         self.assertEqual(payload["candidate_tree"], self.candidate())
         self.assertIn("br_analysis", payload)
@@ -116,7 +116,7 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
             payload = api.build_payload(self.sentence, convention_version="V10")
 
         self.assertEqual(payload["br_analysis"]["status"], "unresolved")
-        self.assertEqual(payload["br_analysis"]["diagnostics"][0]["code"], "NO_SAFE_B_R_MAPPING")
+        self.assertEqual(payload["br_analysis"]["diagnostics"][0]["code"], "PROFILE_MAPPING_NOT_APPROVED")
         self.assertEqual(payload["tree"], self.candidate())
 
 
