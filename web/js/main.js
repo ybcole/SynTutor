@@ -2274,8 +2274,8 @@ function handleNodeSelect(id) {
   const detail = payload.node_details[id];
   const node = payload.nodes[id];
   if (!node || !detail) return;
-  renderNodeDetail(session, detail, node);
-  renderEvidence(session?.payload?.explanation_evidence);
+  renderNodeDetail({ ...session, payload }, detail, node);
+  renderEvidence(payload?.explanation_evidence);
   // Keep the fresh detail card visible in the bottom-right explain pane
   // without yanking the rest of the workspace.
   document.querySelector('#explainNode')
