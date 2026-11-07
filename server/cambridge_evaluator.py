@@ -20,13 +20,15 @@ def _tokens(sentence: str) -> list[str]:
             for match in _TOKEN_RE.finditer(sentence)]
 
 
-def _contains_sequence(tokens: list[str], sequence: list[str]) -> bool:
-    width = len(sequence)
-    if width == 0 or width > len(tokens):
-        return False
+def _sequence_positions(tokens: list[str], sequence: list[str]) -> list[int]:
     target = [str(token).casefold().replace("’", "'") for token in sequence]
-    return any(tokens[index:index + width] == target
-               for index in range(len(tokens) - width + 1))
+    width = len(target)
+    if width == 0 or width > len(tokens):
+        return []
+    return [
+        index for index in range(len(tokens) - width + 1)
+        if tokens[index:index + width] == target
+    ]
 
 
 def _evaluate_forbidden_sequences(sentence: str,
@@ -36,23 +38,52 @@ def _evaluate_forbidden_sequences(sentence: str,
     exceptions = check.get("exception_sequences", [])
     if not isinstance(forbidden, list) or not forbidden:
         return {"status": "invalid_check", "matched_sequences": []}
-    matched = [
-        sequence for sequence in forbidden
-        if isinstance(sequence, list) and _contains_sequence(tokens, sequence)
-    ]
+    if not isinstance(exceptions, list):
+        return {"status": "invalid_check", "matched_sequences": []}
+
+    exception_spans = []
+    for sequence in exceptions:
+        if not isinstance(sequence, list) or not sequence:
+            return {"status": "invalid_check", "matched_sequences": []}
+        exception_spans.extend(
+            (start, start + len(sequence), sequence)
+            for start in _sequence_positions(tokens, sequence)
+        )
+
+    matched = []
+    violating = []
+    excepted = []
+    for sequence in forbidden:
+        if not isinstance(sequence, list) or not sequence:
+            return {"status": "invalid_check", "matched_sequences": []}
+        width = len(sequence)
+        for start in _sequence_positions(tokens, sequence):
+            row = {"sequence": sequence, "token_span": [start, start + width]}
+            matches_exception = [
+                {"sequence": exception, "token_span": [exception_start, exception_end]}
+                for exception_start, exception_end, exception in exception_spans
+                if exception_start <= start and start + width <= exception_end
+            ]
+            matched.append(row)
+            if matches_exception:
+                excepted.append({**row, "exceptions": matches_exception})
+            else:
+                violating.append(row)
+
     if not matched:
         return {"status": "passed", "matched_sequences": []}
-    excepted = [
-        sequence for sequence in exceptions
-        if isinstance(sequence, list) and _contains_sequence(tokens, sequence)
-    ]
-    if excepted:
+    if violating:
         return {
-            "status": "exception",
+            "status": "violation",
             "matched_sequences": matched,
-            "exception_sequences": excepted,
+            "violating_matches": violating,
+            "excepted_matches": excepted,
         }
-    return {"status": "violation", "matched_sequences": matched}
+    return {
+        "status": "exception",
+        "matched_sequences": matched,
+        "exception_matches": excepted,
+    }
 
 
 def evaluate_cambridge(analysis: dict[str, Any] | None,
