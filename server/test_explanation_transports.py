@@ -49,7 +49,7 @@ class ExplanationTransportTests(unittest.TestCase):
                 self.assertEqual(flask.status_code, 400); self.assertEqual(code, 400)
         response = app.test_client().post('/api/explain', json={'tree': None})
         self.assertEqual(response.get_json()['status'], 'ANALYSIS_UNRESOLVED')
-        response = app.test_client().post('/api/explain', json={'tree': analysis()['tree']})
+        response = app.test_client().post('/api/explain', json={'tree': analysis()['tree'], 'node_id': 'sg-np'})
         self.assertEqual(response.get_json()['status'], 'NO_BOOK_BASIS')
 
     def test_malformed_json_and_oversized_request(self):

@@ -31,8 +31,10 @@ canonical evidence separately from its legacy diagnostic node card.
 Schemas: `grammar/explanation_evidence.schema.json` and
 `grammar/explanation_templates.schema.json`. The versioned
 `grammar/explanation_templates.json` contains repository-owned `sources` and
-`templates` arrays. Production arrays intentionally remain empty until actual
-source and template review is complete. Synthetic records exist only in tests.
+`templates` arrays. Production now contains the independently reviewed CLS-001 Cambridge teaching
+note citing printed pp. 44–45 of the 2002 edition. B-R structural templates and
+production grammaticality constraints are not enabled by that review. Other
+content remains gated; synthetic records exist only in tests.
 
 ## Publication gates
 

@@ -1,5 +1,52 @@
 {
   "version": "1.0.0",
-  "sources": [],
-  "templates": []
+  "sources": [
+    {
+      "id": "CGEL-2002-CH02-P0044",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "printed_page": 44,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "crosswalk_status": "resolved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — independent second pass against supplied chapter PDF; original extraction predates this review",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0045",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "printed_page": 45,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "crosswalk_status": "resolved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — independent second pass against supplied chapter PDF; original extraction predates this review",
+      "reviewed_on": "2026-11-08"
+    }
+  ],
+  "templates": [
+    {
+      "id": "CGEL-CLS001-TEACHING-V1",
+      "channel": "grammatical",
+      "claim_type": "classification",
+      "node_label": "S",
+      "source_ids": [
+        "CGEL-2002-CH02-P0044",
+        "CGEL-2002-CH02-P0045"
+      ],
+      "claim_key": "CGEL-SENTENCE-CLAUSE-DISTINCTION",
+      "text": "A sentence is the largest syntactic unit and sentences occur in sequence in a text without generally being contained in one another; a clause is a construction of subject plus predicate (in central cases) and can be embedded inside a larger one.",
+      "deep_text": "Applies when deciding whether a stretch of text is a sentence or a clause: it is a sentence only if it is one of the units occurring in succession in a text, and a clause if it has subject-predicate structure in the central cases; the same string can be a sentence in one text and merely part of a sentence in another. The current node is labelled {label} and spans “{surface}”. This Cambridge terminology note does not relabel the B-R tree or decide grammatical correctness.",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — independent second pass against supplied chapter PDF; original extraction predates this review",
+      "reviewed_on": "2026-11-08"
+    }
+  ]
 }

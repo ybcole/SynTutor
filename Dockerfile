@@ -20,6 +20,8 @@ RUN python -m spacy download en_core_web_md \
 
 COPY server/ ./server/
 COPY web/ ./web/
+COPY grammar/ ./grammar/
+COPY docs/canonical-burton-roberts-tree.schema.json ./docs/canonical-burton-roberts-tree.schema.json
 
 EXPOSE 7860
 

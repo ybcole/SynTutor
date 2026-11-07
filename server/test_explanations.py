@@ -161,8 +161,26 @@ class ExplanationEvidenceTests(unittest.TestCase):
         self.assertEqual(explain_analysis(analysis(), registry=data)['status'], 'NO_BOOK_BASIS')
 
     def test_production_has_no_synthetic_reviewed_sources(self):
-        self.assertEqual(load_registry()['sources'], [])
-        self.assertEqual(load_registry()['templates'], [])
+        production = load_registry()
+        self.assertTrue(production['sources'])
+        self.assertEqual([row['id'] for row in production['templates']], ['CGEL-CLS001-TEACHING-V1'])
+        for source in production['sources']:
+            self.assertTrue(source['id'].startswith('CGEL-2002-'))
+            self.assertNotIn('synthetic', source['title'].casefold())
+            self.assertTrue(source['independent_review'])
+        receipt = json.loads((ROOT / 'sources/cambridge/reviews/2026-11-08-cls-001.json').read_text())
+        self.assertEqual(receipt['template_id'], production['templates'][0]['id'])
+        self.assertFalse(receipt['crosswalk_resolution']['br_book_comparison_performed'])
+        rules = json.loads((ROOT / 'grammar/rules/clauses.json').read_text())
+        rows = rules if isinstance(rules, list) else rules['rules']
+        original = next(row for row in rows if row['id'] == 'CLS-001')
+        self.assertEqual(production['templates'][0]['text'], original['statement'])
+        self.assertEqual({source['printed_page'] for source in production['sources']}, {44, 45})
+        result = explain_analysis(analysis())
+        self.assertEqual(result['status'], 'EXPLAINED')
+        self.assertTrue(result['channels']['grammatical'])
+        self.assertEqual(result['channels']['structural'], [])
+        self.assertEqual(result['channels']['remediation'], [])
 
 
 if __name__ == '__main__': unittest.main()

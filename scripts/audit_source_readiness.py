@@ -32,14 +32,17 @@ def readiness():
                             'unresolved_crosswalks': len(unresolved),
                             'exact_editions_present': bool(rule.get('sources')) and all(
                                 source.get('edition') for source in rule.get('sources', []))})
-    return {'milestone_04_content_ready': bool(registry.get('active_rules')) and bool(reviewed),
+    manifest_path = ROOT / 'sources/cambridge/source_manifest_2026-11-08.json'
+    cambridge_basis = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+    return {'cambridge_bibliographic_identity': {key: cambridge_basis.get(key) for key in ['book', 'edition', 'isbn13', 'publisher_frontmatter_url']},
+            'milestone_04_content_ready': bool(registry.get('active_rules')) and bool(reviewed),
             'runtime_enabled_rule_count': len(registry.get('active_rules', [])),
             'reviewed_template_count': len(reviewed),
             'source_rule_count': len(pending), 'rules': pending,
             'required_external_evidence': [
-                'Confirm the actual B-R and Cambridge editions and printed-page references against the original supplied sources.',
-                'Independently review the selected source records and resolve their B-R/Cambridge crosswalks.',
-                'Review actual teaching templates and their sentence-specific examples before enabling them.',
+                'Confirm the B-R edition and printed-page references against its original supplied source; Cambridge bibliographic identity is now documented in the source manifest.',
+                'Independently review selected B-R structural records and any Cambridge constraints needed for publication; the reviewed CLS-001 teaching note does not enable constraints.',
+                'Review B-R structural teaching templates and any additional Cambridge templates before enabling them; one Cambridge terminology template is already reviewed.',
             ]}
 
 

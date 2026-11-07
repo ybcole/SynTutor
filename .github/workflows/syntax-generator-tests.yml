@@ -71,3 +71,4 @@ jobs:
         run: |
           npm run build
           python scripts/test_static_build.py
+          python scripts/test_runtime_packaging.py

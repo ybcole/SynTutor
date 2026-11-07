@@ -55,7 +55,7 @@ try:
         page.wait_for_selector('#openCanonicalBuilder', timeout=60000)
         page.wait_for_selector('[data-shared-evidence]')
         generator = page.locator('[data-shared-evidence]').inner_text()
-        assert ('Test structure' if fixture_mode else 'No reviewed book evidence') in generator, generator
+        assert ('Test structure' if fixture_mode else 'A sentence is the largest syntactic unit') in generator, generator
         page.click('#openCanonicalBuilder')
         page.click('#builderSnap')
         page.wait_for_selector('[data-shared-evidence]', timeout=30000)
