@@ -350,5 +350,163 @@ class GoldFixtureTests(unittest.TestCase):
         self.assertTrue(validate_canonical_tree(result["tree"])["valid"])
 
 
+class CanonicalHardeningTests(unittest.TestCase):
+    def test_profile_identity_and_refinement_are_consistent(self):
+        invalid_profiles = [
+            {**convention_profile(6), "appendix_nom": False},
+            {**convention_profile(7), "profile_id": "V6"},
+            {**convention_profile(), "appendix_nom": False},
+            {**convention_profile(2), "unexpected": "value"},
+        ]
+        for profile in invalid_profiles:
+            with self.subTest(profile=profile):
+                result = normalize_benepar_candidate(candidate("The students laugh"), profile)
+                self.assertEqual(result["status"], "rejected")
+                self.assertTrue(any(row["code"] == "INVALID_PROFILE"
+                                    for row in result["reasons"]))
+
+    def test_future_label_in_triangle_is_rejected(self):
+        envelope = {
+            "schema_version": "1.0.0", "tree_id": "future-triangle",
+            "sentence": "the", "tokens": [
+                {"index": 0, "text": "the", "char_span": [0, 3]},
+            ],
+            "convention_profile": convention_profile(6),
+            "source": {"book": "Burton-Roberts", "chapter": 6, "evidence_status": "IMG"},
+            "root": {"id": "r", "label": "NP", "token_span": [0, 1], "children": [
+                {"id": "t", "label": "NOM", "triangle": True, "words": ["the"],
+                 "token_span": [0, 1]},
+            ]},
+            "movement": [], "accepted_alternatives": [],
+        }
+        result = validate_canonical_tree(envelope)
+        self.assertFalse(result["valid"])
+        self.assertTrue(any("before its introduction" in error for error in result["errors"]))
+
+    def test_falsey_non_array_features_are_not_treated_as_empty(self):
+        envelope = {
+            "schema_version": "1.0.0", "tree_id": "bad-features",
+            "sentence": "the", "tokens": [
+                {"index": 0, "text": "the", "char_span": [0, 3]},
+            ],
+            "convention_profile": convention_profile(2),
+            "source": {"book": "Burton-Roberts", "chapter": 2, "evidence_status": "IMG"},
+            "root": {"id": "r", "label": "NP", "features": {},
+                     "token_span": [0, 1], "children": [
+                {"id": "w", "word": "the", "token_span": [0, 1]},
+            ]},
+            "movement": [], "accepted_alternatives": [],
+        }
+        result = validate_canonical_tree(envelope)
+        self.assertFalse(result["valid"])
+        self.assertTrue(any("features must be an array" in error for error in result["errors"]))
+
+    def test_boolean_token_coordinates_are_rejected(self):
+        envelope = {
+            "schema_version": "1.0.0", "tree_id": "bool-span",
+            "sentence": "the", "tokens": [
+                {"index": 0, "text": "the", "char_span": [0, 3]},
+            ],
+            "convention_profile": convention_profile(2),
+            "source": {"book": "Burton-Roberts", "chapter": 2, "evidence_status": "IMG"},
+            "root": {"id": "r", "label": "NP", "children": [
+                {"id": "w", "word": "the", "token_span": [False, 1]},
+            ]},
+            "movement": [], "accepted_alternatives": [],
+        }
+        result = validate_canonical_tree(envelope)
+        self.assertFalse(result["valid"])
+        self.assertTrue(any("two-integer half-open span" in error for error in result["errors"]))
+
+    def test_importer_preserves_diagram_refs_and_multiword_terminal_metadata(self):
+        record = {
+            "id": "ch5-source-metadata", "sentence": "They gave in", "status": "IMG",
+            "tree": {"label": "S", "children": [
+                {"label": "NP", "triangle": True, "words": ["They"]},
+                {"label": "VP", "ref": "VP1", "children": [
+                    {"label": "V", "features": ["intrans", "phrasal"], "children": [
+                        {"word": "gave in", "multiword": True},
+                    ]},
+                ]},
+            ]},
+        }
+        result = canonicalize_gold_record(record, {"chapter": 5})
+        self.assertEqual(result["status"], "normalized", result.get("errors"))
+        vp = result["tree"]["root"]["children"][1]
+        verb = vp["children"][0]
+        self.assertEqual(vp["source_refs"], ["VP1"])
+        self.assertTrue(any(note.startswith("source_node_metadata:multiword=")
+                            for note in verb.get("notes", [])))
+
+    def test_importer_preserves_gap_symbols_and_verb_type_metadata(self):
+        gap_record = {
+            "id": "ch6-gap-symbol", "sentence": "I left", "status": "IMG",
+            "tree": {"label": "S", "children": [
+                {"label": "NP", "triangle": True, "words": ["I"]},
+                {"label": "VP", "children": [
+                    {"label": "V", "features": ["intrans"], "children": [{"word": "left"}]},
+                    {"gap": True, "symbol": "•"},
+                ]},
+            ]},
+        }
+        gap_result = canonicalize_gold_record(gap_record, {"chapter": 6})
+        self.assertEqual(gap_result["status"], "normalized", gap_result.get("errors"))
+        gap = gap_result["tree"]["root"]["children"][1]["children"][1]
+        self.assertTrue(any("source_node_metadata:symbol=" in note
+                            for note in gap.get("notes", [])))
+
+        verb_record = {
+            "id": "ch10-verb-type", "sentence": "Alice walks", "status": "IMG",
+            "tree": {"label": "S", "children": [
+                {"label": "NP", "triangle": True, "words": ["Alice"]},
+                {"label": "VP", "children": [
+                    {"label": "V", "features": ["intrans"], "verb_type": "I",
+                     "children": [{"word": "walks"}]},
+                ]},
+            ]},
+        }
+        verb_result = canonicalize_gold_record(verb_record, {"chapter": 10})
+        self.assertEqual(verb_result["status"], "normalized", verb_result.get("errors"))
+        verb = verb_result["tree"]["root"]["children"][1]["children"][0]
+        self.assertTrue(any("source_node_metadata:verb_type=" in note
+                            for note in verb.get("notes", [])))
+
+
+    def test_zero_word_elision_marker_is_unresolved_not_recast_as_a_gap(self):
+        record = {
+            "id": "ch5-46", "sentence": "William gave some bleach", "status": "IMG",
+            "tree": {"label": "S", "children": [
+                {"label": "NP", "triangle": True, "words": ["William"]},
+                {"label": "VP", "children": [
+                    {"label": "V", "features": ["ditrans"], "children": [{"word": "gave"}]},
+                    {"label": "NP", "children": [{"elided": True, "symbol": "E"}]},
+                    {"label": "NP", "triangle": True, "words": ["some", "bleach"]},
+                ]},
+            ]},
+        }
+        result = canonicalize_gold_record(record, {"chapter": 5})
+        self.assertEqual(result["status"], "unresolved")
+        self.assertTrue(any("elided-element marker" in error for error in result["errors"]))
+        self.assertEqual(result["raw_tree"], record["tree"])
+
+
+    def test_node_provenance_fields_require_string_arrays(self):
+        envelope = {
+            "schema_version": "1.0.0", "tree_id": "bad-provenance",
+            "sentence": "the", "tokens": [
+                {"index": 0, "text": "the", "char_span": [0, 3]},
+            ],
+            "convention_profile": convention_profile(2),
+            "source": {"book": "Burton-Roberts", "chapter": 2, "evidence_status": "IMG"},
+            "root": {"id": "r", "label": "NP", "source_refs": "not-an-array",
+                     "children": [{"id": "w", "word": "the", "token_span": [0, 1]}]},
+            "movement": [], "accepted_alternatives": [],
+        }
+        result = validate_canonical_tree(envelope)
+        self.assertFalse(result["valid"])
+        self.assertTrue(any("source_refs must be an array of strings" in error
+                            for error in result["errors"]))
+
+
 if __name__ == "__main__":
     unittest.main()
