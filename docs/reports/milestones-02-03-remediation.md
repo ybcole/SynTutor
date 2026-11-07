@@ -110,3 +110,19 @@ unchecked while the source/coverage acceptance issues above are unresolved.
 M4 curriculum planning can be prepared, but do not publish unreviewed lessons
 or claim its dependency gate has been met. No approval question is needed for
 the completed software fixes; actual source evidence/review is still required.
+
+## Vercel build blocker repaired
+
+The first integration preview failed. A checkout filtered by the original
+`.vercelignore` reproduced `FileNotFoundError: server/ruleset.py` because the
+configured static content build reads three backend source modules as text.
+The ignore file now includes only those three build inputs while excluding the
+rest of the backend. `scripts/test_static_build.py` reproduces the upload filter
+and verifies the build and absence of backend files from public `dist/`. This
+check is also in model-free CI. No backend source is copied into the public app.
+
+Before this deployment fix, both integration GitHub Actions workflows passed
+on commit `75e22fcf89097dc20baf505c3dda43c93a953dcd`:
+[model-free/build run](https://github.com/ybcole/SynTutor/actions/runs/42388090996)
+and [parser/browser run](https://github.com/ybcole/SynTutor/actions/runs/42388090924).
+The final PR checks cover the deployment fix as well.

@@ -67,5 +67,7 @@ jobs:
           npm run test:evidence
           npm run test:correction
           npm run test:quiz
-      - name: Build static application
-        run: npm run build
+      - name: Build static application including Vercel upload exclusions
+        run: |
+          npm run build
+          python scripts/test_static_build.py
