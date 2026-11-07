@@ -150,6 +150,11 @@ async def api_parse(request: Request):
     if appendix_nom is not None and not isinstance(appendix_nom, bool):
         return JSONResponse({'error': 'appendix_nom must be true, false, or null'},
                             status_code=400, headers=CORS)
+    variety = data.get('variety')
+    if variety is not None and (not isinstance(variety, str) or not variety.strip()):
+        return JSONResponse({'error': 'variety must be a non-empty string or null'},
+                            status_code=400, headers=CORS)
+    variety = variety.strip() if isinstance(variety, str) else None
     if appendix_nom is True and chapter not in (None, 7):
         return JSONResponse({'error': 'appendix_nom is only valid for Chapter 7 or free analysis'},
                             status_code=400, headers=CORS)
@@ -167,7 +172,7 @@ async def api_parse(request: Request):
     try:
         payload = _server.build_payload(
             text, sentence_index=sentence_index, convention_version=convention_version,
-            chapter=chapter, appendix_nom=appendix_nom)
+            chapter=chapter, appendix_nom=appendix_nom, variety=variety)
     except _server.ParseFailure as exc:
         return JSONResponse({'error': str(exc), 'input': text},
                             status_code=422, headers=CORS)
