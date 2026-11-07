@@ -424,8 +424,8 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
             else:
                 envelope = imported["tree"]
                 # The exact-gold lookup matches lexical yield, not punctuation
-                # or whitespace. Preserve the learner's submitted sentence and
-                # rebase imported lexical-token character offsets onto that text.
+                # or whitespace. Preserve the submitted sentence and rebase
+                # lexical-token character offsets onto that exact request text.
                 source_tokens = envelope.get("tokens") or []
                 rebased_tokens, alignment_errors = _align_words_to_sentence(
                     [str(token.get("text", "")) for token in source_tokens], sentence)
@@ -443,51 +443,47 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
                             "evidence": "The lexical source match could not be safely rebased to the exact request text.",
                         }],
                     }
-                    envelope = None
                 else:
                     for token, rebased in zip(source_tokens, rebased_tokens):
                         token["char_span"] = rebased["char_span"]
                     envelope["sentence"] = sentence
-                if envelope is None:
-                    result = result
-                else:
-                    # The declared free-analysis profile is FINAL-D1 (V10 plus the
-                    # adopted Appendix NOM refinement), not merely a Chapter 10 lesson.
+                    # The declared free-analysis profile is FINAL-D1 (V10 plus
+                    # the adopted Appendix NOM refinement), not merely a Ch10 lesson.
                     envelope["convention_profile"] = profile
                     try:
                         validation = validate_canonical_tree(envelope)
-                except Exception as exc:  # unexpected validator error cannot promote a tree
-                    validation = {
-                        "valid": False,
-                        "errors": [f"canonical validator failed safely: {type(exc).__name__}: {exc}"],
-                        "warnings": [],
-                    }
-                if not validation["valid"]:
-                    result = {
-                        "status": "unresolved", "tree": None,
-                        "reasons": [{
-                            "code": "CANONICAL_GOLD_VALIDATION_FAILED",
-                            "detail": "; ".join(validation["errors"]),
-                        }],
-                        "normalization_trace": [{
-                            "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
-                            "evidence": "The imported source envelope failed the approved M1 canonical validator.",
-                        }],
-                    }
-                else:
-                    duplicate_ids = [str(row.get("id")) for row in matches[1:]]
-                    if duplicate_ids:
-                        envelope.setdefault("notes", []).append(
-                            "identical_gold_reference_records=" + ",".join(duplicate_ids))
-                    result = {
-                        "status": "normalized", "tree": envelope, "reasons": [],
-                        "normalization_trace": [{
-                            "rule_id": "EXACT_IMG_GOLD_REFERENCE",
-                            "evidence": "Exact lexical yield and convention-profile match to an IMG-verified Burton-Roberts source record.",
-                            "source_record_id": matches[0].get("id"),
-                        }],
-                        "validation": validation,
-                    }
+                    except Exception as exc:  # unexpected validator error cannot promote a tree
+                        validation = {
+                            "valid": False,
+                            "errors": [f"canonical validator failed safely: {type(exc).__name__}: {exc}"],
+                            "warnings": [],
+                        }
+                    if not validation["valid"]:
+                        result = {
+                            "status": "unresolved", "tree": None,
+                            "reasons": [{
+                                "code": "CANONICAL_GOLD_VALIDATION_FAILED",
+                                "detail": "; ".join(validation["errors"]),
+                            }],
+                            "normalization_trace": [{
+                                "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
+                                "evidence": "The imported source envelope failed the approved M1 canonical validator.",
+                            }],
+                        }
+                    else:
+                        duplicate_ids = [str(row.get("id")) for row in matches[1:]]
+                        if duplicate_ids:
+                            envelope.setdefault("notes", []).append(
+                                "identical_gold_reference_records=" + ",".join(duplicate_ids))
+                        result = {
+                            "status": "normalized", "tree": envelope, "reasons": [],
+                            "normalization_trace": [{
+                                "rule_id": "EXACT_IMG_GOLD_REFERENCE",
+                                "evidence": "Exact lexical yield and convention-profile match to an IMG-verified Burton-Roberts source record.",
+                                "source_record_id": matches[0].get("id"),
+                            }],
+                            "validation": validation,
+                        }
     else:
         try:
             result = normalize_benepar_candidate(analysis, profile)
