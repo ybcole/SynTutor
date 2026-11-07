@@ -23,7 +23,13 @@ jobs:
         run: python -m py_compile server/br_tree.py server/cambridge_registry.py
       - name: Run isolated Syntax Generator tests
         working-directory: server
-        run: python -m unittest -v test_br_tree test_cambridge_registry test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract
+        run: python -m unittest -v test_br_tree test_cambridge_registry test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_detector
+
+      - name: Run canonical gold-import regression tests
+        run: python -m unittest -v server.test_burton_roberts
+
+      - name: Audit all B-R chapter records
+        run: python scripts/audit_burton_roberts_import.py --expected-count 252
 
       - name: Run all existing B-R chapter validators
         working-directory: web/content/book
