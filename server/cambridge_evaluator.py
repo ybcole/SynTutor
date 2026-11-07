@@ -121,6 +121,12 @@ def evaluate_cambridge(analysis: dict[str, Any] | None,
             if not required_variety or not variety or variety.casefold() != required_variety.casefold():
                 evaluations.append({"rule_id": rule_id, "status": "variety_not_selected"})
                 continue
+        if rule.get("scope") != "sentence":
+            diagnostics.append({
+                "code": "UNSUPPORTED_RUNTIME_SCOPE",
+                "message": f"{rule_id} has scope {rule.get('scope')!r}; this evaluator currently supports sentence-scope checks only.",
+            })
+            continue
         check = rule.get("runtime_check")
         if not isinstance(check, dict) or check.get("kind") != _SUPPORTED_CHECK:
             diagnostics.append({
