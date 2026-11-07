@@ -12,6 +12,12 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
     except (OSError, json.JSONDecodeError) as exc:
         return {"registry_version": None, "active_rules": [],
                 "diagnostics": [{"code": "REGISTRY_UNAVAILABLE", "message": str(exc)}]}
+    if not isinstance(registry, dict):
+        return {"registry_version": None, "active_rules": [],
+                "diagnostics": [{
+                    "code": "INVALID_REGISTRY",
+                    "message": "The Cambridge runtime registry root must be a JSON object.",
+                }]}
 
     by_id: dict[str, dict[str, Any]] = {}
     for path in sorted((root / "grammar" / "rules").glob("*.json")):
@@ -19,7 +25,14 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):
             continue
-        rows = payload if isinstance(payload, list) else payload.get("rules", [])
+        if isinstance(payload, list):
+            rows = payload
+        elif isinstance(payload, dict):
+            rows = payload.get("rules", [])
+        else:
+            continue
+        if not isinstance(rows, list):
+            continue
         for row in rows:
             if isinstance(row, dict) and row.get("id"):
                 by_id[str(row["id"])] = row
@@ -47,10 +60,19 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
                 reasons.append("source extraction is not reviewed/approved")
             if rule.get("rule_type") not in {"constraint", "variety_restricted"}:
                 reasons.append("rule type is not executable")
-            if rule.get("rule_type") == "variety_restricted" and not str(rule.get("variety") or "").strip():
+            if rule.get("rule_type") == "variety_restricted" and (
+                not isinstance(rule.get("variety"), str) or not rule["variety"].strip()
+            ):
                 reasons.append("variety-restricted rule must declare its variety")
-            if not any(source.get("pages") for source in rule.get("sources", []) if isinstance(source, dict)):
-                reasons.append("source page evidence is missing")
+            sources = rule.get("sources")
+            if not isinstance(sources, list) or not any(
+                isinstance(source, dict)
+                and isinstance(source.get("pages"), list)
+                and any(isinstance(page, int) and not isinstance(page, bool) and page > 0
+                        for page in source["pages"])
+                for source in sources
+            ):
+                reasons.append("source page evidence is missing or malformed")
             mappings = rule.get("burton_roberts_mapping", [])
             allowed_relations = {
                 "same", "terminology_differs", "analysis_differs", "not_covered",
