@@ -129,8 +129,12 @@ async def api_parse(request: Request):
         return JSONResponse({'error': 'empty input',
                              'hint': 'Provide an English sentence in "text".'},
                             status_code=422, headers=CORS)
+    raw_sentence_index = data.get('sentence_index', 0)
+    if isinstance(raw_sentence_index, bool):
+        return JSONResponse({'error': 'sentence_index must be an integer'},
+                            status_code=400, headers=CORS)
     try:
-        sentence_index = int(data.get('sentence_index', 0))
+        sentence_index = int(raw_sentence_index)
     except (TypeError, ValueError):
         return JSONResponse({'error': 'sentence_index must be an integer'},
                             status_code=400, headers=CORS)
