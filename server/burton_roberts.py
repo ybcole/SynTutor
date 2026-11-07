@@ -863,7 +863,7 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
     represented_fields = {
         "id", "fig", "page", "sentence", "status", "tree", "note",
         "appendix_nom", "accepted_alternatives", "external_controller",
-        "external_controllers", "movement",
+        "external_controllers", "movement", "review_status", "review_note",
     }
     # Preserve every remaining chapter-specific answer/interpretation field.
     # The schema's notes array is intentionally used as a lossless, readable
