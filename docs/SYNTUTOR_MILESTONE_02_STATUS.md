@@ -170,9 +170,9 @@ The owner authorized automatic approvals, so no additional decision is requested
 
 ## M2 execution update — latest branch state, 7 November 2026
 
-**Current implementation head:** `e51c89c85e17ee8151419ab7739cf1ce03774c5e`  
+**Current implementation head:** `e51c89c85e17ee8151419ab7739cf1ce03774c5e` on `milestone-02-syntax-generator`  
+**Current PR documentation head:** `59d0aebaaf8e2b9915541c120c5469d85c7dd0c3` on `feature/milestone-02-completion-2026-11-07` (documentation-only commits after the implementation head)  
 **Continuation PR:** [#30](https://github.com/ybcole/SynTutor/pull/30), draft, open, unmerged  
-**M2 branch:** `milestone-02-syntax-generator` (fast-forwarded to the same implementation head)  
 **Status:** **INCOMPLETE — keep Milestone 02 unchecked.**
 
 ### Current implementation disposition
@@ -187,7 +187,7 @@ The frontend continues to show the legacy Benepar tree only as a diagnostic/comp
 
 ### Latest Actions evidence — current head is not tested
 
-The most recent attempt against the current head is [run 42350898513](https://github.com/ybcole/SynTutor/actions/runs/42350898513):
+The most recent attempt against the PR's current documentation head is [run 42351010687](https://github.com/ybcole/SynTutor/actions/runs/42351010687) (head `59d0aebaaf8e2b9915541c120c5469d85c7dd0c3`); the most recent run against the implementation head is [run 42350898513](https://github.com/ybcole/SynTutor/actions/runs/42350898513) (head `e51c89c85e17ee8151419ab7739cf1ce03774c5e`). Both runs have the same pre-job signature:
 - head SHA: `e51c89c85e17ee8151419ab7739cf1ce03774c5e`
 - event: `push`
 - workflow metadata: `name=""`, `path="BuildFailed"`, `workflow_id=410117115`
