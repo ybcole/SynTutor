@@ -33,12 +33,21 @@ The last request selects the declared free-analysis profile (FINAL-D1, represent
 ## Response and authority
 
 - `tree` and `candidate_tree` retain the raw Benepar candidate for diagnostics and existing-client compatibility. They are not the canonical B-R tree.
-- `br_analysis` is the single canonical-analysis result used by the Generator API. Its `status` is `normalized` or `unresolved`; the raw parse remains separate.
+- `br_analysis` is the single runtime normalizer result used by the current Generator API. Its `status` is `normalized` or `unresolved`; the raw parse remains separate.
+- The runtime payload currently follows `grammar/br_tree.schema.json`. This is the API's active wrapper contract, but it is **not shape-identical** to the M1-approved tree-envelope schema in `docs/canonical-burton-roberts-tree.schema.json`. See the compatibility note below.
 - `meta.tree_authority` identifies the split. `meta.br_profile_id`, `meta.br_convention_version`, `meta.br_chapter`, and `meta.br_appendix_nom` report the selected profile.
 - `parse.sentences` and `meta.sentence_count` preserve passage segmentation; `sentence_index` determines the selected sentence and `meta.target_sentence` reports its one-based position.
 - `cambridge_runtime` reports only allow-listed Cambridge rule eligibility. It is not itself a sentence-level grammaticality verdict.
 
 The normalized `br_analysis` preserves the B-R convention version, profile/refinement, source provenance, canonical tree, accepted alternatives, movement/controller metadata where present, and diagnostics. Source fixture provenance is retained; an IMG marker is evidence of transcription from an image, not by itself independent review or human approval.
+
+## Canonical schema compatibility — open M2 issue
+
+The approved M1 ADR (D3) names `docs/canonical-burton-roberts-tree.schema.json` as the canonical B-R tree envelope. That contract uses fields such as `tokens`, `convention_profile`, `root`, and `token_span`.
+
+The live Generator's `br_analysis` instead follows `grammar/br_tree.schema.json`, with `convention_version`, `profile`, `tree`, and node `span`/`surface` fields. The read-only source importer in `server/burton_roberts.py` projects source records into the M1 envelope, but that projection is not currently the object returned as the API's `br_analysis`. The two formats are not interchangeable.
+
+CI validates the runtime payload against `grammar/br_tree.schema.json` and separately tests the gold importer against the M1 envelope validator. It does **not** establish that the live API payload conforms to the approved M1 envelope. This conflict must be reconciled and covered by an API-level schema test before Milestone 02 can pass its canonical-output acceptance criterion or be used downstream. The M1-approved contract is not silently amended by this implementation note.
 
 ## Safe normalization boundary
 
