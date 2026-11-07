@@ -152,13 +152,37 @@ class Handler(BaseHTTPRequestHandler):
         if sentence_index < 0:
             self._json(400, {'error': 'sentence_index must be >= 0'})
             return
-        convention_version = data.get('convention_version') or 'V10'
-        if convention_version not in CONVENTIONS:
+        convention_version = data.get('convention_version')
+        if convention_version is not None and convention_version not in CONVENTIONS:
             self._json(400, {'error': 'convention_version must be one of V1-V10'})
             return
+        chapter = data.get('chapter')
+        if chapter is not None and (isinstance(chapter, bool) or not isinstance(chapter, int)
+                                    or not 1 <= chapter <= 10):
+            self._json(400, {'error': 'chapter must be an integer from 1 through 10'})
+            return
+        appendix_nom = data.get('appendix_nom')
+        if appendix_nom is not None and not isinstance(appendix_nom, bool):
+            self._json(400, {'error': 'appendix_nom must be true, false, or null'})
+            return
+        if appendix_nom is True and chapter not in (None, 7):
+            self._json(400, {'error': 'appendix_nom is only valid for Chapter 7 or free analysis'})
+            return
+        if appendix_nom is False and chapter is None:
+            self._json(400, {'error': 'free analysis uses the declared FINAL-D1 profile; appendix_nom cannot be disabled'})
+            return
+        if chapter is not None:
+            expected_version = f'V{chapter}'
+            if convention_version is not None and convention_version != expected_version:
+                self._json(400, {'error': f'chapter {chapter} requires convention_version {expected_version}'})
+                return
+            convention_version = expected_version
+        else:
+            convention_version = convention_version or 'V10'
         try:
             payload = build_payload(text, sentence_index=sentence_index,
-                                    convention_version=convention_version)
+                                    convention_version=convention_version,
+                                    chapter=chapter, appendix_nom=appendix_nom)
         except ParseFailure as exc:
             self._json(422, {'error': str(exc), 'input': text})
             return
