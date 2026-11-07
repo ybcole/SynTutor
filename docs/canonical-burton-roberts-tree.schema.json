@@ -1,0 +1,477 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ybcole/SynTutor/docs/canonical-burton-roberts-tree.schema.json",
+  "title": "SynTutor canonical Burton-Roberts tree envelope",
+  "description": "Milestone 01 proposal. Canonical B-R representation independent of parser-specific Penn-style output. Version 1.0.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "tree_id",
+    "tokens",
+    "convention_profile",
+    "source",
+    "root",
+    "movement",
+    "accepted_alternatives"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "tree_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sentence": {
+      "type": "string"
+    },
+    "tokens": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/token"
+      }
+    },
+    "convention_profile": {
+      "$ref": "#/$defs/conventionProfile"
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "root": {
+      "$ref": "#/$defs/node"
+    },
+    "movement": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/movement"
+      }
+    },
+    "accepted_alternatives": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/alternative"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "span": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "integer",
+          "minimum": 0
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "token": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "text",
+        "char_span"
+      ],
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "char_span": {
+          "$ref": "#/$defs/span"
+        },
+        "pos": {
+          "type": "string"
+        },
+        "parser_tag": {
+          "type": "string"
+        }
+      }
+    },
+    "conventionProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chapter",
+        "version"
+      ],
+      "properties": {
+        "chapter": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "version": {
+          "type": "string",
+          "enum": [
+            "V1",
+            "V2",
+            "V3",
+            "V4",
+            "V5",
+            "V6",
+            "V7",
+            "V8",
+            "V9",
+            "V10",
+            "FINAL"
+          ]
+        },
+        "appendix_nom": {
+          "type": "boolean"
+        },
+        "profile_id": {
+          "type": "string"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "book",
+        "chapter",
+        "evidence_status"
+      ],
+      "properties": {
+        "book": {
+          "type": "string",
+          "minLength": 1
+        },
+        "edition": {
+          "type": "string"
+        },
+        "chapter": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "section": {
+          "type": "string"
+        },
+        "printed_page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pdf_page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "figure_id": {
+          "type": "string"
+        },
+        "evidence_status": {
+          "type": "string",
+          "enum": [
+            "IMG",
+            "TXT",
+            "DERIVED_FROM_INSTRUCTIONS",
+            "IMG_ANOMALY",
+            "NEEDS_REVIEW",
+            "UNCERTAIN"
+          ]
+        },
+        "review_status": {
+          "type": "string",
+          "enum": [
+            "NOT_REVIEWED",
+            "INDEPENDENTLY_REVIEWED",
+            "HUMAN_APPROVED",
+            "REJECTED"
+          ]
+        },
+        "review_note": {
+          "type": "string"
+        },
+        "source_record_id": {
+          "type": "string"
+        }
+      }
+    },
+    "node": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/branchNode"
+        },
+        {
+          "$ref": "#/$defs/triangleNode"
+        },
+        {
+          "$ref": "#/$defs/terminalNode"
+        },
+        {
+          "$ref": "#/$defs/gapNode"
+        }
+      ]
+    },
+    "branchNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "children"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "token_span": {
+          "$ref": "#/$defs/span"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/node"
+          }
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "triangleNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "triangle",
+        "words"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "triangle": {
+          "const": true
+        },
+        "words": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "token_span": {
+          "$ref": "#/$defs/span"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "terminalNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "word"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "word": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pos": {
+          "type": "string"
+        },
+        "elided": {
+          "type": "boolean"
+        },
+        "token_span": {
+          "$ref": "#/$defs/span"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "gapNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gap"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "gap": {
+          "const": true
+        },
+        "index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "token_span": {
+          "$ref": "#/$defs/span"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "movement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "movement",
+            "control",
+            "co_reference",
+            "external_controller"
+          ]
+        },
+        "from_node_id": {
+          "type": "string"
+        },
+        "to_node_id": {
+          "type": "string"
+        },
+        "gap_node_id": {
+          "type": "string"
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controller": {
+          "type": "string"
+        },
+        "source_ref": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "alternative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analysis_id",
+        "root",
+        "acceptance"
+      ],
+      "properties": {
+        "analysis_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "root": {
+          "$ref": "#/$defs/node"
+        },
+        "acceptance": {
+          "type": "string",
+          "enum": [
+            "ACCEPTED",
+            "PREFERRED",
+            "NOT_ACCEPTED",
+            "NEEDS_REVIEW"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "meaning_or_context": {
+          "type": "string"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
