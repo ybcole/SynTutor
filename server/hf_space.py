@@ -124,6 +124,9 @@ async def api_parse(request: Request):
     except Exception as exc:  # noqa: BLE001
         return JSONResponse({'error': f'invalid request payload: {exc}'},
                             status_code=400, headers=CORS)
+    if not isinstance(data, dict):
+        return JSONResponse({'error': 'request payload must be a JSON object'},
+                            status_code=400, headers=CORS)
     text = (data.get('text') or '').strip()
     if not text:
         return JSONResponse({'error': 'empty input',
