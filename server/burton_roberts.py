@@ -401,8 +401,14 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
                 }],
             }
         else:
-            imported = canonicalize_gold_record(
-                matches[0], {"chapter": int(profile["chapter"])})
+            try:
+                imported = canonicalize_gold_record(
+                    matches[0], {"chapter": int(profile["chapter"])})
+            except Exception as exc:  # malformed source projection must fail closed
+                imported = {
+                    "status": "unresolved", "tree": None,
+                    "errors": [f"gold source importer failed safely: {type(exc).__name__}: {exc}"],
+                }
             if imported.get("status") != "normalized" or not isinstance(imported.get("tree"), dict):
                 result = {
                     "status": "unresolved", "tree": None,
@@ -420,7 +426,14 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
                 # The declared free-analysis profile is FINAL-D1 (V10 plus the
                 # adopted Appendix NOM refinement), not merely a Chapter 10 lesson.
                 envelope["convention_profile"] = profile
-                validation = validate_canonical_tree(envelope)
+                try:
+                    validation = validate_canonical_tree(envelope)
+                except Exception as exc:  # unexpected validator error cannot promote a tree
+                    validation = {
+                        "valid": False,
+                        "errors": [f"canonical validator failed safely: {type(exc).__name__}: {exc}"],
+                        "warnings": [],
+                    }
                 if not validation["valid"]:
                     result = {
                         "status": "unresolved", "tree": None,
