@@ -1666,15 +1666,17 @@ async function postParse(text, index = null) {
 function setTreeAuthorityNotice(payload) {
   const notice = document.querySelector('#treeAuthorityNotice');
   if (!notice) return;
-  const status = payload?.canonical_analysis?.status
-    || payload?.meta?.canonical_analysis_status
+  const analysis = payload?.br_analysis;
+  const status = analysis?.status
+    || payload?.meta?.br_normalization_status
     || 'unavailable';
-  const detail = (payload?.canonical_analysis?.reasons || [])
-    .map((row) => row?.detail).find(Boolean);
+  const detail = (analysis?.diagnostics || [])
+    .map((row) => row?.message || row?.detail).find(Boolean)
+    || (analysis?.reasons || []).map((row) => row?.detail).find(Boolean);
   if (status === 'normalized') {
-    notice.textContent = 'B-R projection available in the response; this canvas still displays the Benepar diagnostic tree, not the canonical B-R tree.';
+    notice.textContent = 'Canonical B-R analysis is available in the response; this canvas displays the raw Benepar diagnostic candidate, not the canonical B-R tree.';
   } else {
-    notice.textContent = `Benepar diagnostic tree only — canonical B-R normalization is ${status}.${detail ? ` ${detail}` : ''}`;
+    notice.textContent = `Raw Benepar diagnostic candidate only — canonical B-R normalization is ${status}.${detail ? ` ${detail}` : ''}`;
   }
   notice.hidden = false;
 }
