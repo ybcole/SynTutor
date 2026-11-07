@@ -246,6 +246,24 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
         self.assertEqual(payload["meta"]["br_profile_id"], "V7-APPENDIX-D1")
         self.assertTrue(payload["meta"]["br_appendix_nom"])
 
+    def test_variety_selection_is_trimmed_and_returned_in_metadata(self):
+        with patch.object(api, "analyze", return_value=self.analysis()), \
+             patch.object(api, "evaluate", return_value=self.clean_evaluation()), \
+             patch.object(api, "classify", return_value=None), \
+             patch.object(api, "_contrastive", return_value=""), \
+             patch.object(api, "_pipeline_narration", return_value={"stages": []}), \
+             patch.object(api, "_rule_concepts", return_value=[]):
+            payload = api.build_payload(self.sentence, chapter=2, variety=" AmE ")
+
+        self.assertEqual(payload["meta"]["cambridge_variety"], "AmE")
+
+    def test_invalid_variety_is_rejected_before_parsing(self):
+        for value in (" ", 5, True):
+            with self.subTest(value=value), patch.object(api, "analyze") as parse:
+                with self.assertRaisesRegex(ValueError, "variety"):
+                    api.build_payload(self.sentence, chapter=2, variety=value)
+                parse.assert_not_called()
+
     def test_multi_sentence_request_reports_selected_sentence(self):
         analysis = self.analysis()
         analysis["sentence_index"] = 1
