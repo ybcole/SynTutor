@@ -449,17 +449,28 @@ def _unresolved(version: str, code: str, message: str, **extra: Any) -> dict[str
 
 def normalize_candidate(candidate: dict[str, Any], tokens: list[dict[str, Any]] | None,
                         sentence: str, convention_version: str = "V10",
-                        reference_records: Iterable[dict[str, Any]] | None = None) -> dict[str, Any]:
-    """Normalize exact IMG references or the explicit V2 S -> NP VP mapping."""
+                        reference_records: Iterable[dict[str, Any]] | None = None,
+                        appendix_nom: bool | None = None) -> dict[str, Any]:
+    """Normalize exact IMG references or the explicit V2 S -> NP VP mapping.
+
+    For Chapter 7, Appendix D1 records are never substituted for the V7 core
+    (or vice versa). A source fixture must explicitly match the requested
+    refinement before it can be selected.
+    """
     try:
         version_number = _version_number(convention_version)
     except ValueError as exc:
         return _unresolved(convention_version, "UNSUPPORTED_CONVENTION", str(exc))
+    if appendix_nom is not None and not isinstance(appendix_nom, bool):
+        return _unresolved(convention_version, "INVALID_PROFILE",
+                           "appendix_nom must be true, false, or null.")
     expected, _ = _token_positions(tokens, sentence)
     records = list(reference_records) if reference_records is not None else list(load_reference_records())
     matching = []
     for record in records:
         if record.get("_convention_version") != convention_version:
+            continue
+        if version_number == 7 and bool(record.get("appendix_nom", False)) != bool(appendix_nom):
             continue
         if record.get("status") != "IMG" or record.get("correct") is False:
             continue
