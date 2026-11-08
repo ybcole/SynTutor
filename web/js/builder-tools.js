@@ -37,16 +37,16 @@ export function createBuilderTools(config){
    const text=input('Node label or word',node.kind===NODE.WORD?node.text:node.type);editor.append(field('Label or word',text));
    const features=input('Node features',(node.canonicalFeatures||[]).join(', ')),index=input('Node index',node.canonicalIndex??'');
    if(node.kind===NODE.PHRASE)editor.append(field(`Features (${palette.features.join(', ')||'none in this chapter'})`,features));
-   if(node.kind!==NODE.WORD)editor.append(field('Index (optional)',index));
+   if(node.kind!==NODE.WORD&&!node.canonicalData?.empty)editor.append(field('Index (optional)',index));
    editor.append(button('Apply node changes',()=>mutate(()=>{
     if(node.kind===NODE.WORD){if(!text.value.trim())throw Error('Enter a word.');node.text=text.value.trim();}
-    else if(node.kind===NODE.PHRASE){if(!palette.labels.includes(text.value))throw Error('Choose a label in this convention.');node.type=text.value;node.canonicalFeatures=features.value.split(',').map(s=>s.trim()).filter(Boolean);if(node.canonicalFeatures.some(f=>!palette.features.includes(f)))throw Error('Feature is not in this convention.');}
-    if(node.kind!==NODE.WORD){if(index.value!==''&&!/^\d+$/.test(index.value))throw Error('Index must be a non-negative integer.');node.canonicalIndex=index.value===''?null:Number(index.value);}
+    else if(node.kind===NODE.PHRASE){if(!palette.labels.includes(text.value))throw Error('Choose a label in this convention.');node.type=text.value;node.canonicalFeatures=features.value.split(',').map(s=>s.trim()).filter(Boolean);if(node.canonicalFeatures.some(f=>!palette.features.includes(f)))throw Error('Feature is not in this convention.');if(node.canonicalTriangle&&node.canonicalFeatures.length)throw Error('Expand the triangle before adding features.');}
+    if(node.kind!==NODE.WORD&&!node.canonicalData?.empty){if(index.value!==''&&!/^\d+$/.test(index.value))throw Error('Index must be a non-negative integer.');node.canonicalIndex=index.value===''?null:Number(index.value);}
    })));
    const parents=select('Parent Builder node',[['','No parent'],...nodes.filter(n=>n.kind===NODE.PHRASE&&n.id!==node.id).map(n=>[n.id,`${n.id}: ${n.type}`])],node.parent||'');editor.append(field('Parent',parents));
    editor.append(button('Connect to parent',()=>mutate(()=>{if(!parents.value)disconnect(config.state.model,node.id);else if(!connect(config.state.model,parents.value,node.id))throw Error('That connection would create a cycle or attach under a terminal/triangle.');})),button('Delete selected node',()=>mutate(()=>removeNode(config.state.model,node.id))));
    const position=input('Horizontal order',String(node.x));position.type='number';editor.append(field('Horizontal position / sibling order',position),button('Move node',()=>mutate(()=>{if(!Number.isFinite(Number(position.value)))throw Error('Enter a number');node.x=Number(position.value);})));
-   if(node.kind===NODE.PHRASE&&!node.canonicalData?.unlabelled)editor.append(button(node.canonicalTriangle?'Expand triangle':'Collapse to triangle',()=>mutate(()=>{if(!node.canonicalTriangle&&childrenOf(config.state.model,node.id).some(n=>n.kind!==NODE.WORD))throw Error('Connect only overt words before collapsing.');node.canonicalTriangle=!node.canonicalTriangle;})));
+   if(node.kind===NODE.PHRASE&&!node.canonicalData?.unlabelled)editor.append(button(node.canonicalTriangle?'Expand triangle':'Collapse to triangle',()=>mutate(()=>{if(!node.canonicalTriangle&&node.canonicalFeatures?.length)throw Error('Remove features before collapsing this node.');if(!node.canonicalTriangle&&childrenOf(config.state.model,node.id).some(n=>n.kind!==NODE.WORD))throw Error('Connect only overt words before collapsing.');node.canonicalTriangle=!node.canonicalTriangle;})));
    editor.append(button('Explain selected node',()=>config.select(node.id,true)));
   }
   const phrase=select('New B-R category',palette.labels.map(l=>[l,l]),palette.labels.includes('NP')?'NP':palette.labels[0]);editor.append(field('New category',phrase),button('Add category',()=>mutate(()=>{selected=addPhrase(config.state.model,phrase.value,nodes.length*45,60).id;})));

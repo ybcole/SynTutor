@@ -9,6 +9,7 @@ const base=trees.find(t=>t.convention_profile.chapter===9),model=fromCanonicalEn
 const phrase=Object.values(model.nodes).find(n=>n.kind===NODE.PHRASE),word=Object.values(model.nodes).find(n=>n.kind===NODE.WORD);
 assert.equal(connect(model,word.id,phrase.id),false,'terminals cannot become parents');assert.equal(connect(model,phrase.id,phrase.id),false);
 const empty=createModel();const p=addPhrase(empty,'NP',0,0),w=addWord(empty,'birds',100,100);assert(connect(empty,p.id,w.id));assert.equal(connect(empty,w.id,p.id),false);const det=addSpecial(empty,'DET',0,100);assert(connect(empty,p.id,det.id));const e=toCanonicalEnvelope(empty,builderProfile(7));assert.equal(e.root.children[0].empty,true);assert.deepEqual(e.root.children[0].token_span,[0,0]);
+const featured=fromCanonicalEnvelope(trees.find(t=>t.convention_profile.chapter===4));const verb=Object.values(featured.nodes).find(n=>n.type==='V');verb.canonicalTriangle=true;assert.throws(()=>toCanonicalEnvelope(featured),/cannot carry features/);
 const palette=paletteFor(builderProfile(2));assert(palette.labels.includes('NP'));assert(!palette.labels.includes('NOM'));assert(!palette.labels.includes('SBAR'));assert(!palette.features.length);
 assert(paletteFor(builderProfile(9)).labels.includes('C1'));assert(!paletteFor(builderProfile(9)).features.includes('-tense'));
 const memory=new Map(),storage={getItem:k=>memory.get(k),setItem:(k,v)=>memory.set(k,v)};

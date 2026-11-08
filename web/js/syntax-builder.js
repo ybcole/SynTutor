@@ -366,6 +366,7 @@ export function toCanonicalEnvelope(model, profile = null) {
   if(n.canonicalFeatures!==undefined)raw.features=clone(n.canonicalFeatures);
   if(n.canonicalIndex!==undefined)raw.index=n.canonicalIndex;
   if(n.canonicalTriangle){
+   if(raw.features?.length)throw Error('Triangles cannot carry features; expand this node or remove its features first.');
    if(!children.length||children.some(c=>c.kind!==NODE.WORD||c.canonicalData?.elided))throw Error('A triangle contains overt words only.');
    const start=cursor;for(const c of children)walk(c,depth+1);
    delete raw.features;raw.triangle=true;raw.words=children.map(c=>c.text.trim());raw.token_span=[start,cursor];return raw;
