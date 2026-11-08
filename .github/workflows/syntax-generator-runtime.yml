@@ -26,10 +26,25 @@ jobs:
           python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
           python -c "import torch; open('/tmp/syntutor-cpu-constraint.txt', 'w').write('torch==' + torch.__version__ + '\\n')"
           python -m pip install -r requirements.txt -c /tmp/syntutor-cpu-constraint.txt
-      - name: Install spaCy model
-        run: python -m spacy download en_core_web_md
-      - name: Install Benepar model
-        run: python -c "import benepar; benepar.download('benepar_en3')"
+      - name: Install pinned parser models from GitHub release assets
+        run: |
+          set -euo pipefail
+          download_dir=$(mktemp -d)
+          cd "$download_dir"
+          fetch() {
+            curl --fail --location --silent --show-error --retry 3 --retry-all-errors \
+              --max-time 180 -H 'Accept: application/octet-stream' \
+              "https://api.github.com/repos/$1/releases/assets/$2?run=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" -o "$3"
+          }
+          fetch explosion/spacy-models 195734413 en_core_web_md-3.8.0-py3-none-any.whl
+          fetch nikitakit/self-attentive-parser 31667636 benepar_en3.zip
+          sha256sum -c <<'HASHES'
+          5e6329fe3fecedb1d1a02c3ea2172ee0fede6cea6e4aefb6a02d832dba78a310  en_core_web_md-3.8.0-py3-none-any.whl
+          de97297ec17b92f7a40ef2e23fd1b4b8baed02eb8bee3d09b25ac6166ae17996  benepar_en3.zip
+          HASHES
+          python -m pip install --no-deps en_core_web_md-3.8.0-py3-none-any.whl
+          mkdir -p "$HOME/nltk_data/models"
+          unzip -q benepar_en3.zip -d "$HOME/nltk_data/models"
       - name: Verify parser model availability
         run: |
           python - <<'PY'
@@ -60,3 +75,4 @@ jobs:
           python scripts/test_lessons_browser.py
           python scripts/test_quizzes_browser.py
           python scripts/test_builder_browser.py
+          python scripts/test_progression_browser.py

@@ -1,6 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { CLERK_CONFIG, SUPABASE_CONFIG } from './config.js';
-import { levelFromXp } from './level.js';
 
 // js/config.js is git-ignored (see .gitignore); a fresh checkout boots without
 // it, so point developers at the template when the values are still placeholders.
@@ -82,73 +81,24 @@ export function setAuthState(next) {
   }
 }
 
-// ── Guest progress ───────────────────────────────────────────────────────
-// A guest can still work through the free lessons. That progress waits in
-// local storage and is moved onto the account the moment it is created.
-const GUEST_XP_KEY = 'syntutor_guest_xp';
+// Preserve the pre-versioned guest lesson history migration. Local XP is
+// unverified, so it stays on the device and cannot be added to account XP.
 const GUEST_LESSONS_KEY = 'syntutor_guest_completed_lessons';
 
-// Remember what a guest achieved, so it can follow them to their account.
-export function recordGuestProgress({ xp = 0, lesson = null } = {}) {
+async function migrateGuestLessons() {
+  let lessons;
   try {
-    if (xp) {
-      const current = Number(localStorage.getItem(GUEST_XP_KEY) || 0) || 0;
-      localStorage.setItem(GUEST_XP_KEY, String(current + xp));
-    }
-    if (lesson) {
-      const list = JSON.parse(localStorage.getItem(GUEST_LESSONS_KEY) || '[]');
-      if (Array.isArray(list) && !list.includes(lesson)) {
-        list.push(lesson);
-        localStorage.setItem(GUEST_LESSONS_KEY, JSON.stringify(list));
-      }
-    }
-  } catch (e) { /* storage unavailable — the progress is simply not kept */ }
-}
-
-// The guest progress waiting to be migrated.
-export function guestProgress() {
-  try {
-    return {
-      xp: Number(localStorage.getItem(GUEST_XP_KEY) || 0) || 0,
-      lessons: JSON.parse(localStorage.getItem(GUEST_LESSONS_KEY) || '[]') || [],
-    };
-  } catch (e) {
-    return { xp: 0, lessons: [] };
+    lessons = JSON.parse(localStorage.getItem(GUEST_LESSONS_KEY) || '[]');
+  } catch {
+    return;
   }
-}
-
-// Move the guest progress onto the new account, then clear the local copy.
-export async function migrateGuestProgress() {
-  const { xp, lessons } = guestProgress();
-  if (!xp && !lessons.length) return { xp: 0, lessons: 0 };
+  if (!Array.isArray(lessons) || !lessons.length) return;
   const clerk = await loadClerk();
   const supabase = await createSupabaseClient();
   const userId = clerk?.user?.id;
-  if (!userId || !supabase) return { xp: 0, lessons: 0 };
+  if (!userId || !supabase) return;
 
-  // The account may already have progress of its own (a learner signing in to
-  // an account they used before): the guest's work is added on top of it.
-  let carriedXp = 0;
-  let migratedLessons = 0;
   try {
-    if (xp > 0) {
-      const { data: current } = await supabase
-        .from('player_stats')
-        .select('xp')
-        .eq('user_id', userId)
-        .maybeSingle();
-      const totalXp = (Number(current?.xp) || 0) + xp;
-      const { level } = levelFromXp(totalXp);
-      const name = clerk?.user?.firstName
-        || clerk?.user?.username
-        || clerk?.user?.primaryEmailAddress?.emailAddress?.split('@')[0]
-        || 'Learner';
-      const { error } = await supabase.from('player_stats').upsert({
-        user_id: userId, display_name: name, xp: totalXp, level, updated_at: new Date().toISOString(),
-      }, { onConflict: 'user_id' });
-      if (error) throw new Error(error.message);
-      carriedXp = totalXp;
-    }
     for (const ruleId of lessons) {
       const { data: row } = await supabase
         .from('quiz_progress')
@@ -164,19 +114,16 @@ export async function migrateGuestProgress() {
         last_completed_at: new Date().toISOString(),
       }, { onConflict: 'user_id,rule_id' });
       if (error) throw new Error(error.message);
-      migratedLessons += 1;
     }
   } catch (err) {
     // A failed transfer keeps the local copy: nothing is lost, and the next
     // sign-in tries again.
     console.warn('Failed to migrate the guest progress:', err);
-    return { xp: carriedXp, lessons: migratedLessons, migrated: false };
+    return;
   }
   try {
-    localStorage.removeItem(GUEST_XP_KEY);
     localStorage.removeItem(GUEST_LESSONS_KEY);
   } catch (e) { /* storage unavailable */ }
-  return { xp: carriedXp, lessons: migratedLessons, migrated: true };
 }
 
 // ── The auth modal ───────────────────────────────────────────────────────
@@ -186,7 +133,7 @@ export async function migrateGuestProgress() {
 const AUTH_MODAL_COPY = {
   lessons_gate: {
     title: 'Create a free account to continue',
-    subtitle: 'Save your progress, unlock all phrase and clause lessons, earn XP, and compete on the leaderboard.',
+    subtitle: 'Save your progress and earn verified XP from lessons and quizzes.',
     dismiss: 'Continue Browsing Free Lessons',
   },
   sidebar_profile: {
@@ -399,7 +346,7 @@ async function submitAuthModal() {
       await clerk.setActive({ session: signIn.createdSessionId });
     }
     // The account exists: the guest's progress follows them onto it.
-    await migrateGuestProgress();
+    await migrateGuestLessons();
     closeAuthModal();
     setAuthState({ authenticated: true, user: clerk.user });
   } catch (err) {

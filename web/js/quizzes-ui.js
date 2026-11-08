@@ -12,7 +12,7 @@ async function action(fn){
  if(busy)return;const token=generation,focusName=document.activeElement?.name,focusValue=document.activeElement?.value;busy=true;host.setAttribute('aria-busy','true');host.querySelectorAll('button,input').forEach(n=>{n.disabled=true;});
  try{const result=await fn();if(token!==generation)return;
   if(result?.attempt_id)current=result.attempt_id;
-  message=result&&Object.hasOwn(result,'earned')?`${result.earned} new quiz XP for this assessment version.`:'';
+  message=result&&Object.hasOwn(result,'earned')?`${result.earned} new quiz XP for this assessment version.${store.status === 'Synced to your account' ? '' : ' Device estimate until verified by account sync.'}`:'';
  }catch(e){if(token===generation)message=e.message;}
  finally{if(token===generation){busy=false;host.setAttribute('aria-busy','false');render();if(focusName)host.querySelector(`input[name="${CSS.escape(focusName)}"][value="${focusValue}"]`)?.focus();}}
 }

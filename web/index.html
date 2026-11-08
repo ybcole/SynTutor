@@ -316,25 +316,7 @@
         <h2 class="view-title">Leaderboard</h2>
       </header>
       <div class="leaderboard-content-wrapper">
-        <!-- The podium: the three strongest learners, side by side. -->
-        <div class="podium-grid" id="leaderboardPodium"></div>
-        <section class="standings-section">
-          <h2 class="standings-title">Standings</h2>
-          <div class="standings-table-container">
-            <table class="standings-table">
-              <thead>
-                <tr>
-                  <th scope="col">Rank</th>
-                  <th scope="col">Learner</th>
-                  <th scope="col" class="num">Trees Built</th>
-                  <th scope="col" class="num">Accuracy</th>
-                  <th scope="col" class="num">XP</th>
-                </tr>
-              </thead>
-              <tbody id="leaderboardRows"></tbody>
-            </table>
-          </div>
-        </section>
+        <p class="empty-note">Public rankings are paused. Your verified XP and level are available in Achievements.</p>
       </div>
     </div>
 
@@ -344,8 +326,8 @@
       <header class="view-header achievements-header">
         <h2 class="view-title">Achievements</h2>
         <div class="achievements-xp-tracker">
-          <div class="xp-tracker-label" id="achievementsProgressLabel">Sign in to track your progress.</div>
-          <div class="xp-progress-bar-track">
+          <div class="xp-tracker-label" id="achievementsProgressLabel" aria-live="polite">Sign in to track your progress.</div>
+          <div class="xp-progress-bar-track" aria-hidden="true">
             <div class="xp-progress-bar-fill" id="achievementsProgressFill"></div>
           </div>
         </div>
