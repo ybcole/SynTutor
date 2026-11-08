@@ -47,6 +47,16 @@ MIME = {
 
 app = Flask(__name__, static_folder=None)
 
+# Bound all JSON requests, including parse and words. Flask enforces this even
+# when the client sends a chunked body without a Content-Length header.
+# The legacy stdlib transport independently applies the same 250 KB limit.
+app.config['MAX_CONTENT_LENGTH'] = 250_000
+
+
+@app.errorhandler(413)
+def request_too_large(_error):
+    return jsonify({'error': 'request exceeds 250000 bytes'}), 413
+
 
 @app.after_request
 def _add_cors(resp):
