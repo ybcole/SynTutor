@@ -137,7 +137,7 @@ export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } =
         const result=await r.json();if(!r.ok||!result.structure?.valid)throw Error(result.error||result.structure?.errors?.join('; ')||'Invalid canonical tree');
       }finally{clearTimeout(timer);}
     },
-    refresh:()=>{state.nodeErrors=new Map();state.lastEvaluation=null;draw();syncCanvasToInput();},
+    refresh:()=>{evidenceRequest++;state.nodeErrors=new Map();state.lastEvaluation=null;draw();syncCanvasToInput();},
     zoom:factor=>{state.view.scale=Math.max(.15,Math.min(4,state.view.scale*factor));draw();},
     pan:(dx,dy)=>{state.view.ox+=dx;state.view.oy+=dy;draw();},
     fit:()=>{if(treeIsComplete()){applyTreeLayout({fit:true});state.snapped=true;}draw();},
