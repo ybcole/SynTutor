@@ -159,7 +159,7 @@ Implementation evidence and deployment steps are in the [M7 report](../reports/m
 - [x] Add clear progress indicators and optional rewards.
 - [x] Test all achievement unlock conditions.
 
-The [M8 report](../reports/milestone-08-achievements-2026-11-08.md) records the verified launch catalog and the pending release review. Direct Generator and Builder badges require trusted account-bound activity evidence.
+The [M8 report](../reports/milestone-08-achievements-2026-11-08.md) records the verified launch catalog and completed repository review. Hosted staging remains pending. Direct Generator and Builder badges require trusted account-bound activity evidence.
 
 ## 11. UI/UX and accessibility
 

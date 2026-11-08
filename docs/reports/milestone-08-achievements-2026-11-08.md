@@ -1,6 +1,6 @@
 # Milestone 08 · Achievements and mastery
 
-Implementation verified in the repository on 8 November 2026 (Asia/Manila). The educational and exploit-resistance release review is open. No hosted migration has been applied.
+Implementation verified in the repository on 8 November 2026 (Asia/Manila). The owner requested a repository review. The ten-badge pilot passed that review, including the replay and abuse checks below. No hosted migration has been applied.
 
 ## Badge set for review
 
@@ -25,13 +25,13 @@ The launch catalog is visible and one-time per badge. Its optional reward is the
 - Catalog rows identify the badge and display properties. Each criterion identifies its activity scope, content version, threshold, and learner-facing label. Criteria in an option are AND conditions. Options are OR alternatives. Launch criteria explicitly reference content version 1.0.0. Publish an explicit criterion revision when new content versions become eligible.
 - `get_my_achievements()` reconciles the caller's badges from those records when they open Achievements. It persists one unlock per account and badge. The unlock timestamp is the earliest qualifying evidence time, with a successful AND group using the time its last condition was met. Reopening or simultaneous reads cannot create another unlock. Guests can view criteria with zero personal progress.
 - The Generator and Builder currently send evaluation requests without durable, account-bound mastery records. M8 maps their skills to the existing trusted lesson and assessment paths where applicable. Generator or Builder submissions, guest drafts, local estimates, legacy parser-stage counters, and unscored reinforcement do not unlock badges. Direct badges for Generator or Builder need a verified account-bound event path and separate reviewed criteria.
-- Remaining abuse tradeoff for review: learners can inspect answers delivered with practice content and submit valid responses. The RPC checks against server-owned catalogs and caps what replays can count toward. Personal Best can be earned after a deliberately low first attempt. It is a single cosmetic badge with no XP incentive.
+- Reviewed abuse tradeoff: learners can inspect answers delivered with practice content and submit valid responses. The RPC checks against server-owned catalogs and caps what replays can count toward. Personal Best can be earned after a deliberately low first attempt. It is a single cosmetic badge with no XP incentive.
 
 ## Verification and release
 
 Native PostgreSQL tests covered all ten badges, both OR paths, partial and complete AND progress, 0/5, score improvement, replay, two-session reconciliation, durable dates, legacy/draft/version rejection, guest/other-account privacy, and denial of client writes. Chromium checked the badge criteria, timestamps, category filtering, verified XP, account sign-out, and unavailable states with stubbed account/database transport. Lesson, quiz, Builder, level and packaging regressions passed locally.
 
-1. Review the ten badges, the version scope, and the abuse tradeoffs. Check CI before merging. The prior M7 parser CI stopped during the external spaCy download. Model-free checks cover the M7 and M8 account features independently.
+1. Check CI before merging. The badge review accepted attainable progress, paired evidence for advanced badges, and one cosmetic unlock per account. The prior parser CI stopped during the external spaCy download. The workflow now verifies and installs the same pinned models through their official release asset endpoints.
 2. On staging, confirm the M4/M5 schemas and catalog seeds. Apply M7's `20261108000004_verified_progression.sql`, then M8's `20261108000005_achievements.sql`, before deploying their matching frontend. Run the M7 award, replay and isolation checks with real Clerk accounts.
 3. In Achievements, verify an existing account's badges, a new partial then completed condition, replay, and a second account and signed-out session. Check that badge unlocks leave verified XP unchanged. If the M8 frontend must be rolled back, retain the database tables and their unlock rows.
-4. For Milestone 9, the plan requires secure XP/level authority and privacy design from M7 plus M1 identity and consent decisions. Review opt-in aliases, ranking exposure, and database access before enabling public rankings. M8's badge review is required before releasing the badges.
+4. For Milestone 9, the plan requires secure XP/level authority and privacy design from M7 plus M1 identity and consent decisions. Review opt-in aliases, ranking exposure, and database access before enabling public rankings. Hosted staging verification is required before releasing the badges.
