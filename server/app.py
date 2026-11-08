@@ -156,8 +156,8 @@ class Handler(BaseHTTPRequestHandler):
             raw = data.get('words')
             if isinstance(raw, str):
                 raw = raw.split()
-            if not isinstance(raw, list):
-                self._json(422, {'error': 'provide "words" as a list'})
+            if not isinstance(raw, list) or any(not isinstance(word, str) for word in raw[:100]):
+                self._json(422, {'error': 'provide "words" as a list of strings'})
                 return
             self._json(200, {'results': word_info(raw[:100])})
             return
