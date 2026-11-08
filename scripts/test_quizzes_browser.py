@@ -42,7 +42,7 @@ try:
   # An unfinished attempt resumes with choices, manifest/order and position intact.
   last=view.locator('[data-quiz-item]').get_attribute('data-quiz-item');page.reload(wait_until='domcontentloaded');page.locator('.sidebar-item[data-view="quizzes"]').click();view.locator('[data-assessment="quiz-br-02"]').get_by_role('button',name='Resume assessment',exact=True).click();expect(view.locator('[data-quiz-item]')).to_have_attribute('data-quiz-item',last)
   view.get_by_role('button',name='Submit assessment · 2 unanswered',exact=True).click();expect(view.locator('.quiz-score')).to_contain_text('3/5');expect(view.locator('.lesson-save-status')).to_contain_text('6 new quiz XP')
-  expect(view.locator('[data-shared-evidence]')).to_have_count(5);page.screenshot(path=str(OUT/'review-desktop.png'),full_page=True)
+  expect(view.locator('.quiz-next')).to_contain_text('Responses that matched: Subject, predicate and category');expect(view.get_by_role('button',name='Revisit: Subject, predicate and category',exact=True)).to_be_visible();expect(view.locator('[data-shared-evidence]')).to_have_count(5);page.screenshot(path=str(OUT/'review-desktop.png'),full_page=True)
   for expected in [4,0]:
    view.get_by_role('button',name='Try a new attempt',exact=True).click();expect(view.locator('[data-quiz-item]')).to_be_visible();answer_questions(5)
    view.get_by_role('button',name='Submit assessment',exact=True).click();expect(view.locator('.quiz-score')).to_contain_text('5/5');expect(view.locator('.lesson-save-status')).to_contain_text(f'{expected} new quiz XP')

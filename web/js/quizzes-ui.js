@@ -44,7 +44,9 @@ function review(t){
  host.append(el('p','Use this attempt to choose your next practice. A short assessment does not establish mastery.','lesson-lead'));
  const strengths=grade.results.filter(r=>r.correct),needs=grade.results.filter(r=>!r.correct);
  const next=el('section',undefined,'quiz-next');next.append(el('h2','Based on this attempt'),el('p',`${strengths.length} responses matched the reviewed answer; ${needs.length} need another look.`));
- for(const lid of [...new Set(needs.map(r=>r.lesson_id))])next.append(button(`Review lesson: ${lid}`,()=>config.onLesson?.(lid)));host.append(next);
+ const topicTitle=lid=>bank.assessments.find(a=>a.assessment_id===`quiz-${lid}`)?.title||lid;
+ if(strengths.length)next.append(el('p',`Responses that matched: ${[...new Set(strengths.map(r=>r.lesson_id))].map(topicTitle).join('; ')}.`));
+ for(const lid of [...new Set(needs.map(r=>r.lesson_id))])next.append(button(`Revisit: ${topicTitle(lid)}`,()=>config.onLesson?.(lid)));host.append(next);
  for(const [index,q] of itemsFor(bank,t).entries()){
   const response=t.responses[q.item_id]??null,correct=response===q.answer,card=el('article',undefined,'quiz-review-card');card.dataset.reviewItem=q.item_id;
   card.append(el('h2',`${index+1}. ${q.prompt}`),el('p',response===null?'Unanswered':correct?'Correct on this attempt':'Review this response',correct?'lesson-feedback correct':'lesson-feedback retry'));
