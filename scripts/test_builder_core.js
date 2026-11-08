@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';
+import {createModel,addPhrase,addWord,addSpecial,connect,fromCanonicalEnvelope,toCanonicalEnvelope,builderProfile,paletteFor,NODE} from '../web/js/syntax-builder.js';
+import {createBuilderSession} from '../web/js/builder-session.js';
+const course=JSON.parse(fs.readFileSync('web/content/lessons/course.json'));
+const trees=course.lessons.map(l=>l.worked_example.tree).filter(Boolean);
+for(const t of trees){const model=fromCanonicalEnvelope(t),actual=toCanonicalEnvelope(model,t.convention_profile);assert.deepEqual(actual.root,t.root);assert.deepEqual(actual.tokens,t.tokens);assert.equal(actual.sentence,t.sentence);assert.deepEqual(actual.movement,t.movement);}
+const base=trees.find(t=>t.convention_profile.chapter===9),model=fromCanonicalEnvelope(base);assert(Object.values(model.nodes).some(n=>n.canonicalData?.gap));assert.deepEqual(toCanonicalEnvelope(model,base.convention_profile).movement,base.movement);
+const phrase=Object.values(model.nodes).find(n=>n.kind===NODE.PHRASE),word=Object.values(model.nodes).find(n=>n.kind===NODE.WORD);
+assert.equal(connect(model,word.id,phrase.id),false,'terminals cannot become parents');assert.equal(connect(model,phrase.id,phrase.id),false);
+const empty=createModel();const p=addPhrase(empty,'NP',0,0),w=addWord(empty,'birds',100,100);assert(connect(empty,p.id,w.id));assert.equal(connect(empty,w.id,p.id),false);const det=addSpecial(empty,'DET',0,100);assert(connect(empty,p.id,det.id));const e=toCanonicalEnvelope(empty,builderProfile(7));assert.equal(e.root.children[0].empty,true);assert.deepEqual(e.root.children[0].token_span,[0,0]);
+const palette=paletteFor(builderProfile(2));assert(palette.labels.includes('NP'));assert(!palette.labels.includes('NOM'));assert(!palette.labels.includes('SBAR'));assert(!palette.features.length);
+assert(paletteFor(builderProfile(9)).labels.includes('C1'));assert(!paletteFor(builderProfile(9)).features.includes('-tense'));
+const memory=new Map(),storage={getItem:k=>memory.get(k),setItem:(k,v)=>memory.set(k,v)};
+const initial={version:1,model:createModel(),profile:builderProfile(),targetId:null};const store=createBuilderSession({storage,identity:'a',initial});const edited=structuredClone(initial);addWord(edited.model,'hello',0,0);store.record(edited);assert.equal(Object.keys(store.current.model.nodes).length,1);assert.equal(Object.keys(store.undo().model.nodes).length,0);assert.equal(Object.keys(store.redo().model.nodes).length,1);
+assert.equal(Object.keys(createBuilderSession({storage,identity:'a',initial}).load().model.nodes).length,1);assert.equal(Object.keys(createBuilderSession({storage,identity:'b',initial}).load().model.nodes).length,0);
+store.undo();const branch=structuredClone(initial);addWord(branch.model,'again',0,0);store.record(branch);assert(!store.canRedo);
+const bad=structuredClone(edited);const n=Object.values(bad.model.nodes)[0];n.parent=n.id;assert.throws(()=>store.record(bad),/cycle/);assert.equal(Object.values(store.current.model.nodes)[0].text,'again');
+memory.set('syntutor:builder:v1:corrupt','not JSON');const corrupt=createBuilderSession({storage,identity:'corrupt',initial});assert.deepEqual(corrupt.load(),initial);assert.match(corrupt.status,/could not be recovered/);
+const unavailable=createBuilderSession({storage:{setItem(){throw Error()},getItem(){throw Error()}},initial});unavailable.record(edited);assert.match(unavailable.status,/unavailable/);assert.equal(Object.keys(unavailable.current.model.nodes).length,1);
+assert.throws(()=>fromCanonicalEnvelope({}),/canonical/);assert.throws(()=>toCanonicalEnvelope(createModel()),/root/);
+console.log('PASS: 10 canonical lesson round trips; profile palettes, gap/movement/empty nodes, cycle/terminal guards, undo/redo branches, identity recovery, corrupt/unavailable storage and safe import.');

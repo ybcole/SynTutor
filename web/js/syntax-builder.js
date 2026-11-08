@@ -8,35 +8,23 @@
 // (which asks the learner to rebuild SynTutor's tree for a target sentence and
 // then compares the result against the gold parse).
 
-// Every phrase label benepar can emit, grouped for the palette.
-export const PHRASE_NODE_TYPES = [
-  'N', 'V', 'A', 'AP', 'Adv', 'AdvP', 'P', 'DET', 'NOM', 'AUX', 'S-bar', 'S-dbar',
-  'S', 'NP', 'VP', 'PP', 'ADJP', 'ADVP',
-  'SBAR', 'SBARQ', 'SINV', 'SQ', 'FRAG',
-  'NML', 'WHNP', 'WHADVP', 'WHADJP', 'WHPP',
-  'QP', 'NX', 'CONJP', 'UCP', 'LST', 'X',
-  'INTJ', 'PRT',
-];
+// The visible palette comes from the approved canonical validator inventory.
+import INVENTORY from './builder-inventory.js';
+export function builderProfile(chapter=null,appendix=false){
+ if(chapter===null)return {chapter:10,version:'FINAL',appendix_nom:true,profile_id:'FINAL-D1'};
+ if(!Number.isInteger(chapter)||chapter<1||chapter>10)throw Error('Chapter must be 1–10');
+ return chapter===7?{chapter,version:'V7',appendix_nom:appendix,profile_id:appendix?'V7-APPENDIX-D1':'V7-CORE'}:{chapter,version:`V${chapter}`,profile_id:`V${chapter}`};
+}
+export function paletteFor(profile=builderProfile()){
+ const chapter=profile.chapter;
+ return {labels:Object.entries(INVENTORY.labels).filter(([,intro])=>intro<=chapter).map(([label])=>label),
+  features:Object.entries(INVENTORY.features).filter(([,intro])=>intro<=chapter).map(([feature])=>feature)};
+}
+export const PHRASE_NODE_TYPES=Object.keys(INVENTORY.labels);
+export const POS_TYPES=[]; // Penn POS tags are not canonical B-R categories.
+export const NODE_TYPE_GROUPS=[{name:'B-R categories',types:PHRASE_NODE_TYPES}];
 
-// Lexical (part-of-speech) tags, usable as leaf labels.
-export const POS_TYPES = [
-  'CC', 'CD', 'DT', 'EX', 'FW', 'IN', 'JJ', 'JJR', 'JJS', 'LS', 'MD',
-  'NN', 'NNS', 'NNP', 'NNPS', 'PDT', 'POS', 'PRP', 'PRP$', 'RB', 'RBR',
-  'RBS', 'RP', 'SYM', 'TO', 'UH', 'VB', 'VBD', 'VBG', 'VBN', 'VBP',
-  'VBZ', 'WDT', 'WP', 'WP$', 'WRB', '#', '$', '.', ',', ':', ';', '(',
-  ')', '"', "'", '-NONE-', 'HYPH',
-];
-
-export const NODE_TYPE_GROUPS = [
-  { name: 'B-R categories', types: ['N', 'V', 'A', 'AP', 'Adv', 'AdvP', 'P', 'DET', 'NOM', 'AUX', 'S-bar', 'S-dbar'] },
-  { name: 'Clauses', types: ['S', 'SBAR', 'SQ', 'SINV', 'SBARQ', 'FRAG'] },
-  { name: 'Arguments', types: ['NP', 'VP'] },
-  { name: 'Modifiers', types: ['PP', 'ADVP', 'ADJP'] },
-  { name: 'Wh-words', types: ['WHNP', 'WHADVP', 'WHADJP', 'WHPP'] },
-  { name: 'Coordination & misc', types: ['NML', 'QP', 'NX', 'CONJP', 'UCP', 'LST', 'INTJ', 'PRT', 'X'] },
-];
-
-export const NODE = { WORD: 'word', PHRASE: 'phrase' };
+export const NODE = { WORD: 'word', PHRASE: 'phrase', SPECIAL: 'special' };
 
 let counter = 0;
 export function nextId() {
@@ -58,6 +46,7 @@ export function createModel() {
 }
 
 function put(model, node) {
+  while(model.nodes[node.id])node.id=nextId();
   model.nodes[node.id] = node;
   return node;
 }
@@ -111,7 +100,7 @@ export function moveNode(model, id, x, y) {
 // surfaces never drift apart.
 export function getSentenceFromLeaves(model) {
   const leaves = Object.values(model?.nodes || {})
-    .filter((n) => n && (n.kind === NODE.WORD || n.type === 'word'))
+    .filter((n) => n && (n.kind === NODE.WORD || n.type === 'word') && !n.canonicalData?.elided)
     .sort((a, b) => (a.x || 0) - (b.x || 0));
   return leaves
     .map((n) => String(n.text ?? n.word ?? '').trim())
@@ -140,7 +129,7 @@ export function removeNode(model, id) {
 export function childrenOf(model, id) {
   return Object.values(model.nodes)
     .filter((n) => n.parent === id)
-    .sort((a, b) => a.x - b.x);
+    .sort((a, b) => a.x - b.x || (a.order??0)-(b.order??0));
 }
 
 export function roots(model) {
@@ -158,9 +147,11 @@ export function canConnect(model, parentId, childId) {
   if (parentId === childId) return false;
   const parent = model.nodes[parentId];
   const child = model.nodes[childId];
-  if (!parent || !child) return false;
+  if (!parent || !child || parent.kind!==NODE.PHRASE || parent.canonicalTriangle || parent.canonicalData?.empty) return false;
   let cur = parent;
+  const visited=new Set();
   while (cur) {
+    if(visited.has(cur.id))return false;visited.add(cur.id);
     if (cur.id === childId) return false;
     cur = cur.parent ? model.nodes[cur.parent] : null;
   }
@@ -266,7 +257,7 @@ export function toTree(model, rootId) {
       return { type: node.kind === NODE.WORD ? node.type : node.type, surface: node.text, leaf: true, x: node.x };
     }
     const children = kids.map(build);
-    const ordered = [...children].sort((a, b) => a.x - b.x);
+    const ordered = [...children].sort((a, b) => a.x - b.x || (a.order??0)-(b.order??0));
     return { type: node.type, children: ordered.map(clean), x: node.x };
   };
   const clean = (n) => {
@@ -341,83 +332,80 @@ export function leafText(tree) {
   return leavesOf(tree).join(' ');
 }
 
-// M3 bridge: serialize the learner's actual graph, never a re-parsed sentence.
-// Unsupported legacy Penn labels are left for canonical validation to reject;
-// no category is silently relabelled into a B-R category.
+// Canonical editing preserves every imported field, node identity and reference.
+// A changed construction is learner work, never a newly source-approved tree.
+const clone=value=>JSON.parse(JSON.stringify(value));
 export function toCanonicalEnvelope(model, profile = null) {
-  const all = Object.values(model?.nodes || {});
-  const top = roots(model);
-  if (!all.length || top.length !== 1) throw new Error('Connect all nodes under one root before requesting book evidence.');
-  const sentence = getSentenceFromLeaves(model);
-  const words = all.filter(n => n.kind === NODE.WORD).sort((a, b) => a.x - b.x);
-  let offset = 0;
-  const tokens = words.map((n, index) => {
-    const text = String(n.text || '').trim();
-    if (!text) throw new Error('Empty words cannot be explained.');
-    const token = { index, text, char_span: [offset, offset + text.length] };
-    offset += text.length + 1;
-    return token;
-  });
-  const seen = new Set();
-  const walk = (node, depth = 0) => {
-    if (seen.has(node.id) || depth > 80) throw new Error('The tree contains a cycle or exceeds the supported depth.');
-    seen.add(node.id);
-    const children = childrenOf(model, node.id);
-    if (node.kind === NODE.WORD) {
-      if (children.length) throw new Error('A word cannot dominate another node in the canonical tree.');
-      const index = words.indexOf(node);
-      return { id: node.id, word: node.text.trim(), token_span: [index, index + 1] };
-    }
-    if (!children.length) throw new Error('Connect a child to each phrase before requesting book evidence.');
-    const base = { id: node.id, label: node.type };
-    if (node.canonicalFeatures) base.features = node.canonicalFeatures;
-    if (node.canonicalIndex !== undefined) base.index = node.canonicalIndex;
-    if (node.canonicalTriangle) {
-      if (children.some(child => child.kind !== NODE.WORD)) throw new Error('A triangle can contain words only.');
-      for (const child of children) walk(child, depth + 1);
-      return { ...base, triangle: true, words: children.map(child => child.text.trim()),
-        token_span: [words.indexOf(children[0]), words.indexOf(children.at(-1)) + 1] };
-    }
-    return { ...base, children: children.map(child => walk(child, depth + 1)) };
-  };
-  const root = walk(top[0]);
-  if (seen.size !== all.length) throw new Error('The graph contains disconnected nodes.');
-  return { schema_version: '1.0.0', tree_id: 'learner-builder', sentence, tokens,
-    convention_profile: profile || { chapter: 10, version: 'FINAL', appendix_nom: true, profile_id: 'FINAL-D1' },
-    source: { book: 'Learner construction', chapter: profile?.chapter || 10, evidence_status: 'NEEDS_REVIEW', review_status: 'NOT_REVIEWED' },
-    root, movement: [], accepted_alternatives: [] };
-}
-
-// Import only the canonical subset this editor can preserve exactly. Movement,
-// elision and gap editing remain M6 work; refusing them avoids a lossy round-trip.
-export function fromCanonicalEnvelope(envelope) {
-  if (envelope.movement?.length || envelope.accepted_alternatives?.length) {
-    throw new Error('This editor cannot yet preserve movement or accepted alternatives.');
+ const all=Object.values(model?.nodes||{}),top=roots(model);
+ if(!all.length||top.length!==1)throw Error('Connect every node under one root.');
+ const words=all.filter(n=>n.kind===NODE.WORD&&!n.canonicalData?.elided).sort((a,b)=>a.x-b.x||(a.order??0)-(b.order??0));
+ const texts=words.map(n=>String(n.text).trim());
+ if(texts.some(t=>!t))throw Error('Words must not be empty.');
+ const original=model.canonicalBase;
+ const unchangedTokens=original && JSON.stringify(texts)===JSON.stringify(original.tokens.map(t=>t.text));
+ let offset=0;
+ const tokens=unchangedTokens?clone(original.tokens):texts.map((text,index)=>{const token={index,text,char_span:[offset,offset+Array.from(text).length]};offset+=Array.from(text).length+1;return token;});
+ const sentence=unchangedTokens?original.sentence:texts.join(' '),seen=new Set();
+ let cursor=0;
+ function walk(n,depth=0){
+  if(seen.has(n.id)||depth>80)throw Error('Tree contains a cycle or exceeds depth 80.');seen.add(n.id);
+  const children=childrenOf(model,n.id),raw=clone(n.canonicalData||{}),hadSpan=Object.hasOwn(raw,'token_span');
+  delete raw.children;delete raw.token_span;raw.id=n.id;
+  if(n.kind===NODE.WORD){
+   if(children.length)throw Error('A word cannot contain children.');
+   const index=words.indexOf(n);raw.word=n.text.trim();
+   if(!raw.elided){if(index!==cursor)throw Error('Branches cross or words are out of order.');raw.token_span=[cursor,cursor+1];cursor++;}
+   return raw;
   }
-  const model = createModel();
-  let x = 0;
-  const walk = (node, parent = null, depth = 0) => {
-    if (depth > 80 || node.gap || node.elided || node.empty || node.unlabelled) throw new Error('Unsupported canonical editor structure.');
-    let made;
-    if ('word' in node) {
-      made = addWord(model, node.word, x, depth * 70); x += 100;
-    } else {
-      made = addPhrase(model, node.label, x, depth * 70);
-      made.canonicalFeatures = node.features;
-      made.canonicalIndex = node.index;
-      if (node.triangle) {
-        made.canonicalTriangle = true;
-        for (const word of node.words) {
-          const child = addWord(model, word, x, (depth + 1) * 70);
-          child.parent = made.id; x += 100;
-        }
-      } else {
-        for (const child of node.children || []) walk(child, made.id, depth + 1);
-      }
-    }
-    made.parent = parent;
-    return made;
-  };
-  walk(envelope.root);
-  return model;
+  if(n.kind===NODE.SPECIAL){
+   if(children.length)throw Error('A gap or empty position cannot contain children.');
+   if(raw.empty||hadSpan)raw.token_span=[cursor,cursor];if(n.canonicalIndex!==undefined&&!raw.empty)raw.index=n.canonicalIndex;
+   return raw;
+  }
+  if(!raw.unlabelled)raw.label=n.type;
+  if(n.canonicalFeatures!==undefined)raw.features=clone(n.canonicalFeatures);
+  if(n.canonicalIndex!==undefined)raw.index=n.canonicalIndex;
+  if(n.canonicalTriangle){
+   if(!children.length||children.some(c=>c.kind!==NODE.WORD||c.canonicalData?.elided))throw Error('A triangle contains overt words only.');
+   const start=cursor;for(const c of children)walk(c,depth+1);
+   delete raw.features;raw.triangle=true;raw.words=children.map(c=>c.text.trim());raw.token_span=[start,cursor];return raw;
+  }
+  delete raw.triangle;delete raw.words;
+  if(!children.length)throw Error(`Connect a child to ${n.type}.`);
+  const start=cursor;raw.children=children.map(c=>walk(c,depth+1));if(hadSpan)raw.token_span=[start,cursor];return raw;
+ }
+ const root=walk(top[0]);if(seen.size!==all.length)throw Error('There are disconnected nodes.');
+ const chosen=profile||original?.convention_profile||builderProfile();
+ return {...clone(original||{}),schema_version:'1.1.0',tree_id:original?.tree_id||'learner-builder',sentence,tokens,
+  convention_profile:clone(chosen),source:{book:'Learner construction',chapter:chosen.chapter,evidence_status:'NEEDS_REVIEW',review_status:'NOT_REVIEWED'},
+  root,movement:clone(model.movement||[]),accepted_alternatives:clone(model.acceptedAlternatives||[])};
+}
+export function fromCanonicalEnvelope(envelope){
+ if(!envelope||!envelope.root||!Array.isArray(envelope.tokens)||!envelope.convention_profile||!Number.isInteger(envelope.convention_profile.chapter)||envelope.convention_profile.chapter<1||envelope.convention_profile.chapter>10||!Array.isArray(envelope.movement)||!Array.isArray(envelope.accepted_alternatives))throw Error('A canonical tree envelope is required.');
+ const model=createModel();model.canonicalBase=clone(envelope);model.movement=clone(envelope.movement||[]);model.acceptedAlternatives=clone(envelope.accepted_alternatives||[]);
+ let x=0,count=0;const ids=new Set();
+ function walk(raw,parent=null,depth=0,order=0){
+  if(!raw||typeof raw!=='object'||depth>80||++count>500)throw Error('Unsupported tree size or node shape.');
+  const id=raw.id||`import-${count}`;if(ids.has(id)||typeof id!=='string'||['__proto__','constructor','prototype'].includes(id))throw Error('Invalid or duplicate node ID.');ids.add(id);
+  const special=raw.gap||raw.empty;
+  const n={id,kind:special?NODE.SPECIAL:('word' in raw)?NODE.WORD:NODE.PHRASE,
+   type:raw.label||('word' in raw?'word':raw.gap?'GAP':'∅'),text:raw.word|| (special?(raw.gap?'gap':`${raw.label} ∅`):''),
+   x:x*110,y:depth*70,w:84,h:32,parent,order,canonicalData:clone(raw),canonicalFeatures:raw.features,canonicalIndex:raw.index,canonicalTriangle:raw.triangle||false};
+  delete n.canonicalData.children;model.nodes[id]=n;
+  if(n.kind===NODE.WORD||special)x++;
+  else if(raw.triangle){
+   for(const [i,word] of raw.words.entries()){
+    let wid=`${id}-word-${i}`;while(model.nodes[wid]||ids.has(wid))wid+='x';
+    model.nodes[wid]={id:wid,kind:NODE.WORD,type:'word',text:word,x:x++*110,y:(depth+1)*70,w:84,h:32,parent:id,order:i};ids.add(wid);
+   }
+  }else for(const [i,c] of (raw.children||[]).entries())walk(c,id,depth+1,i);
+  const kids=childrenOf(model,id);if(kids.length)n.x=kids[0].x;
+  return n;
+ }
+ walk(envelope.root);return model;
+}
+export function addSpecial(model,kind,x=0,y=0){
+ const raw=kind==='gap'?{gap:true,index:1}:{empty:true,label:kind,empty_role:{DET:'determiner',C1:'complementiser',E:'ellipsis'}[kind]};
+ if(!raw.gap&&!raw.empty_role)throw Error('Unknown empty position');
+ return put(model,{id:nextId(),kind:NODE.SPECIAL,type:raw.label||'GAP',text:raw.gap?'gap':`${kind} ∅`,x,y,w:84,h:32,parent:null,canonicalData:raw,canonicalIndex:raw.index});
 }

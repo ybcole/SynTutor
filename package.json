@@ -17,7 +17,8 @@
     "test:rules": "python3 scripts/smoke_rules.py",
     "test:evidence": "node scripts/test_explanation_evidence.js",
     "test:lessons": "node scripts/test_lesson_progress.js && node scripts/test_lesson_database.js",
-    "test:assessments": "node scripts/test_assessment_core.js && node scripts/test_assessment_database.js"
+    "test:assessments": "node scripts/test_assessment_core.js && node scripts/test_assessment_database.js",
+    "test:builder": "node scripts/test_builder_core.js"
   },
   "license": "MIT",
   "devDependencies": {

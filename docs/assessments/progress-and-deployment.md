@@ -1,5 +1,8 @@
 # Assessment progress and deployment
 
+**Owner deployment update (8 November 2026):** the owner reports both M4 and both M5 migrations successfully applied. This has not been independently tested against hosted Supabase. The original preparation notes below describe the implementation-time environment; signed-in save/refresh/replay checks remain the deployment smoke test.
+
+
 Device storage is separate from lessons: `syntutor:assessments:v1:<identity>`. Attempts preserve the assessment/item versions, seed, displayed item/option manifest, responses, position and timestamps. Submitted responses are immutable; a retry creates a new attempt. Best score, last score, attempt count and answer history remain available. Guest/offline caches are learning aids, not trusted leaderboard scores.
 
 Five items earn `max(0,10-2*incorrect)` (two XP per correct response). Unanswered items count as incorrect. Award only the difference above the prior best target for the assessment/version. Scores 3→5→5→1 award 6→4→0→0; the version cap is 10. Targeted reinforcement selects frequently missed pools and rotates examples where available, carries no XP, and is separate from assessment records. It is not a calendar-based spaced repetition scheduler.
