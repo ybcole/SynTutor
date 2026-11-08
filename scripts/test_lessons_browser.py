@@ -38,8 +38,11 @@ try:
    view.get_by_role('button',name='6. Exit check',exact=True).wait_for()
    assert view.get_by_role('button',name='6. Exit check',exact=True).is_disabled()
    lesson=next(l for l in COURSE['lessons'] if l['lesson_id']==ident)
-   view.locator('input[value="'+lesson['predict']['answer']+'"]').check()
+   prediction=view.locator('[data-question="predict"]')
+   prediction.locator('input[value="'+lesson['predict']['answer']+'"]').check()
+   expect(prediction.locator('.lesson-feedback.correct')).to_be_visible()
    view.get_by_role('button',name='Continue →',exact=True).click()
+   expect(view.locator('.lesson-stepper [aria-current="step"]')).to_have_text('2. Understand')
    view.get_by_role('button',name='Continue →',exact=True).click()
    expect(view.locator('.lesson-stepper [aria-current="step"]')).to_have_text('3. See it')
    assert view.locator('svg[role="img"]').count()==1
@@ -65,15 +68,21 @@ try:
    current=int(active.inner_text().split('.')[0])-1
    for i in range(current,6):
     key=['predict','understand','worked','guided','transfer','exit'][i]
+    title=['Predict','Understand','See it','Build it','Apply it','Exit check'][i]
+    expect(view.locator('.lesson-stepper [aria-current="step"]')).to_have_text(f'{i+1}. {title}')
+    print('Checking',lesson['lesson_id'],key,flush=True)
     if key=='worked':
      for _ in range(len(lesson['worked_example']['steps'])-1):view.get_by_role('button',name='Next step',exact=True).click()
     if lesson.get(key):
+     question=view.locator(f'[data-question="{key}"]')
+     expect(question).to_be_visible()
      if key=='exit':
       wrong=next(o['id'] for o in lesson[key]['options'] if o['id']!=lesson[key]['answer'])
-      view.locator(f'input[value="{wrong}"]').check()
-      assert view.get_by_role('button',name='Complete lesson · 15 XP once',exact=True).is_disabled()
-      assert 'Try again.' in view.locator('.lesson-feedback.retry').inner_text()
-     view.locator(f'input[value="{lesson[key]["answer"]}"]').check()
+      question.locator(f'input[value="{wrong}"]').check()
+      expect(question.locator('.lesson-feedback.retry')).to_contain_text('Try again.')
+      expect(view.get_by_role('button',name='Complete lesson · 15 XP once',exact=True)).to_be_disabled()
+     question.locator(f'input[value="{lesson[key]["answer"]}"]').check()
+     expect(question.locator('.lesson-feedback.correct')).to_be_visible()
     view.get_by_role('button',name='Complete lesson · 15 XP once' if key=='exit' else 'Continue →',exact=True).click()
    expect(view.locator('.lesson-save-status')).to_contain_text('15 lesson XP awarded',timeout=10000)
    if lesson['lesson_id']=='br-11':assert view.locator('svg').count()==0,'Chapter 11 must remain text-only'
