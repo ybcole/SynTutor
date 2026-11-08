@@ -140,10 +140,14 @@ export function findTargetError(payload, focus) {
 }
 
 // ---- applying a remediation edit to the sentence text (never touches the textbox) ----
-export function correctionPreview(payload, edit) {
+export function correctionPreview(payload, edit, inputText) {
   const sent = payload.parse.sentences[(payload.meta.target_sentence || 1) - 1];
   const tokens = payload.parse.tokens;
-  const chars = Array.from(payload.parse.text);
+  // Offsets refer to the original request even when parse.text has normalized
+  // whitespace. Take the target sentence from that request when available.
+  const chars = typeof inputText === 'string'
+    ? Array.from(inputText).slice(sent.start, sent.end)
+    : Array.from(payload.parse.text);
   const insertion = edit.start === edit.end;
   const from = tokens[edit.start]?.start ?? sent.start + chars.length;
   const to = insertion ? from : tokens[edit.end - 1].end;
@@ -156,7 +160,7 @@ export function correctionPreview(payload, edit) {
   const insertSpace = insertion && left && !/\s$/.test(left) && !punctuation ? ' ' : '';
   const tailSpace = insertion && after && !/^[\s.,;:!?]/.test(after) ? ' ' : '';
   const text = (left + insertSpace + added + tailSpace + after)
-    .replace(/\s{2,}/g, ' ')
+    .replace(/\s+/g, ' ')
     .replace(/\s+([.,;:!?])/g, '$1')
     .trim();
   return { text, removed, added };

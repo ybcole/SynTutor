@@ -82,3 +82,14 @@ missingWord.parse.tokens.pop();
 missingWord.tree.children.pop();
 assert(!matchesPreviewTokens(missingWord, parsed.parse.text));
 console.log('PASS: corrected tree rejects stale leaf text, wrong order and uncovered punctuation.');
+
+const normalized = {
+  meta: { target_sentence: 2 },
+  parse: {
+    text: 'The birds sings.', sentences: [{ start: 0, end: 5 }, { start: 6, end: 24 }],
+    tokens: [{ start: 6, end: 9 }, { start: 11, end: 16 }, { start: 18, end: 23 }, { start: 23, end: 24 }],
+  },
+};
+assert.deepEqual(correctionPreview(normalized, { start: 2, end: 3, text: 'sing' }, 'First The  birds  sings.'), {
+  text: 'The birds sing.', removed: 'sings', added: 'sing',
+});

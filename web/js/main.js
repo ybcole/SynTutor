@@ -210,7 +210,7 @@ async function showCorrected(variant = 'corrected') {
     let change;
     let cp = null;
     try {
-      change = correctionPreview(session.payload, edit);
+      change = correctionPreview(session.payload, edit, session.inputText);
       const out = await postParse(change.text);
       if (!out.error) cp = out.payload;
     } catch (_e) { /* handled below */ }
@@ -1400,9 +1400,10 @@ function setQuizHintText() {
 // The session doubles as the source for locked-mode sentence navigation:
 // `sentences` holds the passage's sentence boundaries and `sentence_index`
 // is the sentence currently rendered on the canvas.
-function buildSession(payload) {
+function buildSession(payload, inputText) {
   return {
     payload,
+    inputText,
     sentences: payload.parse.sentences || [],
     sentence_index: (payload.meta.target_sentence || 1) - 1,
   };
@@ -1707,7 +1708,7 @@ async function analyzeForQuiz(text, index = null) {
     return null;
   }
   applyStatuses(payload.tree, payload.node_details, payload.summary);
-  session = buildSession(payload);
+  session = buildSession(payload, clean);
   lastAnalyzedText = clean;
   historySpans = [];
   const input = document.querySelector('#inputText');
@@ -1810,7 +1811,7 @@ async function executePipeline(opts = {}) {
 
   log(`Stage 6: explanations generated \u2014 basic + ${payload.explainers.contrastive ? 'contrastive' : '(none)'}`);
 
-  session = buildSession(payload);
+  session = buildSession(payload, text);
   lastAnalyzedText = text;
   setChatTitle(text);
 
