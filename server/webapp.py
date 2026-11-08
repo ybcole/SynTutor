@@ -179,12 +179,13 @@ def words():
     data = request.get_json(silent=True)
     if data is None and request.get_data():
         return jsonify({'error': 'invalid request payload'}), 400
-    data = data or {}
+    if not isinstance(data, dict):
+        return jsonify({'error': 'request payload must be a JSON object'}), 400
     raw = data.get('words')
     if isinstance(raw, str):
         raw = raw.split()
-    if not isinstance(raw, list):
-        return jsonify({'error': 'provide "words" as a list'}), 422
+    if not isinstance(raw, list) or any(not isinstance(word, str) for word in raw[:100]):
+        return jsonify({'error': 'provide "words" as a list of strings'}), 422
     return jsonify({'results': word_info(raw[:100])})
 
 
