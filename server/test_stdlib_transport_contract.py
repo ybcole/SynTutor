@@ -24,9 +24,9 @@ class StdlibParseTransportTests(unittest.TestCase):
         cls.httpd.server_close()
         cls.thread.join(timeout=2)
 
-    def post(self, payload):
+    def post(self, payload, path="/api/parse"):
         request = Request(
-            self.base_url + "/api/parse",
+            self.base_url + path,
             data=json.dumps(payload).encode("utf-8"),
             headers={"Content-Type": "application/json"},
             method="POST",
@@ -53,6 +53,20 @@ class StdlibParseTransportTests(unittest.TestCase):
             payload = json.loads(error.read().decode("utf-8"))
         self.assertEqual(status, 400)
         self.assertIn("JSON object", payload["error"])
+
+    def test_words_reject_non_string_elements(self):
+        with patch.object(stdlib_app, "word_info") as words:
+            status, payload = self.post({"words": ["hello", 7]}, path="/api/words")
+        self.assertEqual(status, 422)
+        self.assertIn("list of strings", payload["error"])
+        words.assert_not_called()
+
+    def test_words_accept_string_elements(self):
+        with patch.object(stdlib_app, "word_info", return_value=[{"word": "hello"}]) as words:
+            status, payload = self.post({"words": ["hello"]}, path="/api/words")
+        self.assertEqual(status, 200)
+        words.assert_called_once_with(["hello"])
+        self.assertEqual(payload, {"results": [{"word": "hello"}]})
 
     def test_chapter_and_variety_are_forwarded_to_shared_analysis(self):
         expected = {"br_analysis": {"status": "unresolved"}}
