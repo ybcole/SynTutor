@@ -59,3 +59,4 @@ jobs:
           python scripts/test_explanation_browser.py --reviewed-fixture
           python scripts/test_lessons_browser.py
           python scripts/test_quizzes_browser.py
+          python scripts/test_builder_browser.py

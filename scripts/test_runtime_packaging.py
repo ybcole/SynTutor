@@ -55,5 +55,13 @@ bank = load_quiz_bank()
 item = bank['items'][0]
 quiz = app.test_client().post('/api/explain', json={'quiz_item_id': item['item_id'], 'quiz_item_version': item['content_version'], 'answer_id': item['answer']})
 assert quiz.status_code == 200 and quiz.get_json()['status'] == 'EXPLAINED'
+from tree_evaluation import evaluate_request
+from pathlib import Path
+import json
+course=json.loads(Path('web/content/lessons/course.json').read_text())
+tree=next(l['worked_example']['tree'] for l in course['lessons'] if l['lesson_id']=='br-02')
+result=app.test_client().post('/api/evaluate',json={'tree':tree,'target_lesson_id':'br-02'})
+assert result.status_code==200 and result.get_json()['target_comparison']['matched']
+assert app.test_client().options('/api/evaluate').headers.get('Access-Control-Allow-Headers')=='Content-Type'
 print('PASS: Docker COPY/exclusion fixture imports backend and serves evidence API.')
 '''], cwd=target, check=True)

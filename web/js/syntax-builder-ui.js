@@ -1,3 +1,5 @@
+import {createBuilderTools} from './builder-tools.js';
+import {renderLessonTree} from './lessons-ui.js';
 import { API_BASE } from './config.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 // Syntax Builder view: a free-form canvas node editor for assembling syntax
@@ -19,7 +21,7 @@ import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 //   right-click (hold) + drag -> marquee-select multiple nodes
 
 import {
-  POS_TYPES, PHRASE_NODE_TYPES, NODE_TYPE_GROUPS, NODE, toCanonicalEnvelope, fromCanonicalEnvelope,
+  POS_TYPES, PHRASE_NODE_TYPES, NODE_TYPE_GROUPS, NODE, toCanonicalEnvelope, fromCanonicalEnvelope, builderProfile, paletteFor,
   createModel, addWordsFromText, addPhrase, moveNode, setType,
   removeNode, connect, canConnect, disconnect,
   dotOf, dotHit, nodeHit, endpointOf, endpointHit, toTree, compareTrees, leavesOf, leafText,
@@ -124,9 +126,23 @@ const state = {
   rightDownStart: null,
 };
 
-export function initSyntaxBuilder({ onStatusChange, setWorkspaceView } = {}) {
+let tools;
+export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } = {}) {
   state.onStatus = onStatusChange || (() => {});
   state.setWorkspaceView = setWorkspaceView || null;
+  tools=createBuilderTools({state,userId,reset:resetTransientState,
+    validateImport:async tree=>{
+      const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
+      try{const r=await fetch(`${API_BASE}/api/evaluate`,{method:'POST',headers:{'Content-Type':'application/json'},signal:controller.signal,body:JSON.stringify({tree})});
+        const result=await r.json();if(!r.ok||!result.structure?.valid)throw Error(result.error||result.structure?.errors?.join('; ')||'Invalid canonical tree');
+      }finally{clearTimeout(timer);}
+    },
+    refresh:()=>{evidenceRequest++;state.nodeErrors=new Map();state.lastEvaluation=null;draw();syncCanvasToInput();},
+    zoom:factor=>{state.view.scale=Math.max(.15,Math.min(4,state.view.scale*factor));draw();},
+    pan:(dx,dy)=>{state.view.ox+=dx;state.view.oy+=dy;draw();},
+    fit:()=>{if(treeIsComplete()){applyTreeLayout({fit:true});state.snapped=true;}draw();},
+    evaluate:buildTree,select:(id,explain=false)=>{selectOnly(id);draw();if(explain)explainSelected();},
+    showModel:tree=>{const container=document.getElementById('explainNode');if(container){container.replaceChildren(renderLessonTree(tree));}}});
 }
 
 export function builderModel() {
@@ -175,6 +191,7 @@ export function clearBuilder() {
   newModel();
   draw();
   syncCanvasToInput();
+  tools?.record();tools?.render();
 }
 
 // ---------------------------------------------------------------------------
@@ -182,8 +199,9 @@ export function clearBuilder() {
 // ---------------------------------------------------------------------------
 
 export function openBuilderView(opts = {}) {
-  state.canonicalProfile = opts.canonicalTree?.convention_profile || null;
-  if (opts.canonicalTree) state.model = fromCanonicalEnvelope(opts.canonicalTree);
+  state.canonicalProfile = opts.canonicalTree?.convention_profile || state.canonicalProfile || builderProfile();
+  if (opts.canonicalTree) {state.model = fromCanonicalEnvelope(opts.canonicalTree);state.targetId=null;resetTransientState();}
+  document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
   const bar = document.getElementById('canvasControls');
   const canvas = document.getElementById('builderCanvas');
   const treeCanvas = document.getElementById('treeCanvas');
@@ -282,11 +300,12 @@ export function openBuilderView(opts = {}) {
   if (opts.model) {
     const words = Object.values(state.model.nodes)
       .filter((n) => n.kind === NODE.WORD)
-      .sort((a, b) => a.x - b.x);
+      .sort((a, b) => a.x - b.x || (a.order??0)-(b.order??0));
     if (words.length) measureWords(words);
     applyTreeLayout({ fit: true });
     syncCanvasToInput();
   }
+  if(!state.challenge)tools?.open({recover:!opts.canonicalTree&&!opts.model&&!opts.reset});
   canvas.focus();
   explainSelected();
   state.treeCorrect = treeIsComplete();
@@ -328,6 +347,7 @@ function measureWords(nodes) {
 
 export function closeBuilderView() {
   evidenceRequest += 1;
+  tools?.close();
   const bar = document.getElementById('canvasControls');
   const canvas = document.getElementById('builderCanvas');
   const treeCanvas = document.getElementById('treeCanvas');
@@ -425,6 +445,7 @@ function ensureWired() {
   window.addEventListener('resize', () => {
     if (isBuilderOpen()) {
       resize();
+      if(state.snapped)applyTreeLayout({fit:true});
       draw();
     }
   });
@@ -725,7 +746,7 @@ function onMouseUp(e) {
   state.drag = null;
   state.pan = null;
   state.canvas.style.cursor = '';
-  if (dragged?.moved) syncCanvasToInput();
+  if (dragged?.moved) {syncCanvasToInput();tools?.record();tools?.render();}
 }
 
 function nodeLabel(node) {
@@ -814,6 +835,7 @@ function onWheel(e) {
 }
 
 function onKeyDown(e) {
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?tools?.redo():tools?.undo();return;}
   if (e.key === 'Escape') {
     closeMenu();
     closeEditor();
@@ -885,8 +907,9 @@ function editNode(node, clientX, clientY) {
     });
   } else {
     openInlineEditor(world, clientX, clientY, node.type, (text) => {
-      const t = text.trim().toUpperCase();
-      if (t) setType(state.model, node.id, t);
+      const t = text.trim();
+      if (paletteFor(state.canonicalProfile||builderProfile()).labels.includes(t)) setType(state.model, node.id, t);
+      else {state.onStatus('Choose a category from this chapter’s palette.');return;}
       changed();
       explainSelected();
     });
@@ -931,9 +954,9 @@ function openMenu(clientX, clientY, world, node) {
   body.className = 'builder-menu-scroll';
   menu.appendChild(body);
 
-  const phraseTypes = NODE_TYPE_GROUPS.flatMap((g) => g.types);
+  const phraseTypes = paletteFor(state.canonicalProfile||builderProfile()).labels;
   const sections = (node && node.kind === NODE.WORD)
-    ? [{ name: 'Word tags (POS)', types: POS_TYPES }]
+    ? [{ name: 'Words are terminals; add a category above them', types: [] }]
     : [{ name: 'Phrases', types: phraseTypes }];
 
   const render = (filter = '') => {
@@ -1163,6 +1186,7 @@ function explainSelected() {
 // Called after every structural change: redraw, and (when a quiz is running)
 // re-check the tree automatically so there is no "Check" button.
 function changed() {
+  evidenceRequest++;state.lastEvaluation=null;
   // Any structural edit after a snap leaves the snapped layout, so the builder
   // falls back to measuring boxes from their content.
   state.snapped = false;
@@ -1180,6 +1204,7 @@ function changed() {
   // branch or an empty phrase box turns red as soon as the edit lands. The
   // standalone builder keeps its existing Build-tree validation instead.
   if (state.challenge) flagStructuralIssues();
+  tools?.record();tools?.render();
 }
 
 // Paint disconnected nodes and empty phrase boxes. Skipped while the model is
@@ -1442,7 +1467,7 @@ function flagMismatchedBranches(result) {
 function wordNodesInOrder() {
   return Object.values(state.model.nodes)
     .filter((n) => n.kind === NODE.WORD)
-    .sort((a, b) => a.x - b.x);
+    .sort((a, b) => a.x - b.x || (a.order??0)-(b.order??0));
 }
 function wordsInOrder() {
   return wordNodesInOrder().map((n) => n.text);
@@ -1505,7 +1530,7 @@ function computeTreeLayout() {
     visited.add(n.id);
     maxDepth = Math.max(maxDepth, d);
     depth.set(n.id, d);
-    const kids = (kidsOf.get(n.id) || []).slice().sort((a, b) => a.x - b.x);
+    const kids = (kidsOf.get(n.id) || []).slice().sort((a, b) => a.x - b.x || (a.order??0)-(b.order??0));
     if (!kids.length) leafIds.push(n.id);
     for (const c of kids) walk(c, d + 1);
   };
@@ -1603,12 +1628,15 @@ function applyTreeLayout({ fit = true } = {}) {
   const totalW = Math.max(maxX - minX, 1);
   const totalH = Math.max(maxY - minY, 1);
   if (cw && ch) {
-    const pad = 30;
-    let scale = Math.min((cw - pad * 2) / totalW, (ch - pad * 2) / totalH, 1.7) * 1.25;
-    scale = Math.max(Math.min(scale, 1.7), 0.2);
-    state.view.scale = scale;
-    state.view.ox = (cw - totalW * scale) / 2 - minX * scale;
-    state.view.oy = (ch - totalH * scale) / 2 - minY * scale;
+    const pad=24,toolsPanel=document.getElementById('builderTools');
+    const rect=toolsPanel&&!toolsPanel.hidden?toolsPanel.getBoundingClientRect():null;
+    const left=rect&&innerWidth>760?Math.min(rect.width+30,cw*.48):0;
+    const bottom=rect&&innerWidth<=760?rect.height+20:0;
+    const top=60,availableW=Math.max(100,cw-left),availableH=Math.max(120,ch-bottom-top);
+    const scale=Math.max(.15,Math.min((availableW-pad*2)/totalW,(availableH-pad*2)/totalH,1.35));
+    state.view.scale=scale;
+    state.view.ox=left+(availableW-totalW*scale)/2-minX*scale;
+    state.view.oy=top+(availableH-totalH*scale)/2-minY*scale;
   }
   return layout;
 }
@@ -1623,12 +1651,6 @@ async function buildTree() {
   state.snapped = true;
   state.snappedLayout = layout;
   draw();
-  // Re-validate every word against SynTutor's model so that recognised words
-  // lose their red styling once the tree is structurally complete.
-  const wordNodes = Object.values(state.model.nodes).filter((n) => n.kind === NODE.WORD);
-  if (wordNodes.length) {
-    await validateWords(wordNodes);
-  }
   state.treeCorrect = treeIsComplete();
   draw();
   // Surface the constructed sentence in the tutor's top input box so the page
@@ -1650,72 +1672,31 @@ async function buildTree() {
 // is surfaced in the right-hand explain panel — the same way the tutor
 // reports errors.
 async function validateBuiltTree() {
-  const errors = state.nodeErrors;
-  const nodes = Object.values(state.model.nodes);
-  if (!nodes.length) return;
-
-  // --- 1. Structural checks (client-side) ----------------------------
-  const roots = nodes.filter((n) => !n.parent);
-
-  // More than one root: everything after the first is a stray tree.
-  if (roots.length > 1) {
-    for (const r of roots.slice(1)) {
-      if (!errors.has(r.id)) errors.set(r.id, disconnectedDetail(r));
+  const generation=++evidenceRequest;
+  let tree,snapshot;
+  try{tree=toCanonicalEnvelope(state.model,state.canonicalProfile);snapshot=JSON.stringify(tree);}
+  catch(e){renderDiagnostic('Tree structure needs attention',[e.message]);state.onStatus(e.message);return;}
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
+  try{
+    const res=await fetch(`${API_BASE}/api/evaluate`,{method:'POST',headers:{'Content-Type':'application/json'},signal:controller.signal,
+      body:JSON.stringify({tree,...(state.targetId?{target_lesson_id:state.targetId}:{})})});
+    const result=await res.json();if(!res.ok)throw Error(result.error||'Tree evaluation unavailable.');
+    if(generation!==evidenceRequest||!isBuilderOpen()||snapshot!==JSON.stringify(toCanonicalEnvelope(state.model,state.canonicalProfile)))return;
+    lastEvidenceSnapshot=snapshot;state.lastEvaluation=result;state.treeCorrect=result.structure.status==='well_formed';
+    const messages=[`Structure: ${result.structure.status}.`,...result.structure.errors,...result.structure.warnings,
+      `Grammaticality: ${result.grammaticality.status}. ${result.grammaticality.message}`,
+      `Exercise: ${result.target_comparison.status}.`];
+    renderDiagnostic('Constructed tree evaluation',messages);renderEvidence(result.explanation_evidence);
+    state.onStatus(messages[0]);
+    state.nodeErrors=new Map();
+    for(const error of result.structure.errors){
+      const match=/^root((?:\.children\[\d+\])*)/.exec(error);let node=tree.root;
+      if(match)for(const index of match[1].matchAll(/\[(\d+)\]/g))node=node?.children?.[Number(index[1])];
+      if(node?.id)state.nodeErrors.set(node.id,{type:node.label||'Node',status:'error',role:'Canonical structure',text:error});
     }
-  }
-
-  // Orphans: nodes unreachable from the primary root.
-  if (roots.length >= 1) {
-    const seen = new Set();
-    const walk = (id) => { seen.add(id); for (const c of childrenOf(state.model, id)) walk(c.id); };
-    walk(roots[0].id);
-    for (const n of nodes) {
-      if (!seen.has(n.id) && !errors.has(n.id)) errors.set(n.id, disconnectedDetail(n));
-    }
-  }
-
-  // Phrase nodes must dominate something.
-  for (const n of nodes) {
-    if (n.kind === NODE.PHRASE && childrenOf(state.model, n.id).length === 0 && !errors.has(n.id)) {
-      errors.set(n.id, emptyPhraseDetail(n));
-    }
-  }
-
-  // Words SynTutor doesn't recognise.
-  for (const n of nodes) {
-    if (n.kind === NODE.WORD && n.valid === false && !errors.has(n.id)) {
-      errors.set(n.id, describeNode(n));
-    }
-  }
-
-  // --- 2. Grammaticality of the constructed sentence (best-effort) ---
-  const sentence = wordsInOrder().join(' ');
-  let verdictLine = null;
-  if (sentence.trim()) {
-    try {
-      const res = await fetch(`${API_BASE}/api/parse`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: sentence }),
-      });
-      if (res.ok) {
-        const payload = await res.json();
-        const summary = payload.summary || {};
-        if (summary.valid === false) {
-          verdictLine = summary.explanation
-            || `SynTutor reads “${sentence}” as ungrammatical.`;
-        }
-      }
-    } catch {
-      // Backend unreachable — the structural checks above still apply.
-    }
-  }
-
-  // --- 3. Report ----------------------------------------------------
-  state.treeCorrect = errors.size === 0 && treeIsComplete();
-  draw();
-  reportBuildResult(sentence, errors, verdictLine);
-  await showBuilderEvidence();
+    draw();
+  }catch(e){if(generation===evidenceRequest&&isBuilderOpen()){renderDiagnostic('Evaluation unavailable',[e.name==='AbortError'?'The check timed out. Your draft is retained; retry when connected.':e.message]);state.onStatus('Evaluation unavailable; draft retained.');}}
+  finally{clearTimeout(timer);}
 }
 
 function disconnectedDetail(n) {
@@ -1817,6 +1798,7 @@ function draw() {
       lastEvidenceSnapshot = null;
       evidenceRequest += 1;
       document.querySelector('[data-shared-evidence]')?.remove();
+      renderDiagnostic('Construction changed',['Check the updated tree for current feedback.']);
     }
   }
   if (!state.ctx) return;
@@ -1853,7 +1835,7 @@ function render() {
   for (const n of nodes) {
     if (!n.parent) continue;
     const parent = state.model.nodes[n.parent];
-    if (!parent) continue;
+    if (!parent || parent.canonicalTriangle) continue;
     const childIsLeaf = childrenOf(state.model, n.id).length === 0;
     // Stop just above a leaf's POS tag when it has one, otherwise hug the word.
     const childGap = childIsLeaf && n.tag ? 24 : 12;
@@ -1863,6 +1845,14 @@ function render() {
       { x: parent.x + parent.w / 2, y: parent.y + parent.h / 2 + 12 },
       { x: n.x + n.w / 2, y: n.y + n.h / 2 - childGap },
       bad ? c.error : undefined);
+  }
+
+  for(const parent of nodes.filter(n=>n.canonicalTriangle)){
+    const kids=childrenOf(state.model,parent.id);if(!kids.length)continue;
+    const apex={x:parent.x+parent.w/2,y:parent.y+parent.h/2+12};
+    const left=kids[0],right=kids.at(-1),bottom=Math.min(...kids.map(n=>n.y+n.h/2))-12;
+    const lx=left.x+left.w/2-20,rx=right.x+right.w/2+20;
+    ctx.beginPath();ctx.moveTo(apex.x,apex.y);ctx.lineTo(lx,bottom);ctx.lineTo(rx,bottom);ctx.closePath();ctx.strokeStyle=c.edge;ctx.stroke();
   }
 
   // rubber-band link being dragged
@@ -1938,11 +1928,12 @@ function drawNode(ctx, n) {
   if (isPhrase) {
     ctx.fillStyle = color;
     ctx.font = '600 16px Inter, system-ui, sans-serif';
-    ctx.fillText(n.type, cx, cy + 3);
+    const label=n.canonicalData?.unlabelled||n.type==='AUX'&&n.canonicalFeatures?.includes('-tense')?'':n.type;
+    ctx.fillText(`${label}${n.canonicalFeatures?.length?' ['+n.canonicalFeatures.join(', ')+']':''}${n.canonicalIndex!=null?' '+n.canonicalIndex:''}`, cx, cy + 3);
   } else {
     ctx.fillStyle = color;
     ctx.font = WORD_FONT;
-    ctx.fillText(n.text || '…', cx, cy + 3);
+    ctx.fillText(`${n.text||'…'}${n.kind===NODE.SPECIAL&&n.canonicalIndex!=null?' '+n.canonicalIndex:''}${n.canonicalData?.elided?' (elided)':''}`, cx, cy + 3);
     if (n.tag) {
       ctx.fillStyle = invalid ? c.error : c.tag;
       ctx.font = TAG_FONT;

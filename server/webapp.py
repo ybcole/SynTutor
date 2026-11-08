@@ -19,6 +19,7 @@ from flask import Flask, Response, jsonify, request, send_from_directory
 from api import ParseFailure, build_payload, health_payload, word_info
 from br_tree import CONVENTIONS
 from explanations import explain_request
+from tree_evaluation import evaluate_request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB_DIR = os.path.join(ROOT, 'web')
@@ -52,6 +53,10 @@ def _add_cors(resp):
     resp.headers['Access-Control-Allow-Origin'] = ALLOW_ORIGIN
     resp.headers['Vary'] = 'Origin'
     resp.headers['Cache-Control'] = 'no-store'
+    if request.method == 'OPTIONS':
+        resp.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        resp.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        resp.headers['Access-Control-Max-Age'] = '86400'
     return resp
 
 
@@ -65,6 +70,16 @@ def index():
 def health():
     payload = health_payload()
     return jsonify(payload), (200 if payload['ready'] else 503)
+
+
+@app.route('/api/evaluate', methods=['POST'])
+def evaluate_tree():
+    if request.content_length and request.content_length > 250_000:
+        return jsonify({'error': 'request exceeds 250000 bytes'}), 413
+    try:
+        return jsonify(evaluate_request(request.get_json(silent=True)))
+    except (ValueError, TypeError, RecursionError) as exc:
+        return jsonify({'error': str(exc)}), 400
 
 
 @app.route('/api/explain', methods=['POST'])

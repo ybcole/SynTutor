@@ -71,6 +71,8 @@ try:
         page.click('#openCanonicalBuilder')
         page.click('#builderSnap')
         page.wait_for_selector('[data-shared-evidence]', timeout=30000)
+        shared = page.evaluate("async()=>{const m=await import('/js/syntax-builder-ui.js');const b=await import('/js/syntax-builder.js');const tree=b.toCanonicalEnvelope(m.builderModel(),{chapter:2,version:'V2',profile_id:'V2'});const evaluated=await(await fetch('/api/evaluate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tree})})).json();const explained=await(await fetch('/api/explain',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tree})})).json();return {evaluated:evaluated.explanation_evidence,explained};}")
+        assert shared['evaluated'] == shared['explained']
         builder = page.locator('[data-shared-evidence]').inner_text()
         assert builder == generator, (generator, builder)
         # A hostile explanation is displayed as text, never interpreted as HTML.

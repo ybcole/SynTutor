@@ -12,6 +12,7 @@ from burton_roberts import build_canonical_analysis
 from cambridge_registry import load_runtime_registry
 from cambridge_evaluator import evaluate_cambridge
 from explanations import explain_analysis, explain_request
+from tree_evaluation import evaluate_analysis
 from matrix import evaluate
 from detector import classify, classify_many, combine
 from licensing import _leaves as _tree_leaves
@@ -312,6 +313,7 @@ def build_payload(text, sentence_index=0, convention_version=None,
         'candidate_tree': root,
         'br_analysis': br_analysis,
         'explanation_evidence': explain_analysis(br_analysis, variety=variety),
+        'canonical_evaluation': evaluate_analysis(br_analysis, variety=variety),
         'cambridge_runtime': cambridge_runtime,
         'cambridge_evaluation': cambridge_evaluation,
         'nodes': analysis['nodes'],

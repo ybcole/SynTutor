@@ -23,12 +23,13 @@ jobs:
         run: python -m compileall -q server
       - name: Run isolated Syntax Generator tests
         working-directory: server
-        run: python -m unittest -v test_br_tree test_cambridge_registry test_cambridge_evaluator test_grammar_schema test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_stdlib_transport_contract test_detector test_explanations test_explanation_transports test_br_source_extensions test_source_readiness test_quiz_evidence
+        run: python -m unittest -v test_br_tree test_cambridge_registry test_cambridge_evaluator test_grammar_schema test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_stdlib_transport_contract test_detector test_explanations test_explanation_transports test_br_source_extensions test_source_readiness test_quiz_evidence test_builder_evaluation
 
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py
           python scripts/validate_assessments.py
+          python scripts/validate_builder_contracts.py
 
       - name: Run canonical gold-import regression tests
         run: python -m unittest -v server.test_burton_roberts
@@ -76,6 +77,7 @@ jobs:
           npm run test:quiz
           npm run test:lessons
           npm run test:assessments
+          npm run test:builder
           node --check web/js/quizzes-ui.js
           node --check web/js/lessons-ui.js
       - name: Build static application including Vercel upload exclusions

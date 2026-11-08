@@ -1,0 +1,23 @@
+# Canonical Syntax Builder
+
+The Builder edits the same canonical envelope as the Generator. Free construction defaults to FINAL-D1; chapter practice uses its selected V1–V10 profile, with V7 core/Appendix choices. The palette is generated from the existing canonical validator inventory and checked for drift. Penn labels/POS tags are absent from the active palette. Arbitrary imported source labels are retained with explicit unsupported warnings, not silently relabelled or approved.
+
+Use the canvas or the labelled keyboard/touch controls to add words/categories, choose parents, reorder nodes, change features/indices, collapse/expand triangles and insert gap/empty positions. A terminal cannot become a parent; self-links/cycles are rejected. Pan/zoom/fit controls and a hideable editing panel keep wide trees usable on mobile. The node selector, parent fields and canonical JSON provide text interaction alongside the canvas; this is not a claim of formal screen-reader usability certification.
+
+Nine original reviewed construction targets reuse M4's chapter 2–10 worked examples. They offer step-by-step hints, model reveal and exploration; free construction offers no answer hints. Chapter 1's arbitrary schematic labels remain source-specific/unsupported in general validation, so it is not an independently graded construction target. Chapter 11 has no tree. Targets require neither lesson completion nor quiz completion, and award no XP.
+
+Checking sends the constructed graph to `/api/evaluate`, never reparses its sentence. Results separate canonical well-formedness, grammaticality and target comparison. A structure matching an approved target is not a claim that every different tree is ungrammatical. No production Cambridge grammaticality constraint is enabled; grammaticality stays unresolved. General structural validation enforces the existing schema/profile/span/feature/reference contract; it does not prove that every arbitrary hierarchy is a source-approved analysis.
+
+The server owns target answers. It compares ordered structure, lexical content, features, indices and movement references with the reviewed primary model and any ACCEPTED/PREFERRED alternatives. IDs and display coordinates do not decide equivalence. NEEDS_REVIEW/NOT_ACCEPTED alternatives cannot pass. Production targets currently have no additional accepted alternatives; the alternate-selection path is tested with explicitly synthetic fixtures. Client imports cannot grant themselves target acceptance or source authority.
+
+Feedback uses M3's evidence composer, channels, citations and UI. Generator responses include the same `canonical_evaluation`; both callers use the same structural validator and Cambridge registry/evaluator. Raw parser diagnostics remain separate for compatibility. Existing source/crosswalk limitations stay intact.
+
+Advanced imported node fields, original tokens/punctuation, movement, control, zero-word E/DET/C1, triangles, gaps, indices and accepted alternatives survive editor round trips. Canonical JSON supports advanced metadata edits. Changed work is labelled learner construction, not newly source-approved material. Deleting a referenced node can leave a diagnostic requiring reference repair; metadata is not silently discarded.
+
+## Saving and recovery
+
+Drafts live under `syntutor:builder:v1:<identity>`, separately from lessons/assessments. Incomplete graphs can be saved. Forty undo/redo snapshots cover graph/profile/layout edits; a new edit after undo starts a new branch. The latest draft survives refresh and reopening. Account changes reset the active view and recover the new identity's cache. These drafts are device-local; no new Supabase migration or cloud-draft table is introduced.
+
+Canonical JSON imports are checked by the backend before replacing work; import needs connectivity, while local draft recovery does not. Replies to imports are discarded if construction/account/view changes in the meantime. Malformed imports, invalid draft cycles and corrupt stored data cannot overwrite a current valid draft. Storage failure retains the in-memory session and requests export. A check has an eight-second timeout; stale replies after edits/closing cannot replace current feedback. Current canonical JSON can be copied/exported and imported into the shared schema. Previous published exercise models remain unchanged.
+
+Verification: `npm run test:builder`, `python scripts/validate_builder_contracts.py`, backend `test_builder_evaluation` after the existing stub/transport tests, and `python scripts/test_builder_browser.py`. Full source-corpus editor round trips are preservation/structural tests, not independent linguistic approval of that corpus.

@@ -403,7 +403,7 @@ export function boot() {
   initSidebar();
   // The rail starts on the Syntax Generator: exactly one active destination.
   setActiveNav(workspaceView);
-  initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView });
+  initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView, userId: () => clerk?.user?.id || null });
   initQuizzes({ userId: () => clerk?.user?.id || null, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode });
   initLessons({ userId: () => clerk?.user?.id || null, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode });
   initResizers();

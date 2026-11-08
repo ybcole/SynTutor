@@ -192,7 +192,7 @@ async def api_parse(request: Request):
     return JSONResponse(payload, status_code=200, headers=CORS)
 
 
-from explanation_transport import api_explain
+from explanation_transport import api_explain, api_evaluate
 
 
 async def api_options(request: Request):
@@ -219,6 +219,8 @@ def main():
     )
     _mount(app, '/api/health', api_health, ['GET', 'HEAD'])
     _mount(app, '/api/parse', api_parse, ['POST'])
+    _mount(app, '/api/evaluate', api_evaluate, ['POST'])
+    _mount(app, '/api/evaluate', api_options, ['OPTIONS'])
     _mount(app, '/api/explain', api_explain, ['POST'])
     _mount(app, '/api/explain', api_options, ['OPTIONS'])
     _mount(app, '/api/health', api_options, ['OPTIONS'])

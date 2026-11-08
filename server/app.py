@@ -17,6 +17,7 @@ from parse_engine import ParseFailure
 from api import build_payload, model_status as _model_status, word_info
 from br_tree import CONVENTIONS
 from explanations import explain_request
+from tree_evaluation import evaluate_request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB_DIR = os.path.join(ROOT, 'web')
@@ -120,7 +121,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         path = urlparse(self.path).path
-        if path not in ('/api/parse', '/api/words', '/api/explain'):
+        if path not in ('/api/parse', '/api/words', '/api/explain', '/api/evaluate'):
             self._json(404, {'error': 'not found'})
             return
         try:
@@ -135,6 +136,13 @@ class Handler(BaseHTTPRequestHandler):
             return
         if not isinstance(data, dict):
             self._json(400, {'error': 'request payload must be a JSON object'})
+            return
+
+        if path == '/api/evaluate':
+            try:
+                self._json(200, evaluate_request(data))
+            except (ValueError, TypeError, RecursionError) as exc:
+                self._json(400, {'error': str(exc)})
             return
 
         if path == '/api/explain':

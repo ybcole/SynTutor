@@ -1,5 +1,8 @@
 # Versioned lesson progress and deployment
 
+**Owner deployment update (8 November 2026):** the owner reports both M4 and both M5 migrations successfully applied. This has not been independently tested against hosted Supabase. The original preparation notes below describe the implementation-time environment; signed-in save/refresh/replay checks remain the deployment smoke test.
+
+
 The browser persists stage, responses, visited activities and completion under
 `syntutor:lessons:v1:<identity>`, with one `<lesson_id>@<content_version>` record.
 Guests use a device-local identity; account IDs have separate device caches.

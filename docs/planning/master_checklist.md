@@ -2,7 +2,7 @@
 
 Use this as the project sign-off register. Mark a box only when there is evidence (a test result, approved record, reviewed screen, migration, or documented decision). “Code exists” is not sufficient evidence of completion.
 
-Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-2026-11-08.md) and [M4 launch curriculum](../reports/milestone-04-acceptance-2026-11-08.md), 8 November 2026. M4 account-cloud migrations are prepared/tested and remain unapplied to production; local progress is available. M5 independent assessments are complete for the reviewed M4 outcomes; see [M5 acceptance](../reports/milestone-05-acceptance-2026-11-08.md). Its cloud migrations also remain prepared/tested but unapplied. Historical logs below retain their original findings. Checked M2 items use the approved conservative mapping/unresolved policy; evaluator minimal-pair tests are synthetic and do not certify an enabled Cambridge constraint. No live-data migration is approved or performed.
+Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-2026-11-08.md) and [M4 launch curriculum](../reports/milestone-04-acceptance-2026-11-08.md), 8 November 2026. The owner reports both M4 and both M5 migrations applied; hosted account integration has not been independently tested here. Local progress is available. M5 independent assessments are complete for the reviewed M4 outcomes; see [M5 acceptance](../reports/milestone-05-acceptance-2026-11-08.md). Its cloud migrations are owner-reported applied. M6 canonical Builder implementation is complete; see [M6 acceptance](../reports/milestone-06-acceptance-2026-11-08.md). The owner reports M4/M5 migrations applied (not independently hosted-tested here). Historical logs below retain their original findings. Checked M2 items use the approved conservative mapping/unresolved policy; evaluator minimal-pair tests are synthetic and do not certify an enabled Cambridge constraint. This implementation performed no live-data migration.
 
 ## 0. Governance and inventory
 
@@ -110,17 +110,17 @@ Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-202
 
 ## 7. Syntax Builder
 
-- [ ] Replace Penn-style palette with B-R convention-aware labels/features.
-- [ ] Use chapter-specific conventions for chapter exercises.
-- [ ] Use the declared final convention profile for free-form building.
-- [ ] Evaluate the learner's constructed tree, not just the sentence's re-parsed tree.
-- [ ] Share the same analysis/evaluation endpoint as Syntax Generator.
-- [ ] Share explanation components and evidence structure.
-- [ ] Distinguish tree well-formedness, sentence grammaticality, and target comparison.
-- [ ] Support accepted alternatives.
-- [ ] Keep structural graph errors distinct from grammatical constraints.
-- [ ] Add progressive hints and model-tree reveal.
-- [ ] Add Builder/Generator explanation-parity tests.
+- [x] Replace Penn-style palette with B-R convention-aware labels/features.
+- [x] Use chapter-specific conventions for chapter exercises.
+- [x] Use the declared final convention profile for free-form building.
+- [x] Evaluate the learner's constructed tree, not just the sentence's re-parsed tree.
+- [x] Share the same analysis/evaluation endpoint as Syntax Generator.
+- [x] Share explanation components and evidence structure.
+- [x] Distinguish tree well-formedness, sentence grammaticality, and target comparison.
+- [x] Support accepted alternatives.
+- [x] Keep structural graph errors distinct from grammatical constraints.
+- [x] Add progressive hints and model-tree reveal.
+- [x] Add Builder/Generator explanation-parity tests.
 
 ## 8. Gamification and leveling
 
@@ -200,7 +200,7 @@ Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-202
 | 3. Explanation engine | Implementation/source audit | Reviewed B-R/CGEL templates; transport and real browser parity checks | 8 Nov 2026 | M3 complete; M4 may proceed |
 | 4. Lessons | AI source/implementation review | M4 report; 12-lesson/schema/tree/JS/PostgreSQL/browser checks | 8 Nov 2026 | Launch implementation complete; hosted account migration follow-up explicit |
 | 5. Quizzes | AI source/implementation review | M5 report; 120-item/schema/tree/core/PostgreSQL/browser checks | 8 Nov 2026 | Scoped launch implementation complete; hosted account migration follow-up explicit |
-| 6. Syntax Builder |  |  |  | Not started |
+| 6. Syntax Builder | AI implementation review | M6 report; shared benchmarks, source-corpus round trips, core/session/browser and transport checks | 8 Nov 2026 | Implementation complete; frontend and backend deployment required |
 | 7. Gamification/leaderboard |  |  |  | Not started |
 | 8. UI/UX and release |  |  |  | Not started |
 
