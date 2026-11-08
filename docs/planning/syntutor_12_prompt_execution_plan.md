@@ -39,7 +39,7 @@ Current acceptance: [8 November M1–M3 report](../reports/milestones-01-03-acce
 - [x] **04 — Lessons and curriculum**
 - [x] **05 — Independent quiz system and question bank** — scoped launch verified; see [M5 acceptance](../reports/milestone-05-acceptance-2026-11-08.md); M4/M5 migrations owner-reported applied (not independently hosted-verified).
 - [x] **06 — Syntax Builder integration** — canonical editing/evaluation verified; see [M6 acceptance](../reports/milestone-06-acceptance-2026-11-08.md).
-- [ ] **07 — XP, levels, and progression rules** — implementation, native PostgreSQL and Chromium verification complete. Owner policy approval pending. See the [M7 report](../reports/milestone-07-progression-2026-11-08.md).
+- [x] **07 — XP, levels, and progression rules** — repository acceptance complete. Hosted staging and production activation are tracked separately. See the [M7 report](../reports/milestone-07-progression-2026-11-08.md).
 - [ ] **08 — Achievements and mastery milestones**
 - [ ] **09 — Leaderboard and player privacy**
 - [ ] **10 — UI/UX, tree layout, and correction presentation**
