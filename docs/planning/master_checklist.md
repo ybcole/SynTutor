@@ -126,14 +126,16 @@ Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-202
 
 - [ ] Approve 15 XP lesson reward rules.
 - [ ] Approve five-item quiz reward formula and best-score policy.
-- [ ] Implement idempotent XP transaction/event ledger.
-- [ ] Move authoritative award calculation to trusted server/RPC.
-- [ ] Add transaction key per user/activity/content version.
-- [ ] Implement proposed `levelSpan(L) = 100 + 20 × L` as a pilot curve (or document a revised curve).
-- [ ] Simulate expected progression using estimated lesson/quiz completion rates.
-- [ ] Add level progress and next milestone UI.
-- [ ] Define optional level unlocks/cosmetics/challenge tiers.
-- [ ] Ensure no essential lesson or explanation is locked behind XP.
+- [x] Implement idempotent XP transaction/event ledger.
+- [x] Move authoritative award calculation to trusted server/RPC.
+- [x] Add transaction key per user/activity/content version.
+- [x] Implement proposed `levelSpan(L) = 100 + 20 × L` as a pilot curve (or document a revised curve).
+- [x] Simulate expected progression using estimated lesson/quiz completion rates.
+- [x] Add level progress and next milestone UI.
+- [x] Define optional level unlocks/cosmetics/challenge tiers.
+- [x] Ensure no essential lesson or explanation is locked behind XP.
+
+Implementation evidence and deployment steps are in the [M7 report](../reports/milestone-07-progression-2026-11-08.md). Owner approval of the reward rules and level curve is pending.
 
 ## 9. Leaderboard
 

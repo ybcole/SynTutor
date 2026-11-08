@@ -18,14 +18,14 @@ import { initSyntaxBuilder, openBuilderView, closeBuilderView, isBuilderOpen, cl
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
 import {
-  computeUnlocked, achievementProgress, achievementIcons,
-  computeStreak, activeAchievementCategory, initAchievementCategorySelector,
+  achievementProgress, achievementIcons, activeAchievementCategory, initAchievementCategorySelector,
 } from './achievements.js';
 
 let clerk = null;
 let supabase = null;
 let isGuest = true;
 let activeSessionId = null;
+let activeWorkspaceView = null;
 
 try {
   clerk = await loadClerk();
@@ -33,9 +33,7 @@ try {
     isGuest = false;
     activeSessionId = clerk.session.id;
   }
-  // Create the Supabase client for every mode: authenticated reads/writes use
-  // the Clerk session token, while guests get an anonymous client that can
-  // still read the public leaderboard.
+  // Account operations use the Clerk session token.
   supabase = await createSupabaseClient();
   clerk?.addListener(() => {
     const sessionId = clerk.session?.id ?? null;
@@ -710,8 +708,6 @@ const WORKSPACE_VIEWS = {
   achievements: { id: 'achievementsView', view: 'achievements' },
 };
 
-let activeWorkspaceView = null;
-
 function el(tag, cls, text) {
   const node = document.createElement(tag);
   if (cls) node.className = cls;
@@ -744,8 +740,7 @@ function openWorkspaceView(name) {
   // The rail highlight belongs to the view while it is open.
   setOverlayView(conf.view);
 
-  if (name === 'leaderboard') renderLeaderboard();
-  else renderAchievements();
+  if (name === 'achievements') renderAchievements();
 }
 
 // Put every full-bleed view away and bring the workspace back.
@@ -783,177 +778,6 @@ function initWorkspaceViews() {
 }
 
 // ---------------------------------------------------------------------------
-// Leaderboard
-// ---------------------------------------------------------------------------
-// The public quiz progress (every learner's rows), so the leaderboard can
-// count trees and accuracy from the same source the achievements use.
-async function loadPublicQuizProgress() {
-  if (!supabase) return [];
-  const { data, error } = await supabase
-    .from('quiz_progress')
-    .select('user_id, rule_id, completed_count, perfect_count, last_completed_at');
-  if (error) {
-    console.warn('Failed to load the quiz progress:', error.message);
-    return [];
-  }
-  return data || [];
-}
-
-// Join the player stats with the quiz progress and rank the learners.
-function buildLeaderboard(stats, progress) {
-  const byUser = new Map();
-  for (const row of progress || []) {
-    const entry = byUser.get(row.user_id) || { trees: 0, perfect: 0 };
-    entry.trees += row.completed_count || 0;
-    entry.perfect += row.perfect_count || 0;
-    byUser.set(row.user_id, entry);
-  }
-  const entries = (stats || []).map((row) => {
-    const done = byUser.get(row.user_id) || { trees: 0, perfect: 0 };
-    return {
-      id: row.user_id,
-      name: row.display_name || 'Learner',
-      xp: row.xp || 0,
-      level: row.level || 0,
-      trees: done.trees,
-      accuracy: done.trees > 0 ? Math.round((done.perfect / done.trees) * 100) : 0,
-    };
-  });
-  entries.sort((a, b) => b.xp - a.xp || b.trees - a.trees || a.name.localeCompare(b.name));
-  return entries.map((entry, i) => ({ ...entry, rank: i + 1 }));
-}
-
-// The short handle under a learner's name.
-function learnerHandle(entry) {
-  const id = String(entry.id || '');
-  return id ? `@${id.slice(0, 10)}` : '@learner';
-}
-
-// The medal icon in the corner of a podium card.
-const MEDAL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="6"></circle><path d="m8.5 9.5-2-7h4l1.5 4 1.5-4h4l-2 7"></path></svg>';
-
-// The three podium places: their reward tag and their name.
-const PODIUM_PLACES = [
-  { rank: 1, place: '1st', tag: '⭐ Top Contributor' },
-  { rank: 2, place: '2nd', tag: '🥈 Runner Up' },
-  { rank: 3, place: '3rd', tag: '🥉 Third Place' },
-];
-
-// The top three, each in its own podium card. A place nobody has claimed
-// yet shows as an open slot, so the row never ends in a void.
-function renderLeaderboardPodium(entries) {
-  const host = document.getElementById('leaderboardPodium');
-  if (!host) return;
-  host.innerHTML = '';
-  if (!entries.length) {
-    host.appendChild(el('p', 'podium-empty', 'No learners on the board yet.'));
-    return;
-  }
-  for (const place of PODIUM_PLACES) {
-    const entry = entries[place.rank - 1];
-    host.appendChild(entry
-      ? podiumCard(entry, place)
-      : openPodiumCard(place));
-  }
-}
-
-// A claimed podium place.
-function podiumCard(entry, place) {
-  const card = el('article', `podium-card is-${place.rank}`);
-
-  const top = el('div', 'podium-card-top');
-  const avatar = el('span', 'podium-avatar', (entry.name || 'L').charAt(0).toUpperCase());
-  avatar.appendChild(el('span', 'podium-rank', String(place.rank)));
-  top.appendChild(avatar);
-  const identity = el('div', 'podium-identity');
-  identity.appendChild(el('span', 'podium-name', entry.name));
-  identity.appendChild(el('span', 'podium-handle', learnerHandle(entry)));
-  top.appendChild(identity);
-  const medal = el('span', 'podium-medal');
-  medal.innerHTML = MEDAL_SVG;
-  top.appendChild(medal);
-  card.appendChild(top);
-
-  const stats = el('div', 'podium-stats');
-  const stat = (value, label) => {
-    const box = el('div', 'podium-stat');
-    box.appendChild(el('span', 'podium-stat-value', value));
-    box.appendChild(el('span', 'podium-stat-label', label));
-    return box;
-  };
-  stats.appendChild(stat(String(entry.trees), 'Trees Built'));
-  stats.appendChild(stat(`${entry.accuracy}%`, 'Accuracy'));
-  stats.appendChild(stat(entry.xp.toLocaleString(), 'Total XP'));
-  card.appendChild(stats);
-
-  card.appendChild(el('span', 'podium-tag', place.tag));
-  return card;
-}
-
-// A place nobody has claimed yet.
-function openPodiumCard(place) {
-  const card = el('article', 'podium-card is-open');
-  const medal = el('span', 'podium-open-medal');
-  medal.innerHTML = MEDAL_SVG;
-  card.appendChild(medal);
-  card.appendChild(el('span', 'podium-open-rank', `#${place.rank} Open Rank`));
-  card.appendChild(el('span', 'podium-open-hint',
-    `Build syntax trees to claim ${place.place} place`));
-  return card;
-}
-
-// The standings table: every learner, in rank order.
-function renderLeaderboardRows(entries, ownRows) {
-  const host = document.getElementById('leaderboardRows');
-  if (!host) return;
-  host.innerHTML = '';
-  if (!entries.length) {
-    const cell = el('td', 'empty-note', 'No learners on the board yet.');
-    cell.colSpan = 5;
-    const row = el('tr');
-    row.appendChild(cell);
-    host.appendChild(row);
-    return;
-  }
-  const streak = computeStreak(ownRows || []);
-  for (const entry of entries) {
-    const mine = entry.id === activeSessionId;
-    const row = el('tr', mine ? 'current-user' : null);
-    row.appendChild(el('td', 'standings-rank', `#${entry.rank}`));
-
-    const learner = el('td');
-    const wrap = el('div', 'standings-learner');
-    wrap.appendChild(el('span', 'standings-avatar', (entry.name || 'L').charAt(0).toUpperCase()));
-    const meta = el('div', 'standings-learner-meta');
-    const name = el('span', 'standings-learner-name', entry.name);
-    if (mine && streak > 0) {
-      const chip = el('span', 'standings-streak', `\u{1F525} ${streak}d`);
-      name.appendChild(chip);
-    }
-    meta.appendChild(name);
-    meta.appendChild(el('span', 'standings-learner-handle', learnerHandle(entry)));
-    wrap.appendChild(meta);
-    learner.appendChild(wrap);
-    row.appendChild(learner);
-
-    row.appendChild(el('td', 'num standings-value', String(entry.trees)));
-    row.appendChild(el('td', 'num standings-value', `${entry.accuracy}%`));
-    row.appendChild(el('td', 'num standings-value', entry.xp.toLocaleString()));
-    host.appendChild(row);
-  }
-}
-
-// Fill the whole leaderboard view.
-async function renderLeaderboard() {
-  const stats = await loadLeaderboard(100);
-  const progress = await loadPublicQuizProgress();
-  const entries = buildLeaderboard(stats, progress);
-  const ownRows = (progress || []).filter((row) => row.user_id === activeSessionId);
-  renderLeaderboardPodium(entries);
-  renderLeaderboardRows(entries, ownRows);
-}
-
-// ---------------------------------------------------------------------------
 // Achievements
 // ---------------------------------------------------------------------------
 // One achievement card: badge, text, the live progress bar and the reward.
@@ -982,7 +806,6 @@ function achievementCard(achievement) {
   body.appendChild(progress);
   card.appendChild(body);
 
-  card.appendChild(el('span', 'achievement-reward', `+${achievement.xp} XP`));
   return card;
 }
 
@@ -1001,27 +824,33 @@ async function renderAchievements() {
   const counter = document.getElementById('achievementsStatsCounter');
   const fill = document.getElementById('achievementsProgressFill');
   const label = document.getElementById('achievementsProgressLabel');
-  const rows = progressAvailable() ? await loadQuizProgress() : [];
-  const list = achievementProgress(rows);
+  const sessionId = activeSessionId;
+  const signedIn = progressAvailable();
+  if (label) label.textContent = signedIn ? 'Loading verified XP…' : 'Sign in to track your progress.';
+  if (fill) fill.style.width = '0%';
+  if (grid) grid.replaceChildren();
+  if (counter) counter.textContent = '';
+  const [rows, stats] = signedIn
+    ? await Promise.all([loadQuizProgress(), loadPlayerProgress()])
+    : [[], null];
+  if (sessionId !== activeSessionId) return;
+
   const category = activeAchievementCategory();
-  const visible = list.filter((achievement) =>
+  const visible = achievementProgress(rows).filter((achievement) =>
     category === 'all' || achievement.category === category);
-  // The completion caption lives in the toolbar, next to the filters.
   if (counter) {
     const shown = visible.filter((achievement) => achievement.unlocked).length;
     const shownPct = visible.length ? Math.round((shown / visible.length) * 100) : 0;
-    counter.textContent = progressAvailable()
+    counter.textContent = signedIn
       ? `${shown} of ${visible.length} unlocked · ${shownPct}% completed`
       : 'Sign in to track your achievements.';
   }
-  // The level tracker in the top-right corner of the header.
-  const stats = progressAvailable() ? await loadPlayerProgress() : null;
-  const level = levelFromXp(stats?.xp || 0);
-  if (fill) fill.style.width = `${Math.round((level.into / Math.max(1, level.span)) * 100)}%`;
-  if (label) {
-    label.textContent = progressAvailable()
-      ? `Level ${level.level} · ${level.into} / ${level.span} XP to Level ${level.level + 1}`
-      : 'Sign in to track your progress.';
+  if (stats) {
+    const level = levelFromXp(stats.xp);
+    if (fill) fill.style.width = `${(level.into / level.span) * 100}%`;
+    if (label) label.textContent = `Level ${stats.level} · ${stats.xp} verified XP (${stats.lesson_xp} lesson + ${stats.quiz_xp} quiz) · ${level.next - level.xp} XP to Level ${stats.level + 1}`;
+  } else if (signedIn && label) {
+    label.textContent = 'Verified XP is unavailable. Reopen this view to retry.';
   }
   if (!grid) return;
   grid.innerHTML = '';
@@ -1213,6 +1042,7 @@ function updateAuthState() {
   // The history is account-only: the rail item appears for an account
   // session and disappears for a guest — and an open drawer closes with it.
   setHistoryEnabled(isAccountSession(clerk));
+  if (activeWorkspaceView === 'achievements') renderAchievements();
   renderProfileMenu();
 }
 
@@ -1797,11 +1627,9 @@ function clearLessonModelTree({ force = false } = {}) {
 }
 
 // ---------------------------------------------------------------------------
-// Gamification: XP, levels, and the permanent leaderboard.
-// XP is only banked for signed-in users (guests see the UI but nothing saves).
-// ---------------------------------------------------------------------------
+// Private progression and legacy achievement history.
 function progressAvailable() {
-  return !isGuest && !!clerk?.user?.id && !!supabase;
+  return isAccountSession(clerk) && !!supabase;
 }
 
 function playerDisplayName() {
@@ -1813,51 +1641,14 @@ function playerDisplayName() {
 }
 
 async function loadPlayerProgress() {
-  if (!progressAvailable()) return null;
-  const { data, error } = await supabase
-    .from('player_stats')
-    .select('xp, level')
-    .eq('user_id', clerk.user.id)
-    .maybeSingle();
-  if (error) {
+  try {
+    const { data, error } = await supabase.rpc('get_my_progression').abortSignal(AbortSignal.timeout(6000));
+    if (error) throw error;
+    return data;
+  } catch (error) {
     console.warn('Failed to load player progress:', error.message);
     return null;
   }
-  return data || { xp: 0, level: 0 };
-}
-
-async function awardPlayerXp(amount) {
-  if (!progressAvailable() || !Number.isFinite(amount) || amount <= 0) return null;
-  const current = await loadPlayerProgress();
-  const xp = (current?.xp || 0) + amount;
-  const { level } = levelFromXp(xp);
-  const { error } = await supabase.from('player_stats').upsert({
-    user_id: clerk.user.id,
-    display_name: playerDisplayName(),
-    xp,
-    level,
-    updated_at: new Date().toISOString(),
-  }, { onConflict: 'user_id' });
-  if (error) {
-    console.warn('Failed to save XP:', error.message);
-    return null;
-  }
-  return { xp, ...levelFromXp(xp), earned: amount };
-}
-
-async function loadLeaderboard(limit = 25) {
-  if (!supabase) return null;
-  const { data, error } = await supabase
-    .from('player_stats')
-    .select('user_id, display_name, xp, level')
-    .order('level', { ascending: false })
-    .order('xp', { ascending: false })
-    .limit(limit);
-  if (error) {
-    console.warn('Failed to load the leaderboard:', error.message);
-    return null;
-  }
-  return data;
 }
 
 async function loadQuizProgress() {
@@ -1865,53 +1656,14 @@ async function loadQuizProgress() {
   const { data, error } = await supabase
     .from('quiz_progress')
     .select('rule_id, completed_count, perfect_count, last_completed_at')
-    .eq('user_id', clerk.user.id);
+    .eq('user_id', clerk.user.id)
+    .abortSignal(AbortSignal.timeout(6000));
   if (error) {
     console.warn('Failed to load quiz progress:', error.message);
     return [];
   }
   return data || [];
 }
-
-// Records a finished quiz run (upserts a completion for the rule) and returns
-// the achievement ids that this run newly unlocked.
-async function trackQuizCompletion({ ruleId, perfect }) {
-  if (!progressAvailable()) return { newlyUnlocked: [], ran: false };
-  const before = computeUnlocked(await loadQuizProgress());
-  const existing = await supabase
-    .from('quiz_progress')
-    .select('completed_count, perfect_count')
-    .eq('user_id', clerk.user.id)
-    .eq('rule_id', ruleId)
-    .maybeSingle();
-  const prev = existing?.error ? {} : (existing?.data || {});
-  const { error } = await supabase.from('quiz_progress').upsert({
-    user_id: clerk.user.id,
-    rule_id: ruleId,
-    completed_count: (prev.completed_count || 0) + 1,
-    perfect_count: (prev.perfect_count || 0) + (perfect ? 1 : 0),
-    last_completed_at: new Date().toISOString(),
-  }, { onConflict: 'user_id,rule_id' });
-  if (error) {
-    console.warn('Failed to record quiz completion:', error.message);
-    return { newlyUnlocked: [], ran: false };
-  }
-  const after = computeUnlocked(await loadQuizProgress());
-  return {
-    newlyUnlocked: [...after].filter((id) => !before.has(id)),
-    ran: true,
-  };
-}
-
-const progress = {
-  isAvailable: progressAvailable,
-  myId: () => (clerk?.user?.id ? clerk.user.id : null),
-  load: loadPlayerProgress,
-  award: awardPlayerXp,
-  leaderboard: loadLeaderboard,
-  getQuizProgress: loadQuizProgress,
-  trackCompletion: trackQuizCompletion,
-};
 
 // Quiz-only analysis: parses the sentence, renders its tree, and returns the
 // payload WITHOUT touching history, highlights, or the locked/editable state.

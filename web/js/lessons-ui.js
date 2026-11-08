@@ -61,7 +61,9 @@ function currentLesson() { return course.lessons.find(l => l.lesson_id===active)
 function progressFor(lesson) { return store.records[lessonKey(lesson)] || emptyProgress(); }
 async function act(event) {
   if (busy) return;const token=generation;const focused=document.activeElement;const focusName=focused?.name,focusValue=focused?.value;busy=true;render();
-  try { const result=await store.act(currentLesson(),event);if(token!==generation){busy=false;return;}notice=result.earned ? 'Lesson complete. 15 lesson XP awarded for this content version.' : ''; }
+  try { const result=await store.act(currentLesson(),event);if(token!==generation){busy=false;return;}notice=result.earned ? (store.status === 'Synced to your account'
+      ? 'Lesson complete. 15 lesson XP awarded for this content version.'
+      : 'Lesson complete. 15 lesson XP awarded on this device. Verified account XP requires account sync.') : ''; }
   catch(error) { if(token!==generation){busy=false;return;}notice=error.message; }
   busy=false;render();
   if(event.type==='answer' && focusName)host.querySelector(`input[name="${CSS.escape(focusName)}"][value="${focusValue}"]`)?.focus();
@@ -71,7 +73,7 @@ function openLesson(id) { active=id; step=0;notice='';render();host.querySelecto
 function catalog() {
   const header=el('header',undefined,'curriculum-header');header.append(el('p','SOURCE-GROUNDED LEARNING','lesson-eyebrow'),el('h1','Learn the structure. See the reason.'));
   header.append(el('p','Follow the B-R chapter sequence, then explore selected Cambridge insights. Practice is part of each lesson; independent quizzes will arrive separately.','lesson-lead'));
-  header.append(el('p',`${course.lessons.filter(l=>progressFor(l).completed_at).length} / ${course.lessons.length} lessons completed · ${lessonXp(store.records)} lesson XP`,'lesson-total'));
+  header.append(el('p',`${course.lessons.filter(l=>progressFor(l).completed_at).length} / ${course.lessons.length} lessons completed · ${lessonXp(store.records)} lesson XP in this course`,'lesson-total'));
   const continuing=course.lessons.find(l=>store.records[lessonKey(l)] && !progressFor(l).completed_at) || course.lessons.find(l=>!progressFor(l).completed_at);
   if (continuing) header.append(button(`Continue: ${continuing.title}`,()=>openLesson(continuing.lesson_id),'lesson-primary'));
   host.append(header);
