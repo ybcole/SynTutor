@@ -17,6 +17,7 @@ import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js';
 import { initSyntaxBuilder, openBuilderView, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
+import { createLeaderboardView } from './leaderboard.js';
 import {
   achievementIcons, activeAchievementCategory, initAchievementCategorySelector,
 } from './achievements.js';
@@ -26,6 +27,7 @@ let supabase = null;
 let isGuest = true;
 let activeSessionId = null;
 let activeWorkspaceView = null;
+let leaderboardView = null;
 
 try {
   clerk = await loadClerk();
@@ -391,6 +393,11 @@ export function boot() {
   });
   // The full-bleed views wire their dismissal first, so Escape leaves a view
   // before anything else reacts to it.
+  leaderboardView = createLeaderboardView(document.getElementById('leaderboardView'), {
+    client: () => supabase,
+    account: () => progressAvailable() ? activeSessionId : null,
+    lifetime: loadPlayerProgress,
+  });
   initWorkspaceViews();
   // The achievements category selector: picking a category re-filters the
   // grid.
@@ -741,10 +748,12 @@ function openWorkspaceView(name) {
   setOverlayView(conf.view);
 
   if (name === 'achievements') renderAchievements();
+  if (name === 'leaderboard') leaderboardView.open();
 }
 
 // Put every full-bleed view away and bring the workspace back.
 function closeWorkspaceViews() {
+  leaderboardView?.close();
   for (const conf of Object.values(WORKSPACE_VIEWS)) {
     const view = document.getElementById(conf.id);
     if (!view) continue;
@@ -1053,6 +1062,7 @@ function updateAuthState() {
   // session and disappears for a guest — and an open drawer closes with it.
   setHistoryEnabled(isAccountSession(clerk));
   if (activeWorkspaceView === 'achievements') renderAchievements();
+  if (activeWorkspaceView === 'leaderboard') leaderboardView.open();
   renderProfileMenu();
 }
 

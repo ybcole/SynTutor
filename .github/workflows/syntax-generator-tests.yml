@@ -8,6 +8,7 @@ on:
     branches:
       - main
       - feature/milestone-07-*
+      - feature/milestone-08-*
   workflow_dispatch:
 
 jobs:
@@ -40,6 +41,7 @@ jobs:
           python -m pip install 'psycopg[binary]>=3.2,<4'
           python scripts/test_progression_database.py
           python scripts/test_achievements_database.py
+          python scripts/test_leaderboard_database.py
       - name: Compile backend modules and tests
         run: python -m compileall -q server
       - name: Run isolated Syntax Generator tests

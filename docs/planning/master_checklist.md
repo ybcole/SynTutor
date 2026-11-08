@@ -139,14 +139,16 @@ Implementation evidence and deployment steps are in the [M7 report](../reports/m
 
 ## 9. Leaderboard
 
-- [ ] Decide opt-in/opt-out default.
-- [ ] Add user-chosen public alias.
-- [ ] Remove raw Clerk user IDs from public payloads.
-- [ ] Add weekly/seasonal ranking model.
-- [ ] Retain personal lifetime XP privately.
-- [ ] Secure XP updates through trusted server/RPC validation.
-- [ ] Add tie-breaker policy.
-- [ ] Test RLS/privacy and unauthorized update attempts.
+- [x] Decide opt-in/opt-out default.
+- [x] Add user-chosen public alias.
+- [x] Remove raw Clerk user IDs from public payloads.
+- [x] Add weekly/seasonal ranking model.
+- [x] Retain personal lifetime XP privately.
+- [x] Secure XP updates through trusted server/RPC validation.
+- [x] Add tie-breaker policy.
+- [x] Test RLS/privacy and unauthorized update attempts.
+
+The [M9 report](../reports/milestone-09-leaderboard-2026-11-08.md) records verification and the hosted privacy approval gate. Public rankings default to disabled.
 
 ## 10. Achievements
 
