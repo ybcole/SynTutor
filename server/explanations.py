@@ -199,11 +199,41 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
     return output
 
 
+def explain_quiz_response(item, answer, source_records):
+    """Use the same review/source/channel gates for repository-owned quiz prose."""
+    output={'schema_version':'1.0.0','status':'NO_BOOK_BASIS','analysis_status':'quiz_feedback',
+            'channels':{key:[] for key in CHANNELS},'facts':[],'diagnostics':[]}
+    required={'br_structure':'B-R','cambridge_classification':'Cambridge'}.get(item.get('claim_scope'))
+    lookup={s.get('id'):s for s in source_records}
+    cited=[lookup.get(ident,{}) for ident in item.get('source_ids',[])]
+    if (not required or not _reviewed(item) or not cited or len(lookup)!=len(source_records)
+            or any(not _eligible_source(s) or s.get('book')!=required for s in cited)):
+        output['diagnostics'].append({'code':'NO_BOOK_BASIS','message':'This question lacks eligible reviewed evidence.'})
+        return output
+    chosen=next((o for o in item['options'] if o['id']==answer),None)
+    correct=next((o for o in item['options'] if o['id']==item['answer']),None)
+    if answer is not None and chosen is None:raise ValueError('Unknown quiz answer')
+    if not correct or not item.get('rationale') or not all(o.get('rationale') for o in item['options']):return output
+    facts={'item_id':item['item_id'],'item_version':item['content_version'],'answer_id':answer,
+           'correct_answer_id':item['answer'],'response_status':'correct' if answer==item['answer'] else 'incorrect' if chosen else 'unanswered','claim_scope':item['claim_scope']}
+    fields={'id','book','title','edition','printed_page','evidence_status','status','crosswalk_status','review_status','independent_review','reviewed_by','reviewed_on'}
+    channel='structural' if required=='B-R' else 'grammatical'
+    output['channels'][channel].append({'template_id':f"quiz:{item['item_id']}@{item['content_version']}",'node_id':'quiz:'+item['item_id'],
+        'text':f"Correct answer: {correct['text']}. {item['rationale']}",
+        'deep_text':f"Your selected option: {chosen['rationale']}" if chosen else 'No answer was submitted; it counts as incorrect.',
+        'sources':[{k:v for k,v in source.items() if k in fields} for source in cited],'facts':facts})
+    output['facts']=[facts];output['status']='EXPLAINED'
+    return output
+
+
 def explain_request(data):
     """Transport-neutral endpoint: client metadata is never source authority."""
     if not isinstance(data, dict):
         raise ValueError('request payload must be a JSON object')
-    if set(data) - {'tree', 'node_id', 'rule_id'}:
+    if 'quiz_item_id' in data:
+        from quiz_bank import explain_quiz_request
+        return explain_quiz_request(data)
+    if set(data) - {'tree', 'node_id', 'variety'}:
         raise ValueError('only tree, node_id and variety are accepted; source registries cannot be supplied')
     variety = data.get('variety')
     if variety is not None and (not isinstance(variety, str) or not variety.strip()):

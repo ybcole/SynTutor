@@ -60,3 +60,28 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   }
   host.append(panel);
 }
+
+const QUIZ_SOURCE_FIELDS = ['id','book','title','edition','printed_page','evidence_status','status','crosswalk_status','review_status','independent_review','reviewed_by','reviewed_on'];
+// Controlled feedback for the reviewed standalone bank. This same response
+// shape and source boundary is used by the server composer and M3 renderer.
+export function composeQuizEvidence(item, answer, bank) {
+  const output={schema_version:'1.0.0',status:'NO_BOOK_BASIS',analysis_status:'quiz_feedback',channels:{structural:[],grammatical:[],remediation:[]},facts:[],diagnostics:[]};
+  const reviewed=r=>r?.review_status==='INDEPENDENTLY_REVIEWED'&&r.independent_review===true&&Boolean(r.reviewed_by)&&/^\d{4}-\d{2}-\d{2}$/.test(r.reviewed_on);
+  const sources=(item.source_ids||[]).map(id=>bank.sources.find(s=>s.id===id));
+  const required=item.claim_scope==='br_structure'?'B-R':item.claim_scope==='cambridge_classification'?'Cambridge':null;
+  if(!required||!reviewed(item)||!sources.length||new Set(bank.sources.map(s=>s.id)).size!==bank.sources.length||sources.some(s=>!s||!reviewed(s)||s.book!==required||s.status!=='approved'||!s.title||!s.edition||!Number.isInteger(s.printed_page)||s.printed_page<1||!['IMG','TXT'].includes(s.evidence_status)||!['resolved','compatible'].includes(s.crosswalk_status))){output.diagnostics.push({code:'NO_BOOK_BASIS',message:'This question lacks eligible reviewed evidence.'});return output;}
+  const chosen=item.options.find(o=>o.id===answer),correct=item.options.find(o=>o.id===item.answer);
+  if(answer!==null&&answer!==undefined&&!chosen)throw new Error('Unknown quiz answer.');
+  if(!correct||!item.rationale||!item.options.every(o=>o.rationale))return output;
+  const facts={item_id:item.item_id,item_version:item.content_version,answer_id:answer??null,correct_answer_id:item.answer,response_status:answer===item.answer?'correct':chosen?'incorrect':'unanswered',claim_scope:item.claim_scope};
+  const channel=required==='B-R'?'structural':'grammatical';
+  output.channels[channel].push({template_id:`quiz:${item.item_id}@${item.content_version}`,node_id:`quiz:${item.item_id}`,
+    text:`Correct answer: ${correct.text}. ${item.rationale}`,deep_text:chosen?`Your selected option: ${chosen.rationale}`:'No answer was submitted; it counts as incorrect.',
+    sources:sources.map(s=>Object.fromEntries(QUIZ_SOURCE_FIELDS.map(k=>[k,s[k]]))),facts});
+  output.facts=[facts];output.status='EXPLAINED';return output;
+}
+export async function requestQuizEvidence(item,answer,options={}) {
+  const response=await (options.fetch||fetch)(`${API_BASE}/api/explain`,{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({quiz_item_id:item.item_id,quiz_item_version:item.content_version,answer_id:answer??null}),signal:options.signal});
+  const data=await response.json();if(!response.ok)throw new Error(data.error||'Quiz evidence unavailable');return data;
+}

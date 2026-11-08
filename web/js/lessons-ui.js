@@ -44,7 +44,7 @@ export function renderLessonTree(envelope, { focusId = null, blank = null } = {}
     const g=svgNode('g',{'data-node-id':node.id || '',class:node.id===focusId ? 'lesson-tree-focus' : ''});
     if (node.id===focusId) g.append(svgNode('rect',{x:x-55,y:y-20,width:110,height:40,rx:9}));
     const t=svgNode('text',{x,y,'text-anchor':'middle'});
-    t.textContent=blank?.node_id===node.id ? (blank.field==='feature' ? `${node.label === 'AUX' ? '' : node.label} [?]` : '?') : label(node);g.append(t);
+    t.textContent=blank && blank.node_id===node.id ? (blank.field==='feature' ? `${node.label === 'AUX' ? '' : node.label} [?]` : '?') : label(node);g.append(t);
     if (node.triangle) {
       const half=Math.min(widthOf(node)/2-12,80);
       g.append(svgNode('polygon',{points:`${x},${y+12} ${x-half},${y+45} ${x+half},${y+45}`}));

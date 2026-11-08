@@ -2,7 +2,7 @@
 
 Use this as the project sign-off register. Mark a box only when there is evidence (a test result, approved record, reviewed screen, migration, or documented decision). “Code exists” is not sufficient evidence of completion.
 
-Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-2026-11-08.md) and [M4 launch curriculum](../reports/milestone-04-acceptance-2026-11-08.md), 8 November 2026. M4 account-cloud migrations are prepared/tested and remain unapplied to production; local progress is available. Historical logs below retain their original findings. Checked M2 items use the approved conservative mapping/unresolved policy; evaluator minimal-pair tests are synthetic and do not certify an enabled Cambridge constraint. No live-data migration is approved or performed.
+Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-2026-11-08.md) and [M4 launch curriculum](../reports/milestone-04-acceptance-2026-11-08.md), 8 November 2026. M4 account-cloud migrations are prepared/tested and remain unapplied to production; local progress is available. M5 independent assessments are complete for the reviewed M4 outcomes; see [M5 acceptance](../reports/milestone-05-acceptance-2026-11-08.md). Its cloud migrations also remain prepared/tested but unapplied. Historical logs below retain their original findings. Checked M2 items use the approved conservative mapping/unresolved policy; evaluator minimal-pair tests are synthetic and do not certify an enabled Cambridge constraint. No live-data migration is approved or performed.
 
 ## 0. Governance and inventory
 
@@ -92,21 +92,21 @@ Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-202
 
 ## 6. Quizzes
 
-- [ ] Create a standalone quiz bank separate from lesson examples.
-- [ ] Define five-item quiz blueprints and difficulty balance.
-- [ ] Support MCQ, tree selection, structure identification, rule application, minimal pairs, error diagnosis, and repair.
-- [ ] Include B-R convention version where a tree is involved.
-- [ ] Include Cambridge concept/rule IDs and exact page references.
-- [ ] Exclude unreviewed/unimplemented constraints from graded grammaticality questions.
-- [ ] Write original question stems/distractors; do not copy textbook exercise wording.
-- [ ] Store correct answer and distractor rationale.
-- [ ] Add per-question feedback from the shared explanation engine.
-- [ ] Implement `max(0, 10 - 2 × incorrect)` XP for the five-item assessment.
-- [ ] Award only the best-score XP delta per assessment version.
-- [ ] Ensure repeating a score cannot mint more XP.
-- [ ] Persist attempts, best score, last score, answer-level history, and content version.
-- [ ] Add quiz review screen and targeted reinforcement.
-- [ ] Test XP calculations for 0/5 through 5/5 and repeated attempts.
+- [x] Create a standalone quiz bank separate from lesson examples.
+- [x] Define five-item quiz blueprints and difficulty balance.
+- [x] Support MCQ, tree selection, structure identification, rule application, minimal pairs, error diagnosis, and repair.
+- [x] Include B-R convention version where a tree is involved.
+- [x] Include Cambridge concept/rule IDs and exact page references.
+- [x] Exclude unreviewed/unimplemented constraints from graded grammaticality questions.
+- [x] Write original question stems/distractors; do not copy textbook exercise wording.
+- [x] Store correct answer and distractor rationale.
+- [x] Add per-question feedback from the shared explanation engine.
+- [x] Implement `max(0, 10 - 2 × incorrect)` XP for the five-item assessment.
+- [x] Award only the best-score XP delta per assessment version.
+- [x] Ensure repeating a score cannot mint more XP.
+- [x] Persist attempts, best score, last score, answer-level history, and content version.
+- [x] Add quiz review screen and targeted reinforcement.
+- [x] Test XP calculations for 0/5 through 5/5 and repeated attempts.
 
 ## 7. Syntax Builder
 
@@ -199,7 +199,7 @@ Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-202
 | 2. Syntax Generator | Implementation/source audit | Current acceptance report; approved gold, API and parser regressions | 8 Nov 2026 | M2 complete for supported/unresolved scope |
 | 3. Explanation engine | Implementation/source audit | Reviewed B-R/CGEL templates; transport and real browser parity checks | 8 Nov 2026 | M3 complete; M4 may proceed |
 | 4. Lessons | AI source/implementation review | M4 report; 12-lesson/schema/tree/JS/PostgreSQL/browser checks | 8 Nov 2026 | Launch implementation complete; hosted account migration follow-up explicit |
-| 5. Quizzes |  |  |  | Not started |
+| 5. Quizzes | AI source/implementation review | M5 report; 120-item/schema/tree/core/PostgreSQL/browser checks | 8 Nov 2026 | Scoped launch implementation complete; hosted account migration follow-up explicit |
 | 6. Syntax Builder |  |  |  | Not started |
 | 7. Gamification/leaderboard |  |  |  | Not started |
 | 8. UI/UX and release |  |  |  | Not started |

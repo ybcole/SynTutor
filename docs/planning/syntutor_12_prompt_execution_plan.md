@@ -37,7 +37,7 @@ Current acceptance: [8 November M1–M3 report](../reports/milestones-01-03-acce
 - [x] **02 — Syntax Generator and B-R tree normalization**
 - [x] **03 — Shared, source-grounded explanation engine**
 - [x] **04 — Lessons and curriculum**
-- [ ] **05 — Independent quiz system and question bank**
+- [x] **05 — Independent quiz system and question bank** — scoped launch verified; see [M5 acceptance](../reports/milestone-05-acceptance-2026-11-08.md); hosted migrations pending.
 - [ ] **06 — Syntax Builder integration**
 - [ ] **07 — XP, levels, and progression rules**
 - [ ] **08 — Achievements and mastery milestones**

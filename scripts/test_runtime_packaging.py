@@ -50,5 +50,10 @@ assert load_registry()['templates'], 'production source registry not packaged'
 response = app.test_client().post('/api/explain', json={'tree': None})
 assert response.status_code == 200
 assert response.get_json()['status'] == 'ANALYSIS_UNRESOLVED'
+from quiz_bank import load_quiz_bank
+bank = load_quiz_bank()
+item = bank['items'][0]
+quiz = app.test_client().post('/api/explain', json={'quiz_item_id': item['item_id'], 'quiz_item_version': item['content_version'], 'answer_id': item['answer']})
+assert quiz.status_code == 200 and quiz.get_json()['status'] == 'EXPLAINED'
 print('PASS: Docker COPY/exclusion fixture imports backend and serves evidence API.')
 '''], cwd=target, check=True)
