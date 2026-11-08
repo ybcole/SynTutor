@@ -41,6 +41,7 @@ python3 server/webapp.py     # Flask backend: serves the front end + /api
 - [Milestones 01–03 verification](docs/reports/milestones-01-03-audit.md)
 - [Authoritative execution plan](docs/planning/syntutor_12_prompt_execution_plan.md) and [checklist](docs/planning/master_checklist.md)
 - [Developer documentation](docs/README.md)
+- [M11 integration, migration and recovery guide](docs/reports/milestone-11-integration-2026-11-08.md)
 - [Research drafts](docs/research/)
 
 The active browser application is in `web/`. Historical root-level browser files

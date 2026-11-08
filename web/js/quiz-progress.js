@@ -1,8 +1,9 @@
-import { makeAttempt,validateAttempt,gradeAttempt,summaryFor,quizKey,reinforcement } from './quiz-core.js';
+import { makeAttempt,validateAttempt,canReviewAttempt,gradeAttempt,summaryFor,quizKey,reinforcement } from './quiz-core.js';
 export function createQuizStore(bank,{storage,userId='guest',client=null,timeoutMs=5000}={}) {
   const key=`syntutor:assessments:v1:${userId}`;
   let state={attempts:{},drafts:{}},status='Saved on this device',blocked=false,queue=Promise.resolve();
   const dirty=new Set();
+  const archived = t => t.retired || !canReviewAttempt(bank, t);
   function read(){
     if(!storage){status='Progress storage unavailable; keep this page open';return;}
     try{const saved=JSON.parse(storage.getItem(key)||'null');if(saved&&saved.attempts&&saved.drafts)state=saved;}catch{status='Progress storage unavailable; keep this page open';}
@@ -13,10 +14,20 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
   async function sync(){
     if(!client||userId==='guest')return {};
     const awards={};
+    for (const id of [...dirty]) {
+      const attempt = state.attempts[id];
+      if (!attempt || attempt.practice || archived(attempt)) dirty.delete(id);
+    }
     for(const id of [...dirty].sort((a,b)=>state.attempts[a].started_at.localeCompare(state.attempts[b].started_at))){
-      const t=state.attempts[id];if(t.practice){dirty.delete(id);continue;}
+      const t=state.attempts[id];
       const payload=Object.fromEntries(['attempt_id','assessment_id','content_version','seed','presented','responses','position'].map(k=>[k,t[k]]));
       const {data,error}=await bounded(client.rpc('save_quiz_attempt',{p_attempt:payload,p_submit:Boolean(t.submitted_at)}));
+      if (error?.code === '22023' && error.message === 'Unknown published assessment version') {
+        t.retired = true;
+        dirty.delete(id);
+        write();
+        continue;
+      }
       if(error)throw Error('Account sync unavailable; attempts remain saved on this device. Retry when connected.');
       if(data){
         if(t.submitted_at&&data.correct!==gradeAttempt(bank,t).correct)throw Error('Server score verification differs; retry account sync before relying on shared XP.');
@@ -29,21 +40,27 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
   }
   async function transact(fn){
     const run=async()=>{read();const result=fn();write();let awards={};try{if(!blocked)awards=await sync();}catch(e){blocked=true;status=e.message;}
-      if(result&&Object.hasOwn(awards,result.attempt_id))result.earned=awards[result.attempt_id];return result;};
+      if (result && Object.hasOwn(awards, result.attempt_id)) result.earned = awards[result.attempt_id];
+      if (result && state.attempts[result.attempt_id]?.retired && Object.hasOwn(result, 'earned')) result.earned = 0;
+      return result;};
     const locked=()=>globalThis.navigator?.locks?.request?navigator.locks.request(key,run):run();queue=queue.catch(()=>{}).then(locked);return queue;
   }
   read();for(const t of Object.values(state.attempts))if(!t.practice&&!t.synced)dirty.add(t.attempt_id);
   return {
     get attempts(){return state.attempts;},get status(){return status;},
-    draft(assessment){const t=state.attempts[state.drafts[quizKey(assessment)]];return t&&!t.submitted_at?t:null;},
+    draft(assessment){const t=state.attempts[state.drafts[quizKey(assessment)]];return t&&!t.submitted_at&&!archived(t)?t:null;},
+    isArchived: archived,
     summary(assessment){return summaryFor(bank,state.attempts,assessment);},
     async load(){
       if(!client||userId==='guest')return;
       try{
-        const {data,error}=await bounded(client.from('quiz_attempts_v1').select('attempt_id,assessment_id,content_version,seed,presented,responses,position,started_at,submitted_at'));
+        const {data,error}=await bounded(client.from('quiz_attempts_v1').select('attempt_id,assessment_id,content_version,seed,presented,responses,position,started_at,submitted_at,correct'));
         if(error)throw error;
-        for(const row of (data||[]).sort((a,b)=>a.started_at.localeCompare(b.started_at))){try{validateAttempt(bank,{...row,practice:false});}catch{continue;}
-          const old=state.attempts[row.attempt_id];if(!old||row.submitted_at)state.attempts[row.attempt_id]={...row,practice:false,synced:true};
+        for(const row of (data||[]).sort((a,b)=>a.started_at.localeCompare(b.started_at))){
+          const old=state.attempts[row.attempt_id];
+          if(!old||row.submitted_at)state.attempts[row.attempt_id]={...row,practice:false,synced:true};
+          if (row.submitted_at) dirty.delete(row.attempt_id);
+          if (archived(state.attempts[row.attempt_id])) continue;
           const draft=state.attempts[state.drafts[quizKey(row)]];
           if(row.submitted_at&&draft?.attempt_id===row.attempt_id)delete state.drafts[quizKey(row)];
           else if(!row.submitted_at&&(!draft||draft.submitted_at||row.started_at>draft.started_at))state.drafts[quizKey(row)]=row.attempt_id;

@@ -33,8 +33,13 @@ function catalog(){
  host.append(grid);
  const practice=el('section',undefined,'quiz-practice');practice.append(el('h2','Reinforce what you missed'),el('p','Practise five questions selected from your mistakes, with another example where available. Reinforcement has no XP reward.'),button('Start reinforcement',()=>action(()=>store.practice())));host.append(practice);
  const history=el('details');history.append(el('summary','Your attempt history'));const list=el('ul');
- for(const t of Object.values(store.attempts).filter(t=>t.submitted_at).sort((a,b)=>b.submitted_at.localeCompare(a.submitted_at))){
-  let grade;try{grade=gradeAttempt(bank,t);}catch{continue;}
+ for(const t of Object.values(store.attempts).filter(t=>t.submitted_at || store.isArchived(t)).sort((a,b)=>(b.submitted_at||b.started_at).localeCompare(a.submitted_at||a.started_at))){
+  if (store.isArchived(t)) {
+   const score = Number.isInteger(t.correct) ? ` · ${t.correct}/5 recorded` : '';
+   list.append(el('li', `${t.assessment_id} · v${t.content_version} · archived${score}`));
+   continue;
+  }
+  const grade=gradeAttempt(bank,t);
   const row=el('li');row.append(button(`${t.practice?'Reinforcement':assessmentFor(t)?.title||t.assessment_id} · ${grade.correct}/5 · v${t.content_version}`,()=>{current=t.attempt_id;message='';render();}));list.append(row);
  }
  history.append(list);host.append(history);
@@ -81,7 +86,7 @@ function attemptScreen(t){
 }
 function render(){
  if(!host||host.hidden||!store||!bank)return;const scroll=host.scrollTop;host.replaceChildren(button('Back to Syntax Generator',()=>config.onExit?.()));
- if(current){host.append(button('← All quizzes',()=>{current=null;message='';render();}));const t=store.attempts[current];if(!t){current=null;catalog();}else if(t.submitted_at)review(t);else attemptScreen(t);}else catalog();
+ if(current){host.append(button('← All quizzes',()=>{current=null;message='';render();}));const t=store.attempts[current];if(!t){current=null;catalog();}else if(store.isArchived(t)){current=null;message='This assessment version is archived. Your attempt was retained.';catalog();}else if(t.submitted_at)review(t);else attemptScreen(t);}else catalog();
  footer();host.scrollTop=scroll;
 }
 export function initQuizzes(options={}){

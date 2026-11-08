@@ -1,3 +1,4 @@
+import { accountUserId } from './session-scope.js';
 import { fromCanonicalEnvelope } from './syntax-builder.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { loadClerk, createSupabaseClient, currentUserEmail, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
@@ -17,6 +18,7 @@ import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js';
 import { initSyntaxBuilder, openBuilderView, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
+import { createLeaderboardView } from './leaderboard.js';
 import {
   achievementIcons, activeAchievementCategory, initAchievementCategorySelector,
 } from './achievements.js';
@@ -25,32 +27,45 @@ let clerk = null;
 let supabase = null;
 let isGuest = true;
 let activeSessionId = null;
+let activeUserId = null;
 let activeWorkspaceView = null;
+let leaderboardView = null;
 
 try {
   clerk = await loadClerk();
-  if (clerk?.session) {
-    isGuest = false;
-    activeSessionId = clerk.session.id;
-  }
-  // Account operations use the Clerk session token.
-  supabase = await createSupabaseClient();
-  clerk?.addListener(() => {
-    const sessionId = clerk.session?.id ?? null;
-    if (sessionId !== activeSessionId) {
-      // Identity changed (account switch, sign-in, or sign-out): the
-      // in-memory history caches belong to the previous identity, so drop
-      // them. History reloads lazily from Supabase on the next drawer open.
-      activeSessionId = sessionId;
-      recordedTexts.clear();
-      cachedHistory = [];
-    }
-    isGuest = !clerk.session;
-    updateAuthState();
-  });
+  activeUserId = accountUserId(clerk);
+  activeSessionId = activeUserId ? clerk.session.id : null;
+  isGuest = !activeUserId;
+  supabase = createSupabaseClient(clerk);
 } catch (err) {
   console.warn('Authentication skipped or failed; running in guest mode:', err);
   isGuest = true;
+}
+
+function refreshAccount() {
+  const userId = accountUserId(clerk);
+  const sessionId = userId ? clerk.session.id : null;
+  if (sessionId === activeSessionId && userId === activeUserId) return;
+  activeUserId = userId;
+  activeSessionId = sessionId;
+  isGuest = !userId;
+  try {
+    supabase = createSupabaseClient(clerk);
+  } catch {
+    supabase = null;
+  }
+  document.getElementById('logPanel')?.replaceChildren();
+  if (workspaceView === 'tutor') {
+    if (state === STATES.PROCESSING) transition(STATES.IDLE, 'account changed');
+    setLoadingIndicator(false);
+    startNewSession();
+    clearTreeAuthorityNotice();
+  }
+  recordedTexts.clear();
+  cachedHistory = [];
+  closeHistoryDrawer();
+  renderHistoryItems();
+  updateAuthState();
 }
 
 const STATES = { IDLE: 'IDLE', PROCESSING: 'PROCESSING', VIEWING: 'VIEWING', EXPLORING: 'EXPLORING', END: 'END' };
@@ -400,6 +415,11 @@ export function boot() {
   });
   // The full-bleed views wire their dismissal first, so Escape leaves a view
   // before anything else reacts to it.
+  leaderboardView = createLeaderboardView(document.getElementById('leaderboardView'), {
+    client: () => supabase,
+    account: () => progressAvailable() ? supabase : null,
+    lifetime: loadPlayerProgress,
+  });
   initWorkspaceViews();
   // The achievements category selector: picking a category re-filters the
   // grid.
@@ -410,14 +430,16 @@ export function boot() {
   initSidebar();
   // The rail starts on the Syntax Generator: exactly one active destination.
   setActiveNav(workspaceView);
-  initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView, userId: () => clerk?.user?.id || null });
-  initQuizzes({ userId: () => clerk?.user?.id || null, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode });
-  initLessons({ userId: () => clerk?.user?.id || null, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode });
+  initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView, userId: () => activeUserId });
+  initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode });
+  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode });
   initResizers();
   syncInputClearBtn();
   // The one auth modal: the sidebar login and the lessons gateway both land
   // in it.
   initAuthModal();
+  clerk?.addListener(refreshAccount);
+  refreshAccount();
   transition(STATES.IDLE, 'system ready');
   log(`SynTutor engine ready \u2014 full-stack pipeline: spaCy + benepar + rule matrix (${isGuest ? 'guest mode' : 'authenticated'})`);
   maybeStartOnboarding();
@@ -750,10 +772,12 @@ function openWorkspaceView(name) {
   setOverlayView(conf.view);
 
   if (name === 'achievements') renderAchievements();
+  if (name === 'leaderboard') leaderboardView.open();
 }
 
 // Put every full-bleed view away and bring the workspace back.
 function closeWorkspaceViews() {
+  leaderboardView?.close();
   for (const conf of Object.values(WORKSPACE_VIEWS)) {
     const view = document.getElementById(conf.id);
     if (!view) continue;
@@ -844,7 +868,7 @@ async function renderAchievements() {
   const fill = document.getElementById('achievementsProgressFill');
   const label = document.getElementById('achievementsProgressLabel');
   const renderId = ++achievementsRender;
-  const sessionId = activeSessionId;
+  const client = supabase;
   const signedIn = progressAvailable();
   if (label) label.textContent = signedIn ? 'Loading verified XP…' : 'Sign in to track your progress.';
   if (fill) fill.style.width = '0%';
@@ -853,7 +877,7 @@ async function renderAchievements() {
   const [rows, stats] = await Promise.all([
     loadAchievementBadges(), signedIn ? loadPlayerProgress() : null,
   ]);
-  if (sessionId !== activeSessionId || renderId !== achievementsRender) return;
+  if (client !== supabase || renderId !== achievementsRender) return;
 
   const category = activeAchievementCategory();
   const visible = (rows || []).filter(achievement =>
@@ -1030,8 +1054,8 @@ function updateAuthState() {
   // Publish the session state: the lesson catalog, the achievements and the
   // history all follow it (locks, progress, migration).
   setAuthState({
-    authenticated: !isGuest && Boolean(clerk?.user?.id),
-    user: clerk?.user || null,
+    authenticated: Boolean(activeUserId),
+    user: activeUserId ? clerk.user : null,
   });
 
   const chip = document.querySelector('#identityChip');
@@ -1062,6 +1086,7 @@ function updateAuthState() {
   // session and disappears for a guest — and an open drawer closes with it.
   setHistoryEnabled(isAccountSession(clerk));
   if (activeWorkspaceView === 'achievements') renderAchievements();
+  if (activeWorkspaceView === 'leaderboard') leaderboardView.open();
   renderProfileMenu();
 }
 
@@ -1362,10 +1387,10 @@ function wireEvents() {
     if (isGuest || !supabase || !clerk?.user?.id || !cachedHistory.length) return;
     if (!confirm('Clear all analysis history? This action cannot be undone.')) return;
 
-    const { error } = await supabase
-      .from('analysis_history')
-      .delete()
-      .eq('user_id', clerk.user.id);
+    const client = supabase;
+    const { error } = await client.from('analysis_history').delete()
+      .eq('user_id', activeUserId);
+    if (client !== supabase) return;
 
     if (error) {
       alert('Failed to clear history: ' + error.message);
@@ -1729,15 +1754,19 @@ async function runPipeline(opts = {}) {
   // Only the Grammar Tutor runs the analysis pipeline: the Lessons module
   // and the Syntax Builder own the workspace in their own way.
   if (workspaceView !== 'tutor') return;
+  const client = supabase;
+  const identity = activeSessionId;
   transition(STATES.PROCESSING, 'user submits text');
   setLoadingIndicator(true);
   try {
     await executePipeline(opts);
   } finally {
-    setLoadingIndicator(false);
-    if (liveReparsePending) {
-      liveReparsePending = false;
-      scheduleLiveReparse();
+    if (client === supabase && identity === activeSessionId) {
+      setLoadingIndicator(false);
+      if (liveReparsePending) {
+        liveReparsePending = false;
+        scheduleLiveReparse();
+      }
     }
   }
 }
@@ -1752,6 +1781,9 @@ function setLoadingIndicator(show) {
 }
 
 async function executePipeline(opts = {}) {
+  const historyClient = supabase;
+  const historyOwner = activeUserId;
+  const identity = activeSessionId;
   clearOverlay();
   renderer.select(null);
   renderNodeDetail(null, null, null);
@@ -1777,6 +1809,7 @@ async function executePipeline(opts = {}) {
   let payload;
   try {
     const out = await postParse(text, opts.index);
+    if (historyClient !== supabase || identity !== activeSessionId) return;
     if (out.error) {
       const { status, error, hint } = out.error;
       const title = status === 503
@@ -1788,6 +1821,7 @@ async function executePipeline(opts = {}) {
     payload = out.payload;
     setTreeAuthorityNotice(payload);
   } catch (_e) {
+    if (historyClient !== supabase || identity !== activeSessionId) return;
     failPipeline('Backend unreachable', [
       'The SynTutor NLP server is not responding.',
       'Start it with:  python3 server/app.py',
@@ -1856,15 +1890,16 @@ async function executePipeline(opts = {}) {
     // History is account-only: a guest session records nothing, so an anonymous
     // query stays ephemeral.
     if (shouldPersistHistory({ isNavigation, text, recorded: recordedTexts })
-        && supabase && clerk?.user?.id) {
+        && historyClient && historyOwner && historyClient === supabase) {
     try {
-      const { error: insertError } = await supabase.from('analysis_history').insert({
-        user_id: clerk.user.id,
+      const { error: insertError } = await historyClient.from('analysis_history').insert({
+        user_id: historyOwner,
         sentence: text,
         is_valid: payload.summary.verdict === 'grammatical',
         constraints_fired: payload.summary.constraints_fired,
       });
 
+      if (historyClient !== supabase) return;
       if (insertError) {
         console.warn('Failed to log history to Supabase:', insertError.message);
         log(`Warning: Failed to save analysis history \u2014 ${insertError.message}`);
@@ -2074,23 +2109,21 @@ async function loadAndRenderHistory() {
   if (!container) return;
   container.innerHTML = '<p class="history-empty">Loading past analyses...</p>';
 
-  if (!isGuest && supabase) {
-    const { data, error } = await supabase
-      .from('analysis_history')
-      .select('id, sentence, is_valid, constraints_fired, created_at')
-      .order('created_at', { ascending: false })
-      .limit(50);
-
-    if (error) {
-      container.textContent = '';
-      const err = document.createElement('p');
-      err.className = 'history-empty';
-      err.style.color = 'var(--err)';
-      err.textContent = `Error loading history: ${error.message}`;
-      container.appendChild(err);
+  const client = supabase;
+  if (!isGuest && client) {
+    try {
+      const { data, error } = await client.from('analysis_history')
+        .select('id, sentence, is_valid, constraints_fired, created_at')
+        .order('created_at', { ascending: false })
+        .limit(50);
+      if (client !== supabase) return;
+      if (error) throw error;
+      cachedHistory = data || [];
+    } catch {
+      if (client !== supabase) return;
+      container.textContent = 'History is unavailable. Reopen the drawer to retry.';
       return;
     }
-    cachedHistory = data || [];
   } else {
     cachedHistory = [];
   }
@@ -2168,10 +2201,10 @@ function renderHistoryItems() {
       if (isGuest || !supabase || !clerk?.user?.id) return;
       delBtn.disabled = true;
 
-      const { error } = await supabase
-        .from('analysis_history')
-        .delete()
+      const client = supabase;
+      const { error } = await client.from('analysis_history').delete()
         .eq('id', entry.id);
+      if (client !== supabase) return;
 
       if (error) {
         alert('Failed to delete item: ' + error.message);

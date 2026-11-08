@@ -41,9 +41,9 @@ Current acceptance: [8 November M1–M3 report](../reports/milestones-01-03-acce
 - [x] **06 — Syntax Builder integration** — canonical editing/evaluation verified; see [M6 acceptance](../reports/milestone-06-acceptance-2026-11-08.md).
 - [x] **07 — XP, levels, and progression rules** — repository acceptance complete. Hosted staging and production activation are tracked separately. See the [M7 report](../reports/milestone-07-progression-2026-11-08.md).
 - [x] **08 — Achievements and mastery milestones** — repository verification and scoped badge review complete. Hosted staging and deployment remain separate. See the [M8 report](../reports/milestone-08-achievements-2026-11-08.md).
-- [ ] **09 — Leaderboard and player privacy**
-- [ ] **10 — UI/UX, tree layout, and correction presentation** — implementation and engineering screenshot review complete. Owner sign-off and independent learner sessions pending. See the [M10 report](../reports/milestone-10-ui-prototype-2026-11-08.md).
-- [ ] **11 — Cross-feature integration and migration**
+- [ ] **09 — Leaderboard and player privacy** — repository implementation and privacy verification complete. Public release remains disabled pending hosted review. See the [M9 report](../reports/milestone-09-leaderboard-2026-11-08.md).
+- [ ] **10 — UI/UX, tree layout, and correction presentation** — both CI workflows passed on PR #41. Owner sign-off and independent learner sessions deferred until after Prompt 12 at the owner’s direction. See the [M10 report](../reports/milestone-10-ui-prototype-2026-11-08.md).
+- [ ] **11 — Cross-feature integration and migration** — repository integration implemented and locally verified. Integrated CI and owner staging review are separate gates. See the [M11 report](../reports/milestone-11-integration-2026-11-08.md).
 - [ ] **12 — Full validation, regression testing, and release readiness**
 
 ---

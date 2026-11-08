@@ -8,6 +8,8 @@ on:
     branches:
       - main
       - feature/milestone-07-*
+      - feature/milestone-08-*
+      - feature/milestone-10-*
   workflow_dispatch:
 
 jobs:
