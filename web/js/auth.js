@@ -94,13 +94,13 @@ const AUTH_MODAL_COPY = {
   },
   sidebar_profile: {
     title: 'Welcome to SynTutor',
-    subtitle: 'Sign in or create an account to sync your syntax trees and track achievements.',
+    subtitle: 'Sign in or create an account to keep private analysis history and track learning progress.',
     dismiss: 'Continue as guest',
   },
   // A second account while already signed in: there is no guest to return to.
   add_account: {
     title: 'Welcome to SynTutor',
-    subtitle: 'Sign in or create an account to sync your syntax trees and track achievements.',
+    subtitle: 'Sign in or create an account to keep private analysis history and track learning progress.',
     dismiss: null,
   },
 };
