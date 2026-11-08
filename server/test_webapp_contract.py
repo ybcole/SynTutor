@@ -71,6 +71,24 @@ class FlaskParseContractTests(unittest.TestCase):
                 self.assertEqual(response.get_json()["error"], "request exceeds 250000 bytes")
                 build.assert_not_called()
 
+    def test_words_rejects_non_object_or_non_string_entries(self):
+        for body, expected in [
+            (["bad", "shape"], 400),
+            ({"words": [42]}, 422),
+            ({"words": ["hello", None]}, 422),
+        ]:
+            with self.subTest(body=body), patch("webapp.word_info") as words:
+                response = self.client.post("/api/words", json=body)
+                self.assertEqual(response.status_code, expected)
+                words.assert_not_called()
+
+    def test_words_accepts_string_entries(self):
+        with patch("webapp.word_info", return_value=[{"word": "hello"}]) as words:
+            response = self.client.post("/api/words", json={"words": ["hello"]})
+        self.assertEqual(response.status_code, 200)
+        words.assert_called_once_with(["hello"])
+        self.assertEqual(response.get_json(), {"results": [{"word": "hello"}]})
+
     def test_successful_build_returns_payload(self):
         expected = {"br_analysis": {"status": "unresolved"}}
         with patch("webapp.build_payload", return_value=expected) as build:
