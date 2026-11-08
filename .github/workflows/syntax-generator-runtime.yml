@@ -3,6 +3,7 @@ name: Syntax Generator parser-backed runtime checks
 on:
   push:
     branches:
+      - main
       - milestone-02-syntax-generator
   pull_request:
     branches:
