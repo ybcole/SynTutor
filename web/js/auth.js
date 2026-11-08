@@ -1,3 +1,4 @@
+import { accountUserId, bindSessionToken } from './session-scope.js';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { CLERK_CONFIG, SUPABASE_CONFIG } from './config.js';
 
@@ -81,51 +82,6 @@ export function setAuthState(next) {
   }
 }
 
-// Preserve the pre-versioned guest lesson history migration. Local XP is
-// unverified, so it stays on the device and cannot be added to account XP.
-const GUEST_LESSONS_KEY = 'syntutor_guest_completed_lessons';
-
-async function migrateGuestLessons() {
-  let lessons;
-  try {
-    lessons = JSON.parse(localStorage.getItem(GUEST_LESSONS_KEY) || '[]');
-  } catch {
-    return;
-  }
-  if (!Array.isArray(lessons) || !lessons.length) return;
-  const clerk = await loadClerk();
-  const supabase = await createSupabaseClient();
-  const userId = clerk?.user?.id;
-  if (!userId || !supabase) return;
-
-  try {
-    for (const ruleId of lessons) {
-      const { data: row } = await supabase
-        .from('quiz_progress')
-        .select('completed_count, perfect_count')
-        .eq('user_id', userId)
-        .eq('rule_id', ruleId)
-        .maybeSingle();
-      const { error } = await supabase.from('quiz_progress').upsert({
-        user_id: userId,
-        rule_id: ruleId,
-        completed_count: (Number(row?.completed_count) || 0) + 1,
-        perfect_count: Number(row?.perfect_count) || 0,
-        last_completed_at: new Date().toISOString(),
-      }, { onConflict: 'user_id,rule_id' });
-      if (error) throw new Error(error.message);
-    }
-  } catch (err) {
-    // A failed transfer keeps the local copy: nothing is lost, and the next
-    // sign-in tries again.
-    console.warn('Failed to migrate the guest progress:', err);
-    return;
-  }
-  try {
-    localStorage.removeItem(GUEST_LESSONS_KEY);
-  } catch (e) { /* storage unavailable */ }
-}
-
 // ── The auth modal ───────────────────────────────────────────────────────
 // One dialog for the whole app: the sidebar login and the lessons gateway
 // open this very same modal. Only the framing changes — the title, the
@@ -138,13 +94,13 @@ const AUTH_MODAL_COPY = {
   },
   sidebar_profile: {
     title: 'Welcome to SynTutor',
-    subtitle: 'Sign in or create an account to sync your syntax trees and track achievements.',
+    subtitle: 'Sign in or create an account to keep private analysis history and track learning progress.',
     dismiss: 'Continue as guest',
   },
   // A second account while already signed in: there is no guest to return to.
   add_account: {
     title: 'Welcome to SynTutor',
-    subtitle: 'Sign in or create an account to sync your syntax trees and track achievements.',
+    subtitle: 'Sign in or create an account to keep private analysis history and track learning progress.',
     dismiss: null,
   },
 };
@@ -345,8 +301,6 @@ async function submitAuthModal() {
       }
       await clerk.setActive({ session: signIn.createdSessionId });
     }
-    // The account exists: the guest's progress follows them onto it.
-    await migrateGuestLessons();
     closeAuthModal();
     setAuthState({ authenticated: true, user: clerk.user });
   } catch (err) {
@@ -373,11 +327,7 @@ export function loadClerk() {
 // at all, and Clerk marks an anonymous session explicitly — neither may use
 // the account-only features.
 export function isAccountSession(clerkInstance) {
-  const clerk = clerkInstance || window.Clerk;
-  const session = clerk?.session;
-  if (!session) return false;
-  if (session.is_anonymous) return false;
-  return Boolean(clerk?.user?.id);
+  return Boolean(accountUserId(clerkInstance || window.Clerk));
 }
 
 // The signed-in learner's email address. Clerk keeps the addresses in a list
@@ -395,23 +345,11 @@ export function currentUserEmail(clerkInstance) {
 // ── Supabase client authenticated with the Clerk session token ──
 // Clerk is configured as a third-party auth provider in Supabase, so the
 // Clerk session token is accepted as a Supabase bearer token.
-let supabasePromise = null;
-
-export function createSupabaseClient() {
-  if (!supabasePromise) {
-    supabasePromise = (async () => {
-      const clerk = await loadClerk();
-      return createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey, {
-        auth: {
-          persistSession: false,
-          autoRefreshToken: false,
-          detectSessionInUrl: false,
-        },
-        accessToken: async () => (clerk.session ? await clerk.session.getToken() : null),
-      });
-    })();
-  }
-  return supabasePromise;
+export function createSupabaseClient(clerk) {
+  return createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey, {
+    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+    accessToken: bindSessionToken(clerk),
+  });
 }
 
 // ── Custom sign-in / sign-up form (Clerk) ──

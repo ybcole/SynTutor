@@ -20,12 +20,24 @@ window.progressionCalls = [];
 """
 CLIENT = """
 export const createClient = () => ({
-  rpc: method => {
+  rpc: (method, args) => {
     window.progressionCalls.push(method);
     return { abortSignal: async () => {
       if (window.progressionOffline) return { error: { message: 'Unavailable' } };
       if (method === 'get_my_progression') {
         return { data: { xp: 110, lesson_xp: 90, quiz_xp: 20, level: 1 }, error: null };
+      }
+      if (method === 'get_leaderboard') {
+        const enabled = Boolean(window.rankingsEnabled);
+        return { data: { enabled, period_start: '2026-11-02T00:00:00Z',
+          period_end: args.p_period === 'weekly' ? '2026-11-09T00:00:00Z' : '2027-01-01T00:00:00Z',
+          entries: enabled && window.publicAlias ? [{ alias: window.publicAlias, xp: 10, rank: 1 }] : [],
+          opted_in: Boolean(window.publicAlias), my_alias: window.publicAlias,
+          my_rank: window.publicAlias ? 1 : null } };
+      }
+      if (method === 'set_my_leaderboard_preference') {
+        window.publicAlias = args.p_opt_in ? args.p_alias : null;
+        return { data: null, error: null };
       }
       if (method !== 'get_my_achievements') throw Error('Unexpected RPC');
       const signedIn = Boolean(Clerk.session);
@@ -91,7 +103,21 @@ try:
         assert sorted(calls) == ["get_my_achievements", "get_my_progression"]
         leaderboard.click()
         expect(page.get_by_text("Public rankings are paused.", exact=False)).to_be_visible()
-        assert page.evaluate("window.progressionCalls") == calls
+        assert sorted(page.evaluate("window.progressionCalls")[len(calls):]) == [
+            "get_leaderboard", "get_my_progression"]
+        expect(page.get_by_role("button", name="Join public rankings")).to_be_hidden()
+        page.evaluate("window.rankingsEnabled = true")
+        page.get_by_label("Ranking period").select_option("seasonal")
+        expect(page.get_by_text("No verified XP ranked yet.", exact=False)).to_be_visible()
+        expect(page.locator("#leaderboardStatus")).to_contain_text("2027")
+        page.get_by_label("Public alias").fill("TreeLearner")
+        page.get_by_role("button", name="Join public rankings").click()
+        expect(page.get_by_role("cell", name="TreeLearner")).to_be_visible()
+        expect(page.locator("#leaderboardRank")).to_have_text("Your rank · #1")
+        page.get_by_role("button", name="Leave public rankings").click()
+        expect(page.get_by_text("You left public rankings.")).to_be_visible()
+        expect(page.get_by_role("cell", name="TreeLearner")).to_have_count(0)
+        expect(page.locator("#leaderboardLifetime")).to_contain_text("110 verified XP")
 
         page.evaluate("window.progressionOffline = true")
         achievements.click()
@@ -111,4 +137,4 @@ finally:
     server.shutdown()
     server.server_close()
 
-print("PASS: verified XP and next level, badge progress and timestamps, category filtering, offline and sign-out states, and no public ranking requests.")
+print("PASS: verified XP and next level, badge progress and timestamps, category filtering, offline and sign-out states, and paused, seasonal, join and leave ranking states.")

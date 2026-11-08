@@ -1,0 +1,31 @@
+# Milestone 11 · Integration and migration
+
+Repository integration on 8 November 2026 (Asia/Manila). This branch combines the engineering changes from PRs #40 and #41. Both of those branches passed model-free and parser-backed CI before integration. The owner deferred the manual privacy, screenshot and learner gates until after Prompt 12. The public leaderboard migration defaults to disabled. No hosted migration was applied.
+
+## Integrated contracts and fixes
+
+| Area | Behavior and evidence |
+|---|---|
+| Generator and Builder | The parser exposes diagnostic candidates and the canonical B-R envelope separately. The Builder consumes a supported envelope and returns canonical evaluation and shared evidence. Parser-backed browser parity covers the handoff. M10 verifies token alignment before applying a correction preview. |
+| Account transitions | The Supabase client belongs to one Clerk subject and session. Requests fail closed if the account changes before or during token retrieval. The guest client stays anonymous. Token refresh in the same session leaves the workspace intact. Old history and analysis responses cannot populate a new account’s UI. A pending parse also stops owning the canvas when the learner navigates away. Builder drafts remain local to their owner. |
+| Lessons and assessments | Lesson progress and quiz attempts stay separate and versioned. Current quiz manifests compare ordered item IDs, versions and option IDs independent of JSON object key order. This permits reloads from PostgreSQL JSONB without weakening manifest validation. |
+| Retired data | Old quiz attempts and drafts are retained and shown as archived when their content is unavailable. A known retired version does not block current attempts or contribute to their best scores or reinforcement. A server-recorded score can still be displayed in history. Existing lesson records stay keyed by lesson and version. A superseded lesson version remains in storage and does not satisfy prerequisites for a new version unless the new catalog explicitly references it. |
+| XP, achievements and rankings | The signed-in account journey completes a lesson and a quiz and shows 25 verified XP and matching badges. The disposable test enables the board, tests consent and withdrawal, and disables it again. In normal deployment the flag starts off. Lifetime XP and badges stay private. |
+| History and old counters | The new migration preserves all rows. It narrows history grants to owner-policy reads, inserts and deletes. Legacy parser-stage quiz counters become owner-readable history. The former automatic guest counter upload was removed because it could duplicate counts on retry and has no current awarding consumer. Existing device records and server rows remain available for recovery. |
+
+## Deployment and recovery
+
+1. Use a matching frontend/backend revision. Confirm that the chosen Clerk project and the Supabase third-party auth configuration belong to the staging environment. Use only browser publishable keys in the frontend. Verify Generator `/api/parse`, shared `/api/explain`, and Builder `/api/evaluate` against the same backend revision.
+2. Back up the database and record applied migrations. Apply only missing files in timestamp order. A fresh database starts with the history and legacy migrations, then the versioned lesson schema and seed, then the quiz schema and seed. After those, apply `20261108000004_verified_progression.sql`, `20261108000005_achievements.sql`, `20261108000006_private_leaderboard.sql`, and `20261108000007_account_integration.sql`. Deploy the matching frontend after the migrations.
+3. Use two real Clerk accounts and a signed-out session. Check private history and progress, switch accounts while a save is queued, complete a lesson and quiz, reload the quiz history, replay the awards, and compare the XP ledger and badges. For the ranking check, temporarily enable the release flag in staging, use a test alias and check withdrawal, then disable it. Confirm that public responses have only rank, alias and period XP in each row.
+4. Inspect old account rows before and after cutover. Legacy UUID history has no automatic Clerk identity mapping. An administrator can recover an account’s history only after verifying the old-to-new account mapping. Do not infer the mapping from a name or email alone. Keep pre-M7 totals in the restricted snapshot and use M7’s ledger as verified XP.
+5. For frontend rollback, leave the database protections and award records in place and deploy the prior known-compatible frontend/backend pair. Disable the leaderboard flag if there is a privacy or ranking issue. Older legacy clients may lose the obsolete counter-write behavior. Keep their stored counters and local progress for recovery. A failed M11 migration rolls back its grant/policy transaction.
+
+## Verification and release decisions
+
+- Native PostgreSQL verifies award races, migrations over existing legacy rows, current owner-only history CRUD, legacy counter write denial, and XP/badge preservation. The Chromium integration test uses real PostgreSQL RLS and RPCs with a test-only token adapter. Hosted Clerk JWT verification remains part of staging.
+- Browser and unit coverage includes JSONB reload, obsolete versions, account-token races, private history switching, local Builder drafts, and the lesson-to-quiz-to-XP/badge/leaderboard journey. Existing source, parser, Builder, and UI checks remain in CI.
+- Source/crosswalk decisions stay in the source governance reports. Unreviewed Cambridge constraints remain disabled and canonical normalization continues to report unsupported cases. Production rate-limit policy, evaluation corpus comparison, and full release evidence belong to Prompt 12.
+- Current observability uses per-request API outcomes, account sync status, CI, and owner-scoped persisted progress. Use counts and error categories when reporting staging findings. Keep learner sentences, auth tokens, and raw user identifiers out of shared logs and screenshots.
+
+**Proceed to Prompt 12 repository verification** after this integrated branch passes CI. **Hold hosted deployment and rankings activation** for owner staging checks, Milestone 10 screenshot and independent learner review, and Milestone 12 release acceptance.

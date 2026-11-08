@@ -60,17 +60,20 @@ Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-202
 
 ## 4. Corrected sentence visualization
 
-- [ ] Preserve original sentence, token spans, and edit operation.
-- [ ] Generate corrected sentence and corrected tree independently from original input.
-- [ ] Align original tokens to corrected tokens.
-- [ ] Support replacement, insertion, deletion, and multi-token edits.
-- [ ] Display original incorrect word with strikethrough.
-- [ ] Display corrected word directly beneath/adjacent to the original.
-- [ ] Ensure only corrected word appears as the actual tree leaf.
-- [ ] Preserve full corrected sentence and punctuation.
-- [ ] Make original/corrected views reversible.
-- [ ] Add accessible text alternatives for correction annotations.
-- [ ] Test token alignment when punctuation, contractions, and token counts change.
+- [x] Preserve original sentence, token spans, and edit operation.
+- [x] Generate corrected sentence and corrected tree independently from original input.
+- [x] Align original tokens to corrected tokens.
+- [x] Support replacement, insertion, deletion, and multi-token edits.
+- [x] Display original incorrect word with strikethrough.
+- [x] Display corrected word directly beneath/adjacent to the original.
+- [x] Ensure only corrected word appears as the actual tree leaf.
+- [x] Preserve full corrected sentence and punctuation.
+- [x] Make original/corrected views reversible.
+- [x] Add accessible text alternatives for correction annotations.
+- [x] Test token alignment when punctuation, contractions, and token counts change.
+
+
+**Verification note (9 November 2026):** The eleven correction-visualization requirements above are checked for the implemented M10 prototype and its current M11 integration: `web/js/correction.js` derives edits from saved token offsets, `web/js/main.js` separately requests a re-parse and refuses mismatched corrected leaves, and `web/js/ui.js` renders the complete sentence, semantic deletion/insertion annotations, the corrected tree when available, and the reversible original view. `scripts/test_tree_layout.js`, `scripts/test_ui_prototype_browser.py`, and parser-backed correction-token checks are included in the green M11 CI head (`95b084d`). This confirms automated repository behavior only, **not** independent learner usability, screen-reader audit, owner design sign-off, hosted Clerk/Supabase verification, or production deployment. Preserve those later gates as unchecked.
 
 ## 5. Lessons
 
@@ -139,14 +142,16 @@ Implementation evidence and deployment steps are in the [M7 report](../reports/m
 
 ## 9. Leaderboard
 
-- [ ] Decide opt-in/opt-out default.
-- [ ] Add user-chosen public alias.
-- [ ] Remove raw Clerk user IDs from public payloads.
-- [ ] Add weekly/seasonal ranking model.
-- [ ] Retain personal lifetime XP privately.
-- [ ] Secure XP updates through trusted server/RPC validation.
-- [ ] Add tie-breaker policy.
-- [ ] Test RLS/privacy and unauthorized update attempts.
+- [x] Decide opt-in/opt-out default.
+- [x] Add user-chosen public alias.
+- [x] Remove raw Clerk user IDs from public payloads.
+- [x] Add weekly/seasonal ranking model.
+- [x] Retain personal lifetime XP privately.
+- [x] Secure XP updates through trusted server/RPC validation.
+- [x] Add tie-breaker policy.
+- [x] Test RLS/privacy and unauthorized update attempts.
+
+The [M9 report](../reports/milestone-09-leaderboard-2026-11-08.md) records verification and the hosted privacy approval gate. Public rankings default to disabled.
 
 ## 10. Achievements
 
@@ -176,6 +181,16 @@ The [M8 report](../reports/milestone-08-achievements-2026-11-08.md) records the 
 - [ ] Conduct usability sessions with learners not involved in implementation.
 
 See the [M10 prototype report](../reports/milestone-10-ui-prototype-2026-11-08.md) for screenshot review and learner usability checks.
+
+## 11a. Cross-feature integration
+
+- [x] Verify canonical handoff and shared evidence across Generator, Builder and content.
+- [x] Bind account requests and browser state to the active session.
+- [x] Verify versioned lesson and quiz progress, private XP and badges, and opt-in rankings together.
+- [x] Test migration on representative existing account data and document recovery.
+- [ ] Review integrated rollout with real Clerk sessions and the staging database.
+
+See the [M11 report](../reports/milestone-11-integration-2026-11-08.md).
 
 ## 12. Quality, privacy, release
 

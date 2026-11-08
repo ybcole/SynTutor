@@ -44,7 +44,11 @@ export function validateAttempt(bank,attempt) {
     const a=bank.assessments.find(a=>quizKey(a)===quizKey(attempt));if(!a)throw new Error('Unknown assessment version.');
     const expected=makeAttempt(bank,a,attempt.seed,attempt.attempt_id).presented;
     // The full deterministic order is preserved for review and reload.
-    if(JSON.stringify(expected)!==JSON.stringify(attempt.presented))throw new Error('Assessment manifest does not match its seed/blueprint.');
+    if (expected.some((ref, index) => {
+      const actual = attempt.presented[index];
+      return itemKey(ref) !== itemKey(actual)
+        || JSON.stringify(ref.option_order) !== JSON.stringify(actual.option_order);
+    })) throw new Error('Assessment manifest does not match its seed/blueprint.');
   }
   for(let i=0;i<items.length;i++){
     const order=attempt.presented[i].option_order;
@@ -55,6 +59,14 @@ export function validateAttempt(bank,attempt) {
   if(!Number.isInteger(attempt.position)||attempt.position<0||attempt.position>4)throw new Error('Invalid question position.');
   return items;
 }
+export function canReviewAttempt(bank, attempt) {
+  try {
+    validateAttempt(bank, attempt);
+    return true;
+  } catch {
+    return false;
+  }
+}
 export function gradeAttempt(bank,attempt) {
   const items=validateAttempt(bank,attempt);
   const results=items.map(q=>({item_id:q.item_id,content_version:q.content_version,pool_id:q.pool_id,lesson_id:q.lesson_id,concept_ids:q.concept_ids,outcome_ids:q.outcome_ids,
@@ -63,14 +75,14 @@ export function gradeAttempt(bank,attempt) {
   return {correct,incorrect:5-correct,target_xp:attempt.practice?0:targetXp(correct),results};
 }
 export function summaryFor(bank,attempts,assessment) {
-  const rows=Object.values(attempts).filter(t=>!t.practice&&t.submitted_at&&quizKey(t)===quizKey(assessment));
+  const rows=Object.values(attempts).filter(t=>!t.practice&&!t.retired&&t.submitted_at&&quizKey(t)===quizKey(assessment)&&canReviewAttempt(bank,t));
   const graded=rows.map(t=>({t,g:gradeAttempt(bank,t)})).sort((a,b)=>a.t.submitted_at.localeCompare(b.t.submitted_at)||a.t.attempt_id.localeCompare(b.t.attempt_id));
   return {attempt_count:rows.length,best_score:Math.max(0,...graded.map(r=>r.g.correct)),last_score:graded.at(-1)?.g.correct??null,last_completed_at:graded.at(-1)?.t.submitted_at??null,
     xp_awarded:Math.max(0,...graded.map(r=>r.g.target_xp))};
 }
 export function reinforcement(bank,attempts,seed=randomSeed()) {
   const mistakes=new Map();
-  for(const t of Object.values(attempts).filter(t=>t.submitted_at).sort((a,b)=>a.submitted_at.localeCompare(b.submitted_at)))for(const r of gradeAttempt(bank,t).results){
+  for(const t of Object.values(attempts).filter(t=>!t.retired&&t.submitted_at&&canReviewAttempt(bank,t)).sort((a,b)=>a.submitted_at.localeCompare(b.submitted_at)))for(const r of gradeAttempt(bank,t).results){
     const old=mistakes.get(r.pool_id)||{count:0,last:null};old.count+=r.correct?0:1;old.last=r.item_id;mistakes.set(r.pool_id,old);
   }
   const pools=[...mistakes].filter(([,v])=>v.count).sort((a,b)=>b[1].count-a[1].count).map(([id])=>id);
