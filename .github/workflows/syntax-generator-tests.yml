@@ -25,6 +25,9 @@ jobs:
         working-directory: server
         run: python -m unittest -v test_br_tree test_cambridge_registry test_cambridge_evaluator test_grammar_schema test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_stdlib_transport_contract test_detector test_explanations test_explanation_transports test_br_source_extensions test_source_readiness
 
+      - name: Validate source-reviewed lesson contracts
+        run: python scripts/validate_lessons.py
+
       - name: Run canonical gold-import regression tests
         run: python -m unittest -v server.test_burton_roberts
 
@@ -60,6 +63,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install isolated PostgreSQL test dependency
+        run: npm ci
       - name: Check browser modules and evidence bridge
         run: |
           node --check web/js/main.js
@@ -67,6 +72,8 @@ jobs:
           npm run test:evidence
           npm run test:correction
           npm run test:quiz
+          npm run test:lessons
+          node --check web/js/lessons-ui.js
       - name: Build static application including Vercel upload exclusions
         run: |
           npm run build

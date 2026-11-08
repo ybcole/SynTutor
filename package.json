@@ -15,7 +15,11 @@
     "explanation-sheet": "python3 scripts/explanation_sheet.py",
     "remediation-sheet": "python3 scripts/remediation_sheet.py",
     "test:rules": "python3 scripts/smoke_rules.py",
-    "test:evidence": "node scripts/test_explanation_evidence.js"
+    "test:evidence": "node scripts/test_explanation_evidence.js",
+    "test:lessons": "node scripts/test_lesson_progress.js && node scripts/test_lesson_database.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.15"
+  }
 }

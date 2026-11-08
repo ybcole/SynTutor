@@ -12,9 +12,7 @@ import {
 import {
   planFocus, contextWords, applyEdit, expectedScopeWords, findScopeNode, findTargetError,
 } from './correction.js';
-import {
-  openQuizView, closeQuizView, closeSubpanel, initQuiz, quizInputHint, clearActiveLesson,
-} from './tree-quiz.js';
+import { initLessons, openLessons, closeLessons } from './lessons-ui.js';
 import { initSyntaxBuilder, openBuilderView, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
@@ -405,20 +403,7 @@ export function boot() {
   // The rail starts on the Syntax Generator: exactly one active destination.
   setActiveNav(workspaceView);
   initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView });
-  initQuiz({
-    analyze: analyzeForQuiz,
-    setQuizMode,
-    progress,
-    setChatTitle,
-    lastChatTitle: () => lastAnalyzedText || '',
-    setWorkspaceView,
-    setOverlayView,
-    renderTree,
-    clearCanvas,
-    setCanvasInteractive,
-    showModelTree: showLessonModelTree,
-    clearModelTree: clearLessonModelTree,
-  });
+  initLessons({ userId: () => clerk?.user?.id || null, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode });
   initResizers();
   syncInputClearBtn();
   // The one auth modal: the sidebar login and the lessons gateway both land
@@ -614,11 +599,18 @@ function initSidebar() {
 // nothing from one mode can bleed into the next.
 
 // Tear the workspace down to a clean slate: no module owns anything.
+function closeSubpanel() {
+  document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
+  const host = document.querySelector('#subpanelPlaceholder');
+  host?.classList.remove('active');
+  if (host) host.replaceChildren();
+  setOverlayView(null);
+}
+
 function teardownWorkspace() {
   // Lessons: the picker overlay, the lesson panels, the guide card, the quiz
   // panel in the rail, and the side sub-panel.
-  closeQuizView();
-  clearActiveLesson();
+  closeLessons();
   // The full-bleed views (Leaderboard / Achievements) are workspace surfaces
   // too: switching the workspace dismisses them.
   closeWorkspaceViews();
@@ -666,11 +658,11 @@ function enterTutorMode() {
 
 // Lessons: the module picker and its in-place builder. The Grammar Tutor's
 // blur/pipeline listeners stay quiet — the lesson owns the input box.
-function enterLessonsMode() {
+function enterLessonsMode(lessonId = null) {
   teardownWorkspace();
   setQuizMode(true);
   setWorkspaceView('lessons');
-  openQuizView('lessons');
+  openLessons(lessonId);
 }
 
 // Syntax Builder: the standalone node editor. No Grammar Tutor pipeline and
@@ -1419,7 +1411,7 @@ function wireEvents() {
     const idx = Number(span.dataset.sentIdx);
     if (!Number.isInteger(idx)) return;
     if (idx === (session?.sentence_index ?? -1)) { enterEditMode(); return; }
-    if (workspaceView === 'builder') return;   // the builder owns the canvas
+    if (workspaceView === 'builder' || workspaceView === 'lessons') return; // The current module owns its view.
     if (quizMode) { analyzeForQuiz(ta.value, idx); return; }
     // Inspect: flip the target sentence immediately (so the highlight moves
     // as soon as the payload lands) and rebuild the canvas for it.
@@ -1432,7 +1424,7 @@ function wireEvents() {
   ta.addEventListener('blur', () => {
     // The Syntax Builder owns the workspace: no Grammar Tutor pipeline and
     // no diagnostics may run while it is open.
-    if (workspaceView === 'builder') return;
+    if (workspaceView === 'builder' || workspaceView === 'lessons') return;
     if (quizMode) {
       returnToLocked();
       setQuizHintText();
@@ -1540,7 +1532,7 @@ function setHint(editing) {
 
 function setQuizHintText() {
   const ta = document.querySelector('#inputText');
-  if (ta) ta.placeholder = quizInputHint();
+  if (ta) ta.placeholder = 'Use the lesson activities in the Lessons view.';
 }
 
 // The session doubles as the source for locked-mode sentence navigation:
@@ -1594,7 +1586,7 @@ function returnToLocked(payload = null) {
 function startNewSession() {
   if (state === STATES.PROCESSING) return;
 
-  clearActiveLesson();
+  closeLessons();
   recordedTexts.clear();
   session = null;
   lastAnalyzedText = null;
@@ -1627,7 +1619,7 @@ function startNewSession() {
 function activateSentenceAtCaret() {
   const ta = document.querySelector('#inputText');
   if (!session || ta.readOnly !== true) return;
-  if (workspaceView === 'builder') return;   // the builder owns the canvas
+  if (workspaceView === 'builder' || workspaceView === 'lessons') return; // The current module owns its view.
   if (ta.selectionStart !== ta.selectionEnd) return;
   const sents = session.payload.parse.sentences || [];
   const caret = ta.selectionStart;
@@ -2445,6 +2437,7 @@ let onboardingStep = 0;
 let onboardingEls = null;
 
 function maybeStartOnboarding() {
+  if (workspaceView !== 'tutor' || /^#lesson\//.test(location.hash)) return;
   let seen = false;
   try { seen = localStorage.getItem(ONBOARDING_KEY) === '1'; } catch { seen = false; }
   if (seen) return;
@@ -2560,6 +2553,7 @@ function onboardingGo(d) {
 }
 
 function showOnboarding() {
+  if (workspaceView !== 'tutor') return;
   const { root } = ensureOnboarding();
   onboardingStep = 0;
   root.hidden = false;

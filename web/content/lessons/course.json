@@ -1,0 +1,4607 @@
+{
+  "schema_version": "1.0.0",
+  "course_version": "2026.11.08",
+  "title": "Syntax Foundations and Grammar Analysis",
+  "tracks": [
+    {
+      "id": "foundations",
+      "title": "Syntax Foundations",
+      "description": "A chapter-ordered B-R spine: ten tree-convention lessons and a text-only synthesis."
+    },
+    {
+      "id": "grammar",
+      "title": "Grammar and Analysis",
+      "description": "Selected Cambridge companion modules. Broader topics are planned until reviewed."
+    }
+  ],
+  "sources": [
+    {
+      "id": "BR-3E-P16",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 1,
+      "printed_page": 16,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P17",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 1,
+      "printed_page": 17,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P29",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 2,
+      "printed_page": 29,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P30",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 2,
+      "printed_page": 30,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P55",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 3,
+      "printed_page": 55,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P62",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 3,
+      "printed_page": 62,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P70",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 4,
+      "printed_page": 70,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P71",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 4,
+      "printed_page": 71,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P89",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 5,
+      "printed_page": 89,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P90",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 5,
+      "printed_page": 90,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P121",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 6,
+      "printed_page": 121,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P122",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 6,
+      "printed_page": 122,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P141",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 7,
+      "printed_page": 141,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P142",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 7,
+      "printed_page": 142,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P174",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 8,
+      "printed_page": 174,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P198",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 9,
+      "printed_page": 198,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P199",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 9,
+      "printed_page": 199,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P200",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 9,
+      "printed_page": 200,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P226",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 10,
+      "printed_page": 226,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P260",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 11,
+      "printed_page": 260,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P263",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 11,
+      "printed_page": 263,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P265",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 11,
+      "printed_page": 265,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "BR-3E-P266",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 11,
+      "printed_page": 266,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0044",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "printed_page": 44,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — independent second pass against supplied chapter PDF; original extraction predates this review",
+      "reviewed_on": "2026-11-08",
+      "chapter": 2
+    },
+    {
+      "id": "CGEL-2002-CH02-P0045",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "printed_page": 45,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — independent second pass against supplied chapter PDF; original extraction predates this review",
+      "reviewed_on": "2026-11-08",
+      "chapter": 2
+    }
+  ],
+  "concepts": [
+    {
+      "id": "br-1-core",
+      "title": "Constituents and hierarchy",
+      "source_ids": [
+        "BR-3E-P16",
+        "BR-3E-P17"
+      ],
+      "outcome": "Find a constituent by tracing all and only its words to one node."
+    },
+    {
+      "id": "br-2-core",
+      "title": "Subject, predicate and category",
+      "source_ids": [
+        "BR-3E-P29",
+        "BR-3E-P30"
+      ],
+      "outcome": "Identify subject and predicate from the immediate NP/VP split under S."
+    },
+    {
+      "id": "br-3-core",
+      "title": "Heads and adjective phrases",
+      "source_ids": [
+        "BR-3E-P55",
+        "BR-3E-P62"
+      ],
+      "outcome": "Identify an adjective head and represent a degree expression with AP, DEG and A."
+    },
+    {
+      "id": "br-4-core",
+      "title": "The basic transitive VP",
+      "source_ids": [
+        "BR-3E-P70",
+        "BR-3E-P71"
+      ],
+      "outcome": "Represent a transitive verb and its direct-object NP as sisters inside VP."
+    },
+    {
+      "id": "br-5-core",
+      "title": "Adjuncts and two levels of VP",
+      "source_ids": [
+        "BR-3E-P89",
+        "BR-3E-P90"
+      ],
+      "outcome": "Distinguish a VP adjunct from a lexical verb complement by attachment."
+    },
+    {
+      "id": "br-6-core",
+      "title": "Auxiliaries head their own VPs",
+      "source_ids": [
+        "BR-3E-P121",
+        "BR-3E-P122"
+      ],
+      "outcome": "Represent a progressive auxiliary as head of a VP taking another VP as complement."
+    },
+    {
+      "id": "br-7-core",
+      "title": "DET and NOM inside NP",
+      "source_ids": [
+        "BR-3E-P141",
+        "BR-3E-P142"
+      ],
+      "outcome": "Build the Chapter 7 core NP pattern with DET and NOM."
+    },
+    {
+      "id": "br-8-core",
+      "title": "Complementisers and subordinate clauses",
+      "source_ids": [
+        "BR-3E-P174"
+      ],
+      "outcome": "Represent an overt that-complementiser with C and S under S-bar."
+    },
+    {
+      "id": "br-9-core",
+      "title": "Wh-fronting and typed gaps",
+      "source_ids": [
+        "BR-3E-P198",
+        "BR-3E-P199",
+        "BR-3E-P200"
+      ],
+      "outcome": "Distinguish the C2 wh position from C1 and retain an NP gap for a fronted object."
+    },
+    {
+      "id": "br-10-core",
+      "title": "The non-finite to-infinitive VP",
+      "source_ids": [
+        "BR-3E-P226"
+      ],
+      "outcome": "Represent infinitival to as a [-tense] auxiliary with a lexical VP complement."
+    },
+    {
+      "id": "br-11-core",
+      "title": "From sentence lists to grammars",
+      "source_ids": [
+        "BR-3E-P260",
+        "BR-3E-P263",
+        "BR-3E-P265",
+        "BR-3E-P266"
+      ],
+      "outcome": "Explain why a finite set of rules can describe an unbounded set of sentences."
+    },
+    {
+      "id": "cgel-sentence-clause",
+      "title": "Sentences and embedded clauses",
+      "source_ids": [
+        "CGEL-2002-CH02-P0044",
+        "CGEL-2002-CH02-P0045"
+      ],
+      "outcome": "Distinguish a text-level sentence from a central subject–predicate clause that can be embedded."
+    }
+  ],
+  "lessons": [
+    {
+      "lesson_id": "br-01",
+      "title": "Constituents and hierarchy",
+      "track": "foundations",
+      "chapter": 1,
+      "content_version": "1.0.0",
+      "difficulty": "introductory",
+      "estimated_minutes": 6,
+      "prerequisites": [],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Find a constituent by tracing all and only its words to one node."
+        }
+      ],
+      "convention_profile": {
+        "chapter": 1,
+        "version": "V1",
+        "profile_id": "V1"
+      },
+      "tree_ids": [
+        "ch1-34"
+      ],
+      "concept_ids": [
+        "br-1-core"
+      ],
+      "rule_ids": [],
+      "source_ids": [
+        "BR-3E-P16",
+        "BR-3E-P17"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "A phrase marker records grouping, not just word order. A node dominates the elements below it; immediate domination has no intervening node. A sequence is represented as a constituent when a single node dominates exactly that sequence. At this stage, use phrase labels rather than later category labels.",
+          "source_ids": [
+            "BR-3E-P16",
+            "BR-3E-P17"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "near the quiet garden",
+        "origin": "Original SynTutor example applying the cited convention; not a copied book exercise or a parser prediction.",
+        "steps": [
+          {
+            "text": "Trace the words under PHRASE-b.",
+            "source_ids": [
+              "BR-3E-P16",
+              "BR-3E-P17"
+            ],
+            "focus_node_id": "lesson-br-01-worked-root-1"
+          },
+          {
+            "text": "Notice that PHRASE-a also includes near.",
+            "source_ids": [
+              "BR-3E-P16",
+              "BR-3E-P17"
+            ],
+            "focus_node_id": "lesson-br-01-worked-root"
+          },
+          {
+            "text": "Keep each word in one immediate grouping.",
+            "source_ids": [
+              "BR-3E-P16",
+              "BR-3E-P17"
+            ],
+            "focus_node_id": "lesson-br-01-worked-root-1"
+          }
+        ],
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ],
+        "tree": {
+          "schema_version": "1.1.0",
+          "tree_id": "lesson-br-01-worked",
+          "tokens": [
+            {
+              "index": 0,
+              "text": "near",
+              "char_span": [
+                0,
+                4
+              ]
+            },
+            {
+              "index": 1,
+              "text": "the",
+              "char_span": [
+                5,
+                8
+              ]
+            },
+            {
+              "index": 2,
+              "text": "quiet",
+              "char_span": [
+                9,
+                14
+              ]
+            },
+            {
+              "index": 3,
+              "text": "garden",
+              "char_span": [
+                15,
+                21
+              ]
+            }
+          ],
+          "convention_profile": {
+            "chapter": 1,
+            "version": "V1",
+            "profile_id": "V1"
+          },
+          "source": {
+            "book": "Burton-Roberts, Analysing Sentences",
+            "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+            "chapter": 1,
+            "evidence_status": "TXT",
+            "review_status": "INDEPENDENTLY_REVIEWED",
+            "review_note": "Original instructional example source-checked against cited B-R conventions; not a printed diagram.",
+            "source_record_id": "lesson-br-01-worked",
+            "printed_page": 16
+          },
+          "root": {
+            "id": "lesson-br-01-worked-root",
+            "label": "PHRASE-a",
+            "children": [
+              {
+                "id": "lesson-br-01-worked-root-0",
+                "word": "near",
+                "token_span": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "id": "lesson-br-01-worked-root-1",
+                "label": "PHRASE-b",
+                "triangle": true,
+                "words": [
+                  "the",
+                  "quiet",
+                  "garden"
+                ],
+                "token_span": [
+                  1,
+                  4
+                ]
+              }
+            ],
+            "token_span": [
+              0,
+              4
+            ]
+          },
+          "movement": [],
+          "accepted_alternatives": [],
+          "notes": [],
+          "sentence": "near the quiet garden"
+        },
+        "accepted_alternatives": []
+      },
+      "cambridge_insights": [],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "Does a row of words alone specify their hierarchical grouping?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, order fixes every group",
+            "feedback": "Try again. Look for the links from words to phrase nodes."
+          },
+          {
+            "id": "b",
+            "text": "No, grouping must also be represented",
+            "feedback": "Word order alone leaves hierarchical grouping unspecified."
+          },
+          {
+            "id": "c",
+            "text": "Only when there are four words",
+            "feedback": "Try again. Look for the links from words to phrase nodes."
+          }
+        ],
+        "answer": "b",
+        "hint": "Look for the links from words to phrase nodes.",
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "Which node groups exactly the quiet garden?",
+        "options": [
+          {
+            "id": "a",
+            "text": "PHRASE-a",
+            "feedback": "Try again. Trace only the selected words upward."
+          },
+          {
+            "id": "b",
+            "text": "PHRASE-b",
+            "feedback": "PHRASE-b dominates exactly those words; PHRASE-a also dominates near."
+          },
+          {
+            "id": "c",
+            "text": "Both nodes",
+            "feedback": "Try again. Trace only the selected words upward."
+          }
+        ],
+        "answer": "b",
+        "hint": "Trace only the selected words upward.",
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ],
+        "outcome_ids": [
+          "o1"
+        ],
+        "build_target": {
+          "node_id": "lesson-br-01-worked-root-1",
+          "field": "label",
+          "expected": "PHRASE-b"
+        }
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "In [beside [the red gate]], is beside the a constituent in this displayed grouping?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, any adjacent pair is a constituent",
+            "feedback": "Try again. Adjacency does not establish a constituent."
+          },
+          {
+            "id": "b",
+            "text": "Yes, because beside is first",
+            "feedback": "Try again. Adjacency does not establish a constituent."
+          },
+          {
+            "id": "c",
+            "text": "No, no node groups only those two words",
+            "feedback": "The outer group contains the whole phrase; the inner group contains the red gate."
+          }
+        ],
+        "answer": "c",
+        "hint": "Adjacency does not establish a constituent.",
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "In [under [a stone bridge]], which sequence is the inner constituent?",
+        "options": [
+          {
+            "id": "a",
+            "text": "a stone bridge",
+            "feedback": "The inner brackets group all and only a stone bridge."
+          },
+          {
+            "id": "b",
+            "text": "under a",
+            "feedback": "Try again. Use the complete inner group, not part of it."
+          },
+          {
+            "id": "c",
+            "text": "stone bridge only",
+            "feedback": "Try again. Use the complete inner group, not part of it."
+          }
+        ],
+        "answer": "a",
+        "hint": "Use the complete inner group, not part of it.",
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    },
+    {
+      "lesson_id": "br-02",
+      "title": "Subject, predicate and category",
+      "track": "foundations",
+      "chapter": 2,
+      "content_version": "1.0.0",
+      "difficulty": "introductory",
+      "estimated_minutes": 6,
+      "prerequisites": [
+        {
+          "lesson_id": "br-01",
+          "content_version": "1.0.0"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Identify subject and predicate from the immediate NP/VP split under S."
+        }
+      ],
+      "convention_profile": {
+        "chapter": 2,
+        "version": "V2",
+        "profile_id": "V2"
+      },
+      "tree_ids": [
+        "ch2-33"
+      ],
+      "concept_ids": [
+        "br-2-core"
+      ],
+      "rule_ids": [],
+      "source_ids": [
+        "BR-3E-P29",
+        "BR-3E-P30"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "Category labels and functions answer different questions. In the basic pattern S → NP VP, the NP immediately under S functions as subject, and its VP sister functions as predicate. Subject and predicate are functions derived from position, not extra phrase-marker nodes. Triangles leave internal structure unanalyzed.",
+          "source_ids": [
+            "BR-3E-P29",
+            "BR-3E-P30"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "The robins sing",
+        "origin": "Original SynTutor example applying the cited convention; not a copied book exercise or a parser prediction.",
+        "steps": [
+          {
+            "text": "Place S over the whole sentence.",
+            "source_ids": [
+              "BR-3E-P29",
+              "BR-3E-P30"
+            ],
+            "focus_node_id": "lesson-br-02-worked-root"
+          },
+          {
+            "text": "Group The robins as the subject NP.",
+            "source_ids": [
+              "BR-3E-P29",
+              "BR-3E-P30"
+            ],
+            "focus_node_id": "lesson-br-02-worked-root-0"
+          },
+          {
+            "text": "Make sing the VP sister of that NP.",
+            "source_ids": [
+              "BR-3E-P29",
+              "BR-3E-P30"
+            ],
+            "focus_node_id": "lesson-br-02-worked-root-1"
+          }
+        ],
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "tree": {
+          "schema_version": "1.1.0",
+          "tree_id": "lesson-br-02-worked",
+          "tokens": [
+            {
+              "index": 0,
+              "text": "The",
+              "char_span": [
+                0,
+                3
+              ]
+            },
+            {
+              "index": 1,
+              "text": "robins",
+              "char_span": [
+                4,
+                10
+              ]
+            },
+            {
+              "index": 2,
+              "text": "sing",
+              "char_span": [
+                11,
+                15
+              ]
+            }
+          ],
+          "convention_profile": {
+            "chapter": 2,
+            "version": "V2",
+            "profile_id": "V2"
+          },
+          "source": {
+            "book": "Burton-Roberts, Analysing Sentences",
+            "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+            "chapter": 2,
+            "evidence_status": "TXT",
+            "review_status": "INDEPENDENTLY_REVIEWED",
+            "review_note": "Original instructional example source-checked against cited B-R conventions; not a printed diagram.",
+            "source_record_id": "lesson-br-02-worked",
+            "printed_page": 29
+          },
+          "root": {
+            "id": "lesson-br-02-worked-root",
+            "label": "S",
+            "children": [
+              {
+                "id": "lesson-br-02-worked-root-0",
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "The",
+                  "robins"
+                ],
+                "token_span": [
+                  0,
+                  2
+                ]
+              },
+              {
+                "id": "lesson-br-02-worked-root-1",
+                "label": "VP",
+                "triangle": true,
+                "words": [
+                  "sing"
+                ],
+                "token_span": [
+                  2,
+                  3
+                ]
+              }
+            ],
+            "token_span": [
+              0,
+              3
+            ]
+          },
+          "movement": [],
+          "accepted_alternatives": [],
+          "notes": [],
+          "sentence": "The robins sing"
+        },
+        "accepted_alternatives": []
+      },
+      "cambridge_insights": [
+        {
+          "text": "Cambridge distinguishes the sentence as a text-level unit from the clause as a syntactic category. Central clauses have a subject–predicate structure and clauses can be embedded. These terms provide grammatical context; they do not rename B-R S nodes. This classification is a teaching insight, not a whole-sentence correctness test.",
+          "source_ids": [
+            "CGEL-2002-CH02-P0044",
+            "CGEL-2002-CH02-P0045"
+          ],
+          "concept_ids": [
+            "cgel-sentence-clause"
+          ]
+        }
+      ],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "Is subject a category label to insert between S and NP?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes",
+            "feedback": "Try again. Distinguish a node label from its function."
+          },
+          {
+            "id": "b",
+            "text": "No, it names a function",
+            "feedback": "The position of NP under S provides its subject function."
+          },
+          {
+            "id": "c",
+            "text": "Only in short sentences",
+            "feedback": "Try again. Distinguish a node label from its function."
+          }
+        ],
+        "answer": "b",
+        "hint": "Distinguish a node label from its function.",
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "Complete the subject branch in the worked tree: S → ? VP.",
+        "options": [
+          {
+            "id": "a",
+            "text": "NP",
+            "feedback": "The subject branch is NP in this V2 pattern."
+          },
+          {
+            "id": "b",
+            "text": "VP",
+            "feedback": "Try again. Choose the category used at Chapter 2."
+          },
+          {
+            "id": "c",
+            "text": "NOM",
+            "feedback": "Try again. Choose the category used at Chapter 2."
+          }
+        ],
+        "answer": "a",
+        "hint": "Choose the category used at Chapter 2.",
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "outcome_ids": [
+          "o1"
+        ],
+        "build_target": {
+          "node_id": "lesson-br-02-worked-root-0",
+          "field": "label",
+          "expected": "NP"
+        }
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "In [S [NP Our neighbours] [VP arrived]], which words form the predicate?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Our neighbours",
+            "feedback": "Try again. Follow the VP branch, not the subject NP."
+          },
+          {
+            "id": "b",
+            "text": "neighbours arrived",
+            "feedback": "Try again. Follow the VP branch, not the subject NP."
+          },
+          {
+            "id": "c",
+            "text": "arrived",
+            "feedback": "The VP immediately under S is the predicate."
+          }
+        ],
+        "answer": "c",
+        "hint": "Follow the VP branch, not the subject NP.",
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "In [S [NP That fox] [VP vanished]], what is the function of That fox?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Predicate",
+            "feedback": "Try again. Read the relation to S."
+          },
+          {
+            "id": "b",
+            "text": "Subject",
+            "feedback": "That fox is the NP immediately dominated by S, so it functions as subject."
+          },
+          {
+            "id": "c",
+            "text": "A separate category named subject",
+            "feedback": "Try again. Read the relation to S."
+          }
+        ],
+        "answer": "b",
+        "hint": "Read the relation to S.",
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    },
+    {
+      "lesson_id": "br-03",
+      "title": "Heads and adjective phrases",
+      "track": "foundations",
+      "chapter": 3,
+      "content_version": "1.0.0",
+      "difficulty": "introductory",
+      "estimated_minutes": 6,
+      "prerequisites": [
+        {
+          "lesson_id": "br-02",
+          "content_version": "1.0.0"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Identify an adjective head and represent a degree expression with AP, DEG and A."
+        }
+      ],
+      "convention_profile": {
+        "chapter": 3,
+        "version": "V3",
+        "profile_id": "V3"
+      },
+      "tree_ids": [
+        "ch3-text-a"
+      ],
+      "concept_ids": [
+        "br-3-core"
+      ],
+      "rule_ids": [],
+      "source_ids": [
+        "BR-3E-P55",
+        "BR-3E-P62"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "A phrase takes its category from its head. In this simple adjective phrase, the adjective is the head A and the preceding degree word is DEG. The phrase label is AP. A single adjective can also form an AP. Chapter 3 introduces these categories; it does not yet introduce NOM inside NP.",
+          "source_ids": [
+            "BR-3E-P55",
+            "BR-3E-P62"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "very cheerful",
+        "origin": "Original SynTutor example applying the cited convention; not a copied book exercise or a parser prediction.",
+        "steps": [
+          {
+            "text": "Find the adjective cheerful.",
+            "source_ids": [
+              "BR-3E-P55",
+              "BR-3E-P62"
+            ],
+            "focus_node_id": "lesson-br-03-worked-root-1"
+          },
+          {
+            "text": "Put A above that adjective.",
+            "source_ids": [
+              "BR-3E-P55",
+              "BR-3E-P62"
+            ],
+            "focus_node_id": "lesson-br-03-worked-root-1"
+          },
+          {
+            "text": "Add DEG over very and join both under AP.",
+            "source_ids": [
+              "BR-3E-P55",
+              "BR-3E-P62"
+            ],
+            "focus_node_id": "lesson-br-03-worked-root"
+          }
+        ],
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "tree": {
+          "schema_version": "1.1.0",
+          "tree_id": "lesson-br-03-worked",
+          "tokens": [
+            {
+              "index": 0,
+              "text": "very",
+              "char_span": [
+                0,
+                4
+              ]
+            },
+            {
+              "index": 1,
+              "text": "cheerful",
+              "char_span": [
+                5,
+                13
+              ]
+            }
+          ],
+          "convention_profile": {
+            "chapter": 3,
+            "version": "V3",
+            "profile_id": "V3"
+          },
+          "source": {
+            "book": "Burton-Roberts, Analysing Sentences",
+            "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+            "chapter": 3,
+            "evidence_status": "TXT",
+            "review_status": "INDEPENDENTLY_REVIEWED",
+            "review_note": "Original instructional example source-checked against cited B-R conventions; not a printed diagram.",
+            "source_record_id": "lesson-br-03-worked",
+            "printed_page": 55
+          },
+          "root": {
+            "id": "lesson-br-03-worked-root",
+            "label": "AP",
+            "children": [
+              {
+                "id": "lesson-br-03-worked-root-0",
+                "label": "DEG",
+                "children": [
+                  {
+                    "id": "lesson-br-03-worked-root-0-0",
+                    "word": "very",
+                    "token_span": [
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "token_span": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "id": "lesson-br-03-worked-root-1",
+                "label": "A",
+                "children": [
+                  {
+                    "id": "lesson-br-03-worked-root-1-0",
+                    "word": "cheerful",
+                    "token_span": [
+                      1,
+                      2
+                    ]
+                  }
+                ],
+                "token_span": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "token_span": [
+              0,
+              2
+            ]
+          },
+          "movement": [],
+          "accepted_alternatives": [],
+          "notes": [],
+          "sentence": "very cheerful"
+        },
+        "accepted_alternatives": []
+      },
+      "cambridge_insights": [],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "Which word is the adjective head of very cheerful?",
+        "options": [
+          {
+            "id": "a",
+            "text": "very",
+            "feedback": "Try again. Ask which word supplies the adjective category."
+          },
+          {
+            "id": "b",
+            "text": "cheerful",
+            "feedback": "Cheerful is the adjective; very expresses degree."
+          },
+          {
+            "id": "c",
+            "text": "Both words are heads",
+            "feedback": "Try again. Ask which word supplies the adjective category."
+          }
+        ],
+        "answer": "b",
+        "hint": "Ask which word supplies the adjective category.",
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "Which label completes the phrase above DEG and A?",
+        "options": [
+          {
+            "id": "a",
+            "text": "ADJP",
+            "feedback": "Try again. Use the B-R label for this chapter."
+          },
+          {
+            "id": "b",
+            "text": "NP",
+            "feedback": "Try again. Use the B-R label for this chapter."
+          },
+          {
+            "id": "c",
+            "text": "AP",
+            "feedback": "B-R uses AP for this adjective phrase."
+          }
+        ],
+        "answer": "c",
+        "hint": "Use the B-R label for this chapter.",
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "outcome_ids": [
+          "o1"
+        ],
+        "build_target": {
+          "node_id": "lesson-br-03-worked-root",
+          "field": "label",
+          "expected": "AP"
+        }
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "For quite patient, which word takes the DEG label?",
+        "options": [
+          {
+            "id": "a",
+            "text": "patient",
+            "feedback": "Try again. Keep the adjective under A."
+          },
+          {
+            "id": "b",
+            "text": "quite",
+            "feedback": "Quite modifies the degree of patient."
+          },
+          {
+            "id": "c",
+            "text": "The whole phrase",
+            "feedback": "Try again. Keep the adjective under A."
+          }
+        ],
+        "answer": "b",
+        "hint": "Keep the adjective under A.",
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "Which simple shape represents rather calm?",
+        "options": [
+          {
+            "id": "a",
+            "text": "AP → DEG A",
+            "feedback": "Rather precedes the adjective calm: DEG then A under AP."
+          },
+          {
+            "id": "b",
+            "text": "NP → DET NOM",
+            "feedback": "Try again. Preserve the word order and adjective head."
+          },
+          {
+            "id": "c",
+            "text": "AP → A DEG",
+            "feedback": "Try again. Preserve the word order and adjective head."
+          }
+        ],
+        "answer": "a",
+        "hint": "Preserve the word order and adjective head.",
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    },
+    {
+      "lesson_id": "br-04",
+      "title": "The basic transitive VP",
+      "track": "foundations",
+      "chapter": 4,
+      "content_version": "1.0.0",
+      "difficulty": "intermediate",
+      "estimated_minutes": 6,
+      "prerequisites": [
+        {
+          "lesson_id": "br-03",
+          "content_version": "1.0.0"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Represent a transitive verb and its direct-object NP as sisters inside VP."
+        }
+      ],
+      "convention_profile": {
+        "chapter": 4,
+        "version": "V4",
+        "profile_id": "V4"
+      },
+      "tree_ids": [
+        "ch4-21"
+      ],
+      "concept_ids": [
+        "br-4-core"
+      ],
+      "rule_ids": [],
+      "source_ids": [
+        "BR-3E-P70",
+        "BR-3E-P71"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "Chapter 4 distinguishes lexical-verb subcategories by their complements. In the transitive pattern, V carries [trans] and its NP complement is its sister under VP. That NP functions as direct object. The subject NP is outside VP. This lesson practices this pattern, not every possible use of every verb.",
+          "source_ids": [
+            "BR-3E-P70",
+            "BR-3E-P71"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "Nora inspected the bridge",
+        "origin": "Original SynTutor example applying the cited convention; not a copied book exercise or a parser prediction.",
+        "steps": [
+          {
+            "text": "Separate Nora from the predicate.",
+            "source_ids": [
+              "BR-3E-P70",
+              "BR-3E-P71"
+            ],
+            "focus_node_id": "lesson-br-04-worked-root-0"
+          },
+          {
+            "text": "Place inspected under V [trans].",
+            "source_ids": [
+              "BR-3E-P70",
+              "BR-3E-P71"
+            ],
+            "focus_node_id": "lesson-br-04-worked-root-1-0"
+          },
+          {
+            "text": "Attach the bridge as NP sister of V under VP.",
+            "source_ids": [
+              "BR-3E-P70",
+              "BR-3E-P71"
+            ],
+            "focus_node_id": "lesson-br-04-worked-root-1-1"
+          }
+        ],
+        "source_ids": [
+          "BR-3E-P70",
+          "BR-3E-P71"
+        ],
+        "tree": {
+          "schema_version": "1.1.0",
+          "tree_id": "lesson-br-04-worked",
+          "tokens": [
+            {
+              "index": 0,
+              "text": "Nora",
+              "char_span": [
+                0,
+                4
+              ]
+            },
+            {
+              "index": 1,
+              "text": "inspected",
+              "char_span": [
+                5,
+                14
+              ]
+            },
+            {
+              "index": 2,
+              "text": "the",
+              "char_span": [
+                15,
+                18
+              ]
+            },
+            {
+              "index": 3,
+              "text": "bridge",
+              "char_span": [
+                19,
+                25
+              ]
+            }
+          ],
+          "convention_profile": {
+            "chapter": 4,
+            "version": "V4",
+            "profile_id": "V4"
+          },
+          "source": {
+            "book": "Burton-Roberts, Analysing Sentences",
+            "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+            "chapter": 4,
+            "evidence_status": "TXT",
+            "review_status": "INDEPENDENTLY_REVIEWED",
+            "review_note": "Original instructional example source-checked against cited B-R conventions; not a printed diagram.",
+            "source_record_id": "lesson-br-04-worked",
+            "printed_page": 70
+          },
+          "root": {
+            "id": "lesson-br-04-worked-root",
+            "label": "S",
+            "children": [
+              {
+                "id": "lesson-br-04-worked-root-0",
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "Nora"
+                ],
+                "token_span": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "id": "lesson-br-04-worked-root-1",
+                "label": "VP",
+                "children": [
+                  {
+                    "id": "lesson-br-04-worked-root-1-0",
+                    "label": "V",
+                    "children": [
+                      {
+                        "id": "lesson-br-04-worked-root-1-0-0",
+                        "word": "inspected",
+                        "token_span": [
+                          1,
+                          2
+                        ]
+                      }
+                    ],
+                    "token_span": [
+                      1,
+                      2
+                    ],
+                    "features": [
+                      "trans"
+                    ]
+                  },
+                  {
+                    "id": "lesson-br-04-worked-root-1-1",
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "the",
+                      "bridge"
+                    ],
+                    "token_span": [
+                      2,
+                      4
+                    ]
+                  }
+                ],
+                "token_span": [
+                  1,
+                  4
+                ]
+              }
+            ],
+            "token_span": [
+              0,
+              4
+            ]
+          },
+          "movement": [],
+          "accepted_alternatives": [],
+          "notes": [],
+          "sentence": "Nora inspected the bridge"
+        },
+        "accepted_alternatives": []
+      },
+      "cambridge_insights": [],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "In the transitive pattern, where is the direct-object NP attached?",
+        "options": [
+          {
+            "id": "a",
+            "text": "As a sister of V under VP",
+            "feedback": "The complement NP and V are sisters inside VP."
+          },
+          {
+            "id": "b",
+            "text": "As a sister of S",
+            "feedback": "Try again. Functions are read from structure and the verb feature."
+          },
+          {
+            "id": "c",
+            "text": "Under a node labelled object",
+            "feedback": "Try again. Functions are read from structure and the verb feature."
+          }
+        ],
+        "answer": "a",
+        "hint": "Functions are read from structure and the verb feature.",
+        "source_ids": [
+          "BR-3E-P70",
+          "BR-3E-P71"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "Which feature belongs to inspected in this analysis?",
+        "options": [
+          {
+            "id": "a",
+            "text": "intrans",
+            "feedback": "Try again. Use the transitive pattern demonstrated here."
+          },
+          {
+            "id": "b",
+            "text": "trans",
+            "feedback": "This use takes the bridge as its direct-object NP."
+          },
+          {
+            "id": "c",
+            "text": "intens",
+            "feedback": "Try again. Use the transitive pattern demonstrated here."
+          }
+        ],
+        "answer": "b",
+        "hint": "Use the transitive pattern demonstrated here.",
+        "source_ids": [
+          "BR-3E-P70",
+          "BR-3E-P71"
+        ],
+        "outcome_ids": [
+          "o1"
+        ],
+        "build_target": {
+          "node_id": "lesson-br-04-worked-root-1-0",
+          "field": "feature",
+          "expected": "trans"
+        }
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "For Mila spotted a kite, which words form the direct-object NP?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Mila",
+            "feedback": "Try again. Keep the subject outside VP."
+          },
+          {
+            "id": "b",
+            "text": "spotted",
+            "feedback": "Try again. Keep the subject outside VP."
+          },
+          {
+            "id": "c",
+            "text": "a kite",
+            "feedback": "A kite complements spotted within VP."
+          }
+        ],
+        "answer": "c",
+        "hint": "Keep the subject outside VP.",
+        "source_ids": [
+          "BR-3E-P70",
+          "BR-3E-P71"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "Which shape matches a transitive VP in this lesson?",
+        "options": [
+          {
+            "id": "a",
+            "text": "VP → V [trans] NP",
+            "feedback": "The lexical verb and its NP complement form VP."
+          },
+          {
+            "id": "b",
+            "text": "VP → NP S",
+            "feedback": "Try again. Use the category and feature combination from the worked example."
+          },
+          {
+            "id": "c",
+            "text": "S → V NP",
+            "feedback": "Try again. Use the category and feature combination from the worked example."
+          }
+        ],
+        "answer": "a",
+        "hint": "Use the category and feature combination from the worked example.",
+        "source_ids": [
+          "BR-3E-P70",
+          "BR-3E-P71"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    },
+    {
+      "lesson_id": "br-05",
+      "title": "Adjuncts and two levels of VP",
+      "track": "foundations",
+      "chapter": 5,
+      "content_version": "1.0.0",
+      "difficulty": "intermediate",
+      "estimated_minutes": 6,
+      "prerequisites": [
+        {
+          "lesson_id": "br-04",
+          "content_version": "1.0.0"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Distinguish a VP adjunct from a lexical verb complement by attachment."
+        }
+      ],
+      "convention_profile": {
+        "chapter": 5,
+        "version": "V5",
+        "profile_id": "V5"
+      },
+      "tree_ids": [
+        "ch5-12"
+      ],
+      "concept_ids": [
+        "br-5-core"
+      ],
+      "rule_ids": [],
+      "source_ids": [
+        "BR-3E-P89",
+        "BR-3E-P90"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "In the adopted Chapter 5 analysis, a verb complement is sister of V; an adjunct adverbial is sister of VP. A transitive V and its direct object form the inner VP. An optional adjunct can modify that VP to form a larger VP. Similar word sequences can have different attachments with different verbs; word order alone is insufficient.",
+          "source_ids": [
+            "BR-3E-P89",
+            "BR-3E-P90"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "Nora inspected the bridge in June",
+        "origin": "Original SynTutor example applying the cited convention; not a copied book exercise or a parser prediction.",
+        "steps": [
+          {
+            "text": "Build the transitive inner VP inspected the bridge.",
+            "source_ids": [
+              "BR-3E-P89",
+              "BR-3E-P90"
+            ],
+            "focus_node_id": "lesson-br-05-worked-root-1-0"
+          },
+          {
+            "text": "Keep in June together as PP.",
+            "source_ids": [
+              "BR-3E-P89",
+              "BR-3E-P90"
+            ],
+            "focus_node_id": "lesson-br-05-worked-root-1-1"
+          },
+          {
+            "text": "Join that adjunct PP to the inner VP under an outer VP.",
+            "source_ids": [
+              "BR-3E-P89",
+              "BR-3E-P90"
+            ],
+            "focus_node_id": "lesson-br-05-worked-root-1"
+          }
+        ],
+        "source_ids": [
+          "BR-3E-P89",
+          "BR-3E-P90"
+        ],
+        "tree": {
+          "schema_version": "1.1.0",
+          "tree_id": "lesson-br-05-worked",
+          "tokens": [
+            {
+              "index": 0,
+              "text": "Nora",
+              "char_span": [
+                0,
+                4
+              ]
+            },
+            {
+              "index": 1,
+              "text": "inspected",
+              "char_span": [
+                5,
+                14
+              ]
+            },
+            {
+              "index": 2,
+              "text": "the",
+              "char_span": [
+                15,
+                18
+              ]
+            },
+            {
+              "index": 3,
+              "text": "bridge",
+              "char_span": [
+                19,
+                25
+              ]
+            },
+            {
+              "index": 4,
+              "text": "in",
+              "char_span": [
+                26,
+                28
+              ]
+            },
+            {
+              "index": 5,
+              "text": "June",
+              "char_span": [
+                29,
+                33
+              ]
+            }
+          ],
+          "convention_profile": {
+            "chapter": 5,
+            "version": "V5",
+            "profile_id": "V5"
+          },
+          "source": {
+            "book": "Burton-Roberts, Analysing Sentences",
+            "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+            "chapter": 5,
+            "evidence_status": "TXT",
+            "review_status": "INDEPENDENTLY_REVIEWED",
+            "review_note": "Original instructional example source-checked against cited B-R conventions; not a printed diagram.",
+            "source_record_id": "lesson-br-05-worked",
+            "printed_page": 89
+          },
+          "root": {
+            "id": "lesson-br-05-worked-root",
+            "label": "S",
+            "children": [
+              {
+                "id": "lesson-br-05-worked-root-0",
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "Nora"
+                ],
+                "token_span": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "id": "lesson-br-05-worked-root-1",
+                "label": "VP",
+                "children": [
+                  {
+                    "id": "lesson-br-05-worked-root-1-0",
+                    "label": "VP",
+                    "children": [
+                      {
+                        "id": "lesson-br-05-worked-root-1-0-0",
+                        "label": "V",
+                        "children": [
+                          {
+                            "id": "lesson-br-05-worked-root-1-0-0-0",
+                            "word": "inspected",
+                            "token_span": [
+                              1,
+                              2
+                            ]
+                          }
+                        ],
+                        "token_span": [
+                          1,
+                          2
+                        ],
+                        "features": [
+                          "trans"
+                        ]
+                      },
+                      {
+                        "id": "lesson-br-05-worked-root-1-0-1",
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "the",
+                          "bridge"
+                        ],
+                        "token_span": [
+                          2,
+                          4
+                        ]
+                      }
+                    ],
+                    "token_span": [
+                      1,
+                      4
+                    ]
+                  },
+                  {
+                    "id": "lesson-br-05-worked-root-1-1",
+                    "label": "PP",
+                    "triangle": true,
+                    "words": [
+                      "in",
+                      "June"
+                    ],
+                    "token_span": [
+                      4,
+                      6
+                    ]
+                  }
+                ],
+                "token_span": [
+                  1,
+                  6
+                ]
+              }
+            ],
+            "token_span": [
+              0,
+              6
+            ]
+          },
+          "movement": [],
+          "accepted_alternatives": [],
+          "notes": [],
+          "sentence": "Nora inspected the bridge in June"
+        },
+        "accepted_alternatives": []
+      },
+      "cambridge_insights": [],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "Does every PP after a verb have to be its complement?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes",
+            "feedback": "Try again. Compare its attachment, not just its position in the word sequence."
+          },
+          {
+            "id": "b",
+            "text": "No, attachment depends on its role",
+            "feedback": "A PP can be an adjunct or a complement in different constructions."
+          },
+          {
+            "id": "c",
+            "text": "Only when it is short",
+            "feedback": "Try again. Compare its attachment, not just its position in the word sequence."
+          }
+        ],
+        "answer": "b",
+        "hint": "Compare its attachment, not just its position in the word sequence.",
+        "source_ids": [
+          "BR-3E-P89",
+          "BR-3E-P90"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "In this worked tree, the PP in June is sister of which node?",
+        "options": [
+          {
+            "id": "a",
+            "text": "V",
+            "feedback": "Try again. An adjunct adverbial is sister of VP in this analysis."
+          },
+          {
+            "id": "b",
+            "text": "NP",
+            "feedback": "Try again. An adjunct adverbial is sister of VP in this analysis."
+          },
+          {
+            "id": "c",
+            "text": "VP",
+            "feedback": "This time adjunct modifies the inner VP."
+          }
+        ],
+        "answer": "c",
+        "hint": "An adjunct adverbial is sister of VP in this analysis.",
+        "source_ids": [
+          "BR-3E-P89",
+          "BR-3E-P90"
+        ],
+        "outcome_ids": [
+          "o1"
+        ],
+        "build_target": {
+          "node_id": "lesson-br-05-worked-root-1-0",
+          "field": "label",
+          "expected": "VP"
+        }
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "In the adjunct reading of Lena mended the fence after lunch, what groups first?",
+        "options": [
+          {
+            "id": "a",
+            "text": "mended the fence",
+            "feedback": "The verb and direct object form the inner VP before the time adjunct attaches."
+          },
+          {
+            "id": "b",
+            "text": "the fence after",
+            "feedback": "Try again. Start with the basic transitive VP."
+          },
+          {
+            "id": "c",
+            "text": "Lena mended",
+            "feedback": "Try again. Start with the basic transitive VP."
+          }
+        ],
+        "answer": "a",
+        "hint": "Start with the basic transitive VP.",
+        "source_ids": [
+          "BR-3E-P89",
+          "BR-3E-P90"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "Which attachment distinguishes the adjunct in this lesson?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Sister of V",
+            "feedback": "Try again. Look for the extra VP level."
+          },
+          {
+            "id": "b",
+            "text": "Sister of VP",
+            "feedback": "The adjunct is sister of VP, whereas the direct-object complement is sister of V."
+          },
+          {
+            "id": "c",
+            "text": "Daughter of DET",
+            "feedback": "Try again. Look for the extra VP level."
+          }
+        ],
+        "answer": "b",
+        "hint": "Look for the extra VP level.",
+        "source_ids": [
+          "BR-3E-P89",
+          "BR-3E-P90"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    },
+    {
+      "lesson_id": "br-06",
+      "title": "Auxiliaries head their own VPs",
+      "track": "foundations",
+      "chapter": 6,
+      "content_version": "1.0.0",
+      "difficulty": "intermediate",
+      "estimated_minutes": 6,
+      "prerequisites": [
+        {
+          "lesson_id": "br-05",
+          "content_version": "1.0.0"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Represent a progressive auxiliary as head of a VP taking another VP as complement."
+        }
+      ],
+      "convention_profile": {
+        "chapter": 6,
+        "version": "V6",
+        "profile_id": "V6"
+      },
+      "tree_ids": [
+        "ch6-52"
+      ],
+      "concept_ids": [
+        "br-6-core"
+      ],
+      "rule_ids": [],
+      "source_ids": [
+        "BR-3E-P121",
+        "BR-3E-P122"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "The lexical verb and its complement still form a VP when an auxiliary precedes them. Each auxiliary heads its own VP and takes a VP complement. For this progressive example, is is PROG [pres], and inspecting the bridge is the lower VP. An auxiliary is not an adjunct just because it is sister of VP.",
+          "source_ids": [
+            "BR-3E-P121",
+            "BR-3E-P122"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "Nora is inspecting the bridge",
+        "origin": "Original SynTutor example applying the cited convention; not a copied book exercise or a parser prediction.",
+        "steps": [
+          {
+            "text": "Build inspecting the bridge as the lexical VP.",
+            "source_ids": [
+              "BR-3E-P121",
+              "BR-3E-P122"
+            ],
+            "focus_node_id": "lesson-br-06-worked-root-1-1"
+          },
+          {
+            "text": "Place is under PROG [pres].",
+            "source_ids": [
+              "BR-3E-P121",
+              "BR-3E-P122"
+            ],
+            "focus_node_id": "lesson-br-06-worked-root-1-0"
+          },
+          {
+            "text": "Join PROG and its VP complement under the higher VP.",
+            "source_ids": [
+              "BR-3E-P121",
+              "BR-3E-P122"
+            ],
+            "focus_node_id": "lesson-br-06-worked-root-1"
+          }
+        ],
+        "source_ids": [
+          "BR-3E-P121",
+          "BR-3E-P122"
+        ],
+        "tree": {
+          "schema_version": "1.1.0",
+          "tree_id": "lesson-br-06-worked",
+          "tokens": [
+            {
+              "index": 0,
+              "text": "Nora",
+              "char_span": [
+                0,
+                4
+              ]
+            },
+            {
+              "index": 1,
+              "text": "is",
+              "char_span": [
+                5,
+                7
+              ]
+            },
+            {
+              "index": 2,
+              "text": "inspecting",
+              "char_span": [
+                8,
+                18
+              ]
+            },
+            {
+              "index": 3,
+              "text": "the",
+              "char_span": [
+                19,
+                22
+              ]
+            },
+            {
+              "index": 4,
+              "text": "bridge",
+              "char_span": [
+                23,
+                29
+              ]
+            }
+          ],
+          "convention_profile": {
+            "chapter": 6,
+            "version": "V6",
+            "profile_id": "V6"
+          },
+          "source": {
+            "book": "Burton-Roberts, Analysing Sentences",
+            "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+            "chapter": 6,
+            "evidence_status": "TXT",
+            "review_status": "INDEPENDENTLY_REVIEWED",
+            "review_note": "Original instructional example source-checked against cited B-R conventions; not a printed diagram.",
+            "source_record_id": "lesson-br-06-worked",
+            "printed_page": 121
+          },
+          "root": {
+            "id": "lesson-br-06-worked-root",
+            "label": "S",
+            "children": [
+              {
+                "id": "lesson-br-06-worked-root-0",
+                "label": "NP",
+                "triangle": true,
+                "words": [
+                  "Nora"
+                ],
+                "token_span": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "id": "lesson-br-06-worked-root-1",
+                "label": "VP",
+                "children": [
+                  {
+                    "id": "lesson-br-06-worked-root-1-0",
+                    "label": "PROG",
+                    "children": [
+                      {
+                        "id": "lesson-br-06-worked-root-1-0-0",
+                        "word": "is",
+                        "token_span": [
+                          1,
+                          2
+                        ]
+                      }
+                    ],
+                    "token_span": [
+                      1,
+                      2
+                    ],
+                    "features": [
+                      "pres"
+                    ]
+                  },
+                  {
+                    "id": "lesson-br-06-worked-root-1-1",
+                    "label": "VP",
+                    "children": [
+                      {
+                        "id": "lesson-br-06-worked-root-1-1-0",
+                        "label": "V",
+                        "children": [
+                          {
+                            "id": "lesson-br-06-worked-root-1-1-0-0",
+                            "word": "inspecting",
+                            "token_span": [
+                              2,
+                              3
+                            ]
+                          }
+                        ],
+                        "token_span": [
+                          2,
+                          3
+                        ],
+                        "features": [
+                          "trans"
+                        ]
+                      },
+                      {
+                        "id": "lesson-br-06-worked-root-1-1-1",
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "the",
+                          "bridge"
+                        ],
+                        "token_span": [
+                          3,
+                          5
+                        ]
+                      }
+                    ],
+                    "token_span": [
+                      2,
+                      5
+                    ]
+                  }
+                ],
+                "token_span": [
+                  1,
+                  5
+                ]
+              }
+            ],
+            "token_span": [
+              0,
+              5
+            ]
+          },
+          "movement": [],
+          "accepted_alternatives": [],
+          "notes": [],
+          "sentence": "Nora is inspecting the bridge"
+        },
+        "accepted_alternatives": []
+      },
+      "cambridge_insights": [],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "Does the auxiliary replace the lexical VP?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, no lower VP remains",
+            "feedback": "Try again. Look for both VP levels."
+          },
+          {
+            "id": "b",
+            "text": "No, it takes a VP complement",
+            "feedback": "The lexical verb plus object remains a VP complement of the auxiliary."
+          },
+          {
+            "id": "c",
+            "text": "It becomes an adjunct PP",
+            "feedback": "Try again. Look for both VP levels."
+          }
+        ],
+        "answer": "b",
+        "hint": "Look for both VP levels.",
+        "source_ids": [
+          "BR-3E-P121",
+          "BR-3E-P122"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "Which label belongs above is in this progressive example?",
+        "options": [
+          {
+            "id": "a",
+            "text": "PROG",
+            "feedback": "Is is the progressive auxiliary, represented by PROG [pres]."
+          },
+          {
+            "id": "b",
+            "text": "V [intrans]",
+            "feedback": "Try again. Use the auxiliary role shown in this example."
+          },
+          {
+            "id": "c",
+            "text": "Prt",
+            "feedback": "Try again. Use the auxiliary role shown in this example."
+          }
+        ],
+        "answer": "a",
+        "hint": "Use the auxiliary role shown in this example.",
+        "source_ids": [
+          "BR-3E-P121",
+          "BR-3E-P122"
+        ],
+        "outcome_ids": [
+          "o1"
+        ],
+        "build_target": {
+          "node_id": "lesson-br-06-worked-root-1-0",
+          "field": "label",
+          "expected": "PROG"
+        }
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "In Ravi is reading the report, what is the lower VP?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Ravi is",
+            "feedback": "Try again. The auxiliary precedes its VP complement."
+          },
+          {
+            "id": "b",
+            "text": "is reading",
+            "feedback": "Try again. The auxiliary precedes its VP complement."
+          },
+          {
+            "id": "c",
+            "text": "reading the report",
+            "feedback": "Reading the report combines the lexical V and its direct object."
+          }
+        ],
+        "answer": "c",
+        "hint": "The auxiliary precedes its VP complement.",
+        "source_ids": [
+          "BR-3E-P121",
+          "BR-3E-P122"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "Does PROG being sister of VP make it an adjunct?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes",
+            "feedback": "Try again. Use the category of the sister, not the relation alone."
+          },
+          {
+            "id": "b",
+            "text": "No, it is the auxiliary head",
+            "feedback": "The source explicitly distinguishes auxiliary heads from adjunct adverbials."
+          },
+          {
+            "id": "c",
+            "text": "Only without tense",
+            "feedback": "Try again. Use the category of the sister, not the relation alone."
+          }
+        ],
+        "answer": "b",
+        "hint": "Use the category of the sister, not the relation alone.",
+        "source_ids": [
+          "BR-3E-P121",
+          "BR-3E-P122"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    },
+    {
+      "lesson_id": "br-07",
+      "title": "DET and NOM inside NP",
+      "track": "foundations",
+      "chapter": 7,
+      "content_version": "1.0.0",
+      "difficulty": "intermediate",
+      "estimated_minutes": 6,
+      "prerequisites": [
+        {
+          "lesson_id": "br-06",
+          "content_version": "1.0.0"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Build the Chapter 7 core NP pattern with DET and NOM."
+        }
+      ],
+      "convention_profile": {
+        "chapter": 7,
+        "version": "V7",
+        "appendix_nom": false,
+        "profile_id": "V7-CORE"
+      },
+      "tree_ids": [
+        "ch7-5"
+      ],
+      "concept_ids": [
+        "br-7-core"
+      ],
+      "rule_ids": [],
+      "source_ids": [
+        "BR-3E-P141",
+        "BR-3E-P142"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "Chapter 7 refines ordinary determiner-plus-noun phrases into NP → DET NOM. NOM is an intermediate level between NP and N. In the simple core pattern here, NOM contains N; DET contains the demonstrative DEM. Use this chapter’s core profile without the optional Appendix extra-NOM refinement. This pattern is not a demand that names and pronouns have overt determiners.",
+          "source_ids": [
+            "BR-3E-P141",
+            "BR-3E-P142"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "those lanterns",
+        "origin": "Original SynTutor example applying the cited convention; not a copied book exercise or a parser prediction.",
+        "steps": [
+          {
+            "text": "Put lanterns under N.",
+            "source_ids": [
+              "BR-3E-P141",
+              "BR-3E-P142"
+            ],
+            "focus_node_id": "lesson-br-07-worked-root-1-0"
+          },
+          {
+            "text": "Make that N the child of NOM.",
+            "source_ids": [
+              "BR-3E-P141",
+              "BR-3E-P142"
+            ],
+            "focus_node_id": "lesson-br-07-worked-root-1"
+          },
+          {
+            "text": "Put those under DEM and DET; join DET and NOM under NP.",
+            "source_ids": [
+              "BR-3E-P141",
+              "BR-3E-P142"
+            ],
+            "focus_node_id": "lesson-br-07-worked-root-0"
+          }
+        ],
+        "source_ids": [
+          "BR-3E-P141",
+          "BR-3E-P142"
+        ],
+        "tree": {
+          "schema_version": "1.1.0",
+          "tree_id": "lesson-br-07-worked",
+          "tokens": [
+            {
+              "index": 0,
+              "text": "those",
+              "char_span": [
+                0,
+                5
+              ]
+            },
+            {
+              "index": 1,
+              "text": "lanterns",
+              "char_span": [
+                6,
+                14
+              ]
+            }
+          ],
+          "convention_profile": {
+            "chapter": 7,
+            "version": "V7",
+            "appendix_nom": false,
+            "profile_id": "V7-CORE"
+          },
+          "source": {
+            "book": "Burton-Roberts, Analysing Sentences",
+            "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+            "chapter": 7,
+            "evidence_status": "TXT",
+            "review_status": "INDEPENDENTLY_REVIEWED",
+            "review_note": "Original instructional example source-checked against cited B-R conventions; not a printed diagram.",
+            "source_record_id": "lesson-br-07-worked",
+            "printed_page": 141
+          },
+          "root": {
+            "id": "lesson-br-07-worked-root",
+            "label": "NP",
+            "children": [
+              {
+                "id": "lesson-br-07-worked-root-0",
+                "label": "DET",
+                "children": [
+                  {
+                    "id": "lesson-br-07-worked-root-0-0",
+                    "label": "DEM",
+                    "children": [
+                      {
+                        "id": "lesson-br-07-worked-root-0-0-0",
+                        "word": "those",
+                        "token_span": [
+                          0,
+                          1
+                        ]
+                      }
+                    ],
+                    "token_span": [
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "token_span": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "id": "lesson-br-07-worked-root-1",
+                "label": "NOM",
+                "children": [
+                  {
+                    "id": "lesson-br-07-worked-root-1-0",
+                    "label": "N",
+                    "children": [
+                      {
+                        "id": "lesson-br-07-worked-root-1-0-0",
+                        "word": "lanterns",
+                        "token_span": [
+                          1,
+                          2
+                        ]
+                      }
+                    ],
+                    "token_span": [
+                      1,
+                      2
+                    ]
+                  }
+                ],
+                "token_span": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "token_span": [
+              0,
+              2
+            ]
+          },
+          "movement": [],
+          "accepted_alternatives": [],
+          "notes": [],
+          "sentence": "those lanterns"
+        },
+        "accepted_alternatives": []
+      },
+      "cambridge_insights": [],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "Which level is introduced between NP and N in this chapter?",
+        "options": [
+          {
+            "id": "a",
+            "text": "VP",
+            "feedback": "Try again. Do not keep the earlier flat parser-style NP."
+          },
+          {
+            "id": "b",
+            "text": "NOM",
+            "feedback": "NOM is the intermediate nominal level introduced in Chapter 7."
+          },
+          {
+            "id": "c",
+            "text": "C2",
+            "feedback": "Try again. Do not keep the earlier flat parser-style NP."
+          }
+        ],
+        "answer": "b",
+        "hint": "Do not keep the earlier flat parser-style NP.",
+        "source_ids": [
+          "BR-3E-P141",
+          "BR-3E-P142"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "Which label is sister of DET in the worked NP?",
+        "options": [
+          {
+            "id": "a",
+            "text": "NOM",
+            "feedback": "DET determines NOM in the adopted Chapter 7 structure."
+          },
+          {
+            "id": "b",
+            "text": "A",
+            "feedback": "Try again. The noun sits inside the intermediate level."
+          },
+          {
+            "id": "c",
+            "text": "S-bar",
+            "feedback": "Try again. The noun sits inside the intermediate level."
+          }
+        ],
+        "answer": "a",
+        "hint": "The noun sits inside the intermediate level.",
+        "source_ids": [
+          "BR-3E-P141",
+          "BR-3E-P142"
+        ],
+        "outcome_ids": [
+          "o1"
+        ],
+        "build_target": {
+          "node_id": "lesson-br-07-worked-root-1",
+          "field": "label",
+          "expected": "NOM"
+        }
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "In the same simple pattern for these notebooks, what is directly above N?",
+        "options": [
+          {
+            "id": "a",
+            "text": "DET",
+            "feedback": "Try again. Keep lexical, intermediate and phrasal levels distinct."
+          },
+          {
+            "id": "b",
+            "text": "NP",
+            "feedback": "Try again. Keep lexical, intermediate and phrasal levels distinct."
+          },
+          {
+            "id": "c",
+            "text": "NOM",
+            "feedback": "NOM immediately contains N in this simple core pattern."
+          }
+        ],
+        "answer": "c",
+        "hint": "Keep lexical, intermediate and phrasal levels distinct.",
+        "source_ids": [
+          "BR-3E-P141",
+          "BR-3E-P142"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "Which ordered immediate children belong under NP for those maps?",
+        "options": [
+          {
+            "id": "a",
+            "text": "N then DET",
+            "feedback": "Try again. The question asks for the immediate children of NP."
+          },
+          {
+            "id": "b",
+            "text": "DET then NOM",
+            "feedback": "DET precedes NOM; DEM is inside DET and N is inside NOM."
+          },
+          {
+            "id": "c",
+            "text": "DEM then NP",
+            "feedback": "Try again. The question asks for the immediate children of NP."
+          }
+        ],
+        "answer": "b",
+        "hint": "The question asks for the immediate children of NP.",
+        "source_ids": [
+          "BR-3E-P141",
+          "BR-3E-P142"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    },
+    {
+      "lesson_id": "br-08",
+      "title": "Complementisers and subordinate clauses",
+      "track": "foundations",
+      "chapter": 8,
+      "content_version": "1.0.0",
+      "difficulty": "advanced",
+      "estimated_minutes": 8,
+      "prerequisites": [
+        {
+          "lesson_id": "br-07",
+          "content_version": "1.0.0"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Represent an overt that-complementiser with C and S under S-bar."
+        }
+      ],
+      "convention_profile": {
+        "chapter": 8,
+        "version": "V8",
+        "profile_id": "V8"
+      },
+      "tree_ids": [
+        "ch8-11a"
+      ],
+      "concept_ids": [
+        "br-8-core"
+      ],
+      "rule_ids": [],
+      "source_ids": [
+        "BR-3E-P174"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "In the Chapter 8 that-clause pattern, the complementiser occupies C, which is daughter of S-bar and sister of S. The S below it contains the subject–predicate structure. Write S-bar in stored data and read it as S′. This lesson studies this overt that-clause pattern; it does not turn a chapter simplification into a universal rule for all subordinate clauses.",
+          "source_ids": [
+            "BR-3E-P174"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "that Nora is inspecting the bridge",
+        "origin": "Original SynTutor example applying the cited convention; not a copied book exercise or a parser prediction.",
+        "steps": [
+          {
+            "text": "Keep the complementiser that outside the lower S triangle.",
+            "source_ids": [
+              "BR-3E-P174"
+            ],
+            "focus_node_id": "lesson-br-08-worked-root-1"
+          },
+          {
+            "text": "Place that under C.",
+            "source_ids": [
+              "BR-3E-P174"
+            ],
+            "focus_node_id": "lesson-br-08-worked-root-0"
+          },
+          {
+            "text": "Join C and S under S-bar.",
+            "source_ids": [
+              "BR-3E-P174"
+            ],
+            "focus_node_id": "lesson-br-08-worked-root"
+          }
+        ],
+        "source_ids": [
+          "BR-3E-P174"
+        ],
+        "tree": {
+          "schema_version": "1.1.0",
+          "tree_id": "lesson-br-08-worked",
+          "tokens": [
+            {
+              "index": 0,
+              "text": "that",
+              "char_span": [
+                0,
+                4
+              ]
+            },
+            {
+              "index": 1,
+              "text": "Nora",
+              "char_span": [
+                5,
+                9
+              ]
+            },
+            {
+              "index": 2,
+              "text": "is",
+              "char_span": [
+                10,
+                12
+              ]
+            },
+            {
+              "index": 3,
+              "text": "inspecting",
+              "char_span": [
+                13,
+                23
+              ]
+            },
+            {
+              "index": 4,
+              "text": "the",
+              "char_span": [
+                24,
+                27
+              ]
+            },
+            {
+              "index": 5,
+              "text": "bridge",
+              "char_span": [
+                28,
+                34
+              ]
+            }
+          ],
+          "convention_profile": {
+            "chapter": 8,
+            "version": "V8",
+            "profile_id": "V8"
+          },
+          "source": {
+            "book": "Burton-Roberts, Analysing Sentences",
+            "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+            "chapter": 8,
+            "evidence_status": "TXT",
+            "review_status": "INDEPENDENTLY_REVIEWED",
+            "review_note": "Original instructional example source-checked against cited B-R conventions; not a printed diagram.",
+            "source_record_id": "lesson-br-08-worked",
+            "printed_page": 174
+          },
+          "root": {
+            "id": "lesson-br-08-worked-root",
+            "label": "S-bar",
+            "children": [
+              {
+                "id": "lesson-br-08-worked-root-0",
+                "label": "C",
+                "children": [
+                  {
+                    "id": "lesson-br-08-worked-root-0-0",
+                    "word": "that",
+                    "token_span": [
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "token_span": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "id": "lesson-br-08-worked-root-1",
+                "label": "S",
+                "triangle": true,
+                "words": [
+                  "Nora",
+                  "is",
+                  "inspecting",
+                  "the",
+                  "bridge"
+                ],
+                "token_span": [
+                  1,
+                  6
+                ]
+              }
+            ],
+            "token_span": [
+              0,
+              6
+            ]
+          },
+          "movement": [],
+          "accepted_alternatives": [],
+          "notes": [],
+          "sentence": "that Nora is inspecting the bridge"
+        },
+        "accepted_alternatives": []
+      },
+      "cambridge_insights": [
+        {
+          "text": "Cambridge distinguishes the sentence as a text-level unit from the clause as a syntactic category. Central clauses have a subject–predicate structure and clauses can be embedded. These terms provide grammatical context; they do not rename B-R S nodes. This classification is a teaching insight, not a whole-sentence correctness test.",
+          "source_ids": [
+            "CGEL-2002-CH02-P0044",
+            "CGEL-2002-CH02-P0045"
+          ],
+          "concept_ids": [
+            "cgel-sentence-clause"
+          ]
+        }
+      ],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "Does complementiser that belong inside the lower S triangle in this expanded pattern?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes",
+            "feedback": "Try again. Distinguish the lower S from the larger subordinate constituent."
+          },
+          {
+            "id": "b",
+            "text": "Only if stressed",
+            "feedback": "Try again. Distinguish the lower S from the larger subordinate constituent."
+          },
+          {
+            "id": "c",
+            "text": "No, C is sister of S",
+            "feedback": "In the expanded representation C and S are separate children of S-bar."
+          }
+        ],
+        "answer": "c",
+        "hint": "Distinguish the lower S from the larger subordinate constituent.",
+        "source_ids": [
+          "BR-3E-P174"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "Which stored label is above C and S?",
+        "options": [
+          {
+            "id": "a",
+            "text": "S-bar",
+            "feedback": "S-bar corresponds to the printed S′."
+          },
+          {
+            "id": "b",
+            "text": "S-dbar",
+            "feedback": "Try again. Use the single-bar subordinate pattern introduced here."
+          },
+          {
+            "id": "c",
+            "text": "NOM",
+            "feedback": "Try again. Use the single-bar subordinate pattern introduced here."
+          }
+        ],
+        "answer": "a",
+        "hint": "Use the single-bar subordinate pattern introduced here.",
+        "source_ids": [
+          "BR-3E-P174"
+        ],
+        "outcome_ids": [
+          "o1"
+        ],
+        "build_target": {
+          "node_id": "lesson-br-08-worked-root",
+          "field": "label",
+          "expected": "S-bar"
+        }
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "In that the robins sing, which word occupies C in this pattern?",
+        "options": [
+          {
+            "id": "a",
+            "text": "robins",
+            "feedback": "Try again. Keep the subject–predicate sequence in S."
+          },
+          {
+            "id": "b",
+            "text": "that",
+            "feedback": "That marks subordination and occupies C."
+          },
+          {
+            "id": "c",
+            "text": "sing",
+            "feedback": "Try again. Keep the subject–predicate sequence in S."
+          }
+        ],
+        "answer": "b",
+        "hint": "Keep the subject–predicate sequence in S.",
+        "source_ids": [
+          "BR-3E-P174"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "Which order matches the expanded that-clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "S followed by C under S",
+            "feedback": "Try again. Preserve both the hierarchy and word order."
+          },
+          {
+            "id": "b",
+            "text": "C followed by S under S-bar",
+            "feedback": "C is the first child, followed by S, under S-bar."
+          },
+          {
+            "id": "c",
+            "text": "NP followed by C2",
+            "feedback": "Try again. Preserve both the hierarchy and word order."
+          }
+        ],
+        "answer": "b",
+        "hint": "Preserve both the hierarchy and word order.",
+        "source_ids": [
+          "BR-3E-P174"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    },
+    {
+      "lesson_id": "br-09",
+      "title": "Wh-fronting and typed gaps",
+      "track": "foundations",
+      "chapter": 9,
+      "content_version": "1.0.0",
+      "difficulty": "advanced",
+      "estimated_minutes": 8,
+      "prerequisites": [
+        {
+          "lesson_id": "br-08",
+          "content_version": "1.0.0"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Distinguish the C2 wh position from C1 and retain an NP gap for a fronted object."
+        }
+      ],
+      "convention_profile": {
+        "chapter": 9,
+        "version": "V9",
+        "profile_id": "V9"
+      },
+      "tree_ids": [
+        "ch9-11b"
+      ],
+      "concept_ids": [
+        "br-9-core"
+      ],
+      "rule_ids": [],
+      "source_ids": [
+        "BR-3E-P198",
+        "BR-3E-P199",
+        "BR-3E-P200"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "Chapter 9 adds S-double-bar (stored S-dbar) and separates C2 above C1. In the object wh-question demonstrated here, what occupies C2 and is occupies C1. The object position contains an NP gap, and the progressive auxiliary position retains its gap. Dotted movement arrows explain the relation; they are not extra phrase-marker branches.",
+          "source_ids": [
+            "BR-3E-P198",
+            "BR-3E-P199",
+            "BR-3E-P200"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "What is Nora inspecting",
+        "origin": "Original SynTutor example applying the cited convention; not a copied book exercise or a parser prediction.",
+        "steps": [
+          {
+            "text": "Find C2 for the fronted wh expression.",
+            "source_ids": [
+              "BR-3E-P198",
+              "BR-3E-P199",
+              "BR-3E-P200"
+            ],
+            "focus_node_id": "lesson-br-09-worked-root-0"
+          },
+          {
+            "text": "Keep C1 as the lower auxiliary landing position.",
+            "source_ids": [
+              "BR-3E-P198",
+              "BR-3E-P199",
+              "BR-3E-P200"
+            ],
+            "focus_node_id": "lesson-br-09-worked-root-1-0"
+          },
+          {
+            "text": "Keep the NP object gap and the PROG gap; add no words at either gap.",
+            "source_ids": [
+              "BR-3E-P198",
+              "BR-3E-P199",
+              "BR-3E-P200"
+            ],
+            "focus_node_id": "lesson-br-09-worked-root-1-1-1-1-1"
+          }
+        ],
+        "source_ids": [
+          "BR-3E-P198",
+          "BR-3E-P199",
+          "BR-3E-P200"
+        ],
+        "tree": {
+          "schema_version": "1.1.0",
+          "tree_id": "lesson-br-09-worked",
+          "tokens": [
+            {
+              "index": 0,
+              "text": "What",
+              "char_span": [
+                0,
+                4
+              ]
+            },
+            {
+              "index": 1,
+              "text": "is",
+              "char_span": [
+                5,
+                7
+              ]
+            },
+            {
+              "index": 2,
+              "text": "Nora",
+              "char_span": [
+                8,
+                12
+              ]
+            },
+            {
+              "index": 3,
+              "text": "inspecting",
+              "char_span": [
+                13,
+                23
+              ]
+            }
+          ],
+          "convention_profile": {
+            "chapter": 9,
+            "version": "V9",
+            "profile_id": "V9"
+          },
+          "source": {
+            "book": "Burton-Roberts, Analysing Sentences",
+            "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+            "chapter": 9,
+            "evidence_status": "TXT",
+            "review_status": "INDEPENDENTLY_REVIEWED",
+            "review_note": "Original instructional example source-checked against cited B-R conventions; not a printed diagram.",
+            "source_record_id": "lesson-br-09-worked",
+            "printed_page": 198
+          },
+          "root": {
+            "id": "lesson-br-09-worked-root",
+            "label": "S-dbar",
+            "children": [
+              {
+                "id": "lesson-br-09-worked-root-0",
+                "label": "C2",
+                "children": [
+                  {
+                    "id": "lesson-br-09-worked-root-0-0",
+                    "word": "What",
+                    "token_span": [
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "token_span": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "id": "lesson-br-09-worked-root-1",
+                "label": "S-bar",
+                "children": [
+                  {
+                    "id": "lesson-br-09-worked-root-1-0",
+                    "label": "C1",
+                    "children": [
+                      {
+                        "id": "lesson-br-09-worked-root-1-0-0",
+                        "word": "is",
+                        "token_span": [
+                          1,
+                          2
+                        ]
+                      }
+                    ],
+                    "token_span": [
+                      1,
+                      2
+                    ]
+                  },
+                  {
+                    "id": "lesson-br-09-worked-root-1-1",
+                    "label": "S",
+                    "children": [
+                      {
+                        "id": "lesson-br-09-worked-root-1-1-0",
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "Nora"
+                        ],
+                        "token_span": [
+                          2,
+                          3
+                        ]
+                      },
+                      {
+                        "id": "lesson-br-09-worked-root-1-1-1",
+                        "label": "VP",
+                        "children": [
+                          {
+                            "id": "lesson-br-09-worked-root-1-1-1-0",
+                            "label": "PROG",
+                            "children": [
+                              {
+                                "id": "lesson-br-09-worked-root-1-1-1-0-0",
+                                "gap": true
+                              }
+                            ],
+                            "features": [
+                              "pres"
+                            ]
+                          },
+                          {
+                            "id": "lesson-br-09-worked-root-1-1-1-1",
+                            "label": "VP",
+                            "children": [
+                              {
+                                "id": "lesson-br-09-worked-root-1-1-1-1-0",
+                                "label": "V",
+                                "children": [
+                                  {
+                                    "id": "lesson-br-09-worked-root-1-1-1-1-0-0",
+                                    "word": "inspecting",
+                                    "token_span": [
+                                      3,
+                                      4
+                                    ]
+                                  }
+                                ],
+                                "token_span": [
+                                  3,
+                                  4
+                                ],
+                                "features": [
+                                  "trans"
+                                ]
+                              },
+                              {
+                                "id": "lesson-br-09-worked-root-1-1-1-1-1",
+                                "label": "NP",
+                                "children": [
+                                  {
+                                    "id": "lesson-br-09-worked-root-1-1-1-1-1-0",
+                                    "gap": true
+                                  }
+                                ]
+                              }
+                            ],
+                            "token_span": [
+                              3,
+                              4
+                            ]
+                          }
+                        ],
+                        "token_span": [
+                          3,
+                          4
+                        ]
+                      }
+                    ],
+                    "token_span": [
+                      2,
+                      4
+                    ]
+                  }
+                ],
+                "token_span": [
+                  1,
+                  4
+                ]
+              }
+            ],
+            "token_span": [
+              0,
+              4
+            ]
+          },
+          "movement": [],
+          "accepted_alternatives": [],
+          "notes": [],
+          "sentence": "What is Nora inspecting"
+        },
+        "accepted_alternatives": []
+      },
+      "cambridge_insights": [],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "Are C1 and C2 the same position?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes",
+            "feedback": "Try again. Read the two bar levels."
+          },
+          {
+            "id": "b",
+            "text": "No, C2 is higher than C1",
+            "feedback": "C2 is sister of S-bar; C1 is sister of S."
+          },
+          {
+            "id": "c",
+            "text": "They are word tags only",
+            "feedback": "Try again. Read the two bar levels."
+          }
+        ],
+        "answer": "b",
+        "hint": "Read the two bar levels.",
+        "source_ids": [
+          "BR-3E-P198",
+          "BR-3E-P199",
+          "BR-3E-P200"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "Which category surrounds the missing object position?",
+        "options": [
+          {
+            "id": "a",
+            "text": "AP",
+            "feedback": "Try again. The gap retains the category required at the original position."
+          },
+          {
+            "id": "b",
+            "text": "VP",
+            "feedback": "Try again. The gap retains the category required at the original position."
+          },
+          {
+            "id": "c",
+            "text": "NP",
+            "feedback": "What is a fronted object NP here, so the original object position has an NP gap."
+          }
+        ],
+        "answer": "c",
+        "hint": "The gap retains the category required at the original position.",
+        "source_ids": [
+          "BR-3E-P198",
+          "BR-3E-P199",
+          "BR-3E-P200"
+        ],
+        "outcome_ids": [
+          "o1"
+        ],
+        "build_target": {
+          "node_id": "lesson-br-09-worked-root-1-1-1-1-1",
+          "field": "label",
+          "expected": "NP"
+        }
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "In the same object-question pattern What is Ravi reading, what occupies C2?",
+        "options": [
+          {
+            "id": "a",
+            "text": "What",
+            "feedback": "The fronted wh expression occupies C2."
+          },
+          {
+            "id": "b",
+            "text": "is",
+            "feedback": "Try again. The fronted tensed auxiliary occupies C1 instead."
+          },
+          {
+            "id": "c",
+            "text": "Ravi",
+            "feedback": "Try again. The fronted tensed auxiliary occupies C1 instead."
+          }
+        ],
+        "answer": "a",
+        "hint": "The fronted tensed auxiliary occupies C1 instead.",
+        "source_ids": [
+          "BR-3E-P198",
+          "BR-3E-P199",
+          "BR-3E-P200"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "In that object-question pattern, which statement preserves the analysis?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Delete all gaps after fronting",
+            "feedback": "Try again. Fronting does not make the original syntactic position disappear."
+          },
+          {
+            "id": "b",
+            "text": "Retain an NP object gap",
+            "feedback": "The original object position remains represented by an NP gap."
+          },
+          {
+            "id": "c",
+            "text": "Turn the movement arrow into a word",
+            "feedback": "Try again. Fronting does not make the original syntactic position disappear."
+          }
+        ],
+        "answer": "b",
+        "hint": "Fronting does not make the original syntactic position disappear.",
+        "source_ids": [
+          "BR-3E-P198",
+          "BR-3E-P199",
+          "BR-3E-P200"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    },
+    {
+      "lesson_id": "br-10",
+      "title": "The non-finite to-infinitive VP",
+      "track": "foundations",
+      "chapter": 10,
+      "content_version": "1.0.0",
+      "difficulty": "advanced",
+      "estimated_minutes": 8,
+      "prerequisites": [
+        {
+          "lesson_id": "br-09",
+          "content_version": "1.0.0"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Represent infinitival to as a [-tense] auxiliary with a lexical VP complement."
+        }
+      ],
+      "convention_profile": {
+        "chapter": 10,
+        "version": "V10",
+        "profile_id": "V10"
+      },
+      "tree_ids": [
+        "ch10-11"
+      ],
+      "concept_ids": [
+        "br-10-core"
+      ],
+      "rule_ids": [],
+      "source_ids": [
+        "BR-3E-P226"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "In the adopted Chapter 10 analysis, infinitival to is a [-tense] auxiliary, followed by a VP with a stem-form lexical verb. It is different from the preposition to in a place expression. The worked fragment here shows only the non-finite VP, so it makes no claim about an unshown subject controller. Do not infer a finite tense from the surface stem alone.",
+          "source_ids": [
+            "BR-3E-P226"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "to inspect the bridge",
+        "origin": "Original SynTutor example applying the cited convention; not a copied book exercise or a parser prediction.",
+        "steps": [
+          {
+            "text": "Place inspect and its object together under the lower VP.",
+            "source_ids": [
+              "BR-3E-P226"
+            ],
+            "focus_node_id": "lesson-br-10-worked-root-1"
+          },
+          {
+            "text": "Mark infinitival to as a [-tense] auxiliary.",
+            "source_ids": [
+              "BR-3E-P226"
+            ],
+            "focus_node_id": "lesson-br-10-worked-root-0"
+          },
+          {
+            "text": "Join that auxiliary and its VP complement under the higher VP.",
+            "source_ids": [
+              "BR-3E-P226"
+            ],
+            "focus_node_id": "lesson-br-10-worked-root"
+          }
+        ],
+        "source_ids": [
+          "BR-3E-P226"
+        ],
+        "tree": {
+          "schema_version": "1.1.0",
+          "tree_id": "lesson-br-10-worked",
+          "tokens": [
+            {
+              "index": 0,
+              "text": "to",
+              "char_span": [
+                0,
+                2
+              ]
+            },
+            {
+              "index": 1,
+              "text": "inspect",
+              "char_span": [
+                3,
+                10
+              ]
+            },
+            {
+              "index": 2,
+              "text": "the",
+              "char_span": [
+                11,
+                14
+              ]
+            },
+            {
+              "index": 3,
+              "text": "bridge",
+              "char_span": [
+                15,
+                21
+              ]
+            }
+          ],
+          "convention_profile": {
+            "chapter": 10,
+            "version": "V10",
+            "profile_id": "V10"
+          },
+          "source": {
+            "book": "Burton-Roberts, Analysing Sentences",
+            "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+            "chapter": 10,
+            "evidence_status": "TXT",
+            "review_status": "INDEPENDENTLY_REVIEWED",
+            "review_note": "Original instructional example source-checked against cited B-R conventions; not a printed diagram.",
+            "source_record_id": "lesson-br-10-worked",
+            "printed_page": 226
+          },
+          "root": {
+            "id": "lesson-br-10-worked-root",
+            "label": "VP",
+            "children": [
+              {
+                "id": "lesson-br-10-worked-root-0",
+                "label": "AUX",
+                "children": [
+                  {
+                    "id": "lesson-br-10-worked-root-0-0",
+                    "word": "to",
+                    "token_span": [
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "token_span": [
+                  0,
+                  1
+                ],
+                "features": [
+                  "-tense"
+                ]
+              },
+              {
+                "id": "lesson-br-10-worked-root-1",
+                "label": "VP",
+                "children": [
+                  {
+                    "id": "lesson-br-10-worked-root-1-0",
+                    "label": "V",
+                    "children": [
+                      {
+                        "id": "lesson-br-10-worked-root-1-0-0",
+                        "word": "inspect",
+                        "token_span": [
+                          1,
+                          2
+                        ]
+                      }
+                    ],
+                    "token_span": [
+                      1,
+                      2
+                    ],
+                    "features": [
+                      "trans"
+                    ]
+                  },
+                  {
+                    "id": "lesson-br-10-worked-root-1-1",
+                    "label": "NP",
+                    "triangle": true,
+                    "words": [
+                      "the",
+                      "bridge"
+                    ],
+                    "token_span": [
+                      2,
+                      4
+                    ]
+                  }
+                ],
+                "token_span": [
+                  1,
+                  4
+                ]
+              }
+            ],
+            "token_span": [
+              0,
+              4
+            ]
+          },
+          "movement": [],
+          "accepted_alternatives": [],
+          "notes": [],
+          "sentence": "to inspect the bridge"
+        },
+        "accepted_alternatives": []
+      },
+      "cambridge_insights": [],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "In this to-infinitive, is to a finite modal?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes",
+            "feedback": "Try again. Restrict the answer to the infinitival use shown."
+          },
+          {
+            "id": "b",
+            "text": "No, it is an untensed auxiliary in this analysis",
+            "feedback": "The book treats infinitival to as a [-tense] auxiliary."
+          },
+          {
+            "id": "c",
+            "text": "It is always a preposition",
+            "feedback": "Try again. Restrict the answer to the infinitival use shown."
+          }
+        ],
+        "answer": "b",
+        "hint": "Restrict the answer to the infinitival use shown.",
+        "source_ids": [
+          "BR-3E-P226"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "Which feature belongs above infinitival to?",
+        "options": [
+          {
+            "id": "a",
+            "text": "-tense",
+            "feedback": "[-tense] marks this non-finite auxiliary."
+          },
+          {
+            "id": "b",
+            "text": "pres",
+            "feedback": "Try again. Do not assign finite tense to the infinitive."
+          },
+          {
+            "id": "c",
+            "text": "past",
+            "feedback": "Try again. Do not assign finite tense to the infinitive."
+          }
+        ],
+        "answer": "a",
+        "hint": "Do not assign finite tense to the infinitive.",
+        "source_ids": [
+          "BR-3E-P226"
+        ],
+        "outcome_ids": [
+          "o1"
+        ],
+        "build_target": {
+          "node_id": "lesson-br-10-worked-root-0",
+          "field": "feature",
+          "expected": "-tense"
+        }
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "For to read the notes, which words form the lower lexical VP?",
+        "options": [
+          {
+            "id": "a",
+            "text": "to read",
+            "feedback": "Try again. Keep to outside the lexical VP."
+          },
+          {
+            "id": "b",
+            "text": "the notes only",
+            "feedback": "Try again. Keep to outside the lexical VP."
+          },
+          {
+            "id": "c",
+            "text": "read the notes",
+            "feedback": "The lexical verb read and its object make the VP complement of to."
+          }
+        ],
+        "answer": "c",
+        "hint": "Keep to outside the lexical VP.",
+        "source_ids": [
+          "BR-3E-P226"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "Which representation fits infinitival to in this lesson?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A tensed lexical V with a following NP",
+            "feedback": "Try again. Separate the infinitival auxiliary from its lexical VP complement."
+          },
+          {
+            "id": "b",
+            "text": "A [-tense] auxiliary followed by a lexical VP",
+            "feedback": "To is the untensed auxiliary, and inspect the bridge is its VP complement."
+          },
+          {
+            "id": "c",
+            "text": "A preposition whenever it precedes a verb",
+            "feedback": "Try again. Separate the infinitival auxiliary from its lexical VP complement."
+          }
+        ],
+        "answer": "b",
+        "hint": "Separate the infinitival auxiliary from its lexical VP complement.",
+        "source_ids": [
+          "BR-3E-P226"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    },
+    {
+      "lesson_id": "br-11",
+      "title": "From sentence lists to grammars",
+      "track": "foundations",
+      "chapter": 11,
+      "content_version": "1.0.0",
+      "difficulty": "advanced",
+      "estimated_minutes": 8,
+      "prerequisites": [
+        {
+          "lesson_id": "br-10",
+          "content_version": "1.0.0"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Explain why a finite set of rules can describe an unbounded set of sentences."
+        }
+      ],
+      "convention_profile": null,
+      "tree_ids": [],
+      "concept_ids": [
+        "br-11-core"
+      ],
+      "rule_ids": [],
+      "source_ids": [
+        "BR-3E-P260",
+        "BR-3E-P263",
+        "BR-3E-P265",
+        "BR-3E-P266"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "Chapter 11 closes the course without adding a new tree profile. A finite inventory of remembered sentences cannot capture the open-ended possibilities of a natural language. Rules can describe how complex sentences are constructed and make predictions beyond already listed examples. The chapter’s ideal grammar both admits sentences and supplies their structural descriptions; a drawn tree alone is not a full grammar.",
+          "source_ids": [
+            "BR-3E-P260",
+            "BR-3E-P263",
+            "BR-3E-P265",
+            "BR-3E-P266"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "Iris rests. / Leo waits. / Iris rests and Leo waits.",
+        "origin": "Original SynTutor example applying the cited convention; not a copied book exercise or a parser prediction.",
+        "steps": [
+          {
+            "text": "Start with two independently available sentences.",
+            "source_ids": [
+              "BR-3E-P260",
+              "BR-3E-P263",
+              "BR-3E-P265",
+              "BR-3E-P266"
+            ]
+          },
+          {
+            "text": "Combine them with and.",
+            "source_ids": [
+              "BR-3E-P260",
+              "BR-3E-P263",
+              "BR-3E-P265",
+              "BR-3E-P266"
+            ]
+          },
+          {
+            "text": "Notice that the same combination procedure can apply again.",
+            "source_ids": [
+              "BR-3E-P260",
+              "BR-3E-P263",
+              "BR-3E-P265",
+              "BR-3E-P266"
+            ]
+          }
+        ],
+        "source_ids": [
+          "BR-3E-P260",
+          "BR-3E-P263",
+          "BR-3E-P265",
+          "BR-3E-P266"
+        ],
+        "tree": null,
+        "accepted_alternatives": []
+      },
+      "cambridge_insights": [],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "Must an unbounded set require an unbounded written list to describe it?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes",
+            "feedback": "Try again. Distinguish a finite description from a finite set."
+          },
+          {
+            "id": "b",
+            "text": "No, rules can describe it finitely",
+            "feedback": "A finite rule can license indefinitely many combinations."
+          },
+          {
+            "id": "c",
+            "text": "Only if it has no structure",
+            "feedback": "Try again. Distinguish a finite description from a finite set."
+          }
+        ],
+        "answer": "b",
+        "hint": "Distinguish a finite description from a finite set.",
+        "source_ids": [
+          "BR-3E-P260",
+          "BR-3E-P263",
+          "BR-3E-P265",
+          "BR-3E-P266"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "After combining two available sentences with and, what can a recursive combination rule do?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Apply again to the result",
+            "feedback": "The rule can apply repeatedly, allowing further combinations."
+          },
+          {
+            "id": "b",
+            "text": "Only repeat the original list",
+            "feedback": "Try again. A rule is a general procedure, not a single memorized item."
+          },
+          {
+            "id": "c",
+            "text": "Erase all structure",
+            "feedback": "Try again. A rule is a general procedure, not a single memorized item."
+          }
+        ],
+        "answer": "a",
+        "hint": "A rule is a general procedure, not a single memorized item.",
+        "source_ids": [
+          "BR-3E-P260",
+          "BR-3E-P263",
+          "BR-3E-P265",
+          "BR-3E-P266"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "A learner has never heard Mina waits and Sol smiles. Does that alone rule it out?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, every sentence must be memorized",
+            "feedback": "Try again. Novelty and grammaticality are different issues."
+          },
+          {
+            "id": "b",
+            "text": "No, a rule can license a new combination",
+            "feedback": "A grammar can license a combination not previously encountered."
+          },
+          {
+            "id": "c",
+            "text": "Yes, unless a tree is supplied by a parser",
+            "feedback": "Try again. Novelty and grammaticality are different issues."
+          }
+        ],
+        "answer": "b",
+        "hint": "Novelty and grammaticality are different issues.",
+        "source_ids": [
+          "BR-3E-P260",
+          "BR-3E-P263",
+          "BR-3E-P265",
+          "BR-3E-P266"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "Which description best fits the chapter’s ideal grammar?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A list of all previously heard sentences",
+            "feedback": "Try again. A list or score alone does not provide those general rules."
+          },
+          {
+            "id": "b",
+            "text": "A score from an opaque classifier",
+            "feedback": "Try again. A list or score alone does not provide those general rules."
+          },
+          {
+            "id": "c",
+            "text": "General rules that license sentences and give their structure",
+            "feedback": "The ideal grammar supplies a general account of sentences and their structural descriptions."
+          }
+        ],
+        "answer": "c",
+        "hint": "A list or score alone does not provide those general rules.",
+        "source_ids": [
+          "BR-3E-P260",
+          "BR-3E-P263",
+          "BR-3E-P265",
+          "BR-3E-P266"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    },
+    {
+      "lesson_id": "cgel-clauses",
+      "title": "Sentences and embedded clauses",
+      "track": "grammar",
+      "chapter": 2,
+      "content_version": "1.0.0",
+      "difficulty": "intermediate",
+      "estimated_minutes": 6,
+      "prerequisites": [
+        {
+          "lesson_id": "br-02",
+          "content_version": "1.0.0"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "o1",
+          "text": "Distinguish a text-level sentence from a central subject–predicate clause that can be embedded."
+        }
+      ],
+      "convention_profile": {
+        "chapter": 2,
+        "version": "V2",
+        "profile_id": "V2"
+      },
+      "tree_ids": [
+        "ch2-33"
+      ],
+      "concept_ids": [
+        "cgel-sentence-clause"
+      ],
+      "rule_ids": [
+        "CLS-001"
+      ],
+      "source_ids": [
+        "CGEL-2002-CH02-P0044",
+        "CGEL-2002-CH02-P0045"
+      ],
+      "publication_status": "published",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review; not human instructor sign-off",
+      "reviewed_on": "2026-11-08",
+      "review_receipt": "sources/cambridge/reviews/2026-11-08-lessons.json",
+      "teaching": [
+        {
+          "text": "Cambridge distinguishes the sentence as a text-level unit from the clause as a syntactic category. Central clauses have a subject–predicate structure and clauses can be embedded. These terms provide grammatical context; they do not rename B-R S nodes. This classification is a teaching insight, not a whole-sentence correctness test.",
+          "source_ids": [
+            "CGEL-2002-CH02-P0044",
+            "CGEL-2002-CH02-P0045"
+          ]
+        }
+      ],
+      "worked_example": {
+        "sentence": "Nora reports that the robins sing.",
+        "origin": "Original SynTutor contrast; no new Cambridge tree labels are imposed on B-R.",
+        "tree": null,
+        "accepted_alternatives": [],
+        "source_ids": [
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045"
+        ],
+        "steps": [
+          {
+            "text": "Read the whole utterance as one sentence in this text.",
+            "source_ids": [
+              "CGEL-2002-CH02-P0044",
+              "CGEL-2002-CH02-P0045"
+            ]
+          },
+          {
+            "text": "Locate the embedded clause the robins sing.",
+            "source_ids": [
+              "CGEL-2002-CH02-P0044",
+              "CGEL-2002-CH02-P0045"
+            ]
+          },
+          {
+            "text": "Notice its subject–predicate structure without treating it as a separate text sentence.",
+            "source_ids": [
+              "CGEL-2002-CH02-P0044",
+              "CGEL-2002-CH02-P0045"
+            ]
+          }
+        ]
+      },
+      "cambridge_insights": [],
+      "completion": {
+        "required_stages": [
+          "predict",
+          "understand",
+          "worked",
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "required_correct": [
+          "guided",
+          "transfer",
+          "exit"
+        ],
+        "reward_xp": 15
+      },
+      "predict": {
+        "id": "predict",
+        "prompt": "Can a clause occur inside a larger sentence?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes",
+            "feedback": "Cambridge allows embedded clauses."
+          },
+          {
+            "id": "b",
+            "text": "No",
+            "feedback": "Try again. Do not equate every clause with a text sentence."
+          },
+          {
+            "id": "c",
+            "text": "Only as a separate paragraph",
+            "feedback": "Try again. Do not equate every clause with a text sentence."
+          }
+        ],
+        "answer": "a",
+        "hint": "Do not equate every clause with a text sentence.",
+        "source_ids": [
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "guided": {
+        "id": "guided",
+        "prompt": "In the worked text, which sequence is embedded?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Nora reports",
+            "feedback": "Try again. Find the subject–predicate structure introduced after that."
+          },
+          {
+            "id": "b",
+            "text": "the robins sing",
+            "feedback": "The robins sing is the embedded subject–predicate clause."
+          },
+          {
+            "id": "c",
+            "text": "reports that",
+            "feedback": "Try again. Find the subject–predicate structure introduced after that."
+          }
+        ],
+        "answer": "b",
+        "hint": "Find the subject–predicate structure introduced after that.",
+        "source_ids": [
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "transfer": {
+        "id": "transfer",
+        "prompt": "In Ravi knows that Mina waits., is Mina waits a separate sentence of this text?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, every clause is a separate sentence",
+            "feedback": "Try again. Keep text segmentation separate from embedded syntactic structure."
+          },
+          {
+            "id": "b",
+            "text": "Yes, because it contains a verb",
+            "feedback": "Try again. Keep text segmentation separate from embedded syntactic structure."
+          },
+          {
+            "id": "c",
+            "text": "No, it is embedded within the larger sentence",
+            "feedback": "Here it is an embedded clause within the one text sentence."
+          }
+        ],
+        "answer": "c",
+        "hint": "Keep text segmentation separate from embedded syntactic structure.",
+        "source_ids": [
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      },
+      "exit": {
+        "id": "exit",
+        "prompt": "In Mina says that Sol rests., how should Sol rests be described in this text?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A separate sentence outside the larger sentence",
+            "feedback": "Try again. Distinguish a clause’s internal structure from the text-level sentence boundary."
+          },
+          {
+            "id": "b",
+            "text": "An embedded clause with its own subject–predicate structure",
+            "feedback": "Sol rests is a clause embedded within the larger text sentence."
+          },
+          {
+            "id": "c",
+            "text": "A word without syntactic structure",
+            "feedback": "Try again. Distinguish a clause’s internal structure from the text-level sentence boundary."
+          }
+        ],
+        "answer": "b",
+        "hint": "Distinguish a clause’s internal structure from the text-level sentence boundary.",
+        "source_ids": [
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045"
+        ],
+        "outcome_ids": [
+          "o1"
+        ]
+      }
+    }
+  ],
+  "planned_modules": [
+    {
+      "id": "cgel-3",
+      "title": "Verb forms and auxiliaries",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-4",
+      "title": "Complementation and valency",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-5",
+      "title": "Nouns and noun phrases",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-6",
+      "title": "Adjectives and adverbs",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-7",
+      "title": "Prepositions",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-8",
+      "title": "Adjuncts",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-9",
+      "title": "Negation",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-10",
+      "title": "Clause types",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-11",
+      "title": "Subordinate clauses",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-12",
+      "title": "Relatives",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-13",
+      "title": "Comparatives",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-14",
+      "title": "Non-finite clauses",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-15",
+      "title": "Coordination",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-16",
+      "title": "Information packaging",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-17",
+      "title": "Morphology",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-18",
+      "title": "Word formation",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    },
+    {
+      "id": "cgel-19",
+      "title": "Punctuation",
+      "status": "planned",
+      "reason": "Source extraction is inventoried; lesson content and answer scope are not yet independently reviewed."
+    }
+  ]
+}

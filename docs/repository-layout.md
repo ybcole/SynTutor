@@ -61,3 +61,7 @@ predict whether its future merge will require rename resolution.
 | `syntutor_12_prompt_execution_plan_updated.md` | `docs/archive/planning/syntutor_12_prompt_execution_plan_updated.md` |
 | `syntutor_milestone_02_progress_report.md` | `docs/reports/syntutor_milestone_02_progress_report.md` |
 | `tmp_test.md` | `docs/archive/tmp_test.md` |
+
+## Milestone 04 organization update
+
+Active lesson content/schema: `web/content/lessons/`. Runtime: `web/js/lesson-core.js`, `lesson-progress.js`, `lessons-ui.js` and `web/css/lessons.css`. Curriculum map/audit/deployment contract: `docs/curriculum/`. Source checks remain under `sources/*/reviews/`. The former `web/js/tree-quiz.js` is preserved at `archive/legacy-lessons/tree-quiz.js`, outside the static build. Existing user records are not moved or rewritten. The earlier PR #30 rename note above is historical; that work was merged before M4.

@@ -1,0 +1,220 @@
+{
+  "review_date": "2026-11-08",
+  "reviewer": "Codex",
+  "review_kind": "Separate AI source-verification pass after drafting, performed by the same assistant; not a separate human instructor or separate model. No human sign-off is claimed.",
+  "bibliographic_manifest": "sources/burton_roberts/source_manifest_2026-11-08.json",
+  "representative_review_before_full_catalog_publication": [
+    "br-01",
+    "br-06",
+    "br-10"
+  ],
+  "lesson_sha256": {
+    "br-01": "cd1c78557f44f617c8ebc59531ac3d2508ef1dcfd695c5f5cf4c51f0d4efa276",
+    "br-02": "6a816286775adba2441acb957805339ae82024a72f9cffa4670fa621394bed19",
+    "br-03": "ebae5409b2d252f06cd620d930b7acd1c5b760064a267ce56fa93a175b0d19ff",
+    "br-04": "5fcb47f8bdc8fdc45e1f62f6d42b3cb8f5b3618a15ddc314b259ae9b30fa3ba3",
+    "br-05": "00a4fe5ab73d50976693c8836ea3d094f6954753df3d479f4c4478f43fcd4bf5",
+    "br-06": "5fa8b01fdf11190f5bf0a9e6413a2e7916e9107339d7bc8f250fbcdff573a916",
+    "br-07": "b3fbb32f307db2704068718fedc7088f7e0a334ed5a57f3bbaef174db987ac8c",
+    "br-08": "0a33f853e8caffba1e1129e2cf25cc4625ef66b5f0b799653f672d18d77a49c8",
+    "br-09": "d599b62683095aa2e5c959b9f8c7b9d6433b955ec1a272ae77363d960dc38cdd",
+    "br-10": "1b8c308d981c67122f2dad2584afbf4f82defe9e39da0a105a8a6d9905dc1fdc",
+    "br-11": "cadbc8b47202b0bdcd250eaeeca13c540b9b576df98c8734b3a94ba4e9e46b3b"
+  },
+  "checks": [
+    {
+      "lesson_id": "br-01",
+      "source_ids": [
+        "BR-3E-P16",
+        "BR-3E-P17"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": {
+        "chapter": 1,
+        "version": "V1",
+        "profile_id": "V1"
+      },
+      "runtime_constraint_enabled": false
+    },
+    {
+      "lesson_id": "br-02",
+      "source_ids": [
+        "BR-3E-P29",
+        "BR-3E-P30"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": {
+        "chapter": 2,
+        "version": "V2",
+        "profile_id": "V2"
+      },
+      "runtime_constraint_enabled": false
+    },
+    {
+      "lesson_id": "br-03",
+      "source_ids": [
+        "BR-3E-P55",
+        "BR-3E-P62"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": {
+        "chapter": 3,
+        "version": "V3",
+        "profile_id": "V3"
+      },
+      "runtime_constraint_enabled": false
+    },
+    {
+      "lesson_id": "br-04",
+      "source_ids": [
+        "BR-3E-P70",
+        "BR-3E-P71"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": {
+        "chapter": 4,
+        "version": "V4",
+        "profile_id": "V4"
+      },
+      "runtime_constraint_enabled": false
+    },
+    {
+      "lesson_id": "br-05",
+      "source_ids": [
+        "BR-3E-P89",
+        "BR-3E-P90"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": {
+        "chapter": 5,
+        "version": "V5",
+        "profile_id": "V5"
+      },
+      "runtime_constraint_enabled": false
+    },
+    {
+      "lesson_id": "br-06",
+      "source_ids": [
+        "BR-3E-P121",
+        "BR-3E-P122"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": {
+        "chapter": 6,
+        "version": "V6",
+        "profile_id": "V6"
+      },
+      "runtime_constraint_enabled": false
+    },
+    {
+      "lesson_id": "br-07",
+      "source_ids": [
+        "BR-3E-P141",
+        "BR-3E-P142"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": {
+        "chapter": 7,
+        "version": "V7",
+        "appendix_nom": false,
+        "profile_id": "V7-CORE"
+      },
+      "runtime_constraint_enabled": false
+    },
+    {
+      "lesson_id": "br-08",
+      "source_ids": [
+        "BR-3E-P174"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": {
+        "chapter": 8,
+        "version": "V8",
+        "profile_id": "V8"
+      },
+      "runtime_constraint_enabled": false
+    },
+    {
+      "lesson_id": "br-09",
+      "source_ids": [
+        "BR-3E-P198",
+        "BR-3E-P199",
+        "BR-3E-P200"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": {
+        "chapter": 9,
+        "version": "V9",
+        "profile_id": "V9"
+      },
+      "runtime_constraint_enabled": false
+    },
+    {
+      "lesson_id": "br-10",
+      "source_ids": [
+        "BR-3E-P226"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": {
+        "chapter": 10,
+        "version": "V10",
+        "profile_id": "V10"
+      },
+      "runtime_constraint_enabled": false
+    },
+    {
+      "lesson_id": "br-11",
+      "source_ids": [
+        "BR-3E-P260",
+        "BR-3E-P263",
+        "BR-3E-P265",
+        "BR-3E-P266"
+      ],
+      "decision": "Teaching prose, original worked example, guided/transfer/exit answers and outcome alignment checked against the cited scoped source pages. No parser-generated answer key used.",
+      "canonical_shape": null,
+      "runtime_constraint_enabled": false
+    }
+  ],
+  "source_evidence_notes": [
+    "IMG page anchors were visually inspected; TXT anchors were checked in extracted supplied-page prose.",
+    "Original examples and answer trees apply the cited convention; they are not represented as printed diagrams or copied textbook exercises.",
+    "Existing comparison tree IDs retain their original independent-review state. Linking an ID does not certify every corpus transcription.",
+    "Source-derived claims are restricted to the lesson objective; wider chapter constructions remain outside these introductory units."
+  ],
+  "limitations": [
+    "No human instructor sign-off or full-book linguistic recertification.",
+    "Cambridge classification is not a whole-sentence grammaticality verdict.",
+    "No production Cambridge runtime constraints enabled."
+  ],
+  "display_policy": {
+    "AUX": "Existing canonical AUX tag for infinitival to is rendered as its [-tense] feature, matching the feature-only source display on p.226. The auxiliary role is taught in prose; no printed AUX category label is claimed.",
+    "S-bar": "Display S′; S-dbar displays S″.",
+    "chapter11": "Text-only synthesis; no new tree profile or gradable tree."
+  },
+  "source_sha256": {
+    "BR-3E-P16": "0c7c0cbb39be634738b16c8572d2034b49a7b892e9fb8b3ea23696a92847dc66",
+    "BR-3E-P17": "79329f52c3d9ddbc1fff7c526ef2d358edff2ba9e09b69c3f7036c0006fa18b2",
+    "BR-3E-P29": "a593b1ed1b630a9e3d9a4e1a253169d999192d2ffe062d5f059a229e16a5e40c",
+    "BR-3E-P30": "8ce31ef5246ce609e7a5e81bee905f7fe5d81a5c6d988bbbcaf4b9cd5f1e7c91",
+    "BR-3E-P55": "475de3aec1c1fd5b3adacc47879db422d7d51878828d993e2dfe90e12d748457",
+    "BR-3E-P62": "814675ffb5f76d20bd6190ad78e1da45f29cba9cae51cd379418c86310e6a027",
+    "BR-3E-P70": "2b70febee2cc022e8b96d35698a558d5d38e49c613ba6fd0f096bed20d591106",
+    "BR-3E-P71": "43419d236790b9bb809bf0f75596e4cae8546856b5e28c62275ae37bc9d33df6",
+    "BR-3E-P89": "6644bc6a95d781429083806c68c63622fb0213cc611090781a874f9ab81df93f",
+    "BR-3E-P90": "ab218de44ceb07063d29f03cce7919e0b2ddeb40473357eb4e18fc14784f8766",
+    "BR-3E-P121": "84b64ae95d9d3f75c7bd61c2f8d400b1a8b44114a79c991417dddb38f11c6d23",
+    "BR-3E-P122": "df720ff1266a882da1b9352d9452a8fd535f31faab91f5cc54fc10246531f4ec",
+    "BR-3E-P141": "d684687e1d8c314dfae4b59346f7728a4dfe663f2efe88c830afa8b2b3b7f32c",
+    "BR-3E-P142": "f3f1a2e30a63555d64b97d9a0492224e37914041ec4f8fa419fcb7fe9b773290",
+    "BR-3E-P174": "73720f3c8de091d7627a53486fb600db19ba9c449d0492db2263b859ac8b24a9",
+    "BR-3E-P198": "3045f1fb790bf43fa0fde5050eb09aabfded309806243635d76ca10fee85b74e",
+    "BR-3E-P199": "7e4d11b77c9a1a5dfb1cc8d801d9c2e779563af7ff11cd0428c6fd4f494ff31a",
+    "BR-3E-P200": "b9f04d4085175759b17110d39a995fa3fab344e79292f34c675832bf6f890adc",
+    "BR-3E-P226": "db72119e856c20a59b97b6877fe213d21c80c62f764f52bcbf3e869edb8fa6ac",
+    "BR-3E-P260": "6a65131f2fd79ec8e6e56470db563fba2e8cbfa5b598d9fd33242a17b27fa33d",
+    "BR-3E-P263": "8dea84f13a30d86082fbb14c54aa1bd480b44c257472ef37faa344aec862c335",
+    "BR-3E-P265": "ad38de85583088dbf79faea447d244d5d2ee5d9cca7e9568be2d82b24d8186bb",
+    "BR-3E-P266": "9c9682cb8294eeae6d92266a5b4bcd601f9181139ae1bf1baf63ee6be42c29db"
+  },
+  "exit_check_alignment": "The Chapter 10 final check directly tests the untensed-auxiliary plus lexical-VP representation; controller scope remains a stated limit, not a substitute for the assessed outcome."
+}
