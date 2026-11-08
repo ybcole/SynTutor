@@ -10,9 +10,9 @@ import {
   renderDiagnostic, renderCorrection, applySentenceSelection, plainName, renderCorrectionPanel,
 } from './ui.js';
 import {
-  planFocus, contextWords, applyEdit, expectedScopeWords, findScopeNode, findTargetError,
+  planFocus, contextWords, correctionPreview, expectedScopeWords, findScopeNode, findTargetError,
 } from './correction.js';
-import { initLessons, openLessons, closeLessons } from './lessons-ui.js';
+import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js';
 import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js';
 import { initSyntaxBuilder, openBuilderView, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
@@ -134,8 +134,8 @@ function refreshCorrectionUi() {
     canCorrect: Boolean(focus.edit),
     alternativeCanCorrect: Boolean(focus.alternativeEdit),
     suggestedFix: focus.suggestedFix || '',
-    correctedText: focus.corrected ? focus.corrected.text : '',
-    alternativeCorrectedText: focus.alternativeCorrected ? focus.alternativeCorrected.text : '',
+    preview: activePreview(),
+    renderCanonical: renderLessonTree,
     loading: previewLoading,
     result: focusResult,
   }, correctionHandlers);
@@ -201,17 +201,18 @@ async function showCorrected(variant = 'corrected') {
   if (!target[cacheKey]) {
     previewLoading = modeValue;
     refreshCorrectionUi();
-    const text = applyEdit(session.payload, edit);
+    const change = correctionPreview(session.payload, edit);
+    const { text } = change;
     let cp = null;
     try {
       const out = await postParse(text);
       if (!out.error) cp = out.payload;
     } catch (_e) { /* handled below */ }
-    previewLoading = null;
     // The learner may have picked another error while the preview was built.
     if (focus !== target) return;
-    if (!cp) {
-      focusResult = { kind: 'still', message: 'Could not build the preview tree right now.' };
+    previewLoading = null;
+    if (!cp?.tree || cp.parse?.text !== text) {
+      focusResult = { kind: 'still', message: 'Could not verify a tree for the complete corrected sentence.' };
       refreshCorrectionUi();
       return;
     }
@@ -220,6 +221,7 @@ async function showCorrected(variant = 'corrected') {
     target[cacheKey] = {
       payload: cp,
       text,
+      change,
       scopeId: expected ? findScopeNode(cp, target.scopeType, expected) : null,
     };
   }
@@ -373,6 +375,7 @@ function purgeLegacyGuestHistory() {
 
 export function boot() {
   renderer = new TreeRenderer(document.querySelector('#treeCanvas'), {
+    outline: document.getElementById('generatorTreeOutline'),
     onSelect: (id) => handleNodeSelect(id),
     onHover: () => {},
     describe: plainName,
@@ -1531,7 +1534,7 @@ function setTreeAuthorityNotice(payload) {
     .map((row) => row?.message || row?.detail).find(Boolean)
     || (analysis?.reasons || []).map((row) => row?.detail).find(Boolean);
   if (status === 'normalized') {
-    notice.textContent = 'Canonical B-R analysis is available in the response; this canvas displays the raw Benepar diagnostic candidate, not the canonical B-R tree.';
+    notice.textContent = 'Canvas: Benepar diagnostic tree. A canonical B-R tree is available.';
   } else {
     notice.textContent = `Raw Benepar diagnostic candidate only — canonical B-R normalization is ${status}.${detail ? ` ${detail}` : ''}`;
   }
@@ -1547,7 +1550,7 @@ function setTreeAuthorityNotice(payload) {
       try { enterBuilderMode(analysis.tree); }
       catch (error) { renderDiagnostic('Canonical tree cannot be edited yet', [error.message]); }
     });
-    notice.after(button);
+    notice.append(document.createElement('br'), button);
   }
 }
 

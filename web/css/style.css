@@ -2956,3 +2956,48 @@ body.workspace-view-open .app-main { display: none; }
   .podium-grid { grid-template-columns: 1fr; }
   .achievements-grid { grid-template-columns: 1fr; }
 }
+
+/* Generator tree navigation and correction preview. */
+#treeCanvas { touch-action: none; }
+.tree-outline {
+  position: absolute;
+  inset: auto auto 12px 12px;
+  z-index: 3;
+  max-inline-size: calc(100% - 24px);
+  color: var(--text);
+  background: var(--surface, var(--bg));
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+#treeCanvas[hidden] + .tree-outline { display: none; }
+.tree-outline summary { cursor: pointer; min-block-size: 40px; align-content: center; }
+.tree-outline-body { max-block-size: min(35vh, 260px); overflow: auto; }
+.tree-outline-body ul { padding-inline-start: 16px; }
+.tree-outline-body button {
+  min-block-size: 40px;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+.tree-outline-body [aria-current="true"] { font-weight: 700; text-decoration: underline; }
+.cp-change { overflow-wrap: anywhere; }
+.cp-change del, .cp-change ins { font-weight: 650; }
+.correction-panel details { max-inline-size: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  .correction-panel .loading-spinner { animation: none; }
+}
+.tree-outline-controls { display: flex; flex-wrap: wrap; gap: 6px; }
+.tree-outline-controls button { min-block-size: 40px; }
+#openCanonicalBuilder {
+  pointer-events: auto;
+  min-block-size: 38px;
+  margin-block-start: 4px;
+  padding-inline: 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  background: var(--surface);
+}
+@media (max-width: 760px) {
+  .pane-input #tutorSurface { margin-block-start: 36px; }
+}

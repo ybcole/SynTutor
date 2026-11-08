@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SynTutor — Explainable Phrase-Structure Grammar Tutor</title>
+  <meta name="description" content="Understand structure. Explain grammar.">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/quiz.css" />
   <link rel="stylesheet" href="css/lessons.css" />
@@ -220,6 +221,15 @@
         <div class="canvas-stage">
           <div id="treeAuthorityNotice" class="tree-authority-notice" role="status" aria-live="polite" hidden></div>
           <canvas id="treeCanvas" tabindex="0" aria-label="Interactive syntax tree; click a node, or use arrow keys and Enter"></canvas>
+          <details id="generatorTreeOutline" class="tree-outline" hidden>
+            <summary>Read and navigate tree</summary>
+            <div class="tree-outline-controls" role="group" aria-label="Tree zoom">
+              <button type="button" data-zoom="in">Zoom in</button>
+              <button type="button" data-zoom="out">Zoom out</button>
+              <button type="button" data-zoom="fit">Fit tree</button>
+            </div>
+            <div class="tree-outline-body"></div>
+          </details>
           <canvas id="builderCanvas" class="builder-canvas" tabindex="0" aria-label="Syntax builder canvas" hidden></canvas>
           <div id="canvasControls" class="canvas-controls" hidden>
             <button id="builderClear" class="builder-btn" type="button" data-action="clear">Clear</button>
@@ -241,7 +251,7 @@
               <line x1="37" y1="21" x2="44" y2="42" />
             </svg>
             <h3 class="empty-tree-title">No Syntax tree to generate yet!</h3>
-            <p class="empty-tree-sub">Add your text to see the syntax tree here</p>
+            <p class="empty-tree-sub">Enter a sentence to explore its structure and source-based explanations.</p>
           </div>
           <div id="loadingIndicator" class="loading-pill" aria-hidden="true">
             <span class="loading-spinner" aria-hidden="true"></span>

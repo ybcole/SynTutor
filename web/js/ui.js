@@ -282,6 +282,8 @@ export function applySentenceSelection(payload) {
 export function renderCorrectionPanel(info, handlers = {}) {
   const box = $('#correctionPanel');
   if (!box) return;
+  const restoreFocus = box.contains(document.activeElement);
+  const focusedLabel = document.activeElement?.textContent;
   box.innerHTML = '';
   if (!info) { box.hidden = true; return; }
   box.hidden = false;
@@ -297,7 +299,7 @@ export function renderCorrectionPanel(info, handlers = {}) {
     head.className = 'cp-head';
     const title = document.createElement('div');
     title.className = 'cp-title';
-    title.textContent = 'Grammar error';
+    title.textContent = 'Flagged for review';
     head.appendChild(title);
     const close = document.createElement('button');
     close.type = 'button';
@@ -324,6 +326,7 @@ export function renderCorrectionPanel(info, handlers = {}) {
     if (loading) {
       const loadingRow = document.createElement('div');
       loadingRow.className = 'cp-loading';
+      loadingRow.setAttribute('role', 'status');
       const spinner = document.createElement('span');
       spinner.className = 'loading-spinner';
       const text = document.createElement('span');
@@ -369,18 +372,45 @@ export function renderCorrectionPanel(info, handlers = {}) {
 
   // The sentence the preview produced — the correction the learner can copy
   // into the input box.
-  const preview = mode === 'alternative'
-    ? info.alternativeCorrectedText
-    : info.correctedText;
+  const preview = info.preview;
   if (preview) {
     const cap = document.createElement('div');
     cap.className = 'nc-label';
-    cap.textContent = mode === 'alternative' ? 'Alternative correction' : 'Suggested correction';
+    cap.textContent = mode === 'alternative' ? 'Alternative corrected sentence' : 'Corrected sentence';
     box.appendChild(cap);
     const line = document.createElement('p');
     line.className = 'cp-sentence';
-    line.textContent = preview;
+    line.textContent = preview.text;
     box.appendChild(line);
+
+    const annotation = document.createElement('p');
+    annotation.className = 'cp-change';
+    const { removed, added } = preview.change;
+    if (removed) {
+      const old = document.createElement('del');
+      old.textContent = removed;
+      annotation.append('Removed ', old);
+    }
+    if (added) {
+      const replacement = document.createElement('ins');
+      replacement.textContent = added;
+      annotation.append(removed ? ' · Added ' : 'Added ', replacement);
+    }
+    box.appendChild(annotation);
+
+    const canonical = preview.payload.br_analysis?.tree;
+    const details = document.createElement('details');
+    const summary = document.createElement('summary');
+    summary.textContent = 'Corrected B-R tree';
+    details.append(summary);
+    if (canonical?.root && canonical.sentence === preview.text && info.renderCanonical) {
+      details.append(info.renderCanonical(canonical));
+    } else {
+      const unavailable = document.createElement('p');
+      unavailable.textContent = 'A canonical B-R tree is unavailable for this preview. The canvas shows the diagnostic tree.';
+      details.append(unavailable);
+    }
+    box.append(details);
   }
 
   if (info.result) {
@@ -389,5 +419,11 @@ export function renderCorrectionPanel(info, handlers = {}) {
     r.setAttribute('aria-live', 'polite');
     r.textContent = info.result.message;
     box.appendChild(r);
+  }
+  if (restoreFocus) {
+    const buttons = [...box.querySelectorAll('.cp-actions button:not(:disabled)')];
+    const target = buttons.find(button => button.textContent === focusedLabel) || buttons[0];
+    box.tabIndex = -1;
+    (target || box).focus({ preventScroll: true });
   }
 }

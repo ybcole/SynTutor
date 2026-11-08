@@ -140,27 +140,30 @@ export function findTargetError(payload, focus) {
 }
 
 // ---- applying a remediation edit to the sentence text (never touches the textbox) ----
-export function applyEdit(payload, edit) {
+export function correctionPreview(payload, edit) {
   const sent = payload.parse.sentences[(payload.meta.target_sentence || 1) - 1];
-  const toks = payload.parse.tokens;
-  const text = payload.parse.text;
-  let from;
-  let to;
-  let repl;
-  if (edit.start === edit.end) {
-    const t = toks[edit.start];
-    from = t ? t.start - sent.start : text.length;
-    to = from;
-    repl = `${edit.text} `;
-  } else {
-    from = toks[edit.start].start - sent.start;
-    to = toks[edit.end - 1].end - sent.start;
-    repl = edit.text;
-  }
-  return (text.slice(0, from) + repl + text.slice(to))
+  const tokens = payload.parse.tokens;
+  const chars = Array.from(payload.parse.text);
+  const insertion = edit.start === edit.end;
+  const from = tokens[edit.start]?.start ?? sent.start + chars.length;
+  const to = insertion ? from : tokens[edit.end - 1].end;
+  const before = chars.slice(0, from - sent.start).join('');
+  const removed = chars.slice(from - sent.start, to - sent.start).join('');
+  const after = chars.slice(to - sent.start).join('');
+  const added = edit.text;
+  const punctuation = /^[.,;:!?]/.test(added);
+  const left = punctuation ? before.trimEnd() : before;
+  const insertSpace = insertion && left && !/\s$/.test(left) && !punctuation ? ' ' : '';
+  const tailSpace = insertion && after && !/^[\s.,;:!?]/.test(after) ? ' ' : '';
+  const text = (left + insertSpace + added + tailSpace + after)
     .replace(/\s{2,}/g, ' ')
     .replace(/\s+([.,;:!?])/g, '$1')
     .trim();
+  return { text, removed, added };
+}
+
+export function applyEdit(payload, edit) {
+  return correctionPreview(payload, edit).text;
 }
 
 // Words of the scope subtree after the edit, used to find that subtree in the corrected parse.

@@ -164,16 +164,18 @@ The [M8 report](../reports/milestone-08-achievements-2026-11-08.md) records the 
 ## 11. UI/UX and accessibility
 
 - [ ] Approve brand promise, tone, design tokens, and icon language.
-- [ ] Prototype revised navigation: Syntax Generator, Lessons, Quizzes, Syntax Builder, Leaderboard, Achievements, History/Profile.
-- [ ] Build shared explanation/evidence component.
-- [ ] Build shared source citation component.
-- [ ] Build correction annotation component.
-- [ ] Reduce tree spacing modestly and implement adaptive density.
-- [ ] Test deep/wide trees and mobile canvas dimensions.
-- [ ] Add keyboard and screen-reader equivalent tree representation.
-- [ ] Ensure error/success states are not colour-only.
-- [ ] Support reduced motion and touch interactions.
+- [x] Prototype revised navigation: Syntax Generator, Lessons, Quizzes, Syntax Builder, Leaderboard, Achievements, History/Profile.
+- [x] Build shared explanation/evidence component.
+- [x] Build shared source citation component.
+- [x] Build correction annotation component.
+- [x] Reduce tree spacing modestly and implement adaptive density.
+- [x] Test deep/wide trees and mobile canvas dimensions.
+- [x] Add keyboard and screen-reader equivalent tree representation.
+- [x] Ensure error/success states are not colour-only.
+- [x] Support reduced motion and touch interactions.
 - [ ] Conduct usability sessions with learners not involved in implementation.
+
+See the [M10 prototype report](../reports/milestone-10-ui-prototype-2026-11-08.md) for screenshot review and learner usability checks.
 
 ## 12. Quality, privacy, release
 
