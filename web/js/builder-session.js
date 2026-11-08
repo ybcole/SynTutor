@@ -4,7 +4,7 @@ const clone=x=>JSON.parse(JSON.stringify(x));
 export function validateDraft(draft){
  if(draft?.version!==1||!draft.model||!draft.profile||!Number.isInteger(draft.profile.chapter)||draft.profile.chapter<1||draft.profile.chapter>10)throw Error('Invalid Builder draft');
  const expected=builderProfile(draft.profile.version==='FINAL'?null:draft.profile.chapter,draft.profile.appendix_nom===true);
- if(Object.keys(draft.profile).length!==Object.keys(expected).length||Object.entries(expected).some(([k,v])=>draft.profile[k]!==v))throw Error('Invalid draft convention');
+ if(typeof draft.profile.version!=='string'||Object.keys(draft.profile).some(k=>!Object.hasOwn(expected,k))||Object.entries(draft.profile).some(([k,v])=>expected[k]!==v)||(draft.profile.version==='FINAL'&&draft.profile.appendix_nom!==true))throw Error('Invalid draft convention');
  const nodes=Object.values(draft.model.nodes||{});if(nodes.length>500)throw Error('Draft exceeds 500 nodes');
  for(const [id,n] of Object.entries(draft.model.nodes||{})){
   if(!n||id!==n.id||['__proto__','prototype','constructor'].includes(id)||!['word','phrase','special'].includes(n.kind)||!Number.isFinite(n.x)||!Number.isFinite(n.y)||typeof n.text!=='string'||typeof n.type!=='string'||n.text.length>10000)throw Error('Invalid draft node');

@@ -70,7 +70,7 @@ export function addPhrase(model, type, x, y) {
 // Split free text into tokens the way SynTutor's tokenizer would (words,
 // numbers, and single punctuation marks kept separate).
 export function tokenise(text) {
-  return (String(text || '').match(/[A-Za-z]+(?:'[A-Za-z]+)?|[0-9]+(?:[.,][0-9]+)*|[^\sA-Za-z0-9]/g)) || [];
+  return (String(text || '').match(/[\p{L}\p{N}_]+(?:['’][\p{L}\p{N}_]+)*|[^\p{L}\p{N}_\s]/gu)) || [];
 }
 
 // Create one word node per token, laid out in a row starting at (x, y).
