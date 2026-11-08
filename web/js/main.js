@@ -18,7 +18,7 @@ import { initSyntaxBuilder, openBuilderView, closeBuilderView, isBuilderOpen, cl
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
 import {
-  achievementProgress, achievementIcons, activeAchievementCategory, initAchievementCategorySelector,
+  achievementIcons, activeAchievementCategory, initAchievementCategorySelector,
 } from './achievements.js';
 
 let clerk = null;
@@ -782,10 +782,12 @@ function initWorkspaceViews() {
 // ---------------------------------------------------------------------------
 // One achievement card: badge, text, the live progress bar and the reward.
 function achievementCard(achievement) {
-  const card = el('div', achievement.unlocked ? 'achievement-card' : 'achievement-card is-locked');
+  const unlocked = Boolean(achievement.unlocked_at);
+  const card = el('div', unlocked ? 'achievement-card' : 'achievement-card is-locked');
+  card.dataset.achievement = achievement.id;
   const badge = el('div', 'achievement-badge');
   badge.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true">${achievementIcons[achievement.icon] || achievementIcons.sparkle}</svg>`;
-  if (!achievement.unlocked) {
+  if (!unlocked) {
     const lock = el('span', 'achievement-lock');
     lock.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>';
     badge.appendChild(lock);
@@ -798,25 +800,33 @@ function achievementCard(achievement) {
   const progress = el('div', 'achievement-progress');
   const track = el('div', 'achievement-progress-track');
   const fill = el('div', 'achievement-progress-fill');
-  fill.style.width = `${achievement.pct}%`;
+  const options = achievement.options || [];
+  const ratio = unlocked ? 1 : Math.max(0, ...options.map(group =>
+    group.reduce((sum, item) => sum + item.count / item.target, 0) / group.length));
+  fill.style.width = `${ratio * 100}%`;
+  track.setAttribute('aria-hidden', 'true');
   track.appendChild(fill);
   progress.appendChild(track);
-  progress.appendChild(el('p', 'achievement-progress-label',
-    achievement.unlocked ? 'Unlocked' : achievementProgressLabel(achievement)));
+  if (unlocked) {
+    const date = new Date(achievement.unlocked_at);
+    const time = el('time', null, date.toLocaleDateString());
+    time.dateTime = achievement.unlocked_at;
+    const caption = el('p', 'achievement-progress-label', 'Unlocked ');
+    caption.appendChild(time);
+    progress.appendChild(caption);
+  }
+  for (const [index, group] of options.entries()) {
+    const text = group.map(item => `${item.count}/${item.target} ${item.label}`).join(' + ');
+    const prefix = index > 0 ? 'Or: ' : '';
+    progress.appendChild(el('p', 'achievement-progress-label', prefix + text));
+  }
   body.appendChild(progress);
   card.appendChild(body);
-
+  card.appendChild(el('span', 'achievement-reward', achievement.reward));
   return card;
 }
 
-// The live progress of a tiered goal: "24 / 50 Trees Built".
-function achievementProgressLabel(achievement) {
-  const unit = achievement.unit || 'Progress';
-  if (achievement.metric === 'accuracy') {
-    return `${achievement.progress}% / ${achievement.target}% ${unit}`;
-  }
-  return `${achievement.progress} / ${achievement.target} ${unit}`;
-}
+let achievementsRender = 0;
 
 // Fill the whole achievements view.
 async function renderAchievements() {
@@ -824,26 +834,26 @@ async function renderAchievements() {
   const counter = document.getElementById('achievementsStatsCounter');
   const fill = document.getElementById('achievementsProgressFill');
   const label = document.getElementById('achievementsProgressLabel');
+  const renderId = ++achievementsRender;
   const sessionId = activeSessionId;
   const signedIn = progressAvailable();
   if (label) label.textContent = signedIn ? 'Loading verified XP…' : 'Sign in to track your progress.';
   if (fill) fill.style.width = '0%';
   if (grid) grid.replaceChildren();
-  if (counter) counter.textContent = '';
-  const [rows, stats] = signedIn
-    ? await Promise.all([loadQuizProgress(), loadPlayerProgress()])
-    : [[], null];
-  if (sessionId !== activeSessionId) return;
+  if (counter) counter.textContent = 'Loading achievements…';
+  const [rows, stats] = await Promise.all([
+    loadAchievementBadges(), signedIn ? loadPlayerProgress() : null,
+  ]);
+  if (sessionId !== activeSessionId || renderId !== achievementsRender) return;
 
   const category = activeAchievementCategory();
-  const visible = achievementProgress(rows).filter((achievement) =>
+  const visible = (rows || []).filter(achievement =>
     category === 'all' || achievement.category === category);
   if (counter) {
-    const shown = visible.filter((achievement) => achievement.unlocked).length;
-    const shownPct = visible.length ? Math.round((shown / visible.length) * 100) : 0;
-    counter.textContent = signedIn
-      ? `${shown} of ${visible.length} unlocked · ${shownPct}% completed`
-      : 'Sign in to track your achievements.';
+    const shown = visible.filter(achievement => achievement.unlocked_at).length;
+    counter.textContent = !rows ? 'Achievements unavailable. Reopen this view to retry.'
+      : signedIn ? `${shown} of ${visible.length} unlocked`
+        : 'Sign in to earn these badges.';
   }
   if (stats) {
     const level = levelFromXp(stats.xp);
@@ -852,7 +862,7 @@ async function renderAchievements() {
   } else if (signedIn && label) {
     label.textContent = 'Verified XP is unavailable. Reopen this view to retry.';
   }
-  if (!grid) return;
+  if (!grid || !rows) return;
   grid.innerHTML = '';
   if (!visible.length) {
     grid.appendChild(el('p', 'empty-note', 'No achievements in this category yet.'));
@@ -1627,7 +1637,7 @@ function clearLessonModelTree({ force = false } = {}) {
 }
 
 // ---------------------------------------------------------------------------
-// Private progression and legacy achievement history.
+// Private progression and achievements.
 function progressAvailable() {
   return isAccountSession(clerk) && !!supabase;
 }
@@ -1651,18 +1661,15 @@ async function loadPlayerProgress() {
   }
 }
 
-async function loadQuizProgress() {
-  if (!supabase || !clerk?.user?.id) return [];
-  const { data, error } = await supabase
-    .from('quiz_progress')
-    .select('rule_id, completed_count, perfect_count, last_completed_at')
-    .eq('user_id', clerk.user.id)
-    .abortSignal(AbortSignal.timeout(6000));
-  if (error) {
-    console.warn('Failed to load quiz progress:', error.message);
-    return [];
+async function loadAchievementBadges() {
+  try {
+    const { data, error } = await supabase.rpc('get_my_achievements').abortSignal(AbortSignal.timeout(6000));
+    if (error) throw error;
+    return Array.isArray(data) ? data : null;
+  } catch (error) {
+    console.warn('Failed to load achievements:', error.message);
+    return null;
   }
-  return data || [];
 }
 
 // Quiz-only analysis: parses the sentence, renders its tree, and returns the

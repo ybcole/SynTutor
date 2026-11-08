@@ -150,14 +150,16 @@ Implementation evidence and deployment steps are in the [M7 report](../reports/m
 
 ## 10. Achievements
 
-- [ ] Define lesson, quiz, syntax-skill, consistency, and cross-framework categories.
-- [ ] Support OR and AND unlock expressions.
-- [ ] Define data-driven achievement schema.
-- [ ] Derive achievements from trusted activity events.
-- [ ] Make unlocks idempotent.
-- [ ] Award achievements for improvement and mastery as well as perfection.
-- [ ] Add clear progress indicators and optional rewards.
-- [ ] Test all achievement unlock conditions.
+- [x] Define lesson, quiz, syntax-skill, consistency, and cross-framework categories.
+- [x] Support OR and AND unlock expressions.
+- [x] Define data-driven achievement schema.
+- [x] Derive achievements from trusted activity events.
+- [x] Make unlocks idempotent.
+- [x] Award achievements for improvement and mastery as well as perfection.
+- [x] Add clear progress indicators and optional rewards.
+- [x] Test all achievement unlock conditions.
+
+The [M8 report](../reports/milestone-08-achievements-2026-11-08.md) records the verified launch catalog and completed repository review. Hosted staging remains pending. Direct Generator and Builder badges require trusted account-bound activity evidence.
 
 ## 11. UI/UX and accessibility
 

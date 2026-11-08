@@ -20,17 +20,26 @@ window.progressionCalls = [];
 """
 CLIENT = """
 export const createClient = () => ({
-  from: table => {
-    window.progressionCalls.push(table);
-    return { select: () => ({ eq: () => ({
-      abortSignal: async () => ({ data: [], error: null }),
-    }) }) };
-  },
   rpc: method => {
     window.progressionCalls.push(method);
-    return { abortSignal: async () => window.progressionOffline
-      ? { error: { message: 'Unavailable' } }
-      : { data: { xp: 110, lesson_xp: 90, quiz_xp: 20, level: 1 }, error: null } };
+    return { abortSignal: async () => {
+      if (window.progressionOffline) return { error: { message: 'Unavailable' } };
+      if (method === 'get_my_progression') {
+        return { data: { xp: 110, lesson_xp: 90, quiz_xp: 20, level: 1 }, error: null };
+      }
+      if (method !== 'get_my_achievements') throw Error('Unexpected RPC');
+      const signedIn = Boolean(Clerk.session);
+      return { data: [
+        { id: 'first-lesson', title: 'First Lesson', description: 'Complete your first lesson.',
+          category: 'learning', reward: 'Badge', icon: 'book',
+          unlocked_at: signedIn ? '2026-11-05T00:00:00Z' : null,
+          options: [[{ label: 'lesson completed', count: signedIn ? 1 : 0, target: 1 }]] },
+        { id: 'gap-spotter', title: 'Gap Spotter', description: 'Recognize a typed gap.',
+          category: 'syntax', reward: 'Badge', icon: 'tree', unlocked_at: null,
+          options: [[{ label: 'lesson completed', count: 0, target: 1 }],
+                    [{ label: 'assessment scored at least 4/5', count: 0, target: 1 }]] },
+      ], error: null };
+    } };
   },
 });
 """
@@ -72,10 +81,14 @@ try:
         expect(label).to_have_text("Level 1 · 110 verified XP (90 lesson + 20 quiz) · 110 XP to Level 2")
         assert 8 < float(page.locator("#achievementsProgressFill").evaluate(
             "(element) => parseFloat(element.style.width)")) < 9
-        assert page.locator(".achievement-reward").count() == 0
+        first = page.locator('[data-achievement="first-lesson"]')
+        gap = page.locator('[data-achievement="gap-spotter"]')
+        expect(first.locator("time")).to_have_attribute("datetime", "2026-11-05T00:00:00Z")
+        expect(first.locator(".achievement-reward")).to_have_text("Badge")
+        expect(gap.get_by_text("Or: 0/1 assessment scored at least 4/5")).to_be_visible()
 
         calls = page.evaluate("window.progressionCalls.slice()")
-        assert sorted(calls) == ["get_my_progression", "quiz_progress"]
+        assert sorted(calls) == ["get_my_achievements", "get_my_progression"]
         leaderboard.click()
         expect(page.get_by_text("Public rankings are paused.", exact=False)).to_be_visible()
         assert page.evaluate("window.progressionCalls") == calls
@@ -83,12 +96,19 @@ try:
         page.evaluate("window.progressionOffline = true")
         achievements.click()
         expect(label).to_contain_text("Verified XP is unavailable")
-        page.evaluate("Clerk.session = null; Clerk.user = null; window.changeIdentity();")
+        expect(page.locator("#achievementsStatsCounter")).to_contain_text("Achievements unavailable")
+        page.evaluate("window.progressionOffline = false; Clerk.session = null; Clerk.user = null; window.changeIdentity();")
         expect(label).to_have_text("Sign in to track your progress.")
+        expect(page.get_by_text("Sign in to earn these badges.")).to_be_visible()
+        expect(first.locator("time")).to_have_count(0)
+        page.locator("#achievementsCatTrigger").click()
+        page.get_by_role("button", name="Syntax Skill").click()
+        expect(gap).to_be_visible()
+        expect(first).to_have_count(0)
         assert not errors, errors
         browser.close()
 finally:
     server.shutdown()
     server.server_close()
 
-print("PASS: verified XP and next level, offline and sign-out states, and no public ranking requests.")
+print("PASS: verified XP and next level, badge progress and timestamps, category filtering, offline and sign-out states, and no public ranking requests.")
