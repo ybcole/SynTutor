@@ -1,0 +1,458 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "bank_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "book": {
+            "enum": [
+              "B-R",
+              "Cambridge"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "edition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "chapter": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "printed_page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "evidence_status": {
+            "enum": [
+              "IMG",
+              "TXT"
+            ]
+          },
+          "status": {
+            "const": "approved"
+          },
+          "review_status": {
+            "const": "INDEPENDENTLY_REVIEWED"
+          },
+          "independent_review": {
+            "const": true
+          },
+          "reviewed_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reviewed_on": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "crosswalk_status": {
+            "const": "resolved"
+          },
+          "crosswalk_scope": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "book",
+          "title",
+          "edition",
+          "chapter",
+          "printed_page",
+          "evidence_status",
+          "status",
+          "review_status",
+          "independent_review",
+          "reviewed_by",
+          "reviewed_on",
+          "crosswalk_status",
+          "crosswalk_scope"
+        ]
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "item_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pool_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "content_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "mcq",
+              "tree_choice",
+              "structure",
+              "minimal_pair",
+              "rule_application",
+              "diagnosis",
+              "repair"
+            ]
+          },
+          "difficulty": {
+            "enum": [
+              "introductory",
+              "intermediate",
+              "advanced"
+            ]
+          },
+          "lesson_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "outcome_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "concept_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "rule_ids": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "convention_profile": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "claim_scope": {
+            "enum": [
+              "br_structure",
+              "cambridge_classification"
+            ]
+          },
+          "source_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "reference_tree_ids": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "options": {
+            "type": "array",
+            "minItems": 3,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "enum": [
+                    "a",
+                    "b",
+                    "c"
+                  ]
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "diagram": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "sentence": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "root": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "sentence",
+                    "root"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "text",
+                "rationale"
+              ]
+            },
+            "maxItems": 3
+          },
+          "answer": {
+            "enum": [
+              "a",
+              "b",
+              "c"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "answer_tree": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "publication_status": {
+            "const": "published"
+          },
+          "stimulus": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "sentence": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "sentence"
+            ]
+          },
+          "review_status": {
+            "const": "INDEPENDENTLY_REVIEWED"
+          },
+          "independent_review": {
+            "const": true
+          },
+          "reviewed_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reviewed_on": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          }
+        },
+        "required": [
+          "item_id",
+          "pool_id",
+          "content_version",
+          "kind",
+          "difficulty",
+          "lesson_id",
+          "outcome_ids",
+          "concept_ids",
+          "rule_ids",
+          "convention_profile",
+          "claim_scope",
+          "source_ids",
+          "reference_tree_ids",
+          "prompt",
+          "options",
+          "answer",
+          "rationale",
+          "answer_tree",
+          "publication_status",
+          "stimulus",
+          "review_status",
+          "independent_review",
+          "reviewed_by",
+          "reviewed_on"
+        ]
+      }
+    },
+    "assessments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "assessment_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "content_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "item_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mode": {
+            "enum": [
+              "chapter",
+              "topic",
+              "cumulative",
+              "diagnostic",
+              "challenge"
+            ]
+          },
+          "chapter": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "track": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pool_ids": {
+            "type": "array",
+            "minItems": 5,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "maxItems": 5
+          },
+          "recommended_lessons": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "requires_lesson_completion": {
+            "const": false
+          },
+          "review_status": {
+            "const": "INDEPENDENTLY_REVIEWED"
+          },
+          "independent_review": {
+            "const": true
+          },
+          "reviewed_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reviewed_on": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          }
+        },
+        "required": [
+          "assessment_id",
+          "content_version",
+          "item_version",
+          "title",
+          "mode",
+          "chapter",
+          "track",
+          "pool_ids",
+          "recommended_lessons",
+          "requires_lesson_completion",
+          "review_status",
+          "independent_review",
+          "reviewed_by",
+          "reviewed_on"
+        ]
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "question_count": {
+          "const": 5
+        },
+        "reward": {
+          "const": "best_score_delta"
+        },
+        "maximum_xp_per_version": {
+          "const": 10
+        },
+        "unanswered": {
+          "const": "incorrect"
+        },
+        "feedback": {
+          "const": "after_submission"
+        },
+        "reinforcement_xp": {
+          "const": 0
+        }
+      },
+      "required": [
+        "question_count",
+        "reward",
+        "maximum_xp_per_version",
+        "unanswered",
+        "feedback",
+        "reinforcement_xp"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "bank_version",
+    "sources",
+    "items",
+    "assessments",
+    "policy"
+  ]
+}

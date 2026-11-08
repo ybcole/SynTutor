@@ -18,6 +18,8 @@ An explainable AI tutoring system for English phrase-structure syntax: parse a
 sentence into a constituency tree and read deterministic, rule-based
 explanations for every relationship (spaCy + benepar + rule-matrix XAI).
 
+Independent Quizzes now include 16 five-question assessments with 120 original variants, versioned attempt history and best-score XP. See [M5 acceptance](docs/reports/milestone-05-acceptance-2026-11-08.md) and [account deployment steps](docs/assessments/progress-and-deployment.md).
+
 Current project status: [M1–M3](docs/reports/milestones-01-03-acceptance-2026-11-08.md) and [M4 lessons acceptance](docs/reports/milestone-04-acceptance-2026-11-08.md). The Lessons area has 12 versioned source-reviewed units. Device-local progress is available; account cloud sync needs the prepared Supabase migrations. Reviewed book evidence is separate from legacy diagnostic feedback; unsupported canonical analyses remain unresolved.
 
 Run locally:

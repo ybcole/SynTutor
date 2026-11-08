@@ -1,0 +1,42 @@
+{
+  "review_date": "2026-11-08",
+  "reviewer": "Codex",
+  "review_kind": "Separate AI question/answer check against the M4 source-checked lesson scopes; same assistant after authoring, not a separate human instructor or full-book recertification.",
+  "bank_sha256": "e0347c2e1e51cdad11aab6d007bc25fcf883c28d319964c1afe3042c057cfecc",
+  "source_basis": [
+    "sources/burton_roberts/reviews/2026-11-08-lessons.json",
+    "sources/cambridge/reviews/2026-11-08-lessons.json"
+  ],
+  "sample_gate": {
+    "item_pools": [
+      "br-02-p1",
+      "br-02-p2",
+      "br-02-p3",
+      "br-02-p4",
+      "br-02-p5"
+    ],
+    "variants_reviewed": 2,
+    "decision": "Subject/predicate category/function distinctions, positive and negative diagram captions, original stems, source citations and scoring 0/5 through 5/5 reviewed before expanding the bank. Standing owner authorization applies; human instructor approval is not inferred."
+  },
+  "scope": [
+    "120 variant items in 60 equivalent-example pools, using only the 12 M4 outcomes.",
+    "Each of 16 blueprints selects one of two variants from each of five distinct pools. Question and option orders are independently shuffled from a reproducible seed.",
+    "Structural diagnosis/repair grades a B-R diagram/convention, never free-form sentence grammaticality.",
+    "CLS-001 is grammatical classification only. Zero Cambridge runtime constraints were enabled.",
+    "Positive answer trees pass the approved canonical contract; incorrect candidates are deliberately labelled alternatives, not approved parses.",
+    "No book exercise wording or lesson prompt is reused as an independent quiz stem.",
+    "Negative feedback cites the same reviewed principle and describes why the selected alternative fails.",
+    "No inferred mastery from one short attempt; review and reinforcement map to source-linked lessons."
+  ],
+  "display_policy": [
+    "Chapter 11 and Cambridge classification items are text-only.",
+    "Canonical AUX for infinitival to is displayed by its source feature, as in M4.",
+    "S-bar and S-dbar display S′ and S″."
+  ],
+  "not_claimed": [
+    "New source review of all Cambridge extractions",
+    "Human instructor sign-off",
+    "Production Supabase migration application",
+    "High-stakes secure examination or full grammaticality coverage"
+  ]
+}
