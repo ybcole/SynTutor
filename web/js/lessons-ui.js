@@ -1,3 +1,4 @@
+import { showCurriculumState } from './curriculum-state.js';
 import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdvance, lessonXp } from './lesson-core.js';
 import { createLessonStore } from './lesson-progress.js';
 import { requestEvidence } from './explanation-evidence.js';
@@ -22,24 +23,47 @@ function svgNode(name, attrs = {}) { const n = document.createElementNS(SVG_NS,n
 export function renderLessonTree(envelope, { focusId = null, blank = null } = {}) {
   const wrap = el('div',undefined,'lesson-tree-wrap');
   const root = envelope.root;
-  const hint=el('p','Scroll sideways to inspect the whole tree, or open its text view.','lesson-tree-hint');wrap.append(hint);wrap.tabIndex=0;wrap.setAttribute('aria-label','Scrollable worked tree');
-  const widthOf = node => Math.max(115, node.words ? node.words.join(' ').length * 9 + 28 : node.children ? node.children.reduce((s,c) => s+widthOf(c),0) : (node.word || '').length*9+28);
-  const positions = [], edges = [];
-  function place(node, left, depth) {
-    const width=widthOf(node), position={node,x:left+width/2,y:35+depth*72}; positions.push(position);
-    let cursor=left;
-    for (const child of node.children || []) { const target=place(child,cursor,depth+1); edges.push([position,target]); cursor+=widthOf(child); }
-    return position;
-  }
-  const width=widthOf(root); place(root,0,0);
-  const height=Math.max(...positions.map(p=>p.y+ (p.node.triangle ? 80 : 35)));
-  const svg=svgNode('svg',{viewBox:`0 0 ${width} ${height}`,width,height,role:'img','aria-label':`B-R worked tree for ${envelope.sentence}`});
-  for (const [a,b] of edges) svg.append(svgNode('line',{x1:a.x,y1:a.y+12,x2:b.x,y2:b.y-18,class:'lesson-branch'}));
+  const hint=el('p','Scroll sideways to inspect the whole tree, or open its text view.','lesson-tree-hint');wrap.append(hint);wrap.tabIndex=0;wrap.setAttribute('aria-label','Scrollable B-R tree');
   function label(node) {
     if (node.gap) return node.index === undefined ? '•' : `• (${node.index})`;
     const name=node.label === 'AUX' ? '' : node.label === 'S-bar' ? 'S′' : node.label === 'S-dbar' ? 'S″' : node.unlabelled ? '' : node.label || node.word;
     return `${name || ''}${node.features?.length ? ` [${node.features.join(', ')}]` : ''}${node.empty ? ' (empty)' : ''}`;
   }
+  const measure = document.createElement('canvas').getContext('2d');
+  measure.font = '15px system-ui, sans-serif';
+  const gap = 18;
+  const widths = new Map();
+  function widthOf(node) {
+    if (widths.has(node)) return widths.get(node);
+    const children = node.children || [];
+    const ownLabel = blank && blank.node_id === node.id && blank.field === 'feature'
+      ? label(node) + ' [?]' : label(node);
+    const width = Math.max(node.id === focusId ? 122 : 56,
+      measure.measureText(ownLabel).width + 28,
+      measure.measureText(node.words?.join(' ') || '').width + 28,
+      children.reduce((total, child) => total + widthOf(child), 0)
+        + Math.max(0, children.length - 1) * gap);
+    widths.set(node, width);
+    return width;
+  }
+  const positions = [], edges = [];
+  function place(node, left, depth) {
+    const width=widthOf(node), position={node,x:left+width/2,y:35+depth*72}; positions.push(position);
+    const children = node.children || [];
+    const childWidth = children.reduce((sum, child) => sum + widthOf(child), 0)
+      + Math.max(0, children.length - 1) * gap;
+    let cursor = left + (width - childWidth) / 2;
+    for (const child of children) {
+      const target = place(child, cursor, depth + 1);
+      edges.push([position, target]);
+      cursor += widthOf(child) + gap;
+    }
+    return position;
+  }
+  const width=widthOf(root); place(root,0,0);
+  const height=Math.max(...positions.map(p=>p.y+ (p.node.triangle ? 80 : 35)));
+  const svg=svgNode('svg',{viewBox:`0 0 ${width} ${height}`,width,height,role:'img','aria-label':`B-R tree for ${envelope.sentence}`});
+  for (const [a,b] of edges) svg.append(svgNode('line',{x1:a.x,y1:a.y+12,x2:b.x,y2:b.y-18,class:'lesson-branch'}));
   for (const {node,x,y} of positions) {
     const g=svgNode('g',{'data-node-id':node.id || '',class:node.id===focusId ? 'lesson-tree-focus' : ''});
     if (node.id===focusId) g.append(svgNode('rect',{x:x-55,y:y-20,width:110,height:40,rx:9}));
@@ -177,7 +201,8 @@ export function initLessons(config = {}) {
 }
 export async function openLessons(id=null) {
   lastFocus=document.activeElement;host.hidden=false;document.body.classList.add('curriculum-open');
-  host.replaceChildren(el('p','Loading reviewed lessons…'));const token=++generation;
+  showCurriculumState(host, { message: 'Loading reviewed lessons…' });
+  const token=++generation;
   try {
     course ||= validateCourse(await (await fetch('/content/lessons/course.json',{cache:'no-cache'})).json());
     if(!store) {
@@ -186,9 +211,16 @@ export async function openLessons(id=null) {
       await next.load();if(token!==generation)return;store=next;
     }
     if(token!==generation)return;
+    host.setAttribute('aria-busy','false');
     active=course.lessons.some(l=>l.lesson_id===id) ? id : null;step=0;notice='';render();
     const heading=host.querySelector('h1');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});host.scrollTop=0;}
     document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
-  }catch{if(token===generation)host.replaceChildren(el('h1','Lessons unavailable'),el('p','The lesson catalog could not be loaded or its source review is incomplete.'),button('Try again',()=>openLessons(id)));}
+  } catch {
+    if (token === generation) showCurriculumState(host, {
+      title: 'Lessons unavailable',
+      message: 'The lesson catalog could not be loaded or its source review is incomplete.',
+      retry: () => openLessons(id), back: options.onExit,
+    });
+  }
 }
 export function closeLessons() { generation+=1;if(host){host.hidden=true;host.replaceChildren();}document.body.classList.remove('curriculum-open');active=null;notice='';if(lastFocus?.isConnected)lastFocus.focus(); }

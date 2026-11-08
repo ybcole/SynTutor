@@ -11,8 +11,6 @@ function collectNodes(root) {
 const BOX_H = 34;
 const MIN_BOX_W = 54;
 const H_PAD = 14;
-const GAP = 26;
-const V_GAP = 40;
 const TOP_PAD = 24;
 const SIDE_PAD = 24;
 const LABEL_GAP = 20;
@@ -32,98 +30,48 @@ function getThemeColors() {
 
 const ch = (nd) => nd.children || [];
 
-export function createLayout(root, measure) {
+export function createLayout(root, measure, viewportWidth = 800) {
   const nodes = collectNodes(root);
-  const leafNodes = [];
-  const nodeDepth = new Map();
+  const leaves = nodes.filter(node => ch(node).length === 0);
+  const layout = new Map();
+  const widths = new Map();
+  const labels = new Map();
+  const bounds = new Map();
+  const gap = viewportWidth < 600 || leaves.length >= 8 ? 16 : 18;
+  const row = BOX_H + (leaves.length >= 8 ? 28 : 30);
   let maxDepth = 0;
 
-  const walk = (nd, depth) => {
+  function size(node) {
+    const label = Math.max(MIN_BOX_W, measure(nodeLabel(node)) + H_PAD * 2,
+      ch(node).length ? 0 : measure(node.type) + H_PAD);
+    labels.set(node.id, label);
+    const children = ch(node).map(size);
+    const childrenWidth = children.reduce((sum, width) => sum + width, 0)
+      + Math.max(0, children.length - 1) * gap;
+    const width = Math.max(label, childrenWidth);
+    widths.set(node.id, { width, childrenWidth });
+    return width;
+  }
+
+  function place(node, left, depth) {
+    const { width, childrenWidth } = widths.get(node.id);
     maxDepth = Math.max(maxDepth, depth);
-    nodeDepth.set(nd.id, depth);
-    if (ch(nd).length === 0) {
-      leafNodes.push(nd);
-    }
-    for (const c of ch(nd)) walk(c, depth + 1);
-  };
-  walk(root, 0);
-
-  const leafIndex = new Map();
-  leafNodes.forEach((lf, i) => leafIndex.set(lf.id, i));
-
-  let maxLeafW = MIN_BOX_W;
-  for (const lf of leafNodes) {
-    maxLeafW = Math.max(maxLeafW, measure(nodeLabel(lf)) + H_PAD * 2);
-  }
-  const SLOT = maxLeafW + GAP;
-
-  const span = new Map();
-  const collectSpan = (nd) => {
-    if (span.has(nd.id)) return span.get(nd.id);
-    if (ch(nd).length === 0) {
-      const i = leafIndex.get(nd.id);
-      const s = [i, i];
-      span.set(nd.id, s);
-      return s;
-    }
-    let lo = Infinity;
-    let hi = -Infinity;
-    for (const c of ch(nd)) {
-      const cs = collectSpan(c);
-      lo = Math.min(lo, cs[0]);
-      hi = Math.max(hi, cs[1]);
-    }
-    const s = [lo, hi];
-    span.set(nd.id, s);
-    return s;
-  };
-  collectSpan(root);
-
-  const layout = new Map();
-  for (const n of nodes) {
-    const depth = nodeDepth.get(n.id) || 0;
-    const y = TOP_PAD + depth * (BOX_H + V_GAP) + BOX_H / 2;
-    if (ch(n).length === 0) {
-      const i = leafIndex.get(n.id);
-      layout.set(n.id, {
-        id: n.id,
-        node: n,
-        x: SLOT * i + SLOT / 2,
-        y,
-        w: SLOT,
-        h: BOX_H,
-        leaf: true,
-      });
-    } else {
-      const s = span.get(n.id);
-      const x = ((s[0] + s[1]) / 2 + 0.5) * SLOT;
-      const w = (s[1] - s[0] + 1) * SLOT;
-      layout.set(n.id, {
-        id: n.id,
-        node: n,
-        x,
-        y,
-        w,
-        h: BOX_H,
-        leaf: false,
-      });
+    const y = TOP_PAD + depth * row + BOX_H / 2;
+    const x = left + width / 2;
+    layout.set(node.id, {
+      id: node.id, node, x, y, w: labels.get(node.id), h: BOX_H, leaf: !ch(node).length,
+    });
+    bounds.set(node.id, { left, right: left + width });
+    let childLeft = x - childrenWidth / 2;
+    for (const child of ch(node)) {
+      place(child, childLeft, depth + 1);
+      childLeft += widths.get(child.id).width + gap;
     }
   }
-
-  const totalW = Math.max(leafNodes.length * SLOT + SIDE_PAD * 2, 320);
-  const totalH = Math.max(TOP_PAD + maxDepth * (BOX_H + V_GAP) + BOX_H + SIDE_PAD * 2, 160);
-
-  return {
-    layout,
-    totalW,
-    totalH,
-    maxDepth,
-    nodes,
-    leaves: leafNodes,
-    root,
-    span,
-    slot: SLOT,
-  };
+  const totalW = Math.max(size(root) + SIDE_PAD * 2, 320);
+  place(root, (totalW - widths.get(root.id).width) / 2, 0);
+  const totalH = Math.max(TOP_PAD + maxDepth * row + BOX_H + SIDE_PAD * 2, 160);
+  return { layout, bounds, totalW, totalH, maxDepth, nodes, leaves, root };
 }
 
 function nodeLabel(node) {
@@ -137,6 +85,10 @@ export class TreeRenderer {
     this.ctx = canvas.getContext('2d');
     this.onSelect = opts.onSelect || (() => {});
     this.onHover = opts.onHover || (() => {});
+    this.outline = opts.outline;
+    this.outline?.querySelector('[data-zoom="in"]')?.addEventListener('click', () => this.zoom(1.2));
+    this.outline?.querySelector('[data-zoom="out"]')?.addEventListener('click', () => this.zoom(1 / 1.2));
+    this.outline?.querySelector('[data-zoom="fit"]')?.addEventListener('click', () => this.clearFocus());
     this.describe = opts.describe || (() => null);
     this.tree = null;
     this.layoutData = null;
@@ -162,10 +114,16 @@ export class TreeRenderer {
   }
 
   _setup() {
-    this.canvas.addEventListener('mousedown', (e) => this._onDown(e));
-    this.canvas.addEventListener('mousemove', (e) => this._onMove(e));
-    this.canvas.addEventListener('mouseup', () => this._onUp());
-    this.canvas.addEventListener('mouseleave', () => this._onLeave());
+    this.canvas.addEventListener('pointerdown', e => {
+      if (!e.isPrimary || e.button !== 0) return;
+      this.canvas.setPointerCapture(e.pointerId);
+      this._onDown(e);
+    });
+    this.canvas.addEventListener('pointermove', e => { if (e.isPrimary) this._onMove(e); });
+    this.canvas.addEventListener('pointerup', e => { if (e.isPrimary) this._onUp(); });
+    this.canvas.addEventListener('pointercancel', () => { this._drag = null; });
+    this.canvas.addEventListener('lostpointercapture', () => { this._drag = null; });
+    this.canvas.addEventListener('pointerleave', () => this._onLeave());
     this.canvas.addEventListener('wheel', (e) => this._onWheel(e), { passive: false });
     this.canvas.addEventListener('keydown', (e) => this._onKey(e));
     window.addEventListener('resize', () => this._resize());
@@ -197,17 +155,53 @@ export class TreeRenderer {
   setTree(root) {
     this.focus = null;
     this.tree = root;
-    this.layoutData = createLayout(root, (label) => this._measure(label));
+    cancelAnimationFrame(this._raf);
+    this._layoutTree(this.canvas.clientWidth);
     this.dfsOrder = collectNodes(root).map((n) => n.id);
     this.indexById = new Map(this.dfsOrder.map((id, i) => [id, i]));
     this.selectedId = null;
     this._fitView();
+    this._renderOutline();
     this.draw();
   }
 
   select(id) {
     this.selectedId = id;
+    this.outline?.querySelectorAll('[data-node]').forEach(button => {
+      if (button.dataset.node === id) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
     this.draw();
+  }
+
+  _renderOutline() {
+    if (!this.outline) return;
+    this.outline.hidden = !this.tree;
+    const body = this.outline.querySelector('.tree-outline-body');
+    body.replaceChildren();
+    if (!this.tree) {
+      this.outline.open = false;
+      return;
+    }
+    const list = nodes => {
+      const ul = document.createElement('ul');
+      for (const node of nodes) {
+        const item = document.createElement('li');
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.node = node.id;
+        const label = nodeLabel(node);
+        const category = !ch(node).length && label !== node.type ? ` (${node.type})` : '';
+        button.textContent = label + category
+          + (node.edgeResult?.status === 'error' ? ' · flagged for review' : '');
+        button.addEventListener('click', () => this.onSelect(node.id));
+        item.append(button);
+        if (ch(node).length) item.append(list(ch(node)));
+        ul.append(item);
+      }
+      return ul;
+    };
+    body.append(list([this.tree]));
   }
 
   setInteractive(flag) {
@@ -228,6 +222,7 @@ export class TreeRenderer {
     this.hoverId = null;
     this.focus = null;
     this.view = { scale: 1, tx: 0, ty: 0 };
+    this._renderOutline();
     this.draw();
   }
 
@@ -240,8 +235,8 @@ export class TreeRenderer {
       this.needsFit = true;
       return;
     }
-    const pad = 30;
-    const raw = Math.min((w - pad * 2) / this.layoutData.totalW, (h - pad * 2) / this.layoutData.totalH, 1.7) * 1.25;
+    const pad = Math.min(24, w / 8, h / 8);
+    const raw = Math.min((w - pad * 2) / this.layoutData.totalW, (h - pad * 2) / this.layoutData.totalH, 1.7);
     const scale = Math.max(Math.min(raw, 1.7), 0.2);
     return {
       scale,
@@ -251,8 +246,15 @@ export class TreeRenderer {
   }
 
   _fitView() {
-    Object.assign(this.view, this._fitTarget());
-      this.needsFit = false;
+    const target = this._fitTarget();
+    if (!target) return;
+    this.view = target;
+    this.needsFit = false;
+  }
+
+  _layoutTree(width) {
+    this.compact = width < 600;
+    this.layoutData = createLayout(this.tree, label => this._measure(label), width);
   }
 
   _resize() {
@@ -271,7 +273,9 @@ export class TreeRenderer {
     if (this.tree) {
       // A canvas that had no size could not be fitted: fit it now that it is
       // back, so the tree is centred instead of squished.
-      if (this.needsFit) this._fitView();
+      const relayout = !this.focus && this.compact !== (w < 600);
+      if (relayout) this._layoutTree(w);
+      if (this.needsFit || relayout) this._fitView();
       this.draw();
     }
   }
@@ -351,6 +355,15 @@ export class TreeRenderer {
     this.draw();
   }
 
+  zoom(factor) {
+    if (!this.tree) return;
+    const x = this.canvas.clientWidth / 2;
+    const y = this.canvas.clientHeight / 2;
+    const point = this._toWorld({ x, y });
+    const scale = Math.min(5, Math.max(0.2, this.view.scale * factor));
+    this._animateTo({ scale, tx: x - point.x * scale, ty: y - point.y * scale }, 180);
+  }
+
   _onWheel(e) {
     e.preventDefault();
     const rect = this.canvas.getBoundingClientRect();
@@ -378,19 +391,12 @@ export class TreeRenderer {
     ctx.scale(this.view.scale, this.view.scale);
 
     if (this.selectedId) {
-      const selSpan = this.layoutData.span.get(this.selectedId);
-      if (selSpan) {
-        const lo = this.layoutData.leaves[selSpan[0]];
-        const hi = this.layoutData.leaves[selSpan[1]];
-        const ll = this.layoutData.layout.get(lo.id);
-        const hl = this.layoutData.layout.get(hi.id);
-        if (ll && hl) {
-          const x0 = ll.x - ll.w / 2 - 8;
-          const x1 = hl.x + hl.w / 2 + 8;
-          const yTop = (this.layoutData.layout.get(this.selectedId) || { y: TOP_PAD }).y - BOX_H / 2 - 8;
-          ctx.fillStyle = 'rgba(255, 217, 77, 0.16)';
-          ctx.fillRect(x0, yTop, x1 - x0, this.layoutData.totalH - yTop + 8);
-        }
+      const selected = this.layoutData.layout.get(this.selectedId);
+      const range = this.layoutData.bounds.get(this.selectedId);
+      if (selected && range) {
+        const yTop = selected.y - BOX_H / 2 - 8;
+        ctx.fillStyle = 'rgba(255, 217, 77, 0.16)';
+        ctx.fillRect(range.left - 8, yTop, range.right - range.left + 16, this.layoutData.totalH - yTop + 8);
       }
     }
 
@@ -398,7 +404,7 @@ export class TreeRenderer {
       for (const c of ch(l.node)) {
         const cl = this.layoutData.layout.get(c.id);
         const status = c.edgeResult ? c.edgeResult.status : 'neutral';
-        const gap = cl.leaf ? 36 : LABEL_GAP;
+        const gap = cl.leaf ? 23 : LABEL_GAP;
         // While a correction is focused, everything outside the error's scope
         // fades back so the rule and its linked nodes stand out.
         const dimEdge = this.focus
@@ -406,6 +412,7 @@ export class TreeRenderer {
         ctx.globalAlpha = dimEdge ? 0.12 : 1;
         ctx.strokeStyle = this._edgeColor(status);
         ctx.lineWidth = 1.5;
+        ctx.setLineDash(status === 'error' ? [5, 4] : []);
         ctx.beginPath();
         ctx.moveTo(l.x, l.y + LABEL_GAP);
         ctx.lineTo(cl.x, cl.y - gap);
@@ -413,6 +420,7 @@ export class TreeRenderer {
       }
     }
     ctx.globalAlpha = 1;
+    ctx.setLineDash([]);
 
     for (const l of this.layoutData.layout.values()) {
       this._drawNode(l);
@@ -503,6 +511,12 @@ export class TreeRenderer {
 
   _animateTo(target, ms = 380) {
     cancelAnimationFrame(this._raf);
+    if (!target) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this.view = target;
+      this.draw();
+      return;
+    }
     const from = { ...this.view };
     const t0 = performance.now();
     const step = (now) => {
@@ -531,10 +545,7 @@ export class TreeRenderer {
       for (const c of ch(n)) walk(c);
     };
     walk(sl.node);
-    const s = L.span.get(scopeId);
-    if (!s) return false;
-    const x0 = s[0] * L.slot;
-    const x1 = (s[1] + 1) * L.slot;
+    const { left: x0, right: x1 } = L.bounds.get(scopeId);
     const y0 = sl.y - BOX_H / 2 - 12;
     const y1 = maxY + 80; // word + POS tag + room for the pair link
     const w = this.canvas.clientWidth || this.canvas.width;
@@ -575,16 +586,16 @@ export class TreeRenderer {
     let top = Infinity;
     let bottom = -Infinity;
     for (const id of wanted) {
-      const s = L.span.get(id);
+      const range = L.bounds.get(id);
       const l = L.layout.get(id);
-      if (s) { lo = Math.min(lo, s[0]); hi = Math.max(hi, s[1]); }
+      if (range) { lo = Math.min(lo, range.left); hi = Math.max(hi, range.right); }
       if (l) { top = Math.min(top, l.y); bottom = Math.max(bottom, l.y); }
     }
     if (!Number.isFinite(lo)) { lo = 0; hi = 0; }
     if (!Number.isFinite(top)) { top = target.y; bottom = target.y; }
     const pad = 64;
-    const x0 = lo * L.slot - pad;
-    const x1 = (hi + 1) * L.slot + pad;
+    const x0 = lo - pad;
+    const x1 = hi + pad;
     const y0 = top - BOX_H / 2 - pad / 2;
     const y1 = bottom + BOX_H / 2 + pad / 2;
     const scale = Math.max(Math.min((w - 24) / (x1 - x0), (h - 24) / (y1 - y0), 2.6), 0.35);

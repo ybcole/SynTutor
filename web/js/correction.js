@@ -140,27 +140,66 @@ export function findTargetError(payload, focus) {
 }
 
 // ---- applying a remediation edit to the sentence text (never touches the textbox) ----
-export function applyEdit(payload, edit) {
+export function correctionPreview(payload, edit, inputText) {
   const sent = payload.parse.sentences[(payload.meta.target_sentence || 1) - 1];
-  const toks = payload.parse.tokens;
-  const text = payload.parse.text;
-  let from;
-  let to;
-  let repl;
-  if (edit.start === edit.end) {
-    const t = toks[edit.start];
-    from = t ? t.start - sent.start : text.length;
-    to = from;
-    repl = `${edit.text} `;
-  } else {
-    from = toks[edit.start].start - sent.start;
-    to = toks[edit.end - 1].end - sent.start;
-    repl = edit.text;
-  }
-  return (text.slice(0, from) + repl + text.slice(to))
-    .replace(/\s{2,}/g, ' ')
+  const tokens = payload.parse.tokens;
+  // Offsets refer to the original request even when parse.text has normalized
+  // whitespace. Take the target sentence from that request when available.
+  const chars = typeof inputText === 'string'
+    ? Array.from(inputText).slice(sent.start, sent.end)
+    : Array.from(payload.parse.text);
+  const insertion = edit.start === edit.end;
+  const from = tokens[edit.start]?.start ?? sent.start + chars.length;
+  const to = insertion ? from : tokens[edit.end - 1].end;
+  const before = chars.slice(0, from - sent.start).join('');
+  const removed = chars.slice(from - sent.start, to - sent.start).join('');
+  const after = chars.slice(to - sent.start).join('');
+  const added = edit.text;
+  const punctuation = /^[.,;:!?]/.test(added);
+  const left = punctuation ? before.trimEnd() : before;
+  const insertSpace = insertion && left && !/\s$/.test(left) && !punctuation ? ' ' : '';
+  const tailSpace = insertion && after && !/^[\s.,;:!?]/.test(after) ? ' ' : '';
+  const text = (left + insertSpace + added + tailSpace + after)
+    .replace(/\s+/g, ' ')
     .replace(/\s+([.,;:!?])/g, '$1')
     .trim();
+  return { text, removed, added };
+}
+
+// The parser can encode brackets and quotes in Penn notation. Everything else
+// must match the target sentence's tokens and ordered leaf spans exactly.
+const PENN_PUNCTUATION = new Map([
+  ['-LRB-', '('], ['-RRB-', ')'], ['-LSB-', '['], ['-RSB-', ']'],
+  ['-LCB-', '{'], ['-RCB-', '}'], ['``', '"'], ["''", '"'],
+]);
+export function matchesPreviewTokens(payload, text) {
+  if (!payload?.tree || payload.parse?.text !== text) return false;
+  const tokens = payload.parse.tokens;
+  const sentence = payload.parse.sentences?.[(payload.meta?.target_sentence || 1) - 1];
+  if (!sentence || !Array.isArray(tokens) || !tokens.length) return false;
+  const chars = Array.from(text);
+  const leaves = leavesOf(payload.tree);
+  if (leaves.length !== tokens.length) return false;
+  let end = 0;
+  for (const [index, token] of tokens.entries()) {
+    const start = token.start - sentence.start;
+    const finish = token.end - sentence.start;
+    const leaf = leaves[index];
+    if (!Number.isInteger(start) || !Number.isInteger(finish)
+        || start < end || finish <= start || finish > chars.length
+        || chars.slice(end, start).join('').trim()
+        || chars.slice(start, finish).join('') !== token.t
+        || leaf.span?.[0] !== index || leaf.span?.[1] !== index + 1
+        || (leaf.surface !== token.t && PENN_PUNCTUATION.get(leaf.surface) !== token.t)) {
+      return false;
+    }
+    end = finish;
+  }
+  return !chars.slice(end).join('').trim();
+}
+
+export function applyEdit(payload, edit) {
+  return correctionPreview(payload, edit).text;
 }
 
 // Words of the scope subtree after the edit, used to find that subtree in the corrected parse.

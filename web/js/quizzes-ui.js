@@ -1,3 +1,4 @@
+import { showCurriculumState } from './curriculum-state.js';
 import {validateBank,quizKey,itemsFor,gradeAttempt} from './quiz-core.js';
 import {createQuizStore} from './quiz-progress.js';
 import {composeQuizEvidence,requestQuizEvidence,renderEvidence} from './explanation-evidence.js';
@@ -89,13 +90,26 @@ export function initQuizzes(options={}){
  const route=()=>{const match=/^#quiz\/([a-z0-9-]+)$/.exec(location.hash);if(match)config.onNavigate?.(match[1]);};window.addEventListener('hashchange',route);if(/^#quiz\//.test(location.hash))queueMicrotask(route);
 }
 export async function openQuizzes(id=null){
- host.hidden=false;host.setAttribute('aria-busy','false');document.body.classList.add('curriculum-open','quizzes-open');const token=++generation;host.replaceChildren(el('p','Loading reviewed assessments…'));
+ host.hidden=false;host.setAttribute('aria-busy','false');document.body.classList.add('curriculum-open','quizzes-open');const token=++generation;
+ showCurriculumState(host, { message: 'Loading reviewed assessments…' });
  try{
   bank ||= validateBank(await(await fetch('/content/quizzes/bank.json',{cache:'no-cache'})).json());
   if(!store){let storage;try{storage=localStorage;}catch{storage=null;}const next=createQuizStore(bank,{storage,userId:config.userId?.()||'guest',client:config.client?.()});await next.load();if(token!==generation)return;store=next;}
-  if(token!==generation)return;current=null;message='';busy=false;render();
+  if(token!==generation)return;current=null;message='';busy=false;
+  host.setAttribute('aria-busy','false');render();
+  const heading = host.querySelector('h1');
+  if (heading) {
+    heading.tabIndex = -1;
+    heading.focus({ preventScroll: true });
+  }
   if(id){const a=bank.assessments.find(a=>a.assessment_id===id);if(a)await action(()=>store.draft(a)||store.start(a));}
   host.scrollTop=0;document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
- }catch(e){if(token===generation)host.replaceChildren(el('h1','Assessments unavailable'),el('p','The bank could not be loaded or its source review is incomplete.'),button('Try again',()=>openQuizzes(id)));}
+ } catch {
+   if (token === generation) showCurriculumState(host, {
+     title: 'Assessments unavailable',
+     message: 'The bank could not be loaded or its source review is incomplete.',
+     retry: () => openQuizzes(id), back: config.onExit,
+   });
+ }
 }
 export function closeQuizzes(){generation++;busy=false;current=null;if(host){host.hidden=true;host.replaceChildren();}document.body.classList.remove('quizzes-open','curriculum-open');}

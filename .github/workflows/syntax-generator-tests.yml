@@ -100,6 +100,7 @@ jobs:
           npm run test:assessments
           npm run test:builder
           node scripts/test_level.js
+          node scripts/test_tree_layout.js
           node --check web/js/quizzes-ui.js
           node --check web/js/lessons-ui.js
       - name: Build static application including Vercel upload exclusions
@@ -112,3 +113,9 @@ jobs:
           python -m pip install 'playwright>=1.51,<2'
           python -m playwright install --with-deps chromium
           python scripts/test_progression_browser.py
+          python scripts/test_ui_prototype_browser.py
+      - name: Save Milestone 10 screenshots for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: syntutor-m10-desktop-tablet-mobile
+          path: /tmp/syntutor-m10-browser/*.png
