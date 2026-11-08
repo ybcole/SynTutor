@@ -56,6 +56,21 @@ class FlaskParseContractTests(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertIn("JSON object", response.get_json()["error"])
 
+    def test_all_json_routes_reject_oversize_requests(self):
+        # Prevent expensive parsing and tree evaluation from reading an unbounded
+        # request body. This must apply to all four JSON routes, not just
+        # /api/explain and /api/evaluate.
+        for endpoint in ("/api/parse", "/api/words", "/api/explain", "/api/evaluate"):
+            with self.subTest(endpoint=endpoint), patch("webapp.build_payload") as build:
+                response = self.client.post(
+                    endpoint,
+                    data='{"text":"' + ('x' * 250_000) + '"}',
+                    content_type="application/json",
+                )
+                self.assertEqual(response.status_code, 413)
+                self.assertEqual(response.get_json()["error"], "request exceeds 250000 bytes")
+                build.assert_not_called()
+
     def test_successful_build_returns_payload(self):
         expected = {"br_analysis": {"status": "unresolved"}}
         with patch("webapp.build_payload", return_value=expected) as build:
