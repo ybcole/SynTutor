@@ -192,6 +192,32 @@ try:
         page.evaluate("switchAccount('journey-b')")
         assert "PrivateB" in page.evaluate(nodes)
         nav("achievements")
+        # Complete a stale parser request after leaving the Generator and
+        # switching account. It must not repaint or lock the next workspace.
+        page.locator("#newSessionBtn").click()
+        page.evaluate("""() => {
+          const fetchActual = window.fetch;
+          window.fetch = (url, options) => {
+            if (!String(url).endsWith('/api/parse')) return fetchActual(url, options);
+            return new Promise(resolve => {
+              window.releaseOldAnalysis = () => resolve(new Response(JSON.stringify({error:'stale parse'}), {
+                status: 503, headers: {'Content-Type':'application/json'}
+              }));
+            });
+          };
+          const input = document.querySelector('#inputText');
+          input.readOnly = false;
+          input.value = 'Only the previous analysis saw this.';
+          input.dispatchEvent(new KeyboardEvent('keydown', {key:'Enter',ctrlKey:true,bubbles:true}));
+        }""")
+        page.wait_for_function("typeof window.releaseOldAnalysis === 'function'")
+        nav("achievements")
+        page.evaluate("switchAccount('journey-a'); releaseOldAnalysis()")
+        expect(page.locator("#achievementsProgressLabel")).to_contain_text("25 verified XP")
+        page.locator("#newSessionBtn").click()
+        expect(page.locator("#inputText")).to_have_value("")
+        expect(page.get_by_text("stale parse", exact=True)).to_have_count(0)
+        nav("achievements")
         page.evaluate("switchAccount(null)")
         expect(page.locator("#headerHistoryBtn")).to_be_hidden()
         expect(page.locator("#achievementsProgressLabel")).to_have_text("Sign in to track your progress.")

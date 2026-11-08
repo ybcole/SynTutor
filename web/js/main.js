@@ -55,9 +55,8 @@ function refreshAccount() {
     supabase = null;
   }
   document.getElementById('logPanel')?.replaceChildren();
+  invalidateAnalysis('account changed');
   if (workspaceView === 'tutor') {
-    if (state === STATES.PROCESSING) transition(STATES.IDLE, 'account changed');
-    setLoadingIndicator(false);
     startNewSession();
     clearTreeAuthorityNotice();
   }
@@ -73,6 +72,7 @@ const HIGHLIGHT_STATUSES = new Set(['valid', 'error']);
 const HIGHLIGHT_CLASSES = { valid: '', error: 'word-invalid' };
 
 let state = STATES.IDLE;
+let analysisRequest = 0;
 let session = null;
 let renderer = null;
 let lastAnalyzedText = null;
@@ -642,6 +642,7 @@ function closeSubpanel() {
 }
 
 function teardownWorkspace() {
+  invalidateAnalysis('workspace changed');
   // Lessons: the picker overlay, the lesson panels, the guide card, the quiz
   // panel in the rail, and the side sub-panel.
   closeLessons();
@@ -1744,6 +1745,14 @@ async function analyzeForQuiz(text, index = null) {
   return payload;
 }
 
+function invalidateAnalysis(reason) {
+  analysisRequest += 1;
+  if (state === STATES.PROCESSING) {
+    transition(STATES.IDLE, reason);
+    setLoadingIndicator(false);
+  }
+}
+
 async function runPipeline(opts = {}) {
   if (state === STATES.PROCESSING) {
     // A live re-parse that landed while the previous run was still in flight
@@ -1754,14 +1763,13 @@ async function runPipeline(opts = {}) {
   // Only the Grammar Tutor runs the analysis pipeline: the Lessons module
   // and the Syntax Builder own the workspace in their own way.
   if (workspaceView !== 'tutor') return;
-  const client = supabase;
-  const identity = activeSessionId;
+  const request = ++analysisRequest;
   transition(STATES.PROCESSING, 'user submits text');
   setLoadingIndicator(true);
   try {
-    await executePipeline(opts);
+    await executePipeline(opts, request);
   } finally {
-    if (client === supabase && identity === activeSessionId) {
+    if (request === analysisRequest) {
       setLoadingIndicator(false);
       if (liveReparsePending) {
         liveReparsePending = false;
@@ -1780,10 +1788,9 @@ function setLoadingIndicator(show) {
   syncCanvasEmptyState();
 }
 
-async function executePipeline(opts = {}) {
+async function executePipeline(opts, request) {
   const historyClient = supabase;
   const historyOwner = activeUserId;
-  const identity = activeSessionId;
   clearOverlay();
   renderer.select(null);
   renderNodeDetail(null, null, null);
@@ -1809,7 +1816,7 @@ async function executePipeline(opts = {}) {
   let payload;
   try {
     const out = await postParse(text, opts.index);
-    if (historyClient !== supabase || identity !== activeSessionId) return;
+    if (request !== analysisRequest) return;
     if (out.error) {
       const { status, error, hint } = out.error;
       const title = status === 503
@@ -1821,7 +1828,7 @@ async function executePipeline(opts = {}) {
     payload = out.payload;
     setTreeAuthorityNotice(payload);
   } catch (_e) {
-    if (historyClient !== supabase || identity !== activeSessionId) return;
+    if (request !== analysisRequest) return;
     failPipeline('Backend unreachable', [
       'The SynTutor NLP server is not responding.',
       'Start it with:  python3 server/app.py',
