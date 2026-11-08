@@ -47,3 +47,5 @@
 @media(prefers-reduced-motion:reduce) { .curriculum-view * { scroll-behavior:auto; transition:none; } }
 .lesson-tree-hint { display:none; font-size:.8rem; color:var(--muted); }
 @media(max-width:600px) { .lesson-tree-hint { display:block; } }
+.curriculum-recovery-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.curriculum-recovery-actions button { min-block-size: 40px; }

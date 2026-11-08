@@ -10,7 +10,7 @@ import {
   renderDiagnostic, renderCorrection, applySentenceSelection, plainName, renderCorrectionPanel,
 } from './ui.js';
 import {
-  planFocus, contextWords, correctionPreview, expectedScopeWords, findScopeNode, findTargetError,
+  planFocus, contextWords, correctionPreview, matchesPreviewTokens, expectedScopeWords, findScopeNode, findTargetError,
 } from './correction.js';
 import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js';
 import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js';
@@ -147,6 +147,11 @@ function refreshCorrectionUi() {
 // click that dismisses the keyboard.
 function dismissFocus() {
   cancelLiveReparse();
+  if (activePreview() && session) {
+    setTreeAuthorityNotice(session.payload);
+    renderer.setTree(session.payload.tree);
+  }
+  previewLoading = null;
   focus = null;
   correctionMode = 'original';
   focusResult = null;
@@ -178,6 +183,7 @@ function enterFocus(id, detail) {
     alternativeCorrected: null,
   };
   correctionMode = 'original';
+  previewLoading = null;
   focusResult = null;
   renderer.focusNode(plan.nodeId, plan.scopeId, plan.pair);
   renderer.select(plan.nodeId);
@@ -201,17 +207,17 @@ async function showCorrected(variant = 'corrected') {
   if (!target[cacheKey]) {
     previewLoading = modeValue;
     refreshCorrectionUi();
-    const change = correctionPreview(session.payload, edit);
-    const { text } = change;
+    let change;
     let cp = null;
     try {
-      const out = await postParse(text);
+      change = correctionPreview(session.payload, edit);
+      const out = await postParse(change.text);
       if (!out.error) cp = out.payload;
     } catch (_e) { /* handled below */ }
     // The learner may have picked another error while the preview was built.
     if (focus !== target) return;
     previewLoading = null;
-    if (!cp?.tree || cp.parse?.text !== text) {
+    if (!change || !matchesPreviewTokens(cp, change.text)) {
       focusResult = { kind: 'still', message: 'Could not verify a tree for the complete corrected sentence.' };
       refreshCorrectionUi();
       return;
@@ -220,7 +226,7 @@ async function showCorrected(variant = 'corrected') {
     const expected = expectedScopeWords(session.payload, target.scopeId, edit);
     target[cacheKey] = {
       payload: cp,
-      text,
+      text: change.text,
       change,
       scopeId: expected ? findScopeNode(cp, target.scopeType, expected) : null,
     };
@@ -1737,7 +1743,10 @@ async function runPipeline(opts = {}) {
 
 function setLoadingIndicator(show) {
   const pill = document.querySelector('#loadingIndicator');
-  if (pill) pill.classList.toggle('visible', show);
+  if (pill) {
+    pill.classList.toggle('visible', show);
+    pill.setAttribute('aria-hidden', String(!show));
+  }
   syncCanvasEmptyState();
 }
 

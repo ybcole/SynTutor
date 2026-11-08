@@ -54,6 +54,19 @@ try:
         page.locator('#inputText').evaluate("el => { el.removeAttribute('readonly'); el.value = 'The birds sing.'; el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', ctrlKey: true, bubbles: true })); }")
         page.wait_for_selector('#openCanonicalBuilder', timeout=60000)
         page.wait_for_selector('[data-shared-evidence]')
+        assert page.evaluate("""async () => {
+          const { matchesPreviewTokens } = await import('/js/correction.js');
+          for (const text of ["The birds sing.", "The birds don't sing.", "The birds (usually) sing."]) {
+            const response = await fetch('/api/parse', {
+              method: 'POST', headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({text}),
+            });
+            if (!response.ok || !matchesPreviewTokens(await response.json(), text)) {
+              throw Error('Correction token contract failed for ' + text);
+            }
+          }
+          return true;
+        }""")
         generator = page.locator('[data-shared-evidence]').inner_text()
         assert ('Test structure' if fixture_mode else 'A sentence is the largest syntactic unit') in generator, generator
         page.evaluate("""async () => {

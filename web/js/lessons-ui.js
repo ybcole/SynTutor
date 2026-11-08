@@ -1,3 +1,4 @@
+import { showCurriculumState } from './curriculum-state.js';
 import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdvance, lessonXp } from './lesson-core.js';
 import { createLessonStore } from './lesson-progress.js';
 import { requestEvidence } from './explanation-evidence.js';
@@ -200,7 +201,8 @@ export function initLessons(config = {}) {
 }
 export async function openLessons(id=null) {
   lastFocus=document.activeElement;host.hidden=false;document.body.classList.add('curriculum-open');
-  host.replaceChildren(el('p','Loading reviewed lessons…'));const token=++generation;
+  showCurriculumState(host, { message: 'Loading reviewed lessons…' });
+  const token=++generation;
   try {
     course ||= validateCourse(await (await fetch('/content/lessons/course.json',{cache:'no-cache'})).json());
     if(!store) {
@@ -209,9 +211,16 @@ export async function openLessons(id=null) {
       await next.load();if(token!==generation)return;store=next;
     }
     if(token!==generation)return;
+    host.setAttribute('aria-busy','false');
     active=course.lessons.some(l=>l.lesson_id===id) ? id : null;step=0;notice='';render();
     const heading=host.querySelector('h1');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});host.scrollTop=0;}
     document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
-  }catch{if(token===generation)host.replaceChildren(el('h1','Lessons unavailable'),el('p','The lesson catalog could not be loaded or its source review is incomplete.'),button('Try again',()=>openLessons(id)));}
+  } catch {
+    if (token === generation) showCurriculumState(host, {
+      title: 'Lessons unavailable',
+      message: 'The lesson catalog could not be loaded or its source review is incomplete.',
+      retry: () => openLessons(id), back: options.onExit,
+    });
+  }
 }
 export function closeLessons() { generation+=1;if(host){host.hidden=true;host.replaceChildren();}document.body.classList.remove('curriculum-open');active=null;notice='';if(lastFocus?.isConnected)lastFocus.focus(); }

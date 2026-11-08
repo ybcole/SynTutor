@@ -162,6 +162,38 @@ export function correctionPreview(payload, edit) {
   return { text, removed, added };
 }
 
+// The parser can encode brackets and quotes in Penn notation. Everything else
+// must match the target sentence's tokens and ordered leaf spans exactly.
+const PENN_PUNCTUATION = new Map([
+  ['-LRB-', '('], ['-RRB-', ')'], ['-LSB-', '['], ['-RSB-', ']'],
+  ['-LCB-', '{'], ['-RCB-', '}'], ['``', '"'], ["''", '"'],
+]);
+export function matchesPreviewTokens(payload, text) {
+  if (!payload?.tree || payload.parse?.text !== text) return false;
+  const tokens = payload.parse.tokens;
+  const sentence = payload.parse.sentences?.[(payload.meta?.target_sentence || 1) - 1];
+  if (!sentence || !Array.isArray(tokens) || !tokens.length) return false;
+  const chars = Array.from(text);
+  const leaves = leavesOf(payload.tree);
+  if (leaves.length !== tokens.length) return false;
+  let end = 0;
+  for (const [index, token] of tokens.entries()) {
+    const start = token.start - sentence.start;
+    const finish = token.end - sentence.start;
+    const leaf = leaves[index];
+    if (!Number.isInteger(start) || !Number.isInteger(finish)
+        || start < end || finish <= start || finish > chars.length
+        || chars.slice(end, start).join('').trim()
+        || chars.slice(start, finish).join('') !== token.t
+        || leaf.span?.[0] !== index || leaf.span?.[1] !== index + 1
+        || (leaf.surface !== token.t && PENN_PUNCTUATION.get(leaf.surface) !== token.t)) {
+      return false;
+    }
+    end = finish;
+  }
+  return !chars.slice(end).join('').trim();
+}
+
 export function applyEdit(payload, edit) {
   return correctionPreview(payload, edit).text;
 }

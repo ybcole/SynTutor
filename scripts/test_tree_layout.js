@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { createLayout } from '../web/js/renderer.js';
-import { correctionPreview } from '../web/js/correction.js';
+import { correctionPreview, matchesPreviewTokens } from '../web/js/correction.js';
 
 let id = 0;
 const leaf = surface => ({ id: String(++id), surface, type: 'NN' });
@@ -56,3 +56,29 @@ check('They left', [[0, 4], [5, 9]],
 check('🦉 I do not sing.', [[0, 1], [2, 3], [4, 6], [7, 10], [11, 15], [15, 16]],
   { start: 2, end: 4, text: "don't" }, { text: "🦉 I don't sing.", removed: 'do not', added: "don't" });
 console.log('PASS: shallow, deep and wide layouts at three widths and five correction shapes.');
+
+const parsed = {
+  parse: {
+    text: 'Birds (sing).', sentences: [{ start: 0 }],
+    tokens: [
+      { t: 'Birds', start: 0, end: 5 }, { t: '(', start: 6, end: 7 },
+      { t: 'sing', start: 7, end: 11 }, { t: ')', start: 11, end: 12 },
+      { t: '.', start: 12, end: 13 },
+    ],
+  },
+  tree: { children: ['Birds', '-LRB-', 'sing', '-RRB-', '.'].map((surface, i) =>
+    ({ surface, span: [i, i + 1] })) },
+};
+assert(matchesPreviewTokens(parsed, parsed.parse.text));
+assert(!matchesPreviewTokens(parsed, 'Birds (sing)!'));
+const wrongWord = structuredClone(parsed);
+wrongWord.tree.children[2].surface = 'sings';
+assert(!matchesPreviewTokens(wrongWord, parsed.parse.text));
+const wrongOrder = structuredClone(parsed);
+wrongOrder.tree.children.reverse();
+assert(!matchesPreviewTokens(wrongOrder, parsed.parse.text));
+const missingWord = structuredClone(parsed);
+missingWord.parse.tokens.pop();
+missingWord.tree.children.pop();
+assert(!matchesPreviewTokens(missingWord, parsed.parse.text));
+console.log('PASS: corrected tree rejects stale leaf text, wrong order and uncovered punctuation.');
