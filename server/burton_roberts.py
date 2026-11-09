@@ -19,12 +19,12 @@ from xml.etree.ElementTree import ParseError
 from zipfile import BadZipFile
 
 if __package__:
-    from .final_d1_labels import final_d1_display_labels
+    from .final_d1_labels import final_d1_display_labels, final_d1_working_display_labels
     from .final_d1_projection import Projection, ProjectionUnavailable
     from .br_native_grammar import audit_br_constructions
     from .br_native_chart import generate_br_chart_candidates
 else:
-    from final_d1_labels import final_d1_display_labels
+    from final_d1_labels import final_d1_display_labels, final_d1_working_display_labels
     from final_d1_projection import Projection, ProjectionUnavailable
     from br_native_grammar import audit_br_constructions
     from br_native_chart import generate_br_chart_candidates
@@ -577,15 +577,32 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
         try:
             result["display_labels"] = final_d1_display_labels(result["tree"]["root"])
         except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError) as exc:
-            result.update(status="unresolved", tree=None, reasons=[{
+            # A display-master mismatch is NOT grounds for throwing away a
+            # structurally valid tree. Demote it to a clearly provisional
+            # working view instead of leaving the Generator blank.
+            result["working_tree"] = result.pop("tree")
+            result["status"] = "unresolved"
+            result["reasons"] = [{
                 "code": "FINAL_D1_LABEL_UNRESOLVED",
-                "detail": str(exc),
-            }])
+                "detail": "Strict B-R display-master mapping is incomplete: " + str(exc),
+            }]
     if result.get("working_tree"):
         try:
             result["working_display_labels"] = final_d1_display_labels(result["working_tree"]["root"])
-        except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError):
-            result.pop("working_tree")
+        except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError) as exc:
+            # Book-category nodes may be structurally valid while their exact
+            # feature stacks are absent from the approved master. Render
+            # only the known B-R category, not guessed Penn equivalents.
+            try:
+                provisional = final_d1_working_display_labels(result["working_tree"]["root"])
+                result["working_display_labels"] = provisional["labels"]
+                result["working_label_warnings"] = provisional["warnings"]
+                result["working_label_diagnostic"] = str(exc)
+            except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError) as fallback_exc:
+                result["working_label_diagnostic"] = str(fallback_exc)
+                # The UI can still present the already checked B-R envelope
+                # as a provisional tree. Never delete its underlying evidence.
+    result["br_engine_version"] = "FINAL-D1-2026-11-visible-working"
 
     # Experimental independent chart construction can propose a B-R-shaped
     # alternative even if the Benepar-to-B-R adapter fails. This is diagnostic,
