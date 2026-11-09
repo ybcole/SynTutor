@@ -1,0 +1,1750 @@
+{
+  "schema_version": "0.1.0",
+  "grammar_id": "BURTON_ROBERTS_3RD_ED_NATIVE",
+  "status": "DRAFT_SOURCED_NOT_COMPLETENESS_CERTIFIED",
+  "edition": "Noel Burton-Roberts, Analysing Sentences, Third Edition, 2011, ISBN 9781408233740",
+  "profiles": "V1–V10; FINAL-D1 applies cumulative constructions through chapter 10 plus appendix NOM refinement",
+  "notation": "@word denotes an overt lexical leaf, not a Penn POS tag; these are shape signatures, not generative licences absent semantics",
+  "source_reference": "CONVENTIONS.md and the uploaded 3rd-edition primary source; all construction decisions still require independent sentence-level adjudication",
+  "rules": [
+    {
+      "id": "BR02-S-SUBJECT-PREDICATE",
+      "chapter_introduced": 2,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          29,
+          30
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "NP",
+        "VP"
+      ],
+      "condition": "Unmarked two-part declarative; fronted adverbials and other clause types require independent construction rules.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-NP-NAME",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          52,
+          53
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NP",
+      "children": [
+        "name"
+      ],
+      "condition": "A single proper name is an NP in its own right.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-NP-PRONOUN",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          52,
+          53
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NP",
+      "children": [
+        "pronoun"
+      ],
+      "condition": "A single pronoun is an NP in its own right.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-AP-HEAD",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          55
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AP",
+      "children": [
+        "A"
+      ],
+      "condition": "An adjective without modifiers is a complete AP.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-AP-DEGREE",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          55
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AP",
+      "children": [
+        "DEG",
+        "A"
+      ],
+      "condition": "Degree adverb modifies an adjective; other adverbial modifiers require separate checks.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-AP-ADVP",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          55,
+          56
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AP",
+      "children": [
+        "AdvP",
+        "A"
+      ],
+      "condition": "Adverb phrase modifies adjective.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-ADVP-HEAD",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          56
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AdvP",
+      "children": [
+        "Adv"
+      ],
+      "condition": "A general adverb without modifier is an AdvP.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-ADVP-DEGREE",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          56
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AdvP",
+      "children": [
+        "DEG",
+        "Adv"
+      ],
+      "condition": "Degree modifier of general adverb.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-PP-HEAD",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          56,
+          57
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PP",
+      "children": [
+        "P"
+      ],
+      "condition": "Preposition alone forms PP in licensed locative or temporal use.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-PP-NP",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          56
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PP",
+      "children": [
+        "P",
+        "NP"
+      ],
+      "condition": "Prepositional head with NP complement.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-NAME-TERMINAL",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          52
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "name",
+      "children": [
+        "@word"
+      ],
+      "condition": "The name node immediately dominates its surface word.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-PRONOUN-TERMINAL",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          53
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "pronoun",
+      "children": [
+        "@word"
+      ],
+      "condition": "Pronoun node immediately dominates its surface word.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-NOUN-TERMINAL",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          51
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "N",
+      "children": [
+        "@word"
+      ],
+      "condition": "N lexical head immediately dominates word.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-ADJECTIVE-TERMINAL",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          55
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "A",
+      "children": [
+        "@word"
+      ],
+      "condition": "A lexical head immediately dominates adjective word.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-ADVERB-TERMINAL",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          56
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "Adv",
+      "children": [
+        "@word"
+      ],
+      "condition": "Adv lexical head immediately dominates adverb word.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-PREPOSITION-TERMINAL",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          56
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "P",
+      "children": [
+        "@word"
+      ],
+      "condition": "P lexical head immediately dominates preposition word.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-DEGREE-TERMINAL",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          55
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "DEG",
+      "children": [
+        "@word"
+      ],
+      "condition": "Degree word representation.",
+      "level": "structural"
+    },
+    {
+      "id": "BR04-V-TERMINAL",
+      "chapter_introduced": 4,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          68,
+          79
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "V",
+      "children": [
+        "@word"
+      ],
+      "condition": "Lexical V requires a source-licensed valency feature where the profile calls for one.",
+      "level": "structural"
+    },
+    {
+      "id": "BR04-VP-INTRANSITIVE",
+      "chapter_introduced": 4,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          71,
+          72
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V"
+      ],
+      "condition": "V must have intrans feature or a construction-specific licensed exception.",
+      "level": "structural"
+    },
+    {
+      "id": "BR04-VP-TRANSITIVE",
+      "chapter_introduced": 4,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          70,
+          71
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "NP"
+      ],
+      "condition": "V must be licensed for a direct object NP.",
+      "level": "structural"
+    },
+    {
+      "id": "BR04-VP-DITRANSITIVE",
+      "chapter_introduced": 4,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          72,
+          75
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "NP",
+        "NP"
+      ],
+      "condition": "V must license indirect and direct objects in this order.",
+      "level": "structural"
+    },
+    {
+      "id": "BR04-VP-INTENSIVE-NP",
+      "chapter_introduced": 4,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          74,
+          76
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "NP"
+      ],
+      "condition": "V may instead be intensive; same surface shape is not semantically sufficient.",
+      "level": "structural"
+    },
+    {
+      "id": "BR04-VP-INTENSIVE-AP",
+      "chapter_introduced": 4,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          74,
+          76
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "AP"
+      ],
+      "condition": "Subject-predicative AP after intensive V.",
+      "level": "structural"
+    },
+    {
+      "id": "BR04-VP-INTENSIVE-PP",
+      "chapter_introduced": 4,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          74,
+          76
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "PP"
+      ],
+      "condition": "Subject-predicative PP after intensive V.",
+      "level": "structural"
+    },
+    {
+      "id": "BR04-VP-COMPLEX-AP",
+      "chapter_introduced": 4,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          76,
+          77
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "NP",
+        "AP"
+      ],
+      "condition": "Object NP followed by object-predicative AP.",
+      "level": "structural"
+    },
+    {
+      "id": "BR04-VP-COMPLEX-NP",
+      "chapter_introduced": 4,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          76,
+          77
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "NP",
+        "NP"
+      ],
+      "condition": "Object NP followed by nominal predicative; check V feature.",
+      "level": "structural"
+    },
+    {
+      "id": "BR04-VP-COMPLEX-PP",
+      "chapter_introduced": 4,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          76,
+          77
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "NP",
+        "PP"
+      ],
+      "condition": "Object NP followed by selected predicative PP.",
+      "level": "structural"
+    },
+    {
+      "id": "BR04-VP-PREPOSITIONAL",
+      "chapter_introduced": 4,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          77,
+          79
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "PP"
+      ],
+      "condition": "P must be selected by the lexical verb; not an optional VP-adverbial.",
+      "level": "structural"
+    },
+    {
+      "id": "BR05-VP-PP-ADJUNCT",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          87,
+          92
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "VP",
+        "PP"
+      ],
+      "condition": "Higher VP contains basic VP and optional PP adjunct.",
+      "level": "structural"
+    },
+    {
+      "id": "BR05-VP-ADVP-ADJUNCT",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          87,
+          92
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "VP",
+        "AdvP"
+      ],
+      "condition": "Higher VP contains VP and optional AdvP adjunct.",
+      "level": "structural"
+    },
+    {
+      "id": "BR05-VP-ADVERBIAL-LEFT",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          87,
+          93
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "AdvP",
+        "VP"
+      ],
+      "condition": "Preposed VP-adverbial in a licensed position.",
+      "level": "structural"
+    },
+    {
+      "id": "BR05-S-ADJUNCT-LEFT",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          98,
+          101
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "PP",
+        "S"
+      ],
+      "condition": "Sentence-level PP-adverbial, not necessarily a subject.",
+      "level": "structural"
+    },
+    {
+      "id": "BR05-S-ADJUNCT-LEFT-ADV",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          98,
+          101
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "AdvP",
+        "S"
+      ],
+      "condition": "Sentence-level adverbial modifies an S.",
+      "level": "structural"
+    },
+    {
+      "id": "BR05-S-ADJUNCT-RIGHT",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          98,
+          101
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "S",
+        "PP"
+      ],
+      "condition": "Sentence-level PP-adverbial at right edge.",
+      "level": "structural"
+    },
+    {
+      "id": "BR05-VP-PARTICLE",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          93,
+          96
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "Prt"
+      ],
+      "condition": "Phrasal verb particle; lexical V must license this construction.",
+      "level": "structural"
+    },
+    {
+      "id": "BR05-PARTICLE-TERMINAL",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          93,
+          96
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "Prt",
+      "children": [
+        "@word"
+      ],
+      "condition": "Particle word node.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-VP-MOD",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          115,
+          123
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "MOD",
+        "VP"
+      ],
+      "condition": "Modal auxiliary heads higher VP and takes VP complement.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-VP-PERF",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          116,
+          123
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "PERF",
+        "VP"
+      ],
+      "condition": "Perfect auxiliary heads VP and takes VP complement.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-VP-PROG",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          118,
+          123
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "PROG",
+        "VP"
+      ],
+      "condition": "Progressive auxiliary heads VP and takes VP complement.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-VP-PASS",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          119,
+          123
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "PASS",
+        "VP"
+      ],
+      "condition": "Passive auxiliary heads VP and takes VP complement.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-VP-TENSE",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          128,
+          132
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "TENSE",
+        "VP"
+      ],
+      "condition": "Do-support/tense auxiliary heads VP in the documented contexts.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-SBAR-AUX-FRONT",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          129,
+          132
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S-bar",
+      "children": [
+        "C",
+        "S"
+      ],
+      "condition": "Fronted auxiliary occupies C; overt or abstract gap recorded in lower position.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-MOD-WORD",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          115
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "MOD",
+      "children": [
+        "@word"
+      ],
+      "condition": "Tense and negative clitic can be carried on a single auxiliary node as documented.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-PERF-WORD",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          116
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PERF",
+      "children": [
+        "@word"
+      ],
+      "condition": "Perfect form.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-PROG-WORD",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          118
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PROG",
+      "children": [
+        "@word"
+      ],
+      "condition": "Progressive form.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-PASS-WORD",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          119
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PASS",
+      "children": [
+        "@word"
+      ],
+      "condition": "Passive form.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-TENSE-WORD",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          128,
+          132
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "TENSE",
+      "children": [
+        "@word"
+      ],
+      "condition": "Tense/do-support form.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NP-DET-NOM",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          141,
+          149
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NP",
+      "children": [
+        "DET",
+        "NOM"
+      ],
+      "condition": "Head nominal with determiner, including overt or empty DET as applicable.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NOM-N",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          141,
+          149
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "N"
+      ],
+      "condition": "Unmodified nominal head.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NOM-AP",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          146,
+          149
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "AP",
+        "NOM"
+      ],
+      "condition": "Pre-modifying AP within nominal structure.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NOM-NOM-PP",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          149,
+          155
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "NOM",
+        "PP"
+      ],
+      "condition": "Postmodifying PP attaching at NOM; complements of N require distinct attachment.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NOM-N-PP",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          150,
+          155
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "N",
+        "PP"
+      ],
+      "condition": "Complement of N rather than a NOM-level adjunct; source/interpretation must decide.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NOM-N-SBAR",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          182,
+          185
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "N",
+        "S-bar"
+      ],
+      "condition": "Clause complement to nominal head.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NOM-NOM-SBAR",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          204,
+          211
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "NOM",
+        "S-bar"
+      ],
+      "condition": "Restrictive relative clause attachment within nominal.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NP-PREDET",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          145
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NP",
+      "children": [
+        "PRE-DET",
+        "NP"
+      ],
+      "condition": "Pre-determiner scopes over NP.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-DET-ART",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          142,
+          144
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "DET",
+      "children": [
+        "ART"
+      ],
+      "condition": "Article child of DET.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-DET-DEM",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          142,
+          145
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "DET",
+      "children": [
+        "DEM"
+      ],
+      "condition": "Demonstrative determiner.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-DET-Q",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          142,
+          145
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "DET",
+      "children": [
+        "Q"
+      ],
+      "condition": "Quantifier determiner.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-DET-POSS",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          142,
+          145
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "DET",
+      "children": [
+        "POSS"
+      ],
+      "condition": "Possessive determiner.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-PREDET-WORD",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          145
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PRE-DET",
+      "children": [
+        "@word"
+      ],
+      "condition": "Pre-determiner terminal.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-ART-WORD",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          142
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "ART",
+      "children": [
+        "@word"
+      ],
+      "condition": "Article terminal.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-DEM-WORD",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          142
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "DEM",
+      "children": [
+        "@word"
+      ],
+      "condition": "Demonstrative terminal.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-Q-WORD",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          142
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "Q",
+      "children": [
+        "@word"
+      ],
+      "condition": "Quantifier terminal.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-POSS-WORD",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          142,
+          145
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "POSS",
+      "children": [
+        "@word"
+      ],
+      "condition": "Possessive determiner terminal.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NOM-QA",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          146,
+          149
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "QA",
+        "NOM"
+      ],
+      "condition": "Quantifying adjective modifier.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NOM-PARTP",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          147
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "PartP",
+        "NOM"
+      ],
+      "condition": "Participle-phrase premodifier.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NOM-NOUN-MOD",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          148,
+          149
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "N",
+        "NOM"
+      ],
+      "condition": "Attributive noun modifier.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-SBAR-SUBORDINATE",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          174,
+          187
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S-bar",
+      "children": [
+        "C",
+        "S"
+      ],
+      "condition": "Overt or omitted complementizer C in subordinate clause.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-PP-CLAUSE",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          184,
+          186
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PP",
+      "children": [
+        "P",
+        "S"
+      ],
+      "condition": "after/before/until/since can take unbarred S complements.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-PP-WHETHER",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          184,
+          185
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PP",
+      "children": [
+        "P",
+        "S-bar"
+      ],
+      "condition": "Preposition with whether-clause, not arbitrary that-clause.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-NP-SBAR-SUBJECT",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          176,
+          179
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NP",
+      "children": [
+        "S-bar"
+      ],
+      "condition": "Nominal/clausal subject wrapping when licensed.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-SDBAR-WH",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          196,
+          211
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S-dbar",
+      "children": [
+        "C2",
+        "S-bar"
+      ],
+      "condition": "Wh-phrase in higher C2; C1 may be empty or carry fronted auxiliary.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-SBAR-C1",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          196,
+          211
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S-bar",
+      "children": [
+        "C1",
+        "S"
+      ],
+      "condition": "Lower C1 can be overt or empty.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-C1-WORD",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          196,
+          211
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "C1",
+      "children": [
+        "@word"
+      ],
+      "condition": "C1 may be overt question auxiliary or complementiser.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-C2-WORD",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          196,
+          211
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "C2",
+      "children": [
+        "@word"
+      ],
+      "condition": "C2 wh-expression may be a word or (unlabelled) triangle.",
+      "level": "structural"
+    },
+    {
+      "id": "BR10-S-COINDEXED",
+      "chapter_introduced": 10,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          224,
+          243
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "NP",
+        "VP"
+      ],
+      "condition": "Nonfinite S may have overt or covert NP subject with co-indexing.",
+      "level": "structural"
+    },
+    {
+      "id": "BR10-VP-NONFINITE-TO",
+      "chapter_introduced": 10,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          225,
+          232
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "AUX",
+        "VP"
+      ],
+      "condition": "[-tense] to heads infinitival VP.",
+      "level": "structural"
+    },
+    {
+      "id": "BR10-VP-TYPE-I",
+      "chapter_introduced": 10,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          235,
+          243
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V(I)",
+        "S-bar"
+      ],
+      "condition": "V(I) has a clausal complement with its own subject.",
+      "level": "structural"
+    },
+    {
+      "id": "BR10-VP-TYPE-II",
+      "chapter_introduced": 10,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          235,
+          243
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V(II)",
+        "NP",
+        "S-bar"
+      ],
+      "condition": "V(II) takes NP object plus a controlled nonfinite clause.",
+      "level": "structural"
+    },
+    {
+      "id": "BR10-VI-WORD",
+      "chapter_introduced": 10,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          235,
+          243
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "V(I)",
+      "children": [
+        "@word"
+      ],
+      "condition": "Type I lexical V.",
+      "level": "structural"
+    },
+    {
+      "id": "BR10-VII-WORD",
+      "chapter_introduced": 10,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          235,
+          243
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "V(II)",
+      "children": [
+        "@word"
+      ],
+      "condition": "Type II lexical V.",
+      "level": "structural"
+    },
+    {
+      "id": "BR10-AUX-WORD",
+      "chapter_introduced": 10,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          225,
+          229
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AUX",
+      "children": [
+        "@word"
+      ],
+      "condition": "to represented on [-tense] auxiliary.",
+      "level": "structural"
+    }
+  ],
+  "obligations": [
+    {
+      "id": "BR01-CONSTITUENCY",
+      "chapter_introduced": 1,
+      "level": "semantic_or_notation",
+      "description": "A phrase marker must preserve ordered hierarchical constituents and not create crossing immediate-dominance relations.",
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          6,
+          17
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      }
+    },
+    {
+      "id": "BR02-FUNCTION-NOT-NODE",
+      "chapter_introduced": 2,
+      "level": "semantic_or_notation",
+      "description": "Subject/predicate and complement/modifier are functions derived from category and sister position, not extra node labels.",
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          29,
+          38
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      }
+    },
+    {
+      "id": "BR03-COORDINATION",
+      "chapter_introduced": 3,
+      "level": "semantic_or_notation",
+      "description": "Conjuncts of a coordinate phrase must have compatible category; coordination creates a multi-headed exception.",
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          57,
+          66
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      }
+    },
+    {
+      "id": "BR04-VALENCY",
+      "chapter_introduced": 4,
+      "level": "semantic_or_notation",
+      "description": "The lexical verb's complementation feature must license object and predicative complements.",
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          67,
+          79
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      }
+    },
+    {
+      "id": "BR05-ELLIPSIS",
+      "chapter_introduced": 5,
+      "level": "semantic_or_notation",
+      "description": "E is an elision marker and not a movement gap or fabricated overt word.",
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          95,
+          99
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      }
+    },
+    {
+      "id": "BR06-QUESTION-GAP",
+      "chapter_introduced": 6,
+      "level": "semantic_or_notation",
+      "description": "Auxiliary fronting leaves an abstract lower position; do-support when required.",
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          128,
+          132
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      }
+    },
+    {
+      "id": "BR07-EMPTY-DET",
+      "chapter_introduced": 7,
+      "level": "semantic_or_notation",
+      "description": "Count/mass noun contexts may require an unfilled DET category; do not fabricate an article.",
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          141,
+          145
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      }
+    },
+    {
+      "id": "BR08-CLAUSE-FUNCTION",
+      "chapter_introduced": 8,
+      "level": "semantic_or_notation",
+      "description": "Clausal complements/adjuncts must be correctly positioned and distinguished from nominal complements.",
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          173,
+          187
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      }
+    },
+    {
+      "id": "BR09-MOVEMENT",
+      "chapter_introduced": 9,
+      "level": "semantic_or_notation",
+      "description": "Fronted wh must be related to a licensed gap; do not assume Penn SBARQ equals B-R S-double-bar.",
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          196,
+          211
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      }
+    },
+    {
+      "id": "BR10-CONTROL",
+      "chapter_introduced": 10,
+      "level": "semantic_or_notation",
+      "description": "Controlled nonfinite subjects and movement gaps must preserve antecedent/co-indexation relations.",
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          224,
+          243
+        ],
+        "evidence": "CONVENTIONS_MD_AND_BOOK_TEXT",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      }
+    }
+  ]
+}
