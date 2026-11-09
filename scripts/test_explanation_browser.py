@@ -122,6 +122,24 @@ try:
                   .map(t => t.getAttribute('x')),
               };
             }""")
+            # The SVG must preserve the canonical left-to-right word
+            # sequence, not just keep connector coordinates nonzero.
+            ordered_leaves = page.evaluate("""(root) => {
+              const svg = document.querySelector('#canonicalTreeView svg');
+              const nodes = [];
+              function visit(node) {
+                if ('word' in node) nodes.push(node.id);
+                else for (const child of node.children || []) visit(child);
+              }
+              visit(root);
+              return nodes.map(id => {
+                const group = [...svg.querySelectorAll('g[data-node-id]')]
+                  .find(g => g.getAttribute('data-node-id') === id);
+                return group && Number(group.querySelector('text')?.getAttribute('x'));
+              });
+            }""", br['tree']['root'])
+            assert all(isinstance(x, (int, float)) and x is not None for x in ordered_leaves), ordered_leaves
+            assert all(a < b for a, b in zip(ordered_leaves, ordered_leaves[1:])), ordered_leaves
             canonical.get_by_role('button', name='Zoom in B-R tree').click()
             geometry_after = page.evaluate("""() => {
               const svg = document.querySelector('#canonicalTreeView svg');
