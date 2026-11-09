@@ -1,0 +1,1054 @@
+{
+  "schema_version": "xai-0-development-1.0",
+  "purpose": "Empirical baseline only: these prompts are representative probes, NOT a held-out human-labeled gold grammaticality set.",
+  "review_status": "NOT_HUMAN_ADJUDICATED",
+  "source_authority": "none",
+  "expected_canonical_success": "not_predetermined",
+  "evaluation_plan": "Report observed parser and B-R status, source-cited node coverage, legacy candidate warnings, API parity; never derive grammaticality truth from intent tags.",
+  "cases": [
+    {
+      "id": "x0-basic-01",
+      "text": "I hate you.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-basic-02",
+      "text": "You hate me.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-basic-03",
+      "text": "The children laugh.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-basic-04",
+      "text": "The dog slept.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-basic-05",
+      "text": "Birds sing.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-basic-06",
+      "text": "She admires the painting.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-basic-07",
+      "text": "The boy opened the door.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-basic-08",
+      "text": "Their friends arrived.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-basic-09",
+      "text": "A small dog chased the cat.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-basic-10",
+      "text": "He gave her a book.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-basic-11",
+      "text": "I put the cup on the table.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-basic-12",
+      "text": "The nurse helped the patient.",
+      "family": "basic",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-01",
+      "text": "She had eaten.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-02",
+      "text": "She has gone home.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-03",
+      "text": "She had breakfast.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-04",
+      "text": "She had wanted the car.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-05",
+      "text": "They will have arrived.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-06",
+      "text": "He is reading a book.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-07",
+      "text": "The letter was written yesterday.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-08",
+      "text": "She must leave now.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-09",
+      "text": "The work has been finished.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-10",
+      "text": "We may be being watched.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-11",
+      "text": "He doesn't like coffee.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-auxiliaries-12",
+      "text": "They have been waiting.",
+      "family": "auxiliaries",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-questions_negation-01",
+      "text": "Does she know the answer?",
+      "family": "questions_negation",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-questions_negation-02",
+      "text": "Where did you go?",
+      "family": "questions_negation",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-questions_negation-03",
+      "text": "Why is the sky blue?",
+      "family": "questions_negation",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-questions_negation-04",
+      "text": "Who ate the cake?",
+      "family": "questions_negation",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-questions_negation-05",
+      "text": "Didn't he leave?",
+      "family": "questions_negation",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-questions_negation-06",
+      "text": "Neither child was ready.",
+      "family": "questions_negation",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-questions_negation-07",
+      "text": "Only later did I understand.",
+      "family": "questions_negation",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-questions_negation-08",
+      "text": "I have never seen that movie.",
+      "family": "questions_negation",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-questions_negation-09",
+      "text": "What did the teacher say?",
+      "family": "questions_negation",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-questions_negation-10",
+      "text": "Can you open the window?",
+      "family": "questions_negation",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-embedded_nonfinite-01",
+      "text": "She said that he was tired.",
+      "family": "embedded_nonfinite",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-embedded_nonfinite-02",
+      "text": "The girl who won smiled.",
+      "family": "embedded_nonfinite",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-embedded_nonfinite-03",
+      "text": "I want to learn syntax.",
+      "family": "embedded_nonfinite",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-embedded_nonfinite-04",
+      "text": "He asked whether we were ready.",
+      "family": "embedded_nonfinite",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-embedded_nonfinite-05",
+      "text": "To read every day helps.",
+      "family": "embedded_nonfinite",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-embedded_nonfinite-06",
+      "text": "She saw him running.",
+      "family": "embedded_nonfinite",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-embedded_nonfinite-07",
+      "text": "I believe that they know.",
+      "family": "embedded_nonfinite",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-embedded_nonfinite-08",
+      "text": "The people sitting outside are waiting.",
+      "family": "embedded_nonfinite",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-embedded_nonfinite-09",
+      "text": "What you said surprised me.",
+      "family": "embedded_nonfinite",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-embedded_nonfinite-10",
+      "text": "We decided to leave early.",
+      "family": "embedded_nonfinite",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-coordination_modification-01",
+      "text": "Kim and Pat smiled.",
+      "family": "coordination_modification",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-coordination_modification-02",
+      "text": "The professor and the student talked.",
+      "family": "coordination_modification",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-coordination_modification-03",
+      "text": "She bought tea and coffee.",
+      "family": "coordination_modification",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-coordination_modification-04",
+      "text": "I saw the old red car.",
+      "family": "coordination_modification",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-coordination_modification-05",
+      "text": "A very large tree fell.",
+      "family": "coordination_modification",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-coordination_modification-06",
+      "text": "She walked slowly but carefully.",
+      "family": "coordination_modification",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-coordination_modification-07",
+      "text": "The man with a hat waved.",
+      "family": "coordination_modification",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-coordination_modification-08",
+      "text": "We visited the museum on Friday.",
+      "family": "coordination_modification",
+      "intent": "grammatical_control",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ambiguous-01",
+      "text": "I saw the man with the telescope.",
+      "family": "ambiguous",
+      "intent": "ambiguous",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ambiguous-02",
+      "text": "She watched the girl with binoculars.",
+      "family": "ambiguous",
+      "intent": "ambiguous",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ambiguous-03",
+      "text": "Old men and women waited.",
+      "family": "ambiguous",
+      "intent": "ambiguous",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ambiguous-04",
+      "text": "Visiting relatives can be boring.",
+      "family": "ambiguous",
+      "intent": "ambiguous",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ambiguous-05",
+      "text": "Flying planes can be dangerous.",
+      "family": "ambiguous",
+      "intent": "ambiguous",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ambiguous-06",
+      "text": "I saw her duck.",
+      "family": "ambiguous",
+      "intent": "ambiguous",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ambiguous-07",
+      "text": "The teacher discussed the student with the principal.",
+      "family": "ambiguous",
+      "intent": "ambiguous",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ambiguous-08",
+      "text": "He saw the woman on the hill.",
+      "family": "ambiguous",
+      "intent": "ambiguous",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-01",
+      "text": "She have went home.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-02",
+      "text": "She had went home.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-03",
+      "text": "The boys is happy.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-04",
+      "text": "This boys walk home.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-05",
+      "text": "A dogs bark.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-06",
+      "text": "He don't likes coffee.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-07",
+      "text": "I has a book.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-08",
+      "text": "She are reading.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-09",
+      "text": "He must goes now.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-10",
+      "text": "They was playing.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-11",
+      "text": "The cat sleep yesterday.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-12",
+      "text": "She enjoys to swim.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-13",
+      "text": "The children is hungry.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-14",
+      "text": "An books fell.",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-ungrammatical_probes-15",
+      "text": "Does she likes it?",
+      "family": "ungrammatical_probes",
+      "intent": "malformed_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-multiple_error-01",
+      "text": "She have went to a stores, and he don't likes it.",
+      "family": "multiple_error",
+      "intent": "multi_error_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-multiple_error-02",
+      "text": "The boys is carrying a boxes.",
+      "family": "multiple_error",
+      "intent": "multi_error_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-multiple_error-03",
+      "text": "They was went to the homes.",
+      "family": "multiple_error",
+      "intent": "multi_error_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-multiple_error-04",
+      "text": "He don't knows why she have left.",
+      "family": "multiple_error",
+      "intent": "multi_error_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-multiple_error-05",
+      "text": "This girls are eating a apple.",
+      "family": "multiple_error",
+      "intent": "multi_error_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-multiple_error-06",
+      "text": "She have eat an apples and he doesn't likes them.",
+      "family": "multiple_error",
+      "intent": "multi_error_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-multiple_error-07",
+      "text": "Those child doesn't knows the answers.",
+      "family": "multiple_error",
+      "intent": "multi_error_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-multiple_error-08",
+      "text": "The teacher were give a assignments.",
+      "family": "multiple_error",
+      "intent": "multi_error_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-variety_register-01",
+      "text": "He ain't got any money.",
+      "family": "variety_register",
+      "intent": "variety_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-variety_register-02",
+      "text": "You was there yesterday.",
+      "family": "variety_register",
+      "intent": "variety_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-variety_register-03",
+      "text": "They be working every day.",
+      "family": "variety_register",
+      "intent": "variety_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-variety_register-04",
+      "text": "I done told you.",
+      "family": "variety_register",
+      "intent": "variety_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-variety_register-05",
+      "text": "We was just leaving.",
+      "family": "variety_register",
+      "intent": "variety_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-variety_register-06",
+      "text": "I'm gonna call you.",
+      "family": "variety_register",
+      "intent": "variety_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-variety_register-07",
+      "text": "They might could help.",
+      "family": "variety_register",
+      "intent": "variety_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-variety_register-08",
+      "text": "That'll do, innit?",
+      "family": "variety_register",
+      "intent": "variety_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-time_aspect-01",
+      "text": "We've already discussed it yesterday.",
+      "family": "time_aspect",
+      "intent": "context_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-time_aspect-02",
+      "text": "I've seen her last week.",
+      "family": "time_aspect",
+      "intent": "context_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-time_aspect-03",
+      "text": "I just ate.",
+      "family": "time_aspect",
+      "intent": "context_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-time_aspect-04",
+      "text": "I have just eaten.",
+      "family": "time_aspect",
+      "intent": "context_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-time_aspect-05",
+      "text": "Since she arrived, we have waited.",
+      "family": "time_aspect",
+      "intent": "context_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-time_aspect-06",
+      "text": "Since she is tired, we should stop.",
+      "family": "time_aspect",
+      "intent": "context_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-time_aspect-07",
+      "text": "I have lived here since 2020.",
+      "family": "time_aspect",
+      "intent": "context_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-time_aspect-08",
+      "text": "He has been up the mountain twice.",
+      "family": "time_aspect",
+      "intent": "context_sensitive",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-taglish_unsupported-01",
+      "text": "Nag-aaral ako ng syntax.",
+      "family": "taglish_unsupported",
+      "intent": "unsupported_or_mixed_language",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-taglish_unsupported-02",
+      "text": "I will submit na tomorrow.",
+      "family": "taglish_unsupported",
+      "intent": "unsupported_or_mixed_language",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-taglish_unsupported-03",
+      "text": "Kumain na siya.",
+      "family": "taglish_unsupported",
+      "intent": "unsupported_or_mixed_language",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-taglish_unsupported-04",
+      "text": "The class is mahirap today.",
+      "family": "taglish_unsupported",
+      "intent": "unsupported_or_mixed_language",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-taglish_unsupported-05",
+      "text": "Pwede bang explain this NP?",
+      "family": "taglish_unsupported",
+      "intent": "unsupported_or_mixed_language",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-taglish_unsupported-06",
+      "text": "My prof said na okay lang.",
+      "family": "taglish_unsupported",
+      "intent": "unsupported_or_mixed_language",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-taglish_unsupported-07",
+      "text": "Gusto ko to learn English syntax.",
+      "family": "taglish_unsupported",
+      "intent": "unsupported_or_mixed_language",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-taglish_unsupported-08",
+      "text": "I was late kasi traffic.",
+      "family": "taglish_unsupported",
+      "intent": "unsupported_or_mixed_language",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-punctuation_multisentence-01",
+      "text": "Hello!",
+      "family": "punctuation_multisentence",
+      "intent": "formatting_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-punctuation_multisentence-02",
+      "text": "The girl smiled, and the boy laughed.",
+      "family": "punctuation_multisentence",
+      "intent": "formatting_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-punctuation_multisentence-03",
+      "text": "“She said no,” he replied.",
+      "family": "punctuation_multisentence",
+      "intent": "formatting_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-punctuation_multisentence-04",
+      "text": "Wait—what happened?",
+      "family": "punctuation_multisentence",
+      "intent": "formatting_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-punctuation_multisentence-05",
+      "text": "She left. He stayed.",
+      "family": "punctuation_multisentence",
+      "intent": "formatting_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-punctuation_multisentence-06",
+      "text": "Did you leave? I stayed.",
+      "family": "punctuation_multisentence",
+      "intent": "formatting_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-punctuation_multisentence-07",
+      "text": "He said: \"Come home.\"",
+      "family": "punctuation_multisentence",
+      "intent": "formatting_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-punctuation_multisentence-08",
+      "text": "Read this: <script>alert(1)</script>.",
+      "family": "punctuation_multisentence",
+      "intent": "formatting_probe",
+      "selected_sentence_index": 0,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+    },
+    {
+      "id": "x0-multisentence-second",
+      "text": "The dog slept. The child laughed.",
+      "family": "punctuation_multisentence",
+      "intent": "formatting_probe",
+      "selected_sentence_index": 1,
+      "expected_status": "NOT_ADJUDICATED",
+      "notes": "Probe the second sentence while preserving original input offsets."
+    }
+  ]
+}
