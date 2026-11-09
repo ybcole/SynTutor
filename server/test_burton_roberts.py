@@ -149,7 +149,7 @@ class NormalizationTests(unittest.TestCase):
                 v = inner_vp["children"][0]
                 self.assertEqual(v["label"], "V")
                 self.assertEqual(v["features"], ["intrans", "past"])
-                self.assertEqual(v["source_refs"], ["Ch4 p. 72 [22]", "Ch6 p. 113 [8]–[9]"])
+                self.assertEqual(v["source_refs"], ["Ch4 pp. 71–72 [22]", "Ch6 p. 113 [8]–[9]"])
                 self.assertEqual(v["children"][0]["word"], "sighed")
                 self.assertEqual(json.dumps(analysis["root"]), raw_before)
                 self.assertEqual(json.dumps(result["parser_diagnostics"]["raw_candidate_tree"]), raw_before)
@@ -163,6 +163,31 @@ class NormalizationTests(unittest.TestCase):
                 self.assertEqual(result["status"], "unresolved")
                 self.assertIsNone(result["tree"])
                 self.assertIn("raw_candidate_tree", result["parser_diagnostics"])
+
+    def test_final_lexical_declaratives_cover_simple_nps_and_two_complement_frames(self):
+        cases = [
+            ("The boy sleeps.", "(NP (DT The) (NN boy))", "(VP (VBZ sleeps))", ["intrans", "pres"], ["DET", "NOM"]),
+            ("The boys sleeps.", "(NP (DT The) (NNS boys))", "(VP (VBZ sleeps))", ["intrans", "pres"], ["DET", "NOM"]),
+            ("Birds sleep.", "(NP (NNS Birds))", "(VP (VBP sleep))", ["intrans", "pres"], ["DET", "NOM"]),
+            ("She spotted a bird.", "(NP (PRP She))", "(VP (VBD spotted) (NP (DT a) (NN bird)))", ["trans", "past"], ["pronoun"]),
+            ("Max inspected it.", "(NP (NNP Max))", "(VP (VBD inspected) (NP (PRP it)))", ["trans", "past"], ["name"]),
+        ]
+        for sentence, np, vp, features, np_children in cases:
+            with self.subTest(sentence=sentence):
+                analysis = candidate(sentence)
+                parse = f"(S {np} {vp} (. .))"
+                analysis["root"] = NodeBuilder().build(parse_parse_string(parse), len(analysis["tokens"]))
+                result = build_canonical_analysis(analysis, reference_records=[])
+                self.assertEqual(result["status"], "normalized", result["reasons"])
+                tree = result["tree"]
+                self.assertEqual(tree["sentence"], sentence)
+                subject, predicate = tree["root"]["children"]
+                self.assertEqual([node["label"] for node in subject["children"]], np_children)
+                self.assertEqual(predicate["children"][0]["features"], features)
+                self.assertEqual([node["label"] for node in predicate["children"]],
+                                 ["V", "NP"] if features[0] == "trans" else ["V"])
+                if sentence == "Birds sleep.":
+                    self.assertTrue(subject["children"][0]["empty"])
 
     def test_sentence_final_punctuation_is_not_fabricated_as_a_phrase_marker_node(self):
         result = normalize_benepar_candidate(candidate("The students laugh."), convention_profile(2))

@@ -2,7 +2,7 @@
 
 Only authentication/third-party requests and advisory CoLA are disabled. Parsing,
 canonical serialization, HTTP evidence composition and DOM rendering are real.
-The test selects V2 to exercise the documented supported live transformation.
+The default test uses V2. The FINAL-D1 mode exercises the reported Generator case.
 """
 import json
 from pathlib import Path
@@ -20,6 +20,7 @@ api.classify = lambda text: None
 # Explicit fixture mode proves reviewed rendering without promoting synthetic
 # records into the production registry.
 fixture_mode = '--reviewed-fixture' in sys.argv
+final_mode = '--final-declarative' in sys.argv
 if fixture_mode:
     import explanations
     from test_explanations import registry
@@ -43,7 +44,7 @@ try:
                 request_route.fulfill(status=200, content_type='application/javascript', body='export const createClient = () => null;'); return
             if not request.url.startswith(base):
                 request_route.abort(); return
-            if '/api/parse' in request.url:
+            if '/api/parse' in request.url and not final_mode:
                 body = request.post_data_json
                 body['chapter'] = 2
                 request_route.continue_(post_data=json.dumps(body)); return
@@ -51,8 +52,30 @@ try:
         page.route('**/*', route)
         page.goto(base, wait_until='domcontentloaded')
         page.evaluate("async () => { await import('/js/main.js'); }")
-        page.locator('#inputText').evaluate("el => { el.removeAttribute('readonly'); el.value = 'The birds sing.'; el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', ctrlKey: true, bubbles: true })); }")
+        text = 'The boy sleeps.' if final_mode else 'The birds sing.'
+        page.locator('#inputText').evaluate("""(el, text) => {
+            el.removeAttribute('readonly');
+            el.value = text;
+            el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', ctrlKey: true, bubbles: true }));
+        }""", text)
         page.wait_for_selector('#openCanonicalBuilder', timeout=60000)
+        if final_mode:
+            canonical = page.locator('#canonicalTreeView')
+            canonical.wait_for(state='visible')
+            assert not page.locator('#treeCanvas').is_visible()
+            svg = canonical.locator('svg')
+            assert svg.locator('.br-feature-row').all_text_contents() == ['[intrans]', '[pres]']
+            labels = svg.locator('text').all_text_contents()
+            assert all(label in labels for label in ('S', 'NP', 'DET', 'ART', 'NOM', 'N', 'VP', 'V', 'sleeps')), labels
+            assert all(tag not in labels for tag in ('VBZ', 'DT', 'NN', '.')), labels
+            svg.get_by_role('button', name='Inspect Burton-Roberts V for sleeps', exact=True).press('Enter')
+            pane = page.locator('#explainNode')
+            assert 'spans “sleeps”' in pane.inner_text()
+            assert 'Ch5 p. 104' in pane.inner_text()
+            assert not errors, errors
+            print('PASS: FINAL-D1 renders the reported sentence and exposes its node evidence.')
+            browser.close()
+            raise SystemExit(0)
         page.wait_for_selector('[data-shared-evidence]')
         assert page.evaluate("""async () => {
           const { matchesPreviewTokens } = await import('/js/correction.js');

@@ -176,70 +176,126 @@ def _is_raw_leaf(node: dict[str, Any]) -> bool:
     return isinstance(node, dict) and not node.get("children") and "surface" in node
 
 
-def _final_intransitive_declarative(
+# Verb uses attested in Ch4 pp. 70–72 and Ch5 p. 104. The finite forms
+# are checked against both this inventory and the candidate's tense tag.
+_FINAL_VERB_FRAMES = {
+    "intrans": {
+        "sleep sleeps slept", "sigh sighs sighed", "laugh laughs laughed",
+        "die dies died", "disappear disappears disappeared",
+        "sunbathe sunbathes sunbathed",
+    },
+    "trans": {
+        "inspect inspects inspected", "spot spots spotted", "throw throws threw",
+        "dread dreads dreaded",
+    },
+}
+_FINAL_VERBS = {
+    (word, tag): frame
+    for frame, entries in _FINAL_VERB_FRAMES.items()
+    for entry in entries
+    for word, tag in zip(entry.split(), ("VBP", "VBZ", "VBD"))
+}
+
+
+def _final_branch(label, refs, *children, features=()):
+    node = {"label": label, "source_refs": list(refs), "children": list(children)}
+    if features:
+        node["features"] = list(features)
+    return node
+
+
+def _final_simple_np(candidate):
+    children = candidate.get("children") or []
+    if not children or not all(_is_raw_leaf(node) for node in children):
+        return None
+    tags = [node["type"] for node in children]
+    words = [{"word": node["surface"]} for node in children]
+    np_refs = ("Ch7 pp. 141–142",)
+    if tags in (["NNP"], ["PRP"]):
+        label = "name" if tags[0] == "NNP" else "pronoun"
+        return _final_branch("NP", np_refs, _final_branch(label, np_refs, words[0]))
+
+    if tags[-1] not in {"NN", "NNS"}:
+        return None
+    if tags[:-1] in (["DT"], ["DT", "JJ"]) and words[0]["word"].lower() in {"the", "a", "an"}:
+        det = _final_branch("DET", np_refs, _final_branch("ART", np_refs, words[0]))
+    elif tags in (["NNS"], ["JJ", "NNS"]):
+        det = {"label": "DET", "children": [], "source_refs": ["Ch7 p. 144 [10]"]}
+    else:
+        return None
+
+    nominal = _final_branch("NOM", np_refs, _final_branch("N", np_refs, words[-1]))
+    if tags[-2:-1] == ["JJ"]:
+        modifier = _final_branch("AP", ("Ch3 p. 55",),
+                                 _final_branch("A", ("Ch3 p. 55",), words[-2]))
+        nominal = _final_branch("NOM", ("Ch7 pp. 166–168",), modifier, nominal)
+    return _final_branch("NP", np_refs, det, nominal)
+
+
+def _final_lexical_declarative(
         raw_root: dict[str, Any], sentence: str, tokens: list[dict[str, Any]],
         profile: dict[str, Any]) -> dict[str, Any] | None:
-    """Project F01's narrow finite intransitive frame under FINAL-D1."""
+    """Project simple finite clauses using attested lexical complement frames."""
     root = raw_root
     while root.get("type") in {"ROOT", "TOP"} and len(root.get("children") or []) == 1:
         root = root["children"][0]
     if root.get("type") != "S":
         return None
     clause = list(root.get("children") or [])
-    if clause and _is_raw_leaf(clause[-1]) and clause[-1]["surface"] == ".":
-        clause.pop()
+    punctuation = clause.pop() if clause and _is_raw_leaf(clause[-1]) and clause[-1]["surface"] == "." else None
     if [child.get("type") for child in clause] != ["NP", "VP"]:
         return None
 
-    subject, predicate = (node.get("children") or [] for node in clause)
-    if [node.get("type") for node in subject] not in (["DT", "JJ", "NN"], ["DT", "JJ", "NNS"]):
+    subject, predicate = clause
+    np = _final_simple_np(subject)
+    verb_and_dependents = predicate.get("children") or []
+    if np is None or not verb_and_dependents or not _is_raw_leaf(verb_and_dependents[0]):
         return None
-    if [node.get("type") for node in predicate] != ["VBD", "ADVP"]:
+    head, *dependents = verb_and_dependents
+    frame = _FINAL_VERBS.get((head["surface"].lower(), head["type"]))
+    if frame is None:
         return None
-    adverb = predicate[1].get("children") or []
-    if [node.get("type") for node in adverb] != ["RB"]:
-        return None
-    leaves = [*subject, predicate[0], adverb[0]]
-    if not all(_is_raw_leaf(node) and not _is_parser_punctuation(node) for node in leaves):
-        return None
-    article, adjective, noun, verb, manner = (node["surface"] for node in leaves)
-    # Tags and absence of an object alone do not establish an intransitive use.
-    if (article.lower(), adjective.lower(), verb.lower(), manner.lower()) != (
-            "the", "tired", "sighed", "quietly"):
-        return None
+    tense = "past" if head["type"] == "VBD" else "pres"
+    frame_refs = ("Ch4 pp. 70–71 [21]",) if frame == "trans" else ("Ch4 pp. 71–72 [22]",)
+    if head["surface"].lower() in {"sleep", "sleeps", "slept"}:
+        frame_refs += ("Ch5 p. 104 [1e]",)
+    verb = _final_branch("V", (*frame_refs, "Ch6 p. 113 [8]–[9]"),
+                         {"word": head["surface"]}, features=(frame, tense))
+    children = [verb]
+    if frame == "trans":
+        if not dependents or dependents[0].get("type") != "NP":
+            return None
+        complement = _final_simple_np(dependents.pop(0))
+        if complement is None:
+            return None
+        children.append(complement)
+    vp = _final_branch("VP", frame_refs, *children)
+    if dependents:
+        if [node.get("type") for node in dependents] != ["ADVP"]:
+            return None
+        adverb = dependents[0].get("children") or []
+        if len(adverb) != 1 or not _is_raw_leaf(adverb[0]) or adverb[0].get("type") != "RB":
+            return None
+        adjunct = _final_branch("AdvP", ("Ch3 p. 56", "Ch5 pp. 87–90"),
+                                _final_branch("Adv", ("Ch3 p. 56",), {"word": adverb[0]["surface"]}))
+        vp = _final_branch("VP", ("Ch5 pp. 87–90",), vp, adjunct)
 
-    # Check both the overt yield and its offsets in the original sentence.
+    # Check the complete candidate yield and the original sentence offsets.
     surface_tokens = _tokenize_with_spans(sentence)
-    if surface_tokens and surface_tokens[-1]["text"] == ".":
+    if punctuation and surface_tokens and surface_tokens[-1]["text"] == ".":
         surface_tokens.pop()
-    if [token["text"] for token in tokens] != [node["surface"] for node in leaves]:
+    leaves = _raw_leaves(root)
+    if punctuation:
+        leaves.pop()
+    if any(_is_parser_punctuation(leaf) for leaf in leaves):
+        return None
+    if [token["text"] for token in tokens] != [node.get("surface") for node in leaves]:
         return None
     if surface_tokens != [{"text": token["text"], "char_span": token["char_span"]}
                           for token in tokens]:
         return None
 
-    def branch(label, refs, *children, features=()):
-        node = {"label": label, "source_refs": list(refs), "children": list(children)}
-        if features:
-            node["features"] = list(features)
-        return node
-
-    nominal_refs = ("Ch7 pp. 166–168",)
-    modifier = branch("AP", ("Ch3 p. 55",),
-                      branch("A", ("Ch3 p. 55",), {"word": adjective}))
-    nominal = branch("NOM", nominal_refs, modifier,
-                     branch("NOM", nominal_refs, branch("N", nominal_refs, {"word": noun})))
-    determiner = branch("DET", ("Ch7 p. 141",),
-                        branch("ART", ("Ch7 p. 141",), {"word": article}))
-    np = branch("NP", ("Ch2 pp. 29–30", "Ch7 pp. 141–142"), determiner, nominal)
-
-    verb_node = branch("V", ("Ch4 p. 72 [22]", "Ch6 p. 113 [8]–[9]"),
-                       {"word": verb}, features=("intrans", "past"))
-    inner_vp = branch("VP", ("Ch4 pp. 71–72",), verb_node)
-    adjunct = branch("AdvP", ("Ch3 p. 56", "Ch5 pp. 87–90"),
-                     branch("Adv", ("Ch3 p. 56",), {"word": manner}))
-    vp = branch("VP", ("Ch5 pp. 87–90",), inner_vp, adjunct)
-    tree = branch("S", ("Ch2 pp. 29–30",), np, vp)
+    tree = _final_branch("S", ("Ch2 pp. 29–30",), np, vp)
     envelope = {
         "schema_version": SCHEMA_VERSION,
         "tree_id": _stable_id("sg", sentence + "|FINAL-D1"),
@@ -254,9 +310,9 @@ def _final_intransitive_declarative(
         "accepted_alternatives": [],
     }
     trace = [{
-        "rule_id": "FINAL_D1_INTRANSITIVE_DECLARATIVE",
-        "evidence": "The F01 frame combines Ch2 clause structure, Ch4 intransitive V, "
-                    "Ch5 adjunct attachment, Ch6 finite tense and Ch7 Appendix NOM.",
+        "rule_id": "FINAL_D1_LEXICAL_DECLARATIVE",
+        "evidence": "Ch2 clause structure, Ch4 lexical complementation, Ch5 adjunct attachment, "
+                    "Ch6 tense and Ch7 noun-phrase structure.",
     }]
     validation = validate_canonical_tree(envelope)
     if not validation["valid"]:
@@ -288,7 +344,7 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
     if not isinstance(raw_root, dict):
         reasons.append({"code": "MISSING_PARSER_TREE", "detail": "Benepar did not provide a serializable candidate tree."})
     elif profile["version"] == "FINAL":
-        final = _final_intransitive_declarative(raw_root, sentence, tokens, profile)
+        final = _final_lexical_declarative(raw_root, sentence, tokens, profile)
         if final is not None:
             return final
     if profile["chapter"] != 2:

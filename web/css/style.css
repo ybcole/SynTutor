@@ -1345,6 +1345,35 @@ body.lesson-view #explainNode:empty { display: none; }
   pointer-events: none;
 }
 .tree-authority-notice[hidden] { display: none; }
+.canonical-tree-view {
+  position: absolute;
+  inset: 0;
+  padding: 102px 22px 22px;
+  overflow: auto;
+  background: var(--panel);
+}
+.canonical-tree-view[hidden] { display: none; }
+.canonical-tree-view .canonical-tree-help {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.canonical-tree-view .lesson-tree-wrap {
+  min-width: max-content;
+  max-width: 100%;
+  padding: 6px 8px 18px;
+}
+.canonical-tree-view svg g[data-node-id] { cursor: pointer; }
+.canonical-tree-view svg g[data-node-id]:focus-visible {
+  outline: none;
+}
+.canonical-tree-view svg g[data-node-id]:focus-visible text,
+.canonical-tree-view svg g[data-node-id][data-selected="true"] text {
+  fill: var(--accent);
+  text-decoration: underline;
+}
+.tree-authority-notice #openCanonicalBuilder { pointer-events: auto; }
 #treeCanvas { width: 100%; height: 100%; display: block; cursor: grab; }
 #treeCanvas[hidden], .builder-canvas[hidden] { display: none; }
 #treeCanvas:hover { cursor: grab; }
