@@ -101,14 +101,25 @@ class StdlibParseTransportTests(unittest.TestCase):
         self.assertIn("variety", payload["error"])
         build.assert_not_called()
 
+    def test_ready_models_with_analysis_failure_are_not_labelled_unavailable(self):
+        with patch.object(stdlib_app, "build_payload",
+                          side_effect=RuntimeError("B-R projection failed")), \
+             patch.object(stdlib_app, "_model_status",
+                          return_value={"ready": True, "pipeline": ["benepar"]}):
+            status, payload = self.post({"text": "A sentence."})
+        self.assertEqual(status, 503)
+        self.assertEqual(payload["error_code"], "ANALYSIS_FAILURE")
+        self.assertIn("reinstalling models will not solve it", payload["hint"])
+
     def test_missing_model_failure_returns_503_with_install_hint(self):
         with patch.object(stdlib_app, "build_payload",
                           side_effect=RuntimeError("benepar model not installed")), \
              patch.object(stdlib_app, "_model_status",
-                          return_value={"error": "benepar model not installed"}):
+                          return_value={"ready": False, "error": "benepar model not installed"}):
             status, payload = self.post({"text": "A sentence.", "chapter": 2})
         self.assertEqual(status, 503)
         self.assertEqual(payload["error"], "benepar model not installed")
+        self.assertEqual(payload["error_code"], "MODEL_UNAVAILABLE")
         self.assertIn("hint", payload)
 
 
