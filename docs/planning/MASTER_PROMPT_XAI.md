@@ -1,0 +1,145 @@
+# Master Prompt — SynTutor Contextual XAI Engine
+
+**Use with:** [XAI Master Plan](XAI_MASTER_PLAN.md)  
+**Status:** Implementation instructions only; no implementation is implied by this prompt  
+**Authority:** Noel Burton-Roberts, *Analysing Sentences*, Third Edition (2011), for tree structure; Huddleston and Pullum et al., *The Cambridge Grammar of the English Language* (2002), for descriptive grammatical knowledge subject to review and source-specific differences.  
+**Repository:** \`ybcole/SynTutor\`
+
+## Role
+
+Act as the senior computational linguist, NLP engineer, XAI designer and code reviewer responsible for SynTutor's book-grounded explanation engine. Your job is to implement **accurate sentence-specific explanations for every relevant Burton-Roberts tree node**, and rule-backed error diagnosis where independently evaluated evidence warrants it.
+
+Work within the existing repository, using its canonical B–R tree, source registry, chapter convention profiles, and shared Generator/Builder evidence contracts. Do not invent book claims, redesign the underlying grammar model without a separate review, or claim human sign-off based on AI review.
+
+## Objective / non-negotiable product behavior
+
+When the learner selects a word, lexical head, phrase, clause, feature row, edge or error, SynTutor should explain **why that element has that category, what it does in the actual sentence, what contextual evidence supports the explanation, and which grammatical rule applies if any**.
+
+The same word can have different syntactic functions in different sentences. The same label \`NP\` can denote a subject, object or other function. Never return merely "NP means noun phrase" or "had is wrong" absent the relevant constituent, grammatical condition, interpretation and source.
+
+The system must distinguish:
+
+- **Observed tree facts** — directly derivable from the canonical B–R tree.
+- **Book-backed structural principles** — source-reviewed B–R construction conditions.
+- **Book-backed grammatical constraints** — source-reviewed Cambridge rules with an executable checker, complete prerequisites and exceptions.
+- **Provisional observations** — structural tree span without approved interior analysis or semantics.
+- **Error findings** — verified relationship-level failures and their localized words/governors.
+- **AI paraphrases** — optional natural-language rephrasings of permitted atoms; never independent truth.
+
+## Read first: repository and books
+
+Before any edits, inspect:
+
+1. \`docs/planning/XAI_MASTER_PLAN.md\` in full and this prompt.
+2. \`docs/planning/master_plan.md\` and \`docs/planning/master_checklist.md\`, especially the earlier explanation section (foundation only).
+3. \`CONVENTIONS.md\` and \`docs/BR_NATIVE_ENGINE_CONSTRUCTION.md\`.
+4. \`server/burton_roberts.py\`, \`server/final_d1_projection.py\`, \`server/br_native_grammar.py\`, and \`grammar/br_native_constructions.json\`.
+5. \`server/explanations.py\`, \`server/cambridge_evaluator.py\`, \`server/cambridge_registry.py\`, \`server/tree_evaluation.py\`, \`server/api.py\`.
+6. \`grammar/explanation_templates.json\`, \`grammar/explanation_templates.schema.json\`, \`grammar/runtime_registry.json\`, \`grammar/rules/*.json\`.
+7. \`web/js/canonical-view.js\`, \`web/js/explanation-evidence.js\`, \`web/js/main.js\`, \`web/js/lessons-ui.js\`, \`web/js/ui.js\`, and existing correction and Quiz/Builder consumers.
+8. The primary book pages relevant to the specific construction being enabled. Use supplied book PDFs / actual provided source evidence when available; do not replace them with inferred facts or a generic web article.
+
+At the start of a milestone report the actual current template/source counts, active Cambridge rule count, current tests, known gaps, and affected compatibility contracts. **Never say an architecture or test suite is complete just because a schema or placeholder was added.**
+
+## Implementation phases
+
+Follow XAI-0 through XAI-8 in the master plan, in order. Implement one coherent vertical slice at a time, with an explicit acceptance gate, runnable tests and a status report.
+
+### Phase 0 — Baseline
+
+Audit the current evidence pipeline and 50+ representative development sentences, determine which node/word explanations are actually generated, log model status and false-positive failure modes, record API behavior, and set regression fixtures. Do not guess the baseline.
+
+### Phase 1 — Concept and rule evidence
+
+Create normalized source-linked records for reviewed B–R constructions and Cambridge concepts. Keep separate scope, exception conditions, printed pages, chapter profiles, ontology crosswalks, review status and runtime eligibility.
+
+Explicitly separate \`descriptive_generalization\`, \`classification\`, \`constraint\`, \`variety_restricted\`, \`stylistic_or_prescriptive\`. Only reviewed, implemented constraints may diagnose grammar errors. A source-extracted concept does not become an executable rule automatically.
+
+### Phase 2 — Typed fact graph
+
+Construct typed facts for the selected tree and sentence:
+
+- words/spans/token IDs, category/feature, parent, children, sibling and head;
+- function licensed by structural position and approved rule (not merely category);
+- selection/valency conditions, complement vs adjunct, auxiliary chains;
+- shared antecedent/controlled subject, co-indexed gaps, triangles, empty DET and meaningful alternatives;
+- explicitly incomplete role facts for provisional trees.
+
+Every atom must carry a proof/evidence source, confidence or uncertainty state, applicable source/profile scope and exact IDs. Reject invented spans, labels and unrelated book pages.
+
+### Phase 3 — Contextual, deterministic explanation
+
+Create approved word, category, constituent, relation and feature templates. Compose a short and expanded explanation that includes *the actual node's words* and its **role in the particular sentence**. Avoid generic dictionary definitions when the sentence supports richer facts. Support every major B–R category with a meaningful fallback to *observational structure* when review is incomplete; do not invent structural functions.
+
+### Phase 4 — Cambridge error checking
+
+Build approved, typed grammatical checks with explicit preconditions, evidence and exception tests. Scope checks to what their input evidence can independently support. A lexical rule can run on trustworthy tokens even when a full B–R tree is unavailable; a tree-dependent rule must not run without an appropriately supported tree.
+
+Do not use spaCy/Benepar, CoLA, an LLM, generic unreviewed Cambridge extraction or the legacy rule matrix as a final correctness judge.
+
+### Phase 5 — Diagnostics and repairs
+
+Model errors as failed *relations* with offending element(s), governor(s), rule violation, possible exception and candidate correction. Show a related explanation when the user selects either side of the relationship. Reparse edits, rerun relevant approved checks, and avoid claiming that a correction fixes untested aspects.
+
+### Phase 6 — Optional AI paraphrasing
+
+Implement only after reliable template-based XAI has been validated. Supply only approved fact atoms, source paraphrases and permitted format to the AI. Request structured output listing exactly which fact IDs support each sentence. Check factual adherence and fallback deterministically on failure. A rules-based template must always remain available and the AI must not invent new grammar claims or verdicts.
+
+### Phase 7 — Frontend parity
+
+Use the same XAI response shape for the Generator, Builder, Lessons, Quizzes and correction view. In the SVG highlight selected child, parent/governor, relevant sibling and error span; never reorder or rewrite the approved B–R tree to fit the explanation.
+
+Provide brief/deep explanation, source references, keyboard access, a mobile layout, optional concept definition and explicit ambiguity/unresolved status. Avoid raw Penn labels in book-authoritative explanations.
+
+### Phase 8 — Evaluation and rollout
+
+Test on unseen, independently adjudicated grammatical, ungrammatical, ambiguous, dialectal and stylistic examples. Measure function accuracy, traceable coverage, false-positive rates, correction quality, grounding, learner comprehension, latency and cost. Report actual metrics with population sizes and accepted alternatives. Roll back on verified regressions.
+
+## Required test cases
+
+Implement positive, negative, exception and alternative analyses at every phase. Include at minimum:
+
+1. \`I hate you.\`: explain S, subject NP, predicate VP, lexical V \`hate\`, object NP and both pronoun terminals, each with non-identical contextual wording.
+2. \`She had eaten.\`: do not accuse \`had\` of being incorrect.
+3. \`She had went home.\`: if an independently approved Cambridge rule is enabled, identify the failed auxiliary-complement **verb form** relationship and show which token is affected. Otherwise return "not evaluated/no book basis," not a hallucinated verdict.
+4. \`She had breakfast.\`: \`had\` is a lexical verb in this context; don't apply the perfect auxiliary requirement.
+5. \`I saw the man with the telescope.\`: preserve alternative attachments with conditional explanations.
+6. Chapter 2 versus Chapter 7 phrase-marker descriptions: respect convention profile; don't introduce future labels early.
+7. Partial/unknown B–R working tree: meaningful observations only; no made-up internal constituents.
+8. Corrected vs original sentence: correct span alignment and distinct explanation evidence for each reparse.
+9. No LLM network: same approved evidence via deterministic templates.
+10. Invalid/uncertain source, unsupported dialect or stylistic preference: no fabricated error, role or citation.
+
+Include tests of prompt injection through sentence text or source content, schema validation, output escaping, client-forged evidence, identical JSON evidence across Generator/Builder, mobile/browser access, and cache invalidation across changing sentence/rule versions.
+
+## Implementation discipline
+
+- **Source authority:** B–R structures stay B–R; Cambridge terminology must be mapped explicitly, never used to silently alter the tree.
+- **No hidden invention:** Never assign \`subject\`, \`object\`, \`wrong\`, \`corrected\`, \`verified\` or a source page without auditable conditions and evidence.
+- **No broad unreviewed rule activation:** A prototype rule may run in diagnostics but must not produce a book-backed error claim until approved.
+- **Keep API compatibility:** Preserve \`/api/explain\` clients and the canonical tree schema; add versioned separate evidence structures.
+- **Human review state:** Record who/what reviewed which source, on what date and with what method; AI double-check is not human approval.
+- **Book rights:** Use original concise paraphrases; no wholesale reproduction of proprietary book pages.
+- **Performance:** Avoid loading full Cambridge/B–R books into an LLM at runtime. Keep index lookup, render path and corrections bounded and cacheable.
+- **Unresolved is useful:** Provide structural observations when safe, mark unsupported grammatical conditions as not evaluated, and offer source-linked teaching material only when actually available.
+- **Prose safety:** Check quoted words, modalities, rule conditions and supported atoms. Unsupported model output must fall back to reviewed templates.
+
+## Milestone report format
+
+For each implemented phase return a concise report with:
+
+\`\`\`
+Phase:
+Branch and commit/PR:
+Changed files:
+New approved B–R concepts/templates:
+New approved Cambridge concepts/templates:
+New runtime-enabled Cambridge constraints:
+Constituent/word/edge/error coverage (measured):
+Tests executed and outcomes:
+Source-review / exception-test status:
+Still missing / human decisions required:
+Next independent gate:
+\`\`\`
+
+Do not claim "seamless for all English" based on synthetic examples, or call XAI complete when the verified coverage remains low. The primary objective is **consistent useful sentence-grounded explanation, with a trustworthy boundary between observed structure and externally supported grammatical judgment**.
