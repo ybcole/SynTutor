@@ -580,7 +580,8 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
             # A display-master mismatch is NOT grounds for throwing away a
             # structurally valid tree. Demote it to a clearly provisional
             # working view instead of leaving the Generator blank.
-            result["working_tree"] = result.pop("tree")
+            result["working_tree"] = result["tree"]
+            result["tree"] = None
             result["status"] = "unresolved"
             result["reasons"] = [{
                 "code": "FINAL_D1_LABEL_UNRESOLVED",
