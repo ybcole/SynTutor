@@ -3,7 +3,7 @@
 **Use with:** [XAI Master Plan](XAI_MASTER_PLAN.md)  
 **Status:** Implementation instructions only; no implementation is implied by this prompt  
 **Authority:** Noel Burton-Roberts, *Analysing Sentences*, Third Edition (2011), for tree structure; Huddleston and Pullum et al., *The Cambridge Grammar of the English Language* (2002), for descriptive grammatical knowledge subject to review and source-specific differences.  
-**Repository:** \`ybcole/SynTutor\`
+**Repository:** `ybcole/SynTutor`
 
 ## Role
 
@@ -15,7 +15,7 @@ Work within the existing repository, using its canonical B–R tree, source regi
 
 When the learner selects a word, lexical head, phrase, clause, feature row, edge or error, SynTutor should explain **why that element has that category, what it does in the actual sentence, what contextual evidence supports the explanation, and which grammatical rule applies if any**.
 
-The same word can have different syntactic functions in different sentences. The same label \`NP\` can denote a subject, object or other function. Never return merely "NP means noun phrase" or "had is wrong" absent the relevant constituent, grammatical condition, interpretation and source.
+The same word can have different syntactic functions in different sentences. The same label `NP` can denote a subject, object or other function. Never return merely "NP means noun phrase" or "had is wrong" absent the relevant constituent, grammatical condition, interpretation and source.
 
 The system must distinguish:
 
@@ -30,13 +30,13 @@ The system must distinguish:
 
 Before any edits, inspect:
 
-1. \`docs/planning/XAI_MASTER_PLAN.md\` in full and this prompt.
-2. \`docs/planning/master_plan.md\` and \`docs/planning/master_checklist.md\`, especially the earlier explanation section (foundation only).
-3. \`CONVENTIONS.md\` and \`docs/BR_NATIVE_ENGINE_CONSTRUCTION.md\`.
-4. \`server/burton_roberts.py\`, \`server/final_d1_projection.py\`, \`server/br_native_grammar.py\`, and \`grammar/br_native_constructions.json\`.
-5. \`server/explanations.py\`, \`server/cambridge_evaluator.py\`, \`server/cambridge_registry.py\`, \`server/tree_evaluation.py\`, \`server/api.py\`.
-6. \`grammar/explanation_templates.json\`, \`grammar/explanation_templates.schema.json\`, \`grammar/runtime_registry.json\`, \`grammar/rules/*.json\`.
-7. \`web/js/canonical-view.js\`, \`web/js/explanation-evidence.js\`, \`web/js/main.js\`, \`web/js/lessons-ui.js\`, \`web/js/ui.js\`, and existing correction and Quiz/Builder consumers.
+1. `docs/planning/XAI_MASTER_PLAN.md` in full and this prompt.
+2. `docs/planning/master_plan.md` and `docs/planning/master_checklist.md`, especially the earlier explanation section (foundation only).
+3. `CONVENTIONS.md` and `docs/BR_NATIVE_ENGINE_CONSTRUCTION.md`.
+4. `server/burton_roberts.py`, `server/final_d1_projection.py`, `server/br_native_grammar.py`, and `grammar/br_native_constructions.json`.
+5. `server/explanations.py`, `server/cambridge_evaluator.py`, `server/cambridge_registry.py`, `server/tree_evaluation.py`, `server/api.py`.
+6. `grammar/explanation_templates.json`, `grammar/explanation_templates.schema.json`, `grammar/runtime_registry.json`, `grammar/rules/*.json`.
+7. `web/js/canonical-view.js`, `web/js/explanation-evidence.js`, `web/js/main.js`, `web/js/lessons-ui.js`, `web/js/ui.js`, and existing correction and Quiz/Builder consumers.
 8. The primary book pages relevant to the specific construction being enabled. Use supplied book PDFs / actual provided source evidence when available; do not replace them with inferred facts or a generic web article.
 
 At the start of a milestone report the actual current template/source counts, active Cambridge rule count, current tests, known gaps, and affected compatibility contracts. **Never say an architecture or test suite is complete just because a schema or placeholder was added.**
@@ -53,7 +53,7 @@ Audit the current evidence pipeline and 50+ representative development sentences
 
 Create normalized source-linked records for reviewed B–R constructions and Cambridge concepts. Keep separate scope, exception conditions, printed pages, chapter profiles, ontology crosswalks, review status and runtime eligibility.
 
-Explicitly separate \`descriptive_generalization\`, \`classification\`, \`constraint\`, \`variety_restricted\`, \`stylistic_or_prescriptive\`. Only reviewed, implemented constraints may diagnose grammar errors. A source-extracted concept does not become an executable rule automatically.
+Explicitly separate `descriptive_generalization`, `classification`, `constraint`, `variety_restricted`, `stylistic_or_prescriptive`. Only reviewed, implemented constraints may diagnose grammar errors. A source-extracted concept does not become an executable rule automatically.
 
 ### Phase 2 — Typed fact graph
 
@@ -99,11 +99,11 @@ Test on unseen, independently adjudicated grammatical, ungrammatical, ambiguous,
 
 Implement positive, negative, exception and alternative analyses at every phase. Include at minimum:
 
-1. \`I hate you.\`: explain S, subject NP, predicate VP, lexical V \`hate\`, object NP and both pronoun terminals, each with non-identical contextual wording.
-2. \`She had eaten.\`: do not accuse \`had\` of being incorrect.
-3. \`She had went home.\`: if an independently approved Cambridge rule is enabled, identify the failed auxiliary-complement **verb form** relationship and show which token is affected. Otherwise return "not evaluated/no book basis," not a hallucinated verdict.
-4. \`She had breakfast.\`: \`had\` is a lexical verb in this context; don't apply the perfect auxiliary requirement.
-5. \`I saw the man with the telescope.\`: preserve alternative attachments with conditional explanations.
+1. `I hate you.`: explain S, subject NP, predicate VP, lexical V `hate`, object NP and both pronoun terminals, each with non-identical contextual wording.
+2. `She had eaten.`: do not accuse `had` of being incorrect.
+3. `She had went home.`: if an independently approved Cambridge rule is enabled, identify the failed auxiliary-complement **verb form** relationship and show which token is affected. Otherwise return "not evaluated/no book basis," not a hallucinated verdict.
+4. `She had breakfast.`: `had` is a lexical verb in this context; don't apply the perfect auxiliary requirement.
+5. `I saw the man with the telescope.`: preserve alternative attachments with conditional explanations.
 6. Chapter 2 versus Chapter 7 phrase-marker descriptions: respect convention profile; don't introduce future labels early.
 7. Partial/unknown B–R working tree: meaningful observations only; no made-up internal constituents.
 8. Corrected vs original sentence: correct span alignment and distinct explanation evidence for each reparse.
@@ -115,9 +115,9 @@ Include tests of prompt injection through sentence text or source content, schem
 ## Implementation discipline
 
 - **Source authority:** B–R structures stay B–R; Cambridge terminology must be mapped explicitly, never used to silently alter the tree.
-- **No hidden invention:** Never assign \`subject\`, \`object\`, \`wrong\`, \`corrected\`, \`verified\` or a source page without auditable conditions and evidence.
+- **No hidden invention:** Never assign `subject`, `object`, `wrong`, `corrected`, `verified` or a source page without auditable conditions and evidence.
 - **No broad unreviewed rule activation:** A prototype rule may run in diagnostics but must not produce a book-backed error claim until approved.
-- **Keep API compatibility:** Preserve \`/api/explain\` clients and the canonical tree schema; add versioned separate evidence structures.
+- **Keep API compatibility:** Preserve `/api/explain` clients and the canonical tree schema; add versioned separate evidence structures.
 - **Human review state:** Record who/what reviewed which source, on what date and with what method; AI double-check is not human approval.
 - **Book rights:** Use original concise paraphrases; no wholesale reproduction of proprietary book pages.
 - **Performance:** Avoid loading full Cambridge/B–R books into an LLM at runtime. Keep index lookup, render path and corrections bounded and cacheable.
@@ -128,7 +128,7 @@ Include tests of prompt injection through sentence text or source content, schem
 
 For each implemented phase return a concise report with:
 
-\`\`\`
+```
 Phase:
 Branch and commit/PR:
 Changed files:
@@ -140,6 +140,6 @@ Tests executed and outcomes:
 Source-review / exception-test status:
 Still missing / human decisions required:
 Next independent gate:
-\`\`\`
+```
 
 Do not claim "seamless for all English" based on synthetic examples, or call XAI complete when the verified coverage remains low. The primary objective is **consistent useful sentence-grounded explanation, with a trustworthy boundary between observed structure and externally supported grammatical judgment**.
