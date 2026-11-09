@@ -35,6 +35,7 @@ export default {
     "PRE-DET": 7,
     "NOM": 7,
     "PartP": 7,
+    "V-part": 7,
     "QA": 7,
     "S-dbar": 9,
     "C1": 9,
