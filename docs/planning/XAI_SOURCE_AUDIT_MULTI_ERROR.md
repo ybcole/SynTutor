@@ -1,9 +1,9 @@
 # SynTutor XAI — Uploaded-Book Source Audit and Multi-Error Repair Protocol
 
 **Date:** 10 November 2026  
-**Status:** Design and targeted source verification, **not a full independent audit of both books and not implemented code**.  
+**Status:** Targeted primary-source review plus **implemented machine-readable XAI-PRE contracts**; not a full independent audit of both books and **not a production grammar diagnosis/correction engine**. See [XAI-PRE acceptance](../reports/xai-pre-acceptance-2026-11-10.md).  
 **Applies before:** XAI-0 baseline and all XAI milestones.  
-**Authorities:** Noel Burton-Roberts, *Analysing Sentences: An Introduction to English Syntax*, **third edition**, Pearson 2011; Huddleston & Pullum et al., *The Cambridge Grammar of the English Language* (**CGEL**), CUP 2002, uploaded 2016 printing.
+**Authorities:** Noel Burton-Roberts, *Analysing Sentences: An Introduction to English Syntax*, **third edition**, Pearson 2011; Huddleston & Pullum et al., *The Cambridge Grammar of the English Language* (**CGEL**), CUP 2002; **the uploaded full-volume printing date is not established**.
 
 See [XAI_MASTER_PLAN.md](XAI_MASTER_PLAN.md), [MASTER_PROMPT_XAI.md](MASTER_PROMPT_XAI.md), [CONVENTIONS.md](../../CONVENTIONS.md).
 
@@ -12,7 +12,7 @@ See [XAI_MASTER_PLAN.md](XAI_MASTER_PLAN.md), [MASTER_PROMPT_XAI.md](MASTER_PROM
 ## 1. Exact supplied editions and citation policy
 
 - Burton-Roberts: 294 PDF pages; title/copyright identify **third edition** (2011). Cite **printed** pages, not PDF indices. The third-edition preface on printed pp. ix–x contains important changes compared with the older-edition prefaces bundled in the PDF. Never treat older prefaces as an instruction to retain `Vgrp`.
-- Cambridge: 1,862 PDF pages, **2002** content (2016 printing). Printed page numbering differs from PDF physical pages; cite **printed** pages. It contains **20 substantive chapters**; reviewing only the first 10 or 11 chapters is insufficient.
+- Cambridge: 1,862 PDF pages, **2002** original edition (full-volume physical printing **not established**). Printed page numbering differs from PDF physical pages; cite **printed** pages. It contains **20 substantive chapters**; reviewing only the first 10 or 11 chapters is insufficient.
 - These attached source volumes are research/reference material. Do **not** publish long passages or reproduce the book as generated runtime answers. Create independently checked, original paraphrases with edition and printed-page provenance.
 - This document verifies *selected* passages directly against the attached books. It **does not** certify source review of every one of the 20 CGEL or 11 B–R chapters, existing extracted rule JSONs, or 252 B–R reference trees. Those audits remain mandatory.
 
