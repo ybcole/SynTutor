@@ -1,0 +1,750 @@
+{
+  "schema_version": "xai-pre-source-audit-1.0",
+  "generated_for_milestone": "XAI-PRE",
+  "audit_date": "2026-11-10",
+  "status": "targeted_source_checks_pending_independent_review",
+  "notes": [
+    "Chapter inventory indicates available split PDFs and recorded extraction boundaries, NOT comprehensive independent chapter review.",
+    "Only selected attached full-volume passages were inspected for this XAI-PRE source gate.",
+    "Earlier chapter extraction statuses marked owner-approved do not establish independent source review for newly proposed XAI rules.",
+    "Any source-specific English rule must document exceptions, variety and actual tree preconditions before runtime enabling.",
+    "CGEL uploaded full-volume physical printing not verified; its original edition is 2002."
+  ],
+  "books": [
+    {
+      "id": "BR3",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "Third edition",
+      "year": 2011,
+      "isbn": "9781408233740",
+      "chapter_count": 11,
+      "repository_split_manifest": "sources/burton_roberts/source_manifest_2026-11-08.json",
+      "uploaded_full_volume": "Introduction to English Syntax(1).pdf",
+      "full_volume_pdf_pages": 294,
+      "physical_printing": "not_established"
+    },
+    {
+      "id": "CGEL",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition",
+      "year": 2002,
+      "isbn": "9780521431460",
+      "chapter_count": 20,
+      "repository_split_manifest": "sources/cambridge/source_manifest_2026-11-08.json",
+      "uploaded_full_volume": "THE CAMBRIDGE GRAMMAR OF THE ENGLISH LANGUAGE.pdf",
+      "full_volume_pdf_pages": 1862,
+      "physical_printing": "not_established"
+    }
+  ],
+  "chapters": [
+    {
+      "book_id": "BR3",
+      "chapter": 1,
+      "split_pdf": "Chapter 1 - Sentence structure - constituents.pdf",
+      "printed_start": 6,
+      "printed_end": 23,
+      "repo_evidence": "source manifest and B-R chapter tree/CONVENTIONS",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "BR3",
+      "chapter": 2,
+      "split_pdf": "Chapter 2 - Sentence structure - functions.pdf",
+      "printed_start": 24,
+      "printed_end": 45,
+      "repo_evidence": "source manifest and B-R chapter tree/CONVENTIONS",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "BR3",
+      "chapter": 3,
+      "split_pdf": "Chapter 3 - Sentence structure - categories.pdf",
+      "printed_start": 46,
+      "printed_end": 66,
+      "repo_evidence": "source manifest and B-R chapter tree/CONVENTIONS",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "BR3",
+      "chapter": 4,
+      "split_pdf": "Chapter 4 - The basic Verb Phrase.pdf",
+      "printed_start": 67,
+      "printed_end": 86,
+      "repo_evidence": "source manifest and B-R chapter tree/CONVENTIONS",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "BR3",
+      "chapter": 5,
+      "split_pdf": "Chapter 5 - Adverbials and other matters.pdf",
+      "printed_start": 87,
+      "printed_end": 110,
+      "repo_evidence": "source manifest and B-R chapter tree/CONVENTIONS",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "BR3",
+      "chapter": 6,
+      "split_pdf": "Chapter 6 - More on verbs - auxiliary VPs.pdf",
+      "printed_start": 111,
+      "printed_end": 140,
+      "repo_evidence": "source manifest and B-R chapter tree/CONVENTIONS",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": [
+        116,
+        117,
+        118,
+        122
+      ]
+    },
+    {
+      "book_id": "BR3",
+      "chapter": 7,
+      "split_pdf": "Chapter 7 - The structure of Noun Phrases.pdf",
+      "printed_start": 141,
+      "printed_end": 170,
+      "repo_evidence": "source manifest and B-R chapter tree/CONVENTIONS",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "BR3",
+      "chapter": 8,
+      "split_pdf": "Chapter 8 - Sentence within sentences.pdf",
+      "printed_start": 171,
+      "printed_end": 195,
+      "repo_evidence": "source manifest and B-R chapter tree/CONVENTIONS",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "BR3",
+      "chapter": 9,
+      "split_pdf": "Chapter 9 - Wh-clauses.pdf",
+      "printed_start": 196,
+      "printed_end": 223,
+      "repo_evidence": "source manifest and B-R chapter tree/CONVENTIONS",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "BR3",
+      "chapter": 10,
+      "split_pdf": "Chapter 10 - Non-finite clauses.pdf",
+      "printed_start": 224,
+      "printed_end": 253,
+      "repo_evidence": "source manifest and B-R chapter tree/CONVENTIONS",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "BR3",
+      "chapter": 11,
+      "split_pdf": "Chapter 11 - Languages, sentences and grammars.pdf",
+      "printed_start": 254,
+      "printed_end": 268,
+      "repo_evidence": "source manifest and B-R chapter tree/CONVENTIONS",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 1,
+      "split_pdf": "Chapter-1-Preface.pdf",
+      "printed_start": 1,
+      "printed_end": 42,
+      "repo_evidence": "Source manifest only or report not located",
+      "scope_note": "No chapter extraction report verified in expected path; review pending",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 2,
+      "split_pdf": "Chapter-2-Syntactic-Overview.pdf",
+      "printed_start": 43,
+      "printed_end": 69,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "Prior chapter-2 multi-batch extraction; independent source coverage not established for entire chapter",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 3,
+      "split_pdf": "Chapter-3-Verb.pdf",
+      "printed_start": 71,
+      "printed_end": 212,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1.1, pp.74–75 (other XAI-PRE pages verified from attached full volume but NOT yet extracted into runtime rules)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": [
+        76,
+        105,
+        106,
+        143,
+        144
+      ]
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 4,
+      "split_pdf": "Chapter-4-The-clausecomplements.pdf",
+      "printed_start": 213,
+      "printed_end": 322,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1.1, pp.216–219 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 5,
+      "split_pdf": "Chapter-5-Nouns-and-noun-phrases.pdf",
+      "printed_start": 323,
+      "printed_end": 523,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1, pp.326–328 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 6,
+      "split_pdf": "Chapter-6-Adjectives-and-adverbs.pdf",
+      "printed_start": 525,
+      "printed_end": 596,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1, pp.526–527 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 7,
+      "split_pdf": "Chapter-7-Prepositions-and-preposition-phrases.pdf",
+      "printed_start": 597,
+      "printed_end": 662,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1, pp.598–603 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 8,
+      "split_pdf": "Chapter-8-The-clauseadjuncts.pdf",
+      "printed_start": 663,
+      "printed_end": 784,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1, pp.665–670 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 9,
+      "split_pdf": "Chapter-9-Negation.pdf",
+      "printed_start": 785,
+      "printed_end": 850,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1.1, pp.786–787 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 10,
+      "split_pdf": "Chapter-10-Clause-type-and-illocutionary-force.pdf",
+      "printed_start": 851,
+      "printed_end": 946,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1, pp.853–855 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 11,
+      "split_pdf": "Chapter 11 - Content clauses and reported speech.pdf",
+      "printed_start": 947,
+      "printed_end": 1030,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1, pp.949–950 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 12,
+      "split_pdf": "Chapter 12 - Relative constructions and unbounded dependencies.pdf",
+      "printed_start": 1031,
+      "printed_end": 1096,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1, p.1033 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 13,
+      "split_pdf": "Chapter 13 - Comparative constructions.pdf",
+      "printed_start": 1097,
+      "printed_end": 1170,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1.1, pp.1099–1101 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 14,
+      "split_pdf": "Chapter 14 - Non-finite and verbless clauses.pdf",
+      "printed_start": 1171,
+      "printed_end": 1272,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1.1, pp.1173–1176 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 15,
+      "split_pdf": "Chapter 15 - Coordination and supplementation.pdf",
+      "printed_start": 1273,
+      "printed_end": 1362,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1.1, pp.1275–1278 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 16,
+      "split_pdf": "Chapter 16 - Information packaging.pdf",
+      "printed_start": 1363,
+      "printed_end": 1448,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1, pp.1365–1367 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 17,
+      "split_pdf": "Chapter 17 -Deixis and anaphora.pdf",
+      "printed_start": 1449,
+      "printed_end": 1564,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1.1, pp.1451–1453 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 18,
+      "split_pdf": "Chapter 18 - Inflectional morphology and related matters.pdf",
+      "printed_start": 1565,
+      "printed_end": 1620,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1.1, pp.1568–1569 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 19,
+      "split_pdf": "Chapter 19 - Lexical word-formation.pdf",
+      "printed_start": 1621,
+      "printed_end": 1722,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1.1, pp.1623–1624 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    },
+    {
+      "book_id": "CGEL",
+      "chapter": 20,
+      "split_pdf": "Chapter 20 - Punctuation.pdf",
+      "printed_start": 1723,
+      "printed_end": 1764,
+      "repo_evidence": "Chapter extraction report; partial scoped extraction",
+      "scope_note": "§1.1, pp.1724–1725 (section only)",
+      "coverage": "not_exhaustively_reviewed_for_xai",
+      "targeted_review_papers": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "BR3-AUX-LEXICAL-HAVE",
+      "scope": "category_and_complement_selection",
+      "summary": "B-R distinguishes transitive lexical have with NP complement from perfect auxiliary have with verbal complement.",
+      "source": {
+        "book_id": "BR3",
+        "chapter": 6,
+        "printed_pages": [
+          116
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "BR3-PERF-SELECTS-PERF-PARTICIPLE",
+      "scope": "selection_and_morphology",
+      "summary": "Perfect auxiliary have selects the nonfinite perfect participle; go distinguishes went from gone; other verbs can be syncretic.",
+      "source": {
+        "book_id": "BR3",
+        "chapter": 6,
+        "printed_pages": [
+          117
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "BR3-PROG-SELECTS-ING",
+      "scope": "selection_and_morphology",
+      "summary": "Progressive auxiliary be selects the nonfinite progressive (-ing) participle.",
+      "source": {
+        "book_id": "BR3",
+        "chapter": 6,
+        "printed_pages": [
+          118
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "BR3-AUX-HEADS-VP",
+      "scope": "tree_structure",
+      "summary": "Each auxiliary heads a VP and selects a VP complement; auxiliary recursion does not by itself constitute VP adjunct modification.",
+      "source": {
+        "book_id": "BR3",
+        "chapter": 6,
+        "printed_pages": [
+          122
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "BR3-THIRD-EDITION-NO-VGRP",
+      "scope": "edition_scope",
+      "summary": "Third-edition preface ix–x abandons the Verb Group and updates category/phrase-marker conventions.",
+      "source": {
+        "book_id": "BR3",
+        "chapter": null,
+        "printed_locator": "preface ix–x",
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "CGEL-SYNCRETISM",
+      "scope": "inflection_form",
+      "summary": "Different inflectional categories may share one surface form, as wanted in preterite and past participle uses.",
+      "source": {
+        "book_id": "CGEL",
+        "chapter": 3,
+        "printed_pages": [
+          76
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "CGEL-AUX-SELECTION-ORDER",
+      "scope": "auxiliary_order_and_selection",
+      "summary": "Core auxiliary sequence has ordering restrictions and the next verb form depends on the auxiliary type.",
+      "source": {
+        "book_id": "CGEL",
+        "chapter": 3,
+        "printed_pages": [
+          105,
+          106
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "CGEL-MODAL-PLAIN",
+      "scope": "selection_and_morphology",
+      "summary": "Core modal auxiliary selects a plain-form verb.",
+      "source": {
+        "book_id": "CGEL",
+        "chapter": 3,
+        "printed_pages": [
+          106
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "CGEL-PERF-PAST-PARTICIPLE",
+      "scope": "selection_and_morphology",
+      "summary": "Core perfect auxiliary selects a past participle.",
+      "source": {
+        "book_id": "CGEL",
+        "chapter": 3,
+        "printed_pages": [
+          106
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "CGEL-PROG-GERUND-PARTICIPLE",
+      "scope": "selection_and_morphology",
+      "summary": "Progressive auxiliary selects a gerund-participle.",
+      "source": {
+        "book_id": "CGEL",
+        "chapter": 3,
+        "printed_pages": [
+          106
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "CGEL-PASS-PAST-PARTICIPLE",
+      "scope": "selection_and_morphology",
+      "summary": "Passive auxiliary selects a past participle.",
+      "source": {
+        "book_id": "CGEL",
+        "chapter": 3,
+        "printed_pages": [
+          106
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "CGEL-PERF-PAST-ADJUNCT-DEFAULT",
+      "scope": "contextual_default_not_universal_constraint",
+      "summary": "Past-time adjuncts wholly excluding now are normally incompatible with present perfect under ordinary interpretations.",
+      "source": {
+        "book_id": "CGEL",
+        "chapter": 3,
+        "printed_pages": [
+          143
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    },
+    {
+      "id": "CGEL-PERF-EXPERIENTIAL-EXCEPTION",
+      "scope": "exception",
+      "summary": "CGEL presents restricted experiential present-perfect uses with a past-time adjunct, including an already ... yesterday example.",
+      "source": {
+        "book_id": "CGEL",
+        "chapter": 3,
+        "printed_pages": [
+          144
+        ],
+        "verification": "checked_against_uploaded_primary_text_2026_11_10"
+      },
+      "review": {
+        "source_passage_inspected": true,
+        "review_method": "assistant_targeted_primary_source_check",
+        "independent_human_review": false,
+        "approval": "pending_independent_review"
+      },
+      "runtime": {
+        "constraint_enabled": false,
+        "may_issue_grammatical_verdict": false
+      },
+      "not_a_full_chapter_review": true
+    }
+  ],
+  "crosswalks": [
+    {
+      "id": "CW-PERF-PARTICIPLE",
+      "br_claim_id": "BR3-PERF-SELECTS-PERF-PARTICIPLE",
+      "cgel_claim_id": "CGEL-PERF-PAST-PARTICIPLE",
+      "relation": "terminology_differs",
+      "scope": "Auxiliary have selecting the nonfinite form: B-R perfect participle vs CGEL past participle",
+      "review_status": "source_compared_pending_independent_linguist_approval",
+      "may_change_br_tree_labels": false
+    },
+    {
+      "id": "CW-PROG-PARTICIPLE",
+      "br_claim_id": "BR3-PROG-SELECTS-ING",
+      "cgel_claim_id": "CGEL-PROG-GERUND-PARTICIPLE",
+      "relation": "terminology_differs",
+      "scope": "Following progressive be: B-R progressive participle vs CGEL gerund-participle",
+      "review_status": "source_compared_pending_independent_linguist_approval",
+      "may_change_br_tree_labels": false
+    },
+    {
+      "id": "CW-AUX-HEAD-ANALYSIS",
+      "br_claim_id": "BR3-AUX-HEADS-VP",
+      "cgel_claim_id": "CGEL-AUX-SELECTION-ORDER",
+      "relation": "unresolved",
+      "scope": "The CGEL source pages checked specify selection and order, not exact B-R hierarchical identity",
+      "review_status": "requires_specific_comparative_tree_source_review",
+      "may_change_br_tree_labels": false
+    }
+  ],
+  "open_decisions": [
+    {
+      "id": "XAI-PRE-D01",
+      "priority": "blocking_later_rule_activation",
+      "question": "Who is authorized to independently approve linguistically interpreted source claims and exceptions?",
+      "status": "pending_owner_or_reviewer_decision"
+    },
+    {
+      "id": "XAI-PRE-D02",
+      "priority": "blocking_later_correction_activation",
+      "question": "Choose candidate search limits and user meaning/variety confirmation behavior once evaluated against baseline data.",
+      "status": "pending_XAI_0_baseline"
+    },
+    {
+      "id": "XAI-PRE-D03",
+      "priority": "blocking_later_rule_activation",
+      "question": "How to reconcile exact B-R vs CGEL auxiliary/clause constituent analyses where only selection facts have been checked?",
+      "status": "source_comparison_needed"
+    },
+    {
+      "id": "XAI-PRE-D04",
+      "priority": "blocking_later_correction_activation",
+      "question": "Decide policy for interpreted English variety and register when input gives no context.",
+      "status": "pending_review"
+    }
+  ]
+}
