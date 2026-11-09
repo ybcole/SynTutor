@@ -119,6 +119,27 @@ The model-independent audit returns:
 
 All results retain matched/examined counts, source rule IDs/pages, uncovered patterns and explicit fields semantic_conditions_checked=false, independent_linguistic_review=false, may_certify_grammaticality=false. A structurally normalized tree must **not** be advertised as independently book-verified solely because it has no uncovered patterns.
 
+## 6A. Initial catalog recognition baseline (9 November 2026)
+
+A read-only comparison of the **100 draft signatures** against all 252 stored chapter-tree records identified **1,382 of 1,558 existing branch shapes (88.7%)** using chapter introduction gates. This is a match of local parent/child label signatures only: **it is not 88.7% grammar accuracy, full B-R compatibility, or successful on-the-fly parsing**.
+
+| Chapter | Matched / examined branch shapes | Recognition |
+| --- | ---: | ---: |
+| 1 | 0 / 38 | 0.0% |
+| 2 | 2 / 53 | 3.8% |
+| 3 | 70 / 82 | 85.4% |
+| 4 | 49 / 49 | 100.0% |
+| 5 | 77 / 83 | 92.8% |
+| 6 | 181 / 186 | 97.3% |
+| 7 | 495 / 510 | 97.1% |
+| 8 | 157 / 184 | 85.3% |
+| 9 | 201 / 219 | 91.8% |
+| 10 | 150 / 154 | 97.4% |
+
+Chapters 1–2 use pedagogical placeholders and schematic trees intentionally not represented by mature structural rules. Some later omissions involve source-specific coordination, gap-only nodes, and special phrase-marker scaffolding. The reproducible audit script reports exact missing signatures; these must be reviewed rather than filled by arbitrary global label substitutions.
+
+**Proof obligation remaining:** every candidate needs correct lexical selection, attachment, role interpretation and source convention; a branch-shape recognition statistic supplies none of those.
+
 ## 7. Remaining native-generation phases (not yet implemented)
 
 ### Phase B — Turn catalog into an executable B-R grammar
