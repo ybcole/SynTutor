@@ -30,7 +30,9 @@ export function renderLessonTree(envelope, {
     const master = displayLabels?.[node.id];
     if (master) return withFeatures ? master.join(' ') : master[0] || '';
     if (node.gap) return node.index === undefined ? '•' : `• (${node.index})`;
-    const name=node.label === 'AUX' ? '' : node.label === 'S-bar' ? 'S′' : node.label === 'S-dbar' ? 'S″' : node.unlabelled ? '' : node.label || node.word;
+    const vpSourceRef = node.label === 'VP' ? [node.ref, ...(node.source_refs || [])].find(ref => typeof ref === 'string' && /^VP[1-9][0-9]*$/.test(ref)) : null;
+    const numberedVP = vpSourceRef ? 'VP' + vpSourceRef.slice(2).replace(/[0-9]/g, digit => '₀₁₂₃₄₅₆₇₈₉'[Number(digit)]) : null;
+    const name=node.label === 'AUX' ? '' : node.label === 'S-bar' ? 'S′' : node.label === 'S-dbar' ? 'S″' : node.unlabelled ? '' : numberedVP || node.label || node.word;
     return `${name || ''}${withFeatures && node.features?.length ? ` [${node.features.join(', ')}]` : ''}${node.empty ? ' (empty)' : ''}`;
   }
   const featureRows = node => displayLabels?.[node.id]
