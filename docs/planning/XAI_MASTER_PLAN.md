@@ -2,7 +2,7 @@
 
 **Status:** Approved *architectural direction proposed for review*; implementation NOT started by this document  
 **Date:** 10 November 2026  
-**Repository:** \`ybcole/SynTutor\`  
+**Repository:** `ybcole/SynTutor`  
 **Companion implementer prompt:** [MASTER_PROMPT_XAI.md](MASTER_PROMPT_XAI.md)  
 **Related:** [Existing master plan](master_plan.md), [B–R construction specification](../BR_NATIVE_ENGINE_CONSTRUCTION.md), [source conventions](../../CONVENTIONS.md)
 
@@ -14,19 +14,19 @@ Repository code inspected on 10 November 2026:
 
 | Component | Current behavior | Gap for the proposed XAI |
 | --- | --- | --- |
-| \`server/parse_engine.py\` | spaCy + Benepar candidate analysis | Candidate evidence is not a grammaticality proof or B–R source |
-| \`server/burton_roberts.py\`, \`server/final_d1_projection.py\` | Canonical/working B–R hierarchy with chapter profiles and uncertainty | Unresolved analyses, alternative attachments, and confidence must constrain explanations |
-| \`server/br_native_grammar.py\`, \`grammar/br_native_constructions.json\` | 100 draft structural signatures + 10 obligations, unreviewed conditions | Shape signatures alone cannot justify natural-language semantic or error claims |
-| \`server/explanations.py\` | Validates canonical envelope; three channels (structural, grammatical, remediation); source/review gates; simple templating | Small set of highly generic templates; no full per-node relational fact graph, evidence-level error attribution, or comprehensive contextual prose |
-| \`grammar/explanation_templates.json\` | **2 templates**, **4 source records**, with documented independent AI source passes but no human-instructor sign-off | Need chapter-by-chapter concept and construction coverage; current scope is much narrower than the books |
-| \`grammar/runtime_registry.json\` | **0 enabled Cambridge runtime constraints** | Must implement and independently validate actual grammatical/lexical checks before producing "wrong because…" verdicts |
-| \`server/cambridge_evaluator.py\` | Fail-closed, narrow sentence-scope forbidden-sequence runtime primitive | Add linguistically grounded typed feature/role/selection checks with exception and variety handling; never infer universality from token patterns |
-| \`web/js/canonical-view.js\` | Deterministic node facts: label, surface, daughters, a few features | Needs head, function, sibling, parent, licensed construction, evidence, dependencies, and explicit unknowns |
-| \`web/js/explanation-evidence.js\` | Shared evidence rendering for Generator/Builder | Progressive depth, node-specific contextual language, correction explanation links, status labels and accessibility |
-| \`server/tree_evaluation.py\` | Shares evidence and comparison contracts | Expand to shared node/edge/diagnostic explanation records while preserving separate well-formedness and grammaticality |
-| Legacy \`matrix.py\`, \`ruleset.py\`, \`detector.py\`, \`corrector.py\` | Candidate/legacy heuristics and corrections | Their output is **not automatically book-backed**, and must not be laundered into cited teaching claims |
+| `server/parse_engine.py` | spaCy + Benepar candidate analysis | Candidate evidence is not a grammaticality proof or B–R source |
+| `server/burton_roberts.py`, `server/final_d1_projection.py` | Canonical/working B–R hierarchy with chapter profiles and uncertainty | Unresolved analyses, alternative attachments, and confidence must constrain explanations |
+| `server/br_native_grammar.py`, `grammar/br_native_constructions.json` | 100 draft structural signatures + 10 obligations, unreviewed conditions | Shape signatures alone cannot justify natural-language semantic or error claims |
+| `server/explanations.py` | Validates canonical envelope; three channels (structural, grammatical, remediation); source/review gates; simple templating | Small set of highly generic templates; no full per-node relational fact graph, evidence-level error attribution, or comprehensive contextual prose |
+| `grammar/explanation_templates.json` | **2 templates**, **4 source records**, with documented independent AI source passes but no human-instructor sign-off | Need chapter-by-chapter concept and construction coverage; current scope is much narrower than the books |
+| `grammar/runtime_registry.json` | **0 enabled Cambridge runtime constraints** | Must implement and independently validate actual grammatical/lexical checks before producing "wrong because…" verdicts |
+| `server/cambridge_evaluator.py` | Fail-closed, narrow sentence-scope forbidden-sequence runtime primitive | Add linguistically grounded typed feature/role/selection checks with exception and variety handling; never infer universality from token patterns |
+| `web/js/canonical-view.js` | Deterministic node facts: label, surface, daughters, a few features | Needs head, function, sibling, parent, licensed construction, evidence, dependencies, and explicit unknowns |
+| `web/js/explanation-evidence.js` | Shared evidence rendering for Generator/Builder | Progressive depth, node-specific contextual language, correction explanation links, status labels and accessibility |
+| `server/tree_evaluation.py` | Shares evidence and comparison contracts | Expand to shared node/edge/diagnostic explanation records while preserving separate well-formedness and grammaticality |
+| Legacy `matrix.py`, `ruleset.py`, `detector.py`, `corrector.py` | Candidate/legacy heuristics and corrections | Their output is **not automatically book-backed**, and must not be laundered into cited teaching claims |
 
-The old \`master_checklist.md\` marks its **basic explanation-engine foundation** complete. That does **not** mean this deeper, relational, sentence-adaptive XAI system has already been delivered. This is a **new workstream**, with new gates below.
+The old `master_checklist.md` marks its **basic explanation-engine foundation** complete. That does **not** mean this deeper, relational, sentence-adaptive XAI system has already been delivered. This is a **new workstream**, with new gates below.
 
 ## 1. Definitive architecture decisions
 
@@ -49,14 +49,14 @@ A terminal's contextual role can depend on several ancestors; give it meaningful
 
 - **Noel Burton-Roberts, *Analysing Sentences*, Third Edition (2011):** phrase markers, categories, node hierarchy, features, subcategorization patterns, functions derived from his representation, chapter versions V1–V10, FINAL-D1, triangles, gaps, indices, and controlled subjects.
 - **Huddleston & Pullum et al., *The Cambridge Grammar of the English Language* (2002):** descriptive grammatical principles, category/lexical distinctions, contextual constraints, exceptions, usage/variety/register, and independent error checks when review and implementation permit.
-- **Explicit B–R↔Cambridge crosswalk required:** \`compatible\`, \`terminology_differs\`, \`analysis_differs\`, \`not_covered\`, \`unresolved\`; never silently substitute one framework's nodes or labels for the other.
-- Rule *source reference* means real printed-page grounding; \`draft\`, \`extracted\`, \`AI-reviewed\`, \`human-approved\`, and \`runtime-enabled\` are different states. Do not equate an AI second pass to human instructor approval.
+- **Explicit B–R↔Cambridge crosswalk required:** `compatible`, `terminology_differs`, `analysis_differs`, `not_covered`, `unresolved`; never silently substitute one framework's nodes or labels for the other.
+- Rule *source reference* means real printed-page grounding; `draft`, `extracted`, `AI-reviewed`, `human-approved`, and `runtime-enabled` are different states. Do not equate an AI second pass to human instructor approval.
 
 ### D3 — Derive facts first, compose language second
 
 **The LLM cannot be the detector or grammatical authority.** The supported production chain is:
 
-\`\`\`text
+```text
 INPUT / ORIGINAL SENTENCE (token IDs, spans, variety/profile)
              |
       Candidate parser evidence
@@ -81,7 +81,7 @@ INPUT / ORIGINAL SENTENCE (token IDs, spans, variety/profile)
   consistency, disallowed claim and contradiction checks
              |
    Rendered explainable node / edge / diagnostic / corrected view
-\`\`\`
+```
 
 Never send a whole textbook or the full 2,000-page PDF to the runtime LLM per sentence. Build reviewed concept/rule records **offline**, indexed by exact construction/lexical condition. At runtime fetch only *applicable, approved* evidence. Retrieval alone is never proof that the rule is triggered.
 
@@ -89,10 +89,10 @@ Never send a whole textbook or the full 2,000-page PDF to the runtime LLM per se
 
 An unacceptable sentence may still receive a useful constituency parse. Conversely, a source-valid B–R tree is not evidence that every agreement/tense/selection condition is satisfied. Keep independent outcomes:
 
-- \`tree_structure\`: recognized / provisional / invalid / ambiguous / unresolved;
-- \`grammatical_evaluation\`: verified_violation / no_approved_violation_found / insufficient_evidence / not_evaluated;
-- \`correction\`: proposed / validated_against_applicable_rules / ambiguous / not_available;
-- \`explanation\`: source_backed / structural_observation_only / provisional / no_book_basis / source_conflict.
+- `tree_structure`: recognized / provisional / invalid / ambiguous / unresolved;
+- `grammatical_evaluation`: verified_violation / no_approved_violation_found / insufficient_evidence / not_evaluated;
+- `correction`: proposed / validated_against_applicable_rules / ambiguous / not_available;
+- `explanation`: source_backed / structural_observation_only / provisional / no_book_basis / source_conflict.
 
 **"No detected errors" is not "perfectly grammatical".** Never claim "wrong" because a heuristic disliked a sentence. A rule must prove a specific condition and exceptions.
 
@@ -102,7 +102,7 @@ Use at least three anchors: (1) culprit token/span or missing slot, (2) governin
 
 The exact claim is **illustrative, not a currently enabled Cambridge rule**. It cannot be presented as book-verified remediation until its Cambridge record is independently checked and runtime tests pass.
 
-If a user clicks \`had\`, the explanation should state *had*'s role in the diagnosed construction and point to the problematic complement form; if they click \`went\`, explain its form relative to *had*. Wrongness is contextual and may span multiple tokens, not a property of the isolated word.
+If a user clicks `had`, the explanation should state *had*'s role in the diagnosed construction and point to the problematic complement form; if they click `went`, explain its form relative to *had*. Wrongness is contextual and may span multiple tokens, not a property of the isolated word.
 
 ### D6 — No external LLM required for baseline usability
 
@@ -112,10 +112,10 @@ A good XAI engine must work offline with approved deterministic templates, even 
 
 | Target | Example | Required sentence-grounded facts |
 | --- | --- | --- |
-| **Word/lexical head** | \`V\` "hate" in "I hate you" | Surface, lemma/inflection when evidenced, B–R V features, parent VP, selected/complement NP "you", clause subject "I", governing construction, source status |
-| **Constituent/phrase** | \`VP\` "hate you" | Head "hate", immediate daughters \`V NP\`, function as predicate of "I" for this unmarked S, object/complement status of "you", hierarchy justification |
-| **Relationship/edge** | \`S → NP VP\` | \`NP\` "I" subject vs \`VP\` "hate you" predicate; distinction between daughter category and syntactic function |
-| **Diagnostic/correction** | "She had went home" | Rule ID, \`had\` as context, *went* as affected form, eligible source evidence, alternative \`gone\`, exception/variety checks, reparse and alignment |
+| **Word/lexical head** | `V` "hate" in "I hate you" | Surface, lemma/inflection when evidenced, B–R V features, parent VP, selected/complement NP "you", clause subject "I", governing construction, source status |
+| **Constituent/phrase** | `VP` "hate you" | Head "hate", immediate daughters `V NP`, function as predicate of "I" for this unmarked S, object/complement status of "you", hierarchy justification |
+| **Relationship/edge** | `S → NP VP` | `NP` "I" subject vs `VP` "hate you" predicate; distinction between daughter category and syntactic function |
+| **Diagnostic/correction** | "She had went home" | Rule ID, `had` as context, *went* as affected form, eligible source evidence, alternative `gone`, exception/variety checks, reparse and alignment |
 
 Other targets: clause/S′/S″, NOM recursion, AP/AdvP/PP attachments, coordination, gap/co-indexation, empty determiner, and feature lines. Punctuation can receive a structural/orthographic note only where a reviewed rule supports it.
 
@@ -134,7 +134,7 @@ Never label all pronouns as subjects or all NPs as objects. Avoid repeating defi
 
 Do not replace the approved canonical tree schema. Attach explanation evidence in a **separate** versioned object with stable references to that tree.
 
-\`\`\`json
+```json
 {
   "schema_version": "xai-2.0-draft",
   "sentence": "I hate you.",
@@ -183,19 +183,19 @@ Do not replace the approved canonical tree schema. Attach explanation evidence i
     "rendering": "approved_template"
   }
 }
-\`\`\`
+```
 
-*Illustrative schema only.* The example's second atom is deliberately marked **unreviewed**; it must **not** be treated as accepted book-backed evidence. For actual code, supply strict JSON Schema (\`additionalProperties:false\`), sentence/node/span/feature/sentence-text validators, and provenance checks that prevent a model or client from declaring its own review status.
+*Illustrative schema only.* The example's second atom is deliberately marked **unreviewed**; it must **not** be treated as accepted book-backed evidence. For actual code, supply strict JSON Schema (`additionalProperties:false`), sentence/node/span/feature/sentence-text validators, and provenance checks that prevent a model or client from declaring its own review status.
 
 ### Evidence atom categories and gates
 
-1. \`validated_tree_observation\`: directly observed node label, span, children and explicitly recorded features; safe to render as **observed structure**, not source-certified grammar.
-2. \`source_backed_structure\`: B–R rule applied with reviewed source and matched construction-specific conditions.
-3. \`source_backed_grammatical_constraint\`: Cambridge rule applied by a tested detector with all exceptions and variety checks.
-4. \`source_backed_diagnostic\`: violated constraint with concrete affected spans, repair rationale and checking record.
-5. \`hypothesis\`: candidate interpretation/attachment that is not approved; disclosed as provisional and never the only explanation where source evidence is absent.
+1. `validated_tree_observation`: directly observed node label, span, children and explicitly recorded features; safe to render as **observed structure**, not source-certified grammar.
+2. `source_backed_structure`: B–R rule applied with reviewed source and matched construction-specific conditions.
+3. `source_backed_grammatical_constraint`: Cambridge rule applied by a tested detector with all exceptions and variety checks.
+4. `source_backed_diagnostic`: violated constraint with concrete affected spans, repair rationale and checking record.
+5. `hypothesis`: candidate interpretation/attachment that is not approved; disclosed as provisional and never the only explanation where source evidence is absent.
 
-Each atom has stable IDs, exact token spans, relevant nodes/relations, original evidence references, rule ID + version, source printed pages, reason trace, applicable variety, antecedents/alternatives, and explicit \`unknown\` values where evidence is missing. Do not invent a head, role, or source simply because a user clicked a node.
+Each atom has stable IDs, exact token spans, relevant nodes/relations, original evidence references, rule ID + version, source printed pages, reason trace, applicable variety, antecedents/alternatives, and explicit `unknown` values where evidence is missing. Do not invent a head, role, or source simply because a user clicked a node.
 
 ## 4. Book-to-rule extraction workflow (offline)
 
@@ -203,20 +203,20 @@ Each atom has stable IDs, exact token spans, relevant nodes/relations, original 
 
 Walk the current B–R construction catalog and 252 reference trees, chapter by chapter, **without presuming the catalog is fully approved**. Each source-authorized construction gets:
 
-\`concept_id\`, \`construction_rule_id\`, \`profiles\`, \`tree_signature\`, \`matching_conditions\`, \`head_selection\`, \`functions\`, \`allowed_features\`, \`possible_alternatives\`, \`exceptions\`, \`source_pages\`, \`source_example_id\`, \`review_status\`, \`approved_template_ids\`.
+`concept_id`, `construction_rule_id`, `profiles`, `tree_signature`, `matching_conditions`, `head_selection`, `functions`, `allowed_features`, `possible_alternatives`, `exceptions`, `source_pages`, `source_example_id`, `review_status`, `approved_template_ids`.
 
 Where chapter notation differs, retain separate versions. For example, don't explain a Chapter 2 tree using Chapter 7 NOM conventions. Distinguish instruction-level triangular analyses from mature FINAL-D1 phrase markers.
 
 ### Cambridge concept and rule records
 
-Use the existing extracted \`grammar/rules/*.json\` as **candidate material**. Revisit relevant supplied Cambridge chapter material in reviewable batches, with printed page IDs, linguistic tests, exceptions and variants. Each output is one of:
+Use the existing extracted `grammar/rules/*.json` as **candidate material**. Revisit relevant supplied Cambridge chapter material in reviewable batches, with printed page IDs, linguistic tests, exceptions and variants. Each output is one of:
 
-- \`classification\` / \`descriptive_generalization\`: can teach; **cannot alone detect errors**.
-- \`constraint\`: can diagnose only after independent review + executable rule + minimal-pair/exception coverage.
-- \`variety_restricted\`: requires an explicit eligible variety/register and conditional wording.
-- \`stylistic_or_prescriptive\`: distinguish preference/style from ungrammaticality.
+- `classification` / `descriptive_generalization`: can teach; **cannot alone detect errors**.
+- `constraint`: can diagnose only after independent review + executable rule + minimal-pair/exception coverage.
+- `variety_restricted`: requires an explicit eligible variety/register and conditional wording.
+- `stylistic_or_prescriptive`: distinguish preference/style from ungrammaticality.
 
-Map the rule to B–R tree nodes **without assuming Cambridge uses the same syntax categories**. One record must list \`terminology_differs\`/\`analysis_differs\` explicitly when applicable, with adapted explanation wording.
+Map the rule to B–R tree nodes **without assuming Cambridge uses the same syntax categories**. One record must list `terminology_differs`/`analysis_differs` explicitly when applicable, with adapted explanation wording.
 
 ### AI conversion step — offline authoring
 
@@ -232,7 +232,7 @@ But reviewers approve *source claims and test cases* before enabling templates. 
 
 ### Review gates
 
-\`EXTRACTED → SOURCE_CHECKED → TESTED → APPROVED_FOR_TEACHING → ENABLED_FOR_RUNTIME\`. Human-instructor review is a stronger optional gate with its own flag and identity; never misreport an AI source check as human approval. Any rejected/conflicting evidence remains visible in reports but disabled in learner-facing claims.
+`EXTRACTED → SOURCE_CHECKED → TESTED → APPROVED_FOR_TEACHING → ENABLED_FOR_RUNTIME`. Human-instructor review is a stronger optional gate with its own flag and identity; never misreport an AI source check as human approval. Any rejected/conflicting evidence remains visible in reports but disabled in learner-facing claims.
 
 ## 5. Context engine — determining what the selected node does
 
@@ -263,9 +263,9 @@ Begin with high-value phenomena selected by **reviewed Cambridge coverage**, not
 - adjective/adverb positioning, agreement exceptions, comparative constructions, and multiword phrase attachment.
 
 Each *runtime-enabled* rule must have a specification of:
-\`preconditions\`, \`positive_evidence\`, \`violation_condition\`, \`exceptions\`, \`variety\`, \`affected_nodes\`, \`affected_span\`, \`governing_nodes\`, \`alternatives\`, \`repair_transform\`, \`verification_test\`, \`sources\`.
+`preconditions`, `positive_evidence`, `violation_condition`, `exceptions`, `variety`, `affected_nodes`, `affected_span`, `governing_nodes`, `alternatives`, `repair_transform`, `verification_test`, `sources`.
 
-A rule must be able to return: \`matched_valid\`, \`violation\`, \`not_applicable\`, \`ambiguous\`, \`insufficient_evidence\`. A rule not implemented is **not equivalent** to a passed rule.
+A rule must be able to return: `matched_valid`, `violation`, `not_applicable`, `ambiguous`, `insufficient_evidence`. A rule not implemented is **not equivalent** to a passed rule.
 
 **Important architecture change:** the source-valid canonicalizer may decline to produce a full tree for an ungrammatical input. Let independently validated **lexical/morphological checks** run on token/dependency evidence when their own preconditions suffice, instead of requiring a fully normalized canonical tree for every error check. Structural checks that need verified B–R hierarchy must still refuse evaluation if that hierarchy is unresolved. Never infer B–R correctness from a token-only check.
 
@@ -287,23 +287,23 @@ Record exact original → candidate edit operations, token alignment, affected t
 
 ### Template-first baseline (recommended to implement first)
 
-Use context slots much richer than today's \`{label}\` and \`{surface}\`:
+Use context slots much richer than today's `{label}` and `{surface}`:
 
-\`sentence\`, \`target_surface\`, \`target_category\`, \`parent_surface\`, \`parent_label\`, \`head_surface\`, \`governor_surface\`, \`sibling_surface\`, \`function\`, \`daughter_surfaces\`, \`construction_id\`, \`feature_readings\`, \`rule_condition\`, \`error_span\`, \`correction_span\`, \`reason\`, \`evidence_status\`.
+`sentence`, `target_surface`, `target_category`, `parent_surface`, `parent_label`, `head_surface`, `governor_surface`, `sibling_surface`, `function`, `daughter_surfaces`, `construction_id`, `feature_readings`, `rule_condition`, `error_span`, `correction_span`, `reason`, `evidence_status`.
 
 Do **not** permit arbitrary placeholders not validated by the sentence fact graph. Use typed claim templates whose grammatical content is approved separately from variable span values. Example family:
 
-- **Category:** "The word \`{word}\` realizes \`{category}\` in this sentence."
-- **Constituent:** "The \`{label}\` spanning \`{phrase}\` contains \`{child1}\` and \`{child2}\`."
-- **Function:** "Here, \`{phrase}\` functions as \`{function}\` of \`{governor}\` because \`{approved_condition}\`."
-- **Remediation:** "In \`{context}\`, \`{rule}\` requires \`{required_form}\`; \`{observed_form}\` does not satisfy it. One supported repair is \`{repair}\`."
+- **Category:** "The word `{word}` realizes `{category}` in this sentence."
+- **Constituent:** "The `{label}` spanning `{phrase}` contains `{child1}` and `{child2}`."
+- **Function:** "Here, `{phrase}` functions as `{function}` of `{governor}` because `{approved_condition}`."
+- **Remediation:** "In `{context}`, `{rule}` requires `{required_form}`; `{observed_form}` does not satisfy it. One supported repair is `{repair}`."
 
 ### Optional LLM naturalizer (after baseline works)
 
 Send the AI **only** the approved fact atoms, allowed source paraphrases, selected target, user reading level, and permitted explanation goals. The LLM may reorder, shorten, and clarify but **cannot** introduce new grammar facts, verdicts, alternatives, source pages, or corrections.
 
 Use schema-constrained structured output:
-\`paragraphs[]: {text, supported_fact_ids[], source_ids[], level}\`.
+`paragraphs[]: {text, supported_fact_ids[], source_ids[], level}`.
 Reject unsupported fact IDs, unapproved source references, wrong target, invented quoted sentence spans, changes of certainty/modality ("may"→"must"), contradictions, harmful or irrelevant content, and sentence-text mismatches. Automated checks cannot guarantee perfect semantic entailment; use conservative approved templates whenever a robust proof is unavailable. Log accepted/rejected versions. Avoid retries that could become costly/unbounded. Cache by canonical tree hash, selected node, enabled rule-set version, source/template version, variety and reading level.
 
 A naturalizer can improve style; **it must never silently override the fact graph**.
@@ -319,7 +319,7 @@ When the learner selects a node, use the same contextual explanation surface for
 5. **Read more / examples**: contrastive examples, exceptions, and chapter link, not generic repeated dictionary definitions.
 6. **Uncertainty:** provisional/ambiguous/no-book-basis labels, not a green "verified" badge just because an LLM wrote confidently.
 
-Feature rows such as \`[trans]\` and \`[pres]\` should be independently selectable or exposed within the V node panel. Tree highlights should show the selected node and its governing/related constituents without changing the approved SVG phrase marker. Link cited printed pages and related lessons; do not expose entire copyrighted passages.
+Feature rows such as `[trans]` and `[pres]` should be independently selectable or exposed within the V node panel. Tree highlights should show the selected node and its governing/related constituents without changing the approved SVG phrase marker. Link cited printed pages and related lessons; do not expose entire copyrighted passages.
 
 ## 9. Proposed software contracts and files
 
@@ -327,27 +327,27 @@ Feature rows such as \`[trans]\` and \`[pres]\` should be independently selectab
 
 | File / subsystem | Responsibility |
 | --- | --- |
-| \`docs/planning/XAI_MASTER_PLAN.md\` | This overarching plan, fixed architecture decisions, acceptance criteria |
-| \`docs/planning/MASTER_PROMPT_XAI.md\` | Controlled implementer prompt for successive implementation phases |
-| \`docs/xai/evidence-v2.schema.json\` (future) | Typed node, relation, rule application, diagnostic and prose evidence |
-| \`server/xai_facts.py\` (future) | Canonical tree to sentence-specific atomic observations and approved relations |
-| \`server/xai_relationships.py\` (future) | B–R construction conditions, subject/predicate, complement/adjunct, head and gap/antecedent |
-| \`server/xai_constraints.py\` (future) | New typed Cambridge checks; separate admissibility gates from detection |
-| \`server/xai_diagnostics.py\` (future) | Grounded problem anchors, counterevidence, localization and repairs |
-| \`server/xai_planner.py\` (future) | Select minimal relevant facts per clicked node and learning level |
-| \`server/xai_composer.py\` (future) | Template-first sentence-specific prose; no unsourced claims |
-| \`server/xai_naturalizer.py\` (optional) | Safely constrained LLM paraphrasing with deterministic fallback |
-| \`grammar/xai_concepts/\` (future) | Source-reviewed B–R and Cambridge concept rules, original paraphrases |
-| \`grammar/xai_templates/\` (future) | Approved contextual word, constituent, relation, error templates |
-| \`scripts/audit_xai_coverage.py\` (future) | Node-category, construction, error, chapter and source-coverage reports |
-| Existing \`server/explanations.py\` | Compatibility adapter into XAI v2, keeping \`/api/explain\` clients alive |
-| Existing \`web/js/explanation-evidence.js\` and \`canonical-view.js\` | Sentence-aware UI and structural observation when book evidence missing |
+| `docs/planning/XAI_MASTER_PLAN.md` | This overarching plan, fixed architecture decisions, acceptance criteria |
+| `docs/planning/MASTER_PROMPT_XAI.md` | Controlled implementer prompt for successive implementation phases |
+| `docs/xai/evidence-v2.schema.json` (future) | Typed node, relation, rule application, diagnostic and prose evidence |
+| `server/xai_facts.py` (future) | Canonical tree to sentence-specific atomic observations and approved relations |
+| `server/xai_relationships.py` (future) | B–R construction conditions, subject/predicate, complement/adjunct, head and gap/antecedent |
+| `server/xai_constraints.py` (future) | New typed Cambridge checks; separate admissibility gates from detection |
+| `server/xai_diagnostics.py` (future) | Grounded problem anchors, counterevidence, localization and repairs |
+| `server/xai_planner.py` (future) | Select minimal relevant facts per clicked node and learning level |
+| `server/xai_composer.py` (future) | Template-first sentence-specific prose; no unsourced claims |
+| `server/xai_naturalizer.py` (optional) | Safely constrained LLM paraphrasing with deterministic fallback |
+| `grammar/xai_concepts/` (future) | Source-reviewed B–R and Cambridge concept rules, original paraphrases |
+| `grammar/xai_templates/` (future) | Approved contextual word, constituent, relation, error templates |
+| `scripts/audit_xai_coverage.py` (future) | Node-category, construction, error, chapter and source-coverage reports |
+| Existing `server/explanations.py` | Compatibility adapter into XAI v2, keeping `/api/explain` clients alive |
+| Existing `web/js/explanation-evidence.js` and `canonical-view.js` | Sentence-aware UI and structural observation when book evidence missing |
 
 Suggested API:
 
-- \`POST /api/xai/explain\` with \`{tree_or_analysis_id, node_id, target_type, depth, variety, reading_level}\`; server obtains immutable trusted source/rule metadata and the original sentence.
-- \`POST /api/xai/evaluate\` for a controlled diagnostic result with separate structural and grammatical statuses.
-- Keep \`POST /api/explain\` as compatibility contract until all Generator/Builder/Lessons/Quiz callers migrate. Do not allow client-supplied citations, rule statuses or "human approved" claims.
+- `POST /api/xai/explain` with `{tree_or_analysis_id, node_id, target_type, depth, variety, reading_level}`; server obtains immutable trusted source/rule metadata and the original sentence.
+- `POST /api/xai/evaluate` for a controlled diagnostic result with separate structural and grammatical statuses.
+- Keep `POST /api/explain` as compatibility contract until all Generator/Builder/Lessons/Quiz callers migrate. Do not allow client-supplied citations, rule statuses or "human approved" claims.
 
 Avoid round-tripping large full trees to AI services. For any remote AI usage obtain appropriate user/organizational consent and avoid including identifiers or private data not necessary for the task. Source-book text rights must be respected.
 
@@ -443,7 +443,7 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 9. No LLM/network: same legitimate evidence/diagnostic availability via templates.
 10. Changing a noun, verb or pronoun in a minimal pair updates the contextual statement and exact spans; no stale cached explanation.
 11. Counterexample/dialect/quotation/ellipsis: do not overcorrect without eligible evidence.
-12. Backwards compatibility: existing \`/api/explain\` contract and M4–M11 flows continue to pass.
+12. Backwards compatibility: existing `/api/explain` contract and M4–M11 flows continue to pass.
 
 ## 11. Research and UX evaluation plan
 
