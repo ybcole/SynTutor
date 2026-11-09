@@ -1,6 +1,6 @@
 # SynTutor — XAI Master Plan: Sentence-Grounded Explanations for Every Tree Level
 
-**Status:** Approved *architectural direction proposed for review*; implementation NOT started by this document  
+**Status:** Proposed architecture for review; implementation NOT started by this document  
 **Date:** 10 November 2026  
 **Repository:** `ybcole/SynTutor`  
 **Companion implementer prompt:** [MASTER_PROMPT_XAI.md](MASTER_PROMPT_XAI.md)  
