@@ -23,6 +23,10 @@ with tempfile.TemporaryDirectory(prefix='syntutor-static-build-') as directory:
         shutil.copy2(ROOT / name, path)
     subprocess.run(['npm', 'run', 'build'], cwd=target, check=True)
     assert (target / 'dist/index.html').is_file()
+    public_html = (target / 'dist/index.html').read_text()
+    assert 'Cambridge runtime grammaticality rules are not yet enabled.' in public_html
+    assert 'Builder drafts stay on this device.' in public_html
+    assert 'At least 15 characters' in public_html
     assert (target / 'dist/js/explanation-evidence.js').is_file()
     assert (target / 'dist/content/quizzes/bank.json').is_file()
     assert (target / 'dist/js/quizzes-ui.js').is_file()
