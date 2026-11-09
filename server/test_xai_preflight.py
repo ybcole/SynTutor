@@ -78,7 +78,7 @@ class SourcePreflightTests(unittest.TestCase):
         self.assertIn("tokens", load_json(SCHEMA_PATH)["$defs"]["candidate"]["required"])
 
     def test_every_protocol_fixture_passes_and_matches_counts(self):
-        self.assertEqual(len(self.cases), 10)
+        self.assertEqual(len(self.cases), 11)
         for entry in self.fixtures["cases"]:
             with self.subTest(case=entry["id"]):
                 result = validate_diagnosis_repair_case(entry["envelope"])
