@@ -120,17 +120,26 @@ class FlaskParseContractTests(unittest.TestCase):
         self.assertEqual(response.status_code, 422)
         self.assertEqual(response.get_json()["error"], "No sentence found")
 
+    def test_ready_models_with_analysis_failure_are_not_labelled_unavailable(self):
+        with patch("webapp.build_payload", side_effect=RuntimeError("B-R projection failed")), \
+             patch("webapp.health_payload", return_value={"ready": True, "pipeline": ["benepar"]}):
+            response = self.client.post("/api/parse", json={"text": "A sentence."})
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response.get_json()["error_code"], "ANALYSIS_FAILURE")
+        self.assertIn("backend analysis exception", response.get_json()["hint"])
+
     def test_unexpected_backend_failure_returns_503(self):
         with patch("webapp.build_payload", side_effect=RuntimeError("backend unavailable")), \
-             patch("webapp.health_payload", return_value={"error": "models unavailable"}):
+             patch("webapp.health_payload", return_value={"ready": False, "error": "models unavailable"}):
             response = self.client.post("/api/parse", json={"text": "A sentence."})
         self.assertEqual(response.status_code, 503)
         self.assertEqual(response.get_json()["error"], "backend unavailable")
+        self.assertEqual(response.get_json()["error_code"], "MODEL_UNAVAILABLE")
         self.assertIn("hint", response.get_json())
 
     def test_real_shared_api_model_failure_returns_503_with_install_hint(self):
         with patch("api.analyze", side_effect=RuntimeError("benepar model not installed")), \
-             patch("webapp.health_payload", return_value={"error": "benepar model not installed"}):
+             patch("webapp.health_payload", return_value={"ready": False, "error": "benepar model not installed"}):
             response = self.client.post("/api/parse", json={
                 "text": "A sentence.", "chapter": 2
             })
