@@ -449,6 +449,7 @@
         "version_id",
         "parent_version_id",
         "text",
+        "tokens",
         "edits",
         "targets",
         "lineage",
@@ -524,6 +525,13 @@
         },
         "notes": {
           "type": "string"
+        },
+        "tokens": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/token"
+          }
         }
       }
     }
