@@ -20,6 +20,7 @@ from api import ParseFailure, build_payload, health_payload, word_info
 from br_tree import CONVENTIONS
 from explanations import explain_request
 from tree_evaluation import evaluate_request
+from rate_limit import RateLimiter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB_DIR = os.path.join(ROOT, 'web')
@@ -51,6 +52,22 @@ app = Flask(__name__, static_folder=None)
 # when the client sends a chunked body without a Content-Length header.
 # The legacy stdlib transport independently applies the same 250 KB limit.
 app.config['MAX_CONTENT_LENGTH'] = 250_000
+
+# Optional per-client in-process quota. Configure an upstream shared limiter for
+# multi-worker / proxy deployments; never trust forwarded IP headers directly.
+API_RATE_PER_MINUTE = int(os.environ.get('SYNTUTOR_API_RPM', '0'))
+API_LIMITER = RateLimiter()
+
+
+@app.before_request
+def _limit_api_requests():
+    if API_RATE_PER_MINUTE > 0 and request.method == 'POST' and request.path in (
+            '/api/parse', '/api/explain', '/api/evaluate', '/api/words'):
+        if not API_LIMITER.permit(request.remote_addr or 'unknown', API_RATE_PER_MINUTE):
+            response = jsonify({'error': 'too many requests', 'retry_after_seconds': 60})
+            response.headers['Retry-After'] = '60'
+            return response, 429
+
 
 
 @app.errorhandler(413)
