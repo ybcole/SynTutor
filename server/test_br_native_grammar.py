@@ -95,7 +95,9 @@ class RegistryTests(unittest.TestCase):
         }
         result = audit_br_constructions(envelope(root))
         self.assertIn(result["state"], {"partially_covered", "shape_covered_semantics_unverified"})
-        self.assertTrue(any("@unlabelled" in u["children"] for u in result["uncovered_patterns"]))
+        all_shapes = result["covered_patterns"] + result["uncovered_patterns"]
+        self.assertTrue(any("@unlabelled" in u["children"] for u in all_shapes))
+        self.assertFalse(any("NP" in u["children"] for u in all_shapes if u["parent"] == "C2"))
 
     def test_raw_penn_label_is_a_verification_violation(self):
         root = simple_root()
