@@ -13,6 +13,7 @@ from server.br_native_grammar import (
     audit_br_constructions,
     load_br_construction_registry,
 )
+from server.final_d1_labels import final_d1_display_labels
 
 
 def envelope(root, chapter=10, version="FINAL"):
@@ -122,6 +123,14 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual(result["state"], "source_matched_unreviewed")
         self.assertTrue(result["exact_reference_match"])
         self.assertFalse(result["independent_linguistic_review"])
+
+    def test_book_numbered_vp_reference_is_not_lost_in_display(self):
+        source_vp = {
+            "id": "vp", "label": "VP", "source_refs": ["VP1"],
+            "children": [{"id": "token", "word": "slept"}],
+        }
+        labels = final_d1_display_labels(source_vp)
+        self.assertEqual(labels["vp"], ["VP₁"])
 
     def test_bad_profile_rejected(self):
         with self.assertRaisesRegex(ValueError, "FINAL"):
