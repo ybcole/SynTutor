@@ -22,10 +22,12 @@ if __package__:
     from .final_d1_labels import final_d1_display_labels
     from .final_d1_projection import Projection, ProjectionUnavailable
     from .br_native_grammar import audit_br_constructions
+    from .br_native_chart import generate_br_chart_candidates
 else:
     from final_d1_labels import final_d1_display_labels
     from final_d1_projection import Projection, ProjectionUnavailable
     from br_native_grammar import audit_br_constructions
+    from br_native_chart import generate_br_chart_candidates
 
 SCHEMA_VERSION = "1.1.0"
 SUPPORTED_SCHEMA_VERSIONS = {"1.0.0", SCHEMA_VERSION}
@@ -584,6 +586,20 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
             result["working_display_labels"] = final_d1_display_labels(result["working_tree"]["root"])
         except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError):
             result.pop("working_tree")
+
+    # Experimental independent chart construction can propose a B-R-shaped
+    # alternative even if the Benepar-to-B-R adapter fails. This is diagnostic,
+    # not a canonical tree: it lacks full semantic licensing and is never
+    # promoted to status='normalized' or displayed as source-verified.
+    if profile["version"] == "FINAL" and result.get("status") != "normalized":
+        try:
+            native = generate_br_chart_candidates(_candidate_tokens(analysis))
+            if native.get("status") == "candidate":
+                result["native_chart_candidates"] = native
+        except (TypeError, ValueError, KeyError, IndexError) as exc:
+            result["native_chart_diagnostic"] = {
+                "status": "unresolved", "reason": f"Native chart failed safely: {type(exc).__name__}",
+            }
 
     # Independent of the canonical schema check, classify which book-linked
     # construction shapes were recognized. Shape coverage does NOT certify
