@@ -171,10 +171,10 @@ class NormalizationTests(unittest.TestCase):
                 self.assertEqual(json.dumps(analysis["root"]), raw_before)
                 self.assertEqual(json.dumps(result["parser_diagnostics"]["raw_candidate_tree"]), raw_before)
 
-    def test_final_declarative_refuses_unsupported_frame_punctuation_and_offsets(self):
+    def test_final_declarative_refuses_unsupported_frame_and_invalid_offsets(self):
         misaligned = final_declarative()
         misaligned["tokens"][3]["start"] -= 1
-        for analysis in (final_declarative(verb="ate"), final_declarative(punctuation="?"), misaligned):
+        for analysis in (final_declarative(verb="demolished"), misaligned):
             with self.subTest(sentence=analysis["sentence"]):
                 result = build_canonical_analysis(analysis, reference_records=[])
                 self.assertEqual(result["status"], "unresolved")

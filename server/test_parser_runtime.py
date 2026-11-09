@@ -32,6 +32,29 @@ class ParserBackedRuntimeTests(unittest.TestCase):
         self.assertEqual([row["t"] for row in analysis["tokens"]],
                          ["The", "students", "laugh", "."])
 
+    def test_final_d1_projects_different_constructions_with_original_words(self):
+        cases = [
+            ("The dog barked.", "S", {"V [intrans] [past]"}),
+            ("She  read the book.", "S", {"V [trans] [past]", "DET", "NOM"}),
+            ("The nurse have arrived.", "S", {"PERF [pres]", "V [intrans]"}),
+            ("The letter was read by Mara.", "S", {"PASS [past]", "V [trans]", "•₁"}),
+            ("What did Jon buy?", "S-dbar", {"S″", "C2₁", "C1₂", "TENSE [past]", "•₁", "•₂"}),
+            ("Where did Lisa put it?", "S-dbar", {"V [complex]", "PP", "•₁"}),
+            ("She persuaded Mara to leave.", "S", {"V(II) [past]", "[-tense]", "•₁"}),
+        ]
+        with patch.object(api, "classify", return_value=None):
+            for sentence, root_label, expected in cases:
+                with self.subTest(sentence=sentence):
+                    result = api.build_payload(sentence)
+                    analysis = result["br_analysis"]
+                    self.assertEqual(analysis["status"], "normalized", analysis["reasons"])
+                    tree = analysis["tree"]
+                    self.assertEqual(tree["sentence"], sentence)
+                    self.assertEqual(tree["root"]["label"], root_label)
+                    self.assertFalse(list(M1_VALIDATOR.iter_errors(tree)))
+                    labels = {" ".join(lines) for lines in analysis["display_labels"].values()}
+                    self.assertTrue(expected <= labels, (expected, labels))
+
     def test_real_parser_selects_second_sentence_without_clamping(self):
         text = "The students laugh. The birds sing."
         analysis = parse_engine.analyze(text, sentence_index=1)
