@@ -74,6 +74,16 @@ jobs:
           name: final-d1-sentence-coverage
           path: artifacts/final-d1-coverage.json
 
+      - name: Measure XAI-0 real-parser baseline on 116 development cases
+        run: |
+          python scripts/audit_xai0_baseline.py --output artifacts/xai0-baseline.json --require-models --expected-count 116
+      - name: Upload XAI-0 baseline evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: xai0-real-parser-baseline
+          path: artifacts/xai0-baseline.json
+          if-no-files-found: error
+
       - name: Install browser smoke-test runtime
         run: |
           python -m pip install 'playwright>=1.51,<2'

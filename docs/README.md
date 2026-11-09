@@ -12,6 +12,7 @@ Docs: [`ARCHITECTURE.md`](ARCHITECTURE.md) is the full implementation reference 
 - [XAI Implementer Master Prompt — milestone-by-milestone engineering contract](planning/MASTER_PROMPT_XAI.md)
 - [Uploaded-book source review and multi-error correction protocol](planning/XAI_SOURCE_AUDIT_MULTI_ERROR.md)
 - [XAI-PRE acceptance, source claims, contract schema and test results](reports/xai-pre-acceptance-2026-11-10.md)
+- [XAI-0 baseline: 116 real parser cases, node-level explanation coverage and next gaps](reports/xai-0-baseline-acceptance-2026-11-10.md)
 
 These are **planning documents**, not a claim that the new node-level XAI engine or Cambridge diagnostics have already been implemented.
 

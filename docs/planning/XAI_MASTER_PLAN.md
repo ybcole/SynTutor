@@ -1,6 +1,6 @@
 # SynTutor — XAI Master Plan: Sentence-Grounded Explanations for Every Tree Level
 
-**Status:** XAI-PRE **technical contract implementation delivered**, source-review/owner sign-off pending. XAI-0–XAI-8 not implemented by the PRE workstream. See [XAI-PRE acceptance report](../reports/xai-pre-acceptance-2026-11-10.md).  
+**Status:** XAI-PRE technical contracts and **XAI-0 empirical baseline delivered**, source-review/owner sign-off pending. XAI-1–XAI-8 not implemented by these foundation phases. See [XAI-PRE report](../reports/xai-pre-acceptance-2026-11-10.md) and [XAI-0 measured acceptance](../reports/xai-0-baseline-acceptance-2026-11-10.md).  
 **Date:** 10 November 2026  
 **Repository:** `ybcole/SynTutor`  
 **Companion implementer prompt:** [MASTER_PROMPT_XAI.md](MASTER_PROMPT_XAI.md)  
@@ -388,7 +388,7 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 - Agree source metadata + data contracts and UI labels before changing production outputs.
 - Include original-vs-candidate multi-error diagnosis and Cambridge contextual exceptions in baseline fixtures; record blocked/ambiguous findings explicitly.
 
-**Gate:** written inventory, reproducible test set and initial metrics. Known current baseline: 2 templates, 4 source records, 0 enabled Cambridge runtime rules.
+**Gate:** written inventory, reproducible test set and initial metrics. **XAI-0 measured on 116 development cases in CI:** 89 normalized B–R trees, 1,571 canonical nodes, 105 source-cited template hits (6.68%), 0 cited explanations among 417 word-terminal nodes; 2 templates, 4 source records, 0 enabled Cambridge constraints. See [measured report](../reports/xai-0-baseline-acceptance-2026-11-10.md). These are not correctness scores or independent error judgments.
 
 ### XAI-1 — Source concept registry / claim provenance
 

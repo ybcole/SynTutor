@@ -1,7 +1,7 @@
 # Master Prompt — SynTutor Contextual XAI Engine
 
 **Use with:** [XAI Master Plan](XAI_MASTER_PLAN.md) and [Uploaded-book Source Audit & Multi-Error Protocol](XAI_SOURCE_AUDIT_MULTI_ERROR.md)  
-**Status:** Implementation instructions; XAI-PRE has an initial tested contract/source-gate implementation, while XAI-0–XAI-8 remain separate future engineering work.  
+**Status:** Implementation instructions; XAI-PRE source contracts and **XAI-0 real-parser baseline** have been implemented and measured. XAI-1–XAI-8 are subsequent work. See [XAI-0 acceptance](../reports/xai-0-baseline-acceptance-2026-11-10.md).  
 **Authority:** Noel Burton-Roberts, *Analysing Sentences*, Third Edition (2011), for tree structure; Huddleston and Pullum et al., *The Cambridge Grammar of the English Language* (2002), for descriptive grammatical knowledge subject to review and source-specific differences.  
 **Repository:** `ybcole/SynTutor`
 
@@ -60,6 +60,8 @@ Freeze a **partial rule evaluator** contract: `SATISFIED`, `VIOLATED`, `NOT_APPL
 ### Phase 0 — Baseline
 
 Audit the current evidence pipeline and 50+ representative development sentences, determine which node/word explanations are actually generated, log model status and false-positive failure modes, record API behavior, and set regression fixtures. Do not guess the baseline.
+
+**XAI-0 measured:** [116-case development fixture](../../evaluation/xai0_development_cases.json), [real-model audit tool](../../scripts/audit_xai0_baseline.py), [XAI-0 acceptance report](../reports/xai-0-baseline-acceptance-2026-11-10.md), and CI's `xai0-real-parser-baseline` artifact. Baseline measured **0/417** source-cited word-terminal explanations and **105/1571 (6.68%)** cited B–R node hits; do not rebrand them as role-accuracy or error-detection scores. Use the existing corpus to regress XAI-1–XAI-8.
 
 ### Phase 1 — Concept and rule evidence
 
