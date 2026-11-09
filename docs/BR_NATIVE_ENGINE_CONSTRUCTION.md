@@ -67,12 +67,14 @@ The existing FINAL-D1 projection is a **first construction adapter**, not yet th
 
 | File | Change |
 | --- | --- |
-| grammar/br_native_constructions.json | Added **82 explicit structural signatures** across the chapter sequence and **10 semantic/notation obligations**. Each contains stable ID, book pages, chapter gate, and independent-review-pending status. |
+| grammar/br_native_constructions.json | Added **100 explicit structural signatures** across the chapter sequence and **10 semantic/notation obligations**. Each contains stable ID, book pages, chapter gate, and independent-review-pending status. |
 | server/br_native_grammar.py | Added registry loading, source metadata checks, profile-based branch recognition, Penn-only label leak detection, transparent rule IDs, and unknown-coverage reporting. |
 | server/burton_roberts.py | Attaches a separate br_rule_verification report to generated canonical/working trees. Raw diagnostics stay separate. An explicitly illegal Penn label blocks normalized promotion. |
 | server/final_d1_projection.py | Projects now/then as P-only temporal PP where applicable, considers when as a PP wh-gap, and conservatively marks subordinate since unresolved until temporal-P vs causal-C interpretation can be resolved. |
 | web/js/main.js | Raw Benepar renderer is hidden by default when B-R analysis fails; diagnostic toggle remains available. |
 | web/js/syntax-builder.js | Early pedagogical Sentence/Phrase/PHRASE placeholders are excluded from later profile palettes. |
+| scripts/audit_br_native_catalog.py | Added a reproducible book-corpus branch-coverage report over 252 source records. |
+| web/js/canvas-view.js | Restored the missing canonical B-R tree viewport module, enabling pan, zoom and retained node interactions. |
 | server/test_br_native_grammar.py | Added model-free tests for the registry, chapter gates, recognized triangles, unresolved shapes, source-review state and raw Penn category leakage. |
 
 **These changes do not rewrite the 252 existing source records, migrate Supabase data, replace Benepar, implement a chart parser, or claim linguistic completeness.**
@@ -101,7 +103,7 @@ For example:
 
 The above can identify a branch, but cannot prove the PP is an adjunct rather than a selected complement. A correct later compiler will additionally require lexical verb frames and attachment constraints.
 
-The catalog is deliberately labelled DRAFT and each rule is marked NEEDS_INDEPENDENT_EXAMPLE_AUDIT. It is **not** falsely presented as 82 exhaustively human-reviewed construction rules. A source-matched chapter diagram is not by itself a statistically valid generalization.
+The catalog is deliberately labelled DRAFT and each rule is marked NEEDS_INDEPENDENT_EXAMPLE_AUDIT. It is **not** falsely presented as 100 exhaustively human-reviewed construction rules. A source-matched chapter diagram is not by itself a statistically valid generalization.
 
 ## 6. Rule verification output semantics
 
@@ -154,6 +156,7 @@ Generator, Builder, Lesson, Quiz, corrections and evidence must render book-styl
 
 ~~~bash
 python -m unittest server.test_br_native_grammar -v
+python scripts/audit_br_native_catalog.py --expected-count 252 --fail-on-penn
 python -m unittest server.test_burton_roberts -v
 python scripts/audit_burton_roberts_import.py --expected-count 252
 python -m compileall -q server
@@ -179,4 +182,4 @@ The GitHub branch is the rollback boundary. No database changes or migrations ar
 
 **Rejected:** globally substituting Penn tag names; trusting a single Benepar tree as the book's own analysis; letting an unrestricted LLM invent verified syntax; self-certifying all existing figures; hiding unhandled constructions behind fabricated analyses.
 
-**9 November 2026 implementation result:** source-linked construction registry, separate conservative coverage auditor, backend audit integration, default-hidden Penn diagnostic, Builder palette correction, focused Third Edition temporal fixes and registry unit tests. **Phases B–F remain open.**
+**9 November 2026 implementation result:** 100-shape source-linked construction registry, separate conservative coverage auditor, backend audit integration, default-hidden Penn diagnostic, Builder palette correction, focused Third Edition temporal fixes and registry unit tests. **Phases B–F remain open.**
