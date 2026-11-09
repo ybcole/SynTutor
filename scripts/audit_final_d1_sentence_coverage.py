@@ -16,7 +16,14 @@ def audit_sentence(analysis, validator):
     result = build_canonical_analysis(analysis)
     tree = result.get("tree")
     if result["status"] != "normalized" or not tree:
-        return {"covered": False, "reasons": result.get("reasons", [])}
+        working = result.get("working_tree")
+        available = bool(working and not list(validator.iter_errors(working))
+                         and working["sentence"] == analysis["sentence"]
+                         and [t["text"] for t in working["tokens"]] ==
+                         [t["t"] for t in analysis["tokens"]
+                          if any(c.isalnum() or c == "_" for c in t["t"])])
+        return {"covered": False, "working_tree_available": available,
+                "reasons": result.get("reasons", [])}
     if tree["convention_profile"]["profile_id"] != "FINAL-D1":
         return {"covered": False, "reasons": [{"code": "WRONG_PROFILE"}]}
     if tree["sentence"] != analysis["sentence"]:
@@ -88,11 +95,15 @@ def main():
         cases.extend(records)
 
     covered = sum(row["covered"] for row in cases)
+    visible = sum(all(s["covered"] or s.get("working_tree_available", False)
+                      for s in row["sentences"]) for row in cases)
     complete = bool(cases) and covered == len(cases)
     report = {
         "scope": "Availability of canonical FINAL-D1 trees on existing sentence cases. "
                  "A passage case is covered only when all its sentences are covered.",
         "canonical_cases": covered,
+        "tree_view_cases": visible,
+        "working_tree_cases": visible - covered,
         "total_cases": len(cases),
         "complete": complete,
         "by_corpus": summary,
@@ -102,6 +113,7 @@ def main():
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n",
                            encoding="utf-8")
     print(f"FINAL-D1 availability: {covered}/{len(cases)} corpus cases")
+    print(f"Tree views including explicitly unresolved working trees: {visible}/{len(cases)}")
     return int(args.require_complete and not complete)
 
 

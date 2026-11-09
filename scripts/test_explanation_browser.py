@@ -20,7 +20,8 @@ api.classify = lambda text: None
 # Explicit fixture mode proves reviewed rendering without promoting synthetic
 # records into the production registry.
 fixture_mode = '--reviewed-fixture' in sys.argv
-final_mode = '--final-declarative' in sys.argv
+working_mode = '--working-tree' in sys.argv
+final_mode = '--final-declarative' in sys.argv or working_mode
 if fixture_mode:
     import explanations
     from test_explanations import registry
@@ -54,13 +55,32 @@ try:
         page.route('**/*', route)
         page.goto(base, wait_until='domcontentloaded')
         page.evaluate("async () => { await import('/js/main.js'); }")
-        text = 'The boy sleeps.' if final_mode else 'The birds sing.'
+        text = 'She is taller than he is.' if working_mode else 'The boy sleeps.' if final_mode else 'The birds sing.'
         with page.expect_response(lambda response: response.url.endswith('/api/parse')) as response:
             page.locator('#inputText').evaluate("""(el, text) => {
                 el.removeAttribute('readonly');
                 el.value = text;
                 el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', ctrlKey: true, bubbles: true }));
             }""", text)
+        if working_mode:
+            parsed = response.value.json()
+            br = parsed['br_analysis']
+            assert br['status'] == 'unresolved' and br['tree'] is None
+            assert br['working_tree']['sentence'] == text
+            canonical = page.locator('#canonicalTreeView')
+            canonical.wait_for(state='visible', timeout=60000)
+            assert not page.locator('#treeCanvas').is_visible()
+            assert 'working tree' in page.locator('#treeAuthorityNotice').inner_text()
+            assert page.locator('#openCanonicalBuilder').count() == 0
+            button = canonical.get_by_role('button', name='Inspect Burton-Roberts AP for taller than he is', exact=True).first
+            button.press('Enter')
+            pane = page.locator('#explainNode')
+            assert 'Unresolved internal analysis' in pane.inner_text()
+            assert 'requires a resolved analysis' in pane.inner_text()
+            assert not errors, errors
+            print('PASS: unresolved span remains visible in a B-R working tree with explicit uncertainty.')
+            browser.close()
+            raise SystemExit(0)
         if final_mode:
             parsed = response.value.json()
             br = parsed.get('br_analysis', {})

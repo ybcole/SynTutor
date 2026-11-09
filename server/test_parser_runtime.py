@@ -77,6 +77,28 @@ class ParserBackedRuntimeTests(unittest.TestCase):
         self.assertEqual([row["t"] for row in analysis["tokens"]],
                          ["The", "birds", "sing", "."])
 
+    def test_unresolved_constructions_keep_working_trees_without_promoting_evidence(self):
+        from explanations import explain_analysis
+        cases = [
+            "She is taller than he is.", "They demolished.", "Arrived late.",
+            "She asked what Jon had broken the vase.",
+            "She'll be arriving tomorrow or on Friday.",
+        ]
+        with patch.object(api, "classify", return_value=None):
+            for sentence in cases:
+                with self.subTest(sentence=sentence):
+                    payload = api.build_payload(sentence)
+                    result = payload["br_analysis"]
+                    self.assertEqual(result["status"], "unresolved")
+                    self.assertIsNone(result["tree"])
+                    tree = result["working_tree"]
+                    self.assertEqual(tree["sentence"], sentence)
+                    self.assertEqual(tree["source"]["evidence_status"], "UNCERTAIN")
+                    self.assertEqual(list(M1_VALIDATOR.iter_errors(tree)), [])
+                    self.assertTrue(result["working_display_labels"])
+                    evidence = explain_analysis({"status": "normalized", "tree": tree})
+                    self.assertEqual(evidence["status"], "ANALYSIS_UNRESOLVED")
+
     def test_out_of_range_sentence_index_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "out of range"):
             parse_engine.analyze("The students laugh.", sentence_index=1)

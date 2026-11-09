@@ -1576,10 +1576,12 @@ function clearCanonicalTree() {
 
 function showCanonicalTree(payload) {
   const host = document.querySelector('#canonicalTreeView');
-  const envelope = payload?.br_analysis?.tree;
-  const displayLabels = payload?.br_analysis?.display_labels;
+  const analysis = payload?.br_analysis;
+  const working = !analysis?.tree && Boolean(analysis?.working_tree);
+  const envelope = analysis?.tree || analysis?.working_tree;
+  const displayLabels = working ? analysis?.working_display_labels : analysis?.display_labels;
   if (!host || workspaceView !== 'tutor' || quizMode
-      || payload?.br_analysis?.status !== 'normalized' || !envelope?.root
+      || (!working && analysis?.status !== 'normalized') || !envelope?.root
       || (envelope.convention_profile?.version === 'FINAL' && !displayLabels)) {
     clearCanonicalTree();
     return false;
@@ -1587,7 +1589,9 @@ function showCanonicalTree(payload) {
   host.replaceChildren();
   const help = document.createElement('p');
   help.className = 'canonical-tree-help';
-  help.textContent = 'Select a node to inspect its Burton-Roberts structure and available book evidence.';
+  help.textContent = working
+    ? 'B-R working tree. Triangles preserve spans that need further analysis. Select a node to see its status.'
+    : 'Select a node to inspect its Burton-Roberts structure and available book evidence.';
   host.append(help);
   const visual = renderLessonTree(envelope, {stackFeatures: true, displayLabels, interactive: true});
   visual.querySelector('svg')?.setAttribute('role', 'group');
@@ -1634,12 +1638,17 @@ function showCanonicalTree(payload) {
       document.querySelector('#emptyExplainState')?.classList.add('hidden');
       pane.replaceChildren();
       const title = document.createElement('h3');
-      title.textContent = `B-R structural analysis: ${facts.label}`;
+      title.textContent = `${working ? 'B-R working analysis' : 'B-R structural analysis'}: ${facts.label}`;
       const observation = document.createElement('p');
       observation.textContent = canonicalObservation(facts);
       const boundary = document.createElement('p');
       boundary.textContent = 'Observed tree structure only. Source-reviewed grammatical claims are shown separately below, if available.';
       pane.append(title, observation, boundary);
+      for (const note of owner.notes || []) {
+        const detail = document.createElement('p');
+        detail.textContent = note;
+        pane.append(detail);
+      }
       if (owner.source_refs?.length) {
         const refs = document.createElement('p');
         refs.textContent = `Tree rule references — ${owner.source_refs.join(', ')}.`;
@@ -1647,6 +1656,10 @@ function showCanonicalTree(payload) {
       }
       const evidenceSlot = document.createElement('section');
       pane.append(evidenceSlot);
+      if (working) {
+        evidenceSlot.textContent = 'This working tree has unresolved structure. A reviewed explanation requires a resolved analysis.';
+        return;
+      }
       try {
         const evidence = await requestEvidence(envelope, owner.id, {
           variety: payload.meta?.cambridge_variety,
@@ -1686,7 +1699,9 @@ function setTreeAuthorityNotice(payload) {
     .map((row) => row?.message || row?.detail).find(Boolean)
     || (analysis?.reasons || []).map((row) => row?.detail).find(Boolean);
   if (canonicalShown) {
-    notice.textContent = 'Canonical Burton-Roberts tree';
+    notice.textContent = analysis?.tree
+      ? 'Canonical Burton-Roberts tree'
+      : 'B-R working tree — some structure remains unresolved.';
   } else if (workspaceView === 'tutor' && !quizMode) {
     notice.textContent = status === 'normalized' ? 'Canonical labels are unavailable.'
       : `Canonical B-R tree unavailable for this sentence.${detail ? ` ${detail}` : ''}`;

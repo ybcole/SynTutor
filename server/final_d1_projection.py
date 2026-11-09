@@ -1,5 +1,6 @@
 """Compositional FINAL-D1 projection from Benepar structure and token evidence."""
 from dataclasses import dataclass
+from copy import deepcopy
 
 from lemminflect import getLemma
 
@@ -139,6 +140,51 @@ class Projection:
     def __init__(self, tokens):
         self.tokens = tokens
         self.index = 0
+
+    def working_tree(self, node, subject=None):
+        """Retain projectable constituents, with explicit local uncertainty."""
+        saved_index = self.index
+        try:
+            if tag(node) in {"ROOT", "TOP", "S", "SQ", "SINV", "SBAR", "SBARQ"}:
+                return self.clause(node)
+            if tag(node) == "VP" and subject is not None and not subject.get("triangle"):
+                trial_subject = deepcopy(subject)
+                result = self.vp(kids(node), "finite", trial_subject)
+                subject.update(trial_subject)
+                return result
+            return self.phrase(node)
+        except ProjectionUnavailable as exc:
+            self.index = saved_index
+            reason = str(exc)
+        parts = kids(node)
+        if tag(node) in {"ROOT", "TOP"} and len(parts) == 1:
+            return self.working_tree(parts[0])
+        if tag(node) in {"S", "VP"} and parts:
+            children = []
+            for part in parts:
+                if leaf(part):
+                    # A word's category alone cannot establish its verb frame.
+                    if tag(part) in VERB_TAGS - {"MD"}:
+                        child = branch("V", (), word_node(part))
+                        child["notes"] = ["Verb category only. Frame and tense analysis remain unresolved."]
+                    else:
+                        child = {"triangle": True, "words": [part["surface"]],
+                                 "notes": ["The syntactic role of this word remains unresolved."]}
+                else:
+                    child = self.working_tree(part, subject)
+                    if tag(node) == "S" and tag(part) == "NP" and not children:
+                        subject = child
+                children.append(child)
+            result = branch(tag(node), (), *children)
+            result["notes"] = ["Provisional constituent grouping. " + reason]
+            return result
+        result = {"triangle": True, "words": [n["surface"] for n in leaves(node)],
+                  "notes": ["Unresolved internal analysis. " + reason]}
+        # These identify the candidate phrase category only, not its internals.
+        category = {"NP": "NP", "PP": "PP", "ADJP": "AP", "ADVP": "AdvP"}.get(tag(node))
+        if category:
+            result["label"] = category
+        return result
 
     def dependency(self, node):
         start = node.get("span", [None])[0]

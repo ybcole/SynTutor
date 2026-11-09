@@ -101,7 +101,8 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
     output = {'schema_version': '1.0.0', 'status': 'NO_BOOK_BASIS',
               'analysis_status': str(analysis.get('status', 'unresolved')),
               'channels': {key: [] for key in CHANNELS}, 'facts': [], 'diagnostics': []}
-    if analysis.get('status') != 'normalized' or not isinstance(analysis.get('tree'), dict):
+    if (analysis.get('status') != 'normalized' or not isinstance(analysis.get('tree'), dict)
+            or analysis['tree'].get('source', {}).get('evidence_status') == 'UNCERTAIN'):
         output['status'] = 'ANALYSIS_UNRESOLVED'
         output['diagnostics'].append({'code': 'ANALYSIS_UNRESOLVED',
                                       'message': 'No resolved canonical analysis is available.'})

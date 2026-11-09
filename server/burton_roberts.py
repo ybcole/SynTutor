@@ -195,7 +195,12 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
     if any(sentence[start:end] != token["text"]
            for token in tokens for start, end in [token["char_span"]]):
         raise ProjectionUnavailable("Candidate token offsets do not match the submitted sentence")
-    tree = Projection(raw_tokens).clause(raw_root)
+    uncertainty = None
+    try:
+        tree = Projection(raw_tokens).clause(raw_root)
+    except ProjectionUnavailable as exc:
+        uncertainty = str(exc)
+        tree = Projection(raw_tokens).working_tree(raw_root)
     envelope = {
         "schema_version": SCHEMA_VERSION,
         "tree_id": _stable_id("sg", sentence + "|FINAL-D1"),
@@ -213,12 +218,21 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
         "rule_id": "FINAL_D1_CONSTRUCTION_PROJECTION",
         "evidence": "Constituent and dependency projection using Chapters 2–10.",
     }]
+    if uncertainty:
+        envelope["source"]["evidence_status"] = "UNCERTAIN"
+        envelope["source"]["review_note"] = "B-R working view with provisional grouping and locally unresolved spans."
     validation = validate_canonical_tree(envelope)
     if not validation["valid"]:
         return {"status": "rejected", "tree": None,
                 "reasons": [{"code": "CANONICAL_VALIDATION_FAILED", "detail": e}
                             for e in validation["errors"]],
                 "normalization_trace": trace, "validation": validation}
+    if uncertainty:
+        result = _unresolved_result(profile, [
+            {"code": "PROFILE_MAPPING_NOT_APPROVED", "detail": uncertainty}
+        ], trace, analysis, tokens)
+        result.update(working_tree=envelope, validation=validation)
+        return result
     return {"status": "normalized", "tree": envelope, "reasons": [],
             "normalization_trace": trace, "validation": validation}
 
@@ -563,6 +577,11 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
                 "code": "FINAL_D1_LABEL_UNRESOLVED",
                 "detail": str(exc),
             }])
+    if result.get("working_tree"):
+        try:
+            result["working_display_labels"] = final_d1_display_labels(result["working_tree"]["root"])
+        except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError):
+            result.pop("working_tree")
     result["convention_profile"] = profile
     result["convention_version"] = profile["version"]
     raw_diagnostics = result.get("diagnostics")
@@ -1186,7 +1205,8 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
             if node.get("unlabelled") is True:
                 if label is not None or envelope.get("schema_version") != "1.1.0":
                     errors.append(f"{path} unlabelled triangle requires v1.1.0 and no label")
-                if chapter < 9 or parent_label != "C2":
+                working = envelope.get("source", {}).get("evidence_status") == "UNCERTAIN"
+                if not working and (chapter < 9 or parent_label != "C2"):
                     errors.append(f"{path} unlabelled triangle is only licensed under C2 from V9")
             elif not isinstance(label, str) or not label:
                 errors.append(f"{path}.label must be non-empty")
