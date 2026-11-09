@@ -31,6 +31,8 @@ let activeSessionId = null;
 let activeUserId = null;
 let activeWorkspaceView = null;
 let leaderboardView = null;
+// Explicit, scoped opt-in to the only source-reviewed automatic parser adapter.
+let generatorChapter = null;
 
 try {
   clerk = await loadClerk();
@@ -1535,6 +1537,11 @@ function failPipeline(title, lines) {
 async function postParse(text, index = null) {
   const body = { text };
   if (index !== undefined && index !== null) body.sentence_index = index;
+  // Free analysis remains FINAL-D1. Chapter 2's conservative B-R
+  // transformation is available only when the learner explicitly selects it.
+  if (workspaceView === 'tutor' && !quizMode && generatorChapter === 2) {
+    body.chapter = 2;
+  }
   const res = await fetch(`${API_BASE}/api/parse`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -1659,8 +1666,26 @@ function setTreeAuthorityNotice(payload) {
     notice.textContent = `Raw Benepar diagnostic candidate only — canonical B-R normalization is ${status}.${detail ? ` ${detail}` : ''}`;
   }
   notice.textContent += ' Legacy verdicts are diagnostic; the reviewed evidence does not establish a full grammaticality verdict.';
+  if (workspaceView === 'tutor' && !quizMode) {
+    notice.textContent += generatorChapter === 2
+      ? ' Profile: Chapter 2 (V2), limited to a basic S → NP VP structure.'
+      : ' Profile: free analysis (FINAL-D1).';
+  }
   notice.hidden = false;
   document.querySelector('#openCanonicalBuilder')?.remove();
+  document.querySelector('#toggleBrChapter')?.remove();
+  if (workspaceView === 'tutor' && !quizMode) {
+    const switchMode = document.createElement('button');
+    switchMode.id = 'toggleBrChapter';
+    switchMode.type = 'button';
+    switchMode.textContent = generatorChapter === 2
+      ? 'Switch back to FINAL-D1 analysis' : 'Try limited B-R Chapter 2 analysis';
+    switchMode.addEventListener('click', () => {
+      generatorChapter = generatorChapter === 2 ? null : 2;
+      runPipeline({ index: session?.sentence_index ?? 0, isReplay: true });
+    });
+    notice.append(document.createTextNode(' '), switchMode);
+  }
   if (status === 'normalized' && analysis?.tree) {
     const button = document.createElement('button');
     button.id = 'openCanonicalBuilder';
@@ -1676,6 +1701,7 @@ function setTreeAuthorityNotice(payload) {
 
 function clearTreeAuthorityNotice() {
   clearCanonicalTree();
+  document.querySelector('#toggleBrChapter')?.remove();
   document.querySelector('#openCanonicalBuilder')?.remove();
   const notice = document.querySelector('#treeAuthorityNotice');
   if (!notice) return;
