@@ -89,6 +89,17 @@ class FlaskParseContractTests(unittest.TestCase):
         words.assert_called_once_with(["hello"])
         self.assertEqual(response.get_json(), {"results": [{"word": "hello"}]})
 
+    def test_optional_rate_limit_blocks_excessive_requests(self):
+        from rate_limit import RateLimiter
+        limiter = RateLimiter(clock=lambda: 100)
+        with patch("webapp.API_RATE_PER_MINUTE", 1), patch("webapp.API_LIMITER", limiter):
+            first = self.client.post("/api/parse", json={"text": " "})
+            second = self.client.post("/api/parse", json={"text": " "})
+        self.assertEqual(first.status_code, 422)
+        self.assertEqual(second.status_code, 429)
+        self.assertEqual(second.headers["Retry-After"], "60")
+        self.assertEqual(second.get_json()["error"], "too many requests")
+
     def test_successful_build_returns_payload(self):
         expected = {"br_analysis": {"status": "unresolved"}}
         with patch("webapp.build_payload", return_value=expected) as build:
