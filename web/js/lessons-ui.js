@@ -115,6 +115,9 @@ function catalog() {
   }
   host.append(grid);
   if (track==='grammar') {
+    const coverage=el('p','Only one Cambridge companion lesson is published because the remaining 17 mapped topics have not yet completed source-by-source lesson, example, and assessment review. Their book chapters are inventoried, but extraction alone is not approval to teach or grade them.','lesson-lead');
+    coverage.dataset.grammarCoverage = '';
+    host.append(coverage);
     const planned=el('details',undefined,'lesson-planned');planned.append(el('summary',`${course.planned_modules.length} further topics planned — not published`));
     const list=el('ul');for(const p of course.planned_modules)list.append(el('li',`${p.title}: ${p.reason}`));planned.append(list);host.append(planned);
   }
