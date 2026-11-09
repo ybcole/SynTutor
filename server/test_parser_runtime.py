@@ -50,6 +50,10 @@ class ParserBackedRuntimeTests(unittest.TestCase):
             ("She is believed to have been ill.", "S", {"PASS [pres]", "V(I)", "[-tense]", "NP₁", "•₁"}),
             ("She is likely to win.", "S", {"V [intens] [pres]", "V [intrans]", "NP₁", "•₁"}),
             ("This banana is green: have you got a riper one?", "S", {"PERF [pres]", "V [trans]", "NOM", "one"}),
+            ("Only the rich will benefit.", "S", {"AdvP", "AP", "NOM", "E", "MOD [pres]"}),
+            ("They ate almost the whole cake.", "S", {"AdvP", "V [trans] [past]", "DET", "NOM"}),
+            ("Grapes are expensive and likely to remain so.", "S", {"AP", "[-tense]", "NP₁", "•₁", "so"}),
+            ("She won't be happy whatever you offer her.", "S", {"S″", "C2₁", "V [ditrans] [pres]", "•₁"}),
         ]
         with patch.object(api, "classify", return_value=None):
             for sentence, root_label, expected in cases:

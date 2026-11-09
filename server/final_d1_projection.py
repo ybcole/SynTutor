@@ -222,6 +222,10 @@ class Projection:
     def np(self, nodes, nonrestrictive=()):
         if not nodes:
             raise ProjectionUnavailable("Empty overt noun phrase")
+        if len(nodes) > 1 and leaf(nodes[0]) and tag(nodes[0]) in ADV_TAGS and word(nodes[0]) in {"only", "almost", "even", "just"}:
+            result = branch("NP", NOUN, self.modifier([nodes[0]]), self.np(nodes[1:], nonrestrictive))
+            result["notes"] = ["The focusing adverb modifies the following NP."]
+            return result
         coordination = self.coordinate(nodes, lambda part: self.np(part, nonrestrictive))
         if coordination:
             return branch("NP", COORD, *coordination)
@@ -441,6 +445,8 @@ class Projection:
     def predicative(self, node, subject=None):
         children = kids(node)
         if tag(node) == "ADJP":
+            if len(children) == 1 and tag(children[0]) == "ADJP":
+                return self.predicative(children[0], subject)
             coordinated = self.coordinate(children, lambda part: self.predicative(raw("ADJP", part), subject))
             if coordinated:
                 return branch("AP", COORD, *coordinated)
@@ -462,6 +468,10 @@ class Projection:
                     else:
                         raise ProjectionUnavailable("Adjective complement has no supported dependency analysis")
                     return branch("AP", NONFINITE, branch("A", ("Ch3 p. 55",), word_node(children[0])), clause)
+        if tag(node) == "ADVP" and len(children) == 1 and word(children[0]) == "so":
+            result = branch("AP", ("Ch3 pp. 55–56",), word_node(children[0]))
+            result["notes"] = ["Predicative so stands for an adjectival property."]
+            return result
         if tag(node) == "ADVP" and len(kids(node)) == 1 and word(kids(node)[0]) in {"here", "there", "in", "out", "up", "down", "away", "home"}:
             return branch("PP", ("Ch3 pp. 56–59",), branch("P", ("Ch3 pp. 56–59",), word_node(kids(node)[0])))
         return self.phrase(node)
@@ -677,6 +687,8 @@ class Projection:
             return base != "get"
         if label == "ADVP":
             words = leaves(node)
+            if len(words) == 1 and word(words[0]) == "so":
+                return base in {"be", "remain", "seem", "appear"}
             return bool(words and word(words[-1]) in LOCATIVE_WORDS | {"in", "out", "up", "down", "away", "home"})
         return label in {"ADJP", "PP"}
 
@@ -693,7 +705,10 @@ class Projection:
 
     def is_adverbial(self, node):
         parts = kids(node)
-        return len(parts) == 2 and leaf(parts[0]) and word(parts[0]) in SUBORDINATORS
+        return len(parts) == 2 and (
+            (leaf(parts[0]) and word(parts[0]) in SUBORDINATORS)
+            or (tag(parts[0]) in {"WHNP", "WHADVP"} and leaves(parts[0])
+                and word(leaves(parts[0])[0]) in {"whatever", "whoever", "whenever", "wherever", "however"}))
 
     def clause(self, node, incoming=None):
         label, parts = tag(node), kids(node)
