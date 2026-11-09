@@ -1,118 +1,93 @@
-# SynTutor — master plan for Burton-Roberts labels and book-grounded per-node XAI
+# SynTutor unified Burton-Roberts notation
 
-**Proposed specification, 9 November 2026. No automatic relabeling approved by this document.**  
-**Book:** Noel Burton-Roberts, *Analysing Sentences: An Introduction to English Syntax*, third edition, Pearson/Longman, 2011, ISBN 9781408233740. Verify claims against the user's compiled `Syntax_Reference_Chapters_1-11.pdf` with **printed page** and actual figure, not just PDF text extraction.
+Draft specification for free sentence analysis · 9 November 2026
 
-This plan operationalizes [`CONVENTIONS.md`](../../CONVENTIONS.md), the [source-authority matrix](../source-authority-matrix.md), the [canonical tree schema](../canonical-burton-roberts-tree.schema.json) and existing [source review](../../sources/burton_roberts/reviews/2026-11-08-conventions.json). The complete working inventory is an accompanying spreadsheet **SynTutor_BR_Labeling_XAI_Master_Sheet_2026-11-09.xlsx** (12 profiles, 53 node cases, 27 crosswalk gates, 12 conflicts, 53 original node-XAI drafts, sentence-attested examples and approval checks). This repository plan **does not imply** that spreadsheet review has been approved or deployed.
+SynTutor uses one cumulative notation for free analysis across Chapters 1–11 of Noel Burton-Roberts, *Analysing Sentences*, 3rd ed. (2011, ISBN 9781408233740). Chapters and printed pages identify the evidence for each rule. A sentence can combine several chapters’ rules in one tree. This proposal makes the existing `FINAL` idea in [CONVENTIONS.md](../../CONVENTIONS.md) explicit. The chapter versions remain applicable to textbook transcriptions and exercises that ask learners to reproduce a specific figure. The workbook is the working inventory for this specification.
 
-## Decision 1 — Separate three different authorities
+## Chapter coverage
 
-1. **Candidate parse:** spaCy + Benepar produces tokens, character offsets, Penn-style labels and a parse tree. Keep it unchanged as parser evidence and diagnostic fallback. Benepar does not decide B-R labels.
-2. **Canonical B-R representation:** a *profile-scoped, source-justified transformation* creates B-R nodes, structural edges, empty positions, movement, features and accepted alternatives. Validate against the canonical schema and chapter rules. Each derived node must retain the source/transform rule IDs that justify it.
-3. **Source-licensed explanations:** an XAI composer computes observable facts from each validated B-R node, then applies a reviewed paraphrase template backed by B-R chapter and printed page. Cambridge is reserved for independently reviewed grammatical descriptions/constraints and must not rename B-R phrase-marker categories.
-
-**Never implement a universal Penn-label replacement map.** Even though `ADJP→AP` and `ADVP→AdvP` may be conditional category aliases, `SBAR→S′`, `SBARQ→S″`, `DT→DET`, `NP→NOM` and flat `VP→VP` are not valid string-only transformations.
-
-## Decision 2 — Version the conventions by the lesson and construction
-
-| Profile | Book introduction / active notation | Mandatory distinction |
+| Chapter | What the unified tree carries forward | Printed pages |
 | --- | --- | --- |
-| V1 / Ch1 | `Sentence`, `PHRASE-x`, triangles | Do not retroactively assign NP/VP categories |
-| V2 / Ch2 | `S→NP VP` (pp.29–30) | Subject/predicate are functions, not tree labels |
-| V3 / Ch3 | `N, A, Adv, P, DEG, AP, AdvP, PP`, `name`, `pronoun` | NP internals are not yet DET/NOM |
-| V4 / Ch4 | lexical `V` with six subcategorization features | A V's complements are sisters of V |
-| V5 / Ch5 | extra VP for adjuncts; S-adverbials, `Prt`, ellipsis `E` | VP adjunct vs V complement is a structural distinction |
-| V6 / Ch6 | auxiliary-headed VPs (`MOD/PERF/PROG/PASS/TENSE`), `S-bar→C S` in relevant questions | Ch6 `C` is the landing position for fronted auxiliary |
-| V7-CORE / Ch7 | `NP→DET NOM`, recursive `NOM`, ART/DEM/Q/POSS/PRE-DET | Proper names/pronouns can have nonbranching NPs; empty DET is possible |
-| V7-APPENDIX-D1 | alternative higher NOM adjunct layer | Explicit variant; do not change V7-CORE gold shapes |
-| V8 / Ch8 | `S-bar→C S` for subordinate clauses (p.174) | Overt or absent C; some P+S structures are not S′ |
-| V9 / Ch9 | `S-dbar→C2 S-bar` and `S-bar→C1 S` (pp.198–199) | Higher C2 houses fronted wh expression; typed gap; lower C1 houses aux/subordinator or is empty |
-| V10 / Ch10 | `[-tense]` nonfinite VP, covert NP/index/control, V(I)/V(II) | No automatic six-way valency for clause complements |
-| FINAL-D1 | accumulated V10 + selected Appendix D1 refinement | Target for free analysis, **not** proof arbitrary Benepar output can convert |
+| 1 · Constituency | Immediate dominance, ordered children, constituency tests and explicit abbreviation by triangle. Expand validated phrases in free analysis. | 6–23 |
+| 2 · Functions | Basic `S → NP VP`; category and function are separate. Explain roles using structural positions. | 24–45 |
+| 3 · Categories | Lexical and phrasal categories, names and pronouns, and coordination at the actual category level. | 46–66 |
+| 4 · Basic VP | Lexical `V` with one supported complement frame; complements are sisters of `V`. | 67–86, especially 71–72 and 79 |
+| 5 · Adverbials | Recursive `VP` and `S` for adjunct attachment, particles, phrasal features and context-licensed ellipsis. | 87–110 |
+| 6 · Auxiliary VPs | Auxiliary-headed VP layers, tense on the finite carrier, do-support, negation, passive and auxiliary fronting. | 111–140 |
+| 7 · NPs | `DET` and `NOM`, expanded noun structure (including PartP headed by V-part) and Appendix NOM refinement. | 141–170, especially 166–168 |
+| 8 · Subordination | Clausal embedding, finite subject and object wrappers, extraposition, clausal predicatives and complements of A/N/P. | 171–195 |
+| 9 · Wh-clauses | `C1` and `C2`, two clause layers when licensed, wh-gaps and relative attachment. | 196–223 |
+| 10 · Non-finite clauses | Clause-level `[-tense]`, covert subjects, control, co-indexing and construction-specific verb complementation. | 224–253 |
+| 11 · Grammars | Background on grammaticality, speaker variation and grammar as a model. Adds no new display category in this specification. | 254–268 |
 
-**Storage vs display:** store canonical `S-bar` and `S-dbar`, render them as **S′** and **S″**. Store `C` for V6–V8 and `C1`/`C2` for V9+. Use book `AP` and `AdvP`, not Penn `ADJP` and `ADVP`. Do not confuse the Chapter 8 `C` position with a determiner spelled *that*.
+## Conflict decisions
 
-**S-bar evolution:** This is an intentional extension of the book's descriptive apparatus, not inconsistent naming. `S′` introduced for auxiliary inversion is also used for embedded clauses; Ch9 adds `S″` as an additional, higher position for wh-fronting. It is **not** appropriate to change every `S′` to `S″` in later chapters.
+| ID | Overlap | Unified rule | Printed evidence |
+| --- | --- | --- | --- |
+| U01 | `Sentence`, `PHRASE-x`, early triangles | Use `S` and validated categories for free analysis. A triangle is an abbreviated constituent with a supported category or a book-licensed omission, never a category inferred from an early placeholder. ACA is a separate abbreviated teaching view. | Ch1 pp. 14–17; Ch2 pp. 29–30; Ch8 pp. 171–173 |
+| U02 | Functions vs categories | Store subject, predicate, complement and adjunct as roles. The tree uses category labels such as `NP`, `VP`, and `PP`. Keep roles distinct even when categories match. | Ch2 pp. 29–31; Ch4 p. 79; Ch5 pp. 87–90 |
+| U03 | `[intrans]` and other verb features | Attach the frame to the lexical `V` node. Render each bracketed feature below the category and above the word, within the same node. A supported intransitive use has zero complements, even with an adjunct. Determine the frame from the use in this clause, including gaps or licensed ellipsis. | Ch4 pp. 71–72, [22] and [26], p. 79; Ch5 pp. 95–99 |
+| U04 | Valency, phrasal status and tense | Store separate fields. Features can coexist on a node. For the unified display, order applicable rows frame, phrasal status, then tense. Assign `[pres]` or `[past]` only to the finite carrier, whether lexical or auxiliary. In inversion, the original auxiliary node retains its features and dominates a gap, while `C1` displays the fronted word. | Ch5 p. 94 [35]; Ch6 p. 113 [8]–[9], pp. 130–131; Ch9 p. 199 [11b] |
+| U05 | Complements, adjuncts and auxiliaries in VP | An ordinary complement is a sister of lexical `V`. A VP adjunct is a sister of an already formed VP inside a higher VP. An auxiliary heads its own VP and takes a VP complement. An S-adverbial attaches to an S within a higher S. Abstain on displaced attachment with no supported analysis. | Ch4 pp. 67–79; Ch5 pp. 87–93, 99–101; Ch6 pp. 123–124 |
+| U06 | Early or core NP vs Appendix | Adopt the Ch7 Appendix refinement throughout free analysis. In a common-noun NP, use `DET` where licensed, plus `NOM`. A nominal adjunct is sister of an inner `NOM`, including a unary `NOM → N` when required. An N complement is sister of `N` inside `NOM`. Retain name/pronoun and other licensed special cases. | Ch7 pp. 141–146, 166–168 [11]; Ch9 pp. 205–206 [38]–[39] |
+| U07 | `C`, `Comp`, `C1` | Use `C1` for the lower complementiser position in `S′ → C1 S`, including Ch6 yes/no inversion and licensed Ch8 subordinate structures. Preserve overt or empty occupancy according to the construction. Earlier `C` and `Comp` correspond only where the structural role agrees. | Ch6 pp. 130–131; Ch8 pp. 173–174, 185 [61]; Ch9 pp. 198–199 |
+| U08 | `S`, `S′`, `S″` | Use basic `S` for the clause core. Add `S′` for a licensed lower layer and `S″ → C2 S′` for a licensed higher wh/relative layer, including covert relatives. A matrix wh-question can have fronted auxiliary in C1. Embedded wh typically leaves C1 empty. Matrix subject wh does not itself license inversion. | Ch9 pp. 198–203, 205–208; Ch10 pp. 230–231, 235–236 |
+| U09 | Several uses of *that* | Use `DEM` inside `DET` for demonstrative *that*, `C1` for content-clause *that*, and `C2` for relative *that* under the book’s adopted teaching analysis. Recognize relatives by the internal dependency and gap. | Ch7 pp. 142–146; Ch8 pp. 173–174; Ch9 pp. 207–208 |
+| U10 | Clause after P vs a subordinating conjunction | Validate the head and its construction. Ch8 temporal `since/after/before/until` with a plain clausal complement use `PP → P S`; a P selecting *whether* takes `S′`. A genuine adverbial subordinator fills C1. Ch10 also excepts non-finite P complements from its default S′ wrapper; check the specific case. | Ch8 pp. 184–187 [61], [67c], [71]; Ch10 pp. 229–230, 234 |
+| U11 | N complement vs relative modifier | A noun content clause is sister of `N`. A restrictive relative is sister of `NOM` within a higher `NOM`. A non-restrictive relative is sister of `NP` within a higher `NP`. Determine the reading from the relation to the noun phrase; commas alone are insufficient. | Ch9 pp. 204–211 |
+| U12 | Finite and non-finite clauses after V | Retain the NP wrapper for finite clausal direct objects in Ch8 and the NP for a clausal subject. A finite clausal subject-predicative may be bare `S′` as a sister of copular V. For Ch10 non-finite verb complementation, omit the six-way frame on the selecting V and the automatic NP wrapper on its clause. Keep finite tense on the selecting verb when applicable. | Ch8 pp. 175–181; Ch10 pp. 236–239, 243 |
+| U13 | `V(I)` vs `V(II)` | When the Ch10 distinction applies, Type I takes one clause with an overt subject. Type II takes a matrix NP object and a clause with a covert subject; identify the actual controller, including the subject-control pattern of *promise*. A clause with a covert subject after a lone selecting verb does not by itself imply Type II. | Ch10 pp. 238–243 [101b]–[102b] |
+| U14 | Infinitival `to`, prepositional `to`, untensed forms | Infinitival `to` heads an auxiliary VP and displays `[-tense]` by itself. In applicable bare infinitival and participial clauses, place `[-tense]` on the initial V or auxiliary as the source specifies. An untensed verb selected lower in an auxiliary chain does not automatically carry this clause-level feature. | Ch6 pp. 113–120; Ch10 pp. 225–229, 243 |
+| U15 | Gap, covert subject, empty position and ellipsis | Distinguish typed `•` gaps, covert subjects, empty C1/DET slots, and recoverable `E` ellipsis. Apply the Ch10 indexing convention to supported control and movement links. Free covert subjects have no index. Draw movement arrows as overlays. | Ch5 pp. 95–99; Ch6 pp. 127, 130–131; Ch9 p. 199; Ch10 pp. 224–225, 236 |
+| U16 | Extraposition vs ordinary complement | Identify expletive *it*, the relation of the delayed clause to the main clause and the licensed book pattern. Use the Ch8 extraposed-subject structure, including the book’s treatment of *seem/appear* in that use. | Ch8 pp. 176–178, 183–184 |
+| U17 | Benepar and Cambridge overlaps | Keep Benepar labels as evidence and Cambridge claims in their own channel. Only B-R sources and the explicit integration decisions above authorize B-R structure and its explanations. | Source policy in CONVENTIONS.md; primary rules U01–U16 |
 
-## Decision 3 — Transform structures, not pixels or superficial labels
+## Display and storage
 
-Recommended normalized API shape:
+The compact form `(V[intrans][past] sighed)` denotes one lexical node, two feature rows and one overt word. On the diagram the order is `V`, then `[intrans]`, then `[past]`, then *sighed* connected as the terminal. Chapter 4 p. 72 [22] demonstrates the placement of `[intrans]`; Chapter 6 p. 113 [8]–[9] demonstrates the stacked tense pattern. The combined rendering of *sighed* applies both conventions.
 
-```json
-{
-  "parser_candidate": {"tree": "untouched Penn-style parser result"},
-  "br_analysis": {
-    "status": "normalized | unresolved | rejected",
-    "convention_profile": {"version": "V9", "chapter": 9, "profile_id": "V9"},
-    "tree": "validated canonical B-R envelope or null",
-    "derivations": [
-      {"node_id": "n1", "operation": "CREATE_S_DBAR", "rule_id": "BR-CW-16",
-       "source": {"book": "B-R", "chapter": 9, "printed_page": 199, "figure_id": "11b"}}
-    ],
-    "reasons": []
-  }
-}
+Keep category, features, role, children, token IDs, empty-position kind, index/links and source rule separate in the analysis. Reuse `S-bar` and `S-dbar` internally and render `S′` and `S″`. Use the existing `FINAL` identifier with Appendix NOM enabled for unified free analysis. A chapter reference on a node records provenance. The current [canonical schema](../canonical-burton-roberts-tree.schema.json) requires a chapter in its profile object and uses a single token span. Check schema compatibility before runtime integration, including provenance from several chapters, exact token membership for discontinuities and zero-width anchors for gaps. Validate by overt token IDs so inserted structure cannot duplicate or consume words.
+
+## Worked tree
+
+**The tired students sighed quietly.** This is a SynTutor example applying Chapters 2–7 together.
+
+```text
+(S
+  (NP (DET (ART The)) (NOM (AP (A tired)) (NOM (N students))))
+  (VP (VP (V[intrans][past] sighed)) (AdvP (Adv quietly))))
 ```
 
-In real code the source fields and tree must use existing schema definitions; the JSON above illustrates the **separation of concerns**, not a new committed API schema. If `br_analysis.status != normalized`, show the parser graph clearly as a **Benepar diagnostic candidate**, not a B-R phrase marker.
+The outer VP covers *sighed quietly* and the inner VP covers *sighed*. The lower NOM covers *students*; *tired* modifies it. The article and nominal occupy separate branches. The period stays in the input tokens. The tree shows the syntactic constituents.
 
-Crosswalk priority:
+A second composition check is **Did the tired students sigh quietly?** The same NP and adjunct structure combine with `S′ → C1 S`. *Did* fills C1, the `TENSE[past]` node in its original VP takes the linked gap, and lexical *sigh* still carries `[intrans]`. Chapter 6 pp. 130–131, Chapter 9 p. 199 and Chapter 10 p. 225 support the construction and indexing policy.
 
-1. Exact, unique, source-reviewed B-R figure match in the **selected profile**, retaining original labels and accepted alternatives.
-2. Tested contextual aliases for genuinely equivalent categories and spans.
-3. Guarded structural rewrite (NP→DET/NOM, auxiliary VP layers, complementiser/wh layers, gaps, indices), with a proof trace for each created node.
-4. If any required lexical, structural, alignment or provenance check fails: **ABSTAIN**, preserve the parser tree and record a specific reason.
+## Per-node explanations
 
-## Decision 4 — XAI must explain *every licensed node* using exact sentence spans
+Select a reviewed template using the canonical category, construction, child/parent relation, role and features. Bind exact submitted words through token IDs. For empty nodes, name the linked phrase, carrier, antecedent or surrounding construction with evidence for the absence. Each rendered feature is explained on its owning node. Overt terminal labels are surface text; if selectable, they share the explanation of the node that owns them. Every published node has an explanation with B-R printed-page citations or an explicit unavailable status during development. Gate publication of a fully explained canonical tree on complete reviewed coverage. Keep genuine ambiguity as evidence-backed alternatives or mark it unresolved.
 
-Existing implementation: [`grammar/explanation_templates.json`](../../grammar/explanation_templates.json) contains **two reviewed templates**, one B-R `S→NP VP` explanation and one Cambridge sentence/clause teaching note. [`grammar/concepts.json`](../../grammar/concepts.json) contains lexical/grammatical concepts, not 1:1 B-R node explanations. [`web/content/lessons/course.json`](../../web/content/lessons/course.json) has source-cited lesson prose and examples, also not a general-purpose node-template registry. The current [`server/explanations.py`](../../server/explanations.py) allows only `label, surface, sentence, node_id, rule_id` slots—insufficient to explain sibling, head, complement, controller or movement relations.
+| Node in the worked example | Sentence-specific explanation | Printed evidence |
+| --- | --- | --- |
+| S | “The tired students” is the subject NP and “sighed quietly” is its predicate VP. | Ch2 pp. 29–30 |
+| Subject NP | “The tired students” is the NP immediately under S. It contains the determiner “The” and the nominal “tired students.” | Ch2 pp. 29–30; Ch7 pp. 141–142 |
+| DET | “The” fills the determiner position of “The tired students.” | Ch7 pp. 141–142 |
+| ART | “The” is the article that fills DET in this NP. | Ch7 pp. 141–142 |
+| Outer NOM | “Tired students” consists of the modifier “tired” and the nominal “students.” | Ch7 pp. 166–168 |
+| AP | “Tired” heads an adjective phrase that modifies the nominal “students.” | Ch3 p. 55; Ch7 pp. 166–168 |
+| A | “Tired” is the adjective heading the modifier AP. | Ch3 p. 55 |
+| Inner NOM | “Students” forms a nominal on its own, which gives “tired” a NOM sister. | Ch7 pp. 166–168 |
+| N | “Students” is the noun head of the inner nominal. | Ch7 pp. 141–142, 166–168 |
+| Outer VP | “Sighed quietly” combines the VP “sighed” with the adjunct “quietly.” | Ch5 pp. 87–90 |
+| Inner VP | “Sighed” forms a VP by itself in this sentence because the verb takes no complement in this use. | Ch4 pp. 71–72 |
+| V | “Sighed” is intransitive in this use and carries the past tense. “Quietly” modifies the VP headed by “sighed.” | Ch4 pp. 71–72; Ch5 pp. 87–90; Ch6 p. 113 |
+| AdvP | “Quietly” forms an adverb phrase functioning as an adjunct to “sighed.” | Ch3 p. 56; Ch5 pp. 87–90 |
+| Adv | “Quietly” is the adverb heading that adjunct phrase. | Ch3 p. 56 |
 
-For **each node** in an accepted B-R tree, compute facts *server-side*:
+The explanations above are drafts. [The runtime registry](../../grammar/explanation_templates.json) contains one reviewed B-R structural template for basic S → NP VP and a separate reviewed Cambridge teaching template. Confirm narrower figure references for each draft and review its matching conditions before runtime publication.
 
-```json
-{
-  "node_id": "n23",
-  "label": "NOM",
-  "profile_id": "V7-CORE",
-  "surface": "sad clowns",
-  "token_span": [1, 3],
-  "parent_label": "NP",
-  "parent_surface": "the sad clowns",
-  "head_word": "clowns",
-  "modifier_surface": "sad",
-  "child_labels": ["AP", "N"],
-  "functional_role": "nominal",
-  "source_record_id": "book-example-or-source-review-ID",
-  "applied_conversion_rule_ids": ["BR-CW-03"]
-}
-```
+## Implementation and acceptance
 
-Those are **observations from a validated structure**; they are not themselves proof of grammaticality. Bind them to a *chapter-specific template*:
-
-> In the NP “the sad clowns,” NOM covers “sad clowns.” The adjective phrase “sad” modifies the noun “clowns” at this nominal level. **Source:** Burton-Roberts, Chapter 7, relevant verified figure and printed page.
-
-The example above is **original proposed wording**, not a reviewed production template or a claim that the example matches a particular book figure. A template must have its own ID, approved source claim, exact figure/page, applicable profile/conditions, exception handling, independent reviewer and test fixture. Claim-bearing text must use reviewed templates, **not the raw Benepar tag or a guessed LLM rationale**.
-
-Output for each selected node should include two separately labeled sections:
-- **Observed B-R structure:** exact sentence words, dominance, immediate children, head/modifier/complement where justified, and whether it is a triangle/gap/empty position.
-- **Why this representation follows the book:** the matching reviewed template with printed-page citation. If none applies, show `NO_BOOK_BASIS` rather than create a claim.
-
-For a normalized B-R tree, aim for **100% node coverage** (including terminals, triangles, empty positions, traces, non-finite/aux features) by developing source-reviewed templates, not by generating one generic explanation. An unsupported free-form sentence gets a diagnostic explanation of observed parser output, explicitly *not* B-R source-approved XAI.
-
-## Decision 5 — Acceptance and implementation order
-
-1. **Approve profile and notation conflicts**, especially S′/S″/C/C1/C2, the two NOM profiles, ellipsis vs movement gaps, and source figure alternatives. The owner must choose the default user experience.
-2. **Make a machine-readable master crosswalk** from the spreadsheet with source IDs, structural predicates, applicability boundaries, negative examples, status and independent approval. Keep it distinct from the legacy 111-rule matrix and Cambridge grammaticality registry.
-3. **Audit at least several B-R figures per chapter** and distinguish evidence from actual printed book diagrams vs derivations from book instructions. Record original tree, source page, figure, review status, ambiguity and accepted alternative.
-4. **Build the structural converter** in small, versioned units (start V2 basic; V3 simple AP/PP; V4–V6 VP layers; V7 NP; V8–V9 clause layers; V10 nonfinite/control), preserving raw Benepar and explicit abstention.
-5. **Build and review one contextual node template per label/use**, then bind it to validated facts and a source page. Existing reviewed templates do not authorize all later nodes.
-6. **Golden regression and counterexamples:** compare full hierarchy and features, not label strings; test `that` as DET vs C, `to` as P vs nonfinite aux, unlabelled wh triangle, empty C1, nested VP adjunct, NOM appendix and ambiguous source trees.
-7. **User-testing and staged rollout:** learners inspect a real sentence and every node's source citation; keyboard access and an "unresolved" state are mandatory. Deploy behind a feature flag only after recorded approval and rollback.
-
-**Acceptance rule:** a case ships only if `profile_supported && transform_validated && source_reviewed && every_node_has_valid_xai_or_explicit_no_basis && tests_green && reviewer_approved`. Target full XAI coverage by *completing reviews*, not by silently converting `NO_BOOK_BASIS` into confident prose.
-
-## Current repository impact and ownership
-
-- The earlier [M12 draft PR #43](https://github.com/ybcole/SynTutor/pull/43) already contains exploratory canonical-display and XAI UI changes. Treat them as **experimental** until this specification and their matching golden tests are approved. This spec is a **separate docs-only PR**, not a merge of that implementation.
-- The final master checklist should **not** be marked fully complete on the strength of this plan. Human book-source review, chapter conversions, independent learner XAI review, Clerk/Supabase staging, and production deployment gates are separate pieces of evidence.
-- Practical first implementation after approval: V2 `S→NP VP` and two contextual node explanations (subject NP and predicate VP) from pp.29–30, in addition to the existing S template. Build outward by independently reviewed book chapters.
+1. Establish the unified rules in CONVENTIONS.md for free analysis. Preserve source-figure behavior in the lesson-specific rules. Check the schema and renderer for distinct category and feature rows, licensed empty kinds, indices, and source and transformation IDs.
+2. Convert and validate constituents using Benepar as candidate evidence. Resolve construction and lexical frame before applying structural rewrites. Attach provenance to each rewrite. For unknown valency, displaced adverbials or unresolved clause attachment, return a specific unresolved status with the candidate evidence.
+3. Verify combined fixtures for declarative, yes/no, subject wh, object wh, content vs relative *that*, temporal P vs subordinator, noun complement vs modifier, finite vs non-finite verb complement, Type I vs Type II, free vs controlled subject, passive with an original object gap, and lexical valency vs adjunct. Include ambiguous and unsupported counterparts. Check hierarchy, feature ownership and placement, token yield, movement links and explanatory coverage.
+4. Publish only verified rules and reviewed contextual templates. Track converter coverage and explanation coverage separately. This PR is a specification draft for review.
