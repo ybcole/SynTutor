@@ -374,7 +374,9 @@
             "blocked",
             "ambiguous",
             "not_applicable",
-            "unimplemented"
+            "unimplemented",
+            "newly_violated",
+            "newly_unmasked"
           ]
         },
         "recheck_status": {
