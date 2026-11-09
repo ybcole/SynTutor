@@ -17,7 +17,15 @@ export function builderProfile(chapter=null,appendix=false){
 }
 export function paletteFor(profile=builderProfile()){
  const chapter=profile.chapter;
- return {labels:Object.entries(INVENTORY.labels).filter(([,intro])=>intro<=chapter).map(([label])=>label),
+ const allowed=(label,intro)=>{
+  if(intro>chapter)return false;
+  // Chapter 1's pedagogical placeholders are not mature B-R syntax
+  // categories; later profiles must not suggest them as ordinary nodes.
+  if(chapter>1 && (label==='Sentence'||label==='Phrase'))return false;
+  if(chapter>3 && label==='PHRASE')return false;
+  return true;
+ };
+ return {labels:Object.entries(INVENTORY.labels).filter(([label,intro])=>allowed(label,intro)).map(([label])=>label),
   features:Object.entries(INVENTORY.features).filter(([,intro])=>intro<=chapter).map(([feature])=>feature)};
 }
 export const PHRASE_NODE_TYPES=Object.keys(INVENTORY.labels);
