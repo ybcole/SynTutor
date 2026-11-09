@@ -94,6 +94,63 @@ try:
             canonical.wait_for(state='visible')
             assert not page.locator('#treeCanvas').is_visible()
             svg = canonical.locator('svg')
+            # The pan/zoom module moves the SVG outside .lesson-tree-wrap.
+            # Its branch strokes and text font must survive that move, or
+            # the visible tree becomes disconnected and its labels overlap.
+            assert page.evaluate("""() => {
+              const svg = document.querySelector('#canonicalTreeView .canonical-layer svg');
+              const edges = [...svg.querySelectorAll('.lesson-branch')];
+              if (!edges.length || getComputedStyle(svg).fontSize !== '15px') return false;
+              if (!edges.every(line => {
+                const style = getComputedStyle(line);
+                return style.stroke !== 'none' && Number.parseFloat(style.strokeWidth) > 0;
+              })) return false;
+              const nodes = [...svg.querySelectorAll('g[data-node-id]')];
+              return nodes.some(g => g.querySelector('text') && getComputedStyle(g.querySelector('text')).fill !== 'none');
+            }"""), 'Canonical B-R viewport lost SVG branch stroke or measured label typography'
+            # Verify narrow layout and interactive zoom without changing tree
+            # edge coordinates or original leaf order.
+            page.set_viewport_size({'width': 390, 'height': 800})
+            canonical.get_by_role('button', name='Fit B-R tree').click()
+            geometry_before = page.evaluate("""() => {
+              const svg = document.querySelector('#canonicalTreeView svg');
+              return {
+                paths: [...svg.querySelectorAll('.lesson-branch')].map(n => [
+                  n.getAttribute('x1'), n.getAttribute('y1'), n.getAttribute('x2'), n.getAttribute('y2')]),
+                positions: [...svg.querySelectorAll('g[data-node-id] text')]
+                  .filter(t => !t.classList.contains('br-feature-row'))
+                  .map(t => t.getAttribute('x')),
+              };
+            }""")
+            # The SVG must preserve the canonical left-to-right word
+            # sequence, not just keep connector coordinates nonzero.
+            ordered_leaves = page.evaluate("""(root) => {
+              const svg = document.querySelector('#canonicalTreeView svg');
+              const nodes = [];
+              function visit(node) {
+                if ('word' in node) nodes.push(node.id);
+                else for (const child of node.children || []) visit(child);
+              }
+              visit(root);
+              return nodes.map(id => {
+                const group = [...svg.querySelectorAll('g[data-node-id]')]
+                  .find(g => g.getAttribute('data-node-id') === id);
+                return group && Number(group.querySelector('text')?.getAttribute('x'));
+              });
+            }""", br['tree']['root'])
+            assert all(isinstance(x, (int, float)) and x is not None for x in ordered_leaves), ordered_leaves
+            assert all(a < b for a, b in zip(ordered_leaves, ordered_leaves[1:])), ordered_leaves
+            canonical.get_by_role('button', name='Zoom in B-R tree').click()
+            geometry_after = page.evaluate("""() => {
+              const svg = document.querySelector('#canonicalTreeView svg');
+              return [...svg.querySelectorAll('.lesson-branch')].map(n => [
+                n.getAttribute('x1'), n.getAttribute('y1'), n.getAttribute('x2'), n.getAttribute('y2')]);
+            }""")
+            assert geometry_before['paths'] == geometry_after
+            assert len(geometry_before['positions']) >= 5
+            assert not page.locator('#treeCanvas').is_visible()
+            page.set_viewport_size({'width': 1440, 'height': 1000})
+            canonical.get_by_role('button', name='Fit B-R tree').click()
             assert svg.locator('.br-feature-row').all_text_contents() == ['[intrans]', '[pres]']
             labels = svg.locator('text').all_text_contents()
             assert all(label in labels for label in ('S', 'NP', 'DET', 'ART', 'NOM', 'N', 'VP', 'V', 'sleeps')), labels

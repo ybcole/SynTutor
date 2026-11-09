@@ -1387,6 +1387,27 @@ body.lesson-view #explainNode:empty { display: none; }
   transform-origin: 0 0;
   will-change: transform;
 }
+/* The pan/zoom adapter MOVES the SVG from .lesson-tree-wrap into this
+   absolutely positioned layer. Reapply the source tree SVG presentation:
+   without it the line elements have SVG's default stroke:none, and labels
+   lose the 15px font used to compute their positions and sibling widths.
+   Keeping these rules scoped to the canonical viewport avoids changing the
+   lesson renderer or the semantic B-R tree hierarchy. */
+.canonical-tree-view .canonical-layer svg {
+  display: block;
+  max-width: none;
+  font: 15px system-ui, sans-serif;
+  overflow: visible;
+}
+.canonical-tree-view .canonical-layer svg text {
+  fill: var(--ink);
+}
+.canonical-tree-view .canonical-layer svg .lesson-branch,
+.canonical-tree-view .canonical-layer svg polygon {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.5;
+}
 .canonical-zoom {
   position: absolute;
   top: 8px;
