@@ -1,0 +1,1562 @@
+{
+  "schema_version": "xai-pre-fixtures-1.0",
+  "purpose": "Synthetic protocol-only examples; these are NOT verified source-backed detector outputs",
+  "review_state": "NOT_HUMAN_ADJUDICATED",
+  "cases": [
+    {
+      "id": "interacting_two_errors_temporal_context",
+      "purpose": "Two coupled violations plus contextual temporal ambiguity and competing tree versions",
+      "expected": {
+        "original_findings": 3,
+        "issue_groups": 1,
+        "candidates": 3
+      },
+      "envelope": {
+        "schema_version": "xai-pre-1.0",
+        "mode": "simulation",
+        "rule_set_version": "preflight-no-enabled-constraints",
+        "variety": {
+          "english_variety": "Standard English",
+          "register": "unspecified"
+        },
+        "original": {
+          "version_id": "u0",
+          "text": "She have went to the store yesterday.",
+          "tokens": [
+            {
+              "id": "u0-t1",
+              "text": "She",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "id": "u0-t2",
+              "text": "have",
+              "start": 4,
+              "end": 8
+            },
+            {
+              "id": "u0-t3",
+              "text": "went",
+              "start": 9,
+              "end": 13
+            },
+            {
+              "id": "u0-t4",
+              "text": "to",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "id": "u0-t5",
+              "text": "the",
+              "start": 17,
+              "end": 20
+            },
+            {
+              "id": "u0-t6",
+              "text": "store",
+              "start": 21,
+              "end": 26
+            },
+            {
+              "id": "u0-t7",
+              "text": "yesterday",
+              "start": 27,
+              "end": 36
+            },
+            {
+              "id": "u0-t8",
+              "text": ".",
+              "start": 36,
+              "end": 37
+            }
+          ],
+          "analysis_status": "not_evaluated",
+          "tree_ref": null
+        },
+        "findings": [
+          {
+            "id": "f1",
+            "rule_id": "DEMO-FINITE-AGREEMENT",
+            "status": "VIOLATED",
+            "affected_token_ids": [
+              "u0-t1",
+              "u0-t2"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation fixture only — no executable Cambridge rule is enabled."
+          },
+          {
+            "id": "f2",
+            "rule_id": "DEMO-PERFECT-VERB-FORM",
+            "status": "VIOLATED",
+            "affected_token_ids": [
+              "u0-t2",
+              "u0-t3"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [
+              "CGEL-PERF-PAST-PARTICIPLE",
+              "BR3-PERF-SELECTS-PERF-PARTICIPLE"
+            ],
+            "runtime_eligible": false,
+            "reason": "Simulation fixture only — no executable Cambridge rule is enabled."
+          },
+          {
+            "id": "f3",
+            "rule_id": "DEMO-TENSE-ADJUNCT-CONTEXT",
+            "status": "AMBIGUOUS",
+            "affected_token_ids": [
+              "u0-t7"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [
+              "CGEL-PERF-PAST-ADJUNCT-DEFAULT",
+              "CGEL-PERF-EXPERIENTIAL-EXCEPTION"
+            ],
+            "runtime_eligible": false,
+            "reason": "Simulation fixture only — no executable Cambridge rule is enabled."
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "f1",
+            "to": "f2",
+            "kind": "SHARES_CONSTRUCTION"
+          },
+          {
+            "from": "f2",
+            "to": "f3",
+            "kind": "CHECK_DEPENDS_ON"
+          }
+        ],
+        "groups": [
+          {
+            "id": "g1",
+            "finding_ids": [
+              "f1",
+              "f2",
+              "f3"
+            ],
+            "coupling": "interacting",
+            "rationale": "Auxiliary agreement, participle licensing and past-time interpretation interact."
+          }
+        ],
+        "candidates": [
+          {
+            "version_id": "u1",
+            "parent_version_id": "u0",
+            "text": "She has went to the store yesterday.",
+            "tokens": [
+              {
+                "id": "u1-t1",
+                "text": "She",
+                "start": 0,
+                "end": 3
+              },
+              {
+                "id": "u1-t2",
+                "text": "has",
+                "start": 4,
+                "end": 7
+              },
+              {
+                "id": "u1-t3",
+                "text": "went",
+                "start": 8,
+                "end": 12
+              },
+              {
+                "id": "u1-t4",
+                "text": "to",
+                "start": 13,
+                "end": 15
+              },
+              {
+                "id": "u1-t5",
+                "text": "the",
+                "start": 16,
+                "end": 19
+              },
+              {
+                "id": "u1-t6",
+                "text": "store",
+                "start": 20,
+                "end": 25
+              },
+              {
+                "id": "u1-t7",
+                "text": "yesterday",
+                "start": 26,
+                "end": 35
+              },
+              {
+                "id": "u1-t8",
+                "text": ".",
+                "start": 35,
+                "end": 36
+              }
+            ],
+            "edits": [
+              {
+                "operation": "replace",
+                "start": 4,
+                "end": 8,
+                "replacement": "has",
+                "original_token_ids": [
+                  "u0-t2"
+                ]
+              }
+            ],
+            "targets": [
+              "f1"
+            ],
+            "lineage": [
+              {
+                "finding_id": "f1",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u1-f1"
+                ]
+              },
+              {
+                "finding_id": "f2",
+                "after": "persists",
+                "recheck_status": "VIOLATED",
+                "proof_atom_ids": []
+              },
+              {
+                "finding_id": "f3",
+                "after": "ambiguous",
+                "recheck_status": "AMBIGUOUS",
+                "proof_atom_ids": []
+              }
+            ],
+            "new_findings": [],
+            "analysis_status": "not_evaluated",
+            "tree_ref": null,
+            "meaning_changed": false,
+            "global_certified": false,
+            "notes": "Simulated counterfactual; a live parser/recheck has not run."
+          },
+          {
+            "version_id": "u2",
+            "parent_version_id": "u1",
+            "text": "She has gone to the store yesterday.",
+            "tokens": [
+              {
+                "id": "u2-t1",
+                "text": "She",
+                "start": 0,
+                "end": 3
+              },
+              {
+                "id": "u2-t2",
+                "text": "has",
+                "start": 4,
+                "end": 7
+              },
+              {
+                "id": "u2-t3",
+                "text": "gone",
+                "start": 8,
+                "end": 12
+              },
+              {
+                "id": "u2-t4",
+                "text": "to",
+                "start": 13,
+                "end": 15
+              },
+              {
+                "id": "u2-t5",
+                "text": "the",
+                "start": 16,
+                "end": 19
+              },
+              {
+                "id": "u2-t6",
+                "text": "store",
+                "start": 20,
+                "end": 25
+              },
+              {
+                "id": "u2-t7",
+                "text": "yesterday",
+                "start": 26,
+                "end": 35
+              },
+              {
+                "id": "u2-t8",
+                "text": ".",
+                "start": 35,
+                "end": 36
+              }
+            ],
+            "edits": [
+              {
+                "operation": "replace",
+                "start": 8,
+                "end": 12,
+                "replacement": "gone",
+                "original_token_ids": [
+                  "u1-t3"
+                ]
+              }
+            ],
+            "targets": [
+              "f1",
+              "f2"
+            ],
+            "lineage": [
+              {
+                "finding_id": "f1",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u2-f1"
+                ]
+              },
+              {
+                "finding_id": "f2",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u2-f2"
+                ]
+              },
+              {
+                "finding_id": "f3",
+                "after": "ambiguous",
+                "recheck_status": "AMBIGUOUS",
+                "proof_atom_ids": []
+              }
+            ],
+            "new_findings": [],
+            "analysis_status": "not_evaluated",
+            "tree_ref": null,
+            "meaning_changed": false,
+            "global_certified": false,
+            "notes": "Simulated counterfactual; a live parser/recheck has not run."
+          },
+          {
+            "version_id": "u3",
+            "parent_version_id": "u0",
+            "text": "She went to the store yesterday.",
+            "tokens": [
+              {
+                "id": "u3-t1",
+                "text": "She",
+                "start": 0,
+                "end": 3
+              },
+              {
+                "id": "u3-t2",
+                "text": "went",
+                "start": 4,
+                "end": 8
+              },
+              {
+                "id": "u3-t3",
+                "text": "to",
+                "start": 9,
+                "end": 11
+              },
+              {
+                "id": "u3-t4",
+                "text": "the",
+                "start": 12,
+                "end": 15
+              },
+              {
+                "id": "u3-t5",
+                "text": "store",
+                "start": 16,
+                "end": 21
+              },
+              {
+                "id": "u3-t6",
+                "text": "yesterday",
+                "start": 22,
+                "end": 31
+              },
+              {
+                "id": "u3-t7",
+                "text": ".",
+                "start": 31,
+                "end": 32
+              }
+            ],
+            "edits": [
+              {
+                "operation": "delete",
+                "start": 4,
+                "end": 9,
+                "replacement": "",
+                "original_token_ids": [
+                  "u0-t2"
+                ]
+              }
+            ],
+            "targets": [
+              "f1",
+              "f2",
+              "f3"
+            ],
+            "lineage": [
+              {
+                "finding_id": "f1",
+                "after": "no_longer_applicable_after_rewrite",
+                "recheck_status": "NOT_APPLICABLE",
+                "proof_atom_ids": []
+              },
+              {
+                "finding_id": "f2",
+                "after": "no_longer_applicable_after_rewrite",
+                "recheck_status": "NOT_APPLICABLE",
+                "proof_atom_ids": []
+              },
+              {
+                "finding_id": "f3",
+                "after": "not_applicable",
+                "recheck_status": "NOT_APPLICABLE",
+                "proof_atom_ids": []
+              }
+            ],
+            "new_findings": [],
+            "analysis_status": "not_evaluated",
+            "tree_ref": null,
+            "meaning_changed": true,
+            "global_certified": false,
+            "notes": "Simulated counterfactual; a live parser/recheck has not run."
+          }
+        ],
+        "global_verdict": {
+          "status": "PARTIALLY_EVALUATED",
+          "whole_sentence_certified": false,
+          "notes": "Synthetic test scenario, never a production grammaticality judgment."
+        }
+      }
+    },
+    {
+      "id": "independent_error_groups",
+      "purpose": "Independent agreement and determiner issues, corrected across two successive versions",
+      "expected": {
+        "original_findings": 2,
+        "issue_groups": 2,
+        "candidates": 2
+      },
+      "envelope": {
+        "schema_version": "xai-pre-1.0",
+        "mode": "simulation",
+        "rule_set_version": "preflight-no-enabled-constraints",
+        "variety": {
+          "english_variety": "Standard English",
+          "register": "unspecified"
+        },
+        "original": {
+          "version_id": "u0",
+          "text": "The boys is carrying a boxes.",
+          "tokens": [
+            {
+              "id": "u0-t1",
+              "text": "The",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "id": "u0-t2",
+              "text": "boys",
+              "start": 4,
+              "end": 8
+            },
+            {
+              "id": "u0-t3",
+              "text": "is",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "id": "u0-t4",
+              "text": "carrying",
+              "start": 12,
+              "end": 20
+            },
+            {
+              "id": "u0-t5",
+              "text": "a",
+              "start": 21,
+              "end": 22
+            },
+            {
+              "id": "u0-t6",
+              "text": "boxes",
+              "start": 23,
+              "end": 28
+            },
+            {
+              "id": "u0-t7",
+              "text": ".",
+              "start": 28,
+              "end": 29
+            }
+          ],
+          "analysis_status": "not_evaluated",
+          "tree_ref": null
+        },
+        "findings": [
+          {
+            "id": "f1",
+            "rule_id": "DEMO-FINITE-AGREEMENT",
+            "status": "VIOLATED",
+            "affected_token_ids": [
+              "u0-t2",
+              "u0-t3"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation fixture only — no executable Cambridge rule is enabled."
+          },
+          {
+            "id": "f2",
+            "rule_id": "DEMO-DETERMINER-NUMBER",
+            "status": "VIOLATED",
+            "affected_token_ids": [
+              "u0-t5",
+              "u0-t6"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation fixture only — no executable Cambridge rule is enabled."
+          }
+        ],
+        "dependencies": [],
+        "groups": [
+          {
+            "id": "g1",
+            "finding_ids": [
+              "f1"
+            ],
+            "coupling": "independent",
+            "rationale": "Finite agreement independent of selected object NP."
+          },
+          {
+            "id": "g2",
+            "finding_ids": [
+              "f2"
+            ],
+            "coupling": "independent",
+            "rationale": "Determiner number within object NP."
+          }
+        ],
+        "candidates": [
+          {
+            "version_id": "u1",
+            "parent_version_id": "u0",
+            "text": "The boys are carrying a boxes.",
+            "tokens": [
+              {
+                "id": "u1-t1",
+                "text": "The",
+                "start": 0,
+                "end": 3
+              },
+              {
+                "id": "u1-t2",
+                "text": "boys",
+                "start": 4,
+                "end": 8
+              },
+              {
+                "id": "u1-t3",
+                "text": "are",
+                "start": 9,
+                "end": 12
+              },
+              {
+                "id": "u1-t4",
+                "text": "carrying",
+                "start": 13,
+                "end": 21
+              },
+              {
+                "id": "u1-t5",
+                "text": "a",
+                "start": 22,
+                "end": 23
+              },
+              {
+                "id": "u1-t6",
+                "text": "boxes",
+                "start": 24,
+                "end": 29
+              },
+              {
+                "id": "u1-t7",
+                "text": ".",
+                "start": 29,
+                "end": 30
+              }
+            ],
+            "edits": [
+              {
+                "operation": "replace",
+                "start": 9,
+                "end": 11,
+                "replacement": "are",
+                "original_token_ids": [
+                  "u0-t3"
+                ]
+              }
+            ],
+            "targets": [
+              "f1"
+            ],
+            "lineage": [
+              {
+                "finding_id": "f1",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u1-f1"
+                ]
+              },
+              {
+                "finding_id": "f2",
+                "after": "persists",
+                "recheck_status": "VIOLATED",
+                "proof_atom_ids": []
+              }
+            ],
+            "new_findings": [],
+            "analysis_status": "not_evaluated",
+            "tree_ref": null,
+            "meaning_changed": false,
+            "global_certified": false,
+            "notes": "Simulated counterfactual; a live parser/recheck has not run."
+          },
+          {
+            "version_id": "u2",
+            "parent_version_id": "u1",
+            "text": "The boys are carrying a box.",
+            "tokens": [
+              {
+                "id": "u2-t1",
+                "text": "The",
+                "start": 0,
+                "end": 3
+              },
+              {
+                "id": "u2-t2",
+                "text": "boys",
+                "start": 4,
+                "end": 8
+              },
+              {
+                "id": "u2-t3",
+                "text": "are",
+                "start": 9,
+                "end": 12
+              },
+              {
+                "id": "u2-t4",
+                "text": "carrying",
+                "start": 13,
+                "end": 21
+              },
+              {
+                "id": "u2-t5",
+                "text": "a",
+                "start": 22,
+                "end": 23
+              },
+              {
+                "id": "u2-t6",
+                "text": "box",
+                "start": 24,
+                "end": 27
+              },
+              {
+                "id": "u2-t7",
+                "text": ".",
+                "start": 27,
+                "end": 28
+              }
+            ],
+            "edits": [
+              {
+                "operation": "replace",
+                "start": 24,
+                "end": 29,
+                "replacement": "box",
+                "original_token_ids": [
+                  "u1-t6"
+                ]
+              }
+            ],
+            "targets": [
+              "f2"
+            ],
+            "lineage": [
+              {
+                "finding_id": "f1",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u2-f1"
+                ]
+              },
+              {
+                "finding_id": "f2",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u2-f2"
+                ]
+              }
+            ],
+            "new_findings": [],
+            "analysis_status": "not_evaluated",
+            "tree_ref": null,
+            "meaning_changed": true,
+            "global_certified": false,
+            "notes": "Simulated counterfactual; a live parser/recheck has not run."
+          }
+        ],
+        "global_verdict": {
+          "status": "PARTIALLY_EVALUATED",
+          "whole_sentence_certified": false,
+          "notes": "Synthetic test scenario, never a production grammaticality judgment."
+        }
+      }
+    },
+    {
+      "id": "edit_introduces_error",
+      "purpose": "Editing the subject to fix agreement introduces determiner–noun number mismatch",
+      "expected": {
+        "original_findings": 2,
+        "issue_groups": 1,
+        "candidates": 1
+      },
+      "envelope": {
+        "schema_version": "xai-pre-1.0",
+        "mode": "simulation",
+        "rule_set_version": "preflight-no-enabled-constraints",
+        "variety": {
+          "english_variety": "Standard English",
+          "register": "unspecified"
+        },
+        "original": {
+          "version_id": "u0",
+          "text": "This boy walk home.",
+          "tokens": [
+            {
+              "id": "u0-t1",
+              "text": "This",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "id": "u0-t2",
+              "text": "boy",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "id": "u0-t3",
+              "text": "walk",
+              "start": 9,
+              "end": 13
+            },
+            {
+              "id": "u0-t4",
+              "text": "home",
+              "start": 14,
+              "end": 18
+            },
+            {
+              "id": "u0-t5",
+              "text": ".",
+              "start": 18,
+              "end": 19
+            }
+          ],
+          "analysis_status": "not_evaluated",
+          "tree_ref": null
+        },
+        "findings": [
+          {
+            "id": "f1",
+            "rule_id": "DEMO-FINITE-AGREEMENT",
+            "status": "VIOLATED",
+            "affected_token_ids": [
+              "u0-t2",
+              "u0-t3"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation fixture only — no executable Cambridge rule is enabled."
+          },
+          {
+            "id": "f2",
+            "rule_id": "DEMO-DETERMINER-NUMBER",
+            "status": "SATISFIED",
+            "affected_token_ids": [
+              "u0-t1",
+              "u0-t2"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [
+              "demo-original-determiner-agreement"
+            ],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation fixture only — no executable Cambridge rule is enabled."
+          }
+        ],
+        "dependencies": [],
+        "groups": [
+          {
+            "id": "g1",
+            "finding_ids": [
+              "f1"
+            ],
+            "coupling": "independent",
+            "rationale": "Subject–verb relation initially violated."
+          }
+        ],
+        "candidates": [
+          {
+            "version_id": "u1",
+            "parent_version_id": "u0",
+            "text": "This boys walk home.",
+            "tokens": [
+              {
+                "id": "u1-t1",
+                "text": "This",
+                "start": 0,
+                "end": 4
+              },
+              {
+                "id": "u1-t2",
+                "text": "boys",
+                "start": 5,
+                "end": 9
+              },
+              {
+                "id": "u1-t3",
+                "text": "walk",
+                "start": 10,
+                "end": 14
+              },
+              {
+                "id": "u1-t4",
+                "text": "home",
+                "start": 15,
+                "end": 19
+              },
+              {
+                "id": "u1-t5",
+                "text": ".",
+                "start": 19,
+                "end": 20
+              }
+            ],
+            "edits": [
+              {
+                "operation": "replace",
+                "start": 5,
+                "end": 8,
+                "replacement": "boys",
+                "original_token_ids": [
+                  "u0-t2"
+                ]
+              }
+            ],
+            "targets": [
+              "f1"
+            ],
+            "lineage": [
+              {
+                "finding_id": "f1",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u1-f1"
+                ]
+              },
+              {
+                "finding_id": "f2",
+                "after": "newly_violated",
+                "recheck_status": "VIOLATED",
+                "proof_atom_ids": []
+              }
+            ],
+            "new_findings": [
+              {
+                "id": "nf1",
+                "rule_id": "DEMO-DETERMINER-NUMBER",
+                "origin": "introduced",
+                "prior_finding_id": "f2",
+                "causal_evidence_ids": [
+                  "demo-causal-subject-number-edit"
+                ]
+              }
+            ],
+            "analysis_status": "not_evaluated",
+            "tree_ref": null,
+            "meaning_changed": true,
+            "global_certified": false,
+            "notes": "Simulated counterfactual; a live parser/recheck has not run."
+          }
+        ],
+        "global_verdict": {
+          "status": "PARTIALLY_EVALUATED",
+          "whole_sentence_certified": false,
+          "notes": "Synthetic test scenario, never a production grammaticality judgment."
+        }
+      }
+    },
+    {
+      "id": "repair_unmasks_blocked_check",
+      "purpose": "A formerly blocked diagnostic becomes evaluable after a different repair",
+      "expected": {
+        "original_findings": 2,
+        "issue_groups": 1,
+        "candidates": 1
+      },
+      "envelope": {
+        "schema_version": "xai-pre-1.0",
+        "mode": "simulation",
+        "rule_set_version": "preflight-no-enabled-constraints",
+        "variety": {
+          "english_variety": "Standard English",
+          "register": "unspecified"
+        },
+        "original": {
+          "version_id": "u0",
+          "text": "She have went home.",
+          "tokens": [
+            {
+              "id": "u0-t1",
+              "text": "She",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "id": "u0-t2",
+              "text": "have",
+              "start": 4,
+              "end": 8
+            },
+            {
+              "id": "u0-t3",
+              "text": "went",
+              "start": 9,
+              "end": 13
+            },
+            {
+              "id": "u0-t4",
+              "text": "home",
+              "start": 14,
+              "end": 18
+            },
+            {
+              "id": "u0-t5",
+              "text": ".",
+              "start": 18,
+              "end": 19
+            }
+          ],
+          "analysis_status": "not_evaluated",
+          "tree_ref": null
+        },
+        "findings": [
+          {
+            "id": "f1",
+            "rule_id": "DEMO-FINITE-AGREEMENT",
+            "status": "VIOLATED",
+            "affected_token_ids": [
+              "u0-t1",
+              "u0-t2"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation fixture only — no executable Cambridge rule is enabled."
+          },
+          {
+            "id": "f2",
+            "rule_id": "DEMO-CLAUSE-ATTACHMENT",
+            "status": "BLOCKED",
+            "affected_token_ids": [
+              "u0-t3"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation fixture only — no executable Cambridge rule is enabled."
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "f2",
+            "to": "f1",
+            "kind": "CHECK_BLOCKED_BY"
+          }
+        ],
+        "groups": [
+          {
+            "id": "g1",
+            "finding_ids": [
+              "f1",
+              "f2"
+            ],
+            "coupling": "blocked",
+            "rationale": "A structural check cannot be evaluated in the original analysis."
+          }
+        ],
+        "candidates": [
+          {
+            "version_id": "u1",
+            "parent_version_id": "u0",
+            "text": "She has went home.",
+            "tokens": [
+              {
+                "id": "u1-t1",
+                "text": "She",
+                "start": 0,
+                "end": 3
+              },
+              {
+                "id": "u1-t2",
+                "text": "has",
+                "start": 4,
+                "end": 7
+              },
+              {
+                "id": "u1-t3",
+                "text": "went",
+                "start": 8,
+                "end": 12
+              },
+              {
+                "id": "u1-t4",
+                "text": "home",
+                "start": 13,
+                "end": 17
+              },
+              {
+                "id": "u1-t5",
+                "text": ".",
+                "start": 17,
+                "end": 18
+              }
+            ],
+            "edits": [
+              {
+                "operation": "replace",
+                "start": 4,
+                "end": 8,
+                "replacement": "has",
+                "original_token_ids": [
+                  "u0-t2"
+                ]
+              }
+            ],
+            "targets": [
+              "f1"
+            ],
+            "lineage": [
+              {
+                "finding_id": "f1",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u1-f1"
+                ]
+              },
+              {
+                "finding_id": "f2",
+                "after": "newly_unmasked",
+                "recheck_status": "VIOLATED",
+                "proof_atom_ids": []
+              }
+            ],
+            "new_findings": [
+              {
+                "id": "nf1",
+                "rule_id": "DEMO-CLAUSE-ATTACHMENT",
+                "origin": "unmasked",
+                "prior_finding_id": "f2",
+                "causal_evidence_ids": []
+              }
+            ],
+            "analysis_status": "not_evaluated",
+            "tree_ref": null,
+            "meaning_changed": false,
+            "global_certified": false,
+            "notes": "Simulated counterfactual; a live parser/recheck has not run."
+          }
+        ],
+        "global_verdict": {
+          "status": "PARTIALLY_EVALUATED",
+          "whole_sentence_certified": false,
+          "notes": "Synthetic test scenario, never a production grammaticality judgment."
+        }
+      }
+    },
+    {
+      "id": "cambridge_experiential_exception",
+      "purpose": "CGEL p.144 forbids blanket rejection of all present-perfect plus yesterday combinations",
+      "expected": {
+        "original_findings": 0,
+        "issue_groups": 0,
+        "candidates": 0
+      },
+      "envelope": {
+        "schema_version": "xai-pre-1.0",
+        "mode": "simulation",
+        "rule_set_version": "preflight-no-enabled-constraints",
+        "variety": {
+          "english_variety": "unspecified",
+          "register": "unspecified"
+        },
+        "original": {
+          "version_id": "u0",
+          "text": "We've already discussed it yesterday.",
+          "tokens": [
+            {
+              "id": "u0-t1",
+              "text": "We've",
+              "start": 0,
+              "end": 5
+            },
+            {
+              "id": "u0-t2",
+              "text": "already",
+              "start": 6,
+              "end": 13
+            },
+            {
+              "id": "u0-t3",
+              "text": "discussed",
+              "start": 14,
+              "end": 23
+            },
+            {
+              "id": "u0-t4",
+              "text": "it",
+              "start": 24,
+              "end": 26
+            },
+            {
+              "id": "u0-t5",
+              "text": "yesterday",
+              "start": 27,
+              "end": 36
+            },
+            {
+              "id": "u0-t6",
+              "text": ".",
+              "start": 36,
+              "end": 37
+            }
+          ],
+          "analysis_status": "not_evaluated",
+          "tree_ref": null
+        },
+        "findings": [],
+        "dependencies": [],
+        "groups": [],
+        "candidates": [],
+        "global_verdict": {
+          "status": "NOT_EVALUATED",
+          "whole_sentence_certified": false,
+          "notes": "Synthetic test scenario, never a production grammaticality judgment."
+        }
+      }
+    },
+    {
+      "id": "lexical_have_not_perfect",
+      "purpose": "Lexical have is not automatically the perfect auxiliary",
+      "expected": {
+        "original_findings": 0,
+        "issue_groups": 0,
+        "candidates": 0
+      },
+      "envelope": {
+        "schema_version": "xai-pre-1.0",
+        "mode": "simulation",
+        "rule_set_version": "preflight-no-enabled-constraints",
+        "variety": {
+          "english_variety": "Standard English",
+          "register": "unspecified"
+        },
+        "original": {
+          "version_id": "u0",
+          "text": "She had breakfast.",
+          "tokens": [
+            {
+              "id": "u0-t1",
+              "text": "She",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "id": "u0-t2",
+              "text": "had",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "id": "u0-t3",
+              "text": "breakfast",
+              "start": 8,
+              "end": 17
+            },
+            {
+              "id": "u0-t4",
+              "text": ".",
+              "start": 17,
+              "end": 18
+            }
+          ],
+          "analysis_status": "not_evaluated",
+          "tree_ref": null
+        },
+        "findings": [],
+        "dependencies": [],
+        "groups": [],
+        "candidates": [],
+        "global_verdict": {
+          "status": "NOT_EVALUATED",
+          "whole_sentence_certified": false,
+          "notes": "Synthetic test scenario, never a production grammaticality judgment."
+        }
+      }
+    },
+    {
+      "id": "past_and_participle_syncretism",
+      "purpose": "Identical wanted spelling can realize different inflectional forms",
+      "expected": {
+        "original_findings": 0,
+        "issue_groups": 0,
+        "candidates": 0
+      },
+      "envelope": {
+        "schema_version": "xai-pre-1.0",
+        "mode": "simulation",
+        "rule_set_version": "preflight-no-enabled-constraints",
+        "variety": {
+          "english_variety": "Standard English",
+          "register": "unspecified"
+        },
+        "original": {
+          "version_id": "u0",
+          "text": "She had wanted the car.",
+          "tokens": [
+            {
+              "id": "u0-t1",
+              "text": "She",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "id": "u0-t2",
+              "text": "had",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "id": "u0-t3",
+              "text": "wanted",
+              "start": 8,
+              "end": 14
+            },
+            {
+              "id": "u0-t4",
+              "text": "the",
+              "start": 15,
+              "end": 18
+            },
+            {
+              "id": "u0-t5",
+              "text": "car",
+              "start": 19,
+              "end": 22
+            },
+            {
+              "id": "u0-t6",
+              "text": ".",
+              "start": 22,
+              "end": 23
+            }
+          ],
+          "analysis_status": "not_evaluated",
+          "tree_ref": null
+        },
+        "findings": [],
+        "dependencies": [],
+        "groups": [],
+        "candidates": [],
+        "global_verdict": {
+          "status": "NOT_EVALUATED",
+          "whole_sentence_certified": false,
+          "notes": "Synthetic test scenario, never a production grammaticality judgment."
+        }
+      }
+    },
+    {
+      "id": "ambiguous_pp_attachment",
+      "purpose": "Do not turn competing legitimate attachments into an error verdict",
+      "expected": {
+        "original_findings": 1,
+        "issue_groups": 1,
+        "candidates": 0
+      },
+      "envelope": {
+        "schema_version": "xai-pre-1.0",
+        "mode": "simulation",
+        "rule_set_version": "preflight-no-enabled-constraints",
+        "variety": {
+          "english_variety": "Standard English",
+          "register": "unspecified"
+        },
+        "original": {
+          "version_id": "u0",
+          "text": "I saw the man with the telescope.",
+          "tokens": [
+            {
+              "id": "u0-t1",
+              "text": "I",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "id": "u0-t2",
+              "text": "saw",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "id": "u0-t3",
+              "text": "the",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "id": "u0-t4",
+              "text": "man",
+              "start": 10,
+              "end": 13
+            },
+            {
+              "id": "u0-t5",
+              "text": "with",
+              "start": 14,
+              "end": 18
+            },
+            {
+              "id": "u0-t6",
+              "text": "the",
+              "start": 19,
+              "end": 22
+            },
+            {
+              "id": "u0-t7",
+              "text": "telescope",
+              "start": 23,
+              "end": 32
+            },
+            {
+              "id": "u0-t8",
+              "text": ".",
+              "start": 32,
+              "end": 33
+            }
+          ],
+          "analysis_status": "not_evaluated",
+          "tree_ref": null
+        },
+        "findings": [
+          {
+            "id": "f1",
+            "rule_id": "DEMO-ATTACHMENT-HYPOTHESIS",
+            "status": "AMBIGUOUS",
+            "affected_token_ids": [
+              "u0-t5",
+              "u0-t3",
+              "u0-t7"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation fixture only — no executable Cambridge rule is enabled."
+          }
+        ],
+        "dependencies": [],
+        "groups": [
+          {
+            "id": "g1",
+            "finding_ids": [
+              "f1"
+            ],
+            "coupling": "ambiguous",
+            "rationale": "Ambiguous attachment is not automatically a grammar error."
+          }
+        ],
+        "candidates": [],
+        "global_verdict": {
+          "status": "PARTIALLY_EVALUATED",
+          "whole_sentence_certified": false,
+          "notes": "Synthetic test scenario, never a production grammaticality judgment."
+        }
+      }
+    },
+    {
+      "id": "correct_sentence_node_inspection",
+      "purpose": "Every meaningful constituent still requires a clickable contextual description in XAI-2/3",
+      "expected": {
+        "original_findings": 0,
+        "issue_groups": 0,
+        "candidates": 0
+      },
+      "envelope": {
+        "schema_version": "xai-pre-1.0",
+        "mode": "simulation",
+        "rule_set_version": "preflight-no-enabled-constraints",
+        "variety": {
+          "english_variety": "Standard English",
+          "register": "unspecified"
+        },
+        "original": {
+          "version_id": "u0",
+          "text": "I hate you.",
+          "tokens": [
+            {
+              "id": "u0-t1",
+              "text": "I",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "id": "u0-t2",
+              "text": "hate",
+              "start": 2,
+              "end": 6
+            },
+            {
+              "id": "u0-t3",
+              "text": "you",
+              "start": 7,
+              "end": 10
+            },
+            {
+              "id": "u0-t4",
+              "text": ".",
+              "start": 10,
+              "end": 11
+            }
+          ],
+          "analysis_status": "not_evaluated",
+          "tree_ref": null
+        },
+        "findings": [],
+        "dependencies": [],
+        "groups": [],
+        "candidates": [],
+        "global_verdict": {
+          "status": "NOT_EVALUATED",
+          "whole_sentence_certified": false,
+          "notes": "Synthetic test scenario, never a production grammaticality judgment."
+        }
+      }
+    },
+    {
+      "id": "valid_perfect_no_false_alarm",
+      "purpose": "Do not flag a correct auxiliary chain due only to presence of had",
+      "expected": {
+        "original_findings": 0,
+        "issue_groups": 0,
+        "candidates": 0
+      },
+      "envelope": {
+        "schema_version": "xai-pre-1.0",
+        "mode": "simulation",
+        "rule_set_version": "preflight-no-enabled-constraints",
+        "variety": {
+          "english_variety": "Standard English",
+          "register": "unspecified"
+        },
+        "original": {
+          "version_id": "u0",
+          "text": "She had eaten.",
+          "tokens": [
+            {
+              "id": "u0-t1",
+              "text": "She",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "id": "u0-t2",
+              "text": "had",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "id": "u0-t3",
+              "text": "eaten",
+              "start": 8,
+              "end": 13
+            },
+            {
+              "id": "u0-t4",
+              "text": ".",
+              "start": 13,
+              "end": 14
+            }
+          ],
+          "analysis_status": "not_evaluated",
+          "tree_ref": null
+        },
+        "findings": [],
+        "dependencies": [],
+        "groups": [],
+        "candidates": [],
+        "global_verdict": {
+          "status": "NOT_EVALUATED",
+          "whole_sentence_certified": false,
+          "notes": "Synthetic test scenario, never a production grammaticality judgment."
+        }
+      }
+    }
+  ]
+}
