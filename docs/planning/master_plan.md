@@ -9,7 +9,7 @@
 
 ## Companion execution plans
 
-The detailed, sentence-specific explanation and error-diagnosis workstream is now defined in [XAI Master Plan](XAI_MASTER_PLAN.md), with a separate [XAI implementation master prompt](MASTER_PROMPT_XAI.md). These supersede *only* the minimal XAI foundation assumptions for this dedicated workstream; they do not retroactively declare the advanced explanation engine implemented.
+The detailed, sentence-specific explanation and error-diagnosis workstream is now defined in [XAI Master Plan](XAI_MASTER_PLAN.md), with a separate [XAI implementation master prompt](MASTER_PROMPT_XAI.md). Before beginning milestones, apply the [uploaded-book source audit and multi-error dependency/repair contract](XAI_SOURCE_AUDIT_MULTI_ERROR.md), which adds the mandatory XAI-PRE gate. These documents supersede *only* the minimal XAI foundation assumptions for this dedicated workstream; they do not retroactively declare the advanced explanation engine implemented.
 
 ## Executive direction
 
