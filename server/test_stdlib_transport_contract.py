@@ -68,6 +68,17 @@ class StdlibParseTransportTests(unittest.TestCase):
         words.assert_called_once_with(["hello"])
         self.assertEqual(payload, {"results": [{"word": "hello"}]})
 
+    def test_optional_rate_limit_rejects_replay(self):
+        from rate_limit import RateLimiter
+        limiter = RateLimiter(clock=lambda: 100)
+        with patch.object(stdlib_app, "API_RATE_PER_MINUTE", 1), \
+             patch.object(stdlib_app, "API_LIMITER", limiter):
+            first, _ = self.post({"text": ""})
+            second, payload = self.post({"text": ""})
+        self.assertEqual(first, 422)
+        self.assertEqual(second, 429)
+        self.assertEqual(payload["error"], "too many requests")
+
     def test_chapter_and_variety_are_forwarded_to_shared_analysis(self):
         expected = {"br_analysis": {"status": "unresolved"}}
         with patch.object(stdlib_app, "build_payload", return_value=expected) as build:
