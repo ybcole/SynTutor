@@ -61,7 +61,7 @@ Canonical B-R tree + derivation trace / accepted alternatives
 Generator, Builder, Lessons, Quizzes and explanations
 ~~~
 
-The existing FINAL-D1 projection is a **first construction adapter**, not yet this complete chart parser. We preserve it while implementing and validating the independent layers. A new parser should be evaluated on unseen sentences where Benepar's top-ranked attachment is wrong, rather than trained solely to copy Penn trees.
+The existing FINAL-D1 projection is a **first construction adapter**. The new experimental bounded native chart constructs **a narrow subset of finite clauses** independently of Benepar tree shape; it has no full lexical frame system, movement/wh/control analysis, or grammaticality authority, and is not yet promoted by the Generator API. Neither module is the complete chart/unification parser pictured above. We preserve both while validating independent layers. A new parser should be evaluated on unseen sentences where Benepar's top-ranked attachment is wrong, rather than trained solely to copy Penn trees.
 
 ## 4. Current implementation increment and files
 
@@ -69,6 +69,7 @@ The existing FINAL-D1 projection is a **first construction adapter**, not yet th
 | --- | --- |
 | grammar/br_native_constructions.json | Added **100 explicit structural signatures** across the chapter sequence and **10 semantic/notation obligations**. Each contains stable ID, book pages, chapter gate, and independent-review-pending status. |
 | server/br_native_grammar.py | Added registry loading, source metadata checks, profile-based branch recognition, Penn-only label leak detection, transparent rule IDs, and unknown-coverage reporting. |
+| server/br_native_chart.py | Added a **bounded experimental native chart candidate generator** composing simple new S/NP/VP/PP/AdvP structures from tagged tokens without copying Benepar's constituency tree. It deliberately returns candidate or unresolved, not verified/canonical. |
 | server/burton_roberts.py | Attaches a separate br_rule_verification report to generated canonical/working trees. Raw diagnostics stay separate. An explicitly illegal Penn label blocks normalized promotion. |
 | server/final_d1_projection.py | Projects now/then as P-only temporal PP where applicable, considers when as a PP wh-gap, and conservatively marks subordinate since unresolved until temporal-P vs causal-C interpretation can be resolved. |
 | web/js/main.js | Raw Benepar renderer is hidden by default when B-R analysis fails; diagnostic toggle remains available. |
@@ -76,8 +77,9 @@ The existing FINAL-D1 projection is a **first construction adapter**, not yet th
 | scripts/audit_br_native_catalog.py | Added a reproducible book-corpus branch-coverage report over 252 source records. |
 | web/js/canvas-view.js | Restored the missing canonical B-R tree viewport module, enabling pan, zoom and retained node interactions. |
 | server/test_br_native_grammar.py | Added model-free tests for the registry, chapter gates, recognized triangles, unresolved shapes, source-review state and raw Penn category leakage. |
+| server/test_br_native_chart.py | Added tests for simple productive finite clauses, lexical valency, empty DET, VP adjunct recursion, temporal P-only PP, and fail-closed unknown verbs. |
 
-**These changes do not rewrite the 252 existing source records, migrate Supabase data, replace Benepar, implement a chart parser, or claim linguistic completeness.**
+**These changes do not rewrite the 252 existing source records, migrate Supabase data, replace Benepar, integrate an unrestricted chart parser, or claim linguistic completeness.** The new bounded chart is a demonstrator only.
 
 ## 5. Construction catalog format and interpretation
 
@@ -155,7 +157,7 @@ Generator, Builder, Lesson, Quiz, corrections and evidence must render book-styl
 ## 8. Commands / reproduction / rollout
 
 ~~~bash
-python -m unittest server.test_br_native_grammar -v
+python -m unittest server.test_br_native_grammar server.test_br_native_chart -v
 python scripts/audit_br_native_catalog.py --expected-count 252 --fail-on-penn
 python -m unittest server.test_burton_roberts -v
 python scripts/audit_burton_roberts_import.py --expected-count 252
