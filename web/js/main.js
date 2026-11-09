@@ -1547,7 +1547,7 @@ async function postParse(text, index = null) {
   });
   if (!res.ok) {
     const data = await res.json().catch(() => ({}));
-    return { error: { status: res.status, error: data.error, hint: data.hint } };
+    return { error: { status: res.status, error: data.error, hint: data.hint, error_code: data.error_code } };
   }
   const payload = await res.json();
   try {
@@ -2021,9 +2021,9 @@ async function executePipeline(opts, request) {
     const out = await postParse(text, opts.index);
     if (request !== analysisRequest) return;
     if (out.error) {
-      const { status, error, hint } = out.error;
+      const { status, error, hint, error_code } = out.error;
       const title = status === 503
-        ? 'NLP models unavailable'
+        ? error_code === 'MODEL_UNAVAILABLE' ? 'NLP models unavailable' : 'Backend analysis error'
         : status === 422 ? 'Unable to produce a parse' : `Backend error (HTTP ${status})`;
       failPipeline(title, [error || 'The backend rejected the request.', hint || ''].filter(Boolean));
       return;
