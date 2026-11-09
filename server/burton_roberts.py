@@ -220,7 +220,7 @@ def _final_simple_np(candidate):
     if tags[:-1] in (["DT"], ["DT", "JJ"]) and words[0]["word"].lower() in {"the", "a", "an"}:
         det = _final_branch("DET", np_refs, _final_branch("ART", np_refs, words[0]))
     elif tags in (["NNS"], ["JJ", "NNS"]):
-        det = {"label": "DET", "children": [], "source_refs": ["Ch7 p. 144 [10]"]}
+        det = {"label": "DET", "children": [], "source_refs": ["Ch7 p. 143 [10]"]}
     else:
         return None
 
