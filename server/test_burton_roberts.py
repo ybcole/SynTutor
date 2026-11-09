@@ -213,6 +213,22 @@ class NormalizationTests(unittest.TestCase):
                          ["The", "students", "laugh"])
         self.assertEqual(result["tree"]["sentence"], "The students laugh.")
 
+    def test_final_locative_inversion_preserves_subject_and_coindexes_predicative(self):
+        analysis = candidate("In the bag were two knives.")
+        parse = "(SINV (PP (IN In) (NP (DT the) (NN bag))) (VP (VBD were)) (NP (CD two) (NNS knives)) (. .))"
+        analysis["root"] = NodeBuilder().build(parse_parse_string(parse), len(analysis["tokens"]))
+        result = build_canonical_analysis(analysis, reference_records=[])
+        self.assertEqual(result["status"], "normalized", result["reasons"])
+        location, clause = result["tree"]["root"]["children"]
+        predicate, subject = clause["children"]
+        verb, complement = predicate["children"]
+        self.assertEqual([location["label"], predicate["label"], subject["label"]], ["PP", "VP", "NP"])
+        self.assertEqual(verb["features"], ["intens", "past"])
+        self.assertEqual(complement["label"], "PP")
+        gap = complement["children"][0]
+        self.assertTrue(gap["gap"])
+        self.assertEqual(gap["index"], location["index"])
+
     def test_correction_alignment_keeps_edit_types_and_spans(self):
         cases = [
             ("She go home", "She goes home", "substitution"),

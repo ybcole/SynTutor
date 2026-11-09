@@ -41,6 +41,15 @@ class ParserBackedRuntimeTests(unittest.TestCase):
             ("What did Jon buy?", "S-dbar", {"S″", "C2₁", "C1₂", "TENSE [past]", "•₁", "•₂"}),
             ("Where did Lisa put it?", "S-dbar", {"V [complex]", "PP", "•₁"}),
             ("She persuaded Mara to leave.", "S", {"V(II) [past]", "[-tense]", "•₁"}),
+            ("In the bag were two knives.", "S", {"PP₁", "V [intens] [past]", "QA", "•₁"}),
+            ("Here's the book that she wrote.", "S", {"PP₂", "C2₁", "that", "V [trans] [past]", "•₁", "•₂"}),
+            ("Whose is this?", "S-dbar", {"C2₁", "C1₂", "V [intens] [pres]", "•₁", "•₂"}),
+            ("He read it, didn't he?", "S", {"S′", "TENSE [past]", "E", "•₁"}),
+            ("He read the report, and so did his son.", "S", {"S′", "TENSE [past]", "E", "so"}),
+            ("He gave to charity all the money she had left him.", "S", {"V [ditrans] [past]", "V [ditrans]", "S″"}),
+            ("She is believed to have been ill.", "S", {"PASS [pres]", "V(I)", "[-tense]", "NP₁", "•₁"}),
+            ("She is likely to win.", "S", {"V [intens] [pres]", "V [intrans]", "NP₁", "•₁"}),
+            ("This banana is green: have you got a riper one?", "S", {"PERF [pres]", "V [trans]", "NOM", "one"}),
         ]
         with patch.object(api, "classify", return_value=None):
             for sentence, root_label, expected in cases:

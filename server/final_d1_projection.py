@@ -7,8 +7,10 @@ from lemminflect import getLemma
 CLAUSE = ("Ch2 pp. 29–30",)
 NOUN = ("Ch7 pp. 141–144",)
 NOMINAL = ("Ch7 pp. 165–168",)
+LOCATIVE = ("Ch3 p. 57 [19]", "Ch4 pp. 74–75, 78")
 ADVERBIAL = ("Ch5 pp. 87–93",)
 AUXILIARY = ("Ch6 pp. 114–132",)
+ELLIPSIS = ("Ch5 pp. 95–99",)
 SUBORDINATE = ("Ch8 pp. 173–187",)
 WH = ("Ch9 pp. 196–211",)
 NONFINITE = ("Ch10 pp. 224–243",)
@@ -36,9 +38,12 @@ PRONOUNS = {"everyone", "everybody", "everything", "anyone", "anybody", "anythin
 SUBORDINATORS = {"if", "unless", "because", "although", "though", "while", "whereas", "when", "once", "as", "until", "before", "after", "since"}
 TEMPORAL_P = {"after", "before", "until"}
 TIME_NOUNS = {"today", "tomorrow", "yesterday", "tonight", "night", "week", "year", "day", "time", "moment"}
+LOCATIVE_WORDS = {"here", "there", "upstairs", "downstairs", "outside", "inside"}
+LOCATIVE_PREPOSITIONS = {"above", "across", "against", "along", "at", "behind", "below", "beside",
+                        "between", "beyond", "by", "in", "inside", "near", "on", "outside", "under"}
 INTENSIVE = {"be", "become", "seem", "appear", "look", "feel", "sound", "taste", "smell", "remain", "get", "grow", "prove"}
 COMPLEX = {"call", "consider", "find", "keep", "make", "paint", "put", "render", "name", "elect", "turn", "get"}
-DITRANSITIVE = {"give", "tell", "show", "send", "offer", "lend", "bring", "pay", "buy", "hand", "teach", "ask", "promise", "write", "read", "pass", "sell", "owe"}
+DITRANSITIVE = {"give", "tell", "show", "send", "offer", "lend", "bring", "pay", "buy", "hand", "teach", "ask", "promise", "write", "read", "pass", "sell", "owe", "leave"}
 SELECTED_PP = {
     "refer": {"to"}, "glance": {"at"}, "look": {"at", "for", "after"}, "listen": {"to"},
     "rely": {"on"}, "depend": {"on", "upon"}, "belong": {"to"}, "think": {"of", "about"},
@@ -50,9 +55,11 @@ TIME_UNITS = {"second", "minute", "hour", "day", "week", "month", "year", "momen
 KNOWN_INTRANS = {"arrive", "die", "disappear", "bark", "rain", "sneeze", "happen", "occur"}
 REQUIRES_COMPLEMENT = {"demolish", "use", "dread", "inspect", "spot", "put", "make", "devour"}
 TYPE_I = {"believe", "expect", "prefer", "want", "know", "hear", "watch", "like", "suppose", "consider", "imagine", "find", "see", "notice", "feel", "help"}
+PASSIVE_TYPE_I = {"assume", "believe", "consider", "expect", "know", "report", "say", "suppose", "think"}
 TYPE_II = {"persuade", "ask", "encourage", "force", "invite", "order", "tell", "teach", "promise", "advise", "require", "allow"}
 SUBJECT_CONTROL = {"agree", "ask", "begin", "continue", "decide", "fail", "forget", "hope", "intend", "learn", "like", "love", "manage", "need", "offer", "plan", "prefer", "promise", "refuse", "remember", "start", "stop", "try", "want", "enjoy", "avoid", "afford"}
 CONTROL_ADJECTIVES = {"anxious", "eager", "keen", "hesitant", "unwilling", "happy", "liable", "reluctant"}
+RAISING_ADJECTIVES = {"likely", "unlikely"}
 OBJECT_GAP_ADJECTIVES = {"easy", "hard", "difficult", "tough", "tiresome", "boring", "enjoyable", "disgusting", "delicious", "impossible", "worth"}
 CLAUSAL_NOUNS = {"fact", "idea", "claim", "news", "belief", "rumour", "report", "decision", "question",
                  "possibility", "thought", "conclusion", "suggestion", "plan", "promise", "wish", "need"}
@@ -160,10 +167,14 @@ class Projection:
         if label == "PP":
             return self.pp(kids(node))
         if label in {"ADJP", "ADVP"}:
-            if label == "ADVP" and len(kids(node)) == 1 and tag(kids(node)[0]) in {"IN", "RP"}:
-                return self.pp(kids(node))
-            return self.modifier(kids(node), adjective=label == "ADJP")
-        if label in {"S", "SQ", "SBARQ", "SBAR"}:
+            parts = kids(node)
+            if label == "ADVP" and len(parts) == 1 and leaf(parts[0]):
+                if word(parts[0]) in LOCATIVE_WORDS:
+                    return branch("PP", LOCATIVE, branch("P", LOCATIVE, word_node(parts[0])))
+                if tag(parts[0]) in {"IN", "RP"}:
+                    return self.pp(parts)
+            return self.modifier(parts, adjective=label == "ADJP")
+        if label in {"S", "SQ", "SBARQ", "SBAR", "SINV"}:
             return self.clause(node)
         if leaf(node) and label in ADV_TAGS:
             return self.modifier([node])
@@ -261,8 +272,12 @@ class Projection:
                 det = branch("DET", NOUN, branch("POSS", NOUN, self.np(possessive[:-1]), word_node(possessive[-1])))
                 start = 1
             stop = next((i for i in range(start, len(nodes)) if tag(nodes[i]) in {"PP", "SBAR", "S", "VP"}), len(nodes))
+            # Benepar sometimes tags nominal one as a cardinal after a
+            # comparative adjective. Keep ordinary number uses in QA.
             head = next((i for i in range(stop - 1, start - 1, -1)
-                         if leaf(nodes[i]) and tag(nodes[i]) in NOUN_TAGS), None)
+                         if leaf(nodes[i]) and (tag(nodes[i]) in NOUN_TAGS or (
+                             start and i > start and tag(nodes[i]) == "CD" and word(nodes[i]) == "one"
+                             and tag(nodes[i - 1]) == "JJR"))), None)
             if head is None:
                 if len(nodes) == 1 and leaf(nodes[0]) and tag(nodes[0]) == "CD":
                     return branch("NP", NOUN, det, branch("NOM", NOMINAL, self.modifier(nodes, adjective=True, quantifying=True)))
@@ -284,12 +299,16 @@ class Projection:
             noun_start = head
             while noun_start > start and leaf(nodes[noun_start - 1]) and tag(nodes[noun_start - 1]) in NOUN_TAGS:
                 noun_start -= 1
-            nouns = [branch("N", NOUN, word_node(n)) for n in nodes[noun_start:head + 1]]
-            noun = nouns[0] if len(nouns) == 1 else branch("N", NOUN, *nouns)
+            pro_nominal = head_word in {"one", "ones"} and (start > 0 or head_word == "ones") and noun_start == head
+            if pro_nominal:
+                noun = word_node(nodes[head])
+            else:
+                nouns = [branch("N", NOUN, word_node(n)) for n in nodes[noun_start:head + 1]]
+                noun = nouns[0] if len(nouns) == 1 else branch("N", NOUN, *nouns)
             nominal = branch("NOM", NOMINAL, noun)
             modifiers = nodes[head + 1:]
             # Complements of nouns precede any outer premodification in the hierarchy.
-            if modifiers and self.noun_complement(head_word, modifiers[0]):
+            if not pro_nominal and modifiers and self.noun_complement(head_word, modifiers[0]):
                 selected = modifiers[0]
                 if tag(selected) == "S":
                     controller = det if det["children"] and det["children"][0]["label"] == "POSS" else None
@@ -312,7 +331,7 @@ class Projection:
             if tag(mod) == "SBAR":
                 if self.noun_complement(head_word, mod):
                     phrase = self.clause(mod)
-                    if len(nominal["children"]) == 1 and nominal["children"][0]["label"] == "N":
+                    if len(nominal["children"]) == 1 and nominal["children"][0].get("label") == "N":
                         nominal = branch("NOM", NOMINAL, nominal["children"][0], phrase)
                         continue
                     raise ProjectionUnavailable("Noun complement has ambiguous attachment")
@@ -327,7 +346,7 @@ class Projection:
                 operator = branch("C2", NONFINITE, {"gap": True, "index": link.index})
                 phrase = branch("S″", NONFINITE, operator, branch("S′", NONFINITE,
                                 branch("C1", NONFINITE), branch("S", NONFINITE, subject, predicate)))
-            elif tag(mod) == "PP" and self.noun_complement(head_word, mod) and len(nominal["children"]) == 1:
+            elif tag(mod) == "PP" and self.noun_complement(head_word, mod) and len(nominal["children"]) == 1 and nominal["children"][0].get("label") == "N":
                 nominal = branch("NOM", NOMINAL, nominal["children"][0], self.phrase(mod))
                 continue
             elif tag(mod) in {"PP", "ADJP"}:
@@ -431,7 +450,7 @@ class Projection:
                     lower = kids(lower)[0]
                 if tag(lower) == "S" and self.is_nonfinite(lower):
                     adjective = word(children[0])
-                    if adjective in CONTROL_ADJECTIVES and subject is not None:
+                    if adjective in CONTROL_ADJECTIVES | RAISING_ADJECTIVES and subject is not None:
                         clause = self.nonfinite(lower, subject)
                     elif adjective in OBJECT_GAP_ADJECTIVES and subject is not None:
                         kind = "preposition" if any(tag(n) == "PP" and len(kids(n)) == 1 for n in self.phrase_nodes(lower)) else "object"
@@ -502,6 +521,13 @@ class Projection:
         features = (feature,) if feature else ()
         if negation and base != "be" and not (base == "have" and mode == "finite"):
             raise ProjectionUnavailable("Negation attached directly to a non-auxiliary lexical verb")
+        if passive and not incoming and base in PASSIVE_TYPE_I and tail and tag(tail[0]) == "S":
+            lower = kids(tail[0])
+            if len(lower) == 1 and tag(lower[0]) == "VP" and kids(lower[0]) and tag(kids(lower[0])[0]) == "TO":
+                refs = ("Ch10 p. 226 [8], pp. 239–242",)
+                clause = self.nonfinite(tail[0], subject)
+                return self.attach(branch("VP", refs, branch("V(I)", refs, *head_words), clause),
+                                   "VP", trailing=tail[1:])
         if passive is not None:
             if incoming is not None and incoming.kind in {"adverbial", "pp"}:
                 vp = self.vp(nodes, mode, subject, passive=passive)
@@ -581,9 +607,15 @@ class Projection:
                     raise ProjectionUnavailable("Object gap conflicts with the verb frame or an overt object")
                 frame = "trans"
                 complement.append(branch("NP", AUXILIARY if passive else WH, incoming.take()))
-        elif base in INTENSIVE and tail and (tag(tail[0]) in {"NP", "ADJP", "PP"} or (tag(tail[0]) == "ADVP" and word(leaves(tail[0])[-1]) in {"here", "there", "in", "out", "up", "down", "away", "home"})):
+        elif base in INTENSIVE and tail and self.is_predicative(base, tail[0]):
             frame = "intens"
             complement.append(self.predicative(tail.pop(0), subject))
+        elif (base in {"give", "send", "lend", "hand", "pass", "sell", "offer", "show", "write"}
+              and len(tail) >= 2 and tag(tail[0]) == "PP" and kids(tail[0])
+              and word(kids(tail[0])[0]) == "to" and tag(tail[1]) == "NP" and not self.is_time_np(tail[1])):
+            frame = "ditrans"
+            complement.extend(self.phrase(n) for n in tail[:2])
+            tail = tail[2:]
         elif tail and tag(tail[0]) == "NP" and not self.is_time_np(tail[0]):
             if base in KNOWN_INTRANS:
                 raise ProjectionUnavailable(f"{base} has an overt object without a licensed object frame")
@@ -638,6 +670,16 @@ class Projection:
             or (word(words[-1]).rstrip("s") in TIME_NOUNS and
                 (len(words) == 1 or word(words[0]) in {"all", "every", "last", "next", "this", "that"})))
 
+    def is_predicative(self, base, node):
+        label = tag(node)
+        if label == "NP":
+            # Get a book has an object, unlike the adjective in get angry.
+            return base != "get"
+        if label == "ADVP":
+            words = leaves(node)
+            return bool(words and word(words[-1]) in LOCATIVE_WORDS | {"in", "out", "up", "down", "away", "home"})
+        return label in {"ADJP", "PP"}
+
     def selected_pp(self, base, node):
         parts = kids(node)
         if not parts:
@@ -657,8 +699,12 @@ class Projection:
         label, parts = tag(node), kids(node)
         if label in {"ROOT", "TOP"} and len(parts) == 1:
             return self.clause(parts[0], incoming)
+        if label in {"S", "SQ"} and incoming is None and self.is_question_tag(node):
+            return self.tag_question(parts)
         if label == "SQ":
             return self.question(parts, incoming)
+        if label == "SINV" and incoming is None:
+            return self.locative_inversion(parts)
         if label in {"SBAR", "SBARQ"}:
             if parts and tag(parts[0]).startswith("WH"):
                 return self.wh_clause(parts)
@@ -669,10 +715,21 @@ class Projection:
             if len(parts) == 2 and word(parts[0]) in TEMPORAL_P:
                 return branch("PP", SUBORDINATE, branch("P", SUBORDINATE, word_node(parts[0])), self.clause(parts[-1], incoming))
             carrier = branch("C1", SUBORDINATE, *(word_node(n) for n in parts[:-1]))
-            body = self.nonfinite(parts[-1], wrap=False) if self.is_nonfinite(parts[-1]) and word(parts[0]) == "for" else self.clause(parts[-1], incoming)
+            body = self.nonfinite(parts[-1], wrap=False) if len(parts) == 2 and word(parts[0]) == "for" and self.is_nonfinite(parts[-1]) else self.clause(parts[-1], incoming)
             return branch("S′", SUBORDINATE, carrier, body)
         if label != "S":
             raise ProjectionUnavailable(f"Unsupported clause structure {label}")
+        raw_children = node.get("children", [])
+        if (len(parts) == 2 and all(tag(n) in {"S", "SQ", "SBARQ", "SINV"} for n in parts)
+                and len(raw_children) >= 3 and raw_children[1].get("surface") in {":", ";"}
+                and incoming is None):
+            result = branch("S", COORD, *(self.clause(n) for n in parts))
+            result["notes"] = ["The punctuation joins two independently projected clauses and remains in the submitted text."]
+            return result
+        if incoming is None:
+            elliptical = self.coordinated_ellipsis(parts)
+            if elliptical:
+                return elliptical
         coordination = self.coordinate(parts, lambda nodes: self.clause(nodes[0] if len(nodes) == 1 else raw("S", nodes)))
         if coordination:
             if incoming:
@@ -721,7 +778,109 @@ class Projection:
         core = branch("S", SUBORDINATE if delayed else CLAUSE, subject, vp, *([delayed] if delayed else []))
         return self.attach(core, "S", before)
 
+    def locative_inversion(self, parts):
+        if len(parts) == 3 and tag(parts[1]) == "VP" and len(kids(parts[1])) == 1:
+            parts = [parts[0], kids(parts[1])[0], parts[2]]
+        if len(parts) == 3:
+            location, verb, raw_subject = parts
+            loc_words = leaves(location)
+            is_locative = bool(loc_words) and (
+                (tag(location) == "PP" and word(loc_words[0]) in LOCATIVE_PREPOSITIONS)
+                or (tag(location) == "ADVP" and len(loc_words) == 1 and word(loc_words[0]) in LOCATIVE_WORDS))
+            if (is_locative and leaf(verb) and lemma(verb) == "be" and tag(verb) in {"VBD", "VBP", "VBZ"}
+                    and tag(raw_subject) == "NP" and self.dependency(loc_words[0]) != "expl"):
+                subject = self.phrase(raw_subject)
+                fronted = self.phrase(location)
+                link = self.gap("pp")
+                fronted["index"] = link.index
+                predicate = self.vp([verb], "finite", subject, link)
+                # An application of the PP predicative frame to surface inversion.
+                # The subject remains a daughter of S and the lexical be remains in VP.
+                result = branch("S", LOCATIVE, fronted, branch("S", CLAUSE, predicate, subject))
+                result["notes"] = ["SynTutor applies the locative predicative frame to declarative inversion."]
+                return result
+        raise ProjectionUnavailable("Unsupported declarative inversion")
+
+    def is_question_tag(self, node):
+        parts = node.get("children", [])
+        return (len(parts) in {5, 6} and tag(parts[0]) == "S"
+                and parts[1].get("surface") == "," and parts[-1].get("surface") == "?"
+                and tag(parts[-2]) == "NP" and len(kids(parts[-2])) == 1
+                and tag(kids(parts[-2])[0]) in {"PRP", "EX"}
+                and (len(parts) == 5 or parts[3].get("surface") in {"n't", "not"}))
+
+    def finite_predicate_head(self, node):
+        for child in node.get("children", ()):
+            if set(child.get("features", ())) & {"pres", "past"}:
+                return child, node
+            if child.get("label") in {"S", "VP"}:
+                result = self.finite_predicate_head(child)
+                if result:
+                    return result
+        return None
+
+    def tag_question(self, parts):
+        main = self.clause(parts[0])
+        head, *negative, raw_subject = parts[1:]
+        tag_clause = self.inverted_ellipsis(main, head, negative, raw_subject)
+        result = branch("S", (*AUXILIARY, *ELLIPSIS), main, tag_clause)
+        result["notes"] = ["SynTutor applies the auxiliary-fronting and ellipsis conventions to the question tag."]
+        return result
+
+    def coordinated_ellipsis(self, parts):
+        if len(parts) < 3 or tag(parts[-1]) != "SINV":
+            return None
+        inversion = kids(parts[-1])
+        coordinator_at = len(parts) - 2
+        if leaf(parts[coordinator_at]) and word(parts[coordinator_at]) == "nor":
+            marker = parts[coordinator_at]
+            coordinator_at -= 1
+        elif (len(inversion) == 3 and tag(inversion[0]) == "ADVP"
+              and len(kids(inversion[0])) == 1 and word(kids(inversion[0])[0]) in {"so", "nor", "neither"}):
+            marker = kids(inversion.pop(0))[0]
+        else:
+            return None
+        coordinator = parts[coordinator_at]
+        if (coordinator_at < 1 or not leaf(coordinator) or tag(coordinator) != "CC"
+                or word(coordinator) not in {"and", "but"} or len(inversion) != 2
+                or tag(inversion[0]) != "VP" or len(kids(inversion[0])) != 1 or tag(inversion[1]) != "NP"):
+            return None
+        left = self.clause(raw("S", parts[:coordinator_at]))
+        right = self.inverted_ellipsis(left, kids(inversion[0])[0], (), inversion[1])
+        adv = branch("AdvP", ADVERBIAL, branch("Adv", ADVERBIAL, word_node(marker)))
+        result = branch("S", COORD, left, word_node(coordinator), branch("S", ADVERBIAL, adv, right))
+        result["notes"] = ["SynTutor applies the auxiliary-fronting and ellipsis conventions to the coordinated clause."]
+        return result
+
+    def inverted_ellipsis(self, main, head, negative, raw_subject):
+        finite = self.finite_predicate_head(main)
+        if not finite or not leaf(head) or tag(head) not in {"MD", "VBD", "VBP", "VBZ"}:
+            raise ProjectionUnavailable("Inverted ellipsis has no identifiable finite carrier")
+        antecedent, antecedent_vp = finite
+        base = lemma(head)
+        label = antecedent["label"]
+        features = (tense(head, "finite"),)
+        omitted = {"elided": True, "symbol": "E"}
+        complement = branch("VP", ELLIPSIS, omitted)
+        if tag(head) == "MD":
+            label = "MOD"
+        elif base == "do" and label in {"V", "TENSE"}:
+            label = "TENSE"
+        elif base == "be" and label == "V" and ("intens" in antecedent["features"]
+              and lemma({"surface": antecedent["children"][0].get("word", "")}) == "be"):
+            features = ("intens", *features)
+            complement = branch(antecedent_vp["children"][1]["label"], ELLIPSIS, omitted)
+        elif (base, label) not in {("have", "PERF"), ("be", "PROG"), ("be", "PASS")}:
+            raise ProjectionUnavailable("Inverted ellipsis has no licensed antecedent predicate")
+        link = self.gap("fronted verb")
+        carrier = branch("C1", AUXILIARY, word_node(head), *(word_node(n) for n in negative))
+        carrier["index"] = link.index
+        vp = branch("VP", (*AUXILIARY, *ELLIPSIS), branch(label, AUXILIARY, link.take(), features=features), complement)
+        return branch("S′", AUXILIARY, carrier, branch("S", CLAUSE, self.phrase(raw_subject), vp))
+
     def question(self, parts, incoming=None):
+        if len(parts) == 1 and tag(parts[0]) == "VP" and self.is_aux_inversion(kids(parts[0])):
+            parts = kids(parts[0])
         if len(parts) < 2 or not leaf(parts[0]):
             raise ProjectionUnavailable("Unsupported inversion or question tag")
         head, *tail = parts
@@ -729,7 +888,9 @@ class Projection:
         if not tail or tag(tail[0]) != "NP":
             raise ProjectionUnavailable("Inversion has no identifiable subject NP")
         raw_subject = tail.pop(0)
-        if self.auxiliary(head, [node for node in tail if tag(node) != "ADVP"]) is None and lemma(head) not in {"be", "have"}:
+        if tag(head) not in {"MD", "VBZ", "VBP", "VBD"} or (
+                self.auxiliary(head, [node for node in tail if tag(node) != "ADVP"]) is None
+                and lemma(head) not in {"be", "have"}):
             raise ProjectionUnavailable("No licensed auxiliary or auxiliary-behaving verb in C1")
         subject = self.phrase(raw_subject)
         link = self.gap("fronted verb")
@@ -737,6 +898,16 @@ class Projection:
         carrier["index"] = link.index
         vp = self.vp([head, *tail], "finite", subject, incoming, fronted=link)
         return branch("S′", AUXILIARY, carrier, branch("S", CLAUSE, subject, vp))
+
+    def is_aux_inversion(self, parts):
+        if not parts or not leaf(parts[0]) or tag(parts[0]) not in {"MD", "VBZ", "VBP", "VBD"}:
+            return False
+        head, *tail = parts
+        if tail and leaf(tail[0]) and word(tail[0]) in {"not", "n't"}:
+            tail.pop(0)
+        return bool(tail and tag(tail[0]) == "NP" and (
+            lemma(head) in {"be", "have"}
+            or self.auxiliary(head, [node for node in tail[1:] if tag(node) != "ADVP"])))
 
     def wh_gap(self, wh, body):
         label = tag(wh)
@@ -749,7 +920,7 @@ class Projection:
         if label != "WHNP":
             raise ProjectionUnavailable(f"Unsupported {label} dependency")
         parts = kids(body)
-        if len(parts) == 1 and tag(parts[0]) == "VP":
+        if tag(body) == "S" and len(parts) == 1 and tag(parts[0]) == "VP":
             return "subject"
         if any(tag(node) == "PP" and len(kids(node)) == 1 for node in self.phrase_nodes(body)):
             return "preposition"
@@ -794,6 +965,8 @@ class Projection:
         parts = kids(node)
         if parts and tag(parts[0]).startswith("WH"):
             return self.wh_clause(parts, relative=True)
+        if len(parts) == 2 and leaf(parts[0]) and word(parts[0]) == "that" and tag(parts[1]) == "S":
+            return self.wh_clause([raw("WHNP", [parts[0]]), parts[1]], relative=True)
         if len(parts) != 1 or tag(parts[0]) != "S":
             raise ProjectionUnavailable("Unsupported relative clause")
         # A zero relative with an overt subject can introduce an object gap.
