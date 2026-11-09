@@ -118,6 +118,20 @@ def status_counters(records):
     probe_missed = [r for r in parsed if r["malformed_probe_vs_legacy_no_flag"]]
     times = [r["timing_ms"]["total"] for r in records if "timing_ms" in r]
     root_endpoint = [r for r in normalized if r.get("root_endpoint_checked")]
+    by_family = {}
+    for family in sorted({r["family"] for r in records}):
+        family_rows = [r for r in records if r["family"] == family]
+        family_normalized = [r for r in family_rows if r["br_status"] == "normalized"]
+        by_family[family] = {
+            "total": len(family_rows),
+            "parsed": sum(r["parser_status"] == "parsed" for r in family_rows),
+            "br_normalized": len(family_normalized),
+            "br_unresolved": sum(r["br_status"] == "unresolved" for r in family_rows),
+            "source_cited_nodes": sum(r["source_cited_nodes"]
+                                      for r in family_normalized),
+            "canonical_nodes": sum(r["all_nodes"] for r in family_normalized),
+        }
+    cited_labels = labels_all - labels_missing
     return {
         "cases_total": n,
         "parser_cases_parsed": len(parsed),
@@ -136,7 +150,9 @@ def status_counters(records):
         "source_cited_terminal_coverage_percent": round(
             terminal_cited * 100 / terminal_total, 2) if terminal_total else None,
         "canonical_node_labels": dict(labels_all.most_common()),
+        "source_cited_node_labels": dict(cited_labels.most_common()),
         "labels_without_cited_explanation": dict(labels_missing.most_common()),
+        "by_family": by_family,
         "root_endpoint_compatibility_checked": len(root_endpoint),
         "root_endpoint_mismatches": sum(not r["root_endpoint_matches"] for r in root_endpoint),
         "control_legacy_disagreements": len(suspicious),
