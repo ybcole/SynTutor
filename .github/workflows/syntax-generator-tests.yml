@@ -59,6 +59,11 @@ jobs:
           python scripts/audit_xai_pre.py --require-contracts > /tmp/xai-pre-report.json
           python -m json.tool /tmp/xai-pre-report.json > /dev/null
 
+      - name: Validate XAI-0 development corpus and measurement semantics
+        run: |
+          python scripts/audit_xai0_baseline.py --validate-input-only --expected-count 116
+          python -m unittest -v server.test_xai0_baseline
+
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py
