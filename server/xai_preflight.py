@@ -158,10 +158,14 @@ def _check_tokens(text: str, tokens: list[dict[str, Any]], version: str,
                  f"{version}: token span invalid or out of order")
         _require(text[start:end] == token["text"],
                  f"{version}: token surface does not match original text")
+        _require(not text[previous_end:start].strip(),
+                 f"{version}: nonwhitespace source text is missing from the token map")
         ids.add(ident)
         seen_global.add(ident)
         previous_end = end
     _require(bool(ids), f"{version}: no token coverage")
+    _require(not text[previous_end:].strip(),
+             f"{version}: trailing source text is missing from the token map")
     return ids
 
 
@@ -192,6 +196,8 @@ def _apply_edits(text: str, edits: list[dict[str, Any]],
                      "Edit provenance must enumerate every affected parent token")
         else:
             _require(not supplied, "Insert must not invent an affected token")
+            _require(not any(t["start"] < start < t["end"] for t in token_rows),
+                     "Insertion inside an existing token requires an explicit replacement")
         pieces.extend([text[previous_end:start], replacement])
         previous_end = end
     pieces.append(text[previous_end:])
@@ -234,6 +240,9 @@ def validate_diagnosis_repair_case(
     if original["analysis_status"] in {"unresolved", "not_evaluated"}:
         _require(original["tree_ref"] is None,
                  "A missing/unverified tree cannot be advertised as an available tree")
+    else:
+        _require(bool(original["tree_ref"]),
+                 "A normalized/provisional original needs its own tree reference")
 
     findings = {}
     for f in data["findings"]:
@@ -319,6 +328,9 @@ def validate_diagnosis_repair_case(
         if c["analysis_status"] in {"unresolved", "not_evaluated"}:
             _require(c["tree_ref"] is None,
                      f"{version}: cannot expose a nonexistent verified tree")
+        else:
+            _require(bool(c["tree_ref"]),
+                     f"{version}: a clickable normalized/provisional tree needs its own reference")
         _require(set(c["targets"]) <= set(findings),
                  f"{version}: targeted error references original sentence only")
         outcomes = {}
@@ -349,8 +361,9 @@ def validate_diagnosis_repair_case(
             previous_f = findings.get(row["prior_finding_id"])
             if row["origin"] == "unmasked":
                 _require(previous_f is not None and
-                         previous_f["status"] in {"BLOCKED", "AMBIGUOUS"},
-                         f"{version}: unmasked finding needs prior blocked/ambiguous check")
+                         previous_f["status"] in {"BLOCKED", "AMBIGUOUS"} and
+                         previous_f["rule_id"] == row["rule_id"],
+                         f"{version}: unmasked finding needs prior blocked/ambiguous check of the same rule")
             if row["origin"] == "introduced":
                 _require(previous_f is not None and
                          previous_f["status"] == "SATISFIED" and
