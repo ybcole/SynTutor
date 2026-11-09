@@ -1,12 +1,12 @@
 # Burton-Roberts ↔ Cambridge crosswalk — Milestone 01
 
-**Status:** Initial, evidence-controlled crosswalk. It records candidate comparison areas and the status of the available records. It does not claim a verified equivalence between the two frameworks.
+**Status:** Historical Milestone 01 evidence-controlled crosswalk, retained for provenance. **Update (10 November 2026):** B–R third edition is confirmed, and XAI-PRE has [three source-comparison records](../grammar/xai_pre/source_audit.json), of which two are targeted terminology differences and one remains unresolved. None is independently human-approved or eligible to overwrite B–R labels. See [XAI-PRE acceptance](reports/xai-pre-acceptance-2026-11-10.md).
 
 ## 1. Verification rule
 
 A B-R/Cambridge mapping is **verified** only after the underlying relevant B-R and Cambridge source passages have been inspected, the concepts and their conditions have been compared in context, the relation has been recorded with both sets of printed-page references, and the mapping has received the required review.
 
-The repository currently contains B-R convention documentation and chapter answer/tree records, but no B-R source PDF or separate source text directory was present in the audited Git tree. The exact B-R edition is still to be confirmed. The Cambridge extraction records themselves explicitly state that B-R mappings remain unverified.
+At the time of the original M1 audit, only repository convention files and chapter records were accessible to that workstream; B–R book-edition confirmation and independent mappings were pending. **Subsequent source manifests and the attached full Third Edition now confirm the book identity**; this historical paragraph does not describe today's edition status. Cambridge extraction records with unverified B–R mappings remain unverified unless individually source-compared and approved.
 
 Consequently:
 
