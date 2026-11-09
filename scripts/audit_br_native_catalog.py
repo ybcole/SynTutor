@@ -10,10 +10,12 @@ import argparse
 from collections import Counter
 import json
 from pathlib import Path
-
-from server.br_native_grammar import audit_br_constructions
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from server.br_native_grammar import audit_br_constructions  # noqa: E402
+
 BOOK = ROOT / "web/content/book"
 
 
