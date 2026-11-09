@@ -1593,6 +1593,356 @@
       ],
       "condition": "to represented on [-tense] auxiliary.",
       "level": "structural"
+    },
+    {
+      "id": "BR03-NP-COORD",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          57,
+          59
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NP",
+      "children": [
+        "NP",
+        "@word",
+        "NP"
+      ],
+      "condition": "Coordinate NP requires category-compatible conjuncts.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-NP-MOVEMENT-GAP",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          125,
+          132
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NP",
+      "children": [
+        "@gap"
+      ],
+      "condition": "Object/subject gap requires licensed movement and co-indexing.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-C-FRONTED-WORD",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          129,
+          132
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "C",
+      "children": [
+        "@word"
+      ],
+      "condition": "C receives fronted auxiliary or complementiser in the chapter-specific construction.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-V-GAP",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          130,
+          132
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "V",
+      "children": [
+        "@gap"
+      ],
+      "condition": "Lower fronted verbal position requires a licensing dependency.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-PROG-GAP",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          130,
+          132
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PROG",
+      "children": [
+        "@gap"
+      ],
+      "condition": "Lower progressive auxiliary gap must be co-indexed.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-MOD-GAP",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          130,
+          132
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "MOD",
+      "children": [
+        "@gap"
+      ],
+      "condition": "Lower modal auxiliary gap must be co-indexed.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-TENSE-GAP",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          130,
+          132
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "TENSE",
+      "children": [
+        "@gap"
+      ],
+      "condition": "Lower tense/do-support gap must be licensed.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NOM-AP-N",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          141,
+          149
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "AP",
+        "N"
+      ],
+      "condition": "Premodifying AP with lexical noun in a source-attested nominal.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-POSS-NP-CLITIC",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          143,
+          145
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "POSS",
+      "children": [
+        "NP",
+        "@word"
+      ],
+      "condition": "Genitive NP with overt possessive suffix.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-QA-WORD",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          146,
+          149
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "QA",
+      "children": [
+        "@word"
+      ],
+      "condition": "Lexical quantifying adjective.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-AP-QA",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          146,
+          149
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AP",
+      "children": [
+        "QA"
+      ],
+      "condition": "QA can fill an AP constituent in the chapter model.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-V-PART-WORD",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          147,
+          149
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "V-part",
+      "children": [
+        "@word"
+      ],
+      "condition": "Verb participle category from the source tree corpus.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-S-CLAUSE-WRAPPER",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          171,
+          175
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "S"
+      ],
+      "condition": "Source-specific subordinate-clause wrapping, not productive S insertion.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-S-EXTRAPOSITION",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          176,
+          180
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "NP",
+        "VP",
+        "S-bar"
+      ],
+      "condition": "Extraposed clause with dummy subject: requires semantic and lexical licensing.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-AP-CLAUSE-COMPLEMENT",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          180,
+          182
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AP",
+      "children": [
+        "A",
+        "S-bar"
+      ],
+      "condition": "Clause selected by an adjective.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-VP-CLAUSE-ADJUNCT",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          186,
+          188
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "VP",
+        "S-bar"
+      ],
+      "condition": "Subordinate clause adjunct, not automatically a verbal complement.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-NOM-RELATIVE-SDBAR",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          204,
+          211
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "NOM",
+        "S-dbar"
+      ],
+      "condition": "Relative clause modifies NOM and its gap must be licensed.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-C2-UNLABELLED-TRIANGLE",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          211
+        ],
+        "evidence": "BOOK_TREE_CORPUS_PLUS_CONVENTIONS_MD",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "C2",
+      "children": [
+        "@unlabelled"
+      ],
+      "condition": "Wh triangle intentionally lacks a category label in printed model.",
+      "level": "structural"
     }
   ],
   "obligations": [
