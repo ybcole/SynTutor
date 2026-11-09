@@ -1,6 +1,6 @@
 # Master Prompt — SynTutor Contextual XAI Engine
 
-**Use with:** [XAI Master Plan](XAI_MASTER_PLAN.md)  
+**Use with:** [XAI Master Plan](XAI_MASTER_PLAN.md) and [Uploaded-book Source Audit & Multi-Error Protocol](XAI_SOURCE_AUDIT_MULTI_ERROR.md)  
 **Status:** Implementation instructions only; no implementation is implied by this prompt  
 **Authority:** Noel Burton-Roberts, *Analysing Sentences*, Third Edition (2011), for tree structure; Huddleston and Pullum et al., *The Cambridge Grammar of the English Language* (2002), for descriptive grammatical knowledge subject to review and source-specific differences.  
 **Repository:** `ybcole/SynTutor`
@@ -30,7 +30,7 @@ The system must distinguish:
 
 Before any edits, inspect:
 
-1. `docs/planning/XAI_MASTER_PLAN.md` in full and this prompt.
+1. `docs/planning/XAI_MASTER_PLAN.md` **and** `docs/planning/XAI_SOURCE_AUDIT_MULTI_ERROR.md` in full, plus this prompt. Complete XAI-PRE before implementing XAI-0.
 2. `docs/planning/master_plan.md` and `docs/planning/master_checklist.md`, especially the earlier explanation section (foundation only).
 3. `CONVENTIONS.md` and `docs/BR_NATIVE_ENGINE_CONSTRUCTION.md`.
 4. `server/burton_roberts.py`, `server/final_d1_projection.py`, `server/br_native_grammar.py`, and `grammar/br_native_constructions.json`.
@@ -44,6 +44,16 @@ At the start of a milestone report the actual current template/source counts, ac
 ## Implementation phases
 
 Follow XAI-0 through XAI-8 in the master plan, in order. Implement one coherent vertical slice at a time, with an explicit acceptance gate, runnable tests and a status report.
+
+### Phase PRE — Book coverage and interacting-error protocol (mandatory, no code enablement)
+
+Before running or implementing XAI-0, inspect the **attached original Burton-Roberts third-edition and Cambridge Grammar PDFs** and the source-map audit. The chapters and printed pages identified there are selected verifications, not proof of exhaustive source coverage. Distinguish a chapter-topic inventory from independent page-by-page rule approval.
+
+Concretely verify B–R Ch. 6 pp. 116–118 and Cambridge Ch. 3 pp. 74–77, 106, 143–145 for auxiliary/participle terminology, form-selection rules, syncretism and tense/aspect exceptions. Preserve Cambridge's descriptive variety and symbol distinctions. Source-check each new runtime rule and its exceptions against **its own source pages** before enabling it.
+
+Freeze a **partial rule evaluator** contract: `SATISFIED`, `VIOLATED`, `NOT_APPLICABLE`, `BLOCKED`, `AMBIGUOUS`, `UNIMPLEMENTED`. Freeze an immutable original-input snapshot; dependency graph over error findings; parent/governor/affected token IDs; original→candidate proof lineage; and a bounded search for coherent multi-edit packages. Do not treat an original incomplete parse as proof that unchanged words are grammatical.
+
+**Gate:** source and exception inventory, crosswalk status, schema drafts and held-out multi-error cases are reviewed. Neither an LLM nor a rule registry's chapter title certifies a grammatical constraint.
 
 ### Phase 0 — Baseline
 
@@ -75,11 +85,17 @@ Create approved word, category, constituent, relation and feature templates. Com
 
 Build approved, typed grammatical checks with explicit preconditions, evidence and exception tests. Scope checks to what their input evidence can independently support. A lexical rule can run on trustworthy tokens even when a full B–R tree is unavailable; a tree-dependent rule must not run without an appropriately supported tree.
 
+**Multi-error requirement:** do not return one global boolean or presume that rules not evaluated are satisfied. Run all safely applicable checks, record blocked/ambiguous/independent findings, construct error-interaction edges (`SHARES_CONSTRUCTION`, `CHECK_BLOCKED_BY`, `REPAIR_ENABLES`, etc.). Deduplicate the same failed relationship reported at two tokens. Re-evaluate after every proposed edit. Preserve exceptional/variety-conditioned cases from the sources.
+
 Do not use spaCy/Benepar, CoLA, an LLM, generic unreviewed Cambridge extraction or the legacy rule matrix as a final correctness judge.
 
 ### Phase 5 — Diagnostics and repairs
 
 Model errors as failed *relations* with offending element(s), governor(s), rule violation, possible exception and candidate correction. Show a related explanation when the user selects either side of the relationship. Reparse edits, rerun relevant approved checks, and avoid claiming that a correction fixes untested aspects.
+
+**Mandatory: multiple simultaneous errors.** Preserve the original string and all original finding IDs. Group interacting issues for jointly evaluated alternatives, and permit truly independent repairs to be explained separately. After **each** candidate, reparse and re-run **all** safely applicable checks. For each original finding distinguish `resolved_by_satisfaction`, `no_longer_applicable_after_rewrite`, `persists`, `blocked`; for additional findings distinguish demonstrably `introduced` versus merely `unmasked` by better analysis. Record affected-token alignment and changing interpretations. Display a successful local fix as **local**, not "whole sentence correct." Limit depth and number of candidates; no infinite correction loop.
+
+A change of tense/aspect or removal of a time adjunct may change meaning: offer alternatives and ask about intended meaning rather than silently selecting one. Refer to Cambridge Ch. 3 pp. 143–145 before treating a past-time adverbial with present perfect as categorically wrong.
 
 ### Phase 6 — Optional AI paraphrasing
 
@@ -104,6 +120,12 @@ Implement positive, negative, exception and alternative analyses at every phase.
 3. `She had went home.`: if an independently approved Cambridge rule is enabled, identify the failed auxiliary-complement **verb form** relationship and show which token is affected. Otherwise return "not evaluated/no book basis," not a hallucinated verdict.
 4. `She had breakfast.`: `had` is a lexical verb in this context; don't apply the perfect auxiliary requirement.
 5. `I saw the man with the telescope.`: preserve alternative attachments with conditional explanations.
+5a. `She have went to the store yesterday.`: independently anchored issues, interacting auxiliary/inflection relations, staged edits that still show the remaining issue, and a jointly validated alternative without silently changing temporal meaning. Distinguish disappearing rule applicability from proven satisfaction.
+5b. `We've already discussed it yesterday.`: do not assert an unconditional "past time + present perfect" prohibition; Cambridge Ch. 3 pp. 144–145 permits a restricted experiential interpretation.
+5c. `The boys is carrying a boxes.`: independent errors can be repaired separately without falsely clearing other issues.
+5d. `She had wanted the car.` and `She had breakfast.`: prevent false positives due to syncretism and lexical vs auxiliary `have`.
+5e. Failure to produce a complete canonical tree: permit independently supported local checks while marking structure-dependent rules `BLOCKED`.
+5f. Original→candidate lineage: detect a newly **unmasked** violation without falsely alleging the user's selected edit introduced it.
 6. Chapter 2 versus Chapter 7 phrase-marker descriptions: respect convention profile; don't introduce future labels early.
 7. Partial/unknown B–R working tree: meaningful observations only; no made-up internal constituents.
 8. Corrected vs original sentence: correct span alignment and distinct explanation evidence for each reparse.
@@ -135,6 +157,8 @@ Changed files:
 New approved B–R concepts/templates:
 New approved Cambridge concepts/templates:
 New runtime-enabled Cambridge constraints:
+Multi-error/blocked/ambiguous test coverage (measured):
+Interacting repair packages and finding-lineage outcomes:
 Constituent/word/edge/error coverage (measured):
 Tests executed and outcomes:
 Source-review / exception-test status:
