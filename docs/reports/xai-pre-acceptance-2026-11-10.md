@@ -36,7 +36,7 @@ The following deliverables encode the required evidence and record integrity but
 | [source_audit.json](../../grammar/xai_pre/source_audit.json) | Two edition identities, **31 chapter inventory rows**, **13 targeted primary-source claims**, **3 crosswalk decisions**, individual review/activation flags, and open decisions | Added |
 | [diagnosis-repair-pre.schema.json](../xai/diagnosis-repair-pre.schema.json) | Versioned partial-rule, issue/dependency graph and evolving candidate tree/token contract | Added |
 | [xai_preflight.py](../../server/xai_preflight.py) | Read-only semantic verifier for book-page references, token offsets, stable issue IDs, candidate edit reconstruction, dependency/group integrity, original→candidate finding lineage and source approval boundaries | Added |
-| [preflight_fixtures.json](../../grammar/xai_pre/preflight_fixtures.json) | Ten **synthetic protocol cases** (not gold grammar judgments), including interacted errors, independent repairs, introduced and unmasked findings, temporal exceptions, lexical *have*, syncretism and ambiguous PP attachment | Added |
+| [preflight_fixtures.json](../../grammar/xai_pre/preflight_fixtures.json) | Eleven **synthetic protocol cases** (not gold grammar judgments), including interacted errors, independent repairs, introduced and unmasked findings, temporal exceptions, lexical *have*, syncretism and ambiguous PP attachment | Added |
 | [test_xai_preflight.py](../../server/test_xai_preflight.py) | Schema, source guard, rule activation, stale citations, full edit/token provenance, grouping and lineage regression | Added |
 | [audit_xai_pre.py](../../scripts/audit_xai_pre.py) | Reproducible summary of technical contract readiness and outstanding source approval | Added |
 | [syntax-generator-tests.yml](../../.github/workflows/syntax-generator-tests.yml) | Model-free pipeline runs tests and validates audit/schema/fixtures without downloading NLP models | Updated |
@@ -68,6 +68,12 @@ Synthetic scenario: `This boy walk home.`
 - A future live engine must independently support these claims against grammatical rules and interpretive context; these synthetic records are **not actual parser diagnoses**.
 
 The interacting example `She have went to the store yesterday.` also preserves three unresolved/interacting possible findings across `u0`, `u1`, `u2`, and an alternative `u3` branch; deleting the perfect auxiliary makes a formerly applicable constraint **not applicable**, which is not the same as proving it satisfied.
+
+### Additional five-error stress fixture
+
+The simulation `She have went to a stores, and he don't likes it.` now tracks **five candidate findings** across three independent/interacting groups, with five non-overlapping edits and a separate candidate sentence and token map. All "resolved" statuses are synthetic contract data; this is **not** evidence that SynTutor's actual detector or parser can handle such input yet.
+
+The ambiguous PP-attachment example explicitly anchors the **second** occurrence of `the` in `the telescope` (not the earlier `the man`), guarding against duplicate-token misalignment.
 
 ## 6. Reproduction and verification
 
