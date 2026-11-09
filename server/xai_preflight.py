@@ -31,6 +31,8 @@ OUTCOME_TO_CHECK = {
     "ambiguous": "AMBIGUOUS",
     "not_applicable": "NOT_APPLICABLE",
     "unimplemented": "UNIMPLEMENTED",
+    "newly_violated": "VIOLATED",
+    "newly_unmasked": "VIOLATED",
 }
 
 
@@ -306,6 +308,12 @@ def validate_diagnosis_repair_case(
             outcomes[fid] = row
             _require(OUTCOME_TO_CHECK[row["after"]] == row["recheck_status"],
                      f"{version}: outcome and recheck disagree for {fid}")
+            if row["after"] == "newly_violated":
+                _require(findings[fid]["status"] == "SATISFIED",
+                         f"{version}: newly violated requires prior satisfied evidence")
+            if row["after"] == "newly_unmasked":
+                _require(findings[fid]["status"] in {"BLOCKED", "AMBIGUOUS"},
+                         f"{version}: newly unmasked requires prior uncertainty")
             if data["mode"] == "runtime" and row["after"] == "resolved_by_satisfaction":
                 _require(bool(row.get("proof_atom_ids")),
                          f"{version}: cannot claim repair without new proof")
