@@ -168,7 +168,7 @@ The GitHub branch is the rollback boundary. No database changes or migrations ar
 
 ## 9. Known outstanding issues and source decisions
 
-- The Chapter 5 example VP1/VP2 numbering is stored in some source metadata but the current FINAL-D1 display-label mapper does not yet guarantee visible numbering.
+- The Chapter 5 source-attested VP1/VP2 references are now rendered as VP₁/VP₂ by the FINAL-D1 master resolver and lesson SVG fallback when the references survive import. Browser parity across all source diagrams is still unverified.
 - The Third Edition's *since* distinction requires contextual disambiguation; the new adapter intentionally refuses an unsupported guess.
 - A full lexicon for all six verb classes and Type I/II nonfinite uses remains to be developed.
 - Arbitrary noun-internal attachments, recursive wh-clauses, passive argument linking, coordination, idioms, ellipsis and noncanonical word orders are not fully verified.
