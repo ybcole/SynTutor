@@ -7,6 +7,10 @@
 
 ---
 
+## Companion execution plans
+
+The detailed, sentence-specific explanation and error-diagnosis workstream is now defined in [XAI Master Plan](XAI_MASTER_PLAN.md), with a separate [XAI implementation master prompt](MASTER_PROMPT_XAI.md). These supersede *only* the minimal XAI foundation assumptions for this dedicated workstream; they do not retroactively declare the advanced explanation engine implemented.
+
 ## Executive direction
 
 SynTutor should become a source-grounded English syntax tutor built around two complementary authorities:
