@@ -49,7 +49,7 @@ jobs:
         run: python -m compileall -q server
       - name: Run isolated Syntax Generator tests
         working-directory: server
-        run: python -m unittest -v test_br_tree test_cambridge_registry test_cambridge_evaluator test_grammar_schema test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_stdlib_transport_contract test_detector test_explanations test_explanation_transports test_br_source_extensions test_source_readiness test_quiz_evidence test_builder_evaluation
+        run: python -m unittest -v test_br_tree test_cambridge_registry test_cambridge_evaluator test_grammar_schema test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_stdlib_transport_contract test_rate_limit test_detector test_explanations test_explanation_transports test_br_source_extensions test_source_readiness test_quiz_evidence test_builder_evaluation
 
       - name: Validate source-reviewed lesson contracts
         run: |
