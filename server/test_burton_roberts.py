@@ -140,6 +140,24 @@ class NormalizationTests(unittest.TestCase):
         self.assertIn("PROFILE_MAPPING_NOT_APPROVED", [r["code"] for r in result["reasons"]])
         self.assertIn("raw_candidate_tree", result["diagnostics"])
 
+    def test_strict_display_failure_retains_provisional_b_r_tree(self):
+        # The label workbook is a rendering dependency, not a reason to
+        # discard an otherwise structurally valid projected B-R envelope.
+        analysis = final_declarative()
+        with patch("server.burton_roberts.final_d1_display_labels",
+                   side_effect=ValueError("synthetic missing master row")):
+            result = build_canonical_analysis(analysis, reference_records=[])
+        self.assertEqual(result["status"], "unresolved")
+        self.assertIsNone(result["tree"])
+        self.assertIn("working_tree", result)
+        self.assertTrue(validate_canonical_tree(result["working_tree"])["valid"])
+        self.assertIn("working_display_labels", result)
+        self.assertEqual(
+            result["working_display_labels"][result["working_tree"]["root"]["id"]],
+            ["S"],
+        )
+        self.assertEqual(result["reasons"][0]["code"], "FINAL_D1_LABEL_UNRESOLVED")
+
     def test_final_declarative_combines_chapter_rules_and_preserves_parser_evidence(self):
         for noun in ("students", "teacher"):
             with self.subTest(noun=noun):
