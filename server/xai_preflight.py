@@ -212,6 +212,17 @@ def validate_diagnosis_repair_case(
         for err in problems[:5]))
 
     enabled = enabled_rule_ids or set()
+    approved = load_json(AUDIT_PATH)
+    validate_source_audit(approved)
+    known_claims = {row["id"] for row in approved["claims"]}
+    # XAI-PRE only defines interfaces. The production Cambridge allow-list
+    # cannot be bypassed by a caller-supplied set of alleged rule IDs.
+    production_allowlist = load_json(ROOT / "grammar/runtime_registry.json")
+    actually_enabled = {
+        row.get("rule_id") for row in production_allowlist.get("enabled_rules", [])
+        if isinstance(row, dict) and row.get("rule_id")
+    }
+    _require(enabled <= actually_enabled, "Caller may not enable unregistered Cambridge rules")
     original = data["original"]
     _require(data["global_verdict"]["whole_sentence_certified"] is False,
              "XAI-PRE cannot certify whole-sentence grammaticality")
@@ -235,6 +246,8 @@ def validate_diagnosis_repair_case(
                  f"{ident}: affected tokens do not belong to original input")
         _require(f["status"] in RULE_STATES,
                  f"{ident}: invalid partial evaluation state")
+        _require(set(f["source_claim_ids"]) <= known_claims,
+                 f"{ident}: unregistered or client-forged source claim")
         if data["mode"] == "simulation":
             _require(f["rule_id"].startswith("DEMO-") and
                      f["runtime_eligible"] is False,
@@ -249,6 +262,14 @@ def validate_diagnosis_repair_case(
                          bool(f["proof_atom_ids"]) and
                          bool(f["source_claim_ids"]),
                          f"{ident}: definitive result needs active rule and source proof")
+                _require(
+                    all(
+                        next(row for row in approved["claims"]
+                             if row["id"] == source_id)["runtime"]["constraint_enabled"]
+                        for source_id in f["source_claim_ids"]
+                    ),
+                    f"{ident}: pending-review primary-source claim cannot issue a runtime verdict"
+                )
 
     edges: set[tuple[str, str, str]] = set()
     for edge in data["dependencies"]:
