@@ -88,6 +88,14 @@ def final_d1_display_labels(root):
                 raise ValueError(f"Label {node['label']!r} with features {features!r} is absent from the FINAL-D1 master")
             lines = master[key].copy()
             if category:
+                # The Third Edition labels the lowest numbered/basic VP as
+                # VP1. Gold-source node references retain VP1/VP2 as metadata.
+                # Surface the printed reference rather than dropping it.
+                refs = node.get("source_refs") or []
+                vp_ref = next((ref for ref in refs
+                               if isinstance(ref, str) and re.fullmatch(r"VP[1-9][0-9]*", ref)), None)
+                if category == "VP" and vp_ref:
+                    lines[0] = "VP" + vp_ref[2:].translate(_SUBSCRIPTS)
                 lines[0] += subscript
         display[node["id"]] = lines
         for child in node.get("children", []):
