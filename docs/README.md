@@ -6,6 +6,13 @@ The active stack uses vanilla browser modules, spaCy and Benepar, Clerk account 
 
 Docs: [`ARCHITECTURE.md`](ARCHITECTURE.md) is the full implementation reference (modules, FSM, layout math, payload contract, spec-compliance map) · [`master_sheet.md`](master_sheet.md) is the generated rule-matrix inventory · [`docs/FEATURES.md`](FEATURES.md) is the current feature and progress status.
 
+## XAI implementation blueprint
+
+- [XAI Master Plan — contextual explanations for words, constituents and actual errors](planning/XAI_MASTER_PLAN.md)
+- [XAI Implementer Master Prompt — milestone-by-milestone engineering contract](planning/MASTER_PROMPT_XAI.md)
+
+These are **planning documents**, not a claim that the new node-level XAI engine or Cambridge diagnostics have already been implemented.
+
 ---
 
 ## Quick start
