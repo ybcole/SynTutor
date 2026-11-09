@@ -137,6 +137,26 @@ class SourcePreflightTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "token surface does not match"):
             validate_diagnosis_repair_case(record)
 
+    def test_missing_nonwhitespace_token_is_rejected(self):
+        record = deepcopy(self.cases["interacting_two_errors_temporal_context"])
+        # Omitting an internal lexical item cannot count as a full sentence map.
+        record["original"]["tokens"].pop(2)
+        with self.assertRaisesRegex(ValueError, "missing from the token map"):
+            validate_diagnosis_repair_case(record)
+
+    def test_fresh_provisional_tree_requires_a_version_specific_reference(self):
+        record = deepcopy(self.cases["independent_error_groups"])
+        record["candidates"][0]["analysis_status"] = "provisional"
+        record["candidates"][0]["tree_ref"] = None
+        with self.assertRaisesRegex(ValueError, "tree needs its own reference"):
+            validate_diagnosis_repair_case(record)
+
+    def test_newly_unmasked_issue_must_match_original_blocked_rule(self):
+        record = deepcopy(self.cases["repair_unmasks_blocked_check"])
+        record["candidates"][0]["new_findings"][0]["rule_id"] = "DEMO-DIFFERENT-RULE"
+        with self.assertRaisesRegex(ValueError, "same rule"):
+            validate_diagnosis_repair_case(record)
+
     def test_edit_implementation_must_match_candidate_text(self):
         record = deepcopy(self.cases["independent_error_groups"])
         record["candidates"][0]["text"] = "The boys is carrying boxes."
