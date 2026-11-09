@@ -112,7 +112,7 @@ export function renderNodeDetail(_session, detail, node) {
     head.appendChild(surf);
   }
   box.appendChild(head);
-  if (_session?.payload?.explanation_evidence || document.body.classList.contains('builder-active')) {
+  if (_session?.payload || document.body.classList.contains('builder-active')) {
     const authority = document.createElement('p');
     authority.className = 'diagnostic-authority';
     authority.textContent = 'Diagnostic/editor feedback. Reviewed book claims are shown separately under Book evidence.';
@@ -127,8 +127,24 @@ export function renderNodeDetail(_session, detail, node) {
   chipRow.appendChild(chip);
   box.appendChild(chipRow);
 
-  // Legacy matrix prose has not passed the book-source review gates.
-  if (_session?.payload?.explanation_evidence) return;
+  // The raw Benepar tree is a diagnostic candidate, not the B-R tree.
+  // Give an observable, explainable structural trace even when no reviewed
+  // template matches; never rebrand a legacy matrix claim as book evidence.
+  if (_session?.payload?.explanation_evidence) {
+    const trace = document.createElement('p');
+    trace.className = 'ex-text';
+    const children = (node.children || []).map(child => child.type).filter(Boolean);
+    trace.textContent = `Candidate parser node ${detail.type || node.type || 'unknown'}${detail.surface ? ` for “${detail.surface}”` : ''}.`
+      + (children.length ? ` Direct parser branches: ${children.join(', ')}.` : ' This is a terminal parser node.');
+    box.appendChild(trace);
+    if (detail.status === 'error' && detail.constraint) {
+      const warning = document.createElement('p');
+      warning.className = 'ex-text';
+      warning.textContent = `Legacy diagnostic trigger: ${detail.constraint}. This is not a source-approved grammaticality finding.`;
+      box.appendChild(warning);
+    }
+    return;
+  }
 
   if (detail.status === 'error') {
     const rm = detail.remediation || {
