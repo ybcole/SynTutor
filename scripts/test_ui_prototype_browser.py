@@ -92,8 +92,8 @@ try:
               el.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter', ctrlKey: true, bubbles: true}));
             }""", ORIGINAL)
             outline = page.locator("#generatorTreeOutline")
-            expect(page.locator("#treeCanvas")).to_be_hidden()
-            page.get_by_role("button", name="Show parser diagnostic").click()
+            # With no canonical tree, the parser tree must still be on screen.
+            expect(page.locator("#treeCanvas")).to_be_visible()
             expect(outline).to_be_visible()
             outline.locator("summary").click()
             expect(outline.get_by_role("button", name="Zoom in")).to_be_visible()

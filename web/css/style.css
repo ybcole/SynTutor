@@ -1357,10 +1357,58 @@ body.lesson-view #explainNode:empty { display: none; }
 .canonical-tree-view {
   flex: 1 1 auto;
   min-height: 0;
-  padding: 12px clamp(12px, 3vw, 22px) 22px;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 12px clamp(12px, 3vw, 22px) 14px;
+  overflow: hidden;
   background: var(--panel);
 }
+/* Pan/zoom viewport: the canonical tree behaves like the parser canvas. */
+.canonical-viewport {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 240px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.canonical-viewport.is-panning { cursor: grabbing; }
+.canonical-viewport:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.canonical-tree-view .canonical-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  overflow: visible;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.canonical-zoom {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  display: flex;
+  gap: 4px;
+}
+.canonical-zoom button {
+  min-width: 34px;
+  min-height: 34px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+.canonical-zoom button:hover { border-color: var(--accent); }
+.canonical-tree-view > .lesson-tree-wrap { flex: 0 0 auto; max-height: 35%; overflow: auto; }
+.canonical-tree-view > .lesson-tree-wrap .lesson-tree-hint { display: none; }
 .canonical-tree-view[hidden] { display: none; }
 .canonical-tree-view .canonical-tree-help {
   color: var(--muted);
@@ -1368,10 +1416,9 @@ body.lesson-view #explainNode:empty { display: none; }
   line-height: 1.5;
   margin-bottom: 12px;
 }
-.canonical-tree-view .lesson-tree-wrap {
+.canonical-tree-view > .lesson-tree-wrap {
   padding: 6px 8px 18px;
 }
-.canonical-tree-view .lesson-tree-wrap svg { margin-inline: auto; }
 .canonical-tree-view .lesson-tree-text button {
   color: var(--ink);
   background: transparent;
