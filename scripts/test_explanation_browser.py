@@ -69,6 +69,17 @@ try:
         }""")
         generator = page.locator('[data-shared-evidence]').inner_text()
         assert ('Test structure' if fixture_mode else 'A sentence is the largest syntactic unit') in generator, generator
+        # The canonical B-R tree, not the raw Benepar graph, is primary when
+        # the parser adapter has actually normalized the selected structure.
+        assert page.locator('#canonicalTreeView').is_visible()
+        assert page.locator('#treeCanvas').is_hidden()
+        canonical = page.locator('#canonicalTreeView svg g[data-node-id]').first
+        assert canonical.get_attribute('role') == 'button'
+        canonical.focus()
+        canonical.press('Enter')
+        page.wait_for_selector('#explainNode [data-shared-evidence]')
+        assert 'B-R structural analysis' in page.locator('#explainNode').inner_text()
+        assert 'S → NP VP' in page.locator('#explainNode').inner_text() or fixture_mode
         page.evaluate("""async () => {
           const {renderNodeDetail, renderCorrection} = await import('/js/ui.js');
           renderNodeDetail({payload:{explanation_evidence:{}}}, {
