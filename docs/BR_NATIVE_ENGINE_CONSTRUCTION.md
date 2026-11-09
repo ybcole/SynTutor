@@ -61,7 +61,7 @@ Canonical B-R tree + derivation trace / accepted alternatives
 Generator, Builder, Lessons, Quizzes and explanations
 ~~~
 
-The existing FINAL-D1 projection is a **first construction adapter**. The new experimental bounded native chart constructs **a narrow subset of finite clauses** independently of Benepar tree shape; it has no full lexical frame system, movement/wh/control analysis, or grammaticality authority, and is not yet promoted by the Generator API. Neither module is the complete chart/unification parser pictured above. We preserve both while validating independent layers. A new parser should be evaluated on unseen sentences where Benepar's top-ranked attachment is wrong, rather than trained solely to copy Penn trees.
+The existing FINAL-D1 projection is a **first construction adapter**. The new experimental bounded native chart constructs **a narrow subset of finite clauses** independently of Benepar tree shape; it has no full lexical frame system, movement/wh/control analysis, or grammaticality authority. On an unresolved free-form analysis, the Generator API can expose candidates in a separate `br_analysis.native_chart_candidates` diagnostic field, never as the canonical `tree` or a verified grammaticality verdict. Neither module is the complete chart/unification parser pictured above. We preserve both while validating independent layers. A new parser should be evaluated on unseen sentences where Benepar's top-ranked attachment is wrong, rather than trained solely to copy Penn trees.
 
 ## 4. Current implementation increment and files
 
