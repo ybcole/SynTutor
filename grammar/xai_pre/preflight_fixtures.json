@@ -1410,7 +1410,7 @@
             "status": "AMBIGUOUS",
             "affected_token_ids": [
               "u0-t5",
-              "u0-t3",
+              "u0-t6",
               "u0-t7"
             ],
             "governor_node_ids": [],
@@ -1555,6 +1555,421 @@
           "status": "NOT_EVALUATED",
           "whole_sentence_certified": false,
           "notes": "Synthetic test scenario, never a production grammaticality judgment."
+        }
+      }
+    },
+    {
+      "id": "five_errors_three_interaction_groups",
+      "purpose": "Five simultaneous simulated errors, three interacting/independent groups and five linked edits",
+      "expected": {
+        "original_findings": 5,
+        "issue_groups": 3,
+        "candidates": 1
+      },
+      "envelope": {
+        "schema_version": "xai-pre-1.0",
+        "mode": "simulation",
+        "rule_set_version": "preflight-no-enabled-constraints",
+        "variety": {
+          "english_variety": "Standard English",
+          "register": "unspecified"
+        },
+        "original": {
+          "version_id": "u0",
+          "text": "She have went to a stores, and he don't likes it.",
+          "tokens": [
+            {
+              "id": "u0-t1",
+              "text": "She",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "id": "u0-t2",
+              "text": "have",
+              "start": 4,
+              "end": 8
+            },
+            {
+              "id": "u0-t3",
+              "text": "went",
+              "start": 9,
+              "end": 13
+            },
+            {
+              "id": "u0-t4",
+              "text": "to",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "id": "u0-t5",
+              "text": "a",
+              "start": 17,
+              "end": 18
+            },
+            {
+              "id": "u0-t6",
+              "text": "stores",
+              "start": 19,
+              "end": 25
+            },
+            {
+              "id": "u0-t7",
+              "text": ",",
+              "start": 25,
+              "end": 26
+            },
+            {
+              "id": "u0-t8",
+              "text": "and",
+              "start": 27,
+              "end": 30
+            },
+            {
+              "id": "u0-t9",
+              "text": "he",
+              "start": 31,
+              "end": 33
+            },
+            {
+              "id": "u0-t10",
+              "text": "don't",
+              "start": 34,
+              "end": 39
+            },
+            {
+              "id": "u0-t11",
+              "text": "likes",
+              "start": 40,
+              "end": 45
+            },
+            {
+              "id": "u0-t12",
+              "text": "it",
+              "start": 46,
+              "end": 48
+            },
+            {
+              "id": "u0-t13",
+              "text": ".",
+              "start": 48,
+              "end": 49
+            }
+          ],
+          "analysis_status": "not_evaluated",
+          "tree_ref": null
+        },
+        "findings": [
+          {
+            "id": "f1",
+            "rule_id": "DEMO-FINITE-AGREEMENT",
+            "status": "VIOLATED",
+            "affected_token_ids": [
+              "u0-t1",
+              "u0-t2"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation only; no Cambridge runtime rule activated."
+          },
+          {
+            "id": "f2",
+            "rule_id": "DEMO-PERFECT-VERB-FORM",
+            "status": "VIOLATED",
+            "affected_token_ids": [
+              "u0-t2",
+              "u0-t3"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation only; no Cambridge runtime rule activated."
+          },
+          {
+            "id": "f3",
+            "rule_id": "DEMO-DETERMINER-NUMBER",
+            "status": "VIOLATED",
+            "affected_token_ids": [
+              "u0-t5",
+              "u0-t6"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation only; no Cambridge runtime rule activated."
+          },
+          {
+            "id": "f4",
+            "rule_id": "DEMO-FINITE-AGREEMENT",
+            "status": "VIOLATED",
+            "affected_token_ids": [
+              "u0-t9",
+              "u0-t10"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation only; no Cambridge runtime rule activated."
+          },
+          {
+            "id": "f5",
+            "rule_id": "DEMO-DO-SUPPORT-PLAIN-FORM",
+            "status": "VIOLATED",
+            "affected_token_ids": [
+              "u0-t10",
+              "u0-t11"
+            ],
+            "governor_node_ids": [],
+            "interpretation_id": "hypothesis-1",
+            "proof_atom_ids": [],
+            "source_claim_ids": [],
+            "runtime_eligible": false,
+            "reason": "Simulation only; no Cambridge runtime rule activated."
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "f1",
+            "to": "f2",
+            "kind": "SHARES_CONSTRUCTION"
+          },
+          {
+            "from": "f4",
+            "to": "f5",
+            "kind": "SHARES_CONSTRUCTION"
+          }
+        ],
+        "groups": [
+          {
+            "id": "g1",
+            "finding_ids": [
+              "f1",
+              "f2"
+            ],
+            "coupling": "interacting",
+            "rationale": "Same perfect auxiliary construction."
+          },
+          {
+            "id": "g2",
+            "finding_ids": [
+              "f3"
+            ],
+            "coupling": "independent",
+            "rationale": "Local determiner–noun number relation."
+          },
+          {
+            "id": "g3",
+            "finding_ids": [
+              "f4",
+              "f5"
+            ],
+            "coupling": "interacting",
+            "rationale": "Same do-support construction."
+          }
+        ],
+        "candidates": [
+          {
+            "version_id": "u1",
+            "parent_version_id": "u0",
+            "text": "She has gone to a store, and he doesn't like it.",
+            "tokens": [
+              {
+                "id": "u1-t1",
+                "text": "She",
+                "start": 0,
+                "end": 3
+              },
+              {
+                "id": "u1-t2",
+                "text": "has",
+                "start": 4,
+                "end": 7
+              },
+              {
+                "id": "u1-t3",
+                "text": "gone",
+                "start": 8,
+                "end": 12
+              },
+              {
+                "id": "u1-t4",
+                "text": "to",
+                "start": 13,
+                "end": 15
+              },
+              {
+                "id": "u1-t5",
+                "text": "a",
+                "start": 16,
+                "end": 17
+              },
+              {
+                "id": "u1-t6",
+                "text": "store",
+                "start": 18,
+                "end": 23
+              },
+              {
+                "id": "u1-t7",
+                "text": ",",
+                "start": 23,
+                "end": 24
+              },
+              {
+                "id": "u1-t8",
+                "text": "and",
+                "start": 25,
+                "end": 28
+              },
+              {
+                "id": "u1-t9",
+                "text": "he",
+                "start": 29,
+                "end": 31
+              },
+              {
+                "id": "u1-t10",
+                "text": "doesn't",
+                "start": 32,
+                "end": 39
+              },
+              {
+                "id": "u1-t11",
+                "text": "like",
+                "start": 40,
+                "end": 44
+              },
+              {
+                "id": "u1-t12",
+                "text": "it",
+                "start": 45,
+                "end": 47
+              },
+              {
+                "id": "u1-t13",
+                "text": ".",
+                "start": 47,
+                "end": 48
+              }
+            ],
+            "edits": [
+              {
+                "operation": "replace",
+                "start": 4,
+                "end": 8,
+                "replacement": "has",
+                "original_token_ids": [
+                  "u0-t2"
+                ]
+              },
+              {
+                "operation": "replace",
+                "start": 9,
+                "end": 13,
+                "replacement": "gone",
+                "original_token_ids": [
+                  "u0-t3"
+                ]
+              },
+              {
+                "operation": "replace",
+                "start": 19,
+                "end": 25,
+                "replacement": "store",
+                "original_token_ids": [
+                  "u0-t6"
+                ]
+              },
+              {
+                "operation": "replace",
+                "start": 34,
+                "end": 39,
+                "replacement": "doesn't",
+                "original_token_ids": [
+                  "u0-t10"
+                ]
+              },
+              {
+                "operation": "replace",
+                "start": 40,
+                "end": 45,
+                "replacement": "like",
+                "original_token_ids": [
+                  "u0-t11"
+                ]
+              }
+            ],
+            "targets": [
+              "f1",
+              "f2",
+              "f3",
+              "f4",
+              "f5"
+            ],
+            "lineage": [
+              {
+                "finding_id": "f1",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u1-f1"
+                ]
+              },
+              {
+                "finding_id": "f2",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u1-f2"
+                ]
+              },
+              {
+                "finding_id": "f3",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u1-f3"
+                ]
+              },
+              {
+                "finding_id": "f4",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u1-f4"
+                ]
+              },
+              {
+                "finding_id": "f5",
+                "after": "resolved_by_satisfaction",
+                "recheck_status": "SATISFIED",
+                "proof_atom_ids": [
+                  "demo-proof-u1-f5"
+                ]
+              }
+            ],
+            "new_findings": [],
+            "analysis_status": "not_evaluated",
+            "tree_ref": null,
+            "meaning_changed": true,
+            "global_certified": false,
+            "notes": "Demonstration of five issue groups/edits only; no global grammaticality proof or parser rerun."
+          }
+        ],
+        "global_verdict": {
+          "status": "PARTIALLY_EVALUATED",
+          "whole_sentence_certified": false,
+          "notes": "Synthetic five-error scenario; neither detection nor correction has executed."
         }
       }
     }
