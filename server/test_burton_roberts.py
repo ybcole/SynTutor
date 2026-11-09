@@ -11,6 +11,7 @@ from pathlib import Path
 from jsonschema import Draft202012Validator
 
 from server.br_tree import _atoms, _source_yield, load_reference_records
+from server.parse_engine import NodeBuilder, parse_parse_string
 
 from server.burton_roberts import (
     align_correction,
@@ -70,6 +71,17 @@ def _offset(sentence, token_index):
         if i == token_index:
             return start
         start += len(part) + 1
+
+
+def final_declarative(noun="students", verb="sighed", punctuation="."):
+    sentence = f"The tired {noun} {verb} quietly{punctuation}"
+    noun_tag = "NNS" if noun.endswith("s") else "NN"
+    parse = (f"(S (NP (DT The) (JJ tired) ({noun_tag} {noun})) "
+             f"(VP (VBD {verb}) (ADVP (RB quietly))) (. {punctuation}))")
+    analysis = candidate(sentence)
+    analysis["parse_string"] = parse
+    analysis["root"] = NodeBuilder().build(parse_parse_string(parse), len(analysis["tokens"]))
+    return analysis
     return start
 
 
@@ -104,12 +116,53 @@ class NormalizationTests(unittest.TestCase):
         self.assertTrue(all(x["triangle"] for x in tree["root"]["children"]))
         self.assertTrue(validate_canonical_tree(tree)["valid"])
 
-    def test_final_profile_is_unresolved_not_relabelled(self):
+    def test_unsupported_final_construction_stays_unresolved(self):
         result = normalize_benepar_candidate(candidate("The students laugh"), convention_profile())
         self.assertEqual(result["status"], "unresolved")
         self.assertIsNone(result["tree"])
         self.assertIn("PROFILE_MAPPING_NOT_APPROVED", [r["code"] for r in result["reasons"]])
         self.assertIn("raw_candidate_tree", result["diagnostics"])
+
+    def test_final_declarative_combines_chapter_rules_and_preserves_parser_evidence(self):
+        for noun in ("students", "teacher"):
+            with self.subTest(noun=noun):
+                analysis = final_declarative(noun)
+                raw_before = json.dumps(analysis["root"])
+                result = build_canonical_analysis(analysis, reference_records=[])
+                self.assertEqual(result["status"], "normalized", result["reasons"])
+                self.assertEqual(result["convention_profile"]["profile_id"], "FINAL-D1")
+                tree = result["tree"]
+                schema_path = Path(__file__).resolve().parents[1] / "docs/canonical-burton-roberts-tree.schema.json"
+                Draft202012Validator(json.loads(schema_path.read_text())).validate(tree)
+                self.assertEqual([token["text"] for token in tree["tokens"]],
+                                 ["The", "tired", noun, "sighed", "quietly"])
+                self.assertEqual(tree["root"]["label"], "S")
+                subject, predicate = tree["root"]["children"]
+                self.assertEqual([subject["label"], predicate["label"]], ["NP", "VP"])
+                det, nom = subject["children"]
+                self.assertEqual([det["label"], nom["label"]], ["DET", "NOM"])
+                ap, inner_nom = nom["children"]
+                self.assertEqual([ap["label"], inner_nom["label"]], ["AP", "NOM"])
+                self.assertEqual(inner_nom["children"][0]["label"], "N")
+                inner_vp, adjunct = predicate["children"]
+                self.assertEqual([inner_vp["label"], adjunct["label"]], ["VP", "AdvP"])
+                v = inner_vp["children"][0]
+                self.assertEqual(v["label"], "V")
+                self.assertEqual(v["features"], ["intrans", "past"])
+                self.assertEqual(v["source_refs"], ["Ch4 p. 72 [22]", "Ch6 p. 113 [8]–[9]"])
+                self.assertEqual(v["children"][0]["word"], "sighed")
+                self.assertEqual(json.dumps(analysis["root"]), raw_before)
+                self.assertEqual(json.dumps(result["parser_diagnostics"]["raw_candidate_tree"]), raw_before)
+
+    def test_final_declarative_refuses_unsupported_frame_punctuation_and_offsets(self):
+        misaligned = final_declarative()
+        misaligned["tokens"][3]["start"] -= 1
+        for analysis in (final_declarative(verb="ate"), final_declarative(punctuation="?"), misaligned):
+            with self.subTest(sentence=analysis["sentence"]):
+                result = build_canonical_analysis(analysis, reference_records=[])
+                self.assertEqual(result["status"], "unresolved")
+                self.assertIsNone(result["tree"])
+                self.assertIn("raw_candidate_tree", result["parser_diagnostics"])
 
     def test_sentence_final_punctuation_is_not_fabricated_as_a_phrase_marker_node(self):
         result = normalize_benepar_candidate(candidate("The students laugh."), convention_profile(2))

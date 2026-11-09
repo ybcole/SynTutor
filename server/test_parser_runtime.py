@@ -73,6 +73,20 @@ class ParserBackedRuntimeTests(unittest.TestCase):
                          payload["br_analysis"])
         self.assertEqual(list(M1_VALIDATOR.iter_errors(payload["br_analysis"]["tree"])), [])
 
+    def test_real_generator_api_projects_the_first_final_d1_construction(self):
+        with patch.object(api, "classify", return_value=None):
+            payload = api.build_payload("The tired students sighed quietly.")
+
+        analysis = payload["br_analysis"]
+        self.assertEqual(analysis["status"], "normalized", analysis["reasons"])
+        envelope = analysis["tree"]
+        self.assertEqual(envelope["convention_profile"]["profile_id"], "FINAL-D1")
+        self.assertEqual(list(M1_VALIDATOR.iter_errors(envelope)), [])
+        vp, adjunct = envelope["root"]["children"][1]["children"]
+        self.assertEqual(adjunct["label"], "AdvP")
+        self.assertEqual(vp["children"][0]["features"], ["intrans", "past"])
+        self.assertEqual(payload["tree"], payload["candidate_tree"])
+
     def test_corrected_sentence_is_independently_parsed_and_normalized(self):
         original = "The students laughs."
         corrected = "The students laugh."

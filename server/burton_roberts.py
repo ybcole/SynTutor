@@ -176,17 +176,101 @@ def _is_raw_leaf(node: dict[str, Any]) -> bool:
     return isinstance(node, dict) and not node.get("children") and "surface" in node
 
 
+def _final_intransitive_declarative(
+        raw_root: dict[str, Any], sentence: str, tokens: list[dict[str, Any]],
+        profile: dict[str, Any]) -> dict[str, Any] | None:
+    """Project F01's narrow finite intransitive frame under FINAL-D1."""
+    root = raw_root
+    while root.get("type") in {"ROOT", "TOP"} and len(root.get("children") or []) == 1:
+        root = root["children"][0]
+    if root.get("type") != "S":
+        return None
+    clause = list(root.get("children") or [])
+    if clause and _is_raw_leaf(clause[-1]) and clause[-1]["surface"] == ".":
+        clause.pop()
+    if [child.get("type") for child in clause] != ["NP", "VP"]:
+        return None
+
+    subject, predicate = (node.get("children") or [] for node in clause)
+    if [node.get("type") for node in subject] not in (["DT", "JJ", "NN"], ["DT", "JJ", "NNS"]):
+        return None
+    if [node.get("type") for node in predicate] != ["VBD", "ADVP"]:
+        return None
+    adverb = predicate[1].get("children") or []
+    if [node.get("type") for node in adverb] != ["RB"]:
+        return None
+    leaves = [*subject, predicate[0], adverb[0]]
+    if not all(_is_raw_leaf(node) and not _is_parser_punctuation(node) for node in leaves):
+        return None
+    article, adjective, noun, verb, manner = (node["surface"] for node in leaves)
+    # Tags and absence of an object alone do not establish an intransitive use.
+    if (article.lower(), adjective.lower(), verb.lower(), manner.lower()) != (
+            "the", "tired", "sighed", "quietly"):
+        return None
+
+    # Check both the overt yield and its offsets in the original sentence.
+    surface_tokens = _tokenize_with_spans(sentence)
+    if surface_tokens and surface_tokens[-1]["text"] == ".":
+        surface_tokens.pop()
+    if [token["text"] for token in tokens] != [node["surface"] for node in leaves]:
+        return None
+    if surface_tokens != [{"text": token["text"], "char_span": token["char_span"]}
+                          for token in tokens]:
+        return None
+
+    def branch(label, refs, *children, features=()):
+        node = {"label": label, "source_refs": list(refs), "children": list(children)}
+        if features:
+            node["features"] = list(features)
+        return node
+
+    nominal_refs = ("Ch7 pp. 166–168",)
+    modifier = branch("AP", ("Ch3 p. 55",),
+                      branch("A", ("Ch3 p. 55",), {"word": adjective}))
+    nominal = branch("NOM", nominal_refs, modifier,
+                     branch("NOM", nominal_refs, branch("N", nominal_refs, {"word": noun})))
+    determiner = branch("DET", ("Ch7 p. 141",),
+                        branch("ART", ("Ch7 p. 141",), {"word": article}))
+    np = branch("NP", ("Ch2 pp. 29–30", "Ch7 pp. 141–142"), determiner, nominal)
+
+    verb_node = branch("V", ("Ch4 p. 72 [22]", "Ch6 p. 113 [8]–[9]"),
+                       {"word": verb}, features=("intrans", "past"))
+    inner_vp = branch("VP", ("Ch4 pp. 71–72",), verb_node)
+    adjunct = branch("AdvP", ("Ch3 p. 56", "Ch5 pp. 87–90"),
+                     branch("Adv", ("Ch3 p. 56",), {"word": manner}))
+    vp = branch("VP", ("Ch5 pp. 87–90",), inner_vp, adjunct)
+    tree = branch("S", ("Ch2 pp. 29–30",), np, vp)
+    envelope = {
+        "schema_version": SCHEMA_VERSION,
+        "tree_id": _stable_id("sg", sentence + "|FINAL-D1"),
+        "sentence": sentence,
+        "tokens": tokens,
+        "convention_profile": profile,
+        "source": {"book": BOOK_TITLE, "edition": BOOK_EDITION, "chapter": 10,
+                   "evidence_status": "DERIVED_FROM_INSTRUCTIONS",
+                   "review_note": "FINAL-D1 projection. Printed evidence is recorded on each category node."},
+        "root": _build_canonical_node(tree, tokens, [0], "sg-root", []),
+        "movement": [],
+        "accepted_alternatives": [],
+    }
+    trace = [{
+        "rule_id": "FINAL_D1_INTRANSITIVE_DECLARATIVE",
+        "evidence": "The F01 frame combines Ch2 clause structure, Ch4 intransitive V, "
+                    "Ch5 adjunct attachment, Ch6 finite tense and Ch7 Appendix NOM.",
+    }]
+    validation = validate_canonical_tree(envelope)
+    if not validation["valid"]:
+        return {"status": "rejected", "tree": None,
+                "reasons": [{"code": "CANONICAL_VALIDATION_FAILED", "detail": e}
+                            for e in validation["errors"]],
+                "normalization_trace": trace, "validation": validation}
+    return {"status": "normalized", "tree": envelope, "reasons": [],
+            "normalization_trace": trace, "validation": validation}
+
+
 def normalize_benepar_candidate(analysis: dict[str, Any],
                                 profile: dict[str, Any] | None = None) -> dict[str, Any]:
-    """Normalize only a tightly supported V2 shell; otherwise fail unresolved.
-
-    The currently approved adapter supports B-R V2's S -> NP VP skeleton when
-    both NP and VP are left unanalyzed triangles. Sentence-final punctuation
-    is excluded from the phrase marker; punctuation inside a phrase is unresolved.
-    POS tags remain token metadata; they are not promoted to B-R phrase nodes.
-    Later profiles need additional reviewed mappings (lexical categories,
-    verbal features, auxiliary layers, NOM, clauses, gaps, indices and control).
-    """
+    """Project the V2 lesson shell or the guarded FINAL-D1 declarative."""
     profile = profile or convention_profile()
     errors = _profile_errors(profile)
     if errors:
@@ -203,11 +287,15 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
 
     if not isinstance(raw_root, dict):
         reasons.append({"code": "MISSING_PARSER_TREE", "detail": "Benepar did not provide a serializable candidate tree."})
-    if profile.get("chapter") != 2:
+    elif profile["version"] == "FINAL":
+        final = _final_intransitive_declarative(raw_root, sentence, tokens, profile)
+        if final is not None:
+            return final
+    if profile["chapter"] != 2:
         reasons.append({
             "code": "PROFILE_MAPPING_NOT_APPROVED",
-            "detail": (f"The conservative Benepar adapter currently supports only the V2 S → NP VP shell; "
-                       f"{profile.get('version')} requires mappings not yet source-verified."),
+            "detail": (f"No reviewed mapping for this construction under {profile['version']}. "
+                       "The adapter supports the V2 lesson shell and a guarded FINAL-D1 declarative."),
         })
     if reasons:
         return _unresolved_result(profile, reasons, trace, analysis, tokens)
@@ -366,8 +454,8 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
 
     Exact IMG-verified source trees take priority when sentence and convention
     match. Conflicting source analyses remain unresolved. Otherwise the narrow
-    parser adapter is attempted; it currently supports only the V2 S → NP VP
-    shell with unanalyzed NP/VP triangles. Other Benepar structures fail closed.
+    parser adapter is attempted for the V2 shell or the guarded FINAL-D1
+    declarative. Other Benepar structures fail closed.
     """
     profile = convention_profile(chapter, appendix_nom)
     sentence = str(analysis.get("sentence", ""))
@@ -704,8 +792,8 @@ def _preserve_source_node_metadata(out: dict[str, Any],
     return out
 
 
-def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: list[int],
-                     node_id: str, notes: list[str]) -> dict[str, Any]:
+def _build_canonical_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: list[int],
+                          node_id: str, notes: list[str]) -> dict[str, Any]:
     if raw.get("gap") is True:
         out = {"id": node_id, "gap": True}
         if raw.get("index") is not None:
@@ -771,7 +859,7 @@ def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: 
         }, raw)
     if not isinstance(children_raw, list) or not children_raw:
         raise ValueError(f"gold branch {label!r} has no children")
-    children = [_build_gold_node(child, tokens, cursor, f"{node_id}-{i}", notes)
+    children = [_build_canonical_node(child, tokens, cursor, f"{node_id}-{i}", notes)
                 for i, child in enumerate(children_raw)]
     overt = [child.get("token_span") for child in children
              if child.get("token_span") and not child.get("empty")]
@@ -814,7 +902,7 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
     cursor = [0]
     tree_id = str(record.get("id") or _stable_id(f"ch{chapter}", json.dumps(raw_tree, sort_keys=True)))
     try:
-        root = _build_gold_node(raw_tree, tokens, cursor, f"{tree_id}-root", notes)
+        root = _build_canonical_node(raw_tree, tokens, cursor, f"{tree_id}-root", notes)
         if cursor[0] != len(tokens):
             raise ValueError(f"tree consumed {cursor[0]} of {len(tokens)} source token(s)")
     except (TypeError, ValueError) as exc:
@@ -927,7 +1015,7 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
             continue
         alt_cursor = [0]
         try:
-            alt_root = _build_gold_node(alt["tree"], tokens, alt_cursor,
+            alt_root = _build_canonical_node(alt["tree"], tokens, alt_cursor,
                                         f"{tree_id}-alt-{i + 1}", envelope["notes"])
             if alt_cursor[0] != len(tokens):
                 raise ValueError(f"alternative consumed {alt_cursor[0]} of {len(tokens)} source token(s)")
