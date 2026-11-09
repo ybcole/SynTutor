@@ -4,6 +4,7 @@
 **Date:** 10 November 2026  
 **Repository:** `ybcole/SynTutor`  
 **Companion implementer prompt:** [MASTER_PROMPT_XAI.md](MASTER_PROMPT_XAI.md)  
+**Mandatory pre-milestone evidence and correction specification:** [XAI_SOURCE_AUDIT_MULTI_ERROR.md](XAI_SOURCE_AUDIT_MULTI_ERROR.md)  
 **Related:** [Existing master plan](master_plan.md), [B–R construction specification](../BR_NATIVE_ENGINE_CONSTRUCTION.md), [source conventions](../../CONVENTIONS.md)
 
 > **Product decision: Explain words, lexical heads, all meaningful constituents (NP, VP, PP, AP, AdvP, NOM, S/S′/S″), structural edges/functions, detected violations, and repairs.** Every explanation must reference the actual sentence and, when relevant, the surrounding constituent structure. Never reduce this to an isolated POS-tag dictionary. Do not confuse interpreting a tree with judging whether the sentence is grammatical.
@@ -27,6 +28,21 @@ Repository code inspected on 10 November 2026:
 | Legacy `matrix.py`, `ruleset.py`, `detector.py`, `corrector.py` | Candidate/legacy heuristics and corrections | Their output is **not automatically book-backed**, and must not be laundered into cited teaching claims |
 
 The old `master_checklist.md` marks its **basic explanation-engine foundation** complete. That does **not** mean this deeper, relational, sentence-adaptive XAI system has already been delivered. This is a **new workstream**, with new gates below.
+
+## 0A. Mandatory pre-milestone source review and multi-error contract
+
+**XAI-PRE is a hard prerequisite to implementation of XAI-0 through XAI-8.** Read and apply the [uploaded-book source audit and multi-error protocol](XAI_SOURCE_AUDIT_MULTI_ERROR.md). The uploaded B–R third edition (2011) and Cambridge Grammar (2002) have been checked in **selected relevant passages**; this is **not** an exhaustive page-by-page audit. The source audit inventories all 11 B–R and 20 Cambridge chapters and tracks independently reviewed vs pending constructions.
+
+Specific book findings that affect implementation:
+
+- B–R Ch. 6 pp. 116–118, 121–122 and Cambridge Ch. 3 p. 106 both encode auxiliary → selected verb-form relationships, but **B–R “perfect participle” versus Cambridge “past participle”** and **B–R “progressive participle” versus Cambridge “gerund-participle”** need explicit crosswalk records. Cambridge p. 76 treats overtly identical preterite/participle forms as syntactically distinct.
+- Cambridge Ch. 3 pp. 143–145 describes the usual restriction of past-time adjuncts with present perfect **and exceptions** (e.g. an experiential perfect containing “already … yesterday”). Never enable a simple `present perfect + yesterday → error` predicate.
+- Cambridge Ch. 1 pp. 2, 5–10 and its notational conventions separate Standard English, informal/nonstandard varieties, semantics/pragmatics, uncertain grammaticality, and actual ungrammaticality. Keep corresponding diagnostic types distinct.
+- B–R third-edition preface pp. ix–x discontinues older `Vgrp` analyses; nested auxiliary VPs must be preserved.
+
+**Architectural change:** a sentence can contain several interacting issues. Each detected issue requires an original-input evidence scope, governing relationship, rule precondition, independent validity state and exact token anchors. Maintain a dependency graph of independent/overlapping/blocked/cascaded diagnoses; propose **joint repair packages** for interacting constraints. Every candidate edit produces a new candidate analysis and **full re-evaluation**. Distinguish an issue `resolved_by_satisfaction` from one `no_longer_applicable_after_rewrite`, and a newly **unmasked** issue from a genuinely **introduced** issue. Never label a whole sentence grammatical based on fixing a single issue.
+
+**Pre-milestone gate:** edition-verified source map, pending crosswalks, documented Cambridge exceptions, multi-error status/lineage API contract, a controlled held-out/adversarial fixture list, and written distinction between confirmed local findings and unresolved global grammaticality.
 
 ## 1. Definitive architecture decisions
 
@@ -355,12 +371,22 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 
 **Each stage is independently shippable. Do not mark complete merely because a file exists or a synthetic test passes.**
 
+### XAI-PRE — Book check + multi-error protocol, before any implementation
+
+- Apply the dedicated [uploaded-book source audit and dependency-aware correction specification](XAI_SOURCE_AUDIT_MULTI_ERROR.md); verify both editions and printed-page citations.
+- Audit all 20 CGEL and 11 B–R chapter **topics** for relevant construction coverage; source-check the selected actual passages before activating each rule. The topic inventory is **not** equivalent to reading and approving the complete books.
+- Define separate tree, rule, variety, usage, and semantic status enums; define evidence provenance and partial evaluation (`SATISFIED`, `VIOLATED`, `NOT_APPLICABLE`, `BLOCKED`, `AMBIGUOUS`, `UNIMPLEMENTED`).
+- Freeze original-input spans, issue/dependency graph, scoped repair candidate and original→candidate finding lineage contracts. Require exception-rich multi-error tests and human-approved source gates.
+
+**Gate:** approved architecture contracts and source exception inventory; **no runtime rule or corrector is enabled merely because this plan exists**.
+
 ### XAI-0 — Baseline audit and contract freeze
 
 - Inventory existing templates, all book-source status, Cambridge enabled rules, current node inspection and correction outputs.
 - Collect at least 50 representative sentences for initial **development** smoke (correct, ungrammatical, ambiguous, nonfinite, wh, coordination, auxiliaries, punctuation, Taglish/unsupported English) and record parser status without inventing "gold".
 - Record the currently missing node types, source coverage and false-positive diagnoses.
 - Agree source metadata + data contracts and UI labels before changing production outputs.
+- Include original-vs-candidate multi-error diagnosis and Cambridge contextual exceptions in baseline fixtures; record blocked/ambiguous findings explicitly.
 
 **Gate:** written inventory, reproducible test set and initial metrics. Known current baseline: 2 templates, 4 source records, 0 enabled Cambridge runtime rules.
 
@@ -393,6 +419,8 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 ### XAI-4 — Real Cambridge runtime constraints
 
 - Start with a small batch of high-frequency *reviewed* contrastive constraints.
+- Treat checks as **partial evaluators**, not universal grammar verdicts; expose `BLOCKED`, `AMBIGUOUS`, and `NOT_APPLICABLE` separately.
+- Attach cause/dependency edges across simultaneous violations before enabling learner-facing diagnosis.
 - Implement typed detectors with preconditions, exceptions, variety and disagreement policy; enable only after tests.
 - Support basic token-only constraints even if full B–R tree is not normalized, without promoting parser evidence to authoritative B–R relationships.
 
@@ -401,6 +429,8 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 ### XAI-5 — Error-to-tree localization and correction rationale
 
 - A failing check identifies exact affected span **and** governor/ancestor relation, plus possible alternatives.
+- Support multiple simultaneous errors with stable original finding IDs and independent vs interacting **repair groups**.
+- Reparse and re-evaluate every candidate edit; distinguish resolved/satisfied, inapplicable after structural change, persisting, newly unmasked and genuinely introduced findings. Never declare an isolated fix globally correct.
 - Attach diagnosis to both clicked word and related constituent/feature row.
 - Reparse correction; evaluate applicable rule set; preserve unverified conditions, multiple corrections and meaning.
 
@@ -425,6 +455,7 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 ### XAI-8 — Independent evaluation and safe rollout
 
 - Expert/adjudicated test set with grammatical, ungrammatical, ambiguous, dialectal, stylistic and false-positive traps.
+- Include multiple-error and interference cases, partial parses, contradictory recommendations, context-sensitive perfect+temporal adjunct cases, and alternative valid correction sets.
 - Measure node explanation coverage, role accuracy, grounding/traceability, error precision/recall, repair validity, learner comprehension and latency independently.
 - Blind-rated comparison to current UI; monitor real usage with anonymized logs and opt-in collection.
 
@@ -435,6 +466,8 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 1. *I hate you*: S, both NP nodes, VP, V, two pronouns and each relation get distinct context-specific language.
 2. *She had eaten*: correct auxiliary and complement explanation, no false alarm.
 3. *She had went home*: where an approved, tested detector exists, contextualize affected verb form and governor correctly; otherwise no book-backed diagnosis.
+3a. *She have went to the store yesterday*: expose the interacting agreement and auxiliary-form issues; isolate or group repairs and recheck all findings. Do not silently remove the definite-time adjunct or assume the first repair makes the sentence correct.
+3b. *We’ve already discussed it yesterday*: retain Cambridge Ch. 3 pp. 144–145's contextual exception; don't treat a simple past-time-adjunct blacklist as book-certified.
 4. *She had breakfast*: recognize lexical-verb use and do not apply perfect-auxiliary rule.
 5. *The student saw the man with a telescope*: attachment alternatives remain explicit.
 6. Unsupported chapter/structure: retain plain observational explanation without fabricated function or evidence.
