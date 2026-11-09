@@ -66,6 +66,8 @@ try:
             br = parsed.get('br_analysis', {})
             assert parsed['parse']['text'] == text
             assert br.get('status') == 'normalized', (parsed['parse']['parse_string'], br.get('reasons'))
+            verb = br['tree']['root']['children'][1]['children'][0]
+            assert br['display_labels'][verb['id']] == ['V', '[intrans]', '[pres]']
         page.wait_for_selector('#openCanonicalBuilder', timeout=60000)
         if final_mode:
             canonical = page.locator('#canonicalTreeView')
@@ -80,6 +82,13 @@ try:
             pane = page.locator('#explainNode')
             assert 'spans “sleeps”' in pane.inner_text()
             assert 'Ch5 p. 104' in pane.inner_text()
+            canonical.get_by_text('Read the tree as text', exact=True).click()
+            word = canonical.locator('details').get_by_role('button', name='Inspect Burton-Roberts word for sleeps')
+            word.press('Enter')
+            assert word.get_attribute('aria-pressed') == 'true'
+            assert 'Ch5 p. 104' in pane.inner_text()
+            page.locator('#newSessionBtn').click()
+            assert not canonical.is_visible()
             assert not errors, errors
             print('PASS: FINAL-D1 renders the reported sentence and exposes its node evidence.')
             browser.close()

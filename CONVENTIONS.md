@@ -49,7 +49,7 @@
 | **V10** | Ch10 (p.224) | Non-finite clauses: `[-tense]` auxiliary (`to`), **indices / control**, covert subjects `•`, verb types `V(I)` / `V(II)`. Clause complements of V **drop the old 6-way features and the NP node.** |
 | — | Ch11 (p.254) | Theory chapter. No new trees (see §10). |
 
-**Free analysis uses `FINAL-D1`**, one cumulative notation across the book with the Chapter 7 Appendix NOM refinement. The construction determines which rules apply. Chapter numbers on rules and nodes identify their source evidence. A guarded adapter can produce a canonical tree for a supported construction and otherwise leaves the candidate unresolved. For the first supported declarative, a lexical V carries `[intrans]` then `[past]` as feature rows under the same V and above the word (Ch4 p.72 [22], Ch6 p.113 [8]–[9]).
+**Free analysis uses `FINAL-D1`**, one cumulative notation across the book with the Chapter 7 Appendix NOM refinement. The [labeling master](grammar/SynTutor_FINAL-D1_Labeling_Master.xlsx) controls the exact labels and feature order displayed by the Generator. The construction determines which rules apply. Chapter numbers on rules and nodes identify their source evidence. A guarded adapter can produce a canonical tree for a supported construction and otherwise leaves the candidate unresolved. For a past-tense intransitive verb, a lexical V carries `[intrans]` then `[past]` as feature rows under the same V and above the word (Ch4 p.72 [22], Ch6 p.113 [8]–[9]).
 
 ---
 

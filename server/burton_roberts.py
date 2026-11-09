@@ -15,6 +15,13 @@ import hashlib
 import json
 import re
 from typing import Any
+from xml.etree.ElementTree import ParseError
+from zipfile import BadZipFile
+
+if __package__:
+    from .final_d1_labels import final_d1_display_labels
+else:
+    from final_d1_labels import final_d1_display_labels
 
 SCHEMA_VERSION = "1.1.0"
 SUPPORTED_SCHEMA_VERSIONS = {"1.0.0", SCHEMA_VERSION}
@@ -39,7 +46,7 @@ _LABEL_INTRODUCED = {
     "MOD": 6, "PERF": 6, "PROG": 6, "PASS": 6, "TENSE": 6,
     "S-bar": 6, "C": 6,
     "DET": 7, "ART": 7, "DEM": 7, "Q": 7, "POSS": 7,
-    "PRE-DET": 7, "NOM": 7, "PartP": 7, "QA": 7,
+    "PRE-DET": 7, "NOM": 7, "PartP": 7, "V-part": 7, "QA": 7,
     "S-dbar": 9, "C1": 9, "C2": 9,
     "AUX": 10, "V(I)": 10, "V(II)": 10,
 }
@@ -655,6 +662,14 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
                 }],
             }
 
+    if profile["version"] == "FINAL" and result["status"] == "normalized":
+        try:
+            result["display_labels"] = final_d1_display_labels(result["tree"]["root"])
+        except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError) as exc:
+            result.update(status="unresolved", tree=None, reasons=[{
+                "code": "FINAL_D1_LABEL_UNRESOLVED",
+                "detail": str(exc),
+            }])
     result["convention_profile"] = profile
     result["convention_version"] = profile["version"]
     raw_diagnostics = result.get("diagnostics")
@@ -1343,9 +1358,9 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
                 errors.append(f"{path} uses feature {feature!r} before Chapter {_FEATURE_INTRODUCED[feature]}")
             if feature in _VERB_SUBCATEGORIES | {"phrasal"} and label != "V":
                 errors.append(f"{path} feature {feature!r} is only licensed on a V node")
-            if feature in {"pres", "past"} and label not in {"V", "MOD", "PERF", "PROG", "PASS", "TENSE"}:
+            if feature in {"pres", "past"} and label not in {"V", "V(I)", "V(II)", "MOD", "PERF", "PROG", "PASS", "TENSE"}:
                 errors.append(f"{path} tense feature {feature!r} is not licensed on {label!r}")
-            if feature == "-tense" and label not in {"AUX", "V", "PERF"}:
+            if feature == "-tense" and label not in {"AUX", "V", "V(I)", "V(II)", "PERF", "PROG", "PASS"}:
                 errors.append(f"{path} feature '-tense' is not licensed on {label!r} in the current convention inventory")
         if label == "V" and chapter >= 4 and chapter <= 9:
             if not (set(features) & _VERB_SUBCATEGORIES):

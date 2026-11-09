@@ -12,6 +12,7 @@ from jsonschema import Draft202012Validator
 
 from server.br_tree import _atoms, _source_yield, load_reference_records
 from server.parse_engine import NodeBuilder, parse_parse_string
+from server.final_d1_labels import final_d1_display_labels
 
 from server.burton_roberts import (
     align_correction,
@@ -104,6 +105,22 @@ class ConventionProfileTests(unittest.TestCase):
 
 
 class NormalizationTests(unittest.TestCase):
+    def test_final_d1_master_controls_feature_order_and_visible_labels(self):
+        root = {"id": "root", "label": "S-bar", "children": [
+            {"id": "c", "label": "C", "empty": True},
+            {"id": "verb", "label": "V", "features": ["past", "phrasal", "trans"]},
+            {"id": "to", "label": "AUX", "features": ["-tense"]},
+            {"id": "type", "label": "V(II)", "features": ["past"]},
+            {"id": "object", "label": "NP", "index": 12},
+            {"id": "gap", "gap": True, "index": 12},
+        ]}
+        self.assertEqual(final_d1_display_labels(root), {
+            "root": ["S′"], "c": ["C1"], "verb": ["V", "[trans]", "[phrasal]", "[past]"],
+            "to": ["[-tense]"], "type": ["V(II)", "[past]"], "object": ["NP₁₂"], "gap": ["•₁₂"],
+        })
+        with self.assertRaisesRegex(ValueError, "absent from the FINAL-D1 master"):
+            final_d1_display_labels({"id": "bad", "label": "V", "features": ["pres", "past"]})
+
     def test_v2_flat_np_vp_shell_normalizes(self):
         # Use a full sentence without punctuation: V2 projection is deliberately
         # restricted to exact S -> NP VP and two unanalyzed phrase triangles.

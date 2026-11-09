@@ -1345,10 +1345,19 @@ body.lesson-view #explainNode:empty { display: none; }
   pointer-events: none;
 }
 .tree-authority-notice[hidden] { display: none; }
+.canvas-stage:has(.canonical-tree-view:not([hidden]), .tree-authority-notice:not([hidden]) #toggleParserDiagnostic) {
+  display: flex;
+  flex-direction: column;
+}
+.canvas-stage:has(.canonical-tree-view:not([hidden]), .tree-authority-notice:not([hidden]) #toggleParserDiagnostic) .tree-authority-notice {
+  position: relative;
+  inset: auto;
+  margin: 12px 14px 0;
+}
 .canonical-tree-view {
-  position: absolute;
-  inset: 0;
-  padding: 102px 22px 22px;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 12px clamp(12px, 3vw, 22px) 22px;
   overflow: auto;
   background: var(--panel);
 }
@@ -1360,10 +1369,17 @@ body.lesson-view #explainNode:empty { display: none; }
   margin-bottom: 12px;
 }
 .canonical-tree-view .lesson-tree-wrap {
-  min-width: max-content;
-  max-width: 100%;
   padding: 6px 8px 18px;
 }
+.canonical-tree-view .lesson-tree-wrap svg { margin-inline: auto; }
+.canonical-tree-view .lesson-tree-text button {
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  text-align: start;
+  cursor: pointer;
+}
+.canonical-tree-view .lesson-tree-text button[aria-pressed="true"] { text-decoration: underline; }
 .canonical-tree-view svg g[data-node-id] { cursor: pointer; }
 .canonical-tree-view svg g[data-node-id]:focus-visible {
   outline: none;
@@ -1373,7 +1389,16 @@ body.lesson-view #explainNode:empty { display: none; }
   fill: var(--accent);
   text-decoration: underline;
 }
-.tree-authority-notice #openCanonicalBuilder { pointer-events: auto; }
+.tree-authority-notice button {
+  pointer-events: auto;
+  margin-top: 6px;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
 #treeCanvas { width: 100%; height: 100%; display: block; cursor: grab; }
 #treeCanvas[hidden], .builder-canvas[hidden] { display: none; }
 #treeCanvas:hover { cursor: grab; }
@@ -3000,6 +3025,15 @@ body.workspace-view-open .app-main { display: none; }
   padding: 4px 10px;
 }
 #treeCanvas[hidden] + .tree-outline { display: none; }
+.canvas-stage:has(.tree-authority-notice:not([hidden]) #toggleParserDiagnostic) #treeCanvas {
+  flex: 1 1 0;
+  height: 0;
+  min-height: 0;
+}
+.canvas-stage:has(.tree-authority-notice:not([hidden]) #toggleParserDiagnostic) .tree-outline {
+  position: static;
+  margin: 0 12px 12px;
+}
 .tree-outline summary { cursor: pointer; min-block-size: 40px; align-content: center; }
 .tree-outline-body { max-block-size: min(35vh, 260px); overflow: auto; }
 .tree-outline-body ul { padding-inline-start: 16px; }

@@ -151,7 +151,9 @@ function refreshCorrectionUi() {
     alternativeCanCorrect: Boolean(focus.alternativeEdit),
     suggestedFix: focus.suggestedFix || '',
     preview: activePreview(),
-    renderCanonical: renderLessonTree,
+    renderCanonical: (tree) => renderLessonTree(tree, {
+      displayLabels: activePreview()?.payload?.br_analysis?.display_labels,
+    }),
     loading: previewLoading,
     result: focusResult,
   }, correctionHandlers);
@@ -644,6 +646,7 @@ function closeSubpanel() {
 
 function teardownWorkspace() {
   invalidateAnalysis('workspace changed');
+  clearTreeAuthorityNotice();
   // Lessons: the picker overlay, the lesson panels, the guide card, the quiz
   // panel in the rail, and the side sub-panel.
   closeLessons();
@@ -1476,6 +1479,7 @@ function returnToLocked(payload = null) {
 function startNewSession() {
   if (state === STATES.PROCESSING) return;
 
+  clearTreeAuthorityNotice();
   closeLessons();
   closeQuizzes();
   recordedTexts.clear();
@@ -1558,6 +1562,8 @@ async function postParse(text, index = null) {
 // Reuse the renderer used by reviewed Lessons so we never invent Penn labels,
 // GAP nodes or category mappings. Unsupported analyses remain explicitly
 // diagnostic instead of silently displaying a fake B-R tree.
+const visibleParserDiagnostics = new WeakSet();
+
 function clearCanonicalTree() {
   const host = document.querySelector('#canonicalTreeView');
   if (host && !host.hidden) {
@@ -1571,8 +1577,10 @@ function clearCanonicalTree() {
 function showCanonicalTree(payload) {
   const host = document.querySelector('#canonicalTreeView');
   const envelope = payload?.br_analysis?.tree;
+  const displayLabels = payload?.br_analysis?.display_labels;
   if (!host || workspaceView !== 'tutor' || quizMode
-      || payload?.br_analysis?.status !== 'normalized' || !envelope?.root) {
+      || payload?.br_analysis?.status !== 'normalized' || !envelope?.root
+      || (envelope.convention_profile?.version === 'FINAL' && !displayLabels)) {
     clearCanonicalTree();
     return false;
   }
@@ -1581,26 +1589,46 @@ function showCanonicalTree(payload) {
   help.className = 'canonical-tree-help';
   help.textContent = 'Select a node to inspect its Burton-Roberts structure and available book evidence.';
   host.append(help);
-  const visual = renderLessonTree(envelope, { stackFeatures: true });
+  const visual = renderLessonTree(envelope, {stackFeatures: true, displayLabels, interactive: true});
   visual.querySelector('svg')?.setAttribute('role', 'group');
   host.append(visual);
   host.hidden = false;
   const canvas = document.querySelector('#treeCanvas');
   if (canvas) canvas.hidden = true;
 
-  for (const group of visual.querySelectorAll('svg g[data-node-id]')) {
+  const parents = new Map();
+  function indexParents(node) {
+    for (const child of node.children || []) {
+      parents.set(child.id, node);
+      indexParents(child);
+    }
+  }
+  indexParents(envelope.root);
+  for (const group of visual.querySelectorAll('[data-node-id]')) {
     const id = group.getAttribute('data-node-id');
     const node = findCanonicalNode(envelope.root, id);
     if (!node) continue;
-    const facts = canonicalNodeFacts(envelope, node);
-    group.setAttribute('tabindex', '0');
-    group.setAttribute('role', 'button');
-    group.setAttribute('aria-label', `Inspect Burton-Roberts ${facts.label}${facts.surface ? ` for ${facts.surface}` : ''}`);
+    const owner = node.word && parents.has(id) ? parents.get(id) : node;
+    const facts = canonicalNodeFacts(envelope, owner);
+    facts.label = displayLabels?.[owner.id]?.[0] || facts.label;
+    const interactiveSvg = group.namespaceURI === 'http://www.w3.org/2000/svg';
+    if (interactiveSvg) {
+      group.setAttribute('tabindex', '0');
+      group.setAttribute('role', 'button');
+    }
+    const accessibleLabel = owner === node ? facts.label : 'word';
+    group.setAttribute('aria-label', `Inspect Burton-Roberts ${accessibleLabel}${facts.surface ? ` for ${facts.surface}` : ''}`);
+    if (!interactiveSvg) group.setAttribute('aria-pressed', 'false');
     const select = async () => {
-      for (const item of visual.querySelectorAll('svg g[data-selected]')) {
+      for (const item of visual.querySelectorAll('[data-selected]')) {
         item.removeAttribute('data-selected');
+        if (item.tagName === 'BUTTON') item.setAttribute('aria-pressed', 'false');
       }
-      group.dataset.selected = 'true';
+      for (const item of visual.querySelectorAll('[data-node-id]')) {
+        if (item.getAttribute('data-node-id') !== id) continue;
+        item.dataset.selected = 'true';
+        if (item.tagName === 'BUTTON') item.setAttribute('aria-pressed', 'true');
+      }
       const pane = document.querySelector('#explainNode');
       if (!pane) return;
       document.querySelector('#emptyExplainState')?.classList.add('hidden');
@@ -1612,15 +1640,15 @@ function showCanonicalTree(payload) {
       const boundary = document.createElement('p');
       boundary.textContent = 'Observed tree structure only. Source-reviewed grammatical claims are shown separately below, if available.';
       pane.append(title, observation, boundary);
-      if (node.source_refs?.length) {
+      if (owner.source_refs?.length) {
         const refs = document.createElement('p');
-        refs.textContent = `Tree rule references — ${node.source_refs.join(', ')}.`;
+        refs.textContent = `Tree rule references — ${owner.source_refs.join(', ')}.`;
         pane.append(refs);
       }
       const evidenceSlot = document.createElement('section');
       pane.append(evidenceSlot);
       try {
-        const evidence = await requestEvidence(envelope, id, {
+        const evidence = await requestEvidence(envelope, owner.id, {
           variety: payload.meta?.cambridge_variety,
         });
         // A pending request must not repaint another sentence/account/view.
@@ -1635,7 +1663,7 @@ function showCanonicalTree(payload) {
       }
     };
     group.addEventListener('click', select);
-    group.addEventListener('keydown', (event) => {
+    if (interactiveSvg) group.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
         select();
@@ -1658,13 +1686,31 @@ function setTreeAuthorityNotice(payload) {
     .map((row) => row?.message || row?.detail).find(Boolean)
     || (analysis?.reasons || []).map((row) => row?.detail).find(Boolean);
   if (canonicalShown) {
-    notice.textContent = 'Burton-Roberts canonical tree shown. Select a tree node below to inspect its structure.';
-  } else if (status === 'normalized') {
-    notice.textContent = 'Canvas: Benepar diagnostic candidate. A canonical B-R tree is separately available.';
+    notice.textContent = 'Canonical Burton-Roberts tree';
+  } else if (workspaceView === 'tutor' && !quizMode) {
+    notice.textContent = status === 'normalized' ? 'Canonical labels are unavailable.'
+      : `Canonical B-R tree unavailable for this sentence.${detail ? ` ${detail}` : ''}`;
+    const canvas = document.querySelector('#treeCanvas');
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.id = 'toggleParserDiagnostic';
+    const refresh = () => {
+      const shown = visibleParserDiagnostics.has(payload);
+      canvas.hidden = !shown;
+      toggle.textContent = shown ? 'Hide parser diagnostic' : 'Show parser diagnostic';
+      toggle.setAttribute('aria-expanded', String(shown));
+      if (shown) requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+    };
+    toggle.addEventListener('click', () => {
+      if (visibleParserDiagnostics.has(payload)) visibleParserDiagnostics.delete(payload);
+      else visibleParserDiagnostics.add(payload);
+      refresh();
+    });
+    refresh();
+    notice.append(document.createElement('br'), toggle);
   } else {
-    notice.textContent = `Raw Benepar diagnostic candidate only — canonical B-R normalization is ${status}.${detail ? ` ${detail}` : ''}`;
+    notice.textContent = 'Benepar parser diagnostic';
   }
-  notice.textContent += ' Legacy verdicts are diagnostic; the reviewed evidence does not establish a full grammaticality verdict.';
   notice.hidden = false;
   document.querySelector('#openCanonicalBuilder')?.remove();
   if (status === 'normalized' && analysis?.tree) {
@@ -1682,6 +1728,11 @@ function setTreeAuthorityNotice(payload) {
 
 function clearTreeAuthorityNotice() {
   clearCanonicalTree();
+  const toggle = document.querySelector('#toggleParserDiagnostic');
+  if (toggle) {
+    document.querySelector('#treeCanvas').hidden = false;
+    toggle.remove();
+  }
   document.querySelector('#openCanonicalBuilder')?.remove();
   const notice = document.querySelector('#treeAuthorityNotice');
   if (!notice) return;
