@@ -106,6 +106,7 @@ jobs:
           npm run test:builder
           node scripts/test_level.js
           node scripts/test_tree_layout.js
+          node scripts/test_canonical_view.js
           node scripts/test_account_integration.js
           node --check web/js/quizzes-ui.js
           node --check web/js/lessons-ui.js
