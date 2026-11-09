@@ -1,7 +1,7 @@
 # Milestone 12 — Full validation and release readiness
 
 **Review date:** 9 November 2026 (Asia/Manila)  
-**Status:** **INCOMPLETE — production release blocked**. Repository validation is in progress on [draft PR #43](https://github.com/ybcole/SynTutor/pull/43). M9, M10 and M11 changes were merged to `main` through PRs #40–42; merging them does not satisfy their remaining hosted and human approval gates.
+**Status:** **INCOMPLETE — production release blocked**. Repository validation on the tested M12 code head `3978970` passed both workflows: [model-free run 42538363570](https://github.com/ybcole/SynTutor/actions/runs/42538363570) and [parser-backed run 42538363547](https://github.com/ybcole/SynTutor/actions/runs/42538363547). The work remains [draft PR #43](https://github.com/ybcole/SynTutor/pull/43) pending non-automated acceptance. M9, M10 and M11 changes were merged to `main` through PRs #40–42; merging them does not satisfy their remaining hosted and human approval gates.
 
 ## Scope and inspected sources
 
@@ -25,16 +25,16 @@
 
 | Criterion | Existing evidence / proposed M12 action | Release state |
 |---|---|---|
-| Test and schema integrity | Model-free CI runs schema JSON, source validators, 252-record importer audit, normalizer/evaluator tests, B-R gold tests and Javascript unit suites | PR #43 CI confirmation pending |
+| Test and schema integrity | Model-free CI runs schema JSON, source validators, 252-record importer audit, normalizer/evaluator tests, B-R gold tests and Javascript unit suites | Passed on tested M12 code head `3978970`; this is not a staging test |
 | B-R and Cambridge linguistic checks | Chapter validators, B-R gold normalization; Cambridge registry/evaluator tests and source-readiness audit. Only independently reviewed source material can be authoritative | Tested conservative scope; not whole-book coverage |
-| Source-grounded explanation | Generator/Builder parity tests, evidence tests for missing/unreviewed/conflicting sources and `NO_BOOK_BASIS` | Existing regression coverage; real-browser CI pending |
-| Parser and browser | Parser-backed CI uses pinned spaCy/Benepar assets, real parser tests, multiline parser, and Generator/Builder/Lessons/Quizzes browser checks | PR #43 CI pending |
+| Source-grounded explanation | Generator/Builder parity tests, evidence tests for missing/unreviewed/conflicting sources and `NO_BOOK_BASIS` | CI browser/evidence checks passed; independent learner review pending |
+| Parser and browser | Parser-backed CI uses pinned spaCy/Benepar assets, real parser tests, multiline parser, and Generator/Builder/Lessons/Quizzes browser checks | Passed in M12 CI; real hosted verification pending |
 | XP, achievements, privacy | Native PostgreSQL tests for M7–M11, multi-session races, RLS, badge replay, opt-in/withdrawal and legacy-row preservation | Local/CI test transport only; real Clerk staging pending |
 | Migration and compatibility | Disposable PostgreSQL tests and M11 timestamped migration/rollback guide | No independent hosted migration/back-up check |
 | Correction and accessibility | Responsive/keyboard Chromium checks and reviewed screenshots | No independent learners, screen-reader session or owner visual sign-off |
 | Backend abuse and error handling | New 250 KB cap, words validation, opt-in per-process HTTP 429 throttle, and contract/unit tests | **Shared edge rate limit, worker resource policy, and production configuration unverified** |
 | Feature flags and rollback | M9 leaderboard defaults to disabled; M11 rollback guide preserves ledger, XP and badges | Hosted staged rollout and rollback approval outstanding |
-| Old/new pipeline comparison | New fixed-corpus script and CI artifact | PR #43 parser-backed execution pending |
+| Old/new pipeline comparison | New fixed-corpus script and CI artifact | Six fixed examples compared and JSON artifact uploaded in parser run 42538363547 |
 | User-facing scope disclosure | Source governance and partial/unsupported-analysis states exist | Confirm that the learner-facing release explicitly explains limited coverage |
 
 **Existing green milestone branches:** M9 [model-free](https://github.com/ybcole/SynTutor/actions/runs/42469371964) / [parser](https://github.com/ybcole/SynTutor/actions/runs/42469372077); M10 [model-free](https://github.com/ybcole/SynTutor/actions/runs/42473094739) / [parser](https://github.com/ybcole/SynTutor/actions/runs/42473094845); final M11 head [model-free](https://github.com/ybcole/SynTutor/actions/runs/42536482257) / [parser](https://github.com/ybcole/SynTutor/actions/runs/42536482247). These validate the PR heads, not deployed systems. Current M12 head checks must be inspected before approval.
@@ -63,6 +63,6 @@
 
 ## Checklist synchronization and disposition
 
-The M11 merged master checklist began at **131 checked / 19 unchecked** actionable boxes. Nine evidence-backed M12 test/validator entries have been reconciled in the draft branch, yielding **140 checked / 10 unchecked**. New head CI must still be green before merging this PR. The M9–M11 milestone tracker remains unchecked because the hosted and human acceptance gates are unresolved. Milestone 12 is also unchecked. This is a repository audit and development change, not a user-data migration or release sign-off.
+The M11 merged master checklist began at **131 checked / 19 unchecked** actionable boxes. Nine evidence-backed M12 test/validator entries have been reconciled in the draft branch, yielding **140 checked / 10 unchecked**. The tested code head passed both workflows; verify any subsequent changes before merging this PR. The M9–M11 milestone tracker remains unchecked because the hosted and human acceptance gates are unresolved. Milestone 12 is also unchecked. This is a repository audit and development change, not a user-data migration or release sign-off.
 
 **Approval required:** Owner accepts staging migration/backups, real Clerk and ranking privacy evidence, M10 independent usability/accessibility results, deployment abuse/rollback controls and the final report. Without them, the next action is evidence collection and remediation, not production activation.
