@@ -1,6 +1,6 @@
 # CONVENTIONS.md — Tree-drawing rulebook for SynTutor
 
-**Source of truth:** Noel Burton-Roberts, *Analysing Sentences: An Introduction to English Syntax* (edition as in the supplied PDFs; the PDFs mention a Second Edition preface, so confirm the edition). Chapters 1–11.
+**Source of truth:** Noel Burton-Roberts, *Analysing Sentences: An Introduction to English Syntax*, **Third Edition** (Pearson Education, copyright 2011, ISBN 9781408233740), Chapters 1–11. The complete uploaded PDF also contains older edition prefaces; the title/copyright leaves and the 8 November 2026 source manifest establish the Third Edition. See [the native engine construction and verification basis](docs/BR_NATIVE_ENGINE_CONSTRUCTION.md).
 
 **Purpose:** This file tells any AI (or human) exactly how trees are drawn, labelled, and graded *in each chapter*, because the book **changes its conventions as it goes**. Read §0 before generating anything.
 

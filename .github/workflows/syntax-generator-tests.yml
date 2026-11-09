@@ -56,11 +56,19 @@ jobs:
           python scripts/validate_assessments.py
           python scripts/validate_builder_contracts.py
 
+      - name: Verify native B-R construction catalog and fail-closed audit
+        run: |
+          python -m json.tool grammar/br_native_constructions.json > /dev/null
+          python -m unittest -v server.test_br_native_grammar server.test_br_native_chart
+
       - name: Run canonical gold-import regression tests
         run: python -m unittest -v server.test_burton_roberts
 
       - name: Audit all B-R chapter records
         run: python scripts/audit_burton_roberts_import.py --expected-count 252
+
+      - name: Report native B-R rule coverage against 252 reference trees
+        run: python scripts/audit_br_native_catalog.py --expected-count 252 --fail-on-penn
 
       - name: Run all existing B-R chapter validators
         working-directory: web/content/book

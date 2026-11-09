@@ -92,7 +92,12 @@ try:
               el.dispatchEvent(new KeyboardEvent('keydown', {key: 'Enter', ctrlKey: true, bubbles: true}));
             }""", ORIGINAL)
             outline = page.locator("#generatorTreeOutline")
-            # With no canonical tree, the parser tree must still be on screen.
+            # A failed B-R projection must never default to showing raw
+            # Benepar/Penn categories as the canonical learner-facing tree.
+            toggle = page.get_by_role("button", name="Show parser diagnostic")
+            expect(toggle).to_be_visible()
+            expect(outline).to_be_hidden()
+            toggle.click()
             expect(page.locator("#treeCanvas")).to_be_visible()
             expect(outline).to_be_visible()
             outline.locator("summary").click()

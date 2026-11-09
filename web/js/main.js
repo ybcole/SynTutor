@@ -1563,9 +1563,9 @@ async function postParse(text, index = null) {
 // Reuse the renderer used by reviewed Lessons so we never invent Penn labels,
 // GAP nodes or category mappings. Unsupported analyses remain explicitly
 // diagnostic instead of silently displaying a fake B-R tree.
-// The parser tree is shown by default so a sentence always has a visible tree;
-// the learner can hide it. (Tracked per payload so a new sentence starts shown.)
-const hiddenParserDiagnostics = new WeakSet();
+// A raw parser diagnostic is NOT a Burton-Roberts tree. Keep it opt-in;
+// never silently make Penn/Benepar the primary learner-facing analysis.
+const visibleParserDiagnostics = new WeakSet();
 let canonicalCanvas = null;
 
 function clearCanonicalTree() {
@@ -1711,25 +1711,25 @@ function setTreeAuthorityNotice(payload) {
     || (analysis?.reasons || []).map((row) => row?.detail).find(Boolean);
   if (canonicalShown) {
     notice.textContent = analysis?.tree
-      ? 'Canonical Burton-Roberts tree'
+      ? 'Burton-Roberts projected tree — source rule coverage may be partial; inspect verification details.'
       : 'B-R working tree — some structure remains unresolved.';
   } else if (workspaceView === 'tutor' && !quizMode) {
-    notice.textContent = status === 'normalized' ? 'Canonical labels are unavailable. Showing the Benepar parser diagnostic tree.'
-      : `Canonical B-R tree unavailable for this sentence. Showing the Benepar parser diagnostic tree.${detail ? ` ${detail}` : ''}`;
+    notice.textContent = status === 'normalized' ? 'B-R display labels are unavailable. The raw parser diagnostic is hidden by default.'
+      : `B-R analysis remains unresolved; raw parser labels are hidden by default.${detail ? ` ${detail}` : ''}`;
     const canvas = document.querySelector('#treeCanvas');
     const toggle = document.createElement('button');
     toggle.type = 'button';
     toggle.id = 'toggleParserDiagnostic';
     const refresh = () => {
-      const shown = !hiddenParserDiagnostics.has(payload);
-      canvas.hidden = !shown;
+      const shown = visibleParserDiagnostics.has(payload);
+      if (canvas) canvas.hidden = !shown;
       toggle.textContent = shown ? 'Hide parser diagnostic' : 'Show parser diagnostic';
       toggle.setAttribute('aria-expanded', String(shown));
       if (shown) requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
     };
     toggle.addEventListener('click', () => {
-      if (hiddenParserDiagnostics.has(payload)) hiddenParserDiagnostics.delete(payload);
-      else hiddenParserDiagnostics.add(payload);
+      if (visibleParserDiagnostics.has(payload)) visibleParserDiagnostics.delete(payload);
+      else visibleParserDiagnostics.add(payload);
       refresh();
     });
     refresh();

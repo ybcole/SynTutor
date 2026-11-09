@@ -9,6 +9,7 @@ CLAUSE = ("Ch2 pp. 29–30",)
 NOUN = ("Ch7 pp. 141–144",)
 NOMINAL = ("Ch7 pp. 165–168",)
 LOCATIVE = ("Ch3 p. 57 [19]", "Ch4 pp. 74–75, 78")
+DEICTIC_P = ("Ch3 pp. 56–57",)
 ADVERBIAL = ("Ch5 pp. 87–93",)
 AUXILIARY = ("Ch6 pp. 114–132",)
 ELLIPSIS = ("Ch5 pp. 95–99",)
@@ -40,6 +41,7 @@ SUBORDINATORS = {"if", "unless", "because", "although", "though", "while", "wher
 TEMPORAL_P = {"after", "before", "until"}
 TIME_NOUNS = {"today", "tomorrow", "yesterday", "tonight", "night", "week", "year", "day", "time", "moment"}
 LOCATIVE_WORDS = {"here", "there", "upstairs", "downstairs", "outside", "inside"}
+TEMPORAL_P_WORDS = {"now", "then"}
 LOCATIVE_PREPOSITIONS = {"above", "across", "against", "along", "at", "behind", "below", "beside",
                         "between", "beyond", "by", "in", "inside", "near", "on", "outside", "under"}
 INTENSIVE = {"be", "become", "seem", "appear", "look", "feel", "sound", "taste", "smell", "remain", "get", "grow", "prove"}
@@ -215,8 +217,9 @@ class Projection:
         if label in {"ADJP", "ADVP"}:
             parts = kids(node)
             if label == "ADVP" and len(parts) == 1 and leaf(parts[0]):
-                if word(parts[0]) in LOCATIVE_WORDS:
-                    return branch("PP", LOCATIVE, branch("P", LOCATIVE, word_node(parts[0])))
+                if word(parts[0]) in LOCATIVE_WORDS | TEMPORAL_P_WORDS:
+                    refs = LOCATIVE if word(parts[0]) in LOCATIVE_WORDS else DEICTIC_P
+                    return branch("PP", refs, branch("P", refs, word_node(parts[0])))
                 if tag(parts[0]) in {"IN", "RP"}:
                     return self.pp(parts)
             return self.modifier(parts, adjective=label == "ADJP")
@@ -773,6 +776,11 @@ class Projection:
                 raise ProjectionUnavailable("Unsupported subordinate clause wrapper")
             if len(parts) == 2 and (not leaf(parts[0]) or word(parts[0]) not in SUBORDINATORS | {"that", "whether", "for"}):
                 raise ProjectionUnavailable("Unrecognized complementiser")
+            if len(parts) == 2 and word(parts[0]) == "since":
+                # Ch8 pp.185-186 and the 3rd-edition preface distinguish
+                # temporal preposition 'since' from causal complementiser
+                # 'since'. Benepar's SBAR alone cannot decide which.
+                raise ProjectionUnavailable("Since requires temporal-P versus causal-C disambiguation under the B-R third edition")
             if len(parts) == 2 and word(parts[0]) in TEMPORAL_P:
                 return branch("PP", SUBORDINATE, branch("P", SUBORDINATE, word_node(parts[0])), self.clause(parts[-1], incoming))
             carrier = branch("C1", SUBORDINATE, *(word_node(n) for n in parts[:-1]))
@@ -977,7 +985,7 @@ class Projection:
         if label == "WHPP":
             return "pp"
         if label == "WHADVP":
-            return "pp" if word(leaves(wh)[0]) == "where" else "adverbial"
+            return "pp" if word(leaves(wh)[0]) in {"where", "when"} else "adverbial"
         if label != "WHNP":
             raise ProjectionUnavailable(f"Unsupported {label} dependency")
         parts = kids(body)
