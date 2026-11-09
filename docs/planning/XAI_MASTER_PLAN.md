@@ -1,6 +1,6 @@
 # SynTutor — XAI Master Plan: Sentence-Grounded Explanations for Every Tree Level
 
-**Status:** Proposed architecture for review; implementation NOT started by this document  
+**Status:** XAI-PRE **technical contract implementation delivered**, source-review/owner sign-off pending. XAI-0–XAI-8 not implemented by the PRE workstream. See [XAI-PRE acceptance report](../reports/xai-pre-acceptance-2026-11-10.md).  
 **Date:** 10 November 2026  
 **Repository:** `ybcole/SynTutor`  
 **Companion implementer prompt:** [MASTER_PROMPT_XAI.md](MASTER_PROMPT_XAI.md)  
@@ -42,7 +42,7 @@ Specific book findings that affect implementation:
 
 **Architectural change:** a sentence can contain several interacting issues. Each detected issue requires an original-input evidence scope, governing relationship, rule precondition, independent validity state and exact token anchors. Maintain a dependency graph of independent/overlapping/blocked/cascaded diagnoses; propose **joint repair packages** for interacting constraints. Every candidate edit produces a new candidate analysis and **full re-evaluation**. Distinguish an issue `resolved_by_satisfaction` from one `no_longer_applicable_after_rewrite`, and a newly **unmasked** issue from a genuinely **introduced** issue. Never label a whole sentence grammatical based on fixing a single issue.
 
-**Pre-milestone gate:** edition-verified source map, pending crosswalks, documented Cambridge exceptions, multi-error status/lineage API contract, a controlled held-out/adversarial fixture list, and written distinction between confirmed local findings and unresolved global grammaticality.
+**Pre-milestone gate:** edition-verified source map, pending crosswalks, documented Cambridge exceptions, multi-error status/lineage API contract, a controlled held-out/adversarial fixture list, and written distinction between confirmed local findings and unresolved global grammaticality. **Implementation evidence:** [source claims and chapter ledger](../../grammar/xai_pre/source_audit.json), [correction schema](../xai/diagnosis-repair-pre.schema.json), [semantic validator](../../server/xai_preflight.py), [10 synthetic fixtures](../../grammar/xai_pre/preflight_fixtures.json), [acceptance report](../reports/xai-pre-acceptance-2026-11-10.md). No XAI-specific source claim is independently human-approved or eligible to issue a runtime grammar verdict.
 
 ## 1. Definitive architecture decisions
 
@@ -378,7 +378,7 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 - Define separate tree, rule, variety, usage, and semantic status enums; define evidence provenance and partial evaluation (`SATISFIED`, `VIOLATED`, `NOT_APPLICABLE`, `BLOCKED`, `AMBIGUOUS`, `UNIMPLEMENTED`).
 - Freeze original-input spans, issue/dependency graph, scoped repair candidate and original→candidate finding lineage contracts. Require exception-rich multi-error tests and human-approved source gates.
 
-**Gate:** approved architecture contracts and source exception inventory; **no runtime rule or corrector is enabled merely because this plan exists**.
+**Gate:** technically validated schema, source evidence inventory and exceptions; independent linguistic/owner approval remains pending before enabling any runtime constraint. No runtime rule or corrector is enabled merely because these artifacts exist.
 
 ### XAI-0 — Baseline audit and contract freeze
 
