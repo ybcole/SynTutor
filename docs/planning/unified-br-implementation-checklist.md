@@ -6,11 +6,13 @@ The project owner approved the [unified notation specification](br-label-xai-mas
 
 - [x] Record the unified notation decisions and their printed-page evidence.
 - [x] Approve the specification for implementation.
-- [ ] Confirm the current canonical envelope, candidate parser and Builder integration points.
-- [ ] Implement a guarded FINAL-D1 projection for the first finite intransitive declarative, including the Chapter 7 NOM refinement, stacked verb features and a VP adjunct (F01).
-- [ ] Verify canonical structure, token alignment, provenance, preserved parser evidence and abstention on unsupported inputs.
+- [x] Confirm the current canonical envelope, candidate parser and Builder integration points.
+- [x] Implement a guarded FINAL-D1 projection for the first finite intransitive declarative, including the Chapter 7 NOM refinement, stacked verb features and a VP adjunct (F01).
+- [x] Verify canonical structure, token alignment, provenance, preserved parser evidence and abstention on unsupported inputs.
 - [ ] Review and register contextual B-R explanations for every node in F01. Reuse the lexical node’s explanation for its selectable word, if needed.
 - [ ] Verify real spaCy/Benepar output, canonical display and node selection through the Generator.
+
+The first backend construction is in [draft PR #45](https://github.com/ybcole/SynTutor/pull/45). The 170 model-free tests passed locally. The real-parser test and learner-facing display remain separate acceptance checks.
 
 ## 2. Expand construction coverage
 
