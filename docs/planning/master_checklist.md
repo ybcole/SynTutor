@@ -4,6 +4,21 @@ Use this as the project sign-off register. Mark a box only when there is evidenc
 
 Current milestone sign-off: [M1–M3](../reports/milestones-01-03-acceptance-2026-11-08.md) and [M4 launch curriculum](../reports/milestone-04-acceptance-2026-11-08.md), 8 November 2026. The owner reports both M4 and both M5 migrations applied; hosted account integration has not been independently tested here. Local progress is available. M5 independent assessments are complete for the reviewed M4 outcomes; see [M5 acceptance](../reports/milestone-05-acceptance-2026-11-08.md). Its cloud migrations are owner-reported applied. M6 canonical Builder implementation is complete; see [M6 acceptance](../reports/milestone-06-acceptance-2026-11-08.md). The owner reports M4/M5 migrations applied (not independently hosted-tested here). Historical logs below retain their original findings. Checked M2 items use the approved conservative mapping/unresolved policy; evaluator minimal-pair tests are synthetic and do not certify an enabled Cambridge constraint. This implementation performed no live-data migration.
 
+## XAI-PRE — new contextual explanation workstream (10 November 2026)
+
+This section refers to the [new XAI roadmap](XAI_MASTER_PLAN.md), not the earlier M3 minimum explanation scaffold. The [XAI-PRE acceptance report](../reports/xai-pre-acceptance-2026-11-10.md) distinguishes technical contract tests from source approval.
+
+- [x] Verify bibliographic identities and targeted passages in the supplied Third Edition and Cambridge original edition, with **the uploaded Cambridge printing left unconfirmed**.
+- [x] Inventory all 11 B–R and 20 Cambridge chapter scopes without claiming full-book independent review.
+- [x] Record targeted source claims, selected terminology crosswalks, source restrictions and Cambridge tense/aspect exceptions.
+- [x] Implement machine-readable partial-evaluation, issue-dependency and versioned original/candidate contract with strict source/token/edit/lineage validation.
+- [x] Add synthetic multi-error/introduced/unmasked/independent/ambiguous fixtures and automated unit tests.
+- [ ] Obtain independent linguistic/owner review of first-wave source claims and exception coverage before runtime approval.
+- [ ] Choose default English variety/register policy and correction search bounds from XAI-0 observations.
+- [ ] Implement XAI-0 baseline, XAI-1 onward explanation/rule work, and XAI-5 live evolving B–R tree UI.
+
+**No Cambridge runtime rule is enabled by this preflight. Source inspection, developer acceptance and future linguistic approval are separate gates.**
+
 ## 0. Governance and inventory
 
 - [x] Confirm exact Noel Burton-Roberts book title, edition, and page numbering represented by the supplied source PDFs.
