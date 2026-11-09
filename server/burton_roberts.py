@@ -15,6 +15,15 @@ import hashlib
 import json
 import re
 from typing import Any
+from xml.etree.ElementTree import ParseError
+from zipfile import BadZipFile
+
+if __package__:
+    from .final_d1_labels import final_d1_display_labels
+    from .final_d1_projection import Projection, ProjectionUnavailable
+else:
+    from final_d1_labels import final_d1_display_labels
+    from final_d1_projection import Projection, ProjectionUnavailable
 
 SCHEMA_VERSION = "1.1.0"
 SUPPORTED_SCHEMA_VERSIONS = {"1.0.0", SCHEMA_VERSION}
@@ -39,7 +48,7 @@ _LABEL_INTRODUCED = {
     "MOD": 6, "PERF": 6, "PROG": 6, "PASS": 6, "TENSE": 6,
     "S-bar": 6, "C": 6,
     "DET": 7, "ART": 7, "DEM": 7, "Q": 7, "POSS": 7,
-    "PRE-DET": 7, "NOM": 7, "PartP": 7, "QA": 7,
+    "PRE-DET": 7, "NOM": 7, "PartP": 7, "V-part": 7, "QA": 7,
     "S-dbar": 9, "C1": 9, "C2": 9,
     "AUX": 10, "V(I)": 10, "V(II)": 10,
 }
@@ -176,17 +185,61 @@ def _is_raw_leaf(node: dict[str, Any]) -> bool:
     return isinstance(node, dict) and not node.get("children") and "surface" in node
 
 
+def _final_projection(raw_root, sentence, tokens, profile, analysis):
+    """Build and validate a FINAL-D1 tree for the observed candidate structure."""
+    raw_tokens = {row.get("i", index): row for index, row in enumerate(analysis.get("tokens") or [])}
+    lexical = [leaf.get("surface") for leaf in _raw_leaves(raw_root)
+               if not _is_parser_punctuation(leaf)]
+    if lexical != [token["text"] for token in tokens]:
+        raise ProjectionUnavailable("Candidate lexical yield differs from the submitted token stream")
+    if any(sentence[start:end] != token["text"]
+           for token in tokens for start, end in [token["char_span"]]):
+        raise ProjectionUnavailable("Candidate token offsets do not match the submitted sentence")
+    uncertainty = None
+    try:
+        tree = Projection(raw_tokens).clause(raw_root)
+    except ProjectionUnavailable as exc:
+        uncertainty = str(exc)
+        tree = Projection(raw_tokens).working_tree(raw_root)
+    envelope = {
+        "schema_version": SCHEMA_VERSION,
+        "tree_id": _stable_id("sg", sentence + "|FINAL-D1"),
+        "sentence": sentence,
+        "tokens": tokens,
+        "convention_profile": profile,
+        "source": {"book": BOOK_TITLE, "edition": BOOK_EDITION, "chapter": 10,
+                   "evidence_status": "DERIVED_FROM_INSTRUCTIONS",
+                   "review_note": "FINAL-D1 projection. Printed evidence is recorded on each category node."},
+        "root": _build_canonical_node(tree, tokens, [0], "sg-root", []),
+        "movement": [],
+        "accepted_alternatives": [],
+    }
+    trace = [{
+        "rule_id": "FINAL_D1_CONSTRUCTION_PROJECTION",
+        "evidence": "Constituent and dependency projection using Chapters 2–10.",
+    }]
+    if uncertainty:
+        envelope["source"]["evidence_status"] = "UNCERTAIN"
+        envelope["source"]["review_note"] = "B-R working view with provisional grouping and locally unresolved spans."
+    validation = validate_canonical_tree(envelope)
+    if not validation["valid"]:
+        return {"status": "rejected", "tree": None,
+                "reasons": [{"code": "CANONICAL_VALIDATION_FAILED", "detail": e}
+                            for e in validation["errors"]],
+                "normalization_trace": trace, "validation": validation}
+    if uncertainty:
+        result = _unresolved_result(profile, [
+            {"code": "PROFILE_MAPPING_NOT_APPROVED", "detail": uncertainty}
+        ], trace, analysis, tokens)
+        result.update(working_tree=envelope, validation=validation)
+        return result
+    return {"status": "normalized", "tree": envelope, "reasons": [],
+            "normalization_trace": trace, "validation": validation}
+
+
 def normalize_benepar_candidate(analysis: dict[str, Any],
                                 profile: dict[str, Any] | None = None) -> dict[str, Any]:
-    """Normalize only a tightly supported V2 shell; otherwise fail unresolved.
-
-    The currently approved adapter supports B-R V2's S -> NP VP skeleton when
-    both NP and VP are left unanalyzed triangles. Sentence-final punctuation
-    is excluded from the phrase marker; punctuation inside a phrase is unresolved.
-    POS tags remain token metadata; they are not promoted to B-R phrase nodes.
-    Later profiles need additional reviewed mappings (lexical categories,
-    verbal features, auxiliary layers, NOM, clauses, gaps, indices and control).
-    """
+    """Project the V2 lesson shell or the FINAL-D1 construction projection."""
     profile = profile or convention_profile()
     errors = _profile_errors(profile)
     if errors:
@@ -203,11 +256,16 @@ def normalize_benepar_candidate(analysis: dict[str, Any],
 
     if not isinstance(raw_root, dict):
         reasons.append({"code": "MISSING_PARSER_TREE", "detail": "Benepar did not provide a serializable candidate tree."})
-    if profile.get("chapter") != 2:
+    elif profile["version"] == "FINAL":
+        try:
+            return _final_projection(raw_root, sentence, tokens, profile, analysis)
+        except ProjectionUnavailable as exc:
+            reasons.append({"code": "PROFILE_MAPPING_NOT_APPROVED", "detail": str(exc)})
+    if profile["chapter"] != 2 and not reasons:
         reasons.append({
             "code": "PROFILE_MAPPING_NOT_APPROVED",
-            "detail": (f"The conservative Benepar adapter currently supports only the V2 S → NP VP shell; "
-                       f"{profile.get('version')} requires mappings not yet source-verified."),
+            "detail": (f"No reviewed mapping for this construction under {profile['version']}. "
+                       "The adapter supports the V2 lesson shell and a FINAL-D1 construction projection."),
         })
     if reasons:
         return _unresolved_result(profile, reasons, trace, analysis, tokens)
@@ -366,8 +424,8 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
 
     Exact IMG-verified source trees take priority when sentence and convention
     match. Conflicting source analyses remain unresolved. Otherwise the narrow
-    parser adapter is attempted; it currently supports only the V2 S → NP VP
-    shell with unanalyzed NP/VP triangles. Other Benepar structures fail closed.
+    parser adapter is attempted for the V2 shell or the FINAL-D1 construction
+    projection. Other Benepar structures fail closed.
     """
     profile = convention_profile(chapter, appendix_nom)
     sentence = str(analysis.get("sentence", ""))
@@ -511,6 +569,19 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
                 }],
             }
 
+    if profile["version"] == "FINAL" and result["status"] == "normalized":
+        try:
+            result["display_labels"] = final_d1_display_labels(result["tree"]["root"])
+        except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError) as exc:
+            result.update(status="unresolved", tree=None, reasons=[{
+                "code": "FINAL_D1_LABEL_UNRESOLVED",
+                "detail": str(exc),
+            }])
+    if result.get("working_tree"):
+        try:
+            result["working_display_labels"] = final_d1_display_labels(result["working_tree"]["root"])
+        except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError):
+            result.pop("working_tree")
     result["convention_profile"] = profile
     result["convention_version"] = profile["version"]
     raw_diagnostics = result.get("diagnostics")
@@ -704,8 +775,8 @@ def _preserve_source_node_metadata(out: dict[str, Any],
     return out
 
 
-def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: list[int],
-                     node_id: str, notes: list[str]) -> dict[str, Any]:
+def _build_canonical_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: list[int],
+                          node_id: str, notes: list[str]) -> dict[str, Any]:
     if raw.get("gap") is True:
         out = {"id": node_id, "gap": True}
         if raw.get("index") is not None:
@@ -771,7 +842,7 @@ def _build_gold_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: 
         }, raw)
     if not isinstance(children_raw, list) or not children_raw:
         raise ValueError(f"gold branch {label!r} has no children")
-    children = [_build_gold_node(child, tokens, cursor, f"{node_id}-{i}", notes)
+    children = [_build_canonical_node(child, tokens, cursor, f"{node_id}-{i}", notes)
                 for i, child in enumerate(children_raw)]
     overt = [child.get("token_span") for child in children
              if child.get("token_span") and not child.get("empty")]
@@ -814,7 +885,7 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
     cursor = [0]
     tree_id = str(record.get("id") or _stable_id(f"ch{chapter}", json.dumps(raw_tree, sort_keys=True)))
     try:
-        root = _build_gold_node(raw_tree, tokens, cursor, f"{tree_id}-root", notes)
+        root = _build_canonical_node(raw_tree, tokens, cursor, f"{tree_id}-root", notes)
         if cursor[0] != len(tokens):
             raise ValueError(f"tree consumed {cursor[0]} of {len(tokens)} source token(s)")
     except (TypeError, ValueError) as exc:
@@ -927,7 +998,7 @@ def canonicalize_gold_record(record: dict[str, Any], chapter_data: dict[str, Any
             continue
         alt_cursor = [0]
         try:
-            alt_root = _build_gold_node(alt["tree"], tokens, alt_cursor,
+            alt_root = _build_canonical_node(alt["tree"], tokens, alt_cursor,
                                         f"{tree_id}-alt-{i + 1}", envelope["notes"])
             if alt_cursor[0] != len(tokens):
                 raise ValueError(f"alternative consumed {alt_cursor[0]} of {len(tokens)} source token(s)")
@@ -1134,7 +1205,8 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
             if node.get("unlabelled") is True:
                 if label is not None or envelope.get("schema_version") != "1.1.0":
                     errors.append(f"{path} unlabelled triangle requires v1.1.0 and no label")
-                if chapter < 9 or parent_label != "C2":
+                working = envelope.get("source", {}).get("evidence_status") == "UNCERTAIN"
+                if not working and (chapter < 9 or parent_label != "C2"):
                     errors.append(f"{path} unlabelled triangle is only licensed under C2 from V9")
             elif not isinstance(label, str) or not label:
                 errors.append(f"{path}.label must be non-empty")
@@ -1199,9 +1271,9 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
                 errors.append(f"{path} uses feature {feature!r} before Chapter {_FEATURE_INTRODUCED[feature]}")
             if feature in _VERB_SUBCATEGORIES | {"phrasal"} and label != "V":
                 errors.append(f"{path} feature {feature!r} is only licensed on a V node")
-            if feature in {"pres", "past"} and label not in {"V", "MOD", "PERF", "PROG", "PASS", "TENSE"}:
+            if feature in {"pres", "past"} and label not in {"V", "V(I)", "V(II)", "MOD", "PERF", "PROG", "PASS", "TENSE"}:
                 errors.append(f"{path} tense feature {feature!r} is not licensed on {label!r}")
-            if feature == "-tense" and label not in {"AUX", "V", "PERF"}:
+            if feature == "-tense" and label not in {"AUX", "V", "V(I)", "V(II)", "PERF", "PROG", "PASS"}:
                 errors.append(f"{path} feature '-tense' is not licensed on {label!r} in the current convention inventory")
         if label == "V" and chapter >= 4 and chapter <= 9:
             if not (set(features) & _VERB_SUBCATEGORIES):

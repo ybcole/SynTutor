@@ -2,7 +2,7 @@
 
 Only authentication/third-party requests and advisory CoLA are disabled. Parsing,
 canonical serialization, HTTP evidence composition and DOM rendering are real.
-The test selects V2 to exercise the documented supported live transformation.
+The default test uses V2. The FINAL-D1 mode exercises the reported Generator case.
 """
 import json
 from pathlib import Path
@@ -20,6 +20,8 @@ api.classify = lambda text: None
 # Explicit fixture mode proves reviewed rendering without promoting synthetic
 # records into the production registry.
 fixture_mode = '--reviewed-fixture' in sys.argv
+working_mode = '--working-tree' in sys.argv
+final_mode = '--final-declarative' in sys.argv or working_mode
 if fixture_mode:
     import explanations
     from test_explanations import registry
@@ -35,6 +37,8 @@ try:
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, args=['--no-sandbox'])
         page = browser.new_page(viewport={'width': 1440, 'height': 1000})
+        if final_mode:
+            page.add_init_script("localStorage.setItem('syntutor_onboarding_seen', '1')")
         errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
         def route(request_route):
@@ -43,7 +47,7 @@ try:
                 request_route.fulfill(status=200, content_type='application/javascript', body='export const createClient = () => null;'); return
             if not request.url.startswith(base):
                 request_route.abort(); return
-            if '/api/parse' in request.url:
+            if '/api/parse' in request.url and not final_mode:
                 body = request.post_data_json
                 body['chapter'] = 2
                 request_route.continue_(post_data=json.dumps(body)); return
@@ -51,8 +55,64 @@ try:
         page.route('**/*', route)
         page.goto(base, wait_until='domcontentloaded')
         page.evaluate("async () => { await import('/js/main.js'); }")
-        page.locator('#inputText').evaluate("el => { el.removeAttribute('readonly'); el.value = 'The birds sing.'; el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', ctrlKey: true, bubbles: true })); }")
+        text = 'She is taller than he is.' if working_mode else 'The boy sleeps.' if final_mode else 'The birds sing.'
+        with page.expect_response(lambda response: response.url.endswith('/api/parse')) as response:
+            page.locator('#inputText').evaluate("""(el, text) => {
+                el.removeAttribute('readonly');
+                el.value = text;
+                el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', ctrlKey: true, bubbles: true }));
+            }""", text)
+        if working_mode:
+            parsed = response.value.json()
+            br = parsed['br_analysis']
+            assert br['status'] == 'unresolved' and br['tree'] is None
+            assert br['working_tree']['sentence'] == text
+            canonical = page.locator('#canonicalTreeView')
+            canonical.wait_for(state='visible', timeout=60000)
+            assert not page.locator('#treeCanvas').is_visible()
+            assert 'working tree' in page.locator('#treeAuthorityNotice').inner_text()
+            assert page.locator('#openCanonicalBuilder').count() == 0
+            button = canonical.get_by_role('button', name='Inspect Burton-Roberts AP for taller than he is', exact=True).first
+            button.press('Enter')
+            pane = page.locator('#explainNode')
+            assert 'Unresolved internal analysis' in pane.inner_text()
+            assert 'requires a resolved analysis' in pane.inner_text()
+            assert not errors, errors
+            print('PASS: unresolved span remains visible in a B-R working tree with explicit uncertainty.')
+            browser.close()
+            raise SystemExit(0)
+        if final_mode:
+            parsed = response.value.json()
+            br = parsed.get('br_analysis', {})
+            assert parsed['parse']['text'] == text
+            assert br.get('status') == 'normalized', (parsed['parse']['parse_string'], br.get('reasons'))
+            verb = br['tree']['root']['children'][1]['children'][0]
+            assert br['display_labels'][verb['id']] == ['V', '[intrans]', '[pres]']
         page.wait_for_selector('#openCanonicalBuilder', timeout=60000)
+        if final_mode:
+            canonical = page.locator('#canonicalTreeView')
+            canonical.wait_for(state='visible')
+            assert not page.locator('#treeCanvas').is_visible()
+            svg = canonical.locator('svg')
+            assert svg.locator('.br-feature-row').all_text_contents() == ['[intrans]', '[pres]']
+            labels = svg.locator('text').all_text_contents()
+            assert all(label in labels for label in ('S', 'NP', 'DET', 'ART', 'NOM', 'N', 'VP', 'V', 'sleeps')), labels
+            assert all(tag not in labels for tag in ('VBZ', 'DT', 'NN', '.')), labels
+            svg.get_by_role('button', name='Inspect Burton-Roberts V for sleeps', exact=True).press('Enter')
+            pane = page.locator('#explainNode')
+            assert 'spans “sleeps”' in pane.inner_text()
+            assert 'Ch5 p. 104' in pane.inner_text()
+            canonical.get_by_text('Read the tree as text', exact=True).click()
+            word = canonical.locator('details').get_by_role('button', name='Inspect Burton-Roberts word for sleeps')
+            word.press('Enter')
+            assert word.get_attribute('aria-pressed') == 'true'
+            assert 'Ch5 p. 104' in pane.inner_text()
+            page.locator('#newSessionBtn').click()
+            assert not canonical.is_visible()
+            assert not errors, errors
+            print('PASS: FINAL-D1 renders the reported sentence and exposes its node evidence.')
+            browser.close()
+            raise SystemExit(0)
         page.wait_for_selector('[data-shared-evidence]')
         assert page.evaluate("""async () => {
           const { matchesPreviewTokens } = await import('/js/correction.js');

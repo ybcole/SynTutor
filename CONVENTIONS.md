@@ -17,7 +17,7 @@
    support a structural decision, output `UNSURE` and stop for human review.
    Cambridge may support broader grammatical claims, but cannot change a B-R
    phrase-marker convention.
-2. **Every tree carries a `convention_version`** (V1–V10, §1). A tree is drawn with the conventions of the chapter it appears in. **Never "upgrade" an early-chapter tree to later conventions**, and never use a later convention in an earlier chapter (e.g. no `NOM` before Ch7, no `S′` before Ch6).
+2. **Textbook figures and lesson trees carry a chapter convention** (V1–V10, §1). Draw them using the conventions of their own chapter. **Never "upgrade" an early-chapter tree to later conventions**, and never use a later convention in an earlier chapter (e.g. no `NOM` before Ch7, no `S′` before Ch6).
 3. **Functions are not nodes.** Subject, direct object, adjunct, etc. are *read off* tree positions (§6). They are never drawn as labels in a phrase marker (Ch2 p.30; Ch5 p.88).
 4. **Triangles are legitimate.** A triangle means "internal structure not analysed here." Use triangles exactly where the book does (the exercise text usually says which constituents to triangle). A triangle normally carries its category label; Chapter 9 explicitly permits an unlabelled wh triangle under C2. Preserve that omission rather than inferring a label.
 5. **Gradable analyses vs. alternatives:** some exercises have more than one accepted analysis (§9). Store them in `accepted_alternatives`, don't pick one silently.
@@ -49,7 +49,7 @@
 | **V10** | Ch10 (p.224) | Non-finite clauses: `[-tense]` auxiliary (`to`), **indices / control**, covert subjects `•`, verb types `V(I)` / `V(II)`. Clause complements of V **drop the old 6-way features and the NP node.** |
 | — | Ch11 (p.254) | Theory chapter. No new trees (see §10). |
 
-**"Final" profile** (for free-form sentence analysis) = V10 plus Ch7 appendix refinement (decision D1).
+**Free analysis uses `FINAL-D1`**, one cumulative notation across the book with the Chapter 7 Appendix NOM refinement. The [labeling master](grammar/SynTutor_FINAL-D1_Labeling_Master.xlsx) controls the exact labels and feature order displayed by the Generator. The construction determines which rules apply. Chapter numbers on rules and nodes identify their source evidence. A guarded adapter can produce a canonical tree for a supported construction and otherwise leaves the candidate unresolved. For a past-tense intransitive verb, a lexical V carries `[intrans]` then `[past]` as feature rows under the same V and above the word (Ch4 p.72 [22], Ch6 p.113 [8]–[9]).
 
 ---
 

@@ -20,15 +20,22 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 function svgNode(name, attrs = {}) { const n = document.createElementNS(SVG_NS,name); for (const [k,v] of Object.entries(attrs)) n.setAttribute(k,v); return n; }
 // Read-only canonical trees plus a constrained fill-in target for guided practice.
 // Advanced structures never pass through the parser or the legacy Builder bridge.
-export function renderLessonTree(envelope, { focusId = null, blank = null } = {}) {
+export function renderLessonTree(envelope, {
+  focusId = null, blank = null, stackFeatures = false, displayLabels = null, interactive = false,
+} = {}) {
   const wrap = el('div',undefined,'lesson-tree-wrap');
   const root = envelope.root;
   const hint=el('p','Scroll sideways to inspect the whole tree, or open its text view.','lesson-tree-hint');wrap.append(hint);wrap.tabIndex=0;wrap.setAttribute('aria-label','Scrollable B-R tree');
-  function label(node) {
+  function label(node, withFeatures = true) {
+    const master = displayLabels?.[node.id];
+    if (master) return withFeatures ? master.join(' ') : master[0] || '';
     if (node.gap) return node.index === undefined ? '•' : `• (${node.index})`;
     const name=node.label === 'AUX' ? '' : node.label === 'S-bar' ? 'S′' : node.label === 'S-dbar' ? 'S″' : node.unlabelled ? '' : node.label || node.word;
-    return `${name || ''}${node.features?.length ? ` [${node.features.join(', ')}]` : ''}${node.empty ? ' (empty)' : ''}`;
+    return `${name || ''}${withFeatures && node.features?.length ? ` [${node.features.join(', ')}]` : ''}${node.empty ? ' (empty)' : ''}`;
   }
+  const featureRows = node => displayLabels?.[node.id]
+    ? displayLabels[node.id].slice(1)
+    : stackFeatures ? (node.features || []).map(feature => `[${feature}]`) : [];
   const measure = document.createElement('canvas').getContext('2d');
   measure.font = '15px system-ui, sans-serif';
   const gap = 18;
@@ -37,9 +44,10 @@ export function renderLessonTree(envelope, { focusId = null, blank = null } = {}
     if (widths.has(node)) return widths.get(node);
     const children = node.children || [];
     const ownLabel = blank && blank.node_id === node.id && blank.field === 'feature'
-      ? label(node) + ' [?]' : label(node);
+      ? label(node) + ' [?]' : label(node, !stackFeatures && !displayLabels);
     const width = Math.max(node.id === focusId ? 122 : 56,
       measure.measureText(ownLabel).width + 28,
+      ...featureRows(node).map(feature => measure.measureText(feature).width + 28),
       measure.measureText(node.words?.join(' ') || '').width + 28,
       children.reduce((total, child) => total + widthOf(child), 0)
         + Math.max(0, children.length - 1) * gap);
@@ -47,38 +55,63 @@ export function renderLessonTree(envelope, { focusId = null, blank = null } = {}
     return width;
   }
   const positions = [], edges = [];
-  function place(node, left, depth) {
-    const width=widthOf(node), position={node,x:left+width/2,y:35+depth*72}; positions.push(position);
+  function place(node, left, y) {
+    const width=widthOf(node), position={node,x:left+width/2,y}; positions.push(position);
     const children = node.children || [];
     const childWidth = children.reduce((sum, child) => sum + widthOf(child), 0)
       + Math.max(0, children.length - 1) * gap;
     let cursor = left + (width - childWidth) / 2;
     for (const child of children) {
-      const target = place(child, cursor, depth + 1);
+      const target = place(child, cursor, y + 72 + featureRows(node).length * 18);
       edges.push([position, target]);
       cursor += widthOf(child) + gap;
     }
     return position;
   }
-  const width=widthOf(root); place(root,0,0);
-  const height=Math.max(...positions.map(p=>p.y+ (p.node.triangle ? 80 : 35)));
+  const width=widthOf(root); place(root,0,35);
+  const height=Math.max(...positions.map(p=>p.y + featureRows(p.node).length * 18 + (p.node.triangle ? 80 : 35)));
   const svg=svgNode('svg',{viewBox:`0 0 ${width} ${height}`,width,height,role:'img','aria-label':`B-R tree for ${envelope.sentence}`});
-  for (const [a,b] of edges) svg.append(svgNode('line',{x1:a.x,y1:a.y+12,x2:b.x,y2:b.y-18,class:'lesson-branch'}));
+  for (const [a,b] of edges) svg.append(svgNode('line',{x1:a.x,y1:a.y+12+featureRows(a.node).length*18,x2:b.x,y2:b.y-18,class:'lesson-branch'}));
   for (const {node,x,y} of positions) {
     const g=svgNode('g',{'data-node-id':node.id || '',class:node.id===focusId ? 'lesson-tree-focus' : ''});
     if (node.id===focusId) g.append(svgNode('rect',{x:x-55,y:y-20,width:110,height:40,rx:9}));
     const t=svgNode('text',{x,y,'text-anchor':'middle'});
-    t.textContent=blank && blank.node_id===node.id ? (blank.field==='feature' ? `${node.label === 'AUX' ? '' : node.label} [?]` : '?') : label(node);g.append(t);
+    t.textContent=blank && blank.node_id===node.id ? (blank.field==='feature' ? `${node.label === 'AUX' ? '' : node.label} [?]` : '?') : label(node, !stackFeatures && !displayLabels);g.append(t);
+    const rows = featureRows(node);
+    rows.forEach((feature, index) => {
+      const row = svgNode('text', {x, y: y + (index + 1) * 18, 'text-anchor': 'middle', class: 'br-feature-row'});
+      row.textContent = feature;
+      g.append(row);
+    });
     if (node.triangle) {
       const half=Math.min(widthOf(node)/2-12,80);
-      g.append(svgNode('polygon',{points:`${x},${y+12} ${x-half},${y+45} ${x+half},${y+45}`}));
-      const words=svgNode('text',{x,y:y+68,'text-anchor':'middle'});words.textContent=node.words.join(' ');g.append(words);
+      const bottom = y + rows.length * 18;
+      g.append(svgNode('polygon',{points:`${x},${bottom+12} ${x-half},${bottom+45} ${x+half},${bottom+45}`}));
+      const words=svgNode('text',{x,y:bottom+68,'text-anchor':'middle'});words.textContent=node.words.join(' ');g.append(words);
     }
     svg.append(g);
   }
   wrap.append(svg);
   const text=el('details',undefined,'lesson-tree-text');text.append(el('summary','Read the tree as text'));
-  function list(node) { const li=el('li',label(node)); if (node.words) li.append(el('span',` — ${node.words.join(' ')}`)); if (node.children) {const ul=el('ul');node.children.forEach(c=>ul.append(list(c)));li.append(ul);}return li; }
+  function list(node) {
+    const item = el('li');
+    const name = label(node) || '△';
+    const description = node.words ? `${name} — ${node.words.join(' ')}` : name;
+    if (interactive && node.id) {
+      const button = el('button', description);
+      button.type = 'button';
+      button.dataset.nodeId = node.id;
+      item.append(button);
+    } else {
+      item.textContent = description;
+    }
+    if (node.children) {
+      const nested = el('ul');
+      node.children.forEach(child => nested.append(list(child)));
+      item.append(nested);
+    }
+    return item;
+  }
   const ul=el('ul');ul.append(list(root));text.append(ul);wrap.append(text);return wrap;
 }
 function currentLesson() { return course.lessons.find(l => l.lesson_id===active); }

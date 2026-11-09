@@ -257,13 +257,14 @@ def analyze(text, sentence_index=0):
             leaf['ftag'] = meta[i]['tag']
             leaf['fpos'] = meta[i]['pos']
     return {
-        'sentence': target.text,
+        'sentence': text[offset_starts[target.start_char]:offset_ends[target.end_char - 1]],
         'sentence_index': idx,
         'sentence_count': len(sents),
         'sentences': [{'ordinal': i + 1,
                        'start': offset_starts[s.start_char],
                        'end': offset_ends[s.end_char - 1],
-                       'text': s.text} for i, s in enumerate(sents)],
+                       'text': text[offset_starts[s.start_char]:offset_ends[s.end_char - 1]]}
+                      for i, s in enumerate(sents)],
         'tokens': meta,
         'parse_string': parse_string,
         'root': root,

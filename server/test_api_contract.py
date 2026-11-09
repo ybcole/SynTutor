@@ -123,7 +123,7 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
         self.assertEqual(payload['summary']['verdict_authority'], 'legacy_diagnostic')
         self.assertIs(payload['summary']['book_verified'], False)
 
-    def test_unsupported_free_analysis_stays_explicitly_unresolved(self):
+    def test_free_analysis_returns_final_d1_for_a_regular_declarative(self):
         with patch.object(api, "analyze", return_value=self.analysis()), \
              patch.object(api, "evaluate", return_value=self.clean_evaluation()), \
              patch.object(api, "classify", return_value=None), \
@@ -132,8 +132,8 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
              patch.object(api, "_rule_concepts", return_value=[]):
             payload = api.build_payload(self.sentence, convention_version="V10")
 
-        self.assertEqual(payload["br_analysis"]["status"], "unresolved")
-        self.assertEqual(payload["br_analysis"]["diagnostics"][0]["code"], "PROFILE_MAPPING_NOT_APPROVED")
+        self.assertEqual(payload["br_analysis"]["status"], "normalized")
+        self.assertEqual(payload["br_analysis"]["tree"]["convention_profile"]["profile_id"], "FINAL-D1")
         self.assertEqual(payload["tree"], self.candidate())
 
 

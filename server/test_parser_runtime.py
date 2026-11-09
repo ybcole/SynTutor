@@ -32,6 +32,42 @@ class ParserBackedRuntimeTests(unittest.TestCase):
         self.assertEqual([row["t"] for row in analysis["tokens"]],
                          ["The", "students", "laugh", "."])
 
+    def test_final_d1_projects_different_constructions_with_original_words(self):
+        cases = [
+            ("The dog barked.", "S", {"V [intrans] [past]"}),
+            ("She  read the book.", "S", {"V [trans] [past]", "DET", "NOM"}),
+            ("The nurse have arrived.", "S", {"PERF [pres]", "V [intrans]"}),
+            ("The letter was read by Mara.", "S", {"PASS [past]", "V [trans]", "•₁"}),
+            ("What did Jon buy?", "S-dbar", {"S″", "C2₁", "C1₂", "TENSE [past]", "•₁", "•₂"}),
+            ("Where did Lisa put it?", "S-dbar", {"V [complex]", "PP", "•₁"}),
+            ("She persuaded Mara to leave.", "S", {"V(II) [past]", "[-tense]", "•₁"}),
+            ("In the bag were two knives.", "S", {"PP₁", "V [intens] [past]", "QA", "•₁"}),
+            ("Here's the book that she wrote.", "S", {"PP₂", "C2₁", "that", "V [trans] [past]", "•₁", "•₂"}),
+            ("Whose is this?", "S-dbar", {"C2₁", "C1₂", "V [intens] [pres]", "•₁", "•₂"}),
+            ("He read it, didn't he?", "S", {"S′", "TENSE [past]", "E", "•₁"}),
+            ("He read the report, and so did his son.", "S", {"S′", "TENSE [past]", "E", "so"}),
+            ("He gave to charity all the money she had left him.", "S", {"V [ditrans] [past]", "V [ditrans]", "S″"}),
+            ("She is believed to have been ill.", "S", {"PASS [pres]", "V(I)", "[-tense]", "NP₁", "•₁"}),
+            ("She is likely to win.", "S", {"V [intens] [pres]", "V [intrans]", "NP₁", "•₁"}),
+            ("This banana is green: have you got a riper one?", "S", {"PERF [pres]", "V [trans]", "NOM", "one"}),
+            ("Only the rich will benefit.", "S", {"AdvP", "AP", "NOM", "E", "MOD [pres]"}),
+            ("They ate almost the whole cake.", "S", {"AdvP", "V [trans] [past]", "DET", "NOM"}),
+            ("Grapes are expensive and likely to remain so.", "S", {"AP", "[-tense]", "NP₁", "•₁", "so"}),
+            ("She won't be happy whatever you offer her.", "S", {"S″", "C2₁", "V [ditrans] [pres]", "•₁"}),
+        ]
+        with patch.object(api, "classify", return_value=None):
+            for sentence, root_label, expected in cases:
+                with self.subTest(sentence=sentence):
+                    result = api.build_payload(sentence)
+                    analysis = result["br_analysis"]
+                    self.assertEqual(analysis["status"], "normalized", analysis["reasons"])
+                    tree = analysis["tree"]
+                    self.assertEqual(tree["sentence"], sentence)
+                    self.assertEqual(tree["root"]["label"], root_label)
+                    self.assertFalse(list(M1_VALIDATOR.iter_errors(tree)))
+                    labels = {" ".join(lines) for lines in analysis["display_labels"].values()}
+                    self.assertTrue(expected <= labels, (expected, labels))
+
     def test_real_parser_selects_second_sentence_without_clamping(self):
         text = "The students laugh. The birds sing."
         analysis = parse_engine.analyze(text, sentence_index=1)
@@ -40,6 +76,28 @@ class ParserBackedRuntimeTests(unittest.TestCase):
         self.assertEqual(analysis["sentence"], "The birds sing.")
         self.assertEqual([row["t"] for row in analysis["tokens"]],
                          ["The", "birds", "sing", "."])
+
+    def test_unresolved_constructions_keep_working_trees_without_promoting_evidence(self):
+        from explanations import explain_analysis
+        cases = [
+            "She is taller than he is.", "They demolished.", "Arrived late.",
+            "She asked what Jon had broken the vase.",
+            "She'll be arriving tomorrow or on Friday.",
+        ]
+        with patch.object(api, "classify", return_value=None):
+            for sentence in cases:
+                with self.subTest(sentence=sentence):
+                    payload = api.build_payload(sentence)
+                    result = payload["br_analysis"]
+                    self.assertEqual(result["status"], "unresolved")
+                    self.assertIsNone(result["tree"])
+                    tree = result["working_tree"]
+                    self.assertEqual(tree["sentence"], sentence)
+                    self.assertEqual(tree["source"]["evidence_status"], "UNCERTAIN")
+                    self.assertEqual(list(M1_VALIDATOR.iter_errors(tree)), [])
+                    self.assertTrue(result["working_display_labels"])
+                    evidence = explain_analysis({"status": "normalized", "tree": tree})
+                    self.assertEqual(evidence["status"], "ANALYSIS_UNRESOLVED")
 
     def test_out_of_range_sentence_index_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "out of range"):
@@ -72,6 +130,20 @@ class ParserBackedRuntimeTests(unittest.TestCase):
         self.assertEqual(payload["br_analysis"]["status"], "normalized",
                          payload["br_analysis"])
         self.assertEqual(list(M1_VALIDATOR.iter_errors(payload["br_analysis"]["tree"])), [])
+
+    def test_real_generator_api_projects_the_first_final_d1_construction(self):
+        with patch.object(api, "classify", return_value=None):
+            payload = api.build_payload("The tired students sighed quietly.")
+
+        analysis = payload["br_analysis"]
+        self.assertEqual(analysis["status"], "normalized", analysis["reasons"])
+        envelope = analysis["tree"]
+        self.assertEqual(envelope["convention_profile"]["profile_id"], "FINAL-D1")
+        self.assertEqual(list(M1_VALIDATOR.iter_errors(envelope)), [])
+        vp, adjunct = envelope["root"]["children"][1]["children"]
+        self.assertEqual(adjunct["label"], "AdvP")
+        self.assertEqual(vp["children"][0]["features"], ["intrans", "past"])
+        self.assertEqual(payload["tree"], payload["candidate_tree"])
 
     def test_corrected_sentence_is_independently_parsed_and_normalized(self):
         original = "The students laughs."

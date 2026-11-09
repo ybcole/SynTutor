@@ -47,6 +47,10 @@ sys.path.insert(0, 'server')
 from webapp import app
 from explanations import load_registry
 assert load_registry()['templates'], 'production source registry not packaged'
+from final_d1_labels import final_d1_display_labels
+assert final_d1_display_labels({'id': 'test', 'label': 'V', 'features': ['pres', 'intrans']}) == {
+    'test': ['V', '[intrans]', '[pres]'],
+}
 response = app.test_client().post('/api/explain', json={'tree': None})
 assert response.status_code == 200
 assert response.get_json()['status'] == 'ANALYSIS_UNRESOLVED'
