@@ -21,9 +21,11 @@ from zipfile import BadZipFile
 if __package__:
     from .final_d1_labels import final_d1_display_labels
     from .final_d1_projection import Projection, ProjectionUnavailable
+    from .br_native_grammar import audit_br_constructions
 else:
     from final_d1_labels import final_d1_display_labels
     from final_d1_projection import Projection, ProjectionUnavailable
+    from br_native_grammar import audit_br_constructions
 
 SCHEMA_VERSION = "1.1.0"
 SUPPORTED_SCHEMA_VERSIONS = {"1.0.0", SCHEMA_VERSION}
@@ -582,6 +584,33 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
             result["working_display_labels"] = final_d1_display_labels(result["working_tree"]["root"])
         except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError):
             result.pop("working_tree")
+
+    # Independent of the canonical schema check, classify which book-linked
+    # construction shapes were recognized. Shape coverage does NOT certify
+    # complement selection, attachment, grammaticality or source review.
+    # Audit failure is exposed, never concealed as a verified B-R analysis.
+    envelope_for_audit = result.get("tree") or result.get("working_tree")
+    if isinstance(envelope_for_audit, dict):
+        try:
+            audit = audit_br_constructions(
+                envelope_for_audit,
+                normalization_trace=result.get("normalization_trace"),
+            )
+            result["br_rule_verification"] = audit
+            if audit["violations"] and result.get("status") == "normalized":
+                result.update(
+                    status="unresolved", tree=None,
+                    reasons=[{
+                        "code": "BR_CONSTRUCTION_LABEL_VIOLATION",
+                        "detail": "Canonical output leaked parser-only labels; see br_rule_verification.",
+                    }],
+                )
+        except (OSError, ValueError, TypeError, KeyError) as exc:
+            result["br_rule_verification"] = {
+                "state": "audit_unavailable",
+                "reason": str(exc),
+                "may_certify_grammaticality": False,
+            }
     result["convention_profile"] = profile
     result["convention_version"] = profile["version"]
     raw_diagnostics = result.get("diagnostics")
