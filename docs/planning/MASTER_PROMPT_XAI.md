@@ -1,7 +1,7 @@
 # Master Prompt — SynTutor Contextual XAI Engine
 
 **Use with:** [XAI Master Plan](XAI_MASTER_PLAN.md) and [Uploaded-book Source Audit & Multi-Error Protocol](XAI_SOURCE_AUDIT_MULTI_ERROR.md)  
-**Status:** Implementation instructions only; no implementation is implied by this prompt  
+**Status:** Implementation instructions; XAI-PRE has an initial tested contract/source-gate implementation, while XAI-0–XAI-8 remain separate future engineering work.  
 **Authority:** Noel Burton-Roberts, *Analysing Sentences*, Third Edition (2011), for tree structure; Huddleston and Pullum et al., *The Cambridge Grammar of the English Language* (2002), for descriptive grammatical knowledge subject to review and source-specific differences.  
 **Repository:** `ybcole/SynTutor`
 
@@ -50,6 +50,8 @@ Follow XAI-0 through XAI-8 in the master plan, in order. Implement one coherent 
 Before running or implementing XAI-0, inspect the **attached original Burton-Roberts third-edition and Cambridge Grammar PDFs** and the source-map audit. The chapters and printed pages identified there are selected verifications, not proof of exhaustive source coverage. Distinguish a chapter-topic inventory from independent page-by-page rule approval.
 
 Concretely verify B–R Ch. 6 pp. 116–118 and Cambridge Ch. 3 pp. 74–77, 106, 143–145 for auxiliary/participle terminology, form-selection rules, syncretism and tense/aspect exceptions. Preserve Cambridge's descriptive variety and symbol distinctions. Source-check each new runtime rule and its exceptions against **its own source pages** before enabling it.
+
+Use the XAI-PRE assets already committed—`grammar/xai_pre/source_audit.json`, `docs/xai/diagnosis-repair-pre.schema.json`, `server/xai_preflight.py`, the synthetic fixtures, and `scripts/audit_xai_pre.py`. Do not replace or bypass these contracts by default; propose explicit versioned changes only with corresponding tests and updated source receipts.
 
 Freeze a **partial rule evaluator** contract: `SATISFIED`, `VIOLATED`, `NOT_APPLICABLE`, `BLOCKED`, `AMBIGUOUS`, `UNIMPLEMENTED`. Freeze an immutable original-input snapshot; dependency graph over error findings; parent/governor/affected token IDs; original→candidate proof lineage; and a bounded search for coherent multi-edit packages. Do not treat an original incomplete parse as proof that unchanged words are grammatical.
 
