@@ -42,6 +42,8 @@ The following deliverables encode the required evidence and record integrity but
 | [syntax-generator-tests.yml](../../.github/workflows/syntax-generator-tests.yml) | Model-free pipeline runs tests and validates audit/schema/fixtures without downloading NLP models | Updated |
 | XAI master plan and implementer prompt | Record concrete preflight artifacts, handoff, and subsequent approval requirements | Updated |
 
+**24 model-free contract tests** now cover chapter and claim provenance, exact token coverage and edit reconstruction, pending-review activation gates, partial outcome lineage, forged citations, and version-specific tree references. These tests do not load spaCy or Benepar.
+
 **Only schema- and semantics-level consistency is checked.** The preflight test fixtures intentionally use `DEMO-*` pseudo-rule identifiers; no fixture can issue a book-certified learner-facing verdict. They cannot establish the accuracy of the actual Benepar/B–R runtime or Cambridge error checks.
 
 ## 4. Non-negotiable contract decisions
