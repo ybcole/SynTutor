@@ -1,6 +1,7 @@
 import { accountUserId } from './session-scope.js';
 import { fromCanonicalEnvelope } from './syntax-builder.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
+import { findCanonicalNode, canonicalNodeFacts, canonicalObservation } from './canonical-view.js';
 import { loadClerk, createSupabaseClient, currentUserEmail, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
 import { API_BASE } from './config.js';
 import { TreeRenderer } from './renderer.js';
@@ -30,6 +31,8 @@ let activeSessionId = null;
 let activeUserId = null;
 let activeWorkspaceView = null;
 let leaderboardView = null;
+// Explicit, scoped opt-in to the only source-reviewed automatic parser adapter.
+let generatorChapter = null;
 
 try {
   clerk = await loadClerk();
@@ -1534,6 +1537,11 @@ function failPipeline(title, lines) {
 async function postParse(text, index = null) {
   const body = { text };
   if (index !== undefined && index !== null) body.sentence_index = index;
+  // Free analysis remains FINAL-D1. Chapter 2's conservative B-R
+  // transformation is available only when the learner explicitly selects it.
+  if (workspaceView === 'tutor' && !quizMode && generatorChapter === 2) {
+    body.chapter = 2;
+  }
   const res = await fetch(`${API_BASE}/api/parse`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -1553,10 +1561,94 @@ async function postParse(text, index = null) {
   return { payload };
 }
 
-// The Grammar Tutor canvas still renders the legacy Benepar graph. Make its
-// authority explicit so it cannot be mistaken for the canonical B-R projection.
+// A source-authorized B-R tree takes priority over the candidate parse.
+// Reuse the renderer used by reviewed Lessons so we never invent Penn labels,
+// GAP nodes or category mappings. Unsupported analyses remain explicitly
+// diagnostic instead of silently displaying a fake B-R tree.
+function clearCanonicalTree() {
+  const host = document.querySelector('#canonicalTreeView');
+  if (host && !host.hidden) {
+    host.hidden = true;
+    host.replaceChildren();
+    const canvas = document.querySelector('#treeCanvas');
+    if (canvas) canvas.hidden = false;
+  }
+}
+
+function showCanonicalTree(payload) {
+  const host = document.querySelector('#canonicalTreeView');
+  const envelope = payload?.br_analysis?.tree;
+  if (!host || workspaceView !== 'tutor' || quizMode
+      || payload?.br_analysis?.status !== 'normalized' || !envelope?.root) {
+    clearCanonicalTree();
+    return false;
+  }
+  host.replaceChildren();
+  const help = document.createElement('p');
+  help.className = 'canonical-tree-help';
+  help.textContent = 'Validated Burton-Roberts notation. Select a category, word, or triangle for structural explanation and reviewed source evidence. A diagnostic verdict is not a book-verified grammaticality judgment.';
+  host.append(help);
+  const visual = renderLessonTree(envelope);
+  host.append(visual);
+  host.hidden = false;
+  const canvas = document.querySelector('#treeCanvas');
+  if (canvas) canvas.hidden = true;
+
+  for (const group of visual.querySelectorAll('svg g[data-node-id]')) {
+    const id = group.getAttribute('data-node-id');
+    const node = findCanonicalNode(envelope.root, id);
+    if (!node) continue;
+    const facts = canonicalNodeFacts(envelope, node);
+    group.setAttribute('tabindex', '0');
+    group.setAttribute('role', 'button');
+    group.setAttribute('aria-label', `Inspect Burton-Roberts ${facts.label}${facts.surface ? ` for ${facts.surface}` : ''}`);
+    const select = async () => {
+      for (const item of visual.querySelectorAll('svg g[data-selected]')) {
+        item.removeAttribute('data-selected');
+      }
+      group.dataset.selected = 'true';
+      const pane = document.querySelector('#explainNode');
+      if (!pane) return;
+      document.querySelector('#emptyExplainState')?.classList.add('hidden');
+      pane.replaceChildren();
+      const title = document.createElement('h3');
+      title.textContent = `B-R structural analysis: ${facts.label}`;
+      const observation = document.createElement('p');
+      observation.textContent = canonicalObservation(facts);
+      const boundary = document.createElement('p');
+      boundary.textContent = 'Observed tree structure only. Source-reviewed grammatical claims are shown separately below, if available.';
+      pane.append(title, observation, boundary);
+      const evidenceSlot = document.createElement('section');
+      pane.append(evidenceSlot);
+      try {
+        const evidence = await requestEvidence(envelope, id, {
+          variety: payload.meta?.cambridge_variety,
+        });
+        // A pending request must not repaint another sentence/account/view.
+        if (host.hidden || !host.contains(group)
+            || (session?.payload !== payload && activePreview()?.payload !== payload)) return;
+        renderEvidence(evidence, evidenceSlot);
+      } catch (error) {
+        if (host.hidden || !host.contains(group)) return;
+        const message = document.createElement('p');
+        message.textContent = 'Reviewed explanation unavailable: ' + error.message;
+        evidenceSlot.append(message);
+      }
+    };
+    group.addEventListener('click', select);
+    group.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        select();
+      }
+    });
+  }
+  return true;
+}
+
 function setTreeAuthorityNotice(payload) {
   renderEvidence(payload?.explanation_evidence);
+  const canonicalShown = showCanonicalTree(payload);
   const notice = document.querySelector('#treeAuthorityNotice');
   if (!notice) return;
   const analysis = payload?.br_analysis;
@@ -1566,14 +1658,34 @@ function setTreeAuthorityNotice(payload) {
   const detail = (analysis?.diagnostics || [])
     .map((row) => row?.message || row?.detail).find(Boolean)
     || (analysis?.reasons || []).map((row) => row?.detail).find(Boolean);
-  if (status === 'normalized') {
-    notice.textContent = 'Canvas: Benepar diagnostic tree. A canonical B-R tree is available.';
+  if (canonicalShown) {
+    notice.textContent = 'Burton-Roberts canonical tree shown. Select a tree node below to inspect its structure.';
+  } else if (status === 'normalized') {
+    notice.textContent = 'Canvas: Benepar diagnostic candidate. A canonical B-R tree is separately available.';
   } else {
     notice.textContent = `Raw Benepar diagnostic candidate only — canonical B-R normalization is ${status}.${detail ? ` ${detail}` : ''}`;
   }
   notice.textContent += ' Legacy verdicts are diagnostic; the reviewed evidence does not establish a full grammaticality verdict.';
+  if (workspaceView === 'tutor' && !quizMode) {
+    notice.textContent += generatorChapter === 2
+      ? ' Profile: Chapter 2 (V2), limited to a basic S → NP VP structure.'
+      : ' Profile: free analysis (FINAL-D1).';
+  }
   notice.hidden = false;
   document.querySelector('#openCanonicalBuilder')?.remove();
+  document.querySelector('#toggleBrChapter')?.remove();
+  if (workspaceView === 'tutor' && !quizMode) {
+    const switchMode = document.createElement('button');
+    switchMode.id = 'toggleBrChapter';
+    switchMode.type = 'button';
+    switchMode.textContent = generatorChapter === 2
+      ? 'Switch back to FINAL-D1 analysis' : 'Try limited B-R Chapter 2 analysis';
+    switchMode.addEventListener('click', () => {
+      generatorChapter = generatorChapter === 2 ? null : 2;
+      runPipeline({ index: session?.sentence_index ?? 0, isReplay: true });
+    });
+    notice.append(document.createTextNode(' '), switchMode);
+  }
   if (status === 'normalized' && analysis?.tree) {
     const button = document.createElement('button');
     button.id = 'openCanonicalBuilder';
@@ -1588,6 +1700,8 @@ function setTreeAuthorityNotice(payload) {
 }
 
 function clearTreeAuthorityNotice() {
+  clearCanonicalTree();
+  document.querySelector('#toggleBrChapter')?.remove();
   document.querySelector('#openCanonicalBuilder')?.remove();
   const notice = document.querySelector('#treeAuthorityNotice');
   if (!notice) return;
@@ -1878,7 +1992,12 @@ async function executePipeline(opts, request) {
 
   setEmptyStateVisible(false);
   renderer.setTree(payload.tree);
-  if (!quizMode) renderCorrection(payload.summary);
+  if (!quizMode) {
+    renderCorrection(payload.summary);
+    // Correction draws a diagnostic card into the same pane. Always restore
+    // the reviewed evidence separately so the XAI area is not left empty.
+    renderEvidence(payload.explanation_evidence);
+  }
   transition(STATES.VIEWING, 'output ready -> viewing');
   log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
 

@@ -37,6 +37,7 @@ try:
         page = browser.new_page(viewport={'width': 1440, 'height': 1000})
         errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
+        observed_chapters = []
         def route(request_route):
             request = request_route.request
             if request.url.startswith('https://esm.sh/'):
@@ -45,6 +46,7 @@ try:
                 request_route.abort(); return
             if '/api/parse' in request.url:
                 body = request.post_data_json
+                observed_chapters.append(body.get('chapter'))
                 body['chapter'] = 2
                 request_route.continue_(post_data=json.dumps(body)); return
             request_route.continue_()
@@ -69,6 +71,25 @@ try:
         }""")
         generator = page.locator('[data-shared-evidence]').inner_text()
         assert ('Test structure' if fixture_mode else 'A sentence is the largest syntactic unit') in generator, generator
+        # Explicit Chapter 2 mode passes chapter=2 to the API; free FINAL-D1
+        # mode does not. This test route selects V2 only for its reviewed fixture.
+        page.get_by_role('button', name='Try limited B-R Chapter 2 analysis').click()
+        page.get_by_role('button', name='Switch back to FINAL-D1 analysis').wait_for()
+        assert observed_chapters[-1] == 2, observed_chapters
+        page.get_by_role('button', name='Switch back to FINAL-D1 analysis').click()
+        page.get_by_role('button', name='Try limited B-R Chapter 2 analysis').wait_for()
+        assert observed_chapters[-1] is None, observed_chapters
+        # The canonical B-R tree, not the raw Benepar graph, is primary when
+        # the parser adapter has actually normalized the selected structure.
+        assert page.locator('#canonicalTreeView').is_visible()
+        assert page.locator('#treeCanvas').is_hidden()
+        canonical = page.locator('#canonicalTreeView svg g[data-node-id]').first
+        assert canonical.get_attribute('role') == 'button'
+        canonical.focus()
+        canonical.press('Enter')
+        page.wait_for_selector('#explainNode [data-shared-evidence]')
+        assert 'B-R structural analysis' in page.locator('#explainNode').inner_text()
+        assert 'S → NP VP' in page.locator('#explainNode').inner_text() or fixture_mode
         page.evaluate("""async () => {
           const {renderNodeDetail, renderCorrection} = await import('/js/ui.js');
           renderNodeDetail({payload:{explanation_evidence:{}}}, {

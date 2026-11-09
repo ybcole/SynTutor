@@ -185,11 +185,15 @@ try:
         tools = page.locator("#builderTools")
         tools.get_by_label("New words", exact=True).fill("PrivateB")
         tools.get_by_role("button", name="Add words", exact=True).click()
+        print("M12 Builder status:", page.locator("[data-builder-save]").inner_text(), "input:", page.locator("#inputText").input_value(), flush=True)
         nodes = "() => import('/js/syntax-builder-ui.js').then(m => Object.values(m.builderModel().nodes).map(n => n.text))"
+        expect(page.locator("#inputText")).to_have_value("PrivateB", timeout=10000)
         assert "PrivateB" in page.evaluate(nodes)
         page.evaluate("switchAccount('journey-a')")
+        expect(page.locator("#inputText")).not_to_have_value("PrivateB", timeout=10000)
         assert "PrivateB" not in page.evaluate(nodes)
         page.evaluate("switchAccount('journey-b')")
+        expect(page.locator("#inputText")).to_have_value("PrivateB", timeout=10000)
         assert "PrivateB" in page.evaluate(nodes)
         nav("achievements")
         # Complete a stale parser request after leaving the Generator and

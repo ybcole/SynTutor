@@ -18,6 +18,7 @@ from api import build_payload, model_status as _model_status, word_info
 from br_tree import CONVENTIONS
 from explanations import explain_request
 from tree_evaluation import evaluate_request
+from rate_limit import RateLimiter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB_DIR = os.path.join(ROOT, 'web')
@@ -26,6 +27,8 @@ PORT = int(os.environ.get('PORT') or os.environ.get('SYNTUTOR_PORT') or '8000')
 # CORS: the frontend may be hosted on a different origin (e.g. Vercel) than this
 # API. Restrict with SYNTUTOR_ALLOW_ORIGIN (default '*' for easy setup).
 ALLOW_ORIGIN = os.environ.get('SYNTUTOR_ALLOW_ORIGIN', '*')
+API_RATE_PER_MINUTE = int(os.environ.get('SYNTUTOR_API_RPM', '0'))
+API_LIMITER = RateLimiter()
 
 # Only these top-level frontend entries may be served statically. Anything else
 # under ROOT (server/, supabase/, scripts/, migrations, config) stays private.
@@ -124,6 +127,10 @@ class Handler(BaseHTTPRequestHandler):
         if path not in ('/api/parse', '/api/words', '/api/explain', '/api/evaluate'):
             self._json(404, {'error': 'not found'})
             return
+        if API_RATE_PER_MINUTE > 0 and not API_LIMITER.permit(
+                self.client_address[0], API_RATE_PER_MINUTE):
+            self._json(429, {'error': 'too many requests', 'retry_after_seconds': 60})
+            return
         try:
             length = int(self.headers.get('Content-Length', 0))
             if length < 0 or length > 250_000:
@@ -156,8 +163,8 @@ class Handler(BaseHTTPRequestHandler):
             raw = data.get('words')
             if isinstance(raw, str):
                 raw = raw.split()
-            if not isinstance(raw, list):
-                self._json(422, {'error': 'provide "words" as a list'})
+            if not isinstance(raw, list) or any(not isinstance(word, str) for word in raw[:100]):
+                self._json(422, {'error': 'provide "words" as a list of strings'})
                 return
             self._json(200, {'results': word_info(raw[:100])})
             return

@@ -56,6 +56,50 @@ class FlaskParseContractTests(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertIn("JSON object", response.get_json()["error"])
 
+    def test_all_json_routes_reject_oversize_requests(self):
+        # Prevent expensive parsing and tree evaluation from reading an unbounded
+        # request body. This must apply to all four JSON routes, not just
+        # /api/explain and /api/evaluate.
+        for endpoint in ("/api/parse", "/api/words", "/api/explain", "/api/evaluate"):
+            with self.subTest(endpoint=endpoint), patch("webapp.build_payload") as build:
+                response = self.client.post(
+                    endpoint,
+                    data='{"text":"' + ('x' * 250_000) + '"}',
+                    content_type="application/json",
+                )
+                self.assertEqual(response.status_code, 413)
+                self.assertEqual(response.get_json()["error"], "request exceeds 250000 bytes")
+                build.assert_not_called()
+
+    def test_words_rejects_non_object_or_non_string_entries(self):
+        for body, expected in [
+            (["bad", "shape"], 400),
+            ({"words": [42]}, 422),
+            ({"words": ["hello", None]}, 422),
+        ]:
+            with self.subTest(body=body), patch("webapp.word_info") as words:
+                response = self.client.post("/api/words", json=body)
+                self.assertEqual(response.status_code, expected)
+                words.assert_not_called()
+
+    def test_words_accepts_string_entries(self):
+        with patch("webapp.word_info", return_value=[{"word": "hello"}]) as words:
+            response = self.client.post("/api/words", json={"words": ["hello"]})
+        self.assertEqual(response.status_code, 200)
+        words.assert_called_once_with(["hello"])
+        self.assertEqual(response.get_json(), {"results": [{"word": "hello"}]})
+
+    def test_optional_rate_limit_blocks_excessive_requests(self):
+        from rate_limit import RateLimiter
+        limiter = RateLimiter(clock=lambda: 100)
+        with patch("webapp.API_RATE_PER_MINUTE", 1), patch("webapp.API_LIMITER", limiter):
+            first = self.client.post("/api/parse", json={"text": " "})
+            second = self.client.post("/api/parse", json={"text": " "})
+        self.assertEqual(first.status_code, 422)
+        self.assertEqual(second.status_code, 429)
+        self.assertEqual(second.headers["Retry-After"], "60")
+        self.assertEqual(second.get_json()["error"], "too many requests")
+
     def test_successful_build_returns_payload(self):
         expected = {"br_analysis": {"status": "unresolved"}}
         with patch("webapp.build_payload", return_value=expected) as build:

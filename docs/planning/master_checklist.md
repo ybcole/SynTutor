@@ -194,22 +194,25 @@ See the [M11 report](../reports/milestone-11-integration-2026-11-08.md).
 
 ## 12. Quality, privacy, release
 
-- [ ] Add schema validators and ID/reference integrity checks.
-- [ ] Add unit tests for normalizer, structural validator, and rule evaluator.
-- [ ] Add B-R gold-tree regression tests.
-- [ ] Add Cambridge rule and exception tests.
-- [ ] Add explanation source-reference tests.
-- [ ] Add browser E2E tests for the principal flows.
-- [ ] Add CI to run validators, tests, and build checks.
-- [ ] Add database migration tests and backward-compatible progress migration.
+- [x] Add schema validators and ID/reference integrity checks.
+- [x] Add unit tests for normalizer, structural validator, and rule evaluator.
+- [x] Add B-R gold-tree regression tests.
+- [x] Add Cambridge rule and exception tests.
+- [x] Add explanation source-reference tests.
+- [x] Add browser E2E tests for the principal flows.
+- [x] Add CI to run validators, tests, and build checks.
+- [x] Add database migration tests and backward-compatible progress migration.
 - [ ] Add privacy/security review for leaderboard and XP writes.
 - [ ] Add rate limiting and backend error handling appropriate to deployment.
 - [ ] Add feature flags and staged rollout.
-- [ ] Run old/new pipeline comparison on a fixed evaluation corpus.
+- [x] Run old/new pipeline comparison on a fixed evaluation corpus.
 - [ ] Approve rollback plan.
 - [ ] Publish coverage limitations and known ambiguities to users.
 
 ---
+
+
+**M12 automated-evidence reconciliation (9 November 2026):** Nine implementation/test tasks above are checked from the existing passing M11 model-free/parser CI and the M12 PR #43 runs: schema and reference validators; source-constrained unit, B-R gold, Cambridge negative/exception, provenance and browser tests; disposable PostgreSQL migrations (including preserved old rows); configured CI; and the six-sentence real-parser comparison artifact from [parser workflow 42537599113](https://github.com/ybcole/SynTutor/actions/runs/42537599113). The first M12 model-free workflow exposed a timing-dependent Builder account-switch browser assertion; [run 42537922571](https://github.com/ybcole/SynTutor/actions/runs/42537922571) passed after adding UI state synchronization. **These checkboxes record repository test coverage, not live Clerk/Supabase staging, human visual or usability acceptance, deployed throttling, approved rollback, or a completed release.** Privacy review, rate limiting, staged rollout, rollback approval and user-facing publication remain separately unchecked. The M9–M12 tracker stays unchecked.
 
 ## Phase sign-off log
 

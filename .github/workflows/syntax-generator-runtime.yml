@@ -3,6 +3,7 @@ name: Syntax Generator parser-backed runtime checks
 on:
   push:
     branches:
+      - main
       - milestone-02-syntax-generator
   pull_request:
     branches:
@@ -67,6 +68,15 @@ jobs:
       - name: Run existing LF/CRLF multiline parser regression
         run: python server/test_multiline_parse.py
 
+      - name: Compare legacy diagnostics with source-authorized B-R output
+        run: python scripts/compare_pipeline_fixed_corpus.py
+      - name: Upload M12 fixed-corpus comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: syntutor-m12-fixed-corpus
+          path: artifacts/m12_pipeline_comparison.json
+          if-no-files-found: warn
       - name: Install browser smoke-test runtime
         run: |
           python -m pip install 'playwright>=1.51,<2'
