@@ -67,6 +67,9 @@ jobs:
       - name: Audit all B-R chapter records
         run: python scripts/audit_burton_roberts_import.py --expected-count 252
 
+      - name: Report native B-R rule coverage against 252 reference trees
+        run: python scripts/audit_br_native_catalog.py --expected-count 252 --fail-on-penn
+
       - name: Run all existing B-R chapter validators
         working-directory: web/content/book
         run: |
