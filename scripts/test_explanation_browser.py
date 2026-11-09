@@ -36,6 +36,8 @@ try:
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, args=['--no-sandbox'])
         page = browser.new_page(viewport={'width': 1440, 'height': 1000})
+        if final_mode:
+            page.add_init_script("localStorage.setItem('syntutor_onboarding_seen', '1')")
         errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
         def route(request_route):
@@ -53,11 +55,17 @@ try:
         page.goto(base, wait_until='domcontentloaded')
         page.evaluate("async () => { await import('/js/main.js'); }")
         text = 'The boy sleeps.' if final_mode else 'The birds sing.'
-        page.locator('#inputText').evaluate("""(el, text) => {
-            el.removeAttribute('readonly');
-            el.value = text;
-            el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', ctrlKey: true, bubbles: true }));
-        }""", text)
+        with page.expect_response(lambda response: response.url.endswith('/api/parse')) as response:
+            page.locator('#inputText').evaluate("""(el, text) => {
+                el.removeAttribute('readonly');
+                el.value = text;
+                el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', ctrlKey: true, bubbles: true }));
+            }""", text)
+        if final_mode:
+            parsed = response.value.json()
+            br = parsed.get('br_analysis', {})
+            assert parsed['parse']['text'] == text
+            assert br.get('status') == 'normalized', (parsed['parse']['parse_string'], br.get('reasons'))
         page.wait_for_selector('#openCanonicalBuilder', timeout=60000)
         if final_mode:
             canonical = page.locator('#canonicalTreeView')
