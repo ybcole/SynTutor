@@ -59,7 +59,7 @@ jobs:
       - name: Verify native B-R construction catalog and fail-closed audit
         run: |
           python -m json.tool grammar/br_native_constructions.json > /dev/null
-          python -m unittest -v server.test_br_native_grammar
+          python -m unittest -v server.test_br_native_grammar server.test_br_native_chart
 
       - name: Run canonical gold-import regression tests
         run: python -m unittest -v server.test_burton_roberts
