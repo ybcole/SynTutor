@@ -103,3 +103,77 @@ def final_d1_display_labels(root):
 
     visit(root)
     return display
+
+# Fallback for an *explicitly provisional* B-R working tree only.
+# The strict master above remains the canonical tree's source of authority.
+# A missing master row must not erase a valid working tree from the UI.
+def final_d1_working_display_labels(root):
+    """Render provisional B-R categories without pretending unverified features are approved.
+
+    A working tree already uses B-R storage labels, not raw parser tags.
+    Unsupported label/feature combinations are displayed conservatively and
+    flagged, never converted into a supposedly source-certified master label.
+    """
+    try:
+        master = load_label_master()
+    except (OSError, ValueError, KeyError, IndexError):
+        master = {}
+    known = {category for category, _ in master}
+    # Used only if the workbook is unavailable, not as a substitute for it.
+    if not known:
+        known = {
+            "S", "NP", "VP", "NOM", "N", "V", "AP", "A",
+            "AdvP", "Adv", "PP", "P", "name", "pronoun", "DET",
+            "ART", "DEM", "POSS", "PRE-DET", "Q", "QA", "DEG",
+            "PartP", "V-part", "Prt", "S′", "S″", "C", "C1", "C2",
+            "MOD", "PERF", "PROG", "PASS", "TENSE", "AUX",
+            "V(I)", "V(II)", "",
+        }
+    display = {}
+    warnings = []
+
+    def visit(node, parent=None):
+        idx = node.get("index")
+        subscript = "" if idx is None else str(idx).translate(_SUBSCRIPTS)
+        if node.get("gap"):
+            lines = ["•" + subscript]
+        elif "word" in node:
+            lines = ["E" if node.get("elided") else node["word"]]
+        elif node.get("unlabelled") and node.get("triangle"):
+            lines = []
+        else:
+            raw = node.get("label", "")
+            category = "C1" if raw in {"C", "Comp"} and parent in {"S-bar", "S′"} else raw
+            category = _STORAGE.get(category, category)
+            features = node.get("features", [])
+            key = (category, frozenset(features))
+            if key in master and len(key[1]) == len(features):
+                lines = master[key].copy()
+            elif category in known:
+                # Category is explicitly B-R, but master-row licensing for its
+                # exact features has not been demonstrated. Do not invent them.
+                lines = [category] if category else ["△"]
+                warnings.append({"node_id": node.get("id"),
+                                 "code": "UNREVIEWED_WORKING_LABEL",
+                                 "category": raw,
+                                 "features_not_displayed": list(features)})
+            else:
+                # A stray Penn/unknown label cannot become the apparent book
+                # category; retain a visibly unanalyzed marker instead.
+                lines = ["△"]
+                warnings.append({"node_id": node.get("id"),
+                                 "code": "UNKNOWN_WORKING_CATEGORY",
+                                 "category": str(raw)})
+            if lines and lines[0] not in {"△", ""}:
+                refs = node.get("source_refs") or []
+                vp_ref = next((ref for ref in refs if isinstance(ref, str)
+                               and re.fullmatch(r"VP[1-9][0-9]*", ref)), None)
+                if category == "VP" and vp_ref:
+                    lines[0] = "VP" + vp_ref[2:].translate(_SUBSCRIPTS)
+                lines[0] += subscript
+        display[node["id"]] = lines
+        for child in node.get("children", []):
+            visit(child, node.get("label"))
+
+    visit(root)
+    return {"labels": display, "warnings": warnings}
