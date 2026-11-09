@@ -20,6 +20,7 @@ The project owner approved the [unified notation specification](br-label-xai-mas
 - [ ] Review and register contextual B-R explanations for every node in F01. Reuse the lexical node’s explanation for its selectable word, if needed.
 - [x] Verify the first mapping with real spaCy/Benepar output.
 - [ ] Verify canonical display and node selection in the Generator.
+- [x] Reproduce and verify the reported “The boy sleeps.” case in the Generator with real spaCy/Benepar and Chromium. Verify canonical labels and stacked verb features, original token yield, and node selection.
 
 The first backend construction is in [draft PR #45](https://github.com/ybcole/SynTutor/pull/45). The 170 model-free tests passed locally. The parser-backed CI run passed for this slice. It verifies the first mapping and does not close the all-sentence release gate.
 
