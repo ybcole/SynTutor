@@ -22,7 +22,7 @@ The XAI master plan requires an independently human-reviewed blind set proving t
 - In-process bounded 64-entry LRU; content-hashed key includes analysis hash, target node, exact proof IDs and template text, variety, reading level, rule-set and source-version identities, model ID and reviewer report ID. No persistent learner-text storage or user-text logging.
 - server/explanations.py, server/tree_evaluation.py and server/api.py expose the xai6_naturalization sidecar. The original reviewed book evidence, grammar evaluation and repairs are not altered.
 - web/js/explanation-evidence.js shows the deterministic baseline unless the future optional model passes all proof and policy gates; it presents a concise accessible disclosure of the disabled model status.
-- server/test_xai6_naturalizer.py: 29 targeted source, review, model-failure, adversarial, proof, source-quote, cache, timeout, budget and API parity checks. All approved-policy mock data exists only in the tests, NOT the production registry.
+- server/test_xai6_naturalizer.py: 30 targeted source, review, model-failure, adversarial, proof, source-quote, cache, timeout, budget and API parity checks. All approved-policy mock data exists only in the tests, NOT the production registry.
 - scripts/audit_xai6_naturalization.py: model-free audit over course and sampled source-tree nodes, showing the current XAI-3 baseline is unchanged with zero actual model calls. This is NOT an independent human readability assessment.
 
 ## Explicit nonclaims
