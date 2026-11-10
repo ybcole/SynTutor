@@ -21,7 +21,8 @@ This section refers to the [new XAI roadmap](XAI_MASTER_PLAN.md), not the earlie
 - [x] Implement English-only XAI-1 **source-checked concept catalog** (42 concepts, eight crosswalks, 21 provisional contextual template candidates) and fail-closed model-free tests; see [XAI-1 acceptance](../reports/xai-1-source-concepts-acceptance-2026-11-10.md).
 - [ ] Obtain independent instructor/human source approval for all learner-facing XAI-1 concept claims and exceptions before activating teaching templates.
 - [x] Implement XAI-2 **sentence-specific structural fact graph** (nodes, spans, tokens, edges, features, opaque triangles, gaps, explicit movement, isolated alternatives), without activating XAI-1 candidates as learner-facing grammatical roles. See [XAI-2 acceptance](../reports/xai-2-sentence-fact-graph-acceptance-2026-11-10.md).
-- [ ] Obtain independent instructor approval for role licenses and held-out node-function gold cases. XAI-3 contextual clickable explanations, XAI-4 grammatical constraints and XAI-5 evolving correction trees remain pending.
+- [x] Implement XAI-3 **English-only sentence-grounded short/deep observation composer** and accessible shared UI for clicked words and constituents, with explicit tree-atom proofs and unknown-role fallback. Technical evidence: [XAI-3 acceptance](../reports/xai-3-contextual-composer-acceptance-2026-11-10.md).
+- [ ] Obtain independent instructor approval for role licenses and held-out node-function gold cases. XAI-4 grammatical constraints and XAI-5 evolving correction trees remain pending.
 
 **No Cambridge runtime rule is enabled by this preflight. Source inspection, developer acceptance and future linguistic approval are separate gates.**
 

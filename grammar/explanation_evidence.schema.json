@@ -431,6 +431,42 @@
           "additionalProperties": true
         }
       ]
+    },
+    "contextual_explanations": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "schema_version",
+            "status",
+            "items",
+            "language_policy",
+            "scope"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "xai-composer-3.0.0"
+            },
+            "language_policy": {
+              "const": "ENGLISH_ONLY"
+            },
+            "status": {
+              "enum": [
+                "observed",
+                "provisional",
+                "unavailable"
+              ]
+            },
+            "items": {
+              "type": "array"
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
     }
   },
   "required": [

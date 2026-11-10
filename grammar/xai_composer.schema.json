@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SynTutor XAI-3 contextual explanation sidecar",
+  "description": "Deterministic original observation-only explanations, not a grammaticality or source-citation authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "status",
+    "analysis_id",
+    "selected_node_id",
+    "items",
+    "scope"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai-composer-3.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "status": {
+      "enum": [
+        "observed",
+        "provisional",
+        "unavailable"
+      ]
+    },
+    "analysis_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "selected_node_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scope": {
+      "const": "tree_observations_not_source_approved_grammar_or_correction"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "node_id",
+          "target_kind",
+          "label",
+          "token_span",
+          "char_span",
+          "short",
+          "deep",
+          "evidence_atom_ids",
+          "proof",
+          "source_ids",
+          "evidence_status",
+          "claim_status",
+          "uncertainty",
+          "function_status"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_kind": {
+            "enum": [
+              "branch",
+              "triangle",
+              "word",
+              "gap",
+              "empty",
+              "elided_terminal"
+            ]
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "token_span": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "char_span": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "short": {
+            "type": "string",
+            "minLength": 1
+          },
+          "deep": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_atom_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^f[0-9]{5}$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "proof": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "fact_id",
+                "predicate",
+                "node_id",
+                "object_node_id",
+                "proof_path",
+                "uncertainty"
+              ],
+              "properties": {
+                "fact_id": {
+                  "type": "string",
+                  "pattern": "^f[0-9]{5}$"
+                },
+                "predicate": {
+                  "type": "string"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "object_node_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "proof_path": {
+                  "type": "string"
+                },
+                "uncertainty": {
+                  "enum": [
+                    "none",
+                    "provisional"
+                  ]
+                }
+              }
+            }
+          },
+          "source_ids": {
+            "type": "array",
+            "maxItems": 0
+          },
+          "evidence_status": {
+            "enum": [
+              "validated_tree_observation",
+              "provisional_tree_observation"
+            ]
+          },
+          "claim_status": {
+            "const": "STRUCTURAL_OBSERVATION_ONLY"
+          },
+          "uncertainty": {
+            "enum": [
+              "none",
+              "provisional"
+            ]
+          },
+          "function_status": {
+            "const": "unknown_unlicensed"
+          }
+        }
+      }
+    }
+  }
+}

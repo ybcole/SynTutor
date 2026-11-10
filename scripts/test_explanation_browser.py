@@ -159,11 +159,19 @@ try:
             pane = page.locator('#explainNode')
             assert 'spans “sleeps”' in pane.inner_text()
             assert 'Ch5 p. 104' in pane.inner_text()
+            page.locator('#explainNode [data-xai-short]').wait_for(timeout=30000)
+            assert 'V “sleeps”' in pane.locator('[data-xai-short]').inner_text()
+            assert 'not a grammaticality judgment' in pane.locator('[data-xai-status]').inner_text()
+            pane.locator('[data-xai-details] summary').click()
+            assert 'recorded token interval' in pane.locator('[data-xai-deep]').inner_text()
             canonical.get_by_text('Read the tree as text', exact=True).click()
             word = canonical.locator('details').get_by_role('button', name='Inspect Burton-Roberts word for sleeps')
             word.press('Enter')
             assert word.get_attribute('aria-pressed') == 'true'
             assert 'Ch5 p. 104' in pane.inner_text()
+            page.locator('#explainNode [data-xai-short]').wait_for(timeout=30000)
+            assert 'word “sleeps”' in pane.locator('[data-xai-short]').inner_text()
+            assert 'within V “sleeps”' in pane.locator('[data-xai-short]').inner_text()
             page.locator('#newSessionBtn').click()
             assert not canonical.is_visible()
             assert not errors, errors
@@ -184,6 +192,7 @@ try:
           }
           return true;
         }""")
+        assert 'tree positions have contextual observations' in page.locator('[data-shared-evidence]').inner_text()
         generator = page.locator('[data-shared-evidence]').inner_text()
         assert ('Test structure' if fixture_mode else 'A sentence is the largest syntactic unit') in generator, generator
         page.evaluate("""async () => {

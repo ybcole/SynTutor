@@ -26,6 +26,52 @@ export function evidenceLines(evidence) {
     ...(evidence.diagnostics || []).map(row => row.message)];
 }
 
+// XAI-3 observations have fact-atom proofs, not new book authority.
+// All text, including user-supplied words, is inserted as text (never HTML).
+function renderContextualObservations(evidence, panel) {
+  const context = evidence?.contextual_explanations;
+  if (!context || !Array.isArray(context.items) || context.status === 'unavailable') return;
+  const section = document.createElement('section');
+  section.dataset.xaiContext = '';
+  const heading = document.createElement('h3');
+  heading.textContent = 'In this sentence';
+  section.append(heading);
+  if (context.items.length !== 1) {
+    const message = document.createElement('p');
+    message.textContent = context.items.length
+      ? context.items.length + ' tree positions have contextual observations. Select a node or word to inspect its own evidence.'
+      : 'No tree position was available for a contextual explanation.';
+    section.append(message);
+  } else {
+    const item = context.items[0];
+    const status = document.createElement('p');
+    status.dataset.xaiStatus = '';
+    status.textContent = item.uncertainty === 'provisional'
+      ? 'Provisional tree observation — this analysis is not yet resolved.'
+      : 'Structural observation — not a grammaticality judgment.';
+    const short = document.createElement('p');
+    short.dataset.xaiShort = '';
+    short.textContent = item.short;
+    section.append(status, short);
+    const more = document.createElement('details');
+    more.dataset.xaiDetails = '';
+    const summary = document.createElement('summary');
+    summary.textContent = 'Why this is shown';
+    const deep = document.createElement('p');
+    deep.dataset.xaiDeep = '';
+    deep.textContent = item.deep;
+    more.append(summary, deep);
+    if (Array.isArray(item.proof) && item.proof.length) {
+      const proof = document.createElement('p');
+      proof.textContent = 'Observed tree evidence: '
+        + item.proof.map(fact => fact.predicate + ' (' + fact.fact_id + ', ' + fact.proof_path + ')').join('; ') + '.';
+      more.append(proof);
+    }
+    section.append(more);
+  }
+  panel.append(section);
+}
+
 export function renderEvidence(evidence, host = document.querySelector('#explainNode')) {
   if (!host) return;
   host.querySelector('[data-shared-evidence]')?.remove();
@@ -34,6 +80,7 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   panel.setAttribute('aria-live', 'polite');
   const title = document.createElement('h3');
   title.textContent = 'Book evidence';
+  renderContextualObservations(evidence, panel);
   panel.append(title);
   for (const line of evidenceLines(evidence)) {
     const p = document.createElement('p'); p.textContent = line; panel.append(p);

@@ -186,6 +186,15 @@ try:
         tools.get_by_label("New words", exact=True).fill("PrivateB")
         tools.get_by_role("button", name="Add words", exact=True).click()
         nodes = "() => import('/js/syntax-builder-ui.js').then(m => Object.values(m.builderModel().nodes).map(n => n.text))"
+        if page.locator("#inputText").input_value() != "PrivateB":
+            print("ACCOUNT BUILDER MIRROR DIAGNOSTIC", page.evaluate("""() => ({
+              model: Object.values(window.__builderDebugNodes || []),
+              input: document.querySelector('#inputText')?.value,
+              textContent: document.querySelector('#builderTools')?.textContent?.slice(-600),
+              saveStatus: document.querySelector('[data-builder-save]')?.textContent,
+              editButtons: [...document.querySelectorAll('#builderTools button')].filter(b=>b.textContent==='Add words').length,
+              editorVisible: !!document.querySelector('#builderTools details[open]'),
+            })"""), errors, flush=True)
         expect(page.locator("#inputText")).to_have_value("PrivateB", timeout=10000)
         assert "PrivateB" in page.evaluate(nodes)
         page.evaluate("switchAccount('journey-a')")

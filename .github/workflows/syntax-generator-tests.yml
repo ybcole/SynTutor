@@ -78,6 +78,12 @@ jobs:
           python -m unittest -v test_xai_facts
           python -m json.tool ../grammar/xai_facts.schema.json > /dev/null
 
+      - name: Validate XAI-3 contextual explanation composer and proof coverage
+        working-directory: server
+        run: |
+          python -m json.tool ../grammar/xai_composer.schema.json > /dev/null
+          python -m unittest -v test_xai_composer
+
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py

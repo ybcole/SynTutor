@@ -1619,11 +1619,15 @@ function showCanonicalTree(payload) {
     }
   }
   indexParents(envelope.root);
+  let requestVersion = 0;
   for (const group of host.querySelectorAll('[data-node-id]')) {
     const id = group.getAttribute('data-node-id');
     const node = findCanonicalNode(envelope.root, id);
     if (!node) continue;
-    const owner = node.word && parents.has(id) ? parents.get(id) : node;
+    // A word remains selectable as its own node. Parent references are shown
+    // as metadata only, never silently substituted for word-level evidence.
+    const owner = node;
+    const annotationOwner = node.word && parents.has(id) ? parents.get(id) : node;
     const facts = canonicalNodeFacts(envelope, owner);
     facts.label = displayLabels?.[owner.id]?.[0] || facts.label;
     const interactiveSvg = group.namespaceURI === 'http://www.w3.org/2000/svg';
@@ -1631,10 +1635,11 @@ function showCanonicalTree(payload) {
       group.setAttribute('tabindex', '0');
       group.setAttribute('role', 'button');
     }
-    const accessibleLabel = owner === node ? facts.label : 'word';
+    const accessibleLabel = node.word ? 'word' : facts.label;
     group.setAttribute('aria-label', `Inspect Burton-Roberts ${accessibleLabel}${facts.surface ? ` for ${facts.surface}` : ''}`);
     if (!interactiveSvg) group.setAttribute('aria-pressed', 'false');
     const select = async () => {
+      const selectedVersion = ++requestVersion;
       for (const item of host.querySelectorAll('[data-selected]')) {
         item.removeAttribute('data-selected');
         if (item.tagName === 'BUTTON') item.setAttribute('aria-pressed', 'false');
@@ -1655,28 +1660,29 @@ function showCanonicalTree(payload) {
       const boundary = document.createElement('p');
       boundary.textContent = 'Observed tree structure only. Source-reviewed grammatical claims are shown separately below, if available.';
       pane.append(title, observation, boundary);
-      for (const note of owner.notes || []) {
+      for (const note of annotationOwner.notes || []) {
         const detail = document.createElement('p');
         detail.textContent = note;
         pane.append(detail);
       }
-      if (owner.source_refs?.length) {
+      if (annotationOwner.source_refs?.length) {
         const refs = document.createElement('p');
-        refs.textContent = `Tree rule references — ${owner.source_refs.join(', ')}.`;
+        refs.textContent = `Tree rule references — ${annotationOwner.source_refs.join(', ')}.`;
         pane.append(refs);
       }
       const evidenceSlot = document.createElement('section');
       pane.append(evidenceSlot);
       if (working) {
-        evidenceSlot.textContent = 'This working tree has unresolved structure. A reviewed explanation requires a resolved analysis.';
-        return;
+        const notice = document.createElement('p');
+        notice.textContent = 'This working tree has unresolved structure. A reviewed explanation requires a resolved analysis.';
+        evidenceSlot.append(notice);
       }
       try {
         const evidence = await requestEvidence(envelope, owner.id, {
           variety: payload.meta?.cambridge_variety,
         });
         // A pending request must not repaint another sentence/account/view.
-        if (host.hidden || !host.contains(group)
+        if (selectedVersion !== requestVersion || host.hidden || !host.contains(group)
             || (session?.payload !== payload && activePreview()?.payload !== payload)) return;
         renderEvidence(evidence, evidenceSlot);
       } catch (error) {
