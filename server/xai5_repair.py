@@ -189,6 +189,9 @@ def _reanalyze(text: str, *, chapter: int | None = None) -> dict[str, Any]:
         from parse_engine import analyze
         from burton_roberts import build_canonical_analysis
         parsed = analyze(text, sentence_index=0)
+        if parsed.get("sentence") != text:
+            return {"status": "unresolved", "tree": None, "sentence": text,
+                    "reparse_status": "source_not_fully_parsed"}
         analysis = build_canonical_analysis(
             parsed, chapter=chapter, appendix_nom=None)
         if not isinstance(analysis, dict):
@@ -209,8 +212,19 @@ def _snapshot(version: str, text: str, analysis: dict[str, Any],
     tree = analysis.get("tree")
     if not isinstance(tree, dict) or tree.get("sentence") != text:
         tree = None
+    # A new normalized canonical tree may be inspected independently.
+    # Never present the old tree as the edited sentence's parse.
+    if tree is not None and analysis.get("status") == "normalized":
+        try:
+            from explanations import validate_envelope
+            validate_envelope(tree)
+        except (ValueError, TypeError, RecursionError):
+            tree = None
+    else:
+        tree = None
     return {
         "version_id": version, "text": text, "text_hash": _digest(text),
+        "canonical_tree": tree,
         "tokens": list(evaluation["tokens"]),
         "analysis_status": analysis.get("status", "unresolved"),
         "reparse_status": analysis.get("reparse_status", "unavailable_or_failed"),
