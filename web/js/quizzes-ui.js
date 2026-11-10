@@ -83,7 +83,7 @@ function review(t){
           inspector.replaceChildren(el('p','Selected tree evidence is unavailable. Reviewed quiz feedback remains visible.'));
       }
     };
-    treeView=renderLessonTree(q.answer_tree,{interactive:true,zoomControls:true,onSelectNode:choose});
+    treeView=renderLessonTree(q.answer_tree,{interactive:true,zoomControls:true,stackFeatures:true,onSelectNode:choose});
     details.append(el('summary','See the reviewed answer tree'),treeView,inspector);
     card.append(details);
   }
