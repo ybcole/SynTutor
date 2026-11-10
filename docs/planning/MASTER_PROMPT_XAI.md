@@ -1,7 +1,7 @@
 # Master Prompt — SynTutor Contextual XAI Engine
 
 **Use with:** [XAI Master Plan](XAI_MASTER_PLAN.md) and [Uploaded-book Source Audit & Multi-Error Protocol](XAI_SOURCE_AUDIT_MULTI_ERROR.md)  
-**Status:** Implementation instructions; XAI-PRE contracts, XAI-0 real-parser baseline and **XAI-1 page-checked English-only concept registry** are implemented. Independent human linguistic approval remains outstanding; XAI-2–XAI-8 are subsequent work. See [XAI-1 acceptance](../reports/xai-1-source-concepts-acceptance-2026-11-10.md).  
+**Status:** Implementation instructions; XAI-PRE contracts, XAI-0 real-parser baseline and **XAI-1 page-checked English-only concept registry** are implemented. Independent human linguistic approval remains outstanding; the XAI-2 structural observation graph is implemented without activating unreviewed functional roles; XAI-3–XAI-8 are subsequent work. See [XAI-1 acceptance](../reports/xai-1-source-concepts-acceptance-2026-11-10.md).  
 **Authority:** Noel Burton-Roberts, *Analysing Sentences*, Third Edition (2011), for tree structure; Huddleston and Pullum et al., *The Cambridge Grammar of the English Language* (2002), for descriptive grammatical knowledge subject to review and source-specific differences.  
 **Repository:** `ybcole/SynTutor`
 
