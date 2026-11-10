@@ -117,6 +117,15 @@ jobs:
           python -m json.tool ../grammar/xai7_unified.schema.json > /dev/null
           python -m unittest -v test_xai7_unified
 
+      - name: Validate concise sentence-specific learner explanations
+        working-directory: server
+        run: |
+          python -m json.tool ../grammar/learner_explanation.schema.json > /dev/null
+          python -m unittest -v test_learner_explanations
+          cd ..
+          python scripts/audit_learner_explanations.py > /tmp/learner-explanations-audit.json
+          python -m json.tool /tmp/learner-explanations-audit.json > /dev/null
+
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py
@@ -181,6 +190,7 @@ jobs:
           node scripts/test_level.js
           node scripts/test_tree_layout.js
           node scripts/test_xai7_focus.mjs
+          node scripts/test_learner_explanations.mjs
           node scripts/test_account_integration.js
           node --check web/js/quizzes-ui.js
           node --check web/js/lessons-ui.js
