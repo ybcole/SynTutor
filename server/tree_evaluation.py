@@ -66,7 +66,9 @@ def evaluate_analysis(analysis, *, variety=None):
     return {'schema_version':'1.0.0','br_analysis':safe,'structure':structure,'grammaticality':grammar,
             'cambridge_evaluation':evaluation,'explanation_evidence':evidence,
             'fact_graph':evidence.get('fact_graph'),
-            'contextual_explanations':evidence.get('contextual_explanations'),'node_details':details,
+            'contextual_explanations':evidence.get('contextual_explanations'),
+            'xai4_partial_evaluation':evidence.get('xai4_partial_evaluation'),
+            'node_details':details,
             'target_comparison':{'status':'not_requested','matched':None}}
 
 def evaluate_request(data):
