@@ -341,46 +341,40 @@ function renderReadingControls(evidence, panel) {
   panel.append(controls);
 }
 
+// The books and claim checks inform the backend; students see a sentence,
+// not a provenance report. Keep every learning mode on this one renderer.
+// Technical evidence stays in the server JSON for tests and trusted tooling.
+export function learnerParagraph(evidence) {
+  const result = evidence?.learner_explanation;
+  if (result?.schema_version === 'learner-explanation-1.0.0'
+      && result.language_policy === 'ENGLISH_ONLY'
+      && typeof result.text === 'string' && result.text.trim()) {
+    return result.text.trim();
+  }
+  // Quiz explanations already contain a reviewed, concise answer rationale.
+  // The HTML view must not print citation pages, source registry statuses,
+  // grammar check counts, rule IDs or raw evidence atoms around this rationale.
+  for (const channel of ['grammatical', 'structural', 'remediation']) {
+    const first = evidence?.channels?.[channel]?.find(item => typeof item.text === 'string'
+      && item.text.trim());
+    if (first && evidence?.status === 'EXPLAINED') return first.text.trim();
+  }
+  if (evidence?.analysis_status === 'quiz_feedback')
+    return "I can't explain this answer confidently yet.";
+  return 'Select a word or phrase to see how it works in the sentence.';
+}
+
 export function renderEvidence(evidence, host = document.querySelector('#explainNode'), options = {}) {
   if (!host) return;
   host.querySelector('[data-shared-evidence]')?.remove();
   const panel = document.createElement('section');
   panel.dataset.sharedEvidence = '';
   panel.setAttribute('aria-live', 'polite');
-  const title = document.createElement('h3');
-  title.textContent = 'Book evidence';
-  renderContextualObservations(evidence, panel);
-  renderFocusNavigation(evidence, panel);
-  renderReadingControls(evidence, panel);
-  renderCambridgePartial(evidence, panel);
-  renderRepairRecheck(evidence, panel);
-  panel.append(title);
-  for (const line of evidenceLines(evidence)) {
-    const p = document.createElement('p'); p.textContent = line; panel.append(p);
-  }
-  for (const [channel, items] of Object.entries(evidence?.channels || {})) {
-    if (!items.length) continue;
-    const h = document.createElement('h4');
-    h.textContent = ({ structural: 'B-R structure', grammatical: 'Cambridge grammar', remediation: 'Feedback' })[channel] || channel;
-    panel.append(h);
-    for (const item of items) {
-      const p = document.createElement('p'); p.textContent = item.text; panel.append(p);
-      for (const source of item.sources || []) {
-        const cite = document.createElement('small');
-        cite.textContent = `${source.title}, ${source.edition}, p. ${source.printed_page} [${source.id}]`;
-        cite.dataset.xai7Citation = String(source.id || 'source');
-        // Display the print-page reference even when the repository has no
-        // verified public page URL; never manufacture a PDF deep link.
-        panel.append(cite);
-      }
-      if (item.deep_text) {
-        const more = document.createElement('details');
-        const summary = document.createElement('summary'); summary.textContent = 'More detail';
-        const deep = document.createElement('p'); deep.textContent = item.deep_text;
-        more.append(summary, deep); panel.append(more);
-      }
-    }
-  }
+  const paragraph = document.createElement('p');
+  paragraph.dataset.xaiShort = '';
+  paragraph.className = 'learner-grammar-paragraph';
+  paragraph.textContent = learnerParagraph(evidence);
+  panel.append(paragraph);
   host.append(panel);
   if (options.treeRoot) applyEvidenceFocus(options.treeRoot, evidence);
 }
