@@ -195,8 +195,11 @@ function renderRepairRecheck(evidence, panel) {
       }
       for (const finding of revision.new_findings) {
         const item = document.createElement('p');
-        item.textContent = 'Additional check ' + finding.rule_id
-          + ': origin unknown; no global correction claim.';
+        const origin = finding.origin === 'introduced' ? 'locally introduced by the aligned edit'
+          : finding.origin === 'unmasked' ? 'newly visible after an ambiguity was removed'
+          : 'origin not established';
+        item.textContent = 'Additional narrow check ' + finding.rule_id + ': '
+          + origin + '. No whole-sentence correction claim.';
         output.append(item);
       }
       // A candidate tree is *newly parsed*, not a re-labelled original.
