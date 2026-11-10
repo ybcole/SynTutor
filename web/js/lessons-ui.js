@@ -109,7 +109,7 @@ export function renderLessonTree(envelope, {
         row.dataset.featureLabel = row.textContent;
         row.setAttribute('aria-label','Inspect recorded B-R feature ' + row.textContent
           + ' for ' + (node.word || node.label));
-        const featureName=()=>row.textContent.trim().replace(/^\\[|\\]$/g,'');
+        const featureName=()=>{const text=row.textContent.trim();return text.startsWith('[') && text.endsWith(']') ? text.slice(1,-1) : text;};
         row.addEventListener('click', event => {
           event.stopPropagation(); onSelectNode(node.id,featureName());
         });
