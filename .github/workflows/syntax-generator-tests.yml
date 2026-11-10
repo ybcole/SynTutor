@@ -64,6 +64,14 @@ jobs:
           python scripts/audit_xai0_baseline.py --validate-input-only --expected-count 116
           python -m unittest -v server.test_xai0_baseline
 
+      - name: Validate XAI-1 source-checked English concept registry
+        run: |
+          python -m json.tool grammar/xai_concepts/catalog.json > /dev/null
+          python -m json.tool grammar/xai_concepts/catalog.schema.json > /dev/null
+          python -m unittest -v server.test_xai_concepts
+          python scripts/audit_xai1_concepts.py --require-valid --output /tmp/xai1-source-coverage.json
+          python -m json.tool /tmp/xai1-source-coverage.json > /dev/null
+
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py
