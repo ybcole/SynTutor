@@ -387,7 +387,7 @@ class XAI6NaturalizerTests(unittest.TestCase):
     def test_full_source_metadata_forgery_not_promoted_to_book_claim(self):
         t=tree("br-03")
         t["source"].update(review_status="HUMAN_APPROVED",
-                           printed_page=999, source_rule_ids=["fake"])
+                           printed_page=999, book="Cambridge")
         graph=build_fact_graph({"status":"normalized","tree":t})
         word=next(n["node_id"] for n in graph["nodes"] if n["kind"]=="word")
         context=compose_explanations(graph,node_id=word)
@@ -395,6 +395,12 @@ class XAI6NaturalizerTests(unittest.TestCase):
         self.assertEqual(result["status"],"disabled")
         self.assertEqual(result["source_ids"],[])
         self.assertEqual(result["claim_status"],"STRUCTURAL_OBSERVATION_ONLY")
+
+    def test_illegal_untrusted_source_rule_list_rejected_by_canonical_schema(self):
+        graph_tree=tree("br-03")
+        graph_tree["source"]["source_rule_ids"]=["fake"]
+        with self.assertRaises(ValueError):
+            build_fact_graph({"status":"normalized","tree":graph_tree})
 
     def test_shared_explain_evaluate_generator_builder_fallback_parity(self):
         t=tree("br-03")
