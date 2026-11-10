@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "XAI-4 source-audited candidate rule catalog (not runtime authority)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "authority",
+    "runtime_enabled_rule_ids",
+    "rules"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai4-candidates-1.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "authority": {
+      "const": "SOURCE_AUDIT_PENDING_INDEPENDENT_HUMAN_APPROVAL"
+    },
+    "runtime_enabled_rule_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "family",
+          "title",
+          "source_claim_ids",
+          "crosswalk_id",
+          "positive",
+          "negative",
+          "exceptions",
+          "prerequisites",
+          "variety",
+          "notes",
+          "review",
+          "runtime_status",
+          "may_issue_verified_error"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^CGEL4-[A-Z0-9-]+$"
+          },
+          "family": {
+            "enum": [
+              "perfect_auxiliary_participle",
+              "modal_plain_form",
+              "progressive_auxiliary_gerund_participle",
+              "present_perfect_time_adjunct"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "crosswalk_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "positive": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "negative": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "exceptions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "prerequisites": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2
+          },
+          "variety": {
+            "type": "string",
+            "minLength": 1
+          },
+          "notes": {
+            "type": "string"
+          },
+          "review": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "independent_human_review",
+              "reviewed_by",
+              "reviewed_on",
+              "exception_review_completed",
+              "held_out_adjudication_completed",
+              "test_status"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "PENDING_INDEPENDENT_HUMAN_REVIEW",
+                  "HUMAN_APPROVED",
+                  "REJECTED"
+                ]
+              },
+              "independent_human_review": {
+                "type": "boolean"
+              },
+              "reviewed_by": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reviewed_on": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "exception_review_completed": {
+                "type": "boolean"
+              },
+              "held_out_adjudication_completed": {
+                "type": "boolean"
+              },
+              "test_status": {
+                "enum": [
+                  "unverified_before_ci",
+                  "passed",
+                  "failed"
+                ]
+              }
+            }
+          },
+          "runtime_status": {
+            "enum": [
+              "disabled",
+              "enabled"
+            ]
+          },
+          "may_issue_verified_error": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
