@@ -62,8 +62,11 @@ def _brief(plan: dict[str, Any]) -> str:
     if kind == "elided_terminal":
         return f'An elided word position is recorded {where}, with no overt token.'
     if kind == "triangle":
-        return (f'The tree shows {named} {where} as one opaque span; '
-                'it does not provide internal daughter nodes.')
+        if parent is not None:
+            return (f'The tree shows {named} as the {_ordinal(node["position"])} immediate child '
+                    f'of {_mention(parent)}; it is one opaque span with no internal daughter nodes.')
+        return (f'The tree shows {named} at the root as one opaque span '
+                'with no internal daughter nodes.')
     daughters = [_mention(n) for n in plan["children"]]
     if parent is None:
         return (f'At the root, {_mention(node)} directly contains '
