@@ -1,0 +1,2429 @@
+{
+  "schema_version": "xai1-concept-catalog-1.0",
+  "language_policy": "ENGLISH_ONLY",
+  "edition_authority": "BR3_BURTON_ROBERTS_2011_FOR_TREE_CGEL_2002_FOR_GRAMMATICAL_CONCEPTS",
+  "source_scope": "selected_printed_pages_only_no_full_book_claim",
+  "source_audit_path": "grammar/xai_pre/source_audit.json",
+  "review_policy": "Source inspected by assistant; not independent human/instructor approval; none is enabled in live explanation or Cambridge rule registries.",
+  "concepts": [
+    {
+      "id": "BR3-S-DAUGHTERS",
+      "book_id": "BR3",
+      "chapter": 2,
+      "printed_pages": [
+        29,
+        30,
+        31
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "S",
+          "NP",
+          "VP"
+        ],
+        "profiles": [
+          "V2",
+          "FINAL-D1"
+        ],
+        "precondition": "An unmarked two-daughter S contains the subject NP and predicate VP; do not generalize to every clause configuration.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "A clause displayed with an S node may be divided into a subject NP and predicate VP.",
+        "expanded": "Explain each daughter's role only when the actual B–R construction is S → NP VP; another NP inside VP does not become a second subject.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "The children laugh.",
+              "explanation": "The children forms subject NP; laugh forms predicate VP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [
+            {
+              "sentence": "The girl saw the boy.",
+              "explanation": "The boy can be an object NP inside VP, not a second subject.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-CATEGORY-VS-FUNCTION",
+      "book_id": "BR3",
+      "chapter": 2,
+      "printed_pages": [
+        29,
+        30
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "S",
+          "NP",
+          "VP"
+        ],
+        "profiles": [
+          "V2",
+          "FINAL-D1"
+        ],
+        "precondition": "Selected phrase category and its grammatical function are separately established.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "NP is a category; subject is a possible function of an NP.",
+        "expanded": "Determine functions using licensed parent/sister relations, not the NP label in isolation. A phrase may have different functions in different sentences.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She admires him.",
+              "explanation": "She and him are both NPs in the B–R analysis, but they perform different functions.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-SUBJECT-IMMEDIATE-S",
+      "book_id": "BR3",
+      "chapter": 2,
+      "printed_pages": [
+        30,
+        31
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "NP"
+        ],
+        "profiles": [
+          "V2",
+          "FINAL-D1"
+        ],
+        "precondition": "In a licensed S → NP VP configuration, the NP immediately dominated by S is the subject.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "An NP immediately dominated by an ordinary S is its subject.",
+        "expanded": "Require immediate S dominance and a sister VP, not just a pronoun, word order, or a distant NP ancestor.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "I hate you.",
+              "explanation": "I is the subject NP when immediately dominated by S.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [
+            {
+              "sentence": "I hate you.",
+              "explanation": "You belongs to an NP under VP and is not S's subject NP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-PREDICATE-IMMEDIATE-S",
+      "book_id": "BR3",
+      "chapter": 2,
+      "printed_pages": [
+        30,
+        31
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "VP"
+        ],
+        "profiles": [
+          "V2",
+          "FINAL-D1"
+        ],
+        "precondition": "In a licensed S → NP VP configuration, the VP immediately dominated by S is the predicate.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "The VP that is a direct daughter of the clause's S functions as its predicate.",
+        "expanded": "A VP nested within another VP, as in auxiliary constructions, cannot automatically be called the top-level predicate.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "I hate you.",
+              "explanation": "The predicate of the basic S spans hate you.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-HEAD-MODIFIER-DEPENDENCY",
+      "book_id": "BR3",
+      "chapter": 2,
+      "printed_pages": [
+        32,
+        33
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "NP",
+          "VP",
+          "N",
+          "V",
+          "AP"
+        ],
+        "profiles": [
+          "V2",
+          "FINAL-D1"
+        ],
+        "precondition": "The head is the essential center of a phrase; modifiers are dependent on that head.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "The phrase's head fixes its grammatical type in the B–R explanation.",
+        "expanded": "Optional modifiers depend on the head; do not call an element a head without a licensed tree analysis. Do not confuse a modifier with a selected complement.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "Those unusual birds sing.",
+              "explanation": "Birds can head the subject NP, while unusual supplies modification.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-NP-HEAD-N",
+      "book_id": "BR3",
+      "chapter": 3,
+      "printed_pages": [
+        50,
+        51,
+        52
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "NP",
+          "N"
+        ],
+        "profiles": [
+          "V3",
+          "FINAL-D1"
+        ],
+        "precondition": "Ordinary B–R NP contains a noun head, possibly with modifiers; exceptions include pronouns, names and coordination.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "A noun may determine which NP the full expression is about.",
+        "expanded": "Do not automatically assume the last noun is the head; an embedded noun may belong to an internal phrase.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "The actor in the garden laughed.",
+              "explanation": "Actor, not garden, is the head of the subject NP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-PRONOUN-COMPLETE-NP",
+      "book_id": "BR3",
+      "chapter": 3,
+      "printed_pages": [
+        53
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "pronoun",
+          "NP"
+        ],
+        "profiles": [
+          "V3",
+          "FINAL-D1"
+        ],
+        "precondition": "A standalone pronoun functions as a complete NP in the third-edition B–R representation.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "A pronoun such as she may fill a whole NP without a determiner.",
+        "expanded": "Keep the pronoun's lexical category distinct from the full NP category; actual subject/object function depends on the surrounding tree.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She laughed.",
+              "explanation": "She can realize a one-word subject NP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [
+            {
+              "sentence": "They invited her.",
+              "explanation": "Her may realize a one-word object NP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-NAME-COMPLETE-NP",
+      "book_id": "BR3",
+      "chapter": 3,
+      "printed_pages": [
+        52
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "name",
+          "NP"
+        ],
+        "profiles": [
+          "V3",
+          "FINAL-D1"
+        ],
+        "precondition": "A standalone proper name can be a complete non-branching NP under B–R's chapter conventions.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "A proper name can fill the syntactic position of a full NP.",
+        "expanded": "Do not invent an empty determiner as the normal representation of a bare name.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "Alex smiled.",
+              "explanation": "Alex can realize a complete subject NP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-COORDINATED-NP",
+      "book_id": "BR3",
+      "chapter": 3,
+      "printed_pages": [
+        58,
+        59
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "NP",
+          "name"
+        ],
+        "profiles": [
+          "V3",
+          "FINAL-D1"
+        ],
+        "precondition": "Coordinate names or NPs may form a single NP with multiple coordinated heads.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "A coordinated NP is one larger phrase, not necessarily two separate subjects.",
+        "expanded": "Do not split a coordinate subject into separate subjects based solely on the presence of and.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "Alex and Robin smiled.",
+              "explanation": "Alex and Robin together can form one subject NP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COORDINATION-SCOPE"
+      ]
+    },
+    {
+      "id": "BR3-SAME-CATEGORY-COORDINATION",
+      "book_id": "BR3",
+      "chapter": 3,
+      "printed_pages": [
+        59,
+        60
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "NP",
+          "VP",
+          "PP",
+          "AP",
+          "AdvP"
+        ],
+        "profiles": [
+          "V3",
+          "FINAL-D1"
+        ],
+        "precondition": "Book's introductory coordination criterion tests the compatibility of constituent categories.",
+        "exceptions": [
+          "CGEL Ch. 2 p. 45 explicitly discusses coordination across unlike categories."
+        ],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "Burton-Roberts uses same-category coordination as a key phrase test in this chapter.",
+        "expanded": "This is an analysis within the B–R instructional framework; Cambridge treats some unlike-category coordinations differently. Do not turn this introductory principle into a universal error detector.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "In the garden and under the tree, flowers grew.",
+              "explanation": "Two PPs can be coordinated in an English adjunct.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COORDINATION-SCOPE"
+      ]
+    },
+    {
+      "id": "BR3-VERB-SUBCATEGORY",
+      "book_id": "BR3",
+      "chapter": 4,
+      "printed_pages": [
+        69,
+        70
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "V",
+          "VP"
+        ],
+        "profiles": [
+          "V4",
+          "FINAL-D1"
+        ],
+        "precondition": "Lexical verbs differ in which complements their particular sense licenses.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "Verb complementation depends on the verb and its construction, not just the presence of a following phrase.",
+        "expanded": "A verb may have more than one valency frame or meaning; do not diagnose a missing object from a generic V label alone.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "The children played.",
+              "explanation": "Play can be used without an NP object.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "He played the piano.",
+              "explanation": "Play can also be used with an object NP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COMPLEMENT-LICENSING"
+      ]
+    },
+    {
+      "id": "BR3-TRANSITIVE-OBJECT",
+      "book_id": "BR3",
+      "chapter": 4,
+      "printed_pages": [
+        70,
+        71
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "V",
+          "VP",
+          "NP"
+        ],
+        "profiles": [
+          "V4",
+          "FINAL-D1"
+        ],
+        "precondition": "In the B–R transitive VP construction a V marked [trans] has a sister NP complement.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "An NP that is sister to a transitive V may function as its direct object.",
+        "expanded": "Require the reviewed [trans] feature and a compatible VP daughter relation; don't equate any adjacent NP with an object.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "I hate you.",
+              "explanation": "You is the direct-object NP when sister to a licensed transitive head.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [
+            {
+              "sentence": "You hate me.",
+              "explanation": "You is subject in the second sentence, not object.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COMPLEMENT-LICENSING"
+      ]
+    },
+    {
+      "id": "BR3-TRANSITIVE-FEATURE",
+      "book_id": "BR3",
+      "chapter": 4,
+      "printed_pages": [
+        71
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "V"
+        ],
+        "profiles": [
+          "V4",
+          "FINAL-D1"
+        ],
+        "precondition": "Feature [trans] denotes the transitive lexical-verb subcategory in B–R phrase markers.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "The B–R [trans] feature records that a direct-object NP is selected in this VP.",
+        "expanded": "Do not transfer this feature to every instance of the verb regardless of sense, or claim grammatical correctness from the presence of the feature.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She admired the painting.",
+              "explanation": "The transitive reading includes the object NP the painting.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-INTRANSITIVE-VP",
+      "book_id": "BR3",
+      "chapter": 4,
+      "printed_pages": [
+        70,
+        71
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "V",
+          "VP"
+        ],
+        "profiles": [
+          "V4",
+          "FINAL-D1"
+        ],
+        "precondition": "B–R intransitive lexical V requires no complement as sister in the basic VP.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "An intransitive V can itself constitute a complete lexical VP.",
+        "expanded": "An optional following PP need not be a selected complement; check actual construction and special lexical uses.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "The baby laughed.",
+              "explanation": "A complete VP can be formed without a direct-object NP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COMPLEMENT-LICENSING"
+      ]
+    },
+    {
+      "id": "BR3-DITRANSITIVE-TWO-NPS",
+      "book_id": "BR3",
+      "chapter": 4,
+      "printed_pages": [
+        72
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "V",
+          "VP",
+          "NP"
+        ],
+        "profiles": [
+          "V4",
+          "FINAL-D1"
+        ],
+        "precondition": "B–R double-object ditransitives select two NP complements with distinct roles.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "In a licensed two-NP VP, the first complement commonly acts as indirect object and the second as direct object.",
+        "expanded": "Only apply in a reviewed ditransitive configuration, not to every pair of NPs; other ditransitive realizations with PP should remain distinguishable.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She gave him a book.",
+              "explanation": "Him and a book have different complement roles in this construction.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COMPLEMENT-LICENSING"
+      ]
+    },
+    {
+      "id": "BR3-OPTIONAL-PP-MODIFIER",
+      "book_id": "BR3",
+      "chapter": 4,
+      "printed_pages": [
+        69
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "VP",
+          "PP"
+        ],
+        "profiles": [
+          "V4",
+          "FINAL-D1"
+        ],
+        "precondition": "A PP may be an optional modifier rather than a required verb complement in certain B–R constructions.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "A PP following a verb is not automatically its complement.",
+        "expanded": "Some verbs select PPs as complements in other constructions; keep this principle conditional on valency evidence.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "They laughed in the garden.",
+              "explanation": "In the garden can be an optional location modifier.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [
+            {
+              "sentence": "She relied on her friend.",
+              "explanation": "On her friend is more closely selected by the verb and should not be called optional adjunct by surface order.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COMPLEMENT-LICENSING"
+      ]
+    },
+    {
+      "id": "BR3-NP-DET-NOM",
+      "book_id": "BR3",
+      "chapter": 7,
+      "printed_pages": [
+        141,
+        142
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "NP",
+          "DET",
+          "NOM"
+        ],
+        "profiles": [
+          "V7",
+          "FINAL-D1"
+        ],
+        "precondition": "B–R basic branching NP has DET and NOM as sister daughters; pronoun and name NPs are special nonbranching cases.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "DET and NOM jointly form an ordinary branching NP in the B–R model.",
+        "expanded": "Do not force pronouns and names into DET + NOM; don't omit possible empty-DET analysis for plural/mass noun NPs.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "The students arrived.",
+              "explanation": "The determiner the is distinct from the nominal students.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [
+            {
+              "sentence": "They arrived.",
+              "explanation": "The pronoun they realizes NP without the basic branching DET–NOM pattern.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-NOM-HEAD-MODIFIER",
+      "book_id": "BR3",
+      "chapter": 7,
+      "printed_pages": [
+        142
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "NOM",
+          "N",
+          "AP"
+        ],
+        "profiles": [
+          "V7",
+          "FINAL-D1"
+        ],
+        "precondition": "B–R NOM is the level between NP and N that includes head-noun modifiers.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "NOM groups a noun with any supported modifications below NP.",
+        "expanded": "Do not identify arbitrary PP/relative attachments as NOM modifiers without source-approved structure.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "The red car stopped.",
+              "explanation": "Red modifies car in the nominal constituent.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-EMPTY-DET-RESTRICTED",
+      "book_id": "BR3",
+      "chapter": 7,
+      "printed_pages": [
+        143
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "DET",
+          "NP",
+          "NOM"
+        ],
+        "profiles": [
+          "V7",
+          "FINAL-D1"
+        ],
+        "precondition": "B–R permits an empty DET in certain indefinite/general plural count and mass-noun NPs.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "An unpronounced determiner slot is not a missing word error by itself.",
+        "expanded": "The source limits this to licensed noun types; proper names/pronouns have distinct representations and are not governed by this empty-DET analysis.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "Birds migrate.",
+              "explanation": "A plural noun can head an NP with an unpronounced DET in the B–R analysis.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "Water evaporates.",
+              "explanation": "A mass noun can likewise occur in the licensed pattern.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [
+            {
+              "sentence": "The bird migrates.",
+              "explanation": "A singular count NP with pronounced article is a different case.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-LEXICAL-VS-PERF-HAVE",
+      "book_id": "BR3",
+      "chapter": 6,
+      "printed_pages": [
+        116,
+        117
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "V",
+          "VP",
+          "PERF"
+        ],
+        "profiles": [
+          "V6",
+          "FINAL-D1"
+        ],
+        "precondition": "Distinguish lexical have (with NP complement) from perfect auxiliary have (taking a VP complement).",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "The same spelling had may serve different grammatical constructions.",
+        "expanded": "Do not blame had or impose perfect-participle requirements until its lexical/auxiliary status and selected complement are supported.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She had breakfast.",
+              "explanation": "Had is used as a lexical verb with NP complement.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "She had eaten.",
+              "explanation": "Had is perfect auxiliary with a verbal complement.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-PERF-PARTICIPLE"
+      ]
+    },
+    {
+      "id": "BR3-PERF-PARTICIPLE",
+      "book_id": "BR3",
+      "chapter": 6,
+      "printed_pages": [
+        117
+      ],
+      "kind": "constraint",
+      "scope": {
+        "target_labels": [
+          "PERF",
+          "VP",
+          "V"
+        ],
+        "profiles": [
+          "V6",
+          "FINAL-D1"
+        ],
+        "precondition": "Perfect auxiliary have selects what Burton-Roberts calls a perfect-participle verbal form.",
+        "exceptions": [
+          "Ellipsis may leave the verbal complement unpronounced in an appropriate discourse context."
+        ],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "Within a confirmed perfect construction the following verb has the nonfinite perfect-participle form.",
+        "expanded": "Different verbs have identical or distinct preterite/participle spellings; source rule is not a live detector and exceptions/ellipsis must be handled.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She had gone home.",
+              "explanation": "Gone follows the perfect auxiliary.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "She had wanted the car.",
+              "explanation": "Wanted has the same surface form as its preterite but a different constructional role.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [
+            {
+              "sentence": "She had went home.",
+              "explanation": "Went is preterite; this candidate illustrates a form-selection mismatch pending verified diagnosis.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-PERF-PARTICIPLE"
+      ]
+    },
+    {
+      "id": "BR3-PROG-PARTICIPLE",
+      "book_id": "BR3",
+      "chapter": 6,
+      "printed_pages": [
+        118
+      ],
+      "kind": "constraint",
+      "scope": {
+        "target_labels": [
+          "PROG",
+          "VP",
+          "V"
+        ],
+        "profiles": [
+          "V6",
+          "FINAL-D1"
+        ],
+        "precondition": "Progressive be selects what Burton-Roberts calls the progressive-participle -ing form.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "Progressive auxiliary be is followed by an -ing verbal form in the normal licensed construction.",
+        "expanded": "Lexical copular be followed by an adjective is a different construction; don't infer PROG from be spelling alone.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She is reading.",
+              "explanation": "Reading follows a progressive auxiliary.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "He is happy.",
+              "explanation": "Is can be a lexical copula instead.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-PROG-PARTICIPLE"
+      ]
+    },
+    {
+      "id": "BR3-NESTED-AUX-VPS",
+      "book_id": "BR3",
+      "chapter": 6,
+      "printed_pages": [
+        121,
+        122
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "VP",
+          "MOD",
+          "PERF",
+          "PROG",
+          "PASS"
+        ],
+        "profiles": [
+          "V6",
+          "FINAL-D1"
+        ],
+        "precondition": "B–R auxiliary heads VP with a VP complement; nested VP hierarchy is not synonymous with VP adjunct modification.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "An auxiliary heads an outer VP and selects an inner VP.",
+        "expanded": "Keep the actual licensed auxiliary sequence and phrase-marker structure rather than replacing it with Cambridge's clause model.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She may have been waiting.",
+              "explanation": "Multiple auxiliary heads can form nested VPs.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "He has eaten.",
+              "explanation": "The perfect auxiliary heads a VP containing a complement VP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-AUX-HEAD-ANALYSIS"
+      ]
+    },
+    {
+      "id": "BR3-MODAL-STEM",
+      "book_id": "BR3",
+      "chapter": 6,
+      "printed_pages": [
+        116
+      ],
+      "kind": "constraint",
+      "scope": {
+        "target_labels": [
+          "MOD",
+          "VP",
+          "V"
+        ],
+        "profiles": [
+          "V6",
+          "FINAL-D1"
+        ],
+        "precondition": "After a modal auxiliary the following lexical/auxiliary verb takes a nonfinite stem form in B–R's description.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "A modal selects a verb stem form in its VP complement.",
+        "expanded": "Check genuine modal status and syntactic construction before using this as an error claim; do not apply to modal meaning alone.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She can swim.",
+              "explanation": "Swim is the stem following modal can.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [
+            {
+              "sentence": "She can swims.",
+              "explanation": "A candidate mismatch; not a live correction verdict.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-MODAL-PLAIN"
+      ]
+    },
+    {
+      "id": "CGEL-CLAUSE-VS-SENTENCE",
+      "book_id": "CGEL",
+      "chapter": 2,
+      "printed_pages": [
+        44,
+        45
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "S"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "CGEL distinguishes a sentence as a text-level syntactic unit from a clause as a subject–predicate construction; B–R S is a separate formal convention.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "Cambridge uses the concept of a clause for the relevant subject–predicate structure, not an S node identical to B–R S.",
+        "expanded": "Do not relabel the canonical B–R phrase marker as a Cambridge clause node: its ontology differs in part.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She smiled.",
+              "explanation": "This entire utterance can be a sentence and has clause structure.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "I think she smiled.",
+              "explanation": "She smiled is an embedded clause, not an independent sentence here.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-SENTENCE-CLAUSE-ONTOLOGY"
+      ]
+    },
+    {
+      "id": "CGEL-CANONICAL-STATUS",
+      "book_id": "CGEL",
+      "chapter": 2,
+      "printed_pages": [
+        46
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "S"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "CGEL canonical vs noncanonical distinguishes basic structure from negatives, questions, passives and subordinate clauses.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "A noncanonical clause construction is not automatically ungrammatical.",
+        "expanded": "Do not flag ordinary questions, passives or negation just because they differ from S → NP VP word order.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "Was she working?",
+              "explanation": "Subject–auxiliary inversion is a noncanonical interrogative construction.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "The letter was written.",
+              "explanation": "Passive is noncanonical in CGEL's organizational contrast, not incorrect.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "CGEL-MODAL-INFLECTION-LIMITS",
+      "book_id": "CGEL",
+      "chapter": 3,
+      "printed_pages": [
+        75
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "V",
+          "MOD"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "Core modal auxiliaries lack many nonfinite inflections and do not take third-person -s agreement in the ordinary sense.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "Modal status constrains which inflected forms a modal can have.",
+        "expanded": "Do not equate every verb expressing possibility with the core modal inflectional paradigm.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She can leave.",
+              "explanation": "Can does not become cans for third-person singular subject.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "CGEL-INFLECTION-SYNCRETISM",
+      "book_id": "CGEL",
+      "chapter": 3,
+      "printed_pages": [
+        76
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "V",
+          "PERF"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "One written word form can realize more than one inflectional category in different constructions.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "An identical spelling does not prove a verb has the same form category in every sentence.",
+        "expanded": "Use the governing verb-form selection environment to distinguish preterite from past participle in syncretic cases.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She wanted the car.",
+              "explanation": "Wanted is preterite here.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "She had wanted the car.",
+              "explanation": "Wanted is a past participle here.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-PERF-PARTICIPLE"
+      ]
+    },
+    {
+      "id": "CGEL-AUX-ORDER",
+      "book_id": "CGEL",
+      "chapter": 3,
+      "printed_pages": [
+        105
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "VP",
+          "MOD",
+          "PERF",
+          "PROG",
+          "PASS"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "CGEL describes ordering restrictions among modal, perfect, progressive and passive auxiliaries.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "An auxiliary sequence is constrained in order, not arbitrary.",
+        "expanded": "Do not translate CGEL structural categories directly into B–R labels; special uses, ellipsis and coordination require separate checks.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She may have been watched.",
+              "explanation": "This follows the modal→perfect→passive selection order.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-AUX-HEAD-ANALYSIS"
+      ]
+    },
+    {
+      "id": "CGEL-AUX-FORM-SELECTION",
+      "book_id": "CGEL",
+      "chapter": 3,
+      "printed_pages": [
+        106
+      ],
+      "kind": "constraint",
+      "scope": {
+        "target_labels": [
+          "V",
+          "VP",
+          "MOD",
+          "PERF",
+          "PROG",
+          "PASS"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "CGEL separates modal→plain, perfect→past participle, progressive→gerund-participle and passive→past participle.",
+        "exceptions": [
+          "Separate lexical uses of have/be; syncretism and irregular verb paradigms; auxiliary ellipsis."
+        ],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "Each eligible auxiliary constrains the form of the following verb.",
+        "expanded": "Do not infer that auxiliary spelling alone determines structure; identify perfect/progressive/passive construction, syncretism and special cases.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She must leave.",
+              "explanation": "Modal selects plain leave.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "She has left.",
+              "explanation": "Perfect selects past participle left.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "She is leaving.",
+              "explanation": "Progressive selects -ing leaving.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [
+            {
+              "sentence": "She has went.",
+              "explanation": "Illustrative potential violation: went is the preterite of go.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-PERF-PARTICIPLE",
+        "CW-PROG-PARTICIPLE",
+        "CW-MODAL-PLAIN"
+      ]
+    },
+    {
+      "id": "CGEL-PERF-PAST-TIME-SCOPE",
+      "book_id": "CGEL",
+      "chapter": 3,
+      "printed_pages": [
+        143,
+        144
+      ],
+      "kind": "variety_restricted",
+      "scope": {
+        "target_labels": [
+          "S",
+          "VP",
+          "PERF"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "Present perfect normally does not combine with adjuncts that put the event wholly in a completed past period, but CGEL describes contextual exceptions.",
+        "exceptions": [
+          "Restricted experiential perfect contexts and varieties/discourse interpretation must be evaluated."
+        ],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "Whether a past-time adjunct is compatible with a present-perfect clause depends on the interpretation.",
+        "expanded": "Never implement a blanket present-perfect plus yesterday blacklist. Experiential perfect and discourse context can affect acceptability.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "I saw her yesterday.",
+              "explanation": "Simple preterite allows a definite past-time reference.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": [
+            {
+              "sentence": "We've already discussed it yesterday.",
+              "explanation": "CGEL explicitly discusses restricted experiential readings of a similar construction.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ]
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-PERF-PAST-ADJUNCT"
+      ]
+    },
+    {
+      "id": "CGEL-VERB-VALENCY",
+      "book_id": "CGEL",
+      "chapter": 4,
+      "printed_pages": [
+        219
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "V",
+          "VP",
+          "NP",
+          "PP"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "CGEL distinguishes transitivity from valency (number of complements) and recognizes that PP complements may be non-core.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "Verb subcategory cannot be inferred only from the count of following NPs.",
+        "expanded": "The same verb may license several different complementation patterns; don't use CGEL valency as a direct alias for all B–R V features.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She gave him a book.",
+              "explanation": "A ditransitive clause has distinct object complements.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "It depends on the price.",
+              "explanation": "A PP can be a selected complement rather than an optional adjunct.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COMPLEMENT-LICENSING"
+      ]
+    },
+    {
+      "id": "CGEL-COMPLEMENT-LICENSING",
+      "book_id": "CGEL",
+      "chapter": 4,
+      "printed_pages": [
+        219,
+        220
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "V",
+          "VP",
+          "NP",
+          "PP"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "Verb selection licenses complements; adjuncts are not subject to the same lexeme-specific licensing test.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "An NP or PP is not classified as complement solely because it follows a verb.",
+        "expanded": "Verify actual lexical sense, preposition and construction. Not all complements are obligatory.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She mentioned the letter.",
+              "explanation": "The verb licenses an NP object in this reading.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "She walked yesterday.",
+              "explanation": "Yesterday can be an adjunct without a selected head verb.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COMPLEMENT-LICENSING"
+      ]
+    },
+    {
+      "id": "CGEL-PP-HEAD-PREPOSITION",
+      "book_id": "CGEL",
+      "chapter": 4,
+      "printed_pages": [
+        220
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "PP",
+          "P",
+          "V"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "Some prepositional complements require the particular preposition selected by their governing verb.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "The identity of a preposition can be part of a verb's complementation pattern.",
+        "expanded": "Do not turn all different prepositions into errors; meaning shifts and optional adjuncts must be distinguished.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "It depends on the cost.",
+              "explanation": "On is selected by depend in this construction.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [
+            {
+              "sentence": "She looked at the painting.",
+              "explanation": "At is selected in this particular sense, unlike looked for the painting.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COMPLEMENT-LICENSING"
+      ]
+    },
+    {
+      "id": "CGEL-CLAUSAL-COMPLEMENT",
+      "book_id": "CGEL",
+      "chapter": 4,
+      "printed_pages": [
+        220,
+        221
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "S",
+          "VP"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "Verbs can license particular subordinate clause types as their complements.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "A subordinate clause's role depends on the governing verb and the licensed clause construction.",
+        "expanded": "Do not classify every subordinate clause as object or adjunct without checking the relevant verb and clause type.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She wondered whether he was ready.",
+              "explanation": "The interrogative clause can complement wonder.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "She knew that he was ready.",
+              "explanation": "The declarative clause can complement know.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COMPLEMENT-LICENSING"
+      ]
+    },
+    {
+      "id": "CGEL-COMPLEMENT-NOT-ALWAYS-OBLIGATORY",
+      "book_id": "CGEL",
+      "chapter": 4,
+      "printed_pages": [
+        221
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "V",
+          "VP",
+          "NP"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "CGEL distinguishes obligatory and optional complements; absence does not always imply missing arguments.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "A complement can sometimes be omitted without making the clause unacceptable.",
+        "expanded": "A selected relation differs from obligatory occurrence; review verb sense and context, not merely transitivity labels.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She read a book.",
+              "explanation": "Book NP is a complement in the transitive reading.",
+              "status": "illustrative_not_parser_verified"
+            },
+            {
+              "sentence": "She read.",
+              "explanation": "Read can appear without an overt object in another licensed reading.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COMPLEMENT-LICENSING"
+      ]
+    }
+  ],
+  "crosswalks": [
+    {
+      "id": "CW-SENTENCE-CLAUSE-ONTOLOGY",
+      "left": "BR3-S-DAUGHTERS",
+      "right": "CGEL-CLAUSE-VS-SENTENCE",
+      "relation": "analysis_differs",
+      "issue": "B–R S phrase-marker label vs CGEL clause category; CGEL reserves sentence for text-unit analysis.",
+      "do_not_auto_relabel": true,
+      "status": "source_compared_not_independently_human_approved"
+    },
+    {
+      "id": "CW-COORDINATION-SCOPE",
+      "left": "BR3-SAME-CATEGORY-COORDINATION",
+      "right": "CGEL-CLAUSE-VS-SENTENCE",
+      "relation": "analysis_differs",
+      "issue": "B–R Ch.3 introduces same-category coordination as a test, whereas CGEL Ch.2 p.45 allows unlike-category coordination. Context-specific analysis needed.",
+      "do_not_auto_relabel": true,
+      "status": "source_compared_not_independently_human_approved"
+    },
+    {
+      "id": "CW-COMPLEMENT-LICENSING",
+      "left": "BR3-VERB-SUBCATEGORY",
+      "right": "CGEL-COMPLEMENT-LICENSING",
+      "relation": "terminology_differs",
+      "issue": "The books partly overlap on selection while classifying valency, optional complements and non-core PP differently; do not equate every label or require every complement overt.",
+      "do_not_auto_relabel": true,
+      "status": "source_compared_not_independently_human_approved"
+    },
+    {
+      "id": "CW-PERF-PARTICIPLE",
+      "left": "BR3-PERF-PARTICIPLE",
+      "right": "CGEL-AUX-FORM-SELECTION",
+      "relation": "terminology_differs",
+      "issue": "B–R perfect participle corresponds to CGEL past participle in reviewed perfect-have selection, but categories are not all identical.",
+      "do_not_auto_relabel": true,
+      "status": "source_compared_not_independently_human_approved"
+    },
+    {
+      "id": "CW-PROG-PARTICIPLE",
+      "left": "BR3-PROG-PARTICIPLE",
+      "right": "CGEL-AUX-FORM-SELECTION",
+      "relation": "terminology_differs",
+      "issue": "B–R progressive participle vs CGEL gerund-participle in reviewed progressive-be selection.",
+      "do_not_auto_relabel": true,
+      "status": "source_compared_not_independently_human_approved"
+    },
+    {
+      "id": "CW-MODAL-PLAIN",
+      "left": "BR3-MODAL-STEM",
+      "right": "CGEL-AUX-FORM-SELECTION",
+      "relation": "terminology_differs",
+      "issue": "B–R nonfinite stem form and CGEL plain form terminology for modal-selected verb; source scopes differ.",
+      "do_not_auto_relabel": true,
+      "status": "source_compared_not_independently_human_approved"
+    },
+    {
+      "id": "CW-AUX-HEAD-ANALYSIS",
+      "left": "BR3-NESTED-AUX-VPS",
+      "right": "CGEL-AUX-ORDER",
+      "relation": "unresolved",
+      "issue": "Form-selection similarities do not prove equivalent constituent tree hierarchy; retain B–R nested VPs.",
+      "do_not_auto_relabel": true,
+      "status": "requires_dedicated_cross_framework_tree_review"
+    },
+    {
+      "id": "CW-PERF-PAST-ADJUNCT",
+      "left": "BR3-PERF-PARTICIPLE",
+      "right": "CGEL-PERF-PAST-TIME-SCOPE",
+      "relation": "not_covered",
+      "issue": "B–R auxiliary form selection alone does not license Cambridge's complete aspectual-adjunct semantics or contextual exceptions.",
+      "do_not_auto_relabel": true,
+      "status": "source_compared_not_independently_human_approved"
+    }
+  ],
+  "template_candidates": [
+    {
+      "id": "T-S-SUBJECT",
+      "concept_id": "BR3-S-DAUGHTERS",
+      "target_kind": "constituent",
+      "target_label": "S",
+      "required_fact_keys": [
+        "selected_node_span",
+        "child_np_span",
+        "child_vp_span",
+        "br_rule_id"
+      ],
+      "text": "In {sentence}, {child_np_span} is the subject NP and {child_vp_span} is the predicate VP of the displayed S.",
+      "deep_text": "This applies only to the approved B–R S → NP VP construction; another sentence type may require a different structure.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-NP-SUBJECT",
+      "concept_id": "BR3-SUBJECT-IMMEDIATE-S",
+      "target_kind": "constituent",
+      "target_label": "NP",
+      "required_fact_keys": [
+        "target_surface",
+        "parent_category",
+        "sister_surface",
+        "br_rule_id"
+      ],
+      "text": "The NP {target_surface} functions as the subject of the predicate {sister_surface}.",
+      "deep_text": "This classification depends on immediate S dominance and a VP sister, not the NP label alone.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-VP-PREDICATE",
+      "concept_id": "BR3-PREDICATE-IMMEDIATE-S",
+      "target_kind": "constituent",
+      "target_label": "VP",
+      "required_fact_keys": [
+        "target_surface",
+        "sister_surface",
+        "br_rule_id"
+      ],
+      "text": "The VP {target_surface} functions as the predicate associated with subject {sister_surface}.",
+      "deep_text": "An embedded VP in an auxiliary chain would require a different role explanation.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-PRONOUN",
+      "concept_id": "BR3-PRONOUN-COMPLETE-NP",
+      "target_kind": "word",
+      "target_label": "pronoun",
+      "required_fact_keys": [
+        "target_surface",
+        "parent_category",
+        "function_if_licensed"
+      ],
+      "text": "The pronoun {target_surface} realizes an NP; its sentence role depends on that NP's position.",
+      "deep_text": "Do not call a pronoun a subject or object without a source-licensed parent relation.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-NAME",
+      "concept_id": "BR3-NAME-COMPLETE-NP",
+      "target_kind": "word",
+      "target_label": "name",
+      "required_fact_keys": [
+        "target_surface",
+        "parent_category"
+      ],
+      "text": "The proper name {target_surface} can realize an NP in this structure.",
+      "deep_text": "A name NP need not have an invented determiner.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-N-HEAD",
+      "concept_id": "BR3-NP-HEAD-N",
+      "target_kind": "lexical",
+      "target_label": "N",
+      "required_fact_keys": [
+        "target_surface",
+        "parent_np_span",
+        "licensed_head_relation"
+      ],
+      "text": "The noun {target_surface} is the head of the NP {parent_np_span} in this analyzed construction.",
+      "deep_text": "The head relation must be established from licensed structure, not by choosing the last noun.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-V-TRANS",
+      "concept_id": "BR3-TRANSITIVE-OBJECT",
+      "target_kind": "lexical",
+      "target_label": "V",
+      "required_fact_keys": [
+        "target_surface",
+        "selected_np_span",
+        "br_trans_feature",
+        "br_rule_id"
+      ],
+      "text": "The transitive verb {target_surface} takes the NP {selected_np_span} as direct-object complement.",
+      "deep_text": "Only allowed when the [trans] construction and exact sister relationship are source-supported.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-NP-OBJECT",
+      "concept_id": "BR3-TRANSITIVE-OBJECT",
+      "target_kind": "constituent",
+      "target_label": "NP",
+      "required_fact_keys": [
+        "target_surface",
+        "governing_verb",
+        "br_trans_feature",
+        "br_rule_id"
+      ],
+      "text": "The NP {target_surface} functions as direct object of {governing_verb} in this licensed VP.",
+      "deep_text": "The same category NP can instead be a subject in another position.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-NP-DITRANS",
+      "concept_id": "BR3-DITRANSITIVE-TWO-NPS",
+      "target_kind": "relation",
+      "target_label": "NP",
+      "required_fact_keys": [
+        "target_surface",
+        "governing_verb",
+        "complement_position",
+        "br_rule_id"
+      ],
+      "text": "The NP {target_surface} occupies the {complement_position} position with {governing_verb}.",
+      "deep_text": "The two object slots must be linked to an independently established ditransitive construction.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-VP-INTRANS",
+      "concept_id": "BR3-INTRANSITIVE-VP",
+      "target_kind": "constituent",
+      "target_label": "VP",
+      "required_fact_keys": [
+        "target_surface",
+        "lexical_head",
+        "br_intrans_feature",
+        "br_rule_id"
+      ],
+      "text": "The VP {target_surface} is complete around its intransitive head {lexical_head} in this construction.",
+      "deep_text": "A PP may still modify it; lack of overt object does not automatically prove intransitivity for arbitrary verbs.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-DET-NOM",
+      "concept_id": "BR3-NP-DET-NOM",
+      "target_kind": "constituent",
+      "target_label": "NP",
+      "required_fact_keys": [
+        "target_surface",
+        "det_span",
+        "nom_span",
+        "br_rule_id"
+      ],
+      "text": "In the NP {target_surface}, DET {det_span} combines with NOM {nom_span}.",
+      "deep_text": "Pronoun and name NPs use different B–R representations.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-NOM",
+      "concept_id": "BR3-NOM-HEAD-MODIFIER",
+      "target_kind": "constituent",
+      "target_label": "NOM",
+      "required_fact_keys": [
+        "target_surface",
+        "head_noun",
+        "modifier_span",
+        "br_rule_id"
+      ],
+      "text": "The NOM {target_surface} contains head noun {head_noun} and supported modification {modifier_span}.",
+      "deep_text": "Not every modifier may be asserted without a reviewed attachment.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-EMPTY-DET",
+      "concept_id": "BR3-EMPTY-DET-RESTRICTED",
+      "target_kind": "feature",
+      "target_label": "DET",
+      "required_fact_keys": [
+        "parent_np_span",
+        "noun_number_or_mass",
+        "br_rule_id"
+      ],
+      "text": "This NP uses an unpronounced DET slot in a licensed {noun_number_or_mass} construction.",
+      "deep_text": "An empty DET is not by itself an omission error.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-PERF",
+      "concept_id": "BR3-NESTED-AUX-VPS",
+      "target_kind": "constituent",
+      "target_label": "VP",
+      "required_fact_keys": [
+        "aux_surface",
+        "inner_vp_span",
+        "br_rule_id"
+      ],
+      "text": "The auxiliary {aux_surface} heads the displayed VP and selects the VP {inner_vp_span}.",
+      "deep_text": "Form licensing is a separate grammatical constraint; do not infer a correction from the shape alone.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-HAVE-LEXICAL-VS-AUX",
+      "concept_id": "BR3-LEXICAL-VS-PERF-HAVE",
+      "target_kind": "word",
+      "target_label": "V",
+      "required_fact_keys": [
+        "target_surface",
+        "complement_category",
+        "licensed_auxiliary_type"
+      ],
+      "text": "The form {target_surface} belongs to the {licensed_auxiliary_type} construction with a {complement_category} complement.",
+      "deep_text": "Distinguish had breakfast from had eaten by complement structure before applying any participle claim.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-PP-MOD",
+      "concept_id": "BR3-OPTIONAL-PP-MODIFIER",
+      "target_kind": "relation",
+      "target_label": "PP",
+      "required_fact_keys": [
+        "target_surface",
+        "governing_vp_span",
+        "source_licensed_modifier"
+      ],
+      "text": "The PP {target_surface} modifies VP {governing_vp_span} in the licensed analysis.",
+      "deep_text": "Do not assume that every PP is an adjunct; some are lexically selected complements.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    }
+  ],
+  "pending_review": [
+    "Independent source and exception review for each concept",
+    "Human approval of disputed B–R↔CGEL structural crosswalks",
+    "XAI-2 fact graph and exact category/function/provenance matching before activating template candidates",
+    "XAI-4 typed rule implementation, variety handling and tests before enabling constraints"
+  ]
+}
