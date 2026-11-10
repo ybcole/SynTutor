@@ -113,12 +113,12 @@ def _word(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
             seq = graph.get("token_index", [])
             next_word = seq[idx]["text"] if idx < len(seq) else None
         if next_word and next_word.lower().endswith("ing"):
-            return (f"{_quote(word)} is {form} form of the verb “be.” "
+            return (f"{_quote(word)} is {form} form of the verb “be”. "
                     f"Here it combines with {_quote(next_word)} to describe an activity in progress.")
         if next_word and next_word.lower().endswith("ed") and kind in {"PASS", "AUX"}:
             return (f"{_quote(word)} is a form of “be.” "
                     f"Here it helps form the verb expression {context}.")
-        return (f"{_quote(word)} is {form} form of the verb “be.” "
+        return (f"{_quote(word)} is {form} form of the verb “be”. "
                 f"In this sentence, it forms part of {context}.")
 
     if lower in HAVE and kind in {"V", "AUX", "PERF"}:
