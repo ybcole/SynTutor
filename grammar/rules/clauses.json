@@ -9138,5 +9138,160 @@
     "related_rules": [],
     "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. Do not infer an auxiliary error from lexical-content stress.",
     "diagnostic": null
+  },
+  {
+    "id": "CLS-117",
+    "domain": "clauses",
+    "concept": "Integrated frequency and modal adverbs after lexical verbs",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "An integrated frequency or modal adverb normally precedes a finite lexical verb instead of intervening between that lexical verb and its object or complement.",
+    "condition": "A standard simple declarative with one finite lexical verb and an integrated adverb such as always or probably, not a detached supplement.",
+    "violation": "Putting an integrated frequency or modal adverb between a lexical finite verb and its following complement.",
+    "exceptions": [
+      {
+        "description": "Adjuncts detached as supplements are outside the integrated adverb positioning pattern.",
+        "pages": [
+          102
+        ]
+      },
+      {
+        "description": "Auxiliaries permit or prefer a different position, and adverb-before-auxiliary is itself also possible.",
+        "pages": [
+          102
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She always visits the museum.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They probably travel by rail.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She visits always the museum.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They travel probably by rail.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.5 Position and form",
+        "pages": [
+          102
+        ],
+        "pdf_pages": [
+          122
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Integrated frequency and modal adverbs after lexical verbs",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Putting an integrated frequency or modal adverb between a lexical finite verb and its following complement.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She visits always the museum. ||| She always visits the museum.",
+        "They travel probably by rail. ||| They probably travel by rail."
+      ],
+      "learner_explanation": "An integrated frequency or modal adverb normally precedes a finite lexical verb instead of intervening between that lexical verb and its object or complement. This structure is not licensed when putting an integrated frequency or modal adverb between a lexical finite verb and its following complement. Use a correction appropriate to the particular auxiliary and the surrounding sentence.",
+      "corrected_paragraph_template": "Revise only the affected auxiliary sequence in its paragraph, preserve sentence intent, and re-evaluate neighbouring findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She is always optimistic.",
+        "They have probably travelled by rail.",
+        "She visits, always, the same museum. [supplement]",
+        "She often visits the museum."
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliary-sequences"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "CLS-118",
+    "domain": "clauses",
+    "concept": "Subject-related floating quantifiers with auxiliaries",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Subject-associated quantifiers such as all and both may occur within the subject or before a lexical verb and may also follow an auxiliary.",
+    "condition": "A quantifier semantically distributes over members of a plural subject but appears outside the subject NP.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The pupils all received a certificate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The pupils have all received certificates.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.5 Position and form",
+        "pages": [
+          102
+        ],
+        "pdf_pages": [
+          122
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject-related floating quantifiers with auxiliaries",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Post-lexical placement between a lexical verb and object is generally excluded for the integrated quantifier; some adjunct interpretations require separate analysis.",
+    "diagnostic": null
   }
 ]

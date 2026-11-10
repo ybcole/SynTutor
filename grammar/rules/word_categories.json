@@ -1540,5 +1540,59 @@
     "related_rules": [],
     "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. Auxiliary use is restricted for use and regionally variable; shall/can are not lexical merely because their meaning is similar to another verb.",
     "diagnostic": null
+  },
+  {
+    "id": "WCAT-020",
+    "domain": "word_categories",
+    "concept": "Core and non-core auxiliary uses",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The core use of an auxiliary selects a secondary-form verb complement, while some auxiliary lexemes have additional non-core uses without that complement.",
+    "condition": "Classify auxiliary uses with a governed non-finite verb versus copular be, possessive have and the finite-complement would-rather idiom.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They are preparing a statement. [core be]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They are confident. [non-core copular be]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.2 Issues of definition and analysis",
+        "pages": [
+          102,
+          103
+        ],
+        "pdf_pages": [
+          122,
+          123
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Core and non-core auxiliary uses",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. The NICE syntactic properties continue to define auxiliary occurrences, including relevant non-core uses.",
+    "diagnostic": null
   }
 ]
