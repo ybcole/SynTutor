@@ -364,6 +364,21 @@ export function learnerParagraph(evidence) {
   return 'Select a word or phrase to see how it works in the sentence.';
 }
 
+export function learnerFeatureParagraph(evidence, feature) {
+  const allowed = evidence?.xai7_unified?.feature_rows?.some(row => row.feature === feature);
+  if (!allowed) return learnerParagraph(evidence);
+  const selected = evidence?.fact_graph?.target;
+  const expression = selected?.surface ? '“' + selected.surface + '”' : 'this expression';
+  const meaning = {
+    pres: expression + ' is marked as present tense, placing the action or state in the present.',
+    past: expression + ' is marked as past tense, placing the action or state before the present.',
+    trans: expression + ' is marked as transitive, indicating that this verb is used with an object in the illustrated structure.',
+    intrans: expression + ' is marked as intransitive, indicating that this verb is used without a direct object here.',
+    '-tense': expression + ' does not carry an independent tense marking at this position in the verb structure.',
+  };
+  return meaning[feature] || learnerParagraph(evidence);
+}
+
 export function renderEvidence(evidence, host = document.querySelector('#explainNode'), options = {}) {
   if (!host) return;
   host.querySelector('[data-shared-evidence]')?.remove();
@@ -373,7 +388,8 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   const paragraph = document.createElement('p');
   paragraph.dataset.xaiShort = '';
   paragraph.className = 'learner-grammar-paragraph';
-  paragraph.textContent = learnerParagraph(evidence);
+  paragraph.textContent = options.feature
+    ? learnerFeatureParagraph(evidence, options.feature) : learnerParagraph(evidence);
   panel.append(paragraph);
   host.append(panel);
   if (options.treeRoot) applyEvidenceFocus(options.treeRoot, evidence);
