@@ -141,7 +141,8 @@ class XAI4PartialTests(unittest.TestCase):
             rule["may_issue_verified_error"] = True
             rule["review"].update(status="HUMAN_APPROVED",independent_human_review=True,
                  reviewed_by="synthetic-unit-test",reviewed_on="2026-11-10",
-                 exception_review_completed=True,held_out_adjudication_completed=True,test_status="passed")
+                 exception_review_completed=True,held_out_adjudication_completed=True,test_status="passed",
+                 approved_varieties=["Standard English"])
         for claim in audit["claims"]:
             if claim["id"] in {s for r in manifest["rules"] if r["id"] in manifest["runtime_enabled_rule_ids"]
                                for s in r["source_claim_ids"]}:
@@ -156,7 +157,9 @@ class XAI4PartialTests(unittest.TestCase):
             (root / "grammar/xai_pre").mkdir(parents=True)
             (root / "grammar/xai4_candidates.json").write_text(json.dumps(manifest))
             (root / "grammar/xai_pre/source_audit.json").write_text(json.dumps(audit))
-            result = evaluate_xai4("She can has went home.", root=root)
+            result = evaluate_xai4("She can has went home.", root=root, variety="Standard English")
+            blocked_without_variety = evaluate_xai4("She can has went home.", root=root)
+        self.assertEqual(blocked_without_variety["findings"], [])
         self.assertEqual(len(result["findings"]), 2)
         self.assertEqual({x["rule_id"] for x in result["findings"]},
                          {"CGEL4-PERF-COMPLEMENT", "CGEL4-MODAL-PLAIN"})
