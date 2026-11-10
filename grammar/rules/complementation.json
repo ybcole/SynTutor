@@ -2634,5 +2634,451 @@
     "related_rules": [],
     "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Rarity and processing awkwardness do not establish universal ungrammaticality.",
     "diagnostic": null
+  },
+  {
+    "id": "COMP-039",
+    "domain": "complementation",
+    "concept": "Ought to and regionally bare non-affirmative complements",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Ought ordinarily selects a to-infinitival complement, but some varieties allow bare infinitives in negatives or questions.",
+    "condition": "Ought is followed by a plain form verb under positive or non-affirmative polarity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You ought to explain the delay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You ought not tell him yet. [some American English]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.4 Ought",
+        "pages": [
+          109
+        ],
+        "pdf_pages": [
+          129
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ought to and regionally bare non-affirmative complements",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Never mark all non-affirmative ought without to ungrammatical."
+  },
+  {
+    "id": "COMP-040",
+    "domain": "complementation",
+    "concept": "Dynamic lexical have takes do-support",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Dynamic lexical have forms ordinary finite negation and closed interrogatives with do-support, rather than auxiliary-style inversion or n't.",
+    "condition": "Have means perform, experience or cause an event in a central present/past finite clause and is not perfect or stative auxiliary have.",
+    "violation": "Treating dynamic lexical have as an auxiliary in a closed question or primary negation.",
+    "exceptions": [
+      {
+        "description": "Stative have can behave as an auxiliary in some British English uses; dynamic have is always lexical.",
+        "pages": [
+          112
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did they have a quiet lunch?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She did not have the curtains cleaned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Had they a quiet lunch?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She hadn't the curtains cleaned.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.6 Dynamic have",
+        "pages": [
+          111
+        ],
+        "pdf_pages": [
+          131
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic lexical have takes do-support",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Treating dynamic lexical have as an auxiliary in a closed question or primary negation.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Had they a quiet lunch? ||| Did they have a quiet lunch?",
+        "She hadn't the curtains cleaned. ||| She did not have the curtains cleaned."
+      ],
+      "learner_explanation": "Dynamic lexical have forms ordinary finite negation and closed interrogatives with do-support, rather than auxiliary-style inversion or n't. The incorrect pattern is treating dynamic lexical have as an auxiliary in a closed question or primary negation. The alternative depends on the clause's meaning and variety, so correct it in its full context.",
+      "corrected_paragraph_template": "Replace the locally evidenced construction in its paragraph, preserve its intended meaning, and re-evaluate all other findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Have they already eaten? [perfect]",
+        "Have you any questions? [some British English stative]",
+        "She hasn't had lunch yet. [perfect with lexical have]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "verb-forms"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-041",
+    "domain": "complementation",
+    "concept": "Supportive do excluded in idiomatic have got",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "The idiom have got has auxiliary have and normally uses inversion or n't directly on have rather than an added supportive do.",
+    "condition": "Have got denotes possession or obligation and forms a standard finite closed question or primary negative.",
+    "violation": "Adding a supportive do before an idiomatic have got sequence.",
+    "exceptions": [
+      {
+        "description": "Have got may instead be a perfect form of lexical get, which requires contextual disambiguation.",
+        "pages": [
+          112
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Have they got the documents?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She hasn't got the right key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Do they have got the documents?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She doesn't have got the right key.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.6 Have got",
+        "pages": [
+          112
+        ],
+        "pdf_pages": [
+          132
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supportive do excluded in idiomatic have got",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. ",
+    "diagnostic": {
+      "error_family": "extra_word",
+      "error_pattern": "Adding a supportive do before an idiomatic have got sequence.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Do they have got the documents? ||| Have they got the documents?",
+        "She doesn't have got the right key. ||| She hasn't got the right key."
+      ],
+      "learner_explanation": "The idiom have got has auxiliary have and normally uses inversion or n't directly on have rather than an added supportive do. The incorrect pattern is adding a supportive do before an idiomatic have got sequence. The alternative depends on the clause's meaning and variety, so correct it in its full context.",
+      "corrected_paragraph_template": "Replace the locally evidenced construction in its paragraph, preserve its intended meaning, and re-evaluate all other findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Do they have the documents? [lexical possessive have]",
+        "She doesn't have the right key. [lexical have]",
+        "Did they get the documents? [lexical get]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "verb-forms"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-042",
+    "domain": "complementation",
+    "concept": "Bare infinitival complement of had better",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "The advisory idiom had better normally selects a bare infinitival verb instead of a to-infinitive.",
+    "condition": "Had better (or had best) has its non-past advisory sense and directly governs its following verbal complement.",
+    "violation": "Inserting infinitival to immediately after had better before its verb complement.",
+    "exceptions": [
+      {
+        "description": "Informal omission of had in you better leave is acceptable in some varieties; it is not to-insertion.",
+        "pages": [
+          113
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You had better call the adviser.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They'd best leave before sunset.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "You had better to call the adviser.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They had best to leave before sunset.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.6 Had better/best",
+        "pages": [
+          113
+        ],
+        "pdf_pages": [
+          133
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare infinitival complement of had better",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. ",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "Inserting infinitival to immediately after had better before its verb complement.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "You had better to call the adviser. ||| You had better call the adviser.",
+        "They had best to leave before sunset. ||| They had best leave before sunset."
+      ],
+      "learner_explanation": "The advisory idiom had better normally selects a bare infinitival verb instead of a to-infinitive. The incorrect pattern is inserting infinitival to immediately after had better before its verb complement. The alternative depends on the clause's meaning and variety, so correct it in its full context.",
+      "corrected_paragraph_template": "Replace the locally evidenced construction in its paragraph, preserve its intended meaning, and re-evaluate all other findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "You better call the adviser. [informal omission of had]",
+        "The new method had better results. [ordinary adjective]",
+        "It had better been left alone. [ambiguity; don't automatically classify]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "verb-forms"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-043",
+    "domain": "complementation",
+    "concept": "Quasi-modal be and infinitival complement",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Quasi-modal be takes to plus a plain-form verb and differs from progressive and passive auxiliary be in complementation.",
+    "condition": "Be is a quasi-modal expressing scheduled or required action with a to-infinitival dependent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guests are to remain near the entrance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The meeting was to begin at noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.7 Be",
+        "pages": [
+          113,
+          114
+        ],
+        "pdf_pages": [
+          133,
+          134
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quasi-modal be and infinitival complement",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Ordinary copular, passive and progressive be do not inherit the quasi-modal selection pattern."
+  },
+  {
+    "id": "COMP-044",
+    "domain": "complementation",
+    "concept": "Lexical be in non-affirmative why-questions and if-clauses",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A restricted lexical use of be can follow supportive do in negative why-questions and conditional protases.",
+    "condition": "Be receives a directive-like reading after don't or doesn't in a why-question or in an if-protasis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Why doesn't he be reasonable?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she doesn't be careful, she may lose the file.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.7 Be",
+        "pages": [
+          114
+        ],
+        "pdf_pages": [
+          134
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical be in non-affirmative why-questions and if-clauses",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. The form be remains invariant, but the auxiliary do reflects subject agreement. Positive if you be is possible for only some speakers."
   }
 ]

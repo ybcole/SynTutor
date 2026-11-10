@@ -4059,5 +4059,262 @@
     "related_rules": [],
     "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. Imperative don't and present-tense don't have the same spelling but different inflectional status.",
     "diagnostic": null
+  },
+  {
+    "id": "MORPH-061",
+    "domain": "morphology",
+    "concept": "Modal preterites and modal remoteness",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Preterite modal forms such as could and would can signal modal remoteness in a main clause instead of past time.",
+    "condition": "The first verb of an independent clause is a modal preterite used for a hypothetical or polite non-past interpretation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could you assist with the display? [polite request]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They might arrive this evening. [non-past possibility]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.4 Distinctive properties of modal auxiliaries",
+        "pages": [
+          107
+        ],
+        "pdf_pages": [
+          127
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal preterites and modal remoteness",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Some uses of could permit both a past-time and a remote, non-past reading."
+  },
+  {
+    "id": "MORPH-062",
+    "domain": "morphology",
+    "concept": "Defective preterite paradigms of must and ought",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Contemporary must and ought have no separate preterite inflectional forms.",
+    "condition": "The lexeme must or ought is classified in a context where a distinct present-versus-preterite inflectional opposition would otherwise be expected.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The applicant must submit the form today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The coordinator ought to explain the arrangement.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§§2.5.2–2.5.4 Individual modal auxiliaries",
+        "pages": [
+          108,
+          109
+        ],
+        "pdf_pages": [
+          128,
+          129
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Defective preterite paradigms of must and ought",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Some remote-conditional apodoses with must are marginal for some speakers; do not infer a missing past form."
+  },
+  {
+    "id": "MORPH-063",
+    "domain": "morphology",
+    "concept": "Secondary forms of perfect auxiliary have",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Perfect auxiliary have can appear in plain and gerund-participle forms, but has no past-participle form within the perfect auxiliary paradigm.",
+    "condition": "Perfect have heads the perfect construction and is inflected inside modal or non-finite contexts.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They might have finished already.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Having finished early, she closed the office.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.6 Perfect have",
+        "pages": [
+          111
+        ],
+        "pdf_pages": [
+          131
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Secondary forms of perfect auxiliary have",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. An occurrence of had following another have may belong to lexical have and requires separate category analysis."
+  },
+  {
+    "id": "MORPH-064",
+    "domain": "morphology",
+    "concept": "Idiosyncratic preterite uses of should",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Some deontic uses of should have a meaning not compositionally derived from present-tense shall plus ordinary preterite remoteness.",
+    "condition": "Should expresses advice or an evaluation in a clause where a corresponding shall construction does not preserve the meaning.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You should bring your notes tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She should read the instructions first.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.3 Shall and may",
+        "pages": [
+          109
+        ],
+        "pdf_pages": [
+          129
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiosyncratic preterite uses of should",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. The category is lexical-semantic rather than an error constraint."
+  },
+  {
+    "id": "MORPH-065",
+    "domain": "morphology",
+    "concept": "Possible lexical split between may and might",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "For some speakers may and might may function as separate modal lexemes instead of a present–preterite inflectional pair.",
+    "condition": "Compare modal may and might in a variety whose time and remoteness uses no longer align as a single lexeme.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gallery may reopen tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gallery might reopen tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.3 Shall and may",
+        "pages": [
+          109
+        ],
+        "pdf_pages": [
+          129
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Possible lexical split between may and might",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Do not enforce one modal analysis across all speakers."
   }
 ]

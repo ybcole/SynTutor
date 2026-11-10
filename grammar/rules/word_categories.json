@@ -1594,5 +1594,746 @@
     "related_rules": [],
     "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. The NICE syntactic properties continue to define auxiliary occurrences, including relevant non-core uses.",
     "diagnostic": null
+  },
+  {
+    "id": "WCAT-021",
+    "domain": "word_categories",
+    "concept": "Dialect-specific double-modal constructions",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Some non-standard English dialects allow a restricted ordered combination of central modals, so double modals are not universally impossible.",
+    "condition": "A speaker uses a documented regional double-modal order within a single verb chain.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It might could snow tonight. [regional variety]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It might snow tonight. [standard variety]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.4 footnote 18",
+        "pages": [
+          107
+        ],
+        "pdf_pages": [
+          127
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dialect-specific double-modal constructions",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Standard English still excludes most double-modal sequences, but detector application must respect declared dialect scope."
+  },
+  {
+    "id": "WCAT-022",
+    "domain": "word_categories",
+    "concept": "Would rather and finite-clause complementation",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Preference idioms with would rather, would sooner or would as soon can take a finite clause as well as a bare infinitive.",
+    "condition": "Would occurs as the first auxiliary of a preference idiom, followed by either a plain-form verb or a finite subordinate clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I would rather take the morning train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I would rather you took the morning train.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.1 Can and will; would rather",
+        "pages": [
+          108
+        ],
+        "pdf_pages": [
+          128
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Would rather and finite-clause complementation",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Negation of the matrix would has narrower pragmatic conditions than negation of the subordinate plain-form verb."
+  },
+  {
+    "id": "WCAT-023",
+    "domain": "word_categories",
+    "concept": "Negative and reduced forms of may",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "May normally forms its negative with separate not and does not have an ordinary reduced affirmative form; mayn't is marginal in some varieties.",
+    "condition": "An instance of may is negated or reduced in a present-tense modal clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitors may not enter today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitors might not enter today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.3 Shall and may",
+        "pages": [
+          109
+        ],
+        "pdf_pages": [
+          129
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative and reduced forms of may",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Do not impose an absolute error on rare dialectal mayn't."
+  },
+  {
+    "id": "WCAT-024",
+    "domain": "word_categories",
+    "concept": "Modal need and dare in non-affirmative environments",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Modal-auxiliary need and dare largely occur in negatives, questions and related non-affirmative contexts, unlike their lexical counterparts.",
+    "condition": "Need or dare directly selects a bare infinitival complement and shows auxiliary inversion or primary negation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Need the students remain after class?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The students need to remain after class. [lexical]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.5 Need and dare",
+        "pages": [
+          109,
+          110
+        ],
+        "pdf_pages": [
+          129,
+          130
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal need and dare in non-affirmative environments",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary dare, lexical dare and some bare-infinitival combinations are genuinely ambiguous; do not force a single parse."
+  },
+  {
+    "id": "WCAT-025",
+    "domain": "word_categories",
+    "concept": "Bare infinitival complementation of lexical dare",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Lexical dare can omit infinitival to under non-affirmative conditions, making the auxiliary–lexical distinction less clear.",
+    "condition": "A lexical dare with supportive do or a negative licenser is followed by a plain verb without to.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She wouldn't dare ask the director.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She wouldn't dare to ask the director.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.5 Need and dare",
+        "pages": [
+          110
+        ],
+        "pdf_pages": [
+          130
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare infinitival complementation of lexical dare",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary dare also permits bare complements, so surface form is not alone sufficient for classification."
+  },
+  {
+    "id": "WCAT-026",
+    "domain": "word_categories",
+    "concept": "Three distinct uses of have",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Have may be perfect auxiliary, dynamic lexical verb, or stative possessive/obligation verb with dialect-variable auxiliary behaviour.",
+    "condition": "The syntactic role of have is determined by its complement, event versus state interpretation and NICE properties.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has completed the task. [perfect]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They had a swim. [dynamic]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "He has two notebooks. [stative]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.6 Have, have got, had better",
+        "pages": [
+          111,
+          112
+        ],
+        "pdf_pages": [
+          131,
+          132
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Three distinct uses of have",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. The distinctions are essential before applying do-support constraints."
+  },
+  {
+    "id": "WCAT-027",
+    "domain": "word_categories",
+    "concept": "Register and habitual restrictions of idiomatic have got",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "Have got is especially common in informal British English, typically with present forms and a non-habitual interpretation.",
+    "condition": "A possessive or obligation sense is expressed with idiomatic have got rather than stative have or have to.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I've got to submit this form tonight. [one obligation]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I have to submit this form every Friday. [habitual or one-time]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.6 Stative have and have got",
+        "pages": [
+          112,
+          113
+        ],
+        "pdf_pages": [
+          132,
+          133
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Register and habitual restrictions of idiomatic have got",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Informal have got is not itself an error; the habitual distinction is a usage constraint requiring intended meaning."
+  },
+  {
+    "id": "WCAT-028",
+    "domain": "word_categories",
+    "concept": "Variety-related stative have constructions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Stative have is consistently lexical in contemporary American English, while some British English speakers also allow auxiliary negation and inversion.",
+    "condition": "A stative have expresses possession or obligation in interrogatives and negatives, varying in do-support by dialect.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Do you have an appointment? [lexical]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have you an appointment? [some British English]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.6 Stative have",
+        "pages": [
+          112,
+          113
+        ],
+        "pdf_pages": [
+          132,
+          133
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variety-related stative have constructions",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary stative have has become formal or old-fashioned for some speakers and should not be universally condemned."
+  },
+  {
+    "id": "WCAT-029",
+    "domain": "word_categories",
+    "concept": "Present-oriented had better and had best",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Had better and had best are auxiliary-led advisory idioms whose form had does not independently place the recommendation in past time.",
+    "condition": "The fixed idiom had better or had best is followed by a bare infinitive with an advisory interpretation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You had better check the entrance now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We'd best tell the organiser today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.6 Had better/best",
+        "pages": [
+          113
+        ],
+        "pdf_pages": [
+          133
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present-oriented had better and had best",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Omission of had in informal expressions such as you better leave is common and must not become a universal grammatical error."
+  },
+  {
+    "id": "WCAT-030",
+    "domain": "word_categories",
+    "concept": "Six syntactic uses of be",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Be has distinct copular, progressive, passive, quasi-modal, motional and lexical uses, each with separate complement and distributional properties.",
+    "condition": "An occurrence of be is classified by its complement type, perfect environment, NICE behaviour and directive-like lexical use.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The professor was patient. [copular]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitors were waiting. [progressive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The exhibition was cancelled. [passive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "You are to wait outside. [quasi-modal]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.7 Be",
+        "pages": [
+          113,
+          114
+        ],
+        "pdf_pages": [
+          133,
+          134
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Six syntactic uses of be",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Motional been and lexical be need their own case distinctions; don't infer an error solely from do + be."
+  },
+  {
+    "id": "WCAT-031",
+    "domain": "word_categories",
+    "concept": "Quasi-modal be is not a central modal",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Quasi-modal be selects a to-infinitival and lacks secondary forms, but retains ordinary be agreement and is not a central modal auxiliary.",
+    "condition": "Be expresses an instruction or scheduled expectation and takes an infinitival complement introduced by to.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You are to remain seated.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee was to meet the next morning.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.7 Be",
+        "pages": [
+          113,
+          114
+        ],
+        "pdf_pages": [
+          133,
+          134
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quasi-modal be is not a central modal",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. It does not inherit the bare-infinitive selection or person-number invariance of the central modals."
+  },
+  {
+    "id": "WCAT-032",
+    "domain": "word_categories",
+    "concept": "Motional been after perfect have",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The motional use of be typically occurs as past participle been after perfect have and can be stranded under ellipsis.",
+    "condition": "Have governs been in a motion/visit construction rather than a passive or adjectival clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Sana has been to Singapore.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Sana has been to the gallery; Eliot has been too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.7 Be",
+        "pages": [
+          114
+        ],
+        "pdf_pages": [
+          134
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Motional been after perfect have",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Motional be differs in distribution from other auxiliary be uses."
+  },
+  {
+    "id": "WCAT-033",
+    "domain": "word_categories",
+    "concept": "Lexical be with why and if under do-support",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Some why-questions and conditional clauses use lexical be with do-support, unlike ordinary copular auxiliary be.",
+    "condition": "The clause has a directive-like or preventative interpretation and includes why + don't/doesn't + be or if + don't/doesn't + be.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Why don't you be more patient?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you don't be careful, you could slip.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.7 Be",
+        "pages": [
+          114
+        ],
+        "pdf_pages": [
+          134
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical be with why and if under do-support",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. These are narrow constructions, and some speakers allow positive if you be; do not generalise ordinary do + be to every copular clause."
+  },
+  {
+    "id": "WCAT-034",
+    "domain": "word_categories",
+    "concept": "Lexical do contrasted with auxiliary do",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Do can be supportive auxiliary in NICE and imperative constructions, or an ordinary lexical verb taking objects or other complements.",
+    "condition": "Do is classified by whether it supplies a finite auxiliary for negation, inversion or polarity versus acts as a semantic lexical predicate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Does the panel agree? [auxiliary]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The participants did their best. [lexical]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.8 Do",
+        "pages": [
+          114
+        ],
+        "pdf_pages": [
+          134
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical do contrasted with auxiliary do",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary do is largely confined to do-support and negative/emphatic imperatives, except for archaic formulae."
   }
 ]
