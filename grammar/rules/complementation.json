@@ -57,7 +57,8 @@
     "related_rules": [
       "COMP-002",
       "COMP-004"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "COMP-002",
@@ -178,7 +179,8 @@
       "COMP-004",
       "COMP-003"
     ],
-    "review_notes": "Verb-by-verb subclass lists belong to Ch. 4; this record only states the principle. Only canonical clauses are covered; non-canonical clauses may omit objects."
+    "review_notes": "Verb-by-verb subclass lists belong to Ch. 4; this record only states the principle. Only canonical clauses are covered; non-canonical clauses may omit objects.",
+    "diagnostic": null
   },
   {
     "id": "COMP-003",
@@ -277,7 +279,8 @@
       "CLS-005",
       "COMP-002"
     ],
-    "review_notes": "Applies only to canonical clauses; informal ellipsis ('Arrived late.') is non-canonical and is outside this source's claim. Engine must first decide that a clause is canonical."
+    "review_notes": "Applies only to canonical clauses; informal ellipsis ('Arrived late.') is non-canonical and is outside this source's claim. Engine must first decide that a clause is canonical.",
+    "diagnostic": null
   },
   {
     "id": "COMP-004",
@@ -335,7 +338,8 @@
     "related_rules": [
       "COMP-002",
       "COMP-005"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "COMP-005",
@@ -391,7 +395,8 @@
     "traditional_terms": [
       "indirect object (traditional: includes the to-phrase)"
     ],
-    "review_notes": "Cambridge narrows 'object' to NP forms; traditional grammar calls the to-phrase an indirect object."
+    "review_notes": "Cambridge narrows 'object' to NP forms; traditional grammar calls the to-phrase an indirect object.",
+    "diagnostic": null
   },
   {
     "id": "COMP-006",
@@ -454,7 +459,8 @@
     "related_rules": [
       "COMP-007",
       "COMP-004"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "COMP-007",
@@ -514,7 +520,8 @@
     "related_rules": [
       "COMP-006",
       "WCAT-002"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "COMP-008",
@@ -583,7 +590,8 @@
       "COMP-009",
       "COMP-006"
     ],
-    "review_notes": "Cambridge notes blame can select either on or for. This record lists only the verbs the page names."
+    "review_notes": "Cambridge notes blame can select either on or for. This record lists only the verbs the page names.",
+    "diagnostic": null
   },
   {
     "id": "COMP-009",
@@ -640,7 +648,8 @@
     "status": "APPROVED",
     "related_rules": [
       "COMP-008"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "COMP-010",
@@ -699,7 +708,8 @@
       "COMP-001",
       "CLS-017"
     ],
-    "review_notes": "'Mostly adjuncts' and 'generally complements' are hedged; Ch. 4/8 hold the tests."
+    "review_notes": "'Mostly adjuncts' and 'generally complements' are hedged; Ch. 4/8 hold the tests.",
+    "diagnostic": null
   },
   {
     "id": "COMP-011",
@@ -771,7 +781,8 @@
     "confidence": "high",
     "review_notes": "The section names verbs that occur both with and without an object as dual-transitivity verbs. This refines, rather than replaces, the existing COMP-002 treatment of verb subclasses. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "COMP-012",
@@ -850,7 +861,8 @@
     "confidence": "high",
     "review_notes": "The source describes NPs and PPs as prototypical forms and later explicitly extends core complements to AdjPs when discussing predicative complements. The rule is therefore descriptive, not a grammatical form constraint. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "COMP-013",
@@ -908,7 +920,8 @@
     "confidence": "high",
     "review_notes": "The source also notes that the preposition can contribute to identifying the semantic role of the oblique; that semantic contribution is not made a separate constraint here. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "COMP-014",
@@ -965,7 +978,8 @@
     "confidence": "high",
     "review_notes": "This adds Cambridge's explicit term predicand to the existing predicative-complement classification; it does not re-create COMP-006. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "COMP-015",
@@ -1029,7 +1043,8 @@
     "confidence": "high",
     "review_notes": "The source hedges the predictability of orientation with 'normally'; this is retained as a descriptive generalization, not an absolute constraint. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "COMP-016",
@@ -1099,7 +1114,8 @@
     "confidence": "high",
     "review_notes": "The source says the sets of verbs entering the two patterns overlap only to a relatively small extent. The examples here show verbs explicitly presented as allowing both patterns; the record does not generalise that all such verbs allow both. The chapter introduction names Ch. 11 for finite clause complements. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "COMP-017",
@@ -1171,7 +1187,8 @@
     "confidence": "high",
     "review_notes": "The source explicitly records broader usage elsewhere, then states that this chapter restricts 'copular' to the be construction. This is a terminology choice, not a claim that other complex-intransitive verbs are ungrammatical. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "COMP-018",
@@ -1249,7 +1266,8 @@
     "confidence": "high",
     "review_notes": "Footnote 7 notes alternative scholarly uses: some use valency for number plus type of complements (for which this chapter uses complementation), while others count semantic arguments instead of syntactic complements (adicity). This record preserves the chapter's local definition and does not generalise it to all theoretical traditions. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "COMP-019",
@@ -1320,6 +1338,7 @@
     "confidence": "high",
     "review_notes": "The source explicitly contrasts until (AdvP permitted, interrogative clause excluded) with on (interrogative clause permitted, AdvP excluded). Examples demonstrate licensed positive patterns; this classification is not an unrestricted grammar checker prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   }
 ]

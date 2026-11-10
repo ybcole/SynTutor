@@ -110,7 +110,8 @@
       "AGR-002",
       "WCAT-006"
     ],
-    "review_notes": "The page names a, each, two, several; the rest of the determinatives are in Ch. 5. Non-count heads (e.g. 'much equipment') are outside this record. Compound modifiers ('a two-week trip') are not considered."
+    "review_notes": "The page names a, each, two, several; the rest of the determinatives are in Ch. 5. Non-count heads (e.g. 'much equipment') are outside this record. Compound modifiers ('a two-week trip') are not considered.",
+    "diagnostic": null
   },
   {
     "id": "AGR-002",
@@ -261,6 +262,7 @@
       "MORPH-002",
       "MORPH-006"
     ],
-    "review_notes": "The rule applies to inflecting present-tense verbs and be in the preterite; modal auxiliaries are excluded because their present form is invariant for person and number (Cambridge Ch. 3 §1.1, p. 75). Notional-number departures are retained as a separate exception (Ch. 2 §5, p. 56). Explicit human approval of this refinement was given on 2026-11-05. Burton-Roberts mapping remains unverified."
+    "review_notes": "The rule applies to inflecting present-tense verbs and be in the preterite; modal auxiliaries are excluded because their present form is invariant for person and number (Cambridge Ch. 3 §1.1, p. 75). Notional-number departures are retained as a separate exception (Ch. 2 §5, p. 56). Explicit human approval of this refinement was given on 2026-11-05. Burton-Roberts mapping remains unverified.",
+    "diagnostic": null
   }
 ]

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/ybcole/SynTutor/grammar/schema.json",
   "title": "SynTutor grammar rule record",
-  "description": "One atomic, testable grammatical principle extracted from Cambridge (or Burton-Roberts). Protocol version 1.0. See CAMBRIDGE_EXTRACTION_PROMPT.md.",
+  "description": "One atomic, testable principle grounded in Cambridge (or Burton-Roberts). Protocol 1.1 supports optional legacy diagnostic migration and gated new diagnostics.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -45,7 +45,9 @@
     },
     "traditional_terms": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Traditional-grammar labels for the same concept, if the source mentions them."
     },
     "rule_type": {
@@ -60,7 +62,10 @@
       "description": "Only 'constraint' and 'variety_restricted' may be used for error detection. Stylistic or prescriptive items must never be treated as grammatical prohibitions."
     },
     "variety": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Variety/register/dialect the rule holds for (e.g. 'standard written English', 'informal', 'AmE'). Required when rule_type is variety_restricted."
     },
     "scope": {
@@ -86,7 +91,10 @@
       "description": "Precise statement of when the rule applies (construction, category, feature values). Vague conditions are invalid."
     },
     "violation": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "What breaks the rule, stated so that a checker could detect it. Null for rule types that have no violation (classification, descriptive_generalization)."
     },
     "exceptions": {
@@ -95,16 +103,26 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["description", "pages"],
+        "required": [
+          "description",
+          "pages"
+        ],
         "properties": {
-          "description": { "type": "string" },
+          "description": {
+            "type": "string"
+          },
           "pages": {
             "type": "array",
-            "items": { "type": "integer", "minimum": 1 }
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
           },
           "example_ids": {
             "type": "array",
-            "items": { "type": "string" },
+            "items": {
+              "type": "string"
+            },
             "description": "IDs of examples (in this record) that test the exception."
           }
         }
@@ -113,20 +131,29 @@
     "examples": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["correct", "incorrect"],
+      "required": [
+        "correct",
+        "incorrect"
+      ],
       "properties": {
         "correct": {
           "type": "array",
-          "items": { "$ref": "#/$defs/example" }
+          "items": {
+            "$ref": "#/$defs/example"
+          }
         },
         "incorrect": {
           "type": "array",
-          "items": { "$ref": "#/$defs/example" }
+          "items": {
+            "$ref": "#/$defs/example"
+          }
         },
         "contrast": {
           "type": "array",
           "description": "For non-constraints: examples showing a contrast without claiming ungrammaticality.",
-          "items": { "$ref": "#/$defs/example" }
+          "items": {
+            "$ref": "#/$defs/example"
+          }
         }
       }
     },
@@ -136,13 +163,23 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["book", "chapter", "pages"],
+        "required": [
+          "book",
+          "chapter",
+          "pages"
+        ],
         "properties": {
           "book": {
             "type": "string",
-            "examples": ["Cambridge Grammar", "Burton-Roberts"]
+            "examples": [
+              "Cambridge Grammar",
+              "Burton-Roberts"
+            ]
           },
-          "chapter": { "type": "integer", "minimum": 0 },
+          "chapter": {
+            "type": "integer",
+            "minimum": 0
+          },
           "section": {
             "type": "string",
             "description": "Section heading/number as printed."
@@ -150,11 +187,17 @@
           "pages": {
             "type": "array",
             "description": "Printed page numbers (narrowest supporting span). Empty only with status NEEDS_REVIEW or UNCERTAIN.",
-            "items": { "type": "integer", "minimum": 1 }
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
           },
           "pdf_pages": {
             "type": "array",
-            "items": { "type": "integer", "minimum": 1 }
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
           }
         }
       }
@@ -164,9 +207,14 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["br_concept", "relation"],
+        "required": [
+          "br_concept",
+          "relation"
+        ],
         "properties": {
-          "br_concept": { "type": "string" },
+          "br_concept": {
+            "type": "string"
+          },
           "relation": {
             "type": "string",
             "enum": [
@@ -177,52 +225,78 @@
               "unverified"
             ]
           },
-          "note": { "type": "string" }
+          "note": {
+            "type": "string"
+          }
         }
       }
     },
     "related_rules": {
       "type": "array",
-      "items": { "type": "string", "pattern": "^[A-Z]{2,8}-[0-9]{3,5}$" }
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2,8}-[0-9]{3,5}$"
+      }
     },
     "supersedes_legacy_rules": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "IDs of rules in the existing 111-rule system that this rule overlaps with or replaces."
     },
     "superseded_by": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "pattern": "^[A-Z]{2,8}-[0-9]{3,5}$"
     },
     "confidence": {
       "type": "string",
-      "enum": ["high", "medium", "low"]
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
     },
     "review_notes": {
       "type": "string"
     },
     "runtime_check": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "description": "Optional deterministic implementation contract. Only supported checks may execute, and only after the independent-review, source, crosswalk, positive/negative/exception-test, and runtime allow-list gates pass.",
       "additionalProperties": false,
-      "required": ["kind", "forbidden_sequences"],
+      "required": [
+        "kind",
+        "forbidden_sequences"
+      ],
       "properties": {
-        "kind": { "const": "forbidden_token_sequences" },
+        "kind": {
+          "const": "forbidden_token_sequences"
+        },
         "forbidden_sequences": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "#/$defs/tokenSequence" }
+          "items": {
+            "$ref": "#/$defs/tokenSequence"
+          }
         },
         "exception_sequences": {
           "type": "array",
-          "items": { "$ref": "#/$defs/tokenSequence" },
+          "items": {
+            "$ref": "#/$defs/tokenSequence"
+          },
           "default": []
         }
       }
     },
     "protocol_version": {
       "type": "string",
-      "default": "1.0"
+      "default": "1.1"
     },
     "status": {
       "type": "string",
@@ -235,25 +309,181 @@
         "SUPERSEDED"
       ],
       "default": "NEEDS_REVIEW"
+    },
+    "diagnostic": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Diagnostic and teaching metadata. Legacy protocol-1.0 records may have null until they are reviewed for Phase B/C. Protocol-1.1 constraints require a populated diagnostic object.",
+      "additionalProperties": false,
+      "required": [
+        "error_family",
+        "error_pattern",
+        "detector",
+        "detector_reason_if_none",
+        "minimal_pairs",
+        "learner_explanation",
+        "corrected_paragraph_template",
+        "variety_scope",
+        "false_positive_guards",
+        "lesson_tags",
+        "quiz_seeds"
+      ],
+      "properties": {
+        "error_family": {
+          "type": "string",
+          "enum": [
+            "agreement",
+            "verb_form",
+            "tense_aspect",
+            "article_determiner",
+            "pronoun_case",
+            "preposition",
+            "word_order",
+            "missing_word",
+            "extra_word",
+            "punctuation",
+            "spelling_inflection",
+            "other"
+          ]
+        },
+        "error_pattern": {
+          "type": "string",
+          "minLength": 10
+        },
+        "detector": {
+          "type": "string",
+          "pattern": "^(implemented:.+|spec_only|none_possible)$"
+        },
+        "detector_reason_if_none": {
+          "type": "string"
+        },
+        "minimal_pairs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 7,
+            "pattern": "^.+[|][|][|].+$"
+          }
+        },
+        "learner_explanation": {
+          "type": "string",
+          "minLength": 30,
+          "pattern": "^[^\\r\\n]+$"
+        },
+        "corrected_paragraph_template": {
+          "type": "string",
+          "minLength": 10
+        },
+        "variety_scope": {
+          "type": "string",
+          "pattern": "^(standard_english|variety_restricted: .+)$"
+        },
+        "false_positive_guards": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "lesson_tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "quiz_seeds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "identify",
+              "correct",
+              "explain"
+            ]
+          },
+          "uniqueItems": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "detector": {
+                "const": "none_possible"
+              }
+            },
+            "required": [
+              "detector"
+            ]
+          },
+          "then": {
+            "properties": {
+              "detector_reason_if_none": {
+                "minLength": 10
+              }
+            }
+          }
+        }
+      ]
+    },
+    "approved_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional bulk approval attribution, populated by gated tooling only."
+    },
+    "approved_on": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "UTC calendar date of bulk approval."
     }
   },
   "allOf": [
     {
-      "if": { "properties": { "rule_type": { "const": "variety_restricted" } } },
+      "if": {
+        "properties": {
+          "rule_type": {
+            "const": "variety_restricted"
+          }
+        }
+      },
       "then": {
-        "required": ["variety"],
-        "properties": { "variety": { "type": "string", "minLength": 1 } }
+        "required": [
+          "variety"
+        ],
+        "properties": {
+          "variety": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
       }
     },
     {
-      "if": { "properties": { "rule_type": { "const": "constraint" } } },
+      "if": {
+        "properties": {
+          "rule_type": {
+            "const": "constraint"
+          }
+        }
+      },
       "then": {
         "properties": {
-          "violation": { "type": "string", "minLength": 10 },
+          "violation": {
+            "type": "string",
+            "minLength": 10
+          },
           "examples": {
             "properties": {
-              "correct": { "minItems": 2 },
-              "incorrect": { "minItems": 2 }
+              "correct": {
+                "minItems": 2
+              },
+              "incorrect": {
+                "minItems": 2
+              }
             }
           }
         }
@@ -263,61 +493,137 @@
       "if": {
         "properties": {
           "rule_type": {
-            "enum": ["descriptive_generalization", "stylistic_or_prescriptive", "classification"]
+            "enum": [
+              "descriptive_generalization",
+              "stylistic_or_prescriptive",
+              "classification"
+            ]
           }
         }
       },
       "then": {
         "properties": {
           "examples": {
-            "properties": { "incorrect": { "maxItems": 0 } }
+            "properties": {
+              "incorrect": {
+                "maxItems": 0
+              }
+            }
           }
         }
       }
     },
     {
-      "if": { "properties": { "status": { "enum": ["APPROVED", "REVIEWED"] } } },
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "APPROVED",
+              "REVIEWED"
+            ]
+          }
+        }
+      },
       "then": {
         "properties": {
           "sources": {
-            "items": { "properties": { "pages": { "minItems": 1 } } }
+            "items": {
+              "properties": {
+                "pages": {
+                  "minItems": 1
+                }
+              }
+            }
           }
         }
       }
     },
     {
-      "if": { "properties": { "status": { "const": "SUPERSEDED" } } },
-      "then": { "required": ["superseded_by"] }
+      "if": {
+        "properties": {
+          "status": {
+            "const": "SUPERSEDED"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "superseded_by"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "protocol_version"
+        ],
+        "properties": {
+          "protocol_version": {
+            "const": "1.1"
+          },
+          "rule_type": {
+            "const": "constraint"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "diagnostic"
+        ],
+        "properties": {
+          "diagnostic": {
+            "type": "object"
+          }
+        }
+      }
     }
   ],
   "$defs": {
     "tokenSequence": {
       "type": "array",
       "minItems": 1,
-      "items": { "type": "string", "minLength": 1 }
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
     },
     "example": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["text", "origin"],
+      "required": [
+        "text",
+        "origin"
+      ],
       "properties": {
         "id": {
           "type": "string",
           "description": "Local ID within the rule, e.g. 'c1', 'i2'."
         },
-        "text": { "type": "string", "minLength": 1 },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
         "origin": {
           "type": "string",
-          "enum": ["ai_authored", "book"],
+          "enum": [
+            "ai_authored",
+            "book"
+          ],
           "description": "Distinguishes examples written by the AI from examples actually given in the source."
         },
         "page": {
-          "type": ["integer", "null"],
+          "type": [
+            "integer",
+            "null"
+          ],
           "minimum": 1,
           "description": "Printed page; required when origin is 'book'."
         },
         "pair_id": {
-          "type": ["string", "null"],
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Shared ID linking the members of a minimal pair."
         },
         "tests_exception": {
@@ -326,13 +632,34 @@
         },
         "judgement": {
           "type": "string",
-          "enum": ["unusual", "possible", "n/a"],
+          "enum": [
+            "unusual",
+            "possible",
+            "n/a"
+          ],
           "description": "For 'contrast' examples only."
         },
-        "note": { "type": "string" }
+        "note": {
+          "type": "string"
+        }
       },
-      "if": { "properties": { "origin": { "const": "book" } } },
-      "then": { "required": ["page"], "properties": { "page": { "type": "integer" } } }
+      "if": {
+        "properties": {
+          "origin": {
+            "const": "book"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "page"
+        ],
+        "properties": {
+          "page": {
+            "type": "integer"
+          }
+        }
+      }
     }
   }
 }
