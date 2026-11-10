@@ -394,6 +394,43 @@
           "message"
         ]
       }
+    },
+    "fact_graph": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "schema_version",
+            "language_policy",
+            "status",
+            "nodes",
+            "edges",
+            "atoms",
+            "token_index",
+            "alternatives",
+            "movement_links"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "xai-facts-2.0.0"
+            },
+            "language_policy": {
+              "const": "ENGLISH_ONLY"
+            },
+            "status": {
+              "enum": [
+                "observed",
+                "provisional",
+                "unavailable"
+              ]
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
     }
   },
   "required": [

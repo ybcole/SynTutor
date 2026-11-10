@@ -64,7 +64,8 @@ def evaluate_analysis(analysis, *, variety=None):
                'message':'A reviewed constraint found a violation.' if findings else 'No grammaticality verdict is established by this tree check.',
                'evaluated_rule_ids':evaluation.get('evaluated_rule_ids',[])}
     return {'schema_version':'1.0.0','br_analysis':safe,'structure':structure,'grammaticality':grammar,
-            'cambridge_evaluation':evaluation,'explanation_evidence':evidence,'node_details':details,
+            'cambridge_evaluation':evaluation,'explanation_evidence':evidence,
+            'fact_graph':evidence.get('fact_graph'),'node_details':details,
             'target_comparison':{'status':'not_requested','matched':None}}
 
 def evaluate_request(data):
