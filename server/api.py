@@ -283,6 +283,7 @@ def build_payload(text, sentence_index=0, convention_version=None,
     # Token-only candidate context must survive unresolved B-R canonicalization.
     # This sentence is server-derived, never client-supplied approval metadata.
     explanation_analysis = {**br_analysis, 'sentence': analysis['sentence']}
+    shared_explanation_evidence = explain_analysis(explanation_analysis, variety=variety)
 
     return {
         'meta': {
@@ -320,14 +321,15 @@ def build_payload(text, sentence_index=0, convention_version=None,
         'tree': root,
         'candidate_tree': root,
         'br_analysis': br_analysis,
-        'explanation_evidence': explain_analysis(explanation_analysis, variety=variety),
+        'explanation_evidence': shared_explanation_evidence,
         'canonical_evaluation': evaluate_analysis(explanation_analysis, variety=variety),
         'cambridge_runtime': cambridge_runtime,
         'cambridge_evaluation': cambridge_evaluation,
         'xai4_partial_evaluation': xai4_partial_evaluation,
         'xai5_localization': localize_xai4(xai4_partial_evaluation,
             analysis=explanation_analysis, sentence=analysis['sentence']),
-        'xai6_naturalization': explain_analysis(explanation_analysis, variety=variety).get('xai6_naturalization'),
+        'xai6_naturalization': shared_explanation_evidence.get('xai6_naturalization'),
+        'xai7_unified': shared_explanation_evidence.get('xai7_unified'),
         'nodes': analysis['nodes'],
         'node_details': details,
         'summary': summary,
