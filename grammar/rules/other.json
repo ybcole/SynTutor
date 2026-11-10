@@ -16114,5 +16114,3368 @@
     "related_rules": [],
     "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-287",
+    "domain": "other",
+    "concept": "Dynamic and deontic borderline",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A permissible expectation can be classified as dynamic where no permission-granting source can be identified.",
+    "condition": "Can describes the limits of reasonable expectation rather than an authorisation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This border is fuzzy; the presence of can alone does not fix the interpretation.",
+        "pages": [
+          179
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We can expect a modest response.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We can reasonably hope for better weather.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2–9.2.3 Modality categories and degree",
+        "pages": [
+          179
+        ],
+        "pdf_pages": [
+          199
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic and deontic borderline",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-288",
+    "domain": "other",
+    "concept": "Ability versus permission",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An ability reading of can centres on a participant's capacity, unlike a deontic reading about permission.",
+    "condition": "A can clause allows an internal-capacity or an externally-authorised action reading.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Dynamic ability does not exhibit the range of clear modal ambiguities found in deontic readings.",
+        "pages": [
+          179
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Elisa can repair the clock. [ability]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Elisa can enter the workshop. [permission]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2–9.2.3 Modality categories and degree",
+        "pages": [
+          179
+        ],
+        "pdf_pages": [
+          199
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ability versus permission",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-289",
+    "domain": "other",
+    "concept": "Degree distinct from strength",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal degree is the extent to which a modal contributes a separable meaning, not the strength of that meaning.",
+    "condition": "Comparing a clause with and without a modal assesses semantic difference.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A strong modal can have low degree in one construction and high degree in another.",
+        "pages": [
+          179
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They may know the address. [high degree]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shop will open tomorrow. [low degree]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2–9.2.3 Modality categories and degree",
+        "pages": [
+          179
+        ],
+        "pdf_pages": [
+          199
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree distinct from strength",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-290",
+    "domain": "other",
+    "concept": "High-degree modal meaning",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some modal auxiliaries make a substantial semantic contrast with otherwise similar unmodalised clauses.",
+    "condition": "A modal modifies the speaker's commitment to a proposition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same auxiliary need not always contribute a high degree of modal content.",
+        "pages": [
+          179
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The delegates have signed the document.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The delegates may have signed the document.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2–9.2.3 Modality categories and degree",
+        "pages": [
+          179
+        ],
+        "pdf_pages": [
+          199
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "High-degree modal meaning",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-291",
+    "domain": "other",
+    "concept": "Low-degree modal meaning",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some modals add little independent meaning where the construction already contributes a related sense.",
+    "condition": "A concessive, emotive, or ordinary futurate construction supplies much of the interpretation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Low degree is especially frequent among strong modals, not identical to modal strength.",
+        "pages": [
+          179
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Unlikely though it may sound, it is true.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My nephew will turn six next month.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2–9.2.3 Modality categories and degree",
+        "pages": [
+          179
+        ],
+        "pdf_pages": [
+          199
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Low-degree modal meaning",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-292",
+    "domain": "other",
+    "concept": "May in concessive harmony",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Concessive may can reinforce a concessive interpretation already supplied by a subordinate construction.",
+    "condition": "May occurs in a concessive adjunct rather than offering independent uncertainty.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Epistemic may in a simple declarative does not automatically have this harmonious meaning.",
+        "pages": [
+          179
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Unusual as it may appear, the plan works.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Troubling though it may seem, we agree.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2–9.2.3 Modality categories and degree",
+        "pages": [
+          179
+        ],
+        "pdf_pages": [
+          199
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "May in concessive harmony",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-293",
+    "domain": "other",
+    "concept": "Emotive should and exhaustive may",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Should under an emotive matrix predicate and may within an exhaustive conditional can be optional modal reinforcement.",
+    "condition": "Should depends on an emotive adjective or may on an exhaustive conditional.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The two uses belong to distinct constructions and do not license arbitrary modals elsewhere.",
+        "pages": [
+          179
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is surprising that she should remember the number.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whatever the committee may decide, we will proceed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2–9.2.3 Modality categories and degree",
+        "pages": [
+          179
+        ],
+        "pdf_pages": [
+          199
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emotive should and exhaustive may",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-294",
+    "domain": "other",
+    "concept": "Matching modal–adverb harmony",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A modal and an adverb of corresponding strength may combine to convey a single reinforced modal evaluation.",
+    "condition": "A strong, medium or weak auxiliary is combined with an aligned evaluative adverb.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different strengths can instead create genuinely nested meanings.",
+        "pages": [
+          180
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The report must certainly be accurate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcel may perhaps be delayed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.3; §9.3–9.3.1 Modal harmony and epistemic auxiliaries",
+        "pages": [
+          180
+        ],
+        "pdf_pages": [
+          200
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Matching modal–adverb harmony",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-295",
+    "domain": "other",
+    "concept": "Non-harmonic modal nesting",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A strong adverb with a weak modal can present separate scoped modal assessments.",
+    "condition": "An epistemic may combines with a stronger certainty adverb.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Such constructions are grammatical and should not be automatically normalised to matching strength.",
+        "pages": [
+          180
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The result may surely have followed from the test.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The keys may certainly have been moved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.3; §9.3–9.3.1 Modal harmony and epistemic auxiliaries",
+        "pages": [
+          180
+        ],
+        "pdf_pages": [
+          200
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-harmonic modal nesting",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-296",
+    "domain": "other",
+    "concept": "Will as default future marker",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Future-oriented will often has relatively little separable modal content compared with present-time inference.",
+    "condition": "An ordinary main-clause prediction refers to a future event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Main-clause simple present for future reference is licensed in special scheduling contexts.",
+        "pages": [
+          180
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It will be dark before we return.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The children will be home soon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.3; §9.3–9.3.1 Modal harmony and epistemic auxiliaries",
+        "pages": [
+          180
+        ],
+        "pdf_pages": [
+          200
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will as default future marker",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-297",
+    "domain": "other",
+    "concept": "Necessity and possibility classes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Must and auxiliary need express modal necessity; may and can express modal possibility.",
+    "condition": "A finite modal construction expresses one of the necessity/possibility relationships.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Need is distributionally restricted and must/need do not have ordinary preterite counterparts.",
+        "pages": [
+          180
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The solution must be correct. [necessity]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The solution may be correct. [possibility]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.3; §9.3–9.3.1 Modal harmony and epistemic auxiliaries",
+        "pages": [
+          180
+        ],
+        "pdf_pages": [
+          200
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Necessity and possibility classes",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-298",
+    "domain": "other",
+    "concept": "Nonaffirmative auxiliary need",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Auxiliary need appears in nonaffirmative environments such as negatives and questions.",
+    "condition": "Need functions as a modal auxiliary rather than as the lexical verb need.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Affirmative lexical need to constructions are outside the restriction.",
+        "pages": [
+          180
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You needn't complete this section.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Need we explain the delay?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.3; §9.3–9.3.1 Modal harmony and epistemic auxiliaries",
+        "pages": [
+          180
+        ],
+        "pdf_pages": [
+          200
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonaffirmative auxiliary need",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-299",
+    "domain": "other",
+    "concept": "Nonaffirmative epistemic can",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Epistemic can is ordinarily restricted to nonaffirmative environments.",
+    "condition": "Can expresses possibility of a proposition being true, not ability or permission.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Positive dynamic or deontic can remains fully grammatical.",
+        "pages": [
+          180
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Can the story be true?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That cannot have happened.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.3; §9.3–9.3.1 Modal harmony and epistemic auxiliaries",
+        "pages": [
+          180
+        ],
+        "pdf_pages": [
+          200
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonaffirmative epistemic can",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-300",
+    "domain": "other",
+    "concept": "Epistemic negation with must and can",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Epistemic must not puts negation inside necessity, while can't denies possibility of the proposition.",
+    "condition": "A negative modal clause is understood in epistemic, not deontic, terms.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Negative epistemic must is rare or unacceptable for many speakers; it should not be enforced universally.",
+        "pages": [
+          180
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The estimate can't be right.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He mustn't have been told the date. [restricted inferential reading]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.3; §9.3–9.3.1 Modal harmony and epistemic auxiliaries",
+        "pages": [
+          180
+        ],
+        "pdf_pages": [
+          200
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic negation with must and can",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-301",
+    "domain": "other",
+    "concept": "Epistemic negative restrictions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Epistemic mustn't and needn't are less usual than their deontic counterparts.",
+    "condition": "Negative necessity is interpreted as an inference instead of an obligation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some speakers do not accept the epistemic interpretation of these negatives.",
+        "pages": [
+          181
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It can't have been the owner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It needn't have been intentional. [restricted reading]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1 Epistemic necessity and possibility",
+        "pages": [
+          181
+        ],
+        "pdf_pages": [
+          201
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic negative restrictions",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-302",
+    "domain": "other",
+    "concept": "Subjective epistemic must as inference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subjective epistemic must presents the speaker's confident best inference.",
+    "condition": "The speaker interprets observations rather than deriving a formal necessity.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This use is pragmatically weaker than a simple categorical assertion.",
+        "pages": [
+          181
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The pavement is wet; it must have rained.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her bag is gone; she must have left.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1 Epistemic necessity and possibility",
+        "pages": [
+          181
+        ],
+        "pdf_pages": [
+          201
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjective epistemic must as inference",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-303",
+    "domain": "other",
+    "concept": "Objective epistemic must",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Objective epistemic must indicates necessity that follows from known conditions or logic.",
+    "condition": "The speaker supplies premises from which the conclusion follows.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The corresponding simple assertion differs little from this objective necessity.",
+        "pages": [
+          181
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If all cuboids are solids, that object must be a solid.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If Sam is older than Lee, Lee must be younger.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1 Epistemic necessity and possibility",
+        "pages": [
+          181
+        ],
+        "pdf_pages": [
+          201
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Objective epistemic must",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-304",
+    "domain": "other",
+    "concept": "Necessity entailment under subjective must",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Pragmatic weakening of epistemic must does not erase its semantic commitment to the proposition.",
+    "condition": "An affirmative must clause expresses a supposedly necessary conclusion.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Presenting a truly incompatible alternative after the inference creates discourse anomaly, not a distinct syntax pattern.",
+        "pages": [
+          181
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Someone must have moved the files.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There must be a missing attachment.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1 Epistemic necessity and possibility",
+        "pages": [
+          181
+        ],
+        "pdf_pages": [
+          201
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Necessity entailment under subjective must",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-305",
+    "domain": "other",
+    "concept": "Can't and rare mustn't have different force",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Epistemic can't is normally stronger or more categorical than the inferential mustn't some speakers allow.",
+    "condition": "A speaker denies an inference or arrives at a negative conclusion.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The mustn't form is restricted and often receives a deontic reading.",
+        "pages": [
+          181
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The driver can't have reached us already.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The assistant mustn't have seen the update after all. [restricted]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1 Epistemic necessity and possibility",
+        "pages": [
+          181
+        ],
+        "pdf_pages": [
+          201
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Can't and rare mustn't have different force",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-306",
+    "domain": "other",
+    "concept": "Subjective versus objective may",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Epistemic may can communicate either personally uncertain possibility or a possibility under public investigation.",
+    "condition": "A modal claim is grounded in the speaker's uncertainty or in public evidence.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Unlike must, the distinction does not normally change the strength of may appreciably.",
+        "pages": [
+          181
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The receipt may be in the drawer; I'll check.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The policy may have been breached; an inquiry is under way.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1 Epistemic necessity and possibility",
+        "pages": [
+          181
+        ],
+        "pdf_pages": [
+          201
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjective versus objective may",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-307",
+    "domain": "other",
+    "concept": "Epistemic may well",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "May well can express a stronger likelihood than simple may.",
+    "condition": "An epistemic possibility is strengthened by the adverb well.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "It remains a modal assessment and not a bare assertion.",
+        "pages": [
+          181
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The invoice may well arrive tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The candidate may well succeed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1 Epistemic necessity and possibility",
+        "pages": [
+          181
+        ],
+        "pdf_pages": [
+          201
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic may well",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-308",
+    "domain": "other",
+    "concept": "May and ignorance implicature",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Ordinary epistemic may conversationally suggests the speaker does not know the proposition is true.",
+    "condition": "A possible fact is expressed with may rather than an unmodalised declarative.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This implicature is cancellable, especially in concessive contexts.",
+        "pages": [
+          182
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The package may be downstairs; I'll check.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The play may already have started, but I am uncertain.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1–9.3.2 Epistemic and deontic necessity/possibility",
+        "pages": [
+          182
+        ],
+        "pdf_pages": [
+          202
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "May and ignorance implicature",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-309",
+    "domain": "other",
+    "concept": "Concessive may",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "May can acknowledge an accepted fact rather than express doubt when used concessively.",
+    "condition": "A may clause precedes a contrastive continuation such as but or yet.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Its usual ignorance implicature does not survive this use.",
+        "pages": [
+          182
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The route may be long, but it is scenic.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The apartment may be small, yet it feels spacious.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1–9.3.2 Epistemic and deontic necessity/possibility",
+        "pages": [
+          182
+        ],
+        "pdf_pages": [
+          202
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concessive may",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-310",
+    "domain": "other",
+    "concept": "Harmonic modal constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An epistemic modal may reinforce the strength of an adverb or a selecting predicate.",
+    "condition": "Must or may appears with a semantically aligned adverb or complement-taking verb.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Harmonic elements need not express two independent operator meanings.",
+        "pages": [
+          182
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The contract must surely be valid.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I suggest that there may be an alternative.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1–9.3.2 Epistemic and deontic necessity/possibility",
+        "pages": [
+          182
+        ],
+        "pdf_pages": [
+          202
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Harmonic modal constructions",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-311",
+    "domain": "other",
+    "concept": "Epistemic necessity time preference",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Epistemic must and need most often concern present or past states.",
+    "condition": "A modal necessity expresses a judgment about a current or completed situation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Future epistemic necessity is possible, especially with surely.",
+        "pages": [
+          182
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The curator must be in the gallery.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She must have left a message yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1–9.3.2 Epistemic and deontic necessity/possibility",
+        "pages": [
+          182
+        ],
+        "pdf_pages": [
+          202
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic necessity time preference",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-312",
+    "domain": "other",
+    "concept": "Epistemic may with future reference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "May readily expresses uncertainty about a future event.",
+    "condition": "May combines with a predicate located in future time.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Future must more frequently evokes an obligation rather than an inference.",
+        "pages": [
+          182
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitors may return tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Their train may arrive early next week.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1–9.3.2 Epistemic and deontic necessity/possibility",
+        "pages": [
+          182
+        ],
+        "pdf_pages": [
+          202
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic may with future reference",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-313",
+    "domain": "other",
+    "concept": "Epistemic can with future reference",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Epistemic can is scarcely available with future-time propositions, favouring a dynamic or deontic reading.",
+    "condition": "Can or cannot concerns the possibility of a not-yet-actual event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is a strong tendency rather than an exceptionless grammatical prohibition.",
+        "pages": [
+          182
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They may not finish until Sunday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They can't finish before Sunday. [circumstantial]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1–9.3.2 Epistemic and deontic necessity/possibility",
+        "pages": [
+          182
+        ],
+        "pdf_pages": [
+          202
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic can with future reference",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-314",
+    "domain": "other",
+    "concept": "Deontic obligation versus permission",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Affirmative must generally conveys strong obligation, while deontic may or can conveys permission.",
+    "condition": "A person or institution serves as the source of an obligation or permission.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Permission may is more formal than can, and force depends on social context.",
+        "pages": [
+          182
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Employees must carry their passes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Visitors may use the east gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.1–9.3.2 Epistemic and deontic necessity/possibility",
+        "pages": [
+          182
+        ],
+        "pdf_pages": [
+          202
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deontic obligation versus permission",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-315",
+    "domain": "other",
+    "concept": "Deontic prohibition with mustn't",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Deontic mustn't puts negation within the necessity operator, yielding an obligation not to act.",
+    "condition": "A deontic source requires non-actualisation of an action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This resembles deontic can't/may not in outcome but not always in social force.",
+        "pages": [
+          183
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You mustn't enter the server room.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Students mustn't alter the equipment.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2 Deontic necessity and possibility",
+        "pages": [
+          183
+        ],
+        "pdf_pages": [
+          203
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deontic prohibition with mustn't",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-316",
+    "domain": "other",
+    "concept": "Deontic needn't removes obligation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Needn't in its deontic use states that a course of action is not obligatory.",
+    "condition": "A negative modal need evaluates whether a requirement exists.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "It is not equivalent to the prohibition expressed by mustn't.",
+        "pages": [
+          183
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You needn't send a second copy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We needn't book a table in advance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2 Deontic necessity and possibility",
+        "pages": [
+          183
+        ],
+        "pdf_pages": [
+          203
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deontic needn't removes obligation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-317",
+    "domain": "other",
+    "concept": "Marked permission with internal not",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A permissive can not or may not with internal negation is marginal and requires unusual separation.",
+    "condition": "A speaker intends to grant permission to refrain rather than to forbid.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Normally may not or can't expresses prohibition instead.",
+        "pages": [
+          183
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You can choose not to answer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You may decline the offer if you like.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2 Deontic necessity and possibility",
+        "pages": [
+          183
+        ],
+        "pdf_pages": [
+          203
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Marked permission with internal not",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-318",
+    "domain": "other",
+    "concept": "Authority in subjective permission",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Granting permission with may or can implicitly invokes the speaker's power to restrict the action.",
+    "condition": "An addressee is explicitly authorised by the speaker.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A permission formula can be socially inappropriate between people lacking such an authority relation.",
+        "pages": [
+          183
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You may use my notes this evening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can come into my office now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2 Deontic necessity and possibility",
+        "pages": [
+          183
+        ],
+        "pdf_pages": [
+          203
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Authority in subjective permission",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-319",
+    "domain": "other",
+    "concept": "Subjective and objective deontic modality",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Deontic modals can directly establish an obligation or permission or report one imposed elsewhere.",
+    "condition": "A speaker commands or permits, or reports an external policy.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "First-person and second-person subjects alone do not determine the source.",
+        "pages": [
+          183
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You must sort these papers now. [speaker]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We can borrow six books from the library. [policy]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2 Deontic necessity and possibility",
+        "pages": [
+          183
+        ],
+        "pdf_pages": [
+          203
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjective and objective deontic modality",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-320",
+    "domain": "other",
+    "concept": "Alternative forms for objective necessity",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Have to, have got to, and need to often express objective obligations more naturally than must.",
+    "condition": "A rule or practical prerequisite is reported instead of imposed by the present speaker.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Must is not ungrammatical in the same context.",
+        "pages": [
+          183
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We have to register at reception.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You need to reserve a laboratory slot.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2 Deontic necessity and possibility",
+        "pages": [
+          183
+        ],
+        "pdf_pages": [
+          203
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternative forms for objective necessity",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-321",
+    "domain": "other",
+    "concept": "Permission may versus can as register",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "May is generally the more formal way to express permission, while can is familiar or neutral.",
+    "condition": "Either auxiliary is used to grant or report permission.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some speakers also distinguish direct speaker permission from reported permission.",
+        "pages": [
+          183
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You may commence the examination. [formal]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can begin the test now. [neutral]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2 Deontic necessity and possibility",
+        "pages": [
+          183
+        ],
+        "pdf_pages": [
+          203
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Permission may versus can as register",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-322",
+    "domain": "other",
+    "concept": "Questions and addressee permission",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In deontic questions, the addressee commonly supplies the source of authorisation.",
+    "condition": "A speaker asks whether they may or can take an action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The formula if I may is conventionalised and does not always allow substitution with can.",
+        "pages": [
+          183
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "May I consult the schedule?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Can I take this seat?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2 Deontic necessity and possibility",
+        "pages": [
+          183
+        ],
+        "pdf_pages": [
+          203
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Questions and addressee permission",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-323",
+    "domain": "other",
+    "concept": "Self-imposed first-person must",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The speaker can impose or voluntarily accept an obligation expressed with first-person must.",
+    "condition": "A first-person subject and a subjective deontic source coincide.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A first-person subject can alternatively occur in a report of externally imposed rules.",
+        "pages": [
+          184
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I must finish that letter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I must admit that I misplaced the key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2–9.3.3 Deontic and dynamic modality",
+        "pages": [
+          184
+        ],
+        "pdf_pages": [
+          204
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Self-imposed first-person must",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-324",
+    "domain": "other",
+    "concept": "Future orientation of deontic modal verbs",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Deontic commands and permissions normally target future actualisation.",
+    "condition": "A speaker obliges or permits an action that remains to be performed.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Standing conditions can concern current states or previous accomplishments.",
+        "pages": [
+          184
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You must return the device tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You may leave after the announcement.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2–9.3.3 Deontic and dynamic modality",
+        "pages": [
+          184
+        ],
+        "pdf_pages": [
+          204
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Future orientation of deontic modal verbs",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-325",
+    "domain": "other",
+    "concept": "Standing deontic requirements with past events",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Eligibility rules can specify that a past action must have been completed.",
+    "condition": "A current general requirement applies to an already completed prerequisite.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction does not impose a new obligation to alter an irrevocable past event.",
+        "pages": [
+          184
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Applicants must have passed the introduction module.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Guests must have registered before the deadline.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2–9.3.3 Deontic and dynamic modality",
+        "pages": [
+          184
+        ],
+        "pdf_pages": [
+          204
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Standing deontic requirements with past events",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-326",
+    "domain": "other",
+    "concept": "Dynamic reasonable possibility",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Can may express what is a reasonable or acceptable course without permission from an institution.",
+    "condition": "The sentence evaluates what is practically sensible or permissible to expect.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Very formal may may alternate in some contexts but not an intrinsically informal fallback.",
+        "pages": [
+          184
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We can ask for a clarification.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can always tell them you are unavailable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2–9.3.3 Deontic and dynamic modality",
+        "pages": [
+          184
+        ],
+        "pdf_pages": [
+          204
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic reasonable possibility",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-327",
+    "domain": "other",
+    "concept": "Dynamic circumstantial possibility",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Can may express a possibility permitted by physical or factual circumstances.",
+    "condition": "An event is possible because the relevant situation does not prevent it.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "May is sometimes used formally, notably in technical passive constructions.",
+        "pages": [
+          184
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rainwater can seep into the cellar.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The pattern can be verified with a ruler.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2–9.3.3 Deontic and dynamic modality",
+        "pages": [
+          184
+        ],
+        "pdf_pages": [
+          204
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic circumstantial possibility",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-328",
+    "domain": "other",
+    "concept": "Dynamic existential can",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Generic can can mean that a property is sometimes present in a group or person's characteristic behaviour.",
+    "condition": "A predicate describes a possible recurring property rather than an individual grant of permission.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A singular subject can express habitual characteristics rather than class variation.",
+        "pages": [
+          184
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "These roads can be icy at dawn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our neighbour can be very considerate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.2–9.3.3 Deontic and dynamic modality",
+        "pages": [
+          184
+        ],
+        "pdf_pages": [
+          204
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic existential can",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-329",
+    "domain": "other",
+    "concept": "Existential can with sometimes and or",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Existential can may harmonise with sometimes or enumerate alternative properties with or.",
+    "condition": "A generic modal concerns occasional behaviour or variation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Or can suggest but does not logically guarantee an exhaustive list.",
+        "pages": [
+          185
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The fruit can be green or yellow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The footpath can sometimes become slippery.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.3 Dynamic necessity and possibility",
+        "pages": [
+          185
+        ],
+        "pdf_pages": [
+          205
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Existential can with sometimes and or",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-330",
+    "domain": "other",
+    "concept": "Formal existential may with internal negation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Formal existential may can describe occasions when a property is absent.",
+    "condition": "May expresses some-times truth with an internally negated predicate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction does not automatically express a prohibition.",
+        "pages": [
+          185
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cracks may not appear immediately.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The birds may not nest here in winter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.3 Dynamic necessity and possibility",
+        "pages": [
+          185
+        ],
+        "pdf_pages": [
+          205
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Formal existential may with internal negation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-331",
+    "domain": "other",
+    "concept": "Ability can excludes an ability reading of may",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Can describes capacity or skill in a way that may does not replicate, even in formal style.",
+    "condition": "The intended reading is a subject's own ability to perform an action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "May itself is grammatical when interpreted as permission or epistemic possibility.",
+        "pages": [
+          185
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Our guide can climb the ridge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I can hear the music from here.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.3 Dynamic necessity and possibility",
+        "pages": [
+          185
+        ],
+        "pdf_pages": [
+          205
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ability can excludes an ability reading of may",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-332",
+    "domain": "other",
+    "concept": "Potential and realised dynamic ability",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Can with skill can describe unused potential, while can with present sensory or cognitive verbs may describe an event already happening.",
+    "condition": "The modal scopes over a potential action or a currently actualised perception.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With a well-established skill, the modal and unmodalised sentence may differ very little.",
+        "pages": [
+          185
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She can finish the course in two hours. [potential]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I can smell freshly baked bread. [actualised]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.3 Dynamic necessity and possibility",
+        "pages": [
+          185
+        ],
+        "pdf_pages": [
+          205
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Potential and realised dynamic ability",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-333",
+    "domain": "other",
+    "concept": "Dynamic must for inner compulsion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Dynamic must can express a recurring impulse arising in a subject's disposition.",
+    "condition": "Must indicates the subject's inner need rather than a person imposing obligation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This use is rare, and negative mustn't does not mean lack of dynamic ability.",
+        "pages": [
+          185
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He must always interrupt at the worst moment.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That puppy must keep nosing into every bag.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.3 Dynamic necessity and possibility",
+        "pages": [
+          185
+        ],
+        "pdf_pages": [
+          205
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic must for inner compulsion",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-334",
+    "domain": "other",
+    "concept": "Dynamic must imposed by circumstances",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some uses of must reflect the force of circumstances rather than rules laid down by an authority.",
+    "condition": "A situation leaves few alternatives to a necessary action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Have to and need to are more usual in this circumstantial meaning.",
+        "pages": [
+          185
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "After the storm, the crew must repair the roof.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Because the lift is broken, we must use the stairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.3 Dynamic necessity and possibility",
+        "pages": [
+          185
+        ],
+        "pdf_pages": [
+          205
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic must imposed by circumstances",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-335",
+    "domain": "other",
+    "concept": "Idiomatic must needs",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The formula must needs expresses necessity with an additional harmonising item.",
+    "condition": "Formal or literary style employs must followed by needs.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "It is an uncommon idiom, not a requirement after ordinary must.",
+        "pages": [
+          185
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They must needs travel on foot through the valley.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The sailors must needs rely on the stars.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.3.3 Dynamic necessity and possibility",
+        "pages": [
+          185
+        ],
+        "pdf_pages": [
+          205
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic must needs",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-336",
+    "domain": "other",
+    "concept": "Idiomatic should distinct from shall preterite",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Many established senses of should cannot be calculated by adding past-time meaning to shall.",
+    "condition": "Should functions as a medium-strength modal in its own right.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Nonidiomatic preterite uses are treated separately in §9.8.",
+        "pages": [
+          186
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You should revise the instructions.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The courier should arrive soon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4–9.4.1 Idiomatic should and ought",
+        "pages": [
+          186
+        ],
+        "pdf_pages": [
+          206
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic should distinct from shall preterite",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-337",
+    "domain": "other",
+    "concept": "Should and ought as medium-strength modals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Should and ought to commonly express medium-strength deontic or epistemic modality.",
+    "condition": "The auxiliary gives advice or a reasoned probability estimate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These forms are generally but not universally interchangeable.",
+        "pages": [
+          186
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We ought to plant the trees now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The train should arrive by noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4–9.4.1 Idiomatic should and ought",
+        "pages": [
+          186
+        ],
+        "pdf_pages": [
+          206
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Should and ought as medium-strength modals",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-338",
+    "domain": "other",
+    "concept": "Epistemic and deontic ambiguity of should",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Should or ought to may convey either a factual forecast or an obligation imposed on someone.",
+    "condition": "The same subject and predicate allow competing deontic and epistemic readings.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The surrounding discourse, not grammar alone, establishes the intended reading.",
+        "pages": [
+          186
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The junior player should improve this year. [prediction]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The junior player ought to improve this year. [expected duty]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4–9.4.1 Idiomatic should and ought",
+        "pages": [
+          186
+        ],
+        "pdf_pages": [
+          206
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic and deontic ambiguity of should",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-339",
+    "domain": "other",
+    "concept": "Deontic should permits nonactualisation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Should and ought to mark a preferred action without implying the addressee will comply.",
+    "condition": "Advice rather than an absolute requirement is expressed with these auxiliaries.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Must can also be weakened pragmatically; modal strength is not identical to speech-act force.",
+        "pages": [
+          186
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I should ring my cousin this weekend.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You ought to examine the evidence again.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4–9.4.1 Idiomatic should and ought",
+        "pages": [
+          186
+        ],
+        "pdf_pages": [
+          206
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deontic should permits nonactualisation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-340",
+    "domain": "other",
+    "concept": "Present and past deontic criticism",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With present or completed situations, should and ought to can criticise what someone is actually doing or has done.",
+    "condition": "The modal evaluates an action against a better choice that was not actualised.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The past perfect construction is not necessarily epistemic inference.",
+        "pages": [
+          186
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You should be preparing for the interview.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They ought to have departed sooner.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4–9.4.1 Idiomatic should and ought",
+        "pages": [
+          186
+        ],
+        "pdf_pages": [
+          206
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present and past deontic criticism",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-341",
+    "domain": "other",
+    "concept": "Should in indirect instructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Should, unlike ought to in normal use, can express an indirect directive instruction.",
+    "condition": "An instruction is phrased as a declarative with should rather than an imperative.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ought to is normally used for advice, not such administrative instructions.",
+        "pages": [
+          186
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The final column should remain empty.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "All submissions should carry a date.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4–9.4.1 Idiomatic should and ought",
+        "pages": [
+          186
+        ],
+        "pdf_pages": [
+          206
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Should in indirect instructions",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-342",
+    "domain": "other",
+    "concept": "Epistemic should expresses inference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Epistemic should conveys a probable outcome inferred from facts, not merely an unreasoned probability.",
+    "condition": "A speaker derives a tentative conclusion from the situation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The expected result might not actually happen.",
+        "pages": [
+          186
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The bus should arrive shortly, given the timetable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The project ought to succeed with that funding.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4–9.4.1 Idiomatic should and ought",
+        "pages": [
+          186
+        ],
+        "pdf_pages": [
+          206
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic should expresses inference",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-343",
+    "domain": "other",
+    "concept": "Past epistemic should strongly disfavoured",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Should or ought to followed by a perfect and a past-time reference normally receives a deontic reading.",
+    "condition": "A past event is evaluated as something that ought to have happened.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Pure epistemic past reference is hardly possible, not strictly impossible for all contexts.",
+        "pages": [
+          186
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She should have reached the station yesterday. [expected action]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They ought to have called before noon. [criticism]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4–9.4.1 Idiomatic should and ought",
+        "pages": [
+          186
+        ],
+        "pdf_pages": [
+          206
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past epistemic should strongly disfavoured",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
+    "diagnostic": null
   }
 ]
