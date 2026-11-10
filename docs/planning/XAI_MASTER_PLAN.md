@@ -9,6 +9,10 @@
 
 > **Product decision: Explain words, lexical heads, all meaningful constituents (NP, VP, PP, AP, AdvP, NOM, S/S′/S″), structural edges/functions, detected violations, and repairs.** Every explanation must reference the actual sentence and, when relevant, the surrounding constituent structure. Never reduce this to an isolated POS-tag dictionary. Do not confuse interpreting a tree with judging whether the sentence is grammatical.
 
+## Non-negotiable scope: English only
+
+**SynTutor analyzes and explains English syntax and English grammar only.** All XAI milestones, examples, regression corpora, book-derived concept registries, tests, corrections and learner-facing generated prose must remain in English. **Do not add code-mixed or non-English sentence inputs** as development probes, supported-language claims, training examples, rule constraints or advertised product scope without a separate, explicit change requested by the project owner. English dialect/register differences are considered as English-language phenomena; this does not authorize other languages. The XAI-0 development corpus is versioned with `language_policy: ENGLISH_ONLY` and each row declares `language: en`; this metadata is an audit safeguard, not an automatic language detector.
+
 ## 0. Baseline reality: what exists versus what remains
 
 Repository code inspected on 10 November 2026:
