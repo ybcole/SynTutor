@@ -263,7 +263,7 @@ function lessonScreen() {
     treeView=renderLessonTree(worked.tree,{
       focusId:selected,
       blank:key==='guided' && p.responses.guided!==lesson.guided.answer ? lesson.guided.build_target : null,
-      interactive:true, onSelectNode:inspect, zoomControls:true,
+      interactive:true, onSelectNode:inspect, zoomControls:true, stackFeatures:true,
     });
     aside.append(treeView);
     if (selected) aside.append(button('Inspect highlighted tree position',()=>inspect(selected)));
