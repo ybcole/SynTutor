@@ -152,7 +152,7 @@ def localize_xai4(xai4: dict[str, Any], *, analysis: dict[str, Any] | None = Non
     }
 
 
-def _token_alignment(original: str, revised: str) -> tuple[list[dict[str, Any]], dict[str, str]]:
+def _token_alignment(original: str, revised: str) -> tuple[list[dict[str, Any]], dict[str, str], bool]:
     """Compute source-frozen token edits and alignment for every candidate."""
     old, new = tokenize(original), tokenize(revised)
     sequence = SequenceMatcher(
@@ -218,3 +218,190 @@ def _snapshot(version: str, text: str, analysis: dict[str, Any],
         "evaluation_status": evaluation["status"],
         "whole_sentence_certified": False,
     }
+
+
+def _recheck_lineage(before_eval: dict[str, Any], after_eval: dict[str, Any],
+                     original_to_revised: dict[str, str],
+                     edits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Track only ORIGINAL APPROVED findings; never infer a global grammar pass."""
+    rows = []
+    available = [ev for ev in after_eval["evaluations"] if ev.get("runtime_eligible")]
+    for f in before_eval["findings"]:
+        wanted_gov = original_to_revised.get(f["governor_token_id"])
+        same_rule = [ev for ev in available if ev["rule_id"] == f["rule_id"]]
+        candidates = []
+        for ev in same_rule:
+            for m in ev.get("evidence", []):
+                # Where governor survives, its identity anchors the comparison.
+                if wanted_gov and m["governor_token_id"] != wanted_gov:
+                    continue
+                candidates.append((ev, m))
+        if not candidates and not wanted_gov:
+            # Replacing the original governor may preserve its syntactic role,
+            # but we cannot prove the role. Use only corresponding raw position.
+            try:
+                old_index = int(f["governor_token_id"][1:])
+            except ValueError:
+                old_index = -100
+            candidates = [(ev, m) for ev in same_rule
+                          for m in ev.get("evidence", [])
+                          if abs(int(m["governor_token_id"][1:]) - old_index) <= 1]
+        if len(candidates) == 1:
+            ev, m = candidates[0]
+            state = ev["status"]
+            outcome = {
+                "SATISFIED": "resolved_by_satisfaction",
+                "VIOLATED": "persists",
+                "NOT_APPLICABLE": "no_longer_applicable_after_rewrite",
+                "BLOCKED": "blocked",
+                "AMBIGUOUS": "ambiguous",
+            }.get(state, "unimplemented")
+            basis = "fresh_approved_rule_re_evaluation_with_token_alignment"
+        else:
+            state = ("NOT_APPLICABLE" if any(ev["status"] == "NOT_APPLICABLE"
+                                            for ev in same_rule) else "BLOCKED")
+            changed = any(set(edit["original_token_ids"]) &
+                          set(f["affected_token_ids"]) for edit in edits)
+            outcome = "no_longer_applicable_after_rewrite" if changed and state == "NOT_APPLICABLE" else "blocked"
+            basis = "inapplicability_only" if outcome.startswith("no_longer") else "insufficient_identity_or_analysis"
+        rows.append({
+            "original_finding_id": f["id"], "rule_id": f["rule_id"],
+            "outcome": outcome, "after_check_status": state,
+            "evidence_basis": basis,
+            "whole_sentence_certified": False,
+        })
+    return rows
+
+
+def _new_findings(before_eval: dict[str, Any], after_eval: dict[str, Any],
+                  edits: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Do not label a finding 'introduced' without a prior evidenced pass."""
+    original_rules = {r["rule_id"] for r in before_eval["findings"]}
+    prior = {ev["rule_id"]: ev for ev in before_eval["evaluations"]
+             if ev.get("runtime_eligible")}
+    new = []
+    for after in after_eval["findings"]:
+        old = prior.get(after["rule_id"])
+        if after["rule_id"] in original_rules:
+            # Could be persistence elsewhere: ambiguous without proven match.
+            origin = "unknown"
+            reason = "Original check also reported a violation; token identity may have changed."
+        elif old is not None and old.get("status") == "SATISFIED" and edits:
+            # Even then, a rule pass for one token does not rule out another.
+            origin = "unknown"
+            reason = "No verified one-to-one construction alignment proves this edit introduced the finding."
+        else:
+            origin = "unknown"
+            reason = "No conclusive prior local state exists; an issue may have been unmasked."
+        new.append({"finding_id": after["id"], "rule_id": after["rule_id"],
+                    "origin": origin, "causal_evidence_ids": [],
+                    "reason": reason, "whole_sentence_certified": False})
+    return new
+
+
+def _validate_revisions(payload: dict[str, Any]) -> tuple[str, list[dict[str, Any]], str | None, int | None]:
+    if not isinstance(payload, dict) or set(payload) - {"text", "candidates", "variety", "chapter"}:
+        raise ValueError("Only text, candidates, variety and chapter may be supplied")
+    text = payload.get("text")
+    if not isinstance(text, str) or not text.strip() or len(text) > MAX_SENTENCE:
+        raise ValueError("Original text must contain 1 to 1200 characters")
+    if len(tokenize(text)) > 200:
+        raise ValueError("Original text exceeds 200 source tokens")
+    variety = payload.get("variety")
+    if variety is not None and (not isinstance(variety, str) or not variety.strip() or len(variety) > 80):
+        raise ValueError("Selected variety is invalid")
+    chapter = payload.get("chapter")
+    if chapter is not None and (type(chapter) is not int or chapter < 1 or chapter > 11):
+        raise ValueError("Chapter must be 1 to 11 or null")
+    candidates = payload.get("candidates", [])
+    if not isinstance(candidates, list) or len(candidates) > MAX_REVISIONS:
+        raise ValueError("At most four revision candidates are supported")
+    for i, candidate in enumerate(candidates, 1):
+        if not isinstance(candidate, dict) or set(candidate) - {"text", "parent_version_id"}:
+            raise ValueError("Each revision must have only text and parent_version_id")
+        value = candidate.get("text")
+        if (not isinstance(value, str) or not value.strip()
+                or len(value) > MAX_SENTENCE or len(tokenize(value)) > 200):
+            raise ValueError("A revision contains invalid or oversized English text")
+        if value == text:
+            raise ValueError("A revision must differ from the original text")
+        parent = candidate.get("parent_version_id", "u0")
+        if parent not in {"u0"} | {f"v{j}" for j in range(1, i)}:
+            raise ValueError("Revision parent must be the original or an earlier revision")
+    return text, candidates, variety, chapter
+
+
+def recheck_revisions(payload: dict[str, Any], *, analyzer=None,
+                      root=None) -> dict[str, Any]:
+    """Immutable original and up to four alternative/staged user revisions.
+
+    analyzer and root are **server-side dependency injection only** for tests.
+    No HTTP handler forwards these arguments from user input. The production
+    backend uses the actual parser/canonicalizer on every snapshot.
+    """
+    text, candidates, variety, chapter = _validate_revisions(payload)
+    parse = analyzer or (lambda value: _reanalyze(value, chapter=chapter))
+    versions: dict[str, tuple[dict, dict, dict]] = {}
+
+    def observe(ident: str, value: str):
+        try:
+            analysis = parse(value)
+            if not isinstance(analysis, dict):
+                raise ValueError("analyzer returned non-object")
+            analysis = {**analysis, "sentence": value}
+        except (Exception, RecursionError):
+            analysis = {"status": "unresolved", "tree": None,
+                        "sentence": value, "reparse_status": "unavailable_or_failed"}
+        evaluated = evaluate_xai4(value, analysis_status=analysis.get("status", "unresolved"),
+                                  variety=variety, root=root)
+        localized = localize_xai4(evaluated, analysis=analysis, sentence=value)
+        versions[ident] = (analysis, evaluated, localized)
+        return _snapshot(ident, value, analysis, evaluated), localized
+
+    original, origin_map = observe("u0", text)
+    results = []
+    for i, row in enumerate(candidates, start=1):
+        ident = f"v{i}"
+        revised = row["text"]
+        parent_id = row.get("parent_version_id", "u0")
+        parent_text = text if parent_id == "u0" else results[int(parent_id[1:]) - 1]["snapshot"]["text"]
+        # Reparse AND re-run every approved/blocked check from scratch on this
+        # exact version; do not propagate original tree evidence to revisions.
+        snapshot, localization = observe(ident, revised)
+        edits, token_map, formatting = _token_alignment(text, revised)
+        step_edits, step_map, step_formatting = _token_alignment(parent_text, revised)
+        lineage = _recheck_lineage(versions["u0"][1], versions[ident][1], token_map, edits)
+        step_lineage = _recheck_lineage(
+            versions[parent_id][1], versions[ident][1], step_map, step_edits)
+        fresh = _new_findings(versions["u0"][1], versions[ident][1], edits)
+        results.append({
+            "version_id": ident, "parent_version_id": parent_id,
+            "snapshot": snapshot, "edits_from_original": edits,
+            "formatting_only_change": formatting,
+            "step_edits": step_edits,
+            "step_formatting_only_change": step_formatting,
+            "token_alignment": token_map,
+            "original_finding_lineage": lineage,
+            "parent_finding_lineage": step_lineage,
+            "new_findings": fresh,
+            "localization": localization,
+            "meaning_status": "not_assessed",
+            "candidate_status": "user_revision_not_a_verified_correction",
+            "whole_sentence_certified": False,
+        })
+    return {
+        "schema_version": VERSION, "language_policy": "ENGLISH_ONLY",
+        "mode": "server_recheck", "original": original,
+        "original_localization": origin_map,
+        "revisions": results, "original_finding_ids": [f["id"] for f in versions["u0"][1]["findings"]],
+        "auto_suggestions": [], "whole_sentence_certified": False,
+        "global_verdict": "NOT_CERTIFIED",
+        "diagnostic_rule_count": len(versions["u0"][1]["enabled_rule_ids"]),
+        "note": ("Every revision is independently reparsed and all eligible checks are rerun. "
+                 "Absence of a finding is not a whole-sentence grammar certificate."),
+    }
+
+
+def repair_request(data: dict[str, Any]) -> dict[str, Any]:
+    """HTTP-safe entrypoint; no runtime source, analyzer or rule injection."""
+    return recheck_revisions(data)
