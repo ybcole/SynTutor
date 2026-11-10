@@ -1,0 +1,431 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "XAI-5 evidence localization",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "original_hash",
+    "original_sentence",
+    "analysis_status",
+    "tree_status",
+    "tree_analysis_id",
+    "enabled_rule_ids",
+    "observations",
+    "diagnoses",
+    "dependencies",
+    "groups",
+    "auto_repair_suggestions",
+    "whole_sentence_certified",
+    "scope"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai5-repair-1.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "original_hash": {
+      "type": "string"
+    },
+    "original_sentence": {
+      "type": "string"
+    },
+    "analysis_status": {
+      "type": "string"
+    },
+    "tree_status": {
+      "enum": [
+        "unavailable",
+        "observed",
+        "provisional"
+      ]
+    },
+    "tree_analysis_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "enabled_rule_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "observation_id",
+          "rule_id",
+          "status",
+          "authority",
+          "sentence_span",
+          "token_span",
+          "affected_token_ids",
+          "governor_token_id",
+          "target_token_id",
+          "governor_text",
+          "target_text",
+          "governor_location",
+          "target_location",
+          "tree_relationship_status",
+          "description"
+        ],
+        "properties": {
+          "observation_id": {
+            "type": "string"
+          },
+          "rule_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "authority": {
+            "enum": [
+              "APPROVED_CHECK",
+              "UNAPPROVED_CANDIDATE"
+            ]
+          },
+          "sentence_span": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "token_span": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "affected_token_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "governor_token_id": {
+            "type": "string"
+          },
+          "target_token_id": {
+            "type": "string"
+          },
+          "governor_text": {
+            "type": "string"
+          },
+          "target_text": {
+            "type": "string"
+          },
+          "governor_location": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "node_id",
+              "ancestor_node_ids",
+              "proof_atom_ids"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "unavailable",
+                  "exact_word",
+                  "opaque_triangle",
+                  "covering_constituent_only"
+                ]
+              },
+              "node_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ancestor_node_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "proof_atom_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "target_location": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "node_id",
+              "ancestor_node_ids",
+              "proof_atom_ids"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "unavailable",
+                  "exact_word",
+                  "opaque_triangle",
+                  "covering_constituent_only"
+                ]
+              },
+              "node_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ancestor_node_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "proof_atom_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "tree_relationship_status": {
+            "enum": [
+              "position_only_no_licensed_function",
+              "unavailable"
+            ]
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "diagnoses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "finding_id",
+          "rule_id",
+          "status",
+          "affected_token_ids",
+          "governor_token_id",
+          "target_token_id",
+          "token_span",
+          "char_span",
+          "source_claim_ids",
+          "governor_location",
+          "target_location",
+          "interpretation_status"
+        ],
+        "properties": {
+          "finding_id": {
+            "type": "string"
+          },
+          "rule_id": {
+            "type": "string"
+          },
+          "status": {
+            "const": "VIOLATED"
+          },
+          "affected_token_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "governor_token_id": {
+            "type": "string"
+          },
+          "target_token_id": {
+            "type": "string"
+          },
+          "token_span": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "char_span": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "source_claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "governor_location": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "node_id",
+              "ancestor_node_ids",
+              "proof_atom_ids"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "unavailable",
+                  "exact_word",
+                  "opaque_triangle",
+                  "covering_constituent_only"
+                ]
+              },
+              "node_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ancestor_node_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "proof_atom_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "target_location": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "node_id",
+              "ancestor_node_ids",
+              "proof_atom_ids"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "unavailable",
+                  "exact_word",
+                  "opaque_triangle",
+                  "covering_constituent_only"
+                ]
+              },
+              "node_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ancestor_node_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "proof_atom_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "interpretation_status": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "from",
+          "to",
+          "kind"
+        ],
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "finding_ids",
+          "coupling",
+          "rationale"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "finding_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "coupling": {
+            "type": "string"
+          },
+          "rationale": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "auto_repair_suggestions": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "whole_sentence_certified": {
+      "const": false
+    },
+    "scope": {
+      "const": "observed_token_relations_and_approved_local_diagnoses_only"
+    }
+  }
+}
