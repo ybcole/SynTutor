@@ -126,6 +126,23 @@ jobs:
           python scripts/audit_learner_explanations.py > /tmp/learner-explanations-audit.json
           python -m json.tool /tmp/learner-explanations-audit.json > /dev/null
 
+      - name: XAI-8 independent-evaluation technical audit and safe release gate
+        run: |
+          python -m json.tool evaluation/xai8_safety_probes.json > /dev/null
+          python -m json.tool evaluation/xai8_safety_probes.schema.json > /dev/null
+          python -m json.tool evaluation/xai8_release_policy.json > /dev/null
+          python -m json.tool evaluation/xai8_release_policy.schema.json > /dev/null
+          python -m unittest -v server.test_xai8_release
+          python scripts/audit_xai8_release.py --require-technical-pass --output artifacts/xai8-technical-evaluation.json
+          python -m json.tool artifacts/xai8-technical-evaluation.json > /dev/null
+
+      - name: Upload XAI-8 technical audit and HOLD decision
+        uses: actions/upload-artifact@v4
+        with:
+          name: xai8-technical-evaluation
+          path: artifacts/xai8-technical-evaluation.json
+          if-no-files-found: error
+
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py
