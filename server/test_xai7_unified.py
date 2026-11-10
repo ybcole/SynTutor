@@ -185,7 +185,9 @@ class XAI7UnifiedTests(unittest.TestCase):
         orig=explain_request({"tree":a,"node_id":a["root"]["id"]})["xai7_unified"]
         new=explain_request({"tree":b,"node_id":b["root"]["id"]})["xai7_unified"]
         self.assertNotEqual(orig["analysis_id"],new["analysis_id"])
-        self.assertNotEqual(orig["selected_node_id"],new["selected_node_id"])
+        # Separate tree versions may reuse identical per-tree node IDs.
+        self.assertEqual(orig["selected_node_id"],a["root"]["id"])
+        self.assertEqual(new["selected_node_id"],b["root"]["id"])
         self.assertEqual(new["verified_issues"],[])
         VALIDATOR.validate(new)
 
