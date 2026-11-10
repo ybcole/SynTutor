@@ -4321,5 +4321,57 @@
     "related_rules": [],
     "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Do not enforce one modal analysis across all speakers.",
     "diagnostic": null
+  },
+  {
+    "id": "MORPH-066",
+    "domain": "morphology",
+    "concept": "Defective inflectional paradigm of aspectual use",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Aspectual use expressing former habit is largely restricted to a preterite and to a plain form after supportive do, without an ordinary present or -ing paradigm.",
+    "condition": "A use lexeme conveys past habitual aspect, not the unrelated lexical verb use meaning employ.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They used to gather before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They did not use to gather before noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.9 Use",
+        "pages": [
+          115
+        ],
+        "pdf_pages": [
+          135
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Defective inflectional paradigm of aspectual use",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. The exceptional past-perfect had used to is described as occasional rather than a productive paradigm.",
+    "diagnostic": null
   }
 ]
