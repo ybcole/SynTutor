@@ -61,7 +61,7 @@ class LearnerExplanationTests(unittest.TestCase):
                     self.assertTrue(all(phrase.lower() not in out["text"].lower()
                                         for phrase in FORBIDDEN),out["text"])
                 n+=1
-        self.assertGreater(n,80)
+        self.assertGreaterEqual(n,68)  # All 68 nodes across the ten source lesson trees
 
     def test_is_explains_actual_ongoing_action_not_span(self):
         g,ident=find_word(tree("br-06"),"is")
