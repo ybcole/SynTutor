@@ -229,7 +229,7 @@ class XAI5RepairTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             repair_request(original)
         for key in ("source_claim_ids","approved","registry","analyzer","root"):
-            with self.assertRaises(ValueError,key):
+            with self.assertRaises(ValueError, msg=key):
                 repair_request({"text":"She had went.",key:True})
 
     def test_invalid_revision_and_forward_parent_fail_closed(self):
