@@ -24,7 +24,9 @@ This section refers to the [new XAI roadmap](XAI_MASTER_PLAN.md), not the earlie
 - [x] Implement XAI-3 **English-only sentence-grounded short/deep observation composer** and accessible shared UI for clicked words and constituents, with explicit tree-atom proofs and unknown-role fallback. Technical evidence: [XAI-3 acceptance](../reports/xai-3-contextual-composer-acceptance-2026-11-10.md).
 - [x] Implement XAI-4 **candidate-only** Cambridge typed partial evaluation, exact raw-text spans, dependency overlap grouping, independent source gates, no unverified verdicts, and Generator/Builder API sidecars. Four candidate families, zero runtime-enabled rules. See [XAI-4 technical acceptance](../reports/xai-4-cambridge-partial-acceptance-2026-11-10.md).
 - [ ] XAI-4 **source-release acceptance**: independent linguistic approval, full exceptions, held-out adjudicated false-positive evaluation and explicit runtime allow-list entry for each Cambridge error detector; **0 verified diagnostic rules enabled**.
-- [ ] Obtain independent instructor approval for role licenses and held-out node-function gold cases. XAI-5 evolving correction trees remain pending.
+- [x] Implement XAI-5 **English-only immutable error-to-tree localization and user-authored revision reevaluation**: exact token/constituent evidence, unknown-role fallback, separated approved findings and unapproved observations, multi-issue groups, bounded staged revisions and rerun checks on each new parse. See [XAI-5 acceptance](../reports/xai-5-repair-lineage-acceptance-2026-11-10.md).
+- [ ] XAI-5 **verified correction release** requires XAI-4 human-adjudicated rule enablement, actual grammar-family precision tests and semantic-preservation assessment; currently 0 enabled rules, and no automatic verified repairs.
+- [ ] Independent instructor approval for role licenses and held-out node-function gold cases remains outstanding.
 
 **No Cambridge runtime rule is enabled by this preflight. Source inspection, developer acceptance and future linguistic approval are separate gates.**
 
