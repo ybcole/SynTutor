@@ -1635,7 +1635,7 @@ function showCanonicalTree(payload) {
       group.setAttribute('tabindex', '0');
       group.setAttribute('role', 'button');
     }
-    const accessibleLabel = owner === node ? facts.label : 'word';
+    const accessibleLabel = node.word ? 'word' : facts.label;
     group.setAttribute('aria-label', `Inspect Burton-Roberts ${accessibleLabel}${facts.surface ? ` for ${facts.surface}` : ''}`);
     if (!interactiveSvg) group.setAttribute('aria-pressed', 'false');
     const select = async () => {
