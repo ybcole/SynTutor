@@ -30,7 +30,7 @@ class XAI0BaselineTests(unittest.TestCase):
         self.assertGreaterEqual(len({x["family"] for x in rows}), 10)
         self.assertEqual(self.corpus["language_policy"], "ENGLISH_ONLY")
         self.assertTrue(all(x["language"] == "en" for x in rows))
-        self.assertTrue(all(x["family"] != "taglish_unsupported" for x in rows))
+        self.assertTrue(all(x["intent"] != "unsupported_or_mixed_language" for x in rows))
         self.assertEqual(sum(x["family"] == "english_edge_cases" for x in rows), 8)
 
     def test_contains_hard_correction_and_cambridge_exceptions(self):
