@@ -56,21 +56,24 @@ try:
     nodes.first.press('Enter')
     area=lesson.locator('[data-xai7-lesson]')
     area.locator('[data-shared-evidence]').wait_for(timeout=30000)
-    assert area.locator('[data-xai7-navigation]').count()==1
+    assert area.locator('[data-shared-evidence] p').count()==1
+    first_text=area.locator('[data-xai-short]').inner_text()
+    assert len(first_text)<750
     assert tree.locator('svg g[data-xai7-focus="selected"]').count()==1
     old=tree.locator('svg g[data-xai7-focus="selected"]').get_attribute('data-node-id')
     nodes.last.press('Enter')
-    expect(area.locator('[data-xai7-selected]')).to_contain_text(':')
+    second_text=area.locator('[data-xai-short]').inner_text()
+    assert second_text!=first_text,(first_text,second_text)
     new=tree.locator('svg g[data-xai7-focus="selected"]').get_attribute('data-node-id')
     assert new!=old,(old,new)
     assert tree.locator('svg g[data-xai7-focus="selected"]').count()==1
-    assert area.locator('[data-xai7-verbosity]').count()==1
+    assert area.locator('[data-shared-evidence] details').count()==0
     # A feature row is independently keyboard selectable, but is never
     # promoted into an inferred syntactic function.
     feature=tree.locator('svg [data-feature-label]').first
     assert feature.count()>=1,'br-04 must expose its recorded B-R V feature'
     feature.press('Enter')
-    expect(area.locator('[data-xai7-feature-selected]')).to_contain_text('recorded feature',timeout=30000)
+    expect(area.locator('[data-xai-short]')).to_contain_text('transitive',timeout=30000)
     current=tree.locator('svg').get_attribute('width')
     tree.get_by_role('button',name='Zoom in').click()
     enlarged=tree.locator('svg').get_attribute('width')
@@ -107,7 +110,8 @@ try:
     review_tree.locator('svg g[data-node-id][role="button"]').first.press('Enter')
     inspector=review.locator('[data-xai7-quiz-inspector]')
     inspector.locator('[data-shared-evidence]').wait_for(timeout=30000)
-    assert inspector.locator('[data-xai7-navigation]').count()==1
+    assert inspector.locator('[data-shared-evidence] p').count()==1
+    assert len(inspector.locator('[data-xai-short]').inner_text())<750
     assert review_tree.locator('svg g[data-xai7-focus="selected"]').count()==1
     assert review_tree.locator('.lesson-tree-text [data-xai7-focus="selected"]').count()==1
     assert review.locator('xpath=ancestor::article[1]').locator('[data-shared-evidence]').count()>=2
