@@ -2079,6 +2079,62 @@
       "crosswalk_ids": [
         "CW-COMPLEMENT-LICENSING"
       ]
+    },
+    {
+      "id": "CGEL-UNLIKE-CATEGORY-COORDINATION",
+      "book_id": "CGEL",
+      "chapter": 2,
+      "printed_pages": [
+        45
+      ],
+      "kind": "descriptive_generalization",
+      "scope": {
+        "target_labels": [
+          "S",
+          "NP"
+        ],
+        "profiles": [
+          "FINAL-D1"
+        ],
+        "precondition": "CGEL's analysis of coordination recognizes some coordinations whose constituents belong to different syntactic categories; do not generalize B–R's introductory same-category test into a universal rule.",
+        "exceptions": [
+          "Only claim a particular coordination is licensed after the underlying source-matched construction and semantic relation are established."
+        ],
+        "alternatives": [
+          "Compare with B–R's introductory same-category coordination test without silently changing the B–R tree."
+        ]
+      },
+      "pedagogy": {
+        "short": "Cambridge allows some constructions coordinating unlike categories.",
+        "expanded": "In its Ch. 2 overview, Cambridge analyzes some coordinations of an NP with a subordinate interrogative clause. This is not automatically an error even though B–R introduces a same-category coordination criterion for its instructional phrase markers. Explanations must retain the selected framework and source scope.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "Find out the cost and whether delivery is included.",
+              "explanation": "This illustrates Cambridge's category-mixed coordination analysis; it is not a promise that every mixture is licensed.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": [
+        "CW-COORDINATION-SCOPE"
+      ]
     }
   ],
   "crosswalks": [
@@ -2094,7 +2150,7 @@
     {
       "id": "CW-COORDINATION-SCOPE",
       "left": "BR3-SAME-CATEGORY-COORDINATION",
-      "right": "CGEL-CLAUSE-VS-SENTENCE",
+      "right": "CGEL-UNLIKE-CATEGORY-COORDINATION",
       "relation": "analysis_differs",
       "issue": "B–R Ch.3 introduces same-category coordination as a test, whereas CGEL Ch.2 p.45 allows unlike-category coordination. Context-specific analysis needed.",
       "do_not_auto_relabel": true,
