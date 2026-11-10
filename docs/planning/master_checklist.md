@@ -18,7 +18,9 @@ This section refers to the [new XAI roadmap](XAI_MASTER_PLAN.md), not the earlie
 - [x] Implement English-only XAI-0 coverage checks for 116 development sentences, with a pinned-model CI audit. Replace out-of-scope input examples and refresh canonical/source-citation measures in [XAI-0 acceptance](../reports/xai-0-baseline-acceptance-2026-11-10.md).
 - [x] Preserve candidate diagnostic versus book authority and document legacy triage disagreements without inventing source-certified accuracy.
 - [ ] Obtain independently adjudicated held-out grammaticality/error diagnoses for later XAI evaluation (XAI-8).
-- [ ] Implement XAI-1 onward contextual explanation/rule work and XAI-5 live evolving B–R tree UI.
+- [x] Implement English-only XAI-1 **source-checked concept catalog** (42 concepts, eight crosswalks, 21 provisional contextual template candidates) and fail-closed model-free tests; see [XAI-1 acceptance](../reports/xai-1-source-concepts-acceptance-2026-11-10.md).
+- [ ] Obtain independent instructor/human source approval for all learner-facing XAI-1 concept claims and exceptions before activating teaching templates.
+- [ ] Implement XAI-2/3 sentence-specific fact graph and clickable explanations, XAI-4 grammatical constraints, and XAI-5 live evolving B–R correction trees.
 
 **No Cambridge runtime rule is enabled by this preflight. Source inspection, developer acceptance and future linguistic approval are separate gates.**
 
