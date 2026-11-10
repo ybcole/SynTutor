@@ -118,6 +118,7 @@ class XAI4PartialTests(unittest.TestCase):
         manifest, audit = deepcopy(CANDIDATES), deepcopy(AUDIT)
         modal = next(r for r in manifest["rules"] if r["family"] == "modal_plain_form")
         modal["crosswalk_id"] = "TEST-CW-MODAL"
+        modal["source_claim_ids"].append("BR3-AUX-HEADS-VP")
         audit["crosswalks"].append(dict(id="TEST-CW-MODAL",
              cgel_claim_id="CGEL-MODAL-PLAIN", br_claim_id="BR3-AUX-HEADS-VP",
              review_status="independently_approved", relation="terminology_differs",
