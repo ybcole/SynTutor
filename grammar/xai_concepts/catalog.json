@@ -2135,6 +2135,264 @@
       "crosswalk_ids": [
         "CW-COORDINATION-SCOPE"
       ]
+    },
+    {
+      "id": "BR3-ADJECTIVE-PHRASE-HEAD",
+      "book_id": "BR3",
+      "chapter": 3,
+      "printed_pages": [
+        55
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "AP",
+          "A",
+          "DEG"
+        ],
+        "profiles": [
+          "V3",
+          "FINAL-D1"
+        ],
+        "precondition": "A source-licensed AP contains an adjective head, possibly with degree modification.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "An AP is centered on an adjective; a degree expression can modify it.",
+        "expanded": "A single adjective can also realize a full AP. The head adjective is distinct from optional degree modification. Do not assume every adjective is gradable.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "The exceptionally tall tree fell.",
+              "explanation": "Tall is the head adjective of a possible AP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-ADVERB-PHRASE-HEAD",
+      "book_id": "BR3",
+      "chapter": 3,
+      "printed_pages": [
+        56
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "AdvP",
+          "Adv",
+          "DEG"
+        ],
+        "profiles": [
+          "V3",
+          "FINAL-D1"
+        ],
+        "precondition": "A source-licensed general adverb heads AdvP, optionally modified by degree.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "An AdvP may contain a general adverb with optional degree modification.",
+        "expanded": "Degree adverbs can modify general adverbs; the structural relation must be licensed rather than inferred from the -ly ending.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "She spoke very quietly.",
+              "explanation": "Quietly heads a possible AdvP.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-PREPOSITION-PHRASE-NP-COMPLEMENT",
+      "book_id": "BR3",
+      "chapter": 3,
+      "printed_pages": [
+        56
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "PP",
+          "P",
+          "NP"
+        ],
+        "profiles": [
+          "V3",
+          "FINAL-D1"
+        ],
+        "precondition": "In a basic B-R PP, P is the head and the selected NP is its complement.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "The preposition heads its PP, and a following NP may complement it.",
+        "expanded": "Distinguish the preposition's NP complement from the attachment of the complete PP elsewhere in the sentence.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "The cat slept beside the window.",
+              "explanation": "Beside can head a PP with the NP the window as complement.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-SINGLE-WORD-PP",
+      "book_id": "BR3",
+      "chapter": 3,
+      "printed_pages": [
+        57
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "P",
+          "PP"
+        ],
+        "profiles": [
+          "V3",
+          "FINAL-D1"
+        ],
+        "precondition": "Some temporal and locative prepositions count as complete one-word PPs under B-R.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "Some one-word locative or temporal expressions realize a complete PP in B-R's conventions.",
+        "expanded": "Expressions such as here, there, now and then can be P/PP in the book's representation; do not silently impose Cambridge or a generic tagger's category.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "The children stayed here.",
+              "explanation": "Here may function as a one-word PP in a licensed B-R analysis.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
+    },
+    {
+      "id": "BR3-DETERMINER-ARTICLE",
+      "book_id": "BR3",
+      "chapter": 7,
+      "printed_pages": [
+        142
+      ],
+      "kind": "classification",
+      "scope": {
+        "target_labels": [
+          "DET",
+          "ART"
+        ],
+        "profiles": [
+          "V3",
+          "FINAL-D1"
+        ],
+        "precondition": "Articles and certain other determiners occupy the DET position in B-R's branching NP.",
+        "exceptions": [],
+        "alternatives": []
+      },
+      "pedagogy": {
+        "short": "The article the or a/an can occupy the DET position in an NP.",
+        "expanded": "The determiner differs from the head noun and may be realized by article, demonstrative, quantifier or possessive; check a licensed NP configuration.",
+        "examples": {
+          "positive": [
+            {
+              "sentence": "The book fell.",
+              "explanation": "The article the fills the determiner position, not the noun head.",
+              "status": "illustrative_not_parser_verified"
+            }
+          ],
+          "contrast": [],
+          "exception": []
+        }
+      },
+      "review": {
+        "primary_text_inspected": true,
+        "method": "assistant_targeted_page_comparison_with_uploaded_primary_pdf",
+        "checked_on": "2026-11-10",
+        "status": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW",
+        "human_approved": false
+      },
+      "runtime": {
+        "teaching_enabled": false,
+        "grammar_constraint_enabled": false,
+        "can_diagnose": false,
+        "can_repair": false
+      },
+      "crosswalk_ids": []
     }
   ],
   "crosswalks": [
@@ -2472,6 +2730,82 @@
       ],
       "text": "The PP {target_surface} modifies VP {governing_vp_span} in the licensed analysis.",
       "deep_text": "Do not assume that every PP is an adjunct; some are lexically selected complements.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-AP-HEAD",
+      "concept_id": "BR3-ADJECTIVE-PHRASE-HEAD",
+      "target_kind": "constituent",
+      "target_label": "AP",
+      "required_fact_keys": [
+        "target_surface",
+        "adjective_head"
+      ],
+      "text": "In AP {target_surface}, {adjective_head} is its adjective head.",
+      "deep_text": "Additional AP material must be source-licensed before being identified as modifier.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-ADVP-HEAD",
+      "concept_id": "BR3-ADVERB-PHRASE-HEAD",
+      "target_kind": "constituent",
+      "target_label": "AdvP",
+      "required_fact_keys": [
+        "target_surface",
+        "adverb_head"
+      ],
+      "text": "The AdvP {target_surface} is headed by {adverb_head}.",
+      "deep_text": "A degree relation must be established from a real B-R source-licensed tree.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-PP-HEAD",
+      "concept_id": "BR3-PREPOSITION-PHRASE-NP-COMPLEMENT",
+      "target_kind": "constituent",
+      "target_label": "PP",
+      "required_fact_keys": [
+        "target_surface",
+        "preposition_head",
+        "complement_np_span"
+      ],
+      "text": "The PP {target_surface} is headed by {preposition_head} and has NP {complement_np_span} as complement.",
+      "deep_text": "The PP may have distinct functions in the larger clause; do not assume every PP is an adjunct.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-P-HEAD",
+      "concept_id": "BR3-PREPOSITION-PHRASE-NP-COMPLEMENT",
+      "target_kind": "lexical",
+      "target_label": "P",
+      "required_fact_keys": [
+        "target_surface",
+        "parent_pp_span"
+      ],
+      "text": "The preposition {target_surface} heads PP {parent_pp_span}.",
+      "deep_text": "The NP-complement relationship is separate from how the entire PP attaches in the sentence.",
+      "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
+      "review_status": "PENDING_INDEPENDENT_REVIEW",
+      "requires_fact_graph": true
+    },
+    {
+      "id": "T-ART-DET",
+      "concept_id": "BR3-DETERMINER-ARTICLE",
+      "target_kind": "word",
+      "target_label": "ART",
+      "required_fact_keys": [
+        "target_surface",
+        "parent_np_span"
+      ],
+      "text": "The article {target_surface} realizes DET inside NP {parent_np_span}.",
+      "deep_text": "A determiner is not the noun head and its exact role depends on the licensed NP structure.",
       "stage": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE",
       "review_status": "PENDING_INDEPENDENT_REVIEW",
       "requires_fact_graph": true
