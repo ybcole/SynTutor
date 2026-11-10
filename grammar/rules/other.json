@@ -13066,5 +13066,1625 @@
     "related_rules": [],
     "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: Tentativeness is a discourse effect, not a unique syntactic clause type.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-236",
+    "domain": "other",
+    "concept": "Position verbs as fixed states versus temporary activities",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Stand, sit and lie generally describe states when expressing relatively permanent positions, but may be construed as activities in temporary or agent-controlled positions.",
+    "condition": "Compare the locational predicate of a permanent entity with an animate subject maintaining a temporary position.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The preterite may express a temporary positioning as a whole event without progressive aspect.",
+        "pages": [
+          171
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lighthouse stands beside the bay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A guard is standing beside the entrance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Position verbs",
+        "pages": [
+          171
+        ],
+        "pdf_pages": [
+          191
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position verbs as fixed states versus temporary activities",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-237",
+    "domain": "other",
+    "concept": "Narrative progressive of permanent position",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A progressive can describe an objectively permanent position when the narrator presents it from a limited temporal viewpoint of observation.",
+    "condition": "A narrative locates a permanent feature within a character's temporary experience.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Narrative viewpoint can license progressive with an objectively permanent spatial relation.",
+        "pages": [
+          171
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "As we reached the ridge, the tower was standing above the mist.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "From the shoreline, the cliffs were rising behind the harbour.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Position verbs",
+        "pages": [
+          171
+        ],
+        "pdf_pages": [
+          191
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Narrative progressive of permanent position",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-238",
+    "domain": "other",
+    "concept": "Present-time temporary position and progressive preference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "For a specific present-time temporary position, an animate-subject position verb strongly favours the progressive, though a general or habitual present may use the non-progressive.",
+    "condition": "A question asks where an identifiable person is currently located or positioned.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The simple present is normal for a serial or habitual state and is not prohibited for all positions.",
+        "pages": [
+          171
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Sofia is sitting near the window right now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Sofia sits near the window during every lecture.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Position verbs",
+        "pages": [
+          171
+        ],
+        "pdf_pages": [
+          191
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present-time temporary position and progressive preference",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-239",
+    "domain": "other",
+    "concept": "Non-aspectual progressive in future-time expressions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The progressive can express a future arrangement or a prior decision without asserting that an event is ongoing at the reference time.",
+    "condition": "Progressive aspect occurs in a futurate or after will, with a future event understood as planned.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same morphological progressive can also have its central ongoing-event aspectual meaning, especially with will.",
+        "pages": [
+          172
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm meeting the coordinator tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Will you be attending the conference next week?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.3 Non-aspectual progressive",
+        "pages": [
+          171,
+          172
+        ],
+        "pdf_pages": [
+          191,
+          192
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-aspectual progressive in future-time expressions",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-240",
+    "domain": "other",
+    "concept": "Human agency and intention in progressive futurates",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The progressive futurate normally requires a role for human agency or intention in the relevant future situation, unlike the broader simple-present futurate.",
+    "condition": "A future-time event is presented as an arranged or intentionally scheduled action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Predictable non-agentive future phenomena are readily described by a simple-present futurate and not generally by the progressive futurate.",
+        "pages": [
+          171
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm calling the caretaker this evening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We're presenting the proposal on Thursday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.3(a) Progressive futurate",
+        "pages": [
+          171
+        ],
+        "pdf_pages": [
+          191
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Human agency and intention in progressive futurates",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-241",
+    "domain": "other",
+    "concept": "Simple-present scheduled futurate versus progressive intention",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A simple-present futurate typically presents an externally fixed schedule or plan, whereas a progressive futurate can also reflect a privately formed intention.",
+    "condition": "Compare a scheduled future personal action with one the speaker has simply decided to perform.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An event such as a scheduled operation can support both futurate forms with little practical difference.",
+        "pages": [
+          171
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I call the supplier at noon tomorrow, as the roster specifies.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'm calling the supplier tonight; I've just decided to.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.3(a) Progressive futurate",
+        "pages": [
+          171
+        ],
+        "pdf_pages": [
+          191
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple-present scheduled futurate versus progressive intention",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-242",
+    "domain": "other",
+    "concept": "Progressive futurate preference for near future",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The progressive futurate usually sounds more natural with a relatively near future time than an event projected far ahead.",
+    "condition": "A progressive futurate is compared with a non-progressive futurate for near and distant planned events.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Near-future preference is a tendency, not an absolute grammatical ban on long-range plans.",
+        "pages": [
+          171
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The licence is expiring next week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The licence expires in five years.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.3(a) Progressive futurate",
+        "pages": [
+          171
+        ],
+        "pdf_pages": [
+          191
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Progressive futurate preference for near future",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-243",
+    "domain": "other",
+    "concept": "Will plus progressive as genuine ongoing future viewpoint",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With its ordinary aspectual meaning, will plus a progressive describes a situation already in progress at a specified future reference time.",
+    "condition": "A future temporal adjunct locates a point inside the duration of an event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Will plus progressive also has a non-aspectual prior-decision meaning and cannot always be analysed as a mid-interval view.",
+        "pages": [
+          172
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When you arrive, we will still be preparing dinner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "At eight tomorrow, the committee will be discussing the budget.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.3(b) Will + progressive",
+        "pages": [
+          171,
+          172
+        ],
+        "pdf_pages": [
+          191,
+          192
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will plus progressive as genuine ongoing future viewpoint",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-244",
+    "domain": "other",
+    "concept": "Will plus progressive as settled future decision",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will plus progressive can present an action as previously decided or otherwise settled, rather than as a choice made in the current conversation.",
+    "condition": "A future event is scheduled independently of a speaker's present decision.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The ongoing future-time reading remains available with appropriate temporal context.",
+        "pages": [
+          172
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We'll be replacing the equipment next Monday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The staff won't be ordering additional supplies this month.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.3(b) Will + progressive",
+        "pages": [
+          172
+        ],
+        "pdf_pages": [
+          192
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will plus progressive as settled future decision",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-245",
+    "domain": "other",
+    "concept": "Request avoidance in will-plus-progressive questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A will-plus-progressive question can ask whether an intended future event is already scheduled, avoiding the request or willingness reading of a will-plus-plain-verb question.",
+    "condition": "A polar question concerns another person's prospective activity and might otherwise be interpreted as asking for that person to perform it.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The distinction is pragmatic and context-sensitive; neither construction is ungrammatical.",
+        "pages": [
+          172
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Will you be visiting the library this afternoon? [question about plans]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Will you visit the library this afternoon? [may be a request]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.3(b) Will + progressive",
+        "pages": [
+          172
+        ],
+        "pdf_pages": [
+          192
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Request avoidance in will-plus-progressive questions",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-246",
+    "domain": "other",
+    "concept": "Ambiguity between ongoing future event and settled future event",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A future temporal clause accompanying will plus progressive may refer either to a point within an ongoing event or to the scheduled occurrence itself.",
+    "condition": "A future time adjunct combines with will be followed by a gerund-participle.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Aspectual and prior-decision readings can share the same surface form and differ only in context.",
+        "pages": [
+          172
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When the session ends, we'll be flying to Singapore. [flight may be ongoing]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When the session ends, we'll be flying to Singapore. [departure is scheduled then]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.3(b) Will + progressive",
+        "pages": [
+          172
+        ],
+        "pdf_pages": [
+          192
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ambiguity between ongoing future event and settled future event",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-247",
+    "domain": "other",
+    "concept": "Settled-future progressive with be going to",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-aspectual settled-future progressive can occur after expressions such as be going to as well as after will.",
+    "condition": "A futurate expression selects progressive aspect on its complement to suggest an established arrangement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The non-progressive variant may be interpreted as a request and the exact effect depends on the discourse.",
+        "pages": [
+          172
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Are you going to be helping at the event again this year?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They're going to be moving offices next month.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.3(b) Will + progressive",
+        "pages": [
+          172
+        ],
+        "pdf_pages": [
+          192
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Settled-future progressive with be going to",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-248",
+    "domain": "other",
+    "concept": "Mood as grammar versus modality as meaning",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Mood is the grammatical expression of modality within the verbal system; modality is a category of meaning concerned with factuality and actualisation.",
+    "condition": "Distinguish grammatical marking by auxiliaries or verb forms from the modal meanings those constructions express.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other clauses may express modality through lexical categories and syntax outside the auxiliary system.",
+        "pages": [
+          173
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She may depart early. [modal meaning and an analytic mood construction]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Departure is possible. [lexical modal meaning without a modal auxiliary]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9 Mood and modality",
+        "pages": [
+          172
+        ],
+        "pdf_pages": [
+          192
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mood as grammar versus modality as meaning",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-249",
+    "domain": "other",
+    "concept": "Modern English has only residual inflectional irrealis",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "English has lost most older inflectional mood contrasts; singular irrealis were is a residual form, often replaceable by ordinary preterite was.",
+    "condition": "A modal-remote clause uses first- or third-person singular be.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The were/was alternative is context- and register-sensitive; it should not be treated as a universal error.",
+        "pages": [
+          172
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she were available, we could begin.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she was available, we could begin.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9 Mood and modality",
+        "pages": [
+          172
+        ],
+        "pdf_pages": [
+          192
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modern English has only residual inflectional irrealis",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-250",
+    "domain": "other",
+    "concept": "Analytic mood in English modal auxiliaries",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The principal English mood system is analytic, expressed by the presence or absence of modal auxiliary verbs rather than an extensive inflectional paradigm.",
+    "condition": "Compare unmodalised and modalised finite clauses.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Irrealis were is a remaining inflectional exception.",
+        "pages": [
+          172
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitor has entered the hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitor may have entered the hall.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9 Mood and modality",
+        "pages": [
+          172
+        ],
+        "pdf_pages": [
+          192
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Analytic mood in English modal auxiliaries",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-251",
+    "domain": "other",
+    "concept": "Modality as factuality or actualisation attitude",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modality centrally expresses an attitude to whether a proposition is factual or whether a possible situation is to be brought about.",
+    "condition": "A modal clause concerns an inference about a past event or an obligation toward a future event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The concept has fuzzy boundaries, and modal expressions need not denote only a speaker's attitude.",
+        "pages": [
+          173
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They must have completed the inspection. [inferred fact]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You must complete the inspection. [required future action]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Domain of modality",
+        "pages": [
+          172,
+          173
+        ],
+        "pdf_pages": [
+          192,
+          193
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modality as factuality or actualisation attitude",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-252",
+    "domain": "other",
+    "concept": "Epistemic inference versus unqualified assertion",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An ordinary affirmative declarative presents a proposition as unqualified fact, whereas epistemic must presents it as a necessary inference from evidence.",
+    "condition": "A past or present proposition is compared with and without inference-marking must.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Epistemic must may communicate strong commitment but does not by itself encode direct observation.",
+        "pages": [
+          173
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The train has departed. [unqualified assertion]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The train must have departed. [inferred from evidence]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Domain of modality",
+        "pages": [
+          173
+        ],
+        "pdf_pages": [
+          193
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic inference versus unqualified assertion",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-253",
+    "domain": "other",
+    "concept": "Necessity and possibility as core modal meanings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Necessity and possibility form the core of modality, with must expressing necessity and may often expressing possibility across different kinds of modality.",
+    "condition": "The clause expresses an inferential necessity/possibility or an obligation/permission.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The modal kind and scope must be established by context, not word identity alone.",
+        "pages": [
+          173
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The key must be in the drawer. [inference]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The key may be in the drawer. [possibility]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "You must leave now. [obligation]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "You may leave now. [permission]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Domain of modality",
+        "pages": [
+          173
+        ],
+        "pdf_pages": [
+          193
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Necessity and possibility as core modal meanings",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-254",
+    "domain": "other",
+    "concept": "Modal scope may belong to a reported subject",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal meaning can represent the beliefs or attitude of a person mentioned in the clause rather than the current speaker's own position.",
+    "condition": "A matrix reporting or cognitive predicate embeds a modal assertion.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The use of a modal in embedded reported belief does not automatically assert the same modal attitude for the narrator.",
+        "pages": [
+          173
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara thinks the meeting must already be over.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The analyst believes the result may be inaccurate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Domain of modality",
+        "pages": [
+          173
+        ],
+        "pdf_pages": [
+          193
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal scope may belong to a reported subject",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-255",
+    "domain": "other",
+    "concept": "Objective mathematical necessity is also modality",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal necessity can describe objective logical or mathematical requirements, not only a subjective personal inference.",
+    "condition": "A mathematical or logical constraint determines a necessary result.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The objective reading is an extension beyond a speaker's subjective attitude.",
+        "pages": [
+          173
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the number is even and prime, it must be two.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If x is a square with side length four, its area must be sixteen.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Domain of modality",
+        "pages": [
+          173
+        ],
+        "pdf_pages": [
+          193
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Objective mathematical necessity is also modality",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-256",
+    "domain": "other",
+    "concept": "Modality expressed outside auxiliary verb syntax",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal meanings can be expressed by lexical adjectives, adverbs, main verbs and nouns, without belonging to the auxiliary class.",
+    "condition": "An expression such as possible, probably, require, or necessity contributes modal meaning independently of modal auxiliary syntax.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A lexical modal does not thereby become an auxiliary capable of NICE constructions.",
+        "pages": [
+          173
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is possible that the train is delayed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The delay is probably temporary.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Permission is required for entry.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Lexical modals",
+        "pages": [
+          173
+        ],
+        "pdf_pages": [
+          193
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modality expressed outside auxiliary verb syntax",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-257",
+    "domain": "other",
+    "concept": "Preterite for modal remoteness versus time",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Preterite can indicate modal remoteness instead of placing a situation in the past, with open and remote conditionals differing in perceived likelihood.",
+    "condition": "A conditional pairs its antecedent with a present or preterite form and corresponding modal expression.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A perfect can occasionally contribute additional modal remoteness; remote preterite is not always a claim of past time.",
+        "pages": [
+          174
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you complete the form today, we will process it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you completed the form today, we would process it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Past tense as modality",
+        "pages": [
+          173,
+          174
+        ],
+        "pdf_pages": [
+          193,
+          194
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preterite for modal remoteness versus time",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-258",
+    "domain": "other",
+    "concept": "Plain infinitive versus gerund-participle in actualisation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Infinitival plain-form complements are frequently associated with potential or non-actualised events, whereas gerund-participial complements often refer to actual events.",
+    "condition": "A prospective to-infinitive is compared with an appropriate actual-event gerund-participial construction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The comparison reflects the meaning of the governing construction; not every infinitive is non-actual or every gerund-participle factual.",
+        "pages": [
+          174
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She hopes to discuss the proposal. [prospective]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She enjoys discussing the proposal. [actual repeated activity]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Other verb inflection",
+        "pages": [
+          174
+        ],
+        "pdf_pages": [
+          194
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plain infinitive versus gerund-participle in actualisation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-259",
+    "domain": "other",
+    "concept": "Imperative and interrogative clause types convey modal stance",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Imperatives prototypically direct the addressee to actualise a situation; interrogatives prototypically ask about possibilities the questioner does not know.",
+    "condition": "Compare a directive imperative and a polar information question.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Clause type is associated with, not identical to, speech-act force; a question can function as a request.",
+        "pages": [
+          174
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Close the side gate, please.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Has the side gate been closed?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Clause type and modality",
+        "pages": [
+          174
+        ],
+        "pdf_pages": [
+          194
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Imperative and interrogative clause types convey modal stance",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-260",
+    "domain": "other",
+    "concept": "Attitude complements versus factive complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Under subordination, a thought complement may not commit the current speaker to its truth, while a knowledge complement commonly preserves such commitment.",
+    "condition": "A proposition occurs as the complement of think versus know.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Subordination does not inherently modalise or suspend truth commitment; it depends on the governing construction.",
+        "pages": [
+          174
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Sonia thinks the archive is open. [speaker need not endorse]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Sonia knows the archive is open. [factive commitment]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Subordination and modality",
+        "pages": [
+          174
+        ],
+        "pdf_pages": [
+          194
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Attitude complements versus factive complements",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-261",
+    "domain": "other",
+    "concept": "Mandative subordinate plain form and should",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Mandative subordinate clauses can express a requirement or desirability of actualisation through a plain verb form or modal should.",
+    "condition": "A mandative content clause follows a predicate of necessity or desirability.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relevant mandative construction is a subordinate one, not an arbitrary indicative clause.",
+        "pages": [
+          174
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is essential that she be notified.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is essential that she should be notified.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Subordination and modality",
+        "pages": [
+          174,
+          175
+        ],
+        "pdf_pages": [
+          194,
+          195
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mandative subordinate plain form and should",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-262",
+    "domain": "other",
+    "concept": "Remote conditionals require a modal matrix",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The central remote conditional construction combines a modally remote subordinate preterite with an appropriate modal auxiliary in the matrix clause.",
+    "condition": "An if-clause has modal remoteness rather than a straightforward past-time interpretation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Open conditionals also frequently have modalised matrices but are not obligatorily remote.",
+        "pages": [
+          175
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If Mina had the map, she would guide us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the door were unlocked, we could enter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Subordination and modality",
+        "pages": [
+          174,
+          175
+        ],
+        "pdf_pages": [
+          194,
+          195
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remote conditionals require a modal matrix",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
+    "diagnostic": null
   }
 ]
