@@ -102,7 +102,8 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
               'analysis_status': str(analysis.get('status', 'unresolved')),
               'channels': {key: [] for key in CHANNELS}, 'facts': [], 'diagnostics': [],
               'fact_graph': None, 'contextual_explanations': None,
-              'xai4_partial_evaluation': None, 'xai5_localization': None}
+              'xai4_partial_evaluation': None, 'xai5_localization': None,
+              'xai6_naturalization': None}
     from xai4_partial import evaluate_xai4
     source_text = analysis.get('sentence')
     if source_text is None and isinstance(analysis.get('tree'), dict):
@@ -118,6 +119,10 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
         output['fact_graph'] = build_fact_graph(analysis, node_id=node_id)
         from xai_composer import compose_explanations
         output['contextual_explanations'] = compose_explanations(output['fact_graph'], node_id=node_id)
+        from xai6_naturalizer import naturalize
+        output['xai6_naturalization'] = naturalize(
+            output['fact_graph'], output['contextual_explanations'], node_id=node_id,
+            variety=variety)
     if (analysis.get('status') != 'normalized' or not isinstance(analysis.get('tree'), dict)
             or analysis['tree'].get('source', {}).get('evidence_status') == 'UNCERTAIN'):
         output['status'] = 'ANALYSIS_UNRESOLVED'
