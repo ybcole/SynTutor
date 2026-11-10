@@ -9676,5 +9676,818 @@
     "related_rules": [],
     "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: Adverbs and discourse can shift the intended action from immediate future to a later time.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-174",
+    "domain": "other",
+    "concept": "Matrix time as anchor for a non-finite complement",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A tenseless gerund-participial complement can refer to a situation earlier than, simultaneous with, or later than the time of its catenative matrix verb.",
+    "condition": "A gerund-participial clause is governed by a catenative matrix predicate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I recalled meeting the chairperson last spring. [earlier than recall]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I enjoyed watching the parade. [simultaneous]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I intended visiting the site the following week. [later than intend]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Temporal interpretation of constructions without primary tense",
+        "pages": [
+          160
+        ],
+        "pdf_pages": [
+          180
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Matrix time as anchor for a non-finite complement",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The governing verb, not the -ing form alone, determines the temporal relation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-175",
+    "domain": "other",
+    "concept": "Five classes of catenative temporal interpretation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Catenative predicates can select complements whose reference time is anterior, anterior or simultaneous, simultaneous, simultaneous or posterior, or posterior to matrix time.",
+    "condition": "A non-finite complement of a catenative verb is interpreted through the matrix predicate's lexical temporal selection.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I remember telling her the date. [anterior]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She seems to know the answer. [simultaneous]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They intend to reopen the hall tomorrow. [posterior]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          160
+        ],
+        "pdf_pages": [
+          180
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Five classes of catenative temporal interpretation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The book's five classes are a sample classification; an apparently similar lexical verb or a different complement type may select a different reading.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-176",
+    "domain": "other",
+    "concept": "Remember and forget differ by complement type",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Remember and forget with gerund-participials express an anterior remembered or forgotten event, whereas their infinitival constructions are a separate lexical use.",
+    "condition": "A memory predicate takes a gerund-participial or to-infinitival complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I remembered submitting the application. [recalled an earlier event]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I remembered to submit the application. [fulfilled an obligation]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "He forgot to pay the fee. [prospective obligation not carried out]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          160
+        ],
+        "pdf_pages": [
+          180
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remember and forget differ by complement type",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The two complementation patterns do not yield interchangeable meanings; do not rewrite one automatically into the other.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-177",
+    "domain": "other",
+    "concept": "Aspectuality distinguishes anterior and simultaneous Class 2 complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With verbs such as resent and regret, a bounded-event complement is naturally anterior while a state complement can be simultaneous with the matrix.",
+    "condition": "A Class 2 catenative predicate governs a perfective-event or imperfective-state complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She resents him entering the office without notice. [anterior entry]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She resents not having access to her records. [simultaneous state]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          160
+        ],
+        "pdf_pages": [
+          180
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aspectuality distinguishes anterior and simultaneous Class 2 complements",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The lexical aspect and the context govern this choice; the matrix verb class permits both.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-178",
+    "domain": "other",
+    "concept": "Simultaneous and posterior complements in modal class",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal catenatives may allow a complement to represent either a state holding now or an eventuality after matrix time.",
+    "condition": "A Class 4 modal such as may embeds a plain-form complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitor may be upstairs. [simultaneous state]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitor may arrive tomorrow. [posterior event]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          160,
+          161
+        ],
+        "pdf_pages": [
+          180,
+          181
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simultaneous and posterior complements in modal class",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: A punctual event in the future does not have to receive a habitual reading.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-179",
+    "domain": "other",
+    "concept": "Present simultaneous dynamic infinitives tend toward habitual reading",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-finite complement simultaneous with present matrix time generally shares simple-present restrictions against interpreting one extended dynamic event as a single present occurrence.",
+    "condition": "A present-tense verb such as seem selects a simultaneous plain-form dynamic infinitival clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She seems to solve puzzles every evening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He seems to work there on weekdays.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          161
+        ],
+        "pdf_pages": [
+          181
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present simultaneous dynamic infinitives tend toward habitual reading",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: A future-oriented modal complement is outside this present-simultaneous reading and may denote a single future event.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-180",
+    "domain": "other",
+    "concept": "May permits habitual-present and one-off future readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The modal may allows simultaneous habitual reference or posterior single-event reference with the same following plain verb form.",
+    "condition": "The subordinate lexical verb is dynamic and may denotes possibility.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She may check the ledger every morning. [possible habit]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She may check the ledger tomorrow. [possible future event]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          161
+        ],
+        "pdf_pages": [
+          181
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "May permits habitual-present and one-off future readings",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The interpretation depends on discourse/time adjuncts; the plain form does not carry present tense.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-181",
+    "domain": "other",
+    "concept": "Schedule may be present when the event itself is future",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A simultaneous reading under a Class 2 catenative may describe a present plan or arrangement for a future event rather than the future event itself.",
+    "condition": "A catenative such as understand governs an -ing complement modified by a future-time adjunct.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I cannot understand them travelling on Saturday. [current plan]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I regret them leaving tomorrow. [present regret about planned future event]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          161
+        ],
+        "pdf_pages": [
+          181
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Schedule may be present when the event itself is future",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The source specifically cautions that this blurs a simple simultaneous-versus-posterior event classification.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-182",
+    "domain": "other",
+    "concept": "Perfect auxiliaries are not selectable by all catenatives",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A perfect in a non-finite complement is licensed by many catenatives but not by predicates such as begin and causative make when they temporally tie matrix and complement together.",
+    "condition": "A catenative takes a non-finite clause headed by perfect have, with an independently anterior subordinate event.",
+    "violation": "A catenative that excludes an independently anterior perfect complement is incorrectly followed by perfect have in a single bound catenative construction.",
+    "exceptions": [
+      {
+        "description": "Lexical have is not perfect auxiliary have; catenatives including seem and expect can license an anterior perfect complement.",
+        "pages": [
+          161
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He appeared to have received the invitation.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They expected her to have completed the questionnaire.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She began reading the manuscript.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "The tutor made the class complete the exercise.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She began to have read the manuscript.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The tutor made the class have completed the exercise.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 The perfect auxiliary have",
+        "pages": [
+          161
+        ],
+        "pdf_pages": [
+          181
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfect auxiliaries are not selectable by all catenatives",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: Do not confuse lexical have with perfect have, and do not prohibit perfect complements selected by seem, expect, want or other licensing verbs.",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "A catenative that excludes an independently anterior perfect complement is incorrectly followed by perfect have in a single bound catenative construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She began to have read the manuscript. ||| She began reading the manuscript.",
+        "The tutor made the class have completed the exercise. ||| The tutor made the class complete the exercise."
+      ],
+      "learner_explanation": "A perfect in a non-finite complement is licensed by many catenatives but not by predicates such as begin and causative make when they temporally tie matrix and complement together. The matrix verb determines whether its subordinate event can be independently anterior; compare the proposed revision with the original meaning.",
+      "corrected_paragraph_template": "Only revise the catenative complement if perfect-have is correctly identified and the matrix verb disallows it; keep other clauses intact and reanalyse the full paragraph.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She began to have doubts. [lexical have]",
+        "He seemed to have offended the audience. [licensing catenative]",
+        "She wanted to have finished by noon. [posterior orientation]",
+        "They began reading the manuscript. [non-perfect complement]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "catenatives",
+        "perfect"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "OTH-183",
+    "domain": "other",
+    "concept": "Perfect in a catenative complement locates reference before orientation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Where a non-finite complement uses perfect have, the perfect places the subordinate situation before an orientation time that the matrix verb locates at or after its own time.",
+    "condition": "A licensed perfect infinitival or gerund-participial complement follows a catenative predicate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He regrets having spoken harshly. [event before regret]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They hope to have completed the repairs by next Thursday. [event before a future orientation]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 The perfect auxiliary have",
+        "pages": [
+          161,
+          162
+        ],
+        "pdf_pages": [
+          181,
+          182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfect in a catenative complement locates reference before orientation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The perfect relative orientation may be posterior to the matrix event; earlier than that orientation does not always mean earlier than speech.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-184",
+    "domain": "other",
+    "concept": "Gerund-participial noun modifiers can refer to past, present or future",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A gerund-participial clause modifying an NP has no inherent tense and may refer to past, current, or future time as established by adjuncts and context.",
+    "condition": "A nominal head is modified by a non-finite clause headed by an -ing verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Residents living nearby during the blackout were evacuated. [past]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The person waiting outside is the courier. [present]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Applicants attending tomorrow's interview should bring identification. [future]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Non-finite modifiers in NP structure",
+        "pages": [
+          162
+        ],
+        "pdf_pages": [
+          182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gerund-participial noun modifiers can refer to past, present or future",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: Temporal simultaneity with the matrix clause is common but not encoded by the participial form.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-185",
+    "domain": "other",
+    "concept": "Past-participial passive noun modifiers span temporal relations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A passive past-participial modifier in NP structure can describe a past event, present state or future event, according to the larger context.",
+    "condition": "A nominal head is modified by a passive past-participial clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Documents submitted yesterday are on the desk. [past]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The information recorded in this file is confidential. [present state]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Applications received tomorrow will be reviewed next week. [future]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Non-finite modifiers in NP structure",
+        "pages": [
+          162
+        ],
+        "pdf_pages": [
+          182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-participial passive noun modifiers span temporal relations",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The past-participle morphology alone does not assign a past-time reference to the modifying clause.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-186",
+    "domain": "other",
+    "concept": "Infinitival noun modifiers generally select non-past matrix-relative time",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Infinitival modifiers in NP structure typically have reference simultaneous with or later than matrix time, and often convey unrealised possibility rather than an actual event.",
+    "condition": "An NP contains an infinitival relative/modifying clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was the first scientist to reach the station. [actual event associated with past matrix]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is searching for a colleague to interview. [prospective possibility]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Infinitival modifiers in NP structure",
+        "pages": [
+          162
+        ],
+        "pdf_pages": [
+          182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival noun modifiers generally select non-past matrix-relative time",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The narrower temporal range differs from gerund- and past-participial modifiers; the reading of an actual event depends on the construction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-187",
+    "domain": "other",
+    "concept": "Basic progressive aspect has be plus gerund-participle",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Progressive aspect is formally built with auxiliary be followed by a verbal gerund-participle and ordinarily presents a dynamic situation from an internal ongoing viewpoint.",
+    "condition": "An ordinary progressive finite clause contains auxiliary be and an -ing verbal complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The engineer is inspecting the cables.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The engineers were inspecting the cables when the power returned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          162
+        ],
+        "pdf_pages": [
+          182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Basic progressive aspect has be plus gerund-participle",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The subsequent sections detail important restrictions and non-basic progressive interpretations, not yet processed in this batch.",
+    "diagnostic": null
   }
 ]
