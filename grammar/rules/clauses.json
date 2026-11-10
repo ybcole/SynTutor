@@ -9293,5 +9293,102 @@
     "related_rules": [],
     "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Post-lexical placement between a lexical verb and object is generally excluded for the integrated quantifier; some adjunct interpretations require separate analysis.",
     "diagnostic": null
+  },
+  {
+    "id": "CLS-119",
+    "domain": "clauses",
+    "concept": "Remote conditional apodosis requires modal auxiliary",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In a canonical modally remote conditional, the hypothetical consequence takes a modal auxiliary as its first verb.",
+    "condition": "An if-protasis expresses a future or non-past hypothetical situation through the remote preterite, while the apodosis expresses its hypothetical consequence, rather than an open past-time relation.",
+    "violation": "Using a simple nonmodal preterite in the apodosis to describe the hypothetical consequence without a licensed modal.",
+    "exceptions": [
+      {
+        "description": "Open conditional relationships about past events can use preterite clauses on both sides; the restriction concerns modal remoteness, not all if-clauses.",
+        "pages": [
+          107
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If we visited the archive tomorrow, we could collect the copies.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she arrived tomorrow, she would join our group.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "If we visited the archive tomorrow, we collected the copies.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "If she arrived tomorrow, she joined our group.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.4(d) Remote conditionals",
+        "pages": [
+          107
+        ],
+        "pdf_pages": [
+          127
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "modal remoteness of conditional apodosis",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts crosswalk established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Explicit hypothetical future frame in original minimal pairs distinguishes a remote conditional from an open past conditional. The source's notes require a modal in the apodosis of the remote construction, but do not imply that all preterites in if-clauses are wrong.",
+    "diagnostic": {
+      "error_family": "tense_aspect",
+      "error_pattern": "A modal-remote conditional's consequence has a simple nonmodal preterite without the required modal.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "If we visited the archive tomorrow, we collected the copies. ||| If we visited the archive tomorrow, we could collect the copies.",
+        "If she arrived tomorrow, she joined our group. ||| If she arrived tomorrow, she would join our group."
+      ],
+      "learner_explanation": "The condition describes a hypothetical possibility rather than a past event. In this type of remote conditional, the consequence needs an appropriate modal such as could or would, not a plain past-tense verb. Keep ordinary past-time if-clauses unchanged.",
+      "corrected_paragraph_template": "Replace the affected hypothetical consequence with an appropriate modal construction; preserve the intended conditional relationship and reconsider other findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "If the weather improved yesterday, the organisers continued with the parade. [open past conditional]",
+        "If she had time last weekend, she visited her cousins. [open past conditional]",
+        "If she visited us tomorrow, she could stay overnight. [remote future conditional]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "conditional-clauses",
+        "modal-auxiliaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
   }
 ]
