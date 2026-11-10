@@ -437,6 +437,8 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 
 ### XAI-5 — Error-to-tree localization and correction rationale
 
+**XAI-5 technical implementation (10 Nov 2026):** Deterministic source-safe location mapping, immutable original and bounded staged revisions, fresh full rule reevaluation, token and tree version tracking and an accessible manual revision-comparison UI are implemented. See [acceptance report](../reports/xai-5-repair-lineage-acceptance-2026-11-10.md). **Human-adjudicated diagnostic release remains gated by XAI-4: zero real approved Cambridge error rules, no verified automatic corrections.** Synthetic approved-rule tests demonstrate mechanics but do not constitute real source authorization.
+
 - A failing check identifies exact affected span **and** governor/ancestor relation, plus possible alternatives.
 - Support multiple simultaneous errors with stable original finding IDs and independent vs interacting **repair groups**.
 - Reparse and re-evaluate every candidate edit; distinguish resolved/satisfied, inapplicable after structural change, persisting, newly unmasked and genuinely introduced findings. Never declare an isolated fix globally correct.
