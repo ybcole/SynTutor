@@ -41,6 +41,7 @@ jobs:
           python tools/validate_cgel_rules.py
           python tools/ledger.py check --allow-unprocessed
           python -m unittest -v tools.test_cgel_infrastructure
+          python -m unittest -v tools.test_cgel_phase_b
 
       - name: Verify progression with concurrent PostgreSQL sessions
         env:
