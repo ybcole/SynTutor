@@ -356,9 +356,38 @@ class XAI5RepairTests(unittest.TestCase):
                      analyzer=unresolved,root=root)
         fresh=result["revisions"][0]["new_findings"]
         self.assertTrue(fresh)
-        self.assertTrue(all(x["origin"]=="unknown" and not x["causal_evidence_ids"]
+        self.assertTrue(all(x["origin"] == "introduced" and len(x["causal_evidence_ids"]) == 2
                             for x in fresh))
+
         self.assertFalse(result["whole_sentence_certified"])
+
+    def test_synthetic_quotation_removal_unmasks_without_global_grammar_claim(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d); synthetic_source(root)
+            result=recheck_revisions({"text":'"She can goes."',
+                        "variety":"Standard English",
+                        "candidates":[{"text":"She can goes."}]},
+                        analyzer=unresolved,root=root)
+        VALIDATE_REPAIR.validate(result)
+        self.assertEqual(result["original_finding_ids"], [])
+        fresh=result["revisions"][0]["new_findings"]
+        self.assertEqual(len(fresh), 1)
+        self.assertEqual(fresh[0]["origin"], "unmasked")
+        self.assertEqual(len(fresh[0]["causal_evidence_ids"]), 2)
+        self.assertFalse(result["whole_sentence_certified"])
+
+    def test_synthetic_new_unrelated_relation_keeps_origin_unknown(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d); synthetic_source(root)
+            result=recheck_revisions({"text":"They laugh.",
+                     "variety":"Standard English",
+                     "candidates":[{"text":"They can goes."}]},
+                     analyzer=unresolved,root=root)
+        VALIDATE_REPAIR.validate(result)
+        fresh=result["revisions"][0]["new_findings"]
+        self.assertEqual(len(fresh), 1)
+        self.assertEqual(fresh[0]["origin"], "unknown")
+        self.assertEqual(fresh[0]["causal_evidence_ids"], [])
 
     def test_generator_builder_shared_source_safe_localization(self):
         t=tree("br-02")
