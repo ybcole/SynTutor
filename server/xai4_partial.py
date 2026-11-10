@@ -132,13 +132,19 @@ def load_manifest(root=None):
     return manifest, audit
 
 
-def eligible(rule, audit, manifest):
+def eligible(rule, audit, manifest, variety=None):
     """Human review + source evidence + crosswalk + test + explicit enablement.
 
     The present 2026-11-10 XAI-PRE audit has NO eligible claims. Synthetic
     tests may inject independently approved fixtures; production never does.
     """
     review = rule.get("review", {})
+    approved_varieties = review.get("approved_varieties", [])
+    if not (isinstance(variety, str) and variety.strip()
+            and isinstance(approved_varieties, list) and approved_varieties
+            and all(isinstance(v, str) and v.strip() for v in approved_varieties)
+            and variety.strip().casefold() in {v.strip().casefold() for v in approved_varieties}):
+        return False
     if not (rule.get("id") in manifest.get("runtime_enabled_rule_ids", [])
             and rule.get("runtime_status") == "enabled"
             and rule.get("may_issue_verified_error") is True
@@ -247,7 +253,7 @@ def evaluate_xai4(sentence, *, analysis_status="unresolved", variety=None,
                        if isinstance(rule, dict) else "invalid", "status": "UNIMPLEMENTED",
                        "evidence": [], "reason": "Unsupported typed evaluator."})
             continue
-        permitted = eligible(rule, audit, manifest)
+        permitted = eligible(rule, audit, manifest, variety=variety)
         matches = inspect(rule["family"], tokens)
         if not matches:
             result["evaluations"].append({"rule_id": rule["id"], "status": "NOT_APPLICABLE",
