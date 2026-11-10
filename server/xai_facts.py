@@ -250,7 +250,9 @@ def build_fact_graph(analysis: dict[str, Any], node_id: str | None = None) -> di
     result.update({
         "status": "provisional" if provisional else "observed",
         "analysis_id": hashlib.sha256(
-            json.dumps(tree, sort_keys=True, ensure_ascii=False,
+            json.dumps({key: tree.get(key) for key in ("tree_id", "sentence",
+                         "tokens", "convention_profile", "root", "movement",
+                         "accepted_alternatives")}, sort_keys=True, ensure_ascii=False,
                        separators=(",", ":")).encode("utf-8")).hexdigest()[:24],
         "tree_id": tree["tree_id"],
         "profile": dict(tree["convention_profile"]),
