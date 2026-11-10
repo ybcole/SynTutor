@@ -1,0 +1,1410 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SynTutor XAI-5 bounded revision and source-safe diagnosis contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "mode",
+    "original",
+    "original_localization",
+    "revisions",
+    "original_finding_ids",
+    "auto_suggestions",
+    "whole_sentence_certified",
+    "global_verdict",
+    "diagnostic_rule_count",
+    "note"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai5-repair-1.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "mode": {
+      "const": "server_recheck"
+    },
+    "original": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version_id",
+        "text",
+        "text_hash",
+        "tokens",
+        "analysis_status",
+        "reparse_status",
+        "tree_id",
+        "enabled_rule_ids",
+        "evaluation_status",
+        "whole_sentence_certified",
+        "canonical_tree"
+      ],
+      "properties": {
+        "version_id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "text_hash": {
+          "type": "string"
+        },
+        "tokens": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "text",
+              "char_span"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "char_span": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        },
+        "analysis_status": {
+          "type": "string"
+        },
+        "reparse_status": {
+          "type": "string"
+        },
+        "tree_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "enabled_rule_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evaluation_status": {
+          "type": "string"
+        },
+        "whole_sentence_certified": {
+          "const": false
+        },
+        "canonical_tree": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tree_id",
+                "sentence",
+                "root"
+              ],
+              "additionalProperties": true
+            }
+          ]
+        }
+      }
+    },
+    "original_localization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "language_policy",
+        "original_hash",
+        "original_sentence",
+        "analysis_status",
+        "tree_status",
+        "tree_analysis_id",
+        "enabled_rule_ids",
+        "observations",
+        "diagnoses",
+        "dependencies",
+        "groups",
+        "auto_repair_suggestions",
+        "whole_sentence_certified",
+        "scope"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "xai5-repair-1.0.0"
+        },
+        "language_policy": {
+          "const": "ENGLISH_ONLY"
+        },
+        "original_hash": {
+          "type": "string"
+        },
+        "original_sentence": {
+          "type": "string"
+        },
+        "analysis_status": {
+          "type": "string"
+        },
+        "tree_status": {
+          "enum": [
+            "unavailable",
+            "observed",
+            "provisional"
+          ]
+        },
+        "tree_analysis_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "enabled_rule_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "observations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "observation_id",
+              "rule_id",
+              "status",
+              "authority",
+              "sentence_span",
+              "token_span",
+              "affected_token_ids",
+              "governor_token_id",
+              "target_token_id",
+              "governor_text",
+              "target_text",
+              "governor_location",
+              "target_location",
+              "tree_relationship_status",
+              "description"
+            ],
+            "properties": {
+              "observation_id": {
+                "type": "string"
+              },
+              "rule_id": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "authority": {
+                "enum": [
+                  "APPROVED_CHECK",
+                  "UNAPPROVED_CANDIDATE"
+                ]
+              },
+              "sentence_span": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "token_span": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "affected_token_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "governor_token_id": {
+                "type": "string"
+              },
+              "target_token_id": {
+                "type": "string"
+              },
+              "governor_text": {
+                "type": "string"
+              },
+              "target_text": {
+                "type": "string"
+              },
+              "governor_location": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "node_id",
+                  "ancestor_node_ids",
+                  "proof_atom_ids"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "unavailable",
+                      "exact_word",
+                      "opaque_triangle",
+                      "covering_constituent_only"
+                    ]
+                  },
+                  "node_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "ancestor_node_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "proof_atom_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "target_location": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "node_id",
+                  "ancestor_node_ids",
+                  "proof_atom_ids"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "unavailable",
+                      "exact_word",
+                      "opaque_triangle",
+                      "covering_constituent_only"
+                    ]
+                  },
+                  "node_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "ancestor_node_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "proof_atom_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "tree_relationship_status": {
+                "enum": [
+                  "position_only_no_licensed_function",
+                  "unavailable"
+                ]
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "diagnoses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "finding_id",
+              "rule_id",
+              "status",
+              "affected_token_ids",
+              "governor_token_id",
+              "target_token_id",
+              "token_span",
+              "char_span",
+              "source_claim_ids",
+              "governor_location",
+              "target_location",
+              "interpretation_status"
+            ],
+            "properties": {
+              "finding_id": {
+                "type": "string"
+              },
+              "rule_id": {
+                "type": "string"
+              },
+              "status": {
+                "const": "VIOLATED"
+              },
+              "affected_token_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "governor_token_id": {
+                "type": "string"
+              },
+              "target_token_id": {
+                "type": "string"
+              },
+              "token_span": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "char_span": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "source_claim_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "governor_location": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "node_id",
+                  "ancestor_node_ids",
+                  "proof_atom_ids"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "unavailable",
+                      "exact_word",
+                      "opaque_triangle",
+                      "covering_constituent_only"
+                    ]
+                  },
+                  "node_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "ancestor_node_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "proof_atom_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "target_location": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "status",
+                  "node_id",
+                  "ancestor_node_ids",
+                  "proof_atom_ids"
+                ],
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "unavailable",
+                      "exact_word",
+                      "opaque_triangle",
+                      "covering_constituent_only"
+                    ]
+                  },
+                  "node_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "ancestor_node_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "proof_atom_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "interpretation_status": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "from",
+              "to",
+              "kind"
+            ],
+            "properties": {
+              "from": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "finding_ids",
+              "coupling",
+              "rationale"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "finding_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "coupling": {
+                "type": "string"
+              },
+              "rationale": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "auto_repair_suggestions": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "whole_sentence_certified": {
+          "const": false
+        },
+        "scope": {
+          "const": "observed_token_relations_and_approved_local_diagnoses_only"
+        }
+      }
+    },
+    "revisions": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "version_id",
+          "parent_version_id",
+          "snapshot",
+          "edits_from_original",
+          "formatting_only_change",
+          "step_edits",
+          "step_formatting_only_change",
+          "token_alignment",
+          "original_finding_lineage",
+          "parent_finding_lineage",
+          "new_findings",
+          "localization",
+          "meaning_status",
+          "candidate_status",
+          "whole_sentence_certified"
+        ],
+        "properties": {
+          "version_id": {
+            "type": "string"
+          },
+          "parent_version_id": {
+            "type": "string"
+          },
+          "snapshot": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "version_id",
+              "text",
+              "text_hash",
+              "tokens",
+              "analysis_status",
+              "reparse_status",
+              "tree_id",
+              "enabled_rule_ids",
+              "evaluation_status",
+              "whole_sentence_certified",
+              "canonical_tree"
+            ],
+            "properties": {
+              "version_id": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "text_hash": {
+                "type": "string"
+              },
+              "tokens": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "text",
+                    "char_span"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "char_span": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
+                  }
+                }
+              },
+              "analysis_status": {
+                "type": "string"
+              },
+              "reparse_status": {
+                "type": "string"
+              },
+              "tree_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "enabled_rule_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "evaluation_status": {
+                "type": "string"
+              },
+              "whole_sentence_certified": {
+                "const": false
+              },
+              "canonical_tree": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "schema_version",
+                      "tree_id",
+                      "sentence",
+                      "root"
+                    ],
+                    "additionalProperties": true
+                  }
+                ]
+              }
+            }
+          },
+          "edits_from_original": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "operation",
+                "original_char_span",
+                "revised_char_span",
+                "original_token_ids",
+                "revised_token_ids",
+                "original_text",
+                "replacement_text"
+              ],
+              "properties": {
+                "operation": {
+                  "enum": [
+                    "replace",
+                    "insert",
+                    "delete"
+                  ]
+                },
+                "original_char_span": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "revised_char_span": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "original_token_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "revised_token_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "original_text": {
+                  "type": "string"
+                },
+                "replacement_text": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "formatting_only_change": {
+            "type": "boolean"
+          },
+          "step_edits": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "operation",
+                "original_char_span",
+                "revised_char_span",
+                "original_token_ids",
+                "revised_token_ids",
+                "original_text",
+                "replacement_text"
+              ],
+              "properties": {
+                "operation": {
+                  "enum": [
+                    "replace",
+                    "insert",
+                    "delete"
+                  ]
+                },
+                "original_char_span": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "revised_char_span": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "original_token_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "revised_token_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "original_text": {
+                  "type": "string"
+                },
+                "replacement_text": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "step_formatting_only_change": {
+            "type": "boolean"
+          },
+          "token_alignment": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "original_finding_lineage": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "original_finding_id",
+                "rule_id",
+                "outcome",
+                "after_check_status",
+                "evidence_basis",
+                "whole_sentence_certified"
+              ],
+              "properties": {
+                "original_finding_id": {
+                  "type": "string"
+                },
+                "rule_id": {
+                  "type": "string"
+                },
+                "outcome": {
+                  "enum": [
+                    "resolved_by_satisfaction",
+                    "persists",
+                    "no_longer_applicable_after_rewrite",
+                    "blocked",
+                    "ambiguous",
+                    "unimplemented"
+                  ]
+                },
+                "after_check_status": {
+                  "type": "string"
+                },
+                "evidence_basis": {
+                  "type": "string"
+                },
+                "whole_sentence_certified": {
+                  "const": false
+                }
+              }
+            }
+          },
+          "parent_finding_lineage": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "original_finding_id",
+                "rule_id",
+                "outcome",
+                "after_check_status",
+                "evidence_basis",
+                "whole_sentence_certified"
+              ],
+              "properties": {
+                "original_finding_id": {
+                  "type": "string"
+                },
+                "rule_id": {
+                  "type": "string"
+                },
+                "outcome": {
+                  "enum": [
+                    "resolved_by_satisfaction",
+                    "persists",
+                    "no_longer_applicable_after_rewrite",
+                    "blocked",
+                    "ambiguous",
+                    "unimplemented"
+                  ]
+                },
+                "after_check_status": {
+                  "type": "string"
+                },
+                "evidence_basis": {
+                  "type": "string"
+                },
+                "whole_sentence_certified": {
+                  "const": false
+                }
+              }
+            }
+          },
+          "new_findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "finding_id",
+                "rule_id",
+                "origin",
+                "causal_evidence_ids",
+                "reason",
+                "whole_sentence_certified"
+              ],
+              "properties": {
+                "finding_id": {
+                  "type": "string"
+                },
+                "rule_id": {
+                  "type": "string"
+                },
+                "origin": {
+                  "enum": [
+                    "unknown",
+                    "introduced",
+                    "unmasked"
+                  ]
+                },
+                "causal_evidence_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "whole_sentence_certified": {
+                  "const": false
+                }
+              }
+            }
+          },
+          "localization": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema_version",
+              "language_policy",
+              "original_hash",
+              "original_sentence",
+              "analysis_status",
+              "tree_status",
+              "tree_analysis_id",
+              "enabled_rule_ids",
+              "observations",
+              "diagnoses",
+              "dependencies",
+              "groups",
+              "auto_repair_suggestions",
+              "whole_sentence_certified",
+              "scope"
+            ],
+            "properties": {
+              "schema_version": {
+                "const": "xai5-repair-1.0.0"
+              },
+              "language_policy": {
+                "const": "ENGLISH_ONLY"
+              },
+              "original_hash": {
+                "type": "string"
+              },
+              "original_sentence": {
+                "type": "string"
+              },
+              "analysis_status": {
+                "type": "string"
+              },
+              "tree_status": {
+                "enum": [
+                  "unavailable",
+                  "observed",
+                  "provisional"
+                ]
+              },
+              "tree_analysis_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "enabled_rule_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "observations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "observation_id",
+                    "rule_id",
+                    "status",
+                    "authority",
+                    "sentence_span",
+                    "token_span",
+                    "affected_token_ids",
+                    "governor_token_id",
+                    "target_token_id",
+                    "governor_text",
+                    "target_text",
+                    "governor_location",
+                    "target_location",
+                    "tree_relationship_status",
+                    "description"
+                  ],
+                  "properties": {
+                    "observation_id": {
+                      "type": "string"
+                    },
+                    "rule_id": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "authority": {
+                      "enum": [
+                        "APPROVED_CHECK",
+                        "UNAPPROVED_CANDIDATE"
+                      ]
+                    },
+                    "sentence_span": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "token_span": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "affected_token_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "governor_token_id": {
+                      "type": "string"
+                    },
+                    "target_token_id": {
+                      "type": "string"
+                    },
+                    "governor_text": {
+                      "type": "string"
+                    },
+                    "target_text": {
+                      "type": "string"
+                    },
+                    "governor_location": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "status",
+                        "node_id",
+                        "ancestor_node_ids",
+                        "proof_atom_ids"
+                      ],
+                      "properties": {
+                        "status": {
+                          "enum": [
+                            "unavailable",
+                            "exact_word",
+                            "opaque_triangle",
+                            "covering_constituent_only"
+                          ]
+                        },
+                        "node_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "ancestor_node_ids": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "proof_atom_ids": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "target_location": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "status",
+                        "node_id",
+                        "ancestor_node_ids",
+                        "proof_atom_ids"
+                      ],
+                      "properties": {
+                        "status": {
+                          "enum": [
+                            "unavailable",
+                            "exact_word",
+                            "opaque_triangle",
+                            "covering_constituent_only"
+                          ]
+                        },
+                        "node_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "ancestor_node_ids": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "proof_atom_ids": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "tree_relationship_status": {
+                      "enum": [
+                        "position_only_no_licensed_function",
+                        "unavailable"
+                      ]
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "diagnoses": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "finding_id",
+                    "rule_id",
+                    "status",
+                    "affected_token_ids",
+                    "governor_token_id",
+                    "target_token_id",
+                    "token_span",
+                    "char_span",
+                    "source_claim_ids",
+                    "governor_location",
+                    "target_location",
+                    "interpretation_status"
+                  ],
+                  "properties": {
+                    "finding_id": {
+                      "type": "string"
+                    },
+                    "rule_id": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "const": "VIOLATED"
+                    },
+                    "affected_token_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "governor_token_id": {
+                      "type": "string"
+                    },
+                    "target_token_id": {
+                      "type": "string"
+                    },
+                    "token_span": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "char_span": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "source_claim_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "governor_location": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "status",
+                        "node_id",
+                        "ancestor_node_ids",
+                        "proof_atom_ids"
+                      ],
+                      "properties": {
+                        "status": {
+                          "enum": [
+                            "unavailable",
+                            "exact_word",
+                            "opaque_triangle",
+                            "covering_constituent_only"
+                          ]
+                        },
+                        "node_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "ancestor_node_ids": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "proof_atom_ids": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "target_location": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "status",
+                        "node_id",
+                        "ancestor_node_ids",
+                        "proof_atom_ids"
+                      ],
+                      "properties": {
+                        "status": {
+                          "enum": [
+                            "unavailable",
+                            "exact_word",
+                            "opaque_triangle",
+                            "covering_constituent_only"
+                          ]
+                        },
+                        "node_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "ancestor_node_ids": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "proof_atom_ids": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "interpretation_status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "dependencies": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "from",
+                    "to",
+                    "kind"
+                  ],
+                  "properties": {
+                    "from": {
+                      "type": "string"
+                    },
+                    "to": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "groups": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "finding_ids",
+                    "coupling",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "finding_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "coupling": {
+                      "type": "string"
+                    },
+                    "rationale": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "auto_repair_suggestions": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "whole_sentence_certified": {
+                "const": false
+              },
+              "scope": {
+                "const": "observed_token_relations_and_approved_local_diagnoses_only"
+              }
+            }
+          },
+          "meaning_status": {
+            "const": "not_assessed"
+          },
+          "candidate_status": {
+            "const": "user_revision_not_a_verified_correction"
+          },
+          "whole_sentence_certified": {
+            "const": false
+          }
+        }
+      }
+    },
+    "original_finding_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "auto_suggestions": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "whole_sentence_certified": {
+      "const": false
+    },
+    "global_verdict": {
+      "const": "NOT_CERTIFIED"
+    },
+    "diagnostic_rule_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "note": {
+      "type": "string"
+    }
+  }
+}

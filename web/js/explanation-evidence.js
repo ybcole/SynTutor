@@ -107,6 +107,147 @@ function renderCambridgePartial(evidence, panel) {
   panel.append(area);
 }
 
+// XAI-5: compare learner-authored revisions without automatic correction.
+function renderRepairRecheck(evidence, panel) {
+  const data = evidence?.xai5_localization;
+  if (!data || typeof data.original_sentence !== 'string' || !data.original_sentence.trim()) return;
+  const section = document.createElement('details');
+  section.dataset.xai5Repair = '';
+  const heading = document.createElement('summary');
+  heading.textContent = 'Compare a revised sentence';
+  section.append(heading);
+  const warning = document.createElement('p');
+  warning.textContent = 'Comparisons reparse your edit and rerun available checks. '
+    + 'No change is automatically applied or certified as fully grammatical.';
+  section.append(warning);
+  const count = document.createElement('p');
+  count.dataset.xai5Count = '';
+  count.textContent = data.diagnoses.length + ' approved original findings; '
+    + data.observations.filter(item => item.authority === 'UNAPPROVED_CANDIDATE').length
+    + ' unapproved token observations.';
+  section.append(count);
+  const chosen = evidence?.fact_graph?.target?.node_id;
+  const related = (data.observations || []).filter(item => {
+    const at = [item.governor_location, item.target_location];
+    return !chosen || at.some(row => row?.node_id === chosen || row?.ancestor_node_ids?.includes(chosen));
+  }).slice(0, 4);
+  for (const item of related) {
+    const note = document.createElement('p');
+    note.textContent = item.authority === 'APPROVED_CHECK'
+      ? item.rule_id + ': ' + item.governor_text + ' → ' + item.target_text + ' (' + item.status + '). Local reviewed check.'
+      : 'Possible ' + item.governor_text + ' → ' + item.target_text + ': ' + item.status
+        + '. Unapproved observation; not a diagnosed error.';
+    section.append(note);
+  }
+  const label = document.createElement('label');
+  label.textContent = 'Your revised sentence';
+  const field = document.createElement('textarea');
+  field.rows = 2;
+  field.maxLength = 1200;
+  field.value = data.original_sentence;
+  field.setAttribute('aria-label', 'Your revised sentence');
+  label.append(field);
+  section.append(label);
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.textContent = 'Reparse and compare this revision';
+  const output = document.createElement('div');
+  output.dataset.xai5Result = '';
+  output.setAttribute('role', 'status');
+  button.addEventListener('click', async () => {
+    if (button.disabled) return;
+    const revised = field.value;
+    if (!revised.trim() || revised === data.original_sentence) {
+      output.textContent = 'Enter a different nonempty sentence to compare.';
+      return;
+    }
+    button.disabled = true;
+    output.textContent = 'Rechecking the revised sentence…';
+    try {
+      const response = await fetch('/api/repair-check', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          text: data.original_sentence,
+          candidates: [{text: revised}],
+        }),
+      });
+      const checked = await response.json();
+      if (!response.ok) throw new Error(checked.error || 'Revision recheck unavailable');
+      if (!section.isConnected) return;
+      output.replaceChildren();
+      const revision = checked.revisions[0];
+      const summary = document.createElement('p');
+      summary.textContent = 'Revision ' + revision.version_id + ': '
+        + revision.snapshot.analysis_status + ' tree analysis; '
+        + revision.original_finding_lineage.length + ' reviewed original findings rechecked. '
+        + 'This does not certify the whole sentence.';
+      output.append(summary);
+      for (const row of revision.original_finding_lineage) {
+        const item = document.createElement('p');
+        item.textContent = row.original_finding_id + ' (' + row.rule_id + '): ' + row.outcome + '.';
+        output.append(item);
+      }
+      if (!checked.diagnostic_rule_count) {
+        const note = document.createElement('p');
+        note.textContent = 'No independently approved Cambridge diagnostic rules are enabled. '
+          + 'This comparison cannot verify that a grammar error was fixed.';
+        output.append(note);
+      }
+      for (const finding of revision.new_findings) {
+        const item = document.createElement('p');
+        const origin = finding.origin === 'introduced' ? 'locally introduced by the aligned edit'
+          : finding.origin === 'unmasked' ? 'newly visible after an ambiguity was removed'
+          : 'origin not established';
+        item.textContent = 'Additional narrow check ' + finding.rule_id + ': '
+          + origin + '. No whole-sentence correction claim.';
+        output.append(item);
+      }
+      // A candidate tree is *newly parsed*, not a re-labelled original.
+      // Users can inspect its actual constituent nodes and rerun the same
+      // evidence composer on the selected revised-tree node.
+      const revisedTree = revision.snapshot.canonical_tree;
+      if (revisedTree) {
+        const treeDetails = document.createElement('details');
+        treeDetails.dataset.xai5RevisedTree = '';
+        const heading = document.createElement('summary');
+        heading.textContent = 'Inspect revised B-R tree';
+        treeDetails.append(heading);
+        const { renderLessonTree } = await import('./lessons-ui.js');
+        if (!section.isConnected) return;
+        const treeView = renderLessonTree(revisedTree, {interactive: true});
+        treeView.addEventListener('click', async (event) => {
+          const target = event.target.closest?.('button[data-node-id]');
+          if (!target || !treeView.contains(target)) return;
+          const nodeId = target.dataset.nodeId;
+          const details = document.createElement('section');
+          details.dataset.xai5RevisedNode = '';
+          details.textContent = 'Checking the selected revised-tree node…';
+          treeDetails.querySelector('[data-xai5-revised-node]')?.remove();
+          treeDetails.append(details);
+          try {
+            const selected = await requestEvidence(revisedTree, nodeId);
+            if (details.isConnected) renderEvidence(selected, details);
+          } catch (error) {
+            if (details.isConnected) details.textContent = error.message || 'Node evidence unavailable.';
+          }
+        });
+        treeDetails.append(treeView);
+        output.append(treeDetails);
+      } else {
+        const missing = document.createElement('p');
+        missing.textContent = 'No complete canonical B-R tree was established for this revised sentence; the original tree is not reused.';
+        output.append(missing);
+      }
+    } catch (error) {
+      if (section.isConnected) output.textContent = error.message || 'Revision recheck unavailable.';
+    } finally {
+      button.disabled = false;
+    }
+  });
+  section.append(button, output);
+  panel.append(section);
+}
+
 export function renderEvidence(evidence, host = document.querySelector('#explainNode')) {
   if (!host) return;
   host.querySelector('[data-shared-evidence]')?.remove();
@@ -117,6 +258,7 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   title.textContent = 'Book evidence';
   renderContextualObservations(evidence, panel);
   renderCambridgePartial(evidence, panel);
+  renderRepairRecheck(evidence, panel);
   panel.append(title);
   for (const line of evidenceLines(evidence)) {
     const p = document.createElement('p'); p.textContent = line; panel.append(p);

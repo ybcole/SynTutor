@@ -95,6 +95,8 @@ Build approved, typed grammatical checks with explicit preconditions, evidence a
 
 Do not use spaCy/Benepar, CoLA, an LLM, generic unreviewed Cambridge extraction or the legacy rule matrix as a final correctness judge.
 
+**Technical status (2026-11-10):** XAI-5 bounded recheck, original-token-to-tree localization, interaction groups and a user-authored revision comparator are implemented with runtime source gates. Production approved Cambridge error checks remain zero; unreviewed morphology signals are not reported as verified errors or automatic repairs. See [XAI-5 acceptance](../reports/xai-5-repair-lineage-acceptance-2026-11-10.md).
+
 ### Phase 5 — Diagnostics and repairs
 
 Model errors as failed *relations* with offending element(s), governor(s), rule violation, possible exception and candidate correction. Show a related explanation when the user selects either side of the relationship. Reparse edits, rerun relevant approved checks, and avoid claiming that a correction fixes untested aspects.

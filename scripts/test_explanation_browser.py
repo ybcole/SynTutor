@@ -170,6 +170,25 @@ try:
             assert '0 approved runtime rules' in partial.locator('summary').inner_text()
             partial.locator('summary').click()
             assert 'No new Cambridge error diagnosis' in partial.inner_text()
+            # XAI-5: a learner-authored revision must use the real parser and
+            # return its own partial evaluation, without altering the original.
+            repair = pane.locator('[data-xai5-repair]')
+            repair.wait_for(state='attached', timeout=30000)
+            repair.locator('summary').click()
+            assert '0 approved original findings' in repair.inner_text()
+            assert repair.get_by_label('Your revised sentence').input_value() == text
+            repair.get_by_label('Your revised sentence').fill('The boy slept.')
+            with page.expect_response(lambda response: response.url.endswith('/api/repair-check'), timeout=120000) as rechecked:
+                repair.get_by_role('button', name='Reparse and compare this revision').click()
+            assert rechecked.value.status == 200, rechecked.value.text()
+            comparison = rechecked.value.json()
+            assert comparison['original']['text'] == text
+            assert comparison['revisions'][0]['snapshot']['text'] == 'The boy slept.'
+            assert not comparison['revisions'][0]['whole_sentence_certified']
+            repair.locator('[data-xai5-result]').get_by_text(
+                'No independently approved Cambridge diagnostic rules are enabled.', exact=False
+            ).wait_for(timeout=30000)
+            assert page.locator('#inputText').input_value() == text
             page.locator('#explainNode [data-xai-short]').wait_for(timeout=30000)
             assert 'V “sleeps”' in pane.locator('[data-xai-short]').inner_text()
             assert 'not a grammaticality judgment' in pane.locator('[data-xai-status]').inner_text()

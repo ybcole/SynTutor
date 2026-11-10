@@ -526,6 +526,41 @@
           "additionalProperties": true
         }
       ]
+    },
+    "xai5_localization": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "schema_version",
+            "language_policy",
+            "observations",
+            "diagnoses",
+            "whole_sentence_certified"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "xai5-repair-1.0.0"
+            },
+            "language_policy": {
+              "const": "ENGLISH_ONLY"
+            },
+            "observations": {
+              "type": "array"
+            },
+            "diagnoses": {
+              "type": "array"
+            },
+            "whole_sentence_certified": {
+              "const": false
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
     }
   },
   "required": [
