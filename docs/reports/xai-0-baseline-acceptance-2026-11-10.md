@@ -1,7 +1,7 @@
 # XAI-0 — Empirical Baseline, Node-Explanation Coverage and Contract Freeze
 
 **Milestone:** XAI-0 (following [XAI-PRE](xai-pre-acceptance-2026-11-10.md))  
-**Status:** English-only development set and strict corpus scope implemented. The earlier measurement was superseded after removal of eight out-of-scope examples; **fresh parser-backed results are pending** for the corrected dataset. Independent linguistic adjudication remains a later gate.  
+**Status:** English-only development set and strict corpus scope implemented; **fresh parser-backed results measured and verified** from the corrected 116-case dataset. The previous out-of-scope audit is superseded. Independent linguistic adjudication remains a later gate.  
 **Date:** 10 November 2026  
 **Implementation branch:** `feature/xai-0-measured-baseline-2026-11-10`  
 **Scope:** Inspection and measurement. No new Cambridge constraints, edits to B–R grammar, new explanations or correction algorithms.
@@ -60,23 +60,55 @@ python scripts/audit_xai0_baseline.py --require-models --expected-count 116 --ou
 
 The first two run in the model-free workflow. The third runs in the pinned-model parser-backed workflow, which uploads `xai0-real-parser-baseline` as a versioned JSON artifact. Do not confuse passing model-free tests with measuring real parser coverage.
 
-## 3. Empirical outcomes — English-only remeasurement
+## 3. Empirical outcomes — English-only, measured
 
-**The earlier 116-case run has been superseded.** Eight out-of-scope evaluation examples were replaced by English-only examples. Because the input set changed, its former category totals, canonical normalization rates, node citation counts, and parser timings must **not** be reused as measurements of this version.
+**Source:** [GitHub Actions parser-backed run 42725488098](https://github.com/ybcole/SynTutor/actions/runs/42725488098), machine artifact `xai0-real-parser-baseline` (ID `13723190912`). The JSON was downloaded and inspected. All inputs in this run are English-only; the previous out-of-scope measurement is superseded.
 
-The new parser-backed CI run must upload its own `xai0-real-parser-baseline` artifact and populate the following fields from actual execution:
+| Metric | Observed English-only baseline |
+| --- | ---: |
+| Cases tested | **116 / 116** |
+| spaCy/Benepar available | **Yes**, `en_core_web_md` 3.8.0, `benepar_en3` |
+| Benepar parsed | **116 / 116** |
+| Canonical B–R normalized | **92 / 116 (79.31%)** |
+| B–R unresolved | **24 / 116 (20.69%)** |
+| Diagnostic working-tree records among unresolved | **22** (not canonical authority) |
+| B–R unresolved reasons | `PROFILE_MAPPING_NOT_APPROVED`: **23**; `FINAL_D1_LABEL_UNRESOLVED`: **1** |
+| Total normalized-tree nodes | **1,685** |
+| Nodes with an eligible source-cited template hit | **112 / 1,685 (6.65%)** |
+| Node labels with source-cited explanations | **S only** (112 hits) |
+| Overt word-terminal nodes | **444** |
+| Word terminals with an eligible source-cited explanation | **0 / 444 (0%)** |
+| Active Cambridge grammatical constraints | **0** |
+| Root `/api/explain` adapter comparisons | **92**, **0** mismatches |
+| Possible legacy false-positive case for manual review | **1** (not gold accuracy) |
+| Possible legacy no-flag on provisional malformed/multi-error cases | **0** (not gold accuracy) |
+| Total per-case p50/p95 (after model load) | **66.45 / 78.52 ms** in CI |
+| Maximum observed per-case time | **2,588.11 ms** (not an SLA) |
 
-| Metric | English-only baseline |
-| --- | --- |
-| Sentence cases / parser successes | **Awaiting new GitHub Actions run** |
-| Canonical B–R normalized/unresolved | **Awaiting new GitHub Actions run** |
-| B–R nodes and overt word terminals inspected | **Awaiting new GitHub Actions run** |
-| Source-cited node and word-terminal explanation coverage | **Awaiting new GitHub Actions run** |
-| Root explain-request consistency | **Awaiting new GitHub Actions run** |
-| Legacy candidate disagreements (not gold false-positive labels) | **Awaiting new GitHub Actions run** |
-| Measured p50/p95 CI latency | **Awaiting new GitHub Actions run** |
+**B–R normalization by English-only construction family:**
 
-**Unchanged, verified static inventory:** 2 existing explanation templates, 4 source entries and **zero enabled Cambridge grammar constraints**. No tree parser, rule definition, or production XAI algorithm was modified by the English-only corpus correction.
+| Family | Normalized / total |
+| --- | ---: |
+| Basic English clauses | 12 / 12 |
+| Auxiliaries | 12 / 12 |
+| Questions and negation | 7 / 10 |
+| Embedded/nonfinite clauses | 10 / 10 |
+| Coordination and modification | 8 / 8 |
+| Ambiguous structures | 7 / 8 |
+| Malformed English probes | 13 / 15 |
+| Multiple-error probes | 3 / 8 |
+| English variety/register | 3 / 8 |
+| Tense/aspect cases | 6 / 8 |
+| Additional English syntactic edge cases | 6 / 8 |
+| Punctuation/multi-sentence cases | 5 / 9 |
+
+**Common labels without eligible source-cited explanations:** unlabelled positions 472; VP 191; NP 184; V 110; NOM 97; DET 84; N 83; pronoun 66; ART 58; and S-bar 25. Unlabelled positions are not necessarily user-visible words; node-level results cannot be collapsed into word accuracy.
+
+**Main finding:** every one of the **112** cited node hits is an S-level source-matched teaching template. Not one of the **444** overt word-terminal nodes has a reviewed, source-cited personalized explanation yet. XAI-1 through XAI-3 must address this gap, with real contextual role facts and vetted book evidence—not merely a generic label definition.
+
+The legacy matrix marks *I want to learn syntax.* (`x0-embedded_nonfinite-03`) as ungrammatical. That is a **triage candidate**, not an independently adjudicated false positive, and not a Cambridge-backed error finding. The benchmark does not call the optional CoLA model or run multi-error auto-correction in bulk.
+
+**What these measurements cannot establish:** grammatical correctness, accuracy of specific B–R analyses, generality beyond the development corpus, learner comprehension, causal reliability of correction, or permission to enable any Cambridge rule. Successful Benepar parsing and B–R normalization are structural availability metrics, not claims of grammaticality.
 
 ## 4. First priority gaps for XAI-1 through XAI-3
 
