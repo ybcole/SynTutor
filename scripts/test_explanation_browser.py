@@ -201,6 +201,18 @@ try:
             assert 'Ch5 p. 104' in pane.inner_text()
             page.locator('#explainNode [data-xai-short]').wait_for(timeout=30000)
             assert 'word “sleeps”' in pane.locator('[data-xai-short]').inner_text()
+            # XAI-7: same canonical focus and brief/deep evidence on a clicked word.
+            focus_panel = pane.locator('[data-xai7-navigation]')
+            focus_panel.wait_for(state='attached', timeout=30000)
+            assert 'Selected B-R tree position' in focus_panel.inner_text()
+            assert 'Observed positions:' in focus_panel.inner_text()
+            verbosity = pane.locator('[data-xai7-verbosity]')
+            verbosity.get_by_role('button', name='Detailed').click()
+            assert pane.locator('[data-xai-details]').get_attribute('open') is not None
+            verbosity.get_by_role('button', name='Brief').click()
+            assert pane.locator('[data-xai-details]').get_attribute('open') is None
+            assert page.locator('#canonicalTreeView [data-node-id][data-xai7-focus="selected"]').count() >= 1
+            assert 'Benepar' not in focus_panel.inner_text()
             # XAI-6 must remain a zero-cost deterministic fallback in the
             # real parser-backed Generator and Builder evidence views.
             naturalizer = pane.locator('[data-xai6-style]')
