@@ -1,6 +1,6 @@
 # SynTutor — XAI Master Plan: Sentence-Grounded Explanations for Every Tree Level
 
-**Status:** XAI-PRE contracts, English-only **XAI-0 baseline**, and **XAI-1 source-linked concept registry implemented**. Independent human source approval is pending; XAI-2–XAI-8 remain unimplemented by these milestones. See [XAI-PRE](../reports/xai-pre-acceptance-2026-11-10.md), [XAI-0](../reports/xai-0-baseline-acceptance-2026-11-10.md), and [XAI-1 source acceptance](../reports/xai-1-source-concepts-acceptance-2026-11-10.md).  
+**Status:** XAI-PRE contracts, English-only **XAI-0 baseline**, and **XAI-1 source-linked concept registry implemented**. **XAI-2 structural fact graph is implemented with tests**, pending CI verification and human review for functional-role licensing. XAI-3–XAI-8 remain unimplemented. See [XAI-PRE](../reports/xai-pre-acceptance-2026-11-10.md), [XAI-0](../reports/xai-0-baseline-acceptance-2026-11-10.md), and [XAI-1 source acceptance](../reports/xai-1-source-concepts-acceptance-2026-11-10.md).  
 **Date:** 10 November 2026  
 **Repository:** `ybcole/SynTutor`  
 **Companion implementer prompt:** [MASTER_PROMPT_XAI.md](MASTER_PROMPT_XAI.md)  
