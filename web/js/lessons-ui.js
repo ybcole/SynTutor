@@ -237,7 +237,7 @@ function lessonScreen() {
   if (worked.tree) {
     const evidence=el('details',undefined,'lesson-shared-evidence');
     evidence.dataset.xai7Lesson = '';
-    const title=el('summary','Additional reviewed tree evidence');
+    const title=el('summary','Explanation');
     const slot=el('div',undefined,'lesson-unified-evidence');
     evidence.append(title,slot);
     let requestVersion=0;
@@ -247,19 +247,14 @@ function lessonScreen() {
       selected=nodeId;
       evidence.open=true;
       const version=++requestVersion;
-      slot.replaceChildren(el('p','Loading the shared tree evidence…'));
+      slot.replaceChildren(el('p','Explaining this word or phrase…'));
       try {
         const result=await requestEvidence(worked.tree,nodeId);
         if (version!==requestVersion||!slot.isConnected) return;
-        renderEvidence(result,slot,{treeRoot:treeView});
-        if (feature) {
-          const note=el('p','Selected recorded feature '+feature+'. This is a visible tree label, not a grammatical-function judgment.');
-          note.dataset.xai7FeatureSelected = '';
-          slot.prepend(note);
-        }
+        renderEvidence(result,slot,{treeRoot:treeView,feature});
       } catch {
         if (version===requestVersion&&slot.isConnected) {
-          slot.replaceChildren(el('p','Shared evidence unavailable. The source-reviewed lesson text remains available.'));
+          slot.replaceChildren(el('p','An explanation is not available for this part of the sentence.'));
         }
       }
     };
