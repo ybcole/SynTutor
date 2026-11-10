@@ -1,7 +1,7 @@
 import { showCurriculumState } from './curriculum-state.js';
 import {validateBank,quizKey,itemsFor,gradeAttempt} from './quiz-core.js';
 import {createQuizStore} from './quiz-progress.js';
-import {composeQuizEvidence,requestQuizEvidence,renderEvidence} from './explanation-evidence.js';
+import {composeQuizEvidence,requestQuizEvidence,requestEvidence,renderEvidence} from './explanation-evidence.js';
 import {renderLessonTree} from './lessons-ui.js';
 import {subscribeAuthState} from './auth.js';
 let host,config={},bank,store,current=null,mode='all',busy=false,message='',generation=0;
@@ -58,7 +58,35 @@ function review(t){
   card.append(el('h2',`${index+1}. ${q.prompt}`),el('p',response===null?'Unanswered':correct?'Correct on this attempt':'Review this response',correct?'lesson-feedback correct':'lesson-feedback retry'));
   card.append(el('p',`Your answer: ${q.options.find(o=>o.id===response)?.text||'No answer'}`));
   renderEvidence(composeQuizEvidence(q,response,bank),card);
-  if(q.answer_tree){const details=el('details');details.append(el('summary','See the reviewed answer tree'),renderLessonTree(q.answer_tree));card.append(details);}
+  if(q.answer_tree){
+    const details=el('details');
+    details.dataset.xai7QuizTree = '';
+    const inspector=el('div',undefined,'quiz-tree-inspector');
+    inspector.dataset.xai7QuizInspector = '';
+    let version=0;
+    let treeView;
+    const choose=async (nodeId, feature=null)=>{
+      details.open=true;
+      const requestId=++version;
+      inspector.replaceChildren(el('p','Loading selected tree evidence…'));
+      try{
+        const evidence=await requestEvidence(q.answer_tree,nodeId);
+        if(requestId!==version||token!==generation||!card.isConnected)return;
+        renderEvidence(evidence,inspector,{treeRoot:treeView});
+        if(feature) {
+          const note=el('p','Selected recorded feature '+feature+'. The printed feature is not itself a grammar-error verdict.');
+          note.dataset.xai7FeatureSelected='';
+          inspector.prepend(note);
+        }
+      }catch{
+        if(requestId===version&&card.isConnected)
+          inspector.replaceChildren(el('p','Selected tree evidence is unavailable. Reviewed quiz feedback remains visible.'));
+      }
+    };
+    treeView=renderLessonTree(q.answer_tree,{interactive:true,zoomControls:true,stackFeatures:true,onSelectNode:choose});
+    details.append(el('summary','See the reviewed answer tree'),treeView,inspector);
+    card.append(details);
+  }
   const token=generation,controller=new AbortController(),timer=setTimeout(()=>controller.abort(),5000);
   requestQuizEvidence(q,response,{signal:controller.signal}).then(evidence=>{if(token===generation&&card.isConnected)renderEvidence(evidence,card);}).catch(()=>{}).finally(()=>clearTimeout(timer));
   host.append(card);

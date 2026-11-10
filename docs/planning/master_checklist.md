@@ -28,6 +28,9 @@ This section refers to the [new XAI roadmap](XAI_MASTER_PLAN.md), not the earlie
 - [ ] XAI-5 **verified correction release** requires XAI-4 human-adjudicated rule enablement, actual grammar-family precision tests and semantic-preservation assessment; currently 0 enabled rules, and no automatic verified repairs.
 - [x] Implement XAI-6 **optional English-only model naturalization pipeline**, strict fact/source/target proof verification, budget/cost/deadline guards, bounded content-hash cache, deterministic fallback, offline source-tree audit, and shared evidence UI. [Acceptance report](../reports/xai-6-naturalization-acceptance-2026-11-10.md).
 - [ ] XAI-6 **optional model-release quality gate**: independent human blind fidelity/clarity comparison with no materially greater false claims, and a hard-bounded privacy-safe live provider. **NO-GO; model_enabled=false and 0 human-blind examples.**
+- [x] Implement XAI-7 **unified English-only explanation evidence** for Generator, Builder, Lessons, Quizzes and XAI-5 correction-preview trees, with source-safe selected/parent/sibling and verified-issue focus, literal feature-row controls, keyboard traversal, brief/deep panels, mobile zoom and a strict shared response schema. See [XAI-7 engineering acceptance](../reports/xai-7-unified-frontend-acceptance-2026-11-10.md).
+- [ ] XAI-7 **cited source PDF deep links** where the repository provides no audited accessible page-level URL; continue showing true print-page/edition references without inventing links.
+- [ ] XAI-7 **CI browser-parity release gate**: confirm both current-HEAD model-free and parser-backed Chromium jobs pass before merge; keep source restrictions intact.
 - [ ] Independent instructor approval for role licenses and held-out node-function gold cases remains outstanding.
 
 **No Cambridge runtime rule is enabled by this preflight. Source inspection, developer acceptance and future linguistic approval are separate gates.**

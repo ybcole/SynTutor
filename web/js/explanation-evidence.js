@@ -1,5 +1,6 @@
 // One request contract and one evidence renderer for Generator and Builder.
 import { API_BASE } from './config.js';
+import { applyEvidenceFocus, evidenceFocusText } from './xai7-focus.js';
 
 export async function requestEvidence(tree, nodeId = null, options = {}) {
   const body = { tree: tree || null };
@@ -234,22 +235,29 @@ function renderRepairRecheck(evidence, panel) {
         treeDetails.append(heading);
         const { renderLessonTree } = await import('./lessons-ui.js');
         if (!section.isConnected) return;
-        const treeView = renderLessonTree(revisedTree, {interactive: true});
-        treeView.addEventListener('click', async (event) => {
-          const target = event.target.closest?.('button[data-node-id]');
-          if (!target || !treeView.contains(target)) return;
-          const nodeId = target.dataset.nodeId;
+        let treeView;
+        const inspect=async (nodeId, feature=null) => {
           const details = document.createElement('section');
           details.dataset.xai5RevisedNode = '';
           details.textContent = 'Checking the selected revised-tree node…';
           treeDetails.querySelector('[data-xai5-revised-node]')?.remove();
           treeDetails.append(details);
           try {
-            const selected = await requestEvidence(revisedTree, nodeId);
-            if (details.isConnected) renderEvidence(selected, details);
-          } catch (error) {
-            if (details.isConnected) details.textContent = error.message || 'Node evidence unavailable.';
+            const selected = await requestEvidence(revisedTree,nodeId);
+            if(details.isConnected) {
+              renderEvidence(selected,details,{treeRoot:treeView});
+              if(feature) {
+                const note=document.createElement('p');
+                note.textContent='Recorded feature '+feature+' selected; no grammaticality is inferred.';
+                details.prepend(note);
+              }
+            }
+          }catch(error) {
+            if(details.isConnected)details.textContent=error.message||'Node evidence unavailable.';
           }
+        };
+        treeView = renderLessonTree(revisedTree,{
+          interactive:true,zoomControls:true,stackFeatures:true,onSelectNode:inspect,
         });
         treeDetails.append(treeView);
         output.append(treeDetails);
@@ -268,7 +276,72 @@ function renderRepairRecheck(evidence, panel) {
   panel.append(section);
 }
 
-export function renderEvidence(evidence, host = document.querySelector('#explainNode')) {
+// XAI-7: shared contextual navigation for Generator, Builder, Lessons,
+// Quizzes, and revised-correction trees; never infer grammatical function
+// from a mere parent/sibling tree edge.
+function renderFocusNavigation(evidence, panel) {
+  const detail = evidenceFocusText(evidence);
+  if (!detail) return;
+  const area = document.createElement('section');
+  area.dataset.xai7Navigation = '';
+  area.setAttribute('aria-label', 'Selected syntax-tree evidence');
+  const title = document.createElement('h4');
+  title.textContent = 'Selected B-R tree position';
+  const selected = document.createElement('p');
+  selected.dataset.xai7Selected = '';
+  selected.textContent = detail.selected;
+  const relation = document.createElement('p');
+  relation.dataset.xai7Related = '';
+  relation.textContent = 'Observed positions: ' + detail.treeNote
+    + '. These tree links do not establish subject, object, head, or other grammatical functions.';
+  area.append(title, selected, relation);
+  if (detail.featureLabels.length) {
+    const features = document.createElement('p');
+    features.dataset.xai7Features = '';
+    features.textContent = 'Recorded feature labels: '
+      + detail.featureLabels.map(f => '[' + f + ']').join(', ')
+      + '. Select the feature row or its node to inspect the witnessed tree label.';
+    area.append(features);
+  }
+  if (detail.verifiedIssueCount) {
+    const issues = document.createElement('p');
+    issues.dataset.xai7Issues = '';
+    issues.textContent = detail.verifiedIssueCount
+      + ' independently approved local findings involve this position. '
+      + 'A local finding does not certify the whole sentence.';
+    area.append(issues);
+  }
+  panel.append(area);
+}
+
+function renderReadingControls(evidence, panel) {
+  const records = evidence?.contextual_explanations?.items;
+  if (!Array.isArray(records) || records.length !== 1) return;
+  const controls = document.createElement('div');
+  controls.dataset.xai7Verbosity = '';
+  controls.setAttribute('role','group');
+  controls.setAttribute('aria-label','Explanation detail');
+  const brief = document.createElement('button');
+  brief.type = 'button';
+  brief.textContent = 'Brief';
+  brief.setAttribute('aria-pressed','true');
+  const detailed = document.createElement('button');
+  detailed.type = 'button';
+  detailed.textContent = 'Detailed';
+  detailed.setAttribute('aria-pressed','false');
+  const details = panel.querySelector('[data-xai-details]');
+  const change = (showDeep) => {
+    if (details) details.open = showDeep;
+    brief.setAttribute('aria-pressed',String(!showDeep));
+    detailed.setAttribute('aria-pressed',String(showDeep));
+  };
+  brief.addEventListener('click', () => change(false));
+  detailed.addEventListener('click', () => change(true));
+  controls.append(brief,detailed);
+  panel.append(controls);
+}
+
+export function renderEvidence(evidence, host = document.querySelector('#explainNode'), options = {}) {
   if (!host) return;
   host.querySelector('[data-shared-evidence]')?.remove();
   const panel = document.createElement('section');
@@ -277,6 +350,8 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   const title = document.createElement('h3');
   title.textContent = 'Book evidence';
   renderContextualObservations(evidence, panel);
+  renderFocusNavigation(evidence, panel);
+  renderReadingControls(evidence, panel);
   renderCambridgePartial(evidence, panel);
   renderRepairRecheck(evidence, panel);
   panel.append(title);
@@ -293,6 +368,9 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
       for (const source of item.sources || []) {
         const cite = document.createElement('small');
         cite.textContent = `${source.title}, ${source.edition}, p. ${source.printed_page} [${source.id}]`;
+        cite.dataset.xai7Citation = String(source.id || 'source');
+        // Display the print-page reference even when the repository has no
+        // verified public page URL; never manufacture a PDF deep link.
         panel.append(cite);
       }
       if (item.deep_text) {
@@ -304,6 +382,35 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
     }
   }
   host.append(panel);
+  if (options.treeRoot) applyEvidenceFocus(options.treeRoot, evidence);
+}
+
+// Browser offline quiz feedback must be byte-for-byte structurally equivalent
+// to the server's shared XAI-7 quiz contract. Never infer an unattested tree.
+function attachQuizUIEvidence(output) {
+  const citations=[];
+  for (const channel of ['structural','grammatical','remediation']) {
+    for (const record of output.channels?.[channel] || []) {
+      for (const source of record.sources || []) {
+        if (!source || source.printed_page == null) continue;
+        const entry={
+          channel,source_id:source.id??null,book:source.book??null,
+          title:source.title??null,edition:source.edition??null,
+          printed_page:source.printed_page,node_id:record.node_id??null,
+        };
+        if (!citations.some(citation => JSON.stringify(citation)===JSON.stringify(entry))) citations.push(entry);
+      }
+    }
+  }
+  output.xai7_unified={
+    schema_version:'xai7-evidence-1.0.0',language_policy:'ENGLISH_ONLY',
+    mode:'quiz',analysis_id:null,tree_status:'unavailable',
+    selected_node_id:null,focus:[],feature_rows:[],verified_issues:[],
+    citations,contextual_status:'unavailable',book_status:output.status,
+    claim_boundary:'observations_do_not_create_new_functions_or_grammar_verdicts',
+    whole_sentence_certified:false,
+  };
+  return output;
 }
 
 const QUIZ_SOURCE_FIELDS = ['id','book','title','edition','printed_page','evidence_status','status','crosswalk_status','review_status','independent_review','reviewed_by','reviewed_on'];
@@ -314,16 +421,16 @@ export function composeQuizEvidence(item, answer, bank) {
   const reviewed=r=>r?.review_status==='INDEPENDENTLY_REVIEWED'&&r.independent_review===true&&Boolean(r.reviewed_by)&&/^\d{4}-\d{2}-\d{2}$/.test(r.reviewed_on);
   const sources=(item.source_ids||[]).map(id=>bank.sources.find(s=>s.id===id));
   const required=item.claim_scope==='br_structure'?'B-R':item.claim_scope==='cambridge_classification'?'Cambridge':null;
-  if(!required||!reviewed(item)||!sources.length||new Set(bank.sources.map(s=>s.id)).size!==bank.sources.length||sources.some(s=>!s||!reviewed(s)||s.book!==required||s.status!=='approved'||!s.title||!s.edition||!Number.isInteger(s.printed_page)||s.printed_page<1||!['IMG','TXT'].includes(s.evidence_status)||!['resolved','compatible'].includes(s.crosswalk_status))){output.diagnostics.push({code:'NO_BOOK_BASIS',message:'This question lacks eligible reviewed evidence.'});return output;}
+  if(!required||!reviewed(item)||!sources.length||new Set(bank.sources.map(s=>s.id)).size!==bank.sources.length||sources.some(s=>!s||!reviewed(s)||s.book!==required||s.status!=='approved'||!s.title||!s.edition||!Number.isInteger(s.printed_page)||s.printed_page<1||!['IMG','TXT'].includes(s.evidence_status)||!['resolved','compatible'].includes(s.crosswalk_status))){output.diagnostics.push({code:'NO_BOOK_BASIS',message:'This question lacks eligible reviewed evidence.'});return attachQuizUIEvidence(output);}
   const chosen=item.options.find(o=>o.id===answer),correct=item.options.find(o=>o.id===item.answer);
   if(answer!==null&&answer!==undefined&&!chosen)throw new Error('Unknown quiz answer.');
-  if(!correct||!item.rationale||!item.options.every(o=>o.rationale))return output;
+  if(!correct||!item.rationale||!item.options.every(o=>o.rationale))return attachQuizUIEvidence(output);
   const facts={item_id:item.item_id,item_version:item.content_version,answer_id:answer??null,correct_answer_id:item.answer,response_status:answer===item.answer?'correct':chosen?'incorrect':'unanswered',claim_scope:item.claim_scope};
   const channel=required==='B-R'?'structural':'grammatical';
   output.channels[channel].push({template_id:`quiz:${item.item_id}@${item.content_version}`,node_id:`quiz:${item.item_id}`,
     text:`Correct answer: ${correct.text}. ${item.rationale}`,deep_text:chosen?`Your selected option: ${chosen.rationale}`:'No answer was submitted; it counts as incorrect.',
     sources:sources.map(s=>Object.fromEntries(QUIZ_SOURCE_FIELDS.map(k=>[k,s[k]]))),facts});
-  output.facts=[facts];output.status='EXPLAINED';return output;
+  output.facts=[facts];output.status='EXPLAINED';return attachQuizUIEvidence(output);
 }
 export async function requestQuizEvidence(item,answer,options={}) {
   const response=await (options.fetch||fetch)(`${API_BASE}/api/explain`,{method:'POST',headers:{'Content-Type':'application/json'},

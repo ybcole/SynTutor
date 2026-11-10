@@ -459,6 +459,8 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 
 ### XAI-7 — Unified frontend and learning modes
 
+**XAI-7 implementation (10 Nov 2026):** Shared English-only XAI-2/3/4/5/6 plus quiz evidence now uses one typed UI contract, node/feature selection, observed parent/sibling and independently approved error-relative focus, brief/deep and mobile zoom. See [acceptance report](../reports/xai-7-unified-frontend-acceptance-2026-11-10.md). **Source limitations remain explicit:** printed citations do not imply an accessible PDF deep link, and 0 new Cambridge diagnostic rules are enabled. The full gate requires passing model-free and real browser CI.
+
 - Generator, Builder, Lessons, Quizzes and correction views consume identical evidence and contextual explanation records.
 - Highlight selected node + governor/other side of the relation.
 - Support keyboard/screen-reader traversal and verbosity controls, responsive panel, mobile zoom, cited page links.

@@ -1,7 +1,7 @@
 import { showCurriculumState } from './curriculum-state.js';
 import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdvance, lessonXp } from './lesson-core.js';
 import { createLessonStore } from './lesson-progress.js';
-import { requestEvidence } from './explanation-evidence.js';
+import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 
 let options = {}, course, store, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
@@ -21,7 +21,8 @@ function svgNode(name, attrs = {}) { const n = document.createElementNS(SVG_NS,n
 // Read-only canonical trees plus a constrained fill-in target for guided practice.
 // Advanced structures never pass through the parser or the legacy Builder bridge.
 export function renderLessonTree(envelope, {
-  focusId = null, blank = null, stackFeatures = false, displayLabels = null, interactive = false,
+  focusId = null, blank = null, stackFeatures = false, displayLabels = null,
+  interactive = false, onSelectNode = null, zoomControls = false,
 } = {}) {
   const wrap = el('div',undefined,'lesson-tree-wrap');
   const root = envelope.root;
@@ -91,7 +92,58 @@ export function renderLessonTree(envelope, {
       g.append(svgNode('polygon',{points:`${x},${bottom+12} ${x-half},${bottom+45} ${x+half},${bottom+45}`}));
       const words=svgNode('text',{x,y:bottom+68,'text-anchor':'middle'});words.textContent=node.words.join(' ');g.append(words);
     }
+    if (typeof onSelectNode === 'function' && node.id) {
+      g.setAttribute('role','button');
+      g.setAttribute('tabindex','0');
+      g.setAttribute('aria-label','Inspect B-R ' + (node.label || 'tree position')
+        + ' for ' + (node.word || node.words?.join(' ') || node.label || 'this position'));
+      const choose = () => onSelectNode(node.id, null);
+      g.addEventListener('click', choose);
+      g.addEventListener('keydown', event => {
+        if (event.target !== g) return;
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); choose(); }
+      });
+      for (const row of g.querySelectorAll('.br-feature-row')) {
+        row.setAttribute('role','button');
+        row.setAttribute('tabindex','0');
+        row.dataset.featureLabel = row.textContent;
+        row.setAttribute('aria-label','Inspect recorded B-R feature ' + row.textContent
+          + ' for ' + (node.word || node.label));
+        row.addEventListener('click', event => {
+          event.stopPropagation(); onSelectNode(node.id,row.textContent);
+        });
+        row.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.stopPropagation(); event.preventDefault();
+            onSelectNode(node.id,row.textContent);
+          }
+        });
+      }
+    }
     svg.append(g);
+  }
+  if (zoomControls) {
+    const toolbar=el('div',undefined,'xai7-tree-zoom');
+    toolbar.dataset.xai7Zoom = '';
+    toolbar.setAttribute('role','group');
+    toolbar.setAttribute('aria-label','Zoom the B-R syntax tree');
+    let zoom=1;
+    const originalWidth=svg.getAttribute('width');
+    const originalHeight=svg.getAttribute('height');
+    const status=el('span','100%');
+    status.setAttribute('aria-live','polite');
+    const apply=()=>{
+      // Reset must restore exact B-R geometry, not a rounded approximation.
+      svg.setAttribute('width',zoom===1?originalWidth:String(Math.round(width*zoom)));
+      svg.setAttribute('height',zoom===1?originalHeight:String(Math.round(height*zoom)));
+      status.textContent=Math.round(zoom*100)+'%';
+    };
+    toolbar.append(button('Zoom out',()=>{
+      zoom=Math.max(.7,Math.round((zoom-.2)*10)/10);apply();
+    }),button('Zoom in',()=>{
+      zoom=Math.min(1.8,Math.round((zoom+.2)*10)/10);apply();
+    }),button('Reset zoom',()=>{zoom=1;apply();}),status);
+    wrap.append(toolbar);
   }
   wrap.append(svg);
   const text=el('details',undefined,'lesson-tree-text');text.append(el('summary','Read the tree as text'));
@@ -103,6 +155,7 @@ export function renderLessonTree(envelope, {
       const button = el('button', description);
       button.type = 'button';
       button.dataset.nodeId = node.id;
+      if (typeof onSelectNode === 'function') button.addEventListener('click', () => onSelectNode(node.id, null));
       item.append(button);
     } else {
       item.textContent = description;
@@ -181,7 +234,45 @@ function lessonScreen() {
   }
   const worked=lesson.worked_example;
   aside.append(el('h2',worked.tree ? 'Worked B-R example' : 'Worked example'),el('p',worked.sentence,'lesson-example-sentence'));
-  if(worked.tree) aside.append(renderLessonTree(worked.tree,{focusId:key==='guided' ? lesson.guided.build_target?.node_id : worked.steps[step]?.focus_node_id,blank:key==='guided' && p.responses.guided!==lesson.guided.answer ? lesson.guided.build_target : null}));
+  if (worked.tree) {
+    const evidence=el('details',undefined,'lesson-shared-evidence');
+    evidence.dataset.xai7Lesson = '';
+    const title=el('summary','Additional reviewed tree evidence');
+    const slot=el('div',undefined,'lesson-unified-evidence');
+    evidence.append(title,slot);
+    let requestVersion=0;
+    let selected=key==='guided' ? lesson.guided.build_target?.node_id : worked.steps[step]?.focus_node_id;
+    let treeView;
+    const inspect=async (nodeId, feature=null) => {
+      selected=nodeId;
+      evidence.open=true;
+      const version=++requestVersion;
+      slot.replaceChildren(el('p','Loading the shared tree evidence…'));
+      try {
+        const result=await requestEvidence(worked.tree,nodeId);
+        if (version!==requestVersion||!slot.isConnected) return;
+        renderEvidence(result,slot,{treeRoot:treeView});
+        if (feature) {
+          const note=el('p','Selected recorded feature '+feature+'. This is a visible tree label, not a grammatical-function judgment.');
+          note.dataset.xai7FeatureSelected = '';
+          slot.prepend(note);
+        }
+      } catch {
+        if (version===requestVersion&&slot.isConnected) {
+          slot.replaceChildren(el('p','Shared evidence unavailable. The source-reviewed lesson text remains available.'));
+        }
+      }
+    };
+    treeView=renderLessonTree(worked.tree,{
+      focusId:selected,
+      blank:key==='guided' && p.responses.guided!==lesson.guided.answer ? lesson.guided.build_target : null,
+      interactive:true, onSelectNode:inspect, zoomControls:true, stackFeatures:true,
+    });
+    aside.append(treeView);
+    if (selected) aside.append(button('Inspect highlighted tree position',()=>inspect(selected)));
+    evidence.addEventListener('toggle',()=>{if(evidence.open&&!slot.childElementCount&&selected)inspect(selected);});
+    aside.append(evidence);
+  }
   else aside.append(el('p',lesson.chapter===11 && lesson.track==='foundations' ? 'This closing chapter is a text-only synthesis. No new tree convention or gradable tree is introduced.' : 'Use the text contrast without renaming B-R tree categories.'));
   aside.append(el('p',worked.origin,'lesson-origin'));sourceList(worked.source_ids,aside);
   if(key==='worked') {
@@ -199,18 +290,7 @@ function lessonScreen() {
     if(following)body.append(button(`Next lesson: ${following.title}`,()=>openLesson(following.lesson_id)));
   }
   columns.append(body,aside);host.append(columns);
-  // The shared M3 service adds only its reviewed templates. The authored source-
-  // checked lesson blocks remain the instruction; a missing template is explicit.
-  if (worked.tree && key==='worked') {
-    const evidence=el('details',undefined,'lesson-shared-evidence');evidence.append(el('summary','Additional reviewed tree evidence'));
-    evidence.append(el('p','Open to load the shared explanation service.'));let loaded=false;
-    evidence.addEventListener('toggle',async()=>{if(!evidence.open||loaded)return;loaded=true;
-      try {const result=await requestEvidence(worked.tree);evidence.replaceChildren(el('summary','Additional reviewed tree evidence'));
-        for(const channel of Object.values(result.channels||{}))for(const item of channel){evidence.append(el('p',item.text));for(const s of item.sources||[])evidence.append(el('p',`${s.title} · ${s.edition} · printed p. ${s.printed_page}`));}
-        if(!Object.values(result.channels||{}).some(items=>items.length))evidence.append(el('p','No additional shared template applies to this tree. Use the cited lesson explanation.'));
-      }catch{evidence.append(el('p','Additional evidence is unavailable. The reviewed lesson remains available offline.'));}
-    });host.append(evidence);
-  }
+
 }
 function render() {
   if (!host || host.hidden || !course || !store) return;

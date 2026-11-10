@@ -96,5 +96,6 @@ jobs:
           python scripts/test_explanation_browser.py --working-tree
           python scripts/test_lessons_browser.py
           python scripts/test_quizzes_browser.py
+          python scripts/test_xai7_browser.py
           python scripts/test_generator_canvas_browser.py
           python scripts/test_builder_browser.py

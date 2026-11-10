@@ -1684,7 +1684,7 @@ function showCanonicalTree(payload) {
         // A pending request must not repaint another sentence/account/view.
         if (selectedVersion !== requestVersion || host.hidden || !host.contains(group)
             || (session?.payload !== payload && activePreview()?.payload !== payload)) return;
-        renderEvidence(evidence, evidenceSlot);
+        renderEvidence(evidence, evidenceSlot, {treeRoot: group.closest('#canonicalTreeView')});
       } catch (error) {
         if (host.hidden || !host.contains(group)) return;
         const message = document.createElement('p');
