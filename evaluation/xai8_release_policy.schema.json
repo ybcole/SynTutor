@@ -175,14 +175,21 @@
           "minimum": 0
         },
         "expert_evaluation_report": {
-          "type": "null"
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 250
         },
         "reviewers": {
           "type": "array",
           "maxItems": 20,
           "items": {
-            "type": "string"
-          }
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100
+          },
+          "uniqueItems": true
         },
         "quality_metrics_available": {
           "type": "boolean"
@@ -226,7 +233,8 @@
         },
         "minimum_aggregate_reporting_sample": {
           "type": "integer",
-          "minimum": 0
+          "minimum": 20,
+          "maximum": 1000
         }
       }
     },
