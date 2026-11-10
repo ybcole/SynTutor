@@ -113,6 +113,8 @@ Implement only after reliable template-based XAI has been validated. Supply only
 
 ### Phase 7 — Frontend parity
 
+**Engineering implementation 2026-11-10:** Generator, Builder, Lessons, Quizzes and XAI-5 correction previews share the read-only XAI-7 evidence focus record. Actual source trees and feature labels are inspectable by keyboard; mobile zoom and short/deep controls do not change tree authority. The planned cited printed-page references are displayed, but inaccessible publisher/PDF page URLs are not fabricated. See [XAI-7 acceptance](../reports/xai-7-unified-frontend-acceptance-2026-11-10.md). Release depends on current-head browser parity, not mere code coverage.
+
 Use the same XAI response shape for the Generator, Builder, Lessons, Quizzes and correction view. In the SVG highlight selected child, parent/governor, relevant sibling and error span; never reorder or rewrite the approved B–R tree to fit the explanation.
 
 Provide brief/deep explanation, source references, keyboard access, a mobile layout, optional concept definition and explicit ambiguity/unresolved status. Avoid raw Penn labels in book-authoritative explanations.
