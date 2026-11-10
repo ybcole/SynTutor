@@ -92,6 +92,13 @@ jobs:
           python -m json.tool ../grammar/xai4_partial.schema.json > /dev/null
           python -m unittest -v test_xai4_partial
 
+      - name: Validate XAI-5 tree localization and independent revision lineage
+        working-directory: server
+        run: |
+          python -m json.tool ../grammar/xai5_localization.schema.json > /dev/null
+          python -m json.tool ../grammar/xai5_repair.schema.json > /dev/null
+          python -m unittest -v test_xai5_repair
+
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py
