@@ -72,6 +72,12 @@ jobs:
           python scripts/audit_xai1_concepts.py --require-valid --output /tmp/xai1-source-coverage.json
           python -m json.tool /tmp/xai1-source-coverage.json > /dev/null
 
+      - name: Validate XAI-2 sentence fact graphs and source-safe roles
+        working-directory: server
+        run: |
+          python -m unittest -v test_xai_facts
+          python -m json.tool ../grammar/xai_facts.schema.json > /dev/null
+
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py
