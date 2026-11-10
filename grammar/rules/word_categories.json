@@ -1644,7 +1644,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Standard English still excludes most double-modal sequences, but detector application must respect declared dialect scope."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Standard English still excludes most double-modal sequences, but detector application must respect declared dialect scope.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-022",
@@ -1695,7 +1696,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Negation of the matrix would has narrower pragmatic conditions than negation of the subordinate plain-form verb."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Negation of the matrix would has narrower pragmatic conditions than negation of the subordinate plain-form verb.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-023",
@@ -1746,7 +1748,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Do not impose an absolute error on rare dialectal mayn't."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Do not impose an absolute error on rare dialectal mayn't.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-024",
@@ -1799,7 +1802,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary dare, lexical dare and some bare-infinitival combinations are genuinely ambiguous; do not force a single parse."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary dare, lexical dare and some bare-infinitival combinations are genuinely ambiguous; do not force a single parse.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-025",
@@ -1850,7 +1854,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary dare also permits bare complements, so surface form is not alone sufficient for classification."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary dare also permits bare complements, so surface form is not alone sufficient for classification.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-026",
@@ -1908,7 +1913,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. The distinctions are essential before applying do-support constraints."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. The distinctions are essential before applying do-support constraints.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-027",
@@ -1961,7 +1967,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Informal have got is not itself an error; the habitual distinction is a usage constraint requiring intended meaning."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Informal have got is not itself an error; the habitual distinction is a usage constraint requiring intended meaning.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-028",
@@ -2014,7 +2021,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary stative have has become formal or old-fashioned for some speakers and should not be universally condemned."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary stative have has become formal or old-fashioned for some speakers and should not be universally condemned.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-029",
@@ -2065,7 +2073,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Omission of had in informal expressions such as you better leave is common and must not become a universal grammatical error."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Omission of had in informal expressions such as you better leave is common and must not become a universal grammatical error.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-030",
@@ -2128,7 +2137,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Motional been and lexical be need their own case distinctions; don't infer an error solely from do + be."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Motional been and lexical be need their own case distinctions; don't infer an error solely from do + be.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-031",
@@ -2181,7 +2191,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. It does not inherit the bare-infinitive selection or person-number invariance of the central modals."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. It does not inherit the bare-infinitive selection or person-number invariance of the central modals.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-032",
@@ -2232,7 +2243,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Motional be differs in distribution from other auxiliary be uses."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Motional be differs in distribution from other auxiliary be uses.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-033",
@@ -2283,7 +2295,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. These are narrow constructions, and some speakers allow positive if you be; do not generalise ordinary do + be to every copular clause."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. These are narrow constructions, and some speakers allow positive if you be; do not generalise ordinary do + be to every copular clause.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-034",
@@ -2334,6 +2347,7 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary do is largely confined to do-support and negative/emphatic imperatives, except for archaic formulae."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary do is largely confined to do-support and negative/emphatic imperatives, except for archaic formulae.",
+    "diagnostic": null
   }
 ]

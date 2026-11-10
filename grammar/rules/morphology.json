@@ -4109,7 +4109,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Some uses of could permit both a past-time and a remote, non-past reading."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Some uses of could permit both a past-time and a remote, non-past reading.",
+    "diagnostic": null
   },
   {
     "id": "MORPH-062",
@@ -4162,7 +4163,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Some remote-conditional apodoses with must are marginal for some speakers; do not infer a missing past form."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Some remote-conditional apodoses with must are marginal for some speakers; do not infer a missing past form.",
+    "diagnostic": null
   },
   {
     "id": "MORPH-063",
@@ -4213,7 +4215,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. An occurrence of had following another have may belong to lexical have and requires separate category analysis."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. An occurrence of had following another have may belong to lexical have and requires separate category analysis.",
+    "diagnostic": null
   },
   {
     "id": "MORPH-064",
@@ -4264,7 +4267,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. The category is lexical-semantic rather than an error constraint."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. The category is lexical-semantic rather than an error constraint.",
+    "diagnostic": null
   },
   {
     "id": "MORPH-065",
@@ -4315,6 +4319,7 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Do not enforce one modal analysis across all speakers."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Do not enforce one modal analysis across all speakers.",
+    "diagnostic": null
   }
 ]

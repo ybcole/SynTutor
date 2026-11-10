@@ -2684,7 +2684,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Never mark all non-affirmative ought without to ungrammatical."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Never mark all non-affirmative ought without to ungrammatical.",
+    "diagnostic": null
   },
   {
     "id": "COMP-040",
@@ -3028,7 +3029,8 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Ordinary copular, passive and progressive be do not inherit the quasi-modal selection pattern."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Ordinary copular, passive and progressive be do not inherit the quasi-modal selection pattern.",
+    "diagnostic": null
   },
   {
     "id": "COMP-044",
@@ -3079,6 +3081,7 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "related_rules": [],
-    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. The form be remains invariant, but the auxiliary do reflects subject agreement. Positive if you be is possible for only some speakers."
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. The form be remains invariant, but the auxiliary do reflects subject agreement. Positive if you be is possible for only some speakers.",
+    "diagnostic": null
   }
 ]
