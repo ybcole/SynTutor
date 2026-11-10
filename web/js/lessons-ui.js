@@ -109,13 +109,14 @@ export function renderLessonTree(envelope, {
         row.dataset.featureLabel = row.textContent;
         row.setAttribute('aria-label','Inspect recorded B-R feature ' + row.textContent
           + ' for ' + (node.word || node.label));
+        const featureName=()=>row.textContent.trim().replace(/^\\[|\\]$/g,'');
         row.addEventListener('click', event => {
-          event.stopPropagation(); onSelectNode(node.id,row.textContent);
+          event.stopPropagation(); onSelectNode(node.id,featureName());
         });
         row.addEventListener('keydown', event => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.stopPropagation(); event.preventDefault();
-            onSelectNode(node.id,row.textContent);
+            onSelectNode(node.id,featureName());
           }
         });
       }
