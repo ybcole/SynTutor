@@ -66,7 +66,17 @@ export function createBuilderTools(config){
    button('Import canonical JSON',async()=>{message='Checking import…';updateStatus();try{const tree=JSON.parse(json.value),before=JSON.stringify(snapshot()),account=identity;await config.validateImport(tree);if(!active||account!==identity||before!==JSON.stringify(snapshot()))throw Error('Construction changed during import; try again');const model=fromCanonicalEnvelope(tree);mutate(()=>{config.state.model=model;config.state.canonicalProfile=tree.convention_profile;config.state.targetId=null;config.reset();});}catch(e){message=`Import failed: ${e.message}. Current work retained.`;updateStatus();}}));host.append(interchange);
   const status=el('p');status.dataset.builderSave='';status.setAttribute('role','status');host.append(status);updateStatus();
  }
- subscribeAuthState(()=>{if(!active)return;config.state.model={nodes:{}};config.state.canonicalProfile=builderProfile();config.state.targetId=null;config.reset();initSession(true);render();});
+ // Duplicate same-account auth notifications can arrive after a user edit.
+ // Only a real identity transition may swap/restore the account draft.
+ subscribeAuthState(()=>{
+  if(!active)return;
+  const nextIdentity=config.userId?.()||'guest';
+  if(nextIdentity===identity)return;
+  config.state.model={nodes:{}};
+  config.state.canonicalProfile=builderProfile();
+  config.state.targetId=null;
+  config.reset();initSession(true);render();
+ });
  return {open({recover=true}={}){active=true;if(!host){host=el('section');host.id='builderTools';host.setAttribute('aria-label','Accessible Builder controls');document.querySelector('.canvas-stage').append(host);}host.hidden=false;initSession(recover);render();config.fit();fetch('/content/lessons/course.json').then(r=>r.json()).then(data=>{course=data;render();}).catch(()=>{message='Reviewed exercises unavailable; free construction remains available.';updateStatus();});},
  close(){record();active=false;if(host)host.hidden=true;},record,render,select(id){selected=id;render();},
  undo(){if(session)apply(session.undo());},redo(){if(session)apply(session.redo());}};
