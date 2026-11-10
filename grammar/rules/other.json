@@ -8522,5 +8522,1972 @@
     "related_rules": [],
     "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Indirect speech is an illustrative environment, not the exclusive trigger for the construction.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-153",
+    "domain": "other",
+    "concept": "Backshifted perspective outside subordinate clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A main-clause interrogative in a narrative may use non-deictic backshift to represent a character's thoughts, including free indirect thought without an overt reporting verb.",
+    "condition": "A narrative or parenthetical thought report adopts a character's earlier time of orientation rather than the narrator's current speech time.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Would the train still be there when she reached the platform, Mara wondered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitor was worried. Had he missed the final bus? Would anyone help him?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1–6.2.2 Backshift",
+        "pages": [
+          155
+        ],
+        "pdf_pages": [
+          175
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backshifted perspective outside subordinate clauses",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: This literary use is not a quotation or an obligatory pattern in ordinary speech.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-154",
+    "domain": "other",
+    "concept": "Backshifted and non-backshifted reported present",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A past-time report can use either a backshifted preterite anchored to the original utterance or a present anchored to the reporting utterance.",
+    "condition": "The reported proposition concerns a state that may still hold at the time of the later report.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nina said that the office was busy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nina said that the office is busy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Obligatory vs optional backshifting",
+        "pages": [
+          155,
+          156
+        ],
+        "pdf_pages": [
+          175,
+          176
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backshifted and non-backshifted reported present",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: Both can be pragmatically equivalent when the state persists, but their times of orientation are not identical.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-155",
+    "domain": "other",
+    "concept": "Reported-content orientation rather than tense rewrite",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Backshift describes non-deictic tense interpretation of reported content, not a grammatical transformation from an underlying quotation.",
+    "condition": "The reported proposition is expressed through an embedded clause without reproducing the original speaker's exact words.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guide mentioned that the northern path was closed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mila believed that the southern gate was unlocked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1–6.2.2 Backshift",
+        "pages": [
+          155
+        ],
+        "pdf_pages": [
+          175
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reported-content orientation rather than tense rewrite",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: Personal pronouns and other lexical choices are not constrained to a putative literal quotation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-156",
+    "domain": "other",
+    "concept": "Four tense patterns in indirect reported content",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Reported present, simple preterite, present perfect and past perfect have different backshift alternatives; only the first three permit an additional distinct backshifted form.",
+    "condition": "A past reporting predicate embeds content with one of the four major tense forms of the original utterance.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lina said that the gate was open. [present-to-preterite]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lina said that the inspector had inspected the gate. [past-to-past-perfect]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Lina said that the inspector had already left. [perfect report]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Four types of original utterance",
+        "pages": [
+          156
+        ],
+        "pdf_pages": [
+          176
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Four tense patterns in indirect reported content",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: An original past perfect cannot be shifted into a triple past tense.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-157",
+    "domain": "other",
+    "concept": "No separate triple-past morphological backshift",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An original past-perfect report cannot be backshifted to a new three-layer past tense because English has no corresponding ordinary triple-past tense form.",
+    "condition": "A report already represents an event through preterite perfect and is embedded in an additional past reporting clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The witness said that the vehicle had left earlier.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editor said that the publisher had already sent the proofs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Four types of original utterance",
+        "pages": [
+          156
+        ],
+        "pdf_pages": [
+          176
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "No separate triple-past morphological backshift",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: A past perfect after a reporting verb need not be evidence of an additional grammatical tense layer.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-158",
+    "domain": "other",
+    "concept": "Backshift choices form a prefix through embedded clauses",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In a complex indirect report of an original present-tense clause, valid combinations backshift all the relevant finite levels, just the first level, or none; an unshifted higher complement cannot be followed by a further backshift solely for that same reporting relation.",
+    "condition": "A nested indirect report has a past reporting verb, a finite embedded matrix clause and a further subordinate present-time relation inherited from the original utterance.",
+    "violation": "A nested, non-backshifted reported present event is paired with a further backshifted preterite for the same original temporal relation, despite the higher event already having deictic tense.",
+    "exceptions": [
+      {
+        "description": "The restriction concerns backshifted subordinate time in the same original reported utterance, not an independently interpreted earlier event or another kind of subordinate relation.",
+        "pages": [
+          156
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Ari said that she was packing before the guests returned.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Ari said that she was packing before the guests return.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Ari said that she is packing before the guests return.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Ari said that she is packing before the guests returned.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Nora said that she is travelling before the meeting began.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Complex original utterance",
+        "pages": [
+          156
+        ],
+        "pdf_pages": [
+          176
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backshift choices form a prefix through embedded clauses",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: Apply only to the specified indirect-report temporal nesting; independent past meanings or different temporal relations must not be classified by surface tense alone.",
+    "diagnostic": {
+      "error_family": "tense_aspect",
+      "error_pattern": "A nested, non-backshifted reported present event is paired with a further backshifted preterite for the same original temporal relation, despite the higher event already having deictic tense.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Ari said that she is packing before the guests returned. ||| Ari said that she is packing before the guests return.",
+        "Nora said that she is travelling before the meeting began. ||| Nora said that she is travelling before the meeting begins."
+      ],
+      "learner_explanation": "In a complex indirect report of an original present-tense clause, valid combinations backshift all the relevant finite levels, just the first level, or none; an unshifted higher complement cannot be followed by a further backshift solely for that same reporting relation. This correction is justified only when the nested tense refers to the same reported schedule, without an independent past-time interpretation.",
+      "corrected_paragraph_template": "Confirm the original intended temporal nesting, then change the lowest subordinate tense if and only if needed; retest the complete report and its time expressions.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Ari said that she was packing before the guests returned.",
+        "Ari said that she was packing before the guests return.",
+        "Ari said that she is packing before the guests return.",
+        "Nora said that she is travelling because the meeting ended. [causal content rather than the same before relation]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "backshift",
+        "reported-speech"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "OTH-159",
+    "domain": "other",
+    "concept": "Non-backshifted tense must preserve temporal relation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A present-tense non-backshifted report is pragmatically licensed when the situation's relation to the reporting time can reasonably match its relation to the original speaker's time.",
+    "condition": "An indirect report keeps deictic present rather than using a past tense oriented to the prior utterance.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jon said the laboratory is open. [if it remains open]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jon said the concert starts tomorrow. [if the start is still future]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Condition on deictic reporting",
+        "pages": [
+          156,
+          157
+        ],
+        "pdf_pages": [
+          176,
+          177
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-backshifted tense must preserve temporal relation",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: The condition depends on world context and the time of the report; the source does not license a context-free correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-160",
+    "domain": "other",
+    "concept": "Persistence of a reported state affects tense choice",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Present-tense indirect reporting is more likely when a state commonly lasts across the interval between original and reported utterances.",
+    "condition": "A reporting speaker chooses whether to use present tense for an enduring condition or a short-lived one.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said the library is in the old town. [long-lived location]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She said she had a cold. [short-term past condition]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Examples of deictic reporting",
+        "pages": [
+          157
+        ],
+        "pdf_pages": [
+          177
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Persistence of a reported state affects tense choice",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: Even a persistent state can end; duration is an expectation rather than an infallible inference.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-161",
+    "domain": "other",
+    "concept": "Future reference in non-backshifted indirect report",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A present-tense future-oriented content clause is appropriate only if the projected event remains in the future relative to the act of reporting.",
+    "condition": "An original future-present event is retold after some time has elapsed.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "On Monday Rosa said that the exhibition opens next Friday. [reported before Friday]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "After the event, Rosa said the exhibition opened the previous Friday. [retrospective report]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Examples of deictic reporting",
+        "pages": [
+          157
+        ],
+        "pdf_pages": [
+          177
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Future reference in non-backshifted indirect report",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: What counts as next week or next Tuesday depends on the report date; no single surface tense is correct independently of that time.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-162",
+    "domain": "other",
+    "concept": "Reporter endorsement favours but does not force present tense",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A reporter who endorses the content often chooses non-backshifted present, while doubt or rejection often favours backshift; neither tendency is obligatory.",
+    "condition": "The truth of the earlier proposition is adopted or questioned by the later reporter.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He told us the gate is accessible, so we can go through it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He told us the gate was accessible, but it is firmly locked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Factors affecting choice",
+        "pages": [
+          157
+        ],
+        "pdf_pages": [
+          177
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reporter endorsement favours but does not force present tense",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: The opposite pairings are explicitly possible and must not be treated as ungrammatical.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-163",
+    "domain": "other",
+    "concept": "Original belief focus favours backshift",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Backshift is favoured when the reporting clause highlights what somebody believed at the earlier time rather than what is now known.",
+    "condition": "A report focuses the contrast between an earlier belief and current evidence.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I thought the blue folder was mine, but it belongs to her.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I believed the figures were correct; now the auditor disagrees.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Factors affecting choice",
+        "pages": [
+          157,
+          158
+        ],
+        "pdf_pages": [
+          177,
+          178
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Original belief focus favours backshift",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: This is a discourse preference, not a categorical prohibition of present tense in all thought reports.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-164",
+    "domain": "other",
+    "concept": "Present tense reports an event still projected after now",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "For an original plan with future reference, non-backshifted present can additionally communicate that the event has not yet happened when the report is made.",
+    "condition": "The reporter relates an earlier announced plan to the time of the new report.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara said she is leaving this weekend. [weekend still upcoming]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mara said she was leaving that weekend. [the report need not assert a currently upcoming departure]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Factors affecting choice",
+        "pages": [
+          157
+        ],
+        "pdf_pages": [
+          177
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present tense reports an event still projected after now",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: A time interval already past relative to the report excludes a still-future deictic interpretation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-165",
+    "domain": "other",
+    "concept": "Present perfect matrix often favours deictic report",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A present-perfect reporting clause tends to favour an unshifted present content tense, while simple preterite reporting more often favours past backshift.",
+    "condition": "The matrix predicate reports speech through has said or said and embeds a proposition interpreted at reporting time.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They have announced that the bridge is safe.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They announced that the bridge was safe.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Factors affecting choice",
+        "pages": [
+          158
+        ],
+        "pdf_pages": [
+          178
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present perfect matrix often favours deictic report",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: Both reverse pairings remain possible and should not be diagnosed as grammatical errors.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-166",
+    "domain": "other",
+    "concept": "Simplification of a reported original past event",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When an earlier utterance contained simple preterite, an indirect report may preserve that preterite rather than shift it to past perfect if the earlier-time meaning is already clear.",
+    "condition": "The complement reports a finished event whose past relation is evident independently of a second past layer.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They asked where I was born.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They asked where I had been born.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Simplification",
+        "pages": [
+          158
+        ],
+        "pdf_pages": [
+          178
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simplification of a reported original past event",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: The variants may have different emphases, but a simple preterite is not automatically an erroneous failure to backshift.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-167",
+    "domain": "other",
+    "concept": "Temporal ambiguity can require past perfect in report",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When a simple preterite complement would naturally be read as backshifted present, past perfect may be needed to report that an original state was already in the past.",
+    "condition": "The reporter must distinguish an original present state from an original past state under a past reporting verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said she admired the violinist. [could report present admiration]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She said she had admired the violinist when she was younger. [anterior admiration]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Simplification",
+        "pages": [
+          158
+        ],
+        "pdf_pages": [
+          178
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal ambiguity can require past perfect in report",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: Disambiguation relies on the lexical aspect of the subordinate predicate and time adjuncts.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-168",
+    "domain": "other",
+    "concept": "Current state backshift differs from original past-time report",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A reported preterite describing a state is often read as a backshift of present; a past perfect can mark that the state itself preceded the earlier report.",
+    "condition": "A past reporting clause embeds a stative verb without an independent past-time adjunct.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitor said he liked the apartment. [compatible with then-present liking]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitor said he had liked the apartment years ago. [then-prior liking]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.2 Simplification",
+        "pages": [
+          158
+        ],
+        "pdf_pages": [
+          178
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Current state backshift differs from original past-time report",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: A definite past adjunct can make a simple preterite report unambiguous without perfect.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-169",
+    "domain": "other",
+    "concept": "Primary preterite more often directly deictic than perfect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Primary preterite typically anchors reference time to the speech time, whereas perfect usually gives anteriority relative to an orientation time supplied elsewhere.",
+    "condition": "Distinguish preterite tense inflection from perfect have in direct and compound temporal relations.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The driver departed yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The driver had departed before the inspection began.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.3 Primary vs secondary past tense",
+        "pages": [
+          159
+        ],
+        "pdf_pages": [
+          179
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary preterite more often directly deictic than perfect",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: Both can be non-deictic in special constructions; the distinction is a default and relative ordering of tense layers.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-170",
+    "domain": "other",
+    "concept": "Inflectional primary versus analytic secondary tense",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Primary tense is inflectionally marked and contrasts past with present; perfect is a less grammaticalised analytic category marked with auxiliary have and contrasted with its absence.",
+    "condition": "Compare a preterite/non-preterite verb inflection against perfect and non-perfect auxiliary structures.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They open the office early; they opened it yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They have opened the office; they opened it yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.3 Primary vs secondary past tense",
+        "pages": [
+          159
+        ],
+        "pdf_pages": [
+          179
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflectional primary versus analytic secondary tense",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: Non-perfect is not a separate secondary tense and primary present contrasts with absence of primary tense.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-171",
+    "domain": "other",
+    "concept": "Preterite also marks remoteness and backshift",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Unlike perfect, whose normal contribution is anteriority, the preterite has extended grammatical uses for modal remoteness and non-deictic backshift.",
+    "condition": "An English preterite appears under a condition or report with non-past interpretation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If he knew the answer now, he would help us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They said the path was closed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.3 Primary vs secondary past tense",
+        "pages": [
+          159
+        ],
+        "pdf_pages": [
+          179
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preterite also marks remoteness and backshift",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: Do not interpret the preterite in every sentence as placing the described situation before the speaker's now.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-172",
+    "domain": "other",
+    "concept": "Perfect expresses anteriority where primary past unavailable",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Perfect can indicate earlier situation time when preterite is already used for remoteness/backshift or when a non-finite clause cannot carry a primary preterite.",
+    "condition": "A clause uses a preterite for non-temporal reasons or contains a non-finite verb complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she had seen the notice, she would have replied.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The historian is believed to have worked in Paris.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.3 Primary vs secondary past tense",
+        "pages": [
+          159
+        ],
+        "pdf_pages": [
+          179
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfect expresses anteriority where primary past unavailable",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: The perfect still supplies a relative anteriority relation, not a new inflectional finite tense.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-173",
+    "domain": "other",
+    "concept": "Imperative temporal reference despite tenseless verb",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An imperative with plain-form verb normally concerns an action immediately following the utterance, despite the lack of primary tense on the verb.",
+    "condition": "A plain-form imperative issues a directive to an addressee.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Close the shutters now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please send the letter tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Temporal interpretation without primary tense",
+        "pages": [
+          159
+        ],
+        "pdf_pages": [
+          179
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Imperative temporal reference despite tenseless verb",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk not independently checked."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Examined against the source pages of the uploaded complete Cambridge PDF; examples are original. Restriction: Adverbs and discourse can shift the intended action from immediate future to a later time.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-174",
+    "domain": "other",
+    "concept": "Matrix time as anchor for a non-finite complement",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A tenseless gerund-participial complement can refer to a situation earlier than, simultaneous with, or later than the time of its catenative matrix verb.",
+    "condition": "A gerund-participial clause is governed by a catenative matrix predicate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I recalled meeting the chairperson last spring. [earlier than recall]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I enjoyed watching the parade. [simultaneous]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I intended visiting the site the following week. [later than intend]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Temporal interpretation of constructions without primary tense",
+        "pages": [
+          160
+        ],
+        "pdf_pages": [
+          180
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Matrix time as anchor for a non-finite complement",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The governing verb, not the -ing form alone, determines the temporal relation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-175",
+    "domain": "other",
+    "concept": "Five classes of catenative temporal interpretation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Catenative predicates can select complements whose reference time is anterior, anterior or simultaneous, simultaneous, simultaneous or posterior, or posterior to matrix time.",
+    "condition": "A non-finite complement of a catenative verb is interpreted through the matrix predicate's lexical temporal selection.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I remember telling her the date. [anterior]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She seems to know the answer. [simultaneous]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They intend to reopen the hall tomorrow. [posterior]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          160
+        ],
+        "pdf_pages": [
+          180
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Five classes of catenative temporal interpretation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The book's five classes are a sample classification; an apparently similar lexical verb or a different complement type may select a different reading.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-176",
+    "domain": "other",
+    "concept": "Remember and forget differ by complement type",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Remember and forget with gerund-participials express an anterior remembered or forgotten event, whereas their infinitival constructions are a separate lexical use.",
+    "condition": "A memory predicate takes a gerund-participial or to-infinitival complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I remembered submitting the application. [recalled an earlier event]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I remembered to submit the application. [fulfilled an obligation]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "He forgot to pay the fee. [prospective obligation not carried out]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          160
+        ],
+        "pdf_pages": [
+          180
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remember and forget differ by complement type",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The two complementation patterns do not yield interchangeable meanings; do not rewrite one automatically into the other.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-177",
+    "domain": "other",
+    "concept": "Aspectuality distinguishes anterior and simultaneous Class 2 complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With verbs such as resent and regret, a bounded-event complement is naturally anterior while a state complement can be simultaneous with the matrix.",
+    "condition": "A Class 2 catenative predicate governs a perfective-event or imperfective-state complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She resents him entering the office without notice. [anterior entry]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She resents not having access to her records. [simultaneous state]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          160
+        ],
+        "pdf_pages": [
+          180
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aspectuality distinguishes anterior and simultaneous Class 2 complements",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The lexical aspect and the context govern this choice; the matrix verb class permits both.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-178",
+    "domain": "other",
+    "concept": "Simultaneous and posterior complements in modal class",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal catenatives may allow a complement to represent either a state holding now or an eventuality after matrix time.",
+    "condition": "A Class 4 modal such as may embeds a plain-form complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitor may be upstairs. [simultaneous state]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitor may arrive tomorrow. [posterior event]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          160,
+          161
+        ],
+        "pdf_pages": [
+          180,
+          181
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simultaneous and posterior complements in modal class",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: A punctual event in the future does not have to receive a habitual reading.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-179",
+    "domain": "other",
+    "concept": "Present simultaneous dynamic infinitives tend toward habitual reading",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-finite complement simultaneous with present matrix time generally shares simple-present restrictions against interpreting one extended dynamic event as a single present occurrence.",
+    "condition": "A present-tense verb such as seem selects a simultaneous plain-form dynamic infinitival clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She seems to solve puzzles every evening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He seems to work there on weekdays.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          161
+        ],
+        "pdf_pages": [
+          181
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present simultaneous dynamic infinitives tend toward habitual reading",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: A future-oriented modal complement is outside this present-simultaneous reading and may denote a single future event.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-180",
+    "domain": "other",
+    "concept": "May permits habitual-present and one-off future readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The modal may allows simultaneous habitual reference or posterior single-event reference with the same following plain verb form.",
+    "condition": "The subordinate lexical verb is dynamic and may denotes possibility.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She may check the ledger every morning. [possible habit]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She may check the ledger tomorrow. [possible future event]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          161
+        ],
+        "pdf_pages": [
+          181
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "May permits habitual-present and one-off future readings",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The interpretation depends on discourse/time adjuncts; the plain form does not carry present tense.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-181",
+    "domain": "other",
+    "concept": "Schedule may be present when the event itself is future",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A simultaneous reading under a Class 2 catenative may describe a present plan or arrangement for a future event rather than the future event itself.",
+    "condition": "A catenative such as understand governs an -ing complement modified by a future-time adjunct.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I cannot understand them travelling on Saturday. [current plan]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I regret them leaving tomorrow. [present regret about planned future event]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Catenative construction",
+        "pages": [
+          161
+        ],
+        "pdf_pages": [
+          181
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Schedule may be present when the event itself is future",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The source specifically cautions that this blurs a simple simultaneous-versus-posterior event classification.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-182",
+    "domain": "other",
+    "concept": "Perfect auxiliaries are not selectable by all catenatives",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A perfect in a non-finite complement is licensed by many catenatives but not by predicates such as begin and causative make when they temporally tie matrix and complement together.",
+    "condition": "A catenative takes a non-finite clause headed by perfect have, with an independently anterior subordinate event.",
+    "violation": "A catenative that excludes an independently anterior perfect complement is incorrectly followed by perfect have in a single bound catenative construction.",
+    "exceptions": [
+      {
+        "description": "Lexical have is not perfect auxiliary have; catenatives including seem and expect can license an anterior perfect complement.",
+        "pages": [
+          161
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He appeared to have received the invitation.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They expected her to have completed the questionnaire.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She began reading the manuscript.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "The tutor made the class complete the exercise.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She began to have read the manuscript.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The tutor made the class have completed the exercise.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 The perfect auxiliary have",
+        "pages": [
+          161
+        ],
+        "pdf_pages": [
+          181
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfect auxiliaries are not selectable by all catenatives",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: Do not confuse lexical have with perfect have, and do not prohibit perfect complements selected by seem, expect, want or other licensing verbs.",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "A catenative that excludes an independently anterior perfect complement is incorrectly followed by perfect have in a single bound catenative construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She began to have read the manuscript. ||| She began reading the manuscript.",
+        "The tutor made the class have completed the exercise. ||| The tutor made the class complete the exercise."
+      ],
+      "learner_explanation": "A perfect in a non-finite complement is licensed by many catenatives but not by predicates such as begin and causative make when they temporally tie matrix and complement together. The matrix verb determines whether its subordinate event can be independently anterior; compare the proposed revision with the original meaning.",
+      "corrected_paragraph_template": "Only revise the catenative complement if perfect-have is correctly identified and the matrix verb disallows it; keep other clauses intact and reanalyse the full paragraph.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She began to have doubts. [lexical have]",
+        "He seemed to have offended the audience. [licensing catenative]",
+        "She wanted to have finished by noon. [posterior orientation]",
+        "They began reading the manuscript. [non-perfect complement]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "catenatives",
+        "perfect"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "OTH-183",
+    "domain": "other",
+    "concept": "Perfect in a catenative complement locates reference before orientation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Where a non-finite complement uses perfect have, the perfect places the subordinate situation before an orientation time that the matrix verb locates at or after its own time.",
+    "condition": "A licensed perfect infinitival or gerund-participial complement follows a catenative predicate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He regrets having spoken harshly. [event before regret]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They hope to have completed the repairs by next Thursday. [event before a future orientation]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 The perfect auxiliary have",
+        "pages": [
+          161,
+          162
+        ],
+        "pdf_pages": [
+          181,
+          182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfect in a catenative complement locates reference before orientation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The perfect relative orientation may be posterior to the matrix event; earlier than that orientation does not always mean earlier than speech.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-184",
+    "domain": "other",
+    "concept": "Gerund-participial noun modifiers can refer to past, present or future",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A gerund-participial clause modifying an NP has no inherent tense and may refer to past, current, or future time as established by adjuncts and context.",
+    "condition": "A nominal head is modified by a non-finite clause headed by an -ing verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Residents living nearby during the blackout were evacuated. [past]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The person waiting outside is the courier. [present]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Applicants attending tomorrow's interview should bring identification. [future]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Non-finite modifiers in NP structure",
+        "pages": [
+          162
+        ],
+        "pdf_pages": [
+          182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gerund-participial noun modifiers can refer to past, present or future",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: Temporal simultaneity with the matrix clause is common but not encoded by the participial form.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-185",
+    "domain": "other",
+    "concept": "Past-participial passive noun modifiers span temporal relations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A passive past-participial modifier in NP structure can describe a past event, present state or future event, according to the larger context.",
+    "condition": "A nominal head is modified by a passive past-participial clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Documents submitted yesterday are on the desk. [past]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The information recorded in this file is confidential. [present state]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Applications received tomorrow will be reviewed next week. [future]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Non-finite modifiers in NP structure",
+        "pages": [
+          162
+        ],
+        "pdf_pages": [
+          182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-participial passive noun modifiers span temporal relations",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The past-participle morphology alone does not assign a past-time reference to the modifying clause.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-186",
+    "domain": "other",
+    "concept": "Infinitival noun modifiers generally select non-past matrix-relative time",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Infinitival modifiers in NP structure typically have reference simultaneous with or later than matrix time, and often convey unrealised possibility rather than an actual event.",
+    "condition": "An NP contains an infinitival relative/modifying clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was the first scientist to reach the station. [actual event associated with past matrix]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is searching for a colleague to interview. [prospective possibility]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§7 Infinitival modifiers in NP structure",
+        "pages": [
+          162
+        ],
+        "pdf_pages": [
+          182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival noun modifiers generally select non-past matrix-relative time",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The narrower temporal range differs from gerund- and past-participial modifiers; the reading of an actual event depends on the construction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-187",
+    "domain": "other",
+    "concept": "Basic progressive aspect has be plus gerund-participle",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Progressive aspect is formally built with auxiliary be followed by a verbal gerund-participle and ordinarily presents a dynamic situation from an internal ongoing viewpoint.",
+    "condition": "An ordinary progressive finite clause contains auxiliary be and an -ing verbal complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The engineer is inspecting the cables.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The engineers were inspecting the cables when the power returned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          162
+        ],
+        "pdf_pages": [
+          182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Basic progressive aspect has be plus gerund-participle",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-inspected in complete uploaded Cambridge PDF; examples are original. Exceptions: The subsequent sections detail important restrictions and non-basic progressive interpretations, not yet processed in this batch.",
+    "diagnostic": null
   }
 ]

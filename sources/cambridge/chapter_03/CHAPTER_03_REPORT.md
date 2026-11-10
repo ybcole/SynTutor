@@ -68,3 +68,10 @@ An additional **70 original source-cited records** are staged for grammar knowle
 ## Phase B update — 2026-11-10 (printed pp. 115–122)
 
 Additional original concepts and one narrowly specified diagnostic covering aspectual *used*, tense/aspect/mood, and event classification were added. See `PHASE_B_PP115_122_REPORT.md` for page-by-page sources and contextual restrictions. **Chapter 3: 49 extracted, 3 contents skips, 90 unprocessed** of 142 printed pages. Continue p. 123 without human approval stops. No new active detectors.
+
+
+---
+
+## Phase B autonomous continuation — 2026-11-10, printed pp. 155–162
+
+Added **35 original, source-cited records** OTH-153–OTH-187: 33 classifications and 2 narrowly specified constraints. See `PHASE_B_PP155_162_REPORT.md` for page-by-page topics, valid contrasts and exceptions. **89 extracted / 142**, **3 contents-only skips**, **50 unprocessed (163–212)**. Full-book extraction remains incomplete. No new production detector activation or measured diagnostic accuracy. Continue at p. 163 automatically, without per-section user approval.
