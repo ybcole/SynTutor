@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 import re
+from jsonschema import Draft202012Validator, ValidationError, SchemaError
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "xai4-partial-1.0.0"
@@ -122,6 +123,16 @@ def load_manifest(root=None):
     root = root or ROOT
     manifest = json.loads((root/"grammar/xai4_candidates.json").read_text())
     audit = json.loads((root/"grammar/xai_pre/source_audit.json").read_text())
+    schema = json.loads((ROOT/"grammar/xai4_candidates.schema.json").read_text())
+    try:
+        Draft202012Validator.check_schema(schema)
+        Draft202012Validator(schema).validate(manifest)
+    except (ValidationError, SchemaError) as exc:
+        raise ValueError("XAI-4 candidate catalog is invalid") from exc
+    for key in ("claims", "crosswalks"):
+        ids = [row.get("id") for row in audit.get(key, []) if isinstance(row, dict)]
+        if len(ids) != len(audit.get(key, [])) or len(ids) != len(set(ids)):
+            raise ValueError("Invalid or duplicate XAI-4 audit identifiers")
     rows = manifest.get("rules")
     if (manifest.get("schema_version") != "xai4-candidates-1.0.0"
             or manifest.get("language_policy") != "ENGLISH_ONLY"
