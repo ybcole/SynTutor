@@ -6684,5 +6684,1843 @@
     "related_rules": [],
     "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Both retain the same generalized perfect anteriority relation.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-118",
+    "domain": "other",
+    "concept": "Perfect omission in temporal adjunct clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "After, before, and as soon as may preserve approximately the same event order with a perfect or non-perfect subordinate clause when no meaningful temporal gap is introduced.",
+    "condition": "A bounded situation in a temporal adjunct is positioned relative to another event by the preposition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitors departed after the speaker had finished.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitors departed after the speaker finished.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.5",
+        "pages": [
+          147
+        ],
+        "pdf_pages": [
+          167
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfect omission in temporal adjunct clauses",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Equivalence is sensitive to the duration and completion of the subordinate event.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-119",
+    "domain": "other",
+    "concept": "Long-event perfect after before",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Before with a perfect may allow departure during an extended activity, whereas the non-perfect clause can locate departure before the whole activity.",
+    "condition": "A long, potentially ongoing accomplishment is subordinated by before.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She left before the engineers had repaired the bridge. [repair may already have begun]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She left before the engineers repaired the bridge. [leaving precedes the repair event]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.5",
+        "pages": [
+          147
+        ],
+        "pdf_pages": [
+          167
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Long-event perfect after before",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Not all perfect and non-perfect before-clauses are equivalent; an activity's internal duration matters.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-120",
+    "domain": "other",
+    "concept": "As soon as and completion of extended events",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "As soon as may depend on a perfect form to identify completion of a prolonged situation before a second event; dropping the perfect need not retain its intended temporal relation.",
+    "condition": "The subordinate situation lasts significantly longer than the event in the matrix clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She resigned as soon as she had completed a year-long project.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They celebrated as soon as the final vote had been counted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.5",
+        "pages": [
+          147
+        ],
+        "pdf_pages": [
+          167
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "As soon as and completion of extended events",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Short, punctual events often permit omission, but a long activity may not.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-121",
+    "domain": "other",
+    "concept": "Narrow and wide scope of perfect anteriority",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With repeated situations, a perfect may make each subordinate event earlier than its matching event or place the whole combined series before the current orientation.",
+    "condition": "A quantifier distributes over multiple events, and perfect aspect appears in more than one clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whenever I have called, the staff have been preparing the room. [two possible scopes]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whenever I call, the staff have already prepared the room. [preparation earlier than each call]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.6(a)",
+        "pages": [
+          147
+        ],
+        "pdf_pages": [
+          167
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Narrow and wide scope of perfect anteriority",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The scope ambiguity disappears in the illustrated pattern when the quantifying clause is simple present.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-122",
+    "domain": "other",
+    "concept": "Lowered perfect in would-like complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A perfect inside an infinitival complement of would or should like can express anteriority conceptually associated with the liking, though it is structurally in the lower clause.",
+    "condition": "A modal plus like selects a perfect infinitival complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I would like to have attended the ceremony. [may express a past unfulfilled preference]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I would have liked to attend the ceremony. [perfect on like]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.6(b)",
+        "pages": [
+          148
+        ],
+        "pdf_pages": [
+          168
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lowered perfect in would-like complements",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The lower perfect may alternatively retain its ordinary scope over the infinitival event.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-123",
+    "domain": "other",
+    "concept": "Pleonastic double perfect with would like",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A second perfect in the infinitival complement of would have liked need not introduce a second temporal anteriority relation.",
+    "condition": "The matrix like verb and its infinitival complement both occur in perfect constructions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She would have liked to have met the author.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We would have liked to have joined the workshop.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.6(b)",
+        "pages": [
+          148
+        ],
+        "pdf_pages": [
+          168
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pleonastic double perfect with would like",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: A second, genuinely lower-event anteriority interpretation can also be available.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-124",
+    "domain": "other",
+    "concept": "Modal preterite distinct from time past",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Certain subordinate preterites describe present conditions or attitudes and signal modal remoteness instead of locating an event before the speech time.",
+    "condition": "A past form occurs after wish, would rather, or in a remote conditional with contemporaneous reference.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wish he lived closer to the station.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the manager knew the answer now, she would tell us.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          148
+        ],
+        "pdf_pages": [
+          168
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal preterite distinct from time past",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The preterite form alone does not entail that the described state held in the past.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-125",
+    "domain": "other",
+    "concept": "Future-oriented modal preterite",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A preterite can represent a less probable or merely preferred future situation without changing its future temporal reference.",
+    "condition": "A future-time adjunct occurs with a preterite in a conditional or preference clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I would rather you visited on Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you travelled next week, you could see the exhibition.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          148,
+          149
+        ],
+        "pdf_pages": [
+          168,
+          169
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Future-oriented modal preterite",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: A future reference alongside preterite marking is not automatically a tense error.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-126",
+    "domain": "other",
+    "concept": "Wish and glad differ in factual implication",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Wish with a modal preterite conventionally suggests that the corresponding present state is not true, unlike glad with a present-tense factual complement.",
+    "condition": "Compare matrix wish and glad when their complements describe the present.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wish the tickets were available now. [normally implies they are not]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I am glad the tickets are available now. [asserts present availability]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          148,
+          149
+        ],
+        "pdf_pages": [
+          168,
+          169
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Wish and glad differ in factual implication",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: These implications come from matrix construction meaning, not a universal counterfactual meaning of past morphology.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-127",
+    "domain": "other",
+    "concept": "Open and remote conditional contrast",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Open conditionals present fulfilment as a live possibility, while remote conditionals present the same temporal condition as more distant or less likely.",
+    "condition": "If-clauses are compared in present form and modal preterite form with corresponding modal apodoses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she catches the early bus, she will arrive first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she caught the early bus tomorrow, she would arrive first.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          149
+        ],
+        "pdf_pages": [
+          169
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Open and remote conditional contrast",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Remote does not by itself require that the condition is known to be false.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-128",
+    "domain": "other",
+    "concept": "Paired verbal marking in remote conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A standard remote conditional has a modal preterite or irrealis form in its protasis and a modal auxiliary, with preterite modal form where available, in the main clause.",
+    "condition": "An if-clause marks modal remoteness and its matrix clause expresses the corresponding hypothetical consequence.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If he were less busy, he could help us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If they departed tomorrow, we would meet them at the station.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          149
+        ],
+        "pdf_pages": [
+          169
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Paired verbal marking in remote conditionals",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [
+      "CLS-119"
+    ],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Modals without a preterite can appear in present form; the related constraint is already present in CLS-119.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-129",
+    "domain": "other",
+    "concept": "No straightforward remote counterpart without a modal matrix",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A conditional with an imperative or nonmodal present matrix does not obtain an ordinary remote counterpart merely by changing both verbs to past tense.",
+    "condition": "An open conditional has a matrix imperative or a matrix indicative with no modal auxiliary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the bell rings, leave immediately.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the rain starts, we are going to take the bus.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          149
+        ],
+        "pdf_pages": [
+          169
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "No straightforward remote counterpart without a modal matrix",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Changing these matrix tenses may change time reference rather than modal remoteness.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-130",
+    "domain": "other",
+    "concept": "Past-time remoteness uses a preterite perfect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When modal preterite expresses remoteness, a perfect supplies the anteriority needed to locate the hypothetical condition in past time.",
+    "condition": "A modal-remote wish or conditional refers to a time before speech, not to a present or future possibility.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wish I had kept the receipt.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she had called earlier, we would have been ready.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          149,
+          150
+        ],
+        "pdf_pages": [
+          169,
+          170
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-time remoteness uses a preterite perfect",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Compare ordinary past-tense uses after glad or in open past conditionals; simple preterite there can locate past time without modal remoteness.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-131",
+    "domain": "other",
+    "concept": "Remote conditionals do not logically entail falsity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Past-time remote conditionals often suggest that their antecedent was false, but remote grammatical marking itself does not entail its falsity.",
+    "condition": "The speaker describes an uncertain antecedent with a remote conditional and may explicitly express uncertainty.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I am unsure whether she saw the alert, but if she had seen it, she would have responded.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I cannot verify the delivery; if it had arrived yesterday, someone would have signed for it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          149,
+          150
+        ],
+        "pdf_pages": [
+          169,
+          170
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remote conditionals do not logically entail falsity",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The conventional implication must not be treated as a logically required truth condition.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-132",
+    "domain": "other",
+    "concept": "Deictic perfect in past-time modal remoteness",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The perfect in a past-time modal-remote protasis can locate its situation before the speech time because the preterite is occupied expressing remoteness.",
+    "condition": "The preterite in a counterfactual-style clause signals modality while perfect morphology signals temporal past.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the driver had arrived yesterday, we would have left sooner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wish I had finished the report last week.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          150
+        ],
+        "pdf_pages": [
+          170
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic perfect in past-time modal remoteness",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: This use of perfect differs from its usual non-deictic orientation to a grammatically supplied time.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-133",
+    "domain": "other",
+    "concept": "Doubly remote perfect for present hypotheticals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Both preterite and perfect may carry modal remoteness when a hypothetical situation is contemporaneous with speaking; the resulting double marking is relatively uncommon.",
+    "condition": "A past-perfect-form subordinate conditional describes an unreal or highly remote present circumstance.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she had been at the office now, she would have had the figures.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If there had been a spare seat here today, I would have sat down.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          150
+        ],
+        "pdf_pages": [
+          170
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Doubly remote perfect for present hypotheticals",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: This construction need not encode factual impossibility; its remoteness degree is context-sensitive.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-134",
+    "domain": "other",
+    "concept": "Doubly remote perfect for predetermined future outcomes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A perfect-form remote conditional can describe a future event presented as already settled not to occur, rather than locating it literally in the past.",
+    "condition": "A past-perfect-form subordinate clause includes an explicit future-time expression.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If they had visited tomorrow, they would have met the curator.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I would rather you had joined us tomorrow. [a future option now considered foreclosed]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          150,
+          151
+        ],
+        "pdf_pages": [
+          170,
+          171
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Doubly remote perfect for predetermined future outcomes",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The interpretation is unusual and depends on a settled alternative; it is not a general substitute for simple past-time reference.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-135",
+    "domain": "other",
+    "concept": "No recursive perfect marking in doubly remote past",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The formal perfect system does not recursively stack perfect markers to express another modal remoteness layer on an already past-time remote event.",
+    "condition": "The construction already uses preterite to express modality and a perfect to locate an earlier situation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the package had already arrived before dawn, the keeper would have recorded it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the package had arrived last night, the keeper would have recorded it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1 fn.40",
+        "pages": [
+          150
+        ],
+        "pdf_pages": [
+          170
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "No recursive perfect marking in doubly remote past",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Earlier sequencing can require contextual adverbs rather than a third past-tense layer.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-136",
+    "domain": "other",
+    "concept": "Irrealis were and informal was in modal remoteness",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "clause",
+    "statement": "First- or third-person singular remote clauses commonly permit irrealis were or preterite was; were is often more formal.",
+    "condition": "A hypothetical or wish clause contains first- or third-person singular be.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If I were the organiser, I would reschedule.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If I was the organiser, I would reschedule.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          151
+        ],
+        "pdf_pages": [
+          171
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Irrealis were and informal was in modal remoteness",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Do not classify informal was as universally ungrammatical. Some inversion and fixed expressions have their own restrictions.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-137",
+    "domain": "other",
+    "concept": "Remote conditional quasi-modal be to",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A remote conditional may use was or were to plus a plain verb to describe an envisaged hypothetical occurrence.",
+    "condition": "A conditional uses quasi-modal be in preterite or irrealis form before an infinitival complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the director were to return today, we could ask her.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the director was to return today, we could ask her.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          151
+        ],
+        "pdf_pages": [
+          171
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remote conditional quasi-modal be to",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Open conditional be to can have a different meaning, not a directly equivalent non-remote version.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-138",
+    "domain": "other",
+    "concept": "Nonstandard had have double perfect",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some varieties use a had-plus-have combination in remote subordinate clauses, particularly in speech, although it is not established as Standard English.",
+    "condition": "An apparent extra have occurs after had in a speech-like hypothetical or wish construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If it had arrived yesterday, she would have received it. [standard counterpart]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If it'd've arrived yesterday, she would've received it. [attested nonstandard speech form]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1",
+        "pages": [
+          151
+        ],
+        "pdf_pages": [
+          171
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonstandard had have double perfect",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The source calls the variant nonstandard but notes its use among speakers otherwise using standard grammar. Do not silently misclassify its speakers or assume the spelling of is always a preposition.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-139",
+    "domain": "other",
+    "concept": "Nonstandard would have in remote if protasis",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some nonstandard remote protases use would have where Standard English generally uses had, with contraction sometimes hiding the distinction.",
+    "condition": "An overt would have or contracted apostrophe-d plus have appears in a past-time remote if-clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she had taken the train, she would have arrived on time. [standard]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she would've taken the train, she would've arrived on time. [nonstandard variant]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.1 fn.41",
+        "pages": [
+          151
+        ],
+        "pdf_pages": [
+          171
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonstandard would have in remote if protasis",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Contraction can be ambiguous between had and would; variation should not be confused with absolute semantic impossibility.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-140",
+    "domain": "other",
+    "concept": "Reported-content preterite as backshift",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Backshifted preterite can report an earlier present-tense proposition from a past matrix perspective without asserting that the reported condition no longer holds.",
+    "condition": "A reporting predicate establishes an earlier utterance or thought and its complement conveys the reported content.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Ada said she had several deadlines.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The director explained that the archive was closed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1",
+        "pages": [
+          151,
+          152
+        ],
+        "pdf_pages": [
+          171,
+          172
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reported-content preterite as backshift",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Backshift describes a special meaning/use of preterite; it is not a literal transformation of an underlying quotation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-141",
+    "domain": "other",
+    "concept": "Backshift is not an underlying syntactic rewrite",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The term backshift labels how a preterite is interpreted in an embedded construction; it does not require postulating an underlying present-tense clause that is transformed.",
+    "condition": "An indirect-report complement is analysed directly in the grammar.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Sofia reported that she needed a larger room.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The instructor said the students were ready.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1",
+        "pages": [
+          152
+        ],
+        "pdf_pages": [
+          172
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backshift is not an underlying syntactic rewrite",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Neither a real quotation nor a mechanical present-to-past editing operation is a prerequisite.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-142",
+    "domain": "other",
+    "concept": "Backshift under a modally remote matrix preterite",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A subordinate backshifted preterite may refer to the present even when its matrix preterite marks modal remoteness rather than past time.",
+    "condition": "The matrix clause contains a remote conditional or wish complement, with a further tensed content clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If Leo realised that the doors were locked now, he would wait outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wish Mia understood that the schedule was uncertain.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1(a)",
+        "pages": [
+          152
+        ],
+        "pdf_pages": [
+          172
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backshift under a modally remote matrix preterite",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The subordinate state need not be remote or counterfactual even though the matrix knowledge or awareness is.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-143",
+    "domain": "other",
+    "concept": "Backshift differs from modal remoteness in an embedded clause",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a remote matrix construction, a preterite in a subordinate content clause can be backshift rather than a second independent marker of remoteness.",
+    "condition": "The matrix predicate is semantically remote, but the embedded proposition is presented as actually true or otherwise independent of the remoteness.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wish she knew the office was open today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If he remembered that the rules were unchanged, he would stop worrying.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1(a)",
+        "pages": [
+          152
+        ],
+        "pdf_pages": [
+          172
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backshift differs from modal remoteness in an embedded clause",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Do not substitute irrealis were mechanically for every embedded was in such examples.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-144",
+    "domain": "other",
+    "concept": "Defective modal forms in backshift contexts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A modal without a preterite counterpart, such as must or ought, may retain its present-form spelling where a backshifted past form would otherwise be used.",
+    "condition": "Past reporting or remembering predicates contain embedded must or ought referring to an earlier obligation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The supervisor said we must leave before noon that day.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She recalled that the visitors ought to register first.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1(b)",
+        "pages": [
+          152,
+          153
+        ],
+        "pdf_pages": [
+          172,
+          173
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Defective modal forms in backshift contexts",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: This exemption is not a licence for independent present-tense must to refer to a completed past event without a matrix orientation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-145",
+    "domain": "other",
+    "concept": "Two alternative conditions licensing backshift",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Backshift can be licensed either by a matrix clause with past-tense form or by a matrix situation located in past time, even when the matrix clause itself is non-finite.",
+    "condition": "A tensed subordinate clause follows a matrix predicate which is past in form, past in reference, or both.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She wished he knew the truth. [past morphology with modal interpretation]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I remember telling them the route was closed. [past situation in a non-finite clause]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1",
+        "pages": [
+          153
+        ],
+        "pdf_pages": [
+          173
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Two alternative conditions licensing backshift",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The two licensing conditions often coincide but each can suffice on its own.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-146",
+    "domain": "other",
+    "concept": "Perfect matrix can license backshift",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Backshift can occur under a present perfect matrix clause because that matrix includes past-oriented perfect morphology.",
+    "condition": "A present perfect matrix embeds a tensed content clause with preterite.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I have never claimed that he was unavailable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee has already explained why the gate was closed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1",
+        "pages": [
+          153
+        ],
+        "pdf_pages": [
+          173
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfect matrix can license backshift",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: A present perfect matrix need not force all embedded clauses to present tense.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-147",
+    "domain": "other",
+    "concept": "Backshift of an original preterite to a perfect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When backshift represents a previously past-time reported proposition, a preterite perfect may be used to preserve its earlier temporal orientation.",
+    "condition": "Reported content refers to an event earlier than the past reporting time.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guide said that the train had departed before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She mentioned that her family had lived abroad in childhood.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1",
+        "pages": [
+          153
+        ],
+        "pdf_pages": [
+          173
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backshift of an original preterite to a perfect",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The past perfect preserves anteriority to the reporting orientation; don't use it mechanically where temporal relations differ.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-148",
+    "domain": "other",
+    "concept": "Non-deictic backshift versus ordinary deictic preterite",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An ordinary preterite directly relates its reference time to a non-past orientation, while backshift identifies the orientation through the matrix clause.",
+    "condition": "Compare an independent past statement with an embedded preterite in reported content.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The meeting ended at five. [ordinary past]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nora said the meeting ended at five. [may be backshifted report]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1",
+        "pages": [
+          153,
+          154
+        ],
+        "pdf_pages": [
+          173,
+          174
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-deictic backshift versus ordinary deictic preterite",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The same word form can have a different orientation depending on its syntactic context.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-149",
+    "domain": "other",
+    "concept": "Reference time relation in ordinary and backshifted preterite",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a central ordinary preterite, the reference time is earlier than its orientation; a central backshifted preterite instead normally has a reference time simultaneous with the past matrix-defined orientation.",
+    "condition": "Represent Tr and To when the preterite is used directly or through an embedded backshifted clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The caretaker left earlier. [Tr earlier than To]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lena said the caretaker was ill. [embedded Tr normally at matrix To]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1",
+        "pages": [
+          154
+        ],
+        "pdf_pages": [
+          174
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reference time relation in ordinary and backshifted preterite",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The simultaneous embedded relationship is a default rather than a contribution encoded by backshift morphology itself; matrix remoteness can make its orientation non-past.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-150",
+    "domain": "other",
+    "concept": "Backshift plus perfect marks an earlier embedded event",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When a backshifted preterite already identifies the matrix-based orientation, a perfect can express anteriority of the embedded situation to that orientation.",
+    "condition": "A past reporting predicate introduces content concerning an earlier event.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Maya said the parcel had arrived that morning.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The officer reported that the gate had been locked overnight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1",
+        "pages": [
+          154
+        ],
+        "pdf_pages": [
+          174
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backshift plus perfect marks an earlier embedded event",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: The perfect expresses the earlier-than relation; the preterite alone is not doing both temporal jobs.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-151",
+    "domain": "other",
+    "concept": "Backshift to non-past reference under modal matrix",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A backshifted preterite can have a present reference when its matrix preterite is modal rather than temporal.",
+    "condition": "A wish or unreal-matrix predicate is in preterite form but refers to a present state.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wish he understood that the garden was closed today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If Marta knew the report was accurate now, she would agree.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1",
+        "pages": [
+          154
+        ],
+        "pdf_pages": [
+          174
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backshift to non-past reference under modal matrix",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: This supports treating backshift as a grammatical configuration rather than deriving it strictly from the meaning of earlier time.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-152",
+    "domain": "other",
+    "concept": "Backshift outside reported speech",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Embedded backshift is not limited to indirect speech: complements of verbs such as mean and even subordinate clauses acting as subjects can license it.",
+    "condition": "A subordinate content clause with preterite is part of a construction other than an indirect report of words spoken.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That result meant the building was unsafe.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That the numbers were unreliable was immediately obvious.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§6.2.1",
+        "pages": [
+          154
+        ],
+        "pdf_pages": [
+          174
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backshift outside reported speech",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk for this distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Primary source checked in user-supplied full Cambridge PDF at cited printed pages; all examples authored for SynTutor. Exception/limit: Indirect speech is an illustrative environment, not the exclusive trigger for the construction.",
+    "diagnostic": null
   }
 ]
