@@ -61,7 +61,7 @@ Freeze a **partial rule evaluator** contract: `SATISFIED`, `VIOLATED`, `NOT_APPL
 
 Audit the current evidence pipeline and 50+ representative development sentences, determine which node/word explanations are actually generated, log model status and false-positive failure modes, record API behavior, and set regression fixtures. Do not guess the baseline.
 
-**XAI-0 English-only:** [116-case development fixture](../../evaluation/xai0_development_cases.json), [real-model audit tool](../../scripts/audit_xai0_baseline.py), [XAI-0 acceptance report](../reports/xai-0-baseline-acceptance-2026-11-10.md), and CI's `xai0-real-parser-baseline` artifact. The original mixed-language baseline metrics were superseded when eight out-of-scope cases were replaced; use **only the refreshed English-only measurement**. Do not rebrand source-cited node hits as role-accuracy or error-detection scores. Keep all XAI-1–XAI-8 tests, examples and learner explanations English-only.
+**XAI-0 English-only:** [116-case development fixture](../../evaluation/xai0_development_cases.json), [real-model audit](../../scripts/audit_xai0_baseline.py), [measured acceptance report](../reports/xai-0-baseline-acceptance-2026-11-10.md) and CI's `xai0-real-parser-baseline` artifact. The source-cited coverage is **112 / 1,685 canonical nodes (6.65%), solely S nodes**, and **0 / 444 word-terminal nodes**; 92/116 cases normalized. The earlier out-of-scope dataset/results are retired. Do not confuse template hits with role accuracy or grammar detection. **All subsequent XAI-1–XAI-8 rules, tests, sentences and learner explanations must remain English-only.**
 
 ### Phase 1 — Concept and rule evidence
 
