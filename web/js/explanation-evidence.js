@@ -44,6 +44,13 @@ function renderContextualObservations(evidence, panel) {
     section.append(message);
   } else {
     const item = context.items[0];
+    const natural = evidence?.xai6_naturalization;
+    const naturalText = natural?.status === 'accepted'
+      && natural?.selected_node_id === item.node_id
+      && natural?.paragraphs?.length === 2
+      && natural.paragraphs[0].level === 'short'
+      && natural.paragraphs[1].level === 'deep'
+      ? natural.paragraphs : null;
     const status = document.createElement('p');
     status.dataset.xaiStatus = '';
     status.textContent = item.uncertainty === 'provisional'
@@ -51,7 +58,7 @@ function renderContextualObservations(evidence, panel) {
       : 'Structural observation — not a grammaticality judgment.';
     const short = document.createElement('p');
     short.dataset.xaiShort = '';
-    short.textContent = item.short;
+    short.textContent = naturalText ? naturalText[0].text : item.short;
     section.append(status, short);
     const more = document.createElement('details');
     more.dataset.xaiDetails = '';
@@ -59,7 +66,7 @@ function renderContextualObservations(evidence, panel) {
     summary.textContent = 'Why this is shown';
     const deep = document.createElement('p');
     deep.dataset.xaiDeep = '';
-    deep.textContent = item.deep;
+    deep.textContent = naturalText ? naturalText[1].text : item.deep;
     more.append(summary, deep);
     if (Array.isArray(item.proof) && item.proof.length) {
       const proof = document.createElement('p');
@@ -68,6 +75,19 @@ function renderContextualObservations(evidence, panel) {
       more.append(proof);
     }
     section.append(more);
+    if (natural?.selected_node_id === item.node_id) {
+      const style = document.createElement('details');
+      style.dataset.xai6Style = '';
+      const styleLabel = document.createElement('summary');
+      styleLabel.textContent = 'Explanation wording and evidence';
+      style.append(styleLabel);
+      const message = document.createElement('p');
+      message.textContent = natural?.status === 'accepted'
+        ? 'Wording selected from a strictly verified structural-observation variant. No new grammar claims were added.'
+        : 'Deterministic XAI-3 wording is used. Optional AI naturalization is disabled or unavailable until a blind source-fidelity and clarity evaluation passes.';
+      style.append(message);
+      section.append(style);
+    }
   }
   panel.append(section);
 }
