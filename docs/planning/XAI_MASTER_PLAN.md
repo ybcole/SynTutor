@@ -383,12 +383,12 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 ### XAI-0 — Baseline audit and contract freeze
 
 - Inventory existing templates, all book-source status, Cambridge enabled rules, current node inspection and correction outputs.
-- Collect at least 50 representative sentences for initial **development** smoke (correct, ungrammatical, ambiguous, nonfinite, wh, coordination, auxiliaries, punctuation, Taglish/unsupported English) and record parser status without inventing "gold".
+- Collect at least 50 representative sentences for initial **development** smoke (English-only: grammatical controls, malformed probes, ambiguity, nonfinite clauses, wh, coordination, auxiliaries, punctuation, and difficult English constructions) and record parser status without inventing "gold".
 - Record the currently missing node types, source coverage and false-positive diagnoses.
 - Agree source metadata + data contracts and UI labels before changing production outputs.
 - Include original-vs-candidate multi-error diagnosis and Cambridge contextual exceptions in baseline fixtures; record blocked/ambiguous findings explicitly.
 
-**Gate:** written inventory, reproducible test set and initial metrics. **XAI-0 measured on 116 development cases in CI:** 89 normalized B–R trees, 1,571 canonical nodes, 105 source-cited template hits (6.68%), 0 cited explanations among 417 word-terminal nodes; 2 templates, 4 source records, 0 enabled Cambridge constraints. See [measured report](../reports/xai-0-baseline-acceptance-2026-11-10.md). These are not correctness scores or independent error judgments.
+**Gate:** written inventory, reproducible test set and initial metrics. The XAI-0 corpus now contains **116 English-only development cases**; the previous mixed-language audit figures are superseded and must be remeasured. See [English-only acceptance report](../reports/xai-0-baseline-acceptance-2026-11-10.md). Confirmed static inventory: 2 templates, 4 source records, 0 enabled Cambridge constraints. These are not correctness scores or independent error judgments.
 
 ### XAI-1 — Source concept registry / claim provenance
 
