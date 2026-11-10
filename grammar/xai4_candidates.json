@@ -41,7 +41,8 @@
         "reviewed_on": null,
         "exception_review_completed": false,
         "held_out_adjudication_completed": false,
-        "test_status": "unverified_before_ci"
+        "test_status": "unverified_before_ci",
+        "approved_varieties": []
       },
       "runtime_status": "disabled",
       "may_issue_verified_error": false
@@ -79,7 +80,8 @@
         "reviewed_on": null,
         "exception_review_completed": false,
         "held_out_adjudication_completed": false,
-        "test_status": "unverified_before_ci"
+        "test_status": "unverified_before_ci",
+        "approved_varieties": []
       },
       "runtime_status": "disabled",
       "may_issue_verified_error": false
@@ -117,7 +119,8 @@
         "reviewed_on": null,
         "exception_review_completed": false,
         "held_out_adjudication_completed": false,
-        "test_status": "unverified_before_ci"
+        "test_status": "unverified_before_ci",
+        "approved_varieties": []
       },
       "runtime_status": "disabled",
       "may_issue_verified_error": false
@@ -153,7 +156,8 @@
         "reviewed_on": null,
         "exception_review_completed": false,
         "held_out_adjudication_completed": false,
-        "test_status": "unverified_before_ci"
+        "test_status": "unverified_before_ci",
+        "approved_varieties": []
       },
       "runtime_status": "disabled",
       "may_issue_verified_error": false
