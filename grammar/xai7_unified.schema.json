@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SynTutor XAI-7 shared tree/quiz UI evidence focus",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "mode",
+    "analysis_id",
+    "tree_status",
+    "selected_node_id",
+    "focus",
+    "feature_rows",
+    "verified_issues",
+    "citations",
+    "contextual_status",
+    "book_status",
+    "claim_boundary",
+    "whole_sentence_certified"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai7-evidence-1.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "mode": {
+      "enum": [
+        "tree",
+        "quiz"
+      ]
+    },
+    "analysis_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tree_status": {
+      "enum": [
+        "observed",
+        "provisional",
+        "unavailable"
+      ]
+    },
+    "selected_node_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "focus": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "node_id",
+          "reason",
+          "relation_authority"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "reason": {
+            "enum": [
+              "selected",
+              "parent",
+              "sibling",
+              "approved_governor",
+              "approved_affected"
+            ]
+          },
+          "relation_authority": {
+            "enum": [
+              "approved_rule",
+              "witnessed_tree_position"
+            ]
+          }
+        }
+      },
+      "uniqueItems": true
+    },
+    "feature_rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "node_id",
+          "feature",
+          "status"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "feature": {
+            "type": "string"
+          },
+          "status": {
+            "const": "observed_label_not_a_verified_function"
+          }
+        }
+      }
+    },
+    "verified_issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "finding_id",
+          "rule_id",
+          "governor_node_id",
+          "affected_node_id",
+          "affected_char_span",
+          "status"
+        ],
+        "properties": {
+          "finding_id": {
+            "type": "string"
+          },
+          "rule_id": {
+            "type": "string"
+          },
+          "governor_node_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "affected_node_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "affected_char_span": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "status": {
+            "const": "verified_local_violation"
+          }
+        }
+      }
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "channel",
+          "source_id",
+          "book",
+          "title",
+          "edition",
+          "printed_page",
+          "node_id"
+        ],
+        "properties": {
+          "channel": {
+            "enum": [
+              "structural",
+              "grammatical",
+              "remediation"
+            ]
+          },
+          "source_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "book": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "edition": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "printed_page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "node_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "contextual_status": {
+      "enum": [
+        "observed",
+        "provisional",
+        "unavailable"
+      ]
+    },
+    "book_status": {
+      "enum": [
+        "EXPLAINED",
+        "NO_BOOK_BASIS",
+        "ANALYSIS_UNRESOLVED",
+        "SOURCE_CONFLICT"
+      ]
+    },
+    "claim_boundary": {
+      "const": "observations_do_not_create_new_functions_or_grammar_verdicts"
+    },
+    "whole_sentence_certified": {
+      "const": false
+    }
+  }
+}
