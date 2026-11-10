@@ -112,12 +112,6 @@ export function renderNodeDetail(_session, detail, node) {
     head.appendChild(surf);
   }
   box.appendChild(head);
-  if (_session?.payload?.explanation_evidence || document.body.classList.contains('builder-active')) {
-    const authority = document.createElement('p');
-    authority.className = 'diagnostic-authority';
-    authority.textContent = 'Diagnostic/editor feedback. Reviewed book claims are shown separately under Book evidence.';
-    box.appendChild(authority);
-  }
 
   const chipRow = document.createElement('div');
   chipRow.className = 'nc-chiprow';
@@ -156,13 +150,13 @@ function renderRemediation(rm) {
   const wrap = document.createElement('div');
   wrap.className = 'nc-rem';
 
-  label(wrap, 'What\u2019s wrong');
+  label(wrap, 'Possible issue');
   const vb = document.createElement('p');
   vb.className = 'ex-text';
   vb.textContent = rm.violation;
   wrap.appendChild(vb);
 
-  label(wrap, 'How to fix it');
+  label(wrap, 'Suggested change');
   const fx = document.createElement('p');
   fx.className = 'ex-text nc-fix';
   fx.textContent = rm.suggested_fix || 'Fix the highlighted issue.';
@@ -194,7 +188,7 @@ export function renderCorrection(summary) {
   dot.className = 'nc-dot ok';
   const name = document.createElement('span');
   name.className = 'nc-name';
-  name.textContent = summary?.book_verified === false ? 'Diagnostic correction suggestion' : 'Verified correction';
+  name.textContent = 'Suggested revision';
   head.appendChild(dot);
   head.appendChild(name);
   box.appendChild(head);
@@ -203,7 +197,7 @@ export function renderCorrection(summary) {
   chipRow.className = 'nc-chiprow';
   const chip = document.createElement('span');
   chip.className = 'nc-chip';
-  chip.textContent = summary?.book_verified === false ? 'legacy matrix; book review pending' : 'rule-checked';
+  chip.textContent = 'Compare the wording';
   chipRow.appendChild(chip);
   box.appendChild(chipRow);
 
