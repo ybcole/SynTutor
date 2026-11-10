@@ -5000,5 +5000,1689 @@
     "related_rules": [],
     "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. The time of the schedule and time of the intended future situation must be distinguished.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-088",
+    "domain": "other",
+    "concept": "Past progressive futurate",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Past progressive can locate a scheduled event after an earlier planning time, while a simple preterite futurate is uncommon.",
+    "condition": "An already-arranged event was still in the future from a remembered past perspective.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ship was departing the next morning, so we packed early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "At first the final was taking place on Thursday, but the schedule changed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.3.4 Non-deictic anteriority; §5 Perfect tense",
+        "pages": [
+          139
+        ],
+        "pdf_pages": [
+          159
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past progressive futurate",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Ordinary simple preterites can receive future-in-past interpretations when context excludes their past-event meaning.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-089",
+    "domain": "other",
+    "concept": "Future-oriented non-deictic preterite",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An embedded preterite may place a situation before an anticipated future event, not necessarily before the speech moment.",
+    "condition": "The orientation time for a preterite comes from a future-time matrix clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You will later regret that you turned down the offer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Next week they will question anyone who entered the laboratory today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.3.4 Non-deictic anteriority; §5 Perfect tense",
+        "pages": [
+          139
+        ],
+        "pdf_pages": [
+          159
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Future-oriented non-deictic preterite",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: The preterite–orientation relation is distinct from deictic past reference.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-090",
+    "domain": "other",
+    "concept": "Perfect as analytical secondary past tense",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Perfect have with a past participle expresses secondary anteriority, whereas the preterite is marked by primary verb inflection.",
+    "condition": "The expression is a finite or non-finite verb sequence containing perfect auxiliary have.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has reconsidered the proposal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They hope to have finished the work by June.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.3.4 Non-deictic anteriority; §5 Perfect tense",
+        "pages": [
+          139
+        ],
+        "pdf_pages": [
+          159
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfect as analytical secondary past tense",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: The perfect is not identical to the perfective viewpoint.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-091",
+    "domain": "other",
+    "concept": "Non-deictic perfect orientation time",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Perfect anteriority can be evaluated relative to a past, present, or future orientation supplied by the containing sentence.",
+    "condition": "A perfect appears in a complement or matrix clause with a contextually supplied orientation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was said to have returned the previous evening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They hope to have prepared the materials by Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.1 The perfect as a non-deictic past tense",
+        "pages": [
+          140
+        ],
+        "pdf_pages": [
+          160
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-deictic perfect orientation time",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: The perfect itself does not locate its orientation deictically.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-092",
+    "domain": "other",
+    "concept": "Compound tense with primary and secondary relations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A finite perfect expresses both the primary tense relation on have and the separate anteriority relation contributed by perfect aspect.",
+    "condition": "A present or preterite form of perfect auxiliary have is used with a participial complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They have submitted their findings.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "By dawn the team had completed the search.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.1 The perfect as a non-deictic past tense",
+        "pages": [
+          140
+        ],
+        "pdf_pages": [
+          160
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compound tense with primary and secondary relations",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: There are two temporal relations even though the verb sequence is one finite perfect.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-093",
+    "domain": "other",
+    "concept": "Preterite perfect as double anteriority",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The past perfect locates an event before a past intermediate time, which itself precedes the utterance time.",
+    "condition": "Past-tense have and a participial complement are interpreted relative to a preceding past event.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She had prepared lunch before we arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The technicians had inspected the cables when the outage occurred.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.1 The perfect as a non-deictic past tense",
+        "pages": [
+          140,
+          141
+        ],
+        "pdf_pages": [
+          160,
+          161
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preterite perfect as double anteriority",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Do not collapse both temporal orientations into one time point.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-094",
+    "domain": "other",
+    "concept": "Present perfect indirect anteriority",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The present perfect locates a prior event relative to a current reference time, unlike the direct past reference of the simple preterite.",
+    "condition": "Compare a finite present perfect with a preterite description of a past occurrence.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I have signed the register already.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I signed the register on Monday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.1 The perfect as a non-deictic past tense",
+        "pages": [
+          140,
+          141
+        ],
+        "pdf_pages": [
+          160,
+          161
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present perfect indirect anteriority",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: The contrast involves how the utterance time participates, not a ban on distant events in the present perfect.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-095",
+    "domain": "other",
+    "concept": "Complex and simple anteriority",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Perfect can present an eventuality wholly earlier than the orientation or continuing into it; simple preterite expresses simple past anteriority.",
+    "condition": "A finite or non-finite perfect is interpreted continuatively or non-continuatively.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Our neighbours have lived here for ten years. [continuative]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our neighbours have moved house several times. [non-continuative]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.2 Complex anteriority; §5.3.1 Present perfect as a compound tense",
+        "pages": [
+          141
+        ],
+        "pdf_pages": [
+          161
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complex and simple anteriority",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Continuation concerns the described situation and its contextual orientation, not necessarily the current day in every perfect.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-096",
+    "domain": "other",
+    "concept": "Continuative versus non-continuative perfect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A continuative perfect presents a state extending from an earlier time up to the reference point; a non-continuative perfect presents an occurrence within that span.",
+    "condition": "The perfect is interpreted with an appropriate durative expression or an event-occurrence reading.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The twins have worked together since college.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The twins have travelled to several countries.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.2 Complex anteriority; §5.3.1 Present perfect as a compound tense",
+        "pages": [
+          141
+        ],
+        "pdf_pages": [
+          161
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Continuative versus non-continuative perfect",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Both readings use the same perfect morphology.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-097",
+    "domain": "other",
+    "concept": "Contextual duration in continuative perfect",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Continuative perfect readings generally receive reinforcement from since or for expressions, but discourse can make duration available without them.",
+    "condition": "A perfect has an ongoing-state interpretation reaching its reference point.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We have been neighbours for years.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It has been very cold lately.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.2 Complex anteriority; §5.3.1 Present perfect as a compound tense",
+        "pages": [
+          141
+        ],
+        "pdf_pages": [
+          161
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contextual duration in continuative perfect",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Duration adjuncts are frequent, not obligatorily present.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-098",
+    "domain": "other",
+    "concept": "Bare preterite incompatible with present-inclusive ever since",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In standard use, a present-inclusive state introduced with ever since normally takes a perfect rather than a bare preterite.",
+    "condition": "A clause means the state began earlier and continues uninterruptedly through now, as marked by ever since.",
+    "violation": "Using bare preterite to express uninterrupted continuation up to the present signalled by ever since.",
+    "exceptions": [
+      {
+        "description": "Only a state explicitly continued to the present is covered; a closed past interval or past perfect oriented to a past time is not prohibited.",
+        "pages": [
+          141
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina has known the caretaker ever since childhood.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The museum has stood there ever since the district was founded.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Mina knew the caretaker ever since childhood.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The museum stood there ever since the district was founded.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.2 Complex anteriority; §5.3.1 Present perfect as a compound tense",
+        "pages": [
+          141
+        ],
+        "pdf_pages": [
+          161
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare preterite incompatible with present-inclusive ever since",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: A finished past interval or a past-perfect with earlier orientation lies outside this narrow rule.",
+    "diagnostic": {
+      "error_family": "tense_aspect",
+      "error_pattern": "Using bare preterite to express uninterrupted continuation up to the present signalled by ever since.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Mina knew the caretaker ever since childhood. ||| Mina has known the caretaker ever since childhood.",
+        "The museum stood there ever since the district was founded. ||| The museum has stood there ever since the district was founded."
+      ],
+      "learner_explanation": "In standard use, a present-inclusive state introduced with ever since normally takes a perfect rather than a bare preterite. The time phrase determines which verb construction is appropriate. Check the intended reference time and the documented exceptions before making a correction.",
+      "corrected_paragraph_template": "Change only the verb group when the original sentence's time interpretation confirms the conflict; then re-check the entire paragraph.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She had lived there ever since childhood when she moved abroad.",
+        "The museum stood here for centuries before it was demolished.",
+        "He has worked here ever since 2015.",
+        "The caretaker worked here through the 1990s."
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "tense-and-perfect"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "OTH-099",
+    "domain": "other",
+    "concept": "Atelic continuative perfect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Non-progressive continuative perfect normally describes states, recurring states, or atelic activities rather than one single telic accomplishment.",
+    "condition": "A non-progressive perfect is paired with an ever-since continuative adjunct.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He has run the club ever since the election.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has visited them regularly ever since they moved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.2 Complex anteriority; §5.3.1 Present perfect as a compound tense",
+        "pages": [
+          142
+        ],
+        "pdf_pages": [
+          162
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Atelic continuative perfect",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: The progressive can show an ongoing telic event; an ordinary since phrase can instead license a non-continuative reading.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-100",
+    "domain": "other",
+    "concept": "Ordinary since can support non-continuative perfect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A since phrase without ever may identify a prior interval containing distinct events, as well as an uninterrupted state continuing to now.",
+    "condition": "A perfect is accompanied by a since phrase and context determines whether the situation persists.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Since February she has worked in three different offices.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has worked at this office since February.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.2 Complex anteriority; §5.3.1 Present perfect as a compound tense",
+        "pages": [
+          142
+        ],
+        "pdf_pages": [
+          162
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinary since can support non-continuative perfect",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Do not force every since-perfect into continuous aspect.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-101",
+    "domain": "other",
+    "concept": "Present-perfect current focus contrasted with preterite focus",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The present perfect uses a present primary tense and a past-oriented perfect, while the simple preterite presents a past situation without the same current reference focus.",
+    "condition": "Comparable clauses describe an earlier occurrence from a past-event or current-relevance perspective.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I have emailed the documents.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I emailed the documents during yesterday's meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.2 Complex anteriority; §5.3.1 Present perfect as a compound tense",
+        "pages": [
+          142,
+          143
+        ],
+        "pdf_pages": [
+          162,
+          163
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present-perfect current focus contrasted with preterite focus",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Both can describe the same historical occurrence.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-102",
+    "domain": "other",
+    "concept": "Definite completed-past adjunct with present perfect",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A standard finite present perfect is normally incompatible with a definite past adjunct that isolates one occasion wholly before now.",
+    "condition": "A present-perfect predicate dates a single finished event with yesterday, two minutes ago, or another explicitly closed past-time expression.",
+    "violation": "Using present perfect for a single completed event whose definite time expression excludes now, without a permitted experiential context.",
+    "exceptions": [
+      {
+        "description": "Some experiential perfects allow an otherwise excluded definite past adjunct under a restricted present-focused interpretation, especially with already or a recurrent-event reading.",
+        "pages": [
+          144,
+          145
+        ]
+      },
+      {
+        "description": "Just, recently and since-phrases differ semantically from a definite ago-time adjunct.",
+        "pages": [
+          146
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I met the coordinator yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I have spoken with the coordinator recently.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "I have visited the director yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They have finished the assignment two minutes ago.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.1–5.3.2 Present perfect and experiential perfect",
+        "pages": [
+          143,
+          144,
+          146
+        ],
+        "pdf_pages": [
+          163,
+          164,
+          166
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Definite completed-past adjunct with present perfect",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Certain experiential uses, including already with a restricted past adjunct, are genuine exceptions.",
+    "diagnostic": {
+      "error_family": "tense_aspect",
+      "error_pattern": "Using present perfect for a single completed event whose definite time expression excludes now, without a permitted experiential context.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I have visited the director yesterday. ||| I visited the director yesterday.",
+        "They have finished the assignment two minutes ago. ||| They finished the assignment two minutes ago."
+      ],
+      "learner_explanation": "A standard finite present perfect is normally incompatible with a definite past adjunct that isolates one occasion wholly before now. The time phrase determines which verb construction is appropriate. Check the intended reference time and the documented exceptions before making a correction.",
+      "corrected_paragraph_template": "Change only the verb group when the original sentence's time interpretation confirms the conflict; then re-check the entire paragraph.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I have met the director recently.",
+        "She has written two letters since yesterday.",
+        "They have already discussed the timetable yesterday. [marked experiential use]",
+        "She had finished the task before he arrived.",
+        "Have you ever arrived at five in the morning?"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "tense-and-perfect"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "OTH-103",
+    "domain": "other",
+    "concept": "Past-event questions versus current evidence questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A past-focused question about a historically established event naturally takes a preterite, while a newly discovered result can motivate present perfect.",
+    "condition": "The question is about the agent of a past event versus the relevance of an observed object or result now.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who designed the old bridge?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who has left a package on the doorstep?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.1–5.3.2 Present perfect and experiential perfect",
+        "pages": [
+          143
+        ],
+        "pdf_pages": [
+          163
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-event questions versus current evidence questions",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Contextual focus, not chronological closeness alone, determines the appropriate tense.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-104",
+    "domain": "other",
+    "concept": "Four named present perfect uses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Continuative, experiential, resultative, and recent-past uses describe overlapping interpretations of one present-perfect construction.",
+    "condition": "Classify a present-perfect occurrence by its relation to the present time span and discourse context.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has lived here since graduation. [continuative]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has visited this gallery twice. [experiential]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They have locked the room. [resultative]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "The committee has just announced the results. [recent]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.1–5.3.2 Present perfect and experiential perfect",
+        "pages": [
+          143
+        ],
+        "pdf_pages": [
+          163
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Four named present perfect uses",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: The non-continuative types need not be mutually exclusive.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-105",
+    "domain": "other",
+    "concept": "Experiential perfect time-span up to now",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The experiential perfect asserts that an occurrence happened within a relevant interval extending to now, not necessarily near now.",
+    "condition": "A completed event is counted as having occurred at least once in an up-to-now time-span.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I have tried that recipe before.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They have climbed the hill twice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.1–5.3.2 Present perfect and experiential perfect",
+        "pages": [
+          143,
+          144
+        ],
+        "pdf_pages": [
+          163,
+          164
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Experiential perfect time-span up to now",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: The beginning of the relevant time-span is often supplied by context.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-106",
+    "domain": "other",
+    "concept": "Series ranking with experiential perfect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Ordinal and superlative constructions can treat an occurrence as a member of an experience series within the relevant present-inclusive span.",
+    "condition": "A present perfect appears in a clause ranked or numbered within an actual or potential series.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is the third time she has called today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That is the most challenging journey I have undertaken.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.1–5.3.2 Present perfect and experiential perfect",
+        "pages": [
+          144
+        ],
+        "pdf_pages": [
+          164
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Series ranking with experiential perfect",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: A single actual occurrence may be ranked first while further occurrences remain merely possible.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-107",
+    "domain": "other",
+    "concept": "Context-bounded experiential interval",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The relevant experiential-perfect time-span may be limited to a visit, day, or conversation rather than the subject's whole life.",
+    "condition": "A perfect question asks about an occurrence in a locally salient time period.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Have you met the visiting professor yet?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have you seen the appointment slip since lunch?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.1–5.3.2 Present perfect and experiential perfect",
+        "pages": [
+          144
+        ],
+        "pdf_pages": [
+          164
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Context-bounded experiential interval",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: An event outside the contextual interval may not count as a satisfactory affirmative answer.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-108",
+    "domain": "other",
+    "concept": "Experiential perfect question versus definite-past interrogative",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A present-perfect question asks whether an experience occurred in a span leading to now; a preterite question can target one definite completed occasion.",
+    "condition": "The same lexical verb occurs in an experiential question and a past-simple question.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Have you spoken to the librarian?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did you speak to the librarian after yesterday's workshop?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.1–5.3.2 Present perfect and experiential perfect",
+        "pages": [
+          144
+        ],
+        "pdf_pages": [
+          164
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Experiential perfect question versus definite-past interrogative",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: The relevant time-span is contextual, so present-perfect questions are not exclusively about an entire lifetime.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-109",
+    "domain": "other",
+    "concept": "Restricted past adjuncts in experiential perfect",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some experiential perfects permit past-time expressions when their interpretation remains present-focused and recurrent or is reinforced by already.",
+    "condition": "A past-time expression accompanies a present perfect under the restricted experiential interpretation described in the source.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Have you ever started work at five in the morning?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We have already discussed the timetable yesterday, so another session may be unnecessary.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.1–5.3.2 Present perfect and experiential perfect",
+        "pages": [
+          144,
+          145
+        ],
+        "pdf_pages": [
+          164,
+          165
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restricted past adjuncts in experiential perfect",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: The marked already construction is not a blanket licence for definite past adjuncts.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-110",
+    "domain": "other",
+    "concept": "Resultative perfect with continuing result",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A perfect of continuing result presents a change-producing event with an expected consequent state that still holds at the reference time.",
+    "condition": "A completed event involves a clear change of state such as closing, breaking, or leaving.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Someone has shut the shutters. [they may remain shut]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The tenants have left the apartment. [they may still be absent]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.3–5.3.4 Resultative and recent perfect",
+        "pages": [
+          145
+        ],
+        "pdf_pages": [
+          165
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Resultative perfect with continuing result",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: The persistence of a result is normally inferred, not encoded as the literal tense meaning.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-111",
+    "domain": "other",
+    "concept": "Pragmatic resultative inference rather than entailment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An expected current consequence of a perfect event may be cancelled by subsequent developments without contradicting the perfect assertion.",
+    "condition": "The earlier situation normally produces a state but subsequent events can reverse that state.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I have repaired the lock, although it has broken again.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They have closed the door, but someone has reopened it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.3–5.3.4 Resultative and recent perfect",
+        "pages": [
+          145
+        ],
+        "pdf_pages": [
+          165
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pragmatic resultative inference rather than entailment",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Avoid equating has closed with is closed.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-112",
+    "domain": "other",
+    "concept": "Pragmatic results and unsuccessful attempts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A perfect may highlight a context-specific practical consequence or a failed attempt to bring about a desired result.",
+    "condition": "An event whose current relevance lies in possible consequences or their nonoccurrence is described using perfect.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I have been to the council office, but the application remains unresolved.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I have called three times, yet nobody has answered.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.3–5.3.4 Resultative and recent perfect",
+        "pages": [
+          145
+        ],
+        "pdf_pages": [
+          165
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pragmatic results and unsuccessful attempts",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Resultative readings can overlap experiential readings.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-113",
+    "domain": "other",
+    "concept": "Recent past as a common perfect reading",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A present perfect frequently presents a recent event as news, but experiential and resultative perfects need not concern recent events.",
+    "condition": "A recent occurrence is offered as current news or discovery.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The organisers have announced a new route.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The journal has just published the findings.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.3.3–5.3.4 Resultative and recent perfect",
+        "pages": [
+          145,
+          146
+        ],
+        "pdf_pages": [
+          165,
+          166
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Recent past as a common perfect reading",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Recency is associated with but does not define the English present perfect.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-114",
+    "domain": "other",
+    "concept": "Indefinite recency versus definite ago-time",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Just and recently denote an indefinite recent interval reaching the orientation point, while ago fixes a past point and usually requires preterite rather than present perfect.",
+    "condition": "A clause combines perfect or preterite tense with deictic time modifiers.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I have just received the parcel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I received the parcel two minutes ago.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.4 Non-present perfects",
+        "pages": [
+          146
+        ],
+        "pdf_pages": [
+          166
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indefinite recency versus definite ago-time",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: The distinction is not determined by how short the elapsed time is.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-115",
+    "domain": "other",
+    "concept": "Non-present perfect avoids the same tense distribution restrictions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Preterite and non-finite perfects can correspond in context to a simple preterite or present perfect without reproducing all of the finite present-perfect restrictions.",
+    "condition": "Perfect have takes past tense or a non-finite form in a clause anchored by other temporal material.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She had lost her ticket before the journey began.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He seems to have lost his ticket on the way home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.4 Non-present perfects",
+        "pages": [
+          146
+        ],
+        "pdf_pages": [
+          166
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-present perfect avoids the same tense distribution restrictions",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Differences of perspective do not require treating the non-present perfect as two homonymous constructions.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-116",
+    "domain": "other",
+    "concept": "Regional preference with just, already and yet",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "American English often permits preterites where British usage favours perfects, notably with recency and aspectual adjuncts.",
+    "condition": "Compare standard American and British uses of past simple and present perfect with recent-past contexts.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I just sent the message. [common AmE]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I have just sent the message. [common BrE]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.4 Non-present perfects",
+        "pages": [
+          146
+        ],
+        "pdf_pages": [
+          166
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Regional preference with just, already and yet",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Treat this as a preference, not a universal error prohibition.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-117",
+    "domain": "other",
+    "concept": "Intermediate-time focus within preterite perfect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A preterite-perfect event can be interpreted with emphasis on its earlier occurrence or on consequences at a later past orientation point.",
+    "condition": "A had-plus-participle clause is embedded in narrative focusing either event timing or its later past consequences.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She had lost her pass, so she could not enter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She had lost her pass during the morning walk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§5.4 Non-present perfects",
+        "pages": [
+          146
+        ],
+        "pdf_pages": [
+          166
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Intermediate-time focus within preterite perfect",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk is not claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source grounded on printed pages from the uploaded Cambridge PDF. All examples are original; restrictions: Both retain the same generalized perfect anteriority relation.",
+    "diagnostic": null
   }
 ]
