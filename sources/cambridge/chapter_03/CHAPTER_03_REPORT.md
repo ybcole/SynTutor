@@ -61,3 +61,10 @@ New protocol-1.1 extraction of printed pp. 76–90 added **35 NEEDS_REVIEW rules
 ## Phase B update — 2026-11-10 (printed pp. 91–114)
 
 An additional **70 original source-cited records** are staged for grammar knowledge and learner-content generation, with page-by-page source and exception notes in `PHASE_B_PP91_114_REPORT.md`. The Chapter 3 ledger contains **41 extracted, 3 contents-only skips, 98 unprocessed** pages. Detector activation and full-chapter gates remain separate work. Continue from p. 115 without user approval pauses.
+
+
+---
+
+## Phase B update — 2026-11-10 (printed pp. 115–122)
+
+Additional original concepts and one narrowly specified diagnostic covering aspectual *used*, tense/aspect/mood, and event classification were added. See `PHASE_B_PP115_122_REPORT.md` for page-by-page sources and contextual restrictions. **Chapter 3: 49 extracted, 3 contents skips, 90 unprocessed** of 142 printed pages. Continue p. 123 without human approval stops. No new active detectors.
