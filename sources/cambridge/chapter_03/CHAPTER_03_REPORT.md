@@ -82,3 +82,10 @@ Added **35 original, source-cited records** OTH-153–OTH-187: 33 classification
 ## Phase B autonomous extraction — 2026-11-10, printed pp. 163–170
 
 Added 48 original, source-cited records OTH-188–OTH-235, representing 46 classifications, one generalisation and one bounded error specification. The page-based source report and explicit valid exceptions are in `PHASE_B_PP163_170_REPORT.md`. Chapter 3: **97 extracted**, **3 chapter contents-only skips**, **42 unprocessed (171–212)**. Book total: **1,652 unprocessed**. No new production detectors or claims of measured diagnostic accuracy. Continue from printed p. 171 without user approval pauses.
+
+
+---
+
+## Phase B autonomous continuation — 2026-11-10, printed pp. 171–178
+
+Added **51 independently paraphrased source-cited classifications**, OTH-236–OTH-286, with valid-usage distinctions and specific exceptions. See `PHASE_B_PP171_178_REPORT.md` for per-page coverage. Chapter 3 now has **105 extracted / 142** printed pages, **3 chapter-contents-only skips**, and **34 unprocessed (179–212)**. Book-wide unprocessed pages: **1,644**. No new runtime detector, lesson, quiz or model metric is claimed. Continue at printed p. 179 without manual approval pauses.
