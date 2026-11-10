@@ -126,7 +126,8 @@
               "reviewed_on",
               "exception_review_completed",
               "held_out_adjudication_completed",
-              "test_status"
+              "test_status",
+              "approved_varieties"
             ],
             "properties": {
               "status": {
@@ -163,6 +164,14 @@
                   "passed",
                   "failed"
                 ]
+              },
+              "approved_varieties": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
               }
             }
           },
