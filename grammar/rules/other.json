@@ -3902,5 +3902,1103 @@
     "related_rules": [],
     "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Present tense combined with a past-time adjunct in a caption or historic-present sequence is not a tense error by itself.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-067",
+    "domain": "other",
+    "concept": "Recent-past newspaper headline present",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "News headlines can use simple present to report events in the recent past, while the accompanying article uses past or present perfect tense.",
+    "condition": "A news headline refers to a recently completed event and adopts vivid, compact headline style.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "City council approves new park funding. [headline]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The council approved funding yesterday. [article]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.3 Extension of present tense into past time",
+        "pages": [
+          131
+        ],
+        "pdf_pages": [
+          151
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Recent-past newspaper headline present",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. This is not a requirement to use simple present outside headline style.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-068",
+    "domain": "other",
+    "concept": "Past evidential present with verbs of communication",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Present-tense reporting verbs can present information obtained earlier as current evidence for a subordinate proposition.",
+    "condition": "A speaker uses tell, hear, gather, understand, or related reporting verbs to foreground communicated content rather than the earlier communication event.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I hear the workshop has been cancelled.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My colleague tells me the office is closing early.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.3 Extension of present tense into past time",
+        "pages": [
+          131
+        ],
+        "pdf_pages": [
+          151
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past evidential present with verbs of communication",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. The matrix communication clause is generally backgrounded and resists precise earlier-time modification.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-069",
+    "domain": "other",
+    "concept": "Present futurate in a main clause",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Simple present in a main clause can locate a situation in the future when the situation is determined by conditions already known now.",
+    "condition": "A main clause describes a cyclic natural event, a currently scheduled occurrence, or a predetermined consequence of a condition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The next ferry departs at six tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The eclipse begins at noon on Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.4 Future time reference in main clauses",
+        "pages": [
+          131,
+          132
+        ],
+        "pdf_pages": [
+          151,
+          152
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present futurate in a main clause",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. Mere confidence in a future prediction is not enough to license this construction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-070",
+    "domain": "other",
+    "concept": "Cyclic natural events licensing futurate present",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Predictable cyclic natural events can be described using simple present with future time reference.",
+    "condition": "A future event has a calculable time because it belongs to a known astronomical or recurrent cycle.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The tide reaches its highest point at dawn tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The next full moon occurs on Thursday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.4 Future time reference in main clauses",
+        "pages": [
+          132
+        ],
+        "pdf_pages": [
+          152
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cyclic natural events licensing futurate present",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. An uncertain prediction about ordinary future weather does not have the same calendrical basis.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-071",
+    "domain": "other",
+    "concept": "Scheduled versus predicted future event",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A scheduled future activity may take simple present, while an unscheduled prediction of its outcome typically takes modal will or another future expression.",
+    "condition": "The speaker distinguishes a current arrangement from a hoped-for or predicted result whose outcome is not already settled.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The teams meet next month.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitors will win, I think.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.4 Future time reference in main clauses",
+        "pages": [
+          132
+        ],
+        "pdf_pages": [
+          152
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scheduled versus predicted future event",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. Do not ban future-time simple present in scheduled contexts; do not confuse events whose occurrence is settled with results whose outcomes are not.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-072",
+    "domain": "other",
+    "concept": "Conditional futurate and predetermined consequence",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Simple present can express a future consequence treated as inevitable or already decided when a condition is met.",
+    "condition": "A conditional context has a present-tense main clause whose result is under some agent's control or portrayed as unavoidable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you miss another deadline, you lose access.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the system fails tonight, the event is cancelled.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.4 Future time reference in main clauses",
+        "pages": [
+          132
+        ],
+        "pdf_pages": [
+          152
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional futurate and predetermined consequence",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. The future interpretation depends on the asserted policy, authority, or inevitability, not just on the presence of an if-clause.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-073",
+    "domain": "other",
+    "concept": "Present progressive futurate",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Present progressive may refer to currently arranged future events and some conditional outcomes.",
+    "condition": "A progressive clause denotes a future situation supported by a present schedule or arrangement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We are meeting the editors tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team is travelling to Cebu next week.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.4 Future time reference in main clauses",
+        "pages": [
+          133
+        ],
+        "pdf_pages": [
+          153
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present progressive futurate",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. This use is most common with scheduled plans and does not make every progressive clause future-oriented.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-074",
+    "domain": "other",
+    "concept": "Modal will versus the simple present futurate",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal will can predict future situations without presenting them as already scheduled, unlike the prototypical futurate simple present.",
+    "condition": "Compare clauses that ask about or state current arrangements with corresponding clauses about future events more generally.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When does the seminar begin? [schedule]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When will the lecturer arrive? [open future question]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.4 Future time reference in main clauses",
+        "pages": [
+          133
+        ],
+        "pdf_pages": [
+          153
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal will versus the simple present futurate",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. Neither construction is inherently erroneous; the contrast is pragmatic rather than a universal grammatical prohibition.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-075",
+    "domain": "other",
+    "concept": "Present versus past anchor of a futurate",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The future event time and the time at which a schedule is known are separable, allowing present and preterite futurates to describe the same event from different reference points.",
+    "condition": "A schedule now or at some earlier time determines an event that lies later than the scheduling time.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The exhibition opens next Monday. [current schedule]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "At the time, the exhibition opened the following Monday. [past schedule]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.4 Future time reference in main clauses",
+        "pages": [
+          133
+        ],
+        "pdf_pages": [
+          153
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present versus past anchor of a futurate",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. A past futurate need not mean the future event has already occurred at the referenced past orientation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-076",
+    "domain": "other",
+    "concept": "Two temporal adjuncts in one futurate clause",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A futurate clause can carry a temporal expression for the time of an arrangement and a distinct expression for the future event.",
+    "condition": "A present- or past-anchored scheduling construction contains both an arrangement-time modifier and an event-time modifier.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The concert now starts next Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "At that stage the race started on Sunday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.4 Future time reference in main clauses",
+        "pages": [
+          133
+        ],
+        "pdf_pages": [
+          153
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Two temporal adjuncts in one futurate clause",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. Interpret the adjuncts according to their distinct temporal roles rather than treating them as contradictory tense markers.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-077",
+    "domain": "other",
+    "concept": "Present versus non-past grammatical tense terminology",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The present tense remains a distinct primary tense category even though some subordinate clauses allow unrestricted future-time readings.",
+    "condition": "A rule or lesson names the English tense contrasted with the preterite.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parcels arrive every morning. [present]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcels arrived yesterday. [preterite]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.4 Future time reference in main clauses",
+        "pages": [
+          134
+        ],
+        "pdf_pages": [
+          154
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present versus non-past grammatical tense terminology",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. The source favours the term present, not non-past, because future simple present is pragmatically restricted in main clauses.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-078",
+    "domain": "other",
+    "concept": "Future-time simple present in subordinate non-assertive environments",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Certain subordinate clauses freely use simple present for future situations without requiring those situations to be currently scheduled or known.",
+    "condition": "A subordinate temporal, conditional, relative, interrogative or related clause does not itself make an independent assertion that its future event will happen.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will begin when the speaker arrives.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If it rains tomorrow, we will cancel the picnic.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.5 Deictic future time in subordinate clauses",
+        "pages": [
+          134,
+          135
+        ],
+        "pdf_pages": [
+          154,
+          155
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Future-time simple present in subordinate non-assertive environments",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. Do not impose main-clause futurate scheduling restrictions on subordinate non-assertive clauses.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-079",
+    "domain": "other",
+    "concept": "Temporal subordinate clauses with future present",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Present tense in future-oriented temporal adjunct clauses can follow markers such as before, after, once, as soon as and when.",
+    "condition": "The subordinate proposition is temporally linked to another event and may occur in future time.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will leave once the meeting ends.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I will call you before the train departs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.5 Deictic future time in subordinate clauses",
+        "pages": [
+          135
+        ],
+        "pdf_pages": [
+          155
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal subordinate clauses with future present",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. A subordinate present is not automatically a claim about an event occurring at speech time.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-080",
+    "domain": "other",
+    "concept": "Conditional and exhaustive condition future present",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Present tense can refer to future conditions under if, unless, provided, suppose and exhaustive whether constructions.",
+    "condition": "A conditional protasis or exhaustive-condition clause presents a potential future condition without asserting its occurrence.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will stay if the guests arrive.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The result stands whether the witnesses agree or not.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.5 Deictic future time in subordinate clauses",
+        "pages": [
+          135
+        ],
+        "pdf_pages": [
+          155
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional and exhaustive condition future present",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. These constructions are not governed by the narrower pragmatics of a standalone future simple-present assertion.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-081",
+    "domain": "other",
+    "concept": "Future-oriented integrated relative and embedded interrogative clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Integrated relative clauses and embedded interrogatives may use present tense for situations whose identity or answer will become available later.",
+    "condition": "A restrictive relative or dependent interrogative has an unresolved future referent or value.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Anyone who submits the form tomorrow will receive an email.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tell me who wins the next round.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.5 Deictic future time in subordinate clauses",
+        "pages": [
+          135
+        ],
+        "pdf_pages": [
+          155
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Future-oriented integrated relative and embedded interrogative clauses",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. A knowledge predicate such as I know can instead force an interpretation where the answer is already settled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-082",
+    "domain": "other",
+    "concept": "Comparative clauses with present or future reading",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Comparative subordinate clauses can have either a present or future interpretation of a simple-present verb.",
+    "condition": "A comparative construction relates a future event to another event whose timing may be present or future.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Next month I will work faster than he works.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You should respond as she requests at the next meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.5 Deictic future time in subordinate clauses",
+        "pages": [
+          135
+        ],
+        "pdf_pages": [
+          155
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative clauses with present or future reading",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. Ambiguity depends on context, and a future reading cannot automatically be treated as a future tense form.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-083",
+    "domain": "other",
+    "concept": "Future present in complements of bet, hope and covert mandatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some complements of betting and hoping predicates, and covert mandative clauses, permit simple present with future meaning.",
+    "condition": "A subordinate content clause follows a licensing predicate or a mandative construction with a future situation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I hope she finishes the report tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is essential that he arrives prepared next week.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.5 Deictic future time in subordinate clauses",
+        "pages": [
+          135
+        ],
+        "pdf_pages": [
+          155
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Future present in complements of bet, hope and covert mandatives",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. Covert mandatives alternate with plain-form subjunctive and should-mandative patterns; not every adjective licensing a hope-related meaning permits this use.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-084",
+    "domain": "other",
+    "concept": "Two temporal sources of future-present reference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A subordinate future-present interpretation can arise either from reference posterior to a present orientation or from simultaneity with an already future orientation.",
+    "condition": "A subordinate clause's tense must be interpreted with respect to its own deictic or non-deictic orientation time.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will wait until she returns. [posterior to present orientation]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She will say she feels better. [simultaneous with future reporting time]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.6 Future interpretation of a non-deictic present tense",
+        "pages": [
+          136
+        ],
+        "pdf_pages": [
+          156
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Two temporal sources of future-present reference",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. The two patterns are not interchangeable; some clauses allow a preterite contrast relative to the future reporting event.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-085",
+    "domain": "other",
+    "concept": "Anterior preterite for states and occurrences",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A preterite can present a past occurrence as a whole or locate a reference point within a state that may continue beyond that point.",
+    "condition": "The preterite has a past orientation, and the predicate is interpreted either perfectively or imperfectively.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The bridge collapsed during the storm.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I knew the answer at that moment.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.3.1 Past time reference",
+        "pages": [
+          137,
+          138
+        ],
+        "pdf_pages": [
+          157,
+          158
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anterior preterite for states and occurrences",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. Past reference to a state does not by itself imply that the state ceased; a past simple event can extend over a long interval.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-086",
+    "domain": "other",
+    "concept": "Politeness implicature with past-form predicates",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Past forms of wanting, hoping and wondering can convey politeness or diffidence without abandoning their ordinary past-time meaning.",
+    "condition": "An interlocutor makes a request using a state predicate in the preterite or past progressive, often with a first-person subject.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wanted to ask a question.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I was hoping you could review my proposal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.3.2 Past time reference in combination with politeness/diffidence",
+        "pages": [
+          138
+        ],
+        "pdf_pages": [
+          158
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Politeness implicature with past-form predicates",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. Politeness is a context-sensitive implicature, not a separate past-tense inflection or proof that the desire ended.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-087",
+    "domain": "other",
+    "concept": "Preterite futurate relative to a past schedule",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A preterite or past progressive can describe a future event that had been scheduled relative to an earlier past orientation.",
+    "condition": "A prior plan or arrangement established the later event, whether or not that event is future relative to the current utterance.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "At the time I was travelling the next day.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Originally, entries closed the following Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.3.3 The past futurate",
+        "pages": [
+          138
+        ],
+        "pdf_pages": [
+          158
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preterite futurate relative to a past schedule",
+        "relation": "unverified",
+        "note": "No independent Burton-Roberts equivalence check has been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against the user-supplied CGEL printed pages with original examples. The observation is classification/interpretation and must not be treated as an unrestricted error condition. The time of the schedule and time of the intended future situation must be distinguished.",
+    "diagnostic": null
   }
 ]
