@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "XAI-8 fail-closed production rollout controls",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "stage",
+    "new_diagnostic_rollout_enabled",
+    "rollback",
+    "technical_gates",
+    "expert_gates",
+    "telemetry",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai8-release-policy-1.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "stage": {
+      "enum": [
+        "HOLD_INTERNAL_ONLY",
+        "CANARY",
+        "GENERAL_RELEASE"
+      ]
+    },
+    "new_diagnostic_rollout_enabled": {
+      "type": "boolean"
+    },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kill_switch",
+        "canary_percent",
+        "last_known_good_commit",
+        "operator_instruction"
+      ],
+      "properties": {
+        "kill_switch": {
+          "type": "boolean"
+        },
+        "canary_percent": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "last_known_good_commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "operator_instruction": {
+          "type": "string",
+          "minLength": 30
+        }
+      }
+    },
+    "technical_gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_nonoverlapping_probes",
+        "minimum_probe_families",
+        "minimum_source_tree_nodes",
+        "require_all_node_explanations_nonempty",
+        "require_all_evidence_proof_ids_resolved",
+        "max_unsupported_book_verified_claims",
+        "max_global_grammar_certifications",
+        "max_model_calls",
+        "require_no_raw_text_in_telemetry"
+      ],
+      "properties": {
+        "minimum_nonoverlapping_probes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minimum_probe_families": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minimum_source_tree_nodes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "require_all_node_explanations_nonempty": {
+          "type": "boolean"
+        },
+        "require_all_evidence_proof_ids_resolved": {
+          "type": "boolean"
+        },
+        "max_unsupported_book_verified_claims": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_global_grammar_certifications": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_model_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "require_no_raw_text_in_telemetry": {
+          "type": "boolean"
+        }
+      }
+    },
+    "expert_gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_independently_adjudicated_cases",
+        "minimum_independent_linguists",
+        "requires_blind_readability_comparison",
+        "requires_expert_reviewed_repair_meaning",
+        "requires_heldout_dialect_and_ambiguity_coverage",
+        "requires_measured_error_precision_and_recall",
+        "requires_measured_role_accuracy",
+        "requires_measured_false_positive_rate",
+        "requires_measured_repair_validity",
+        "requires_measured_learner_comprehension",
+        "requires_documented_thresholds_before_expert_evaluation",
+        "adjudicated_case_count",
+        "independent_linguist_count",
+        "expert_evaluation_report",
+        "reviewers",
+        "quality_metrics_available"
+      ],
+      "properties": {
+        "minimum_independently_adjudicated_cases": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minimum_independent_linguists": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "requires_blind_readability_comparison": {
+          "type": "boolean"
+        },
+        "requires_expert_reviewed_repair_meaning": {
+          "type": "boolean"
+        },
+        "requires_heldout_dialect_and_ambiguity_coverage": {
+          "type": "boolean"
+        },
+        "requires_measured_error_precision_and_recall": {
+          "type": "boolean"
+        },
+        "requires_measured_role_accuracy": {
+          "type": "boolean"
+        },
+        "requires_measured_false_positive_rate": {
+          "type": "boolean"
+        },
+        "requires_measured_repair_validity": {
+          "type": "boolean"
+        },
+        "requires_measured_learner_comprehension": {
+          "type": "boolean"
+        },
+        "requires_documented_thresholds_before_expert_evaluation": {
+          "type": "boolean"
+        },
+        "adjudicated_case_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "independent_linguist_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expert_evaluation_report": {
+          "type": "null"
+        },
+        "reviewers": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string"
+          }
+        },
+        "quality_metrics_available": {
+          "type": "boolean"
+        }
+      }
+    },
+    "telemetry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "explicit_opt_in_required",
+        "raw_sentence_collection_allowed",
+        "ip_collection_allowed",
+        "user_identifiers_allowed",
+        "freeform_feedback_allowed",
+        "retention",
+        "minimum_aggregate_reporting_sample"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "explicit_opt_in_required": {
+          "type": "boolean"
+        },
+        "raw_sentence_collection_allowed": {
+          "type": "boolean"
+        },
+        "ip_collection_allowed": {
+          "type": "boolean"
+        },
+        "user_identifiers_allowed": {
+          "type": "boolean"
+        },
+        "freeform_feedback_allowed": {
+          "type": "boolean"
+        },
+        "retention": {
+          "type": "string"
+        },
+        "minimum_aggregate_reporting_sample": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 30
+    }
+  }
+}
