@@ -1,12 +1,12 @@
-# CGEL full coverage
+# CGEL printed-page coverage
 
-Phase A infrastructure baseline (2026-11-10). This report does not certify extraction or new detector/XAI implementation. Earlier partial section extractions remain preserved but are not counted as verified full-page coverage.
+**Phase B extraction status, 2026-11-10.** Pages count as extracted only where a source-audit report is recorded; this is not a claim of complete-chapter approval or active detector behaviour. The source PDF is not stored in this public repository.
 
-| Chapter | Total printed pages | Extracted | Unprocessed | Textless | Absent from splits | Completion |
+| Chapter | Printed pages | Extracted | Unprocessed | Skipped | Absent from splits | Status |
 |---|---:|---:|---:|---:|---:|---|
 | 1. Preliminaries | 42 | 0 | 41 | 1 | 0 | Incomplete |
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
-| 3. The verb | 142 | 17 | 122 | 3 | 0 | Incomplete — §§1.1–1.8 partial chapter |
+| 3. The verb | 142 | 41 | 98 | 3 | 0 | Incomplete |
 | 4. The clause: complements | 110 | 0 | 109 | 1 | 0 | Incomplete |
 | 5. Nouns and noun phrases | 202 | 0 | 201 | 0 | 1 | Incomplete |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
@@ -25,10 +25,10 @@ Phase A infrastructure baseline (2026-11-10). This report does not certify extra
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-Totals: 1764 printed pages; 17 extracted pages; 1732 unprocessed; 13 justified textless/contents skips; 2 absent in split files. The 12 exceptional pages were independently checked as textless in the uploaded full PDF. Rules: 231 in catalog (196 previously approved plus 35 NEEDS_REVIEW Chapter 3 candidates). The 35 include 5 spec-only constraints. New implemented detectors: 0. Measured precision/recall by family: not available until Phase C coverage corpus exists.
+**Totals:** 1764 printed pages; 41 extracted; 1708 unprocessed; 13 skipped with reasons; 2 absent from the split-source copy. The strict ledger completion gate still fails until unprocessed reaches zero.
 
-To verify integrity without asserting completion: python tools/ledger.py check --allow-unprocessed. The strict command python tools/ledger.py check fails until pages are accounted for.
+## Rule catalog and Chapter 3
 
-## Phase B incremental extraction (2026-11-10)
+Previously established: 196 records. Phase B pp. 76–90: 35 new records. Phase B pp. 91–114: 70 new records. **Total catalog: 301 rules.** New implemented diagnostic detectors: **0** (the new constraints are source-grounded specifications, not connected runtime checks). Error-family precision/recall has **not** been measured for these new records.
 
-Chapter 3 printed pp. 76–90 are recorded with rule IDs and exception notes in `sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md`. Pages 74–75 retain prior approved §1.1 evidence. Pages 71–73 are contents only, not counted as grammar extraction. No chapter is yet complete. Chapter 3 covers 17/142 extracted pages (11.97%); 3 further pages are justified contents-only skips. Prioritised phase-B work must continue with p. 91, and any later source contradictions must trigger revision rather than guesswork.
+Chapter 3 totals: **41/142 extracted pages**, 3 chapter-contents skips, **98 unprocessed** (pp. 115–212). Source and exception evidence: `sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md` and `PHASE_B_PP91_114_REPORT.md`. Next source pages: 115 onward. No user review or approval is needed to continue extraction; completion is governed by automated quality gates.

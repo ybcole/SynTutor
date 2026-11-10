@@ -1340,5 +1340,1748 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "diagnostic": null
+  },
+  {
+    "id": "COMP-020",
+    "domain": "complementation",
+    "concept": "First auxiliary in multiword idioms",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "In auxiliary-led idioms only the first verb is an auxiliary; a larger expression such as have got is not a single auxiliary verb.",
+    "condition": "Analyse multiword constructions beginning with be, have, had or would, distinguishing the first auxiliary head from the following words in the idiom.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has got a ticket. [has is auxiliary]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They would rather remain. [would is auxiliary]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2 Auxiliary verbs",
+        "pages": [
+          92
+        ],
+        "pdf_pages": [
+          112
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "First auxiliary in multiword idioms",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. The following words are not all auxiliary verbs and some may be lexical verbs or particles.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-021",
+    "domain": "complementation",
+    "concept": "Elliptical stranding of an auxiliary in code",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An auxiliary may remain overt when its complement is ellipted and recoverable from an antecedent.",
+    "condition": "A reduced follow-up clause retains an auxiliary while its governed predicate is omitted and understood from the nearby discourse.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The director can arrive early, and the editor can too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mira has written the minutes, and Sana has too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.4 Code: elliptical stranding and the pro-verb do",
+        "pages": [
+          99
+        ],
+        "pdf_pages": [
+          119
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Elliptical stranding of an auxiliary in code",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. The reduced clause requires context; the overt auxiliary is not itself a direct-object substitute.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-022",
+    "domain": "complementation",
+    "concept": "Lexical-verbal code reduction compared with auxiliary stranding",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Ordinary lexical verbs do not undergo the auxiliary-stranding code pattern; a reduced lexical-verb counterpart commonly uses do.",
+    "condition": "The antecedent VP contains a lexical verb with no preceding auxiliary, and the following clause omits that predication.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mia enjoyed the concert, and Ken did too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I plan to attend and Zoe plans to as well. [different infinitival reduction]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.4 Code",
+        "pages": [
+          99,
+          100
+        ],
+        "pdf_pages": [
+          119,
+          120
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical-verbal code reduction compared with auxiliary stranding",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Lexical verbs can omit some complements by independent licensing, so not every short lexical VP is an error.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-023",
+    "domain": "complementation",
+    "concept": "Discourse-old and discourse-new auxiliary stranding",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Auxiliary stranding is more widely licensed when the stranded auxiliary itself is repeated from the antecedent than when it is discourse-new.",
+    "condition": "Compare an omitted dependent after an auxiliary that appeared in the antecedent with one introduced only in the reduced clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jon is to lead tomorrow and Mara is too. [old auxiliary]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jon will lead tomorrow if Mara can. [new auxiliary]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.4 Code",
+        "pages": [
+          99
+        ],
+        "pdf_pages": [
+          119
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse-old and discourse-new auxiliary stranding",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. The acceptability of stranding can depend on the auxiliary and the idiom; avoid a blanket ban on new-verb stranding.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-024",
+    "domain": "complementation",
+    "concept": "Idiom-specific constraints on code reduction",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Auxiliary-led idioms differ in how much of the idiom remains when the following complement is omitted.",
+    "condition": "Classify elliptical responses involving would rather, have got or be to, comparing discourse-old and new auxiliary uses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Would you rather stay? Yes, I would.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Would you prefer tea? No, I'd rather not.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.4 Code",
+        "pages": [
+          99
+        ],
+        "pdf_pages": [
+          119
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiom-specific constraints on code reduction",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Got in have got is a lexical verb and does not strand the same way as the initial auxiliary have.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-025",
+    "domain": "complementation",
+    "concept": "Secondary-form auxiliary stranding is regionally variable",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Auxiliary stranding can retain some secondary verb forms, though gerund-participle stranding is more restricted in American English.",
+    "condition": "An auxiliary remains after ellipsis as plain have, past participle been or gerund-participle being rather than as a finite primary form.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You may have visited, and she may have too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our old roof has been fixed; the new one has been too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.4 Code",
+        "pages": [
+          100
+        ],
+        "pdf_pages": [
+          120
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Secondary-form auxiliary stranding is regionally variable",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Neither a secondary form nor its regional acceptability can be judged with one rule covering every variety.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-026",
+    "domain": "complementation",
+    "concept": "Infinitival to stranding in ellipsis",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Infinitival to can be stranded when its verbal complement is recoverable, even though to is not an auxiliary.",
+    "condition": "A reduced infinitival clause retains the infinitival subordinator to while eliding the following predicate under restricted contextual conditions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Sam hoped to take part and Lee wanted to as well.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I was meant to call her, but I forgot to.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.4 Code",
+        "pages": [
+          100
+        ],
+        "pdf_pages": [
+          120
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival to stranding in ellipsis",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Not all infinitival to can be left without its complement: licensing conditions differ from auxiliary stranding.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-027",
+    "domain": "complementation",
+    "concept": "Dialectal pro-verb do in reduced code",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "In some British English uses, do acts as a pro-verb in a reduced VP after another auxiliary; the parallel pattern is often disfavoured in American English.",
+    "condition": "A reduced VP contains a form of do substituting for a prior predicate under a modal or another preceding auxiliary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I haven't finished, but I will do soon. [some BrE]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I haven't finished, but I will soon. [general]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.4 Code",
+        "pages": [
+          100,
+          101
+        ],
+        "pdf_pages": [
+          120,
+          121
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dialectal pro-verb do in reduced code",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Do not flag regional pro-verb do patterns as universal errors. Supportive do before do as a pro-form is possible in some BrE responses.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-028",
+    "domain": "complementation",
+    "concept": "Code construction combined with other NICE patterns",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Stranded auxiliary code can appear together with negation, inversion or emphatic polarity in the same reduced clause.",
+    "condition": "A recoverable omitted predicate follows a stranded auxiliary, potentially separated by not or a subject.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Ari can't enter, and neither can Mira.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They said I hadn't tried, but I HAVE.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.4 Code",
+        "pages": [
+          101
+        ],
+        "pdf_pages": [
+          121
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Code construction combined with other NICE patterns",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Stranding does not require the auxiliary to be immediately adjacent to the ellipsis site.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-029",
+    "domain": "complementation",
+    "concept": "Catenative-auxiliary analysis of English auxiliaries",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The Cambridge analysis treats a core auxiliary as a verb heading a clause that takes a subordinate non-finite clause as its complement.",
+    "condition": "Represent sequences such as is writing or has written using head–complement clause relations rather than analysing the auxiliary merely as a dependent of a single lexical main verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is composing a letter. [is heads a clause with a non-finite complement]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He promised to try to visit. [nested non-finite complements]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.2 Issues of definition and analysis",
+        "pages": [
+          103,
+          104
+        ],
+        "pdf_pages": [
+          123,
+          124
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Catenative-auxiliary analysis of English auxiliaries",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. The competing dependent-auxiliary analysis is described but not adopted; evidence is developed further in Chapter 14 §4.2.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-030",
+    "domain": "complementation",
+    "concept": "Supportive do is incompatible with other auxiliaries in one chain",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Supportive auxiliary do cannot combine with another auxiliary in the ordinary finite clause, except in a negative or emphatic imperative.",
+    "condition": "A central standard declarative, closed interrogative or emphatic clause uses supportive do followed by an additional auxiliary as its verbal complement.",
+    "violation": "Inserting supportive do before another auxiliary instead of using that auxiliary as the finite NICE head.",
+    "exceptions": [
+      {
+        "description": "Negative and emphatic imperatives can contain do followed by be or other auxiliaries.",
+        "pages": [
+          105
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Does she understand the rule?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have the guests arrived already?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Does she have arrived already?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Did the guests be waiting outside?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.3 Combinations of auxiliary verbs",
+        "pages": [
+          105
+        ],
+        "pdf_pages": [
+          125
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supportive do is incompatible with other auxiliaries in one chain",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [
+      "CLS-100"
+    ],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. ",
+    "diagnostic": {
+      "error_family": "extra_word",
+      "error_pattern": "Inserting supportive do before another auxiliary instead of using that auxiliary as the finite NICE head.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Does she have arrived already? ||| Has she arrived already?",
+        "Did the guests be waiting outside? ||| Were the guests waiting outside?"
+      ],
+      "learner_explanation": "Supportive auxiliary do cannot combine with another auxiliary in the ordinary finite clause, except in a negative or emphatic imperative. This structure is not licensed when inserting supportive do before another auxiliary instead of using that auxiliary as the finite NICE head. Use a correction appropriate to the particular auxiliary and the surrounding sentence.",
+      "corrected_paragraph_template": "Revise only the affected auxiliary sequence in its paragraph, preserve sentence intent, and re-evaluate neighbouring findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Don't be late! [negative imperative]",
+        "Do be careful! [emphatic imperative]",
+        "Does she have a car? [lexical have]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliary-sequences"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-031",
+    "domain": "complementation",
+    "concept": "Mutual exclusion of core modal auxiliaries in Standard English",
+    "rule_type": "variety_restricted",
+    "scope": "clause",
+    "statement": "A standard core auxiliary chain does not contain two central modal auxiliaries together, except where they belong to separately coordinated units.",
+    "condition": "A single non-coordinated Standard English core auxiliary sequence contains two members of the central modal class, with one following the other as verbal complement.",
+    "violation": "Combining two central modals in one uncoordinated auxiliary chain.",
+    "exceptions": [
+      {
+        "description": "Some non-standard English dialects license certain ordered double-modal sequences; do not apply this Standard English restriction to those dialects.",
+        "pages": [
+          107
+        ]
+      },
+      {
+        "description": "Coordination is not a chain of modals selecting one another.",
+        "pages": [
+          105
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She may be ready tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She will be able to swim soon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She may will finish tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "He will can swim tomorrow.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§§2.3–2.4 Auxiliary combinations and modal properties",
+        "pages": [
+          105,
+          107
+        ],
+        "pdf_pages": [
+          125,
+          127
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mutual exclusion of core modal auxiliaries in Standard English",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. ",
+    "variety": "standard written English",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "Combining two central modals in one uncoordinated auxiliary chain.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She may will finish tomorrow. ||| She may finish tomorrow.",
+        "He will can swim tomorrow. ||| He will be able to swim tomorrow."
+      ],
+      "learner_explanation": "A standard core auxiliary chain does not contain two central modal auxiliaries together, except where they belong to separately coordinated units. This structure is not licensed when combining two central modals in one uncoordinated auxiliary chain. Use a correction appropriate to the particular auxiliary and the surrounding sentence.",
+      "corrected_paragraph_template": "Revise only the affected auxiliary sequence in its paragraph, preserve sentence intent, and re-evaluate neighbouring findings.",
+      "variety_scope": "variety_restricted: standard written English",
+      "false_positive_guards": [
+        "He might could help. [attested non-standard double-modal dialect]",
+        "She may or may not finish. [coordination]",
+        "She will be able to swim soon.",
+        "He has to be able to help."
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliary-sequences"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-032",
+    "domain": "complementation",
+    "concept": "Aspectual use excludes preceding modals in a core chain",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The aspectual auxiliary use historically associated with used to occupies the same auxiliary-position choice as a modal and does not combine with one in the core chain.",
+    "condition": "A verb sequence contains aspectual use to as an auxiliary rather than lexical use, and a modal before it in one non-coordinated auxiliary chain.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He used to travel by train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He would travel by train every summer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.3 Combinations of auxiliary verbs",
+        "pages": [
+          105
+        ],
+        "pdf_pages": [
+          125
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aspectual use excludes preceding modals in a core chain",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Do not confuse the aspectual auxiliary with the lexical verb use in other syntactic environments; this is not a universal ban on modal + lexical use.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-033",
+    "domain": "complementation",
+    "concept": "Ordering of modal, perfect, progressive and passive auxiliaries",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Standard core auxiliary chains preserve the order modal, perfect have, progressive be, then passive be, with any of these components omitted as licensed.",
+    "condition": "A verb phrase contains two or more core auxiliary types as one uncoordinated catenative chain rather than lexical have or lexical be.",
+    "violation": "Placing the selected core auxiliaries in an order that reverses modal, perfect, progressive or passive positions.",
+    "exceptions": [
+      {
+        "description": "Some speakers avoid the rare progressive-passive combinations, but they occur and are not universally ungrammatical.",
+        "pages": [
+          106
+        ]
+      },
+      {
+        "description": "Lexical have, lexical be and idiomatic auxiliaries require classification before applying core-order restrictions.",
+        "pages": [
+          105
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She could have been invited.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The street has been being repaired. [rare but structurally possible]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She had could be invited.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The street is having been repaired.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.3 Combinations of auxiliary verbs",
+        "pages": [
+          105,
+          106
+        ],
+        "pdf_pages": [
+          125,
+          126
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordering of modal, perfect, progressive and passive auxiliaries",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Placing the selected core auxiliaries in an order that reverses modal, perfect, progressive or passive positions.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She had could be invited. ||| She could have been invited.",
+        "The street is having been repaired. ||| The street has been repaired."
+      ],
+      "learner_explanation": "Standard core auxiliary chains preserve the order modal, perfect have, progressive be, then passive be, with any of these components omitted as licensed. This structure is not licensed when placing the selected core auxiliaries in an order that reverses modal, perfect, progressive or passive positions. Use a correction appropriate to the particular auxiliary and the surrounding sentence.",
+      "corrected_paragraph_template": "Revise only the affected auxiliary sequence in its paragraph, preserve sentence intent, and re-evaluate neighbouring findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She is having lunch. [lexical have]",
+        "They have been eating dinner.",
+        "They may be being watched. [rare but permitted]",
+        "They are to be invited. [quasi-modal be]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliary-sequences"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-034",
+    "domain": "complementation",
+    "concept": "Central modal selection of the following plain form",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A central modal auxiliary selects a following verb in its plain form, without infinitival to.",
+    "condition": "A central modal can, could, may, might, must, shall, should, will or would governs its immediate verbal complement in a core auxiliary construction.",
+    "violation": "Using to-infinitival marking or an inflected present form immediately after a central modal.",
+    "exceptions": [
+      {
+        "description": "Ought is a non-central modal that generally selects to, and lexical need/dare may select to-infinitives.",
+        "pages": [
+          109
+        ]
+      },
+      {
+        "description": "In remote modal dialects multiple modals can occur, requiring separate variety rules.",
+        "pages": [
+          107
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The train might leave soon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He must have forgotten the key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The train might to leave soon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "He must forgets the key.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.3 Combinations of auxiliary verbs",
+        "pages": [
+          106
+        ],
+        "pdf_pages": [
+          126
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Central modal selection of the following plain form",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [
+      "MORPH-005"
+    ],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. ",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "Using to-infinitival marking or an inflected present form immediately after a central modal.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The train might to leave soon. ||| The train might leave soon.",
+        "He must forgets the key. ||| He must forget the key."
+      ],
+      "learner_explanation": "A central modal auxiliary selects a following verb in its plain form, without infinitival to. This structure is not licensed when using to-infinitival marking or an inflected present form immediately after a central modal. Use a correction appropriate to the particular auxiliary and the surrounding sentence.",
+      "corrected_paragraph_template": "Revise only the affected auxiliary sequence in its paragraph, preserve sentence intent, and re-evaluate neighbouring findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "He ought to leave soon. [non-central modal ought]",
+        "She needs to leave. [lexical need]",
+        "They must have spoken already.",
+        "She would rather leave. [idiom]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliary-sequences"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-035",
+    "domain": "complementation",
+    "concept": "Progressive be selects a gerund-participle",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Progressive auxiliary be selects a verbal complement in the gerund-participle form.",
+    "condition": "Be is the progressive aspect auxiliary and directly licenses the next verbal head of its non-finite complement.",
+    "violation": "Using an uninflected plain form or ordinary preterite instead of the -ing gerund-participle under progressive be.",
+    "exceptions": [
+      {
+        "description": "Other uses of be, including copular, passive and quasi-modal, select different complement categories.",
+        "pages": [
+          103
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They were hiking beside the lake.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has been working remotely.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They were hike beside the lake.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She is work remotely.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.3 Combinations of auxiliary verbs",
+        "pages": [
+          106
+        ],
+        "pdf_pages": [
+          126
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Progressive be selects a gerund-participle",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. ",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "Using an uninflected plain form or ordinary preterite instead of the -ing gerund-participle under progressive be.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They were hike beside the lake. ||| They were hiking beside the lake.",
+        "She is work remotely. ||| She is working remotely."
+      ],
+      "learner_explanation": "Progressive auxiliary be selects a verbal complement in the gerund-participle form. This structure is not licensed when using an uninflected plain form or ordinary preterite instead of the -ing gerund-participle under progressive be. Use a correction appropriate to the particular auxiliary and the surrounding sentence.",
+      "corrected_paragraph_template": "Revise only the affected auxiliary sequence in its paragraph, preserve sentence intent, and re-evaluate neighbouring findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She is very tired. [copular be]",
+        "The hall was cleaned. [passive be]",
+        "The window is broken. [adjective or passive]",
+        "He is to arrive at noon. [quasi-modal be]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliary-sequences"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-036",
+    "domain": "complementation",
+    "concept": "Passive be selects a past participle",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Passive auxiliary be selects a following lexical predicate in the past participle form.",
+    "condition": "A passive voice construction has be as its passive auxiliary and the next verb expresses the passive predicate.",
+    "violation": "Using a plain or finite present verb instead of the required past participle in a passive be construction.",
+    "exceptions": [
+      {
+        "description": "Be also acts as a copula or progressive auxiliary; classification must precede passive-form correction.",
+        "pages": [
+          103
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parcel was delivered by noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gate has been painted recently.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The parcel was deliver by noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The gate has been paint by the workers.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.3 Combinations of auxiliary verbs",
+        "pages": [
+          106
+        ],
+        "pdf_pages": [
+          126
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Passive be selects a past participle",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. ",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "Using a plain or finite present verb instead of the required past participle in a passive be construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The parcel was deliver by noon. ||| The parcel was delivered by noon.",
+        "The gate has been paint by the workers. ||| The gate has been painted by the workers."
+      ],
+      "learner_explanation": "Passive auxiliary be selects a following lexical predicate in the past participle form. This structure is not licensed when using a plain or finite present verb instead of the required past participle in a passive be construction. Use a correction appropriate to the particular auxiliary and the surrounding sentence.",
+      "corrected_paragraph_template": "Revise only the affected auxiliary sequence in its paragraph, preserve sentence intent, and re-evaluate neighbouring findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They are painting the gate. [progressive]",
+        "The windows were open. [copular adjective]",
+        "The parcel was delivered.",
+        "The gate seemed painted. [possible adjective]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliary-sequences"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-037",
+    "domain": "complementation",
+    "concept": "Perfect have selects past participle within auxiliary chains",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The core auxiliary paradigm requires perfect have to be followed by a past participle, even when the following verb is another auxiliary.",
+    "condition": "Classify the immediate complement of perfect have, including past participle been in a multi-auxiliary chain.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The worker has been preparing the room.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She might have been interviewed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.3 Combinations of auxiliary verbs",
+        "pages": [
+          106
+        ],
+        "pdf_pages": [
+          126
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfect have selects past participle within auxiliary chains",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [
+      "MORPH-026"
+    ],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Duplicates the selection target of existing MORPH-026 rather than creating a second detector with conflicting corrections.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-038",
+    "domain": "complementation",
+    "concept": "Rare progressive passive sequences are structurally admissible",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Some speakers avoid progressive-passive sequences with being after be, but these are attested and fit the regular auxiliary-order pattern.",
+    "condition": "A grammatical sequence selects progressive be followed by passive be and a past participle.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The building is being refurbished.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The building has been being refurbished for weeks. [uncommon]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.3 Combinations of auxiliary verbs",
+        "pages": [
+          105,
+          106
+        ],
+        "pdf_pages": [
+          125,
+          126
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rare progressive passive sequences are structurally admissible",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Individually matched to Cambridge printed page and local exceptions, using original examples. Additional automated validation precedes downstream activation. Rarity and processing awkwardness do not establish universal ungrammaticality.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-039",
+    "domain": "complementation",
+    "concept": "Ought to and regionally bare non-affirmative complements",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Ought ordinarily selects a to-infinitival complement, but some varieties allow bare infinitives in negatives or questions.",
+    "condition": "Ought is followed by a plain form verb under positive or non-affirmative polarity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You ought to explain the delay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You ought not tell him yet. [some American English]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.4 Ought",
+        "pages": [
+          109
+        ],
+        "pdf_pages": [
+          129
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ought to and regionally bare non-affirmative complements",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Never mark all non-affirmative ought without to ungrammatical.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-040",
+    "domain": "complementation",
+    "concept": "Dynamic lexical have takes do-support",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Dynamic lexical have forms ordinary finite negation and closed interrogatives with do-support, rather than auxiliary-style inversion or n't.",
+    "condition": "Have means perform, experience or cause an event in a central present/past finite clause and is not perfect or stative auxiliary have.",
+    "violation": "Treating dynamic lexical have as an auxiliary in a closed question or primary negation.",
+    "exceptions": [
+      {
+        "description": "Stative have can behave as an auxiliary in some British English uses; dynamic have is always lexical.",
+        "pages": [
+          112
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did they have a quiet lunch?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She did not have the curtains cleaned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Had they a quiet lunch?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She hadn't the curtains cleaned.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.6 Dynamic have",
+        "pages": [
+          111
+        ],
+        "pdf_pages": [
+          131
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic lexical have takes do-support",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Treating dynamic lexical have as an auxiliary in a closed question or primary negation.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Had they a quiet lunch? ||| Did they have a quiet lunch?",
+        "She hadn't the curtains cleaned. ||| She did not have the curtains cleaned."
+      ],
+      "learner_explanation": "Dynamic lexical have forms ordinary finite negation and closed interrogatives with do-support, rather than auxiliary-style inversion or n't. The incorrect pattern is treating dynamic lexical have as an auxiliary in a closed question or primary negation. The alternative depends on the clause's meaning and variety, so correct it in its full context.",
+      "corrected_paragraph_template": "Replace the locally evidenced construction in its paragraph, preserve its intended meaning, and re-evaluate all other findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Have they already eaten? [perfect]",
+        "Have you any questions? [some British English stative]",
+        "She hasn't had lunch yet. [perfect with lexical have]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "verb-forms"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-041",
+    "domain": "complementation",
+    "concept": "Supportive do excluded in idiomatic have got",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "The idiom have got has auxiliary have and normally uses inversion or n't directly on have rather than an added supportive do.",
+    "condition": "Have got denotes possession or obligation and forms a standard finite closed question or primary negative.",
+    "violation": "Adding a supportive do before an idiomatic have got sequence.",
+    "exceptions": [
+      {
+        "description": "Have got may instead be a perfect form of lexical get, which requires contextual disambiguation.",
+        "pages": [
+          112
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Have they got the documents?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She hasn't got the right key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Do they have got the documents?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She doesn't have got the right key.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.6 Have got",
+        "pages": [
+          112
+        ],
+        "pdf_pages": [
+          132
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supportive do excluded in idiomatic have got",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. ",
+    "diagnostic": {
+      "error_family": "extra_word",
+      "error_pattern": "Adding a supportive do before an idiomatic have got sequence.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Do they have got the documents? ||| Have they got the documents?",
+        "She doesn't have got the right key. ||| She hasn't got the right key."
+      ],
+      "learner_explanation": "The idiom have got has auxiliary have and normally uses inversion or n't directly on have rather than an added supportive do. The incorrect pattern is adding a supportive do before an idiomatic have got sequence. The alternative depends on the clause's meaning and variety, so correct it in its full context.",
+      "corrected_paragraph_template": "Replace the locally evidenced construction in its paragraph, preserve its intended meaning, and re-evaluate all other findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Do they have the documents? [lexical possessive have]",
+        "She doesn't have the right key. [lexical have]",
+        "Did they get the documents? [lexical get]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "verb-forms"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-042",
+    "domain": "complementation",
+    "concept": "Bare infinitival complement of had better",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "The advisory idiom had better normally selects a bare infinitival verb instead of a to-infinitive.",
+    "condition": "Had better (or had best) has its non-past advisory sense and directly governs its following verbal complement.",
+    "violation": "Inserting infinitival to immediately after had better before its verb complement.",
+    "exceptions": [
+      {
+        "description": "Informal omission of had in you better leave is acceptable in some varieties; it is not to-insertion.",
+        "pages": [
+          113
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You had better call the adviser.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They'd best leave before sunset.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "You had better to call the adviser.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They had best to leave before sunset.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.6 Had better/best",
+        "pages": [
+          113
+        ],
+        "pdf_pages": [
+          133
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare infinitival complement of had better",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. ",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "Inserting infinitival to immediately after had better before its verb complement.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "You had better to call the adviser. ||| You had better call the adviser.",
+        "They had best to leave before sunset. ||| They had best leave before sunset."
+      ],
+      "learner_explanation": "The advisory idiom had better normally selects a bare infinitival verb instead of a to-infinitive. The incorrect pattern is inserting infinitival to immediately after had better before its verb complement. The alternative depends on the clause's meaning and variety, so correct it in its full context.",
+      "corrected_paragraph_template": "Replace the locally evidenced construction in its paragraph, preserve its intended meaning, and re-evaluate all other findings.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "You better call the adviser. [informal omission of had]",
+        "The new method had better results. [ordinary adjective]",
+        "It had better been left alone. [ambiguity; don't automatically classify]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "verb-forms"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "COMP-043",
+    "domain": "complementation",
+    "concept": "Quasi-modal be and infinitival complement",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Quasi-modal be takes to plus a plain-form verb and differs from progressive and passive auxiliary be in complementation.",
+    "condition": "Be is a quasi-modal expressing scheduled or required action with a to-infinitival dependent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guests are to remain near the entrance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The meeting was to begin at noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.7 Be",
+        "pages": [
+          113,
+          114
+        ],
+        "pdf_pages": [
+          133,
+          134
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quasi-modal be and infinitival complement",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Ordinary copular, passive and progressive be do not inherit the quasi-modal selection pattern.",
+    "diagnostic": null
+  },
+  {
+    "id": "COMP-044",
+    "domain": "complementation",
+    "concept": "Lexical be in non-affirmative why-questions and if-clauses",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A restricted lexical use of be can follow supportive do in negative why-questions and conditional protases.",
+    "condition": "Be receives a directive-like reading after don't or doesn't in a why-question or in an if-protasis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Why doesn't he be reasonable?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she doesn't be careful, she may lose the file.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.7 Be",
+        "pages": [
+          114
+        ],
+        "pdf_pages": [
+          134
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical be in non-affirmative why-questions and if-clauses",
+        "relation": "unverified",
+        "note": "No separate Burton-Roberts evidence established for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. The form be remains invariant, but the auxiliary do reflects subject agreement. Positive if you be is possible for only some speakers.",
+    "diagnostic": null
   }
 ]

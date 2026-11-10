@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 class Chapter3PhaseB(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.rules=[x for x in json.loads((ROOT/"grammar/rules/morphology.json").read_text(encoding="utf-8")) if x["id"].startswith("MORPH-") and int(x["id"].split("-")[1])>=24]
+        cls.rules=[x for x in json.loads((ROOT/"grammar/rules/morphology.json").read_text(encoding="utf-8")) if x["id"].startswith("MORPH-") and 24<=int(x["id"].split("-")[1])<=58]
         cls.ledger=json.loads((ROOT/"grammar/coverage/cgel_ledger.json").read_text(encoding="utf-8"))
     def test_new_rule_count_and_stable_ids(self):
         self.assertEqual(len(self.rules),35)
@@ -28,4 +28,4 @@ class Chapter3PhaseB(unittest.TestCase):
         rows=self.ledger["pages"]
         self.assertTrue(all(rows[p-1]["status"]=="skipped_with_reason" for p in range(71,74)))
         self.assertTrue(all(rows[p-1]["status"]=="extracted" for p in range(74,91)))
-        self.assertTrue(all(rows[p-1]["status"]=="unprocessed" for p in range(91,213)))
+        self.assertTrue(all(rows[p-1]["status"]=="extracted" for p in range(91,115)))
