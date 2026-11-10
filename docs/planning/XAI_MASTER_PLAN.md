@@ -388,7 +388,7 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 - Agree source metadata + data contracts and UI labels before changing production outputs.
 - Include original-vs-candidate multi-error diagnosis and Cambridge contextual exceptions in baseline fixtures; record blocked/ambiguous findings explicitly.
 
-**Gate:** written inventory, reproducible test set and initial metrics. The XAI-0 corpus now contains **116 English-only development cases**; the previous mixed-language audit figures are superseded and must be remeasured. See [English-only acceptance report](../reports/xai-0-baseline-acceptance-2026-11-10.md). Confirmed static inventory: 2 templates, 4 source records, 0 enabled Cambridge constraints. These are not correctness scores or independent error judgments.
+**Gate:** written inventory, reproducible test set and initial metrics. **English-only XAI-0 baseline measured on 116 real parser cases:** 92 normalized B–R trees, 24 unresolved, 1,685 canonical nodes, 112 S-level source-cited template hits (6.65%), **0 of 444** word-terminal nodes source-cited. The old out-of-scope audit is superseded. Static inventory: 2 templates, 4 source records, 0 enabled Cambridge constraints. See [measured English-only acceptance](../reports/xai-0-baseline-acceptance-2026-11-10.md). These are not correctness scores or independently verified error judgments.
 
 ### XAI-1 — Source concept registry / claim provenance
 
