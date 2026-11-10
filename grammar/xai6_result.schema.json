@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "XAI-6 fail-closed naturalizer result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "status",
+    "reason_code",
+    "model_enabled",
+    "analysis_id",
+    "selected_node_id",
+    "reading_level",
+    "paragraphs",
+    "source_ids",
+    "claim_status",
+    "cache_status",
+    "provider_calls",
+    "provider_elapsed_ms",
+    "whole_sentence_certified"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai6-result-1.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "status": {
+      "enum": [
+        "disabled",
+        "unavailable",
+        "fallback",
+        "accepted"
+      ]
+    },
+    "reason_code": {
+      "enum": [
+        "INDEPENDENT_BLIND_REVIEW_PENDING",
+        "NO_SELECTED_NODE",
+        "NO_CONTEXTUAL_PROOF",
+        "MODEL_TRANSPORT_UNAVAILABLE",
+        "MODEL_RESPONSE_REJECTED",
+        "MODEL_BUDGET_EXCEEDED",
+        "MODEL_REQUEST_FAILED",
+        "MODEL_DEADLINE_EXCEEDED",
+        "MODEL_UNCHANGED_BASELINE",
+        "NATURALIZATION_ACCEPTED",
+        "CACHE_HIT",
+        "INVALID_POLICY"
+      ]
+    },
+    "model_enabled": {
+      "type": "boolean"
+    },
+    "analysis_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "selected_node_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reading_level": {
+      "enum": [
+        "plain",
+        "standard",
+        "advanced"
+      ]
+    },
+    "paragraphs": {
+      "type": "array",
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "level",
+          "text",
+          "supported_fact_ids",
+          "source_ids"
+        ],
+        "properties": {
+          "level": {
+            "enum": [
+              "short",
+              "deep"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3000
+          },
+          "supported_fact_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^f[0-9]{5}$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "source_ids": {
+            "type": "array",
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    "source_ids": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "claim_status": {
+      "const": "STRUCTURAL_OBSERVATION_ONLY"
+    },
+    "cache_status": {
+      "enum": [
+        "bypassed",
+        "miss",
+        "hit"
+      ]
+    },
+    "provider_calls": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "provider_elapsed_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "whole_sentence_certified": {
+      "const": false
+    }
+  }
+}
