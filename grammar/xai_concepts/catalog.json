@@ -64,7 +64,9 @@
         "can_diagnose": false,
         "can_repair": false
       },
-      "crosswalk_ids": []
+      "crosswalk_ids": [
+        "CW-SENTENCE-CLAUSE-ONTOLOGY"
+      ]
     },
     {
       "id": "BR3-CATEGORY-VS-FUNCTION",
@@ -1191,7 +1193,8 @@
         "can_repair": false
       },
       "crosswalk_ids": [
-        "CW-PERF-PARTICIPLE"
+        "CW-PERF-PARTICIPLE",
+        "CW-PERF-PAST-ADJUNCT"
       ]
     },
     {
