@@ -257,7 +257,7 @@ function renderRepairRecheck(evidence, panel) {
           }
         };
         treeView = renderLessonTree(revisedTree,{
-          interactive:true,zoomControls:true,onSelectNode:inspect,
+          interactive:true,zoomControls:true,stackFeatures:true,onSelectNode:inspect,
         });
         treeDetails.append(treeView);
         output.append(treeDetails);
