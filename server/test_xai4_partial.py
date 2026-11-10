@@ -17,6 +17,7 @@ from test_builder_evaluation import tree
 
 CANDIDATES, AUDIT = load_manifest()
 SCHEMA = json.loads((ROOT / "grammar/xai4_candidates.schema.json").read_text())
+OUTPUT_SCHEMA = json.loads((ROOT / "grammar/xai4_partial.schema.json").read_text())
 FAMILIES = {r["family"]: r for r in CANDIDATES["rules"]}
 
 
@@ -33,6 +34,15 @@ class XAI4PartialTests(unittest.TestCase):
         self.assertTrue(all(x["runtime_status"] == "disabled" for x in CANDIDATES["rules"]))
         self.assertTrue(all(x["review"]["independent_human_review"] is False for x in CANDIDATES["rules"]))
         self.assertTrue(all(not eligible(x, AUDIT, CANDIDATES) for x in CANDIDATES["rules"]))
+
+    def test_partial_results_match_strict_schema(self):
+        Draft202012Validator.check_schema(OUTPUT_SCHEMA)
+        validator = Draft202012Validator(OUTPUT_SCHEMA)
+        for sentence in [None, "She had went home.", "She had breakfast.",
+                         "She can goes.", "She is singing.",
+                         "We've already discussed it yesterday."]:
+            with self.subTest(sentence=sentence):
+                validator.validate(evaluate_xai4(sentence))
 
     def test_perfect_had_forms_and_lexical_exception(self):
         family = "perfect_auxiliary_participle"
