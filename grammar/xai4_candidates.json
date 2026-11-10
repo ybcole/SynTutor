@@ -1,0 +1,162 @@
+{
+  "schema_version": "xai4-candidates-1.0.0",
+  "language_policy": "ENGLISH_ONLY",
+  "authority": "SOURCE_AUDIT_PENDING_INDEPENDENT_HUMAN_APPROVAL",
+  "runtime_enabled_rule_ids": [],
+  "rules": [
+    {
+      "id": "CGEL4-PERF-COMPLEMENT",
+      "family": "perfect_auxiliary_participle",
+      "title": "Perfect auxiliary and complement form",
+      "source_claim_ids": [
+        "CGEL-PERF-PAST-PARTICIPLE",
+        "CGEL-SYNCRETISM",
+        "BR3-PERF-SELECTS-PERF-PARTICIPLE",
+        "BR3-AUX-LEXICAL-HAVE"
+      ],
+      "crosswalk_id": "CW-PERF-PARTICIPLE",
+      "positive": [
+        "She had gone home.",
+        "They have eaten."
+      ],
+      "negative": [
+        "She had went home.",
+        "She has ate."
+      ],
+      "exceptions": [
+        "She had breakfast.",
+        "She had walked home.",
+        "She had read the book."
+      ],
+      "prerequisites": [
+        "Overt auxiliary reading of have, not lexical possession/event use",
+        "Observed next verbal candidate with licensed morphology"
+      ],
+      "variety": "English; interpretation and dialect require review",
+      "notes": "Past and past participle may be syncretic; do not blanket-reject -ed.",
+      "review": {
+        "status": "PENDING_INDEPENDENT_HUMAN_REVIEW",
+        "independent_human_review": false,
+        "reviewed_by": null,
+        "reviewed_on": null,
+        "exception_review_completed": false,
+        "held_out_adjudication_completed": false,
+        "test_status": "unverified_before_ci"
+      },
+      "runtime_status": "disabled",
+      "may_issue_verified_error": false
+    },
+    {
+      "id": "CGEL4-MODAL-PLAIN",
+      "family": "modal_plain_form",
+      "title": "Core modal and following plain form",
+      "source_claim_ids": [
+        "CGEL-MODAL-PLAIN",
+        "CGEL-AUX-SELECTION-ORDER"
+      ],
+      "crosswalk_id": null,
+      "positive": [
+        "She can go."
+      ],
+      "negative": [
+        "She can goes.",
+        "They must has gone."
+      ],
+      "exceptions": [
+        "A tin can fell.",
+        "She might have gone."
+      ],
+      "prerequisites": [
+        "Core modal reading and verbal complement",
+        "Plain-versus-inflected form distinguishes the candidate"
+      ],
+      "variety": "English; dialect and quotation require review",
+      "notes": "Not all can/may forms are modal; unresolved crosswalk blocks deployment.",
+      "review": {
+        "status": "PENDING_INDEPENDENT_HUMAN_REVIEW",
+        "independent_human_review": false,
+        "reviewed_by": null,
+        "reviewed_on": null,
+        "exception_review_completed": false,
+        "held_out_adjudication_completed": false,
+        "test_status": "unverified_before_ci"
+      },
+      "runtime_status": "disabled",
+      "may_issue_verified_error": false
+    },
+    {
+      "id": "CGEL4-PROG-ING",
+      "family": "progressive_auxiliary_gerund_participle",
+      "title": "Progressive be and following gerund-participle",
+      "source_claim_ids": [
+        "CGEL-PROG-GERUND-PARTICIPLE",
+        "BR3-PROG-SELECTS-ING"
+      ],
+      "crosswalk_id": "CW-PROG-PARTICIPLE",
+      "positive": [
+        "She is singing."
+      ],
+      "negative": [
+        "She is sing."
+      ],
+      "exceptions": [
+        "She is happy.",
+        "The door is closed.",
+        "She is being careful."
+      ],
+      "prerequisites": [
+        "Progressive rather than copular or passive use of be",
+        "Observed verbal complement form"
+      ],
+      "variety": "English; alternative be-constructions require review",
+      "notes": "Non-progressive copular and passive readings are never rejected.",
+      "review": {
+        "status": "PENDING_INDEPENDENT_HUMAN_REVIEW",
+        "independent_human_review": false,
+        "reviewed_by": null,
+        "reviewed_on": null,
+        "exception_review_completed": false,
+        "held_out_adjudication_completed": false,
+        "test_status": "unverified_before_ci"
+      },
+      "runtime_status": "disabled",
+      "may_issue_verified_error": false
+    },
+    {
+      "id": "CGEL4-PERF-TIME-CONTEXT",
+      "family": "present_perfect_time_adjunct",
+      "title": "Present perfect with definite past-time adjuncts",
+      "source_claim_ids": [
+        "CGEL-PERF-PAST-ADJUNCT-DEFAULT",
+        "CGEL-PERF-EXPERIENTIAL-EXCEPTION"
+      ],
+      "crosswalk_id": null,
+      "positive": [
+        "She has eaten today."
+      ],
+      "negative": [
+        "She has gone yesterday."
+      ],
+      "exceptions": [
+        "We've already discussed it yesterday."
+      ],
+      "prerequisites": [
+        "Present-perfect auxiliary reading",
+        "Temporal adjunct interpretation is independently resolved"
+      ],
+      "variety": "Standard English; experiential exceptions and discourse interpretations matter",
+      "notes": "Never convert a yesterday token match into a categorical grammaticality error; leave ambiguous.",
+      "review": {
+        "status": "PENDING_INDEPENDENT_HUMAN_REVIEW",
+        "independent_human_review": false,
+        "reviewed_by": null,
+        "reviewed_on": null,
+        "exception_review_completed": false,
+        "held_out_adjudication_completed": false,
+        "test_status": "unverified_before_ci"
+      },
+      "runtime_status": "disabled",
+      "may_issue_verified_error": false
+    }
+  ]
+}
