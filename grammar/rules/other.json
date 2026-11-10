@@ -98,7 +98,8 @@
       "OTH-009",
       "OTH-010"
     ],
-    "review_notes": "Deixis cuts across the parts of speech (p. 68). Chapter 17 §1.1 pp. 1451–1453 distinguishes utterance-role, temporal and locative deixis and records exceptions to the usual speaker-centred anchor. Owner-approved, no independent second-pass review."
+    "review_notes": "Deixis cuts across the parts of speech (p. 68). Chapter 17 §1.1 pp. 1451–1453 distinguishes utterance-role, temporal and locative deixis and records exceptions to the usual speaker-centred anchor. Owner-approved, no independent second-pass review.",
+    "diagnostic": null
   },
   {
     "id": "OTH-002",
@@ -168,7 +169,8 @@
     "related_rules": [
       "CLS-011",
       "OTH-001"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "OTH-003",
@@ -225,7 +227,8 @@
     "related_rules": [
       "OTH-002"
     ],
-    "review_notes": "Restricted conditions are not given in Ch. 2; check Ch. 17."
+    "review_notes": "Restricted conditions are not given in Ch. 2; check Ch. 17.",
+    "diagnostic": null
   },
   {
     "id": "OTH-004",
@@ -294,7 +297,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition.",
+    "diagnostic": null
   },
   {
     "id": "OTH-005",
@@ -364,7 +368,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition.",
+    "diagnostic": null
   },
   {
     "id": "OTH-006",
@@ -434,7 +439,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition.",
+    "diagnostic": null
   },
   {
     "id": "OTH-007",
@@ -506,7 +512,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition.",
+    "diagnostic": null
   },
   {
     "id": "OTH-008",
@@ -594,7 +601,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition.",
+    "diagnostic": null
   },
   {
     "id": "OTH-009",
@@ -658,7 +666,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition.",
+    "diagnostic": null
   },
   {
     "id": "OTH-010",
@@ -729,7 +738,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition."
+    "review_notes": "User explicitly approved Chapter 17 changes on 2026-11-05. No independent second-pass review; this is descriptive, not an error-detection prohibition.",
+    "diagnostic": null
   },
   {
     "id": "OTH-011",
@@ -800,7 +810,8 @@
     "confidence": "high",
     "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "OTH-012",
@@ -871,7 +882,8 @@
     "confidence": "high",
     "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "OTH-013",
@@ -961,7 +973,8 @@
     "confidence": "high",
     "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "OTH-014",
@@ -1031,7 +1044,8 @@
     "confidence": "high",
     "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "OTH-015",
@@ -1101,7 +1115,8 @@
     "confidence": "high",
     "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "OTH-016",
@@ -1184,7 +1199,8 @@
     "confidence": "high",
     "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "OTH-017",
@@ -1254,7 +1270,8 @@
     "confidence": "high",
     "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "OTH-018",
@@ -1338,6 +1355,7 @@
     "confidence": "high",
     "review_notes": "Explicit user approval of Chapter 20 updates is recorded. Independent second-pass AI review not performed. Classification/generalisation is not an automatic grammar-error prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   }
 ]

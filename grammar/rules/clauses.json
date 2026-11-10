@@ -62,7 +62,8 @@
     "related_rules": [
       "CLS-002"
     ],
-    "review_notes": "Also records that relations between sentences in a discourse are outside the book's grammar (p. 44); not made a rule."
+    "review_notes": "Also records that relations between sentences in a discourse are outside the book's grammar (p. 44); not made a rule.",
+    "diagnostic": null
   },
   {
     "id": "CLS-002",
@@ -119,7 +120,8 @@
     "related_rules": [
       "CLS-003"
     ],
-    "review_notes": "Reasons given on p. 45: (a) treating a coordination and its coordinate parts as one category fails for mixed coordinations; (b) it clashes with the everyday sense of 'sentence'. These are Cambridge's analytical arguments, not tested constraints."
+    "review_notes": "Reasons given on p. 45: (a) treating a coordination and its coordinate parts as one category fails for mixed coordinations; (b) it clashes with the everyday sense of 'sentence'. These are Cambridge's analytical arguments, not tested constraints.",
+    "diagnostic": null
   },
   {
     "id": "CLS-003",
@@ -195,7 +197,8 @@
       "CLS-092",
       "CLS-093"
     ],
-    "review_notes": "Detailed treatment is in Ch. 15; this record covers only the Ch. 2 overview. Chapter 15 §1.1 confirms coordination is a non-headed syntactic category, and a mixed NP/PP-coordination cannot be categorised as either a simple NP or a simple PP; labels reflect coordinate categories."
+    "review_notes": "Detailed treatment is in Ch. 15; this record covers only the Ch. 2 overview. Chapter 15 §1.1 confirms coordination is a non-headed syntactic category, and a mixed NP/PP-coordination cannot be categorised as either a simple NP or a simple PP; labels reflect coordinate categories.",
+    "diagnostic": null
   },
   {
     "id": "CLS-004",
@@ -255,7 +258,8 @@
       "complex sentence",
       "compound sentence"
     ],
-    "review_notes": "Source is footnote 1, p. 45. Cambridge's stance on a traditional scheme; do not use it to flag 'errors'."
+    "review_notes": "Source is footnote 1, p. 45. Cambridge's stance on a traditional scheme; do not use it to flag 'errors'.",
+    "diagnostic": null
   },
   {
     "id": "CLS-005",
@@ -328,7 +332,8 @@
       "CLS-008",
       "CLS-009"
     ],
-    "review_notes": "Cambridge's five dimensions are in the numbered list on pp. 46-47. 'All canonical clauses are declarative' (p. 46) is encoded in the condition."
+    "review_notes": "Cambridge's five dimensions are in the numbered list on pp. 46-47. 'All canonical clauses are declarative' (p. 46) is encoded in the condition.",
+    "diagnostic": null
   },
   {
     "id": "CLS-006",
@@ -391,7 +396,8 @@
     "related_rules": [
       "CLS-005"
     ],
-    "review_notes": "This overview only describes the pattern. Do not turn it into an error-detection rule from this source; extract the actual constraint from Chs. 3/9/10."
+    "review_notes": "This overview only describes the pattern. Do not turn it into an error-detection rule from this source; extract the actual constraint from Chs. 3/9/10.",
+    "diagnostic": null
   },
   {
     "id": "CLS-007",
@@ -449,7 +455,8 @@
       "CLS-005",
       "CLS-004"
     ],
-    "review_notes": "Cambridge notes subordinate clauses can differ from main clauses far more than by a subordinator alone (p. 47)."
+    "review_notes": "Cambridge notes subordinate clauses can differ from main clauses far more than by a subordinator alone (p. 47).",
+    "diagnostic": null
   },
   {
     "id": "CLS-008",
@@ -526,7 +533,8 @@
       "CLS-009",
       "CLS-097"
     ],
-    "review_notes": "Chapter 16 §1: Qualified general combinability by the structural compatibility requirements for packaging subtypes: passive plus extraposition can combine, existential plus subject extraposition cannot under these definitions. Owner-approved; no independent second-pass review."
+    "review_notes": "Chapter 16 §1: Qualified general combinability by the structural compatibility requirements for packaging subtypes: passive plus extraposition can combine, existential plus subject extraposition cannot under these definitions. Owner-approved; no independent second-pass review.",
+    "diagnostic": null
   },
   {
     "id": "CLS-009",
@@ -624,7 +632,8 @@
       "CLS-010",
       "CLS-047"
     ],
-    "review_notes": "The book shows ill-formed counterparts for illustration, but the constraints on negative-polarity 'any' and 'yet' belong to Ch. 9. Mark these 'contrast', not a testable rule, until Ch. 9 is processed. Cambridge's own example on p. 47 ('It had been for you') is grammatical under a different, referential interpretation. Chapter 16 §1: Added §1 examples where a canonical alternative is syntactically or pragmatically unacceptable and clarified that process terms describe structural differences rather than literal transformations. Owner-approved; no independent second-pass review."
+    "review_notes": "The book shows ill-formed counterparts for illustration, but the constraints on negative-polarity 'any' and 'yet' belong to Ch. 9. Mark these 'contrast', not a testable rule, until Ch. 9 is processed. Cambridge's own example on p. 47 ('It had been for you') is grammatical under a different, referential interpretation. Chapter 16 §1: Added §1 examples where a canonical alternative is syntactically or pragmatically unacceptable and clarified that process terms describe structural differences rather than literal transformations. Owner-approved; no independent second-pass review.",
+    "diagnostic": null
   },
   {
     "id": "CLS-010",
@@ -674,7 +683,8 @@
       "CLS-009",
       "CLS-013"
     ],
-    "review_notes": "Includes footnote 2 on p. 48."
+    "review_notes": "Includes footnote 2 on p. 48.",
+    "diagnostic": null
   },
   {
     "id": "CLS-011",
@@ -750,7 +760,8 @@
       "CLS-066",
       "CLS-069"
     ],
-    "review_notes": "The tree diagrams are on pp. 48-50; trees were not examined as images for this pass. Ch. 11 §1 p. 949 identifies prenuclear interrogative phrase plus uninverted subject–predicator order as one marker of subordinate interrogative form; the corresponding main interrogative typically has inversion."
+    "review_notes": "The tree diagrams are on pp. 48-50; trees were not examined as images for this pass. Ch. 11 §1 p. 949 identifies prenuclear interrogative phrase plus uninverted subject–predicator order as one marker of subordinate interrogative form; the corresponding main interrogative typically has inversion.",
+    "diagnostic": null
   },
   {
     "id": "CLS-012",
@@ -819,7 +830,8 @@
     "related_rules": [
       "CLS-011"
     ],
-    "review_notes": "Cambridge states this only for a direct object in this section. Confirm in Ch. 12 whether the generalisation extends beyond direct objects and whether any listed exceptions (e.g. resumptive-like constructions) exist."
+    "review_notes": "Cambridge states this only for a direct object in this section. Confirm in Ch. 12 whether the generalisation extends beyond direct objects and whether any listed exceptions (e.g. resumptive-like constructions) exist.",
+    "diagnostic": null
   },
   {
     "id": "CLS-013",
@@ -889,7 +901,8 @@
       "CLS-011",
       "CLS-096"
     ],
-    "review_notes": "Diagram [8] on p. 50 was read from text only. Chapter 16 §1: Explicitly distinguished auxiliary–subject inversion from subject–dependent inversion as used in the Chapter 16 information-packaging overview. Owner-approved; no independent second-pass review."
+    "review_notes": "Diagram [8] on p. 50 was read from text only. Chapter 16 §1: Explicitly distinguished auxiliary–subject inversion from subject–dependent inversion as used in the Chapter 16 information-packaging overview. Owner-approved; no independent second-pass review.",
+    "diagnostic": null
   },
   {
     "id": "CLS-014",
@@ -983,7 +996,8 @@
       "subjunctive mood",
       "imperative mood"
     ],
-    "review_notes": "Ch. 14 §1.1 pp. 1173–1174 distinguishes finite imperatives/mandative subjunctives from non-finite infinitivals via to, do-negation, subject case and (when present) for."
+    "review_notes": "Ch. 14 §1.1 pp. 1173–1174 distinguishes finite imperatives/mandative subjunctives from non-finite infinitivals via to, do-negation, subject case and (when present) for.",
+    "diagnostic": null
   },
   {
     "id": "CLS-015",
@@ -1082,7 +1096,8 @@
       "CLS-078",
       "CLS-082"
     ],
-    "review_notes": "Ch. 11 §1 p. 950 confirms that finite subordinate clauses include subjunctives despite use of the plain form, as well as clauses with present, preterite or irrealis forms. Non-finite clauses include infinitival, gerund-participial and past-participial constructions. Ch. 14 §1.1 p. 1173 expressly treats gerund-participles and past participles as non-finite and present/preterite/irrealis forms as finite, with the plain form occurring in both systems."
+    "review_notes": "Ch. 11 §1 p. 950 confirms that finite subordinate clauses include subjunctives despite use of the plain form, as well as clauses with present, preterite or irrealis forms. Non-finite clauses include infinitival, gerund-participial and past-participial constructions. Ch. 14 §1.1 p. 1173 expressly treats gerund-participles and past participles as non-finite and present/preterite/irrealis forms as finite, with the plain form occurring in both systems.",
+    "diagnostic": null
   },
   {
     "id": "CLS-016",
@@ -1138,7 +1153,8 @@
     "traditional_terms": [
       "auxiliary as dependent / verb-group"
     ],
-    "review_notes": "Possible cross-framework conflict; check against Burton-Roberts before engine use."
+    "review_notes": "Possible cross-framework conflict; check against Burton-Roberts before engine use.",
+    "diagnostic": null
   },
   {
     "id": "CLS-017",
@@ -1213,7 +1229,8 @@
       "CLS-058",
       "CLS-059"
     ],
-    "review_notes": "Chapter 8 §1 p. 665 confirms adjuncts are VP/clause modifiers and related supplements."
+    "review_notes": "Chapter 8 §1 p. 665 confirms adjuncts are VP/clause modifiers and related supplements.",
+    "diagnostic": null
   },
   {
     "id": "CLS-018",
@@ -1313,7 +1330,8 @@
       "CLS-056",
       "CLS-058"
     ],
-    "review_notes": "Only the category names appear in the overview; definitions are in Ch. 8. Chapter 8 §1 pp. 665–666 supplies the more complete semantic inventory and describes limited overlap."
+    "review_notes": "Only the category names appear in the overview; definitions are in Ch. 8. Chapter 8 §1 pp. 665–666 supplies the more complete semantic inventory and describes limited overlap.",
+    "diagnostic": null
   },
   {
     "id": "CLS-019",
@@ -1420,7 +1438,8 @@
       "CLS-021",
       "CLS-060"
     ],
-    "review_notes": "One of three diagnostic tests; the book describes it as a syntactic distribution difference between negative and positive clauses. 'Never' is treated here as clausal negation by assumption; check Ch. 9 before relying on it. Chapter 9 §1.1 p. 786 identifies not even as a prosodically detached supplement and confirms the diagnostic for negative clausal polarity; the condition is restricted to the supplementary negative continuation."
+    "review_notes": "One of three diagnostic tests; the book describes it as a syntactic distribution difference between negative and positive clauses. 'Never' is treated here as clausal negation by assumption; check Ch. 9 before relying on it. Chapter 9 §1.1 p. 786 identifies not even as a prosodically detached supplement and confirms the diagnostic for negative clausal polarity; the condition is restricted to the supplementary negative continuation.",
+    "diagnostic": null
   },
   {
     "id": "CLS-020",
@@ -1532,7 +1551,8 @@
       "CLS-021",
       "CLS-060"
     ],
-    "review_notes": "Described as differences in distribution, not as bans on all other combinations. Chapter 9 §1.1 pp. 786–787 explicitly distinguishes the neutral reversed-polarity confirmation tag from same-polarity tags with different intonation and pragmatic effects; it also covers connective either/too in post-clause position. The 'some speakers' limitation on negative-negative tags is preserved."
+    "review_notes": "Described as differences in distribution, not as bans on all other combinations. Chapter 9 §1.1 pp. 786–787 explicitly distinguishes the neutral reversed-polarity confirmation tag from same-polarity tags with different intonation and pragmatic effects; it also covers connective either/too in post-clause position. The 'some speakers' limitation on negative-negative tags is preserved.",
+    "diagnostic": null
   },
   {
     "id": "CLS-021",
@@ -1625,7 +1645,8 @@
       "CLS-020",
       "CLS-060"
     ],
-    "review_notes": "Chapter 9 §1.1 pp. 786–787 presents four diagnostics; inversion must be combined with the other tests because it is not exclusive to negative clauses. This refinement does not pre-empt §1.2's detailed treatment of subclausal negation."
+    "review_notes": "Chapter 9 §1.1 pp. 786–787 presents four diagnostics; inversion must be combined with the other tests because it is not exclusive to negative clauses. This refinement does not pre-empt §1.2's detailed treatment of subclausal negation.",
+    "diagnostic": null
   },
   {
     "id": "CLS-022",
@@ -1779,7 +1800,8 @@
       "CLS-021",
       "CLS-077"
     ],
-    "review_notes": "Sense-dependent. 'Anyone can do it' (a different sense of any) is outside this record; the exceptions and the full item list are in Ch. 9. Chapter 13 §1.1 p. 1101 explicitly supplies affirmative comparative licensing contexts; the former wording 'not in a positive assertion' was too absolute. Owner approved explicit reconciliation. The constraints do not exclude free-choice senses of any."
+    "review_notes": "Sense-dependent. 'Anyone can do it' (a different sense of any) is outside this record; the exceptions and the full item list are in Ch. 9. Chapter 13 §1.1 p. 1101 explicitly supplies affirmative comparative licensing contexts; the former wording 'not in a positive assertion' was too absolute. Owner approved explicit reconciliation. The constraints do not exclude free-choice senses of any.",
+    "diagnostic": null
   },
   {
     "id": "CLS-023",
@@ -1876,7 +1898,8 @@
     "related_rules": [
       "CLS-022"
     ],
-    "review_notes": "Only 'somewhat' has a starred example. For other positive items (some, already, still) the book says only that they favour positive contexts."
+    "review_notes": "Only 'somewhat' has a starred example. For other positive items (some, already, still) the book says only that they favour positive contexts.",
+    "diagnostic": null
   },
   {
     "id": "CLS-024",
@@ -1992,7 +2015,8 @@
       "CLS-056",
       "CLS-094"
     ],
-    "review_notes": "Interpretation, not grammaticality. Not for the error-detection engine. Chapter 8 §1 p. 668 describes adjunct-above-negation versus negation-above-adjunct scope and distinguishes implicature from entailment. Chapter 16 §1: Recorded Chapter 16's demonstration that the relative scope of many and negation can differ between information-packaging alternants, potentially changing truth conditions. Owner-approved; no independent second-pass review."
+    "review_notes": "Interpretation, not grammaticality. Not for the error-detection engine. Chapter 8 §1 p. 668 describes adjunct-above-negation versus negation-above-adjunct scope and distinguishes implicature from entailment. Chapter 16 §1: Recorded Chapter 16's demonstration that the relative scope of many and negation can differ between information-packaging alternants, potentially changing truth conditions. Owner-approved; no independent second-pass review.",
+    "diagnostic": null
   },
   {
     "id": "CLS-025",
@@ -2101,7 +2125,8 @@
       "CLS-063",
       "CLS-064"
     ],
-    "review_notes": "Ch. 10 §1 pp. 853–855 defines five mutually exclusive grammatical clause types, with characteristic—but not one-to-one—relations to use; classify clauses rather than sentences. Exclamatory meaning does not by itself make an utterance an exclamative."
+    "review_notes": "Ch. 10 §1 pp. 853–855 defines five mutually exclusive grammatical clause types, with characteristic—but not one-to-one—relations to use; classify clauses rather than sentences. Exclamatory meaning does not by itself make an utterance an exclamative.",
+    "diagnostic": null
   },
   {
     "id": "CLS-026",
@@ -2158,7 +2183,8 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-025"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "CLS-027",
@@ -2246,7 +2272,8 @@
       "CLS-028",
       "CLS-063"
     ],
-    "review_notes": "Ch. 10 §1 pp. 853–854 correlates declaratives with statements, closed/open interrogatives with closed/open questions, exclamatives with exclamatory statements, and imperatives with directives; each is a characteristic, not obligatory, use. Directive includes requests, commands, and instructions."
+    "review_notes": "Ch. 10 §1 pp. 853–854 correlates declaratives with statements, closed/open interrogatives with closed/open questions, exclamatives with exclamatory statements, and imperatives with directives; each is a characteristic, not obligatory, use. Directive includes requests, commands, and instructions.",
+    "diagnostic": null
   },
   {
     "id": "CLS-028",
@@ -2321,7 +2348,8 @@
       "CLS-027",
       "CLS-025"
     ],
-    "review_notes": "Ch. 10 §1 p. 854 exemplifies conventional indirect directives expressed with declaratives and closed interrogatives; no one-to-one correspondence between form and force."
+    "review_notes": "Ch. 10 §1 p. 854 exemplifies conventional indirect directives expressed with declaratives and closed interrogatives; no one-to-one correspondence between form and force.",
+    "diagnostic": null
   },
   {
     "id": "CLS-029",
@@ -2415,7 +2443,8 @@
       "CLS-066",
       "CLS-067"
     ],
-    "review_notes": "Ch. 11 §1 p. 950 confirms relative, comparative and content as the principal finite subordinate types; content is the default, lacking the special gap properties of relative and comparative clauses. This does not convert the descriptive default into a grammatical prohibition."
+    "review_notes": "Ch. 11 §1 p. 950 confirms relative, comparative and content as the principal finite subordinate types; content is the default, lacking the special gap properties of relative and comparative clauses. This does not convert the descriptive default into a grammatical prohibition.",
+    "diagnostic": null
   },
   {
     "id": "CLS-030",
@@ -2479,7 +2508,8 @@
       "adjective clause",
       "adverb clause"
     ],
-    "review_notes": "Possible cross-framework conflict, see conflicts list."
+    "review_notes": "Possible cross-framework conflict, see conflicts list.",
+    "diagnostic": null
   },
   {
     "id": "CLS-031",
@@ -2566,7 +2596,8 @@
       "CLS-061",
       "CLS-064"
     ],
-    "review_notes": "Ch. 10 §1 p. 854 confirms subordinate declarative, closed-interrogative, open-interrogative and exclamative clauses; imperatives are normally main clauses, with marginal apparent embeddings retaining main-clause-like structure (footnote). Chapter 11 is identified for subordinate clause types, and Ch. 10 §9.8 for the rejection of subordinate imperatives."
+    "review_notes": "Ch. 10 §1 p. 854 confirms subordinate declarative, closed-interrogative, open-interrogative and exclamative clauses; imperatives are normally main clauses, with marginal apparent embeddings retaining main-clause-like structure (footnote). Chapter 11 is identified for subordinate clause types, and Ch. 10 §9.8 for the rejection of subordinate imperatives.",
+    "diagnostic": null
   },
   {
     "id": "CLS-032",
@@ -2625,7 +2656,8 @@
       "CLS-014",
       "CLS-031"
     ],
-    "review_notes": "The book lists three alternants as options; none is marked as an error."
+    "review_notes": "The book lists three alternants as options; none is marked as an error.",
+    "diagnostic": null
   },
   {
     "id": "CLS-033",
@@ -2683,7 +2715,8 @@
     "related_rules": [
       "CLS-017",
       "CLS-029"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "CLS-034",
@@ -2735,7 +2768,8 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-029"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "CLS-035",
@@ -2809,7 +2843,8 @@
     "traditional_terms": [
       "relative pronoun (that)"
     ],
-    "review_notes": "Flag for Burton-Roberts comparison. Chapter 12 §1 p. 1033 reserves the term relative clause for clausal relative constructions; detailed formal subtypes are outside this section."
+    "review_notes": "Flag for Burton-Roberts comparison. Chapter 12 §1 p. 1033 reserves the term relative clause for clausal relative constructions; detailed formal subtypes are outside this section.",
+    "diagnostic": null
   },
   {
     "id": "CLS-036",
@@ -2884,7 +2919,8 @@
       "restrictive",
       "non-restrictive"
     ],
-    "review_notes": "Ch. 11 §1 p. 950 explicitly describes supplementary wh-relatives as subordinate in form, though supplements are not integrated syntactic dependents."
+    "review_notes": "Ch. 11 §1 p. 950 explicitly describes supplementary wh-relatives as subordinate in form, though supplements are not integrated syntactic dependents.",
+    "diagnostic": null
   },
   {
     "id": "CLS-037",
@@ -2955,7 +2991,8 @@
       "PHR-009",
       "CLS-070"
     ],
-    "review_notes": " Chapter 12 §1 p. 1033 clarifies that the illustrated what-fused relative is an NP, corresponding to the entire antecedent-plus-relative NP rather than just its subordinate clause. The earlier unqualified NP wording is narrowed to NP-type fused constructions; later relative types are outside the §1 pass. User approved the refinement."
+    "review_notes": " Chapter 12 §1 p. 1033 clarifies that the illustrated what-fused relative is an NP, corresponding to the entire antecedent-plus-relative NP rather than just its subordinate clause. The earlier unqualified NP wording is narrowed to NP-type fused constructions; later relative types are outside the §1 pass. User approved the refinement.",
+    "diagnostic": null
   },
   {
     "id": "CLS-038",
@@ -3015,7 +3052,8 @@
     "related_rules": [
       "CLS-011",
       "PHR-015"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "CLS-039",
@@ -3105,7 +3143,8 @@
     "related_rules": [
       "CLS-040"
     ],
-    "review_notes": "Stated for two examples; full conditions in Ch. 13. Do not extend to all comparatives without checking."
+    "review_notes": "Stated for two examples; full conditions in Ch. 13. Do not extend to all comparatives without checking.",
+    "diagnostic": null
   },
   {
     "id": "CLS-040",
@@ -3202,7 +3241,8 @@
       "CLS-072",
       "CLS-075"
     ],
-    "review_notes": "Chapter 13 §1.1 pp. 1099–1101 distinguishes scalar lower-bound equality from non-scalar identity. This refines the earlier broad use of 'at least equal' without changing the earlier comparative-clause classification."
+    "review_notes": "Chapter 13 §1.1 pp. 1099–1101 distinguishes scalar lower-bound equality from non-scalar identity. This refines the earlier broad use of 'at least equal' without changing the earlier comparative-clause classification.",
+    "diagnostic": null
   },
   {
     "id": "CLS-041",
@@ -3292,7 +3332,8 @@
       "CLS-083",
       "CLS-084"
     ],
-    "review_notes": "Ch. 14 §1.1 pp. 1173–1174 explicitly defines three non-finite verbal form-types and the to-/bare distinction. Verbless constructions must not be treated as a fourth verb-inflectional form."
+    "review_notes": "Ch. 14 §1.1 pp. 1173–1174 explicitly defines three non-finite verbal form-types and the to-/bare distinction. Verbless constructions must not be treated as a fourth verb-inflectional form.",
+    "diagnostic": null
   },
   {
     "id": "CLS-042",
@@ -3375,7 +3416,8 @@
       "CLS-083",
       "CLS-084"
     ],
-    "review_notes": "Ch. 14 §1.1 p. 1175 expressly distinguishes optional subjects from hollow clauses and states that missing non-subjects are normally recoverable from the matrix, unlike all missing subjects."
+    "review_notes": "Ch. 14 §1.1 p. 1175 expressly distinguishes optional subjects from hollow clauses and states that missing non-subjects are normally recoverable from the matrix, unlike all missing subjects.",
+    "diagnostic": null
   },
   {
     "id": "CLS-043",
@@ -3443,7 +3485,8 @@
     "related_rules": [
       "CLS-016",
       "CLS-044"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "CLS-044",
@@ -3507,7 +3550,8 @@
     "status": "APPROVED",
     "related_rules": [
       "CLS-043"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "CLS-045",
@@ -3611,7 +3655,8 @@
       "CLS-091",
       "CLS-092"
     ],
-    "review_notes": "'In general' likeness of function; exceptions in Ch. 15. Chapter 15 §1.1 describes coordinates of equal status, usually but not necessarily linked by a coordinator; replacement of the whole by one coordinate and coordinate order reversal are diagnostics that normally, not invariably, work. The p. 1275 footnote gives joint coordination as a counterexample to independent replacement; its detailed analysis is deferred to §1.3.2."
+    "review_notes": "'In general' likeness of function; exceptions in Ch. 15. Chapter 15 §1.1 describes coordinates of equal status, usually but not necessarily linked by a coordinator; replacement of the whole by one coordinate and coordinate order reversal are diagnostics that normally, not invariably, work. The p. 1275 footnote gives joint coordination as a counterexample to independent replacement; its detailed analysis is deferred to §1.3.2.",
+    "diagnostic": null
   },
   {
     "id": "CLS-046",
@@ -3687,7 +3732,8 @@
       "CLS-053",
       "CLS-054"
     ],
-    "review_notes": "Chapter 8 §1 pp. 666–667 shows evaluative supplements are detached, non-restrictive, and resistant to focus."
+    "review_notes": "Chapter 8 §1 pp. 666–667 shows evaluative supplements are detached, non-restrictive, and resistant to focus.",
+    "diagnostic": null
   },
   {
     "id": "CLS-047",
@@ -3794,7 +3840,8 @@
       "CLS-097",
       "CLS-098"
     ],
-    "review_notes": "Chapter 16 §1: Qualified the typical rather than exceptionless preservation of truth conditions, added dislocation types, and retained absence of a well-formed basic counterpart in certain constructions. Owner-approved; no independent second-pass review."
+    "review_notes": "Chapter 16 §1: Qualified the typical rather than exceptionless preservation of truth conditions, added dislocation types, and retained absence of a well-formed basic counterpart in certain constructions. Owner-approved; no independent second-pass review.",
+    "diagnostic": null
   },
   {
     "id": "CLS-048",
@@ -3884,7 +3931,8 @@
       "CLS-097",
       "CLS-098"
     ],
-    "review_notes": "Chapter 16 §1: Expanded the two-way taxonomy to include dislocation, distinguishing reordering from realignment and avoiding a claim of overt added material in every case. Owner-approved; no independent second-pass review."
+    "review_notes": "Chapter 16 §1: Expanded the two-way taxonomy to include dislocation, distinguishing reordering from realignment and avoiding a claim of overt added material in every case. Owner-approved; no independent second-pass review.",
+    "diagnostic": null
   },
   {
     "id": "CLS-049",
@@ -3947,7 +3995,8 @@
     "related_rules": [
       "CLS-047",
       "CLS-037"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "CLS-050",
@@ -4005,7 +4054,8 @@
     "related_rules": [
       "CLS-047",
       "CLS-005"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "CLS-051",
@@ -4066,7 +4116,8 @@
     "related_rules": [
       "CLS-047"
     ],
-    "review_notes": "Pragmatic tendency, not a grammatical rule. Do not use for error detection."
+    "review_notes": "Pragmatic tendency, not a grammatical rule. Do not use for error detection.",
+    "diagnostic": null
   },
   {
     "id": "CLS-052",
@@ -4142,7 +4193,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "These are a limited overlap of semantic categories, not an assertion that every conditional has all readings. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    "review_notes": "These are a limited overlap of semantic categories, not an assertion that every conditional has all readings. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed.",
+    "diagnostic": null
   },
   {
     "id": "CLS-053",
@@ -4236,7 +4288,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The source distinguishes informational from scopal focus; this is not an absolute prohibition for all adjuncts. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    "review_notes": "The source distinguishes informational from scopal focus; this is not an absolute prohibition for all adjuncts. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed.",
+    "diagnostic": null
   },
   {
     "id": "CLS-054",
@@ -4307,7 +4360,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "Lack of focus does not entail non-restrictiveness. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    "review_notes": "Lack of focus does not entail non-restrictiveness. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed.",
+    "diagnostic": null
   },
   {
     "id": "CLS-055",
@@ -4378,7 +4432,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "Most, not all, adjunct categories are question-compatible. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    "review_notes": "Most, not all, adjunct categories are question-compatible. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed.",
+    "diagnostic": null
   },
   {
     "id": "CLS-056",
@@ -4442,7 +4497,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "Do not universalise the observed scope ordering; semantic scope is not reducible to linear position. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    "review_notes": "Do not universalise the observed scope ordering; semantic scope is not reducible to linear position. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed.",
+    "diagnostic": null
   },
   {
     "id": "CLS-057",
@@ -4514,7 +4570,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "A semantic generalization, not an exceptionless error rule for every possible for-duration reading. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    "review_notes": "A semantic generalization, not an exceptionless error rule for every possible for-duration reading. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed.",
+    "diagnostic": null
   },
   {
     "id": "CLS-058",
@@ -4623,7 +4680,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "With non-finite and verbless clauses the precise semantic relation is often pragmatically inferred. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed. Ch. 14 §1.1 p. 1176 contrasts non-finite complements with modifiers and supplements, including purpose infinitivals and postnominal modifiers."
+    "review_notes": "With non-finite and verbless clauses the precise semantic relation is often pragmatically inferred. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed. Ch. 14 §1.1 p. 1176 contrasts non-finite complements with modifiers and supplements, including purpose infinitivals and postnominal modifiers.",
+    "diagnostic": null
   },
   {
     "id": "CLS-059",
@@ -4701,7 +4759,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The source explicitly defers detailed central placement to §20. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed."
+    "review_notes": "The source explicitly defers detailed central placement to §20. Owner expressly approved the extraction on 2026-11-05. Independent second-pass AI review was not performed.",
+    "diagnostic": null
   },
   {
     "id": "CLS-060",
@@ -4785,7 +4844,8 @@
     "confidence": "high",
     "review_notes": "The diagnostic is one-way: inversion also appears with connective so and prenuclear only, so inversion alone does not prove negative clause polarity. Nonnegative prenuclear adjuncts can co-occur with verbal negation without inversion. Human approval was explicitly requested on 2026-11-05; no independent second-pass AI review was performed.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-061",
@@ -4851,7 +4911,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "Approved under the user's explicit Chapter 10 instruction on 2026-11-05. Independent second-pass AI review has not been performed. This classification is not a grammaticality-error prohibition."
+    "review_notes": "Approved under the user's explicit Chapter 10 instruction on 2026-11-05. Independent second-pass AI review has not been performed. This classification is not a grammaticality-error prohibition.",
+    "diagnostic": null
   },
   {
     "id": "CLS-062",
@@ -4921,7 +4982,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "Approved under the user's explicit Chapter 10 instruction on 2026-11-05. Independent second-pass AI review has not been performed. This classification is not a grammaticality-error prohibition."
+    "review_notes": "Approved under the user's explicit Chapter 10 instruction on 2026-11-05. Independent second-pass AI review has not been performed. This classification is not a grammaticality-error prohibition.",
+    "diagnostic": null
   },
   {
     "id": "CLS-063",
@@ -4991,7 +5053,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The source expressly rejects treating echo questions as a sixth member of the clause-type system; echo is orthogonal to clause type. Approved by user; no independent second-pass review."
+    "review_notes": "The source expressly rejects treating echo questions as a sixth member of the clause-type system; echo is orthogonal to clause type. Approved by user; no independent second-pass review.",
+    "diagnostic": null
   },
   {
     "id": "CLS-064",
@@ -5061,7 +5124,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The source includes these under clause fragments, not as evidence that all verbless phrases are clauses. Approved by user; no independent second-pass review."
+    "review_notes": "The source includes these under clause fragments, not as evidence that all verbless phrases are clauses. Approved by user; no independent second-pass review.",
+    "diagnostic": null
   },
   {
     "id": "CLS-065",
@@ -5134,7 +5198,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The source says 'characteristically', not invariably: standalone subordinate-form clauses and supplementary relatives are counterexamples to an absolute dependent-only definition (CLS-068). Owner-approved; no independent second pass."
+    "review_notes": "The source says 'characteristically', not invariably: standalone subordinate-form clauses and supplementary relatives are counterexamples to an absolute dependent-only definition (CLS-068). Owner-approved; no independent second pass.",
+    "diagnostic": null
   },
   {
     "id": "CLS-066",
@@ -5206,7 +5271,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "These are examples of internal marking, not exhaustive necessary conditions: unmarked dependent content clauses are also possible (CLS-067). Source p. 949."
+    "review_notes": "These are examples of internal marking, not exhaustive necessary conditions: unmarked dependent content clauses are also possible (CLS-067). Source p. 949.",
+    "diagnostic": null
   },
   {
     "id": "CLS-067",
@@ -5277,7 +5343,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The existence of bare content clauses does not mean every subordinate declarative can omit that. Specific obligatory and excluded environments are deferred by the source to Ch. 11 §3.1."
+    "review_notes": "The existence of bare content clauses does not mean every subordinate declarative can omit that. Specific obligatory and excluded environments are deferred by the source to Ch. 11 §3.1.",
+    "diagnostic": null
   },
   {
     "id": "CLS-068",
@@ -5349,7 +5416,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "This is a limited, explicitly documented classification. The source also notes the reverse mismatch: a dependent may display main-clause form (CLS-069). The independent exclamatory that-clause is expressly described as rare."
+    "review_notes": "This is a limited, explicitly documented classification. The source also notes the reverse mismatch: a dependent may display main-clause form (CLS-069). The independent exclamatory that-clause is expressly described as rare.",
+    "diagnostic": null
   },
   {
     "id": "CLS-069",
@@ -5415,7 +5483,8 @@
     "confidence": "medium",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The source gives this example and points to §5.3.1 for its detailed distribution. Record only the illustrated predicative-complement pattern; detailed licensing and variety restrictions remain unverified until that later section is processed. User-approved; independent second-pass AI review not performed."
+    "review_notes": "The source gives this example and points to §5.3.1 for its detailed distribution. Record only the illustrated predicative-complement pattern; detailed licensing and variety restrictions remain unverified until that later section is processed. User-approved; independent second-pass AI review not performed.",
+    "diagnostic": null
   },
   {
     "id": "CLS-070",
@@ -5488,7 +5557,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "This source section is terminological. It illustrates relative clauses and a fused relative NP; it does not establish an exhaustive taxonomy of all possible fused-relative categories. User explicitly approved requested Chapter 12 work on 2026-11-05; an independent second-pass AI review was not performed."
+    "review_notes": "This source section is terminological. It illustrates relative clauses and a fused relative NP; it does not establish an exhaustive taxonomy of all possible fused-relative categories. User explicitly approved requested Chapter 12 work on 2026-11-05; an independent second-pass AI review was not performed.",
+    "diagnostic": null
   },
   {
     "id": "CLS-071",
@@ -5560,7 +5630,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The scalar/non-scalar distinction concerns comparison of degree versus identity/likeness. Scalar comparative inflection is central, but the source does not treat all comparative forms as an inflectional suffix. Owner approved; independent second-pass review outstanding."
+    "review_notes": "The scalar/non-scalar distinction concerns comparison of degree versus identity/likeness. Scalar comparative inflection is central, but the source does not treat all comparative forms as an inflectional suffix. Owner approved; independent second-pass review outstanding.",
+    "diagnostic": null
   },
   {
     "id": "CLS-072",
@@ -5649,7 +5720,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The source treats equality/inequality as grammatical labels across the two dimensions. Non-scalar same does not imply numerical equality. Different than is explicitly variety-sensitive; owner-approved, no independent second pass."
+    "review_notes": "The source treats equality/inequality as grammatical labels across the two dimensions. Non-scalar same does not imply numerical equality. Different than is explicitly variety-sensitive; owner-approved, no independent second pass.",
+    "diagnostic": null
   },
   {
     "id": "CLS-073",
@@ -5719,7 +5791,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "Human approval is explicitly given by the user's Chapter 13 request; no independent second-pass AI review was performed. This record must not be used as an automatic grammar-error prohibition."
+    "review_notes": "Human approval is explicitly given by the user's Chapter 13 request; no independent second-pass AI review was performed. This record must not be used as an automatic grammar-error prohibition.",
+    "diagnostic": null
   },
   {
     "id": "CLS-074",
@@ -5789,7 +5862,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The reference point is the lexical scale, not a universal physical-more-than ordering. In particular younger is still superiority although the age is lower; source p. 1100."
+    "review_notes": "The reference point is the lexical scale, not a universal physical-more-than ordering. In particular younger is still superiority although the age is lower; source p. 1100.",
+    "diagnostic": null
   },
   {
     "id": "CLS-075",
@@ -5874,7 +5948,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The source says normally and notes contextual variation; equative is the traditional term but Cambridge also treats the construction as comparative. Do not infer that as ... as always means exact equality."
+    "review_notes": "The source says normally and notes contextual variation; equative is the traditional term but Cambridge also treats the construction as comparative. Do not infer that as ... as always means exact equality.",
+    "diagnostic": null
   },
   {
     "id": "CLS-076",
@@ -5949,7 +6024,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "Footnote 4 on p. 1101 explicitly points to Chapter 9 §1.2 for metalinguistic negation. The main-text entailment is explicitly restricted to ordinary negation."
+    "review_notes": "Footnote 4 on p. 1101 explicitly points to Chapter 9 §1.2 for metalinguistic negation. The main-text entailment is explicitly restricted to ordinary negation.",
+    "diagnostic": null
   },
   {
     "id": "CLS-077",
@@ -6031,7 +6107,8 @@
     "confidence": "high",
     "protocol_version": "1.0",
     "status": "APPROVED",
-    "review_notes": "The source explicitly contrasts three licensing categories with a starred non-scalar equality example. Avoid a global ban on any with same; retain CLS-022's separate sense-dependent/free-choice exception."
+    "review_notes": "The source explicitly contrasts three licensing categories with a starred non-scalar equality example. Avoid a global ban on any with same; retain CLS-022's separate sense-dependent/free-choice exception.",
+    "diagnostic": null
   },
   {
     "id": "CLS-078",
@@ -6111,7 +6188,8 @@
     "confidence": "high",
     "review_notes": "The source expressly contrasts negative finite imperatives with non-finite infinitivals (p. 1173), and excludes supportive do from all non-finites (p. 1174). The condition is restricted to supportive—not lexical—do. Owner explicitly authorised approval in the Chapter 14 request on 2026-11-05. This is not an independent second-pass AI review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-079",
@@ -6183,7 +6261,8 @@
     "confidence": "high",
     "review_notes": " Owner explicitly authorised approval in the Chapter 14 request on 2026-11-05. This is not an independent second-pass AI review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-080",
@@ -6283,7 +6362,8 @@
     "confidence": "high",
     "review_notes": "The source distinguishes a categorical established-system restriction from rare attested casual-speech use. Avoid treating casual attestations as evidence of general productive licensing. Owner explicitly authorised approval in the Chapter 14 request on 2026-11-05. This is not an independent second-pass AI review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-081",
@@ -6355,7 +6435,8 @@
     "confidence": "high",
     "review_notes": "The bracketed span identifies the subordinate clause; external matrix auxiliaries are not counted as auxiliaries internal to a passive past-participial clause. Owner explicitly authorised approval in the Chapter 14 request on 2026-11-05. This is not an independent second-pass AI review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-082",
@@ -6427,7 +6508,8 @@
     "confidence": "high",
     "review_notes": "The source says non-finite subjects are not required; it does not say an omitted subject must always have a recoverable referent. Attributive VPs before nouns are a stated structural exception (CLS-083). Owner explicitly authorised approval in the Chapter 14 request on 2026-11-05. This is not an independent second-pass AI review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-083",
@@ -6499,7 +6581,8 @@
     "confidence": "high",
     "review_notes": "The source identifies pre-head attributive VPs inside NPs as the main exception to the normal VP-headed non-finite clause analysis and describes their pre-verbal adverb modification as sharply restricted. Owner explicitly authorised approval in the Chapter 14 request on 2026-11-05. This is not an independent second-pass AI review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-084",
@@ -6571,7 +6654,8 @@
     "confidence": "high",
     "review_notes": "The source explicitly defers full treatment to Ch. 11 §5.3.5 and Ch. 12 §5. This section establishes availability and the four cited subtype patterns only. Owner explicitly authorised approval in the Chapter 14 request on 2026-11-05. This is not an independent second-pass AI review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-085",
@@ -6643,7 +6727,8 @@
     "confidence": "high",
     "review_notes": "Source example contrasts PP-complement in in order to ... with a directly modifying purpose infinitival without in order; avoid equating these functions merely by shared purpose interpretation. Owner explicitly authorised approval in the Chapter 14 request on 2026-11-05. This is not an independent second-pass AI review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-086",
@@ -6715,7 +6800,8 @@
     "confidence": "high",
     "review_notes": "The source's range of modifiers and supplements is broader than the examples; these are positive classifications, not prohibitions. Owner explicitly authorised approval in the Chapter 14 request on 2026-11-05. This is not an independent second-pass AI review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-087",
@@ -6785,7 +6871,8 @@
     "confidence": "high",
     "review_notes": "The source contrasts binary with multiple by number of coordinates. Do not confuse the number of coordinators with the number of coordinates. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-088",
@@ -6857,7 +6944,8 @@
     "confidence": "high",
     "review_notes": "The source warns that absence of an overt marker makes asyndetic coordination sometimes hard to distinguish from non-coordinative constructions. The classification presupposes that coordination has been independently established. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-089",
@@ -6929,7 +7017,8 @@
     "confidence": "high",
     "review_notes": "The source differentiates marking of bare coordinates in a multiple coordination, not the unrelated question whether a coordinator occurs inside an individual NP. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-090",
@@ -7006,7 +7095,8 @@
     "confidence": "high",
     "review_notes": "The source marks a mixed multiple-coordination pattern as ill formed at p. 1276. This is a rule about a SINGLE unlayered analysis, not a claim that all utterances with mixed conjunctions are universally impossible; apparent layering is deferred to §1.2. The second pairing additionally varies the number of coordinates, so only the first pair is strictly minimal. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-091",
@@ -7083,7 +7173,8 @@
     "confidence": "high",
     "review_notes": "The source classifies initial both and either as determinatives; do not relabel them as the final coordinator. Detailed distribution is deferred to §2.3. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-092",
@@ -7154,7 +7245,8 @@
     "confidence": "high",
     "review_notes": "The three source arguments are movable second-coordinate placement, permitted discourse-initial and/or/but, and intonation/punctuation placement. Sentence-initial coordinator is not intrinsically a grammatical error. Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-093",
@@ -7224,7 +7316,8 @@
     "confidence": "high",
     "review_notes": "Figure [9] on printed p. 1278 explicitly places the coordinator and optional Adv modifiers in the expanded coordinate. This distinction can apply without an overt coordinator (modified asyndetic series). Owner expressly approved required Chapter 15 changes on 2026-11-05; no independent second-pass AI review took place.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-094",
@@ -7309,7 +7402,8 @@
     "confidence": "high",
     "review_notes": "Printed pp. 1365–1366 explicitly demonstrate that different relative scope of many and negation can change truth conditions for passive, existential and preposed complements. The examples name possible readings, not claims that every use is disambiguated solely by linear order. Owner approved; no independent second pass.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-095",
@@ -7386,7 +7480,8 @@
     "confidence": "high",
     "review_notes": "Chapter 16 §1, printed p. 1366, illustrates both dislocation constructions in the nine-way overview. These examples identify the common NP/pronoun pattern and do not claim that every dislocation has this exact form. The distinction concerns the position of detached material relative to its host.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-096",
@@ -7463,7 +7558,8 @@
     "confidence": "high",
     "review_notes": "This is a syntactic distinction in §1 on printed p. 1366, not an automatic requirement to invert every time a locative is fronted. The source explicitly states that Chapter 16's abbreviated inversion means subject–dependent inversion.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-097",
@@ -7546,7 +7642,8 @@
     "confidence": "high",
     "review_notes": "Chapter 16 §1 p. 1367 gives positive combinations and states that existential versus extraposition is blocked by their respective structural preconditions. Record that local incompatibility without falsely treating all information-packaging types as mutually exclusive. The multi-feature cleft is somewhat marked and offered as an analytical example; owner approval is not an independent review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "CLS-098",
@@ -7625,6 +7722,7 @@
     "confidence": "high",
     "review_notes": "The source on p. 1366 explicitly differentiates construction labels from clause labels. The names reflect descriptive conventions, not tests of sentence grammaticality. The examples are new and are not copied from the source.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   }
 ]

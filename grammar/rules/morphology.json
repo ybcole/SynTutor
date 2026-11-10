@@ -89,7 +89,8 @@
       "CLS-015",
       "MORPH-011"
     ],
-    "review_notes": "Auxiliary verbs also have negative forms (isn't, can't), noted on p. 50. Chapter 18 §1.1: Note that some past participles, illustrated by trodden, arise through an additional suffixation of the preterite, rather than being formed directly from the lexical base. Explicit user approval; no independent second-pass AI review."
+    "review_notes": "Auxiliary verbs also have negative forms (isn't, can't), noted on p. 50. Chapter 18 §1.1: Note that some past participles, illustrated by trodden, arise through an additional suffixation of the preterite, rather than being formed directly from the lexical base. Explicit user approval; no independent second-pass AI review.",
+    "diagnostic": null
   },
   {
     "id": "MORPH-002",
@@ -163,7 +164,8 @@
       "MORPH-001",
       "WCAT-003"
     ],
-    "review_notes": "Descriptive classification only; the conditions under which irrealis 'were' is required or optional are not given here."
+    "review_notes": "Descriptive classification only; the conditions under which irrealis 'were' is required or optional are not given here.",
+    "diagnostic": null
   },
   {
     "id": "MORPH-003",
@@ -225,7 +227,8 @@
     "status": "APPROVED",
     "related_rules": [
       "PHR-010"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "MORPH-004",
@@ -295,7 +298,8 @@
     "confidence": "high",
     "review_notes": "The rule records the inflectional contrast only. The separate syntactic behavior of auxiliary negation is covered by WCAT-001; this record does not restate that rule. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-005",
@@ -398,7 +402,8 @@
     "confidence": "high",
     "review_notes": "The examples test the three secondary-form gaps separately. The source also says that must and one or two other modal auxiliaries lack preterite forms; the unnamed additional item(s) are recorded under uncertain_items rather than guessed. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied. Ch. 14 §1.1 p. 1174 adds direct support that modal auxiliaries cannot occur in non-finite clauses; supportive do is handled separately by CLS-078.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-006",
@@ -468,7 +473,8 @@
     "confidence": "high",
     "review_notes": "The source explicitly identifies the absence of a third-person-singular -s form. This contrasts with the unqualified scope of AGR-002, which currently says that present-tense verbs agree with their subject. See the conflict entry; do not revise the earlier rule silently. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-007",
@@ -575,7 +581,8 @@
     "confidence": "high",
     "review_notes": "This adds the four-form number-by-case paradigm to the existing MORPH-003 case analysis without duplicating its account of noun and pronoun case marking. Explicitly approved by the repository owner on 2026-11-05. Chapter 18 §1.1: Differentiate the lexical base from a paradigm cell; defective plural-only nouns and syncretic number forms are compatible with the noun paradigm, while the genitive plural is formed from the already inflected plural form. Explicit user approval; no independent second-pass AI review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-008",
@@ -660,7 +667,8 @@
     "confidence": "high",
     "review_notes": "Source p. 1568 explicitly distinguishes lexical base from inflectional form using defective dregs and syncretic sheep. It does not claim every lexical base has an attested standalone inflectional form. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-009",
@@ -736,7 +744,8 @@
     "confidence": "high",
     "review_notes": "The source specifically contrasts the simple dog and complex worker lexical bases while leaving their internal derivation to Chapter 19. Generalisation is restricted to inflectional treatment; it does not say all complex bases inflect regularly. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition. Chapter 19 §1.1 p. 1623 illustrates layered productive derivation from a verb to an -able adjective and then a nominal derivative, providing explicit evidence of a morphologically complex lexical base distinct from ordinary inflection. Owner approved; independent second pass outstanding.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-010",
@@ -807,7 +816,8 @@
     "confidence": "high",
     "review_notes": "The source lists three mechanisms on p. 1568 and notes other minor operations will be described in later sections. These cases do not form an exhaustive taxonomy of all English inflection. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-011",
@@ -892,7 +902,8 @@
     "confidence": "high",
     "review_notes": "The source on p. 1569 limits the multi-step pattern to some forms, specifically genitive plurals and a small subset of past participles. The doubling in trodden is orthographic, not a separate general inflection category. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-012",
@@ -962,7 +973,8 @@
     "confidence": "high",
     "review_notes": "Only the existence of -s/-es contextual variation is established in §1.1; the detailed spelling and phonological selection conditions belong to later Chapter 18 sections. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-013",
@@ -1039,7 +1051,8 @@
     "confidence": "high",
     "review_notes": "The source explicitly treats consonant doubling in knitted as regular because it follows a general pattern. It does not give permission to classify all spelling changes as irregular. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-014",
@@ -1122,7 +1135,8 @@
     "confidence": "high",
     "review_notes": "The source's thief/chief and hoof/proof comparisons demonstrate a nonproductive voiced-base plural alternant; do not generalise it to every noun ending in f. Any additional regional alternants require later source verification. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-015",
@@ -1192,7 +1206,8 @@
     "confidence": "high",
     "review_notes": "The source gives sheep as explicit syncretism, distinct from identity with the lexical base. No claim is made that forms must be homophonous and homographic together: pronunciation OR spelling identity suffices. The user explicitly authorised approval of all Chapter 18 changes; independent second-pass AI review was not performed. This is not an automatic grammaticality prohibition.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-016",
@@ -1263,7 +1278,8 @@
     "confidence": "high",
     "review_notes": "Printed p. 1623 defines establishment by speakers' conventional lexical knowledge. Whether an arbitrary newly coined form has already become established cannot be decided solely by its internal shape. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-017",
@@ -1334,7 +1350,8 @@
     "confidence": "high",
     "review_notes": "The section p.1624 defines potential as grammatical-but-not-established. 'Relabelability' and 'restackability' are illustrative hypothetical coinages; no claim of their actual dictionary status is made. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-018",
@@ -1404,7 +1421,8 @@
     "confidence": "high",
     "review_notes": "The subsection p.1624 explicitly covers nonce-words used without lexical establishment and potential forms that may never have been used. The test examples are metalinguistic and conditional, not independent corpus-attestation claims. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-019",
@@ -1476,7 +1494,8 @@
     "confidence": "high",
     "review_notes": "The source p.1623 explicitly distinguishes stylistic criticism of a morphologically admissible word from a failure to meet the language's word-formation constraints. No prescriptive ban is inferred. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-020",
@@ -1558,7 +1577,8 @@
     "confidence": "high",
     "review_notes": "The source p.1623 explicitly analyzes a verb + -able + subsequent nominal suffix, modifying -able in the result. This subsection does not specify a universal licensing inventory for individual verb bases. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-021",
@@ -1644,7 +1664,8 @@
     "confidence": "high",
     "review_notes": "Printed pp. 1623–1624 explicitly call the established bishopric process no longer available for creating new words. The examples of new -ric forms are expressly hypothetical, not corpus-based lexicality claims; the source's footnote allows discussing existing inherited forms separately. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-022",
@@ -1730,7 +1751,8 @@
     "confidence": "high",
     "review_notes": "The source p.1623 continuing to 1624 explicitly limits the unavailable construction to the plain verb + direct-object noun pattern used to denote a person. This is not a general prohibition on all novel noun compounds. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "MORPH-023",
@@ -1802,6 +1824,7 @@
     "confidence": "high",
     "review_notes": "The source pp.1623–1624 distinguishes dictionary inventory from grammatical words in both directions: multiword lexical entries and unlisted potential words. The user explicitly approved necessary Chapter 19 updates; independent second-pass AI review has not occurred. This classification/descriptive record is not for automatic error detection.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   }
 ]

@@ -88,7 +88,8 @@
       "WCAT-002",
       "CLS-006"
     ],
-    "review_notes": "Described for contemporary standard English; the page does not mention archaic or poetic uses ('I know not'). 'Be' counts as an auxiliary even as copula (WCAT-002), so it is not subject to this restriction."
+    "review_notes": "Described for contemporary standard English; the page does not mention archaic or poetic uses ('I know not'). 'Be' counts as an auxiliary even as copula (WCAT-002), so it is not subject to this restriction.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-002",
@@ -159,7 +160,8 @@
     "traditional_terms": [
       "copula / linking verb"
     ],
-    "review_notes": "Cambridge classes copular 'be' as an auxiliary, unlike traditional grammar's linking verb."
+    "review_notes": "Cambridge classes copular 'be' as an auxiliary, unlike traditional grammar's linking verb.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-003",
@@ -219,7 +221,8 @@
       "PHR-002",
       "PHR-004"
     ],
-    "review_notes": "'A few less central ones' are not listed on this page; the list is open until Ch. 3 is processed."
+    "review_notes": "'A few less central ones' are not listed on this page; the list is open until Ch. 3 is processed.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-004",
@@ -279,7 +282,8 @@
     ],
     "traditional_terms": [
       "pronoun as a part of speech"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "WCAT-005",
@@ -359,7 +363,8 @@
       "adjective (subclass)",
       "article / possessive adjective"
     ],
-    "review_notes": "Flag for Burton-Roberts comparison: category inventory differs from traditional grammar."
+    "review_notes": "Flag for Burton-Roberts comparison: category inventory differs from traditional grammar.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-006",
@@ -428,7 +433,8 @@
       "AGR-001",
       "PHR-011"
     ],
-    "review_notes": "The book hedges ('only, or almost only'); this is descriptive and not an error rule. Classification is by noun sense, not by word."
+    "review_notes": "The book hedges ('only, or almost only'); this is descriptive and not an error rule. Classification is by noun sense, not by word.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-007",
@@ -524,7 +530,8 @@
       "WCAT-008",
       "PHR-006"
     ],
-    "review_notes": " Cambridge Ch. 6 §1, pp. 526–527, characterises the adjective in be + AdjP as the semantic centre of the predicate while be carries tense and agreement; paired verb expressions (was awake/awoke; was dead/died) illustrate the relation."
+    "review_notes": " Cambridge Ch. 6 §1, pp. 526–527, characterises the adjective in be + AdjP as the semantic centre of the predicate while be carries tense and agreement; paired verb expressions (was awake/awoke; was dead/died) illustrate the relation.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-008",
@@ -624,7 +631,8 @@
     "related_rules": [
       "WCAT-007"
     ],
-    "review_notes": "Lexical restriction: only the words the book names (sole, asleep) are supported here. The full lists need Ch. 6. Do not generalise to other adjectives."
+    "review_notes": "Lexical restriction: only the words the book names (sole, asleep) are supported here. The full lists need Ch. 6. Do not generalise to other adjectives.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-009",
@@ -724,7 +732,8 @@
       "WCAT-007",
       "WCAT-010"
     ],
-    "review_notes": "Stated generally on p. 57; Cambridge's treatment of words like 'there' or 'well' in this position is not given here, so exclude them from engine checks until Ch. 6 is processed. Cambridge Ch. 6 §1, p. 527, states that adverbs have no predicative function; this corroborates the existing narrower rule that they do not function as predicative complements. The engine rule remains limited to the predicative-complement construction."
+    "review_notes": "Stated generally on p. 57; Cambridge's treatment of words like 'there' or 'well' in this position is not given here, so exclude them from engine checks until Ch. 6 is processed. Cambridge Ch. 6 §1, p. 527, states that adverbs have no predicative function; this corroborates the existing narrower rule that they do not function as predicative complements. The engine rule remains limited to the predicative-complement construction.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-010",
@@ -804,7 +813,8 @@
       "WCAT-009",
       "WCAT-011"
     ],
-    "review_notes": "'Not all adverbs can modify heads of all these categories' (p. 57); the engine must not assume 'almost'-style freedom for every adverb. Cambridge Ch. 6 §1, p. 526, explicitly lists verbs, adjectives, prepositions, determinatives, and other adverbs among the categories modified by adverbs; it illustrates unnecessarily modifying a verb, an adjective, and an adverb. The existing NP-modifier examples remain grounded in earlier source material."
+    "review_notes": "'Not all adverbs can modify heads of all these categories' (p. 57); the engine must not assume 'almost'-style freedom for every adverb. Cambridge Ch. 6 §1, p. 526, explicitly lists verbs, adjectives, prepositions, determinatives, and other adverbs among the categories modified by adverbs; it illustrates unnecessarily modifying a verb, an adjective, and an adverb. The existing NP-modifier examples remain grounded in earlier source material.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-011",
@@ -879,7 +889,8 @@
     "traditional_terms": [
       "adverb (broader)"
     ],
-    "review_notes": "Includes the §6 statement that only a very small number of adverbs license complements (independently of such considerations). Cambridge Ch. 6 §1, p. 527, notes that many adverbs are morphologically derived from adjectives by -ly suffixation."
+    "review_notes": "Includes the §6 statement that only a very small number of adverbs license complements (independently of such considerations). Cambridge Ch. 6 §1, p. 527, notes that many adverbs are morphologically derived from adjectives by -ly suffixation.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-012",
@@ -1003,7 +1014,8 @@
       "adverb",
       "subordinating conjunction"
     ],
-    "review_notes": "Flag for Burton-Roberts comparison: category boundaries differ. Chapter 7 §1 pp. 598–603 establishes the broad, relatively closed category and its spatial/grammaticised functions; p. 600 expressly excludes whether, interrogative if, and clause-introducing that. Owner approved this refinement."
+    "review_notes": "Flag for Burton-Roberts comparison: category boundaries differ. Chapter 7 §1 pp. 598–603 establishes the broad, relatively closed category and its spatial/grammaticised functions; p. 600 expressly excludes whether, interrogative if, and clause-introducing that. Owner approved this refinement.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-013",
@@ -1100,7 +1112,8 @@
       "CLS-073",
       "CLS-074"
     ],
-    "review_notes": "Chapter 13 §1.1 p. 1100 explicitly contrasts inflectional/analytic superiority, analytic less inferiority and as equality; the lexical orientation of the adjective remains independent."
+    "review_notes": "Chapter 13 §1.1 p. 1100 explicitly contrasts inflectional/analytic superiority, analytic less inferiority and as equality; the lexical orientation of the adjective remains independent.",
+    "diagnostic": null
   },
   {
     "id": "WCAT-014",
@@ -1171,7 +1184,8 @@
     "confidence": "high",
     "review_notes": "The source says 'exclusively or almost exclusively'; this is a distributional generalization, not an absolute restriction. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "WCAT-015",
@@ -1257,7 +1271,8 @@
     "confidence": "high",
     "review_notes": "The contrast concerns the grammatical relation object, not the broader ability of nouns to take complements. The examples use PP dependents in the acceptable nominal constructions. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "WCAT-016",
@@ -1335,7 +1350,8 @@
     "confidence": "high",
     "review_notes": "The three explicitly stated exceptions are lexical/use-specific; conditional if is not the interrogative-if exception. The original extraction AI and this approval action are not a separate second-pass review.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "WCAT-017",
@@ -1416,6 +1432,7 @@
     "confidence": "high",
     "review_notes": "The source states virtually restricted to NP complements in grammaticised uses, not an exceptionless ban on other complements. No free-modifier prohibition is converted into an unsourced global error rule.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   }
 ]

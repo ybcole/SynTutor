@@ -65,7 +65,8 @@
     "related_rules": [
       "PHR-002",
       "MORPH-001"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "PHR-002",
@@ -132,7 +133,8 @@
     "traditional_terms": [
       "future tense"
     ],
-    "review_notes": "Analytic claim that departs from traditional grammar. The engine must not flag 'will' as a 'missing tense'; and must not treat it as part of a tense paradigm."
+    "review_notes": "Analytic claim that departs from traditional grammar. The engine must not flag 'will' as a 'missing tense'; and must not treat it as part of a tense paradigm.",
+    "diagnostic": null
   },
   {
     "id": "PHR-003",
@@ -185,7 +187,8 @@
     "related_rules": [
       "PHR-001",
       "PHR-002"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "PHR-004",
@@ -258,7 +261,8 @@
     "related_rules": [
       "WCAT-003"
     ],
-    "review_notes": "The same modal can carry different kinds of meaning in different sentences; the book flags 'central cases'. Do not use this as an error-detection rule."
+    "review_notes": "The same modal can carry different kinds of meaning in different sentences; the book flags 'central cases'. Do not use this as an error-detection rule.",
+    "diagnostic": null
   },
   {
     "id": "PHR-005",
@@ -327,7 +331,8 @@
       "PHR-006",
       "PHR-008",
       "WCAT-005"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "PHR-006",
@@ -395,7 +400,8 @@
     "related_rules": [
       "PHR-005",
       "PHR-007"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "PHR-007",
@@ -494,7 +500,8 @@
     "related_rules": [
       "PHR-006"
     ],
-    "review_notes": "Exceptions unlisted here: check Ch. 5 / Ch. 6 before flagging examples with rare modifier patterns as errors."
+    "review_notes": "Exceptions unlisted here: check Ch. 5 / Ch. 6 before flagging examples with rare modifier patterns as errors.",
+    "diagnostic": null
   },
   {
     "id": "PHR-008",
@@ -556,7 +563,8 @@
     "status": "APPROVED",
     "related_rules": [
       "PHR-005"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "PHR-009",
@@ -621,7 +629,8 @@
     ],
     "traditional_terms": [
       "pronoun (any, several)"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "PHR-010",
@@ -679,7 +688,8 @@
     "related_rules": [
       "MORPH-003",
       "WCAT-005"
-    ]
+    ],
+    "diagnostic": null
   },
   {
     "id": "PHR-011",
@@ -827,7 +837,8 @@
       "AGR-001",
       "PHR-018"
     ],
-    "review_notes": "Hedged by the source ('in general'). Do not flag cases like bare plurals, non-count nouns or proper nouns: those are outside the rule's scope; unlisted exceptions with count nouns need Ch. 5. Refined with the explicit bare-role-NP exception from Cambridge Ch. 5 §1, p. 328; the owner approved this refinement on 2026-11-05. Bare role NPs are permitted as predicative complements but not as bare singular subject/object NPs."
+    "review_notes": "Hedged by the source ('in general'). Do not flag cases like bare plurals, non-count nouns or proper nouns: those are outside the rule's scope; unlisted exceptions with count nouns need Ch. 5. Refined with the explicit bare-role-NP exception from Cambridge Ch. 5 §1, p. 328; the owner approved this refinement on 2026-11-05. Bare role NPs are permitted as predicative complements but not as bare singular subject/object NPs.",
+    "diagnostic": null
   },
   {
     "id": "PHR-012",
@@ -938,7 +949,8 @@
       "PHR-007",
       "WCAT-007"
     ],
-    "review_notes": "Hedges ('hardly permitted', 'minor exceptions') are preserved; do not turn into constraints without Ch. 6. Cambridge Ch. 6 §1, pp. 526–527, confirms the single AdjP level and explains that adjectives in be + adjective constructions provide the main semantic predicate. It also identifies worth and like as rare transitive adjectives; the ordinary pattern relates an NP to an adjective through a preposition."
+    "review_notes": "Hedges ('hardly permitted', 'minor exceptions') are preserved; do not turn into constraints without Ch. 6. Cambridge Ch. 6 §1, pp. 526–527, confirms the single AdjP level and explains that adjectives in be + adjective constructions provide the main semantic predicate. It also identifies worth and like as rare transitive adjectives; the ordinary pattern relates an NP to an adjective through a preposition.",
+    "diagnostic": null
   },
   {
     "id": "PHR-013",
@@ -1008,7 +1020,8 @@
       "PHR-012",
       "WCAT-010"
     ],
-    "review_notes": " Cambridge Ch. 6 §1, p. 527, explicitly states that the possible ways of expanding AdvPs are broadly a subset of those for AdjPs and attributes the reduced possibilities at least partly to adverbs having no predicative function. This is a qualified descriptive generalization, not an exceptionless statement."
+    "review_notes": " Cambridge Ch. 6 §1, p. 527, explicitly states that the possible ways of expanding AdvPs are broadly a subset of those for AdjPs and attributes the reduced possibilities at least partly to adverbs having no predicative function. This is a qualified descriptive generalization, not an exceptionless statement.",
+    "diagnostic": null
   },
   {
     "id": "PHR-014",
@@ -1105,7 +1118,8 @@
       "COMP-019",
       "PHR-019"
     ],
-    "review_notes": " Ch. 7 §1 p. 599 further supports PP, AdvP, clause, and predicative AdjP complements and modifiers within PPs. No NP-only restriction is implied."
+    "review_notes": " Ch. 7 §1 p. 599 further supports PP, AdvP, clause, and predicative AdjP complements and modifiers within PPs. No NP-only restriction is implied.",
+    "diagnostic": null
   },
   {
     "id": "PHR-015",
@@ -1188,7 +1202,8 @@
       "CLS-012",
       "PHR-019"
     ],
-    "review_notes": "Only the 'most central' prepositions; which ones are not listed here. Do not use as an error rule. Ch. 7 §1 p. 602 explicitly confines stranding to non-canonical constructions such as interrogatives and relatives and contrasts it with internal complement-head reversal (e.g. notwithstanding)."
+    "review_notes": "Only the 'most central' prepositions; which ones are not listed here. Do not use as an error rule. Ch. 7 §1 p. 602 explicitly confines stranding to non-canonical constructions such as interrogatives and relatives and contrasts it with internal complement-head reversal (e.g. notwithstanding).",
+    "diagnostic": null
   },
   {
     "id": "PHR-016",
@@ -1303,7 +1318,8 @@
     "confidence": "high",
     "review_notes": "The subject-determiner function is already represented by PHR-010; this record adds the broader inventory of NP functions and does not recreate that rule. The source's restricted-distribution caveat is retained. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "PHR-017",
@@ -1375,7 +1391,8 @@
     "confidence": "high",
     "review_notes": "The source explicitly points back to Cambridge Chapter 4 §3.2.2 for the analysis of there as subject. The NP classification here is distinct from the already approved clause-structure analysis in CLS-048. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "PHR-018",
@@ -1436,7 +1453,8 @@
     "confidence": "high",
     "review_notes": "This is the category-membership observation. The separate restriction on using singular bare role NPs as subject or object is recorded as an exception to PHR-011. Explicitly approved by the repository owner on 2026-11-05. Explicitly approved by the repository owner on 2026-11-05.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   },
   {
     "id": "PHR-019",
@@ -1500,6 +1518,7 @@
     "confidence": "high",
     "review_notes": "The source describes the notwithstanding pattern as a very small exception and directs details to Ch. 7 §4.2. Avoid generalising postposing to all prepositions.",
     "protocol_version": "1.0",
-    "status": "APPROVED"
+    "status": "APPROVED",
+    "diagnostic": null
   }
 ]
