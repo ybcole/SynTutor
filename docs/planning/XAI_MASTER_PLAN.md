@@ -449,6 +449,8 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 
 ### XAI-6 — AI naturalization (OPTIONAL)
 
+**XAI-6 technical acceptance (10 Nov 2026):** Optional evidence-constrained model-selection path, input/output schemas, adversarial checks, bounded cache, cost/latency contracts and deterministic XAI-3 fallback implemented. [Acceptance and no-go decision](../reports/xai-6-naturalization-acceptance-2026-11-10.md). **AI naturalizer remains disabled in production:** independent human blind fidelity/readability comparison has not occurred; no AI prose is presented as independently approved. XAI-7 can proceed with the deterministic baseline.
+
 - Compare quality and factual adherence of approved template baseline to constrained model paraphrasing.
 - Add strict contracts, provenance/atom verification, cost and latency ceilings, caching and deterministic fallback.
 - Record which statements can be attributed to the rule facts. Disallow any unsupported source or invented correction.
