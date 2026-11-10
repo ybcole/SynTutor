@@ -9,7 +9,7 @@
   "cases": [
     {
       "id": "x8-pronouns_and_roles-01",
-      "text": "I hate you.",
+      "text": "I admire you.",
       "language": "en",
       "family": "pronouns_and_roles",
       "expected_status": "NOT_ADJUDICATED",
@@ -20,7 +20,7 @@
     },
     {
       "id": "x8-pronouns_and_roles-02",
-      "text": "You hate me.",
+      "text": "You trust me.",
       "language": "en",
       "family": "pronouns_and_roles",
       "expected_status": "NOT_ADJUDICATED",
@@ -53,7 +53,7 @@
     },
     {
       "id": "x8-perfect_and_lexical_have-01",
-      "text": "She had eaten.",
+      "text": "They had already eaten lunch.",
       "language": "en",
       "family": "perfect_and_lexical_have",
       "expected_status": "NOT_ADJUDICATED",
@@ -64,7 +64,7 @@
     },
     {
       "id": "x8-perfect_and_lexical_have-02",
-      "text": "She had went home.",
+      "text": "She had went to class.",
       "language": "en",
       "family": "perfect_and_lexical_have",
       "expected_status": "NOT_ADJUDICATED",
@@ -75,7 +75,7 @@
     },
     {
       "id": "x8-perfect_and_lexical_have-03",
-      "text": "She had breakfast.",
+      "text": "He had supper.",
       "language": "en",
       "family": "perfect_and_lexical_have",
       "expected_status": "NOT_ADJUDICATED",
@@ -86,7 +86,7 @@
     },
     {
       "id": "x8-perfect_and_lexical_have-04",
-      "text": "She had wanted the car.",
+      "text": "She had wanted a bicycle.",
       "language": "en",
       "family": "perfect_and_lexical_have",
       "expected_status": "NOT_ADJUDICATED",
@@ -119,7 +119,7 @@
     },
     {
       "id": "x8-interacting_errors-02",
-      "text": "The boys is carrying a boxes.",
+      "text": "Those boys is carrying a boxes.",
       "language": "en",
       "family": "interacting_errors",
       "expected_status": "NOT_ADJUDICATED",
@@ -163,7 +163,7 @@
     },
     {
       "id": "x8-temporal_context-01",
-      "text": "We've already discussed it yesterday.",
+      "text": "We've already mentioned it yesterday.",
       "language": "en",
       "family": "temporal_context",
       "expected_status": "NOT_ADJUDICATED",
@@ -218,7 +218,7 @@
     },
     {
       "id": "x8-attachment_ambiguity-02",
-      "text": "I saw the man with the telescope.",
+      "text": "We observed the woman with binoculars.",
       "language": "en",
       "family": "attachment_ambiguity",
       "expected_status": "NOT_ADJUDICATED",
@@ -449,7 +449,7 @@
     },
     {
       "id": "x8-multiple_sentence_and_failure-01",
-      "text": "She left. He stayed.",
+      "text": "They left. We remained.",
       "language": "en",
       "family": "multiple_sentence_and_failure",
       "expected_status": "NOT_ADJUDICATED",
