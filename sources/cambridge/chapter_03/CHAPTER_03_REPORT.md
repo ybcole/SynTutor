@@ -75,3 +75,10 @@ Additional original concepts and one narrowly specified diagnostic covering aspe
 ## Phase B autonomous continuation — 2026-11-10, printed pp. 155–162
 
 Added **35 original, source-cited records** OTH-153–OTH-187: 33 classifications and 2 narrowly specified constraints. See `PHASE_B_PP155_162_REPORT.md` for page-by-page topics, valid contrasts and exceptions. **89 extracted / 142**, **3 contents-only skips**, **50 unprocessed (163–212)**. Full-book extraction remains incomplete. No new production detector activation or measured diagnostic accuracy. Continue at p. 163 automatically, without per-section user approval.
+
+
+---
+
+## Phase B autonomous extraction — 2026-11-10, printed pp. 163–170
+
+Added 48 original, source-cited records OTH-188–OTH-235, representing 46 classifications, one generalisation and one bounded error specification. The page-based source report and explicit valid exceptions are in `PHASE_B_PP163_170_REPORT.md`. Chapter 3: **97 extracted**, **3 chapter contents-only skips**, **42 unprocessed (171–212)**. Book total: **1,652 unprocessed**. No new production detectors or claims of measured diagnostic accuracy. Continue from printed p. 171 without user approval pauses.

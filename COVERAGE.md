@@ -6,7 +6,7 @@
 |---|---:|---:|---:|---:|---:|---|
 | 1. Preliminaries | 42 | 0 | 41 | 1 | 0 | Incomplete |
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
-| 3. The verb | 142 | 89 | 50 | 3 | 0 | Incomplete |
+| 3. The verb | 142 | 97 | 42 | 3 | 0 | Incomplete |
 | 4. The clause: complements | 110 | 0 | 109 | 1 | 0 | Incomplete |
 | 5. Nouns and noun phrases | 202 | 0 | 201 | 0 | 1 | Incomplete |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
@@ -25,13 +25,13 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **89 extracted**, 1660 unprocessed, 13 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **97 extracted**, 1652 unprocessed, 13 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
-**Catalog:** 196 earlier approved records + 35 rules from pp. 76–90 + 70 rules from pp. 91–114 + 31 from pp. 115–122 + 20 from pp. 123–130 + 21 from pp. 131–138 + 30 from pp. 139–146 + 35 from pp. 147–154 + 35 from pp. 155–162 = **473 rules**. The error-capable records added during Phase B remain specifications rather than newly integrated runtime detectors; **implemented new detectors: zero**. No new detection precision/recall claim is made.
+**Catalog:** 196 earlier approved records + 35 rules from pp. 76–90 + 70 rules from pp. 91–114 + 31 from pp. 115–122 + 20 from pp. 123–130 + 21 from pp. 131–138 + 30 from pp. 139–146 + 35 from pp. 147–154 + 35 from pp. 155–162 + 48 from pp. 163–170 = **521 rules**. The error-capable records added during Phase B remain specifications rather than newly integrated runtime detectors; **implemented new detectors: zero**. No new detection precision/recall claim is made.
 
-Chapter 3 is at **89 extracted pages of 142**, plus 3 chapter-contents-only skips and **50 unprocessed (pp. 163–212)**. Source notes: `sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md`, `PHASE_B_PP91_114_REPORT.md`, `PHASE_B_PP115_122_REPORT.md`, and `PHASE_B_PP123_130_REPORT.md`; the later sequential source audit reports through `PHASE_B_PP155_162_REPORT.md` are also in the chapter folder. Continue from printed page **163**. Full-chapter completion gates remain inactive until source coverage is complete; no user sign-off is required for continued extraction.
+Chapter 3 is at **97 extracted pages of 142**, plus 3 chapter-contents-only skips and **42 unprocessed (pp. 171–212)**. Source notes: `sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md`, `PHASE_B_PP91_114_REPORT.md`, `PHASE_B_PP115_122_REPORT.md`, and `PHASE_B_PP123_130_REPORT.md`; the later sequential source audit reports through `PHASE_B_PP163_170_REPORT.md` are also in the chapter folder. Continue from printed page **171**. Full-chapter completion gates remain inactive until source coverage is complete; no user sign-off is required for continued extraction.
 
 ## Chapter 3 printed pp. 123–130 (2026-11-10)
 
@@ -52,3 +52,7 @@ Added 35 source-cited classification, descriptive, and usage records (OTH-118–
 ## Chapter 3 printed pp. 155–162 (2026-11-10)
 
 Extracted and paraphrased 35 new records (OTH-153–OTH-187), including two tightly bounded diagnostic specifications. The source-based audit covers optional and obligatory backshift, the four original-tense patterns, catenative temporal selection, and tenseless non-finite modifiers: `sources/cambridge/chapter_03/PHASE_B_PP155_162_REPORT.md`. No new detector implementations or performance metrics. Next unprocessed printed page: **163**.
+
+## Chapter 3 printed pp. 163–170 (2026-11-10)
+
+Added 48 source-checked explanatory and diagnostic records (OTH-188–OTH-235) covering progressive aspectuality, cancellable mid-interval/temporary implications, aspectual coercion, stative-versus-dynamic construals, sensation and cognition verb classes. One narrowly guarded error specification, no new active detectors. Full page-by-page exception audit: `sources/cambridge/chapter_03/PHASE_B_PP163_170_REPORT.md`. Next unprocessed printed page is **171**, continuing stance verbs and progressive aspect.
