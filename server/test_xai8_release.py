@@ -236,7 +236,7 @@ class XAI8ReleaseTests(unittest.TestCase):
             '"She can goes" is a quotation.',
             'She had breakfast.',
             "We've already discussed it yesterday.",
-            'They ain\\'t coming today.',
+            "They ain\'t coming today.",
             'The boy said "I has went home".',
         ]:
             with self.subTest(text=sentence):
