@@ -2831,5 +2831,1076 @@
     "related_rules": [],
     "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. A single punctual achievement can license an in-adjunct for the lead-up, and a for-adjunct can refer to a resulting state; do not mark all unconventional combinations wrong.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-047",
+    "domain": "other",
+    "concept": "Iterative, repeated, and serial situation multiplicity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Situation multiplicity distinguishes lexical iteration, explicitly counted repetitions, and unbounded serial recurrence.",
+    "condition": "The source describes more than one occurrence of a situation, with the subsituations characterised by lexical event meaning, count, or habit.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitor tapped on the door repeatedly. [iterative]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She visited her cousin three times. [repeated]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "He routinely cycles to school. [serial]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.4 Multiple situations",
+        "pages": [
+          123
+        ],
+        "pdf_pages": [
+          143
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Iterative, repeated, and serial situation multiplicity",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Unspecified frequency need not exclude a serial habitual reading.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-048",
+    "domain": "other",
+    "concept": "Multiple-event subsituation and whole-situation aspectuality",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The aspectual classification of subsituations can differ from that of the resulting whole situation.",
+    "condition": "An iterative or habitual predicate is interpreted at both the single-occurrence and overall-series levels.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was knocking on the window. [iterative action overall]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They usually travel by train. [serial state overall]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.4 Multiple situations",
+        "pages": [
+          123,
+          124
+        ],
+        "pdf_pages": [
+          143,
+          144
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple-event subsituation and whole-situation aspectuality",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Iterative punctual events form an overall activity; serial habitual recurrence behaves like a state.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-049",
+    "domain": "other",
+    "concept": "Iterative punctual events as activity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Repeated punctual achievements can together form an activity compatible with progressives and duration adjuncts.",
+    "condition": "A lexical event such as knocking, nodding or blinking may be interpreted as a succession of very brief individual events.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They were knocking for several minutes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The child blinked repeatedly for a while.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.4 Multiple situations",
+        "pages": [
+          123
+        ],
+        "pdf_pages": [
+          143
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Iterative punctual events as activity",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. A single knock remains an achievement; iterative construal is context-dependent.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-050",
+    "domain": "other",
+    "concept": "Serial multiplicity as stative at the overall level",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Serial habitual situations are stative overall even when the repeated subsituations are dynamic.",
+    "condition": "A predicate expresses habitual recurrence, potentially using an overt frequency adverb or an understood routine.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She usually swims before breakfast.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shop opens at nine every weekday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.4 Multiple situations",
+        "pages": [
+          124
+        ],
+        "pdf_pages": [
+          144
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Serial multiplicity as stative at the overall level",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Underlying events may be activities, accomplishments, achievements, or states, and a routine can persist beyond the specific reference interval.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-051",
+    "domain": "other",
+    "concept": "Perfective and imperfective aspectuality as interpretations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Perfective aspectuality presents a situation as a whole, while imperfective aspectuality presents an internal temporal perspective.",
+    "condition": "Classify the interpretation of a situation according to whether it is taken as complete overall or viewed within an ongoing state or event.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The author finished the manuscript last Friday. [perfective]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The author was writing the manuscript then. [imperfective]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.5 Perfective and imperfective aspectuality",
+        "pages": [
+          124
+        ],
+        "pdf_pages": [
+          144
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfective and imperfective aspectuality as interpretations",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Perfective is not the English perfect; English does not mark a general perfective/imperfective opposition in verb inflection.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-052",
+    "domain": "other",
+    "concept": "Progressive aspect as a form of imperfective viewpoint",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The English be-plus-gerund-participle construction conventionally expresses an ongoing dynamic situation and therefore a progressive type of imperfectivity.",
+    "condition": "Classify the aspectual meaning of be followed by the verbal gerund-participle, when that be is progressive auxiliary rather than passive or copular.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is preparing the slides.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They were walking toward the venue.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.5 Perfective and imperfective aspectuality",
+        "pages": [
+          124
+        ],
+        "pdf_pages": [
+          144
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Progressive aspect as a form of imperfective viewpoint",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Not every imperfective interpretation has progressive form; simple tense with a state may also be imperfective.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-053",
+    "domain": "other",
+    "concept": "Simple present habitual states contrasted with perfective occurrences",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-progressive clause may have a perfective interpretation for a single dynamic occurrence but an imperfective interpretation for a habitual series.",
+    "condition": "Identify whether a finite verb describes one bounded dynamic event or a recurring practice rather than treating the simple-form morphology as a universal aspect marker.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He planted a tree yesterday. [single occurrence]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He planted a tree every spring. [past habitual series]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.5 Perfective and imperfective aspectuality",
+        "pages": [
+          124,
+          125
+        ],
+        "pdf_pages": [
+          144,
+          145
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple present habitual states contrasted with perfective occurrences",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. A habitual preterite does not necessarily assert that the entire habitual state ended in the past.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-054",
+    "domain": "other",
+    "concept": "Primary tense and temporal relation model",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Primary tense relates a referred time to an orientation time: anterior for past, simultaneous for present, and posterior for future.",
+    "condition": "Analyse a tensed clause with respect to reference time Tr and orientation time To, distinguishing the relation from the verb's exact event duration.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She left before noon. [anterior]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She works here now. [simultaneous reference]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "When she visits tomorrow, we will talk. [posterior]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.1 Past, present, and future as relational categories",
+        "pages": [
+          125
+        ],
+        "pdf_pages": [
+          145
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary tense and temporal relation model",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. The three semantic relations should not be conflated with three English inflectional primary tenses.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-055",
+    "domain": "other",
+    "concept": "Reference time and situation time distinguished",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With perfective interpretation the reference time may coincide with the whole event, while in imperfective interpretation it may identify only part of a longer situation.",
+    "condition": "Distinguish Tr, the time used for tense interpretation, from Tsit, the interval over which the state or event obtains.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The bridge collapsed at dawn. [reference tracks the event]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I knew the answer yesterday. [reference within an enduring state]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.1 Past, present, and future as relational categories",
+        "pages": [
+          125,
+          126
+        ],
+        "pdf_pages": [
+          145,
+          146
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reference time and situation time distinguished",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. A past reference point inside a continuing state does not prove the state has ended.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-056",
+    "domain": "other",
+    "concept": "Deictic time in recorded and written utterances",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Deictic time may be anchored to the production of an utterance or, in notices and recorded communications, to when an addressee encounters it.",
+    "condition": "Interpret present and past reference in speech, letters, posted notices and similar delayed-message settings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I am typing this message now. [production time]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You are now entering a quiet zone. [reading time]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.1 Past, present, and future as relational categories",
+        "pages": [
+          126
+        ],
+        "pdf_pages": [
+          146
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic time in recorded and written utterances",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. The encoding versus decoding time contrast has no unique tense marking.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-057",
+    "domain": "other",
+    "concept": "Non-deictic orientation time in embedded tense",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A tense in an embedded clause can be interpreted relative to a contextual orientation time rather than the speech time.",
+    "condition": "A complement reports what somebody might later say or think, or otherwise establishes a perspective internal to a future or past situation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she wins, she will say she trained well.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you stay longer, you will discover that you enjoy it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.1 Past, present, and future as relational categories",
+        "pages": [
+          126,
+          127
+        ],
+        "pdf_pages": [
+          146,
+          147
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-deictic orientation time in embedded tense",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Do not require every preterite to precede the actual time of speaking.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-058",
+    "domain": "other",
+    "concept": "Four temporal notions Tr, To, Tsit and Td",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Temporal analysis distinguishes reference time, orientation time, situation time and deictic time rather than treating all four as one instant.",
+    "condition": "Represent a clause's tense and aspect interpretation, allowing Tr to be internal to Tsit and To to differ from Td.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I already understood the answer then. [reference interval within a state]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She will report that she understands the rule. [embedded orientation]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.1 Past, present, and future as relational categories",
+        "pages": [
+          126,
+          127
+        ],
+        "pdf_pages": [
+          146,
+          147
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Four temporal notions Tr, To, Tsit and Td",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Tr and Tsit coincide in central perfective examples, and To normally equals Td; those are defaults rather than identities required in every sentence.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-059",
+    "domain": "other",
+    "concept": "Simple present for states and performatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Ordinary simple-present statives cover an interval containing the reference time, while performative utterances can make a bounded event coincide with the act of saying it.",
+    "condition": "A finite simple present verb expresses a state obtaining at the present orientation time or a conventional speech act accomplished through its utterance.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I own a bicycle. [state]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I apologise for the delay. [performative]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.1 Present time reference",
+        "pages": [
+          127,
+          128
+        ],
+        "pdf_pages": [
+          147,
+          148
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple present for states and performatives",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Do not ban all dynamic simple-present clauses; performatives are a core exception.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-060",
+    "domain": "other",
+    "concept": "Limited and unlimited states in simple present",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The same simple-present construction can describe temporary states, enduring states and general truths.",
+    "condition": "Determine the temporal duration of an ordinary state from lexical and contextual information, not from a separate present-tense inflection.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has a cold this week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The chemical formula remains unchanged under these conditions.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.1 Present time reference",
+        "pages": [
+          127
+        ],
+        "pdf_pages": [
+          147
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limited and unlimited states in simple present",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Do not infer endless duration from a present stative verb alone.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-061",
+    "domain": "other",
+    "concept": "Habitual reading of extended dynamic simple present",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A dynamic predicate requiring longer than a speech act generally receives a habitual or serial-state reading in the simple present.",
+    "condition": "A speaker uses an ordinary simple-present accomplishment or activity without a commentary, performative or special narrative context.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I solve crossword puzzles on weekends.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My neighbour builds model boats.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.1 Present time reference",
+        "pages": [
+          128
+        ],
+        "pdf_pages": [
+          148
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Habitual reading of extended dynamic simple present",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. If a single activity is underway at the time of speaking, progressive aspect is a natural alternative; the simple present is not automatically ungrammatical.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-062",
+    "domain": "other",
+    "concept": "Running commentary and demonstrations in simple present",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Simple-present dynamic predicates can report events as they unfold in conventional commentary or demonstrations.",
+    "condition": "The speaker narrates a sequence of actions for an audience, possibly presenting a longer event as coextensive with the act of description.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The runner reaches the finish line and celebrates.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I stir the mixture and slowly add warm water.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.1 Present time reference",
+        "pages": [
+          128,
+          129
+        ],
+        "pdf_pages": [
+          148,
+          149
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Running commentary and demonstrations in simple present",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. The timing is often subjectively aligned, and these uses are not ordinary habitual assertions.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-063",
+    "domain": "other",
+    "concept": "Locative-present commentary formulae",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Short locative-first commentary clauses can use simple present for an ongoing event, often with a postposed non-pronominal subject.",
+    "condition": "A semi-formulaic sequence begins with here, there, up or down and describes a salient immediate motion or arrival.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Here comes the bus.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There goes the last train.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.1 Present time reference",
+        "pages": [
+          128
+        ],
+        "pdf_pages": [
+          148
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Locative-present commentary formulae",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. These forms are restricted in verb and locative choice; they should not be blindly converted into ordinary interrogatives.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-064",
+    "domain": "other",
+    "concept": "Timeless present in synopses and stage directions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Simple present can describe the contents of narratives or stage directions without locating their events at the present time of speaking.",
+    "condition": "A clause summarises the actions of fictional characters or specifies staged action as part of a reusable script.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "In the opening scene, the detective discovers the hidden letter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The actor moves toward the window. [stage direction]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.2 The timeless use of the present tense",
+        "pages": [
+          129
+        ],
+        "pdf_pages": [
+          149
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Timeless present in synopses and stage directions",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Such simple presents need not be temporally as short as the utterance; avoid requiring progressive tense.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-065",
+    "domain": "other",
+    "concept": "Present reference to enduring texts and artworks",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Present tense can describe what an enduring text or artwork depicts or says, even though it was created in the past.",
+    "condition": "A clause concerns a surviving work's content or present availability rather than its historical act of creation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The novel explores social change.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This painting portrays a storm at sea.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§4.2.2 The timeless use of the present tense",
+        "pages": [
+          129,
+          130
+        ],
+        "pdf_pages": [
+          149,
+          150
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present reference to enduring texts and artworks",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. A dated creation event ordinarily uses past tense; distinguish what a work says from when its creator produced it.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-066",
+    "domain": "other",
+    "concept": "Present tense in captions, chronicles and historic narrative",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Captions, historical chronologies and vivid conversational narratives may use present tense to depict events that occurred in the past.",
+    "condition": "A caption frames a photograph as a persistent record, a chronicle lists events, or a narrative uses a present-tense viewpoint for past happenings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The photograph shows volunteers crossing the bridge in 1998.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "In 1640 the council introduces the new tax. [chronicle]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "So I open the letter and there is the answer! [historic present]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§§4.2.2–4.2.3 Timeless and historic present",
+        "pages": [
+          130
+        ],
+        "pdf_pages": [
+          150
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present tense in captions, chronicles and historic narrative",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts crosswalk is claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source-checked against printed pages of the supplied Cambridge PDF; examples are newly authored. This is explanatory classification, not a blanket error prohibition. Present tense combined with a past-time adjunct in a caption or historic-present sequence is not a tense error by itself.",
+    "diagnostic": null
   }
 ]

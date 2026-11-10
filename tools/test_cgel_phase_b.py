@@ -29,3 +29,14 @@ class Chapter3PhaseB(unittest.TestCase):
         self.assertTrue(all(rows[p-1]["status"]=="skipped_with_reason" for p in range(71,74)))
         self.assertTrue(all(rows[p-1]["status"]=="extracted" for p in range(74,91)))
         self.assertTrue(all(rows[p-1]["status"]=="extracted" for p in range(91,115)))
+
+    def test_chapter3_123_130_source_coverage(self):
+        other=json.loads((ROOT/"grammar/rules/other.json").read_text(encoding="utf-8"))
+        new=[r for r in other if r["id"].startswith("OTH-") and 47<=int(r["id"].split("-")[1])<=66]
+        self.assertEqual(len(new),20)
+        self.assertEqual([r["id"] for r in new],[f"OTH-{n:03d}" for n in range(47,67)])
+        self.assertTrue(all(r["rule_type"]=="classification" for r in new))
+        self.assertTrue(all(r["status"]=="NEEDS_REVIEW" for r in new))
+        self.assertEqual(set(range(123,131)),set(p for r in new for s in r["sources"] for p in s["pages"]))
+        self.assertTrue(all(self.ledger["pages"][p-1]["status"]=="extracted" for p in range(123,131)))
+        self.assertEqual(self.ledger["pages"][130]["status"],"unprocessed")
