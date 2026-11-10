@@ -467,6 +467,65 @@
           "additionalProperties": true
         }
       ]
+    },
+    "xai4_partial_evaluation": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "schema_version",
+            "language_policy",
+            "status",
+            "enabled_rule_ids",
+            "evaluations",
+            "findings",
+            "global_verdict",
+            "token_index_basis"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "xai4-partial-1.0.0"
+            },
+            "language_policy": {
+              "const": "ENGLISH_ONLY"
+            },
+            "status": {
+              "type": "string"
+            },
+            "enabled_rule_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "findings": {
+              "type": "array"
+            },
+            "evaluations": {
+              "type": "array"
+            },
+            "token_index_basis": {
+              "const": "XAI4_RAW_SOURCE_TOKENS_NOT_BR_NODES"
+            },
+            "global_verdict": {
+              "type": "object",
+              "required": [
+                "status",
+                "whole_sentence_certified"
+              ],
+              "properties": {
+                "whole_sentence_certified": {
+                  "const": false
+                }
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
     }
   },
   "required": [
