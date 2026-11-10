@@ -100,7 +100,12 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
         raise ValueError('analysis must be an object')
     output = {'schema_version': '1.0.0', 'status': 'NO_BOOK_BASIS',
               'analysis_status': str(analysis.get('status', 'unresolved')),
-              'channels': {key: [] for key in CHANNELS}, 'facts': [], 'diagnostics': []}
+              'channels': {key: [] for key in CHANNELS}, 'facts': [], 'diagnostics': [],
+              'fact_graph': None}
+    if (analysis.get('status') in {'normalized', 'working', 'provisional'}
+            and isinstance(analysis.get('tree'), dict)):
+        from xai_facts import build_fact_graph
+        output['fact_graph'] = build_fact_graph(analysis, node_id=node_id)
     if (analysis.get('status') != 'normalized' or not isinstance(analysis.get('tree'), dict)
             or analysis['tree'].get('source', {}).get('evidence_status') == 'UNCERTAIN'):
         output['status'] = 'ANALYSIS_UNRESOLVED'
