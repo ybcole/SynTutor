@@ -425,6 +425,8 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 
 ### XAI-4 — Real Cambridge runtime constraints
 
+**XAI-4 technical slice (10 Nov 2026):** Four English-only, source-audited typed candidate checks are implemented with token-span evidence and blocked/ambiguous/unknown outcomes. See [XAI-4 technical acceptance](../reports/xai-4-cambridge-partial-acceptance-2026-11-10.md). **Release gate remains blocked: 0 independently human-approved Cambridge diagnostic constraints are enabled; no new verified error verdicts are issued.** Positive/negative/exception unit fixtures cannot substitute for human-adjudicated false-positive checks.
+
 - Start with a small batch of high-frequency *reviewed* contrastive constraints.
 - Treat checks as **partial evaluators**, not universal grammar verdicts; expose `BLOCKED`, `AMBIGUOUS`, and `NOT_APPLICABLE` separately.
 - Attach cause/dependency edges across simultaneous violations before enabling learner-facing diagnosis.

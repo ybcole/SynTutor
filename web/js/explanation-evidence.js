@@ -72,6 +72,41 @@ function renderContextualObservations(evidence, panel) {
   panel.append(section);
 }
 
+// XAI-4 reports authorization status, never unchecked "incorrect" labels.
+// Candidate matched words are not displayed as error diagnoses.
+function renderCambridgePartial(evidence, panel) {
+  const xai = evidence?.xai4_partial_evaluation;
+  if (!xai || !Array.isArray(xai.evaluations)) return;
+  const area = document.createElement('details');
+  area.dataset.xai4Partial = '';
+  const title = document.createElement('summary');
+  title.textContent = 'Cambridge grammar checks: '
+    + xai.enabled_rule_ids.length + ' approved runtime rules';
+  area.append(title);
+  const scope = document.createElement('p');
+  scope.textContent = 'This is a partial check, not a sentence grammaticality verdict. '
+    + 'Blocked candidates cannot issue verified errors; unmatched conditions are not grammar passes.';
+  area.append(scope);
+  if (!xai.enabled_rule_ids.length) {
+    const message = document.createElement('p');
+    message.textContent = 'Independent source, exception, crosswalk and linguistic review is still required. '
+      + 'No new Cambridge error diagnosis is asserted.';
+    area.append(message);
+  }
+  for (const check of xai.evaluations) {
+    if (check.status === 'NOT_APPLICABLE') continue;
+    const row = document.createElement('p');
+    row.textContent = check.rule_id + ': ' + check.status + '. '
+      + (check.status === 'BLOCKED'
+        ? 'Potential construction observed, but it is not approved as an error check.'
+        : check.status === 'AMBIGUOUS'
+          ? 'Interpretation or exception requires further evidence.'
+          : check.reason);
+    area.append(row);
+  }
+  panel.append(area);
+}
+
 export function renderEvidence(evidence, host = document.querySelector('#explainNode')) {
   if (!host) return;
   host.querySelector('[data-shared-evidence]')?.remove();
@@ -81,6 +116,7 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   const title = document.createElement('h3');
   title.textContent = 'Book evidence';
   renderContextualObservations(evidence, panel);
+  renderCambridgePartial(evidence, panel);
   panel.append(title);
   for (const line of evidenceLines(evidence)) {
     const p = document.createElement('p'); p.textContent = line; panel.append(p);

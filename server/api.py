@@ -11,6 +11,7 @@ from br_tree import build_correction_alignment
 from burton_roberts import build_canonical_analysis
 from cambridge_registry import load_runtime_registry
 from cambridge_evaluator import evaluate_cambridge
+from xai4_partial import evaluate_xai4
 from explanations import explain_analysis, explain_request
 from tree_evaluation import evaluate_analysis
 from matrix import evaluate
@@ -150,6 +151,8 @@ def build_payload(text, sentence_index=0, convention_version=None,
     cambridge_runtime = load_runtime_registry()
     cambridge_evaluation = evaluate_cambridge(
         br_analysis, cambridge_runtime, variety=variety)
+    xai4_partial_evaluation = evaluate_xai4(
+        analysis['sentence'], analysis_status=br_analysis.get('status', 'unresolved'), variety=variety)
     result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
     summary = result['summary']
@@ -276,6 +279,10 @@ def build_payload(text, sentence_index=0, convention_version=None,
     pipeline = _pipeline_narration(analysis, summary, details)
     concepts = _rule_concepts(details, summary)
 
+    # Token-only candidate context must survive unresolved B-R canonicalization.
+    # This sentence is server-derived, never client-supplied approval metadata.
+    explanation_analysis = {**br_analysis, 'sentence': analysis['sentence']}
+
     return {
         'meta': {
             'deterministic': 'detector' not in summary,
@@ -312,10 +319,11 @@ def build_payload(text, sentence_index=0, convention_version=None,
         'tree': root,
         'candidate_tree': root,
         'br_analysis': br_analysis,
-        'explanation_evidence': explain_analysis(br_analysis, variety=variety),
-        'canonical_evaluation': evaluate_analysis(br_analysis, variety=variety),
+        'explanation_evidence': explain_analysis(explanation_analysis, variety=variety),
+        'canonical_evaluation': evaluate_analysis(explanation_analysis, variety=variety),
         'cambridge_runtime': cambridge_runtime,
         'cambridge_evaluation': cambridge_evaluation,
+        'xai4_partial_evaluation': xai4_partial_evaluation,
         'nodes': analysis['nodes'],
         'node_details': details,
         'summary': summary,

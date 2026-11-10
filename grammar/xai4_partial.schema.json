@@ -1,0 +1,347 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "XAI-4 English-only, source-gated partial Cambridge evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "status",
+    "analysis_status",
+    "token_index_basis",
+    "candidate_rule_count",
+    "enabled_rule_ids",
+    "tokens",
+    "evaluations",
+    "findings",
+    "dependencies",
+    "groups",
+    "global_verdict",
+    "diagnostics",
+    "selected_variety"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai4-partial-1.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "status": {
+      "enum": [
+        "not_evaluated",
+        "blocked",
+        "blocked_or_ambiguous",
+        "not_applicable_or_unimplemented",
+        "partially_evaluated"
+      ]
+    },
+    "analysis_status": {
+      "type": "string"
+    },
+    "token_index_basis": {
+      "const": "XAI4_RAW_SOURCE_TOKENS_NOT_BR_NODES"
+    },
+    "candidate_rule_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "enabled_rule_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "tokens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "text",
+          "char_span"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "char_span": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      }
+    },
+    "evaluations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "rule_id",
+          "status",
+          "evidence",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "rule_id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "SATISFIED",
+              "VIOLATED",
+              "NOT_APPLICABLE",
+              "BLOCKED",
+              "AMBIGUOUS",
+              "UNIMPLEMENTED"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "governor_token_id",
+                "target_token_id",
+                "affected_token_ids",
+                "token_span",
+                "char_span",
+                "observed_tokens",
+                "evidence_kind"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "governor_token_id": {
+                  "type": "string"
+                },
+                "target_token_id": {
+                  "type": "string"
+                },
+                "affected_token_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "token_span": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "char_span": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "observed_tokens": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "evidence_kind": {
+                  "const": "raw_token_context_only"
+                }
+              }
+            }
+          },
+          "source_claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "runtime_eligible": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "rule_id",
+          "status",
+          "affected_token_ids",
+          "governor_token_id",
+          "target_token_id",
+          "token_span",
+          "char_span",
+          "source_claim_ids",
+          "interpretation_status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "rule_id": {
+            "type": "string"
+          },
+          "status": {
+            "const": "VIOLATED"
+          },
+          "affected_token_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "governor_token_id": {
+            "type": "string"
+          },
+          "target_token_id": {
+            "type": "string"
+          },
+          "token_span": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "char_span": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "source_claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "interpretation_status": {
+            "const": "approved_narrow_condition_only"
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "from",
+          "to",
+          "kind"
+        ],
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "kind": {
+            "const": "OVERLAPS_SPAN"
+          }
+        }
+      }
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "finding_ids",
+          "coupling",
+          "rationale"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "finding_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "coupling": {
+            "enum": [
+              "independent",
+              "interacting"
+            ]
+          },
+          "rationale": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "global_verdict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "whole_sentence_certified"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_EVALUATED",
+            "PARTIALLY_EVALUATED"
+          ]
+        },
+        "whole_sentence_certified": {
+          "const": false
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "selected_variety": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

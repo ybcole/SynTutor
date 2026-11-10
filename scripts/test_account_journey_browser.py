@@ -197,6 +197,11 @@ try:
             })"""), errors, flush=True)
         expect(page.locator("#inputText")).to_have_value("PrivateB", timeout=10000)
         assert "PrivateB" in page.evaluate(nodes)
+        # Repeated auth notifications for the same identity must not discard
+        # an edited Builder draft while genuine account changes still isolate it.
+        page.evaluate("window.accountChanged?.()")
+        expect(page.locator("#inputText")).to_have_value("PrivateB", timeout=10000)
+        assert "PrivateB" in page.evaluate(nodes)
         page.evaluate("switchAccount('journey-a')")
         expect(page.locator("#inputText")).not_to_have_value("PrivateB", timeout=10000)
         assert "PrivateB" not in page.evaluate(nodes)

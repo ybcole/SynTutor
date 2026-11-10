@@ -49,7 +49,12 @@ def evaluate_analysis(analysis, *, variety=None):
         structure['errors'] += [f'{e.json_path}: {e.message}' for e in list(SCHEMA.iter_errors(tree))[:20]]
         structure['valid'] = not structure['errors']
         structure['status'] = 'invalid' if not structure['valid'] else 'unsupported' if structure['warnings'] else 'well_formed'
-    safe = analysis if structure['valid'] else {'status':'unresolved'}
+    # Preserve raw source text for XAI-4 token-level observations even when
+    # the B-R structural envelope cannot be normalized. No B-R role is inferred.
+    safe = analysis if structure['valid'] else {
+        'status': 'unresolved',
+        'sentence': analysis.get('sentence') or (tree.get('sentence') if isinstance(tree, dict) else None),
+    }
     runtime = load_runtime_registry()
     evaluation = evaluate_cambridge(safe,runtime,variety=variety)
     evidence = explain_analysis(safe,variety=variety)
@@ -66,7 +71,9 @@ def evaluate_analysis(analysis, *, variety=None):
     return {'schema_version':'1.0.0','br_analysis':safe,'structure':structure,'grammaticality':grammar,
             'cambridge_evaluation':evaluation,'explanation_evidence':evidence,
             'fact_graph':evidence.get('fact_graph'),
-            'contextual_explanations':evidence.get('contextual_explanations'),'node_details':details,
+            'contextual_explanations':evidence.get('contextual_explanations'),
+            'xai4_partial_evaluation':evidence.get('xai4_partial_evaluation'),
+            'node_details':details,
             'target_comparison':{'status':'not_requested','matched':None}}
 
 def evaluate_request(data):

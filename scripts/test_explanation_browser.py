@@ -66,6 +66,9 @@ try:
             parsed = response.value.json()
             br = parsed['br_analysis']
             assert br['status'] == 'unresolved' and br['tree'] is None
+            assert parsed['xai4_partial_evaluation']['analysis_status'] == 'unresolved'
+            assert parsed['xai4_partial_evaluation']['tokens'], 'raw text token checks must survive B-R failure'
+            assert not parsed['xai4_partial_evaluation']['findings']
             assert br['working_tree']['sentence'] == text
             canonical = page.locator('#canonicalTreeView')
             canonical.wait_for(state='visible', timeout=60000)
@@ -86,6 +89,8 @@ try:
             br = parsed.get('br_analysis', {})
             assert parsed['parse']['text'] == text
             assert br.get('status') == 'normalized', (parsed['parse']['parse_string'], br.get('reasons'))
+            assert parsed['xai4_partial_evaluation']['enabled_rule_ids'] == []
+            assert parsed['xai4_partial_evaluation']['global_verdict']['whole_sentence_certified'] is False
             verb = br['tree']['root']['children'][1]['children'][0]
             assert br['display_labels'][verb['id']] == ['V', '[intrans]', '[pres]']
         page.wait_for_selector('#openCanonicalBuilder', timeout=60000)
@@ -159,6 +164,12 @@ try:
             pane = page.locator('#explainNode')
             assert 'spans “sleeps”' in pane.inner_text()
             assert 'Ch5 p. 104' in pane.inner_text()
+            partial = pane.locator('[data-xai4-partial]')
+            partial.wait_for(state='attached', timeout=30000)
+            assert partial.count() == 1
+            assert '0 approved runtime rules' in partial.locator('summary').inner_text()
+            partial.locator('summary').click()
+            assert 'No new Cambridge error diagnosis' in partial.inner_text()
             page.locator('#explainNode [data-xai-short]').wait_for(timeout=30000)
             assert 'V “sleeps”' in pane.locator('[data-xai-short]').inner_text()
             assert 'not a grammaticality judgment' in pane.locator('[data-xai-status]').inner_text()
