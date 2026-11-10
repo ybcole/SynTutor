@@ -289,28 +289,72 @@ def _recheck_lineage(before_eval: dict[str, Any], after_eval: dict[str, Any],
 
 
 def _new_findings(before_eval: dict[str, Any], after_eval: dict[str, Any],
-                  edits: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Do not label a finding 'introduced' without a prior evidenced pass."""
-    original_rules = {r["rule_id"] for r in before_eval["findings"]}
-    prior = {ev["rule_id"]: ev for ev in before_eval["evaluations"]
-             if ev.get("runtime_eligible")}
+                  edits: list[dict[str, Any]], token_map: dict[str, str],
+                  before_locations: dict[str, Any],
+                  after_locations: dict[str, Any]) -> list[dict[str, Any]]:
+    """Attribute newly checked violations only when both states are witnessed.
+
+    An eligible SATISFIED -> VIOLATED flip on the same governor, with the exact
+    target token edited, demonstrates local introduction. A previously
+    AMBIGUOUS quoted form whose tokens survive quotation removal may be
+    *unmasked*. Anything else is origin unknown, never fabricated causality.
+    """
+    prior = [e for e in before_eval["evaluations"] if e.get("runtime_eligible")]
+    old_findings = list(before_eval["findings"])
     new = []
+    original_observations = before_locations["observations"]
+    revised_observations = after_locations["observations"]
     for after in after_eval["findings"]:
-        old = prior.get(after["rule_id"])
-        if after["rule_id"] in original_rules:
-            # Could be persistence elsewhere: ambiguous without proven match.
-            origin = "unknown"
-            reason = "Original check also reported a violation; token identity may have changed."
-        elif old is not None and old.get("status") == "SATISFIED" and edits:
-            # Even then, a rule pass for one token does not rule out another.
-            origin = "unknown"
-            reason = "No verified one-to-one construction alignment proves this edit introduced the finding."
-        else:
-            origin = "unknown"
-            reason = "No conclusive prior local state exists; an issue may have been unmasked."
-        new.append({"finding_id": after["id"], "rule_id": after["rule_id"],
-                    "origin": origin, "causal_evidence_ids": [],
-                    "reason": reason, "whole_sentence_certified": False})
+        after_gov = after["governor_token_id"]
+        after_target = after["target_token_id"]
+        exact_prior = []
+        for event in prior:
+            if event["rule_id"] != after["rule_id"]:
+                continue
+            for observation in event.get("evidence", []):
+                if token_map.get(observation["governor_token_id"]) == after_gov:
+                    exact_prior.append((event, observation))
+        origin = "unknown"
+        why = "No demonstrated one-to-one prior local check; the issue may be newly visible."
+        witnesses = []
+        if len(exact_prior) == 1 and not any(f["rule_id"] == after["rule_id"]
+                                              and token_map.get(f["governor_token_id"]) == after_gov
+                                              for f in old_findings):
+            event, old = exact_prior[0]
+            target_changed = any(
+                old["target_token_id"] in edit["original_token_ids"]
+                and after_target in edit["revised_token_ids"]
+                for edit in edits)
+            retained_target = token_map.get(old["target_token_id"]) == after_target
+            old_obs = next((row for row in original_observations
+                            if row["rule_id"] == after["rule_id"]
+                            and row["governor_token_id"] == old["governor_token_id"]
+                            and row["target_token_id"] == old["target_token_id"]), None)
+            new_obs = next((row for row in revised_observations
+                            if row["rule_id"] == after["rule_id"]
+                            and row["governor_token_id"] == after_gov
+                            and row["target_token_id"] == after_target), None)
+            if old_obs and new_obs:
+                witnesses = ["u0:" + old_obs["observation_id"],
+                             "revised:" + new_obs["observation_id"]]
+                if event["status"] == "SATISFIED" and target_changed:
+                    origin = "introduced"
+                    why = ("This exact previously satisfied local rule was rechecked "
+                           "after an edit to its aligned target; it now violates the narrow rule.")
+                elif event["status"] == "AMBIGUOUS" and retained_target and any(
+                    '"' in edit["original_text"] or '“' in edit["original_text"]
+                    or '”' in edit["original_text"] for edit in edits):
+                    origin = "unmasked"
+                    why = ("The same tokens were present but the earlier quotation "
+                           "context blocked their interpretation; this is local unmasking only.")
+            if origin == "unknown":
+                witnesses = []
+        new.append({
+            "finding_id": after["id"], "rule_id": after["rule_id"],
+            "origin": origin, "causal_evidence_ids": witnesses,
+            "reason": why,
+            "whole_sentence_certified": False,
+        })
     return new
 
 
@@ -388,7 +432,9 @@ def recheck_revisions(payload: dict[str, Any], *, analyzer=None,
         lineage = _recheck_lineage(versions["u0"][1], versions[ident][1], token_map, edits)
         step_lineage = _recheck_lineage(
             versions[parent_id][1], versions[ident][1], step_map, step_edits)
-        fresh = _new_findings(versions["u0"][1], versions[ident][1], edits)
+        fresh = _new_findings(
+            versions["u0"][1], versions[ident][1], edits, token_map,
+            versions["u0"][2], versions[ident][2])
         results.append({
             "version_id": ident, "parent_version_id": parent_id,
             "snapshot": snapshot, "edits_from_original": edits,
