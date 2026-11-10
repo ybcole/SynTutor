@@ -40,7 +40,8 @@
         "tree_id",
         "enabled_rule_ids",
         "evaluation_status",
-        "whole_sentence_certified"
+        "whole_sentence_certified",
+        "canonical_tree"
       ],
       "properties": {
         "version_id": {
@@ -104,6 +105,23 @@
         },
         "whole_sentence_certified": {
           "const": false
+        },
+        "canonical_tree": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "tree_id",
+                "sentence",
+                "root"
+              ],
+              "additionalProperties": true
+            }
+          ]
         }
       }
     },
@@ -579,7 +597,8 @@
               "tree_id",
               "enabled_rule_ids",
               "evaluation_status",
-              "whole_sentence_certified"
+              "whole_sentence_certified",
+              "canonical_tree"
             ],
             "properties": {
               "version_id": {
@@ -643,6 +662,23 @@
               },
               "whole_sentence_certified": {
                 "const": false
+              },
+              "canonical_tree": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "schema_version",
+                      "tree_id",
+                      "sentence",
+                      "root"
+                    ],
+                    "additionalProperties": true
+                  }
+                ]
               }
             }
           },
