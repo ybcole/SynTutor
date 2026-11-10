@@ -139,6 +139,7 @@ def localize_xai4(xai4: dict[str, Any], *, analysis: dict[str, Any] | None = Non
     return {
         "schema_version": VERSION, "language_policy": "ENGLISH_ONLY",
         "original_hash": _digest(sentence),
+        "original_sentence": sentence,
         "analysis_status": (analysis or {}).get("status", "unresolved"),
         "tree_status": graph["status"] if graph else "unavailable",
         "tree_analysis_id": graph["analysis_id"] if graph else None,
