@@ -1,0 +1,455 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SynTutor XAI-2 typed sentence fact graph",
+  "description": "Validated observations only. Rules, grammaticality, and repairs are expressly out of scope. Source catalog candidates cannot license roles.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "status",
+    "analysis_id",
+    "tree_id",
+    "profile",
+    "sentence",
+    "nodes",
+    "edges",
+    "atoms",
+    "token_index",
+    "movement_links",
+    "alternatives",
+    "observed_shapes",
+    "target",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai-facts-2.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "status": {
+      "enum": [
+        "observed",
+        "provisional",
+        "unavailable"
+      ]
+    },
+    "analysis_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tree_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profile": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "sentence": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/edge"
+      }
+    },
+    "atoms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/atom"
+      }
+    },
+    "token_index": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "token_id",
+          "text",
+          "char_span",
+          "smallest_node_id",
+          "opaque"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "movement_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "link_id",
+          "kind",
+          "nodes",
+          "status",
+          "source_rule_ids"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "analysis_id",
+          "acceptance",
+          "status",
+          "nodes",
+          "edges",
+          "observed_shapes"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "analysis_id": {
+            "type": "string"
+          },
+          "acceptance": {
+            "type": "string"
+          },
+          "status": {
+            "const": "conditional_alternative_not_merged"
+          },
+          "nodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/node"
+            }
+          },
+          "edges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/edge"
+            }
+          },
+          "observed_shapes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/shape"
+            }
+          }
+        }
+      }
+    },
+    "observed_shapes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/shape"
+      }
+    },
+    "target": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/node"
+        }
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "span": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "node_id",
+        "path",
+        "kind",
+        "label",
+        "surface",
+        "token_span",
+        "char_span",
+        "token_ids",
+        "parent_id",
+        "child_ids",
+        "sibling_ids",
+        "position",
+        "ancestor_ids",
+        "features",
+        "index",
+        "empty_role",
+        "head_node_id",
+        "head_status",
+        "function",
+        "function_status",
+        "observation_status"
+      ],
+      "properties": {
+        "node_id": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "word",
+            "elided_terminal",
+            "gap",
+            "empty",
+            "triangle",
+            "branch"
+          ]
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "surface": {
+          "type": "string"
+        },
+        "token_span": {
+          "$ref": "#/$defs/span"
+        },
+        "char_span": {
+          "$ref": "#/$defs/span"
+        },
+        "token_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "parent_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "child_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sibling_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "position": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "ancestor_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "index": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "empty_role": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "head_node_id": {
+          "type": "null"
+        },
+        "head_status": {
+          "const": "unknown_unlicensed"
+        },
+        "function": {
+          "type": "null"
+        },
+        "function_status": {
+          "const": "unknown_unlicensed"
+        },
+        "observation_status": {
+          "enum": [
+            "validated",
+            "provisional"
+          ]
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parent_id",
+        "child_id",
+        "position",
+        "sibling_ids",
+        "edge_status"
+      ],
+      "properties": {
+        "parent_id": {
+          "type": "string"
+        },
+        "child_id": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sibling_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "edge_status": {
+          "enum": [
+            "observed",
+            "provisional"
+          ]
+        }
+      }
+    },
+    "atom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fact_id",
+        "predicate",
+        "subject_node_id",
+        "object_node_id",
+        "value",
+        "evidence_kind",
+        "uncertainty",
+        "source_rule_ids",
+        "provenance",
+        "proof_path"
+      ],
+      "properties": {
+        "fact_id": {
+          "type": "string",
+          "pattern": "^f[0-9]{5}$"
+        },
+        "predicate": {
+          "type": "string"
+        },
+        "subject_node_id": {
+          "type": "string"
+        },
+        "object_node_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value": {},
+        "evidence_kind": {
+          "enum": [
+            "validated_tree_observation",
+            "provisional_tree_observation"
+          ]
+        },
+        "uncertainty": {
+          "enum": [
+            "none",
+            "provisional"
+          ]
+        },
+        "source_rule_ids": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "provisional_working_tree",
+              "validated_canonical_tree"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "proof_path": {
+          "type": "string"
+        }
+      }
+    },
+    "shape": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parent_id",
+        "shape",
+        "candidate_concept_ids",
+        "status",
+        "licensed_functions"
+      ],
+      "properties": {
+        "parent_id": {
+          "type": "string"
+        },
+        "shape": {
+          "type": "string"
+        },
+        "candidate_concept_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "const": "observed_shape_only_pending_independent_approval"
+        },
+        "licensed_functions": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    }
+  }
+}
