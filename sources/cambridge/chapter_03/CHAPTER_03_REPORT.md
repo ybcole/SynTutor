@@ -89,3 +89,10 @@ Added 48 original, source-cited records OTH-188–OTH-235, representing 46 class
 ## Phase B autonomous continuation — 2026-11-10, printed pp. 171–178
 
 Added **51 independently paraphrased source-cited classifications**, OTH-236–OTH-286, with valid-usage distinctions and specific exceptions. See `PHASE_B_PP171_178_REPORT.md` for per-page coverage. Chapter 3 now has **105 extracted / 142** printed pages, **3 chapter-contents-only skips**, and **34 unprocessed (179–212)**. Book-wide unprocessed pages: **1,644**. No new runtime detector, lesson, quiz or model metric is claimed. Continue at printed p. 179 without manual approval pauses.
+
+
+---
+
+## Phase B autonomous continuation — 2026-11-11, printed pp. 179–186
+
+Added **57 paraphrased, narrowly cited records**, OTH-287–OTH-343 (42 classifications and 15 descriptive generalizations), with two original English examples apiece and documented scope qualifications. See `PHASE_B_PP179_186_REPORT.md` for an eight-page source and exception audit. Chapter 3 now has **113 extracted / 142** printed pages; **3 justified contents-only skips**, **26 unprocessed (187–212)**. Full-book unprocessed count is **1,636**. No new runtime detectors, active lesson/quiz generation, precision/recall figures, or independent expert approval are claimed. Continue extraction at printed **p. 187** without manual approval stops.
