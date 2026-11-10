@@ -1826,5 +1826,2132 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "diagnostic": null
+  },
+  {
+    "id": "MORPH-024",
+    "domain": "morphology",
+    "concept": "Syncretism among verb inflectional forms",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Different grammatical forms of one verb lexeme may be expressed by an identical word form; this identity is syncretism.",
+    "condition": "Apply when a verb lexeme has separately justified inflectional functions but the same word shape realises more than one function.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She decided yesterday. [preterite]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has decided already. [past participle]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.2 Syncretism",
+        "pages": [
+          76
+        ],
+        "pdf_pages": [
+          96
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Syncretism among verb inflectional forms",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. The matching surface word need not represent the same inflectional category in both clauses.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-025",
+    "domain": "morphology",
+    "concept": "Preterite licensing in a canonical finite clause",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A canonical clause can use a preterite verb as its finite head, but not a bare past participle as its only verbal head.",
+    "condition": "Apply when the sole lexical verb of a canonical finite main clause is intended as the finite preterite rather than as a perfect or passive participle.",
+    "violation": "Using the past participle form, without the auxiliary that would license it, as the finite preterite in a canonical clause.",
+    "exceptions": [
+      {
+        "description": "Regular verb preterites and past participles can be syncretic; their spelling alone cannot decide which function occurs.",
+        "pages": [
+          76
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She broke the glass.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They chose the last option.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She broken the glass.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They chosen the last option.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.2 Syncretism",
+        "pages": [
+          76,
+          77
+        ],
+        "pdf_pages": [
+          96,
+          97
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preterite licensing in a canonical finite clause",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. ",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "Using the past participle form, without the auxiliary that would license it, as the finite preterite in a canonical clause.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She broken the glass. ||| She broke the glass.",
+        "They chosen the last option. ||| They chose the last option."
+      ],
+      "learner_explanation": "A canonical clause can use a preterite verb as its finite head, but not a bare past participle as its only verbal head. In this construction, using the past participle form, without the auxiliary that would license it, as the finite preterite in a canonical clause. Use the corrected form shown by the diagnostic when the full sentence context supports it.",
+      "corrected_paragraph_template": "Replace only the confirmed incorrect phrase in the full paragraph; preserve its surrounding meaning and re-run all detectors before accepting the revision.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She has broken the glass.",
+        "The last option was chosen."
+      ],
+      "lesson_tags": [
+        "verb-inflection",
+        "cambridge-ch03"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "MORPH-026",
+    "domain": "morphology",
+    "concept": "Past participle complement of perfect auxiliary have",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Perfect auxiliary have selects a verb in its past participle form.",
+    "condition": "Apply to the lexical verb immediately governed by perfect auxiliary have, has, or had, including perfect constructions with intervening eligible modifiers.",
+    "violation": "The selected verb occurs in a preterite or other unlicensed form instead of the past participle.",
+    "exceptions": [
+      {
+        "description": "Regular preterite and past participle forms can look identical; surface form equality is not an error.",
+        "pages": [
+          76
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They have driven home.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina had written the report.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They have drove home.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Mina had wrote the report.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§§1.2–1.3 Syncretism; The past participle",
+        "pages": [
+          76,
+          77
+        ],
+        "pdf_pages": [
+          96,
+          97
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past participle complement of perfect auxiliary have",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. ",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "The selected verb occurs in a preterite or other unlicensed form instead of the past participle.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They have drove home. ||| They have driven home.",
+        "Mina had wrote the report. ||| Mina had written the report."
+      ],
+      "learner_explanation": "Perfect auxiliary have selects a verb in its past participle form. In this construction, the selected verb occurs in a preterite or other unlicensed form instead of the past participle. Use the corrected form shown by the diagnostic when the full sentence context supports it.",
+      "corrected_paragraph_template": "Replace only the confirmed incorrect phrase in the full paragraph; preserve its surrounding meaning and re-run all detectors before accepting the revision.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They drove home.",
+        "Mina wrote the report.",
+        "They have visited the museum."
+      ],
+      "lesson_tags": [
+        "verb-inflection",
+        "cambridge-ch03"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "MORPH-027",
+    "domain": "morphology",
+    "concept": "Morphological evidence for inflectional categories",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An inflectional distinction needs at least one lexeme that overtly realises the contrast; grammatical construction distinctions alone are insufficient.",
+    "condition": "Apply when deciding whether two syntactically different verb uses warrant separate categories in the inflectional paradigm.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She goes on Mondays; they go on Mondays. [contrasting present forms]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She sang yesterday; she has sung before. [distinct preterite and participle]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.2 Syncretism",
+        "pages": [
+          76,
+          77
+        ],
+        "pdf_pages": [
+          96,
+          97
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Morphological evidence for inflectional categories",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. The test is existence of a stable realisation contrast, not whether every verb exhibits it.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-028",
+    "domain": "morphology",
+    "concept": "Imperative and subjunctive are clause constructions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The imperative and subjunctive use an identical verb form even though their clauses have different syntactic patterns.",
+    "condition": "Apply to contrasts between plain-form verbs in imperative main clauses and mandative subjunctive subordinate clauses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Be patient. [imperative]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The supervisor insisted that she be patient. [subjunctive]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.2 Syncretism",
+        "pages": [
+          77
+        ],
+        "pdf_pages": [
+          97
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Imperative and subjunctive are clause constructions",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Do not invent separate imperative or subjunctive verb inflections.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-029",
+    "domain": "morphology",
+    "concept": "Preterite agreement is lexeme-specific to be",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Only be shows a productive subject-number contrast in the preterite; other lexical verbs do not acquire preterite agreement categories by analogy.",
+    "condition": "Apply when classifying preterite forms across different subject persons and numbers, contrasting was/were with invariant lexical preterites.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was pleased; they were pleased.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She looked pleased; they looked pleased.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.2 Syncretism",
+        "pages": [
+          77
+        ],
+        "pdf_pages": [
+          97
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preterite agreement is lexeme-specific to be",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [
+      "AGR-002"
+    ],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Corroborates existing AGR-002 rather than replacing its approved scope.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-030",
+    "domain": "morphology",
+    "concept": "Shared past participle in perfect and passive",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Perfect and passive constructions use the same past participle inflectional category, despite differences in their syntax and meaning.",
+    "condition": "Apply when identifying verb forms governed by perfect have and passive be.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They have painted the gate. [perfect]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gate was painted by the neighbours. [passive]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.3 The past participle",
+        "pages": [
+          77,
+          78
+        ],
+        "pdf_pages": [
+          97,
+          98
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Shared past participle in perfect and passive",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Passive eligibility is narrower than perfect eligibility; passive and perfect are not interchangeable.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-031",
+    "domain": "morphology",
+    "concept": "Restrictions on verbal passive availability",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Verbal passives largely involve transitive predicates or verbs with particular prepositional complements, not arbitrary intransitive predicates.",
+    "condition": "Apply when describing which predicates can normally occur in the verbal passive construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parcel was delivered yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The warning was referred to in the meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.3 The past participle",
+        "pages": [
+          77
+        ],
+        "pdf_pages": [
+          97
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restrictions on verbal passive availability",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Do not overgeneralise the restriction into banning participial adjectives or every exceptional passive.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-032",
+    "domain": "morphology",
+    "concept": "Past-participial clause and attributive VP",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A postnominal past-participial clause can retain verbal dependents, whereas an attributive pre-head participial VP is more restricted.",
+    "condition": "Apply when contrasting a past participle heading a postnominal reduced clause with an attributive VP modifying a noun before its head.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The package delivered by the courier arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "An expertly prepared meal was served.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.3 The past participle",
+        "pages": [
+          78
+        ],
+        "pdf_pages": [
+          98
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-participial clause and attributive VP",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Dependents licensed in a postnominal clause do not automatically occur inside the attributive premodifier.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-033",
+    "domain": "morphology",
+    "concept": "Past-participial verb and participial adjective",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A past-participial word can be a verb describing an event or a derived adjective describing a state; some strings permit both analyses.",
+    "condition": "Apply to participial predicates using verbal dependents, adjectival complementation, or degree modification to distinguish their category.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gate was closed by the caretaker. [verbal event]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gate looked closed. [adjectival state]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.3 The past participle",
+        "pages": [
+          78,
+          79
+        ],
+        "pdf_pages": [
+          98,
+          99
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-participial verb and participial adjective",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. A short predicative clause with be may remain ambiguous between a verbal passive and an adjective.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-034",
+    "domain": "morphology",
+    "concept": "Adjective phrase complements of seem",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Seem and related copular verbs can take participial adjectives as complements, without thereby licensing arbitrary participial clauses.",
+    "condition": "Apply when a seeming or looking predicate is followed by a participial expression; classify it by adjectival versus verbal syntax.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The machine seemed damaged. [participial adjective]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The story seemed convincing. [participial adjective]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§§1.3–1.4 Participial verbs and adjectives",
+        "pages": [
+          79,
+          81
+        ],
+        "pdf_pages": [
+          99,
+          101
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjective phrase complements of seem",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Avoid flagging ambiguous participial words solely because they occur after seem.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-035",
+    "domain": "morphology",
+    "concept": "Degree modification of participial verbs",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Degree adverbs very and too modify adjectives, not verbs whose participial forms take verbal objects or passive dependents.",
+    "condition": "Apply where very or too directly modifies a participial verb in an unambiguously verbal construction, rather than a participial adjective.",
+    "violation": "Treating an unambiguously verbal participle as gradable with the adjectival degree marker very or too.",
+    "exceptions": [
+      {
+        "description": "Participial adjectives may take degree modifiers; a participle that cannot be so modified need not be a verb.",
+        "pages": [
+          79,
+          81
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They are carefully watering the seedlings.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The seedlings were watered thoroughly by the gardener.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They are very watering the seedlings.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The seedlings were too watered by the gardener.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§§1.3–1.4 Participial verbs and adjectives",
+        "pages": [
+          79,
+          81
+        ],
+        "pdf_pages": [
+          99,
+          101
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree modification of participial verbs",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. ",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "Treating an unambiguously verbal participle as gradable with the adjectival degree marker very or too.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They are very watering the seedlings. ||| They are carefully watering the seedlings.",
+        "The seedlings were too watered by the gardener. ||| The seedlings were watered thoroughly by the gardener."
+      ],
+      "learner_explanation": "Degree adverbs very and too modify adjectives, not verbs whose participial forms take verbal objects or passive dependents. In this construction, treating an unambiguously verbal participle as gradable with the adjectival degree marker very or too. Use the corrected form shown by the diagnostic when the full sentence context supports it.",
+      "corrected_paragraph_template": "Replace only the confirmed incorrect phrase in the full paragraph; preserve its surrounding meaning and re-run all detectors before accepting the revision.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The gardener was very tired.",
+        "The children were too frightened to speak.",
+        "The movie was very entertaining."
+      ],
+      "lesson_tags": [
+        "verb-inflection",
+        "cambridge-ch03"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "MORPH-036",
+    "domain": "morphology",
+    "concept": "One-way degree diagnostic for participial adjectives",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Successful modification with very or too supports adjective status, but absence of such modification does not by itself prove verb status.",
+    "condition": "Apply when inferring word category from gradability of a form that historically or morphologically resembles a participle.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The audience was very excited. [gradable adjective]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The vase looked broken. [adjective not necessarily gradable]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§§1.3–1.4 Participial verbs and adjectives",
+        "pages": [
+          79,
+          81
+        ],
+        "pdf_pages": [
+          99,
+          101
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "One-way degree diagnostic for participial adjectives",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. This is a one-direction diagnostic; do not force every adjective to accept very.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-037",
+    "domain": "morphology",
+    "concept": "Gerund-participle as a unified verb inflection",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "English uses one gerund-participle verb form for uses traditionally split into gerunds and present participles.",
+    "condition": "Apply to verbal -ing forms in progressive constructions, noun-modifying clauses, and gerund-participial clauses in nominal functions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They are repairing the roof. [progressive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Repairing the roof took all afternoon. [clause functioning as subject]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.4 The gerund-participle",
+        "pages": [
+          80,
+          82,
+          83
+        ],
+        "pdf_pages": [
+          100,
+          102,
+          103
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gerund-participle as a unified verb inflection",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Gerundial nouns and participial adjectives are distinct lexemes/categories and must not be merged with the verbal inflection.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-038",
+    "domain": "morphology",
+    "concept": "Gerund-participle is not present-tense morphology",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The gerund-participle does not itself mark present tense; its time interpretation depends on the containing construction.",
+    "condition": "Apply to -ing forms in progressive and modifying clauses whose larger construction determines temporal reference.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitors are waiting now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitors were waiting yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.4 The gerund-participle",
+        "pages": [
+          80
+        ],
+        "pdf_pages": [
+          100
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gerund-participle is not present-tense morphology",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. The same waiting form is compatible with different times of the containing clause.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-039",
+    "domain": "morphology",
+    "concept": "Gerund-participle compared with participial adjective",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An -ing participial form can be a verb with verbal dependents or an adjective with adjectival distribution; bare predicates may be ambiguous.",
+    "condition": "Apply when an -ing expression follows be or occurs as a modifier, using complements, appear/seem substitution, and degree adverbs as diagnostics.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The presenters are entertaining the visitors. [verb]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The presentation is entertaining. [adjective]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.4 The gerund-participle",
+        "pages": [
+          80,
+          81
+        ],
+        "pdf_pages": [
+          100,
+          101
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gerund-participle compared with participial adjective",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Ellipsis and intransitive uses can make apparent category ambiguity genuine.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-040",
+    "domain": "morphology",
+    "concept": "Gerundial noun versus gerund-participial verb",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A gerundial noun heads an NP and has nominal inflection and dependents, while a gerund-participial verb heads a clause with verbal dependents.",
+    "condition": "Apply when discriminating an -ing noun in an NP from an -ing verb in a gerund-participial clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The demolition of the shed surprised us. [noun]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Demolishing the shed surprised us. [verb]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.4 The gerund-participle",
+        "pages": [
+          81,
+          82,
+          83
+        ],
+        "pdf_pages": [
+          101,
+          102,
+          103
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gerundial noun versus gerund-participial verb",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. An unmodified standalone -ing form may be ambiguous; genitives can occur with both categories.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-041",
+    "domain": "morphology",
+    "concept": "Determiners cannot directly govern gerund-participial verbs",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A nominal determiner cannot directly determine a gerund-participial verb that retains a direct object; use a gerundial noun plus its prepositional complement, or a verbal clause without a determiner.",
+    "condition": "Apply where a nominal determiner such as the appears directly before an -ing verbal head followed by its NP object in the same constituent.",
+    "violation": "Combining the determiner the with a verbal -ing predicate and its direct object as though the sequence were a noun phrase.",
+    "exceptions": [
+      {
+        "description": "An -ing noun may take the and a following of-phrase; a participial verb may instead take an NP object without a determiner.",
+        "pages": [
+          81,
+          82
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Painting the fence took hours.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The painting of the fence took hours.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The painting the fence took hours.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The repairing the roof delayed the workers.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.4 The gerund-participle",
+        "pages": [
+          81,
+          82
+        ],
+        "pdf_pages": [
+          101,
+          102
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determiners cannot directly govern gerund-participial verbs",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. ",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "Combining the determiner the with a verbal -ing predicate and its direct object as though the sequence were a noun phrase.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The painting the fence took hours. ||| The painting of the fence took hours.",
+        "The repairing the roof delayed the workers. ||| The repairing of the roof delayed the workers."
+      ],
+      "learner_explanation": "A nominal determiner cannot directly determine a gerund-participial verb that retains a direct object; use a gerundial noun plus its prepositional complement, or a verbal clause without a determiner. In this construction, combining the determiner the with a verbal -ing predicate and its direct object as though the sequence were a noun phrase. Use the corrected form shown by the diagnostic when the full sentence context supports it.",
+      "corrected_paragraph_template": "Replace only the confirmed incorrect phrase in the full paragraph; preserve its surrounding meaning and re-run all detectors before accepting the revision.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The painting of the fence took hours.",
+        "Painting the fence took hours.",
+        "The painting the tourists admired was valuable."
+      ],
+      "lesson_tags": [
+        "verb-inflection",
+        "cambridge-ch03"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "MORPH-042",
+    "domain": "morphology",
+    "concept": "Adjectival and adverbial modification of -ing heads",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Gerundial nouns tend to take adjective modifiers, whereas gerund-participial verbs can take corresponding adverbs.",
+    "condition": "Apply when categorising an -ing head by whether a modifier behaves syntactically as an adjective or adverb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Their reckless cutting of the hedge caused damage. [noun]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Their recklessly cutting the hedge caused damage. [verb]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.4 The gerund-participle",
+        "pages": [
+          82
+        ],
+        "pdf_pages": [
+          102
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival and adverbial modification of -ing heads",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. The modifier category is a diagnostic, not a guarantee that all contexts are unambiguous.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-043",
+    "domain": "morphology",
+    "concept": "Plural inflection of gerundial nouns",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Gerundial nouns can acquire nominal plural morphology; verbal gerund-participles cannot take plural inflection.",
+    "condition": "Apply when analysing an -ing form with -s as a plural noun versus an uninflected gerund-participial verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Repeated readings help students remember. [plural noun]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Reading the passage helped the students remember. [verbal clause]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.4 The gerund-participle",
+        "pages": [
+          82
+        ],
+        "pdf_pages": [
+          102
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural inflection of gerundial nouns",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Not every gerundial noun is naturally plural in every interpretation.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-044",
+    "domain": "morphology",
+    "concept": "Plain form shared across three construction types",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Imperatives, subjunctive clauses, and infinitival clauses select a shared plain verb form rather than distinct morphological forms.",
+    "condition": "Apply to a verb lacking a tense suffix in imperative, mandative subjunctive, or infinitival constructions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Remain calm. [imperative]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The judge required that she remain calm. [subjunctive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "It is important to remain calm. [infinitival]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.5 The plain form",
+        "pages": [
+          83
+        ],
+        "pdf_pages": [
+          103
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plain form shared across three construction types",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. A separate inflectional 'imperative' or 'subjunctive' is not postulated.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-045",
+    "domain": "morphology",
+    "concept": "Infinitival to as an independent syntactic word",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The infinitival marker to is a separate word rather than a verb prefix, permitting ellipsis, coordination, and an intervening adverb.",
+    "condition": "Apply when representing infinitival to in syntactic structure or judging the status of an adverb between to and a plain form verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She intends to quietly finish the essay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He wants to sing and dance at the festival.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I hope to soon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.5 The plain form",
+        "pages": [
+          84
+        ],
+        "pdf_pages": [
+          104
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival to as an independent syntactic word",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Do not label a split infinitive ungrammatical solely because an adverb intervenes.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-046",
+    "domain": "morphology",
+    "concept": "Two present tense forms and subject agreement",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Most non-modal verbs distinguish a third-person-singular present form from a plain present form; the latter is used with other subject persons and numbers.",
+    "condition": "Apply to ordinary present-tense lexical verbs outside their plain-form imperative, subjunctive, or infinitival constructions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The child plays outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The children play outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.6 The present tense forms",
+        "pages": [
+          84,
+          85
+        ],
+        "pdf_pages": [
+          104,
+          105
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Two present tense forms and subject agreement",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Be has special irregular forms, and modal auxiliaries do not agree in this way; AGR-002 already addresses detection.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-047",
+    "domain": "morphology",
+    "concept": "Plain present and plain form syncretism",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "For verbs other than be, the plain present and plain infinitival/imperative/subjunctive form commonly sound alike but differ grammatically.",
+    "condition": "Apply when identical surface forms occur in tensed plain present contexts versus untensed plain-form clause constructions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They visit the campus every Friday. [plain present]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They wish to visit the campus soon. [plain form]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.6 The present tense forms",
+        "pages": [
+          84,
+          85
+        ],
+        "pdf_pages": [
+          104,
+          105
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plain present and plain form syncretism",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. The verb be shows an overt difference between present are and plain be.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-048",
+    "domain": "morphology",
+    "concept": "Tensed present and untensed plain form",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Present-tense forms alternate with preterites and show subject-agreement contrasts, unlike the untensed plain form selected by imperative, subjunctive and infinitival constructions.",
+    "condition": "Apply when distinguishing a plain present verb from an otherwise identical plain form by tense contrast and licensing construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She says the organisers meet on Fridays. [present]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She said the organisers met on Fridays. [preterite]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They demanded that he meet the organisers. [plain form]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.6 The present tense forms",
+        "pages": [
+          84,
+          85
+        ],
+        "pdf_pages": [
+          104,
+          105
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Tensed present and untensed plain form",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. The subjunctive plain form remains unchanged when the governing verb is backshifted.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-049",
+    "domain": "morphology",
+    "concept": "Preterite past time, modal remoteness, and backshift",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The same preterite inflection can express past time, modal remoteness in certain subordinate constructions, or backshift in reported content.",
+    "condition": "Apply when interpreting a preterite form whose temporal or modal contribution depends on the surrounding clause construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They travelled yesterday. [past]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If he travelled tomorrow, he would miss the event. [modal remoteness]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She said he travelled too often. [backshift]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.7 The preterite and irrealis were",
+        "pages": [
+          85,
+          86
+        ],
+        "pdf_pages": [
+          105,
+          106
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preterite past time, modal remoteness, and backshift",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. A preterite in a remote conditional is not automatically an error merely because it refers to future time.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-050",
+    "domain": "morphology",
+    "concept": "Irrealis were in modal remoteness",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The special irrealis form were occurs with first- and third-person singular be in certain remote conditional and wish constructions.",
+    "condition": "Apply to first-/third-person singular clauses with modal remoteness where were contrasts with past-time preterite was.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she were here, she could help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wish I were elsewhere today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.7 The preterite and irrealis were",
+        "pages": [
+          86,
+          87,
+          88
+        ],
+        "pdf_pages": [
+          106,
+          107,
+          108
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Irrealis were in modal remoteness",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. This is not a general past subjunctive tense for all verbs; was is also widespread in these remoteness constructions.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-051",
+    "domain": "morphology",
+    "concept": "Informal preterite was in remote constructions",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "In many remote conditional and wish clauses, preterite was is a widespread informal alternative to irrealis were rather than a general grammatical error.",
+    "condition": "Apply to first-/third-person singular remote conditionals and complements of wish, excluding inversion and special fixed expressions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she was here, she could help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wish I was taller.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "If she were here, she could help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.7 The preterite and irrealis were",
+        "pages": [
+          86
+        ],
+        "pdf_pages": [
+          106
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Informal preterite was in remote constructions",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Were is required in inversion such as 'were I ...' and in the fixed expression 'as it were'; don't transform ordinary informal was into an error.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-052",
+    "domain": "morphology",
+    "concept": "Irrealis and subjunctive are separate categories",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Irrealis were is a mood-specific form of be, while the subjunctive is a clause construction using the plain verb form.",
+    "condition": "Apply when contrasting the plain-form mandative subjunctive with be in remote conditionals or formal conditional subjunctives.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is crucial that she be present. [subjunctive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she were present, she would vote. [irrealis]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.7 The preterite and irrealis were",
+        "pages": [
+          87,
+          88
+        ],
+        "pdf_pages": [
+          107,
+          108
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Irrealis and subjunctive are separate categories",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Neither contrast is best described as a present-versus-past tense opposition.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-053",
+    "domain": "morphology",
+    "concept": "Overextension of irrealis in some speaker varieties",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Some speakers extend irrealis were beyond prototypical modal remoteness to contexts ordinarily using preterite was.",
+    "condition": "Apply only when describing marginal varieties in backshift and non-remote conditional environments resembling canonical irrealis settings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She asked whether he was arriving. [usual]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Some writers use were in related reported clauses. [reported variant]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.7 The preterite and irrealis were",
+        "pages": [
+          87
+        ],
+        "pdf_pages": [
+          107
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Overextension of irrealis in some speaker varieties",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. The extension is variable; it must not be hard-coded as obligatory Standard English or flagged as universally impossible.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-054",
+    "domain": "morphology",
+    "concept": "Primary and secondary verb inflection",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Primary verb forms carry tense or mood inflection; secondary forms comprise the plain form, gerund-participle and past participle.",
+    "condition": "Apply when assigning an English verb form to its primary/secondary paradigm class.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They were happy. [primary]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They have spoken. [past participle secondary]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They hope to speak. [plain secondary]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.8 Primary and secondary forms and finiteness",
+        "pages": [
+          88
+        ],
+        "pdf_pages": [
+          108
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary and secondary verb inflection",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Irrealis were is primary despite its restricted subordinate distribution.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-055",
+    "domain": "morphology",
+    "concept": "Clause finiteness is a syntactic category",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "English finiteness is classified at clause level: primary verbs, imperative and subjunctive plain forms occur in finite clauses, whereas infinitivals and participials are non-finite.",
+    "condition": "Apply to full clause constructions rather than assigning a finite/non-finite feature solely from the surface form of a verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Close the door. [finite imperative]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She requires that he close the door. [finite subjunctive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "To close the door would help. [non-finite infinitival]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.8.1 Finiteness as a syntactic rather than inflectional category in English",
+        "pages": [
+          88,
+          89
+        ],
+        "pdf_pages": [
+          108,
+          109
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause finiteness is a syntactic category",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. The same plain verb form may occur in both finite and non-finite clauses; confirmed against the table on printed p. 89.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-056",
+    "domain": "morphology",
+    "concept": "Negative imperative differs from negative infinitival",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Imperative clauses can use auxiliary don't for negation, but negative infinitival clauses take not and cannot use do-support in the same position.",
+    "condition": "Apply to a negative infinitival clause introduced by infinitival to with a directly following auxiliary don't/do not construction.",
+    "violation": "Attempting imperative do-support after infinitival to in an otherwise infinitival subordinate clause.",
+    "exceptions": [
+      {
+        "description": "Do-support belongs to the negative imperative, which is a finite clause, not to the infinitival use of the plain form.",
+        "pages": [
+          89,
+          90
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She asked me not to leave.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Don't leave before dinner.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She asked me to don't leave.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "He wanted to don't interrupt the meeting.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.8.2 Constructions with a plain form verb",
+        "pages": [
+          89,
+          90
+        ],
+        "pdf_pages": [
+          109,
+          110
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative imperative differs from negative infinitival",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Attempting imperative do-support after infinitival to in an otherwise infinitival subordinate clause.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She asked me to don't leave. ||| She asked me not to leave.",
+        "He wanted to don't interrupt the meeting. ||| He wanted not to interrupt the meeting."
+      ],
+      "learner_explanation": "Imperative clauses can use auxiliary don't for negation, but negative infinitival clauses take not and cannot use do-support in the same position. In this construction, attempting imperative do-support after infinitival to in an otherwise infinitival subordinate clause. Use the corrected form shown by the diagnostic when the full sentence context supports it.",
+      "corrected_paragraph_template": "Replace only the confirmed incorrect phrase in the full paragraph; preserve its surrounding meaning and re-run all detectors before accepting the revision.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Don't leave before dinner.",
+        "Do not interrupt the meeting.",
+        "She asked me not to leave."
+      ],
+      "lesson_tags": [
+        "verb-inflection",
+        "cambridge-ch03"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "MORPH-057",
+    "domain": "morphology",
+    "concept": "Finite status of imperative and subjunctive clauses",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Imperatives normally behave as finite main clauses, and subjunctives are finite despite their plain verb form and usual subordination.",
+    "condition": "Apply when distinguishing plain-form imperative and subjunctive constructions from non-finite infinitivals.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Don't shout during the lecture. [imperative]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The chair requested that she attend. [subjunctive]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.8.2 Constructions with a plain form verb",
+        "pages": [
+          89,
+          90
+        ],
+        "pdf_pages": [
+          109,
+          110
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite status of imperative and subjunctive clauses",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. Subjunctive main clauses are limited to fixed expressions; an overt subject is generally required in subjunctive clauses.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-058",
+    "domain": "morphology",
+    "concept": "Infinitival subjects and subordinator for",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Non-finite infinitivals generally lack an overt subject; where one occurs, it is introduced by for and personal pronouns appear in accusative case.",
+    "condition": "Apply to overt-subject to-infinitival subordinate clauses as contrasted with tensed declarative that-clauses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It would be unusual for him to arrive late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is strange that he arrives late.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.8.2 Constructions with a plain form verb",
+        "pages": [
+          90
+        ],
+        "pdf_pages": [
+          110
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival subjects and subordinator for",
+        "relation": "unverified",
+        "note": "Burton-Roberts text was not supplied for an independent concept crosswalk in this extraction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. This is a structural contrast, not a claim that every infinitive must have for or an explicit subject.",
+    "diagnostic": null
   }
 ]

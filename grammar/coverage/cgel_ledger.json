@@ -498,142 +498,142 @@
     {
       "page": 71,
       "chapter": 3,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Chapter-opening table of contents only; no grammatical expository principles to extract.",
+      "evidence": "sources/cambridge/chapter_03/CHAPTER_03_REPORT.md"
     },
     {
       "page": 72,
       "chapter": 3,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Chapter-opening table of contents only; no grammatical expository principles to extract.",
+      "evidence": "sources/cambridge/chapter_03/CHAPTER_03_REPORT.md"
     },
     {
       "page": 73,
       "chapter": 3,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Chapter-opening table of contents only; no grammatical expository principles to extract.",
+      "evidence": "sources/cambridge/chapter_03/CHAPTER_03_REPORT.md"
     },
     {
       "page": 74,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/CHAPTER_03_REPORT.md"
     },
     {
       "page": 75,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/CHAPTER_03_REPORT.md"
     },
     {
       "page": 76,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 77,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 78,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 79,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 80,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 81,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 82,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 83,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 84,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 85,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 86,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 87,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 88,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 89,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 90,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md"
     },
     {
       "page": 91,
