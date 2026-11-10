@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "XAI-6 constrained naturalization provider candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "analysis_id",
+    "node_id",
+    "reading_level",
+    "paragraphs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai6-candidate-1.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "analysis_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "node_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "reading_level": {
+      "enum": [
+        "plain",
+        "standard",
+        "advanced"
+      ]
+    },
+    "paragraphs": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "level",
+          "text",
+          "supported_fact_ids",
+          "source_ids"
+        ],
+        "properties": {
+          "level": {
+            "enum": [
+              "short",
+              "deep"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3000
+          },
+          "supported_fact_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^f[0-9]{5}$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "source_ids": {
+            "type": "array",
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  }
+}
