@@ -1,7 +1,7 @@
 # Master Prompt — SynTutor Contextual XAI Engine
 
 **Use with:** [XAI Master Plan](XAI_MASTER_PLAN.md) and [Uploaded-book Source Audit & Multi-Error Protocol](XAI_SOURCE_AUDIT_MULTI_ERROR.md)  
-**Status:** Implementation instructions; XAI-PRE source contracts and **XAI-0 real-parser baseline** have been implemented and measured. XAI-1–XAI-8 are subsequent work. See [XAI-0 acceptance](../reports/xai-0-baseline-acceptance-2026-11-10.md).  
+**Status:** Implementation instructions; XAI-PRE contracts, XAI-0 real-parser baseline and **XAI-1 page-checked English-only concept registry** are implemented. Independent human linguistic approval remains outstanding; XAI-2–XAI-8 are subsequent work. See [XAI-1 acceptance](../reports/xai-1-source-concepts-acceptance-2026-11-10.md).  
 **Authority:** Noel Burton-Roberts, *Analysing Sentences*, Third Edition (2011), for tree structure; Huddleston and Pullum et al., *The Cambridge Grammar of the English Language* (2002), for descriptive grammatical knowledge subject to review and source-specific differences.  
 **Repository:** `ybcole/SynTutor`
 
@@ -67,7 +67,9 @@ Audit the current evidence pipeline and 50+ representative development sentences
 
 Create normalized source-linked records for reviewed B–R constructions and Cambridge concepts. Keep separate scope, exception conditions, printed pages, chapter profiles, ontology crosswalks, review status and runtime eligibility.
 
-Explicitly separate `descriptive_generalization`, `classification`, `constraint`, `variety_restricted`, `stylistic_or_prescriptive`. Only reviewed, implemented constraints may diagnose grammar errors. A source-extracted concept does not become an executable rule automatically.
+Explicitly separate `descriptive_generalization`, `classification`, `constraint`, `variety_restricted`, `stylistic_or_prescriptive`. Only independently approved and executable constraints may diagnose grammar errors. A source-extracted concept does not become an executable rule automatically.
+
+**XAI-1 delivered:** [source-checked catalog](../../grammar/xai_concepts/catalog.json), [schema](../../grammar/xai_concepts/catalog.schema.json), [validator](../../server/xai_concepts.py), [tests](../../server/test_xai_concepts.py), and [acceptance](../reports/xai-1-source-concepts-acceptance-2026-11-10.md). These 42 concepts and 21 template candidates are **not enabled** in `explanations.py` or `cambridge_evaluator.py`; XAI-2/3 need licensed sentence facts, and source-review sign-off must precede live teaching. Respect explicit CGEL vs B–R differences for sentence/clause, coordination and complements.
 
 ### Phase 2 — Typed fact graph
 

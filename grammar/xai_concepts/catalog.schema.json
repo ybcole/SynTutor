@@ -1,0 +1,471 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://syntutor.local/schemas/xai1-concept-catalog-1.0",
+  "title": "SynTutor XAI-1: English-only, non-runtime source-linked concept candidates",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "edition_authority",
+    "source_scope",
+    "source_audit_path",
+    "review_policy",
+    "concepts",
+    "crosswalks",
+    "template_candidates",
+    "pending_review"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai1-concept-catalog-1.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "edition_authority": {
+      "const": "BR3_BURTON_ROBERTS_2011_FOR_TREE_CGEL_2002_FOR_GRAMMATICAL_CONCEPTS"
+    },
+    "source_scope": {
+      "const": "selected_printed_pages_only_no_full_book_claim"
+    },
+    "source_audit_path": {
+      "const": "grammar/xai_pre/source_audit.json"
+    },
+    "review_policy": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 700
+    },
+    "concepts": {
+      "type": "array",
+      "minItems": 24,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "book_id",
+          "chapter",
+          "printed_pages",
+          "kind",
+          "scope",
+          "pedagogy",
+          "review",
+          "runtime",
+          "crosswalk_ids"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$",
+            "maxLength": 120
+          },
+          "book_id": {
+            "enum": [
+              "BR3",
+              "CGEL"
+            ]
+          },
+          "chapter": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "printed_pages": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2500
+            }
+          },
+          "kind": {
+            "enum": [
+              "classification",
+              "descriptive_generalization",
+              "constraint",
+              "variety_restricted",
+              "stylistic_or_prescriptive"
+            ]
+          },
+          "scope": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "target_labels",
+              "profiles",
+              "precondition",
+              "exceptions",
+              "alternatives"
+            ],
+            "properties": {
+              "target_labels": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 180
+                }
+              },
+              "profiles": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 180
+                }
+              },
+              "precondition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 700
+              },
+              "exceptions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 700
+                },
+                "uniqueItems": true
+              },
+              "alternatives": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 700
+                },
+                "uniqueItems": true
+              }
+            }
+          },
+          "pedagogy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "short",
+              "expanded",
+              "examples"
+            ],
+            "properties": {
+              "short": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 700
+              },
+              "expanded": {
+                "type": "string",
+                "minLength": 15,
+                "maxLength": 1600
+              },
+              "examples": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "positive",
+                  "contrast",
+                  "exception"
+                ],
+                "properties": {
+                  "positive": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "sentence",
+                        "explanation",
+                        "status"
+                      ],
+                      "properties": {
+                        "sentence": {
+                          "type": "string",
+                          "minLength": 3,
+                          "maxLength": 320
+                        },
+                        "explanation": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 700
+                        },
+                        "status": {
+                          "const": "illustrative_not_parser_verified"
+                        }
+                      }
+                    }
+                  },
+                  "contrast": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "sentence",
+                        "explanation",
+                        "status"
+                      ],
+                      "properties": {
+                        "sentence": {
+                          "type": "string",
+                          "minLength": 3,
+                          "maxLength": 320
+                        },
+                        "explanation": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 700
+                        },
+                        "status": {
+                          "const": "illustrative_not_parser_verified"
+                        }
+                      }
+                    }
+                  },
+                  "exception": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "sentence",
+                        "explanation",
+                        "status"
+                      ],
+                      "properties": {
+                        "sentence": {
+                          "type": "string",
+                          "minLength": 3,
+                          "maxLength": 320
+                        },
+                        "explanation": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 700
+                        },
+                        "status": {
+                          "const": "illustrative_not_parser_verified"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "review": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "primary_text_inspected",
+              "method",
+              "checked_on",
+              "status",
+              "human_approved"
+            ],
+            "properties": {
+              "primary_text_inspected": {
+                "const": true
+              },
+              "method": {
+                "const": "assistant_targeted_page_comparison_with_uploaded_primary_pdf"
+              },
+              "checked_on": {
+                "type": "string",
+                "format": "date"
+              },
+              "status": {
+                "const": "SOURCE_CHECKED_PENDING_INDEPENDENT_REVIEW"
+              },
+              "human_approved": {
+                "const": false
+              }
+            }
+          },
+          "runtime": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "teaching_enabled",
+              "grammar_constraint_enabled",
+              "can_diagnose",
+              "can_repair"
+            ],
+            "properties": {
+              "teaching_enabled": {
+                "const": false
+              },
+              "grammar_constraint_enabled": {
+                "const": false
+              },
+              "can_diagnose": {
+                "const": false
+              },
+              "can_repair": {
+                "const": false
+              }
+            }
+          },
+          "crosswalk_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$",
+              "maxLength": 120
+            }
+          }
+        }
+      }
+    },
+    "crosswalks": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "left",
+          "right",
+          "relation",
+          "issue",
+          "do_not_auto_relabel",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$",
+            "maxLength": 120
+          },
+          "left": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$",
+            "maxLength": 120
+          },
+          "right": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$",
+            "maxLength": 120
+          },
+          "relation": {
+            "enum": [
+              "compatible",
+              "terminology_differs",
+              "analysis_differs",
+              "not_covered",
+              "unresolved"
+            ]
+          },
+          "issue": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 700
+          },
+          "do_not_auto_relabel": {
+            "const": true
+          },
+          "status": {
+            "enum": [
+              "source_compared_not_independently_human_approved",
+              "requires_dedicated_cross_framework_tree_review"
+            ]
+          }
+        }
+      }
+    },
+    "template_candidates": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "concept_id",
+          "target_kind",
+          "target_label",
+          "required_fact_keys",
+          "text",
+          "deep_text",
+          "stage",
+          "review_status",
+          "requires_fact_graph"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$",
+            "maxLength": 120
+          },
+          "concept_id": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$",
+            "maxLength": 120
+          },
+          "target_kind": {
+            "enum": [
+              "constituent",
+              "lexical",
+              "word",
+              "relation",
+              "feature"
+            ]
+          },
+          "target_label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 180
+          },
+          "required_fact_keys": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z_]+$",
+              "minLength": 2
+            }
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 700
+          },
+          "deep_text": {
+            "type": "string",
+            "minLength": 15,
+            "maxLength": 900
+          },
+          "stage": {
+            "const": "XAI_2_3_CANDIDATE_NOT_RUNTIME_ELIGIBLE"
+          },
+          "review_status": {
+            "const": "PENDING_INDEPENDENT_REVIEW"
+          },
+          "requires_fact_graph": {
+            "const": true
+          }
+        }
+      }
+    },
+    "pending_review": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 700
+      }
+    }
+  }
+}

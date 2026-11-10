@@ -1,6 +1,6 @@
 # SynTutor — XAI Master Plan: Sentence-Grounded Explanations for Every Tree Level
 
-**Status:** XAI-PRE technical contracts and **XAI-0 empirical baseline delivered**, source-review/owner sign-off pending. XAI-1–XAI-8 not implemented by these foundation phases. See [XAI-PRE report](../reports/xai-pre-acceptance-2026-11-10.md) and [XAI-0 measured acceptance](../reports/xai-0-baseline-acceptance-2026-11-10.md).  
+**Status:** XAI-PRE contracts, English-only **XAI-0 baseline**, and **XAI-1 source-linked concept registry implemented**. Independent human source approval is pending; XAI-2–XAI-8 remain unimplemented by these milestones. See [XAI-PRE](../reports/xai-pre-acceptance-2026-11-10.md), [XAI-0](../reports/xai-0-baseline-acceptance-2026-11-10.md), and [XAI-1 source acceptance](../reports/xai-1-source-concepts-acceptance-2026-11-10.md).  
 **Date:** 10 November 2026  
 **Repository:** `ybcole/SynTutor`  
 **Companion implementer prompt:** [MASTER_PROMPT_XAI.md](MASTER_PROMPT_XAI.md)  
@@ -401,7 +401,7 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 - Separate instructional descriptive rules from executable constraints.
 - Build original pedagogical paraphrases, not textbook quotations.
 
-**Gate:** representative reviewed concepts per priority construction, with positive and exception examples, source pages and crosswalk status.
+**Gate:** representative page-checked concepts per priority construction, with positive/contrast/exception examples, exact printed pages and crosswalk status. **XAI-1 technical delivery:** [42 English-only concepts and 21 non-runtime contextual template candidates](../../grammar/xai_concepts/catalog.json), [strict schema](../../grammar/xai_concepts/catalog.schema.json), [audit and approval gates](../reports/xai-1-source-concepts-acceptance-2026-11-10.md). Of eight crosswalks, some explicitly differ or remain unresolved. **Human/instructor linguistic sign-off is still pending; none of these candidates is live.**
 
 ### XAI-2 — Node and relationship fact engine
 
