@@ -14686,5 +14686,1433 @@
     "related_rules": [],
     "review_notes": "Extracted from the user-supplied full CGEL PDF, cited printed pages; original English examples, context-specific exception recorded. No new detector is being claimed.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-263",
+    "domain": "other",
+    "concept": "Parenthetical lexical modals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Parenthetical expressions such as I think and it seems can qualify a proposition without replacing the main clause's indicative form.",
+    "condition": "A lexical modality expression is interpolated into a declarative utterance.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The parenthetical relation can often be expressed by a separate matrix attitude clause, but the surface structures are different.",
+        "pages": [
+          175
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The project is, I think, almost finished.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The results are, it seems, reliable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.1 Parentheticals",
+        "pages": [
+          175
+        ],
+        "pdf_pages": [
+          195
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Parenthetical lexical modals",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-264",
+    "domain": "other",
+    "concept": "Three dimensions of modal meaning",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal auxiliaries are compared on three different dimensions: strength, kind and degree, none of which can be equated with the verb's spelling alone.",
+    "condition": "A single modal occurrence is classified by commitment strength, modal source/type and degree of modalisation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A single modal lexeme may realise different kinds, and the strength of an utterance may be pragmatically adjusted.",
+        "pages": [
+          177
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She may leave early. [possibility, potentially deontic]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She must have left already. [necessity, epistemic]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2 Dimensions of modality",
+        "pages": [
+          175
+        ],
+        "pdf_pages": [
+          195
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Three dimensions of modal meaning",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-265",
+    "domain": "other",
+    "concept": "Necessity as strong and possibility as weak modality",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Necessity represents strong modal commitment and possibility weaker commitment, whether their kind is epistemic or deontic.",
+    "condition": "A modal proposition is evaluated for certainty or requirement rather than its precise source.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A strong modal used as an offer can be pragmatically softened without changing its semantic strength.",
+        "pages": [
+          177
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The technician must be inside. [necessity]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The technician may be inside. [possibility]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Strength of modality",
+        "pages": [
+          175
+        ],
+        "pdf_pages": [
+          195
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Necessity as strong and possibility as weak modality",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-266",
+    "domain": "other",
+    "concept": "Internal modal negation has scope below the modal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Internal negation places the proposition's negation within a modal's scope: it is possible or required that the event not occur.",
+    "condition": "A modal auxiliary combines with negation semantically associated with its subordinate proposition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same surface not may instead take scope over the modal with other auxiliary lexemes; syntax alone does not determine scope.",
+        "pages": [
+          176
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mila may not attend. [possibly absent]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You must not open the cabinet. [required non-opening]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Internal and external negation",
+        "pages": [
+          175
+        ],
+        "pdf_pages": [
+          195
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Internal modal negation has scope below the modal",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-267",
+    "domain": "other",
+    "concept": "External modal negation scopes over the modal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "External negation denies necessity or possibility itself rather than asserting a necessary or possible negative proposition.",
+    "condition": "The negative takes semantic scope over the modal operator.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not being required to attend does not imply an obligation to stay away.",
+        "pages": [
+          176
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mila cannot have entered the locked room. [impossible entry]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You needn't attend the briefing. [attendance not necessary]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Internal and external negation",
+        "pages": [
+          175
+        ],
+        "pdf_pages": [
+          195
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "External modal negation scopes over the modal",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-268",
+    "domain": "other",
+    "concept": "Modal external and internal negation may combine",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A single clause can combine an external negative on possibility with a second internal negative on the proposition.",
+    "condition": "A negative modal of impossibility governs an explicitly negative subordinate proposition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Double negative marking in this construction does not by itself mean the sentence is ungrammatical.",
+        "pages": [
+          175
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She cannot not understand the warning. [impossible not to understand]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can't not notice the bright sign. [failure to notice is impossible]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Internal and external negation",
+        "pages": [
+          175
+        ],
+        "pdf_pages": [
+          195
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal external and internal negation may combine",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-269",
+    "domain": "other",
+    "concept": "Must not versus need not expresses opposite negation scopes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Must not commonly requires non-actualisation of an act, whereas need not denies that the act is obligatory.",
+    "condition": "A directive combines negative must or negative need with an action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The form needn't is a regional/style variant; do not infer prohibition from a lack-of-necessity modal.",
+        "pages": [
+          176
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You mustn't remove the labels. [prohibition]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You needn't remove the labels. [lack of obligation]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Negation with deontic modals",
+        "pages": [
+          176
+        ],
+        "pdf_pages": [
+          196
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Must not versus need not expresses opposite negation scopes",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-270",
+    "domain": "other",
+    "concept": "Lexical modal paraphrases reveal negation scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Whether not falls inside a lexical modal's complement or negates the modal predicate itself can help identify internal and external scope in auxiliary clauses.",
+    "condition": "An ambiguous-looking auxiliary plus not is paraphrased by a matrix predicate such as necessary or possible.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A lexically explicit paraphrase can sound less idiomatic and is a semantic diagnostic, not a mandatory learner rewrite.",
+        "pages": [
+          176
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is necessary that nobody enter. [internal negative proposition]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is not necessary that anybody enter. [external negation of necessity]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Lexical paraphrase of negation",
+        "pages": [
+          176
+        ],
+        "pdf_pages": [
+          196
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical modal paraphrases reveal negation scope",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-271",
+    "domain": "other",
+    "concept": "Necessity–possibility duality under negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Logical negation connects necessity and possibility: necessary P equals not possible not-P, and not necessary P equals possible not-P.",
+    "condition": "The interpretation of an expression of necessity or possibility is evaluated under the appropriate internal or external negation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The equivalence is logical at the correct scopal interpretation, not an assertion that differently phrased sentences always have identical pragmatics.",
+        "pages": [
+          176
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It must be genuine. / It cannot be fake. [complementary necessity/possibility readings]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It isn't necessarily genuine. / It may be fake. [absence of necessity permits alternative]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Logic of modality",
+        "pages": [
+          176
+        ],
+        "pdf_pages": [
+          196
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Necessity–possibility duality under negation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-272",
+    "domain": "other",
+    "concept": "Negation of necessary negative implies positive possibility",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Denying the necessity of a negative situation leaves open the possibility of the positive situation.",
+    "condition": "External negation takes scope over necessity of a negative proposition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Logical possibility is weaker than certainty that the positive situation obtains.",
+        "pages": [
+          176
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is not necessarily false; it may be true.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The office is not necessarily closed; it may be open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Logic of modality",
+        "pages": [
+          176
+        ],
+        "pdf_pages": [
+          196
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation of necessary negative implies positive possibility",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-273",
+    "domain": "other",
+    "concept": "Modal semantic strength differs from speech-act force",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The semantic strength of a modal such as must or may can differ from how strongly an utterance functions as an offer, instruction or permission in context.",
+    "condition": "A modal clause is embedded in a communicative situation that adjusts its practical force.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Pragmatic strengthening or weakening does not alter the modal's semantic necessity-versus-possibility classification.",
+        "pages": [
+          177
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You must try one of these biscuits! [warm offer, pragmatically weakened]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You may leave now. [could be a firm order from a superior]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Semantic vs pragmatic strength",
+        "pages": [
+          176,
+          177
+        ],
+        "pdf_pages": [
+          196,
+          197
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal semantic strength differs from speech-act force",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-274",
+    "domain": "other",
+    "concept": "Strong must can be a weak offer",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Must remains semantically strong while an invitational context can soften it into a suggestion or friendly offer.",
+    "condition": "A social invitation employs must with an optional enjoyable activity.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In official directives, the same auxiliary can express a genuine obligation instead.",
+        "pages": [
+          177
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You must taste the cake; it's wonderful!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You simply must come over for coffee sometime.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Pragmatic weakening",
+        "pages": [
+          177
+        ],
+        "pdf_pages": [
+          197
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Strong must can be a weak offer",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-275",
+    "domain": "other",
+    "concept": "Weak may can deliver a strong instruction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "May can encode permission semantically but, under authority, function pragmatically as a directive that the addressee should depart or perform another action.",
+    "condition": "A speaker in authority uses a form that could otherwise grant a choice.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In a permissive context, may genuinely allows rather than orders the action.",
+        "pages": [
+          177
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You may return to your desk now. [supervisor's dismissal]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You may leave the room now. [could be an instruction]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Pragmatic strengthening",
+        "pages": [
+          177
+        ],
+        "pdf_pages": [
+          197
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Weak may can deliver a strong instruction",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-276",
+    "domain": "other",
+    "concept": "Medium modal strength with should and ought",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Should, ought, likely, probable and seem commonly express a medium level of modal commitment, closer to strong necessity than bare possibility.",
+    "condition": "A speaker estimates a proposition as probable while acknowledging that it may be false.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Should and ought can also have directive or evaluative interpretations outside this epistemic probability reading.",
+        "pages": [
+          177
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The mail should arrive before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The meeting ought to be finished by now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Medium modality",
+        "pages": [
+          177
+        ],
+        "pdf_pages": [
+          197
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Medium modal strength with should and ought",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-277",
+    "domain": "other",
+    "concept": "Must, should and may express distinct likelihood strengths",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Epistemic must presents an inferred necessity, should a high probability, and may an open possibility, in a common probability context.",
+    "condition": "The modal qualifies the same prospective proposition under epistemic interpretation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A modal's relative strength depends on its specific interpretation and can be pragmatically reshaped.",
+        "pages": [
+          177
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The courier must be here by now. [strong inference]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The courier should be here by now. [high expectation]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The courier may be here by now. [possibility]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Modal strength comparison",
+        "pages": [
+          177
+        ],
+        "pdf_pages": [
+          197
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Must, should and may express distinct likelihood strengths",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-278",
+    "domain": "other",
+    "concept": "Pragmatic convergence of internal and external negation with likelihood",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With medium-strength likelihood expressions, internal and external negation may differ semantically but converge pragmatically on low probability of P.",
+    "condition": "A predicate such as likely combines with either matrix not or a negated infinitival complement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Semantic external negation alone allows additional mid-probability cases that the pragmatic low-probability reading typically suppresses.",
+        "pages": [
+          177
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The samples are not likely to be ready.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The samples are likely not to be ready.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Medium modality negation",
+        "pages": [
+          177
+        ],
+        "pdf_pages": [
+          197
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pragmatic convergence of internal and external negation with likelihood",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-279",
+    "domain": "other",
+    "concept": "Probably with negative complement usually has internal negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Probably not P is the ordinary expression of a probable negative proposition; putting not outside probably is generally marginal.",
+    "condition": "A probability adverb modifies a negative finite proposition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The book describes marginality, not a categorical universal error; avoid converting this observation to a detector without wider source evidence.",
+        "pages": [
+          177
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The train is probably not running today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He probably hasn't seen the notice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.1 Probably and scope of negation",
+        "pages": [
+          177
+        ],
+        "pdf_pages": [
+          197
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Probably with negative complement usually has internal negation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-280",
+    "domain": "other",
+    "concept": "Kind of modality independent of modal strength",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Epistemic, deontic and dynamic categories classify the kind of modality, cutting across the separate strong, medium and weak strength dimension.",
+    "condition": "A modal utterance is analysed for knowledge, socially enforced action or participant ability.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A single modal form can be ambiguous between kinds of modality and needs context for classification.",
+        "pages": [
+          178
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She must be at work. [epistemic]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She must attend work. [deontic]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She can work late if needed. [dynamic ability]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2 Kind of modality",
+        "pages": [
+          178
+        ],
+        "pdf_pages": [
+          198
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Kind of modality independent of modal strength",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-281",
+    "domain": "other",
+    "concept": "Epistemic modality qualifies knowledge of factuality",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Epistemic modality involves a speaker's knowledge or inference about the truth of past or present propositions.",
+    "condition": "A modal applies to the factual status of a proposition rather than to a person's permission or obligation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The prototypical past/present temporal association is not an absolute ban on epistemic future reference.",
+        "pages": [
+          178
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The committee must have reached a decision. [inference]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee may have reached a decision. [possibility]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2 Epistemic and deontic",
+        "pages": [
+          178
+        ],
+        "pdf_pages": [
+          198
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic modality qualifies knowledge of factuality",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-282",
+    "domain": "other",
+    "concept": "Deontic modality concerns obligation and permission",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Deontic modality concerns what someone is required, forbidden or permitted to bring about, prototypically in the future.",
+    "condition": "An authority, rule or participant grants permission or imposes an obligation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same modals may have epistemic readings under another context.",
+        "pages": [
+          178
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You must sign the form before entering. [obligation]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You may remain in the hall. [permission]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2 Epistemic and deontic",
+        "pages": [
+          178
+        ],
+        "pdf_pages": [
+          198
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deontic modality concerns obligation and permission",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-283",
+    "domain": "other",
+    "concept": "Deontic source is the authority behind permission or obligation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The person, rule or convention from which permission or obligation originates is its deontic source.",
+    "condition": "A deontic modal is understood against a regulating authority or conventional rule.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The grammatical speaker is not necessarily identical to the deontic source.",
+        "pages": [
+          178
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Visitors must present identification under hospital policy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Students may use the archive with the librarian's permission.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2 Deontic source",
+        "pages": [
+          178
+        ],
+        "pdf_pages": [
+          198
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deontic source is the authority behind permission or obligation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-284",
+    "domain": "other",
+    "concept": "Same must or may clause can be epistemic or deontic",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clause containing must or may can be genuinely ambiguous between an evidential conclusion and a rule or permission, depending on context.",
+    "condition": "A modalised proposition supports both a knowledge assessment and an instruction or authorisation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Do not assign a single universal epistemic or deontic interpretation to the modal word in isolation.",
+        "pages": [
+          178
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You must be especially careful. [inference about personality, or warning]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitor may sleep downstairs. [possible behaviour, or permission]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2 Ambiguous modals",
+        "pages": [
+          178
+        ],
+        "pdf_pages": [
+          198
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Same must or may clause can be epistemic or deontic",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-285",
+    "domain": "other",
+    "concept": "Dynamic modality concerns a participant's abilities or dispositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Dynamic modality principally expresses a subject participant's ability or disposition rather than an imposed permission or a speaker's inference.",
+    "condition": "A modal such as can describes what a participant has the capacity to do.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Can can also express permission and must be classified by its construction and context.",
+        "pages": [
+          178
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tara can solve the puzzle without help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The runner can overtake every competitor on the hill.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2 Dynamic modality",
+        "pages": [
+          178
+        ],
+        "pdf_pages": [
+          198
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic modality concerns a participant's abilities or dispositions",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-286",
+    "domain": "other",
+    "concept": "Can with an ability or permission ambiguity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Can may describe either an inherent ability to carry out an action or authorisation to perform that action.",
+    "condition": "A clause with can is compatible with participant capacity and with permission from a source.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Both readings are grammatical; discourse and the deontic source decide the intended interpretation.",
+        "pages": [
+          178
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She can speak Italian fluently. [ability]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She can speak Italian at the hearing. [permission in context]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.2.2 Deontic vs dynamic can",
+        "pages": [
+          178
+        ],
+        "pdf_pages": [
+          198
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Can with an ability or permission ambiguity",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL pages from user-uploaded complete PDF; original English examples and documented source exceptions. Explanatory concept only; no live detector activated.",
+    "diagnostic": null
   }
 ]
