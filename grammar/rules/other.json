@@ -11691,5 +11691,1380 @@
     "related_rules": [],
     "review_notes": "Directly checked against cited printed pages of the uploaded CGEL PDF; examples original. Nuance: Context must determine the occurrence count; the -ing form alone does not decide it.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-211",
+    "domain": "other",
+    "concept": "Progressive background for a foregrounded event",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An ongoing progressive situation frequently provides a temporal background against which another bounded event is located.",
+    "condition": "A progressive clause functions as a temporal frame for a perfectively presented event.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lights failed while we were testing the speakers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitors arrived as the caretaker was closing the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          166
+        ],
+        "pdf_pages": [
+          186
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Progressive background for a foregrounded event",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: The two events need not have the same duration.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-212",
+    "domain": "other",
+    "concept": "Independent aspect selection with simultaneous events",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Two overlapping situations can both be expressed progressively, both non-progressively, or one in each aspect; aspect selection reflects viewpoint rather than a mechanical simultaneity rule.",
+    "condition": "Concurrent activities are connected by while or similar temporal material.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was painting while he listened to music.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She painted while he was listening to music.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She was painting while he was listening to music.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "She painted while he listened to music.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          166
+        ],
+        "pdf_pages": [
+          186
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Independent aspect selection with simultaneous events",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: No single progressive combination is universally obligatory for overlapping activities.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-213",
+    "domain": "other",
+    "concept": "Progressive serial state with emotional evaluation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A repeated situation in progressive aspect with frequency adverbs may highlight unpredictable recurrence and carry an evaluative overtone, often though not necessarily disapproval.",
+    "condition": "Always, constantly or related frequency expressions occur with progressive aspect describing serial recurrence.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He's constantly forgetting his umbrella.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They're always turning up early to help. [possibly approving]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          166,
+          167
+        ],
+        "pdf_pages": [
+          186,
+          187
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Progressive serial state with emotional evaluation",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: Negative emotional colouring is typical but not encoded as obligatory.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-214",
+    "domain": "other",
+    "concept": "Always changes interpretation across aspects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a simple non-progressive serial state, always can mean on every relevant occasion; in a progressive serial state it tends to mean recurrently and unexpectedly, sometimes almost constantly.",
+    "condition": "The same recurring predicate is compared with simple versus progressive aspect and always.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She always interrupts when the presenter begins. [each occasion]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is always interrupting the presenter. [repeated unsolicited behaviour]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          167
+        ],
+        "pdf_pages": [
+          187
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Always changes interpretation across aspects",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: Neither reading alone proves the speaker is expressing disapproval.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-215",
+    "domain": "other",
+    "concept": "Progressive requires a dynamic construal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Canonical progressive aspectuality introduces some dynamicity; a purely static state ordinarily uses non-progressive form unless the context supplies an agentive, changing or otherwise dynamic reading.",
+    "condition": "A predicate describes a non-agentive fixed property or relation rather than an activity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The compound consists of two minerals.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcel contains four books.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          167
+        ],
+        "pdf_pages": [
+          187
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Progressive requires a dynamic construal",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: Do not generalise to all stative lexemes: behaviour, waxing or waning, and temporary serial patterns can yield valid progressives.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-216",
+    "domain": "other",
+    "concept": "Fixed-composition state rejects ordinary progressive",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Fixed non-agentive possession of constituent parts or containment ordinarily cannot take progressive be plus the stative verb in a single static-state description.",
+    "condition": "A clause describes a fixed composition with consist of or simple present containment, without growth, agentive reinterpretation or a changing quantity.",
+    "violation": "Using a be-progressive with a stative fixed-composition or containment predicate in a non-agentive unchanging state.",
+    "exceptions": [
+      {
+        "description": "A change in degree, agentive behaviour or a different dynamic lexical meaning can license a progressive otherwise surprising with a stative verb; grammar detection must establish a fixed static state rather than rely on word identity.",
+        "pages": [
+          167,
+          168
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The compound consists of two minerals.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcel contains four books.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The compound is consisting of two minerals.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The parcel is containing four books.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          167,
+          168
+        ],
+        "pdf_pages": [
+          187,
+          188
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fixed-composition state rejects ordinary progressive",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: Changing-state and temporary dynamic contexts are distinct; never flag progressive uses merely because a verb is commonly stative.",
+    "diagnostic": {
+      "error_family": "tense_aspect",
+      "error_pattern": "Using a be-progressive with a stative fixed-composition or containment predicate in a non-agentive unchanging state.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The compound is consisting of two minerals. ||| The compound consists of two minerals.",
+        "The parcel is containing four books. ||| The parcel contains four books."
+      ],
+      "learner_explanation": "Fixed non-agentive possession of constituent parts or containment ordinarily cannot take progressive be plus the stative verb in a single static-state description. First establish that the clause denotes a genuinely fixed non-agentive state rather than an agentive or changing construal. Then select the simple form.",
+      "corrected_paragraph_template": "Replace the progressive only after confirming static fixed-composition interpretation in context, and reanalyse the whole paragraph before accepting the edit.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The mixture is gradually becoming more concentrated.",
+        "The container is being filled with four books.",
+        "She is being considerate today.",
+        "More people are owning their homes every year. [changing frequency]",
+        "The parcel is holding several books while the courier waits. [different lexical predicate]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "progressive",
+        "stative-verbs"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "OTH-217",
+    "domain": "other",
+    "concept": "Agentive behaviour progressive with be plus adjective",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Being plus an adjective can describe agentive, currently chosen behaviour instead of the enduring characteristic denoted by simple be.",
+    "condition": "A subject can control or display a behavioural property in the local situation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The assistant is being unusually patient with the visitors.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He's being considerate while his colleague recovers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          167
+        ],
+        "pdf_pages": [
+          187
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agentive behaviour progressive with be plus adjective",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: The same adjectives in simple be can denote stable qualities; not every adjective is agentive.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-218",
+    "domain": "other",
+    "concept": "Waxing or waning licenses progressive reinterpretation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Increasing or decreasing intensity or incidence can make an otherwise stative description dynamic enough for progressive aspect.",
+    "condition": "A predicate includes an explicit scale of increase, decrease, or progressive change.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The old building is looking more fragile each year.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "More students are owning their own devices every semester.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          167,
+          168
+        ],
+        "pdf_pages": [
+          187,
+          188
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Waxing or waning licenses progressive reinterpretation",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: This form of dynamicity is more broadly available than mere temporariness.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-219",
+    "domain": "other",
+    "concept": "Temporary recurrent routine in progressive",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A progressive serial state may present a habitual action as exceptional and temporary rather than an established long-term routine.",
+    "condition": "A repeated action is limited by an unusual current period.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She's working from the library every day this week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They're travelling by bus while their vehicle is repaired.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          167,
+          168
+        ],
+        "pdf_pages": [
+          187,
+          188
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporary recurrent routine in progressive",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: The simple present may describe a stable routine; both patterns are grammatical.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-220",
+    "domain": "other",
+    "concept": "Ordinary stative living arrangement can be progressive when temporary",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some stative location or living predicates permit a progressive to suggest a relatively temporary arrangement.",
+    "condition": "Live describes residence during a bounded period rather than a fixed general status.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She lives near the harbour. [ordinary long-term residence]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She's living near the harbour until her apartment is ready. [temporary]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          168
+        ],
+        "pdf_pages": [
+          188
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinary stative living arrangement can be progressive when temporary",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: The temporary implication is not absolute and depends on the speaker's comparison frame.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-221",
+    "domain": "other",
+    "concept": "Strongly stative verbs resist progressive for temporariness alone",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Temporary duration does not automatically license progressive with strongly stative predicates such as belong, contain, matter or own.",
+    "condition": "A state is explicitly limited to now but still lacks agentive behaviour or change.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dispute doesn't matter at the moment.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He owns both workshops this month, but plans to sell one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          168
+        ],
+        "pdf_pages": [
+          188
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Strongly stative verbs resist progressive for temporariness alone",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: In a waxing or waning construal the same lexemes can sometimes occur progressively.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-222",
+    "domain": "other",
+    "concept": "Limited duration is a cancellable progressive implicature",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A progressive often suggests a situation is temporary or limited, but this is not a semantic requirement of progressive aspectuality.",
+    "condition": "A dynamic progressive situation has a brief default interpretation or an explicitly long timespan.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She's managing the studio for the summer. [temporary]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The river has been flowing through the valley for centuries. [indefinitely long process]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          168
+        ],
+        "pdf_pages": [
+          188
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limited duration is a cancellable progressive implicature",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: An extensive continuous process can be progressive without contradiction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-223",
+    "domain": "other",
+    "concept": "Extended duration versus temporary duration are distinct progressive effects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The progressive can lengthen the perceived duration of a punctual event or imply temporary duration for a recurring state; these arise from different interactions rather than contradictory core meanings.",
+    "condition": "Compare an extended achievement with a temporary serial or state description.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The aircraft was landing as the storm intensified. [extended achievement]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He's attending the evening class this month. [temporary routine]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          168
+        ],
+        "pdf_pages": [
+          188
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Extended duration versus temporary duration are distinct progressive effects",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: Neither extended nor limited duration is an invariant semantic meaning of the progressive.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-224",
+    "domain": "other",
+    "concept": "Conceptualisation and verb choice affect stative versus dynamic aspect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Two descriptions of roughly the same real situation may differ in whether they license the progressive because their predicates lexicalise activity or state.",
+    "condition": "Compare wearing an object with stative having it on, or suffering illness with stative being ill.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The nurse is wearing a protective mask.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The nurse has a protective mask on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.1 Progressive aspectuality",
+        "pages": [
+          168,
+          169
+        ],
+        "pdf_pages": [
+          188,
+          189
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conceptualisation and verb choice affect stative versus dynamic aspect",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: A single real-world situation does not dictate one verb aspect irrespective of lexical meaning.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-225",
+    "domain": "other",
+    "concept": "Wear versus have-on aspect contrast",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Wear readily permits a progressive for a present instance or temporary repeated practice, whereas have on typically denotes a state and resists ordinary progressive.",
+    "condition": "A clothing predicate is cast as wear versus have on.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is wearing a badge today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has a badge on today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Some verb classes",
+        "pages": [
+          169
+        ],
+        "pdf_pages": [
+          189
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Wear versus have-on aspect contrast",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: Past and future simple wear can describe a single occurrence; these are differences in lexical aspect, not literal incompatibility between clothing and progressives.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-226",
+    "domain": "other",
+    "concept": "Suffer versus be ill aspect contrast",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Suffer can present an illness dynamically and occur progressively, while be ill describes a state and ordinarily uses the simple form.",
+    "condition": "An illness is represented by a dynamic lexical predicate or by a static copular property.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He is suffering from a headache.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He is ill with a headache.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Some verb classes",
+        "pages": [
+          169
+        ],
+        "pdf_pages": [
+          189
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Suffer versus be ill aspect contrast",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: The source contrasts these ways of conceptualising the condition, not their medical causes.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-227",
+    "domain": "other",
+    "concept": "Three semantic uses of sensation verbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Feel, smell and taste can describe production of a sensation by a stimulus, perception by an experiencer, or deliberate action to acquire a sensation.",
+    "condition": "Classify sensory expressions according to stimulus, experiencing subject, and active sensing.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The tea tastes bitter. [stimulus]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I can taste the ginger. [experiencer]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I am tasting the soup to check the seasoning. [deliberate action]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Some verb classes",
+        "pages": [
+          169
+        ],
+        "pdf_pages": [
+          189
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Three semantic uses of sensation verbs",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: The classes differ in argument structure and dynamicity.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-228",
+    "domain": "other",
+    "concept": "Deliberate sensation acquisition selects dynamic progressive",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Active smelling, touching, looking and listening are dynamic acquisition activities and readily occur in progressive aspect.",
+    "condition": "The subject deliberately performs an activity to obtain sensory input.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She's listening carefully to the instructions.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'm smelling the flowers to compare their scents.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Some verb classes",
+        "pages": [
+          169
+        ],
+        "pdf_pages": [
+          189
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deliberate sensation acquisition selects dynamic progressive",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: This does not imply that every sense-related construction takes a progressive.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-229",
+    "domain": "other",
+    "concept": "Stimulus-production sense predicates are normally stative",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A subject's production of a sensation, as in how food tastes or an object feels, is ordinarily a state expressed without progressive.",
+    "condition": "A sensory predicate describes a source's perceptible property rather than an observer's purposeful action.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The fabric feels rough.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The soup smells spicy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Some verb classes",
+        "pages": [
+          169
+        ],
+        "pdf_pages": [
+          189
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stimulus-production sense predicates are normally stative",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: Progressive is possible with changes in intensity or temporarily salient looks or sounds.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-230",
+    "domain": "other",
+    "concept": "Experiencer sensation and modal can",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Sense-experiencing states often use can plus a plain sensory verb, whereas unaided simple present can sound more event-like or dramatic.",
+    "condition": "A person experiences sight, hearing, smell or touch without deliberate acquisition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I can hear a car outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I see a light near the entrance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Some verb classes",
+        "pages": [
+          169,
+          170
+        ],
+        "pdf_pages": [
+          189,
+          190
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Experiencer sensation and modal can",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: The stative can construction does not permit an ordinary progressive of the same sense-experience use; other meaning shifts do.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-231",
+    "domain": "other",
+    "concept": "Perception progressives for sensory reliability or hallucination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Progressive hearing and seeing can be licensed when referring to sensory-channel performance or a hallucination-like interpretation.",
+    "condition": "A clause highlights temporary performance of the senses or unreal perceived stimuli.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm hearing the speaker much more clearly now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She may be seeing shapes that aren't really there.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Some verb classes",
+        "pages": [
+          170
+        ],
+        "pdf_pages": [
+          190
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perception progressives for sensory reliability or hallucination",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: Do not classify progressive see/hear as unconditionally ungrammatical.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-232",
+    "domain": "other",
+    "concept": "Pain and bodily sensation verbs alternate between aspects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Ache, hurt, itch and related bodily-state predicates can take simple or progressive aspect with different stative versus activity-like construals.",
+    "condition": "The predicate describes a current pain or bodily sensation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "My ankle aches after a long walk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My ankle is aching right now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Some verb classes",
+        "pages": [
+          170
+        ],
+        "pdf_pages": [
+          190
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pain and bodily sensation verbs alternate between aspects",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: Both are normal in the source; progressives can foreground the felt episode.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-233",
+    "domain": "other",
+    "concept": "Cognition and emotion verbs are stative by default",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Belief, knowledge, emotion and attitude verbs are typically stative and use simple present for ordinary current states.",
+    "condition": "A cognitive or emotional predicate expresses a stable belief, knowledge or attitude.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I know how the machine works.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He believes the final report is accurate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Some verb classes",
+        "pages": [
+          170
+        ],
+        "pdf_pages": [
+          190
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cognition and emotion verbs are stative by default",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: No cognition/emotion verb is absolutely excluded from progressive in all contexts.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-234",
+    "domain": "other",
+    "concept": "Dynamic readings of cognitive-emotional progressives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Cognition/emotion predicates can occur progressively when reinterpreted as a temporary stance, a mental activity, or a changing state.",
+    "condition": "A usually stative lexeme is used with duration, deliberate mental effort or evaluative interpretation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm thinking about how to solve the puzzle.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They're enjoying every moment of the performance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Some verb classes",
+        "pages": [
+          170
+        ],
+        "pdf_pages": [
+          190
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic readings of cognitive-emotional progressives",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: These are valid readings; categorising by dictionary lexeme alone would yield false positives.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-235",
+    "domain": "other",
+    "concept": "Explanatory and polite progressive cognition",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Progressive cognition may focus on a just-noticed interpretation or soften a request by marking it as temporary and tentative.",
+    "condition": "A progressive cognition verb introduces a clarification or deferential request.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You're forgetting that the meeting was rescheduled. [explanatory]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I was wondering whether you could review the figures. [polite]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§8.2 Some verb classes",
+        "pages": [
+          170
+        ],
+        "pdf_pages": [
+          190
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Explanatory and polite progressive cognition",
+        "relation": "unverified",
+        "note": "Burton-Roberts comparison not independently verified."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Direct source reading of cited Cambridge printed pages; all examples original. Limits and exceptions: Tentativeness is a discourse effect, not a unique syntactic clause type.",
+    "diagnostic": null
   }
 ]
