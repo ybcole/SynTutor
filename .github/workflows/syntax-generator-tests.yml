@@ -111,6 +111,12 @@ jobs:
           python scripts/audit_xai6_naturalization.py > /tmp/xai6-source-audit.json
           python -m json.tool /tmp/xai6-source-audit.json > /dev/null
 
+      - name: Validate XAI-7 unified tree/quiz evidence contracts and focus
+        working-directory: server
+        run: |
+          python -m json.tool ../grammar/xai7_unified.schema.json > /dev/null
+          python -m unittest -v test_xai7_unified
+
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py
@@ -174,6 +180,7 @@ jobs:
           npm run test:builder
           node scripts/test_level.js
           node scripts/test_tree_layout.js
+          node scripts/test_xai7_focus.mjs
           node scripts/test_account_integration.js
           node --check web/js/quizzes-ui.js
           node --check web/js/lessons-ui.js
