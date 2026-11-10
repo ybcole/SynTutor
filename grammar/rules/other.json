@@ -20207,7 +20207,7 @@
       "correct": [
         {
           "id": "c1",
-          "text": "It would be shocking that a visitor should abandon the guide halfway through.",
+          "text": "It is inconceivable that a guest should deliberately damage the exhibit.",
           "origin": "ai_authored"
         },
         {
@@ -20566,7 +20566,7 @@
         },
         {
           "id": "c2",
-          "text": "The council will have announced its decision yesterday.",
+          "text": "The council will have reached its decision by now.",
           "origin": "ai_authored"
         }
       ],
@@ -20679,12 +20679,12 @@
       "correct": [
         {
           "id": "c1",
-          "text": "Every month in this calendar has at least 28 days, so November will have at least 28.",
+          "text": "Every section is twelve metres long and there are three, so the total length will be thirty-six metres.",
           "origin": "ai_authored"
         },
         {
           "id": "c2",
-          "text": "If all the tickets were sold, the auditorium will be full.",
+          "text": "If the container holds exactly four litres and is full, its contents will amount to four litres.",
           "origin": "ai_authored"
         }
       ],
