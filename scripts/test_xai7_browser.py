@@ -109,7 +109,7 @@ try:
     inspector.locator('[data-shared-evidence]').wait_for(timeout=30000)
     assert inspector.locator('[data-xai7-navigation]').count()==1
     assert review_tree.locator('[data-xai7-focus="selected"]').count()==1
-    assert review.closest('.quiz-review-card').locator('[data-shared-evidence]').count()>=2
+    assert review.locator('xpath=ancestor::article[1]').locator('[data-shared-evidence]').count()>=2
     assert 'Benepar' not in inspector.inner_text()
     page.set_viewport_size({'width':390,'height':844})
     review_tree.get_by_role('button',name='Zoom in').click()
