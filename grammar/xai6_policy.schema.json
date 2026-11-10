@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "XAI-6 model release and cost gate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "release_status",
+    "model_enabled",
+    "enablement",
+    "contract",
+    "allowed_reading_levels",
+    "allowed_observation_scope",
+    "baseline_schema_version",
+    "source_policy",
+    "log_policy",
+    "human_evaluation_fixture_count"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "xai6-policy-1.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "release_status": {
+      "enum": [
+        "DISABLED_PENDING_BLIND_REVIEW",
+        "APPROVED_FOR_LIMITED_ROLLOUT"
+      ]
+    },
+    "model_enabled": {
+      "type": "boolean"
+    },
+    "enablement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "independent_human_blind_comparison",
+        "factual_fidelity_at_least_baseline",
+        "readability_gain_demonstrated",
+        "no_material_increase_in_false_claims",
+        "reviewed_by",
+        "reviewed_on",
+        "review_report"
+      ],
+      "properties": {
+        "independent_human_blind_comparison": {
+          "type": "boolean"
+        },
+        "factual_fidelity_at_least_baseline": {
+          "type": "boolean"
+        },
+        "readability_gain_demonstrated": {
+          "type": "boolean"
+        },
+        "no_material_increase_in_false_claims": {
+          "type": "boolean"
+        },
+        "reviewed_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewed_on": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "review_report": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_transport_enabled",
+        "model_id",
+        "max_prompt_chars",
+        "max_response_chars",
+        "max_output_tokens",
+        "max_cost_usd",
+        "max_latency_ms",
+        "max_provider_calls",
+        "max_cache_entries"
+      ],
+      "properties": {
+        "model_transport_enabled": {
+          "type": "boolean"
+        },
+        "model_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "max_prompt_chars": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6000
+        },
+        "max_response_chars": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3500
+        },
+        "max_output_tokens": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300
+        },
+        "max_cost_usd": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 0.005
+        },
+        "max_latency_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1500
+        },
+        "max_provider_calls": {
+          "const": 1
+        },
+        "max_cache_entries": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        }
+      }
+    },
+    "allowed_reading_levels": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "plain",
+          "standard",
+          "advanced"
+        ]
+      }
+    },
+    "allowed_observation_scope": {
+      "const": "STRUCTURAL_OBSERVATION_ONLY"
+    },
+    "baseline_schema_version": {
+      "const": "xai-composer-3.0.0"
+    },
+    "source_policy": {
+      "const": "PUBLISHED_SOURCE_TEMPLATES_UNCHANGED"
+    },
+    "log_policy": {
+      "const": "NO_USER_TEXT_OR_MODEL_TEXT"
+    },
+    "human_evaluation_fixture_count": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

@@ -99,6 +99,18 @@ jobs:
           python -m json.tool ../grammar/xai5_repair.schema.json > /dev/null
           python -m unittest -v test_xai5_repair
 
+      - name: Validate XAI-6 constrained naturalization policy and adversarial fallback
+        working-directory: server
+        run: |
+          python -m json.tool ../grammar/xai6_policy.json > /dev/null
+          python -m json.tool ../grammar/xai6_policy.schema.json > /dev/null
+          python -m json.tool ../grammar/xai6_candidate.schema.json > /dev/null
+          python -m json.tool ../grammar/xai6_result.schema.json > /dev/null
+          python -m unittest -v test_xai6_naturalizer
+          cd ..
+          python scripts/audit_xai6_naturalization.py > /tmp/xai6-source-audit.json
+          python -m json.tool /tmp/xai6-source-audit.json > /dev/null
+
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py

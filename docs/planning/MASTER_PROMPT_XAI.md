@@ -107,6 +107,8 @@ A change of tense/aspect or removal of a time adjunct may change meaning: offer 
 
 ### Phase 6 — Optional AI paraphrasing
 
+**2026-11-10 technical decision:** The strict structural-observation naturalizer selection contract, server-side model/cost gates, cache, proof verification, fallback and audit are implemented. Production release is **NO-GO** because the master plan's independent human blind fidelity/clarity review is not available. See [XAI-6 acceptance](../reports/xai-6-naturalization-acceptance-2026-11-10.md). No live model transport is configured, and the unchanged XAI-3 composer remains authoritative for displayed structural observations.
+
 Implement only after reliable template-based XAI has been validated. Supply only approved fact atoms, source paraphrases and permitted format to the AI. Request structured output listing exactly which fact IDs support each sentence. Check factual adherence and fallback deterministically on failure. A rules-based template must always remain available and the AI must not invent new grammar claims or verdicts.
 
 ### Phase 7 — Frontend parity

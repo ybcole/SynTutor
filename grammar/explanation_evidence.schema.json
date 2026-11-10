@@ -561,6 +561,57 @@
           "additionalProperties": true
         }
       ]
+    },
+    "xai6_naturalization": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "schema_version",
+            "language_policy",
+            "status",
+            "reason_code",
+            "selected_node_id",
+            "paragraphs",
+            "whole_sentence_certified"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "xai6-result-1.0.0"
+            },
+            "language_policy": {
+              "const": "ENGLISH_ONLY"
+            },
+            "status": {
+              "enum": [
+                "disabled",
+                "unavailable",
+                "fallback",
+                "accepted"
+              ]
+            },
+            "reason_code": {
+              "type": "string"
+            },
+            "selected_node_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "paragraphs": {
+              "type": "array"
+            },
+            "whole_sentence_certified": {
+              "const": false
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
     }
   },
   "required": [
