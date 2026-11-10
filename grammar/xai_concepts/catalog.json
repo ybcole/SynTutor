@@ -1202,7 +1202,8 @@
       "book_id": "BR3",
       "chapter": 6,
       "printed_pages": [
-        118
+        118,
+        119
       ],
       "kind": "constraint",
       "scope": {
@@ -1216,7 +1217,9 @@
           "FINAL-D1"
         ],
         "precondition": "Progressive be selects what Burton-Roberts calls the progressive-participle -ing form.",
-        "exceptions": [],
+        "exceptions": [
+          "Lexical copular be with an AP complement is not progressive be and does not impose the -ing verb form requirement."
+        ],
         "alternatives": []
       },
       "pedagogy": {
