@@ -47,7 +47,7 @@ try:
     # LESSON — choose an actual B-R node, prove selected/tree parent and
     # navigate to another node without stale highlight.
     page.locator('.sidebar-item[data-view="lessons"]').click()
-    page.evaluate("async () => {const m=await import('/js/lessons-ui.js');await m.openLessons('br-03')}")
+    page.evaluate("async () => {const m=await import('/js/lessons-ui.js');await m.openLessons('br-04')}")
     lesson=page.locator('#curriculumView')
     tree=lesson.locator('.lesson-evidence-card .lesson-tree-wrap').first
     tree.wait_for(timeout=30000)
@@ -68,9 +68,9 @@ try:
     # A feature row is independently keyboard selectable, but is never
     # promoted into an inferred syntactic function.
     feature=tree.locator('svg [data-feature-label]').first
-    if feature.count():
-      feature.press('Enter')
-      expect(area.locator('[data-xai7-feature-selected]')).to_contain_text('recorded feature',timeout=30000)
+    assert feature.count()>=1,'br-04 must expose its recorded B-R V feature'
+    feature.press('Enter')
+    expect(area.locator('[data-xai7-feature-selected]')).to_contain_text('recorded feature',timeout=30000)
     current=tree.locator('svg').get_attribute('width')
     tree.get_by_role('button',name='Zoom in').click()
     enlarged=tree.locator('svg').get_attribute('width')
