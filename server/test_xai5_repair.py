@@ -115,6 +115,11 @@ class XAI5RepairTests(unittest.TestCase):
 
     def test_exact_span_and_proof_for_opaque_tree(self):
         t = CambridgeEvaluatorTests.analysis("She had went home")
+        # This synthetic V2 shell has no 'is' split token; explicitly put
+        # only 'She' in NP, leaving 'had went home' in opaque VP.
+        np, vp = t["tree"]["root"]["children"]
+        np["words"], np["token_span"] = ["She"], [0, 1]
+        vp["words"], vp["token_span"] = ["had", "went", "home"], [1, 4]
         xai = evaluate_xai4("She had went home")
         locations = localize_xai4(xai, analysis=t, sentence="She had went home")
         VALIDATE_LOCATION.validate(locations)
@@ -196,8 +201,12 @@ class XAI5RepairTests(unittest.TestCase):
         session = recheck_revisions(payload,analyzer=unresolved)
         self.assertEqual(session["revisions"][1]["parent_version_id"],"v1")
         self.assertEqual(session["revisions"][1]["step_edits"][0]["original_text"],"went")
-        self.assertEqual(session["revisions"][1]["edits_from_original"][0]["original_text"],"had")
-        self.assertEqual(session["revisions"][1]["edits_from_original"][1]["original_text"],"went")
+        # A token SequenceMatcher may correctly coalesce contiguous edits;
+        # source token provenance must still enumerate both originals.
+        combined = session["revisions"][1]["edits_from_original"]
+        self.assertEqual([tid for edit in combined for tid in edit["original_token_ids"]],
+                         ["t1", "t2"])
+        self.assertEqual(combined[0]["original_text"], "had went")
 
     def test_every_revision_reparsed_not_reused(self):
         visited = []
