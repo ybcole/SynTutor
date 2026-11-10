@@ -1732,7 +1732,7 @@
         143,
         144
       ],
-      "kind": "variety_restricted",
+      "kind": "constraint",
       "scope": {
         "target_labels": [
           "S",
@@ -2162,6 +2162,7 @@
       "target_kind": "constituent",
       "target_label": "S",
       "required_fact_keys": [
+        "sentence",
         "selected_node_span",
         "child_np_span",
         "child_vp_span",
