@@ -235,22 +235,29 @@ function renderRepairRecheck(evidence, panel) {
         treeDetails.append(heading);
         const { renderLessonTree } = await import('./lessons-ui.js');
         if (!section.isConnected) return;
-        const treeView = renderLessonTree(revisedTree, {interactive: true});
-        treeView.addEventListener('click', async (event) => {
-          const target = event.target.closest?.('button[data-node-id]');
-          if (!target || !treeView.contains(target)) return;
-          const nodeId = target.dataset.nodeId;
+        let treeView;
+        const inspect=async (nodeId, feature=null) => {
           const details = document.createElement('section');
           details.dataset.xai5RevisedNode = '';
           details.textContent = 'Checking the selected revised-tree node…';
           treeDetails.querySelector('[data-xai5-revised-node]')?.remove();
           treeDetails.append(details);
           try {
-            const selected = await requestEvidence(revisedTree, nodeId);
-            if (details.isConnected) renderEvidence(selected, details);
-          } catch (error) {
-            if (details.isConnected) details.textContent = error.message || 'Node evidence unavailable.';
+            const selected = await requestEvidence(revisedTree,nodeId);
+            if(details.isConnected) {
+              renderEvidence(selected,details,{treeRoot:treeView});
+              if(feature) {
+                const note=document.createElement('p');
+                note.textContent='Recorded feature '+feature+' selected; no grammaticality is inferred.';
+                details.prepend(note);
+              }
+            }
+          }catch(error) {
+            if(details.isConnected)details.textContent=error.message||'Node evidence unavailable.';
           }
+        };
+        treeView = renderLessonTree(revisedTree,{
+          interactive:true,zoomControls:true,onSelectNode:inspect,
         });
         treeDetails.append(treeView);
         output.append(treeDetails);
