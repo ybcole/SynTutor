@@ -74,6 +74,7 @@ def evaluate_analysis(analysis, *, variety=None):
             'contextual_explanations':evidence.get('contextual_explanations'),
             'xai4_partial_evaluation':evidence.get('xai4_partial_evaluation'),
             'xai5_localization':evidence.get('xai5_localization'),
+            'xai6_naturalization':evidence.get('xai6_naturalization'),
             'node_details':details,
             'target_comparison':{'status':'not_requested','matched':None}}
 
