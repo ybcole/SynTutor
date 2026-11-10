@@ -1,6 +1,6 @@
 # SynTutor — XAI Master Plan: Sentence-Grounded Explanations for Every Tree Level
 
-**Status:** XAI-PRE contracts, English-only **XAI-0 baseline**, and **XAI-1 source-linked concept registry implemented**. **XAI-2 structural fact graph is implemented with tests**, pending CI verification and human review for functional-role licensing. XAI-3–XAI-8 remain unimplemented. See [XAI-PRE](../reports/xai-pre-acceptance-2026-11-10.md), [XAI-0](../reports/xai-0-baseline-acceptance-2026-11-10.md), and [XAI-1 source acceptance](../reports/xai-1-source-concepts-acceptance-2026-11-10.md).  
+**Status:** XAI-PRE contracts, English-only **XAI-0 baseline**, and **XAI-1 source-linked concept registry implemented**. **XAI-2 structural fact graph is implemented with tests**, pending CI verification and human review for functional-role licensing. XAI-3 deterministic contextual composer is technically implemented (pending CI and linguistic sign-off); XAI-4–XAI-8 remain unimplemented. See [XAI-PRE](../reports/xai-pre-acceptance-2026-11-10.md), [XAI-0](../reports/xai-0-baseline-acceptance-2026-11-10.md), and [XAI-1 source acceptance](../reports/xai-1-source-concepts-acceptance-2026-11-10.md).  
 **Date:** 10 November 2026  
 **Repository:** `ybcole/SynTutor`  
 **Companion implementer prompt:** [MASTER_PROMPT_XAI.md](MASTER_PROMPT_XAI.md)  
@@ -412,6 +412,9 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 **Gate:** every canonical/working node produces at least accurate basic structural observation; unsupported roles remain unknown. Held-out node-function gold tests, no invented children or words.
 
 ### XAI-3 — Contextual template composer
+
+**Implementation:** `server/xai_planner.py` and `server/xai_composer.py` emit English-only per-node short/deep observations from XAI-2 atoms, exposed in `/api/explain` and `/api/evaluate` and displayed by the shared Generator/Builder evidence panel. This is structural observation only; XAI-1 unapproved head/function rules remain disabled. See [XAI-3 acceptance](../reports/xai-3-contextual-composer-acceptance-2026-11-10.md). CI and independent linguistic review are tracked separately.
+
 
 - Produce short/deep original phrasing from only permitted facts.
 - Explain **S, NP, VP, NOM, PP, AP, AdvP, V, N, P, A, pronoun/name and word terminals**.
