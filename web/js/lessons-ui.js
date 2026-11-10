@@ -128,11 +128,14 @@ export function renderLessonTree(envelope, {
     toolbar.setAttribute('role','group');
     toolbar.setAttribute('aria-label','Zoom the B-R syntax tree');
     let zoom=1;
+    const originalWidth=svg.getAttribute('width');
+    const originalHeight=svg.getAttribute('height');
     const status=el('span','100%');
     status.setAttribute('aria-live','polite');
     const apply=()=>{
-      svg.setAttribute('width',String(Math.round(width*zoom)));
-      svg.setAttribute('height',String(Math.round(height*zoom)));
+      // Reset must restore exact B-R geometry, not a rounded approximation.
+      svg.setAttribute('width',zoom===1?originalWidth:String(Math.round(width*zoom)));
+      svg.setAttribute('height',zoom===1?originalHeight:String(Math.round(height*zoom)));
       status.textContent=Math.round(zoom*100)+'%';
     };
     toolbar.append(button('Zoom out',()=>{
