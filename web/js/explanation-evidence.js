@@ -385,6 +385,34 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   if (options.treeRoot) applyEvidenceFocus(options.treeRoot, evidence);
 }
 
+// Browser offline quiz feedback must be byte-for-byte structurally equivalent
+// to the server's shared XAI-7 quiz contract. Never infer an unattested tree.
+function attachQuizUIEvidence(output) {
+  const citations=[];
+  for (const channel of ['structural','grammatical','remediation']) {
+    for (const record of output.channels?.[channel] || []) {
+      for (const source of record.sources || []) {
+        if (!source || source.printed_page == null) continue;
+        const entry={
+          channel,source_id:source.id??null,book:source.book??null,
+          title:source.title??null,edition:source.edition??null,
+          printed_page:source.printed_page,node_id:record.node_id??null,
+        };
+        if (!citations.some(citation => JSON.stringify(citation)===JSON.stringify(entry))) citations.push(entry);
+      }
+    }
+  }
+  output.xai7_unified={
+    schema_version:'xai7-evidence-1.0.0',language_policy:'ENGLISH_ONLY',
+    mode:'quiz',analysis_id:null,tree_status:'unavailable',
+    selected_node_id:null,focus:[],feature_rows:[],verified_issues:[],
+    citations,contextual_status:'unavailable',book_status:output.status,
+    claim_boundary:'observations_do_not_create_new_functions_or_grammar_verdicts',
+    whole_sentence_certified:false,
+  };
+  return output;
+}
+
 const QUIZ_SOURCE_FIELDS = ['id','book','title','edition','printed_page','evidence_status','status','crosswalk_status','review_status','independent_review','reviewed_by','reviewed_on'];
 // Controlled feedback for the reviewed standalone bank. This same response
 // shape and source boundary is used by the server composer and M3 renderer.
@@ -393,16 +421,16 @@ export function composeQuizEvidence(item, answer, bank) {
   const reviewed=r=>r?.review_status==='INDEPENDENTLY_REVIEWED'&&r.independent_review===true&&Boolean(r.reviewed_by)&&/^\d{4}-\d{2}-\d{2}$/.test(r.reviewed_on);
   const sources=(item.source_ids||[]).map(id=>bank.sources.find(s=>s.id===id));
   const required=item.claim_scope==='br_structure'?'B-R':item.claim_scope==='cambridge_classification'?'Cambridge':null;
-  if(!required||!reviewed(item)||!sources.length||new Set(bank.sources.map(s=>s.id)).size!==bank.sources.length||sources.some(s=>!s||!reviewed(s)||s.book!==required||s.status!=='approved'||!s.title||!s.edition||!Number.isInteger(s.printed_page)||s.printed_page<1||!['IMG','TXT'].includes(s.evidence_status)||!['resolved','compatible'].includes(s.crosswalk_status))){output.diagnostics.push({code:'NO_BOOK_BASIS',message:'This question lacks eligible reviewed evidence.'});return output;}
+  if(!required||!reviewed(item)||!sources.length||new Set(bank.sources.map(s=>s.id)).size!==bank.sources.length||sources.some(s=>!s||!reviewed(s)||s.book!==required||s.status!=='approved'||!s.title||!s.edition||!Number.isInteger(s.printed_page)||s.printed_page<1||!['IMG','TXT'].includes(s.evidence_status)||!['resolved','compatible'].includes(s.crosswalk_status))){output.diagnostics.push({code:'NO_BOOK_BASIS',message:'This question lacks eligible reviewed evidence.'});return attachQuizUIEvidence(output);}
   const chosen=item.options.find(o=>o.id===answer),correct=item.options.find(o=>o.id===item.answer);
   if(answer!==null&&answer!==undefined&&!chosen)throw new Error('Unknown quiz answer.');
-  if(!correct||!item.rationale||!item.options.every(o=>o.rationale))return output;
+  if(!correct||!item.rationale||!item.options.every(o=>o.rationale))return attachQuizUIEvidence(output);
   const facts={item_id:item.item_id,item_version:item.content_version,answer_id:answer??null,correct_answer_id:item.answer,response_status:answer===item.answer?'correct':chosen?'incorrect':'unanswered',claim_scope:item.claim_scope};
   const channel=required==='B-R'?'structural':'grammatical';
   output.channels[channel].push({template_id:`quiz:${item.item_id}@${item.content_version}`,node_id:`quiz:${item.item_id}`,
     text:`Correct answer: ${correct.text}. ${item.rationale}`,deep_text:chosen?`Your selected option: ${chosen.rationale}`:'No answer was submitted; it counts as incorrect.',
     sources:sources.map(s=>Object.fromEntries(QUIZ_SOURCE_FIELDS.map(k=>[k,s[k]]))),facts});
-  output.facts=[facts];output.status='EXPLAINED';return output;
+  output.facts=[facts];output.status='EXPLAINED';return attachQuizUIEvidence(output);
 }
 export async function requestQuizEvidence(item,answer,options={}) {
   const response=await (options.fetch||fetch)(`${API_BASE}/api/explain`,{method:'POST',headers:{'Content-Type':'application/json'},
