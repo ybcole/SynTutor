@@ -2,7 +2,7 @@
 
 **Date:** 10 November 2026  
 **Milestone:** XAI-1 (source concept registry and rule/claim provenance)  
-**Status:** **Technical catalog, source-page review and non-runtime authoring contract implemented; automated checks in progress. Independent human/instructor source approval remains pending.**  
+**Status:** **XAI-1 technical implementation and regression checks complete**: 27 model-free concept tests, the source-coverage audit, and the existing parser/browser suites passed. Independent human/instructor linguistic approval remains pending, so no catalog candidate has been enabled in the learner-facing XAI runtime.  
 **Branch:** `feature/xai-1-source-concept-registry-2026-11-10`  
 **Pull request:** https://github.com/ybcole/SynTutor/pull/54
 
@@ -93,7 +93,9 @@ python -m json.tool grammar/xai_concepts/catalog.schema.json >/dev/null
 
 The model-free GitHub workflow executes the above checks; the parser-backed/browser CI workflow verifies no regression in existing Generator, Builder, tree rendering or NLP installation. The source data itself is independent of network and model availability.
 
-**CI status:** to be updated from the PR's actual workflow results; do not mark checked merely because the files exist.
+**CI evidence:** The model-free checks passed in [GitHub Actions run 42729333451](https://github.com/ybcole/SynTutor/actions/runs/42729333451), including all **27 XAI-1 contract tests** and the source-coverage audit. The existing parser-backed and browser regression checks passed in [run 42729333819](https://github.com/ybcole/SynTutor/actions/runs/42729333819).
+
+**Measured catalog inventory:** 42 concepts (29 B–R, 13 Cambridge), 22 classification records, 15 descriptive generalizations, **five non-enabled constraint candidates**, **eight crosswalk records**, 21 authoring templates, **40 distinct cited printed pages across eight book chapters**, and 21 source-linked node/category labels. These are **source coverage counts**, not parsing accuracy or independently approved grammar-rule counts.
 
 ## 6. Explicit gaps / human decisions and XAI-2 handoff
 
