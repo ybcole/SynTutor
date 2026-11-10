@@ -103,3 +103,10 @@ Added **57 paraphrased, narrowly cited records**, OTH-287–OTH-343 (42 classifi
 ## Phase B autonomous continuation — 2026-11-11, printed pp. 187–194
 
 Extracted **70** new, narrowly sourced records OTH-344–OTH-413 (57 classifications, 12 descriptive generalizations, 1 grammatical constraint specification). OTH-377 records the rule that pure future-time temporal adjuncts take simple present rather than futurity *will*; it remains **spec_only** with embedded-interrogative and conditional/volitional guards, and **zero** detectors have been newly enabled. Complete page evidence and exceptions: `PHASE_B_PP187_194_REPORT.md`. Chapter 3: **121 extracted / 142**, **3 justified chapter-contents skips**, **18 unprocessed (195–212)**; book-wide unprocessed **1,628**. The total catalog stands at **699** rules. No measured runtime accuracy or chapter-level completeness claim. Continue with printed pp. **195–202** without a manual approval stop.
+
+
+---
+
+## Phase B autonomous continuation — 2026-11-11, printed pp. 195–202
+
+Added **70** independently paraphrased, narrowly cited records OTH-414–OTH-483: 54 classifications, 10 descriptive generalizations, 3 grammatical constraint specifications, 2 variety-restricted forms, and 1 rejected shall/will prescriptive pattern. The three new diagnostics (OTH-439, OTH-453, OTH-458) are **spec_only**, with guard examples; no new detectors are enabled or metrics claimed. Exact per-page distinctions, exceptions, PDF provenance and incomplete p. 202 topic continuation: `PHASE_B_PP195_202_REPORT.md`. Chapter 3: **129 extracted / 142**, **3 contents-only skips**, **10 unprocessed (203–212)**. Book-wide unprocessed count: **1,620**; catalog total **769**. Continue from printed **203** without a manual approval stop.
