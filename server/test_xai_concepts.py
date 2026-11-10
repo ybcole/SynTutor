@@ -27,10 +27,10 @@ class XAI1ConceptTests(unittest.TestCase):
 
     def test_counts_and_source_scope(self):
         summary = validate_catalog(self.catalog)
-        self.assertEqual(summary["concepts_total"], 36)
-        self.assertEqual(summary["concepts_by_book"], {"BR3": 24, "CGEL": 12})
+        self.assertEqual(summary["concepts_total"], 42)
+        self.assertEqual(summary["concepts_by_book"], {"BR3": 29, "CGEL": 13})
         self.assertEqual(summary["candidate_crosswalks"], 8)
-        self.assertEqual(summary["template_candidates"], 16)
+        self.assertEqual(summary["template_candidates"], 21)
         self.assertEqual(summary["human_approved_concepts"], 0)
         self.assertEqual(summary["new_runtime_templates"], 0)
         self.assertEqual(summary["new_runtime_cambridge_constraints"], 0)
@@ -39,7 +39,7 @@ class XAI1ConceptTests(unittest.TestCase):
         self.assertEqual(self.catalog["language_policy"], "ENGLISH_ONLY")
         self.assertEqual(self.catalog["source_audit_path"],
                          "grammar/xai_pre/source_audit.json")
-        self.assertIn("2011", self.catalog["review_policy"] if "2011" in self.catalog["review_policy"] else "2011")
+        self.assertIn("2011", self.catalog["edition_authority"])
         self.assertTrue(all(c["review"]["primary_text_inspected"]
                             for c in self.catalog["concepts"]))
         self.assertTrue(all(c["review"]["human_approved"] is False
@@ -69,6 +69,24 @@ class XAI1ConceptTests(unittest.TestCase):
         self.assertEqual(c["printed_pages"], [106])
         self.assertEqual(self.concepts["CGEL-COMPLEMENT-LICENSING"]["printed_pages"],
                          [219, 220])
+
+    def test_priority_phrase_and_word_categories_have_source_candidates(self):
+        labels = set()
+        for concept in self.catalog["concepts"]:
+            labels.update(concept["scope"]["target_labels"])
+        for name in ("S", "NP", "VP", "NOM", "PP", "AP", "AdvP",
+                     "V", "N", "P", "A", "DET", "ART", "pronoun", "name"):
+            with self.subTest(category=name):
+                self.assertIn(name, labels)
+                self.assertTrue(pending_by_node(name))
+
+    def test_cambridge_mixed_category_coordination_is_an_explicit_conflict(self):
+        self.assertEqual(
+            self.crosswalks["CW-COORDINATION-SCOPE"]["right"],
+            "CGEL-UNLIKE-CATEGORY-COORDINATION")
+        self.assertIn("different syntactic categories",
+                      self.concepts["CGEL-UNLIKE-CATEGORY-COORDINATION"]
+                      ["scope"]["precondition"])
 
     def test_crosswalk_exposes_real_conflicts_instead_of_hiding_them(self):
         self.assertEqual(self.crosswalks["CW-SENTENCE-CLAUSE-ONTOLOGY"]["relation"],
