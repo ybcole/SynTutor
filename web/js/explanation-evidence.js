@@ -231,7 +231,7 @@ function renderRepairRecheck(evidence, panel) {
         const treeDetails = document.createElement('details');
         treeDetails.dataset.xai5RevisedTree = '';
         const heading = document.createElement('summary');
-        heading.textContent = 'Inspect revised B-R tree';
+        heading.textContent = 'Explore the revised sentence';
         treeDetails.append(heading);
         const { renderLessonTree } = await import('./lessons-ui.js');
         if (!section.isConnected) return;
@@ -245,12 +245,7 @@ function renderRepairRecheck(evidence, panel) {
           try {
             const selected = await requestEvidence(revisedTree,nodeId);
             if(details.isConnected) {
-              renderEvidence(selected,details,{treeRoot:treeView});
-              if(feature) {
-                const note=document.createElement('p');
-                note.textContent='Recorded feature '+feature+' selected; no grammaticality is inferred.';
-                details.prepend(note);
-              }
+              renderEvidence(selected,details,{treeRoot:treeView,feature});
             }
           }catch(error) {
             if(details.isConnected)details.textContent=error.message||'Node evidence unavailable.';
