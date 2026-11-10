@@ -69,7 +69,7 @@ class Cambridge179186(unittest.TestCase):
 
     def test_all_source_notes_present_without_claiming_full_chapter(self):
         audit = (ROOT / REPORT).read_text(encoding="utf-8")
-        self.assertIn("No new", audit)
+        self.assertIn("New production detectors: 0", audit)
         for p in range(179, 187):
             self.assertIn(str(p), audit)
         self.assertIn("incomplete", audit.lower())
