@@ -138,7 +138,7 @@ Return a single JSON object with these top-level keys. Downstream scripts will s
     "printed_pages": [71, 80],
     "pdf_pages": [],
     "processed_by": "model/version",
-    "protocol_version": "1.0"
+    "protocol_version": "1.1"
   },
   "concepts": [ ],
   "rules": [ ],
@@ -291,4 +291,9 @@ Output: per-rule verdict `pass | revise | reject` with reasons, plus a section-l
 
 ## 15. Versioning
 
-`protocol_version: 1.0`. Any change to this file or to `schema.json` must bump the version and be noted in the commit message. Output produced under an older version is not invalidated automatically but should be flagged in the next review pass.
+`protocol_version: 1.1` for new extraction records; legacy protocol 1.0 remains valid. Any change to this file or to `schema.json` must bump the version and be noted in the commit message. Output produced under an older version is not invalidated automatically but should be flagged in the next review pass.
+
+
+### Phase A (2026-11-10)
+
+The full-coverage master plan overrides only the stop-and-wait requirement. Source fidelity, copyright, no guessing, source citations, stable IDs, and review provenance remain mandatory. New protocol 1.1 constraints require a non-null diagnostic block; earlier protocol 1.0 rules were migrated mechanically to diagnostic:null and not substantively reviewed. Bulk approval cannot activate a runtime rule by itself.
