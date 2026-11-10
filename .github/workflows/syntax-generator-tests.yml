@@ -84,6 +84,14 @@ jobs:
           python -m json.tool ../grammar/xai_composer.schema.json > /dev/null
           python -m unittest -v test_xai_composer
 
+      - name: Validate XAI-4 source-gated Cambridge partial checks
+        working-directory: server
+        run: |
+          python -m json.tool ../grammar/xai4_candidates.json > /dev/null
+          python -m json.tool ../grammar/xai4_candidates.schema.json > /dev/null
+          python -m json.tool ../grammar/xai4_partial.schema.json > /dev/null
+          python -m unittest -v test_xai4_partial
+
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py
