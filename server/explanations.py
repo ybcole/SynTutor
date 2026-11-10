@@ -102,13 +102,16 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
               'analysis_status': str(analysis.get('status', 'unresolved')),
               'channels': {key: [] for key in CHANNELS}, 'facts': [], 'diagnostics': [],
               'fact_graph': None, 'contextual_explanations': None,
-              'xai4_partial_evaluation': None}
+              'xai4_partial_evaluation': None, 'xai5_localization': None}
     from xai4_partial import evaluate_xai4
     source_text = analysis.get('sentence')
     if source_text is None and isinstance(analysis.get('tree'), dict):
         source_text = analysis['tree'].get('sentence')
     output['xai4_partial_evaluation'] = evaluate_xai4(
         source_text, analysis_status=analysis.get('status', 'unresolved'), variety=variety)
+    from xai5_repair import localize_xai4
+    output['xai5_localization'] = localize_xai4(
+        output['xai4_partial_evaluation'], analysis=analysis, sentence=source_text)
     if (analysis.get('status') in {'normalized', 'working', 'provisional'}
             and isinstance(analysis.get('tree'), dict)):
         from xai_facts import build_fact_graph
