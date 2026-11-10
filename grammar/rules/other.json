@@ -23651,5 +23651,4297 @@
     "related_rules": [],
     "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-414",
+    "domain": "other",
+    "concept": "Shall in first-person direction questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "First-person interrogative shall asks the addressee to decide what the speaker should do.",
+    "condition": "A first-person shall-interrogative solicits a decision or instruction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Its normal answer is a directive; will is not an equal substitute in this meaning for many speakers.",
+        "pages": [
+          195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Shall I carry the boxes upstairs?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Shall we close the studio now?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.1(c) Shall in direction questions; §9.6.2 Non-deontic shall and will",
+        "pages": [
+          195
+        ],
+        "pdf_pages": [
+          215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Shall in first-person direction questions",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-415",
+    "domain": "other",
+    "concept": "First-person shall as a futurity variant",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Shall can express ordinary future reference with a first-person subject.",
+    "condition": "A first-person clause uses shall to predict a future state or event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Will is also grammatical and more common, especially in American English.",
+        "pages": [
+          195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I shall contact the librarian tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We shall arrive after the ceremony.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.1(c) Shall in direction questions; §9.6.2 Non-deontic shall and will",
+        "pages": [
+          195
+        ],
+        "pdf_pages": [
+          215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "First-person shall as a futurity variant",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-416",
+    "domain": "other",
+    "concept": "First-person shall in conditional consequences",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Shall can occur in a conditional consequent referring to future or past results.",
+    "condition": "A first-person matrix clause presents a consequence of an if-clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The consequent need not describe a future event despite the common association of shall with futurity.",
+        "pages": [
+          195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the ferry is cancelled, we shall miss the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the report is false, we shall have wasted our efforts.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.1(c) Shall in direction questions; §9.6.2 Non-deontic shall and will",
+        "pages": [
+          195
+        ],
+        "pdf_pages": [
+          215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "First-person shall in conditional consequences",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-417",
+    "domain": "other",
+    "concept": "First-person volitional shall",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "First-person shall can express intention or determination much as volitional will does.",
+    "condition": "The subject controls the described prospective action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relation differs from the guarantee reading of second/third-person shall, where the speaker promises to secure another person's outcome.",
+        "pages": [
+          195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I shall finish the translation tonight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We shall defend the proposal at the hearing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.1(c) Shall in direction questions; §9.6.2 Non-deontic shall and will",
+        "pages": [
+          195
+        ],
+        "pdf_pages": [
+          215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "First-person volitional shall",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-418",
+    "domain": "other",
+    "concept": "Interrogative shall distinguishes direction from futurity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A first-person question with shall may request future information or the addressee's directions, depending on context.",
+    "condition": "A first-person interrogative contains shall and the setting differentiates a prediction question from a directive.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Will can substitute for some futurity questions but not reliably for direction questions.",
+        "pages": [
+          195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When shall I receive the confirmation?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Shall I send the confirmation now?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.1(c) Shall in direction questions; §9.6.2 Non-deontic shall and will",
+        "pages": [
+          195
+        ],
+        "pdf_pages": [
+          215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative shall distinguishes direction from futurity",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-419",
+    "domain": "other",
+    "concept": "Traditional person-based shall/will prescription rejected",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "clause",
+    "statement": "The classic prescription reserving shall for first-person futurity and will for other-person futurity does not describe present-day usage.",
+    "condition": "A traditional usage rule assigns complementary shall/will forms by grammatical person and volition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Both can occur with first-person subjects; second/third-person shall expresses meanings distinct from ordinary subject volition.",
+        "pages": [
+          195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will call you next week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We shall call you next week.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.1(c) Shall in direction questions; §9.6.2 Non-deontic shall and will",
+        "pages": [
+          195
+        ],
+        "pdf_pages": [
+          215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Traditional person-based shall/will prescription rejected",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-420",
+    "domain": "other",
+    "concept": "Shall register and regional frequency",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "First-person shall is relatively formal and uncommon in American English compared with will.",
+    "condition": "The same future or volitional proposition is expressed with shall instead of will.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This frequency and style difference is not an English grammatical violation.",
+        "pages": [
+          195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I shall send the proposal this evening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'll send the proposal this evening.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.1(c) Shall in direction questions; §9.6.2 Non-deontic shall and will",
+        "pages": [
+          195
+        ],
+        "pdf_pages": [
+          215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Shall register and regional frequency",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-421",
+    "domain": "other",
+    "concept": "Shall as speaker guarantee versus will as volition",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With a second- or third-person subject, shall can express the speaker's guarantee, while will can express that subject's willingness.",
+    "condition": "An authoritative speaker promises to bring about another participant's future result.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "First-person shall can overlap with volition because the speaker is also the subject referent.",
+        "pages": [
+          195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You shall have the replacement by Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She will answer when she is ready.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.1(c) Shall in direction questions; §9.6.2 Non-deontic shall and will",
+        "pages": [
+          195
+        ],
+        "pdf_pages": [
+          215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Shall as speaker guarantee versus will as volition",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-422",
+    "domain": "other",
+    "concept": "Uncommon second-person non-deontic shall",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some speakers permit second-person interrogative shall for intentions, but it is old-fashioned for many others.",
+    "condition": "An interrogative with second-person shall seeks information about plans rather than issuing a directive.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "For many speakers progressive will questions are a more natural alternative.",
+        "pages": [
+          195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Shall you be travelling in the spring? [archaic/formal for some speakers]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Will you be travelling in the spring?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.1(c) Shall in direction questions; §9.6.2 Non-deontic shall and will",
+        "pages": [
+          195
+        ],
+        "pdf_pages": [
+          215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Uncommon second-person non-deontic shall",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-423",
+    "domain": "other",
+    "concept": "Archaic legal shall in an open conditional",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Formal legal language sometimes uses shall in an open conditional without any distinct futurity meaning.",
+    "condition": "A legal protasis uses shall before a predicate that could also appear in simple present.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This archaic pattern should not be demanded in general-purpose English.",
+        "pages": [
+          195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the applicant shall fail to comply, the permit may lapse.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the applicant fails to comply, the permit may lapse.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.1(c) Shall in direction questions; §9.6.2 Non-deontic shall and will",
+        "pages": [
+          195
+        ],
+        "pdf_pages": [
+          215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Archaic legal shall in an open conditional",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-424",
+    "domain": "other",
+    "concept": "First-person shall as volition despite guarantee overlap",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A first-person shall statement about an action controlled by the speaker is analysed as volitional even when it resembles a guarantee.",
+    "condition": "The speaker is also the agent of the future action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Second/third-person guarantee shall normally places responsibility for the outcome on the speaker rather than on the subject.",
+        "pages": [
+          196
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I shall write the letter this evening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We shall provide the results at the meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.2; §9.7 Had better and auxiliary dare; §9.8 Preterite modals; §9.8.1 Past time",
+        "pages": [
+          196
+        ],
+        "pdf_pages": [
+          216
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "First-person shall as volition despite guarantee overlap",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-425",
+    "domain": "other",
+    "concept": "Had better as subjective deontic necessity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The idiom had better expresses the speaker's evaluation of the best required course.",
+    "condition": "A clause uses had better plus plain-form verb to recommend an action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "It is semantically strong but often pragmatically less forceful than must.",
+        "pages": [
+          196
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You had better bring a raincoat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We'd better lock the gate before leaving.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.2; §9.7 Had better and auxiliary dare; §9.8 Preterite modals; §9.8.1 Past time",
+        "pages": [
+          196
+        ],
+        "pdf_pages": [
+          216
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Had better as subjective deontic necessity",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-426",
+    "domain": "other",
+    "concept": "Had better's nonactualisation resistance",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An affirmative had better recommendation treats compliance as expected and does not naturally coexist with the speaker's confident prediction of noncompliance.",
+    "condition": "The speaker strongly recommends a future or presently relevant action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Should allows a weaker recommendation compatible with expecting it not to happen.",
+        "pages": [
+          196
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She had better apologise before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The driver had better check the tyres.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.2; §9.7 Had better and auxiliary dare; §9.8 Preterite modals; §9.8.1 Past time",
+        "pages": [
+          196
+        ],
+        "pdf_pages": [
+          216
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Had better's nonactualisation resistance",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-427",
+    "domain": "other",
+    "concept": "Had better present modal orientation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The obligation conveyed by had better is anchored in the present situation, notwithstanding its form had.",
+    "condition": "Had better expresses a currently relevant course of action rather than ordinary retrospective criticism.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The superficially past-marked had does not license unrestricted past-time modal necessity.",
+        "pages": [
+          196
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We'd better speak to the caretaker now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You had better take the earlier bus.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.2; §9.7 Had better and auxiliary dare; §9.8 Preterite modals; §9.8.1 Past time",
+        "pages": [
+          196
+        ],
+        "pdf_pages": [
+          216
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Had better present modal orientation",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-428",
+    "domain": "other",
+    "concept": "Negation within had better",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Had better generally expresses negative advice with not either following or preceding better.",
+    "condition": "A negative had better construction advises against an action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The two attested placements are not evidence for external denial of the modal necessity.",
+        "pages": [
+          196
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You had better not touch the switch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You hadn't better touch the switch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.2; §9.7 Had better and auxiliary dare; §9.8 Preterite modals; §9.8.1 Past time",
+        "pages": [
+          196
+        ],
+        "pdf_pages": [
+          216
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation within had better",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-429",
+    "domain": "other",
+    "concept": "Auxiliary dare as dynamic courage",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Auxiliary dare describes a participant's courage or willingness to face a feared action.",
+    "condition": "Dare is used as a modal auxiliary with a plain-form complement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This differs from lexical dare with to and from permission or epistemic possibility.",
+        "pages": [
+          196
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I daren't interrupt the lecturer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She daren't cross the loose bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.2; §9.7 Had better and auxiliary dare; §9.8 Preterite modals; §9.8.1 Past time",
+        "pages": [
+          196
+        ],
+        "pdf_pages": [
+          216
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary dare as dynamic courage",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-430",
+    "domain": "other",
+    "concept": "External negation of auxiliary dare",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "With negative modal auxiliary dare, negation usually denies courage rather than prohibiting the action.",
+    "condition": "A declarative main clause contains daren't or dare not.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The denial of courage normally implies that the subject will not undertake the action.",
+        "pages": [
+          196
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We daren't open that sealed box.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He dare not contradict the supervisor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.2; §9.7 Had better and auxiliary dare; §9.8 Preterite modals; §9.8.1 Past time",
+        "pages": [
+          196
+        ],
+        "pdf_pages": [
+          216
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "External negation of auxiliary dare",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-431",
+    "domain": "other",
+    "concept": "Modal preterites favor remoteness over past time",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal auxiliaries could, might, would, and should use modal remoteness far more freely than simple past-time reference.",
+    "condition": "An inflected modal is compared with ordinary preterites of lexical verbs.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Could and would nevertheless have established past-time uses, and might a rare past-time use.",
+        "pages": [
+          196
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We could meet later if the schedule changed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I would attend if the fee were lower.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.2; §9.7 Had better and auxiliary dare; §9.8 Preterite modals; §9.8.1 Past time",
+        "pages": [
+          196
+        ],
+        "pdf_pages": [
+          216
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal preterites favor remoteness over past time",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-432",
+    "domain": "other",
+    "concept": "Rare past-time might, absent past-time should",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Might has a rare formal past-time possibility use, whereas should is not used to mark ordinary past-time modality.",
+    "condition": "An account of earlier events uses might as past counterpart to a possibility modal.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Most speakers instead assign might backshift or remote meaning; should has distinct idiomatic uses.",
+        "pages": [
+          196
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "In earlier times visitors might enter through the side gate. [formal historic]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "During the old festival, families might gather by the harbour. [literary historic]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.6.2; §9.7 Had better and auxiliary dare; §9.8 Preterite modals; §9.8.1 Past time",
+        "pages": [
+          196
+        ],
+        "pdf_pages": [
+          216
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rare past-time might, absent past-time should",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-433",
+    "domain": "other",
+    "concept": "Past-time could for permission",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could can state that an action was permitted in an earlier period.",
+    "condition": "The modal is past time and the interpretation is deontic.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Affirmative single-event actualisation has a separate restriction, which does not ban historical permission.",
+        "pages": [
+          197
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "In that school, we could choose our own projects.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Years ago, visitors could enter without a ticket.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past-time could and would",
+        "pages": [
+          197
+        ],
+        "pdf_pages": [
+          217
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-time could for permission",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-434",
+    "domain": "other",
+    "concept": "Past-time could for reasonable expectation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could can report what it was reasonable or acceptable to expect in the past.",
+    "condition": "A past evaluation involves dynamic possibility rather than permission.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction does not entail that the potential outcome happened.",
+        "pages": [
+          197
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "At the time, we could expect only a brief reply.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "In those conditions, they could reasonably hope for a small recovery.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past-time could and would",
+        "pages": [
+          197
+        ],
+        "pdf_pages": [
+          217
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-time could for reasonable expectation",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-435",
+    "domain": "other",
+    "concept": "Past-time could for circumstantial possibility",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could can describe earlier physical or situational possibilities.",
+    "condition": "The circumstances in past time made an event possible.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The statement need not claim that any particular event was actualised.",
+        "pages": [
+          197
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rainwater could seep under the old door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A cyclist could cross the bridge before the repairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past-time could and would",
+        "pages": [
+          197
+        ],
+        "pdf_pages": [
+          217
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-time could for circumstantial possibility",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-436",
+    "domain": "other",
+    "concept": "Past-time could for existential and habitual traits",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could can describe a property occurring at times during a prior period.",
+    "condition": "An individual or class showed intermittent or characteristic behavior in past time.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The generic reading is distinct from saying that one bounded event was successfully performed.",
+        "pages": [
+          197
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those lanes could become flooded after storms.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The landlord could be very generous at times.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past-time could and would",
+        "pages": [
+          197
+        ],
+        "pdf_pages": [
+          217
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-time could for existential and habitual traits",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-437",
+    "domain": "other",
+    "concept": "Past-time could for potential ability",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could denotes a skill or capacity possessed in the past even if it was not exercised.",
+    "condition": "A person had a general ability at an earlier time.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Past potential ability does not alone assert successful completion of one occasion.",
+        "pages": [
+          197
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "At fourteen, I could play the violin well.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Before her injury, she could climb steep paths.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past-time could and would",
+        "pages": [
+          197
+        ],
+        "pdf_pages": [
+          217
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-time could for potential ability",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-438",
+    "domain": "other",
+    "concept": "Past-time could for ongoing perception",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could can describe perception actually taking place when the event is construed imperfectively.",
+    "condition": "A past perception or cognition continues over an interval or is described with an ongoing complement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A singular completed perception viewed perfectively is not ordinarily expressed with affirmative could.",
+        "pages": [
+          197
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I could hear the rain beating against the roof.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She could see lanterns flickering across the square.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past-time could and would",
+        "pages": [
+          197
+        ],
+        "pdf_pages": [
+          217
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-time could for ongoing perception",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-439",
+    "domain": "other",
+    "concept": "Affirmative could and single-event perfective restriction",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Affirmative past-time could ordinarily cannot express the successful actualisation of one bounded event viewed perfectively.",
+    "condition": "The intended reading asserts a single completed achievement and could is purely a past-time capacity modal.",
+    "violation": "Past-time could presented as successful actualisation of a single bounded event, rather than capacity, habitual possibility, negation, or ongoing perception.",
+    "exceptions": [
+      {
+        "description": "Negative couldn't, habitual/general capacity, circumstantial possibility, and ongoing perception are not subject to the same ban.",
+        "pages": [
+          197
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "On my first attempt, I was able to open the sealed jar.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When I was little, I could open those jars easily.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I couldn't open the case yesterday.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "I could hear birds singing at dawn.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Yesterday I tried the lock three times and could open the case.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She searched the cupboard and could find the spare key.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past-time could and would",
+        "pages": [
+          197
+        ],
+        "pdf_pages": [
+          217
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Affirmative could and single-event perfective restriction",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": {
+      "error_family": "tense_aspect",
+      "error_pattern": "Past-time could presented as successful actualisation of a single bounded event, rather than capacity, habitual possibility, negation, or ongoing perception.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Yesterday I tried the lock three times and could open the case. ||| On my first attempt, I was able to open the sealed jar.",
+        "She searched the cupboard and could find the spare key. ||| When I was little, I could open those jars easily."
+      ],
+      "learner_explanation": "For a single past success that actually happened, use was able to or a simple past verb rather than affirmative could. Could remains correct for past abilities, repeated possibilities, negative outcomes, and ongoing perceptions.",
+      "corrected_paragraph_template": "Apply a meaning-preserving replacement only after confirming the construction and its temporal/modal interpretation; re-check the whole text and explain the specific edit.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "When I was younger, I could open those cases easily.",
+        "Yesterday I couldn't open the case.",
+        "I could hear the birds singing.",
+        "I could have opened the case if I had the key.",
+        "She said she could open the case."
+      ],
+      "lesson_tags": [
+        "CGEL chapter 3",
+        "modality",
+        "preterite",
+        "conditional clauses"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "OTH-440",
+    "domain": "other",
+    "concept": "Affirmative past volitional would and single event",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "In ordinary past-time volition, affirmative would is not normally used to assert the completion of one specific action.",
+    "condition": "The speaker describes one completed act of willingness as a past event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Negative refusal and repeated/habitual willingness remain ordinary, and other remote/backshifted readings of would are outside this use.",
+        "pages": [
+          197
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He wouldn't offer a lift that evening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whenever I called, she would offer to help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past-time could and would",
+        "pages": [
+          197
+        ],
+        "pdf_pages": [
+          217
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Affirmative past volitional would and single event",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-441",
+    "domain": "other",
+    "concept": "Past-time would for habitual propensity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Would can describe repeated characteristic past behaviour.",
+    "condition": "A serial state or recurring dynamic situation is located in a past interval.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "There is a special stressed would for a single annoying occurrence, treated separately.",
+        "pages": [
+          197
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whenever the bell rang, our dog would bark.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "In winter, the caretaker would close the windows at dusk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past-time could and would",
+        "pages": [
+          197
+        ],
+        "pdf_pages": [
+          217
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-time would for habitual propensity",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-442",
+    "domain": "other",
+    "concept": "Past-time would for futurity from a past viewpoint",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Would can anticipate a later event from a past narrative reference point.",
+    "condition": "A past narrative presents an eventuality as future relative to an earlier stage of the narrative.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The narrative use typically entails later actualisation and is genre-restricted.",
+        "pages": [
+          197
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Months later, the old factory would become a museum.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A decade after the discovery, the village would expand rapidly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past-time could and would",
+        "pages": [
+          197
+        ],
+        "pdf_pages": [
+          217
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-time would for futurity from a past viewpoint",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-443",
+    "domain": "other",
+    "concept": "Emotive stressed would for a single unfortunate event",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Stressed WOULD can portray a particular completed event as annoyingly typical.",
+    "condition": "An affirmative past-time sentence marks would with strong stress and an unfortunate single occurrence.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Habitual will cannot ordinarily be used in the same way for one past instance.",
+        "pages": [
+          198
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She WOULD knock just as the baby fell asleep.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The alarm WOULD ring during the most important scene.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past time; §9.8.2 Backshift; §9.8.3 Modal remoteness",
+        "pages": [
+          198
+        ],
+        "pdf_pages": [
+          218
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emotive stressed would for a single unfortunate event",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-444",
+    "domain": "other",
+    "concept": "Propensity will differs from single-event stressed would",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Emotively stressed will normally describes a habit rather than one single actualised past occasion.",
+    "condition": "A stressed modal characterises annoying behaviour.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "For a one-off irritating past event the book gives stressed would instead.",
+        "pages": [
+          198
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He WILL misplace his keys when we need to leave.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My cousin WILL interrupt whenever the story gets interesting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past time; §9.8.2 Backshift; §9.8.3 Modal remoteness",
+        "pages": [
+          198
+        ],
+        "pdf_pages": [
+          218
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Propensity will differs from single-event stressed would",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-445",
+    "domain": "other",
+    "concept": "Narrative future-in-the-past would",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The past-futurity use of would looks forward from a past orientation point and ordinarily implies later actualisation.",
+    "condition": "A narrator presents an event as subsequent to another past stage.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This interpretation is restricted to narrative-like accounts and should not be imposed on ordinary modal remote would.",
+        "pages": [
+          198
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The young engineer would later direct the entire project.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Within three years, the narrow trail would turn into a busy road.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past time; §9.8.2 Backshift; §9.8.3 Modal remoteness",
+        "pages": [
+          198
+        ],
+        "pdf_pages": [
+          218
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Narrative future-in-the-past would",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-446",
+    "domain": "other",
+    "concept": "Would and past simple narrative viewpoint",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Past-future would and simple preterite may describe the same realised development from different time orientations.",
+    "condition": "A narrator can depict a past event directly or as still future relative to an earlier viewpoint.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The narrative would form foregrounds the earlier vantage point and must not be mistaken for a counterfactual.",
+        "pages": [
+          198
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "By 2010, the school had grown; a decade later it would double again.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A decade later, the population doubled again.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past time; §9.8.2 Backshift; §9.8.3 Modal remoteness",
+        "pages": [
+          198
+        ],
+        "pdf_pages": [
+          218
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Would and past simple narrative viewpoint",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-447",
+    "domain": "other",
+    "concept": "Modal preterites in backshift",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could, would, should, and might may arise through past-tense backshift of can, will, shall, and may.",
+    "condition": "Reported speech or thought shifts the original temporal orientation into the past.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context and dialect differences may block straightforward one-to-one correspondence, especially shall/should and may/might.",
+        "pages": [
+          198
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guide said we could enter later.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The manager promised that she would send the invoice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past time; §9.8.2 Backshift; §9.8.3 Modal remoteness",
+        "pages": [
+          198
+        ],
+        "pdf_pages": [
+          218
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal preterites in backshift",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-448",
+    "domain": "other",
+    "concept": "Backshift can conceal open/remote conditional contrast",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A backshifted open conditional may become formally identical to a reported remote conditional.",
+    "condition": "A past reporting verb embeds an if construction with could and a preterite protasis.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The two readings differ semantically even when the resulting wording matches.",
+        "pages": [
+          198
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said she could travel if the road reopened.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He said he would help if the schedule allowed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past time; §9.8.2 Backshift; §9.8.3 Modal remoteness",
+        "pages": [
+          198
+        ],
+        "pdf_pages": [
+          218
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backshift can conceal open/remote conditional contrast",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-449",
+    "domain": "other",
+    "concept": "Were to can distinguish remoteness under backshift",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A remote conditional with were to remains recognisably remote even after a reporting verb has shifted tense.",
+    "condition": "An embedded if-clause uses were to followed by the plain-form verb.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Many ordinary could/would backshifted if-clauses remain ambiguous between open and remote readings.",
+        "pages": [
+          198
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She knew she would leave if the alarm were to sound.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He believed he could recover if the plan were to succeed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past time; §9.8.2 Backshift; §9.8.3 Modal remoteness",
+        "pages": [
+          198
+        ],
+        "pdf_pages": [
+          218
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Were to can distinguish remoteness under backshift",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-450",
+    "domain": "other",
+    "concept": "Open versus remote modal pairs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Open conditionals commonly use present modals where remote conditionals use the corresponding preterite forms.",
+    "condition": "The conditional matrix is an apodosis and the protasis switches between open and modal-remote structures.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The distinction is not simply a change of real-world chronology: modal remoteness concerns possibility.",
+        "pages": [
+          198
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the signal returns, we can restart.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the signal returned, we could restart.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.1 Past time; §9.8.2 Backshift; §9.8.3 Modal remoteness",
+        "pages": [
+          198
+        ],
+        "pdf_pages": [
+          218
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Open versus remote modal pairs",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-451",
+    "domain": "other",
+    "concept": "Implicit protasis with remote modal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Would, could and other remote modals can be interpreted with an unstated condition recoverable from discourse.",
+    "condition": "An apodosis stands alone but speaker and hearer understand a hypothetical condition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An omitted condition does not make the standalone modal clause incomplete.",
+        "pages": [
+          199
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wouldn't accept those terms. [if offered]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I could finish this tonight. [if necessary]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Remote conditionals and wish",
+        "pages": [
+          199
+        ],
+        "pdf_pages": [
+          219
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit protasis with remote modal",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-452",
+    "domain": "other",
+    "concept": "Might as epistemic remote consequence",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Might is usually epistemic in a remote conditional consequent rather than an expression of deontic permission.",
+    "condition": "An apodosis of a counterfactual conditional contains might.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Could remains suitable for permission or circumstantial capacity in a similar structure.",
+        "pages": [
+          199
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If we had departed earlier, we might have arrived before dark.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the permit had been issued, we could have used the venue.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Remote conditionals and wish",
+        "pages": [
+          199
+        ],
+        "pdf_pages": [
+          219
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Might as epistemic remote consequence",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-453",
+    "domain": "other",
+    "concept": "Remote conditional apodosis requires a modal auxiliary",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A fully modal-remote conditional normally requires a modal auxiliary in its apodosis.",
+    "condition": "An if-clause is a genuine remote conditional and its matrix clause states the remote consequence.",
+    "violation": "A true modal-remote conditional consequent lacks a modal auxiliary where standard English requires one.",
+    "exceptions": [
+      {
+        "description": "Open conditionals and independent past reporting constructions must not be classified as remote solely because an if-clause contains preterite forms.",
+        "pages": [
+          199
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the building were open, we would go inside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the rules had changed, we might have qualified.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "If the shop is open, we enter through the front door.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "She said that if the shop was open, she entered through the front door.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "If the workshop were open, we entered it now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "If the light were brighter, I read the label now.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Remote conditionals and wish",
+        "pages": [
+          199
+        ],
+        "pdf_pages": [
+          219
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remote conditional apodosis requires a modal auxiliary",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": {
+      "error_family": "missing_word",
+      "error_pattern": "A true modal-remote conditional consequent lacks a modal auxiliary where standard English requires one.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "If the workshop were open, we entered it now. ||| If the building were open, we would go inside.",
+        "If the light were brighter, I read the label now. ||| If the rules had changed, we might have qualified."
+      ],
+      "learner_explanation": "A remote conditional normally needs a modal auxiliary such as would, could, might, or should in its consequence. Keep open conditionals separate: they can have an unmodalised consequence.",
+      "corrected_paragraph_template": "Apply a meaning-preserving replacement only after confirming the construction and its temporal/modal interpretation; re-check the whole text and explain the specific edit.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "If the shop is open, we enter.",
+        "If the shop is open, we'll enter.",
+        "If the shop were open, we would enter.",
+        "She said that if the shop was open, she entered.",
+        "Had we been there, we might have helped."
+      ],
+      "lesson_tags": [
+        "CGEL chapter 3",
+        "modality",
+        "preterite",
+        "conditional clauses"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "OTH-454",
+    "domain": "other",
+    "concept": "Remote would pairs with open will, not bare present",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Remote consequent would retains the semantic contribution of modal will; it is not just an empty counterfactual marker.",
+    "condition": "An open conditional consequent with will is compared with a remote consequent with would.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An open conditional may alternatively have no will, and that can change meaning independently of remoteness.",
+        "pages": [
+          199
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If it rains tonight, the match will be cancelled.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If it had rained last night, the match would have been cancelled.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Remote conditionals and wish",
+        "pages": [
+          199
+        ],
+        "pdf_pages": [
+          219
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remote would pairs with open will, not bare present",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-455",
+    "domain": "other",
+    "concept": "Unmodalised open consequence can express strict entailment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An unmodalised open conditional consequent can present an outcome as logically guaranteed by the condition.",
+    "condition": "Given background facts, the condition necessitates the conclusion.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adding will expresses an epistemic inference whose certainty may be lower or less direct.",
+        "pages": [
+          199
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the seal is broken, the container is no longer sealed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If every ticket is sold, there are no unsold tickets.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Remote conditionals and wish",
+        "pages": [
+          199
+        ],
+        "pdf_pages": [
+          219
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unmodalised open consequence can express strict entailment",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-456",
+    "domain": "other",
+    "concept": "Remote counterfactual inference is not guaranteed by actual facts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A counterfactual consequent may not inherit what is known to follow in the actual world.",
+    "condition": "The speaker envisages a different possible course of events in a remote conditional.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The remote conditional may be reasonable without being entailed by an unmodalised real-world implication.",
+        "pages": [
+          199
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If we had missed the flight, we would have stayed another night.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the old bridge had collapsed, a different route would have been needed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Remote conditionals and wish",
+        "pages": [
+          199
+        ],
+        "pdf_pages": [
+          219
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remote counterfactual inference is not guaranteed by actual facts",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-457",
+    "domain": "other",
+    "concept": "Remote-condition semantics separate from tense",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Preterite in a remote conditional marks modal remoteness rather than necessarily locating its situation in the past.",
+    "condition": "An if-clause has irrealis were or other preterite remote markers.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A remote conditional can concern an unreal present or future situation.",
+        "pages": [
+          199
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the weather were clearer now, we would walk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the route reopened tomorrow, we could travel.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Remote conditionals and wish",
+        "pages": [
+          199
+        ],
+        "pdf_pages": [
+          219
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remote-condition semantics separate from tense",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-458",
+    "domain": "other",
+    "concept": "Finite wish complements require preterite for unreal situation",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A finite complement of wish normally uses a preterite form to express an unreal present or desired situation.",
+    "condition": "Wish selects a finite complement in which the desired state is contrary to or remote from the speaker's actual situation.",
+    "violation": "A finite wish complement describing a current or future unreal state uses non-remote present rather than the required preterite or modal-remote construction.",
+    "exceptions": [
+      {
+        "description": "Different clauses expressing hopes, including hope that, do not have the same preterite requirement.",
+        "pages": [
+          200
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wish the classroom were brighter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wish she could join us tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I hope the office is open tomorrow.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "I wish she would come to the meeting.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "I wish the office is open now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "I wish I can attend tomorrow.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Wish; §9.8.3(b) Tentative use",
+        "pages": [
+          200
+        ],
+        "pdf_pages": [
+          220
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite wish complements require preterite for unreal situation",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": {
+      "error_family": "tense_aspect",
+      "error_pattern": "A finite wish complement describing a current or future unreal state uses non-remote present rather than the required preterite or modal-remote construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I wish the office is open now. ||| I wish the classroom were brighter.",
+        "I wish I can attend tomorrow. ||| I wish she could join us tomorrow."
+      ],
+      "learner_explanation": "After wish, use a remote preterite form for a desired but unreal present or future situation, such as were, could or would. A clause with hope is different and can take present tense.",
+      "corrected_paragraph_template": "Apply a meaning-preserving replacement only after confirming the construction and its temporal/modal interpretation; re-check the whole text and explain the specific edit.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I hope the office is open tomorrow.",
+        "I wish the office were open now.",
+        "I wish I could attend tomorrow.",
+        "I wish them all the best.",
+        "I wish to attend tomorrow.",
+        "I wished yesterday that she were here."
+      ],
+      "lesson_tags": [
+        "CGEL chapter 3",
+        "modality",
+        "preterite",
+        "conditional clauses"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "OTH-459",
+    "domain": "other",
+    "concept": "Wish and remote conditionals share obligatory preterite",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Wish complements and remote conditionals both supply constructions that require modal remoteness in the verb form.",
+    "condition": "A finite complement follows wish, or a consequence is evaluated under a modal-remote condition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The similarity helps establish could/would as preterite inflections without making their idiomatic senses predictable.",
+        "pages": [
+          200
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wish we had more room.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If we had more room, we would invite another guest.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Wish; §9.8.3(b) Tentative use",
+        "pages": [
+          200
+        ],
+        "pdf_pages": [
+          220
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Wish and remote conditionals share obligatory preterite",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-460",
+    "domain": "other",
+    "concept": "Would as a tentative estimate",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Inferential would can weaken a confident will estimate into a more tentative guess.",
+    "condition": "The speaker estimates a present fact with remote will/would rather than expressing a counterfactual.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A hidden condition could instead license a separate conditional would interpretation.",
+        "pages": [
+          200
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That would be our neighbour calling.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She would be around thirty, I imagine.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Wish; §9.8.3(b) Tentative use",
+        "pages": [
+          200
+        ],
+        "pdf_pages": [
+          220
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Would as a tentative estimate",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-461",
+    "domain": "other",
+    "concept": "Could in polite ability questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could in a second-person question commonly softens an indirect request relative to can.",
+    "condition": "An ability interrogative is pragmatically used to ask for assistance.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Can remains a grammatical and often polite request; the degree of courtesy varies by speaker and context.",
+        "pages": [
+          200
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could you lift this box, please?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could you check the timetable for me?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Wish; §9.8.3(b) Tentative use",
+        "pages": [
+          200
+        ],
+        "pdf_pages": [
+          220
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Could in polite ability questions",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-462",
+    "domain": "other",
+    "concept": "Might as more tentative than may for some speakers",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some speakers interpret epistemic might as slightly less likely than may.",
+    "condition": "An epistemic proposition is expressed with may versus might.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This difference is not uniform across varieties and is not a basis for diagnosing a modal error.",
+        "pages": [
+          200
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It might be the wrong address.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They may arrive before lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Wish; §9.8.3(b) Tentative use",
+        "pages": [
+          200
+        ],
+        "pdf_pages": [
+          220
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Might as more tentative than may for some speakers",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-463",
+    "domain": "other",
+    "concept": "Epistemic could available where can is not",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Epistemic could has affirmative possibility uses that the corresponding positive can generally lacks.",
+    "condition": "Could describes uncertainty about whether a proposition is true.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Positive can is grammatical in ability, permission or circumstantial readings rather than the same epistemic one.",
+        "pages": [
+          200
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There could be another solution.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The answer could be in the appendix.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Wish; §9.8.3(b) Tentative use",
+        "pages": [
+          200
+        ],
+        "pdf_pages": [
+          220
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic could available where can is not",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-464",
+    "domain": "other",
+    "concept": "Tentative modals in permission requests",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could or might in a first-person interrogative can politely ask the addressee's permission.",
+    "condition": "The speaker requests authorisation for their own action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The corresponding can or may request is also valid but may be a little more direct.",
+        "pages": [
+          200
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could I sit near the window?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Might I borrow your dictionary?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Wish; §9.8.3(b) Tentative use",
+        "pages": [
+          200
+        ],
+        "pdf_pages": [
+          220
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Tentative modals in permission requests",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-465",
+    "domain": "other",
+    "concept": "Tentative would in indirect requests",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Would in second-person interrogatives can ask a favour by referencing willingness.",
+    "condition": "A question formally asks about the addressee's volition but functions as a request.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A similar will question remains grammatical; remoteness normally makes it more diffident.",
+        "pages": [
+          200
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Would you open the curtains, please?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Would you pass that folder to me?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(a) Wish; §9.8.3(b) Tentative use",
+        "pages": [
+          200
+        ],
+        "pdf_pages": [
+          220
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Tentative would in indirect requests",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-466",
+    "domain": "other",
+    "concept": "Politeness from elaborated permission phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A modal permission question may become more diffident with an explicit be permitted construction.",
+    "condition": "A first-person may/might question asks for authorisation using an expanded predicate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The longer form is not required for grammaticality.",
+        "pages": [
+          201
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Might I be permitted to inspect the archive?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "May I be allowed to speak briefly?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(b) Tentativeness; §9.8.3(c) Special could and might",
+        "pages": [
+          201
+        ],
+        "pdf_pages": [
+          221
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Politeness from elaborated permission phrases",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-467",
+    "domain": "other",
+    "concept": "Would in indirect performatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Tentative would can reduce directness in an utterance that performs an act of suggesting, thanking or advising.",
+    "condition": "The speaker uses a first-person verb naming an act carried out by the utterance itself.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The performative action occurs now despite the modal's preterite form.",
+        "pages": [
+          201
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I would suggest a different route.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I would recommend reserving a seat.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(b) Tentativeness; §9.8.3(c) Special could and might",
+        "pages": [
+          201
+        ],
+        "pdf_pages": [
+          221
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Would in indirect performatives",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-468",
+    "domain": "other",
+    "concept": "Would and should like as tentative preference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Would like and should like can express a one-time desired future experience rather than habitual liking.",
+    "condition": "The expression contains would or should plus like and a prospective infinitival complement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Plain present like more naturally describes a recurring preference, not the same single planned request.",
+        "pages": [
+          201
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I would like to visit the museum tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I should like to speak to the coordinator.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(b) Tentativeness; §9.8.3(c) Special could and might",
+        "pages": [
+          201
+        ],
+        "pdf_pages": [
+          221
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Would and should like as tentative preference",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-469",
+    "domain": "other",
+    "concept": "Would like in indirect requests and thanks",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Would like can package requests or expressions of gratitude as socially less direct speech acts.",
+    "condition": "A speaker uses would like followed by an infinitive such as ask, thank, or invite.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The utterance may perform the speech act rather than report a future mental state.",
+        "pages": [
+          201
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I would like to thank everyone for attending.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Would you like to tell us what happened?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(b) Tentativeness; §9.8.3(c) Special could and might",
+        "pages": [
+          201
+        ],
+        "pdf_pages": [
+          221
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Would like in indirect requests and thanks",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-470",
+    "domain": "other",
+    "concept": "Would appear/seem as double hedging",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Would can add a further tentative qualification to lexical modal appear or seem.",
+    "condition": "A lexical modal of medium strength is combined with remote would.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Replacing would with will ordinarily gives a future-oriented interpretation rather than the same hedge.",
+        "pages": [
+          201
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The documents would appear to be incomplete.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There would seem to be a problem with the timetable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(b) Tentativeness; §9.8.3(c) Special could and might",
+        "pages": [
+          201
+        ],
+        "pdf_pages": [
+          221
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Would appear/seem as double hedging",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-471",
+    "domain": "other",
+    "concept": "Would in an open conditional protasis",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Remote would can be embedded in the if-clause of an open conditional without making the entire conditional remote.",
+    "condition": "An if-clause evaluates a potentially convenient hypothetical choice, or requests a voluntary act.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A surface would in the protasis must not automatically trigger remote-conditional classification.",
+        "pages": [
+          201
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If Friday would be convenient, we can meet then.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you would move your chair, I can reach the shelf.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(b) Tentativeness; §9.8.3(c) Special could and might",
+        "pages": [
+          201
+        ],
+        "pdf_pages": [
+          221
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Would in an open conditional protasis",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-472",
+    "domain": "other",
+    "concept": "Unrealised possibility with might/could have",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could or might plus perfect can describe a past risk or opportunity that was possible but did not occur.",
+    "condition": "A speaker evaluates an unrealised circumstantial consequence of an earlier action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is stronger than mere polite tentativeness and does not require an implicit if-clause.",
+        "pages": [
+          201
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That loose tile could have fallen on someone.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The storm might have damaged the greenhouse, but it missed us.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(b) Tentativeness; §9.8.3(c) Special could and might",
+        "pages": [
+          201
+        ],
+        "pdf_pages": [
+          221
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unrealised possibility with might/could have",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-473",
+    "domain": "other",
+    "concept": "Counterfactual situation with could/might",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could and might can present a situation as if an alternative location or state held, while implying it does not.",
+    "condition": "A present hypothetical description contrasts with a known actual setting.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The effect need not involve a cause-and-effect risk.",
+        "pages": [
+          201
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "With these murals, we could be in a gallery.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is so quiet here that we might be miles from the city.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(b) Tentativeness; §9.8.3(c) Special could and might",
+        "pages": [
+          201
+        ],
+        "pdf_pages": [
+          221
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Counterfactual situation with could/might",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-474",
+    "domain": "other",
+    "concept": "Might/could with reproach",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Might or could with a perfect can reproach an addressee for an action they could have done but did not.",
+    "condition": "A retrospective speaker criticises a missed helpful or expected action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The modal expresses a pragmatically strengthened deontic possibility, not a simple prediction.",
+        "pages": [
+          202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You might have called before changing the plan.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You could have washed the dishes instead of leaving them.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(c) Special might/could; §9.8.4 Status of should and might as preterites",
+        "pages": [
+          202
+        ],
+        "pdf_pages": [
+          222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Might/could with reproach",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-475",
+    "domain": "other",
+    "concept": "Present-time reproach with might",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Present might can express a complaint or indirect order about an action the addressee is not taking.",
+    "condition": "A deontic possibility is pragmatically strengthened into criticism of current behavior.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Present could is less natural in this reproach construction; not every might is reproachful.",
+        "pages": [
+          202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You might lower your voice while the baby sleeps.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You might put your coat on the rack.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(c) Special might/could; §9.8.4 Status of should and might as preterites",
+        "pages": [
+          202
+        ],
+        "pdf_pages": [
+          222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present-time reproach with might",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-476",
+    "domain": "other",
+    "concept": "Preterite status of should via backshift",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Should functions as the preterite counterpart of shall in backshifted reported speech or thought.",
+    "condition": "A first-person shall assertion is embedded under a past reporting verb.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Idiomatic should advice is not semantically reducible to shall plus ordinary preterite.",
+        "pages": [
+          202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I expected that I should finish before dark.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We knew we should have an answer by Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(c) Special might/could; §9.8.4 Status of should and might as preterites",
+        "pages": [
+          202
+        ],
+        "pdf_pages": [
+          222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preterite status of should via backshift",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-477",
+    "domain": "other",
+    "concept": "Preterite status of should via remote conditional",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Should can fill the remote consequent role corresponding to first-person shall in an open conditional.",
+    "condition": "An open first-person shall consequence is compared with a modal-remote consequent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Would is an alternative in contemporary English, but shall itself is not the remote preterite.",
+        "pages": [
+          202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the offer were accepted, I should be delighted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she called tomorrow, we should be ready.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(c) Special might/could; §9.8.4 Status of should and might as preterites",
+        "pages": [
+          202
+        ],
+        "pdf_pages": [
+          222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preterite status of should via remote conditional",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-478",
+    "domain": "other",
+    "concept": "Idiomatic should as an inflectional exception",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Many deontic and epistemic meanings of should cannot be predicted from shall plus the preterite distinction.",
+    "condition": "Should is considered an inflection of shall but has established independent idiomatic uses.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This does not undermine its preterite status in the specific backshift and remote constructions.",
+        "pages": [
+          202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You should apologise to the organiser.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcel should reach us tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(c) Special might/could; §9.8.4 Status of should and might as preterites",
+        "pages": [
+          202
+        ],
+        "pdf_pages": [
+          222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic should as an inflectional exception",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-479",
+    "domain": "other",
+    "concept": "May/might patterns vary by dialect",
+    "rule_type": "variety_restricted",
+    "variety": "CGEL Dialect B; permits may under backshift or modal remoteness",
+    "scope": "clause",
+    "statement": "Some varieties allow may in backshifted and remote conditional contexts where other varieties require might.",
+    "condition": "A present modal is considered in a reported thought or remote if construction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Such may forms must not be flagged as errors across all varieties; the dialect contrast is explicitly source-attested.",
+        "pages": [
+          202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I thought the visitors may arrive by noon. [Dialect B]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If we returned tomorrow, we may find the shop open. [Dialect B]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(c) Special might/could; §9.8.4 Status of should and might as preterites",
+        "pages": [
+          202
+        ],
+        "pdf_pages": [
+          222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "May/might patterns vary by dialect",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-480",
+    "domain": "other",
+    "concept": "Dialect A treats might as may's preterite",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "For speakers rejecting may in backshift/remote environments, might is analysed as the preterite inflection of may.",
+    "condition": "The dialect requires a preterite counterpart when grammar demands backshift or modal remoteness.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This analysis does not apply unchanged in Dialect B where may is admitted in those contexts.",
+        "pages": [
+          202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I thought the guests might arrive.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If we came back tomorrow, we might find a seat.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(c) Special might/could; §9.8.4 Status of should and might as preterites",
+        "pages": [
+          202
+        ],
+        "pdf_pages": [
+          222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dialect A treats might as may's preterite",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-481",
+    "domain": "other",
+    "concept": "Dialect B treats may and might as distinct lexemes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a dialect where may remains possible under backshift and remote conditional environments, may and might behave as separate present-tense lexemes.",
+    "condition": "A speaker accepts may and might in the same past-oriented syntactic environments.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The distribution does not justify treating Dialect B may as an error merely because Dialect A disallows it.",
+        "pages": [
+          202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I thought the meeting may be postponed. [Dialect B]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If we stayed another night, we may see the comet. [Dialect B]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(c) Special might/could; §9.8.4 Status of should and might as preterites",
+        "pages": [
+          202
+        ],
+        "pdf_pages": [
+          222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dialect B treats may and might as distinct lexemes",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-482",
+    "domain": "other",
+    "concept": "Dialect variation in perfect remote may",
+    "rule_type": "variety_restricted",
+    "variety": "CGEL Dialect B; permits may under backshift or modal remoteness",
+    "scope": "clause",
+    "statement": "Some speakers accept may within perfect constructions about unrealised counterfactual events.",
+    "condition": "The expression combines may with perfect aspect in a remote conditional context.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "For other varieties this use is judged ungrammatical, so detectors require an explicit variety setting.",
+        "pages": [
+          202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The experiment may never have happened without the grant. [Dialect B]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The meeting may have been cancelled if the storm had reached us. [Dialect B]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(c) Special might/could; §9.8.4 Status of should and might as preterites",
+        "pages": [
+          202
+        ],
+        "pdf_pages": [
+          222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dialect variation in perfect remote may",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-483",
+    "domain": "other",
+    "concept": "Must and ought as modal lexemes without preterites",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The availability of modal lexemes with no preterite forms may have contributed to Dialect B reanalysing may and might as separate lexemes.",
+    "condition": "A variety already has modals like must and ought without an ordinary present/preterite pair.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is a suggested explanation, not a testable constraint on individual sentences.",
+        "pages": [
+          202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We must submit the form today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You ought to notify the office.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.3(c) Special might/could; §9.8.4 Status of should and might as preterites",
+        "pages": [
+          202
+        ],
+        "pdf_pages": [
+          222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Must and ought as modal lexemes without preterites",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts passage was used for this construction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "diagnostic": null
   }
 ]
