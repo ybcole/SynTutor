@@ -1,0 +1,34 @@
+# Cambridge Grammar Chapter 3 — Phase B, printed pages 163–170
+
+**Source audit date:** 2026-11-10. Source: user-uploaded full PDF of *The Cambridge Grammar of the English Language*. Eight consecutive printed pages 163–170 (PDF viewer pages 183–190) were inspected using extracted text, with rendered-page verification of the progressive-properties list on p. 163 and the sensory-verb comparison table on p. 169. Page 170 was checked visually for the cognition and stance-verb section boundary. The rule records paraphrase source principles and use newly authored English examples only; no copyrighted pages, tables or book prose are committed.
+
+## Page-by-page provenance
+
+| Printed page | Newly derived rule IDs | Source topic and exception audit |
+|---|---|---|
+| 163 | OTH-188, OTH-189, OTH-190, OTH-191, OTH-192, OTH-193 | §8.1 syntactic progressive vs progressive aspectuality; six meaning properties; gaps in long activities; perfective when versus imperfective when; footnote on doubl-ing and be/been + being |
+| 164 | OTH-194, OTH-195, OTH-196, OTH-197, OTH-198, OTH-199, OTH-200, OTH-201, OTH-202 | Present simple extended dynamics usually habitual, but historical/commentary/futurate and temporary serial exceptions; measure indicators and mid-interval implicature |
+| 165 | OTH-201, OTH-202, OTH-203, OTH-204, OTH-205, OTH-206 | Cancellation of mid-interval and incompleteness implications by explicit time boundaries; interpretive/explanatory progressive; imperfectivity distinguished from unfinished result |
+| 166 | OTH-206, OTH-207, OTH-208, OTH-209, OTH-210, OTH-211, OTH-212, OTH-213 | Iterative punctual activity, extendable achievements and duration limits; progressive as frame/background; four aspect combinations for simultaneous events; serial progressive with frequency adjuncts |
+| 167 | OTH-213, OTH-214, OTH-215, OTH-216, OTH-217, OTH-218, OTH-219 | Always means on every relevant occasion in simple form, but recurrent/strong in progressive; dynamicity versus pure stative; agentive being, waxing/waning and temporary serial states |
+| 168 | OTH-216, OTH-218, OTH-219, OTH-220, OTH-221, OTH-222, OTH-223, OTH-224 | Temporary living and strongly stative belong/contain/matter/own; waxing/waning exceptions; limited-duration and extended-duration implications; start of lexeme-specific §8.2 |
+| 169 | OTH-224, OTH-225, OTH-226, OTH-227, OTH-228, OTH-229, OTH-230 | Wear versus have on, suffer versus be ill; visual check of production/experience/acquisition sensory taxonomy; dynamic acquisition versus stative sensation production and modal can experiencers |
+| 170 | OTH-230, OTH-231, OTH-232, OTH-233, OTH-234, OTH-235 | Unusual progressive sensation for perceptual quality or hallucination; pain and sensation verb alternation; cognitive/affective progressive temporary/dynamic/explanatory/polite senses; stance-verb section starts and continues on p.171 |
+
+## Source-backed interpretation safeguards
+
+- **Separate syntactic form from aspectual meaning.** The progressive is a structural category, but its central aspectuality conveys ongoing dynamic duration and internal viewpoint. Mid-interval and temporary-duration descriptions are *implicatures*, not meaning entailed in every use. Special uses continuing in §8.3 have not yet been read in this batch.
+- **Long projects can have gaps.** A person reporting that they are reading a book or restoring a building need not be physically engaged in that task at the instant of speech. The wider situation can include accepted interruptions.
+- **Simple present does not semantically equal habitual.** Single dynamic occurrences are unusual in ordinary present main clauses, but natural in running commentary, historic/timeless present, scheduled futurates and embedded prospective clauses. Conversely a progressive can describe a temporary recurrent practice, while simple preterite comfortably describes one bounded occurrence.
+- **A measure changes the interpretation.** A completed distance or count tends to favour perfective aspect, but progressive with a measurement may reflect a predetermined distance or multiple simultaneous accomplishments. Avoid an absolute measure-plus-progressive prohibition.
+- **Progressive does not assert failure to finish.** Accomplishment progressives generally imply that their endpoint lies outside the reference interval. Explicit start/end adjuncts can instead delimit the full completed event, cancelling that implication. Explanatory progressives may also be coextensive with the situation they interpret.
+- **Punctual achievements and repetition.** Knocking/nodding can be iterative, while arriving can expand into a short developing process. Dying permits a longer extension. Some predicates can describe either repeated events or one protracted event; still photos and slow-motion scenes are additional contextual exceptions.
+- **Temporal framing and emotion are optional readings.** Progressive often presents a background for a bounded event, but overlapping activities can appear in any combination of progressive and non-progressive. With always/continually and serial states, a progressive frequently but not invariably conveys an annoyed or evaluative tone.
+- **Static versus dynamic must be derived from construction and meaning.** Agentive being with an adjective, waxing or waning, and an unusual temporary routine can license a progressive even for a normally stative lexeme. Mere temporary duration does not always license strongly stative belong, contain, matter or own; change-of-degree readings can.
+- **Sensory and cognitive exceptions.** Stimulus production, perception by an experiencer and deliberate acquisition are distinct lexical uses. Acquisition readily takes progressive, while stative perception commonly takes can plus a plain sensory verb. Progressive see/hear can describe channel performance or imagined sensations; pain verbs may use either aspect. Cognition verbs can become temporary attitude, activity, explanatory commentary or tentative politeness. Do not flag these by word identity alone.
+
+## Implementation, count and next source boundary
+
+Added **48** original records (OTH-188–OTH-235): **46 classifications, one descriptive generalisation, one narrowly guarded constraint specification**. The static-composition diagnostic is `spec_only`, with two minimal pairs and five false-positive guards. No new production detector, tested diagnostic precision, recall, UI correction, lesson or quiz activation is claimed.
+
+Chapter 3 now has **97 extracted pages**, **3 chapter-contents-only skips** and **42 unprocessed pages (171–212)**. Across the book **1,652 pages remain unprocessed**. Chapter 3 and Phase B remain incomplete. Page 170 merely begins the class of stance verbs, whose discussion continues onto the *next unprocessed page*, 171; it has not been treated as fully analysed in this batch.
