@@ -2349,5 +2349,57 @@
     "related_rules": [],
     "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. Auxiliary do is largely confined to do-support and negative/emphatic imperatives, except for archaic formulae.",
     "diagnostic": null
+  },
+  {
+    "id": "WCAT-035",
+    "domain": "word_categories",
+    "concept": "Aspectual use to has variable auxiliary status",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The past-habitual expression used to behaves as an auxiliary for some speakers and as a lexical construction with do-support for others.",
+    "condition": "A past habitual predication includes used to or use to with variable negation and subject–auxiliary inversion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dana didn't use to work on Sundays.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Dana used to work on Sundays.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.9 Use",
+        "pages": [
+          115
+        ],
+        "pdf_pages": [
+          135
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aspectual use to has variable auxiliary status",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Do not impose an auxiliary-only construction on varieties that normally use supportive do.",
+    "diagnostic": null
   }
 ]

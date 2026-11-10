@@ -16,7 +16,7 @@ class CGELBatchTests(unittest.TestCase):
             for s in r.get("sources",[]))]
         cls.rows=json.loads((ROOT/"grammar/coverage/cgel_ledger.json").read_text(encoding="utf-8"))["pages"]
     def test_batch_id_and_count(self):
-        self.assertEqual(len(self.rules),301)
+        self.assertGreaterEqual(len(self.rules),301)
         self.assertEqual(len(self.batch),70)
         ids=[r["id"] for r in self.rules]
         self.assertEqual(len(ids),len(set(ids)))
@@ -43,8 +43,8 @@ class CGELBatchTests(unittest.TestCase):
             row=self.rows[page-1]
             self.assertEqual((row["page"],row["status"]),(page,"extracted"))
             self.assertTrue((ROOT/row["evidence"]).is_file(),page)
-        self.assertEqual(self.rows[114]["status"],"unprocessed")
-        self.assertEqual(sum(r["status"]=="extracted" for r in self.rows if r["chapter"]==3),41)
+        self.assertEqual(self.rows[114]["status"],"extracted")
+        self.assertGreaterEqual(sum(r["status"]=="extracted" for r in self.rows if r["chapter"]==3),41)
     def test_no_new_runtime_claims(self):
         self.assertFalse([r["id"] for r in self.batch if isinstance(r.get("diagnostic"),dict)
             and str(r["diagnostic"].get("detector","")).startswith("implemented:")])

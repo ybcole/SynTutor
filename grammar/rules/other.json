@@ -1357,5 +1357,1479 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-019",
+    "domain": "other",
+    "concept": "Past-habitual used to negative and interrogative variation",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "Negatives and questions with aspectual use vary between lexical do-support and more formal auxiliary-like constructions in English varieties.",
+    "condition": "A negative or interrogative concerning a previous habit contains usedn't to, used not to or didn't use to.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She didn't use to enjoy chess.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She used to enjoy chess.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.9 Use",
+        "pages": [
+          115
+        ],
+        "pdf_pages": [
+          135
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-habitual used to negative and interrogative variation",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Regional, age-related and spelling variants are not generic syntax errors.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-020",
+    "domain": "other",
+    "concept": "Primary tense, secondary tense, aspect and mood as distinct systems",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "English verbal grammar distinguishes primary tense, secondary tense, progressive aspect and modal mood as four formally separable systems.",
+    "condition": "Classify a verbal construction by its present/preterite morphology, perfect have, progressive be and modal auxiliary pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The employees have been working. [perfect and progressive]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The employees might work. [modal]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.1 Categories of form and categories of meaning",
+        "pages": [
+          116
+        ],
+        "pdf_pages": [
+          136
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary tense, secondary tense, aspect and mood as distinct systems",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. The systems can combine; the unmarked option in each does not require an extra auxiliary.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-021",
+    "domain": "other",
+    "concept": "Primary versus secondary tense morphology",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Primary tense is the inflectional present/preterite contrast; secondary tense contrasts auxiliary-marked perfect with unmarked non-perfect.",
+    "condition": "A clause is classified for primary and secondary tense as formal grammatical systems rather than assigning both to the same suffix.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lights glowed. [preterite]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lights have glowed before. [perfect]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.1 Categories of form and categories of meaning",
+        "pages": [
+          116
+        ],
+        "pdf_pages": [
+          136
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary versus secondary tense morphology",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. The perfect is analysed as secondary past tense by Cambridge, despite other grammatical frameworks analysing it as aspect.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-022",
+    "domain": "other",
+    "concept": "Simple preterite and simple present as unmarked analytic forms",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Simple preterite and simple present lack explicit perfect, progressive or modal auxiliary marking.",
+    "condition": "A finite present or preterite lexical verb occurs with none of the three analytic auxiliary systems.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The engine starts readily.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The engine started yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.1 Categories of form and categories of meaning",
+        "pages": [
+          116
+        ],
+        "pdf_pages": [
+          136
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple preterite and simple present as unmarked analytic forms",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Simple does not mean semantically simplistic or that additional adjuncts cannot occur.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-023",
+    "domain": "other",
+    "concept": "Tense is distinct from absolute temporal reference",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A tense form's central meaning concerns time, but the preterite can express non-past modal remoteness in specific constructions.",
+    "condition": "A preterite verb occurs in an ordinary past description or a remote conditional referring to a future contingency.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitors arrived yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the visitors arrived tomorrow, we would welcome them.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.1 Categories of form and categories of meaning",
+        "pages": [
+          116
+        ],
+        "pdf_pages": [
+          136
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Tense is distinct from absolute temporal reference",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Do not convert every future-oriented preterite into an alleged tense error.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-024",
+    "domain": "other",
+    "concept": "Progressive aspect presents an internal temporal view",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Progressive aspect views a situation from within its unfolding rather than locating it in a different primary tense.",
+    "condition": "A clause contrasts progressive be plus gerund-participle with the corresponding non-progressive form at the same primary tense.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gardeners were planting trees.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gardeners are planting trees.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.1 Categories of form and categories of meaning",
+        "pages": [
+          117
+        ],
+        "pdf_pages": [
+          137
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Progressive aspect presents an internal temporal view",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Progressive is an aspect choice, not a separate present-tense inflection of the lexical verb.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-025",
+    "domain": "other",
+    "concept": "Non-progressive aspect does not select an internal phase",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A non-progressive construction describes its situation without explicitly selecting an ongoing internal phase.",
+    "condition": "A finite clause lacks progressive be while still presenting a state, habitual activity or bounded occurrence.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The assistants greeted the visitors.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The office opens at nine.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.1 Categories of form and categories of meaning",
+        "pages": [
+          117
+        ],
+        "pdf_pages": [
+          137
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-progressive aspect does not select an internal phase",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Absence of progressive morphology does not alone specify instantaneity.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-026",
+    "domain": "other",
+    "concept": "Lexical aspectual verbs are not auxiliaries",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Verbs such as begin and finish express aspectual phases lexically, but do not belong to the grammatical auxiliary class.",
+    "condition": "A lexical aspectual verb selects a catenative complement and describes onset or completion instead of progressive auxiliary morphology.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They began preparing the display.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They finished repairing the fence.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.1 Categories of form and categories of meaning",
+        "pages": [
+          117
+        ],
+        "pdf_pages": [
+          137
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical aspectual verbs are not auxiliaries",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Shared semantic function must not be mistaken for identical syntactic word category.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-027",
+    "domain": "other",
+    "concept": "Modality and grammatical mood",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Modal auxiliaries signal possibilities, requirements, predictions or inferences, contrasting with a clause without overt modal marking.",
+    "condition": "A clause contains a core modal auxiliary governing a plain-form complement, or contains no modal auxiliary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The plan may work.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The plan must work under those assumptions.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.1 Categories of form and categories of meaning",
+        "pages": [
+          117
+        ],
+        "pdf_pages": [
+          137
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modality and grammatical mood",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Modal meaning can also be expressed with adjectives, adverbs and clause type, not only a modal auxiliary.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-028",
+    "domain": "other",
+    "concept": "Will and shall are analysed as modal auxiliaries",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Cambridge treats will and shall as modal auxiliaries rather than as dedicated future-tense inflections.",
+    "condition": "A future-oriented clause contains will or shall and a plain-form verb, classified in the mood system.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They will arrive before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We shall meet the panel next week.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.1 Categories of form and categories of meaning",
+        "pages": [
+          117
+        ],
+        "pdf_pages": [
+          137
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will and shall are analysed as modal auxiliaries",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Future-time meaning does not require reclassifying a modal word as a morphological future tense.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-029",
+    "domain": "other",
+    "concept": "Formal tense, aspect and mood versus semantic time, aspectuality and modality",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A grammatical form can express different semantic functions, while the same meaning can be expressed by different forms.",
+    "condition": "The analysis distinguishes verbal morphology and auxiliary construction from inferred time, aspectuality and modality.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It might rain this afternoon. [modal construction]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Perhaps it will rain this afternoon. [adverb and modal]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.1 Categories of form and categories of meaning",
+        "pages": [
+          117,
+          118
+        ],
+        "pdf_pages": [
+          137,
+          138
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Formal tense, aspect and mood versus semantic time, aspectuality and modality",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. The printed correspondence table on page 118 separates formal systems from their characteristic semantic areas.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-030",
+    "domain": "other",
+    "concept": "Broad situation taxonomy: states, activities, accomplishments and achievements",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Situations divide into static states and dynamic occurrences, the latter including durative activities/accomplishments and punctual achievements.",
+    "condition": "A clause's lexical situation is classified by whether it is static or dynamic, durative or punctual, and bounded or unbounded.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lamp is blue. [state]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The child ran around the garden. [activity]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The builder completed a wall. [accomplishment]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "The engineer found a solution. [achievement]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.1 A broad classification of situations",
+        "pages": [
+          118
+        ],
+        "pdf_pages": [
+          138
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Broad situation taxonomy: states, activities, accomplishments and achievements",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. A given expression may have multiple context-dependent situation readings; the page 118 tree is a semantic classification.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-031",
+    "domain": "other",
+    "concept": "Singulary and multiple situation interpretations",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A singulary situation is a single event or state; a multiple situation consists of repeated instances of the same kind.",
+    "condition": "A clause refers to one occurrence or a recurring set, explicitly through adjuncts or implicitly through tense and context.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Kai called the office once yesterday. [singulary]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Kai usually calls the office before lunch. [multiple]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.1 A broad classification of situations",
+        "pages": [
+          118,
+          119
+        ],
+        "pdf_pages": [
+          138,
+          139
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singulary and multiple situation interpretations",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. The same verb form can support both readings without necessarily changing its syntax.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-032",
+    "domain": "other",
+    "concept": "Static states versus dynamic occurrences",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A state obtains without internal change whereas an occurrence involves a dynamic transition or unfolding.",
+    "condition": "An expression describes an enduring property, relation or mental state, or an event/activity that happens.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The door is narrow. [state]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The carpenter opened the door. [occurrence]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.2 States vs occurrences",
+        "pages": [
+          119
+        ],
+        "pdf_pages": [
+          139
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Static states versus dynamic occurrences",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. A semantic state can have entry and exit transitions, but those are not part of the state viewed narrowly.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-033",
+    "domain": "other",
+    "concept": "State-occurrence includes transition boundaries",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A state-occurrence combines a static condition with its beginning and end, unlike a state considered without those transitions.",
+    "condition": "A predicate conveys a temporally bounded historical state including its emergence and cessation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The director served for twenty years. [state-occurrence]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gallery remained closed all winter. [state]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.2 States vs occurrences",
+        "pages": [
+          119
+        ],
+        "pdf_pages": [
+          139
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "State-occurrence includes transition boundaries",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. The analysis concerns the situation's temporal boundaries rather than a separate tense inflection.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-034",
+    "domain": "other",
+    "concept": "Progressive statives are generally restricted, not universally banned",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A stative interpretation generally resists progressive aspect, although other constructions can yield a temporary, dynamic or reinterpreted sense.",
+    "condition": "A normally stative predicate appears with progressive be, and its aspectual interpretation must be checked in context.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The poster is bright red. [state]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The manager is being unusually considerate today. [temporary behaviour]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.2 Linguistic differences: progressive aspect",
+        "pages": [
+          119
+        ],
+        "pdf_pages": [
+          139
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Progressive statives are generally restricted, not universally banned",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Avoid treating temporary-behaviour or expressive progressives as automatically ungrammatical.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-035",
+    "domain": "other",
+    "concept": "Simple present interpretation depends on situation kind",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "The simple present readily describes an ongoing state, whereas eventive predicates often express habits, schedules or special discourse uses instead of an ongoing event.",
+    "condition": "A simple-present predicate is used with a stative or dynamic situation, with temporal interpretation governed by the type of situation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The banner is green right now. [state]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The bus stops outside the museum each morning. [habitual event]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.2 Linguistic differences: simple present",
+        "pages": [
+          119
+        ],
+        "pdf_pages": [
+          139
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple present interpretation depends on situation kind",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Do not ban simple-present eventive predicates: scheduled, performative, commentary and habitual uses require later context.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-036",
+    "domain": "other",
+    "concept": "Temporal-location adjuncts differ for states and non-progressive events",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A temporal-location adjunct can fall inside a state's duration, while with a non-progressive occurrence it typically locates the occurrence as a whole.",
+    "condition": "A temporal adjunct occurs with a stative clause, a non-progressive occurrence or a progressive occurrence.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "At noon, the students were still in the library. [state]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "At noon, the students were preparing the presentation. [progressive event]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.2 Linguistic differences: adjuncts of temporal location",
+        "pages": [
+          119
+        ],
+        "pdf_pages": [
+          139
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal-location adjuncts differ for states and non-progressive events",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. A non-progressive event with the same adjunct usually describes the time when the event happened, not an internal stage.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-037",
+    "domain": "other",
+    "concept": "Eventive pseudo-clefts with do",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Pseudo-cleft constructions with what someone did normally predicate an occurrence, not an unchanging state.",
+    "condition": "A pseudo-cleft headed by what an agent did is followed by a verb expression describing an action or dynamic event.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What the team did next was inspect the drawings.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What the engineer did next was recheck the figures.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.2 Linguistic differences: pseudo-clefts with do",
+        "pages": [
+          120
+        ],
+        "pdf_pages": [
+          140
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Eventive pseudo-clefts with do",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. States can be coercively reinterpreted as actions in special discourse, so this is not a blanket error detector.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-038",
+    "domain": "other",
+    "concept": "Achievements are punctual; processes durative",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Achievements are conceptualised as punctual transitions, while processes unfold over a duration.",
+    "condition": "A situation is classified as an achievement or process by whether its central development is instantaneous or extended.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitor located the exit. [achievement]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitor searched the building. [process]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.3 Achievements, accomplishments, and activities",
+        "pages": [
+          120,
+          121
+        ],
+        "pdf_pages": [
+          140,
+          141
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Achievements are punctual; processes durative",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Some achievements admit extended or iterative readings in specific constructions.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-039",
+    "domain": "other",
+    "concept": "Accomplishment telicity versus activity atelicity",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Accomplishments are durative events with a natural completion point, whereas activities do not inherently reach a defined terminal result.",
+    "condition": "A dynamic process includes or excludes a specified bounded endpoint.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lina painted a particular wall. [accomplishment]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lina painted walls for a living. [activity]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.3 Achievements, accomplishments, and activities",
+        "pages": [
+          120
+        ],
+        "pdf_pages": [
+          140
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Accomplishment telicity versus activity atelicity",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. An otherwise atelic verb can form a telic predication with bounded dependents.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-040",
+    "domain": "other",
+    "concept": "Bounded objects can determine lexical telicity",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A bounded object or destination can convert an activity-type predicate into an accomplishment with an inherent endpoint.",
+    "condition": "An action such as read, write or walk receives an object/distance complement that bounds the event.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They walked to the lighthouse. [telic]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They walked along the beach. [atelic]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.3 Achievements, accomplishments, and activities",
+        "pages": [
+          120
+        ],
+        "pdf_pages": [
+          140
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bounded objects can determine lexical telicity",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Telicity is often determined by the whole VP, not by the lexical verb in isolation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-041",
+    "domain": "other",
+    "concept": "Accomplishments contain pre-terminal and terminal phases",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An accomplishment has a durative pre-terminal development and a punctual terminal phase, unlike an unbounded activity or a single achievement.",
+    "condition": "An event has a specified result reached only after a process unfolds.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The crew built a shelter. [accomplishment]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The child skipped for an hour. [activity]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.3 Achievements, accomplishments, and activities",
+        "pages": [
+          120,
+          121
+        ],
+        "pdf_pages": [
+          140,
+          141
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Accomplishments contain pre-terminal and terminal phases",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. The existence of a terminal result distinguishes completed accomplishments from merely interrupted attempts.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-042",
+    "domain": "other",
+    "concept": "Aspectual verbs with punctual achievements",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Begin, stop and related lexical aspectual predicates generally select processes rather than single punctual achievements, but repeated achievements can be licensed.",
+    "condition": "A punctual achievement predicate is embedded under an aspectual lexical verb with a singular or repeated-event interpretation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team began repairing the roof. [process]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The athlete kept reaching the finish line first. [repeated achievements]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.3 Linguistic differences: lexical aspectual verbs",
+        "pages": [
+          121
+        ],
+        "pdf_pages": [
+          141
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aspectual verbs with punctual achievements",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. The restriction is on singulary achievement interpretations, not every context with reach or find.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-043",
+    "domain": "other",
+    "concept": "Finish versus stop with accomplishments",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Finishing an accomplishment entails completion of its endpoint, while stopping it merely ends the ongoing activity without necessarily completing the result.",
+    "condition": "A process with a built-in endpoint is embedded under finish or stop.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They finished restoring the mural. [completed]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They stopped restoring the mural. [may be incomplete]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.3 Linguistic differences: lexical aspectual verbs",
+        "pages": [
+          121
+        ],
+        "pdf_pages": [
+          141
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finish versus stop with accomplishments",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. For atelic activities finish can imply a contextual endpoint, while stop need not.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-044",
+    "domain": "other",
+    "concept": "Strict versus extendable achievements in progressive aspect",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Strict achievements tend to resist the progressive, whereas extendable achievements such as dying can receive a durative progressive interpretation.",
+    "condition": "A punctual event predicate is used with progressive be and must be classified for whether a transitional process is available.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The patient was dying when we arrived. [extendable achievement]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The scientist noticed the irregularity. [strict achievement]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.3 Linguistic differences: progressive aspect",
+        "pages": [
+          121
+        ],
+        "pdf_pages": [
+          141
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Strict versus extendable achievements in progressive aspect",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. Do not blanket-flag progressive forms of every achievement verb.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-045",
+    "domain": "other",
+    "concept": "Progressive activity versus accomplishment entailments",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A progressive activity entails that some activity took place, but a progressive accomplishment does not entail reaching its terminal result.",
+    "condition": "A progressive clause describes an atelic activity versus a telic accomplishment, with different implications about completion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The children were playing, so they played. [activity]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina was composing an essay, but she never finished it. [accomplishment]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.3 Entailments and implicatures from the progressive",
+        "pages": [
+          122
+        ],
+        "pdf_pages": [
+          142
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Progressive activity versus accomplishment entailments",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. A negative completion inference may be an implicature rather than a categorical entailment.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-046",
+    "domain": "other",
+    "concept": "Duration adjuncts and event-boundary readings",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "For-duration and in-duration adjuncts take different interpretations according to the situation's telicity, punctuality and surrounding context.",
+    "condition": "A temporal-duration adjunct modifies an activity, accomplishment or achievement, including the preceding or resulting state rather than the event itself.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They played chess for an hour. [activity]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They walked the entire route in an hour. [accomplishment]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§3.2.3 Expressions of duration",
+        "pages": [
+          122
+        ],
+        "pdf_pages": [
+          142
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Duration adjuncts and event-boundary readings",
+        "relation": "unverified",
+        "note": "No verified Burton-Roberts source mapping for this passage."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. A single punctual achievement can license an in-adjunct for the lead-up, and a for-adjunct can refer to a resulting state; do not mark all unconventional combinations wrong.",
+    "diagnostic": null
   }
 ]

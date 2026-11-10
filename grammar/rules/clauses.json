@@ -9390,5 +9390,106 @@
         "explain"
       ]
     }
+  },
+  {
+    "id": "CLS-120",
+    "domain": "clauses",
+    "concept": "Aspectual used to requires do or to under code ellipsis",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In a reduced clause referring back to a prior aspectual used to predicate, the bare finite used cannot stand alone as an auxiliary; a substitute do form or retained infinitival to is required.",
+    "condition": "An elliptical follow-up clause with the intended former-habitual aspectual expression used to, not lexical used meaning employed, omits the repeated lexical predicate.",
+    "violation": "Stranding aspectual used alone without the following to or a pro-verb do in a code construction.",
+    "exceptions": [
+      {
+        "description": "The word used may be a lexical verb with a separately licensed object or complement; the restriction is on elliptical aspectual used to.",
+        "pages": [
+          115
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Kai used to cycle, and Isla did too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Kai used to cycle, and Isla used to as well.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Kai used to cycle, and Isla used too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Lena used to sing, and Omar used as well.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.5.9 Use",
+        "pages": [
+          115
+        ],
+        "pdf_pages": [
+          135
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "aspectual use and auxiliary code",
+        "relation": "unverified",
+        "note": "No independent crosswalk evidence."
+      }
+    ],
+    "confidence": "medium",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [
+      "COMP-021",
+      "COMP-026"
+    ],
+    "review_notes": "Restricted to former-habitual use to and a recoverable ellipted complement; lexical used and other reduced constructions are excluded. No runtime implementation is claimed.",
+    "diagnostic": {
+      "error_family": "missing_word",
+      "error_pattern": "Aspectual used is stranded alone instead of used to or a substitute did in a reduced clause.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Kai used to cycle, and Isla used too. ||| Kai used to cycle, and Isla did too.",
+        "Lena used to sing, and Omar used as well. ||| Lena used to sing, and Omar used to as well."
+      ],
+      "learner_explanation": "The second clause refers back to an earlier habit. In this construction, aspectual used cannot stand alone with the omitted action; keep to after used, or use did as the substitute. Do not change a separate lexical use of used.",
+      "corrected_paragraph_template": "Restore the infinitival marker or replace the stranded aspectual verb with did, preserving the meaning and reference to the preceding clause.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Kai used to cycle, and Isla did too.",
+        "Kai used to cycle, and Isla used to as well.",
+        "Kai used a map, and Isla used one too.",
+        "She never used to leave early."
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "aspectual-use",
+        "ellipsis"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
   }
 ]
