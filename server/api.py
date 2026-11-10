@@ -279,6 +279,10 @@ def build_payload(text, sentence_index=0, convention_version=None,
     pipeline = _pipeline_narration(analysis, summary, details)
     concepts = _rule_concepts(details, summary)
 
+    # Token-only candidate context must survive unresolved B-R canonicalization.
+    # This sentence is server-derived, never client-supplied approval metadata.
+    explanation_analysis = {**br_analysis, 'sentence': analysis['sentence']}
+
     return {
         'meta': {
             'deterministic': 'detector' not in summary,
@@ -315,8 +319,8 @@ def build_payload(text, sentence_index=0, convention_version=None,
         'tree': root,
         'candidate_tree': root,
         'br_analysis': br_analysis,
-        'explanation_evidence': explain_analysis(br_analysis, variety=variety),
-        'canonical_evaluation': evaluate_analysis(br_analysis, variety=variety),
+        'explanation_evidence': explain_analysis(explanation_analysis, variety=variety),
+        'canonical_evaluation': evaluate_analysis(explanation_analysis, variety=variety),
         'cambridge_runtime': cambridge_runtime,
         'cambridge_evaluation': cambridge_evaluation,
         'xai4_partial_evaluation': xai4_partial_evaluation,
