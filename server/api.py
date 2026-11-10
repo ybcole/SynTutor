@@ -12,6 +12,7 @@ from burton_roberts import build_canonical_analysis
 from cambridge_registry import load_runtime_registry
 from cambridge_evaluator import evaluate_cambridge
 from xai4_partial import evaluate_xai4
+from xai5_repair import localize_xai4
 from explanations import explain_analysis, explain_request
 from tree_evaluation import evaluate_analysis
 from matrix import evaluate
@@ -324,6 +325,8 @@ def build_payload(text, sentence_index=0, convention_version=None,
         'cambridge_runtime': cambridge_runtime,
         'cambridge_evaluation': cambridge_evaluation,
         'xai4_partial_evaluation': xai4_partial_evaluation,
+        'xai5_localization': localize_xai4(xai4_partial_evaluation,
+            analysis=explanation_analysis, sentence=analysis['sentence']),
         'nodes': analysis['nodes'],
         'node_details': details,
         'summary': summary,
