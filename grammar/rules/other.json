@@ -25213,8 +25213,8 @@
       "detector": "spec_only",
       "detector_reason_if_none": "",
       "minimal_pairs": [
-        "Yesterday I tried the lock three times and could open the case. ||| On my first attempt, I was able to open the sealed jar.",
-        "She searched the cupboard and could find the spare key. ||| When I was little, I could open those jars easily."
+        "Yesterday I tried the lock three times and could open the case. ||| Yesterday I tried the lock three times and was able to open the case.",
+        "She searched the cupboard and could find the spare key. ||| She searched the cupboard and was able to find the spare key."
       ],
       "learner_explanation": "For a single past success that actually happened, use was able to or a simple past verb rather than affirmative could. Could remains correct for past abilities, repeated possibilities, negative outcomes, and ongoing perceptions.",
       "corrected_paragraph_template": "Apply a meaning-preserving replacement only after confirming the construction and its temporal/modal interpretation; re-check the whole text and explain the specific edit.",
@@ -26092,8 +26092,8 @@
       "detector": "spec_only",
       "detector_reason_if_none": "",
       "minimal_pairs": [
-        "If the workshop were open, we entered it now. ||| If the building were open, we would go inside.",
-        "If the light were brighter, I read the label now. ||| If the rules had changed, we might have qualified."
+        "If the workshop were open, we entered it now. ||| If the workshop were open, we would enter it now.",
+        "If the light were brighter, I read the label now. ||| If the light were brighter, I could read the label now."
       ],
       "learner_explanation": "A remote conditional normally needs a modal auxiliary such as would, could, might, or should in its consequence. Keep open conditionals separate: they can have an unmodalised consequence.",
       "corrected_paragraph_template": "Apply a meaning-preserving replacement only after confirming the construction and its temporal/modal interpretation; re-check the whole text and explain the specific edit.",
@@ -26440,8 +26440,8 @@
       "detector": "spec_only",
       "detector_reason_if_none": "",
       "minimal_pairs": [
-        "I wish the office is open now. ||| I wish the classroom were brighter.",
-        "I wish I can attend tomorrow. ||| I wish she could join us tomorrow."
+        "I wish the office is open now. ||| I wish the office were open now.",
+        "I wish I can attend tomorrow. ||| I wish I could attend tomorrow."
       ],
       "learner_explanation": "After wish, use a remote preterite form for a desired but unreal present or future situation, such as were, could or would. A clause with hope is different and can take present tense.",
       "corrected_paragraph_template": "Apply a meaning-preserving replacement only after confirming the construction and its temporal/modal interpretation; re-check the whole text and explain the specific edit.",
