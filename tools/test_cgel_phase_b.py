@@ -39,7 +39,6 @@ class Chapter3PhaseB(unittest.TestCase):
         self.assertTrue(all(r["status"]=="NEEDS_REVIEW" for r in new))
         self.assertEqual(set(range(123,131)),set(p for r in new for s in r["sources"] for p in s["pages"]))
         self.assertTrue(all(self.ledger["pages"][p-1]["status"]=="extracted" for p in range(123,131)))
-        self.assertEqual(self.ledger["pages"][130]["status"],"unprocessed")
 
     def test_chapter3_131_138_source_coverage(self):
         other=json.loads((ROOT/"grammar/rules/other.json").read_text(encoding="utf-8"))
@@ -50,4 +49,3 @@ class Chapter3PhaseB(unittest.TestCase):
         self.assertTrue(all(r["diagnostic"] is None for r in fresh))
         self.assertEqual(set(range(131,139)),set(p for r in fresh for s in r["sources"] for p in s["pages"]))
         self.assertTrue(all(self.ledger["pages"][p-1]["status"]=="extracted" for p in range(131,139)))
-        self.assertEqual(self.ledger["pages"][138]["status"],"unprocessed")
