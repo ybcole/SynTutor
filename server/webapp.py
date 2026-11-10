@@ -20,6 +20,7 @@ from api import ParseFailure, build_payload, health_payload, word_info
 from br_tree import CONVENTIONS
 from explanations import explain_request
 from tree_evaluation import evaluate_request
+from xai5_repair import repair_request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB_DIR = os.path.join(ROOT, 'web')
@@ -70,6 +71,16 @@ def index():
 def health():
     payload = health_payload()
     return jsonify(payload), (200 if payload['ready'] else 503)
+
+
+@app.route('/api/repair-check', methods=['POST'])
+def repair_check():
+    if request.content_length and request.content_length > 250_000:
+        return jsonify({'error': 'request exceeds 250000 bytes'}), 413
+    try:
+        return jsonify(repair_request(request.get_json(silent=True)))
+    except (ValueError, TypeError, RecursionError) as exc:
+        return jsonify({'error': str(exc)}), 400
 
 
 @app.route('/api/evaluate', methods=['POST'])
