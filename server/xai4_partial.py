@@ -270,8 +270,12 @@ def evaluate_xai4(sentence, *, analysis_status="unresolved", variety=None,
             result["enabled_rule_ids"].append(rule["id"])
         matches = inspect(rule["family"], tokens)
         if not matches:
-            result["evaluations"].append({"rule_id": rule["id"], "status": "NOT_APPLICABLE",
-                "evidence": [], "reason": "The narrow construction preconditions were not observed; no global pass."})
+            result["evaluations"].append({
+                "rule_id": rule["id"], "status": "NOT_APPLICABLE",
+                "evidence": [], "runtime_eligible": permitted,
+                "source_claim_ids": rule["source_claim_ids"] if permitted else [],
+                "reason": "The narrow construction preconditions were not observed; no global pass.",
+            })
             continue
         for match in matches:
             hypothesis = "AMBIGUOUS" if quotation else match["signal"]
