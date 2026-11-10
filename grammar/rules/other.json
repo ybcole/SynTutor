@@ -19477,5 +19477,4179 @@
     "related_rules": [],
     "review_notes": "Source-checked against the cited page of the supplied complete CGEL PDF; paraphrased description and original English examples. Not an enabled detector.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-344",
+    "domain": "other",
+    "concept": "Deontic primacy of should and ought",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The characteristic interpretation of should and ought to evaluates the preferred or proper course of action.",
+    "condition": "A should or ought to clause is interpreted with respect to what would be right or appropriate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Epistemic readings are also well established, often with an accompanying normative evaluation.",
+        "pages": [
+          187
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The rehearsal should finish by seven. [expected and proper]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We ought to consult the neighbours first. [normative]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.1 Idiomatic should, and ought",
+        "pages": [
+          187
+        ],
+        "pdf_pages": [
+          207
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deontic primacy of should and ought",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-345",
+    "domain": "other",
+    "concept": "Epistemic should intertwined with normative expectation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A probabilistic should inference often overlaps with a judgment about the desirable or expected outcome.",
+    "condition": "A prediction about an agent's future choice or a proper state includes should.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An unambiguously deontic reading can occur without predicting actualisation.",
+        "pages": [
+          187
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The publisher should welcome the revised draft.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcel should be in its designated locker.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.1 Idiomatic should, and ought",
+        "pages": [
+          187
+        ],
+        "pdf_pages": [
+          207
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic should intertwined with normative expectation",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-346",
+    "domain": "other",
+    "concept": "Unfavourable outcomes disfavor epistemic should",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "With an undesirable outcome, should and ought to are less naturally interpreted as pure probability than with a favourable outcome.",
+    "condition": "An agent is predicted to behave badly or reach an adverse outcome.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The effect is interpretive rather than an absolute syntactic restriction.",
+        "pages": [
+          187
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The reviewer should approve the revised paper. [prediction plausible]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The reviewer should reject the revised paper. [more readily normative]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.1 Idiomatic should, and ought",
+        "pages": [
+          187
+        ],
+        "pdf_pages": [
+          207
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unfavourable outcomes disfavor epistemic should",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-347",
+    "domain": "other",
+    "concept": "Cause-to-effect epistemic should",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Should and ought to are more natural for predicting effects from known causes than for inferring past causes from observed effects.",
+    "condition": "A modalised inference runs from circumstances to their anticipated result.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Must can more readily infer a hidden cause from an observed result.",
+        "pages": [
+          187
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The new insulation should reduce the heating bill.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "With her training, Nadia ought to recover quickly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.1 Idiomatic should, and ought",
+        "pages": [
+          187
+        ],
+        "pdf_pages": [
+          207
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cause-to-effect epistemic should",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-348",
+    "domain": "other",
+    "concept": "Internal negation under should and ought",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negative should and ought to normally recommend that the subject refrain from the negated action.",
+    "condition": "Not follows the medium-strength modal rather than cancelling the normative assessment itself.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The lack of a special external-negation counterpart is linked to the weak pragmatic distinction at medium strength.",
+        "pages": [
+          187
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You should not leave the gate unlocked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We ought not to disturb the nesting birds.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.1 Idiomatic should, and ought",
+        "pages": [
+          187
+        ],
+        "pdf_pages": [
+          207
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Internal negation under should and ought",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-349",
+    "domain": "other",
+    "concept": "Low-degree should distinct from ought",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Several subordinate constructions admit a weakly modal should that cannot simply be replaced with ought.",
+    "condition": "A mandative, adversative, purposive, emotive, or special conditional licenses should.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The use and optionality differ across these constructions, rather than one rule licensing should everywhere.",
+        "pages": [
+          187
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is crucial that the visitor should be warned.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is surprising that such a small room should feel spacious.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.1 Idiomatic should, and ought",
+        "pages": [
+          187
+        ],
+        "pdf_pages": [
+          207
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Low-degree should distinct from ought",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-350",
+    "domain": "other",
+    "concept": "Mandative should with directive matrix",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Mandative should reinforces a requirement or recommendation expressed by a matrix predicate.",
+    "condition": "An evaluative or directive matrix governs a finite clause that also contains should.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction also admits a plain-form alternative; strong or medium deontic matrix predicates are possible.",
+        "pages": [
+          187
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is vital that the entries should be checked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is advisable that the entries should be checked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.1 Idiomatic should, and ought",
+        "pages": [
+          187
+        ],
+        "pdf_pages": [
+          207
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mandative should with directive matrix",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-351",
+    "domain": "other",
+    "concept": "Adversative and purposive should",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Should can occur after lest or in a purpose adjunct without contributing a strong independent expectation.",
+    "condition": "An adversative lest-clause or a purposive in order that-clause describes what is to be avoided or achieved.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lest commonly admits a plain verb instead of should; a purposive negative should has a separate purpose meaning.",
+        "pages": [
+          187
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We lowered our voices lest the infant should awaken.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They moved the sign in order that visitors should find the entrance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.1 Idiomatic should, and ought",
+        "pages": [
+          187
+        ],
+        "pdf_pages": [
+          207
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adversative and purposive should",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-352",
+    "domain": "other",
+    "concept": "Why should interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A why-question containing should can imply that the speaker sees no adequate justification for the proposed event.",
+    "condition": "A rhetorical why should clause questions a reason for an action or state.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The implicature is context-sensitive and can concern epistemic as well as deontic reasons.",
+        "pages": [
+          187
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Why should the committee pay twice for the same service?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Why should the lights have failed at that moment?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.1 Idiomatic should, and ought",
+        "pages": [
+          187
+        ],
+        "pdf_pages": [
+          207
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Why should interrogatives",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-353",
+    "domain": "other",
+    "concept": "Mandative should combines with varied deontic strengths",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Low-degree mandative should is licensed under both strongly obligatory and mildly advisable matrix descriptions.",
+    "condition": "An evaluative predicate expresses strong or medium desirability in a mandative construction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The semantic strength of the matrix element is not imposed on should as an independent modality.",
+        "pages": [
+          188
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is essential that the figures should be verified.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is preferable that the figures should be verified.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.2 Low-degree modality; §9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          188
+        ],
+        "pdf_pages": [
+          208
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mandative should combines with varied deontic strengths",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-354",
+    "domain": "other",
+    "concept": "Emotive should with evaluative predicates",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Emotive should can accompany a clause evaluated as surprising, admirable, objectionable, or regrettable.",
+    "condition": "A matrix adjective or evaluative nominal licenses the should-clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Often an unmodalised clause can replace it, but not when the evaluation concerns an unrealised potential event.",
+        "pages": [
+          188
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is remarkable that the door should still be open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is unfortunate that the report should be so unclear.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.2 Low-degree modality; §9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          188
+        ],
+        "pdf_pages": [
+          208
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emotive should with evaluative predicates",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-355",
+    "domain": "other",
+    "concept": "Emotive should in rhetorical questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A rhetorical main-clause question may use should to signal that an encounter or discovery was surprising.",
+    "condition": "A question with subject–auxiliary inversion is uttered as an expressive narrative rather than a request for information.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is a special emotive construction, not the ordinary deontic use of should.",
+        "pages": [
+          188
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "And who should appear at the ceremony but my old tutor!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Just as I reached the gate, what should I see but a stray puppy!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.2 Low-degree modality; §9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          188
+        ],
+        "pdf_pages": [
+          208
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emotive should in rhetorical questions",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-356",
+    "domain": "other",
+    "concept": "Prospective emotive should need not assert actualisation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An emotive should-clause may evaluate a merely possible future event rather than an event that happened.",
+    "condition": "A predicative expresses that an unrealised outcome would be strange or unacceptable.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A straightforward factual finite clause cannot always replace this potential should-clause.",
+        "pages": [
+          188
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is inconceivable that a guest should deliberately damage the exhibit.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is unthinkable that our team should surrender without trying.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.2 Low-degree modality; §9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          188
+        ],
+        "pdf_pages": [
+          208
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prospective emotive should need not assert actualisation",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-357",
+    "domain": "other",
+    "concept": "Conditional should adds doubt",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Should in an if-clause ordinarily gives a slightly more remote or less expected interpretation than the unmodalised present.",
+    "condition": "An open or remote conditional entertains a possible event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A fully known identity or inescapable fact does not naturally permit this doubt-reading.",
+        "pages": [
+          188
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the computer should freeze, restart the application.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you should find a spare ticket, please call me.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.2 Low-degree modality; §9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          188
+        ],
+        "pdf_pages": [
+          208
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional should adds doubt",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-358",
+    "domain": "other",
+    "concept": "Conditional should with open and remote consequence",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Conditional should can combine with either will or would in its matrix clause.",
+    "condition": "The condition includes should while the consequence is open or modally remote.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The choice of matrix will versus would affects remoteness and is not fixed by should alone.",
+        "pages": [
+          188
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If there should be a delay, the driver will announce it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If there should be a delay, the driver would announce it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.2 Low-degree modality; §9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          188
+        ],
+        "pdf_pages": [
+          208
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional should with open and remote consequence",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-359",
+    "domain": "other",
+    "concept": "Will with comparatively low modal degree",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will typically contributes less separable modal meaning than auxiliaries that directly express necessity and possibility.",
+    "condition": "Will introduces an inference, prediction, or conditional consequence.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Central epistemic will can nevertheless make a major difference from a bare assertion.",
+        "pages": [
+          188
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The roads will be quiet by dawn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That will be the caretaker at the door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.2 Low-degree modality; §9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          188
+        ],
+        "pdf_pages": [
+          208
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will with comparatively low modal degree",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-360",
+    "domain": "other",
+    "concept": "Three epistemic uses of will",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Central inference, futurity, and predictable conditional consequence are three related epistemic uses of will.",
+    "condition": "Will occurs as a deduction about present or past, a future prediction, or the consequence of a condition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The uses are semantically connected and should not be forced into mutually exclusive error categories.",
+        "pages": [
+          188
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The caller will have left a message. [inference]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the gate is closed, the guard will have the key. [consequence]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.2 Low-degree modality; §9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          188
+        ],
+        "pdf_pages": [
+          208
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Three epistemic uses of will",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-361",
+    "domain": "other",
+    "concept": "Central epistemic will and person",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Inferential will about an existing or past situation normally takes a second- or third-person subject.",
+    "condition": "Will is used as a non-future inference rather than a promise, intention or prediction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The restriction is one of normal interpretation; first-person subjects readily occur in volitional and futurity readings.",
+        "pages": [
+          188
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That will be our neighbour knocking.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You will have heard the latest announcement.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.4.2 Low-degree modality; §9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          188
+        ],
+        "pdf_pages": [
+          208
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Central epistemic will and person",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-362",
+    "domain": "other",
+    "concept": "Strong semantics of epistemic will",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Central epistemic will commits the proposition as the expected outcome, unlike a weak may possibility.",
+    "condition": "An affirmative epistemic will makes an inference about a present or completed situation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The strong semantic commitment is often softened pragmatically into a confident guess.",
+        "pages": [
+          189
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The missing parcel will be at reception.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The council will have reached its decision by now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          189
+        ],
+        "pdf_pages": [
+          209
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Strong semantics of epistemic will",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-363",
+    "domain": "other",
+    "concept": "Subjective epistemic will as confident assumption",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subjective inferential will commonly sounds less like direct knowledge than a comparable unmodalised assertion.",
+    "condition": "A speaker infers a present or past proposition from incomplete direct evidence.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The difference from the unmodalised clause can therefore give will a high degree of modality.",
+        "pages": [
+          189
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The postman will have collected the mail by now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That will be the electrician calling from downstairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          189
+        ],
+        "pdf_pages": [
+          209
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjective epistemic will as confident assumption",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-364",
+    "domain": "other",
+    "concept": "Objective epistemic will as logical consequence",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When the evidence is decisive and public, epistemic will can introduce a virtually certain consequence.",
+    "condition": "A conclusion is presented as following from explicitly provided facts.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The low-degree objective use contrasts with the more tentative subjective inference.",
+        "pages": [
+          189
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Every section is twelve metres long and there are three, so the total length will be thirty-six metres.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the container holds exactly four litres and is full, its contents will amount to four litres.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          189
+        ],
+        "pdf_pages": [
+          209
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Objective epistemic will as logical consequence",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-365",
+    "domain": "other",
+    "concept": "Must and will differ in inferential character",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Epistemic must foregrounds a conclusion or explanation, while central epistemic will frequently conveys an assumption that can later be checked.",
+    "condition": "A speaker substitutes will or must in an epistemic inference.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Both are semantically strong, but will more readily weakens pragmatically and suggests possible verification.",
+        "pages": [
+          189
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lights are on; the caretaker must be inside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The caretaker will be inside; we can check at the front desk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          189
+        ],
+        "pdf_pages": [
+          209
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Must and will differ in inferential character",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-366",
+    "domain": "other",
+    "concept": "Future confirmation favors epistemic will",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Inferential will is especially natural where the proposition can soon be verified by the listener.",
+    "condition": "A present inference offers an expectation that an available source will confirm.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "When no future verification is relevant, must is typically more idiomatic than will.",
+        "pages": [
+          189
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The address will be on the registration form.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The timetable will be posted beside the entrance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          189
+        ],
+        "pdf_pages": [
+          209
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Future confirmation favors epistemic will",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-367",
+    "domain": "other",
+    "concept": "Present-time will can be confused with futurity",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A present-time use of inferential will may be avoided when an ordinary future interpretation is more accessible.",
+    "condition": "An unmarked will clause could describe either a prediction about future events or a current inference.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context, aspect and temporal adjuncts usually resolve the interpretation.",
+        "pages": [
+          189
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That will be the caretaker at the gate. [present inference]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The caretaker will be at the gate next hour. [future prediction]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          189
+        ],
+        "pdf_pages": [
+          209
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present-time will can be confused with futurity",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-368",
+    "domain": "other",
+    "concept": "Will as default future-time resource",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In an ordinary main clause, will is the default way of expressing future reference when present-tense futurates are not pragmatically licensed.",
+    "condition": "A main clause predicts a future situation outside an established schedule or plan.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A simple present future remains possible in appropriate calendrical, scheduled or other futurate settings.",
+        "pages": [
+          189
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You will understand after reading the instructions.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The situation will improve once the pump is replaced.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          189
+        ],
+        "pdf_pages": [
+          209
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will as default future-time resource",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-369",
+    "domain": "other",
+    "concept": "Futurate simple present remains conditional",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Present-tense future reference requires a suitable established arrangement, schedule or similar context.",
+    "condition": "A main declarative uses a simple present to refer to a forthcoming event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Will does not require that special futurate licensing; it can express a prediction.",
+        "pages": [
+          189
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The theatre reopens next Thursday. [schedule]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The ferry departs at eight tomorrow. [timetable]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          189
+        ],
+        "pdf_pages": [
+          209
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Futurate simple present remains conditional",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-370",
+    "domain": "other",
+    "concept": "Near-minimal modality of predictable futurity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When the future outcome is highly constrained, futurity will may add scarcely more than temporal reference.",
+    "condition": "The speaker predicts a nearly inevitable calendar, age, or environmental development.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Even highly predictable future situations are contingent, so the modal component is not literally absent.",
+        "pages": [
+          190
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The child will be four tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It will soon be too dark to read outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          190
+        ],
+        "pdf_pages": [
+          210
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Near-minimal modality of predictable futurity",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-371",
+    "domain": "other",
+    "concept": "Low-degree will does not require a present futurate",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A future prediction can have very little modal content even if a present-tense futurate replacement would sound unnatural.",
+    "condition": "Will expresses an imminently certain environmental change.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Present tense futurate licensing and degree of modal inference are independent.",
+        "pages": [
+          190
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It will be too cold to swim before long.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The paint will be dry soon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          190
+        ],
+        "pdf_pages": [
+          210
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Low-degree will does not require a present futurate",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-372",
+    "domain": "other",
+    "concept": "High-degree will in competitive predictions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When a future outcome depends on uncertain events, will conveys a conspicuous prediction rather than an unqualified fact.",
+    "condition": "A speaker predicts a contest, outcome or change subject to intervening causes.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A confidence marker does not turn the prediction into direct knowledge.",
+        "pages": [
+          190
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The challenger will defeat the champion.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new design will attract more visitors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          190
+        ],
+        "pdf_pages": [
+          210
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "High-degree will in competitive predictions",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-373",
+    "domain": "other",
+    "concept": "Present futurate reports determined matchups",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A present-tense futurate about competing teams presupposes that the pairing has already been established.",
+    "condition": "A scheduled meeting or match between participants is described in the simple present.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Will can be used before the matchup has been determined because it predicts the outcome of intermediate events.",
+        "pages": [
+          190
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Eastbridge meets Northport in the final next week. [finalists fixed]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The two finalists play on Saturday. [finalists fixed]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          190
+        ],
+        "pdf_pages": [
+          210
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present futurate reports determined matchups",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-374",
+    "domain": "other",
+    "concept": "Will futurity can predict undecided pairings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will can state an anticipated future pairing without implying that the participants have been officially confirmed.",
+    "condition": "A prediction concerns the competitors who will progress to a later event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Once the schedule is fixed, either will or the simple-present futurate may be grammatical with different force.",
+        "pages": [
+          190
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Eastbridge will meet Northport in the final, I predict.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our team will face the leaders after the qualifying round.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          190
+        ],
+        "pdf_pages": [
+          210
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will futurity can predict undecided pairings",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-375",
+    "domain": "other",
+    "concept": "Epistemic warrant differs in the two future constructions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The simple-present futurate generally demands a stronger grounding in a settled plan than prediction with will.",
+    "condition": "A timetable-like future is compared with an uncertain forecast.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The difference can vanish with entirely predictable events such as birthdays.",
+        "pages": [
+          190
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The seminar starts at nine tomorrow. [fixed]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The seminar will start at nine tomorrow. [prediction or schedule]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          190
+        ],
+        "pdf_pages": [
+          210
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic warrant differs in the two future constructions",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-376",
+    "domain": "other",
+    "concept": "Futurity and epistemic limitation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Future-time will regularly reflects limits on what a speaker can already know.",
+    "condition": "A future eventuality is presented as a prediction rather than a completed fact.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not every will sentence communicates equally strong uncertainty.",
+        "pages": [
+          190
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Our guests will probably arrive before dark.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The river will rise if the snow melts.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          190
+        ],
+        "pdf_pages": [
+          210
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Futurity and epistemic limitation",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-377",
+    "domain": "other",
+    "concept": "Temporal adjuncts disallow ordinary futurity will",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A future-time temporal adjunct introduced by when, before, after, or as soon as ordinarily uses present tense instead of futurity will.",
+    "condition": "A finite subordinate clause functions as a future-time temporal adjunct or complement of a temporal preposition and will would express only futurity.",
+    "violation": "Using future-predictive will as the verb of a future-time temporal adjunct when simple present is required.",
+    "exceptions": [
+      {
+        "description": "Will can occur in embedded interrogatives introduced by when and in some conditionals; those are not future-time temporal adjuncts. An independent volitional interpretation must be assessed separately.",
+        "pages": [
+          191
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will send the package when the courier arrives.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        },
+        {
+          "id": "c2",
+          "text": "We will begin as soon as the room is ready.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We will begin as soon as the room will be ready.",
+          "origin": "ai_authored",
+          "pair_id": "p1"
+        },
+        {
+          "id": "i2",
+          "text": "I'll send the parcel when the courier will arrive.",
+          "origin": "ai_authored",
+          "pair_id": "p2"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          191
+        ],
+        "pdf_pages": [
+          211
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal adjuncts disallow ordinary futurity will",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": {
+      "error_family": "tense_aspect",
+      "error_pattern": "Futurity will placed inside a finite future-time temporal adjunct headed by when, before, after, or as soon as where the event itself fixes the time.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We will begin as soon as the room will be ready. ||| We will begin as soon as the room is ready.",
+        "I'll send the parcel when the courier will arrive. ||| I'll send the parcel when the courier arrives."
+      ],
+      "learner_explanation": "In a future-time clause introduced by a temporal expression such as when or as soon as, use the simple present for the event that sets the time. The main clause can still contain will: 'We will begin as soon as the room is ready.' Do not apply this correction to an embedded question or an if-clause where will contributes an independent modal meaning.",
+      "corrected_paragraph_template": "Replace futurity will in a future-time temporal adjunct with a simple-present verb, preserving the surrounding main clause and explaining that the temporal clause supplies the future time condition.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Tell me when the courier will arrive.",
+        "I cannot predict when the meeting will end.",
+        "If the price will fall next month, we should wait.",
+        "If you will prepare the slides, I will arrange the venue.",
+        "I will explain it before you ask."
+      ],
+      "lesson_tags": [
+        "future-time adjunct",
+        "temporal clauses",
+        "tense and modality"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "OTH-378",
+    "domain": "other",
+    "concept": "Present-tense temporal clause does not assert occurrence",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The present tense in a future temporal adjunct treats the event as a reference condition without asserting that it already happened.",
+    "condition": "A when or as-soon-as adjunct provides future timing for the matrix event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An ordinary future prediction in a main clause can still use will.",
+        "pages": [
+          191
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will lock the door after everyone leaves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We will resume when the connection returns.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          191
+        ],
+        "pdf_pages": [
+          211
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present-tense temporal clause does not assert occurrence",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-379",
+    "domain": "other",
+    "concept": "Standard conditionals use present in the protasis",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Future-oriented open if-clauses generally use simple present instead of futurity will.",
+    "condition": "A conditional entertains the future occurrence of an event, not its present predictability.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A special epistemic will in the condition is possible and should not be flagged.",
+        "pages": [
+          191
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the snow melts, the stream will rise.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the bus arrives early, we will board immediately.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          191
+        ],
+        "pdf_pages": [
+          211
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Standard conditionals use present in the protasis",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-380",
+    "domain": "other",
+    "concept": "Epistemic will in conditional protases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A rarer future-oriented if-clause can contain will when the condition is the present predictability of a later event.",
+    "condition": "The condition assesses whether a forecast or expected outcome is reliable now.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is different from conditioning on the future event's actual occurrence.",
+        "pages": [
+          191
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If prices will rise next month, I should purchase it now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If our guests will arrive next week, we should reserve the hall today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          191
+        ],
+        "pdf_pages": [
+          211
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic will in conditional protases",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-381",
+    "domain": "other",
+    "concept": "Epistemic may in conditional protases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An epistemic may can occur in an if-clause evaluating a possible future event as part of the conditional proposition.",
+    "condition": "The condition concerns whether a future event is possible or expected.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The interpreted probability is objective rather than a personal afterthought.",
+        "pages": [
+          191
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If supplies may be delayed next month, we should order extra today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the river may overflow this spring, the barriers should be strengthened.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          191
+        ],
+        "pdf_pages": [
+          211
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic may in conditional protases",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-382",
+    "domain": "other",
+    "concept": "Will as conditional consequence across times",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A conditional consequence with will can concern a situation in the past, present or future.",
+    "condition": "Will is used in the apodosis, not necessarily in its if-clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "For a past-time conclusion, the combination will have plus past participle normally locates it in past time.",
+        "pages": [
+          191
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the alarm rang overnight, the porter will have heard it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the doors are locked now, the caretaker will be nearby.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          191
+        ],
+        "pdf_pages": [
+          211
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will as conditional consequence across times",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-383",
+    "domain": "other",
+    "concept": "Past-time consequence with will have",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Perfect will in a conditional consequent can predict that a past result occurred.",
+    "condition": "An antecedent refers to a possible earlier event and the consequent infers its past result.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The modalised conclusion can be less certain than a bare preterite.",
+        "pages": [
+          191
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the river flooded last week, the path will have been damaged.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the meeting ended early, the guests will have left already.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          191
+        ],
+        "pdf_pages": [
+          211
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-time consequence with will have",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-384",
+    "domain": "other",
+    "concept": "Present and future consequences with will",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Conditional will in an apodosis may predict a current state or a future result.",
+    "condition": "A condition is associated with a consequent located in the present or future.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Will is not required in every conditional consequent; simple tenses are also permitted.",
+        "pages": [
+          191
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the librarian is still here, she will be in the office. [present]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the library opens tomorrow, the queue will form early. [future]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity",
+        "pages": [
+          191
+        ],
+        "pdf_pages": [
+          211
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present and future consequences with will",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-385",
+    "domain": "other",
+    "concept": "Will in consequence versus unmodalised assertion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A conditional consequence with will normally expresses a weaker inferential commitment than a corresponding simple present or preterite.",
+    "condition": "A speaker evaluates the apodosis under a past or present condition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A confident conclusion may instead use an unmodalised verb form.",
+        "pages": [
+          192
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she mailed it, the clerk will have scanned it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If he is at work, he will be in the workshop.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity; §9.5.2 Dynamic modality",
+        "pages": [
+          192
+        ],
+        "pdf_pages": [
+          212
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will in consequence versus unmodalised assertion",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-386",
+    "domain": "other",
+    "concept": "Simple-present future consequence can strengthen a threat",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A rare future futurate in a conditional consequent can make the announced outcome sound inevitable.",
+    "condition": "A conditional predicts a future penalty or automatic consequence with the simple present.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is a special futurate choice rather than a general ban on will.",
+        "pages": [
+          192
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you submit the form late tomorrow, the system rejects it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the alarm sounds again tonight, the building closes automatically.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity; §9.5.2 Dynamic modality",
+        "pages": [
+          192
+        ],
+        "pdf_pages": [
+          212
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple-present future consequence can strengthen a threat",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-387",
+    "domain": "other",
+    "concept": "Conditional will links inference and futurity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will in a consequence can express predictability across past, present and future temporal locations.",
+    "condition": "The subordinate condition supplies premises and the modal relates a predictable consequent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Past and present examples resemble central epistemic will; future ones resemble futurity will.",
+        "pages": [
+          192
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the heating failed overnight, the pipes will have cooled.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the meeting is postponed, the guests will arrive later.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity; §9.5.2 Dynamic modality",
+        "pages": [
+          192
+        ],
+        "pdf_pages": [
+          212
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional will links inference and futurity",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-388",
+    "domain": "other",
+    "concept": "Will contrasts with weak epistemic may",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will normally conveys a stronger forecast than epistemic may in conditional consequences.",
+    "condition": "The consequent contains either will or may with its own epistemic force.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The contrast holds across past, present and future time despite pragmatic weakening of will.",
+        "pages": [
+          192
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If it rained, the track will be wet now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If it rained, the track may be wet now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity; §9.5.2 Dynamic modality",
+        "pages": [
+          192
+        ],
+        "pdf_pages": [
+          212
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will contrasts with weak epistemic may",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-389",
+    "domain": "other",
+    "concept": "Will with modal adverbs is not harmonic",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A modal adverb accompanying epistemic will contributes a distinct assessment rather than simply reinforcing matching modal strength.",
+    "condition": "Will combines with possibly, probably, surely or certainly.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This contrasts with harmonic strong must/surely and weak may/possibly pairings.",
+        "pages": [
+          192
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The organiser will probably have sent the tickets.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our team will possibly win the contest.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity; §9.5.2 Dynamic modality",
+        "pages": [
+          192
+        ],
+        "pdf_pages": [
+          212
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will with modal adverbs is not harmonic",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-390",
+    "domain": "other",
+    "concept": "Negation of epistemic and futurity will",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negative won't normally denies the embedded situation rather than negating the modal's necessity or possibility.",
+    "condition": "A will clause is negated in an epistemic inference or future prediction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "There is no regular needn't-like external-negation counterpart of will.",
+        "pages": [
+          192
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The technician won't have heard the message yet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The runners won't finish before sunset.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity; §9.5.2 Dynamic modality",
+        "pages": [
+          192
+        ],
+        "pdf_pages": [
+          212
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation of epistemic and futurity will",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-391",
+    "domain": "other",
+    "concept": "Dynamic will relates to participant dispositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Dynamic will expresses a participant's willingness or characteristic behaviour rather than only an event's future time.",
+    "condition": "The construction focuses on volition, propensity or a disposition of the referent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These interpretations often coexist with futurity and should not automatically be flagged as mismatches.",
+        "pages": [
+          192
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The volunteer will take your place at reception.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The old clock will chime each hour.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity; §9.5.2 Dynamic modality",
+        "pages": [
+          192
+        ],
+        "pdf_pages": [
+          212
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic will relates to participant dispositions",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-392",
+    "domain": "other",
+    "concept": "Will refusal as negative volition",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When a subject controls an act, won't may present refusal or unwillingness instead of a neutral prediction.",
+    "condition": "The negated will clause concerns an action the subject is able to choose.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Inanimates can have a metaphorical extension, especially for failed attempts.",
+        "pages": [
+          192
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The manager won't approve the revision.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our neighbour won't answer the door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity; §9.5.2 Dynamic modality",
+        "pages": [
+          192
+        ],
+        "pdf_pages": [
+          212
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will refusal as negative volition",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-393",
+    "domain": "other",
+    "concept": "Will for preparedness and intention",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Affirmative will may communicate readiness or a first-person intention.",
+    "condition": "The agent controls the projected action described by will.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Will is not synonymous with want, intend or be willing in modal strength.",
+        "pages": [
+          192
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will deliver the letters before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The assistant will cover your shift on Monday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.1 Epistemic modality, including futurity; §9.5.2 Dynamic modality",
+        "pages": [
+          192
+        ],
+        "pdf_pages": [
+          212
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will for preparedness and intention",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-394",
+    "domain": "other",
+    "concept": "Strong future commitment of volitional will",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Volitional will presents a future situation as actualising, unlike a bare expression of desire or intention.",
+    "condition": "The speaker uses will for an agent-controlled prospective action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The outcome remains future-contingent, but the utterance carries a stronger commitment than want or intend.",
+        "pages": [
+          193
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will return the borrowed camera tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She will join us after the workshop.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2 Dynamic modality: volition",
+        "pages": [
+          193
+        ],
+        "pdf_pages": [
+          213
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Strong future commitment of volitional will",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-395",
+    "domain": "other",
+    "concept": "Will is not interchangeable with want or intend",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Want, intend, willing and prepared do not carry the same strength as volitional will.",
+    "condition": "A subject is described as wanting versus directly predicting an action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Explicit uncertainty about fulfilment is compatible with intend but clashes with a strong will commitment.",
+        "pages": [
+          193
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I intend to finish the translation, but time may run out.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I want to attend the concert, though I may be unavailable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2 Dynamic modality: volition",
+        "pages": [
+          193
+        ],
+        "pdf_pages": [
+          213
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will is not interchangeable with want or intend",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-396",
+    "domain": "other",
+    "concept": "Negative volitional will predicts nonactualisation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Refusal expressed by won't can entail that the proposed future action will not occur.",
+    "condition": "The agent controls the action and a speaker reports an unwillingness as a settled outcome.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "It is not an external denial of willingness while leaving occurrence open.",
+        "pages": [
+          193
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The trustee won't sign the agreement.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The tenant won't release the keys.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2 Dynamic modality: volition",
+        "pages": [
+          193
+        ],
+        "pdf_pages": [
+          213
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative volitional will predicts nonactualisation",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-397",
+    "domain": "other",
+    "concept": "Volition as an implicature of futurity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A volitional reading often arises because the subject is assumed to control the future action.",
+    "condition": "A will clause refers to an agentive and controllable eventuality.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same will construction can be interpreted as simple prediction when circumstances make volition irrelevant.",
+        "pages": [
+          193
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will attend the farewell dinner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She will submit her drawing in the morning.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2 Dynamic modality: volition",
+        "pages": [
+          193
+        ],
+        "pdf_pages": [
+          213
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Volition as an implicature of futurity",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-398",
+    "domain": "other",
+    "concept": "First-person volitional will can imply a promise",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With first-person will, an intention may pragmatically become a commitment when the speaker can control the outcome.",
+    "condition": "The speaker predicts their own future behaviour.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A listener may seek explicit confirmation; the promise-like force is an implicature.",
+        "pages": [
+          193
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will bring the supplies myself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'll send you a copy by Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2 Dynamic modality: volition",
+        "pages": [
+          193
+        ],
+        "pdf_pages": [
+          213
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "First-person volitional will can imply a promise",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-399",
+    "domain": "other",
+    "concept": "Present refusal heightens modal distinctiveness",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Won't can foreground a currently held refusal, not merely a future prediction.",
+    "condition": "A speaker reports that an agent has already decided against a requested action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Negative forms more readily foreground present resistance than affirmative will foregrounds present agreement.",
+        "pages": [
+          193
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The chair won't reconsider, despite repeated requests.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He won't accept the refund even after our explanation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2 Dynamic modality: volition",
+        "pages": [
+          193
+        ],
+        "pdf_pages": [
+          213
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present refusal heightens modal distinctiveness",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-400",
+    "domain": "other",
+    "concept": "Stressed will expresses determination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Strong stress on will can highlight a speaker's resolve or determination.",
+    "condition": "A strongly stressed modal appears with an agentive subject, especially first person.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The stress changes pragmatic force; the unstressed future construction remains grammatical.",
+        "pages": [
+          193
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I WILL complete the mural this month.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She WILL finish the race despite the setback.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2 Dynamic modality: volition",
+        "pages": [
+          193
+        ],
+        "pdf_pages": [
+          213
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stressed will expresses determination",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-401",
+    "domain": "other",
+    "concept": "Will questions about willingness imply requests",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A closed interrogative with second-person will often indirectly requests an action by questioning willingness.",
+    "condition": "A speaker asks whether the addressee will undertake an agent-controlled act.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is a pragmatic use of a question, not an ordinary future prediction in every context.",
+        "pages": [
+          193
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Will you bring the spare key?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Will you close the shutters, please?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2 Dynamic modality: volition",
+        "pages": [
+          193
+        ],
+        "pdf_pages": [
+          213
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will questions about willingness imply requests",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-402",
+    "domain": "other",
+    "concept": "Volitional will allowed in conditional protases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will in an if-clause can express the willingness upon which an arrangement depends.",
+    "condition": "A conditional protasis makes the agent's volition, not mere event futurity, a condition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is not the typical future-event conditional where the present tense is used.",
+        "pages": [
+          193
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you will prepare the slides, I'll handle the handouts.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If Mira will drive, we can leave earlier.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2 Dynamic modality: volition",
+        "pages": [
+          193
+        ],
+        "pdf_pages": [
+          213
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Volitional will allowed in conditional protases",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-403",
+    "domain": "other",
+    "concept": "Metaphorical volitional will with inanimates",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Won't may describe the frustrating failure of an inanimate device or object to behave as intended.",
+    "condition": "A person tries to produce an expected effect in an inanimate subject.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The apparent unwillingness is metaphorical; it does not attribute literal intentions to machinery.",
+        "pages": [
+          194
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The printer won't feed the paper.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The suitcase won't fit in the locker.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2–9.5.3 Dynamic and deontic modality; §9.6.1 Deontic shall",
+        "pages": [
+          194
+        ],
+        "pdf_pages": [
+          214
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Metaphorical volitional will with inanimates",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-404",
+    "domain": "other",
+    "concept": "Inanimate won't in conditional antecedents",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The metaphorical failure reading of won't is also available in if-clauses.",
+    "condition": "A condition concerns whether an object will respond as someone wants.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "It does not violate the general preference for present tense in simple futurity conditions.",
+        "pages": [
+          194
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the lid won't close, use the larger container.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the heater won't start, call the technician.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2–9.5.3 Dynamic and deontic modality; §9.6.1 Deontic shall",
+        "pages": [
+          194
+        ],
+        "pdf_pages": [
+          214
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inanimate won't in conditional antecedents",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-405",
+    "domain": "other",
+    "concept": "Propensity will with animate subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will can describe characteristic or habitual behaviour of people and animals.",
+    "condition": "An agentive subject has a recurring tendency independent of a specific future appointment.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Simple present often conveys nearly the same proposition in this use.",
+        "pages": [
+          194
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cat will sleep on the warm windowsill all afternoon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My uncle will read until midnight when he has a new book.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2–9.5.3 Dynamic and deontic modality; §9.6.1 Deontic shall",
+        "pages": [
+          194
+        ],
+        "pdf_pages": [
+          214
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Propensity will with animate subjects",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-406",
+    "domain": "other",
+    "concept": "Generic propensity will with inanimate subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will can state a general property of substances or objects instead of a prediction about one occasion.",
+    "condition": "An inanimate referent exhibits a stable physical or dispositional property.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The sense can be closely paraphrased with a simple-present generic.",
+        "pages": [
+          194
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Wax will soften when heated.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Copper will conduct electricity.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2–9.5.3 Dynamic and deontic modality; §9.6.1 Deontic shall",
+        "pages": [
+          194
+        ],
+        "pdf_pages": [
+          214
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Generic propensity will with inanimate subjects",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-407",
+    "domain": "other",
+    "concept": "Propensity will and conditional consequence",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A habitual or generic will statement can be reframed as a conditional consequence of relevant circumstances.",
+    "condition": "A disposition holds whenever a normal trigger is present.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The habitual reading and single-event futurity are not wholly unrelated meanings.",
+        "pages": [
+          194
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The sensor will beep whenever the door opens.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dog will bark if strangers approach.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2–9.5.3 Dynamic and deontic modality; §9.6.1 Deontic shall",
+        "pages": [
+          194
+        ],
+        "pdf_pages": [
+          214
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Propensity will and conditional consequence",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-408",
+    "domain": "other",
+    "concept": "Stressed propensity will conveys irritation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A stressed will in a habitual statement may express irritation, resignation or another emotional response.",
+    "condition": "A speaker comments on a repeated behaviour using strong stress on will.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The emotion is a pragmatic overlay rather than a syntactic error in unstressed will.",
+        "pages": [
+          194
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He WILL leave his boots in the hallway.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They WILL forget to turn the lights off.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2–9.5.3 Dynamic and deontic modality; §9.6.1 Deontic shall",
+        "pages": [
+          194
+        ],
+        "pdf_pages": [
+          214
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stressed propensity will conveys irritation",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-409",
+    "domain": "other",
+    "concept": "Deontic will as authority-based implicature",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will can convey an instruction when an authorised speaker predicts an addressee's controllable behaviour.",
+    "condition": "The speaker has legitimate authority to require the projected action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same sentence outside an authority relation can be merely a prediction.",
+        "pages": [
+          194
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You will return the equipment at nine tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The trainees will assemble outside after lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2–9.5.3 Dynamic and deontic modality; §9.6.1 Deontic shall",
+        "pages": [
+          194
+        ],
+        "pdf_pages": [
+          214
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deontic will as authority-based implicature",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-410",
+    "domain": "other",
+    "concept": "Be going to as informal deontic instruction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In informal contexts, be going to can imply an authoritative instruction much like deontic will.",
+    "condition": "An authority figure announces what an agent will do.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is an inferred directive from context, not an inherent universal command meaning of going to.",
+        "pages": [
+          194
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You're going to finish cleaning this room.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You are going to hand in that report today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2–9.5.3 Dynamic and deontic modality; §9.6.1 Deontic shall",
+        "pages": [
+          194
+        ],
+        "pdf_pages": [
+          214
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Be going to as informal deontic instruction",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-411",
+    "domain": "other",
+    "concept": "Constitutive or regulative shall",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Formal rules and regulations can use shall to establish an institutional obligation.",
+    "condition": "A written constitution, policy or similar rule uses shall, commonly with a third-person subject.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction is register-limited and should not be enforced in everyday informal clauses.",
+        "pages": [
+          194
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The board shall convene once each quarter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Each nominee shall submit one declaration.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2–9.5.3 Dynamic and deontic modality; §9.6.1 Deontic shall",
+        "pages": [
+          194
+        ],
+        "pdf_pages": [
+          214
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Constitutive or regulative shall",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-412",
+    "domain": "other",
+    "concept": "Shall for speaker guarantee",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With second- or third-person subjects, shall can express a relatively uncommon assurance that the speaker will make an outcome occur.",
+    "condition": "An utterance gives the hearer a firm undertaking rather than a simple future prediction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Unlike a direct demand on the subject, the obligation to secure the outcome rests with the speaker.",
+        "pages": [
+          194
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You shall receive the refund by Monday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The winners shall have their certificates this afternoon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2–9.5.3 Dynamic and deontic modality; §9.6.1 Deontic shall",
+        "pages": [
+          194
+        ],
+        "pdf_pages": [
+          214
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Shall for speaker guarantee",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-413",
+    "domain": "other",
+    "concept": "Shall in direction-seeking question",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Interrogative shall can request guidance about whether the speaker should carry out an action.",
+    "condition": "A first-person question asks the addressee for a decision or instruction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The page introduces this as a separate deontic subtype and elaborates it beyond the current page range.",
+        "pages": [
+          194
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Shall I open the terrace doors?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Shall we begin the tour now?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.5.2–9.5.3 Dynamic and deontic modality; §9.6.1 Deontic shall",
+        "pages": [
+          194
+        ],
+        "pdf_pages": [
+          214
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Shall in direction-seeking question",
+        "relation": "unverified",
+        "note": "The Burton-Roberts analysis of the relevant construction has not been independently established."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Checked directly against the cited printed page of the uploaded CGEL PDF. These are new English examples and a narrowly paraphrased rule; no unverified runtime activation.",
+    "diagnostic": null
   }
 ]

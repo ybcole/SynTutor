@@ -6,7 +6,7 @@
 |---|---:|---:|---:|---:|---:|---|
 | 1. Preliminaries | 42 | 0 | 41 | 1 | 0 | Incomplete |
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
-| 3. The verb | 142 | 113 | 26 | 3 | 0 | Incomplete |
+| 3. The verb | 142 | 121 | 18 | 3 | 0 | Incomplete |
 | 4. The clause: complements | 110 | 0 | 109 | 1 | 0 | Incomplete |
 | 5. Nouns and noun phrases | 202 | 0 | 201 | 0 | 1 | Incomplete |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
@@ -25,13 +25,13 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **113 extracted**, 1636 unprocessed, 13 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **121 extracted**, 1628 unprocessed, 13 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
-**Catalog:** 196 earlier approved records + 35 rules from pp. 76–90 + 70 rules from pp. 91–114 + 31 from pp. 115–122 + 20 from pp. 123–130 + 21 from pp. 131–138 + 30 from pp. 139–146 + 35 from pp. 147–154 + 35 from pp. 155–162 + 48 from pp. 163–170 + 51 from pp. 171–178 + 57 from pp. 179–186 = **629 rules**. The error-capable records added during Phase B remain specifications rather than newly integrated runtime detectors; **implemented new detectors: zero**. No new detection precision/recall claim is made.
+**Catalog:** 196 earlier approved records + 35 rules from pp. 76–90 + 70 rules from pp. 91–114 + 31 from pp. 115–122 + 20 from pp. 123–130 + 21 from pp. 131–138 + 30 from pp. 139–146 + 35 from pp. 147–154 + 35 from pp. 155–162 + 48 from pp. 163–170 + 51 from pp. 171–178 + 57 from pp. 179–186 + 70 from pp. 187–194 = **699 rules**. The error-capable records added during Phase B remain specifications rather than newly integrated runtime detectors; **implemented new detectors: zero**. No new detection precision/recall claim is made.
 
-Chapter 3 is at **113 extracted pages of 142**, plus 3 chapter-contents-only skips and **26 unprocessed (pp. 187–212)**. Source notes: `sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md`, `PHASE_B_PP91_114_REPORT.md`, `PHASE_B_PP115_122_REPORT.md`, and `PHASE_B_PP123_130_REPORT.md`; the later sequential source audit reports through `PHASE_B_PP171_178_REPORT.md` are also in the chapter folder. Continue from printed page **187**. Full-chapter completion gates remain inactive until source coverage is complete; no user sign-off is required for continued extraction.
+Chapter 3 is at **121 extracted pages of 142**, plus 3 chapter-contents-only skips and **18 unprocessed (pp. 195–212)**. Source notes: `sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md`, `PHASE_B_PP91_114_REPORT.md`, `PHASE_B_PP115_122_REPORT.md`, and `PHASE_B_PP123_130_REPORT.md`; the later sequential source audit reports through `PHASE_B_PP171_178_REPORT.md` are also in the chapter folder. Continue from printed page **195**. Full-chapter completion gates remain inactive until source coverage is complete; no user sign-off is required for continued extraction.
 
 ## Chapter 3 printed pp. 123–130 (2026-11-10)
 
@@ -64,3 +64,7 @@ Extracted 51 source-grounded explanatory records (OTH-236–OTH-286) on the non-
 ## Chapter 3 printed pp. 179–186 (2026-11-11)
 
 Added **57 source-grounded records** (OTH-287–OTH-343; 42 classifications and 15 descriptive generalizations) covering modal degree and harmony, epistemic/deontic negation and source, future-oriented modality, dynamic capacity, and the idiomatic deontic/epistemic uses of *should* and *ought*. The source audit is `sources/cambridge/chapter_03/PHASE_B_PP179_186_REPORT.md`. **No new live detectors or accuracy measurements.** Chapter 3: 113/142 pages extracted, 3 justified contents skips, 26 unprocessed. Next range: **187–194**.
+
+## Chapter 3 printed pp. 187–194 (2026-11-11)
+
+Added **70** Cambridge-cited records (OTH-344–OTH-413: 57 classifications, 12 descriptive generalizations, 1 narrow diagnostic constraint specification). Topics include *should/ought* in emotive and mandative environments, inference/futurity/conditional *will*, temporal adjuncts, future predictive vs volitional *will*, propensity, and early *shall*. **OTH-377 is spec-only, not a newly activated detector**. No new detector performance metrics are claimed. Page-by-page source audit: `sources/cambridge/chapter_03/PHASE_B_PP187_194_REPORT.md`. Chapter 3: **121/142 pages extracted**, 3 justified skips, 18 still unprocessed. Next range **195–202**.
