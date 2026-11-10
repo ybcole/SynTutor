@@ -3132,3 +3132,62 @@ body.workspace-view-open .app-main { display: none; }
 @media (max-width: 760px) {
   .pane-input #tutorSurface { margin-block-start: 36px; }
 }
+
+
+/* XAI-7: shared evidence/navigation; styles do not alter B-R tree geometry. */
+[data-shared-evidence] [data-xai7-navigation] {
+  border-inline-start: 3px solid var(--accent, #3a73c1);
+  padding-inline-start: .75rem;
+  margin-block: .75rem;
+}
+[data-shared-evidence] [data-xai7-verbosity] {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .4rem;
+  margin-block: .6rem;
+}
+[data-shared-evidence] [data-xai7-verbosity] button[aria-pressed="true"] {
+  outline: 2px solid var(--accent, #3a73c1);
+  outline-offset: 1px;
+}
+.lesson-tree-wrap [data-node-id][role="button"] { cursor: pointer; }
+.lesson-tree-wrap [data-node-id][role="button"]:focus-visible > text,
+.lesson-tree-wrap [data-feature-label]:focus-visible,
+.canonical-tree-view [data-node-id][data-xai7-focus="selected"] > text,
+.lesson-tree-wrap [data-node-id][data-xai7-focus="selected"] > text {
+  font-weight: 750;
+  fill: var(--accent, #2876b5);
+  paint-order: stroke;
+}
+.canonical-tree-view [data-node-id][data-xai7-focus="parent"] > text,
+.lesson-tree-wrap [data-node-id][data-xai7-focus="parent"] > text {
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+.canonical-tree-view [data-node-id][data-xai7-focus="sibling"] > text,
+.lesson-tree-wrap [data-node-id][data-xai7-focus="sibling"] > text {
+  font-weight: 650;
+}
+.canonical-tree-view [data-node-id][data-xai7-issue] > text,
+.lesson-tree-wrap [data-node-id][data-xai7-issue] > text {
+  text-decoration: underline wavy;
+}
+.xai7-tree-zoom {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .4rem;
+  padding: .35rem 0;
+}
+.xai7-tree-zoom button { min-height: 38px; }
+.lesson-unified-evidence, .quiz-tree-inspector {
+  max-width: 100%; overflow-wrap: anywhere;
+}
+.lesson-unified-evidence [data-shared-evidence],
+.quiz-tree-inspector [data-shared-evidence] {
+  max-width: 100%; min-width: 0;
+}
+.lesson-tree-wrap:has(.xai7-tree-zoom) {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+@media (max-width: 640px) {
+  .xai7-tree-zoom button { min-height: 44px; }
+  .lesson-unified-evidence, .quiz-tree-inspector { font-size: .94rem; }
+}
