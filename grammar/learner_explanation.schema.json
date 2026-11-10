@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "One plain English learner grammar paragraph",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "language_policy",
+    "analysis_id",
+    "selected_node_id",
+    "status",
+    "text",
+    "whole_sentence_certified",
+    "source_claim_ids"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "learner-explanation-1.0.0"
+    },
+    "language_policy": {
+      "const": "ENGLISH_ONLY"
+    },
+    "analysis_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "selected_node_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "observed",
+        "provisional",
+        "unavailable"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 1200
+    },
+    "whole_sentence_certified": {
+      "const": false
+    },
+    "source_claim_ids": {
+      "type": "array",
+      "maxItems": 0
+    }
+  }
+}

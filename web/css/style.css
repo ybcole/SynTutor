@@ -3191,3 +3191,20 @@ body.workspace-view-open .app-main { display: none; }
   .xai7-tree-zoom button { min-height: 44px; }
   .lesson-unified-evidence, .quiz-tree-inspector { font-size: .94rem; }
 }
+
+
+/* Learner explanations are short teaching paragraphs, not source/audit panels. */
+[data-shared-evidence] {
+  max-width: 64ch;
+  margin: .65rem 0;
+  min-width: 0;
+}
+[data-shared-evidence] .learner-grammar-paragraph {
+  font-size: clamp(.97rem, 1.1vw, 1.07rem);
+  line-height: 1.7;
+  letter-spacing: normal;
+  font-weight: 400;
+  margin: 0;
+  color: inherit;
+  overflow-wrap: anywhere;
+}

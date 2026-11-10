@@ -68,23 +68,18 @@ function review(t){
     const choose=async (nodeId, feature=null)=>{
       details.open=true;
       const requestId=++version;
-      inspector.replaceChildren(el('p','Loading selected tree evidence…'));
+      inspector.replaceChildren(el('p','Explaining this word or phrase…'));
       try{
         const evidence=await requestEvidence(q.answer_tree,nodeId);
         if(requestId!==version||token!==generation||!card.isConnected)return;
-        renderEvidence(evidence,inspector,{treeRoot:treeView});
-        if(feature) {
-          const note=el('p','Selected recorded feature '+feature+'. The printed feature is not itself a grammar-error verdict.');
-          note.dataset.xai7FeatureSelected='';
-          inspector.prepend(note);
-        }
+        renderEvidence(evidence,inspector,{treeRoot:treeView,feature});
       }catch{
         if(requestId===version&&card.isConnected)
-          inspector.replaceChildren(el('p','Selected tree evidence is unavailable. Reviewed quiz feedback remains visible.'));
+          inspector.replaceChildren(el('p','An explanation is not available for this part of the sentence.'));
       }
     };
     treeView=renderLessonTree(q.answer_tree,{interactive:true,zoomControls:true,stackFeatures:true,onSelectNode:choose});
-    details.append(el('summary','See the reviewed answer tree'),treeView,inspector);
+    details.append(el('summary','Explore the answer tree'),treeView,inspector);
     card.append(details);
   }
   const token=generation,controller=new AbortController(),timer=setTimeout(()=>controller.abort(),5000);

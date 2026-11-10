@@ -1,7 +1,7 @@
 import { accountUserId } from './session-scope.js';
 import { fromCanonicalEnvelope } from './syntax-builder.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
-import { findCanonicalNode, canonicalNodeFacts, canonicalObservation } from './canonical-view.js';
+import { findCanonicalNode, canonicalNodeFacts } from './canonical-view.js';
 import { enableCanvasView } from './canvas-view.js';
 import { loadClerk, createSupabaseClient, currentUserEmail, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
 import { API_BASE } from './config.js';
@@ -1653,34 +1653,14 @@ function showCanonicalTree(payload) {
       if (!pane) return;
       document.querySelector('#emptyExplainState')?.classList.add('hidden');
       pane.replaceChildren();
-      const title = document.createElement('h3');
-      title.textContent = `${working ? 'B-R working analysis' : 'B-R structural analysis'}: ${facts.label}`;
-      const observation = document.createElement('p');
-      observation.textContent = canonicalObservation(facts);
-      const boundary = document.createElement('p');
-      boundary.textContent = 'Observed tree structure only. Source-reviewed grammatical claims are shown separately below, if available.';
-      pane.append(title, observation, boundary);
-      for (const note of annotationOwner.notes || []) {
-        const detail = document.createElement('p');
-        detail.textContent = note;
-        pane.append(detail);
-      }
-      if (annotationOwner.source_refs?.length) {
-        const refs = document.createElement('p');
-        refs.textContent = `Tree rule references — ${annotationOwner.source_refs.join(', ')}.`;
-        pane.append(refs);
-      }
       const evidenceSlot = document.createElement('section');
       pane.append(evidenceSlot);
-      if (working) {
-        const notice = document.createElement('p');
-        notice.textContent = 'This working tree has unresolved structure. A reviewed explanation requires a resolved analysis.';
-        evidenceSlot.append(notice);
-      }
       try {
-        const evidence = await requestEvidence(envelope, owner.id, {
-          variety: payload.meta?.cambridge_variety,
-        });
+        const evidence = working
+          ? payload.explanation_evidence
+          : await requestEvidence(envelope, owner.id, {
+              variety: payload.meta?.cambridge_variety,
+            });
         // A pending request must not repaint another sentence/account/view.
         if (selectedVersion !== requestVersion || host.hidden || !host.contains(group)
             || (session?.payload !== payload && activePreview()?.payload !== payload)) return;
@@ -1688,7 +1668,7 @@ function showCanonicalTree(payload) {
       } catch (error) {
         if (host.hidden || !host.contains(group)) return;
         const message = document.createElement('p');
-        message.textContent = 'Reviewed explanation unavailable: ' + error.message;
+        message.textContent = 'This part of the sentence cannot be explained reliably right now.';
         evidenceSlot.append(message);
       }
     };
@@ -1717,8 +1697,8 @@ function setTreeAuthorityNotice(payload) {
     || (analysis?.reasons || []).map((row) => row?.detail).find(Boolean);
   if (canonicalShown) {
     notice.textContent = analysis?.tree
-      ? 'Burton-Roberts projected tree — source rule coverage may be partial; inspect verification details.'
-      : 'B-R working tree — some structure remains unresolved.';
+      ? 'Explore the syntax tree by selecting a word or phrase.'
+      : 'Part of this sentence could not be analyzed confidently.';
   } else if (workspaceView === 'tutor' && !quizMode) {
     notice.textContent = status === 'normalized' ? 'B-R display labels are unavailable. The raw parser diagnostic is hidden by default.'
       : `B-R analysis remains unresolved; raw parser labels are hidden by default.${detail ? ` ${detail}` : ''}`;
@@ -2056,9 +2036,8 @@ async function executePipeline(opts, request) {
   setEmptyStateVisible(false);
   renderer.setTree(payload.tree);
   if (!quizMode) {
-    renderCorrection(payload.summary);
-    // Correction draws a diagnostic card into the same pane. Always restore
-    // the reviewed evidence separately so the XAI area is not left empty.
+    // The learner sees one grammar paragraph. Correction previews remain
+    // available in their separate correction panel when a finding is chosen.
     renderEvidence(payload.explanation_evidence);
   }
   transition(STATES.VIEWING, 'output ready -> viewing');
@@ -2276,7 +2255,8 @@ function handleNodeSelect(id) {
   const detail = payload.node_details[id];
   const node = payload.nodes[id];
   if (!node || !detail) return;
-  renderNodeDetail({ ...session, payload }, detail, node);
+  // Raw parser nodes have no source-validated B-R word/phrase correspondence.
+  // Avoid putting a legacy constraint badge ahead of a learner explanation.
   renderEvidence(payload?.explanation_evidence);
   // Keep the fresh detail card visible in the bottom-right explain pane
   // without yanking the rest of the workspace.

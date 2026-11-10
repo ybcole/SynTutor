@@ -109,13 +109,14 @@ export function renderLessonTree(envelope, {
         row.dataset.featureLabel = row.textContent;
         row.setAttribute('aria-label','Inspect recorded B-R feature ' + row.textContent
           + ' for ' + (node.word || node.label));
+        const featureName=()=>{const text=row.textContent.trim();return text.startsWith('[') && text.endsWith(']') ? text.slice(1,-1) : text;};
         row.addEventListener('click', event => {
-          event.stopPropagation(); onSelectNode(node.id,row.textContent);
+          event.stopPropagation(); onSelectNode(node.id,featureName());
         });
         row.addEventListener('keydown', event => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.stopPropagation(); event.preventDefault();
-            onSelectNode(node.id,row.textContent);
+            onSelectNode(node.id,featureName());
           }
         });
       }
@@ -237,7 +238,7 @@ function lessonScreen() {
   if (worked.tree) {
     const evidence=el('details',undefined,'lesson-shared-evidence');
     evidence.dataset.xai7Lesson = '';
-    const title=el('summary','Additional reviewed tree evidence');
+    const title=el('summary','Explanation');
     const slot=el('div',undefined,'lesson-unified-evidence');
     evidence.append(title,slot);
     let requestVersion=0;
@@ -247,19 +248,14 @@ function lessonScreen() {
       selected=nodeId;
       evidence.open=true;
       const version=++requestVersion;
-      slot.replaceChildren(el('p','Loading the shared tree evidence…'));
+      slot.replaceChildren(el('p','Explaining this word or phrase…'));
       try {
         const result=await requestEvidence(worked.tree,nodeId);
         if (version!==requestVersion||!slot.isConnected) return;
-        renderEvidence(result,slot,{treeRoot:treeView});
-        if (feature) {
-          const note=el('p','Selected recorded feature '+feature+'. This is a visible tree label, not a grammatical-function judgment.');
-          note.dataset.xai7FeatureSelected = '';
-          slot.prepend(note);
-        }
+        renderEvidence(result,slot,{treeRoot:treeView,feature});
       } catch {
         if (version===requestVersion&&slot.isConnected) {
-          slot.replaceChildren(el('p','Shared evidence unavailable. The source-reviewed lesson text remains available.'));
+          slot.replaceChildren(el('p','An explanation is not available for this part of the sentence.'));
         }
       }
     };
