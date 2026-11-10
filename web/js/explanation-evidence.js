@@ -1,5 +1,6 @@
 // One request contract and one evidence renderer for Generator and Builder.
 import { API_BASE } from './config.js';
+import { applyEvidenceFocus, evidenceFocusText } from './xai7-focus.js';
 
 export async function requestEvidence(tree, nodeId = null, options = {}) {
   const body = { tree: tree || null };
@@ -268,7 +269,72 @@ function renderRepairRecheck(evidence, panel) {
   panel.append(section);
 }
 
-export function renderEvidence(evidence, host = document.querySelector('#explainNode')) {
+// XAI-7: shared contextual navigation for Generator, Builder, Lessons,
+// Quizzes, and revised-correction trees; never infer grammatical function
+// from a mere parent/sibling tree edge.
+function renderFocusNavigation(evidence, panel) {
+  const detail = evidenceFocusText(evidence);
+  if (!detail) return;
+  const area = document.createElement('section');
+  area.dataset.xai7Navigation = '';
+  area.setAttribute('aria-label', 'Selected syntax-tree evidence');
+  const title = document.createElement('h4');
+  title.textContent = 'Selected B-R tree position';
+  const selected = document.createElement('p');
+  selected.dataset.xai7Selected = '';
+  selected.textContent = detail.selected;
+  const relation = document.createElement('p');
+  relation.dataset.xai7Related = '';
+  relation.textContent = 'Observed positions: ' + detail.treeNote
+    + '. These tree links do not establish subject, object, head, or other grammatical functions.';
+  area.append(title, selected, relation);
+  if (detail.featureLabels.length) {
+    const features = document.createElement('p');
+    features.dataset.xai7Features = '';
+    features.textContent = 'Recorded feature labels: '
+      + detail.featureLabels.map(f => '[' + f + ']').join(', ')
+      + '. Select the feature row or its node to inspect the witnessed tree label.';
+    area.append(features);
+  }
+  if (detail.verifiedIssueCount) {
+    const issues = document.createElement('p');
+    issues.dataset.xai7Issues = '';
+    issues.textContent = detail.verifiedIssueCount
+      + ' independently approved local findings involve this position. '
+      + 'A local finding does not certify the whole sentence.';
+    area.append(issues);
+  }
+  panel.append(area);
+}
+
+function renderReadingControls(evidence, panel) {
+  const records = evidence?.contextual_explanations?.items;
+  if (!Array.isArray(records) || records.length !== 1) return;
+  const controls = document.createElement('div');
+  controls.dataset.xai7Verbosity = '';
+  controls.setAttribute('role','group');
+  controls.setAttribute('aria-label','Explanation detail');
+  const brief = document.createElement('button');
+  brief.type = 'button';
+  brief.textContent = 'Brief';
+  brief.setAttribute('aria-pressed','true');
+  const detailed = document.createElement('button');
+  detailed.type = 'button';
+  detailed.textContent = 'Detailed';
+  detailed.setAttribute('aria-pressed','false');
+  const details = panel.querySelector('[data-xai-details]');
+  const change = (showDeep) => {
+    if (details) details.open = showDeep;
+    brief.setAttribute('aria-pressed',String(!showDeep));
+    detailed.setAttribute('aria-pressed',String(showDeep));
+  };
+  brief.addEventListener('click', () => change(false));
+  detailed.addEventListener('click', () => change(true));
+  controls.append(brief,detailed);
+  panel.append(controls);
+}
+
+export function renderEvidence(evidence, host = document.querySelector('#explainNode'), options = {}) {
   if (!host) return;
   host.querySelector('[data-shared-evidence]')?.remove();
   const panel = document.createElement('section');
@@ -277,6 +343,8 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   const title = document.createElement('h3');
   title.textContent = 'Book evidence';
   renderContextualObservations(evidence, panel);
+  renderFocusNavigation(evidence, panel);
+  renderReadingControls(evidence, panel);
   renderCambridgePartial(evidence, panel);
   renderRepairRecheck(evidence, panel);
   panel.append(title);
@@ -293,6 +361,9 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
       for (const source of item.sources || []) {
         const cite = document.createElement('small');
         cite.textContent = `${source.title}, ${source.edition}, p. ${source.printed_page} [${source.id}]`;
+        cite.dataset.xai7Citation = String(source.id || 'source');
+        // Display the print-page reference even when the repository has no
+        // verified public page URL; never manufacture a PDF deep link.
         panel.append(cite);
       }
       if (item.deep_text) {
@@ -304,6 +375,7 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
     }
   }
   host.append(panel);
+  if (options.treeRoot) applyEvidenceFocus(options.treeRoot, evidence);
 }
 
 const QUIZ_SOURCE_FIELDS = ['id','book','title','edition','printed_page','evidence_status','status','crosswalk_status','review_status','independent_review','reviewed_by','reviewed_on'];
