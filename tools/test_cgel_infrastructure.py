@@ -28,7 +28,8 @@ class Tests(unittest.TestCase):
         bad["pages"][70]["chapter"]=2
         self.assertTrue(any("mismatch" in e for e in ledger.check(bad,self.manifest,allow_unprocessed=True)))
     def test_migration_completed(self):
-        self.assertGreaterEqual(run()[0],196)\n        self.assertEqual(run()[1],0)
+        self.assertGreaterEqual(run()[0],196)
+        self.assertEqual(run()[1],0)
     def test_schema_and_rule_citations(self):
         count,errors=validate()
         self.assertGreaterEqual(count,196)
