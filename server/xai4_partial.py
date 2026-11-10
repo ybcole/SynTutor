@@ -167,8 +167,10 @@ def eligible(rule, audit, manifest):
                       if x.get("id") == crosswalk_id), None)
     return bool(crosswalk and
                 crosswalk.get("review_status") == "independently_approved" and
-                crosswalk.get("relation") in {"compatible", "terminology_differs"}
-                and crosswalk.get("may_change_br_tree_labels") is False)
+                crosswalk.get("relation") in {"compatible", "terminology_differs"} and
+                crosswalk.get("cgel_claim_id") in ids and
+                crosswalk.get("br_claim_id") in ids and
+                crosswalk.get("may_change_br_tree_labels") is False)
 
 
 def overlap_groups(findings):
