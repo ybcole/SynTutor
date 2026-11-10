@@ -165,6 +165,7 @@ try:
             assert 'spans “sleeps”' in pane.inner_text()
             assert 'Ch5 p. 104' in pane.inner_text()
             partial = pane.locator('[data-xai4-partial]')
+            partial.wait_for(state='attached', timeout=30000)
             assert partial.count() == 1
             assert '0 approved runtime rules' in partial.locator('summary').inner_text()
             partial.locator('summary').click()
