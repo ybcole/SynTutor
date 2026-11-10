@@ -75,6 +75,7 @@ def evaluate_analysis(analysis, *, variety=None):
             'xai4_partial_evaluation':evidence.get('xai4_partial_evaluation'),
             'xai5_localization':evidence.get('xai5_localization'),
             'xai6_naturalization':evidence.get('xai6_naturalization'),
+            'xai7_unified':evidence.get('xai7_unified'),
             'node_details':details,
             'target_comparison':{'status':'not_requested','matched':None}}
 
