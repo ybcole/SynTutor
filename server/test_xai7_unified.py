@@ -87,7 +87,9 @@ class XAI7UnifiedTests(unittest.TestCase):
                 evaluate_request({"tree":t,key:True})
 
     def test_known_feature_rows_keep_exact_source_labels(self):
-        t=tree("br-03")
+        course=json.loads((ROOT/"web/content/lessons/course.json").read_text())
+        t=next(row["worked_example"]["tree"] for row in course["lessons"]
+               if row["lesson_id"]=="br-04")
         g=build_fact_graph({"status":"normalized","tree":t})
         featured=[n for n in g["nodes"] if n.get("features")]
         self.assertTrue(featured)
