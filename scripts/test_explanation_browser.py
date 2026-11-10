@@ -209,6 +209,8 @@ try:
             assert 'Optional AI naturalization is disabled or unavailable' in naturalizer.inner_text()
             assert parsed['explanation_evidence']['xai6_naturalization']['status'] == 'unavailable'
             assert parsed['xai6_naturalization']['status'] == 'unavailable'
+            assert parsed['xai6_naturalization']['provider_calls'] == 0
+            assert parsed['xai6_naturalization']['model_enabled'] is False
             assert 'within V “sleeps”' in pane.locator('[data-xai-short]').inner_text()
             page.locator('#newSessionBtn').click()
             assert not canonical.is_visible()
