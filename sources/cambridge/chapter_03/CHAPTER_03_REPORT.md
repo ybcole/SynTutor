@@ -54,3 +54,10 @@ The prior broad wording of AGR-002 did not explicitly exclude modal auxiliaries,
 ## Phase B addendum — 2026-11-10
 
 New protocol-1.1 extraction of printed pp. 76–90 added **35 NEEDS_REVIEW rules** (MORPH-024–MORPH-058), including 5 constraints with diagnostic specifications. Each new constraint remains `spec_only` pending Phase C. The 76–90 source/exception audit is in `PHASE_B_PP76_90_REPORT.md`. Printed pp. 71–73 contain the chapter contents only and are explicitly skipped. Previously approved §1.1 pp. 74–75 remains intact. **Chapter coverage: 17 extracted pages, 3 justified skips, 122 unprocessed (of 142 printed pages).** Not independently reviewed or detector-integrated; chapter is incomplete.
+
+
+---
+
+## Phase B update — 2026-11-10 (printed pp. 91–114)
+
+An additional **70 original source-cited records** are staged for grammar knowledge and learner-content generation, with page-by-page source and exception notes in `PHASE_B_PP91_114_REPORT.md`. The Chapter 3 ledger contains **41 extracted, 3 contents-only skips, 98 unprocessed** pages. Detector activation and full-chapter gates remain separate work. Continue from p. 115 without user approval pauses.

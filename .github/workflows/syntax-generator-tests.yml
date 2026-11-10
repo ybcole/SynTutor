@@ -42,6 +42,7 @@ jobs:
           python tools/ledger.py check --allow-unprocessed
           python -m unittest -v tools.test_cgel_infrastructure
           python -m unittest -v tools.test_cgel_phase_b
+          python -m unittest -v tools.test_cgel_phase_b_91_114
 
       - name: Verify progression with concurrent PostgreSQL sessions
         env:
