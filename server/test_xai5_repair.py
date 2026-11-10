@@ -221,6 +221,30 @@ class XAI5RepairTests(unittest.TestCase):
         self.assertTrue(all(x["snapshot"]["reparse_status"] == "unavailable_or_failed"
                             for x in data["revisions"]))
 
+    def test_two_independently_reparsed_source_trees_replace_not_reuse_tree(self):
+        source = tree("br-02")
+        updated = tree("br-03")
+        self.assertNotEqual(source["sentence"], updated["sentence"])
+        calls = []
+        def real_tree_fixture(text):
+            calls.append(text)
+            envelope = source if text == source["sentence"] else updated
+            return {"status": "normalized", "tree": deepcopy(envelope),
+                    "sentence": text, "reparse_status": "parsed"}
+        result = recheck_revisions({"text": source["sentence"],
+                    "candidates": [{"text": updated["sentence"]}]},
+                    analyzer=real_tree_fixture)
+        VALIDATE_REPAIR.validate(result)
+        old = result["original"]["canonical_tree"]
+        new = result["revisions"][0]["snapshot"]["canonical_tree"]
+        self.assertEqual(old["sentence"], source["sentence"])
+        self.assertEqual(new["sentence"], updated["sentence"])
+        self.assertNotEqual(old["tree_id"], new["tree_id"])
+        self.assertNotEqual(old["root"], new["root"])
+        self.assertEqual(calls, [source["sentence"], updated["sentence"]])
+        self.assertEqual(result["revisions"][0]["localization"]["tree_status"], "observed")
+        self.assertFalse(result["whole_sentence_certified"])
+
     def test_parser_exception_is_explicitly_unresolved(self):
         def broken(_):
             raise RuntimeError("parser unavailable")
