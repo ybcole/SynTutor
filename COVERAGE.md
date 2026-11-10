@@ -6,7 +6,7 @@
 |---|---:|---:|---:|---:|---:|---|
 | 1. Preliminaries | 42 | 0 | 41 | 1 | 0 | Incomplete |
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
-| 3. The verb | 142 | 73 | 66 | 3 | 0 | Incomplete |
+| 3. The verb | 142 | 81 | 58 | 3 | 0 | Incomplete |
 | 4. The clause: complements | 110 | 0 | 109 | 1 | 0 | Incomplete |
 | 5. Nouns and noun phrases | 202 | 0 | 201 | 0 | 1 | Incomplete |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
@@ -25,13 +25,13 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **73 extracted**, 1676 unprocessed, 13 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **81 extracted**, 1668 unprocessed, 13 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
-**Catalog:** 196 earlier approved records + 35 rules from pp. 76–90 + 70 rules from pp. 91–114 + 31 from pp. 115–122 + 20 from pp. 123–130 + 21 from pp. 131–138 + 30 from pp. 139–146 = **403 rules**. The error-capable records added during Phase B remain specifications rather than newly integrated runtime detectors; **implemented new detectors: zero**. No new detection precision/recall claim is made.
+**Catalog:** 196 earlier approved records + 35 rules from pp. 76–90 + 70 rules from pp. 91–114 + 31 from pp. 115–122 + 20 from pp. 123–130 + 21 from pp. 131–138 + 30 from pp. 139–146 + 35 from pp. 147–154 = **438 rules**. The error-capable records added during Phase B remain specifications rather than newly integrated runtime detectors; **implemented new detectors: zero**. No new detection precision/recall claim is made.
 
-Chapter 3 is at **73 extracted pages of 142**, plus 3 chapter-contents-only skips and **66 unprocessed (pp. 147–212)**. Source notes: `sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md`, `PHASE_B_PP91_114_REPORT.md`, `PHASE_B_PP115_122_REPORT.md`, and `PHASE_B_PP123_130_REPORT.md`. Continue from printed page **147**. Full-chapter completion gates remain inactive until source coverage is complete; no user sign-off is required for continued extraction.
+Chapter 3 is at **81 extracted pages of 142**, plus 3 chapter-contents-only skips and **58 unprocessed (pp. 155–212)**. Source notes: `sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md`, `PHASE_B_PP91_114_REPORT.md`, `PHASE_B_PP115_122_REPORT.md`, and `PHASE_B_PP123_130_REPORT.md`. Continue from printed page **155**. Full-chapter completion gates remain inactive until source coverage is complete; no user sign-off is required for continued extraction.
 
 ## Chapter 3 printed pp. 123–130 (2026-11-10)
 
@@ -44,3 +44,7 @@ Added 21 source-cited explanatory records (OTH-067–OTH-087). Covered the futur
 ## Chapter 3 printed pp. 139–146 (2026-11-10)
 
 Added 30 source-cited tense/perfect records (OTH-088–OTH-117), covering compound anteriority, continuative/existential/resultative/recent-past perfects, definite-past adjunct constraints with source exceptions, and dialectal variation. Source audit: `sources/cambridge/chapter_03/PHASE_B_PP139_146_REPORT.md`. Next unprocessed printed page: 147.
+
+## Chapter 3 printed pp. 147–154 (2026-11-10)
+
+Added 35 source-cited classification, descriptive, and usage records (OTH-118–OTH-152) covering perfect omissibility/scope, modal-remoteness contrasts, standard and nonstandard conditional variants, and preterite backshift. Original examples and source exceptions: `sources/cambridge/chapter_03/PHASE_B_PP147_154_REPORT.md`. No active detectors added. Next unprocessed printed page: 155.
