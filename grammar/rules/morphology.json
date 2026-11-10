@@ -3953,5 +3953,111 @@
     "related_rules": [],
     "review_notes": "Source checked against the supplied CGEL full PDF; original examples authored for SynTutor. No independent second-pass review, runtime detector validation, or owner approval has yet occurred. This is a structural contrast, not a claim that every infinitive must have for or an explicit subject.",
     "diagnostic": null
+  },
+  {
+    "id": "MORPH-059",
+    "domain": "morphology",
+    "concept": "Negative inflection contrasted with subject cliticisation",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Negative auxiliaries such as won't are inflectional verb forms, whereas subject-attached reductions such as 'll are clitics and belong to two-word sequences syntactically.",
+    "condition": "Use the distinction when analysing negation on an auxiliary versus phonological reduction of an auxiliary onto a neighbouring host.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tara won't attend. [negative auxiliary form]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tara'll attend. [subject plus auxiliary clitic]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.9 Negative forms",
+        "pages": [
+          91
+        ],
+        "pdf_pages": [
+          111
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative inflection contrasted with subject cliticisation",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. Spelling with an apostrophe does not imply the same syntactic process; avoidance of negative forms in the most formal writing is a style matter.",
+    "diagnostic": null
+  },
+  {
+    "id": "MORPH-060",
+    "domain": "morphology",
+    "concept": "Plain negative don't in imperative clauses",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The plain negative form don't in an imperative is unaffected by a third-person singular subject, unlike present-tense doesn't in questions.",
+    "condition": "Distinguish an imperative with an overt third-person subject from a present-tense interrogative when classifying negative auxiliary do.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Don't anyone move the chairs! [imperative]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Doesn't anybody remember the route? [present-tense question]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§1.9 Negative forms",
+        "pages": [
+          91,
+          92
+        ],
+        "pdf_pages": [
+          111,
+          112
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plain negative don't in imperative clauses",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. Imperative don't and present-tense don't have the same spelling but different inflectional status.",
+    "diagnostic": null
   }
 ]

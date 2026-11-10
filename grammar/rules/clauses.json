@@ -7724,5 +7724,1419 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "diagnostic": null
+  },
+  {
+    "id": "CLS-099",
+    "domain": "clauses",
+    "concept": "Do-support in primary finite negation",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Finite primary negation of an ordinary lexical predicate uses auxiliary do if the positive clause has no auxiliary.",
+    "condition": "A declarative finite main clause has primary verb negation with not, the lexical verb is the only verb in the corresponding positive clause, and no auxiliary is already available.",
+    "violation": "Placing primary not immediately with the lexical finite verb while omitting the necessary supportive do.",
+    "exceptions": [
+      {
+        "description": "Primary negation with an auxiliary uses that auxiliary without supportive do.",
+        "pages": [
+          94
+        ]
+      },
+      {
+        "description": "Non-verbal negation and subordinate non-imperative negation do not require supportive do.",
+        "pages": [
+          94
+        ]
+      },
+      {
+        "description": "Historical, literary and supplement constructions can have surface orders outside the central integrated pattern.",
+        "pages": [
+          94
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Our neighbour does not smoke.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The children did not whisper.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Our neighbour smokes not.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The children whispered not.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.1 Primary verb negation",
+        "pages": [
+          93,
+          94
+        ],
+        "pdf_pages": [
+          113,
+          114
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Do-support in primary finite negation",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Placing primary not immediately with the lexical finite verb while omitting the necessary supportive do.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Our neighbour smokes not. ||| Our neighbour does not smoke.",
+        "The children whispered not. ||| The children did not whisper."
+      ],
+      "learner_explanation": "In this construction, Finite primary negation of an ordinary lexical predicate uses auxiliary do if the positive clause has no auxiliary. The error is placing primary not immediately with the lexical finite verb while omitting the necessary supportive do. A correction uses the auxiliary and word order required for that construction, while keeping the intended meaning.",
+      "corrected_paragraph_template": "Apply the local auxiliary or word-order correction to the sentence in its paragraph; retain its context and re-check for new grammatical problems.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She has not spoken.",
+        "Not everyone enjoyed the show.",
+        "They went not to London but to York.",
+        "Do not touch the painting!"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "sentence-structure"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "CLS-100",
+    "domain": "clauses",
+    "concept": "Supportive do excluded when a lexical clause already has an auxiliary",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Supportive do does not appear before a separate available auxiliary in an ordinary finite NICE construction.",
+    "condition": "A clause already has an auxiliary such as perfect have or progressive be to carry finite negation or closed-interrogative inversion.",
+    "violation": "Adding supportive do as well as the available auxiliary for primary negation or inversion.",
+    "exceptions": [
+      {
+        "description": "Lexical have may legitimately take do-support in possession or dynamic constructions.",
+        "pages": [
+          92
+        ]
+      },
+      {
+        "description": "Negative imperative don't can occur before be.",
+        "pages": [
+          94
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Has she completed the task?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They are not waiting here.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Does she have completed the task?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They do not are waiting here.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§§2.1–2.1.1 NICE constructions and primary negation",
+        "pages": [
+          93,
+          94
+        ],
+        "pdf_pages": [
+          113,
+          114
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supportive do excluded when a lexical clause already has an auxiliary",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. ",
+    "diagnostic": {
+      "error_family": "extra_word",
+      "error_pattern": "Adding supportive do as well as the available auxiliary for primary negation or inversion.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Does she have completed the task? ||| Has she completed the task?",
+        "They do not are waiting here. ||| They are not waiting here."
+      ],
+      "learner_explanation": "In this construction, Supportive do does not appear before a separate available auxiliary in an ordinary finite NICE construction. The error is adding supportive do as well as the available auxiliary for primary negation or inversion. A correction uses the auxiliary and word order required for that construction, while keeping the intended meaning.",
+      "corrected_paragraph_template": "Apply the local auxiliary or word-order correction to the sentence in its paragraph; retain its context and re-check for new grammatical problems.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Does she have a reservation?",
+        "Do they have enough chairs?",
+        "Don't be careless!"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "sentence-structure"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "CLS-101",
+    "domain": "clauses",
+    "concept": "Scope of primary and subordinate negation",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Negating a matrix finite verb and negating its infinitival complement yield different clause meanings.",
+    "condition": "Compare not associated with finite matrix predicator versus not introducing a subordinate to-infinitival clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He did not decide to speak. [no decision]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He decided not to speak. [decision to stay silent]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.1 Primary verb negation",
+        "pages": [
+          94
+        ],
+        "pdf_pages": [
+          114
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope of primary and subordinate negation",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. No error is inferred merely from either position of not; the choice depends on the intended meaning.",
+    "diagnostic": null
+  },
+  {
+    "id": "CLS-102",
+    "domain": "clauses",
+    "concept": "Negative imperatives use supportive do",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A standard negative imperative uses don't even when its main predicator is be.",
+    "condition": "Negating a directive imperative clause, including directives headed by be or an auxiliary-like expression.",
+    "violation": "Omitting the required imperative do-support and placing not directly before the plain predicator in a canonical negative command.",
+    "exceptions": [
+      {
+        "description": "Finite declarative primary negation with be uses be itself, without supportive do.",
+        "pages": [
+          94
+        ]
+      },
+      {
+        "description": "Archaic or poetic orders are outside the ordinary imperative construction.",
+        "pages": [
+          94
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Don't be impolite.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Don't be waiting here when the inspector arrives.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Not be impolite!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Be not waiting here when the inspector arrives!",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.1 Primary verb negation",
+        "pages": [
+          94
+        ],
+        "pdf_pages": [
+          114
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative imperatives use supportive do",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. ",
+    "diagnostic": {
+      "error_family": "missing_word",
+      "error_pattern": "Omitting the required imperative do-support and placing not directly before the plain predicator in a canonical negative command.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Not be impolite! ||| Don't be impolite.",
+        "Be not waiting here when the inspector arrives! ||| Don't be waiting here when the inspector arrives."
+      ],
+      "learner_explanation": "In this construction, A standard negative imperative uses don't even when its main predicator is be. The error is omitting the required imperative do-support and placing not directly before the plain predicator in a canonical negative command. A correction uses the auxiliary and word order required for that construction, while keeping the intended meaning.",
+      "corrected_paragraph_template": "Apply the local auxiliary or word-order correction to the sentence in its paragraph; retain its context and re-check for new grammatical problems.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "You are not impolite.",
+        "She is not waiting here.",
+        "Not to be impolite was his intention."
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "sentence-structure"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "CLS-103",
+    "domain": "clauses",
+    "concept": "Inversion of auxiliary and subject in closed interrogatives",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A canonical main-clause closed interrogative places a primary auxiliary before its subject; supportive do is used when no auxiliary exists.",
+    "condition": "An ordinary direct yes/no question in a main clause, excluding echo questions and subordinate interrogatives.",
+    "violation": "Using declarative subject–lexical-verb order or moving a lexical finite verb before the subject without an auxiliary.",
+    "exceptions": [
+      {
+        "description": "Subordinate closed interrogatives normally keep subject-before-verb order.",
+        "pages": [
+          95
+        ]
+      },
+      {
+        "description": "Echo questions may retain declarative order; the rule concerns the canonical direct interrogative.",
+        "pages": [
+          95
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Does Amira practise daily?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Has the parcel arrived?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Practises Amira daily?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Arrived the parcel already?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          94,
+          95
+        ],
+        "pdf_pages": [
+          114,
+          115
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inversion of auxiliary and subject in closed interrogatives",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Using declarative subject–lexical-verb order or moving a lexical finite verb before the subject without an auxiliary.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Practises Amira daily? ||| Does Amira practise daily?",
+        "Arrived the parcel already? ||| Has the parcel arrived?"
+      ],
+      "learner_explanation": "In this construction, A canonical main-clause closed interrogative places a primary auxiliary before its subject; supportive do is used when no auxiliary exists. The error is using declarative subject–lexical-verb order or moving a lexical finite verb before the subject without an auxiliary. A correction uses the auxiliary and word order required for that construction, while keeping the intended meaning.",
+      "corrected_paragraph_template": "Apply the local auxiliary or word-order correction to the sentence in its paragraph; retain its context and re-check for new grammatical problems.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I wonder whether Amira practises daily.",
+        "Amira practises daily? [echo or rising declarative]",
+        "Who arrived early?"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "sentence-structure"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "CLS-104",
+    "domain": "clauses",
+    "concept": "Main-clause non-subject wh-inversion",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "An ordinary main-clause wh-question with a fronted non-subject interrogative phrase places an auxiliary before its subject.",
+    "condition": "An unmarked information-seeking direct open interrogative with the fronted wh-phrase functioning as object or adjunct rather than subject.",
+    "violation": "Leaving the subject in declarative pre-auxiliary order after a fronted non-subject wh-phrase.",
+    "exceptions": [
+      {
+        "description": "Wh-phrases that themselves function as subject do not trigger inversion.",
+        "pages": [
+          95
+        ]
+      },
+      {
+        "description": "Indirect questions normally lack the main-clause inversion.",
+        "pages": [
+          95
+        ]
+      },
+      {
+        "description": "Echo questions can retain non-inverted order.",
+        "pages": [
+          95
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What did the tourists photograph?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Where has Ari put the spare key?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "What the tourists photographed?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Where Ari has put the spare key?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          95
+        ],
+        "pdf_pages": [
+          115
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Main-clause non-subject wh-inversion",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Leaving the subject in declarative pre-auxiliary order after a fronted non-subject wh-phrase.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "What the tourists photographed? ||| What did the tourists photograph?",
+        "Where Ari has put the spare key? ||| Where has Ari put the spare key?"
+      ],
+      "learner_explanation": "In this construction, An ordinary main-clause wh-question with a fronted non-subject interrogative phrase places an auxiliary before its subject. The error is leaving the subject in declarative pre-auxiliary order after a fronted non-subject wh-phrase. A correction uses the auxiliary and word order required for that construction, while keeping the intended meaning.",
+      "corrected_paragraph_template": "Apply the local auxiliary or word-order correction to the sentence in its paragraph; retain its context and re-check for new grammatical problems.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Who photographed the monument?",
+        "I know what the tourists photographed.",
+        "What the tourists photographed? [echo request]"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "sentence-structure"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "CLS-105",
+    "domain": "clauses",
+    "concept": "Wh-phrase as subject does not trigger NICE inversion",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A fronted subject interrogative normally appears in its subject position, without the subject–auxiliary inversion required after fronted non-subject wh-phrases.",
+    "condition": "Identify whether who or what is the subject or an object/adjunct in the interrogative clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who called the office? [subject wh]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What did the caller request? [object wh]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          95
+        ],
+        "pdf_pages": [
+          115
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Wh-phrase as subject does not trigger NICE inversion",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. Avoid imposing do-support on a subject question such as who called.",
+    "diagnostic": null
+  },
+  {
+    "id": "CLS-106",
+    "domain": "clauses",
+    "concept": "Clause-scoped initial negative triggering inversion",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "An initial negative non-subject expression that negates the whole clause triggers subject–auxiliary inversion.",
+    "condition": "A finite clause begins with a fronted negative adjunct such as never, nowhere or not once, with scope over the clause rather than only inside the adjunct.",
+    "violation": "A clause-scoped fronted negative adjunct is followed by the subject in ordinary declarative order instead of a finite auxiliary.",
+    "exceptions": [
+      {
+        "description": "Initial negation within an adjunct, without clausal scope, does not trigger inversion.",
+        "pages": [
+          95
+        ]
+      },
+      {
+        "description": "Negative phrases in subject position are not non-subject inversion triggers.",
+        "pages": [
+          95
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Never have they challenged the decision.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nowhere does the report mention the fee.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Never they have challenged the decision.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Nowhere the report mentions the fee.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          95,
+          96
+        ],
+        "pdf_pages": [
+          115,
+          116
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause-scoped initial negative triggering inversion",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "A clause-scoped fronted negative adjunct is followed by the subject in ordinary declarative order instead of a finite auxiliary.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Never they have challenged the decision. ||| Never have they challenged the decision.",
+        "Nowhere the report mentions the fee. ||| Nowhere does the report mention the fee."
+      ],
+      "learner_explanation": "In this construction, An initial negative non-subject expression that negates the whole clause triggers subject–auxiliary inversion. The error is a clause-scoped fronted negative adjunct is followed by the subject in ordinary declarative order instead of a finite auxiliary. A correction uses the auxiliary and word order required for that construction, while keeping the intended meaning.",
+      "corrected_paragraph_template": "Apply the local auxiliary or word-order correction to the sentence in its paragraph; retain its context and re-check for new grammatical problems.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Not long afterward, the group left.",
+        "Not every candidate was successful.",
+        "The report mentions the fee nowhere."
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "sentence-structure"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "CLS-107",
+    "domain": "clauses",
+    "concept": "Initial only with clause scope triggering inversion",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "An initial only-phrase with scope over the clause triggers inversion, like a fronted clause-scoped negative.",
+    "condition": "A finite clause starts with a fronted non-subject only-phrase focusing the following predication, not with only modifying an element internal to a fronted adjunct.",
+    "violation": "Using ordinary subject-before-auxiliary order after an initial clausal only-phrase.",
+    "exceptions": [
+      {
+        "description": "Subject only-phrases do not require subject–auxiliary inversion.",
+        "pages": [
+          96
+        ]
+      },
+      {
+        "description": "Only within an initial adjunct may have subclausal scope and leave ordinary order intact.",
+        "pages": [
+          96
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Only then did the students understand.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Only one item did the inspector reject.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Only then the students understood.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Only one item the inspector rejected.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          95,
+          96
+        ],
+        "pdf_pages": [
+          115,
+          116
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Initial only with clause scope triggering inversion",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Using ordinary subject-before-auxiliary order after an initial clausal only-phrase.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Only then the students understood. ||| Only then did the students understand.",
+        "Only one item the inspector rejected. ||| Only one item did the inspector reject."
+      ],
+      "learner_explanation": "In this construction, An initial only-phrase with scope over the clause triggers inversion, like a fronted clause-scoped negative. The error is using ordinary subject-before-auxiliary order after an initial clausal only-phrase. A correction uses the auxiliary and word order required for that construction, while keeping the intended meaning.",
+      "corrected_paragraph_template": "Apply the local auxiliary or word-order correction to the sentence in its paragraph; retain its context and re-check for new grammatical problems.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Only a few minutes later, the audience dispersed.",
+        "Only the manager knows the answer.",
+        "The inspector rejected only one item."
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "sentence-structure"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "CLS-108",
+    "domain": "clauses",
+    "concept": "Fronted so and such in result constructions",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A fronted so- or such-degree phrase triggering the special result construction requires inversion of a finite auxiliary and the subject.",
+    "condition": "A finite clause begins with a degree phrase headed by so or such that licenses a following result clause with that.",
+    "violation": "Retaining ordinary subject–verb order in the special fronted so/such-plus-result construction.",
+    "exceptions": [
+      {
+        "description": "The trigger is a fronted non-subject degree phrase; normal or subject-position so/such expressions do not require inversion.",
+        "pages": [
+          96
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "So little time did we have that we rushed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Such a commotion did the crowd cause that traffic stopped.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "So little time we had that we rushed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Such a commotion the crowd caused that traffic stopped.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          96
+        ],
+        "pdf_pages": [
+          116
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fronted so and such in result constructions",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Retaining ordinary subject–verb order in the special fronted so/such-plus-result construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "So little time we had that we rushed. ||| So little time did we have that we rushed.",
+        "Such a commotion the crowd caused that traffic stopped. ||| Such a commotion did the crowd cause that traffic stopped."
+      ],
+      "learner_explanation": "In this construction, A fronted so- or such-degree phrase triggering the special result construction requires inversion of a finite auxiliary and the subject. The error is retaining ordinary subject–verb order in the special fronted so/such-plus-result construction. A correction uses the auxiliary and word order required for that construction, while keeping the intended meaning.",
+      "corrected_paragraph_template": "Apply the local auxiliary or word-order correction to the sentence in its paragraph; retain its context and re-check for new grammatical problems.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "So little time remained that we rushed. [subject of the clause]",
+        "It was such a commotion that everyone noticed.",
+        "So tired, he fell asleep at once."
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "sentence-structure"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "CLS-109",
+    "domain": "clauses",
+    "concept": "Optional inversion with fronted exclamative non-subjects",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Fronted non-subject exclamative phrases can occur with or without subject–auxiliary inversion, with non-inverted order generally more common.",
+    "condition": "Compare well-formed exclamative clauses headed by what or how when the initial exclamative phrase is not the subject.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How thoroughly she had prepared!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How thoroughly had she prepared!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          95,
+          97
+        ],
+        "pdf_pages": [
+          115,
+          117
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optional inversion with fronted exclamative non-subjects",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. Do not label the uninverted exclamative an error; some exclamatives exhibit subject postposing rather than NICE inversion.",
+    "diagnostic": null
+  },
+  {
+    "id": "CLS-110",
+    "domain": "clauses",
+    "concept": "Formal inversion with miscellaneous fronted constituents",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "Some additional fronted adjuncts or complements permit inversion in relatively formal written styles.",
+    "condition": "Assess marked formal fronting other than the regular clausal negative, only, so and such triggers.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Thus did the delegates conclude their meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The delegates thus concluded their meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          96,
+          97
+        ],
+        "pdf_pages": [
+          116,
+          117
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Formal inversion with miscellaneous fronted constituents",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. Formal marked inversion is not obligatory across all fronted elements and should not be treated as a universal error pattern.",
+    "diagnostic": null
+  },
+  {
+    "id": "CLS-111",
+    "domain": "clauses",
+    "concept": "Conditional inversion as an alternative to an if-clause",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Certain subordinate conditionals permit an inverted auxiliary before the subject in place of an introductory if.",
+    "condition": "A conditional protasis uses an eligible auxiliary such as had or were and omits the conditional subordinator if.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Had Nina known, she would have replied.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If Nina had known, she would have replied.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          96
+        ],
+        "pdf_pages": [
+          116
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional inversion as an alternative to an if-clause",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. This is subordinate inversion, not an ordinary closed interrogative.",
+    "diagnostic": null
+  },
+  {
+    "id": "CLS-112",
+    "domain": "clauses",
+    "concept": "Optative may in formal inversion",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An optative main clause can place may before the subject to express a wish, often in formal or formulaic usage.",
+    "condition": "A wish-conveying optative clause begins with may followed by its subject.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "May your journey be peaceful.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "May the strongest proposal succeed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          96,
+          97
+        ],
+        "pdf_pages": [
+          116,
+          117
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optative may in formal inversion",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. This construction is not an information-seeking question.",
+    "diagnostic": null
+  },
+  {
+    "id": "CLS-113",
+    "domain": "clauses",
+    "concept": "Subject–auxiliary inversion contrasted with subject postposing",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Subject–auxiliary inversion moves one finite auxiliary before the subject, whereas subject postposing can place the subject after a longer verb phrase and need not involve an auxiliary.",
+    "condition": "When analysing apparent verb-before-subject order, distinguish inversion from full postposing using number and type of preceding verbs.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Where had the files been stored? [inversion]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "More persuasive had been the later findings. [subject postposing]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          97
+        ],
+        "pdf_pages": [
+          117
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject–auxiliary inversion contrasted with subject postposing",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. A surface verb-before-subject sequence alone cannot identify the construction.",
+    "diagnostic": null
+  },
+  {
+    "id": "CLS-114",
+    "domain": "clauses",
+    "concept": "One prenuclear auxiliary in subject–auxiliary inversion",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In a subject–auxiliary inversion construction, only the first finite auxiliary moves before the subject; other verbs remain after it.",
+    "condition": "A main-clause question uses subject–auxiliary inversion and has more than one verb, such as perfect have followed by be.",
+    "violation": "Moving more than one auxiliary across the subject in a regular question.",
+    "exceptions": [
+      {
+        "description": "Subject postposing is a separate construction and may place the subject after several verbs.",
+        "pages": [
+          97
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Where had the documents been kept?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Has the parcel been delivered?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Where had been the documents kept?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Has been the parcel delivered?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.2 Subject–auxiliary inversion",
+        "pages": [
+          97
+        ],
+        "pdf_pages": [
+          117
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "One prenuclear auxiliary in subject–auxiliary inversion",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. ",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Moving more than one auxiliary across the subject in a regular question.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Where had been the documents kept? ||| Where had the documents been kept?",
+        "Has been the parcel delivered? ||| Has the parcel been delivered?"
+      ],
+      "learner_explanation": "In this construction, In a subject–auxiliary inversion construction, only the first finite auxiliary moves before the subject; other verbs remain after it. The error is moving more than one auxiliary across the subject in a regular question. A correction uses the auxiliary and word order required for that construction, while keeping the intended meaning.",
+      "corrected_paragraph_template": "Apply the local auxiliary or word-order correction to the sentence in its paragraph; retain its context and re-check for new grammatical problems.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "More important had been the remaining objections. [subject postposing]",
+        "Where had the documents been kept?",
+        "Where was the report?"
+      ],
+      "lesson_tags": [
+        "cambridge-ch03",
+        "auxiliaries",
+        "sentence-structure"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    }
+  },
+  {
+    "id": "CLS-115",
+    "domain": "clauses",
+    "concept": "Emphatic polarity and supportive do",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "When strong stress specifically highlights positive polarity, the emphasis falls on an auxiliary; supportive do can be inserted if the clause otherwise contains only a lexical verb.",
+    "condition": "A speaker explicitly asserts or denies clause polarity with marked stress, distinguished from stressing the lexical content of the verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I DID complete the task! [positive polarity]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She WILL attend! [positive polarity]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.3 Emphatic polarity",
+        "pages": [
+          97,
+          98
+        ],
+        "pdf_pages": [
+          117,
+          118
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic polarity and supportive do",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. Emphasis on a lexical verb's content does not require do, and this prosodic distinction is not inferable from written capitals alone.",
+    "diagnostic": null
+  },
+  {
+    "id": "CLS-116",
+    "domain": "clauses",
+    "concept": "Emphatic lexical meaning versus emphatic polarity",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Heavy stress can highlight what a lexical verb means instead of emphasising the positive polarity of the whole clause.",
+    "condition": "Distinguish the discourse contrast made by stressed lexical predicates from polarity contrasts expressed by stressed auxiliaries.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tara DREW the mural rather than photographing it. [lexical contrast]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tara DID draw the mural; I witnessed it. [polarity emphasis]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2.1.3 Emphatic polarity",
+        "pages": [
+          98
+        ],
+        "pdf_pages": [
+          118
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic lexical meaning versus emphatic polarity",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. Do not infer an auxiliary error from lexical-content stress.",
+    "diagnostic": null
   }
 ]

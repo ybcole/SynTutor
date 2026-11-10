@@ -1434,5 +1434,111 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "diagnostic": null
+  },
+  {
+    "id": "WCAT-018",
+    "domain": "word_categories",
+    "concept": "Auxiliary verbs defined by NICE properties",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "English auxiliaries are the class of verbs that can participate in the NICE constructions of primary negation, inversion, code and emphatic polarity.",
+    "condition": "Use the Negation, Inversion, Code and Emphasis behaviour of verb lexemes to distinguish auxiliary uses from ordinary lexical verb uses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Has Mina finished? [auxiliary inversion]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina hasn't finished. [primary verb negation]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§§2–2.1 Auxiliary verbs; distinctive syntactic properties",
+        "pages": [
+          92,
+          93
+        ],
+        "pdf_pages": [
+          112,
+          113
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary verbs defined by NICE properties",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. The class includes nonmodal auxiliaries be, have, do and some dual-category verbs; the word's meaning alone is insufficient.",
+    "diagnostic": null
+  },
+  {
+    "id": "WCAT-019",
+    "domain": "word_categories",
+    "concept": "Lexemes with auxiliary and lexical uses",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Need, dare, have, do and some uses of use participate in both auxiliary and lexical verb constructions, with considerable variety differences.",
+    "condition": "Classify an occurrence by its syntactic construction, particularly do-support, complements and present-tense agreement, rather than assigning one class to the spelling.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Need we postpone the meeting? [auxiliary]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Do we need to postpone the meeting? [lexical]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2 Auxiliary verbs",
+        "pages": [
+          92
+        ],
+        "pdf_pages": [
+          112
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexemes with auxiliary and lexical uses",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. Auxiliary use is restricted for use and regionally variable; shall/can are not lexical merely because their meaning is similar to another verb.",
+    "diagnostic": null
   }
 ]

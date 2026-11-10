@@ -1340,5 +1340,57 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "diagnostic": null
+  },
+  {
+    "id": "COMP-020",
+    "domain": "complementation",
+    "concept": "First auxiliary in multiword idioms",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "In auxiliary-led idioms only the first verb is an auxiliary; a larger expression such as have got is not a single auxiliary verb.",
+    "condition": "Analyse multiword constructions beginning with be, have, had or would, distinguishing the first auxiliary head from the following words in the idiom.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has got a ticket. [has is auxiliary]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They would rather remain. [would is auxiliary]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§2 Auxiliary verbs",
+        "pages": [
+          92
+        ],
+        "pdf_pages": [
+          112
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "First auxiliary in multiword idioms",
+        "relation": "unverified",
+        "note": "Separate Burton-Roberts source verification has not been claimed."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "related_rules": [],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. The following words are not all auxiliary verbs and some may be lexical verbs or particles.",
+    "diagnostic": null
   }
 ]
