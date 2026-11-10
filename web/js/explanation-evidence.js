@@ -199,6 +199,42 @@ function renderRepairRecheck(evidence, panel) {
           + ': origin unknown; no global correction claim.';
         output.append(item);
       }
+      // A candidate tree is *newly parsed*, not a re-labelled original.
+      // Users can inspect its actual constituent nodes and rerun the same
+      // evidence composer on the selected revised-tree node.
+      const revisedTree = revision.snapshot.canonical_tree;
+      if (revisedTree) {
+        const treeDetails = document.createElement('details');
+        treeDetails.dataset.xai5RevisedTree = '';
+        const heading = document.createElement('summary');
+        heading.textContent = 'Inspect revised B-R tree';
+        treeDetails.append(heading);
+        const { renderLessonTree } = await import('./lessons-ui.js');
+        if (!section.isConnected) return;
+        const treeView = renderLessonTree(revisedTree, {interactive: true});
+        treeView.addEventListener('click', async (event) => {
+          const target = event.target.closest?.('button[data-node-id]');
+          if (!target || !treeView.contains(target)) return;
+          const nodeId = target.dataset.nodeId;
+          const details = document.createElement('section');
+          details.dataset.xai5RevisedNode = '';
+          details.textContent = 'Checking the selected revised-tree node…';
+          treeDetails.querySelector('[data-xai5-revised-node]')?.remove();
+          treeDetails.append(details);
+          try {
+            const selected = await requestEvidence(revisedTree, nodeId);
+            if (details.isConnected) renderEvidence(selected, details);
+          } catch (error) {
+            if (details.isConnected) details.textContent = error.message || 'Node evidence unavailable.';
+          }
+        });
+        treeDetails.append(treeView);
+        output.append(treeDetails);
+      } else {
+        const missing = document.createElement('p');
+        missing.textContent = 'No complete canonical B-R tree was established for this revised sentence; the original tree is not reused.';
+        output.append(missing);
+      }
     } catch (error) {
       if (section.isConnected) output.textContent = error.message || 'Revision recheck unavailable.';
     } finally {
