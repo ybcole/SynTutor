@@ -159,7 +159,11 @@ class XAI4PartialTests(unittest.TestCase):
             (root / "grammar/xai_pre/source_audit.json").write_text(json.dumps(audit))
             result = evaluate_xai4("She can has went home.", root=root, variety="Standard English")
             blocked_without_variety = evaluate_xai4("She can has went home.", root=root)
+            nonapplicable = evaluate_xai4("She had breakfast.", root=root, variety="Standard English")
         self.assertEqual(blocked_without_variety["findings"], [])
+        self.assertEqual(len(nonapplicable["enabled_rule_ids"]), 2)
+        self.assertEqual(nonapplicable["findings"], [])
+        self.assertEqual(nonapplicable["status"], "partially_evaluated")
         self.assertEqual(len(result["findings"]), 2)
         self.assertEqual({x["rule_id"] for x in result["findings"]},
                          {"CGEL4-PERF-COMPLEMENT", "CGEL4-MODAL-PLAIN"})
