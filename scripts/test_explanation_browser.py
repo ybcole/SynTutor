@@ -201,6 +201,14 @@ try:
             assert 'Ch5 p. 104' in pane.inner_text()
             page.locator('#explainNode [data-xai-short]').wait_for(timeout=30000)
             assert 'word “sleeps”' in pane.locator('[data-xai-short]').inner_text()
+            # XAI-6 must remain a zero-cost deterministic fallback in the
+            # real parser-backed Generator and Builder evidence views.
+            naturalizer = pane.locator('[data-xai6-style]')
+            naturalizer.wait_for(state='attached', timeout=30000)
+            naturalizer.locator('summary').click()
+            assert 'Optional AI naturalization is disabled or unavailable' in naturalizer.inner_text()
+            assert parsed['explanation_evidence']['xai6_naturalization']['status'] == 'unavailable'
+            assert parsed['xai6_naturalization']['status'] == 'unavailable'
             assert 'within V “sleeps”' in pane.locator('[data-xai-short]').inner_text()
             page.locator('#newSessionBtn').click()
             assert not canonical.is_visible()
