@@ -152,7 +152,12 @@ class XAI2FactTests(unittest.TestCase):
         request = explain_request({"tree": t})
         self.assertEqual(explanation["fact_graph"], graph)
         self.assertEqual(request["fact_graph"], graph)
-        self.assertEqual(explanation["channels"]["grammatical"], [])
+        # Preserve any already-approved teaching-only Cambridge notes;
+        # XAI-2 adds no new grammar constraint or remediation records.
+        self.assertEqual(explanation["channels"]["grammatical"],
+                         request["channels"]["grammatical"])
+        self.assertTrue(all(not row.get("rule_id")
+                            for row in explanation["channels"]["grammatical"]))
         self.assertEqual(explanation["channels"]["remediation"], [])
         from tree_evaluation import evaluate_request
         evaluated = evaluate_request({"tree": t})
