@@ -1,0 +1,36 @@
+{
+  "schema_version": "xai6-policy-1.0.0",
+  "language_policy": "ENGLISH_ONLY",
+  "release_status": "DISABLED_PENDING_BLIND_REVIEW",
+  "model_enabled": false,
+  "enablement": {
+    "independent_human_blind_comparison": false,
+    "factual_fidelity_at_least_baseline": false,
+    "readability_gain_demonstrated": false,
+    "no_material_increase_in_false_claims": false,
+    "reviewed_by": null,
+    "reviewed_on": null,
+    "review_report": null
+  },
+  "contract": {
+    "model_transport_enabled": false,
+    "model_id": null,
+    "max_prompt_chars": 6000,
+    "max_response_chars": 3500,
+    "max_output_tokens": 300,
+    "max_cost_usd": 0.005,
+    "max_latency_ms": 1500,
+    "max_provider_calls": 1,
+    "max_cache_entries": 64
+  },
+  "allowed_reading_levels": [
+    "plain",
+    "standard",
+    "advanced"
+  ],
+  "allowed_observation_scope": "STRUCTURAL_OBSERVATION_ONLY",
+  "baseline_schema_version": "xai-composer-3.0.0",
+  "source_policy": "PUBLISHED_SOURCE_TEMPLATES_UNCHANGED",
+  "log_policy": "NO_USER_TEXT_OR_MODEL_TEXT",
+  "human_evaluation_fixture_count": 0
+}
