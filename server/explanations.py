@@ -103,7 +103,7 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
               'channels': {key: [] for key in CHANNELS}, 'facts': [], 'diagnostics': [],
               'fact_graph': None, 'contextual_explanations': None,
               'xai4_partial_evaluation': None, 'xai5_localization': None,
-              'xai6_naturalization': None}
+              'xai6_naturalization': None, 'xai7_unified': None}
     from xai4_partial import evaluate_xai4
     source_text = analysis.get('sentence')
     if source_text is None and isinstance(analysis.get('tree'), dict):
@@ -128,6 +128,8 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
         output['status'] = 'ANALYSIS_UNRESOLVED'
         output['diagnostics'].append({'code': 'ANALYSIS_UNRESOLVED',
                                       'message': 'No resolved canonical analysis is available.'})
+        from xai7_unified import assemble
+        output['xai7_unified'] = assemble(output)
         return output
     tree = validate_envelope(analysis['tree'])
     nodes = nodes_of(tree)
@@ -219,6 +221,8 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
     else:
         output['diagnostics'].append({'code': 'NO_BOOK_BASIS',
                                       'message': 'No independently reviewed source/template supports an explanation for this analysis.'})
+    from xai7_unified import assemble
+    output['xai7_unified'] = assemble(output)
     return output
 
 
@@ -226,6 +230,8 @@ def explain_quiz_response(item, answer, source_records):
     """Use the same review/source/channel gates for repository-owned quiz prose."""
     output={'schema_version':'1.0.0','status':'NO_BOOK_BASIS','analysis_status':'quiz_feedback',
             'channels':{key:[] for key in CHANNELS},'facts':[],'diagnostics':[]}
+    from xai7_unified import assemble
+    output['xai7_unified'] = assemble(output, mode='quiz')
     required={'br_structure':'B-R','cambridge_classification':'Cambridge'}.get(item.get('claim_scope'))
     lookup={s.get('id'):s for s in source_records}
     cited=[lookup.get(ident,{}) for ident in item.get('source_ids',[])]
@@ -246,6 +252,7 @@ def explain_quiz_response(item, answer, source_records):
         'deep_text':f"Your selected option: {chosen['rationale']}" if chosen else 'No answer was submitted; it counts as incorrect.',
         'sources':[{k:v for k,v in source.items() if k in fields} for source in cited],'facts':facts})
     output['facts']=[facts];output['status']='EXPLAINED'
+    output['xai7_unified'] = assemble(output, mode='quiz')
     return output
 
 
