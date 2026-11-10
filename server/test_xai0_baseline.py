@@ -28,6 +28,10 @@ class XAI0BaselineTests(unittest.TestCase):
         self.assertTrue(all(x["expected_status"] == "NOT_ADJUDICATED" for x in rows))
         self.assertEqual(self.corpus["review_status"], "NOT_HUMAN_ADJUDICATED")
         self.assertGreaterEqual(len({x["family"] for x in rows}), 10)
+        self.assertEqual(self.corpus["language_policy"], "ENGLISH_ONLY")
+        self.assertTrue(all(x["language"] == "en" for x in rows))
+        self.assertTrue(all(x["intent"] != "unsupported_or_mixed_language" for x in rows))
+        self.assertEqual(sum(x["family"] == "english_edge_cases" for x in rows), 8)
 
     def test_contains_hard_correction_and_cambridge_exceptions(self):
         text = {x["text"] for x in self.corpus["cases"]}
@@ -36,7 +40,7 @@ class XAI0BaselineTests(unittest.TestCase):
             "She had went home.", "She have went to a stores, and he don't likes it.",
             "We've already discussed it yesterday.",
             "She had wanted the car.", "I saw the man with the telescope.",
-            "Nag-aaral ako ng syntax.", "She left. He stayed.",
+            "What the witnesses remembered remains uncertain.", "She left. He stayed.",
         ):
             with self.subTest(sentence=item):
                 self.assertIn(item, text)
@@ -60,6 +64,31 @@ class XAI0BaselineTests(unittest.TestCase):
             path = Path(temp) / "bad.json"
             path.write_text(json.dumps(changed))
             with self.assertRaisesRegex(ValueError, "source authority"):
+                audit.load_cases(path)
+
+    def test_rejects_non_english_case_or_wrong_corpus_policy(self):
+        changed = copy.deepcopy(self.corpus)
+        changed["cases"][0]["language"] = "not-en"
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "out_of_scope.json"
+            path.write_text(json.dumps(changed))
+            with self.assertRaisesRegex(ValueError, "non-English case"):
+                audit.load_cases(path)
+        changed = copy.deepcopy(self.corpus)
+        changed["language_policy"] = "ANY_LANGUAGE"
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "out_of_scope.json"
+            path.write_text(json.dumps(changed))
+            with self.assertRaisesRegex(ValueError, "ENGLISH_ONLY"):
+                audit.load_cases(path)
+
+    def test_rejects_non_english_intent_instead_of_silent_acceptance(self):
+        changed = copy.deepcopy(self.corpus)
+        changed["cases"][0]["intent"] = "unsupported_or_mixed_language"
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "out_of_scope.json"
+            path.write_text(json.dumps(changed))
+            with self.assertRaisesRegex(ValueError, "invalid intent category"):
                 audit.load_cases(path)
 
     def test_rejects_duplicate_cases_and_unbounded_text(self):

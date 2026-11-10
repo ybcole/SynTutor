@@ -1,10 +1,10 @@
 {
   "schema_version": "xai-0-development-1.0",
-  "purpose": "Empirical baseline only: these prompts are representative probes, NOT a held-out human-labeled gold grammaticality set.",
+  "purpose": "English-only development probes for B–R/Cambridge syntax explanations; not training data, not a reviewed grammaticality benchmark.",
   "review_status": "NOT_HUMAN_ADJUDICATED",
   "source_authority": "none",
   "expected_canonical_success": "not_predetermined",
-  "evaluation_plan": "Report observed parser and B-R status, source-cited node coverage, legacy candidate warnings, API parity; never derive grammaticality truth from intent tags.",
+  "evaluation_plan": "Use English-only examples; log actual parser and B–R status, source-cited node coverage, and candidate diagnostic disagreement. Never infer grammaticality truth from provisional intent tags. Non-English inputs must not be added without an explicit scope change.",
   "cases": [
     {
       "id": "x0-basic-01",
@@ -13,7 +13,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-basic-02",
@@ -22,7 +23,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-basic-03",
@@ -31,7 +33,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-basic-04",
@@ -40,7 +43,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-basic-05",
@@ -49,7 +53,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-basic-06",
@@ -58,7 +63,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-basic-07",
@@ -67,7 +73,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-basic-08",
@@ -76,7 +83,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-basic-09",
@@ -85,7 +93,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-basic-10",
@@ -94,7 +103,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-basic-11",
@@ -103,7 +113,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-basic-12",
@@ -112,7 +123,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-01",
@@ -121,7 +133,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-02",
@@ -130,7 +143,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-03",
@@ -139,7 +153,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-04",
@@ -148,7 +163,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-05",
@@ -157,7 +173,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-06",
@@ -166,7 +183,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-07",
@@ -175,7 +193,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-08",
@@ -184,7 +203,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-09",
@@ -193,7 +213,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-10",
@@ -202,7 +223,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-11",
@@ -211,7 +233,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-auxiliaries-12",
@@ -220,7 +243,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-questions_negation-01",
@@ -229,7 +253,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-questions_negation-02",
@@ -238,7 +263,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-questions_negation-03",
@@ -247,7 +273,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-questions_negation-04",
@@ -256,7 +283,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-questions_negation-05",
@@ -265,7 +293,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-questions_negation-06",
@@ -274,7 +303,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-questions_negation-07",
@@ -283,7 +313,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-questions_negation-08",
@@ -292,7 +323,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-questions_negation-09",
@@ -301,7 +333,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-questions_negation-10",
@@ -310,7 +343,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-embedded_nonfinite-01",
@@ -319,7 +353,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-embedded_nonfinite-02",
@@ -328,7 +363,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-embedded_nonfinite-03",
@@ -337,7 +373,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-embedded_nonfinite-04",
@@ -346,7 +383,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-embedded_nonfinite-05",
@@ -355,7 +393,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-embedded_nonfinite-06",
@@ -364,7 +403,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-embedded_nonfinite-07",
@@ -373,7 +413,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-embedded_nonfinite-08",
@@ -382,7 +423,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-embedded_nonfinite-09",
@@ -391,7 +433,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-embedded_nonfinite-10",
@@ -400,7 +443,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-coordination_modification-01",
@@ -409,7 +453,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-coordination_modification-02",
@@ -418,7 +463,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-coordination_modification-03",
@@ -427,7 +473,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-coordination_modification-04",
@@ -436,7 +483,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-coordination_modification-05",
@@ -445,7 +493,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-coordination_modification-06",
@@ -454,7 +503,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-coordination_modification-07",
@@ -463,7 +513,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-coordination_modification-08",
@@ -472,7 +523,8 @@
       "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ambiguous-01",
@@ -481,7 +533,8 @@
       "intent": "ambiguous",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ambiguous-02",
@@ -490,7 +543,8 @@
       "intent": "ambiguous",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ambiguous-03",
@@ -499,7 +553,8 @@
       "intent": "ambiguous",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ambiguous-04",
@@ -508,7 +563,8 @@
       "intent": "ambiguous",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ambiguous-05",
@@ -517,7 +573,8 @@
       "intent": "ambiguous",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ambiguous-06",
@@ -526,7 +583,8 @@
       "intent": "ambiguous",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ambiguous-07",
@@ -535,7 +593,8 @@
       "intent": "ambiguous",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ambiguous-08",
@@ -544,7 +603,8 @@
       "intent": "ambiguous",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-01",
@@ -553,7 +613,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-02",
@@ -562,7 +623,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-03",
@@ -571,7 +633,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-04",
@@ -580,7 +643,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-05",
@@ -589,7 +653,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-06",
@@ -598,7 +663,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-07",
@@ -607,7 +673,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-08",
@@ -616,7 +683,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-09",
@@ -625,7 +693,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-10",
@@ -634,7 +703,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-11",
@@ -643,7 +713,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-12",
@@ -652,7 +723,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-13",
@@ -661,7 +733,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-14",
@@ -670,7 +743,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-ungrammatical_probes-15",
@@ -679,7 +753,8 @@
       "intent": "malformed_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-multiple_error-01",
@@ -688,7 +763,8 @@
       "intent": "multi_error_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-multiple_error-02",
@@ -697,7 +773,8 @@
       "intent": "multi_error_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-multiple_error-03",
@@ -706,7 +783,8 @@
       "intent": "multi_error_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-multiple_error-04",
@@ -715,7 +793,8 @@
       "intent": "multi_error_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-multiple_error-05",
@@ -724,7 +803,8 @@
       "intent": "multi_error_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-multiple_error-06",
@@ -733,7 +813,8 @@
       "intent": "multi_error_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-multiple_error-07",
@@ -742,7 +823,8 @@
       "intent": "multi_error_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-multiple_error-08",
@@ -751,7 +833,8 @@
       "intent": "multi_error_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-variety_register-01",
@@ -760,7 +843,8 @@
       "intent": "variety_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-variety_register-02",
@@ -769,7 +853,8 @@
       "intent": "variety_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-variety_register-03",
@@ -778,7 +863,8 @@
       "intent": "variety_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-variety_register-04",
@@ -787,7 +873,8 @@
       "intent": "variety_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-variety_register-05",
@@ -796,7 +883,8 @@
       "intent": "variety_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-variety_register-06",
@@ -805,7 +893,8 @@
       "intent": "variety_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-variety_register-07",
@@ -814,7 +903,8 @@
       "intent": "variety_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-variety_register-08",
@@ -823,7 +913,8 @@
       "intent": "variety_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-time_aspect-01",
@@ -832,7 +923,8 @@
       "intent": "context_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-time_aspect-02",
@@ -841,7 +933,8 @@
       "intent": "context_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-time_aspect-03",
@@ -850,7 +943,8 @@
       "intent": "context_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-time_aspect-04",
@@ -859,7 +953,8 @@
       "intent": "context_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-time_aspect-05",
@@ -868,7 +963,8 @@
       "intent": "context_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-time_aspect-06",
@@ -877,7 +973,8 @@
       "intent": "context_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-time_aspect-07",
@@ -886,7 +983,8 @@
       "intent": "context_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-time_aspect-08",
@@ -895,79 +993,88 @@
       "intent": "context_sensitive",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
-      "id": "x0-taglish_unsupported-01",
-      "text": "Nag-aaral ako ng syntax.",
-      "family": "taglish_unsupported",
-      "intent": "unsupported_or_mixed_language",
+      "id": "x0-english_edge_cases-01",
+      "text": "The unusually quiet library closed early.",
+      "family": "english_edge_cases",
+      "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "English-only development input; no adjudicated grammaticality or expected parser verdict.",
+      "language": "en"
     },
     {
-      "id": "x0-taglish_unsupported-02",
-      "text": "I will submit na tomorrow.",
-      "family": "taglish_unsupported",
-      "intent": "unsupported_or_mixed_language",
+      "id": "x0-english_edge_cases-02",
+      "text": "The books that arrived yesterday were expensive.",
+      "family": "english_edge_cases",
+      "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "English-only development input; no adjudicated grammaticality or expected parser verdict.",
+      "language": "en"
     },
     {
-      "id": "x0-taglish_unsupported-03",
-      "text": "Kumain na siya.",
-      "family": "taglish_unsupported",
-      "intent": "unsupported_or_mixed_language",
+      "id": "x0-english_edge_cases-03",
+      "text": "Not every student understood the assignment.",
+      "family": "english_edge_cases",
+      "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "English-only development input; no adjudicated grammaticality or expected parser verdict.",
+      "language": "en"
     },
     {
-      "id": "x0-taglish_unsupported-04",
-      "text": "The class is mahirap today.",
-      "family": "taglish_unsupported",
-      "intent": "unsupported_or_mixed_language",
+      "id": "x0-english_edge_cases-04",
+      "text": "Had the committee already reached a decision?",
+      "family": "english_edge_cases",
+      "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "English-only development input; no adjudicated grammaticality or expected parser verdict.",
+      "language": "en"
     },
     {
-      "id": "x0-taglish_unsupported-05",
-      "text": "Pwede bang explain this NP?",
-      "family": "taglish_unsupported",
-      "intent": "unsupported_or_mixed_language",
+      "id": "x0-english_edge_cases-05",
+      "text": "It was the professor who explained the example.",
+      "family": "english_edge_cases",
+      "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "English-only development input; no adjudicated grammaticality or expected parser verdict.",
+      "language": "en"
     },
     {
-      "id": "x0-taglish_unsupported-06",
-      "text": "My prof said na okay lang.",
-      "family": "taglish_unsupported",
-      "intent": "unsupported_or_mixed_language",
+      "id": "x0-english_edge_cases-06",
+      "text": "Neither the manager nor the employees were satisfied.",
+      "family": "english_edge_cases",
+      "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "English-only development input; no adjudicated grammaticality or expected parser verdict.",
+      "language": "en"
     },
     {
-      "id": "x0-taglish_unsupported-07",
-      "text": "Gusto ko to learn English syntax.",
-      "family": "taglish_unsupported",
-      "intent": "unsupported_or_mixed_language",
+      "id": "x0-english_edge_cases-07",
+      "text": "The report which she submitted was surprisingly brief.",
+      "family": "english_edge_cases",
+      "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "English-only development input; no adjudicated grammaticality or expected parser verdict.",
+      "language": "en"
     },
     {
-      "id": "x0-taglish_unsupported-08",
-      "text": "I was late kasi traffic.",
-      "family": "taglish_unsupported",
-      "intent": "unsupported_or_mixed_language",
+      "id": "x0-english_edge_cases-08",
+      "text": "What the witnesses remembered remains uncertain.",
+      "family": "english_edge_cases",
+      "intent": "grammatical_control",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "English-only development input; no adjudicated grammaticality or expected parser verdict.",
+      "language": "en"
     },
     {
       "id": "x0-punctuation_multisentence-01",
@@ -976,7 +1083,8 @@
       "intent": "formatting_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-punctuation_multisentence-02",
@@ -985,7 +1093,8 @@
       "intent": "formatting_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-punctuation_multisentence-03",
@@ -994,7 +1103,8 @@
       "intent": "formatting_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-punctuation_multisentence-04",
@@ -1003,7 +1113,8 @@
       "intent": "formatting_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-punctuation_multisentence-05",
@@ -1012,7 +1123,8 @@
       "intent": "formatting_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-punctuation_multisentence-06",
@@ -1021,7 +1133,8 @@
       "intent": "formatting_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-punctuation_multisentence-07",
@@ -1030,7 +1143,8 @@
       "intent": "formatting_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-punctuation_multisentence-08",
@@ -1039,7 +1153,8 @@
       "intent": "formatting_probe",
       "selected_sentence_index": 0,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Development-only input: no source-certified grammaticality label or expected parser output."
+      "notes": "Development-only input: no source-certified grammaticality label or expected parser output.",
+      "language": "en"
     },
     {
       "id": "x0-multisentence-second",
@@ -1048,7 +1163,9 @@
       "intent": "formatting_probe",
       "selected_sentence_index": 1,
       "expected_status": "NOT_ADJUDICATED",
-      "notes": "Probe the second sentence while preserving original input offsets."
+      "notes": "Probe the second sentence while preserving original input offsets.",
+      "language": "en"
     }
-  ]
+  ],
+  "language_policy": "ENGLISH_ONLY"
 }

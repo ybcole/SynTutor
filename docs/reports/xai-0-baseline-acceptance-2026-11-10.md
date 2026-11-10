@@ -1,7 +1,7 @@
 # XAI-0 — Empirical Baseline, Node-Explanation Coverage and Contract Freeze
 
 **Milestone:** XAI-0 (following [XAI-PRE](xai-pre-acceptance-2026-11-10.md))  
-**Status:** Repeatable baseline instrumentation implemented and **real-parser metrics observed in pinned-model CI**. XAI-0 measurement is complete for the stated development set; independent linguistic error adjudication and later XAI milestones remain separate.  
+**Status:** English-only development set and strict corpus scope implemented; **fresh parser-backed results measured and verified** from the corrected 116-case dataset. The previous out-of-scope audit is superseded. Independent linguistic adjudication remains a later gate.  
 **Date:** 10 November 2026  
 **Implementation branch:** `feature/xai-0-measured-baseline-2026-11-10`  
 **Scope:** Inspection and measurement. No new Cambridge constraints, edits to B–R grammar, new explanations or correction algorithms.
@@ -37,9 +37,9 @@
 
 **File:** [evaluation/xai0_development_cases.json](../../evaluation/xai0_development_cases.json)
 
-**Count:** 116 distinct case IDs in 12 construction/usage families (plus a second-sentence selection probe). All records are `NOT_ADJUDICATED`, and this is a **development set, not a held-out gold benchmark**.
+**Count:** 116 English-only sentence cases in 12 construction/usage families (including a second-sentence selection probe). Every case declares `language: en`, the corpus declares `language_policy: ENGLISH_ONLY`, and no case is labeled as adjudicated grammaticality gold. **No non-English or code-mixed examples belong in SynTutor's XAI evaluation scope.**
 
-The corpus includes ordinary clauses, transitives/ditransitives, nested auxiliaries, passives, questions, negation, nonfinite/embedded clauses, coordination, attachments, ambiguous word class, two-or-more errors, five simultaneous proposed problems, style/dialect-dependent English, temporal exceptions from Cambridge, Taglish/mixed language, quoted/marked-up text and punctuation/multi-sentence inputs.
+The corpus includes ordinary clauses, transitives/ditransitives, nested auxiliaries, passives, questions, negation, nonfinite/embedded clauses, coordination, attachments, ambiguous word class, two-or-more errors, five simultaneous proposed problems, style/dialect-dependent English, temporal exceptions from Cambridge, challenging but English-only relative/cleft/inversion constructions, quoted/marked-up text and punctuation/multi-sentence inputs.
 
 **Report generator:** [scripts/audit_xai0_baseline.py](../../scripts/audit_xai0_baseline.py)
 
@@ -60,57 +60,55 @@ python scripts/audit_xai0_baseline.py --require-models --expected-count 116 --ou
 
 The first two run in the model-free workflow. The third runs in the pinned-model parser-backed workflow, which uploads `xai0-real-parser-baseline` as a versioned JSON artifact. Do not confuse passing model-free tests with measuring real parser coverage.
 
-## 3. Empirical outcomes — actual pinned-model CI
+## 3. Empirical outcomes — English-only, measured
 
-**Measured from:** <https://github.com/ybcole/SynTutor/actions/runs/42723404635>, artifact **`xai0-real-parser-baseline`** (artifact ID `13720148621`). The JSON was downloaded and inspected; run `42723404635` recorded GitHub PR workflow merge SHA `a29972f171471640097c38c109f816168f6f8795`. The following is **observed output**, not an anticipated target.
+**Source:** [GitHub Actions parser-backed run 42725488098](https://github.com/ybcole/SynTutor/actions/runs/42725488098), machine artifact `xai0-real-parser-baseline` (ID `13723190912`). The JSON was downloaded and inspected. All inputs in this run are English-only; the previous out-of-scope measurement is superseded.
 
-| Metric | Actual observation |
+| Metric | Observed English-only baseline |
 | --- | ---: |
-| Cases processed | **116 / 116** |
-| Actual NLP model status | **Ready**: `en_core_web_md` model v3.8.0 + `benepar_en3` |
-| Benepar parse successes | **116 / 116 (100%)** |
-| Canonical B–R `normalized` | **89 / 116 (76.7%)** |
-| B–R `unresolved` | **27 / 116 (23.3%)** |
-| Unresolved results exposing a provisional/working tree | **24** (observed only; **not** necessarily source-certified) |
-| `PROFILE_MAPPING_NOT_APPROVED` unresolved reasons | **25** |
-| `FINAL_D1_LABEL_UNRESOLVED` reasons | **1** |
-| `NORMALIZER_FAILURE` reasons | **1** (Taglish input) |
-| Canonical B–R nodes in the 89 normalized trees | **1,571** |
-| Nodes with reviewed, source-cited template hits | **105 / 1,571 (6.68%)** |
-| Which node labels got book-cited template hits? | **S only: 105** |
-| Overt word-terminal nodes on normalized trees | **417** |
-| Word-terminal nodes with cited explanation | **0 / 417 (0%)** |
-| Runtime-enabled Cambridge constraints | **0** |
-| `/api/explain` root-target adapter consistency checks | **89**, **0 mismatches** |
-| Legacy ungrammatical verdict on provisional grammatical-control inputs | **1** triage flag; **not** an adjudicated false-positive rate |
-| Legacy grammatical verdict on provisional malformed/multi-error probes | **0** triage flags in the cases parsed |
-| Total per-case p50 / p95 latency | **87.14 ms / 101.27 ms**, **CI warmed models only** |
-| Highest observed per-case latency | **2,528.88 ms** (first case, includes first-use downstream overhead; not a performance guarantee) |
+| Cases tested | **116 / 116** |
+| spaCy/Benepar available | **Yes**, `en_core_web_md` 3.8.0, `benepar_en3` |
+| Benepar parsed | **116 / 116** |
+| Canonical B–R normalized | **92 / 116 (79.31%)** |
+| B–R unresolved | **24 / 116 (20.69%)** |
+| Diagnostic working-tree records among unresolved | **22** (not canonical authority) |
+| B–R unresolved reasons | `PROFILE_MAPPING_NOT_APPROVED`: **23**; `FINAL_D1_LABEL_UNRESOLVED`: **1** |
+| Total normalized-tree nodes | **1,685** |
+| Nodes with an eligible source-cited template hit | **112 / 1,685 (6.65%)** |
+| Node labels with source-cited explanations | **S only** (112 hits) |
+| Overt word-terminal nodes | **444** |
+| Word terminals with an eligible source-cited explanation | **0 / 444 (0%)** |
+| Active Cambridge grammatical constraints | **0** |
+| Root `/api/explain` adapter comparisons | **92**, **0** mismatches |
+| Possible legacy false-positive case for manual review | **1** (not gold accuracy) |
+| Possible legacy no-flag on provisional malformed/multi-error cases | **0** (not gold accuracy) |
+| Total per-case p50/p95 (after model load) | **66.45 / 78.52 ms** in CI |
+| Maximum observed per-case time | **2,588.11 ms** (not an SLA) |
 
-**Family-level B–R coverage** (remember: this measures tree normalization, **not grammaticality**):
+**B–R normalization by English-only construction family:**
 
-| Development input family | Normalized / attempted |
+| Family | Normalized / total |
 | --- | ---: |
-| Simple/basic clauses | **12 / 12** |
-| Auxiliaries and aspect | **12 / 12** |
-| Embedded and nonfinite clauses | **10 / 10** |
-| Coordination and modification | **8 / 8** |
-| Ambiguous structures | **7 / 8** |
-| Questions and negation | **7 / 10** |
-| Ungrammatical probes | **13 / 15** |
-| Five-error/multi-error probes | **3 / 8** |
-| English variety/register | **3 / 8** |
-| Time/aspect special cases | **6 / 8** |
-| Taglish/unsupported or mixed language | **3 / 8** |
-| Punctuation and multi-sentence cases | **5 / 9** |
+| Basic English clauses | 12 / 12 |
+| Auxiliaries | 12 / 12 |
+| Questions and negation | 7 / 10 |
+| Embedded/nonfinite clauses | 10 / 10 |
+| Coordination and modification | 8 / 8 |
+| Ambiguous structures | 7 / 8 |
+| Malformed English probes | 13 / 15 |
+| Multiple-error probes | 3 / 8 |
+| English variety/register | 3 / 8 |
+| Tense/aspect cases | 6 / 8 |
+| Additional English syntactic edge cases | 6 / 8 |
+| Punctuation/multi-sentence cases | 5 / 9 |
 
-**Most frequent node categories lacking cited explanation:** `(unlabelled)` 440, `VP` 181, `NP` 174, `V` 103, `NOM` 91, `N` 81, `DET` 80, `pronoun` 65, `ART` 51, then S-bar, AP, PP, adverbs and auxiliaries. The 440 unlabelled nodes include presentation/structural positions; not all correspond to teachable words.
+**Common labels without eligible source-cited explanations:** unlabelled positions 472; VP 191; NP 184; V 110; NOM 97; DET 84; N 83; pronoun 66; ART 58; and S-bar 25. Unlabelled positions are not necessarily user-visible words; node-level results cannot be collapsed into word accuracy.
 
-**The critical finding:** because the two current templates cover only sentence-level categories/conventions, all 105 observed book-cited node hits are at **S**, while **no overt word node** received a source-cited explanation. Even the 105 S hits represent reviewed *template matches*, **not evaluated role-specific natural-language quality**.
+**Main finding:** every one of the **112** cited node hits is an S-level source-matched teaching template. Not one of the **444** overt word-terminal nodes has a reviewed, source-cited personalized explanation yet. XAI-1 through XAI-3 must address this gap, with real contextual role facts and vetted book evidence—not merely a generic label definition.
 
-**Apparent legacy false-positive candidate:** `x0-embedded_nonfinite-03`, *I want to learn syntax.*, was marked `ungrammatical` by the legacy matrix (`violated_edges: 1`), despite being in the development grammatical-control bucket. It is a high-priority manual triage case; our corpus does not supply independent gold labels, and the legacy verdict is expressly **not** a Cambridge verdict.
+The legacy matrix marks *I want to learn syntax.* (`x0-embedded_nonfinite-03`) as ungrammatical. That is a **triage candidate**, not an independently adjudicated false positive, and not a Cambridge-backed error finding. The benchmark does not call the optional CoLA model or run multi-error auto-correction in bulk.
 
-**Scope and performance caveats:** The baseline does not exercise the optional CoLA classifier or full legacy auto-correction in bulk, because the goal is isolated source-cited node-coverage measurement. It does not establish model accuracy, source-claim correctness, full-English acceptability, paragraph-level support, or a learner-usability SLA. In particular, **Benepar's 116/116 successful parsing is not a 100% B–R analysis or grammaticality score**. The 89 normalized trees may include intentionally malformed inputs because a structurally representable tree does not imply a well-formed English utterance.
+**What these measurements cannot establish:** grammatical correctness, accuracy of specific B–R analyses, generality beyond the development corpus, learner comprehension, causal reliability of correction, or permission to enable any Cambridge rule. Successful Benepar parsing and B–R normalization are structural availability metrics, not claims of grammaticality.
 
 ## 4. First priority gaps for XAI-1 through XAI-3
 

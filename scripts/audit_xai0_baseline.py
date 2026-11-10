@@ -28,7 +28,7 @@ sys.path.insert(0, str(ROOT / "server"))
 DATA_PATH = ROOT / "evaluation/xai0_development_cases.json"
 VALID_INTENTS = {
     "grammatical_control", "ambiguous", "malformed_probe", "multi_error_probe",
-    "variety_sensitive", "context_sensitive", "unsupported_or_mixed_language",
+    "variety_sensitive", "context_sensitive",
     "formatting_probe",
 }
 MINIMUM_FAMILIES = 10
@@ -40,6 +40,8 @@ def load_cases(path=DATA_PATH):
         raise ValueError("Unrecognized XAI-0 corpus schema version")
     if data.get("review_status") != "NOT_HUMAN_ADJUDICATED":
         raise ValueError("Development inputs cannot silently become adjudicated gold")
+    if data.get("language_policy") != "ENGLISH_ONLY":
+        raise ValueError("XAI-0 development corpus must declare ENGLISH_ONLY scope")
     if data.get("source_authority") != "none":
         raise ValueError("Development labels cannot claim primary-book source authority")
     rows = data.get("cases")
@@ -55,6 +57,8 @@ def load_cases(path=DATA_PATH):
         text = row.get("text")
         if not isinstance(text, str) or not text.strip() or len(text) > 650:
             raise ValueError(f"{ident}: invalid or excessive sentence length")
+        if row.get("language") != "en":
+            raise ValueError(f"{ident}: non-English case is outside SynTutor XAI scope")
         if row.get("intent") not in VALID_INTENTS:
             raise ValueError(f"{ident}: invalid intent category")
         if row.get("expected_status") != "NOT_ADJUDICATED":

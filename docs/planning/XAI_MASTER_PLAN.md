@@ -9,6 +9,10 @@
 
 > **Product decision: Explain words, lexical heads, all meaningful constituents (NP, VP, PP, AP, AdvP, NOM, S/S′/S″), structural edges/functions, detected violations, and repairs.** Every explanation must reference the actual sentence and, when relevant, the surrounding constituent structure. Never reduce this to an isolated POS-tag dictionary. Do not confuse interpreting a tree with judging whether the sentence is grammatical.
 
+## Non-negotiable scope: English only
+
+**SynTutor analyzes and explains English syntax and English grammar only.** All XAI milestones, examples, regression corpora, book-derived concept registries, tests, corrections and learner-facing generated prose must remain in English. **Do not add code-mixed or non-English sentence inputs** as development probes, supported-language claims, training examples, rule constraints or advertised product scope without a separate, explicit change requested by the project owner. English dialect/register differences are considered as English-language phenomena; this does not authorize other languages. The XAI-0 development corpus is versioned with `language_policy: ENGLISH_ONLY` and each row declares `language: en`; this metadata is an audit safeguard, not an automatic language detector.
+
 ## 0. Baseline reality: what exists versus what remains
 
 Repository code inspected on 10 November 2026:
@@ -383,12 +387,12 @@ Avoid round-tripping large full trees to AI services. For any remote AI usage ob
 ### XAI-0 — Baseline audit and contract freeze
 
 - Inventory existing templates, all book-source status, Cambridge enabled rules, current node inspection and correction outputs.
-- Collect at least 50 representative sentences for initial **development** smoke (correct, ungrammatical, ambiguous, nonfinite, wh, coordination, auxiliaries, punctuation, Taglish/unsupported English) and record parser status without inventing "gold".
+- Collect at least 50 representative sentences for initial **development** smoke (English-only: grammatical controls, malformed probes, ambiguity, nonfinite clauses, wh, coordination, auxiliaries, punctuation, and difficult English constructions) and record parser status without inventing "gold".
 - Record the currently missing node types, source coverage and false-positive diagnoses.
 - Agree source metadata + data contracts and UI labels before changing production outputs.
 - Include original-vs-candidate multi-error diagnosis and Cambridge contextual exceptions in baseline fixtures; record blocked/ambiguous findings explicitly.
 
-**Gate:** written inventory, reproducible test set and initial metrics. **XAI-0 measured on 116 development cases in CI:** 89 normalized B–R trees, 1,571 canonical nodes, 105 source-cited template hits (6.68%), 0 cited explanations among 417 word-terminal nodes; 2 templates, 4 source records, 0 enabled Cambridge constraints. See [measured report](../reports/xai-0-baseline-acceptance-2026-11-10.md). These are not correctness scores or independent error judgments.
+**Gate:** written inventory, reproducible test set and initial metrics. **English-only XAI-0 baseline measured on 116 real parser cases:** 92 normalized B–R trees, 24 unresolved, 1,685 canonical nodes, 112 S-level source-cited template hits (6.65%), **0 of 444** word-terminal nodes source-cited. The old out-of-scope audit is superseded. Static inventory: 2 templates, 4 source records, 0 enabled Cambridge constraints. See [measured English-only acceptance](../reports/xai-0-baseline-acceptance-2026-11-10.md). These are not correctness scores or independently verified error judgments.
 
 ### XAI-1 — Source concept registry / claim provenance
 
