@@ -22,6 +22,7 @@ class Tests(unittest.TestCase):
     def test_unverified_extraction_rejected(self):
         bad=copy.deepcopy(self.data)
         bad["pages"][70]["status"]="extracted"
+        bad["pages"][70]["evidence"]=None
         self.assertTrue(any("missing extraction evidence" in e for e in ledger.check(bad,self.manifest,allow_unprocessed=True)))
     def test_bad_chapter_rejected(self):
         bad=copy.deepcopy(self.data)
