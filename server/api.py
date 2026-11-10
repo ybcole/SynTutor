@@ -11,6 +11,7 @@ from br_tree import build_correction_alignment
 from burton_roberts import build_canonical_analysis
 from cambridge_registry import load_runtime_registry
 from cambridge_evaluator import evaluate_cambridge
+from xai4_partial import evaluate_xai4
 from explanations import explain_analysis, explain_request
 from tree_evaluation import evaluate_analysis
 from matrix import evaluate
@@ -150,6 +151,8 @@ def build_payload(text, sentence_index=0, convention_version=None,
     cambridge_runtime = load_runtime_registry()
     cambridge_evaluation = evaluate_cambridge(
         br_analysis, cambridge_runtime, variety=variety)
+    xai4_partial_evaluation = evaluate_xai4(
+        analysis['sentence'], analysis_status=br_analysis.get('status', 'unresolved'), variety=variety)
     result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
     summary = result['summary']
@@ -316,6 +319,7 @@ def build_payload(text, sentence_index=0, convention_version=None,
         'canonical_evaluation': evaluate_analysis(br_analysis, variety=variety),
         'cambridge_runtime': cambridge_runtime,
         'cambridge_evaluation': cambridge_evaluation,
+        'xai4_partial_evaluation': xai4_partial_evaluation,
         'nodes': analysis['nodes'],
         'node_details': details,
         'summary': summary,
