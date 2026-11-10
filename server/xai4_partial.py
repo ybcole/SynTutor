@@ -255,6 +255,8 @@ def evaluate_xai4(sentence, *, analysis_status="unresolved", variety=None,
                        "evidence": [], "reason": "Unsupported typed evaluator."})
             continue
         permitted = eligible(rule, audit, manifest, variety=variety)
+        if permitted:
+            result["enabled_rule_ids"].append(rule["id"])
         matches = inspect(rule["family"], tokens)
         if not matches:
             result["evaluations"].append({"rule_id": rule["id"], "status": "NOT_APPLICABLE",
@@ -278,7 +280,6 @@ def evaluate_xai4(sentence, *, analysis_status="unresolved", variety=None,
                            else "A licensed narrow construction check was executed."),
             })
             if permitted:
-                result["enabled_rule_ids"].append(rule["id"])
                 if public_status == "VIOLATED":
                     result["findings"].append({
                         "id": "f" + str(len(result["findings"])+1),
