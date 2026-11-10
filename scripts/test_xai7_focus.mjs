@@ -80,6 +80,6 @@ const quiz=readFileSync(new URL('../web/js/quizzes-ui.js',import.meta.url),'utf8
 assert.match(shared,/renderFocusNavigation/);
 assert.match(shared,/applyEvidenceFocus/);
 assert.match(lessons,/onSelectNode/);
-assert.match(lessons,/data-xai7-zoom/i);
+assert.match(lessons,/xai7Zoom/);
 assert.match(quiz,/requestEvidence\(q.answer_tree,nodeId\)/);
 console.log('PASS XAI-7: selected/parent/sibling focus, approved-only issues, safe clearing, English-only shared tree integration.');
