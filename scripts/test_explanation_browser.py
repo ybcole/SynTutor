@@ -73,13 +73,14 @@ try:
             canonical = page.locator('#canonicalTreeView')
             canonical.wait_for(state='visible', timeout=60000)
             assert not page.locator('#treeCanvas').is_visible()
-            assert 'working tree' in page.locator('#treeAuthorityNotice').inner_text()
+            assert 'could not be analyzed confidently' in page.locator('#treeAuthorityNotice').inner_text()
             assert page.locator('#openCanonicalBuilder').count() == 0
             button = canonical.get_by_role('button', name='Inspect Burton-Roberts AP for taller than he is', exact=True).first
             button.press('Enter')
             pane = page.locator('#explainNode')
-            assert 'Unresolved internal analysis' in pane.inner_text()
-            assert 'requires a resolved analysis' in pane.inner_text()
+            pane.locator('[data-xai-short]').wait_for(timeout=30000)
+            assert 'couldn\'t establish a reliable syntax tree' in pane.locator('[data-xai-short]').inner_text()
+            assert pane.locator('[data-shared-evidence] p').count() == 1
             assert not errors, errors
             print('PASS: unresolved span remains visible in a B-R working tree with explicit uncertainty.')
             browser.close()
@@ -162,68 +163,42 @@ try:
             assert all(tag not in labels for tag in ('VBZ', 'DT', 'NN', '.')), labels
             svg.get_by_role('button', name='Inspect Burton-Roberts V for sleeps', exact=True).press('Enter')
             pane = page.locator('#explainNode')
-            assert 'spans “sleeps”' in pane.inner_text()
-            assert 'Ch5 p. 104' in pane.inner_text()
-            partial = pane.locator('[data-xai4-partial]')
-            partial.wait_for(state='attached', timeout=30000)
-            assert partial.count() == 1
-            assert '0 approved runtime rules' in partial.locator('summary').inner_text()
-            partial.locator('summary').click()
-            assert 'No new Cambridge error diagnosis' in partial.inner_text()
-            # XAI-5: a learner-authored revision must use the real parser and
-            # return its own partial evaluation, without altering the original.
-            repair = pane.locator('[data-xai5-repair]')
-            repair.wait_for(state='attached', timeout=30000)
-            repair.locator('summary').click()
-            assert '0 approved original findings' in repair.inner_text()
-            assert repair.get_by_label('Your revised sentence').input_value() == text
-            repair.get_by_label('Your revised sentence').fill('The boy slept.')
-            with page.expect_response(lambda response: response.url.endswith('/api/repair-check'), timeout=120000) as rechecked:
-                repair.get_by_role('button', name='Reparse and compare this revision').click()
-            assert rechecked.value.status == 200, rechecked.value.text()
-            comparison = rechecked.value.json()
-            assert comparison['original']['text'] == text
-            assert comparison['revisions'][0]['snapshot']['text'] == 'The boy slept.'
-            assert not comparison['revisions'][0]['whole_sentence_certified']
-            repair.locator('[data-xai5-result]').get_by_text(
-                'No independently approved Cambridge diagnostic rules are enabled.', exact=False
-            ).wait_for(timeout=30000)
+            pane.locator('[data-xai-short]').wait_for(timeout=30000)
+            simple = pane.locator('[data-xai-short]').inner_text()
+            assert '“sleeps” is the verb' in simple, simple
+            assert 'action, event or state' in simple, simple
+            assert pane.locator('[data-shared-evidence] p').count() == 1
+            assert pane.locator('[data-shared-evidence] details').count() == 0
+            assert pane.locator('[data-shared-evidence] button').count() == 0
+            assert all(phrase not in pane.inner_text() for phrase in (
+                'Book evidence', 'Ch5 p.', 'Cambridge grammar checks',
+                'B-R structural analysis', 'Tree rule references',
+                'Deterministic XAI-3 wording', 'approved runtime rules',
+                'Observed positions:', 'Why this is shown',
+            ))
+            # Correction back-end remains available, but does not inject
+            # an unsolicited source-audit form into the explanation panel.
+            comparison = page.request.post(base + '/api/repair-check', data={
+                'text': text, 'candidates': [{'text': 'The boy slept.'}]
+            })
+            assert comparison.status == 200, comparison.text()
+            revisions = comparison.json()
+            assert revisions['original']['text'] == text
+            assert revisions['revisions'][0]['snapshot']['text'] == 'The boy slept.'
+            assert not revisions['revisions'][0]['whole_sentence_certified']
             assert page.locator('#inputText').input_value() == text
-            page.locator('#explainNode [data-xai-short]').wait_for(timeout=30000)
-            assert 'V “sleeps”' in pane.locator('[data-xai-short]').inner_text()
-            assert 'not a grammaticality judgment' in pane.locator('[data-xai-status]').inner_text()
-            pane.locator('[data-xai-details] summary').click()
-            assert 'recorded token interval' in pane.locator('[data-xai-deep]').inner_text()
             canonical.get_by_text('Read the tree as text', exact=True).click()
             word = canonical.locator('details').get_by_role('button', name='Inspect Burton-Roberts word for sleeps')
             word.press('Enter')
             assert word.get_attribute('aria-pressed') == 'true'
-            assert 'Ch5 p. 104' in pane.inner_text()
-            page.locator('#explainNode [data-xai-short]').wait_for(timeout=30000)
-            assert 'word “sleeps”' in pane.locator('[data-xai-short]').inner_text()
-            # XAI-7: same canonical focus and brief/deep evidence on a clicked word.
-            focus_panel = pane.locator('[data-xai7-navigation]')
-            focus_panel.wait_for(state='attached', timeout=30000)
-            assert 'Selected B-R tree position' in focus_panel.inner_text()
-            assert 'Observed positions:' in focus_panel.inner_text()
-            verbosity = pane.locator('[data-xai7-verbosity]')
-            verbosity.get_by_role('button', name='Detailed').click()
-            assert pane.locator('[data-xai-details]').get_attribute('open') is not None
-            verbosity.get_by_role('button', name='Brief').click()
-            assert pane.locator('[data-xai-details]').get_attribute('open') is None
+            pane.locator('[data-xai-short]').wait_for(timeout=30000)
+            after = pane.locator('[data-xai-short]').inner_text()
+            assert '“sleeps”' in after
+            assert pane.locator('[data-shared-evidence] p').count() == 1
             assert page.locator('#canonicalTreeView [data-node-id][data-xai7-focus="selected"]').count() >= 1
-            assert 'Benepar' not in focus_panel.inner_text()
-            # XAI-6 must remain a zero-cost deterministic fallback in the
-            # real parser-backed Generator and Builder evidence views.
-            naturalizer = pane.locator('[data-xai6-style]')
-            naturalizer.wait_for(state='attached', timeout=30000)
-            naturalizer.locator('summary').click()
-            assert 'Optional AI naturalization is disabled or unavailable' in naturalizer.inner_text()
             assert parsed['explanation_evidence']['xai6_naturalization']['status'] == 'unavailable'
-            assert parsed['xai6_naturalization']['status'] == 'unavailable'
             assert parsed['xai6_naturalization']['provider_calls'] == 0
             assert parsed['xai6_naturalization']['model_enabled'] is False
-            assert 'within V “sleeps”' in pane.locator('[data-xai-short]').inner_text()
             page.locator('#newSessionBtn').click()
             assert not canonical.is_visible()
             assert not errors, errors
@@ -244,9 +219,10 @@ try:
           }
           return true;
         }""")
-        assert 'tree positions have contextual observations' in page.locator('[data-shared-evidence]').inner_text()
         generator = page.locator('[data-shared-evidence]').inner_text()
-        assert ('Test structure' if fixture_mode else 'A sentence is the largest syntactic unit') in generator, generator
+        assert generator.strip() and len(generator) < 750
+        assert page.locator('[data-shared-evidence] p').count() == 1
+        assert all(x not in generator for x in ('Book evidence', 'Ch2', 'XAI-', 'source-reviewed', 'rule references'))
         page.evaluate("""async () => {
           const {renderNodeDetail, renderCorrection} = await import('/js/ui.js');
           renderNodeDetail({payload:{explanation_evidence:{}}}, {
@@ -272,7 +248,8 @@ try:
           renderEvidence({status:'EXPLAINED',channels:{structural:[{text:'<img src=x onerror=alert(1)>',sources:[],deep_text:'details'}]}});
         }""")
         assert page.locator('[data-shared-evidence] img').count() == 0
-        assert page.locator('[data-shared-evidence] details').count() == 1
+        assert page.locator('[data-shared-evidence] details').count() == 0
+        assert '<img src=x onerror=alert(1)>' in page.locator('[data-shared-evidence]').inner_text()
         assert not errors, errors
         print('PASS: Generator/Builder real HTTP evidence and rendered text match; HTML injection blocked. Fixture mode:', fixture_mode)
         browser.close()
