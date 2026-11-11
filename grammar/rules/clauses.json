@@ -7911,8 +7911,10 @@
     "confidence": "high",
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
-    "related_rules": [],
-    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation. ",
+    "related_rules": [
+      "COMP-030"
+    ],
+    "review_notes": "Extracted directly from the user-supplied full PDF, printed pages cited. Examples are original. Automated validation and chapter-level gates must precede activation.  Cross-reference to CGEL §2.3 p. 105: supportive do normally does not select a second auxiliary.",
     "diagnostic": {
       "error_family": "extra_word",
       "error_pattern": "Adding supportive do as well as the available auxiliary for primary negation or inversion.",
@@ -9360,8 +9362,10 @@
     "confidence": "high",
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
-    "related_rules": [],
-    "review_notes": "Explicit hypothetical future frame in original minimal pairs distinguishes a remote conditional from an open past conditional. The source's notes require a modal in the apodosis of the remote construction, but do not imply that all preterites in if-clauses are wrong.",
+    "related_rules": [
+      "OTH-453"
+    ],
+    "review_notes": "Explicit hypothetical future frame in original minimal pairs distinguishes a remote conditional from an open past conditional. The source's notes require a modal in the apodosis of the remote construction, but do not imply that all preterites in if-clauses are wrong. Cross-reference to CGEL Chapter 3 §9.8.3 p. 199: the same remote-conditional apodosis principle also appears at §2.4 p. 107.",
     "diagnostic": {
       "error_family": "tense_aspect",
       "error_pattern": "A modal-remote conditional's consequence has a simple nonmodal preterite without the required modal.",
