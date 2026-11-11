@@ -1,0 +1,188 @@
+{
+  "manifest_version": 1,
+  "chapter": 6,
+  "printed_start": 583,
+  "printed_end": 596,
+  "report": "sources/cambridge/chapter_06/PP583_596_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 583,
+    "pdf_page": 603
+  },
+  "added_rule_ids": [
+    "WCAT-103",
+    "WCAT-104",
+    "WCAT-105",
+    "WCAT-106",
+    "WCAT-107",
+    "WCAT-108",
+    "WCAT-109",
+    "WCAT-110",
+    "WCAT-111",
+    "WCAT-112",
+    "WCAT-113",
+    "WCAT-114",
+    "WCAT-115",
+    "WCAT-116",
+    "WCAT-117",
+    "WCAT-118",
+    "WCAT-119",
+    "WCAT-120"
+  ],
+  "page_checks": [
+    {
+      "page": 583,
+      "status": "extracted",
+      "section": "§7.2",
+      "summary": "Surveys non-degree modifier meanings in AdjPs and AdvPs and introduces degree readings of manner adverbs.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 584,
+      "status": "extracted",
+      "section": "§7.2",
+      "summary": "Compares manner and degree readings and begins the inventory of degree modifiers by category.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 585,
+      "status": "extracted",
+      "section": "§7.2",
+      "summary": "Compares degree modification in clause structure, explains limits and surveys submodification and repetition.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 586,
+      "status": "extracted",
+      "section": "§§7.2–7.3",
+      "summary": "Qualifies degree modifier position and introduces the distinction between attachment and focus.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 587,
+      "status": "extracted",
+      "section": "§§7.3–7.3.1",
+      "summary": "Distinguishes additive from restrictive focus and surveys syntactic hosts and restrictions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 588,
+      "status": "extracted",
+      "section": "§7.3.1",
+      "summary": "Analyzes assertion and presupposition with only and discusses the scope of negation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 589,
+      "status": "extracted",
+      "section": "§7.3.1",
+      "summary": "Distinguishes scopal and informational focus and compares the positions of restrictive modifiers.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 590,
+      "status": "extracted",
+      "section": "§7.3.1",
+      "summary": "Qualifies only placement and illustrates ambiguities when the modifier is separated from the focus.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 591,
+      "status": "extracted",
+      "section": "§7.3.1",
+      "summary": "Completes the ambiguity discussion and contrasts exclusive and lower-bound senses of alone.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 592,
+      "status": "extracted",
+      "section": "§§7.3.1–7.3.2",
+      "summary": "Covers separated alone, multiple and partial restrictives and introduces additive focus.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 593,
+      "status": "extracted",
+      "section": "§7.3.2",
+      "summary": "Compares additive and restrictive meaning and surveys the positions of also, too and as well.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 594,
+      "status": "extracted",
+      "section": "§7.3.2",
+      "summary": "Compares positive and negative even, explains scalar expectations and introduces positional alternatives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 595,
+      "status": "extracted",
+      "section": "§7.3.2",
+      "summary": "Completes the positional comparison of even and documents rare multiple occurrences.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 596,
+      "status": "skipped_with_reason",
+      "section": "Chapter boundary",
+      "summary": "Full-volume PDF p. 616 is blank between Chapter 6 and the Chapter 7 opener.",
+      "source_checked": true,
+      "nonprose_present": false,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

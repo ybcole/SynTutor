@@ -11,7 +11,7 @@
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
 | 5. Nouns and noun phrases | 202 | 198 | 0 | 3 | 1 | Source-extracted |
-| 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
+| 6. Adjectives and adverbs | 72 | 70 | 0 | 2 | 0 | Source-extracted |
 | 7. Prepositions and preposition phrases | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
 | 9. Negation | 66 | 0 | 65 | 1 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **726 extracted**, 1012 unprocessed, 24 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **796 extracted**, 941 unprocessed, 25 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -240,3 +240,21 @@ The opening batch covers 13 substantive pages and one contents page. It adds 19 
 The final batch covers 13 substantive pages (pp. 57–69) and verifies the blank boundary at p. 70. It adds 21 classifications (`CLS-429`–`CLS-449`). See the [source report](sources/cambridge/chapter_02/PP57_70_REPORT.md) and [audit manifest](sources/cambridge/chapter_02/PP57_70_AUDIT.json).
 
 Chapter 2 has 26 substantive pages, one contents-only page, one verified split-source exclusion and zero unprocessed pages.
+
+## Chapter 6 pp. 525–542
+
+The opening batch accounts for 17 substantive pages and one contents page and adds 21 records (`WCAT-036`–`WCAT-056`). See the [source report](sources/cambridge/chapter_06/PP525_542_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP525_542_AUDIT.json). Continue at p. 543.
+
+## Chapter 6 pp. 543–562
+
+The second batch covers 20 substantive pages and adds 24 records (`WCAT-057`–`WCAT-080`) on adjective complementation, modification, position and restricted functions. See the [source report](sources/cambridge/chapter_06/PP543_562_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP543_562_AUDIT.json). Continue at p. 563.
+
+## Chapter 6 pp. 563–582
+
+The third batch covers 20 substantive pages and adds 22 classifications (`WCAT-081`–`WCAT-102`) on adverb categories, form, phrase structure and adjunct placement. See the [source report](sources/cambridge/chapter_06/PP563_582_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP563_582_AUDIT.json). Continue at p. 583.
+
+## Chapter 6 source extraction complete
+
+The final batch covers 13 substantive pages (pp. 583–595) and verifies that p. 596 is blank. It adds 18 classifications (`WCAT-103`–`WCAT-120`). See the [source report](sources/cambridge/chapter_06/PP583_596_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP583_596_AUDIT.json).
+
+Chapter 6 has 70 substantive pages, one contents page, one blank boundary and zero unprocessed pages.

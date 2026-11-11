@@ -238,3 +238,19 @@ Printed pp. 43–56 account for one contents page and 13 substantive pages. The 
 ## Chapter 2 source extraction complete (2026-11-12)
 
 Printed pp. 57–69 yielded 21 records (`CLS-429`–`CLS-449`). The matching full-volume page for p. 70 is blank. Chapter 2 closes with 26 substantive pages and zero unprocessed pages. Chapter 6 is next in the master plan priority order.
+
+## Chapter 6 first checkpoint (2026-11-12)
+
+Printed pp. 525–542 yielded 21 records (`WCAT-036`–`WCAT-056`), including one inactive constraint specification. Continue at p. 543 with adjective complementation.
+
+## Chapter 6 second checkpoint (2026-11-12)
+
+Printed pp. 543–562 yielded 24 records (`WCAT-057`–`WCAT-080`), including one inactive constraint specification. Continue at p. 563 with the distribution of adverb modifiers.
+
+## Chapter 6 third checkpoint (2026-11-12)
+
+Printed pp. 563–582 yielded 22 records (`WCAT-081`–`WCAT-102`). Continue at p. 583 with adverbial modification of adjectives and adverbs.
+
+## Chapter 6 source extraction complete (2026-11-12)
+
+Printed pp. 583–595 yielded 18 records (`WCAT-103`–`WCAT-120`). Printed p. 596 is blank. Chapter 6 closes with 70 substantive pages and zero unprocessed pages. Chapter 8 is next in the master plan priority order.
