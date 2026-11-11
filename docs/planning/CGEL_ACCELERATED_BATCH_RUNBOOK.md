@@ -210,3 +210,23 @@ Printed pp. 903–924 yielded 36 records (`CLS-201`–`CLS-236`), including four
 ## Chapter 10 source extraction complete (2026-11-11)
 
 The final batch covers 21 substantive pages, printed pp. 925–945, and verifies blank p. 946. The 34 records (`CLS-237`–`CLS-270`) include two inactive constraint specifications. Chapter 10 closes with 93 substantive pages, three justified skips and zero unprocessed pages. Chapter 14 is next in the master plan priority order.
+
+## Chapter 14 first checkpoint (2026-11-11)
+
+Printed pp. 1171–1193 account for two contents pages and 21 substantive pages and yield 27 records (`CLS-271`–`CLS-297`), including two inactive constraint specifications. Continue at p. 1194 with simple catenative constructions.
+
+## Chapter 14 second checkpoint (2026-11-11)
+
+Printed pp. 1194–1209 yielded 23 records (`CLS-298`–`CLS-320`), including one inactive constraint specification. This shorter batch groups the dense raising and complementation diagnostics. Continue at p. 1210 with competing analyses of auxiliaries.
+
+## Chapter 14 third checkpoint (2026-11-11)
+
+Printed pp. 1210–1226 yielded 24 records (`CLS-321`–`CLS-344`), including one inactive constraint specification. The batch groups the competing auxiliary analyses and the framework for catenative classification. Continue at p. 1227 with the omissions note and Class 1 verbs.
+
+## Chapter 14 fourth checkpoint (2026-11-11)
+
+Printed pp. 1227–1245 yielded 29 records (`CLS-345`–`CLS-373`), including one inactive constraint specification. Continue at p. 1246 with the distribution of hollow clauses.
+
+## Chapter 14 source extraction complete (2026-11-11)
+
+Printed pp. 1246–1271 yielded 36 records (`CLS-374`–`CLS-409`), including two inactive constraint specifications. The final batch verifies that p. 1272 is blank. Chapter 14 closes with 99 substantive pages, three justified skips and zero unprocessed pages. Chapter 18 is next in the master plan priority order.

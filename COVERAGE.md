@@ -19,15 +19,15 @@
 | 11. Content clauses and reported speech | 84 | 0 | 84 | 0 | 0 | Incomplete |
 | 12. Relative constructions | 66 | 0 | 66 | 0 | 0 | Incomplete |
 | 13. Comparative constructions | 74 | 0 | 74 | 0 | 0 | Incomplete |
-| 14. Non-finite and verbless clauses | 102 | 0 | 101 | 1 | 0 | Incomplete |
+| 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 0 | 90 | 0 | 0 | Incomplete |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
 | 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
 | 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
-| 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
+| 19. Lexical word-formation | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **601 extracted**, 1140 unprocessed, 21 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **700 extracted**, 1039 unprocessed, 23 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -208,3 +208,25 @@ The third batch covers 22 substantive pages and adds 36 records (`CLS-201`–`CL
 The final batch covers printed pp. 925–945 and verifies blank p. 946. It adds 34 records (`CLS-237`–`CLS-270`) on imperatives, directive uses and minor clause types. See the [source report](sources/cambridge/chapter_10/PP925_946_REPORT.md) and [audit manifest](sources/cambridge/chapter_10/PP925_946_AUDIT.json).
 
 Chapter 10 has 93 substantive pages extracted, three justified skips and zero unprocessed pages. Its 150 source-linked records remain outside the live detector registry.
+
+## Chapter 14 pp. 1171–1193
+
+The opening batch covers 21 substantive pages and two contents pages. It adds 27 records (`CLS-271`–`CLS-297`) on non-finite form and function, catenative structures, infinitival markers, gerund-participials and understood subjects. See the [source report](sources/cambridge/chapter_14/PP1171_1193_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1171_1193_AUDIT.json). Continue at p. 1194.
+
+## Chapter 14 pp. 1194–1209
+
+The second batch covers 16 substantive pages and adds 23 records (`CLS-298`–`CLS-320`) on raising, ordinary and complex catenatives, concealed passives and the catenative complement function. See the [source report](sources/cambridge/chapter_14/PP1194_1209_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1194_1209_AUDIT.json). Continue at p. 1210.
+
+## Chapter 14 pp. 1210–1226
+
+The third batch covers 17 substantive pages and adds 24 records (`CLS-321`–`CLS-344`) on auxiliary analysis, gerund-participials, adjunct diagnostics and the framework for classifying catenative verbs. See the [source report](sources/cambridge/chapter_14/PP1210_1226_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1210_1226_AUDIT.json). Continue at p. 1227.
+
+## Chapter 14 pp. 1227–1245
+
+The fourth batch covers 19 substantive pages and adds 29 records (`CLS-345`–`CLS-373`) on catenative verb classes, form alternation and the introduction to hollow clauses. See the [source report](sources/cambridge/chapter_14/PP1227_1245_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1227_1245_AUDIT.json). Continue at p. 1246.
+
+## Chapter 14 source extraction complete
+
+The final batch covers printed pp. 1246–1271 and verifies blank p. 1272. It adds 36 records (`CLS-374`–`CLS-409`) on hollow clauses, non-catenative complements, modifiers and supplements, verbless clauses, and control. See the [source report](sources/cambridge/chapter_14/PP1246_1272_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1246_1272_AUDIT.json).
+
+Chapter 14 has 99 substantive pages, three justified skips and zero unprocessed pages. Its 139 source-linked records remain outside the live detector registry.
