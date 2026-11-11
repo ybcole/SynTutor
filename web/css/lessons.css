@@ -266,29 +266,30 @@
 }
 .first-tree-toolbar { display:flex; flex-wrap:wrap; gap:8px; }
 .first-tree-guide {
-  margin:12px 0;
-  padding:8px 10px 8px 34px;
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:10px;
+  margin:8px 0 0;
+  padding:0;
+  list-style:none;
 }
-.first-tree-guide li::marker { color:var(--accent-strong); font-weight:650; }
 .curriculum-view .first-tree-guide .first-tree-guide-action {
   display:grid;
-  gap:2px;
+  grid-template-columns:1.25rem minmax(0,1fr);
+  gap:2px 8px;
   width:100%;
-  padding:7px 8px;
-  border:1px solid transparent;
-  border-radius:8px;
+  padding:8px 10px;
+  border:0;
+  border-radius:6px;
   background:transparent;
   text-align:start;
 }
-.curriculum-view .first-tree-guide .first-tree-guide-action:hover {
-  border-color:var(--accent-border);
-  background:var(--accent-soft);
+.curriculum-view .first-tree-guide-action:is(:hover,:focus-visible) {
+  background:color-mix(in srgb,var(--bg) 94%,black);
 }
-.first-tree-guide-action strong { color:var(--accent-strong); }
-.first-tree-guide-action span { font-size:.9rem; color:var(--muted); }
+[data-theme="dark"] .curriculum-view .first-tree-guide-action:is(:hover,:focus-visible) {
+  background:color-mix(in srgb,var(--bg) 60%,black);
+}
+.first-tree-guide-number { color:var(--muted); font-variant-numeric:tabular-nums; }
+.first-tree-guide-action strong { font-weight:600; }
+.first-tree-guide-description { grid-column:2; font-size:.9rem; color:var(--muted); }
 .first-tree-feedback:empty { display:none; }
 .first-tree-builder .first-tree-feedback { margin:10px 0 0; }
 .first-tree-stage {

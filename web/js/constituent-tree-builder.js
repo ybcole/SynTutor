@@ -93,19 +93,22 @@ export function addConstituentTreeBuilder(body, { el, button, mountBuilder }) {
   workspace.setAttribute('aria-label', 'Build your first tree exercise');
   const guidance = el('ol', undefined, 'first-tree-guide');
   guidance.id = 'first-tree-guide';
+  guidance.setAttribute('role', 'list');
   guidance.hidden = true;
   const status = el('p', undefined, 'first-tree-feedback');
   status.setAttribute('role', 'status');
   function checkTree() {
     status.textContent = editor.check();
   }
-  for (const step of guide) {
+  for (const [index, step] of guide.entries()) {
     const item = el('li');
     const action = button(undefined, () => {
       if (step.apply) status.textContent = editor.edit(step.apply);
       else checkTree();
     }, 'first-tree-guide-action');
-    action.append(el('strong', step.title), el('span', step.text));
+    const number = el('span', `${index + 1}.`, 'first-tree-guide-number');
+    number.setAttribute('aria-hidden', 'true');
+    action.append(number, el('strong', step.title), el('span', step.text, 'first-tree-guide-description'));
     item.append(action);
     guidance.append(item);
   }
