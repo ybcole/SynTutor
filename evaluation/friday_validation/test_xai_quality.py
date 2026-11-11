@@ -129,5 +129,52 @@ class TestPronounXAI(unittest.TestCase):
         )
 
 
+class TestAgreementXAI(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        analysis = helpers.analyze("The boys runs.")
+        tree = analysis["br_analysis"]["tree"]
+
+        verb = tree["root"]["children"][1]["children"][0]
+
+        cls.summary = analysis["summary"]
+        cls.explanation = explain(tree, verb["id"])
+
+    def test_legacy_detects_agreement_error(self):
+        self.assertIn(
+            "C-SUBJECT-AGREEMENT",
+            self.summary["constraints_fired"],
+        )
+
+    def test_explains_subject_verb_conflict(self):
+        """The explanation should identify the agreement problem."""
+        text = self.explanation["text"].lower()
+
+        self.assertIn(
+            "boys",
+            text,
+            "The explanation does not identify the subject.",
+        )
+        self.assertIn(
+            "plural",
+            text,
+            "The explanation does not explain subject number.",
+        )
+
+    def test_explains_correct_verb_form(self):
+        """The explanation should provide the appropriate form."""
+        import re
+
+        text = self.explanation["text"].lower()
+
+        self.assertRegex(
+            text,
+            r"\brun\b",
+            "The explanation does not identify the "
+            "appropriate verb form 'run'.",
+        )
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
