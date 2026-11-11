@@ -291,3 +291,23 @@ Current result: 2 passed, 1 failed.
 Test limitation: The advice-consistency assertion currently
 checks for a specific alternative phrase and should later
 be generalized to accept equivalent valid explanations.
+
+## QA-011 — Cambridge section-reference mismatch
+
+**Severity:** Low
+**Status:** Confirmed
+**Record:** COMP-045
+**Area:** Source citation accuracy
+
+The record cites Chapter 4, §1.1, printed page 215.
+
+Independent source comparison confirms:
+- Printed page 215 contains §1.
+- §1.1 begins on printed page 216.
+- Neighboring records COMP-011–015 correctly cite §1.1 on pages 216–217.
+- The Chapter 4 extraction report identifies page 215 as §1.
+
+**Expected:** COMP-045 should cite Chapter 4, §1, page 215.
+
+**Limitation:** This establishes a citation mismatch,
+not an incorrect grammatical claim or a chapter-wide defect.
