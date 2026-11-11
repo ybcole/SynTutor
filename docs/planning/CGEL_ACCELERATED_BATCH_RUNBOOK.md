@@ -125,3 +125,8 @@ Completed internal audited batch printed pp.273–292; report sources/cambridge/
 ## Ch4 checkpoint — pp.293–307 (2026-11-11)
 
 Source-audited 15 consecutive pages on the chapter branch. Report sources/cambridge/chapter_04/PP293_307_REPORT.md and machine-audit sources/cambridge/chapter_04/PP293_307_AUDIT.json; 35 new English-only inert records. Remaining 308–321 and textless p.322; review gate and chapter CI required before merging.
+
+
+## Chapter 4 source extraction closed, 2026-11-11
+
+Printed 213–321 and blank 322 accounted for. Chapter 4 107 extracted substantive pages, 3 justified skips, zero unprocessed. This last batch source audit: sources/cambridge/chapter_04/PP308_321_REPORT.md, manifest: sources/cambridge/chapter_04/PP308_321_AUDIT.json, 39 new records. Close the draft PR only after both GitHub CI workflows and batch/ledger/schema gates pass. New rules stay NEEDS_REVIEW and runtime activation remains blocked. Next extraction priority: chapters with remaining unprocessed pages.

@@ -12607,5 +12607,2344 @@
     "status": "NEEDS_REVIEW",
     "diagnostic": null,
     "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-199",
+    "domain": "complementation",
+    "concept": "English middles are syntactically active",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Intransitive middle descriptions are active, not a third English voice, and commonly express dispositions or readiness rather than single events.",
+    "condition": "When analysing english middles are syntactically active under the lexical sense and alternation described on Cambridge Chapter 4 printed page 308.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An implied causer is not licensed as a by-PP in an ordinary middle.",
+        "pages": [
+          308
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This shirt irons easily.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new novel reads smoothly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.4(d)–§8.2.1",
+        "pages": [
+          308
+        ],
+        "pdf_pages": [
+          328
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "English middles are syntactically active",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-200",
+    "domain": "complementation",
+    "concept": "Middle constructions have lexical and aspectual restrictions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A middle often appears with manner, negation or modal and generalising force, while some cut/sell-type verbs admit single events.",
+    "condition": "When analysing middle constructions have lexical and aspectual restrictions under the lexical sense and alternation described on Cambridge Chapter 4 printed page 308.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source's general-state restriction has multiple lexical exceptions; never ban all unmodified middles.",
+        "pages": [
+          308
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The house sold yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fabric washed well.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.4(d)–§8.2.1",
+        "pages": [
+          308
+        ],
+        "pdf_pages": [
+          328
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Middle constructions have lexical and aspectual restrictions",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-201",
+    "domain": "complementation",
+    "concept": "Five lexical classes of ditransitive alternatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Verb selection determines whether a recipient/beneficiary may appear as Oi, to-PP, for-PP, or only one of these options.",
+    "condition": "When analysing five lexical classes of ditransitive alternatives under the lexical sense and alternation described on Cambridge Chapter 4 printed page 309.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Semantic similarity does not establish a shared complementation frame.",
+        "pages": [
+          309
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She lent Ivo the keys.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She donated the books to the library.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.1",
+        "pages": [
+          309
+        ],
+        "pdf_pages": [
+          329
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Five lexical classes of ditransitive alternatives",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-202",
+    "domain": "complementation",
+    "concept": "Explain does not license canonical double-object frame",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In Standard English, explain with a person and a message selects the explained theme as Od plus a to-PP, not Oi followed by Od.",
+    "condition": "When analysing explain does not license canonical double-object frame under the lexical sense and alternation described on Cambridge Chapter 4 printed page 309.",
+    "violation": "The selected verb does not license the indicated direct/indirect-object pattern in Standard English.",
+    "exceptions": [
+      {
+        "description": "This diagnostic excludes unrelated senses or nonstandard variety effects and cannot be applied to tell.",
+        "pages": [
+          309
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I explained the schedule to Mara.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They explained the policy to the visitors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "I explained Mara the schedule.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They explained the visitors the policy.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.1",
+        "pages": [
+          309
+        ],
+        "pdf_pages": [
+          329
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Explain does not license canonical double-object frame",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "The selected verb does not license the indicated direct/indirect-object pattern in Standard English.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I explained Mara the schedule. ||| I explained the schedule to Mara.",
+        "They explained the visitors the policy. ||| They explained the policy to the visitors."
+      ],
+      "learner_explanation": "In Standard English, explain with a person and a message selects the explained theme as Od plus a to-PP, not Oi followed by Od. The verb's licensed complement frame in this meaning differs from that of related verbs. Check dialect, register, and verb sense before proposing a correction.",
+      "corrected_paragraph_template": "Correct the selected complement frame, showing the original and amended clauses with lexical licensing explained in context.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She told Mara the schedule.",
+        "They gave the visitors a printed policy."
+      ],
+      "lesson_tags": [
+        "CGEL_ch04",
+        "complementation",
+        "indirect_object"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-203",
+    "domain": "complementation",
+    "concept": "Give alternates with to but donate does not",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Transfer verbs like give can alternate double-object and to frames, but many more formal Latinate alternatives like donate ordinarily require to.",
+    "condition": "When analysing give alternates with to but donate does not under the lexical sense and alternation described on Cambridge Chapter 4 printed page 309.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Class membership is lexical and regional usage may differ; no universal semantic 'transfer' rule.",
+        "pages": [
+          309
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The committee gave Eva a scholarship.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee donated a scholarship to the college.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.1",
+        "pages": [
+          309
+        ],
+        "pdf_pages": [
+          329
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Give alternates with to but donate does not",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-204",
+    "domain": "complementation",
+    "concept": "Oi-only and for-only frames differ",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verbs such as fine or cost select an Oi without a to/for paraphrase, whereas borrow favors for plus a beneficiary rather than a double-object.",
+    "condition": "When analysing oi-only and for-only frames differ under the lexical sense and alternation described on Cambridge Chapter 4 printed page 309.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A dual or alternate lexical meaning of a verb may select a different frame.",
+        "pages": [
+          309
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They fined the driver fifty dollars.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She borrowed a book for her cousin.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.1",
+        "pages": [
+          309
+        ],
+        "pdf_pages": [
+          329
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Oi-only and for-only frames differ",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-205",
+    "domain": "complementation",
+    "concept": "Double-object versus to-PP information packaging",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Recipient/beneficiary information placement varies with weight, information status and pronominality, rather than with a single universal grammatical preference.",
+    "condition": "When analysing double-object versus to-pp information packaging under the lexical sense and alternation described on Cambridge Chapter 4 printed page 310.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A short Od pronoun often favors the PP variant, with dialect-specific restrictions on gave Mia it.",
+        "pages": [
+          310
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nora handed the tutor a receipt.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nora handed the receipt to the tutor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.1",
+        "pages": [
+          310
+        ],
+        "pdf_pages": [
+          330
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Double-object versus to-PP information packaging",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-206",
+    "domain": "complementation",
+    "concept": "Recipient versus spatial goal with to",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A to-PP can denote a recipient or a place goal, but only an appropriately selected recipient role can support double-object alternation.",
+    "condition": "When analysing recipient versus spatial goal with to under the lexical sense and alternation described on Cambridge Chapter 4 printed page 310.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The verb send permits both but the destination clinic in the movement reading is not Oi.",
+        "pages": [
+          310
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They sent the nurse a note.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They sent the patient to the clinic.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.1",
+        "pages": [
+          310
+        ],
+        "pdf_pages": [
+          330
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Recipient versus spatial goal with to",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-207",
+    "domain": "complementation",
+    "concept": "Information-transfer recipients are not always possessors",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Verbs such as tell, read, show and teach may select an indirect object whose referent hears, sees or learns information without obtaining physical possession.",
+    "condition": "When analysing information-transfer recipients are not always possessors under the lexical sense and alternation described on Cambridge Chapter 4 printed page 310.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Verbs of verbal communication frequently require to; tell is a major exception.",
+        "pages": [
+          310
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The tutor showed the students the diagram.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She told her friend the answer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.1",
+        "pages": [
+          310
+        ],
+        "pdf_pages": [
+          330
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Information-transfer recipients are not always possessors",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-208",
+    "domain": "complementation",
+    "concept": "Goods beneficiaries versus service beneficiaries",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The double-object construction tends to permit a beneficiary of goods rather than of services, whereas for-PP covers both.",
+    "condition": "When analysing goods beneficiaries versus service beneficiaries under the lexical sense and alternation described on Cambridge Chapter 4 printed page 310.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Personal-pronoun Oi in directives can improve service examples for some speakers; category is a tendency.",
+        "pages": [
+          310
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mia baked her friend a pie.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mia cleaned the kitchen for her friend.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.1",
+        "pages": [
+          310
+        ],
+        "pdf_pages": [
+          330
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Goods beneficiaries versus service beneficiaries",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-209",
+    "domain": "complementation",
+    "concept": "For-beneficiary can express service without recipient",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A for-PP may refer to the beneficiary of doing an action, while a double-object usually specifies who is to receive produced goods.",
+    "condition": "When analysing for-beneficiary can express service without recipient under the lexical sense and alternation described on Cambridge Chapter 4 printed page 311.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "For may express acting on someone's behalf, not only eventual transfer to them.",
+        "pages": [
+          311
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She made her sister some cookies.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She made some cookies for her sister.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.1",
+        "pages": [
+          311
+        ],
+        "pdf_pages": [
+          331
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "For-beneficiary can express service without recipient",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-210",
+    "domain": "complementation",
+    "concept": "Oi-only object can be source of transfer",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The indirect object of charge, cost and fine may express the person from whom money is exacted rather than its recipient.",
+    "condition": "When analysing oi-only object can be source of transfer under the lexical sense and alternation described on Cambridge Chapter 4 printed page 311.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not all indirect objects are semantic recipients or beneficiaries.",
+        "pages": [
+          311
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The agency charged the driver a fee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The court fined the contractor a large sum.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.1",
+        "pages": [
+          311
+        ],
+        "pdf_pages": [
+          331
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Oi-only object can be source of transfer",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-211",
+    "domain": "complementation",
+    "concept": "Other preposition alternants are limited",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A few verbs alternate double-object clauses with an of, with, against or towards PP rather than the canonical to/for.",
+    "condition": "When analysing other preposition alternants are limited under the lexical sense and alternation described on Cambridge Chapter 4 printed page 311.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ask of is formal and less natural with concealed-question NPs; such alternants are lexical exceptions.",
+        "pages": [
+          311
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I asked Lina a favor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They played a game of chess with their neighbor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.1",
+        "pages": [
+          311
+        ],
+        "pdf_pages": [
+          331
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Other preposition alternants are limited",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-212",
+    "domain": "complementation",
+    "concept": "Oi/for versus Od/for differ in syntactic role",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In forgive him his debt versus forgive him for his debt, the person is Oi in the former and the sole Od in the latter.",
+    "condition": "When analysing oi/for versus od/for differ in syntactic role under the lexical sense and alternation described on Cambridge Chapter 4 printed page 312.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With-PP alternatives of issue, provide and serve have strong lexical and AmE/BrE qualifications.",
+        "pages": [
+          312
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The coach forgave Zara her mistake.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The coach forgave Zara for her mistake.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.2–§8.2.3",
+        "pages": [
+          312
+        ],
+        "pdf_pages": [
+          332
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Oi/for versus Od/for differ in syntactic role",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-213",
+    "domain": "complementation",
+    "concept": "Issue's ditransitive is regionally constrained",
+    "rule_type": "variety_restricted",
+    "scope": "clause",
+    "statement": "British English more readily allows issue with double objects than American English, where a monotransitive with-PP is standard.",
+    "condition": "When analysing issue's ditransitive is regionally constrained under the lexical sense and alternation described on Cambridge Chapter 4 printed page 312.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source treats the British double-object form as variety-restricted, not ungrammatical for all speakers.",
+        "pages": [
+          312
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The office issued a permit to Ellis.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The office issued Ellis with a permit.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.2–§8.2.3",
+        "pages": [
+          312
+        ],
+        "pdf_pages": [
+          332
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Issue's ditransitive is regionally constrained",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented.",
+    "variety": "British English double-object issue; restricted or unavailable in American English"
+  },
+  {
+    "id": "COMP-214",
+    "domain": "complementation",
+    "concept": "Omission of indirect objects is sense conditioned",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An Oi is often omissible, but wish, deny and light give have lexical and sense restrictions.",
+    "condition": "When analysing omission of indirect objects is sense conditioned under the lexical sense and alternation described on Cambridge Chapter 4 printed page 312.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Light give someone a beating does not license the same omission as ordinary give money.",
+        "pages": [
+          312
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The donor gave the charity a cheque.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The donor gave a cheque.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.2–§8.2.3",
+        "pages": [
+          312
+        ],
+        "pdf_pages": [
+          332
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Omission of indirect objects is sense conditioned",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-215",
+    "domain": "complementation",
+    "concept": "Omitted recipient may remain implicit",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An omitted recipient after verbs of transfer may remain semantically understood, while an omitted beneficiary after make/buy typically does not.",
+    "condition": "When analysing omitted recipient may remain implicit under the lexical sense and alternation described on Cambridge Chapter 4 printed page 313.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Read may omit a listener without an implicit recipient; awarded a prize normally implies one.",
+        "pages": [
+          313
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The charity awarded a prize.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The potter made a bowl.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.3–§8.3.1(a)",
+        "pages": [
+          313
+        ],
+        "pdf_pages": [
+          333
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Omitted recipient may remain implicit",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-216",
+    "domain": "complementation",
+    "concept": "Fine differs from charge in object omission",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Fine can omit the sum while retaining the person fined, but normally cannot omit the person and retain only the sum; charge has broader patterns.",
+    "condition": "When analysing fine differs from charge in object omission under the lexical sense and alternation described on Cambridge Chapter 4 printed page 313.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some cost-only and informal idioms allow further special patterns.",
+        "pages": [
+          313
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The court fined the contractor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The garage charged us twenty dollars.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.2.3–§8.3.1(a)",
+        "pages": [
+          313
+        ],
+        "pdf_pages": [
+          333
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fine differs from charge in object omission",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-217",
+    "domain": "complementation",
+    "concept": "Present-type object alignment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Present can select a theme direct object plus recipient to-PP or recipient direct object plus theme with-PP.",
+    "condition": "When analysing present-type object alignment under the lexical sense and alternation described on Cambridge Chapter 4 printed page 314.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Supply and other lexical classes differ on whether optional complements can be omitted.",
+        "pages": [
+          314
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The association presented a prize to Imani.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The association presented Imani with a prize.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.1(a)–(b)",
+        "pages": [
+          314
+        ],
+        "pdf_pages": [
+          334
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present-type object alignment",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-218",
+    "domain": "complementation",
+    "concept": "Blame's two noncore alignments",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Blame may select an accident/theme Od plus on-PP person, or a person Od plus for-PP reason.",
+    "condition": "When analysing blame's two noncore alignments under the lexical sense and alternation described on Cambridge Chapter 4 printed page 314.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An on-PP in blame X on Y may be obligatory although for-PP is omissible in blame Y.",
+        "pages": [
+          314
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They blamed the delay on Sam.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They blamed Sam for the delay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.1(a)–(b)",
+        "pages": [
+          314
+        ],
+        "pdf_pages": [
+          334
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Blame's two noncore alignments",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-219",
+    "domain": "complementation",
+    "concept": "Spray/load argument alignment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Spray and load can select a material theme as object with a locative PP, or a destination locative as object with a with-PP theme.",
+    "condition": "When analysing spray/load argument alignment under the lexical sense and alternation described on Cambridge Chapter 4 printed page 314.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A holistic interpretation of the locative object is usual but does not literally entail every part is covered.",
+        "pages": [
+          314
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She sprayed paint onto the wall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She sprayed the wall with paint.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.1(a)–(b)",
+        "pages": [
+          314
+        ],
+        "pdf_pages": [
+          334
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spray/load argument alignment",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-220",
+    "domain": "complementation",
+    "concept": "Holistic completion depends on selected object",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "For a spray/load event the selected object can influence what counts as completing the event, but this is semantic and gradable.",
+    "condition": "When analysing holistic completion depends on selected object under the lexical sense and alternation described on Cambridge Chapter 4 printed page 315.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An explicit all over modifier may add information even when location is object.",
+        "pages": [
+          315
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The worker loaded hay onto the truck.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The worker loaded the truck with hay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.1(b)–(c)",
+        "pages": [
+          315
+        ],
+        "pdf_pages": [
+          335
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Holistic completion depends on selected object",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-221",
+    "domain": "complementation",
+    "concept": "Put versus fill lexical argument frames",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Put licenses movement theme as object and a location PP, whereas fill characteristically selects a locative object and a with-PP theme.",
+    "condition": "When analysing put versus fill lexical argument frames under the lexical sense and alternation described on Cambridge Chapter 4 printed page 315.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The reverse alignment isn't licensed in the corresponding senses; other homonymous uses are out of scope.",
+        "pages": [
+          315
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She put the plates in the cupboard.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She filled the cupboard with plates.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.1(b)–(c)",
+        "pages": [
+          315
+        ],
+        "pdf_pages": [
+          335
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Put versus fill lexical argument frames",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-222",
+    "domain": "complementation",
+    "concept": "Drain versus remove/deprive oblique contrasts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Drain allows liquid theme versus source object with from/of alternants, while remove and deprive are more restricted by lexical sense.",
+    "condition": "When analysing drain versus remove/deprive oblique contrasts under the lexical sense and alternation described on Cambridge Chapter 4 printed page 315.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some verbs in the same class vary across speakers and regional registers.",
+        "pages": [
+          315
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They drained water from the pond.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They drained the pond of water.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.1(b)–(c)",
+        "pages": [
+          315
+        ],
+        "pdf_pages": [
+          335
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Drain versus remove/deprive oblique contrasts",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-223",
+    "domain": "complementation",
+    "concept": "Engrave-type factitive theme alignment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Engrave can take a created inscription theme as object or its location as object, but other inscription verbs permit only one alignment.",
+    "condition": "When analysing engrave-type factitive theme alignment under the lexical sense and alternation described on Cambridge Chapter 4 printed page 316.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Copy, draw and label belong to different lexical subclasses; created inscriptions are factitive themes.",
+        "pages": [
+          316
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The artist engraved letters on the plaque.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The artist engraved the plaque with letters.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.1(d)–(f)",
+        "pages": [
+          316
+        ],
+        "pdf_pages": [
+          336
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Engrave-type factitive theme alignment",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-224",
+    "domain": "complementation",
+    "concept": "Hunt and search quest versus location",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Hunt can take the sought entity as object with a locative, but search typically takes the location as object and the quest in for-PP.",
+    "condition": "When analysing hunt and search quest versus location under the lexical sense and alternation described on Cambridge Chapter 4 printed page 316.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Search has intransitive search for patterns, but its core object ordinarily does not express quest.",
+        "pages": [
+          316
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hikers hunted deer in the woods.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They searched the woods for a deer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.1(d)–(f)",
+        "pages": [
+          316
+        ],
+        "pdf_pages": [
+          336
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hunt and search quest versus location",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-225",
+    "domain": "complementation",
+    "concept": "Hit-type alternating instrument versus theme",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some impact verbs take instrument/theme as object with obligatory location PP or patient as object with with-PP instrument.",
+    "condition": "When analysing hit-type alternating instrument versus theme under the lexical sense and alternation described on Cambridge Chapter 4 printed page 316.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The two patterns can be equivalent for hit but not necessarily for other verbs with similar syntax.",
+        "pages": [
+          316
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The builder struck the hammer against the wall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The builder struck the wall with the hammer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.1(d)–(f)",
+        "pages": [
+          316
+        ],
+        "pdf_pages": [
+          336
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hit-type alternating instrument versus theme",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-226",
+    "domain": "complementation",
+    "concept": "Throw/break impact frames differ from hit",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Throwing a racket against a fence does not entail throwing the fence, and breaking a stick on a fence does not entail breaking the fence.",
+    "condition": "When analysing throw/break impact frames differ from hit under the lexical sense and alternation described on Cambridge Chapter 4 printed page 317.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Do not interpret all object-plus-locative vs patient-plus-with alternants as truth-conditionally equivalent.",
+        "pages": [
+          317
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The athlete threw the racket against the net.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The athlete broke the stick against the fence.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.1(f)–(g)",
+        "pages": [
+          317
+        ],
+        "pdf_pages": [
+          337
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Throw/break impact frames differ from hit",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-227",
+    "domain": "complementation",
+    "concept": "Build transformation source and goal alignment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Build allows resultant goal or material source as core object across linked state-transformation frames, whereas produce and change can be limited.",
+    "condition": "When analysing build transformation source and goal alignment under the lexical sense and alternation described on Cambridge Chapter 4 printed page 317.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The prepositions into and from/out of reflect state goal versus source; lexical selection is not freely interchangeable.",
+        "pages": [
+          317
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The crew built a shelter from recycled timber.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew built the timber into a shelter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.1(f)–(g)",
+        "pages": [
+          317
+        ],
+        "pdf_pages": [
+          337
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Build transformation source and goal alignment",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-228",
+    "domain": "complementation",
+    "concept": "Swarm locative versus theme subject",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A subject can encode either moving entities or the location densely containing them, with the other expressed by in/with-PP.",
+    "condition": "When analysing swarm locative versus theme subject under the lexical sense and alternation described on Cambridge Chapter 4 printed page 318.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The locative-subject variant sometimes suggests broad occupancy, but not across all prepositions or locations.",
+        "pages": [
+          318
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Bees swarmed around the garden.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The garden swarmed with bees.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.2(a)",
+        "pages": [
+          318
+        ],
+        "pdf_pages": [
+          338
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Swarm locative versus theme subject",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-229",
+    "domain": "complementation",
+    "concept": "Swarm holistic effect is context-dependent",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The locative-subject version can suggest more comprehensive spatial coverage than theme-subject wording, without being a categorical truth condition.",
+    "condition": "When analysing swarm holistic effect is context-dependent under the lexical sense and alternation described on Cambridge Chapter 4 printed page 318.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The night air with insects and alternate locative prepositions can neutralize the effect.",
+        "pages": [
+          318
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Fireflies shimmered among the trees.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The trees shimmered with fireflies.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.2(a)",
+        "pages": [
+          318
+        ],
+        "pdf_pages": [
+          338
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Swarm holistic effect is context-dependent",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-230",
+    "domain": "complementation",
+    "concept": "Develop source versus goal subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Develop/evolve can align the event's source or its result with subject using out of versus into prepositions.",
+    "condition": "When analysing develop source versus goal subjects under the lexical sense and alternation described on Cambridge Chapter 4 printed page 319.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Change/turn are more limited and generally select source-as-subject for this contrast.",
+        "pages": [
+          319
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A conflict developed out of the dispute.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dispute developed into a conflict.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.2(b)–§8.3.4",
+        "pages": [
+          319
+        ],
+        "pdf_pages": [
+          339
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Develop source versus goal subjects",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-231",
+    "domain": "complementation",
+    "concept": "Wipe/wash oblique-to-object reduction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A trivalent clause can mark removed matter as direct object and origin as source PP, while a bivalent wash/wipe clause selects the affected location as direct object.",
+    "condition": "When analysing wipe/wash oblique-to-object reduction under the lexical sense and alternation described on Cambridge Chapter 4 printed page 319.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The single-object version need not describe removal of any particular theme; wash is not drain.",
+        "pages": [
+          319
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She wiped mud off the window.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She wiped the window.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.2(b)–§8.3.4",
+        "pages": [
+          319
+        ],
+        "pdf_pages": [
+          339
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Wipe/wash oblique-to-object reduction",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-232",
+    "domain": "complementation",
+    "concept": "Noncore semantic participant may align with subject",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In filled/covered-type alternations, a PP participant from a trivalent frame may become subject of a bivalent construction while the object remains object.",
+    "condition": "When analysing noncore semantic participant may align with subject under the lexical sense and alternation described on Cambridge Chapter 4 printed page 319.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The alternation can involve instrument, causer, theme, location, time or price, depending on the verb.",
+        "pages": [
+          319
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rainwater filled the pool.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Leaves covered the trail.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.2(b)–§8.3.4",
+        "pages": [
+          319
+        ],
+        "pdf_pages": [
+          339
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noncore semantic participant may align with subject",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-233",
+    "domain": "complementation",
+    "concept": "Instrumental subject alternatives are lexically limited",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An instrument such as key can become subject of opened, while an arbitrary implement such as spoon does not license the same agent-like use.",
+    "condition": "When analysing instrumental subject alternatives are lexically limited under the lexical sense and alternation described on Cambridge Chapter 4 printed page 320.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some purported instrumental subjects are semantic causers instead; a nonhuman subject is not automatically an agent.",
+        "pages": [
+          320
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The master key opened the vault.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The sunlight dried the towels.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.4–§8.4(a)",
+        "pages": [
+          320
+        ],
+        "pdf_pages": [
+          340
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Instrumental subject alternatives are lexically limited",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-234",
+    "domain": "complementation",
+    "concept": "Subject alignment does not always preserve event type",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Cover and related bivalent frames can describe a resulting state, whereas a trivalent intentional frame describes an occurrence.",
+    "condition": "When analysing subject alignment does not always preserve event type under the lexical sense and alternation described on Cambridge Chapter 4 printed page 320.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different argument packaging can add dynamic versus stative interpretations.",
+        "pages": [
+          320
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The workers covered the garden with cloth.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Cloth covered the garden.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.4–§8.4(a)",
+        "pages": [
+          320
+        ],
+        "pdf_pages": [
+          340
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject alignment does not always preserve event type",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-235",
+    "domain": "complementation",
+    "concept": "Combined object can encode earlier oblique",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A bivalent clause can combine a separately represented person and body-part PP into a single NP containing a genitive dependent.",
+    "condition": "When analysing combined object can encode earlier oblique under the lexical sense and alternation described on Cambridge Chapter 4 printed page 320.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In related trivalent patterns the person may be object and part/property in an independent PP.",
+        "pages": [
+          320
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She kissed the child's forehead.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He praised the student's diligence.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.3.4–§8.4(a)",
+        "pages": [
+          320
+        ],
+        "pdf_pages": [
+          340
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Combined object can encode earlier oblique",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-236",
+    "domain": "complementation",
+    "concept": "Kiss and praise combined NP incorporation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With kiss and praise, one complement can express the content of a corresponding object plus PP, often through genitive or of-PP inside the NP.",
+    "condition": "When analysing kiss and praise combined np incorporation under the lexical sense and alternation described on Cambridge Chapter 4 printed page 321.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Break and discern generally lack matching trivalent variants; patterns are verb-specific.",
+        "pages": [
+          321
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara admired his honesty.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mara tapped his shoulder.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.4(a)–(b)",
+        "pages": [
+          321
+        ],
+        "pdf_pages": [
+          341
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Kiss and praise combined NP incorporation",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
+  },
+  {
+    "id": "COMP-237",
+    "domain": "complementation",
+    "concept": "Measure-property subject and in-PP alternation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Change-of-measure verbs permit alternants with the measured entity as subject plus in-PP property or the measured property as subject with of-dependent.",
+    "condition": "When analysing measure-property subject and in-pp alternation under the lexical sense and alternation described on Cambridge Chapter 4 printed page 321.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source limits this alternation to measurable qualities such as length, price, weight, or value.",
+        "pages": [
+          321
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The shares increased in value.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The value of the shares increased.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.4(a)–(b)",
+        "pages": [
+          321
+        ],
+        "pdf_pages": [
+          341
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Measure-property subject and in-PP alternation",
+        "relation": "unverified",
+        "note": "Independent Burton-Roberts crosswalk and tree-compatibility QA remain pending."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Full-volume source checked for section, lexical contrasts, counterexamples and exceptions; English examples independently authored; detector not implemented."
   }
 ]
