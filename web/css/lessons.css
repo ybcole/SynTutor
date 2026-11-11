@@ -93,8 +93,8 @@
 .constituent-page .lesson-stage-body { background:none; border:0; border-radius:0; padding:0; font-size:1.025rem; }
 .curriculum-view .constituent-page h2 {
   max-width:28ch;
-  font-size:clamp(1.95rem,4.5vw,2.8rem);
-  font-weight:700;
+  font-size:clamp(1.8rem,4vw,2.5rem);
+  font-weight:650;
   line-height:1.13;
   letter-spacing:-.04em;
   text-wrap:balance;
@@ -112,11 +112,11 @@
 .constituent-page p { margin-block:0 1em; }
 .constituent-page .lesson-stage-body > p:not([role="status"]),
 .constituent-page .lesson-stage-body > ul {
-  font-size:clamp(1.1rem,2.2vw,1.2rem);
+  font-size:clamp(1.05rem,2vw,1.125rem);
 }
 .constituent-page .lesson-stage-body > ul { padding-inline-start:1.35em; }
 .constituent-page .lesson-stage-body > ul li { padding-inline-start:.15em; margin-block:.35em; }
-.constituent-page h3 { margin:clamp(28px,5vw,40px) 0 10px; font-size:1.2rem; line-height:1.35; letter-spacing:-.018em; }
+.constituent-page h3 { margin:clamp(28px,5vw,40px) 0 10px; font-size:1.125rem; line-height:1.35; letter-spacing:-.018em; }
 .constituent-page .lesson-question + .constituent-review,.constituent-page .lesson-question + .lesson-question { margin-top:30px; }
 .constituent-page .constituent-pre-test,.constituent-page .lesson-sources {
   margin:clamp(30px,5vw,44px) 0 0;
