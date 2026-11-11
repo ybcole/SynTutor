@@ -258,3 +258,7 @@ Printed pp. 583–595 yielded 18 records (`WCAT-103`–`WCAT-120`). Printed p. 5
 ## Chapter 8 first checkpoint
 
 Printed pp. 663–683 yielded 29 classification records (`CLS-450`–`CLS-478`). Continue at p. 684 with locative realization and change of location.
+
+## Chapter 8 second checkpoint
+
+Printed pp. 684–702 yielded 32 classification records (`CLS-479`–`CLS-510`). Continue at p. 703 with bounding and non-bounding duration.

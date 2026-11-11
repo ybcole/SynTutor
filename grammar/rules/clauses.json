@@ -32060,5 +32060,1947 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-479",
+    "domain": "clauses",
+    "concept": "Locative adverb phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A small set of adverbs can express where a situation takes place or the geographic area over which it occurs.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Preposition phrases are the more general realization of static location.",
+        "pages": [
+          684
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The bakery delivers locally.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The association recruits nationally.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.2",
+        "pages": [
+          684
+        ],
+        "pdf_pages": [
+          704
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Locative adverb phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-480",
+    "domain": "clauses",
+    "concept": "Motion complements and theme orientation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A motion complement can describe the change of location of the subject or the object, depending on which participant moves.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same verb can support both orientations in different constructions.",
+        "pages": [
+          684
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina rolled into the yard.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina rolled the barrel into the yard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.3",
+        "pages": [
+          684
+        ],
+        "pdf_pages": [
+          704
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Motion complements and theme orientation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-481",
+    "domain": "clauses",
+    "concept": "Implicit sources and goals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A motion predicate can leave a source or goal unexpressed when its interpretation is recoverable or when the verb makes it predictable.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relevant place may come from the situation or the verb's lexical meaning.",
+        "pages": [
+          684
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guests have already left.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Has the courier arrived?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.3",
+        "pages": [
+          684
+        ],
+        "pdf_pages": [
+          704
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit sources and goals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-482",
+    "domain": "clauses",
+    "concept": "Goals and aspectual bounding",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An endpoint can bound a motion event and license a time-to-completion reading.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A path phrase may instead describe the route without supplying a final endpoint.",
+        "pages": [
+          684,
+          685
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The crew sailed for two hours.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew sailed to the island in two hours.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.3",
+        "pages": [
+          684,
+          685
+        ],
+        "pdf_pages": [
+          704,
+          705
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Goals and aspectual bounding",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-483",
+    "domain": "clauses",
+    "concept": "Motion inferred from sound or the way construction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A verb of sound can take a motion complement when the sound accompanies inferred movement. The way construction can likewise supply a movement interpretation.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction requires a plausible connection between the verb's event and the movement.",
+        "pages": [
+          685
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A stone clattered down the chute.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We squeezed our way through the crowd.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.3",
+        "pages": [
+          685
+        ],
+        "pdf_pages": [
+          705
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Motion inferred from sound or the way construction",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-484",
+    "domain": "clauses",
+    "concept": "Experiential be with a destination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Perfect be with a destination can report a completed visit. Perfect go can report departure toward the destination and continued absence.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The context and variety can affect the interpretation of perfect go.",
+        "pages": [
+          685
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nia has been to Kyoto twice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nia has gone to Kyoto and will return Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.3",
+        "pages": [
+          685
+        ],
+        "pdf_pages": [
+          705
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Experiential be with a destination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-485",
+    "domain": "clauses",
+    "concept": "Goal marking with where and locative prepositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Goal to can be omitted with interrogative where. Other location expressions can receive a goal reading from the motion construction itself.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An unmarked location phrase can also describe where the motion happened.",
+        "pages": [
+          686
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Where did the hikers go?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dog jumped on the bench.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.3",
+        "pages": [
+          686
+        ],
+        "pdf_pages": [
+          706
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Goal marking with where and locative prepositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-486",
+    "domain": "clauses",
+    "concept": "Goal phrases and special realizations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "To is the usual explicit goal marker. Into and onto can additionally describe the spatial relation at the endpoint.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adverbial-looking PPs such as home can express a goal without an overt to.",
+        "pages": [
+          686,
+          687
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We carried the box to the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cat leapt onto the railing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.3",
+        "pages": [
+          686,
+          687
+        ],
+        "pdf_pages": [
+          706,
+          707
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Goal phrases and special realizations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-487",
+    "domain": "clauses",
+    "concept": "Source phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "From commonly marks the source of motion and can take another spatial phrase as its complement.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Out of also marks a source and characterizes it as an interior.",
+        "pages": [
+          687
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The mouse darted from behind the cupboard.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcel came from Manila.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.3",
+        "pages": [
+          687
+        ],
+        "pdf_pages": [
+          707
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Source phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-488",
+    "domain": "clauses",
+    "concept": "Path and goal readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A phrase headed by across or through can identify a route or support an endpoint interpretation depending on the motion construction.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The preposition alone does not settle whether the endpoint is asserted.",
+        "pages": [
+          687
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We drove through the tunnel on our way downtown.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The swimmer made it across the river.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.3",
+        "pages": [
+          687
+        ],
+        "pdf_pages": [
+          707
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Path and goal readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-489",
+    "domain": "clauses",
+    "concept": "Direction versus endpoint",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A direction dependent describes the orientation of motion and may leave the eventual destination open.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A direction phrase can contain a reference place without asserting arrival there.",
+        "pages": [
+          688
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hikers walked north.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cart rolled away from the shed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.3",
+        "pages": [
+          688
+        ],
+        "pdf_pages": [
+          708
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Direction versus endpoint",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-490",
+    "domain": "clauses",
+    "concept": "Constituency of paired source and goal phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Source and goal can behave as separate dependents and can also combine into a unit describing a stretch or route.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In a clause containing both, fronting and the interpretation of a following modifier can help distinguish the analyses.",
+        "pages": [
+          688,
+          689
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "From the depot, the van went to the station.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The trail from the bridge to the summit is steep.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.3",
+        "pages": [
+          688,
+          689
+        ],
+        "pdf_pages": [
+          708,
+          709
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Constituency of paired source and goal phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-491",
+    "domain": "clauses",
+    "concept": "Abstract endpoints and static orientation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Spatial source, path and goal expressions extend to ordered abstract domains. Spatial direction and endpoint expressions can also characterize static orientation or topography.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Static orientation can invoke conceptual movement without describing an actual change of position.",
+        "pages": [
+          689,
+          690
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The water changed from liquid to vapor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cottage faces towards the sea.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.4",
+        "pages": [
+          689,
+          690
+        ],
+        "pdf_pages": [
+          709,
+          710
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Abstract endpoints and static orientation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-492",
+    "domain": "clauses",
+    "concept": "Overall and terminal-point extent",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Overall extent measures the amount traversed, while terminal-point expressions identify the limits of the stretch.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A source or a goal can be overt without an explicit measurement or a second endpoint.",
+        "pages": [
+          690,
+          691
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The runner covered five kilometres.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The runner went from the gate to the pier.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§5.1",
+        "pages": [
+          690,
+          691
+        ],
+        "pdf_pages": [
+          710,
+          711
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Overall and terminal-point extent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-493",
+    "domain": "clauses",
+    "concept": "Dynamic and static spatial extent",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Spatial extent can measure an actual displacement or the dimensions of a static configuration.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A motion-like verb can describe a static configuration without implying a dynamic event.",
+        "pages": [
+          691
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The balloon rose thirty metres.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fence runs for two kilometres.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§5.2",
+        "pages": [
+          691
+        ],
+        "pdf_pages": [
+          711
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic and static spatial extent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-494",
+    "domain": "clauses",
+    "concept": "Spatial dimensions and scalar change",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Extent can specify distance, height, area or another dimension. Scalar change can use comparable constructions to specify the amount or limits of change.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Scalar source and goal identify values on a scale rather than positions in physical space.",
+        "pages": [
+          691,
+          692
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The grounds expanded by two hectares.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The price fell from twelve dollars to nine dollars.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§5.2",
+        "pages": [
+          691,
+          692
+        ],
+        "pdf_pages": [
+          711,
+          712
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial dimensions and scalar change",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-495",
+    "domain": "clauses",
+    "concept": "Complement status and bounding of non-temporal extent",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Spatial and scalar extent depend on an appropriate predicate and generally behave as complements. A measured change can bound a dynamic situation.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A measure of a static situation does not produce the same bounding effect.",
+        "pages": [
+          692
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The seedlings grew for six weeks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The seedlings grew ten centimetres in six weeks.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§5.3",
+        "pages": [
+          692
+        ],
+        "pdf_pages": [
+          712
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement status and bounding of non-temporal extent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-496",
+    "domain": "clauses",
+    "concept": "Forms of extent expressions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Extent can be expressed by a measure NP, a PP or a small set of adverb phrases. Spatial and scalar constructions can select different prepositions.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Bare measure phrases are also possible with appropriate predicates.",
+        "pages": [
+          692,
+          693
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The track stretches for two miles.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fee increased by five dollars.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§5.3",
+        "pages": [
+          692,
+          693
+        ],
+        "pdf_pages": [
+          712,
+          713
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Forms of extent expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-497",
+    "domain": "clauses",
+    "concept": "Scalar location and measure complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A scalar location can assign a value on a scale, while verbs such as cost or weigh can license a measure complement.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Question patterns and complement properties vary with the predicate and dimension.",
+        "pages": [
+          693
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The membership fee is forty dollars.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The package weighs two kilograms.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§5.4",
+        "pages": [
+          693
+        ],
+        "pdf_pages": [
+          713
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scalar location and measure complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-498",
+    "domain": "clauses",
+    "concept": "Temporal adjuncts and complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Time can be a freely added adjunct or a complement licensed by a predicate. A scheduling predicate can specify the time of its object.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Friday can locate the interview even when the scheduling happened on another day.",
+        "pages": [
+          694,
+          695
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I checked the schedule on Monday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They scheduled the interview for Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.1",
+        "pages": [
+          694,
+          695
+        ],
+        "pdf_pages": [
+          714,
+          715
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal adjuncts and complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-499",
+    "domain": "clauses",
+    "concept": "Change of temporal location",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Scheduling changes can be described with source and goal expressions parallel to spatial movement.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The displaced event or appointment is the theme whose time changes.",
+        "pages": [
+          694,
+          695
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hearing moved from Monday to Thursday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We brought the briefing forward to noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.1",
+        "pages": [
+          694,
+          695
+        ],
+        "pdf_pages": [
+          714,
+          715
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Change of temporal location",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-500",
+    "domain": "clauses",
+    "concept": "Deictic and contextual time orientation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A temporal expression can take its reference from utterance time, a calendar convention, or a time supplied by the context.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A recurring clock or calendar expression can use a contextual cycle rather than the current one.",
+        "pages": [
+          695,
+          696
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I arrived yesterday at four.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We first met in 2014.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.2",
+        "pages": [
+          695,
+          696
+        ],
+        "pdf_pages": [
+          715,
+          716
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic and contextual time orientation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-501",
+    "domain": "clauses",
+    "concept": "Time located relative to another situation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An event or interval can serve as the reference point for locating another situation in time.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The anchor need not itself have a fixed calendar or clock designation.",
+        "pages": [
+          696
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The power failed during rehearsal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I called before the inspection.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.2",
+        "pages": [
+          696
+        ],
+        "pdf_pages": [
+          716
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Time located relative to another situation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-502",
+    "domain": "clauses",
+    "concept": "Complement forms in temporal preposition phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Temporal prepositions can take noun phrases or clauses, and some also occur without an overt complement.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The available complement categories depend on the individual preposition.",
+        "pages": [
+          696,
+          697,
+          698
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We left after the ceremony.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We left after the guests had eaten.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.3",
+        "pages": [
+          696,
+          697,
+          698
+        ],
+        "pdf_pages": [
+          716,
+          717,
+          718
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement forms in temporal preposition phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-503",
+    "domain": "clauses",
+    "concept": "When and whenever in temporal expressions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When can ask about a time or introduce a time-locating clause, and whenever can leave the time choice open.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Interrogative and temporal-clause uses have different grammatical functions.",
+        "pages": [
+          697,
+          698
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When will the meeting end?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Take a break whenever you like.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.3",
+        "pages": [
+          697,
+          698
+        ],
+        "pdf_pages": [
+          717,
+          718
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "When and whenever in temporal expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-504",
+    "domain": "clauses",
+    "concept": "Non-PP realization of temporal location",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Noun phrases, adverb phrases and some nonfinite clauses can locate a situation in time.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The temporal relation of a nonfinite clause can depend on inference.",
+        "pages": [
+          698,
+          699
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We finished last Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Walking to the station, I saw the procession.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.3",
+        "pages": [
+          698,
+          699
+        ],
+        "pdf_pages": [
+          718,
+          719
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-PP realization of temporal location",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-505",
+    "domain": "clauses",
+    "concept": "Referential and nonreferential times",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A time expression can identify a particular occasion or characterize an occasion without picking out a particular one.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Seasonal expressions can allow either use depending on context.",
+        "pages": [
+          699
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We met last Sunday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have you ever worked on a Sunday?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.4",
+        "pages": [
+          699
+        ],
+        "pdf_pages": [
+          719
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Referential and nonreferential times",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-506",
+    "domain": "clauses",
+    "concept": "Temporal and causal interpretations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A temporal clause can identify a time and also suggest a causal connection between the events.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Temporal linkage alone does not guarantee a causal interpretation.",
+        "pages": [
+          699,
+          700
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When the fuse blew, the room went dark.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When the bell rang, I was already outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.4",
+        "pages": [
+          699,
+          700
+        ],
+        "pdf_pages": [
+          719,
+          720
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal and causal interpretations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-507",
+    "domain": "clauses",
+    "concept": "Temporal intervals, points and aspect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A temporal expression may specify a point or an interval. The aspectual reading affects whether the situation is understood to occupy the interval or occur within it.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A broad interval such as Monday can locate a brief event without specifying an exact time.",
+        "pages": [
+          699,
+          700,
+          701
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The bell rang at noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I worked at the library when I lived downtown.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.4",
+        "pages": [
+          699,
+          700,
+          701
+        ],
+        "pdf_pages": [
+          719,
+          720,
+          721
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal intervals, points and aspect",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-508",
+    "domain": "clauses",
+    "concept": "Compatibility of deictic time and tense",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A deictic time adjunct and a deictic tense ordinarily agree when they locate the same situation.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Scheduling, reported speech and shifts of viewpoint can give tense and adjunct different times of application.",
+        "pages": [
+          701
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parcel arrived yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcel was coming tomorrow, but the delivery was cancelled.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.4",
+        "pages": [
+          701
+        ],
+        "pdf_pages": [
+          721
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compatibility of deictic time and tense",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-509",
+    "domain": "clauses",
+    "concept": "Negation in a temporal anchor",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negative subordinate clause can locate another event when a change of state or a missed expectation supplies an identifiable time.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A bare absence with no salient boundary or expected occasion may fail to establish a usable reference time.",
+        "pages": [
+          701,
+          702
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When the signal no longer flashed, we restarted the machine.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When the courier did not arrive, we called dispatch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§6.4",
+        "pages": [
+          701,
+          702
+        ],
+        "pdf_pages": [
+          721,
+          722
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation in a temporal anchor",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-510",
+    "domain": "clauses",
+    "concept": "Spatial and temporal extent parallels",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Spatial and temporal extent can identify start and end points or measure the total span.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Temporal extent has domain-specific markers and interacts with the aspectual character of the situation.",
+        "pages": [
+          702
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We walked from the gate to the bridge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The clinic stayed open from nine until noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.1",
+        "pages": [
+          702
+        ],
+        "pdf_pages": [
+          722
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial and temporal extent parallels",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
