@@ -6,6 +6,7 @@ import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentPreTest, constituentReferences } from './constituents-lesson.js';
 import { addSubjectPredicateTeaching, subjectPredicateHeadings } from './subject-predicate-lesson.js';
+import { foundationsArticle } from './foundations-lesson.js';
 
 const articleLessons = {
   'br-01': {
@@ -26,7 +27,7 @@ let options = {}, course, store, host, active = null, step = 0, track = 'foundat
 let reviewStage = null;
 let articlePage = 0, practiceResponses = null;
 const postTestKeys = ['guided', 'transfer', 'exit'];
-let lessonCanvas = null;
+const lessonCanvases = new Map();
 const el = (tag, text, cls) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (cls) node.className = cls; return node; };
 function button(text, run, cls = '') { const b = el('button',text,cls); b.type = 'button'; b.addEventListener('click',run); return b; }
 function lessonReferences(lesson) {
@@ -65,9 +66,23 @@ export function renderLessonTree(envelope, {
     const name=node.label === 'AUX' ? '' : node.label === 'S-bar' ? 'S′' : node.label === 'S-dbar' ? 'S″' : node.unlabelled ? '' : numberedVP || node.label || node.word;
     return `${name || ''}${withFeatures && node.features?.length ? ` [${node.features.join(', ')}]` : ''}${node.empty ? ' (empty)' : ''}`;
   }
-  const featureRows = node => displayLabels?.[node.id]
-    ? displayLabels[node.id].slice(1)
-    : stackFeatures ? (node.features || []).map(feature => `[${feature}]`) : [];
+  const blankFor = node => blank?.node_id && blank.node_id === node.id ? blank.field : null;
+  const featureRows = node => {
+    const stacked = displayLabels?.[node.id] || stackFeatures;
+    if (blankFor(node) === 'feature') return stacked ? ['[?]'] : [];
+    if (blankFor(node) === 'label') return [];
+    return displayLabels?.[node.id]
+      ? displayLabels[node.id].slice(1)
+      : stackFeatures ? (node.features || []).map(feature => `[${feature}]`) : [];
+  };
+  function visibleLabel(node) {
+    if (blankFor(node) === 'label') return '?';
+    if (blankFor(node) === 'feature') {
+      const name = label(node, false);
+      return featureRows(node).length ? name : [name, '[?]'].filter(Boolean).join(' ');
+    }
+    return label(node, !stackFeatures && !displayLabels);
+  }
   const measure = document.createElement('canvas').getContext('2d');
   measure.font = '15px system-ui, sans-serif';
   const gap = 18;
@@ -77,10 +92,8 @@ export function renderLessonTree(envelope, {
   function widthOf(node) {
     if (widths.has(node)) return widths.get(node);
     const children = node.children || [];
-    const ownLabel = blank && blank.node_id === node.id && blank.field === 'feature'
-      ? label(node) + ' [?]' : label(node, !stackFeatures && !displayLabels);
     const width = Math.max(node.id === focusId ? 122 : 56,
-      measure.measureText(ownLabel).width + 28,
+      measure.measureText(visibleLabel(node)).width + 28,
       ...featureRows(node).map(feature => measure.measureText(feature).width + 28),
       measure.measureText(node.words?.join(' ') || '').width + 28,
       children.reduce((total, child) => total + widthOf(child), 0)
@@ -115,7 +128,7 @@ export function renderLessonTree(envelope, {
     const g=svgNode('g',{'data-node-id':node.id || '',class:node.id===focusId ? 'lesson-tree-focus' : ''});
     if (node.id===focusId) g.append(svgNode('rect',{x:x-55,y:y-20,width:110,height:40,rx:9}));
     const t=svgNode('text',{x,y,'text-anchor':'middle'});
-    t.textContent=blank && blank.node_id===node.id ? (blank.field==='feature' ? `${node.label === 'AUX' ? '' : node.label} [?]` : '?') : label(node, !stackFeatures && !displayLabels);g.append(t);
+    t.textContent=visibleLabel(node);g.append(t);
     const rows = featureRows(node);
     rows.forEach((feature, index) => {
       const row = svgNode('text', {x, y: y + (index + 1) * 18, 'text-anchor': 'middle', class: 'br-feature-row'});
@@ -186,8 +199,7 @@ export function renderLessonTree(envelope, {
   const text=el('details',undefined,'lesson-tree-text');text.append(el('summary','Read the tree as text'));
   function list(node) {
     const item = el('li');
-    const name = blank && blank.node_id === node.id
-      ? (blank.field === 'feature' ? `${label(node, false)} [?]` : '?')
+    const name = blankFor(node) ? [visibleLabel(node), ...featureRows(node)].filter(Boolean).join(' ')
       : label(node) || '△';
     const description = node.words ? `${name} — ${node.words.join(' ')}` : name;
     if (interactive && node.id) {
@@ -208,6 +220,7 @@ export function renderLessonTree(envelope, {
   }
   const ul=el('ul');ul.append(list(root));text.append(ul);wrap.append(text);return wrap;
 }
+function articleFor(lesson) { return articleLessons[lesson.lesson_id] ?? foundationsArticle(lesson); }
 function currentLesson() { return course.lessons.find(l => l.lesson_id===active); }
 function progressFor(lesson) { return store.records[lessonKey(lesson)] || emptyProgress(); }
 async function act(event, afterSave) {
@@ -230,7 +243,7 @@ function selectLesson(id) {
   notice = '';
   reviewStage = id && progressFor(currentLesson()).completed_at ? 0 : null;
   practiceResponses = null;
-  if (articleLessons[id]) {
+  if (id && articleFor(currentLesson())) {
     const progress = progressFor(currentLesson());
     articlePage = progress.completed_at ? 0 : progress.stage >= 3 ? 5 : progress.stage;
   }
@@ -311,8 +324,12 @@ function catalog() {
     card.append(
       el('p', chapter, 'lesson-eyebrow'),
       el('h2', lesson.title),
-      el('p', course.module_descriptions?.[lesson.lesson_id] || lesson.outcomes[0].text, 'lesson-module-description'),
     );
+    const description = course.module_descriptions?.[lesson.lesson_id];
+    if (description) card.append(el('p', description, 'lesson-module-description'));
+    const objective = el('p', undefined, 'lesson-module-objective');
+    objective.append(el('strong', 'Learning objective'), ' ', lesson.outcomes[0].text);
+    card.append(objective);
     const prerequisites = lesson.prerequisites.filter(pr => !store.records[lessonKey(pr)]?.completed_at);
     if (prerequisites.length) {
       const names = prerequisites.map(pr => course.lessons.find(l => l.lesson_id === pr.lesson_id).title);
@@ -324,7 +341,8 @@ function catalog() {
     meter.append(el('p', `${completedStages} of ${STAGES.length} stages completed`),
       progressBar(completedStages, STAGES.length, `${lesson.title} progress`));
     const action = progress.completed_at ? 'Review lesson' : started ? 'Resume lesson' : 'Start lesson';
-    footer.append(meter, button(action, () => openLesson(lesson.lesson_id), 'lesson-open'));
+    const actionStyle = action === 'Resume lesson' ? 'lesson-open lesson-resume lesson-primary' : 'lesson-open';
+    footer.append(meter, button(action, () => openLesson(lesson.lesson_id), actionStyle));
     card.append(footer);
     modules.append(card);
   }
@@ -361,8 +379,19 @@ function mountLessonCanvas(host, treeView) {
   const canvas = el('div', undefined, 'lesson-tree-canvas');
   canvas.append(treeView);
   host.append(canvas);
-  lessonCanvas = enableCanvasView(canvas, treeView);
+  lessonCanvases.set(host, enableCanvasView(canvas, treeView));
   return canvas;
+}
+
+function clearLessonDiagram(host) {
+  lessonCanvases.get(host)?.destroy();
+  lessonCanvases.delete(host);
+  host.replaceChildren();
+}
+
+function clearLessonCanvases() {
+  for (const view of lessonCanvases.values()) view.destroy();
+  lessonCanvases.clear();
 }
 
 function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree = null, inline = false }) {
@@ -392,6 +421,7 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
   const inspect=async (nodeId, feature=null) => {
     selected=nodeId;
     if (inline) {
+      selectedWords.replaceChildren();
       describeSelection(worked.tree.root, nodeId);
       for (const item of canvas.querySelectorAll('svg [data-node-id]')) {
         const isSelected = item.dataset.nodeId === nodeId;
@@ -429,6 +459,7 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
   }
   evidence.addEventListener('toggle',()=>{if(evidence.open&&!slot.childElementCount&&selected)inspect(selected);});
   aside.append(evidence);
+  return canvas;
 }
 
 function showArticlePage(page) {
@@ -452,19 +483,18 @@ function articleScreen(lesson, p, article) {
   host.append(layout);
 
   article.teach(body, page, {
-    el, button, lesson, renderTree: renderLessonTree,
+    el, button, lesson,
+    showDiagram: (figure, tree, options) => {
+      clearLessonDiagram(figure);
+      return mountLessonCanvas(figure, renderLessonTree(tree, options));
+    },
     showWorkedTree: (figure, focusId) => {
-      lessonCanvas?.destroy();
-      figure.replaceChildren();
-      appendWorkedTree(figure, lesson.worked_example, { focusId, inline: true });
+      clearLessonDiagram(figure);
+      return appendWorkedTree(figure, lesson.worked_example, { focusId, inline: true });
     },
     showComparisonTree: (figure, flatTree) => {
-      lessonCanvas?.destroy();
-      figure.replaceChildren();
-      if (flatTree) {
-        mountLessonCanvas(figure, renderLessonTree(flatTree, { wordBaseline: 2 }));
-        return;
-      }
+      clearLessonDiagram(figure);
+      if (flatTree) return mountLessonCanvas(figure, renderLessonTree(flatTree, { wordBaseline: 2 }));
       const worked = lesson.worked_example;
       const focusId = worked.steps.at(-1).focus_node_id;
       // Expand the teaching diagram only. Explanations still use the canonical tree and node IDs.
@@ -477,7 +507,7 @@ function articleScreen(lesson, p, article) {
           children: node.words.map(word => ({ word })),
         } : node),
       };
-      appendWorkedTree(figure, worked, { focusId, comparisonTree: { ...worked.tree, root }, inline: true });
+      return appendWorkedTree(figure, worked, { focusId, comparisonTree: { ...worked.tree, root }, inline: true });
     },
   });
 
@@ -537,12 +567,18 @@ function articleScreen(lesson, p, article) {
         : article.postTestIntro));
     for (const item of keys) {
       const response = practice ? { responses: practiceResponses } : p;
-      if (item === 'guided') {
+      if (item === 'guided' && lesson.guided.build_target && lesson.worked_example.tree) {
         const diagram = el('div', undefined, 'constituent-diagram');
         const target = lesson.guided.build_target;
         const blank = response.responses.guided === lesson.guided.answer ? null : target;
         diagram.append(el('p', lesson.worked_example.sentence, 'lesson-example-sentence'));
-        mountLessonCanvas(diagram, renderLessonTree(lesson.worked_example.tree, { focusId: target.node_id, blank }));
+        if (blank) {
+          mountLessonCanvas(diagram, renderLessonTree(lesson.worked_example.tree, {
+            focusId: target.node_id, blank, stackFeatures: true,
+          }));
+        } else {
+          appendWorkedTree(diagram, lesson.worked_example, { focusId: target.node_id, inline: true });
+        }
         postTest.append(diagram);
       }
       postTest.append(question(lesson, item, response, reviewing && !practice, answer => {
@@ -596,7 +632,7 @@ function lessonScreen() {
   const lesson = currentLesson(), p = progressFor(lesson);
   const stage = reviewStage ?? p.stage, key = STAGES[stage];
   const reviewing = reviewStage !== null;
-  const article = articleLessons[lesson.lesson_id];
+  const article = articleFor(lesson);
   const chapter = article ? `Chapter ${lesson.chapter}` : lesson.track === 'foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
   const header = el('header', undefined, article ? 'lesson-header constituent-header' : 'lesson-header');
   header.append(button('← All lessons', showCatalog));
@@ -659,8 +695,7 @@ function lessonScreen() {
 }
 function render() {
   if (!host || host.hidden || !course || !store) return;
-  lessonCanvas?.destroy();
-  lessonCanvas = null;
+  clearLessonCanvases();
   const scroll=host.scrollTop;host.replaceChildren();
   if(active)lessonScreen();else catalog();
   const footer=el('footer',undefined,'lesson-save-status');footer.setAttribute('aria-live','polite');if(notice)footer.append(el('p',notice));footer.append(el('p',store.status));
@@ -682,8 +717,7 @@ export function initLessons(config = {}) {
 }
 export async function openLessons(id=null) {
   lastFocus=document.activeElement;host.hidden=false;document.body.classList.add('curriculum-open');
-  lessonCanvas?.destroy();
-  lessonCanvas = null;
+  clearLessonCanvases();
   showCurriculumState(host, { message: 'Loading reviewed lessons…' });
   const token=++generation;
   try {
@@ -707,4 +741,4 @@ export async function openLessons(id=null) {
     });
   }
 }
-export function closeLessons() { generation+=1;lessonCanvas?.destroy();lessonCanvas=null;if(host){host.hidden=true;host.replaceChildren();}document.body.classList.remove('curriculum-open');active=null;notice='';if(lastFocus?.isConnected)lastFocus.focus(); }
+export function closeLessons() { generation+=1;clearLessonCanvases();if(host){host.hidden=true;host.replaceChildren();}document.body.classList.remove('curriculum-open');active=null;notice='';if(lastFocus?.isConnected)lastFocus.focus(); }

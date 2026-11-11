@@ -45,11 +45,11 @@ function readings() {
   ];
 }
 
-export function addConstituentTeaching(body, page, { el, button, renderTree, showComparisonTree }) {
+export function addConstituentTeaching(body, page, { el, button, showDiagram, showComparisonTree }) {
   const paragraph = text => body.append(el('p', text));
   const section = (title, ...paragraphs) => body.append(el('h3', title), ...paragraphs.map(text => el('p', text)));
   function figureControls(label, choices, target, select, initial = 0) {
-    const controls = el('div', undefined, 'constituent-controls');
+    const controls = el('div', undefined, 'constituent-controls lesson-tree-steps');
     controls.setAttribute('role', 'group');
     controls.setAttribute('aria-label', label);
     const buttons = choices.map((choice, index) => button(choice, () => show(index)));
@@ -95,7 +95,7 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, sho
     figureControls('Highlight a group', ['the quiet garden', 'near the quiet garden'], tree, index => {
       sentence.replaceChildren(...(index ? [el('mark', 'near the quiet garden')] : ['near ', el('mark', 'the quiet garden')]));
       sentence.append(index ? ' · The outer node includes every word.' : ' · The inner node covers just the garden group.');
-      tree.replaceChildren(renderTree(nested, { focusId: index ? 'PHRASE-a' : 'PHRASE-b' }));
+      showDiagram(tree, nested, { focusId: index ? 'PHRASE-a' : 'PHRASE-b' });
     });
   }
   if (page === 2) {
@@ -110,17 +110,16 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, sho
     example.append(tree);
     body.append(example);
     figureControls('Compare drawings', ['Flat drawing', 'Nested drawing'], tree, index => {
-      showComparisonTree(tree, index ? null : flat);
       caption.textContent = index
         ? 'In the nested drawing, PHRASE-b covers just “the quiet garden”. PHRASE-a contains that whole group together with “near”.'
         : 'In the flat drawing, all four words connect directly to PHRASE-a. The only node covering the three garden words also covers “near”.';
-      tree.querySelector('.lesson-tree-canvas').after(caption);
+      showComparisonTree(tree, index ? null : flat).after(caption);
     }, 1);
     section('Try giving a group its own branch',
       'The drawing below puts all four words of “beside the red gate” under one node. Which words name what you are beside? Select that whole group, then check your answer to see where the new branch goes.');
     const [before, after] = drawings(['beside', 'the', 'red', 'gate']);
     const repairTree = el('div', undefined, 'constituent-diagram');
-    repairTree.append(renderTree(before));
+    showDiagram(repairTree, before);
     const choices = el('fieldset', undefined, 'constituent-choices');
     choices.append(el('legend', 'Which words belong under the new node?'));
     const inputs = ['beside', 'the', 'red', 'gate'].map(text => {
@@ -138,7 +137,7 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, sho
       feedback.textContent = correct
         ? 'Exactly. The new node covers “the red gate”. The outer node still covers the whole phrase.'
         : 'Try to include the whole gate group and leave “beside” outside it.';
-      repairTree.replaceChildren(renderTree(correct ? after : before, { focusId: correct ? 'PHRASE-b' : null }));
+      showDiagram(repairTree, correct ? after : before, { focusId: correct ? 'PHRASE-b' : null });
     });
     body.append(repairTree, choices, check, feedback);
   }
@@ -151,13 +150,13 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, sho
     caption.setAttribute('aria-live', 'polite');
     const tree = el('div');
     const diagram = el('div', undefined, 'constituent-diagram');
-    diagram.append(caption, tree);
+    diagram.append(tree);
     body.append(diagram);
-    figureControls('Compare meanings', ['I used the telescope', 'The hikers had the telescope'], caption, index => {
+    figureControls('Compare meanings', ['I used the telescope', 'The hikers had the telescope'], tree, index => {
       caption.textContent = index
         ? '“With a telescope” joins “the hikers”. It tells us which hikers I watched.'
         : '“With a telescope” joins the larger group that includes “watched”. It tells us how I watched.';
-      tree.replaceChildren(renderTree(alternatives[index], { focusId: index ? 'PHRASE-b' : 'PHRASE-a' }));
+      showDiagram(tree, alternatives[index], { focusId: index ? 'PHRASE-b' : 'PHRASE-a' }).after(caption);
     });
     paragraph('To explain the difference in your own words, ask “Who had the telescope?” In one reading it was the person watching. In the other it was the hikers. The branch shows which reading the tree represents.');
   }

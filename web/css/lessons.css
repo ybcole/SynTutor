@@ -38,6 +38,8 @@
 .lesson-module .lesson-eyebrow { margin:0; }
 .lesson-module h2 { margin:4px 0 8px; font-size:clamp(1.15rem,2vw,1.45rem); }
 .lesson-module-description { margin:0; max-width:80ch; color:var(--muted); }
+.lesson-module-objective { margin:8px 0 0; font-size:.9rem; }
+.lesson-module-objective strong { margin-inline-end:5px; font-weight:650; }
 .lesson-module .lesson-prerequisite { margin:10px 0 0; }
 .lesson-module-footer {
   display:flex;
@@ -61,7 +63,9 @@
 .curriculum-view progress::-webkit-progress-bar { background:var(--border); border-radius:999px; }
 .curriculum-view progress::-webkit-progress-value { background:var(--accent-strong); border-radius:999px; }
 .curriculum-view progress::-moz-progress-bar { background:var(--accent-strong); border-radius:999px; }
-.lesson-module .lesson-open { margin-top:0; }
+.lesson-module .lesson-open { margin:0; }
+.curriculum-view .lesson-resume { font-weight:650; }
+[data-theme="dark"] .curriculum-view .lesson-resume { color:var(--bg); }
 .lesson-prerequisite,.lesson-origin,.lesson-sources,.lesson-guide-note { color:var(--muted); font-size:.85rem; }
 .lesson-columns { display:grid; grid-template-columns:minmax(300px,.85fr) minmax(0,1.15fr); gap:20px; align-items:start; }
 .lesson-page-actions { display:flex; justify-content:flex-end; margin-top:20px; }
@@ -167,6 +171,11 @@
 .curriculum-view .constituent-controls button { padding:7px 13px; font-size:.9rem; }
 .constituent-controls button[aria-pressed=true] { border-color:var(--accent); background:var(--accent-soft); color:var(--accent-strong); }
 .constituent-diagram { margin:20px 0; min-width:0; }
+.lesson-tree-steps + .constituent-diagram { margin-top:8px; }
+@media(max-width:600px) {
+  .curriculum-view .lesson-tree-steps button { min-height:40px; }
+  .lesson-tree-steps { margin-bottom:8px; }
+}
 .constituent-diagram .lesson-tree-wrap { max-width:100%; }
 .constituent-diagram .lesson-tree-wrap:has(> svg) { background:var(--bg); padding:12px; border-radius:10px; }
 .constituent-diagram .lesson-tree-wrap > svg { margin-inline:auto; }
@@ -178,6 +187,7 @@
 .constituent-choices { border:0; padding:0; }
 .constituent-choices legend { margin-bottom:8px; font-weight:650; }
 .constituent-choices label { display:flex; align-items:center; gap:6px; }
+.constituent-selection:empty { display:none; }
 .constituent-selection mark { background:var(--accent-soft); color:var(--accent-strong); font-weight:650; }
 .lesson-tree-canvas [data-constituent-selected] > text { fill:var(--accent-strong); font-weight:750; }
 .constituent-recap { padding-inline-start:24px; }
