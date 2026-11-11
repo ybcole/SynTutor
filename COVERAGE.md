@@ -23,11 +23,11 @@
 | 15. Coordination and supplementation | 90 | 0 | 90 | 0 | 0 | Incomplete |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
 | 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
-| 18. Inflectional morphology | 56 | 43 | 10 | 3 | 0 | In progress (pp. 1565–1609) |
+| 18. Inflectional morphology | 56 | 53 | 0 | 3 | 0 | Source-extracted |
 | 19. Lexical word-formation | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **743 extracted**, 994 unprocessed, 25 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **753 extracted**, 984 unprocessed, 25 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -238,3 +238,9 @@ The opening batch covers 19 substantive pages and two contents pages. It adds 26
 ## Chapter 18 pp. 1586–1609
 
 The second batch covers 24 substantive pages and adds 32 records (`MORPH-093`–`MORPH-124`) on noun plurals, genitives, regular and irregular verb inflection, and complex bases. See the [source report](sources/cambridge/chapter_18/PP1586_1609_REPORT.md) and [audit manifest](sources/cambridge/chapter_18/PP1586_1609_AUDIT.json). Continue at p. 1610.
+
+## Chapter 18 source extraction complete
+
+The final batch covers printed pp. 1610–1619 and verifies blank p. 1620. It adds 18 records (`MORPH-125`–`MORPH-142`) on complex verb forms, auxiliary negatives, reduction, clitics and liaison. See the [source report](sources/cambridge/chapter_18/PP1610_1620_REPORT.md) and [audit manifest](sources/cambridge/chapter_18/PP1610_1620_AUDIT.json).
+
+Chapter 18 has 53 substantive pages, three justified skips and zero unprocessed pages. Its 76 records remain outside the live detector registry.

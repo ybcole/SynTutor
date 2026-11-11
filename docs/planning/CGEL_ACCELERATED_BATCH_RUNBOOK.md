@@ -238,3 +238,7 @@ Printed pp. 1565–1585 account for two contents pages and 19 substantive pages 
 ## Chapter 18 second checkpoint (2026-11-11)
 
 Printed pp. 1586–1609 yielded 32 records (`MORPH-093`–`MORPH-124`), including four inactive constraint specifications. Continue at p. 1610.
+
+## Chapter 18 source extraction complete (2026-11-11)
+
+Printed pp. 1610–1619 yielded 18 records (`MORPH-125`–`MORPH-142`), including two inactive constraint specifications. The final batch verifies blank p. 1620. Chapter 18 closes with 53 substantive pages, three justified skips and zero unprocessed pages. Chapter 2 is next in the master plan priority order.

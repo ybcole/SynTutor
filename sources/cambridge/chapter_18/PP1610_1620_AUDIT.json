@@ -1,0 +1,155 @@
+{
+  "manifest_version": 1,
+  "chapter": 18,
+  "printed_start": 1610,
+  "printed_end": 1620,
+  "report": "sources/cambridge/chapter_18/PP1610_1620_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1610,
+    "pdf_page": 1630
+  },
+  "added_rule_ids": [
+    "MORPH-125",
+    "MORPH-126",
+    "MORPH-127",
+    "MORPH-128",
+    "MORPH-129",
+    "MORPH-130",
+    "MORPH-131",
+    "MORPH-132",
+    "MORPH-133",
+    "MORPH-134",
+    "MORPH-135",
+    "MORPH-136",
+    "MORPH-137",
+    "MORPH-138",
+    "MORPH-139",
+    "MORPH-140",
+    "MORPH-141",
+    "MORPH-142"
+  ],
+  "page_checks": [
+    {
+      "page": 1610,
+      "status": "extracted",
+      "section": "§§5.4–5.5",
+      "summary": "Completes the inheritance and exception discussion for complex bases and introduces regular negative auxiliary suffixation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1611,
+      "status": "extracted",
+      "section": "§5.5",
+      "summary": "Distinguishes spoken and written irregular negatives, compares cannot and can not, and discusses variation with ain't.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1612,
+      "status": "extracted",
+      "section": "§§5.5–6",
+      "summary": "Covers negative am across inversion and varieties and introduces strong, weak and more casual reductions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1613,
+      "status": "extracted",
+      "section": "§6.1",
+      "summary": "Tabulates weak forms and distinguishes their lexical, grammatical and following-sound restrictions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1614,
+      "status": "extracted",
+      "section": "§§6.1–6.2",
+      "summary": "Describes focus, stranding and other strong-form environments and introduces clitic hosts and interrogative do.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1615,
+      "status": "extracted",
+      "section": "§6.2",
+      "summary": "Compares restricted auxiliary clitics with is and has and distinguishes phonological clitics from written contraction.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1616,
+      "status": "extracted",
+      "section": "§§6.2–6.3",
+      "summary": "Completes the is and has host inventory, compares had and would, and introduces incorporation of infinitival to.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1617,
+      "status": "extracted",
+      "section": "§6.3",
+      "summary": "Distinguishes incorporation from weak to with stranding and extraction tests and compares inflection on compound heads.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1618,
+      "status": "extracted",
+      "section": "§§6.3–6.4",
+      "summary": "Completes the analysis of incorporated forms and introduces linking r and the sound-based indefinite article alternation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1619,
+      "status": "extracted",
+      "section": "§6.4",
+      "summary": "Distinguishes silent, stressed and unstressed initial h and describes modern written usage and historical variants.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1620,
+      "status": "skipped_with_reason",
+      "section": "Chapter boundary",
+      "summary": "Full-volume PDF p. 1640 is blank between Chapter 18 and the Chapter 19 opener.",
+      "source_checked": true,
+      "nonprose_present": false,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

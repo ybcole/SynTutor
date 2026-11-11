@@ -8197,5 +8197,1170 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-125",
+    "domain": "morphology",
+    "concept": "Inherited irregularity in opaque complex verbs",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A complex verb can retain a component verb's irregular pattern even when the semantic connection is no longer transparent.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some complex verbs have regular alternatives, such as broadcasted alongside broadcast. Other exceptions can differ between speech and writing.",
+        "pages": [
+          1610
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We misunderstood the signal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has mistaken me for my sister.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.4",
+        "pages": [
+          1610
+        ],
+        "pdf_pages": [
+          1630
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inherited irregularity in opaque complex verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-126",
+    "domain": "morphology",
+    "concept": "Finite distribution of negative auxiliary forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The negative suffix n't occurs on finite forms of auxiliaries and on imperative do.",
+    "condition": "Applies to the construction described in §5.5 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The chapter includes irrealis weren't and records variation for aspectual used. The negative suffix does not attach to non-finite auxiliaries.",
+        "pages": [
+          1610
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They hadn't finished the repairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Don't touch the wet paint.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.5",
+        "pages": [
+          1610
+        ],
+        "pdf_pages": [
+          1630
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite distribution of negative auxiliary forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-127",
+    "domain": "morphology",
+    "concept": "Irregular negative auxiliary forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some negative auxiliaries change pronunciation without an unexpected spelling, while others have irregular spoken and written forms.",
+    "condition": "Applies to the construction described in §5.5 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Don't changes its vowel in speech. Can't and shan't vary by accent, and usedn't has restricted distribution.",
+        "pages": [
+          1611
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She won't need the spare key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You mustn't enter the room yet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.5",
+        "pages": [
+          1611
+        ],
+        "pdf_pages": [
+          1631
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Irregular negative auxiliary forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-128",
+    "domain": "morphology",
+    "concept": "Cannot and analytic can not",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Cannot is a single written form with negation taking scope over the modality. Separate can not can also express the option of refraining from an action.",
+    "condition": "Applies to the construction described in §5.5 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Cannot is relatively formal compared with can't and strongly disfavored before the subject. Do not replace separate can not automatically.",
+        "pages": [
+          1611
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We cannot unlock the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can not sign it if you prefer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.5",
+        "pages": [
+          1611
+        ],
+        "pdf_pages": [
+          1631
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cannot and analytic can not",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-129",
+    "domain": "morphology",
+    "concept": "Variety and register of ain't and amn't",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Ain't can serve as a negative form of several present-tense be and have forms. Amn't has a more restricted regional distribution.",
+    "condition": "Applies to the construction described in §5.5 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ain't is informal and its acceptance varies. Amn't is notably found in Scottish and Irish usage.",
+        "pages": [
+          1611,
+          1612
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I ain't seen that before.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Amn't I on the list?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.5",
+        "pages": [
+          1611,
+          1612
+        ],
+        "pdf_pages": [
+          1631,
+          1632
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variety and register of ain't and amn't",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-130",
+    "domain": "morphology",
+    "concept": "Negative am and inversion",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "Aren't I is established in inverted negatives and tags. With ordinary uninverted first-person singular be, standard analytic alternatives include I am not and I'm not.",
+    "condition": "Applies to the construction described in §5.5 of Chapter 18.",
+    "violation": "Aren’t follows the first-person singular subject I in an uninverted negative of am.",
+    "exceptions": [
+      {
+        "description": "Some dialects use amn't or informal ain't. The same standard inversion pattern does not license uninverted I aren't.",
+        "pages": [
+          1612
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I am not on the list.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'm not on the roster.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "I aren't on the list.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "I aren't on the roster.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.5",
+        "pages": [
+          1612
+        ],
+        "pdf_pages": [
+          1632
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative am and inversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "Aren’t follows the first-person singular subject I in an uninverted negative of am.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I aren't on the list. ||| I am not on the list.",
+        "I aren't on the roster. ||| I'm not on the roster."
+      ],
+      "learner_explanation": "Aren't I is established in inverted negatives and tags. With ordinary uninverted first-person singular be, standard analytic alternatives include I am not and I'm not.",
+      "corrected_paragraph_template": "Use am not or its contracted form after I.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Aren't I on the list?",
+        "I'm on the list, aren't I?",
+        "Amn't I invited?",
+        "I ain't on the list."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "verb-form"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-131",
+    "domain": "morphology",
+    "concept": "Strong and weak forms of one grammatical word",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Strong and weak pronunciations can realize the same grammatical word. Weak forms are common in ordinary connected speech and have grammatical restrictions.",
+    "condition": "Applies to the construction described in §6–6.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second has is stranded and favors the strong pronunciation. Further reduction in rapid speech is a distinct phenomenon.",
+        "pages": [
+          1612,
+          1613
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo has checked the meter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina hasn't checked it, but Jo has.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6–6.1",
+        "pages": [
+          1612,
+          1613
+        ],
+        "pdf_pages": [
+          1632,
+          1633
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Strong and weak forms of one grammatical word",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-132",
+    "domain": "morphology",
+    "concept": "Lexical and grammatical restrictions on weak forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Weak forms belong mainly to grammatical words and may be available for one use of a spelling but not another.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Subordinator that has a weak form distinct from demonstrative that. Similar contrasts involve dummy versus locative there and relative versus interrogative who.",
+        "pages": [
+          1613
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I think that the gate is locked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Put that gate back on its hinges.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6.1",
+        "pages": [
+          1613
+        ],
+        "pdf_pages": [
+          1633
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical and grammatical restrictions on weak forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-133",
+    "domain": "morphology",
+    "concept": "Pronunciation of the and stress in weak-form words",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The weak definite article often has different pronunciations before vowel and consonant sounds. Contrastive emphasis can require a strong form.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some speakers use schwa before both kinds of following sound. The article's strong form is associated with focus.",
+        "pages": [
+          1613,
+          1614
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The apple was bruised.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I asked for THE key, not a spare one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6.1",
+        "pages": [
+          1613,
+          1614
+        ],
+        "pdf_pages": [
+          1633,
+          1634
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronunciation of the and stress in weak-form words",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-134",
+    "domain": "morphology",
+    "concept": "Strong forms in stranding and fused uses",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Stranded auxiliaries, prepositions and infinitival to ordinarily take strong forms. Some other uses require stress, including fused-head some.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "When a sequence of auxiliaries or prepositions precedes a gap, later elements can show more variation.",
+        "pages": [
+          1614
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who did you send it to?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you need a spare, I can lend you some.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6.1",
+        "pages": [
+          1614
+        ],
+        "pdf_pages": [
+          1634
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Strong forms in stranding and fused uses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-135",
+    "domain": "morphology",
+    "concept": "Auxiliary clitics and their hosts",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A clitic merges phonologically with a neighboring host. The interrogative do clitic attaches to following you, whereas most auxiliary clitics attach to a preceding word.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Written apostrophe forms can represent weak forms as well as true clitics. The phonological restrictions need not match all writing conventions.",
+        "pages": [
+          1614,
+          1615
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "D'you need a hand?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We've finished for today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6.2",
+        "pages": [
+          1614,
+          1615
+        ],
+        "pdf_pages": [
+          1634,
+          1635
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary clitics and their hosts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-136",
+    "domain": "morphology",
+    "concept": "Restricted auxiliary enclitics",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The core clitic forms of am, are, have and will most readily attach to a preceding subject pronoun.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A pronoun that is only part of a larger subject generally does not provide the same host. Some speaker variation occurs with have.",
+        "pages": [
+          1615
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm on my way.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They've left already.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6.2",
+        "pages": [
+          1615
+        ],
+        "pdf_pages": [
+          1635
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restricted auxiliary enclitics",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-137",
+    "domain": "morphology",
+    "concept": "Hosts and ambiguity of is and has clitics",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The is and has clitics share a phonological form and accept a wider range of hosts than the more restricted auxiliary clitics.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Hosts can include certain non-subject expressions. Attachment after an intervening central adjunct is excluded in the construction described.",
+        "pages": [
+          1615,
+          1616
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dog's been outside all morning.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dog's outside now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6.2",
+        "pages": [
+          1615,
+          1616
+        ],
+        "pdf_pages": [
+          1635,
+          1636
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hosts and ambiguity of is and has clitics",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-138",
+    "domain": "morphology",
+    "concept": "Had and would clitics",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Had and would can share the clitic represented in writing by 'd. The phonological clitic occurs after a vowel and has an intermediate range of hosts.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Overlap of lower forms can leave an ambiguity, as in I'd put it away. Had can cliticize more readily than would for some speakers.",
+        "pages": [
+          1616
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'd finished before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'd finish by noon if the lift worked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6.2",
+        "pages": [
+          1616
+        ],
+        "pdf_pages": [
+          1636
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Had and would clitics",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-139",
+    "domain": "morphology",
+    "concept": "Lexical incorporation of infinitival to",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some informal reduced forms incorporate infinitival to into the preceding head. The compound then selects a bare infinitival and occurs in the simple catenative construction.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The spellings represent casual speech. A minority pronunciation with a fronted higher object can instead reflect phonological reduction.",
+        "pages": [
+          1616,
+          1617,
+          1618
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm gonna check the back door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who do you wanna invite?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6.3",
+        "pages": [
+          1616,
+          1617,
+          1618
+        ],
+        "pdf_pages": [
+          1636,
+          1637,
+          1638
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical incorporation of infinitival to",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-140",
+    "domain": "morphology",
+    "concept": "Stranding and inflection of incorporated forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some incorporated forms can be stranded, unlike ordinary weak to. A few show inflection on the verbal component while others are invariant or restricted.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Past and progressive forms of have to use the ordinary construction. Some speakers reanalyze gotta after omission of perfect have.",
+        "pages": [
+          1617,
+          1618
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They asked us to leave, but we don't wanna.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We had to leave before noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6.3",
+        "pages": [
+          1617,
+          1618
+        ],
+        "pdf_pages": [
+          1637,
+          1638
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stranding and inflection of incorporated forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-141",
+    "domain": "morphology",
+    "concept": "Liaison and article choice by sound",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "The indefinite article uses an before a vowel sound and a before a consonant sound, regardless of the next word's initial letter.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 18.",
+    "violation": "The indefinite article form conflicts with the next pronounced sound.",
+    "exceptions": [
+      {
+        "description": "The relevant sound is the next sound after the article, including at the start of a modifier. Linking and intrusive r in non-rhotic accents are a separate liaison pattern.",
+        "pages": [
+          1618
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They adopted a uniform policy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It took an hour to finish.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They adopted an uniform policy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "It took a hour to finish.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6.4",
+        "pages": [
+          1618
+        ],
+        "pdf_pages": [
+          1638
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Liaison and article choice by sound",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "The indefinite article form conflicts with the next pronounced sound.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They adopted an uniform policy. ||| They adopted a uniform policy.",
+        "It took a hour to finish. ||| It took an hour to finish."
+      ],
+      "learner_explanation": "The indefinite article uses an before a vowel sound and a before a consonant sound, regardless of the next word's initial letter.",
+      "corrected_paragraph_template": "Use a before a consonant sound and an before a vowel sound.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "He read an historical novel.",
+        "She bought a herb in Britain.",
+        "She bought an herb in the United States.",
+        "It was an unusually quiet day."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "article-determiner"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-142",
+    "domain": "morphology",
+    "concept": "Initial h and variation in a or an",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A word with unpronounced initial h takes an, while a pronounced h normally selects a. Some unstressed h-initial syllables show variation in speech and writing.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Herb commonly differs between American and British English. An historical is attested, while a historical is the more usual modern form.",
+        "pages": [
+          1618,
+          1619
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She gave an honest answer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He read a historical novel.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§6.4",
+        "pages": [
+          1618,
+          1619
+        ],
+        "pdf_pages": [
+          1638,
+          1639
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Initial h and variation in a or an",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
