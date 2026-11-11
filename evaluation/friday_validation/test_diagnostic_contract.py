@@ -52,7 +52,7 @@ class TestDiagnosticContract(unittest.TestCase):
         )
         self.assertEqual(
             summary.get("diagnostic_status"),
-            "no_supported_error_detected",
+            "analysis_incomplete",
         )
         self.assertIs(
             summary.get("grammaticality_certified"),

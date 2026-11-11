@@ -1,10 +1,13 @@
 
 import json
+import os
 import unittest
 from urllib.request import Request, urlopen
 
-API_URL = "http://127.0.0.1:8001/api/parse"
-
+API_URL = os.environ.get(
+    "SYNTUTOR_QA_API_URL",
+    "http://127.0.0.1:8001/api/parse",
+)
 
 def analyze(sentence):
     request = Request(
