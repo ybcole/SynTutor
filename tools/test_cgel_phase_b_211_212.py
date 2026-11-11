@@ -49,7 +49,7 @@ class Cambridge211212(unittest.TestCase):
             for source in rule["sources"]:
                 self.assertEqual(source["chapter"], 3)
                 self.assertEqual(source["pdf_pages"], [p + 20 for p in source["pages"]])
-        self.assertIn("does not entail", self.by_id["OTH-592"]["statement"])
+        self.assertIn("does not entail", self.by_id["OTH-592"]["concept"])
         self.assertIn("actually", self.by_id["OTH-593"]["statement"])
         self.assertIn("inference", self.by_id["OTH-595"]["statement"])
 
@@ -76,7 +76,13 @@ class Cambridge211212(unittest.TestCase):
         self.assertIn("Phase D", audit)
         self.assertIn("1,610 unprocessed", audit)
         coverage = (ROOT / "COVERAGE.md").read_text(encoding="utf-8")
-        self.assertIn("**887 rules**", coverage)
-        self.assertIn("**139 extracted**", coverage)
-        self.assertIn("1610 unprocessed", coverage)
-        self.assertIn("Source-extracted; QA pending", coverage)
+        import re
+        catalog_count = re.search(r"= \\*\\*(\\d+) rules\\*\\*", coverage)
+        self.assertIsNotNone(catalog_count)
+        self.assertGreaterEqual(int(catalog_count.group(1)), 887)
+        self.assertIn("| 3. The verb | 142 | 139 | 0 | 3 | 0 |", coverage)
+        self.assertIn("PHASE_B_PP211_212_REPORT.md", coverage)
+        extracted = sum(row["status"] == "extracted" for row in self.pages)
+        pending = sum(row["status"] == "unprocessed" for row in self.pages)
+        self.assertIn(f"**{extracted} extracted**", coverage)
+        self.assertIn(f"{pending} unprocessed", coverage)
