@@ -22203,5 +22203,1617 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-346",
+    "domain": "phrases",
+    "concept": "Collective and transparent noun senses",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Number-transparent nouns characteristically take an overt or recoverable of-complement. Ordinary collective nouns can stand without one.",
+    "condition": "Applies to the construction described in §18.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Several spellings have distinct collective and quantificational senses. Majority and minority are borderline.",
+        "pages": [
+          503
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The band has finished rehearsing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A number have already replied.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.2",
+        "pages": [
+          503
+        ],
+        "pdf_pages": [
+          523
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Collective and transparent noun senses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-347",
+    "domain": "phrases",
+    "concept": "Mass aggregates and agreement",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A singular noncount aggregate does not license the plural agreement override available to some count collectives.",
+    "condition": "Applies to the construction described in §18.2 of Chapter 5.",
+    "violation": "A singular mass aggregate is incorrectly given plural verb agreement.",
+    "exceptions": [
+      {
+        "description": "Separate plural count nouns for individual members have ordinary plural agreement.",
+        "pages": [
+          504
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The furniture has been delivered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The luggage was on the platform.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The furniture have been delivered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The luggage were on the platform.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.2",
+        "pages": [
+          504
+        ],
+        "pdf_pages": [
+          524
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mass aggregates and agreement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "agreement",
+      "error_pattern": "A singular mass aggregate is incorrectly given plural verb agreement.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The furniture have been delivered. ||| The furniture has been delivered.",
+        "The luggage were on the platform. ||| The luggage was on the platform."
+      ],
+      "learner_explanation": "A singular noncount aggregate does not license the plural agreement override available to some count collectives.",
+      "corrected_paragraph_template": "Use singular verb agreement with the singular mass aggregate in this construction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The chairs have been delivered.",
+        "The staff have returned to their desks."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "agreement"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-348",
+    "domain": "phrases",
+    "concept": "Measures construed as units",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A formally plural measure can take a singular verb when construed as a single amount, distance, or interval.",
+    "condition": "Applies to the construction described in §18.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A singular predicative identifying the amount can require singular agreement. In some other measure contexts singular is a preference.",
+        "pages": [
+          504
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Forty dollars seems a high price.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Six miles is too far to walk today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.3",
+        "pages": [
+          504
+        ],
+        "pdf_pages": [
+          524
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Measures construed as units",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-349",
+    "domain": "phrases",
+    "concept": "Proportional subject agreement",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A percent expression normally takes its number from its complement. One in a numeral ratio can favor singular even when the following noun is plural.",
+    "condition": "Applies to the construction described in §18.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A collective complement may itself admit member agreement. An ordinary singular one can govern agreement directly.",
+        "pages": [
+          504
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Ten percent of the pages were blank.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Ten percent of the paper was recycled.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.3",
+        "pages": [
+          504
+        ],
+        "pdf_pages": [
+          524
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Proportional subject agreement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-350",
+    "domain": "phrases",
+    "concept": "Agreement with fused relatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In a fused relative with determiner what, the nominal head supplies number. Pronominal what defaults to singular.",
+    "condition": "Applies to the construction described in §18.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A plural predicative can license or require a plural override. Matrix and subordinate agreement must be analyzed separately.",
+        "pages": [
+          505
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What evidence remains is inconclusive.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What objections were raised were minor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.3",
+        "pages": [
+          505
+        ],
+        "pdf_pages": [
+          525
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement with fused relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-351",
+    "domain": "phrases",
+    "concept": "Agreement in interrogatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Interrogative who and what default to singular without limiting the answer to one. A presupposed plural answer can license plural agreement.",
+    "condition": "Applies to the construction described in §18.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A plural predicative can require plural agreement. Fused which can take either number according to the expected answer.",
+        "pages": [
+          505,
+          506
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who wants another copy?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which of these are yours?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.3",
+        "pages": [
+          505,
+          506
+        ],
+        "pdf_pages": [
+          525,
+          526
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement in interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-352",
+    "domain": "phrases",
+    "concept": "Relative attachment after one of",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A relative after one of can modify the plural embedded nominal or the larger phrase headed by fused one, depending on the construction.",
+    "condition": "Applies to the construction described in §18.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Singular agreement is also attested with a plural antecedent in the cited pattern, particularly after those.",
+        "pages": [
+          506
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is one of those editors who always check the figures.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One of our editors who is new to the job asked for help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.3",
+        "pages": [
+          506
+        ],
+        "pdf_pages": [
+          526
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative attachment after one of",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-353",
+    "domain": "phrases",
+    "concept": "Agreement with fused partitive determinatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Any and none take singular with noncount construal and can alternate in number over a plural set. Either and neither favor singular in formal style.",
+    "condition": "Applies to the construction described in §18.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Plural agreement with either and neither is attested in the fused construction.",
+        "pages": [
+          507
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "None of the paint was usable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "None of the jars were broken.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.3",
+        "pages": [
+          507
+        ],
+        "pdf_pages": [
+          527
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement with fused partitive determinatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-354",
+    "domain": "phrases",
+    "concept": "Person override in cleft relatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A nominative cleft antecedent can pass first-person features to the relative subject. An accusative cleft antecedent can instead give default third person.",
+    "condition": "Applies to the construction described in §18.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The alternation correlates with the case and style of the cleft expression.",
+        "pages": [
+          507
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is I who am responsible.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's me who is responsible.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.3",
+        "pages": [
+          507
+        ],
+        "pdf_pages": [
+          527
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Person override in cleft relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-355",
+    "domain": "phrases",
+    "concept": "And coordination and unit construal",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "And-coordinated subjects generally take plural agreement. A unit interpretation or a single referent described twice can license singular.",
+    "condition": "Applies to the construction described in §18.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Abstract coordinates more readily permit either construal. Distinct concrete individuals ordinarily require plural.",
+        "pages": [
+          507,
+          508
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Our cook and driver has retired.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our cook and our driver have retired.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.4",
+        "pages": [
+          507,
+          508
+        ],
+        "pdf_pages": [
+          527,
+          528
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "And coordination and unit construal",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-356",
+    "domain": "phrases",
+    "concept": "Distributive and clausal coordination",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Repeated each or every in the cited coordinated subjects gives singular agreement. Coordinated subject clauses generally take singular.",
+    "condition": "Applies to the construction described in §18.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Separate facts or questions can license plural agreement with coordinated clauses.",
+        "pages": [
+          508
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Each laptop and each monitor has a label.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Where she went and why she left remain unanswered questions.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.4",
+        "pages": [
+          508
+        ],
+        "pdf_pages": [
+          528
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distributive and clausal coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-357",
+    "domain": "phrases",
+    "concept": "Or coordination and number resolution",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Or coordinates of the same number ordinarily take that number. Mixed number can create a conflict for which proximity alone does not ensure a natural result.",
+    "condition": "Applies to the construction described in §18.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Negative scope or inclusive readings can favor plural. Supplements introduced by or can have corrective or explanatory effects.",
+        "pages": [
+          508,
+          509
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Either the key or the badge is missing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Either the keys or the badges are missing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.4",
+        "pages": [
+          508,
+          509
+        ],
+        "pdf_pages": [
+          528,
+          529
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Or coordination and number resolution",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-358",
+    "domain": "phrases",
+    "concept": "Neither nor and related coordinators",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Neither nor can allow singular or plural with two singular coordinates and usually favors plural with a plural coordinate.",
+    "condition": "Applies to the construction described in §18.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not only but also takes agreement from the second coordinate in the cited examples. And not and but not take it from the first.",
+        "pages": [
+          509,
+          510
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Neither Rina nor Tomas has arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Neither the editors nor the designer are available.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.4",
+        "pages": [
+          509,
+          510
+        ],
+        "pdf_pages": [
+          529,
+          530
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Neither nor and related coordinators",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-359",
+    "domain": "phrases",
+    "concept": "Person conflicts in disjunctive coordination",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A first- or second-person singular coordinate can make person resolution difficult. Final-coordinate agreement is a tendency in these examples.",
+    "condition": "Applies to the construction described in §18.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Speakers may avoid awkward agreement by using a form without the contrast.",
+        "pages": [
+          509
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Either you or I will take the minutes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Either you or she is going to chair the meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.4",
+        "pages": [
+          509
+        ],
+        "pdf_pages": [
+          529
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Person conflicts in disjunctive coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-360",
+    "domain": "phrases",
+    "concept": "Predicative matching is semantic",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Predicative number matching is restricted by interpretation and also occurs in as-phrase adjuncts. It does not extend to grammatical person agreement.",
+    "condition": "Applies to the construction described in §19.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The verb within a predicative relative agrees with its own antecedent.",
+        "pages": [
+          510,
+          511
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I am a gardener who grows herbs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As gardeners, they save seeds every year.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§19.1",
+        "pages": [
+          510,
+          511
+        ],
+        "pdf_pages": [
+          530,
+          531
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative matching is semantic",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-361",
+    "domain": "phrases",
+    "concept": "Predicative gender and independent number",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A predicative head can determine its own relative-pronoun properties. Specifying clauses readily permit different numbers in predicand and predicative.",
+    "condition": "Applies to the construction described in §19.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Semantic compatibility can still limit a pairing. A plural predicative does not control the matrix verb.",
+        "pages": [
+          511,
+          512
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The main problem is two missing cables.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two missing cables are the main problem.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§19.1",
+        "pages": [
+          511,
+          512
+        ],
+        "pdf_pages": [
+          531,
+          532
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative gender and independent number",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-362",
+    "domain": "phrases",
+    "concept": "Distributive and collective predicatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A plural predicative can distribute a property over individuals or subsets. A singular neutral predicative can ascribe a property to the set as a whole.",
+    "condition": "Applies to the construction described in §19.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Individual-only and collective-only properties have different limits. A collective property can distribute over subsets.",
+        "pages": [
+          513,
+          514
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The neighbors are a nuisance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The neighbors are nuisances.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§19.2",
+        "pages": [
+          513,
+          514
+        ],
+        "pdf_pages": [
+          533,
+          534
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distributive and collective predicatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-363",
+    "domain": "phrases",
+    "concept": "Collective properties and reciprocal sets",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A collective property applies to a set. A plural collective predicative can distribute over subsets, and plural twins permits reciprocal pairing.",
+    "condition": "Applies to the construction described in §19.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A singular twin can describe an individual, while a reciprocal reading requires a suitable grouping.",
+        "pages": [
+          514,
+          515
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those stamps are a fine collection.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rina and Mara are twins.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§19.2",
+        "pages": [
+          514,
+          515
+        ],
+        "pdf_pages": [
+          534,
+          535
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Collective properties and reciprocal sets",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-364",
+    "domain": "phrases",
+    "concept": "Explicit quantification and predicative number",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Distributive predication does not itself assert that every member qualifies. All or both can make quantification explicit.",
+    "condition": "Applies to the construction described in §19.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Explicit quantification can license a singular predicative with some neutral properties, while individual-only properties retain number restrictions.",
+        "pages": [
+          515
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Both neighbors are a nuisance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Both neighbors are architects.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§19.3",
+        "pages": [
+          515
+        ],
+        "pdf_pages": [
+          535
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Explicit quantification and predicative number",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-365",
+    "domain": "phrases",
+    "concept": "Proper names and proper nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A proper name is an expression conventionally assigned to an entity. A proper noun is a word-level category, and a proper name can be headed by a common noun.",
+    "condition": "Applies to the construction described in §20.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A name can serve as a full NP, an attributive modifier, or the head of a larger expression. Titles may have other structures.",
+        "pages": [
+          515,
+          516
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They visited New Zealand.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The New Zealand delegation arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§20.1",
+        "pages": [
+          515,
+          516
+        ],
+        "pdf_pages": [
+          535,
+          536
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Proper names and proper nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-366",
+    "domain": "phrases",
+    "concept": "Strong and weak proper names",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Strong names have no article in their primary form, while weak names include the definite article. Some allow both forms.",
+    "condition": "Applies to the construction described in §20.2.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Weak names often lose the article when functioning attributively. Geographic categories show tendencies with lexical exceptions.",
+        "pages": [
+          517,
+          518
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They sailed across the Atlantic.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They booked an Atlantic crossing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§20.2.1",
+        "pages": [
+          517,
+          518
+        ],
+        "pdf_pages": [
+          537,
+          538
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Strong and weak proper names",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-367",
+    "domain": "phrases",
+    "concept": "Simple and composite name heads",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A name can have a simple head or a composite nominal. Given-name and family-name combinations lack clear evidence for a single head.",
+    "condition": "Applies to the construction described in §20.2.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Appellations can modify personal names. Some place names contain pre-head or post-head dependents.",
+        "pages": [
+          518,
+          519
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Professor Rowan Ellis opened the lecture.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They drove past Lake Michigan.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§20.2.2",
+        "pages": [
+          518,
+          519
+        ],
+        "pdf_pages": [
+          538,
+          539
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple and composite name heads",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-368",
+    "domain": "phrases",
+    "concept": "Embellishments of proper names",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An embellishment adds nonrestrictive information through a nominal, adjective, or determiner. A preceding occupational nominal can leave the name as head.",
+    "condition": "Applies to the construction described in §20.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A definite occupational noun followed by a name can instead head an appositive construction. Adjective and determiner embellishments have restricted licensing.",
+        "pages": [
+          519,
+          520
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Architect Maya Chen led the tour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The architect Maya Chen led the tour.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§20.3",
+        "pages": [
+          519,
+          520
+        ],
+        "pdf_pages": [
+          539,
+          540
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Embellishments of proper names",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-369",
+    "domain": "phrases",
+    "concept": "Secondary names for bearers and comparable entities",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Secondary name uses can denote people sharing a name, or people with relevant properties of a familiar bearer.",
+    "condition": "Applies to the construction described in §20.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These uses admit ordinary determination and modification. A stressed article can single out a famous bearer.",
+        "pages": [
+          521
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two Leilas joined the workshop.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team needs another Ada Lovelace.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§20.4",
+        "pages": [
+          521
+        ],
+        "pdf_pages": [
+          541
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Secondary names for bearers and comparable entities",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-370",
+    "domain": "phrases",
+    "concept": "Names for manifestations, products, and editions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Secondary names can refer to a manifestation, a work by the named creator, or a copy, edition, performance, or production of a named work.",
+    "condition": "Applies to the construction described in §20.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A trade name coined for a product kind need not be a proper name. Some creator names allow noncount readings.",
+        "pages": [
+          521,
+          522
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We listened to some Mozart.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Can I borrow your Guardian?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§20.4",
+        "pages": [
+          521,
+          522
+        ],
+        "pdf_pages": [
+          541,
+          542
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Names for manifestations, products, and editions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-371",
+    "domain": "phrases",
+    "concept": "Vocatives as independent terms of address",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Vocative NPs address a listener and can appear in initial, medial, or final position, or stand alone.",
+    "condition": "Applies to the construction described in §20.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Names, kin and status terms, pronouns, compound determinatives, and restricted fused heads can be used. A vocative is not a verb dependent.",
+        "pages": [
+          522,
+          523
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara, the bus is here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Would you close the window, please, sir?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§20.5",
+        "pages": [
+          522,
+          523
+        ],
+        "pdf_pages": [
+          542,
+          543
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Vocatives as independent terms of address",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
   }
 ]

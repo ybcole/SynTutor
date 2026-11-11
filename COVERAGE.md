@@ -1,6 +1,6 @@
 # CGEL printed-page coverage
 
-**Chapter 5 Phase B underway (2026-11-11):** printed pp.323–502 checked, 177 expository pages extracted and 3 contents-only skips; Chapter 4 remains source-complete. All new grammar rules remain inactive.
+**Chapter 5 Phase B source extraction complete (2026-11-11).** Printed pp.326–523 contain 198 extracted pages. Pages 323–325 are contents-only, and p.524 is blank in the full volume.
 
 **Phase B extraction status: 2026-11-11.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
 
@@ -10,7 +10,7 @@
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
-| 5. Nouns and noun phrases | 202 | 177 | 21 | 3 | 1 | In progress: pp. 323–502 |
+| 5. Nouns and noun phrases | 202 | 198 | 0 | 3 | 1 | Source-extracted |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
 | 7. Prepositions and preposition phrases | 66 | 0 | 65 | 1 | 0 | Incomplete |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **423 extracted**, 1321 unprocessed, 18 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **444 extracted**, 1300 unprocessed, 18 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -168,4 +168,9 @@ Added 39 inactive English-only records (COMP-199–COMP-237), source audit sourc
 
 ## Chapter 5 pp.479–502
 
-30 records (`PHR-316`–`PHR-345`) cover phrasal genitives, own, and pronoun and verb agreement. See the [source report](sources/cambridge/chapter_05/PP479_502_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP479_502_AUDIT.json). Continue at printed p.503.
+30 records (`PHR-316`–`PHR-345`) cover phrasal genitives, own, and pronoun and verb agreement. See the [source report](sources/cambridge/chapter_05/PP479_502_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP479_502_AUDIT.json).
+
+
+## Chapter 5 pp.503–524
+
+26 records (`PHR-346`–`PHR-371`) cover agreement, predicatives, proper names, and vocatives. Printed p.524 is verified blank in the full volume. See the [source report](sources/cambridge/chapter_05/PP503_524_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP503_524_AUDIT.json).

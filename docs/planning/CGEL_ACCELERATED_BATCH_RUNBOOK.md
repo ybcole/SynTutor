@@ -174,4 +174,9 @@ Printed pp.455–478 checked against text and rendered pages as a 24-page batch.
 
 ## Chapter 5 ninth checkpoint (2026-11-11)
 
-Printed pp.479–502 checked in text and rendered layout. Added 30 original-example records (`PHR-316`–`PHR-345`). Continue at printed p.503. The remaining substantive range is pp.503–523. Verify p.524 against the full volume before final validation.
+Printed pp.479–502 checked in text and rendered layout. Added 30 original-example records (`PHR-316`–`PHR-345`). The final checkpoint covers pp.503–524.
+
+
+## Chapter 5 source extraction complete (2026-11-11)
+
+The final batch adds 26 records (`PHR-346`–`PHR-371`) for pp.503–523 and confirms that full-volume PDF p.544, corresponding to printed p.524, is blank. Chapter 5 has 198 substantive pages extracted, three contents-only skips, one verified split-source exclusion, and zero unprocessed pages. Phase B next proceeds to Chapter 7 under the priority sequence in the master plan.

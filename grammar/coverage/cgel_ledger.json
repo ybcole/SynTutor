@@ -3522,156 +3522,156 @@
     {
       "page": 503,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 504,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 505,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 506,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 507,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 508,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 509,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 510,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 511,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 512,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 513,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 514,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 515,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 516,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 517,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 518,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 519,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 520,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 521,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 522,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 523,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 524,
       "chapter": 5,
       "status": "absent_from_source",
-      "reason": "Absent from the 2026-11-08 split-source manifest; the matching uploaded full-PDF page is textless.",
-      "evidence": null
+      "reason": "Absent from the split-source manifest; full-volume PDF page 544 is blank.",
+      "evidence": "sources/cambridge/chapter_05/PP503_524_REPORT.md"
     },
     {
       "page": 525,
