@@ -1,6 +1,6 @@
 # CGEL printed-page coverage
 
-**Chapter 5 Phase B underway (2026-11-11):** printed pp.323–478 checked, 153 expository pages extracted and 3 contents-only skips; Chapter 4 remains source-complete. All new grammar rules remain inactive.
+**Chapter 5 Phase B underway (2026-11-11):** printed pp.323–502 checked, 177 expository pages extracted and 3 contents-only skips; Chapter 4 remains source-complete. All new grammar rules remain inactive.
 
 **Phase B extraction status: 2026-11-11.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
 
@@ -10,7 +10,7 @@
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
-| 5. Nouns and noun phrases | 202 | 153 | 45 | 3 | 1 | In progress: pp. 323–478 |
+| 5. Nouns and noun phrases | 202 | 177 | 21 | 3 | 1 | In progress: pp. 323–502 |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
 | 7. Prepositions and preposition phrases | 66 | 0 | 65 | 1 | 0 | Incomplete |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **399 extracted**, 1345 unprocessed, 18 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **423 extracted**, 1321 unprocessed, 18 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -163,4 +163,9 @@ Added 39 inactive English-only records (COMP-199–COMP-237), source audit sourc
 
 ## Chapter 5 pp.455–478
 
-38 original-example records (`PHR-278`–`PHR-315`) cover post-head ordering, pronoun case, and genitive structures. See the [source report](sources/cambridge/chapter_05/PP455_478_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP455_478_AUDIT.json). Continue at printed p.479.
+38 original-example records (`PHR-278`–`PHR-315`) cover post-head ordering, pronoun case, and genitive structures. See the [source report](sources/cambridge/chapter_05/PP455_478_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP455_478_AUDIT.json).
+
+
+## Chapter 5 pp.479–502
+
+30 records (`PHR-316`–`PHR-345`) cover phrasal genitives, own, and pronoun and verb agreement. See the [source report](sources/cambridge/chapter_05/PP479_502_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP479_502_AUDIT.json). Continue at printed p.503.

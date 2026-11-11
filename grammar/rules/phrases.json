@@ -20277,5 +20277,1931 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-316",
+    "domain": "phrases",
+    "concept": "Head and phrasal genitives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Genitive marking can attach to the head or to the last word of a following dependent at the edge of the phrase.",
+    "condition": "Applies to the construction described in §16.6 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Heavy dependents reduce acceptability. Relative-clause endings are particularly associated with informal speech.",
+        "pages": [
+          479
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The captain's cabin was empty.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The captain of the ferry's cabin was empty.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.6",
+        "pages": [
+          479
+        ],
+        "pdf_pages": [
+          499
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Head and phrasal genitives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-317",
+    "domain": "phrases",
+    "concept": "Inner and outer case at the phrase edge",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Phrasal genitive marking is added to the last word in its existing form. A final pronoun can already bear case required by its own function.",
+    "condition": "Applies to the construction described in §16.6 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A final preposition has no inner noun case. Head genitive pronouns use their inflected forms.",
+        "pages": [
+          480
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The woman beside me's phone rang.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A cousin of mine's dog escaped.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.6",
+        "pages": [
+          480
+        ],
+        "pdf_pages": [
+          500
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inner and outer case at the phrase edge",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-318",
+    "domain": "phrases",
+    "concept": "Genitive morphology and regular plurals",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The ordinary head genitive of a regular s-plural is phonologically bare, whereas irregular plurals take the genitive suffix.",
+    "condition": "Applies to the construction described in §16.6 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Phrase-edge marking on a regular plural shows speaker variation. The source uses the contrast and pronoun suppletion as evidence for inflection.",
+        "pages": [
+          480,
+          481
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gardeners' boots were wet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The children's boots were wet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.6",
+        "pages": [
+          480,
+          481
+        ],
+        "pdf_pages": [
+          500,
+          501
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive morphology and regular plurals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-319",
+    "domain": "phrases",
+    "concept": "Genitives in coordinations and supplements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A genitive coordination or supplementation can be marked on all parts or at its final edge in suitable contexts.",
+    "condition": "Applies to the construction described in §16.6 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Single marking is marginal when a coordinate is a personal pronoun. Written supplementation often favors multiple marking and paired commas.",
+        "pages": [
+          481,
+          482
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara and Ivo's proposal passed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mara's and Ivo's proposals passed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.6",
+        "pages": [
+          481,
+          482
+        ],
+        "pdf_pages": [
+          501,
+          502
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitives in coordinations and supplements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-320",
+    "domain": "phrases",
+    "concept": "Own before a separate noun head",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Attributive own generally follows a genitive. Special readings express doing something oneself or acquiring something for oneself.",
+    "condition": "Applies to the construction described in §16.7 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The general emphatic use can take a full genitive NP and need not select the local subject as antecedent. Fixed expressions can lack the genitive.",
+        "pages": [
+          482
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The children packed their own bags.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rina's own bicycle needed a repair.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.7",
+        "pages": [
+          482
+        ],
+        "pdf_pages": [
+          502
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Own before a separate noun head",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-321",
+    "domain": "phrases",
+    "concept": "Own as fused modifier-head",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Own can fuse with the head while retaining a dependent genitive pronoun. Simple anaphoric and special fused uses are available.",
+    "condition": "Applies to the construction described in §16.7 of Chapter 5.",
+    "violation": "An independent genitive is used before own.",
+    "exceptions": [
+      {
+        "description": "Own does not head the cited partitive pattern. Of one's own and on one's own have special meanings and antecedent requirements.",
+        "pages": [
+          483
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I brought my own.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She finished the assignment on her own.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "I brought mine own.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She finished the assignment on hers own.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.7",
+        "pages": [
+          483
+        ],
+        "pdf_pages": [
+          503
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Own as fused modifier-head",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "An independent genitive is used before own.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I brought mine own. ||| I brought my own.",
+        "She finished the assignment on hers own. ||| She finished the assignment on her own."
+      ],
+      "learner_explanation": "Own can fuse with the head while retaining a dependent genitive pronoun. Simple anaphoric and special fused uses are available.",
+      "corrected_paragraph_template": "Use the dependent genitive before own.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I brought mine.",
+        "She finished the assignment on her very own computer."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "agreement"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-322",
+    "domain": "phrases",
+    "concept": "Modification of own expressions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Very can intensify own in some constructions, and all can modify a suitable of one's own phrase.",
+    "condition": "Applies to the construction described in §16.7 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The intensifying constructions do not change the genitive's dependent form.",
+        "pages": [
+          483
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is my very own sketch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He finally had a desk all of his own.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.7",
+        "pages": [
+          483
+        ],
+        "pdf_pages": [
+          503
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modification of own expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-323",
+    "domain": "phrases",
+    "concept": "Grammatical gender and agreement",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Grammatical gender classes are evidenced by agreement relations. English expresses gender distinctions through pronouns rather than inflected articles or attributive adjectives.",
+    "condition": "Applies to the construction described in §17.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Grammatical categories and referential properties do not map one to one. The relative system distinguishes personal and nonpersonal reference.",
+        "pages": [
+          484,
+          485
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The electrician said she could help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The engine, which was overheating, shut itself off.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.1",
+        "pages": [
+          484,
+          485
+        ],
+        "pdf_pages": [
+          504,
+          505
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Grammatical gender and agreement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-324",
+    "domain": "phrases",
+    "concept": "Antecedent description and pronoun compatibility",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The description used in an antecedent can affect which pronoun is available even when two descriptions pick out the same referent.",
+    "condition": "Applies to the construction described in §17.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source contrasts names and human-specific descriptions with less specific descriptions. Reference and context also influence choice.",
+        "pages": [
+          485,
+          486
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The baby dropped its toy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My daughter dropped her toy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.1",
+        "pages": [
+          485,
+          486
+        ],
+        "pdf_pages": [
+          505,
+          506
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Antecedent description and pronoun compatibility",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-325",
+    "domain": "phrases",
+    "concept": "Personal pronoun agreement and case",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Personal pronouns can agree with an antecedent in person, number, and where relevant gender. Their own syntactic function determines case.",
+    "condition": "Applies to the construction described in §17.2.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Antecedents and pronouns need not occupy the same function or sentence. Singular and plural you differ overtly in the reflexive.",
+        "pages": [
+          486,
+          487
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Ari said we could call him.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You two should introduce yourselves.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.1",
+        "pages": [
+          486,
+          487
+        ],
+        "pdf_pages": [
+          506,
+          507
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Personal pronoun agreement and case",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-326",
+    "domain": "phrases",
+    "concept": "Pronouns without a textual antecedent",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Personal pronouns can be interpreted deictically, and dummy it has nonreferential uses.",
+    "condition": "Applies to the construction described in §17.2.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Third-person reflexives have tighter antecedent requirements. Changing a nonreflexive may select a different referent instead of making the clause ungrammatical.",
+        "pages": [
+          487
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could you move the ladder?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is snowing outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.1",
+        "pages": [
+          487
+        ],
+        "pdf_pages": [
+          507
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronouns without a textual antecedent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-327",
+    "domain": "phrases",
+    "concept": "Gender compatibility rather than feature identity",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An antecedent can be compatible with a pronoun without encoding all the properties expressed by that pronoun.",
+    "condition": "Applies to the construction described in §17.2.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A role noun such as tutor need not be lexically ambiguous merely because it can antecede different pronouns.",
+        "pages": [
+          487,
+          488
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "My tutor said she would email.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My tutor said he would email.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.1",
+        "pages": [
+          487,
+          488
+        ],
+        "pdf_pages": [
+          507,
+          508
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gender compatibility rather than feature identity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-328",
+    "domain": "phrases",
+    "concept": "Personification with feminine pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some speakers use feminine pronouns for ships and other personified objects, or for countries construed politically.",
+    "condition": "Applies to the construction described in §17.2.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A geographical reading favors it. The extent of personification varies by speaker and context.",
+        "pages": [
+          488
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ferry began her final voyage.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The ferry began its final voyage.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.2",
+        "pages": [
+          488
+        ],
+        "pdf_pages": [
+          508
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Personification with feminine pronouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-329",
+    "domain": "phrases",
+    "concept": "Neuter pronouns with animals and infants",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "It can refer to animals even when the antecedent specifies their sex. In suitable contexts it can also refer to a baby described without sex specification.",
+    "condition": "Applies to the construction described in §17.2.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Choice can reflect speaker stance and familiarity. Human-specific descriptions such as son and daughter have different compatibility in the source.",
+        "pages": [
+          488,
+          489
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The mare lifted its head.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The mare lifted her head.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.2",
+        "pages": [
+          488,
+          489
+        ],
+        "pdf_pages": [
+          508,
+          509
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Neuter pronouns with animals and infants",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-330",
+    "domain": "phrases",
+    "concept": "Noun classes based on compatibility",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The source classifies noun senses by compatibility with the core singular pronouns he, she, and it.",
+    "condition": "Applies to the construction described in §17.2.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A noun compatible with more than one form need not have multiple senses. A genuine sense distinction can produce different patterns.",
+        "pages": [
+          489,
+          490
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The diner said she had finished the meal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dining car was empty, so they closed it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.3",
+        "pages": [
+          489,
+          490
+        ],
+        "pdf_pages": [
+          509,
+          510
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun classes based on compatibility",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-331",
+    "domain": "phrases",
+    "concept": "Animal noun classes and gradient personification",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Animal terms specifying sex can permit the matching gendered form or it. Animal terms without sex specification can permit all three core forms.",
+    "condition": "Applies to the construction described in §17.2.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Relative likelihood depends on the animal and discourse. Personification of inanimates varies across speakers.",
+        "pages": [
+          491
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The rooster spread its wings.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The rooster spread his wings.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.3",
+        "pages": [
+          491
+        ],
+        "pdf_pages": [
+          511
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Animal noun classes and gradient personification",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-332",
+    "domain": "phrases",
+    "concept": "Unspecified human reference",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A singular human antecedent can denote a known person, an unidentified person, a future role occupant, or a variable ranging over a set.",
+    "condition": "Applies to the construction described in §17.2.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These interpretations differ in whether the speaker can or wishes to specify sex. An apparently generic gendered form may suggest a specific assumption.",
+        "pages": [
+          491,
+          492
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Someone forgot their scarf.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The successful applicant will receive their schedule by email.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.4",
+        "pages": [
+          491,
+          492
+        ],
+        "pdf_pages": [
+          511,
+          512
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unspecified human reference",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-333",
+    "domain": "phrases",
+    "concept": "Alternatives for unspecified gender",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The source documents coordinated forms, written composites, singular they, and restructuring as strategies for unspecified human antecedents.",
+    "condition": "Applies to the construction described in §17.2.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Historically generic he and minority generic she are described as usage patterns. Written composites and repeated coordination have style constraints.",
+        "pages": [
+          492,
+          493
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Each caller can leave their number.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "All callers can leave their numbers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.4",
+        "pages": [
+          492,
+          493
+        ],
+        "pdf_pages": [
+          512,
+          513
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternatives for unspecified gender",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-334",
+    "domain": "phrases",
+    "concept": "Singular they and finite agreement",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "They can have a singular antecedent while retaining the verb agreement used with plural they.",
+    "condition": "Applies to the construction described in §17.2.4 of Chapter 5.",
+    "violation": "The finite verb has the wrong number for the subject in this construction.",
+    "exceptions": [
+      {
+        "description": "The source documents themselves and speaker variation with themself. A singular antecedent does not require a singular verb with they.",
+        "pages": [
+          493,
+          494
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Someone said they were ready.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If a visitor arrives, they are welcome to wait here.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Someone said they was ready.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "If a visitor arrives, they is welcome to wait here.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.4",
+        "pages": [
+          493,
+          494
+        ],
+        "pdf_pages": [
+          513,
+          514
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular they and finite agreement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "agreement",
+      "error_pattern": "The finite verb has the wrong number for the subject in this construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Someone said they was ready. ||| Someone said they were ready.",
+        "If a visitor arrives, they is welcome to wait here. ||| If a visitor arrives, they are welcome to wait here."
+      ],
+      "learner_explanation": "They can have a singular antecedent while retaining the verb agreement used with plural they.",
+      "corrected_paragraph_template": "Use the ordinary verb agreement of they in the standard construction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Someone was ready.",
+        "If a visitor arrives, the visitor is welcome to wait here."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "agreement"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-335",
+    "domain": "phrases",
+    "concept": "Disjunctive antecedents and plural restructuring",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "They can refer back to a disjunction of singular alternatives. Rephrasing with a plural antecedent can avoid stylistic friction in some contexts.",
+    "condition": "Applies to the construction described in §17.2.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The verb with the antecedent and the verb with anaphoric they belong to different agreement relations.",
+        "pages": [
+          494,
+          495
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If either parent calls, tell them I'll be back soon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Visitors should show their passes at the door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.4",
+        "pages": [
+          494,
+          495
+        ],
+        "pdf_pages": [
+          514,
+          515
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Disjunctive antecedents and plural restructuring",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-336",
+    "domain": "phrases",
+    "concept": "Collective antecedents and shifts in construal",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A collective antecedent can support singular unit or plural member pronouns. A singular verb can coexist with a later plural nonreflexive pronoun in suitable contexts.",
+    "condition": "Applies to the construction described in §17.2.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A nearby singular pronoun after a plural verb is normally disfavored. Distributive properties favor a member reading.",
+        "pages": [
+          495
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The panel has issued its recommendation.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The group was having their badges checked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.5",
+        "pages": [
+          495
+        ],
+        "pdf_pages": [
+          515
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Collective antecedents and shifts in construal",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-337",
+    "domain": "phrases",
+    "concept": "Partitive antecedents and reflexives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "With collective partitives, a plural oblique can influence pronoun person and number. A local reflexive is more constrained when the verb is singular.",
+    "condition": "Applies to the construction described in §17.2.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "One of us and one of you have different reflexive possibilities. Singular they can refer to the individual selected by one.",
+        "pages": [
+          496
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A group of us are getting ourselves ready.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One of the children left their lunch behind.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.5",
+        "pages": [
+          496
+        ],
+        "pdf_pages": [
+          516
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Partitive antecedents and reflexives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-338",
+    "domain": "phrases",
+    "concept": "Person and number with coordinated antecedents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An and-coordination containing the speaker or addressee can select first- or second-person plural forms. An exclusive disjunction can also license corresponding genitives.",
+    "condition": "Applies to the construction described in §17.2.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Reflexives can be awkward with exclusive disjunctions. The final coordinate alone does not determine the pronoun's antecedent.",
+        "pages": [
+          497
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo and I renewed our passes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Either Jo or I will have to move our car.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.2.5",
+        "pages": [
+          497
+        ],
+        "pdf_pages": [
+          517
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Person and number with coordinated antecedents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-339",
+    "domain": "phrases",
+    "concept": "Personal and nonpersonal relative agreement",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Relative who and which distinguish personal and nonpersonal uses in both singular and plural. The contrast does not encode male versus female.",
+    "condition": "Applies to the construction described in §17.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Animals can permit either form under different construals. The source treats personal names and ordinary personal descriptions differently from generic animal nouns.",
+        "pages": [
+          497,
+          498
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The volunteers who arrived early helped.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcels which arrived early were sorted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.3",
+        "pages": [
+          497,
+          498
+        ],
+        "pdf_pages": [
+          517,
+          518
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Personal and nonpersonal relative agreement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-340",
+    "domain": "phrases",
+    "concept": "Collective and animal relative pronoun construals",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A human collective may take who on a member reading or which on a unit reading. Which can occur with a later gendered pronoun referring to an animal.",
+    "condition": "Applies to the construction described in §17.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An inanimate ship takes which even where the personal pronoun she is used. The opposite animal pairing with who and it is markedly less acceptable in the source.",
+        "pages": [
+          498,
+          499
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The committee, which has issued its report, will meet again.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dog which had lost his collar waited by the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§17.3",
+        "pages": [
+          498,
+          499
+        ],
+        "pdf_pages": [
+          518,
+          519
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Collective and animal relative pronoun construals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-341",
+    "domain": "phrases",
+    "concept": "Finite verb forms that show agreement",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Subject person and number affect present-tense nonmodal verbs and preterite be. Present be has am, is, and are.",
+    "condition": "Applies to the construction described in §18.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Modal auxiliaries and ordinary lexical preterites lack the corresponding contrast. Irrealis were has a separate analysis.",
+        "pages": [
+          499
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lamp was flickering.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lamps were flickering.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.1",
+        "pages": [
+          499
+        ],
+        "pdf_pages": [
+          519
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite verb forms that show agreement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-342",
+    "domain": "phrases",
+    "concept": "Agreement in relative clauses and with non-NP subjects",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Relative subjects normally inherit person and number from the antecedent. Clausal and other non-NP subjects normally take default third-person singular agreement.",
+    "condition": "Applies to the construction described in §18.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source distinguishes overt relative pronouns and gaps. Existential there has a separate agreement relation to the displaced subject.",
+        "pages": [
+          500
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lights that were flickering went out.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Why the lights failed remains unclear.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.1",
+        "pages": [
+          500
+        ],
+        "pdf_pages": [
+          520
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement in relative clauses and with non-NP subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-343",
+    "domain": "phrases",
+    "concept": "Agreement attraction versus grammatical overrides",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "In simple agreement the entire subject controls the verb. A nearer plural inside a singular subject does not by itself license plural agreement.",
+    "condition": "Applies to the construction described in §18.1 of Chapter 5.",
+    "violation": "The finite verb has the wrong number for the subject in this construction.",
+    "exceptions": [
+      {
+        "description": "Number-transparent noun phrases and collective construals can license separate grammatical patterns.",
+        "pages": [
+          500,
+          501
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The color of the curtains has faded.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The list of available rooms is on the desk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The color of the curtains have faded.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The list of available rooms are on the desk.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.1",
+        "pages": [
+          500,
+          501
+        ],
+        "pdf_pages": [
+          520,
+          521
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement attraction versus grammatical overrides",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "agreement",
+      "error_pattern": "The finite verb has the wrong number for the subject in this construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The color of the curtains have faded. ||| The color of the curtains has faded.",
+        "The list of available rooms are on the desk. ||| The list of available rooms is on the desk."
+      ],
+      "learner_explanation": "In simple agreement the entire subject controls the verb. A nearer plural inside a singular subject does not by itself license plural agreement.",
+      "corrected_paragraph_template": "Make the verb agree with the subject as a whole in this simple agreement construction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "A number of curtains have faded.",
+        "The committee have all signed the report."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "agreement"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-344",
+    "domain": "phrases",
+    "concept": "Collective and number-transparent overrides",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Collective singulars can allow plural member agreement. In the cited number-transparent constructions the complement determines agreement, which can override the head in either direction.",
+    "condition": "Applies to the construction described in §18.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A total-denoting the number is separate. Collective plural agreement varies by dialect and register and depends on the predicate.",
+        "pages": [
+          501,
+          502
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A number of windows have cracked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Heaps of time has been wasted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.2",
+        "pages": [
+          501,
+          502
+        ],
+        "pdf_pages": [
+          521,
+          522
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Collective and number-transparent overrides",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-345",
+    "domain": "phrases",
+    "concept": "Predicate restrictions on collective agreement",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Plural agreement with a singular collective is favored by predicates applying to members. Predicates applying only to the unit require singular agreement in the cited pattern.",
+    "condition": "Applies to the construction described in §18.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Determiners such as one can disfavor the override. Standard British English uses member agreement more readily than American English.",
+        "pages": [
+          502
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The committee consists of three members.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew have all received their passes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§18.2",
+        "pages": [
+          502
+        ],
+        "pdf_pages": [
+          522
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicate restrictions on collective agreement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
   }
 ]

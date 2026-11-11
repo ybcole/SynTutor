@@ -169,4 +169,9 @@ Printed pp.431–454 checked against text and rendered pages as a 24-page batch.
 
 ## Chapter 5 eighth checkpoint (2026-11-11)
 
-Printed pp.455–478 checked against text and rendered pages as a 24-page batch. Added 38 original-example records (`PHR-278`–`PHR-315`). Continue at printed p.479 on the same draft PR.
+Printed pp.455–478 checked against text and rendered pages as a 24-page batch. Added 38 original-example records (`PHR-278`–`PHR-315`). The next checkpoint covers printed pp.479–502.
+
+
+## Chapter 5 ninth checkpoint (2026-11-11)
+
+Printed pp.479–502 checked in text and rendered layout. Added 30 original-example records (`PHR-316`–`PHR-345`). Continue at printed p.503. The remaining substantive range is pp.503–523. Verify p.524 against the full volume before final validation.
