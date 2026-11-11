@@ -65,15 +65,18 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
   }
 
   if (page === 0) {
-    paragraph('A pile of bicycle parts becomes a bicycle when the pieces fit together in the right way. This chapter takes the same approach to sentences, looking at how words form groups and how those groups fit together.');
-    paragraph('Syntax studies how words combine to form phrases and sentences. A constituent is a word or group of words that functions as a unit within a larger structure. Hierarchy describes how these units fit inside one another.');
+    paragraph('Think about a bicycle. The spokes are part of a wheel, and the wheel is part of the bicycle. Words fit together in groups in a similar way.');
+    paragraph('Syntax is the study of how words fit together in a sentence. In this chapter, you’ll look for small groups of words and see how they fit inside larger groups.');
     section('What this chapter covers',
-      'Consider “We met near the quiet garden”. The words “the quiet garden” name a place, and “near the quiet garden” tells us where we met. The smaller group sits inside the larger one, and each group has a job in the sentence.');
+      'Read “We met near the quiet garden”. Which words tell you where we met?',
+      '“Near the quiet garden” tells us where we met. Inside that group, “the quiet garden” tells us what we were near.',
+      'A word or group of words that works as one part of a sentence is called a constituent. The way smaller groups fit inside larger ones is called hierarchy.');
     const list = el('ul');
     for (const objective of [
-      'Use replacement and simple questions to test whether words act as a unit.',
-      'Read brackets and branches to see which words a tree groups together.',
-      'Explain how two groupings can give the same sentence different meanings.',
+      'Test whether words form a group by replacing them with one word or asking a question.',
+      'Read brackets and tree branches to see which words go together.',
+      'Compare two trees and draw a branch for a group of words.',
+      'See how grouping the same words in two ways can change the meaning of a sentence.',
     ]) list.append(el('li', objective));
     body.append(list);
   }
