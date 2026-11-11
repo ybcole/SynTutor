@@ -222,3 +222,7 @@ Printed pp. 1194–1209 yielded 23 records (`CLS-298`–`CLS-320`), including on
 ## Chapter 14 third checkpoint (2026-11-11)
 
 Printed pp. 1210–1226 yielded 24 records (`CLS-321`–`CLS-344`), including one inactive constraint specification. The batch groups the competing auxiliary analyses and the framework for catenative classification. Continue at p. 1227 with the omissions note and Class 1 verbs.
+
+## Chapter 14 fourth checkpoint (2026-11-11)
+
+Printed pp. 1227–1245 yielded 29 records (`CLS-345`–`CLS-373`), including one inactive constraint specification. Continue at p. 1246 with the distribution of hollow clauses.

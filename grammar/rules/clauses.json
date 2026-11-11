@@ -23806,5 +23806,1798 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-345",
+    "domain": "clauses",
+    "concept": "Simple-only bare infinitival catenatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal auxiliaries, supportive do and some modal idioms take bare infinitival complements in the simple construction.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Dare and would rather differ from the general raised-subject pattern. Auxiliary dare and lexical dare have different distributions.",
+        "pages": [
+          1227
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ferry might leave early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did the ferry leave early?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.2",
+        "pages": [
+          1227
+        ],
+        "pdf_pages": [
+          1247
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple-only bare infinitival catenatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-346",
+    "domain": "clauses",
+    "concept": "Ordinary and raised subjects in simple-only to-infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Simple-only to-infinitival verbs include ordinary-subject predicates such as decide and raising predicates such as seem. Different senses of one verb can belong to different classes.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second threat is a prediction of an unwelcome possibility. Some verbs show marginal complex alternatives or mixed raising diagnostics.",
+        "pages": [
+          1227,
+          1228
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina decided to stay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The storm threatened to intensify.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.2",
+        "pages": [
+          1227,
+          1228
+        ],
+        "pdf_pages": [
+          1247,
+          1248
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinary and raised subjects in simple-only to-infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-347",
+    "domain": "clauses",
+    "concept": "Simple-only alternants and participial complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some simple-only catenatives permit both a to-infinitival and a gerund-participial, while others select only a participial form. Subject interpretation is a separate dimension.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Aspectual begin differs from ordinary-subject avoid. Perfect have and passive be and get take past-participials in the simple construction.",
+        "pages": [
+          1228
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The child began to laugh.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The child began laughing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.2",
+        "pages": [
+          1228
+        ],
+        "pdf_pages": [
+          1248
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple-only alternants and participial complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-348",
+    "domain": "clauses",
+    "concept": "Simple and complex variants within a lexical sense",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Class 2 requires a simple and complex use with the same catenative sense. In the simple construction the understood lower subject may be controlled or left to context.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Simple help and say can involve contextual interpretation. With help the inferred participant may be less salient than the matrix subject.",
+        "pages": [
+          1229
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She asked to leave.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She asked Omar to leave.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.3",
+        "pages": [
+          1229
+        ],
+        "pdf_pages": [
+          1249
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple and complex variants within a lexical sense",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-349",
+    "domain": "clauses",
+    "concept": "Object and subject control with promise and ask",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An overt object generally controls the lower subject in ordinary-object catenatives, but particular verbs and complement meanings can support subject control.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With the permission reading of the second sentence, Mina is the prospective leaver. Promise with an intervening object and an infinitival is marginal for many speakers.",
+        "pages": [
+          1229,
+          1230
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina promised to call at noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina asked Jo to be allowed to leave.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.3",
+        "pages": [
+          1229,
+          1230
+        ],
+        "pdf_pages": [
+          1249,
+          1250
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Object and subject control with promise and ask",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-350",
+    "domain": "clauses",
+    "concept": "Control and purpose with pay",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An infinitival after pay can describe the action the payee is to perform or the purpose of the payer's expenditure.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second reading is near the boundary between a selected complement and a purpose adjunct.",
+        "pages": [
+          1230
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They paid her to repair the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They paid her to watch her repair the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.3",
+        "pages": [
+          1230
+        ],
+        "pdf_pages": [
+          1250
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Control and purpose with pay",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-351",
+    "domain": "clauses",
+    "concept": "For-complex and oblique-complex alternants",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verbs alternate between simple and for-complex infinitivals, while others take a selected oblique whose referent can remain understood.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The oblique interpretation can be recoverable in a simple-looking form. A corresponding for PP with an NP is not available for every verb that permits the clause.",
+        "pages": [
+          1230,
+          1231
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They hoped for Mina to attend.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She signaled to us to stop.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.3",
+        "pages": [
+          1230,
+          1231
+        ],
+        "pdf_pages": [
+          1250,
+          1251
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "For-complex and oblique-complex alternants",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-352",
+    "domain": "clauses",
+    "concept": "Liking verbs with both main complement forms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Several liking and disliking predicates permit infinitivals and gerund-participials in simple and complex constructions. In the gerund-participial, some permit a genitive subject.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Genitives tend to be formal. Detest and most uses of dislike select gerund-participials.",
+        "pages": [
+          1231
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I hate wasting time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I hate his interrupting the meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.3",
+        "pages": [
+          1231
+        ],
+        "pdf_pages": [
+          1251
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Liking verbs with both main complement forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-353",
+    "domain": "clauses",
+    "concept": "Concealed passives and asymmetric form choices",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A verb can allow both major form types without licensing them in the same simple and complex environments. Need can take a concealed passive, while intend allows a gerund-participial in its simple pattern.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The complex intend pattern uses the infinitival. Want meaning need differs from want expressing desire.",
+        "pages": [
+          1231,
+          1232
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The jacket needs mending.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I intended reading the report before lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.3",
+        "pages": [
+          1231,
+          1232
+        ],
+        "pdf_pages": [
+          1251,
+          1252
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concealed passives and asymmetric form choices",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-354",
+    "domain": "clauses",
+    "concept": "Aspect with complex want",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A complex gerund-participial with want can describe an ongoing situation, but in a non-affirmative context it can have a non-progressive reading.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second can prohibit bringing food at all. The progressive interpretation is not obligatory.",
+        "pages": [
+          1231,
+          1232
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I want them standing when the curtain rises.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I don't want you bringing food into the lab.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.3",
+        "pages": [
+          1231,
+          1232
+        ],
+        "pdf_pages": [
+          1251,
+          1252
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aspect with complex want",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-355",
+    "domain": "clauses",
+    "concept": "Controlled and contextual subjects with gerund-participials",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A simple gerund-participial can have a matrix-controlled subject or a contextually inferred subject, depending on the governing verb and sense.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Complex alternants can make the lower subject explicit. Some verbs in this grouping also select infinitivals in particular environments.",
+        "pages": [
+          1232,
+          1233
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I remember buying the tickets.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wouldn't recommend buying the tickets.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.3",
+        "pages": [
+          1232,
+          1233
+        ],
+        "pdf_pages": [
+          1252,
+          1253
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Controlled and contextual subjects with gerund-participials",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-356",
+    "domain": "clauses",
+    "concept": "Complex-only ordinary and raised infinitival objects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Complex-only infinitival catenatives include predicates with ordinary matrix objects and predicates with raised objects. Cognition and saying verbs often have the raised pattern.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some saying predicates strongly favor or require the matrix passive in this construction. Different lexical senses can have different distributions.",
+        "pages": [
+          1233,
+          1234
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She persuaded Jo to wait.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They believed Jo to be waiting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.4",
+        "pages": [
+          1233,
+          1234
+        ],
+        "pdf_pages": [
+          1253,
+          1254
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complex-only ordinary and raised infinitival objects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-357",
+    "domain": "clauses",
+    "concept": "Infinitival marker in passive causative make",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Causative make takes a bare infinitival after its object in the active and a to-infinitival in the corresponding passive.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 14.",
+    "violation": "The infinitival marker is added in active causative make or omitted in its passive counterpart.",
+    "exceptions": [
+      {
+        "description": "The alternation concerns causative make. Do not extend it to lexical make with an NP or to other causative verbs.",
+        "pages": [
+          1234
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They made us wait outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We were made to wait outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They made us to wait outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "We were made wait outside.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.4",
+        "pages": [
+          1234
+        ],
+        "pdf_pages": [
+          1254
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival marker in passive causative make",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "The infinitival marker is added in active causative make or omitted in its passive counterpart.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They made us to wait outside. ||| They made us wait outside.",
+        "We were made wait outside. ||| We were made to wait outside."
+      ],
+      "learner_explanation": "Causative make takes a bare infinitival after its object in the active and a to-infinitival in the corresponding passive.",
+      "corrected_paragraph_template": "Use the bare infinitival in the active and add to in the corresponding passive.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They let us wait outside.",
+        "They made a sign to warn visitors.",
+        "We were made to wait outside."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "verb-form"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-358",
+    "domain": "clauses",
+    "concept": "Permission and ordering with raised objects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With some permission and ordering predicates, the object can belong semantically only to the authorized or ordered situation.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A human object may be interpreted as the recipient of permission or an order in context. The syntax does not always encode that role.",
+        "pages": [
+          1234,
+          1235
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They allowed the gate to remain open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The director ordered the meeting to resume.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.4",
+        "pages": [
+          1234,
+          1235
+        ],
+        "pdf_pages": [
+          1254,
+          1255
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Permission and ordering with raised objects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-359",
+    "domain": "clauses",
+    "concept": "Variation among causative catenatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Force and compel typically assign a role to the object. Cause and enable can take raised objects, while make and get show a more varied pattern.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Dummy objects, voice and selection can point in different directions for some causatives. Past-participial get is not simply the passive infinitival alternant of every get construction.",
+        "pages": [
+          1235,
+          1236
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They forced Jo to unlock the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fault caused the lights to fail.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.4",
+        "pages": [
+          1235,
+          1236
+        ],
+        "pdf_pages": [
+          1255,
+          1256
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variation among causative catenatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-360",
+    "domain": "clauses",
+    "concept": "Complex-only obliques and multiple form types",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some complex-only infinitival constructions require a selected oblique. Other complex-only verbs, including causatives and perception verbs, license several non-finite forms.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The complement inventory and possibility of matrix passivization depend on the verb and construction.",
+        "pages": [
+          1236
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They appealed to us to reopen the hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She had the lock repaired.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.4",
+        "pages": [
+          1236
+        ],
+        "pdf_pages": [
+          1256
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complex-only obliques and multiple form types",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-361",
+    "domain": "clauses",
+    "concept": "Perception complements and event perspective",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Sensory perception verbs can take a bare infinitival to present an event as a whole or a gerund-participial to present it in progress.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A past-participial can express passive meaning. Active inferential see with a to-infinitival differs from ordinary sensory see.",
+        "pages": [
+          1236,
+          1237
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I saw the cyclist cross the bridge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I saw the cyclist crossing the bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.4",
+        "pages": [
+          1236,
+          1237
+        ],
+        "pdf_pages": [
+          1256,
+          1257
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perception complements and event perspective",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-362",
+    "domain": "clauses",
+    "concept": "Passive perception constructions and inference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A matrix passive with see can license a to-infinitival where active sensory see takes a bare infinitival. The passive can carry an inferential component.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The alternatives are not automatically identical in meaning. Perfect infinitivals can occur with the inferential use.",
+        "pages": [
+          1237
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The witness was seen to leave the building.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They saw the witness leave the building.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.4",
+        "pages": [
+          1237
+        ],
+        "pdf_pages": [
+          1257
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Passive perception constructions and inference",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-363",
+    "domain": "clauses",
+    "concept": "Complex gerund-participials and prepositional alternants",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some complex gerund-participials allow a genitive subject and have a prepositional alternant with for or from.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Stop varies with sense and normally resists a genitive in this construction. The prepositional version often has different passive possibilities.",
+        "pages": [
+          1238
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Forgive my interrupting the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Forgive me for interrupting the meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.4",
+        "pages": [
+          1238
+        ],
+        "pdf_pages": [
+          1258
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complex gerund-participials and prepositional alternants",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-364",
+    "domain": "clauses",
+    "concept": "Causative and perception gerund-participials without genitive",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Other complex gerund-participials exclude a genitive preceding NP. They include uses of aspectual causatives, perception predicates and discovery predicates.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "They do not all have the same raising or passive behavior. Imagine-like see has a distinct pattern from sensory see.",
+        "pages": [
+          1238
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The delay kept us waiting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We caught Jo copying the key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.4",
+        "pages": [
+          1238
+        ],
+        "pdf_pages": [
+          1258
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Causative and perception gerund-participials without genitive",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-365",
+    "domain": "clauses",
+    "concept": "Sense-indexed catenative classes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The chapter indexes catenative verbs and idioms by construction class and distinguishes senses where complementation changes.",
+    "condition": "Applies to the construction described in §5.5 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The index consolidates the preceding classifications. A listed sense should not be generalized to all uses of a verb.",
+        "pages": [
+          1239,
+          1240
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They kept waiting by the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They kept us waiting by the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.5",
+        "pages": [
+          1239,
+          1240
+        ],
+        "pdf_pages": [
+          1259,
+          1260
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Sense-indexed catenative classes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-366",
+    "domain": "clauses",
+    "concept": "Lexical selection and meaning tendencies by form",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Complement form must be established lexically. To-infinitivals are often associated with projected or potential events, and gerund-participials with actual or current events.",
+    "condition": "Applies to the construction described in §5.6.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These associations do not determine selection or apply in every use.",
+        "pages": [
+          1240,
+          1241
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She promised to call after lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She enjoyed talking with the crew.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.6.1",
+        "pages": [
+          1240,
+          1241
+        ],
+        "pdf_pages": [
+          1260,
+          1261
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical selection and meaning tendencies by form",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-367",
+    "domain": "clauses",
+    "concept": "Alternation with aspectual verbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some aspectual verbs permit both major forms with little difference. In other contexts the infinitival can favor onset and the gerund-participial ongoing activity.",
+    "condition": "Applies to the construction described in §5.6.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some states and existential patterns favor the infinitival. An interpretation involving activity already under way can favor the gerund-participial.",
+        "pages": [
+          1241,
+          1242
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It started to rain.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It started raining.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.6.1",
+        "pages": [
+          1241,
+          1242
+        ],
+        "pdf_pages": [
+          1261,
+          1262
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternation with aspectual verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-368",
+    "domain": "clauses",
+    "concept": "Form preferences with liking and memory",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An infinitival can favor an intended or projected activity, while a gerund-participial can describe an actual state or remembered event.",
+    "condition": "Applies to the construction described in §5.6.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Would like strongly favors an infinitival in requests or intentions, while liking an existing state often favors a gerund-participial.",
+        "pages": [
+          1242
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I remembered to lock the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I remembered locking the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.6.1",
+        "pages": [
+          1242
+        ],
+        "pdf_pages": [
+          1262
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Form preferences with liking and memory",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-369",
+    "domain": "clauses",
+    "concept": "Aspectual and lexical contrasts across form types",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A form alternation can contrast attainment with ongoing activity or distinguish lexical readings such as attempting and testing a method.",
+    "condition": "Applies to the construction described in §5.6.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With try, fear, scorn, regret and report, the form contrast can involve different semantic factors.",
+        "pages": [
+          1243
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I finally got the pump to work.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I finally got the pump working.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.6.1",
+        "pages": [
+          1243
+        ],
+        "pdf_pages": [
+          1263
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aspectual and lexical contrasts across form types",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-370",
+    "domain": "clauses",
+    "concept": "Restricted successive ing constraint",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some progressive catenatives resist a following gerund-participial complement, particularly aspectual verbs and some verbs taking concealed passives.",
+    "condition": "Applies to the construction described in §5.6.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This restriction is lexical and speaker judgments vary. Successive verbal ing forms are possible with many other catenatives.",
+        "pages": [
+          1243,
+          1244
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was starting to rain.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We were considering buying a new pump.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.6.1",
+        "pages": [
+          1243,
+          1244
+        ],
+        "pdf_pages": [
+          1263,
+          1264
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restricted successive ing constraint",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-371",
+    "domain": "clauses",
+    "concept": "Selection and variation in bare infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Bare infinitivals are selected by a limited group including core modals and certain causative and perception verbs. Some other verbs allow a bare form in restricted environments.",
+    "condition": "Applies to the construction described in §5.6.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second is characteristic of British English; American English uses to. Some speakers distinguish readings of help by the form selected.",
+        "pages": [
+          1244
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We helped Jo lift the crate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'd never known Jo lose her temper before.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.6.2",
+        "pages": [
+          1244
+        ],
+        "pdf_pages": [
+          1264
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Selection and variation in bare infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-372",
+    "domain": "clauses",
+    "concept": "Past-participial catenative complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Past-participial catenative complements occur with perfect have, passive auxiliaries and some lexical verbs. Complex lexical examples commonly express passive meaning.",
+    "condition": "Applies to the construction described in §5.6.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some alternate with passive infinitivals, while others occur in concealed passive or variety-sensitive constructions.",
+        "pages": [
+          1244,
+          1245
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We heard the window smashed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She had the lock replaced.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.6.2",
+        "pages": [
+          1244,
+          1245
+        ],
+        "pdf_pages": [
+          1264,
+          1265
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past-participial catenative complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-373",
+    "domain": "clauses",
+    "concept": "Missing elements in hollow non-finite clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A hollow non-finite clause has an understood non-subject element recoverable from an antecedent. The missing element is commonly a verb object or preposition complement.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The object of the verb is missing in the first and the preposition complement in the second. Other gap functions are more restricted.",
+        "pages": [
+          1245
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This piece is hard to play on a flute.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This flute is hard to play that piece on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§6.1",
+        "pages": [
+          1245
+        ],
+        "pdf_pages": [
+          1265
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Missing elements in hollow non-finite clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
