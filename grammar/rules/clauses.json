@@ -25599,5 +25599,2275 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-374",
+    "domain": "clauses",
+    "concept": "Hollow gerund-participial licensing",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Worth and worthwhile and purposive for can license a gerund-participial with an understood object or preposition complement.",
+    "condition": "Applies to the construction described in §6.1–6.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With worth the subordinate subject is typically generic. Bear in some negative expressions can also take a hollow complement.",
+        "pages": [
+          1246
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The proposal is worth looking into.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The jar is for storing nails in.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§6.1–6.2",
+        "pages": [
+          1246
+        ],
+        "pdf_pages": [
+          1266
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hollow gerund-participial licensing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-375",
+    "domain": "clauses",
+    "concept": "Hollow complements of predicative adjectives and nouns",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An adjective or predicative noun can license a hollow infinitival whose gap is interpreted from the higher subject.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some heads also allow an ordinary infinitival as subject or extraposed subject, while others are collocationally restricted.",
+        "pages": [
+          1246,
+          1247
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The latch is awkward to reach.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lecture was a pleasure to listen to.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§6.3",
+        "pages": [
+          1246,
+          1247
+        ],
+        "pdf_pages": [
+          1266,
+          1267
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hollow complements of predicative adjectives and nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-376",
+    "domain": "clauses",
+    "concept": "Hollow constructions and raising",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The higher subject in a hollow construction is independently related to the higher predicate. Unlike raised subjects, it cannot be a dummy licensed solely by the lower predicate.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A hollow construction and an extraposed-subject construction can differ in meaning even when both are available.",
+        "pages": [
+          1247,
+          1248
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The report is hard to verify.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There seems to be a discrepancy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§6.3",
+        "pages": [
+          1247,
+          1248
+        ],
+        "pdf_pages": [
+          1267,
+          1268
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hollow constructions and raising",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-377",
+    "domain": "clauses",
+    "concept": "Optional gaps with ready and similar adjectives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An adjective such as ready can license a hollow infinitival with an understood object or an ordinary infinitival with an understood subject linked to the higher subject.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context can allow both readings for some higher subjects.",
+        "pages": [
+          1248
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The forms are ready to file.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The clerk is ready to file the forms.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§6.3",
+        "pages": [
+          1248
+        ],
+        "pdf_pages": [
+          1268
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optional gaps with ready and similar adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-378",
+    "domain": "clauses",
+    "concept": "Hollow infinitivals licensed by attributive adjectives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A hollow infinitival inside an NP can be licensed indirectly by an attributive adjective, which evaluates the action involving the noun referent.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The string may also permit a relative-clause reading. A relative often conveys possibility or suitability, whereas the adjective-licensed construction can describe an actual event.",
+        "pages": [
+          1248,
+          1249,
+          1250
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was a difficult latch to replace.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That is an easy trail to get lost on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§6.3",
+        "pages": [
+          1248,
+          1249,
+          1250
+        ],
+        "pdf_pages": [
+          1268,
+          1269,
+          1270
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hollow infinitivals licensed by attributive adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-379",
+    "domain": "clauses",
+    "concept": "Hollow complements of verbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Be and a small group of transitive verbs can license hollow infinitivals. With cost or take the construction can include a measure expression.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The missing lower element is interpreted from an antecedent in the higher construction. Related ordinary or passive alternatives depend on the verb.",
+        "pages": [
+          1250
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cabinet took an hour to assemble.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That decision is for you to make.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§6.3",
+        "pages": [
+          1250
+        ],
+        "pdf_pages": [
+          1270
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hollow complements of verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-380",
+    "domain": "clauses",
+    "concept": "Hollow infinitivals with adjectives, degree items and purpose",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A hollow gap can occur with some postpositive adjective constructions, in degree complements and in purpose infinitivals.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Degree and purpose constructions also permit ordinary infinitivals without a non-subject gap.",
+        "pages": [
+          1250,
+          1251
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The soup is too hot to serve.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I bought this box to keep the cables in.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§6.3",
+        "pages": [
+          1250,
+          1251
+        ],
+        "pdf_pages": [
+          1270,
+          1271
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hollow infinitivals with adjectives, degree items and purpose",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-381",
+    "domain": "clauses",
+    "concept": "Non-catenative functions in clause structure",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Non-finites can function as subjects, objects or predicative complements independently of the catenative function.",
+    "condition": "Applies to the construction described in §7 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Progressive, passive and quasi-modal uses of be instead take catenative complements. Some complex-transitive cases require lexical analysis.",
+        "pages": [
+          1251,
+          1252
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "To ignore the warning would be foolish.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Their main goal was to reduce delays.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§7",
+        "pages": [
+          1251,
+          1252
+        ],
+        "pdf_pages": [
+          1271,
+          1272
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-catenative functions in clause structure",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-382",
+    "domain": "clauses",
+    "concept": "Infinitival and finite subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An infinitival subject or extraposed subject commonly presents a situation, while a non-mandative finite counterpart can present a proposition or fact.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The difference can be slight with mandatives. Predicates evaluating truth need not accept the infinitival counterpart.",
+        "pages": [
+          1252,
+          1253,
+          1254
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was good to see them again.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was good that they arrived safely.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§7.1",
+        "pages": [
+          1252,
+          1253,
+          1254
+        ],
+        "pdf_pages": [
+          1272,
+          1273,
+          1274
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival and finite subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-383",
+    "domain": "clauses",
+    "concept": "Actuality and extraposition of non-finite subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Infinitival subjects often present potential situations and extrapose readily. Gerund-participial subjects also allow hypothetical interpretations, but are more restricted in some extraposed and overt-subject contexts.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Subject position, predicate choice and actuality affect the comparison. Bare infinitival subjects are restricted.",
+        "pages": [
+          1253,
+          1254,
+          1255
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It would be better for the hearing to be postponed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Changing the date would cause problems.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§7.1",
+        "pages": [
+          1253,
+          1254,
+          1255
+        ],
+        "pdf_pages": [
+          1273,
+          1274,
+          1275
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Actuality and extraposition of non-finite subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-384",
+    "domain": "clauses",
+    "concept": "Objects and extraposed objects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-finite can function as an object in a complex-transitive construction or as an extraposed object with a dummy it in object position.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "To-infinitivals do not normally occur in the object position before a predicative complement. The range of gerund-participial extraposed objects is more restricted.",
+        "pages": [
+          1255
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I found working at night exhausting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I found it exhausting to work at night.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§7.2",
+        "pages": [
+          1255
+        ],
+        "pdf_pages": [
+          1275
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Objects and extraposed objects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-385",
+    "domain": "clauses",
+    "concept": "Non-finite predicative complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Specifying be can take a to-infinitival, bare infinitival or gerund-participial predicative complement. A to-infinitival can also describe purpose.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The bare form is restricted by the subject construction. Some gerund-participials are ambiguous with progressive be.",
+        "pages": [
+          1255,
+          1256
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "All I did was tighten the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The barrier is to keep the animals inside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§7.3",
+        "pages": [
+          1255,
+          1256
+        ],
+        "pdf_pages": [
+          1275,
+          1276
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-finite predicative complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-386",
+    "domain": "clauses",
+    "concept": "Direct adjective complements and neighboring functions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A directly selected infinitival is distinct from an indirect degree complement, a clause adjunct or an extraposed subject.",
+    "condition": "Applies to the construction described in §8.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An evaluative adjunct can indicate how an action reflects on the subject. An extraposed subject falls outside the adjective phrase.",
+        "pages": [
+          1256,
+          1257
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo was eager to leave.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo was too tired to leave.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§8.1",
+        "pages": [
+          1256,
+          1257
+        ],
+        "pdf_pages": [
+          1276,
+          1277
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Direct adjective complements and neighboring functions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-387",
+    "domain": "clauses",
+    "concept": "Raising and non-raising adjectives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adjectives such as likely permit a raised subject with no independent semantic role, while adjectives such as determined assign a role to the higher subject.",
+    "condition": "Applies to the construction described in §8.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Voice neutrality and dummy subjects are useful together. Able can give equivalent active and passive propositions without requiring a raising analysis.",
+        "pages": [
+          1257,
+          1258,
+          1259
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There is likely to be a delay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo was determined to finish.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§8.1",
+        "pages": [
+          1257,
+          1258,
+          1259
+        ],
+        "pdf_pages": [
+          1277,
+          1278,
+          1279
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Raising and non-raising adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-388",
+    "domain": "clauses",
+    "concept": "Gerund-participials with adjectives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Busy can take an ordinary gerund-participial directly. Worth and worthwhile can take hollow complements and also occur with ordinary complements in impersonal patterns.",
+    "condition": "Applies to the construction described in §8.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other adjectives can take gerund-participials through a selected preposition, as in keen on.",
+        "pages": [
+          1259
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was busy sorting the files.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The file is worth keeping.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§8.1",
+        "pages": [
+          1259
+        ],
+        "pdf_pages": [
+          1279
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gerund-participials with adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-389",
+    "domain": "clauses",
+    "concept": "Non-finite complements of nouns",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some nouns select infinitivals, including subjectless and, where licensed, for-subject variants. The noun's selection need not match that of a related verb or adjective.",
+    "condition": "Applies to the construction described in §8.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A superficially similar infinitival with an adjective can instead function as a clause adjunct.",
+        "pages": [
+          1259,
+          1260
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We had an opportunity to inspect the roof.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They sought permission for the gate to be opened.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§8.2",
+        "pages": [
+          1259,
+          1260
+        ],
+        "pdf_pages": [
+          1279,
+          1280
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-finite complements of nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-390",
+    "domain": "clauses",
+    "concept": "Nominal complements and absence of raising",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An NP dependent of a noun must remain interpretable as an argument of that noun. A separate infinitival subject after for can belong solely to the lower clause.",
+    "condition": "Applies to the construction described in §8.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A dummy cannot be used as a genitive or oblique dependent of the noun in the way it can occur as the subject of a for-clause.",
+        "pages": [
+          1260,
+          1261
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They discussed the tendency for there to be delays.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They discussed the staff's tendency to arrive early.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§8.2",
+        "pages": [
+          1260,
+          1261
+        ],
+        "pdf_pages": [
+          1280,
+          1281
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal complements and absence of raising",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-391",
+    "domain": "clauses",
+    "concept": "Non-finite complements of prepositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Gerund-participials are widely available as preposition complements. Infinitivals are more restricted, and some prepositions also admit past-participial or verbless reductions.",
+    "condition": "Applies to the construction described in §8.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Prepositional to in look forward to is distinct from infinitival to. Reduced complements depend on the selecting preposition.",
+        "pages": [
+          1262
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We look forward to meeting them.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Although damaged in transit, the crate was usable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§8.3",
+        "pages": [
+          1262
+        ],
+        "pdf_pages": [
+          1282
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-finite complements of prepositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-392",
+    "domain": "clauses",
+    "concept": "Degree licensors and position of infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Too, enough and sufficient or sufficiently can license infinitivals that set a threshold for a purpose or requirement.",
+    "condition": "Applies to the construction described in §8.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The infinitival is licensed indirectly. End position is often preferred but is not always possible.",
+        "pages": [
+          1262,
+          1263
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was too late to phone.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Enough volunteers arrived to move the piano.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§8.4",
+        "pages": [
+          1262,
+          1263
+        ],
+        "pdf_pages": [
+          1282,
+          1283
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree licensors and position of infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-393",
+    "domain": "clauses",
+    "concept": "Matrix-licensed and as infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some prepositions take an infinitival licensed by the larger construction. So and such can license as with a purposive or resultative infinitival.",
+    "condition": "Applies to the construction described in §8.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Finite alternatives can be available. The relevant licensor can be a matrix predicate or a degree expression.",
+        "pages": [
+          1263,
+          1264
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She stepped aside so as to let us pass.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The prints were so faint as to be illegible.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§8.4",
+        "pages": [
+          1263,
+          1264
+        ],
+        "pdf_pages": [
+          1283,
+          1284
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Matrix-licensed and as infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-394",
+    "domain": "clauses",
+    "concept": "Infinitival interrogative complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An infinitival can express an open or closed subordinate question, often concerning what action to take.",
+    "condition": "Applies to the construction described in §8.5 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Closed infinitivals use whether rather than if in this construction. Some heads admit an infinitival interrogative but have more restricted finite counterparts.",
+        "pages": [
+          1264
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They asked whether to wait.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They discussed where to wait.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§8.5",
+        "pages": [
+          1264
+        ],
+        "pdf_pages": [
+          1284
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival interrogative complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-395",
+    "domain": "clauses",
+    "concept": "Non-finite modifiers of nouns",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Nouns can have infinitival relatives and gerund-participial or past-participial modifiers. The participial modifiers lack a relative phrase.",
+    "condition": "Applies to the construction described in §9 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A passive gerund-participial can express progressive aspect, unlike the corresponding bare passive modifier.",
+        "pages": [
+          1264,
+          1265
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The people waiting outside need shelter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The packages delivered this morning are on the table.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§9",
+        "pages": [
+          1264,
+          1265
+        ],
+        "pdf_pages": [
+          1284,
+          1285
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-finite modifiers of nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-396",
+    "domain": "clauses",
+    "concept": "Infinitival modifiers in clause structure",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clause-level infinitival can express purpose or an outcome that becomes apparent afterward.",
+    "condition": "Applies to the construction described in §9 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These modifiers can resemble selected complements in some environments.",
+        "pages": [
+          1265
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She stopped to check the address.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He opened the box to find it empty.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§9",
+        "pages": [
+          1265
+        ],
+        "pdf_pages": [
+          1285
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival modifiers in clause structure",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-397",
+    "domain": "clauses",
+    "concept": "Absolute and subjectless supplements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-finite supplement can have an overt subject of its own, or lack a subject interpreted from the anchor clause.",
+    "condition": "Applies to the construction described in §9 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The temporal, causal or other relation can be inferred rather than explicitly marked.",
+        "pages": [
+          1265,
+          1266
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The rain having stopped, we went outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Having checked the map, Jo chose the lower trail.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§9",
+        "pages": [
+          1265,
+          1266
+        ],
+        "pdf_pages": [
+          1285,
+          1286
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Absolute and subjectless supplements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-398",
+    "domain": "clauses",
+    "concept": "Supplements anchored to phrases or clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-finite supplement can elaborate an NP or comment on the proposition expressed by a clause.",
+    "condition": "Applies to the construction described in §9 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some supplements have a contextually inferred subject rather than an antecedent in the anchor.",
+        "pages": [
+          1266
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo's proposal, intended to reduce delays, won support.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "To be honest, I had expected a different result.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§9",
+        "pages": [
+          1266
+        ],
+        "pdf_pages": [
+          1286
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplements anchored to phrases or clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-399",
+    "domain": "clauses",
+    "concept": "Verbless clauses after with and without",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With and without can take a verbless clause containing a subject and nonverbal predicate.",
+    "condition": "Applies to the construction described in §10 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The containing PP can modify an NP or function as a clause adjunct. With and without also take non-finite clauses.",
+        "pages": [
+          1267
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They waited with the lights off.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She left without her coat on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§10",
+        "pages": [
+          1267
+        ],
+        "pdf_pages": [
+          1287
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbless clauses after with and without",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-400",
+    "domain": "clauses",
+    "concept": "Reduced clauses after prepositions and verbless supplements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some prepositions that take finite clauses also license verbless reductions. A verbless clause can also appear as a supplement.",
+    "condition": "Applies to the construction described in §10 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The reduction can preserve the interpretation of a corresponding clause with be. Condensed and lexicalized constructions have additional restrictions.",
+        "pages": [
+          1267,
+          1268
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Though tired, Jo finished the shift.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her hands cold, Jo went indoors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§10",
+        "pages": [
+          1267,
+          1268
+        ],
+        "pdf_pages": [
+          1287,
+          1288
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reduced clauses after prepositions and verbless supplements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-401",
+    "domain": "clauses",
+    "concept": "Condensed verbless structures and reanalysis",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verbless structures allow a bare singular nominal and can become integrated or lexicalized.",
+    "condition": "Applies to the construction described in §10 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An integrated condensed phrase can behave differently from an absolute supplement.",
+        "pages": [
+          1268
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dinner over, the guests left.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She dived head first into the water.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§10",
+        "pages": [
+          1268
+        ],
+        "pdf_pages": [
+          1288
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Condensed verbless structures and reanalysis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-402",
+    "domain": "clauses",
+    "concept": "Interpreting subjects of subjectless non-finites",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The understood subject can be associated with raising, syntactically controlled by an antecedent, or inferred without a syntactically specified controller.",
+    "condition": "Applies to the construction described in §11 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A salient referent in the surrounding clause can support contextual inference without being a syntactic controller.",
+        "pages": [
+          1268,
+          1269
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo hoped to finish by noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is pleasant to walk here in spring.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§11",
+        "pages": [
+          1268,
+          1269
+        ],
+        "pdf_pages": [
+          1288,
+          1289
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interpreting subjects of subjectless non-finites",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-403",
+    "domain": "clauses",
+    "concept": "Control and contextual interpretation in clause structure",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Control is an anaphoric relation to an antecedent in a constructionally specified position. With contextual interpretation the relevant role may be inferred even without an overt antecedent.",
+    "condition": "Applies to the construction described in §11 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Semantic factors motivate many control patterns without making the antecedent freely selectable.",
+        "pages": [
+          1269,
+          1270
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo told Mina to arrange the interviews.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was a mistake to arrange the interviews so late.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§11",
+        "pages": [
+          1269,
+          1270
+        ],
+        "pdf_pages": [
+          1289,
+          1290
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Control and contextual interpretation in clause structure",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-404",
+    "domain": "clauses",
+    "concept": "Nominal versus verbal patterns of understood subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The related noun and verb can differ in how they identify an understood lower subject. Nominal complements may allow either participant or leave the subject to context.",
+    "condition": "Applies to the construction described in §11 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second sentence can allow different readings depending on context. A nominal antecedent need not provide a syntactic controller.",
+        "pages": [
+          1270,
+          1271
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo requested Mina to enter the contest.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We received a request from Jo to enter the contest.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§11",
+        "pages": [
+          1270,
+          1271
+        ],
+        "pdf_pages": [
+          1290,
+          1291
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal versus verbal patterns of understood subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-405",
+    "domain": "clauses",
+    "concept": "Chained control and higher interpretations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Successive complements can contribute separate semantic roles to a participant interpreted in more than one subordinate clause.",
+    "condition": "Applies to the construction described in §11 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The lower subject is interpreted within a chain rather than assigned all its roles by a single predicate.",
+        "pages": [
+          1271
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo intended to try to settle the dispute.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina promised to try to finish early.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§11",
+        "pages": [
+          1271
+        ],
+        "pdf_pages": [
+          1291
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Chained control and higher interpretations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-406",
+    "domain": "clauses",
+    "concept": "Modal readings of hollow infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Hollow infinitivals after existential there, have, or with can present a task as required. A predicative genitive can instead express entitlement.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some strings permit a relative analysis, but the hollow construction can occur where an integrated relative is unavailable.",
+        "pages": [
+          1250
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We have two panels to inspect.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The money was not yours to spend.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§6.3",
+        "pages": [
+          1250
+        ],
+        "pdf_pages": [
+          1270
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal readings of hollow infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-407",
+    "domain": "clauses",
+    "concept": "No overt subject in infinitival interrogative complements",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "The infinitival interrogative complement does not allow an overt subject. The fronted interrogative expression also cannot itself serve as its subject.",
+    "condition": "Applies to the construction described in §8.5 of Chapter 14.",
+    "violation": "An overt for-subject occurs inside an infinitival interrogative complement.",
+    "exceptions": [
+      {
+        "description": "A finite interrogative can have an overt subject or a subject interrogative phrase. An ordinary non-interrogative for-infinitival can also have an overt subject.",
+        "pages": [
+          1264
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They discussed which route to take.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She explained how to start the pump.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They discussed which route for them to take.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She explained how for us to start the pump.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§8.5",
+        "pages": [
+          1264
+        ],
+        "pdf_pages": [
+          1284
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "No overt subject in infinitival interrogative complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "extra_word",
+      "error_pattern": "An overt for-subject occurs inside an infinitival interrogative complement.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They discussed which route for them to take. ||| They discussed which route to take.",
+        "She explained how for us to start the pump. ||| She explained how to start the pump."
+      ],
+      "learner_explanation": "The infinitival interrogative complement does not allow an overt subject. The fronted interrogative expression also cannot itself serve as its subject.",
+      "corrected_paragraph_template": "Omit the overt subject when its reference is recoverable, or use a finite interrogative.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They discussed which route they should take.",
+        "She arranged for us to start the pump.",
+        "She explained who started the pump."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "extra-word"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-408",
+    "domain": "clauses",
+    "concept": "Participial NP modifiers without relative markers",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A bare participial modifier does not take who as a relative marker. A finite relative with who and a finite auxiliary is a separate construction.",
+    "condition": "Applies to the construction described in §9 of Chapter 14.",
+    "violation": "Who precedes a bare gerund-participial modifier without a finite auxiliary.",
+    "exceptions": [
+      {
+        "description": "Preserve finite relative clauses and integrated infinitival relatives. The restriction concerns bare participial NP modifiers.",
+        "pages": [
+          1265
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The people waiting outside need shelter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The workers repairing the lift need more time.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The people who waiting outside need shelter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The workers who repairing the lift need more time.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§9",
+        "pages": [
+          1265
+        ],
+        "pdf_pages": [
+          1285
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Participial NP modifiers without relative markers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "missing_word",
+      "error_pattern": "Who precedes a bare gerund-participial modifier without a finite auxiliary.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The people who waiting outside need shelter. ||| The people waiting outside need shelter.",
+        "The workers who repairing the lift need more time. ||| The workers repairing the lift need more time."
+      ],
+      "learner_explanation": "A bare participial modifier does not take who as a relative marker. A finite relative with who and a finite auxiliary is a separate construction.",
+      "corrected_paragraph_template": "Remove who for a bare participial modifier, or supply a finite auxiliary for a relative clause.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The people who are waiting outside need shelter.",
+        "The workers repairing the lift need more time.",
+        "We asked who was waiting outside."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "missing-word"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-409",
+    "domain": "clauses",
+    "concept": "Quantified antecedents in control",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A quantified controller supplies the interpretation of a lower subject for each relevant individual. Its quantifier need not be repeated within the subordinate proposition.",
+    "condition": "Applies to the construction described in §11 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A lower reflexive can reveal a distributive interpretation.",
+        "pages": [
+          1271
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Both runners hope to finish first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nobody intends to delay you.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§11",
+        "pages": [
+          1271
+        ],
+        "pdf_pages": [
+          1291
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quantified antecedents in control",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
