@@ -1,6 +1,6 @@
 # CGEL printed-page coverage
 
-**Accelerated quality-preserving Phase B execution (2026-11-11):** the binding [Cambridge master plan](docs/planning/CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) and [batch runbook](docs/planning/CGEL_ACCELERATED_BATCH_RUNBOOK.md) now prioritize completing source extraction across all 20 chapters before further broad Phase C/D implementation. Future internal batches use adaptive source-verified page ranges, compact per-page audits and the reusable `tools/cgel_batch_gate.py`; all existing historical extraction tests are auto-discovered, and both full CI workflows still run for each completed chapter PR. **No extraction coverage or runtime detector count changed in this workflow-only milestone.** Next source range: Chapter 4, printed pp. 213–252 (adapt to source complexity).
+**Chapter 4 Phase B source pages complete (2026-11-11):** 107 substantive pages extracted, 3 justified skips (213–214 contents-only; 322 confirmed blank), 0 unprocessed. Independent linguistic QA and Phase C/D detector activation remain separate gates. Continue with the remaining Cambridge chapters.
 
 **Phase B extraction status: 2026-11-11.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
 
@@ -9,7 +9,7 @@
 | 1. Preliminaries | 42 | 0 | 41 | 1 | 0 | Incomplete |
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
-| 4. The clause: complements | 110 | 0 | 109 | 1 | 0 | Incomplete |
+| 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
 | 5. Nouns and noun phrases | 202 | 0 | 201 | 0 | 1 | Incomplete |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
 | 7. Prepositions and preposition phrases | 66 | 0 | 65 | 1 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **139 extracted**, 1610 unprocessed, 13 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **246 extracted**, 1501 unprocessed, 15 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -94,3 +94,33 @@ Added a **candidate-only, English-language** typed-evidence checker for **COMP-0
 ## Phase C Chapter 3 — canonical fact-graph grounding (2026-11-11)
 
 Built `server/cgel_ch03_fact_bridge.py` to bind the **three primary auxiliary candidate checks** from PR #80 to a **validated canonical B-R tree and a computed XAI-2 fact graph**. It verifies exact sentence/token/character alignment, overt terminal node IDs, observed MOD/V/AUX/PROG/PERF/PASS labels, common clause/VP, and current analysis ID. Opaque triangles, unknown relations, provisional or alternative analyses, stale references, unselected varieties and source-review flag forgery fail closed. Added dedicated adversarial and actual course-tree regression tests in `server/test_cgel_ch03_fact_bridge.py`, registered in GitHub Actions. **Semantic head/selection labels still depend on unverified typed assertions**, so outputs are *candidate only*, no Cambridge rule is activated, and no precision/recall or corrected-paragraph coverage is claimed. Evidence and remaining Phase C/D gates: `sources/cambridge/chapter_03/PHASE_C_CANONICAL_FACT_GROUNDING_20261111.md`. Full Chapter 3 source-page accounting remains **139 extracted plus 3 skips**.
+
+
+## Chapter 4 printed 213–232
+
+19 inactive original-example records (COMP-045–COMP-063), source and exception report `sources/cambridge/chapter_04/PP213_232_REPORT.md`, audit manifest `sources/cambridge/chapter_04/PP213_232_AUDIT.json`. Next printed page: 233.
+
+
+## Chapter 4 printed 233–252
+
+22 additional inactive records (COMP-064–COMP-085). Audit `sources/cambridge/chapter_04/PP233_252_AUDIT.json`, report `sources/cambridge/chapter_04/PP233_252_REPORT.md`. Current next source page **253**.
+
+
+## Chapter 4 pp.253–272
+
+37 new inactive rules (COMP-086–COMP-122), source audit sources/cambridge/chapter_04/PP253_272_REPORT.md, manifest sources/cambridge/chapter_04/PP253_272_AUDIT.json. Next 273.
+
+
+## Chapter 4 pp.273–292
+
+41 original-example, inactive records (COMP-123–COMP-163); source audit sources/cambridge/chapter_04/PP273_292_REPORT.md, machine manifest sources/cambridge/chapter_04/PP273_292_AUDIT.json. Next printed page 293.
+
+
+## Chapter 4 pp.293–307
+
+Added 35 inactive source-linked grammar records (COMP-164–COMP-198), audit sources/cambridge/chapter_04/PP293_307_AUDIT.json, report sources/cambridge/chapter_04/PP293_307_REPORT.md. Remaining: pp.308–321 (source-bearing), 322 (verified textless).
+
+
+## Chapter 4 final substantive pages: 308–321
+
+Added 39 inactive English-only records (COMP-199–COMP-237), source audit sources/cambridge/chapter_04/PP308_321_REPORT.md, machine manifest sources/cambridge/chapter_04/PP308_321_AUDIT.json. Page 322 blank as confirmed against full PDF, existing skip retained. **All Chapter 4 printed pages accounted for; independent QA / live XAI still pending.** Next source focus, according to the accelerated plan: Chapter 1 or 2 according to source manifest priority, rather than re-reading Chapter 4.

@@ -100,3 +100,33 @@ Do not remove or downgrade existing CI checks to accelerate a PR. Instead, **red
 ## Work cadence and stopping rules
 
 Process the entire current batch and its gate autonomously, fix failures, commit it and continue through the chapter. No review/approval prompts to the user. If source information is inaccessible or unsafe to infer, record the exact page/figure and blocker; never manufacture extraction. In each user turn, complete the most work actually possible and disclose any remaining blocker or incomplete PR. Future work does not run while the chat is closed.
+
+
+## Rolling checkpoint 2026-11-11
+
+The dense opening of Chapter 4 was split to 213–232; source audit and 19 inactive grammar records are in `sources/cambridge/chapter_04/PP213_232_AUDIT.json` and `sources/cambridge/chapter_04/PP213_232_REPORT.md`. Complete pp.233–252 next, then continue through p.322 before final chapter PR/CI merge. Do not treat source review as independent reviewer approval.
+
+
+## Chapter 4 second checkpoint (2026-11-11)
+
+Printed pp.233–252 audited consecutively; all are substantive pages. 22 additional inactive records and crosschecks in `sources/cambridge/chapter_04/PP233_252_REPORT.md` and `sources/cambridge/chapter_04/PP233_252_AUDIT.json`. Chapter 4 now has 38 extracted pages and two contents-only skips, leaving 69 unprocessed and one preexisting textless skip. Continue at p.253; do not merge until the rest of Chapter 4 is validated and both full CI workflows are green.
+
+
+## Chapter 4 checkpoint 253–272 (2026-11-11)
+
+Source checked all 20 printed pages in sources/cambridge/chapter_04/PP253_272_REPORT.md with machine audit sources/cambridge/chapter_04/PP253_272_AUDIT.json; 37 new inert Chapter 4 records. Continue printed 273–292 on the same PR before chapter-close QA.
+
+
+## Rolling Chapter 4 checkpoint — 2026-11-11
+
+Completed internal audited batch printed pp.273–292; report sources/cambridge/chapter_04/PP273_292_REPORT.md, audit sources/cambridge/chapter_04/PP273_292_AUDIT.json, 41 newly documented inactive grammar principles. Continue printed p.293, then close Chapter 4 only after complete page and exception coverage and both full CI workflows passing.
+
+
+## Ch4 checkpoint — pp.293–307 (2026-11-11)
+
+Source-audited 15 consecutive pages on the chapter branch. Report sources/cambridge/chapter_04/PP293_307_REPORT.md and machine-audit sources/cambridge/chapter_04/PP293_307_AUDIT.json; 35 new English-only inert records. Remaining 308–321 and textless p.322; review gate and chapter CI required before merging.
+
+
+## Chapter 4 source extraction closed, 2026-11-11
+
+Printed 213–321 and blank 322 accounted for. Chapter 4 107 extracted substantive pages, 3 justified skips, zero unprocessed. This last batch source audit: sources/cambridge/chapter_04/PP308_321_REPORT.md, manifest: sources/cambridge/chapter_04/PP308_321_AUDIT.json, 39 new records. Close the draft PR only after both GitHub CI workflows and batch/ledger/schema gates pass. New rules stay NEEDS_REVIEW and runtime activation remains blocked. Next extraction priority: chapters with remaining unprocessed pages.
