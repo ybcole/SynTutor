@@ -2,6 +2,20 @@
   "schema_version": "1.0.0",
   "course_version": "2026.11.08",
   "title": "Syntax Foundations and Grammar Analysis",
+  "module_descriptions": {
+    "br-01": "Start with the idea that a sentence is made of groups of words nested inside larger groups. You’ll learn to use a tree to show which words belong together and how one branch can contain an entire phrase.",
+    "br-02": "Look at the first split in a basic sentence to see how the subject and predicate fit together. You’ll distinguish the kind of phrase you’re looking at from the job it does in the sentence.",
+    "br-03": "Explore how the head of a phrase gives the phrase its category. Using adjective phrases, you’ll see how an adjective can stand on its own or combine with a degree word such as “very.”",
+    "br-04": "Study how the complements a verb takes shape the verb phrase. You’ll build a basic transitive VP and see how the verb and its direct object fit together inside it.",
+    "br-05": "Compare a verb’s complement with an adverbial that adds detail to the action. You’ll build two levels of VP and see how the point where an adverbial attaches changes the structure.",
+    "br-06": "Examine what happens to a verb phrase when a helping verb is added. You’ll build a progressive construction and see how the auxiliary heads a larger VP that contains the main verb phrase.",
+    "br-07": "Look inside a noun phrase to see how a determiner and a nominal work together. You’ll use DET and NOM to represent a simple phrase with a demonstrative and a noun.",
+    "br-08": "See how a clause can sit inside a larger sentence. You’ll use a clause beginning with “that” to show where the complementiser sits and how it connects to the embedded subject and predicate.",
+    "br-09": "Follow the changes that turn a statement into an object question. You’ll track where the wh-word and auxiliary appear at the front and how the tree represents the positions they leave behind.",
+    "br-10": "Explore how infinitival “to” fits into a verb phrase without carrying tense. You’ll distinguish it from the preposition “to” and see how it combines with a verb in its base form.",
+    "br-11": "Consider why listing sentences can never capture everything speakers can say. You’ll see how a finite set of grammar rules can describe the structure of sentences you’ve never encountered before.",
+    "cgel-clauses": "Explore Cambridge’s distinction between a sentence as a unit of text and a clause as a unit of grammar. You’ll compare a clause that stands alone with one that appears inside a larger sentence."
+  },
   "tracks": [
     {
       "id": "foundations",

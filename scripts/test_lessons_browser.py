@@ -31,8 +31,22 @@ try:
   page.goto(base,wait_until='domcontentloaded')
   page.locator('.sidebar-item[data-view="lessons"]').click()
   view=page.locator('#curriculumView')
-  view.get_by_role('heading',name='Learn the structure. See the reason.').wait_for()
-  assert view.locator('.curriculum-card').count()==11
+  view.get_by_role('heading',name='Lesson modules',exact=True).wait_for()
+  cards=view.locator('.lesson-module')
+  assert cards.count()==11
+  first=cards.first
+  meter=first.get_by_role('progressbar',name='Constituents and hierarchy progress')
+  expect(first.get_by_text('Chapter 1',exact=True)).to_be_visible()
+  expect(first.locator('.lesson-module-description')).to_have_text(COURSE['module_descriptions']['br-01'])
+  expect(meter).to_have_attribute('value','0')
+  expect(meter).to_have_attribute('max','6')
+  expect(first.get_by_role('button',name='Start lesson',exact=True)).to_be_visible()
+  assert cards.nth(1).bounding_box()['y'] >= first.bounding_box()['y'] + first.bounding_box()['height']
+  page.screenshot(path=str(OUT/'modules-desktop.png'),full_page=True)
+  page.set_viewport_size({'width':390,'height':844})
+  assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth'), 'Module list has horizontal overflow'
+  page.screenshot(path=str(OUT/'modules-mobile.png'),full_page=True)
+  page.set_viewport_size({'width':1440,'height':1050})
   for ident in ['br-01','br-06','br-10']:
    page.evaluate("id=>import('/js/lessons-ui.js').then(m=>m.openLessons(id))",ident)
    view.get_by_role('button',name='6. Exit check',exact=True).wait_for()
@@ -56,8 +70,10 @@ try:
    page.set_viewport_size({'width':1440,'height':1050})
   # Reload keeps an unfinished stage; identity and version handling are unit/RPC tested.
   page.reload(wait_until='domcontentloaded');page.locator('.sidebar-item[data-view="lessons"]').click()
-  view.get_by_role('heading',name='Learn the structure. See the reason.').wait_for()
-  view.locator('.curriculum-card').filter(has=page.get_by_role('heading',name=COURSE['lessons'][0]['title'],exact=True)).get_by_role('button').click()
+  view.get_by_role('heading',name='Lesson modules',exact=True).wait_for()
+  expect(meter).to_have_attribute('value','2')
+  expect(first.get_by_text('2 of 6 stages completed',exact=True)).to_be_visible()
+  first.get_by_role('button',name='Resume lesson',exact=True).click()
   assert view.get_by_role('button',name='3. See it',exact=True).get_attribute('aria-current')=='step'
   # Complete every published lesson, in prerequisite order, using rendered controls.
   for lesson in COURSE['lessons']:
@@ -90,6 +106,9 @@ try:
   view.get_by_role('button',name='Finish review — no extra XP',exact=True).click()
   view.get_by_role('button',name='← All lessons',exact=True).click()
   assert '12 / 12 lessons completed · 180 lesson XP' in view.locator('.lesson-total').inner_text()
+  expect(meter).to_have_attribute('value','6')
+  expect(first.get_by_role('button',name='Review lesson',exact=True)).to_be_visible()
+  expect(first).not_to_contain_text('XP')
   view.get_by_role('button',name='Grammar and Analysis',exact=True).click()
   assert view.locator('.curriculum-card').count()==1
   assert view.get_by_text('17 further topics planned — not published',exact=True).count()==1

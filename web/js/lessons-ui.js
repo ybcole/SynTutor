@@ -210,25 +210,44 @@ async function act(event) {
 }
 function openLesson(id) { active=id; step=0;notice='';render();host.querySelector('h1')?.focus(); }
 function catalog() {
-  const header=el('header',undefined,'curriculum-header');header.append(el('p','SOURCE-GROUNDED LEARNING','lesson-eyebrow'),el('h1','Learn the structure. See the reason.'));
-  header.append(el('p','Follow the B-R chapter sequence, then explore selected Cambridge insights. Practice is part of each lesson; independent quizzes will arrive separately.','lesson-lead'));
+  const header = el('header', undefined, 'curriculum-header');
+  header.append(el('h1', 'Lesson modules'));
   header.append(el('p',`${course.lessons.filter(l=>progressFor(l).completed_at).length} / ${course.lessons.length} lessons completed · ${lessonXp(store.records)} lesson XP in this course`,'lesson-total'));
-  const continuing=course.lessons.find(l=>store.records[lessonKey(l)] && !progressFor(l).completed_at) || course.lessons.find(l=>!progressFor(l).completed_at);
-  if (continuing) header.append(button(`Continue: ${continuing.title}`,()=>openLesson(continuing.lesson_id),'lesson-primary'));
   host.append(header);
   const tabs=el('div',undefined,'lesson-track-tabs');tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Learning tracks');
   for (const t of course.tracks) { const b=button(t.title,()=>{track=t.id;render();});b.setAttribute('aria-pressed',String(track===t.id));tabs.append(b); }
-  host.append(tabs,el('p',course.tracks.find(t=>t.id===track).description,'lesson-lead'));
-  const grid=el('div',undefined,'curriculum-grid');
-  for (const lesson of course.lessons.filter(l=>l.track===track)) {
-    const card=el('article',undefined,'curriculum-card'),p=progressFor(lesson);
-    card.append(el('p',`${lesson.track==='foundations' ? `Chapter ${lesson.chapter}` : 'Companion'} · ${lesson.difficulty} · ${lesson.estimated_minutes} min`,'lesson-eyebrow'),el('h2',lesson.title),el('p',lesson.outcomes[0].text));
-    card.append(el('p',p.completed_at ? `Completed · v${lesson.content_version} · 15 XP earned` : `v${lesson.content_version} · ${p.stage ? `Resume ${STAGE_TITLES[p.stage]}` : 'Not started'}`,'lesson-status'));
-    if (lesson.prerequisites.length) card.append(el('p',`Prerequisite: ${lesson.prerequisites.map(pr=>course.lessons.find(l=>l.lesson_id===pr.lesson_id)?.title).join(', ')}. Reading is always available.`,'lesson-prerequisite'));
-    card.append(button(p.completed_at ? 'Review lesson' : p.stage ? 'Resume lesson' : 'Open lesson',()=>openLesson(lesson.lesson_id),'lesson-open'));
-    grid.append(card);
+  host.append(tabs);
+  const modules = el('div', undefined, 'lesson-modules');
+  for (const lesson of course.lessons.filter(l => l.track === track)) {
+    const progress = progressFor(lesson);
+    const completedStages = STAGES.filter(stage => progress.visited.includes(stage)).length;
+    const started = completedStages > 0 || Object.keys(progress.responses).length > 0;
+    const chapter = lesson.track === 'foundations' ? `Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
+    const card = el('article', undefined, 'curriculum-card lesson-module');
+    card.append(
+      el('p', chapter, 'lesson-eyebrow'),
+      el('h2', lesson.title),
+      el('p', course.module_descriptions?.[lesson.lesson_id] || lesson.outcomes[0].text, 'lesson-module-description'),
+    );
+    const prerequisites = lesson.prerequisites.filter(pr => !store.records[lessonKey(pr)]?.completed_at);
+    if (prerequisites.length) {
+      const names = prerequisites.map(pr => course.lessons.find(l => l.lesson_id === pr.lesson_id).title);
+      card.append(el('p', `Complete ${names.join(', ')} before finishing this lesson. You can start reading now.`, 'lesson-prerequisite'));
+    }
+
+    const footer = el('div', undefined, 'lesson-module-footer');
+    const meter = el('div', undefined, 'lesson-module-progress');
+    const bar = el('progress');
+    bar.max = STAGES.length;
+    bar.value = completedStages;
+    bar.setAttribute('aria-label', `${lesson.title} progress`);
+    meter.append(el('p', `${completedStages} of ${STAGES.length} stages completed`), bar);
+    const action = progress.completed_at ? 'Review lesson' : started ? 'Resume lesson' : 'Start lesson';
+    footer.append(meter, button(action, () => openLesson(lesson.lesson_id), 'lesson-open'));
+    card.append(footer);
+    modules.append(card);
   }
-  host.append(grid);
+  host.append(modules);
   if (track==='grammar') {
     const planned=el('details',undefined,'lesson-planned');planned.append(el('summary',`${course.planned_modules.length} further topics planned — not published`));
     const list=el('ul');for(const p of course.planned_modules)list.append(el('li',`${p.title}: ${p.reason}`));planned.append(list);host.append(planned);
