@@ -22,10 +22,23 @@ function svgNode(name, attrs = {}) { const n = document.createElementNS(SVG_NS,n
 // Advanced structures never pass through the parser or the legacy Builder bridge.
 export function renderLessonTree(envelope, {
   focusId = null, blank = null, stackFeatures = false, displayLabels = null,
-  interactive = false, onSelectNode = null, zoomControls = false,
+  interactive = false, onSelectNode = null, zoomControls = false, markedTokens = null,
 } = {}) {
   const wrap = el('div',undefined,'lesson-tree-wrap');
   const root = envelope.root;
+  function appendWords(target, words, start) {
+    words.forEach((word, offset) => {
+      if (offset) target.append(' ');
+      if (markedTokens?.has(start + offset)) {
+        const mark = target.namespaceURI === SVG_NS ? svgNode('tspan') : el('span');
+        mark.classList.add('tree-word-invalid');
+        mark.textContent = word;
+        target.append(mark);
+      } else {
+        target.append(word);
+      }
+    });
+  }
   const hint=el('p','Scroll sideways to inspect the whole tree, or open its text view.','lesson-tree-hint');wrap.append(hint);wrap.tabIndex=0;wrap.setAttribute('aria-label','Scrollable B-R tree');
   function label(node, withFeatures = true) {
     const master = displayLabels?.[node.id];
@@ -80,6 +93,10 @@ export function renderLessonTree(envelope, {
     if (node.id===focusId) g.append(svgNode('rect',{x:x-55,y:y-20,width:110,height:40,rx:9}));
     const t=svgNode('text',{x,y,'text-anchor':'middle'});
     t.textContent=blank && blank.node_id===node.id ? (blank.field==='feature' ? `${node.label === 'AUX' ? '' : node.label} [?]` : '?') : label(node, !stackFeatures && !displayLabels);g.append(t);
+    if (node.word && markedTokens?.has(node.token_span?.[0])) {
+      t.replaceChildren();
+      appendWords(t, [node.word], node.token_span[0]);
+    }
     const rows = featureRows(node);
     rows.forEach((feature, index) => {
       const row = svgNode('text', {x, y: y + (index + 1) * 18, 'text-anchor': 'middle', class: 'br-feature-row'});
@@ -90,7 +107,9 @@ export function renderLessonTree(envelope, {
       const half=Math.min(widthOf(node)/2-12,80);
       const bottom = y + rows.length * 18;
       g.append(svgNode('polygon',{points:`${x},${bottom+12} ${x-half},${bottom+45} ${x+half},${bottom+45}`}));
-      const words=svgNode('text',{x,y:bottom+68,'text-anchor':'middle'});words.textContent=node.words.join(' ');g.append(words);
+      const words=svgNode('text',{x,y:bottom+68,'text-anchor':'middle'});
+      appendWords(words, node.words, node.token_span?.[0]);
+      g.append(words);
     }
     if (typeof onSelectNode === 'function' && node.id) {
       g.setAttribute('role','button');
@@ -154,6 +173,13 @@ export function renderLessonTree(envelope, {
     const description = node.words ? `${name} — ${node.words.join(' ')}` : name;
     if (interactive && node.id) {
       const button = el('button', description);
+      if (node.words && markedTokens) {
+        button.textContent = name + ' — ';
+        appendWords(button, node.words, node.token_span?.[0]);
+      } else if (node.word && markedTokens?.has(node.token_span?.[0])) {
+        button.replaceChildren();
+        appendWords(button, [node.word], node.token_span[0]);
+      }
       button.type = 'button';
       button.dataset.nodeId = node.id;
       if (typeof onSelectNode === 'function') button.addEventListener('click', () => onSelectNode(node.id, null));
