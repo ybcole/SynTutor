@@ -38,6 +38,135 @@ def nonempty(value):
     return isinstance(value, str) and bool(value.strip())
 
 
+
+def validate_reference_tree(tree, sentence, index):
+    """Check structural integrity, not linguistic correctness."""
+    errors = []
+    prefix = f"trees[{index}]"
+
+    if tree.get("notation") != "LREF_MINIMAL_DRAFT_V0":
+        return [f"{prefix}: unsupported tree notation"]
+
+    root = tree.get("root")
+
+    if not isinstance(root, dict):
+        return [f"{prefix}: root must be an object"]
+
+    heads = {
+        "NounHead": set(),
+        "VerbHead": set(),
+    }
+
+    def valid_span(span):
+        return (
+            isinstance(span, list)
+            and len(span) == 2
+            and all(type(value) is int for value in span)
+            and 0 <= span[0] < span[1] <= len(sentence)
+        )
+
+    def visit(node, location, parent_span=None):
+        if not isinstance(node, dict):
+            errors.append(f"{location}: node must be an object")
+            return
+
+        if not nonempty(node.get("label")):
+            errors.append(f"{location}: missing node label")
+
+        span = node.get("char_span")
+
+        if not valid_span(span):
+            errors.append(f"{location}: invalid character span")
+            span = None
+
+        if span is not None and parent_span is not None:
+            if not (
+                parent_span[0] <= span[0]
+                and span[1] <= parent_span[1]
+            ):
+                errors.append(
+                    f"{location}: child outside parent span"
+                )
+
+        children = node.get("children")
+
+        if children is not None:
+            if not isinstance(children, list) or not children:
+                errors.append(
+                    f"{location}: children must be a nonempty array"
+                )
+                return
+
+            for child_index, child in enumerate(children):
+                visit(
+                    child,
+                    f"{location}.children[{child_index}]",
+                    span,
+                )
+            return
+
+        surface = node.get("surface")
+
+        if not isinstance(surface, str):
+            errors.append(f"{location}: missing leaf surface")
+            return
+
+        if span is None:
+            return
+
+        if sentence[span[0]:span[1]] != surface:
+            errors.append(
+                f"{location}: leaf surface does not match sentence"
+            )
+            return
+
+        label = node.get("label")
+
+        if label in heads:
+            heads[label].add(tuple(span))
+
+    visit(root, f"{prefix}.root")
+
+    relations = tree.get("relations", [])
+
+    if not isinstance(relations, list):
+        errors.append(f"{prefix}: relations must be an array")
+        return errors
+
+    endpoints = {
+        "subject_head_span": "NounHead",
+        "verb_head_span": "VerbHead",
+    }
+
+    for relation_index, relation in enumerate(relations):
+        location = f"{prefix}.relations[{relation_index}]"
+
+        if not isinstance(relation, dict):
+            errors.append(f"{location}: relation must be an object")
+            continue
+
+        if relation.get("type") != "subject_verb_agreement":
+            errors.append(f"{location}: unsupported relation type")
+            continue
+
+        for field, required_label in endpoints.items():
+            span = relation.get(field)
+
+            if not valid_span(span):
+                errors.append(
+                    f"{location}.{field}: invalid endpoint span"
+                )
+                continue
+
+            if tuple(span) not in heads[required_label]:
+                errors.append(
+                    f"{location}.{field}: endpoint does not "
+                    f"reference an annotated {required_label}"
+                )
+
+    return errors
+
+
 def validate_case(case):
     errors = []
 
@@ -119,6 +248,15 @@ def validate_case(case):
             if not valid:
                 errors.append(
                     f"diagnostics[{index}]: invalid character span"
+                )
+
+    trees = reference.get("trees", [])
+
+    if isinstance(sentence, str) and isinstance(trees, list):
+        for index, tree in enumerate(trees):
+            if isinstance(tree, dict):
+                errors.extend(
+                    validate_reference_tree(tree, sentence, index)
                 )
 
     review = case.get("review")
