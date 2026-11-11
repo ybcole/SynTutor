@@ -219,7 +219,7 @@ def audit(root: Path = ROOT) -> tuple[dict, list[str], dict]:
     enabled = {entry.get("rule_id") for entry in registry.get("enabled_rules", [])}
     unsafe = enabled.intersection({r.get("id") for r in chapter_rules
                                    if r.get("status") == "NEEDS_REVIEW"
-                                   or r.get("diagnostic", {}).get("detector") == "spec_only"})
+                                   or (r.get("diagnostic") or {}).get("detector") == "spec_only"})
     if unsafe:
         errors.append("Source-only Chapter 3 rules were unsafely enabled: "
                       + ", ".join(sorted(str(x) for x in unsafe)))
