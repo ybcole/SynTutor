@@ -16,13 +16,11 @@ export function createBuilderTools(config){
  function input(name,value=''){const n=el('input');n.setAttribute('aria-label',name);n.value=value;return n;}
  function render(){
   if(!active)return;const open=host?.querySelector('details[data-edit]')?.open,io=host?.querySelector('[data-builder-json]')?.value||'';
+  const conventionsOpen=host.querySelector('details[data-conventions]')?.open??false;
   host.replaceChildren();const heading=el('h2','Build a B-R tree');host.append(heading,button(collapsed?'Show editing controls':'Hide editing controls',()=>{collapsed=!collapsed;render();config.fit();}));
   const view=el('div');view.className='builder-tool-actions';view.append(button('Zoom in',()=>config.zoom(1.25)),button('Zoom out',()=>config.zoom(.8)),button('Fit tree',()=>config.fit()),button('Pan left',()=>config.pan(-50,0)),button('Pan right',()=>config.pan(50,0)),button('Pan up',()=>config.pan(0,-50)),button('Pan down',()=>config.pan(0,50)));host.append(view);
   if(collapsed)return;
   const profile=config.state.canonicalProfile||builderProfile();
-  const profiles=[['FINAL','Free construction · FINAL-D1'],...Array.from({length:10},(_,i)=>[String(i+1),`Chapter ${i+1} · V${i+1}${i===6?' core':''}`]),['7D','Chapter 7 · Appendix D1']];
-  const pick=select('B-R convention',profiles,profile.version==='FINAL'?'FINAL':profile.appendix_nom?'7D':String(profile.chapter));
-  pick.addEventListener('change',()=>mutate(()=>{config.state.canonicalProfile=builderProfile(pick.value==='FINAL'?null:parseInt(pick.value),pick.value==='7D');config.state.targetId=null;}));host.append(field('Convention',pick));
   host.append(el('p','Edit with the canvas or these keyboard and touch controls. Checking a tree does not establish sentence grammaticality.'));
   const actions=el('div');actions.className='builder-tool-actions';
   const undo=button('Undo',()=>apply(session.undo())),redo=button('Redo',()=>apply(session.redo()));undo.disabled=!session.canUndo;redo.disabled=!session.canRedo;
@@ -60,6 +58,19 @@ export function createBuilderTools(config){
   })));
   if(config.state.targetId){const l=units.find(l=>l.lesson_id===config.state.targetId);exercises.append(el('p',`Target: ${l.title} — ${l.worked_example.tree.sentence}`),button('Next hint',()=>{const steps=l.worked_example.steps;const step=steps[Math.min(hintStep++,steps.length-1)];message=step.instruction||step.text||step.explanation||step.caption||JSON.stringify(step);updateStatus();}),button('Show model tree',()=>{config.showModel(l.worked_example.tree);}),button('Load model for exploration',()=>mutate(()=>{config.state.model=fromCanonicalEnvelope(l.worked_example.tree);config.reset();})));}
   }else exercises.append(el('p','Loading reviewed exercises…'));host.append(exercises);
+  const conventions=el('details');
+  conventions.dataset.conventions='';
+  conventions.open=conventionsOpen;
+  conventions.append(el('summary','Advanced tree conventions'));
+  const profiles=[['FINAL','Free construction · FINAL-D1'],...Array.from({length:10},(_,i)=>[String(i+1),`Chapter ${i+1} · V${i+1}${i===6?' core':''}`]),['7D','Chapter 7 · Appendix D1']];
+  const pick=select('B-R convention',profiles,profile.version==='FINAL'?'FINAL':profile.appendix_nom?'7D':String(profile.chapter));
+  pick.addEventListener('change',()=>mutate(()=>{
+   config.state.canonicalProfile=builderProfile(pick.value==='FINAL'?null:parseInt(pick.value),pick.value==='7D');
+   config.state.targetId=null;
+  }));
+  conventions.append(field('Convention',pick));
+  if(config.state.targetId)conventions.append(el('p','Changing conventions ends this exercise and keeps the tree on the canvas.'));
+  host.append(conventions);
   const interchange=el('details');interchange.append(el('summary','Canonical JSON, movement and alternatives'));const json=el('textarea');json.dataset.builderJson='';json.setAttribute('aria-label','Canonical Builder JSON');json.value=io;json.rows=7;json.maxLength=240000;
   interchange.append(el('p','Export/import the shared canonical envelope. Advanced movement, indices, empty positions and accepted-alternative metadata are preserved; imported source claims do not become authority.'),json,
    button('Export canonical JSON',()=>{try{json.value=JSON.stringify(toCanonicalEnvelope(config.state.model,profile),null,2);}catch(e){message=e.message;updateStatus();}}),

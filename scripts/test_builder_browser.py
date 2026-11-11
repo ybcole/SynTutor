@@ -26,6 +26,9 @@ try:
    if '/api/evaluate' in r.request.url:checks.append(r.request.post_data_json)
    r.continue_()
   page.route('**/*',route);page.goto(base,wait_until='domcontentloaded');page.locator('.sidebar-item[data-view="builder"]').click();tools=page.locator('#builderTools');expect(tools).to_be_visible();expect(tools.get_by_label('B-R convention',exact=True)).to_have_value('FINAL')
+  convention=tools.get_by_label('B-R convention',exact=True)
+  advanced=tools.get_by_text('Advanced tree conventions',exact=True)
+  expect(convention).to_be_hidden()
   tools.get_by_text('Reviewed construction practice',exact=True).click();tools.get_by_label('Builder exercise',exact=True).select_option('br-02');tools.get_by_role('button',name='Start construction practice',exact=True).click();expect(tools.get_by_label('B-R convention',exact=True)).to_have_value('2')
   def nodes():return page.evaluate("()=>import('/js/syntax-builder-ui.js').then(m=>Object.values(m.builderModel().nodes).map(n=>({id:n.id,type:n.type,text:n.text,parent:n.parent})))")
   words=nodes();assert len(words)==3
@@ -42,7 +45,9 @@ try:
   tools.get_by_role('button',name='Check construction',exact=True).click();panel=page.locator('#explainNode');expect(panel).to_contain_text('Structure: well_formed.');expect(panel).to_contain_text('Exercise: matched.');expect(panel).to_contain_text('Grammaticality: unresolved.')
   expect(panel.locator('[data-shared-evidence]')).to_be_visible();page.screenshot(path=str(OUT/'construction-desktop.png'),full_page=True)
   # Undo/redo and source/profile validation operate on this exact tree.
+  expect(convention).to_be_hidden();advanced.click();expect(convention).to_be_visible()
   tools.get_by_role('button',name='Undo',exact=True).click();tools.get_by_role('button',name='Redo',exact=True).click();tools.get_by_label('B-R convention',exact=True).select_option('1');tools.get_by_role('button',name='Check construction',exact=True).click();expect(panel).to_contain_text('Structure: invalid.');
+  expect(convention).to_be_visible()
   for _ in range(3):
    if tools.get_by_label('B-R convention',exact=True).input_value()=='2':break
    tools.get_by_role('button',name='Undo',exact=True).click()
