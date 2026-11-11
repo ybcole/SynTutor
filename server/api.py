@@ -21,6 +21,7 @@ from licensing import _leaves as _tree_leaves
 import corrector
 import corrections
 from plain import apply_plain_language, plain_text
+from diagnostic_authority import reconcile_summary
 
 _MODEL_STATUS = None
 
@@ -218,12 +219,14 @@ def build_payload(text, sentence_index=0, convention_version=None,
     summary["verdict_authority"] = "legacy_diagnostic"
     summary["book_verified"] = False
     apply_plain_language(details, summary)
+    summary = reconcile_summary(summary, canonical_status=br_analysis.get('status'))
 
     # Preserve the raw Benepar tree separately; br_analysis is the one canonical
     # analysis contract shared by API consumers.
     token_line = ' \u00b7 '.join(f"{t['t']}/{t['pos']}" for t in tokens)
     tag_word = summary['explanation']
-    label = {'grammatical': 'VALID', 'ungrammatical': 'INVALID',
+    label = {'grammatical': 'NO SUPPORTED ERROR DETECTED',
+             'ungrammatical': 'RULE-REPORTED VIOLATION',
              'unverified': 'UNVERIFIED'}.get(summary.get('verdict'),
                                              'VALID' if summary['valid'] else 'INVALID')
 
@@ -481,9 +484,11 @@ def _apply_correction(located, root, details, summary, sentence, det):
 
 
 def _contrastive(summary, details):
+    if summary.get('verdict') == 'unverified':
+        return 'The analysis is unverified; no evidence-backed contrastive repair is available.'
     if summary['valid'] and not summary.get('root_error'):
-        return ('No grammatical alternative is observed: every edge is licensed, so no repair is '
-                'needed. The sentence is fully determined by the matrix.')
+        return ('No supported local violation was found. This does not independently '
+                'verify grammatical correctness or establish that no repair is needed.')
     errors = [d for d in details.values() if d['status'] == 'error']
     if not errors:
         return 'No edge violation to repair.'
