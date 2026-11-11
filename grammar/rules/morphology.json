@@ -280,7 +280,7 @@
           75
         ],
         "pdf_pages": [
-          5
+          95
         ]
       }
     ],
@@ -296,7 +296,7 @@
       "MORPH-001"
     ],
     "confidence": "high",
-    "review_notes": "The rule records the inflectional contrast only. The separate syntactic behavior of auxiliary negation is covered by WCAT-001; this record does not restate that rule. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
+    "review_notes": "The rule records the inflectional contrast only. The separate syntactic behavior of auxiliary negation is covered by WCAT-001; this record does not restate that rule. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied. Full-volume source locator normalized: Chapter 3 printed p. 75 = one-based full-volume PDF p. 95; prior p. 5 referred to the chapter-split PDF. Grammatical claim and prior approval status unchanged.",
     "protocol_version": "1.0",
     "status": "APPROVED",
     "diagnostic": null
@@ -371,7 +371,7 @@
           75
         ],
         "pdf_pages": [
-          5
+          95
         ]
       },
       {
@@ -400,7 +400,7 @@
       "CLS-079"
     ],
     "confidence": "high",
-    "review_notes": "The examples test the three secondary-form gaps separately. The source also says that must and one or two other modal auxiliaries lack preterite forms; the unnamed additional item(s) are recorded under uncertain_items rather than guessed. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied. Ch. 14 §1.1 p. 1174 adds direct support that modal auxiliaries cannot occur in non-finite clauses; supportive do is handled separately by CLS-078.",
+    "review_notes": "The examples test the three secondary-form gaps separately. The source also says that must and one or two other modal auxiliaries lack preterite forms; the unnamed additional item(s) are recorded under uncertain_items rather than guessed. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied. Ch. 14 §1.1 p. 1174 adds direct support that modal auxiliaries cannot occur in non-finite clauses; supportive do is handled separately by CLS-078. Full-volume source locator normalized: Chapter 3 printed p. 75 = one-based full-volume PDF p. 95; prior p. 5 referred to the chapter-split PDF. Grammatical claim and prior approval status unchanged.",
     "protocol_version": "1.0",
     "status": "APPROVED",
     "diagnostic": null
@@ -455,7 +455,7 @@
           75
         ],
         "pdf_pages": [
-          5
+          95
         ]
       }
     ],
@@ -471,7 +471,7 @@
       "AGR-002"
     ],
     "confidence": "high",
-    "review_notes": "The source explicitly identifies the absence of a third-person-singular -s form. This contrasts with the unqualified scope of AGR-002, which currently says that present-tense verbs agree with their subject. See the conflict entry; do not revise the earlier rule silently. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied.",
+    "review_notes": "The source explicitly identifies the absence of a third-person-singular -s form. This contrasts with the unqualified scope of AGR-002, which currently says that present-tense verbs agree with their subject. See the conflict entry; do not revise the earlier rule silently. Explicitly approved by the repository owner on 2026-11-05. Burton-Roberts mapping remains unverified because no corresponding source material was supplied. Full-volume source locator normalized: Chapter 3 printed p. 75 = one-based full-volume PDF p. 95; prior p. 5 referred to the chapter-split PDF. Grammatical claim and prior approval status unchanged.",
     "protocol_version": "1.0",
     "status": "APPROVED",
     "diagnostic": null
