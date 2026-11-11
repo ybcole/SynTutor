@@ -146,7 +146,11 @@ export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } =
     refresh:()=>{evidenceRequest++;state.nodeErrors=new Map();state.lastEvaluation=null;draw();syncCanvasToInput();},
     zoom:factor=>{state.view.scale=Math.max(.15,Math.min(4,state.view.scale*factor));draw();},
     pan:(dx,dy)=>{state.view.ox+=dx;state.view.oy+=dy;draw();},
-    fit:()=>{if(treeIsComplete()){applyTreeLayout({fit:true});state.snapped=true;}draw();},
+    fit:()=>{
+      if(embedded)fitEmbeddedView();
+      else if(treeIsComplete()){applyTreeLayout({fit:true});state.snapped=true;}
+      draw();
+    },
     evaluate:buildTree,select:(id,explain=false)=>{selectOnly(id);draw();if(explain)explainSelected();},
     showModel:tree=>{const container=document.getElementById('explainNode');if(container){container.replaceChildren(renderLessonTree(tree));}}});
 }
@@ -475,7 +479,8 @@ function ensureWired() {
   window.addEventListener('resize', () => {
     if (isBuilderOpen() || embedded) {
       resize();
-      if(state.snapped)applyTreeLayout({fit:true});
+      if(embedded)fitEmbeddedView();
+      else if(state.snapped)applyTreeLayout({fit:true});
       draw();
     }
   });
@@ -492,6 +497,24 @@ function resize() {
   canvas.height = Math.round(h * dpr);
   canvas.style.width = `${w}px`;
   canvas.style.height = `${h}px`;
+}
+
+// Fitting the lesson canvas keeps the learner’s node positions and branch order.
+function fitEmbeddedView() {
+  const nodes = Object.values(state.model.nodes);
+  if (!nodes.length) return;
+  const left = Math.min(...nodes.map(node => node.x));
+  const right = Math.max(...nodes.map(node => node.x + node.w));
+  const top = Math.min(...nodes.map(node => node.y));
+  const bottom = Math.max(...nodes.map(node => node.y + node.h));
+  const width = state.canvas.clientWidth, height = state.canvas.clientHeight;
+  const scale = Math.max(.15, Math.min(1.2,
+    (width - 36) / (right - left), (height - 36) / (bottom - top)));
+  state.view = {
+    scale,
+    ox: (width - (right - left) * scale) / 2 - left * scale,
+    oy: (height - (bottom - top) * scale) / 2 - top * scale,
+  };
 }
 
 // ---------------------------------------------------------------------------

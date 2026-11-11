@@ -175,6 +175,10 @@ try:
   page.set_viewport_size({'width':390,'height':844})
   assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth'), 'Editable tree overflows the lesson'
   canvas.scroll_into_view_if_needed()
+  page.wait_for_function("""canvas => {
+    const pixels = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+    return pixels.some((value, index) => index % 4 === 3 && value > 0);
+  }""",arg=canvas.element_handle(),timeout=5000)
   page.screenshot(path=str(OUT/'br-01-editable-tree-mobile.png'),full_page=True)
   page.set_viewport_size({'width':1440,'height':1050})
   view.get_by_role('button',name='Next →',exact=True).click()
