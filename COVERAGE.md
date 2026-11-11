@@ -6,7 +6,7 @@
 |---|---:|---:|---:|---:|---:|---|
 | 1. Preliminaries | 42 | 0 | 41 | 1 | 0 | Incomplete |
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
-| 3. The verb | 142 | 129 | 10 | 3 | 0 | Incomplete |
+| 3. The verb | 142 | 137 | 2 | 3 | 0 | Incomplete |
 | 4. The clause: complements | 110 | 0 | 109 | 1 | 0 | Incomplete |
 | 5. Nouns and noun phrases | 202 | 0 | 201 | 0 | 1 | Incomplete |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
@@ -25,13 +25,13 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **129 extracted**, 1620 unprocessed, 13 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **137 extracted**, 1612 unprocessed, 13 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
-**Catalog:** 196 earlier approved records + 35 rules from pp. 76–90 + 70 rules from pp. 91–114 + 31 from pp. 115–122 + 20 from pp. 123–130 + 21 from pp. 131–138 + 30 from pp. 139–146 + 35 from pp. 147–154 + 35 from pp. 155–162 + 48 from pp. 163–170 + 51 from pp. 171–178 + 57 from pp. 179–186 + 70 from pp. 187–194 + 70 from pp. 195–202 = **769 rules**. The error-capable records added during Phase B remain specifications rather than newly integrated runtime detectors; **implemented new detectors: zero**. No new detection precision/recall claim is made.
+**Catalog:** 196 earlier approved records + 35 rules from pp. 76–90 + 70 rules from pp. 91–114 + 31 from pp. 115–122 + 20 from pp. 123–130 + 21 from pp. 131–138 + 30 from pp. 139–146 + 35 from pp. 147–154 + 35 from pp. 155–162 + 48 from pp. 163–170 + 51 from pp. 171–178 + 57 from pp. 179–186 + 70 from pp. 187–194 + 70 from pp. 195–202 + 86 from pp. 203–210 = **855 rules**. The error-capable records added during Phase B remain specifications rather than newly integrated runtime detectors; **implemented new detectors: zero**. No new detection precision/recall claim is made.
 
-Chapter 3 is at **129 extracted pages of 142**, plus 3 chapter-contents-only skips and **10 unprocessed (pp. 203–212)**. Source notes: `sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md`, `PHASE_B_PP91_114_REPORT.md`, `PHASE_B_PP115_122_REPORT.md`, and `PHASE_B_PP123_130_REPORT.md`; the later sequential source audit reports through `PHASE_B_PP171_178_REPORT.md` are also in the chapter folder. Continue from printed page **203**. Full-chapter completion gates remain inactive until source coverage is complete; no user sign-off is required for continued extraction.
+Chapter 3 is at **137 extracted pages of 142**, plus 3 chapter-contents-only skips and **2 unprocessed (pp. 211–212)**. Source notes: `sources/cambridge/chapter_03/PHASE_B_PP76_90_REPORT.md`, `PHASE_B_PP91_114_REPORT.md`, `PHASE_B_PP115_122_REPORT.md`, and `PHASE_B_PP123_130_REPORT.md`; the later sequential source audit reports through `PHASE_B_PP171_178_REPORT.md` are also in the chapter folder. Continue from printed page **211**. Full-chapter completion gates remain inactive until source coverage is complete; no user sign-off is required for continued extraction.
 
 ## Chapter 3 printed pp. 123–130 (2026-11-10)
 
@@ -72,3 +72,7 @@ Added **70** Cambridge-cited records (OTH-344–OTH-413: 57 classifications, 12 
 ## Chapter 3 printed pp. 195–202 (2026-11-11)
 
 Added **70** Cambridge-cited records OTH-414–OTH-483 (54 classifications, 10 descriptive generalizations, 3 narrow constraints, 2 variety-restricted statements, 1 rejected prescriptive prescription). Subjects include formal versus ordinary *shall/will*, *had better* and auxiliary *dare*, past-time *could/would*, backshift and remote conditionals, *wish* complements, tentative modals, and Dialect A/B *may/might*. The three constraints are **specification-only**; **0 new runtime detectors or measured metrics**. Audit: `sources/cambridge/chapter_03/PHASE_B_PP195_202_REPORT.md`. Chapter 3 now **129/142 extracted**, 3 justified skips, **10 unprocessed (203–212)**. Next range **203–210**.
+
+## Chapter 3 printed pp. 203–210 (2026-11-11)
+
+Added **86 source-cited records**, OTH-484–OTH-569: **75 classifications**, **7 descriptive generalizations**, **2 variety-restricted records**, and **2 descriptions of rejected traditional tense analyses**. These cover internal/external modal-perfect scope, negation and modal questions, lexical and quasi-modal auxiliaries, and Cambridge's analysis of futurity without an inflectional future tense. **0 new diagnostic constraints or runtime detectors**; no detector accuracy claims. Page-by-page evidence and exceptions: `sources/cambridge/chapter_03/PHASE_B_PP203_210_REPORT.md`. Chapter 3 now **137/142 extracted**, 3 contents-only skips, **2 unprocessed (pp. 211–212)**. Next range: **211–212**.

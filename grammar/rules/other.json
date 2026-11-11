@@ -27943,5 +27943,5081 @@
     "related_rules": [],
     "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-484",
+    "domain": "other",
+    "concept": "Dialect B may in standard variation",
+    "rule_type": "variety_restricted",
+    "scope": "clause",
+    "variety": "CGEL Dialect B (allows may in certain backshift/remote contexts)",
+    "statement": "May used by Dialect B speakers in backshift or remote environments is an increasingly established variant of Standard English.",
+    "condition": "A Dialect B speaker uses may where a conservative speaker might select might.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Conservative usage advice disapproves of the form, but the source does not license a universal error judgment.",
+        "pages": [
+          203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She thought the train may be late. [Dialect B]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If they returned, they may find the door closed. [Dialect B]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.4; §9.9 Modal auxiliaries and the scope of the perfect",
+        "pages": [
+          203
+        ],
+        "pdf_pages": [
+          223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dialect B may in standard variation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-485",
+    "domain": "other",
+    "concept": "Dialect B may remains present tense",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Dialect B may is analysed as present tense with an extended distribution, not as a past-tense or tense-neutral form.",
+    "condition": "A variety permits may in contexts normally favouring a preterite modal.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "May does not thereby acquire the ordinary past-time interpretation characteristic of genuine preterites.",
+        "pages": [
+          203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They said that the news may be true. [Dialect B]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the path were open, it may be safe to travel. [Dialect B]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.4; §9.9 Modal auxiliaries and the scope of the perfect",
+        "pages": [
+          203
+        ],
+        "pdf_pages": [
+          223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dialect B may remains present tense",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-486",
+    "domain": "other",
+    "concept": "Internal perfect under modal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An internal perfect locates the situation in past time while the modal judgment remains anchored to the present.",
+    "condition": "A modal precedes perfect have, and the perfect's semantic scope lies inside that modal.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The surface auxiliary sequence alone does not guarantee internal scope because external perfects also occur.",
+        "pages": [
+          203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The delivery must have arrived before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The assistants may have locked the side entrance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.4; §9.9 Modal auxiliaries and the scope of the perfect",
+        "pages": [
+          203
+        ],
+        "pdf_pages": [
+          223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Internal perfect under modal",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-487",
+    "domain": "other",
+    "concept": "External perfect over modal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An external perfect places the modal possibility or necessity itself in a prior time, often describing an unrealised potential.",
+    "condition": "A modal plus perfect have receives a reading where past time scopes over the modality.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A preterite modal cannot follow perfect have in the ordinary auxiliary paradigm, motivating scope that differs from surface order.",
+        "pages": [
+          203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina could have finished earlier if she had begun at dawn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The child might have slipped on the loose stone.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.4; §9.9 Modal auxiliaries and the scope of the perfect",
+        "pages": [
+          203
+        ],
+        "pdf_pages": [
+          223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "External perfect over modal",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-488",
+    "domain": "other",
+    "concept": "No external-perfect deontic must",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In the deontic external-perfect construction, need, should, ought to, could, and might are possible whereas must is not.",
+    "condition": "A modal-perfect construction evaluates a past deontic requirement or opportunity rather than a present inference.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A must have sequence is grammatical with internal epistemic perfect; its existence is not evidence for an external deontic perfect.",
+        "pages": [
+          203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You should have checked the lock before leaving.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We needn't have ordered an extra chair.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.4; §9.9 Modal auxiliaries and the scope of the perfect",
+        "pages": [
+          203
+        ],
+        "pdf_pages": [
+          223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "No external-perfect deontic must",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-489",
+    "domain": "other",
+    "concept": "Past reproach with external could/might",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An external perfect with deontic could or might can pragmatically criticise someone for failing to act.",
+    "condition": "The modal perfect assesses a past opportunity for an action that did not occur.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The criticism is a pragmatic enrichment of weak possibility, not proof that all could/might perfects mean reproach.",
+        "pages": [
+          203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You could have warned us about the delay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You might have answered the invitation sooner.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.4; §9.9 Modal auxiliaries and the scope of the perfect",
+        "pages": [
+          203
+        ],
+        "pdf_pages": [
+          223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past reproach with external could/might",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-490",
+    "domain": "other",
+    "concept": "External perfect and circumstantial possibility",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Could/might plus perfect can describe a past possibility that never became reality.",
+    "condition": "A past alternative outcome is evaluated against the actual outcome.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Epistemic might have is also grammatical but has internal perfect and does not imply the event never occurred.",
+        "pages": [
+          203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The fallen branch could have injured a passer-by.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We might have been stranded if the fuel had run out.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.4; §9.9 Modal auxiliaries and the scope of the perfect",
+        "pages": [
+          203
+        ],
+        "pdf_pages": [
+          223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "External perfect and circumstantial possibility",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-491",
+    "domain": "other",
+    "concept": "Remote conditional external perfect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A remote conditional apodosis can contain a modal-perfect form whose modal relation is itself placed within past-oriented counterfactual scope.",
+    "condition": "A would/might/could have consequent is governed by an explicit or implicit remote antecedent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An open past condition with will have can instead use an internal perfect about a past consequence.",
+        "pages": [
+          203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the lock had held, the valuables would have stayed secure.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the grant had arrived, the project might have continued.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.4; §9.9 Modal auxiliaries and the scope of the perfect",
+        "pages": [
+          203
+        ],
+        "pdf_pages": [
+          223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remote conditional external perfect",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-492",
+    "domain": "other",
+    "concept": "Counterfactual wish with could have",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A wish complement containing could have can present an unrealised past ability or opportunity.",
+    "condition": "Wish selects a non-epistemic modal perfect and presents its content counterfactually.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An ordinary epistemic may have about the past does not share this counterfactual entailment.",
+        "pages": [
+          203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wish I could have attended the rehearsal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She wishes she could have finished the sculpture.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.8.4; §9.9 Modal auxiliaries and the scope of the perfect",
+        "pages": [
+          203
+        ],
+        "pdf_pages": [
+          223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Counterfactual wish with could have",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-493",
+    "domain": "other",
+    "concept": "Remote versus open conditional perfect timing",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A remote would have consequence may still be future relative to an earlier hypothetical event, unlike an open will have inference about past completion.",
+    "condition": "Perfect have accompanies would in a remote consequence or will in an open past-oriented consequence.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A surface perfect need not require that the remote consequent itself already happened.",
+        "pages": [
+          204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the expedition had started earlier, it would have reached the summit next month.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the expedition started earlier, it will have reached the summit by now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.9 Modal-perfect scope; §9.10 Negation of modal auxiliaries",
+        "pages": [
+          204
+        ],
+        "pdf_pages": [
+          224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remote versus open conditional perfect timing",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-494",
+    "domain": "other",
+    "concept": "Needn't have: epistemic versus deontic",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Needn't have may be epistemic with an internal perfect or deontic with an external perfect.",
+    "condition": "A negative modal-perfect clause is interpreted as a present judgment or as a past non-obligation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The epistemic reading need not establish whether the act happened; the deontic reading commonly implies it did.",
+        "pages": [
+          204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The draft needn't have contained a mistake. [epistemic]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You needn't have prepared a second report. [deontic]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.9 Modal-perfect scope; §9.10 Negation of modal auxiliaries",
+        "pages": [
+          204
+        ],
+        "pdf_pages": [
+          224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Needn't have: epistemic versus deontic",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-495",
+    "domain": "other",
+    "concept": "Might have: epistemic versus dynamic",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Might have can mean uncertainty about an actual past event or an unrealised past possibility.",
+    "condition": "Might plus perfect has an epistemic/internal or dynamic/external scope reading.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context and actualisation determine interpretation, not the auxiliary string alone.",
+        "pages": [
+          204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guard might have left before the storm. [epistemic]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The loose roof tile might have hurt someone. [unrealised risk]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.9 Modal-perfect scope; §9.10 Negation of modal auxiliaries",
+        "pages": [
+          204
+        ],
+        "pdf_pages": [
+          224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Might have: epistemic versus dynamic",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-496",
+    "domain": "other",
+    "concept": "Positive external perfect suggests opposite actualisation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Positive deontic should have typically implies that the recommended past action did not occur.",
+    "condition": "A speaker retrospectively evaluates a course of action using an external perfect.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The implication with should can be questioned or cancelled; it is not always a logical entailment.",
+        "pages": [
+          204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I should have written down the address.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The staff ought to have announced the change.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.9 Modal-perfect scope; §9.10 Negation of modal auxiliaries",
+        "pages": [
+          204
+        ],
+        "pdf_pages": [
+          224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Positive external perfect suggests opposite actualisation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-497",
+    "domain": "other",
+    "concept": "Negative external perfect suggests actualisation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negative should not have or needn't have typically conveys that an unwanted or unnecessary action occurred.",
+    "condition": "The modal-perfect construction assesses what ought not or need not have happened.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same positive implicature can arise from internal or external placement of negation.",
+        "pages": [
+          204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You shouldn't have opened that sealed box.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They needn't have brought their own chairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.9 Modal-perfect scope; §9.10 Negation of modal auxiliaries",
+        "pages": [
+          204
+        ],
+        "pdf_pages": [
+          224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative external perfect suggests actualisation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-498",
+    "domain": "other",
+    "concept": "Should have nonactualisation implicature cancellable",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Should have can express a requirement without establishing whether the target action occurred.",
+    "condition": "An external perfect with should is used without direct evidence of actualisation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The speaker may explicitly say that they do not know whether the action was done.",
+        "pages": [
+          204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I don't know whether Leo sent the notice, but he should have.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whether the gardener watered the plants is uncertain; he ought to have done so.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.9 Modal-perfect scope; §9.10 Negation of modal auxiliaries",
+        "pages": [
+          204
+        ],
+        "pdf_pages": [
+          224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Should have nonactualisation implicature cancellable",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-499",
+    "domain": "other",
+    "concept": "External could/might counterfactual can be entailed",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "For some circumstantial could/might have and wish could have readings, the unrealised outcome is established rather than merely suggested.",
+    "condition": "An external perfect describes a missed actual opportunity or a counterfactual wish.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This stronger counterfactual interpretation is not transferable to epistemic might have.",
+        "pages": [
+          204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The door might have struck her, but it missed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wish I could have accompanied the visitors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.9 Modal-perfect scope; §9.10 Negation of modal auxiliaries",
+        "pages": [
+          204
+        ],
+        "pdf_pages": [
+          224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "External could/might counterfactual can be entailed",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-500",
+    "domain": "other",
+    "concept": "Modal strength tends to govern negation scope",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Strong and medium modal auxiliaries commonly take internal negation; weak ones commonly take external negation.",
+    "condition": "A negative modal clause is analysed by whether not scopes inside or outside modal necessity/possibility.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source explicitly identifies exceptions for individual modals and certain interrogative constructions.",
+        "pages": [
+          204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You mustn't touch the switch. [internal prohibition]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can't touch the switch. [external denial of possibility]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.9 Modal-perfect scope; §9.10 Negation of modal auxiliaries",
+        "pages": [
+          204
+        ],
+        "pdf_pages": [
+          224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal strength tends to govern negation scope",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-501",
+    "domain": "other",
+    "concept": "Auxiliary need with external negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negative auxiliary need commonly denies necessity itself rather than imposing an obligation not to act.",
+    "condition": "A main-clause auxiliary need occurs under not.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Need differs from most strong modals in negative scope; it is not synonymous with mustn't.",
+        "pages": [
+          204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You needn't submit the form today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We needn't take the longer route.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.9 Modal-perfect scope; §9.10 Negation of modal auxiliaries",
+        "pages": [
+          204
+        ],
+        "pdf_pages": [
+          224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary need with external negation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-502",
+    "domain": "other",
+    "concept": "Epistemic and existential may with internal negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negative may in an epistemic or existential reading can locate not within the possible situation.",
+    "condition": "A modal clause says it is possible that something is false or sometimes absent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The usual negative weak-modal pattern exemplified by can't is external negation instead.",
+        "pages": [
+          204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The invitation may not have reached her.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The path may not be accessible in winter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.9 Modal-perfect scope; §9.10 Negation of modal auxiliaries",
+        "pages": [
+          204
+        ],
+        "pdf_pages": [
+          224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic and existential may with internal negation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-503",
+    "domain": "other",
+    "concept": "Separated may/can and internal negation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Weak may and can with deontic/dynamic readings can sometimes place negation internally when it is separated by intervening material or a prosodic boundary.",
+    "condition": "A weak modal and not are nonadjacent or strongly prosodically separated.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adjacent may not and cannot in common permission contexts are usually prohibitions, so scope must not be guessed from spelling.",
+        "pages": [
+          204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You can always choose not to participate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Visitors may, if they wish, not take part in the tour.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.9 Modal-perfect scope; §9.10 Negation of modal auxiliaries",
+        "pages": [
+          204
+        ],
+        "pdf_pages": [
+          224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Separated may/can and internal negation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-504",
+    "domain": "other",
+    "concept": "Negative interrogatives with external negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negative modal question biased toward a positive answer normally places the negation outside the modal assessment.",
+    "condition": "A negative interrogative uses mustn't or shouldn't to invite confirmation or advice.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This differs from corresponding negative declaratives and is not determined by modal strength alone.",
+        "pages": [
+          205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mustn't that be exciting for the children?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Shouldn't we tell the organiser about the change?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.10 Modal auxiliaries in negative and interrogative clauses; §9.11 introduction",
+        "pages": [
+          205
+        ],
+        "pdf_pages": [
+          225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative interrogatives with external negation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-505",
+    "domain": "other",
+    "concept": "Negative modal interrogative tags",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negative tag attached to an affirmative modal assertion commonly questions its truth rather than imposing a negative modal obligation.",
+    "condition": "An affirmative main clause is followed by a negative interrogative modal tag.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Tag negation must not be confused with main-clause prohibition.",
+        "pages": [
+          205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We should leave before dark, shouldn't we?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee must meet tomorrow, mustn't it?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.10 Modal auxiliaries in negative and interrogative clauses; §9.11 introduction",
+        "pages": [
+          205
+        ],
+        "pdf_pages": [
+          225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative modal interrogative tags",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-506",
+    "domain": "other",
+    "concept": "Positive must and need in necessity questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Unlike negative declarative auxiliary need, positive need is possible in an interrogative about obligation.",
+    "condition": "A finite question inquires whether an action is necessary.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lexical have to questions are often more natural than auxiliary must or need.",
+        "pages": [
+          205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Must we complete every section?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Need we reserve seats beforehand?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.10 Modal auxiliaries in negative and interrogative clauses; §9.11 introduction",
+        "pages": [
+          205
+        ],
+        "pdf_pages": [
+          225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Positive must and need in necessity questions",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-507",
+    "domain": "other",
+    "concept": "Necessity question answers with must versus needn't",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An affirmative answer to a necessity question can use must, while a negative answer uses needn't.",
+    "condition": "An addressee answers a must/need interrogative concerning necessity.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The two forms do not represent symmetric positive and negative meanings inside one auxiliary paradigm.",
+        "pages": [
+          205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Yes, we must follow the instructions.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "No, we needn't attend the optional workshop.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.10 Modal auxiliaries in negative and interrogative clauses; §9.11 introduction",
+        "pages": [
+          205
+        ],
+        "pdf_pages": [
+          225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Necessity question answers with must versus needn't",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-508",
+    "domain": "other",
+    "concept": "Rhetorical stressed must question",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Stress on must in a question can convey irritation by implying that an interruption is unnecessary.",
+    "condition": "Must is stressed in an interrogative concerning an addressee's irritating behaviour.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is an indirect pragmatic criticism, not a claim that all interrogative must is negative.",
+        "pages": [
+          205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "MUST you drum your fingers while I speak?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "MUST you play music during the announcement?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.10 Modal auxiliaries in negative and interrogative clauses; §9.11 introduction",
+        "pages": [
+          205
+        ],
+        "pdf_pages": [
+          225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rhetorical stressed must question",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-509",
+    "domain": "other",
+    "concept": "Epistemic possibility in questions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Questions about epistemic possibility commonly favour can over may, and especially tentative could or might.",
+    "condition": "An interrogative asks whether a proposition might be true.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "May is still grammatically possible, and could/might expresses tentativeness rather than past time.",
+        "pages": [
+          205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could that stain be rust?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Might the timetable have changed overnight?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.10 Modal auxiliaries in negative and interrogative clauses; §9.11 introduction",
+        "pages": [
+          205
+        ],
+        "pdf_pages": [
+          225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic possibility in questions",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-510",
+    "domain": "other",
+    "concept": "Permission questions and indirect requests",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal questions with can, may, could, or might routinely function as requests for permission.",
+    "condition": "A first-person interrogative asks an addressee to authorise an action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Tentative forms mark diffidence; direct can/may requests remain correct.",
+        "pages": [
+          205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "May I examine the timetable?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could I borrow the atlas this afternoon?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.10 Modal auxiliaries in negative and interrogative clauses; §9.11 introduction",
+        "pages": [
+          205
+        ],
+        "pdf_pages": [
+          225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Permission questions and indirect requests",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-511",
+    "domain": "other",
+    "concept": "Tentative requests answered with present modal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Answers to permission requests using could or might normally use present-tense can or may.",
+    "condition": "An addressee gives or refuses permission in response to a tentative modal question.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The question's tentative preterite is not reproduced as a preterite in the granting answer.",
+        "pages": [
+          205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could I use the whiteboard? Yes, you may.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Might I look inside the cupboard? Yes, you can.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.10 Modal auxiliaries in negative and interrogative clauses; §9.11 introduction",
+        "pages": [
+          205
+        ],
+        "pdf_pages": [
+          225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Tentative requests answered with present modal",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-512",
+    "domain": "other",
+    "concept": "Second-person can/will in requests",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Dynamic ability can and volitional will can both form indirect requests, often with second-person subjects.",
+    "condition": "An interrogative asks whether the addressee can or will undertake an action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Could and would are softer variants, not necessary corrections to can and will.",
+        "pages": [
+          205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Can you carry the small table?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Would you close the window, please?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.10 Modal auxiliaries in negative and interrogative clauses; §9.11 introduction",
+        "pages": [
+          205
+        ],
+        "pdf_pages": [
+          225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Second-person can/will in requests",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-513",
+    "domain": "other",
+    "concept": "Should questions as deontic choices",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Should interrogatives usually ask which course is right, presupposing that an alternative ought to be followed.",
+    "condition": "An interrogative questions the proper action using should.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Open why should questions also have a special epistemic interpretation.",
+        "pages": [
+          205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Should the children use the smaller door?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Should we notify the committee today?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.10 Modal auxiliaries in negative and interrogative clauses; §9.11 introduction",
+        "pages": [
+          205
+        ],
+        "pdf_pages": [
+          225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Should questions as deontic choices",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-514",
+    "domain": "other",
+    "concept": "Epistemic why should question",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Why should can question an interlocutor's assumption that a proposition holds, rather than recommend an action.",
+    "condition": "An open interrogative has why plus should and a proposition whose occurrence is being doubted.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same words may also have a deontic reading asking for justification of the action.",
+        "pages": [
+          205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Why should the curator have resigned?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Why should the committee have rejected every proposal?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.10 Modal auxiliaries in negative and interrogative clauses; §9.11 introduction",
+        "pages": [
+          205
+        ],
+        "pdf_pages": [
+          225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic why should question",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-515",
+    "domain": "other",
+    "concept": "Have to and have got to as deontic necessity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Have to and have got to often express objective obligation supplied by a rule or another authority.",
+    "condition": "A lexical modal reports that an action is required by an identifiable source.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Subjective must can more naturally issue the speaker's own obligation; both variants remain grammatical.",
+        "pages": [
+          206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "All entrants have to register before arriving.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You have got to wear a badge in the laboratory.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong lexical modality, have (got), quasi-modal be, and lexical need",
+        "pages": [
+          206
+        ],
+        "pdf_pages": [
+          226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Have to and have got to as deontic necessity",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-516",
+    "domain": "other",
+    "concept": "Have (got) to as dynamic necessity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Have to and have got to can express a requirement imposed by circumstances rather than personal authority.",
+    "condition": "An outcome is necessary because of situational pressures.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This dynamic reading is more frequent with have to than with must.",
+        "pages": [
+          206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "After the storm, the village has to use the upper road.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "With the lift broken, we have got to take the stairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong lexical modality, have (got), quasi-modal be, and lexical need",
+        "pages": [
+          206
+        ],
+        "pdf_pages": [
+          226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Have (got) to as dynamic necessity",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-517",
+    "domain": "other",
+    "concept": "Epistemic have (got) to in dialects",
+    "rule_type": "variety_restricted",
+    "scope": "clause",
+    "variety": "AmE common; BrE comparatively infrequent",
+    "statement": "Epistemic have (got) to is common in American English but comparatively unusual in British English.",
+    "condition": "A strong inference is expressed with has to or has got to.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Its distribution is dialectal and must not be diagnosed as an error merely because British speakers use it less.",
+        "pages": [
+          206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This has got to be the busiest shop on the street.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That has to be the missing explanation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong lexical modality, have (got), quasi-modal be, and lexical need",
+        "pages": [
+          206
+        ],
+        "pdf_pages": [
+          226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic have (got) to in dialects",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-518",
+    "domain": "other",
+    "concept": "Quasi-modal be for obligation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Quasi-modal be plus to-infinitival may express a strong deontic requirement.",
+    "condition": "A finite be to construction issues or reports an obligation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The passive be to construction can instead express weak dynamic possibility.",
+        "pages": [
+          206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitors are to wait by the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Each participant is to return the equipment.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong lexical modality, have (got), quasi-modal be, and lexical need",
+        "pages": [
+          206
+        ],
+        "pdf_pages": [
+          226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quasi-modal be for obligation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-519",
+    "domain": "other",
+    "concept": "Passive be to with strong and weak readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Passive be to can express either strong deontic obligation or weak dynamic discoverability.",
+    "condition": "A passive quasi-modal be construction is interpreted as required action or potential location.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The weak dynamic passive has no corresponding active construction with that meaning.",
+        "pages": [
+          206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The medicine is to be stored in a locked cabinet. [obligation]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Similar motifs are to be found throughout the manuscript. [possibility]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong lexical modality, have (got), quasi-modal be, and lexical need",
+        "pages": [
+          206
+        ],
+        "pdf_pages": [
+          226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Passive be to with strong and weak readings",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-520",
+    "domain": "other",
+    "concept": "Quasi-modal be negation depends on meaning",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negation of strong be to expresses prohibition; negation of weak passive be to denies possibility.",
+    "condition": "A negative quasi-modal be to is interpreted as deontic or dynamic.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Surface negation cannot be labelled a grammar error without resolving the intended reading.",
+        "pages": [
+          206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The records are not to be altered. [prohibited]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The missing figures are not to be found in this chapter. [impossible]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong lexical modality, have (got), quasi-modal be, and lexical need",
+        "pages": [
+          206
+        ],
+        "pdf_pages": [
+          226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quasi-modal be negation depends on meaning",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-521",
+    "domain": "other",
+    "concept": "Be to with present and past arrangements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Quasi-modal be can describe arrangements or schedules in present or past time.",
+    "condition": "A be to clause supplies an institutionally planned prospective event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Past was to does not by itself establish whether the scheduled event occurred.",
+        "pages": [
+          206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There is to be another orientation session.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lecture was to be followed by a short discussion.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong lexical modality, have (got), quasi-modal be, and lexical need",
+        "pages": [
+          206
+        ],
+        "pdf_pages": [
+          226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Be to with present and past arrangements",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-522",
+    "domain": "other",
+    "concept": "Be to have for unrealised past plan",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Perfect in a past be to construction can suggest that a scheduled event failed to occur.",
+    "condition": "The past plan is expressed as was to have plus past participle.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The inference of nonactualisation can be context-sensitive, not an automatic syntactic error.",
+        "pages": [
+          206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The delegation was to have arrived on Tuesday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The event was to have included a public demonstration.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong lexical modality, have (got), quasi-modal be, and lexical need",
+        "pages": [
+          206
+        ],
+        "pdf_pages": [
+          226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Be to have for unrealised past plan",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-523",
+    "domain": "other",
+    "concept": "Narrative was to for realised future-in-past",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Formal narrative was to can anticipate a later event from a past vantage point and entail its occurrence.",
+    "condition": "A narrative describes a subsequent event with was to rather than simple past or would.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This differs from ordinary past arrangements, which do not assert whether the plan was implemented.",
+        "pages": [
+          206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Years later, the village was to become a major port.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A month afterwards, he was to win the regional award.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong lexical modality, have (got), quasi-modal be, and lexical need",
+        "pages": [
+          206
+        ],
+        "pdf_pages": [
+          226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Narrative was to for realised future-in-past",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-524",
+    "domain": "other",
+    "concept": "Be to in open and remote conditional protases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In an open conditional, if ... are to can present a purpose; in a remote conditional, were to reinforces remoteness.",
+    "condition": "An if-clause contains a finite be to construction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The two patterns have different semantic effects and must not be confused with an active runtime error.",
+        "pages": [
+          206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If we are to finish by noon, we must start now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she were to return tonight, we would be delighted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong lexical modality, have (got), quasi-modal be, and lexical need",
+        "pages": [
+          206
+        ],
+        "pdf_pages": [
+          226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Be to in open and remote conditional protases",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-525",
+    "domain": "other",
+    "concept": "Lexical need and auxiliary need interpretive contrast",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negative lexical need to often refers to dynamic absence of necessity, whereas auxiliary needn't readily conveys deontic exemption.",
+    "condition": "The alternative negatives don't need to and needn't evaluate a proposed activity.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is a tendency rather than a prohibition on either reading.",
+        "pages": [
+          206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We don't need to water the lawn; it rained overnight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You needn't attend the optional session.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong lexical modality, have (got), quasi-modal be, and lexical need",
+        "pages": [
+          206
+        ],
+        "pdf_pages": [
+          226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical need and auxiliary need interpretive contrast",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-526",
+    "domain": "other",
+    "concept": "Past didn't need to and needn't have differ",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Past negative lexical need does not assert the action occurred; deontic needn't have strongly implies that it did.",
+    "condition": "A past requirement is denied with didn't need to versus needn't have.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The contrast is clearest in salient deontic readings; some other readings or contexts differ.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The courier didn't need to sign the form, so he left.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The courier needn't have signed the form, but he did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past didn't need to and needn't have differ",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-527",
+    "domain": "other",
+    "concept": "Necessary selects mandative or infinitival complementation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adjectival necessary expresses objective deontic necessity and licenses mandative or infinitival complements.",
+    "condition": "A necessity adjective is predicated of a required action or requirement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The adjective is not used for the epistemic necessity expressed by necessarily or must.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is necessary that the equipment be inspected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is necessary for the device to cool before use.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Necessary selects mandative or infinitival complementation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-528",
+    "domain": "other",
+    "concept": "Necessarily conveys objective epistemic necessity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adverbial necessarily commonly assesses the logical entailment of a conclusion.",
+    "condition": "A modal adverb describes what must follow from known premises.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "It is frequent in nonaffirmative contexts and cannot be pragmatically weakened like inferential must.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That conclusion does not necessarily follow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "These two quantities are necessarily equal under the definition.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Necessarily conveys objective epistemic necessity",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-529",
+    "domain": "other",
+    "concept": "Necessarily also dynamic",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Necessarily can describe what follows from the intrinsic nature of a kind of thing.",
+    "condition": "An intrinsic dynamic property is treated as required by the subject's nature.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This meaning is separate from epistemic inference about observed evidence.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The process is necessarily slow with this equipment.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "In this design, the parts are necessarily interdependent.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Necessarily also dynamic",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-530",
+    "domain": "other",
+    "concept": "Surely epistemic and persuasion",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Surely is used epistemically and commonly invites the addressee's agreement.",
+    "condition": "A speaker expresses a subjective inferential evaluation with surely.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "It is not a deontic obligation adverb, and scope of an accompanying negative remains outside surely.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Surely the gardener will be here before midday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Surely that cannot be the final version.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Surely epistemic and persuasion",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-531",
+    "domain": "other",
+    "concept": "Surely and negative scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Surely normally stays outside the scope of a negative in its clause.",
+    "condition": "A clause combines surely and a negative modal or verb phrase.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Unlike an internally negative should not, surely expresses a positive judgment about a negated proposition.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Surely the keys aren't in the drawer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Surely the weather needn't be this unpredictable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Surely and negative scope",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-532",
+    "domain": "other",
+    "concept": "Certainly and direct speaker commitment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Certainly can convey a strong epistemic commitment without presenting an inference from evidence.",
+    "condition": "A speaker directly endorses a proposition using certainly.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This can be pragmatically stronger than an unmodalised clause or a corresponding epistemic must.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The equipment certainly belongs to the laboratory.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I certainly remember the entrance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Certainly and direct speaker commitment",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-533",
+    "domain": "other",
+    "concept": "Bound sure and certain with future infinitival",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Bound, sure, and certain followed by a to-infinitival express strong epistemic expectation, often concerning future events.",
+    "condition": "A predicative adjective plus to-infinitival estimates an event's likelihood.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Unlike the most common epistemic must inference, these readily describe future time.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The delivery is bound to reach us by Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The organisers are certain to announce the dates soon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bound sure and certain with future infinitival",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-534",
+    "domain": "other",
+    "concept": "Bound to negation and deontic external reading",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Strong epistemic bound to favours internal negation; deontic bound to readily permits external non-obligation.",
+    "condition": "A negative bound to construction expresses a prediction or obligation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "External epistemic negation is usually contrastive rather than the normal scope.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is bound not to approve that proposal. [internal]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You are not bound to reply immediately. [deontic external]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bound to negation and deontic external reading",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-535",
+    "domain": "other",
+    "concept": "Obligation and obliged actualisation distinction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The noun obligation spans weaker and stronger deontic force; describing an action as obliged in the past normally entails that it happened.",
+    "condition": "A person is said to have an obligation or to have been obliged to act.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An unfulfilled obligation is possible, unlike a completed was obliged to construction in its salient reading.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The editor had an obligation to respond, but declined.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The manager was obliged to return the deposit.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Obligation and obliged actualisation distinction",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-536",
+    "domain": "other",
+    "concept": "Probably and should in harmonic medium modality",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Epistemic probably and should can align so that the combined expression differs little from either alone.",
+    "condition": "A medium-strength epistemic should combines with probably.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The combination is not automatically evidence for independent stacked grammatical errors.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parcel should probably arrive today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The records are probably in the cabinet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Probably and should in harmonic medium modality",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-537",
+    "domain": "other",
+    "concept": "Expect as epistemic with deontic overlay",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Expect expresses a probable outcome and can acquire an additional expectation of duty when the subject is obliged to act.",
+    "condition": "An inferential expected to construction concerns future behaviour.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Deontic obligation arises in context rather than being the sole literal meaning.",
+        "pages": [
+          207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rain is expected to return on Tuesday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Participants were expected to bring their own notebooks.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(a) Strong modals; §9.11(b) Medium modality",
+        "pages": [
+          207
+        ],
+        "pdf_pages": [
+          227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Expect as epistemic with deontic overlay",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-538",
+    "domain": "other",
+    "concept": "Supposed to and meant to as deontic medium",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Participial adjectives supposed to and meant to often express medium-strength obligation attributable to an external source.",
+    "condition": "A predicative with supposed or meant plus to-infinitive describes what someone ought to do.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This objective obligation differs from more subjective should/ought, and supposed sometimes also has an epistemic use.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guests are supposed to sign the register.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We are meant to wear safety glasses.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supposed to and meant to as deontic medium",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-539",
+    "domain": "other",
+    "concept": "Supposed to negative position and internal reading",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Although not normally precedes supposed, it generally negates the required action rather than canceling the obligation.",
+    "condition": "A negative matrix be not supposed to expresses a deontic instruction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Contrastive contexts can shift scope; don't flag the ordinary form as absence of obligation.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You are not supposed to move those files.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Visitors are not meant to enter the workshop.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supposed to negative position and internal reading",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-540",
+    "domain": "other",
+    "concept": "Epistemic supposed as report or allegation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Supposed may sometimes introduce an epistemic attribution, indicating what is reported or alleged.",
+    "condition": "A passive supposed to have clause refers to an alleged event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Past was supposed to may instead express an unrealised deontic schedule.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The document is supposed to have been signed on Monday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This painting is supposed to date from the previous century.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic supposed as report or allegation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-541",
+    "domain": "other",
+    "concept": "Medium dynamic want and internal negation tendency",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Negative want often conveys a wish for an event not to happen even when not is placed with the matrix verb.",
+    "condition": "A medium-strength dynamic verb want is negated with a complement describing another person's action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The interpretation is a tendency, and the scope is not a reliable universal syntactic diagnosis.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I don't want the guests to leave early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She doesn't want the children to enter the shed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Medium dynamic want and internal negation tendency",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-542",
+    "domain": "other",
+    "concept": "Objective versus subjective weak epistemic lexemes",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Possible and possibly generally present objective possibility, while perhaps and maybe more often indicate subjective possibility.",
+    "condition": "The clause uses a weak modal adjective or adverb to express uncertainty.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source describes a typical difference of stance, not an ill-formed alternative.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is possible that the timetable changed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Perhaps the meeting has already begun.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Objective versus subjective weak epistemic lexemes",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-543",
+    "domain": "other",
+    "concept": "Perhaps outside interrogative scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Perhaps in a question can express the speaker's own hypothesis without falling inside what is being asked.",
+    "condition": "An interrogative contains perhaps as a comment on the proposition questioned.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The question still requests an answer about the proposition itself, not about the speaker's degree of belief.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Has the visitor perhaps missed the last bus?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did the courier perhaps leave the package outside?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perhaps outside interrogative scope",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-544",
+    "domain": "other",
+    "concept": "Able to narrower than modal can",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Able to describes objective ability and some objective permissions but not subjective granting of permission, existential can, or already actualised present perception.",
+    "condition": "Able to is compared with can across ability, permission and generic constructions.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Potential ability remains valid with able, including perception skills and officially granted rights.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The technician is able to operate the crane.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Members are able to reserve up to five rooms.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Able to narrower than modal can",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-545",
+    "domain": "other",
+    "concept": "Willing and non-entailing negative",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Was not willing to often suggests that an act did not occur but does not logically entail nonactualisation.",
+    "condition": "A participant's willingness is denied by not in a dynamic modal expression.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An external compulsion can override unwillingness, so the consequence is defeasible.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira was not willing to speak, but the judge required her to.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The assistant wasn't willing to travel, though eventually he did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Willing and non-entailing negative",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-546",
+    "domain": "other",
+    "concept": "Allow permit and let as permission or causation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Allow, permit and let can either confer permission or report circumstances enabling a result.",
+    "condition": "A verb introduces an object and an action that may be deontically permitted or causally enabled.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An enabling reading does not require any person granting authority.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The coordinator allowed visitors to enter the archive. [permission]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The clear weather let the workers finish early. [enabling]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Allow permit and let as permission or causation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-547",
+    "domain": "other",
+    "concept": "Allow permit let complement timing",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In their causative use, allow, permit and let relate to a complement situation concurrent with the enabling condition.",
+    "condition": "A lexical causative modal describes the conditions under which its complement becomes actual.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This differs from modal may, whose complement can be future and unrealised.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dry pavement allowed them to cycle safely.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new ramp permits visitors to reach the gallery.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Allow permit let complement timing",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-548",
+    "domain": "other",
+    "concept": "Nonperformative ordinary allow",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Allow and permit do not normally have a simple-present performative use equivalent to directly granting permission.",
+    "condition": "A speaker attempts to grant immediate permission with a bare present I allow rather than an explicit future or policy statement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Special contexts can still use present allow in descriptions or fixed official formulas; this is a pattern, not a blanket syntax ban.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will allow them to enter at noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The policy permits staff to park behind the building.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonperformative ordinary allow",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-549",
+    "domain": "other",
+    "concept": "Negated allow and cancellable nonactualisation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negative allow/permit/let clause usually suggests the complement event did not happen, but contrastive stress can cancel that suggestion.",
+    "condition": "An external negation denies that a particular authority enabled an event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Someone else might have granted permission or made the event possible.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The caretaker didn't allow them to enter, but the owner did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The supervisor didn't let us submit early; the administrator did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negated allow and cancellable nonactualisation",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-550",
+    "domain": "other",
+    "concept": "CGEL rejects morphological future-tense analysis",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "clause",
+    "statement": "In CGEL, futurity expressed by will is analysed as modality, not a third future tense alongside present and preterite.",
+    "condition": "A traditional three-way tense table treats will plus plain verb as a future-tense form.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is an analytical disagreement, not a reason to label a standard English will-clause ungrammatical.",
+        "pages": [
+          208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The exhibition opens tomorrow. [present futurate]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The exhibition will open tomorrow. [modal futurity]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§9.11(b) Medium; §9.11(c) Weak modality; §10.1 introduction",
+        "pages": [
+          208
+        ],
+        "pdf_pages": [
+          228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL rejects morphological future-tense analysis",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-551",
+    "domain": "other",
+    "concept": "English has no future tense in CGEL",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "CGEL distinguishes future-time reference from an inflectional future-tense category and treats will as an auxiliary of mood.",
+    "condition": "The clause refers to a future event with will, present tense, or another construction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The absence of a future-tense category does not make future-time clauses ill formed.",
+        "pages": [
+          209
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ferry leaves at sunrise tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The ferry will leave at sunrise tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 The lack of a future tense in English",
+        "pages": [
+          209
+        ],
+        "pdf_pages": [
+          229
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "English has no future tense in CGEL",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-552",
+    "domain": "other",
+    "concept": "Traditional three-term tense table critique",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "clause",
+    "statement": "The traditional past/present/future arrangement mixes preterite inflection with a modal auxiliary construction.",
+    "condition": "A verb form is analysed using a three-column table with took, takes, and will take.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source treats this as a rejected analysis, not a ban on using will.",
+        "pages": [
+          209
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The novelist wrote a letter yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The novelist will write another letter tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 The lack of a future tense in English",
+        "pages": [
+          209
+        ],
+        "pdf_pages": [
+          229
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Traditional three-term tense table critique",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-553",
+    "domain": "other",
+    "concept": "Would is the preterite of will",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Would participates in the ordinary preterite relation to will, alongside could to can.",
+    "condition": "A pair of modal auxiliaries contrasts in tense, backshift or modal remoteness.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A three-way tense table that makes will a simple future has no place for would in the same grammatical dimension.",
+        "pages": [
+          209
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They said the announcement would be early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the venue were open, we would enter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 The lack of a future tense in English",
+        "pages": [
+          209
+        ],
+        "pdf_pages": [
+          229
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Would is the preterite of will",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-554",
+    "domain": "other",
+    "concept": "Modal contrast independent of tense contrast",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A system describing will as a future auxiliary still requires a separate past/present distinction for would versus will.",
+    "condition": "A modal-inflected predicate occurs in either preterite or present form.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Perfect have likewise introduces a contrast independent of the preterite/present tense opposition.",
+        "pages": [
+          209
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will meet on Saturday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We would meet if the timetable changed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 The lack of a future tense in English",
+        "pages": [
+          209
+        ],
+        "pdf_pages": [
+          229
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal contrast independent of tense contrast",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-555",
+    "domain": "other",
+    "concept": "Will shares syntactic modal-auxiliary properties",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will belongs to the same syntactic auxiliary class as can, may and must, rather than forming its own future-tense verb class.",
+    "condition": "A finite auxiliary has the central distributional properties of the English modal system.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The shared category by itself is evidence, but the book also relies on semantic and morphological arguments.",
+        "pages": [
+          209
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Will the exhibition start at noon?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Can the exhibition start at noon?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 The lack of a future tense in English",
+        "pages": [
+          209
+        ],
+        "pdf_pages": [
+          229
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will shares syntactic modal-auxiliary properties",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-556",
+    "domain": "other",
+    "concept": "Will shares modal-auxiliary meanings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will has epistemic and volitional uses that align semantically with other modal auxiliaries.",
+    "condition": "A will clause makes an inference, prediction or commitment.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The grammatical modal classification does not deny that many will clauses refer to future time.",
+        "pages": [
+          209
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That will be the new librarian at the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She will return the keys tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 The lack of a future tense in English",
+        "pages": [
+          209
+        ],
+        "pdf_pages": [
+          229
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will shares modal-auxiliary meanings",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-557",
+    "domain": "other",
+    "concept": "Will versus simple present can share reference time",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adding will can weaken epistemic commitment without changing the situation's reference time.",
+    "condition": "A present inference or scheduled future event is compared with a bare present form.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Future reference is compatible with simple-present futurates, while will has modal force.",
+        "pages": [
+          209
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The exhibition begins on Thursday. [scheduled]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The exhibition will begin on Thursday. [prediction]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 The lack of a future tense in English",
+        "pages": [
+          209
+        ],
+        "pdf_pages": [
+          229
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will versus simple present can share reference time",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-558",
+    "domain": "other",
+    "concept": "Mood analysis of will and shall",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "CGEL groups will and shall with other mood auxiliaries rather than distinguishing them as tense auxiliaries.",
+    "condition": "The proposed classification uses syntactic, semantic and preterite-form evidence jointly.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Individual cross-language tense correspondences do not determine English's own grammar.",
+        "pages": [
+          209
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We shall contact the office tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The office will contact us next week.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 The lack of a future tense in English",
+        "pages": [
+          209
+        ],
+        "pdf_pages": [
+          229
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mood analysis of will and shall",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-559",
+    "domain": "other",
+    "concept": "Will and may span past present and future",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Like epistemic may, will can concern past, present or future situations when other temporal devices establish the situation time.",
+    "condition": "A modal in present tense heads a clause whose complement may refer to different times.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Past reference normally involves perfect have; future-time interpretations do not require a dedicated future tense.",
+        "pages": [
+          210
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gardener will have finished by now. [past inference]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gardener will arrive tomorrow. [future prediction]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 Future-time constructions; §10.2 Idiomatic be going introduction",
+        "pages": [
+          210
+        ],
+        "pdf_pages": [
+          230
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will and may span past present and future",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-560",
+    "domain": "other",
+    "concept": "Present-tense modal locates present judgment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Will and may are themselves present-tense forms that express a modal assessment made now.",
+    "condition": "A present modal heads a finite clause about a past, present or future situation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The complement's time need not coincide with the time of the modal judgment.",
+        "pages": [
+          210
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Now the tickets may already be sold out.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Now we will probably miss the early train.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 Future-time constructions; §10.2 Idiomatic be going introduction",
+        "pages": [
+          210
+        ],
+        "pdf_pages": [
+          230
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present-tense modal locates present judgment",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-561",
+    "domain": "other",
+    "concept": "Present unwillingness with won't",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A dynamic won't clause can describe an agent's current unwillingness rather than predict the future.",
+    "condition": "A person has been asked to perform an action and currently refuses.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Will in other contexts can instead express a future prediction or a promise.",
+        "pages": [
+          210
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I asked the technician to come, but she won't.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We invited the guest to speak, but he won't.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 Future-time constructions; §10.2 Idiomatic be going introduction",
+        "pages": [
+          210
+        ],
+        "pdf_pages": [
+          230
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present unwillingness with won't",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-562",
+    "domain": "other",
+    "concept": "Inanimate won't describes current property",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Won't can describe an object's current inability to perform an expected function.",
+    "condition": "An inanimate device resists an intended action in the present.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The metaphorical volition does not imply the object has genuine intentions.",
+        "pages": [
+          210
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cupboard door won't close.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This old printer won't connect to the network.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 Future-time constructions; §10.2 Idiomatic be going introduction",
+        "pages": [
+          210
+        ],
+        "pdf_pages": [
+          230
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inanimate won't describes current property",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-563",
+    "domain": "other",
+    "concept": "Mood analysis requires combined evidence",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "CGEL's case against English future tense rests jointly on the preterite relation of will/would, modal syntax and modal semantics.",
+    "condition": "The lexical system is assessed against an English-specific analysis rather than another language's translation pattern.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A language such as French may contrast present and future tense forms for similar meanings without settling English classification.",
+        "pages": [
+          210
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Our neighbours may move next summer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our neighbours will move next summer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 Future-time constructions; §10.2 Idiomatic be going introduction",
+        "pages": [
+          210
+        ],
+        "pdf_pages": [
+          230
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mood analysis requires combined evidence",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-564",
+    "domain": "other",
+    "concept": "Imperative and mandative future readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Imperatives and mandatives naturally concern not-yet-actualised actions because of their deontic force.",
+    "condition": "A directive imperative or mandative subordinate clause imposes a prospective action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A future interpretation follows from construction and meaning, not from a separate inflectional future tense.",
+        "pages": [
+          210
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please close the studio after the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is essential that she submit the report tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 Future-time constructions; §10.2 Idiomatic be going introduction",
+        "pages": [
+          210
+        ],
+        "pdf_pages": [
+          230
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Imperative and mandative future readings",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-565",
+    "domain": "other",
+    "concept": "Present futurates and future subordinate clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Present-tense verbs can refer to future situations in scheduled main clauses and appropriate subordinate clauses.",
+    "condition": "A present-tense clause describes a scheduled future event or an event in a temporal/conditional subordinate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Licensing depends on the clause type; not every plain present clause predicts the future.",
+        "pages": [
+          210
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The exhibition begins next Tuesday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the exhibition begins next Tuesday, we'll attend.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 Future-time constructions; §10.2 Idiomatic be going introduction",
+        "pages": [
+          210
+        ],
+        "pdf_pages": [
+          230
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present futurates and future subordinate clauses",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-566",
+    "domain": "other",
+    "concept": "Bare infinitival complement with future reference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A bare infinitival complement of may or will can refer to a future event.",
+    "condition": "A modal auxiliary takes a plain-form complement referring to a forthcoming situation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The future reference does not give the plain form an inflectional future tense.",
+        "pages": [
+          210
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The committee may meet tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee will meet tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 Future-time constructions; §10.2 Idiomatic be going introduction",
+        "pages": [
+          210
+        ],
+        "pdf_pages": [
+          230
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare infinitival complement with future reference",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-567",
+    "domain": "other",
+    "concept": "To-infinitival complement with future reference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A to-infinitival complement of verbs such as intend and want can describe a future event.",
+    "condition": "The selecting matrix predicate expresses an intention or desire.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The future reference is supplied through the selecting predicate and context, not by infinitive morphology.",
+        "pages": [
+          210
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We intend to visit the new gallery tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She wants to finish the article next month.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 Future-time constructions; §10.2 Idiomatic be going introduction",
+        "pages": [
+          210
+        ],
+        "pdf_pages": [
+          230
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "To-infinitival complement with future reference",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-568",
+    "domain": "other",
+    "concept": "Gerund-participial with future reference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A gerund-participial clause can refer to a future arrangement when licensed by its matrix construction.",
+    "condition": "A progressive futurate or complement of an intention verb has a planned future event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Gerund-participial form alone does not encode futurity outside a suitable construction.",
+        "pages": [
+          210
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We are meeting the architect tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I intend visiting the coast next month.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 Future-time constructions; §10.2 Idiomatic be going introduction",
+        "pages": [
+          210
+        ],
+        "pdf_pages": [
+          230
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gerund-participial with future reference",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-569",
+    "domain": "other",
+    "concept": "Idiomatic be going as future reference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The established be going to idiom introduces a future-oriented to-infinitival clause.",
+    "condition": "Finite be going to combines with a plain future-oriented event description.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The page introduces this idiom and explains its historical relation to progressive go; its later semantic constraints are outside this range.",
+        "pages": [
+          210
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The room is going to become much warmer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The guests are going to leave after lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.1 Future-time constructions; §10.2 Idiomatic be going introduction",
+        "pages": [
+          210
+        ],
+        "pdf_pages": [
+          230
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic be going as future reference",
+        "relation": "unverified",
+        "note": "No independently verified Burton-Roberts mapping for this semantic or syntactic distinction."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
+    "diagnostic": null
   }
 ]

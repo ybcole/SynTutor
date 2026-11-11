@@ -110,3 +110,10 @@ Extracted **70** new, narrowly sourced records OTH-344–OTH-413 (57 classificat
 ## Phase B autonomous continuation — 2026-11-11, printed pp. 195–202
 
 Added **70** independently paraphrased, narrowly cited records OTH-414–OTH-483: 54 classifications, 10 descriptive generalizations, 3 grammatical constraint specifications, 2 variety-restricted forms, and 1 rejected shall/will prescriptive pattern. The three new diagnostics (OTH-439, OTH-453, OTH-458) are **spec_only**, with guard examples; no new detectors are enabled or metrics claimed. Exact per-page distinctions, exceptions, PDF provenance and incomplete p. 202 topic continuation: `PHASE_B_PP195_202_REPORT.md`. Chapter 3: **129 extracted / 142**, **3 contents-only skips**, **10 unprocessed (203–212)**. Book-wide unprocessed count: **1,620**; catalog total **769**. Continue from printed **203** without a manual approval stop.
+
+
+---
+
+## Phase B autonomous continuation — 2026-11-11, printed pp. 203–210
+
+Added **86 original, narrowly source-cited records**, OTH-484–OTH-569: 75 classifications, 7 descriptive generalizations, 2 variety-restricted records, and 2 reports of traditional tense analyses rejected by Cambridge. They distinguish internal versus external modal-perfect scope, modal polarity/negation, modal and lexical interrogatives, dialect-sensitive *have got to*, quasi-modal *be*, and CGEL's treatment of *will/shall* as mood rather than future tense. Full source audit: `PHASE_B_PP203_210_REPORT.md`. Chapter 3 now **137/142 extracted**, 3 justified contents-only skips and **2 unprocessed (211–212)**. Book-wide unprocessed: **1,612**. Total catalog: **855** records. No active detectors, precision/recall figures, or chapter-wide completion claim. Continue at printed **211** without per-range approval.
