@@ -233,3 +233,61 @@ and its lexical verb as independent clauses.
 evaluation/friday_validation/test_question_modal.py
 
 Current result: 1 passed, 3 failed.
+
+## QA-010 — Grammar explanations conflict with selected correction
+
+**Severity:** Medium
+**Area:** Diagnostic explanations and correction consistency
+**Status:** Reproduced through automated testing
+
+### Problem
+
+SynTutor generates a coherent final correction but presents
+individual grammatical advice that is not coordinated with
+the selected repair.
+
+### Reproduction
+
+Input: These book are heavy.
+
+Triggered constraints:
+- C-DETERMINER-AGREEMENT
+- C-SUBJECT-AGREEMENT
+
+Final correction:
+These books are heavy.
+
+Subject-verb agreement explanation:
+"The subject 'These book' and the verb 'are' do not match.
+Use 'is' with this subject."
+
+### Expected behavior
+
+The explanation should support the selected plural repair:
+
+"These" and "are" indicate a plural interpretation.
+Use "books" rather than "book".
+
+Alternatively, SynTutor may explain the complete singular
+repair: "This book is heavy."
+
+### Impact
+
+The final correction and node-level guidance may lead
+students toward different repairs.
+
+### Recommended investigation
+
+Coordinate related diagnostics using a consistent repair
+plan. Distinguish primary corrections from alternatives,
+and ensure the explanations reflect that distinction.
+
+### Regression test
+
+evaluation/friday_validation/test_correction_consistency.py
+
+Current result: 2 passed, 1 failed.
+
+Test limitation: The advice-consistency assertion currently
+checks for a specific alternative phrase and should later
+be generalized to accept equivalent valid explanations.
