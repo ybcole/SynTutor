@@ -28,7 +28,7 @@ affected section.
 
 | Page | What the learner does | What the page needs |
 | --- | --- | --- |
-| 1. Introduction and opening check | Recall an idea from the previous chapter. Make a prediction about one short example and reveal the explanation. | A brief **What this chapter covers**, one example that introduces the concept, and a compact **What you’ll see in this chapter** preview that also serves as the learning outcomes. Save longer contrasts and explanations for the teaching pages. End with three unscored questions shown one at a time, with the reviewed prediction as the saved first response. |
+| 1. Introduction and opening check | Recall an idea from the previous chapter and read one short worked example. | A brief **What this chapter covers**, one visible example with its explanation, and a compact **What you’ll see in this chapter** preview. Save longer contrasts for the teaching pages. End with three unscored questions shown one at a time, with the reviewed prediction as the saved first response. |
 | 2. Core concepts | Work through the book's reasoning using the chapter's example and a contrasting example. Try a diagnostic or decide between two analyses. | Several descriptive subheadings. Under each, explain one idea in short paragraphs, show which words or branches provide evidence, and give feedback on a likely misunderstanding. Keep the essential explanation visible and use disclosures for answers and extra detail. |
 | 3. Worked analysis and guided construction | Read a tree from a meaningful starting node. Trace the words and compare the same relationship in another example. Build or edit the part that demonstrates the concept. | An authored canvas, a nearby notation guide, and short captions explaining the relation. For tree construction, place the editable canvas with **Guide me** and **Check construction** in the lesson. Match the scope of the construction task to the chapter's outcome. |
 | 4. Apply the concept | Compare a pair of sentences or analyse a new one. Explain which evidence supports the decision, then practise the relationship again. | A new example that requires the same reasoning, feedback that explains the result, and a worked reveal. If the application asks learners to build, provide a second guided editor on this page with its own draft. |
@@ -48,6 +48,9 @@ clarify a distinction within a page that already teaches the B-R concept.
 Before each worked figure, name the sentence, connect the figure to the
 preceding explanation, and tell learners which words or branches to trace.
 Explain unfamiliar symbols before asking learners to use the diagram.
+Show worked examples and explanations directly in the lesson. Use a single
+optional reveal for a practice answer when seeing it early would give away
+the task. Keep the prompt visible.
 
 Use at most two multiple-choice questions across the teaching pages. Reserve
 them for choices where each plausible answer reveals a different misunderstanding.
@@ -74,7 +77,7 @@ later coverage already mapped in the curriculum.
 | Introduction | Bridge from word groups to their jobs. Use *The robins sing* to introduce subject and predicate, then preview finding, reading, and building the two groups. |
 | Finding the subject and predicate | Show how *every morning* extends the predicate. Then select the last word of the subject in *The robins near the gate are singing softly*. Use a yes/no question and pronoun replacement to check the full subject. Explain NP and VP, and show a predicate that describes a state. |
 | Reading and building the NP/VP tree | Compare the two trees and trace the span of a branch. Explain sister nodes and the purpose of the triangles. Build the short example in the lesson and use the longer canvas for a branch-selection check. |
-| Applying the split | Use the lesson’s one multiple-choice item to compare *The robins sing* with *Maya watched the robins*. Open a close-up to see the NP within the VP. Build *The gate by our house is open* in a second embedded editor, using a separate draft. |
+| Applying the split | Use the lesson’s one multiple-choice item to compare *The robins sing* with *Maya watched the robins*. Trace the highlighted NP within the VP in the visible figure. Build *The gate by our house is open* in a second embedded editor, using a separate draft. |
 | Chapter recap | Use a short procedure and a fresh example, *The lights in the hall were bright*. Apply the Cambridge sentence–clause distinction to two examples as a cited note. |
 | Closing check | Offer a short open-response warm-up with a reveal, followed by the three reviewed M4 questions. |
 

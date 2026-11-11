@@ -191,12 +191,12 @@ function addSubjectBoundary(body, { el, button }) {
 }
 
 function addClosingWarmup(body, { el }) {
-  body.append(disclosure(el, 'Try an unscored warm-up',
+  body.append(el('h3', 'Unscored warm-up'),
     el('p', 'The children by the window were reading quietly.', 'lesson-example-sentence'),
-    el('p', 'Say or write the whole subject and predicate. Which two branches would you attach directly to S?'),
+    el('p', 'Find the full subject and predicate. Which branches go directly under S?'),
     disclosure(el, 'Reveal the analysis',
       el('p', '[The children by the window] [were reading quietly]', 'lesson-example-sentence'),
-      el('p', 'The NP includes “by the window”, which tells us which children. The VP includes “were”, “reading”, and “quietly”. Both phrases are direct branches under S.'))));
+      el('p', '“By the window” identifies the children, so it belongs in the subject NP. The predicate VP covers “were reading quietly”.')));
 }
 
 export function addSubjectPredicateTeaching(body, page, ui) {
@@ -213,12 +213,9 @@ export function addSubjectPredicateTeaching(body, page, ui) {
 
   if (page === 0) {
     section('What this chapter covers',
-      'Chapter 1 asked which words belong together. Here we ask what job each group does in a sentence.');
-    body.append(el('p', sentence, 'lesson-example-sentence'));
-    paragraph('Where would you divide this sentence into two groups?');
-    body.append(disclosure(el, 'See the two parts',
-      el('p', `[${np}] [${vp}]`, 'lesson-example-sentence'),
-      el('p', `“${np}” is the subject. “${vp}” is the predicate. In this sentence, the subject names the birds and the predicate tells us what they do.`)));
+      'In Chapter 1, you found which words belong together. Now look at the job each group does.');
+    body.append(el('p', `[${np}] [${vp}]`, 'lesson-example-sentence'));
+    paragraph(`“${np}” is the subject. It names the birds. “${vp}” is the predicate. It tells us what they do.`);
     section('What you’ll see in this chapter');
     const preview = el('ol');
     for (const [topic, example] of [
@@ -243,23 +240,21 @@ export function addSubjectPredicateTeaching(body, page, ui) {
     paragraph('The longer sentence has the same two-part pattern. Find all the words that tell you which birds, then all the words that say what those birds are doing.');
     addSubjectBoundary(body, ui);
     section('Check the whole subject with a question',
-      'Compare the longer statement with a question you could answer with yes or no. Move “are” to the start. Read from “the” to “gate”. These words stay together even when their position changes.');
-    body.append(disclosure(el, 'Reveal the question',
-      el('p', 'Are [the robins near the gate] singing softly?', 'lesson-example-sentence'),
-      el('p', 'The whole subject stays together after “Are”. In the original statement, “are” belongs to the predicate. We’ll draw the tree for the statement.')));
-    paragraph('With “The robins sing”, the question uses an extra word: “Do the robins sing?” The subject is still “the robins”. Use the question to find the group, then return to the original statement to decide which words to put in the tree.');
+      'Move “are” to the start to form a yes/no question. Notice which words stay together after it.');
+    body.append(el('p', 'Are [the robins near the gate] singing softly?', 'lesson-example-sentence'));
+    paragraph('The brackets mark the whole subject. In the original statement, “are” belongs in the predicate.');
+    paragraph('The short sentence needs “do” to form the question “Do the robins sing?” The subject is still “the robins”. Draw the tree for the original statement.');
     section('Try one word in place of the whole group',
-      'Remember the replacement test from Chapter 1. Try replacing “The robins near the gate” with “they”. The word “they” takes the place of all five words, including “near the gate”.');
-    body.append(disclosure(el, 'Try replacing the subject',
-      el('p', 'They are singing softly.', 'lesson-example-sentence'),
-      el('p', '“They” can stand for the whole group “The robins near the gate”. The predicate stays the same. This is another way to check which words go together.')));
+      'Use Chapter 1’s replacement test. “They” can stand for all five words in “The robins near the gate”.');
+    body.append(el('p', 'They are singing softly.', 'lesson-example-sentence'));
+    paragraph('The predicate stays the same. This gives you another clue to where the subject ends.');
     section('What kind of group is it?',
       'A category tells you what kind of phrase you’re looking at. A function tells you the job it does in this sentence.',
       '“The robins” and “The robins near the gate” are noun phrases (NPs). Both groups are built around the noun “robins”. “Sing” and “are singing softly” are verb phrases (VPs). Each group is built around a verb, and the whole group can be a single word, as “sing” is here.',
       'Try keeping the longer NP and changing the VP. “The robins near the gate sing” still has the same two main branches. “Sing” now does the predicate’s job on its own.');
     section('A predicate can describe a state',
       'In “The gate is open”, the subject is “The gate”. The whole predicate is “is open”. The word “open” tells us the state of the gate, and “is” belongs with it in the VP.',
-      'The two groups have the same jobs as in “The robins sing”. This time, the predicate describes how something is.');
+      'Both sentences have a subject and a predicate. The predicate “is open” describes a state.');
   }
 
   if (page === 2) {
@@ -303,31 +298,22 @@ export function addSubjectPredicateTeaching(body, page, ui) {
     });
     const contrast = sentenceTree('br-02-contrast', contrastSentence, 'Maya', 'watched the robins');
     section('Follow the two NPs',
-      'In “The robins sing”, the NP “The robins” connects straight to S. In “Maya watched the robins”, the NP “Maya” takes that position. The whole VP is “watched the robins”, including the birds Maya watched.',
-      'First read the two triangles in the overview. The NP triangle ends at “Maya”. The VP triangle covers all of “watched the robins”. Then open the close-up to see the smaller NP inside that VP. This is the same idea of groups within groups that you saw in Chapter 1.');
-    const overview = el('div', undefined, 'constituent-diagram');
-    body.append(overview);
-    ui.showDiagram(overview, contrast);
+      'In “The robins sing”, “The robins” is the NP directly under S. In the tree below, “Maya” takes that position and is an NP on its own. The VP covers “watched the robins”.',
+      'Follow the highlighted NP up to its parent. It sits inside the VP, just as smaller groups sat inside larger ones in Chapter 1.');
     const closeUp = el('div', undefined, 'constituent-diagram');
-    const detail = disclosure(el, 'Look inside the predicate',
-      el('p', 'Here the VP is opened up so you can see “the robins” inside it. Follow that NP upward. It connects to VP. The subject NP “Maya” connects directly to S.'),
-      closeUp);
-    body.append(detail);
-    detail.addEventListener('toggle', () => {
-      if (!detail.open || closeUp.childElementCount) return;
-      const [subject, predicate] = contrast.root.children;
-      ui.showDiagram(closeUp, {
-        ...contrast,
-        root: { ...contrast.root, children: [subject, {
-          id: predicate.id, label: 'VP',
-          children: [{ word: 'watched' }, triangle('br-02-contrast-inner', 'NP', 'the robins')],
-        }] },
-      }, { focusId: 'br-02-contrast-inner', highlightWords: true, wordBaseline: 3 });
-    });
+    body.append(closeUp);
+    const [subject, predicate] = contrast.root.children;
+    ui.showDiagram(closeUp, {
+      ...contrast,
+      root: { ...contrast.root, children: [subject, {
+        id: predicate.id, label: 'VP',
+        children: [{ word: 'watched' }, triangle('br-02-contrast-inner', 'NP', 'the robins')],
+      }] },
+    }, { focusId: 'br-02-contrast-inner', highlightWords: true, wordBaseline: 3 });
     section('Build a tree for a new sentence',
-      'This time the subject includes words that tell you which gate. The predicate tells you its state. Decide where the subject ends before you connect any words.');
+      'Find the words that identify the gate and the words that describe its state. Then build the split.');
     body.append(el('p', transferSentence, 'lesson-example-sentence'));
-    paragraph('Use the same three labels as before. Build it on your own, or use Guide me to attach each group one step at a time. You can come back to either exercise and continue your own draft.');
+    paragraph('Use S, NP, and VP. Build on your own or use Guide me. Each exercise saves its own draft.');
     addSubjectPredicateBuilder(body, ui, {
       id: `${lesson.lesson_id}-transfer`,
       label: 'Build a tree for a new sentence exercise',
@@ -353,8 +339,8 @@ export function addSubjectPredicateTeaching(body, page, ui) {
       el('p', '[The lights in the hall] [were bright]', 'lesson-example-sentence'),
       el('p', 'Ask “Were the lights in the hall bright?” The entire subject stays together after “Were”. In the statement, the subject NP covers “The lights in the hall”, and the predicate VP covers “were bright”. Both phrases connect directly to S in this pattern.')));
     section('Cambridge insight: sentence and clause',
-      'Cambridge uses sentence for a unit of text and clause for a unit of syntax. “The robins sing.” is a sentence on the page and contains a single clause.',
-      'In “Maya knows the robins sing”, the whole line is one sentence. “The robins sing” is also a clause inside it, with its own subject and predicate. For more on the terms, see Cambridge, printed pp. 44–45, in the chapter references.');
+      'Cambridge uses sentence for a unit of text and clause for a unit of grammar. “The robins sing.” is a sentence containing one clause.',
+      'In “I think the robins sing”, the words “the robins sing” form a clause inside a larger clause. The smaller clause has its own subject and predicate. See Cambridge, pp. 44–45.');
   }
 
   if (page === 5 && ui.showClosingWarmup) addClosingWarmup(body, ui);
