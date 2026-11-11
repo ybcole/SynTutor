@@ -548,6 +548,9 @@ try:
    print('Checking',ident,flush=True)
    page.evaluate("id=>import('/js/lessons-ui.js').then(m=>m.openLessons(id))",ident)
    expect(part_heading).to_contain_text('Introduction to')
+   if expanded:
+    expect(view.get_by_role('heading',name='What this chapter covers')).to_be_visible()
+    expect(view.locator('article .lesson-example-sentence')).to_be_visible()
    expect(view.get_by_role('region',name='Check what you know' if expanded else 'Pre-test')).to_be_visible()
    prediction=view.locator('[data-question="predict"]')
    expect(prediction.locator('legend')).to_have_text(lesson['predict']['prompt'])
@@ -563,7 +566,8 @@ try:
    expect(view.locator('.constituent-pre-test-status')).to_have_text('Knowledge check complete.' if expanded else 'Response recorded.')
    next_button.click()
    if expanded:
-    expect(view.locator('article h3')).to_have_count(3)
+    expect(view.locator('article h3')).to_have_count(4)
+    expect(view.locator('article > ul > li')).to_have_count(2)
    else:
     for block in lesson['teaching']:
      expect(view.get_by_text(block['text'],exact=True)).to_be_visible()
@@ -624,6 +628,7 @@ try:
     expect(view.locator('svg')).to_have_count(0)
    next_button.click()
    if expanded:
+    expect(view.locator('article .lesson-example-sentence')).to_be_visible()
     answer=view.get_by_text('Check your analysis',exact=True)
     expect(answer.locator('+ p')).to_be_hidden()
     answer.press('Enter')
@@ -636,6 +641,12 @@ try:
     expect(view.get_by_text(insight['text'],exact=True)).to_be_visible()
    next_button.click()
    expect(part_heading).to_have_text('Chapter Recap')
+   if expanded:
+    expect(view.get_by_role('heading',name='Try a quick check')).to_be_visible()
+    quick_answer=view.get_by_text('Show the answer',exact=True)
+    expect(quick_answer.locator('+ p')).to_be_hidden()
+    quick_answer.press('Enter')
+    expect(quick_answer.locator('+ p')).to_be_visible()
    references=view.locator('article .lesson-sources')
    references.locator('summary').click()
    expect(references.locator('li').first).to_be_visible()

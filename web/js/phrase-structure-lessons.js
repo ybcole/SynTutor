@@ -5,19 +5,23 @@ import { connect, disconnect, fromCanonicalEnvelope, toCanonicalEnvelope } from 
 const chapters = {
   'br-03': {
     topics: ['Adjective Phrases', 'Heads and Degree Words', 'Reading and Building an AP', 'Finding the Head in a New Phrase'],
-    intro: 'In Chapter 2, you labelled whole phrases. Now look inside one. In “very cheerful”, the adjective “cheerful” is the head, the word that gives the phrase its category. “Very” tells you the degree of cheerfulness. Together they form an adjective phrase.',
-    preview: ['Find the word that makes the group an adjective phrase.', 'Read and build an AP with an adjective and a degree word.', 'Apply the same pattern to a new phrase.'],
+    intro: 'Chapter 2 looked at the jobs that whole phrases do. Here you’ll look inside an adjective phrase. The adjective gives the group its category, and a degree word can tell you how strongly that description applies.',
+    example: 'The children seemed [very cheerful].',
+    introExample: 'The brackets enclose the whole adjective phrase (AP). “Cheerful” supplies the description, and “very” changes its strength. We call “cheerful” the head of the phrase.',
+    preview: ['Compare an adjective on its own with an adjective plus a degree word.', 'Trace and build the branches in “very cheerful”.', 'Find the same roles in a new description.'],
     concepts: [
-      ['Find the head', 'Compare “cheerful” with “very cheerful”. In “The children seemed cheerful” and “The children seemed very cheerful”, both phrases describe the children. “Cheerful” supplies the description in both.'],
-      ['Find the degree word', '“Very” tells you how cheerful the children seemed. It depends on the adjective here: “The children seemed very” leaves the description unfinished. Other degree words in this pattern include “quite” and “rather”.'],
-      ['Read the labels', 'A labels the adjective word. DEG labels the degree word. AP labels the whole phrase. In this pattern, DEG and A are sisters directly under AP.'],
+      ['Find the head', 'Compare “The children seemed cheerful” with “The children seemed very cheerful”. Both groups fit after “seemed” and describe the children. When you take away “very”, the adjective “cheerful” still supplies the description. That is the head.'],
+      ['Check what the degree word adds', '“Very” tells you how cheerful the children seemed. Read “The children seemed very” on its own. You are still waiting for a description. In this use, the degree word depends on the adjective. Try “quite cheerful” or “rather cheerful” to see how a different degree word changes the same description.'],
+      ['Read the labels', 'A labels the adjective. DEG labels the degree word. AP labels the whole phrase. When both words are present in this pattern, A and DEG share AP as their parent.'],
     ],
+    contrast: ['Compare the two shapes', ['“Very cheerful” has two branches under AP. A covers “cheerful” and DEG covers “very”.', '“Cheerful” can form an AP on its own. The AP still has an adjective head.']],
     opening: [
       ['In “quite bright”, which word tells you the degree of brightness?', ['quite', 'bright', 'both words']],
       ['In “very quiet”, which label stands for the whole adjective phrase?', ['A', 'AP', 'DEG']],
     ],
     steps: ['Find cheerful', 'Read the A label', 'Read the whole AP'],
-    beforeTree: 'Find “cheerful” first and follow it up to A. Then look one level higher for AP. The other branch from AP leads to DEG and the word “very”.',
+    beforeTree: 'Start with “cheerful” and follow it up to A. Select the whole AP and see which words are now highlighted. Then select DEG in the diagram to check which word tells you the degree.',
+    treeTakeaway: 'A covers one word here. AP covers the whole description. The DEG branch joins the adjective branch at AP.',
     buildTitle: 'Connect the adjective head',
     build: {
       branch: root => [root, root.children[1]],
@@ -26,29 +30,35 @@ const chapters = {
       hint: 'A and DEG should share AP as their parent. Keep “cheerful” under A.',
       success: 'A and DEG are sisters under AP. “Cheerful” is the adjective head.',
     },
+    applyExample: 'The room looked quite bright.',
     apply: [
-      ['Find the two roles in “quite bright”', 'Read “The room looked quite bright”. Which word supplies the description? Which word tells you its degree?'],
-      ['Try a phrase with one word', 'Now read “The room looked bright”. The description still works. “Bright” can form an AP on its own.'],
+      ['Find the two roles', 'Keep “The room looked” fixed and try replacing the whole description with “dull”. This helps you see the two words as one group. Which word inside that group supplies the description?'],
+      ['Try a phrase with one word', 'Now read “The room looked bright”. Decide which branch the shorter tree keeps and which branch it loses. Use the same label for the whole description in both trees.'],
     ],
-    reveal: ['Check your analysis', 'In “quite bright”, A covers “bright” and DEG covers “quite”. Both branches sit directly under AP. In the one-word example, AP contains just the adjective branch.'],
+    reveal: ['Check your analysis', 'In “quite bright”, the whole AP has two branches. A covers “bright”, the head, and DEG covers “quite”. “Bright” on its own still has an AP over A. Only the DEG branch disappears.'],
     recap: ['Find the adjective that supplies the description.', 'If a word like “very” tells its degree, label that word DEG in this pattern.', 'Use A for the adjective and AP for the whole phrase.'],
+    selfCheck: ['Try “rather narrow”. Which label covers both words, and which labels cover each word?', 'AP covers “rather narrow”. DEG covers “rather” and A covers “narrow”.'],
     postTestIntro: 'Use the head and degree word to read each adjective phrase.',
   },
   'br-04': {
     topics: ['The Basic Transitive VP', 'Verbs and Direct Objects', 'Reading and Building a Transitive VP', 'Finding a New Direct Object'],
-    intro: 'In Chapter 2, you found the subject and predicate. Now look inside the predicate of “Nora inspected the bridge”. “Inspected” is the verb. “The bridge” names what Nora inspected and works as the direct object.',
-    preview: ['Separate the subject from the whole verb phrase.', 'Attach the direct-object noun phrase beside the verb.', 'Recognize the same structure in a new sentence.'],
+    intro: 'In Chapter 2, you found the subject and predicate. Now look inside the predicate and see how the verb combines with a direct object. A verb used with one direct-object noun phrase follows the basic transitive pattern taught here.',
+    example: '[Nora] [inspected the bridge].',
+    introExample: '“Nora” is the subject. Inside the predicate, “inspected” is the verb and “the bridge” is its direct object. The object names what Nora inspected.',
+    preview: ['Separate the subject from the full predicate.', 'Identify the complete object and read the transitive feature on V.', 'Build the object branch and find the same pattern in a new sentence.'],
     concepts: [
-      ['Start with the full predicate', 'In “Nora inspected the bridge”, the subject is “Nora”. The predicate is “inspected the bridge”. Both the verb and the object belong inside that verb phrase.'],
-      ['Find the direct object', 'Ask “What did Nora inspect?” The answer is “the bridge”. Keep the whole noun phrase together. It could be replaced by “it” in “Nora inspected it”.'],
-      ['Show the transitive pattern', 'In this use, “inspected” takes one direct-object NP. Put [trans] on V to mark that pattern. The object NP is a sister of V, so both attach directly to VP. Compare “Nora slept”, where “slept” has no object.'],
+      ['Start with the full predicate', 'In “Nora inspected the bridge”, the subject is “Nora”. Ask what the sentence says about Nora. “Inspected the bridge” is the whole predicate. You can then look inside that VP to find the verb and the words that go with it.'],
+      ['Find the complete direct object', 'Ask “What did Nora inspect?” The answer is “the bridge”. Check the span with “Nora inspected it”. The pronoun replaces both words, which gives you evidence that the full NP belongs together.'],
+      ['Show the transitive pattern', 'In this use, “inspected” takes one direct object. The feature [trans] belongs on V. Put the object NP beside V, directly under the same VP. That position and the feature show the object’s job.'],
     ],
+    contrast: ['Compare the two jobs an NP can do', ['The subject NP “Nora” attaches directly to S.', 'The object NP “the bridge” attaches inside VP, beside V [trans].']],
     opening: [
       ['In “Rina opened the window”, which group names what Rina opened?', ['Rina', 'the window', 'opened the window']],
       ['In “Rina opened the window”, which words form the whole predicate?', ['opened', 'the window', 'opened the window']],
     ],
     steps: ['Find the subject', 'Read V [trans]', 'Trace the object NP'],
-    beforeTree: 'Trace “Nora” up to S through the subject NP. Then follow the other branch from S to VP. Inside VP, look for V [trans] and the NP that covers “the bridge”.',
+    beforeTree: 'Trace “Nora” up to S through the subject NP. Then follow the other branch from S to VP. Inside VP, select V [trans] and the NP that covers “the bridge”. Notice which node both branches meet at.',
+    treeTakeaway: 'The two NPs share a category and have different jobs. “Nora” meets VP at S. “The bridge” meets V inside VP.',
     buildTitle: 'Attach the direct object',
     build: {
       branch: root => [root.children[1], root.children[1].children[1]],
@@ -57,29 +67,35 @@ const chapters = {
       hint: 'Attach “the bridge” to VP beside V [trans]. The subject NP “Nora” stays directly under S.',
       success: 'The object NP shares VP with V [trans]. The subject NP stays outside that VP.',
     },
+    applyExample: 'The children carried a heavy box.',
     apply: [
-      ['Find the object in “The children carried a heavy box”', 'First find the full subject and predicate. Then ask what the children carried. Include every word in the answer.'],
-      ['Compare the two NPs', 'Both “the children” and “a heavy box” are noun phrases. In the tree, their different attachment points show their jobs.'],
+      ['Find the full object', 'First find the full predicate. Then ask what the children carried. Use “The children carried it” to check the full stretch of words you would put under the object NP.'],
+      ['Compare a verb in two sentences', 'Read “Rina opened the window” and “The window opened”. The first has a direct object. In the second, “the window” is the subject, and “opened” has no direct object. Check the verb’s use in the sentence before assigning a feature.'],
     ],
     reveal: ['Check your analysis', '“The children” is the subject NP directly under S. “A heavy box” is the direct-object NP. Attach it beside V [trans] inside “carried a heavy box”.'],
     recap: ['Find the subject and the full VP.', 'Within that VP, locate the verb and ask what or whom it takes as its object in this use.', 'Attach the direct-object NP and V [trans] to the same VP.'],
+    selfCheck: ['In “Sam repaired the old lamp”, which words belong inside the object NP?', 'The whole NP is “the old lamp”. It attaches directly to VP beside V [trans].'],
     postTestIntro: 'Check the verb feature, the complete object span, and where the object attaches.',
   },
   'br-05': {
     topics: ['Adjuncts and Two Levels of VP', 'Complements and Time Adjuncts', 'Reading and Building the VP Layers', 'Finding an Adjunct in a New Sentence'],
-    intro: '“Nora inspected the bridge in June” builds on the verb phrase from Chapter 4. “The bridge” tells us what Nora inspected. “In June” tells us when the inspection happened. Their different jobs show up at different levels of the tree.',
-    preview: ['Find the verb and its object before looking at the time phrase.', 'Use two VP levels to show where the time phrase attaches.', 'Apply the same reasoning to a new sentence.'],
+    intro: 'Chapter 4 put the verb and its direct object together in one verb phrase. Now add a time phrase. A phrase that adds information about the event is called an adjunct in this pattern.',
+    example: 'Nora [inspected the bridge] [in June].',
+    introExample: 'The first group says what happened. The second says when it happened. The tree uses two VP levels to show how those groups fit together.',
+    preview: ['Find the verb and its object before adding the time phrase.', 'Trace and build the inner and outer VP.', 'Use omission and replacement to check the grouping in a new sentence.'],
     concepts: [
-      ['Find the verb and its complement', 'Start with “Nora inspected the bridge”. “The bridge” is the direct object and is a sister of V inside VP. Together, “inspected the bridge” forms a complete verb phrase in this example.'],
-      ['Add information about the event', 'Add “in June” to tell when Nora inspected the bridge. The time phrase is a prepositional phrase (PP). Here it works as an adjunct, adding information about the whole inspection. Leaving it out still gives “Nora inspected the bridge”.'],
-      ['Use two levels of VP', 'The inner VP covers “inspected the bridge”. The outer VP covers “inspected the bridge in June”. Attach the PP beside the inner VP under the outer VP. This is the pattern for the final time adjunct shown here.'],
+      ['Find the verb and its complement', 'Start with “Nora inspected the bridge”. The bridge is what Nora inspected. As the direct object, “the bridge” completes this use of the verb and sits beside V inside VP. Together they make “inspected the bridge”.'],
+      ['Check what the time phrase adds', 'Add “in June”. This prepositional phrase (PP) tells when the inspection took place. Leave it out and “Nora inspected the bridge” still gives the same basic event. That is evidence that the time PP is an adjunct in this sentence.'],
+      ['Use two levels of VP', 'The inner VP covers “inspected the bridge”. The outer VP covers that whole group plus “in June”. The time phrase adds information about the complete inspection, so it joins the inner VP under the outer VP.'],
     ],
+    contrast: ['Compare the two attachment points', ['“The bridge” is the direct object. Its NP shares a parent with V.', '“In June” is a time adjunct here. Its PP shares a parent with the whole inner VP.']],
     opening: [
       ['In “Nora inspected the bridge in June”, which words tell when the inspection happened?', ['the bridge', 'inspected the bridge', 'in June']],
       ['Which group can stand as the predicate after leaving out the time phrase?', ['inspected the bridge', 'the bridge in June', 'inspected in']],
     ],
     steps: ['Trace the inner VP', 'Trace the time PP', 'Read the outer VP'],
-    beforeTree: 'Start at the inner VP and trace the verb and object together. Then find the PP “in June”. Follow both branches upward to see which node contains the full predicate.',
+    beforeTree: 'Start at the inner VP and trace the verb and object together. Select the time PP to see its words. Then select the outer VP and check that the highlight covers both groups.',
+    treeTakeaway: 'Follow the PP upward. It meets the inner VP at the outer VP. The object NP meets V one level lower.',
     buildTitle: 'Attach the time adjunct',
     build: {
       branch: root => [root.children[1], root.children[1].children[1]],
@@ -88,13 +104,15 @@ const chapters = {
       hint: 'Keep “in June” beside the inner VP. Inside the inner VP, “the bridge” stays beside V.',
       success: 'The PP and inner VP are sisters under the outer VP. The verb and object stay together.',
     },
+    applyExample: 'The children carried a heavy box before lunch.',
     apply: [
-      ['Find what happened in “The children carried a heavy box before lunch”', 'Ask what they carried, then ask when they carried it. The answers identify different groups.'],
-      ['Try leaving out the time phrase', 'Read the sentence without “before lunch”. Which words still make up the predicate? Use that group as your inner VP.'],
+      ['Find the two groups', 'Ask what they carried, then ask when they carried it. Keep both answers in mind. One belongs directly beside the verb, and the other describes the event made up of the verb and object together.'],
+      ['Try leaving out the time phrase', 'Read the sentence without “before lunch”. Which words still make up the predicate? Say the full inner VP before you decide where to attach the time phrase.'],
       ['Check what “did so” can replace', 'In “The children carried a heavy box before lunch, and their neighbours did so after lunch”, “did so” stands for “carried a heavy box”. The two time phrases tell when each event happened. This is another clue that the verb and object form a VP together.'],
     ],
     reveal: ['Check your analysis', '“Carried a heavy box” is the inner VP. “A heavy box” is the object NP beside V. The time PP “before lunch” sits beside the inner VP, and the outer VP covers both.'],
     recap: ['Group V with its object NP to form the inner VP.', 'Find the final time PP that describes the event.', 'Put the PP beside the inner VP under the outer VP.'],
+    selfCheck: ['In “Sam repaired the old lamp after school”, what belongs in each VP?', 'The inner VP is “repaired the old lamp”. The outer VP includes that group and the PP “after school”.'],
     postTestIntro: 'Trace both levels of VP and check which node is the adjunct’s sister.',
     references: ['Noel Burton-Roberts, Analysing Sentences, 3rd ed., printed p. 91 (the do so replacement test).'],
   },
@@ -164,27 +182,41 @@ export const phraseStructureArticles = Object.fromEntries(Object.entries(chapter
       container.append(...items.map(item => el('li', item)));
       body.append(container);
     }
+    function reveal(label, text) {
+      const answer = el('details');
+      answer.append(el('summary', label), el('p', text));
+      body.append(answer);
+    }
     if (page === 0) {
       sections([['What this chapter covers', chapter.intro]]);
+      body.append(el('p', chapter.example, 'lesson-example-sentence'), el('p', chapter.introExample));
       body.append(el('h3', 'What you’ll see in this chapter'));
       list('ul', chapter.preview);
     }
-    if (page === 1) sections(chapter.concepts);
+    if (page === 1) {
+      sections(chapter.concepts);
+      body.append(el('h3', chapter.contrast[0]));
+      list('ul', chapter.contrast[1]);
+    }
     if (page === 2) {
+      body.append(el('h3', 'Read the branches'));
       body.append(el('p', chapter.beforeTree));
       addWorkedExample(body, ui, chapter.steps, { highlightWords: true });
+      body.append(el('p', chapter.treeTakeaway));
       sections([[chapter.buildTitle, chapter.build.prompt]]);
+      body.append(el('p', 'Drag a branch from the parent’s connection point to the detached node. Use Guide me for help, then select Check construction.'));
       addBranchExercise(body, ui, chapter);
     }
     if (page === 3) {
+      body.append(el('p', chapter.applyExample, 'lesson-example-sentence'));
       sections(chapter.apply);
-      const answer = el('details');
-      answer.append(el('summary', chapter.reveal[0]), el('p', chapter.reveal[1]));
-      body.append(answer);
+      reveal(...chapter.reveal);
     }
     if (page === 4) {
       body.append(el('h3', 'Steps to use on a new example'));
       list('ol', chapter.recap);
+      sections([['Try a quick check', chapter.selfCheck[0]]]);
+      reveal('Show the answer', chapter.selfCheck[1]);
     }
   },
 }]));

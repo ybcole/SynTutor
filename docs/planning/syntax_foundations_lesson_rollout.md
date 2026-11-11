@@ -164,14 +164,19 @@ These three chapters use the same six pages and reviewed closing checks as
 the earlier chapters. The opening check keeps the catalog prediction first
 and adds two unscored questions. The worked page uses the reviewed tree as a
 model, then detaches one branch in a separate editable draft. The learner
-can reconnect it manually or use the two-step guide. The application page
-uses an original example and a short written analysis to reveal.
+can reconnect it manually or use the two-step guide. The introduction
+shows a bracketed example and a short preview. The concept page explains
+the reasoning before a compact two-part contrast. The worked page tells
+learners which branches to trace and what to look for before they edit.
+The application page shows an original example and its reasoning prompts,
+with an optional answer reveal. The recap gives a short procedure and a
+fresh example for a quick self-check.
 
 | Chapter | Source and teaching focus | Build and transfer |
 | --- | --- | --- |
-| 3 · Heads and adjective phrases | V3, printed pp. 55 and 62. Distinguish the adjective head from a degree word in an AP. Use the basic DEG + A example before covering wider category systems in later units. | Connect A under AP in *very cheerful*. Compare *quite bright* with the one-word AP *bright*. |
-| 4 · The basic transitive VP | V4, printed pp. 70–71. Separate the subject NP from the direct-object NP and read the `[trans]` feature for the use of the verb in this sentence. | Attach the object NP beside V under VP in *Nora inspected the bridge*. Locate the whole object in *The children carried a heavy box*. |
-| 5 · Adjuncts and two levels of VP | V5, printed pp. 89–90 and Fig. 12. Distinguish the object beside V from the final time PP beside the inner VP. Printed p. 91 supports the supplemental *do so* example. | Attach *in June* beside the inner VP. In a fresh sentence, find the verb and object that group first and show where *before lunch* attaches. |
+| 3 · Heads and adjective phrases | V3, printed pp. 55 and 62. Compare *cheerful* with *very cheerful* in the same sentence. Explain why A still heads an AP when DEG is absent. | Connect A under AP in *very cheerful*. Use replacement to find *quite bright* as a group, then compare it with the one-word AP *bright*. |
+| 4 · The basic transitive VP | V4, printed pp. 70–71. Find the full object span and contrast the subject NP under S with the object NP beside V. Read `[trans]` as a feature of the verb’s use in the sentence. | Attach the object NP in *Nora inspected the bridge*. Check the object span in *The children carried a heavy box*, then compare *Rina opened the window* with *The window opened*. |
+| 5 · Adjuncts and two levels of VP | V5, printed pp. 89–90 and Fig. 12. Leave out the time phrase and use the remaining event description to identify the inner VP. Compare the two attachment points. Printed p. 91 supports the supplemental *do so* example. | Attach *in June* beside the inner VP. Extend Chapter 4’s transfer sentence with *before lunch* and trace what belongs to each VP. |
 
 These are the launch outcomes. Broader adjective categories, other verb
 frames, and moved adverbials need their own source and scope review when
