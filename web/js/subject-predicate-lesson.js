@@ -214,15 +214,15 @@ export function addSubjectPredicateTeaching(body, page, ui) {
 
   if (page === 0) {
     section('What this chapter covers',
-      'In Chapter 1, you found which words belong together. Now look at the job each group does.');
+      'In Chapter 1, you learned how words form groups. Here you’ll see how two groups work together in a simple statement. In the examples here, the subject names who or what the statement is about. The predicate says something about the subject.');
     body.append(el('p', `[${np}] [${vp}]`, 'lesson-example-sentence'));
-    paragraph(`“${np}” is the subject. It names the birds. “${vp}” is the predicate. It tells us what they do.`);
+    paragraph(`“${np}” is a noun phrase that serves as the subject. “${vp}” is a verb phrase that serves as the predicate. Noun phrase and verb phrase name the kinds of groups. Subject and predicate name their jobs in this sentence.`);
     section('What you’ll see in this chapter');
     const preview = el('ol');
     for (const [topic, example] of [
-      ['Find the two groups.', 'Use a yes/no question to find where the subject ends.'],
-      ['Read and build a tree.', 'Follow the branches in “The robins sing”, then draw them in the lesson canvas.'],
-      ['Try a new sentence.', 'See how the same noun phrase changes jobs, then build a tree for a new sentence.'],
+      ['Find the complete subject and predicate.', 'Use a yes/no question and a replacement test to check the split.'],
+      ['Read and build a tree.', 'Show the two groups with branches in the lesson canvas.'],
+      ['Compare the jobs a phrase can do.', 'See how the same noun phrase works in two different sentences.'],
     ]) {
       const item = el('li');
       item.append(el('strong', topic), ` ${example}`);
@@ -232,30 +232,31 @@ export function addSubjectPredicateTeaching(body, page, ui) {
   }
 
   if (page === 1) {
-    section('Find the two main groups',
-      'Start with the smallest example and keep one question in mind. Which words belong to the group we are talking about, and which words say something about it?');
-    paragraph('Compare “The robins sing” with “The robins sing every morning”. The subject stays “The robins”. The predicate grows to “sing every morning”, which tells us when the birds sing.');
-    const examples = el('ul');
-    examples.append(el('li', `[${np}] [${vp}]`), el('li', longSentence));
-    body.append(examples);
-    paragraph('The longer sentence has the same two-part pattern. Find all the words that tell you which birds, then all the words that say what those birds are doing.');
+    section('Ways to find the subject and predicate',
+      'Start by finding the two main groups. Then check the subject with a yes/no question or by replacing the whole group. In the simple statements here, the rest of the sentence forms the predicate.');
+    section('Try a first split',
+      'In “The robins sing every morning”, “The robins” is still the subject. The predicate is “sing every morning”. In the sentence below, the subject also grows. Look for all the words that tell you which robins.');
+    body.append(el('p', longSentence, 'lesson-example-sentence'));
     addSubjectBoundary(body, ui);
-    section('Check the whole subject with a question',
-      'Move “are” to the start to form a yes/no question. Notice which words stay together after it.');
-    body.append(el('p', 'Are [the robins near the gate] singing softly?', 'lesson-example-sentence'));
-    paragraph('The brackets mark the whole subject. In the original statement, “are” belongs in the predicate.');
-    paragraph('The short sentence needs “do” to form the question “Do the robins sing?” The subject is still “the robins”. Draw the tree for the original statement.');
-    section('Try one word in place of the whole group',
-      'Use Chapter 1’s replacement test. “They” can stand for all five words in “The robins near the gate”.');
-    body.append(el('p', 'They are singing softly.', 'lesson-example-sentence'));
-    paragraph('The predicate stays the same. This gives you another clue to where the subject ends.');
+    section('Check the split');
+    const checks = el('ul');
+    for (const [method, explanation] of [
+      ['Ask a yes/no question.', 'Move “are” to the front: “Are [the robins near the gate] singing softly?” The words in brackets stay together as the subject. For “The robins sing”, add “do”: “Do the robins sing?”'],
+      ['Replace the whole group.', 'Try “They are singing softly.” The word “they” replaces all of “The robins near the gate”, giving you another clue that those five words form a group.'],
+      ['Read the original statement.', 'Once you have the subject, read the remaining words together. The whole predicate is “are singing softly”, including “are”. Use this split when you draw the tree.'],
+    ]) {
+      const item = el('li');
+      item.append(el('strong', method), ` ${explanation}`);
+      checks.append(item);
+    }
+    body.append(checks);
     section('What kind of group is it?',
-      'A category tells you what kind of phrase you’re looking at. A function tells you the job it does in this sentence.',
-      '“The robins” and “The robins near the gate” are noun phrases (NPs). Both groups are built around the noun “robins”. “Sing” and “are singing softly” are verb phrases (VPs). Each group is built around a verb, and the whole group can be a single word, as “sing” is here.',
-      'Try keeping the longer NP and changing the VP. “The robins near the gate sing” still has the same two main branches. “Sing” now does the predicate’s job on its own.');
-    section('A predicate can describe a state',
-      'In “The gate is open”, the subject is “The gate”. The whole predicate is “is open”. The word “open” tells us the state of the gate, and “is” belongs with it in the VP.',
-      'Both sentences have a subject and a predicate. The predicate “is open” describes a state.');
+      'A category tells you what kind of phrase it is. A function tells you its job in the sentence.');
+    list([
+      'Noun phrase (NP). Both “The robins” and “The robins near the gate” are built around the noun “robins”.',
+      'Verb phrase (VP). Both “sing” and “are singing softly” are built around a verb. A VP can be one word.',
+    ]);
+    paragraph('A predicate can describe a state. In “The gate is open”, the subject is “The gate” and the whole predicate is “is open”.');
   }
 
   if (page === 2) {
@@ -336,9 +337,6 @@ export function addSubjectPredicateTeaching(body, page, ui) {
     body.append(disclosure(el, 'Check your split',
       el('p', '[The lights in the hall] [were bright]', 'lesson-example-sentence'),
       el('p', 'Ask “Were the lights in the hall bright?” The entire subject stays together after “Were”. In the statement, the subject NP covers “The lights in the hall”, and the predicate VP covers “were bright”. Both phrases connect directly to S in this pattern.')));
-    section('Cambridge insight: sentence and clause',
-      'Cambridge uses sentence for a unit of text and clause for a unit of grammar. “The robins sing.” is a sentence containing one clause.',
-      'In “I think the robins sing”, the words “the robins sing” form a clause inside a larger clause. The smaller clause has its own subject and predicate. See Cambridge, pp. 44–45.');
   }
 
   if (page === 5 && ui.showClosingWarmup) addClosingWarmup(body, ui);

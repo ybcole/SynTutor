@@ -95,25 +95,26 @@ later coverage already mapped in the curriculum.
 
 | Page | Implemented teaching sequence |
 | --- | --- |
-| Introduction | Bridge from word groups to their jobs. Use *The robins sing* to introduce subject and predicate, then preview finding, reading, and building the two groups. |
-| Finding the subject and predicate | Show how *every morning* extends the predicate. Then select the last word of the subject in *The robins near the gate are singing softly*. Use a yes/no question and pronoun replacement to check the full subject. Explain NP and VP, and show a predicate that describes a state. |
+| Introduction | Introduce subject and predicate as jobs in a simple statement and use *The robins sing* to distinguish those jobs from the noun phrase and verb phrase categories. Preview finding, reading, and building the two groups. |
+| Finding the subject and predicate | Preview the ways to check the split. Show how *every morning* extends the predicate, then let learners mark the last word of the subject in the longer sentence. Present the yes/no question, pronoun replacement, and return to the original statement as a bulleted worked procedure. |
 | Reading and building the NP/VP tree | Explain sister nodes and triangles, then demonstrate tracing on the short tree. **Try the longer sentence** switches the same read-only canvas to a predicate check, with the prompt beside the diagram and feedback after a node selection. Build the short example in the editor below. |
 | Applying the split | Use the lesson’s one multiple-choice item to compare *The robins sing* with *Maya watched the robins*. Trace the highlighted NP within the VP in the visible figure. Build *The gate by our house is open* in a second embedded editor, using a separate draft. |
-| Chapter recap | Use a short procedure and a fresh example, *The lights in the hall were bright*. Apply the Cambridge sentence–clause distinction to two examples as a cited note. |
+| Chapter recap | Reuse the subject–predicate procedure on a fresh example, *The lights in the hall were bright*. |
 | Closing check | Offer a short open-response warm-up with a reveal, followed by the three reviewed M4 questions. |
 
 Chapter 2 uses the yes/no question as a way to find the group in the
 corresponding statement. The tree task stays on the statement. Later
 relationships such as dependency and the full analysis of heads, modifiers,
 and complements can be introduced at the curriculum points that teach them.
-The Cambridge note uses CGEL pp. 44–45 as terminology context and retains
-the catalog references for `cgel-sentence-clause`.
+The Cambridge sentence–clause distinction is covered by the companion
+lesson `cgel-clauses`. The Chapter 2 recap focuses on the split learners
+will use in the closing check. The reviewed catalog retains its source links.
 
 ## Polishing decisions from Chapters 1 and 2
 
 | Decision | What to carry forward | Scope and limitations |
 | --- | --- | --- |
-| Teach one relationship at a time | Keep the opening brief. Carry the same example through the explanation, figure, and immediate practice. Introduce the new words or labels before asking learners to use them. Use a fresh example for transfer. | Keep supplemental content within the reviewed outcome and chapter convention. Chapter 1 uses grouping placeholders. Chapter 2 studies the top-level NP and VP and uses Cambridge as a short terminology note. |
+| Teach one relationship at a time | Keep the opening brief. Carry the same example through the explanation, figure, and immediate practice. Introduce the new words or labels before asking learners to use them. Group short diagnostic steps into a worked list and use a fresh example for transfer. | Keep supplemental content within the reviewed outcome and chapter convention. Chapter 1 uses grouping placeholders. Chapter 2 studies the top-level NP and VP. Include terminology notes where they help learners perform the task at hand. |
 | Show essential content inline | Place the explanation before the diagram and the prompt beside the controls it refers to. Keep worked examples visible. Use a reveal for an answer the learner should try first or for optional reference detail. | A worked diagram can teach a relationship while leaving other branches out of the analysis. Chapter 1 shows individual branches for tracing. Chapter 2 uses triangles to show the span of phrases at the top split. |
 | Separate reading from construction | First let learners trace words in a worked tree. Put a quick check beside that figure, then give the construction task its own heading and canvas. Label controls with what the learner will do. | The longer Chapter 2 comparison is a read-only branch check and leads into the short build. The longer editable example is the fresh sentence on the application page. Keep one mounted editor per page. |
 | Keep diagrams readable and accessible | Use thin neutral branches, highlight selected words, and keep the caption close to the figure. Allow keyboard selection and preserve a screen-reader outline. Check light and dark mode as well as mobile fit. | The lesson diagrams use an accessible outline in place of a visible tree-text disclosure. Check that blank assessment labels are masked in the outline too. |
