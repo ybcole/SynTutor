@@ -9694,5 +9694,2736 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-147",
+    "domain": "phrases",
+    "concept": "Free-choice any versus existential any",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Free-choice any is stressed, can occur in affirmative clauses, and can be modified by almost. Non-affirmative existential any has separate polarity licensing.",
+    "condition": "Applies to the construction and sense described in §7.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Negation can target free choice itself with just any, leaving open that some choices qualify.",
+        "pages": [
+          383
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The archive will accept almost any readable format.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The archive won't accept just any format.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.5",
+        "pages": [
+          383
+        ],
+        "pdf_pages": [
+          403
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Free-choice any versus existential any",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-148",
+    "domain": "phrases",
+    "concept": "Quantitative determinatives and ascriptive complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some and existential any do not mark simple class membership in ascriptive complements. The ordinary indefinite article or bare nominal serves that purpose.",
+    "condition": "Applies to the construction and sense described in §7.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A specifying complement can contain some or any. Emphatic exclamatory some has a different interpretation.",
+        "pages": [
+          383
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rosa is a pharmacist.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "These are some samples we saved from the earlier trial.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.5",
+        "pages": [
+          383
+        ],
+        "pdf_pages": [
+          403
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quantitative determinatives and ascriptive complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-149",
+    "domain": "phrases",
+    "concept": "Bare plurals versus quantitative some",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A bare plural can characterize an activity without specifying a minimum number of objects per participant. Quantitative some with a plural head imposes a plural quantity.",
+    "condition": "Applies to the construction and sense described in §7.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some also excludes the ordinary generic reading. Restricted individuated noncount uses of a do not freely substitute some or any.",
+        "pages": [
+          384
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Everyone went out to buy notebooks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Everyone went out to buy some notebooks.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.5",
+        "pages": [
+          384
+        ],
+        "pdf_pages": [
+          404
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare plurals versus quantitative some",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-150",
+    "domain": "phrases",
+    "concept": "Why some and any are distinct from articles",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some and non-affirmative any can occur with singular count heads and are restricted to quantitative uses in the contrasts discussed. They are not complementary number variants of a.",
+    "condition": "Applies to the construction and sense described in §7.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The article a and bare nominals have nonquantitative uses. Some and any can also be fused heads.",
+        "pages": [
+          384
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Some caller left a message.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We needed clips but couldn't find any.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.5",
+        "pages": [
+          384
+        ],
+        "pdf_pages": [
+          404
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Why some and any are distinct from articles",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-151",
+    "domain": "phrases",
+    "concept": "Fused-head and degree uses of some and any",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Both can occur in simple and partitive fusions. Some also has a special fused-head reading meaning some people, while any modifies comparatives.",
+    "condition": "Applies to the construction and sense described in §7.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Comparative some and certain clausal degree uses are informal or variety-sensitive. Approximation some before a numeral is analyzed as an adverb.",
+        "pages": [
+          385
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Some would disagree with that verdict.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Does the new hinge work any better?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.5",
+        "pages": [
+          385
+        ],
+        "pdf_pages": [
+          405
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused-head and degree uses of some and any",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-152",
+    "domain": "phrases",
+    "concept": "Cardinals as determinatives and as nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Cardinal numerals primarily belong to the determinative category. Pluralized low or round numeral forms also have noun uses.",
+    "condition": "Applies to the construction and sense described in §7.6 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A in a hundred is internal to the numeral in its normal counting use. A separate determiner can occur with a singularly construed measure nominal.",
+        "pages": [
+          385
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A hundred guests signed in.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The scouts entered in fours.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.6",
+        "pages": [
+          385
+        ],
+        "pdf_pages": [
+          405
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cardinals as determinatives and as nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-153",
+    "domain": "phrases",
+    "concept": "Numerical and singulative one",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Numerical one contrasts with higher cardinals, accepts numerical bounds, and can modify a nominal after a determiner. Singulative one marks an individual occurrence or choice without making that contrast.",
+    "condition": "Applies to the construction and sense described in §7.6 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Pronoun one and the noun one with plural ones are separate. Singulative one can be emphatic, occur with not, or contrast with another.",
+        "pages": [
+          386
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Only one runner finished before dawn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One stormy evening the lights went out.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.6",
+        "pages": [
+          386
+        ],
+        "pdf_pages": [
+          406
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Numerical and singulative one",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-154",
+    "domain": "phrases",
+    "concept": "Cardinal modifiers and numeral placement",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Cardinal quantities can be bounded or approximated. Initial a drops when the numeral functions as an internal modifier after another determiner.",
+    "condition": "Applies to the construction and sense described in §7.6 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An exact upper bound is ordinarily inferred. Explicit at least or at most changes the bounds expressed.",
+        "pages": [
+          386
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Every hundred steps we stopped to rest.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "At least fifteen crates went into the van.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.6",
+        "pages": [
+          386
+        ],
+        "pdf_pages": [
+          406
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cardinal modifiers and numeral placement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-155",
+    "domain": "phrases",
+    "concept": "Fused-head uses of numerical and singulative one",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Numerical one participates in simple and partitive fused heads. Singulative one can fill the simple fused-head gap left by a and also has a special person reading.",
+    "condition": "Applies to the construction and sense described in §7.6 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The independent form cannot be replaced by the indefinite article alone.",
+        "pages": [
+          387
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We checked six valves, but one of them leaked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You bought a guidebook, and I bought one too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.6",
+        "pages": [
+          387
+        ],
+        "pdf_pages": [
+          407
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused-head uses of numerical and singulative one",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-156",
+    "domain": "phrases",
+    "concept": "Zero and nought",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Zero can determine a noun phrase in a quantity sense. Unlike negative no, it does not give the clause negative polarity.",
+    "condition": "Applies to the construction and sense described in §7.6 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "British nought is available in arithmetic and other numeric uses, but not as the same kind of nominal determiner. Specialized scores can use other words.",
+        "pages": [
+          387
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They reported zero faults, didn't they?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They reported no faults, did they?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.6",
+        "pages": [
+          387
+        ],
+        "pdf_pages": [
+          407
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Zero and nought",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-157",
+    "domain": "phrases",
+    "concept": "Either selects a singular count nominal",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Determiner either takes a singular count head and presupposes a contextually identifiable pair. It supports non-affirmative and free-choice readings.",
+    "condition": "Applies to the construction and sense described in §7.7 of Chapter 5.",
+    "violation": "Determiner either directly selects a plural nominal.",
+    "exceptions": [
+      {
+        "description": "A plural noun is licensed inside an explicit of-partitive. Either as a coordinator marker has a different distribution.",
+        "pages": [
+          387,
+          388
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did either mechanic bring a flashlight?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can take either route.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Did either mechanics bring a flashlight?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "You can take either routes.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.7",
+        "pages": [
+          387,
+          388
+        ],
+        "pdf_pages": [
+          407,
+          408
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Either selects a singular count nominal",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "Determiner either directly selects a plural nominal.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Did either mechanics bring a flashlight? ||| Did either mechanic bring a flashlight?",
+        "You can take either routes. ||| You can take either route."
+      ],
+      "learner_explanation": "Determiner either takes a singular count head and presupposes a contextually identifiable pair. It supports non-affirmative and free-choice readings.",
+      "corrected_paragraph_template": "Use a singular count head or an explicit of-partitive.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Did either of the mechanics bring a flashlight?",
+        "You can take either route or wait for the shuttle."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "determiners"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-158",
+    "domain": "phrases",
+    "concept": "Either in coordination and paired locations",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Coordination marker either pairs with or and permits more than two coordinates. In a small set of paired-location expressions, either can mean each of the two.",
+    "condition": "Applies to the construction and sense described in §7.7 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Determiner either differs from universal both. The paired-location use is lexically restricted.",
+        "pages": [
+          388
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Either Jo, Ravi, or Ada can take the shift.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Benches stood at either end of the walkway.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.7",
+        "pages": [
+          388
+        ],
+        "pdf_pages": [
+          408
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Either in coordination and paired locations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-159",
+    "domain": "phrases",
+    "concept": "Neither and disjunctive fused heads",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Neither combines negation with the dual existential meaning of either. Both forms can serve as overt or understood partitive fused heads.",
+    "condition": "Applies to the construction and sense described in §7.7 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Neither also marks an initial coordinate with nor. It should not be collapsed with no when duality is relevant.",
+        "pages": [
+          389
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Neither of the lamps was working.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two rooms were available, but neither had a window.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.7",
+        "pages": [
+          389
+        ],
+        "pdf_pages": [
+          409
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Neither and disjunctive fused heads",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-160",
+    "domain": "phrases",
+    "concept": "Negative no and nominal number",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "No can determine singular count, plural count, and noncount heads. Singular and plural count forms can express the same zero quantity.",
+    "condition": "Applies to the construction and sense described in §7.8 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "World knowledge and expectations can favor one number. A contextually known pair ordinarily favors neither.",
+        "pages": [
+          389
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "No guest had arrived by noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "No water remained in the tank.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.8",
+        "pages": [
+          389
+        ],
+        "pdf_pages": [
+          409
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative no and nominal number",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-161",
+    "domain": "phrases",
+    "concept": "No and none in dependent and fused-head functions",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "No requires a following nominal in its determiner use. None is its independent counterpart and can head singular or plural fused-head noun phrases.",
+    "condition": "Applies to the construction and sense described in §7.8 of Chapter 5.",
+    "violation": "No is used independently or none is placed directly before a nominal.",
+    "exceptions": [
+      {
+        "description": "No can also modify comparatives. None has special uses in expressions such as none other than and in degree modification.",
+        "pages": [
+          390
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "None of the bolts were missing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "No bolts were missing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "No of the bolts were missing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "None bolts were missing.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.8",
+        "pages": [
+          390
+        ],
+        "pdf_pages": [
+          410
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "No and none in dependent and fused-head functions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "No is used independently or none is placed directly before a nominal.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "No of the bolts were missing. ||| None of the bolts were missing.",
+        "None bolts were missing. ||| No bolts were missing."
+      ],
+      "learner_explanation": "No requires a following nominal in its determiner use. None is its independent counterpart and can head singular or plural fused-head noun phrases.",
+      "corrected_paragraph_template": "Use none as the fused head or no before the nominal.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "No more bolts were needed.",
+        "She felt none the worse afterward."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "determiners"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-162",
+    "domain": "phrases",
+    "concept": "Predicative no and emphatic quantity",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Predicative no can deny that someone has the expected qualities of a class rather than simply deny membership. With certain negative adjectives no can yield an emphatic positive assessment.",
+    "condition": "Applies to the construction and sense described in §7.8 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The class-membership denial with not a is semantically distinct.",
+        "pages": [
+          390
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm no mechanic, but that noise doesn't sound right.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Restoring the mural was no small achievement.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.8",
+        "pages": [
+          390
+        ],
+        "pdf_pages": [
+          410
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative no and emphatic quantity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-163",
+    "domain": "phrases",
+    "concept": "Alternative and additive another",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Another can denote a different choice or an additional item. Yet favors the additive interpretation, and the senses can overlap.",
+    "condition": "Applies to the construction and sense described in §7.9 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Another also combines with appropriately quantified plurals and occurs in simple and partitive fused heads. Other determiners can combine with separate other.",
+        "pages": [
+          391
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Try another wrench; this one slips.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two copies arrived yesterday and yet another came today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.9",
+        "pages": [
+          391
+        ],
+        "pdf_pages": [
+          411
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternative and additive another",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-164",
+    "domain": "phrases",
+    "concept": "Single-word another in ordinary indefinite noun phrases",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "The alternative-additive determiner is written another in ordinary indefinite noun phrases. An and other do not serve as separate constituents in that construction.",
+    "condition": "Applies to the construction and sense described in §7.9 of Chapter 5.",
+    "violation": "The alternative-additive determinative is incorrectly split into two words.",
+    "exceptions": [
+      {
+        "description": "Other can follow a different determiner, as in the other, and another can precede a quantified plural.",
+        "pages": [
+          391
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Another parcel arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We need another chair.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "An other parcel arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "We need an other chair.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.9",
+        "pages": [
+          391
+        ],
+        "pdf_pages": [
+          411
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Single-word another in ordinary indefinite noun phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The alternative-additive determinative is incorrectly split into two words.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "An other parcel arrived. ||| Another parcel arrived.",
+        "We need an other chair. ||| We need another chair."
+      ],
+      "learner_explanation": "The alternative-additive determiner is written another in ordinary indefinite noun phrases. An and other do not serve as separate constituents in that construction.",
+      "corrected_paragraph_template": "Write another as a single word in the ordinary alternative-additive construction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The other parcel arrived.",
+        "We need another three chairs."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "determiners"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-165",
+    "domain": "phrases",
+    "concept": "Positive paucal selection and degree",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A little selects a noncount head, while a few and several select plural count heads. The source assigns the count forms a lower bound of three.",
+    "condition": "Applies to the construction and sense described in §7.10 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adjectival little meaning small is separate. Very lowers the upper bound of a few, while quite or a good few can raise it.",
+        "pages": [
+          391,
+          392
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We saved a little paint for repairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A good few runners finished before dusk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.10",
+        "pages": [
+          391,
+          392
+        ],
+        "pdf_pages": [
+          411,
+          412
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Positive paucal selection and degree",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-166",
+    "domain": "phrases",
+    "concept": "A few versus several in different functions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Several can modify a nominal after a determiner and can occur predicatively. A few readily combines with quite, and both can occur in fused-head noun phrases.",
+    "condition": "Applies to the construction and sense described in §7.10 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Differences in perceived upper bounds are variable, and some modifiers are more idiomatic with one form than the other.",
+        "pages": [
+          392
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Its advantages are several.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Only a few of the recordings were usable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.10",
+        "pages": [
+          392
+        ],
+        "pdf_pages": [
+          412
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "A few versus several in different functions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-167",
+    "domain": "phrases",
+    "concept": "Various and certain as marginal determinatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Various and certain have plural determinative uses with distinct meanings. Certain can have a formal partitive fused-head use.",
+    "condition": "Applies to the construction and sense described in §7.10 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Various as a partitive fused head is variety-sensitive. In singular phrases a certain can individuate or limit degree, distinct from adjectival certain meaning sure.",
+        "pages": [
+          392,
+          393
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Certain of the witnesses asked to speak privately.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new rules gave her a certain authority.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.10",
+        "pages": [
+          392,
+          393
+        ],
+        "pdf_pages": [
+          412,
+          413
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Various and certain as marginal determinatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-168",
+    "domain": "phrases",
+    "concept": "Grade and countability with degree determinatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Many and few select plural count heads in their plain uses. Much and little ordinarily select singular noncount heads. Grade contrasts include more, most, fewer, less, fewest, and least.",
+    "condition": "Applies to the construction and sense described in §7.11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Plain much favors non-affirmative contexts. Positive paucal forms such as a few differ in polarity and scalar behavior.",
+        "pages": [
+          393
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did the leak cause much damage?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Fewer visitors came this afternoon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.11",
+        "pages": [
+          393
+        ],
+        "pdf_pages": [
+          413
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Grade and countability with degree determinatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-169",
+    "domain": "phrases",
+    "concept": "Degree determinatives inside definite noun phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Plain many, few, and little can modify a nominal following a definite determiner. Modifier few in a definite phrase does not give the clause negative polarity.",
+    "condition": "Applies to the construction and sense described in §7.11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Modified much is marginal in this position. Positive paucal a few and a little do not have the same modifier use.",
+        "pages": [
+          394
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Few workers joined, did they?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The few workers who joined were paid, weren't they?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.11",
+        "pages": [
+          394
+        ],
+        "pdf_pages": [
+          414
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree determinatives inside definite noun phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-170",
+    "domain": "phrases",
+    "concept": "Many a and a great many",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Many a is a fixed determiner that selects a singular count head. A great many and a good many select plural count heads and also occur in fused uses.",
+    "condition": "Applies to the construction and sense described in §7.11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Many a is formal or formulaic in many contexts. A great many and a good many have different internal structure from many a.",
+        "pages": [
+          394
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Many a sailor has told that story.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A great many letters were returned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.11",
+        "pages": [
+          394
+        ],
+        "pdf_pages": [
+          414
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Many a and a great many",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-171",
+    "domain": "phrases",
+    "concept": "Superlative the and proportional most",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In the superlative quantity construction the can modify most, least, or fewest rather than determine the containing noun phrase. Proportional most expresses more than half and has a different distribution.",
+    "condition": "Applies to the construction and sense described in §7.11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The superlative article can be omitted in the cited indefinite constructions. Proportional most does not function as an internal nominal modifier.",
+        "pages": [
+          395
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This stall sold the most fruit.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Most fruit was sold before noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.11",
+        "pages": [
+          395
+        ],
+        "pdf_pages": [
+          415
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Superlative the and proportional most",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-172",
+    "domain": "phrases",
+    "concept": "Comparative determinatives and additional more",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "More, fewer, and less can determine indefinite noun phrases. More also has an additive reading without an overt comparison.",
+    "condition": "Applies to the construction and sense described in §7.11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In the correlative construction the modifies the comparative. This is distinct from an ordinary definite determiner followed by an internal comparative modifier.",
+        "pages": [
+          395
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We need more tape for the boxes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fewer calls we receive, the sooner we can close.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.11",
+        "pages": [
+          395
+        ],
+        "pdf_pages": [
+          415
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative determinatives and additional more",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-173",
+    "domain": "phrases",
+    "concept": "Fused heads with graded determinatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The graded determinatives occur in simple, partitive, and special fused-head constructions.",
+    "condition": "Applies to the construction and sense described in §7.11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Special fusions include evaluative much of a and clauses with an understood human head.",
+        "pages": [
+          395
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We expected many offers, but got relatively few.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Few would object to a later start.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.11",
+        "pages": [
+          395
+        ],
+        "pdf_pages": [
+          415
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused heads with graded determinatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-174",
+    "domain": "phrases",
+    "concept": "Degree adjuncts and predicative uses",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Much and little can function as degree adjuncts and modify comparative expressions. Some degree determinatives also have relatively formal predicative uses.",
+    "condition": "Applies to the construction and sense described in §7.11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Cambridge analyzes more and less modifying adjectives or adverbs as degree adverbs in those uses.",
+        "pages": [
+          395
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This clamp is much stronger.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Their objections were many.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.11",
+        "pages": [
+          395
+        ],
+        "pdf_pages": [
+          415
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree adjuncts and predicative uses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-175",
+    "domain": "phrases",
+    "concept": "Sufficiency relative to a purpose",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Enough and sufficient express a lower threshold fixed by an understood or stated purpose. Purpose can be expressed by a for-phrase or infinitival clause.",
+    "condition": "Applies to the construction and sense described in §7.12 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "American English also permits a resultative content clause in the source. Sufficiency itself sets no upper bound.",
+        "pages": [
+          396
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We brought enough rope to reach the ledge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There was sufficient space for a second table.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.12",
+        "pages": [
+          396
+        ],
+        "pdf_pages": [
+          416
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Sufficiency relative to a purpose",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-176",
+    "domain": "phrases",
+    "concept": "Adjectival sufficient and fused sufficiency heads",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Adjective sufficient can modify a singular count nominal and evaluates adequacy. Determinative sufficient quantifies the head and can occur in fused-head structures.",
+    "condition": "Applies to the construction and sense described in §7.12 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With plural nouns, the adjectival and determinative readings can overlap. Enough lacks the equivalent attributive adjective use.",
+        "pages": [
+          396
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That is a sufficient excuse for leaving early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We have enough of the boards to finish today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.12",
+        "pages": [
+          396
+        ],
+        "pdf_pages": [
+          416
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival sufficient and fused sufficiency heads",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-177",
+    "domain": "phrases",
+    "concept": "Post-head enough and sufficiently",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Enough can follow a noun or a gradable expression in other categories. Sufficient as a determinative is limited to noun-phrase determiner or fused-head uses.",
+    "condition": "Applies to the construction and sense described in §7.12 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Sufficiently fills many of the non-nominal degree functions. Enough does not directly modify the core degree determinatives.",
+        "pages": [
+          397
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We have room enough for six.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The boards are sufficiently dry to paint.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.12",
+        "pages": [
+          397
+        ],
+        "pdf_pages": [
+          417
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Post-head enough and sufficiently",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-178",
+    "domain": "phrases",
+    "concept": "Interrogative which and what",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Which asks for selection from an identifiable set and can itself establish the relevant set. What need not carry that selective requirement.",
+    "condition": "Applies to the construction and sense described in §7.13 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Interrogative which allows partitive and implicit fused heads. Head what in the relevant interrogatives is a pronoun distinct from determinative what.",
+        "pages": [
+          397,
+          398
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which of these routes will you take?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What route did they suggest?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.13",
+        "pages": [
+          397,
+          398
+        ],
+        "pdf_pages": [
+          417,
+          418
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative which and what",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-179",
+    "domain": "phrases",
+    "concept": "Selective determinatives in fused relatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Which and whichever are selective and take count heads. Relative which is limited to the free-choice subtype, while what and whatever permit noncount heads.",
+    "condition": "Applies to the construction and sense described in §7.14 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ordinary relative what can suggest a small quantity. Fused relative whichever is definite and can be indeterminate, unlike free-choice any in definiteness.",
+        "pages": [
+          398
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You can use whichever adapter fits.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They offered whatever help they could.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.14",
+        "pages": [
+          398
+        ],
+        "pdf_pages": [
+          418
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Selective determinatives in fused relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-180",
+    "domain": "phrases",
+    "concept": "Which with a nominal in supplementary relatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Which can determine a nominal in a supplementary relative. The nominal phrase is definite and can have a personal or nonpersonal head.",
+    "condition": "Applies to the construction and sense described in §7.14 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Bare relative which in a supplementary clause is a pronoun. The headed determinative pattern does not occur in integrated relatives in this analysis.",
+        "pages": [
+          399
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We waited until dawn, by which time the rain had stopped.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The rehearsal was canceled, for which reason the hall was empty.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§7.14",
+        "pages": [
+          399
+        ],
+        "pdf_pages": [
+          419
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Which with a nominal in supplementary relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-181",
+    "domain": "phrases",
+    "concept": "Reference and denotation",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Reference is occasion-dependent identification of an independently distinguishable entity or set. Denotation belongs to the meaning of an expression in the language system.",
+    "condition": "Applies to the construction and sense described in §8.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A noun denotes a class even when a noun phrase consisting of that noun refers on a particular occasion. Restricted non-noun-phrase references are possible.",
+        "pages": [
+          399,
+          400
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina locked her bicycle.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There are two Minas on the roster.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.1",
+        "pages": [
+          399,
+          400
+        ],
+        "pdf_pages": [
+          419,
+          420
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reference and denotation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-182",
+    "domain": "phrases",
+    "concept": "Coreference as a diagnostic",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A referential third-person noun phrase can provide an antecedent for a coreferential pronoun in a following independent clause. Clear nonreferential cases lack that relation.",
+    "condition": "Applies to the construction and sense described in §8.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A pronoun can instead refer to an implicitly available set. The ability to support anaphora does not by itself establish referentiality.",
+        "pages": [
+          400,
+          401
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Three hikers arrived early; they had taken the shortcut.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "No hikers arrived early; they had all missed the turnoff.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.2",
+        "pages": [
+          400,
+          401
+        ],
+        "pdf_pages": [
+          420,
+          421
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coreference as a diagnostic",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-183",
+    "domain": "phrases",
+    "concept": "Inherently nonreferential and metalinguistic noun phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Negative, certain quantified, interrogative, and bare role noun phrases are nonreferential in the cited uses. A proper name can also be used metalinguistically.",
+    "condition": "Applies to the construction and sense described in §8.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A pronoun may refer to the set implicated by an interrogative or quantifier. Mentioning a name uses it as an expression.",
+        "pages": [
+          401
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wonder who left the door open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Ari is a three-letter name.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.2",
+        "pages": [
+          401
+        ],
+        "pdf_pages": [
+          421
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inherently nonreferential and metalinguistic noun phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-184",
+    "domain": "phrases",
+    "concept": "Ascriptive and descriptive predications",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Ascriptive complements attribute a property and can be definite or indefinite. In a specifying construction a descriptive phrase can give a description whose value another phrase identifies.",
+    "condition": "Applies to the construction and sense described in §8.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Proper names can be descriptive. Role-playing be can allow two referential expressions and is treated separately.",
+        "pages": [
+          402
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lina became the chair of the committee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The chair of the committee is that woman by the door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.3",
+        "pages": [
+          402
+        ],
+        "pdf_pages": [
+          422
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ascriptive and descriptive predications",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-185",
+    "domain": "phrases",
+    "concept": "Definitions and indeterminate descriptions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A definition can use two nonreferential indefinites. An indeterminate description instead states a relevant property without independently identifying its bearer.",
+    "condition": "Applies to the construction and sense described in §8.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Whichever and whoever expressions can make the indeterminate interpretation explicit. The surface noun phrase alone can allow a referential reading.",
+        "pages": [
+          403
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A hexagon is a polygon with six sides.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whoever left the parcel must have had a key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.3",
+        "pages": [
+          403
+        ],
+        "pdf_pages": [
+          423
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Definitions and indeterminate descriptions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-186",
+    "domain": "phrases",
+    "concept": "Indeterminacy with definite and indefinite noun phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Both definite and indefinite noun phrases can be indeterminate when the speaker identifies a property that the relevant entity must satisfy without picking out the entity independently.",
+    "condition": "Applies to the construction and sense described in §8.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Indeterminate phrases can support anaphora, so anaphora is not a sufficient test for a referential interpretation.",
+        "pages": [
+          403,
+          404
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The person who owns this key must have left already.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A neighbor must have moved the bins; they probably wanted to clear the path.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.3",
+        "pages": [
+          403,
+          404
+        ],
+        "pdf_pages": [
+          423,
+          424
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indeterminacy with definite and indefinite noun phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-187",
+    "domain": "phrases",
+    "concept": "Nonspecific readings in hypothetical contexts",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Want, intend, and related expressions can license nonspecific readings where no independently identifiable entity need exist. A corresponding specific reading is also possible.",
+    "condition": "Applies to the construction and sense described in §8.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Definites, indefinites, and bare plurals can admit the contrast in suitable contexts.",
+        "pages": [
+          404,
+          405
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Maya wants to hire an editor who knows the field.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Maya wants to hire the editor her colleague recommended.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.3",
+        "pages": [
+          404,
+          405
+        ],
+        "pdf_pages": [
+          424,
+          425
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonspecific readings in hypothetical contexts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-188",
+    "domain": "phrases",
+    "concept": "Negative-bound noun phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A noun phrase within the scope of negation can lack a referent because the clause denies existence of a qualifying instance.",
+    "condition": "Applies to the construction and sense described in §8.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Indefinites commonly permit this reading. Certain definites, such as minimal-degree idioms, can also be negative-bound.",
+        "pages": [
+          405
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tess doesn't have a spare key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I don't have the slightest clue.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.3",
+        "pages": [
+          405
+        ],
+        "pdf_pages": [
+          425
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative-bound noun phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-189",
+    "domain": "phrases",
+    "concept": "Noun phrases bound by another quantifier",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A dependent noun phrase can vary across members quantified by another noun phrase. It can also have a fixed referent when outside that quantifier's scope.",
+    "condition": "Applies to the construction and sense described in §8.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Passives can alter salience. A higher existential construction can block the bound reading, and binding can coexist with specificity or nonspecificity.",
+        "pages": [
+          405,
+          406
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Each lab assistant checks two samples.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Each applicant received the score they earned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.3",
+        "pages": [
+          405,
+          406
+        ],
+        "pdf_pages": [
+          425,
+          426
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun phrases bound by another quantifier",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-190",
+    "domain": "phrases",
+    "concept": "Multiple-situation binding and generic states",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A noun phrase can vary across repeated or serial situations. The source reserves generic interpretation for noun phrases in unlimited states.",
+    "condition": "Applies to the construction and sense described in §8.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Repeated situations can also support a fixed referent. A routine repeated event is analytically distinct from an unlimited-state generic.",
+        "pages": [
+          406
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I usually share the ride with a colleague.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Owls have excellent hearing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.3",
+        "pages": [
+          406
+        ],
+        "pdf_pages": [
+          426
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple-situation binding and generic states",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
   }
 ]

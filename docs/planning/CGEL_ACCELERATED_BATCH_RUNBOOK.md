@@ -149,4 +149,9 @@ Printed pp.349–358 checked in text and rendered layout. The 32 original-exampl
 
 ## Chapter 5 fourth checkpoint (2026-11-11)
 
-Printed pp.359–382 checked against text and rendered pages as a 24-page accelerated batch. Added 43 original-example records (`PHR-104`–`PHR-146`). Continue with §7.5 at printed p.383 on the same draft PR.
+Printed pp.359–382 checked against text and rendered pages as a 24-page accelerated batch. Added 43 original-example records (`PHR-104`–`PHR-146`). The next checkpoint covers printed pp.383–406.
+
+
+## Chapter 5 fifth checkpoint (2026-11-11)
+
+Printed pp.383–406 checked against text and rendered pages as a 24-page batch. Added 44 original-example records (`PHR-147`–`PHR-190`). Continue with generic interpretations in §8.3 at printed p.407 on the same draft PR.
