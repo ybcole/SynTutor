@@ -305,7 +305,7 @@ export function openBuilderView(opts = {}) {
     applyTreeLayout({ fit: true });
     syncCanvasToInput();
   }
-  if(!state.challenge)tools?.open({recover:!opts.canonicalTree&&!opts.model&&!opts.reset});
+  if(!state.challenge)tools?.open({recover:!opts.canonicalTree&&!opts.model&&!opts.reset,practice:opts.lessonPractice});
   canvas.focus();
   explainSelected();
   state.treeCorrect = treeIsComplete();

@@ -230,3 +230,16 @@
 @media(max-width:600px) { .lesson-tree-hint { display:block; } }
 .curriculum-recovery-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .curriculum-recovery-actions button { min-block-size: 40px; }
+
+.lesson-notation {
+  margin-block:16px 12px;
+  padding:0 12px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-size:.9rem;
+}
+.lesson-notation h4 { margin:12px 0 4px; }
+.lesson-notation dl { display:grid; grid-template-columns:max-content minmax(0,1fr); gap:4px 12px; margin:0 0 12px; }
+.lesson-notation dt { color:var(--accent-strong); font-weight:650; }
+.lesson-notation dd { margin:0; }
+.lesson-notation > details { border-top:1px solid var(--border); }

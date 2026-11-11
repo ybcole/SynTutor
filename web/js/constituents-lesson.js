@@ -115,31 +115,53 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
         : 'In the flat drawing, all four words connect directly to PHRASE-a. The only node covering the three garden words also covers “near”.';
       showComparisonTree(tree, index ? null : flat).after(caption);
     }, 1);
-    section('Try giving a group its own branch',
-      'The drawing below puts all four words of “beside the red gate” under one node. Which words name what you are beside? Select that whole group, then check your answer to see where the new branch goes.');
-    const [before, after] = drawings(['beside', 'the', 'red', 'gate']);
+    section('Build your first tree',
+      'Add an inner node to “beside the red gate”. Select the words to connect to it. The other words stay connected to the outer node.');
+    const [before] = drawings(['beside', 'the', 'red', 'gate']);
+    const words = before.root.children;
     const repairTree = el('div', undefined, 'constituent-diagram');
-    showDiagram(repairTree, before);
     const choices = el('fieldset', undefined, 'constituent-choices');
-    choices.append(el('legend', 'Which words belong under the new node?'));
-    const inputs = ['beside', 'the', 'red', 'gate'].map(text => {
+    choices.append(el('legend', 'Connect words to the inner node'));
+    const inputs = words.map(({ word }) => {
       const label = el('label');
       const check = el('input');
       check.type = 'checkbox';
-      label.append(check, text);
+      label.append(check, word);
       choices.append(label);
       return check;
     });
     const feedback = el('p');
     feedback.setAttribute('role', 'status');
-    const check = button('Check grouping', () => {
-      const correct = inputs.every((input, index) => input.checked === (index > 0));
-      feedback.textContent = correct
+    function drawGroup(start, end) {
+      const inner = group('PHRASE-b', ...words.slice(start, end));
+      const root = group('PHRASE-a', ...words.slice(0, start), inner, ...words.slice(end));
+      showDiagram(repairTree, { sentence: before.sentence, root }, { focusId: inner.id });
+    }
+    const connect = button('Connect selected words', () => {
+      const positions = inputs.flatMap((input, index) => input.checked ? [index] : []);
+      if (!positions.length) {
+        feedback.textContent = 'Select the words you want to connect to the inner node.';
+        return;
+      }
+      const start = positions[0], end = positions.at(-1) + 1;
+      if (positions.length !== end - start) {
+        feedback.textContent = 'Select words that are next to each other so their branches keep the words in order.';
+        return;
+      }
+      drawGroup(start, end);
+      const covered = words.slice(start, end).map(({ word }) => word).join(' ');
+      feedback.textContent = start === 1 && end === words.length
         ? 'Exactly. The new node covers “the red gate”. The outer node still covers the whole phrase.'
-        : 'Try to include the whole gate group and leave “beside” outside it.';
-      showDiagram(repairTree, correct ? after : before, { focusId: correct ? 'PHRASE-b' : null });
+        : `The inner node covers “${covered}”. Try connecting exactly the words that name the gate.`;
     });
-    body.append(repairTree, choices, check, feedback);
+    choices.append(connect);
+    const addNode = button('Add an inner node', () => {
+      drawGroup(words.length, words.length);
+      addNode.replaceWith(choices);
+      inputs[0].focus();
+    });
+    showDiagram(repairTree, before);
+    body.append(repairTree, addNode, feedback);
   }
   if (page === 3) {
     paragraph('Structural ambiguity occurs when the same sentence can be grouped in two ways and each grouping gives it a different meaning. In “I watched the hikers with a telescope”, the phrase “with a telescope” could tell us how I watched or describe the hikers.');

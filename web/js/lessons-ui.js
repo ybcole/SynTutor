@@ -7,6 +7,7 @@ import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentPreTest, constituentReferences } from './constituents-lesson.js';
 import { addSubjectPredicateTeaching, subjectPredicateHeadings } from './subject-predicate-lesson.js';
 import { foundationsArticle } from './foundations-lesson.js';
+import { lessonNotation } from './lesson-notation.js';
 
 const articleLessons = {
   'br-01': {
@@ -484,6 +485,7 @@ function articleScreen(lesson, p, article) {
 
   article.teach(body, page, {
     el, button, lesson,
+    openBuilderPractice: options.onBuilderPractice,
     showDiagram: (figure, tree, options) => {
       clearLessonDiagram(figure);
       return mountLessonCanvas(figure, renderLessonTree(tree, options));
@@ -510,6 +512,9 @@ function articleScreen(lesson, p, article) {
       return appendWorkedTree(figure, worked, { focusId, comparisonTree: { ...worked.tree, root }, inline: true });
     },
   });
+
+  const diagram = body.querySelector('.constituent-diagram');
+  if (diagram) diagram.after(lessonNotation(lesson, page, el));
 
   if (page === 0) {
     const preTest = el('section', undefined, 'lesson-assessment constituent-pre-test');
@@ -715,7 +720,7 @@ export function initLessons(config = {}) {
   window.addEventListener('hashchange',route);
   if(/^#lesson\//.test(location.hash))queueMicrotask(route);
 }
-export async function openLessons(id=null) {
+export async function openLessons(id=null, { workedExample = false } = {}) {
   lastFocus=document.activeElement;host.hidden=false;document.body.classList.add('curriculum-open');
   clearLessonCanvases();
   showCurriculumState(host, { message: 'Loading reviewed lessons…' });
@@ -730,14 +735,21 @@ export async function openLessons(id=null) {
     if(token!==generation)return;
     host.setAttribute('aria-busy','false');
     selectLesson(course.lessons.some(l=>l.lesson_id===id) ? id : null);
+    document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
+    if (workedExample && active && articleFor(currentLesson())) {
+      const progress = progressFor(currentLesson());
+      if (progress.completed_at || progress.stage >= 2) {
+        showArticlePage(2);
+        return;
+      }
+    }
     render();
     const heading=host.querySelector('h1');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});host.scrollTop=0;}
-    document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
   } catch {
     if (token === generation) showCurriculumState(host, {
       title: 'Lessons unavailable',
       message: 'The lesson catalog could not be loaded or its source review is incomplete.',
-      retry: () => openLessons(id), back: options.onExit,
+      retry: () => openLessons(id, { workedExample }), back: options.onExit,
     });
   }
 }
