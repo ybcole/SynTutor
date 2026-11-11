@@ -75,6 +75,9 @@ jobs:
       - name: Validate Cambridge Chapter 3 typed candidate checks (production disabled)
         working-directory: server
         run: python -m unittest -v test_cgel_ch03_candidate_probe
+      - name: Validate canonical B-R tree-grounded Chapter 3 candidates (still disabled)
+        working-directory: server
+        run: python -m unittest -v test_cgel_ch03_fact_bridge
 
       - name: Validate XAI-PRE source and multi-error correction contracts
         run: |
