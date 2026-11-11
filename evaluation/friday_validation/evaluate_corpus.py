@@ -1,5 +1,6 @@
 
 import json
+from collections import Counter
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -36,6 +37,8 @@ def main():
 
     counts = {"TP": 0, "FP": 0, "FN": 0, "TN": 0}
     unevaluated = 0
+    verdict_counts = Counter()
+    tree_counts = Counter()
     correction_matches = 0
     correction_total = 0
 
@@ -81,6 +84,8 @@ def main():
             result = "TN"
 
         counts[result] += 1
+        verdict_counts[summary.get("verdict", "missing")] += 1
+        tree_counts[(data.get("br_analysis") or {}).get("status", "missing")] += 1
 
         print(f"\n{case['id']} | {result}")
         print("  Sentence:", case["sentence"])
@@ -122,6 +127,8 @@ def main():
         print(f"{label}: {count}")
 
     print("Unevaluated:", unevaluated)
+    print("Legacy verdicts:", dict(verdict_counts))
+    print("Tree statuses:", dict(tree_counts))
     print("Precision:", percentage(precision))
     print("Recall:", percentage(recall))
     print("Specificity:", percentage(specificity))
