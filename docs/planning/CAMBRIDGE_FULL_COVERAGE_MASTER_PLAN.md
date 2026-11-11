@@ -1,22 +1,40 @@
 # Cambridge Full-Coverage Master Plan
 
-**Goal:** an AI agent extracts *The Cambridge Grammar of the English Language* (CGEL, 2002), all 20 chapters and about 1,760 printed pages, into SynTutor's knowledge base. That knowledge base is the single source for (1) lessons, (2) quizzes, and (3) the XAI explanation shown when the detector finds a mistake.
+**Goal:** autonomously extract and source-check all **20 chapters / 1,764 printed pages** of *The Cambridge Grammar of the English Language* (CGEL, 2002) as SynTutor's **primary grammatical reference** for error constraints, exceptions, grammatical explanations, and English-only lesson/quiz content. **Burton-Roberts remains the independent structural and syntax-tree authority**, and an explicitly validated crosswalk connects the two. An extracted rule does not become a live detector.
 
-**Operating mode:** autonomous. The agent works through whole chapters with **no per-section or per-chapter human approval stops**. Quality is enforced by automated gates (section 8), not by waiting. This supersedes the "stop and wait" rules in section 10 of `CAMBRIDGE_EXTRACTION_PROMPT.md`. All other rules in that file (copyright, no guessing, schema, ID policy) still apply.
+**Operating mode:** autonomous, quality-gated, English-only. No per-section or per-chapter **user approval stops**. Automated gates and direct checks of the supplied book replace *workflow waiting*, **not** independent linguistic/source review or the safety gates required for production activation. This supersedes only the stop-and-wait wording in `CAMBRIDGE_EXTRACTION_PROMPT.md`; its copyright, no-guessing, schema, exception, and ID policies remain binding.
+
+---
+
+## 0. Binding accelerated execution protocol — 2026-11-11
+
+**Optimization target:** eliminate repeated setup, boilerplate reports, fragile historical test registration and redundant CI runs, **without relaxing any page-level, linguistic, exception, schema, runtime, or XAI quality standard**.
+
+1. **Phase B first across all remaining chapters.** Finish source extraction, page audits and rule specifications for Chapters **4, 5, 7, 10, 14, 18**, then **2, 6, 8, 9, 11, 12, 15, 17**, then **1, 13, 16, 19, 20** (priority 1/2/3 as in §3), before returning to large-scale Phase C/D implementation. Chapter 3 remains source-extracted; keep and test its existing Phase C prototype, but **do not make finishing Chapter 3 detectors a prerequisite to processing Chapter 4**. No chapter will be silently dropped.
+2. **Adaptive verified source batches, default 24–48 consecutive printed pages**, not the old 6–8. Use ~48–64 only for clear, low-complexity passages and ~8–24 for dense diagrams, tables, footnotes, nested exceptions, ambiguous source text or high-risk constraints. **Batch size is reduced whenever needed for accuracy**; volume never overrides comprehension. Verify text **and rendered layout** on every table/diagram/complex page, and check page labels before extraction. Never skip an unreadable item, guess or claim a page extracted while relevant evidence remains unresolved.
+3. **Batch source audit, not repetitive essay documentation.** A single compact **machine-checkable per-page audit manifest** and its concise human-readable source report replace repetitive per-eight-page milestone prose. Run `python tools/cgel_batch_gate.py --manifest <batch.json>` after each batch, alongside rule schema and ledger checks. The gate checks each printed page's ledger/evidence, rule IDs, citations, constraints and false-positive guards, original English examples, all layout exceptions and unresolved items. **A manifest's `source_checked` field is an auditable agent claim, not proof of linguistic truth**. Exception interpretations still require direct source rereading.
+4. **One branch and normally one pull request per chapter**, with source-audited commits per internal batch. A huge/difficult chapter may require two PRs if clearer to validate. Do not open a PR per eight pages; keep a rolling chapter summary and automatically generated coverage totals. Keep old Chapter 3 audits and tests intact.
+5. **Two-tier verification with no lost gate.** After each internal batch, run deterministic local/branch checks (the batch gate, full cross-domain schema validator, ledger integrity, relevant unit/exception tests). At the **chapter PR** run **both full existing GitHub workflows, including parser-backed, XAI, database and browser regressions**; fix all failures before merge. No skipped branch protections, no fake green status, and do not merge a failing PR. Historical Phase B unit tests continue to run via **automatic discovery**; adding the next range must not require another workflow YAML edit.
+6. **Only generate what the evidence supports.** Descriptive, dialectal, stylistic and prescriptive distinctions never become errors by default. Constraints must have 2+ original correct examples, 2+ original incorrect/minimal-pair examples, source-checked exceptions and valid counterexamples; other record types get 2+ valid/contrast examples without fictitious incorrect cases. Full source citations, append-only stable IDs, source variety and the **unverified** B-R crosswalk state remain intact. No source PDF or copied textbook paragraphs enter GitHub.
+7. **No approval fabrication or dangerous auto-enablement.** `NEEDS_REVIEW` is not a prompt for the owner to sign off; proceed autonomously with QA. But an LLM, bulk script or passing schema test must **never** impersonate independent reviewer approval, switch crosswalks to verified, or activate a runtime detector. The existing fail-closed Cambridge registry remains authoritative; future Phase C implementation uses real validated grammatical relations, exceptions and measured held-out tests.
+8. **Use stable totals and tests, not fixed interim snapshots.** Every coverage report computes counts from the ledger and catalog. Regression tests for a previous range must remain valid when other chapters add rules/pages; avoid asserting that a specific future chapter is always unprocessed or hardcoding a temporary full-book total. Keep an explicit list of known deferred blockers and do not conflate source extraction, linguistic QA, implementation, or measured correctness.
+9. **No asynchronous promise.** Each user-triggered execution performs actual work and leaves a verified commit/PR or a clear blocker. `NEXT!` resumes from the current ledger; it does not mean the agent works while the chat is closed.
+
+**Acceptance rule:** any speed optimization that reduces source coverage, exception fidelity, per-rule attribution, English-only content, independent licensing, adversarial regression coverage, or production safety is **rejected**, even if faster. The objective is less duplicate work, not lower standards. Practical task order is **Phase B across 20 chapters → cross-domain QA and overlap resolution → Phase C source-licensed detectors and measurable gold tests → Phase D interacting-error corrections → Phase E lessons/quizzes**. Independent source QA can run continuously alongside Phase B but cannot be skipped.
 
 ---
 
 ## 1. Why this plan exists (current state, measured)
 
-- Extraction so far covers about **2-4 pages per chapter** (the first section only), for **196 rules**. Chapter 3 ("The verb") has only pp. 74-75; Chapter 13's report says §§1.2-6.3 were not processed.
+- **As of 2026-11-11:** Chapter 3 has **139 of 142 printed pages extracted**, with 3 contents-only skips and no unprocessed pages. Book-wide ledger: **139 extracted, 1,610 unprocessed, 13 justified skips and 2 absent from split sources** out of **1,764** printed pages. Grammar catalog: **887 records**, including 196 pre-Phase-B records. Chapter 3 still has pending independent linguistic QA and source-to-detector licensing. Other chapters remain incomplete; do not confuse preliminary records with page-level extraction.
 - The detector (`server/ruleset.py`, `server/matrix.py`) is **hand-written Python**. It does **not** read `grammar/rules/*.json`. Extracting a rule does not make a mistake detectable. **Phase C below is mandatory.**
-- Four XAI-4 Cambridge rules are enabled by `grammar/owner_approvals.json` (owner-approved, provisional). Everything else needs new rules.
+- Earlier XAI-4/owner-approval materials do not constitute the **Cambridge production registry**. The independently gated `grammar/runtime_registry.json` currently enables **zero** Cambridge rules. Chapter 3's Phase C prototype is **candidate-only**.
 
 ---
 
 ## 2. Definition of done
 
-1. **Page ledger complete:** every printed page of every chapter is `extracted`, `skipped_with_reason`, or `absent_from_source` in `grammar/coverage/cgel_ledger.json`. Zero `unprocessed`.
+1. **Source page ledger complete for all 20 chapters:** every printed page is `extracted`, `skipped_with_reason`, or `absent_from_source` in `grammar/coverage/cgel_ledger.json`, backed by direct page/figure/exception auditing. Zero `unprocessed`. Source extraction is only one gate, not proof of runtime correctness.
 2. **Every error-capable rule** (`rule_type: constraint`) has a `diagnostic` block (section 4) and a detector implementation or an explicit `detector: "none_possible"` with reason.
 3. **Every detector finding** produces an XAI explanation sourced from its rule ID, and a corrected sentence **plus a corrected paragraph**.
 4. `scripts/basic_errors.py` and the new coverage corpus (section 7) are run in CI; the coverage table (section 9) is published.
@@ -85,25 +103,25 @@ Rules about prescriptive advice, dialect or style use `rule_type: stylistic_or_p
 1. Extend `grammar/schema.json` with the `diagnostic` block; keep backward compatibility with the 196 existing rules (migration script adds `diagnostic: null`).
 2. Create `grammar/coverage/cgel_ledger.json` with one row per printed page (1 to end), state `unprocessed`, plus the absent/textless pages from the source manifest.
 3. Write `tools/ledger.py`: `mark`, `report`, `check` (fails if any page is `unprocessed` or any cited page is outside a chapter).
-4. Write `tools/bulk_owner_approve.py`: promotes `NEEDS_REVIEW` rules to `APPROVED` with `approved_by: "owner_bulk"` and today's date, only when all mechanical gates in section 8 pass. This is the single owner sign-off (run once per chapter, no per-rule review).
+4. Preserve `tools/bulk_owner_approve.py` only as legacy tooling; **do not use it to fabricate an owner sign-off or independent review**. Runtime activation continues to require the independently checked `grammar/runtime_registry.json` source, B-R crosswalk, implementation, tests and approval gates. The user's instruction to proceed autonomously is **not** evidence of linguistic approval.
 5. Add the ledger check and schema validation to CI.
 
-### Phase B: extraction loop (per chapter)
-For each chapter in priority order:
-1. Read the chapter PDF **from its first printed page to its last**, in consecutive ranges of about 6-8 pages. Do not stop between ranges.
-2. Extract **everything error-relevant and everything lesson-relevant**: definitions, category tables, paradigms, constraints, exceptions, contrast tables, diagrams, and the book's own "this is often said but is not a rule" discussions.
-3. One atomic rule per principle, with printed-page citations, 2+ correct and 2+ incorrect original examples, a minimal pair, and every exception the book states. Never merge a rule with its exception.
-4. Fill the `diagnostic` block for every `constraint`.
-5. Update the ledger for every page in the range as you go.
-6. Run the mechanical gates (section 8) after each range. Fix failures before moving on.
-7. Write `sources/cambridge/chapter_NN/CHAPTER_NN_REPORT.md`: pages processed, rules added by ID, skipped items with page numbers, uncertain items, **honest coverage percentage**.
+### Phase B: accelerated source extraction (all remaining chapters, before broad Phase C)
+For every remaining chapter in §3 priority order, without waiting for phase C of the previous chapter:
+1. Verify the **actual supplied source**, PDF edition, printed-to-PDF page mapping, first/last page labels, and chapter boundaries. Read **every printed page consecutively**, by default in **24–48 page internal batches**. Adaptive size and nonprose rendering requirements in §0 are binding; source complexity overrides batch size.
+2. Extract **all error-relevant and lesson-relevant evidence**: definitions, classifications, paradigms, constraints, exceptions, variation, diagram/table content, footnotes, contrasts and warnings against prescriptive misconceptions. Independently inspect page image/layout where the text extractor is unreliable.
+3. Use **atomic source-grounded records**, immutable IDs, print/PDF page citations, the exact semantic scope, original **English-only** examples, explicit exceptions and cautious B-R mappings. **Constraints** require 2+ correct and 2+ incorrect examples and matched minimal pairs and guards; **nonconstraints** require 2+ positive or contrast examples and must not invent mistakes.
+4. Specify the `diagnostic` for every new error-capable constraint (or record an explicit source-grounded no-detector rationale); keep it `spec_only` until Phase C licensing. Nonconstraints have no diagnostic. Never treat advice, style or dialect variation as a universal error.
+5. After each internal batch, update the ledger and append a compact **per-page source-audit manifest** plus concise report. Run `python tools/cgel_batch_gate.py --manifest <batch.json>` and the schema/ledger/relevant tests. All source-audit fields must reflect pages actually read; unresolved items block completion.
+6. Collect consecutive checked batches on **one feature branch per chapter** whenever practical. Generate the chapter audit and truthful `COVERAGE.md` ledger statistics once per chapter PR rather than rewriting repeated milestone prose. Full GitHub CI, including all previous regressions, **still must pass on the final PR SHA before merge**. Never declare chapter source-complete with unprocessed pages.
+7. The first remaining chapter is **Chapter 4 (printed pp. 213–322)**, followed by the §3 priority order. No need to restart Chapter 3 extraction or redo its passing test suite manually.
 
-### Phase C: wire rules into detection and XAI (per chapter, right after B)
-This is what actually makes mistakes get flagged and explained.
+### Phase C: wire source-licensed rules into detection and XAI (after broad Phase B)
+Do this **after all 20 chapters have source extraction** (except for minimal shared infrastructure or urgent correctness fixes). Chapter 3's existing candidate prototype is preserved. This is what actually makes source-grounded mistakes detectable, rather than merely catalogued.
 1. For each new `constraint` with `detector: spec_only`, implement a detector (in `server/ruleset.py` or a new `server/cgel_detectors.py` loaded by the matrix), keyed by the rule ID so findings carry `rule_id`.
 2. Each finding must return: `rule_id`, token/char span, the governing relation (both tokens when two are involved), `learner_explanation` from the rule, source pages, and any `variety_scope`.
 3. Add `false_positive_guards` as negative tests. A detector is not done until its guards pass.
-4. Register enabled rules so the XAI layer (`server/xai4_partial.py` and `explanations.py`) can show them. Use the owner-approval registry for provisional status; add each new rule ID to `grammar/owner_approvals.json` when its tests pass.
+4. Register enabled rules through the **fail-closed `grammar/runtime_registry.json` after independent source review, resolved B-R crosswalk, implementation and adversarial/held-out tests**. Passing unit tests or owner-consented autonomous execution does **not** authorise setting an unreviewed rule to `APPROVED`. Keep XAI-4 (`server/xai4_partial.py`, `explanations.py`) subordinate to the registry and actual validated syntactic evidence.
 5. Implement multi-error handling per `docs/planning/XAI_SOURCE_AUDIT_MULTI_ERROR.md`: group interacting findings, re-evaluate each candidate fix, never certify a whole sentence from a partial rule set.
 
 ### Phase D: corrected paragraph output
@@ -135,14 +153,14 @@ Create `evaluation/cgel_coverage_corpus.json`: for every `error_family`, at leas
 
 ## 8. Automated gates (these replace human approval stops)
 
-A range or chapter may not advance unless all pass:
+A **source batch** may advance within Phase B only after the **batch checks** below pass; the chapter PR must additionally pass the full integration workflows. Phase C/D release needs its *own* strict licensing/accuracy gates. These are not interchangeable:
 1. JSON validates against `grammar/schema.json`; IDs unique and never renumbered.
 2. Every cited printed page falls inside the chapter and is not textless.
 3. Every constraint has 2+ correct and 2+ incorrect examples and a `diagnostic` block.
-4. Ledger shows no `unprocessed` pages for the chapter (or lists exact skipped pages with reasons).
-5. `server` test suite passes; new detectors pass their false-positive guards.
+4. Each **completed batch** has no unprocessed printed pages within its audited range and references existing source evidence and per-page audit entries; a **chapter cannot be called source-complete** until its entire chapter ledger contains no unprocessed pages and all skips have reasons.
+5. A batch runs the cross-domain schema, coverage/manifest and relevant rule/exception tests. **Full `server`, database, parser-backed, XAI and browser CI still runs on every chapter PR and must pass before merge**; new detectors separately pass positive, negative, false-positive, dialect and adversarial tests before activation.
 6. `python scripts/audit_xai_pre.py --require-contracts` still passes (the source audit file must not be edited to claim review that did not happen).
-7. Each extracted rule is checked against its own source page text for the stated exception list (agent self-check, recorded in the chapter report).
+7. Each extracted rule is checked against the **actual printed page and relevant footnotes/tables/diagrams** for the claimed exception list; record page-specific evidence and uncertainties. The mechanical manifest alone **cannot certify** source truth. No fabricated claim of independent review or runtime reliability.
 
 ---
 
@@ -157,9 +175,18 @@ Each chapter report and a root `COVERAGE.md` must state: pages processed / total
 ```
 Read docs/planning/CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md and
 CAMBRIDGE_EXTRACTION_PROMPT.md. The master plan overrides the stop-and-wait
-rules: work autonomously with no approval stops. Do Phase A once, then for each
-chapter in priority order run Phase B, then Phase C and D for that chapter,
-then commit. Attached PDF: Chapter <N>, printed start page <X>. Process every
-page. Update the ledger and COVERAGE.md. Run the gates in section 8 and fix
-failures. Report only what you actually ran and measured.
+rules: work autonomously with no approval stops. Phase A is complete. Use the binding acceleration protocol in section 0:
+complete Phase B source extraction for ALL remaining chapters in priority
+order before broad Phase C/D. Next: Chapter 4, printed pp. 213–322.
+Use adaptive 24–48-page source-verified internal batches (smaller whenever
+the text/tables/diagrams are dense); process every page and exception.
+For each batch write a compact per-page JSON audit manifest and source
+report; update ledger and original-English rules; run
+python tools/cgel_batch_gate.py --manifest <batch.json> plus schema/ledger
+checks. Normally one feature branch/PR per chapter, not per 8 pages.
+Run BOTH full existing GitHub workflows on the final PR SHA, fix all
+failures, then merge. Do not auto-approve source rules, invent crosswalks,
+enable unverified detectors or claim measured accuracy.
+Preserve XAI node/group/reparse/corrected-paragraph gates for later phases.
+Report only work actually executed and validated; no approval stops.
 ```

@@ -2,8 +2,22 @@
 
 **Repository:** [ybcole/SynTutor](https://github.com/ybcole/SynTutor)  
 **Reviewed branch:** `main`  
-**Plan date:** 6 November 2026  
-**Status:** Planning only — no repository code or content has been changed as part of this plan.
+**Plan date:** 6 November 2026; accelerated execution amendment 11 November 2026  
+**Status:** Active implementation plan. The Cambridge source-extraction and XAI milestones are being implemented; completion and runtime-readiness must be checked from `COVERAGE.md` and the live GitHub tests.
+
+---
+
+## Binding execution acceleration — 2026-11-11
+
+The full source-extraction workstream is governed by the updated [Cambridge Full-Coverage Master Plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md), especially its **§0 accelerated, quality-preserving execution protocol**. This is an execution-order update, **not a change in scientific or product quality requirements**.
+
+- **Complete Phase B across all 20 Cambridge chapters before extensive further Phase C/D implementations.** Chapter 3 already has all 139 expository pages extracted, but only a preliminary, production-disabled Phase C auxiliary prototype. Continue with Chapter 4 **without blocking on Chapter 3 runtime completion**.
+- Use **adaptive 24–48-page internal source-audited batches**, smaller whenever density/diagrams/exceptions require it, and normally a **single PR per chapter**. Every page and source exception remains accounted for; all original English examples, citations, dialect guards, immutable rule IDs and unresolved uncertainties are preserved.
+- Replace per-eight-page handwritten reports and CI workflow edits with **compact per-page audit manifests**, the reusable `tools/cgel_batch_gate.py`, and **automatic discovery of all existing and future Phase B tests**. Run complete parser, B-R, XAI, database, browser and schema checks on every chapter PR before merge; do not loosen any branch protection.
+- **No automatic linguistic approval, no inferred Burton-Roberts crosswalk, no production activation or fabricated accuracy metrics**. Grammatical error judgment must remain source-bound; the tree and dependency model must be independently justified. Retain clickable-node XAI, interacting-error grouping, reparse-after-repair, and whole-paragraph corrections as separate required later gates.
+- The binding acceleration changes are confined to **workflow frequency, batch organization, generated validation, and redundant documentation**, never to accuracy or evidence requirements. The canonical architecture stays **Cambridge for grammar/constraints/exceptions and Burton-Roberts for syntactic representation**.
+
+To resume the work: **NEXT → Chapter 4 source pages 213–322, adaptive extraction batches**, following the full Cambridge plan. The chapter priority list and all other product, UI, lessons, quizzes, XP and security requirements below remain in force.
 
 ---
 

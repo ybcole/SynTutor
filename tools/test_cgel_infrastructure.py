@@ -11,16 +11,30 @@ class Tests(unittest.TestCase):
     def test_page_inventory(self):
         pages=self.data["pages"]
         self.assertEqual(len(pages),1764)
-        self.assertEqual(pages[69]["status"],"absent_from_source")
-        self.assertEqual(pages[523]["status"],"absent_from_source")
+        # Split-source gaps may later be resolved from the verified full PDF.
+        # The current ledger, rather than a permanent absence assertion, is authoritative.
+        for page in (70, 524):
+            self.assertIn(pages[page-1]["status"],
+                          {"absent_from_source", "extracted", "skipped_with_reason"})
         self.assertGreaterEqual(sum(p["status"]=="skipped_with_reason" for p in pages),10)
-        self.assertGreater(sum(p["status"]=="unprocessed" for p in pages),0)
+        self.assertEqual(sum(p["status"] in {
+            "extracted", "unprocessed", "skipped_with_reason", "absent_from_source"
+        } for p in pages), 1764)
+        # A completed 20-chapter extraction must NOT cause this test to fail.
     def test_integrity_not_certification(self):
         self.assertEqual(ledger.check(self.data,self.manifest,allow_unprocessed=True),[])
         # Chapter 3 now has complete page-level source accounting; the book as a whole does not.
         self.assertEqual(ledger.check(self.data,self.manifest,chapter=3), [])
-        errors=ledger.check(self.data,self.manifest,chapter=4)
-        self.assertTrue(any("unprocessed" in e for e in errors))
+        # Test against whichever chapter still has work, instead of permanently
+        # requiring Chapter 4 (or the whole book) to be incomplete.
+        pending={row["chapter"] for row in self.data["pages"]
+                 if row["status"]=="unprocessed"}
+        if pending:
+            next_ch=min(pending)
+            errors=ledger.check(self.data,self.manifest,chapter=next_ch)
+            self.assertTrue(any("unprocessed" in e for e in errors))
+        else:
+            self.assertEqual(ledger.check(self.data,self.manifest), [])
     def test_unverified_extraction_rejected(self):
         bad=copy.deepcopy(self.data)
         bad["pages"][70]["status"]="extracted"

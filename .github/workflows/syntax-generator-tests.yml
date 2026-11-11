@@ -41,19 +41,11 @@ jobs:
           python tools/validate_cgel_rules.py
           python tools/ledger.py check --allow-unprocessed
           python -m unittest -v tools.test_cgel_infrastructure
-          python -m unittest -v tools.test_cgel_phase_b
-          python -m unittest -v tools.test_cgel_phase_b_91_114
-          python -m unittest -v tools.test_cgel_phase_b_115_122
-          python -m unittest -v tools.test_cgel_phase_b_139_146
-          python -m unittest -v tools.test_cgel_phase_b_147_154
-          python -m unittest -v tools.test_cgel_phase_b_155_162
-          python -m unittest -v tools.test_cgel_phase_b_163_170
-          python -m unittest -v tools.test_cgel_phase_b_171_178
-          python -m unittest -v tools.test_cgel_phase_b_179_186
-          python -m unittest -v tools.test_cgel_phase_b_187_194
-          python -m unittest -v tools.test_cgel_phase_b_195_202
-          python -m unittest -v tools.test_cgel_phase_b_203_210
-          python -m unittest -v tools.test_cgel_phase_b_211_212
+          # Discover all historical and future Cambridge Phase B tests automatically.
+          python -m unittest discover -v -s tools -p 'test_cgel_phase_b*.py' -t .
+          # Batch audits are required for every newly extracted non-Chapter-3 page.
+          python tools/cgel_batch_gate.py --all
+          python -m unittest -v tools.test_cgel_batch_gate
           python tools/audit_cgel_ch03.py --check --output /tmp/cgel-ch03-audit.json
           python -m unittest -v tools.test_cgel_ch03_qa
 
