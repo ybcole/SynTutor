@@ -106,16 +106,18 @@ def _rule_for(relation: dict[str, Any], tokens: list[dict[str, Any]]) -> str | N
             return None
         if relation.get("dependent_role") == "central_modal" and d in MODALS:
             return "COMP-031"
-        if relation.get("dependent_role") == "lexical_verb":
-            form = relation.get("dependent_form")
-            if form == "present_3sg" and d.isalpha() and d.endswith("s"):
+        if (relation.get("dependent_role") == "lexical_verb"
+                and relation.get("dependent_form") == "present_3sg"
+                and d.isalpha() and d.endswith("s")):
+            return "COMP-034"
+        if (relation.get("dependent_role") == "infinitival_marker"
+                and relation.get("dependent_form") == "infinitival_to" and d == "to"):
+            # Require separate evidence for the plain lexical verb after to.
+            j = relation.get("infinitival_verb")
+            if (type(j) is int and j > relation["dependent"] and j < len(tokens)
+                    and relation.get("infinitival_verb_form") == "plain"
+                    and tokens[j]["lower"].isalpha()):
                 return "COMP-034"
-            if form == "infinitival_to" and d == "to":
-                # The dependent is an overt infinitival marker, not a lexical 'to'.
-                j = relation.get("infinitival_verb")
-                if type(j) is int and j > relation["dependent"] and j < len(tokens):
-                    if relation.get("infinitival_verb_form") == "plain":
-                        return "COMP-034"
         return None
     if kind == "supportive_do_selects":
         if relation.get("governor_role") != "supportive_do" or g not in SUPPORT_DO:
