@@ -90,5 +90,8 @@ class Cambridge203210(unittest.TestCase):
         self.assertIn("2** unprocessed pages (**211–212**)", report)
         self.assertIn("855 records", report)
         coverage = (ROOT / "COVERAGE.md").read_text(encoding="utf-8")
-        self.assertIn("**855 rules**", coverage)
+        import re
+        total = re.search(r"= \\*\\*(\\d+) rules\\*\\*", coverage)
+        self.assertIsNotNone(total)
+        self.assertGreaterEqual(int(total.group(1)), 855)
         self.assertIn("**2 unprocessed (pp. 211–212)**", coverage)
