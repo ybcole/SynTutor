@@ -35,7 +35,7 @@ function svgNode(name, attrs = {}) { const n = document.createElementNS(SVG_NS,n
 // Advanced structures never pass through the parser or the legacy Builder bridge.
 export function renderLessonTree(envelope, {
   focusId = null, blank = null, stackFeatures = false, displayLabels = null,
-  interactive = false, onSelectNode = null, zoomControls = false,
+  interactive = false, onSelectNode = null, zoomControls = false, wordBaseline = 0,
 } = {}) {
   const wrap = el('div',undefined,'lesson-tree-wrap');
   const root = envelope.root;
@@ -55,6 +55,8 @@ export function renderLessonTree(envelope, {
   const measure = document.createElement('canvas').getContext('2d');
   measure.font = '15px system-ui, sans-serif';
   const gap = 18;
+  const rowHeight = 72;
+  const top = 35;
   const widths = new Map();
   function widthOf(node) {
     if (widths.has(node)) return widths.get(node);
@@ -78,13 +80,18 @@ export function renderLessonTree(envelope, {
       + Math.max(0, children.length - 1) * gap;
     let cursor = left + (width - childWidth) / 2;
     for (const child of children) {
-      const target = place(child, cursor, y + 72 + featureRows(node).length * 18);
+      const target = place(child, cursor, y + rowHeight + featureRows(node).length * 18);
       edges.push([position, target]);
       cursor += widthOf(child) + gap;
     }
     return position;
   }
-  const width=widthOf(root); place(root,0,35);
+  const width=widthOf(root); place(root,0,top);
+  if (wordBaseline) {
+    for (const position of positions) {
+      if (position.node.word) position.y = Math.max(position.y, top + wordBaseline * rowHeight);
+    }
+  }
   const height=Math.max(...positions.map(p=>p.y + featureRows(p.node).length * 18 + (p.node.triangle ? 80 : 35)));
   const svg=svgNode('svg',{viewBox:`0 0 ${width} ${height}`,width,height,role:'img','aria-label':`B-R tree for ${envelope.sentence}`});
   for (const [a,b] of edges) svg.append(svgNode('line',{x1:a.x,y1:a.y+12+featureRows(a.node).length*18,x2:b.x,y2:b.y-18,class:'lesson-branch'}));
@@ -163,7 +170,7 @@ export function renderLessonTree(envelope, {
   const text=el('details',undefined,'lesson-tree-text');text.append(el('summary','Read the tree as text'));
   function list(node) {
     const item = el('li');
-    const name = blank?.node_id === node.id
+    const name = blank && blank.node_id === node.id
       ? (blank.field === 'feature' ? `${label(node, false)} [?]` : '?')
       : label(node) || '△';
     const description = node.words ? `${name} — ${node.words.join(' ')}` : name;
@@ -334,7 +341,15 @@ function question(lesson,key,p,locked,onAnswer = answer => act({type:'answer',an
   return section;
 }
 
-function appendWorkedTree(aside, worked, { focusId, blank = null, constituentPilot = false }) {
+function mountLessonCanvas(host, treeView) {
+  const canvas = el('div', undefined, 'lesson-tree-canvas');
+  canvas.append(treeView);
+  host.append(canvas);
+  lessonCanvas = enableCanvasView(canvas, treeView);
+  return canvas;
+}
+
+function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree = null }) {
   const evidence=el('details',undefined,'lesson-shared-evidence');
   evidence.dataset.xai7Lesson = '';
   const title=el('summary','Explanation');
@@ -360,7 +375,7 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, constituentPil
   }
   const inspect=async (nodeId, feature=null) => {
     selected=nodeId;
-    if (constituentPilot) {
+    if (comparisonTree) {
       describeSelection(worked.tree.root, nodeId);
       for (const item of canvas.querySelectorAll('svg [data-node-id]')) {
         const isSelected = item.dataset.nodeId === nodeId;
@@ -381,21 +396,21 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, constituentPil
       }
     }
   };
-  const canvas = el('div', undefined, 'lesson-tree-canvas');
-  const treeView=renderLessonTree(worked.tree,{
-    focusId:selected,
+  const canvas = mountLessonCanvas(aside, renderLessonTree(comparisonTree || worked.tree, {
+    focusId: selected,
     blank,
-    interactive:true, onSelectNode:inspect, stackFeatures:true,
-  });
-  canvas.append(treeView);
-  aside.append(canvas);
-  if (!constituentPilot) aside.append(el('p', worked.origin, 'lesson-origin'));
-  if (constituentPilot) {
+    interactive: true,
+    onSelectNode: inspect,
+    stackFeatures: true,
+    wordBaseline: comparisonTree ? 2 : 0,
+  }));
+  if (comparisonTree) {
     if (selected) describeSelection(worked.tree.root, selected);
     aside.append(selectedWords);
+  } else {
+    aside.append(el('p', worked.origin, 'lesson-origin'));
+    if (selected) aside.append(button('Inspect highlighted tree position', () => inspect(selected)));
   }
-  lessonCanvas = enableCanvasView(canvas, treeView);
-  if (selected && !constituentPilot) aside.append(button('Inspect highlighted tree position',()=>inspect(selected)));
   evidence.addEventListener('toggle',()=>{if(evidence.open&&!slot.childElementCount&&selected)inspect(selected);});
   aside.append(evidence);
 }
@@ -422,13 +437,26 @@ function constituentScreen(lesson, p) {
 
   addConstituentTeaching(body, page, {
     el, button, renderTree: renderLessonTree,
-    workedCanvas: () => {
-      const figure = el('div', undefined, 'constituent-worked-tree');
+    showComparisonTree: (figure, flatTree) => {
+      lessonCanvas?.destroy();
+      figure.replaceChildren();
+      if (flatTree) {
+        mountLessonCanvas(figure, renderLessonTree(flatTree, { wordBaseline: 2 }));
+        return;
+      }
       const worked = lesson.worked_example;
-      appendWorkedTree(figure, worked, {
-        focusId: worked.steps.at(-1).focus_node_id, constituentPilot: true,
-      });
-      return figure;
+      const focusId = worked.steps.at(-1).focus_node_id;
+      // Expand the teaching diagram only. Explanations still use the canonical tree and node IDs.
+      const root = {
+        ...worked.tree.root,
+        children: worked.tree.root.children.map(node => node.id === focusId ? {
+          ...node,
+          triangle: false,
+          words: undefined,
+          children: node.words.map(word => ({ word })),
+        } : node),
+      };
+      appendWorkedTree(figure, worked, { focusId, comparisonTree: { ...worked.tree, root } });
     },
   });
 
@@ -486,11 +514,8 @@ function constituentScreen(lesson, p) {
         const diagram = el('div', undefined, 'constituent-diagram');
         const target = lesson.guided.build_target;
         const blank = response.responses.guided === lesson.guided.answer ? null : target;
-        const canvas = el('div', undefined, 'lesson-tree-canvas');
-        const tree = renderLessonTree(lesson.worked_example.tree, { focusId: target.node_id, blank });
-        canvas.append(tree);
-        diagram.append(el('p', lesson.worked_example.sentence, 'lesson-example-sentence'), canvas);
-        lessonCanvas = enableCanvasView(canvas, tree);
+        diagram.append(el('p', lesson.worked_example.sentence, 'lesson-example-sentence'));
+        mountLessonCanvas(diagram, renderLessonTree(lesson.worked_example.tree, { focusId: target.node_id, blank }));
         body.append(diagram);
       }
       body.append(question(lesson, item, response, reviewing && !practice, answer => {
@@ -545,9 +570,17 @@ function lessonScreen() {
   const reviewing = reviewStage !== null;
   const constituentPilot = lesson.lesson_id === 'br-01';
   const chapter = constituentPilot ? 'Chapter 1' : lesson.track === 'foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
-  const header=el('header',undefined,constituentPilot ? 'lesson-header constituent-header' : 'lesson-header');header.append(button('← All lessons', showCatalog),el('p',chapter,'lesson-eyebrow'));
-  const h1=el('h1',lesson.title);h1.tabIndex=-1;header.append(h1);
-  if (!constituentPilot) header.append(el('p',lesson.outcomes[0].text,'lesson-lead'));
+  const header = el('header', undefined, constituentPilot ? 'lesson-header constituent-header' : 'lesson-header');
+  header.append(button('← All lessons', showCatalog));
+  const h1 = el('h1', lesson.title);
+  h1.tabIndex = -1;
+  if (constituentPilot) {
+    const chapterTitle = el('div', undefined, 'constituent-chapter');
+    chapterTitle.append(el('p', chapter), h1);
+    header.append(chapterTitle);
+  } else {
+    header.append(el('p', chapter, 'lesson-eyebrow'), h1, el('p', lesson.outcomes[0].text, 'lesson-lead'));
+  }
   host.append(header);
   if (constituentPilot) { constituentScreen(lesson, p); return; }
   const columns=el('div',undefined,'lesson-columns'),body=el('section',undefined,'lesson-stage-body'),aside=el('aside',undefined,'lesson-evidence-card');

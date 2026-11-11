@@ -45,7 +45,7 @@ function readings() {
   ];
 }
 
-export function addConstituentTeaching(body, page, { el, button, renderTree, workedCanvas }) {
+export function addConstituentTeaching(body, page, { el, button, renderTree, showComparisonTree }) {
   const paragraph = text => body.append(el('p', text));
   const section = (title, ...paragraphs) => body.append(el('h3', title), ...paragraphs.map(text => el('p', text)));
   function figureControls(label, choices, target, select, initial = 0) {
@@ -101,19 +101,19 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, wor
     paragraph('A tree shows how an analysis groups words. Two trees can put the words in the same order while making different claims about which words belong together. Compare both drawings of “near the quiet garden” and trace the branches that lead to “the quiet garden”.');
     section('Compare the two drawings',
       'Switch between the flat and nested drawings below. In each drawing, start at the lowest node that contains all three garden words. Does that node also contain “near”?');
-    const flat = renderTree(drawings(['near', 'the', 'quiet', 'garden'])[0]);
-    const nested = workedCanvas();
+    const [flat] = drawings(['near', 'the', 'quiet', 'garden']);
+    const tree = el('div');
     const caption = el('p', undefined, 'constituent-caption');
     caption.setAttribute('aria-live', 'polite');
     const example = el('div', undefined, 'constituent-diagram');
-    example.append(caption, flat, nested);
+    example.append(tree);
     body.append(example);
-    figureControls('Compare drawings', ['Flat drawing', 'Nested drawing'], caption, index => {
-      flat.hidden = Boolean(index);
-      nested.hidden = !index;
+    figureControls('Compare drawings', ['Flat drawing', 'Nested drawing'], tree, index => {
+      showComparisonTree(tree, index ? null : flat);
       caption.textContent = index
         ? 'In the nested drawing, PHRASE-b covers just “the quiet garden”. PHRASE-a contains that whole group together with “near”.'
         : 'In the flat drawing, all four words connect directly to PHRASE-a. The only node covering the three garden words also covers “near”.';
+      tree.querySelector('.lesson-tree-canvas').after(caption);
     }, 1);
     section('Try giving a group its own branch',
       'The drawing below puts all four words of “beside the red gate” under one node. Which words name what you are beside? Select that whole group, then check your answer to see where the new branch goes.');

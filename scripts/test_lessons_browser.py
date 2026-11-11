@@ -109,10 +109,21 @@ try:
     expect(view.get_by_role('heading',name='Worked example',exact=True)).to_have_count(0)
     expect(view.get_by_role('button',name='Inspect highlighted tree position')).to_have_count(0)
     expect(view.locator('.constituent-selection mark')).to_have_text(['the','quiet','garden'])
-    view.get_by_role('button',name='Flat drawing').click()
-    expect(view.locator('.canonical-viewport')).to_be_hidden()
-    view.get_by_role('button',name='Nested drawing').click()
-    expect(view.locator('.canonical-viewport')).to_be_visible()
+    comparison=view.locator('.canonical-viewport')
+    expect(comparison.locator('svg polygon')).to_have_count(0)
+    nested_box=comparison.bounding_box()
+    nested_viewbox=comparison.locator('svg').get_attribute('viewBox')
+    for drawing_name, branches in [('Flat drawing',4),('Nested drawing',5)]:
+     view.get_by_role('button',name=drawing_name).click()
+     expect(comparison.locator('svg .lesson-branch')).to_have_count(branches)
+     expect(comparison.locator('svg')).to_have_attribute('viewBox',nested_viewbox)
+     expect(comparison.get_by_role('button',name='Zoom in B-R tree')).to_be_visible()
+     assert comparison.bounding_box()['width']==nested_box['width']
+     assert comparison.bounding_box()['height']==nested_box['height']
+     expect(comparison.locator('svg text').filter(has_text=re.compile(r'^(near|the|quiet|garden)$'))).to_have_count(4)
+    page.evaluate("document.documentElement.setAttribute('data-theme','dark')")
+    page.screenshot(path=str(OUT/'br-01-comparison-dark.png'),full_page=True)
+    page.evaluate("document.documentElement.setAttribute('data-theme','light')")
    else:
     assert view.locator('svg[role="img"]').count()==1
    canvas=view.locator('.canonical-viewport')
