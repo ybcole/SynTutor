@@ -1,24 +1,6 @@
 // Presentation copy for the existing M4 lessons. The catalog owns the reviewed
 // explanations, examples, worked steps, assessments and source references.
 const chapterPages = {
-  'br-03': {
-    topics: ['Adjective Phrases', 'Heads and Degree Words', 'Reading an AP', 'Finding the Head'],
-    steps: ['Adjective', 'Head A', 'Degree word'],
-    context: 'Trace “cheerful” and “very” to their own labels. The head “cheerful” gives the whole phrase its category, AP.',
-    recap: ['A labels the adjective head.', 'DEG labels the degree word.', 'The whole adjective phrase is AP.'],
-  },
-  'br-04': {
-    topics: ['The Transitive VP', 'Verbs and Direct Objects', 'Reading a Transitive VP', 'Finding the Direct Object'],
-    steps: ['Subject and predicate', 'Transitive verb', 'Object NP'],
-    context: 'Start at “the bridge” and follow its NP branch upward. Its sister is V inside the VP. The subject NP “Nora” sits outside that VP.',
-    recap: ['V carries [trans] in this pattern.', 'The direct-object NP is sister to V under VP.'],
-  },
-  'br-05': {
-    topics: ['VP Adjuncts and Complements', 'Two Levels of VP', 'Reading the VP Layers', 'Finding the Adjunct'],
-    steps: ['Inner VP', 'Adjunct PP', 'Outer VP'],
-    context: 'Compare “the bridge” with “in June”. The object NP joins V, while the PP joins the inner VP to form a larger VP.',
-    recap: ['A verb complement is sister to V.', 'An adjunct adverbial is sister to VP.'],
-  },
   'br-06': {
     topics: ['Progressive Auxiliaries', 'Auxiliaries and VP Complements', 'Reading the Progressive VP', 'Finding the Lower VP'],
     steps: ['Lexical VP', 'Progressive auxiliary', 'Higher VP'],

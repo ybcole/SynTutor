@@ -1,10 +1,9 @@
 # Syntax Foundations lesson implementation plan
 
-Use the current Chapter 1 and Chapter 2 on `explore/foundations-lesson-rollout-plan`
-as the reference for revising one chapter at a time. Chapter 1 shows how to
-introduce a concept through an example and a short exercise. Chapter 2 shows
-how to carry that approach through a longer explanation, a worked comparison,
-a guided build, and an independent application.
+Use Chapters 1–5 on `explore/foundations-lesson-rollout-plan` as the reference
+for revising the remaining chapters. Chapters 1 and 2 establish the flow.
+Chapters 3–5 show how to use the same flow to teach a specific attachment
+with a partially built tree.
 
 ## Read before writing
 
@@ -23,6 +22,15 @@ will help after a common error. Use the book's teaching sequence and write
 the examples and explanations in SynTutor's own words. If a source page
 cannot be checked, report that gap and use the reviewed evidence for the
 affected section.
+
+Use the printed Burton-Roberts text for the linguistic explanation. Use
+`web/content/book/chXX.trees.json` to check the selected source analyses
+and figure notation. Use `course.json` for the reviewed SynTutor example,
+assessment, and provenance. The supplemental prose, examples, and practice
+are authored for SynTutor and should be checked against those sources and
+the chapter profile. Use the existing lessons and owner feedback to guide
+the teaching format. Use Cambridge only for relevant, cited grammatical
+context.
 
 ## Six-page lesson template
 
@@ -150,6 +158,27 @@ will use in the closing check. The reviewed catalog retains its source links.
    text-only outcome, such as Chapter 11's use of rules, use an application
    activity that fits that objective.
 
+## Chapters 3–5 reference implementation
+
+These three chapters use the same six pages and reviewed closing checks as
+the earlier chapters. The opening check keeps the catalog prediction first
+and adds two unscored questions. The worked page uses the reviewed tree as a
+model, then detaches one branch in a separate editable draft. The learner
+can reconnect it manually or use the two-step guide. The application page
+uses an original example and a short written analysis to reveal.
+
+| Chapter | Source and teaching focus | Build and transfer |
+| --- | --- | --- |
+| 3 · Heads and adjective phrases | V3, printed pp. 55 and 62. Distinguish the adjective head from a degree word in an AP. Use the basic DEG + A example before covering wider category systems in later units. | Connect A under AP in *very cheerful*. Compare *quite bright* with the one-word AP *bright*. |
+| 4 · The basic transitive VP | V4, printed pp. 70–71. Separate the subject NP from the direct-object NP and read the `[trans]` feature for the use of the verb in this sentence. | Attach the object NP beside V under VP in *Nora inspected the bridge*. Locate the whole object in *The children carried a heavy box*. |
+| 5 · Adjuncts and two levels of VP | V5, printed pp. 89–90 and Fig. 12. Distinguish the object beside V from the final time PP beside the inner VP. Printed p. 91 supports the supplemental *do so* example. | Attach *in June* beside the inner VP. In a fresh sentence, find the verb and object that group first and show where *before lunch* attaches. |
+
+These are the launch outcomes. Broader adjective categories, other verb
+frames, and moved adverbials need their own source and scope review when
+they are taught. A branch exercise checks the intended shape for its
+particular sentence. It gives local construction feedback and leaves
+formal grading to the reviewed knowledge check.
+
 ## Catalog and progress boundaries
 
 Keep the reviewed outcome, published examples, source IDs, question IDs,
@@ -206,8 +235,12 @@ new practice and draft edits leave assessment progress intact.
 ## Owner review
 
 Review one chapter at a time. First read it as a learner and try the new
-example before opening any answer or guide. Then complete the construction
-both manually and with the guide, and try the closing check and a retake.
-Send the page heading, example or instruction that needs revision, and a
-screenshot when the issue is visual. Start with Chapter 3 after reviewing
-the expanded Chapter 2 experience.
+example before opening any answer or guide. Then try one plausible wrong
+branch, complete the construction manually and with the guide, and try the
+closing check and a retake. Check that the explanation, diagram, and feedback
+use the same words and notation. Send the chapter and page heading, the
+expected learner action, what happened, and a screenshot for layout issues.
+Use feedback from Chapters 3–5 to settle the shared pattern before starting
+Chapter 6. For each remaining batch, agree on the target outcome and one
+fresh example per chapter, then review a worked page and closing check
+before carrying the pattern forward.

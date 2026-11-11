@@ -7,6 +7,7 @@ import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentOpeningCheck, constituentReferences } from './constituents-lesson.js';
 import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck, subjectPredicateReferences } from './subject-predicate-lesson.js';
 import { foundationsArticle } from './foundations-lesson.js';
+import { phraseStructureArticles } from './phrase-structure-lessons.js';
 import { lessonNotation } from './lesson-notation.js';
 
 const articleLessons = {
@@ -26,6 +27,7 @@ const articleLessons = {
     references: subjectPredicateReferences,
     postTestIntro: 'Use the NP and VP branches to identify the subject and predicate. Check each answer before continuing.',
   },
+  ...phraseStructureArticles,
 };
 
 let options = {}, course, store, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;

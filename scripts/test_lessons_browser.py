@@ -544,19 +544,29 @@ try:
   # Complete the rest of Syntax Foundations through the shared article flow.
   for lesson in COURSE['lessons'][2:11]:
    ident=lesson['lesson_id']
+   expanded=ident in {'br-03','br-04','br-05'}
    print('Checking',ident,flush=True)
    page.evaluate("id=>import('/js/lessons-ui.js').then(m=>m.openLessons(id))",ident)
    expect(part_heading).to_contain_text('Introduction to')
-   expect(view.get_by_role('region',name='Pre-test')).to_be_visible()
+   expect(view.get_by_role('region',name='Check what you know' if expanded else 'Pre-test')).to_be_visible()
    prediction=view.locator('[data-question="predict"]')
    expect(prediction.locator('legend')).to_have_text(lesson['predict']['prompt'])
    next_button=view.get_by_role('button',name='Next →',exact=True)
    expect(next_button).to_be_disabled()
    prediction.locator('input').first.click()
-   expect(view.locator('.constituent-pre-test-status')).to_have_text('Response recorded.')
+   if expanded:
+    for number in [2,3]:
+     view.get_by_role('button',name='Next question →',exact=True).click()
+     expect(view.locator('.lesson-assessment-position')).to_have_text(f'Question {number} of 3')
+     prediction.locator('input').first.click()
+    view.get_by_role('button',name='Finish knowledge check').click()
+   expect(view.locator('.constituent-pre-test-status')).to_have_text('Knowledge check complete.' if expanded else 'Response recorded.')
    next_button.click()
-   for block in lesson['teaching']:
-    expect(view.get_by_text(block['text'],exact=True)).to_be_visible()
+   if expanded:
+    expect(view.locator('article h3')).to_have_count(3)
+   else:
+    for block in lesson['teaching']:
+     expect(view.get_by_text(block['text'],exact=True)).to_be_visible()
    next_button.click()
    worked=lesson['worked_example']
    expect(view.get_by_text(worked['sentence'],exact=True)).to_be_visible()
@@ -583,7 +593,7 @@ try:
     if ident=='br-10':
      expect(viewport.locator('svg text').filter(has_text=re.compile(r'^\[-tense\]$'))).to_have_count(1)
      expect(viewport.locator('svg text').filter(has_text=re.compile(r'^AUX$'))).to_have_count(0)
-    if ident in {'br-03','br-06','br-09','br-10'}:
+    if expanded or ident in {'br-06','br-09','br-10'}:
      page.screenshot(path=str(OUT/f'{ident}-desktop.png'),full_page=True)
      page.set_viewport_size({'width':390,'height':844})
      viewport.scroll_into_view_if_needed()
@@ -591,11 +601,37 @@ try:
      assert 0 <= viewport.bounding_box()['y']-(steps_box['y']+steps_box['height']) <= 16
      assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth'), ident
      page.screenshot(path=str(OUT/f'{ident}-mobile-tree.png'),full_page=True)
+     if expanded:
+      editor=view.locator('.first-tree-builder')
+      expect(editor.locator('#builderCanvas')).to_be_visible()
+      editor.get_by_role('button',name='Check construction').click()
+      expect(editor.get_by_role('status')).to_contain_text('Connect every node')
+      page.evaluate("window.beforeBranch=localStorage.getItem('syntutor:lessons:v1:guest')")
+      if ident=='br-03':
+       editor.locator('#builderCanvas').scroll_into_view_if_needed()
+       drag_branch('AP','phrase','A')
+       editor.get_by_role('button',name='Check construction').click()
+       expect(editor.get_by_role('status')).to_contain_text('sisters under AP')
+      editor.get_by_role('button',name='Guide me').click()
+      for step in editor.locator('.first-tree-guide button').all():
+       step.press('Enter')
+      success={'br-03':'sisters under AP','br-04':'shares VP with V','br-05':'sisters under the outer VP'}[ident]
+      expect(editor.get_by_role('status')).to_contain_text(success)
+      assert page.evaluate("localStorage.getItem('syntutor:lessons:v1:guest')===window.beforeBranch")
      page.set_viewport_size({'width':1440,'height':1050})
    else:
     expect(view.locator('article ol li')).to_have_text([step['text'] for step in worked['steps']])
     expect(view.locator('svg')).to_have_count(0)
    next_button.click()
+   if expanded:
+    answer=view.get_by_text('Check your analysis',exact=True)
+    expect(answer.locator('+ p')).to_be_hidden()
+    answer.press('Enter')
+    expect(answer.locator('+ p')).to_be_visible()
+    view.get_by_role('button',name='← Previous',exact=True).click()
+    editor.get_by_role('button',name='Check construction').click()
+    expect(editor.get_by_role('status')).to_contain_text(success)
+    next_button.click()
    for insight in lesson['cambridge_insights']:
     expect(view.get_by_text(insight['text'],exact=True)).to_be_visible()
    next_button.click()
@@ -603,10 +639,10 @@ try:
    references=view.locator('article .lesson-sources')
    references.locator('summary').click()
    expect(references.locator('li').first).to_be_visible()
-   view.get_by_role('button',name='Start post-test').click()
-   expect(part_heading).to_have_text('Chapter Post-test')
+   view.get_by_role('button',name='Check what you learned' if expanded else 'Start post-test').click()
+   expect(part_heading).to_have_text('Check what you learned' if expanded else 'Chapter Post-test')
    expect(view.locator('.lesson-sources')).to_have_count(0)
-   post_test=view.get_by_role('region',name='Post-test questions')
+   post_test=view.get_by_role('region',name='Chapter knowledge check' if expanded else 'Post-test questions')
    for key, action_name in [('guided','Next question →'),('transfer','Next question →'),('exit','Complete lesson')]:
     question=post_test.locator(f'[data-question="{key}"]')
     expect(question.locator('legend')).to_have_text(lesson[key]['prompt'])
@@ -629,6 +665,9 @@ try:
      expect(masked.locator('.br-feature-row')).to_have_text(f'[{target["expected"]}]')
     action.click()
    expect(view.locator('.lesson-save-status')).to_contain_text('15 lesson XP awarded')
+   if expanded:
+    expect(post_test.get_by_role('heading',name='Answers overview')).to_be_visible()
+    expect(post_test.locator('.lesson-question')).to_have_count(3)
    if ident=='br-11':
     expect(view.locator('svg')).to_have_count(0)
   # The Cambridge companion still follows its original sequence.
