@@ -65,6 +65,12 @@ try:
   expect(view.locator('article')).to_have_attribute('aria-labelledby','constituent-page-title')
   intro=view.get_by_role('heading',name='Check what you know',exact=True)
   opening=view.get_by_role('region',name='Check what you know')
+  opening_rows=opening.locator('.lesson-option')
+  expect(opening_rows.first.locator('input')).to_have_css('width','20px')
+  assert opening_rows.evaluate_all("""rows => {
+    const [first, second, third] = rows.map(row => getComputedStyle(row).backgroundColor);
+    return first === third && first !== second;
+  }"""), 'Answer rows should alternate in the opening check'
   expect(view.locator('[data-question="predict"] legend')).to_contain_text('Mara rested beside the river')
   expect(intro).to_be_visible()
   assert intro.bounding_box()['y'] < view.locator('[data-question="predict"]').bounding_box()['y']
@@ -129,10 +135,21 @@ try:
    assert comparison.bounding_box()['width']==nested_box['width']
    assert comparison.bounding_box()['height']==nested_box['height']
    expect(comparison.locator('svg text').filter(has_text=re.compile(r'^(near|the|quiet|garden)$'))).to_have_count(4)
-  comparison.get_by_role('button',name='Inspect B-R PHRASE-a for PHRASE-a',exact=True).press('Enter')
+  outer=comparison.get_by_role('button',name='Inspect B-R PHRASE-a for PHRASE-a',exact=True)
+  inner=comparison.get_by_role('button',name=re.compile(r'^Inspect B-R PHRASE-b\b'))
+  outer_box=outer.locator('.lesson-tree-focus-box')
+  inner_box=inner.locator('.lesson-tree-focus-box')
+  outer.press('Enter')
   expect(comparison.locator('svg .lesson-branch-traced')).to_have_count(5)
   expect(comparison.locator('svg .lesson-word-traced')).to_have_text(['near','the','quiet','garden'])
-  comparison.get_by_role('button',name=re.compile(r'^Inspect B-R PHRASE-b\b')).press('Enter')
+  expect(outer_box).to_have_css('display','inline')
+  expect(inner_box).to_have_css('display','none')
+  page.evaluate("document.documentElement.setAttribute('data-theme','dark')")
+  inner.locator('text').first.click()
+  expect(outer_box).to_have_css('display','none')
+  expect(inner_box).to_have_css('display','inline')
+  expect(comparison.locator('svg .lesson-branch:not(.lesson-branch-traced)').first).to_have_css('stroke','rgb(148, 163, 184)')
+  expect(comparison.locator('svg .lesson-branch-traced').first).to_have_css('stroke','rgb(162, 149, 255)')
   expect(comparison.locator('svg .lesson-branch-traced')).to_have_count(3)
   expect(comparison.locator('svg .lesson-word-traced')).to_have_text(['the','quiet','garden'])
   viewport=comparison.bounding_box()
@@ -251,6 +268,12 @@ try:
    closing.get_by_role('button',name=action,exact=True).click()
   expect(view.locator('.lesson-save-status')).to_contain_text('15 lesson XP awarded')
   expect(view.get_by_role('heading',name='Extra practice')).to_be_visible()
+  expect(closing.get_by_role('heading',name='Answers overview')).to_be_visible()
+  expect(closing.locator('.lesson-question')).to_have_count(3)
+  expect(closing.get_by_role('button',name='Next question →')).to_have_count(0)
+  page.set_viewport_size({'width':390,'height':844})
+  assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth'), 'Answers overview has horizontal overflow'
+  page.set_viewport_size({'width':1440,'height':1050})
   view.get_by_role('button',name='Try the questions again').click()
   expect(view.locator('.lesson-question input:checked')).to_have_count(0)
   for number,key in enumerate(['guided','transfer','exit'],start=1):
@@ -259,12 +282,13 @@ try:
    wrong=next(o['id'] for o in chapter_one[key]['options'] if o['id']!=chapter_one[key]['answer'])
    view.locator(f'[data-question="{key}"] input[value="{wrong}"]').check()
    closing.get_by_role('button',name='Finish practice' if number==3 else 'Next question →').click()
+  expect(closing.get_by_role('heading',name='Answers overview')).to_be_focused()
+  expect(closing.locator('.lesson-question')).to_have_count(3)
+  expect(closing.get_by_role('button',name='Next question →')).to_have_count(0)
   for key in ['guided','transfer','exit']:
    original=view.locator(f'[data-question="{key}"] input:checked')
    expect(original).to_have_value(chapter_one[key]['answer'])
    expect(original).to_be_disabled()
-   if key!='exit':
-    closing.get_by_role('button',name='Next question →').click()
   view.get_by_role('button',name='Finish review',exact=True).click()
   assert '1 / 12 lessons completed · 15 lesson XP' in view.locator('.lesson-total').inner_text()
   # Chapter 2 shares the article flow and uses the reviewed M4 activities.

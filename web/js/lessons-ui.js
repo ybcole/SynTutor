@@ -153,7 +153,12 @@ export function renderLessonTree(envelope, {
   }
   for (const {node,x,y} of positions) {
     const g=svgNode('g',{'data-node-id':node.id || '',class:node.id===focusId ? 'lesson-tree-focus' : ''});
-    if (node.id===focusId) g.append(svgNode('rect',{x:x-55,y:y-20,width:110,height:40,rx:9}));
+    if (node.id === focusId || (traceBranches && node.id && onSelectNode)) {
+      g.append(svgNode('rect', {
+        class: 'lesson-tree-focus-box', x: x - 55, y: y - 20,
+        width: 110, height: traceBranches ? 30 : 40, rx: 9,
+      }));
+    }
     const t=svgNode('text',{x,y,'text-anchor':'middle'});
     t.textContent=visibleLabel(node);g.append(t);
     if (traceBranches && node.word) wordLabels.set(node, t);
@@ -674,14 +679,20 @@ function articleScreen(lesson, p, article) {
   } else {
     const practice = practiceResponses !== null;
     const key = STAGES[p.stage];
-    const keys = reviewing && !openingCheck ? postTestKeys : [reviewing ? postTestKeys[assessmentIndex] : key];
+    const paged = openingCheck && (!reviewing || practice);
+    const keys = !reviewing ? [key] : paged ? [postTestKeys[assessmentIndex]] : postTestKeys;
     const postTest = el('section', undefined, 'lesson-assessment');
     postTest.setAttribute('aria-label', openingCheck ? 'Chapter knowledge check' : 'Post-test questions');
+    if (openingCheck && reviewing && !practice) {
+      const overview = el('h3', 'Answers overview', 'lesson-answers-heading');
+      overview.tabIndex = -1;
+      postTest.append(overview);
+    }
     postTest.append(el('p', practice ? 'Try the chapter questions again. This is a practice attempt.'
       : reviewing ? 'Review your answers and feedback from the completed chapter.'
         : article.postTestIntro));
-    if (openingCheck) postTest.append(assessmentPosition(postTestKeys.indexOf(keys[0]), postTestKeys.length));
-    const questionActions = openingCheck ? el('div', undefined, 'lesson-assessment-actions') : actions;
+    if (paged) postTest.append(assessmentPosition(postTestKeys.indexOf(keys[0]), postTestKeys.length));
+    const questionActions = paged ? el('div', undefined, 'lesson-assessment-actions') : actions;
     for (const item of keys) {
       const response = practice ? { responses: practiceResponses } : p;
       if (item === 'guided' && lesson.guided.build_target && lesson.worked_example.tree) {
@@ -709,7 +720,7 @@ function articleScreen(lesson, p, article) {
       }));
     }
     body.append(postTest);
-    if (reviewing && openingCheck) {
+    if (practice && paged) {
       const item = keys[0];
       const last = assessmentIndex === postTestKeys.length - 1;
       const move = delta => {
@@ -720,26 +731,25 @@ function articleScreen(lesson, p, article) {
       if (assessmentIndex > 0) questionActions.append(button('← Previous question', () => move(-1)));
       if (!last) {
         const next = button('Next question →', () => move(1), 'lesson-primary');
-        next.disabled = practice && !practiceResponses[item];
+        next.disabled = !practiceResponses[item];
         questionActions.append(next);
-      } else if (practice) {
+      } else {
         const finish = button('Finish practice', () => {
           practiceResponses = null;
           assessmentIndex = 0;
           render();
-          focusAssessmentPosition();
+          host.querySelector('.lesson-answers-heading')?.focus();
         }, 'lesson-primary');
         finish.disabled = !practiceResponses[item];
         questionActions.append(finish);
       }
-      if (!practice) {
-        actions.append(button('Try the questions again', () => {
-          practiceResponses = {};
-          assessmentIndex = 0;
-          render();
-          focusAssessmentPosition();
-        }), button('Finish review', showCatalog, 'lesson-primary'));
-      }
+    } else if (reviewing && openingCheck) {
+      actions.append(button('Try the questions again', () => {
+        practiceResponses = {};
+        assessmentIndex = 0;
+        render();
+        focusAssessmentPosition();
+      }), button('Finish review', showCatalog, 'lesson-primary'));
     } else if (reviewing) {
       if (!practice) {
         actions.append(button('Retake post-test', () => {
@@ -772,7 +782,7 @@ function articleScreen(lesson, p, article) {
       next.disabled = busy || !canAdvance(lesson, p);
       questionActions.append(next);
     }
-    if (openingCheck && questionActions.childElementCount) postTest.append(questionActions);
+    if (paged && questionActions.childElementCount) postTest.append(questionActions);
     if (openingCheck ? reviewing && !practice : key === 'exit' || reviewing) article.review?.(body, { el });
   }
   layout.append(actions);

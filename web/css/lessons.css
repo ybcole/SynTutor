@@ -138,8 +138,12 @@
   background:var(--bg);
 }
 .constituent-pre-test { margin-top:clamp(30px,5vw,44px); }
-.constituent-page .lesson-assessment .lesson-option:hover { background:var(--panel); }
-.constituent-page .lesson-assessment .lesson-option:has(input:checked) { background:var(--accent-soft); }
+.lesson-assessment .lesson-option:nth-of-type(odd) { background:var(--panel); }
+.lesson-assessment .lesson-option:nth-of-type(even) { background:color-mix(in srgb,var(--panel) 94%,var(--ink)); }
+.lesson-assessment .lesson-option:has(input:enabled):hover { border-color:var(--accent-border); }
+.lesson-assessment .lesson-option:has(input:checked) { border-color:var(--accent); background:var(--accent-soft); }
+.lesson-assessment .lesson-option:has(input:disabled) { cursor:default; }
+.lesson-assessment .lesson-option input { width:20px; height:20px; margin:2px 0 0; }
 .constituent-page .lesson-assessment .lesson-feedback {
   margin:12px 0 0;
   border:1px solid var(--border);
@@ -148,13 +152,13 @@
 .constituent-page .lesson-assessment .canonical-viewport { background:var(--panel); }
 .constituent-pre-test h3 { margin-top:0; color:var(--accent-strong); }
 .constituent-page .lesson-question legend { font-size:1.025rem; margin-bottom:12px; }
-.constituent-page .lesson-option {
-  margin:2px 0;
-  padding:10px 8px;
-  border:0;
-  border-radius:6px;
-  background:none;
+.lesson-assessment .lesson-option {
+  margin:4px 0;
+  padding:11px 12px;
+  border-color:transparent;
+  border-radius:8px;
 }
+.constituent-page .lesson-answers-heading { margin-top:0; }
 .constituent-pre-test .constituent-pre-test-status { margin-bottom:0; font-weight:600; }
 .lesson-assessment-position { color:var(--accent-strong); font-size:.875rem; font-weight:650; }
 .lesson-assessment-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; margin-top:16px; }
@@ -223,7 +227,8 @@
 .lesson-tree-canvas svg .lesson-word-traced { fill:var(--accent-strong); font-weight:650; }
 .lesson-tree-canvas .canonical-zoom button { padding:4px 8px; }
 .lesson-tree-canvas .lesson-tree-hint { display:none; }
-.lesson-tree-focus rect { fill:var(--accent-soft); stroke:var(--accent); }
+.lesson-tree-focus-box { display:none; fill:var(--accent-soft); stroke:var(--accent); pointer-events:none; }
+:is(.lesson-tree-focus,[data-constituent-selected]) > .lesson-tree-focus-box { display:inline; }
 .lesson-tree-focus text { font-weight:750; }
 .lesson-sources { margin:24px 0; padding:12px 20px; border:1px solid var(--border); border-radius:14px; background:var(--panel); }
 .lesson-sources summary { font-weight:650; color:var(--ink); }
