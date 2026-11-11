@@ -25542,5 +25542,1487 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed source text and rendered page. Original English examples."
+  },
+  {
+    "id": "PHR-400",
+    "domain": "phrases",
+    "concept": "Variable slots in fixed preposition phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A fixed preposition–noun–preposition sequence often allows a variable final complement.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some expressions fix the final element as well.",
+        "pages": [
+          618
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We closed the road for the sake of the runners.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They acted with a view to reducing delays.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.1",
+        "pages": [
+          618
+        ],
+        "pdf_pages": [
+          638
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variable slots in fixed preposition phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-401",
+    "domain": "phrases",
+    "concept": "Testing degrees of fossilisation",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Article replacement, modification, number, coordination and omission can help assess how fixed an expression is.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Highly fixed expressions resist most operations, but individual judgments can vary.",
+        "pages": [
+          619
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They did it by dint of sustained practice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They put the label on this faded photograph.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.1",
+        "pages": [
+          619
+        ],
+        "pdf_pages": [
+          639
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Testing degrees of fossilisation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-402",
+    "domain": "phrases",
+    "concept": "Genitive alternation and omission test different properties",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "On behalf of allows a genitive alternative; in front permits omission of the of-phrase in the relevant spatial reading.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Compare the same sense throughout. In the front of can describe an interior location.",
+        "pages": [
+          620
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I signed on the tenant's behalf.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She waited in front.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.1",
+        "pages": [
+          620
+        ],
+        "pdf_pages": [
+          640
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive alternation and omission test different properties",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-403",
+    "domain": "phrases",
+    "concept": "Competing analyses of idiomatic sequences",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A right-branching noun complement, a layered PP head, and a single complex preposition make different constituency claims.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Semantic equivalence to a simple preposition does not establish constituency. Idiomatic material can be discontinuous.",
+        "pages": [
+          620,
+          621
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cart stopped in front of the shed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They left the proposal on the back burner.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.1",
+        "pages": [
+          620,
+          621
+        ],
+        "pdf_pages": [
+          640,
+          641
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Competing analyses of idiomatic sequences",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-404",
+    "domain": "phrases",
+    "concept": "Evidence for right-branching complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Genitive alternation and anaphoric determiners can support an NP complement inside an idiomatic PP.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different expressions can require a layered analysis or remain indeterminate.",
+        "pages": [
+          622
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They called at Mira's request.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The permit was refused on those grounds.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.1",
+        "pages": [
+          622
+        ],
+        "pdf_pages": [
+          642
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Evidence for right-branching complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-405",
+    "domain": "phrases",
+    "concept": "Evidence for layered PP heads",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Fronting the second preposition with its relative complement can support attachment to the larger PP rather than to the intervening noun.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Only some with expressions admit this test. Lack of positive evidence does not settle the analysis.",
+        "pages": [
+          622
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The firms were in league with the supplier.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The supplier with whom the firms were in league withdrew.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.1",
+        "pages": [
+          622
+        ],
+        "pdf_pages": [
+          642
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Evidence for layered PP heads",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-406",
+    "domain": "phrases",
+    "concept": "Compound prepositions and transparent counterparts",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Because and instead are treated as lexical compounds, unlike syntactically composite layered heads.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A surviving noun in a related expression does not establish a productive alternation with the compound.",
+        "pages": [
+          622,
+          623
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We stayed inside because of the hail.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They took the stairs instead of the lift.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.1",
+        "pages": [
+          622,
+          623
+        ],
+        "pdf_pages": [
+          642,
+          643
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compound prepositions and transparent counterparts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-407",
+    "domain": "phrases",
+    "concept": "Content clauses in fixed noun complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In the event that and on the grounds that can license clauses in the idiomatic construction even where the noun does not normally license them alone.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Anaphoric noun phrases support a right-branching analysis. That belongs with the content clause.",
+        "pages": [
+          623
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "In the event that the lift fails, use the stairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They declined on the grounds that the venue was unavailable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.2",
+        "pages": [
+          623
+        ],
+        "pdf_pages": [
+          643
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content clauses in fixed noun complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-408",
+    "domain": "phrases",
+    "concept": "Fixed heads licensing clauses",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Expressions such as in case, in order, and in two minds can take clausal dependents in the idiomatic pattern.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source considers competing layered and compound analyses for some items. In order also permits a restricted finite construction.",
+        "pages": [
+          624
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Save a copy in case the file is lost.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We left early in order to avoid traffic.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.2",
+        "pages": [
+          624
+        ],
+        "pdf_pages": [
+          644
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fixed heads licensing clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-409",
+    "domain": "phrases",
+    "concept": "Idiomatic sequences of two prepositions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Sequences with out of, because of, and up to have construction-specific complement behavior.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Out can remain without the entire of-phrase. Because can instead select a content clause, and some up to senses allow repeated to.",
+        "pages": [
+          624,
+          625
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She stepped out of the van.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is up to you or to your deputy to decide.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.2",
+        "pages": [
+          624,
+          625
+        ],
+        "pdf_pages": [
+          644,
+          645
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic sequences of two prepositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-410",
+    "domain": "phrases",
+    "concept": "Compounds and free preposition sequences",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Into and onto can be distinguished from free combinations. Expressions such as as to have restricted complement patterns.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "As to can take an interrogative clause, and as for has different licensing.",
+        "pages": [
+          625,
+          626
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ball rolled onto the path.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We disagreed as to whether the trip could proceed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.2",
+        "pages": [
+          625,
+          626
+        ],
+        "pdf_pages": [
+          645,
+          646
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compounds and free preposition sequences",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-411",
+    "domain": "phrases",
+    "concept": "Adjective complements in fixed PPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Expressions such as in brief and for free contain adjectival complements within fixed preposition phrases.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some complements have a predicative interpretation, whereas others lack a corresponding predicand.",
+        "pages": [
+          626
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'll explain the proposal in brief.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They repaired the strap for free.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§3.2",
+        "pages": [
+          626
+        ],
+        "pdf_pages": [
+          646
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjective complements in fixed PPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-412",
+    "domain": "phrases",
+    "concept": "Stranding and gap position",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A stranded preposition lacks an overt complement at its usual position because that position is linked elsewhere in the construction.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Open questions, relatives, passives, and other noncanonical constructions can license stranding. It is standard English.",
+        "pages": [
+          626,
+          627
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which station did they get off at?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That seat has already been sat in.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.1",
+        "pages": [
+          626,
+          627
+        ],
+        "pdf_pages": [
+          646,
+          647
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stranding and gap position",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-413",
+    "domain": "phrases",
+    "concept": "PP fronting and style",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Where both structures are available, the preposition can be fronted with its complement or stranded. Fronting can sound more formal.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some constructions require a different reformulation. Lexically complementless since is not stranding.",
+        "pages": [
+          628
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "To whom should I send the form?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who should I send the form to?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.1",
+        "pages": [
+          628
+        ],
+        "pdf_pages": [
+          648
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "PP fronting and style",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-414",
+    "domain": "phrases",
+    "concept": "Fused relatives and restricted PP fronting",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A fused relative does not ordinarily allow fronting the preposition before the fused nominal head.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An ordinary relative with a separate antecedent can front the PP.",
+        "pages": [
+          628,
+          629
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We kept what the shelves were made from.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We kept the boards from which the shelves were made.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.1",
+        "pages": [
+          628,
+          629
+        ],
+        "pdf_pages": [
+          648,
+          649
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused relatives and restricted PP fronting",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-415",
+    "domain": "phrases",
+    "concept": "Fronting restrictions in embedded questions and idioms",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A preposition complementing a verb or idiom can strongly favor stranding. Fronting is also restricted inside an interrogative that is itself a preposition complement.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some subordinate interrogatives allow fronting in a markedly formal context. Specific verb–preposition combinations differ.",
+        "pages": [
+          629,
+          630
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We disagree on which grant to apply for.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That's the noise we won't put up with.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.1",
+        "pages": [
+          629,
+          630
+        ],
+        "pdf_pages": [
+          649,
+          650
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fronting restrictions in embedded questions and idioms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-416",
+    "domain": "phrases",
+    "concept": "Stranding before content clauses and in nested PPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Stranding can be blocked before a following content clause or inside a PP that is itself the complement of another preposition.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An inner preposition specifically selected by the outer head can behave differently, as in out of.",
+        "pages": [
+          630
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "To whom did they announce that the schedule had changed?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "From beneath which cabinet did you retrieve the key?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.1",
+        "pages": [
+          630
+        ],
+        "pdf_pages": [
+          650
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stranding before content clauses and in nested PPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-417",
+    "domain": "phrases",
+    "concept": "Elliptical questions and subject-contained gaps",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An elliptical PP question can strand with a one-word interrogative but not with the multiword interrogative in the cited pattern. Stranding at the end of a subject NP is also blocked in the source contrast.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These restrictions concern the stated constructions, not full clauses with multiword interrogatives.",
+        "pages": [
+          630
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "With which instructor?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which instructor did you speak with?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.1",
+        "pages": [
+          630
+        ],
+        "pdf_pages": [
+          650
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Elliptical questions and subject-contained gaps",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-418",
+    "domain": "phrases",
+    "concept": "Stranding in adjuncts and comparisons",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Adjunct PPs vary in whether they allow stranding. Comparative than has restricted fronting and marginal stranding, and comparative as resists both in the cited relative construction.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Short temporal adjuncts can strand naturally. Style and integration affect comparative judgments.",
+        "pages": [
+          631
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What year did the shop open in?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Under what circumstances would the permit be revoked?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.1",
+        "pages": [
+          631
+        ],
+        "pdf_pages": [
+          651
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stranding in adjuncts and comparisons",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-419",
+    "domain": "phrases",
+    "concept": "Notwithstanding, apart, and aside after complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Notwithstanding can precede or follow its complement. Apart and aside take a from-phrase in head-first order and a direct NP in complement-first order.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The postposed forms are analyzed as PPs rather than predicative absolutes.",
+        "pages": [
+          631,
+          632
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Notwithstanding the delay, we opened on time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The delay aside, the trip went smoothly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.2",
+        "pages": [
+          631,
+          632
+        ],
+        "pdf_pages": [
+          651,
+          652
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Notwithstanding, apart, and aside after complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-420",
+    "domain": "phrases",
+    "concept": "Ago and elapsed-time on",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Ago and elapsed-time on follow a required duration expression in the cited uses.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 7.",
+    "violation": "Ago precedes its duration complement.",
+    "exceptions": [
+      {
+        "description": "The measure expression is a complement here, unlike the optional measure modifier of before or earlier.",
+        "pages": [
+          632
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They left three weeks ago.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They moved two days ago.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They left ago three weeks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They moved ago two days.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.2",
+        "pages": [
+          632
+        ],
+        "pdf_pages": [
+          652
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ago and elapsed-time on",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Ago precedes its duration complement.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They left ago three weeks. ||| They left three weeks ago.",
+        "They moved ago two days. ||| They moved two days ago."
+      ],
+      "learner_explanation": "Ago and elapsed-time on follow a required duration expression in the cited uses.",
+      "corrected_paragraph_template": "Place the duration expression before ago.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Three weeks on, the road was still closed.",
+        "They moved before the holidays."
+      ],
+      "lesson_tags": [
+        "prepositions",
+        "word_order"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-421",
+    "domain": "phrases",
+    "concept": "Repeated nominal expressions with by",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In expressions such as page by page, the second nominal is the internal complement of by and the first an external complement.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The whole construction typically functions as an adjunct. Related lexicalized expressions can have predicative uses.",
+        "pages": [
+          632,
+          633
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We reviewed the ledger page by page.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The volunteers entered one by one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.3",
+        "pages": [
+          632,
+          633
+        ],
+        "pdf_pages": [
+          652,
+          653
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Repeated nominal expressions with by",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-422",
+    "domain": "phrases",
+    "concept": "Preposing inside a PP",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A preposed constituent can occupy prenuclear position within a PP headed by though or as, with a gap in the embedded clause.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Although does not replace though in this construction. As can be causal as well as concessive.",
+        "pages": [
+          633,
+          634
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Cold though it was, we stayed outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tired as she was, she finished the report.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.4",
+        "pages": [
+          633,
+          634
+        ],
+        "pdf_pages": [
+          653,
+          654
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposing inside a PP",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-423",
+    "domain": "phrases",
+    "concept": "Form of preposed predicative constituents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A predicative phrase can be preposed in whole or in part. In the cited nominal pattern a singular count noun can appear without an article.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A special degree construction can retain a after the adjective phrase. Post-head dependents can remain in the embedded clause.",
+        "pages": [
+          634
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Fond though she was of the old house, she sold it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Talented designer though he is, he asked for help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.4",
+        "pages": [
+          634
+        ],
+        "pdf_pages": [
+          654
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Form of preposed predicative constituents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

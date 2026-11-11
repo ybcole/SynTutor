@@ -185,3 +185,8 @@ The final batch adds 26 records (`PHR-346`–`PHR-371`) for pp.503–523 and con
 ## Chapter 7 first checkpoint (2026-11-11)
 
 Printed pp.597–617 checked in text and rendered layout. Page 597 contains the chapter title and contents only. The 20 substantive pages yielded 28 records (`PHR-372`–`PHR-399`). Continue at p.618 with idiomatic and fossilised expressions.
+
+
+## Chapter 7 second checkpoint (2026-11-11)
+
+Printed pp.618–634 yielded 24 records (`PHR-400`–`PHR-423`). Continue at p.635 with the end of PP preposing and the start of PP complementation.
