@@ -1,0 +1,22 @@
+{
+  "Generator": {
+    "violations": [],
+    "incomplete": 1,
+    "passes": 20
+  },
+  "Lessons": {
+    "violations": [],
+    "incomplete": 1,
+    "passes": 21
+  },
+  "Quizzes": {
+    "violations": [],
+    "incomplete": 1,
+    "passes": 21
+  },
+  "Builder": {
+    "violations": [],
+    "incomplete": 1,
+    "passes": 24
+  }
+}

@@ -311,3 +311,61 @@ Independent source comparison confirms:
 
 **Limitation:** This establishes a citation mismatch,
 not an incorrect grammatical claim or a chapter-wide defect.
+
+## QA-012 — Indistinguishable assessment button names
+
+Area: Accessibility / Quizzes
+Severity: Moderate
+Status: Confirmed usability concern; WCAG conformance impact not determined
+
+Evidence:
+- web/js/quizzes-ui.js creates assessment buttons using the
+  shared button() helper.
+- The helper assigns visible text but no contextual aria-label
+  or aria-labelledby attribute.
+- Browser keyboard inspection reached 16 distinct buttons
+  labeled "Start assessment".
+- Each assessment card contains a title, but that title is not
+  incorporated into the button's accessible name.
+
+Learner impact:
+Screen-reader users navigating by buttons cannot distinguish
+which assessment each identically named button starts without
+consulting the surrounding card content.
+
+Recommendation:
+Add the assessment title to the button's accessible name while
+preserving the concise visible text. Apply the same approach
+to "Resume assessment" buttons.
+
+Verification required:
+Add a browser regression checking that assessment buttons have
+distinct contextual accessible names and remain keyboard-operable.
+
+Ownership:
+Independent QA finding. Production code unchanged.
+
+### Automated regression evidence — 2026-11-11
+
+Test:
+evaluation/friday_validation/test_quiz_accessible_names.py
+
+Execution:
+python -m py_compile evaluation/friday_validation/test_quiz_accessible_names.py
+python evaluation/friday_validation/test_quiz_accessible_names.py
+
+Observed:
+- Python syntax validation passed.
+- 16 assessment cards were inspected in Chromium.
+- All 16 launch buttons lacked an assessment-specific
+  accessible name.
+- Every computed button snapshot was:
+  - button "Start assessment"
+- The regression exited with status 1, as intended.
+
+Acceptance criterion:
+Every Start/Resume assessment button must have a computed
+accessible name containing its action and assessment title.
+
+Regression status: RED — known production issue.
+Do not include as a mandatory passing CI test until resolved.
