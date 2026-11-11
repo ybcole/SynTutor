@@ -245,12 +245,19 @@ def main() -> int:
         batches = sorted(ROOT.glob("sources/cambridge/chapter_*/PP*_AUDIT.json"))
         errors = []
         covered = set()
+        indexed_rule_ids = set()
         for batch in batches:
             name = batch.relative_to(ROOT).as_posix()
             try:
                 manifest = load(batch)
                 errors.extend(f"{name}: {problem}" for problem in check_batch(manifest))
                 page_checks = manifest.get("page_checks", [])
+                for rid in manifest.get("added_rule_ids", []):
+                    if not isinstance(rid, str):
+                        continue  # The batch-level gate already reports malformed IDs.
+                    if rid in indexed_rule_ids:
+                        errors.append(f"{name}: {rid} indexed in multiple batch manifests")
+                    indexed_rule_ids.add(rid)
                 for item in page_checks:
                     if not isinstance(item, dict):
                         continue
@@ -269,6 +276,18 @@ def main() -> int:
             if row.get("chapter") != 3 and row.get("status") == "extracted":
                 if row.get("page") not in covered:
                     errors.append(f"p{row.get('page')}: new extracted page has no batch audit")
+        # Future extraction records must be indexed exactly once. The original
+        # 691 Chapter 3 Phase B records retain their historical reports.
+        for path in sorted((ROOT / "grammar/rules").glob("*.json")):
+            for rule in load(path):
+                if rule.get("status") != "NEEDS_REVIEW":
+                    continue
+                if any(
+                    source.get("chapter") != 3
+                    and "cambridge" in str(source.get("book", "")).lower()
+                    for source in rule.get("sources", [])
+                ) and rule["id"] not in indexed_rule_ids:
+                    errors.append(f"{rule['id']}: new rule missing from future batch manifests")
         print(json.dumps({"audits": len(batches), "pages_audited": len(covered),
                           "passed": not errors, "errors": errors[:60],
                           "error_count": len(errors)}, indent=2))
