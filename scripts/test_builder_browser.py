@@ -63,13 +63,15 @@ try:
   assert not parses,parses;assert checks and all('tree' in c and 'text' not in c for c in checks);assert not errors,errors
   assert not page.evaluate("Object.keys(localStorage).some(k=>/^syntutor:(lessons|assessments):/.test(k))")
   page.set_viewport_size({'width':1440,'height':1050})
-  standalone=page.evaluate("localStorage.getItem('syntutor:builder:v1:guest')")
   page.evaluate("""() => localStorage.setItem('syntutor:lessons:v1:guest', JSON.stringify({
     'br-02@1.0.0': { stage: 2, visited: ['predict', 'understand'], responses: { predict: 'b' }, completed_at: null }
   }))""")
   page.goto(base+'/#lesson/S',wait_until='domcontentloaded')
   lesson=page.locator('#curriculumView')
-  lesson.get_by_role('button',name='Try in Syntax Builder').click()
+  launch=lesson.get_by_role('button',name='Try in Syntax Builder')
+  expect(launch).to_be_visible()
+  standalone=page.evaluate("localStorage.getItem('syntutor:builder:v1:guest')")
+  launch.click()
   expect(tools.get_by_text('Build “The robins sing”',exact=True)).to_be_visible()
   words=nodes()
   assert [n['text'] for n in words]==['The','robins','sing']

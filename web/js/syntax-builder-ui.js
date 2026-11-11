@@ -209,7 +209,7 @@ export function clearBuilder() {
 // View lifecycle
 // ---------------------------------------------------------------------------
 
-// Use the existing canvas and editor controls in the lesson while keeping the
+// Use the existing canvas in the lesson while keeping the
 // normal workspace and its draft available for the next standalone visit.
 export function mountEmbeddedBuilder(stage, exercise) {
   ensureWired();
@@ -219,16 +219,26 @@ export function mountEmbeddedBuilder(stage, exercise) {
   stage.append(canvas);
   canvas.hidden = false;
   resize();
-  tools.open({ embedded: { ...exercise, stage } });
+  tools.open({ embedded: exercise });
   draw();
-  return () => {
-    tools.close();
-    closeMenu();
-    closeEditor();
-    resetTransientState();
-    home.append(canvas);
-    canvas.hidden = true;
-    embedded = null;
+  return {
+    check: () => exercise.check(state.model),
+    edit(action) {
+      const feedback = action(state.model);
+      changed();
+      fitEmbeddedView();
+      draw();
+      return feedback;
+    },
+    destroy() {
+      tools.close();
+      closeMenu();
+      closeEditor();
+      resetTransientState();
+      home.append(canvas);
+      canvas.hidden = true;
+      embedded = null;
+    },
   };
 }
 

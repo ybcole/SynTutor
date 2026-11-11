@@ -78,15 +78,15 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     body.append(list);
   }
   if (page === 1) {
-    paragraph('To find a constituent, start with the sentence and ask what a group of words does there. Then use the brackets or tree to show the grouping your evidence supports.');
+    paragraph('Read “We met near the quiet garden”. Does “the quiet garden” work as a single unit in that sentence? Start by trying to replace it.');
     section('Test a group with replacement',
-      'In “We visited the quiet garden”, try replacing “the quiet garden” with “it”. The result, “We visited it”, still has the same basic pattern. One word has taken over the job of naming what we visited. That gives us evidence that the three words act as one unit.',
-      'Now try replacing only “the quiet”. The result, “We visited it garden”, breaks that pattern. If a replacement fails, try a suitable substitute or check the group another way before deciding.');
+      'Say “We met near it”. Here, one word takes the place of “the quiet garden”, and the rest of the sentence stays in place. That is evidence that the three words form a constituent.',
+      'Try the same thing with just “the quiet”. You get “We met near it garden”. The word “garden” is left behind, so this replacement gives us no evidence that “the quiet” forms a unit here.');
     section('Check what answers a question',
-      'Ask “What did we visit?” The natural answer “the quiet garden” gives the whole group. An answer such as “the quiet” leaves the name of the place unfinished. Both tests point to the same three words in this example.');
+      'Ask “What did we meet near?” The answer is “the quiet garden”. Now ask “Where did we meet?” The answer is “near the quiet garden”. The two answers show how the smaller group fits inside the larger one.');
     section('Read the brackets and the branches',
-      'In [near [the quiet garden]], the inner brackets enclose the garden group. The outer brackets enclose that group together with “near”. The tree draws those two groups as separate nodes. A node is a point in the tree from which you can trace branches down to the words it contains.',
-      'Use the two choices below to highlight the inner and outer groups. Follow the branches from the highlighted node. Notice that the outer group reaches one more word, “near”.');
+      'Write the two groups as [near [the quiet garden]]. The inner brackets mark the garden group. The outer brackets mark the whole location phrase, including “near”. The tree shows each group with a node, a point from which you can follow branches down to the words.',
+      'Select each group below and trace its branches. The inner node reaches exactly “the quiet garden”. The outer node reaches those words and “near”.');
     const diagram = el('div', undefined, 'constituent-diagram');
     const sentence = el('p', undefined, 'constituent-selection');
     sentence.setAttribute('aria-live', 'polite');
@@ -101,9 +101,9 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     });
   }
   if (page === 2) {
-    paragraph('A tree shows how an analysis groups words. Two trees can put the words in the same order while making different claims about which words belong together. Compare both drawings of “near the quiet garden” and trace the branches that lead to “the quiet garden”.');
+    paragraph('You found evidence that “the quiet garden” is a group inside “near the quiet garden”. Now compare two ways of drawing those same four words. Where does each drawing put the boundary of the garden group?');
     section('Compare the two drawings',
-      'Switch between the flat and nested drawings below. In each drawing, start at the lowest node that contains all three garden words. Does that node also contain “near”?');
+      'Start with the flat drawing. Trace “the”, “quiet”, and “garden” upward to the first node they share. Does that node also reach “near”? Switch to the nested drawing and try again.');
     const [flat] = drawings(['near', 'the', 'quiet', 'garden']);
     const tree = el('div');
     const caption = el('p', undefined, 'constituent-caption');
@@ -113,12 +113,12 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     body.append(example);
     figureControls('Compare drawings', ['Flat drawing', 'Nested drawing'], tree, index => {
       caption.textContent = index
-        ? 'In the nested drawing, PHRASE-b covers just “the quiet garden”. PHRASE-a contains that whole group together with “near”.'
-        : 'In the flat drawing, all four words connect directly to PHRASE-a. The only node covering the three garden words also covers “near”.';
+        ? 'PHRASE-b reaches exactly “the quiet garden”. One level up, PHRASE-a contains that group and “near”. The nested tree shows both constituents.'
+        : 'The three garden words first meet at PHRASE-a, which also reaches “near”. The flat tree shows the whole phrase as a group and gives the garden words no node of their own.';
       showComparisonTree(tree, index ? null : flat).after(caption);
     }, 1);
     section('Build your first tree',
-      'Build a branch for “the red gate” in the tree below. Drag nodes and connect their branches on the canvas, or use the editing controls below it.');
+      'Try the same idea with “beside the red gate”. Give the gate words a node of their own, then check which words it covers. Use Guide me if you want help with a step.');
     addConstituentTreeBuilder(body, { el, button, mountBuilder });
   }
   if (page === 3) {

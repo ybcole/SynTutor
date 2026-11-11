@@ -489,7 +489,11 @@ function articleScreen(lesson, p, article) {
   article.teach(body, page, {
     el, button, lesson,
     openBuilderPractice: options.onBuilderPractice,
-    mountBuilder: (stage, exercise) => { embeddedBuilderCleanup = options.mountBuilder?.(stage, exercise); },
+    mountBuilder: (stage, exercise) => {
+      const editor = options.mountBuilder(stage, exercise);
+      embeddedBuilderCleanup = editor.destroy;
+      return editor;
+    },
     showDiagram: (figure, tree, options) => {
       clearLessonDiagram(figure);
       return mountLessonCanvas(figure, renderLessonTree(tree, options));

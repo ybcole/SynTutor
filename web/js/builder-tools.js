@@ -46,7 +46,7 @@ export function createBuilderTools(config){
  function select(name,options,value){const n=el('select');n.setAttribute('aria-label',name);for(const [v,label] of options){const o=el('option',label);o.value=v;n.append(o);}n.value=value??'';return n;}
  function input(name,value=''){const n=el('input');n.setAttribute('aria-label',name);n.value=value;return n;}
  function render(){
-  if(!active)return;const open=host?.querySelector('details[data-edit]')?.open,io=host?.querySelector('[data-builder-json]')?.value||'';
+  if(!active||inline)return;const open=host?.querySelector('details[data-edit]')?.open,io=host?.querySelector('[data-builder-json]')?.value||'';
   const practiceOpen=host.querySelector('details[data-practice]')?.open??Boolean(lessonPractice);
   const conventionsOpen=host.querySelector('details[data-conventions]')?.open??false;
   host.replaceChildren();const heading=el('h2','Build a B-R tree');host.append(heading,button(collapsed?'Show editing controls':'Hide editing controls',()=>{collapsed=!collapsed;render();config.fit();}));
@@ -59,11 +59,10 @@ export function createBuilderTools(config){
    host.append(el('h3',`Build “${lessonPractice.lesson.worked_example.sentence}”`),steps);
   }
   const profile=config.state.canonicalProfile||builderProfile();
-  if(!inline)host.append(el('p','Edit with the canvas or these keyboard and touch controls. Checking a tree does not establish sentence grammaticality.'));
+  host.append(el('p','Edit with the canvas or these keyboard and touch controls. Checking a tree does not establish sentence grammaticality.'));
   const actions=el('div');actions.className='builder-tool-actions';
   const undo=button('Undo',()=>apply(session.undo())),redo=button('Redo',()=>apply(session.redo()));undo.disabled=!session.canUndo;redo.disabled=!session.canRedo;
-  actions.append(undo,redo,button('Save draft',()=>{session.save();updateStatus();}),button('Check construction',()=>{if(inline){message=inline.check(config.state.model);updateStatus();}else config.evaluate();}));host.append(actions);
-  if(inline)appendStatus();
+  actions.append(undo,redo,button('Save draft',()=>{session.save();updateStatus();}),button('Check construction',()=>config.evaluate()));host.append(actions);
   const editor=el('details');editor.dataset.edit='';editor.open=open??true;editor.append(el('summary','Nodes and connections'));
   const nodes=Object.values(config.state.model.nodes),palette=config.palette();
   if(!nodes.some(n=>n.id===selected))selected=nodes[0]?.id||'';
@@ -84,14 +83,13 @@ export function createBuilderTools(config){
    editor.append(button('Connect to parent',()=>mutate(()=>{if(!parents.value)disconnect(config.state.model,node.id);else if(!connect(config.state.model,parents.value,node.id))throw Error('That connection would create a cycle or attach under a terminal/triangle.');})),button('Delete selected node',()=>mutate(()=>removeNode(config.state.model,node.id))));
    const position=input('Horizontal order',String(node.x));position.type='number';editor.append(field('Horizontal position / sibling order',position),button('Move node',()=>mutate(()=>{if(!Number.isFinite(Number(position.value)))throw Error('Enter a number');node.x=Number(position.value);})));
    if(node.kind===NODE.PHRASE&&!node.canonicalData?.unlabelled)editor.append(button(node.canonicalTriangle?'Expand triangle':'Collapse to triangle',()=>mutate(()=>{if(!node.canonicalTriangle&&node.canonicalFeatures?.length)throw Error('Remove features before collapsing this node.');if(!node.canonicalTriangle&&childrenOf(config.state.model,node.id).some(n=>n.kind!==NODE.WORD))throw Error('Connect only overt words before collapsing.');node.canonicalTriangle=!node.canonicalTriangle;})));
-   if(!inline)editor.append(button('Explain selected node',()=>config.select(node.id,true)));
+   editor.append(button('Explain selected node',()=>config.select(node.id,true)));
   }
   const phrase=select('New B-R category',palette.labels.map(l=>[l,l]),palette.labels.includes('NP')?'NP':palette.labels[0]);editor.append(field('New category',phrase),button('Add category',()=>mutate(()=>{selected=addPhrase(config.state.model,phrase.value,nodes.length*45,60).id;})));
   const words=input('New words');editor.append(field('New words',words),button('Add words',()=>mutate(()=>{const added=addWordsFromText(config.state.model,words.value,nodes.length*80,240);selected=added.at(-1)?.id||selected;})));
   const special=[...(profile.chapter>=9?[['gap','Indexed gap']]:[]),...(profile.chapter>=5?[['E','Elided E']]:[]),...(profile.chapter>=7?[['DET','Empty DET']]:[]),...(profile.chapter>=9?[['C1','Empty C1']]:[])];
   if(special.length){const empty=select('New empty position',special,special[0][0]);editor.append(field('Zero-word position',empty),button('Add empty position',()=>mutate(()=>{selected=addSpecial(config.state.model,empty.value,nodes.length*80,240).id;})));}
   host.append(editor);
-  if(inline)return;
   const exercises=el('details');exercises.append(el('summary','Reviewed construction practice'));
   exercises.dataset.practice='';
   exercises.open=practiceOpen;
@@ -159,22 +157,25 @@ export function createBuilderTools(config){
   previousDraft=practice||inline?snapshot():null;
   if(practice||inline)collapsed=false;
   message='';hintStep=0;
+  if(inline){
+   if(host)host.hidden=true;
+   initSession(recover);
+   config.fit();
+   return;
+  }
   if(!host){
    host=el('section');host.id='builderTools';
    host.setAttribute('aria-label','Accessible Builder controls');
   }
-  const container=inline?inline.stage.parentElement:document.querySelector('.canvas-stage');
-  container.append(host);
-  host.classList.toggle('builder-tools-inline',Boolean(inline));
+  document.querySelector('.canvas-stage').append(host);
   host.hidden=false;host.replaceChildren();initSession(recover);render();config.fit();
-  if(practice||inline)return;
+  if(practice)return;
   fetch('/content/lessons/course.json').then(r=>r.json()).then(data=>{course=data;render();}).catch(()=>{
    message='Reviewed exercises unavailable; free construction remains available.';updateStatus();
   });
  },
  close(){
   record();active=false;if(previousDraft)restore(previousDraft);
-  if(inline&&host)document.querySelector('.canvas-stage').append(host);
   previousDraft=null;lessonPractice=null;inline=null;if(host)host.hidden=true;
  },
  record,render,select(id){selected=id;render();},
