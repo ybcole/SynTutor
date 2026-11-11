@@ -11,7 +11,7 @@
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
 | 5. Nouns and noun phrases | 202 | 198 | 0 | 3 | 1 | Source-extracted |
-| 6. Adjectives and adverbs | 72 | 57 | 13 | 2 | 0 | In progress (pp. 525–582) |
+| 6. Adjectives and adverbs | 72 | 70 | 0 | 2 | 0 | Source-extracted |
 | 7. Prepositions and preposition phrases | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
 | 9. Negation | 66 | 0 | 65 | 1 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **757 extracted**, 981 unprocessed, 24 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **770 extracted**, 968 unprocessed, 24 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -242,3 +242,9 @@ The second batch covers 20 substantive pages and adds 24 records (`WCAT-057`–`
 ## Chapter 6 pp. 563–582
 
 The third batch covers 20 substantive pages and adds 22 classifications (`WCAT-081`–`WCAT-102`) on adverb categories, form, phrase structure and adjunct placement. See the [source report](sources/cambridge/chapter_06/PP563_582_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP563_582_AUDIT.json). Continue at p. 583.
+
+## Chapter 6 source extraction complete
+
+The final batch covers 13 substantive pages (pp. 583–595) and verifies that p. 596 is blank. It adds 18 classifications (`WCAT-103`–`WCAT-120`). See the [source report](sources/cambridge/chapter_06/PP583_596_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP583_596_AUDIT.json).
+
+Chapter 6 has 70 substantive pages, one contents page, one blank boundary and zero unprocessed pages.

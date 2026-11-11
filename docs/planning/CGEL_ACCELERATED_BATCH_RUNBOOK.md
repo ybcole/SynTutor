@@ -242,3 +242,7 @@ Printed pp. 543–562 yielded 24 records (`WCAT-057`–`WCAT-080`), including on
 ## Chapter 6 third checkpoint (2026-11-12)
 
 Printed pp. 563–582 yielded 22 records (`WCAT-081`–`WCAT-102`). Continue at p. 583 with adverbial modification of adjectives and adverbs.
+
+## Chapter 6 source extraction complete (2026-11-12)
+
+Printed pp. 583–595 yielded 18 records (`WCAT-103`–`WCAT-120`). Printed p. 596 is blank. Chapter 6 closes with 70 substantive pages and zero unprocessed pages. Chapter 8 is next in the master plan priority order.

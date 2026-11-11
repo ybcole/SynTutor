@@ -6599,5 +6599,1094 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-103",
+    "domain": "word_categories",
+    "concept": "Semantic range of adverbial modifiers within phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Modifiers of adjectives and adverbs can express many relations also found among clause adjuncts, including manner, time, duration, frequency and evaluation.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Degree modification is common but does not exhaust the possible meanings.",
+        "pages": [
+          583
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her quietly confident reply reassured us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The route was temporarily unsafe.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.2",
+        "pages": [
+          583
+        ],
+        "pdf_pages": [
+          603
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic range of adverbial modifiers within phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-104",
+    "domain": "word_categories",
+    "concept": "Manner and degree readings of the same adverb",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An adverb can express manner in a clause and degree when modifying an adjective or adverb.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The interpretation depends on the head and construction. Easily as a degree modifier is particularly common with superlatives and sufficiency expressions.",
+        "pages": [
+          583,
+          584
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dog behaved dreadfully.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'm dreadfully sorry about the delay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.2",
+        "pages": [
+          583,
+          584
+        ],
+        "pdf_pages": [
+          603,
+          604
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Manner and degree readings of the same adverb",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-105",
+    "domain": "word_categories",
+    "concept": "Degree modifiers restricted by head category",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some modifiers that combine directly with adjectives or adverbs cannot directly modify a verb in the same way.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In the second example very modifies much. The availability of much does not establish direct verbal modification by very.",
+        "pages": [
+          584,
+          585
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hallway was very dark.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I enjoyed the performance very much.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.2",
+        "pages": [
+          584,
+          585
+        ],
+        "pdf_pages": [
+          604,
+          605
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree modifiers restricted by head category",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-106",
+    "domain": "word_categories",
+    "concept": "Degree scale, limits and intensification",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Degree modifiers can indicate excess, approximation to a limit, a small degree or a high degree. Intensifier is reserved here for high-degree expressions.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Too compares the degree with a relevant maximum. A low-degree modifier is not an intensifier in this terminology.",
+        "pages": [
+          585
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The water is too cold to swim in.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The difference was barely noticeable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.2",
+        "pages": [
+          585
+        ],
+        "pdf_pages": [
+          605
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree scale, limits and intensification",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-107",
+    "domain": "word_categories",
+    "concept": "Submodification and repetition in degree expressions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A degree modifier can itself take a modifier. Repetition can also reinforce degree in a restricted set of expressions.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Repetition is lexically restricted and its acceptability can vary by context.",
+        "pages": [
+          585
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The latch was very very stiff.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The forecast was quite remarkably accurate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.2",
+        "pages": [
+          585
+        ],
+        "pdf_pages": [
+          605
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Submodification and repetition in degree expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-108",
+    "domain": "word_categories",
+    "concept": "Position of degree modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Degree modifiers generally precede their head. Indeed and some modifiers of comparatives can occur after it.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Post-head placement is restricted in attributive AdjPs. Formal uses of indeed can differ from the more usual very pattern.",
+        "pages": [
+          586
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The view was very impressive indeed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The second proposal was better still.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.2",
+        "pages": [
+          586
+        ],
+        "pdf_pages": [
+          606
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position of degree modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-109",
+    "domain": "word_categories",
+    "concept": "Focusing modifier attachment and scope",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The phrase modified by a focusing adverb can be larger than the part selected as its focus. A single written position can permit different interpretations.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context or prosody can identify the focus. Placement alone does not always do so.",
+        "pages": [
+          586,
+          587
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You can only park on this level.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo also reviewed the budget.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3",
+        "pages": [
+          586,
+          587
+        ],
+        "pdf_pages": [
+          606,
+          607
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Focusing modifier attachment and scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-110",
+    "domain": "word_categories",
+    "concept": "Range of restrictive focus constructions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Restrictive focusing adverbs can modify several phrase types and some subordinate clauses.",
+    "condition": "Applies to the construction described in §7.3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not every constituent can host a focusing modifier. Fixed idioms and some syntactic categories resist the placement.",
+        "pages": [
+          587
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They rented only one room.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They stopped only because the gate was locked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3.1",
+        "pages": [
+          587
+        ],
+        "pdf_pages": [
+          607
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Range of restrictive focus constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-111",
+    "domain": "word_categories",
+    "concept": "Background and assertion with only",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In a simple only construction, the proposition about the focus is backgrounded, while the exclusion or upper bound forms the main assertion.",
+    "condition": "Applies to the construction described in §7.3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Restriction may exclude alternatives or indicate that an amount did not exceed the stated value.",
+        "pages": [
+          588
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Only Jo signed the form.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We found only three faults.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3.1",
+        "pages": [
+          588
+        ],
+        "pdf_pages": [
+          608
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Background and assertion with only",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-112",
+    "domain": "word_categories",
+    "concept": "Scope of negation in restrictive focus",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Negation can target the exclusion conveyed by only without denying the backgrounded proposition.",
+    "condition": "Applies to the construction described in §7.3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The context can supply additional alternatives. This differs from denying the proposition with no restrictive expression.",
+        "pages": [
+          588,
+          589
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not only Jo but also Mina signed the form.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fault was not only in the motor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3.1",
+        "pages": [
+          588,
+          589
+        ],
+        "pdf_pages": [
+          608,
+          609
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope of negation in restrictive focus",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-113",
+    "domain": "word_categories",
+    "concept": "Scopal focus and informational focus",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The constituent selected by a focusing modifier need not carry the main informational stress of the clause.",
+    "condition": "Applies to the construction described in §7.3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Stress can help identify scope but can also mark an independent discourse contrast.",
+        "pages": [
+          589
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Only Jo chose the ORIGINAL drawing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They only offered us a SANDWICH.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3.1",
+        "pages": [
+          589
+        ],
+        "pdf_pages": [
+          609
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scopal focus and informational focus",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-114",
+    "domain": "word_categories",
+    "concept": "Adjacency and placement of only",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Only can precede its focus, follow it in some patterns, or occur apart from it while modifying a larger constituent.",
+    "condition": "Applies to the construction described in §7.3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The placement may leave ambiguity. Moving only nearer the intended focus can help, but separation is grammatical in many contexts.",
+        "pages": [
+          589,
+          590,
+          591
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "These notes are for members only.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We only found one error.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3.1",
+        "pages": [
+          589,
+          590,
+          591
+        ],
+        "pdf_pages": [
+          609,
+          610,
+          611
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjacency and placement of only",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-115",
+    "domain": "word_categories",
+    "concept": "Restrictive alone and lower-bound readings",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Restrictive alone can follow a nominal focus. It can express exclusion or present the focused contribution as enough to meet a threshold.",
+    "condition": "Applies to the construction described in §7.3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The lower-bound use can also occur away from the subject in some constructions. Distinguish these uses from alone meaning unaccompanied.",
+        "pages": [
+          591,
+          592
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The director alone signed the form.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The freight charge alone exceeds the budget.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3.1",
+        "pages": [
+          591,
+          592
+        ],
+        "pdf_pages": [
+          611,
+          612
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restrictive alone and lower-bound readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-116",
+    "domain": "word_categories",
+    "concept": "Multiple and partial restrictive modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Restrictive modifiers can co-occur with distinct foci or in compatible combinations. Partial modifiers limit the extent to which the focus supplies the explanation or description.",
+    "condition": "Applies to the construction described in §7.3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Chiefly and mainly do not entail that the focused alternative was exclusive.",
+        "pages": [
+          592
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Only Jo found only one fault.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They were chiefly concerned about the cost.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3.1",
+        "pages": [
+          592
+        ],
+        "pdf_pages": [
+          612
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple and partial restrictive modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-117",
+    "domain": "word_categories",
+    "concept": "Additive background and foreground",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "With additive too, the proposition about the focused item is asserted, while a relevant parallel alternative is conventionally implied.",
+    "condition": "Applies to the construction described in §7.3.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The backgrounded additive implication differs from the exclusion asserted by only. Direct negation of the additive modifier is restricted.",
+        "pages": [
+          592,
+          593
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo too signed the form.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina checked the gauge as well.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3.2",
+        "pages": [
+          592,
+          593
+        ],
+        "pdf_pages": [
+          612,
+          613
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Additive background and foreground",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-118",
+    "domain": "word_categories",
+    "concept": "Position of additive also, too and as well",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Also commonly occurs in central position, while too and as well often occur later or adjacent to a focus where licensed.",
+    "condition": "Applies to the construction described in §7.3.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The items differ in distribution and can occur in coordination. End-position also occurs in some styles and varieties.",
+        "pages": [
+          593
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo also checked the gauge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina checked the pressure too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3.2",
+        "pages": [
+          593
+        ],
+        "pdf_pages": [
+          613
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position of additive also, too and as well",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-119",
+    "domain": "word_categories",
+    "concept": "Scalar implications of even",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Even presents the focused alternative as relatively unexpected. Not even can present its absence as relatively unexpected against the relevant scale.",
+    "condition": "Applies to the construction described in §7.3.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The comparison depends on contextual expectations. Even can combine with negation in ways that too and also generally cannot.",
+        "pages": [
+          594
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Even the apprentice spotted the fault.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Not even the supervisor spotted the fault.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3.2",
+        "pages": [
+          594
+        ],
+        "pdf_pages": [
+          614
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scalar implications of even",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-120",
+    "domain": "word_categories",
+    "concept": "Focus and position with even",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Even has several possible positions and can take a focus within a larger phrase it modifies. Prosody and context can disambiguate.",
+    "condition": "Applies to the construction described in §7.3.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Informal post-focus even and occasional multiple occurrences are possible.",
+        "pages": [
+          594,
+          595
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Even Jo would have noticed the leak.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo would have noticed even a small leak.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.3.2",
+        "pages": [
+          594,
+          595
+        ],
+        "pdf_pages": [
+          614,
+          615
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Focus and position with even",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
