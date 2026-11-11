@@ -12425,5 +12425,2712 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-191",
+    "domain": "phrases",
+    "concept": "Generic noun phrase forms",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Bare plural and mass phrases and singular indefinites can express generic readings in unlimited states.",
+    "condition": "Applies to the construction and sense described in §8.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A predicate applying only to a class excludes the singular indefinite generic. Definite class readings are restricted.",
+        "pages": [
+          407
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Bats navigate in darkness.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A bat can navigate in darkness.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.3",
+        "pages": [
+          407
+        ],
+        "pdf_pages": [
+          427
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Generic noun phrase forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-192",
+    "domain": "phrases",
+    "concept": "Definite class readings",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A definite noun phrase can denote an entire class, especially with singular species, inventions, and fields of study or plural nationality nouns.",
+    "condition": "Applies to the construction and sense described in §8.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same form may refer to a particular member or group in another context.",
+        "pages": [
+          407
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The snow leopard is at risk of extinction.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We studied the Phoenicians this term.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.4",
+        "pages": [
+          407
+        ],
+        "pdf_pages": [
+          427
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Definite class readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-193",
+    "domain": "phrases",
+    "concept": "Conventional nonreferential definites",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Certain instrument, dance, media, transport, time, and illness expressions conventionally use the without identifying a particular instance.",
+    "condition": "Applies to the construction and sense described in §8.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The article can be optional in some illnesses, seasons, and study contexts. By-phrases for transport and media often take bare nouns.",
+        "pages": [
+          408
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She plays the cello.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We went by tram and returned on the bus.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.4",
+        "pages": [
+          408
+        ],
+        "pdf_pages": [
+          428
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conventional nonreferential definites",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-194",
+    "domain": "phrases",
+    "concept": "Indefinite article in rates",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A singular indefinite in a rate or price expression can have a distributive per interpretation.",
+    "condition": "Applies to the construction and sense described in §8.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some stacked rates or denominator phrases require per rather than a.",
+        "pages": [
+          408
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The meter records sixty pulses a minute.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They charge ten dollars per person per night.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.4",
+        "pages": [
+          408
+        ],
+        "pdf_pages": [
+          428
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indefinite article in rates",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-195",
+    "domain": "phrases",
+    "concept": "Bare role nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A singular role noun can be bare in a predicative complement, after predicative as, or after of in the complement of certain role nouns.",
+    "condition": "Applies to the construction and sense described in §8.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ordinary referential subject and object positions require a determiner. Non-role complements after become do not inherit bare licensing.",
+        "pages": [
+          409
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara became chair of the panel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As secretary, I will circulate the minutes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.5",
+        "pages": [
+          409
+        ],
+        "pdf_pages": [
+          429
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare role nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-196",
+    "domain": "phrases",
+    "concept": "Conventional bare activity and location frames",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some bare singulars indicate an activity or conventional status rather than identify a location.",
+    "condition": "Applies to the construction and sense described in §8.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The lexical inventory is restricted and may vary by dialect. A determined counterpart can refer to the physical location.",
+        "pages": [
+          409
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The children are at school.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The plumber is working at the school.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.5",
+        "pages": [
+          409
+        ],
+        "pdf_pages": [
+          429
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conventional bare activity and location frames",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-197",
+    "domain": "phrases",
+    "concept": "Bare role nouns in ordinary object position",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "An ordinary direct object headed by a singular count role noun requires a determiner.",
+    "condition": "Applies to the construction and sense described in §8.5 of Chapter 5.",
+    "violation": "A singular count role noun is bare in ordinary direct object function.",
+    "exceptions": [
+      {
+        "description": "A bare role noun is licensed as a predicative complement of appoint or elect. In a title followed by a name the construction is different.",
+        "pages": [
+          409
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They thanked the treasurer after the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The board dismissed the secretary on Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They thanked treasurer after the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The board dismissed secretary on Friday.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.5",
+        "pages": [
+          409
+        ],
+        "pdf_pages": [
+          429
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare role nouns in ordinary object position",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "A singular count role noun is bare in ordinary direct object function.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They thanked treasurer after the meeting. ||| They thanked the treasurer after the meeting.",
+        "The board dismissed secretary on Friday. ||| The board dismissed the secretary on Friday."
+      ],
+      "learner_explanation": "An ordinary direct object headed by a singular count role noun requires a determiner.",
+      "corrected_paragraph_template": "Use an appropriate determiner when the role noun identifies the object of the verb.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They elected Mina treasurer.",
+        "The board thanked Secretary Patel on Friday."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "nominal_dependents"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-198",
+    "domain": "phrases",
+    "concept": "Bare meals, time and repeated nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Fixed frames license bare nouns in meal, time, manner, repetition, and paired expressions.",
+    "condition": "Applies to the construction and sense described in §8.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A singled-out meal can take a determiner. Morning in the ordinary temporal expression takes in the rather than at.",
+        "pages": [
+          410
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We had lunch before sunset.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They worked side by side all afternoon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§8.5",
+        "pages": [
+          410
+        ],
+        "pdf_pages": [
+          430
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare meals, time and repeated nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-199",
+    "domain": "phrases",
+    "concept": "Fused function and independent forms",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "One expression can combine the head function with an adjacent dependent function, usually determiner or internal modifier.",
+    "condition": "Applies to the construction and sense described in §9.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some items have different dependent and independent forms. Independent genitives can also have pure-head uses.",
+        "pages": [
+          410
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We bought some apples and ate some on the train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Their tent leaked, but ours stayed dry.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.1",
+        "pages": [
+          410
+        ],
+        "pdf_pages": [
+          430
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused function and independent forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-200",
+    "domain": "phrases",
+    "concept": "Simple, partitive and special fused heads",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Fused heads can recover nominal content from discourse, quantify over a set or amount, or have a special interpretation.",
+    "condition": "Applies to the construction and sense described in §9.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An implicit partitive may be indistinguishable from a simple fusion in context.",
+        "pages": [
+          411
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The shop had striped scarves, so I bought one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Few would dispute the result.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.1",
+        "pages": [
+          411
+        ],
+        "pdf_pages": [
+          431
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple, partitive and special fused heads",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-201",
+    "domain": "phrases",
+    "concept": "Partitive complements and separate noun heads",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An explicit partitive uses an of-phrase with a normally definite complement. Its referent can be a set, an amount, or a relevantly divisible singular.",
+    "condition": "Applies to the construction and sense described in §9.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Information-rich indefinite complements are sometimes possible. A partitive may have a separate noun head such as majority.",
+        "pages": [
+          411,
+          412
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Some of the afternoon was free.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The majority of the delegates abstained.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.1",
+        "pages": [
+          411,
+          412
+        ],
+        "pdf_pages": [
+          431,
+          432
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Partitive complements and separate noun heads",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-202",
+    "domain": "phrases",
+    "concept": "Structure of a fused-head nominal",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The fused element serves two functions within the nominal, and the containing phrase can retain separate dependents appropriate to the construction.",
+    "condition": "Applies to the construction and sense described in §9.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A modifier-head can coexist with a separate determiner. A fused determiner-head can take a complement or modifier.",
+        "pages": [
+          412
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Few of our neighbors were home.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The first batch spoiled, but the second survived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.1",
+        "pages": [
+          412
+        ],
+        "pdf_pages": [
+          432
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Structure of a fused-head nominal",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-203",
+    "domain": "phrases",
+    "concept": "Determiners excluded from fusion",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The articles and every need a separate head. Head uses of what, we, and you involve pronouns rather than the corresponding determinative fusions.",
+    "condition": "Applies to the construction and sense described in §9.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Demonstrative that, singulative one, and every one fill different gaps. Interrogative which can fuse.",
+        "pages": [
+          412,
+          413
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Our results were better than those from the first trial.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Every one of the bottles was labeled.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.2",
+        "pages": [
+          412,
+          413
+        ],
+        "pdf_pages": [
+          432,
+          433
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determiners excluded from fusion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-204",
+    "domain": "phrases",
+    "concept": "Lexical restrictions on fused partitives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Either, neither, which and both have partitive fused uses. The of-phrase is much harder to omit with certain and various.",
+    "condition": "Applies to the construction and sense described in §9.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Definite all and both fuse freely. Those needs a following modifier in the cited explicit partitive. Genitives do not head that construction.",
+        "pages": [
+          413
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Both of the keys fit.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Those of the guests who stayed helped clean up.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.2",
+        "pages": [
+          413
+        ],
+        "pdf_pages": [
+          433
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical restrictions on fused partitives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-205",
+    "domain": "phrases",
+    "concept": "Fused partitives as clause adjuncts",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Fused-head quantifiers can function as clause adjuncts that quantify the subject.",
+    "condition": "Applies to the construction and sense described in §9.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Implicit partitives can precede the lexical verb. Explicit partitives strongly favor a position after an auxiliary.",
+        "pages": [
+          413
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The twins both stayed late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They had none of them expected a refund.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.2",
+        "pages": [
+          413
+        ],
+        "pdf_pages": [
+          433
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused partitives as clause adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-206",
+    "domain": "phrases",
+    "concept": "Special personal and nonpersonal fusions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Those with a relative clause and some quantifiers can express people. Much, little, and enough can have special nonpersonal interpretations.",
+    "condition": "Applies to the construction and sense described in §9.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Personal those loses the ordinary distance contrast. Nonpersonal all typically has a dependent or occurs in a fixed phrase.",
+        "pages": [
+          414
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those who registered early received a map.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Little has changed since Monday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.2",
+        "pages": [
+          414
+        ],
+        "pdf_pages": [
+          434
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Special personal and nonpersonal fusions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-207",
+    "domain": "phrases",
+    "concept": "Singular demonstratives in head function",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Singular this and that often have special fused uses pointing to a situation, proposition, or amount.",
+    "condition": "Applies to the construction and sense described in §9.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Anaphoric simple fusions are possible, though this one and that one are often preferred. Human reference is restricted.",
+        "pages": [
+          414,
+          415
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The schedule may change, but that doesn't worry me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The first batch took six hours and the second took half that.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.2",
+        "pages": [
+          414,
+          415
+        ],
+        "pdf_pages": [
+          434,
+          435
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular demonstratives in head function",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-208",
+    "domain": "phrases",
+    "concept": "Degree quantification of a predicative property",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In much of a and related constructions the fused degree word heads the phrase and quantifies how far the predicand has the expected property.",
+    "condition": "Applies to the construction and sense described in §9.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Plain much in this use strongly favors nonaffirmative contexts. Peripheral very much with a full nominal is structurally distinct.",
+        "pages": [
+          415
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She isn't much of a negotiator.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The delay was less of a problem than we expected.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.2",
+        "pages": [
+          415
+        ],
+        "pdf_pages": [
+          435
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree quantification of a predicative property",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-209",
+    "domain": "phrases",
+    "concept": "Locative fused genitives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A genitive can designate someone's home or the premises conventionally associated with an occupation or business.",
+    "condition": "Applies to the construction and sense described in §9.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Locative independent pronouns are register-sensitive. Occupational genitives often imply the usual purpose of visiting.",
+        "pages": [
+          415
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We're meeting at Noor's after work.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He stopped at the baker's for rolls.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.2",
+        "pages": [
+          415
+        ],
+        "pdf_pages": [
+          435
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Locative fused genitives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-210",
+    "domain": "phrases",
+    "concept": "Determinatives and ranking adjectives as fused modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Cardinals and some other internal determinatives can fuse with the head. Superlatives, definite comparatives, and ordinals are prominent adjective cases.",
+    "condition": "Applies to the construction and sense described in §9.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Indefinite comparative fusion is degraded in the cited pattern. Ordinals also occur with indefinite determiners. Ranking alone does not license fusion.",
+        "pages": [
+          416
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The front two seats are taken, but the other three are free.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The first attempt failed, so we made a second.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.3",
+        "pages": [
+          416
+        ],
+        "pdf_pages": [
+          436
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determinatives and ranking adjectives as fused modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-211",
+    "domain": "phrases",
+    "concept": "Lexically limited adjective fusion",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Color, provenance, composition, and basic physical-property modifiers can fuse in suitable anaphoric contexts.",
+    "condition": "Applies to the construction and sense described in §9.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Indefinite determiners can lower acceptability. More complex or evaluative adjectives are less freely licensed.",
+        "pages": [
+          417
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I prefer green towels to blue.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina likes small dogs, but I prefer large.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.3",
+        "pages": [
+          417
+        ],
+        "pdf_pages": [
+          437
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexically limited adjective fusion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-212",
+    "domain": "phrases",
+    "concept": "Special adjective fused heads",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some definite adjective phrases denote human groups or abstract properties without losing adjective status.",
+    "condition": "Applies to the construction and sense described in §9.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The accused and the deceased can refer to individuals or groups. Rare fused phrases can contain a post-head dependent, and in the nude is idiomatic.",
+        "pages": [
+          417,
+          418
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The very wealthy can afford that option.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team attempted the seemingly impossible.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.3",
+        "pages": [
+          417,
+          418
+        ],
+        "pdf_pages": [
+          437,
+          438
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Special adjective fused heads",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-213",
+    "domain": "phrases",
+    "concept": "Fused adjectives versus converted nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Converted nouns can inflect for number and take adjective modifiers. Fused adjectives retain their category and can take adverb modifiers where gradable.",
+    "condition": "Applies to the construction and sense described in §9.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Non-gradable fused adjectives do not support the adverb test, so distribution and inflection matter too.",
+        "pages": [
+          418
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The extremely poor were hit hardest.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The panel included three respected intellectuals.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.3",
+        "pages": [
+          418
+        ],
+        "pdf_pages": [
+          438
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused adjectives versus converted nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-214",
+    "domain": "phrases",
+    "concept": "Predeterminer fusion with fractions and multipliers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some fraction and multiplier expressions can stand in a simple fusion with a contextually recoverable comparison base.",
+    "condition": "Applies to the construction and sense described in §9.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Twice is less acceptable in the illustrated fused use. Fractions can also head an explicit partitive independently.",
+        "pages": [
+          418,
+          419
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I earn half the usual rate, but Mina earns double.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Kai used two thirds of the budget.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.4",
+        "pages": [
+          418,
+          419
+        ],
+        "pdf_pages": [
+          438,
+          439
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predeterminer fusion with fractions and multipliers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-215",
+    "domain": "phrases",
+    "concept": "All and both as possible fused predeterminers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Independent all and both can sometimes be understood in relation to an earlier predeterminer construction.",
+    "condition": "Applies to the construction and sense described in §9.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An implicitly partitive determiner-head analysis is also possible. Object all is particularly disfavored in the source contrast.",
+        "pages": [
+          419
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Both these routes were closed, but both have reopened.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "All the routes were closed, but all of them have reopened.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.4",
+        "pages": [
+          419
+        ],
+        "pdf_pages": [
+          439
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "All and both as possible fused predeterminers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-216",
+    "domain": "phrases",
+    "concept": "Why fused heads do not all become pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Cambridge retains the lexical category of fused determinatives, adjectives, and genitive nouns. Dependent and independent determinatives can take the same modifiers.",
+    "condition": "Applies to the construction and sense described in §9.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The proposal is an analysis of the cited constructions. Genuine pronouns have different distribution, and many fused forms resist genitive marking.",
+        "pages": [
+          419,
+          420
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Very little flour was left.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Very little of the flour was left.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.5",
+        "pages": [
+          419,
+          420
+        ],
+        "pdf_pages": [
+          439,
+          440
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Why fused heads do not all become pronouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-217",
+    "domain": "phrases",
+    "concept": "Limits of noun ellipsis as a general analysis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some fused constructions do not admit insertion of a separate noun without changing structure or meaning. They also differ from clause gapping.",
+    "condition": "Applies to the construction and sense described in §9.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Clause gapping has coordination restrictions and can omit a sequence that is not one constituent.",
+        "pages": [
+          420,
+          421
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Several of us volunteered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jules's performance ended immediately after Rina's.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.5",
+        "pages": [
+          420,
+          421
+        ],
+        "pdf_pages": [
+          440,
+          441
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limits of noun ellipsis as a general analysis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-218",
+    "domain": "phrases",
+    "concept": "Function fusion and category overlap",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Fusion preserves the contribution of a modifier or determiner when that expression also heads the phrase. What, which, we, and you have genuine pronoun and determinative uses.",
+    "condition": "Applies to the construction and sense described in §9.5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Interrogative which is analyzed as a fused determinative. Singular demonstratives are borderline but retained in the determinative category.",
+        "pages": [
+          421,
+          422
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I prefer linen shirts to cotton.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which of these will you take?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.5",
+        "pages": [
+          421,
+          422
+        ],
+        "pdf_pages": [
+          441,
+          442
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Function fusion and category overlap",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-219",
+    "domain": "phrases",
+    "concept": "Compound determinatives and restrictor order",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Compounds such as something and nobody form determiner-head fusions. A post-head restrictor precedes ordinary post-head modifiers.",
+    "condition": "Applies to the construction and sense described in §9.6 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Else can precede a restrictor, but with a than complement the corresponding construction uses other after the restrictor. Converted common nouns have different syntax.",
+        "pages": [
+          423
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We need something waterproof for the trip.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I found nothing suitable in the cupboard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.6",
+        "pages": [
+          423
+        ],
+        "pdf_pages": [
+          443
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compound determinatives and restrictor order",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-220",
+    "domain": "phrases",
+    "concept": "Post-head restrictor order in compound determinatives",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "In compound-determinative phrases, a restrictor such as useful precedes an ordinary post-head modifier such as a locative preposition phrase.",
+    "condition": "Applies to the construction and sense described in §9.6 of Chapter 5.",
+    "violation": "The restrictor follows an ordinary postmodifier within the compound-determinative phrase.",
+    "exceptions": [
+      {
+        "description": "Else can precede the restrictor. Converted common nouns and independent predicatives are separate structures.",
+        "pages": [
+          423
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Something waterproof for the hike was already packed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Something spicy for dinner was on the menu.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Something for the hike waterproof was already packed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Something for dinner spicy was on the menu.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.6",
+        "pages": [
+          423
+        ],
+        "pdf_pages": [
+          443
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Post-head restrictor order in compound determinatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "The restrictor follows an ordinary postmodifier within the compound-determinative phrase.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Something for the hike waterproof was already packed. ||| Something waterproof for the hike was already packed.",
+        "Something for dinner spicy was on the menu. ||| Something spicy for dinner was on the menu."
+      ],
+      "learner_explanation": "In compound-determinative phrases, a restrictor such as useful precedes an ordinary post-head modifier such as a locative preposition phrase.",
+      "corrected_paragraph_template": "Move the restrictor before the ordinary postmodifier when both belong inside the same noun phrase.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We packed something else waterproof for the hike.",
+        "I considered everything near the gate unusual."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "nominal_dependents"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-221",
+    "domain": "phrases",
+    "concept": "Degree and premodification in compounds",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Something of can express degree. Compound determinatives can take the same pre-head modifiers as their determinative bases.",
+    "condition": "Applies to the construction and sense described in §9.6 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Degree something of is not limited to predicative complements. Their modifier patterns help motivate Cambridge's determinative analysis.",
+        "pages": [
+          424
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Something of a dispute arose.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Hardly anyone noticed the change.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.6",
+        "pages": [
+          424
+        ],
+        "pdf_pages": [
+          444
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree and premodification in compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-222",
+    "domain": "phrases",
+    "concept": "Ellipsis of noun phrase postmodifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Recoverable internal post-head dependents can be omitted. An implicit partitive can omit its of-phrase even when no overt of-phrase appears in the antecedent.",
+    "condition": "Applies to the construction and sense described in §9.7 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction applies to fused heads and ordinary quantificational nouns. It can coexist with clause-level ellipsis.",
+        "pages": [
+          424,
+          425
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wrote an article about tides, and she wrote a book.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Many attendees voted, and the majority approved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§9.7",
+        "pages": [
+          424,
+          425
+        ],
+        "pdf_pages": [
+          444,
+          445
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ellipsis of noun phrase postmodifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-223",
+    "domain": "phrases",
+    "concept": "Pronouns as a closed noun subclass",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Core pronouns are often deictic or anaphoric and can form noun phrases without determiners. Cambridge recognizes personal, reciprocal, interrogative, relative, and temporal subclasses.",
+    "condition": "Applies to the construction and sense described in §10 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some words traditionally called pronouns are treated as fused determinatives. Certain pronouns allow limited modifiers.",
+        "pages": [
+          425
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I called you yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nadia said she would call later.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10",
+        "pages": [
+          425
+        ],
+        "pdf_pages": [
+          445
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronouns as a closed noun subclass",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-224",
+    "domain": "phrases",
+    "concept": "Core personal pronoun forms",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Core forms distinguish person and number, and in third-person singular also gender. The paradigm includes reflexive and nonreflexive forms with different case distinctions.",
+    "condition": "Applies to the construction and sense described in §10.1.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "You and it lack a nominative–accusative form contrast. Reflexives are plain forms and do not take genitive marking.",
+        "pages": [
+          426
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We called them after lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They congratulated themselves after the race.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10.1.1",
+        "pages": [
+          426
+        ],
+        "pdf_pages": [
+          446
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Core personal pronoun forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-225",
+    "domain": "phrases",
+    "concept": "Singular they and reflexive variation",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "They can have a singular antecedent without specifying sex. Themself is a reflexive variant for some speakers.",
+    "condition": "Applies to the construction and sense described in §10.1.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Reflexive preference varies. A singular antecedent alone is not an agreement error.",
+        "pages": [
+          426
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Someone left their notebook here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If anyone needs help, they can ask at the desk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10.1.1",
+        "pages": [
+          426
+        ],
+        "pdf_pages": [
+          446
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular they and reflexive variation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-226",
+    "domain": "phrases",
+    "concept": "Generic personal pronoun one",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Personal one has genitive one's and reflexive oneself, can occur in a tag, and generally refers to people in general.",
+    "condition": "Applies to the construction and sense described in §10.1.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "It does not ordinarily take another noun phrase as its antecedent. Referential and mixed-pronoun variants are register- or speaker-sensitive.",
+        "pages": [
+          426,
+          427
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One should introduce oneself before asking questions.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One can't be too cautious, can one?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10.1.1",
+        "pages": [
+          426,
+          427
+        ],
+        "pdf_pages": [
+          446,
+          447
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Generic personal pronoun one",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-227",
+    "domain": "phrases",
+    "concept": "Dummy there as a peripheral pronoun",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Existential there has no locative meaning. It occurs as a subject, including in tags, and as a raised object in the cited catenative construction.",
+    "condition": "Applies to the construction and sense described in §10.1.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Locative there is a separate use, and dummy there has only a plain form.",
+        "pages": [
+          427
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There are two options, aren't there?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We expect there to be a delay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10.1.1",
+        "pages": [
+          427
+        ],
+        "pdf_pages": [
+          447
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dummy there as a peripheral pronoun",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-228",
+    "domain": "phrases",
+    "concept": "Universal personal pronouns and clause adjuncts",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Cambridge treats accusative combinations such as us both as compound pronouns. A quantifier after a subject can instead be a separate clause adjunct.",
+    "condition": "Applies to the construction and sense described in §10.1.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The separate adjunct can follow an auxiliary, allow intervening material, and quantify a common-noun subject.",
+        "pages": [
+          427,
+          428
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They invited us both.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The neighbors had both already left.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10.1.1",
+        "pages": [
+          427,
+          428
+        ],
+        "pdf_pages": [
+          447,
+          448
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Universal personal pronouns and clause adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-229",
+    "domain": "phrases",
+    "concept": "Reciprocal pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Each other and one another are reciprocal grammatical words and allow genitive marking. They are linked to a structurally close antecedent.",
+    "condition": "Applies to the construction and sense described in §10.1.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "They do not mark person. The source makes no general two-versus-more semantic distinction between the forms.",
+        "pages": [
+          428
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The teammates lent each other tools.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We checked one another's work.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10.1.2",
+        "pages": [
+          428
+        ],
+        "pdf_pages": [
+          448
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reciprocal pronouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-230",
+    "domain": "phrases",
+    "concept": "Interrogative and relative pronoun forms",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Personal who contrasts with nonpersonal interrogative or fused relative what and other relative which. Personal forms distinguish who, whom, and whose.",
+    "condition": "Applies to the construction and sense described in §10.1.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Interrogative which is a determinative. Fused relative who is largely free-choice, while whoever has a broader fused-relative use.",
+        "pages": [
+          428,
+          429
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who opened the gate?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Take whatever you need.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10.1.3",
+        "pages": [
+          428,
+          429
+        ],
+        "pdf_pages": [
+          448,
+          449
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative and relative pronoun forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-231",
+    "domain": "phrases",
+    "concept": "Deictic temporal pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Yesterday, today, tonight, and tomorrow are deictic nouns that do not take determiners in their pronoun use and have genitives.",
+    "condition": "Applies to the construction and sense described in §10.1.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Temporal now and then have a different category in this analysis.",
+        "pages": [
+          429
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tomorrow will be warmer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Today's meeting has moved upstairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10.1.4",
+        "pages": [
+          429
+        ],
+        "pdf_pages": [
+          449
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic temporal pronouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-232",
+    "domain": "phrases",
+    "concept": "Pronoun heads versus common-noun uses",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Ordinary pronoun heads exclude determiners. Echo what and anaphoric one and other can take determiners and plural inflection as common nouns.",
+    "condition": "Applies to the construction and sense described in §10.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Forms such as a he involve conversion to a noun. Some pronoun phrases allow restricted external modifiers.",
+        "pages": [
+          429,
+          430
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I kept the two smaller ones.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Only they saw the signal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10.2",
+        "pages": [
+          429,
+          430
+        ],
+        "pdf_pages": [
+          449,
+          450
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronoun heads versus common-noun uses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-233",
+    "domain": "phrases",
+    "concept": "Restricted internal modification of pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A few nonrestrictive adjectives can precede personal pronouns in accusative or plain forms. Interrogatives, fused relatives, and some personal pronouns also permit restricted postmodifiers.",
+    "condition": "Applies to the construction and sense described in §10.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adjective–pronoun combinations cannot be ordinary subjects in the cited construction. Some relative clauses are delayed, and generic he with a relative is archaic or proverbial.",
+        "pages": [
+          430
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lucky you!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We who witnessed the accident gave statements.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10.2",
+        "pages": [
+          430
+        ],
+        "pdf_pages": [
+          450
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restricted internal modification of pronouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-234",
+    "domain": "phrases",
+    "concept": "External pronoun modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Focusing modifiers can combine with pronoun phrases. Predeterminer all is exceptional with first- and second-person plural pronouns when they have a suitable following modifier.",
+    "condition": "Applies to the construction and sense described in §10.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The postmodifier requirement concerns pronoun heads, distinct from personal determinatives before a noun.",
+        "pages": [
+          430
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They invited only you.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "All you in the back can move forward.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§10.2",
+        "pages": [
+          430
+        ],
+        "pdf_pages": [
+          450
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "External pronoun modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
   }
 ]
