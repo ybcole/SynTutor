@@ -19115,5 +19115,1732 @@
     },
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-271",
+    "domain": "clauses",
+    "concept": "Finiteness and plain verb forms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A plain verb form can head a finite imperative or subjunctive as well as a non-finite infinitival. Clause structure is needed to distinguish them.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A clause headed by a present tense, preterite or irrealis were is finite. Gerund-participial and past-participial heads give non-finite clauses.",
+        "pages": [
+          1173
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Be ready at noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We asked them to be ready at noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1",
+        "pages": [
+          1173
+        ],
+        "pdf_pages": [
+          1193
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finiteness and plain verb forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-272",
+    "domain": "clauses",
+    "concept": "Non-finite form types",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Infinitival, gerund-participial and past-participial clauses are distinguished by their head forms. Infinitivals are further divided according to whether they contain to.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Bare infinitivals have restricted distribution, including complements of modal auxiliaries and supportive do.",
+        "pages": [
+          1173,
+          1174
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I remember locking the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They had the lock replaced.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1",
+        "pages": [
+          1173,
+          1174
+        ],
+        "pdf_pages": [
+          1193,
+          1194
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-finite form types",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-273",
+    "domain": "clauses",
+    "concept": "Auxiliary and voice options in non-finites",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Infinitivals permit perfect, progressive and passive auxiliaries. Gerund-participials permit perfect and passive auxiliaries, while progressive being is marginal.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Past-participial clauses headed by perfect been and those headed by a passive participle have different auxiliary possibilities. Modal auxiliaries and supportive do are excluded from non-finite clauses themselves.",
+        "pages": [
+          1174
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They seem to have been waiting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She recalled being warned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1",
+        "pages": [
+          1174
+        ],
+        "pdf_pages": [
+          1194
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary and voice options in non-finites",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-274",
+    "domain": "clauses",
+    "concept": "Subjectless clauses and attributive VPs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A VP can constitute a clause without an overt subject. A restricted attributive VP inside an NP is analyzed separately as a VP without clause status.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Prenominal attributive VPs have much more limited expansion than clause modifiers.",
+        "pages": [
+          1175
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Anyone waiting outside may come in.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The rapidly approaching storm delayed the ferry.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1",
+        "pages": [
+          1175
+        ],
+        "pdf_pages": [
+          1195
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjectless clauses and attributive VPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-275",
+    "domain": "clauses",
+    "concept": "Hollow clauses and other infinitival structures",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A hollow non-finite clause lacks a non-subject element interpreted from elsewhere. Infinitival form also occurs in subordinate interrogatives and relative clauses.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Hollow status depends on the missing non-subject element. The absence of an overt subject alone does not establish it.",
+        "pages": [
+          1175
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The shelf was too high for me to reach.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I asked which shelf to use.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1",
+        "pages": [
+          1175
+        ],
+        "pdf_pages": [
+          1195
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hollow clauses and other infinitival structures",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-276",
+    "domain": "clauses",
+    "concept": "Functions of non-finite clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Non-finite clauses can be complements in several phrase types or function as modifiers and supplements.",
+    "condition": "Applies to the construction described in §1.1–1.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A purpose clause with in order to and a bare purpose adjunct can have similar meanings and different internal structures.",
+        "pages": [
+          1176
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was eager to return.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She left early to catch the train.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.1–1.2",
+        "pages": [
+          1176
+        ],
+        "pdf_pages": [
+          1196
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Functions of non-finite clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-277",
+    "domain": "clauses",
+    "concept": "Catenative complements and recursive chains",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A catenative verb licenses a non-finite internal complement. Repetition of this relation allows chains with several verbs.",
+    "condition": "Applies to the construction described in §1.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A verb at the end of the chain need not itself license a non-finite complement. The chapter treats the catenative complement as a distinct function.",
+        "pages": [
+          1176,
+          1177
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We hoped to try to repair it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She began to explain the delay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.2",
+        "pages": [
+          1176,
+          1177
+        ],
+        "pdf_pages": [
+          1196,
+          1197
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Catenative complements and recursive chains",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-278",
+    "domain": "clauses",
+    "concept": "Auxiliaries and simple versus complex catenatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Auxiliary uses fit the catenative analysis. An active catenative construction is simple or complex according to the absence or presence of an intervening NP.",
+    "condition": "Applies to the construction described in §1.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A passive corresponding to a complex active remains in the complex class even without an NP between the verbs.",
+        "pages": [
+          1177
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I expected to win.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I expected her to win.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.2",
+        "pages": [
+          1177
+        ],
+        "pdf_pages": [
+          1197
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliaries and simple versus complex catenatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-279",
+    "domain": "clauses",
+    "concept": "Subtypes of complex catenatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The complex construction includes for, oblique, genitive and plain subtypes. The intervening NP can belong to the matrix or subordinate clause according to the construction.",
+    "condition": "Applies to the construction described in §1.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An oblique NP is the complement of a selected preposition. Plain or accusative NPs can have different functions in different constructions.",
+        "pages": [
+          1178
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We arranged for them to depart.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I resented their leaving early.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.2",
+        "pages": [
+          1178
+        ],
+        "pdf_pages": [
+          1198
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subtypes of complex catenatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-280",
+    "domain": "clauses",
+    "concept": "For and overt subjects in to-infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In the standard construction, an overt subject internal to a to-infinitival is introduced by for. An infinitival without such a subject does not take this for.",
+    "condition": "Applies to the construction described in §1.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A preceding matrix object does not count as an infinitival subject. Some nonstandard varieties have for to without an intervening subject.",
+        "pages": [
+          1178,
+          1179
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "For Mina to leave now would be awkward.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "To leave now would be awkward.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.3",
+        "pages": [
+          1178,
+          1179
+        ],
+        "pdf_pages": [
+          1198,
+          1199
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "For and overt subjects in to-infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-281",
+    "domain": "clauses",
+    "concept": "Matrix object versus infinitival subject",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The NP in a plain-complex to-infinitival construction is a matrix object, while the NP after infinitival for is the subordinate subject.",
+    "condition": "Applies to the construction described in §1.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Expect excludes for, arrange selects it in the overt-subject pattern, and intend permits both structures.",
+        "pages": [
+          1179,
+          1180,
+          1181
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We expected the ferry to depart at six.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We arranged for the ferry to depart at six.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.3",
+        "pages": [
+          1179,
+          1180,
+          1181
+        ],
+        "pdf_pages": [
+          1199,
+          1200,
+          1201
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Matrix object versus infinitival subject",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-282",
+    "domain": "clauses",
+    "concept": "Passivization as a test for the intervening NP",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A matrix object can be eligible for promotion in a corresponding passive. The whole for-clause can instead behave as a constituent in appropriate extraposition patterns.",
+    "condition": "Applies to the construction described in §1.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Passive promotion is not a necessary property of every object. Want has independent restrictions on passive formation.",
+        "pages": [
+          1179,
+          1180
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ferry was expected to depart at six.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was arranged for the ferry to depart at six.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.3",
+        "pages": [
+          1179,
+          1180
+        ],
+        "pdf_pages": [
+          1199,
+          1200
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Passivization as a test for the intervening NP",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-283",
+    "domain": "clauses",
+    "concept": "Adjunct and omission tests for complex structures",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Matrix adjunct placement, pseudo-clefting and omission provide evidence for distinguishing a matrix object from a subordinate subject.",
+    "condition": "Applies to the construction described in §1.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some plain-complex verbs require the object even with coreference. With persuade the NP also has a semantic role in the matrix clause.",
+        "pages": [
+          1180,
+          1181
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They arranged at once for Jo to speak.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They persuaded Jo to speak.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.3",
+        "pages": [
+          1180,
+          1181
+        ],
+        "pdf_pages": [
+          1200,
+          1201
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjunct and omission tests for complex structures",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-284",
+    "domain": "clauses",
+    "concept": "For as a clause subordinator",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Infinitival for introduces a clause nucleus containing a subject and predicate. Distribution and the possibility of dummy there distinguish it from prepositional for.",
+    "condition": "Applies to the construction described in §1.4.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "For PPs and for-infinitivals share some environments. Some strings admit either attachment, depending on interpretation.",
+        "pages": [
+          1181,
+          1182,
+          1183
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "For there to be a delay would be unusual.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We asked for the inspection to be postponed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.4.1",
+        "pages": [
+          1181,
+          1182,
+          1183
+        ],
+        "pdf_pages": [
+          1201,
+          1202,
+          1203
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "For as a clause subordinator",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-285",
+    "domain": "clauses",
+    "concept": "Accusative pronouns after infinitival for",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A personal pronoun used as the subject of a for-infinitival takes accusative case when the pronoun distinguishes case.",
+    "condition": "Applies to the construction described in §1.4.1 of Chapter 14.",
+    "violation": "A nominative personal pronoun appears as the subject of a for-infinitival.",
+    "exceptions": [
+      {
+        "description": "Scope is limited to simple personal-pronoun subjects in this construction. Dummy there and ordinary noun phrases do not show this case contrast.",
+        "pages": [
+          1182
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We arranged for him to speak first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was unusual for her to arrive late.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We arranged for he to speak first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "It was unusual for she to arrive late.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.4.1",
+        "pages": [
+          1182
+        ],
+        "pdf_pages": [
+          1202
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Accusative pronouns after infinitival for",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "A nominative personal pronoun appears as the subject of a for-infinitival.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We arranged for he to speak first. ||| We arranged for him to speak first.",
+        "It was unusual for she to arrive late. ||| It was unusual for her to arrive late."
+      ],
+      "learner_explanation": "A personal pronoun used as the subject of a for-infinitival takes accusative case when the pronoun distinguishes case.",
+      "corrected_paragraph_template": "Use the accusative form of the pronoun after infinitival for.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We arranged for there to be a break.",
+        "We arranged for both speakers to attend.",
+        "We arranged that he would speak first."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "pronoun-case"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-286",
+    "domain": "clauses",
+    "concept": "Position of for and its infinitival subject",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Infinitival for occupies initial position in its clause, and the subject NP immediately follows it.",
+    "condition": "Applies to the construction described in §1.4.1 of Chapter 14.",
+    "violation": "An object of the infinitival verb occurs between clause-marker for and the subject NP.",
+    "exceptions": [
+      {
+        "description": "Unlike finite that clauses, these clauses do not allow a clause element to front across the subject.",
+        "pages": [
+          1182,
+          1183
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is essential for you to check the pressure first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is essential for them to test the seal next.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "It is essential for the pressure you to check first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "It is essential for the seal them to test next.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.4.1",
+        "pages": [
+          1182,
+          1183
+        ],
+        "pdf_pages": [
+          1202,
+          1203
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position of for and its infinitival subject",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "An object of the infinitival verb occurs between clause-marker for and the subject NP.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "It is essential for the pressure you to check first. ||| It is essential for you to check the pressure first.",
+        "It is essential for the seal them to test next. ||| It is essential for them to test the seal next."
+      ],
+      "learner_explanation": "Infinitival for occupies initial position in its clause, and the subject NP immediately follows it.",
+      "corrected_paragraph_template": "Put the subject immediately after for and keep the object after the infinitival verb.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "It is essential that the pressure you check first.",
+        "It is essential for both of you to check the pressure.",
+        "It is essential for you to first check the pressure."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "word-order"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-287",
+    "domain": "clauses",
+    "concept": "Infinitival to combines with a VP",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Fronting, ellipsis and coordination support treating to as combining with a VP rather than forming a morphological unit with the following verb.",
+    "condition": "Applies to the construction described in §1.4.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Coordination with repeated to does not by itself establish constituency of a verb and to alone.",
+        "pages": [
+          1183,
+          1184
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'd like to open the gate, but I don't need to.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We plan to check the seal and replace the latch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.4.2",
+        "pages": [
+          1183,
+          1184
+        ],
+        "pdf_pages": [
+          1203,
+          1204
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival to combines with a VP",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-288",
+    "domain": "clauses",
+    "concept": "Infinitival to and prepositional to",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Infinitival to and prepositional to have overlapping histories and some overlapping distributions. A to-infinitival and a to PP nevertheless have distinct syntactic behavior.",
+    "condition": "Applies to the construction described in §1.4.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An infinitival generally cannot take the same position after another preposition as an NP or gerund-participial can.",
+        "pages": [
+          1184,
+          1185
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She agreed to leave.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She agreed to the revised schedule.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.4.2",
+        "pages": [
+          1184,
+          1185
+        ],
+        "pdf_pages": [
+          1204,
+          1205
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival to and prepositional to",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-289",
+    "domain": "clauses",
+    "concept": "To as a VP subordinator",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The chapter analyzes to as a VP marker rather than the head verb. Its restriction to subordinate clauses supports this analysis despite some similarities to auxiliaries.",
+    "condition": "Applies to the construction described in §1.4.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "To can be stranded by ellipsis or follow a clause-internal dependent such as not. These properties differ from those of typical clause subordinators.",
+        "pages": [
+          1185,
+          1186,
+          1187
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I asked them always to check the seal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She promised not to disturb the neighbors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.4.2",
+        "pages": [
+          1185,
+          1186,
+          1187
+        ],
+        "pdf_pages": [
+          1205,
+          1206,
+          1207
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "To as a VP subordinator",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-290",
+    "domain": "clauses",
+    "concept": "Bare infinitivals and rare overt subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Bare infinitivals lack the markers to and for and are usually subjectless. Overt subjects occur in certain polar echoes and rather than complements.",
+    "condition": "Applies to the construction described in §1.4.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The echo is informal and favors accusative pronouns. The rather than construction with a subject is rare.",
+        "pages": [
+          1187
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She could check the valve.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Me check the valve? Surely not.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.4.3",
+        "pages": [
+          1187
+        ],
+        "pdf_pages": [
+          1207
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare infinitivals and rare overt subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-291",
+    "domain": "clauses",
+    "concept": "Verb, noun and adjective forms ending in ing",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An ing form can be a gerund-participle of a verb, a gerundial noun or a participial adjective. Dependents and clause function help distinguish them.",
+    "condition": "Applies to the construction described in §1.5 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The traditional gerund and present participle labels do not identify different verbal inflections in this analysis.",
+        "pages": [
+          1187,
+          1188
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We discussed closing the road.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gradual closing of the road surprised us.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.5",
+        "pages": [
+          1187,
+          1188
+        ],
+        "pdf_pages": [
+          1207,
+          1208
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verb, noun and adjective forms ending in ing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-292",
+    "domain": "clauses",
+    "concept": "Complement functions, extraposition and hybrids",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Gerund-participials occur as complements, modifiers and supplements. They can resemble NPs in distribution while differing in extraposition and internal syntax.",
+    "condition": "Applies to the construction described in §1.5 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Extraposition judgments vary. Existential there permits some hybrid no constructions, while other mixed nominal and verbal dependents are marginal.",
+        "pages": [
+          1188,
+          1189
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Closing the gate was sensible.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was sensible closing the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.5",
+        "pages": [
+          1188,
+          1189
+        ],
+        "pdf_pages": [
+          1208,
+          1209
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement functions, extraposition and hybrids",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-293",
+    "domain": "clauses",
+    "concept": "Genitive subjects versus nominal determiners",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A genitive before a verbal ing form can be the clause subject. Verbal dependents and the possibility of omission support this analysis.",
+    "condition": "Applies to the construction described in §1.5 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Subject omission can change who is understood to perform the action. In an NP, a genitive can instead function as determiner.",
+        "pages": [
+          1189,
+          1190
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I regretted her leaving the firm.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I regretted leaving the firm.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.5",
+        "pages": [
+          1189,
+          1190
+        ],
+        "pdf_pages": [
+          1209,
+          1210
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive subjects versus nominal determiners",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-294",
+    "domain": "clauses",
+    "concept": "Initial subjects and comparison with for",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A gerund-participial subject comes first, whether genitive or non-genitive. Infinitival for is a separate marker, whereas the gerund-participial genitive is a case form.",
+    "condition": "Applies to the construction described in §1.5 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The genitive is not available for all NPs, and non-genitive subjects are allowed in many gerund-participial complements.",
+        "pages": [
+          1190,
+          1191
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I remember their leaving at dawn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I remember them leaving at dawn.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.5",
+        "pages": [
+          1190,
+          1191
+        ],
+        "pdf_pages": [
+          1210,
+          1211
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Initial subjects and comparison with for",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-295",
+    "domain": "clauses",
+    "concept": "Subjects in supplementary gerund-participials",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A supplementary gerund-participial can have a nominative pronoun or plain-case NP subject. The nominative construction is relatively formal.",
+    "condition": "Applies to the construction described in §1.6 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Accusative pronouns in this environment are marginal for some speakers. This pattern differs from ordinary complement gerund-participials.",
+        "pages": [
+          1191,
+          1192
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She being unavailable, we postponed the interview.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The foreman being unavailable, we postponed the inspection.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.6",
+        "pages": [
+          1191,
+          1192
+        ],
+        "pdf_pages": [
+          1211,
+          1212
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjects in supplementary gerund-participials",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-296",
+    "domain": "clauses",
+    "concept": "Case alternation in gerund-participial complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Both genitive and non-genitive subjects occur in gerund-participial complements. Formality, NP complexity and the governing construction influence the choice.",
+    "condition": "Applies to the construction described in §1.6 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A matrix object does not take genitive case merely because a gerund-participial follows it. A nominal determiner is a separate construction.",
+        "pages": [
+          1192,
+          1193
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I remember his reading the minutes aloud.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I remember him reading the minutes aloud.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.6",
+        "pages": [
+          1192,
+          1193
+        ],
+        "pdf_pages": [
+          1212,
+          1213
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case alternation in gerund-participial complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-297",
+    "domain": "clauses",
+    "concept": "Controlled, raised and contextually inferred subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An understood non-finite subject can be controlled by an antecedent, interpreted through raising, or recovered from discourse without a syntactically specified antecedent.",
+    "condition": "Applies to the construction described in §1.7 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A raised NP has its semantic role in the lower clause, as in Mina seemed to finish the audit.",
+        "pages": [
+          1193
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina tried to finish the audit.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is more comfortable to travel by train.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§1.7",
+        "pages": [
+          1193
+        ],
+        "pdf_pages": [
+          1213
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Controlled, raised and contextually inferred subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
