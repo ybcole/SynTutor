@@ -266,3 +266,7 @@ Printed pp. 684–702 yielded 32 classification records (`CLS-479`–`CLS-510`).
 ## Chapter 8 third checkpoint
 
 Printed pp. 703–724 yielded 34 classification records (`CLS-511`–`CLS-544`). Continue at p. 725 with degree under negation and then cause and result.
+
+## Chapter 8 fourth checkpoint
+
+Printed pp. 725–738 yielded 24 classification records (`CLS-545`–`CLS-568`). Continue at p. 739 with open conditional constructions.

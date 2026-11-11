@@ -36053,5 +36053,1460 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-545",
+    "domain": "clauses",
+    "concept": "Negating maximal and lower degrees",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negating maximal degree can leave a high but incomplete degree. Negating a high-degree expression can suggest a low degree.",
+    "condition": "Applies to the construction described in §11 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Under negation, quite generally has the maximal reading in this construction.",
+        "pages": [
+          725
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I do not quite agree.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They do not meet much.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§11",
+        "pages": [
+          725
+        ],
+        "pdf_pages": [
+          745
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negating maximal and lower degrees",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-546",
+    "domain": "clauses",
+    "concept": "Negating minimal and approximating degree",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Under negation, a bit can pattern with minimal at all. Negating an approximator can emphasize the distance from a threshold.",
+    "condition": "Applies to the construction described in §11 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A little and slightly are less readily used under ordinary negation.",
+        "pages": [
+          725
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I did not enjoy the show a bit.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We did not nearly finish the inventory.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§11",
+        "pages": [
+          725
+        ],
+        "pdf_pages": [
+          745
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negating minimal and approximating degree",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-547",
+    "domain": "clauses",
+    "concept": "Cause and result as clause relations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A causal adjunct presents the cause as subordinate to its consequence. A result adjunct presents the consequence as subordinate to its cause.",
+    "condition": "Applies to the construction described in §12 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Related propositions can also appear in separate clauses linked by context or a connective.",
+        "pages": [
+          725,
+          726
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ferry was late because the fog had thickened.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fog had thickened, so the ferry was late.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12",
+        "pages": [
+          725,
+          726
+        ],
+        "pdf_pages": [
+          745,
+          746
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cause and result as clause relations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-548",
+    "domain": "clauses",
+    "concept": "Purpose versus reason",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A purpose adjunct gives an intended outcome. A reason adjunct gives an explanation that ordinarily commits the speaker to the proposition it expresses.",
+    "condition": "Applies to the construction described in §12.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A reason clause expressing a desire can also imply a purpose, and a purpose may never be achieved.",
+        "pages": [
+          726,
+          727
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She left early to catch the ferry.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She left early because the roads were icy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.1",
+        "pages": [
+          726,
+          727
+        ],
+        "pdf_pages": [
+          746,
+          747
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Purpose versus reason",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-549",
+    "domain": "clauses",
+    "concept": "Temporal relations of purposes and reasons",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An intended outcome typically follows the action that serves it, whereas a reason can precede, accompany, or in suitable contexts follow the situation explained.",
+    "condition": "Applies to the construction described in §12.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Future reasons can concern a known or anticipated situation.",
+        "pages": [
+          726,
+          727
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He packed a snack to eat on the train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He is nervous because the interview is tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.1",
+        "pages": [
+          726,
+          727
+        ],
+        "pdf_pages": [
+          746,
+          747
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal relations of purposes and reasons",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-550",
+    "domain": "clauses",
+    "concept": "Finite and phrasal purpose adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Purpose can be expressed by finite clauses introduced by expressions such as so that or in order that, and by certain for phrases.",
+    "condition": "Applies to the construction described in §12.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A finite purpose clause commonly contains a modal, but a modal is unnecessary in some contexts.",
+        "pages": [
+          727,
+          728
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I lowered the blind so that we could see the screen.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We played for fun.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.2",
+        "pages": [
+          727,
+          728
+        ],
+        "pdf_pages": [
+          747,
+          748
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite and phrasal purpose adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-551",
+    "domain": "clauses",
+    "concept": "Subject expression in marked purpose infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An overt subject in a purpose infinitival can be introduced by for, including after in order. Subjectless infinitivals also occur after in order or so as.",
+    "condition": "Applies to the construction described in §12.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "So as does not license the corresponding overt for-subject construction.",
+        "pages": [
+          728
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We opened both doors in order for the crew to enter safely.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She lowered her voice so as to avoid waking the baby.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.2",
+        "pages": [
+          728
+        ],
+        "pdf_pages": [
+          748
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject expression in marked purpose infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-552",
+    "domain": "clauses",
+    "concept": "Understood subject of purpose infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The matrix subject typically supplies the understood subject of a purpose infinitival. With a bare purpose infinitival, another participant or an implicit agent can supply it.",
+    "condition": "Applies to the construction described in §12.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The interpretation can depend on the construction and context.",
+        "pages": [
+          728,
+          729
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rae went upstairs to check the fuse.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The manager hired Nia to oversee payroll.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.2",
+        "pages": [
+          728,
+          729
+        ],
+        "pdf_pages": [
+          748,
+          749
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Understood subject of purpose infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-553",
+    "domain": "clauses",
+    "concept": "Non-subject gaps in purpose infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An ungoverned purpose infinitival can contain a gap linked to a matrix NP, including in object position or as the complement of a preposition.",
+    "condition": "Applies to the construction described in §12.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The infinitival can have its own overt subject even when a non-subject element is missing.",
+        "pages": [
+          729
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I bought them for the children to play with.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She brought a brush to paint the trim with.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.2",
+        "pages": [
+          729
+        ],
+        "pdf_pages": [
+          749
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-subject gaps in purpose infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-554",
+    "domain": "clauses",
+    "concept": "Purpose adjuncts versus noun modifiers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An infinitival can modify a noun within an NP or function as a clause-level purpose adjunct. Its position and the resulting interpretation can distinguish the structures.",
+    "condition": "Applies to the construction described in §12.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some sentence-final infinitivals support both analyses.",
+        "pages": [
+          729,
+          730
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A spare blanket to use on the journey was donated yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We opened the blinds to let in more light.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.2",
+        "pages": [
+          729,
+          730
+        ],
+        "pdf_pages": [
+          749,
+          750
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Purpose adjuncts versus noun modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-555",
+    "domain": "clauses",
+    "concept": "Implicit purpose and necessity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A conditional or temporal construction can suggest an intended outcome. A purpose adjunct can also identify the goal relative to which a requirement applies.",
+    "condition": "Applies to the construction described in §12.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The purpose suggested by a temporal clause may depend on contextual knowledge beyond the literal time relation.",
+        "pages": [
+          730
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Leave before the rain starts.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We will have to widen the entrance to admit the forklift.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.2",
+        "pages": [
+          730
+        ],
+        "pdf_pages": [
+          750
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit purpose and necessity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-556",
+    "domain": "clauses",
+    "concept": "Purpose scope and focus",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A purpose adjunct can explain a negative situation or fall under negation and be contrasted with another purpose.",
+    "condition": "Applies to the construction described in §12.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Placement and prosody can influence which scope reading is available.",
+        "pages": [
+          731
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "To save electricity, we do not run the fans at night.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We did not call to complain. We called to ask for directions.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.2",
+        "pages": [
+          731
+        ],
+        "pdf_pages": [
+          751
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Purpose scope and focus",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-557",
+    "domain": "clauses",
+    "concept": "Reason adjunct realization",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Reason can be expressed by prepositions with clausal or nominal complements, and can be inferred from some nonfinite adjuncts.",
+    "condition": "Applies to the construction described in §12.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Individual markers differ in position, complement choice and information structure.",
+        "pages": [
+          731,
+          732
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We stayed indoors because the smoke was thick.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The event was cancelled owing to heavy rain.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.3",
+        "pages": [
+          731,
+          732
+        ],
+        "pdf_pages": [
+          751,
+          752
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reason adjunct realization",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-558",
+    "domain": "clauses",
+    "concept": "Distribution of reason for",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Reason for with a clausal complement has distributional properties associated with coordination, including resistance to fronting.",
+    "condition": "Applies to the construction described in §12.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Because introduces a wider range of constructions, including ordinary fronted reason adjuncts.",
+        "pages": [
+          731
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I stayed inside, for the pavement was icy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We turned back, for it was nearly dark.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.3",
+        "pages": [
+          731
+        ],
+        "pdf_pages": [
+          751
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distribution of reason for",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-559",
+    "domain": "clauses",
+    "concept": "Scope and focus with reason markers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Because can introduce a focused reason and can fall under negation. Some other reason markers resist those environments.",
+    "condition": "Applies to the construction described in §12.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Since and as generally do not substitute for because in this cleft.",
+        "pages": [
+          732
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was because the lock had jammed that we called maintenance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We did not cancel just because it rained.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.3",
+        "pages": [
+          732
+        ],
+        "pdf_pages": [
+          752
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope and focus with reason markers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-560",
+    "domain": "clauses",
+    "concept": "Purpose and result with so",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "So and so that can introduce either an intended outcome or an actual consequence. In the result construction, the consequence is presented as obtaining.",
+    "condition": "Applies to the construction described in §12.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Prosody and context can resolve ambiguity when the wording supports either reading.",
+        "pages": [
+          732,
+          733,
+          734
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We added a lamp so that visitors could read the map.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lamp failed, so the map was hard to read.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.4",
+        "pages": [
+          732,
+          733,
+          734
+        ],
+        "pdf_pages": [
+          752,
+          753,
+          754
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Purpose and result with so",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-561",
+    "domain": "clauses",
+    "concept": "Syntactic behavior of result adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Result adjuncts occur at the end and resist focus and ordinary narrow-scope negation. Result so does not alternate with in order.",
+    "condition": "Applies to the construction described in §12.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A modal can occur in a result clause, but a result clause does not require modal qualification.",
+        "pages": [
+          733,
+          734
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The wind dropped, so that we could finally hear the speaker.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The latch broke, with the result that the door would not close.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.4",
+        "pages": [
+          733,
+          734
+        ],
+        "pdf_pages": [
+          753,
+          754
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Syntactic behavior of result adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-562",
+    "domain": "clauses",
+    "concept": "Degree so and implicit result",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Degree so can license a following that clause. An until adjunct can imply a result when it supplies the endpoint of an activity.",
+    "condition": "Applies to the construction described in §12.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With until, the causal interpretation depends on the relation between the activity and the endpoint.",
+        "pages": [
+          734
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The room was so dark that I missed the step.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She stirred until the sauce thickened.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§12.4",
+        "pages": [
+          734
+        ],
+        "pdf_pages": [
+          754
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree so and implicit result",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-563",
+    "domain": "clauses",
+    "concept": "Concession and contrary expectations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A concessive adjunct presents its proposition as true and signals that it could ordinarily support an expectation contrary to the matrix situation.",
+    "condition": "Applies to the construction described in §13.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The strength of the expectation varies with the context and can be weak.",
+        "pages": [
+          734,
+          735
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Although the trail was steep, the children kept walking.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cafe stayed open although the street was flooded.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§13.1",
+        "pages": [
+          734,
+          735
+        ],
+        "pdf_pages": [
+          754,
+          755
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concession and contrary expectations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-564",
+    "domain": "clauses",
+    "concept": "Concessive clause and noun-phrase forms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Concession can be expressed by although or though with clausal complements and by despite or in spite of with suitable complements.",
+    "condition": "Applies to the construction described in §13.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Although and though can take reduced clauses, while despite and in spite of allow nominal complements.",
+        "pages": [
+          735,
+          736
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Though working late, Mina answered the call.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Despite the delay, we caught the train.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§13.2",
+        "pages": [
+          735,
+          736
+        ],
+        "pdf_pages": [
+          755,
+          756
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concessive clause and noun-phrase forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-565",
+    "domain": "clauses",
+    "concept": "Concessive scope and focus",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A concessive adjunct generally resists direct questioning but can occur inside a contrast under negation.",
+    "condition": "Applies to the construction described in §13.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Availability of contrast depends on the form of the adjunct and construction.",
+        "pages": [
+          736
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We hired her although she was inexperienced.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They hired her not despite her age but because of it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§13.2",
+        "pages": [
+          736
+        ],
+        "pdf_pages": [
+          756
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concessive scope and focus",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-566",
+    "domain": "clauses",
+    "concept": "Contrastive constructions related to concession",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Whereas and contrastive while can juxtapose situations. But can coordinate contrasting clauses with a meaning related to concessive subordination.",
+    "condition": "Applies to the construction described in §13.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A contrast need not imply the kind of expectation associated with a prototypical concession.",
+        "pages": [
+          737
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina works upstairs, whereas Dev works downstairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The room was small, but it was comfortable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§13.3",
+        "pages": [
+          737
+        ],
+        "pdf_pages": [
+          757
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contrastive constructions related to concession",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-567",
+    "domain": "clauses",
+    "concept": "Concessive conditionals and predicative if",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Even if can concede a possibility while presenting the matrix outcome as holding regardless. Some predicative if constructions have a concessive interpretation.",
+    "condition": "Applies to the construction described in §13.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Even though normally presents its subordinate proposition as true. Even if can have a factually conceded interpretation in suitable contexts.",
+        "pages": [
+          737,
+          738
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will play even if it rains.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The plan is ambitious, if costly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§13.3",
+        "pages": [
+          737,
+          738
+        ],
+        "pdf_pages": [
+          757,
+          758
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concessive conditionals and predicative if",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-568",
+    "domain": "clauses",
+    "concept": "Protasis and apodosis",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A conditional construction pairs a protasis giving the condition with an apodosis expressing the associated outcome or proposition.",
+    "condition": "Applies to the construction described in §14 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The apodosis need not be a declarative statement, and the protasis can follow it.",
+        "pages": [
+          738
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the alarm sounds, leave the building.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We will start if the crew arrives.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14",
+        "pages": [
+          738
+        ],
+        "pdf_pages": [
+          758
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Protasis and apodosis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
