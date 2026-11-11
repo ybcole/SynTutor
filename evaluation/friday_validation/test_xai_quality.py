@@ -74,5 +74,60 @@ class TestModalXAI(unittest.TestCase):
         )
 
 
+class TestPronounXAI(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        analysis = helpers.analyze("She can sing.")
+        tree = analysis["br_analysis"]["tree"]
+
+        pronoun = tree["root"]["children"][0]["children"][0]
+        word = pronoun["children"][0]
+
+        cls.pronoun_explanation = explain(
+            tree, pronoun["id"]
+        )
+        cls.word_explanation = explain(
+            tree, word["id"]
+        )
+
+    def test_pronoun_explains_grammatical_function(self):
+        """The pronoun explanation should teach its role."""
+        text = self.pronoun_explanation["text"].lower()
+
+        self.assertIn("pronoun", text)
+        self.assertIn("subject", text)
+
+    def test_word_explanation_is_contextual(self):
+        """The terminal explanation should avoid circularity."""
+        text = self.word_explanation["text"].lower()
+
+        self.assertIn(
+            "subject",
+            text,
+            "The explanation does not identify the "
+            "pronoun's grammatical function.",
+        )
+
+        self.assertNotIn(
+            'part of “she”',
+            text,
+            "The explanation describes She as part "
+            "of itself.",
+        )
+
+
+    def test_word_explanation_avoids_circularity(self):
+        """A word should not be explained as part of itself."""
+        text = self.word_explanation["text"].lower()
+
+        self.assertNotIn(
+            'part of “she”',
+            text,
+            "The explanation incorrectly describes "
+            "'She' as part of itself.",
+        )
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
