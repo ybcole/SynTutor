@@ -77,7 +77,7 @@ class Cambridge211212(unittest.TestCase):
         self.assertIn("1,610 unprocessed", audit)
         coverage = (ROOT / "COVERAGE.md").read_text(encoding="utf-8")
         import re
-        catalog_count = re.search(r"= \\*\\*(\\d+) rules\\*\\*", coverage)
+        catalog_count = re.search(r"= \*\*(\d+) rules\*\*", coverage)
         self.assertIsNotNone(catalog_count)
         self.assertGreaterEqual(int(catalog_count.group(1)), 887)
         self.assertIn("| 3. The verb | 142 | 139 | 0 | 3 | 0 |", coverage)
