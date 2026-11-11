@@ -304,6 +304,44 @@ class CanonicalBridgeTests(unittest.TestCase):
         self.assertEqual(result["candidates"][0]["grounding"]["head_and_selection_licensed"], False)
         self.assertEqual(load_runtime_registry()["active_rules"], [])
 
+    def test_malformed_unhashable_metadata_is_blocked_without_throwing(self):
+        tree = canonical("He must forgets", 1, [
+            ("MOD", [1]), ("V", [2]),
+        ])
+        rel = relation(1, 2)
+        for bad in [
+            dict(rel, dependent_role=[]),
+            dict(rel, governor_role={}),
+            dict(rel, clause_kind=[]),
+            dict(rel, kind={}),
+            dict(rel, governor=True),
+            dict(rel, dependent="2"),
+        ]:
+            with self.subTest(bad=bad):
+                result = probe_ch03_on_canonical(
+                    analysis(tree), bound_facts(tree, bad),
+                    variety="standard_english",
+                )
+                self.assert_not_active(result)
+                self.assertEqual(result["candidates"], [])
+                self.assertTrue(result["blocked"])
+
+    def test_actual_course_tree_opaque_words_cannot_synthesize_heads(self):
+        # The book-backed course tree is a real repository fixture, not a
+        # manufactured error tree. Its opaque triangles do not certify roles.
+        from test_builder_evaluation import tree as course_tree
+        t = course_tree("br-02")
+        self.assertTrue(validate_canonical_tree(t)["valid"])
+        self.assertEqual(t["sentence"], "The robins sing")
+        attempted = relation(1, 2, candidate_plain_form="sing")
+        result = probe_ch03_on_canonical(
+            analysis(t), bound_facts(t, attempted),
+            variety="standard_english",
+        )
+        self.assert_not_active(result)
+        self.assertEqual(result["candidates"], [])
+        self.assertTrue(result["blocked"])
+
     def test_current_workflows_keep_zero_live_cambridge_rules(self):
         registry = load_runtime_registry()
         self.assertEqual(registry["active_rule_ids"], [])
