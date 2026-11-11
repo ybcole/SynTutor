@@ -194,3 +194,19 @@ Printed pp.618–634 yielded 24 records (`PHR-400`–`PHR-423`). Continue at p.6
 ## Chapter 7 source extraction complete (2026-11-11)
 
 The final accelerated batch covers 27 substantive pages, printed pp.635–661, and verifies that p.662 is blank. It adds 35 records (`PHR-424`–`PHR-458`). Chapter 7 closes with 64 substantive pages, two justified skips and zero unprocessed pages. Chapter 10 is next in the master plan priority order.
+
+## Chapter 10 first checkpoint (2026-11-11)
+
+Printed pp. 851–878 account for 26 substantive pages and two contents pages. The 41 records (`CLS-121`–`CLS-161`) include five inactive constraint specifications. Continue at p. 879 with the final discussion of direction questions and the start of biased questions.
+
+## Chapter 10 second checkpoint (2026-11-11)
+
+Printed pp. 879–902 yielded 39 records (`CLS-162`–`CLS-200`), including three inactive constraint specifications. Chapter 10 has 50 substantive pages extracted and 43 pages unprocessed. Continue at p. 903 with interrogative words and phrases.
+
+## Chapter 10 third checkpoint (2026-11-11)
+
+Printed pp. 903–924 yielded 36 records (`CLS-201`–`CLS-236`), including four inactive constraint specifications. Chapter 10 has 72 substantive pages extracted and 21 pages unprocessed. Continue at p. 925 with the detailed imperative analysis.
+
+## Chapter 10 source extraction complete (2026-11-11)
+
+The final batch covers 21 substantive pages, printed pp. 925–945, and verifies blank p. 946. The 34 records (`CLS-237`–`CLS-270`) include two inactive constraint specifications. Chapter 10 closes with 93 substantive pages, three justified skips and zero unprocessed pages. Chapter 14 is next in the master plan priority order.
