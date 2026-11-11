@@ -230,3 +230,7 @@ Printed pp. 1227–1245 yielded 29 records (`CLS-345`–`CLS-373`), including on
 ## Chapter 14 source extraction complete (2026-11-11)
 
 Printed pp. 1246–1271 yielded 36 records (`CLS-374`–`CLS-409`), including two inactive constraint specifications. The final batch verifies that p. 1272 is blank. Chapter 14 closes with 99 substantive pages, three justified skips and zero unprocessed pages. Chapter 18 is next in the master plan priority order.
+
+## Chapter 6 first checkpoint (2026-11-12)
+
+Printed pp. 525–542 yielded 21 records (`WCAT-036`–`WCAT-056`), including one inactive constraint specification. Continue at p. 543 with adjective complementation.

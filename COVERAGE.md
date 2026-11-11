@@ -11,7 +11,7 @@
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
 | 5. Nouns and noun phrases | 202 | 198 | 0 | 3 | 1 | Source-extracted |
-| 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
+| 6. Adjectives and adverbs | 72 | 17 | 53 | 2 | 0 | In progress (pp. 525–542) |
 | 7. Prepositions and preposition phrases | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
 | 9. Negation | 66 | 0 | 65 | 1 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **700 extracted**, 1039 unprocessed, 23 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **717 extracted**, 1021 unprocessed, 24 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -230,3 +230,7 @@ The fourth batch covers 19 substantive pages and adds 29 records (`CLS-345`–`C
 The final batch covers printed pp. 1246–1271 and verifies blank p. 1272. It adds 36 records (`CLS-374`–`CLS-409`) on hollow clauses, non-catenative complements, modifiers and supplements, verbless clauses, and control. See the [source report](sources/cambridge/chapter_14/PP1246_1272_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1246_1272_AUDIT.json).
 
 Chapter 14 has 99 substantive pages, three justified skips and zero unprocessed pages. Its 139 source-linked records remain outside the live detector registry.
+
+## Chapter 6 pp. 525–542
+
+The opening batch accounts for 17 substantive pages and one contents page and adds 21 records (`WCAT-036`–`WCAT-056`). See the [source report](sources/cambridge/chapter_06/PP525_542_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP525_542_AUDIT.json). Continue at p. 543.
