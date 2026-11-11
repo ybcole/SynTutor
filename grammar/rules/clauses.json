@@ -39267,5 +39267,1764 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-598",
+    "domain": "clauses",
+    "concept": "Exhaustive conditional meaning",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An exhaustive conditional presents a conclusion as holding across a set of alternatives that jointly exhaust the relevant possibilities.",
+    "condition": "Applies to the construction described in §14.6 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The alternatives are contextually restricted, and the adjunct does not restrict the truth of the matrix proposition.",
+        "pages": [
+          761
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will leave whether the rain stops or not.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whoever wins, the club will celebrate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.6",
+        "pages": [
+          761
+        ],
+        "pdf_pages": [
+          781
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exhaustive conditional meaning",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-599",
+    "domain": "clauses",
+    "concept": "Governed exhaustive conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A governed exhaustive conditional embeds an interrogative under an expression such as no matter or regardless of.",
+    "condition": "Applies to the construction described in §14.6.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A definite NP can replace an open interrogative when it identifies the same variable, as in regardless of the cost.",
+        "pages": [
+          761,
+          762
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "No matter who calls, take a message.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We will proceed regardless of whether the hall is available.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.6.1",
+        "pages": [
+          761,
+          762
+        ],
+        "pdf_pages": [
+          781,
+          782
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Governed exhaustive conditionals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-600",
+    "domain": "clauses",
+    "concept": "Ungoverned closed exhaustive conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A directly attached closed interrogative normally makes its alternatives explicit, often by adding or not.",
+    "condition": "Applies to the construction described in §14.6.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A governing expression such as regardless of permits a plain whether clause without an overt alternative.",
+        "pages": [
+          762,
+          763
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whether we win or lose, we will finish the season.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I will attend whether the chair approves or not.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.6.2",
+        "pages": [
+          762,
+          763
+        ],
+        "pdf_pages": [
+          782,
+          783
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ungoverned closed exhaustive conditionals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-601",
+    "domain": "clauses",
+    "concept": "Ungoverned open exhaustive conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An open exhaustive adjunct can begin with an interrogative form ending in ever, quantifying over relevant answers.",
+    "condition": "Applies to the construction described in §14.6.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same form can head a fused relative with a different grammatical function. Whyever is generally excluded from this conditional use.",
+        "pages": [
+          763,
+          764
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whatever she chooses, we will help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Wherever he goes, he carries the map.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.6.2",
+        "pages": [
+          763,
+          764
+        ],
+        "pdf_pages": [
+          783,
+          784
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ungoverned open exhaustive conditionals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-602",
+    "domain": "clauses",
+    "concept": "Reduced exhaustive clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some exhaustive adjuncts omit a recoverable form of be, leaving the interrogative predicative phrase and a subject.",
+    "condition": "Applies to the construction described in §14.6.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Reduction depends on a construction in which the omitted predication is readily recoverable.",
+        "pages": [
+          764
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "However difficult the climb, we will keep going.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whatever the cost, we will repair the roof.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.6.3",
+        "pages": [
+          764
+        ],
+        "pdf_pages": [
+          784
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reduced exhaustive clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-603",
+    "domain": "clauses",
+    "concept": "Mood and remoteness in exhaustive conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Exhaustive conditionals can contain modal may or remote forms, and formal examples can use a subjunctive.",
+    "condition": "Applies to the construction described in §14.6.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Modal marking can qualify the alternatives without removing the exhaustive interpretation.",
+        "pages": [
+          765
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whatever the neighbours may say, we will proceed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whatever we had chosen, someone would have complained.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.6.3",
+        "pages": [
+          765
+        ],
+        "pdf_pages": [
+          785
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mood and remoteness in exhaustive conditionals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-604",
+    "domain": "clauses",
+    "concept": "Domain adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A domain adjunct specifies the sphere, criterion, or domain within which the rest of the clause is interpreted.",
+    "condition": "Applies to the construction described in §15 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A place phrase can identify a domain, such as a jurisdiction, or describe where an event happened.",
+        "pages": [
+          765,
+          766
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Financially, the plan is sound.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "From a legal standpoint, the agreement is valid.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§15",
+        "pages": [
+          765,
+          766
+        ],
+        "pdf_pages": [
+          785,
+          786
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Domain adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-605",
+    "domain": "clauses",
+    "concept": "Domain realization and focus",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Domain adjuncts can be adverb phrases or preposition phrases. Some can be focused in appropriate contexts.",
+    "condition": "Applies to the construction described in §15 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Focus availability varies with the adjunct and with its relation to the rest of the clause.",
+        "pages": [
+          766
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Is the proposal workable financially?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The change makes sense in practical terms.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§15",
+        "pages": [
+          766
+        ],
+        "pdf_pages": [
+          786
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Domain realization and focus",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-606",
+    "domain": "clauses",
+    "concept": "Modal adjuncts and modal predication",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal adjuncts qualify a proposition, while modal predication incorporates modality into the predicate. Their meanings and distributions only partly overlap.",
+    "condition": "Applies to the construction described in §16 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Obligation expressed by a modal auxiliary need not have a corresponding modal adjunct.",
+        "pages": [
+          767,
+          768
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She will probably be home.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could I possibly borrow your charger?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§16",
+        "pages": [
+          767,
+          768
+        ],
+        "pdf_pages": [
+          787,
+          788
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal adjuncts and modal predication",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-607",
+    "domain": "clauses",
+    "concept": "Modal strength and source",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal adjuncts range from certainty to possibility. Some additionally indicate inference, appearance, or an attributed claim.",
+    "condition": "Applies to the construction described in §16 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An adverb such as clearly can also describe manner when it modifies how an action is carried out.",
+        "pages": [
+          768,
+          769
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The file is probably in the archive.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The payment was allegedly approved yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§16",
+        "pages": [
+          768,
+          769
+        ],
+        "pdf_pages": [
+          788,
+          789
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal strength and source",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-608",
+    "domain": "clauses",
+    "concept": "Modal adjunct scope and questioning",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Modal adjuncts often take scope over negation and are generally resistant to direct questioning as the focus.",
+    "condition": "Applies to the construction described in §16 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some items, including necessarily, can fall under negation.",
+        "pages": [
+          770
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She obviously did not hear the bell.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cheapest option is not necessarily the safest.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§16",
+        "pages": [
+          770
+        ],
+        "pdf_pages": [
+          790
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal adjunct scope and questioning",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-609",
+    "domain": "clauses",
+    "concept": "Multiple modal expressions and parentheticals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clause can contain more than one modal expression, and a parenthetical clause can supply modal qualification.",
+    "condition": "Applies to the construction described in §16 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Two modal expressions can differ in scope or reinforce closely related meanings.",
+        "pages": [
+          771
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is certainly possible that she called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He was delayed, I am sure.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§16",
+        "pages": [
+          771
+        ],
+        "pdf_pages": [
+          791
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple modal expressions and parentheticals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-610",
+    "domain": "clauses",
+    "concept": "Evaluative adjuncts and the asserted proposition",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An evaluative adjunct comments on the situation expressed by the clause, while the remaining clause supplies the asserted information.",
+    "condition": "Applies to the construction described in §17 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A related predicative construction can foreground the evaluation instead of the event.",
+        "pages": [
+          771,
+          772
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Fortunately, everyone escaped.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Surprisingly, the parcel arrived early.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§17",
+        "pages": [
+          771,
+          772
+        ],
+        "pdf_pages": [
+          791,
+          792
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Evaluative adjuncts and the asserted proposition",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-611",
+    "domain": "clauses",
+    "concept": "Evaluation, negation and questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clause-level evaluation can apply to a negative proposition and normally resists direct interrogation.",
+    "condition": "Applies to the construction described in §17 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A question can target the evaluation in a separate predicative construction.",
+        "pages": [
+          772
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Surprisingly, nobody objected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Unfortunately, the train did not stop.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§17",
+        "pages": [
+          772
+        ],
+        "pdf_pages": [
+          792
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Evaluation, negation and questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-612",
+    "domain": "clauses",
+    "concept": "Evaluation in reported speech",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An evaluative adjunct in reported speech can be understood as the reporter's evaluation or as the reported speaker's evaluation.",
+    "condition": "Applies to the construction described in §17 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context and placement can guide attribution.",
+        "pages": [
+          773
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina said the staff had unfortunately missed the deadline.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo told me that, luckily, the door was unlocked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§17",
+        "pages": [
+          773
+        ],
+        "pdf_pages": [
+          793
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Evaluation in reported speech",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-613",
+    "domain": "clauses",
+    "concept": "Speech act-related manner",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A speech act-related manner adjunct describes the act of saying, asking, or otherwise making an utterance.",
+    "condition": "Applies to the construction described in §18 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In a question, a manner adjunct can concern the answer requested of the addressee.",
+        "pages": [
+          773,
+          774
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Frankly, I doubt the figures.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Confidentially, what did the panel decide?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§18",
+        "pages": [
+          773,
+          774
+        ],
+        "pdf_pages": [
+          793,
+          794
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Speech act-related manner",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-614",
+    "domain": "clauses",
+    "concept": "Purpose and other relations to the speech act",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A purpose, reason, concession, or condition can relate to making the utterance instead of to the situation it describes.",
+    "condition": "Applies to the construction described in §18 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The reason in a question can explain why the speaker asks it.",
+        "pages": [
+          774
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "To be brief, we declined.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Are you ready, because the taxi is outside?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§18",
+        "pages": [
+          774
+        ],
+        "pdf_pages": [
+          794
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Purpose and other relations to the speech act",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-615",
+    "domain": "clauses",
+    "concept": "Evidence and felicity of assertions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A reason adjunct can give the speaker's grounds for making an assertion or explain why it is appropriate to make it.",
+    "condition": "Applies to the construction described in §18 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The evidence need not be the cause of the situation asserted.",
+        "pages": [
+          774,
+          775
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The kitchen must be open, because I can smell bread.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The courier must be close, because the tracking map just updated.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§18",
+        "pages": [
+          774,
+          775
+        ],
+        "pdf_pages": [
+          794,
+          795
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Evidence and felicity of assertions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-616",
+    "domain": "clauses",
+    "concept": "Metalinguistic adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A metalinguistic adjunct can qualify wording, precision, or the sense in which an expression is used.",
+    "condition": "Applies to the construction described in §18 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The qualification can apply to a particular term rather than to the entire proposition.",
+        "pages": [
+          775
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Strictly speaking, the device is leased.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Metaphorically speaking, the project is a bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§18",
+        "pages": [
+          775
+        ],
+        "pdf_pages": [
+          795
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Metalinguistic adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-617",
+    "domain": "clauses",
+    "concept": "Connective adjunct function",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Connective adjuncts link a clause to surrounding discourse and can indicate relations such as addition or contrast.",
+    "condition": "Applies to the construction described in §19 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Connective adjuncts can co-occur with coordinators and can occupy several positions.",
+        "pages": [
+          775,
+          776
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cabin is small. Moreover, it has no heating.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The latch is old, but it nevertheless works.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§19",
+        "pages": [
+          775,
+          776
+        ],
+        "pdf_pages": [
+          795,
+          796
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Connective adjunct function",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-618",
+    "domain": "clauses",
+    "concept": "Pure and impure connectives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Pure connectives signal a discourse relation without serving an independent semantic role in the clause. Impure connectives can combine discourse linkage with another adjunct role.",
+    "condition": "Applies to the construction described in §19 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A referential reason phrase can enter focus constructions that resist pure therefore.",
+        "pages": [
+          776,
+          777,
+          778
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The engine had failed. Therefore, we stopped.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The engine had failed. For that reason, we stopped.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§19",
+        "pages": [
+          776,
+          777,
+          778
+        ],
+        "pdf_pages": [
+          796,
+          797,
+          798
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pure and impure connectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-619",
+    "domain": "clauses",
+    "concept": "Listing, addition and reformulation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Connectives can organize a list, add a parallel point, exemplify a generalization, or restate an earlier point.",
+    "condition": "Applies to the construction described in §19 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Additive forms such as either and too differ in polarity and distribution.",
+        "pages": [
+          778,
+          779
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "First, check the seal. Second, tighten the cap.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The route is exposed. In other words, there is little shelter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§19",
+        "pages": [
+          778,
+          779
+        ],
+        "pdf_pages": [
+          798,
+          799
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Listing, addition and reformulation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-620",
+    "domain": "clauses",
+    "concept": "Impure connective readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Connective function can coexist with concession or another relation supplied by the adjunct.",
+    "condition": "Applies to the construction described in §19 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some expressions have connective and nonconnective uses in different contexts.",
+        "pages": [
+          779
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team had little time. Nevertheless, it finished.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We checked the lock. Even so, we felt uneasy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§19",
+        "pages": [
+          779
+        ],
+        "pdf_pages": [
+          799
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Impure connective readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-621",
+    "domain": "clauses",
+    "concept": "Front, central and end zones",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adjuncts can occupy front, central, or end positions. The positions within the central zone depend on the kind of verb and the construction.",
+    "condition": "Applies to the construction described in §20 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "More than one adjunct can occupy a zone, and different adjunct types have different preferences.",
+        "pages": [
+          779,
+          780
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Yesterday, she finally opened the parcel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She opened the parcel yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§20",
+        "pages": [
+          779,
+          780
+        ],
+        "pdf_pages": [
+          799,
+          800
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Front, central and end zones",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-622",
+    "domain": "clauses",
+    "concept": "Central placement in to-infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An adjunct in a to-infinitival can precede the infinitival marker or follow it, subject to the adjunct's distribution.",
+    "condition": "Applies to the construction described in §20 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Placement can affect interpretation, and the options are construction-specific.",
+        "pages": [
+          780
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "For her never to return would be a loss.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She promised to never reveal the code.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§20",
+        "pages": [
+          780
+        ],
+        "pdf_pages": [
+          800
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Central placement in to-infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-623",
+    "domain": "clauses",
+    "concept": "Adjuncts in subjectless and embedded clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An adjunct can attach to a subjectless clause or to one of several clauses in a complex sentence.",
+    "condition": "Applies to the construction described in §20 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Position and mobility help determine which clause the adjunct belongs to.",
+        "pages": [
+          781
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If it rains, bring the chairs inside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina said yesterday that she had seen the comet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§20",
+        "pages": [
+          781
+        ],
+        "pdf_pages": [
+          801
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjuncts in subjectless and embedded clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-624",
+    "domain": "clauses",
+    "concept": "Pre-verbal and post-auxiliary position",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An adjunct often follows a finite auxiliary. Pre-verbal placement can be favored when the auxiliary is stressed or when wider scope is intended.",
+    "condition": "Applies to the construction described in §20 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Preferred position depends on adjunct type, scope and information structure.",
+        "pages": [
+          782
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They have often helped us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Yes, they always DO help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§20",
+        "pages": [
+          782
+        ],
+        "pdf_pages": [
+          802
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pre-verbal and post-auxiliary position",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-625",
+    "domain": "clauses",
+    "concept": "Attachment with nonfinite complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An adjunct between an auxiliary and a following verb may belong to the matrix clause or to the nonfinite complement. Moving it before the auxiliary can help diagnose matrix attachment.",
+    "condition": "Applies to the construction described in §20 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adjuncts closely tied to the lexical predicate can resist moving into the higher clause.",
+        "pages": [
+          782,
+          783
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is still working.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Yes, we often do eat there.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§20",
+        "pages": [
+          782,
+          783
+        ],
+        "pdf_pages": [
+          802,
+          803
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Attachment with nonfinite complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-626",
+    "domain": "clauses",
+    "concept": "Mismatch of adjunct placement and scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An adjunct can sometimes occur in a syntactic position that differs from the clause it modifies semantically.",
+    "condition": "Applies to the construction described in §20 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some mismatches are uncommon, and placement farther to the left is restricted to certain adjuncts.",
+        "pages": [
+          783,
+          784
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He must have undoubtedly misread the instructions.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The ceremony will long be remembered.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§20",
+        "pages": [
+          783,
+          784
+        ],
+        "pdf_pages": [
+          803,
+          804
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mismatch of adjunct placement and scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

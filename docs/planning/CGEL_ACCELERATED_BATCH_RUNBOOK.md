@@ -274,3 +274,7 @@ Printed pp. 725–738 yielded 24 classification records (`CLS-545`–`CLS-568`).
 ## Chapter 8 fifth checkpoint
 
 Printed pp. 739–760 yielded 29 classification records (`CLS-569`–`CLS-597`). Continue at p. 761 with exhaustive conditionals.
+
+## Chapter 8 source extraction complete
+
+Printed pp. 761–784 yielded 29 classification records (`CLS-598`–`CLS-626`). Chapter 8 closes source extraction with 120 substantive pages, two contents-only skips and zero unprocessed pages. The next chapter in the priority order is Chapter 9.
