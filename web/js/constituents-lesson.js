@@ -63,6 +63,7 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, sho
   }
 
   if (page === 0) {
+    paragraph('A pile of bicycle parts becomes a bicycle when the pieces fit together in the right way. This chapter takes the same approach to sentences, looking at how words form groups and how those groups fit together.');
     paragraph('Syntax studies how words combine to form phrases and sentences. A constituent is a word or group of words that functions as a unit within a larger structure. Hierarchy describes how these units fit inside one another.');
     section('What this chapter covers',
       'Consider “We met near the quiet garden”. The words “the quiet garden” name a place, and “near the quiet garden” tells us where we met. The smaller group sits inside the larger one, and each group has a job in the sentence.');
