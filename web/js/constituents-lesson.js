@@ -119,7 +119,7 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
   if (page === 2) {
     paragraph('You found evidence that “the quiet garden” is a group inside “near the quiet garden”. Now compare two ways of drawing those same four words. Where does each drawing put the boundary of the garden group?');
     section('Compare the two drawings',
-      'Compare the highlighted branches in both drawings. Is there one node that reaches exactly “the quiet garden”? In the nested drawing, select PHRASE-a or PHRASE-b to see which words each node reaches.');
+      'Follow the branches in each drawing. Is there one node that reaches exactly “the quiet garden”? In the nested drawing, select PHRASE-a or PHRASE-b to highlight the words each node reaches.');
     const [flat] = drawings(['near', 'the', 'quiet', 'garden']);
     const tree = el('div');
     const caption = el('p', undefined, 'constituent-caption');

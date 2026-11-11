@@ -124,12 +124,18 @@ try:
   expect(comparison.locator('svg polygon')).to_have_count(0)
   nested_box=comparison.bounding_box()
   nested_viewbox=comparison.locator('svg').get_attribute('viewBox')
+  def check_comparison_branches(color):
+   assert comparison.locator('svg .lesson-branch').evaluate_all("""(branches, color) =>
+     branches.every(branch => {
+       const style = getComputedStyle(branch);
+       return style.stroke === color && style.strokeWidth === '1.5px';
+     })""",color), 'Comparison branches should have a uniform, neutral stroke'
   for drawing_name, branches in [('Flat drawing',4),('Nested drawing',5)]:
    view.get_by_role('button',name=drawing_name).click()
    expect(comparison.locator('svg .lesson-branch')).to_have_count(branches)
    traced_words = ['near','the','quiet','garden'] if drawing_name == 'Flat drawing' else ['the','quiet','garden']
    expect(comparison.locator('svg .lesson-word-traced')).to_have_text(traced_words)
-   expect(comparison.locator('svg .lesson-branch-traced')).to_have_count(len(traced_words))
+   check_comparison_branches('rgb(100, 116, 139)')
    expect(comparison.locator('svg')).to_have_attribute('viewBox',nested_viewbox)
    expect(comparison.get_by_role('button',name='Zoom in B-R tree')).to_be_visible()
    assert comparison.bounding_box()['width']==nested_box['width']
@@ -140,7 +146,7 @@ try:
   outer_box=outer.locator('.lesson-tree-focus-box')
   inner_box=inner.locator('.lesson-tree-focus-box')
   outer.press('Enter')
-  expect(comparison.locator('svg .lesson-branch-traced')).to_have_count(5)
+  check_comparison_branches('rgb(100, 116, 139)')
   expect(comparison.locator('svg .lesson-word-traced')).to_have_text(['near','the','quiet','garden'])
   expect(outer_box).to_have_css('display','inline')
   expect(inner_box).to_have_css('display','none')
@@ -148,9 +154,7 @@ try:
   inner.locator('text').first.click()
   expect(outer_box).to_have_css('display','none')
   expect(inner_box).to_have_css('display','inline')
-  expect(comparison.locator('svg .lesson-branch:not(.lesson-branch-traced)').first).to_have_css('stroke','rgb(148, 163, 184)')
-  expect(comparison.locator('svg .lesson-branch-traced').first).to_have_css('stroke','rgb(162, 149, 255)')
-  expect(comparison.locator('svg .lesson-branch-traced')).to_have_count(3)
+  check_comparison_branches('rgb(148, 163, 184)')
   expect(comparison.locator('svg .lesson-word-traced')).to_have_text(['the','quiet','garden'])
   viewport=comparison.bounding_box()
   drawing=comparison.locator('svg')

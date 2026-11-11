@@ -223,7 +223,6 @@
 .lesson-tree-canvas svg { display:block; max-width:none; overflow:visible; font:15px system-ui,sans-serif; }
 .lesson-tree-canvas svg text { fill:var(--ink); }
 .lesson-tree-canvas svg .lesson-branch,.lesson-tree-canvas svg polygon { stroke:var(--muted); fill:none; stroke-width:1.5; }
-.lesson-tree-canvas svg .lesson-branch-traced { stroke:var(--accent-strong); stroke-width:2.5; }
 .lesson-tree-canvas svg .lesson-word-traced { fill:var(--accent-strong); font-weight:650; }
 .lesson-tree-canvas .canonical-zoom button { padding:4px 8px; }
 .lesson-tree-canvas .lesson-tree-hint { display:none; }
