@@ -4,10 +4,12 @@ import { createLessonStore } from './lesson-progress.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
-import { addConstituentTeaching, constituentHeadings, constituentReferences } from './constituents-lesson.js';
+import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentReferences } from './constituents-lesson.js';
 
 let options = {}, course, store, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
 let reviewStage = null;
+let constituentPage = 0, practiceResponses = null;
+const postTestKeys = ['guided', 'transfer', 'exit'];
 let lessonCanvas = null;
 const el = (tag, text, cls) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (cls) node.className = cls; return node; };
 function button(text, run, cls = '') { const b = el('button',text,cls); b.type = 'button'; b.addEventListener('click',run); return b; }
@@ -161,7 +163,9 @@ export function renderLessonTree(envelope, {
   const text=el('details',undefined,'lesson-tree-text');text.append(el('summary','Read the tree as text'));
   function list(node) {
     const item = el('li');
-    const name = label(node) || '△';
+    const name = blank?.node_id === node.id
+      ? (blank.field === 'feature' ? `${label(node, false)} [?]` : '?')
+      : label(node) || '△';
     const description = node.words ? `${name} — ${node.words.join(' ')}` : name;
     if (interactive && node.id) {
       const button = el('button', description);
@@ -183,13 +187,14 @@ export function renderLessonTree(envelope, {
 }
 function currentLesson() { return course.lessons.find(l => l.lesson_id===active); }
 function progressFor(lesson) { return store.records[lessonKey(lesson)] || emptyProgress(); }
-async function act(event) {
-  if (busy) return;const token=generation;const focused=document.activeElement;const focusName=focused?.name,focusValue=focused?.value;busy=true;render();
-  try { const result=await store.act(currentLesson(),event);if(token!==generation){busy=false;return;}notice=result.earned ? (store.status === 'Synced to your account'
+async function act(event, afterSave) {
+  if (busy) return;const token=generation;const focused=document.activeElement;const focusName=focused?.name,focusValue=focused?.value;let saved;busy=true;render();
+  try { const result=await store.act(currentLesson(),event);if(token!==generation){busy=false;return;}saved=progressFor(currentLesson());notice=result.earned ? (store.status === 'Synced to your account'
       ? 'Lesson complete. 15 lesson XP awarded for this content version.'
       : 'Lesson complete. 15 lesson XP awarded on this device. Verified account XP requires account sync.') : ''; }
   catch(error) { if(token!==generation){busy=false;return;}notice=error.message; }
   busy=false;render();
+  if (saved && afterSave) { afterSave(saved); return; }
   if(event.type==='answer' && focusName)host.querySelector(`input[name="${CSS.escape(focusName)}"][value="${focusValue}"]`)?.focus();
   else { const h=host.querySelector('.lesson-stage-body h2');if(h){h.tabIndex=-1;h.focus();} }
 }
@@ -198,6 +203,11 @@ function selectLesson(id) {
   step = 0;
   notice = '';
   reviewStage = id && progressFor(currentLesson()).completed_at ? 0 : null;
+  practiceResponses = null;
+  if (id === 'br-01') {
+    const progress = progressFor(currentLesson());
+    constituentPage = progress.completed_at ? 0 : progress.stage >= 3 ? 5 : progress.stage;
+  }
 }
 function openLesson(id) {
   selectLesson(id);
@@ -300,17 +310,215 @@ function catalog() {
   layout.append(content, progressSummary());
   host.append(layout);
 }
-function question(lesson,key,p,reviewing) {
+function question(lesson,key,p,locked,onAnswer = answer => act({type:'answer',answer})) {
   const data=lesson[key], section=el('section',undefined,'lesson-question');section.dataset.question=key;
-  const field=el('fieldset');field.disabled=busy || reviewing;field.append(el('legend',data.prompt));
+  const field=el('fieldset');field.disabled=busy || locked;field.append(el('legend',data.prompt));
   for (const option of data.options) {
     const label=el('label',undefined,'lesson-option'),radio=el('input');radio.type='radio';radio.name=`${lesson.lesson_id}-${key}`;radio.value=option.id;radio.checked=p.responses[key]===option.id;
-    radio.addEventListener('change',()=>act({type:'answer',answer:option.id}));label.append(radio,el('span',option.text));field.append(label);
+    radio.addEventListener('change',()=>onAnswer(option.id));label.append(radio,el('span',option.text));field.append(label);
   }
   section.append(field);
-  if (p.responses[key]) { const chosen=data.options.find(o=>o.id===p.responses[key]);section.append(el('p',chosen.feedback,p.responses[key]===data.answer ? 'lesson-feedback correct' : 'lesson-feedback retry')); }
+  if (p.responses[key]) {
+    const chosen = data.options.find(option => option.id === p.responses[key]);
+    const correct = chosen.id === data.answer;
+    const preTest = lesson.lesson_id === 'br-01' && key === 'predict';
+    const feedback = preTest && !correct
+      ? 'Response recorded. On the next page, you’ll see how the same words can form different groupings.'
+      : chosen.feedback;
+    section.append(el('p', feedback, correct ? 'lesson-feedback correct' : preTest ? 'lesson-feedback' : 'lesson-feedback retry'));
+  }
   const hint=el('details');hint.append(el('summary','Need a hint?'),el('p',data.hint));section.append(hint);return section;
 }
+function appendWorkedTree(aside, worked, { focusId, blank = null, constituentPilot = false }) {
+  const evidence=el('details',undefined,'lesson-shared-evidence');
+  evidence.dataset.xai7Lesson = '';
+  const title=el('summary','Explanation');
+  const slot=el('div',undefined,'lesson-unified-evidence');
+  evidence.append(title,slot);
+  let requestVersion=0;
+  let selected = focusId;
+  const selectedWords = el('p', undefined, 'constituent-selection');
+  selectedWords.setAttribute('aria-live', 'polite');
+  function describeSelection(node, id) {
+    if (node.id === id) {
+      const [start, end] = node.token_span || [];
+      if (Number.isInteger(start) && Number.isInteger(end)) {
+        selectedWords.replaceChildren('Selected words: ');
+        worked.tree.tokens.forEach((token, index) => {
+          if (index) selectedWords.append(' ');
+          selectedWords.append(index >= start && index < end ? el('mark', token.text) : token.text);
+        });
+      }
+    } else {
+      for (const child of node.children || []) describeSelection(child, id);
+    }
+  }
+  const inspect=async (nodeId, feature=null) => {
+    selected=nodeId;
+    if (constituentPilot) {
+      describeSelection(worked.tree.root, nodeId);
+      for (const item of canvas.querySelectorAll('svg [data-node-id]')) {
+        const isSelected = item.dataset.nodeId === nodeId;
+        item.toggleAttribute('data-constituent-selected', isSelected);
+        if (!isSelected) item.classList.remove('lesson-tree-focus');
+      }
+    }
+    evidence.open=true;
+    const version=++requestVersion;
+    slot.replaceChildren(el('p','Explaining this word or phrase…'));
+    try {
+      const result=await requestEvidence(worked.tree,nodeId);
+      if (version!==requestVersion||!slot.isConnected) return;
+      renderEvidence(result,slot,{treeRoot:canvas,feature});
+    } catch {
+      if (version===requestVersion&&slot.isConnected) {
+        slot.replaceChildren(el('p','An explanation is not available for this part of the sentence.'));
+      }
+    }
+  };
+  const canvas = el('div', undefined, 'lesson-tree-canvas');
+  const treeView=renderLessonTree(worked.tree,{
+    focusId:selected,
+    blank,
+    interactive:true, onSelectNode:inspect, stackFeatures:true,
+  });
+  canvas.append(treeView);
+  aside.append(canvas);
+  if (!constituentPilot) aside.append(el('p', worked.origin, 'lesson-origin'));
+  if (constituentPilot) {
+    if (selected) describeSelection(worked.tree.root, selected);
+    aside.append(selectedWords);
+  }
+  lessonCanvas = enableCanvasView(canvas, treeView);
+  if (selected && !constituentPilot) aside.append(button('Inspect highlighted tree position',()=>inspect(selected)));
+  evidence.addEventListener('toggle',()=>{if(evidence.open&&!slot.childElementCount&&selected)inspect(selected);});
+  aside.append(evidence);
+}
+
+function showConstituentPage(page) {
+  constituentPage = page;
+  render();
+  host.scrollTop = 0;
+  host.querySelector('.lesson-stage-body h2')?.focus({ preventScroll: true });
+}
+
+function constituentScreen(lesson, p) {
+  const page = constituentPage;
+  const reviewing = Boolean(p.completed_at);
+  const body = el('section', undefined, 'lesson-stage-body');
+  const heading = el('h2', constituentHeadings[page]);
+  heading.tabIndex = -1;
+  body.append(heading);
+  const layout = el('div', undefined, 'constituent-page');
+  layout.append(body);
+  host.append(layout);
+
+  addConstituentTeaching(body, page, {
+    el, button, renderTree: renderLessonTree,
+    workedCanvas: () => {
+      const figure = el('div', undefined, 'constituent-worked-tree');
+      const worked = lesson.worked_example;
+      appendWorkedTree(figure, worked, {
+        focusId: worked.steps.at(-1).focus_node_id, constituentPilot: true,
+      });
+      return figure;
+    },
+  });
+
+  if (page === 0) {
+    body.append(question(lesson, 'predict', p, reviewing || p.visited.includes('predict')));
+  }
+
+  const actions = el('div', undefined, 'lesson-page-actions constituent-actions');
+  if (page > 0) {
+    const previous = button('← Previous', () => showConstituentPage(page - 1));
+    previous.disabled = busy;
+    actions.append(previous);
+  }
+
+  if (page < 5) {
+    const next = button(page === 4 ? 'Start post-test' : 'Next →', () => {
+      // The comparison, ambiguity and recap pages share the existing worked stage.
+      // The three saved answer stages begin together at the post-test.
+      const checkpoint = page === 4 ? 2 : page < 2 ? page : null;
+      const advancesProgress = !reviewing && p.stage === checkpoint;
+      if (advancesProgress) {
+        act({ type: 'advance' }, result => {
+          if (result.stage !== p.stage) showConstituentPage(page + 1);
+        });
+      } else {
+        showConstituentPage(page + 1);
+      }
+    }, 'lesson-primary');
+    next.disabled = busy || (page === 0 && !p.responses.predict && !reviewing);
+    actions.append(next);
+  } else {
+    const practice = practiceResponses !== null;
+    const key = STAGES[p.stage];
+    const keys = reviewing ? postTestKeys : [key];
+    body.append(el('p', practice ? 'Try the chapter questions again. This is a practice attempt.'
+      : reviewing ? 'Review your answers and feedback from the completed chapter.'
+        : 'Use what you learned about groups, brackets, and branches. Check each answer before continuing.'));
+    for (const item of keys) {
+      const response = practice ? { responses: practiceResponses } : p;
+      if (item === 'guided') {
+        const diagram = el('div', undefined, 'constituent-diagram');
+        const target = lesson.guided.build_target;
+        const blank = response.responses.guided === lesson.guided.answer ? null : target;
+        const canvas = el('div', undefined, 'lesson-tree-canvas');
+        const tree = renderLessonTree(lesson.worked_example.tree, { focusId: target.node_id, blank });
+        canvas.append(tree);
+        diagram.append(el('p', lesson.worked_example.sentence, 'lesson-example-sentence'), canvas);
+        lessonCanvas = enableCanvasView(canvas, tree);
+        body.append(diagram);
+      }
+      body.append(question(lesson, item, response, reviewing && !practice, answer => {
+        if (!practice) {
+          act({ type: 'answer', answer });
+          return;
+        }
+        practiceResponses[item] = answer;
+        render();
+        host.querySelector(`[data-question="${item}"] input:checked`)?.focus();
+      }));
+    }
+    if (reviewing) {
+      if (!practice) {
+        actions.append(button('Retake post-test', () => {
+          practiceResponses = {};
+          showConstituentPage(5);
+        }));
+      }
+      actions.append(button(practice ? 'Finish practice' : 'Finish review', () => {
+        if (!practice) { showCatalog(); return; }
+        practiceResponses = null;
+        showConstituentPage(5);
+      }, 'lesson-primary'));
+      if (practice) {
+        actions.lastElementChild.disabled = !postTestKeys.every(item => practiceResponses[item]);
+      }
+    } else {
+      const next = button(busy ? 'Saving…' : key === 'exit' ? 'Complete lesson' : 'Next question →', () => {
+        act({ type: 'advance' }, result => {
+          if (result.completed_at) showConstituentPage(5);
+          else {
+            const prompt = host.querySelector('.lesson-question legend');
+            if (prompt) {
+              prompt.tabIndex = -1;
+              prompt.focus();
+            }
+          }
+        });
+      }, 'lesson-primary');
+      next.disabled = busy || !canAdvance(lesson, p);
+      actions.append(next);
+    }
+    if (key === 'exit' || reviewing) addConstituentReview(body, { el });
+    host.append(lessonReferences(lesson));
+  }
+  host.append(actions);
+}
+
 function lessonScreen() {
   const lesson = currentLesson(), p = progressFor(lesson);
   const stage = reviewStage ?? p.stage, key = STAGES[stage];
@@ -318,86 +526,27 @@ function lessonScreen() {
   const constituentPilot = lesson.lesson_id === 'br-01';
   const chapter = constituentPilot ? 'Chapter 1' : lesson.track === 'foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
   const header=el('header',undefined,'lesson-header');header.append(button('← All lessons', showCatalog),el('p',chapter,'lesson-eyebrow'));
-  const h1=el('h1',lesson.title);h1.tabIndex=-1;header.append(h1,el('p',lesson.outcomes[0].text,'lesson-lead'));host.append(header);
-  const columns=el('div',undefined,constituentPilot ? 'constituent-page' : 'lesson-columns'),body=el('section',undefined,'lesson-stage-body'),aside=el('aside',undefined,'lesson-evidence-card');
-  const partHeading = el('h2', constituentPilot ? constituentHeadings[key] : STAGE_TITLES[stage]);
+  const h1=el('h1',lesson.title);h1.tabIndex=-1;header.append(h1);
+  if (!constituentPilot) header.append(el('p',lesson.outcomes[0].text,'lesson-lead'));
+  host.append(header);
+  if (constituentPilot) { constituentScreen(lesson, p); return; }
+  const columns=el('div',undefined,'lesson-columns'),body=el('section',undefined,'lesson-stage-body'),aside=el('aside',undefined,'lesson-evidence-card');
+  const partHeading = el('h2', STAGE_TITLES[stage]);
   partHeading.tabIndex = -1;
   body.append(partHeading);
   const worked = lesson.worked_example;
-  if (constituentPilot) addConstituentTeaching(body, key, { el, renderTree: renderLessonTree, worked, step });
   if (lesson[key]) body.append(question(lesson,key,p,reviewing));
-  if (key==='understand' && !constituentPilot) {
+  if (key==='understand') {
     for (const block of lesson.teaching) body.append(el('p', block.text));
     for (const insight of lesson.cambridge_insights) { const card=el('section',undefined,'lesson-insight');card.append(el('h3','Cambridge insight'),el('p',insight.text));body.append(card); }
   }
-  const showWorked = !constituentPilot || key === 'worked' || key === 'guided';
-  if (showWorked) {
-    aside.append(el('h2',constituentPilot || !worked.tree ? 'Worked example' : 'Worked B-R example'),el('p',worked.sentence,'lesson-example-sentence'));
-  }
-  if (showWorked && worked.tree) {
-    const evidence=el('details',undefined,'lesson-shared-evidence');
-    evidence.dataset.xai7Lesson = '';
-    const title=el('summary','Explanation');
-    const slot=el('div',undefined,'lesson-unified-evidence');
-    evidence.append(title,slot);
-    let requestVersion=0;
-    let selected=key==='guided' ? lesson.guided.build_target?.node_id : worked.steps[step]?.focus_node_id;
-    const selectedWords = el('p', undefined, 'constituent-selection');
-    selectedWords.setAttribute('aria-live', 'polite');
-    function describeSelection(node, id) {
-      if (node.id === id) {
-        const [start, end] = node.token_span || [];
-        if (Number.isInteger(start) && Number.isInteger(end)) {
-          selectedWords.replaceChildren('Selected words: ');
-          worked.tree.tokens.forEach((token, index) => {
-            if (index) selectedWords.append(' ');
-            selectedWords.append(index >= start && index < end ? el('mark', token.text) : token.text);
-          });
-        }
-      } else {
-        for (const child of node.children || []) describeSelection(child, id);
-      }
-    }
-    const inspect=async (nodeId, feature=null) => {
-      selected=nodeId;
-      if (constituentPilot) {
-        describeSelection(worked.tree.root, nodeId);
-        for (const item of canvas.querySelectorAll('svg [data-node-id]')) {
-          item.toggleAttribute('data-constituent-selected', item.dataset.nodeId === nodeId);
-        }
-      }
-      evidence.open=true;
-      const version=++requestVersion;
-      slot.replaceChildren(el('p','Explaining this word or phrase…'));
-      try {
-        const result=await requestEvidence(worked.tree,nodeId);
-        if (version!==requestVersion||!slot.isConnected) return;
-        renderEvidence(result,slot,{treeRoot:canvas,feature});
-      } catch {
-        if (version===requestVersion&&slot.isConnected) {
-          slot.replaceChildren(el('p','An explanation is not available for this part of the sentence.'));
-        }
-      }
-    };
-    const canvas = el('div', undefined, 'lesson-tree-canvas');
-    const treeView=renderLessonTree(worked.tree,{
-      focusId:selected,
-      blank:key==='guided' && p.responses.guided!==lesson.guided.answer ? lesson.guided.build_target : null,
-      interactive:true, onSelectNode:inspect, stackFeatures:true,
-    });
-    canvas.append(treeView);
-    aside.append(canvas, el('p', worked.origin, 'lesson-origin'));
-    if (constituentPilot) {
-      describeSelection(worked.tree.root, selected);
-      aside.append(selectedWords);
-    }
-    lessonCanvas = enableCanvasView(canvas, treeView);
-    if (selected) aside.append(button('Inspect highlighted tree position',()=>inspect(selected)));
-    evidence.addEventListener('toggle',()=>{if(evidence.open&&!slot.childElementCount&&selected)inspect(selected);});
-    aside.append(evidence);
-  }
-  else if (showWorked) aside.append(el('p',lesson.chapter===11 && lesson.track==='foundations' ? 'This closing chapter is a text-only synthesis. No new tree convention or gradable tree is introduced.' : 'Use the text contrast without renaming B-R tree categories.'), el('p', worked.origin, 'lesson-origin'));
-  if(key==='worked' && !constituentPilot) {
+  aside.append(el('h2', worked.tree ? 'Worked B-R example' : 'Worked example'),el('p',worked.sentence,'lesson-example-sentence'));
+  if (worked.tree) appendWorkedTree(aside, worked, {
+    focusId: key === 'guided' ? lesson.guided.build_target?.node_id : worked.steps[step]?.focus_node_id,
+    blank: key === 'guided' && p.responses.guided !== lesson.guided.answer ? lesson.guided.build_target : null,
+  });
+  else aside.append(el('p',lesson.chapter===11 && lesson.track==='foundations' ? 'This closing chapter is a text-only synthesis. No new tree convention or gradable tree is introduced.' : 'Use the text contrast without renaming B-R tree categories.'), el('p', worked.origin, 'lesson-origin'));
+  if(key==='worked') {
     body.append(el('p',`Step ${step+1} of ${worked.steps.length}`),el('p',worked.steps[step].text));
   }
   if(key==='guided' && lesson.guided.build_target) body.append(el('p','Fill the highlighted missing label or feature in the worked tree. The complete original returns when your answer matches.','lesson-guide-note'));
@@ -422,7 +571,7 @@ function lessonScreen() {
     if (following) actions.append(button(`Next lesson: ${following.title}`, () => openLesson(following.lesson_id), 'lesson-primary'));
   }
   columns.append(body);
-  if (showWorked) columns.append(aside);
+  columns.append(aside);
   host.append(columns);
   if (key === 'exit') host.append(lessonReferences(lesson));
   if (actions.childElementCount) host.append(actions);

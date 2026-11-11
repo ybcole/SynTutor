@@ -66,18 +66,27 @@
 .lesson-columns { display:grid; grid-template-columns:minmax(300px,.85fr) minmax(0,1.15fr); gap:20px; align-items:start; }
 .lesson-page-actions { display:flex; justify-content:flex-end; margin-top:20px; }
 .lesson-page-actions .lesson-primary { margin:0; }
-.constituent-page { display:grid; gap:20px; }
-.constituent-page .lesson-stage-body > p { max-width:75ch; }
-.constituent-page .lesson-stage-body > h3 { margin-top:24px; }
-.constituent-comparison { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:18px 0; }
-.constituent-comparison > section { min-width:0; padding:16px; border:1px solid var(--border); border-radius:12px; background:var(--bg); }
-.constituent-comparison h3 { margin:0; }
-.constituent-choices { display:flex; flex-wrap:wrap; gap:12px 20px; margin:16px 0; border:0; padding:0; }
+.constituent-page .lesson-stage-body { padding:clamp(18px,4vw,42px); }
+.constituent-page .lesson-stage-body > p,.constituent-page h3,.constituent-recap { max-width:72ch; }
+.constituent-page h3 { margin:28px 0 8px; }
+.constituent-page .lesson-question + .constituent-review,.constituent-page .lesson-question + .lesson-question { margin-top:24px; }
+.constituent-actions { gap:12px; flex-wrap:wrap; }
+.constituent-actions > :first-child:not(.lesson-primary) { margin-inline-end:auto; }
+.constituent-controls,.constituent-choices { display:flex; flex-wrap:wrap; gap:10px; margin:12px 0; }
+.constituent-controls button[aria-pressed=true] { border-color:var(--accent); background:var(--accent-soft); color:var(--accent-strong); }
+.constituent-diagram { margin:18px 0; min-width:0; }
+.constituent-diagram .lesson-tree-wrap { max-width:100%; }
+.constituent-diagram .lesson-tree-wrap:has(> svg) { background:var(--bg); padding:12px; border-radius:10px; }
+.constituent-diagram .lesson-tree-wrap > svg { margin-inline:auto; }
+.constituent-caption,.constituent-selection { max-width:72ch; }
+.constituent-choices { border:0; padding:0; }
 .constituent-choices legend { margin-bottom:8px; font-weight:650; }
 .constituent-choices label { display:flex; align-items:center; gap:6px; }
 .constituent-selection mark { background:var(--accent-soft); color:var(--accent-strong); font-weight:650; }
 .lesson-tree-canvas [data-constituent-selected] > text { fill:var(--accent-strong); font-weight:750; }
-@media(max-width:760px) { .constituent-comparison { grid-template-columns:minmax(0,1fr); } }
+.constituent-recap { padding-inline-start:24px; }
+.constituent-recap li { margin-block:12px; }
+.constituent-review details { border-top:1px solid var(--border); max-width:72ch; }
 .lesson-question fieldset { border:0; padding:0; margin:0; }
 .lesson-question legend { font-size:1.15rem; font-weight:600; line-height:1.55; margin-bottom:16px; }
 .lesson-option { display:flex; align-items:flex-start; gap:12px; padding:14px; border:1px solid var(--border); border-radius:9px; margin:10px 0; cursor:pointer; line-height:1.55; }
