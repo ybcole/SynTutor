@@ -17804,5 +17804,2478 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-278",
+    "domain": "phrases",
+    "concept": "Immediate post-head dependents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Integrated appositives, certain bare prepositions, and fixed adjectives require adjacency to the noun in the cited patterns.",
+    "condition": "Applies to the construction and sense described in §15 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A compound-determinative restrictor follows the head or else and precedes ordinary postmodifiers.",
+        "pages": [
+          455
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We watched the opera Tosca by Puccini.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They took a trip abroad to Portugal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§15",
+        "pages": [
+          455
+        ],
+        "pdf_pages": [
+          475
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Immediate post-head dependents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-279",
+    "domain": "phrases",
+    "concept": "External post-head order and postposing",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An emphatic reflexive precedes a final focusing modifier when both modify the same noun phrase.",
+    "condition": "Applies to the construction and sense described in §15 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A clausal internal dependent can be postposed past a short focusing modifier.",
+        "pages": [
+          455
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They invited the director herself too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They raised the possibility too that the meeting might be canceled.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§15",
+        "pages": [
+          455
+        ],
+        "pdf_pages": [
+          475
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "External post-head order and postposing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-280",
+    "domain": "phrases",
+    "concept": "Case and syntactic function",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Inflectional case marks some syntactic functions but is distinct from the functions themselves. Ordinary nouns use plain case in both subject and object function.",
+    "condition": "Applies to the construction and sense described in §16.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An accusative can function as a nonfinite subject and a nominative can occur in certain predicatives.",
+        "pages": [
+          455,
+          456
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The clerk called after lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We called the clerk after lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.1",
+        "pages": [
+          455,
+          456
+        ],
+        "pdf_pages": [
+          475,
+          476
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case and syntactic function",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-281",
+    "domain": "phrases",
+    "concept": "Absence of an inflectional dative",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Present-day English does not distinguish a dative form from accusative forms for direct and indirect objects.",
+    "condition": "Applies to the construction and sense described in §16.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The corresponding recipient PP with to has a different syntactic structure. The source treats to and of as prepositions rather than analytic case markers.",
+        "pages": [
+          457
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We thanked her for the letter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We sent her a letter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.1",
+        "pages": [
+          457
+        ],
+        "pdf_pages": [
+          477
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Absence of an inflectional dative",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-282",
+    "domain": "phrases",
+    "concept": "Primary cases and contextual genitives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Plain case neutralizes the nominative–accusative distinction. Dependent and independent forms such as my and mine are variants of genitive.",
+    "condition": "Applies to the construction and sense described in §16.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Most nouns have only plain and genitive case. You does not distinguish nominative and accusative but does distinguish its genitives.",
+        "pages": [
+          457,
+          458
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Where is your helmet?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That helmet is yours.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.1",
+        "pages": [
+          457,
+          458
+        ],
+        "pdf_pages": [
+          477,
+          478
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary cases and contextual genitives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-283",
+    "domain": "phrases",
+    "concept": "Finite clause subjects and nominative case",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "When a personal pronoun with a case contrast constitutes the whole subject of an ordinary finite clause, it takes nominative case.",
+    "condition": "Applies to the construction and sense described in §16.2.1 of Chapter 5.",
+    "violation": "The pronoun uses a form excluded by this particular syntactic construction.",
+    "exceptions": [
+      {
+        "description": "Coordinates have separate variation. Dialectal determiner us before a noun and accusative nonfinite subjects are distinct.",
+        "pages": [
+          459
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She brought the spare key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did they lock the gate?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Her brought the spare key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Did them lock the gate?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.1",
+        "pages": [
+          459
+        ],
+        "pdf_pages": [
+          479
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite clause subjects and nominative case",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "The pronoun uses a form excluded by this particular syntactic construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Her brought the spare key. ||| She brought the spare key.",
+        "Did them lock the gate? ||| Did they lock the gate?"
+      ],
+      "learner_explanation": "When a personal pronoun with a case contrast constitutes the whole subject of an ordinary finite clause, it takes nominative case.",
+      "corrected_paragraph_template": "Use the nominative form for the whole subject of the finite clause.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "For her to bring the spare key would help.",
+        "We asked them to lock the gate."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "pronoun_case"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-284",
+    "domain": "phrases",
+    "concept": "Case in specifying predicatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Accusative pronouns are normal in many subjective specifying predicatives. Nominative variants are available in some formal clefts and related constructions.",
+    "condition": "Applies to the construction and sense described in §16.2.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is not case agreement with the predicand. Personal pronouns do not realize the ordinary ascriptive objective predicative in this account.",
+        "pages": [
+          459,
+          460
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was me who left the note.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Yes, it is I who requested the file.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.1",
+        "pages": [
+          459,
+          460
+        ],
+        "pdf_pages": [
+          479,
+          480
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case in specifying predicatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-285",
+    "domain": "phrases",
+    "concept": "Case in nonfinite and verbless adjunct subjects",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Gerund-participial adjunct subjects and some verbless subjects allow a formal nominative and a more informal accusative.",
+    "condition": "Applies to the construction and sense described in §16.2.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The alternation is construction-specific, and the with or without complement pattern has separate restrictions.",
+        "pages": [
+          460
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We sat by the door, he reading and I writing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What, him a supervisor?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.1",
+        "pages": [
+          460
+        ],
+        "pdf_pages": [
+          480
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case in nonfinite and verbless adjunct subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-286",
+    "domain": "phrases",
+    "concept": "Pronoun case after comparative than and as",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "When a comparison can be expanded with the pronoun as subject, formal nominative and informal accusative variants can occur.",
+    "condition": "Applies to the construction and sense described in §16.2.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "If expansion puts the pronoun in object function, accusative is required. The compound forms us both and them all also use accusative.",
+        "pages": [
+          460
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is taller than him.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is taller than he.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.1",
+        "pages": [
+          460
+        ],
+        "pdf_pages": [
+          480
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronoun case after comparative than and as",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-287",
+    "domain": "phrases",
+    "concept": "Case in short replies and exclusive but phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Short nonclausal replies usually favor accusative. Exclusive but can allow formal nominative next to the subject in restricted constructions.",
+    "condition": "Applies to the construction and sense described in §16.2.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A full reply with a finite verb uses nominative for its subject. Elsewhere exclusive but generally takes accusative.",
+        "pages": [
+          461
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who called first? Me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nobody but her knew the code.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.1",
+        "pages": [
+          461
+        ],
+        "pdf_pages": [
+          481
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case in short replies and exclusive but phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-288",
+    "domain": "phrases",
+    "concept": "Case in with and without clauses",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A pronoun subject in the illustrated clausal complement of with or without normally takes accusative.",
+    "condition": "Applies to the construction and sense described in §16.2.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These gerund-participial complements exclude the genitive subject alternation available elsewhere.",
+        "pages": [
+          461
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "With him waiting outside, we finished the interview quickly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They left without me noticing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.1",
+        "pages": [
+          461
+        ],
+        "pdf_pages": [
+          481
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case in with and without clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-289",
+    "domain": "phrases",
+    "concept": "Accusative in ordinary noncoordinate object positions",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A personal pronoun with a case contrast takes accusative as a noncoordinate direct or indirect object or as the ordinary complement of a preposition.",
+    "condition": "Applies to the construction and sense described in §16.2.1 of Chapter 5.",
+    "violation": "The pronoun uses a form excluded by this particular syntactic construction.",
+    "exceptions": [
+      {
+        "description": "Comparative than and as have separate case patterns. Coordinate objects can vary by speaker.",
+        "pages": [
+          461
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They thanked him after the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She handed me the spare key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They thanked he after the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She handed I the spare key.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.1",
+        "pages": [
+          461
+        ],
+        "pdf_pages": [
+          481
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Accusative in ordinary noncoordinate object positions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "The pronoun uses a form excluded by this particular syntactic construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They thanked he after the meeting. ||| They thanked him after the meeting.",
+        "She handed I the spare key. ||| She handed me the spare key."
+      ],
+      "learner_explanation": "A personal pronoun with a case contrast takes accusative as a noncoordinate direct or indirect object or as the ordinary complement of a preposition.",
+      "corrected_paragraph_template": "Use the accusative form for the noncoordinate object.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "He thanked them after the meeting.",
+        "It was I who handed her the spare key."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "pronoun_case"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-290",
+    "domain": "phrases",
+    "concept": "Accusative subject of a for-infinitival",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A personal pronoun subject in a for-infinitival clause takes accusative in the ordinary noncoordinate construction.",
+    "condition": "Applies to the construction and sense described in §16.2.1 of Chapter 5.",
+    "violation": "The pronoun uses a form excluded by this particular syntactic construction.",
+    "exceptions": [
+      {
+        "description": "Coordinate subjects and personal determinatives before a noun are separate cases.",
+        "pages": [
+          461
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "For her to leave now would be awkward.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "For them to finish today would be unusual.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "For she to leave now would be awkward.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "For they to finish today would be unusual.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.1",
+        "pages": [
+          461
+        ],
+        "pdf_pages": [
+          481
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Accusative subject of a for-infinitival",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "The pronoun uses a form excluded by this particular syntactic construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "For she to leave now would be awkward. ||| For her to leave now would be awkward.",
+        "For they to finish today would be unusual. ||| For them to finish today would be unusual."
+      ],
+      "learner_explanation": "A personal pronoun subject in a for-infinitival clause takes accusative in the ordinary noncoordinate construction.",
+      "corrected_paragraph_template": "Use the accusative form as the subject of this for-infinitival.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She can leave now.",
+        "It would be unusual if they finished today."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "pronoun_case"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-291",
+    "domain": "phrases",
+    "concept": "Accusatives in detached and existential constructions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Dislocated pronouns, isolated adjective-pronoun phrases, and displaced pronouns in the cited existential pattern take accusative.",
+    "condition": "Applies to the construction and sense described in §16.2.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Determinative we before a noun shows variation in some accusative environments and must be analyzed separately.",
+        "pages": [
+          462
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Me, I prefer the earlier train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Well, there's always him to consider.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.1",
+        "pages": [
+          462
+        ],
+        "pdf_pages": [
+          482
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Accusatives in detached and existential constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-292",
+    "domain": "phrases",
+    "concept": "Coordination and variable case",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Many speakers assign case as if a single pronoun replaced the coordination. Other patterns depend on coordinate position and differ by variety.",
+    "condition": "Applies to the construction and sense described in §16.2.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Accusative finite subject coordinates are stigmatized in the source. Final coordinate I in an otherwise accusative environment is established for a variety of Standard English.",
+        "pages": [
+          462,
+          463
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nora and I called first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They invited Nora and I to lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.2",
+        "pages": [
+          462,
+          463
+        ],
+        "pdf_pages": [
+          482,
+          483
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination and variable case",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-293",
+    "domain": "phrases",
+    "concept": "Final I and other coordinate nominatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Final I is much more widespread than other nominative forms in coordinated objects.",
+    "condition": "Applies to the construction and sense described in §16.2.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source distinguishes established final I from less established patterns with other forms or earlier coordinates. Formal comparisons have additional variation.",
+        "pages": [
+          463
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The decision is between you and I.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The decision is between you and me.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.2",
+        "pages": [
+          463
+        ],
+        "pdf_pages": [
+          483
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Final I and other coordinate nominatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-294",
+    "domain": "phrases",
+    "concept": "Who and whom as verb objects",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Who and whom both occur as interrogative or relative objects of a verb. Whom is often more formal in simple main-clause questions.",
+    "condition": "Applies to the construction and sense described in §16.2.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The register contrast is weaker in some relatives. An isolated follow-up question ordinarily uses who.",
+        "pages": [
+          464,
+          465
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who did you call yesterday?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whom did you call yesterday?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.3",
+        "pages": [
+          464,
+          465
+        ],
+        "pdf_pages": [
+          484,
+          485
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Who and whom as verb objects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-295",
+    "domain": "phrases",
+    "concept": "Who as local subject or subjective predicative",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Who is required when it is the subject of its own interrogative or relative clause or its subjective predicative complement.",
+    "condition": "Applies to the construction and sense described in §16.2.3 of Chapter 5.",
+    "violation": "The pronoun uses a form excluded by this particular syntactic construction.",
+    "exceptions": [
+      {
+        "description": "Embedded subjects inside a relative have separate variation. Direct and prepositional objects have other options.",
+        "pages": [
+          464,
+          465
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who opened the gate?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The guide who led the tour has returned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Whom opened the gate?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The guide whom led the tour has returned.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.3",
+        "pages": [
+          464,
+          465
+        ],
+        "pdf_pages": [
+          484,
+          485
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Who as local subject or subjective predicative",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "The pronoun uses a form excluded by this particular syntactic construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Whom opened the gate? ||| Who opened the gate?",
+        "The guide whom led the tour has returned. ||| The guide who led the tour has returned."
+      ],
+      "learner_explanation": "Who is required when it is the subject of its own interrogative or relative clause or its subjective predicative complement.",
+      "corrected_paragraph_template": "Use who when it is the subject of the interrogative or relative clause itself.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Whom did you call?",
+        "The guide whom we thought would lead the tour has returned."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "pronoun_case"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-296",
+    "domain": "phrases",
+    "concept": "Preposition placement with who and whom",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A fronted preposition normally takes whom in the cited relative and interrogative constructions. With stranding, who and whom can alternate.",
+    "condition": "Applies to the construction and sense described in §16.2.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Informal standalone or in-situ PPs may have who. Partitive relative PPs generally do not allow stranding.",
+        "pages": [
+          465,
+          466
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The colleague to whom we wrote replied.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who did you write to?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.3",
+        "pages": [
+          465,
+          466
+        ],
+        "pdf_pages": [
+          485,
+          486
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposition placement with who and whom",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-297",
+    "domain": "phrases",
+    "concept": "Embedded relative subjects with who and whom",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A pronoun relativized from the subject of an embedded finite content clause may be who or whom, depending on variety.",
+    "condition": "Applies to the construction and sense described in §16.2.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A parenthetical does not create an embedded subject. Main-clause interrogatives do not show the same established whom alternation.",
+        "pages": [
+          466,
+          467
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The runner who we thought would win withdrew.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The runner whom we thought would win withdrew.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.2.3",
+        "pages": [
+          466,
+          467
+        ],
+        "pdf_pages": [
+          486,
+          487
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Embedded relative subjects with who and whom",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-298",
+    "domain": "phrases",
+    "concept": "Genitive subject-determiners",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A full genitive NP can serve as subject-determiner and make the larger NP definite. Its own dependents remain inside the genitive.",
+    "condition": "Applies to the construction and sense described in §16.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Case marking can occur at the right edge of a phrase with postmodification. Subject-determiner structures can recur inside one another.",
+        "pages": [
+          467,
+          468
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This club's records are online.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The woman next door's bicycle was stolen.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.3",
+        "pages": [
+          467,
+          468
+        ],
+        "pdf_pages": [
+          487,
+          488
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive subject-determiners",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-299",
+    "domain": "phrases",
+    "concept": "Genitive subjects of gerund-participials",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A genitive can be the subject of a gerund-participial complement. It does not determine a noun phrase in that construction.",
+    "condition": "Applies to the construction and sense described in §16.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Plain or accusative subjects can alternate. The gerund-participial construction is distinct from a noun-headed genitive phrase.",
+        "pages": [
+          468
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They objected to my leaving early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They objected to me leaving early.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.3",
+        "pages": [
+          468
+        ],
+        "pdf_pages": [
+          488
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive subjects of gerund-participials",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-300",
+    "domain": "phrases",
+    "concept": "Fused genitive subject-determiner-head",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A genitive can combine subject-determiner and head functions within a plain-case matrix NP.",
+    "condition": "Applies to the construction and sense described in §16.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The genitive and matrix NP may be coextensive, but the latter can have a predeterminer or post-head dependent.",
+        "pages": [
+          468
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "My camera failed, but Noor's worked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Only one of my plans survived, but both Noor's did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.3",
+        "pages": [
+          468
+        ],
+        "pdf_pages": [
+          488
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused genitive subject-determiner-head",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-301",
+    "domain": "phrases",
+    "concept": "Oblique genitives and determiner position",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A post-head of-phrase with a genitive leaves the larger determiner position available for a demonstrative or indefinite article.",
+    "condition": "Applies to the construction and sense described in §16.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The definite article with an oblique genitive can be licensed by a further identifying modifier. Some universal quantifiers allow both constructions.",
+        "pages": [
+          468,
+          469
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A colleague of Mira's called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Those gloves of Mira's are on the shelf.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.3",
+        "pages": [
+          468,
+          469
+        ],
+        "pdf_pages": [
+          488,
+          489
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Oblique genitives and determiner position",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-302",
+    "domain": "phrases",
+    "concept": "Predicative genitives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A genitive NP can directly serve as predicative complement and express a relation like belongs to.",
+    "condition": "Applies to the construction and sense described in §16.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context can support a fused-head analysis where a salient nominal is recoverable. Predicative genitives can also relate to an object.",
+        "pages": [
+          469
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The spare key is Lena's.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They regard the equipment as Lena's.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.3",
+        "pages": [
+          469
+        ],
+        "pdf_pages": [
+          489
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative genitives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-303",
+    "domain": "phrases",
+    "concept": "Descriptive attributive genitives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A descriptive genitive modifies the nominal rather than supplying the containing NP's determiner.",
+    "condition": "Applies to the construction and sense described in §16.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These are generally nominals, and productivity is restricted. Some expressions with peripheral all have NP structure.",
+        "pages": [
+          469,
+          470
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She earned a bachelor's degree.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We visited a women's college.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.3",
+        "pages": [
+          469,
+          470
+        ],
+        "pdf_pages": [
+          489,
+          490
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Descriptive attributive genitives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-304",
+    "domain": "phrases",
+    "concept": "Attributive measure genitives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Measure genitives express temporal length or value, with worth as the head in the value pattern. They do not themselves confer definiteness.",
+    "condition": "Applies to the construction and sense described in §16.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A preceding determiner can require omission of initial a within the measure modifier. Compound measure adjectives allow a wider range of dimensions.",
+        "pages": [
+          470
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "An hour's delay disrupted the schedule.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shelf holds two dollars' worth of supplies.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.3",
+        "pages": [
+          470
+        ],
+        "pdf_pages": [
+          490
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Attributive measure genitives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-305",
+    "domain": "phrases",
+    "concept": "Dependent and independent genitive pronouns",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Dependent my, our, your, her, and their are used as subject-determiners and gerund-participial subjects. The matching independent forms occur as fusions, obliques, and predicatives.",
+    "condition": "Applies to the construction and sense described in §16.4 of Chapter 5.",
+    "violation": "The pronoun uses a form excluded by this particular syntactic construction.",
+    "exceptions": [
+      {
+        "description": "A dependent form can precede a separate fused modifier-head. Both sets are pronouns in the source analysis.",
+        "pages": [
+          470,
+          471
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "My bag stayed dry.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The blue bag is mine.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Mine bag stayed dry.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The blue bag is my.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.4",
+        "pages": [
+          470,
+          471
+        ],
+        "pdf_pages": [
+          490,
+          491
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dependent and independent genitive pronouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "The pronoun uses a form excluded by this particular syntactic construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Mine bag stayed dry. ||| My bag stayed dry.",
+        "The blue bag is my. ||| The blue bag is mine."
+      ],
+      "learner_explanation": "Dependent my, our, your, her, and their are used as subject-determiners and gerund-participial subjects. The matching independent forms occur as fusions, obliques, and predicatives.",
+      "corrected_paragraph_template": "Use the dependent form before a separate head and the independent form when the genitive stands alone here.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "My leaving early surprised them.",
+        "My first stayed dry but my second got wet."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "pronoun_case"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-306",
+    "domain": "phrases",
+    "concept": "Restricted independent uses of its",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Its is primarily used in the environments of dependent genitives. Independent fused and predicative uses are rare in the source, and the oblique genitive is excluded.",
+    "condition": "Applies to the construction and sense described in §16.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A partitive such as one of its clients avoids the oblique genitive construction.",
+        "pages": [
+          471
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The museum changed its opening hours.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One of its members resigned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.4",
+        "pages": [
+          471
+        ],
+        "pdf_pages": [
+          491
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restricted independent uses of its",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-307",
+    "domain": "phrases",
+    "concept": "Interrogative and relative whose",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Interrogative whose can determine a nominal or occur predicatively, with a rare fused use. Relative whose primarily determines a nominal.",
+    "condition": "Applies to the construction and sense described in §16.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Relative whose may exceptionally occur as an oblique genitive in a supplementary relative. Gerund-participial subject uses are excluded in the source.",
+        "pages": [
+          471,
+          472
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whose is this notebook?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We thanked the artist whose sketch won.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.4",
+        "pages": [
+          471,
+          472
+        ],
+        "pdf_pages": [
+          491,
+          492
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative and relative whose",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-308",
+    "domain": "phrases",
+    "concept": "Structural parallels of nominal and clausal subjects",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A subject-determiner both determines the larger NP and expresses an argument of its head. It is an external complement in this analysis.",
+    "condition": "Applies to the construction and sense described in §16.5.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Nominalizations can use an oblique complement where a corresponding clause takes an object. Adjectival and adverbial modifiers differ across structures.",
+        "pages": [
+          472,
+          473
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Ari's careful inspection of the roof took an hour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Ari carefully inspected the roof.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.5.1",
+        "pages": [
+          472,
+          473
+        ],
+        "pdf_pages": [
+          492,
+          493
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Structural parallels of nominal and clausal subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-309",
+    "domain": "phrases",
+    "concept": "Reflexive antecedents inside nominalizations",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The local subject-determiner can serve as the antecedent for a reflexive inside its noun phrase, paralleling a local clause subject.",
+    "condition": "Applies to the construction and sense described in §16.5.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A higher subject does not replace a structurally available local antecedent in the cited contrast.",
+        "pages": [
+          473
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dana's description of herself surprised us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mia's note on Dana's description of herself was brief.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.5.1",
+        "pages": [
+          473
+        ],
+        "pdf_pages": [
+          493
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reflexive antecedents inside nominalizations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-310",
+    "domain": "phrases",
+    "concept": "Semantic relations of genitive dependents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A genitive subject-determiner can express many roles, including kinship, origin, time, location, creation, experience, and ownership.",
+    "condition": "Applies to the construction and sense described in §16.5.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relation is context-dependent. The same genitive phrase may support more than one interpretation.",
+        "pages": [
+          474
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The storm's aftermath lasted days.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nora's letter arrived on Tuesday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.5.2",
+        "pages": [
+          474
+        ],
+        "pdf_pages": [
+          494
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic relations of genitive dependents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-311",
+    "domain": "phrases",
+    "concept": "Event nominalizations constrain genitive roles",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Event nominalizations constrain the subject-determiner role much as the corresponding verb constrains the clause subject.",
+    "condition": "Applies to the construction and sense described in §16.5.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other nominalizations may allow wider readings, especially when they denote a result or artifact.",
+        "pages": [
+          475
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team's removal of the barrier took an hour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team's design was on display.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.5.2",
+        "pages": [
+          475
+        ],
+        "pdf_pages": [
+          495
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Event nominalizations constrain genitive roles",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-312",
+    "domain": "phrases",
+    "concept": "Alternative alignments in bivalent nominalizations",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Bivalent event nominals can align the agent with a genitive or a by-phrase and another role with a genitive or of-phrase in the cited patterns.",
+    "condition": "Applies to the construction and sense described in §16.5.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The more active role tends to be the subject-determiner. Unlike verbal voice, these alignments do not change the head noun form.",
+        "pages": [
+          475,
+          476
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The crew's repair of the bridge took a month.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The repair of the bridge by the crew took a month.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.5.3",
+        "pages": [
+          475,
+          476
+        ],
+        "pdf_pages": [
+          495,
+          496
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternative alignments in bivalent nominalizations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-313",
+    "domain": "phrases",
+    "concept": "Monovalent alternation and semantic limits",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A single argument often alternates between a subject-determiner and an of-complement. Some relations such as quantity and composition require the of construction in the cited patterns.",
+    "condition": "Applies to the construction and sense described in §16.5.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Animacy and the intended relation can favor a form. A genitive with the same nouns may support another meaning.",
+        "pages": [
+          476,
+          477
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Leila's sister called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The bowl of rice cooled quickly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.5.3",
+        "pages": [
+          476,
+          477
+        ],
+        "pdf_pages": [
+          496,
+          497
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Monovalent alternation and semantic limits",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-314",
+    "domain": "phrases",
+    "concept": "Pronoun choice and constituent weight",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Personal pronouns strongly favor subject-determiner position in many roles, while long dependents often favor a post-head of-phrase.",
+    "condition": "Applies to the construction and sense described in §16.5.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Pronouns can appear after of with some lower semantic roles. Regular plural genitives can be ambiguous in speech.",
+        "pages": [
+          477,
+          478
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her bicycle needs a new chain.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The bicycle of the woman who lives across the road needs a new chain.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.5.3",
+        "pages": [
+          477,
+          478
+        ],
+        "pdf_pages": [
+          497,
+          498
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronoun choice and constituent weight",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-315",
+    "domain": "phrases",
+    "concept": "Semantic restrictions on oblique genitives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Oblique genitives support a narrower range of relations than subject-determiner genitives. Weight and perspective can affect alternatives with ordinary of-phrases.",
+    "condition": "Applies to the construction and sense described in §16.5.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source distinguishes animate oblique genitives from less acceptable inanimate roles. Some friendship descriptions can imply different perspectives.",
+        "pages": [
+          478
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those friends of Hana's stopped by.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The portrait of the woman who runs the gallery was sold.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§16.5.3",
+        "pages": [
+          478
+        ],
+        "pdf_pages": [
+          498
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic restrictions on oblique genitives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
   }
 ]
