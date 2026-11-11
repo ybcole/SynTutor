@@ -7,7 +7,7 @@
 | Chapter | Printed pages | Extracted | Unprocessed | Skipped | Absent from split | Status |
 |---|---:|---:|---:|---:|---:|---|
 | 1. Preliminaries | 42 | 0 | 41 | 1 | 0 | Incomplete |
-| 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
+| 2. Syntactic overview | 28 | 13 | 13 | 1 | 1 | In progress (pp. 43–56) |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
 | 5. Nouns and noun phrases | 202 | 198 | 0 | 3 | 1 | Source-extracted |
@@ -24,10 +24,10 @@
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
 | 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
 | 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
-| 19. Lexical word-formation | 102 | 99 | 0 | 3 | 0 | Source-extracted |
+| 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **700 extracted**, 1039 unprocessed, 23 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **713 extracted**, 1025 unprocessed, 24 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -230,3 +230,7 @@ The fourth batch covers 19 substantive pages and adds 29 records (`CLS-345`–`C
 The final batch covers printed pp. 1246–1271 and verifies blank p. 1272. It adds 36 records (`CLS-374`–`CLS-409`) on hollow clauses, non-catenative complements, modifiers and supplements, verbless clauses, and control. See the [source report](sources/cambridge/chapter_14/PP1246_1272_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1246_1272_AUDIT.json).
 
 Chapter 14 has 99 substantive pages, three justified skips and zero unprocessed pages. Its 139 source-linked records remain outside the live detector registry.
+
+## Chapter 2 pp. 43–56
+
+The opening batch covers 13 substantive pages and one contents page. It adds 19 source-linked classifications (`CLS-410`–`CLS-428`). See the [source report](sources/cambridge/chapter_02/PP43_56_REPORT.md) and [audit manifest](sources/cambridge/chapter_02/PP43_56_AUDIT.json). Continue at p. 57.
