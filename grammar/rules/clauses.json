@@ -34002,5 +34002,2056 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-511",
+    "domain": "clauses",
+    "concept": "Bounding and non-bounding duration",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Bounding duration supplies the temporal limits of a state or activity. Non-bounding duration measures time associated with an event that already has an endpoint.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some predicates support both construals, with completion entailed only on the relevant endpoint reading.",
+        "pages": [
+          703,
+          704
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They rehearsed for two hours.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They repaired the lift in two hours.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.2",
+        "pages": [
+          703,
+          704
+        ],
+        "pdf_pages": [
+          723,
+          724
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bounding and non-bounding duration",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-512",
+    "domain": "clauses",
+    "concept": "Spend and take duration constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Spend can describe time devoted to an activity, while take can measure the time required to reach an endpoint.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With spend, completion can be inferred but can also be explicitly cancelled.",
+        "pages": [
+          703,
+          704
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We spent a day clearing the yard.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It took us a day to clear the yard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.2",
+        "pages": [
+          703,
+          704
+        ],
+        "pdf_pages": [
+          723,
+          724
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spend and take duration constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-513",
+    "domain": "clauses",
+    "concept": "Overall and terminal-point duration",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Bounding duration can give an overall span, a starting point, an endpoint, or both endpoints.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "When only one endpoint is given, the other may be supplied by context or tense.",
+        "pages": [
+          704
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We waited for forty minutes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We waited from noon until one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.3",
+        "pages": [
+          704
+        ],
+        "pdf_pages": [
+          724
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Overall and terminal-point duration",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-514",
+    "domain": "clauses",
+    "concept": "Questioning bounding duration",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "How long is the usual question for bounding duration. A question about the start or finish can target an individual endpoint.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Questions such as until when are possible but less usual.",
+        "pages": [
+          704
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How long did the crew wait?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When did the crew stop waiting?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.3",
+        "pages": [
+          704
+        ],
+        "pdf_pages": [
+          724
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Questioning bounding duration",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-515",
+    "domain": "clauses",
+    "concept": "Bounding duration and motion dependents",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A motion clause can accept bounding duration when the motion is construed without a required endpoint.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A goal that entails arrival can block the simple activity reading.",
+        "pages": [
+          705
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We drove along the coast for an hour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We walked toward the lighthouse for twenty minutes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.3",
+        "pages": [
+          705
+        ],
+        "pdf_pages": [
+          725
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bounding duration and motion dependents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-516",
+    "domain": "clauses",
+    "concept": "Duration of a resultant state",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A duration adjunct can measure the state resulting from an event if the predicate and context make that state available.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An instantaneous event does not automatically license a duration adjunct through an inferred result.",
+        "pages": [
+          705
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I borrowed the drill for three days.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They sent the children outside for an hour.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.3",
+        "pages": [
+          705
+        ],
+        "pdf_pages": [
+          725
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Duration of a resultant state",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-517",
+    "domain": "clauses",
+    "concept": "Duration and recurrent events",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A bounding duration adjunct can measure a series of events even when an individual event cannot extend through the stated interval.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A single clause can specify duration at both the individual-event and series levels.",
+        "pages": [
+          705,
+          706
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The alarm rang every morning for a month.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She gave a ten-minute talk every Friday for a year.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.3",
+        "pages": [
+          705,
+          706
+        ],
+        "pdf_pages": [
+          725,
+          726
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Duration and recurrent events",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-518",
+    "domain": "clauses",
+    "concept": "Scope of negation with bounding duration",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negation may deny the stated duration, or the duration may specify how long a negative state continued.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some sentences allow either scope depending on context.",
+        "pages": [
+          706,
+          707
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The meeting did not last two hours.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We did not hear from them until Tuesday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.3",
+        "pages": [
+          706,
+          707
+        ],
+        "pdf_pages": [
+          726,
+          727
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope of negation with bounding duration",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-519",
+    "domain": "clauses",
+    "concept": "Forms of overall duration",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Overall duration can be expressed by a bare NP, a for phrase, or an adverb with a duration reading.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some duration adverbs also have frequency readings.",
+        "pages": [
+          707
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We stayed a week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The screen went blank briefly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.3",
+        "pages": [
+          707
+        ],
+        "pdf_pages": [
+          727
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Forms of overall duration",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-520",
+    "domain": "clauses",
+    "concept": "Forms of terminal-point duration",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Since and from can introduce starting points, while until and till can introduce endpoints. The markers differ in their complement options.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "American English through can mark an inclusive final period.",
+        "pages": [
+          708
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We worked from lunch until the lights went out.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I have felt better since leaving the city.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.3",
+        "pages": [
+          708
+        ],
+        "pdf_pages": [
+          728
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Forms of terminal-point duration",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-521",
+    "domain": "clauses",
+    "concept": "Duration versus location with during, between and since",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "During and between locate events within an interval and can imply that an event occupied it. Since can introduce either a temporal location or the starting point of duration.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An implication of continuous duration with during or between can be cancelled.",
+        "pages": [
+          708,
+          709
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parcel arrived during lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We have been waiting since noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.3",
+        "pages": [
+          708,
+          709
+        ],
+        "pdf_pages": [
+          728,
+          729
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Duration versus location with during, between and since",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-522",
+    "domain": "clauses",
+    "concept": "Non-bounding in and within",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In and within can measure time to an accomplishment or achievement. Future in phrases can also locate an event relative to the present.",
+    "condition": "Applies to the construction described in §7.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The in or within construction can suggest a shorter interval than expected. The take construction need not carry that implication.",
+        "pages": [
+          709,
+          710
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They assembled the stage in an hour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The doctor arrived within twenty minutes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§7.4",
+        "pages": [
+          709,
+          710
+        ],
+        "pdf_pages": [
+          729,
+          730
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-bounding in and within",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-523",
+    "domain": "clauses",
+    "concept": "Continuation and inception with still and already",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Still presents a situation as continuing at the reference time. Already presents it as having begun or been achieved by that time.",
+    "condition": "Applies to the construction described in §8 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Both can convey expectations about timing, with the details supplied by context.",
+        "pages": [
+          710,
+          711
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The office is still open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The office is already open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§8",
+        "pages": [
+          710,
+          711
+        ],
+        "pdf_pages": [
+          730,
+          731
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Continuation and inception with still and already",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-524",
+    "domain": "clauses",
+    "concept": "Polarity and questions with still, already and yet",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Still can present a negative situation as continuing. Yet commonly appears in negative clauses and questions about whether an expected change has occurred.",
+    "condition": "Applies to the construction described in §8 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Negation can also take scope over still or already in suitable contexts.",
+        "pages": [
+          711,
+          712
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lights still are not working.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have the lights come on yet?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§8",
+        "pages": [
+          711,
+          712
+        ],
+        "pdf_pages": [
+          731,
+          732
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity and questions with still, already and yet",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-525",
+    "domain": "clauses",
+    "concept": "Perfect and progressive accumulation with still and already",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Already can modify a perfect that reports a completed event. Still can combine with a perfect when the clause describes an ongoing state or a continuing level of progress.",
+    "condition": "Applies to the construction described in §8 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A simple completed-event reading generally resists still.",
+        "pages": [
+          712
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has already read the report.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has still read only ten pages.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§8",
+        "pages": [
+          712
+        ],
+        "pdf_pages": [
+          732
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfect and progressive accumulation with still and already",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-526",
+    "domain": "clauses",
+    "concept": "Already in an accumulating series",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Already can mark an existing amount as significant in an actual or proposed accumulation.",
+    "condition": "Applies to the construction described in §8 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The reading can concern a present state without asserting its exact starting time.",
+        "pages": [
+          712,
+          713
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We already have three printers, and purchasing wants another.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She already has two jobs and is considering a third.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§8",
+        "pages": [
+          712,
+          713
+        ],
+        "pdf_pages": [
+          732,
+          733
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Already in an accumulating series",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-527",
+    "domain": "clauses",
+    "concept": "Variety and construction effects with already and yet",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Already and yet can occur with perfective preterites in some varieties. Affirmative have yet to expresses that an expected event has not occurred.",
+    "condition": "Applies to the construction described in §8 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Perfective preterite usage varies across English varieties.",
+        "pages": [
+          713
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Have they replied yet?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We have yet to receive a reply.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§8",
+        "pages": [
+          713
+        ],
+        "pdf_pages": [
+          733
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variety and construction effects with already and yet",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-528",
+    "domain": "clauses",
+    "concept": "Frequency as clause quantification",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Frequency adjuncts quantify occasions or instances of a situation and typically indicate a repeated or distributed situation.",
+    "condition": "Applies to the construction described in §9 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A single occasion can also be counted, as with once.",
+        "pages": [
+          713,
+          714
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She visited the archive twice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The backups usually finish before dawn.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§9",
+        "pages": [
+          713,
+          714
+        ],
+        "pdf_pages": [
+          733,
+          734
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Frequency as clause quantification",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-529",
+    "domain": "clauses",
+    "concept": "Bounding and non-bounding frequency",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Bounding frequency counts occurrences. Non-bounding frequency describes a rate, tendency or distribution across occasions.",
+    "condition": "Applies to the construction described in §9 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A clause can combine the two types when they quantify at different levels.",
+        "pages": [
+          714
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She lectured ten times.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She lectured regularly for a semester.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§9",
+        "pages": [
+          714
+        ],
+        "pdf_pages": [
+          734
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bounding and non-bounding frequency",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-530",
+    "domain": "clauses",
+    "concept": "Forms of frequency adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Bounding frequency uses forms such as once, twice and count NPs with time. Non-bounding frequency has adverbial and phrasal realizations.",
+    "condition": "Applies to the construction described in §9 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An ordinal time phrase can locate an occurrence in a series instead of counting all occurrences.",
+        "pages": [
+          715
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We checked twice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We check from time to time.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§9",
+        "pages": [
+          715
+        ],
+        "pdf_pages": [
+          735
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Forms of frequency adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-531",
+    "domain": "clauses",
+    "concept": "Frequency versus temporal location",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A time expression can quantify recurring occasions or locate a situation at a particular time.",
+    "condition": "Applies to the construction described in §9 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Locative expressions can identify individual occasions inside a frequency construction.",
+        "pages": [
+          716
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We visit every winter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We visited last winter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§9",
+        "pages": [
+          716
+        ],
+        "pdf_pages": [
+          736
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Frequency versus temporal location",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-532",
+    "domain": "clauses",
+    "concept": "Frequency and negation scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Frequency can quantify occasions on which a negative situation obtains, or negation can deny a stated frequency.",
+    "condition": "Applies to the construction described in §9 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some placements permit more than one interpretation, depending on the adjunct and focus.",
+        "pages": [
+          717
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She often does not take the bus.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She does not often take the bus.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§9",
+        "pages": [
+          717
+        ],
+        "pdf_pages": [
+          737
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Frequency and negation scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-533",
+    "domain": "clauses",
+    "concept": "Frequency and quantified noun phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A quantified NP can determine the set over which a frequency adjunct applies, or frequency can quantify occasions on which an NP statement holds.",
+    "condition": "Applies to the construction described in §9 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Scope depends on the quantifiers, construction and context.",
+        "pages": [
+          717,
+          718
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Every tenant sometimes uses the courtyard.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Sometimes every tenant uses the courtyard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§9",
+        "pages": [
+          717,
+          718
+        ],
+        "pdf_pages": [
+          737,
+          738
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Frequency and quantified noun phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-534",
+    "domain": "clauses",
+    "concept": "Contextual domains for frequency",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Non-bounding frequency quantifies relevant occasions, whose domain can be supplied by a subordinate clause, context or focus.",
+    "condition": "Applies to the construction described in §9 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relevant set need not include all times or all possible events.",
+        "pages": [
+          718
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The instructor sometimes gives hints when the problems are difficult.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The caretaker always locks up after evening classes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§9",
+        "pages": [
+          718
+        ],
+        "pdf_pages": [
+          738
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contextual domains for frequency",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-535",
+    "domain": "clauses",
+    "concept": "Frequency with the progressive",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Frequency can combine with the progressive. Habitual readings depend on cues that identify repeated situations, and always with the progressive can carry an evaluative implication.",
+    "condition": "Applies to the construction described in §9 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The progressive by itself need not describe a habitual situation.",
+        "pages": [
+          719
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is cycling to work every day this month.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He is always leaving the gate open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§9",
+        "pages": [
+          719
+        ],
+        "pdf_pages": [
+          739
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Frequency with the progressive",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-536",
+    "domain": "clauses",
+    "concept": "Serial order and scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Serial-order adjuncts identify an occurrence by its position in a series. Scope can determine which participants or circumstances are held constant across that series.",
+    "condition": "Applies to the construction described in §10 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A contextual alternative can determine what counts as a prior occurrence.",
+        "pages": [
+          719,
+          720
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina performed the piece for the third time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "For the first time, the club met outdoors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§10",
+        "pages": [
+          719,
+          720
+        ],
+        "pdf_pages": [
+          739,
+          740
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Serial order and scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-537",
+    "domain": "clauses",
+    "concept": "Again and recurrence",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Again can indicate that a whole event recurs or that an earlier state is restored.",
+    "condition": "Applies to the construction described in §10 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A restoration reading need not imply a previous instance of the action named by the verb.",
+        "pages": [
+          720
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina rang the bell again.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina opened the window and later closed it again.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§10",
+        "pages": [
+          720
+        ],
+        "pdf_pages": [
+          740
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Again and recurrence",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-538",
+    "domain": "clauses",
+    "concept": "Degree in clause structure",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Clause degree can quantify the intensity of a property or situation, emphasize completion, or indicate proximity to an endpoint.",
+    "condition": "Applies to the construction described in §11 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A single form can express degree or manner in different contexts.",
+        "pages": [
+          720,
+          721
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I like the design a lot.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She nearly dropped the tray.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§11",
+        "pages": [
+          720,
+          721
+        ],
+        "pdf_pages": [
+          740,
+          741
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree in clause structure",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-539",
+    "domain": "clauses",
+    "concept": "Maximal degree and lexical fit",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Maximal degree adjuncts can emphasize completion or a very high degree, with individual adverbs favoring particular predicates.",
+    "condition": "Applies to the construction described in §11 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Quite can also have a moderate reading with a different predicate.",
+        "pages": [
+          721,
+          722
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She completely removed the stain.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I absolutely reject the proposal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§11",
+        "pages": [
+          721,
+          722
+        ],
+        "pdf_pages": [
+          741,
+          742
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Maximal degree and lexical fit",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-540",
+    "domain": "clauses",
+    "concept": "High and moderate degree",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Multal items express high degree and moderate items express an intermediate degree. Adverbs vary in which predicates they combine with.",
+    "condition": "Applies to the construction described in §11 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Very generally needs an intervening expression such as much when degree applies to a verb.",
+        "pages": [
+          722
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He deeply regretted the decision.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The plans changed somewhat.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§11",
+        "pages": [
+          722
+        ],
+        "pdf_pages": [
+          742
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "High and moderate degree",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-541",
+    "domain": "clauses",
+    "concept": "Low and minimal degree",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Paucal expressions give a low degree. Minimal items such as at all are often licensed in non-affirmative environments.",
+    "condition": "Applies to the construction described in §11 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some inherently negative minimizers differ in distribution from non-affirmative items.",
+        "pages": [
+          723
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The temperature dropped slightly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the temperature drops at all, tell me.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§11",
+        "pages": [
+          723
+        ],
+        "pdf_pages": [
+          743
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Low and minimal degree",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-542",
+    "domain": "clauses",
+    "concept": "Approximating degree",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Almost and nearly can present a situation as approaching an endpoint or threshold, usually suggesting it did not reach it.",
+    "condition": "Applies to the construction described in §11 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Approximators differ in the strength of their implications and in lexical distribution.",
+        "pages": [
+          723,
+          724
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The vase almost fell.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We nearly missed the last train.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§11",
+        "pages": [
+          723,
+          724
+        ],
+        "pdf_pages": [
+          743,
+          744
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Approximating degree",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-543",
+    "domain": "clauses",
+    "concept": "Relative degree",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Enough and related expressions specify degree relative to a threshold or comparison. A following clause can make the threshold explicit.",
+    "condition": "Applies to the construction described in §11 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Too requires an appropriate degree-bearing expression when it applies to a verb.",
+        "pages": [
+          724
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We practiced enough to pass.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She valued the time too much to cancel.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§11",
+        "pages": [
+          724
+        ],
+        "pdf_pages": [
+          744
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative degree",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-544",
+    "domain": "clauses",
+    "concept": "Degree and negation scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negation can deny a degree while leaving a weaker assertion available. Degree can also modify a negative attitude or preference in suitable contexts.",
+    "condition": "Applies to the construction described in §11 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Metalinguistic negation can reject a choice of wording or its strength instead of denying the proposition.",
+        "pages": [
+          724
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I do not fully understand the plan.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I very much do not want to move.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§11",
+        "pages": [
+          724
+        ],
+        "pdf_pages": [
+          744
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree and negation scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

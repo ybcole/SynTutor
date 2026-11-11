@@ -262,3 +262,7 @@ Printed pp. 663–683 yielded 29 classification records (`CLS-450`–`CLS-478`).
 ## Chapter 8 second checkpoint
 
 Printed pp. 684–702 yielded 32 classification records (`CLS-479`–`CLS-510`). Continue at p. 703 with bounding and non-bounding duration.
+
+## Chapter 8 third checkpoint
+
+Printed pp. 703–724 yielded 34 classification records (`CLS-511`–`CLS-544`). Continue at p. 725 with degree under negation and then cause and result.

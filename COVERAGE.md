@@ -13,7 +13,7 @@
 | 5. Nouns and noun phrases | 202 | 198 | 0 | 3 | 1 | Source-extracted |
 | 6. Adjectives and adverbs | 72 | 70 | 0 | 2 | 0 | Source-extracted |
 | 7. Prepositions and preposition phrases | 66 | 64 | 0 | 2 | 0 | Source-extracted |
-| 8. The clause: adjuncts | 122 | 38 | 82 | 2 | 0 | In progress (pp. 663–702) |
+| 8. The clause: adjuncts | 122 | 60 | 60 | 2 | 0 | In progress (pp. 663–724) |
 | 9. Negation | 66 | 0 | 65 | 1 | 0 | Incomplete |
 | 10. Clause type and illocutionary force | 96 | 93 | 0 | 3 | 0 | Source-extracted |
 | 11. Content clauses and reported speech | 84 | 0 | 84 | 0 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **834 extracted**, 901 unprocessed, 27 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **856 extracted**, 879 unprocessed, 27 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -266,3 +266,7 @@ The opening batch accounts for 19 substantive pages and two contents pages and a
 ## Chapter 8 pp. 684–702
 
 This batch accounts for 19 substantive pages and adds 32 records (`CLS-479`–`CLS-510`). See the [source report](sources/cambridge/chapter_08/PP684_702_REPORT.md) and [audit manifest](sources/cambridge/chapter_08/PP684_702_AUDIT.json). Continue at p. 703.
+
+## Chapter 8 pp. 703–724
+
+This batch adds 34 records (`CLS-511`–`CLS-544`) across 22 substantive pages. See the [source report](sources/cambridge/chapter_08/PP703_724_REPORT.md) and [audit manifest](sources/cambridge/chapter_08/PP703_724_AUDIT.json). Continue at p. 725.
