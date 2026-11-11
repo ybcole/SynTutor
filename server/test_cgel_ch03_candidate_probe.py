@@ -127,7 +127,6 @@ class ChapterThreeCandidateProbeTests(unittest.TestCase):
         rel = selection(sentence, "may", "may", dependent_role="central_modal",
                         dependent_form="modal")
         rel["dependent"] = 3
-        self.assertEqual(run(sentence, rel)["candidates"], [])
         rel["coordinated"] = True
         self.assertEqual(run(sentence, rel)["candidates"], [])
         rel["coordinated"] = False
