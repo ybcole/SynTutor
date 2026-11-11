@@ -110,7 +110,7 @@ class Cambridge195202(unittest.TestCase):
         self.assertIn("203–210", report)
         coverage = (ROOT / "COVERAGE.md").read_text(encoding="utf-8")
         import re
-        total = re.search(r"= \\*\\*(\\d+) rules\\*\\*", coverage)
+        total = re.search(r"= \*\*(\d+) rules\*\*", coverage)
         self.assertIsNotNone(total)
         self.assertGreaterEqual(int(total.group(1)), 769)
         self.assertIn("203–212", coverage)
