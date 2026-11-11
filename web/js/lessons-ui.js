@@ -340,11 +340,9 @@ function lessonScreen() {
   const header=el('header',undefined,'lesson-header');header.append(button('← All lessons', showCatalog),el('p',`${lesson.track==='foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`}`,'lesson-eyebrow'));
   const h1=el('h1',lesson.title);h1.tabIndex=-1;header.append(h1,el('p',lesson.outcomes[0].text,'lesson-lead'));host.append(header);
   const columns=el('div',undefined,'lesson-columns'),body=el('section',undefined,'lesson-stage-body'),aside=el('aside',undefined,'lesson-evidence-card');
-  const part = el('p', `Part ${stage + 1} of ${STAGES.length}`, 'lesson-eyebrow');
-  part.dataset.lessonPart = String(stage + 1);
   const partHeading = el('h2', STAGE_TITLES[stage]);
   partHeading.tabIndex = -1;
-  body.append(part, partHeading);
+  body.append(partHeading);
   if (lesson[key]) body.append(question(lesson,key,p,reviewing));
   if (key==='understand') {
     for (const block of lesson.teaching) body.append(el('p', block.text));
@@ -394,6 +392,7 @@ function lessonScreen() {
   }
   if(key==='guided' && lesson.guided.build_target) body.append(el('p','Fill the highlighted missing label or feature in the worked tree. The complete original returns when your answer matches.','lesson-guide-note'));
   if(key==='predict') body.append(el('p','This is a prediction, not a scored assessment. A wrong first answer does not reduce XP.'));
+  const actions = el('div', undefined, 'lesson-page-actions');
   const moreWorkedSteps = key === 'worked' && step < worked.steps.length - 1;
   const nextText = key === 'exit' ? (reviewing ? 'Finish review' : 'Complete lesson') : 'Next →';
   if (!p.completed_at || reviewing) {
@@ -406,15 +405,15 @@ function lessonScreen() {
       host.querySelector('.lesson-stage-body h2')?.focus();
     }, 'lesson-primary');
     next.disabled = busy || (!reviewing && !canAdvance(lesson,p));
-    body.append(next);
+    actions.append(next);
   }
-  if(p.completed_at) body.append(el('p','Completed for this content version. Reviewing cannot award another 15 XP.','lesson-feedback correct'));
   if(key==='exit' && p.completed_at && !reviewing) {
     const following=course.lessons.find(l=>l.prerequisites.some(pr=>pr.lesson_id===lesson.lesson_id) && !progressFor(l).completed_at);
-    if(following)body.append(button(`Next lesson: ${following.title}`,()=>openLesson(following.lesson_id)));
+    if (following) actions.append(button(`Next lesson: ${following.title}`, () => openLesson(following.lesson_id), 'lesson-primary'));
   }
   columns.append(body,aside);host.append(columns);
   if (key === 'exit') host.append(lessonReferences(lesson));
+  if (actions.childElementCount) host.append(actions);
 }
 function render() {
   if (!host || host.hidden || !course || !store) return;

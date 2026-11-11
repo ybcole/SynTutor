@@ -51,19 +51,27 @@ try:
   assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth'), 'Module list has horizontal overflow'
   page.screenshot(path=str(OUT/'modules-mobile.png'),full_page=True)
   page.set_viewport_size({'width':1440,'height':1050})
+  part_heading=view.locator('.lesson-stage-body h2')
+  part_titles=['Predict','Understand','See it','Build it','Apply it','Exit check']
   for ident in ['br-01','br-06','br-10']:
    page.evaluate("id=>import('/js/lessons-ui.js').then(m=>m.openLessons(id))",ident)
-   expect(view.locator('[data-lesson-part]')).to_have_text('Part 1 of 6')
-   expect(view.get_by_role('button',name='Next →',exact=True)).to_be_disabled()
+   expect(part_heading).to_have_text('Predict')
+   expect(view.get_by_text(re.compile(r'^Part \d+ of 6$'))).to_have_count(0)
+   next_button=view.locator('.lesson-page-actions').get_by_role('button',name='Next →',exact=True)
+   expect(next_button).to_be_disabled()
+   columns=view.locator('.lesson-columns').bounding_box()
+   action=next_button.bounding_box()
+   assert action['y'] >= columns['y'] + columns['height']
+   assert abs(action['x'] + action['width'] - columns['x'] - columns['width']) < 1
    expect(view.locator('.lesson-sources')).to_have_count(0)
    lesson=next(l for l in COURSE['lessons'] if l['lesson_id']==ident)
    prediction=view.locator('[data-question="predict"]')
    prediction.locator('input[value="'+lesson['predict']['answer']+'"]').check()
    expect(prediction.locator('.lesson-feedback.correct')).to_be_visible()
    view.get_by_role('button',name='Next →',exact=True).click()
-   expect(view.locator('[data-lesson-part]')).to_have_text('Part 2 of 6')
+   expect(part_heading).to_have_text('Understand')
    view.get_by_role('button',name='Next →',exact=True).click()
-   expect(view.locator('[data-lesson-part]')).to_have_text('Part 3 of 6')
+   expect(part_heading).to_have_text('See it')
    assert view.locator('svg[role="img"]').count()==1
    canvas=view.locator('.canonical-viewport')
    viewport=canvas.bounding_box()
@@ -87,17 +95,16 @@ try:
   expect(first.get_by_text('2 of 6 stages completed',exact=True)).to_be_visible()
   expect(summary.get_by_role('button',name='Constituents and hierarchy',exact=True)).to_be_visible()
   first.get_by_role('button',name='Resume lesson',exact=True).click()
-  expect(view.locator('[data-lesson-part]')).to_have_text('Part 3 of 6')
+  expect(part_heading).to_have_text('See it')
   # Complete every published lesson, in prerequisite order, using rendered controls.
   for lesson in COURSE['lessons']:
    page.evaluate("id=>import('/js/lessons-ui.js').then(m=>m.openLessons(id))",lesson['lesson_id'])
    # Representative previews may already have advanced to the worked stage.
    current=0
-   active=view.locator('[data-lesson-part]')
-   current=int(active.get_attribute('data-lesson-part'))-1
+   current=part_titles.index(part_heading.inner_text())
    for i in range(current,6):
     key=['predict','understand','worked','guided','transfer','exit'][i]
-    expect(active).to_have_text(f'Part {i+1} of 6')
+    expect(part_heading).to_have_text(part_titles[i])
     print('Checking',lesson['lesson_id'],key,flush=True)
     if key=='worked':
      for _ in range(len(lesson['worked_example']['steps'])-1):view.get_by_role('button',name='Next →',exact=True).click()
@@ -120,7 +127,8 @@ try:
    expect(view.locator('.lesson-save-status')).to_contain_text('15 lesson XP awarded',timeout=10000)
    if lesson['lesson_id']=='br-11':assert view.locator('svg').count()==0,'Chapter 11 must remain text-only'
   page.evaluate("()=>import('/js/lessons-ui.js').then(m=>m.openLessons('br-01'))")
-  expect(view.locator('[data-lesson-part]')).to_have_text('Part 1 of 6')
+  expect(part_heading).to_have_text('Predict')
+  expect(view.get_by_text('Completed for this content version. Reviewing cannot award another 15 XP.',exact=True)).to_have_count(0)
   expect(view.locator('.lesson-option input').first).to_be_disabled()
   for _ in range(4+len(COURSE['lessons'][0]['worked_example']['steps'])):
    view.get_by_role('button',name='Next →',exact=True).click()
