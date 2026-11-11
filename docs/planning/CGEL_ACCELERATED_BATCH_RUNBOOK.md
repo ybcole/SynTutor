@@ -130,3 +130,53 @@ Source-audited 15 consecutive pages on the chapter branch. Report sources/cambri
 ## Chapter 4 source extraction closed, 2026-11-11
 
 Printed 213–321 and blank 322 accounted for. Chapter 4 107 extracted substantive pages, 3 justified skips, zero unprocessed. This last batch source audit: sources/cambridge/chapter_04/PP308_321_REPORT.md, manifest: sources/cambridge/chapter_04/PP308_321_AUDIT.json, 39 new records. Close the draft PR only after both GitHub CI workflows and batch/ledger/schema gates pass. New rules stay NEEDS_REVIEW and runtime activation remains blocked. Next extraction priority: chapters with remaining unprocessed pages.
+
+
+## Chapter 5 first checkpoint — 2026-11-11
+
+Chapter 5 pp.323–340 inspected (contents-only 323–325, expository 326–340), with 28 inert grammar records. Report sources/cambridge/chapter_05/PP323_340_REPORT.md; audit sources/cambridge/chapter_05/PP323_340_AUDIT.json. The next checkpoint covers printed pp.341–348. Independent linguistic QA remains separate from Phase B.
+
+
+## Chapter 5 second checkpoint (2026-11-11)
+
+Printed pp.341–348 checked against text and page layouts. The batch adds 24 records (`PHR-048`–`PHR-071`) for plural-only nouns, invariant count forms, and sense-dependent agreement. The next checkpoint covers printed pp.349–358. The chapter remains on its rolling draft PR.
+
+
+## Chapter 5 third checkpoint (2026-11-11)
+
+Printed pp.349–358 checked in text and rendered layout. The 32 original-example records (`PHR-072`–`PHR-103`) cover number transparency, number selection and agreement, the determiner function, and the introduction to quantification. The next checkpoint covers printed pp.359–382.
+
+
+## Chapter 5 fourth checkpoint (2026-11-11)
+
+Printed pp.359–382 checked against text and rendered pages as a 24-page accelerated batch. Added 43 original-example records (`PHR-104`–`PHR-146`). The next checkpoint covers printed pp.383–406.
+
+
+## Chapter 5 fifth checkpoint (2026-11-11)
+
+Printed pp.383–406 checked against text and rendered pages as a 24-page batch. Added 44 original-example records (`PHR-147`–`PHR-190`). The next checkpoint covers printed pp.407–430.
+
+
+## Chapter 5 sixth checkpoint (2026-11-11)
+
+Printed pp.407–430 checked against text and rendered pages as a 24-page batch. Added 44 original-example records (`PHR-191`–`PHR-234`). The next checkpoint covers printed pp.431–454.
+
+
+## Chapter 5 seventh checkpoint (2026-11-11)
+
+Printed pp.431–454 checked against text and rendered pages as a 24-page batch. Added 43 original-example records (`PHR-235`–`PHR-277`). The next checkpoint covers printed pp.455–478.
+
+
+## Chapter 5 eighth checkpoint (2026-11-11)
+
+Printed pp.455–478 checked against text and rendered pages as a 24-page batch. Added 38 original-example records (`PHR-278`–`PHR-315`). The next checkpoint covers printed pp.479–502.
+
+
+## Chapter 5 ninth checkpoint (2026-11-11)
+
+Printed pp.479–502 checked in text and rendered layout. Added 30 original-example records (`PHR-316`–`PHR-345`). The final checkpoint covers pp.503–524.
+
+
+## Chapter 5 source extraction complete (2026-11-11)
+
+The final batch adds 26 records (`PHR-346`–`PHR-371`) for pp.503–523 and confirms that full-volume PDF p.544, corresponding to printed p.524, is blank. Chapter 5 has 198 substantive pages extracted, three contents-only skips, one verified split-source exclusion, and zero unprocessed pages. Phase B next proceeds to Chapter 7 under the priority sequence in the master plan.

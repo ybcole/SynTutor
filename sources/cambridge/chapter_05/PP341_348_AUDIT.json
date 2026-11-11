@@ -1,0 +1,128 @@
+{
+  "manifest_version": 1,
+  "chapter": 5,
+  "printed_start": 341,
+  "printed_end": 348,
+  "report": "sources/cambridge/chapter_05/PP341_348_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 341,
+    "pdf_page": 361
+  },
+  "added_rule_ids": [
+    "PHR-048",
+    "PHR-049",
+    "PHR-050",
+    "PHR-051",
+    "PHR-052",
+    "PHR-053",
+    "PHR-054",
+    "PHR-055",
+    "PHR-056",
+    "PHR-057",
+    "PHR-058",
+    "PHR-059",
+    "PHR-060",
+    "PHR-061",
+    "PHR-062",
+    "PHR-063",
+    "PHR-064",
+    "PHR-065",
+    "PHR-066",
+    "PHR-067",
+    "PHR-068",
+    "PHR-069",
+    "PHR-070",
+    "PHR-071"
+  ],
+  "page_checks": [
+    {
+      "page": 341,
+      "status": "extracted",
+      "section": "§3.2.1",
+      "summary": "The garment, tool, and optical sets illustrate bipartite plural form, pair counting, dialect-specific lexical choices, and the rare singular trouser footnote.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 342,
+      "status": "extracted",
+      "section": "§3.2.1",
+      "summary": "Generic and definite-set uses contrast with variable direct counting. Specialized type and modifier uses are separate from specimen reference. Particle substances contrast with count food units.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 343,
+      "status": "extracted",
+      "section": "§3.2.1",
+      "summary": "Aggregate plurals have distinct lexical senses and partitive restrictions. Area readings of count plurals are non-individuated. The lexicalized plural inventory begins.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 344,
+      "status": "extracted",
+      "section": "§3.2.1",
+      "summary": "Lexicalized plurals cover accommodation, accumulated money, pay, social formulas, and other senses. Restricted counting and fixed predicatives are distinguished from count uses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 345,
+      "status": "extracted",
+      "section": "§§3.2.2–3.2.3",
+      "summary": "Borrowed and uninflected plural-only forms contrast with ordinary singulars. Rounded group counts differ from people and folk, and the section introduces singular shingles.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 346,
+      "status": "extracted",
+      "section": "§3.2.3",
+      "summary": "Singular news and disease names contrast with optional condition construals and singular measure NPs containing plural forms. The invariant count list begins.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 347,
+      "status": "extracted",
+      "section": "§3.2.3",
+      "summary": "Invariant count nouns retain their form across number. Nouns in ics show lexical number and sense distinctions, with uncertainty and agreement variation in some cases.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 348,
+      "status": "extracted",
+      "section": "§§3.2.3–3.2.4",
+      "summary": "Game names contrast with countable pieces. Borrowed plurals vary by form and register, with lexicalized regular plurals and nonstandard overgeneralizations kept distinct.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

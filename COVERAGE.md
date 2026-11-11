@@ -1,6 +1,6 @@
 # CGEL printed-page coverage
 
-**Chapter 4 Phase B source pages complete (2026-11-11):** 107 substantive pages extracted, 3 justified skips (213–214 contents-only; 322 confirmed blank), 0 unprocessed. Independent linguistic QA and Phase C/D detector activation remain separate gates. Continue with the remaining Cambridge chapters.
+**Chapter 5 Phase B source extraction complete (2026-11-11).** Printed pp.326–523 contain 198 extracted pages. Pages 323–325 are contents-only, and p.524 is blank in the full volume.
 
 **Phase B extraction status: 2026-11-11.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
 
@@ -10,7 +10,7 @@
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
-| 5. Nouns and noun phrases | 202 | 0 | 201 | 0 | 1 | Incomplete |
+| 5. Nouns and noun phrases | 202 | 198 | 0 | 3 | 1 | Source-extracted |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
 | 7. Prepositions and preposition phrases | 66 | 0 | 65 | 1 | 0 | Incomplete |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **246 extracted**, 1501 unprocessed, 15 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **444 extracted**, 1300 unprocessed, 18 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -124,3 +124,53 @@ Added 35 inactive source-linked grammar records (COMP-164–COMP-198), audit sou
 ## Chapter 4 final substantive pages: 308–321
 
 Added 39 inactive English-only records (COMP-199–COMP-237), source audit sources/cambridge/chapter_04/PP308_321_REPORT.md, machine manifest sources/cambridge/chapter_04/PP308_321_AUDIT.json. Page 322 blank as confirmed against full PDF, existing skip retained. **All Chapter 4 printed pages accounted for; independent QA / live XAI still pending.** Next source focus, according to the accelerated plan: Chapter 1 or 2 according to source manifest priority, rather than re-reading Chapter 4.
+
+
+## Chapter 5 pp.323–340
+
+28 original-example non-live source records (PHR-020–PHR-047); source report sources/cambridge/chapter_05/PP323_340_REPORT.md, audit sources/cambridge/chapter_05/PP323_340_AUDIT.json. No new detector enabled.
+
+
+## Chapter 5 pp.341–348
+
+24 English-only source records (`PHR-048`–`PHR-071`), including three inactive constraint specifications. See the [source audit report](sources/cambridge/chapter_05/PP341_348_REPORT.md) and [manifest](sources/cambridge/chapter_05/PP341_348_AUDIT.json).
+
+
+## Chapter 5 pp.349–358
+
+32 original-example records (`PHR-072`–`PHR-103`) cover quantificational nouns, agreement, number selection, and the determiner function. See the [source report](sources/cambridge/chapter_05/PP349_358_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP349_358_AUDIT.json).
+
+
+## Chapter 5 pp.359–382
+
+43 original-example records (`PHR-104`–`PHR-146`) cover quantifier scope and scalar inference, definiteness, articles, and determinatives. See the [source report](sources/cambridge/chapter_05/PP359_382_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP359_382_AUDIT.json).
+
+
+## Chapter 5 pp.383–406
+
+44 original-example records (`PHR-147`–`PHR-190`) cover determinatives, fused heads, and referential and nonreferential noun phrases. See the [source report](sources/cambridge/chapter_05/PP383_406_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP383_406_AUDIT.json).
+
+
+## Chapter 5 pp.407–430
+
+44 original-example records (`PHR-191`–`PHR-234`) cover generic and bare noun phrases, fused heads, ellipsis, and pronouns. See the [source report](sources/cambridge/chapter_05/PP407_430_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP407_430_AUDIT.json).
+
+
+## Chapter 5 pp.431–454
+
+43 original-example records (`PHR-235`–`PHR-277`) cover determinative phrases, nominal dependents, apposition, compounds, and word order. See the [source report](sources/cambridge/chapter_05/PP431_454_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP431_454_AUDIT.json).
+
+
+## Chapter 5 pp.455–478
+
+38 original-example records (`PHR-278`–`PHR-315`) cover post-head ordering, pronoun case, and genitive structures. See the [source report](sources/cambridge/chapter_05/PP455_478_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP455_478_AUDIT.json).
+
+
+## Chapter 5 pp.479–502
+
+30 records (`PHR-316`–`PHR-345`) cover phrasal genitives, own, and pronoun and verb agreement. See the [source report](sources/cambridge/chapter_05/PP479_502_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP479_502_AUDIT.json).
+
+
+## Chapter 5 pp.503–524
+
+26 records (`PHR-346`–`PHR-371`) cover agreement, predicatives, proper names, and vocatives. Printed p.524 is verified blank in the full volume. See the [source report](sources/cambridge/chapter_05/PP503_524_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP503_524_AUDIT.json).
