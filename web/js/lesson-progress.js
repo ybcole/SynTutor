@@ -39,7 +39,10 @@ export function createLessonStore(course, { storage, userId = 'guest', client = 
       const { data, error } = await bounded(client.rpc('save_lesson_progress', { p_lesson_id: lesson.lesson_id,
         p_content_version: lesson.content_version, p_state: { responses: record.responses, visited: record.visited, stage: record.stage } }));
       if (error) throw new Error('Account sync unavailable. Your lesson progress is saved on this device; retry sync when connected.');
-      if (data) { records[lessonKey(lesson)] = cleanProgress(lesson, data); remoteAwards.set(lessonKey(lesson),data.earned || 0); }
+      if (data) {
+        records[lessonKey(lesson)] = cleanProgress(lesson, { ...data, updated_at: record.updated_at });
+        remoteAwards.set(lessonKey(lesson), data.earned || 0);
+      }
       dirty.delete(lessonKey(lesson));
     }
     write(); status = 'Synced to your account';
@@ -51,7 +54,7 @@ export function createLessonStore(course, { storage, userId = 'guest', client = 
     async load() {
       if (!client || userId === 'guest') return;
       try {
-        const { data, error } = await bounded(client.from('lesson_progress').select('lesson_id,content_version,responses,visited,stage,completed_at'));
+        const { data, error } = await bounded(client.from('lesson_progress').select('lesson_id,content_version,responses,visited,stage,completed_at,updated_at'));
         if (error) throw error;
         for (const row of data || []) {
           const lesson = course.lessons.find(l => l.lesson_id === row.lesson_id && l.content_version === row.content_version);
@@ -68,6 +71,7 @@ export function createLessonStore(course, { storage, userId = 'guest', client = 
         read();
         const previous = records[lessonKey(lesson)];
         const next = reduceProgress(lesson, previous, event, { prerequisites: prerequisitesMet(lesson,records) });
+        next.updated_at = new Date().toISOString();
         records[lessonKey(lesson)] = next; dirty.add(lessonKey(lesson)); write();
         remoteAwards.delete(lessonKey(lesson));
         try { if(!syncBlocked)await sync(); } catch (error) { syncBlocked=true;status = error.message; }

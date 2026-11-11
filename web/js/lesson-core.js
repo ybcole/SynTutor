@@ -59,7 +59,8 @@ export function cleanProgress(lesson, raw = {}) {
   }
   return { responses, visited: STAGES.filter(s => raw.visited?.includes(s)),
     stage: Number.isInteger(raw.stage) && raw.stage >= 0 && raw.stage < STAGES.length ? raw.stage : 0,
-    completed_at: typeof raw.completed_at === 'string' && Number.isFinite(Date.parse(raw.completed_at)) ? raw.completed_at : null };
+    completed_at: typeof raw.completed_at === 'string' && Number.isFinite(Date.parse(raw.completed_at)) ? raw.completed_at : null,
+    updated_at: typeof raw.updated_at === 'string' && Number.isFinite(Date.parse(raw.updated_at)) ? raw.updated_at : null };
 }
 export function prerequisitesMet(lesson, records) {
   return lesson.prerequisites.every(p => Boolean(records[`${p.lesson_id}@${p.content_version}`]?.completed_at));

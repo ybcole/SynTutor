@@ -3,18 +3,25 @@ import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdva
 import { createLessonStore } from './lesson-progress.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
+import { enableCanvasView } from './canvas-view.js';
 
 let options = {}, course, store, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
+let reviewStage = null;
+let lessonCanvas = null;
 const el = (tag, text, cls) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (cls) node.className = cls; return node; };
 function button(text, run, cls = '') { const b = el('button',text,cls); b.type = 'button'; b.addEventListener('click',run); return b; }
-function sourceList(ids, parent) {
-  const details = el('details',undefined,'lesson-sources'); details.append(el('summary','Sources and review'));
-  for (const id of [...new Set(ids)]) {
-    const source = course.sources.find(s => s.id === id); if (!source) continue;
-    details.append(el('p',`${source.book === 'B-R' ? 'Burton-Roberts' : 'Cambridge'} · ${source.title} · ${source.edition} · Ch ${source.chapter} · printed p. ${source.printed_page}`));
+function lessonReferences(lesson) {
+  const blocks = [lesson, ...lesson.teaching, ...lesson.cambridge_insights, lesson.worked_example,
+    ...lesson.worked_example.steps, lesson.predict, lesson.guided, lesson.transfer, lesson.exit];
+  const ids = new Set(blocks.flatMap(block => block.source_ids || []));
+  const details = el('details', undefined, 'lesson-sources');
+  details.append(el('summary', 'References and source review'));
+  const list = el('ul');
+  for (const source of course.sources.filter(source => ids.has(source.id))) {
+    list.append(el('li', `${source.title} · ${source.edition} · Chapter ${source.chapter} · printed p. ${source.printed_page}`));
   }
-  details.append(el('p','Source-checked by AI against the cited pages; no human instructor sign-off is claimed.'));
-  parent.append(details);
+  details.append(list, el('p', 'AI checked the cited pages. The lesson has no human instructor sign-off.'));
+  return details;
 }
 const SVG_NS = 'http://www.w3.org/2000/svg';
 function svgNode(name, attrs = {}) { const n = document.createElementNS(SVG_NS,name); for (const [k,v] of Object.entries(attrs)) n.setAttribute(k,v); return n; }
@@ -208,15 +215,78 @@ async function act(event) {
   if(event.type==='answer' && focusName)host.querySelector(`input[name="${CSS.escape(focusName)}"][value="${focusValue}"]`)?.focus();
   else { const h=host.querySelector('.lesson-stage-body h2');if(h){h.tabIndex=-1;h.focus();} }
 }
-function openLesson(id) { active=id; step=0;notice='';render();host.querySelector('h1')?.focus(); }
+function selectLesson(id) {
+  active = id;
+  step = 0;
+  notice = '';
+  reviewStage = id && progressFor(currentLesson()).completed_at ? 0 : null;
+}
+function openLesson(id) {
+  selectLesson(id);
+  render();
+  host.scrollTop = 0;
+  host.querySelector('h1')?.focus({ preventScroll: true });
+}
+function showCatalog() {
+  openLesson(null);
+}
+function progressBar(value, max, label) {
+  const bar = el('progress');
+  bar.value = value;
+  bar.max = max;
+  bar.setAttribute('aria-label', label);
+  return bar;
+}
+function progressSummary() {
+  const summary = el('aside', undefined, 'lesson-catalog-summary');
+  summary.setAttribute('aria-label', 'Course progress');
+  const overview = el('section', undefined, 'lesson-summary-card');
+  const completed = course.lessons.filter(lesson => progressFor(lesson).completed_at).length;
+  overview.append(
+    el('h2', 'Overall progress'),
+    el('p', `${completed} / ${course.lessons.length} lessons completed · ${lessonXp(store.records)} lesson XP`, 'lesson-total'),
+    progressBar(completed, course.lessons.length, 'Overall lesson progress'),
+  );
+  for (const group of course.tracks) {
+    const lessons = course.lessons.filter(lesson => lesson.track === group.id);
+    const count = lessons.filter(lesson => progressFor(lesson).completed_at).length;
+    overview.append(el('p', `${group.title} · ${count} of ${lessons.length} completed`, 'lesson-track-progress'));
+  }
+  const activity = el('section', undefined, 'lesson-summary-card');
+  activity.append(el('h2', 'Recent activity'));
+  const recent = course.lessons.map(lesson => {
+    const progress = progressFor(lesson);
+    return { lesson, progress, date: progress.updated_at || progress.completed_at };
+  }).filter(item => item.date)
+    .sort((a, b) => Date.parse(b.date) - Date.parse(a.date)).slice(0, 3);
+  if (!recent.length) activity.append(el('p', 'Your latest lesson activity will appear here.'));
+  else {
+    const list = el('ul', undefined, 'lesson-activity-list');
+    const format = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium' });
+    for (const { lesson, progress, date } of recent) {
+      const entry = el('li');
+      const status = progress.completed_at ? 'Completed' : `Part ${progress.stage + 1} of ${STAGES.length}`;
+      const time = el('time', format.format(new Date(date)));
+      time.dateTime = date;
+      entry.append(button(lesson.title, () => openLesson(lesson.lesson_id), 'lesson-activity-link'), el('span', `${status} · `), time);
+      list.append(entry);
+    }
+    activity.append(list);
+  }
+  summary.append(overview, activity);
+  return summary;
+}
 function catalog() {
   const header = el('header', undefined, 'curriculum-header');
-  header.append(el('h1', 'Lesson modules'));
-  header.append(el('p',`${course.lessons.filter(l=>progressFor(l).completed_at).length} / ${course.lessons.length} lessons completed · ${lessonXp(store.records)} lesson XP in this course`,'lesson-total'));
+  const heading = el('h1', 'Lesson modules');
+  heading.tabIndex = -1;
+  header.append(heading);
   host.append(header);
+  const layout = el('div', undefined, 'lesson-catalog-layout');
+  const content = el('div', undefined, 'lesson-catalog-content');
   const tabs=el('div',undefined,'lesson-track-tabs');tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Learning tracks');
   for (const t of course.tracks) { const b=button(t.title,()=>{track=t.id;render();});b.setAttribute('aria-pressed',String(track===t.id));tabs.append(b); }
-  host.append(tabs);
+  content.append(tabs);
   const modules = el('div', undefined, 'lesson-modules');
   for (const lesson of course.lessons.filter(l => l.track === track)) {
     const progress = progressFor(lesson);
@@ -237,46 +307,48 @@ function catalog() {
 
     const footer = el('div', undefined, 'lesson-module-footer');
     const meter = el('div', undefined, 'lesson-module-progress');
-    const bar = el('progress');
-    bar.max = STAGES.length;
-    bar.value = completedStages;
-    bar.setAttribute('aria-label', `${lesson.title} progress`);
-    meter.append(el('p', `${completedStages} of ${STAGES.length} stages completed`), bar);
+    meter.append(el('p', `${completedStages} of ${STAGES.length} stages completed`),
+      progressBar(completedStages, STAGES.length, `${lesson.title} progress`));
     const action = progress.completed_at ? 'Review lesson' : started ? 'Resume lesson' : 'Start lesson';
     footer.append(meter, button(action, () => openLesson(lesson.lesson_id), 'lesson-open'));
     card.append(footer);
     modules.append(card);
   }
-  host.append(modules);
+  content.append(modules);
   if (track==='grammar') {
     const planned=el('details',undefined,'lesson-planned');planned.append(el('summary',`${course.planned_modules.length} further topics planned — not published`));
-    const list=el('ul');for(const p of course.planned_modules)list.append(el('li',`${p.title}: ${p.reason}`));planned.append(list);host.append(planned);
+    const list=el('ul');for(const p of course.planned_modules)list.append(el('li',`${p.title}: ${p.reason}`));planned.append(list);content.append(planned);
   }
+  layout.append(content, progressSummary());
+  host.append(layout);
 }
-function question(lesson,key,p) {
+function question(lesson,key,p,reviewing) {
   const data=lesson[key], section=el('section',undefined,'lesson-question');section.dataset.question=key;
-  const field=el('fieldset');field.disabled=busy;field.append(el('legend',data.prompt));
+  const field=el('fieldset');field.disabled=busy || reviewing;field.append(el('legend',data.prompt));
   for (const option of data.options) {
     const label=el('label',undefined,'lesson-option'),radio=el('input');radio.type='radio';radio.name=`${lesson.lesson_id}-${key}`;radio.value=option.id;radio.checked=p.responses[key]===option.id;
     radio.addEventListener('change',()=>act({type:'answer',answer:option.id}));label.append(radio,el('span',option.text));field.append(label);
   }
   section.append(field);
   if (p.responses[key]) { const chosen=data.options.find(o=>o.id===p.responses[key]);section.append(el('p',chosen.feedback,p.responses[key]===data.answer ? 'lesson-feedback correct' : 'lesson-feedback retry')); }
-  const hint=el('details');hint.append(el('summary','Need a hint?'),el('p',data.hint));section.append(hint);sourceList(data.source_ids,section);return section;
+  const hint=el('details');hint.append(el('summary','Need a hint?'),el('p',data.hint));section.append(hint);return section;
 }
 function lessonScreen() {
-  const lesson=currentLesson(),p=progressFor(lesson),key=STAGES[p.stage];
-  const header=el('header',undefined,'lesson-header');header.append(button('← All lessons',()=>{active=null;notice='';render();}),el('p',`${lesson.track==='foundations' ? `B-R · Chapter ${lesson.chapter}` : 'Cambridge · Companion'} · ${lesson.convention_profile?.version || 'Text-only'} · version ${lesson.content_version}`,'lesson-eyebrow'));
+  const lesson = currentLesson(), p = progressFor(lesson);
+  const stage = reviewStage ?? p.stage, key = STAGES[stage];
+  const reviewing = reviewStage !== null;
+  const header=el('header',undefined,'lesson-header');header.append(button('← All lessons', showCatalog),el('p',`${lesson.track==='foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`}`,'lesson-eyebrow'));
   const h1=el('h1',lesson.title);h1.tabIndex=-1;header.append(h1,el('p',lesson.outcomes[0].text,'lesson-lead'));host.append(header);
-  const nav=el('nav',undefined,'lesson-stepper');nav.setAttribute('aria-label','Lesson stages');
-  const firstMissing=STAGES.findIndex(s=>!p.visited.includes(s));const max=firstMissing<0 ? 5 : firstMissing;
-  STAGE_TITLES.forEach((title,i)=>{const b=button(`${i+1}. ${title}`,()=>act({type:'navigate',stage:i}));b.disabled=busy||i>max;if(i===p.stage)b.setAttribute('aria-current','step');nav.append(b);});host.append(nav);
   const columns=el('div',undefined,'lesson-columns'),body=el('section',undefined,'lesson-stage-body'),aside=el('aside',undefined,'lesson-evidence-card');
-  body.append(el('p',`Stage ${p.stage+1} of 6`,'lesson-eyebrow'),el('h2',STAGE_TITLES[p.stage]));
-  if (lesson[key]) body.append(question(lesson,key,p));
+  const part = el('p', `Part ${stage + 1} of ${STAGES.length}`, 'lesson-eyebrow');
+  part.dataset.lessonPart = String(stage + 1);
+  const partHeading = el('h2', STAGE_TITLES[stage]);
+  partHeading.tabIndex = -1;
+  body.append(part, partHeading);
+  if (lesson[key]) body.append(question(lesson,key,p,reviewing));
   if (key==='understand') {
-    for (const block of lesson.teaching) { const card=el('section');card.append(el('p',block.text));sourceList(block.source_ids,card);body.append(card); }
-    for (const insight of lesson.cambridge_insights) { const card=el('section',undefined,'lesson-insight');card.append(el('h3','Cambridge insight'),el('p',insight.text));sourceList(insight.source_ids,card);body.append(card); }
+    for (const block of lesson.teaching) body.append(el('p', block.text));
+    for (const insight of lesson.cambridge_insights) { const card=el('section',undefined,'lesson-insight');card.append(el('h3','Cambridge insight'),el('p',insight.text));body.append(card); }
   }
   const worked=lesson.worked_example;
   aside.append(el('h2',worked.tree ? 'Worked B-R example' : 'Worked example'),el('p',worked.sentence,'lesson-example-sentence'));
@@ -288,7 +360,6 @@ function lessonScreen() {
     evidence.append(title,slot);
     let requestVersion=0;
     let selected=key==='guided' ? lesson.guided.build_target?.node_id : worked.steps[step]?.focus_node_id;
-    let treeView;
     const inspect=async (nodeId, feature=null) => {
       selected=nodeId;
       evidence.open=true;
@@ -297,46 +368,59 @@ function lessonScreen() {
       try {
         const result=await requestEvidence(worked.tree,nodeId);
         if (version!==requestVersion||!slot.isConnected) return;
-        renderEvidence(result,slot,{treeRoot:treeView,feature});
+        renderEvidence(result,slot,{treeRoot:canvas,feature});
       } catch {
         if (version===requestVersion&&slot.isConnected) {
           slot.replaceChildren(el('p','An explanation is not available for this part of the sentence.'));
         }
       }
     };
-    treeView=renderLessonTree(worked.tree,{
+    const canvas = el('div', undefined, 'lesson-tree-canvas');
+    const treeView=renderLessonTree(worked.tree,{
       focusId:selected,
       blank:key==='guided' && p.responses.guided!==lesson.guided.answer ? lesson.guided.build_target : null,
-      interactive:true, onSelectNode:inspect, zoomControls:true, stackFeatures:true,
+      interactive:true, onSelectNode:inspect, stackFeatures:true,
     });
-    aside.append(treeView);
+    canvas.append(treeView);
+    aside.append(canvas, el('p', worked.origin, 'lesson-origin'));
+    lessonCanvas = enableCanvasView(canvas, treeView);
     if (selected) aside.append(button('Inspect highlighted tree position',()=>inspect(selected)));
     evidence.addEventListener('toggle',()=>{if(evidence.open&&!slot.childElementCount&&selected)inspect(selected);});
     aside.append(evidence);
   }
-  else aside.append(el('p',lesson.chapter===11 && lesson.track==='foundations' ? 'This closing chapter is a text-only synthesis. No new tree convention or gradable tree is introduced.' : 'Use the text contrast without renaming B-R tree categories.'));
-  aside.append(el('p',worked.origin,'lesson-origin'));sourceList(worked.source_ids,aside);
+  else aside.append(el('p',lesson.chapter===11 && lesson.track==='foundations' ? 'This closing chapter is a text-only synthesis. No new tree convention or gradable tree is introduced.' : 'Use the text contrast without renaming B-R tree categories.'), el('p', worked.origin, 'lesson-origin'));
   if(key==='worked') {
     body.append(el('p',`Step ${step+1} of ${worked.steps.length}`),el('p',worked.steps[step].text));
-    const steps=el('div',undefined,'lesson-step-controls');const prev=button('Previous step',()=>{step=Math.max(0,step-1);render();});prev.disabled=step===0;
-    const next=button('Next step',()=>{step=Math.min(worked.steps.length-1,step+1);render();});next.disabled=step===worked.steps.length-1;steps.append(prev,next);body.append(steps);
   }
   if(key==='guided' && lesson.guided.build_target) body.append(el('p','Fill the highlighted missing label or feature in the worked tree. The complete original returns when your answer matches.','lesson-guide-note'));
   if(key==='predict') body.append(el('p','This is a prediction, not a scored assessment. A wrong first answer does not reduce XP.'));
-  const next=button(busy ? 'Saving…' : key==='exit' ? (p.completed_at ? 'Finish review — no extra XP' : 'Complete lesson · 15 XP once') : 'Continue →',()=>act({type:'advance'}),'lesson-primary');
-  next.disabled=busy||!canAdvance(lesson,p)||(key==='worked'&&step!==worked.steps.length-1);body.append(next);
+  const moreWorkedSteps = key === 'worked' && step < worked.steps.length - 1;
+  const nextText = key === 'exit' ? (reviewing ? 'Finish review' : 'Complete lesson') : 'Next →';
+  if (!p.completed_at || reviewing) {
+    const next = button(busy ? 'Saving…' : nextText, () => {
+      if (moreWorkedSteps) step++;
+      else if (!reviewing) { act({type:'advance'}); return; }
+      else if (key === 'exit') { showCatalog(); return; }
+      else reviewStage++;
+      render();
+      host.querySelector('.lesson-stage-body h2')?.focus();
+    }, 'lesson-primary');
+    next.disabled = busy || (!reviewing && !canAdvance(lesson,p));
+    body.append(next);
+  }
   if(p.completed_at) body.append(el('p','Completed for this content version. Reviewing cannot award another 15 XP.','lesson-feedback correct'));
-  if(key==='exit' && p.completed_at) {
+  if(key==='exit' && p.completed_at && !reviewing) {
     const following=course.lessons.find(l=>l.prerequisites.some(pr=>pr.lesson_id===lesson.lesson_id) && !progressFor(l).completed_at);
     if(following)body.append(button(`Next lesson: ${following.title}`,()=>openLesson(following.lesson_id)));
   }
   columns.append(body,aside);host.append(columns);
-
+  if (key === 'exit') host.append(lessonReferences(lesson));
 }
 function render() {
   if (!host || host.hidden || !course || !store) return;
+  lessonCanvas?.destroy();
+  lessonCanvas = null;
   const scroll=host.scrollTop;host.replaceChildren();
-  host.append(button('Back to Syntax Generator',()=>options.onExit?.(),'lesson-return'));
   if(active)lessonScreen();else catalog();
   const footer=el('footer',undefined,'lesson-save-status');footer.setAttribute('aria-live','polite');if(notice)footer.append(el('p',notice));footer.append(el('p',store.status));
   if(options.userId?.()) footer.append(button('Retry account sync',async()=>{await store.retry();render();}));
@@ -357,6 +441,8 @@ export function initLessons(config = {}) {
 }
 export async function openLessons(id=null) {
   lastFocus=document.activeElement;host.hidden=false;document.body.classList.add('curriculum-open');
+  lessonCanvas?.destroy();
+  lessonCanvas = null;
   showCurriculumState(host, { message: 'Loading reviewed lessons…' });
   const token=++generation;
   try {
@@ -368,7 +454,8 @@ export async function openLessons(id=null) {
     }
     if(token!==generation)return;
     host.setAttribute('aria-busy','false');
-    active=course.lessons.some(l=>l.lesson_id===id) ? id : null;step=0;notice='';render();
+    selectLesson(course.lessons.some(l=>l.lesson_id===id) ? id : null);
+    render();
     const heading=host.querySelector('h1');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});host.scrollTop=0;}
     document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
   } catch {
@@ -379,4 +466,4 @@ export async function openLessons(id=null) {
     });
   }
 }
-export function closeLessons() { generation+=1;if(host){host.hidden=true;host.replaceChildren();}document.body.classList.remove('curriculum-open');active=null;notice='';if(lastFocus?.isConnected)lastFocus.focus(); }
+export function closeLessons() { generation+=1;lessonCanvas?.destroy();lessonCanvas=null;if(host){host.hidden=true;host.replaceChildren();}document.body.classList.remove('curriculum-open');active=null;notice='';if(lastFocus?.isConnected)lastFocus.focus(); }
