@@ -53,7 +53,7 @@ def _base(blocked: list[Any], *, status: str = "not_evaluated") -> dict[str, Any
 def _overt_label(node_id: Any, token_id: int, graph: dict[str, Any],
                  by_id: dict[str, dict[str, Any]], role: Any) -> str | None:
     """Require a real overt terminal below a visible B-R category for the role."""
-    if role not in _ROLE_LABELS:
+    if not isinstance(role, str) or role not in _ROLE_LABELS:
         return None
     token = graph["token_index"][token_id]
     if token["opaque"] or not isinstance(node_id, str):
@@ -144,7 +144,9 @@ def probe_ch03_on_canonical(analysis: Any, typed_facts: Any, *,
         a, b = rel.get("governor"), rel.get("dependent")
         if (type(a) is not int or type(b) is not int
                 or a < 0 or b < 0 or a >= len(visible) or b >= len(visible) or a == b
-                or rel.get("kind") not in _ALLOWED_KINDS):
+                or not isinstance(rel.get("kind"), str)
+                or rel["kind"] not in _ALLOWED_KINDS
+                or not isinstance(rel.get("clause_kind"), str)):
             blocked.append({"relation_index": i, "reason": "unusable_relation"})
             continue
         glabel = _overt_label(rel.get("governor_node_id"), a, graph, by_id,
