@@ -16969,5 +16969,2151 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-237",
+    "domain": "clauses",
+    "concept": "Inclusive and open let-imperatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Inclusive let-imperatives normally include speaker and addressee. Open let-imperatives can express a directive about a third party or another participant without specifically addressing that participant.",
+    "condition": "Applies to the construction described in §9.1–9.2.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An ordinary imperative with lexical let can ask the addressee to permit an action.",
+        "pages": [
+          925
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Let's open the windows.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Let the winning team speak first.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.1–9.2.1",
+        "pages": [
+          925
+        ],
+        "pdf_pages": [
+          945
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inclusive and open let-imperatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-238",
+    "domain": "clauses",
+    "concept": "Overt and understood imperative subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An ordinary imperative can omit its subject, usually understood as the addressee. It can also contain second- or third-person subjects.",
+    "condition": "Applies to the construction described in §9.2.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The plain verb form distinguishes many third-person singular imperatives from declaratives. Some other cases are formally ambiguous.",
+        "pages": [
+          925,
+          926
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lock the gate before you leave.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Everybody check the back of your ticket.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.2.1",
+        "pages": [
+          925,
+          926
+        ],
+        "pdf_pages": [
+          945,
+          946
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Overt and understood imperative subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-239",
+    "domain": "clauses",
+    "concept": "Restrictions and discourse functions of overt subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Overt imperative subjects commonly denote people, and indefinite expressions such as everybody and nobody are frequent. An explicit you can identify a participant or reinforce reassurance or insistence.",
+    "condition": "Applies to the construction described in §9.2.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The distribution of definite third-person subjects depends on context. Dummy and clausal subjects are excluded from the illustrated ordinary imperative construction.",
+        "pages": [
+          926
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nobody touch the switch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You take the first watch, and I'll take the second.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.2.1",
+        "pages": [
+          926
+        ],
+        "pdf_pages": [
+          946
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restrictions and discourse functions of overt subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-240",
+    "domain": "clauses",
+    "concept": "Imperative subjects and vocatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An optional subject is integrated into the clause, while a vocative directly addresses a participant and can be prosodically separate. Both can occur in one imperative.",
+    "condition": "Applies to the construction described in §9.2.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With some initial NPs either analysis is possible. Final integrated NPs and anaphora can provide mixed evidence, so punctuation is not conclusive.",
+        "pages": [
+          927,
+          928
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nobody move, please.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Maya, you take the front seat.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.2.2",
+        "pages": [
+          927,
+          928
+        ],
+        "pdf_pages": [
+          947,
+          948
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Imperative subjects and vocatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-241",
+    "domain": "clauses",
+    "concept": "Scope and placement in negative imperatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Imperative negation generally uses do not or don't. With an overt subject, the subject can precede don't or follow it, with possible differences in scope and interpretation.",
+    "condition": "Applies to the construction described in §9.2.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With uncontracted do not, a subject between do and not gives the interrogative order. Uncontracted do not followed by overt you is also marked.",
+        "pages": [
+          928,
+          929
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those without a ticket don't enter yet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Don't anybody touch the switch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.2.3",
+        "pages": [
+          928,
+          929
+        ],
+        "pdf_pages": [
+          948,
+          949
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope and placement in negative imperatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-242",
+    "domain": "clauses",
+    "concept": "Emphatic do in imperatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Positive imperative do emphasizes the directive and can occur with be as well as lexical verbs.",
+    "condition": "Applies to the construction described in §9.2.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With some overt subjects, emphatic do may follow or precede the subject. Prosody and context influence how the emphasis is understood.",
+        "pages": [
+          929
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Do be careful on the steps.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Do call before you leave.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.2.3",
+        "pages": [
+          929
+        ],
+        "pdf_pages": [
+          949
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic do in imperatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-243",
+    "domain": "clauses",
+    "concept": "Directive force and expected compliance",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An imperative directive presents a possible action for compliance. Orders and commands demand compliance, while requests conventionally present it as optional.",
+    "condition": "Applies to the construction described in §9.2.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Institutional authority and context distinguish a command from other strong directives. A negative order can function as a prohibition.",
+        "pages": [
+          929,
+          930
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Report to the front desk at once.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please lend me a pencil.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.2.4",
+        "pages": [
+          929,
+          930
+        ],
+        "pdf_pages": [
+          949,
+          950
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Directive force and expected compliance",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-244",
+    "domain": "clauses",
+    "concept": "Advice, instructions and expository imperatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Advice presents an action as serving the addressee's interests. Instructions specify steps for a goal, and expository imperatives guide the audience through a discussion.",
+    "condition": "Applies to the construction described in §9.2.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Advice can include warnings. Expository directives seek participation in following the exposition.",
+        "pages": [
+          930,
+          931
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Keep a spare key somewhere safe.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Compare the two diagrams before reading on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.2.4",
+        "pages": [
+          930,
+          931
+        ],
+        "pdf_pages": [
+          950,
+          951
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Advice, instructions and expository imperatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-245",
+    "domain": "clauses",
+    "concept": "Invitations, permissions and acceptance",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An imperative can invite an action, grant permission for it, or signal acceptance of a choice the addressee has proposed.",
+    "condition": "Applies to the construction described in §9.2.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These uses can give the addressee a choice. Their force depends on prior discourse and the speaker's stance.",
+        "pages": [
+          931
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Have another slice if you'd like.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Go ahead and borrow the ladder.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.2.4",
+        "pages": [
+          931
+        ],
+        "pdf_pages": [
+          951
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Invitations, permissions and acceptance",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-246",
+    "domain": "clauses",
+    "concept": "Agentivity and dynamic preference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Directive imperatives usually concern future action under the addressee's control, so dynamic VPs are typical. The construction can also encourage an agentive reading of a normally stative predicate.",
+    "condition": "Applies to the construction described in §9.2.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Progressive and perfect imperatives are relatively infrequent, but rarity is not a categorical ban. Causative have differs from perfect have.",
+        "pages": [
+          931,
+          932
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Finish the draft by Monday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Be patient while the glue dries.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.2.5",
+        "pages": [
+          931,
+          932
+        ],
+        "pdf_pages": [
+          951,
+          952
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agentivity and dynamic preference",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-247",
+    "domain": "clauses",
+    "concept": "Agentive interpretations in passive imperatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A passive imperative can direct the addressee to take or avoid action that brings about a passive outcome.",
+    "condition": "Applies to the construction described in §9.2.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Negative be passives and get passives can support agentive readings. A construction with a reflexive object is syntactically distinct.",
+        "pages": [
+          932,
+          933
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Don't be seen near the side door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Get examined by a qualified technician.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.2.5",
+        "pages": [
+          932,
+          933
+        ],
+        "pdf_pages": [
+          952,
+          953
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agentive interpretations in passive imperatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-248",
+    "domain": "clauses",
+    "concept": "Imperatives without a directive reading",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An imperative with little or no plausible control by the addressee can conventionally express a wish or another indirect force.",
+    "condition": "Applies to the construction described in §9.2.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same wording can be a directive in an appropriate context, and a directive can accompany a wish.",
+        "pages": [
+          933
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Sleep well.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have a wonderful holiday!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.2.5",
+        "pages": [
+          933
+        ],
+        "pdf_pages": [
+          953
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Imperatives without a directive reading",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-249",
+    "domain": "clauses",
+    "concept": "Dialect differences in inclusive let's",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "One variety analyzes inclusive let with us, optionally contracted to 's, and a bare infinitival complement. Another also permits a following overt NP with reanalyzed let's.",
+    "condition": "Applies to the construction described in §9.3.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second example belongs to the variety allowing the overt NP. The more conservative variety lacks that pattern.",
+        "pages": [
+          934,
+          935
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Let's repair the fence ourselves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Let's you and me repair the fence ourselves.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.3.1",
+        "pages": [
+          934,
+          935
+        ],
+        "pdf_pages": [
+          954,
+          955
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dialect differences in inclusive let's",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-250",
+    "domain": "clauses",
+    "concept": "Subject and ellipsis properties of conservative inclusive let",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In the conservative inclusive construction, an overt matrix subject is unavailable, and the let element is retained when the following predication is ellipted.",
+    "condition": "Applies to the construction described in §9.3.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An ordinary lexical let imperative can have a matrix subject. Conservative inclusive ellipsis differs from ordinary imperative echo responses.",
+        "pages": [
+          934,
+          935
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Let's take the shortcut, shall we?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Let's take the shortcut. — No, let's not.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.3.1",
+        "pages": [
+          934,
+          935
+        ],
+        "pdf_pages": [
+          954,
+          955
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject and ellipsis properties of conservative inclusive let",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-251",
+    "domain": "clauses",
+    "concept": "Negation in inclusive and lexical let constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With inclusive let's, the two illustrated placements of negation can convey the same proposal. With lexical let, negation placement can distinguish withholding permission from permitting a negative action.",
+    "condition": "Applies to the construction described in §9.3.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Don't let's is stylistically more informal and varies across speakers. Lexical Don't let them leave and Let them not leave can differ in scope.",
+        "pages": [
+          935
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Let's not wait here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Don't let's wait here.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.3.1",
+        "pages": [
+          935
+        ],
+        "pdf_pages": [
+          955
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation in inclusive and lexical let constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-252",
+    "domain": "clauses",
+    "concept": "Inclusive imperatives as joint proposals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An inclusive imperative normally proposes action involving both speaker and addressee and invites their agreement. In exposition it can present a step as shared.",
+    "condition": "Applies to the construction described in §9.3.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An immediate verbal response is typical for an ordinary proposal but not required in an expository use.",
+        "pages": [
+          936
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Let's move the table together.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Let's now compare the two totals.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.3.2",
+        "pages": [
+          936
+        ],
+        "pdf_pages": [
+          956
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inclusive imperatives as joint proposals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-253",
+    "domain": "clauses",
+    "concept": "Open let and its boundary with lexical let",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Open let can present a directive without assigning responsibility specifically to the addressee. It also occurs in formulaic, expository and other uses.",
+    "condition": "Applies to the construction described in §9.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The boundary with lexical allow is gradual, and the chapter considers a meaning-based alternative analysis.",
+        "pages": [
+          936,
+          937
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Let the records show that we objected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Let x be the length of the shorter side.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.4",
+        "pages": [
+          936,
+          937
+        ],
+        "pdf_pages": [
+          956,
+          957
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Open let and its boundary with lexical let",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-254",
+    "domain": "clauses",
+    "concept": "Imperative first coordinates with conditional interpretations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An imperative can be the first coordinate in a construction whose overall force is conditional. With and, the next coordinate can give a consequence of compliance.",
+    "condition": "Applies to the construction described in §9.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The first imperative need not independently direct the action. An interpretation as warning or threat can depend on context.",
+        "pages": [
+          937,
+          938
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Press that switch and the screen will go dark.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Take another step and you'll set off the alarm.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.5",
+        "pages": [
+          937,
+          938
+        ],
+        "pdf_pages": [
+          957,
+          958
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Imperative first coordinates with conditional interpretations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-255",
+    "domain": "clauses",
+    "concept": "Conditional coordination and relaxed constraints",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In conditional coordination, an imperative can have a subject or predicate disfavored in a standalone directive, and the consequence can use several clause types.",
+    "condition": "Applies to the construction described in §9.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The imperative can be negative in some contexts. Let-imperatives vary in their compatibility with this conditional use.",
+        "pages": [
+          938,
+          939
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Leave the windows open and what a mess there'll be!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Follow that path and who will find you?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.5",
+        "pages": [
+          938,
+          939
+        ],
+        "pdf_pages": [
+          958,
+          959
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional coordination and relaxed constraints",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-256",
+    "domain": "clauses",
+    "concept": "Ability and willingness questions as directives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Interrogatives about ability, desire or willingness can indirectly request an action. Tentative modal preterites can make a request more polite.",
+    "condition": "Applies to the construction described in §9.6.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The literal question can remain salient when the ability or willingness is genuinely uncertain. Negative forms can sound impatient or reproachful.",
+        "pages": [
+          939,
+          940
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could you pass me the folder?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Would you mind lowering the blinds?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.6.1",
+        "pages": [
+          939,
+          940
+        ],
+        "pdf_pages": [
+          959,
+          960
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ability and willingness questions as directives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-257",
+    "domain": "clauses",
+    "concept": "Necessity and reason questions as directives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A question about whether an unwanted action is necessary, or whether it has a reason, can indirectly discourage that action.",
+    "condition": "Applies to the construction described in §9.6.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Negative reason questions can instead propose the positive action. Directive interrogatives also allow some third-person subjects.",
+        "pages": [
+          940,
+          941
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Do you have to play the music so loudly?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Why leave the door wide open?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.6.1",
+        "pages": [
+          940,
+          941
+        ],
+        "pdf_pages": [
+          960,
+          961
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Necessity and reason questions as directives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-258",
+    "domain": "clauses",
+    "concept": "Inclusive interrogatives as proposals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A first-person plural interrogative can propose joint action in much the same pragmatic role as an inclusive let-imperative.",
+    "condition": "Applies to the construction described in §9.6.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The interrogative construction can retain its ordinary question use in a suitable context.",
+        "pages": [
+          941
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Shall we try the shorter route?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Why don't we take a break?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.6.1",
+        "pages": [
+          941
+        ],
+        "pdf_pages": [
+          961
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inclusive interrogatives as proposals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-259",
+    "domain": "clauses",
+    "concept": "Declaratives as direct and indirect directives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A declarative can perform a directive through an overt performative or prohibition. It can also convey one indirectly by stating a want, necessity or tentative inquiry.",
+    "condition": "Applies to the construction described in §9.6.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A declarative can embed a question that itself conveys the directive indirectly. The surrounding context helps establish force.",
+        "pages": [
+          941,
+          942
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I forbid you to enter the storage room.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wonder whether you would close the window.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.6.2",
+        "pages": [
+          941,
+          942
+        ],
+        "pdf_pages": [
+          961,
+          962
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Declaratives as direct and indirect directives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-260",
+    "domain": "clauses",
+    "concept": "Nonfinite and verbless directives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Notices and brief requests can express directives using nonfinite clauses or verbless expressions.",
+    "condition": "Applies to the construction described in §9.6.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An abbreviated passive notice can correspond to a finite prohibition. A verbless expression can also occur in spoken orders.",
+        "pages": [
+          942
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Visitors prohibited beyond this gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two tickets, please.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.6.3",
+        "pages": [
+          942
+        ],
+        "pdf_pages": [
+          962
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonfinite and verbless directives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-261",
+    "domain": "clauses",
+    "concept": "Interrogative tags with ordinary imperatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Ordinary imperatives can take tags with forms such as will you, would you or can you. Choice affects tone, and tag polarity does not follow declarative reversal rules mechanically.",
+    "condition": "Applies to the construction described in §9.7 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Positive anchors allow either tag polarity in the relevant uses. Negative ordinary imperative anchors normally take positive will you.",
+        "pages": [
+          942,
+          943
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Hand me the receipt, would you?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Don't touch the dial, will you?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.7",
+        "pages": [
+          942,
+          943
+        ],
+        "pdf_pages": [
+          962,
+          963
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative tags with ordinary imperatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-262",
+    "domain": "clauses",
+    "concept": "Tags on inclusive let-imperatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An inclusive let-imperative typically takes shall we. An alternative tag in the illustrated construction is why don't we.",
+    "condition": "Applies to the construction described in §9.7 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The inclusive pattern differs from the second-person tags used with ordinary imperatives.",
+        "pages": [
+          943
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Let's check the figures, shall we?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Let's take the stairs, why don't we?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.7",
+        "pages": [
+          943
+        ],
+        "pdf_pages": [
+          963
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Tags on inclusive let-imperatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-263",
+    "domain": "clauses",
+    "concept": "Reporting directives without a subordinate imperative",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Directives can be reported through infinitivals or mandative content clauses, but these are distinct constructions with broader distributions than main imperatives.",
+    "condition": "Applies to the construction described in §9.8 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The matrix predicate contributes the directive interpretation. Mandatives can have subjects and predicate patterns that ordinary imperatives do not license.",
+        "pages": [
+          943,
+          944
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She told us to close the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She insisted that we be ready at eight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.8",
+        "pages": [
+          943,
+          944
+        ],
+        "pdf_pages": [
+          963,
+          964
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reporting directives without a subordinate imperative",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-264",
+    "domain": "clauses",
+    "concept": "Optative main clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Minor optative patterns can express wishes with initial may or with formulaic plain-form constructions.",
+    "condition": "Applies to the construction described in §10 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some optatives are highly formulaic. A wish can also be expressed with an imperative in other constructions.",
+        "pages": [
+          944
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "May your journey be peaceful.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Long live the festival!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§10",
+        "pages": [
+          944
+        ],
+        "pdf_pages": [
+          964
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optative main clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-265",
+    "domain": "clauses",
+    "concept": "Independent clauses with subordinate form",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some minor main clauses have forms otherwise associated with subordination, including that clauses and restricted to-infinitival formulas.",
+    "condition": "Applies to the construction described in §10 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The constructional range is limited. The negative infinitival formula is largely restricted to worry.",
+        "pages": [
+          944,
+          945
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That it should end like this!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Not to worry.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§10",
+        "pages": [
+          944,
+          945
+        ],
+        "pdf_pages": [
+          964,
+          965
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Independent clauses with subordinate form",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-266",
+    "domain": "clauses",
+    "concept": "Independent conditional fragments",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A conditional adjunct can stand without an expressed consequence and convey regret, surprise, a request, or a hypothetical prompt.",
+    "condition": "Applies to the construction described in §10 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The intended force depends on the conditional form and context. A fragment is not necessarily an unfinished sentence in discourse.",
+        "pages": [
+          945
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If only you'd called sooner!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you'd like to step this way.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§10",
+        "pages": [
+          945
+        ],
+        "pdf_pages": [
+          965
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Independent conditional fragments",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-267",
+    "domain": "clauses",
+    "concept": "Verbless directives and parallel minor structures",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some independent expressions function as directives without a verb. Parallel expressions can also express a conditional relation or another connection without a full ordinary clause structure.",
+    "condition": "Applies to the construction described in §10 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some verbless directives correspond to ordinary imperatives with an understood verb. Parallel forms also occur in fixed sayings.",
+        "pages": [
+          945
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Off the stage!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "No key, no entry.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§10",
+        "pages": [
+          945
+        ],
+        "pdf_pages": [
+          965
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbless directives and parallel minor structures",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-268",
+    "domain": "clauses",
+    "concept": "No overt matrix subject before inclusive let's",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "The inclusive let's construction does not take an overt matrix subject before let's.",
+    "condition": "Applies to the construction described in §9.3.1 of Chapter 10.",
+    "violation": "An integrated matrix subject precedes inclusive let’s.",
+    "exceptions": [
+      {
+        "description": "A detached vocative can precede let's. Some varieties allow an overt subject after reanalyzed let's, and ordinary lexical let has different subject possibilities.",
+        "pages": [
+          934,
+          935
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Let's review the figures.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Let's wait for the others.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "You let's review the figures.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "We let's wait for the others.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.3.1",
+        "pages": [
+          934,
+          935
+        ],
+        "pdf_pages": [
+          954,
+          955
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "No overt matrix subject before inclusive let's",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "extra_word",
+      "error_pattern": "An integrated matrix subject precedes inclusive let’s.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "You let's review the figures. ||| Let's review the figures.",
+        "We let's wait for the others. ||| Let's wait for the others."
+      ],
+      "learner_explanation": "The inclusive let's construction does not take an overt matrix subject before let's.",
+      "corrected_paragraph_template": "Remove the integrated subject in the inclusive construction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Maya, let's review the figures.",
+        "You let her review the figures.",
+        "Let's you and me wait outside."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "extra-word"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-269",
+    "domain": "clauses",
+    "concept": "Conditional consequences with and and or",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In the illustrated coordination, and can introduce a consequence of doing what the imperative describes. Or can introduce a consequence of failing to comply while the imperative retains its directive force.",
+    "condition": "Applies to the construction described in §9.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Conditional meaning comes from the coordination and context. It is not a fixed meaning of imperative clause type.",
+        "pages": [
+          937,
+          938,
+          939
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Check the register and you'll see her name.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Leave now or you'll miss the bus.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.5",
+        "pages": [
+          937,
+          938,
+          939
+        ],
+        "pdf_pages": [
+          957,
+          958,
+          959
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional consequences with and and or",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-270",
+    "domain": "clauses",
+    "concept": "Negating a to-infinitival report of a directive",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In an ordinary to-infinitival report of a negative directive, use not without importing the imperative's supportive do.",
+    "condition": "Applies to the construction described in §9.8 of Chapter 10.",
+    "violation": "Imperative supportive do is retained within an ordinary negative to-infinitival report.",
+    "exceptions": [
+      {
+        "description": "An independent quoted imperative can retain don't. Finite subordinate clauses and lexical do have different distributions.",
+        "pages": [
+          943,
+          944
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina told me not to be late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Omar asked us not to touch the dial.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Mina told me to do not be late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Omar asked us to do not touch the dial.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.8",
+        "pages": [
+          943,
+          944
+        ],
+        "pdf_pages": [
+          963,
+          964
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negating a to-infinitival report of a directive",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "extra_word",
+      "error_pattern": "Imperative supportive do is retained within an ordinary negative to-infinitival report.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Mina told me to do not be late. ||| Mina told me not to be late.",
+        "Omar asked us to do not touch the dial. ||| Omar asked us not to touch the dial."
+      ],
+      "learner_explanation": "In an ordinary to-infinitival report of a negative directive, use not without importing the imperative's supportive do.",
+      "corrected_paragraph_template": "Use not to followed by the plain form of the lexical verb.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Mina said, ‘Don't be late.’",
+        "I asked why they didn't touch the dial.",
+        "She told me not to do the paperwork."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "extra-word"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

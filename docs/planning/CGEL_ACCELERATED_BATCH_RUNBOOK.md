@@ -206,3 +206,7 @@ Printed pp. 879–902 yielded 39 records (`CLS-162`–`CLS-200`), including thre
 ## Chapter 10 third checkpoint (2026-11-11)
 
 Printed pp. 903–924 yielded 36 records (`CLS-201`–`CLS-236`), including four inactive constraint specifications. Chapter 10 has 72 substantive pages extracted and 21 pages unprocessed. Continue at p. 925 with the detailed imperative analysis.
+
+## Chapter 10 source extraction complete (2026-11-11)
+
+The final batch covers 21 substantive pages, printed pp. 925–945, and verifies blank p. 946. The 34 records (`CLS-237`–`CLS-270`) include two inactive constraint specifications. Chapter 10 closes with 93 substantive pages, three justified skips and zero unprocessed pages. Chapter 14 is next in the master plan priority order.
