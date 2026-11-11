@@ -234,3 +234,7 @@ Printed pp. 1246–1271 yielded 36 records (`CLS-374`–`CLS-409`), including tw
 ## Chapter 18 first checkpoint (2026-11-11)
 
 Printed pp. 1565–1585 account for two contents pages and 19 substantive pages and yield 26 records (`MORPH-067`–`MORPH-092`), including four inactive constraint specifications. Continue at p. 1586 with regular plural suffix spelling.
+
+## Chapter 18 second checkpoint (2026-11-11)
+
+Printed pp. 1586–1609 yielded 32 records (`MORPH-093`–`MORPH-124`), including four inactive constraint specifications. Continue at p. 1610.

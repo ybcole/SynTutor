@@ -23,11 +23,11 @@
 | 15. Coordination and supplementation | 90 | 0 | 90 | 0 | 0 | Incomplete |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
 | 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
-| 18. Inflectional morphology | 56 | 19 | 34 | 3 | 0 | In progress (pp. 1565–1585) |
+| 18. Inflectional morphology | 56 | 43 | 10 | 3 | 0 | In progress (pp. 1565–1609) |
 | 19. Lexical word-formation | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **719 extracted**, 1018 unprocessed, 25 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **743 extracted**, 994 unprocessed, 25 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -234,3 +234,7 @@ Chapter 14 has 99 substantive pages, three justified skips and zero unprocessed 
 ## Chapter 18 pp. 1565–1585
 
 The opening batch covers 19 substantive pages and two contents pages. It adds 26 records (`MORPH-067`–`MORPH-092`) on inflectional operations, phonological and spelling alternations, grade and the start of noun plurals. See the [source report](sources/cambridge/chapter_18/PP1565_1585_REPORT.md) and [audit manifest](sources/cambridge/chapter_18/PP1565_1585_AUDIT.json). Continue at p. 1586.
+
+## Chapter 18 pp. 1586–1609
+
+The second batch covers 24 substantive pages and adds 32 records (`MORPH-093`–`MORPH-124`) on noun plurals, genitives, regular and irregular verb inflection, and complex bases. See the [source report](sources/cambridge/chapter_18/PP1586_1609_REPORT.md) and [audit manifest](sources/cambridge/chapter_18/PP1586_1609_AUDIT.json). Continue at p. 1610.

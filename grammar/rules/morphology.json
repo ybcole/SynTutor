@@ -6095,5 +6095,2107 @@
     },
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-093",
+    "domain": "morphology",
+    "concept": "Lexical choice of s or es after o",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Many vowel-plus-o bases take s. After a consonant symbol, the spelling can require s, require es, or allow either according to the noun.",
+    "condition": "Applies to the construction described in §4.1.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Mottos and mottoes are alternatives. Proper names, abbreviations, and some recent formations favor s.",
+        "pages": [
+          1586
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The radios were on.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gardeners planted potatoes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.1",
+        "pages": [
+          1586
+        ],
+        "pdf_pages": [
+          1606
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical choice of s or es after o",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-094",
+    "domain": "morphology",
+    "concept": "Apostrophes in unusual written plurals",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "An apostrophe can make the plural of a letter or other metalinguistic item easier to read. Ordinary dates and many capitalized abbreviations usually take s alone.",
+    "condition": "Applies to the construction described in §4.1.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is distinct from genitive marking. Conventions vary with the type of written item.",
+        "pages": [
+          1586,
+          1587
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The printer doubled the p's.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shop opened in the 1990s.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.1",
+        "pages": [
+          1586,
+          1587
+        ],
+        "pdf_pages": [
+          1606,
+          1607
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Apostrophes in unusual written plurals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-095",
+    "domain": "morphology",
+    "concept": "Plural base-final voicing",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some nouns voice final f or a dental fricative before a plural suffix. House also voices its final consonant in speech.",
+    "condition": "Applies to the construction described in §4.1.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Only the f-to-v alternation is reflected in the spelling. Some nouns, such as wharf, allow both variants, while others retain the voiceless sound.",
+        "pages": [
+          1587,
+          1588
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The knives were sharpened.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The houses were empty.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.2",
+        "pages": [
+          1587,
+          1588
+        ],
+        "pdf_pages": [
+          1607,
+          1608
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural base-final voicing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-096",
+    "domain": "morphology",
+    "concept": "Unchanged singular and plural bases",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "An unchanged plural shares its form with a singular noun but can still trigger plural agreement.",
+    "condition": "Applies to the construction described in §4.1.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Distinguish this syncretism from non-count singulars and plural-only nouns. Some animal nouns alternate between base and suffixed plurals according to use.",
+        "pages": [
+          1588,
+          1589
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One sheep has escaped.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two sheep have escaped.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.3",
+        "pages": [
+          1588,
+          1589
+        ],
+        "pdf_pages": [
+          1608,
+          1609
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unchanged singular and plural bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-097",
+    "domain": "morphology",
+    "concept": "Base plurals ending in s and other unchanged forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A final s can be part of the lexical base rather than a plural suffix. Some ethnic names and craft nouns also permit an unchanged plural.",
+    "condition": "Applies to the construction described in §4.1.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Usage varies with individual nouns. Tribal or ethnic names and their ordinary plurals are lexically determined.",
+        "pages": [
+          1589
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One series begins tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two series begin tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.3",
+        "pages": [
+          1589
+        ],
+        "pdf_pages": [
+          1609
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Base plurals ending in s and other unchanged forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-098",
+    "domain": "morphology",
+    "concept": "Vowel-change plurals",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A small set of nouns forms the plural by changing the base vowel.",
+    "condition": "Applies to the construction described in §4.1.4 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Pronunciation and spelling can diverge in compounds ending in man. Some senses, such as the computing sense of mouse, also allow regular variants.",
+        "pages": [
+          1589,
+          1590
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The geese crossed the road.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Several mice hid under the shed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.4",
+        "pages": [
+          1589,
+          1590
+        ],
+        "pdf_pages": [
+          1609,
+          1610
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Vowel-change plurals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-099",
+    "domain": "morphology",
+    "concept": "Lexical en plurals",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Oxen, children and brethren retain historical en-type plural formations.",
+    "condition": "Applies to the construction described in §4.1.5 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Only oxen adds en directly to the modern base. Brethren has specialized uses alongside brothers.",
+        "pages": [
+          1590
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two oxen pulled the cart.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The children were waiting outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.5",
+        "pages": [
+          1590
+        ],
+        "pdf_pages": [
+          1610
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical en plurals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-100",
+    "domain": "morphology",
+    "concept": "Latin plural patterns and lexical choice",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "English nouns borrowed from Latin can retain changes such as a to ae, us to i, um to a, or ex to ices. Availability of an English plural varies by lexeme.",
+    "condition": "Applies to the construction described in §4.1.6 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some nouns allow both forms and others only one. Differences of sense, register or subject field can condition the choice.",
+        "pages": [
+          1590,
+          1591,
+          1592
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The larvae emerged overnight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The formulas are listed below.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.6",
+        "pages": [
+          1590,
+          1591,
+          1592
+        ],
+        "pdf_pages": [
+          1610,
+          1611,
+          1612
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Latin plural patterns and lexical choice",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-101",
+    "domain": "morphology",
+    "concept": "Greek-style plural formations",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some borrowed nouns replace on with a or is with es in the plural. Others take a regular English ending.",
+    "condition": "Applies to the construction described in §4.1.6 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An identical spelling can have different pronunciations across lexemes, as with bases from basis and base.",
+        "pages": [
+          1592,
+          1593
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The phenomena were observed twice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The analyses differed in scope.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.6",
+        "pages": [
+          1592,
+          1593
+        ],
+        "pdf_pages": [
+          1612,
+          1613
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Greek-style plural formations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-102",
+    "domain": "morphology",
+    "concept": "Borrowed plurals and number reanalysis",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "French, Hebrew and Italian borrowings show different degrees of retention of source-language plural morphology. An original plural can be reanalyzed in English.",
+    "condition": "Applies to the construction described in §4.1.6 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some borrowed plural forms coexist with English variants. Italian pasta terms generally behave as English non-count singulars.",
+        "pages": [
+          1593,
+          1594
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The musicians rehearsed two concertos.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The spaghetti is ready.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.6",
+        "pages": [
+          1593,
+          1594
+        ],
+        "pdf_pages": [
+          1613,
+          1614
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Borrowed plurals and number reanalysis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-103",
+    "domain": "morphology",
+    "concept": "Plural placement in compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Most compounds pluralize their final element, but some place the plural on the first element or on both elements.",
+    "condition": "Applies to the construction described in §4.1.7 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "First-element plurals can compete with final plurals. Both-element marking occurs in certain ascriptive compounds with man or woman.",
+        "pages": [
+          1594,
+          1595
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The editors in chief met today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two menservants carried the trunks.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.7",
+        "pages": [
+          1594,
+          1595
+        ],
+        "pdf_pages": [
+          1614,
+          1615
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural placement in compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-104",
+    "domain": "morphology",
+    "concept": "Plural spelling of personal names",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "In the illustrated personal-name plurals, the name base remains unchanged and takes a regular plural suffix.",
+    "condition": "Applies to the construction described in §4.1.8 of Chapter 18.",
+    "violation": "A personal name changes its base spelling when forming the regular name plural.",
+    "exceptions": [
+      {
+        "description": "This applies when referring to multiple people or a family by that name. The common noun wolf has a different plural.",
+        "pages": [
+          1595
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Three Marys joined the class, all named Mary.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The Wolfs moved next door, and their surname is Wolf.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Three Maries joined the class, all named Mary.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The Wolves moved next door, and their surname is Wolf.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.8",
+        "pages": [
+          1595
+        ],
+        "pdf_pages": [
+          1615
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural spelling of personal names",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "A personal name changes its base spelling when forming the regular name plural.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Three Maries joined the class, all named Mary. ||| Three Marys joined the class, all named Mary.",
+        "The Wolves moved next door, and their surname is Wolf. ||| The Wolfs moved next door, and their surname is Wolf."
+      ],
+      "learner_explanation": "In the illustrated personal-name plurals, the name base remains unchanged and takes a regular plural suffix.",
+      "corrected_paragraph_template": "For the intended names Mary and Wolf, keep the base unchanged and add the regular plural suffix.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The wolves ran into the woods.",
+        "The Joneses moved next door.",
+        "Three people named Marie joined the class."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "spelling-inflection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-105",
+    "domain": "morphology",
+    "concept": "Bare and marked genitives",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "A regular s-ending plural has a bare genitive in speech and a final apostrophe in writing. Other nouns commonly add the genitive ending.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 18.",
+    "violation": "The written genitive ending is attached to the wrong position or uses the wrong form for the plural.",
+    "exceptions": [
+      {
+        "description": "An s-ending irregular plural can also take the bare genitive. Certain singular names and fixed expressions show additional variation.",
+        "pages": [
+          1595,
+          1596
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The teachers' lounge is upstairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The children's coats are drying.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The teachers's lounge is upstairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The childrens' coats are drying.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.2",
+        "pages": [
+          1595,
+          1596
+        ],
+        "pdf_pages": [
+          1615,
+          1616
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare and marked genitives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The written genitive ending is attached to the wrong position or uses the wrong form for the plural.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The teachers's lounge is upstairs. ||| The teachers' lounge is upstairs.",
+        "The childrens' coats are drying. ||| The children's coats are drying."
+      ],
+      "learner_explanation": "A regular s-ending plural has a bare genitive in speech and a final apostrophe in writing. Other nouns commonly add the genitive ending.",
+      "corrected_paragraph_template": "Write only a final apostrophe after an s-ending plural, and add apostrophe plus s after children.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The teacher's lounge is upstairs.",
+        "James's bike is outside.",
+        "The men's coats are drying."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "spelling-inflection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-106",
+    "domain": "morphology",
+    "concept": "Variation in genitives of names and fixed phrases",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some names ending in a sibilant permit a bare genitive or a genitive with an additional suffix. Fixed expressions with sake can also have a bare genitive.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Choice varies by name, register and medium. Unchanged nouns ending in s can have distinct singular and plural interpretations despite identical forms.",
+        "pages": [
+          1596
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "James's bike is outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "For goodness' sake, shut the window.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.2",
+        "pages": [
+          1596
+        ],
+        "pdf_pages": [
+          1616
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variation in genitives of names and fixed phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-107",
+    "domain": "morphology",
+    "concept": "Regular verb paradigms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Regular verbs have a gerund-participle in ing, a third-person singular present in s or es, and matching preterite and past participle forms in ed.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The regularity classification is based primarily on speech. Spelling exceptions need not change it.",
+        "pages": [
+          1596,
+          1597
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She checks the gauge every day.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She checked it yesterday and has checked it today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.1",
+        "pages": [
+          1596,
+          1597
+        ],
+        "pdf_pages": [
+          1616,
+          1617
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Regular verb paradigms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-108",
+    "domain": "morphology",
+    "concept": "Lexical and dialectal verb doubling",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some verb bases show spelling-specific consonant doubling beyond the general stress rule, including certain bases ending in l or s.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Variety preferences differ. A complex verb with a verbal final element can inherit that verb's doubling pattern.",
+        "pages": [
+          1597,
+          1598
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They focused on the signal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They focussed on the signal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.1",
+        "pages": [
+          1597,
+          1598
+        ],
+        "pdf_pages": [
+          1617,
+          1618
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical and dialectal verb doubling",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-109",
+    "domain": "morphology",
+    "concept": "Adding k after final c",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "Verbs such as panic and picnic add k before ed and ing to retain the intended consonant spelling.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 18.",
+    "violation": "The final c is followed directly by ed or ing in a verb that requires k before that suffix.",
+    "exceptions": [
+      {
+        "description": "Arc has optional forms with k. The rule applies to the illustrated lexical pattern.",
+        "pages": [
+          1598
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guests panicked at the noise.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They were picnicking by the river.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The guests paniced at the noise.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They were picnicing by the river.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.1",
+        "pages": [
+          1598
+        ],
+        "pdf_pages": [
+          1618
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adding k after final c",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The final c is followed directly by ed or ing in a verb that requires k before that suffix.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The guests paniced at the noise. ||| The guests panicked at the noise.",
+        "They were picnicing by the river. ||| They were picnicking by the river."
+      ],
+      "learner_explanation": "Verbs such as panic and picnic add k before ed and ing to retain the intended consonant spelling.",
+      "corrected_paragraph_template": "Insert k after c before adding the inflectional suffix.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They picnic every summer.",
+        "The current arced.",
+        "The guests packed their bags."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "spelling-inflection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-110",
+    "domain": "morphology",
+    "concept": "Final e, y and o exceptions in verb inflection",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Verb spelling can preserve or alter final e, y or o according to the base and suffix. Pay and lay use aid in their regular-sounding past forms.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some forms have alternative spellings, including variable e retention. Say also changes its vowel in speech.",
+        "pages": [
+          1598,
+          1599
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They paid the invoice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The signal goes quiet at midnight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.1",
+        "pages": [
+          1598,
+          1599
+        ],
+        "pdf_pages": [
+          1618,
+          1619
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Final e, y and o exceptions in verb inflection",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-111",
+    "domain": "morphology",
+    "concept": "Irregular present forms and modals",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Be, have, do and say have irregular spoken third-person present forms. Core modal auxiliaries lack the usual person-number present contrast.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Be also has distinctive non-third-person forms. Spelling does not always show the spoken irregularity.",
+        "pages": [
+          1599,
+          1600
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has a key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She can open the door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.2",
+        "pages": [
+          1599,
+          1600
+        ],
+        "pdf_pages": [
+          1619,
+          1620
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Irregular present forms and modals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-112",
+    "domain": "morphology",
+    "concept": "Secondary ed formation and unchanged past forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some irregular past forms can be analyzed through suffix devoicing, vowel shortening or consonant reduction. In one group the past and participle match the base.",
+    "condition": "Applies to the construction described in §5.3.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some verbs also have regular variants, with differences by variety or sense.",
+        "pages": [
+          1600,
+          1601
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She kept the receipt.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They cut the cable yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.1",
+        "pages": [
+          1600,
+          1601
+        ],
+        "pdf_pages": [
+          1620,
+          1621
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Secondary ed formation and unchanged past forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-113",
+    "domain": "morphology",
+    "concept": "Combined consonant and vowel changes",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Several irregular past paradigms combine consonant reduction or suffix devoicing with vowel shortening or a final consonant change.",
+    "condition": "Applies to the construction described in §5.3.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Written patterns can hide phonological differences. Bereft and cleft commonly occur as adjectives.",
+        "pages": [
+          1601,
+          1602,
+          1603
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The carpenter built a shelf.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She led the way home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.1",
+        "pages": [
+          1601,
+          1602,
+          1603
+        ],
+        "pdf_pages": [
+          1621,
+          1622,
+          1623
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Combined consonant and vowel changes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-114",
+    "domain": "morphology",
+    "concept": "Three-way vowel alternation",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "Some irregular verbs use distinct stressed vowels in the base, preterite and past participle.",
+    "condition": "Applies to the construction described in §5.3.2 of Chapter 18.",
+    "violation": "The preterite and past participle of sing are interchanged in the ordinary standard paradigm.",
+    "exceptions": [
+      {
+        "description": "This applies to the particular lexical class. Other vowel-change verbs share a preterite and participle.",
+        "pages": [
+          1603
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She sang the opening verse.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has sung that verse before.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She sung the opening verse.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She has sang that verse before.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.2",
+        "pages": [
+          1603
+        ],
+        "pdf_pages": [
+          1623
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Three-way vowel alternation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "The preterite and past participle of sing are interchanged in the ordinary standard paradigm.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She sung the opening verse. ||| She sang the opening verse.",
+        "She has sang that verse before. ||| She has sung that verse before."
+      ],
+      "learner_explanation": "Some irregular verbs use distinct stressed vowels in the base, preterite and past participle.",
+      "corrected_paragraph_template": "Use sang as the simple past and sung after perfect have.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She has sung that verse before.",
+        "She sang that verse yesterday.",
+        "She has found the score."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "verb-form"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-115",
+    "domain": "morphology",
+    "concept": "Shared past forms and base-shaped participles",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some vowel-change verbs share one form for preterite and participle. A smaller group has a participle identical to the base.",
+    "condition": "Applies to the construction described in §5.3.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Regular alternatives and sense restrictions vary across lexemes.",
+        "pages": [
+          1603,
+          1604
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She found her keys.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has come back.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.2",
+        "pages": [
+          1603,
+          1604
+        ],
+        "pdf_pages": [
+          1623,
+          1624
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Shared past forms and base-shaped participles",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-116",
+    "domain": "morphology",
+    "concept": "Variety and sense in vowel-change verbs",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "An irregular form can be preferred in one variety or attached to a particular sense of a verb.",
+    "condition": "Applies to the construction described in §5.3.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relative frequency varies by variety. A form such as hove can be restricted to a nautical sense.",
+        "pages": [
+          1604
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cat sneaked out.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cat snuck out.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.2",
+        "pages": [
+          1604
+        ],
+        "pdf_pages": [
+          1624
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variety and sense in vowel-change verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-117",
+    "domain": "morphology",
+    "concept": "Past participles in en and n",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Several irregular verbs form participles with en or n. Suffixation may also alter the base spelling or pronunciation.",
+    "condition": "Applies to the construction described in §5.3.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some lexemes allow a regular form as well. A participial adjective can have a different distribution from a verbal participle.",
+        "pages": [
+          1604,
+          1605
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has taken the key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has sewn the seam.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.3",
+        "pages": [
+          1604,
+          1605
+        ],
+        "pdf_pages": [
+          1624,
+          1625
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past participles in en and n",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-118",
+    "domain": "morphology",
+    "concept": "Participial vowel patterns with en",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The preterite and en-participle can have different vowel alternations, including shortening or a change specific to the participle.",
+    "condition": "Applies to the construction described in §5.3.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The participle can be related directly to the lexical base or, in some classes, to the preterite form.",
+        "pages": [
+          1605,
+          1606
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The branch broke.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The branch has broken.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.3",
+        "pages": [
+          1605,
+          1606
+        ],
+        "pdf_pages": [
+          1625,
+          1626
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Participial vowel patterns with en",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-119",
+    "domain": "morphology",
+    "concept": "Lie and lay paradigms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Reclining lie is intransitive and has preterite lay and participle lain. Transitive lay has preterite and participle laid.",
+    "condition": "Applies to the construction described in §5.3.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lie meaning tell a falsehood is regular. Intransitive lay occurs in nonstandard usage.",
+        "pages": [
+          1607
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The coat lay on the chair.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She laid the coat on the chair.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.3",
+        "pages": [
+          1607
+        ],
+        "pdf_pages": [
+          1627
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lie and lay paradigms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-120",
+    "domain": "morphology",
+    "concept": "Got and gotten across varieties",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "American English allows gotten as a past participle of get alongside got in some uses. British English normally uses got.",
+    "condition": "Applies to the construction described in §5.3.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The alternatives vary with construction and meaning as well as variety.",
+        "pages": [
+          1607
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The weather has gotten colder.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The weather has got colder.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.3",
+        "pages": [
+          1607
+        ],
+        "pdf_pages": [
+          1627
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Got and gotten across varieties",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-121",
+    "domain": "morphology",
+    "concept": "Other irregular past formations",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The remaining irregular classes include vowel change with a suffix, consonant loss, ought or aught forms and suppletive preterites.",
+    "condition": "Applies to the construction described in §5.3.4 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Modal preterites do not fill a full ordinary verb paradigm.",
+        "pages": [
+          1607,
+          1608
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They sold the old truck.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They went home before dark.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.4",
+        "pages": [
+          1607,
+          1608
+        ],
+        "pdf_pages": [
+          1627,
+          1628
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Other irregular past formations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-122",
+    "domain": "morphology",
+    "concept": "Lexeme and variety in the irregular verb index",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The irregular verb index maps particular lexemes and variants to spoken-form classes. A different sense with the same spelling can have another paradigm.",
+    "condition": "Applies to the construction described in §5.3.5 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "For wind meaning deprive of breath, the regular preterite is winded. Lexical distinctions must precede classification.",
+        "pages": [
+          1608,
+          1609
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They wound the cable around the spool.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The steep climb winded the runner.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.5",
+        "pages": [
+          1608,
+          1609
+        ],
+        "pdf_pages": [
+          1628,
+          1629
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexeme and variety in the irregular verb index",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-123",
+    "domain": "morphology",
+    "concept": "Inflection of complex verb bases",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A complex verb can inherit the inflection of a verbal base, while a superficially similar formation can inflect regularly if its lexical structure differs.",
+    "condition": "Applies to the construction described in §5.4 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Relay meaning lay again has relaid, unlike relay meaning transmit. Spelling can reflect the component verb.",
+        "pages": [
+          1609
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They rewrote the notice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The operator relayed the warning.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.4",
+        "pages": [
+          1609
+        ],
+        "pdf_pages": [
+          1629
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflection of complex verb bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-124",
+    "domain": "morphology",
+    "concept": "Born and borne in the paradigm of bear",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Born is the usual spelling in the passive childbirth sense of bear and related uses. Borne is the ordinary participle in other senses, including carrying or enduring.",
+    "condition": "Applies to the participial alternation of bear described in §5.3.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The chapter gives this spelling distinction for British English. Preserve established metaphorical born and the distinction from preterite bore.",
+        "pages": [
+          1607
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo was born in June.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The weight was borne by the steel frame.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§5.3.3",
+        "pages": [
+          1607
+        ],
+        "pdf_pages": [
+          1627
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Born and borne in the paradigm of bear",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
