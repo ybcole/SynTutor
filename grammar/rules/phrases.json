@@ -3280,5 +3280,1535 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-048",
+    "domain": "phrases",
+    "concept": "Bipartite plurals for individual objects",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A bipartite plural can denote one garment, tool, or optical device while keeping plural agreement. A pair of introduces a singular counting head.",
+    "condition": "When the noun denotes an individual device or garment in its ordinary bipartite sense.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The joined halves are not generally named by a singular counterpart. The book documents occasional singular trouser for a trouser leg.",
+        "pages": [
+          341
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The binoculars on the shelf belong to Nadia.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A pair of pliers was in the emergency kit.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          341
+        ],
+        "pdf_pages": [
+          361
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bipartite plurals for individual objects",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-049",
+    "domain": "phrases",
+    "concept": "Regional names for bipartite objects",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "British English can use plural kitchen scales for a single device where American English uses singular kitchen scale. The book also distinguishes British plural overalls from American singular overall in the full-body garment sense.",
+    "condition": "When identifying regional names for the same device or garment.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Singular overall has a different garment sense in British English. Singular nutcracker and plural nutcrackers vary without the same regional division.",
+        "pages": [
+          341
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The kitchen scales are beside the mixer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A kitchen scale is tucked into the pantry.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          341
+        ],
+        "pdf_pages": [
+          361
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Regional names for bipartite objects",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-050",
+    "domain": "phrases",
+    "concept": "Cloth sense and garment sense",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some bipartite garment plurals have a corresponding noncount singular that names the material.",
+    "condition": "When a noun form can denote cloth or trousers made from it.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The material noun does not designate one half of the garment.",
+        "pages": [
+          341
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Corduroy dries slowly on the line.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My corduroys are still damp.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          341
+        ],
+        "pdf_pages": [
+          361
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cloth sense and garment sense",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-051",
+    "domain": "phrases",
+    "concept": "Counting bipartite objects",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Bare bipartite plurals work in generic and definite-set contexts. Pair is the dependable way to count individual specimens with a numeral.",
+    "condition": "When a bipartite plural refers to one or more complete objects.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some speakers accept both directly with certain bipartites, and direct numerals vary by lexeme and speaker. Generic reference does not require pair.",
+        "pages": [
+          342
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tweezers are handy for model making.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cabinet held three pairs of goggles.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          342
+        ],
+        "pdf_pages": [
+          362
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Counting bipartite objects",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-052",
+    "domain": "phrases",
+    "concept": "Bipartite noun type uses and compound bases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some bipartite nouns can appear in singular type descriptions in specialized writing, or as uninflected bases in compounds.",
+    "condition": "When writing about a product type or using a bipartite base as a modifier.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The specialized type use does not license a singular noun for an ordinary specimen. Historical garment descriptions may retain lexical s in such type uses.",
+        "pages": [
+          342
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The catalogue introduces a stretch jean for cyclists.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The tailor replaced the trouser lining.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          342
+        ],
+        "pdf_pages": [
+          362
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bipartite noun type uses and compound bases",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-053",
+    "domain": "phrases",
+    "concept": "Particle substances with plural morphology",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A plural noun can name a substance made up of particles without counting its constituent units in that use.",
+    "condition": "When the noun denotes a substance, such as oats as food.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Comparable substances can take singular noncount nouns, and peas and noodles have ordinary count uses. Much with plural oats is marginal in the cited analysis.",
+        "pages": [
+          342
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The oats are ready to go into the batter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I folded two peas into each dumpling.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          342
+        ],
+        "pdf_pages": [
+          362
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Particle substances with plural morphology",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-054",
+    "domain": "phrases",
+    "concept": "Partitive selection with aggregate plurals",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "In the aggregate senses here, item of selects clothing rather than clothes, and piece of selects jewellery rather than valuables.",
+    "condition": "When item or piece packages an individual member in an ordinary of-phrase with the stated aggregate meaning.",
+    "violation": "The partitive head and the aggregate noun are incompatible in this construction.",
+    "exceptions": [
+      {
+        "description": "A plural object can occur in a different construction, such as an item from a set, and these nouns may have other senses.",
+        "pages": [
+          343
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One item of clothing was left in the locker.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A piece of jewellery was hidden inside the parcel.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "One item of clothes was left in the locker.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "A piece of valuables was hidden inside the parcel.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          343
+        ],
+        "pdf_pages": [
+          363
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Partitive selection with aggregate plurals",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "The partitive head and the aggregate noun are incompatible in this construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "One item of clothes was left in the locker. ||| One item of clothing was left in the locker.",
+        "A piece of valuables was hidden inside the parcel. ||| A piece of jewellery was hidden inside the parcel."
+      ],
+      "learner_explanation": "In the aggregate senses here, item of selects clothing rather than clothes, and piece of selects jewellery rather than valuables.",
+      "corrected_paragraph_template": "Use clothing or jewellery for the aggregate, or name the individual item if known.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The clothes were left in the locker.",
+        "I selected an item from the clothes in the locker."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "countability"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-055",
+    "domain": "phrases",
+    "concept": "Aggregate senses and related count nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A plural aggregate may denote a mixed set even when its apparent singular counterpart has a narrower or different meaning.",
+    "condition": "When a plural denotes a collection rather than multiple instances of a single count sense.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The dishes can refer to cups and plates together. Count dish names an individual vessel. The contents of a container and the content of a text are distinct uses.",
+        "pages": [
+          343
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The contents of the satchel spilled across the floor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The content of the lecture was difficult to summarize.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          343
+        ],
+        "pdf_pages": [
+          363
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aggregate senses and related count nouns",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-056",
+    "domain": "phrases",
+    "concept": "Area readings of plural nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some ordinary count plurals also denote a continuous area with no salient count of individual objects.",
+    "condition": "When a locative phrase refers to an area characterized by natural or built features.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same spelling can have an ordinary count interpretation when the entities are individuated.",
+        "pages": [
+          343
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They built a cabin in the woods.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The survey mapped two woods near the river.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          343
+        ],
+        "pdf_pages": [
+          363
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Area readings of plural nouns",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-057",
+    "domain": "phrases",
+    "concept": "Lexical plurals in ing",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some plurals ending in ings have lexicalized meanings that do not imply multiple instances of the apparent singular.",
+    "condition": "When beginnings, lodgings, makings, savings, writings, belongings, or furnishings has a specialized plural sense.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lodgings can describe one or several places. Savings meaning accumulated money contrasts with count savings meaning reductions.",
+        "pages": [
+          343,
+          344
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her lodgings were above a bakery.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The repairs exhausted their savings.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          343,
+          344
+        ],
+        "pdf_pages": [
+          363,
+          364
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical plurals in ing",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-058",
+    "domain": "phrases",
+    "concept": "Lexical plurals for pay and social expressions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some lexical plurals refer to pay or compensation, and others conventionally express sentiments or greetings.",
+    "condition": "When reading conventional plural senses such as wages for pay or regards in a greeting.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The corresponding singular can have a different sense, as with wage. Return and returns can be close in meaning in investment contexts.",
+        "pages": [
+          344
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Their wages barely covered the fare.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team sent its condolences after the accident.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          344
+        ],
+        "pdf_pages": [
+          364
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical plurals for pay and social expressions",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-059",
+    "domain": "phrases",
+    "concept": "Miscellaneous lexical plural readings",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some plurals have an idiomatic or noncount reading alongside an ordinary count reading or a distinct register-specific use.",
+    "condition": "When interpreting words such as brains, eye-drops, minutes, arrears, or folks.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Minutes for a meeting record and arrears allow restricted separate-count readings. Folks is informal for family with a genitive and can also address an audience.",
+        "pages": [
+          344
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "My folks moved closer to the station.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The vet examined the brains of two specimens.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          344
+        ],
+        "pdf_pages": [
+          364
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Miscellaneous lexical plural readings",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-060",
+    "domain": "phrases",
+    "concept": "Plural friends with a singular subject",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In the relationship construction friends with, friends can serve as a predicative complement of a singular subject.",
+    "condition": "When describing the relation between the subject and the person in the with phrase.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A friend of describes the subject in a different construction. Other fixed expressions also license lexical plurals.",
+        "pages": [
+          344
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nina is friends with her former roommate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nina is a friend of my aunt's.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.1",
+        "pages": [
+          344
+        ],
+        "pdf_pages": [
+          364
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural friends with a singular subject",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-061",
+    "domain": "phrases",
+    "concept": "Borrowed plurals without a regular singular counterpart",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some borrowed plural nouns have no established corresponding singular in the construction discussed.",
+    "condition": "When interpreting plural uses of forms such as genitalia, minutiae, and regalia.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other borrowed plurals have established singular counterparts or undergo number reanalysis.",
+        "pages": [
+          345
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The minutiae of the contract were easy to overlook.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The museum catalogued the animal's genitalia.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.2",
+        "pages": [
+          345
+        ],
+        "pdf_pages": [
+          365
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Borrowed plurals without a regular singular counterpart",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-062",
+    "domain": "phrases",
+    "concept": "Plural agreement with cattle and police",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "In ordinary livestock and law-enforcement senses, cattle and police take plural agreement as subject heads despite lacking an overt plural suffix.",
+    "condition": "When cattle refers to the animals or police refers to officers collectively, and heads the subject.",
+    "violation": "The finite verb has the wrong number for the subject head in the specified sense.",
+    "exceptions": [
+      {
+        "description": "Different heads or constructions can take singular agreement, including herd and police force.",
+        "pages": [
+          345
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cattle are gathering by the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The police have reopened the bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The cattle is gathering by the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The police has reopened the bridge.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.2",
+        "pages": [
+          345
+        ],
+        "pdf_pages": [
+          365
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural agreement with cattle and police",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "agreement",
+      "error_pattern": "The finite verb has the wrong number for the subject head in the specified sense.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The cattle is gathering by the gate. ||| The cattle are gathering by the gate.",
+        "The police has reopened the bridge. ||| The police have reopened the bridge."
+      ],
+      "learner_explanation": "In ordinary livestock and law-enforcement senses, cattle and police take plural agreement as subject heads despite lacking an overt plural suffix.",
+      "corrected_paragraph_template": "Change the verb to plural agreement when the subject head is cattle or police in the stated sense.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The herd is gathering by the gate.",
+        "The police force has reopened the bridge."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "number_agreement"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-063",
+    "domain": "phrases",
+    "concept": "Rounded group counts and poultry senses",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Uninflected plurals such as cattle and police occur with high round numbers in group readings. Small exact counts favor individualized nouns or a counting unit.",
+    "condition": "When counting members of a herd or a body of police, or distinguishing poultry as birds from poultry as meat.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Poultry meaning meat is singular noncount. People and folk differ in permitting small numerals in their count readings.",
+        "pages": [
+          345
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ranch sold twenty head of cattle.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The festival hired six police officers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.2",
+        "pages": [
+          345
+        ],
+        "pdf_pages": [
+          365
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rounded group counts and poultry senses",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-064",
+    "domain": "phrases",
+    "concept": "People and folk in count readings",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "People and folk can combine with small numerals without having a matching singular in those readings. Person names one individual.",
+    "condition": "When people denotes individuals or folk denotes members of a group in a licensed collocation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Persons is available, often in formal contexts. A people and peoples denote ethnic or national groups. The older family use of my people is noncount.",
+        "pages": [
+          345
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Three people volunteered to stay behind.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two local folk showed us the path.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.2",
+        "pages": [
+          345
+        ],
+        "pdf_pages": [
+          365
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "People and folk in count readings",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-065",
+    "domain": "phrases",
+    "concept": "Singular agreement with news and shingles",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "News and shingles in its disease sense take singular agreement even though they end in s.",
+    "condition": "When news or disease-name shingles is the subject head.",
+    "violation": "The finite verb has the wrong number for the subject head in the specified sense.",
+    "exceptions": [
+      {
+        "description": "Roofing shingles are count plurals. A headline or quotation can mention a form without using it as the ordinary subject head.",
+        "pages": [
+          346
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This news has reached the board.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Shingles is the diagnosis in the chart.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "This news have reached the board.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Shingles are the diagnosis in the chart.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.3",
+        "pages": [
+          346
+        ],
+        "pdf_pages": [
+          366
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular agreement with news and shingles",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "agreement",
+      "error_pattern": "The finite verb has the wrong number for the subject head in the specified sense.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "This news have reached the board. ||| This news has reached the board.",
+        "Shingles are the diagnosis in the chart. ||| Shingles is the diagnosis in the chart."
+      ],
+      "learner_explanation": "News and shingles in its disease sense take singular agreement even though they end in s.",
+      "corrected_paragraph_template": "Use the singular form of the verb with news or with shingles when it names the illness.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Those shingles are loose after the storm.",
+        "The news reports have reached the board."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "number_agreement"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-066",
+    "domain": "phrases",
+    "concept": "Condition readings versus repeated symptoms",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some ailment nouns, including hiccups, allow singular or plural construal as a condition, while individuated spasms are ordinarily plural.",
+    "condition": "When distinguishing an ailment or episode from countable symptoms.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The book identifies variation with haemorrhoids and measles and treats several other disease names as lexical singulars. Plural measure nouns can also head NPs construed as one amount.",
+        "pages": [
+          346
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Hiccups is an unpleasant condition.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Three loud hiccups interrupted the recording.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.3",
+        "pages": [
+          346
+        ],
+        "pdf_pages": [
+          366
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Condition readings versus repeated symptoms",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-067",
+    "domain": "phrases",
+    "concept": "Invariant count nouns ending in s",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Several count nouns end in s in both numbers. Determiner and agreement can reveal the number even though the noun form stays the same.",
+    "condition": "When barracks, crossroads, means, or another cited noun has its invariant count sense.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Kennels can also be an ordinary plural of kennel, and baseball inning has a regular plural unlike cricket innings. The book records regional and speaker variation with premises and splits.",
+        "pages": [
+          346,
+          347
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This crossroads is poorly lit.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Both crossroads are poorly lit.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.3",
+        "pages": [
+          346,
+          347
+        ],
+        "pdf_pages": [
+          366,
+          367
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Invariant count nouns ending in s",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-068",
+    "domain": "phrases",
+    "concept": "Number and lexical sense in nouns ending in ics",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some ics forms are singular noncount field names. Others have plural readings for facts, views, processes, or other senses.",
+    "condition": "When distinguishing a field of study from objects, views, or processes named by a similar form.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some words and senses show agreement variation, and the source does not settle one morphological analysis for every form.",
+        "pages": [
+          347
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Phonetics is part of the required curriculum.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The statistics in the appendix are outdated.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.3",
+        "pages": [
+          347
+        ],
+        "pdf_pages": [
+          367
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Number and lexical sense in nouns ending in ics",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-069",
+    "domain": "phrases",
+    "concept": "Game names and pieces",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An s-final game name typically takes singular agreement. The same form can take plural agreement if it instead denotes multiple pieces.",
+    "condition": "When the subject refers to a game or its physical equipment.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Billiards has only the game reading in the relevant contrast. Some speakers use draughts for pieces as well as the game.",
+        "pages": [
+          348
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dominoes is popular at our neighborhood club.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dominoes were scattered across the rug.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.3",
+        "pages": [
+          348
+        ],
+        "pdf_pages": [
+          368
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Game names and pieces",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-070",
+    "domain": "phrases",
+    "concept": "Singular and plural construals of borrowed forms",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some historically plural forms have established singular uses alongside plural uses. Data is commonly singular in computing contexts.",
+    "condition": "When a borrowed form has variable grammatical number in the relevant register.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source distinguishes criteria and phenomena from the established standard singular cases. The discussion of mass-media agreement continues on p.349.",
+        "pages": [
+          348
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The data is backed up every hour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The data were collected at separate sites.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.4",
+        "pages": [
+          348
+        ],
+        "pdf_pages": [
+          368
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular and plural construals of borrowed forms",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-071",
+    "domain": "phrases",
+    "concept": "Plural forms after lexical reanalysis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Agenda and candelabra have established singular uses with regular English plurals. The same development is not equally established for all borrowed plurals.",
+    "condition": "When deciding whether an English plural in s belongs to a reanalyzed lexical form.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Candelabra can also be plural of candelabrum. The source recognizes insignias especially in American English and treats forms such as criterias as nonstandard.",
+        "pages": [
+          348
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Both agendas were printed before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A candelabra stood beside the stairway.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.4",
+        "pages": [
+          348
+        ],
+        "pdf_pages": [
+          368
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural forms after lexical reanalysis",
+        "relation": "unverified",
+        "note": "Independent B-R crosswalk required for this noun phrase or agreement distinction."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
   }
 ]

@@ -134,4 +134,9 @@ Printed 213–321 and blank 322 accounted for. Chapter 4 107 extracted substanti
 
 ## Chapter 5 first checkpoint — 2026-11-11
 
-Chapter 5 pp.323–340 inspected (contents-only 323–325, expository 326–340), with 28 inert grammar records. Report sources/cambridge/chapter_05/PP323_340_REPORT.md; audit sources/cambridge/chapter_05/PP323_340_AUDIT.json. Continue at printed p.341 on a chapter-level branch. Independent linguistic QA remains separate from Phase B.
+Chapter 5 pp.323–340 inspected (contents-only 323–325, expository 326–340), with 28 inert grammar records. Report sources/cambridge/chapter_05/PP323_340_REPORT.md; audit sources/cambridge/chapter_05/PP323_340_AUDIT.json. The next checkpoint covers printed pp.341–348. Independent linguistic QA remains separate from Phase B.
+
+
+## Chapter 5 second checkpoint (2026-11-11)
+
+Printed pp.341–348 checked against text and page layouts. The batch adds 24 records (`PHR-048`–`PHR-071`) for plural-only nouns, invariant count forms, and sense-dependent agreement. Continue at printed p.349 with the end of §3.2.4 and §3.3. The chapter remains on its rolling draft PR.
