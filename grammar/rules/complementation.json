@@ -10469,5 +10469,2143 @@
     "status": "NEEDS_REVIEW",
     "diagnostic": null,
     "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-164",
+    "domain": "complementation",
+    "concept": "Light-verb indirect-object licensing",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Light give, make and do can retain a verb-licensed indirect object even where the corresponding event noun itself cannot select an object.",
+    "condition": "For light-verb indirect-object licensing in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An event noun's nominal complement options do not wholly determine a light verb's ditransitive valency.",
+        "pages": [
+          293
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The instructor gave them a summary of the lecture.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The manager made her a proposal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.2",
+        "pages": [
+          293
+        ],
+        "pdf_pages": [
+          313
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light-verb indirect-object licensing",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-165",
+    "domain": "complementation",
+    "concept": "Light-verb prepositions can be verb-selected",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some PPs in light-verb constructions are selected by the verb rather than freely by the event noun.",
+    "condition": "For light-verb prepositions can be verb-selected in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The associated ordinary verb may license a different preposition than the nominal alone.",
+        "pages": [
+          293
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They put the blame on the contractor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She had a read of the magazine.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.2",
+        "pages": [
+          293
+        ],
+        "pdf_pages": [
+          313
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light-verb prepositions can be verb-selected",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-166",
+    "domain": "complementation",
+    "concept": "Light give event-only nominal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Light give with a bodily-action event noun can take one direct-object event noun without licensing an additional indirect object.",
+    "condition": "For light give event-only nominal in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Scowl differs in licensing an indirect-object-like person, so this pattern is lexically restricted.",
+        "pages": [
+          294
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The traveller gave a long sigh.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She gave a small shudder.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.2",
+        "pages": [
+          294
+        ],
+        "pdf_pages": [
+          314
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light give event-only nominal",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-167",
+    "domain": "complementation",
+    "concept": "Light give patient and recipient alternations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In give a kiss, the patient corresponds to indirect object without a to-PP alternant; give advice more freely alternates indirect-object and to-PP recipient.",
+    "condition": "For light give patient and recipient alternations in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A recipient-like semantic role does not guarantee a to-PP alternant across light-give nominal classes.",
+        "pages": [
+          294
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The child gave his sister a hug.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The tutor gave the learner advice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.2",
+        "pages": [
+          294
+        ],
+        "pdf_pages": [
+          314
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light give patient and recipient alternations",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-168",
+    "domain": "complementation",
+    "concept": "Light give description nominal takes of",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With a description or portrayal, the participant described is typically an of-complement of the noun while the recipient may be indirect object.",
+    "condition": "For light give description nominal takes of in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Do not reclassify the of-complement as an independent indirect object.",
+        "pages": [
+          294
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The artist gave us an illustration of the landscape.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The coordinator gave the team an explanation of the change.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.2",
+        "pages": [
+          294
+        ],
+        "pdf_pages": [
+          314
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light give description nominal takes of",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-169",
+    "domain": "complementation",
+    "concept": "Light make event and object-derived nominals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Light make permits eventive nouns with their own selected PPs, and an object of the associated verb may be represented inside of/other nominal PP.",
+    "condition": "For light make event and object-derived nominals in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The preposition can reflect the noun's valency rather than the associated verb's direct-object frame.",
+        "pages": [
+          295
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They made an inspection of the bridge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The engineer made an improvement to the design.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.2",
+        "pages": [
+          295
+        ],
+        "pdf_pages": [
+          315
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light make event and object-derived nominals",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-170",
+    "domain": "complementation",
+    "concept": "Light make indirect-object role change",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The indirect object of light make in make an offer is recipient-like rather than the goods-beneficiary found with ordinary make something for someone.",
+    "condition": "For light make indirect-object role change in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Marginal double-object combinations with donation or protest vary, and the prepositional alternant is often preferred.",
+        "pages": [
+          295
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The firm made the clients an offer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The chair made the audience a suggestion.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.2",
+        "pages": [
+          295
+        ],
+        "pdf_pages": [
+          315
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light make indirect-object role change",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-171",
+    "domain": "complementation",
+    "concept": "Light have and take dialect and event preference",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Light take often presents dynamic agentive action while have covers some states; AmE has a tendency toward take where BrE and AusE prefer have.",
+    "condition": "For light have and take dialect and event preference in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Do not prohibit either form across varieties when the source presents a tendency rather than a categorical rule.",
+        "pages": [
+          295
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They had a short chat about the proposal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee took a final decision.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.2",
+        "pages": [
+          295
+        ],
+        "pdf_pages": [
+          315
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light have and take dialect and event preference",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-172",
+    "domain": "complementation",
+    "concept": "Light do and noncount event nominals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Light do accepts both countable event-nominals and noncount activity-nominals, the latter often with some.",
+    "condition": "For light do and noncount event nominals in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An event noun's mass/count status affects determiner use; bare work is not automatically an error.",
+        "pages": [
+          296
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The students did a short dance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They did some writing in class.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.2 / §8",
+        "pages": [
+          296
+        ],
+        "pdf_pages": [
+          316
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light do and noncount event nominals",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-173",
+    "domain": "complementation",
+    "concept": "Lexical alternation taxonomy",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Multiple complementation patterns are organised by changes in transitivity, ditransitivity and core/noncore function, distinct from passive and other noncanonical packaging.",
+    "condition": "For lexical alternation taxonomy in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not every lexical pair preserves argument alignment or meaning.",
+        "pages": [
+          296
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The technician cleaned the equipment.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The equipment cleaned easily.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.2 / §8",
+        "pages": [
+          296
+        ],
+        "pdf_pages": [
+          316
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical alternation taxonomy",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-174",
+    "domain": "complementation",
+    "concept": "Role alignment in lexical alternations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Two structures may preserve the subject's role or align the intransitive subject with the transitive object, independently of the number of complements.",
+    "condition": "For role alignment in lexical alternations in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A similar word count does not imply identical valency or grammatical functions.",
+        "pages": [
+          297
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The nurse warmed the soup.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The soup warmed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8",
+        "pages": [
+          297
+        ],
+        "pdf_pages": [
+          317
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Role alignment in lexical alternations",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-175",
+    "domain": "complementation",
+    "concept": "Combined versus separate complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A single internal NP can incorporate information expressed by an object plus PP in a related, larger-valency construction.",
+    "condition": "For combined versus separate complements in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The internal role may appear as a genitive determiner or an of-complement, not as a new object.",
+        "pages": [
+          297
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina kissed the baby's forehead.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina praised the student's curiosity.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8",
+        "pages": [
+          297
+        ],
+        "pdf_pages": [
+          317
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Combined versus separate complements",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-176",
+    "domain": "complementation",
+    "concept": "Conative object versus at-PP",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An at-PP conative frames an attempted action, which need not entail successful contact as a direct-object construction often does.",
+    "condition": "For conative object versus at-pp in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The difference is partly implicatural and verb-specific; a valid conative is not an incorrect transitive.",
+        "pages": [
+          298
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The horse kicked at the fence.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The horse kicked the fence.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.1(a)",
+        "pages": [
+          298
+        ],
+        "pdf_pages": [
+          318
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conative object versus at-PP",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-177",
+    "domain": "complementation",
+    "concept": "Directional transitive endpoint contrast",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A direct-object movement clause can convey traversal or achievement while a corresponding PP may allow incomplete traversal.",
+    "condition": "For directional transitive endpoint contrast in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some transitive verbs entail endpoints while others merely imply greater coverage; avoid universal perfectivity rules.",
+        "pages": [
+          299
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The climbers crossed the stream.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The climbers moved across the stream.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.1(b)–(e)",
+        "pages": [
+          299
+        ],
+        "pdf_pages": [
+          319
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Directional transitive endpoint contrast",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-178",
+    "domain": "complementation",
+    "concept": "Consultation and contest NP/PP alternation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Meet, consult and compete-related verbs may alternate a direct-object NP with with/against PPs, changing intended event type or participant relationship.",
+    "condition": "For consultation and contest np/pp alternation in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Metaphorical contest uses need not preserve literal symmetric participant relations.",
+        "pages": [
+          299
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lawyer met the witness.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lawyer met with the witness.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.1(b)–(e)",
+        "pages": [
+          299
+        ],
+        "pdf_pages": [
+          319
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Consultation and contest NP/PP alternation",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-179",
+    "domain": "complementation",
+    "concept": "Emission NP versus with-PP contrast",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verbs of emission have both substance-as-object and with-PP patterns, often with differing goal licensing.",
+    "condition": "For emission np versus with-pp contrast in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Both patterns are grammatical but may differ in how far the emitted substance reaches.",
+        "pages": [
+          299
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The pipe dripped water.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The pipe was dripping with water.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.1(b)–(e)",
+        "pages": [
+          299
+        ],
+        "pdf_pages": [
+          319
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emission NP versus with-PP contrast",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-180",
+    "domain": "complementation",
+    "concept": "Emission source and theme reversal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With verbs such as sprout and ooze, the emitted theme can become subject while the source is introduced in a from-PP.",
+    "condition": "For emission source and theme reversal in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Role alignment, not surface constituent order, determines the grammatical contrast.",
+        "pages": [
+          300
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The plant sprouted new shoots.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "New shoots sprouted from the plant.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.1(e) / §8.1.2 / §8.1.3",
+        "pages": [
+          300
+        ],
+        "pdf_pages": [
+          320
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emission source and theme reversal",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-181",
+    "domain": "complementation",
+    "concept": "Multiple kinds of implicit object",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Intransitive uses of basically transitive verbs may involve definite, reflexive, reciprocal or indefinite unexpressed objects, rather than one generic omission operation.",
+    "condition": "For multiple kinds of implicit object in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some omitted objects change the event's lexical or aspectual interpretation.",
+        "pages": [
+          300
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The family had already eaten.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We read for several hours.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.1(e) / §8.1.2 / §8.1.3",
+        "pages": [
+          300
+        ],
+        "pdf_pages": [
+          320
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple kinds of implicit object",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-182",
+    "domain": "complementation",
+    "concept": "Instruction-register implicit object",
+    "rule_type": "variety_restricted",
+    "scope": "clause",
+    "statement": "Instructions and recipes may omit a contextually identified object, often in an imperative and with other register reductions.",
+    "condition": "For instruction-register implicit object in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same omission may be unacceptable in an ordinary declarative; register must be determined.",
+        "pages": [
+          301
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Stir gently before serving.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Shake thoroughly before opening.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.3(a)–(b)",
+        "pages": [
+          301
+        ],
+        "pdf_pages": [
+          321
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Instruction-register implicit object",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation.",
+    "variety": "instructions, recipes, labels, and process directions"
+  },
+  {
+    "id": "COMP-183",
+    "domain": "complementation",
+    "concept": "Lexically restricted implicit definite object",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Win and answer license a contextually definite, unexpressed object in clauses where enjoy does not normally license the analogous omitted event.",
+    "condition": "For lexically restricted implicit definite object in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The omitted item must be recoverable; omission with unrelated verbs is not automatically licensed.",
+        "pages": [
+          301
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The home side won easily.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mira answered promptly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.3(a)–(b)",
+        "pages": [
+          301
+        ],
+        "pdf_pages": [
+          321
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexically restricted implicit definite object",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-184",
+    "domain": "complementation",
+    "concept": "Reflexive omission with bodily-care verbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Selected verbs of bodily care may appear without an overt reflexive NP, while a similarly transitive verb like clothe does not use that pattern.",
+    "condition": "For reflexive omission with bodily-care verbs in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other use-senses, such as washing objects and goal resultatives, require additional distinctions.",
+        "pages": [
+          302
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nico shaved before class.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The children washed before dinner.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.3(b)–(d)",
+        "pages": [
+          302
+        ],
+        "pdf_pages": [
+          322
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reflexive omission with bodily-care verbs",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-185",
+    "domain": "complementation",
+    "concept": "Reciprocal omission with selected verbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some encounter and social-relationship verbs allow an unexpressed reciprocal argument while resemble does not.",
+    "condition": "For reciprocal omission with selected verbs in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An intransitive marry or kiss does not imply that every transitive event of that verb is semantically symmetrical.",
+        "pages": [
+          302
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The former neighbours met again.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The couple married last spring.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.3(b)–(d)",
+        "pages": [
+          302
+        ],
+        "pdf_pages": [
+          322
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reciprocal omission with selected verbs",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-186",
+    "domain": "complementation",
+    "concept": "Gestural body-part omission",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Blink, clap, nod and shrug have customary intransitive bodily gestures with implicit body-part involvement, unlike lexemes such as crane.",
+    "condition": "For gestural body-part omission in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An overt body-part NP may be uncommon in some gestures, and changing verbs affects license.",
+        "pages": [
+          303
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The audience clapped loudly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The guest nodded politely.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.3(d)–(g)",
+        "pages": [
+          303
+        ],
+        "pdf_pages": [
+          323
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gestural body-part omission",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-187",
+    "domain": "complementation",
+    "concept": "Generic human object omitted",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Certain advising, biting and disturbing verbs permit an intransitive use with a general human patient, while alert and injure do not show the same ordinary omission.",
+    "condition": "For generic human object omitted in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Intransitive use is more natural in habitual/general than one-off event contexts.",
+        "pages": [
+          303
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dog bites when frightened.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new advertisement seldom pleases.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.3(d)–(g)",
+        "pages": [
+          303
+        ],
+        "pdf_pages": [
+          323
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Generic human object omitted",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-188",
+    "domain": "complementation",
+    "concept": "Specific and normal implicit categories",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Intransitive drink may refer to alcohol or fluids generally, while read normally implies ordinary reading matter and eat ordinary food.",
+    "condition": "For specific and normal implicit categories in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The availability of an implicit object is sense/context-specific; unusual objects may require mention.",
+        "pages": [
+          304
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The residents had already eaten.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She reads most evenings.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.3(g)–(h)",
+        "pages": [
+          304
+        ],
+        "pdf_pages": [
+          324
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specific and normal implicit categories",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-189",
+    "domain": "complementation",
+    "concept": "Unlicensed implicit object for peruse",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In an ordinary independent declarative, peruse in its reading sense requires an explicit direct object rather than the intransitive read-type pattern.",
+    "condition": "For unlicensed implicit object for peruse in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": "In the narrow licensed construction: In an ordinary independent declarative, peruse in its reading sense requires an explicit direct object rather than the intransitive read-type pattern.",
+    "exceptions": [
+      {
+        "description": "Instructions, quoted fragments and separately licensed ellipsis cannot be decided by simple string matching.",
+        "pages": [
+          304
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She perused the catalogue.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The reviewer perused the report.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She perused all afternoon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The reviewer perused at dawn.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.3(g)–(h)",
+        "pages": [
+          304
+        ],
+        "pdf_pages": [
+          324
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unlicensed implicit object for peruse",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "missing_word",
+      "error_pattern": "In the narrow licensed construction: In an ordinary independent declarative, peruse in its reading sense requires an explicit direct object rather than the intransitive read-type pattern.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She perused all afternoon. ||| She perused the catalogue.",
+        "The reviewer perused at dawn. ||| The reviewer perused the report."
+      ],
+      "learner_explanation": "The relevant verb sense requires a specific complementation pattern. In an ordinary independent declarative, peruse in its reading sense requires an explicit direct object rather than the intransitive read-type pattern. Before editing, check for ellipsis, passive interpretation, register and unrelated senses.",
+      "corrected_paragraph_template": "Show the licensed form in its clause and explain why the selected verb constrains complementation while preserving context.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She read all afternoon.",
+        "She perused the papers carefully."
+      ],
+      "lesson_tags": [
+        "CGEL_ch04",
+        "complementation"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-190",
+    "domain": "complementation",
+    "concept": "Activity differs from object accomplishment",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An intransitive activity such as read or iron may lack the accomplishment entailments of a transitive use with a particular object.",
+    "condition": "For activity differs from object accomplishment in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adding something is not always an equivalent paraphrase of activity predication.",
+        "pages": [
+          304
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She read until midnight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She ironed before the guests arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.3(g)–(h)",
+        "pages": [
+          304
+        ],
+        "pdf_pages": [
+          324
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Activity differs from object accomplishment",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-191",
+    "domain": "complementation",
+    "concept": "Cognate objects are lexically restricted",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some primarily intransitive verbs select narrow cognate object nouns, commonly modified, without licensing arbitrary non-cognate objects.",
+    "condition": "For cognate objects are lexically restricted in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Cognate noun modification is nearly obligatory in canonical clauses, but relative clauses have exceptions.",
+        "pages": [
+          305
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The traveller lived a difficult life.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She smiled a weary smile.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.3(h)–(k)",
+        "pages": [
+          305
+        ],
+        "pdf_pages": [
+          325
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cognate objects are lexically restricted",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-192",
+    "domain": "complementation",
+    "concept": "Objects conveying a reaction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A communicative gesture can license a factitive/object noun representing what the gesture conveyed, often without a related passive.",
+    "condition": "For objects conveying a reaction in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Manner-of-speaking verbs allow other object types and more passivisation than gesture verbs.",
+        "pages": [
+          305
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara nodded her agreement.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitor whispered an apology.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.3(h)–(k)",
+        "pages": [
+          305
+        ],
+        "pdf_pages": [
+          325
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Objects conveying a reaction",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-193",
+    "domain": "complementation",
+    "concept": "Inchoative/causative dynamic alternation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With selected change-of-state verbs, the affected theme can be direct object in the caused event and subject in the intransitive event.",
+    "condition": "For inchoative/causative dynamic alternation in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The verb must license the alternation lexically; construct and destroy lack the simple intransitive counterpart.",
+        "pages": [
+          306
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ice melted in the sun.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gardener melted the ice with warm water.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.4(a)",
+        "pages": [
+          306
+        ],
+        "pdf_pages": [
+          326
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inchoative/causative dynamic alternation",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-194",
+    "domain": "complementation",
+    "concept": "Construct and destroy lack ordinary inchoative uses",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "The ordinary causative verbs construct and destroy do not license a bare intransitive clause with their affected theme as subject in the same sense.",
+    "condition": "For construct and destroy lack ordinary inchoative uses in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": "In the narrow licensed construction: The ordinary causative verbs construct and destroy do not license a bare intransitive clause with their affected theme as subject in the same sense.",
+    "exceptions": [
+      {
+        "description": "Passive uses and alternate meanings must not be mistaken for bare inchoatives.",
+        "pages": [
+          306
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The demolition team destroyed the warehouse.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The building collapsed during the storm.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The warehouse destroyed overnight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The shed constructed last week.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.4(a)",
+        "pages": [
+          306
+        ],
+        "pdf_pages": [
+          326
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Construct and destroy lack ordinary inchoative uses",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "In the narrow licensed construction: The ordinary causative verbs construct and destroy do not license a bare intransitive clause with their affected theme as subject in the same sense.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The warehouse destroyed overnight. ||| The demolition team destroyed the warehouse.",
+        "The shed constructed last week. ||| The building collapsed during the storm."
+      ],
+      "learner_explanation": "The relevant verb sense requires a specific complementation pattern. The ordinary causative verbs construct and destroy do not license a bare intransitive clause with their affected theme as subject in the same sense. Before editing, check for ellipsis, passive interpretation, register and unrelated senses.",
+      "corrected_paragraph_template": "Show the licensed form in its clause and explain why the selected verb constrains complementation while preserving context.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The window broke yesterday.",
+        "The warehouse was destroyed overnight."
+      ],
+      "lesson_tags": [
+        "CGEL_ch04",
+        "complementation"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-195",
+    "domain": "complementation",
+    "concept": "Copular resultant state versus inchoative event",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A copular AdjP can describe a resultant state where the active intransitive verb describes a change event.",
+    "condition": "For copular resultant state versus inchoative event in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A participial form may also have a passive reading; not every adjective-like form uniquely denotes a PC.",
+        "pages": [
+          306
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gate opened slowly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gate remained open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.4(a)",
+        "pages": [
+          306
+        ],
+        "pdf_pages": [
+          326
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Copular resultant state versus inchoative event",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-196",
+    "domain": "complementation",
+    "concept": "Sense-conditioned causative alternation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The same verb can permit caused/inchoative alternation in one meaning but not with record-breaking, emotional or body-part senses.",
+    "condition": "For sense-conditioned causative alternation in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Transitivity must be determined from the full lexical sense, not just the verb lemma.",
+        "pages": [
+          307
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The situation changed suddenly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The window broke during the gale.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.4(a)–(d)",
+        "pages": [
+          307
+        ],
+        "pdf_pages": [
+          327
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Sense-conditioned causative alternation",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-197",
+    "domain": "complementation",
+    "concept": "Stative and directed agentive alternations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some positional verbs have a stative intransitive and causative transitive, while directed motion verbs may yield a caused-motion use.",
+    "condition": "For stative and directed agentive alternations in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Semantics of cause, escort and agentivity differ; not all movement verbs permit the same causative.",
+        "pages": [
+          307
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ladder leaned against the wall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dog walked around the garden.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.4(a)–(d)",
+        "pages": [
+          307
+        ],
+        "pdf_pages": [
+          327
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stative and directed agentive alternations",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
+  },
+  {
+    "id": "COMP-198",
+    "domain": "complementation",
+    "concept": "English middle is active syntax",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "So-called middle intransitives are active in grammatical form, often describing dispositions or ease rather than an explicit single event.",
+    "condition": "For english middle is active syntax in the particular lexical construction and reading discussed in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The term middle is semantic shorthand, not an additional English voice category.",
+        "pages": [
+          307
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The shirt irons easily.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new language reads smoothly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§8.1.4(a)–(d)",
+        "pages": [
+          307
+        ],
+        "pdf_pages": [
+          327
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "English middle is active syntax",
+        "relation": "unverified",
+        "note": "Burton-Roberts terminology and tree relation require independent crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Checked source examples and qualifications in CGEL full PDF; examples independently written in English. No independent QA or runtime activation."
   }
 ]
