@@ -47,7 +47,7 @@ function disclosure(el, label, ...content) {
   return details;
 }
 
-function addPractice(body, ui, { key, prompt, choices, correct, feedback, onAnswer }) {
+function addPractice(body, ui, { key, prompt, choices, correct, feedback }) {
   const { el, practiceQuestion } = ui;
   const response = el('p', undefined, 'lesson-feedback');
   response.setAttribute('role', 'status');
@@ -56,7 +56,6 @@ function addPractice(body, ui, { key, prompt, choices, correct, feedback, onAnsw
     const isCorrect = index === correct;
     response.className = `lesson-feedback ${isCorrect ? 'correct' : 'retry'}`;
     response.textContent = feedback[index];
-    onAnswer?.();
   }), response);
 }
 
@@ -159,45 +158,45 @@ function addTreeComparison(body, ui) {
   };
 }
 
-function addClosingWarmup(body, ui) {
-  const { el } = ui;
-  const exercise = el('div');
-  const reasoning = el('div', undefined, 'lesson-warmup-reason');
-  reasoning.hidden = true;
-  addPractice(exercise, ui, {
-    key: 'warmup-split',
-    prompt: 'Where does the subject end?',
-    choices: [
-      'The children / by the window were reading quietly',
-      'The children by the window / were reading quietly',
-      'The children by the window were / reading quietly',
-    ],
-    correct: 1,
-    feedback: [
-      'Keep “by the window” with “the children”. It tells you which children.',
-      'That’s the whole split. “The children by the window” is the subject, and “were reading quietly” is the predicate.',
-      '“Were” belongs with “reading quietly” in the statement.',
-    ],
-    onAnswer: () => { reasoning.hidden = false; },
+function addSubjectBoundary(body, { el, button }) {
+  const prompt = 'Select the last word of the subject.';
+  const words = longSentence.split(' ');
+  const subjectEnd = longSubject.split(' ').length - 1;
+  const choices = el('div', undefined, 'constituent-controls');
+  choices.setAttribute('role', 'group');
+  choices.setAttribute('aria-label', prompt);
+  const response = el('p', undefined, 'lesson-feedback');
+  response.setAttribute('role', 'status');
+  const controls = words.map((word, index) => {
+    const control = button(word, () => selectBoundary(index));
+    control.setAttribute('aria-label', `End the subject after word ${index + 1}, ${word}`);
+    control.setAttribute('aria-pressed', 'false');
+    return control;
   });
-  addPractice(reasoning, ui, {
-    key: 'warmup-reason',
-    prompt: 'What would show that “The children by the window” is the subject in a tree?',
-    choices: [
-      'It is an NP anywhere in the tree.',
-      'It comes first in the sentence.',
-      'It is the NP directly under S, next to the VP.',
-    ],
-    correct: 2,
-    feedback: [
-      'An NP can also be inside the VP. Look at which node the NP attaches to.',
-      'In this example it comes first, but the tree shows its job through its position under S.',
-      'Exactly. In this pattern, that NP and the predicate VP are the two direct branches under S.',
-    ],
-  });
-  exercise.append(reasoning);
+  function selectBoundary(index) {
+    controls.forEach((control, position) => control.setAttribute('aria-pressed', String(position === index)));
+    const correct = index === subjectEnd;
+    response.className = `lesson-feedback ${correct ? 'correct' : 'retry'}`;
+    if (correct) {
+      response.replaceChildren(el('strong', 'Subject '), longSubject, el('br'),
+        el('strong', 'Predicate '), longPredicate);
+    } else {
+      response.textContent = index < subjectEnd
+        ? 'Keep the words that tell you which robins together. Where does that group end?'
+        : '“Are singing softly” says what the robins are doing. Move the boundary to the word before “are”.';
+    }
+  }
+  choices.append(...controls);
+  body.append(el('p', prompt), choices, response);
+}
+
+function addClosingWarmup(body, { el }) {
   body.append(disclosure(el, 'Try an unscored warm-up',
-    el('p', 'The children by the window were reading quietly.', 'lesson-example-sentence'), exercise));
+    el('p', 'The children by the window were reading quietly.', 'lesson-example-sentence'),
+    el('p', 'Say or write the whole subject and predicate. Which two branches would you attach directly to S?'),
+    disclosure(el, 'Reveal the analysis',
+      el('p', '[The children by the window] [were reading quietly]', 'lesson-example-sentence'),
+      el('p', 'The NP includes “by the window”, which tells us which children. The VP includes “were”, “reading”, and “quietly”. Both phrases are direct branches under S.'))));
 }
 
 export function addSubjectPredicateTeaching(body, page, ui) {
@@ -213,29 +212,19 @@ export function addSubjectPredicateTeaching(body, page, ui) {
   };
 
   if (page === 0) {
-    paragraph('In Chapter 1, “the quiet garden” formed a group inside “near the quiet garden”. That was a question about which words belong together. Now we’ll look at the groups that make up a whole sentence and ask what job each group does.');
     section('What this chapter covers',
-      'Start with a sentence about birds. You’ll find its two main parts, then see how either part can grow without changing the basic shape of the sentence.');
+      'Chapter 1 asked which words belong together. Here we ask what job each group does in a sentence.');
     body.append(el('p', sentence, 'lesson-example-sentence'));
-    paragraph('Read the sentence. Where would you divide it into two parts? Find the whole group that names the birds, then the part that tells you what they do.');
+    paragraph('Where would you divide this sentence into two groups?');
     body.append(disclosure(el, 'See the two parts',
       el('p', `[${np}] [${vp}]`, 'lesson-example-sentence'),
-      el('p', `“${np}” names the birds and works as the subject. “${vp}” says what they do and works as the predicate.`)));
-    section('The same pattern with more words',
-      'Compare “The robins sing” with “The robins sing every morning”. In both sentences, “The robins” is the subject. In the second sentence, “sing every morning” is the whole predicate. The extra words tell us when the birds sing.',
-      'Later, you’ll keep track of both groups in a tree. You’ll also see how the same phrase can have a different job in another sentence.');
-    section('What you’ll be able to do');
-    list([
-      'Find the complete subject and predicate, even when they contain several words.',
-      'Use a tree to see the difference between the kind of phrase and its job.',
-      'Build a tree showing the two main parts of a sentence.',
-    ]);
+      el('p', `“${np}” is the subject. “${vp}” is the predicate. In this sentence, the subject names the birds and the predicate tells us what they do.`)));
     section('What you’ll see in this chapter');
     const preview = el('ol');
     for (const [topic, example] of [
-      ['Find the two groups.', 'Use a yes/no question to find the whole subject in “The robins near the gate are singing softly”.'],
+      ['Find the two groups.', 'Use a yes/no question to find where the subject ends.'],
       ['Read and build a tree.', 'Follow the branches in “The robins sing”, then draw them in the lesson canvas.'],
-      ['Try a new sentence.', 'See how “the robins” changes jobs in “Maya watched the robins”, then build a tree for a sentence about an open gate.'],
+      ['Try a new sentence.', 'See how the same noun phrase changes jobs, then build a tree for a new sentence.'],
     ]) {
       const item = el('li');
       item.append(el('strong', topic), ` ${example}`);
@@ -247,25 +236,12 @@ export function addSubjectPredicateTeaching(body, page, ui) {
   if (page === 1) {
     section('Find the two main groups',
       'Start with the smallest example and keep one question in mind. Which words belong to the group we are talking about, and which words say something about it?');
+    paragraph('Compare “The robins sing” with “The robins sing every morning”. The subject stays “The robins”. The predicate grows to “sing every morning”, which tells us when the birds sing.');
     const examples = el('ul');
     examples.append(el('li', `[${np}] [${vp}]`), el('li', longSentence));
     body.append(examples);
     paragraph('The longer sentence has the same two-part pattern. Find all the words that tell you which birds, then all the words that say what those birds are doing.');
-    addPractice(body, ui, {
-      key: 'long-split',
-      prompt: 'Where would you put the boundary in the longer sentence?',
-      choices: [
-        'The robins / near the gate are singing softly',
-        `${longSubject} / ${longPredicate}`,
-        `${longSubject} are / singing softly`,
-      ],
-      correct: 1,
-      feedback: [
-        'Keep “near the gate” with “The robins”. It tells you which robins.',
-        'Yes. The whole subject is “The robins near the gate”. All three words in “are singing softly” form the predicate.',
-        '“Are” goes with “singing softly” in the statement.',
-      ],
-    });
+    addSubjectBoundary(body, ui);
     section('Check the whole subject with a question',
       'Compare the longer statement with a question you could answer with yes or no. Move “are” to the start. Read from “the” to “gate”. These words stay together even when their position changes.');
     body.append(disclosure(el, 'Reveal the question',

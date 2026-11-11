@@ -28,7 +28,7 @@ affected section.
 
 | Page | What the learner does | What the page needs |
 | --- | --- | --- |
-| 1. Introduction and opening check | Recall an idea from the previous chapter. Make a prediction about a short example and reveal the explanation. | A plain-language **What this chapter covers**, a small contrast showing why the new idea matters, and concrete outcomes. Include a visible **What you’ll see in this chapter** preview with examples from the upcoming reading, worked activity, and application pages. End with three unscored questions shown one at a time, with the reviewed prediction as the saved first response. |
+| 1. Introduction and opening check | Recall an idea from the previous chapter. Make a prediction about one short example and reveal the explanation. | A brief **What this chapter covers**, one example that introduces the concept, and a compact **What you’ll see in this chapter** preview that also serves as the learning outcomes. Save longer contrasts and explanations for the teaching pages. End with three unscored questions shown one at a time, with the reviewed prediction as the saved first response. |
 | 2. Core concepts | Work through the book's reasoning using the chapter's example and a contrasting example. Try a diagnostic or decide between two analyses. | Several descriptive subheadings. Under each, explain one idea in short paragraphs, show which words or branches provide evidence, and give feedback on a likely misunderstanding. Keep the essential explanation visible and use disclosures for answers and extra detail. |
 | 3. Worked analysis and guided construction | Read a tree from a meaningful starting node. Trace the words and compare the same relationship in another example. Build or edit the part that demonstrates the concept. | An authored canvas, a nearby notation guide, and short captions explaining the relation. For tree construction, place the editable canvas with **Guide me** and **Check construction** in the lesson. Match the scope of the construction task to the chapter's outcome. |
 | 4. Apply the concept | Compare a pair of sentences or analyse a new one. Explain which evidence supports the decision, then practise the relationship again. | A new example that requires the same reasoning, feedback that explains the result, and a worked reveal. If the application asks learners to build, provide a second guided editor on this page with its own draft. |
@@ -49,6 +49,14 @@ Before each worked figure, name the sentence, connect the figure to the
 preceding explanation, and tell learners which words or branches to trace.
 Explain unfamiliar symbols before asking learners to use the diagram.
 
+Use at most two multiple-choice questions across the teaching pages. Reserve
+them for choices where each plausible answer reveals a different misunderstanding.
+For other practice, let learners select a word boundary, trace a branch,
+edit a tree, or say or write an analysis and reveal the explanation. Give
+feedback that points to the relevant words or branches. This limit applies
+to practice inside the content. The opening and closing knowledge checks
+use their existing question flow.
+
 ## Chapter 2 reference implementation
 
 Chapter 2 covers the immediate NP and VP under S in the basic V2 pattern.
@@ -63,12 +71,12 @@ later coverage already mapped in the curriculum.
 
 | Page | Implemented teaching sequence |
 | --- | --- |
-| Introduction | Recall the garden phrase from Chapter 1. Find the two groups in *The robins sing*, then see how *every morning* extends the predicate. |
-| Finding the subject and predicate | Compare the short sentence with *The robins near the gate are singing softly*. Use a yes/no question and pronoun replacement to check the full subject. Explain NP and VP, and show a predicate that describes a state. |
+| Introduction | Bridge from word groups to their jobs. Use *The robins sing* to introduce subject and predicate, then preview finding, reading, and building the two groups. |
+| Finding the subject and predicate | Show how *every morning* extends the predicate. Then select the last word of the subject in *The robins near the gate are singing softly*. Use a yes/no question and pronoun replacement to check the full subject. Explain NP and VP, and show a predicate that describes a state. |
 | Reading and building the NP/VP tree | Compare the two trees and trace the span of a branch. Explain sister nodes and the purpose of the triangles. Build the short example in the lesson and use the longer canvas for a branch-selection check. |
-| Applying the split | Compare *The robins sing* with *Maya watched the robins*. Open a close-up to see the NP within the VP. Build *The gate by our house is open* in a second embedded editor, using a separate draft. |
+| Applying the split | Use the lesson’s one multiple-choice item to compare *The robins sing* with *Maya watched the robins*. Open a close-up to see the NP within the VP. Build *The gate by our house is open* in a second embedded editor, using a separate draft. |
 | Chapter recap | Use a short procedure and a fresh example, *The lights in the hall were bright*. Apply the Cambridge sentence–clause distinction to two examples as a cited note. |
-| Closing check | Offer an unscored boundary-and-reason warm-up, followed by the three reviewed M4 questions. |
+| Closing check | Offer a short open-response warm-up with a reveal, followed by the three reviewed M4 questions. |
 
 Chapter 2 uses the yes/no question as a way to find the group in the
 corresponding statement. The tree task stays on the statement. Later
@@ -148,6 +156,9 @@ new practice and draft edits leave assessment progress intact.
 > Write a six-page lesson with multiple readable teaching sections, a
 > sustained example, at least one contrast that exposes a likely error, a
 > worked analysis, fresh application, recap, and the existing closing check.
+> Keep the introduction to one example and a short learning preview. Use at
+> most two multiple-choice questions inside the teaching content, and use
+> direct interaction or short open-response practice for the other activities.
 > Place any tree-building activity directly in the lesson using the existing
 > editable canvas with an optional clickable guide. Keep Cambridge as cited
 > context within the teaching. Preserve the reviewed assessment and progress
