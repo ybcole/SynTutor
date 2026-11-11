@@ -7,3 +7,5 @@
 {"id":"MOD-002","sentence":"She can sings.","phenomenon":"modal_plain_form","expected_acceptable":false,"preferred_correction":"She can sing.","reference":"CGEL Ch3 §2.4 p107; Burton-Roberts Ch6 p116","review_status":"draft"}
 {"id":"MOD-003","sentence":"They can sing.","phenomenon":"modal_invariance","expected_acceptable":true,"preferred_correction":null,"reference":"CGEL Ch3 §2.4 p107; Burton-Roberts Ch6 p116","review_status":"draft"}
 {"id":"MOD-004","sentence":"They cans sing.","phenomenon":"modal_invariance","expected_acceptable":false,"preferred_correction":"They can sing.","reference":"CGEL Ch3 §2.4 p107; Burton-Roberts Ch6 p116","review_status":"draft"}
+
+{"id":"MOD-005","sentence":"She cans sing.","phenomenon":"modal_invariance","expected_acceptable":false,"preferred_correction":"She can sing.","reference":"CGEL Ch3 §2.4 p107; Burton-Roberts Ch6 p116","review_status":"draft"}

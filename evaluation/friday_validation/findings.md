@@ -75,3 +75,38 @@ These four examples do not establish general tree-generation accuracy, grammar-d
 3. Improve contextual explanations for grammatical relationships.
 4. Add regression tests covering valid and invalid sentence pairs.
 5. Independently review grammar rules before enabling them as Cambridge-verified diagnostics.
+
+## QA-007 — Inconsistent modal-inflection diagnostics
+
+**Severity:** High
+**Reference:** Cambridge Grammar, Chapter 3, §2.4
+
+**Problem 1 — False negative**
+
+Input: She cans sing.
+
+Actual:
+- No legacy diagnostic triggered.
+- No correction suggested.
+- Burton-Roberts analysis unresolved.
+
+Expected:
+- Identify the invalid inflection of the central modal auxiliary.
+- Suggest "She can sing."
+
+**Problem 2 — Incorrect rule attribution**
+
+Input: They cans sing.
+
+Actual:
+- C-SUBJECT-AGREEMENT triggered.
+- Explanation attributes the error to subject–verb disagreement.
+- Suggested correction: "They can sing."
+
+Expected:
+- Identify the central modal's inflectional restriction.
+- Avoid attributing this particular error to ordinary subject–verb agreement.
+
+**Reproduction:** test_rule_attribution.py
+
+**Status:** Confirmed against the local QA backend.
