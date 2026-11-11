@@ -1,0 +1,4079 @@
+{
+  "schema_version": "cgel-ch03-candidate-corpus-1",
+  "chapter": 3,
+  "language_policy": "ENGLISH_ONLY",
+  "authority": "SOURCE_EXTRACTED_CANDIDATES_NOT_GOLD_ADJUDICATED",
+  "runtime_status": "not_enabled",
+  "measurement_status": "not_evaluated",
+  "diagnostic_rule_ids": [
+    "CLS-099",
+    "CLS-100",
+    "CLS-102",
+    "CLS-103",
+    "CLS-104",
+    "CLS-106",
+    "CLS-107",
+    "CLS-108",
+    "CLS-114",
+    "CLS-117",
+    "CLS-119",
+    "CLS-120",
+    "COMP-030",
+    "COMP-031",
+    "COMP-033",
+    "COMP-034",
+    "COMP-035",
+    "COMP-036",
+    "COMP-040",
+    "COMP-041",
+    "COMP-042",
+    "MORPH-025",
+    "MORPH-026",
+    "MORPH-035",
+    "MORPH-041",
+    "MORPH-056",
+    "OTH-098",
+    "OTH-102",
+    "OTH-158",
+    "OTH-182",
+    "OTH-216",
+    "OTH-377",
+    "OTH-439",
+    "OTH-453",
+    "OTH-458"
+  ],
+  "total_cases": 277,
+  "counts_by_family": {
+    "article_determiner": {
+      "error": 2,
+      "valid": 5
+    },
+    "extra_word": {
+      "error": 6,
+      "valid": 15
+    },
+    "missing_word": {
+      "error": 6,
+      "valid": 20
+    },
+    "tense_aspect": {
+      "error": 16,
+      "valid": 58
+    },
+    "verb_form": {
+      "error": 18,
+      "valid": 51
+    },
+    "word_order": {
+      "error": 22,
+      "valid": 58
+    }
+  },
+  "families_below_full_10_10_gate": {
+    "article_determiner": {
+      "error_needed": 8,
+      "valid_needed": 5
+    },
+    "extra_word": {
+      "error_needed": 4,
+      "valid_needed": 0
+    },
+    "missing_word": {
+      "error_needed": 4,
+      "valid_needed": 0
+    }
+  },
+  "cases": [
+    {
+      "rule_id": "CLS-099",
+      "error_family": "word_order",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-099:error:01",
+      "kind": "error",
+      "sentence": "Our neighbour smokes not.",
+      "expected_correction": "Our neighbour does not smoke.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-099",
+      "error_family": "word_order",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-099:error:02",
+      "kind": "error",
+      "sentence": "The children whispered not.",
+      "expected_correction": "The children did not whisper.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-099",
+      "error_family": "word_order",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-099:guard:01",
+      "kind": "valid",
+      "sentence": "She has not spoken.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-099",
+      "error_family": "word_order",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-099:guard:02",
+      "kind": "valid",
+      "sentence": "Not everyone enjoyed the show.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-099",
+      "error_family": "word_order",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-099:guard:03",
+      "kind": "valid",
+      "sentence": "They went not to London but to York.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-099",
+      "error_family": "word_order",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-099:guard:04",
+      "kind": "valid",
+      "sentence": "Do not touch the painting!",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-099",
+      "error_family": "word_order",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-099:correct:01",
+      "kind": "valid",
+      "sentence": "Our neighbour does not smoke.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-099",
+      "error_family": "word_order",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-099:correct:02",
+      "kind": "valid",
+      "sentence": "The children did not whisper.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-100",
+      "error_family": "extra_word",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-100:error:01",
+      "kind": "error",
+      "sentence": "Does she have completed the task?",
+      "expected_correction": "Has she completed the task?",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-100",
+      "error_family": "extra_word",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-100:error:02",
+      "kind": "error",
+      "sentence": "They do not are waiting here.",
+      "expected_correction": "They are not waiting here.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-100",
+      "error_family": "extra_word",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-100:guard:01",
+      "kind": "valid",
+      "sentence": "Does she have a reservation?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-100",
+      "error_family": "extra_word",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-100:guard:02",
+      "kind": "valid",
+      "sentence": "Do they have enough chairs?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-100",
+      "error_family": "extra_word",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-100:guard:03",
+      "kind": "valid",
+      "sentence": "Don't be careless!",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-100",
+      "error_family": "extra_word",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-100:correct:01",
+      "kind": "valid",
+      "sentence": "Has she completed the task?",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-100",
+      "error_family": "extra_word",
+      "source_pages": [
+        93,
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-100:correct:02",
+      "kind": "valid",
+      "sentence": "They are not waiting here.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-102",
+      "error_family": "missing_word",
+      "source_pages": [
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-102:error:01",
+      "kind": "error",
+      "sentence": "Not be impolite!",
+      "expected_correction": "Don't be impolite.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-102",
+      "error_family": "missing_word",
+      "source_pages": [
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-102:error:02",
+      "kind": "error",
+      "sentence": "Be not waiting here when the inspector arrives!",
+      "expected_correction": "Don't be waiting here when the inspector arrives.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-102",
+      "error_family": "missing_word",
+      "source_pages": [
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-102:guard:01",
+      "kind": "valid",
+      "sentence": "You are not impolite.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-102",
+      "error_family": "missing_word",
+      "source_pages": [
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-102:guard:02",
+      "kind": "valid",
+      "sentence": "She is not waiting here.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-102",
+      "error_family": "missing_word",
+      "source_pages": [
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-102:guard:03",
+      "kind": "valid",
+      "sentence": "Not to be impolite was his intention.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-102",
+      "error_family": "missing_word",
+      "source_pages": [
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-102:correct:01",
+      "kind": "valid",
+      "sentence": "Don't be impolite.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-102",
+      "error_family": "missing_word",
+      "source_pages": [
+        94
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-102:correct:02",
+      "kind": "valid",
+      "sentence": "Don't be waiting here when the inspector arrives.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-103",
+      "error_family": "word_order",
+      "source_pages": [
+        94,
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-103:error:01",
+      "kind": "error",
+      "sentence": "Practises Amira daily?",
+      "expected_correction": "Does Amira practise daily?",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-103",
+      "error_family": "word_order",
+      "source_pages": [
+        94,
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-103:error:02",
+      "kind": "error",
+      "sentence": "Arrived the parcel already?",
+      "expected_correction": "Has the parcel arrived?",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-103",
+      "error_family": "word_order",
+      "source_pages": [
+        94,
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-103:guard:01",
+      "kind": "valid",
+      "sentence": "I wonder whether Amira practises daily.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-103",
+      "error_family": "word_order",
+      "source_pages": [
+        94,
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-103:guard:02",
+      "kind": "valid",
+      "sentence": "Amira practises daily?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "echo or rising declarative"
+    },
+    {
+      "rule_id": "CLS-103",
+      "error_family": "word_order",
+      "source_pages": [
+        94,
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-103:guard:03",
+      "kind": "valid",
+      "sentence": "Who arrived early?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-103",
+      "error_family": "word_order",
+      "source_pages": [
+        94,
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-103:correct:01",
+      "kind": "valid",
+      "sentence": "Does Amira practise daily?",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-103",
+      "error_family": "word_order",
+      "source_pages": [
+        94,
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-103:correct:02",
+      "kind": "valid",
+      "sentence": "Has the parcel arrived?",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-104",
+      "error_family": "word_order",
+      "source_pages": [
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-104:error:01",
+      "kind": "error",
+      "sentence": "What the tourists photographed?",
+      "expected_correction": "What did the tourists photograph?",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-104",
+      "error_family": "word_order",
+      "source_pages": [
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-104:error:02",
+      "kind": "error",
+      "sentence": "Where Ari has put the spare key?",
+      "expected_correction": "Where has Ari put the spare key?",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-104",
+      "error_family": "word_order",
+      "source_pages": [
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-104:guard:01",
+      "kind": "valid",
+      "sentence": "Who photographed the monument?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-104",
+      "error_family": "word_order",
+      "source_pages": [
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-104:guard:02",
+      "kind": "valid",
+      "sentence": "I know what the tourists photographed.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-104",
+      "error_family": "word_order",
+      "source_pages": [
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-104:guard:03",
+      "kind": "valid",
+      "sentence": "What the tourists photographed?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "echo request"
+    },
+    {
+      "rule_id": "CLS-104",
+      "error_family": "word_order",
+      "source_pages": [
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-104:correct:01",
+      "kind": "valid",
+      "sentence": "What did the tourists photograph?",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-104",
+      "error_family": "word_order",
+      "source_pages": [
+        95
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-104:correct:02",
+      "kind": "valid",
+      "sentence": "Where has Ari put the spare key?",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-106",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-106:error:01",
+      "kind": "error",
+      "sentence": "Never they have challenged the decision.",
+      "expected_correction": "Never have they challenged the decision.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-106",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-106:error:02",
+      "kind": "error",
+      "sentence": "Nowhere the report mentions the fee.",
+      "expected_correction": "Nowhere does the report mention the fee.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-106",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-106:guard:01",
+      "kind": "valid",
+      "sentence": "Not long afterward, the group left.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-106",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-106:guard:02",
+      "kind": "valid",
+      "sentence": "Not every candidate was successful.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-106",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-106:guard:03",
+      "kind": "valid",
+      "sentence": "The report mentions the fee nowhere.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-106",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-106:correct:01",
+      "kind": "valid",
+      "sentence": "Never have they challenged the decision.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-106",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-106:correct:02",
+      "kind": "valid",
+      "sentence": "Nowhere does the report mention the fee.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-107",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-107:error:01",
+      "kind": "error",
+      "sentence": "Only then the students understood.",
+      "expected_correction": "Only then did the students understand.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-107",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-107:error:02",
+      "kind": "error",
+      "sentence": "Only one item the inspector rejected.",
+      "expected_correction": "Only one item did the inspector reject.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-107",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-107:guard:01",
+      "kind": "valid",
+      "sentence": "Only a few minutes later, the audience dispersed.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-107",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-107:guard:02",
+      "kind": "valid",
+      "sentence": "Only the manager knows the answer.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-107",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-107:guard:03",
+      "kind": "valid",
+      "sentence": "The inspector rejected only one item.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-107",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-107:correct:01",
+      "kind": "valid",
+      "sentence": "Only then did the students understand.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-107",
+      "error_family": "word_order",
+      "source_pages": [
+        95,
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-107:correct:02",
+      "kind": "valid",
+      "sentence": "Only one item did the inspector reject.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-108",
+      "error_family": "word_order",
+      "source_pages": [
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-108:error:01",
+      "kind": "error",
+      "sentence": "So little time we had that we rushed.",
+      "expected_correction": "So little time did we have that we rushed.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-108",
+      "error_family": "word_order",
+      "source_pages": [
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-108:error:02",
+      "kind": "error",
+      "sentence": "Such a commotion the crowd caused that traffic stopped.",
+      "expected_correction": "Such a commotion did the crowd cause that traffic stopped.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-108",
+      "error_family": "word_order",
+      "source_pages": [
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-108:guard:01",
+      "kind": "valid",
+      "sentence": "So little time remained that we rushed.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "subject of the clause"
+    },
+    {
+      "rule_id": "CLS-108",
+      "error_family": "word_order",
+      "source_pages": [
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-108:guard:02",
+      "kind": "valid",
+      "sentence": "It was such a commotion that everyone noticed.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-108",
+      "error_family": "word_order",
+      "source_pages": [
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-108:guard:03",
+      "kind": "valid",
+      "sentence": "So tired, he fell asleep at once.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-108",
+      "error_family": "word_order",
+      "source_pages": [
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-108:correct:01",
+      "kind": "valid",
+      "sentence": "So little time did we have that we rushed.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-108",
+      "error_family": "word_order",
+      "source_pages": [
+        96
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-108:correct:02",
+      "kind": "valid",
+      "sentence": "Such a commotion did the crowd cause that traffic stopped.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-114",
+      "error_family": "word_order",
+      "source_pages": [
+        97
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-114:error:01",
+      "kind": "error",
+      "sentence": "Where had been the documents kept?",
+      "expected_correction": "Where had the documents been kept?",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-114",
+      "error_family": "word_order",
+      "source_pages": [
+        97
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-114:error:02",
+      "kind": "error",
+      "sentence": "Has been the parcel delivered?",
+      "expected_correction": "Has the parcel been delivered?",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-114",
+      "error_family": "word_order",
+      "source_pages": [
+        97
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-114:guard:01",
+      "kind": "valid",
+      "sentence": "More important had been the remaining objections.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "subject postposing"
+    },
+    {
+      "rule_id": "CLS-114",
+      "error_family": "word_order",
+      "source_pages": [
+        97
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-114:guard:02",
+      "kind": "valid",
+      "sentence": "Where had the documents been kept?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-114",
+      "error_family": "word_order",
+      "source_pages": [
+        97
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-114:guard:03",
+      "kind": "valid",
+      "sentence": "Where was the report?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-114",
+      "error_family": "word_order",
+      "source_pages": [
+        97
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-114:correct:01",
+      "kind": "valid",
+      "sentence": "Where had the documents been kept?",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-114",
+      "error_family": "word_order",
+      "source_pages": [
+        97
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-114:correct:02",
+      "kind": "valid",
+      "sentence": "Has the parcel been delivered?",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-117",
+      "error_family": "word_order",
+      "source_pages": [
+        102
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-117:error:01",
+      "kind": "error",
+      "sentence": "She visits always the museum.",
+      "expected_correction": "She always visits the museum.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-117",
+      "error_family": "word_order",
+      "source_pages": [
+        102
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-117:error:02",
+      "kind": "error",
+      "sentence": "They travel probably by rail.",
+      "expected_correction": "They probably travel by rail.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-117",
+      "error_family": "word_order",
+      "source_pages": [
+        102
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-117:guard:01",
+      "kind": "valid",
+      "sentence": "She is always optimistic.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-117",
+      "error_family": "word_order",
+      "source_pages": [
+        102
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-117:guard:02",
+      "kind": "valid",
+      "sentence": "They have probably travelled by rail.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-117",
+      "error_family": "word_order",
+      "source_pages": [
+        102
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-117:guard:03",
+      "kind": "valid",
+      "sentence": "She visits, always, the same museum.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "supplement"
+    },
+    {
+      "rule_id": "CLS-117",
+      "error_family": "word_order",
+      "source_pages": [
+        102
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-117:guard:04",
+      "kind": "valid",
+      "sentence": "She often visits the museum.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-117",
+      "error_family": "word_order",
+      "source_pages": [
+        102
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-117:correct:01",
+      "kind": "valid",
+      "sentence": "She always visits the museum.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-117",
+      "error_family": "word_order",
+      "source_pages": [
+        102
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-117:correct:02",
+      "kind": "valid",
+      "sentence": "They probably travel by rail.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-119",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        107
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-119:error:01",
+      "kind": "error",
+      "sentence": "If we visited the archive tomorrow, we collected the copies.",
+      "expected_correction": "If we visited the archive tomorrow, we could collect the copies.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-119",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        107
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-119:error:02",
+      "kind": "error",
+      "sentence": "If she arrived tomorrow, she joined our group.",
+      "expected_correction": "If she arrived tomorrow, she would join our group.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-119",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        107
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-119:guard:01",
+      "kind": "valid",
+      "sentence": "If the weather improved yesterday, the organisers continued with the parade.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "open past conditional"
+    },
+    {
+      "rule_id": "CLS-119",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        107
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-119:guard:02",
+      "kind": "valid",
+      "sentence": "If she had time last weekend, she visited her cousins.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "open past conditional"
+    },
+    {
+      "rule_id": "CLS-119",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        107
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-119:guard:03",
+      "kind": "valid",
+      "sentence": "If she visited us tomorrow, she could stay overnight.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "remote future conditional"
+    },
+    {
+      "rule_id": "CLS-119",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        107
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-119:correct:01",
+      "kind": "valid",
+      "sentence": "If we visited the archive tomorrow, we could collect the copies.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-119",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        107
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-119:correct:02",
+      "kind": "valid",
+      "sentence": "If she arrived tomorrow, she would join our group.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-120",
+      "error_family": "missing_word",
+      "source_pages": [
+        115
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-120:error:01",
+      "kind": "error",
+      "sentence": "Kai used to cycle, and Isla used too.",
+      "expected_correction": "Kai used to cycle, and Isla did too.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-120",
+      "error_family": "missing_word",
+      "source_pages": [
+        115
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-120:error:02",
+      "kind": "error",
+      "sentence": "Lena used to sing, and Omar used as well.",
+      "expected_correction": "Lena used to sing, and Omar used to as well.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-120",
+      "error_family": "missing_word",
+      "source_pages": [
+        115
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-120:guard:01",
+      "kind": "valid",
+      "sentence": "Kai used to cycle, and Isla did too.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-120",
+      "error_family": "missing_word",
+      "source_pages": [
+        115
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-120:guard:02",
+      "kind": "valid",
+      "sentence": "Kai used to cycle, and Isla used to as well.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-120",
+      "error_family": "missing_word",
+      "source_pages": [
+        115
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-120:guard:03",
+      "kind": "valid",
+      "sentence": "Kai used a map, and Isla used one too.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-120",
+      "error_family": "missing_word",
+      "source_pages": [
+        115
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-120:guard:04",
+      "kind": "valid",
+      "sentence": "She never used to leave early.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-120",
+      "error_family": "missing_word",
+      "source_pages": [
+        115
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-120:correct:01",
+      "kind": "valid",
+      "sentence": "Kai used to cycle, and Isla did too.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "CLS-120",
+      "error_family": "missing_word",
+      "source_pages": [
+        115
+      ],
+      "variety_scope": "standard_english",
+      "id": "CLS-120:correct:02",
+      "kind": "valid",
+      "sentence": "Kai used to cycle, and Isla used to as well.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-030",
+      "error_family": "extra_word",
+      "source_pages": [
+        105
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-030:error:01",
+      "kind": "error",
+      "sentence": "Does she have arrived already?",
+      "expected_correction": "Has she arrived already?",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-030",
+      "error_family": "extra_word",
+      "source_pages": [
+        105
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-030:error:02",
+      "kind": "error",
+      "sentence": "Did the guests be waiting outside?",
+      "expected_correction": "Were the guests waiting outside?",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-030",
+      "error_family": "extra_word",
+      "source_pages": [
+        105
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-030:guard:01",
+      "kind": "valid",
+      "sentence": "Don't be late!",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "negative imperative"
+    },
+    {
+      "rule_id": "COMP-030",
+      "error_family": "extra_word",
+      "source_pages": [
+        105
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-030:guard:02",
+      "kind": "valid",
+      "sentence": "Do be careful!",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "emphatic imperative"
+    },
+    {
+      "rule_id": "COMP-030",
+      "error_family": "extra_word",
+      "source_pages": [
+        105
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-030:guard:03",
+      "kind": "valid",
+      "sentence": "Does she have a car?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "lexical have"
+    },
+    {
+      "rule_id": "COMP-030",
+      "error_family": "extra_word",
+      "source_pages": [
+        105
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-030:correct:01",
+      "kind": "valid",
+      "sentence": "Does she understand the rule?",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-030",
+      "error_family": "extra_word",
+      "source_pages": [
+        105
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-030:correct:02",
+      "kind": "valid",
+      "sentence": "Have the guests arrived already?",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-031",
+      "error_family": "verb_form",
+      "source_pages": [
+        105,
+        107
+      ],
+      "variety_scope": "variety_restricted: standard written English",
+      "id": "COMP-031:error:01",
+      "kind": "error",
+      "sentence": "She may will finish tomorrow.",
+      "expected_correction": "She may finish tomorrow.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-031",
+      "error_family": "verb_form",
+      "source_pages": [
+        105,
+        107
+      ],
+      "variety_scope": "variety_restricted: standard written English",
+      "id": "COMP-031:error:02",
+      "kind": "error",
+      "sentence": "He will can swim tomorrow.",
+      "expected_correction": "He will be able to swim tomorrow.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-031",
+      "error_family": "verb_form",
+      "source_pages": [
+        105,
+        107
+      ],
+      "variety_scope": "variety_restricted: standard written English",
+      "id": "COMP-031:guard:01",
+      "kind": "valid",
+      "sentence": "He might could help.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "attested non-standard double-modal dialect"
+    },
+    {
+      "rule_id": "COMP-031",
+      "error_family": "verb_form",
+      "source_pages": [
+        105,
+        107
+      ],
+      "variety_scope": "variety_restricted: standard written English",
+      "id": "COMP-031:guard:02",
+      "kind": "valid",
+      "sentence": "She may or may not finish.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "coordination"
+    },
+    {
+      "rule_id": "COMP-031",
+      "error_family": "verb_form",
+      "source_pages": [
+        105,
+        107
+      ],
+      "variety_scope": "variety_restricted: standard written English",
+      "id": "COMP-031:guard:03",
+      "kind": "valid",
+      "sentence": "She will be able to swim soon.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-031",
+      "error_family": "verb_form",
+      "source_pages": [
+        105,
+        107
+      ],
+      "variety_scope": "variety_restricted: standard written English",
+      "id": "COMP-031:guard:04",
+      "kind": "valid",
+      "sentence": "He has to be able to help.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-031",
+      "error_family": "verb_form",
+      "source_pages": [
+        105,
+        107
+      ],
+      "variety_scope": "variety_restricted: standard written English",
+      "id": "COMP-031:correct:01",
+      "kind": "valid",
+      "sentence": "She may be ready tomorrow.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-031",
+      "error_family": "verb_form",
+      "source_pages": [
+        105,
+        107
+      ],
+      "variety_scope": "variety_restricted: standard written English",
+      "id": "COMP-031:correct:02",
+      "kind": "valid",
+      "sentence": "She will be able to swim soon.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-033",
+      "error_family": "word_order",
+      "source_pages": [
+        105,
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-033:error:01",
+      "kind": "error",
+      "sentence": "She had could be invited.",
+      "expected_correction": "She could have been invited.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-033",
+      "error_family": "word_order",
+      "source_pages": [
+        105,
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-033:error:02",
+      "kind": "error",
+      "sentence": "The street is having been repaired.",
+      "expected_correction": "The street has been repaired.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-033",
+      "error_family": "word_order",
+      "source_pages": [
+        105,
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-033:guard:01",
+      "kind": "valid",
+      "sentence": "She is having lunch.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "lexical have"
+    },
+    {
+      "rule_id": "COMP-033",
+      "error_family": "word_order",
+      "source_pages": [
+        105,
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-033:guard:02",
+      "kind": "valid",
+      "sentence": "They have been eating dinner.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-033",
+      "error_family": "word_order",
+      "source_pages": [
+        105,
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-033:guard:03",
+      "kind": "valid",
+      "sentence": "They may be being watched.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "rare but permitted"
+    },
+    {
+      "rule_id": "COMP-033",
+      "error_family": "word_order",
+      "source_pages": [
+        105,
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-033:guard:04",
+      "kind": "valid",
+      "sentence": "They are to be invited.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "quasi-modal be"
+    },
+    {
+      "rule_id": "COMP-033",
+      "error_family": "word_order",
+      "source_pages": [
+        105,
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-033:correct:01",
+      "kind": "valid",
+      "sentence": "She could have been invited.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-033",
+      "error_family": "word_order",
+      "source_pages": [
+        105,
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-033:correct:02",
+      "kind": "valid",
+      "sentence": "The street has been being repaired.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": "rare but structurally possible"
+    },
+    {
+      "rule_id": "COMP-034",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-034:error:01",
+      "kind": "error",
+      "sentence": "The train might to leave soon.",
+      "expected_correction": "The train might leave soon.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-034",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-034:error:02",
+      "kind": "error",
+      "sentence": "He must forgets the key.",
+      "expected_correction": "He must forget the key.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-034",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-034:guard:01",
+      "kind": "valid",
+      "sentence": "He ought to leave soon.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "non-central modal ought"
+    },
+    {
+      "rule_id": "COMP-034",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-034:guard:02",
+      "kind": "valid",
+      "sentence": "She needs to leave.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "lexical need"
+    },
+    {
+      "rule_id": "COMP-034",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-034:guard:03",
+      "kind": "valid",
+      "sentence": "They must have spoken already.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-034",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-034:guard:04",
+      "kind": "valid",
+      "sentence": "She would rather leave.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "idiom"
+    },
+    {
+      "rule_id": "COMP-034",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-034:correct:01",
+      "kind": "valid",
+      "sentence": "The train might leave soon.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-034",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-034:correct:02",
+      "kind": "valid",
+      "sentence": "He must have forgotten the key.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-035:error:01",
+      "kind": "error",
+      "sentence": "They were hike beside the lake.",
+      "expected_correction": "They were hiking beside the lake.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-035:error:02",
+      "kind": "error",
+      "sentence": "She is work remotely.",
+      "expected_correction": "She is working remotely.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-035:guard:01",
+      "kind": "valid",
+      "sentence": "She is very tired.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "copular be"
+    },
+    {
+      "rule_id": "COMP-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-035:guard:02",
+      "kind": "valid",
+      "sentence": "The hall was cleaned.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "passive be"
+    },
+    {
+      "rule_id": "COMP-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-035:guard:03",
+      "kind": "valid",
+      "sentence": "The window is broken.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "adjective or passive"
+    },
+    {
+      "rule_id": "COMP-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-035:guard:04",
+      "kind": "valid",
+      "sentence": "He is to arrive at noon.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "quasi-modal be"
+    },
+    {
+      "rule_id": "COMP-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-035:correct:01",
+      "kind": "valid",
+      "sentence": "They were hiking beside the lake.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-035:correct:02",
+      "kind": "valid",
+      "sentence": "She has been working remotely.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-036",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-036:error:01",
+      "kind": "error",
+      "sentence": "The parcel was deliver by noon.",
+      "expected_correction": "The parcel was delivered by noon.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-036",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-036:error:02",
+      "kind": "error",
+      "sentence": "The gate has been paint by the workers.",
+      "expected_correction": "The gate has been painted by the workers.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-036",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-036:guard:01",
+      "kind": "valid",
+      "sentence": "They are painting the gate.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "progressive"
+    },
+    {
+      "rule_id": "COMP-036",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-036:guard:02",
+      "kind": "valid",
+      "sentence": "The windows were open.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "copular adjective"
+    },
+    {
+      "rule_id": "COMP-036",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-036:guard:03",
+      "kind": "valid",
+      "sentence": "The parcel was delivered.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-036",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-036:guard:04",
+      "kind": "valid",
+      "sentence": "The gate seemed painted.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "possible adjective"
+    },
+    {
+      "rule_id": "COMP-036",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-036:correct:01",
+      "kind": "valid",
+      "sentence": "The parcel was delivered by noon.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-036",
+      "error_family": "verb_form",
+      "source_pages": [
+        106
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-036:correct:02",
+      "kind": "valid",
+      "sentence": "The gate has been painted recently.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-040",
+      "error_family": "word_order",
+      "source_pages": [
+        111
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-040:error:01",
+      "kind": "error",
+      "sentence": "Had they a quiet lunch?",
+      "expected_correction": "Did they have a quiet lunch?",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-040",
+      "error_family": "word_order",
+      "source_pages": [
+        111
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-040:error:02",
+      "kind": "error",
+      "sentence": "She hadn't the curtains cleaned.",
+      "expected_correction": "She did not have the curtains cleaned.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-040",
+      "error_family": "word_order",
+      "source_pages": [
+        111
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-040:guard:01",
+      "kind": "valid",
+      "sentence": "Have they already eaten?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "perfect"
+    },
+    {
+      "rule_id": "COMP-040",
+      "error_family": "word_order",
+      "source_pages": [
+        111
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-040:guard:02",
+      "kind": "valid",
+      "sentence": "Have you any questions?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "some British English stative"
+    },
+    {
+      "rule_id": "COMP-040",
+      "error_family": "word_order",
+      "source_pages": [
+        111
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-040:guard:03",
+      "kind": "valid",
+      "sentence": "She hasn't had lunch yet.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "perfect with lexical have"
+    },
+    {
+      "rule_id": "COMP-040",
+      "error_family": "word_order",
+      "source_pages": [
+        111
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-040:correct:01",
+      "kind": "valid",
+      "sentence": "Did they have a quiet lunch?",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-040",
+      "error_family": "word_order",
+      "source_pages": [
+        111
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-040:correct:02",
+      "kind": "valid",
+      "sentence": "She did not have the curtains cleaned.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-041",
+      "error_family": "extra_word",
+      "source_pages": [
+        112
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-041:error:01",
+      "kind": "error",
+      "sentence": "Do they have got the documents?",
+      "expected_correction": "Have they got the documents?",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-041",
+      "error_family": "extra_word",
+      "source_pages": [
+        112
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-041:error:02",
+      "kind": "error",
+      "sentence": "She doesn't have got the right key.",
+      "expected_correction": "She hasn't got the right key.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-041",
+      "error_family": "extra_word",
+      "source_pages": [
+        112
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-041:guard:01",
+      "kind": "valid",
+      "sentence": "Do they have the documents?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "lexical possessive have"
+    },
+    {
+      "rule_id": "COMP-041",
+      "error_family": "extra_word",
+      "source_pages": [
+        112
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-041:guard:02",
+      "kind": "valid",
+      "sentence": "She doesn't have the right key.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "lexical have"
+    },
+    {
+      "rule_id": "COMP-041",
+      "error_family": "extra_word",
+      "source_pages": [
+        112
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-041:guard:03",
+      "kind": "valid",
+      "sentence": "Did they get the documents?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "lexical get"
+    },
+    {
+      "rule_id": "COMP-041",
+      "error_family": "extra_word",
+      "source_pages": [
+        112
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-041:correct:01",
+      "kind": "valid",
+      "sentence": "Have they got the documents?",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-041",
+      "error_family": "extra_word",
+      "source_pages": [
+        112
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-041:correct:02",
+      "kind": "valid",
+      "sentence": "She hasn't got the right key.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-042",
+      "error_family": "verb_form",
+      "source_pages": [
+        113
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-042:error:01",
+      "kind": "error",
+      "sentence": "You had better to call the adviser.",
+      "expected_correction": "You had better call the adviser.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-042",
+      "error_family": "verb_form",
+      "source_pages": [
+        113
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-042:error:02",
+      "kind": "error",
+      "sentence": "They had best to leave before sunset.",
+      "expected_correction": "They had best leave before sunset.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-042",
+      "error_family": "verb_form",
+      "source_pages": [
+        113
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-042:guard:01",
+      "kind": "valid",
+      "sentence": "You better call the adviser.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "informal omission of had"
+    },
+    {
+      "rule_id": "COMP-042",
+      "error_family": "verb_form",
+      "source_pages": [
+        113
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-042:guard:02",
+      "kind": "valid",
+      "sentence": "The new method had better results.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "ordinary adjective"
+    },
+    {
+      "rule_id": "COMP-042",
+      "error_family": "verb_form",
+      "source_pages": [
+        113
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-042:guard:03",
+      "kind": "valid",
+      "sentence": "It had better been left alone.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "ambiguity; don't automatically classify"
+    },
+    {
+      "rule_id": "COMP-042",
+      "error_family": "verb_form",
+      "source_pages": [
+        113
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-042:correct:01",
+      "kind": "valid",
+      "sentence": "You had better call the adviser.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "COMP-042",
+      "error_family": "verb_form",
+      "source_pages": [
+        113
+      ],
+      "variety_scope": "standard_english",
+      "id": "COMP-042:correct:02",
+      "kind": "valid",
+      "sentence": "They'd best leave before sunset.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-025",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-025:error:01",
+      "kind": "error",
+      "sentence": "She broken the glass.",
+      "expected_correction": "She broke the glass.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-025",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-025:error:02",
+      "kind": "error",
+      "sentence": "They chosen the last option.",
+      "expected_correction": "They chose the last option.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-025",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-025:guard:01",
+      "kind": "valid",
+      "sentence": "She has broken the glass.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-025",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-025:guard:02",
+      "kind": "valid",
+      "sentence": "The last option was chosen.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-025",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-025:correct:01",
+      "kind": "valid",
+      "sentence": "She broke the glass.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-025",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-025:correct:02",
+      "kind": "valid",
+      "sentence": "They chose the last option.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-026",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-026:error:01",
+      "kind": "error",
+      "sentence": "They have drove home.",
+      "expected_correction": "They have driven home.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-026",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-026:error:02",
+      "kind": "error",
+      "sentence": "Mina had wrote the report.",
+      "expected_correction": "Mina had written the report.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-026",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-026:guard:01",
+      "kind": "valid",
+      "sentence": "They drove home.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-026",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-026:guard:02",
+      "kind": "valid",
+      "sentence": "Mina wrote the report.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-026",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-026:guard:03",
+      "kind": "valid",
+      "sentence": "They have visited the museum.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-026",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-026:correct:01",
+      "kind": "valid",
+      "sentence": "They have driven home.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-026",
+      "error_family": "verb_form",
+      "source_pages": [
+        76,
+        77
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-026:correct:02",
+      "kind": "valid",
+      "sentence": "Mina had written the report.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        79,
+        81
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-035:error:01",
+      "kind": "error",
+      "sentence": "They are very watering the seedlings.",
+      "expected_correction": "They are carefully watering the seedlings.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        79,
+        81
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-035:error:02",
+      "kind": "error",
+      "sentence": "The seedlings were too watered by the gardener.",
+      "expected_correction": "The seedlings were watered thoroughly by the gardener.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        79,
+        81
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-035:guard:01",
+      "kind": "valid",
+      "sentence": "The gardener was very tired.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        79,
+        81
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-035:guard:02",
+      "kind": "valid",
+      "sentence": "The children were too frightened to speak.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        79,
+        81
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-035:guard:03",
+      "kind": "valid",
+      "sentence": "The movie was very entertaining.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        79,
+        81
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-035:correct:01",
+      "kind": "valid",
+      "sentence": "They are carefully watering the seedlings.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-035",
+      "error_family": "verb_form",
+      "source_pages": [
+        79,
+        81
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-035:correct:02",
+      "kind": "valid",
+      "sentence": "The seedlings were watered thoroughly by the gardener.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-041",
+      "error_family": "article_determiner",
+      "source_pages": [
+        81,
+        82
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-041:error:01",
+      "kind": "error",
+      "sentence": "The painting the fence took hours.",
+      "expected_correction": "The painting of the fence took hours.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-041",
+      "error_family": "article_determiner",
+      "source_pages": [
+        81,
+        82
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-041:error:02",
+      "kind": "error",
+      "sentence": "The repairing the roof delayed the workers.",
+      "expected_correction": "The repairing of the roof delayed the workers.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-041",
+      "error_family": "article_determiner",
+      "source_pages": [
+        81,
+        82
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-041:guard:01",
+      "kind": "valid",
+      "sentence": "The painting of the fence took hours.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-041",
+      "error_family": "article_determiner",
+      "source_pages": [
+        81,
+        82
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-041:guard:02",
+      "kind": "valid",
+      "sentence": "Painting the fence took hours.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-041",
+      "error_family": "article_determiner",
+      "source_pages": [
+        81,
+        82
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-041:guard:03",
+      "kind": "valid",
+      "sentence": "The painting the tourists admired was valuable.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-041",
+      "error_family": "article_determiner",
+      "source_pages": [
+        81,
+        82
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-041:correct:01",
+      "kind": "valid",
+      "sentence": "Painting the fence took hours.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-041",
+      "error_family": "article_determiner",
+      "source_pages": [
+        81,
+        82
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-041:correct:02",
+      "kind": "valid",
+      "sentence": "The painting of the fence took hours.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-056",
+      "error_family": "word_order",
+      "source_pages": [
+        89,
+        90
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-056:error:01",
+      "kind": "error",
+      "sentence": "She asked me to don't leave.",
+      "expected_correction": "She asked me not to leave.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-056",
+      "error_family": "word_order",
+      "source_pages": [
+        89,
+        90
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-056:error:02",
+      "kind": "error",
+      "sentence": "He wanted to don't interrupt the meeting.",
+      "expected_correction": "He wanted not to interrupt the meeting.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-056",
+      "error_family": "word_order",
+      "source_pages": [
+        89,
+        90
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-056:guard:01",
+      "kind": "valid",
+      "sentence": "Don't leave before dinner.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-056",
+      "error_family": "word_order",
+      "source_pages": [
+        89,
+        90
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-056:guard:02",
+      "kind": "valid",
+      "sentence": "Do not interrupt the meeting.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-056",
+      "error_family": "word_order",
+      "source_pages": [
+        89,
+        90
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-056:guard:03",
+      "kind": "valid",
+      "sentence": "She asked me not to leave.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-056",
+      "error_family": "word_order",
+      "source_pages": [
+        89,
+        90
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-056:correct:01",
+      "kind": "valid",
+      "sentence": "She asked me not to leave.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "MORPH-056",
+      "error_family": "word_order",
+      "source_pages": [
+        89,
+        90
+      ],
+      "variety_scope": "standard_english",
+      "id": "MORPH-056:correct:02",
+      "kind": "valid",
+      "sentence": "Don't leave before dinner.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-098",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        141
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-098:error:01",
+      "kind": "error",
+      "sentence": "Mina knew the caretaker ever since childhood.",
+      "expected_correction": "Mina has known the caretaker ever since childhood.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-098",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        141
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-098:error:02",
+      "kind": "error",
+      "sentence": "The museum stood there ever since the district was founded.",
+      "expected_correction": "The museum has stood there ever since the district was founded.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-098",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        141
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-098:guard:01",
+      "kind": "valid",
+      "sentence": "She had lived there ever since childhood when she moved abroad.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-098",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        141
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-098:guard:02",
+      "kind": "valid",
+      "sentence": "The museum stood here for centuries before it was demolished.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-098",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        141
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-098:guard:03",
+      "kind": "valid",
+      "sentence": "He has worked here ever since 2015.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-098",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        141
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-098:guard:04",
+      "kind": "valid",
+      "sentence": "The caretaker worked here through the 1990s.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-098",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        141
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-098:correct:01",
+      "kind": "valid",
+      "sentence": "Mina has known the caretaker ever since childhood.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-098",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        141
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-098:correct:02",
+      "kind": "valid",
+      "sentence": "The museum has stood there ever since the district was founded.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-102",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        143,
+        144,
+        146
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-102:error:01",
+      "kind": "error",
+      "sentence": "I have visited the director yesterday.",
+      "expected_correction": "I visited the director yesterday.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-102",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        143,
+        144,
+        146
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-102:error:02",
+      "kind": "error",
+      "sentence": "They have finished the assignment two minutes ago.",
+      "expected_correction": "They finished the assignment two minutes ago.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-102",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        143,
+        144,
+        146
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-102:guard:01",
+      "kind": "valid",
+      "sentence": "I have met the director recently.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-102",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        143,
+        144,
+        146
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-102:guard:02",
+      "kind": "valid",
+      "sentence": "She has written two letters since yesterday.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-102",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        143,
+        144,
+        146
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-102:guard:03",
+      "kind": "valid",
+      "sentence": "They have already discussed the timetable yesterday.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "marked experiential use"
+    },
+    {
+      "rule_id": "OTH-102",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        143,
+        144,
+        146
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-102:guard:04",
+      "kind": "valid",
+      "sentence": "She had finished the task before he arrived.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-102",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        143,
+        144,
+        146
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-102:guard:05",
+      "kind": "valid",
+      "sentence": "Have you ever arrived at five in the morning?",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-102",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        143,
+        144,
+        146
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-102:correct:01",
+      "kind": "valid",
+      "sentence": "I met the coordinator yesterday.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-102",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        143,
+        144,
+        146
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-102:correct:02",
+      "kind": "valid",
+      "sentence": "I have spoken with the coordinator recently.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-158",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        156
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-158:error:01",
+      "kind": "error",
+      "sentence": "Ari said that she is packing before the guests returned.",
+      "expected_correction": "Ari said that she is packing before the guests return.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-158",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        156
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-158:error:02",
+      "kind": "error",
+      "sentence": "Nora said that she is travelling before the meeting began.",
+      "expected_correction": "Nora said that she is travelling before the meeting begins.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-158",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        156
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-158:guard:01",
+      "kind": "valid",
+      "sentence": "Ari said that she was packing before the guests returned.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-158",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        156
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-158:guard:02",
+      "kind": "valid",
+      "sentence": "Ari said that she was packing before the guests return.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-158",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        156
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-158:guard:03",
+      "kind": "valid",
+      "sentence": "Ari said that she is packing before the guests return.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-158",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        156
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-158:guard:04",
+      "kind": "valid",
+      "sentence": "Nora said that she is travelling because the meeting ended.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "causal content rather than the same before relation"
+    },
+    {
+      "rule_id": "OTH-158",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        156
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-158:correct:01",
+      "kind": "valid",
+      "sentence": "Ari said that she was packing before the guests returned.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-158",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        156
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-158:correct:02",
+      "kind": "valid",
+      "sentence": "Ari said that she was packing before the guests return.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-158",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        156
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-158:correct:03",
+      "kind": "valid",
+      "sentence": "Ari said that she is packing before the guests return.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-182",
+      "error_family": "verb_form",
+      "source_pages": [
+        161
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-182:error:01",
+      "kind": "error",
+      "sentence": "She began to have read the manuscript.",
+      "expected_correction": "She began reading the manuscript.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-182",
+      "error_family": "verb_form",
+      "source_pages": [
+        161
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-182:error:02",
+      "kind": "error",
+      "sentence": "The tutor made the class have completed the exercise.",
+      "expected_correction": "The tutor made the class complete the exercise.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-182",
+      "error_family": "verb_form",
+      "source_pages": [
+        161
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-182:guard:01",
+      "kind": "valid",
+      "sentence": "She began to have doubts.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "lexical have"
+    },
+    {
+      "rule_id": "OTH-182",
+      "error_family": "verb_form",
+      "source_pages": [
+        161
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-182:guard:02",
+      "kind": "valid",
+      "sentence": "He seemed to have offended the audience.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "licensing catenative"
+    },
+    {
+      "rule_id": "OTH-182",
+      "error_family": "verb_form",
+      "source_pages": [
+        161
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-182:guard:03",
+      "kind": "valid",
+      "sentence": "She wanted to have finished by noon.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "posterior orientation"
+    },
+    {
+      "rule_id": "OTH-182",
+      "error_family": "verb_form",
+      "source_pages": [
+        161
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-182:guard:04",
+      "kind": "valid",
+      "sentence": "They began reading the manuscript.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "non-perfect complement"
+    },
+    {
+      "rule_id": "OTH-182",
+      "error_family": "verb_form",
+      "source_pages": [
+        161
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-182:correct:01",
+      "kind": "valid",
+      "sentence": "He appeared to have received the invitation.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-182",
+      "error_family": "verb_form",
+      "source_pages": [
+        161
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-182:correct:02",
+      "kind": "valid",
+      "sentence": "They expected her to have completed the questionnaire.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-182",
+      "error_family": "verb_form",
+      "source_pages": [
+        161
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-182:correct:03",
+      "kind": "valid",
+      "sentence": "She began reading the manuscript.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-182",
+      "error_family": "verb_form",
+      "source_pages": [
+        161
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-182:correct:04",
+      "kind": "valid",
+      "sentence": "The tutor made the class complete the exercise.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-216",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        167,
+        168
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-216:error:01",
+      "kind": "error",
+      "sentence": "The compound is consisting of two minerals.",
+      "expected_correction": "The compound consists of two minerals.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-216",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        167,
+        168
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-216:error:02",
+      "kind": "error",
+      "sentence": "The parcel is containing four books.",
+      "expected_correction": "The parcel contains four books.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-216",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        167,
+        168
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-216:guard:01",
+      "kind": "valid",
+      "sentence": "The mixture is gradually becoming more concentrated.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-216",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        167,
+        168
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-216:guard:02",
+      "kind": "valid",
+      "sentence": "The container is being filled with four books.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-216",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        167,
+        168
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-216:guard:03",
+      "kind": "valid",
+      "sentence": "She is being considerate today.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-216",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        167,
+        168
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-216:guard:04",
+      "kind": "valid",
+      "sentence": "More people are owning their homes every year.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "changing frequency"
+    },
+    {
+      "rule_id": "OTH-216",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        167,
+        168
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-216:guard:05",
+      "kind": "valid",
+      "sentence": "The parcel is holding several books while the courier waits.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": "different lexical predicate"
+    },
+    {
+      "rule_id": "OTH-216",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        167,
+        168
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-216:correct:01",
+      "kind": "valid",
+      "sentence": "The compound consists of two minerals.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-216",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        167,
+        168
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-216:correct:02",
+      "kind": "valid",
+      "sentence": "The parcel contains four books.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-377",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        191
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-377:error:01",
+      "kind": "error",
+      "sentence": "We will begin as soon as the room will be ready.",
+      "expected_correction": "We will begin as soon as the room is ready.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-377",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        191
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-377:error:02",
+      "kind": "error",
+      "sentence": "I'll send the parcel when the courier will arrive.",
+      "expected_correction": "I'll send the parcel when the courier arrives.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-377",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        191
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-377:guard:01",
+      "kind": "valid",
+      "sentence": "Tell me when the courier will arrive.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-377",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        191
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-377:guard:02",
+      "kind": "valid",
+      "sentence": "I cannot predict when the meeting will end.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-377",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        191
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-377:guard:03",
+      "kind": "valid",
+      "sentence": "If the price will fall next month, we should wait.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-377",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        191
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-377:guard:04",
+      "kind": "valid",
+      "sentence": "If you will prepare the slides, I will arrange the venue.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-377",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        191
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-377:guard:05",
+      "kind": "valid",
+      "sentence": "I will explain it before you ask.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-377",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        191
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-377:correct:01",
+      "kind": "valid",
+      "sentence": "I will send the package when the courier arrives.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-377",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        191
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-377:correct:02",
+      "kind": "valid",
+      "sentence": "We will begin as soon as the room is ready.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-439",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        197
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-439:error:01",
+      "kind": "error",
+      "sentence": "Yesterday I tried the lock three times and could open the case.",
+      "expected_correction": "Yesterday I tried the lock three times and was able to open the case.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-439",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        197
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-439:error:02",
+      "kind": "error",
+      "sentence": "She searched the cupboard and could find the spare key.",
+      "expected_correction": "She searched the cupboard and was able to find the spare key.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-439",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        197
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-439:guard:01",
+      "kind": "valid",
+      "sentence": "When I was younger, I could open those cases easily.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-439",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        197
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-439:guard:02",
+      "kind": "valid",
+      "sentence": "Yesterday I couldn't open the case.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-439",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        197
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-439:guard:03",
+      "kind": "valid",
+      "sentence": "I could hear the birds singing.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-439",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        197
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-439:guard:04",
+      "kind": "valid",
+      "sentence": "I could have opened the case if I had the key.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-439",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        197
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-439:guard:05",
+      "kind": "valid",
+      "sentence": "She said she could open the case.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-439",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        197
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-439:correct:01",
+      "kind": "valid",
+      "sentence": "On my first attempt, I was able to open the sealed jar.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-439",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        197
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-439:correct:02",
+      "kind": "valid",
+      "sentence": "When I was little, I could open those jars easily.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-439",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        197
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-439:correct:03",
+      "kind": "valid",
+      "sentence": "I couldn't open the case yesterday.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-439",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        197
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-439:correct:04",
+      "kind": "valid",
+      "sentence": "I could hear birds singing at dawn.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-453",
+      "error_family": "missing_word",
+      "source_pages": [
+        199
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-453:error:01",
+      "kind": "error",
+      "sentence": "If the workshop were open, we entered it.",
+      "expected_correction": "If the workshop were open, we would enter it.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-453",
+      "error_family": "missing_word",
+      "source_pages": [
+        199
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-453:error:02",
+      "kind": "error",
+      "sentence": "If the light were brighter, I read the label.",
+      "expected_correction": "If the light were brighter, I could read the label.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-453",
+      "error_family": "missing_word",
+      "source_pages": [
+        199
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-453:guard:01",
+      "kind": "valid",
+      "sentence": "If the shop is open, we enter.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-453",
+      "error_family": "missing_word",
+      "source_pages": [
+        199
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-453:guard:02",
+      "kind": "valid",
+      "sentence": "If the shop is open, we'll enter.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-453",
+      "error_family": "missing_word",
+      "source_pages": [
+        199
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-453:guard:03",
+      "kind": "valid",
+      "sentence": "If the shop were open, we would enter.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-453",
+      "error_family": "missing_word",
+      "source_pages": [
+        199
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-453:guard:04",
+      "kind": "valid",
+      "sentence": "She said that if the shop was open, she entered.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-453",
+      "error_family": "missing_word",
+      "source_pages": [
+        199
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-453:guard:05",
+      "kind": "valid",
+      "sentence": "Had we been there, we might have helped.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-453",
+      "error_family": "missing_word",
+      "source_pages": [
+        199
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-453:correct:01",
+      "kind": "valid",
+      "sentence": "If the building were open, we would go inside.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-453",
+      "error_family": "missing_word",
+      "source_pages": [
+        199
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-453:correct:02",
+      "kind": "valid",
+      "sentence": "If the rules had changed, we might have qualified.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-453",
+      "error_family": "missing_word",
+      "source_pages": [
+        199
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-453:correct:03",
+      "kind": "valid",
+      "sentence": "If the shop is open, we enter through the front door.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-453",
+      "error_family": "missing_word",
+      "source_pages": [
+        199
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-453:correct:04",
+      "kind": "valid",
+      "sentence": "She said that if the shop was open, she entered through the front door.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:error:01",
+      "kind": "error",
+      "sentence": "I wish the office is open now.",
+      "expected_correction": "I wish the office were open now.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:error:02",
+      "kind": "error",
+      "sentence": "I wish I can attend tomorrow.",
+      "expected_correction": "I wish I could attend tomorrow.",
+      "source_kind": "minimal_pair",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:guard:01",
+      "kind": "valid",
+      "sentence": "I hope the office is open tomorrow.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:guard:02",
+      "kind": "valid",
+      "sentence": "I wish the office were open now.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:guard:03",
+      "kind": "valid",
+      "sentence": "I wish I could attend tomorrow.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:guard:04",
+      "kind": "valid",
+      "sentence": "I wish them all the best.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:guard:05",
+      "kind": "valid",
+      "sentence": "I wish to attend tomorrow.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:guard:06",
+      "kind": "valid",
+      "sentence": "I wished yesterday that she were here.",
+      "expected_correction": null,
+      "source_kind": "false_positive_guard",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:correct:01",
+      "kind": "valid",
+      "sentence": "I wish the classroom were brighter.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:correct:02",
+      "kind": "valid",
+      "sentence": "I wish she could join us tomorrow.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:correct:03",
+      "kind": "valid",
+      "sentence": "I hope the office is open tomorrow.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    },
+    {
+      "rule_id": "OTH-458",
+      "error_family": "tense_aspect",
+      "source_pages": [
+        200
+      ],
+      "variety_scope": "standard_english",
+      "id": "OTH-458:correct:04",
+      "kind": "valid",
+      "sentence": "I wish she would come to the meeting.",
+      "expected_correction": null,
+      "source_kind": "source_rule_example",
+      "annotation": null
+    }
+  ]
+}
