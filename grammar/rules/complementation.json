@@ -5719,5 +5719,2261 @@
       ]
     },
     "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-086",
+    "domain": "complementation",
+    "concept": "Predicative category versus ordinary object",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A PC can be realised as an adjective phrase or an undetermined role NP where a referential direct object cannot.",
+    "condition": "When analysing predicative category versus ordinary object in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A full NP can also be PC, so only a permitted substitution is decisive.",
+        "pages": [
+          253
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Imani became chair.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee judged her competent.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.1",
+        "pages": [
+          253
+        ],
+        "pdf_pages": [
+          273
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative category versus ordinary object",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-087",
+    "domain": "complementation",
+    "concept": "Bare role NP requires determiner in ordinary object position",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In a canonical referential object position a singular count role noun requires a determiner; bare role NPs are instead possible as predicative complements.",
+    "condition": "When analysing bare role np requires determiner in ordinary object position in the specific verb construction described in Chapter 4.",
+    "violation": "The specified grammatical pattern is violated: In a canonical referential object position a singular count role noun requires a determiner; bare role NPs are instead possible as predicative complements.",
+    "exceptions": [
+      {
+        "description": "Bare titles, proper-name uses and selected PCs are separate constructions.",
+        "pages": [
+          253
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The reporter interviewed the treasurer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They questioned the principal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The reporter interviewed treasurer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They questioned principal.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.1",
+        "pages": [
+          253
+        ],
+        "pdf_pages": [
+          273
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare role NP requires determiner in ordinary object position",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "The specified grammatical pattern is violated: In a canonical referential object position a singular count role noun requires a determiner; bare role NPs are instead possible as predicative complements.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The reporter interviewed treasurer. ||| The reporter interviewed the treasurer.",
+        "They questioned principal. ||| They questioned the principal."
+      ],
+      "learner_explanation": "In a canonical referential object position a singular count role noun requires a determiner; bare role NPs are instead possible as predicative complements. In the indicated narrow construction, the conflicting form is not licensed; apply the paired correction rather than altering a grammatical exception.",
+      "corrected_paragraph_template": "Correct the specific source-licensed complement form, explain its syntactic role, and preserve the paragraph's remaining words.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They appointed Nia treasurer.",
+        "Nia served as chair."
+      ],
+      "lesson_tags": [
+        "complementation",
+        "chapter_04"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-088",
+    "domain": "complementation",
+    "concept": "PC passive non-correspondence",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A PC does not correspond to a subject of the associated passive; an object may have a passive counterpart.",
+    "condition": "When analysing pc passive non-correspondence in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some objects resist passive, so negative passive results are nondiagnostic.",
+        "pages": [
+          253
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira became a scientist.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A scientist was hired by Mira.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.1",
+        "pages": [
+          253
+        ],
+        "pdf_pages": [
+          273
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "PC passive non-correspondence",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-089",
+    "domain": "complementation",
+    "concept": "Object passive test is one-way",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Success in a corresponding passive establishes object status but passive failure does not establish PC status.",
+    "condition": "When analysing object passive test is one-way in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Certain ordinary transitive verbs lack a natural passive.",
+        "pages": [
+          254
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The twins own a cottage.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That jacket suits her.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.1",
+        "pages": [
+          254
+        ],
+        "pdf_pages": [
+          274
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Object passive test is one-way",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-090",
+    "domain": "complementation",
+    "concept": "Pronoun case with specifying be",
+    "rule_type": "variety_restricted",
+    "scope": "clause",
+    "statement": "Formal specifying copular clauses permit nominative pronoun PCs and informal style permits accusative counterparts.",
+    "condition": "When analysing pronoun case with specifying be in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Who/whom in questions of PC vs object follows different formal/informal distributions.",
+        "pages": [
+          254
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was she who reported it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was her who reported it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.1",
+        "pages": [
+          254
+        ],
+        "pdf_pages": [
+          274
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronoun case with specifying be",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending.",
+    "variety": "formal/informal Standard English"
+  },
+  {
+    "id": "COMP-091",
+    "domain": "complementation",
+    "concept": "PC number is semantic compatibility",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Predicative nominals often parallel their predicands in number but need not agree morphosyntactically.",
+    "condition": "When analysing pc number is semantic compatibility in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different number is not by itself a grammatical error.",
+        "pages": [
+          254
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those children were a delight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That installation is six metal pieces.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.1",
+        "pages": [
+          254
+        ],
+        "pdf_pages": [
+          274
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "PC number is semantic compatibility",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-092",
+    "domain": "complementation",
+    "concept": "As introduces predicative oblique",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In selected as-constructions the property is complement of as; the as-PP is a marked predicative complement.",
+    "condition": "When analysing as introduces predicative oblique in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The verb strike may orient the as-PC to its subject instead of its object.",
+        "pages": [
+          255
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They treated him as indispensable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She served as secretary.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.1",
+        "pages": [
+          255
+        ],
+        "pdf_pages": [
+          275
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "As introduces predicative oblique",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-093",
+    "domain": "complementation",
+    "concept": "Semantically PC-like objects remain objects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Internal NPs selected by constitute, represent and provide remain objects even with near-copular interpretations.",
+    "condition": "When analysing semantically pc-like objects remain objects in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adjective substitution, bare role NP substitution and passive evidence support object status.",
+        "pages": [
+          255
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The decision represents a turning point.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The analysis provided a strong example.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.1",
+        "pages": [
+          255
+        ],
+        "pdf_pages": [
+          275
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantically PC-like objects remain objects",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-094",
+    "domain": "complementation",
+    "concept": "Make: object with role sense versus object-oriented PC",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A role-relation make construction takes an object where caused-property make selects an object-oriented PC.",
+    "condition": "When analysing make: object with role sense versus object-oriented pc in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A restricted passive does not reclassify the role sense as PC.",
+        "pages": [
+          256
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The colleague made Lina a good mentor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The colleague made Lina confident.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.1",
+        "pages": [
+          256
+        ],
+        "pdf_pages": [
+          276
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Make: object with role sense versus object-oriented PC",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-095",
+    "domain": "complementation",
+    "concept": "Locative versus property orientation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Locative complements can be subject-oriented or object-oriented like PCs but differ by meaning and lexical selection.",
+    "condition": "When analysing locative versus property orientation in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not every verb selects both categories.",
+        "pages": [
+          257
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The children remained upstairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She kept the jars in the pantry.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.2",
+        "pages": [
+          257
+        ],
+        "pdf_pages": [
+          277
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Locative versus property orientation",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-096",
+    "domain": "complementation",
+    "concept": "Source goal and location semantic roles",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Movement can have source and goal while non-movement has a location; the final position may be described without overt to.",
+    "condition": "When analysing source goal and location semantic roles in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Prepositions describing a location are not always goal markers.",
+        "pages": [
+          258
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The courier walked from the plaza to the pier.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cat stayed behind the curtain.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.2",
+        "pages": [
+          258
+        ],
+        "pdf_pages": [
+          278
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Source goal and location semantic roles",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-097",
+    "domain": "complementation",
+    "concept": "States extend spatial source and goal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "From and to also mark state transitions, with AdjPs as predicative obliques; a resultant state may have no overt goal marker.",
+    "condition": "When analysing states extend spatial source and goal in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "PPs headed by to with nouns like sleep and death have locative, not PC syntax.",
+        "pages": [
+          259
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The water changed from cloudy to clear.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fabric turned blue.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.2",
+        "pages": [
+          259
+        ],
+        "pdf_pages": [
+          279
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "States extend spatial source and goal",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-098",
+    "domain": "complementation",
+    "concept": "State goal versus marked source",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A change-of-state goal may be unmarked, whereas an initial state generally needs from.",
+    "condition": "When analysing state goal versus marked source in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A verb such as seem can select a state PP but reject a literal locative PP.",
+        "pages": [
+          259
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The metal turned red.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The colours changed from red to orange.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.2",
+        "pages": [
+          259
+        ],
+        "pdf_pages": [
+          279
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "State goal versus marked source",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-099",
+    "domain": "complementation",
+    "concept": "Into-state is syntactically locative",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In become/turn/develop patterns an into-PP with state nominal counts as a locative complement rather than an AdjP-compatible PC.",
+    "condition": "When analysing into-state is syntactically locative in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Corresponding theme/goal number tendency is semantic, not PC agreement.",
+        "pages": [
+          260
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The apprentice developed into an expert.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The larva turned into a butterfly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.2",
+        "pages": [
+          260
+        ],
+        "pdf_pages": [
+          280
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Into-state is syntactically locative",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-100",
+    "domain": "complementation",
+    "concept": "Possessional source and goal roles",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Ownership transfer can relate source and goal possessors, and stative possession can be treated as possessional location.",
+    "condition": "When analysing possessional source and goal roles in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ownership roles may be subjects or objects; spatial belong in differs from possession belong to.",
+        "pages": [
+          260
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The land passed from Iris to Evan.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cottage belongs to Iris.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.2",
+        "pages": [
+          260
+        ],
+        "pdf_pages": [
+          280
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Possessional source and goal roles",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-101",
+    "domain": "complementation",
+    "concept": "Optionality of predicatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Required PCs cannot be omitted without ungrammaticality or sense shift, but optional PCs or adjuncts can be dropped preserving core event.",
+    "condition": "When analysing optionality of predicatives in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same surface construction can support obligatory resultative or optional depictive interpretations.",
+        "pages": [
+          261
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitors departed content.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The child became ill.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.3",
+        "pages": [
+          261
+        ],
+        "pdf_pages": [
+          281
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optionality of predicatives",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-102",
+    "domain": "complementation",
+    "concept": "Depictive and resultative in complex clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A depictive holds during the action, whereas a resultative results from the event, independently of whether the main event changes state.",
+    "condition": "When analysing depictive and resultative in complex clauses in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A verb like make can support two contextual readings of the same PC.",
+        "pages": [
+          261
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The traveller arrived barefoot.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The pond froze solid.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.3",
+        "pages": [
+          261
+        ],
+        "pdf_pages": [
+          281
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Depictive and resultative in complex clauses",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-103",
+    "domain": "complementation",
+    "concept": "Reflexive resultative after agentive verb",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some agentive intransitives permit a reflexive object with obligatory resultative PC, without freely admitting arbitrary NP objects.",
+    "condition": "When analysing reflexive resultative after agentive verb in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Dropping both object and PC may leave a valid intransitive clause; plain agentive verb + resultative PC is not generally licensed.",
+        "pages": [
+          262
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The singer sang herself hoarse.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The student worked himself exhausted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.3",
+        "pages": [
+          262
+        ],
+        "pdf_pages": [
+          282
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reflexive resultative after agentive verb",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-104",
+    "domain": "complementation",
+    "concept": "Optional depictives are adjuncts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An optional depictive can have S or O as predicand in a transitive clause, and is analysed as an adjunct rather than core complement.",
+    "condition": "When analysing optional depictives are adjuncts in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Optional resultatives are more lexically dependent than optional depictives.",
+        "pages": [
+          262
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The servers poured the coffee cold.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The servers poured coffee blindfolded.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.3",
+        "pages": [
+          262
+        ],
+        "pdf_pages": [
+          282
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optional depictives are adjuncts",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-105",
+    "domain": "complementation",
+    "concept": "As adjunct not always an as complement",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "As-phrases can serve as optional role adjuncts with a pragmatically selected predicand rather than as lexically selected PC.",
+    "condition": "When analysing as adjunct not always an as complement in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adjuncts of this kind do not normally allow an AdjP replacement of the role NP.",
+        "pages": [
+          263
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "As chairperson, Nina addressed the board.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee advised you as a volunteer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.3–5.4",
+        "pages": [
+          263
+        ],
+        "pdf_pages": [
+          283
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "As adjunct not always an as complement",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-106",
+    "domain": "complementation",
+    "concept": "Class 1 intransitive depictive lexemes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Verbs of sensing, seeming and continuation license depictive PCs with lexically controlled adjectival or to-infinitival alternants.",
+    "condition": "When analysing class 1 intransitive depictive lexemes in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Look/appear differences may concern evidential immediacy; continued cold can be dialect- or register-sensitive.",
+        "pages": [
+          263
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The proposal looks promising.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The speaker seemed confident.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.3–5.4",
+        "pages": [
+          263
+        ],
+        "pdf_pages": [
+          283
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Class 1 intransitive depictive lexemes",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-107",
+    "domain": "complementation",
+    "concept": "Class 2 intransitive resultant PC lexemes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Become/get/fall/go/grow/turn and a few fixed idioms license resultative PCs with sharply different lexical ranges.",
+    "condition": "When analysing class 2 intransitive resultant pc lexemes in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Informal get often restricts itself to adjective PCs; go and turn can license colour nominal PCs.",
+        "pages": [
+          264
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The wind grew stronger.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The paint turned purple.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.4",
+        "pages": [
+          264
+        ],
+        "pdf_pages": [
+          284
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Class 2 intransitive resultant PC lexemes",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-108",
+    "domain": "complementation",
+    "concept": "Class 3 complex-transitive depictives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Believe/consider/find/prove and others license object-oriented depictive PCs, sometimes alternating with infinitives.",
+    "condition": "When analysing class 3 complex-transitive depictives in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Reflexive-only verbs and semantic differences for wish/imagine invalidate a universal paraphrase.",
+        "pages": [
+          265
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The coach considered Tia capable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They found the report misleading.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.4",
+        "pages": [
+          265
+        ],
+        "pdf_pages": [
+          285
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Class 3 complex-transitive depictives",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-109",
+    "domain": "complementation",
+    "concept": "Class 4 obligatory resultatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Appoint, make, get and related uses can license an obligatory resultant property or role PC.",
+    "condition": "When analysing class 4 obligatory resultatives in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Appoint/elect may allow optional as and bare role NP; baptise has special lexical semantics.",
+        "pages": [
+          265
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They elected Theo chair.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The news made Theo anxious.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.4",
+        "pages": [
+          265
+        ],
+        "pdf_pages": [
+          285
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Class 4 obligatory resultatives",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-110",
+    "domain": "complementation",
+    "concept": "Class 5 optional resultatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Action verbs such as hammer, wipe and paint can license optional resultative properties of their objects.",
+    "condition": "When analysing class 5 optional resultatives in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lexical and AdjP restrictions remain; some colour NPs are accepted.",
+        "pages": [
+          266
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She wiped the table clean.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They painted the room gold.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.4–5.5.1",
+        "pages": [
+          266
+        ],
+        "pdf_pages": [
+          286
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Class 5 optional resultatives",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-111",
+    "domain": "complementation",
+    "concept": "Ascriptive and specifying be are distinct",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Ascriptive be attributes a property to a theme; specifying be identifies the value of a variable defined by context.",
+    "condition": "When analysing ascriptive and specifying be are distinct in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some nominal copular clauses permit both readings depending on context.",
+        "pages": [
+          266
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her father is a musician.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The culprit was Oscar.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.4–5.5.1",
+        "pages": [
+          266
+        ],
+        "pdf_pages": [
+          286
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ascriptive and specifying be are distinct",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-112",
+    "domain": "complementation",
+    "concept": "It clefts versus fused-relative clefts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "It-clefts are specifying, while fused-relative subjects can introduce either specifying pseudo-clefts or ascriptive clauses.",
+    "condition": "When analysing it clefts versus fused-relative clefts in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A fused relative is not inherently an identification construction.",
+        "pages": [
+          267
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was the final chapter that she needed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What she needed was the final chapter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.5.1",
+        "pages": [
+          267
+        ],
+        "pdf_pages": [
+          287
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "It clefts versus fused-relative clefts",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-113",
+    "domain": "complementation",
+    "concept": "Specifying role reversal is not ascriptive inversion",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Specifying clauses may swap variable/value S and PC roles while remaining S–be–PC; fronted property phrases in ascriptives require a different analysis.",
+    "condition": "When analysing specifying role reversal is not ascriptive inversion in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some specifying reversals are restricted; preposed ascriptive PCs do not become grammatical subjects.",
+        "pages": [
+          268
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The last item is a blue box.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A blue box is the last item.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.5.2(a)",
+        "pages": [
+          268
+        ],
+        "pdf_pages": [
+          288
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specifying role reversal is not ascriptive inversion",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-114",
+    "domain": "complementation",
+    "concept": "Connectedness of specifying value to variable",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A specifying value must meet the selectional properties of the expression defining the variable, including interrogative/declarative choices.",
+    "condition": "When analysing connectedness of specifying value to variable in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some reversals are forced by demonstratives and discourse deixis.",
+        "pages": [
+          269
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What we asked was whether the hall was open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What we regretted was that the door was closed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.5.2(a)–(b)",
+        "pages": [
+          269
+        ],
+        "pdf_pages": [
+          289
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Connectedness of specifying value to variable",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-115",
+    "domain": "complementation",
+    "concept": "Specifying reflexives and reciprocals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Reflexive/reciprocal dependencies can cross the copula when the value supplies the semantic content of a variable with recoverable agent.",
+    "condition": "When analysing specifying reflexives and reciprocals in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This does not apply freely to ascriptive counterparts and override reflexives have separate qualifications.",
+        "pages": [
+          269
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "My plan is to teach myself photography.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What we did was help each other.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.5.2(a)–(b)",
+        "pages": [
+          269
+        ],
+        "pdf_pages": [
+          289
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specifying reflexives and reciprocals",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-116",
+    "domain": "complementation",
+    "concept": "Do pseudocleft aspect connectedness",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A do-based specifying pseudo-cleft requires its unmarked value to match progressive versus non-progressive aspect of the defining variable.",
+    "condition": "When analysing do pseudocleft aspect connectedness in the specific verb construction described in Chapter 4.",
+    "violation": "The specified grammatical pattern is violated: A do-based specifying pseudo-cleft requires its unmarked value to match progressive versus non-progressive aspect of the defining variable.",
+    "exceptions": [
+      {
+        "description": "To-infinitival alternatives and special uses are outside the bare-value scope.",
+        "pages": [
+          270
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What Leo did was repair the radio.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What Leo was doing was repairing the radio.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "What Leo did was repairing the radio.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "What Leo was doing was repair the radio.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.5.2(b)–(d)",
+        "pages": [
+          270
+        ],
+        "pdf_pages": [
+          290
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Do pseudocleft aspect connectedness",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "The specified grammatical pattern is violated: A do-based specifying pseudo-cleft requires its unmarked value to match progressive versus non-progressive aspect of the defining variable.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "What Leo did was repairing the radio. ||| What Leo did was repair the radio.",
+        "What Leo was doing was repair the radio. ||| What Leo was doing was repairing the radio."
+      ],
+      "learner_explanation": "A do-based specifying pseudo-cleft requires its unmarked value to match progressive versus non-progressive aspect of the defining variable. In the indicated narrow construction, the conflicting form is not licensed; apply the paired correction rather than altering a grammatical exception.",
+      "corrected_paragraph_template": "Correct the specific source-licensed complement form, explain its syntactic role, and preserve the paragraph's remaining words.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "What he did was to rewrite the report.",
+        "He was rewriting the report."
+      ],
+      "lesson_tags": [
+        "complementation",
+        "chapter_04"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-117",
+    "domain": "complementation",
+    "concept": "Polarity item licensed inside specifying value",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An NPI such as any may be licensed by a negative in a linked specifying variable, unlike an unrelated ascriptive modifier.",
+    "condition": "When analysing polarity item licensed inside specifying value in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Scope across a specifying variable is a semantic construction fact, not a token adjacency rule.",
+        "pages": [
+          270
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What she never did was express any regret.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What he did not do was offer any evidence.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.5.2(b)–(d)",
+        "pages": [
+          270
+        ],
+        "pdf_pages": [
+          290
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity item licensed inside specifying value",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-118",
+    "domain": "complementation",
+    "concept": "Specifying category flexibility and who",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A variable is normally NP-shaped and its value may be AdjP, PP or clause; interrogative who seeks identity, not a property.",
+    "condition": "When analysing specifying category flexibility and who in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Open interrogative variables are exceptions, and who is not an ascriptive PC.",
+        "pages": [
+          270
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The best place is across the road.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The question is whether they can attend.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.5.2(b)–(d)",
+        "pages": [
+          270
+        ],
+        "pdf_pages": [
+          290
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specifying category flexibility and who",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-119",
+    "domain": "complementation",
+    "concept": "Ascriptive PCs are nonreferential, not always indefinite",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An ascriptive NP PC characteristically denotes a property or class, may be bare role or definite with relational content.",
+    "condition": "When analysing ascriptive pcs are nonreferential, not always indefinite in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A definite ascriptive NP may also have a specifying interpretation; bare roles cannot.",
+        "pages": [
+          271
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is club secretary.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He is the chief editor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.5.2(d)–(f)",
+        "pages": [
+          271
+        ],
+        "pdf_pages": [
+          291
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ascriptive PCs are nonreferential, not always indefinite",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-120",
+    "domain": "complementation",
+    "concept": "Specifying variable NP is descriptively interpreted",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A specifying variable expresses a defining property of the sought value, with typical exhaustiveness but exceptions.",
+    "condition": "When analysing specifying variable np is descriptively interpreted in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An indefinite variable or mainly/primarily can weaken exhaustiveness.",
+        "pages": [
+          271
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The people she hired were Mira and Lan.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "An example of the issue was his late arrival.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.5.2(d)–(f)",
+        "pages": [
+          271
+        ],
+        "pdf_pages": [
+          291
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specifying variable NP is descriptively interpreted",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-121",
+    "domain": "complementation",
+    "concept": "Specifying predicatives with other verbs are limited",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Ordinary ascriptive PC uses extend beyond be, while a limited subset of remain or become can be specifying.",
+    "condition": "When analysing specifying predicatives with other verbs are limited in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Most ordinary become and seem PCs are ascriptive; a switch of functions is not always licensed.",
+        "pages": [
+          272
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "His favourite subject remained mathematics.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The issue became what to do next.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.5.2(f)–§6",
+        "pages": [
+          272
+        ],
+        "pdf_pages": [
+          292
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specifying predicatives with other verbs are limited",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-122",
+    "domain": "complementation",
+    "concept": "Prepositions and idiom syntactic constituency",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An intransitive preposition can act as one-word particle; a transitive preposition has its own object NP, and idioms need not form single constituent verbs.",
+    "condition": "When analysing prepositions and idiom syntactic constituency in the specific verb construction described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Verb–preposition lexical idioms can be interrupted by object NPs and involve multiple syntactic constituents.",
+        "pages": [
+          272
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The worker brought the equipment in.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She placed the equipment in the van.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5.5.2(f)–§6",
+        "pages": [
+          272
+        ],
+        "pdf_pages": [
+          292
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prepositions and idiom syntactic constituency",
+        "relation": "unverified",
+        "note": "No independently verified B-R concept mapping or phrase-marker crosswalk."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
   }
 ]

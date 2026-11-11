@@ -110,3 +110,8 @@ The dense opening of Chapter 4 was split to 213–232; source audit and 19 inact
 ## Chapter 4 second checkpoint (2026-11-11)
 
 Printed pp.233–252 audited consecutively; all are substantive pages. 22 additional inactive records and crosschecks in `sources/cambridge/chapter_04/PP233_252_REPORT.md` and `sources/cambridge/chapter_04/PP233_252_AUDIT.json`. Chapter 4 now has 38 extracted pages and two contents-only skips, leaving 69 unprocessed and one preexisting textless skip. Continue at p.253; do not merge until the rest of Chapter 4 is validated and both full CI workflows are green.
+
+
+## Chapter 4 checkpoint 253–272 (2026-11-11)
+
+Source checked all 20 printed pages in sources/cambridge/chapter_04/PP253_272_REPORT.md with machine audit sources/cambridge/chapter_04/PP253_272_AUDIT.json; 37 new inert Chapter 4 records. Continue printed 273–292 on the same PR before chapter-close QA.
