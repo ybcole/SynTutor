@@ -1,0 +1,23 @@
+{
+  "captured_at_utc": "2026-11-11T21:14:47.879813+00:00",
+  "worktree_commit": "0e1100fc9a657fb63ad619b5dfae84b1c4909677",
+  "api_url": "http://127.0.0.1:8001/api/parse",
+  "server_commit_verified": false,
+  "reference_status": "draft",
+  "suites": {
+    "reference_validation": {
+      "exit_code": 0,
+      "tests_run": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "runtime_regressions": {
+      "exit_code": 1,
+      "tests_run": 11,
+      "failures": 7,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+}

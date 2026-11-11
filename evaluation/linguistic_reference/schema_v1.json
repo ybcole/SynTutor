@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SynTutor Linguistic Reference Case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "sentence",
+    "phenomenon",
+    "variety",
+    "reference",
+    "review"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sentence": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phenomenon": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variety": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "acceptability"
+      ],
+      "properties": {
+        "acceptability": {
+          "enum": [
+            "acceptable",
+            "unacceptable",
+            "context_dependent",
+            "undetermined"
+          ]
+        },
+        "diagnostics": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "trees": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "acceptable_repairs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "explanation_requirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reviewed_dimensions"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "draft",
+            "source_reviewed",
+            "expert_adjudicated"
+          ]
+        },
+        "reviewed_dimensions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "acceptability",
+              "diagnostics",
+              "trees",
+              "corrections",
+              "explanations"
+            ]
+          }
+        },
+        "source_checks": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "independent_reviews": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "adjudication": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    },
+    "legacy_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_dataset",
+        "citation_as_given",
+        "preferred_correction_as_given"
+      ],
+      "properties": {
+        "source_dataset": {
+          "type": "string"
+        },
+        "citation_as_given": {
+          "type": "string"
+        },
+        "preferred_correction_as_given": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

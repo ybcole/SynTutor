@@ -1,0 +1,93 @@
+
+=== reference_validation ===
+test_boolean_span_rejected (evaluation.linguistic_reference.test_validate.TestLREFValidator.test_boolean_span_rejected) ... ok
+test_draft_cannot_claim_certification (evaluation.linguistic_reference.test_validate.TestLREFValidator.test_draft_cannot_claim_certification) ... ok
+test_duplicate_ids (evaluation.linguistic_reference.test_validate.TestLREFValidator.test_duplicate_ids) ... ok
+test_expert_status_requires_approvals (evaluation.linguistic_reference.test_validate.TestLREFValidator.test_expert_status_requires_approvals) ... ok
+test_malformed_dimensions_fail_safely (evaluation.linguistic_reference.test_validate.TestLREFValidator.test_malformed_dimensions_fail_safely) ... ok
+test_malformed_status_fails_safely (evaluation.linguistic_reference.test_validate.TestLREFValidator.test_malformed_status_fails_safely) ... ok
+test_out_of_bounds_span (evaluation.linguistic_reference.test_validate.TestLREFValidator.test_out_of_bounds_span) ... ok
+test_source_review_requires_evidence (evaluation.linguistic_reference.test_validate.TestLREFValidator.test_source_review_requires_evidence) ... ok
+test_unknown_reference_field_rejected (evaluation.linguistic_reference.test_validate.TestLREFValidator.test_unknown_reference_field_rejected) ... ok
+test_unknown_top_level_field_rejected (evaluation.linguistic_reference.test_validate.TestLREFValidator.test_unknown_top_level_field_rejected) ... ok
+test_valid_draft (evaluation.linguistic_reference.test_validate.TestLREFValidator.test_valid_draft) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.003s
+
+OK
+
+
+=== runtime_regressions ===
+test_agreement_control (evaluation.linguistic_reference.test_runtime_authority.LinguisticAuthorityTests.test_agreement_control) ... ok
+test_modal_inflection_detected (evaluation.linguistic_reference.test_runtime_authority.LinguisticAuthorityTests.test_modal_inflection_detected) ... FAIL
+test_modal_not_misattributed_to_agreement (evaluation.linguistic_reference.test_runtime_authority.LinguisticAuthorityTests.test_modal_not_misattributed_to_agreement) ... FAIL
+test_unverified_verdict_not_certified (evaluation.linguistic_reference.test_runtime_authority.LinguisticAuthorityTests.test_unverified_verdict_not_certified) ... FAIL
+test_coordination_not_runon (evaluation.linguistic_reference.test_runon_contrasts.RunonContrastTests.test_coordination_not_runon) ... ok
+test_fused_sentence_detected (evaluation.linguistic_reference.test_runon_contrasts.RunonContrastTests.test_fused_sentence_detected) ... ok
+test_malformed_do_question_not_runon (evaluation.linguistic_reference.test_runon_contrasts.RunonContrastTests.test_malformed_do_question_not_runon) ... FAIL
+test_malformed_modal_question_not_runon (evaluation.linguistic_reference.test_runon_contrasts.RunonContrastTests.test_malformed_modal_question_not_runon) ... FAIL
+test_valid_modal_question_not_runon (evaluation.linguistic_reference.test_runon_contrasts.RunonContrastTests.test_valid_modal_question_not_runon) ... ok
+test_do_support_form_error_detected (evaluation.linguistic_reference.test_auxiliary_inversion_positive.AuxiliaryInversionPositiveTests.test_do_support_form_error_detected) ... FAIL
+test_modal_question_form_error_detected (evaluation.linguistic_reference.test_auxiliary_inversion_positive.AuxiliaryInversionPositiveTests.test_modal_question_form_error_detected) ... FAIL
+
+======================================================================
+FAIL: test_modal_inflection_detected (evaluation.linguistic_reference.test_runtime_authority.LinguisticAuthorityTests.test_modal_inflection_detected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kiyel/Desktop/SynTutor-lref/evaluation/linguistic_reference/test_runtime_authority.py", line 48, in test_modal_inflection_detected
+    self.assertTrue(
+AssertionError: False is not true : No modal-specific violation detected: []
+
+======================================================================
+FAIL: test_modal_not_misattributed_to_agreement (evaluation.linguistic_reference.test_runtime_authority.LinguisticAuthorityTests.test_modal_not_misattributed_to_agreement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kiyel/Desktop/SynTutor-lref/evaluation/linguistic_reference/test_runtime_authority.py", line 37, in test_modal_not_misattributed_to_agreement
+    self.assertNotIn(
+AssertionError: 'C-SUBJECT-AGREEMENT' unexpectedly found in ['C-SUBJECT-AGREEMENT'] : Incorrectly classified modal inflection as ordinary subject-verb agreement
+
+======================================================================
+FAIL: test_unverified_verdict_not_certified (evaluation.linguistic_reference.test_runtime_authority.LinguisticAuthorityTests.test_unverified_verdict_not_certified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kiyel/Desktop/SynTutor-lref/evaluation/linguistic_reference/test_runtime_authority.py", line 60, in test_unverified_verdict_not_certified
+    self.assertNotIn(
+AssertionError: 'is grammatical:' unexpectedly found in "'they can the peaches .' is grammatical: every word is used in an allowed way." : Unverified analysis claims grammatical certainty
+
+======================================================================
+FAIL: test_malformed_do_question_not_runon (evaluation.linguistic_reference.test_runon_contrasts.RunonContrastTests.test_malformed_do_question_not_runon)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kiyel/Desktop/SynTutor-lref/evaluation/linguistic_reference/test_runon_contrasts.py", line 52, in test_malformed_do_question_not_runon
+    self.assertNotIn(
+AssertionError: 'C-RUNON' unexpectedly found in ['C-RUNON'] : Auxiliary-complement error misattributed to run-on
+
+======================================================================
+FAIL: test_malformed_modal_question_not_runon (evaluation.linguistic_reference.test_runon_contrasts.RunonContrastTests.test_malformed_modal_question_not_runon)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kiyel/Desktop/SynTutor-lref/evaluation/linguistic_reference/test_runon_contrasts.py", line 45, in test_malformed_modal_question_not_runon
+    self.assertNotIn(
+AssertionError: 'C-RUNON' unexpectedly found in ['C-RUNON'] : Modal-complement error misattributed to run-on
+
+======================================================================
+FAIL: test_do_support_form_error_detected (evaluation.linguistic_reference.test_auxiliary_inversion_positive.AuxiliaryInversionPositiveTests.test_do_support_form_error_detected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kiyel/Desktop/SynTutor-lref/evaluation/linguistic_reference/test_auxiliary_inversion_positive.py", line 44, in test_do_support_form_error_detected
+    self.assertTrue(
+AssertionError: set() is not true : Expected auxiliary-form diagnosis; got ['C-RUNON']
+
+======================================================================
+FAIL: test_modal_question_form_error_detected (evaluation.linguistic_reference.test_auxiliary_inversion_positive.AuxiliaryInversionPositiveTests.test_modal_question_form_error_detected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kiyel/Desktop/SynTutor-lref/evaluation/linguistic_reference/test_auxiliary_inversion_positive.py", line 36, in test_modal_question_form_error_detected
+    self.assertTrue(
+AssertionError: set() is not true : Expected auxiliary-form diagnosis; got ['C-RUNON']
+
+----------------------------------------------------------------------
+Ran 11 tests in 4.390s
+
+FAILED (failures=7)
