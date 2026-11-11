@@ -156,6 +156,9 @@
   background:none;
 }
 .constituent-pre-test .constituent-pre-test-status { margin-bottom:0; font-weight:600; }
+.lesson-assessment-position { color:var(--accent-strong); font-size:.875rem; font-weight:650; }
+.lesson-assessment-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; margin-top:16px; }
+.lesson-assessment-actions .lesson-primary { margin:0; border-radius:999px; font-weight:600; }
 .constituent-actions { gap:12px; flex-wrap:wrap; margin-top:clamp(32px,6vw,52px); }
 .constituent-actions > :first-child:not(.lesson-primary) { margin-inline-end:auto; }
 .constituent-page button:not(.lesson-primary) { border-radius:999px; }
@@ -165,7 +168,7 @@
 }
 .curriculum-view .constituent-actions button:not(.lesson-primary):hover { background:var(--accent-soft); }
 .curriculum-view .constituent-actions .lesson-primary { border-radius:999px; font-weight:600; }
-[data-theme="dark"] .curriculum-view .constituent-actions .lesson-primary { color:var(--bg); }
+[data-theme="dark"] .curriculum-view :is(.constituent-actions,.lesson-assessment-actions) .lesson-primary { color:var(--bg); }
 .curriculum-view:has(.constituent-page) .lesson-save-status { border-top:0; padding-top:0; }
 .constituent-controls { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
 .curriculum-view .constituent-controls button { padding:7px 13px; font-size:.9rem; }

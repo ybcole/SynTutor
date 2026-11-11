@@ -4,7 +4,7 @@ import { createLessonStore } from './lesson-progress.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
-import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentPreTest, constituentReferences } from './constituents-lesson.js';
+import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentOpeningCheck, constituentReferences } from './constituents-lesson.js';
 import { addSubjectPredicateTeaching, subjectPredicateHeadings } from './subject-predicate-lesson.js';
 import { foundationsArticle } from './foundations-lesson.js';
 import { lessonNotation } from './lesson-notation.js';
@@ -12,7 +12,7 @@ import { lessonNotation } from './lesson-notation.js';
 const articleLessons = {
   'br-01': {
     headings: constituentHeadings,
-    preTest: constituentPreTest,
+    openingCheck: constituentOpeningCheck,
     teach: addConstituentTeaching,
     review: addConstituentReview,
     postTestIntro: 'Use what you learned about groups, brackets, and branches. Check each answer before continuing.',
@@ -26,7 +26,7 @@ const articleLessons = {
 
 let options = {}, course, store, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
 let reviewStage = null;
-let articlePage = 0, practiceResponses = null;
+let articlePage = 0, practiceResponses = null, assessmentIndex = 0;
 const postTestKeys = ['guided', 'transfer', 'exit'];
 const lessonCanvases = new Map();
 let embeddedBuilderCleanup = null;
@@ -283,6 +283,7 @@ function selectLesson(id) {
   notice = '';
   reviewStage = id && progressFor(currentLesson()).completed_at ? 0 : null;
   practiceResponses = null;
+  assessmentIndex = 0;
   if (id && articleFor(currentLesson())) {
     const progress = progressFor(currentLesson());
     articlePage = progress.completed_at ? 0 : progress.stage >= 3 ? 5 : progress.stage;
@@ -513,9 +514,64 @@ function showArticlePage(page) {
   host.querySelector('.lesson-stage-body h2')?.focus({ preventScroll: true });
 }
 
+function assessmentPosition(index, total) {
+  const position = el('p', `Question ${index + 1} of ${total}`, 'lesson-assessment-position');
+  position.tabIndex = -1;
+  return position;
+}
+
+function focusAssessmentPosition() {
+  const position = host.querySelector('.lesson-assessment-position');
+  position?.focus({ preventScroll: true });
+  position?.scrollIntoView({ block: 'nearest' });
+}
+
+function addOpeningQuestions(panel, lesson, prompts) {
+  const draftKey = `syntutor:opening-check:${options.userId?.() || 'guest'}:${lessonKey(lesson)}`;
+  let answers = [];
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(draftKey));
+    if (Array.isArray(saved) && saved.length < prompts.length &&
+        saved.every((id, index) => prompts[index].options.some(option => option.id === id))) answers = saved;
+  } catch {
+    // The check can still be completed when session storage is unavailable.
+  }
+  const current = el('div');
+  panel.append(current);
+  function showQuestion() {
+    const index = answers.length;
+    const last = index === prompts.length - 1;
+    let selected;
+    const next = button(last ? 'Finish knowledge check' : 'Next question →', () => {
+      if (last) {
+        // Keep the existing single prediction response as the synced completion marker.
+        act({ type: 'answer', answer: answers[0] }, () => {
+          try { sessionStorage.removeItem(draftKey); } catch { /* Optional draft storage. */ }
+          host.querySelector('.constituent-pre-test-status')?.focus({ preventScroll: true });
+        });
+        return;
+      }
+      answers.push(selected);
+      try { sessionStorage.setItem(draftKey, JSON.stringify(answers)); } catch { /* Optional draft storage. */ }
+      showQuestion();
+      focusAssessmentPosition();
+    }, 'lesson-primary');
+    next.disabled = true;
+    const item = question(lesson, 'predict', { responses: {} }, false, answer => {
+      selected = answer;
+      next.disabled = false;
+    }, prompts[index]);
+    const actions = el('div', undefined, 'lesson-assessment-actions');
+    actions.append(next);
+    current.replaceChildren(assessmentPosition(index, prompts.length), item, actions);
+  }
+  showQuestion();
+}
+
 function articleScreen(lesson, p, article) {
   const page = articlePage;
   const reviewing = Boolean(p.completed_at);
+  const openingCheck = article.openingCheck;
   const body = el('article', undefined, 'lesson-stage-body');
   const heading = el('h2', article.headings[page]);
   heading.id = 'constituent-page-title';
@@ -568,19 +624,23 @@ function articleScreen(lesson, p, article) {
 
   if (page === 0) {
     const preTest = el('section', undefined, 'lesson-assessment constituent-pre-test');
-    const title = el('h3', 'Pre-test');
+    const title = el('h3', openingCheck ? 'Check what you know' : 'Pre-test');
     title.id = 'lesson-pre-test-title';
     preTest.setAttribute('aria-labelledby', title.id);
-    preTest.append(title, el('p', 'Answer this short question before you begin. Your answer is unscored, and any choice lets you continue.'));
+    preTest.append(title, el('p', openingCheck
+      ? 'Before you begin, try three short questions about how words group together. Choose the answer that makes the most sense to you. This check is unscored.'
+      : 'Answer this short question before you begin. Your answer is unscored, and any choice lets you continue.'));
     if (p.responses.predict) {
       // Earlier versions used a different prompt with the same saved response key.
       // Acknowledge submission without applying an older choice to the new prompt.
-      const recorded = el('p', 'Response recorded.', 'constituent-pre-test-status');
+      const recorded = el('p', openingCheck ? 'Knowledge check complete.' : 'Response recorded.', 'constituent-pre-test-status');
       recorded.setAttribute('role', 'status');
       recorded.tabIndex = -1;
       preTest.append(recorded);
+    } else if (openingCheck) {
+      addOpeningQuestions(preTest, lesson, openingCheck);
     } else {
-      const { prompt, options } = article.preTest ?? lesson.predict;
+      const { prompt, options } = lesson.predict;
       preTest.append(question(lesson, 'predict', p, reviewing, undefined, { prompt, options }));
     }
     body.append(preTest);
@@ -596,7 +656,7 @@ function articleScreen(lesson, p, article) {
   }
 
   if (page < 5) {
-    const next = button(page === 4 ? 'Start post-test' : 'Next →', () => {
+    const next = button(page === 4 ? (openingCheck ? 'Check what you learned' : 'Start post-test') : 'Next →', () => {
       // The worked example and remaining reading pages share the existing worked stage.
       // The three saved answer stages begin together at the post-test.
       const checkpoint = page === 4 ? 2 : page < 2 ? page : null;
@@ -614,12 +674,14 @@ function articleScreen(lesson, p, article) {
   } else {
     const practice = practiceResponses !== null;
     const key = STAGES[p.stage];
-    const keys = reviewing ? postTestKeys : [key];
+    const keys = reviewing && !openingCheck ? postTestKeys : [reviewing ? postTestKeys[assessmentIndex] : key];
     const postTest = el('section', undefined, 'lesson-assessment');
-    postTest.setAttribute('aria-label', 'Post-test questions');
+    postTest.setAttribute('aria-label', openingCheck ? 'Chapter knowledge check' : 'Post-test questions');
     postTest.append(el('p', practice ? 'Try the chapter questions again. This is a practice attempt.'
       : reviewing ? 'Review your answers and feedback from the completed chapter.'
         : article.postTestIntro));
+    if (openingCheck) postTest.append(assessmentPosition(postTestKeys.indexOf(keys[0]), postTestKeys.length));
+    const questionActions = openingCheck ? el('div', undefined, 'lesson-assessment-actions') : actions;
     for (const item of keys) {
       const response = practice ? { responses: practiceResponses } : p;
       if (item === 'guided' && lesson.guided.build_target && lesson.worked_example.tree) {
@@ -647,7 +709,38 @@ function articleScreen(lesson, p, article) {
       }));
     }
     body.append(postTest);
-    if (reviewing) {
+    if (reviewing && openingCheck) {
+      const item = keys[0];
+      const last = assessmentIndex === postTestKeys.length - 1;
+      const move = delta => {
+        assessmentIndex += delta;
+        render();
+        focusAssessmentPosition();
+      };
+      if (assessmentIndex > 0) questionActions.append(button('← Previous question', () => move(-1)));
+      if (!last) {
+        const next = button('Next question →', () => move(1), 'lesson-primary');
+        next.disabled = practice && !practiceResponses[item];
+        questionActions.append(next);
+      } else if (practice) {
+        const finish = button('Finish practice', () => {
+          practiceResponses = null;
+          assessmentIndex = 0;
+          render();
+          focusAssessmentPosition();
+        }, 'lesson-primary');
+        finish.disabled = !practiceResponses[item];
+        questionActions.append(finish);
+      }
+      if (!practice) {
+        actions.append(button('Try the questions again', () => {
+          practiceResponses = {};
+          assessmentIndex = 0;
+          render();
+          focusAssessmentPosition();
+        }), button('Finish review', showCatalog, 'lesson-primary'));
+      }
+    } else if (reviewing) {
       if (!practice) {
         actions.append(button('Retake post-test', () => {
           practiceResponses = {};
@@ -666,6 +759,7 @@ function articleScreen(lesson, p, article) {
       const next = button(busy ? 'Saving…' : key === 'exit' ? 'Complete lesson' : 'Next question →', () => {
         act({ type: 'advance' }, result => {
           if (result.completed_at) showArticlePage(5);
+          else if (openingCheck) focusAssessmentPosition();
           else {
             const prompt = host.querySelector('.lesson-question legend');
             if (prompt) {
@@ -676,9 +770,10 @@ function articleScreen(lesson, p, article) {
         });
       }, 'lesson-primary');
       next.disabled = busy || !canAdvance(lesson, p);
-      actions.append(next);
+      questionActions.append(next);
     }
-    if (key === 'exit' || reviewing) article.review?.(body, { el });
+    if (openingCheck && questionActions.childElementCount) postTest.append(questionActions);
+    if (openingCheck ? reviewing && !practice : key === 'exit' || reviewing) article.review?.(body, { el });
   }
   layout.append(actions);
 }

@@ -13,18 +13,31 @@ export const constituentHeadings = [
   'Comparing Flat and Nested Trees',
   'Structural Ambiguity',
   'Chapter Recap',
-  'Chapter Post-test',
+  'Check what you learned',
 ];
 
-// The saved prediction is a completion marker. Any choice satisfies the pre-test.
-export const constituentPreTest = {
+export const constituentOpeningCheck = [{
   prompt: 'In “Mara rested beside the river”, which words could you replace with “there”?',
   options: [
     { id: 'a', text: 'the river' },
     { id: 'b', text: 'beside the river' },
     { id: 'c', text: 'rested beside' },
   ],
-};
+}, {
+  prompt: 'In “Lina carried a heavy bag”, which words answer “What did Lina carry?”',
+  options: [
+    { id: 'a', text: 'Lina carried' },
+    { id: 'b', text: 'a heavy' },
+    { id: 'c', text: 'a heavy bag' },
+  ],
+}, {
+  prompt: 'In [under [the old bridge]], which words are inside the smaller pair of brackets?',
+  options: [
+    { id: 'a', text: 'the old bridge' },
+    { id: 'b', text: 'under the old bridge' },
+    { id: 'c', text: 'under the' },
+  ],
+}];
 
 const word = (text, position) => ({ id: `word-${position}`, word: text });
 const group = (name, ...children) => ({ id: name, label: name, children });
@@ -144,7 +157,7 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     paragraph('To explain the difference in your own words, ask “Who had the telescope?” In one reading it was the person watching. In the other it was the hikers. The branch shows which reading the tree represents.');
   }
   if (page === 4) {
-    paragraph('You’ve used evidence from a sentence to identify its groups, then shown how those groups fit together. Use this summary to review the steps before the post-test.');
+    paragraph('You’ve used evidence from a sentence to identify its groups, then shown how those groups fit together.');
     section('Key ideas');
     const list = el('ul', undefined, 'constituent-recap');
     for (const [term, explanation] of [
@@ -158,8 +171,8 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
       list.append(item);
     }
     body.append(list);
-    section('Before the post-test',
-      'Look for the complete group. If you’re reading a tree, follow its branches to the words. If you’re testing a sentence, try a replacement or ask what the group answers.');
+    section('Put it into practice',
+      'Look for the complete group. If you’re reading a tree, follow its branches to the words. If you’re checking a group in a sentence, try a replacement or see which question it answers.');
   }
 }
 
