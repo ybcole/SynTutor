@@ -4348,5 +4348,1376 @@
     },
     "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
     "related_rules": []
+  },
+  {
+    "id": "COMP-064",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §2.2–§2.3 topic on page 233",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Factitive themes come into existence through an event; path, source, goal, location, recipient and beneficiary are distinct semantic roles.",
+    "condition": "When distinguishing cgel chapter 4: §2.2–§2.3 topic on page 233 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Beneficiary is not equivalent to actual benefit; factitive theme is not a patient in this analysis.",
+        "pages": [
+          233
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The workers dug a canal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cyclist rode towards the town.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§2.2–§2.3",
+        "pages": [
+          233
+        ],
+        "pdf_pages": [
+          253
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §2.2–§2.3 topic on page 233",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-065",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §2.3 topic on page 234",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Canonical one-agent/one-patient clauses align the agent with subject and patient with direct object, but psychological and causer roles have distinct alignments.",
+    "condition": "When distinguishing cgel chapter 4: §2.3 topic on page 234 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Agency is only a canonical role-prototype and not a definition of grammatical subject.",
+        "pages": [
+          234
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The mechanic fixed the engine.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The news frightened the children.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§2.3",
+        "pages": [
+          234
+        ],
+        "pdf_pages": [
+          254
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §2.3 topic on page 234",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-066",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §2.3–§3 topic on page 235",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subject function has agency/topic-like prototypes, but its identity is syntactic; semantic perspective can determine selection across psychological predicates.",
+    "condition": "When distinguishing cgel chapter 4: §2.3–§3 topic on page 235 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "There are stimulus-subject and experiencer-subject lexical classes.",
+        "pages": [
+          235
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The concert delighted the audience.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The audience enjoyed the concert.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§2.3–§3",
+        "pages": [
+          235
+        ],
+        "pdf_pages": [
+          255
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §2.3–§3 topic on page 235",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-067",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §3–§3.1 topic on page 236",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Canonical finite clauses have subjects, including NPs or sometimes subordinate clauses; imperative and nonfinite subject omissions are licensed.",
+    "condition": "When distinguishing cgel chapter 4: §3–§3.1 topic on page 236 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The understood subject of an imperative or nonfinite clause is not an automatic omission error.",
+        "pages": [
+          236
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The volunteers agreed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That the plan succeeded surprised everyone.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§3–§3.1",
+        "pages": [
+          236
+        ],
+        "pdf_pages": [
+          256
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §3–§3.1 topic on page 236",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-068",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §3.1 topic on page 237",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subject–predicator position, nominative/accusative case, agreement and auxiliary inversion distinguish subject from object in canonical finite clauses.",
+    "condition": "When distinguishing cgel chapter 4: §3.1 topic on page 237 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A noncanonical preposing construction does not allow a simple O–P–S order.",
+        "pages": [
+          237
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She knows them.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They know her.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§3.1",
+        "pages": [
+          237
+        ],
+        "pdf_pages": [
+          257
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §3.1 topic on page 237",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-069",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §3.1 topic on page 238",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subject open interrogatives retain ordinary order; nonsubject wh interrogatives often invert the auxiliary, tags track the subject, and VP coordination tests identify it.",
+    "condition": "When distinguishing cgel chapter 4: §3.1 topic on page 238 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Embedded questions, lexicalized tags and ellipsis require separate analysis.",
+        "pages": [
+          238
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who found the wallet?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What did the officer find?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§3.1",
+        "pages": [
+          238
+        ],
+        "pdf_pages": [
+          258
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §3.1 topic on page 238",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-070",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §3.1–§3.2.1 topic on page 239",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Maximal finite reduction preserves subject under ordinary ellipsis; a coordinated NP occupies one subject function; the passive/preposing diagnostic table begins.",
+    "condition": "When distinguishing cgel chapter 4: §3.1–§3.2.1 topic on page 239 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An object moved to front position remains object, unlike an NP promoted to subject by passive.",
+        "pages": [
+          239
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guests have departed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Anna and Ravi have arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§3.1–§3.2.1",
+        "pages": [
+          239
+        ],
+        "pdf_pages": [
+          259
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §3.1–§3.2.1 topic on page 239",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-071",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §3.2.1 topic on page 240",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Position, case, agreement, inversion, interrogative form, tag, coordination and obligatoriness in table show passive promotes a new subject while preposing preserves the old one.",
+    "condition": "When distinguishing cgel chapter 4: §3.2.1 topic on page 240 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some diagnostics are nondistinctive or inapplicable, so no single test alone always suffices.",
+        "pages": [
+          240
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The files were copied by Ren.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The files Ren copied are archived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§3.2.1",
+        "pages": [
+          240
+        ],
+        "pdf_pages": [
+          260
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §3.2.1 topic on page 240",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-072",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §3.2.1–§3.2.2 topic on page 241",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Passive by-phrases internalize an active subject as a non-core complement; extraposition and existential constructions use dummy it/there as syntactic subjects.",
+    "condition": "When distinguishing cgel chapter 4: §3.2.1–§3.2.2 topic on page 241 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A postverbal displaced NP is not syntactically subject; coordination pronoun case has acknowledged uncertainty.",
+        "pages": [
+          241
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It seems likely that she won.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There were many participants.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§3.2.1–§3.2.2",
+        "pages": [
+          241
+        ],
+        "pdf_pages": [
+          261
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §3.2.1–§3.2.2 topic on page 241",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-073",
+    "domain": "complementation",
+    "concept": "Existential agreement and informal contracted there's",
+    "rule_type": "variety_restricted",
+    "scope": "clause",
+    "statement": "Extraposition shows agreement with it, whereas existentials ordinarily match a displaced NP; informal contracted there's may appear with plural NPs.",
+    "condition": "When distinguishing existential agreement and informal contracted there's in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In informal speech There's three tickets can be acceptable; adjacent-singular coordination affects agreement.",
+        "pages": [
+          242
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There are three tickets available.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There is one ticket available.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§3.2.2",
+        "pages": [
+          242
+        ],
+        "pdf_pages": [
+          262
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Existential agreement and informal contracted there's",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection.",
+    "variety": "informal spoken English (contracted existential there's with plural displaced NP)"
+  },
+  {
+    "id": "COMP-074",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §3.2.2–§3.2.3 topic on page 243",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Interrogatives, tags, coordination and reduction confirm dummy subjects; subject–auxiliary inversion differs structurally from subject postposing.",
+    "condition": "When distinguishing cgel chapter 4: §3.2.2–§3.2.3 topic on page 243 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An extraposed or displaced phrase is not a second grammatical subject.",
+        "pages": [
+          243
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Is it certain that the train left?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Are there enough seats?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§3.2.2–§3.2.3",
+        "pages": [
+          243
+        ],
+        "pdf_pages": [
+          263
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §3.2.2–§3.2.3 topic on page 243",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-075",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §3.2.3–§4 topic on page 244",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Postauxiliary and clause-final subject positions differ; a fronted adjunct or predicative can license a postposed subject, whereas an ordinary object cannot.",
+    "condition": "When distinguishing cgel chapter 4: §3.2.3–§4 topic on page 244 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An NP-shaped initial expression can itself be adjunct or predicative rather than object.",
+        "pages": [
+          244
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Under the porch stood a bicycle.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A trusted colleague was Eva.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§3.2.3–§4",
+        "pages": [
+          244
+        ],
+        "pdf_pages": [
+          264
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §3.2.3–§4 topic on page 244",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-076",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §4–§4.1 topic on page 245",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The direct object is a core complement in mono- and ditransitive clauses; a PP with its own NP complement is not a direct object of the verb.",
+    "condition": "When distinguishing cgel chapter 4: §4–§4.1 topic on page 245 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Semantic patient or recipient roles are not syntactic definitions of object.",
+        "pages": [
+          245
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She climbed the hill.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She climbed up the hill.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§4–§4.1",
+        "pages": [
+          245
+        ],
+        "pdf_pages": [
+          265
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §4–§4.1 topic on page 245",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-077",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §4.1 topic on page 246",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Objecthood involves core status, lexical licensing and passive correspondence, but the passive test is sufficient rather than necessary.",
+    "condition": "When distinguishing cgel chapter 4: §4.1 topic on page 246 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some direct objects resist passives and some passives promote an NP contained in a PP.",
+        "pages": [
+          246
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The family owned two boats.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two boats were owned by the family.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§4.1",
+        "pages": [
+          246
+        ],
+        "pdf_pages": [
+          266
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §4.1 topic on page 246",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-078",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §4.1–§4.2 topic on page 247",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Direct objects normally follow predicators, with particle, heavy-object and fronting exceptions; in object extraposition dummy it is object, not the following clause.",
+    "condition": "When distinguishing cgel chapter 4: §4.1–§4.2 topic on page 247 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Unstressed pronoun placement is stricter than full-NP particle placement; heavy shift is constrained.",
+        "pages": [
+          247
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She brought the boxes in.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We found it necessary to postpone the meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§4.1–§4.2",
+        "pages": [
+          247
+        ],
+        "pdf_pages": [
+          267
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §4.1–§4.2 topic on page 247",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-079",
+    "domain": "complementation",
+    "concept": "Ditransitive PP alternant is not an indirect object",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The ditransitive construction contains Oi then Od, whereas its to/for alternant contains one Od and a PP complement; some two-pronoun orders are dialectal.",
+    "condition": "When distinguishing ditransitive pp alternant is not an indirect object in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A to/for PP is not indirect object in this analysis; regional English may permit an Od–Oi pronoun sequence.",
+        "pages": [
+          248
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He sent Mia a letter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He sent a letter to Mia.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§4.3",
+        "pages": [
+          248
+        ],
+        "pdf_pages": [
+          268
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ditransitive PP alternant is not an indirect object",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-080",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §4.3 topic on page 249",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Indirect-object passives are generally preferred, while direct-object ditransitive passives have verb-specific, regional and register-sensitive limits.",
+    "condition": "When distinguishing cgel chapter 4: §4.3 topic on page 249 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The lower acceptability of second passives is gradient; do not universally forbid them.",
+        "pages": [
+          249
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mia was sent a letter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A letter was sent to Mia.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§4.3",
+        "pages": [
+          249
+        ],
+        "pdf_pages": [
+          269
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §4.3 topic on page 249",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-081",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §4.3 topic on page 250",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The indirect object resists postposing, fronting and certain predicand/gap-control patterns that a direct object can sometimes support.",
+    "condition": "When distinguishing cgel chapter 4: §4.3 topic on page 250 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some apparent depictives have distinct subject-oriented readings and should not be flagged by string form.",
+        "pages": [
+          250
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The librarian gave Ava the receipt.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The receipt the librarian gave Ava is dated.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§4.3",
+        "pages": [
+          250
+        ],
+        "pdf_pages": [
+          270
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §4.3 topic on page 250",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-082",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §4.3–§5 topic on page 251",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Canonical clauses with a single object have a direct object even if its semantic role is recipient-like; predicative complements are distinguished from objects.",
+    "condition": "When distinguishing cgel chapter 4: §4.3–§5 topic on page 251 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Object classifications follow syntactic tests rather than semantic recipient/beneficiary role.",
+        "pages": [
+          251
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The tutor teaches logic.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The tutor teaches the new students.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§4.3–§5",
+        "pages": [
+          251
+        ],
+        "pdf_pages": [
+          271
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §4.3–§5 topic on page 251",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-083",
+    "domain": "complementation",
+    "concept": "CGEL Chapter 4: §5 topic on page 252",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Predicative complements are usually AdjPs or nonreferential NPs and provide a property of their predicand; semantic arguments need not coincide with syntactic complements.",
+    "condition": "When distinguishing cgel chapter 4: §5 topic on page 252 in the clause construction and lexical scope documented in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A nonreferential nominal PC must not be mislabeled a referential direct object.",
+        "pages": [
+          252
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The director became a mentor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The award made the director famous.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§5",
+        "pages": [
+          252
+        ],
+        "pdf_pages": [
+          272
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "CGEL Chapter 4: §5 topic on page 252",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-084",
+    "domain": "complementation",
+    "concept": "Canonical pronominal subject and object case",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In a simple canonical finite English clause with personal pronouns that distinguish case, the subject uses nominative form and the direct object accusative.",
+    "condition": "In a simple canonical finite English clause with personal pronouns that distinguish case, the subject uses nominative form and the direct object accusative.",
+    "violation": "A pronominal subject takes object case or a pronominal object takes subject case in a simple canonical clause.",
+    "exceptions": [
+      {
+        "description": "Do not generalize to coordinated NPs, special presentational constructions or independently licensed nonstandard dialects.",
+        "pages": [
+          237
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She knows him.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They admired her.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Her knows him.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They admired she.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§3.1",
+        "pages": [
+          237
+        ],
+        "pdf_pages": [
+          257
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Canonical pronominal subject and object case",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "A pronominal subject takes object case or a pronominal object takes subject case in a simple canonical clause.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Her knows him. ||| She knows him.",
+        "They admired she. ||| They admired her."
+      ],
+      "learner_explanation": "In a simple canonical finite English clause with personal pronouns that distinguish case, the subject uses nominative form and the direct object accusative. The indicated form violates that specific clause pattern; check the identified construction and its exceptions before marking it incorrect.",
+      "corrected_paragraph_template": "Correct only the offending case or particle order, then explain the rule while preserving the rest of the sentence.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She knows him.",
+        "Did they admire her?"
+      ],
+      "lesson_tags": [
+        "complementation",
+        "CGEL_ch04"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
+  },
+  {
+    "id": "COMP-085",
+    "domain": "complementation",
+    "concept": "Weak object pronoun before verb particle",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In a verb–particle construction like bring in or pick up, the unstressed personal-pronoun direct object precedes the particle.",
+    "condition": "In a verb–particle construction like bring in or pick up, the unstressed personal-pronoun direct object precedes the particle.",
+    "violation": "An unstressed direct-object personal pronoun is placed after the particle.",
+    "exceptions": [
+      {
+        "description": "A full noun-phrase object may follow a particle, and true prepositional phrases follow different rules.",
+        "pages": [
+          247
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He brought it in.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She picked them up.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "He brought in it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She picked up them.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§4.1",
+        "pages": [
+          247
+        ],
+        "pdf_pages": [
+          267
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Weak object pronoun before verb particle",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent validation."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "An unstressed direct-object personal pronoun is placed after the particle.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "He brought in it. ||| He brought it in.",
+        "She picked up them. ||| She picked them up."
+      ],
+      "learner_explanation": "In a verb–particle construction like bring in or pick up, the unstressed personal-pronoun direct object precedes the particle. The indicated form violates that specific clause pattern; check the identified construction and its exceptions before marking it incorrect.",
+      "corrected_paragraph_template": "Correct only the offending case or particle order, then explain the rule while preserving the rest of the sentence.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "He brought in the boxes.",
+        "She picked up the bags."
+      ],
+      "lesson_tags": [
+        "complementation",
+        "CGEL_ch04"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "English illustrations independently authored, checked against printed CGEL page; no independent approval or active detection."
   }
 ]
