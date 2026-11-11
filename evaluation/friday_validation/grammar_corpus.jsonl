@@ -9,3 +9,6 @@
 {"id":"MOD-004","sentence":"They cans sing.","phenomenon":"modal_invariance","expected_acceptable":false,"preferred_correction":"They can sing.","reference":"CGEL Ch3 §2.4 p107; Burton-Roberts Ch6 p116","review_status":"draft"}
 
 {"id":"MOD-005","sentence":"She cans sing.","phenomenon":"modal_invariance","expected_acceptable":false,"preferred_correction":"She can sing.","reference":"CGEL Ch3 §2.4 p107; Burton-Roberts Ch6 p116","review_status":"draft"}
+
+{"id":"LEX-001","sentence":"She cans the peaches.","phenomenon":"lexical_can","expected_acceptable":true,"preferred_correction":null,"reference":"CGEL Ch3 §2.4 lexical vs modal auxiliaries","review_status":"draft"}
+{"id":"LEX-002","sentence":"They can the peaches.","phenomenon":"lexical_can","expected_acceptable":true,"preferred_correction":null,"reference":"CGEL Ch3 §2.4 lexical vs modal auxiliaries","review_status":"draft"}
