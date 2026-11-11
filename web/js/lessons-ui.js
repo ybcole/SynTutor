@@ -482,8 +482,11 @@ function articleScreen(lesson, p, article) {
   });
 
   if (page === 0) {
-    const preTest = el('section', undefined, 'constituent-pre-test');
-    preTest.append(el('h3', 'Pre-test'), el('p', 'Answer this short question before you begin. Your answer is unscored, and any choice lets you continue.'));
+    const preTest = el('section', undefined, 'lesson-assessment constituent-pre-test');
+    const title = el('h3', 'Pre-test');
+    title.id = 'lesson-pre-test-title';
+    preTest.setAttribute('aria-labelledby', title.id);
+    preTest.append(title, el('p', 'Answer this short question before you begin. Your answer is unscored, and any choice lets you continue.'));
     if (p.responses.predict) {
       // Earlier versions used a different prompt with the same saved response key.
       // Acknowledge submission without applying an older choice to the new prompt.
@@ -527,7 +530,9 @@ function articleScreen(lesson, p, article) {
     const practice = practiceResponses !== null;
     const key = STAGES[p.stage];
     const keys = reviewing ? postTestKeys : [key];
-    body.append(el('p', practice ? 'Try the chapter questions again. This is a practice attempt.'
+    const postTest = el('section', undefined, 'lesson-assessment');
+    postTest.setAttribute('aria-label', 'Post-test questions');
+    postTest.append(el('p', practice ? 'Try the chapter questions again. This is a practice attempt.'
       : reviewing ? 'Review your answers and feedback from the completed chapter.'
         : article.postTestIntro));
     for (const item of keys) {
@@ -538,9 +543,9 @@ function articleScreen(lesson, p, article) {
         const blank = response.responses.guided === lesson.guided.answer ? null : target;
         diagram.append(el('p', lesson.worked_example.sentence, 'lesson-example-sentence'));
         mountLessonCanvas(diagram, renderLessonTree(lesson.worked_example.tree, { focusId: target.node_id, blank }));
-        body.append(diagram);
+        postTest.append(diagram);
       }
-      body.append(question(lesson, item, response, reviewing && !practice, answer => {
+      postTest.append(question(lesson, item, response, reviewing && !practice, answer => {
         if (!practice) {
           act({ type: 'answer', answer });
           return;
@@ -550,6 +555,7 @@ function articleScreen(lesson, p, article) {
         host.querySelector(`[data-question="${item}"] input:checked`)?.focus();
       }));
     }
+    body.append(postTest);
     if (reviewing) {
       if (!practice) {
         actions.append(button('Retake post-test', () => {

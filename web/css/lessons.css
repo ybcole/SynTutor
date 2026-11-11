@@ -117,8 +117,8 @@
 .constituent-page .lesson-stage-body > ul { padding-inline-start:1.35em; }
 .constituent-page .lesson-stage-body > ul li { padding-inline-start:.15em; margin-block:.35em; }
 .constituent-page h3 { margin:clamp(28px,5vw,40px) 0 10px; font-size:1.125rem; line-height:1.35; letter-spacing:-.018em; }
-.constituent-page .lesson-question + .constituent-review,.constituent-page .lesson-question + .lesson-question { margin-top:30px; }
-.constituent-page .constituent-pre-test,.constituent-page .lesson-sources {
+.constituent-page .lesson-question + .lesson-question { margin-top:30px; }
+.constituent-page .lesson-sources {
   margin:clamp(30px,5vw,44px) 0 0;
   padding:0 0 0 16px;
   border:0;
@@ -126,6 +126,22 @@
   border-radius:0;
   background:none;
 }
+.lesson-assessment {
+  min-width:0;
+  padding:clamp(16px,4vw,28px);
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--bg);
+}
+.constituent-pre-test { margin-top:clamp(30px,5vw,44px); }
+.constituent-page .lesson-assessment .lesson-option:hover { background:var(--panel); }
+.constituent-page .lesson-assessment .lesson-option:has(input:checked) { background:var(--accent-soft); }
+.constituent-page .lesson-assessment .lesson-feedback {
+  margin:12px 0 0;
+  border:1px solid var(--border);
+  border-radius:8px;
+}
+.constituent-page .lesson-assessment .canonical-viewport { background:var(--panel); }
 .constituent-pre-test h3 { margin-top:0; color:var(--accent-strong); }
 .constituent-page .lesson-question legend { font-size:1.025rem; margin-bottom:12px; }
 .constituent-page .lesson-option {
@@ -135,8 +151,6 @@
   border-radius:6px;
   background:none;
 }
-.constituent-page .lesson-option:hover { background:var(--bg); }
-.constituent-page .lesson-option:has(input:checked) { background:var(--accent-soft); }
 .constituent-pre-test .constituent-pre-test-status { margin-bottom:0; font-weight:600; }
 .constituent-actions { gap:12px; flex-wrap:wrap; margin-top:clamp(32px,6vw,52px); }
 .constituent-actions > :first-child:not(.lesson-primary) { margin-inline-end:auto; }
