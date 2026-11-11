@@ -2935,24 +2935,24 @@
       "correct": [
         {
           "id": "c1",
-          "text": "They needed much encouragement.",
+          "text": "They hired an assistant.",
           "origin": "ai_authored"
         },
         {
           "id": "c2",
-          "text": "She drank a little water.",
+          "text": "She bought a small bicycle.",
           "origin": "ai_authored"
         }
       ],
       "incorrect": [
         {
           "id": "i1",
-          "text": "She hired much assistant.",
+          "text": "They hired much assistant.",
           "origin": "ai_authored"
         },
         {
           "id": "i2",
-          "text": "He bought a little bicycle.",
+          "text": "She bought much bicycle.",
           "origin": "ai_authored"
         }
       ]
@@ -2986,15 +2986,15 @@
       "detector": "spec_only",
       "detector_reason_if_none": "",
       "minimal_pairs": [
-        "She hired much assistant. ||| They needed much encouragement.",
-        "He bought a little bicycle. ||| She drank a little water."
+        "They hired much assistant. ||| They hired an assistant.",
+        "She bought much bicycle. ||| She bought a small bicycle."
       ],
       "learner_explanation": "Determiner much or a little in the quantity use requires noncount construal, not an ordinary count-singular noun. The noun sense, head class and construction must be checked before this is treated as an error, because the Cambridge grammar lists specific exceptions.",
       "corrected_paragraph_template": "Replace only the nonlicensed determiner or missing determiner with the cited construction-appropriate option, preserving unrelated parts.",
       "variety_scope": "standard_english",
       "false_positive_guards": [
-        "He bought a little bicycle.",
-        "They received much support."
+        "He bought a little bicycle. (little is an adjective)",
+        "She drank a little water. (a little is a quantifier with a noncount noun)"
       ],
       "lesson_tags": [
         "NP_structure",
