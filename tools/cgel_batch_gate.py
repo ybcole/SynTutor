@@ -214,15 +214,36 @@ def check_batch(manifest: Any, root: Path = ROOT) -> list[str]:
                 errors.append(f"{rid}: a constraint needs 2 original incorrect examples")
             if not isinstance(diagnostic, dict) or diagnostic.get("detector") != "spec_only":
                 errors.append(f"{rid}: newly extracted constraint requires non-live spec_only diagnostics")
-            elif (len(diagnostic.get("minimal_pairs", [])) < 2
-                  or len(diagnostic.get("false_positive_guards", [])) < 2):
-                errors.append(f"{rid}: missing 2 minimal pairs or 2 false-positive guards")
         if rt == "variety_restricted":
             if not rule.get("variety"):
                 errors.append(f"{rid}: variety-restricted record needs its dialect/register")
             if diagnostic is not None and (not isinstance(diagnostic, dict)
                                             or diagnostic.get("detector") != "spec_only"):
                 errors.append(f"{rid}: variety-restricted diagnostic cannot be live")
+            if diagnostic is not None and (
+                    len(wrong) < 2 or any(ex.get("origin") != "ai_authored" for ex in wrong)):
+                errors.append(f"{rid}: error-capable dialect diagnostic needs 2 original incorrect examples")
+        if rt in ERROR_TYPES and isinstance(diagnostic, dict):
+            pairs = diagnostic.get("minimal_pairs")
+            guards = diagnostic.get("false_positive_guards")
+            if (not isinstance(pairs, list) or len(pairs) < 2
+                    or not isinstance(guards, list) or len(guards) < 2):
+                errors.append(f"{rid}: missing 2 minimal pairs or 2 false-positive guards")
+            else:
+                incorrect_set = {ex.get("text", "").strip() for ex in wrong if isinstance(ex, dict)}
+                for pair in pairs:
+                    if not isinstance(pair, str):
+                        errors.append(f"{rid}: minimal pair must be text")
+                        continue
+                    halves = pair.split("|||")
+                    if (len(halves) != 2 or not all(side.strip() for side in halves)
+                            or halves[0].strip() not in incorrect_set
+                            or halves[0].strip() == halves[1].strip()):
+                        errors.append(f"{rid}: minimal pair not aligned to an incorrect example")
+                if any(not isinstance(guard, str) or len(guard.strip()) < 5 for guard in guards):
+                    errors.append(f"{rid}: blank or invalid false-positive guard")
+            if not diagnostic.get("learner_explanation") or not diagnostic.get("corrected_paragraph_template"):
+                errors.append(f"{rid}: missing source-grounded explanation or correction template")
         mappings = rule.get("burton_roberts_mapping") or []
         if not mappings or any(x.get("relation") != "unverified" for x in mappings):
             errors.append(f"{rid}: fresh B-R crosswalks must remain unverified until independently checked")
