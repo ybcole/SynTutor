@@ -23,11 +23,11 @@
 | 15. Coordination and supplementation | 90 | 0 | 90 | 0 | 0 | Incomplete |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
 | 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
-| 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
+| 18. Inflectional morphology | 56 | 19 | 34 | 3 | 0 | In progress (pp. 1565–1585) |
 | 19. Lexical word-formation | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **700 extracted**, 1039 unprocessed, 23 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **719 extracted**, 1018 unprocessed, 25 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -230,3 +230,7 @@ The fourth batch covers 19 substantive pages and adds 29 records (`CLS-345`–`C
 The final batch covers printed pp. 1246–1271 and verifies blank p. 1272. It adds 36 records (`CLS-374`–`CLS-409`) on hollow clauses, non-catenative complements, modifiers and supplements, verbless clauses, and control. See the [source report](sources/cambridge/chapter_14/PP1246_1272_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1246_1272_AUDIT.json).
 
 Chapter 14 has 99 substantive pages, three justified skips and zero unprocessed pages. Its 139 source-linked records remain outside the live detector registry.
+
+## Chapter 18 pp. 1565–1585
+
+The opening batch covers 19 substantive pages and two contents pages. It adds 26 records (`MORPH-067`–`MORPH-092`) on inflectional operations, phonological and spelling alternations, grade and the start of noun plurals. See the [source report](sources/cambridge/chapter_18/PP1565_1585_REPORT.md) and [audit manifest](sources/cambridge/chapter_18/PP1565_1585_AUDIT.json). Continue at p. 1586.

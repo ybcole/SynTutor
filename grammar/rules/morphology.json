@@ -4373,5 +4373,1727 @@
     "related_rules": [],
     "review_notes": "Paraphrased from CGEL printed source with original examples; the distinction is not an active deterministic error detector. The exceptional past-perfect had used to is described as occasional rather than a productive paradigm.",
     "diagnostic": null
+  },
+  {
+    "id": "MORPH-067",
+    "domain": "morphology",
+    "concept": "Inflection and lexical word formation",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Inflection supplies forms of an existing lexeme. Lexical word formation yields a separate lexeme that can have its own inflectional paradigm.",
+    "condition": "Applies to the construction described in §1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The derivational structure of a lexeme need not change how its inflection is described.",
+        "pages": [
+          1567
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The wall is higher now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The builders heightened the wall.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1",
+        "pages": [
+          1567
+        ],
+        "pdf_pages": [
+          1587
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflection and lexical word formation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-068",
+    "domain": "morphology",
+    "concept": "Simple and complex lexical bases",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "An inflectional operation can apply to a simple lexical base or to a base already containing a derivational element.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The derivational structure of painters does not prevent ordinary plural formation.",
+        "pages": [
+          1568
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two lamps were switched on.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two painters arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1",
+        "pages": [
+          1568
+        ],
+        "pdf_pages": [
+          1588
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple and complex lexical bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-069",
+    "domain": "morphology",
+    "concept": "Operations and successive inflection",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Suffixation and base modification can form inflections. Some forms are built from a previously inflected form.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A plural genitive can build on an irregular plural. A small set of participles build on a preterite form.",
+        "pages": [
+          1568,
+          1569
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The women's coats were dry.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The path had been trodden flat.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1",
+        "pages": [
+          1568,
+          1569
+        ],
+        "pdf_pages": [
+          1588,
+          1589
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Operations and successive inflection",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-070",
+    "domain": "morphology",
+    "concept": "Alternation, regularity and syncretism",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Alternants are context-conditioned forms of one morphological unit. Regular formation follows a general rule, and syncretism occurs when different paradigm forms share a realization.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The written and spoken realizations can differ. Distinct grammatical slots can share a form.",
+        "pages": [
+          1569
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The crates arrived yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They cut the rope yesterday and have cut another today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.1",
+        "pages": [
+          1569
+        ],
+        "pdf_pages": [
+          1589
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternation, regularity and syncretism",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-071",
+    "domain": "morphology",
+    "concept": "Inflectional categories by word class",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Nouns inflect for number and genitive case, many adjectives for grade, and ordinary verbs have primary and secondary forms. Personal pronouns have additional case and reflexive distinctions.",
+    "condition": "Applies to the construction described in §1.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Demonstratives this and that have irregular number forms. Not all lexemes in a category express every contrast.",
+        "pages": [
+          1569,
+          1570
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "These boxes are heavier.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They have carried them upstairs themselves.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.2",
+        "pages": [
+          1569,
+          1570
+        ],
+        "pdf_pages": [
+          1589,
+          1590
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflectional categories by word class",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-072",
+    "domain": "morphology",
+    "concept": "Written and spoken inflectional alternations",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A single written suffix can correspond to several spoken forms, and a single spoken suffix can occur with several written base changes.",
+    "condition": "Applies to the construction described in §1.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some lexemes are regular in one medium and irregular in the other, as with paid in writing and houses in speech.",
+        "pages": [
+          1570,
+          1571,
+          1572
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She packed, folded, and labeled the parcels.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They rubbed, dried, and saved the cloth.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.3",
+        "pages": [
+          1570,
+          1571,
+          1572
+        ],
+        "pdf_pages": [
+          1590,
+          1591,
+          1592
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Written and spoken inflectional alternations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-073",
+    "domain": "morphology",
+    "concept": "Letters and sound-representing symbols",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Spelling rules can depend on a single letter's function or on a composite symbol. Letters such as y and u do not have one fixed sound category across all words.",
+    "condition": "Applies to the construction described in §1.3–2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Y is a vowel symbol in try and part of a composite vowel symbol in boy. U in quick represents a consonantal sound.",
+        "pages": [
+          1572
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They tried to tow the boat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The boys were quick to help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§1.3–2",
+        "pages": [
+          1572
+        ],
+        "pdf_pages": [
+          1592
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Letters and sound-representing symbols",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-074",
+    "domain": "morphology",
+    "concept": "Pronunciation of regular sibilant suffixes",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The regular plural, genitive and third-person singular suffix uses a syllabic variant after sibilants, voiceless s after other voiceless sounds, and voiced z elsewhere.",
+    "condition": "Applies to the construction described in §2.1.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These are phonological conditions. Written suffix choices and irregular base changes are separate.",
+        "pages": [
+          1573
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The boxes and crates arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dog’s lead is beside the cats’ bowls.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.1.1",
+        "pages": [
+          1573
+        ],
+        "pdf_pages": [
+          1593
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronunciation of regular sibilant suffixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-075",
+    "domain": "morphology",
+    "concept": "Pronunciation of regular ed inflections",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Regular preterite and past-participial ed is syllabic after t or d, voiceless t after other voiceless consonants, and voiced d elsewhere.",
+    "condition": "Applies to the construction described in §2.1.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The written ed does not vary with these three pronunciations.",
+        "pages": [
+          1573,
+          1574
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They waited, packed, and waved.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew landed, laughed, and smiled.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.1.2",
+        "pages": [
+          1573,
+          1574
+        ],
+        "pdf_pages": [
+          1593,
+          1594
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronunciation of regular ed inflections",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-076",
+    "domain": "morphology",
+    "concept": "Syllabic l and suffixation",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "For speakers with a syllabic final l in certain bases, a vowel-initial suffix generally makes the l the onset of the following syllable.",
+    "condition": "Applies to the construction described in §2.1.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A consonant-initial suffix can preserve syllabicity. Some grade forms have optional retention.",
+        "pages": [
+          1574
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cart began rattling.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The design is simpler now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.1.3",
+        "pages": [
+          1574
+        ],
+        "pdf_pages": [
+          1594
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Syllabic l and suffixation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-077",
+    "domain": "morphology",
+    "concept": "Linking r in inflected non-rhotic forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "In non-rhotic accents, a base-final historical r can surface before a vowel-initial inflection even when it is absent in the isolated base.",
+    "condition": "Applies to the construction described in §2.1.4 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The alternation is accent-dependent. Consonant-initial suffixes do not create the same environment.",
+        "pages": [
+          1574
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The sky grew clearer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is hearing the announcement now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.1.4",
+        "pages": [
+          1574
+        ],
+        "pdf_pages": [
+          1594
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Linking r in inflected non-rhotic forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-078",
+    "domain": "morphology",
+    "concept": "Consonant doubling before vowel-initial suffixes",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "A single final consonant letter after a single vowel letter in a stressed final syllable generally doubles before a vowel-initial suffix.",
+    "condition": "Applies to the construction described in §2.2.1 of Chapter 18.",
+    "violation": "A regular stressed final consonant is left undoubled before the inflectional suffix.",
+    "exceptions": [
+      {
+        "description": "Final h, w, y and x are outside the usual single-consonant-symbol pattern. Final l and s show lexical and variety differences.",
+        "pages": [
+          1575,
+          1576
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The mechanic fitted a new latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The runner is hopping on one foot.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The mechanic fited a new latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The runner is hoping on one foot.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.2.1",
+        "pages": [
+          1575,
+          1576
+        ],
+        "pdf_pages": [
+          1595,
+          1596
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Consonant doubling before vowel-initial suffixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "A regular stressed final consonant is left undoubled before the inflectional suffix.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The mechanic fited a new latch. ||| The mechanic fitted a new latch.",
+        "The runner is hoping on one foot. ||| The runner is hopping on one foot."
+      ],
+      "learner_explanation": "A single final consonant letter after a single vowel letter in a stressed final syllable generally doubles before a vowel-initial suffix.",
+      "corrected_paragraph_template": "Double the final consonant before the suffix in the intended lexeme.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She is hoping for a reply.",
+        "They heated the room.",
+        "The parcel was boxed.",
+        "She traveled by bus."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "spelling-inflection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-079",
+    "domain": "morphology",
+    "concept": "Spelling variation in consonant doubling",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some final consonants double beyond the general stress pattern. Final l in an unstressed syllable commonly doubles in British spelling where American spelling uses one l.",
+    "condition": "Applies to the construction described in §2.2.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lexical and stress variation can affect other consonants as well. Both variety forms should be recognized.",
+        "pages": [
+          1576
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She travelled by coach.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She traveled by bus.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.2.1",
+        "pages": [
+          1576
+        ],
+        "pdf_pages": [
+          1596
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spelling variation in consonant doubling",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-080",
+    "domain": "morphology",
+    "concept": "Mute e deletion before ing",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "Mute final e normally drops before inflectional ing.",
+    "condition": "Applies to the construction described in §2.2.2 of Chapter 18.",
+    "violation": "A mute base-final e is retained before inflectional ing in a regular deletion environment.",
+    "exceptions": [
+      {
+        "description": "Preserve a pronounced final e or one belonging to an applicable composite symbol. Check cases where the retained e distinguishes another lexeme.",
+        "pages": [
+          1576,
+          1577
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is hoping for a reply.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They are baking bread.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She is hopeing for a reply.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They are bakeing bread.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.2.2",
+        "pages": [
+          1576,
+          1577
+        ],
+        "pdf_pages": [
+          1596,
+          1597
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mute e deletion before ing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "A mute base-final e is retained before inflectional ing in a regular deletion environment.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She is hopeing for a reply. ||| She is hoping for a reply.",
+        "They are bakeing bread. ||| They are baking bread."
+      ],
+      "learner_explanation": "Mute final e normally drops before inflectional ing.",
+      "corrected_paragraph_template": "Drop the mute e before adding ing.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She is dyeing the curtains.",
+        "They are freeing the bird.",
+        "We were hoeing the garden."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "spelling-inflection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-081",
+    "domain": "morphology",
+    "concept": "Vowel-symbol e in inflected forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Final e is retained when it is itself the vowel symbol. Retention with composite vowel symbols depends on the ending and suffix.",
+    "condition": "Applies to the construction described in §2.2.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Many ue bases drop e before ing, while some permit either form. Lie and similar bases have a separate ie-to-y alternation.",
+        "pages": [
+          1577,
+          1578
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They are freeing the trapped bird.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is dyeing the curtains.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.2.2",
+        "pages": [
+          1577,
+          1578
+        ],
+        "pdf_pages": [
+          1597,
+          1598
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Vowel-symbol e in inflected forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-082",
+    "domain": "morphology",
+    "concept": "Y replacement in written inflection",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Final y that represents a vowel on its own generally becomes i in certain inflections, but remains before ing. Y belonging to a composite vowel symbol normally stays.",
+    "condition": "Applies to the construction described in §2.2.3 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lexical exceptions exist. The spelling rule is sensitive to what the letters represent rather than a fixed preceding-letter test alone.",
+        "pages": [
+          1578,
+          1579
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The courier tried the side door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The courier stayed outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.2.3",
+        "pages": [
+          1578,
+          1579
+        ],
+        "pdf_pages": [
+          1598,
+          1599
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Y replacement in written inflection",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-083",
+    "domain": "morphology",
+    "concept": "Ie bases and ing spelling",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "The bases die, lie, tie and vie use y before inflectional ing.",
+    "condition": "Applies to the construction described in §2.2.3 of Chapter 18.",
+    "violation": "The final ie is retained in the gerund-participle of a base that takes y before ing.",
+    "exceptions": [
+      {
+        "description": "Other ie endings may retain e when the spelling represents a different vowel. Dyeing belongs to a different lexeme.",
+        "pages": [
+          1579
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is tying the parcel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dog is lying on the rug.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She is tieing the parcel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The dog is lieing on the rug.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.2.3",
+        "pages": [
+          1579
+        ],
+        "pdf_pages": [
+          1599
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ie bases and ing spelling",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The final ie is retained in the gerund-participle of a base that takes y before ing.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She is tieing the parcel. ||| She is tying the parcel.",
+        "The dog is lieing on the rug. ||| The dog is lying on the rug."
+      ],
+      "learner_explanation": "The bases die, lie, tie and vie use y before inflectional ing.",
+      "corrected_paragraph_template": "Replace final ie with y before adding ing.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She is dyeing fabric.",
+        "The pilot was sortieing at dawn.",
+        "She tied the parcel."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "spelling-inflection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-084",
+    "domain": "morphology",
+    "concept": "S and es after final sibilants",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The written regular plural and third-person singular ending takes es after bases ending in a sibilant, with relevant base spelling adjustments.",
+    "condition": "Applies to the construction described in §2.2.4 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Final ch pronounced k does not have this ending. A final mute e can yield the same surface spelling under different segmentation analyses.",
+        "pages": [
+          1579,
+          1580
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She fixes the hinges.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The boxes are ready.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.2.4",
+        "pages": [
+          1579,
+          1580
+        ],
+        "pdf_pages": [
+          1599,
+          1600
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "S and es after final sibilants",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-085",
+    "domain": "morphology",
+    "concept": "Written suffix after final o",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Nouns and verbs ending in o can show es, particularly in certain consonant-letter plus o bases, but many words take s.",
+    "condition": "Applies to the construction described in §2.2.4 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lexical and category differences prevent a single rule for every o-final spelling.",
+        "pages": [
+          1580
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The engine goes quiet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The studio displays several photos.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§2.2.4",
+        "pages": [
+          1580
+        ],
+        "pdf_pages": [
+          1600
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Written suffix after final o",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-086",
+    "domain": "morphology",
+    "concept": "Spelling and pronunciation of inflectional grade",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Regular grade uses er and est with appropriate base spelling adjustments. Some bases also show pronunciation changes.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Dry and shy allow spelling variants. Syllabic l and the g of longer, stronger and younger show phonological qualifications.",
+        "pages": [
+          1581
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The path is narrower now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The ridge is the highest point.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§3.1",
+        "pages": [
+          1581
+        ],
+        "pdf_pages": [
+          1601
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spelling and pronunciation of inflectional grade",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-087",
+    "domain": "morphology",
+    "concept": "Irregular grade and restricted elder forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Several common bases have irregular grade forms, including better, worse, more and less. Elder and eldest have restricted distributions alongside older and oldest.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Elder is limited in meaning and syntax. Farther and further and their superlatives have overlapping uses.",
+        "pages": [
+          1582
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The second plan is better.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her eldest sister lives nearby.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§3.1",
+        "pages": [
+          1582
+        ],
+        "pdf_pages": [
+          1602
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Irregular grade and restricted elder forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-088",
+    "domain": "morphology",
+    "concept": "Lexical availability of analytic and inflectional grade",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some adjectives allow both inflection and analytic grade, while others favor or require one. Syllable count, morphology and lexical convention affect availability.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Participial adjectives generally favor analytic forms, with marginal exceptions. Disyllabic judgments vary by lexeme and speaker.",
+        "pages": [
+          1582,
+          1583,
+          1584
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That route is safer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new instructions are more confusing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§3.2",
+        "pages": [
+          1582,
+          1583,
+          1584
+        ],
+        "pdf_pages": [
+          1602,
+          1603,
+          1604
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical availability of analytic and inflectional grade",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-089",
+    "domain": "morphology",
+    "concept": "Longer bases and the un-prefix exception",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Adjectives with more than two syllables normally take analytic grade. An un-prefixed adjective can retain the inflectional pattern of its shorter base.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A small number of other inflected longer forms occur, often with marginal acceptance.",
+        "pages": [
+          1584
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This arrangement is more convenient.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The second group was unhappier.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§3.2",
+        "pages": [
+          1584
+        ],
+        "pdf_pages": [
+          1604
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Longer bases and the un-prefix exception",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-090",
+    "domain": "morphology",
+    "concept": "Grade in adverbs",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Most gradable adverbs use analytic forms. A small group, including fast, hard and soon, has inflected forms.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Inflected forms such as louder and slower can be less restricted than the corresponding plain adverb without ly.",
+        "pages": [
+          1584,
+          1585
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They worked harder this time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She answered more quietly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§3.2",
+        "pages": [
+          1584,
+          1585
+        ],
+        "pdf_pages": [
+          1604,
+          1605
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Grade in adverbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-091",
+    "domain": "morphology",
+    "concept": "Noun plural formation types",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "English noun plurals include regular suffixation, suffixation with base change, unchanged bases, vowel change, en formations and borrowed patterns.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 18.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Genitive marking is applied after plural formation. Particular lexemes can have more than one plural.",
+        "pages": [
+          1585
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The geese crossed the path.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Several species nest here.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1",
+        "pages": [
+          1585
+        ],
+        "pdf_pages": [
+          1605
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun plural formation types",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-092",
+    "domain": "morphology",
+    "concept": "Regular noun plurals with final y",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "A regular noun ending in y as a single vowel symbol generally takes ies in the plural. A y in a composite vowel symbol is normally retained.",
+    "condition": "Applies to the construction described in §4.1.1 of Chapter 18.",
+    "violation": "A regular common-noun plural retains a final single-vowel y or replaces a y belonging to a composite vowel symbol.",
+    "exceptions": [
+      {
+        "description": "Money and trolley allow variants. Proper nouns, compounds in by and some clippings have separate behavior.",
+        "pages": [
+          1585
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Several cities joined the program.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two donkeys stood beside the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Several citys joined the program.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Two donkeies stood beside the gate.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 18,
+        "section": "§4.1.1",
+        "pages": [
+          1585
+        ],
+        "pdf_pages": [
+          1605
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Regular noun plurals with final y",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "A regular common-noun plural retains a final single-vowel y or replaces a y belonging to a composite vowel symbol.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Several citys joined the program. ||| Several cities joined the program.",
+        "Two donkeies stood beside the gate. ||| Two donkeys stood beside the gate."
+      ],
+      "learner_explanation": "A regular noun ending in y as a single vowel symbol generally takes ies in the plural. A y in a composite vowel symbol is normally retained.",
+      "corrected_paragraph_template": "Use ies after a single-vowel y in these regular plurals, and retain y with a composite vowel symbol.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The standbys were ready.",
+        "The two Kennedys arrived.",
+        "The fund contained public monies."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "spelling-inflection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
