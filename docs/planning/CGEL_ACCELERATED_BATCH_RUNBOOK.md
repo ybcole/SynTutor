@@ -190,3 +190,7 @@ Printed pp.597–617 checked in text and rendered layout. Page 597 contains the 
 ## Chapter 7 second checkpoint (2026-11-11)
 
 Printed pp.618–634 yielded 24 records (`PHR-400`–`PHR-423`). Continue at p.635 with the end of PP preposing and the start of PP complementation.
+
+## Chapter 7 source extraction complete (2026-11-11)
+
+The final accelerated batch covers 27 substantive pages, printed pp.635–661, and verifies that p.662 is blank. It adds 35 records (`PHR-424`–`PHR-458`). Chapter 7 closes with 64 substantive pages, two justified skips and zero unprocessed pages. Chapter 10 is next in the master plan priority order.

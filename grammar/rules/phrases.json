@@ -27024,5 +27024,2139 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-424",
+    "domain": "phrases",
+    "concept": "Preposing beyond predicative phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The though and as constructions also allow a degree modifier or a verb phrase to be preposed. An auxiliary can remain behind in the clause.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A post-head dependent can remain behind when a predicative noun phrase is preposed. The chapter treats determiner-initial preposing as uncertain, so it should not be categorically flagged.",
+        "pages": [
+          635
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Search as she might, she never found the receipt.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Reconsider though he did, he reached the same conclusion.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§4.4",
+        "pages": [
+          635
+        ],
+        "pdf_pages": [
+          655
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposing beyond predicative phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-425",
+    "domain": "phrases",
+    "concept": "Object complementation of prepositions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A preposition can take an NP object. Some permit a complementless use as well, while items such as amid and despite require a complement in the constructions described here.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The obligatory-complement inventory also includes several learned borrowings. With future time expressions, come has a prepositional use.",
+        "pages": [
+          635,
+          636
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The puppy stayed inside the shed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The puppy stayed inside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          635,
+          636
+        ],
+        "pdf_pages": [
+          655,
+          656
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Object complementation of prepositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-426",
+    "domain": "phrases",
+    "concept": "Between and among",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Between treats members or boundaries individually. Among typically locates something in or selects from a group viewed collectively. Both require a complement with plural meaning.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Among accepts collective singulars, and between accepts a distributive singular with each or every. Between can apply to more than two members.",
+        "pages": [
+          636
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A cable ran between the three towers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She felt at ease among the audience.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          636
+        ],
+        "pdf_pages": [
+          656
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Between and among",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-427",
+    "domain": "phrases",
+    "concept": "Predicative complements of as",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Predicative as can introduce an adjective phrase or a role NP related to a predicand in the larger clause. The PP can be selected by a verb or function as an adjunct.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Number compatibility with the predicand is semantic. A plural predicand can be described collectively by a singular NP.",
+        "pages": [
+          636,
+          637
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They described the instructions as misleading.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As secretary, I took the minutes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          636,
+          637
+        ],
+        "pdf_pages": [
+          656,
+          657
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative complements of as",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-428",
+    "domain": "phrases",
+    "concept": "Predicative as versus object-taking prepositions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An adjective phrase after predicative as diagnoses a predicative complement. A predicative NP cannot become the subject by passivizing the construction with as stranded.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Failure to passivize is insufficient evidence by itself. Other factors can block passivization of prepositional objects.",
+        "pages": [
+          637
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We regard the passage as unclear.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The complaint was looked into by the board.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          637
+        ],
+        "pdf_pages": [
+          657
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative as versus object-taking prepositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-429",
+    "domain": "phrases",
+    "concept": "Predicative complements with for, from, to, and qua",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Certain uses of take and pass select predicative for. From and to can introduce successive states. Formal qua takes a bare NP denoting the capacity in which something is considered.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fixed expressions with adjectives, such as in brief, do not supply a predicand.",
+        "pages": [
+          638
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She took the package for a gift.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The device works well qua recorder.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          638
+        ],
+        "pdf_pages": [
+          658
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative complements with for, from, to, and qua",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-430",
+    "domain": "phrases",
+    "concept": "Reduced clauses after prepositions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Although can take a reduced clause with an understood subject and predicator. Its full counterpart preserves the concessive relation.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Restoring a subject and verb after predicative as either fails or changes the interpretation in the illustrated constructions.",
+        "pages": [
+          638
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Although deeply embarrassed, Lena continued speaking.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Although Lena was deeply embarrassed, she continued speaking.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          638
+        ],
+        "pdf_pages": [
+          658
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reduced clauses after prepositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-431",
+    "domain": "phrases",
+    "concept": "Preposition phrases as complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A preposition can select a PP with a particular head, as apart selects from in its separating use. A source or temporal-boundary preposition can also take a PP whose head varies with the intended location or time.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Temporal till and until and spatial or temporal from readily allow the variable pattern. Goal to is more restricted but can occur when a destination region is construed as a place.",
+        "pages": [
+          638,
+          639,
+          640
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guard kept us apart from the crowd.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It continued until well after dusk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          638,
+          639,
+          640
+        ],
+        "pdf_pages": [
+          658,
+          659,
+          660
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposition phrases as complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-432",
+    "domain": "phrases",
+    "concept": "Variety and sense in of complementation",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some PP complements headed by of depend on the outer head, the meaning, and the variety. The spatial off of construction is American English, while inside of with a time period has wider distribution.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Out with a direct NP has mainly American or informal use and lexical restrictions. Exceptive outside of is distinct from the dialect-sensitive locative use.",
+        "pages": [
+          639
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They finished inside of an hour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The kitten slipped off of the counter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          639
+        ],
+        "pdf_pages": [
+          659
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variety and sense in of complementation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-433",
+    "domain": "phrases",
+    "concept": "Selected heads in nested PPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some prepositions require or permit a PP headed by a particular preposition. Complement omission and alternate heads depend on the individual item and sense.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Conditional except takes for. Elsewhere except can take an NP directly or take a for PP. Comparative uses of nearer and further can occur without the to PP.",
+        "pages": [
+          639,
+          640
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We arrived prior to the rehearsal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Apart from a dent, the cabinet was intact.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          639,
+          640
+        ],
+        "pdf_pages": [
+          659,
+          660
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Selected heads in nested PPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-434",
+    "domain": "phrases",
+    "concept": "Restricted adverb phrase complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Only limited combinations of prepositions with AdvP complements are attested in this pattern. The distribution varies with the head and the adverb.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source also distinguishes the wider distribution of here, there, now, and then as PP complements.",
+        "pages": [
+          640
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We saved a slice for later.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Until recently, nobody kept a spare key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          640
+        ],
+        "pdf_pages": [
+          660
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restricted adverb phrase complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-435",
+    "domain": "phrases",
+    "concept": "Clausal complements of prepositions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Prepositions can take several types of subordinate clause, including declarative, interrogative, gerund-participial, and comparative clauses. The licensed type varies by head.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An NP fused relative can look clausal. Identify its function and structure before assigning clause type. The source also illustrates subjunctives and purpose infinitivals.",
+        "pages": [
+          641
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They left after the rain stopped.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We disagreed on how to divide the work.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          641
+        ],
+        "pdf_pages": [
+          661
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clausal complements of prepositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-436",
+    "domain": "phrases",
+    "concept": "Layered double complementation",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A phrase formed by a preposition and its complement can serve as the head of a larger PP with another complement. In the source–goal construction, the goal phrase attaches outside the source phrase.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An apparent second PP can instead belong inside the first NP complement. Attachment depends on the construction.",
+        "pages": [
+          641
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "From the pier to the buoy is about a mile.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Across the square from the bakery stood a clock tower.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          641
+        ],
+        "pdf_pages": [
+          661
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Layered double complementation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-437",
+    "domain": "phrases",
+    "concept": "Matrix licensing after except and including",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The larger construction can determine which categories appear after except or including. A useful comparison is a clause in which the corresponding expression is directly licensed.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The comparison may involve a change in polarity for except. Including preserves polarity in the illustrated cases. This is a licensing comparison rather than a mechanical transformation.",
+        "pages": [
+          641,
+          642,
+          643
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nobody was there except the caretaker.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We searched everywhere, including under the stage.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          641,
+          642,
+          643
+        ],
+        "pdf_pages": [
+          661,
+          662,
+          663
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Matrix licensing after except and including",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-438",
+    "domain": "phrases",
+    "concept": "Matrix licensing in comparative PPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Comparative as and than can take expressions licensed by the matrix construction, as well as taking comparative clauses.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some short sequences after than can be analyzed as reduced comparative clauses.",
+        "pages": [
+          643
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She disclosed more than that the gate was locked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He offered no more than that he would call tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.1",
+        "pages": [
+          643
+        ],
+        "pdf_pages": [
+          663
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Matrix licensing in comparative PPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-439",
+    "domain": "phrases",
+    "concept": "Degree and extent modification of PPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Gradable idiomatic PPs can take degree modifiers. Many spatial or temporal PPs take a preceding NP expressing an extent.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The measure NP here is a modifier. In elapsed-time expressions with ago it is a required complement.",
+        "pages": [
+          643,
+          644
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team was completely out of practice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shed is three metres beyond the hedge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.2",
+        "pages": [
+          643,
+          644
+        ],
+        "pdf_pages": [
+          663,
+          664
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree and extent modification of PPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-440",
+    "domain": "phrases",
+    "concept": "Adverbial modifiers and completeness in PPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Right can mark exactness or completion, straight can mark directness, and all can express completeness with compatible heads.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "All over is partly idiomatic. The synonymous simple locative on does not take all in the illustrated covering construction.",
+        "pages": [
+          644,
+          645
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parcel slid straight under the bench.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Dust had settled all over the shelves.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.2",
+        "pages": [
+          644,
+          645
+        ],
+        "pdf_pages": [
+          664,
+          665
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adverbial modifiers and completeness in PPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-441",
+    "domain": "phrases",
+    "concept": "Directional prepositions as pre-head modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A directional preposition such as up or out can modify a following PP by suggesting a path or orientation. The head determines whether the full phrase fits the governing context.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some modifiers can stack. Here and there frequently serve as heads in these sequences.",
+        "pages": [
+          645
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Put the spare blankets up on the shelf.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The children waited out by the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.2",
+        "pages": [
+          645
+        ],
+        "pdf_pages": [
+          665
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Directional prepositions as pre-head modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-442",
+    "domain": "phrases",
+    "concept": "Post-head PP modification and PP functions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A PP can modify another PP after its head. PPs also function as heads, complements or modifiers inside phrases, and as complements or adjuncts in clauses.",
+    "condition": "Applies to the construction described in §5.2–5.3 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Constituent order can support attachment of the post-head modifier to the containing PP. A locative expression can be selected or supplementary to the situation described.",
+        "pages": [
+          645,
+          646
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Downstairs by the boiler, the air was warm.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nina put the keys in the drawer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.2–5.3",
+        "pages": [
+          645,
+          646
+        ],
+        "pdf_pages": [
+          665,
+          666
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Post-head PP modification and PP functions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-443",
+    "domain": "phrases",
+    "concept": "Quantificational and nominal-like PPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some PPs containing measures function like determinatives inside NPs, while others have a distribution like an NP. Some place and time PPs also serve as subjects or objects.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Place and time PPs have a restricted distribution as subjects and objects. A numerical PP can serve as a direct object in an appropriate measure construction.",
+        "pages": [
+          646,
+          647
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Over thirty cyclists entered the race.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "After the holiday would suit us better.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§5.3",
+        "pages": [
+          646,
+          647
+        ],
+        "pdf_pages": [
+          666,
+          667
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quantificational and nominal-like PPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-444",
+    "domain": "phrases",
+    "concept": "Lexical and grammaticised preposition use",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A grammaticised use is singled out by a construction or by a head's lexical selection. In a freely chosen spatial use, the intended spatial relation guides the choice.",
+    "condition": "Applies to the construction described in §6 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A preposition with grammaticised uses can also have lexical uses. In selected constructions, substituting another preposition can break the construction or change the sense.",
+        "pages": [
+          647
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They disposed of the damaged files.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Put the crate beside the cabinet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6",
+        "pages": [
+          647
+        ],
+        "pdf_pages": [
+          667
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical and grammaticised preposition use",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-445",
+    "domain": "phrases",
+    "concept": "Landmarks, trajectors, sources, and goals",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A landmark supplies the spatial reference and a trajector is the entity or event located relative to it. A change of location can specify a source and a goal.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some heads express either location or goal. A location can be construed as the endpoint of an implicit route.",
+        "pages": [
+          648,
+          649
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The drone flew from the hangar to the field.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The drone hovered above the fence.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.1",
+        "pages": [
+          648,
+          649
+        ],
+        "pdf_pages": [
+          668,
+          669
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Landmarks, trajectors, sources, and goals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-446",
+    "domain": "phrases",
+    "concept": "Construal with in, on, and at",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In commonly evokes a containing region, on commonly evokes contact or support, and at commonly treats the landmark as a point. Function and viewpoint shape the choice.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Containment need not be complete, support need not be vertical, and at can leave inside versus outside unresolved.",
+        "pages": [
+          649,
+          650,
+          651
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The spare key is in its slot.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We will meet at the museum.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.1",
+        "pages": [
+          649,
+          650,
+          651
+        ],
+        "pdf_pages": [
+          669,
+          670,
+          671
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Construal with in, on, and at",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-447",
+    "domain": "phrases",
+    "concept": "Perspective and extended uses of out",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Extended meanings of out can reflect emergence into awareness or departure from perceptibility or availability. The direction of the interpretation depends on how the situation is construed.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same form can accompany opposite visibility outcomes. Lexicalized expressions require their own interpretation.",
+        "pages": [
+          651,
+          652
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We finally worked out the cause.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fire went out before dawn.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.1",
+        "pages": [
+          651,
+          652
+        ],
+        "pdf_pages": [
+          671,
+          672
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perspective and extended uses of out",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-448",
+    "domain": "phrases",
+    "concept": "Extended meanings of up and down",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Spatial verticality extends to contrasts of status, size, and activity. Up can also mark approach or completion. Geographical use can depend on convention.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Travel along a level route can be described with either up or down. Geography and local conventions can compete.",
+        "pages": [
+          652,
+          653
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The technicians sped up the calibration.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They used up the remaining ink.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.1",
+        "pages": [
+          652,
+          653
+        ],
+        "pdf_pages": [
+          672,
+          673
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Extended meanings of up and down",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-449",
+    "domain": "phrases",
+    "concept": "Comparative and other uses of as and than",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A degree marker or comparative form can license a PP headed by as or than. Comparative as also heads adjuncts, and other uses of as express time, reason, or predication.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Comparative than is restricted to complement function in this analysis. Temporal and causal as are separate uses.",
+        "pages": [
+          653,
+          654
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The bridge is wider than the old one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As you may remember, we measured it last winter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.2",
+        "pages": [
+          653,
+          654
+        ],
+        "pdf_pages": [
+          673,
+          674
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative and other uses of as and than",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-450",
+    "domain": "phrases",
+    "concept": "Selected at and directed action",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some verbs, nouns and adjectives select at. In a subset of verb constructions, a direct object presents an action as taking effect, while an at phrase presents it as aimed or attempted.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This interpretation is specific to the relevant action verbs. Other selected at complements have different meanings.",
+        "pages": [
+          654
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cat scratched the screen and tore it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cat scratched at the screen, but could not reach it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.2",
+        "pages": [
+          654
+        ],
+        "pdf_pages": [
+          674
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Selected at and directed action",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-451",
+    "domain": "phrases",
+    "concept": "Passive and nominal by phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A passive by phrase corresponds to the active subject. A by phrase in an NP can instead identify an agent or creator, with its interpretation restricted by the nominal construction.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "By can also mark means, a deadline, a difference, or a route. Nominal by does not invariably correspond to the subject of a paraphrasing clause.",
+        "pages": [
+          655
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The panel was painted by a volunteer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We bought a print by a local artist.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.2",
+        "pages": [
+          655
+        ],
+        "pdf_pages": [
+          675
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Passive and nominal by phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-452",
+    "domain": "phrases",
+    "concept": "Selected and independent for phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Heads in several categories select for phrases. Independent uses include beneficiary, purpose and duration. Some beneficiary phrases alternate with an indirect object.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The beneficiary analysis can be borderline. A noun and its related verb need not select the same complement form.",
+        "pages": [
+          655,
+          656
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We waited for the ferry.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She knitted a scarf for her brother.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.2",
+        "pages": [
+          655,
+          656
+        ],
+        "pdf_pages": [
+          675,
+          676
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Selected and independent for phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-453",
+    "domain": "phrases",
+    "concept": "From in source, prevention, and abstention constructions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "From marks spatial, temporal, or informational source and can introduce an action prevented or avoided in selected constructions.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some prevention verbs also take a bare gerund-participial clause. With keep, omission of from can instead give a continuative reading.",
+        "pages": [
+          656,
+          657
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lock kept children from opening the cabinet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They refrained from commenting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.2",
+        "pages": [
+          656,
+          657
+        ],
+        "pdf_pages": [
+          676,
+          677
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "From in source, prevention, and abstention constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-454",
+    "domain": "phrases",
+    "concept": "Lexical selection of in",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In is selected by some verbs, nouns, and adjectives, including expressions of trust or intellectual attitude. Comparable heads can select different prepositions.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Spatial and temporal in have independent meanings. Similarity of meaning across heads is insufficient to predict complement choice.",
+        "pages": [
+          657,
+          658
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She confided in her colleague.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They were interested in textiles.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.2",
+        "pages": [
+          657,
+          658
+        ],
+        "pdf_pages": [
+          677,
+          678
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical selection of in",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-455",
+    "domain": "phrases",
+    "concept": "Of complements and the limits of genitive alternation",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Of commonly introduces an NP dependent of a noun or adjective. A genitive can sometimes express a similar relation to a noun, but the of construction covers a wider range.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some verbs, prepositions, and occasional adverbs also select of. Some of phrases function as modifiers, predicative complements, or adjuncts.",
+        "pages": [
+          658,
+          659
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The arrival of the delegates delayed the vote.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shelf held a jar of honey.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.2",
+        "pages": [
+          658,
+          659
+        ],
+        "pdf_pages": [
+          678,
+          679
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Of complements and the limits of genitive alternation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-456",
+    "domain": "phrases",
+    "concept": "Selected on and adversely affected participants",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "On can head a selected complement of a verb, noun or adjective. In a different construction it introduces a participant adversely affected by an event.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Temporal and spatial uses also occur. The adversely affected participant is expressed by a PP in this construction.",
+        "pages": [
+          659,
+          660
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The repair depends on the weather.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My phone died on me during the call.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.2",
+        "pages": [
+          659,
+          660
+        ],
+        "pdf_pages": [
+          679,
+          680
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Selected on and adversely affected participants",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-457",
+    "domain": "phrases",
+    "concept": "To complements and endpoints",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "To expresses goals or endpoints and is also selected by heads across several categories. With certain verbs of transfer or communication, a to phrase alternates with an indirect object.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The alternation is lexically restricted. Other to complements can express an addressee, experiencer, or other relation without the alternation.",
+        "pages": [
+          660,
+          661
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We sent the editor a draft.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We sent a draft to the editor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.2",
+        "pages": [
+          660,
+          661
+        ],
+        "pdf_pages": [
+          680,
+          681
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "To complements and endpoints",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-458",
+    "domain": "phrases",
+    "concept": "With complements and accompaniment",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "With expresses accompaniment and related meanings and heads selected complements. The NP after with can correspond to a direct object in some related constructions.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 7.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The division between complements and modifiers can be unclear. With phrases also express instruments, properties and manner.",
+        "pages": [
+          661
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They supplied the club with new radios.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They supplied new radios to the club.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 7,
+        "section": "§6.2",
+        "pages": [
+          661
+        ],
+        "pdf_pages": [
+          681
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "With complements and accompaniment",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
