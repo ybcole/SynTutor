@@ -217,7 +217,36 @@ def build_payload(text, sentence_index=0, convention_version=None,
 
     summary["verdict_authority"] = "legacy_diagnostic"
     summary["book_verified"] = False
+
+    # Coverage-aware diagnostic status.
+    # Preserve legacy verdict fields for existing API consumers.
+    legacy_verdict = summary.get("verdict")
+
+    if legacy_verdict == "ungrammatical":
+        summary["diagnostic_status"] = "supported_violation_detected"
+    elif (
+        legacy_verdict == "unverified"
+        or summary.get("checker_errors")
+        or summary.get("unverified")
+    ):
+        summary["diagnostic_status"] = "analysis_incomplete"
+    else:
+        summary["diagnostic_status"] = "no_supported_error_detected"
+
+    # Legacy diagnostics cannot certify grammatical correctness.
+    summary["grammaticality_certified"] = False
+
     apply_plain_language(details, summary)
+
+    # Learner-facing wording must reflect diagnostic coverage,
+    # not claim independently established grammatical correctness.
+    if summary["diagnostic_status"] == "no_supported_error_detected":
+        summary["explanation"] = (
+            "No supported grammatical error was detected by the "
+            "current checks. This does not establish that the "
+            "sentence is grammatically correct."
+        )
+
 
     # Preserve the raw Benepar tree separately; br_analysis is the one canonical
     # analysis contract shared by API consumers.
