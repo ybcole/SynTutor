@@ -29,6 +29,7 @@ let reviewStage = null;
 let articlePage = 0, practiceResponses = null;
 const postTestKeys = ['guided', 'transfer', 'exit'];
 const lessonCanvases = new Map();
+let embeddedBuilderCleanup = null;
 const el = (tag, text, cls) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (cls) node.className = cls; return node; };
 function button(text, run, cls = '') { const b = el('button',text,cls); b.type = 'button'; b.addEventListener('click',run); return b; }
 function lessonReferences(lesson) {
@@ -391,6 +392,8 @@ function clearLessonDiagram(host) {
 }
 
 function clearLessonCanvases() {
+  embeddedBuilderCleanup?.();
+  embeddedBuilderCleanup = null;
   for (const view of lessonCanvases.values()) view.destroy();
   lessonCanvases.clear();
 }
@@ -453,7 +456,7 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
   }));
   if (inline) {
     if (selected) describeSelection(worked.tree.root, selected);
-    aside.append(selectedWords);
+    canvas.append(selectedWords);
   } else {
     aside.append(el('p', worked.origin, 'lesson-origin'));
     if (selected) aside.append(button('Inspect highlighted tree position', () => inspect(selected)));
@@ -486,6 +489,7 @@ function articleScreen(lesson, p, article) {
   article.teach(body, page, {
     el, button, lesson,
     openBuilderPractice: options.onBuilderPractice,
+    mountBuilder: (stage, exercise) => { embeddedBuilderCleanup = options.mountBuilder?.(stage, exercise); },
     showDiagram: (figure, tree, options) => {
       clearLessonDiagram(figure);
       return mountLessonCanvas(figure, renderLessonTree(tree, options));

@@ -21,7 +21,7 @@ import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 //   right-click (hold) + drag -> marquee-select multiple nodes
 
 import {
-  POS_TYPES, PHRASE_NODE_TYPES, NODE_TYPE_GROUPS, NODE, toCanonicalEnvelope, fromCanonicalEnvelope, builderProfile, paletteFor,
+  POS_TYPES, NODE, toCanonicalEnvelope, fromCanonicalEnvelope, builderProfile, paletteFor,
   createModel, addWordsFromText, addPhrase, moveNode, setType,
   removeNode, connect, canConnect, disconnect,
   dotOf, dotHit, nodeHit, endpointOf, endpointHit, toTree, compareTrees, leavesOf, leafText,
@@ -127,10 +127,16 @@ const state = {
 };
 
 let tools;
+let embedded = null;
+function currentPalette() {
+  return embedded
+    ? { labels: ['PHRASE-a', 'PHRASE-b', 'PHRASE-c'], features: [] }
+    : paletteFor(state.canonicalProfile || builderProfile());
+}
 export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } = {}) {
   state.onStatus = onStatusChange || (() => {});
   state.setWorkspaceView = setWorkspaceView || null;
-  tools=createBuilderTools({state,userId,reset:resetTransientState,
+  tools=createBuilderTools({state,userId,palette:currentPalette,reset:resetTransientState,
     validateImport:async tree=>{
       const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
       try{const r=await fetch(`${API_BASE}/api/evaluate`,{method:'POST',headers:{'Content-Type':'application/json'},signal:controller.signal,body:JSON.stringify({tree})});
@@ -169,6 +175,7 @@ export function getSentenceFromLeaves() {
 // disabled while the builder owns the workspace).
 function syncCanvasToInput() {
   const sentence = getSentenceFromLeaves();
+  if (embedded) return sentence;
   const input = document.getElementById('inputText');
   if (!input) return sentence;
   if (input.value === sentence) return sentence;
@@ -197,6 +204,29 @@ export function clearBuilder() {
 // ---------------------------------------------------------------------------
 // View lifecycle
 // ---------------------------------------------------------------------------
+
+// Use the existing canvas and editor controls in the lesson while keeping the
+// normal workspace and its draft available for the next standalone visit.
+export function mountEmbeddedBuilder(stage, exercise) {
+  ensureWired();
+  const canvas = state.canvas;
+  const home = canvas.parentElement;
+  embedded = stage;
+  stage.append(canvas);
+  canvas.hidden = false;
+  resize();
+  tools.open({ embedded: { ...exercise, stage } });
+  draw();
+  return () => {
+    tools.close();
+    closeMenu();
+    closeEditor();
+    resetTransientState();
+    home.append(canvas);
+    canvas.hidden = true;
+    embedded = null;
+  };
+}
 
 export function openBuilderView(opts = {}) {
   state.canonicalProfile = opts.canonicalTree?.convention_profile || state.canonicalProfile || builderProfile();
@@ -443,7 +473,7 @@ function ensureWired() {
   });
   wireCanvas(state.canvas);
   window.addEventListener('resize', () => {
-    if (isBuilderOpen()) {
+    if (isBuilderOpen() || embedded) {
       resize();
       if(state.snapped)applyTreeLayout({fit:true});
       draw();
@@ -785,6 +815,7 @@ function onDoubleClick(e) {
 // Words SynTutor doesn't recognise are still flagged visually, but they can
 // now be connected like any other node.
 async function validateWords(nodes) {
+  if (embedded) return;
   const words = nodes.map((n) => n.text);
   let results = null;
   try {
@@ -877,6 +908,7 @@ function openInlineEditor(world, clientX, clientY, initial, onCommit) {
   input.placeholder = 'type words…';
   input.style.left = `${clientX}px`;
   input.style.top = `${clientY}px`;
+  if (embedded) { input.style.position = 'fixed'; input.style.zIndex = '210'; }
   document.body.appendChild(input);
   state.editor = input;
   const w = world;
@@ -908,7 +940,7 @@ function editNode(node, clientX, clientY) {
   } else {
     openInlineEditor(world, clientX, clientY, node.type, (text) => {
       const t = text.trim();
-      if (paletteFor(state.canonicalProfile||builderProfile()).labels.includes(t)) setType(state.model, node.id, t);
+      if (currentPalette().labels.includes(t)) setType(state.model, node.id, t);
       else {state.onStatus('Choose a category from this chapter’s palette.');return;}
       changed();
       explainSelected();
@@ -954,7 +986,7 @@ function openMenu(clientX, clientY, world, node) {
   body.className = 'builder-menu-scroll';
   menu.appendChild(body);
 
-  const phraseTypes = paletteFor(state.canonicalProfile||builderProfile()).labels;
+  const phraseTypes = currentPalette().labels;
   const sections = (node && node.kind === NODE.WORD)
     ? [{ name: 'Words are terminals; add a category above them', types: [] }]
     : [{ name: 'Phrases', types: phraseTypes }];
@@ -1010,6 +1042,7 @@ function openMenu(clientX, clientY, world, node) {
     menu.appendChild(del);
   }
 
+  if (embedded) menu.style.zIndex = '210';
   document.body.appendChild(menu);
   // Clamp inside the viewport.
   const rect = menu.getBoundingClientRect();
@@ -1029,7 +1062,7 @@ function menuItem(label, node, world) {
   const btn = document.createElement('button');
   btn.type = 'button';
   btn.className = 'builder-menu-item';
-  const isPhrase = PHRASE_NODE_TYPES.includes(label);
+  const isPhrase = currentPalette().labels.includes(label);
   if (isPhrase) btn.classList.add('is-phrase');
   btn.textContent = label;
   if (node && node.type === label) btn.classList.add('is-current');
@@ -1165,6 +1198,7 @@ async function showBuilderEvidence(nodeId = null) {
 }
 
 function explainSelected() {
+  if (embedded) return;
   const ids = [...state.selection];
   const node = ids.length ? state.model.nodes[ids[ids.length - 1]] : null;
   if (!node) {
@@ -1629,7 +1663,7 @@ function applyTreeLayout({ fit = true } = {}) {
   const totalH = Math.max(maxY - minY, 1);
   if (cw && ch) {
     const pad=24,toolsPanel=document.getElementById('builderTools');
-    const rect=toolsPanel&&!toolsPanel.hidden?toolsPanel.getBoundingClientRect():null;
+    const rect=!embedded&&toolsPanel&&!toolsPanel.hidden?toolsPanel.getBoundingClientRect():null;
     const left=rect&&innerWidth>760?Math.min(rect.width+30,cw*.48):0;
     const bottom=rect&&innerWidth<=760?rect.height+20:0;
     const top=60,availableW=Math.max(100,cw-left),availableH=Math.max(120,ch-bottom-top);

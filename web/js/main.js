@@ -17,7 +17,7 @@ import {
 } from './correction.js';
 import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js';
 import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js';
-import { initSyntaxBuilder, openBuilderView, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
+import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
 import { createLeaderboardView } from './leaderboard.js';
@@ -436,7 +436,7 @@ export function boot() {
   setActiveNav(workspaceView);
   initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView, userId: () => activeUserId });
   initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode });
-  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, onBuilderPractice: enterLessonBuilderPractice });
+  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, onBuilderPractice: enterLessonBuilderPractice, mountBuilder: mountEmbeddedBuilder });
   initResizers();
   syncInputClearBtn();
   // The one auth modal: the sidebar login and the lessons gateway both land

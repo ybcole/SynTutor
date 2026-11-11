@@ -47,7 +47,7 @@ function readings() {
   ];
 }
 
-export function addConstituentTeaching(body, page, { el, button, showDiagram, showComparisonTree }) {
+export function addConstituentTeaching(body, page, { el, button, showDiagram, showComparisonTree, mountBuilder }) {
   const paragraph = text => body.append(el('p', text));
   const section = (title, ...paragraphs) => body.append(el('h3', title), ...paragraphs.map(text => el('p', text)));
   function figureControls(label, choices, target, select, initial = 0) {
@@ -118,8 +118,8 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
       showComparisonTree(tree, index ? null : flat).after(caption);
     }, 1);
     section('Build your first tree',
-      'Build a branch for “the red gate” in the tree below. Select nodes on the canvas, or use the controls underneath to edit and connect them.');
-    addConstituentTreeBuilder(body, { el, button });
+      'Build a branch for “the red gate” in the tree below. Drag nodes and connect their branches on the canvas, or use the editing controls below it.');
+    addConstituentTreeBuilder(body, { el, button, mountBuilder });
   }
   if (page === 3) {
     paragraph('Structural ambiguity occurs when the same sentence can be grouped in two ways and each grouping gives it a different meaning. In “I watched the hikers with a telescope”, the phrase “with a telescope” could tell us how I watched or describe the hikers.');
