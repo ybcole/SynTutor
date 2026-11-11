@@ -170,3 +170,66 @@ Do not apply a blanket MD-to-VB conversion.
 evaluation/friday_validation/test_lexical_can_structure.py
 
 Current result: 2 passed, 1 failed.
+
+## QA-009 — Incorrect modal-form diagnosis in interrogative clauses
+
+**Severity:** High
+**Area:** Legacy grammar diagnostics and correction generation
+**Status:** Confirmed through automated regression tests
+
+### Problem
+
+SynTutor misclassifies a modal verb-form violation in an
+interrogative sentence as a run-on sentence.
+
+### Reproduction
+
+Input: Can she swims?
+
+Expected:
+- Detect the incorrect verb form following the modal.
+- Attribute the violation to modal plain-form selection.
+- Suggest: "Can she swim?"
+- Avoid reporting a run-on sentence.
+
+Actual:
+- Triggered constraint: C-RUNON
+- Suggested correction: None
+- B-R status: normalized
+
+### Parser evidence
+
+Raw parse:
+(SQ (MD Can) (NP (PRP she)) (VP (VBZ swims)) (. ?))
+
+Benepar identifies the modal and question structure.
+
+The legacy diagnostic reports two finite elements as
+a run-on construction, despite the sentence containing
+a single interrogative clause.
+
+### Contrast
+
+"He can swims." correctly triggers C-MODAL-VERB-FORM.
+
+"Can she swims?" incorrectly triggers C-RUNON.
+
+### Educational impact
+
+The explanation advises students to add punctuation or
+conjunctions instead of explaining the required plain
+form of the verb following a central modal.
+
+### Recommended investigation
+
+Review modal-form checks under subject-auxiliary inversion
+and the structural conditions that trigger C-RUNON.
+
+Ensure diagnostic rules do not treat an inverted auxiliary
+and its lexical verb as independent clauses.
+
+### Regression test
+
+evaluation/friday_validation/test_question_modal.py
+
+Current result: 1 passed, 3 failed.
