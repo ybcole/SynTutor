@@ -1,5 +1,7 @@
 # CGEL printed-page coverage
 
+**Accelerated quality-preserving Phase B execution (2026-11-11):** the binding [Cambridge master plan](docs/planning/CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) and [batch runbook](docs/planning/CGEL_ACCELERATED_BATCH_RUNBOOK.md) now prioritize completing source extraction across all 20 chapters before further broad Phase C/D implementation. Future internal batches use adaptive source-verified page ranges, compact per-page audits and the reusable `tools/cgel_batch_gate.py`; all existing historical extraction tests are auto-discovered, and both full CI workflows still run for each completed chapter PR. **No extraction coverage or runtime detector count changed in this workflow-only milestone.** Next source range: Chapter 4, printed pp. 213–252 (adapt to source complexity).
+
 **Phase B extraction status: 2026-11-11.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
 
 | Chapter | Printed pages | Extracted | Unprocessed | Skipped | Absent from split | Status |
