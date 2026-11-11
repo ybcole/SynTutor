@@ -12,7 +12,7 @@
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
 | 5. Nouns and noun phrases | 202 | 198 | 0 | 3 | 1 | Source-extracted |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
-| 7. Prepositions and preposition phrases | 66 | 0 | 65 | 1 | 0 | Incomplete |
+| 7. Prepositions and preposition phrases | 66 | 20 | 44 | 2 | 0 | In progress: pp. 597–617 |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
 | 9. Negation | 66 | 0 | 65 | 1 | 0 | Incomplete |
 | 10. Clause type and illocutionary force | 96 | 0 | 95 | 1 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **444 extracted**, 1300 unprocessed, 18 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **464 extracted**, 1279 unprocessed, 19 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -174,3 +174,8 @@ Added 39 inactive English-only records (COMP-199–COMP-237), source audit sourc
 ## Chapter 5 pp.503–524
 
 26 records (`PHR-346`–`PHR-371`) cover agreement, predicatives, proper names, and vocatives. Printed p.524 is verified blank in the full volume. See the [source report](sources/cambridge/chapter_05/PP503_524_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP503_524_AUDIT.json).
+
+
+## Chapter 7 pp.597–617
+
+28 records (`PHR-372`–`PHR-399`) cover the category of prepositions, complement types, and tests that distinguish prepositions from adjectives, verbs, and adverbs. See the [source report](sources/cambridge/chapter_07/PP597_617_REPORT.md) and [audit manifest](sources/cambridge/chapter_07/PP597_617_AUDIT.json). Continue at p.618.
