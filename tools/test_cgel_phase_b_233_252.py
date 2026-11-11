@@ -30,5 +30,5 @@ class Ch4SecondBatch(unittest.TestCase):
   self.assertIsNone(r["diagnostic"])
  def test_pp_is_not_indirect_object(self):
   r=next(x for x in self.rules.values() if x["concept"]=="Ditransitive PP alternant is not an indirect object")
-  self.assertIn("not Oi",r["statement"]+" "+r["exceptions"][0]["description"])
+  self.assertIn("not indirect object",r["exceptions"][0]["description"])
 if __name__=="__main__":unittest.main()
