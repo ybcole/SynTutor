@@ -195,9 +195,10 @@ try:
   expect(view.locator('.lesson-sources')).to_have_count(0)
   chapter_one=COURSE['lessons'][0]
   guided=view.locator('[data-question="guided"]')
-  tree_text=view.get_by_text('Read the tree as text',exact=True)
-  tree_text.click()
-  expect(view.locator('.lesson-tree-text')).not_to_contain_text('PHRASE-b')
+  expect(view.get_by_text('Read the tree as text',exact=True)).to_have_count(0)
+  outline=view.get_by_role('group',name='Tree structure')
+  expect(outline).to_contain_text('?')
+  expect(outline).not_to_contain_text('PHRASE-b')
   guided.locator('input[value="'+chapter_one['guided']['answer']+'"]').check()
   view.get_by_role('button',name='Next question →',exact=True).click()
   view.get_by_role('button',name='← Previous',exact=True).click()
@@ -314,9 +315,12 @@ try:
      expect(view.locator('.constituent-caption')).to_have_text(step['text'])
      expect(view.locator('svg .lesson-tree-focus')).to_have_attribute('data-node-id',step['focus_node_id'])
     expect(viewport.get_by_role('button',name='Fit B-R tree')).to_be_visible()
-    expect(view.locator('.lesson-tree-text summary')).to_have_text('Read the tree as text')
+    expect(view.get_by_text('Read the tree as text',exact=True)).to_have_count(0)
+    outline=view.get_by_role('group',name='Tree structure')
+    expect(outline.get_by_role('list')).not_to_have_count(0)
+    expect(outline.get_by_role('button')).to_have_count(0)
     expect(view.locator('.lesson-shared-evidence summary')).to_have_text('Explanation')
-    assert viewport.bounding_box()['y'] < view.locator('.lesson-tree-text').bounding_box()['y'] < view.locator('.lesson-shared-evidence').bounding_box()['y']
+    assert viewport.bounding_box()['y'] < view.locator('.lesson-shared-evidence').bounding_box()['y']
     if ident=='br-08':
      expect(viewport.locator('svg text').filter(has_text=re.compile(r'^S′$'))).to_have_count(1)
     if ident=='br-09':
@@ -356,8 +360,9 @@ try:
      target=lesson[key]['build_target']
      masked=post_test.locator(f'svg [data-node-id="{target["node_id"]}"]')
      expect(masked.locator('.br-feature-row')).to_have_text('[?]')
-     post_test.get_by_text('Read the tree as text',exact=True).click()
-     expect(post_test.locator('.lesson-tree-text')).not_to_contain_text(f'[{target["expected"]}]')
+     outline=post_test.get_by_role('group',name='Tree structure')
+     expect(outline).to_contain_text('[?]')
+     expect(outline).not_to_contain_text(f'[{target["expected"]}]')
     if key=='exit':
      wrong=next(o['id'] for o in lesson[key]['options'] if o['id']!=lesson[key]['answer'])
      question.locator(f'input[value="{wrong}"]').check()

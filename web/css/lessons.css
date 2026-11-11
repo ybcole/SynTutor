@@ -180,7 +180,15 @@
 .constituent-diagram .lesson-tree-wrap:has(> svg) { background:var(--bg); padding:12px; border-radius:10px; }
 .constituent-diagram .lesson-tree-wrap > svg { margin-inline:auto; }
 .constituent-page .lesson-tree-canvas .canonical-viewport { height:clamp(240px,36vw,300px); }
-.constituent-page .lesson-tree-text,.constituent-page .lesson-shared-evidence,
+.lesson-tree-outline {
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+.constituent-page .lesson-shared-evidence,
 .constituent-page .constituent-caption,.constituent-page .constituent-selection { font-size:.9rem; }
 .constituent-page .lesson-shared-evidence { margin:0 0 12px; }
 .constituent-page .lesson-tree-canvas + .constituent-caption { margin:12px 0 0; color:var(--muted); }

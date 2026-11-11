@@ -55,10 +55,14 @@ function svgNode(name, attrs = {}) { const n = document.createElementNS(SVG_NS,n
 export function renderLessonTree(envelope, {
   focusId = null, blank = null, stackFeatures = false, displayLabels = null,
   interactive = false, onSelectNode = null, zoomControls = false, wordBaseline = 0,
+  textDisclosure = true,
 } = {}) {
   const wrap = el('div',undefined,'lesson-tree-wrap');
   const root = envelope.root;
-  const hint=el('p','Scroll sideways to inspect the whole tree, or open its text view.','lesson-tree-hint');wrap.append(hint);wrap.tabIndex=0;wrap.setAttribute('aria-label','Scrollable B-R tree');
+  const hint = el('p', textDisclosure
+    ? 'Scroll sideways to inspect the whole tree, or open its text view.'
+    : 'Scroll sideways to inspect the whole tree.', 'lesson-tree-hint');
+  wrap.append(hint);wrap.tabIndex=0;wrap.setAttribute('aria-label','Scrollable B-R tree');
   function label(node, withFeatures = true) {
     const master = displayLabels?.[node.id];
     if (master) return withFeatures ? master.join(' ') : master[0] || '';
@@ -124,7 +128,8 @@ export function renderLessonTree(envelope, {
     }
   }
   const height=Math.max(...positions.map(p=>p.y + featureRows(p.node).length * 18 + (p.node.triangle ? 80 : 35)));
-  const svg=svgNode('svg',{viewBox:`0 0 ${width} ${height}`,width,height,role:'img','aria-label':`B-R tree for ${envelope.sentence}`});
+  const role = !textDisclosure && typeof onSelectNode === 'function' ? 'group' : 'img';
+  const svg=svgNode('svg',{viewBox:`0 0 ${width} ${height}`,width,height,role,'aria-label':`B-R tree for ${envelope.sentence}`});
   for (const [a,b] of edges) svg.append(svgNode('line',{x1:a.x,y1:a.y+12+featureRows(a.node).length*18,x2:b.x,y2:b.y-18,class:'lesson-branch'}));
   for (const {node,x,y} of positions) {
     const g=svgNode('g',{'data-node-id':node.id || '',class:node.id===focusId ? 'lesson-tree-focus' : ''});
@@ -198,13 +203,21 @@ export function renderLessonTree(envelope, {
     wrap.append(toolbar);
   }
   wrap.append(svg);
-  const text=el('details',undefined,'lesson-tree-text');text.append(el('summary','Read the tree as text'));
+  const text = textDisclosure
+    ? el('details', undefined, 'lesson-tree-text')
+    : el('div', undefined, 'lesson-tree-outline');
+  if (textDisclosure) {
+    text.append(el('summary', 'Read the tree as text'));
+  } else {
+    text.setAttribute('role', 'group');
+    text.setAttribute('aria-label', 'Tree structure');
+  }
   function list(node) {
     const item = el('li');
     const name = blankFor(node) ? [visibleLabel(node), ...featureRows(node)].filter(Boolean).join(' ')
       : label(node) || '△';
     const description = node.words ? `${name} — ${node.words.join(' ')}` : name;
-    if (interactive && node.id) {
+    if (textDisclosure && interactive && node.id) {
       const button = el('button', description);
       button.type = 'button';
       button.dataset.nodeId = node.id;
@@ -377,7 +390,8 @@ function question(lesson,key,p,locked,onAnswer = answer => act({type:'answer',an
   return section;
 }
 
-function mountLessonCanvas(host, treeView) {
+function mountLessonCanvas(host, tree, options) {
+  const treeView = renderLessonTree(tree, { ...options, textDisclosure: false });
   const canvas = el('div', undefined, 'lesson-tree-canvas');
   canvas.append(treeView);
   host.append(canvas);
@@ -446,14 +460,14 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
       }
     }
   };
-  const canvas = mountLessonCanvas(aside, renderLessonTree(comparisonTree || worked.tree, {
+  const canvas = mountLessonCanvas(aside, comparisonTree || worked.tree, {
     focusId: selected,
     blank,
     interactive: true,
     onSelectNode: inspect,
     stackFeatures: true,
     wordBaseline: comparisonTree ? 2 : 0,
-  }));
+  });
   if (inline) {
     if (selected) describeSelection(worked.tree.root, selected);
     canvas.append(selectedWords);
@@ -496,7 +510,7 @@ function articleScreen(lesson, p, article) {
     },
     showDiagram: (figure, tree, options) => {
       clearLessonDiagram(figure);
-      return mountLessonCanvas(figure, renderLessonTree(tree, options));
+      return mountLessonCanvas(figure, tree, options);
     },
     showWorkedTree: (figure, focusId) => {
       clearLessonDiagram(figure);
@@ -504,7 +518,7 @@ function articleScreen(lesson, p, article) {
     },
     showComparisonTree: (figure, flatTree) => {
       clearLessonDiagram(figure);
-      if (flatTree) return mountLessonCanvas(figure, renderLessonTree(flatTree, { wordBaseline: 2 }));
+      if (flatTree) return mountLessonCanvas(figure, flatTree, { wordBaseline: 2 });
       const worked = lesson.worked_example;
       const focusId = worked.steps.at(-1).focus_node_id;
       // Expand the teaching diagram only. Explanations still use the canonical tree and node IDs.
@@ -586,9 +600,9 @@ function articleScreen(lesson, p, article) {
         const blank = response.responses.guided === lesson.guided.answer ? null : target;
         diagram.append(el('p', lesson.worked_example.sentence, 'lesson-example-sentence'));
         if (blank) {
-          mountLessonCanvas(diagram, renderLessonTree(lesson.worked_example.tree, {
+          mountLessonCanvas(diagram, lesson.worked_example.tree, {
             focusId: target.node_id, blank, stackFeatures: true,
-          }));
+          });
         } else {
           appendWorkedTree(diagram, lesson.worked_example, { focusId: target.node_id, inline: true });
         }
