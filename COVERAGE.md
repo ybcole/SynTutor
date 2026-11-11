@@ -1,6 +1,6 @@
 # CGEL printed-page coverage
 
-**Chapter 4 rolling extraction (2026-11-11):** printed pp.213–272 accounted for: 58 substantive pages and two contents-only skips; no new live Cambridge detectors. Next printed page 273.
+**Chapter 4 rolling Phase B (2026-11-11):** printed pp.213–292 audited (78 substantive pages extracted, two chapter-contents-only skips); remaining pp.293–321 are unprocessed and p.322 remains a textless skip. New grammar records stay inactive and pending independent linguistic QA.
 
 **Phase B extraction status: 2026-11-11.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
 
@@ -9,7 +9,7 @@
 | 1. Preliminaries | 42 | 0 | 41 | 1 | 0 | Incomplete |
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
-| 4. The clause: complements | 110 | 58 | 49 | 3 | 0 | In progress; pp. 213–272 audited |
+| 4. The clause: complements | 110 | 78 | 29 | 3 | 0 | In progress; pp. 213–292 audited |
 | 5. Nouns and noun phrases | 202 | 0 | 201 | 0 | 1 | Incomplete |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
 | 7. Prepositions and preposition phrases | 66 | 0 | 65 | 1 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **197 extracted**, 1550 unprocessed, 15 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **217 extracted**, 1530 unprocessed, 15 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -109,3 +109,8 @@ Built `server/cgel_ch03_fact_bridge.py` to bind the **three primary auxiliary ca
 ## Chapter 4 pp.253–272
 
 37 new inactive rules (COMP-086–COMP-122), source audit sources/cambridge/chapter_04/PP253_272_REPORT.md, manifest sources/cambridge/chapter_04/PP253_272_AUDIT.json. Next 273.
+
+
+## Chapter 4 pp.273–292
+
+41 original-example, inactive records (COMP-123–COMP-163); source audit sources/cambridge/chapter_04/PP273_292_REPORT.md, machine manifest sources/cambridge/chapter_04/PP273_292_AUDIT.json. Next printed page 293.

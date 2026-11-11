@@ -7975,5 +7975,2499 @@
     "status": "NEEDS_REVIEW",
     "diagnostic": null,
     "review_notes": "CGEL primary-source page and printed examples/notes directly inspected. Independently authored English cases; separate linguistic source licensing and B-R review still pending."
+  },
+  {
+    "id": "COMP-123",
+    "domain": "complementation",
+    "concept": "Selected versus freely chosen prepositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Prepositional verbs select a specific preposition, whereas movement predicates can license multiple spatial relations.",
+    "condition": "When applying selected versus freely chosen prepositions to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A different spatial preposition can convey a valid different route.",
+        "pages": [
+          273
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Leah referred to the notes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Leah travelled towards the museum.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6",
+        "pages": [
+          273
+        ],
+        "pdf_pages": [
+          293
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Selected versus freely chosen prepositions",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-124",
+    "domain": "complementation",
+    "concept": "Particle and direct object syntax",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A particle may intervene between a verb and a simple NP object, which distinguishes it from an ordinary adverbial like downstairs.",
+    "condition": "When applying particle and direct object syntax to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A heavy object may follow material that cannot intervene before a simple object.",
+        "pages": [
+          273
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tara brought down the box.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tara brought the box downstairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6",
+        "pages": [
+          273
+        ],
+        "pdf_pages": [
+          293
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Particle and direct object syntax",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-125",
+    "domain": "complementation",
+    "concept": "Verbal idioms need not be constituents",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An idiom may contain discontinuous verb and PP elements, although the NP between them is still syntactically the verb's object.",
+    "condition": "When applying verbal idioms need not be constituents to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lexical phrase membership and syntactic constituent structure differ.",
+        "pages": [
+          274
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The tutor took him to task.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The writer made up her mind.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6–6.1",
+        "pages": [
+          274
+        ],
+        "pdf_pages": [
+          294
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbal idioms need not be constituents",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-126",
+    "domain": "complementation",
+    "concept": "Idioms can license clausal complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A verbal idiom may select an infinitival or exclamative content clause not independently selected by the included noun.",
+    "condition": "When applying idioms can license clausal complements to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The associated noun alone may not license the same clausal pattern.",
+        "pages": [
+          274
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nora made up her mind to resign.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We had no idea how late it was.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6–6.1",
+        "pages": [
+          274
+        ],
+        "pdf_pages": [
+          294
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idioms can license clausal complements",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-127",
+    "domain": "complementation",
+    "concept": "Mobile and fixed selected PP heads",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Mobile selected PPs permit relative and interrogative pied piping, but fossilised selected PPs can block it.",
+    "condition": "When applying mobile and fixed selected pp heads to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fixed idiomatic come across meaning encounter requires preposition stranding.",
+        "pages": [
+          275
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The report to which he referred was short.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which report did he refer to?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.1",
+        "pages": [
+          275
+        ],
+        "pdf_pages": [
+          295
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mobile and fixed selected PP heads",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-128",
+    "domain": "complementation",
+    "concept": "Fixed come across cannot undergo ordinary PP-fronting",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "With idiomatic come across meaning encounter, across and its NP cannot be fronted together as a selected PP.",
+    "condition": "When applying fixed come across cannot undergo ordinary pp-fronting to the particular construction and lexical sense described in Chapter 4.",
+    "violation": "A construction uses disallowed placement for this specified head and lexical sense.",
+    "exceptions": [
+      {
+        "description": "Literal movement across a river can undergo PP fronting; this diagnostic is sense specific.",
+        "pages": [
+          275
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The reports that we came across were old.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which papers did she come across?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "the reports across which we came",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Across which papers did she come?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.1",
+        "pages": [
+          275
+        ],
+        "pdf_pages": [
+          295
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fixed come across cannot undergo ordinary PP-fronting",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "preposition",
+      "error_pattern": "With idiomatic come across meaning encounter, across and its NP cannot be fronted together as a selected PP.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "the reports across which we came ||| The reports that we came across were old.",
+        "Across which papers did she come? ||| Which papers did she come across?"
+      ],
+      "learner_explanation": "With idiomatic come across meaning encounter, across and its NP cannot be fronted together as a selected PP. The alternative form is restricted in this source-licensed lexical pattern; first check the actual verb meaning and whether a separate valid construction applies.",
+      "corrected_paragraph_template": "Replace only the selected ill-formed word order in the original sentence and explain why the lexical and syntactic conditions apply.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The river across which she swam was deep.",
+        "Which old letters did she come across?"
+      ],
+      "lesson_tags": [
+        "CGEL_ch04",
+        "preposition",
+        "clause_complement"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-129",
+    "domain": "complementation",
+    "concept": "PP coordination and adjunct-insertion diagnostics",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Mobile and unspecified PP heads admit coordinated repetition and adjunct insertion more freely than fixed idiomatic ones.",
+    "condition": "When applying pp coordination and adjunct-insertion diagnostics to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Failed movement is not proof that preposition has merged syntactically with verb.",
+        "pages": [
+          276
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The staff referred repeatedly to the agreement.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina wrote to her aunt and to her uncle.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.1",
+        "pages": [
+          276
+        ],
+        "pdf_pages": [
+          296
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "PP coordination and adjunct-insertion diagnostics",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-130",
+    "domain": "complementation",
+    "concept": "Prepositional passive is nonuniform",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Both selected and certain freely chosen prepositions allow passive subjects, while some selected prepositions resist passives.",
+    "condition": "When applying prepositional passive is nonuniform to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Neither selectedness nor mobile/fixed status guarantees a passive.",
+        "pages": [
+          276
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That bed has been slept in.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The article was referred to.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.1",
+        "pages": [
+          276
+        ],
+        "pdf_pages": [
+          296
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prepositional passive is nonuniform",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-131",
+    "domain": "complementation",
+    "concept": "Fixed preposition remains PP head",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Even a fossilised verb-preposition idiom can be analysed with an independent PP headed by the preposition.",
+    "condition": "When applying fixed preposition remains pp head to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Blocking fronting is evidence of lexical fixedness, not automatically a new verb constituent.",
+        "pages": [
+          277
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He came across an old receipt.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She referred to a document.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.1–6.1.2",
+        "pages": [
+          277
+        ],
+        "pdf_pages": [
+          297
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fixed preposition remains PP head",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-132",
+    "domain": "complementation",
+    "concept": "Six selected-PP verb frames",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Selected-preposition constructions distinguish PP, object+PP, two PPs, predicative PP, object+predicative PP, and PP+predicative PP.",
+    "condition": "When applying six selected-pp verb frames to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The NP complement of a preposition must not be confused with core object of the verb.",
+        "pages": [
+          277
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They regarded the proposal as promising.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They thought of the proposal as reasonable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.1–6.1.2",
+        "pages": [
+          277
+        ],
+        "pdf_pages": [
+          297
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Six selected-PP verb frames",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-133",
+    "domain": "complementation",
+    "concept": "Single specified-PP construction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A selected PP may be the only internal complement of the verb and its passive restrictions depend on lexical sense.",
+    "condition": "When applying single specified-pp construction to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fossilisation and passive restrictions vary by item and meaning.",
+        "pages": [
+          278
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We relied on the instructions.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The accountant testified to the figures.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.2",
+        "pages": [
+          278
+        ],
+        "pdf_pages": [
+          298
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Single specified-PP construction",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-134",
+    "domain": "complementation",
+    "concept": "Object plus selected PP passive subject",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When a verb selects a core object and selected PP, corresponding passives normally promote the verb's object, not the preposition's object.",
+    "condition": "When applying object plus selected pp passive subject to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not every verb with an object plus PP permits every passive.",
+        "pages": [
+          278
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They sent the note to Cara.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The note was sent to Cara.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.2",
+        "pages": [
+          278
+        ],
+        "pdf_pages": [
+          298
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Object plus selected PP passive subject",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-135",
+    "domain": "complementation",
+    "concept": "Supply alternants versus give ditransitives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Supply alternates two object-plus-PP frames; give can alternate an object-plus-PP frame with double objects.",
+    "condition": "When applying supply alternants versus give ditransitives to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Recipient-like meaning alone does not imply syntactic indirect-object function.",
+        "pages": [
+          279
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They supplied the crew with water.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They supplied water to the crew.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.2",
+        "pages": [
+          279
+        ],
+        "pdf_pages": [
+          299
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supply alternants versus give ditransitives",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-136",
+    "domain": "complementation",
+    "concept": "Two selected PPs and predicative as constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verbs take two selected PPs, while others select an as-PP containing a predicative.",
+    "condition": "When applying two selected pps and predicative as constructions to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The complement of as is a PC rather than ordinary referential object.",
+        "pages": [
+          279
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They appealed to the board for help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She served as chair.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.2",
+        "pages": [
+          279
+        ],
+        "pdf_pages": [
+          299
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Two selected PPs and predicative as constructions",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-137",
+    "domain": "complementation",
+    "concept": "PP object as predicand of selected as",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With think of NP as PC, the NP object of of is predicand, not direct object of think.",
+    "condition": "When applying pp object as predicand of selected as to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "No unrestricted bare-PC counterpart is licensed after a PP-object predicand.",
+        "pages": [
+          280
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They thought of Theo as dependable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He looked upon the outcome as fortunate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.2–6.2",
+        "pages": [
+          280
+        ],
+        "pdf_pages": [
+          300
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "PP object as predicand of selected as",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-138",
+    "domain": "complementation",
+    "concept": "Direction adverb versus particle before light NP",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Downstairs cannot precede a simple object NP in ordinary bring-downstairs ordering, though intransitive particle down can.",
+    "condition": "When applying direction adverb versus particle before light np to the particular construction and lexical sense described in Chapter 4.",
+    "violation": "A construction uses disallowed placement for this specified head and lexical sense.",
+    "exceptions": [
+      {
+        "description": "A much heavier postposed NP can appear after downstairs; do not generalise.",
+        "pages": [
+          280
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The attendant brought the chair downstairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The driver carried the boxes downstairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The attendant brought downstairs the chair.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The driver carried downstairs the boxes.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.1.2–6.2",
+        "pages": [
+          280
+        ],
+        "pdf_pages": [
+          300
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Direction adverb versus particle before light NP",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Downstairs cannot precede a simple object NP in ordinary bring-downstairs ordering, though intransitive particle down can.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The attendant brought downstairs the chair. ||| The attendant brought the chair downstairs.",
+        "The driver carried downstairs the boxes. ||| The driver carried the boxes downstairs."
+      ],
+      "learner_explanation": "Downstairs cannot precede a simple object NP in ordinary bring-downstairs ordering, though intransitive particle down can. The alternative form is restricted in this source-licensed lexical pattern; first check the actual verb meaning and whether a separate valid construction applies.",
+      "corrected_paragraph_template": "Replace only the selected ill-formed word order in the original sentence and explain why the lexical and syntactic conditions apply.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She carried down the boxes.",
+        "She brought downstairs the enormous chair that her relatives had sent."
+      ],
+      "lesson_tags": [
+        "CGEL_ch04",
+        "preposition",
+        "clause_complement"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-139",
+    "domain": "complementation",
+    "concept": "Transitive PP contrasted with particle",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In off the platform the preposition takes the NP as its complement; in take off the label off is an independent particle.",
+    "condition": "When applying transitive pp contrasted with particle to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A pronoun after a transitive preposition differs structurally from one after a particle.",
+        "pages": [
+          281
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cyclist jumped off the platform.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The curator took the label off.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.2",
+        "pages": [
+          281
+        ],
+        "pdf_pages": [
+          301
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Transitive PP contrasted with particle",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-140",
+    "domain": "complementation",
+    "concept": "Weak object pronoun after particle",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Unstressed direct-object pronouns follow the verb before its particle, but unstressed objects of transitive prepositions follow the preposition.",
+    "condition": "When applying weak object pronoun after particle to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A contrastively stressed object pronoun can sometimes follow a particle.",
+        "pages": [
+          281
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She took it off.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She stepped off it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.2",
+        "pages": [
+          281
+        ],
+        "pdf_pages": [
+          301
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Weak object pronoun after particle",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-141",
+    "domain": "complementation",
+    "concept": "Transitive out is a regional variant",
+    "rule_type": "variety_restricted",
+    "scope": "clause",
+    "statement": "Transitive out without of before an NP occurs in American English, unlike ordinary British English usage.",
+    "condition": "When applying transitive out is a regional variant to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Do not flag AmE transitive out simply because it differs from BrE; regional register must be specified.",
+        "pages": [
+          281
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The runner jumped out the window.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The child looked out the doorway.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.2",
+        "pages": [
+          281
+        ],
+        "pdf_pages": [
+          301
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Transitive out is a regional variant",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim.",
+    "variety": "American English transitive out without of (compared with British English)"
+  },
+  {
+    "id": "COMP-142",
+    "domain": "complementation",
+    "concept": "PP fronting distinguishes constituenthood",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Transitive PP fronting may move the preposition with its NP, while particle+core object does not form a frontable constituent.",
+    "condition": "When applying pp fronting distinguishes constituenthood to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fixed transitive selected prepositions may resist fronting despite remaining PPs.",
+        "pages": [
+          282
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The door through which she walked was open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Through which door did she walk?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.2",
+        "pages": [
+          282
+        ],
+        "pdf_pages": [
+          302
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "PP fronting distinguishes constituenthood",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-143",
+    "domain": "complementation",
+    "concept": "PP coordination and manner insertion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Coordinating repeated PPs or inserting manner adjuncts before them is more freely licensed than within particle+object sequences.",
+    "condition": "When applying pp coordination and manner insertion to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some idiomatic selected PPs show fossilisation, so the tests are one-way.",
+        "pages": [
+          282
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She climbed carefully over the fence.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They walked over the hill and over the bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.2",
+        "pages": [
+          282
+        ],
+        "pdf_pages": [
+          302
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "PP coordination and manner insertion",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-144",
+    "domain": "complementation",
+    "concept": "Over and through can be nonparticle alternants",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Read through and look over may alternate a transitive PP with NP plus intransitive preposition, not with true particle-before-object syntax.",
+    "condition": "When applying over and through can be nonparticle alternants to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The ability to take an unstressed pronoun after through indicates transitive PP in the first alternant.",
+        "pages": [
+          283
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She read through the proposal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She read the proposal through.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.2–6.3.1",
+        "pages": [
+          283
+        ],
+        "pdf_pages": [
+          303
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Over and through can be nonparticle alternants",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-145",
+    "domain": "complementation",
+    "concept": "Context-implicit locative dependencies",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Free directional PPs can omit a recoverable complement whose value is understood from earlier discourse or context.",
+    "condition": "When applying context-implicit locative dependencies to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An omitted spatial referent is not automatically a missing-word error.",
+        "pages": [
+          283
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitor stepped outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She jumped off.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.2–6.3.1",
+        "pages": [
+          283
+        ],
+        "pdf_pages": [
+          303
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Context-implicit locative dependencies",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-146",
+    "domain": "complementation",
+    "concept": "Take in is lexically polysemous",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The verb plus in may express literal motion, lodging, altering clothes, attendance, comprehension, or deception.",
+    "condition": "When applying take in is lexically polysemous to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Sense must be resolved before attaching a single correction or explanation.",
+        "pages": [
+          284
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They took in a concert.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The tailor took in the jacket.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.3.1",
+        "pages": [
+          284
+        ],
+        "pdf_pages": [
+          304
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Take in is lexically polysemous",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-147",
+    "domain": "complementation",
+    "concept": "Aspectual meanings of intransitive prepositions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Particles often contribute completion, continuation or repetition instead of literal movement.",
+    "condition": "When applying aspectual meanings of intransitive prepositions to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Completive meaning is lexically conventional; particle presence does not itself indicate an error.",
+        "pages": [
+          284
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The students wrote up the results.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team carried on after lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.3.1",
+        "pages": [
+          284
+        ],
+        "pdf_pages": [
+          304
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aspectual meanings of intransitive prepositions",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-148",
+    "domain": "complementation",
+    "concept": "Idiom fossilisation has degrees",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Idioms may restrict fronting, adverb insertion and shifting the particle around an object, while transparent combinations remain freer.",
+    "condition": "When applying idiom fossilisation has degrees to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some restricted shifted variants are only questionable, not uniformly ungrammatical.",
+        "pages": [
+          285
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They carried the bags out.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The manager carried out the decision.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.3.1",
+        "pages": [
+          285
+        ],
+        "pdf_pages": [
+          305
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiom fossilisation has degrees",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-149",
+    "domain": "complementation",
+    "concept": "Semantic sense can control particle order",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Literal carry out and idiomatic carry out differ in how readily the object may precede the particle.",
+    "condition": "When applying semantic sense can control particle order to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Particular usages are graded and discourse-sensitive, requiring caution.",
+        "pages": [
+          285
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She carried the boxes out.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The company carried out its promise.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.3.1",
+        "pages": [
+          285
+        ],
+        "pdf_pages": [
+          305
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic sense can control particle order",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-150",
+    "domain": "complementation",
+    "concept": "Figurative turn off restricts NP order",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The literal switch-off sense permits both orders, while figurative repulsion normally places a simple object before off.",
+    "condition": "When applying figurative turn off restricts np order to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Heavy object postposing and sense distinctions require further checking.",
+        "pages": [
+          286
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She turned the lamp off.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The speaker turned the listeners off.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.3.1–6.3.2",
+        "pages": [
+          286
+        ],
+        "pdf_pages": [
+          306
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Figurative turn off restricts NP order",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-151",
+    "domain": "complementation",
+    "concept": "Seven idiomatic intransitive-PP frames",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Intransitive preposition idioms appear in seven configurations with objects, two objects, other PP complements and PCs.",
+    "condition": "When applying seven idiomatic intransitive-pp frames to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The category of the final complement is not uniform across the list.",
+        "pages": [
+          286
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He gave in.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They ended up as leaders.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.3.1–6.3.2",
+        "pages": [
+          286
+        ],
+        "pdf_pages": [
+          306
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Seven idiomatic intransitive-PP frames",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-152",
+    "domain": "complementation",
+    "concept": "Particle placements among two objects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In some ditransitive particle idioms the particle can occur before Oi, between objects or after Od, but constraints depend on pronouns and length.",
+    "condition": "When applying particle placements among two objects to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Before-Oi particle placement excludes unstressed pronoun Oi; after-Od placement needs short objects.",
+        "pages": [
+          287
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parent paid the child back the loan.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parent paid back the loan to the child.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.3.2",
+        "pages": [
+          287
+        ],
+        "pdf_pages": [
+          307
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Particle placements among two objects",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-153",
+    "domain": "complementation",
+    "concept": "Look forward to contains two PPs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Look forward to selects an intransitive particle plus a separate transitive to-PP whose NP may be questioned with the preposition.",
+    "condition": "When applying look forward to contains two pps to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other listed idioms vary in fossilisation and passive availability.",
+        "pages": [
+          287
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They look forward eagerly to the festival.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The festival to which they looked forward finally arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.3.2",
+        "pages": [
+          287
+        ],
+        "pdf_pages": [
+          307
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Look forward to contains two PPs",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-154",
+    "domain": "complementation",
+    "concept": "Mixed idiom passive promotes verb object",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In an idiom selecting object, particle and another transitive PP, passive promotes the direct object of the verb.",
+    "condition": "When applying mixed idiom passive promotes verb object to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The NP inside the selected PP does not replace the verb's object as passive subject.",
+        "pages": [
+          288
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They put the delay down to rain.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The delay was put down to rain.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.3.2–6.4",
+        "pages": [
+          288
+        ],
+        "pdf_pages": [
+          308
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mixed idiom passive promotes verb object",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-155",
+    "domain": "complementation",
+    "concept": "Idiomatic predicatives after particles",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Verb+particle idioms may select ordinary PCs or as-marked PCs, often with as optional only for nominal roles.",
+    "condition": "When applying idiomatic predicatives after particles to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "AdjPs and role NPs do not always permit the same as marking.",
+        "pages": [
+          288
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She ended up as chair.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The result turned out successful.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.3.2–6.4",
+        "pages": [
+          288
+        ],
+        "pdf_pages": [
+          308
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic predicatives after particles",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-156",
+    "domain": "complementation",
+    "concept": "Verb NP preposition idioms have four passive classes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Lexical idioms may allow no passive, an ordinary passive, a prepositional passive or both.",
+    "condition": "When applying verb np preposition idioms have four passive classes to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Passive type cannot be inferred from PP position alone.",
+        "pages": [
+          289
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team cast doubt on the findings.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A great deal was made of the delay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.4–6.5",
+        "pages": [
+          289
+        ],
+        "pdf_pages": [
+          309
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verb NP preposition idioms have four passive classes",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-157",
+    "domain": "complementation",
+    "concept": "Fossilisation and noun-modifier restrictions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Postverbal idiom nouns vary in their tolerance for determiners, modifiers and dependent clauses.",
+    "condition": "When applying fossilisation and noun-modifier restrictions to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Prepositional passives disfavor extensive noun modification but do not strictly exclude it.",
+        "pages": [
+          289
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The board cast serious doubt on the claims.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She paid close attention to the answer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.4–6.5",
+        "pages": [
+          289
+        ],
+        "pdf_pages": [
+          309
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fossilisation and noun-modifier restrictions",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-158",
+    "domain": "complementation",
+    "concept": "Adjectival and verbal idiom structures",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Idioms with adjectives can be complex-intransitive PCs or adjective particles; certain verb+verb idioms use complex predicates.",
+    "condition": "When applying adjectival and verbal idiom structures to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not every verb+adjective string has identical syntax; some idioms license clausal complements.",
+        "pages": [
+          290
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They broke even.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The chair cut short the proceedings.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.5–7.1",
+        "pages": [
+          290
+        ],
+        "pdf_pages": [
+          310
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival and verbal idiom structures",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-159",
+    "domain": "complementation",
+    "concept": "Light verb and nominal event head",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a light-verb use, the semantic event is primarily expressed by a direct-object noun while the verb contributes relatively little content.",
+    "condition": "When applying light verb and nominal event head to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same verb often has an ordinary full-content use with the same apparent frame.",
+        "pages": [
+          290
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She gave him a quick kiss.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They took a brief rest.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§6.5–7.1",
+        "pages": [
+          290
+        ],
+        "pdf_pages": [
+          310
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light verb and nominal event head",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-160",
+    "domain": "complementation",
+    "concept": "Light verb can be semantically ambiguous",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Have a bath or similar patterns can denote an event or ordinary possession in context.",
+    "condition": "When applying light verb can be semantically ambiguous to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The eventive reading is not always equivalent in meaning to its associated lexical verb.",
+        "pages": [
+          291
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He had a quiet rest.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She had a warm bath.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.1",
+        "pages": [
+          291
+        ],
+        "pdf_pages": [
+          311
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light verb can be semantically ambiguous",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-161",
+    "domain": "complementation",
+    "concept": "Light verb modifiers and event quantification",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Light-verb nominals can take adjectives and determiners, but counted nominal products need not equal counted acts of performing an event.",
+    "condition": "When applying light verb modifiers and event quantification to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A number of comments counts comment products, not necessarily separate acts of commenting.",
+        "pages": [
+          291
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They made two suggestions.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She took three short breaks.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.1",
+        "pages": [
+          291
+        ],
+        "pdf_pages": [
+          311
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light verb modifiers and event quantification",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-162",
+    "domain": "complementation",
+    "concept": "Light have can change event and goal interpretation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Have a drink may be partitive and have a walk a recreational activity, unlike the broader associated lexical verbs.",
+    "condition": "When applying light have can change event and goal interpretation to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Associated walk to the park need not license have a walk to the park.",
+        "pages": [
+          292
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We had a drink of the juice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We had a walk in the park.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.1",
+        "pages": [
+          292
+        ],
+        "pdf_pages": [
+          312
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light have can change event and goal interpretation",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
+  },
+  {
+    "id": "COMP-163",
+    "domain": "complementation",
+    "concept": "Light verb PP attachment ambiguity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Postnominal PPs in light-verb clauses can attach syntactically to the event noun or to the light verb, so multiple analyses may be valid.",
+    "condition": "When applying light verb pp attachment ambiguity to the particular construction and lexical sense described in Chapter 4.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Neither alternative attachment can be rejected solely from the surface word order.",
+        "pages": [
+          292
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She gave a talk on insects to the students.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She gave the students a talk on insects.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§7.1",
+        "pages": [
+          292
+        ],
+        "pdf_pages": [
+          312
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light verb PP attachment ambiguity",
+        "relation": "unverified",
+        "note": "Independent B-R tree and terminological crosswalk not established."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Direct Cambridge source text and layout reviewed, source paraphrased and examples independently written in English. No independent linguistic approval or production claim."
   }
 ]

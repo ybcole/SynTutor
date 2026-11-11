@@ -115,3 +115,8 @@ Printed pp.233–252 audited consecutively; all are substantive pages. 22 additi
 ## Chapter 4 checkpoint 253–272 (2026-11-11)
 
 Source checked all 20 printed pages in sources/cambridge/chapter_04/PP253_272_REPORT.md with machine audit sources/cambridge/chapter_04/PP253_272_AUDIT.json; 37 new inert Chapter 4 records. Continue printed 273–292 on the same PR before chapter-close QA.
+
+
+## Rolling Chapter 4 checkpoint — 2026-11-11
+
+Completed internal audited batch printed pp.273–292; report sources/cambridge/chapter_04/PP273_292_REPORT.md, audit sources/cambridge/chapter_04/PP273_292_AUDIT.json, 41 newly documented inactive grammar principles. Continue printed p.293, then close Chapter 4 only after complete page and exception coverage and both full CI workflows passing.
